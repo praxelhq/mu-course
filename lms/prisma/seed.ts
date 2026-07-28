@@ -869,6 +869,12 @@ export async function main(): Promise<void> {
         } as Prisma.InputJsonValue,
       },
       {
+        // U15 — which peer-review checkpoint is currently submittable (1, 2 or
+        // null). cp2 active in the demo world while cp1 data already exists.
+        key: "peer_checkpoint",
+        value: { active: 2 } as Prisma.InputJsonValue,
+      },
+      {
         key: "grading_defaults",
         value: {
           provisional: true,
