@@ -38,6 +38,10 @@ export const assignmentTypeInputSchema = z.object({
   description: z.string().min(1).max(2000),
   teamBased: z.boolean(),
   galleryEligible: z.boolean(),
+  // When false, submitting publishes the artifact to its gallery instead of
+  // enqueuing AI grading (memes, AI-image submissions). Defaults true so
+  // existing graded types are unchanged.
+  aiGraded: z.boolean().default(true),
   submissionSchema: z.object({ fields: z.array(fieldDefSchema).min(1) }),
   rubric: z
     .object({
@@ -93,6 +97,7 @@ export async function createAssignmentType(
         description: data.description,
         teamBased: data.teamBased,
         galleryEligible: data.galleryEligible,
+        aiGraded: data.aiGraded,
         submissionSchema: data.submissionSchema as Prisma.InputJsonValue,
         rubric: data.rubric as Prisma.InputJsonValue,
       },
@@ -131,6 +136,7 @@ export async function updateAssignmentType(
         description: data.description,
         teamBased: data.teamBased,
         galleryEligible: data.galleryEligible,
+        aiGraded: data.aiGraded,
         submissionSchema: data.submissionSchema as Prisma.InputJsonValue,
         rubric: data.rubric as Prisma.InputJsonValue,
       },
