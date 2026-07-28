@@ -10,11 +10,14 @@ import {
   QUEUE_GRADE_INTERVIEW_DEAD,
   QUEUE_GRADE_SUBMISSION,
   QUEUE_GRADE_SUBMISSION_DEAD,
+  QUEUE_PORTFOLIO_CRAWL,
   QUEUE_SCREENSHOT_CAPTURE,
+  type PortfolioCrawlJobData,
 } from "../lib/queue";
 import { handleGradeSubmission } from "./jobs/grade-submission";
 import { handleGradeInterview } from "./jobs/grade-interview";
 import { handleScreenshotCapture } from "./jobs/screenshot-capture";
+import { handlePortfolioCrawl } from "./jobs/portfolio-crawl";
 
 type GradeJobData = { submissionId: string };
 type InterviewJobData = { interviewId: string };
@@ -85,6 +88,20 @@ async function main() {
   // NOTE: no consumer is registered on grade.submission.dead — dead-lettered
   // jobs stay queued there so U16's admin view can list them (findJobs) and
   // redrive/regrade; consuming them here would mark them completed.
+
+  // U16: portfolio link-liveness crawl — serial (one job crawls one student
+  // or the whole cohort; per-student link probes run 3 at a time inside).
+  await boss.work<PortfolioCrawlJobData>(
+    QUEUE_PORTFOLIO_CRAWL,
+    { batchSize: 1 },
+    async (jobs) => {
+      for (const job of jobs) {
+        console.log(`[portfolio-crawl] job ${job.id} → ${JSON.stringify(job.data)}`);
+        const { crawled } = await handlePortfolioCrawl(job.data);
+        console.log(`[portfolio-crawl] job ${job.id} done (${crawled} student(s))`);
+      }
+    }
+  );
 
   // Future queues (later units): registered so sends don't rot silently.
   for (const name of FUTURE_QUEUES) {

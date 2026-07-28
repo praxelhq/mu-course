@@ -14,7 +14,10 @@
     "seed": "tsx prisma/seed.ts",
     "eval:grading": "tsx --env-file-if-exists=.env scripts/eval-grading.ts",
     "interview:simulate": "tsx --env-file-if-exists=.env scripts/interview-simulate.ts",
-    "worker:dev": "tsx --env-file-if-exists=.env worker/index.ts"
+    "worker:dev": "tsx --env-file-if-exists=.env worker/index.ts",
+    "e2e": "playwright test",
+    "load:baseline": "k6 run scripts/load/k6-baseline.js",
+    "load:quiz-burst": "k6 run scripts/load/k6-quiz-burst.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.115.0",
@@ -35,6 +38,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@playwright/test": "^1.62.0",
     "@types/node": "^20.19.43",
     "@types/pdf-parse": "^1.1.5",
     "@types/react": "^19",

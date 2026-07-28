@@ -9,11 +9,10 @@ export const QUEUE_GRADE_SUBMISSION_DEAD = "grade.submission.dead";
 export const QUEUE_SCREENSHOT_CAPTURE = "screenshot.capture"; // U11
 export const QUEUE_GRADE_INTERVIEW = "grade.interview"; // U12
 export const QUEUE_GRADE_INTERVIEW_DEAD = "grade.interview.dead";
+export const QUEUE_PORTFOLIO_CRAWL = "portfolio.crawl"; // U16
 
 /** Registered as not-implemented-yet no-ops in the worker (future units). */
-export const FUTURE_QUEUES = [
-  "portfolio.crawl",
-] as const;
+export const FUTURE_QUEUES = [] as const;
 
 export const GRADE_RETRY_LIMIT = 4;
 export const SCREENSHOT_RETRY_LIMIT = 2;
@@ -66,8 +65,64 @@ export async function ensureGradingQueues(b: PgBoss): Promise<void> {
     retryDelay: 15,
     deadLetter: QUEUE_GRADE_INTERVIEW_DEAD,
   });
+  // U16: portfolio link-liveness crawl (no dead letter — a failed crawl is
+  // re-run wholesale from the admin costs page).
+  await b.createQueue(QUEUE_PORTFOLIO_CRAWL, {
+    retryLimit: 2,
+    retryBackoff: true,
+    retryDelay: 30,
+  });
   for (const name of FUTURE_QUEUES) {
     await b.createQueue(name);
+  }
+}
+
+export type PortfolioCrawlJobData = { userId?: string; all?: boolean };
+
+/**
+ * Best-effort enqueue of a portfolio crawl (U16). Admin-triggered; a queue
+ * outage never crashes the caller — it just reports 503 and the admin retries.
+ */
+export async function enqueuePortfolioCrawl(data: PortfolioCrawlJobData): Promise<string | null> {
+  try {
+    const b = await getBoss();
+    await ensureGradingQueues(b);
+    return await b.send(QUEUE_PORTFOLIO_CRAWL, data);
+  } catch (err) {
+    console.error(
+      "[queue] failed to enqueue portfolio crawl:",
+      err instanceof Error ? err.message : err,
+    );
+    return null;
+  }
+}
+
+/**
+ * U16 — the admin costs page's dead-letter view. Lists jobs still QUEUED in a
+ * dead-letter queue (redriven/completed ones drop out). Returns [] when the
+ * queue infrastructure is unreachable — the page renders a note instead.
+ */
+export async function listDeadLetterJobs<T extends object>(
+  queue: string,
+): Promise<
+  { id: string; data: T; retryCount: number; createdOn: Date; output: object | null }[]
+> {
+  try {
+    const b = await getBoss();
+    const jobs = await b.findJobs<T>(queue, { queued: true });
+    return jobs.map((j) => ({
+      id: j.id,
+      data: j.data,
+      retryCount: j.retryCount,
+      createdOn: j.createdOn,
+      output: j.output ?? null,
+    }));
+  } catch (err) {
+    console.error(
+      `[queue] could not list dead-letter jobs for ${queue}:`,
+      err instanceof Error ? err.message : err,
+    );
+    return [];
   }
 }
 

@@ -23,6 +23,10 @@
 - `pnpm seed` — prisma/seed.ts
 - `pnpm worker:dev` — run the pg-boss worker
 - `pnpm prisma migrate dev` — create/apply migrations (needs DATABASE_URL)
+- `pnpm eval:grading` — offline grading-eval harness (scripts/eval-grading.ts)
+- `pnpm interview:simulate` — scripted interview loop (scripts/interview-simulate.ts)
+- `pnpm e2e` — Playwright smoke suite (first: `pnpm exec playwright install chromium`; needs a seeded DB; the config boots `pnpm dev -p 3210` with ENABLE_TEST_LOGIN=1)
+- `pnpm load:baseline` / `pnpm load:quiz-burst` — k6 load scripts (require the `k6` binary; dev/staging with ENABLE_TEST_LOGIN=1 only, NEVER production)
 
 ## Architectural invariants
 

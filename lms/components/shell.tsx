@@ -32,6 +32,7 @@ const INSTRUCTOR_LINKS: NavLink[] = [
   { label: "Review Queue", href: "/instructor/review" },
   { label: "Interviews", href: "/instructor/interviews" },
   { label: "Peer", href: "/instructor/peer" },
+  { label: "Validations", href: "/instructor/validations" },
   { label: "Exports", href: "/instructor/exports" },
 ];
 
