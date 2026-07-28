@@ -40,6 +40,13 @@ export interface GalleryDeps {
 // ---------------------------------------------------------------------------
 
 const GALLERY_STATUSES = ["graded", "finalised"] as const;
+// Ungraded gallery types (aiGraded=false: memes, AI-image submissions) never
+// reach "graded", so they publish to the gallery the moment they are submitted.
+const PUBLISHED_STATUSES = ["submitted", "graded", "finalised"] as const;
+
+function galleryStatusesFor(aiGraded: boolean): readonly string[] {
+  return aiGraded ? GALLERY_STATUSES : PUBLISHED_STATUSES;
+}
 
 type GalleryItemRow = {
   id: string;
@@ -80,10 +87,9 @@ export async function syncGalleryItem(
     select: { id: true, status: true },
   });
 
-  const latestGraded = siblings.find((s) =>
-    (GALLERY_STATUSES as readonly string[]).includes(s.status),
-  );
-  if (!latestGraded) return null; // nothing graded yet in this chain
+  const statuses = galleryStatusesFor(submission.assignment.assignmentType.aiGraded);
+  const latestGraded = siblings.find((s) => statuses.includes(s.status));
+  if (!latestGraded) return null; // nothing publishable yet in this chain
 
   const existing = await db.galleryItem.findFirst({
     where: { submissionId: { in: siblings.map((s) => s.id) } },
@@ -109,7 +115,7 @@ export async function backfillGalleryItems(deps: GalleryDeps = {}): Promise<numb
   const db = deps.prisma ?? defaultPrisma;
   const candidates = await db.submission.findMany({
     where: {
-      status: { in: [...GALLERY_STATUSES] },
+      status: { in: [...PUBLISHED_STATUSES] },
       assignment: { assignmentType: { galleryEligible: true } },
     },
     select: { id: true, galleryItem: { select: { id: true } } },

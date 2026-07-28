@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import type { Prisma, Submission, SubmissionStatus } from "@prisma/client";
 import { prisma } from "@/lib/db";
+import { syncGalleryItem } from "@/lib/galleries";
 import { parentSessionPageIdFor, resolveGate } from "@/lib/gates";
 import {
   parseSubmissionSchema,
@@ -283,9 +284,20 @@ export async function submitAssignment(input: SubmitInput): Promise<Submission> 
     });
   });
 
-  // U9: enqueue AI grading. Best-effort — a queue outage must never fail the
-  // submission (docs/DECISIONS.md); admins can re-enqueue via /api/admin/regrade.
-  await enqueueGradeSubmission(created.id);
+  if (assignment.assignmentType.aiGraded) {
+    // U9: enqueue AI grading. Best-effort — a queue outage must never fail the
+    // submission (docs/DECISIONS.md); admins re-enqueue via /api/admin/regrade.
+    await enqueueGradeSubmission(created.id);
+  } else {
+    // Ungraded gallery artifacts (memes, AI images) never touch the grader —
+    // they publish straight to the section gallery on submit. Best-effort: a
+    // gallery hiccup must not fail the submission (a backfill re-syncs later).
+    try {
+      await syncGalleryItem(created.id);
+    } catch {
+      // swallow — submission is saved; backfillGalleryItems recovers it
+    }
+  }
 
   return created;
 }
