@@ -11,16 +11,20 @@ RUN apt-get update \
 RUN corepack enable
 WORKDIR /app
 
+# Dev mode end to end: this env applies to build AND runtime so the
+# test-login route is allowed and dev deps (tsx for seed, next) install.
+ENV NODE_ENV=development
+ENV PORT=3000
+
 # Build context is the lms/ dir (service rootDirectory=lms).
 COPY package.json pnpm-lock.yaml ./
 COPY prisma ./prisma
-RUN pnpm install --frozen-lockfile
+# --prod=false guarantees devDependencies even if the builder forces NODE_ENV.
+RUN pnpm install --frozen-lockfile --prod=false
 
 COPY . .
 RUN pnpm prisma generate
 
-ENV NODE_ENV=development
-ENV PORT=3000
 EXPOSE 3000
 
 # migrate -> seed demo world -> serve in dev mode
