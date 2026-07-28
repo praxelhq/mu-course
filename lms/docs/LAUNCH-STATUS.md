@@ -62,6 +62,31 @@ no deploy needed.
 Cost: roughly **$0.02–0.05 per graded artifact**, so a full cohort pass is a few tens of
 dollars.
 
+## Verified in production overnight
+
+A real submission was pushed through the entire live pipeline and then deleted:
+
+1. PDF uploaded to S3 (prod bucket) ✓
+2. Gate check passed, submission row created ✓
+3. Job enqueued to pg-boss ✓
+4. `forge-worker` consumed it ✓
+5. Claude read the **actual PDF pages** and returned per-dimension scores ✓
+6. Grade + feedback persisted, submission moved to `graded` ✓
+
+The grader's output on a deliberately bare two-slide deck — evidence it truly saw the
+slides rather than just text:
+
+> **Visual appeal 2/10** — "plain black text on white background with no layout structure,
+> hierarchy, imagery, or design elements… essentially unformatted text, not a designed
+> presentation."
+> **Clarity 1/10** — "two headings with zero supporting content."
+> **Brevity 3/10** — "extremely short… empty rather than concise."
+
+Test data was removed afterwards: production now holds 459 students, 0 submissions, 0 grades.
+
+Also verified: `/sign-in` renders real Clerk (pointing at `clerk.lms.praxel.in`), and
+protected routes correctly redirect unauthenticated visitors.
+
 ## Known risks / what to check first
 
 1. **`lms.praxel.in` TLS certificate.** DNS is correct at the authoritative nameserver, but
