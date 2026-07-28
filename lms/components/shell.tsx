@@ -113,19 +113,21 @@ export async function Shell({
                 Sec {me.section.code}
               </span>
             )}
-            {/* Notification badge — placeholder, links nowhere yet. */}
-            <span
+            {/* Notification badge — unread count, opens the U10 list. */}
+            <Link
+              href="/notifications"
               title={`${unread} unread notification${unread === 1 ? "" : "s"}`}
               style={{
                 ...mono,
                 fontSize: "0.6875rem",
+                textDecoration: "none",
                 color: unread > 0 ? "var(--pine)" : "var(--clay)",
                 border: "1px solid var(--sand)",
                 padding: "0.125rem 0.5rem",
               }}
             >
               Ntf {unread}
-            </span>
+            </Link>
           </div>
         </div>
         <ShellNav links={LINKS_BY_ROLE[user.role]} />
