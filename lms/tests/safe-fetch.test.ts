@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
   SafeFetchBlockedError,
+  isPrivateAddress,
   safeFetch,
+  safeFetchBytes,
   type LookupFn,
 } from "../lib/net/safe-fetch";
 
@@ -32,6 +34,11 @@ describe("safeFetch policy", () => {
       "127.0.0.1",
       "127.1", // WHATWG URL normalizes shorthand to 127.0.0.1
       "0.0.0.0",
+      "100.64.0.1", // CGNAT 100.64/10
+      "100.127.255.255", // CGNAT upper edge
+      "224.0.0.1", // multicast
+      "239.255.255.250", // multicast (SSDP)
+      "255.255.255.255", // broadcast / reserved
     ]) {
       await expect(
         safeFetch(`http://${host}/`, { fetchImpl: okFetch }),
@@ -47,6 +54,8 @@ describe("safeFetch policy", () => {
       "[fe80::1]",
       "[::ffff:169.254.169.254]",
       "[::ffff:10.0.0.1]",
+      "[::ffff:7f00:0001]", // hex-mapped 127.0.0.1 (two-hextet form)
+      "[::ffff:0a00:0001]", // hex-mapped 10.0.0.1 (two-hextet form)
       "[::]",
     ]) {
       await expect(
@@ -159,5 +168,90 @@ describe("safeFetch policy", () => {
         timeoutMs: 50,
       }),
     ).rejects.toThrow();
+  });
+});
+
+describe("isPrivateAddress — named ranges (#17)", () => {
+  it("rejects CGNAT, multicast and reserved IPv4 ranges", () => {
+    for (const ip of ["100.64.0.1", "100.127.255.255", "224.0.0.1", "239.255.255.250", "255.255.255.255"]) {
+      expect(isPrivateAddress(ip), ip).toBe(true);
+    }
+    // Just OUTSIDE CGNAT stays public (proves the bound is not over-broad).
+    expect(isPrivateAddress("100.63.255.255")).toBe(false);
+    expect(isPrivateAddress("100.128.0.1")).toBe(false);
+    // Just below multicast stays public.
+    expect(isPrivateAddress("223.255.255.255")).toBe(false);
+  });
+
+  it("parses the two-hextet IPv6-mapped form and classifies by the embedded v4", () => {
+    // Private embedded v4 → rejected.
+    expect(isPrivateAddress("::ffff:7f00:0001")).toBe(true); // 127.0.0.1
+    expect(isPrivateAddress("::ffff:0a00:0001")).toBe(true); // 10.0.0.1
+    expect(isPrivateAddress("::ffff:a9fe:a9fe")).toBe(true); // 169.254.169.254
+    // Public embedded v4 (129.64.10.1) → allowed: the hex branch is exercised
+    // and correctly returns false, not a blanket reject.
+    expect(isPrivateAddress("::ffff:8140:0a01")).toBe(false);
+  });
+});
+
+describe("safeFetchBytes — byte-cap truncation (#16)", () => {
+  // A fetchImpl that streams `bytes` in small chunks so the read loop runs.
+  function streamingFetch(bytes: Uint8Array, chunkSize = 3): typeof fetch {
+    return () => {
+      let pos = 0;
+      const stream = new ReadableStream<Uint8Array>({
+        pull(controller) {
+          if (pos >= bytes.length) {
+            controller.close();
+            return;
+          }
+          const end = Math.min(pos + chunkSize, bytes.length);
+          controller.enqueue(bytes.slice(pos, end));
+          pos = end;
+        },
+      });
+      return Promise.resolve(
+        new Response(stream, {
+          status: 200,
+          headers: { "content-type": "application/octet-stream" },
+        }),
+      );
+    };
+  }
+
+  it("truncates a body larger than maxBytes at exactly the cap", async () => {
+    const body = new Uint8Array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]); // 10 bytes
+    const out = await safeFetchBytes("https://good.example.com/img", {
+      lookup: publicLookup,
+      fetchImpl: streamingFetch(body),
+      maxBytes: 4,
+    });
+    expect(out.truncated).toBe(true);
+    expect(out.body.length).toBe(4);
+    expect([...out.body]).toEqual([0, 1, 2, 3]);
+  });
+
+  it("returns the full body untruncated when it is under the cap", async () => {
+    const body = new Uint8Array([10, 20, 30]);
+    const out = await safeFetchBytes("https://good.example.com/small", {
+      lookup: publicLookup,
+      fetchImpl: streamingFetch(body),
+      maxBytes: 10,
+    });
+    expect(out.truncated).toBe(false);
+    expect(out.body.length).toBe(3);
+    expect([...out.body]).toEqual([10, 20, 30]);
+  });
+
+  it("a body exactly at the cap is not flagged truncated", async () => {
+    const body = new Uint8Array([1, 2, 3, 4]);
+    const out = await safeFetchBytes("https://good.example.com/exact", {
+      lookup: publicLookup,
+      fetchImpl: streamingFetch(body, 4),
+      maxBytes: 4,
+    });
+    expect(out.truncated).toBe(false);
+    expect(out.body.length).toBe(4);
+    expect([...out.body]).toEqual([1, 2, 3, 4]);
   });
 });

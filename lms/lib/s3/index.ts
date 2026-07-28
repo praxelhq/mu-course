@@ -139,6 +139,8 @@ export type SignDescriptor = {
   command: "put" | "get";
   key: string;
   contentType?: string;
+  /** PUT only: exact byte length bound into the signature (enforces the cap). */
+  contentLength?: number;
   responseContentDisposition?: string;
   expiresIn: number;
 };
@@ -184,7 +186,15 @@ async function sign(d: SignDescriptor): Promise<string> {
   const bucket = envBucket()!;
   const command =
     d.command === "put"
-      ? new PutObjectCommand({ Bucket: bucket, Key: d.key, ContentType: d.contentType })
+      ? new PutObjectCommand({
+          Bucket: bucket,
+          Key: d.key,
+          ContentType: d.contentType,
+          // Binds the exact content length into the signature: the presigned
+          // URL will reject any body that is not exactly this many bytes, so
+          // the per-type size cap is enforced at S3, not just client-side.
+          ContentLength: d.contentLength,
+        })
       : new GetObjectCommand({
           Bucket: bucket,
           Key: d.key,
@@ -221,7 +231,16 @@ export async function presignPut(args: {
     );
   }
   requireConfigured();
-  const url = await sign({ command: "put", key, contentType, expiresIn: PUT_TTL_SECONDS });
+  // Callers pass the client-declared exact byte length as `maxBytes` (already
+  // validated ≤ cap above). Bind it into the signature so S3 enforces it — the
+  // browser's fetch PUT sends Content-Length = file.size, which must match.
+  const url = await sign({
+    command: "put",
+    key,
+    contentType,
+    contentLength: maxBytes,
+    expiresIn: PUT_TTL_SECONDS,
+  });
   return { url, key, headers: { "Content-Type": contentType } };
 }
 

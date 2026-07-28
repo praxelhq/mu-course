@@ -19,8 +19,11 @@ export const POST = withAuth(async (req, { user }) => {
   });
 
   const redirectTo = form?.get("redirectTo");
+  // Only a single-leading-slash same-origin path is honored. Reject
+  // protocol-relative ("//host") and backslash ("/\host") forms, which
+  // new URL() would otherwise resolve to an off-site origin (open redirect).
   const dest =
-    typeof redirectTo === "string" && redirectTo.startsWith("/")
+    typeof redirectTo === "string" && /^\/(?![/\\])/.test(redirectTo)
       ? redirectTo
       : "/dashboard";
   return Response.redirect(new URL(dest, req.url), 303);

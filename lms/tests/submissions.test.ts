@@ -364,4 +364,89 @@ describe.skipIf(!live)("lib/submissions (live DB, seeded)", () => {
       ),
     ).rejects.toThrow(/slug/i);
   });
+
+  it("team resubmission by a different teammate continues the team's version sequence, not a fresh v1 (#12)", async () => {
+    const { setGateState } = await import("../lib/gates");
+    const { submitAssignment } = await import("../lib/submissions");
+    // Ensure the S5 workflow gates are open for section A (team_A1 = s001..s008).
+    await setGateState({ targetType: "session", targetId: "spage_5", sectionId: "sec_A", state: "open", actorId: INSTRUCTOR });
+    await setGateState({ targetType: "assignment", targetId: "asg_s5_workflow", sectionId: "sec_A", state: "open", actorId: INSTRUCTOR });
+
+    const workflowFields = (owner: string) => ({
+      blueprintFile: `submissions/${owner}/wf/blueprint.json`,
+      recordingFile: `submissions/${owner}/wf/recording.mp4`,
+      usefulness: "Automates the team's weekly ops reconciliation; saves ~40 min.",
+      files: [`submissions/${owner}/wf/blueprint.json`, `submissions/${owner}/wf/recording.mp4`],
+    });
+
+    const a = workflowFields("user_s001");
+    const first = await submitAssignment({
+      userId: "user_s001",
+      assignmentId: "asg_s5_workflow",
+      fields: { blueprintFile: a.blueprintFile, recordingFile: a.recordingFile, usefulness: a.usefulness },
+      files: a.files,
+    });
+    const b = workflowFields("user_s002");
+    const second = await submitAssignment({
+      userId: "user_s002",
+      assignmentId: "asg_s5_workflow",
+      fields: { blueprintFile: b.blueprintFile, recordingFile: b.recordingFile, usefulness: b.usefulness },
+      files: b.files,
+    });
+
+    // Same team, and the second teammate's version is exactly one past the
+    // first's — the counter is per-TEAM, not per-user (per-user would reset to
+    // v1 for a teammate who never personally submitted this assignment).
+    expect(second.teamId).toBe(first.teamId);
+    expect(second.version).toBe(first.version + 1);
+    expect(second.version).toBeGreaterThan(1);
+  });
+
+  it("listStuckSubmissions surfaces submissions stuck at 'submitted' past the age cutoff, ignoring fresh ones (#13)", async () => {
+    const { listStuckSubmissions } = await import("../lib/submissions");
+
+    await prisma.submission.create({
+      data: {
+        id: "sub_stuck_test",
+        assignmentId: "asg_s2_skill",
+        userId: "user_s001",
+        status: "submitted",
+        submittedAt: new Date(Date.now() - 20 * 60_000), // 20 min ago
+        fields: { skillLink: "https://x.example/s", writeup: "stuck" },
+        files: [],
+        version: 990,
+        contentHash: "stuckhash_990",
+        createdAt: new Date(Date.now() - 20 * 60_000),
+      },
+    });
+    await prisma.submission.create({
+      data: {
+        id: "sub_fresh_test",
+        assignmentId: "asg_s2_skill",
+        userId: "user_s001",
+        status: "submitted",
+        submittedAt: new Date(), // just now → not stuck yet
+        fields: { skillLink: "https://x.example/f", writeup: "fresh" },
+        files: [],
+        version: 991,
+        contentHash: "stuckhash_991",
+        createdAt: new Date(),
+      },
+    });
+
+    try {
+      const rows = await listStuckSubmissions();
+      const ids = rows.map((r) => r.id);
+      expect(ids).toContain("sub_stuck_test");
+      expect(ids).not.toContain("sub_fresh_test");
+      // Rows carry the student email for the admin ops table.
+      const row = rows.find((r) => r.id === "sub_stuck_test")!;
+      expect(row.user.email).toBe("student001@mastersunion.org");
+      expect(rows.every((r) => r.submittedAt !== null)).toBe(true);
+    } finally {
+      await prisma.submission.deleteMany({
+        where: { id: { in: ["sub_stuck_test", "sub_fresh_test"] } },
+      });
+    }
+  });
 });

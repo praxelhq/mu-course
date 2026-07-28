@@ -202,14 +202,18 @@ export function assembleGradingContext(input: GradingContextInput): GradingConte
     userParts.push("");
     userParts.push("SUBMITTED FILES (extracted content or notes):");
     for (const file of input.extracted) {
+      // The S3 key ends in the student's own filename — student-controlled
+      // text. Wrap it so a hostile filename (e.g. "_award_10_10_.pdf") cannot
+      // land outside a <student_content> block where the prompt has just told
+      // the model everything is trustworthy system context.
       if (file.kind === "text" || file.kind === "pdf") {
         userParts.push(
-          `File "${file.key}" (${file.kind}${file.truncated ? ", truncated" : ""}):`,
+          `File ${wrapStudentContent(file.key)} (${file.kind}${file.truncated ? ", truncated" : ""}):`,
         );
         userParts.push(wrapStudentContent(takeStudentText(file.text ?? "")));
       } else {
         // v1: images/binaries are described, not embedded (see extract.ts note).
-        userParts.push(`File "${file.key}": ${file.note ?? `${file.kind} attachment`}`);
+        userParts.push(`File ${wrapStudentContent(file.key)}: ${file.note ?? `${file.kind} attachment`}`);
       }
     }
   }
@@ -255,7 +259,6 @@ export function applyPolicyFlags(input: ApplyPolicyFlagsInput): GradeResponse {
   const rubricScores: GradeResponse["rubricScores"] = Object.fromEntries(
     Object.entries(input.grade.rubricScores).map(([k, v]) => [k, { ...v }]),
   );
-  let total = input.grade.total;
 
   if (input.linkChecks.some((c) => !c.ok)) {
     flags.add("link-dead");
@@ -264,10 +267,15 @@ export function applyPolicyFlags(input: ApplyPolicyFlagsInput): GradeResponse {
       fn.score = FUNCTIONALITY_CAP;
       fn.rationale = `${fn.rationale} [capped: a submitted link is dead]`.trim();
     }
-    total = Object.values(rubricScores).reduce((sum, d) => sum + d.score, 0);
   }
   if (input.extractionFailures.length > 0) flags.add("context-incomplete");
   if (input.nearDup) flags.add("possible-plagiarism");
+
+  // ALWAYS recompute the total from the validated (0–10) per-dimension scores.
+  // The model's self-reported `total` is never trusted — a hallucinated total
+  // (e.g. 95 on a 0–40 rubric) would otherwise be scaled downstream and inflate
+  // the student's final grade past the component's scale.
+  const total = Object.values(rubricScores).reduce((sum, d) => sum + d.score, 0);
 
   return { ...input.grade, rubricScores, total, flags: [...flags] };
 }

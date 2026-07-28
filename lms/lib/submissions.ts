@@ -259,8 +259,12 @@ export async function submitAssignment(input: SubmitInput): Promise<Submission> 
   const now = new Date();
 
   const created = await prisma.$transaction(async (tx) => {
+    // Version is per-OWNER: individual types count by user; team-based types
+    // count over the whole team (OR userId/teamId, mirroring the read-side
+    // mineOrTeam filter) so a resubmission by a different teammate continues
+    // the team's sequence (v3 over v2) instead of resetting to a fresh v1.
     const latest = await tx.submission.findFirst({
-      where: { assignmentId, userId },
+      where: teamId ? { assignmentId, OR: [{ userId }, { teamId }] } : { assignmentId, userId },
       orderBy: { version: "desc" },
       select: { version: true },
     });
@@ -284,6 +288,42 @@ export async function submitAssignment(input: SubmitInput): Promise<Submission> 
   await enqueueGradeSubmission(created.id);
 
   return created;
+}
+
+/**
+ * Age past which a submission still sitting at status 'submitted' is treated as
+ * stuck (a reasonable upper bound on normal grading latency). See #13.
+ */
+export const STUCK_SUBMISSION_AGE_MS = 10 * 60_000;
+
+export type StuckSubmissionRow = {
+  id: string;
+  version: number;
+  submittedAt: Date | null;
+  user: { email: string };
+};
+
+/**
+ * Submissions stuck at status 'submitted' past the age cutoff — a grading job
+ * that was never enqueued (a queue outage at submit time is best-effort and
+ * silently skipped, so these rows never enter pg-boss and never appear in the
+ * dead-letter list). Surfaced on /admin/costs so an admin can re-enqueue via
+ * POST /api/admin/regrade.
+ */
+export async function listStuckSubmissions(
+  olderThanMs: number = STUCK_SUBMISSION_AGE_MS,
+): Promise<StuckSubmissionRow[]> {
+  const cutoff = new Date(Date.now() - olderThanMs);
+  return prisma.submission.findMany({
+    where: { status: "submitted", submittedAt: { lt: cutoff } },
+    orderBy: { submittedAt: "asc" },
+    select: {
+      id: true,
+      version: true,
+      submittedAt: true,
+      user: { select: { email: true } },
+    },
+  });
 }
 
 /**

@@ -58,7 +58,33 @@ export const POST = withAuth(
     }
 
     const counts = await prisma.$transaction(async (tx) => {
-      // FK-safe order: children before parents.
+      // Team artifacts are jointly produced: a value-chain-map / media /
+      // workflow submission is stored under whichever teammate clicked submit,
+      // plus a teamId. Erasing that member must NOT destroy the team's only
+      // artifact (which would zero four-to-five teammates' §1/§2/§3 grades), so
+      // reassign each team submission authored by the erased user to a surviving
+      // teammate — preserving the artifact and its grades while erasing the
+      // person. A team submission with no surviving member falls through to the
+      // delete below (nobody is left to own it).
+      const teamSubs = await tx.submission.findMany({
+        where: { userId, teamId: { not: null } },
+        select: { id: true, teamId: true },
+      });
+      let reassignedTeamSubmissions = 0;
+      for (const sub of teamSubs) {
+        const survivor = await tx.user.findFirst({
+          where: { teamId: sub.teamId, id: { not: userId } },
+          select: { id: true },
+        });
+        if (survivor) {
+          await tx.submission.update({ where: { id: sub.id }, data: { userId: survivor.id } });
+          reassignedTeamSubmissions += 1;
+        }
+      }
+
+      // FK-safe order: children before parents. Only INDIVIDUAL work (plus any
+      // team submission that could not be reassigned) still points at the erased
+      // userId here — the reassigned team artifacts have moved to a survivor.
       const galleryItems = await tx.galleryItem.deleteMany({
         where: { submission: { userId } },
       });
@@ -81,6 +107,7 @@ export const POST = withAuth(
         galleryItems: galleryItems.count,
         grades: grades.count,
         submissions: submissions.count,
+        reassignedTeamSubmissions,
         interviewTurns: interviewTurns.count,
         interviews: interviews.count,
         interviewRetakes: interviewRetakes.count,

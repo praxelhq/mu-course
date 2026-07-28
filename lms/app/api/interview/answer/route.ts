@@ -10,6 +10,21 @@ import { completeInterview, nextQuestion, submitAnswer } from "@/lib/interview/s
 
 export const dynamic = "force-dynamic";
 
+/**
+ * Typed answers are a dev/text fallback only — the same gating the UI uses to
+ * offer the text box (NEXT_PUBLIC_INTERVIEW_TEXT_MODE) plus the dev envs. In
+ * production without a flag, a graded viva must be spoken, never typed: a
+ * text-only body is refused so a student cannot complete the interview with
+ * un-timed, un-recorded typed answers and no audio artifact to review.
+ */
+export function textAnswersAllowed(): boolean {
+  if (process.env.NODE_ENV !== "production") return true;
+  if (process.env.NEXT_PUBLIC_INTERVIEW_TEXT_MODE === "1") return true;
+  return ["1", "true", "yes", "on"].includes(
+    (process.env.INTERVIEW_DEV_SCRIPTED ?? "").toLowerCase(),
+  );
+}
+
 const bodySchema = z
   .object({
     interviewId: z.string().min(1),
@@ -23,6 +38,14 @@ export const POST = withAuth(async (req, { user }) => {
   const parsed = bodySchema.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return Response.json({ error: "Invalid body" }, { status: 400 });
   const { interviewId, audioS3Key, text } = parsed.data;
+
+  // A typed answer with no audio is only accepted in the dev/text fallback.
+  if (text && !audioS3Key && !textAnswersAllowed()) {
+    return Response.json(
+      { error: "Typed answers are not available — please answer by voice." },
+      { status: 400 },
+    );
+  }
 
   try {
     const answer = await submitAnswer({ interviewId, userId: user.userId, audioS3Key, text });

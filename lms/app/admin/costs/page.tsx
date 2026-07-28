@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { prisma } from "@/lib/db";
 import { listDeadLetterJobs, QUEUE_GRADE_SUBMISSION_DEAD } from "@/lib/queue";
+import { listStuckSubmissions, STUCK_SUBMISSION_AGE_MS } from "@/lib/submissions";
 import { Card, Eyebrow, Td, Th } from "@/components/ui";
 import { RetryGradeButton, RetryScreenshotButton, RunCrawlButton } from "./actions";
 
@@ -69,7 +70,7 @@ export default async function AdminCostsPage() {
   startOfDay.setHours(0, 0, 0, 0);
   const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 3_600_000);
 
-  const [allAgg, weekAgg, todayAgg, recent, deadJobs, blocked] = await Promise.all([
+  const [allAgg, weekAgg, todayAgg, recent, deadJobs, blocked, stuck] = await Promise.all([
     prisma.costLog.groupBy({
       by: ["feature", "provider"],
       _count: { _all: true },
@@ -96,7 +97,10 @@ export default async function AdminCostsPage() {
         submission: { select: { user: { select: { email: true } } } },
       },
     }),
+    listStuckSubmissions(),
   ]);
+
+  const stuckMinutes = Math.round(STUCK_SUBMISSION_AGE_MS / 60_000);
 
   const total = aggMap(allAgg);
   const week = aggMap(weekAgg);
@@ -197,6 +201,46 @@ export default async function AdminCostsPage() {
                         ) : (
                           "—"
                         )}
+                      </Td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </Card>
+
+        <Card>
+          <p style={{ ...mono, fontSize: "0.75rem", color: "var(--clay)", margin: "0 0 1rem" }}>
+            Submissions stuck at &ldquo;submitted&rdquo; (&gt; {stuckMinutes} min, never enqueued)
+          </p>
+          {stuck.length === 0 ? (
+            <p style={{ margin: 0, color: "var(--charcoal)" }}>
+              No stuck submissions. (A submission whose grading job failed to
+              enqueue never enters the queue, so it never dead-letters — this is
+              the only place it surfaces.)
+            </p>
+          ) : (
+            <div style={{ overflowX: "auto" }}>
+              <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                <thead>
+                  <tr>
+                    <Th style={th}>Submission</Th>
+                    <Th style={th}>Student</Th>
+                    <Th style={th}>Version</Th>
+                    <Th style={th}>Submitted</Th>
+                    <Th style={th}>Action</Th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {stuck.map((s) => (
+                    <tr key={s.id}>
+                      <Td style={{ ...td, fontFamily: "var(--font-geist-mono)" }}>{s.id}</Td>
+                      <Td style={td}>{s.user.email}</Td>
+                      <Td style={td}>{s.version}</Td>
+                      <Td style={td}>{s.submittedAt ? fmtAt.format(s.submittedAt) : "—"}</Td>
+                      <Td style={td}>
+                        <RetryGradeButton submissionId={s.id} />
                       </Td>
                     </tr>
                   ))}

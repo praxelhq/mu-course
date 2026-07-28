@@ -226,4 +226,46 @@ describe.skipIf(!live)("U16 DPDP export + delete (live DB)", () => {
     });
     expect(again.status).toBe(404);
   });
+
+  it("erasing a team member preserves the team's shared submission (reassigned) and its grade (#5)", async () => {
+    // Seed fact: sub_033 is team_A2's workflow artifact, authored by the member
+    // who clicked submit (user_s009), graded (grade_sub_033). team_A2 members
+    // are user_s009..user_s016.
+    const before = await prisma.submission.findUnique({ where: { id: "sub_033" } });
+    expect(before?.userId).toBe("user_s009");
+    expect(before?.teamId).toBe("team_A2");
+    expect(await prisma.grade.findUnique({ where: { id: "grade_sub_033" } })).not.toBeNull();
+
+    // A surviving teammate's grade line (their §1/§2/§3 all read this team
+    // artifact) must remain intact after the erasure.
+    const teammate = "user_s010";
+    expect(await prisma.user.findUnique({ where: { id: teammate } })).not.toBeNull();
+
+    const res = await deleteFor(ADMIN, {
+      userId: "user_s009",
+      confirmEmail: "student009@mastersunion.org",
+    });
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as { deleted: { reassignedTeamSubmissions: number } };
+    expect(body.deleted.reassignedTeamSubmissions).toBeGreaterThanOrEqual(1);
+
+    // The erased person is gone…
+    expect(await prisma.user.findUnique({ where: { id: "user_s009" } })).toBeNull();
+
+    // …but the jointly-produced team artifact survives, reassigned to a
+    // surviving team_A2 member, with its grade line untouched.
+    const after = await prisma.submission.findUnique({ where: { id: "sub_033" } });
+    expect(after).not.toBeNull();
+    expect(after!.teamId).toBe("team_A2");
+    expect(after!.userId).not.toBe("user_s009");
+    const survivors = await prisma.user.findMany({
+      where: { teamId: "team_A2" },
+      select: { id: true },
+    });
+    expect(survivors.map((s) => s.id)).toContain(after!.userId);
+    expect(await prisma.grade.findUnique({ where: { id: "grade_sub_033" } })).not.toBeNull();
+
+    // The teammate is untouched by the erasure.
+    expect(await prisma.user.findUnique({ where: { id: teammate } })).not.toBeNull();
+  });
 });

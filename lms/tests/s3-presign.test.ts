@@ -11,6 +11,7 @@ import {
   presignPut,
   rangedRead,
   s3Configured,
+  type SignDescriptor,
 } from "../lib/s3";
 
 // U7 S3 module: the only module importing the AWS SDK. Pure logic (key
@@ -74,6 +75,27 @@ describe("presignPut validation", () => {
     expect(out.url).toBe("https://s3.test/materials/session1/clip.mp4?sig=1");
     expect(out.key).toBe("materials/session1/clip.mp4");
     expect(out.headers["Content-Type"]).toBe("video/mp4");
+  });
+
+  it("binds the declared content length into the signed PUT so the cap is enforced at S3 (#11)", async () => {
+    let seen: SignDescriptor | null = null;
+    __setS3TestOverrides({
+      configured: true,
+      sign: (d) => {
+        seen = d;
+        return `https://s3.test/${d.key}?sig=1`;
+      },
+    });
+    await presignPut({
+      key: "submissions/user_s001/sub_1/report.pdf",
+      contentType: "application/pdf",
+      maxBytes: 1234,
+    });
+    expect(seen).not.toBeNull();
+    expect(seen!.command).toBe("put");
+    // The exact declared byte length is signed in — a body of any other size
+    // is refused by S3, so the size cap is no longer client-advisory only.
+    expect(seen!.contentLength).toBe(1234);
   });
 
   it("rejects non-mp4 kinds that exceed their own caps", async () => {

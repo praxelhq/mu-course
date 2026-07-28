@@ -2,6 +2,7 @@ import { withAuth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { interviewErrorResponse, rateLimited, takeInterviewToken } from "@/lib/interview/http";
 import {
+  completeInterview,
   dialogAvailable,
   getInterviewState,
   nextQuestion,
@@ -25,7 +26,20 @@ export const POST = withAuth(async (req, { user }) => {
       select: { id: true },
     });
     if (existing) {
-      const state = await getInterviewState(existing.id, user.userId);
+      let state = await getInterviewState(existing.id, user.userId);
+      // Crash-mid-turn recovery (R17): if the student's answer persisted but the
+      // agent's next question never landed (a crash in the Gemini/TTS window),
+      // the transcript ends on a student turn with no pending question — /answer
+      // would 409 forever. nextQuestion is idempotent for the agent-turn-last
+      // case, so regenerate the question (completing if the budget says done).
+      if (state.status === "live" && !state.pendingQuestion) {
+        const last = state.turns[state.turns.length - 1];
+        if (last && last.speaker === "student") {
+          const q = await nextQuestion(existing.id);
+          if (q.done) await completeInterview(existing.id, user.userId);
+          state = await getInterviewState(existing.id, user.userId);
+        }
+      }
       return Response.json({ resumed: true, state });
     }
 
