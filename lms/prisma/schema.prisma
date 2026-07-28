@@ -143,6 +143,9 @@ model Submission {
   files        String[]
   version      Int              @default(1)
   contentHash  String?
+  // U9: Gemini text-embedding vector over the concatenated text fields,
+  // used for near-duplicate detection. Empty when embeddings are disabled.
+  embedding    Float[]          @default([])
   createdAt    DateTime         @default(now())
 
   grades      Grade[]

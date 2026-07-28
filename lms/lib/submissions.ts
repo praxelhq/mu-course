@@ -283,17 +283,25 @@ export async function submitAssignment(input: SubmitInput): Promise<Submission> 
     });
   });
 
-  // TODO(U9): enqueue AI grading for this submission. Deliberate no-op hook —
-  // U9 replaces the body with a pg-boss enqueue; the call site stays here.
+  // U9: enqueue AI grading. Best-effort — a queue outage must never fail the
+  // submission (docs/DECISIONS.md); admins can re-enqueue via /api/admin/regrade.
   await enqueueGradeSubmission(created.id);
 
   return created;
 }
 
 /**
- * U9 hook point: grading enqueue. No-op in U8 so the submit path already has
- * its single, clearly-marked integration seam.
+ * U9: pg-boss enqueue of the grading job (best-effort, never throws). Kept as
+ * the single integration seam introduced in U8.
  */
 export async function enqueueGradeSubmission(submissionId: string): Promise<void> {
-  void submissionId;
+  try {
+    const queue = await import("@/lib/queue");
+    await queue.enqueueGradeSubmission(submissionId);
+  } catch (err) {
+    console.error(
+      `[submissions] grading enqueue failed for ${submissionId} (submission recorded):`,
+      err instanceof Error ? err.message : err,
+    );
+  }
 }
