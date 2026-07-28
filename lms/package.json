@@ -13,12 +13,14 @@
     "worker:dev": "tsx worker/index.ts"
   },
   "dependencies": {
+    "@clerk/nextjs": "^7.6.2",
     "@prisma/client": "^6.19.3",
     "next": "16.2.12",
     "pg-boss": "^12.26.3",
     "prisma": "^6.19.3",
     "react": "19.2.4",
     "react-dom": "19.2.4",
+    "svix": "^1.99.1",
     "zod": "^4.4.3"
   },
   "devDependencies": {

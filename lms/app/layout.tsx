@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Geist, Geist_Mono } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 
 // Fonts are self-hosted: next/font/google downloads and packages them at
@@ -29,7 +30,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
+  const page = (
     <html
       lang="en"
       className={`${fraunces.variable} ${geistSans.variable} ${geistMono.variable}`}
@@ -37,4 +38,9 @@ export default function RootLayout({
       <body>{children}</body>
     </html>
   );
+  // Clerk-optional local dev: without a publishable key, ClerkProvider would
+  // throw at render time, so the tree mounts bare and auth runs through the
+  // test-login flow only (see lib/auth).
+  if (!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY) return page;
+  return <ClerkProvider>{page}</ClerkProvider>;
 }
