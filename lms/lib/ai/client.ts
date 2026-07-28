@@ -39,9 +39,18 @@ export function getAnthropic(): Anthropic {
 
 export type ModelUsage = { inputTokens: number; outputTokens: number };
 
+/** A base64 image attached to the user turn (multimodal grading, e.g. slides). */
+export type ImageInput = {
+  mediaType: "image/png" | "image/jpeg" | "image/webp" | "image/gif";
+  dataBase64: string;
+};
+
 /**
- * Minimal text-completion seam so tests (and the eval stub) can substitute
- * the model without touching the Anthropic SDK.
+ * Minimal completion seam so tests (and the eval stub) can substitute the
+ * model without touching the Anthropic SDK. `images`/`pdfsBase64`, when
+ * present, are sent alongside the user text for vision grading — Claude reads
+ * PDF document blocks natively (visual layout AND text), so a presentation is
+ * graded from the actual slides with no server-side rasterization.
  */
 export interface ModelClient {
   complete(args: {
@@ -50,6 +59,8 @@ export interface ModelClient {
     maxTokens: number;
     temperature: number | undefined;
     model: string;
+    images?: ImageInput[];
+    pdfsBase64?: string[];
   }): Promise<{ text: string; usage: ModelUsage }>;
 }
 
@@ -61,6 +72,10 @@ export interface StructuredCallArgs<T> {
   /** Clamped to <= 0.2 — grading must be near-deterministic. Default 0. */
   temperature?: number;
   model?: string;
+  /** Optional images sent with the user turn (vision grading). */
+  images?: ImageInput[];
+  /** Optional base64 PDFs sent as document blocks (Claude reads them natively). */
+  pdfsBase64?: string[];
 }
 
 export interface StructuredCallResult<T> {
@@ -80,13 +95,26 @@ const NO_TEMPERATURE = /claude-(opus-4-[7-9]|opus-5|sonnet-5|fable|mythos)/;
 
 function realModelClient(): ModelClient {
   return {
-    async complete({ system, user, maxTokens, temperature, model }) {
+    async complete({ system, user, maxTokens, temperature, model, images, pdfsBase64 }) {
       const anthropic = getAnthropic();
+      const content: Anthropic.ContentBlockParam[] = [{ type: "text", text: user }];
+      for (const img of images ?? []) {
+        content.push({
+          type: "image",
+          source: { type: "base64", media_type: img.mediaType, data: img.dataBase64 },
+        });
+      }
+      for (const data of pdfsBase64 ?? []) {
+        content.push({
+          type: "document",
+          source: { type: "base64", media_type: "application/pdf", data },
+        });
+      }
       const res = await anthropic.messages.create({
         model,
         max_tokens: maxTokens,
         system,
-        messages: [{ role: "user", content: user }],
+        messages: [{ role: "user", content }],
         ...(temperature !== undefined && !NO_TEMPERATURE.test(model)
           ? { temperature }
           : {}),
@@ -142,7 +170,15 @@ export async function structuredCall<T>(
 
   for (let attempt = 0; attempt < 2; attempt++) {
     const user = attempt === 0 ? args.user : args.user + CORRECTIVE_INSTRUCTION;
-    const res = await impl.complete({ system: args.system, user, maxTokens, temperature, model });
+    const res = await impl.complete({
+      system: args.system,
+      user,
+      maxTokens,
+      temperature,
+      model,
+      images: args.images,
+      pdfsBase64: args.pdfsBase64,
+    });
     usage.inputTokens += res.usage.inputTokens;
     usage.outputTokens += res.usage.outputTokens;
     raw = res.text;

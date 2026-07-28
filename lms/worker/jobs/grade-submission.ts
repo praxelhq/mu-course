@@ -14,6 +14,7 @@ import type { Embedder } from "@/lib/ai/embeddings";
 import { parseSubmissionSchema } from "@/lib/submission-schema";
 import { probeUrl, type LookupFn } from "@/lib/net/safe-fetch";
 import { syncGalleryItem } from "@/lib/galleries";
+import { rangedRead } from "@/lib/s3";
 import { enqueueScreenshotCapture } from "@/lib/queue";
 
 // The grade.submission consumer. All external effects are injectable so
@@ -171,15 +172,42 @@ export async function handleGradeSubmission(
     linkChecks,
   });
 
-  // 5. Model call (throws → pg-boss retry → dead letter; status stays 'grading').
+  // 5. Vision: when the rubric scores a visual dimension (e.g. a presentation's
+  // "Visual appeal"), attach the submitted PDF as a document block so Claude
+  // grades from the actual slides — not just the extracted text. Best-effort:
+  // a fetch failure falls back to text-only grading (extract already has text).
+  const wantsVision = context.dimensions.some((d) => /visual/i.test(d.key));
+  let pdfsBase64: string[] | undefined;
+  let visionUser = context.user;
+  if (wantsVision) {
+    const read = deps.s3?.rangedRead ?? rangedRead;
+    const pdfKeys = submission.files.filter((k) => /\.pdf$/i.test(k)).slice(0, 1);
+    const encoded: string[] = [];
+    for (const key of pdfKeys) {
+      try {
+        encoded.push(Buffer.from(await read(key, 16 * 1024 * 1024)).toString("base64"));
+      } catch {
+        // leave it — text-only grade, and applyPolicyFlags won't see a file here
+      }
+    }
+    if (encoded.length > 0) {
+      pdfsBase64 = encoded;
+      visionUser +=
+        "\n\nThe submission PDF is attached as a document. Assess the visual dimension(s) " +
+        "(layout, hierarchy, imagery, overall design) from the actual pages, not from the text alone.";
+    }
+  }
+
+  // 6. Model call (throws → pg-boss retry → dead letter; status stays 'grading').
   const call = deps.model ?? (structuredCall as StructuredCaller);
   const responseSchema = gradeResponseSchemaFor(context.dimensions.map((d) => d.key));
   const result = await call<GradeResponse>({
     system: context.system,
-    user: context.user,
+    user: visionUser,
     schema: responseSchema,
     maxTokens: 2048,
     temperature: 0,
+    pdfsBase64,
   });
 
   // 6. Deterministic policy on top of the model grade.
