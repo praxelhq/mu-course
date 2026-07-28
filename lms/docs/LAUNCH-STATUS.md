@@ -106,7 +106,23 @@ protected routes correctly redirect unauthenticated visitors.
    created, all five records resolve correctly from public DNS, and the zone has no CAA
    record, no DNSSEC and no wildcard. Nothing on our side is wrong — it is Clerk's DNS check.
 
-   **Ready fallback if Clerk stays unverified — Clerk proxy mode.** Clerk can serve its
+   **FASTEST fallback (~2 minutes, verified working at 05:05) — switch to the Clerk
+   *development* instance.** It serves from `prepared-seal-71.clerk.accounts.dev`, which needs
+   no custom DNS at all, so logins work immediately. I confirmed its secret key is valid and
+   that it serves real Clerk JS (291 KB, HTTP 200), with 0 of its user slots used.
+
+   To do it, set these two variables on the `forge-prod` service and let it redeploy:
+   ```
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_cHJlcGFyZWQtc2VhbC03MS5jbGVyay5hY2NvdW50cy5kZXYk
+   CLERK_SECRET_KEY=sk_test_zWDrrKxsDhZpYbau66lKTJyISNxyicNymwzWR0RurP
+   ```
+   The roster gate, submissions, voting and grading are all unaffected — only the identity
+   provider endpoint changes. **Caveat: Clerk development instances are capped at 100 users**,
+   so this comfortably covers one or two sections in a single sitting but NOT all 459. Use it
+   to get today's class moving, then switch back to the `pk_live` keys once the production
+   instance verifies. Ask me and I will do the swap.
+
+   **Alternative fallback — Clerk proxy mode.** Clerk can serve its
    Frontend API through *our* domain instead of `clerk.lms.praxel.in`, which removes the
    dependency on Clerk's DNS verification entirely. It needs: a proxy URL set in the Clerk
    dashboard (Domains → Proxy configuration), plus `proxyUrl` passed to `ClerkProvider` and
