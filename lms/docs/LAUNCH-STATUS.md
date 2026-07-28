@@ -89,7 +89,19 @@ protected routes correctly redirect unauthenticated visitors.
 
 ## Known risks / what to check first
 
-1. **`lms.praxel.in` TLS certificate.** DNS is correct at the authoritative nameserver, but
+1. **Sign-in depends on Clerk finishing domain verification — CHECK THIS FIRST.**
+   All five Clerk CNAMEs are in place and resolve correctly from public DNS (verified against
+   8.8.8.8), but Clerk's dashboard still shows `0/5 Verified` and has not issued its
+   certificates, so `clerk.lms.praxel.in` is not yet serving Clerk's JS. Until it does, the
+   sign-in page renders the branding but no sign-in widget, and **nobody can log in**.
+   - Check: https://dashboard.clerk.com → Configure → Domains. Hit **Verify configuration**.
+   - This is waiting on Clerk's own DNS check, not on anything in the app or the DNS records.
+     It normally clears by itself within a few hours of the records being added (added
+     ~03:30 IST).
+   - If it is still `0/5` when you wake and you need students in immediately, tell me and I
+     will switch the app to a configuration that does not depend on the custom domain.
+
+2. **`lms.praxel.in` TLS certificate.** DNS is correct at the authoritative nameserver, but
    the record's TTL is 4 hours, so public resolvers (and Railway's validator) may still be
    serving a stale value for a while. Until Railway issues the certificate, use the
    `forge-prod-production.up.railway.app` fallback — the app itself is fully working.
