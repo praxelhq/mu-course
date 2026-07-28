@@ -75,6 +75,7 @@ model User {
   reviewsReceived    PeerReview[]  @relation("Reviewee")
   notifications      Notification[]
   portfolioEntry     PortfolioEntry?
+  votesCast          Vote[]        @relation("Voter")
 
   @@index([sectionId])
   @@index([teamId])
@@ -114,6 +115,10 @@ model AssignmentType {
   rubric           Json
   galleryEligible  Boolean @default(false)
   teamBased        Boolean @default(false)
+  // Whether a submission of this type is sent to the AI grading queue. When
+  // false (e.g. memes, AI-image submissions), submitting instead publishes the
+  // artifact straight to its gallery — no grade is ever produced.
+  aiGraded         Boolean @default(true)
 
   assignments Assignment[]
 }
@@ -156,6 +161,7 @@ model Submission {
 
   grades      Grade[]
   galleryItem GalleryItem?
+  votes       Vote[]
 
   @@index([assignmentId])
   @@index([userId])
@@ -290,6 +296,25 @@ model GalleryItem {
   featured        Boolean    @default(false)
   caption         String?
   screenshotS3Key String?
+}
+
+// One upvote by one student on one gallery submission. Section-scoping (a
+// student may only vote submissions from their own section) is enforced in the
+// vote API, not the schema. Vote counts are never exposed to students until an
+// instructor reveals them for that section (a ConfigKV reveal flag), and a
+// student sees their own item's tally only after casting VOTE_UNLOCK_MIN votes
+// in that gallery.
+model Vote {
+  id           String     @id @default(cuid())
+  submissionId String
+  submission   Submission @relation(fields: [submissionId], references: [id])
+  voterId      String
+  voter        User       @relation("Voter", fields: [voterId], references: [id])
+  createdAt    DateTime   @default(now())
+
+  @@unique([submissionId, voterId])
+  @@index([voterId])
+  @@index([submissionId])
 }
 
 model Material {
