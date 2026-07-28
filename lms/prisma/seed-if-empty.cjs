@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 // Demo-only boot seeder. Runs the deterministic demo seed (prisma/seed.ts via
 // tsx) ONLY when the database has no users, so a routine container restart
 // never wipes a demo session's activity. First boot on a fresh DB seeds the

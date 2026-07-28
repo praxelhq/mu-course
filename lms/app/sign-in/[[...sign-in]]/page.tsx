@@ -1,4 +1,6 @@
 import { SignIn } from "@clerk/nextjs";
+import DemoLogin from "./DemoLogin";
+import { isTestLoginEnabled } from "@/lib/auth/test-login";
 
 // Sign-in via Clerk's prebuilt component. Google-only sign-in is Clerk
 // dashboard configuration (User & Authentication → Social connections →
@@ -39,6 +41,8 @@ export default function SignInPage() {
       </div>
       {clerkConfigured ? (
         <SignIn />
+      ) : isTestLoginEnabled() ? (
+        <DemoLogin />
       ) : (
         <p style={{ color: "var(--charcoal)", maxWidth: "28rem", textAlign: "center" }}>
           Clerk is not configured in this environment. Local dev uses the
