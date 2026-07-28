@@ -2,7 +2,11 @@ import { NextResponse, type NextRequest } from "next/server";
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import type { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db";
-import { hasClerkKeys, updateClerkUserMetadata } from "@/lib/auth/clerk";
+import {
+  getClerkUserEmail,
+  hasClerkKeys,
+  updateClerkUserMetadata,
+} from "@/lib/auth/clerk";
 import {
   decideRosterGate,
   flagOffRosterUser,
@@ -44,10 +48,29 @@ function notOnRosterRedirect(req: NextRequest): NextResponse {
  */
 async function lookupRosterByClerkId(clerkUserId: string): Promise<RosterLookup> {
   try {
-    return await prisma.user.findUnique({
+    const linked = await prisma.user.findUnique({
       where: { clerkUserId },
       select: { id: true },
     });
+    if (linked) return linked;
+
+    // FIRST SIGN-IN: the roster row exists but has no clerkUserId yet — the
+    // user.created webhook links it, and that is asynchronous. Without this
+    // fallback a student whose first page load beats the webhook would be
+    // treated as off-roster and FLAGGED for deletion. Match on the Clerk
+    // account's primary email (the same rule the webhook and session layer
+    // use) and backfill the link so this costs one Clerk call per student,
+    // once. A student genuinely not on the roster still falls through to
+    // null → flag + redirect.
+    const email = await getClerkUserEmail(clerkUserId);
+    if (!email) return null;
+    const byEmail = await prisma.user.findUnique({
+      where: { email: email.toLowerCase() },
+      select: { id: true },
+    });
+    if (!byEmail) return null;
+    await prisma.user.update({ where: { id: byEmail.id }, data: { clerkUserId } });
+    return byEmail;
   } catch {
     return "error";
   }
