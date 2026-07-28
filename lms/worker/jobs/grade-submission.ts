@@ -13,6 +13,8 @@ import { findNearDuplicates } from "@/lib/ai/near-dup";
 import type { Embedder } from "@/lib/ai/embeddings";
 import { parseSubmissionSchema } from "@/lib/submission-schema";
 import { safeFetch, type LookupFn } from "@/lib/net/safe-fetch";
+import { syncGalleryItem } from "@/lib/galleries";
+import { enqueueScreenshotCapture } from "@/lib/queue";
 
 // U9 — the grade.submission consumer. All external effects are injectable so
 // tests drive the exact production code path with a mocked model/S3/network.
@@ -58,6 +60,8 @@ export interface GradeJobDeps {
   lookup?: LookupFn;
   /** Embedding seam for near-dup (null disables; undefined = env-driven). */
   embed?: Embedder | null;
+  /** U11 seam: screenshot enqueue after grading an app-type submission. */
+  enqueueScreenshot?: (submissionId: string) => Promise<string | null>;
 }
 
 async function checkLink(
@@ -233,4 +237,18 @@ export async function handleGradeSubmission(
       },
     });
   });
+
+  // 8. U11 — gallery sync + screenshot capture, post-transaction and
+  // best-effort: a gallery hiccup must never fail (or retry) a grading job.
+  try {
+    const item = await syncGalleryItem(submission.id, { prisma: db });
+    if (item && item.submissionId === submission.id && type.slug === "app") {
+      await (deps.enqueueScreenshot ?? enqueueScreenshotCapture)(submission.id);
+    }
+  } catch (err) {
+    console.error(
+      `[grading] gallery sync failed for ${submission.id} (grade persisted):`,
+      err instanceof Error ? err.message : err,
+    );
+  }
 }

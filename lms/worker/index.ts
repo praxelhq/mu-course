@@ -8,8 +8,10 @@ import {
   FUTURE_QUEUES,
   QUEUE_GRADE_SUBMISSION,
   QUEUE_GRADE_SUBMISSION_DEAD,
+  QUEUE_SCREENSHOT_CAPTURE,
 } from "../lib/queue";
 import { handleGradeSubmission } from "./jobs/grade-submission";
+import { handleScreenshotCapture } from "./jobs/screenshot-capture";
 
 type GradeJobData = { submissionId: string };
 
@@ -43,6 +45,20 @@ async function main() {
         console.log(`[grading] job ${job.id} → submission ${job.data.submissionId}`);
         await handleGradeSubmission(job.data.submissionId);
         console.log(`[grading] job ${job.id} done`);
+      }
+    }
+  );
+
+  // U11: screenshot capture (headless chromium; serial — browser launches are
+  // heavy and the queue is shallow).
+  await boss.work<GradeJobData>(
+    QUEUE_SCREENSHOT_CAPTURE,
+    { batchSize: 1 },
+    async (jobs) => {
+      for (const job of jobs) {
+        console.log(`[screenshot] job ${job.id} → submission ${job.data.submissionId}`);
+        await handleScreenshotCapture(job.data.submissionId);
+        console.log(`[screenshot] job ${job.id} done`);
       }
     }
   );

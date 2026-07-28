@@ -6,15 +6,16 @@ import { PgBoss } from "pg-boss";
 
 export const QUEUE_GRADE_SUBMISSION = "grade.submission";
 export const QUEUE_GRADE_SUBMISSION_DEAD = "grade.submission.dead";
+export const QUEUE_SCREENSHOT_CAPTURE = "screenshot.capture"; // U11
 
 /** Registered as not-implemented-yet no-ops in the worker (future units). */
 export const FUTURE_QUEUES = [
   "grade.interview",
-  "screenshot.capture",
   "portfolio.crawl",
 ] as const;
 
 export const GRADE_RETRY_LIMIT = 4;
+export const SCREENSHOT_RETRY_LIMIT = 2;
 
 let boss: PgBoss | null = null;
 let starting: Promise<PgBoss> | null = null;
@@ -51,6 +52,11 @@ export async function ensureGradingQueues(b: PgBoss): Promise<void> {
     retryDelay: 15, // seconds; doubles per retry with jitter
     deadLetter: QUEUE_GRADE_SUBMISSION_DEAD,
   });
+  await b.createQueue(QUEUE_SCREENSHOT_CAPTURE, {
+    retryLimit: SCREENSHOT_RETRY_LIMIT,
+    retryBackoff: true,
+    retryDelay: 30,
+  });
   for (const name of FUTURE_QUEUES) {
     await b.createQueue(name);
   }
@@ -69,6 +75,25 @@ export async function enqueueGradeSubmission(submissionId: string): Promise<stri
   } catch (err) {
     console.error(
       `[queue] failed to enqueue grading for ${submissionId} (submission still recorded):`,
+      err instanceof Error ? err.message : err,
+    );
+    return null;
+  }
+}
+
+/**
+ * Best-effort enqueue of a screenshot-capture job (U11). A queue outage never
+ * fails the caller — the gallery card just shows its placeholder until an
+ * admin re-enqueues via POST /api/admin/screenshots.
+ */
+export async function enqueueScreenshotCapture(submissionId: string): Promise<string | null> {
+  try {
+    const b = await getBoss();
+    await ensureGradingQueues(b);
+    return await b.send(QUEUE_SCREENSHOT_CAPTURE, { submissionId });
+  } catch (err) {
+    console.error(
+      `[queue] failed to enqueue screenshot capture for ${submissionId}:`,
       err instanceof Error ? err.message : err,
     );
     return null;

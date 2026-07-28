@@ -85,6 +85,11 @@ export function keyForSignoff(teamId: string, filename: string): string {
   return `signoffs/${teamId}/${Date.now()}_${sanitizeFilename(filename)}`;
 }
 
+/** U11: worker-captured app screenshots for the gallery App wall. */
+export function keyForScreenshot(submissionId: string): string {
+  return `gallery/screenshots/${sanitizeFilename(submissionId)}.png`;
+}
+
 // ---------------------------------------------------------------------------
 // DI seam — tests inject fake signing/reading; prod uses the real SDK client
 // ---------------------------------------------------------------------------
@@ -101,6 +106,7 @@ export type S3TestOverrides = {
   configured?: boolean;
   sign?: (d: SignDescriptor) => string | Promise<string>;
   read?: (key: string, range: string) => Promise<Uint8Array>;
+  write?: (key: string, body: Uint8Array, contentType: string) => Promise<void>;
 };
 
 let overrides: S3TestOverrides | null = null;
@@ -192,6 +198,23 @@ export async function presignGet(
       : undefined,
     expiresIn: GET_TTL_SECONDS,
   });
+}
+
+/**
+ * Direct server-side PUT of a small object. WORKER-ONLY (U11 screenshot
+ * capture) — the app tier never proxies file bytes (CLAUDE.md invariant);
+ * browser uploads keep using presignPut.
+ */
+export async function putObject(
+  key: string,
+  body: Uint8Array,
+  contentType: string,
+): Promise<void> {
+  requireConfigured();
+  if (overrides?.write) return overrides.write(key, body, contentType);
+  await realClient().send(
+    new PutObjectCommand({ Bucket: envBucket()!, Key: key, Body: body, ContentType: contentType }),
+  );
 }
 
 /**

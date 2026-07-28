@@ -147,19 +147,30 @@ const REDIRECT_STATUSES = new Set([301, 302, 303, 307, 308]);
 
 const defaultLookup: LookupFn = (hostname) => dnsLookup(hostname, { all: true, verbatim: true });
 
-export async function safeFetch(
+async function cancelBody(res: Response): Promise<void> {
+  try {
+    await res.body?.cancel();
+  } catch {
+    /* already consumed/closed */
+  }
+}
+
+/**
+ * Shared policy loop: validates every hop, follows redirects manually, and
+ * returns the FINAL response with its body still readable — the caller must
+ * consume or cancel it. Redirect-hop bodies are always cancelled here.
+ */
+async function policyLoop(
   url: string,
-  options: SafeFetchOptions = {},
-): Promise<SafeFetchResult> {
+  options: SafeFetchOptions,
+  signal: AbortSignal,
+): Promise<{ res: Response; finalUrl: string }> {
   const {
     method = "GET",
-    timeoutMs = DEFAULT_TIMEOUT_MS,
     maxRedirects = MAX_REDIRECTS,
     lookup = defaultLookup,
     fetchImpl = fetch,
   } = options;
-  // maxBytes is accepted for API shape; bodies are always discarded below.
-  void (options.maxBytes ?? DEFAULT_MAX_BYTES);
   if (options.redirect !== undefined && options.redirect !== "follow-checked") {
     throw new SafeFetchBlockedError(`Unsupported redirect mode: ${options.redirect}`);
   }
@@ -171,36 +182,112 @@ export async function safeFetch(
     throw new SafeFetchBlockedError(`Invalid URL: ${url}`);
   }
 
+  for (let hop = 0; ; hop++) {
+    await assertUrlAllowed(current, lookup);
+    const res = await fetchImpl(current.toString(), {
+      method,
+      redirect: "manual",
+      signal,
+    });
+    const location = res.headers.get("location");
+    if (REDIRECT_STATUSES.has(res.status) && location) {
+      await cancelBody(res);
+      if (hop >= maxRedirects) {
+        throw new SafeFetchBlockedError(`Too many redirects (max ${maxRedirects})`);
+      }
+      try {
+        current = new URL(location, current);
+      } catch {
+        throw new SafeFetchBlockedError(`Invalid redirect location: ${location}`);
+      }
+      continue; // next hop is re-validated at the top of the loop
+    }
+    return { res, finalUrl: current.toString() };
+  }
+}
+
+export async function safeFetch(
+  url: string,
+  options: SafeFetchOptions = {},
+): Promise<SafeFetchResult> {
+  const timeoutMs = options.timeoutMs ?? DEFAULT_TIMEOUT_MS;
+  // maxBytes is accepted for API shape; bodies are always discarded below.
+  void (options.maxBytes ?? DEFAULT_MAX_BYTES);
+
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
   try {
-    for (let hop = 0; ; hop++) {
-      await assertUrlAllowed(current, lookup);
-      const res = await fetchImpl(current.toString(), {
-        method,
-        redirect: "manual",
-        signal: controller.signal,
-      });
-      // We never return bodies; cancel to release the connection.
-      try {
-        await res.body?.cancel();
-      } catch {
-        /* already consumed/closed */
-      }
-      const location = res.headers.get("location");
-      if (REDIRECT_STATUSES.has(res.status) && location) {
-        if (hop >= maxRedirects) {
-          throw new SafeFetchBlockedError(`Too many redirects (max ${maxRedirects})`);
-        }
-        try {
-          current = new URL(location, current);
-        } catch {
-          throw new SafeFetchBlockedError(`Invalid redirect location: ${location}`);
-        }
-        continue; // next hop is re-validated at the top of the loop
-      }
-      return { ok: res.ok, status: res.status, finalUrl: current.toString() };
+    const { res, finalUrl } = await policyLoop(url, options, controller.signal);
+    // We never return bodies; cancel to release the connection.
+    await cancelBody(res);
+    return { ok: res.ok, status: res.status, finalUrl };
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+export interface SafeFetchBytesResult extends SafeFetchResult {
+  contentType: string | null;
+  body: Uint8Array;
+  truncated: boolean;
+}
+
+/**
+ * Same policy as safeFetch, but returns the response body capped at maxBytes
+ * (U11: og:image fallback needs actual HTML/image bytes). The read is
+ * truncated — never buffered past the cap — and non-2xx responses return an
+ * empty body.
+ */
+export async function safeFetchBytes(
+  url: string,
+  options: SafeFetchOptions = {},
+): Promise<SafeFetchBytesResult> {
+  const timeoutMs = options.timeoutMs ?? DEFAULT_TIMEOUT_MS;
+  const maxBytes = options.maxBytes ?? DEFAULT_MAX_BYTES;
+
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const { res, finalUrl } = await policyLoop(url, options, controller.signal);
+    const base = {
+      ok: res.ok,
+      status: res.status,
+      finalUrl,
+      contentType: res.headers.get("content-type"),
+    };
+    if (!res.ok || !res.body) {
+      await cancelBody(res);
+      return { ...base, body: new Uint8Array(0), truncated: false };
     }
+    const reader = res.body.getReader();
+    const chunks: Uint8Array[] = [];
+    let total = 0;
+    let truncated = false;
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      if (!value) continue;
+      chunks.push(value);
+      total += value.length;
+      if (total >= maxBytes) {
+        truncated = total > maxBytes;
+        try {
+          await reader.cancel();
+        } catch {
+          /* stream already closed */
+        }
+        break;
+      }
+    }
+    const body = new Uint8Array(Math.min(total, maxBytes));
+    let offset = 0;
+    for (const chunk of chunks) {
+      const take = Math.min(chunk.length, body.length - offset);
+      body.set(chunk.subarray(0, take), offset);
+      offset += take;
+      if (offset >= body.length) break;
+    }
+    return { ...base, body, truncated };
   } finally {
     clearTimeout(timer);
   }

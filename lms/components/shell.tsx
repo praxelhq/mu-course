@@ -25,6 +25,7 @@ const INSTRUCTOR_LINKS: NavLink[] = [
   { label: "Unlock Console", href: "/instructor/unlocks" },
   { label: "Materials", href: "/instructor/materials" },
   { label: "Matrix", href: "/instructor/matrix" },
+  { label: "Galleries", href: "/instructor/galleries" },
   { label: "Review Queue", href: "/instructor/review" },
   { label: "Interviews", href: "/instructor/interviews" },
   { label: "Exports", href: "/instructor/exports" },
