@@ -304,6 +304,24 @@ model Gate {
   @@index([sectionId])
 }
 
+// Per-student reopen: a closed/locked target made available to one student
+// (e.g. a late resubmission window). Resolution honors an unexpired exception
+// over both the target's own gate and its parent session gate — the grant is
+// the instructor's explicit override. Grants are audited via AuditLog.
+model GateException {
+  id         String     @id @default(cuid())
+  targetType GateTarget
+  targetId   String
+  sectionId  String
+  userId     String
+  expiresAt  DateTime?
+  grantedBy  String
+  createdAt  DateTime   @default(now())
+
+  @@unique([targetType, targetId, userId])
+  @@index([userId])
+}
+
 model AuditLog {
   id         String   @id @default(cuid())
   actorId    String?
