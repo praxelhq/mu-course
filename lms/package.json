@@ -13,6 +13,7 @@
     "test": "vitest run",
     "seed": "tsx prisma/seed.ts",
     "eval:grading": "tsx --env-file-if-exists=.env scripts/eval-grading.ts",
+    "interview:simulate": "tsx --env-file-if-exists=.env scripts/interview-simulate.ts",
     "worker:dev": "tsx --env-file-if-exists=.env worker/index.ts"
   },
   "dependencies": {
@@ -21,6 +22,8 @@
     "@aws-sdk/s3-request-presigner": "^3.1096.0",
     "@clerk/nextjs": "^7.6.2",
     "@prisma/client": "^6.19.3",
+    "livekit-client": "^2.21.0",
+    "livekit-server-sdk": "^2.17.0",
     "next": "16.2.12",
     "pdf-parse": "^2.4.5",
     "pg-boss": "^12.26.3",

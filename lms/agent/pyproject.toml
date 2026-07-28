@@ -1,11 +1,12 @@
 [project]
 name = "praxel-forge-agent"
 version = "0.1.0"
-description = "Praxel LMS voice interview agent (LiveKit worker). Skeleton — pipeline implemented in U13."
+description = "Praxel LMS voice interview agent (LiveKit worker)."
 requires-python = ">=3.11"
 dependencies = [
-    # STT: Deepgram, LLM: Gemini (google plugin), TTS: ElevenLabs
-    "livekit-agents[deepgram,google,elevenlabs]>=1.0,<2",
+    # STT: Deepgram, LLM: Gemini (google plugin), TTS: ElevenLabs,
+    # VAD: Silero (turn detection for the voice loop)
+    "livekit-agents[deepgram,google,elevenlabs,silero]>=1.0,<2",
     # Calls back into the LMS internal endpoints (AGENT_INTERNAL_TOKEN + APP_URL)
     "httpx>=0.27",
 ]

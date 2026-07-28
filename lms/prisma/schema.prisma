@@ -190,6 +190,9 @@ model Interview {
   costUsd           Float           @default(0)
   createdAt         DateTime        @default(now())
   completedAt       DateTime?
+  // U13: realtime-room heartbeat — refreshed by state polls and agent turn
+  // posts; the ~30-room concurrency guard only counts rooms seen recently.
+  lastSeenAt        DateTime?
 
   turns InterviewTurn[]
 

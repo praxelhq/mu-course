@@ -17,6 +17,11 @@ const TOOLS = [
     body: "Assignment types: submission schemas and rubrics, editable without a deploy.",
   },
   {
+    href: "/admin/interviews",
+    title: "Interviews",
+    body: "Live realtime rooms, waiting queue, provider spend, and recent sessions.",
+  },
+  {
     href: "/admin/costs",
     title: "Costs",
     body: "AI spend by feature and provider — grading, interviews, crawls.",

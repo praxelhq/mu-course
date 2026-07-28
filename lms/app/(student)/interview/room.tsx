@@ -2,12 +2,20 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Button, Card } from "@/components/ui";
+import { RealtimeRoom } from "./realtime-room";
 
-// U12 — the turn-based interview room (fallback-first transport over plain
-// HTTPS). Consent gate → question (text always; audio when TTS ran) →
-// MediaRecorder answer with level meter + re-record → upload → calm
-// "thinking" state (5–15s per turn is normal) → next question → … → done.
-// Typed answers appear only in dev text-mode or when no microphone exists.
+// U12/U13 — the interview room. One orchestrator (InterviewRoom) owns consent
+// and transport selection; the SERVER decides which transport runs:
+//
+//   consent → POST /api/interview/token
+//     200 {token,...}            → realtime LiveKit room (RealtimeRoom)
+//     200 {turnbased:true}       → resume the turn-based loop (after fallback)
+//     429 {waiting:true}         → waiting room, retry every 10s
+//     503 {realtimeUnavailable}  → turn-based loop (U12) — zero-key local dev
+//
+// If the realtime room fails to connect (~8s), drops, or degrades, the client
+// POSTs /api/interview/fallback and continues the SAME interview in the
+// turn-based loop with a calm banner — transcript and attempt intact.
 
 type Turn = { turnNo: number; speaker: string; text: string; audioS3Key: string | null };
 type Pending = { turnNo: number; text: string; audioS3Key: string | null } | null;
@@ -17,8 +25,6 @@ type State = {
   turns: Turn[];
   pendingQuestion: Pending;
 };
-
-type Phase = "entry" | "starting" | "live" | "thinking" | "completed" | "error";
 
 async function jsonFetch<T>(url: string, init?: RequestInit): Promise<T> {
   const res = await fetch(url, {
@@ -30,6 +36,46 @@ async function jsonFetch<T>(url: string, init?: RequestInit): Promise<T> {
   return body;
 }
 
+function CompletedCard() {
+  return (
+    <Card>
+      <h2 style={{ fontFamily: "var(--font-fraunces)", fontSize: "1.25rem", margin: "0 0 0.75rem" }}>
+        That&apos;s a wrap — thank you
+      </h2>
+      <p style={{ margin: 0, lineHeight: 1.6 }}>
+        Your interview is recorded. Grading takes a while: your responses go through the
+        grading AI and then your instructor. You&apos;ll get a notification when there&apos;s
+        news — nothing more for you to do here.
+      </p>
+    </Card>
+  );
+}
+
+function FallbackBanner({ text }: { text: string }) {
+  return (
+    <Card>
+      <p style={{ margin: 0, lineHeight: 1.6, color: "var(--charcoal)" }}>{text}</p>
+    </Card>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Orchestrator
+// ---------------------------------------------------------------------------
+
+type Mode = "entry" | "requesting" | "waiting" | "realtime" | "turnbased" | "done";
+
+type TokenResponse = {
+  token?: string;
+  url?: string;
+  interviewId?: string;
+  turnbased?: boolean;
+  waiting?: boolean;
+  activeRooms?: number;
+  realtimeUnavailable?: boolean;
+  error?: string;
+};
+
 export function InterviewRoom({
   canStart,
   canResume,
@@ -39,7 +85,147 @@ export function InterviewRoom({
   canResume: boolean;
   textMode: boolean;
 }) {
-  const [phase, setPhase] = useState<Phase>("entry");
+  const [mode, setMode] = useState<Mode>("entry");
+  const [banner, setBanner] = useState<string | null>(null);
+  const [rt, setRt] = useState<{ url: string; token: string; interviewId: string } | null>(null);
+
+  const requestRealtime = useCallback(async (silent = false) => {
+    if (!silent) setMode("requesting");
+    try {
+      const res = await fetch("/api/interview/token", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+      });
+      const body = (await res.json().catch(() => ({}))) as TokenResponse;
+      if (res.ok && body.token && body.url && body.interviewId) {
+        setRt({ url: body.url, token: body.token, interviewId: body.interviewId });
+        setMode("realtime");
+        return;
+      }
+      if (res.ok && body.turnbased) {
+        setMode("turnbased");
+        return;
+      }
+      if (res.status === 429 && body.waiting) {
+        setMode("waiting");
+        return;
+      }
+      // 503 realtimeUnavailable — or any guard error, which the turn-based
+      // start route reports with a proper message. Either way: turn-based.
+      setMode("turnbased");
+    } catch {
+      setMode("turnbased");
+    }
+  }, []);
+
+  // Waiting room: quietly retry every 10s until a room frees up.
+  useEffect(() => {
+    if (mode !== "waiting") return;
+    const t = setInterval(() => void requestRealtime(true), 10_000);
+    return () => clearInterval(t);
+  }, [mode, requestRealtime]);
+
+  const fallback = useCallback(
+    async (reason: string) => {
+      const id = rt?.interviewId;
+      if (id) {
+        try {
+          await jsonFetch("/api/interview/fallback", {
+            method: "POST",
+            body: JSON.stringify({ interviewId: id, reason }),
+          });
+        } catch {
+          // The flip is idempotent server-side; the turn-based loop resumes
+          // the live interview either way.
+        }
+      }
+      setBanner("Connection changed — continuing in step-by-step mode.");
+      setMode("turnbased");
+    },
+    [rt],
+  );
+
+  if (mode === "entry" || mode === "requesting") {
+    if (!canStart && !canResume) return null;
+    return (
+      <Card>
+        <h2 style={{ fontFamily: "var(--font-fraunces)", fontSize: "1.25rem", margin: "0 0 0.75rem" }}>
+          Before you begin
+        </h2>
+        <p style={{ margin: "0 0 0.75rem", lineHeight: 1.6 }}>
+          This is a short one-on-one conversation with our AI interviewer — around 10 to 12
+          minutes, 8 to 10 questions about your industry and the work you have submitted this
+          term. It is relaxed and adaptive; there are no trick questions.
+        </p>
+        <p style={{ margin: "0 0 0.75rem", lineHeight: 1.6, color: "var(--charcoal)" }}>
+          <strong>What we record and why:</strong> your spoken answers (audio) and a written
+          transcript are recorded and stored securely, solely for assessing this course
+          component. Your instructor can review them. Recordings are retained for the duration
+          of the course and the review period that follows, then handled per the programme&apos;s
+          data policy. Scores never appear on your public profile.
+        </p>
+        <p style={{ margin: "0 0 1.25rem", lineHeight: 1.6, color: "var(--charcoal)" }}>
+          Pressing Begin is your consent to this recording. Your microphone is only accessed
+          after you consent.
+        </p>
+        <Button onClick={() => void requestRealtime()} disabled={mode === "requesting"}>
+          {mode === "requesting"
+            ? "Setting up your interview…"
+            : canResume
+              ? "Resume interview (I consent)"
+              : "Begin interview (I consent)"}
+        </Button>
+      </Card>
+    );
+  }
+
+  if (mode === "waiting") {
+    return (
+      <Card>
+        <h2 style={{ fontFamily: "var(--font-fraunces)", fontSize: "1.25rem", margin: "0 0 0.75rem" }}>
+          You&apos;re in the queue
+        </h2>
+        <p style={{ margin: 0, lineHeight: 1.6, color: "var(--charcoal)" }}>
+          All interview rooms are busy right now. Keep this page open — we check for a free
+          room every few seconds and connect you automatically. Your attempt is safe; nothing
+          starts until you&apos;re in the room.
+        </p>
+      </Card>
+    );
+  }
+
+  if (mode === "done") {
+    return <CompletedCard />;
+  }
+
+  if (mode === "realtime" && rt) {
+    return (
+      <RealtimeRoom
+        url={rt.url}
+        token={rt.token}
+        interviewId={rt.interviewId}
+        onFallback={(reason) => void fallback(reason)}
+        onCompleted={() => setMode("done")}
+      />
+    );
+  }
+
+  return <TurnBasedRoom textMode={textMode} banner={banner} />;
+}
+
+// ---------------------------------------------------------------------------
+// Turn-based room (U12) — fallback-first transport over plain HTTPS.
+// Starts (or resumes — the start route is resume-safe) on mount; consent was
+// already collected by the orchestrator. Question (text always; audio when
+// TTS ran) → MediaRecorder answer with level meter + re-record → upload →
+// calm "thinking" state → next question → … → done. Typed answers appear in
+// dev text-mode or when no microphone exists.
+// ---------------------------------------------------------------------------
+
+type Phase = "starting" | "live" | "thinking" | "completed" | "error";
+
+function TurnBasedRoom({ textMode, banner }: { textMode: boolean; banner: string | null }) {
+  const [phase, setPhase] = useState<Phase>("starting");
   const [error, setError] = useState<string | null>(null);
   const [state, setState] = useState<State | null>(null);
   const [questionAudioUrl, setQuestionAudioUrl] = useState<string | null>(null);
@@ -107,6 +293,14 @@ export function InterviewRoom({
     }
   }, [applyState]);
 
+  // Consent already happened in the orchestrator — start (or resume) at once.
+  const begunRef = useRef(false);
+  useEffect(() => {
+    if (begunRef.current) return;
+    begunRef.current = true;
+    void begin();
+  }, [begin]);
+
   const startRecording = useCallback(async () => {
     setClip(null);
     try {
@@ -153,7 +347,7 @@ export function InterviewRoom({
   }, [stopStream]);
 
   const handleAnswerResponse = useCallback(
-    async (res: { done: boolean; question?: { turnNo: number; question: string; audioS3Key: string | null } }) => {
+    async (res: { done: boolean }) => {
       if (!state) return;
       if (res.done) {
         setPhase("completed");
@@ -221,56 +415,26 @@ export function InterviewRoom({
   // Render
   // ---------------------------------------------------------------------
 
-  if (phase === "entry" || phase === "starting" || phase === "error") {
-    if (!canStart && !canResume) return null;
+  if (phase === "starting" || phase === "error") {
     return (
-      <Card>
-        <h2 style={{ fontFamily: "var(--font-fraunces)", fontSize: "1.25rem", margin: "0 0 0.75rem" }}>
-          Before you begin
-        </h2>
-        <p style={{ margin: "0 0 0.75rem", lineHeight: 1.6 }}>
-          This is a short one-on-one conversation with our AI interviewer — around 10 to 12
-          minutes, 8 to 10 questions about your industry and the work you have submitted this
-          term. It is relaxed and adaptive; there are no trick questions.
-        </p>
-        <p style={{ margin: "0 0 0.75rem", lineHeight: 1.6, color: "var(--charcoal)" }}>
-          <strong>What we record and why:</strong> your spoken answers (audio) and a written
-          transcript are recorded and stored securely, solely for assessing this course
-          component. Your instructor can review them. Recordings are retained for the duration
-          of the course and the review period that follows, then handled per the programme&apos;s
-          data policy. Scores never appear on your public profile.
-        </p>
-        <p style={{ margin: "0 0 1.25rem", lineHeight: 1.6, color: "var(--charcoal)" }}>
-          Pressing Begin is your consent to this recording. Your microphone is only accessed
-          after you consent.
-        </p>
-        {error && (
-          <p style={{ color: "#8a3b1c", margin: "0 0 1rem" }}>{error}</p>
-        )}
-        <Button onClick={begin} disabled={phase === "starting"}>
-          {phase === "starting"
-            ? "Setting up your interview…"
-            : canResume
-              ? "Resume interview (I consent)"
-              : "Begin interview (I consent)"}
-        </Button>
-      </Card>
+      <div style={{ display: "grid", gap: "1.5rem" }}>
+        {banner && <FallbackBanner text={banner} />}
+        <Card>
+          {phase === "starting" ? (
+            <p style={{ margin: 0, color: "var(--charcoal)" }}>Setting up your interview…</p>
+          ) : (
+            <div>
+              <p style={{ color: "#8a3b1c", margin: "0 0 1rem" }}>{error}</p>
+              <Button onClick={begin}>Try again</Button>
+            </div>
+          )}
+        </Card>
+      </div>
     );
   }
 
   if (phase === "completed") {
-    return (
-      <Card>
-        <h2 style={{ fontFamily: "var(--font-fraunces)", fontSize: "1.25rem", margin: "0 0 0.75rem" }}>
-          That&apos;s a wrap — thank you
-        </h2>
-        <p style={{ margin: 0, lineHeight: 1.6 }}>
-          Your interview is recorded. Grading takes a while: your responses go through the
-          grading AI and then your instructor. You&apos;ll get a notification when there&apos;s
-          news — nothing more for you to do here.
-        </p>
-      </Card>
-    );
+    return <CompletedCard />;
   }
 
   const question = state?.pendingQuestion ?? null;
@@ -278,6 +442,7 @@ export function InterviewRoom({
 
   return (
     <div style={{ display: "grid", gap: "1.5rem" }}>
+      {banner && <FallbackBanner text={banner} />}
       <Card>
         {phase === "thinking" ? (
           <div>
