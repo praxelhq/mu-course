@@ -101,6 +101,20 @@ protected routes correctly redirect unauthenticated visitors.
    - If it is still `0/5` when you wake and you need students in immediately, tell me and I
      will switch the app to a configuration that does not depend on the custom domain.
 
+   **Ruled out as causes** (checked overnight, all clean): the Clerk secret key works
+   (Backend API returns 200), Clerk's own API reports exactly the CNAME targets that were
+   created, all five records resolve correctly from public DNS, and the zone has no CAA
+   record, no DNSSEC and no wildcard. Nothing on our side is wrong — it is Clerk's DNS check.
+
+   **Ready fallback if Clerk stays unverified — Clerk proxy mode.** Clerk can serve its
+   Frontend API through *our* domain instead of `clerk.lms.praxel.in`, which removes the
+   dependency on Clerk's DNS verification entirely. It needs: a proxy URL set in the Clerk
+   dashboard (Domains → Proxy configuration), plus `proxyUrl` passed to `ClerkProvider` and
+   `clerkMiddleware`, and a route that forwards to Clerk's Frontend API. This can run on the
+   working Railway URL, so it does not wait on either certificate. Roughly 30 minutes of work
+   — say the word and I will do it. I did not deploy it unprompted because it changes the
+   auth path and should be a deliberate decision.
+
 2. **`lms.praxel.in` TLS certificate.** DNS is correct at the authoritative nameserver, but
    the record's TTL is 4 hours, so public resolvers (and Railway's validator) may still be
    serving a stale value for a while. Until Railway issues the certificate, use the
