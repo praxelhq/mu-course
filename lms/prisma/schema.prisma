@@ -259,7 +259,9 @@ model QuizAttempt {
   submittedAt DateTime @default(now())
 
   @@index([userId])
-  @@index([quizId, userId])
+  // One attempt per student per quiz — the submit path relies on this for
+  // idempotency (double-submit returns the existing result, no pre-check race).
+  @@unique([quizId, userId])
 }
 
 model PeerReview {

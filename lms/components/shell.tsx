@@ -14,6 +14,7 @@ const STUDENT_LINKS: NavLink[] = [
   { label: "Dashboard", href: "/dashboard" },
   { label: "Sessions", href: "/sessions" },
   { label: "Assignments", href: "/assignments" },
+  { label: "Quizzes", href: "/quizzes" },
   { label: "Galleries", href: "/galleries" },
   { label: "Interview", href: "/interview" },
   { label: "Grades", href: "/grades" },
@@ -23,6 +24,7 @@ const STUDENT_LINKS: NavLink[] = [
 const INSTRUCTOR_LINKS: NavLink[] = [
   { label: "Dashboard", href: "/instructor" },
   { label: "Unlock Console", href: "/instructor/unlocks" },
+  { label: "Quizzes", href: "/instructor/quizzes" },
   { label: "Materials", href: "/instructor/materials" },
   { label: "Matrix", href: "/instructor/matrix" },
   { label: "Galleries", href: "/instructor/galleries" },

@@ -84,6 +84,47 @@ export async function resolveGate(ref: GateRef, now: Date = new Date()): Promise
   return false;
 }
 
+export type GateDecision = {
+  /** Full availability: own gate open AND parent open, or a live exception. */
+  available: boolean;
+  /** Effective state of the target's OWN gate (opensAt applied). */
+  ownState: GateState;
+  parentOpen: boolean;
+  /** When the own gate was last manually closed (grace-window decisions). */
+  closedAt: Date | null;
+};
+
+/**
+ * resolveGate plus the detail a caller needs for close-grace decisions
+ * (e.g. the quiz submit path accepts a submission for a short window after
+ * the gate closes). Keeps Gate.closedAt reads inside lib/gates.
+ */
+export async function resolveGateDetail(ref: GateRef, now: Date = new Date()): Promise<GateDecision> {
+  const { targetType, targetId, sectionId, parentSessionPageId, userId } = ref;
+  const keys = [{ targetType, targetId, sectionId }];
+  if (parentSessionPageId) {
+    keys.push({ targetType: "session", targetId: parentSessionPageId, sectionId });
+  }
+  const gates = await prisma.gate.findMany({
+    where: { OR: keys },
+    select: { targetType: true, targetId: true, state: true, opensAt: true, closedAt: true },
+  });
+  const own = gates.find((g) => g.targetType === targetType && g.targetId === targetId);
+  const parent = parentSessionPageId
+    ? gates.find((g) => g.targetType === "session" && g.targetId === parentSessionPageId)
+    : undefined;
+
+  const ownState = effectiveGateState(own ?? null, now);
+  const parentOpen = parentSessionPageId
+    ? effectiveGateState(parent ?? null, now) === "open"
+    : true;
+  let available = ownState === "open" && parentOpen;
+  if (!available && userId) {
+    available = await hasLiveException(targetType, targetId, userId, now);
+  }
+  return { available, ownState, parentOpen, closedAt: own?.closedAt ?? null };
+}
+
 /**
  * All of a student's unexpired exception targets as "targetType:targetId"
  * keys — one query, for hub pages that otherwise render from a resolveMany
