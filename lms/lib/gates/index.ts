@@ -84,6 +84,22 @@ export async function resolveGate(ref: GateRef, now: Date = new Date()): Promise
   return false;
 }
 
+/**
+ * All of a student's unexpired exception targets as "targetType:targetId"
+ * keys — one query, for hub pages that otherwise render from a resolveMany
+ * snapshot. Keeps GateException reads inside lib/gates (CLAUDE.md invariant).
+ */
+export async function liveExceptionTargets(
+  userId: string,
+  now: Date = new Date(),
+): Promise<Set<string>> {
+  const rows = await prisma.gateException.findMany({
+    where: { userId, OR: [{ expiresAt: null }, { expiresAt: { gt: now } }] },
+    select: { targetType: true, targetId: true },
+  });
+  return new Set(rows.map((r) => `${r.targetType}:${r.targetId}`));
+}
+
 export type SectionGateRow = {
   targetType: GateTarget;
   targetId: string;

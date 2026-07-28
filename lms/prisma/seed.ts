@@ -438,6 +438,13 @@ export async function main(): Promise<void> {
     gateAll("material", "mat_s3_labsheet", "open", T.s3);
     gateAll("material", "mat_s3_schema_stocks", "locked");
     gateAll("material", "mat_s3_stocks_sample", "locked");
+    // Link materials (launchers + pre-reads) of the open sessions 1–3 are
+    // open with their session — a missing gate row would mean locked.
+    for (const m of materials) {
+      if (m.kind === "link" && m.sessionNo <= 3) {
+        gateAll("material", m.id, "open", [T.s1, T.s2, T.s3][m.sessionNo - 1]);
+      }
+    }
     // Assignment gates: S2/S3 open, S4+ locked.
     gateAll("assignment", "asg_s2_skill", "open", T.s2);
     gateAll("assignment", "asg_s3_datamemo", "open", T.s3);

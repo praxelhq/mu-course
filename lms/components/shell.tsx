@@ -22,6 +22,7 @@ const STUDENT_LINKS: NavLink[] = [
 const INSTRUCTOR_LINKS: NavLink[] = [
   { label: "Dashboard", href: "/instructor" },
   { label: "Unlock Console", href: "/instructor/unlocks" },
+  { label: "Materials", href: "/instructor/materials" },
   { label: "Matrix", href: "/instructor/matrix" },
   { label: "Review Queue", href: "/instructor/review" },
   { label: "Interviews", href: "/instructor/interviews" },
