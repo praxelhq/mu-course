@@ -9,7 +9,11 @@ import {
   type SessionUserRow,
 } from "../lib/auth/session";
 import { decideRosterGate, flagOffRosterUser } from "../lib/auth/roster-gate";
-import { isTestLoginEnabled, TEST_LOGIN_COOKIE } from "../lib/auth/test-login";
+import {
+  assertTestLoginNotInProduction,
+  isTestLoginEnabled,
+  TEST_LOGIN_COOKIE,
+} from "../lib/auth/test-login";
 import { AuthError, withAuth } from "../lib/auth";
 
 const student: SessionUserRow = {
@@ -248,6 +252,20 @@ describe("test-login guard", () => {
     ).toBe(false);
   });
 
+  it("is enabled in production only when DEMO_MODE is also set", () => {
+    expect(
+      isTestLoginEnabled({
+        NODE_ENV: "production",
+        ENABLE_TEST_LOGIN: "1",
+        DEMO_MODE: "1",
+      }),
+    ).toBe(true);
+    // DEMO_MODE alone (without the login flag) never enables the backdoor.
+    expect(
+      isTestLoginEnabled({ NODE_ENV: "production", DEMO_MODE: "1" }),
+    ).toBe(false);
+  });
+
   it("is disabled when the flag is absent or false", () => {
     expect(isTestLoginEnabled({ NODE_ENV: "test" })).toBe(false);
     expect(
@@ -262,6 +280,25 @@ describe("test-login guard", () => {
     expect(
       isTestLoginEnabled({ NODE_ENV: "test", ENABLE_TEST_LOGIN: "true" }),
     ).toBe(true);
+  });
+
+  it("boot assertion rejects the flag in production without DEMO_MODE", () => {
+    expect(() =>
+      assertTestLoginNotInProduction({
+        NODE_ENV: "production",
+        ENABLE_TEST_LOGIN: "1",
+      }),
+    ).toThrow(/Refusing to start/);
+  });
+
+  it("boot assertion permits the flag in a flagged demo build", () => {
+    expect(() =>
+      assertTestLoginNotInProduction({
+        NODE_ENV: "production",
+        ENABLE_TEST_LOGIN: "1",
+        DEMO_MODE: "1",
+      }),
+    ).not.toThrow();
   });
 
   it("test-login route 404s when NODE_ENV=production is simulated", async () => {

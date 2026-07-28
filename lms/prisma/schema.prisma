@@ -6,6 +6,12 @@
 
 generator client {
   provider = "prisma-client-js"
+  // Pin the deploy targets explicitly: `native` alone misdetects the OpenSSL
+  // version on the node:22-slim (Debian bookworm, OpenSSL 3.0) base, so the
+  // standalone runtime cannot locate a matching query engine. Cover the
+  // container arches we build/run: amd64 (Railway) and arm64 (local Apple
+  // Silicon verification).
+  binaryTargets = ["native", "debian-openssl-3.0.x", "linux-arm64-openssl-3.0.x"]
 }
 
 datasource db {
