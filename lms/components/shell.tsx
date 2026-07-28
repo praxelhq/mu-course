@@ -13,6 +13,7 @@ import { ShellNav, type NavLink } from "./shell-nav";
 const STUDENT_LINKS: NavLink[] = [
   { label: "Dashboard", href: "/dashboard" },
   { label: "Sessions", href: "/sessions" },
+  { label: "Assignments", href: "/assignments" },
   { label: "Galleries", href: "/galleries" },
   { label: "Interview", href: "/interview" },
   { label: "Grades", href: "/grades" },

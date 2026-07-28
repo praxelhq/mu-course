@@ -895,6 +895,7 @@ export async function main(): Promise<void> {
     await prisma.$transaction(
       async (tx) => {
         // FK-safe delete order: children before parents.
+        await tx.gateException.deleteMany();
         await tx.notification.deleteMany();
         await tx.costLog.deleteMany();
         await tx.auditLog.deleteMany();

@@ -80,6 +80,11 @@ export function keyForSubmission(userId: string, submissionId: string, filename:
   return `submissions/${userId}/${submissionId}/${sanitizeFilename(filename)}`;
 }
 
+/** U8: per-team namespace for company sign-off evidence (U15 reads these). */
+export function keyForSignoff(teamId: string, filename: string): string {
+  return `signoffs/${teamId}/${Date.now()}_${sanitizeFilename(filename)}`;
+}
+
 // ---------------------------------------------------------------------------
 // DI seam — tests inject fake signing/reading; prod uses the real SDK client
 // ---------------------------------------------------------------------------
