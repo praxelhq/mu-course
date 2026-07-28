@@ -4,10 +4,10 @@
     "dockerfilePath": "Dockerfile.staging"
   },
   "deploy": {
-    "startCommand": "pnpm prisma migrate deploy && (pnpm seed || echo 'seed skipped') && pnpm exec next dev -p ${PORT:-3000} -H 0.0.0.0",
+    "startCommand": "pnpm prisma migrate deploy && ( (pnpm seed || echo 'seed failed') & ) && exec pnpm exec next dev -p ${PORT:-3000} -H 0.0.0.0",
     "healthcheckPath": "/api/health",
     "healthcheckTimeout": 300,
     "restartPolicyType": "ON_FAILURE",
-    "restartPolicyMaxRetries": 3
+    "restartPolicyMaxRetries": 2
   }
 }
