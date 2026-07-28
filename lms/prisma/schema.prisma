@@ -210,6 +210,19 @@ model InterviewTurn {
   @@unique([interviewId, turnNo])
 }
 
+// U12: an instructor-granted extra interview attempt. A student's first
+// interview needs no grant; any further startInterview consumes exactly one
+// unused grant (usedByInterviewId set transactionally) or is rejected 409.
+model InterviewRetake {
+  id                 String   @id @default(cuid())
+  userId             String
+  grantedBy          String
+  usedByInterviewId  String?
+  createdAt          DateTime @default(now())
+
+  @@index([userId])
+}
+
 model InterviewWindow {
   id        String   @id @default(cuid())
   sectionId String

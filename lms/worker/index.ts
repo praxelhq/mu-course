@@ -6,14 +6,18 @@ import { PgBoss } from "pg-boss";
 import {
   ensureGradingQueues,
   FUTURE_QUEUES,
+  QUEUE_GRADE_INTERVIEW,
+  QUEUE_GRADE_INTERVIEW_DEAD,
   QUEUE_GRADE_SUBMISSION,
   QUEUE_GRADE_SUBMISSION_DEAD,
   QUEUE_SCREENSHOT_CAPTURE,
 } from "../lib/queue";
 import { handleGradeSubmission } from "./jobs/grade-submission";
+import { handleGradeInterview } from "./jobs/grade-interview";
 import { handleScreenshotCapture } from "./jobs/screenshot-capture";
 
 type GradeJobData = { submissionId: string };
+type InterviewJobData = { interviewId: string };
 
 async function main() {
   const databaseUrl = process.env.DATABASE_URL;
@@ -63,6 +67,21 @@ async function main() {
     }
   );
 
+  // U12: interview grading — serial (shallow queue; one Anthropic call each),
+  // retries with backoff, dead-letters to grade.interview.dead (no consumer —
+  // same admin redrive story as submissions).
+  await boss.work<InterviewJobData>(
+    QUEUE_GRADE_INTERVIEW,
+    { batchSize: 1 },
+    async (jobs) => {
+      for (const job of jobs) {
+        console.log(`[interview-grading] job ${job.id} → interview ${job.data.interviewId}`);
+        await handleGradeInterview(job.data.interviewId);
+        console.log(`[interview-grading] job ${job.id} done`);
+      }
+    }
+  );
+
   // NOTE: no consumer is registered on grade.submission.dead — dead-lettered
   // jobs stay queued there so U16's admin view can list them (findJobs) and
   // redrive/regrade; consuming them here would mark them completed.
@@ -77,7 +96,7 @@ async function main() {
   }
 
   console.log(
-    `Worker started. grade.submission consumer up (concurrency ${concurrency}, retryBackoff on, dead letter → ${QUEUE_GRADE_SUBMISSION_DEAD}).`
+    `Worker started. grade.submission consumer up (concurrency ${concurrency}, retryBackoff on, dead letter → ${QUEUE_GRADE_SUBMISSION_DEAD}); grade.interview consumer up (dead letter → ${QUEUE_GRADE_INTERVIEW_DEAD}).`
   );
 
   const shutdown = async () => {

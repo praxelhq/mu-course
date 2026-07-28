@@ -7,10 +7,11 @@ import { PgBoss } from "pg-boss";
 export const QUEUE_GRADE_SUBMISSION = "grade.submission";
 export const QUEUE_GRADE_SUBMISSION_DEAD = "grade.submission.dead";
 export const QUEUE_SCREENSHOT_CAPTURE = "screenshot.capture"; // U11
+export const QUEUE_GRADE_INTERVIEW = "grade.interview"; // U12
+export const QUEUE_GRADE_INTERVIEW_DEAD = "grade.interview.dead";
 
 /** Registered as not-implemented-yet no-ops in the worker (future units). */
 export const FUTURE_QUEUES = [
-  "grade.interview",
   "portfolio.crawl",
 ] as const;
 
@@ -57,6 +58,14 @@ export async function ensureGradingQueues(b: PgBoss): Promise<void> {
     retryBackoff: true,
     retryDelay: 30,
   });
+  // U12: interview grading mirrors submission grading (retry → dead letter).
+  await b.createQueue(QUEUE_GRADE_INTERVIEW_DEAD);
+  await b.createQueue(QUEUE_GRADE_INTERVIEW, {
+    retryLimit: GRADE_RETRY_LIMIT,
+    retryBackoff: true,
+    retryDelay: 15,
+    deadLetter: QUEUE_GRADE_INTERVIEW_DEAD,
+  });
   for (const name of FUTURE_QUEUES) {
     await b.createQueue(name);
   }
@@ -75,6 +84,24 @@ export async function enqueueGradeSubmission(submissionId: string): Promise<stri
   } catch (err) {
     console.error(
       `[queue] failed to enqueue grading for ${submissionId} (submission still recorded):`,
+      err instanceof Error ? err.message : err,
+    );
+    return null;
+  }
+}
+
+/**
+ * Best-effort enqueue of interview grading (U12). Completion itself must
+ * never fail on a queue outage — an admin can re-enqueue.
+ */
+export async function enqueueGradeInterview(interviewId: string): Promise<string | null> {
+  try {
+    const b = await getBoss();
+    await ensureGradingQueues(b);
+    return await b.send(QUEUE_GRADE_INTERVIEW, { interviewId });
+  } catch (err) {
+    console.error(
+      `[queue] failed to enqueue interview grading for ${interviewId} (interview still completed):`,
       err instanceof Error ? err.message : err,
     );
     return null;

@@ -41,7 +41,11 @@ export const UPLOAD_TYPE_CAPS: Record<string, number> = {
   "audio/mp4": 50 * MB,
   "audio/wav": 50 * MB,
   "audio/ogg": 50 * MB,
+  "audio/webm": 25 * MB, // U12 MediaRecorder answer clips
 };
+
+/** U12: interview answer clips are capped tighter than general audio. */
+export const MAX_INTERVIEW_AUDIO_BYTES = 25 * MB;
 
 export class S3NotConfiguredError extends Error {
   constructor() {
@@ -89,6 +93,28 @@ export function keyForSignoff(teamId: string, filename: string): string {
 export function keyForScreenshot(submissionId: string): string {
   return `gallery/screenshots/${sanitizeFilename(submissionId)}.png`;
 }
+
+/**
+ * U12: interview audio. Agent questions are q{turnNo}.mp3 (TTS output, written
+ * server-side); student answers are a{turnNo}.{webm|mp3|m4a} (browser upload
+ * via presigned PUT).
+ */
+export function keyForInterviewAudio(
+  interviewId: string,
+  kind: "q" | "a",
+  turnNo: number,
+  ext: string = "mp3",
+): string {
+  const safeExt = ext.replace(/[^a-z0-9]/gi, "").toLowerCase() || "mp3";
+  return `interviews/${sanitizeFilename(interviewId)}/${kind}${turnNo}.${safeExt}`;
+}
+
+/** File extension for an allowed interview answer content type. */
+export const INTERVIEW_AUDIO_EXTENSIONS: Record<string, string> = {
+  "audio/webm": "webm",
+  "audio/mpeg": "mp3",
+  "audio/mp4": "m4a",
+};
 
 // ---------------------------------------------------------------------------
 // DI seam — tests inject fake signing/reading; prod uses the real SDK client
