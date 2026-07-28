@@ -10,3 +10,7 @@ docs/build
 agent/__pycache__
 agent/.venv
 !Dockerfile.staging
+# The images Railway actually builds must stay IN the context — `Dockerfile.*`
+# above would otherwise hide them and the build is rejected before it starts.
+!Dockerfile.web
+!Dockerfile.worker
