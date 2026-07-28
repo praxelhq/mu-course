@@ -5,7 +5,7 @@ import { parseSubmissionSchema } from "@/lib/submission-schema";
 import { presignGet, s3Configured } from "@/lib/s3";
 import { Card, Eyebrow, StatusChip } from "@/components/ui";
 
-// U10 — full submission detail for instructor review: every field, files
+// Full submission detail for instructor review: every field, files
 // (presigned GET links, gracefully disabled when storage is unconfigured),
 // the version history, each grade with its promptLog viewer, and the
 // AuditLog trail. Instructor-scoped by the /instructor layout

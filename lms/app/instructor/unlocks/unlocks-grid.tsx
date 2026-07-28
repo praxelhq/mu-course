@@ -505,18 +505,10 @@ function ExceptionsPanel({
 
   // Initial load (the component remounts per target via its key prop).
   useEffect(() => {
-    let cancelled = false;
     (async () => {
-      const res = await fetch(
-        `/api/gates/exception?targetType=${target.targetType}&targetId=${target.targetId}`,
-        { cache: "no-store" },
-      );
-      if (res.ok && !cancelled) setList((await res.json()).exceptions);
+      await load();
     })().catch(() => {});
-    return () => {
-      cancelled = true;
-    };
-  }, [target]);
+  }, [load]);
 
   async function grant() {
     if (!email) return;

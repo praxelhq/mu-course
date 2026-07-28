@@ -1,15 +1,10 @@
 import { randomUUID } from "node:crypto";
 import { z } from "zod";
 import { withAuth } from "@/lib/auth";
-import {
-  S3NotConfiguredError,
-  UploadRejectedError,
-  keyForSubmission,
-  presignPut,
-} from "@/lib/s3";
+import { keyForSubmission, presignPut, s3ErrorResponse } from "@/lib/s3";
 import { GateClosedError, assertAssignmentOpen } from "@/lib/submissions";
 
-// U8 — student submission uploads, step 1: presigned PUT scoped to the
+// Student submission uploads, step 1: presigned PUT scoped to the
 // student's own namespace (submissions/{userId}/{draftId}/{filename}).
 // The client generates one draftId (uuid) per submit attempt so a
 // multi-file submission groups under one prefix; the final POST /api/
@@ -43,12 +38,8 @@ export const POST = withAuth(async (req, { user }) => {
     if (err instanceof GateClosedError) {
       return Response.json({ error: err.message }, { status: 409 });
     }
-    if (err instanceof UploadRejectedError) {
-      return Response.json({ error: err.message }, { status: err.status });
-    }
-    if (err instanceof S3NotConfiguredError) {
-      return Response.json({ error: "Storage not configured" }, { status: 503 });
-    }
+    const res = s3ErrorResponse(err);
+    if (res) return res;
     throw err;
   }
 });

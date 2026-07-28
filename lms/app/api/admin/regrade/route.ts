@@ -3,7 +3,7 @@ import { withAuth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { enqueueGradeSubmission } from "@/lib/queue";
 
-// U9 — admin re-enqueue of a grading job. Covers dead-letter recovery (a job
+// Admin re-enqueue of a grading job. Covers dead-letter recovery (a job
 // that exhausted retries left the submission in 'grading') and re-grading a
 // 'graded' submission after a rubric change. Finalised grades are immutable —
 // regrade is refused (409).

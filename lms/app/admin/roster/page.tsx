@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { AuthError, requireRole } from "@/lib/auth";
 import { prisma } from "@/lib/db";
-import { Card, Eyebrow } from "@/components/ui";
+import { Card, Eyebrow, Td, Th } from "@/components/ui";
 import { RosterUploader } from "./uploader";
 
 export const dynamic = "force-dynamic";
@@ -39,17 +39,17 @@ export default async function AdminRosterPage() {
         <table style={{ width: "100%", borderCollapse: "collapse" }}>
           <thead>
             <tr>
-              <th style={th}>Section</th>
-              <th style={{ ...th, textAlign: "right" }}>Students</th>
+              <Th>Section</Th>
+              <Th style={{ textAlign: "right" }}>Students</Th>
             </tr>
           </thead>
           <tbody>
             {sections.map((s) => (
               <tr key={s.id}>
-                <td style={td}>{s.name}</td>
-                <td style={{ ...td, textAlign: "right", fontFamily: "var(--font-geist-mono)" }}>
+                <Td style={{ padding: "0.625rem 0" }}>{s.name}</Td>
+                <Td style={{ padding: "0.625rem 0", textAlign: "right", fontFamily: "var(--font-geist-mono)" }}>
                   {studentCount(s.id)}
-                </td>
+                </Td>
               </tr>
             ))}
           </tbody>
@@ -64,19 +64,3 @@ export default async function AdminRosterPage() {
   );
 }
 
-const th: React.CSSProperties = {
-  textAlign: "left",
-  borderBottom: "1px solid var(--sand)",
-  padding: "0.5rem 0",
-  fontFamily: "var(--font-geist-mono)",
-  fontSize: "0.75rem",
-  letterSpacing: "0.08em",
-  textTransform: "uppercase",
-  color: "var(--clay)",
-  fontWeight: 400,
-};
-
-const td: React.CSSProperties = {
-  borderBottom: "1px solid var(--sand)",
-  padding: "0.625rem 0",
-};

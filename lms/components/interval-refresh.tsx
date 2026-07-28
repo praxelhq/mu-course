@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-// U13 — tiny generic auto-refresh: router.refresh() on an interval, paused
+// Tiny generic auto-refresh: router.refresh() on an interval, paused
 // while the tab is hidden (same visibility discipline as use-gate-poll, which
 // stays gate-specific). Mount it inside any server-component page that should
 // stay live, e.g. the admin interviews meter.

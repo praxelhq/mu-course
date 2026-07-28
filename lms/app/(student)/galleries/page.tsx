@@ -7,7 +7,7 @@ import {
   WallTabs,
 } from "@/components/gallery-walls";
 
-// U11 — login-gated cohort galleries (auth via the (student) layout's
+// Login-gated cohort galleries (auth via the (student) layout's
 // requireUser; deliberately CROSS-SECTION: every student sees every
 // section's walls). Grades never appear here — getGalleryWalls is the only
 // data source and its projection excludes them by construction.

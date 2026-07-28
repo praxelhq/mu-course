@@ -3,7 +3,7 @@ import { parseSubmissionSchema } from "@/lib/submission-schema";
 import { Eyebrow } from "@/components/ui";
 import { TypesEditor, type EditableType } from "./types-editor";
 
-// U8 — admin assignment-type editor. Artifact kinds are AssignmentType ROWS,
+// Admin assignment-type editor. Artifact kinds are AssignmentType ROWS,
 // not code (CLAUDE.md invariant): creating a type here yields a working
 // submit form with zero code changes — the structured field-list editor is
 // the whole "add an artifact kind" operation.

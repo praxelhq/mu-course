@@ -2,7 +2,7 @@ import type { SubmissionStatus } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { toCsv } from "@/lib/csv-export";
 
-// U8 — instructor section matrix: rows = the section's students, columns =
+// Instructor section matrix: rows = the section's students, columns =
 // assignments, cell = the latest-version submission status. ONE batched
 // submission query (no N+1): every submission by a section student or a
 // section team, reduced in memory. Team submissions count for every member.

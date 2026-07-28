@@ -2,7 +2,7 @@ import type { Prisma, SubmissionStatus } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { reviewThresholdFrom } from "@/lib/ai/grading";
 
-// U10 — human-oversight core, testable against the seed:
+// Human-oversight core, testable against the seed:
 //   getReviewQueue     → provisional grades needing review (low confidence,
 //                        flags, and the DYNAMIC top/bottom-5% percentile
 //                        outliers — computed here at render time, never at
@@ -212,7 +212,8 @@ export async function getReviewQueue(
   return items;
 }
 
-function parseRubricScores(json: Prisma.JsonValue): RubricScoreMap {
+/** Grade.rubricScores JSON → per-dimension {score, rationale} map (defensive). */
+export function parseRubricScores(json: Prisma.JsonValue): RubricScoreMap {
   if (json === null || typeof json !== "object" || Array.isArray(json)) return {};
   const out: RubricScoreMap = {};
   for (const [key, value] of Object.entries(json as Record<string, unknown>)) {

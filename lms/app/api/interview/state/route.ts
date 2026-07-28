@@ -3,10 +3,10 @@ import { interviewErrorResponse } from "@/lib/interview/http";
 import { touchHeartbeat } from "@/lib/interview/realtime";
 import { getInterviewState } from "@/lib/interview/session";
 
-// U12 — GET /api/interview/state?id=: full transcript + pending question,
+// GET /api/interview/state?id=: full transcript + pending question,
 // owner only. This is the resume endpoint (R17): a dropped connection reloads
 // exactly where it stopped.
-// U13 — every state poll also refreshes the room heartbeat (throttled to 30s
+// Every state poll also refreshes the room heartbeat (throttled to 30s
 // granularity inside touchHeartbeat) so the concurrency guard sees the room.
 
 export const dynamic = "force-dynamic";

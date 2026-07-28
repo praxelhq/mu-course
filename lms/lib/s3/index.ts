@@ -64,6 +64,21 @@ export class UploadRejectedError extends Error {
   }
 }
 
+/**
+ * Map a typed S3 error onto a JSON Response, or null if unknown — the same
+ * pattern as lib/interview/http's interviewErrorResponse. Routes rethrow
+ * anything this doesn't recognise.
+ */
+export function s3ErrorResponse(err: unknown): Response | null {
+  if (err instanceof UploadRejectedError) {
+    return Response.json({ error: err.message }, { status: err.status });
+  }
+  if (err instanceof S3NotConfiguredError) {
+    return Response.json({ error: "Storage not configured" }, { status: 503 });
+  }
+  return null;
+}
+
 // ---------------------------------------------------------------------------
 // Key helpers
 // ---------------------------------------------------------------------------

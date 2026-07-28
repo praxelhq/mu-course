@@ -7,7 +7,7 @@ import {
   updateAssignmentType,
 } from "@/lib/assignment-types";
 
-// U8 — admin assignment-type editor API. All validation (zod, slug
+// Admin assignment-type editor API. All validation (zod, slug
 // uniqueness, schema/rubric shape) lives in lib/assignment-types so tests
 // prove the SAME code path the editor uses. Artifact kinds are rows, not
 // code: a new type here is a working submit form with zero code changes.

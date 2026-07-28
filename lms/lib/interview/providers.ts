@@ -1,4 +1,4 @@
-// U12 — thin fetch-based clients for the interview loop's external providers:
+// Thin fetch-based clients for the interview loop's external providers:
 // Gemini (dialog), ElevenLabs (TTS), Deepgram (STT). No heavy SDKs — plain
 // fetch against each provider's REST API (CLAUDE.md: all AI provider calls
 // live behind lib/ai/ or, for interview transports, this module).
@@ -9,6 +9,28 @@
 // answers, or the scripted dev fallback).
 
 export type InterviewProvider = "gemini" | "elevenlabs" | "deepgram";
+
+/**
+ * Per-call ceiling for a provider fetch. These calls sit on the live student
+ * interview request path, so a stalled provider must abort rather than hang the
+ * request forever. Overridable via env for slow networks.
+ */
+const PROVIDER_TIMEOUT_MS = Number(process.env.INTERVIEW_PROVIDER_TIMEOUT_MS || 30_000);
+
+/** fetch with an AbortController timeout; clears the timer in all paths. */
+async function fetchWithTimeout(
+  input: string,
+  init: RequestInit,
+  timeoutMs: number = PROVIDER_TIMEOUT_MS,
+): Promise<Response> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(input, { ...init, signal: controller.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+}
 
 export class ProviderNotConfiguredError extends Error {
   readonly provider: InterviewProvider;
@@ -98,7 +120,7 @@ export async function geminiChat(args: {
     contents.push({ role: "user", parts: [{ text: "(Continue the interview.)" }] });
   }
 
-  const res = await fetch(
+  const res = await fetchWithTimeout(
     `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,
     {
       method: "POST",
@@ -155,7 +177,7 @@ export async function elevenlabsTts(text: string): Promise<TtsResult> {
   const key = process.env.ELEVENLABS_API_KEY;
   if (!key) throw new ProviderNotConfiguredError("elevenlabs");
   const voice = process.env.ELEVENLABS_VOICE_ID || DEFAULT_ELEVENLABS_VOICE;
-  const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voice}`, {
+  const res = await fetchWithTimeout(`https://api.elevenlabs.io/v1/text-to-speech/${voice}`, {
     method: "POST",
     headers: {
       "xi-api-key": key,
@@ -203,7 +225,7 @@ export async function deepgramTranscribe(source: SttSource): Promise<SttResult> 
   const key = process.env.DEEPGRAM_API_KEY;
   if (!key) throw new ProviderNotConfiguredError("deepgram");
   const endpoint = `https://api.deepgram.com/v1/listen?model=${DEEPGRAM_MODEL}&smart_format=true`;
-  const res = await fetch(endpoint, {
+  const res = await fetchWithTimeout(endpoint, {
     method: "POST",
     headers:
       "url" in source

@@ -8,7 +8,7 @@ import {
   InterviewWindowClosedError,
 } from "./session";
 
-// U12 — shared HTTP glue for the interview routes: typed-error → status
+// Shared HTTP glue for the interview routes: typed-error → status
 // mapping and a light per-user token bucket (same in-memory pattern as the
 // U8 link checker; per-instance, which is fine at this traffic level).
 

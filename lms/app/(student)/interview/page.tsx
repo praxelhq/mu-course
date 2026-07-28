@@ -3,7 +3,7 @@ import { prisma } from "@/lib/db";
 import { Card, Eyebrow } from "@/components/ui";
 import { InterviewRoom } from "./room";
 
-// U12 — the student interview entry + room. The server component resolves the
+// The student interview entry + room. The server component resolves the
 // window/attempt situation; everything conversational happens in the client
 // room against /api/interview/*. Consent (DPDP) is collected in the room
 // BEFORE any mic access.

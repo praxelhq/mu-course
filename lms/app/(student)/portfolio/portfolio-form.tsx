@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Button, Card } from "@/components/ui";
 import type { PortfolioLink } from "@/lib/portfolio";
 
-// U16 — client half of the portfolio page: narrative textarea + external
+// Client half of the portfolio page: narrative textarea + external
 // links manager (add/remove {label,url}), saved together via POST
 // /api/portfolio (always the session user's own entry).
 

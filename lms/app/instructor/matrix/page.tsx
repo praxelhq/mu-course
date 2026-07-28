@@ -6,7 +6,7 @@ import { Eyebrow } from "@/components/ui";
 import { MatrixTable } from "./matrix-table";
 import { SignoffPanel } from "./signoff-panel";
 
-// U8 — instructor section matrix: tabs A–H, 60 students × assignments,
+// Instructor section matrix: tabs A–H, 60 students × assignments,
 // latest-version status chips from ONE batched query (lib/matrix), CSV
 // export, and the per-team company sign-off editor.
 

@@ -1,6 +1,7 @@
-import type { InterviewStatus, SubmissionStatus } from "@prisma/client";
+import type { InterviewStatus, Prisma, SubmissionStatus } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { openTargetIds } from "@/lib/gates";
+import { parseRubricScores } from "@/lib/review-queue";
 
 // Student dashboard data assembly. Everything the /dashboard page shows is
 // gathered here in batched queries (no N+1) so it can be unit-tested against
@@ -44,15 +45,11 @@ export type StudentDashboard = {
   }[];
 };
 
-function parseDimensions(rubricScores: unknown): DashboardGradeDimension[] {
-  if (rubricScores === null || typeof rubricScores !== "object") return [];
-  const out: DashboardGradeDimension[] = [];
-  for (const [key, value] of Object.entries(rubricScores as Record<string, unknown>)) {
-    if (value && typeof value === "object" && typeof (value as { score?: unknown }).score === "number") {
-      out.push({ key, score: (value as { score: number }).score });
-    }
-  }
-  return out;
+function parseDimensions(rubricScores: Prisma.JsonValue): DashboardGradeDimension[] {
+  return Object.entries(parseRubricScores(rubricScores)).map(([key, { score }]) => ({
+    key,
+    score,
+  }));
 }
 
 export async function getStudentDashboard(userId: string): Promise<StudentDashboard> {

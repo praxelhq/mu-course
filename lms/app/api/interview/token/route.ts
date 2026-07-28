@@ -10,7 +10,7 @@ import {
 } from "@/lib/interview/realtime";
 import { startInterview } from "@/lib/interview/session";
 
-// U13 — POST /api/interview/token: the realtime entry point. The server
+// POST /api/interview/token: the realtime entry point. The server
 // decides the transport; the client just tries this first:
 //   503 {realtimeUnavailable:true}  → no LIVEKIT env — client runs turn-based
 //   429 {waiting:true, activeRooms} → all rooms busy — client shows the

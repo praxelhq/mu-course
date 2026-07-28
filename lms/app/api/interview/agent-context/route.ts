@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/db";
 import { agentAuthResponse } from "@/lib/interview/realtime";
 
-// U13 — GET /api/interview/agent-context?interviewId=: the Python agent reads
+// GET /api/interview/agent-context?interviewId=: the Python agent reads
 // the assembled system prompt (turn 0) and the transcript so far without any
 // DB access of its own. X-Agent-Token guarded (constant-time).
 

@@ -2,7 +2,7 @@ import { prisma } from "@/lib/db";
 import { Card, Eyebrow } from "@/components/ui";
 import { DeleteStudentForm } from "./delete-form";
 
-// U16 — the DPDP admin surface: find a student by email, export everything
+// The DPDP admin surface: find a student by email, export everything
 // the LMS holds about them (JSON bundle), or erase them entirely (typed
 // email confirmation; audited). Admin-only via the admin layout.
 

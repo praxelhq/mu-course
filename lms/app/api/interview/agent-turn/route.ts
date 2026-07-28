@@ -4,7 +4,7 @@ import { interviewErrorResponse } from "@/lib/interview/http";
 import { TRANSPORT_REALTIME, agentAuthResponse, touchHeartbeat } from "@/lib/interview/realtime";
 import { appendTurnFromAgent } from "@/lib/interview/session";
 
-// U13 — POST /api/interview/agent-turn: the Python agent persists each
+// POST /api/interview/agent-turn: the Python agent persists each
 // finalized utterance through the SAME transactional path as U12
 // (appendTurnFromAgent) — one ordered transcript regardless of transport.
 // Guarded by X-Agent-Token (constant-time compare vs AGENT_INTERNAL_TOKEN);

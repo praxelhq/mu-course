@@ -3,7 +3,7 @@ import { withAuth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { updateClerkUserMetadata } from "@/lib/auth/clerk";
 
-// U16 — DPDP erasure: hard-delete every row the LMS holds for one student,
+// DPDP erasure: hard-delete every row the LMS holds for one student,
 // in one FK-safe transaction. Admin-only; confirmEmail must match the
 // student's email exactly (typo guard for an irreversible act).
 //

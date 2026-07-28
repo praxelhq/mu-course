@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Button, Card } from "@/components/ui";
+import { Button, Card, Td, Th } from "@/components/ui";
 
 // Client half of the instructor quiz console: arm/disarm per section (a gate
 // flip via the existing /api/gates/set), per-quiz results tables, and the
@@ -36,19 +36,16 @@ const mono: React.CSSProperties = {
   textTransform: "uppercase",
 };
 
+// Tweaks over the shared Th/Td base (components/ui) — tighter cells, wider
+// header tracking.
 const th: React.CSSProperties = {
-  ...mono,
   fontSize: "0.625rem",
-  color: "var(--clay)",
-  textAlign: "left",
+  letterSpacing: "0.1em",
   padding: "0.375rem 0.75rem 0.375rem 0",
-  borderBottom: "1px solid var(--sand)",
-  fontWeight: 400,
 };
 
 const td: React.CSSProperties = {
   padding: "0.375rem 0.75rem 0.375rem 0",
-  borderBottom: "1px solid var(--sand)",
   fontSize: "0.875rem",
   color: "var(--ink)",
 };
@@ -170,28 +167,28 @@ function QuizCard({ quiz, sections }: { quiz: PanelQuiz; sections: PanelSection[
           <table style={{ borderCollapse: "collapse", width: "100%" }}>
             <thead>
               <tr>
-                <th style={th}>Section</th>
-                <th style={th}>Attempts</th>
-                <th style={th}>Avg</th>
+                <Th style={th}>Section</Th>
+                <Th style={th}>Attempts</Th>
+                <Th style={th}>Avg</Th>
                 {quiz.results.questions.map((q, i) => (
-                  <th key={i} style={th} title={q}>
+                  <Th key={i} style={th} title={q}>
                     Q{i + 1}
-                  </th>
+                  </Th>
                 ))}
               </tr>
             </thead>
             <tbody>
               {quiz.results.perSection.map((row) => (
                 <tr key={row.sectionId}>
-                  <td style={{ ...td, ...mono, fontSize: "0.6875rem" }}>{row.sectionCode}</td>
-                  <td style={td}>{row.attemptCount}</td>
-                  <td style={td}>
+                  <Td style={{ ...td, ...mono, fontSize: "0.6875rem" }}>{row.sectionCode}</Td>
+                  <Td style={td}>{row.attemptCount}</Td>
+                  <Td style={td}>
                     {row.avgScorePct === null ? "—" : `${Math.round(row.avgScorePct)}%`}
-                  </td>
+                  </Td>
                   {row.perQuestionCorrectPct.map((pct, i) => (
-                    <td key={i} style={{ ...td, color: pct < 50 ? "#8a2a1c" : "var(--ink)" }}>
+                    <Td key={i} style={{ ...td, color: pct < 50 ? "#8a2a1c" : "var(--ink)" }}>
                       {row.attemptCount === 0 ? "—" : `${pct}%`}
-                    </td>
+                    </Td>
                   ))}
                 </tr>
               ))}

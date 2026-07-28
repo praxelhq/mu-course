@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { prisma } from "@/lib/db";
 import { listDeadLetterJobs, QUEUE_GRADE_SUBMISSION_DEAD } from "@/lib/queue";
-import { Card, Eyebrow } from "@/components/ui";
+import { Card, Eyebrow, Td, Th } from "@/components/ui";
 import { RetryGradeButton, RetryScreenshotButton, RunCrawlButton } from "./actions";
 
-// U16 — the admin cost & operations dashboard:
+// The admin cost & operations dashboard:
 //   - CostLog aggregation by feature × provider (today / 7 days / total),
 //   - the 50 most recent cost rows,
 //   - grading dead letters (pg-boss 'grade.submission.dead', still queued)
@@ -21,19 +21,16 @@ const mono: React.CSSProperties = {
   textTransform: "uppercase",
 };
 
+// Tweaks over the shared Th/Td base (components/ui) — denser padding, mono
+// header tracking, smaller sizes.
 const th: React.CSSProperties = {
-  ...mono,
-  textAlign: "left",
   padding: "0.5rem 0.75rem",
-  borderBottom: "1px solid var(--sand)",
   fontSize: "0.6875rem",
-  color: "var(--clay)",
-  fontWeight: 400,
+  letterSpacing: "0.1em",
 };
 
 const td: React.CSSProperties = {
   padding: "0.5rem 0.75rem",
-  borderBottom: "1px solid var(--sand)",
   fontSize: "0.875rem",
 };
 
@@ -132,12 +129,12 @@ export default async function AdminCostsPage() {
               <table style={{ width: "100%", borderCollapse: "collapse" }}>
                 <thead>
                   <tr>
-                    <th style={th}>Feature</th>
-                    <th style={th}>Provider</th>
-                    <th style={th}>Today</th>
-                    <th style={th}>7 days</th>
-                    <th style={th}>Total</th>
-                    <th style={th}>Calls (total)</th>
+                    <Th style={th}>Feature</Th>
+                    <Th style={th}>Provider</Th>
+                    <Th style={th}>Today</Th>
+                    <Th style={th}>7 days</Th>
+                    <Th style={th}>Total</Th>
+                    <Th style={th}>Calls (total)</Th>
                   </tr>
                 </thead>
                 <tbody>
@@ -145,12 +142,12 @@ export default async function AdminCostsPage() {
                     const t = total.get(k)!;
                     return (
                       <tr key={k}>
-                        <td style={td}>{t.feature}</td>
-                        <td style={td}>{t.provider}</td>
-                        <td style={td}>{usd(today.get(k)?.cost ?? 0)}</td>
-                        <td style={td}>{usd(week.get(k)?.cost ?? 0)}</td>
-                        <td style={td}>{usd(t.cost)}</td>
-                        <td style={td}>{t.count}</td>
+                        <Td style={td}>{t.feature}</Td>
+                        <Td style={td}>{t.provider}</Td>
+                        <Td style={td}>{usd(today.get(k)?.cost ?? 0)}</Td>
+                        <Td style={td}>{usd(week.get(k)?.cost ?? 0)}</Td>
+                        <Td style={td}>{usd(t.cost)}</Td>
+                        <Td style={td}>{t.count}</Td>
                       </tr>
                     );
                   })}
@@ -176,31 +173,31 @@ export default async function AdminCostsPage() {
               <table style={{ width: "100%", borderCollapse: "collapse" }}>
                 <thead>
                   <tr>
-                    <th style={th}>Submission</th>
-                    <th style={th}>Dead-lettered</th>
-                    <th style={th}>Retries used</th>
-                    <th style={th}>Failure</th>
-                    <th style={th}>Action</th>
+                    <Th style={th}>Submission</Th>
+                    <Th style={th}>Dead-lettered</Th>
+                    <Th style={th}>Retries used</Th>
+                    <Th style={th}>Failure</Th>
+                    <Th style={th}>Action</Th>
                   </tr>
                 </thead>
                 <tbody>
                   {deadJobs.map((j) => (
                     <tr key={j.id}>
-                      <td style={{ ...td, fontFamily: "var(--font-geist-mono)" }}>
+                      <Td style={{ ...td, fontFamily: "var(--font-geist-mono)" }}>
                         {j.data.submissionId ?? "—"}
-                      </td>
-                      <td style={td}>{fmtAt.format(j.createdOn)}</td>
-                      <td style={td}>{j.retryCount}</td>
-                      <td style={{ ...td, maxWidth: "22rem", overflowWrap: "anywhere", fontSize: "0.75rem", color: "var(--charcoal)" }}>
+                      </Td>
+                      <Td style={td}>{fmtAt.format(j.createdOn)}</Td>
+                      <Td style={td}>{j.retryCount}</Td>
+                      <Td style={{ ...td, maxWidth: "22rem", overflowWrap: "anywhere", fontSize: "0.75rem", color: "var(--charcoal)" }}>
                         {j.output ? JSON.stringify(j.output).slice(0, 200) : "—"}
-                      </td>
-                      <td style={td}>
+                      </Td>
+                      <Td style={td}>
                         {j.data.submissionId ? (
                           <RetryGradeButton submissionId={j.data.submissionId} />
                         ) : (
                           "—"
                         )}
-                      </td>
+                      </Td>
                     </tr>
                   ))}
                 </tbody>
@@ -265,29 +262,29 @@ export default async function AdminCostsPage() {
               <table style={{ width: "100%", borderCollapse: "collapse" }}>
                 <thead>
                   <tr>
-                    <th style={th}>When</th>
-                    <th style={th}>Feature</th>
-                    <th style={th}>Provider</th>
-                    <th style={th}>Model</th>
-                    <th style={th}>Tokens in/out</th>
-                    <th style={th}>Cost</th>
-                    <th style={th}>Ref</th>
+                    <Th style={th}>When</Th>
+                    <Th style={th}>Feature</Th>
+                    <Th style={th}>Provider</Th>
+                    <Th style={th}>Model</Th>
+                    <Th style={th}>Tokens in/out</Th>
+                    <Th style={th}>Cost</Th>
+                    <Th style={th}>Ref</Th>
                   </tr>
                 </thead>
                 <tbody>
                   {recent.map((r) => (
                     <tr key={r.id}>
-                      <td style={td}>{fmtAt.format(r.createdAt)}</td>
-                      <td style={td}>{r.feature}</td>
-                      <td style={td}>{r.provider}</td>
-                      <td style={td}>{r.model ?? "—"}</td>
-                      <td style={td}>
+                      <Td style={td}>{fmtAt.format(r.createdAt)}</Td>
+                      <Td style={td}>{r.feature}</Td>
+                      <Td style={td}>{r.provider}</Td>
+                      <Td style={td}>{r.model ?? "—"}</Td>
+                      <Td style={td}>
                         {r.tokensIn ?? "—"} / {r.tokensOut ?? "—"}
-                      </td>
-                      <td style={td}>{usd(r.costUsd)}</td>
-                      <td style={{ ...td, fontFamily: "var(--font-geist-mono)", fontSize: "0.75rem" }}>
+                      </Td>
+                      <Td style={td}>{usd(r.costUsd)}</Td>
+                      <Td style={{ ...td, fontFamily: "var(--font-geist-mono)", fontSize: "0.75rem" }}>
                         {r.refType ? `${r.refType}:${r.refId ?? ""}` : "—"}
-                      </td>
+                      </Td>
                     </tr>
                   ))}
                 </tbody>

@@ -2,7 +2,7 @@ import { z } from "zod";
 import { withAuth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 
-// U8 — company sign-off capture (instructor): per-team status + note +
+// Company sign-off capture (instructor): per-team status + note +
 // optional evidence key (uploaded via /api/uploads/signoff-url into the
 // signoffs/{teamId}/ namespace). Upsert + AuditLog in one transaction.
 // U15 reads these rows for the completion exports.

@@ -4,7 +4,7 @@ import { interviewErrorResponse } from "@/lib/interview/http";
 import { InterviewNotFoundError } from "@/lib/interview/session";
 import { presignGet } from "@/lib/s3";
 
-// U12 — GET /api/interview/question-audio?id=&turnNo=: short-TTL presigned GET
+// GET /api/interview/question-audio?id=&turnNo=: short-TTL presigned GET
 // for one turn's TTS mp3 (or a student answer clip on the instructor's behalf
 // this route stays student/owner-only; instructors presign in their pages).
 

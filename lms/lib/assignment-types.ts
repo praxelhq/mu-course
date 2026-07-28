@@ -3,7 +3,7 @@ import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { parseSubmissionSchema } from "@/lib/submission-schema";
 
-// U8 — assignment-type CRUD shared by the admin editor route AND the
+// Assignment-type CRUD shared by the admin editor route AND the
 // extensibility test: creating a type through this module is the whole
 // "add an artifact kind" operation (CLAUDE.md: artifact kinds are rows,
 // not code — no deploy required).

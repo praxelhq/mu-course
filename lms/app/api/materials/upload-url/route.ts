@@ -1,11 +1,6 @@
 import { z } from "zod";
 import { withAuth } from "@/lib/auth";
-import {
-  S3NotConfiguredError,
-  UploadRejectedError,
-  keyForMaterial,
-  presignPut,
-} from "@/lib/s3";
+import { keyForMaterial, presignPut, s3ErrorResponse } from "@/lib/s3";
 
 // Instructor material uploads, step 1: hand back a presigned PUT + the final
 // key (materials/session{no}/{filename}). The browser PUTs directly to S3;
@@ -31,12 +26,8 @@ export const POST = withAuth(
       const { url, headers } = await presignPut({ key, contentType, maxBytes: sizeBytes });
       return Response.json({ url, key, headers });
     } catch (err) {
-      if (err instanceof UploadRejectedError) {
-        return Response.json({ error: err.message }, { status: err.status });
-      }
-      if (err instanceof S3NotConfiguredError) {
-        return Response.json({ error: "Storage not configured" }, { status: 503 });
-      }
+      const res = s3ErrorResponse(err);
+      if (res) return res;
       throw err;
     }
   },

@@ -22,7 +22,7 @@ import {
   type TtsClient,
 } from "./providers";
 
-// U12 — the turn-based interview state machine. This is the transport-agnostic
+// The turn-based interview state machine. This is the transport-agnostic
 // core: U13's realtime agent reuses startInterview's guards, the transactional
 // turn persistence (appendTurn/appendTurnFromAgent) and completeInterview
 // unchanged, switching only the Interview.transport flag.

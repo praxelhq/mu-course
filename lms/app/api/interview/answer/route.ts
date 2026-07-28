@@ -3,7 +3,7 @@ import { withAuth } from "@/lib/auth";
 import { interviewErrorResponse, rateLimited, takeInterviewToken } from "@/lib/interview/http";
 import { completeInterview, nextQuestion, submitAnswer } from "@/lib/interview/session";
 
-// U12 — POST /api/interview/answer: persist the student's answer (audio →
+// POST /api/interview/answer: persist the student's answer (audio →
 // transcribed, or typed text in the dev/text fallback), then auto-advance:
 // returns the next question, or {done:true} after completing the interview
 // when the budget/model says the session is over.

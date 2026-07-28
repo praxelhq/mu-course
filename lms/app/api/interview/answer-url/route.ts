@@ -10,7 +10,7 @@ import {
   presignPut,
 } from "@/lib/s3";
 
-// U12 — POST /api/interview/answer-url: presigned PUT for one answer clip.
+// POST /api/interview/answer-url: presigned PUT for one answer clip.
 // audio/webm | audio/mpeg | audio/mp4 only, <=25MB, key
 // interviews/{interviewId}/a{turnNo}.{ext}. Owner-only; interview must be live.
 

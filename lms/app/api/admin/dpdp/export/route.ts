@@ -1,7 +1,7 @@
 import { withAuth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 
-// U16 — DPDP data export: everything the LMS holds ABOUT one student, as one
+// DPDP data export: everything the LMS holds ABOUT one student, as one
 // JSON bundle, for fulfilling a data-access request. Admin-only.
 //
 // Scope decisions (docs/DECISIONS.md):

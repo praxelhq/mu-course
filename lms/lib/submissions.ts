@@ -1,14 +1,14 @@
 import { createHash } from "node:crypto";
 import type { Prisma, Submission, SubmissionStatus } from "@prisma/client";
 import { prisma } from "@/lib/db";
-import { resolveGate } from "@/lib/gates";
+import { parentSessionPageIdFor, resolveGate } from "@/lib/gates";
 import {
   parseSubmissionSchema,
   validateSubmissionFields,
   type SubmissionSchema,
 } from "@/lib/submission-schema";
 
-// U8 — schema-driven submission core. The form renders FROM the type's
+// Schema-driven submission core. The form renders FROM the type's
 // submissionSchema and this module validates/writes against the same schema,
 // so a new AssignmentType row is a working submission pipeline with zero code
 // changes. Versioning: resubmission creates a NEW row at version+1 — history
@@ -76,15 +76,11 @@ async function assignmentAvailableTo(
 ): Promise<boolean> {
   if (user.role !== "student") return true;
   if (!user.sectionId) return false;
-  const page = await prisma.sessionPage.findFirst({
-    where: { linkedAssignmentIds: { has: assignmentId } },
-    select: { id: true },
-  });
   return resolveGate({
     targetType: "assignment",
     targetId: assignmentId,
     sectionId: user.sectionId,
-    parentSessionPageId: page?.id,
+    parentSessionPageId: await parentSessionPageIdFor("assignment", assignmentId),
     userId: user.id,
   });
 }

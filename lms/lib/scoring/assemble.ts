@@ -1,5 +1,6 @@
 import type { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db";
+import { PORTFOLIO_REQUIRED_SLUGS, hasGradedArtifact } from "@/lib/portfolio";
 import { getBestOfThreeAvg } from "@/lib/quizzes";
 import {
   aiInterview,
@@ -15,7 +16,7 @@ import {
 import { finalGrade, type FinalGrade } from "./formula";
 import { combinePci, pciForCheckpoint, type CombinedPci } from "./pci";
 
-// U15 — DB assembly: gathers every component's source rows and feeds the pure
+// DB assembly: gathers every component's source rows and feeds the pure
 // scorers. "Latest" follows the review-queue candidate rule everywhere: the
 // newest grade of the newest submission version per owner (user, or team for
 // team-based types). Every line is labelled provisional until its sources are
@@ -41,16 +42,6 @@ export type GradeLine = FinalGrade & {
 
 /** Slugs of individually-submitted artifact types feeding §2 (0–40 each). */
 const INDIVIDUAL_ARTIFACT_SLUGS = ["skill", "data-memo", "app"] as const;
-
-/** Types a "complete" portfolio must show a graded submission for (§7). */
-const REQUIRED_PORTFOLIO_SLUGS = [
-  "skill",
-  "data-memo",
-  "app",
-  "workflow",
-  "media",
-  "value-chain-map",
-] as const;
 
 type LatestGrade = { total: number; provisional: boolean; rubricScores: Prisma.JsonValue };
 
@@ -258,25 +249,14 @@ export async function getGradeLine(userId: string): Promise<GradeLine> {
 
   // --- §7 portfolio ---------------------------------------------------------------
   const completenessChecks = await Promise.all(
-    REQUIRED_PORTFOLIO_SLUGS.map(async (slug) => {
-      const teamBased = slug === "workflow" || slug === "media" || slug === "value-chain-map";
-      if (teamBased && !teamId) return false;
-      const count = await prisma.submission.count({
-        where: {
-          ...(teamBased ? { teamId: teamId! } : { userId }),
-          assignment: { assignmentType: { slug } },
-          status: { in: ["graded", "finalised"] },
-        },
-      });
-      return count > 0;
-    }),
+    PORTFOLIO_REQUIRED_SLUGS.map((slug) => hasGradedArtifact({ userId, teamId }, slug)),
   );
   const presentCount = completenessChecks.filter(Boolean).length;
   const validation = validationScores(portfolioEntry?.validations ?? null);
   const evidenceIntegrity = evidenceIntegrityFromCrawl(portfolioEntry?.lastCrawl);
   const portfolioComponent = portfolio({
     completeness0to20:
-      Math.round((presentCount / REQUIRED_PORTFOLIO_SLUGS.length) * 20 * 100) / 100,
+      Math.round((presentCount / PORTFOLIO_REQUIRED_SLUGS.length) * 20 * 100) / 100,
     narrative0to25: narrativeScore(portfolioEntry?.narrative),
     external0to25: validation.external,
     peer0to15: validation.peer,

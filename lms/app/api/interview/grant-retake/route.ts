@@ -2,7 +2,7 @@ import { z } from "zod";
 import { withAuth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 
-// U12 — instructor grants one extra interview attempt. The grant admits
+// Instructor grants one extra interview attempt. The grant admits
 // exactly one startInterview (consumed atomically there). Audited.
 
 export const dynamic = "force-dynamic";

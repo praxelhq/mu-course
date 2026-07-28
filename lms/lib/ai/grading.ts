@@ -2,7 +2,7 @@ import { z, type ZodType } from "zod";
 import type { SubmissionSchema } from "@/lib/submission-schema";
 import type { ExtractedFile } from "./extract";
 
-// U9 — pure(ish) grading pipeline pieces, each independently testable with a
+// Pure(ish) grading pipeline pieces, each independently testable with a
 // mocked model client:
 //   assembleGradingContext  → {system, user} prompt strings (anonymized,
 //                             injection-hardened, size-capped)

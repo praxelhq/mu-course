@@ -1,9 +1,9 @@
 import { withAuth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
-import { toCsv } from "@/lib/csv-export";
+import { csvResponse, toCsv } from "@/lib/csv-export";
 import { getGradeLine } from "@/lib/scoring/assemble";
 
-// U15 — instructor CSV export of the full grade line per student: the seven
+// Instructor CSV export of the full grade line per student: the seven
 // component raw scores, the PCI, and the weighted total. Serialized through
 // the shared lib/csv-export (formula injection neutralized). Optional
 // ?section=A filter; omitted → the whole cohort (slower).
@@ -80,13 +80,7 @@ export const GET = withAuth(
       ],
       rows,
     );
-    return new Response(csv, {
-      status: 200,
-      headers: {
-        "content-type": "text/csv; charset=utf-8",
-        "content-disposition": `attachment; filename="grades${code ? `_section_${code}` : ""}.csv"`,
-      },
-    });
+    return csvResponse(csv, `grades${code ? `_section_${code}` : ""}.csv`);
   },
   { role: "instructor" },
 );

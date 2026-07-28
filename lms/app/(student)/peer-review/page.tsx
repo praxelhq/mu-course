@@ -4,7 +4,7 @@ import { prisma } from "@/lib/db";
 import { Card, Eyebrow } from "@/components/ui";
 import { PeerReviewForm, type TeammateRow } from "./peer-review-form";
 
-// U15 — the peer checkpoint survey (§5): privately allocate 100 points across
+// The peer checkpoint survey (§5): privately allocate 100 points across
 // your teammates (never yourself) and rate each on reliability /
 // communication / helpfulness (1–5). Resubmission overwrites while the
 // checkpoint is active.

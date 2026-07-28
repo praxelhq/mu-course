@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { AuthError, requireUser } from "@/lib/auth";
 import { getStudentDashboard } from "@/lib/dashboard";
-import { Card, Eyebrow, StatusChip } from "@/components/ui";
+import { Card, Eyebrow, StatusChip, Td, Th } from "@/components/ui";
 
 export const dynamic = "force-dynamic";
 
@@ -62,21 +62,21 @@ export default async function StudentDashboardPage() {
             <table style={{ width: "100%", borderCollapse: "collapse" }}>
               <thead>
                 <tr>
-                  <th style={th}>Assignment</th>
-                  <th style={th}>Kind</th>
-                  <th style={th}>Due</th>
-                  <th style={{ ...th, textAlign: "right" }}>Your submission</th>
+                  <Th>Assignment</Th>
+                  <Th>Kind</Th>
+                  <Th>Due</Th>
+                  <Th style={{ textAlign: "right" }}>Your submission</Th>
                 </tr>
               </thead>
               <tbody>
                 {d.openAssignments.map((a) => (
                   <tr key={a.id}>
-                    <td style={td}>{a.title}</td>
-                    <td style={{ ...td, color: "var(--charcoal)" }}>{a.typeTitle}</td>
-                    <td style={{ ...td, fontFamily: "var(--font-geist-mono)", fontSize: "0.8125rem" }}>
+                    <Td>{a.title}</Td>
+                    <Td style={{ color: "var(--charcoal)" }}>{a.typeTitle}</Td>
+                    <Td style={{ fontFamily: "var(--font-geist-mono)", fontSize: "0.8125rem" }}>
                       {fmtDate(a.dueAt)}
-                    </td>
-                    <td style={{ ...td, textAlign: "right" }}>
+                    </Td>
+                    <Td style={{ textAlign: "right" }}>
                       {a.submissionStatus ? (
                         <StatusChip status={a.submissionStatus} />
                       ) : (
@@ -84,7 +84,7 @@ export default async function StudentDashboardPage() {
                           Not started
                         </span>
                       )}
-                    </td>
+                    </Td>
                   </tr>
                 ))}
               </tbody>
@@ -233,19 +233,3 @@ const markReadButton: React.CSSProperties = {
   whiteSpace: "nowrap",
 };
 
-const th: React.CSSProperties = {
-  textAlign: "left",
-  borderBottom: "1px solid var(--sand)",
-  padding: "0.5rem 0",
-  fontFamily: "var(--font-geist-mono)",
-  fontSize: "0.75rem",
-  letterSpacing: "0.08em",
-  textTransform: "uppercase",
-  color: "var(--clay)",
-  fontWeight: 400,
-};
-
-const td: React.CSSProperties = {
-  borderBottom: "1px solid var(--sand)",
-  padding: "0.625rem 0.75rem 0.625rem 0",
-};

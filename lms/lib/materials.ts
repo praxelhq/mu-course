@@ -7,8 +7,9 @@ import {
   resolveMany,
   type GateSnapshot,
 } from "@/lib/gates";
+import { listQuizzesForHub } from "@/lib/quizzes";
 
-// U7 — session hub data assembly. Everything the /sessions index and the
+// Session hub data assembly. Everything the /sessions index and the
 // /sessions/[no] hub render is gathered here (batched, resolveMany once) so
 // the gate rules can be unit-tested against the seed without rendering pages.
 //
@@ -172,10 +173,7 @@ export async function getSessionHub(
         assignmentType: { select: { title: true } },
       },
     }),
-    prisma.quiz.findMany({
-      where: { id: { in: page.linkedQuizIds } },
-      select: { id: true, title: true, sectionIds: true },
-    }),
+    listQuizzesForHub(page.linkedQuizIds),
     page.linkedAssignmentIds.length
       ? prisma.submission.findMany({
           where: { assignmentId: { in: page.linkedAssignmentIds }, OR: mineOrTeam },

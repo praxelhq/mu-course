@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/db";
 import { combinePci, nearIdenticalFlag, pciForCheckpoint } from "./pci";
 
-// U15 — instructor-facing peer-review overview: per-team checkpoint
+// Instructor-facing peer-review overview: per-team checkpoint
 // completion, the PCI table, and the §5 near-identical safeguard flag
 // (surfaced only — never auto-resolved). Also feeds the peer CSV export.
 

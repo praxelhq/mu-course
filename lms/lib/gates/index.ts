@@ -60,28 +60,29 @@ async function hasLiveException(
  * exception. Missing rows are locked.
  */
 export async function resolveGate(ref: GateRef, now: Date = new Date()): Promise<boolean> {
-  const { targetType, targetId, sectionId, parentSessionPageId, userId } = ref;
-  const keys = [{ targetType, targetId, sectionId }];
-  if (parentSessionPageId) {
-    keys.push({ targetType: "session", targetId: parentSessionPageId, sectionId });
-  }
-  const gates = await prisma.gate.findMany({
-    where: { OR: keys },
-    select: { targetType: true, targetId: true, state: true, opensAt: true },
+  return (await resolveGateDetail(ref, now)).available;
+}
+
+/**
+ * SessionPage.id of the session that links this child target (undefined when
+ * no session does). The shared lookup callers feed into GateRef's
+ * parentSessionPageId.
+ */
+export async function parentSessionPageIdFor(
+  targetType: Extract<GateTarget, "material" | "assignment" | "quiz">,
+  targetId: string,
+): Promise<string | undefined> {
+  const field =
+    targetType === "material"
+      ? "orderedMaterialIds"
+      : targetType === "assignment"
+        ? "linkedAssignmentIds"
+        : "linkedQuizIds";
+  const page = await prisma.sessionPage.findFirst({
+    where: { [field]: { has: targetId } },
+    select: { id: true },
   });
-  const own = gates.find((g) => g.targetType === targetType && g.targetId === targetId);
-  const parent = parentSessionPageId
-    ? gates.find((g) => g.targetType === "session" && g.targetId === parentSessionPageId)
-    : undefined;
-
-  const ownOpen = effectiveGateState(own ?? null, now) === "open";
-  const parentOpen = parentSessionPageId
-    ? effectiveGateState(parent ?? null, now) === "open"
-    : true;
-  if (ownOpen && parentOpen) return true;
-
-  if (userId) return hasLiveException(targetType, targetId, userId, now);
-  return false;
+  return page?.id;
 }
 
 export type GateDecision = {

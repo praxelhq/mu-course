@@ -1,4 +1,4 @@
-// U15 — Peer Contribution Index, pure functions. NO DB imports here: data in,
+// Peer Contribution Index, pure functions. NO DB imports here: data in,
 // numbers out. The formula is frozen (docs/build/01_scoring_methodology.md §5):
 //
 //   PCI = (points received ÷ (100 × (team size − 1))) × team size

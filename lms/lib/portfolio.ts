@@ -2,7 +2,7 @@ import type { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { parseSubmissionSchema } from "@/lib/submission-schema";
 
-// U16 — the portfolio module: one place that interprets PortfolioEntry's
+// The portfolio module: one place that interprets PortfolioEntry's
 // three JSON fields (links / validations / lastCrawl) and gathers the URL set
 // the liveness crawl checks. The scorer (lib/scoring/assemble) reads the SAME
 // lastCrawl contract:
@@ -31,6 +31,32 @@ export const PORTFOLIO_REQUIRED_SLUGS = [
 ] as const;
 
 const TEAM_SLUGS = new Set(["workflow", "media", "value-chain-map"]);
+
+/** Team-based required slugs count the TEAM's submission, not the student's. */
+export function isTeamPortfolioSlug(slug: string): boolean {
+  return TEAM_SLUGS.has(slug);
+}
+
+/**
+ * The §7 presence rule, shared with the scorer (lib/scoring/assemble): a
+ * graded/finalised submission exists for the slug's owner — the team for
+ * team-based slugs (false when the student has no team), else the student.
+ */
+export async function hasGradedArtifact(
+  owner: { userId: string; teamId: string | null },
+  slug: string,
+): Promise<boolean> {
+  const teamBased = isTeamPortfolioSlug(slug);
+  if (teamBased && !owner.teamId) return false;
+  const count = await prisma.submission.count({
+    where: {
+      ...(teamBased ? { teamId: owner.teamId! } : { userId: owner.userId }),
+      assignment: { assignmentType: { slug } },
+      status: { in: ["graded", "finalised"] },
+    },
+  });
+  return count > 0;
+}
 
 // ---------------------------------------------------------------------------
 // JSON parsers (tolerant: seeded rows store {submissions:[…], external:[…]},
@@ -162,21 +188,12 @@ export async function getArtifactChecklist(userId: string): Promise<ArtifactChec
   const titleBySlug = new Map(types.map((t) => [t.slug, t.title]));
 
   return Promise.all(
-    PORTFOLIO_REQUIRED_SLUGS.map(async (slug) => {
-      const teamBased = TEAM_SLUGS.has(slug);
-      let present = false;
-      if (!teamBased || user?.teamId) {
-        const count = await prisma.submission.count({
-          where: {
-            ...(teamBased ? { teamId: user!.teamId! } : { userId }),
-            assignment: { assignmentType: { slug } },
-            status: { in: ["graded", "finalised"] },
-          },
-        });
-        present = count > 0;
-      }
-      return { slug, title: titleBySlug.get(slug) ?? slug, teamBased, present };
-    }),
+    PORTFOLIO_REQUIRED_SLUGS.map(async (slug) => ({
+      slug,
+      title: titleBySlug.get(slug) ?? slug,
+      teamBased: isTeamPortfolioSlug(slug),
+      present: await hasGradedArtifact({ userId, teamId: user?.teamId ?? null }, slug),
+    })),
   );
 }
 

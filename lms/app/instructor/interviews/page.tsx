@@ -2,7 +2,7 @@ import Link from "next/link";
 import { prisma } from "@/lib/db";
 import { Card, Eyebrow } from "@/components/ui";
 
-// U12 — instructor interview queue: escalations FIRST (they block finalising a
+// Instructor interview queue: escalations FIRST (they block finalising a
 // 15% component), then completed (grading in flight), then graded. Live rows
 // shown last for situational awareness.
 

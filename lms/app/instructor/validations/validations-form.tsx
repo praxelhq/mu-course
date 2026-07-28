@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button, Card } from "@/components/ui";
 
-// U16 — pick a student (email/name filter), choose a kind, write the note,
+// Pick a student (email/name filter), choose a kind, write the note,
 // POST /api/instructor/validations.
 
 export type StudentOption = { id: string; label: string };

@@ -12,7 +12,7 @@ import { keyForScreenshot, putObject, s3Configured } from "@/lib/s3";
 import { SCREENSHOT_BLOCKED, syncGalleryItem } from "@/lib/galleries";
 import { lookup as dnsLookup } from "node:dns/promises";
 
-// U11 — the screenshot.capture consumer: renders an app-type submission's
+// The screenshot.capture consumer: renders an app-type submission's
 // appUrl in headless Chromium (1280x800) and stores a PNG at
 // gallery/screenshots/{submissionId}.png.
 //

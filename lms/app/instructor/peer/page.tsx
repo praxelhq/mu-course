@@ -1,7 +1,7 @@
 import { getPeerOverview } from "@/lib/scoring/overview";
 import { Eyebrow } from "@/components/ui";
 
-// U15 — instructor peer-review overview: per-team checkpoint completion, the
+// Instructor peer-review overview: per-team checkpoint completion, the
 // PCI table, and the §5 near-identical safeguard flag (Ochre badge). The flag
 // is surfaced only — a genuinely equal team and a pact look identical from
 // here, so the call stays with the instructor, never the system.

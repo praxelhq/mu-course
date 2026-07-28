@@ -2,7 +2,7 @@ import { createHash, timingSafeEqual } from "node:crypto";
 import type { PrismaClient } from "@prisma/client";
 import { prisma as defaultPrisma } from "@/lib/db";
 
-// U13 — realtime (LiveKit) transport glue: room-token minting, the ~30-room
+// Realtime (LiveKit) transport glue: room-token minting, the ~30-room
 // concurrency guard with heartbeats, and the constant-time agent token check.
 //
 // Everything here is optional-by-env: with no LIVEKIT_* keys locally,

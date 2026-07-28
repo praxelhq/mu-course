@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-// U11 — instructor featuring controls per gallery card: feature/unfeature
+// Instructor featuring controls per gallery card: feature/unfeature
 // toggle + caption edit, POSTed to /api/galleries/feature (audited).
 
 const mono: React.CSSProperties = {

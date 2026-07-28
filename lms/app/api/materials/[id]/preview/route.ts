@@ -1,7 +1,7 @@
 import { withAuth } from "@/lib/auth";
 import { parseCsvPreview } from "@/lib/csv-preview";
 import { resolveMaterialAccess } from "@/lib/materials";
-import { S3NotConfiguredError, presignGet, rangedRead, s3Configured } from "@/lib/s3";
+import { presignGet, rangedRead, s3Configured, s3ErrorResponse } from "@/lib/s3";
 
 // Material "Peek": same auth + gate rules as download.
 //   csv          → bounded ranged read (first ~256KB), first 100 rows as JSON
@@ -46,9 +46,8 @@ export const GET = withAuth<Ctx>(async (req, { user, params }) => {
     const url = await presignGet(key); // inline: no attachment disposition
     return Response.json({ type: kind, url });
   } catch (err) {
-    if (err instanceof S3NotConfiguredError) {
-      return Response.json({ error: "Storage not configured" }, { status: 503 });
-    }
+    const res = s3ErrorResponse(err);
+    if (res) return res;
     throw err;
   }
 });

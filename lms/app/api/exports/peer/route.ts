@@ -1,18 +1,12 @@
 import { withAuth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
-import { toCsv } from "@/lib/csv-export";
+import { csvResponse, numberField, toCsv } from "@/lib/csv-export";
 
-// U15 — instructor CSV export of the raw peer-review data: one row per
+// Instructor CSV export of the raw peer-review data: one row per
 // (checkpoint, reviewer, reviewee) with the allocation and the three 1–5
 // ratings. Grades/PCI never leave the LMS; this export is instructor-only.
 
 export const dynamic = "force-dynamic";
-
-function rating(json: unknown, key: string): number | "" {
-  if (!json || typeof json !== "object" || Array.isArray(json)) return "";
-  const v = (json as Record<string, unknown>)[key];
-  return typeof v === "number" ? v : "";
-}
 
 export const GET = withAuth(
   async () => {
@@ -52,18 +46,12 @@ export const GET = withAuth(
         r.reviewee.name,
         r.reviewee.email,
         r.pointsAllocated,
-        rating(r.ratings, "reliability"),
-        rating(r.ratings, "communication"),
-        rating(r.ratings, "helpfulness"),
+        numberField(r.ratings, "reliability"),
+        numberField(r.ratings, "communication"),
+        numberField(r.ratings, "helpfulness"),
       ]),
     );
-    return new Response(csv, {
-      status: 200,
-      headers: {
-        "content-type": "text/csv; charset=utf-8",
-        "content-disposition": 'attachment; filename="peer_reviews.csv"',
-      },
-    });
+    return csvResponse(csv, "peer_reviews.csv");
   },
   { role: "instructor" },
 );

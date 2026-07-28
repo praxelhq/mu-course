@@ -63,6 +63,47 @@ export function StatusChip({ status }: { status: string }) {
   );
 }
 
+// Shared cells for the simple data tables (dashboard, roster, costs, quiz
+// results): the prevailing th/td styles; per-table tweaks merge on top via
+// the style prop. The sticky-grid tables (matrix, unlock console) keep their
+// own specialised cell styles.
+const thBase: CSSProperties = {
+  textAlign: "left",
+  borderBottom: "1px solid var(--sand)",
+  padding: "0.5rem 0",
+  fontFamily: "var(--font-geist-mono)",
+  fontSize: "0.75rem",
+  letterSpacing: "0.08em",
+  textTransform: "uppercase",
+  color: "var(--clay)",
+  fontWeight: 400,
+};
+
+const tdBase: CSSProperties = {
+  borderBottom: "1px solid var(--sand)",
+  padding: "0.625rem 0.75rem 0.625rem 0",
+};
+
+export function Th({
+  children,
+  style,
+  title,
+}: {
+  children?: ReactNode;
+  style?: CSSProperties;
+  title?: string;
+}) {
+  return (
+    <th title={title} style={{ ...thBase, ...style }}>
+      {children}
+    </th>
+  );
+}
+
+export function Td({ children, style }: { children?: ReactNode; style?: CSSProperties }) {
+  return <td style={{ ...tdBase, ...style }}>{children}</td>;
+}
+
 export function Card({
   children,
   style,

@@ -7,7 +7,7 @@ import {
   submitAssignment,
 } from "@/lib/submissions";
 
-// U8 — POST submit. Validation → 422 with per-field messages; closed gate →
+// POST submit. Validation → 422 with per-field messages; closed gate →
 // 409 with the clear message; a file key outside the student's namespace →
 // 403. All rules live in lib/submissions — this route only maps errors.
 

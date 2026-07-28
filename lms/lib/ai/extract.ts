@@ -1,6 +1,6 @@
 import { rangedRead, s3Configured } from "@/lib/s3";
 
-// U9 — submission file text extraction for grading context. Failures are
+// Submission file text extraction for grading context. Failures are
 // collected, never thrown: a broken file becomes a 'context-incomplete'
 // grading flag, not a dead job.
 //

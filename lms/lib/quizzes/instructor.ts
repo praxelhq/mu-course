@@ -1,29 +1,10 @@
 import { prisma } from "@/lib/db";
+import { parseChoices, parseQuestions, type StoredQuestion } from "./shared";
 
-// U14 — INSTRUCTOR-ONLY quiz reads. This module is a separate import path
+// INSTRUCTOR-ONLY quiz reads. This module is a separate import path
 // from lib/quizzes on purpose: it is the only place isDiagnostic-flagged data
 // is visible, aggregated, or returned. Nothing here may ever be imported from
 // a student-facing route or page.
-
-type StoredQuestion = { q: string; options: string[]; correctIndex: number };
-
-function parseQuestions(raw: unknown): StoredQuestion[] {
-  if (!Array.isArray(raw)) return [];
-  const out: StoredQuestion[] = [];
-  for (const item of raw) {
-    if (!item || typeof item !== "object") continue;
-    const { q, options, correctIndex } = item as Record<string, unknown>;
-    if (
-      typeof q === "string" &&
-      Array.isArray(options) &&
-      options.every((o) => typeof o === "string") &&
-      typeof correctIndex === "number"
-    ) {
-      out.push({ q, options: options as string[], correctIndex });
-    }
-  }
-  return out;
-}
 
 export type InstructorQuizSummary = {
   id: string;
@@ -84,16 +65,6 @@ export type InstructorQuizResults = {
   perSection: SectionSignalRow[];
 };
 
-function choicesOf(raw: unknown, count: number): number[] {
-  const choices =
-    raw && typeof raw === "object" && Array.isArray((raw as { choices?: unknown }).choices)
-      ? ((raw as { choices: unknown[] }).choices as unknown[])
-      : [];
-  return Array.from({ length: count }, (_, i) =>
-    typeof choices[i] === "number" ? (choices[i] as number) : -1,
-  );
-}
-
 /**
  * Full results for one quiz: per-section attempt counts, averages and
  * per-question correct-rates. For the diagnostic this table IS the Session 1
@@ -125,7 +96,7 @@ export async function getQuizResults(quizId: string): Promise<InstructorQuizResu
     if (!acc) continue;
     acc.count += 1;
     acc.scoreSum += a.scorePct;
-    const choices = choicesOf(a.answers, questions.length);
+    const choices = parseChoices(a.answers, questions.length);
     questions.forEach((q, i) => {
       if (choices[i] === q.correctIndex) acc.correctPerQ[i] += 1;
     });

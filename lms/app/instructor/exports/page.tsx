@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/db";
 import { Card, Eyebrow } from "@/components/ui";
 
-// U15 — instructor export hub: every CSV the LMS produces, in one place.
+// Instructor export hub: every CSV the LMS produces, in one place.
 // Grades/PCI stay inside the LMS (never Praxy) — these downloads are
 // instructor-only, enforced by the routes themselves.
 

@@ -19,3 +19,21 @@ export function toCsv(headers: readonly unknown[], rows: readonly (readonly unkn
   const lines = [headers, ...rows].map((row) => row.map(escapeCell).join(","));
   return lines.join("\r\n") + "\r\n";
 }
+
+/** 200 text/csv attachment response — shared by every export route. */
+export function csvResponse(csv: string, filename: string): Response {
+  return new Response(csv, {
+    status: 200,
+    headers: {
+      "content-type": "text/csv; charset=utf-8",
+      "content-disposition": `attachment; filename="${filename}"`,
+    },
+  });
+}
+
+/** A numeric field out of a JSON object cell, or "" for a blank CSV cell. */
+export function numberField(json: unknown, key: string): number | "" {
+  if (!json || typeof json !== "object" || Array.isArray(json)) return "";
+  const v = (json as Record<string, unknown>)[key];
+  return typeof v === "number" ? v : "";
+}

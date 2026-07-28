@@ -1,3 +1,4 @@
+import { cache } from "react";
 import type { Role } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { getClerkSession, getClerkUserEmail } from "./clerk";
@@ -57,13 +58,22 @@ function realDeps(req?: Request): SessionDeps {
   };
 }
 
+// Per-request memo for the no-arg server-component path: layout + page calls
+// within one render share a single Clerk check + prisma.user lookup. Outside a
+// React request scope, cache() degrades to a plain call.
+const getSessionUserCached = cache(
+  (): Promise<SessionUser | null> => resolveSessionUser(realDeps()),
+);
+
 /**
  * The session for the current request: test-login cookie first (when enabled),
- * then Clerk. Pass the Request in API routes; server components may omit it
- * (cookies come from next/headers).
+ * then Clerk. Pass the Request in API routes (uncached — the request carries
+ * the cookies); server components may omit it (cookies come from next/headers,
+ * memoized per request via React cache()).
  */
 export async function getSessionUser(req?: Request): Promise<SessionUser | null> {
-  return resolveSessionUser(realDeps(req));
+  if (req) return resolveSessionUser(realDeps(req));
+  return getSessionUserCached();
 }
 
 /** Typed auth failure — status is 401 (no session) or 403 (wrong role). */

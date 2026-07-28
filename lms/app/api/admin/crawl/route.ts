@@ -3,7 +3,7 @@ import { withAuth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { enqueuePortfolioCrawl } from "@/lib/queue";
 
-// U16 — admin trigger for the portfolio link-liveness crawl. POST {userId}
+// Admin trigger for the portfolio link-liveness crawl. POST {userId}
 // enqueues one student; POST {all:true} enqueues the cohort sweep. The
 // worker's 'portfolio.crawl' consumer does the fetching (through safe-fetch)
 // and writes PortfolioEntry.lastCrawl.

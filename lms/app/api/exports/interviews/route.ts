@@ -1,19 +1,13 @@
 import { withAuth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
-import { toCsv } from "@/lib/csv-export";
+import { csvResponse, numberField, toCsv } from "@/lib/csv-export";
 import { INTERVIEW_CATEGORIES } from "@/lib/scoring/components";
 
-// U15 — instructor CSV export of interview status + rubric scores. One row
+// Instructor CSV export of interview status + rubric scores. One row
 // per interview attempt (latest first per student), escalation reason
 // included so the review queue can be worked from a spreadsheet.
 
 export const dynamic = "force-dynamic";
-
-function score(json: unknown, key: string): number | "" {
-  if (!json || typeof json !== "object" || Array.isArray(json)) return "";
-  const v = (json as Record<string, unknown>)[key];
-  return typeof v === "number" ? v : "";
-}
 
 export const GET = withAuth(
   async () => {
@@ -56,20 +50,14 @@ export const GET = withAuth(
         iv.user.team?.name ?? "",
         iv.status,
         iv.attemptNumber,
-        ...INTERVIEW_CATEGORIES.map((k) => score(iv.rubricScores, k)),
-        score(iv.rubricScores, "total"),
+        ...INTERVIEW_CATEGORIES.map((k) => numberField(iv.rubricScores, k)),
+        numberField(iv.rubricScores, "total"),
         iv.confidence ?? "",
         iv.escalationReason ?? "",
         iv.completedAt?.toISOString() ?? "",
       ]),
     );
-    return new Response(csv, {
-      status: 200,
-      headers: {
-        "content-type": "text/csv; charset=utf-8",
-        "content-disposition": 'attachment; filename="interviews.csv"',
-      },
-    });
+    return csvResponse(csv, "interviews.csv");
   },
   { role: "instructor" },
 );

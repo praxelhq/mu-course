@@ -1,4 +1,4 @@
-// U15 — the frozen final formula (docs/build/01_scoring_methodology.md §8),
+// The frozen final formula (docs/build/01_scoring_methodology.md §8),
 // pure. NO DB imports. Null components contribute 0 but stay itemized as
 // pending — the grade line always renders all seven components.
 

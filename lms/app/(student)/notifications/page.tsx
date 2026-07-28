@@ -4,7 +4,7 @@ import { AuthError, requireUser } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { Card, Eyebrow } from "@/components/ui";
 
-// U10 — the notifications surface: every notification (unread first),
+// The notifications surface: every notification (unread first),
 // mark-read per item and mark-all (plain form POSTs to the existing U4
 // /api/notifications/read endpoint — scoped server-side to the session
 // user). Grade notifications link to /grades (U15 builds that page).

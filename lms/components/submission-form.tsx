@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Button, StatusChip } from "@/components/ui";
 import type { SubmissionFieldDef } from "@/lib/submission-schema";
 
-// U8 — the schema-driven submission form. Rendered ENTIRELY from the
+// The schema-driven submission form. Rendered ENTIRELY from the
 // assignment type's submissionSchema field defs (link/text/writeup/file/
 // files): a new AssignmentType row is a working form with zero code changes.
 // Files go browser → S3 via presigned PUT (XHR for progress); a failed

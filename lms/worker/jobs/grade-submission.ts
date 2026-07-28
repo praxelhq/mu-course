@@ -1,4 +1,4 @@
-import type { Prisma, PrismaClient } from "@prisma/client";
+import { SubmissionStatus, type Prisma, type PrismaClient } from "@prisma/client";
 import { prisma as defaultPrisma } from "@/lib/db";
 import { structuredCall, gradingModel, type StructuredCaller } from "@/lib/ai/client";
 import { extractSubmissionFiles, type ExtractDeps } from "@/lib/ai/extract";
@@ -12,11 +12,11 @@ import {
 import { findNearDuplicates } from "@/lib/ai/near-dup";
 import type { Embedder } from "@/lib/ai/embeddings";
 import { parseSubmissionSchema } from "@/lib/submission-schema";
-import { safeFetch, type LookupFn } from "@/lib/net/safe-fetch";
+import { probeUrl, type LookupFn } from "@/lib/net/safe-fetch";
 import { syncGalleryItem } from "@/lib/galleries";
 import { enqueueScreenshotCapture } from "@/lib/queue";
 
-// U9 — the grade.submission consumer. All external effects are injectable so
+// The grade.submission consumer. All external effects are injectable so
 // tests drive the exact production code path with a mocked model/S3/network.
 //
 // Failure policy (docs/DECISIONS.md): on model double-failure the handler
@@ -75,11 +75,8 @@ async function checkLink(
     lookup: deps.lookup,
   };
   try {
-    let res = await safeFetch(url, { ...opts, method: "HEAD" });
-    if (!res.ok && res.status !== 404) {
-      // Some hosts reject HEAD (405/403) — confirm with GET before failing.
-      res = await safeFetch(url, { ...opts, method: "GET" });
-    }
+    // Some hosts reject HEAD (405/403) — confirm with GET before failing.
+    const res = await probeUrl(url, opts, (r) => !r.ok && r.status !== 404);
     return { field, url, ok: res.ok, status: res.status };
   } catch (err) {
     return {
@@ -112,7 +109,10 @@ export async function handleGradeSubmission(
   }
   // Status guard: fresh jobs arrive as 'submitted'; 'grading' is accepted so a
   // dead-lettered/stuck job can be re-run. Anything else is skipped.
-  if (submission.status !== "submitted" && submission.status !== "grading") {
+  if (
+    submission.status !== SubmissionStatus.submitted &&
+    submission.status !== SubmissionStatus.grading
+  ) {
     console.warn(
       `[grading] submission ${submissionId} is '${submission.status}' — skipping`,
     );
@@ -121,39 +121,44 @@ export async function handleGradeSubmission(
 
   await db.submission.update({
     where: { id: submissionId },
-    data: { status: "grading" },
+    data: { status: SubmissionStatus.grading },
   });
 
   const type = submission.assignment.assignmentType;
   const schema = parseSubmissionSchema(type.submissionSchema);
   const fields = (submission.fields ?? {}) as Record<string, unknown>;
 
-  // 1. Near-duplicate detection (hash + embeddings; never throws).
-  const nearDup = await findNearDuplicates(
-    {
-      id: submission.id,
-      assignmentId: submission.assignmentId,
-      userId: submission.userId,
-      contentHash: submission.contentHash,
-      fields,
-    },
-    { prisma: db, embed: deps.embed },
-  );
-
-  // 2. File extraction (gracefully degrades when S3 is unconfigured).
-  const { extracted, failures: extractionFailures } = await extractSubmissionFiles(
-    submission.files,
-    deps.s3 ?? {},
-  );
-
-  // 3. Link liveness for every link-kind field value (via safeFetch — SSRF-guarded).
-  const linkChecks: LinkCheckResult[] = [];
-  for (const def of schema?.fields ?? []) {
-    if (def.kind !== "link") continue;
+  // 1–3 run concurrently (independent):
+  //   1. Near-duplicate detection (hash + embeddings; never throws).
+  //   2. File extraction (gracefully degrades when S3 is unconfigured).
+  //   3. Link liveness for every link-kind field value (via safeFetch —
+  //      SSRF-guarded), each link probed concurrently; results keep the
+  //      schema's field order.
+  const linkFields = (schema?.fields ?? []).flatMap((def) => {
+    if (def.kind !== "link") return [];
     const value = fields[def.key];
-    if (typeof value !== "string" || value.trim() === "") continue;
-    linkChecks.push(await checkLink(def.key, value, deps));
-  }
+    if (typeof value !== "string" || value.trim() === "") return [];
+    return [{ field: def.key, url: value }];
+  });
+  const [nearDup, extraction, linkChecks]: [
+    Awaited<ReturnType<typeof findNearDuplicates>>,
+    Awaited<ReturnType<typeof extractSubmissionFiles>>,
+    LinkCheckResult[],
+  ] = await Promise.all([
+    findNearDuplicates(
+      {
+        id: submission.id,
+        assignmentId: submission.assignmentId,
+        userId: submission.userId,
+        contentHash: submission.contentHash,
+        fields,
+      },
+      { prisma: db, embed: deps.embed },
+    ),
+    extractSubmissionFiles(submission.files, deps.s3 ?? {}),
+    Promise.all(linkFields.map((l) => checkLink(l.field, l.url, deps))),
+  ]);
+  const { extracted, failures: extractionFailures } = extraction;
 
   // 4. Assemble the anonymized, injection-hardened context.
   const context = assembleGradingContext({
@@ -214,7 +219,7 @@ export async function handleGradeSubmission(
     });
     await tx.submission.update({
       where: { id: submission.id },
-      data: { status: "graded" },
+      data: { status: SubmissionStatus.graded },
     });
     await tx.notification.create({
       data: {
@@ -238,7 +243,7 @@ export async function handleGradeSubmission(
     });
   });
 
-  // 8. U11 — gallery sync + screenshot capture, post-transaction and
+  // 8. Gallery sync + screenshot capture, post-transaction and
   // best-effort: a gallery hiccup must never fail (or retry) a grading job.
   try {
     const item = await syncGalleryItem(submission.id, { prisma: db });

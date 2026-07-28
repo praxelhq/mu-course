@@ -5,7 +5,7 @@ import { Card, Eyebrow } from "@/components/ui";
 import { INTERVIEW_CATEGORIES } from "@/lib/ai/interview-grading";
 import { InterviewActions } from "./actions";
 
-// U12 — one interview: transcript with per-turn audio (presigned, short TTL),
+// One interview: transcript with per-turn audio (presigned, short TTL),
 // rubric + escalation reason, and the resolution actions (audited).
 
 export const dynamic = "force-dynamic";

@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Button, Card } from "@/components/ui";
 import { RealtimeRoom } from "./realtime-room";
 
-// U12/U13 — the interview room. One orchestrator (InterviewRoom) owns consent
+// The interview room. One orchestrator (InterviewRoom) owns consent
 // and transport selection; the SERVER decides which transport runs:
 //
 //   consent → POST /api/interview/token

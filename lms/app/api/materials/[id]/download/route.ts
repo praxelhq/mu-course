@@ -1,6 +1,6 @@
 import { withAuth } from "@/lib/auth";
 import { resolveMaterialAccess } from "@/lib/materials";
-import { S3NotConfiguredError, presignGet, s3Configured } from "@/lib/s3";
+import { presignGet, s3Configured, s3ErrorResponse } from "@/lib/s3";
 
 // One-click material download: auth + gate check (resolveGate with userId —
 // per-student exceptions and the parent-session rule both apply), then a 302
@@ -29,9 +29,8 @@ export const GET = withAuth<Ctx>(async (req, { user, params }) => {
     const url = await presignGet(material.s3Key, { downloadName });
     return Response.redirect(url, 302);
   } catch (err) {
-    if (err instanceof S3NotConfiguredError) {
-      return Response.json({ error: "Storage not configured" }, { status: 503 });
-    }
+    const res = s3ErrorResponse(err);
+    if (res) return res;
     throw err;
   }
 });

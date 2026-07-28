@@ -2,7 +2,7 @@ import type { PrismaClient } from "@prisma/client";
 import { prisma as defaultPrisma } from "@/lib/db";
 import { presignGet, s3Configured } from "@/lib/s3";
 
-// U11 — galleries. One GalleryItem per graded/finalised submission of a
+// Galleries. One GalleryItem per graded/finalised submission of a
 // galleryEligible AssignmentType, always pointing at the LATEST graded
 // version (resubmission moves the existing item — featured flag and caption
 // survive, the screenshot resets so the capture job re-runs on new content).

@@ -3,7 +3,7 @@ import type { Prisma } from "@prisma/client";
 import { withAuth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 
-// U15 — peer checkpoint submission. The active checkpoint comes from ConfigKV
+// Peer checkpoint submission. The active checkpoint comes from ConfigKV
 // "peer_checkpoint" {active: 1|2|null}; while a checkpoint is active a student
 // may resubmit freely (idempotent upsert on the (checkpoint, reviewer,
 // reviewee) unique key — overwrite-while-active, frozen once closed).

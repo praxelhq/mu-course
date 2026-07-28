@@ -1,8 +1,9 @@
 import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db";
-import { resolveGateDetail } from "@/lib/gates";
+import { parentSessionPageIdFor, resolveGateDetail } from "@/lib/gates";
+import { parseChoices, parseQuestions } from "./shared";
 
-// U14 — THE single student-facing quiz repository module (CLAUDE.md
+// THE single student-facing quiz repository module (CLAUDE.md
 // invariant): every student-surface quiz read goes through here, and every
 // RETROSPECTIVE surface (history, tallies, best-of) excludes isDiagnostic
 // rows unconditionally at the query layer. The live TAKING path (armed quiz,
@@ -19,40 +20,6 @@ export const GRACE_SECONDS = 120;
 
 /** How many attempts count toward the grade (best-of-three). */
 export const BEST_OF = 3;
-
-// ---------------------------------------------------------------------------
-// Question JSON (Quiz.questions) — parsed defensively in one place
-// ---------------------------------------------------------------------------
-
-type StoredQuestion = { q: string; options: string[]; correctIndex: number };
-
-function parseQuestions(raw: unknown): StoredQuestion[] {
-  if (!Array.isArray(raw)) return [];
-  const out: StoredQuestion[] = [];
-  for (const item of raw) {
-    if (!item || typeof item !== "object") continue;
-    const { q, options, correctIndex } = item as Record<string, unknown>;
-    if (
-      typeof q === "string" &&
-      Array.isArray(options) &&
-      options.every((o) => typeof o === "string") &&
-      typeof correctIndex === "number"
-    ) {
-      out.push({ q, options: options as string[], correctIndex });
-    }
-  }
-  return out;
-}
-
-function parseChoices(raw: unknown, count: number): number[] {
-  const choices =
-    raw && typeof raw === "object" && Array.isArray((raw as { choices?: unknown }).choices)
-      ? ((raw as { choices: unknown[] }).choices as unknown[])
-      : [];
-  return Array.from({ length: count }, (_, i) =>
-    typeof choices[i] === "number" ? (choices[i] as number) : -1,
-  );
-}
 
 // ---------------------------------------------------------------------------
 // Student-facing types — note: NO isDiagnostic field anywhere, by design.
@@ -142,16 +109,12 @@ async function loadStudentAndQuiz(
 }
 
 async function quizGateDetail(quizId: string, sectionId: string, userId: string, now: Date) {
-  const page = await prisma.sessionPage.findFirst({
-    where: { linkedQuizIds: { has: quizId } },
-    select: { id: true },
-  });
   return resolveGateDetail(
     {
       targetType: "quiz",
       targetId: quizId,
       sectionId,
-      parentSessionPageId: page?.id,
+      parentSessionPageId: await parentSessionPageIdFor("quiz", quizId),
       userId,
     },
     now,
@@ -355,4 +318,23 @@ export async function getBestOfThreeAvg(userId: string): Promise<number | null> 
   });
   if (attempts.length === 0) return null;
   return attempts.reduce((sum, a) => sum + a.scorePct, 0) / attempts.length;
+}
+
+/** Minimal quiz shape a session hub renders. No isDiagnostic, by design. */
+export type HubQuizRow = { id: string; title: string; sectionIds: string[] };
+
+/**
+ * Student-hub quiz listing. Routes the session hub's quiz read through this
+ * module so every student-facing quiz query lives here (CLAUDE.md isolation
+ * invariant), and the return type carries no isDiagnostic field. This is a
+ * TAKING-adjacent surface, not a retrospective one: armed diagnostic quizzes
+ * still appear on the hub identically to normal ones, so it does NOT filter
+ * on isDiagnostic — arming/availability is decided by the gate system.
+ */
+export async function listQuizzesForHub(ids: string[]): Promise<HubQuizRow[]> {
+  if (ids.length === 0) return [];
+  return prisma.quiz.findMany({
+    where: { id: { in: ids } },
+    select: { id: true, title: true, sectionIds: true },
+  });
 }

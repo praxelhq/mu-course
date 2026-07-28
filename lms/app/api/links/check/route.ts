@@ -2,7 +2,7 @@ import { z } from "zod";
 import { withAuth } from "@/lib/auth";
 import { SafeFetchBlockedError, safeFetch } from "@/lib/net/safe-fetch";
 
-// U8 — inline "Check link" for the submission form: HEAD (GET fallback on
+// Inline "Check link" for the submission form: HEAD (GET fallback on
 // 405) through lib/net/safe-fetch — never a raw fetch of user input.
 //
 // Rate limiting is a per-user in-memory token bucket (~10/min). Caveat: on

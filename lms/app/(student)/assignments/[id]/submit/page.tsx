@@ -5,7 +5,7 @@ import { s3Configured } from "@/lib/s3";
 import { Card, Eyebrow } from "@/components/ui";
 import { SubmissionForm, type HistoryRow } from "@/components/submission-form";
 
-// U8 — the submit surface. The form renders from the assignment type's
+// The submit surface. The form renders from the assignment type's
 // submissionSchema (schema-driven; new types need zero code changes). A
 // closed/locked gate renders the branded closed card; the API re-enforces
 // the gate on the actual mutation (409 on the race).

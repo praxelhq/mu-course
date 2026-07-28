@@ -8,7 +8,7 @@ import {
   startInterview,
 } from "@/lib/interview/session";
 
-// U12 — POST /api/interview/start: window/attempt guards, creates the live
+// POST /api/interview/start: window/attempt guards, creates the live
 // interview (system prompt stored as turn 0) and asks the first question.
 // If the student already has a LIVE interview, this resumes it instead — the
 // R17 guarantee means a page reload never burns the attempt.

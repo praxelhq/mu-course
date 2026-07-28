@@ -10,7 +10,7 @@ import {
 import { Card, Eyebrow } from "@/components/ui";
 import { PortfolioForm } from "./portfolio-form";
 
-// U16 — the student portfolio page feeding the 25% component (§7):
+// The student portfolio page feeding the 25% component (§7):
 //  - linked-artifacts checklist (automatic: graded submissions by type),
 //  - narrative + external links (editable, saved via POST /api/portfolio),
 //  - validations viewer (read-only; instructors add them),

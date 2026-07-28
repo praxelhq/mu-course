@@ -3,7 +3,7 @@ import { AuthError, requireUser } from "@/lib/auth";
 import { getGradeLine } from "@/lib/scoring/assemble";
 import { Card, Eyebrow } from "@/components/ui";
 
-// U15 — the line-by-line grade view (§8: "Grading only feels fair when a
+// The line-by-line grade view (§8: "Grading only feels fair when a
 // student can see exactly where each point came from"). Students see ONLY
 // their own line: the userId comes from the session, the page takes no
 // parameters. Grades and PCI never leave the LMS.

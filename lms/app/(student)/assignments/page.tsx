@@ -4,7 +4,7 @@ import { AuthError, requireUser } from "@/lib/auth";
 import { getStudentDashboard } from "@/lib/dashboard";
 import { Card, Eyebrow, StatusChip } from "@/components/ui";
 
-// U8 — simple list of my open assignments (reuses the dashboard data helper)
+// Simple list of my open assignments (reuses the dashboard data helper)
 // so the /assignments URLs have a home surface.
 
 export const dynamic = "force-dynamic";

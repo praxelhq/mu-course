@@ -1,5 +1,9 @@
+import { parseLine } from "./csv-preview";
+
 // Tiny roster CSV parser (name,email,section) — no dependency. Used by the
 // admin roster import endpoint and by the seed's fixture writer's tests.
+// Line splitting reuses lib/csv-preview's quote-aware parseLine, so quoted
+// cells (including embedded commas) parse correctly.
 
 export interface RosterRow {
   name: string;
@@ -20,14 +24,6 @@ export interface RosterParseResult {
 
 const EMAIL_RE = /^[^\s@,]+@[^\s@,]+\.[^\s@,]+$/;
 
-function stripQuotes(s: string): string {
-  const t = s.trim();
-  if (t.length >= 2 && t.startsWith('"') && t.endsWith('"')) {
-    return t.slice(1, -1).trim();
-  }
-  return t;
-}
-
 /**
  * Parse a roster CSV: `name,email,section` per line, optional header row.
  * Rows with a bad shape, invalid email, unknown section, or an email already
@@ -47,7 +43,7 @@ export function parseRosterCsv(
     const line = rawLine.trim();
     if (line === "") return;
     const lineNo = idx + 1;
-    const parts = line.split(",").map(stripQuotes);
+    const parts = parseLine(line).map((p) => p.trim());
     // Header row: skip wherever it appears first.
     if (
       parts.length >= 2 &&

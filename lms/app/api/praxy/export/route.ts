@@ -4,7 +4,7 @@ import { prisma } from "@/lib/db";
 import { parseExternalLinks, parseValidations } from "@/lib/portfolio";
 import { parseSubmissionSchema } from "@/lib/submission-schema";
 
-// U16 — the Praxy export STUB. Returns the exact payload that WOULD be sent
+// The Praxy export STUB. Returns the exact payload that WOULD be sent
 // to Praxy for one student: artifacts + badges ONLY.
 //
 // HARD INVARIANT (CLAUDE.md): grades and PCI never leave the LMS. This

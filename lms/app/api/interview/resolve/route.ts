@@ -4,7 +4,7 @@ import { withAuth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { INTERVIEW_CATEGORIES } from "@/lib/ai/interview-grading";
 
-// U12 — instructor resolution of interview escalations: mark the AI grade as
+// Instructor resolution of interview escalations: mark the AI grade as
 // final, or adjust category scores (reason required). Both are audited.
 
 export const dynamic = "force-dynamic";

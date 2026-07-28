@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-// U16 — the erasure confirm form: the admin must retype the student's email
+// The erasure confirm form: the admin must retype the student's email
 // before POST /api/admin/dpdp/delete fires. Success shows the per-table
 // deletion counts returned by the route.
 

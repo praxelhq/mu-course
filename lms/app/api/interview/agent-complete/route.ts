@@ -4,7 +4,7 @@ import { interviewErrorResponse } from "@/lib/interview/http";
 import { agentAuthResponse } from "@/lib/interview/realtime";
 import { completeInterview } from "@/lib/interview/session";
 
-// U13 — POST /api/interview/agent-complete: the Python agent ends the
+// POST /api/interview/agent-complete: the Python agent ends the
 // interview (LLM signalled done, or the 12-minute budget). Stores the Egress
 // room recording key when provided, marks completed and enqueues grading via
 // the U12 completeInterview (idempotent on repeats). X-Agent-Token guarded.

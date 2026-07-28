@@ -4,7 +4,7 @@ import { prisma } from "@/lib/db";
 import { interviewErrorResponse, rateLimited, takeInterviewToken } from "@/lib/interview/http";
 import { TRANSPORT_TURNBASED } from "@/lib/interview/session";
 
-// U13 — POST /api/interview/fallback: in-place degradation. The student's
+// POST /api/interview/fallback: in-place degradation. The student's
 // client flips its own live interview from 'realtime' to 'turnbased-fallback'
 // (dropped connection, failed join, sustained poor quality) and continues the
 // SAME interview over the U12 turn-based loop — every realtime turn already

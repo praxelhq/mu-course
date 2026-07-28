@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { GalleryWallItem, GalleryWalls, WallKey } from "@/lib/galleries";
 import { Card, Eyebrow } from "@/components/ui";
 
-// U11 — shared rendering for the three gallery walls (student + instructor
+// Shared rendering for the three gallery walls (student + instructor
 // surfaces). Server-rendered; filtering is URL-searchParams based so the
 // pages stay server components. The featured ribbon is the view's single
 // Ochre accent (BRAND rule 3).

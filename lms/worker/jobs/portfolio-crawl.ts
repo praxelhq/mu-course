@@ -1,13 +1,9 @@
-import type { Prisma, PrismaClient } from "@prisma/client";
+import { Role, type Prisma, type PrismaClient } from "@prisma/client";
 import { prisma } from "../../lib/db";
 import { gatherCrawlUrls, type CrawledLink, type LastCrawl } from "../../lib/portfolio";
-import {
-  safeFetch,
-  SafeFetchBlockedError,
-  type SafeFetchOptions,
-} from "../../lib/net/safe-fetch";
+import { probeUrl, type SafeFetchOptions } from "../../lib/net/safe-fetch";
 
-// U16 — the portfolio link-liveness crawl ('portfolio.crawl' consumer).
+// The portfolio link-liveness crawl ('portfolio.crawl' consumer).
 // For each student: gather every claimed URL (portfolio external links +
 // link-kind submission fields), probe each through lib/net/safe-fetch (the
 // SSRF policy module — a private-IP/blocked link is recorded ok:false WITHOUT
@@ -34,18 +30,12 @@ async function probe(url: string, deps: CrawlDeps): Promise<CrawledLink> {
     ...(deps.lookup ? { lookup: deps.lookup } : {}),
   };
   try {
-    let res = await safeFetch(url, { ...base, method: "HEAD" });
-    if (res.status === 405 || res.status === 501) {
-      res = await safeFetch(url, { ...base, method: "GET" });
-    }
+    const res = await probeUrl(url, base, (r) => r.status === 405 || r.status === 501);
     return { url, ok: res.ok, status: res.status };
-  } catch (err) {
+  } catch {
     // SafeFetchBlockedError (private address, bad scheme, DNS failure) and
     // network/timeout errors all record a dead link; blocked URLs never got a
     // connection at all — that's the policy, not an accident.
-    if (!(err instanceof SafeFetchBlockedError)) {
-      // timeouts/aborts/conn-refused — still just a dead link.
-    }
     return { url, ok: false };
   }
 }
@@ -105,7 +95,7 @@ export async function handlePortfolioCrawl(
   }
   if (data.all) {
     const students = await db.user.findMany({
-      where: { role: "student" },
+      where: { role: Role.student },
       select: { id: true },
       orderBy: { id: "asc" },
     });

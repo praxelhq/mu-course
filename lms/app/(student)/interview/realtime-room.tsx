@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Card } from "@/components/ui";
 
-// U13 — the realtime (LiveKit) interview room. Audio-only: publish the mic,
+// The realtime (LiveKit) interview room. Audio-only: publish the mic,
 // play the agent's audio, and show the live transcript by polling the state
 // endpoint every 5s (the poll doubles as the server-side heartbeat).
 //

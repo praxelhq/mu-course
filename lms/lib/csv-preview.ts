@@ -13,7 +13,8 @@ export interface CsvPreview {
   truncated: boolean;
 }
 
-function parseLine(line: string): string[] {
+/** One CSV line → fields (quoted commas + doubled quotes handled). */
+export function parseLine(line: string): string[] {
   const out: string[] = [];
   let field = "";
   let inQuotes = false;

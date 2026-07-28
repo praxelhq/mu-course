@@ -1,7 +1,7 @@
 import { z, type ZodType } from "zod";
 import { wrapStudentContent } from "./grading";
 
-// U12 — interview grading pieces, testable with a mocked model client:
+// Interview grading pieces, testable with a mocked model client:
 //   interviewGradeSchema           → Zod schema for the model's JSON reply
 //   assembleInterviewGradingContext→ {system, user} prompts (transcript with
 //                                    per-turn timings + wrapped submission

@@ -1,4 +1,4 @@
-// U9 — the ONLY Gemini-embedding module. Anthropic (the pinned grader) has no
+// The ONLY Gemini-embedding module. Anthropic (the pinned grader) has no
 // embeddings endpoint; the Gemini key already exists in the voice stack (see
 // docs/DECISIONS.md). REST is used directly — no SDK dependency. The endpoint
 // is a fixed trusted URL (never user-supplied), so safe-fetch is not required.

@@ -3,7 +3,7 @@ import { getReviewQueue, type ReviewQueueItem } from "@/lib/review-queue";
 import { Card, Eyebrow } from "@/components/ui";
 import { FinaliseButton, OverrideForm } from "./review-ui";
 
-// U10 — instructor review queue: provisional grades needing human eyes
+// Instructor review queue: provisional grades needing human eyes
 // (low confidence, policy flags, dynamic top/bottom-5% percentile outliers —
 // the percentile membership is computed fresh on every render). Grouped by
 // assignment; each group carries its batch-finalise button.

@@ -3,7 +3,7 @@ import { withAuth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { appendValidation } from "@/lib/portfolio";
 
-// U16 — instructor-entered portfolio validations (v1: students cannot request
+// Instructor-entered portfolio validations (v1: students cannot request
 // peer validation in-product; instructors/admins record both kinds — see
 // docs/DECISIONS.md). Appends {kind, by, note, at} to the student's
 // PortfolioEntry.validations and audit-logs the act.

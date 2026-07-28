@@ -7,7 +7,7 @@ import {
   type Embedder,
 } from "./embeddings";
 
-// U9 — near-duplicate detection for grading:
+// Near-duplicate detection for grading:
 //   1. exact contentHash match against OTHER students' submissions on the
 //      same assignment (a student's own resubmissions never count)
 //   2. Gemini embedding cosine similarity over the concatenated text fields

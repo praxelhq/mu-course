@@ -3,7 +3,7 @@ import { parseValidations } from "@/lib/portfolio";
 import { Card, Eyebrow } from "@/components/ui";
 import { ValidationsForm, type StudentOption } from "./validations-form";
 
-// U16 — the tiny instructor surface for recording portfolio validations
+// The tiny instructor surface for recording portfolio validations
 // (external company sign-offs, peer validations). v1: validations are
 // instructor-entered only; there is no student "request validation" flow.
 // Auth via the instructor layout (instructors + admins).

@@ -1,14 +1,9 @@
 import { z } from "zod";
 import { withAuth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
-import {
-  S3NotConfiguredError,
-  UploadRejectedError,
-  keyForSignoff,
-  presignPut,
-} from "@/lib/s3";
+import { keyForSignoff, presignPut, s3ErrorResponse } from "@/lib/s3";
 
-// U8 — instructor: presigned PUT for sign-off evidence, scoped to the
+// Instructor: presigned PUT for sign-off evidence, scoped to the
 // signoffs/{teamId}/ namespace.
 
 export const dynamic = "force-dynamic";
@@ -34,12 +29,8 @@ export const POST = withAuth(
       const { url, headers } = await presignPut({ key, contentType, maxBytes: sizeBytes });
       return Response.json({ url, key, headers });
     } catch (err) {
-      if (err instanceof UploadRejectedError) {
-        return Response.json({ error: err.message }, { status: err.status });
-      }
-      if (err instanceof S3NotConfiguredError) {
-        return Response.json({ error: "Storage not configured" }, { status: 503 });
-      }
+      const res = s3ErrorResponse(err);
+      if (res) return res;
       throw err;
     }
   },

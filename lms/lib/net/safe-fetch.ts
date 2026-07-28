@@ -226,6 +226,23 @@ export async function safeFetch(
   }
 }
 
+/**
+ * HEAD-first liveness probe with a caller-supplied "retry with GET" predicate
+ * (some hosts reject HEAD). Shared by the grading link checker and the
+ * portfolio crawl; each keeps its own predicate and result shape.
+ */
+export async function probeUrl(
+  url: string,
+  options: SafeFetchOptions,
+  shouldRetryWithGet: (res: SafeFetchResult) => boolean,
+): Promise<SafeFetchResult> {
+  let res = await safeFetch(url, { ...options, method: "HEAD" });
+  if (shouldRetryWithGet(res)) {
+    res = await safeFetch(url, { ...options, method: "GET" });
+  }
+  return res;
+}
+
 export interface SafeFetchBytesResult extends SafeFetchResult {
   contentType: string | null;
   body: Uint8Array;

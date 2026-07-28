@@ -1,4 +1,4 @@
-import type { Prisma, PrismaClient } from "@prisma/client";
+import { InterviewStatus, type Prisma, type PrismaClient } from "@prisma/client";
 import { prisma as defaultPrisma } from "@/lib/db";
 import { structuredCall, gradingModel, type StructuredCaller } from "@/lib/ai/client";
 import {
@@ -10,7 +10,7 @@ import {
 } from "@/lib/ai/interview-grading";
 import { estimateCostUsd } from "./grade-submission";
 
-// U12 — the grade.interview consumer. Same failure policy as grade.submission
+// The grade.interview consumer. Same failure policy as grade.submission
 // (docs/DECISIONS.md): model double-failure throws → pg-boss retries with
 // backoff → dead-letters to grade.interview.dead; the interview stays
 // 'completed' so a re-enqueue re-runs cleanly.
@@ -42,7 +42,7 @@ export async function handleGradeInterview(
     console.warn(`[interview-grading] ${interviewId} not found — skipping`);
     return;
   }
-  if (interview.status !== "completed") {
+  if (interview.status !== InterviewStatus.completed) {
     console.warn(
       `[interview-grading] ${interviewId} is '${interview.status}' — skipping (only completed interviews are graded)`,
     );
@@ -102,7 +102,7 @@ export async function handleGradeInterview(
     await tx.interview.update({
       where: { id: interview.id },
       data: {
-        status: escalationReason ? "escalated" : "graded",
+        status: escalationReason ? InterviewStatus.escalated : InterviewStatus.graded,
         escalationReason,
         confidence: grade.confidence,
         rubricScores: {

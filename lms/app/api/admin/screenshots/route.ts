@@ -4,7 +4,7 @@ import { prisma } from "@/lib/db";
 import { backfillGalleryItems } from "@/lib/galleries";
 import { enqueueScreenshotCapture } from "@/lib/queue";
 
-// U11 — admin backfill for screenshot capture. POST {submissionId} re-enqueues
+// Admin backfill for screenshot capture. POST {submissionId} re-enqueues
 // one capture; POST {all:true} runs the gallery backfill and re-enqueues every
 // app-wall item's current submission (U16 surfaces failures from the queue).
 

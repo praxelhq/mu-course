@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-// U16 — client action buttons for the admin costs page: run the portfolio
+// Client action buttons for the admin costs page: run the portfolio
 // crawl, retry a dead-lettered grading job (POST /api/admin/regrade), and
 // re-enqueue a blocked screenshot (POST /api/admin/screenshots).
 

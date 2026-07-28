@@ -2,7 +2,7 @@ import { z } from "zod";
 import { withAuth } from "@/lib/auth";
 import { upsertOwnPortfolio } from "@/lib/portfolio";
 
-// U16 — save the caller's OWN portfolio entry (narrative + external links).
+// Save the caller's OWN portfolio entry (narrative + external links).
 // Ownership is structural: the route takes no userId — the entry written is
 // always the session user's, so student B cannot touch student A's entry.
 // Validations and lastCrawl are not writable here (instructor form / crawl

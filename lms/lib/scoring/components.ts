@@ -1,4 +1,4 @@
-// U15 — the seven component scorers, pure functions. NO DB imports: data in,
+// The seven component scorers, pure functions. NO DB imports: data in,
 // {raw, detail} out. raw is 0–100 or null (null = pending: the source doesn't
 // exist yet). The frozen methodology (docs/build/01_scoring_methodology.md
 // §§1–7) wins any conflict; judgment calls are documented inline.

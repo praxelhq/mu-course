@@ -7,7 +7,7 @@ import {
   maxRealtimeRooms,
 } from "@/lib/interview/realtime";
 
-// U13 — admin live-rooms + spend meter: realtime rooms in flight (fresh
+// Admin live-rooms + spend meter: realtime rooms in flight (fresh
 // heartbeat), turn-based interviews live, per-provider interview spend today
 // and total (CostLog feature 'interview' — U16's spend source), and the
 // recent interviews table. Auto-refreshes every 10s via IntervalRefresh.

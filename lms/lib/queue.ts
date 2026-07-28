@@ -1,6 +1,6 @@
 import { PgBoss } from "pg-boss";
 
-// U9 — shared pg-boss access. The web process uses this ONLY to enqueue
+// Shared pg-boss access. The web process uses this ONLY to enqueue
 // (best-effort at submit time — see docs/DECISIONS.md); the worker process
 // registers handlers in worker/index.ts. Lazy singleton, lazy-connect.
 
@@ -98,7 +98,7 @@ export async function enqueuePortfolioCrawl(data: PortfolioCrawlJobData): Promis
 }
 
 /**
- * U16 — the admin costs page's dead-letter view. Lists jobs still QUEUED in a
+ * The admin costs page's dead-letter view. Lists jobs still QUEUED in a
  * dead-letter queue (redriven/completed ones drop out). Returns [] when the
  * queue infrastructure is unreachable — the page renders a note instead.
  */

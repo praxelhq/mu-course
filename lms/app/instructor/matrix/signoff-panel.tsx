@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { MatrixTeamRow } from "@/lib/matrix";
 
-// U8 — per-team company sign-off editor on the matrix page: status
+// Per-team company sign-off editor on the matrix page: status
 // (none | contacted | signed_off), note, optional evidence upload into the
 // signoffs/{teamId}/ namespace via presigned PUT. Writes SignOff + AuditLog
 // through POST /api/signoffs (instructor).

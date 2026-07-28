@@ -2,7 +2,7 @@ import { z } from "zod";
 import { withAuth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 
-// U11 — instructor featuring surface. Featuring is the explicit act that
+// Instructor featuring surface. Featuring is the explicit act that
 // exposes a workflow item's company-engagement files on the wall, so every
 // change lands in the AuditLog ('gallery.feature' / 'gallery.unfeature';
 // caption-only edits log 'gallery.caption').

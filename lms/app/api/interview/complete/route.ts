@@ -3,7 +3,7 @@ import { withAuth } from "@/lib/auth";
 import { interviewErrorResponse, rateLimited, takeInterviewToken } from "@/lib/interview/http";
 import { completeInterview } from "@/lib/interview/session";
 
-// U12 — POST /api/interview/complete: student ends the interview early (or
+// POST /api/interview/complete: student ends the interview early (or
 // the client confirms a budget-forced end). Enqueues grade.interview.
 
 export const dynamic = "force-dynamic";

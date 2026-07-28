@@ -8,7 +8,7 @@ import {
 } from "@/components/gallery-walls";
 import { FeatureControls } from "./feature-controls";
 
-// U11 — the featuring surface: same three walls as the student page, plus
+// The featuring surface: same three walls as the student page, plus
 // per-card feature/unfeature + caption controls (POST /api/galleries/feature,
 // audited). Auth via the instructor layout (instructors and admins).
 

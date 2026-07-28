@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 
-// U15 — client form: number inputs per teammate with a LIVE running total that
+// Client form: number inputs per teammate with a LIVE running total that
 // must equal exactly 100 to enable submit, plus three 1–5 ratings each.
 
 export type TeammateRow = {

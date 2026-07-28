@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button, Card } from "@/components/ui";
 
-// U12 — instructor resolution actions: resolve escalation (accept AI grade),
+// Instructor resolution actions: resolve escalation (accept AI grade),
 // adjust category scores (reason required), grant a retake. All audited
 // server-side.
 
