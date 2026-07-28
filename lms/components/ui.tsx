@@ -4,7 +4,17 @@ import type { CSSProperties, ReactNode } from "react";
 // 1px borders, zero border radius (enforced globally in globals.css), Pine
 // primary, Ochre single accent. Reused by admin/instructor pages.
 
-export function Eyebrow({ children }: { children: ReactNode }) {
+export function Eyebrow({
+  children,
+  muted,
+}: {
+  children: ReactNode;
+  /**
+   * Clay instead of Ochre. Use inside the app shell, where the active nav
+   * link already spends the view's single Ochre accent (BRAND rule 3).
+   */
+  muted?: boolean;
+}) {
   return (
     <p
       style={{
@@ -12,12 +22,44 @@ export function Eyebrow({ children }: { children: ReactNode }) {
         fontSize: "0.75rem",
         letterSpacing: "0.12em",
         textTransform: "uppercase",
-        color: "var(--ochre)",
+        color: muted ? "var(--clay)" : "var(--ochre)",
         margin: "0 0 0.75rem",
       }}
     >
       {children}
     </p>
+  );
+}
+
+// Submission status chips — muted, bordered semantic colors (BRAND rule 5):
+// never filled and loud, hierarchy from the 1px border and type only.
+const STATUS_CHIP_COLORS: Record<string, string> = {
+  draft: "var(--clay)",
+  submitted: "var(--charcoal)",
+  grading: "#8a6a1c", // muted dark amber — in progress, distinct from graded
+  graded: "var(--pine)",
+  finalised: "var(--pine)",
+};
+
+export function StatusChip({ status }: { status: string }) {
+  const color = STATUS_CHIP_COLORS[status] ?? "var(--charcoal)";
+  return (
+    <span
+      style={{
+        display: "inline-block",
+        fontFamily: "var(--font-geist-mono)",
+        fontSize: "0.6875rem",
+        letterSpacing: "0.1em",
+        textTransform: "uppercase",
+        color,
+        border: `1px solid ${color}`,
+        padding: "0.125rem 0.5rem",
+        fontWeight: status === "finalised" ? 700 : 400,
+        whiteSpace: "nowrap",
+      }}
+    >
+      {status}
+    </span>
   );
 }
 

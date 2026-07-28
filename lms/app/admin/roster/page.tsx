@@ -27,7 +27,8 @@ export default async function AdminRosterPage() {
 
   return (
     <main style={{ maxWidth: "48rem", margin: "0 auto", padding: "3rem 2rem" }}>
-      <Eyebrow>Admin · Roster</Eyebrow>
+      {/* muted: the shell's active nav link is this view's Ochre accent */}
+      <Eyebrow muted>Admin · Roster</Eyebrow>
       <h1 style={{ fontSize: "2.25rem", margin: "0 0 0.5rem" }}>Roster import</h1>
       <p style={{ color: "var(--charcoal)", margin: "0 0 2rem", lineHeight: 1.6 }}>
         {total} students on the roster across {sections.length} sections.

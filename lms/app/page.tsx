@@ -1,4 +1,20 @@
-export default function Home() {
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import type { Role } from "@prisma/client";
+import { getSessionUser } from "@/lib/auth";
+
+export const dynamic = "force-dynamic";
+
+const ROLE_HOME: Record<Role, string> = {
+  student: "/dashboard",
+  instructor: "/instructor",
+  admin: "/admin",
+};
+
+export default async function Home() {
+  const user = await getSessionUser();
+  if (user) redirect(ROLE_HOME[user.role]);
+
   return (
     <main
       style={{
@@ -38,12 +54,28 @@ export default function Home() {
           fontSize: "1.125rem",
           lineHeight: 1.6,
           color: "var(--charcoal)",
-          margin: 0,
+          margin: "0 0 2rem",
         }}
       >
         Where the work gets made. One course, eight sections, and everything a
         student ships — assignments, interviews, quizzes, and the gallery —
         under one roof.
+      </p>
+      <p style={{ margin: 0 }}>
+        <Link
+          href="/sign-in"
+          style={{
+            display: "inline-block",
+            background: "var(--pine)",
+            color: "var(--cream)",
+            border: "1px solid var(--pine)",
+            padding: "0.625rem 1.5rem",
+            textDecoration: "none",
+            fontSize: "0.9375rem",
+          }}
+        >
+          Sign in
+        </Link>
       </p>
     </main>
   );
