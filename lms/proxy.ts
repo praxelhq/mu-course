@@ -29,6 +29,7 @@ const isPublicRoute = createRouteMatcher([
   "/",
   "/sign-in(.*)",
   "/not-on-roster",
+  "/api/health", // unauthenticated liveness probe (Railway healthcheck)
   "/api/webhooks/clerk(.*)",
   "/api/test-login", // guards itself (404 outside dev/test)
 ]);

@@ -8,7 +8,15 @@ async function main() {
 
   const boss = new PgBoss(databaseUrl);
   boss.on("error", (err: Error) => console.error("[pg-boss]", err));
-  await boss.start();
+  try {
+    await boss.start();
+  } catch (err) {
+    console.error(
+      "[worker] Could not connect to Postgres at DATABASE_URL — exiting.",
+      err instanceof Error ? err.message : err
+    );
+    process.exit(1);
+  }
   console.log("Worker started. No handlers registered yet.");
 
   const shutdown = async () => {

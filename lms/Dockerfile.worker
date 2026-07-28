@@ -1,0 +1,30 @@
+# syntax=docker/dockerfile:1
+# Worker service (pg-boss jobs: grading queue, crawls, screenshots).
+# Build context: lms/ repo root.
+#   docker build -f Dockerfile.worker -t praxel-worker .
+#
+# Single-stage on purpose: the worker runs TypeScript directly via tsx (a
+# devDependency), so the full pnpm install is kept — no tsc compile step, and
+# no fragile copying of pnpm's symlinked node_modules across stages.
+#
+# PLAYWRIGHT_BROWSERS_PATH=0 stores the Chromium build inside
+# node_modules/playwright-core/.local-browsers, so the browser lives with the
+# install (would also survive a multi-stage node_modules copy).
+
+FROM node:22-slim
+ENV PNPM_HOME="/pnpm" \
+    PATH="/pnpm:$PATH" \
+    PLAYWRIGHT_BROWSERS_PATH=0
+RUN corepack enable \
+ && apt-get update \
+ && apt-get install -y --no-install-recommends openssl ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
+# Chromium + its OS-level dependencies for the screenshot job (later unit)
+RUN pnpm exec playwright install --with-deps chromium
+COPY . .
+RUN pnpm prisma generate
+ENV NODE_ENV=production
+CMD ["pnpm", "exec", "tsx", "worker/index.ts"]
