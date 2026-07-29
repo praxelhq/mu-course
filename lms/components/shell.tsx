@@ -24,6 +24,8 @@ const STUDENT_LINKS: NavLink[] = [
 
 const INSTRUCTOR_LINKS: NavLink[] = [
   { label: "Dashboard", href: "/instructor" },
+  // Live class surface: participation, marks, votes and the reveal toggles.
+  { label: "Session 2", href: "/instructor/session2" },
   { label: "Unlock Console", href: "/instructor/unlocks" },
   { label: "Quizzes", href: "/instructor/quizzes" },
   { label: "Materials", href: "/instructor/materials" },
