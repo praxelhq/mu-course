@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
+import { hasClerkKeys } from "@/lib/auth/clerk";
 import { SignOutAndRetry } from "./sign-out-button";
+
+// Rendered per-request, not prerendered: the sign-out control uses a Clerk
+// hook, and at build time there is no <ClerkProvider> to hang it on.
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Not on roster · The Forge",
@@ -58,7 +63,15 @@ export default function NotOnRosterPage() {
         your instructor has on file. If you used the right one, tell your
         instructor — they can add you in a moment.
       </p>
-      <SignOutAndRetry />
+      {/* Clerk-optional: without keys there is no provider (and no session to
+          clear), so fall back to a plain link rather than crashing. */}
+      {hasClerkKeys() ? (
+        <SignOutAndRetry />
+      ) : (
+        <a href="/sign-in" style={{ marginTop: "2rem", color: "var(--pine)" }}>
+          Back to sign in
+        </a>
+      )}
     </main>
   );
 }
