@@ -4,6 +4,7 @@ import { prisma } from "@/lib/db";
 import { parseSubmissionSchema } from "@/lib/submission-schema";
 import { presignGet, s3Configured } from "@/lib/s3";
 import { Card, Eyebrow, StatusChip } from "@/components/ui";
+import { Markdown } from "@/components/markdown";
 
 // Full submission detail for instructor review: every field, files
 // (presigned GET links, gracefully disabled when storage is unconfigured),
@@ -263,9 +264,9 @@ export default async function SubmissionDetailPage({
                       ))}
                     </tbody>
                   </table>
-                  <p style={{ margin: "0 0 0.5rem", fontSize: "0.875rem", lineHeight: 1.6, whiteSpace: "pre-wrap" }}>
-                    {g.feedbackMd}
-                  </p>
+                  <div style={{ margin: "0 0 0.5rem", fontSize: "0.875rem" }}>
+                    <Markdown>{g.feedbackMd}</Markdown>
+                  </div>
                   {promptLog && (
                     <details>
                       <summary style={{ ...mono, fontSize: "0.6875rem", color: "var(--pine)", cursor: "pointer" }}>

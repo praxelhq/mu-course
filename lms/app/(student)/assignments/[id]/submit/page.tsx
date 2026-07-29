@@ -3,6 +3,7 @@ import { AuthError, requireUser } from "@/lib/auth";
 import { getAssignmentForStudent } from "@/lib/submissions";
 import { s3Configured } from "@/lib/s3";
 import { Card, Eyebrow } from "@/components/ui";
+import { Markdown } from "@/components/markdown";
 import { SubmissionForm, type HistoryRow } from "@/components/submission-form";
 
 // The submit surface. The form renders from the assignment type's
@@ -159,9 +160,9 @@ export default async function SubmitPage({
             </div>
           ))}
           {view.grade.feedbackMd && (
-            <p style={{ margin: "1rem 0 0", whiteSpace: "pre-wrap", lineHeight: 1.6 }}>
-              {view.grade.feedbackMd}
-            </p>
+            <div style={{ marginTop: "1rem" }}>
+              <Markdown>{view.grade.feedbackMd}</Markdown>
+            </div>
           )}
         </Card>
       )}
