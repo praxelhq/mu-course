@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { hasClerkKeys } from "@/lib/auth/clerk";
 import { SignOutAndRetry } from "./sign-out-button";
 
@@ -68,9 +69,9 @@ export default function NotOnRosterPage() {
       {hasClerkKeys() ? (
         <SignOutAndRetry />
       ) : (
-        <a href="/sign-in" style={{ marginTop: "2rem", color: "var(--pine)" }}>
+        <Link href="/sign-in" style={{ marginTop: "2rem", color: "var(--pine)" }}>
           Back to sign in
-        </a>
+        </Link>
       )}
     </main>
   );

@@ -134,14 +134,31 @@ export function VoteWall({ gallery }: { gallery: VoteGallery }) {
                     style={{ margin: 0, border: "1px solid var(--sand)", background: "var(--paper, #fff)" }}
                   >
                     {item.imageUrl ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={item.imageUrl}
-                        alt={`${item.ownerName}'s submission`}
-                        style={{ width: "100%", height: "12rem", objectFit: "cover", display: "block" }}
-                      />
+                      // Memes are all shapes: contain (never cover) so nothing
+                      // is cropped, and the whole thing opens full-size in a
+                      // new tab — text-heavy memes are unreadable in a tile.
+                      <a
+                        href={item.imageUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        title="Open full size"
+                        style={{ display: "block", background: "var(--parchment)" }}
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={item.imageUrl}
+                          alt={`${item.ownerName}'s submission`}
+                          style={{
+                            width: "100%",
+                            height: "16rem",
+                            objectFit: "contain",
+                            display: "block",
+                            cursor: "zoom-in",
+                          }}
+                        />
+                      </a>
                     ) : (
-                      <div style={{ height: "12rem", display: "grid", placeItems: "center", color: "var(--clay)" }}>
+                      <div style={{ height: "16rem", display: "grid", placeItems: "center", color: "var(--clay)" }}>
                         (no image)
                       </div>
                     )}
