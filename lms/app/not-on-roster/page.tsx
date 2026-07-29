@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SignOutAndRetry } from "./sign-out-button";
 
 export const metadata: Metadata = {
   title: "Not on roster · The Forge",
@@ -43,9 +44,21 @@ export default function NotOnRosterPage() {
           margin: 0,
         }}
       >
-        This Google account isn&apos;t on the course roster. Contact your
-        instructor.
+        This account isn&apos;t on the course roster yet.
       </p>
+      <p
+        style={{
+          fontSize: "1rem",
+          lineHeight: 1.6,
+          color: "var(--charcoal)",
+          margin: "1rem 0 0",
+        }}
+      >
+        If you signed in with a personal address, sign out and use the email
+        your instructor has on file. If you used the right one, tell your
+        instructor — they can add you in a moment.
+      </p>
+      <SignOutAndRetry />
     </main>
   );
 }
