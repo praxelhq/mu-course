@@ -88,7 +88,8 @@ export function VoteWall({ gallery }: { gallery: VoteGallery }) {
           </p>
         ) : !gallery.revealed ? (
           <p style={{ margin: 0, lineHeight: 1.6 }}>
-            Unlocked — you&apos;ve cast {myVotes} votes. Results appear once your instructor reveals them.
+            Unlocked — you&apos;ve cast {myVotes} votes. Entries stay anonymous and results
+            appear once your instructor reveals them.
           </p>
         ) : (
           <p style={{ margin: 0, lineHeight: 1.6 }}>Results are live for your section. 🎉</p>
@@ -164,7 +165,15 @@ export function VoteWall({ gallery }: { gallery: VoteGallery }) {
                     )}
                     <figcaption style={{ padding: "0.75rem" }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "0.5rem" }}>
-                        <span style={{ fontSize: "0.85rem" }}>{item.ownerName}</span>
+                        <span
+                          style={{
+                            fontSize: "0.85rem",
+                            color: item.mineSubmission ? "var(--pine)" : undefined,
+                            fontWeight: item.mineSubmission ? 600 : 400,
+                          }}
+                        >
+                          {item.ownerName}
+                        </span>
                         {item.count !== null && (
                           <span style={{ ...mono, fontSize: "0.7rem", color: "var(--pine)" }}>{item.count} ▲</span>
                         )}

@@ -194,3 +194,62 @@ describe.skipIf(!live)("section-scoped voting", () => {
     expect(votes.every((v) => v.submissionId !== subs.a3)).toBe(true);
   });
 });
+
+describe.skipIf(!live)("gallery anonymity", () => {
+  it("hides author names until the instructor reveals, but never hides your own", async () => {
+    const { PrismaClient } = await import("@prisma/client");
+    const { getVoteGallery } = await import("../lib/gallery-vote");
+    const { setReveal } = await import("../lib/votes");
+    const p = new PrismaClient();
+    const stamp = Date.now();
+    const sec = await p.section.create({ data: { code: `ANON${stamp}`, name: "Anon" } });
+    const type = await p.assignmentType.create({
+      data: {
+        slug: `anon-${stamp}`,
+        title: "Anon meme",
+        description: "d",
+        submissionSchema: { fields: [{ key: "image", label: "Image", kind: "file", required: true }] },
+        rubric: { scale: 10, dimensions: [{ key: "x", label: "X", max: 10, description: "" }] },
+        galleryEligible: true,
+        aiGraded: false,
+      },
+    });
+    const asg = await p.assignment.create({
+      data: { assignmentTypeId: type.id, title: "Anon", brief: "b", sessionNo: 2, sectionIds: [sec.id] },
+    });
+    const mk = async (key: string) => {
+      const u = await p.user.create({
+        data: { email: `${key}-${stamp}@anon.local`, name: `Real Name ${key}`, role: "student", sectionId: sec.id },
+      });
+      const s = await p.submission.create({
+        data: { assignmentId: asg.id, userId: u.id, status: "submitted", submittedAt: new Date(), fields: { image: `k/${u.id}.png` }, files: [`k/${u.id}.png`] },
+      });
+      await p.galleryItem.create({ data: { submissionId: s.id } });
+      return { u, s };
+    };
+    const me = await mk("me");
+    const other = await mk("other");
+
+    const viewer = { id: me.u.id, sectionId: sec.id };
+    const before = await getVoteGallery(viewer, asg.id);
+    const names = before!.sections.flatMap((x) => x.items.map((i) => i.ownerName));
+    expect(names).not.toContain(other.u.name);          // someone else's name is hidden
+    expect(names).toContain("Anonymous");
+    expect(names).toContain("Your submission");          // but you can find your own
+
+    await setReveal(asg.id, sec.id, true);
+    const after = await getVoteGallery(viewer, asg.id);
+    const namesAfter = after!.sections.flatMap((x) => x.items.map((i) => i.ownerName));
+    expect(namesAfter).toContain(other.u.name);          // revealed
+
+    await p.vote.deleteMany({ where: { submission: { assignmentId: asg.id } } });
+    await p.galleryItem.deleteMany({ where: { submission: { assignmentId: asg.id } } });
+    await p.submission.deleteMany({ where: { assignmentId: asg.id } });
+    await p.assignment.delete({ where: { id: asg.id } });
+    await p.assignmentType.delete({ where: { id: type.id } });
+    await p.user.deleteMany({ where: { email: { endsWith: `-${stamp}@anon.local` } } });
+    await p.configKV.deleteMany({ where: { key: `reveal_votes:${asg.id}` } });
+    await p.section.delete({ where: { id: sec.id } });
+    await p.$disconnect();
+  });
+});

@@ -11,7 +11,16 @@ import { galleryVoteState, isRevealed, VOTE_UNLOCK_MIN } from "@/lib/votes";
 
 export type VoteGalleryItem = {
   submissionId: string;
+  /**
+   * Author name — ANONYMISED until the instructor reveals results. People vote
+   * on the work, not on whose friend made it; a name next to the image is the
+   * social-bias problem the reveal gate exists to prevent. The viewer's own
+   * entry is always identifiable to them ("Your submission") so they can find
+   * it, and that leaks nothing about anyone else.
+   */
   ownerName: string;
+  /** True for the viewer's own entry. */
+  mineSubmission: boolean;
   sectionCode: string;
   imageUrl: string | null;
   caption: string | null;
@@ -79,14 +88,18 @@ export async function getVoteGallery(
 
   const canPresign = s3Configured();
   const bySection = new Map<string, VoteGalleryItem[]>();
+  // Names stay hidden until the instructor reveals — voting is on the work.
+  const namesVisible = await isRevealed(assignmentId, viewer.sectionId);
 
   for (const r of rows) {
     const sectionCode = r.user.section?.code ?? "—";
     const sameSection = viewer.sectionId != null && r.user.sectionId === viewer.sectionId;
+    const isMine = r.userId === viewer.id;
     const key = imageKeyOf(r.fields, r.files);
     const item: VoteGalleryItem = {
       submissionId: r.id,
-      ownerName: r.user.name,
+      ownerName: namesVisible ? r.user.name : isMine ? "Your submission" : "Anonymous",
+      mineSubmission: isMine,
       sectionCode,
       imageUrl: key && canPresign ? await presignGet(key) : null,
       caption: r.galleryItem?.caption ?? null,
@@ -107,7 +120,7 @@ export async function getVoteGallery(
     }))
     .sort((a, b) => a.code.localeCompare(b.code));
 
-  const revealed = await isRevealed(assignmentId, viewer.sectionId);
+  const revealed = namesVisible;
   return {
     assignmentId,
     title: assignment.title,
