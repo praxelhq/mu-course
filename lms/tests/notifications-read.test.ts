@@ -53,31 +53,43 @@ describe.skipIf(!live)("POST /api/notifications/read redirect guard (live DB)", 
     );
   }
 
+  // The Location header is RELATIVE on purpose: resolving against req.url
+  // leaked the container's internal host (http://0.0.0.0:8080) in production.
+  // A relative path is resolved by the browser against the real public origin,
+  // and it is inherently same-origin — so an off-site redirect is impossible.
+  const locationOf = (res: Response) => res.headers.get("location")!;
+
   it("refuses a protocol-relative //host redirect, falling back to /dashboard", async () => {
     const res = await post("//evil.example/phish");
     expect(res.status).toBe(303);
-    const loc = new URL(res.headers.get("location")!);
-    expect(loc.host).toBe("localhost"); // NOT evil.example
-    expect(loc.pathname).toBe("/dashboard");
+    const loc = locationOf(res);
+    expect(loc).toBe("/dashboard");
+    expect(loc).not.toContain("evil.example");
   });
 
   it("refuses a backslash /\\host redirect too", async () => {
     const res = await post("/\\evil.example");
-    const loc = new URL(res.headers.get("location")!);
-    expect(loc.host).toBe("localhost");
-    expect(loc.pathname).toBe("/dashboard");
+    const loc = locationOf(res);
+    expect(loc).toBe("/dashboard");
+    expect(loc).not.toContain("evil.example");
   });
 
   it("honors a genuine same-origin path", async () => {
     const res = await post("/grades");
-    const loc = new URL(res.headers.get("location")!);
-    expect(loc.host).toBe("localhost");
-    expect(loc.pathname).toBe("/grades");
+    expect(locationOf(res)).toBe("/grades");
   });
 
   it("defaults to /dashboard when no redirectTo is provided", async () => {
     const res = await post(undefined);
-    const loc = new URL(res.headers.get("location")!);
-    expect(loc.pathname).toBe("/dashboard");
+    expect(locationOf(res)).toBe("/dashboard");
+  });
+
+  it("never emits an absolute URL (would leak the internal container host)", async () => {
+    for (const dest of [undefined, "/grades", "//evil.example"]) {
+      const loc = locationOf(await post(dest));
+      expect(loc.startsWith("/")).toBe(true);
+      expect(loc).not.toMatch(/^https?:\/\//);
+      expect(loc).not.toContain("0.0.0.0");
+    }
   });
 });

@@ -20,11 +20,17 @@ export const POST = withAuth(async (req, { user }) => {
 
   const redirectTo = form?.get("redirectTo");
   // Only a single-leading-slash same-origin path is honored. Reject
-  // protocol-relative ("//host") and backslash ("/\host") forms, which
-  // new URL() would otherwise resolve to an off-site origin (open redirect).
+  // protocol-relative ("//host") and backslash ("/\host") forms, which would
+  // otherwise resolve to an off-site origin (open redirect).
   const dest =
     typeof redirectTo === "string" && /^\/(?![/\\])/.test(redirectTo)
       ? redirectTo
       : "/dashboard";
-  return Response.redirect(new URL(dest, req.url), 303);
+
+  // RELATIVE Location on purpose. Resolving against req.url would leak the
+  // container's internal address — behind Railway that is http://0.0.0.0:8080,
+  // so the browser was sent to a host it cannot reach. A relative path is
+  // resolved by the browser against the address bar (the real public origin),
+  // and it keeps the same-origin guarantee the check above establishes.
+  return new Response(null, { status: 303, headers: { Location: dest } });
 });
