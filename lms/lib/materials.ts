@@ -54,6 +54,8 @@ export type HubAssignment = {
   dueAt: Date | null;
   available: boolean;
   submissionStatus: SubmissionStatus | null;
+  /** Votable gallery artifact — the hub links straight to its wall. */
+  galleryEligible: boolean;
 };
 
 export type HubQuiz = { id: string; title: string; armed: boolean };
@@ -170,7 +172,7 @@ export async function getSessionHub(
         id: true,
         title: true,
         dueAt: true,
-        assignmentType: { select: { title: true } },
+        assignmentType: { select: { title: true, galleryEligible: true } },
       },
     }),
     listQuizzesForHub(page.linkedQuizIds),
@@ -227,6 +229,7 @@ export async function getSessionHub(
       dueAt: a.dueAt,
       available: targetAvailable(viewer, snapshot, exceptions, "assignment", a.id, page.id),
       submissionStatus: latestStatus.get(a.id) ?? null,
+      galleryEligible: a.assignmentType.galleryEligible,
     });
   }
 

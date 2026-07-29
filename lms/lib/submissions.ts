@@ -1,8 +1,11 @@
 import { createHash } from "node:crypto";
 import type { Prisma, Submission, SubmissionStatus } from "@prisma/client";
 import { prisma } from "@/lib/db";
+import { parseRubric } from "@/lib/ai/grading";
 import { syncGalleryItem } from "@/lib/galleries";
 import { parentSessionPageIdFor, resolveGate } from "@/lib/gates";
+import { parseRubricScores } from "@/lib/review-queue";
+import { presignGet, s3Configured } from "@/lib/s3";
 import {
   parseSubmissionSchema,
   validateSubmissionFields,
@@ -139,6 +142,27 @@ export type AssignmentForStudent = {
   /** My (or my team's) versions, newest first. */
   history: SubmissionHistoryRow[];
   latest: SubmissionHistoryRow | null;
+  /** What was actually submitted (latest version) so the student can see it. */
+  submitted: {
+    fields: Record<string, unknown>;
+    /** Presigned view URLs for uploaded files, keyed by the field they came from. */
+    fileUrls: { field: string; label: string; url: string | null; key: string }[];
+    submittedAt: Date | null;
+  } | null;
+  /** The AI grade for the latest version, once graded. */
+  grade: {
+    total: number;
+    provisional: boolean;
+    feedbackMd: string;
+    dimensions: { key: string; label: string; score: number; max: number; rationale: string }[];
+  } | null;
+  /** This artifact's gallery, when it is a votable one (link target). */
+  galleryEligible: boolean;
+  /**
+   * False once a submission exists — one submission per student (course rule).
+   * An instructor reopen (GateException) is the sanctioned way back in.
+   */
+  canSubmit: boolean;
 };
 
 export async function getAssignmentForStudent(
@@ -162,14 +186,83 @@ export async function getAssignmentForStudent(
       ? [{ userId }, { teamId: user.teamId }]
       : [{ userId }];
 
-  const [available, history] = await Promise.all([
+  const [available, rows] = await Promise.all([
     assignmentAvailableTo(user, assignmentId),
     prisma.submission.findMany({
       where: { assignmentId, OR: mineOrTeam },
-      select: { id: true, version: true, status: true, submittedAt: true, createdAt: true },
+      select: {
+        id: true,
+        version: true,
+        status: true,
+        submittedAt: true,
+        createdAt: true,
+        fields: true,
+        files: true,
+        grades: {
+          orderBy: { createdAt: "desc" },
+          take: 1,
+          select: { total: true, provisional: true, feedbackMd: true, rubricScores: true },
+        },
+      },
       orderBy: [{ version: "desc" }, { createdAt: "desc" }],
     }),
   ]);
+  const history: SubmissionHistoryRow[] = rows.map((r) => ({
+    id: r.id,
+    version: r.version,
+    status: r.status,
+    submittedAt: r.submittedAt,
+    createdAt: r.createdAt,
+  }));
+
+  const schema = parseSubmissionSchema(type.submissionSchema);
+  const newest = rows[0] ?? null;
+
+  // What they submitted, with presigned links for any uploaded files so the
+  // student can actually open their own work back up.
+  let submitted: AssignmentForStudent["submitted"] = null;
+  if (newest) {
+    const fields = (newest.fields ?? {}) as Record<string, unknown>;
+    const fileUrls: NonNullable<AssignmentForStudent["submitted"]>["fileUrls"] = [];
+    for (const def of schema?.fields ?? []) {
+      if (def.kind !== "file" && def.kind !== "files") continue;
+      const raw = fields[def.key];
+      const keys = Array.isArray(raw) ? raw : typeof raw === "string" && raw ? [raw] : [];
+      for (const key of keys) {
+        if (typeof key !== "string") continue;
+        let url: string | null = null;
+        if (s3Configured()) {
+          try {
+            url = await presignGet(key);
+          } catch {
+            url = null; // a broken link must not break the page
+          }
+        }
+        fileUrls.push({ field: def.key, label: def.label, url, key });
+      }
+    }
+    submitted = { fields, fileUrls, submittedAt: newest.submittedAt };
+  }
+
+  // The AI grade for that version, with the rubric's own labels.
+  let grade: AssignmentForStudent["grade"] = null;
+  const g = newest?.grades[0];
+  if (g) {
+    const dims = parseRubric(type.rubric);
+    const scores = parseRubricScores(g.rubricScores);
+    grade = {
+      total: g.total,
+      provisional: g.provisional,
+      feedbackMd: g.feedbackMd,
+      dimensions: dims.map((d) => ({
+        key: d.key,
+        label: d.label,
+        max: d.max,
+        score: scores[d.key]?.score ?? 0,
+        rationale: scores[d.key]?.rationale ?? "",
+      })),
+    };
+  }
 
   return {
     assignment: {
@@ -186,10 +279,15 @@ export async function getAssignmentForStudent(
       description: type.description,
       teamBased: type.teamBased,
     },
-    schema: parseSubmissionSchema(type.submissionSchema),
+    schema,
     available,
     history,
     latest: history[0] ?? null,
+    submitted,
+    grade,
+    galleryEligible: type.galleryEligible,
+    // One submission per student: once anything exists, the form closes.
+    canSubmit: available && history.length === 0,
   };
 }
 
@@ -255,6 +353,20 @@ export async function submitAssignment(input: SubmitInput): Promise<Submission> 
   // Gate re-enforcement inside the mutation path (routes must not pre-trust
   // their own earlier check — a gate can close between render and submit).
   if (!(await assignmentAvailableTo(user, assignmentId))) throw new GateClosedError();
+
+  // ONE SUBMISSION PER STUDENT (course rule). Enforced here, not just in the
+  // UI, so a stale form or a direct API call cannot create a second version.
+  // An instructor who wants to let someone resubmit deletes the submission or
+  // grants a reopen; that is the deliberate, audited path.
+  const alreadySubmitted = await prisma.submission.findFirst({
+    where: teamId ? { assignmentId, OR: [{ userId }, { teamId }] } : { assignmentId, userId },
+    select: { id: true },
+  });
+  if (alreadySubmitted) {
+    throw new SubmissionValidationError([
+      "You have already submitted this artifact. Only one submission per student is allowed — ask your instructor if you need it reopened.",
+    ]);
+  }
 
   const contentHash = contentHashOf(fields, files);
   const now = new Date();

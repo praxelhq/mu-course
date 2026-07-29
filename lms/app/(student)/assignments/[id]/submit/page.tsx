@@ -67,7 +67,110 @@ export default async function SubmitPage({
         </p>
       )}
 
-      {!view.available ? (
+      {/* What you submitted — visible as soon as anything exists. */}
+      {view.submitted && (
+        <Card style={{ marginBottom: "1.5rem" }}>
+          <p style={{ ...mono, fontSize: "0.625rem", color: "var(--clay)", margin: "0 0 0.75rem" }}>
+            Your submission
+            {view.submitted.submittedAt && ` · ${dateFmt.format(view.submitted.submittedAt)}`}
+          </p>
+          {view.schema?.fields.map((f) => {
+            const files = view.submitted!.fileUrls.filter((u) => u.field === f.key);
+            if (files.length > 0) {
+              return (
+                <div key={f.key} style={{ marginBottom: "0.9rem" }}>
+                  <p style={{ ...mono, fontSize: "0.6rem", color: "var(--clay)", margin: "0 0 0.35rem" }}>
+                    {f.label}
+                  </p>
+                  {files.map((u) =>
+                    u.url ? (
+                      <a
+                        key={u.key}
+                        href={u.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{ color: "var(--pine)", fontSize: "0.9rem", display: "block" }}
+                      >
+                        Open your file ↗
+                      </a>
+                    ) : (
+                      <span key={u.key} style={{ fontSize: "0.85rem", color: "var(--clay)" }}>
+                        (file attached)
+                      </span>
+                    ),
+                  )}
+                </div>
+              );
+            }
+            const value = view.submitted!.fields[f.key];
+            if (typeof value !== "string" || value.trim() === "") return null;
+            return (
+              <div key={f.key} style={{ marginBottom: "0.9rem" }}>
+                <p style={{ ...mono, fontSize: "0.6rem", color: "var(--clay)", margin: "0 0 0.35rem" }}>
+                  {f.label}
+                </p>
+                <p style={{ margin: 0, whiteSpace: "pre-wrap", lineHeight: 1.6 }}>{value}</p>
+              </div>
+            );
+          })}
+          {view.galleryEligible && (
+            <a
+              href={`/vote/${view.assignment.id}`}
+              style={{
+                ...mono,
+                display: "inline-block",
+                marginTop: "0.5rem",
+                padding: "0.5rem 0.9rem",
+                fontSize: "0.65rem",
+                border: "1px solid var(--sand)",
+                color: "var(--pine)",
+                textDecoration: "none",
+              }}
+            >
+              Open the gallery &amp; vote →
+            </a>
+          )}
+        </Card>
+      )}
+
+      {/* The AI grade + feedback, once it lands. */}
+      {view.grade && (
+        <Card style={{ marginBottom: "1.5rem" }}>
+          <p style={{ ...mono, fontSize: "0.625rem", color: "var(--ochre)", margin: "0 0 0.5rem" }}>
+            Your grade{view.grade.provisional && " · provisional"}
+          </p>
+          <p style={{ fontSize: "2rem", margin: "0 0 1rem" }}>{view.grade.total.toFixed(1)}</p>
+          {view.grade.dimensions.map((d) => (
+            <div key={d.key} style={{ marginBottom: "0.75rem" }}>
+              <p style={{ margin: 0, fontSize: "0.9rem" }}>
+                <strong>{d.label}</strong> — {d.score}/{d.max}
+              </p>
+              {d.rationale && (
+                <p style={{ margin: "0.15rem 0 0", color: "var(--charcoal)", fontSize: "0.85rem", lineHeight: 1.55 }}>
+                  {d.rationale}
+                </p>
+              )}
+            </div>
+          ))}
+          {view.grade.feedbackMd && (
+            <p style={{ margin: "1rem 0 0", whiteSpace: "pre-wrap", lineHeight: 1.6 }}>
+              {view.grade.feedbackMd}
+            </p>
+          )}
+        </Card>
+      )}
+
+      {!view.canSubmit && view.submitted ? (
+        <Card style={{ textAlign: "center", padding: "2rem" }}>
+          <p style={{ ...mono, fontSize: "0.6875rem", color: "var(--clay)", margin: "0 0 0.5rem" }}>
+            Submitted
+          </p>
+          <p style={{ color: "var(--charcoal)", margin: 0, lineHeight: 1.6 }}>
+            One submission per student — yours is in. If you need to change it, ask your
+            instructor to reopen this artifact for you.
+          </p>
+        </Card>
+      ) : !view.available ? (
         <Card style={{ textAlign: "center", padding: "3rem 2rem", opacity: 0.8 }}>
           <p style={{ ...mono, fontSize: "0.6875rem", color: "var(--clay)", margin: "0 0 0.75rem" }}>
             Submissions closed

@@ -71,30 +71,34 @@ describe.skipIf(!live)("lib/submissions (live DB, seeded)", () => {
     expect(row?.status).toBe("submitted");
   });
 
-  it("resubmission bumps to v2 and leaves v1 untouched", async () => {
-    const { submitAssignment } = await import("../lib/submissions");
+  it("rejects a second submission — one submission per student", async () => {
+    const { submitAssignment, SubmissionValidationError } = await import("../lib/submissions");
     const v1 = await submitAssignment({
       userId: "user_s003",
       assignmentId: "asg_s3_datamemo",
       fields: DATA_MEMO_FIELDS,
       files: [],
     });
-    const v2 = await submitAssignment({
-      userId: "user_s003",
-      assignmentId: "asg_s3_datamemo",
-      fields: { ...DATA_MEMO_FIELDS, aiGotWrong: "Revised: it also miscounted rows." },
-      files: [],
-    });
     expect(v1.version).toBe(1);
-    expect(v2.version).toBe(2);
-    expect(v2.id).not.toBe(v1.id);
-    const v1Row = await prisma.submission.findUnique({ where: { id: v1.id } });
-    expect(v1Row).not.toBeNull();
-    expect(v1Row!.version).toBe(1);
-    expect((v1Row!.fields as { aiGotWrong: string }).aiGotWrong).toBe(
+
+    await expect(
+      submitAssignment({
+        userId: "user_s003",
+        assignmentId: "asg_s3_datamemo",
+        fields: { ...DATA_MEMO_FIELDS, aiGotWrong: "Revised: it also miscounted rows." },
+        files: [],
+      }),
+    ).rejects.toBeInstanceOf(SubmissionValidationError);
+
+    // The original is untouched and remains the only row.
+    const rows = await prisma.submission.findMany({
+      where: { assignmentId: "asg_s3_datamemo", userId: "user_s003" },
+    });
+    expect(rows).toHaveLength(1);
+    expect(rows[0]!.id).toBe(v1.id);
+    expect((rows[0]!.fields as { aiGotWrong: string }).aiGotWrong).toBe(
       DATA_MEMO_FIELDS.aiGotWrong,
     );
-    expect(v2.contentHash).not.toBe(v1.contentHash);
   });
 
   it("invalid fields → per-field errors, no row written", async () => {
@@ -367,7 +371,7 @@ describe.skipIf(!live)("lib/submissions (live DB, seeded)", () => {
 
   it("team resubmission by a different teammate continues the team's version sequence, not a fresh v1 (#12)", async () => {
     const { setGateState } = await import("../lib/gates");
-    const { submitAssignment } = await import("../lib/submissions");
+    const { submitAssignment, SubmissionValidationError } = await import("../lib/submissions");
     // Ensure the S5 workflow gates are open for section A (team_A1 = s001..s008).
     await setGateState({ targetType: "session", targetId: "spage_5", sectionId: "sec_A", state: "open", actorId: INSTRUCTOR });
     await setGateState({ targetType: "assignment", targetId: "asg_s5_workflow", sectionId: "sec_A", state: "open", actorId: INSTRUCTOR });
@@ -379,27 +383,29 @@ describe.skipIf(!live)("lib/submissions (live DB, seeded)", () => {
       files: [`submissions/${owner}/wf/blueprint.json`, `submissions/${owner}/wf/recording.mp4`],
     });
 
-    const a = workflowFields("user_s001");
-    const first = await submitAssignment({
-      userId: "user_s001",
-      assignmentId: "asg_s5_workflow",
-      fields: { blueprintFile: a.blueprintFile, recordingFile: a.recordingFile, usefulness: a.usefulness },
-      files: a.files,
+    // team_A1 already has a submission from an earlier test (user_s007). One
+    // submission per TEAM means ANY other teammate is now blocked — the
+    // duplicate check spans the whole team, not just the individual.
+    const existing = await prisma.submission.findFirst({
+      where: { assignmentId: "asg_s5_workflow", user: { teamId: { not: null } } },
+      select: { id: true, teamId: true },
     });
-    const b = workflowFields("user_s002");
-    const second = await submitAssignment({
-      userId: "user_s002",
-      assignmentId: "asg_s5_workflow",
-      fields: { blueprintFile: b.blueprintFile, recordingFile: b.recordingFile, usefulness: b.usefulness },
-      files: b.files,
-    });
+    expect(existing).not.toBeNull();
 
-    // Same team, and the second teammate's version is exactly one past the
-    // first's — the counter is per-TEAM, not per-user (per-user would reset to
-    // v1 for a teammate who never personally submitted this assignment).
-    expect(second.teamId).toBe(first.teamId);
-    expect(second.version).toBe(first.version + 1);
-    expect(second.version).toBeGreaterThan(1);
+    const a = workflowFields("user_s001");
+    await expect(
+      submitAssignment({
+        userId: "user_s001",
+        assignmentId: "asg_s5_workflow",
+        fields: { blueprintFile: a.blueprintFile, recordingFile: a.recordingFile, usefulness: a.usefulness },
+        files: a.files,
+      }),
+    ).rejects.toBeInstanceOf(SubmissionValidationError);
+
+    const teamRows = await prisma.submission.findMany({
+      where: { assignmentId: "asg_s5_workflow", teamId: existing!.teamId },
+    });
+    expect(teamRows).toHaveLength(1);
   });
 
   it("listStuckSubmissions surfaces submissions stuck at 'submitted' past the age cutoff, ignoring fresh ones (#13)", async () => {

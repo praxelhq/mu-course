@@ -190,7 +190,7 @@ export default async function SessionHubPage({
                   key={a.id}
                   style={{
                     display: "grid",
-                    gridTemplateColumns: "1fr auto auto",
+                    gridTemplateColumns: "1fr auto auto auto",
                     alignItems: "center",
                     gap: "1rem",
                     borderBottom: "1px solid var(--sand)",
@@ -212,9 +212,16 @@ export default async function SessionHubPage({
                       Not started
                     </span>
                   )}
+                  {a.galleryEligible && a.available ? (
+                    <Link href={`/vote/${a.id}`} style={quietLink}>
+                      Gallery &amp; vote
+                    </Link>
+                  ) : (
+                    <span />
+                  )}
                   {a.available ? (
                     <Link href={`/assignments/${a.id}/submit`} style={quietLink}>
-                      Submit
+                      {a.submissionStatus ? "View" : "Submit"}
                     </Link>
                   ) : (
                     <span style={{ ...mono, fontSize: "0.6875rem", color: "var(--clay)" }}>
