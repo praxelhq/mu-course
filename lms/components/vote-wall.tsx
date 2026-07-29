@@ -20,6 +20,9 @@ export function VoteWall({ gallery }: { gallery: VoteGallery }) {
   const [myVotes, setMyVotes] = useState(gallery.myVotes);
   const [busy, setBusy] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  // Default to the viewer's own section: in class you want today's wall, not
+  // every section's back-catalogue. Other sections stay one click away.
+  const [shown, setShown] = useState<string>(gallery.mySectionCode ?? "ALL");
 
   const votesToUnlock = Math.max(0, gallery.unlockThreshold - myVotes);
   const unlocked = myVotes >= gallery.unlockThreshold;
@@ -112,7 +115,41 @@ export function VoteWall({ gallery }: { gallery: VoteGallery }) {
         </section>
       )}
 
-      {gallery.sections.map((section) => {
+      {/* Section filter — own section first, then the rest, then everything. */}
+      {gallery.sections.length > 1 && (
+        <div style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap", marginBottom: "1.5rem" }}>
+          {[
+            ...gallery.sections.map((s) => s.code).sort((a, b) =>
+              a === gallery.mySectionCode ? -1 : b === gallery.mySectionCode ? 1 : a.localeCompare(b),
+            ),
+            "ALL",
+          ].map((code) => (
+            <button
+              key={code}
+              type="button"
+              onClick={() => setShown(code)}
+              style={{
+                ...mono,
+                fontSize: "0.65rem",
+                padding: "0.35rem 0.7rem",
+                border: "1px solid var(--sand)",
+                borderRadius: 0,
+                cursor: "pointer",
+                background: shown === code ? "var(--pine)" : "transparent",
+                color: shown === code ? "var(--parchment)" : "var(--charcoal)",
+              }}
+            >
+              {code === "ALL"
+                ? "All sections"
+                : `Section ${code}${code === gallery.mySectionCode ? " · yours" : ""}`}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {gallery.sections
+        .filter((s) => shown === "ALL" || s.code === shown)
+        .map((section) => {
         const isMine = section.code === gallery.mySectionCode;
         return (
           <section key={section.code} style={{ marginBottom: "2.5rem" }}>

@@ -1,11 +1,12 @@
 import { prisma } from "@/lib/db";
-import { presignGet, s3Configured } from "@/lib/s3";
+import { s3Configured } from "@/lib/s3";
 import { galleryVoteState, isRevealed, VOTE_UNLOCK_MIN } from "@/lib/votes";
 
-// Read model for a voting gallery (one meme / AI-image assignment). Students
-// VIEW every section's wall but may only vote their own section's items, and
-// counts stay hidden until the instructor reveals their section AND they have
-// cast VOTE_UNLOCK_MIN votes (both enforced by lib/votes.galleryVoteState).
+// Read model for a voting gallery (one meme / AI-image assignment). A student
+// sees ONLY their own section's wall and may vote only within it; staff see
+// every section and filter between them. Counts stay hidden until the
+// instructor reveals that section AND the student has cast VOTE_UNLOCK_MIN
+// votes (both enforced by lib/votes.galleryVoteState).
 //
 // No grade data is touched here — these artifacts are ungraded by design.
 
@@ -55,9 +56,13 @@ function imageKeyOf(fields: unknown, files: string[]): string | null {
 }
 
 export async function getVoteGallery(
-  viewer: { id: string; sectionId: string | null },
+  viewer: { id: string; sectionId: string | null; role?: string },
   assignmentId: string,
 ): Promise<VoteGallery | null> {
+  // Students see ONLY their own section's wall. Staff see every section and can
+  // filter between them — that is how an instructor shows one class's gallery
+  // without the other sections' entries on screen.
+  const isStaff = viewer.role === "instructor" || viewer.role === "admin";
   const assignment = await prisma.assignment.findUnique({
     where: { id: assignmentId },
     select: { id: true, title: true, assignmentType: { select: { galleryEligible: true } } },
@@ -74,6 +79,8 @@ export async function getVoteGallery(
         assignmentId,
         status: { in: ["submitted", "graded", "finalised"] },
         galleryItem: { isNot: null },
+        // Section isolation for students, enforced in the query itself.
+        ...(isStaff ? {} : { user: { sectionId: viewer.sectionId ?? "__none__" } }),
       },
       select: {
         id: true,
@@ -101,7 +108,9 @@ export async function getVoteGallery(
       ownerName: namesVisible ? r.user.name : isMine ? "Your submission" : "Anonymous",
       mineSubmission: isMine,
       sectionCode,
-      imageUrl: key && canPresign ? await presignGet(key) : null,
+      // Stable link (see app/api/gallery/image/[id]): signs on demand, so it
+      // never expires mid-class the way an embedded presigned URL did.
+      imageUrl: key && canPresign ? `/api/gallery/image/${r.id}` : null,
       caption: r.galleryItem?.caption ?? null,
       votable: sameSection && r.userId !== viewer.id,
       mine: state.mine.has(r.id),

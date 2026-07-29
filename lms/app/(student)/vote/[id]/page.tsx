@@ -11,7 +11,7 @@ export const dynamic = "force-dynamic";
 
 export default async function VotePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  let user: { userId: string; sectionId: string | null };
+  let user: { userId: string; sectionId: string | null; role: string };
   try {
     user = await requireUser();
   } catch (e) {
@@ -19,7 +19,10 @@ export default async function VotePage({ params }: { params: Promise<{ id: strin
     throw e;
   }
 
-  const gallery = await getVoteGallery({ id: user.userId, sectionId: user.sectionId }, id);
+  const gallery = await getVoteGallery(
+    { id: user.userId, sectionId: user.sectionId, role: user.role },
+    id,
+  );
   if (!gallery) notFound();
 
   return <VoteWall gallery={gallery} />;
