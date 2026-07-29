@@ -139,7 +139,13 @@ export default async function SubmitPage({
           <p style={{ ...mono, fontSize: "0.625rem", color: "var(--ochre)", margin: "0 0 0.5rem" }}>
             Your grade{view.grade.provisional && " · provisional"}
           </p>
-          <p style={{ fontSize: "2rem", margin: "0 0 1rem" }}>{view.grade.total.toFixed(1)}</p>
+          <p style={{ fontSize: "2rem", margin: "0 0 1rem" }}>
+            {view.grade.total.toFixed(1)}
+            <span style={{ fontSize: "1rem", color: "var(--clay)" }}>
+              {" "}
+              / {view.grade.dimensions.reduce((s, d) => s + d.max, 0)}
+            </span>
+          </p>
           {view.grade.dimensions.map((d) => (
             <div key={d.key} style={{ marginBottom: "0.75rem" }}>
               <p style={{ margin: 0, fontSize: "0.9rem" }}>
