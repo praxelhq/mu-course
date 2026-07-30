@@ -1,7 +1,8 @@
 // Idempotent Session-2 configuration for the real launch. Safe to run against
 // a live DB and safe to re-run: it upserts the four Session-2 artifact types
-// and assignments, points the Session-2 hub at them, and gates everything so
-// students see ONLY Session 2. It never wipes submissions or votes.
+// and assignments, points the Session-2 hub at them, and creates only missing
+// Session-2 gate rows. It never rewrites another session's release state and
+// never wipes submissions or votes.
 //
 //   pnpm tsx scripts/session2-setup.ts
 //
@@ -14,7 +15,7 @@
 // Rubrics/briefs here are sensible defaults — edit them live in the instructor
 // console once you have your final criteria.
 
-import { PrismaClient, type GateState, type GateTarget } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -99,7 +100,37 @@ const ASSIGNMENTS = [
   { id: "asg_s2_costar", typeId: "atype_costar", title: "S2 · COSTAR Prompt", brief: "Write a prompt using the COSTAR method. We grade how well it applies each element." },
 ];
 
-async function main() {
+export async function createMissingSession2Gates(args: {
+  db: Pick<PrismaClient, "gate">;
+  sectionIds: string[];
+  pageId: string;
+  actorId: string;
+  openedAt?: Date;
+}): Promise<number> {
+  const openedAt = args.openedAt ?? new Date();
+  const gateRows = args.sectionIds.flatMap((sectionId) => [
+    {
+      targetType: "session" as const,
+      targetId: args.pageId,
+      sectionId,
+      state: "open" as const,
+      changedBy: args.actorId,
+      openedAt,
+    },
+    ...ASSIGNMENTS.map((assignment) => ({
+      targetType: "assignment" as const,
+      targetId: assignment.id,
+      sectionId,
+      state: "open" as const,
+      changedBy: args.actorId,
+      openedAt,
+    })),
+  ]);
+  const created = await args.db.gate.createMany({ data: gateRows, skipDuplicates: true });
+  return created.count;
+}
+
+export async function main() {
   const sections = await prisma.section.findMany({ select: { id: true } });
   const sectionIds = sections.map((s) => s.id);
   const actor = await prisma.user.findFirst({ where: { role: "admin" }, select: { id: true } });
@@ -141,40 +172,26 @@ async function main() {
     data: { linkedAssignmentIds: ASSIGNMENTS.map((a) => a.id), linkedQuizIds: [] },
   });
 
-  // 4) Gates: open ONLY Session 2 + its four assignments for every section;
-  //    lock every other session and every other assignment.
-  const allPages = await prisma.sessionPage.findMany({ select: { id: true, sessionNo: true, linkedAssignmentIds: true } });
-  const s2AssignmentIds = new Set(ASSIGNMENTS.map((a) => a.id));
-
-  const setGate = (targetType: GateTarget, targetId: string, sectionId: string, state: GateState) =>
-    prisma.gate.upsert({
-      where: { targetType_targetId_sectionId: { targetType, targetId, sectionId } },
-      create: { targetType, targetId, sectionId, state, changedBy: actorId, openedAt: state === "open" ? new Date() : null },
-      update: { state, changedBy: actorId, openedAt: state === "open" ? new Date() : undefined },
-    });
-
-  // Every assignment in the system, so we can lock the ones that are not S2 —
-  // even those no longer linked from any session hub (e.g. the old S2 skill).
-  const allAssignments = await prisma.assignment.findMany({ select: { id: true } });
-
-  let gateWrites = 0;
-  for (const sectionId of sectionIds) {
-    for (const p of allPages) {
-      await setGate("session", p.id, sectionId, p.sessionNo === SESSION_NO ? "open" : "locked");
-      gateWrites++;
-    }
-    for (const a of allAssignments) {
-      await setGate("assignment", a.id, sectionId, s2AssignmentIds.has(a.id) ? "open" : "locked");
-      gateWrites++;
-    }
-  }
-  console.log(`[s2] set ${gateWrites} gate rows across ${sectionIds.length} sections`);
-  console.log("[s2] done — students now see only Session 2 with the four artifacts");
+  // 4) Create the original Session-2 open gates only when absent. A rerun must
+  // not reopen an instructor-closed S2 gate, and it must never relock or remove
+  // Sessions 3–5 (or any future release).
+  const createdCount = await createMissingSession2Gates({
+    db: prisma,
+    sectionIds,
+    pageId: page.id,
+    actorId,
+  });
+  console.log(
+    `[s2] created ${createdCount} missing Session-2 gate rows across ${sectionIds.length} sections; existing and other-session gates preserved`,
+  );
+  console.log("[s2] done — Session 2 content is configured without changing any later release");
 }
 
-main()
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(() => prisma.$disconnect());
+if (process.argv[1]?.replace(/\\/g, "/").endsWith("scripts/session2-setup.ts")) {
+  main()
+    .catch((e) => {
+      console.error(e);
+      process.exit(1);
+    })
+    .finally(() => prisma.$disconnect());
+}

@@ -1,7 +1,12 @@
 import Link from "next/link";
 import { getReviewQueue, type ReviewQueueItem } from "@/lib/review-queue";
+import {
+  listInstructorGradeHoldProjections,
+  listInstructorOpenAppealProjections,
+} from "@/lib/assessment-projections";
 import { Card, Eyebrow } from "@/components/ui";
 import { FinaliseButton, OverrideForm } from "./review-ui";
+import { DecisionWorklists } from "./decision-worklists";
 
 // Instructor review queue: provisional grades needing human eyes
 // (low confidence, policy flags, dynamic top/bottom-5% percentile outliers —
@@ -113,7 +118,11 @@ function QueueItem({ item }: { item: ReviewQueueItem }) {
 }
 
 export default async function ReviewQueuePage() {
-  const queue = await getReviewQueue();
+  const [queue, holds, appeals] = await Promise.all([
+    getReviewQueue(),
+    listInstructorGradeHoldProjections(),
+    listInstructorOpenAppealProjections(),
+  ]);
 
   // Group by assignment, preserving the escalation-first ordering inside
   // each group; groups ordered by their most urgent item.
@@ -132,6 +141,8 @@ export default async function ReviewQueuePage() {
         Provisional grades needing human eyes: low model confidence, policy flags, and the
         current top/bottom-5% outliers of each assignment (recomputed on every visit).
       </p>
+
+      <DecisionWorklists holds={holds} appeals={appeals} />
 
       {queue.length === 0 ? (
         <Card>

@@ -369,7 +369,12 @@ function TurnBasedRoom({ textMode, banner }: { textMode: boolean; banner: string
     setError(null);
     try {
       const contentType = clip.type.split(";")[0] || "audio/webm";
-      const presign = await jsonFetch<{ url: string; key: string; headers: Record<string, string> }>(
+      const presign = await jsonFetch<{
+        url: string;
+        key: string;
+        reservationId: string;
+        headers: Record<string, string>;
+      }>(
         "/api/interview/answer-url",
         {
           method: "POST",
@@ -384,7 +389,10 @@ function TurnBasedRoom({ textMode, banner }: { textMode: boolean; banner: string
       if (!put.ok) throw new Error("Upload failed — please try again.");
       const res = await jsonFetch<{ done: boolean }>("/api/interview/answer", {
         method: "POST",
-        body: JSON.stringify({ interviewId: state.id, audioS3Key: presign.key }),
+        body: JSON.stringify({
+          interviewId: state.id,
+          audioReservationId: presign.reservationId,
+        }),
       });
       setClip(null);
       await handleAnswerResponse(res);

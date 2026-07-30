@@ -27,7 +27,7 @@ export const GET = withAuth(
 );
 
 export const POST = withAuth(
-  async (req) => {
+  async (req, { user }) => {
     const parsed = createSchema.safeParse(await req.json().catch(() => null));
     if (!parsed.success) {
       return Response.json(
@@ -43,7 +43,7 @@ export const POST = withAuth(
         );
       }
     }
-    const { id } = await createQuiz(parsed.data);
+    const { id } = await createQuiz({ ...parsed.data, actorId: user.userId });
     return Response.json({ ok: true, id }, { status: 201 });
   },
   { role: "instructor" },

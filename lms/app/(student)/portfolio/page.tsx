@@ -2,6 +2,8 @@ import { redirect } from "next/navigation";
 import { AuthError, requireUser } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import {
+  ARTIFACT_CHECKLIST_STATE_COPY,
+  type ArtifactChecklistState,
   getArtifactChecklist,
   parseExternalLinks,
   parseLastCrawl,
@@ -31,6 +33,14 @@ const fmtAt = new Intl.DateTimeFormat("en-IN", {
   timeZone: "Asia/Kolkata",
 });
 
+const checklistStateColor: Record<ArtifactChecklistState, string> = {
+  "artifact-missing": "var(--clay)",
+  "artifact-complete": "var(--pine)",
+  "public-link-missing": "var(--ochre)",
+  "public-link-unverified": "var(--ochre)",
+  complete: "var(--pine)",
+};
+
 export default async function PortfolioPage() {
   let userId: string;
   try {
@@ -56,16 +66,17 @@ export default async function PortfolioPage() {
       <Eyebrow muted>Portfolio</Eyebrow>
       <h1 style={{ fontSize: "2.25rem", margin: "0 0 0.5rem" }}>Your portfolio</h1>
       <p style={{ color: "var(--charcoal)", margin: "0 0 2rem", lineHeight: 1.6 }}>
-        A quarter of your grade. Artifacts appear automatically as they are graded; the
-        narrative and external links are yours to write. Validations are recorded by
-        instructors, and every link you claim is checked for liveness.
+        A quarter of your grade. Graded artifacts appear automatically; some requirements
+        also need a public link. The narrative and external links are yours to write.
+        Validations are recorded by instructors, and every link you claim is checked for
+        liveness.
       </p>
 
       <div style={{ display: "grid", gap: "1.5rem" }}>
         <Card>
-          <h2 style={{ fontSize: "1.125rem", margin: "0 0 0.25rem" }}>Linked artifacts</h2>
+          <h2 style={{ fontSize: "1.125rem", margin: "0 0 0.25rem" }}>Portfolio requirements</h2>
           <p style={{ ...mono, fontSize: "0.625rem", color: "var(--clay)", margin: "0 0 1rem" }}>
-            {presentCount} of {checklist.length} artifact types graded
+            {presentCount} of {checklist.length} requirements complete
           </p>
           <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
             {checklist.map((c) => (
@@ -91,10 +102,10 @@ export default async function PortfolioPage() {
                   style={{
                     ...mono,
                     fontSize: "0.625rem",
-                    color: c.present ? "var(--pine)" : "var(--clay)",
+                    color: checklistStateColor[c.completionState],
                   }}
                 >
-                  {c.present ? "Graded" : "Not yet"}
+                  {ARTIFACT_CHECKLIST_STATE_COPY[c.completionState]}
                 </span>
               </li>
             ))}

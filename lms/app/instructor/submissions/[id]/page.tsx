@@ -5,13 +5,14 @@ import { parseSubmissionSchema } from "@/lib/submission-schema";
 import { presignGet, s3Configured } from "@/lib/s3";
 import { Card, Eyebrow, StatusChip } from "@/components/ui";
 import { Markdown } from "@/components/markdown";
+import { RepairGrantForm } from "./repair-grant-form";
+import { projectProviderAuditMetadata } from "@/lib/assessments/provider-audit-metadata";
 
 // Full submission detail for instructor review: every field, files
 // (presigned GET links, gracefully disabled when storage is unconfigured),
-// the version history, each grade with its promptLog viewer, and the
-// AuditLog trail. Instructor-scoped by the /instructor layout
-// (requireRole('instructor')) — students can never reach this route, so the
-// promptLog is safe to show here and ONLY here.
+// the version history, each grade with allowlisted provider-call metadata,
+// and the AuditLog trail. Raw prompts and provider responses are never
+// rendered, including from legacy promptLog rows that may still contain them.
 
 export const dynamic = "force-dynamic";
 
@@ -62,10 +63,28 @@ export default async function SubmissionDetailPage({
       assignment: { include: { assignmentType: true } },
       user: { include: { section: true } },
       team: true,
+      assessmentResult: { select: { status: true } },
+      triggeredGrants: {
+        where: { kind: "repair" },
+        select: {
+          id: true,
+          targetVersion: true,
+          targetAttempt: true,
+          expiresAt: true,
+          consumedAt: true,
+        },
+        orderBy: { createdAt: "desc" },
+      },
       grades: { orderBy: { createdAt: "desc" } },
     },
   });
   if (!submission) notFound();
+
+  const nextRepairGrant = submission.triggeredGrants.find(
+    (grant) =>
+      grant.targetVersion === submission.version &&
+      grant.targetAttempt === submission.attempt + 1,
+  );
 
   const schema = parseSubmissionSchema(submission.assignment.assignmentType.submissionSchema);
   const fields = (submission.fields ?? {}) as Record<string, unknown>;
@@ -221,11 +240,7 @@ export default async function SubmissionDetailPage({
                 string,
                 { score?: number; rationale?: string }
               >;
-              const promptLog = g.promptLog as {
-                system?: string;
-                user?: string;
-                response?: string;
-              } | null;
+              const providerAudit = projectProviderAuditMetadata(g.promptLog);
               return (
                 <div key={g.id} style={{ borderTop: "1px solid var(--sand)", padding: "1rem 0" }}>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", alignItems: "baseline" }}>
@@ -267,21 +282,12 @@ export default async function SubmissionDetailPage({
                   <div style={{ margin: "0 0 0.5rem", fontSize: "0.875rem" }}>
                     <Markdown>{g.feedbackMd}</Markdown>
                   </div>
-                  {promptLog && (
+                  {providerAudit && (
                     <details>
                       <summary style={{ ...mono, fontSize: "0.6875rem", color: "var(--pine)", cursor: "pointer" }}>
-                        Prompt log (system / user / response)
+                        Provider audit metadata
                       </summary>
-                      <p style={{ ...mono, fontSize: "0.625rem", color: "var(--clay)", margin: "0.75rem 0 0" }}>System</p>
-                      <pre style={pre}>{promptLog.system ?? "—"}</pre>
-                      <p style={{ ...mono, fontSize: "0.625rem", color: "var(--clay)", margin: "0.75rem 0 0" }}>User</p>
-                      <pre style={pre}>{promptLog.user ?? "—"}</pre>
-                      <p style={{ ...mono, fontSize: "0.625rem", color: "var(--clay)", margin: "0.75rem 0 0" }}>Response</p>
-                      <pre style={pre}>
-                        {typeof promptLog.response === "string"
-                          ? promptLog.response
-                          : JSON.stringify(g.promptLog, null, 2)}
-                      </pre>
+                      <pre style={pre}>{JSON.stringify(providerAudit, null, 2)}</pre>
                     </details>
                   )}
                 </div>
@@ -289,6 +295,43 @@ export default async function SubmissionDetailPage({
             })
           )}
         </Card>
+
+        {submission.assignment.contractMode === "versioned" &&
+          submission.assessmentResult?.status === "repair_required" &&
+          submission.status !== "draft" &&
+          submission.assessmentVersionId &&
+          submission.ownerKind &&
+          submission.ownerId && (
+            <Card>
+              <h2 style={{ fontSize: "1.125rem", margin: "0 0 1rem" }}>Exact repair attempt</h2>
+              {nextRepairGrant ? (
+                <div>
+                  <p style={{ margin: 0, lineHeight: 1.6 }}>
+                    Version {nextRepairGrant.targetVersion}, attempt {nextRepairGrant.targetAttempt} ·{" "}
+                    <strong>
+                      {nextRepairGrant.consumedAt
+                        ? `consumed ${dateFmt.format(nextRepairGrant.consumedAt)}`
+                        : `expires ${dateFmt.format(nextRepairGrant.expiresAt)}`}
+                    </strong>
+                  </p>
+                  <p style={{ margin: "0.5rem 0 0", color: "var(--charcoal)", lineHeight: 1.6 }}>
+                    The source receipt remains immutable. Issue no second grant for the same target.
+                  </p>
+                </div>
+              ) : (
+                <RepairGrantForm
+                  submissionId={submission.id}
+                  expectedSourceUpdatedAt={submission.updatedAt.toISOString()}
+                  assignmentId={submission.assignmentId}
+                  assessmentVersionId={submission.assessmentVersionId}
+                  ownerKind={submission.ownerKind}
+                  ownerId={submission.ownerId}
+                  targetVersion={submission.version}
+                  targetAttempt={submission.attempt + 1}
+                />
+              )}
+            </Card>
+          )}
 
         <Card>
           <h2 style={{ fontSize: "1.125rem", margin: "0 0 1rem" }}>Audit trail</h2>

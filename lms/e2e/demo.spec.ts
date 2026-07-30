@@ -3,7 +3,7 @@ import { loginAs } from "./helpers";
 
 // U16 — the definition-of-done STUDENT arc, as student001 against the seeded
 // demo world: login backdoor → dashboard → sessions (session 4 locked) → the
-// S3 hub with its open datasets → submit the data memo twice (version bump)
+// S3 hub with its roster-gated TrustMRR release → inspect the immutable data-memo contract
 // → three gallery walls → the seven-line grades page → quiz history.
 //
 // Selectors favour roles and visible text so brand/CSS changes don't break
@@ -30,47 +30,22 @@ test("sessions index shows sessions 1–3 open and Session 4 locked", async ({ p
   await expect(page.getByText("Session 4 · Locked")).toBeVisible();
 });
 
-test("the S3 hub lists the open datasets and keeps sealed files unreleased", async ({ page }) => {
+test("the S3 hub lists the roster-gated TrustMRR release and keeps sealed files unreleased", async ({ page }) => {
   await page.goto("/sessions/3");
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-  await expect(page.getByText("moxie_retail_oct2025.csv", { exact: false }).first()).toBeVisible();
-  await expect(page.getByText("stocks_lab_12.csv", { exact: false }).first()).toBeVisible();
-  // The sealed schema card exists but is not yet released.
+  await expect(page.getByText("TrustMRR", { exact: false }).first()).toBeVisible();
+  await expect(page.getByText("trustmrr_s3_learner_v1.csv", { exact: false }).first()).toBeVisible();
+  // The context-wall pack exists but is not yet released.
   await expect(page.getByText("Not yet released").first()).toBeVisible();
 });
 
-test("submitting the data memo bumps the version (v1 then v2)", async ({ page }) => {
-  const fill = async () => {
-    await page.goto("/assignments/asg_s3_datamemo/submit");
-    const form = page.locator("section").filter({ hasText: "Verified number 1" }).first();
-    const inputs = form.locator('input:not([type="file"])');
-    const texts = [
-      "₹41,20,650 clean October revenue",
-      "Recomputed with a pivot",
-      "34,897 rows",
-      "Reconciled via two prompts",
-      "NVDA best 5-year performer",
-      "Asked for the working",
-    ];
-    for (let i = 0; i < texts.length; i++) {
-      await inputs.nth(i).fill(texts[i]);
-    }
-    await form.locator("textarea").fill("It picked units over revenue without telling me.");
-    await page.getByRole("button", { name: "Review & submit" }).click();
-    await page.getByRole("button", { name: "Submit", exact: true }).click();
-  };
-
-  // The suite may re-run against an already-mutated dev DB — assert the BUMP
-  // (n → n+1), not absolute version numbers.
-  await fill();
-  const banner = page.getByText(/Submitted · Version \d+/);
-  await expect(banner).toBeVisible();
-  const first = Number((await banner.textContent())!.match(/Version (\d+)/)![1]);
-  expect(first).toBeGreaterThanOrEqual(1);
-
-  // Resubmit — a new version, never an overwrite.
-  await fill();
-  await expect(page.getByText(`Submitted · Version ${first + 1}`)).toBeVisible();
+test("the S3 data memo exposes its frozen dataset contract and immutable receipt timeline", async ({ page }) => {
+  await page.goto("/assignments/asg_s3_datamemo/submit");
+  await expect(page.getByRole("heading", { name: "S3 · Verified data memo" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Assessment version/ })).toBeVisible();
+  await expect(page.getByText("Dataset: TrustMRR Session 3 private release v1", { exact: false })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Version and attempt timeline" })).toBeVisible();
+  await expect(page.locator("main")).not.toContainText(/answer.?key|prompt.?log|confidence|holdId/i);
 });
 
 test("the galleries render three walls", async ({ page }) => {

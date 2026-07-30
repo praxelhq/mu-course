@@ -25,10 +25,10 @@ export const GET = withAuth(async (req, { user }) => {
     if (!interview || interview.userId !== user.userId) throw new InterviewNotFoundError();
     const turn = await prisma.interviewTurn.findUnique({
       where: { interviewId_turnNo: { interviewId: id, turnNo } },
-      select: { audioS3Key: true },
+      select: { audioS3Key: true, audioS3VersionId: true },
     });
-    if (!turn?.audioS3Key) throw new InterviewNotFoundError();
-    const url = await presignGet(turn.audioS3Key);
+    if (!turn?.audioS3Key || !turn.audioS3VersionId) throw new InterviewNotFoundError();
+    const url = await presignGet(turn.audioS3Key, { versionId: turn.audioS3VersionId });
     return Response.json({ url });
   } catch (err) {
     const mapped = interviewErrorResponse(err);

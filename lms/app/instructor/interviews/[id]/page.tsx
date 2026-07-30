@@ -41,9 +41,12 @@ export default async function InterviewDetailPage({
   const audioUrls = new Map<number, string>();
   if (s3Configured()) {
     for (const t of turns) {
-      if (t.audioS3Key) {
+      if (t.audioS3Key && t.audioS3VersionId) {
         try {
-          audioUrls.set(t.turnNo, await presignGet(t.audioS3Key));
+          audioUrls.set(
+            t.turnNo,
+            await presignGet(t.audioS3Key, { versionId: t.audioS3VersionId }),
+          );
         } catch {
           // Missing object / signing hiccup — the text transcript still stands.
         }

@@ -1,10 +1,13 @@
 import { notFound, redirect } from "next/navigation";
 import { AuthError, requireUser } from "@/lib/auth";
 import { getAssignmentForStudent } from "@/lib/submissions";
+import { getLearnerAssignmentProjection } from "@/lib/assessment-projections";
 import { s3Configured } from "@/lib/s3";
 import { Card, Eyebrow } from "@/components/ui";
 import { Markdown } from "@/components/markdown";
 import { SubmissionForm, type HistoryRow } from "@/components/submission-form";
+import { LearnerAssessmentStatus } from "@/components/learner-assessment-status";
+import { LearnerAssessmentActions } from "@/components/learner-assessment-actions";
 
 // The submit surface. The form renders from the assignment type's
 // submissionSchema (schema-driven; new types need zero code changes). A
@@ -42,15 +45,36 @@ export default async function SubmitPage({
     throw e;
   }
 
-  const view = await getAssignmentForStudent(userId, id);
+  const [view, assessmentProjection] = await Promise.all([
+    getAssignmentForStudent(userId, id),
+    getLearnerAssignmentProjection({ userId, assignmentId: id }),
+  ]);
   if (!view) notFound();
 
   const history: HistoryRow[] = view.history.map((h) => ({
     id: h.id,
     version: h.version,
+    attempt: h.attempt,
     status: h.status,
     submittedAt: h.submittedAt?.toISOString() ?? null,
   }));
+
+  const scoreableItem = assessmentProjection?.history.find(
+    (item) => item.submissionId === assessmentProjection.latestScoreableId,
+  );
+  const publicationItem = assessmentProjection?.history.find(
+    (item) => item.lifecycle !== "draft" && item.publication !== null,
+  );
+  const workflowItem = assessmentProjection?.history.find((item) => {
+    const nominated = assessmentProjection.workflow.nominations.some(
+      (nomination) => nomination.submissionId === item.submissionId,
+    );
+    return (
+      item.workflowNominationEligible ||
+      nominated ||
+      assessmentProjection.workflow.selectedSubmissionId === item.submissionId
+    );
+  });
 
   return (
     <main style={{ maxWidth: "48rem", margin: "0 auto", padding: "3rem 2rem" }}>
@@ -66,6 +90,14 @@ export default async function SubmitPage({
         <p style={{ ...mono, fontSize: "0.625rem", color: "var(--clay)", margin: "0 0 2rem" }}>
           Due {dateFmt.format(view.assignment.dueAt)}
         </p>
+      )}
+
+      {assessmentProjection?.assignment.contractMode === "versioned" && (
+        <LearnerAssessmentStatus
+          projection={assessmentProjection}
+          available={view.available}
+          canSubmit={view.canSubmit}
+        />
       )}
 
       {/* What you submitted — visible as soon as anything exists. */}
@@ -147,6 +179,12 @@ export default async function SubmitPage({
               / {view.grade.dimensions.reduce((s, d) => s + d.max, 0)}
             </span>
           </p>
+          {view.grade.provisional && (
+            <p style={{ color: "var(--charcoal)", margin: "-0.5rem 0 1rem", lineHeight: 1.6 }}>
+              This result is provisional. It is not final while instructor review, an open hold,
+              or an appeal is unresolved.
+            </p>
+          )}
           {view.grade.dimensions.map((d) => (
             <div key={d.key} style={{ marginBottom: "0.75rem" }}>
               <p style={{ margin: 0, fontSize: "0.9rem" }}>
@@ -167,14 +205,48 @@ export default async function SubmitPage({
         </Card>
       )}
 
+      {assessmentProjection?.assignment.contractMode === "versioned" && (
+        <LearnerAssessmentActions
+          appeal={
+            scoreableItem?.latestGrade
+              ? {
+                  gradeId: scoreableItem.latestGrade.gradeId,
+                  gradeState: scoreableItem.latestGrade.state,
+                  appeals: scoreableItem.latestGrade.appeals,
+                }
+              : null
+          }
+          publication={
+            publicationItem?.publication
+              ? { submissionId: publicationItem.submissionId, state: publicationItem.publication }
+              : null
+          }
+          workflow={
+            workflowItem
+              ? {
+                  assignmentId: view.assignment.id,
+                  submissionId: workflowItem.submissionId,
+                  eligible: workflowItem.workflowNominationEligible,
+                  selected:
+                    assessmentProjection.workflow.selectedSubmissionId === workflowItem.submissionId,
+                  nominations: assessmentProjection.workflow.nominations.filter(
+                    (nomination) => nomination.submissionId === workflowItem.submissionId,
+                  ),
+                }
+              : null
+          }
+        />
+      )}
+
       {!view.canSubmit && view.submitted ? (
         <Card style={{ textAlign: "center", padding: "2rem" }}>
           <p style={{ ...mono, fontSize: "0.6875rem", color: "var(--clay)", margin: "0 0 0.5rem" }}>
             Submitted
           </p>
           <p style={{ color: "var(--charcoal)", margin: 0, lineHeight: 1.6 }}>
-            One submission per student — yours is in. If you need to change it, ask your
-            instructor to reopen this artifact for you.
+            {assessmentProjection?.assignment.contractMode === "versioned"
+              ? "Your receipt is immutable and there is no eligible unused revision grant. An improvement or repair form appears here only while its one-use grant is active."
+              : "One submission per student — yours is in. If you need to change it, ask your instructor to reopen this artifact for you."}
           </p>
         </Card>
       ) : !view.available ? (
@@ -200,8 +272,18 @@ export default async function SubmitPage({
         <SubmissionForm
           assignmentId={view.assignment.id}
           fields={view.schema.fields}
+          anyOf={view.schema.anyOf}
           storageReady={s3Configured()}
-          history={history}
+          history={assessmentProjection?.assignment.contractMode === "versioned" ? [] : history}
+          revisionGrants={(assessmentProjection?.grants ?? [])
+            .filter((grant) => grant.state === "eligible")
+            .map((grant) => ({
+              grantId: grant.grantId,
+              kind: grant.kind,
+              targetVersion: grant.targetVersion,
+              targetAttempt: grant.targetAttempt,
+              expiresAt: grant.expiresAt,
+            }))}
         />
       )}
     </main>

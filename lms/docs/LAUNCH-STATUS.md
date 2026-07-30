@@ -114,7 +114,7 @@ protected routes correctly redirect unauthenticated visitors.
    To do it, set these two variables on the `forge-prod` service and let it redeploy:
    ```
    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_cHJlcGFyZWQtc2VhbC03MS5jbGVyay5hY2NvdW50cy5kZXYk
-   CLERK_SECRET_KEY=sk_test_zWDrrKxsDhZpYbau66lKTJyISNxyicNymwzWR0RurP
+   CLERK_SECRET_KEY=[REDACTED — rotate before deployment]
    ```
    The roster gate, submissions, voting and grading are all unaffected — only the identity
    provider endpoint changes. **Caveat: Clerk development instances are capped at 100 users**,

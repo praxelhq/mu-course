@@ -1,24 +1,26 @@
 import { withAuth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
+import { parseExternalLinks } from "@/lib/portfolio";
+import { selectReferencedEvidence } from "@/lib/evidence/referenced-evidence";
+import {
+  projectSafeAppealHistory,
+  projectSafeEvidenceManifest,
+  projectSafeScalarFields,
+  resolveSafeExportContract,
+  sanitizeExportText,
+} from "@/lib/safe-exports";
 
-// DPDP data export: everything the LMS holds ABOUT one student, as one
-// JSON bundle, for fulfilling a data-access request. Admin-only.
-//
-// Scope decisions (docs/DECISIONS.md):
-//  - Grades INCLUDE promptLog — the grading prompt/response is derived from
-//    the student's own submission and the rubric, so it is their data.
-//  - Quiz attempts include the diagnostic attempt as a PLAIN attempt row
-//    (quiz title + score). No isDiagnostic marker and no counting/not-counting
-//    annotation appears anywhere in the bundle: the student knows they took
-//    the quiz; what must not leak is that it does not count.
-//  - Peer reviews GIVEN by the student only. Reviews RECEIVED are the
-//    reviewers' personal data (their opinions/allocations) and are excluded.
-//  - S3 keys are listed as a manifest, not fetched — the app tier never
-//    proxies file bytes.
-//  - No other student's name or email appears anywhere in the bundle
-//    (opaque ids like reviewee ids are retained for correlation).
+// Admin-only data-access bundle. This endpoint deliberately assembles a safe
+// projection instead of serializing ORM rows. Grading/evaluator records and
+// object-store locators are not selected; versioned submission fields and
+// evidence metadata are governed by the bound immutable exportPolicy.
 
 export const dynamic = "force-dynamic";
+export const DPDP_EXPORT_CONTRACT_VERSION = 2 as const;
+
+export function dpdpExportFilename(userId: string): string {
+  return `dpdp-export-v${DPDP_EXPORT_CONTRACT_VERSION}-${userId}.json`;
+}
 
 export const GET = withAuth(
   async (req) => {
@@ -43,100 +45,268 @@ export const GET = withAuth(
     });
     if (!user) return Response.json({ error: "Unknown user" }, { status: 404 });
 
-    const [submissions, interviews, attempts, reviewsGiven, notifications, portfolio, auditRows] =
-      await Promise.all([
-        prisma.submission.findMany({
-          where: { userId },
-          orderBy: { createdAt: "asc" },
-          select: {
-            id: true,
-            status: true,
-            submittedAt: true,
-            fields: true,
-            files: true,
-            version: true,
-            createdAt: true,
-            assignment: {
-              select: { title: true, assignmentType: { select: { slug: true, title: true } } },
-            },
-            grades: {
-              orderBy: { createdAt: "asc" },
-              select: {
-                rubricScores: true,
-                total: true,
-                confidence: true,
-                feedbackMd: true,
-                flags: true,
-                gradedBy: true,
-                provisional: true,
-                overrideReason: true,
-                promptLog: true, // the student's own grading context — included
-                createdAt: true,
+    const [
+      submissions,
+      appeals,
+      interviews,
+      attempts,
+      reviewsGiven,
+      notifications,
+      portfolio,
+      uploadAttributions,
+      appealAttributions,
+      holdAttributions,
+      publicationAttributions,
+      nominationAttributions,
+      auditAttributions,
+    ] = await Promise.all([
+      prisma.submission.findMany({
+        where: { userId },
+        orderBy: { createdAt: "asc" },
+        select: {
+          id: true,
+          assessmentVersionId: true,
+          fields: true,
+          version: true,
+          attempt: true,
+          submittedAt: true,
+          createdAt: true,
+          assessmentVersion: {
+            select: { exportPolicy: true, publicSchema: true },
+          },
+          assignment: {
+            select: {
+              title: true,
+              assignmentType: {
+                select: {
+                  slug: true,
+                  submissionSchema: true,
+                  galleryEligible: true,
+                },
               },
             },
-            galleryItem: { select: { featured: true, caption: true, screenshotS3Key: true } },
           },
-        }),
-        prisma.interview.findMany({
-          where: { userId },
-          orderBy: { createdAt: "asc" },
-          select: {
-            id: true,
-            status: true,
-            transport: true,
-            audioS3Key: true,
-            rubricScores: true,
-            confidence: true,
-            escalationReason: true,
-            attemptNumber: true,
-            createdAt: true,
-            completedAt: true,
-            turns: {
-              orderBy: { turnNo: "asc" },
-              select: { turnNo: true, speaker: true, text: true, audioS3Key: true, startedAt: true },
+          evidence: {
+            orderBy: { committedAt: "asc" },
+            select: {
+              id: true,
+              fieldKey: true,
+              fileRole: true,
+              byteCount: true,
+              inspectedMimeType: true,
+              scanState: true,
+              committedAt: true,
+              reservation: { select: { filename: true } },
             },
           },
-        }),
-        // ALL attempts — including the diagnostic, projected as a plain row.
-        prisma.quizAttempt.findMany({
-          where: { userId },
-          orderBy: { submittedAt: "asc" },
-          select: {
-            answers: true,
-            scorePct: true,
-            submittedAt: true,
-            quiz: { select: { title: true, sessionNo: true } },
-          },
-        }),
-        prisma.peerReview.findMany({
-          where: { reviewerId: userId }, // GIVEN only — received are others' data
-          select: { checkpoint: true, revieweeId: true, pointsAllocated: true, ratings: true },
-        }),
-        prisma.notification.findMany({
-          where: { userId },
-          orderBy: { createdAt: "asc" },
-          select: { kind: true, title: true, body: true, readAt: true, createdAt: true },
-        }),
-        prisma.portfolioEntry.findUnique({
-          where: { userId },
-          select: { narrative: true, links: true, validations: true, lastCrawl: true },
-        }),
-        prisma.auditLog.findMany({
-          where: { actorId: userId },
-          orderBy: { createdAt: "asc" },
-          select: { action: true, targetType: true, targetId: true, before: true, after: true, createdAt: true },
-        }),
-      ]);
+        },
+      }),
+      prisma.gradeAppeal.findMany({
+        where: { grade: { submission: { userId } } },
+        orderBy: { createdAt: "asc" },
+        select: {
+          reason: true,
+          status: true,
+          outcome: true,
+          createdAt: true,
+          updatedAt: true,
+          resolvedAt: true,
+          grade: { select: { submissionId: true } },
+        },
+      }),
+      prisma.interview.findMany({
+        where: { userId },
+        orderBy: { createdAt: "asc" },
+        select: {
+          id: true,
+          attemptNumber: true,
+          createdAt: true,
+          completedAt: true,
+        },
+      }),
+      prisma.quizAttempt.findMany({
+        where: { userId },
+        orderBy: { submittedAt: "asc" },
+        select: {
+          submittedAt: true,
+          quiz: { select: { title: true, sessionNo: true } },
+        },
+      }),
+      prisma.peerReview.findMany({
+        where: { reviewerId: userId },
+        orderBy: [{ checkpoint: "asc" }, { revieweeId: "asc" }],
+        select: { checkpoint: true, revieweeId: true, pointsAllocated: true },
+      }),
+      prisma.notification.findMany({
+        where: { userId },
+        orderBy: { createdAt: "asc" },
+        select: { kind: true, title: true, body: true, readAt: true, createdAt: true },
+      }),
+      prisma.portfolioEntry.findUnique({
+        where: { userId },
+        select: { narrative: true, links: true },
+      }),
+      // Attribution is queried globally by actor, not through Submission.userId:
+      // a learner may act on a shared row owned by another teammate.
+      prisma.uploadReservation.findMany({
+        where: { createdById: userId },
+        select: { id: true, submissionId: true, createdAt: true },
+      }),
+      prisma.gradeAppeal.findMany({
+        where: { openedBy: userId },
+        select: {
+          id: true,
+          createdAt: true,
+          grade: { select: { submissionId: true } },
+        },
+      }),
+      prisma.gradeHold.findMany({
+        where: { createdBy: userId },
+        select: { id: true, submissionId: true, createdAt: true },
+      }),
+      prisma.publicationDecision.findMany({
+        where: { ownerConsentBy: userId },
+        select: { id: true, submissionId: true, createdAt: true },
+      }),
+      prisma.teamWorkflowNomination.findMany({
+        where: { nominatedBy: userId },
+        select: { id: true, submissionId: true, createdAt: true },
+      }),
+      prisma.auditLog.findMany({
+        where: { OR: [{ actorId: userId }, { targetId: userId }] },
+        select: { id: true, actorId: true, targetId: true, createdAt: true },
+      }),
+    ]);
 
-    // S3 key manifest — keys only, never bytes.
-    const s3Keys = [
-      ...submissions.flatMap((s) => s.files),
-      ...submissions.flatMap((s) => (s.galleryItem?.screenshotS3Key ? [s.galleryItem.screenshotS3Key] : [])),
-      ...interviews.flatMap((iv) => (iv.audioS3Key ? [iv.audioS3Key] : [])),
-      ...interviews.flatMap((iv) => iv.turns.flatMap((t) => (t.audioS3Key ? [t.audioS3Key] : []))),
-    ];
+    const appealsBySubmission = new Map<string, typeof appeals>();
+    for (const appeal of appeals) {
+      const rows = appealsBySubmission.get(appeal.grade.submissionId) ?? [];
+      rows.push(appeal);
+      appealsBySubmission.set(appeal.grade.submissionId, rows);
+    }
+
+    const safeSubmissions = submissions.map((submission) => {
+      const contract = resolveSafeExportContract({
+        contractMode: submission.assessmentVersionId ? "versioned" : "legacy",
+        exportPolicy: submission.assessmentVersion?.exportPolicy ?? null,
+        submissionSchema: submission.assignment.assignmentType.submissionSchema,
+        legacyPraxyEnabled: submission.assignment.assignmentType.galleryEligible,
+      });
+      const referencedEvidence = submission.assessmentVersionId
+        ? selectReferencedEvidence({
+            publicSchema: submission.assessmentVersion?.publicSchema,
+            fields: submission.fields,
+            evidence: submission.evidence,
+          })
+        : [];
+      const evidence = referencedEvidence.map((item) => ({
+        role: item.fileRole,
+        filename: item.reservation.filename,
+        inspectedMimeType: item.inspectedMimeType,
+        byteCount: item.byteCount,
+        scanState: item.scanState,
+        committedAt: item.committedAt,
+      }));
+      const appealHistory = appealsBySubmission.get(submission.id) ?? [];
+      return {
+        id: submission.id,
+        assignmentTitle:
+          sanitizeExportText(submission.assignment.title, "dpdp:assignment:title") ?? "Artifact",
+        artifactType:
+          sanitizeExportText(
+            submission.assignment.assignmentType.slug,
+            "dpdp:assignment:type",
+          ) ?? "artifact",
+        version: submission.version,
+        attempt: submission.attempt,
+        submittedAt: submission.submittedAt,
+        createdAt: submission.createdAt,
+        fields: contract
+          ? projectSafeScalarFields(submission.fields, contract.dpdp.fieldKeys)
+          : {},
+        evidence: contract
+          ? projectSafeEvidenceManifest(evidence, contract.dpdp.evidenceRoles)
+          : [],
+        appeals: projectSafeAppealHistory(appealHistory),
+      };
+    });
+
+    const externalLinks = parseExternalLinks(portfolio?.links).flatMap((link) => {
+      const label = sanitizeExportText(link.label, "dpdp:portfolio:label");
+      const href = sanitizeExportText(link.url, "dpdp:portfolio:url");
+      return label && href ? [{ label, href }] : [];
+    });
+
+    const actorAttributions = [
+      ...uploadAttributions.map((row) => ({
+        recordType: "upload",
+        recordId: row.id,
+        submissionId: row.submissionId,
+        role: "createdById",
+        createdAt: row.createdAt,
+        erasureDisposition: "pseudonymized-on-erasure",
+      })),
+      ...appealAttributions.map((row) => ({
+        recordType: "appeal",
+        recordId: row.id,
+        submissionId: row.grade.submissionId,
+        role: "openedBy",
+        createdAt: row.createdAt,
+        erasureDisposition: "pseudonymized-on-erasure",
+      })),
+      ...holdAttributions.map((row) => ({
+        recordType: "hold",
+        recordId: row.id,
+        submissionId: row.submissionId,
+        role: "createdBy",
+        createdAt: row.createdAt,
+        erasureDisposition: "pseudonymized-on-erasure",
+      })),
+      ...publicationAttributions.map((row) => ({
+        recordType: "publication-consent",
+        recordId: row.id,
+        submissionId: row.submissionId,
+        role: "ownerConsentBy",
+        createdAt: row.createdAt,
+        erasureDisposition: "pseudonymized-on-erasure",
+      })),
+      ...nominationAttributions.map((row) => ({
+        recordType: "team-nomination",
+        recordId: row.id,
+        submissionId: row.submissionId,
+        role: "nominatedBy",
+        createdAt: row.createdAt,
+        erasureDisposition: "pseudonymized-on-erasure",
+      })),
+      ...auditAttributions.flatMap((row) => [
+        ...(row.actorId === userId
+          ? [{
+              recordType: "audit",
+              recordId: row.id,
+              role: "actorId",
+              createdAt: row.createdAt,
+              erasureDisposition: "pseudonymized-on-erasure",
+            }]
+          : []),
+        ...(row.targetId === userId
+          ? [{
+              recordType: "audit",
+              recordId: row.id,
+              role: "targetId",
+              createdAt: row.createdAt,
+              erasureDisposition: "pseudonymized-on-erasure",
+            }]
+          : []),
+      ]),
+    ].sort(
+      (left, right) =>
+        left.recordType.localeCompare(right.recordType) ||
+        left.recordId.localeCompare(right.recordId) ||
+        left.role.localeCompare(right.role),
+    );
 
     const bundle = {
+      contractVersion: DPDP_EXPORT_CONTRACT_VERSION,
       exportedAt: new Date().toISOString(),
       user: {
         id: user.id,
@@ -146,40 +316,42 @@ export const GET = withAuth(
         avatarUrl: user.avatarUrl,
         createdAt: user.createdAt,
         section: user.section,
-        team: user.team, // team name + sector only — no member list
+        team: user.team,
       },
-      submissions: submissions.map((s) => ({
-        id: s.id,
-        assignmentTitle: s.assignment.title,
-        artifactType: s.assignment.assignmentType.slug,
-        status: s.status,
-        version: s.version,
-        submittedAt: s.submittedAt,
-        createdAt: s.createdAt,
-        fields: s.fields,
-        files: s.files,
-        grades: s.grades,
-        galleryItem: s.galleryItem,
-      })),
+      submissions: safeSubmissions,
       interviews,
-      quizAttempts: attempts.map((a) => ({
-        quizTitle: a.quiz.title,
-        sessionNo: a.quiz.sessionNo,
-        scorePct: a.scorePct,
-        answers: a.answers,
-        submittedAt: a.submittedAt,
+      learningActivities: attempts.map((attempt) => ({
+        title: sanitizeExportText(attempt.quiz.title, "dpdp:activity:title") ?? "Activity",
+        sessionNo: attempt.quiz.sessionNo,
+        submittedAt: attempt.submittedAt,
       })),
       peerReviewsGiven: reviewsGiven,
-      notifications,
-      portfolio,
-      auditLogsAsActor: auditRows,
-      s3Keys,
+      actorAttributions,
+      notifications: notifications.map((notification) => ({
+        kind: sanitizeExportText(notification.kind, "dpdp:notification:kind") ?? "notice",
+        title:
+          sanitizeExportText(notification.title, "dpdp:notification:title") ?? "[redacted]",
+        body:
+          notification.body === null
+            ? null
+            : (sanitizeExportText(notification.body, "dpdp:notification:body") ?? "[redacted]"),
+        readAt: notification.readAt,
+        createdAt: notification.createdAt,
+      })),
+      portfolio: {
+        narrative:
+          portfolio?.narrative === null || portfolio?.narrative === undefined
+            ? null
+            : (sanitizeExportText(portfolio.narrative, "dpdp:portfolio:narrative") ??
+              "[redacted]"),
+        externalLinks,
+      },
     };
 
     return new Response(JSON.stringify(bundle, null, 2), {
       headers: {
         "content-type": "application/json",
-        "content-disposition": `attachment; filename="dpdp-export-${user.id}.json"`,
+        "content-disposition": `attachment; filename="${dpdpExportFilename(user.id)}"`,
       },
     });
   },

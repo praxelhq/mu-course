@@ -28,19 +28,21 @@ export function textAnswersAllowed(): boolean {
 const bodySchema = z
   .object({
     interviewId: z.string().min(1),
-    audioS3Key: z.string().min(1).max(500).optional(),
+    audioReservationId: z.string().min(1).max(500).optional(),
     text: z.string().min(1).max(8000).optional(),
   })
-  .refine((b) => b.audioS3Key || b.text, { message: "Provide audioS3Key or text" });
+  .refine((b) => b.audioReservationId || b.text, {
+    message: "Provide audioReservationId or text",
+  });
 
 export const POST = withAuth(async (req, { user }) => {
   if (!takeInterviewToken(user.userId)) return rateLimited();
   const parsed = bodySchema.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return Response.json({ error: "Invalid body" }, { status: 400 });
-  const { interviewId, audioS3Key, text } = parsed.data;
+  const { interviewId, audioReservationId, text } = parsed.data;
 
   // A typed answer with no audio is only accepted in the dev/text fallback.
-  if (text && !audioS3Key && !textAnswersAllowed()) {
+  if (text && !audioReservationId && !textAnswersAllowed()) {
     return Response.json(
       { error: "Typed answers are not available — please answer by voice." },
       { status: 400 },
@@ -48,7 +50,12 @@ export const POST = withAuth(async (req, { user }) => {
   }
 
   try {
-    const answer = await submitAnswer({ interviewId, userId: user.userId, audioS3Key, text });
+    const answer = await submitAnswer({
+      interviewId,
+      userId: user.userId,
+      audioReservationId,
+      text,
+    });
     const next = await nextQuestion(interviewId);
     if (next.done) {
       await completeInterview(interviewId, user.userId);

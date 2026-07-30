@@ -24,6 +24,7 @@ const userSelect = {
   role: true,
   sectionId: true,
   teamId: true,
+  flaggedForDeletion: true,
 } as const;
 
 async function readTestCookie(req?: Request): Promise<string | null> {

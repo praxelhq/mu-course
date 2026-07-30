@@ -10,12 +10,15 @@ export const QUEUE_SCREENSHOT_CAPTURE = "screenshot.capture"; // U11
 export const QUEUE_GRADE_INTERVIEW = "grade.interview"; // U12
 export const QUEUE_GRADE_INTERVIEW_DEAD = "grade.interview.dead";
 export const QUEUE_PORTFOLIO_CRAWL = "portfolio.crawl"; // U16
+export const QUEUE_RETENTION_CLEANUP = "maintenance.retention-cleanup";
+export const QUEUE_RETENTION_CLEANUP_DEAD = "maintenance.retention-cleanup.dead";
 
 /** Registered as not-implemented-yet no-ops in the worker (future units). */
 export const FUTURE_QUEUES = [] as const;
 
 export const GRADE_RETRY_LIMIT = 4;
 export const SCREENSHOT_RETRY_LIMIT = 2;
+export const RETENTION_RETRY_LIMIT = 2;
 
 let boss: PgBoss | null = null;
 let starting: Promise<PgBoss> | null = null;
@@ -71,6 +74,13 @@ export async function ensureGradingQueues(b: PgBoss): Promise<void> {
     retryLimit: 2,
     retryBackoff: true,
     retryDelay: 30,
+  });
+  await b.createQueue(QUEUE_RETENTION_CLEANUP_DEAD);
+  await b.createQueue(QUEUE_RETENTION_CLEANUP, {
+    retryLimit: RETENTION_RETRY_LIMIT,
+    retryBackoff: true,
+    retryDelay: 60,
+    deadLetter: QUEUE_RETENTION_CLEANUP_DEAD,
   });
   for (const name of FUTURE_QUEUES) {
     await b.createQueue(name);

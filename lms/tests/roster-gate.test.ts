@@ -22,6 +22,7 @@ const student: SessionUserRow = {
   role: "student",
   sectionId: "sec_a",
   teamId: "team_1",
+  flaggedForDeletion: false,
 };
 const instructor: SessionUserRow = {
   id: "u_instructor",
@@ -29,6 +30,7 @@ const instructor: SessionUserRow = {
   role: "instructor",
   sectionId: null,
   teamId: null,
+  flaggedForDeletion: false,
 };
 
 function makeDeps(overrides: Partial<SessionDeps> = {}): SessionDeps {
@@ -95,6 +97,46 @@ describe("resolveSessionUser", () => {
       getClerkEmail: async () => "stranger@gmail.com",
     });
     expect(await resolveSessionUser(deps)).toBeNull();
+  });
+
+  it("rejects every resolution path for a locally deletion-fenced user", async () => {
+    const flagged = { ...student, flaggedForDeletion: true };
+    const byClerk = makeDeps({
+      getClerkSession: async () => ({ clerkUserId: "clerk_flagged" }),
+      db: {
+        findUserById: async () => null,
+        findUserByClerkId: async () => flagged,
+        findUserByEmail: async () => null,
+        linkClerkId: async () => {},
+      },
+    });
+    expect(await resolveSessionUser(byClerk)).toBeNull();
+
+    const linkClerkId = vi.fn(async () => {});
+    const byEmail = makeDeps({
+      getClerkSession: async () => ({ clerkUserId: "clerk_flagged" }),
+      getClerkEmail: async () => flagged.email,
+      db: {
+        findUserById: async () => null,
+        findUserByClerkId: async () => null,
+        findUserByEmail: async () => flagged,
+        linkClerkId,
+      },
+    });
+    expect(await resolveSessionUser(byEmail)).toBeNull();
+    expect(linkClerkId).not.toHaveBeenCalled();
+
+    const byTestCookie = makeDeps({
+      testLoginEnabled: true,
+      getTestUserId: async () => flagged.id,
+      db: {
+        findUserById: async () => flagged,
+        findUserByClerkId: async () => null,
+        findUserByEmail: async () => null,
+        linkClerkId: async () => {},
+      },
+    });
+    expect(await resolveSessionUser(byTestCookie)).toBeNull();
   });
 
   it("uses the test-login cookie when enabled", async () => {

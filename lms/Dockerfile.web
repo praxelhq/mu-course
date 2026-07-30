@@ -20,8 +20,10 @@ RUN pnpm install --frozen-lockfile
 
 FROM base AS build
 WORKDIR /app
+ARG RAILWAY_GIT_COMMIT_SHA=unknown
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+RUN printf '%s\n' "$RAILWAY_GIT_COMMIT_SHA" > /app/BUILD_SOURCE_SHA
 RUN pnpm prisma generate
 RUN pnpm build
 
@@ -43,6 +45,7 @@ ENV NODE_ENV=production \
 COPY --from=build /app/.next/standalone ./
 COPY --from=build /app/.next/static ./.next/static
 COPY --from=build /app/public ./public
+COPY --from=build /app/BUILD_SOURCE_SHA ./BUILD_SOURCE_SHA
 # Schema + migrations for `prisma migrate deploy` at start
 COPY prisma ./prisma
 COPY docker-entrypoint.web.sh ./docker-entrypoint.web.sh

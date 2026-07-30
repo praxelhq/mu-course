@@ -1,0 +1,8 @@
+{
+  "name": "Lead routing demo",
+  "flow": [
+    { "id": 1, "module": "gateway:CustomWebHook", "mapper": {} },
+    { "id": 2, "module": "builtin:BasicFeeder", "mapper": {} }
+  ],
+  "metadata": { "version": 1 }
+}

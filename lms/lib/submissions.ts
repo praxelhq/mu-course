@@ -1,22 +1,33 @@
 import { createHash } from "node:crypto";
-import type { Prisma, Submission, SubmissionStatus } from "@prisma/client";
+import type {
+  OwnerKind,
+  Prisma,
+  ResubmissionGrant,
+  Submission,
+  SubmissionStatus,
+} from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { parseRubric } from "@/lib/ai/grading";
 import { syncGalleryItem } from "@/lib/galleries";
 import { parentSessionPageIdFor, resolveGate } from "@/lib/gates";
 import { parseRubricScores } from "@/lib/review-queue";
 import { presignGet, s3Configured } from "@/lib/s3";
+import { getBoundDraftContext, RevisionNotAllowedError } from "@/lib/submission-drafts";
 import {
   parseSubmissionSchema,
   validateSubmissionFields,
   type SubmissionSchema,
 } from "@/lib/submission-schema";
+import {
+  improvementGrantExpiry,
+  selectSubmissionVersions,
+} from "@/lib/submission-versions";
 
-// Schema-driven submission core. The form renders FROM the type's
-// submissionSchema and this module validates/writes against the same schema,
-// so a new AssignmentType row is a working submission pipeline with zero code
-// changes. Versioning: resubmission creates a NEW row at version+1 — history
-// rows are never mutated.
+// Schema-driven submission core. Legacy work renders from AssignmentType;
+// versioned work renders from its immutable AssessmentVersion binding, with
+// the active pointer consulted only before any draft/history exists. This
+// module validates and writes against that same bound contract. Versioning:
+// resubmission creates a NEW row at version+1 — history rows are never mutated.
 
 // ---------------------------------------------------------------------------
 // Typed failures (routes map these to HTTP statuses)
@@ -115,6 +126,7 @@ export async function assertAssignmentOpen(userId: string, assignmentId: string)
 export type SubmissionHistoryRow = {
   id: string;
   version: number;
+  attempt: number;
   status: SubmissionStatus;
   submittedAt: Date | null;
   createdAt: Date;
@@ -135,7 +147,7 @@ export type AssignmentForStudent = {
     description: string;
     teamBased: boolean;
   };
-  /** Parsed field defs; null when the stored JSON is malformed. */
+  /** Parsed bound field defs; null when the immutable contract is unavailable or malformed. */
   schema: SubmissionSchema | null;
   /** May this student submit right now (gates + exceptions)? */
   available: boolean;
@@ -165,6 +177,82 @@ export type AssignmentForStudent = {
   canSubmit: boolean;
 };
 
+export type SubmissionSchemaBindingRow = {
+  assessmentVersionId: string | null;
+  assessmentVersion: {
+    id: string;
+    assignmentId: string;
+    publicSchema: unknown;
+  } | null;
+};
+
+type ActiveSubmissionSchemaVersion = {
+  id: string;
+  assignmentId: string;
+  publishedAt: Date | null;
+  publicSchema: unknown;
+};
+
+function schemaForStudentBinding(args: {
+  assignmentId: string;
+  contractMode: "legacy" | "versioned";
+  assignmentTypeSchema: unknown;
+  activeAssessmentVersion: ActiveSubmissionSchemaVersion | null;
+  existing: SubmissionSchemaBindingRow | null;
+}): SubmissionSchema | null {
+  if (args.existing) {
+    if (!args.existing.assessmentVersionId) {
+      return parseSubmissionSchema(args.assignmentTypeSchema);
+    }
+    const bound = args.existing.assessmentVersion;
+    if (
+      !bound ||
+      bound.id !== args.existing.assessmentVersionId ||
+      bound.assignmentId !== args.assignmentId
+    ) {
+      return null;
+    }
+    return parseSubmissionSchema(bound.publicSchema);
+  }
+
+  if (args.contractMode === "legacy") {
+    return parseSubmissionSchema(args.assignmentTypeSchema);
+  }
+  const active = args.activeAssessmentVersion;
+  return active && active.assignmentId === args.assignmentId && active.publishedAt
+    ? parseSubmissionSchema(active.publicSchema)
+    : null;
+}
+
+/**
+ * Existing work always renders from its immutable contract. The mutable active
+ * pointer is consulted only when no draft or historical receipt exists.
+ */
+export function resolveStudentSubmissionSchemas(args: {
+  assignmentId: string;
+  contractMode: "legacy" | "versioned";
+  assignmentTypeSchema: unknown;
+  activeAssessmentVersion: ActiveSubmissionSchemaVersion | null;
+  history: readonly SubmissionSchemaBindingRow[];
+  latestSubmitted: SubmissionSchemaBindingRow | null;
+}): { formSchema: SubmissionSchema | null; submittedSchema: SubmissionSchema | null } {
+  const common = {
+    assignmentId: args.assignmentId,
+    contractMode: args.contractMode,
+    assignmentTypeSchema: args.assignmentTypeSchema,
+    activeAssessmentVersion: args.activeAssessmentVersion,
+  };
+  return {
+    formSchema: schemaForStudentBinding({
+      ...common,
+      existing: args.history[0] ?? null,
+    }),
+    submittedSchema: args.latestSubmitted
+      ? schemaForStudentBinding({ ...common, existing: args.latestSubmitted })
+      : null,
+  };
+}
+
 export async function getAssignmentForStudent(
   userId: string,
   assignmentId: string,
@@ -176,15 +264,17 @@ export async function getAssignmentForStudent(
   if (!user) return null;
   const assignment = await prisma.assignment.findUnique({
     where: { id: assignmentId },
-    include: { assignmentType: true },
+    include: { assignmentType: true, activeAssessmentVersion: true },
   });
   if (!assignment) return null;
 
   const type = assignment.assignmentType;
-  const mineOrTeam =
-    type.teamBased && user.teamId
-      ? [{ userId }, { teamId: user.teamId }]
-      : [{ userId }];
+  const mineOrTeam = [
+    { assessmentVersionId: null, userId },
+    ...(user.teamId ? [{ assessmentVersionId: null, teamId: user.teamId }] : []),
+    { ownerKind: "individual" as const, ownerId: userId },
+    ...(user.teamId ? [{ ownerKind: "team" as const, ownerId: user.teamId }] : []),
+  ];
 
   const [available, rows] = await Promise.all([
     assignmentAvailableTo(user, assignmentId),
@@ -193,30 +283,67 @@ export async function getAssignmentForStudent(
       select: {
         id: true,
         version: true,
+        attempt: true,
         status: true,
         submittedAt: true,
         createdAt: true,
         fields: true,
         files: true,
+        assessmentVersionId: true,
+        assessmentVersion: {
+          select: {
+            id: true,
+            assignmentId: true,
+            publicSchema: true,
+            rubric: true,
+          },
+        },
+        assessmentResult: {
+          select: {
+            status: true,
+            scoreable: true,
+            publishable: true,
+            completedAt: true,
+          },
+        },
+        evidence: {
+          select: {
+            id: true,
+            fieldKey: true,
+            s3Key: true,
+            s3VersionId: true,
+            scanState: true,
+          },
+        },
         grades: {
           orderBy: { createdAt: "desc" },
           take: 1,
           select: { total: true, provisional: true, feedbackMd: true, rubricScores: true },
         },
       },
-      orderBy: [{ version: "desc" }, { createdAt: "desc" }],
+      orderBy: [{ version: "desc" }, { attempt: "desc" }, { createdAt: "desc" }],
     }),
   ]);
-  const history: SubmissionHistoryRow[] = rows.map((r) => ({
+  const selected = selectSubmissionVersions(rows);
+  const history: SubmissionHistoryRow[] = selected.history.map((r) => ({
     id: r.id,
     version: r.version,
+    attempt: r.attempt,
     status: r.status,
     submittedAt: r.submittedAt,
     createdAt: r.createdAt,
   }));
 
-  const schema = parseSubmissionSchema(type.submissionSchema);
-  const newest = rows[0] ?? null;
+  const newest = selected.latestSubmitted;
+  const resolvedSchemas = resolveStudentSubmissionSchemas({
+    assignmentId: assignment.id,
+    contractMode: assignment.contractMode,
+    assignmentTypeSchema: type.submissionSchema,
+    activeAssessmentVersion: assignment.activeAssessmentVersion,
+    history: selected.history,
+    latestSubmitted: newest,
+  });
+  const schema = resolvedSchemas.formSchema;
 
   // What they submitted, with presigned links for any uploaded files so the
   // student can actually open their own work back up.
@@ -224,16 +351,25 @@ export async function getAssignmentForStudent(
   if (newest) {
     const fields = (newest.fields ?? {}) as Record<string, unknown>;
     const fileUrls: NonNullable<AssignmentForStudent["submitted"]>["fileUrls"] = [];
-    for (const def of schema?.fields ?? []) {
+    for (const def of resolvedSchemas.submittedSchema?.fields ?? []) {
       if (def.kind !== "file" && def.kind !== "files") continue;
       const raw = fields[def.key];
-      const keys = Array.isArray(raw) ? raw : typeof raw === "string" && raw ? [raw] : [];
-      for (const key of keys) {
-        if (typeof key !== "string") continue;
+      const references = Array.isArray(raw) ? raw : typeof raw === "string" && raw ? [raw] : [];
+      for (const reference of references) {
+        if (typeof reference !== "string") continue;
+        const receipt = newest.assessmentVersionId
+          ? newest.evidence.find(
+              (candidate) =>
+                candidate.id === reference &&
+                candidate.fieldKey === def.key &&
+                candidate.scanState === "clean",
+            )
+          : null;
+        const key = receipt?.s3Key ?? reference;
         let url: string | null = null;
         if (s3Configured()) {
           try {
-            url = await presignGet(key);
+            url = await presignGet(key, { versionId: receipt?.s3VersionId });
           } catch {
             url = null; // a broken link must not break the page
           }
@@ -246,9 +382,10 @@ export async function getAssignmentForStudent(
 
   // The AI grade for that version, with the rubric's own labels.
   let grade: AssignmentForStudent["grade"] = null;
-  const g = newest?.grades[0];
+  const scoreable = selected.latestScoreable;
+  const g = scoreable?.grades[0];
   if (g) {
-    const dims = parseRubric(type.rubric);
+    const dims = parseRubric(scoreable.assessmentVersion?.rubric ?? type.rubric);
     const scores = parseRubricScores(g.rubricScores);
     grade = {
       total: g.total,
@@ -263,6 +400,24 @@ export async function getAssignmentForStudent(
       })),
     };
   }
+
+  const liveGrant =
+    assignment.contractMode === "versioned"
+      ? await prisma.resubmissionGrant.findFirst({
+          where: {
+            assignmentId,
+            consumedAt: null,
+            expiresAt: { gt: new Date() },
+            OR: [
+              { ownerKind: "individual", ownerId: userId },
+              ...(user.teamId
+                ? [{ ownerKind: "team" as const, ownerId: user.teamId }]
+                : []),
+            ],
+          },
+          select: { id: true },
+        })
+      : null;
 
   return {
     assignment: {
@@ -280,14 +435,25 @@ export async function getAssignmentForStudent(
       teamBased: type.teamBased,
     },
     schema,
-    available,
+    // Targeted one-use revision grants deliberately bypass the assignment
+    // gate, so a live grant keeps this page actionable.
+    available: available || Boolean(liveGrant),
     history,
-    latest: history[0] ?? null,
+    latest: selected.latestSubmitted
+      ? history.find((row) => row.id === selected.latestSubmitted!.id) ?? null
+      : null,
     submitted,
     grade,
     galleryEligible: type.galleryEligible,
-    // One submission per student: once anything exists, the form closes.
-    canSubmit: available && history.length === 0,
+    // Legacy remains one-shot. Versioned work may resume a bound draft or use
+    // exactly one live improvement/repair grant independently of gate reopen.
+    canSubmit:
+      assignment.contractMode === "legacy"
+        ? available && !selected.latestSubmitted
+        : Boolean(schema) &&
+          (Boolean(selected.history.find((row) => row.status === "draft")) ||
+            Boolean(liveGrant) ||
+            (available && !selected.latestSubmitted)),
   };
 }
 
@@ -300,6 +466,8 @@ export type SubmitInput = {
   assignmentId: string;
   fields: Record<string, unknown>;
   files: string[];
+  draftId?: string;
+  evidenceIds?: string[];
 };
 
 /**
@@ -309,6 +477,15 @@ export type SubmitInput = {
  */
 export async function submitAssignment(input: SubmitInput): Promise<Submission> {
   const { userId, assignmentId, fields, files } = input;
+  if (input.draftId) {
+    return finalizeSubmissionDraft({
+      userId,
+      assignmentId,
+      draftId: input.draftId,
+      fields,
+      evidenceIds: input.evidenceIds ?? [],
+    });
+  }
 
   const user = await prisma.user.findUnique({
     where: { id: userId },
@@ -322,6 +499,12 @@ export async function submitAssignment(input: SubmitInput): Promise<Submission> 
   });
   if (!assignment) throw new SubmissionValidationError(["unknown assignment"]);
 
+  if (assignment.contractMode === "versioned") {
+    throw new SubmissionValidationError([
+      "Versioned assignments must finalize a server-created, assessment-bound draft.",
+    ]);
+  }
+
   const schema = parseSubmissionSchema(assignment.assignmentType.submissionSchema);
   if (!schema) {
     throw new SubmissionValidationError([
@@ -330,7 +513,7 @@ export async function submitAssignment(input: SubmitInput): Promise<Submission> 
   }
 
   // Field validation (per-field messages).
-  const result = validateSubmissionFields(schema, fields);
+  const result = validateSubmissionFields(schema, fields, { submissionVersion: 1 });
   if (!result.ok) throw new SubmissionValidationError(result.errors);
 
   // Every uploaded key must live in the submitting student's own namespace.
@@ -413,6 +596,252 @@ export async function submitAssignment(input: SubmitInput): Promise<Submission> 
 
   return created;
 }
+
+function evidenceReferencesFor(
+  schema: SubmissionSchema,
+  fields: Record<string, unknown>,
+): { evidenceId: string; fieldKey: string; fileRole: string }[] {
+  const references: { evidenceId: string; fieldKey: string; fileRole: string }[] = [];
+  for (const field of schema.fields) {
+    if (field.kind !== "file" && field.kind !== "files") continue;
+    const raw = fields[field.key];
+    const ids = Array.isArray(raw) ? raw : typeof raw === "string" && raw ? [raw] : [];
+    for (const evidenceId of ids) {
+      if (typeof evidenceId === "string") {
+        references.push({
+          evidenceId,
+          fieldKey: field.key,
+          fileRole: field.fileRole ?? field.key,
+        });
+      }
+    }
+  }
+  return references;
+}
+
+export type FinalEvidenceReceiptIdentity = {
+  id: string;
+  submissionId: string;
+  fieldKey: string;
+  fileRole: string;
+  scanState: string;
+};
+
+/** Fail closed unless the final payload names each exact clean field/role receipt once. */
+export function finalEvidenceAuthorizationErrors(args: {
+  schema: SubmissionSchema;
+  fields: Record<string, unknown>;
+  evidenceIds: string[];
+  evidence: FinalEvidenceReceiptIdentity[];
+  draftId: string;
+}): string[] {
+  const references = evidenceReferencesFor(args.schema, args.fields);
+  const referencedEvidence = new Set(references.map((reference) => reference.evidenceId));
+  const requestedEvidence = new Set(args.evidenceIds);
+  if (
+    referencedEvidence.size !== references.length ||
+    requestedEvidence.size !== args.evidenceIds.length ||
+    requestedEvidence.size !== referencedEvidence.size ||
+    [...requestedEvidence].some((evidenceId) => !referencedEvidence.has(evidenceId))
+  ) {
+    return ["final submission evidence must match the committed file-field receipts exactly"];
+  }
+
+  const byId = new Map(args.evidence.map((row) => [row.id, row]));
+  for (const reference of references) {
+    const receipt = byId.get(reference.evidenceId);
+    if (
+      !receipt ||
+      receipt.submissionId !== args.draftId ||
+      receipt.fieldKey !== reference.fieldKey ||
+      receipt.fileRole !== reference.fileRole ||
+      receipt.scanState !== "clean"
+    ) {
+      return [`field "${reference.fieldKey}" requires a committed clean evidence receipt`];
+    }
+  }
+  if (args.evidence.length !== requestedEvidence.size) {
+    return ["one or more evidence receipts are missing"];
+  }
+  return [];
+}
+
+async function matchingGrantForDraft(args: {
+  grantId: string | null;
+  assignmentId: string;
+  assessmentVersionId: string | null;
+  ownerKind: OwnerKind | null;
+  ownerId: string | null;
+  version: number;
+  attempt: number;
+  now: Date;
+}): Promise<ResubmissionGrant | null> {
+  if (!args.grantId || !args.assessmentVersionId || !args.ownerKind || !args.ownerId) return null;
+  const grant = await prisma.resubmissionGrant.findUnique({ where: { id: args.grantId } });
+  if (
+    !grant ||
+    grant.assignmentId !== args.assignmentId ||
+    grant.assessmentVersionId !== args.assessmentVersionId ||
+    grant.ownerKind !== args.ownerKind ||
+    grant.ownerId !== args.ownerId ||
+    grant.targetVersion !== args.version ||
+    grant.targetAttempt !== args.attempt ||
+    grant.consumedAt !== null ||
+    grant.expiresAt <= args.now
+  ) {
+    return null;
+  }
+  return grant;
+}
+
+/** Final draft receipt: evidence authorization, grant consumption and V2 grant creation are atomic. */
+export async function finalizeSubmissionDraft(args: {
+  userId: string;
+  assignmentId: string;
+  draftId: string;
+  fields: Record<string, unknown>;
+  evidenceIds: string[];
+  now?: Date;
+}): Promise<Submission> {
+  const now = args.now ?? new Date();
+  const bound = await getBoundDraftContext({ userId: args.userId, draftId: args.draftId });
+  if (bound.draft.assignmentId !== args.assignmentId) {
+    throw new SubmissionValidationError(["draft does not belong to this assignment"]);
+  }
+  const validation = validateSubmissionFields(bound.schema, args.fields, {
+    submissionVersion: bound.draft.version,
+  });
+  if (!validation.ok) throw new SubmissionValidationError(validation.errors);
+
+  const requestedEvidence = new Set(args.evidenceIds);
+  const evidence = requestedEvidence.size
+    ? await prisma.submissionEvidence.findMany({
+        where: { id: { in: [...requestedEvidence] } },
+      })
+    : [];
+  const evidenceErrors = finalEvidenceAuthorizationErrors({
+    schema: bound.schema,
+    fields: args.fields,
+    evidenceIds: args.evidenceIds,
+    evidence,
+    draftId: bound.draft.id,
+  });
+  if (evidenceErrors.length > 0) throw new SubmissionValidationError(evidenceErrors);
+
+  const assignment = await prisma.assignment.findUnique({
+    where: { id: args.assignmentId },
+    include: { assignmentType: true },
+  });
+  if (!assignment) throw new SubmissionValidationError(["unknown assignment"]);
+  const user = await prisma.user.findUnique({
+    where: { id: args.userId },
+    select: { id: true, role: true, sectionId: true },
+  });
+  if (!user) throw new SubmissionValidationError(["unknown user"]);
+
+  const grant = await matchingGrantForDraft({
+    grantId: bound.grantId,
+    assignmentId: bound.draft.assignmentId,
+    assessmentVersionId: bound.draft.assessmentVersionId,
+    ownerKind: bound.draft.ownerKind,
+    ownerId: bound.draft.ownerId,
+    version: bound.draft.version,
+    attempt: bound.draft.attempt,
+    now,
+  });
+  const needsGrant = bound.draft.version > 1 || bound.draft.attempt > 1;
+  if (needsGrant && !grant) throw new RevisionNotAllowedError();
+  if (!grant && !(await assignmentAvailableTo(user, args.assignmentId))) throw new GateClosedError();
+
+  const fileKeys = evidence.map((receipt) => receipt.s3Key);
+  const contentHash = contentHashOf(args.fields, fileKeys);
+  const created = await prisma.$transaction(async (tx) => {
+    if (grant) {
+      const consumed = await tx.resubmissionGrant.updateMany({
+        where: { id: grant.id, consumedAt: null, expiresAt: { gt: now } },
+        data: { consumedAt: now, consumedSubmissionId: bound.draft.id },
+      });
+      if (consumed.count !== 1) throw new RevisionNotAllowedError();
+    }
+
+    const submitted = await tx.submission.updateMany({
+      where: { id: bound.draft.id, status: "draft" },
+      data: {
+        status: "submitted",
+        submittedAt: now,
+        fields: args.fields as Prisma.InputJsonValue,
+        files: fileKeys,
+        contentHash,
+      },
+    });
+    if (submitted.count !== 1) {
+      throw new SubmissionValidationError(["this draft was already submitted"]);
+    }
+
+    if (
+      bound.draft.assessmentVersionId &&
+      bound.draft.ownerKind &&
+      bound.draft.ownerId &&
+      bound.draft.version === 1 &&
+      bound.draft.attempt === 1
+    ) {
+      const assessmentVersion = await tx.assessmentVersion.findUnique({
+        where: { id: bound.draft.assessmentVersionId },
+        select: { improvementAllowed: true, improvementWindowDays: true },
+      });
+      if (assessmentVersion?.improvementAllowed) {
+        const expiresAt = improvementGrantExpiry(
+          now,
+          assessmentVersion.improvementWindowDays,
+        );
+        await tx.resubmissionGrant.upsert({
+          where: {
+            assignmentId_assessmentVersionId_ownerKind_ownerId_kind_targetVersion_targetAttempt: {
+              assignmentId: bound.draft.assignmentId,
+              assessmentVersionId: bound.draft.assessmentVersionId,
+              ownerKind: bound.draft.ownerKind,
+              ownerId: bound.draft.ownerId,
+              kind: "improvement",
+              targetVersion: 2,
+              targetAttempt: 1,
+            },
+          },
+          update: {},
+          create: {
+            assignmentId: bound.draft.assignmentId,
+            assessmentVersionId: bound.draft.assessmentVersionId,
+            ownerKind: bound.draft.ownerKind,
+            ownerId: bound.draft.ownerId,
+            kind: "improvement",
+            targetVersion: 2,
+            targetAttempt: 1,
+            trigger: "v1_receipt",
+            reason: "Course-policy improvement window",
+            expiresAt,
+            sourceSubmissionId: bound.draft.id,
+          },
+        });
+      }
+    }
+    return tx.submission.findUniqueOrThrow({ where: { id: bound.draft.id } });
+  });
+
+  if (assignment.assignmentType.aiGraded) {
+    await enqueueGradeSubmission(created.id);
+  } else {
+    try {
+      await syncGalleryItem(created.id);
+    } catch {
+      // Submission receipt is authoritative; gallery backfill retries later.
+    }
+  }
+  return created;
+}
+
+export {
+  extendResubmissionGrant,
+  issueRepairGrant,
+} from "@/lib/resubmission-grant-admin";
 
 /**
  * Age past which a submission still sitting at status 'submitted' is treated as

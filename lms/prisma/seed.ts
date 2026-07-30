@@ -190,7 +190,90 @@ const ASSIGNMENT_TYPES = [
 // Seed body
 // ---------------------------------------------------------------------------
 
+/**
+ * Exhaustive application-table reset list. Keep `_prisma_migrations` out: a
+ * demo reset must never rewrite migration history. One TRUNCATE statement can
+ * safely handle cycles/self-relations without weakening immutable-row triggers.
+ * `tests/seed.test.ts` compares this list with Prisma's generated data model so
+ * a future model addition fails closed until its reset behavior is reviewed.
+ */
+export const DEMO_SEED_TABLES = [
+  "User",
+  "Section",
+  "Team",
+  "AssignmentType",
+  "Assignment",
+  "Submission",
+  "Grade",
+  "Interview",
+  "InterviewTurn",
+  "InterviewRetake",
+  "InterviewWindow",
+  "Quiz",
+  "QuizAttempt",
+  "PeerReview",
+  "GalleryItem",
+  "Vote",
+  "Material",
+  "SessionPage",
+  "Gate",
+  "GateException",
+  "AuditLog",
+  "Notification",
+  "CostLog",
+  "SignOff",
+  "RetentionPolicy",
+  "RetentionHold",
+  "DeletionReceipt",
+  "DatasetRelease",
+  "DatasetReleaseFile",
+  "AssessmentVersion",
+  "AssessmentEvaluatorConfig",
+  "AssessmentResult",
+  "UploadReservation",
+  "GeneratedObjectReservation",
+  "SubmissionEvidence",
+  "ResubmissionGrant",
+  "GradeAppeal",
+  "GradeHold",
+  "AssessmentCohortFreeze",
+  "PublicationDecision",
+  "TeamWorkflowSelection",
+  "TeamWorkflowNomination",
+  "ServiceHeartbeat",
+  "PortfolioEntry",
+  "ConfigKV",
+] as const;
+
+export function assertDemoSeedResetAllowed(
+  env: Readonly<Record<string, string | undefined>> = process.env,
+): void {
+  if (
+    env.NODE_ENV === "production" ||
+    Object.keys(env).some((key) => key.startsWith("RAILWAY_"))
+  ) {
+    throw new Error("Demo seed reset is disabled in production and Railway environments.");
+  }
+  const rawUrl = env.DATABASE_URL;
+  if (!rawUrl) throw new Error("DATABASE_URL is required for the demo seed reset.");
+  let hostname: string;
+  try {
+    const url = new URL(rawUrl);
+    if (url.protocol !== "postgres:" && url.protocol !== "postgresql:") throw new Error();
+    hostname = url.hostname.toLowerCase();
+  } catch {
+    throw new Error("DATABASE_URL must be a valid PostgreSQL URL for the demo seed reset.");
+  }
+  const loopback = new Set(["localhost", "127.0.0.1", "::1", "[::1]"]);
+  if (!loopback.has(hostname) && env.ALLOW_DEMO_SEED_RESET !== "true") {
+    throw new Error(
+      "Refusing to reset a non-loopback database without ALLOW_DEMO_SEED_RESET=true.",
+    );
+  }
+}
+
 export async function main(): Promise<void> {
+  assertDemoSeedResetAllowed();
   const started = Date.now();
   const prisma = new PrismaClient();
   try {
@@ -693,7 +776,6 @@ export async function main(): Promise<void> {
         userId: studentId(3),
         status: "graded",
         transport: "livekit",
-        audioS3Key: "interviews/iv_001/audio.ogg",
         rubricScores: { industry_command: 22, defence_of_submissions: 19, operators_loop: 21, transfer: 17, total: 79 } as Prisma.InputJsonValue,
         confidence: 0.87,
         attemptNumber: 1,
@@ -706,7 +788,6 @@ export async function main(): Promise<void> {
         userId: studentId(100),
         status: "escalated",
         transport: "livekit",
-        audioS3Key: "interviews/iv_002/audio.ogg",
         rubricScores: { industry_command: 14, defence_of_submissions: 9, operators_loop: 12, transfer: 11, total: 46 } as Prisma.InputJsonValue,
         confidence: 0.58,
         escalationReason: "Low grading confidence (0.58); the automation described does not match the submitted blueprint. Transcript needs instructor review.",
@@ -716,6 +797,12 @@ export async function main(): Promise<void> {
         completedAt: T.now,
       },
     ];
+    const seededInterviewRecordings = ["iv_001", "iv_002"].map((interviewId) => ({
+      reservationId: `seed_recording_${interviewId}`,
+      interviewId,
+      s3Key: `interviews/${interviewId}/audio.ogg`,
+      s3VersionId: `seed-version-${interviewId}`,
+    }));
 
     const iv1QA: [string, string][] = [
       ["Explain the economics of digital lending in under a minute.", "Lenders make the spread between cost of capital and the rate charged, minus defaults and acquisition cost. In India the co-lending model splits the book 80/20 with banks, so the fintech earns fees more than interest."],
@@ -803,6 +890,14 @@ export async function main(): Promise<void> {
       featured: i === 0 || i === 4, // one app + one workflow featured
       caption: i < 4 ? "From the app wall — built with Lovable in Session 4." : "Cohort showcase — team artifact.",
       screenshotS3Key: `gallery/${subId}.png`,
+      screenshotS3VersionId: `seed-version-gallery-${subId}`,
+    }));
+    const seededGalleryReservations = galleryItems.map((item) => ({
+      reservationId: `seed_screenshot_${item.submissionId}`,
+      submissionId: item.submissionId,
+      targetId: item.id!,
+      s3Key: item.screenshotS3Key!,
+      s3VersionId: item.screenshotS3VersionId!,
     }));
 
     const signOffs: Prisma.SignOffCreateManyInput[] = [
@@ -900,31 +995,14 @@ export async function main(): Promise<void> {
     // --- Write everything in one transaction (wipe, then create) ----------
     await prisma.$transaction(
       async (tx) => {
-        // FK-safe delete order: children before parents.
-        await tx.gateException.deleteMany();
-        await tx.notification.deleteMany();
-        await tx.costLog.deleteMany();
-        await tx.auditLog.deleteMany();
-        await tx.galleryItem.deleteMany();
-        await tx.grade.deleteMany();
-        await tx.signOff.deleteMany();
-        await tx.portfolioEntry.deleteMany();
-        await tx.peerReview.deleteMany();
-        await tx.quizAttempt.deleteMany();
-        await tx.interviewTurn.deleteMany();
-        await tx.interview.deleteMany();
-        await tx.interviewWindow.deleteMany();
-        await tx.submission.deleteMany();
-        await tx.assignment.deleteMany();
-        await tx.assignmentType.deleteMany();
-        await tx.quiz.deleteMany();
-        await tx.gate.deleteMany();
-        await tx.sessionPage.deleteMany();
-        await tx.material.deleteMany();
-        await tx.configKV.deleteMany();
-        await tx.user.deleteMany();
-        await tx.team.deleteMany();
-        await tx.section.deleteMany();
+        // Reset every application table in one reviewed statement. Listing all
+        // related tables lets PostgreSQL handle cycles without CASCADE, and
+        // TRUNCATE deliberately bypasses immutable-row triggers only for this
+        // guarded demo/test reset path.
+        const quotedTables = DEMO_SEED_TABLES.map(
+          (table) => `"${table.replaceAll('"', '""')}"`,
+        ).join(", ");
+        await tx.$executeRawUnsafe(`TRUNCATE TABLE ${quotedTables} RESTART IDENTITY`);
 
         await tx.section.createMany({ data: sections });
         await tx.team.createMany({ data: teams });
@@ -959,10 +1037,57 @@ export async function main(): Promise<void> {
         await tx.submission.createMany({ data: submissions });
         await tx.grade.createMany({ data: grades });
         await tx.interview.createMany({ data: interviews });
+        for (const recording of seededInterviewRecordings) {
+          await tx.generatedObjectReservation.create({
+            data: {
+              id: recording.reservationId,
+              purpose: "interview_recording",
+              interviewId: recording.interviewId,
+              targetId: recording.interviewId,
+              s3Key: recording.s3Key,
+              expiresAt: new Date(T.now.getTime() + 30 * 60_000),
+            },
+          });
+          await tx.generatedObjectReservation.update({
+            where: { id: recording.reservationId },
+            data: { s3VersionId: recording.s3VersionId },
+          });
+          await tx.generatedObjectReservation.update({
+            where: { id: recording.reservationId },
+            data: { consumedAt: T.now },
+          });
+          await tx.interview.update({
+            where: { id: recording.interviewId },
+            data: {
+              audioS3Key: recording.s3Key,
+              audioS3VersionId: recording.s3VersionId,
+            },
+          });
+        }
         await tx.interviewTurn.createMany({ data: interviewTurns });
         await tx.interviewWindow.createMany({ data: interviewWindows });
         await tx.costLog.createMany({ data: costLogs });
         await tx.peerReview.createMany({ data: peerReviews });
+        for (const screenshot of seededGalleryReservations) {
+          await tx.generatedObjectReservation.create({
+            data: {
+              id: screenshot.reservationId,
+              purpose: "gallery_screenshot",
+              submissionId: screenshot.submissionId,
+              targetId: screenshot.targetId,
+              s3Key: screenshot.s3Key,
+              expiresAt: new Date(T.now.getTime() + 30 * 60_000),
+            },
+          });
+          await tx.generatedObjectReservation.update({
+            where: { id: screenshot.reservationId },
+            data: { s3VersionId: screenshot.s3VersionId },
+          });
+          await tx.generatedObjectReservation.update({
+            where: { id: screenshot.reservationId },
+            data: { consumedAt: T.now },
+          });
+        }
         await tx.galleryItem.createMany({ data: galleryItems });
         await tx.signOff.createMany({ data: signOffs });
         await tx.portfolioEntry.createMany({ data: portfolioEntries });

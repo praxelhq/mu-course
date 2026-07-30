@@ -3,6 +3,7 @@ import { withAuth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { backfillGalleryItems } from "@/lib/galleries";
 import { enqueueScreenshotCapture } from "@/lib/queue";
+import { parsePublicationPolicy } from "@/lib/publication-policy";
 
 // Admin backfill for screenshot capture. POST {submissionId} re-enqueues
 // one capture; POST {all:true} runs the gallery backfill and re-enqueues every
@@ -33,12 +34,25 @@ export const POST = withAuth(
     if (parsed.data.submissionId) {
       const sub = await prisma.submission.findUnique({
         where: { id: parsed.data.submissionId },
-        select: { id: true, assignment: { select: { assignmentType: { select: { slug: true } } } } },
+        select: {
+          id: true,
+          assessmentVersionId: true,
+          assessmentVersion: { select: { publicationPolicy: true } },
+          assignment: { select: { assignmentType: { select: { slug: true } } } },
+        },
       });
       if (!sub) return Response.json({ error: "Unknown submission" }, { status: 404 });
-      if (sub.assignment.assignmentType.slug !== "app") {
+      const policy = parsePublicationPolicy(sub.assessmentVersion?.publicationPolicy);
+      if (
+        (sub.assessmentVersionId &&
+          policy?.wall !== "app" &&
+          !policy?.actions.some(
+            (action) => action.kind === "external-url" && action.requireReviewedFingerprint,
+          )) ||
+        (!sub.assessmentVersionId && sub.assignment.assignmentType.slug !== "app")
+      ) {
         return Response.json(
-          { error: "Screenshots are captured for app-type submissions only" },
+          { error: "No screenshot or reviewed external URL is configured for this submission" },
           { status: 409 },
         );
       }
@@ -46,12 +60,27 @@ export const POST = withAuth(
     } else {
       await backfillGalleryItems();
       const items = await prisma.galleryItem.findMany({
-        where: {
-          submission: { assignment: { assignmentType: { slug: "app" } } },
+        select: {
+          submissionId: true,
+          submission: {
+            select: {
+              assessmentVersionId: true,
+              assessmentVersion: { select: { publicationPolicy: true } },
+              assignment: { select: { assignmentType: { select: { slug: true } } } },
+            },
+          },
         },
-        select: { submissionId: true },
       });
-      targets = items.map((i) => i.submissionId);
+      targets = items.flatMap((item) => {
+        const policy = parsePublicationPolicy(item.submission.assessmentVersion?.publicationPolicy);
+        const isApp = item.submission.assessmentVersionId
+          ? policy?.wall === "app" ||
+            policy?.actions.some(
+              (action) => action.kind === "external-url" && action.requireReviewedFingerprint,
+            )
+          : item.submission.assignment.assignmentType.slug === "app";
+        return isApp ? [item.submissionId] : [];
+      });
     }
 
     let enqueued = 0;

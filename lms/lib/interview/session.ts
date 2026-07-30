@@ -1,10 +1,20 @@
 import { Prisma, type PrismaClient, type InterviewStatus } from "@prisma/client";
 import { z } from "zod";
 import { prisma as defaultPrisma } from "@/lib/db";
+import {
+  GeneratedObjectReservationError,
+  compensateGeneratedObjectVersion,
+  consumeGeneratedObjectReservation,
+  type GeneratedObjectReservationDeps,
+} from "@/lib/generated-object-reservations";
 import { extractJsonObject } from "@/lib/ai/client";
 import { wrapStudentContent } from "@/lib/ai/grading";
-import { keyForInterviewAudio, presignGet, putObject, s3Configured } from "@/lib/s3";
+import { presignGet, s3Configured } from "@/lib/s3";
 import { enqueueGradeInterview } from "@/lib/queue";
+import {
+  inspectInterviewAnswerUpload,
+  storeInterviewQuestionAudio,
+} from "./audio-storage";
 import {
   ProviderNotConfiguredError,
   estimateGeminiCostUsd,
@@ -99,6 +109,7 @@ export type InterviewDeps = {
   stt?: SttClient | null;
   now?: () => Date;
   enqueue?: (interviewId: string) => Promise<string | null>;
+  generatedObjectDeps?: GeneratedObjectReservationDeps;
 };
 
 function db(deps: InterviewDeps): PrismaClient {
@@ -379,7 +390,6 @@ export async function appendTurnFromAgent(
     interviewId: string;
     speaker: "agent" | "student";
     text: string;
-    audioS3Key?: string | null;
   },
   deps: InterviewDeps = {},
 ): Promise<TurnRow> {
@@ -616,13 +626,17 @@ export async function nextQuestion(
   if (tts && s3Configured()) {
     try {
       const audio = await tts.synthesize(parsed.question);
-      const key = keyForInterviewAudio(interviewId, "q", turn.turnNo, "mp3");
-      await putObject(key, audio.bytes, audio.contentType);
-      await client.interviewTurn.update({
-        where: { id: turn.id },
-        data: { audioS3Key: key },
-      });
-      audioS3Key = key;
+      const stored = await storeInterviewQuestionAudio(
+        {
+          interviewId,
+          turnId: turn.id,
+          turnNo: turn.turnNo,
+          bytes: audio.bytes,
+          contentType: audio.contentType,
+        },
+        deps.generatedObjectDeps,
+      );
+      audioS3Key = stored.s3Key;
       await logCost(client, interviewId, "elevenlabs", null, estimateTtsCostUsd(audio.chars));
     } catch (err) {
       console.error(`[interview] TTS failed for ${interviewId} q${turn.turnNo} (text-only):`, err);
@@ -651,7 +665,7 @@ export type SubmitAnswerResult = { turnNo: number; transcript: string };
  * rejects a second answer to the same question (DuplicateAnswerError).
  */
 export async function submitAnswer(
-  args: { interviewId: string; userId: string; audioS3Key?: string; text?: string },
+  args: { interviewId: string; userId: string; audioReservationId?: string; text?: string },
   deps: InterviewDeps = {},
 ): Promise<SubmitAnswerResult> {
   const client = db(deps);
@@ -661,14 +675,22 @@ export async function submitAnswer(
 
   let transcript = args.text?.trim() ?? "";
   let seconds = 0;
-  if (args.audioS3Key) {
+  const inspected = args.audioReservationId
+    ? await inspectInterviewAnswerUpload(
+        { interviewId: args.interviewId, reservationId: args.audioReservationId },
+        deps.generatedObjectDeps,
+      )
+    : null;
+  if (inspected) {
     // The clip must live in this interview's own namespace.
-    if (!args.audioS3Key.startsWith(`interviews/${args.interviewId}/`)) {
+    if (!inspected.reservation.s3Key.startsWith(`interviews/${args.interviewId}/`)) {
       throw new InterviewNotFoundError();
     }
     const stt = resolveStt(deps);
     if (stt) {
-      const url = await presignGet(args.audioS3Key);
+      const url = await presignGet(inspected.reservation.s3Key, {
+        versionId: inspected.metadata.versionId,
+      });
       const res = await stt.transcribe({ url });
       transcript = res.text || transcript;
       seconds = res.seconds || 0;
@@ -679,22 +701,92 @@ export async function submitAnswer(
   }
   if (!transcript) transcript = "[no answer captured]";
 
-  const turn = await appendTurn(client, {
-    interviewId: args.interviewId,
-    speaker: "student",
-    text: transcript,
-    audioS3Key: args.audioS3Key ?? null,
-    startedAt: nowOf(deps),
-    guard: (lastTurn) => {
-      // An answer must follow an agent question — a concurrent double-submit
-      // retries, sees the student turn, and lands here.
-      if (!lastTurn || lastTurn.speaker !== "agent") throw new DuplicateAnswerError();
-    },
-  });
+  let turn: TurnRow;
+  if (inspected) {
+    if (!inspected.reservation.targetId) {
+      throw new GeneratedObjectReservationError(409, "Interview answer target is missing.");
+    }
+    try {
+      let attached: TurnRow | null = null;
+      for (let attempt = 0; attempt < TURN_INSERT_RETRIES; attempt++) {
+        try {
+          attached = await consumeGeneratedObjectReservation(
+            {
+              reservation: inspected.reservation,
+              expected: {
+                purpose: "interview_turn_audio",
+                interviewId: args.interviewId,
+                targetId: inspected.reservation.targetId,
+                s3Key: inspected.reservation.s3Key,
+                s3VersionId: inspected.metadata.versionId,
+              },
+              attach: async (tx) => {
+                const lastTurn = await tx.interviewTurn.findFirst({
+                  where: { interviewId: args.interviewId, turnNo: { gt: 0 } },
+                  orderBy: { turnNo: "desc" },
+                  select: { speaker: true, turnNo: true },
+                });
+                if (!lastTurn || lastTurn.speaker !== "agent") {
+                  throw new DuplicateAnswerError();
+                }
+                return tx.interviewTurn.create({
+                  data: {
+                    id: inspected.reservation.targetId!,
+                    interviewId: args.interviewId,
+                    turnNo: lastTurn.turnNo + 1,
+                    speaker: "student",
+                    text: transcript,
+                    audioS3Key: inspected.reservation.s3Key,
+                    audioS3VersionId: inspected.metadata.versionId,
+                    startedAt: nowOf(deps),
+                  },
+                  select: {
+                    id: true,
+                    turnNo: true,
+                    speaker: true,
+                    text: true,
+                    audioS3Key: true,
+                    startedAt: true,
+                  },
+                });
+              },
+            },
+            deps.generatedObjectDeps,
+          );
+          break;
+        } catch (error) {
+          const conflict =
+            error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2002";
+          if (!conflict || attempt === TURN_INSERT_RETRIES - 1) throw error;
+        }
+      }
+      if (!attached) throw new Error("Interview answer attach retry exhausted");
+      turn = attached;
+    } catch (error) {
+      await compensateGeneratedObjectVersion(
+        inspected.reservation.id,
+        { versionId: inspected.metadata.versionId, etag: inspected.metadata.etag },
+        deps.generatedObjectDeps,
+      ).catch(() => undefined);
+      throw error;
+    }
+  } else {
+    turn = await appendTurn(client, {
+      interviewId: args.interviewId,
+      speaker: "student",
+      text: transcript,
+      startedAt: nowOf(deps),
+      guard: (lastTurn) => {
+        // An answer must follow an agent question — a concurrent double-submit
+        // retries, sees the student turn, and lands here.
+        if (!lastTurn || lastTurn.speaker !== "agent") throw new DuplicateAnswerError();
+      },
+    });
+  }
 
-  if (args.audioS3Key && seconds > 0) {
+  if (inspected && seconds > 0) {
     await logCost(client, args.interviewId, "deepgram", null, estimateSttCostUsd(seconds));
-  } else if (args.audioS3Key) {
+  } else if (inspected) {
     // Duration unknown (mocked/absent metadata): estimate a typical 30s clip.
     await logCost(client, args.interviewId, "deepgram", null, estimateSttCostUsd(30));
   }

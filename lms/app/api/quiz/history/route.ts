@@ -9,9 +9,10 @@ import { getBestOfThreeAvg, getStudentQuizHistory } from "@/lib/quizzes";
 export const dynamic = "force-dynamic";
 
 export const GET = withAuth(async (_req, { user }) => {
+  const now = new Date();
   const [attempts, bestOfThreeAvg] = await Promise.all([
-    getStudentQuizHistory(user.userId),
-    getBestOfThreeAvg(user.userId),
+    getStudentQuizHistory(user.userId, now),
+    getBestOfThreeAvg(user.userId, now),
   ]);
   return Response.json({ attempts, bestOfThreeAvg });
 });

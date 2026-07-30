@@ -22,6 +22,12 @@ const dateFmt = new Intl.DateTimeFormat("en-IN", {
   timeZone: "Asia/Kolkata",
 });
 
+const releaseFmt = new Intl.DateTimeFormat("en-IN", {
+  dateStyle: "medium",
+  timeStyle: "short",
+  timeZone: "Asia/Kolkata",
+});
+
 export default async function QuizzesPage() {
   let userId: string;
   try {
@@ -33,9 +39,10 @@ export default async function QuizzesPage() {
     throw e;
   }
 
+  const now = new Date();
   const [attempts, avg] = await Promise.all([
-    getStudentQuizHistory(userId),
-    getBestOfThreeAvg(userId),
+    getStudentQuizHistory(userId, now),
+    getBestOfThreeAvg(userId, now),
   ]);
 
   return (
@@ -44,8 +51,8 @@ export default async function QuizzesPage() {
       <h1 style={{ fontSize: "2.25rem", margin: "0 0 0.5rem" }}>Your quiz record</h1>
       <p style={{ color: "var(--charcoal)", margin: "0 0 2rem", lineHeight: 1.6 }}>
         Surprise quizzes land in class, unannounced. Your top three scores are averaged
-        into the 5% quiz component of your grade; every other attempt still shows here
-        as feedback.
+        into the 5% quiz component of your grade once feedback is released; every other
+        attempt still shows here as feedback.
       </p>
 
       <div style={{ display: "grid", gap: "1.5rem" }}>
@@ -88,21 +95,32 @@ export default async function QuizzesPage() {
                     <p style={{ ...mono, fontSize: "0.625rem", color: "var(--clay)", margin: "0.25rem 0 0" }}>
                       Session {a.sessionNo} · {dateFmt.format(a.submittedAt)}
                     </p>
+                    {a.feedbackStatus === "pending" && a.feedbackReleaseAt && (
+                      <p style={{ fontSize: "0.75rem", color: "var(--charcoal)", margin: "0.375rem 0 0" }}>
+                        Feedback releases {releaseFmt.format(a.feedbackReleaseAt)}.
+                      </p>
+                    )}
                   </div>
                   <span
                     style={{
                       ...mono,
                       fontSize: "0.625rem",
-                      color: a.countsTowardGrade ? "var(--pine)" : "var(--clay)",
-                      border: `1px solid ${a.countsTowardGrade ? "var(--pine)" : "var(--sand)"}`,
+                      color: a.feedbackStatus === "pending" ? "var(--clay)" : a.countsTowardGrade ? "var(--pine)" : "var(--clay)",
+                      border: `1px solid ${a.feedbackStatus === "released" && a.countsTowardGrade ? "var(--pine)" : "var(--sand)"}`,
                       padding: "0.125rem 0.5rem",
                       whiteSpace: "nowrap",
                     }}
                   >
-                    {a.countsTowardGrade ? "Counts toward your grade" : "Feedback only"}
+                    {a.feedbackStatus === "pending"
+                      ? "Receipt only"
+                      : a.countsTowardGrade
+                        ? "Counts toward your grade"
+                        : "Feedback only"}
                   </span>
                   <span style={{ fontFamily: "var(--font-fraunces)", fontWeight: 700, fontSize: "1.25rem", color: "var(--ink)" }}>
-                    {Math.round(a.scorePct)}%
+                    {a.feedbackStatus === "released" && a.scorePct !== undefined
+                      ? `${Math.round(a.scorePct * 10) / 10}%`
+                      : "—"}
                   </span>
                 </li>
               ))}

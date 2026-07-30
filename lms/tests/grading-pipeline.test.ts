@@ -9,7 +9,7 @@ import type { LookupFn } from "../lib/net/safe-fetch";
 import { handleGradeSubmission } from "../worker/jobs/grade-submission";
 
 // U9 — end-to-end grading pipeline with a mocked model client (DI): a seeded
-// 'submitted' submission becomes a provisional AI Grade with a full promptLog,
+// 'submitted' submission becomes a provisional AI Grade with prompt metadata,
 // Notification and CostLog rows; model double-failure leaves status 'grading'
 // (dead-letter carries it). Burst tolerance is exercised with a promise pool
 // driving the handler directly at concurrency 5 (pg-boss polling inside
@@ -83,7 +83,7 @@ describe.skipIf(!live)("grade-submission pipeline (live DB, mocked model)", () =
     await prisma?.$disconnect();
   });
 
-  it("end-to-end: submitted → graded with provisional Grade, promptLog, Notification, CostLog", async () => {
+  it("end-to-end: submitted → graded with provisional Grade, prompt metadata, Notification, CostLog", async () => {
     // sub_003 is seeded 'submitted' (skill assignment).
     const before = await prisma.submission.findUniqueOrThrow({ where: { id: "sub_003" } });
     expect(before.status).toBe("submitted");
@@ -106,12 +106,10 @@ describe.skipIf(!live)("grade-submission pipeline (live DB, mocked model)", () =
     expect(grade.gradedBy).toBe("ai");
     expect(grade.total).toBe(28);
     const log = grade.promptLog as Record<string, unknown>;
-    expect(log).toBeTruthy();
-    expect(typeof log.system).toBe("string");
-    expect(typeof log.user).toBe("string");
-    expect(log.response).toBeTruthy();
-    expect(log.usage).toBeTruthy();
-    expect(log.model).toBeTruthy();
+    expect(log).toEqual({
+      model: "fake-model",
+      usage: { inputTokens: 1200, outputTokens: 300 },
+    });
 
     const notif = await prisma.notification.findFirst({
       where: { userId: before.userId, kind: "grade-ready" },

@@ -6,7 +6,7 @@ import type { BrowserContext } from "@playwright/test";
 // the browser context (plus the one-time welcome cookie so student flows
 // skip the /welcome redirect).
 
-export const BASE = "http://localhost:3210";
+export const BASE = process.env.PLAYWRIGHT_BASE_URL ?? "http://localhost:3210";
 
 export async function loginAs(context: BrowserContext, userId: string): Promise<void> {
   const res = await context.request.post(`${BASE}/api/test-login`, { data: { userId } });

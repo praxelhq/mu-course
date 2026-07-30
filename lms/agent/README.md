@@ -25,6 +25,12 @@ that only accepts jobs for rooms named `interview-{interviewId}`. Per job it:
    line, stops Egress, and POSTs `/api/interview/agent-complete` with the
    recording key — the LMS marks the interview completed and enqueues grading.
 
+Independently of interview rooms, the process POSTs a bounded build-identity
+heartbeat to `/api/internal/service-heartbeat`. The web service authenticates
+it with `AGENT_INTERNAL_TOKEN`, verifies that its image-baked source SHA matches,
+and persists the database schema head. Readiness fails if this heartbeat is
+older than two configured intervals.
+
 If the student's connection degrades, their client flips the interview to the
 turn-based fallback (`POST /api/interview/fallback`); from then on agent-turn
 posts are rejected with 409 and the agent's LMS client logs and stops — the
@@ -44,6 +50,13 @@ All required — the worker refuses to start without them, with a clear message:
 | `ELEVENLABS_API_KEY` | Text-to-speech |
 | `AGENT_INTERNAL_TOKEN` | Shared secret for internal LMS endpoints (must match the web service) |
 | `APP_URL` | Base URL of the web service |
+| `AGENT_HEARTBEAT_INTERVAL_SECONDS` | Durable service heartbeat cadence, 10–300 seconds (default `30`) |
+
+Railway also supplies `RAILWAY_DEPLOYMENT_ID`, `RAILWAY_SNAPSHOT_ID`, and
+`RAILWAY_REPLICA_ID`. The Docker build must receive
+`RAILWAY_GIT_COMMIT_SHA`; `agent/Dockerfile` bakes it into
+`/app/BUILD_SOURCE_SHA`. The process refuses to start on Railway when any part
+of this immutable identity is missing.
 
 Optional (room recording via LiveKit Egress; omit any to disable):
 

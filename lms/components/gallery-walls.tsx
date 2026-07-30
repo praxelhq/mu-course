@@ -198,11 +198,11 @@ export function GalleryCard({
         </span>
       )}
 
-      {item.wall === "app" &&
+      {(item.wall === "app" || (item.wall === "workflow" && item.screenshotUrl)) &&
         (item.screenshotUrl ? (
           <img
             src={item.screenshotUrl}
-            alt={`Screenshot of ${item.displayName}'s app`}
+            alt={`${item.wall === "workflow" ? "Workflow diagram" : "App screenshot"} by ${item.displayName}`}
             style={{
               width: "100%",
               height: "10rem",
@@ -243,17 +243,21 @@ export function GalleryCard({
           <p style={{ margin: 0, fontSize: "0.875rem", color: "var(--charcoal)" }}>{item.caption}</p>
         )}
 
-        {(item.links.appUrl || item.links.githubUrl || item.files.length > 0) && (
+        {(item.links.appUrl ||
+          item.links.githubUrl ||
+          item.files.length > 0 ||
+          item.actions.length > 0) && (
           <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
             {item.links.appUrl && extLink("Open app", item.links.appUrl)}
             {item.links.githubUrl && extLink("GitHub", item.links.githubUrl)}
             {item.files.map((f) => extLink(f.label, f.url))}
+            {item.actions.map((action) => extLink(action.label, action.url))}
           </div>
         )}
 
         {item.filesWithheld && (
           <p style={{ ...mono, fontSize: "0.625rem", color: "var(--clay)", margin: 0 }}>
-            Files available when featured
+            Private workflow files are not published
           </p>
         )}
 
@@ -277,7 +281,8 @@ export function WallGrid({
     return (
       <Card>
         <p style={{ color: "var(--charcoal)", margin: 0 }}>
-          Nothing on this wall yet — graded artifacts appear here automatically.
+          Nothing is published on this wall yet. Versioned work appears only after owner consent,
+          instructor approval, and a safe preview are all current.
         </p>
       </Card>
     );

@@ -219,17 +219,39 @@ describe.skipIf(!live)("lib/interview/session (live DB, seeded)", () => {
 
   it("audio answers: transcribed via STT, audio key + transcript persisted; STT cost logged", async () => {
     const { submitAnswer } = await import("../lib/interview/session");
+    const { reserveInterviewAnswerUpload } = await import("../lib/interview/audio-storage");
     const iv = await prisma.interview.findFirstOrThrow({
       where: { userId: STUDENT_A2, status: "live" },
     });
     const { __setS3TestOverrides } = await import("../lib/s3");
-    __setS3TestOverrides({ configured: true, sign: (d) => `https://fake.s3/${d.key}` });
+    const versionId = "answer-version-1";
+    __setS3TestOverrides({
+      configured: true,
+      sign: (d) => `https://fake.s3/${d.key}`,
+      head: async () => ({
+        contentLength: 3,
+        contentType: "audio/webm",
+        etag: "answer-etag-1",
+        versionId,
+      }),
+    });
     try {
+      const maxTurn = await prisma.interviewTurn.aggregate({
+        where: { interviewId: iv.id },
+        _max: { turnNo: true },
+      });
+      const reserved = await reserveInterviewAnswerUpload({
+        interviewId: iv.id,
+        turnNo: (maxTurn._max.turnNo ?? 0) + 1,
+        contentType: "audio/webm",
+        sizeBytes: 3,
+        extension: "webm",
+      });
       const res = await submitAnswer(
         {
           interviewId: iv.id,
           userId: STUDENT_A2,
-          audioS3Key: `interviews/${iv.id}/a4.webm`,
+          audioReservationId: reserved.reservation.id,
         },
         { stt: fakeStt() },
       );
@@ -237,8 +259,14 @@ describe.skipIf(!live)("lib/interview/session (live DB, seeded)", () => {
       const turn = await prisma.interviewTurn.findUnique({
         where: { interviewId_turnNo: { interviewId: iv.id, turnNo: res.turnNo } },
       });
-      expect(turn?.audioS3Key).toBe(`interviews/${iv.id}/a4.webm`);
+      expect(turn?.audioS3Key).toBe(reserved.reservation.s3Key);
+      expect(turn?.audioS3VersionId).toBe(versionId);
       expect(turn?.text).toBe("transcribed answer");
+      const consumed = await prisma.generatedObjectReservation.findUniqueOrThrow({
+        where: { id: reserved.reservation.id },
+      });
+      expect(consumed.s3VersionId).toBe(versionId);
+      expect(consumed.consumedAt).toBeInstanceOf(Date);
       const stt = await prisma.costLog.findFirst({
         where: { feature: "interview", provider: "deepgram", refId: iv.id },
       });
@@ -285,7 +313,11 @@ describe.skipIf(!live)("lib/interview/session (live DB, seeded)", () => {
     // TTS succeeded at least once when a fake tts was wired.
     const { nextQuestion } = await import("../lib/interview/session");
     const { __setS3TestOverrides } = await import("../lib/s3");
-    __setS3TestOverrides({ configured: true, write: async () => {}, sign: (d) => `https://fake.s3/${d.key}` });
+    __setS3TestOverrides({
+      configured: true,
+      write: async () => ({ versionId: "tts-version-1", etag: "tts-etag-1" }),
+      sign: (d) => `https://fake.s3/${d.key}`,
+    });
     try {
       // answer the pending question first so nextQuestion is legal
       const { submitAnswer } = await import("../lib/interview/session");
@@ -299,7 +331,14 @@ describe.skipIf(!live)("lib/interview/session (live DB, seeded)", () => {
       const q = await nextQuestion(iv.id, { gemini: fakeGemini(), tts: fakeTts() });
       expect(q.done).toBe(false);
       if (q.done) throw new Error("unreachable");
-      expect(q.audioS3Key).toBe(`interviews/${iv.id}/q${q.turnNo}.mp3`);
+      expect(q.audioS3Key).toMatch(
+        new RegExp(`^interviews/${iv.id}/q${q.turnNo}-[A-Za-z0-9_-]+\\.mp3$`),
+      );
+      const turn = await prisma.interviewTurn.findUniqueOrThrow({
+        where: { interviewId_turnNo: { interviewId: iv.id, turnNo: q.turnNo } },
+      });
+      expect(turn.audioS3Key).toBe(q.audioS3Key);
+      expect(turn.audioS3VersionId).toBe("tts-version-1");
     } finally {
       __setS3TestOverrides(null);
     }
@@ -400,8 +439,23 @@ describe.skipIf(!live)("lib/interview/session (live DB, seeded)", () => {
         sizeBytes: 1000,
       });
       expect(ok.status).toBe(200);
-      const json = (await ok.json()) as { key: string; url: string };
-      expect(json.key).toMatch(new RegExp(`^interviews/${iv.id}/a\\d+\\.webm$`));
+      const json = (await ok.json()) as {
+        key: string;
+        url: string;
+        headers: Record<string, string>;
+        reservationId: string;
+      };
+      expect(json.key).toMatch(
+        new RegExp(`^interviews/${iv.id}/a\\d+-[A-Za-z0-9_-]+\\.webm$`),
+      );
+      expect(json.headers["If-None-Match"]).toBe("*");
+      const reservation = await prisma.generatedObjectReservation.findUniqueOrThrow({
+        where: { id: json.reservationId },
+      });
+      expect(reservation.interviewId).toBe(iv.id);
+      expect(reservation.s3Key).toBe(json.key);
+      expect(reservation.s3VersionId).toBeNull();
+      expect(reservation.consumedAt).toBeNull();
     } finally {
       __setS3TestOverrides(null);
     }

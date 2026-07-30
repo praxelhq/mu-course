@@ -1,40 +1,74 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 import { Button, StatusChip } from "@/components/ui";
-import type { SubmissionFieldDef } from "@/lib/submission-schema";
-
-// The schema-driven submission form. Rendered ENTIRELY from the
-// assignment type's submissionSchema field defs (link/text/writeup/file/
-// files): a new AssignmentType row is a working form with zero code changes.
-// Files go browser → S3 via presigned PUT (XHR for progress); a failed
-// upload is always an explicit failed state with a Retry — never silent.
+import {
+  submissionValuePresent,
+  type SubmissionFieldDef,
+} from "@/lib/submission-schema";
 
 export type HistoryRow = {
   id: string;
   version: number;
+  attempt: number;
   status: string;
   submittedAt: string | null;
 };
 
+type DraftReceipt = {
+  id: string;
+  updatedAt: string | null;
+  assessmentVersionId: string | null;
+  grantId: string | null;
+  version: number;
+  attempt: number;
+};
+
+export type RevisionGrantOption = {
+  grantId: string;
+  kind: "repair" | "improvement";
+  targetVersion: number;
+  targetAttempt: number;
+  expiresAt: string;
+};
+
+type DraftState = "idle" | "unsaved" | "saving" | "saved" | "conflict" | "failed";
+
 type UploadState =
-  | { phase: "idle" }
   | { phase: "uploading"; name: string; pct: number }
-  | { phase: "done"; name: string; key: string }
-  | { phase: "failed"; name: string; message: string; file: FileHandle };
+  | { phase: "inspecting"; name: string }
+  | { phase: "clean"; name: string; evidenceId: string }
+  | {
+      phase: "quarantined";
+      name: string;
+      evidenceId: string;
+      reason: string;
+      file: File;
+    }
+  | { phase: "failed"; name: string; message: string; file: File };
 
-// Browser File kept for retry without re-picking.
-type FileHandle = File;
+type LinkCheck =
+  | { state: "unchecked" }
+  | { state: "checking" }
+  | { state: "ok"; status: number }
+  | { state: "dead"; status: number };
 
-const mono: React.CSSProperties = {
+const mono: CSSProperties = {
   fontFamily: "var(--font-geist-mono)",
   letterSpacing: "0.1em",
   textTransform: "uppercase",
 };
 
-const inputStyle: React.CSSProperties = {
+const inputStyle: CSSProperties = {
   fontFamily: "var(--font-geist-sans)",
   fontSize: "0.9375rem",
   border: "1px solid var(--sand)",
@@ -44,7 +78,7 @@ const inputStyle: React.CSSProperties = {
   width: "100%",
 };
 
-const labelStyle: React.CSSProperties = {
+const labelStyle: CSSProperties = {
   ...mono,
   fontSize: "0.625rem",
   color: "var(--clay)",
@@ -52,7 +86,7 @@ const labelStyle: React.CSSProperties = {
   margin: "0 0 0.25rem",
 };
 
-const errStyle: React.CSSProperties = {
+const errStyle: CSSProperties = {
   ...mono,
   fontSize: "0.6875rem",
   color: "var(--ochre)",
@@ -68,193 +102,488 @@ function putWithProgress(
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
     xhr.open("PUT", url);
-    for (const [k, v] of Object.entries(headers)) xhr.setRequestHeader(k, v);
-    xhr.upload.onprogress = (e) => {
-      if (e.lengthComputable) onProgress(Math.round((e.loaded / e.total) * 100));
+    for (const [key, value] of Object.entries(headers)) {
+      // Browsers set Content-Length from the immutable File body. It remains
+      // part of the signature, but XMLHttpRequest forbids setting it manually.
+      if (key.toLowerCase() !== "content-length") xhr.setRequestHeader(key, value);
+    }
+    xhr.upload.onprogress = (event) => {
+      if (event.lengthComputable) {
+        onProgress(Math.round((event.loaded / event.total) * 100));
+      }
     };
-    xhr.onload = () =>
-      xhr.status >= 200 && xhr.status < 300
-        ? resolve()
-        : reject(new Error(`Upload failed (S3 returned ${xhr.status})`));
+    xhr.onload = () => {
+      if (xhr.status >= 200 && xhr.status < 300) resolve();
+      else reject(new Error(`Upload failed (storage returned ${xhr.status})`));
+    };
     xhr.onerror = () => reject(new Error("Upload failed (network error)"));
     xhr.send(file);
   });
 }
 
-type LinkCheck = { state: "unchecked" } | { state: "checking" } | { state: "ok"; status: number } | { state: "dead"; status: number };
+function payloadFor(
+  definitions: SubmissionFieldDef[],
+  values: Record<string, unknown>,
+  uploads: Record<string, UploadState[]>,
+): { fields: Record<string, unknown>; evidenceIds: string[] } {
+  const output: Record<string, unknown> = {};
+  const evidenceIds: string[] = [];
+  for (const definition of definitions) {
+    if (definition.kind === "file" || definition.kind === "files") {
+      const clean = (uploads[definition.key] ?? []).filter(
+        (slot): slot is Extract<UploadState, { phase: "clean" }> => slot.phase === "clean",
+      );
+      const ids = clean.map((slot) => slot.evidenceId);
+      if (definition.kind === "file" && ids[0]) output[definition.key] = ids[0];
+      if (definition.kind === "files" && ids.length > 0) output[definition.key] = ids;
+      evidenceIds.push(...ids);
+      continue;
+    }
+
+    const value = values[definition.key];
+    if (typeof value === "string") {
+      if (value.trim()) output[definition.key] = value.trim();
+    } else if (Array.isArray(value)) {
+      if (value.length > 0) output[definition.key] = value;
+    } else if (value !== undefined && value !== null) {
+      output[definition.key] = value;
+    }
+  }
+  return { fields: output, evidenceIds };
+}
+
+function responseError(body: unknown, fallback: string): string {
+  if (typeof body !== "object" || body === null) return fallback;
+  const error = (body as { error?: unknown }).error;
+  return typeof error === "string" ? error : fallback;
+}
+
+export function submissionWordCount(value: string): number {
+  const trimmed = value.trim();
+  return trimmed ? trimmed.split(/\s+/u).length : 0;
+}
+
+export function submissionFieldRequired(
+  field: Pick<SubmissionFieldDef, "required" | "requiredFromVersion">,
+  boundVersion?: number,
+): boolean {
+  return (
+    field.required ||
+    (field.requiredFromVersion !== undefined &&
+      boundVersion !== undefined &&
+      boundVersion >= field.requiredFromVersion)
+  );
+}
 
 export function SubmissionForm({
   assignmentId,
   fields,
+  anyOf = [],
   storageReady,
   history,
+  revisionGrants = [],
 }: {
   assignmentId: string;
   fields: SubmissionFieldDef[];
+  anyOf?: string[][];
   storageReady: boolean;
   history: HistoryRow[];
+  revisionGrants?: RevisionGrantOption[];
 }) {
   const router = useRouter();
-  // One draft id per submit attempt: all files of this attempt group under
-  // submissions/{me}/{draftId}/ — the final POST carries the keys.
-  const draftId = useMemo(() => crypto.randomUUID(), []);
-
-  const [values, setValues] = useState<Record<string, string>>({});
-  // file/files fields → per-field upload slots (files kind holds many).
+  const [values, setValues] = useState<Record<string, unknown>>({});
   const [uploads, setUploads] = useState<Record<string, UploadState[]>>({});
   const [linkChecks, setLinkChecks] = useState<Record<string, LinkCheck>>({});
   const [fieldErrors, setFieldErrors] = useState<string[]>([]);
   const [topError, setTopError] = useState<string | null>(null);
+  const [draft, setDraft] = useState<DraftReceipt | null>(null);
+  const [draftState, setDraftState] = useState<DraftState>("idle");
   const [confirming, setConfirming] = useState(false);
   const [busy, setBusy] = useState(false);
-  const [done, setDone] = useState<{ version: number } | null>(null);
+  const [done, setDone] = useState<{ version: number; attempt: number } | null>(null);
+  const [selectedGrantId, setSelectedGrantId] = useState(
+    revisionGrants.length === 1 ? revisionGrants[0]!.grantId : "",
+  );
 
-  const setUploadSlot = (key: string, idx: number, state: UploadState | null) =>
-    setUploads((prev) => {
-      const slots = [...(prev[key] ?? [])];
-      if (state === null) slots.splice(idx, 1);
-      else slots[idx] = state;
-      return { ...prev, [key]: slots };
+  const draftRef = useRef<DraftReceipt | null>(null);
+  const saveChainRef = useRef<Promise<unknown>>(Promise.resolve());
+  const latestSignatureRef = useRef("{}");
+  const editedRef = useRef(false);
+
+  const payload = useMemo(() => payloadFor(fields, values, uploads), [fields, uploads, values]);
+  const payloadSignature = JSON.stringify(payload.fields);
+
+  useEffect(() => {
+    latestSignatureRef.current = payloadSignature;
+  }, [payloadSignature]);
+
+  const setDraftReceipt = useCallback((receipt: DraftReceipt) => {
+    draftRef.current = receipt;
+    setDraft(receipt);
+  }, []);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    void (async () => {
+      try {
+        const response = await fetch(
+          `/api/submissions/draft?assignmentId=${encodeURIComponent(assignmentId)}`,
+          { signal: controller.signal },
+        );
+        const body = (await response.json().catch(() => null)) as
+          | {
+              error?: string;
+              draft?: (DraftReceipt & { fields: Record<string, unknown> }) | null;
+              evidence?: {
+                id: string;
+                fieldKey: string;
+                filename: string;
+                scanState: "pending" | "clean" | "quarantined" | "deleted";
+                quarantineReasonCode: string | null;
+              }[];
+            }
+          | null;
+        if (!response.ok) throw new Error(responseError(body, "Could not load the saved draft."));
+        if (!body?.draft) return;
+
+        const receipt: DraftReceipt = {
+          id: body.draft.id,
+          updatedAt: body.draft.updatedAt ? String(body.draft.updatedAt) : null,
+          assessmentVersionId: body.draft.assessmentVersionId,
+          grantId: body.draft.grantId,
+          version: body.draft.version,
+          attempt: body.draft.attempt,
+        };
+        setDraftReceipt(receipt);
+        if (receipt.grantId) setSelectedGrantId(receipt.grantId);
+        if (editedRef.current) return;
+
+        const restoredValues: Record<string, unknown> = {};
+        const restoredUploads: Record<string, UploadState[]> = {};
+        const evidenceById = new Map((body.evidence ?? []).map((row) => [row.id, row]));
+        for (const definition of fields) {
+          const stored = body.draft.fields[definition.key];
+          if (definition.kind !== "file" && definition.kind !== "files") {
+            if (stored !== undefined) restoredValues[definition.key] = stored;
+            continue;
+          }
+          const ids = Array.isArray(stored) ? stored : typeof stored === "string" ? [stored] : [];
+          restoredUploads[definition.key] = ids.flatMap((id) => {
+            if (typeof id !== "string") return [];
+            const evidence = evidenceById.get(id);
+            return evidence?.scanState === "clean"
+              ? [{ phase: "clean" as const, name: evidence.filename, evidenceId: evidence.id }]
+              : [];
+          });
+        }
+        setValues(restoredValues);
+        setUploads(restoredUploads);
+        setDraftState("saved");
+      } catch (error) {
+        if (controller.signal.aborted) return;
+        setTopError(error instanceof Error ? error.message : "Could not load the saved draft.");
+        setDraftState("failed");
+      }
+    })();
+    return () => controller.abort();
+  }, [assignmentId, fields, setDraftReceipt]);
+
+  const persistDraft = useCallback(
+    (fieldSnapshot: Record<string, unknown>): Promise<DraftReceipt> => {
+      const signature = JSON.stringify(fieldSnapshot);
+      const run = async () => {
+        setDraftState("saving");
+        const current = draftRef.current;
+        const response = await fetch("/api/submissions/draft", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            assignmentId,
+            ...(current?.id ? { draftId: current.id } : {}),
+            ...(!current?.id && selectedGrantId ? { grantId: selectedGrantId } : {}),
+            ...(current?.updatedAt ? { expectedUpdatedAt: current.updatedAt } : {}),
+            fields: fieldSnapshot,
+          }),
+        });
+        const body = (await response.json().catch(() => null)) as
+          | { error?: string; draft?: DraftReceipt }
+          | null;
+        if (!response.ok || !body?.draft) {
+          const message = responseError(body, `Draft save failed (${response.status})`);
+          if (latestSignatureRef.current === signature) {
+            setDraftState(response.status === 409 ? "conflict" : "failed");
+            setTopError(message);
+          }
+          throw new Error(message);
+        }
+        const receipt = { ...body.draft, updatedAt: String(body.draft.updatedAt) };
+        setDraftReceipt(receipt);
+        setDraftState(latestSignatureRef.current === signature ? "saved" : "unsaved");
+        return receipt;
+      };
+
+      const queued = saveChainRef.current.then(run, run);
+      saveChainRef.current = queued.then(
+        () => undefined,
+        () => undefined,
+      );
+      return queued;
+    },
+    [assignmentId, selectedGrantId, setDraftReceipt],
+  );
+
+  useEffect(() => {
+    if (done) return;
+    if (revisionGrants.length > 1 && !selectedGrantId && !draftRef.current) return;
+    const fieldSnapshot = JSON.parse(payloadSignature) as Record<string, unknown>;
+    if (Object.keys(fieldSnapshot).length === 0 && !draftRef.current) return;
+    setDraftState((current) => (current === "saving" ? current : "unsaved"));
+    const timer = window.setTimeout(() => {
+      void persistDraft(fieldSnapshot).catch(() => undefined);
+    }, 700);
+    return () => window.clearTimeout(timer);
+  }, [done, payloadSignature, persistDraft, revisionGrants.length, selectedGrantId]);
+
+  const updateValue = (key: string, value: unknown) => {
+    editedRef.current = true;
+    setValues((current) => ({ ...current, [key]: value }));
+    setConfirming(false);
+    setTopError(null);
+    setDraftState((current) => (current === "saving" ? current : "unsaved"));
+  };
+
+  const setUploadSlot = (key: string, index: number, state: UploadState | null) => {
+    editedRef.current = true;
+    setUploads((current) => {
+      const slots = [...(current[key] ?? [])];
+      if (state === null) slots.splice(index, 1);
+      else slots[index] = state;
+      return { ...current, [key]: slots };
     });
+    setConfirming(false);
+  };
 
-  async function startUpload(fieldKey: string, idx: number, file: File) {
-    setUploadSlot(fieldKey, idx, { phase: "uploading", name: file.name, pct: 0 });
+  async function startUpload(fieldKey: string, index: number, file: File) {
+    setTopError(null);
+    if (revisionGrants.length > 1 && !selectedGrantId && !draftRef.current) {
+      setTopError("Choose the repair or improvement lane before uploading evidence.");
+      return;
+    }
+    setUploadSlot(fieldKey, index, { phase: "uploading", name: file.name, pct: 0 });
     try {
-      const res = await fetch("/api/uploads/submission-url", {
+      const reservationResponse = await fetch("/api/uploads/submission-url", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
           assignmentId,
+          ...(draftRef.current?.id ? { draftId: draftRef.current.id } : {}),
+          ...(!draftRef.current?.id && selectedGrantId ? { grantId: selectedGrantId } : {}),
+          fieldKey,
           filename: file.name,
           contentType: file.type || "application/octet-stream",
           sizeBytes: file.size,
-          draftId,
         }),
       });
-      if (!res.ok) {
-        const body = (await res.json().catch(() => null)) as { error?: string } | null;
-        throw new Error(body?.error ?? `Could not get an upload URL (${res.status})`);
+      const reserved = (await reservationResponse.json().catch(() => null)) as
+        | {
+            error?: string;
+            draftId?: string;
+            draftUpdatedAt?: string;
+            assessmentVersionId?: string | null;
+            grantId?: string | null;
+            version?: number;
+            attempt?: number;
+            reservationId?: string;
+            url?: string;
+            headers?: Record<string, string>;
+          }
+        | null;
+      if (
+        !reservationResponse.ok ||
+        !reserved?.draftId ||
+        !reserved.reservationId ||
+        !reserved.url ||
+        !reserved.headers ||
+        reserved.version === undefined ||
+        reserved.attempt === undefined
+      ) {
+        throw new Error(
+          responseError(reserved, `Could not reserve an upload (${reservationResponse.status})`),
+        );
       }
-      const { url, key, headers } = (await res.json()) as {
-        url: string;
-        key: string;
-        headers: Record<string, string>;
-      };
-      await putWithProgress(url, file, headers, (pct) =>
-        setUploadSlot(fieldKey, idx, { phase: "uploading", name: file.name, pct }),
+      setDraftReceipt({
+        id: reserved.draftId,
+        updatedAt: reserved.draftUpdatedAt ?? null,
+        assessmentVersionId: reserved.assessmentVersionId ?? null,
+        grantId: reserved.grantId ?? null,
+        version: reserved.version,
+        attempt: reserved.attempt,
+      });
+      setDraftState((current) => (current === "idle" ? "saved" : current));
+
+      await putWithProgress(reserved.url, file, reserved.headers, (pct) =>
+        setUploadSlot(fieldKey, index, { phase: "uploading", name: file.name, pct }),
       );
-      setUploadSlot(fieldKey, idx, { phase: "done", name: file.name, key });
-    } catch (e) {
-      // Explicit failed state + Retry — never silent.
-      setUploadSlot(fieldKey, idx, {
+      setUploadSlot(fieldKey, index, { phase: "inspecting", name: file.name });
+
+      const commitResponse = await fetch("/api/uploads/submission-commit", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ reservationId: reserved.reservationId }),
+      });
+      const committed = (await commitResponse.json().catch(() => null)) as
+        | {
+            error?: string;
+            evidence?: {
+              id: string;
+              scanState: "clean" | "quarantined";
+              quarantineReasonCode: string | null;
+            };
+          }
+        | null;
+      if (!commitResponse.ok || !committed?.evidence) {
+        throw new Error(responseError(committed, `Could not inspect upload (${commitResponse.status})`));
+      }
+      if (committed.evidence.scanState === "quarantined") {
+        setUploadSlot(fieldKey, index, {
+          phase: "quarantined",
+          name: file.name,
+          evidenceId: committed.evidence.id,
+          reason: committed.evidence.quarantineReasonCode ?? "inspection_failed",
+          file,
+        });
+      } else {
+        setUploadSlot(fieldKey, index, {
+          phase: "clean",
+          name: file.name,
+          evidenceId: committed.evidence.id,
+        });
+      }
+    } catch (error) {
+      setUploadSlot(fieldKey, index, {
         phase: "failed",
         name: file.name,
-        message: e instanceof Error ? e.message : "Upload failed",
+        message: error instanceof Error ? error.message : "Upload failed",
         file,
       });
     }
   }
 
   function pickFiles(fieldKey: string, kind: "file" | "files", list: FileList | null) {
-    if (!list || list.length === 0) return;
-    const existing = uploads[fieldKey] ?? [];
-    const files = Array.from(list);
+    if (!list?.length) return;
+    const selected = Array.from(list);
     if (kind === "file") {
-      // single-file field: replace slot 0
-      setUploads((prev) => ({ ...prev, [fieldKey]: [] }));
-      void startUpload(fieldKey, 0, files[0]);
-    } else {
-      files.forEach((f, i) => void startUpload(fieldKey, existing.length + i, f));
+      setUploads((current) => ({ ...current, [fieldKey]: [] }));
+      void startUpload(fieldKey, 0, selected[0]);
+      return;
     }
+    const offset = uploads[fieldKey]?.length ?? 0;
+    selected.forEach((file, index) => void startUpload(fieldKey, offset + index, file));
   }
 
   async function checkLink(fieldKey: string) {
-    const url = values[fieldKey]?.trim();
+    const raw = values[fieldKey];
+    const url = typeof raw === "string" ? raw.trim() : "";
     if (!url) return;
-    setLinkChecks((p) => ({ ...p, [fieldKey]: { state: "checking" } }));
+    setLinkChecks((current) => ({ ...current, [fieldKey]: { state: "checking" } }));
     try {
-      const res = await fetch("/api/links/check", {
+      const response = await fetch("/api/links/check", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ url }),
       });
-      const body = (await res.json().catch(() => null)) as { ok?: boolean; status?: number } | null;
-      if (res.ok && body?.ok) {
-        setLinkChecks((p) => ({ ...p, [fieldKey]: { state: "ok", status: body.status ?? 200 } }));
-      } else {
-        setLinkChecks((p) => ({ ...p, [fieldKey]: { state: "dead", status: body?.status ?? 0 } }));
-      }
+      const body = (await response.json().catch(() => null)) as
+        | { ok?: boolean; status?: number }
+        | null;
+      setLinkChecks((current) => ({
+        ...current,
+        [fieldKey]:
+          response.ok && body?.ok
+            ? { state: "ok", status: body.status ?? 200 }
+            : { state: "dead", status: body?.status ?? 0 },
+      }));
     } catch {
-      setLinkChecks((p) => ({ ...p, [fieldKey]: { state: "dead", status: 0 } }));
+      setLinkChecks((current) => ({ ...current, [fieldKey]: { state: "dead", status: 0 } }));
     }
   }
 
-  function buildPayload(): { fields: Record<string, unknown>; files: string[] } {
-    const out: Record<string, unknown> = {};
-    const allKeys: string[] = [];
-    for (const def of fields) {
-      if (def.kind === "file") {
-        const slot = (uploads[def.key] ?? []).find((s) => s.phase === "done");
-        if (slot && slot.phase === "done") {
-          out[def.key] = slot.key;
-          allKeys.push(slot.key);
-        }
-      } else if (def.kind === "files") {
-        const keys = (uploads[def.key] ?? [])
-          .filter((s): s is Extract<UploadState, { phase: "done" }> => s.phase === "done")
-          .map((s) => s.key);
-        if (keys.length > 0) {
-          out[def.key] = keys;
-          allKeys.push(...keys);
-        }
-      } else {
-        const v = values[def.key]?.trim();
-        if (v) out[def.key] = v;
-      }
-    }
-    return { fields: out, files: allKeys };
-  }
-
-  const uploading = Object.values(uploads).some((slots) =>
-    slots.some((s) => s.phase === "uploading"),
+  const processingUpload = Object.values(uploads).some((slots) =>
+    slots.some((slot) => slot.phase === "uploading" || slot.phase === "inspecting"),
   );
+  const blockedUpload = Object.values(uploads).some((slots) =>
+    slots.some((slot) => slot.phase === "failed" || slot.phase === "quarantined"),
+  );
+  const boundVersion = draft?.version;
+  const requiredFilesReady = fields
+    .filter((field) => submissionFieldRequired(field, boundVersion) && (field.kind === "file" || field.kind === "files"))
+    .every((field) => (uploads[field.key] ?? []).some((slot) => slot.phase === "clean"));
+  const anyOfReady = anyOf.every((group) =>
+    group.some((key) => submissionValuePresent(payload.fields[key])),
+  );
+  const needsRevisionSelection = revisionGrants.length > 1 && !draft && !selectedGrantId;
+
+  async function beginReview() {
+    setTopError(null);
+    setFieldErrors([]);
+    if (needsRevisionSelection) {
+      setTopError("Choose the repair or improvement lane before saving this draft.");
+      return;
+    }
+    if (processingUpload || blockedUpload) return;
+    try {
+      await persistDraft(payload.fields);
+      setConfirming(true);
+    } catch {
+      // persistDraft exposes the specific conflict/failure state.
+    }
+  }
 
   async function submit() {
     setBusy(true);
     setTopError(null);
     setFieldErrors([]);
     try {
-      const payload = buildPayload();
-      const res = await fetch("/api/submissions", {
+      if (processingUpload || blockedUpload || !requiredFilesReady) {
+        throw new Error("Every required file must finish inspection cleanly before submission.");
+      }
+      if (!anyOfReady) {
+        throw new Error("Complete at least one field in every alternative evidence group.");
+      }
+      const saved = await persistDraft(payload.fields);
+      if (latestSignatureRef.current !== JSON.stringify(payload.fields)) {
+        throw new Error("The draft changed while saving. Review the latest saved state and try again.");
+      }
+      const response = await fetch("/api/submissions/commit", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ assignmentId, ...payload }),
+        body: JSON.stringify({
+          assignmentId,
+          draftId: saved.id,
+          fields: payload.fields,
+          evidenceIds: payload.evidenceIds,
+        }),
       });
-      const body = (await res.json().catch(() => null)) as {
-        error?: string;
-        errors?: string[];
-        submission?: { version: number };
-      } | null;
-      if (res.status === 422) {
+      const body = (await response.json().catch(() => null)) as
+        | {
+            error?: string;
+            errors?: string[];
+            submission?: { version: number; attempt: number };
+          }
+        | null;
+      if (response.status === 422) {
         setFieldErrors(body?.errors ?? [body?.error ?? "Validation failed"]);
         setConfirming(false);
         return;
       }
-      if (res.status === 409) {
-        // Gate closed in the race window between render and submit.
-        setTopError(body?.error ?? "Submissions are closed for this assignment.");
+      if (!response.ok || !body?.submission) {
+        setTopError(responseError(body, `Submit failed (${response.status})`));
         setConfirming(false);
         return;
       }
-      if (!res.ok) {
-        setTopError(body?.error ?? `Submit failed (${res.status})`);
-        setConfirming(false);
-        return;
-      }
-      setDone({ version: body!.submission!.version });
+      setDone({ version: body.submission.version, attempt: body.submission.attempt });
       router.refresh();
-    } catch (e) {
-      setTopError(e instanceof Error ? e.message : "Submit failed");
+    } catch (error) {
+      setTopError(error instanceof Error ? error.message : "Submit failed");
       setConfirming(false);
     } finally {
       setBusy(false);
@@ -273,12 +602,12 @@ export function SubmissionForm({
     return (
       <section style={{ border: "1px solid var(--sand)", padding: "2rem", textAlign: "center" }}>
         <p style={{ ...mono, fontSize: "0.6875rem", color: "var(--pine)", margin: "0 0 0.75rem" }}>
-          Submitted · Version {done.version}
+          Submitted · Version {done.version} · Attempt {done.attempt}
         </p>
         <h2 style={{ fontSize: "1.375rem", margin: "0 0 0.75rem" }}>Your work is in.</h2>
         <p style={{ color: "var(--charcoal)", margin: "0 0 1.5rem" }}>
-          It now sits in the grading queue. You can resubmit any time the assignment is open — each
-          resubmission becomes a new version.
+          The immutable receipt is saved. Any improvement or repair appears as a separate,
+          one-use revision when it is eligible.
         </p>
         <Link
           href="/dashboard"
@@ -298,274 +627,411 @@ export function SubmissionForm({
     );
   }
 
-  const errorsFor = (key: string) => fieldErrors.filter((m) => m.includes(`"${key}"`));
+  const errorsFor = (key: string) => fieldErrors.filter((message) => message.includes(`"${key}"`));
   const generalErrors = fieldErrors.filter(
-    (m) => !fields.some((f) => m.includes(`"${f.key}"`)),
+    (message) => !fields.some((field) => message.includes(`"${field.key}"`)),
   );
+  const draftLabel: Record<DraftState, string> = {
+    idle: "Not saved",
+    unsaved: "Unsaved changes",
+    saving: "Saving…",
+    saved: draft ? `Draft saved · V${draft.version} A${draft.attempt}` : "Draft saved",
+    conflict: "Save conflict · refresh required",
+    failed: "Draft save failed",
+  };
 
   return (
     <div style={{ display: "grid", gap: "1.5rem" }}>
-      {!storageReady && fields.some((f) => f.kind === "file" || f.kind === "files") && (
-        <p
-          style={{
-            ...mono,
-            fontSize: "0.625rem",
-            color: "var(--clay)",
-            border: "1px solid var(--sand)",
-            padding: "0.75rem 1rem",
-            margin: 0,
-          }}
-        >
-          File storage is not configured in this environment — file fields are disabled. Link and
-          text fields can still be submitted if the assignment allows it.
+      {!storageReady && fields.some((field) => field.kind === "file" || field.kind === "files") && (
+        <p style={{ ...errStyle, border: "1px solid var(--sand)", padding: "0.75rem 1rem", margin: 0 }}>
+          File storage is unavailable in this environment. Upload fields are disabled.
         </p>
       )}
 
-      <section style={{ border: "1px solid var(--sand)", padding: "1.5rem", display: "grid", gap: "1.25rem" }}>
-        {fields.map((def) => (
-          <div key={def.key}>
-            <span style={labelStyle}>
-              {def.label}
-              {def.required ? "" : " · optional"}
-            </span>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          void beginReview();
+        }}
+        style={{ border: "1px solid var(--sand)", padding: "1.5rem", display: "grid", gap: "1.25rem" }}
+      >
+        <div
+          id="submission-draft-state"
+          role="status"
+          aria-live="polite"
+          style={{ ...mono, fontSize: "0.625rem", color: draftState === "conflict" || draftState === "failed" ? "var(--ochre)" : "var(--clay)" }}
+        >
+          {draftLabel[draftState]}
+        </div>
 
-            {def.kind === "link" && (
-              <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
+        {revisionGrants.length > 0 && (
+          <aside style={{ border: "1px solid var(--sand)", padding: "0.75rem" }}>
+            <label htmlFor="submission-revision-grant" style={labelStyle}>
+              Revision lane
+            </label>
+            <select
+              id="submission-revision-grant"
+              value={selectedGrantId}
+              disabled={Boolean(draft)}
+              required={revisionGrants.length > 1}
+              onChange={(event) => {
+                setSelectedGrantId(event.target.value);
+                setTopError(null);
+              }}
+              style={inputStyle}
+            >
+              {revisionGrants.length > 1 && <option value="">Choose repair or improvement</option>}
+              {revisionGrants.map((grant) => (
+                <option key={grant.grantId} value={grant.grantId}>
+                  {grant.kind === "repair" ? "Repair" : "Improvement"} · V{grant.targetVersion} A{grant.targetAttempt} · expires {dateFmt.format(new Date(grant.expiresAt))}
+                </option>
+              ))}
+            </select>
+            <p style={{ margin: "0.5rem 0 0", color: "var(--charcoal)", fontSize: "0.82rem" }}>
+              The first draft save locks this exact one-use grant. Choose before entering evidence when more than one lane is available.
+            </p>
+          </aside>
+        )}
+
+        {anyOf.length > 0 && (
+          <aside aria-labelledby="submission-alternative-evidence" style={{ border: "1px solid var(--sand)", padding: "0.75rem" }}>
+            <p id="submission-alternative-evidence" style={{ ...mono, color: "var(--clay)", margin: "0 0 0.375rem" }}>
+              Alternative evidence requirements
+            </p>
+            <ul style={{ margin: 0, paddingLeft: "1.25rem", color: "var(--charcoal)" }}>
+              {anyOf.map((group) => (
+                <li key={group.join("|")}>
+                  Complete at least one: {group.map((key) => fields.find((field) => field.key === key)?.label ?? key).join(" or ")}
+                </li>
+              ))}
+            </ul>
+          </aside>
+        )}
+
+        {fields.map((definition) => {
+          const rawValue = values[definition.key];
+          const textValue = typeof rawValue === "string" ? rawValue : "";
+          const effectiveRequired = submissionFieldRequired(definition, boundVersion);
+          const words = submissionWordCount(textValue);
+          const hasWordRange =
+            (definition.kind === "text" || definition.kind === "writeup") &&
+            (definition.minWords !== undefined || definition.maxWords !== undefined);
+          const wordHintId = hasWordRange ? `submission-${definition.key}-words` : undefined;
+          const exceedsWordLimit =
+            definition.maxWords !== undefined && words > definition.maxWords;
+          const helpId = definition.helpText ? `submission-${definition.key}-help` : undefined;
+          const messages = errorsFor(definition.key);
+          const errorId = messages.length > 0 ? `submission-${definition.key}-error` : undefined;
+          const describedBy = [helpId, wordHintId, errorId].filter(Boolean).join(" ") || undefined;
+          return (
+            <div key={definition.key}>
+              {definition.kind === "multiChoice" ? (
+                <span id={`submission-${definition.key}-label`} style={labelStyle}>
+                  {definition.label}
+                  {effectiveRequired
+                    ? ""
+                    : definition.requiredFromVersion !== undefined
+                      ? ` · required from Version ${definition.requiredFromVersion}`
+                      : " · optional"}
+                </span>
+              ) : (
+                <label htmlFor={`submission-${definition.key}`} style={labelStyle}>
+                  {definition.label}
+                  {effectiveRequired
+                    ? ""
+                    : definition.requiredFromVersion !== undefined
+                      ? ` · required from Version ${definition.requiredFromVersion}`
+                      : " · optional"}
+                  {definition.unit ? ` · ${definition.unit}` : ""}
+                </label>
+              )}
+              {definition.helpText && (
+                <p id={helpId} style={{ margin: "0 0 0.5rem", color: "var(--charcoal)", fontSize: "0.8125rem" }}>
+                  {definition.helpText}
+                </p>
+              )}
+
+              {definition.kind === "link" && (
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", alignItems: "center" }}>
+                  <input
+                    id={`submission-${definition.key}`}
+                    type="url"
+                    placeholder={
+                      definition.pathKind === "github-repository"
+                        ? "https://github.com/owner/repository"
+                        : "https://…"
+                    }
+                    pattern={
+                      definition.pathKind === "github-repository"
+                        ? "https://github\\.com/[^/]+/[^/?#]+/?"
+                        : definition.httpsOnly
+                          ? "https://.*"
+                          : undefined
+                    }
+                    title={
+                      definition.pathKind === "github-repository"
+                        ? "Enter the HTTPS root URL of a GitHub repository."
+                        : undefined
+                    }
+                    value={textValue}
+                    required={effectiveRequired}
+                    minLength={definition.minLength}
+                    maxLength={definition.maxLength}
+                    aria-describedby={describedBy}
+                    aria-invalid={messages.length > 0 || exceedsWordLimit}
+                    onChange={(event) => {
+                      updateValue(definition.key, event.target.value);
+                      setLinkChecks((current) => ({ ...current, [definition.key]: { state: "unchecked" } }));
+                    }}
+                    style={{ ...inputStyle, flex: "1 1 16rem" }}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => void checkLink(definition.key)}
+                    disabled={!textValue.trim() || linkChecks[definition.key]?.state === "checking"}
+                    style={{ ...mono, fontSize: "0.625rem", border: "1px solid var(--sand)", background: "var(--parchment)", color: "var(--pine)", padding: "0.5rem 0.75rem", whiteSpace: "nowrap" }}
+                  >
+                    {linkChecks[definition.key]?.state === "checking" ? "Checking…" : "Check link"}
+                  </button>
+                  <span role="status" aria-live="polite" style={{ ...mono, fontSize: "0.625rem" }}>
+                    {linkChecks[definition.key]?.state === "ok" && (
+                      <span style={{ color: "var(--pine)" }}>Link reachable</span>
+                    )}
+                    {linkChecks[definition.key]?.state === "dead" && (
+                      <span style={{ color: "var(--ochre)" }}>Link unavailable — you may still submit it</span>
+                    )}
+                  </span>
+                </div>
+              )}
+
+              {definition.kind === "text" && (
                 <input
-                  type="url"
-                  placeholder="https://…"
-                  value={values[def.key] ?? ""}
-                  onChange={(e) => {
-                    setValues((p) => ({ ...p, [def.key]: e.target.value }));
-                    setLinkChecks((p) => ({ ...p, [def.key]: { state: "unchecked" } }));
-                  }}
+                  id={`submission-${definition.key}`}
+                  value={textValue}
+                  required={effectiveRequired}
+                  minLength={definition.minLength}
+                  maxLength={definition.maxLength}
+                  aria-describedby={describedBy}
+                  aria-invalid={messages.length > 0 || exceedsWordLimit}
+                  onChange={(event) => updateValue(definition.key, event.target.value)}
                   style={inputStyle}
                 />
-                <button
-                  type="button"
-                  onClick={() => void checkLink(def.key)}
-                  disabled={!values[def.key]?.trim() || linkChecks[def.key]?.state === "checking"}
+              )}
+
+              {definition.kind === "writeup" && (
+                <textarea
+                  id={`submission-${definition.key}`}
+                  rows={5}
+                  value={textValue}
+                  required={effectiveRequired}
+                  minLength={definition.minLength}
+                  maxLength={definition.maxLength}
+                  aria-describedby={describedBy}
+                  aria-invalid={messages.length > 0 || exceedsWordLimit}
+                  onChange={(event) => updateValue(definition.key, event.target.value)}
+                  style={{ ...inputStyle, resize: "vertical" }}
+                />
+              )}
+
+              {definition.kind === "number" && (
+                <input
+                  id={`submission-${definition.key}`}
+                  type="number"
+                  value={typeof rawValue === "number" ? rawValue : ""}
+                  required={effectiveRequired}
+                  min={definition.min}
+                  max={definition.max}
+                  step={definition.integer ? 1 : "any"}
+                  aria-describedby={describedBy}
+                  aria-invalid={messages.length > 0}
+                  onChange={(event) => updateValue(definition.key, event.target.value === "" ? "" : Number(event.target.value))}
+                  style={inputStyle}
+                />
+              )}
+
+              {definition.kind === "singleChoice" && (
+                <select
+                  id={`submission-${definition.key}`}
+                  value={textValue}
+                  required={effectiveRequired}
+                  aria-describedby={describedBy}
+                  aria-invalid={messages.length > 0}
+                  onChange={(event) => updateValue(definition.key, event.target.value)}
+                  style={inputStyle}
+                >
+                  <option value="">Choose…</option>
+                  {(definition.options ?? []).map((option) => (
+                    <option key={option.value} value={option.value}>{option.label}</option>
+                  ))}
+                </select>
+              )}
+
+              {definition.kind === "multiChoice" && (
+                <fieldset
+                  id={`submission-${definition.key}`}
+                  aria-labelledby={`submission-${definition.key}-label`}
+                  aria-describedby={describedBy}
+                  aria-invalid={messages.length > 0}
+                  style={{ border: "1px solid var(--sand)", margin: 0, padding: "0.75rem" }}
+                >
+                  <legend style={{ ...mono, fontSize: "0.625rem", color: "var(--clay)" }}>
+                    Select all that apply
+                    {definition.minSelections !== undefined && ` · at least ${definition.minSelections}`}
+                    {definition.maxSelections !== undefined && ` · at most ${definition.maxSelections}`}
+                  </legend>
+                  {(definition.options ?? []).map((option) => {
+                    const selected = Array.isArray(rawValue) && rawValue.includes(option.value);
+                    return (
+                      <label key={option.value} style={{ display: "flex", gap: "0.5rem", alignItems: "center", margin: "0.375rem 0" }}>
+                        <input
+                          type="checkbox"
+                          checked={selected}
+                          onChange={() => {
+                            const current = Array.isArray(rawValue) ? rawValue.filter((value): value is string => typeof value === "string") : [];
+                            updateValue(definition.key, selected ? current.filter((value) => value !== option.value) : [...current, option.value]);
+                          }}
+                        />
+                        <span>{option.label}</span>
+                      </label>
+                    );
+                  })}
+                </fieldset>
+              )}
+
+              {(definition.kind === "file" || definition.kind === "files") && (
+                <div style={{ display: "grid", gap: "0.5rem" }}>
+                  <input
+                    id={`submission-${definition.key}`}
+                    type="file"
+                    accept={definition.acceptedMimeTypes?.join(",")}
+                    multiple={definition.kind === "files"}
+                    disabled={!storageReady || needsRevisionSelection}
+                    aria-describedby={describedBy}
+                    aria-invalid={messages.length > 0}
+                    onChange={(event) => {
+                      pickFiles(
+                        definition.key,
+                        definition.kind as "file" | "files",
+                        event.target.files,
+                      );
+                      event.target.value = "";
+                    }}
+                    style={{ ...inputStyle, padding: "0.375rem" }}
+                  />
+                  {definition.maxBytes !== undefined && (
+                    <span style={{ ...mono, fontSize: "0.5625rem", color: "var(--clay)" }}>
+                      {definition.maxBytesExclusive ? "Strictly below" : "Up to"} {definition.maxBytes.toLocaleString("en-IN")} bytes
+                    </span>
+                  )}
+                  {(uploads[definition.key] ?? []).map((slot, index) => (
+                    <div
+                      key={`${slot.name}-${index}`}
+                      role={slot.phase === "failed" || slot.phase === "quarantined" ? "alert" : "status"}
+                      aria-live="polite"
+                      style={{ border: "1px solid var(--sand)", padding: "0.5rem 0.75rem", display: "grid", gap: "0.375rem" }}
+                    >
+                      {slot.phase === "uploading" && (
+                        <>
+                          <span style={{ ...mono, fontSize: "0.625rem", color: "var(--charcoal)" }}>{slot.name} · uploading {slot.pct}%</span>
+                          <progress value={slot.pct} max={100} aria-label={`Uploading ${slot.name}`} style={{ width: "100%" }} />
+                        </>
+                      )}
+                      {slot.phase === "inspecting" && <span style={{ ...mono, fontSize: "0.625rem", color: "var(--charcoal)" }}>{slot.name} · inspecting type and contents…</span>}
+                      {slot.phase === "clean" && (
+                        <span style={{ ...mono, fontSize: "0.625rem", color: "var(--pine)", display: "flex", justifyContent: "space-between", gap: "0.5rem" }}>
+                          <span>{slot.name} · uploaded and inspection passed · evidence receipt saved</span>
+                          <button type="button" aria-label={`Remove ${slot.name}`} onClick={() => setUploadSlot(definition.key, index, null)} style={{ ...mono, fontSize: "0.625rem", color: "var(--ochre)", border: "none", background: "none" }}>Remove</button>
+                        </span>
+                      )}
+                      {(slot.phase === "failed" || slot.phase === "quarantined") && (
+                        <span style={{ ...mono, fontSize: "0.625rem", color: "var(--ochre)", display: "flex", justifyContent: "space-between", gap: "0.5rem" }}>
+                          <span>{slot.name} · {slot.phase === "quarantined" ? `blocked by file inspection — ${slot.reason}` : `upload failed — ${slot.message}`}</span>
+                          <span style={{ display: "flex", gap: "0.75rem" }}>
+                            <button type="button" aria-label={`Retry ${slot.name}`} onClick={() => void startUpload(definition.key, index, slot.file)} style={{ ...mono, fontSize: "0.625rem", color: "var(--pine)", border: "none", background: "none" }}>Retry</button>
+                            <button type="button" aria-label={`Remove ${slot.name}`} onClick={() => setUploadSlot(definition.key, index, null)} style={{ ...mono, fontSize: "0.625rem", color: "var(--ochre)", border: "none", background: "none" }}>Remove</button>
+                          </span>
+                        </span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {hasWordRange && (
+                <p
+                  id={wordHintId}
                   style={{
                     ...mono,
-                    fontSize: "0.625rem",
-                    border: "1px solid var(--sand)",
-                    background: "var(--parchment)",
-                    color: "var(--pine)",
-                    padding: "0.5rem 0.75rem",
-                    cursor: "pointer",
-                    whiteSpace: "nowrap",
+                    color: exceedsWordLimit ? "var(--ochre)" : "var(--clay)",
+                    margin: "0.375rem 0 0",
                   }}
                 >
-                  {linkChecks[def.key]?.state === "checking" ? "Checking…" : "Check link"}
-                </button>
-                {linkChecks[def.key]?.state === "ok" && (
-                  <span style={{ ...mono, fontSize: "0.625rem", color: "var(--pine)" }}>OK</span>
-                )}
-                {linkChecks[def.key]?.state === "dead" && (
-                  <span style={{ ...mono, fontSize: "0.625rem", color: "var(--ochre)" }}>Dead</span>
-                )}
-              </div>
-            )}
+                  {words} word{words === 1 ? "" : "s"}
+                  {definition.minWords !== undefined && definition.maxWords !== undefined
+                    ? ` · target ${definition.minWords}–${definition.maxWords}`
+                    : definition.minWords !== undefined
+                      ? ` · minimum ${definition.minWords}`
+                      : ` · maximum ${definition.maxWords}`}
+                </p>
+              )}
 
-            {def.kind === "text" && (
-              <input
-                value={values[def.key] ?? ""}
-                onChange={(e) => setValues((p) => ({ ...p, [def.key]: e.target.value }))}
-                style={inputStyle}
-              />
-            )}
+              {messages.length > 0 && (
+                <div id={errorId} role="alert">
+                  {messages.map((message) => <p key={message} style={errStyle}>{message}</p>)}
+                </div>
+              )}
+            </div>
+          );
+        })}
 
-            {def.kind === "writeup" && (
-              <textarea
-                rows={5}
-                value={values[def.key] ?? ""}
-                onChange={(e) => setValues((p) => ({ ...p, [def.key]: e.target.value }))}
-                style={{ ...inputStyle, resize: "vertical", fontFamily: "var(--font-geist-sans)" }}
-              />
-            )}
-
-            {(def.kind === "file" || def.kind === "files") && (
-              <div style={{ display: "grid", gap: "0.5rem" }}>
-                <input
-                  type="file"
-                  multiple={def.kind === "files"}
-                  disabled={!storageReady}
-                  onChange={(e) => {
-                    pickFiles(def.key, def.kind as "file" | "files", e.target.files);
-                    e.target.value = "";
-                  }}
-                  style={{ ...inputStyle, padding: "0.375rem" }}
-                />
-                {(uploads[def.key] ?? []).map((slot, idx) => (
-                  <div
-                    key={idx}
-                    style={{
-                      border: "1px solid var(--sand)",
-                      padding: "0.5rem 0.75rem",
-                      display: "grid",
-                      gap: "0.375rem",
-                    }}
-                  >
-                    {slot.phase === "uploading" && (
-                      <>
-                        <span style={{ ...mono, fontSize: "0.625rem", color: "var(--charcoal)" }}>
-                          {slot.name} · {slot.pct}%
-                        </span>
-                        <div style={{ border: "1px solid var(--sand)", height: "0.5rem" }}>
-                          <div style={{ width: `${slot.pct}%`, height: "100%", background: "var(--pine)" }} />
-                        </div>
-                      </>
-                    )}
-                    {slot.phase === "done" && (
-                      <span
-                        style={{
-                          ...mono,
-                          fontSize: "0.625rem",
-                          color: "var(--pine)",
-                          display: "flex",
-                          justifyContent: "space-between",
-                          gap: "0.5rem",
-                        }}
-                      >
-                        <span>{slot.name} · uploaded</span>
-                        <button
-                          type="button"
-                          onClick={() => setUploadSlot(def.key, idx, null)}
-                          style={{ ...mono, fontSize: "0.625rem", color: "var(--ochre)", border: "none", background: "none", cursor: "pointer" }}
-                        >
-                          Remove
-                        </button>
-                      </span>
-                    )}
-                    {slot.phase === "failed" && (
-                      <span
-                        style={{
-                          ...mono,
-                          fontSize: "0.625rem",
-                          color: "var(--ochre)",
-                          display: "flex",
-                          justifyContent: "space-between",
-                          gap: "0.5rem",
-                        }}
-                      >
-                        <span>
-                          {slot.name} · FAILED — {slot.message}
-                        </span>
-                        <span style={{ display: "flex", gap: "0.75rem" }}>
-                          <button
-                            type="button"
-                            onClick={() => void startUpload(def.key, idx, slot.file)}
-                            style={{ ...mono, fontSize: "0.625rem", color: "var(--pine)", border: "none", background: "none", cursor: "pointer" }}
-                          >
-                            Retry
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => setUploadSlot(def.key, idx, null)}
-                            style={{ ...mono, fontSize: "0.625rem", color: "var(--ochre)", border: "none", background: "none", cursor: "pointer" }}
-                          >
-                            Remove
-                          </button>
-                        </span>
-                      </span>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {errorsFor(def.key).map((m) => (
-              <p key={m} style={errStyle}>
-                {m}
-              </p>
-            ))}
-          </div>
-        ))}
-
-        {generalErrors.map((m) => (
-          <p key={m} style={errStyle}>
-            {m}
-          </p>
-        ))}
-        {topError && <p style={errStyle}>{topError}</p>}
+        {generalErrors.map((message) => <p key={message} role="alert" style={errStyle}>{message}</p>)}
+        {topError && <p role="alert" style={errStyle}>{topError}</p>}
 
         {!confirming ? (
           <div>
-            <Button onClick={() => setConfirming(true)} disabled={busy || uploading}>
-              {uploading ? "Waiting for uploads…" : "Review & submit"}
+            <Button type="submit" disabled={busy || processingUpload || blockedUpload || needsRevisionSelection}>
+              {processingUpload ? "Waiting for inspection…" : blockedUpload ? "Remove or replace blocked files" : draftState === "saving" ? "Saving…" : "Save, review & submit"}
             </Button>
           </div>
         ) : (
           <div style={{ border: "1px solid var(--sand)", padding: "1rem", display: "grid", gap: "0.75rem" }}>
-            <p style={{ ...mono, fontSize: "0.625rem", color: "var(--clay)", margin: 0 }}>
-              You are about to submit:
-            </p>
+            <p style={{ ...mono, fontSize: "0.625rem", color: "var(--clay)", margin: 0 }}>Final immutable receipt</p>
             <ul style={{ margin: 0, paddingLeft: "1.25rem", color: "var(--charcoal)", fontSize: "0.875rem" }}>
-              {fields.map((def) => {
-                const payload = buildPayload();
-                const v = payload.fields[def.key];
+              {fields.map((definition) => {
+                const value = payload.fields[definition.key];
                 return (
-                  <li key={def.key}>
-                    <strong>{def.label}:</strong>{" "}
-                    {v === undefined
-                      ? "— (empty)"
-                      : Array.isArray(v)
-                        ? `${v.length} file(s)`
-                        : typeof v === "string" && v.length > 80
-                          ? `${v.slice(0, 80)}…`
-                          : String(v)}
+                  <li key={definition.key}>
+                    <strong>{definition.label}:</strong>{" "}
+                    {value === undefined ? "— (empty)" : Array.isArray(value) ? `${value.length} selected/file(s)` : typeof value === "string" && value.length > 80 ? `${value.slice(0, 80)}…` : String(value)}
                   </li>
                 );
               })}
             </ul>
+            {!requiredFilesReady && <p style={errStyle}>Every required file needs a clean committed receipt.</p>}
+            {!anyOfReady && <p role="alert" style={errStyle}>Complete at least one field in every alternative evidence group.</p>}
             <div style={{ display: "flex", gap: "0.75rem" }}>
-              <Button onClick={() => void submit()} disabled={busy}>
-                {busy ? "Submitting…" : "Submit"}
+              <Button onClick={() => void submit()} disabled={busy || draftState !== "saved" || !requiredFilesReady || !anyOfReady || processingUpload || blockedUpload || needsRevisionSelection}>
+                {busy ? "Submitting…" : draftState !== "saved" ? "Waiting for draft save…" : "Submit"}
               </Button>
-              <button
-                type="button"
-                onClick={() => setConfirming(false)}
-                style={{
-                  ...mono,
-                  fontSize: "0.6875rem",
-                  border: "1px solid var(--sand)",
-                  background: "var(--parchment)",
-                  color: "var(--charcoal)",
-                  padding: "0.5rem 1rem",
-                  cursor: "pointer",
-                }}
-              >
-                Keep editing
-              </button>
+              <button type="button" onClick={() => setConfirming(false)} style={{ ...mono, fontSize: "0.6875rem", border: "1px solid var(--sand)", background: "var(--parchment)", color: "var(--charcoal)", padding: "0.5rem 1rem" }}>Keep editing</button>
             </div>
           </div>
         )}
-      </section>
+      </form>
 
       {history.length > 0 && (
         <section style={{ border: "1px solid var(--sand)", padding: "1.5rem" }}>
           <h2 style={{ fontSize: "1.125rem", margin: "0 0 1rem" }}>Version history</h2>
-          <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
-            {history.map((h) => (
-              <li
-                key={h.id}
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  gap: "1rem",
-                  borderBottom: "1px solid var(--sand)",
-                  padding: "0.5rem 0",
-                }}
-              >
+          <ol aria-label="Immutable submission receipts, newest first" style={{ listStyle: "none", margin: 0, padding: 0 }}>
+            {history.map((row) => (
+              <li key={row.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "1rem", borderBottom: "1px solid var(--sand)", padding: "0.5rem 0" }}>
                 <span style={{ ...mono, fontSize: "0.6875rem", color: "var(--charcoal)" }}>
-                  v{h.version}
-                  {h.submittedAt && ` · ${dateFmt.format(new Date(h.submittedAt))}`}
+                  Version {row.version} · attempt {row.attempt}{row.submittedAt && ` · ${dateFmt.format(new Date(row.submittedAt))}`}
                 </span>
-                <StatusChip status={h.status} />
+                <StatusChip status={row.status} />
               </li>
             ))}
-          </ul>
+          </ol>
         </section>
       )}
     </div>

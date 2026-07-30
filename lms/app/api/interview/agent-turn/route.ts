@@ -16,7 +16,6 @@ const bodySchema = z.object({
   interviewId: z.string().min(1),
   speaker: z.enum(["agent", "student"]),
   text: z.string().min(1).max(16_000),
-  audioS3Key: z.string().min(1).max(500).optional(),
 });
 
 export async function POST(req: Request): Promise<Response> {
@@ -25,7 +24,7 @@ export async function POST(req: Request): Promise<Response> {
 
   const parsed = bodySchema.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return Response.json({ error: "Invalid body" }, { status: 400 });
-  const { interviewId, speaker, text, audioS3Key } = parsed.data;
+  const { interviewId, speaker, text } = parsed.data;
 
   try {
     const interview = await prisma.interview.findUnique({
@@ -41,7 +40,7 @@ export async function POST(req: Request): Promise<Response> {
         { status: 409 },
       );
     }
-    const turn = await appendTurnFromAgent({ interviewId, speaker, text, audioS3Key });
+    const turn = await appendTurnFromAgent({ interviewId, speaker, text });
     await touchHeartbeat(interviewId);
     return Response.json({ ok: true, turnNo: turn.turnNo });
   } catch (err) {

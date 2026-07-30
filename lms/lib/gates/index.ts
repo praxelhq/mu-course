@@ -119,8 +119,10 @@ export async function resolveGateDetail(ref: GateRef, now: Date = new Date()): P
   const parentOpen = parentSessionPageId
     ? effectiveGateState(parent ?? null, now) === "open"
     : true;
-  let available = ownState === "open" && parentOpen;
-  if (!available && userId) {
+  const contractEligible =
+    targetType !== "quiz" || (await quizEligibilityIn(prisma, targetId)).eligible;
+  let available = contractEligible && ownState === "open" && parentOpen;
+  if (contractEligible && !available && userId) {
     available = await hasLiveException(targetType, targetId, userId, now);
   }
   return { available, ownState, parentOpen, closedAt: own?.closedAt ?? null };
@@ -152,6 +154,57 @@ export type SectionGateRow = {
 
 export type GateSnapshot = { version: string; rows: SectionGateRow[] };
 
+export type GateGrantLike = {
+  id: string;
+  assignmentId: string;
+  ownerKind: string;
+  ownerId: string;
+  kind: string;
+  targetVersion: number;
+  targetAttempt: number;
+  expiresAt: Date;
+  consumedAt: Date | null;
+  extendedAt: Date | null;
+};
+
+/**
+ * Content address for the student's polling surface. Revision grants are part
+ * of availability even when the underlying assignment gate remains closed,
+ * so their creation, extension and consumption must invalidate the snapshot.
+ */
+export function gateSnapshotVersion(
+  rows: SectionGateRow[],
+  grants: GateGrantLike[],
+): string {
+  const hash = createHash("sha1");
+  for (const row of [...rows].sort((left, right) =>
+    `${left.sectionId}|${left.targetType}|${left.targetId}`.localeCompare(
+      `${right.sectionId}|${right.targetType}|${right.targetId}`,
+    ),
+  )) {
+    hash.update(`${row.sectionId}|${row.targetType}|${row.targetId}|${row.state}\n`);
+  }
+  hash.update("--grants--\n");
+  for (const grant of [...grants].sort((left, right) => left.id.localeCompare(right.id))) {
+    hash.update(
+      [
+        grant.id,
+        grant.assignmentId,
+        grant.ownerKind,
+        grant.ownerId,
+        grant.kind,
+        grant.targetVersion,
+        grant.targetAttempt,
+        grant.expiresAt.toISOString(),
+        grant.consumedAt?.toISOString() ?? "",
+        grant.extendedAt?.toISOString() ?? "",
+      ].join("|"),
+    );
+    hash.update("\n");
+  }
+  return hash.digest("hex");
+}
+
 /**
  * Batched resolution for hubs and the Unlock Console: every gate row of a
  * section (or all sections when sectionId is null) with its EFFECTIVE state,
@@ -161,20 +214,54 @@ export async function resolveMany(
   sectionId: string | null,
   now: Date = new Date(),
 ): Promise<GateSnapshot> {
-  const gates = await prisma.gate.findMany({
-    where: sectionId ? { sectionId } : {},
-    select: { targetType: true, targetId: true, sectionId: true, state: true, opensAt: true },
-    orderBy: [{ sectionId: "asc" }, { targetType: "asc" }, { targetId: "asc" }],
-  });
+  const [gates, grants, versionedQuizzes] = await Promise.all([
+    prisma.gate.findMany({
+      where: sectionId ? { sectionId } : {},
+      select: { targetType: true, targetId: true, sectionId: true, state: true, opensAt: true },
+      orderBy: [{ sectionId: "asc" }, { targetType: "asc" }, { targetId: "asc" }],
+    }),
+    prisma.resubmissionGrant.findMany({
+      select: {
+        id: true,
+        assignmentId: true,
+        ownerKind: true,
+        ownerId: true,
+        kind: true,
+        targetVersion: true,
+        targetAttempt: true,
+        expiresAt: true,
+        consumedAt: true,
+        extendedAt: true,
+      },
+      orderBy: { id: "asc" },
+    }),
+    prisma.quiz.findMany({
+      where: { contractMode: "versioned" },
+      select: {
+        id: true,
+        contractMode: true,
+        publishedAt: true,
+        classificationFinalizedAt: true,
+        classifiedBy: true,
+        contentHash: true,
+        answerMode: true,
+        feedbackReleaseAt: true,
+      },
+    }),
+  ]);
+  const versionedQuizEligibility = new Map(
+    versionedQuizzes.map((quiz) => [quiz.id, quizOpenEligibility(quiz).eligible]),
+  );
   const rows: SectionGateRow[] = gates.map((g) => ({
     targetType: g.targetType,
     targetId: g.targetId,
     sectionId: g.sectionId,
-    state: effectiveGateState(g, now),
+    state:
+      g.targetType === "quiz" && versionedQuizEligibility.get(g.targetId) === false
+        ? "locked"
+        : effectiveGateState(g, now),
   }));
-  const hash = createHash("sha1");
-  for (const r of rows) hash.update(`${r.sectionId}|${r.targetType}|${r.targetId}|${r.state}\n`);
-  return { version: hash.digest("hex"), rows };
+  return { version: gateSnapshotVersion(rows, grants), rows };
 }
 
 /** Availability check over a resolveMany snapshot (no extra queries). */
@@ -204,10 +291,96 @@ export async function openTargetIds(
     where: { targetType, sectionId },
     select: { targetId: true, state: true, opensAt: true },
   });
-  return rows.filter((r) => effectiveGateState(r, now) === "open").map((r) => r.targetId);
+  const openRows = rows.filter((row) => effectiveGateState(row, now) === "open");
+  if (targetType !== "quiz" || openRows.length === 0) return openRows.map((row) => row.targetId);
+  const quizzes = await prisma.quiz.findMany({
+    where: { id: { in: openRows.map((row) => row.targetId) } },
+    select: {
+      id: true,
+      contractMode: true,
+      publishedAt: true,
+      classificationFinalizedAt: true,
+      classifiedBy: true,
+      contentHash: true,
+      answerMode: true,
+      feedbackReleaseAt: true,
+    },
+  });
+  const eligible = new Set(
+    quizzes.filter((quiz) => quizOpenEligibility(quiz).eligible).map((quiz) => quiz.id),
+  );
+  return openRows.filter((row) => eligible.has(row.targetId)).map((row) => row.targetId);
 }
 
 export type SetGateResult = { changed: boolean; before: GateState; after: GateState };
+
+export type QuizGateContract = {
+  contractMode: "legacy" | "versioned";
+  publishedAt: Date | null;
+  classificationFinalizedAt: Date | null;
+  classifiedBy: string | null;
+  contentHash: string | null;
+  answerMode: "legacy_index" | "stable_id";
+  feedbackReleaseAt: Date | null;
+};
+
+export type QuizOpenEligibility = {
+  eligible: boolean;
+  reason:
+    | "missing_quiz"
+    | "unpublished"
+    | "classification_not_finalized"
+    | "missing_content_hash"
+    | "unstable_answer_mode"
+    | "feedback_release_unscheduled"
+    | null;
+};
+
+/** Legacy quizzes retain their existing gate behavior; versioned candidates fail closed. */
+export function quizOpenEligibility(
+  quiz: QuizGateContract | null | undefined,
+): QuizOpenEligibility {
+  if (!quiz) return { eligible: false, reason: "missing_quiz" };
+  if (quiz.contractMode === "legacy") return { eligible: true, reason: null };
+  if (!quiz.publishedAt) return { eligible: false, reason: "unpublished" };
+  if (!quiz.classificationFinalizedAt || !quiz.classifiedBy) {
+    return { eligible: false, reason: "classification_not_finalized" };
+  }
+  if (!quiz.contentHash) return { eligible: false, reason: "missing_content_hash" };
+  if (quiz.answerMode !== "stable_id") {
+    return { eligible: false, reason: "unstable_answer_mode" };
+  }
+  if (!quiz.feedbackReleaseAt) {
+    return { eligible: false, reason: "feedback_release_unscheduled" };
+  }
+  return { eligible: true, reason: null };
+}
+
+export class QuizGateContractError extends Error {
+  readonly reason: NonNullable<QuizOpenEligibility["reason"]>;
+
+  constructor(reason: NonNullable<QuizOpenEligibility["reason"]>) {
+    super(`Quiz cannot be opened until its versioned contract is eligible (${reason}).`);
+    this.name = "QuizGateContractError";
+    this.reason = reason;
+  }
+}
+
+async function quizEligibilityIn(tx: TxClient, quizId: string): Promise<QuizOpenEligibility> {
+  const quiz = await tx.quiz.findUnique({
+    where: { id: quizId },
+    select: {
+      contractMode: true,
+      publishedAt: true,
+      classificationFinalizedAt: true,
+      classifiedBy: true,
+      contentHash: true,
+      answerMode: true,
+      feedbackReleaseAt: true,
+    },
+  });
+  return quizOpenEligibility(quiz);
+}
 
 // Shared by setGateState and the bulk helpers so single and bulk toggles are
 // audited identically. Skips the write (and the audit row) when the stored
@@ -260,7 +433,13 @@ export async function setGateState(args: {
   state: GateState;
   actorId: string;
 }): Promise<SetGateResult> {
-  return prisma.$transaction((tx) => setGateStateIn(tx, args));
+  return prisma.$transaction(async (tx) => {
+    if (args.state === "open" && args.targetType === "quiz") {
+      const eligibility = await quizEligibilityIn(tx, args.targetId);
+      if (!eligibility.eligible) throw new QuizGateContractError(eligibility.reason!);
+    }
+    return setGateStateIn(tx, args);
+  });
 }
 
 async function sessionChildTargets(
@@ -292,6 +471,24 @@ async function bulkSetSession(
       ...children,
     ];
     for (const t of targets) {
+      if (state === "open" && t.targetType === "quiz") {
+        const eligibility = await quizEligibilityIn(tx, t.targetId);
+        if (!eligibility.eligible) {
+          // A previously opened candidate is actively returned to locked; the
+          // session and its other eligible children still open atomically.
+          await setGateStateIn(tx, { ...t, sectionId, state: "locked", actorId });
+          await tx.auditLog.create({
+            data: {
+              actorId,
+              action: "gate.open.skip-ineligible-quiz",
+              targetType: "gate:quiz",
+              targetId: t.targetId,
+              after: { sectionId, state: "locked", reason: eligibility.reason },
+            },
+          });
+          continue;
+        }
+      }
       await setGateStateIn(tx, { ...t, sectionId, state, actorId });
     }
   });
@@ -327,6 +524,10 @@ export async function grantException(args: {
   const { targetType, targetId, sectionId, userId, grantedBy } = args;
   const expiresAt = args.expiresAt ?? null;
   await prisma.$transaction(async (tx) => {
+    if (targetType === "quiz") {
+      const eligibility = await quizEligibilityIn(tx, targetId);
+      if (!eligibility.eligible) throw new QuizGateContractError(eligibility.reason!);
+    }
     await tx.gateException.upsert({
       where: { targetType_targetId_userId: { targetType, targetId, userId } },
       update: { sectionId, expiresAt, grantedBy },

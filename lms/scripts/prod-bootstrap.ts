@@ -7,8 +7,9 @@
 //
 //   DATABASE_URL=... pnpm tsx scripts/prod-bootstrap.ts <roster.csv>
 //
-// Run scripts/session2-setup.ts afterwards to configure the Session-2
-// artifacts and gate everything else.
+// Run the relevant per-session loader afterwards. Bootstrap owns only the
+// roster and missing shell pages; it never rewrites authored session content
+// or gate state.
 
 import { readFileSync } from "node:fs";
 import { PrismaClient } from "@prisma/client";
@@ -36,7 +37,19 @@ const SESSION_PAGES: { n: number; title: string; summary: string }[] = [
   { n: 10, title: "Final presentations", summary: "The capstone map, presentable to a stranger." },
 ];
 
-async function main() {
+export async function ensureMissingSessionPages(
+  db: Pick<PrismaClient, "sessionPage">,
+): Promise<void> {
+  for (const page of SESSION_PAGES) {
+    await db.sessionPage.upsert({
+      where: { sessionNo: page.n },
+      create: { sessionNo: page.n, title: page.title, summaryMd: page.summary },
+      update: {},
+    });
+  }
+}
+
+export async function main() {
   const csvPath = process.argv[2];
   if (!csvPath) throw new Error("usage: prod-bootstrap.ts <roster.csv>");
 
@@ -52,14 +65,9 @@ async function main() {
   const sectionIdByCode = new Map(sections.map((s) => [s.code, s.id]));
   console.log(`[prod] sections: ${sections.length}`);
 
-  // 2) Session pages 1–10 (content links are set by the per-session setup).
-  for (const p of SESSION_PAGES) {
-    await prisma.sessionPage.upsert({
-      where: { sessionNo: p.n },
-      create: { sessionNo: p.n, title: p.title, summaryMd: p.summary },
-      update: { title: p.title, summaryMd: p.summary },
-    });
-  }
+  // 2) Missing Session pages 1–10. Existing authored pages belong to their
+  // per-session release and must survive a roster/bootstrap rerun unchanged.
+  await ensureMissingSessionPages(prisma);
   console.log(`[prod] session pages: ${SESSION_PAGES.length}`);
 
   // 3) Staff.
@@ -128,9 +136,11 @@ async function main() {
   console.log("[prod] bootstrap complete");
 }
 
-main()
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(() => prisma.$disconnect());
+if (process.argv[1]?.replace(/\\/g, "/").endsWith("scripts/prod-bootstrap.ts")) {
+  main()
+    .catch((e) => {
+      console.error(e);
+      process.exit(1);
+    })
+    .finally(() => prisma.$disconnect());
+}

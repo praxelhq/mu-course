@@ -15,6 +15,7 @@ import {
   workflowUsefulness,
 } from "../lib/scoring/components";
 import { finalGrade, WEIGHTS } from "../lib/scoring/formula";
+import { verifiedSignOffStatus } from "../lib/scoring/assemble";
 
 // ---------------------------------------------------------------------------
 // §1 Value chain map — team score × PCI, clipped to 100 after the multiply
@@ -122,6 +123,50 @@ describe("workflowUsefulness", () => {
       pci: 1.0,
     });
     expect(r.raw).toBeNull();
+  });
+});
+
+describe("verified company sign-off", () => {
+  const signOff = {
+    status: "signed_off",
+    teamId: "team-a",
+    assignmentId: "workflow-assignment",
+    recordedBy: "instructor-1",
+    evidenceS3Key: "signoffs/team-a/verified.pdf",
+  };
+
+  it("accepts only evidenced, staff-recorded sign-off bound to the selected workflow", () => {
+    expect(
+      verifiedSignOffStatus({
+        signOff,
+        selectedAssignmentId: "workflow-assignment",
+        recorderRole: "instructor",
+      }),
+    ).toBe("signed_off");
+  });
+
+  it("fails closed for absent evidence, non-staff recorders, and assignment mismatch", () => {
+    expect(
+      verifiedSignOffStatus({
+        signOff: { ...signOff, evidenceS3Key: null },
+        selectedAssignmentId: "workflow-assignment",
+        recorderRole: "instructor",
+      }),
+    ).toBe("none");
+    expect(
+      verifiedSignOffStatus({
+        signOff,
+        selectedAssignmentId: "workflow-assignment",
+        recorderRole: "student",
+      }),
+    ).toBe("none");
+    expect(
+      verifiedSignOffStatus({
+        signOff,
+        selectedAssignmentId: "another-assignment",
+        recorderRole: "admin",
+      }),
+    ).toBe("none");
   });
 });
 

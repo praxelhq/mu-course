@@ -9,6 +9,17 @@ Dockerfile.*
 docs/build
 agent/__pycache__
 agent/.venv
+private/
+output/instructor/
+course/session-03/visualization-quiz.md
+course/session-04/06-lovable-prompt-plan-script.md
+course/session-04/12-instructor-quiz-bank.md
+course/session-05/assessment/surprise-quiz-key.md
+course/session-05/fixtures/evaluator-bundle.v1.json
+course/session-05/fixtures/expected-results.json
+course/session-05/fixtures/operations/expected-results.json
+course/session-05/fixtures/revenue/expected-results.json
+course/session-05/workflow-packs/preferred-instructor-build.md
 !Dockerfile.staging
 # The images Railway actually builds must stay IN the context — `Dockerfile.*`
 # above would otherwise hide them and the build is rejected before it starts.

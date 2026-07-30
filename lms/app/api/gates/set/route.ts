@@ -1,7 +1,12 @@
 import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { withAuth } from "@/lib/auth";
-import { bulkCloseSession, bulkOpenSession, setGateState } from "@/lib/gates";
+import {
+  bulkCloseSession,
+  bulkOpenSession,
+  QuizGateContractError,
+  setGateState,
+} from "@/lib/gates";
 
 // Instructor gate toggles (single cell + session bulk actions) for the Unlock
 // Console. Closing an assignment gate while students in that section still
@@ -65,14 +70,24 @@ export const POST = withAuth(
       const draftCount = await draftCountFor([targetId], sectionId);
       if (draftCount > 0) return Response.json({ needsConfirm: true, draftCount });
     }
-    const result = await setGateState({
-      targetType,
-      targetId,
-      sectionId,
-      state,
-      actorId: user.userId,
-    });
-    return Response.json({ ok: true, state: result.after, changed: result.changed });
+    try {
+      const result = await setGateState({
+        targetType,
+        targetId,
+        sectionId,
+        state,
+        actorId: user.userId,
+      });
+      return Response.json({ ok: true, state: result.after, changed: result.changed });
+    } catch (error) {
+      if (error instanceof QuizGateContractError) {
+        return Response.json(
+          { error: "Classify and publish this versioned quiz before arming it.", reason: error.reason },
+          { status: 409 },
+        );
+      }
+      throw error;
+    }
   },
   { role: "instructor" },
 );

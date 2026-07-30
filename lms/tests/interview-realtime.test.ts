@@ -375,9 +375,11 @@ describe.skipIf(!live)("U13 realtime interview transport (live DB, seeded)", () 
   // agent-complete + heartbeat
   // -------------------------------------------------------------------------
 
-  it("agent-complete: token-guarded; sets completed + audioS3Key and enqueues grading", async () => {
+  it("agent-complete: token-guarded; attaches the reserved exact recording version and enqueues grading", async () => {
     const id = await startRealtime(prisma, "user_s027");
     const { POST } = await import("../app/api/interview/agent-complete/route");
+    const { GET: getContext } = await import("../app/api/interview/agent-context/route");
+    const { __setS3TestOverrides } = await import("../lib/s3");
     const denied = await POST(
       agentReq("http://t/api/interview/agent-complete", null, { interviewId: id }),
     );
@@ -388,27 +390,67 @@ describe.skipIf(!live)("U13 realtime interview transport (live DB, seeded)", () 
       agentReq("http://t/api/interview/agent-complete", AGENT_TOKEN, {
         interviewId: id,
         audioS3Key: "interviews/other/room.ogg",
+        audioReservationId: "not-this-interview",
       }),
     );
     expect(badKey.status).toBe(400);
 
-    const ok = await POST(
-      agentReq("http://t/api/interview/agent-complete", AGENT_TOKEN, {
-        interviewId: id,
-        audioS3Key: `interviews/${id}/room.ogg`,
-      }),
+    const context = await getContext(
+      agentReq(
+        `http://t/api/interview/agent-context?interviewId=${id}&reserveRecording=1`,
+        AGENT_TOKEN,
+      ),
     );
-    expect(ok.status).toBe(200);
-    const iv = await prisma.interview.findUniqueOrThrow({ where: { id } });
-    expect(iv.status).toBe("completed");
-    expect(iv.audioS3Key).toBe(`interviews/${id}/room.ogg`);
-    expect(iv.completedAt).toBeInstanceOf(Date);
+    expect(context.status).toBe(200);
+    const recording = (
+      (await context.json()) as {
+        recordingReservation: { id: string; s3Key: string } | null;
+      }
+    ).recordingReservation;
+    expect(recording).not.toBeNull();
 
-    // Idempotent repeat (completeInterview's completed short-circuit).
-    const repeat = await POST(
-      agentReq("http://t/api/interview/agent-complete", AGENT_TOKEN, { interviewId: id }),
-    );
-    expect(repeat.status).toBe(200);
+    const versionId = "recording-version-1";
+    __setS3TestOverrides({
+      configured: true,
+      head: async (key) => {
+        expect(key).toBe(recording!.s3Key);
+        return {
+          contentLength: 1234,
+          contentType: "audio/ogg",
+          etag: "recording-etag-1",
+          versionId,
+        };
+      },
+    });
+    try {
+      const ok = await POST(
+        agentReq("http://t/api/interview/agent-complete", AGENT_TOKEN, {
+          interviewId: id,
+          audioS3Key: recording!.s3Key,
+          audioReservationId: recording!.id,
+        }),
+      );
+      expect(ok.status).toBe(200);
+      const iv = await prisma.interview.findUniqueOrThrow({ where: { id } });
+      expect(iv.status).toBe("completed");
+      expect(iv.audioS3Key).toBe(recording!.s3Key);
+      expect(iv.audioS3VersionId).toBe(versionId);
+      expect(iv.completedAt).toBeInstanceOf(Date);
+
+      const reservation = await prisma.generatedObjectReservation.findUniqueOrThrow({
+        where: { id: recording!.id },
+      });
+      expect(reservation.s3VersionId).toBe(versionId);
+      expect(reservation.consumedAt).toBeInstanceOf(Date);
+
+      // Idempotent repeat (completeInterview's completed short-circuit).
+      const repeat = await POST(
+        agentReq("http://t/api/interview/agent-complete", AGENT_TOKEN, { interviewId: id }),
+      );
+      expect(repeat.status).toBe(200);
+    } finally {
+      __setS3TestOverrides(null);
+    }
   });
 
   it("heartbeat: state polls refresh lastSeenAt (30s throttle); agent turns refresh it too", async () => {

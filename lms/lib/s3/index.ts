@@ -1,5 +1,17 @@
-import { GetObjectCommand, PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import {
+  DeleteObjectCommand,
+  GetObjectCommand,
+  HeadObjectCommand,
+  ListObjectVersionsCommand,
+  PutObjectCommand,
+  S3Client,
+  type S3ClientConfig,
+} from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import {
+  NodeHttpHandler,
+  type NodeHttpHandlerOptions,
+} from "@smithy/node-http-handler";
 
 // The ONLY module that imports the AWS SDK (CLAUDE.md: the app tier never
 // proxies file bytes — everything moves through presigned URLs; the single
@@ -14,6 +26,13 @@ import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 //   submissions → submissions/{userId}/{submissionId}/{filename}
 
 const MB = 1024 * 1024;
+
+/** Fail fast on an unreachable endpoint instead of inheriting the SDK's disabled timeout. */
+export const S3_CONNECTION_TIMEOUT_MS = 5_000;
+/** Bound an idle S3 socket while still allowing normal ranged reads and small worker PUTs. */
+export const S3_SOCKET_TIMEOUT_MS = 30_000;
+/** Total attempts, including the first request. Standard retry backoff remains SDK-owned. */
+export const S3_MAX_ATTEMPTS = 3;
 
 export const PUT_TTL_SECONDS = 600; // ~10 min
 export const GET_TTL_SECONDS = 300; // ~5 min
@@ -30,6 +49,8 @@ export const UPLOAD_TYPE_CAPS: Record<string, number> = {
   // documents / data
   "application/pdf": 50 * MB,
   "application/json": 25 * MB,
+  "text/json": 25 * MB,
+  "application/x-ndjson": 25 * MB,
   "application/zip": 100 * MB,
   "application/x-zip-compressed": 100 * MB,
   "application/gzip": 100 * MB,
@@ -51,6 +72,17 @@ export class S3NotConfiguredError extends Error {
   constructor() {
     super("S3 storage is not configured (missing S3_BUCKET / region env)");
     this.name = "S3NotConfiguredError";
+  }
+}
+
+/** A server-side PUT cannot be attached safely without its immutable version. */
+export class S3ObjectVersionMissingError extends Error {
+  readonly key: string;
+
+  constructor(key: string) {
+    super(`S3 did not return an immutable VersionId for ${key}`);
+    this.name = "S3ObjectVersionMissingError";
+    this.key = key;
   }
 }
 
@@ -99,6 +131,37 @@ export function keyForSubmission(userId: string, submissionId: string, filename:
   return `submissions/${userId}/${submissionId}/${sanitizeFilename(filename)}`;
 }
 
+function sanitizeSegment(value: string): string {
+  return value.replace(/[^A-Za-z0-9._-]/g, "_").replace(/\.{2,}/g, "_") || "_";
+}
+
+/** Server-derived reservation key; no path or role fragment comes from the client. */
+export function keyForReservedSubmission(args: {
+  ownerKind: "individual" | "team";
+  ownerId: string;
+  assignmentId: string;
+  assessmentVersionId: string | null;
+  version: number;
+  attempt: number;
+  fieldKey: string;
+  reservationId: string;
+  filename: string;
+}): string {
+  const contract = args.assessmentVersionId ?? "legacy";
+  return [
+    "submissions",
+    sanitizeSegment(args.ownerKind),
+    sanitizeSegment(args.ownerId),
+    sanitizeSegment(args.assignmentId),
+    sanitizeSegment(contract),
+    `v${args.version}`,
+    `attempt-${args.attempt}`,
+    sanitizeSegment(args.fieldKey),
+    sanitizeSegment(args.reservationId),
+    sanitizeFilename(args.filename),
+  ].join("/");
+}
+
 /** U8: per-team namespace for company sign-off evidence (U15 reads these). */
 export function keyForSignoff(teamId: string, filename: string): string {
   return `signoffs/${teamId}/${Date.now()}_${sanitizeFilename(filename)}`;
@@ -107,6 +170,16 @@ export function keyForSignoff(teamId: string, filename: string): string {
 /** U11: worker-captured app screenshots for the gallery App wall. */
 export function keyForScreenshot(submissionId: string): string {
   return `gallery/screenshots/${sanitizeFilename(submissionId)}.png`;
+}
+
+/** Write-once screenshot key scoped to its durable generated-object reservation. */
+export function keyForReservedScreenshot(
+  submissionId: string,
+  reservationId: string,
+  contentSha256?: string,
+): string {
+  const digest = contentSha256 ? `-${sanitizeSegment(contentSha256)}` : "";
+  return `gallery/screenshots/${sanitizeSegment(submissionId)}${digest}-${sanitizeSegment(reservationId)}.png`;
 }
 
 /**
@@ -122,6 +195,23 @@ export function keyForInterviewAudio(
 ): string {
   const safeExt = ext.replace(/[^a-z0-9]/gi, "").toLowerCase() || "mp3";
   return `interviews/${sanitizeFilename(interviewId)}/${kind}${turnNo}.${safeExt}`;
+}
+
+/** Write-once interview-turn key scoped to its durable reservation. */
+export function keyForReservedInterviewAudio(
+  interviewId: string,
+  kind: "q" | "a",
+  turnNo: number,
+  reservationId: string,
+  ext: string = "mp3",
+): string {
+  const safeExt = ext.replace(/[^a-z0-9]/gi, "").toLowerCase() || "mp3";
+  return `interviews/${sanitizeSegment(interviewId)}/${kind}${turnNo}-${sanitizeSegment(reservationId)}.${safeExt}`;
+}
+
+/** Write-once LiveKit room recording key scoped to its durable reservation. */
+export function keyForInterviewRecording(interviewId: string, reservationId: string): string {
+  return `interviews/${sanitizeSegment(interviewId)}/room-${sanitizeSegment(reservationId)}.ogg`;
 }
 
 /** File extension for an allowed interview answer content type. */
@@ -141,6 +231,9 @@ export type SignDescriptor = {
   contentType?: string;
   /** PUT only: exact byte length bound into the signature (enforces the cap). */
   contentLength?: number;
+  /** PUT only: sign `If-None-Match: *` so a reservation key is write-once. */
+  ifNoneMatch?: "*";
+  versionId?: string;
   responseContentDisposition?: string;
   expiresIn: number;
 };
@@ -149,7 +242,18 @@ export type S3TestOverrides = {
   configured?: boolean;
   sign?: (d: SignDescriptor) => string | Promise<string>;
   read?: (key: string, range: string) => Promise<Uint8Array>;
-  write?: (key: string, body: Uint8Array, contentType: string) => Promise<void>;
+  head?: (key: string) => Promise<StoredObjectMetadata>;
+  readVersion?: (key: string, versionId: string, expectedBytes: number) => Promise<Uint8Array>;
+  listVersions?: (key: string) => Promise<string[]>;
+  deleteVersion?: (
+    key: string,
+    versionId: string,
+  ) => Promise<{ verified: boolean; providerReceipt?: string | null }>;
+  write?: (
+    key: string,
+    body: Uint8Array,
+    contentType: string,
+  ) => Promise<{ versionId?: string | null; etag?: string | null } | void>;
 };
 
 let overrides: S3TestOverrides | null = null;
@@ -172,8 +276,29 @@ export function s3Configured(): boolean {
 }
 
 let client: S3Client | null = null;
+
+export type S3HttpHandlerFactory = (
+  options: NodeHttpHandlerOptions,
+) => NodeHttpHandler;
+
+/** Pure construction seam: tests inspect policy without opening a socket. */
+export function createS3ClientConfig(
+  region: string,
+  createHandler: S3HttpHandlerFactory = (options) => new NodeHttpHandler(options),
+): S3ClientConfig {
+  return {
+    region,
+    maxAttempts: S3_MAX_ATTEMPTS,
+    retryMode: "standard",
+    requestHandler: createHandler({
+      connectionTimeout: S3_CONNECTION_TIMEOUT_MS,
+      socketTimeout: S3_SOCKET_TIMEOUT_MS,
+    }),
+  };
+}
+
 function realClient(): S3Client {
-  client ??= new S3Client({ region: envRegion() });
+  client ??= new S3Client(createS3ClientConfig(envRegion()!));
   return client;
 }
 
@@ -194,10 +319,12 @@ async function sign(d: SignDescriptor): Promise<string> {
           // URL will reject any body that is not exactly this many bytes, so
           // the per-type size cap is enforced at S3, not just client-side.
           ContentLength: d.contentLength,
+          IfNoneMatch: d.ifNoneMatch,
         })
       : new GetObjectCommand({
           Bucket: bucket,
           Key: d.key,
+          VersionId: d.versionId,
           ResponseContentDisposition: d.responseContentDisposition,
         });
   return getSignedUrl(realClient(), command, { expiresIn: d.expiresIn });
@@ -218,8 +345,10 @@ export async function presignPut(args: {
   key: string;
   contentType: string;
   maxBytes: number;
+  /** Prevent a still-live presign from creating orphan object versions. */
+  oneTime?: boolean;
 }): Promise<PresignedPut> {
-  const { key, contentType, maxBytes } = args;
+  const { key, contentType, maxBytes, oneTime = false } = args;
   const cap = UPLOAD_TYPE_CAPS[contentType.toLowerCase()];
   if (!cap) {
     throw new UploadRejectedError(415, `Content type not allowed: ${contentType}`);
@@ -239,20 +368,164 @@ export async function presignPut(args: {
     key,
     contentType,
     contentLength: maxBytes,
+    ...(oneTime ? { ifNoneMatch: "*" as const } : {}),
     expiresIn: PUT_TTL_SECONDS,
   });
-  return { url, key, headers: { "Content-Type": contentType } };
+  return {
+    url,
+    key,
+    headers: {
+      "Content-Type": contentType,
+      "Content-Length": String(maxBytes),
+      ...(oneTime ? { "If-None-Match": "*" } : {}),
+    },
+  };
+}
+
+export type StoredObjectMetadata = {
+  contentLength: number;
+  contentType: string;
+  etag: string;
+  versionId: string;
+};
+
+/** Metadata used by the upload commit step; versioned buckets are mandatory. */
+export async function headObject(key: string): Promise<StoredObjectMetadata> {
+  requireConfigured();
+  if (overrides?.head) return overrides.head(key);
+  const result = await realClient().send(new HeadObjectCommand({ Bucket: envBucket()!, Key: key }));
+  if (
+    typeof result.ContentLength !== "number" ||
+    !result.ContentType ||
+    !result.ETag ||
+    !result.VersionId
+  ) {
+    throw new Error("Uploaded object is missing required immutable metadata.");
+  }
+  return {
+    contentLength: result.ContentLength,
+    contentType: result.ContentType.toLowerCase(),
+    etag: result.ETag.replace(/^\"|\"$/g, ""),
+    versionId: result.VersionId,
+  };
+}
+
+/** Read exactly the HEAD-observed immutable version for local inspection/hash. */
+export async function readObjectVersion(
+  key: string,
+  versionId: string,
+  expectedBytes: number,
+): Promise<Uint8Array> {
+  requireConfigured();
+  if (!Number.isInteger(expectedBytes) || expectedBytes <= 0) {
+    throw new Error("Expected object size must be a positive integer.");
+  }
+  if (overrides?.readVersion) return overrides.readVersion(key, versionId, expectedBytes);
+  const result = await realClient().send(
+    new GetObjectCommand({
+      Bucket: envBucket()!,
+      Key: key,
+      VersionId: versionId,
+      Range: `bytes=0-${expectedBytes - 1}`,
+    }),
+  );
+  if (!result.Body) throw new Error("Uploaded object body is unavailable.");
+  const bytes = await result.Body.transformToByteArray();
+  if (bytes.byteLength !== expectedBytes) {
+    throw new Error("Uploaded object length changed during commit inspection.");
+  }
+  return bytes;
+}
+
+/** List stored object versions for exactly one key (never prefix siblings). */
+export async function listObjectVersionIds(key: string): Promise<string[]> {
+  requireConfigured();
+  if (overrides?.listVersions) {
+    return [...new Set(await overrides.listVersions(key))].sort();
+  }
+
+  const versionIds = new Set<string>();
+  let keyMarker: string | undefined;
+  let versionIdMarker: string | undefined;
+  let pages = 0;
+  do {
+    pages += 1;
+    if (pages > 20) throw new Error("S3 version listing exceeded the retention page limit");
+    const result = await realClient().send(
+      new ListObjectVersionsCommand({
+        Bucket: envBucket()!,
+        Prefix: key,
+        KeyMarker: keyMarker,
+        VersionIdMarker: versionIdMarker,
+      }),
+    );
+    for (const version of result.Versions ?? []) {
+      if (version.Key === key && version.VersionId) versionIds.add(version.VersionId);
+      if (versionIds.size > 1_000) {
+        throw new Error("S3 key exceeded the retention version limit");
+      }
+    }
+    if (!result.IsTruncated) break;
+    keyMarker = result.NextKeyMarker;
+    versionIdMarker = result.NextVersionIdMarker;
+    if (!keyMarker) throw new Error("S3 version listing was truncated without a continuation key");
+  } while (true);
+  return [...versionIds].sort();
+}
+
+function isMissingObjectVersion(error: unknown): boolean {
+  if (!error || typeof error !== "object") return false;
+  const candidate = error as {
+    name?: string;
+    $metadata?: { httpStatusCode?: number };
+  };
+  return (
+    candidate.$metadata?.httpStatusCode === 404 ||
+    candidate.name === "NoSuchKey" ||
+    candidate.name === "NoSuchVersion" ||
+    candidate.name === "NotFound"
+  );
+}
+
+/** Delete one immutable object version, then prove that exact version is gone. */
+export async function deleteObjectVersion(
+  key: string,
+  versionId: string,
+): Promise<{ verified: boolean; providerReceipt: string | null }> {
+  requireConfigured();
+  if (!key || !versionId) throw new Error("Exact S3 key and VersionId are required");
+  if (overrides?.deleteVersion) {
+    const result = await overrides.deleteVersion(key, versionId);
+    return {
+      verified: result.verified,
+      providerReceipt: result.providerReceipt ?? null,
+    };
+  }
+
+  const deleted = await realClient().send(
+    new DeleteObjectCommand({ Bucket: envBucket()!, Key: key, VersionId: versionId }),
+  );
+  try {
+    await realClient().send(
+      new HeadObjectCommand({ Bucket: envBucket()!, Key: key, VersionId: versionId }),
+    );
+    return { verified: false, providerReceipt: deleted.$metadata.requestId ?? null };
+  } catch (error) {
+    if (!isMissingObjectVersion(error)) throw error;
+    return { verified: true, providerReceipt: deleted.$metadata.requestId ?? null };
+  }
 }
 
 /** Presigned GET (short TTL). downloadName forces an attachment disposition. */
 export async function presignGet(
   key: string,
-  opts: { downloadName?: string } = {},
+  opts: { downloadName?: string; versionId?: string } = {},
 ): Promise<string> {
   requireConfigured();
   return sign({
     command: "get",
     key,
+    versionId: opts.versionId,
     responseContentDisposition: opts.downloadName
       ? `attachment; filename="${sanitizeFilename(opts.downloadName)}"`
       : undefined,
@@ -265,16 +538,37 @@ export async function presignGet(
  * capture) — the app tier never proxies file bytes (CLAUDE.md invariant);
  * browser uploads keep using presignPut.
  */
+export type PutObjectReceipt = {
+  versionId: string;
+  etag: string | null;
+};
+
+function normalizePutReceipt(
+  key: string,
+  result: { versionId?: string | null; etag?: string | null } | void,
+): PutObjectReceipt {
+  if (!result) throw new S3ObjectVersionMissingError(key);
+  const versionId = result.versionId?.trim();
+  if (!versionId) throw new S3ObjectVersionMissingError(key);
+  return {
+    versionId,
+    etag: result.etag?.replace(/^\"|\"$/g, "") ?? null,
+  };
+}
+
 export async function putObject(
   key: string,
   body: Uint8Array,
   contentType: string,
-): Promise<void> {
+): Promise<PutObjectReceipt> {
   requireConfigured();
-  if (overrides?.write) return overrides.write(key, body, contentType);
-  await realClient().send(
+  if (overrides?.write) {
+    return normalizePutReceipt(key, await overrides.write(key, body, contentType));
+  }
+  const result = await realClient().send(
     new PutObjectCommand({ Bucket: envBucket()!, Key: key, Body: body, ContentType: contentType }),
   );
+  return normalizePutReceipt(key, { versionId: result.VersionId, etag: result.ETag });
 }
 
 /**

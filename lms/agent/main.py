@@ -23,8 +23,12 @@ Run: python main.py start   (subcommands come from the livekit-agents CLI)
 import asyncio
 import logging
 import os
+from pathlib import Path
+import re
 import sys
+import threading
 import time
+from typing import Callable, Mapping
 
 logger = logging.getLogger("praxel-forge-agent")
 
@@ -49,6 +53,120 @@ CLOSING_LINE = (
     "That's everything from me — thank you for talking through your work. "
     "Your interview is complete; you can leave the room whenever you're ready."
 )
+
+GIT_SHA_RE = re.compile(r"^[0-9a-f]{40}$", re.IGNORECASE)
+
+
+def load_runtime_identity(
+    source_path: Path = Path("/app/BUILD_SOURCE_SHA"),
+    env: Mapping[str, str] = os.environ,
+) -> dict:
+    """Load identity baked into the image plus Railway immutable runtime ids.
+
+    Mutable labels such as RELEASE_SHA and runtime RAILWAY_GIT_COMMIT_SHA are
+    deliberately ignored; the source SHA must come from the build artifact.
+    """
+    source_sha = "unknown"
+    try:
+        candidate = source_path.read_text(encoding="utf-8").strip()
+        if GIT_SHA_RE.fullmatch(candidate):
+            source_sha = candidate.lower()
+    except OSError:
+        pass
+
+    deployment_id = env.get("RAILWAY_DEPLOYMENT_ID", "").strip() or None
+    image_digest = env.get("RAILWAY_SNAPSHOT_ID", "").strip() or None
+    instance_id = env.get("RAILWAY_REPLICA_ID", "").strip() or None
+    verified = bool(
+        GIT_SHA_RE.fullmatch(source_sha)
+        and deployment_id
+        and image_digest
+        and instance_id
+    )
+    return {
+        "sourceSha": source_sha,
+        "deploymentId": deployment_id,
+        "imageDigest": image_digest,
+        "instanceId": instance_id,
+        "verified": verified,
+    }
+
+
+def _heartbeat_interval() -> int:
+    try:
+        configured = int(os.environ.get("AGENT_HEARTBEAT_INTERVAL_SECONDS", "30"))
+    except ValueError:
+        configured = 30
+    return min(300, max(10, configured))
+
+
+class HeartbeatReporter:
+    """Periodic agent identity proof through the token-guarded LMS endpoint."""
+
+    def __init__(
+        self,
+        identity: dict,
+        post: Callable | None = None,
+    ) -> None:
+        if post is None:
+            import httpx
+
+            post = httpx.post
+        self._post = post
+        self._identity = identity
+        self._interval = _heartbeat_interval()
+        self._stop = threading.Event()
+        self._thread: threading.Thread | None = None
+
+    def report_once(self) -> bool:
+        if not self._identity.get("verified"):
+            logger.error("agent heartbeat identity is not verified")
+            return False
+        base = os.environ.get("APP_URL", "").rstrip("/")
+        token = os.environ.get("AGENT_INTERNAL_TOKEN", "")
+        if not base or not token:
+            logger.error("agent heartbeat endpoint is not configured")
+            return False
+        payload = {
+            "sourceSha": self._identity["sourceSha"],
+            "deploymentId": self._identity["deploymentId"],
+            "imageDigest": self._identity["imageDigest"],
+            "instanceId": self._identity["instanceId"],
+            "intervalSeconds": self._interval,
+        }
+        try:
+            response = self._post(
+                f"{base}/api/internal/service-heartbeat",
+                json=payload,
+                headers={"X-Agent-Token": token},
+                timeout=10.0,
+            )
+            if 200 <= response.status_code < 300:
+                return True
+            logger.warning("agent heartbeat rejected with status %s", response.status_code)
+        except Exception as err:  # noqa: BLE001 — background network proof
+            logger.warning("agent heartbeat failed: %s", type(err).__name__)
+        return False
+
+    def _run(self) -> None:
+        while not self._stop.is_set():
+            self.report_once()
+            self._stop.wait(self._interval)
+
+    def start(self) -> None:
+        if self._thread and self._thread.is_alive():
+            return
+        self._thread = threading.Thread(
+            target=self._run,
+            name="forge-agent-heartbeat",
+            daemon=True,
+        )
+        self._thread.start()
+
+    def stop(self) -> None:
+        self._stop.set()
+        if self._thread:
+            self._thread.join(timeout=2.0)
 
 
 def check_env() -> None:
@@ -102,10 +220,13 @@ class LmsClient:
         )
         self._pending: list[tuple[str, dict]] = []
 
-    async def get_context(self, interview_id: str) -> dict:
+    async def get_context(self, interview_id: str, reserve_recording: bool = False) -> dict:
         res = await self._client.get(
             f"{self._base}/api/interview/agent-context",
-            params={"interviewId": interview_id},
+            params={
+                "interviewId": interview_id,
+                "reserveRecording": "1" if reserve_recording else "0",
+            },
         )
         res.raise_for_status()
         return res.json()
@@ -135,10 +256,16 @@ class LmsClient:
             logger.error("buffering unsent %s turn for %s", speaker, interview_id)
             self._pending.append(("/api/interview/agent-turn", body))
 
-    async def post_complete(self, interview_id: str, audio_s3_key: str | None) -> None:
+    async def post_complete(
+        self,
+        interview_id: str,
+        audio_s3_key: str | None,
+        audio_reservation_id: str | None,
+    ) -> None:
         body: dict = {"interviewId": interview_id}
-        if audio_s3_key:
+        if audio_s3_key and audio_reservation_id:
             body["audioS3Key"] = audio_s3_key
+            body["audioReservationId"] = audio_reservation_id
         if not await self._post("/api/interview/agent-complete", body):
             self._pending.append(("/api/interview/agent-complete", body))
 
@@ -160,14 +287,14 @@ class Egress:
     """Room-composite audio-only Egress to S3. Strictly best-effort: any
     failure logs and the interview continues without a room recording."""
 
-    def __init__(self, room_name: str, interview_id: str) -> None:
+    def __init__(self, room_name: str, s3_key: str | None) -> None:
         self.room_name = room_name
-        self.s3_key = f"interviews/{interview_id}/room.ogg"
+        self.s3_key = s3_key
         self.egress_id: str | None = None
         self._lkapi = None
 
     async def start(self) -> None:
-        if not egress_configured():
+        if not egress_configured() or not self.s3_key:
             logger.info("egress env not set — no room recording for %s", self.room_name)
             return
         try:
@@ -253,7 +380,10 @@ async def entrypoint(ctx) -> None:
     ctx.add_shutdown_callback(lms.aclose)
 
     try:
-        context = await lms.get_context(interview_id)
+        context = await lms.get_context(
+            interview_id,
+            reserve_recording=egress_configured(),
+        )
     except Exception as err:  # noqa: BLE001
         logger.error("could not fetch agent-context for %s: %s", interview_id, err)
         ctx.shutdown(reason="agent-context unavailable")
@@ -266,7 +396,18 @@ async def entrypoint(ctx) -> None:
         ctx.shutdown(reason="interview not live/realtime")
         return
 
-    egress = Egress(room_name, interview_id)
+    recording_reservation = context.get("recordingReservation")
+    recording_key = (
+        recording_reservation.get("s3Key")
+        if isinstance(recording_reservation, dict)
+        else None
+    )
+    recording_reservation_id = (
+        recording_reservation.get("id")
+        if isinstance(recording_reservation, dict)
+        else None
+    )
+    egress = Egress(room_name, recording_key)
     await egress.start()
 
     started_at = time.monotonic()
@@ -341,7 +482,7 @@ async def entrypoint(ctx) -> None:
         pass
 
     audio_key = await egress.stop()
-    await lms.post_complete(interview_id, audio_key)
+    await lms.post_complete(interview_id, audio_key, recording_reservation_id)
     await lms.flush()
     try:
         await session.aclose()
@@ -361,6 +502,16 @@ async def request_fnc(req) -> None:
 def main() -> None:
     logging.basicConfig(level=logging.INFO)
     check_env()
+
+    identity = load_runtime_identity()
+    if os.environ.get("RAILWAY_ENVIRONMENT_ID") and not identity["verified"]:
+        print(
+            "[praxel-forge-agent] Railway artifact identity is incomplete; exiting.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+    heartbeat = HeartbeatReporter(identity)
+    heartbeat.start()
 
     # Imported after the env check so a misconfigured container prints the
     # missing-env message instead of an SDK traceback.

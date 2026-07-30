@@ -7,7 +7,12 @@ import type { Prisma } from "@prisma/client";
 import { TEST_LOGIN_COOKIE } from "../lib/auth/test-login";
 import { main as runSeed } from "../prisma/seed";
 import { getGradeLine } from "../lib/scoring/assemble";
-import { gatherCrawlUrls, parseValidations } from "../lib/portfolio";
+import {
+  ARTIFACT_CHECKLIST_STATE_COPY,
+  gatherCrawlUrls,
+  parseValidations,
+  resolveArtifactChecklistState,
+} from "../lib/portfolio";
 import { crawlPortfolioForUser } from "../worker/jobs/portfolio-crawl";
 import type { LookupFn } from "../lib/net/safe-fetch";
 
@@ -39,6 +44,109 @@ async function dbReachable(): Promise<boolean> {
 const live = await dbReachable();
 
 const publicLookup: LookupFn = async () => [{ address: "93.184.216.34", family: 4 }];
+
+describe("versioned portfolio public-link completeness", () => {
+  const policy = {
+    include: true,
+    slot: "data-memo",
+    requiredPublicLink: { label: "Session 3 public-safe data memo" },
+  } as const;
+  const liveCrawl = {
+    checkedAt: "2026-07-30T12:00:00.000Z",
+    links: [{ url: "https://example.com/s3-memo", ok: true, status: 200 }],
+  };
+
+  it("keeps policies without an explicit link requirement backwards-compatible", () => {
+    expect(
+      resolveArtifactChecklistState(
+        true,
+        { include: true, slot: "app" },
+        [],
+        null,
+      ),
+    ).toBe("artifact-complete");
+    expect(resolveArtifactChecklistState(false, null, [], null)).toBe("artifact-missing");
+  });
+
+  it("requires the artifact even when the correct public link is already live", () => {
+    expect(
+      resolveArtifactChecklistState(
+        false,
+        policy,
+        [{ label: policy.requiredPublicLink.label, url: "https://example.com/s3-memo" }],
+        liveCrawl,
+      ),
+    ).toBe("artifact-missing");
+  });
+
+  it("reports a missing link or an otherwise-live link with the wrong label", () => {
+    expect(resolveArtifactChecklistState(true, policy, [], liveCrawl)).toBe(
+      "public-link-missing",
+    );
+    expect(
+      resolveArtifactChecklistState(
+        true,
+        policy,
+        [{ label: "Data memo", url: "https://example.com/s3-memo" }],
+        liveCrawl,
+      ),
+    ).toBe("public-link-missing");
+  });
+
+  it("distinguishes invalid or missing links from pending or failed crawl evidence", () => {
+    expect(
+      resolveArtifactChecklistState(
+        true,
+        policy,
+        [{ label: policy.requiredPublicLink.label, url: "http://example.com/s3-memo" }],
+        {
+          checkedAt: liveCrawl.checkedAt,
+          links: [{ url: "http://example.com/s3-memo", ok: true, status: 200 }],
+        },
+      ),
+    ).toBe("public-link-missing");
+    expect(
+      resolveArtifactChecklistState(
+        true,
+        policy,
+        [{ label: policy.requiredPublicLink.label, url: "https://example.com/s3-memo" }],
+        null,
+      ),
+    ).toBe("public-link-unverified");
+    expect(
+      resolveArtifactChecklistState(
+        true,
+        policy,
+        [{ label: policy.requiredPublicLink.label, url: "https://example.com/s3-memo" }],
+        {
+          checkedAt: liveCrawl.checkedAt,
+          links: [{ url: "https://example.com/s3-memo", ok: false, status: 404 }],
+        },
+      ),
+    ).toBe("public-link-unverified");
+  });
+
+  it("accepts the exact label only when the public HTTPS URL passed the crawl", () => {
+    expect(
+      resolveArtifactChecklistState(
+        true,
+        policy,
+        [{ label: policy.requiredPublicLink.label, url: "https://example.com/s3-memo" }],
+        liveCrawl,
+      ),
+    ).toBe("complete");
+  });
+
+  it("provides distinct learner copy while retaining legacy row labels", () => {
+    expect(ARTIFACT_CHECKLIST_STATE_COPY).toEqual({
+      "artifact-missing": "Not yet",
+      "artifact-complete": "Graded",
+      "public-link-missing": "Public link needed",
+      "public-link-unverified": "Link check pending or failed",
+      complete: "Complete",
+    });
+  });
+});
 
 describe.skipIf(!live)("U16 portfolio (live DB)", () => {
   let prisma: import("@prisma/client").PrismaClient;

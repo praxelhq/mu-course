@@ -1,6 +1,11 @@
 import type { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { parseSubmissionSchema } from "@/lib/submission-schema";
+import {
+  parseExportPolicy,
+  parsePortfolioPolicy,
+  type PortfolioPolicy,
+} from "@/lib/assessment-policies";
 
 // The portfolio module: one place that interprets PortfolioEntry's
 // three JSON fields (links / validations / lastCrawl) and gathers the URL set
@@ -51,6 +56,7 @@ export async function hasGradedArtifact(
   const count = await prisma.submission.count({
     where: {
       ...(teamBased ? { teamId: owner.teamId! } : { userId: owner.userId }),
+      assessmentVersionId: null,
       assignment: { assignmentType: { slug } },
       status: { in: ["graded", "finalised"] },
     },
@@ -120,6 +126,61 @@ export function parseLastCrawl(json: Prisma.JsonValue | null | undefined): LastC
   return { checkedAt: r.checkedAt, links };
 }
 
+function canonicalPublicHttpsUrl(value: string): string | null {
+  try {
+    const url = new URL(value);
+    if (url.protocol !== "https:" || !url.hostname || url.username || url.password) return null;
+    return url.href;
+  } catch {
+    return null;
+  }
+}
+
+export type ArtifactChecklistState =
+  | "artifact-missing"
+  | "artifact-complete"
+  | "public-link-missing"
+  | "public-link-unverified"
+  | "complete";
+
+export const ARTIFACT_CHECKLIST_STATE_COPY: Record<ArtifactChecklistState, string> = {
+  "artifact-missing": "Not yet",
+  "artifact-complete": "Graded",
+  "public-link-missing": "Public link needed",
+  "public-link-unverified": "Link check pending or failed",
+  complete: "Complete",
+};
+
+/** Resolve artifact presence plus an optional exact-label, live-HTTPS gate. */
+export function resolveArtifactChecklistState(
+  artifactPresent: boolean,
+  policy: PortfolioPolicy | null,
+  links: readonly PortfolioLink[],
+  lastCrawl: LastCrawl | null,
+): ArtifactChecklistState {
+  if (!artifactPresent) return "artifact-missing";
+  const requirement = policy?.requiredPublicLink;
+  if (!requirement) return "artifact-complete";
+
+  const matchingUrls = links.flatMap((link) => {
+    if (link.label.trim() !== requirement.label) return [];
+    const canonical = canonicalPublicHttpsUrl(link.url);
+    return canonical ? [canonical] : [];
+  });
+  if (matchingUrls.length === 0) return "public-link-missing";
+  if (!lastCrawl) return "public-link-unverified";
+
+  const requiredUrls = new Set(matchingUrls);
+  const hasLiveUrl = lastCrawl.links.some((link) => {
+    if (!link.ok) return false;
+    const canonical = canonicalPublicHttpsUrl(link.url);
+    return canonical !== null && requiredUrls.has(canonical);
+  });
+  return hasLiveUrl
+    ? "complete"
+    : "public-link-unverified";
+}
+
 // ---------------------------------------------------------------------------
 // Crawl URL gathering
 // ---------------------------------------------------------------------------
@@ -138,7 +199,13 @@ export async function gatherCrawlUrls(userId: string): Promise<string[]> {
       where: { userId, status: { not: "draft" } },
       select: {
         fields: true,
-        assignment: { select: { assignmentType: { select: { submissionSchema: true } } } },
+        assessmentVersionId: true,
+        assessmentVersion: { select: { exportPolicy: true } },
+        assignment: {
+          select: {
+            assignmentType: { select: { submissionSchema: true } },
+          },
+        },
       },
       orderBy: { createdAt: "asc" },
     }),
@@ -149,15 +216,31 @@ export async function gatherCrawlUrls(userId: string): Promise<string[]> {
     if (/^https?:\/\//.test(link.url)) urls.add(link.url);
   }
   for (const sub of submissions) {
-    const schema = parseSubmissionSchema(sub.assignment.assignmentType.submissionSchema);
-    if (!schema || !sub.fields || typeof sub.fields !== "object" || Array.isArray(sub.fields)) {
+    if (!sub.fields || typeof sub.fields !== "object" || Array.isArray(sub.fields)) {
       continue;
     }
     const fields = sub.fields as Record<string, unknown>;
-    for (const def of schema.fields) {
-      if (def.kind !== "link") continue;
-      const value = fields[def.key];
-      if (typeof value === "string" && /^https?:\/\//.test(value)) urls.add(value);
+    if (sub.assessmentVersionId) {
+      const exportPolicy = parseExportPolicy(sub.assessmentVersion?.exportPolicy);
+      if (!exportPolicy?.praxy.enabled) continue;
+      for (const key of exportPolicy.praxy.fieldKeys) {
+        const value = fields[key];
+        if (
+          typeof value === "string" &&
+          /^https:\/\//.test(value) &&
+          !/https:\/\/[^/]*trustmrr\.com\b/i.test(value)
+        ) {
+          urls.add(value);
+        }
+      }
+    } else {
+      const schema = parseSubmissionSchema(sub.assignment.assignmentType.submissionSchema);
+      if (!schema) continue;
+      for (const def of schema.fields) {
+        if (def.kind !== "link") continue;
+        const value = fields[def.key];
+        if (typeof value === "string" && /^https?:\/\//.test(value)) urls.add(value);
+      }
     }
   }
   return [...urls];
@@ -173,27 +256,146 @@ export type ArtifactChecklistRow = {
   teamBased: boolean;
   /** A graded/finalised submission exists for the owner (user or team). */
   present: boolean;
+  completionState: ArtifactChecklistState;
 };
+
+type PortfolioSlotDefinition =
+  | {
+      kind: "legacy";
+      slot: string;
+      slug: string;
+      title: string;
+      ownerKind: "individual" | "team";
+    }
+  | {
+      kind: "versioned";
+      slot: string;
+      assignmentId: string;
+      title: string;
+      ownerKind: "individual" | "team";
+      policy: PortfolioPolicy;
+    };
+
+export function mergePortfolioSlotDefinitions(
+  legacy: readonly PortfolioSlotDefinition[],
+  versioned: readonly PortfolioSlotDefinition[],
+): PortfolioSlotDefinition[] {
+  const slots = new Map<string, PortfolioSlotDefinition>();
+  for (const definition of legacy) slots.set(definition.slot, definition);
+  for (const definition of versioned) slots.set(definition.slot, definition);
+  return [...slots.values()];
+}
+
+async function getPortfolioSlotDefinitions(): Promise<PortfolioSlotDefinition[]> {
+  const [legacyTypes, assignments] = await Promise.all([
+    prisma.assignmentType.findMany({
+      where: { slug: { in: [...PORTFOLIO_REQUIRED_SLUGS] } },
+      select: { slug: true, title: true },
+    }),
+    prisma.assignment.findMany({
+      where: {
+        contractMode: "versioned",
+        activeAssessmentVersionId: { not: null },
+        activeAssessmentVersion: { purpose: "graded" },
+      },
+      select: {
+        id: true,
+        title: true,
+        activeAssessmentVersion: {
+          select: { ownerKind: true, purpose: true, portfolioPolicy: true },
+        },
+      },
+    }),
+  ]);
+  const legacyTitle = new Map(legacyTypes.map((type) => [type.slug, type.title]));
+  const legacy: PortfolioSlotDefinition[] = PORTFOLIO_REQUIRED_SLUGS.map((slug) => ({
+    kind: "legacy",
+    slot: slug,
+    slug,
+    title: legacyTitle.get(slug) ?? slug,
+    ownerKind: isTeamPortfolioSlug(slug) ? "team" : "individual",
+  }));
+  const versioned: PortfolioSlotDefinition[] = assignments.flatMap((assignment) => {
+    const active = assignment.activeAssessmentVersion;
+    const policy = parsePortfolioPolicy(active?.portfolioPolicy);
+    if (!active || active.purpose !== "graded" || !policy?.include) return [];
+    return [
+      {
+        kind: "versioned" as const,
+        slot: policy.slot,
+        assignmentId: assignment.id,
+        title: assignment.title,
+        ownerKind: active.ownerKind,
+        policy,
+      },
+    ];
+  });
+  return mergePortfolioSlotDefinitions(legacy, versioned);
+}
+
+async function hasVersionedArtifact(
+  owner: { userId: string; teamId: string | null },
+  definition: Extract<PortfolioSlotDefinition, { kind: "versioned" }>,
+): Promise<boolean> {
+  if (definition.ownerKind === "team" && !owner.teamId) return false;
+  const submissions = await prisma.submission.findMany({
+    where: {
+      assignmentId: definition.assignmentId,
+      ...(definition.ownerKind === "team"
+        ? { ownerKind: "team", ownerId: owner.teamId! }
+        : { ownerKind: "individual", ownerId: owner.userId }),
+      status: { in: ["graded", "finalised"] },
+      assessmentResult: { scoreable: true },
+      assessmentVersion: { purpose: "graded" },
+    },
+    select: {
+      assessmentVersion: { select: { portfolioPolicy: true } },
+    },
+  });
+  return submissions.some((submission) => {
+    const policy = parsePortfolioPolicy(submission.assessmentVersion?.portfolioPolicy);
+    return policy?.include === true && policy.slot === definition.slot;
+  });
+}
 
 /** The §7 completeness checklist — same owner rule as the scorer. */
 export async function getArtifactChecklist(userId: string): Promise<ArtifactChecklistRow[]> {
-  const user = await prisma.user.findUnique({
-    where: { id: userId },
-    select: { teamId: true },
-  });
-  const types = await prisma.assignmentType.findMany({
-    where: { slug: { in: [...PORTFOLIO_REQUIRED_SLUGS] } },
-    select: { slug: true, title: true },
-  });
-  const titleBySlug = new Map(types.map((t) => [t.slug, t.title]));
-
+  const [user, entry, definitions] = await Promise.all([
+    prisma.user.findUnique({
+      where: { id: userId },
+      select: { teamId: true },
+    }),
+    prisma.portfolioEntry.findUnique({
+      where: { userId },
+      select: { links: true, lastCrawl: true },
+    }),
+    getPortfolioSlotDefinitions(),
+  ]);
+  const owner = { userId, teamId: user?.teamId ?? null };
+  const externalLinks = parseExternalLinks(entry?.links);
+  const lastCrawl = parseLastCrawl(entry?.lastCrawl);
   return Promise.all(
-    PORTFOLIO_REQUIRED_SLUGS.map(async (slug) => ({
-      slug,
-      title: titleBySlug.get(slug) ?? slug,
-      teamBased: isTeamPortfolioSlug(slug),
-      present: await hasGradedArtifact({ userId, teamId: user?.teamId ?? null }, slug),
-    })),
+    definitions.map(async (definition) => {
+      const artifactPresent =
+        definition.kind === "legacy"
+          ? await hasGradedArtifact(owner, definition.slug)
+          : (await hasVersionedArtifact(owner, definition)) ||
+            ((PORTFOLIO_REQUIRED_SLUGS as readonly string[]).includes(definition.slot) &&
+              (await hasGradedArtifact(owner, definition.slot)));
+      const completionState = resolveArtifactChecklistState(
+        artifactPresent,
+        definition.kind === "versioned" ? definition.policy : null,
+        externalLinks,
+        lastCrawl,
+      );
+      return {
+        slug: definition.slot,
+        title: definition.title,
+        teamBased: definition.ownerKind === "team",
+        present: completionState === "artifact-complete" || completionState === "complete",
+        completionState,
+      };
+    }),
   );
 }
 

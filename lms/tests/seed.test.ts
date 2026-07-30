@@ -8,7 +8,12 @@ import {
   parseSubmissionSchema,
   validateSubmissionFields,
 } from "../lib/submission-schema";
-import { main as runSeed } from "../prisma/seed";
+import {
+  assertDemoSeedResetAllowed,
+  DEMO_SEED_TABLES,
+  main as runSeed,
+} from "../prisma/seed";
+import { Prisma } from "@prisma/client";
 
 // ---------------------------------------------------------------------------
 // Pure parts (no DB)
@@ -98,6 +103,49 @@ describe("submission-schema validator", () => {
         rogue: "y",
       }).ok,
     ).toBe(false);
+  });
+});
+
+describe("demo seed reset boundary", () => {
+  it("lists every Prisma application table but never migration history", () => {
+    const modelTables = Prisma.dmmf.datamodel.models
+      .map((model) => model.dbName ?? model.name)
+      .sort();
+    expect([...DEMO_SEED_TABLES].sort()).toEqual(modelTables);
+    expect(DEMO_SEED_TABLES).not.toContain("_prisma_migrations");
+  });
+
+  it("hard-blocks Railway/production and requires explicit authority off loopback", () => {
+    expect(() =>
+      assertDemoSeedResetAllowed({
+        DATABASE_URL: "postgresql://test:test@127.0.0.1:5432/demo",
+      }),
+    ).not.toThrow();
+    expect(() =>
+      assertDemoSeedResetAllowed({
+        DATABASE_URL: "postgresql://test:test@db.internal:5432/demo",
+      }),
+    ).toThrow(/ALLOW_DEMO_SEED_RESET/);
+    expect(() =>
+      assertDemoSeedResetAllowed({
+        DATABASE_URL: "postgresql://test:test@db.internal:5432/demo",
+        ALLOW_DEMO_SEED_RESET: "true",
+      }),
+    ).not.toThrow();
+    expect(() =>
+      assertDemoSeedResetAllowed({
+        DATABASE_URL: "postgresql://test:test@127.0.0.1:5432/demo",
+        NODE_ENV: "production",
+        ALLOW_DEMO_SEED_RESET: "true",
+      }),
+    ).toThrow(/disabled/);
+    expect(() =>
+      assertDemoSeedResetAllowed({
+        DATABASE_URL: "postgresql://test:test@127.0.0.1:5432/demo",
+        RAILWAY_ENVIRONMENT_NAME: "staging",
+        ALLOW_DEMO_SEED_RESET: "true",
+      }),
+    ).toThrow(/disabled/);
   });
 });
 

@@ -4,7 +4,9 @@ import {
   isPrivateAddress,
   safeFetch,
   safeFetchBytes,
+  safeFetchResource,
   type LookupFn,
+  type SafeFetchPinnedFetch,
 } from "../lib/net/safe-fetch";
 
 // U8 — safe-fetch policy unit tests (KTD19). All network access is DI'd:
@@ -169,6 +171,123 @@ describe("safeFetch policy", () => {
       }),
     ).rejects.toThrow();
   });
+
+  it("times out a DNS lookup before any connection is attempted", async () => {
+    const hangingLookup: LookupFn = () => new Promise(() => {});
+    let connected = false;
+    const pinnedFetchImpl: SafeFetchPinnedFetch = () => {
+      connected = true;
+      return Promise.resolve(new Response("unexpected"));
+    };
+    await expect(
+      safeFetch("https://slow-dns.example.com/", {
+        lookup: hangingLookup,
+        pinnedFetchImpl,
+        timeoutMs: 25,
+      }),
+    ).rejects.toMatchObject({ name: "AbortError" });
+    expect(connected).toBe(false);
+  });
+
+  it("pins the validated answer and never performs a connection-time re-resolution", async () => {
+    let lookupCalls = 0;
+    const rebindingLookup: LookupFn = () => {
+      lookupCalls += 1;
+      return Promise.resolve([
+        lookupCalls === 1
+          ? { address: "93.184.216.34", family: 4 }
+          : { address: "169.254.169.254", family: 4 },
+      ]);
+    };
+    const targets: Array<{ url: string; hostname: string; address: string }> = [];
+    const pinnedFetchImpl: SafeFetchPinnedFetch = (url, _init, target) => {
+      targets.push({ url, hostname: target.hostname, address: target.address });
+      return Promise.resolve(new Response("ok", { status: 200 }));
+    };
+
+    const result = await safeFetch("https://good.example.com/original", {
+      lookup: rebindingLookup,
+      pinnedFetchImpl,
+    });
+
+    expect(result.status).toBe(200);
+    expect(lookupCalls).toBe(1);
+    expect(targets).toEqual([
+      {
+        url: "https://good.example.com/original",
+        hostname: "good.example.com",
+        address: "93.184.216.34",
+      },
+    ]);
+  });
+
+  it("creates a separately validated pin for every public redirect hop", async () => {
+    const lookups: string[] = [];
+    const lookup: LookupFn = (hostname) => {
+      lookups.push(hostname);
+      return Promise.resolve([
+        {
+          address: hostname === "first.example.com" ? "93.184.216.34" : "1.1.1.1",
+          family: 4,
+        },
+      ]);
+    };
+    const pins: string[] = [];
+    const pinnedFetchImpl: SafeFetchPinnedFetch = (url, _init, target) => {
+      pins.push(`${target.hostname}=${target.address}`);
+      if (url === "https://first.example.com/") {
+        return Promise.resolve(
+          new Response(null, {
+            status: 302,
+            headers: { location: "https://second.example.com/final" },
+          }),
+        );
+      }
+      return Promise.resolve(new Response("done", { status: 200 }));
+    };
+
+    const result = await safeFetch("https://first.example.com/", {
+      lookup,
+      pinnedFetchImpl,
+    });
+
+    expect(result.finalUrl).toBe("https://second.example.com/final");
+    expect(lookups).toEqual(["first.example.com", "second.example.com"]);
+    expect(pins).toEqual([
+      "first.example.com=93.184.216.34",
+      "second.example.com=1.1.1.1",
+    ]);
+  });
+
+  it("blocks credentials, write methods and credential-bearing request headers", async () => {
+    await expect(
+      safeFetch("https://user:secret@good.example.com/", {
+        lookup: publicLookup,
+        fetchImpl: okFetch,
+      }),
+    ).rejects.toThrow(SafeFetchBlockedError);
+    await expect(
+      safeFetch("https://good.example.com/", {
+        method: "POST",
+        lookup: publicLookup,
+        fetchImpl: okFetch,
+      }),
+    ).rejects.toThrow(SafeFetchBlockedError);
+    await expect(
+      safeFetch("https://good.example.com/", {
+        headers: { authorization: "Bearer secret" },
+        lookup: publicLookup,
+        fetchImpl: okFetch,
+      }),
+    ).rejects.toThrow(SafeFetchBlockedError);
+    await expect(
+      safeFetch("https://good.example.com/", {
+        headers: { cookie: "session=secret" },
+        lookup: publicLookup,
+        fetchImpl: okFetch,
+      }),
+    ).rejects.toThrow(SafeFetchBlockedError);
+  });
 });
 
 describe("isPrivateAddress — named ranges (#17)", () => {
@@ -191,6 +310,32 @@ describe("isPrivateAddress — named ranges (#17)", () => {
     // Public embedded v4 (129.64.10.1) → allowed: the hex branch is exercised
     // and correctly returns false, not a blanket reject.
     expect(isPrivateAddress("::ffff:8140:0a01")).toBe(false);
+  });
+
+  it("rejects IPv6 multicast, documentation, tunnel and non-global ranges", () => {
+    for (const ip of [
+      "ff02::1",
+      "2001:db8::1",
+      "2002:0a00:1::",
+      "3ffe::1",
+      "3fff::1",
+      "64:ff9b::a9fe:a9fe",
+    ]) {
+      expect(isPrivateAddress(ip), ip).toBe(true);
+    }
+    expect(isPrivateAddress("2606:4700:4700::1111")).toBe(false);
+  });
+
+  it("rejects documentation and platform-only IPv4 addresses", () => {
+    for (const ip of [
+      "192.0.2.1",
+      "198.51.100.2",
+      "203.0.113.3",
+      "198.18.0.1",
+      "168.63.129.16",
+    ]) {
+      expect(isPrivateAddress(ip), ip).toBe(true);
+    }
   });
 });
 
@@ -253,5 +398,105 @@ describe("safeFetchBytes — byte-cap truncation (#16)", () => {
     expect(out.truncated).toBe(false);
     expect(out.body.length).toBe(4);
     expect([...out.body]).toEqual([1, 2, 3, 4]);
+  });
+
+  it("detects an extra chunk after a first chunk exactly fills the cap", async () => {
+    const body = new Uint8Array([1, 2, 3, 4, 5]);
+    const out = await safeFetchBytes("https://good.example.com/extra", {
+      lookup: publicLookup,
+      fetchImpl: streamingFetch(body, 4),
+      maxBytes: 4,
+    });
+    expect(out.truncated).toBe(true);
+    expect([...out.body]).toEqual([1, 2, 3, 4]);
+  });
+});
+
+describe("safeFetchResource — route.fulfill contract", () => {
+  it("returns complete bytes and only a safe response-header subset", async () => {
+    const fetchImpl: typeof fetch = (_input, init) => {
+      expect(init?.headers).toMatchObject({
+        accept: "text/html",
+        "accept-encoding": "identity",
+      });
+      return Promise.resolve(
+        new Response("<h1>ok</h1>", {
+          status: 200,
+          headers: {
+            "access-control-allow-origin": "*",
+            "cache-control": "public, max-age=60",
+            connection: "close",
+            "content-encoding": "gzip",
+            "content-length": "11",
+            "content-security-policy": "default-src 'none'",
+            "content-type": "text/html; charset=utf-8",
+            location: "https://internal.invalid/",
+            "set-cookie": "session=secret",
+          },
+        }),
+      );
+    };
+
+    const out = await safeFetchResource("https://good.example.com/page", {
+      lookup: publicLookup,
+      fetchImpl,
+      headers: { accept: "text/html" },
+      maxBytes: 1024,
+      allowedContentTypes: ["text/html"],
+    });
+
+    expect(new TextDecoder().decode(out.body)).toBe("<h1>ok</h1>");
+    expect(out.contentType).toBe("text/html; charset=utf-8");
+    expect(out.headers).toEqual({
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=60",
+      "content-type": "text/html; charset=utf-8",
+      "x-content-type-options": "nosniff",
+    });
+  });
+
+  it("fails closed on a disallowed or missing content type", async () => {
+    const executableFetch: typeof fetch = () =>
+      Promise.resolve(
+        new Response("MZ", {
+          status: 200,
+          headers: { "content-type": "application/x-msdownload" },
+        }),
+      );
+    await expect(
+      safeFetchResource("https://good.example.com/file", {
+        lookup: publicLookup,
+        fetchImpl: executableFetch,
+        allowedContentTypes: ["text/*", "image/*"],
+      }),
+    ).rejects.toThrow(SafeFetchBlockedError);
+
+    const missingTypeFetch: typeof fetch = () =>
+      Promise.resolve(new Response(new TextEncoder().encode("unknown"), { status: 200 }));
+    await expect(
+      safeFetchResource("https://good.example.com/file", {
+        lookup: publicLookup,
+        fetchImpl: missingTypeFetch,
+      }),
+    ).rejects.toThrow(SafeFetchBlockedError);
+  });
+
+  it("throws instead of handing route.fulfill a partial oversized body", async () => {
+    const bytes = new Uint8Array([0, 1, 2, 3, 4]);
+    const fetchImpl: typeof fetch = () =>
+      Promise.resolve(
+        new Response(bytes, {
+          status: 200,
+          headers: { "content-type": "image/png" },
+        }),
+      );
+    await expect(
+      safeFetchResource("https://good.example.com/large.png", {
+        lookup: publicLookup,
+        fetchImpl,
+        maxBytes: 4,
+        allowedContentTypes: ["image/*"],
+      }),
+    ).rejects.toThrow("Response exceeds 4 bytes");
   });
 });

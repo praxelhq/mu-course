@@ -5,6 +5,8 @@ import { s3Configured } from "@/lib/s3";
 import { Eyebrow } from "@/components/ui";
 import { MatrixTable } from "./matrix-table";
 import { SignoffPanel } from "./signoff-panel";
+import { WorkflowSelectionPanel } from "./workflow-selection-panel";
+import { listInstructorWorkflowCandidates } from "@/lib/assessment-projections";
 
 // Instructor section matrix: tabs A–H, 60 students × assignments,
 // latest-version status chips from ONE batched query (lib/matrix), CSV
@@ -24,7 +26,10 @@ export default async function MatrixPage({
   searchParams: Promise<{ section?: string }>;
 }) {
   const { section: requested } = await searchParams;
-  const sections = await prisma.section.findMany({ orderBy: { code: "asc" } });
+  const [sections, workflowCandidates] = await Promise.all([
+    prisma.section.findMany({ orderBy: { code: "asc" } }),
+    listInstructorWorkflowCandidates(),
+  ]);
   const active =
     sections.find((s) => s.code === (requested ?? "A")) ?? sections[0];
   if (!active) {
@@ -63,6 +68,8 @@ export default async function MatrixPage({
       </div>
 
       <MatrixTable matrix={matrix} />
+
+      <WorkflowSelectionPanel candidates={workflowCandidates} />
 
       <SignoffPanel
         teams={matrix.teams}

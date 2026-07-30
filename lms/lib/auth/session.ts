@@ -18,6 +18,7 @@ export type SessionUserRow = {
   role: Role;
   sectionId: string | null;
   teamId: string | null;
+  flaggedForDeletion: boolean;
 };
 
 export type SessionDeps = {
@@ -59,7 +60,7 @@ export async function resolveSessionUser(deps: SessionDeps): Promise<SessionUser
     const testUserId = await deps.getTestUserId();
     if (testUserId) {
       const row = await deps.db.findUserById(testUserId);
-      if (row) return toSessionUser(row);
+      if (row && !row.flaggedForDeletion) return toSessionUser(row);
       return null;
     }
   }
@@ -68,12 +69,12 @@ export async function resolveSessionUser(deps: SessionDeps): Promise<SessionUser
   if (!clerk) return null;
 
   const byClerkId = await deps.db.findUserByClerkId(clerk.clerkUserId);
-  if (byClerkId) return toSessionUser(byClerkId);
+  if (byClerkId) return byClerkId.flaggedForDeletion ? null : toSessionUser(byClerkId);
 
   const email = await deps.getClerkEmail(clerk.clerkUserId);
   if (!email) return null;
   const byEmail = await deps.db.findUserByEmail(email);
-  if (!byEmail) return null;
+  if (!byEmail || byEmail.flaggedForDeletion) return null;
   await deps.db.linkClerkId(byEmail.id, clerk.clerkUserId);
   return toSessionUser(byEmail);
 }

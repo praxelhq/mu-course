@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/db";
+import { reserveInterviewRecording } from "@/lib/interview/audio-storage";
 import { agentAuthResponse } from "@/lib/interview/realtime";
 
 // GET /api/interview/agent-context?interviewId=: the Python agent reads
@@ -11,7 +12,8 @@ export async function GET(req: Request): Promise<Response> {
   const denied = agentAuthResponse(req);
   if (denied) return denied;
 
-  const interviewId = new URL(req.url).searchParams.get("interviewId");
+  const params = new URL(req.url).searchParams;
+  const interviewId = params.get("interviewId");
   if (!interviewId) return Response.json({ error: "Missing interviewId" }, { status: 400 });
 
   const interview = await prisma.interview.findUnique({
@@ -24,6 +26,12 @@ export async function GET(req: Request): Promise<Response> {
   const transcript = interview.turns
     .filter((t) => t.turnNo > 0)
     .map((t) => ({ turnNo: t.turnNo, speaker: t.speaker, text: t.text }));
+  const recordingReservation =
+    params.get("reserveRecording") === "1" &&
+    interview.status === "live" &&
+    interview.transport === "realtime"
+      ? await reserveInterviewRecording(interviewId)
+      : null;
 
   return Response.json({
     interviewId,
@@ -31,5 +39,8 @@ export async function GET(req: Request): Promise<Response> {
     transport: interview.transport,
     systemPrompt,
     transcript,
+    recordingReservation: recordingReservation
+      ? { id: recordingReservation.id, s3Key: recordingReservation.s3Key }
+      : null,
   });
 }

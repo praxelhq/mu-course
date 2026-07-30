@@ -19,6 +19,13 @@ export const POST = withAuth<{ params: Promise<{ id: string }> }>(async (req, { 
       return Response.json({ status: "ok", result: outcome.result });
     case "duplicate":
       return Response.json({ status: "duplicate", result: outcome.result }, { status: 409 });
+    case "received":
+      return Response.json({ status: "ok", receipt: outcome.receipt });
+    case "duplicate_received":
+      return Response.json(
+        { status: "duplicate", receipt: outcome.receipt },
+        { status: 409 },
+      );
     case "invalid":
       return Response.json({ status: "invalid", error: outcome.message }, { status: 422 });
     case "closed":

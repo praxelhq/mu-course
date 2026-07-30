@@ -14,6 +14,8 @@
 /coverage
 /test-results/
 /playwright-report/
+.pytest_cache/
+.ruff_cache/
 
 # next.js
 /.next/
@@ -22,9 +24,30 @@
 # production
 /build
 
+# private course datasets and generated answer keys
+/private/course-data/
+/private/evaluator/
+
+# evaluator-only release inputs. These files may exist on an instructor's
+# secure release workstation, but never in the public Git repository or a
+# Railway image. Public learner packages and transparent rubrics remain
+# tracked; exact keys, expected outputs, and reveal scripts do not.
+/output/instructor/
+/course/session-03/visualization-quiz.md
+/course/session-04/06-lovable-prompt-plan-script.md
+/course/session-04/12-instructor-quiz-bank.md
+/course/session-05/assessment/surprise-quiz-key.md
+/course/session-05/fixtures/evaluator-bundle.v1.json
+/course/session-05/fixtures/expected-results.json
+/course/session-05/fixtures/operations/expected-results.json
+/course/session-05/fixtures/revenue/expected-results.json
+/course/session-05/workflow-packs/preferred-instructor-build.md
+
 # misc
 .DS_Store
 *.pem
+__pycache__/
+*.py[cod]
 
 # debug
 npm-debug.log*

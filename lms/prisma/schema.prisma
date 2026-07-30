@@ -5,7 +5,7 @@
 // Migrations are forward-only.
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
   // Pin the deploy targets explicitly: `native` alone misdetects the OpenSSL
   // version on the node:22-slim (Debian bookworm, OpenSSL 3.0) base, so the
   // standalone runtime cannot locate a matching query engine. Cover the
@@ -54,37 +54,126 @@ enum GateState {
   closed
 }
 
-model User {
-  id                 String    @id @default(cuid())
-  email              String    @unique
-  name               String
-  role               Role      @default(student)
-  sectionId          String?
-  section            Section?  @relation(fields: [sectionId], references: [id])
-  teamId             String?
-  team               Team?     @relation(fields: [teamId], references: [id])
-  clerkUserId        String?   @unique
-  avatarUrl          String?
-  flaggedForDeletion Boolean   @default(false)
-  createdAt          DateTime  @default(now())
+enum ContractMode {
+  legacy
+  versioned
+}
 
-  submissions        Submission[]
-  interviews         Interview[]
-  quizAttempts       QuizAttempt[]
-  reviewsGiven       PeerReview[]  @relation("Reviewer")
-  reviewsReceived    PeerReview[]  @relation("Reviewee")
-  notifications      Notification[]
-  portfolioEntry     PortfolioEntry?
-  votesCast          Vote[]        @relation("Voter")
+enum OwnerKind {
+  individual
+  team
+}
+
+enum AssessmentPurpose {
+  graded
+  formative
+}
+
+enum AssessmentResultStatus {
+  pending
+  claimed
+  deterministic_complete
+  provider_pending
+  completed
+  repair_required
+  failed
+  dead_lettered
+}
+
+enum ResubmissionGrantKind {
+  improvement
+  repair
+}
+
+enum EvidenceScanState {
+  pending
+  clean
+  quarantined
+  deleted
+}
+
+enum GeneratedObjectPurpose {
+  gallery_screenshot
+  publication_preview
+  interview_recording
+  interview_turn_audio
+}
+
+enum GradeAppealStatus {
+  open
+  resolved
+  withdrawn
+}
+
+enum GradeHoldKind {
+  low_confidence
+  flag
+  outlier
+  repair
+  appeal
+}
+
+enum GradeHoldStatus {
+  open
+  resolved
+}
+
+enum PublicationReviewState {
+  pending
+  approved
+  withheld
+  revoked
+}
+
+enum TeamNominationStatus {
+  pending
+  accepted
+  rejected
+  withdrawn
+}
+
+enum QuizClassification {
+  diagnostic
+  formative
+  summative
+}
+
+enum QuizAnswerMode {
+  legacy_index
+  stable_id
+}
+
+model User {
+  id                 String   @id @default(cuid())
+  email              String   @unique
+  name               String
+  role               Role     @default(student)
+  sectionId          String?
+  section            Section? @relation(fields: [sectionId], references: [id])
+  teamId             String?
+  team               Team?    @relation(fields: [teamId], references: [id])
+  clerkUserId        String?  @unique
+  avatarUrl          String?
+  flaggedForDeletion Boolean  @default(false)
+  createdAt          DateTime @default(now())
+
+  submissions     Submission[]
+  interviews      Interview[]
+  quizAttempts    QuizAttempt[]
+  reviewsGiven    PeerReview[]    @relation("Reviewer")
+  reviewsReceived PeerReview[]    @relation("Reviewee")
+  notifications   Notification[]
+  portfolioEntry  PortfolioEntry?
+  votesCast       Vote[]          @relation("Voter")
 
   @@index([sectionId])
   @@index([teamId])
 }
 
 model Section {
-  id    String @id @default(cuid())
-  code  String @unique // A–H
-  name  String
+  id   String @id @default(cuid())
+  code String @unique // A–H
+  name String
 
   users            User[]
   teams            Team[]
@@ -99,9 +188,11 @@ model Team {
   name       String
   sectorName String
 
-  members     User[]
-  submissions Submission[]
-  signOff     SignOff?
+  members             User[]
+  submissions         Submission[]
+  signOff             SignOff?
+  workflowSelections  TeamWorkflowSelection[]
+  workflowNominations TeamWorkflowNomination[]
 
   @@index([sectionId])
 }
@@ -124,48 +215,87 @@ model AssignmentType {
 }
 
 model Assignment {
-  id               String         @id @default(cuid())
-  assignmentTypeId String
-  assignmentType   AssignmentType @relation(fields: [assignmentTypeId], references: [id])
-  title            String
-  brief            String
-  sessionNo        Int?
-  dueAt            DateTime?
-  weightBucket     String?
-  sectionIds       String[]
+  id                        String             @id @default(cuid())
+  assignmentTypeId          String
+  assignmentType            AssignmentType     @relation(fields: [assignmentTypeId], references: [id])
+  title                     String
+  brief                     String
+  sessionNo                 Int?
+  dueAt                     DateTime?
+  weightBucket              String?
+  sectionIds                String[]
+  // Explicit compatibility boundary. Existing assignments remain legacy;
+  // redesigned assignments fail closed unless an active immutable version is
+  // available when the first draft or upload reservation is created.
+  contractMode              ContractMode       @default(legacy)
+  activeAssessmentVersionId String?
+  activeAssessmentVersion   AssessmentVersion? @relation("ActiveAssessmentVersion", fields: [activeAssessmentVersionId], references: [id], onDelete: SetNull)
 
-  submissions Submission[]
-  signOffs    SignOff[]
+  submissions         Submission[]
+  signOffs            SignOff[]
+  assessmentVersions  AssessmentVersion[]      @relation("AssessmentVersions")
+  resubmissionGrants  ResubmissionGrant[]
+  uploadReservations  UploadReservation[]
+  workflowSelections  TeamWorkflowSelection[]
+  workflowNominations TeamWorkflowNomination[]
 
   @@index([assignmentTypeId])
+  @@index([activeAssessmentVersionId])
 }
 
 model Submission {
-  id           String           @id @default(cuid())
-  assignmentId String
-  assignment   Assignment       @relation(fields: [assignmentId], references: [id])
-  userId       String
-  user         User             @relation(fields: [userId], references: [id])
-  teamId       String?
-  team         Team?            @relation(fields: [teamId], references: [id])
-  status       SubmissionStatus @default(draft)
-  submittedAt  DateTime?
-  fields       Json
-  files        String[]
-  version      Int              @default(1)
-  contentHash  String?
+  id                  String             @id @default(cuid())
+  assignmentId        String
+  assignment          Assignment         @relation(fields: [assignmentId], references: [id])
+  userId              String
+  user                User               @relation(fields: [userId], references: [id])
+  teamId              String?
+  team                Team?              @relation(fields: [teamId], references: [id])
+  status              SubmissionStatus   @default(draft)
+  submittedAt         DateTime?
+  fields              Json
+  files               String[]
+  // `version` is the learner-visible V1/V2 identity. Repairs increment
+  // `attempt` without inventing a learner-visible V3.
+  version             Int                @default(1)
+  attempt             Int                @default(1)
+  assessmentVersionId String?
+  assessmentVersion   AssessmentVersion? @relation(fields: [assessmentVersionId], references: [id], onDelete: Restrict)
+  // Canonical ownership is frozen from the bound AssessmentVersion. Nullable
+  // only for legacy rows created before controlled versioning.
+  ownerKind           OwnerKind?
+  ownerId             String?
+  // Exact one-use lane selected when this draft was created. Null only for
+  // the initial attempt and pre-versioning legacy rows.
+  resubmissionGrantId String?            @unique
+  resubmissionGrant   ResubmissionGrant? @relation("GrantBoundSubmission", fields: [resubmissionGrantId], references: [id], onDelete: NoAction)
+  contentHash         String?
   // U9: Gemini text-embedding vector over the concatenated text fields,
   // used for near-duplicate detection. Empty when embeddings are disabled.
-  embedding    Float[]          @default([])
-  createdAt    DateTime         @default(now())
+  embedding           Float[]            @default([])
+  createdAt           DateTime           @default(now())
+  updatedAt           DateTime           @default(now()) @updatedAt
 
-  grades      Grade[]
-  galleryItem GalleryItem?
-  votes       Vote[]
+  grades                      Grade[]
+  galleryItem                 GalleryItem?
+  votes                       Vote[]
+  assessmentResult            AssessmentResult?
+  uploadReservations          UploadReservation[]
+  generatedObjectReservations GeneratedObjectReservation[]
+  evidence                    SubmissionEvidence[]
+  publicationDecision         PublicationDecision?
+  workflowSelections          TeamWorkflowSelection[]
+  workflowNominations         TeamWorkflowNomination[]
+  consumedGrant               ResubmissionGrant?           @relation("GrantConsumedSubmission")
+  triggeredGrants             ResubmissionGrant[]          @relation("GrantSourceSubmission")
+  gradeHolds                  GradeHold[]
 
+  @@unique([assignmentId, assessmentVersionId, ownerKind, ownerId, version, attempt], map: "Submission_canonical_owner_version_attempt_key")
   @@index([assignmentId])
   @@index([userId])
   @@index([assignmentId, userId, version])
+  @@index([assessmentVersionId])
+  @@index([ownerKind, ownerId, assignmentId])
 }
 
 model Grade {
@@ -181,8 +311,11 @@ model Grade {
   provisional    Boolean    @default(true)
   overriddenBy   String?
   overrideReason String?
-  promptLog      Json? // full prompt + response for audit
+  promptLog      Json? // allowlisted provider metadata only; never prompts, evidence, or raw responses
   createdAt      DateTime   @default(now())
+
+  appeals GradeAppeal[]
+  holds   GradeHold[]
 
   @@index([submissionId])
 }
@@ -195,6 +328,7 @@ model Interview {
   status            InterviewStatus @default(pending)
   transport         String?
   audioS3Key        String?
+  audioS3VersionId  String?
   rubricScores      Json?
   confidence        Float?
   escalationReason  String?
@@ -206,21 +340,23 @@ model Interview {
   // posts; the ~30-room concurrency guard only counts rooms seen recently.
   lastSeenAt        DateTime?
 
-  turns InterviewTurn[]
+  turns                       InterviewTurn[]
+  generatedObjectReservations GeneratedObjectReservation[]
 
   @@index([userId])
 }
 
 model InterviewTurn {
-  id          String    @id @default(cuid())
-  interviewId String
-  interview   Interview @relation(fields: [interviewId], references: [id])
-  turnNo      Int
-  speaker     String
-  text        String
-  audioS3Key  String?
-  startedAt   DateTime
-  meta        Json?
+  id               String    @id @default(cuid())
+  interviewId      String
+  interview        Interview @relation(fields: [interviewId], references: [id])
+  turnNo           Int
+  speaker          String
+  text             String
+  audioS3Key       String?
+  audioS3VersionId String?
+  startedAt        DateTime
+  meta             Json?
 
   @@unique([interviewId, turnNo])
 }
@@ -229,11 +365,11 @@ model InterviewTurn {
 // interview needs no grant; any further startInterview consumes exactly one
 // unused grant (usedByInterviewId set transactionally) or is rejected 409.
 model InterviewRetake {
-  id                 String   @id @default(cuid())
-  userId             String
-  grantedBy          String
-  usedByInterviewId  String?
-  createdAt          DateTime @default(now())
+  id                String   @id @default(cuid())
+  userId            String
+  grantedBy         String
+  usedByInterviewId String?
+  createdAt         DateTime @default(now())
 
   @@index([userId])
 }
@@ -250,30 +386,44 @@ model InterviewWindow {
 }
 
 model Quiz {
-  id           String   @id @default(cuid())
-  sessionNo    Int
-  title        String
-  questions    Json
-  sectionIds   String[]
-  isDiagnostic Boolean  @default(false)
+  id                        String             @id @default(cuid())
+  sessionNo                 Int
+  title                     String
+  questions                 Json
+  sectionIds                String[]
+  isDiagnostic              Boolean            @default(false)
+  contractMode              ContractMode       @default(legacy)
+  contractVersion           Int                @default(1)
+  classification            QuizClassification @default(summative)
+  countsTowardBestOf        Boolean            @default(true)
+  classificationFinalizedAt DateTime?
+  classifiedBy              String?
+  feedbackReleaseAt         DateTime?
+  // `stable_id` questions use item/option IDs in both `questions` and attempt
+  // answers. `legacy_index` preserves the existing shuffled-index engine.
+  answerMode                QuizAnswerMode     @default(legacy_index)
+  contentHash               String?
+  publishedAt               DateTime?
 
   attempts QuizAttempt[]
 }
 
 model QuizAttempt {
-  id          String   @id @default(cuid())
-  quizId      String
-  quiz        Quiz     @relation(fields: [quizId], references: [id])
-  userId      String
-  user        User     @relation(fields: [userId], references: [id])
-  answers     Json
-  scorePct    Float
-  submittedAt DateTime @default(now())
+  id                  String         @id @default(cuid())
+  quizId              String
+  quiz                Quiz           @relation(fields: [quizId], references: [id])
+  userId              String
+  user                User           @relation(fields: [userId], references: [id])
+  answers             Json
+  quizContractVersion Int            @default(1)
+  answerMode          QuizAnswerMode @default(legacy_index)
+  scorePct            Float
+  submittedAt         DateTime       @default(now())
 
-  @@index([userId])
   // One attempt per student per quiz — the submit path relies on this for
   // idempotency (double-submit returns the existing result, no pre-check race).
   @@unique([quizId, userId])
+  @@index([userId])
 }
 
 model PeerReview {
@@ -290,12 +440,13 @@ model PeerReview {
 }
 
 model GalleryItem {
-  id              String     @id @default(cuid())
-  submissionId    String     @unique
-  submission      Submission @relation(fields: [submissionId], references: [id])
-  featured        Boolean    @default(false)
-  caption         String?
-  screenshotS3Key String?
+  id                    String     @id @default(cuid())
+  submissionId          String     @unique
+  submission            Submission @relation(fields: [submissionId], references: [id])
+  featured              Boolean    @default(false)
+  caption               String?
+  screenshotS3Key       String?
+  screenshotS3VersionId String?
 }
 
 // One upvote by one student on one gallery submission. Section-scoping (a
@@ -426,10 +577,472 @@ model SignOff {
   updatedAt     DateTime    @updatedAt
 }
 
+// ---------------------------------------------------------------------------
+// Sessions 3–5 immutable assessment, evidence, revision and release contract
+// ---------------------------------------------------------------------------
+
+model RetentionPolicy {
+  id                    String   @id @default(cuid())
+  classKey              String   @unique
+  objectClass           String
+  expiresAfterDays      Int?
+  deletionAuthority     String
+  legalHoldBehavior     String
+  s3CleanupRequired     Boolean  @default(false)
+  databaseCleanupPolicy String
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  datasetReleases    DatasetRelease[]
+  assessmentVersions AssessmentVersion[]
+  deletionReceipts   DeletionReceipt[]
+}
+
+model RetentionHold {
+  id         String    @id @default(cuid())
+  targetType String
+  targetId   String
+  reason     String
+  createdBy  String
+  createdAt  DateTime  @default(now())
+  releasedBy String?
+  releasedAt DateTime?
+
+  @@index([targetType, targetId, releasedAt])
+}
+
+model DeletionReceipt {
+  id                 String           @id @default(cuid())
+  idempotencyKey     String           @unique
+  retentionPolicyId  String?
+  retentionPolicy    RetentionPolicy? @relation(fields: [retentionPolicyId], references: [id], onDelete: SetNull)
+  targetType         String
+  targetId           String
+  s3Key              String?
+  s3VersionId        String?
+  databaseTable      String?
+  databaseRecordId   String?
+  requestedBy        String
+  deletedAt          DateTime         @default(now())
+  s3VerifiedAt       DateTime?
+  databaseVerifiedAt DateTime?
+  details            Json?
+
+  @@index([targetType, targetId])
+  @@index([retentionPolicyId])
+}
+
+model DatasetRelease {
+  id                   String           @id @default(cuid())
+  slug                 String
+  version              Int
+  title                String
+  lineage              Json
+  sourceDate           DateTime?
+  audience             String
+  processingRules      Json
+  approvedAiProcessors String[]
+  manifest             Json
+  checksumSha256       String
+  retentionPolicyId    String?
+  retentionPolicy      RetentionPolicy? @relation(fields: [retentionPolicyId], references: [id], onDelete: Restrict)
+  supersedesId         String?
+  supersedes           DatasetRelease?  @relation("DatasetReleaseLineage", fields: [supersedesId], references: [id], onDelete: Restrict)
+  supersededBy         DatasetRelease[] @relation("DatasetReleaseLineage")
+  publishedAt          DateTime?
+  createdBy            String
+  createdAt            DateTime         @default(now())
+  updatedAt            DateTime         @updatedAt
+
+  files              DatasetReleaseFile[]
+  assessmentVersions AssessmentVersion[]
+
+  @@unique([slug, version])
+  @@index([retentionPolicyId])
+}
+
+model DatasetReleaseFile {
+  id               String         @id @default(cuid())
+  datasetReleaseId String
+  datasetRelease   DatasetRelease @relation(fields: [datasetReleaseId], references: [id], onDelete: Cascade)
+  role             String
+  s3Key            String
+  sha256           String
+  sizeBytes        Int
+  mimeType         String
+  createdAt        DateTime       @default(now())
+
+  @@unique([datasetReleaseId, role, s3Key])
+  @@index([datasetReleaseId, role])
+}
+
+model AssessmentVersion {
+  id                    String              @id @default(cuid())
+  assignmentId          String
+  assignment            Assignment          @relation("AssessmentVersions", fields: [assignmentId], references: [id], onDelete: Restrict)
+  version               Int
+  ownerKind             OwnerKind
+  purpose               AssessmentPurpose
+  publicSchema          Json
+  rubric                Json
+  materialManifest      Json
+  checksumSha256        String
+  scoringPolicy         Json
+  portfolioPolicy       Json
+  publicationPolicy     Json
+  exportPolicy          Json
+  previewPolicy         Json
+  datasetReleaseId      String?
+  datasetRelease        DatasetRelease?     @relation(fields: [datasetReleaseId], references: [id], onDelete: Restrict)
+  retentionPolicyId     String?
+  retentionPolicy       RetentionPolicy?    @relation(fields: [retentionPolicyId], references: [id], onDelete: Restrict)
+  improvementAllowed    Boolean             @default(false)
+  improvementWindowDays Int                 @default(10)
+  supersedesId          String?
+  supersedes            AssessmentVersion?  @relation("AssessmentVersionLineage", fields: [supersedesId], references: [id], onDelete: Restrict)
+  supersededBy          AssessmentVersion[] @relation("AssessmentVersionLineage")
+  publishedAt           DateTime?
+  createdBy             String
+  createdAt             DateTime            @default(now())
+  updatedAt             DateTime            @updatedAt
+
+  evaluatorConfig      AssessmentEvaluatorConfig?
+  submissions          Submission[]
+  assessmentResults    AssessmentResult[]
+  cohortFreezes        AssessmentCohortFreeze[]
+  uploadReservations   UploadReservation[]
+  resubmissionGrants   ResubmissionGrant[]
+  activeForAssignments Assignment[]               @relation("ActiveAssessmentVersion")
+
+  @@unique([assignmentId, version])
+  @@index([datasetReleaseId])
+  @@index([retentionPolicyId])
+}
+
+// Kept in a separate server-only relation so ordinary learner projections can
+// include AssessmentVersion without ever selecting answer keys or anchors.
+model AssessmentEvaluatorConfig {
+  id                  String            @id @default(cuid())
+  assessmentVersionId String            @unique
+  assessmentVersion   AssessmentVersion @relation(fields: [assessmentVersionId], references: [id], onDelete: Cascade)
+  config              Json
+  answerKey           Json?
+  anchors             Json?
+  normalization       Json?
+  checksumSha256      String
+  createdAt           DateTime          @default(now())
+}
+
+model AssessmentResult {
+  id                  String                 @id @default(cuid())
+  evaluationKey       String                 @unique
+  submissionId        String                 @unique
+  submission          Submission             @relation(fields: [submissionId], references: [id], onDelete: Restrict)
+  assessmentVersionId String?
+  assessmentVersion   AssessmentVersion?     @relation(fields: [assessmentVersionId], references: [id], onDelete: Restrict)
+  ownerKind           OwnerKind?
+  ownerId             String?
+  version             Int
+  attempt             Int                    @default(1)
+  purpose             AssessmentPurpose
+  status              AssessmentResultStatus @default(pending)
+  claimToken          String?
+  claimedAt           DateTime?
+  deterministicResult Json?
+  providerResult      Json?
+  structuredFeedback  Json?
+  citations           Json?
+  assessmentHash      String?
+  datasetHash         String?
+  evaluatorHash       String?
+  retryCount          Int                    @default(0)
+  deadLetteredAt      DateTime?
+  errorCode           String?
+  scoreable           Boolean                @default(false)
+  publishable         Boolean                @default(false)
+  completedAt         DateTime?
+  createdAt           DateTime               @default(now())
+  updatedAt           DateTime               @updatedAt
+
+  gradeHolds GradeHold[]
+
+  @@index([ownerKind, ownerId, version, attempt])
+  @@index([assessmentVersionId, status])
+}
+
+model UploadReservation {
+  id                  String             @id @default(cuid())
+  submissionId        String
+  submission          Submission         @relation(fields: [submissionId], references: [id], onDelete: Restrict)
+  assignmentId        String
+  assignment          Assignment         @relation(fields: [assignmentId], references: [id], onDelete: Restrict)
+  assessmentVersionId String?
+  assessmentVersion   AssessmentVersion? @relation(fields: [assessmentVersionId], references: [id], onDelete: Restrict)
+  ownerKind           OwnerKind
+  ownerId             String
+  createdById         String
+  fieldKey            String
+  fileRole            String
+  filename            String
+  s3Key               String             @unique
+  // Persist before any lifecycle delete so cleanup can target and retry the
+  // exact immutable object version even if the receipt transaction retries.
+  s3VersionId         String?
+  declaredContentType String
+  declaredBytes       Int
+  expiresAt           DateTime
+  consumedAt          DateTime?
+  cancelledAt         DateTime?
+  createdAt           DateTime           @default(now())
+
+  evidence SubmissionEvidence?
+
+  @@index([submissionId, fieldKey])
+  @@index([ownerKind, ownerId, assignmentId, createdAt])
+  @@index([expiresAt, consumedAt, cancelledAt])
+}
+
+// Durable intent for every learner-owned object written outside the ordinary
+// submission upload flow. The parent row is the source of the fenced learner
+// identity; targetId identifies the row that will receive the exact key/version.
+model GeneratedObjectReservation {
+  id                  String                 @id @default(cuid())
+  purpose             GeneratedObjectPurpose
+  submissionId        String?
+  submission          Submission?            @relation(fields: [submissionId], references: [id], onDelete: Restrict)
+  interviewId         String?
+  interview           Interview?             @relation(fields: [interviewId], references: [id], onDelete: Restrict)
+  targetId            String?
+  s3Key               String                 @unique
+  declaredContentType String?
+  declaredBytes       Int?
+  s3VersionId         String?
+  expiresAt           DateTime
+  consumedAt          DateTime?
+  cancelledAt         DateTime?
+  createdAt           DateTime               @default(now())
+  updatedAt           DateTime               @updatedAt
+
+  @@index([submissionId, purpose, createdAt])
+  @@index([interviewId, purpose, createdAt])
+  @@index([purpose, targetId])
+  @@index([expiresAt, consumedAt, cancelledAt])
+}
+
+model SubmissionEvidence {
+  id                   String               @id @default(cuid())
+  submissionId         String
+  submission           Submission           @relation(fields: [submissionId], references: [id], onDelete: Restrict)
+  reservationId        String               @unique
+  reservation          UploadReservation    @relation(fields: [reservationId], references: [id], onDelete: Restrict)
+  fieldKey             String
+  fileRole             String
+  s3Key                String
+  s3VersionId          String
+  etag                 String
+  sha256               String
+  byteCount            Int
+  declaredContentType  String
+  inspectedMimeType    String
+  roleParserResult     Json?
+  scanState            EvidenceScanState
+  quarantineReasonCode String?
+  committedAt          DateTime             @default(now())
+  replacesEvidenceId   String?
+  replacesEvidence     SubmissionEvidence?  @relation("EvidenceReplacement", fields: [replacesEvidenceId], references: [id], onDelete: Restrict)
+  replacedBy           SubmissionEvidence[] @relation("EvidenceReplacement")
+
+  @@index([submissionId, fieldKey, scanState])
+  @@index([scanState, committedAt, id])
+  @@index([replacesEvidenceId, scanState])
+  @@index([s3Key, s3VersionId])
+}
+
+model ResubmissionGrant {
+  id                   String                @id @default(cuid())
+  assignmentId         String
+  assignment           Assignment            @relation(fields: [assignmentId], references: [id], onDelete: Restrict)
+  assessmentVersionId  String
+  assessmentVersion    AssessmentVersion     @relation(fields: [assessmentVersionId], references: [id], onDelete: Restrict)
+  ownerKind            OwnerKind
+  ownerId              String
+  kind                 ResubmissionGrantKind
+  targetVersion        Int
+  targetAttempt        Int                   @default(1)
+  issuedBy             String?
+  trigger              String
+  reason               String?
+  expiresAt            DateTime
+  extendedAt           DateTime?
+  extendedBy           String?
+  extensionReason      String?
+  consumedAt           DateTime?
+  consumedSubmissionId String?               @unique
+  consumedSubmission   Submission?           @relation("GrantConsumedSubmission", fields: [consumedSubmissionId], references: [id], onDelete: Restrict)
+  sourceSubmissionId   String?
+  sourceSubmission     Submission?           @relation("GrantSourceSubmission", fields: [sourceSubmissionId], references: [id], onDelete: Restrict)
+  boundSubmission      Submission?           @relation("GrantBoundSubmission")
+  createdAt            DateTime              @default(now())
+  updatedAt            DateTime              @updatedAt
+
+  @@unique([assignmentId, assessmentVersionId, ownerKind, ownerId, kind, targetVersion, targetAttempt], map: "ResubmissionGrant_owner_target_key")
+  @@index([ownerKind, ownerId, assignmentId, expiresAt])
+}
+
+model GradeAppeal {
+  id         String            @id @default(cuid())
+  gradeId    String
+  grade      Grade             @relation(fields: [gradeId], references: [id], onDelete: Restrict)
+  openedBy   String
+  reason     String
+  status     GradeAppealStatus @default(open)
+  outcome    String?
+  resolvedBy String?
+  resolvedAt DateTime?
+  holdId     String?           @unique
+  hold       GradeHold?        @relation(fields: [holdId], references: [id], onDelete: Restrict)
+  createdAt  DateTime          @default(now())
+  updatedAt  DateTime          @updatedAt
+
+  @@index([gradeId, status])
+}
+
+model GradeHold {
+  id                 String                  @id @default(cuid())
+  submissionId       String
+  submission         Submission              @relation(fields: [submissionId], references: [id], onDelete: Restrict)
+  gradeId            String?
+  grade              Grade?                  @relation(fields: [gradeId], references: [id], onDelete: Restrict)
+  assessmentResultId String?
+  assessmentResult   AssessmentResult?       @relation(fields: [assessmentResultId], references: [id], onDelete: Restrict)
+  cohortFreezeId     String?
+  cohortFreeze       AssessmentCohortFreeze? @relation(fields: [cohortFreezeId], references: [id], onDelete: Restrict)
+  kind               GradeHoldKind
+  code               String
+  reason             String
+  evidence           Json?
+  status             GradeHoldStatus         @default(open)
+  createdBy          String
+  createdAt          DateTime                @default(now())
+  resolvedBy         String?
+  resolution         String?
+  resolvedAt         DateTime?
+  updatedAt          DateTime                @updatedAt
+
+  appeal GradeAppeal?
+
+  @@index([submissionId, status])
+  @@index([gradeId, status])
+  @@index([assessmentResultId, status])
+  @@index([cohortFreezeId, status])
+}
+
+model AssessmentCohortFreeze {
+  id                  String            @id @default(cuid())
+  assessmentVersionId String
+  assessmentVersion   AssessmentVersion @relation(fields: [assessmentVersionId], references: [id], onDelete: Restrict)
+  sectionId           String
+  cutoffAt            DateTime
+  frozenAt            DateTime
+  frozenBy            String
+  // Canonically sorted array of { ownerKind, ownerId, submissionId, gradeId }
+  // entries. Persisting the members (not only their hash/count) prevents late
+  // submissions from entering finalisation after the cutoff.
+  membership          Json
+  membershipHash      String
+  memberCount         Int
+  createdAt           DateTime          @default(now())
+
+  gradeHolds GradeHold[]
+
+  @@unique([assessmentVersionId, sectionId])
+  @@index([cutoffAt, frozenAt])
+}
+
+model PublicationDecision {
+  id                  String                 @id @default(cuid())
+  submissionId        String                 @unique
+  submission          Submission             @relation(fields: [submissionId], references: [id], onDelete: Restrict)
+  ownerConsent        Boolean                @default(false)
+  ownerConsentBy      String?
+  ownerConsentAt      DateTime?
+  ownerRevokedAt      DateTime?
+  instructorState     PublicationReviewState @default(pending)
+  instructorDecidedBy String?
+  instructorDecidedAt DateTime?
+  instructorReason    String?
+  // Private staging key used to review a candidate preview before the
+  // approved GalleryItem replaces the previously safe published version.
+  previewS3Key        String?
+  previewS3VersionId  String?
+  reviewedFingerprint String?
+  reviewedAt          DateTime?
+  createdAt           DateTime               @default(now())
+  updatedAt           DateTime               @updatedAt
+}
+
+model TeamWorkflowSelection {
+  id           String                  @id @default(cuid())
+  teamId       String
+  team         Team                    @relation(fields: [teamId], references: [id], onDelete: Restrict)
+  assignmentId String
+  assignment   Assignment              @relation(fields: [assignmentId], references: [id], onDelete: Restrict)
+  submissionId String
+  submission   Submission              @relation(fields: [submissionId], references: [id], onDelete: Restrict)
+  nominationId String?                 @unique
+  nomination   TeamWorkflowNomination? @relation(fields: [nominationId], references: [id], onDelete: Restrict)
+  selectedBy   String
+  reason       String
+  createdAt    DateTime                @default(now())
+  updatedAt    DateTime                @updatedAt
+
+  @@unique([teamId, assignmentId])
+  @@index([submissionId])
+}
+
+model TeamWorkflowNomination {
+  id           String               @id @default(cuid())
+  teamId       String
+  team         Team                 @relation(fields: [teamId], references: [id], onDelete: Restrict)
+  assignmentId String
+  assignment   Assignment           @relation(fields: [assignmentId], references: [id], onDelete: Restrict)
+  submissionId String
+  submission   Submission           @relation(fields: [submissionId], references: [id], onDelete: Restrict)
+  nominatedBy  String
+  reason       String
+  status       TeamNominationStatus @default(pending)
+  reviewedBy   String?
+  reviewedAt   DateTime?
+  createdAt    DateTime             @default(now())
+  updatedAt    DateTime             @updatedAt
+
+  selection TeamWorkflowSelection?
+
+  @@index([teamId, assignmentId, status])
+  @@index([submissionId])
+}
+
+model ServiceHeartbeat {
+  id           String   @id @default(cuid())
+  serviceName  String
+  instanceId   String
+  sourceSha    String
+  deploymentId String?
+  imageDigest  String
+  schemaHead   String
+  metadata     Json?
+  lastSeenAt   DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([serviceName, instanceId])
+  @@index([serviceName, lastSeenAt])
+}
+
 model PortfolioEntry {
-  id          String @id @default(cuid())
-  userId      String @unique
-  user        User   @relation(fields: [userId], references: [id])
+  id          String  @id @default(cuid())
+  userId      String  @unique
+  user        User    @relation(fields: [userId], references: [id])
   narrative   String?
   links       Json
   validations Json

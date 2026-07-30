@@ -1,4 +1,5 @@
 import { S3NotConfiguredError, UploadRejectedError } from "@/lib/s3";
+import { GeneratedObjectReservationError } from "@/lib/generated-object-reservations";
 import { ProviderNotConfiguredError } from "./providers";
 import {
   AttemptExhaustedError,
@@ -34,6 +35,9 @@ export function interviewErrorResponse(err: unknown): Response | null {
     );
   }
   if (err instanceof UploadRejectedError) {
+    return Response.json({ error: err.message }, { status: err.status });
+  }
+  if (err instanceof GeneratedObjectReservationError) {
     return Response.json({ error: err.message }, { status: err.status });
   }
   if (err instanceof S3NotConfiguredError) {

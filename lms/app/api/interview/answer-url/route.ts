@@ -2,12 +2,11 @@ import { z } from "zod";
 import { withAuth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { interviewErrorResponse, rateLimited, takeInterviewToken } from "@/lib/interview/http";
+import { reserveInterviewAnswerUpload } from "@/lib/interview/audio-storage";
 import { InterviewNotFoundError, InterviewNotLiveError } from "@/lib/interview/session";
 import {
   INTERVIEW_AUDIO_EXTENSIONS,
   MAX_INTERVIEW_AUDIO_BYTES,
-  keyForInterviewAudio,
-  presignPut,
 } from "@/lib/s3";
 
 // POST /api/interview/answer-url: presigned PUT for one answer clip.
@@ -53,9 +52,19 @@ export const POST = withAuth(async (req, { user }) => {
       _max: { turnNo: true },
     });
     const turnNo = (maxTurn._max.turnNo ?? 0) + 1;
-    const key = keyForInterviewAudio(interviewId, "a", turnNo, ext);
-    const { url, headers } = await presignPut({ key, contentType, maxBytes: sizeBytes });
-    return Response.json({ url, key, headers });
+    const reserved = await reserveInterviewAnswerUpload({
+      interviewId,
+      turnNo,
+      contentType,
+      sizeBytes,
+      extension: ext,
+    });
+    return Response.json({
+      url: reserved.upload.url,
+      key: reserved.upload.key,
+      headers: reserved.upload.headers,
+      reservationId: reserved.reservation.id,
+    });
   } catch (err) {
     const mapped = interviewErrorResponse(err);
     if (mapped) return mapped;

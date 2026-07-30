@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Praxel LMS Forge
 
-## Getting Started
+This Next.js application delivers the Masters' Union Applied AI course. The
+current Sessions 3–5 release teaches data work with the TrustMRR class dataset,
+an evidence-led Lovable product build, and Make.com revenue workflows.
 
-First, run the development server:
+## Sessions 3–5
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Authored course packages: [`course/session-03`](course/session-03),
+  [`course/session-04`](course/session-04), and
+  [`course/session-05`](course/session-05)
+- Generated decks, manual, quizzes, notebook, and workbook: [`output`](output)
+- Controlling brief and provenance: [`docs/build/SOURCE_OF_TRUTH.md`](docs/build/SOURCE_OF_TRUTH.md)
+- Railway release procedure: [`docs/operations/sessions-03-05-railway-release.md`](docs/operations/sessions-03-05-railway-release.md)
+
+The private TrustMRR release is generated under `private/course-data/`, which is
+git-ignored. Do not move row-level data, fact packs, evaluator adapters, or
+answer keys into public assets.
+
+## Local development
+
+Use Node 22 and pnpm. Point `DATABASE_URL` only at a disposable/local Postgres
+database before running migrations, loaders, seeds, or database-backed tests.
+
+```sh
+pnpm install --frozen-lockfile
+pnpm prisma generate
+pnpm dev:all
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Run the Sessions 3–5 contract check without mutating the database:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+pnpm setup:sessions3-5:dry-run
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Load the verified release into an explicitly selected environment, with all
+new gates locked:
 
-## Learn More
+```sh
+DATABASE_URL='postgresql://…/disposable_database' pnpm setup:sessions3-5 -- --report-json
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Verification
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```sh
+pnpm typecheck
+pnpm lint
+pnpm test
+pnpm build
+pnpm e2e
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Database-backed tests may seed or delete fixtures. Never allow them to inherit
+an unknown `.env` target; override `DATABASE_URL` with an isolated database.
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Web, worker, and agent deploy to Railway from the same reviewed commit. The web
+service is the sole migration owner. Course loading is a separate, explicit
+one-off operation and never opens gates. Follow the release runbook; deployment
+health is not classroom-readiness approval.

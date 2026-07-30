@@ -86,7 +86,7 @@ describe("presignPut validation", () => {
         return `https://s3.test/${d.key}?sig=1`;
       },
     });
-    await presignPut({
+    const out = await presignPut({
       key: "submissions/user_s001/sub_1/report.pdf",
       contentType: "application/pdf",
       maxBytes: 1234,
@@ -96,6 +96,29 @@ describe("presignPut validation", () => {
     // The exact declared byte length is signed in — a body of any other size
     // is refused by S3, so the size cap is no longer client-advisory only.
     expect(seen!.contentLength).toBe(1234);
+    expect(out.headers["Content-Length"]).toBe("1234");
+  });
+
+  it("can bind a reservation key to one conditional PUT", async () => {
+    const seen: SignDescriptor[] = [];
+    __setS3TestOverrides({
+      configured: true,
+      sign: (descriptor) => {
+        seen.push(descriptor);
+        return `https://s3.test/${descriptor.key}?sig=conditional`;
+      },
+    });
+
+    const out = await presignPut({
+      key: "submissions/individual/u/a/v1/attempt-1/file/reservation/report.pdf",
+      contentType: "application/pdf",
+      maxBytes: 1_234,
+      oneTime: true,
+    });
+
+    expect(seen).toHaveLength(1);
+    expect(seen[0]?.ifNoneMatch).toBe("*");
+    expect(out.headers["If-None-Match"]).toBe("*");
   });
 
   it("rejects non-mp4 kinds that exceed their own caps", async () => {

@@ -92,6 +92,7 @@ describe.skipIf(!live)("U11 galleries + screenshot capture (live DB)", () => {
     configured: () => true,
     putObject: async (key: string, bytes: Uint8Array, contentType: string) => {
       stored.push({ key, bytes, contentType });
+      return { versionId: `gallery-test-version-${stored.length}`, etag: null };
     },
   };
 
@@ -209,17 +210,19 @@ describe.skipIf(!live)("U11 galleries + screenshot capture (live DB)", () => {
     for (const item of flat) expect(item.sectorName).toBe(sector);
   });
 
-  it("withholds workflow files unless featured (company-engagement rule)", async () => {
+  it("never exposes legacy workflow files, even when featured", async () => {
     const walls = await getGalleryWalls({});
     const featured = walls.workflow.find((i) => i.featured);
     const plain = walls.workflow.find((i) => !i.featured);
     expect(featured).toBeTruthy();
     expect(plain).toBeTruthy();
-    expect(featured!.files.length).toBeGreaterThan(0);
-    expect(featured!.filesWithheld).toBe(false);
+    expect(featured!.files).toEqual([]);
+    expect(featured!.filesWithheld).toBe(true);
     expect(plain!.files).toEqual([]);
     expect(plain!.filesWithheld).toBe(true);
-    // App + map walls always expose their links/files.
+    expect(featured!.actions).toEqual([]);
+    expect(plain!.actions).toEqual([]);
+    // Map walls retain their explicit legacy compatibility downloads.
     expect(walls.maps.some((i) => i.files.length > 0)).toBe(true);
   });
 
@@ -271,7 +274,7 @@ describe.skipIf(!live)("U11 galleries + screenshot capture (live DB)", () => {
     stored.length = 0;
     await prisma.galleryItem.update({
       where: { id: "gal_sub_030" },
-      data: { screenshotS3Key: null },
+      data: { screenshotS3Key: null, screenshotS3VersionId: null },
     });
     const log: string[] = [];
     await handleScreenshotCapture("sub_030", {
@@ -282,19 +285,56 @@ describe.skipIf(!live)("U11 galleries + screenshot capture (live DB)", () => {
     });
     expect(log).toContain("launch");
     expect(log).toContain("close");
-    expect(stored.map((s) => s.key)).toContain("gallery/screenshots/sub_030.png");
+    expect(stored).toHaveLength(1);
+    expect(stored[0].key).toMatch(
+      /^gallery\/screenshots\/sub_030-[a-f0-9]{64}-[A-Za-z0-9_-]+\.png$/,
+    );
     const item = await prisma.galleryItem.findUniqueOrThrow({ where: { id: "gal_sub_030" } });
-    expect(item.screenshotS3Key).toBe("gallery/screenshots/sub_030.png");
+    expect(item.screenshotS3Key).toBe(stored[0].key);
+    expect(item.screenshotS3VersionId).toBe("gallery-test-version-1");
   });
 
   it("marks the item 'blocked' for private appUrls and never launches the browser", async () => {
     stored.length = 0;
-    await prisma.submission.update({
+    const source = await prisma.submission.findUniqueOrThrow({
       where: { id: "sub_027" },
-      data: { fields: { appUrl: "http://10.0.0.5/internal", githubUrl: "https://github.com/x/y", writeup: "w" } },
+      select: { assignmentId: true },
     });
+    await prisma.user.create({
+      data: {
+        id: "user_gallery_private_url",
+        email: "gallery-private-url@example.test",
+        name: "Gallery Private URL Fixture",
+      },
+    });
+    await prisma.submission.create({
+      data: {
+        id: "sub_gallery_private_url",
+        assignmentId: source.assignmentId,
+        userId: "user_gallery_private_url",
+        status: "draft",
+        fields: {
+          appUrl: "http://10.0.0.5/internal",
+          githubUrl: "https://github.com/x/y",
+          writeup: "w",
+        },
+        files: [],
+        version: 1,
+        contentHash: "seedhash_sub_gallery_private_url",
+      },
+    });
+    await prisma.submission.update({
+      where: { id: "sub_gallery_private_url" },
+      data: { status: "submitted", submittedAt: new Date() },
+    });
+    await prisma.submission.update({
+      where: { id: "sub_gallery_private_url" },
+      data: { status: "graded" },
+    });
+    const galleryItem = await syncGalleryItem("sub_gallery_private_url");
+    expect(galleryItem?.submissionId).toBe("sub_gallery_private_url");
     const log: string[] = [];
-    await handleScreenshotCapture("sub_027", {
+    await handleScreenshotCapture("sub_gallery_private_url", {
       launchBrowser: fakeLaunch({}, log),
       s3: s3ForJob,
       fetchImpl: okFetch,
@@ -302,7 +342,9 @@ describe.skipIf(!live)("U11 galleries + screenshot capture (live DB)", () => {
     });
     expect(log).toEqual([]); // browser never launched
     expect(stored).toEqual([]);
-    const item = await prisma.galleryItem.findUniqueOrThrow({ where: { id: "gal_sub_027" } });
+    const item = await prisma.galleryItem.findUniqueOrThrow({
+      where: { submissionId: "sub_gallery_private_url" },
+    });
     expect(item.screenshotS3Key).toBe(SCREENSHOT_BLOCKED);
   });
 
@@ -310,7 +352,7 @@ describe.skipIf(!live)("U11 galleries + screenshot capture (live DB)", () => {
     stored.length = 0;
     await prisma.galleryItem.update({
       where: { id: "gal_sub_029" },
-      data: { screenshotS3Key: null },
+      data: { screenshotS3Key: null, screenshotS3VersionId: null },
     });
     const html = `<html><head><meta property="og:image" content="https://cdn.example.com/shot.png"/></head></html>`;
     const fetchImpl: typeof fetch = async (input, init) => {
@@ -330,16 +372,20 @@ describe.skipIf(!live)("U11 galleries + screenshot capture (live DB)", () => {
       fetchImpl,
       lookup: publicLookup,
     });
-    expect(stored.map((s) => s.key)).toContain("gallery/screenshots/sub_029.png");
+    expect(stored).toHaveLength(1);
+    expect(stored[0].key).toMatch(
+      /^gallery\/screenshots\/sub_029-[a-f0-9]{64}-[A-Za-z0-9_-]+\.png$/,
+    );
     const item = await prisma.galleryItem.findUniqueOrThrow({ where: { id: "gal_sub_029" } });
-    expect(item.screenshotS3Key).toBe("gallery/screenshots/sub_029.png");
+    expect(item.screenshotS3Key).toBe(stored[0].key);
+    expect(item.screenshotS3VersionId).toBe("gallery-test-version-1");
   });
 
   it("leaves the key null on nav failure with no og:image (and does not throw)", async () => {
     stored.length = 0;
     await prisma.galleryItem.update({
       where: { id: "gal_sub_029" },
-      data: { screenshotS3Key: null },
+      data: { screenshotS3Key: null, screenshotS3VersionId: null },
     });
     const fetchImpl: typeof fetch = async (_input, init) =>
       init?.method === "HEAD"
@@ -359,5 +405,6 @@ describe.skipIf(!live)("U11 galleries + screenshot capture (live DB)", () => {
     expect(stored).toEqual([]);
     const item = await prisma.galleryItem.findUniqueOrThrow({ where: { id: "gal_sub_029" } });
     expect(item.screenshotS3Key).toBeNull();
+    expect(item.screenshotS3VersionId).toBeNull();
   });
 });

@@ -34,6 +34,8 @@ const isPublicRoute = createRouteMatcher([
   "/sign-in(.*)",
   "/not-on-roster",
   "/api/health", // unauthenticated liveness probe (Railway healthcheck)
+  "/api/readiness", // bearer-token guarded; proves DB/schema/service identity
+  "/api/internal/service-heartbeat", // X-Agent-Token guarded
   "/api/webhooks/clerk(.*)",
   "/api/test-login", // guards itself (404 outside dev/test)
 ]);
