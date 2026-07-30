@@ -40,7 +40,7 @@ The page displays a private-use notice above materials and submission. It never 
 | `mat_s3_scale_schema_v1` | schema-pack | `trustmrr_s3_schema_v1.json` | locked | open with manifest |
 | `mat_s3_learner_sample_v1` | schema-pack | `trustmrr_s3_representative_sample_v1.csv` | open | learner-table coverage sample; not proportional |
 | `mat_s3_scale_sample_v1` | schema-pack | `trustmrr_s3_peer_comparisons_sample_v1.jsonl` | locked | deterministic 12-row nested-shape coverage sample; checksum-bound; cannot reveal key |
-| `mat_s3_scale_data_v1` | dataset | `trustmrr_s3_peer_comparisons_v1.jsonl.gz` | locked | private direct S3 download; 8,757,576-token proof in manifest |
+| `mat_s3_scale_data_v1` | dataset | `trustmrr_s3_peer_comparisons_v1.jsonl.gz` | locked | private direct S3 download; 14,420,414-token proof in manifest |
 | `mat_s3_offline_v1` | fallback | Instructor offline pack | instructor-only | generated runner, answer sheet and accessible HTML/print PDF; never student-gated in normal delivery |
 | `mat_s3_answer_pack_v1` | evaluator-key | Session 3 answer pack | instructor/evaluator-only | never reachable through student material APIs |
 

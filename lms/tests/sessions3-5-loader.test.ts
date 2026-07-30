@@ -841,6 +841,22 @@ describe("Sessions 3–5 authored release", () => {
       countsTowardBestOf: false,
     });
     expect(quizGate.state).toBe("open");
+
+    await reconcileSessions3To5({
+      db: memory.db,
+      objectStore,
+      release,
+      forceLockGates: true,
+    });
+    expect(quizGate.state).toBe("locked");
+    quizGate.opensAt = new Date("2026-07-01T00:00:00.000Z");
+    await reconcileSessions3To5({
+      db: memory.db,
+      objectStore,
+      release,
+      forceLockGates: true,
+    });
+    expect(quizGate.opensAt).toBeNull();
     expect(JSON.stringify({
       submission: memory.tables.submission,
       grade: memory.tables.grade,

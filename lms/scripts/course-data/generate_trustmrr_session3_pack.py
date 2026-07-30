@@ -618,6 +618,12 @@ def pick_first(
 
 def sample_selectors() -> tuple[Callable[[Mapping[str, str]], bool], ...]:
     return (
+        lambda row: parse_number(row["asking_price_usd"]) == 0,
+        lambda row: (
+            (value := parse_number(row["asking_price_usd"])) is not None
+            and value > 0
+        ),
+        lambda row: parse_number(row["asking_price_usd"]) is None,
         lambda row: (
             row["on_sale"] == "true"
             and visitor_status(parse_number(row["visitors_30d"])) == "zero"
@@ -704,10 +710,12 @@ def select_representative_sample(
         ("revenue_30d_status", "zero"),
         ("revenue_30d_status", "positive"),
     }
+    source_coverage = sample_coverage(rows)
     missing_requirements = [
         f"{group}.{label}"
         for group, label in sorted(required)
-        if coverage[group].get(label, 0) == 0
+        if source_coverage[group].get(label, 0) > 0
+        and coverage[group].get(label, 0) == 0
     ]
     if missing_requirements:
         raise ValueError(f"Representative sample missed: {missing_requirements}")

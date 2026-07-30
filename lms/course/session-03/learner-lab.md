@@ -70,7 +70,7 @@ At the checkpoint, save the draft. Pair-check one another's **method only**: gra
 
 ## Stage 2 · Pick the route (6 minutes)
 
-The instructor will release `trustmrr_s3_peer_comparisons_v1.jsonl.gz`. Its manifest records 8,757,576 `cl100k_base` tokens in the uncompressed JSONL under `tiktoken==0.12.0`. One line is one focal-startup/peer-startup comparison. This proves the file exceeds the one-million-token teaching threshold under a named method; it does not claim every chat product has the same limit.
+The instructor will release `trustmrr_s3_peer_comparisons_v1.jsonl.gz`. Its manifest records 14,420,414 `cl100k_base` tokens in the uncompressed JSONL under `tiktoken==0.12.0`. One line is one focal-startup/peer-startup comparison. This proves the file exceeds the one-million-token teaching threshold under a named method; it does not claim every chat product has the same limit.
 
 **S3-SCALE-01 · Path choice**  
 Choose one route for a repeatable grouped aggregate against that full file:

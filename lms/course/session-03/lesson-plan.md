@@ -35,7 +35,7 @@ Instructor checks at T-7 and again 30 minutes before class:
 
 1. `trustmrr_s3_manifest_v1.json`, `trustmrr_s3_learner_v1.csv` and the private fact pack share dataset version `trustmrr-s3-v1`; the learner-file SHA-256 matches the manifest.
 2. The learner CSV downloads, previews, and opens in Sheets; no answer values appear in previews or filenames.
-3. `trustmrr_s3_peer_comparisons_v1.jsonl.gz`, its field-level schema, deterministic peer JSONL sample and 8,757,576-token `cl100k_base` proof are present but gated. Do not substitute the learner-CSV sample for the nested peer file.
+3. `trustmrr_s3_peer_comparisons_v1.jsonl.gz`, its field-level schema, deterministic peer JSONL sample and 14,420,414-token `cl100k_base` proof are present but gated. Do not substitute the learner-CSV sample for the nested peer file.
 4. The Colab starter opens from a copy-only link and completes a clean runtime run.
 5. `S3-DATA-*` mixed assessment and `S3-VIZ-*` scenario check work for a test student.
 6. Gates are section-scoped; the instructor can open the scale pack without exposing instructor keys.

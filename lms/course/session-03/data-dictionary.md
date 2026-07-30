@@ -86,7 +86,7 @@ At least one limitation belongs in every business recommendation:
 **Format:** gzip-compressed UTF-8 JSON Lines  
 **Grain:** one focal-startup/peer-startup comparison  
 **Selection:** 24 deterministic similarity candidates per focal startup; candidates are not causal, investment or population claims  
-**Size proof:** 8,757,576 `cl100k_base` tokens in the uncompressed JSONL under `tiktoken==0.12.0`
+**Size proof:** 14,420,414 `cl100k_base` tokens in the uncompressed JSONL under `tiktoken==0.12.0`
 
 The same startup appears in many lines. Never treat a line as a unique startup. Group or deduplicate by `focal_record_id`/`peer_record_id` according to the question.
 

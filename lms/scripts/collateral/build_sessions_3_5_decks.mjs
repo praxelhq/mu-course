@@ -619,7 +619,7 @@ function buildSession3() {
   {
     const slide = newSlide(presentation, C.pine);
     addKicker(slide, "THE WALL · PRIVATE MANIFEST", { x: 64, y: 58, dark: true });
-    addText(slide, "8,757,576", { x: 64, y: 144, w: 1152, h: 190, size: 132, color: C.cream, font: FONT.mono, bold: true, align: "center", valign: "middle", base: "token-count" });
+    addText(slide, "14,420,414", { x: 64, y: 144, w: 1152, h: 190, size: 132, color: C.cream, font: FONT.mono, bold: true, align: "center", valign: "middle", base: "token-count" });
     addText(slide, "tokens", { x: 470, y: 346, w: 340, h: 56, size: 35, color: C.beacon, font: FONT.display, italic: true, align: "center", base: "token-unit" });
     addText(slide, "WHOLE-FILE CHAT IS NOW A BET, NOT A METHOD.", { x: 120, y: 438, w: 1040, h: 70, size: 28, color: C.cream, font: FONT.mono, bold: true, align: "center", valign: "middle", base: "wall-claim" });
     addText(slide, "cl100k_base · tiktoken 0.12.0 · uncompressed JSONL", { x: 320, y: 548, w: 640, h: 30, size: 12, color: "#C7D3CE", font: FONT.mono, align: "center", base: "wall-trace" });

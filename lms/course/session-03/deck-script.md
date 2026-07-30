@@ -135,11 +135,11 @@ Replacement: `count blank G only where record_id exists`
 
 **On slide**
 
-> This peer-comparison dataset is 8,757,576 tokens.
+> This peer-comparison dataset is 14,420,414 tokens.
 
 `WHOLE-FILE CHAT IS NOW A BET, NOT A METHOD.`
 
-**Visual direction:** Pine authority slide; show `8,757,576` from the private manifest; `cl100k_base · tiktoken 0.12.0 · uncompressed JSONL` in tiny mono.  
+**Visual direction:** Pine authority slide; show `14,420,414` from the private manifest; `cl100k_base · tiktoken 0.12.0 · uncompressed JSONL` in tiny mono.  
 **Speaker notes (00:46–00:51):** Show the exact token-count method. Say product limits vary and change; the durable constraint is reliability and repeatability, not one upload limit.
 
 ### 13 · Don’t fight the wall

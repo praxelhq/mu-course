@@ -52,7 +52,7 @@ Generator v1 has produced a deterministic, ignored pack under `lms/private/cours
 - `trustmrr_s3_learner_v1.csv` — learner analysis file;
 - `trustmrr_s3_schema_v1.json` — machine-readable learner and peer-comparison contracts;
 - `trustmrr_s3_representative_sample_v1.csv` — deterministic coverage sample of the learner CSV, not a proportional sample;
-- `trustmrr_s3_peer_comparisons_v1.jsonl.gz` — over-context derivative; the manifest records 8,757,576 `cl100k_base` tokens under `tiktoken==0.12.0`;
+- `trustmrr_s3_peer_comparisons_v1.jsonl.gz` — over-context derivative; the manifest records 14,420,414 `cl100k_base` tokens under `tiktoken==0.12.0`;
 - `trustmrr_s3_fact_pack_v1.json` — evaluator-only aggregates and stable answer paths.
 
 The size proof is tokenizer-specific and is not a claim about every vendor's context or upload limit.

@@ -6,6 +6,7 @@
 //
 //   pnpm setup:sessions3-5 -- --dry-run
 //   pnpm setup:sessions3-5 -- --sessions=3
+//   pnpm setup:sessions3-5 -- --sessions=3,4,5 --force-lock-gates
 //   pnpm setup:sessions3-5 -- --sessions=3,4,5 --report-json
 
 import { createHash } from "node:crypto";
@@ -2728,6 +2729,7 @@ async function ensureLockedGates(args: {
   selected: ReturnType<typeof selectedRelease>;
   report: ReleaseReport;
   dryRun: boolean;
+  forceLock: boolean;
 }): Promise<void> {
   const targets = [
     ...args.selected.pages.map((page) => ({
@@ -2746,7 +2748,7 @@ async function ensureLockedGates(args: {
         targetId: target.targetId,
       })),
     },
-    select: { targetType: true, targetId: true, sectionId: true },
+    select: { targetType: true, targetId: true, sectionId: true, state: true, opensAt: true },
   });
   const existingKeys = new Set(
     existing.map((gate) => `${gate.targetType}:${gate.targetId}:${gate.sectionId}`),
@@ -2760,7 +2762,30 @@ async function ensureLockedGates(args: {
     }),
   );
   for (const gate of existing) {
-    reportPreserved(args.report, "Gate", `${gate.targetType}:${gate.targetId}:${gate.sectionId}`);
+    const gateKey = `${gate.targetType}:${gate.targetId}:${gate.sectionId}`;
+    if (args.forceLock && (gate.state !== "locked" || gate.opensAt !== null)) {
+      reportUpdate(args.report, "Gate.locked", gateKey);
+      if (!args.dryRun) {
+        await args.tx.gate.update({
+          where: {
+            targetType_targetId_sectionId: {
+              targetType: gate.targetType,
+              targetId: gate.targetId,
+              sectionId: gate.sectionId,
+            },
+          },
+          data: {
+            state: "locked",
+            opensAt: null,
+            openedAt: null,
+            closedAt: null,
+            changedBy: PRISMA_RELEASE_ACTOR,
+          },
+        });
+      }
+    } else {
+      reportPreserved(args.report, "Gate", gateKey);
+    }
   }
   for (const gate of missing) {
     reportCreate(args.report, "Gate.locked", `${gate.targetType}:${gate.targetId}:${gate.sectionId}`);
@@ -2776,6 +2801,7 @@ export async function reconcileSessions3To5(args: {
   release: Sessions3To5Release;
   sessions?: Array<3 | 4 | 5>;
   dryRun?: boolean;
+  forceLockGates?: boolean;
 }): Promise<ReleaseReport> {
   const sessions = [...new Set(args.sessions ?? [3, 4, 5])].sort() as Array<3 | 4 | 5>;
   if (sessions.length === 0 || sessions.some((session) => ![3, 4, 5].includes(session))) {
@@ -2846,7 +2872,15 @@ export async function reconcileSessions3To5(args: {
     });
     await pointAssignmentsAtVersions({ tx, assignments: selected.assignments, report, dryRun });
     await ensureQuizzes({ tx, quizzes: selected.quizzes, sectionIds, report, dryRun });
-    await ensureLockedGates({ tx, sectionIds, pageIds, selected, report, dryRun });
+    await ensureLockedGates({
+      tx,
+      sectionIds,
+      pageIds,
+      selected,
+      report,
+      dryRun,
+      forceLock: args.forceLockGates ?? false,
+    });
   });
 
   for (const group of [
@@ -2900,6 +2934,7 @@ function parseSessions(value: string | undefined): Array<3 | 4 | 5> {
 export async function main(argv = process.argv.slice(2)): Promise<void> {
   const dryRun = argv.includes("--dry-run");
   const reportJson = argv.includes("--report-json");
+  const forceLockGates = argv.includes("--force-lock-gates");
   const sessionsArg = argv.find((arg) => arg.startsWith("--sessions="))?.split("=", 2)[1];
   const privateDirArg = argv.find((arg) => arg.startsWith("--private-dir="))?.split("=", 2)[1];
   const lmsRoot = dirname(fileURLToPath(import.meta.url));
@@ -2930,6 +2965,7 @@ export async function main(argv = process.argv.slice(2)): Promise<void> {
       release,
       sessions: parseSessions(sessionsArg),
       dryRun,
+      forceLockGates,
     });
     if (dryRun && !s3Configured()) {
       report.warnings.push("S3 is not configured; object entries are reported as would-upload without a remote HEAD check.");
