@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
 import type { Session2Console } from "@/lib/session2-console";
+import { ImageGalleryPresenter } from "@/components/image-gallery-presenter";
 
 // The live Session-2 board. Refreshes every 15s during class so the instructor
 // can pace delivery off real submission counts, and exposes the per-section
@@ -110,29 +111,36 @@ export function Session2Board({
               </p>
             )}
             {a.galleryEligible && (
-              <button
-                type="button"
-                disabled={busy === a.assignmentId}
-                onClick={() => toggleReveal(a.assignmentId, !a.revealed)}
-                style={{
-                  ...mono,
-                  marginTop: "0.7rem",
-                  width: "100%",
-                  padding: "0.4rem",
-                  fontSize: "0.65rem",
-                  border: "1px solid var(--sand)",
-                  borderRadius: 0,
-                  cursor: "pointer",
-                  background: a.revealed ? "var(--ochre)" : "transparent",
-                  color: a.revealed ? "var(--parchment)" : "var(--pine)",
-                }}
-              >
-                {busy === a.assignmentId
-                  ? "…"
-                  : a.revealed
-                    ? `Results shown to ${data.sectionCode} — hide`
-                    : `Reveal results to ${data.sectionCode}`}
-              </button>
+              <>
+                <button
+                  type="button"
+                  disabled={busy === a.assignmentId}
+                  onClick={() => toggleReveal(a.assignmentId, !a.revealed)}
+                  style={{
+                    ...mono,
+                    marginTop: "0.7rem",
+                    width: "100%",
+                    padding: "0.4rem",
+                    fontSize: "0.65rem",
+                    border: "1px solid var(--sand)",
+                    borderRadius: 0,
+                    cursor: "pointer",
+                    background: a.revealed ? "var(--ochre)" : "transparent",
+                    color: a.revealed ? "var(--parchment)" : "var(--pine)",
+                  }}
+                >
+                  {busy === a.assignmentId
+                    ? "…"
+                    : a.revealed
+                      ? `Results shown to ${data.sectionCode} — hide`
+                      : `Reveal results to ${data.sectionCode}`}
+                </button>
+                <ImageGalleryPresenter
+                  title={a.title}
+                  sectionCode={data.sectionCode}
+                  items={a.presentationItems}
+                />
+              </>
             )}
           </div>
         ))}
