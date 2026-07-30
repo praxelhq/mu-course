@@ -137,6 +137,56 @@ export const S3_DATA_ANCHORS = pack([
   }),
 ]);
 
+export const S3_ANALYSIS_ANCHORS = pack([
+  fourBandDimension({
+    key: "functionality",
+    criteria: {
+      emerging: "Most requested calculations are absent, use the wrong columns or filters, or contradict one another.",
+      developing: "Several requested calculations are present, but material errors remain in denominators, filters, grouping, medians or units.",
+      proficient: "The main requested calculations are correct and reproducible, with only a bounded arithmetic, rounding or presentation gap.",
+      strong: "All ten responses use the stated 1,000-row sheet and correctly apply every requested filter, denominator, statistic and unit.",
+    },
+    exampleBand: "strong",
+    exampleSummary: "The response reports every requested result with the correct population, statistic, unit and interpretation.",
+  }),
+  fourBandDimension({
+    key: "craft",
+    criteria: {
+      emerging: "Answers are unsupported assertions or raw AI output with no visible method or calculation trail.",
+      developing: "Some method is visible, but formulas, pivots or code are too incomplete or ambiguous to audit reliably.",
+      proficient: "Answers show concise, readable working and make filters, missing-value treatment and derived fields clear.",
+      strong: "The analysis is compact and fully auditable, with well-chosen formulas, pivots or code and explicit checks for common data errors.",
+    },
+    exampleSummary: "The student states the calculation route, filtering rule and missing-value treatment without burying the result.",
+  }),
+  fourBandDimension({
+    key: "relevance",
+    criteria: {
+      emerging: "Interpretations are generic, causal, or disconnected from the calculated evidence.",
+      developing: "Some interpretations are useful, but important comparisons, business implications or limitations are missing.",
+      proficient: "Interpretations connect the calculated results to defensible business implications and avoid causal overclaiming.",
+      strong: "The final $1M path is specific, internally coherent and supported by at least four relevant findings while rejecting one tempting but misleading signal.",
+    },
+    exampleSummary: "The recommendation ties a product, audience, geography, payment provider and pricing model to calculated evidence and stated limits.",
+    caps: [{
+      key: "causality-overclaim-cap",
+      max: 5,
+      whenFlags: ["causality_overclaim"],
+      rationale: "Correlation or grouped observational data cannot establish that one feature caused revenue performance.",
+    }],
+  }),
+  fourBandDimension({
+    key: "verification-evidence",
+    criteria: {
+      emerging: "No calculation evidence or data-quality check is provided.",
+      developing: "Some counts or working are shown, but the results cannot be reconciled to the stated row population.",
+      proficient: "The response includes enough counts, formulas, pivot descriptions or code logic to verify the important claims.",
+      strong: "The analysis reconciles totals and subsets, reports sample sizes for comparisons and explicitly uses the audit findings when qualifying conclusions.",
+    },
+    exampleSummary: "Claims include denominators and sample sizes, and subset counts reconcile to the relevant totals.",
+  }),
+]);
+
 export const S3_VISUAL_ANCHORS = pack([
   {
     key: "functionality",

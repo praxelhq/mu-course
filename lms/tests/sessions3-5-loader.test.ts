@@ -269,11 +269,20 @@ function privatePackageFixture() {
   };
 }
 
+const sampleAnalysisFixture = () => ({
+  schemaVersion: "mu-s3-sample-analysis/2.0",
+  frozenAt: "2026-07-30",
+  sampleSheetUrl: "https://docs.google.com/spreadsheets/d/12Gl5MxibqaVOhLowNZotoapufn7UmQen34OVX0J-lKA/edit",
+  fullSheetUrl: "https://docs.google.com/spreadsheets/d/1w2sQHU6z8E_OEQVBskfoxmS1wn_7XERH43UBGJPMMOk/edit",
+  answerSummary: "Fixture answer summary for the ten-question analysis.",
+} as const);
+
 function buildFixtureRelease(): Sessions3To5Release {
   return buildSessions3To5Release({
     lmsRoot: LMS_ROOT,
     privateData: verifyPrivateCourseDataPackage(privatePackageFixture()),
     quizPackage: quizPackageFixture(),
+    sampleAnalysis: sampleAnalysisFixture(),
     readFileBytes: evaluatorFileFixture(),
   });
 }
@@ -301,7 +310,9 @@ function memoryReleaseDatabase() {
         sessionNo === 3 ? "mat_s3_moxie" : sessionNo === 4 ? "mat_s4_vibe" : "mat_s5_make5min",
         `custom_mat_s${sessionNo}`,
       ],
-      linkedAssignmentIds: [`custom_asg_s${sessionNo}`],
+      linkedAssignmentIds: sessionNo === 3
+        ? ["asg_s3_datamemo", `custom_asg_s${sessionNo}`]
+        : [`custom_asg_s${sessionNo}`],
       linkedQuizIds: [sessionNo === 3 ? "quiz_s3" : `custom_quiz_s${sessionNo}`],
     })),
     gate: [3, 4, 5].map((sessionNo) => ({
@@ -493,35 +504,26 @@ describe("Sessions 3–5 authored release", () => {
   it("builds stable versioned contracts and keeps hidden material out of learner pages", () => {
     const release = buildFixtureRelease();
 
-    const s3 = release.assessmentVersions.find((version) => version.id === "assess_s3_data_v1");
-    expect(s3?.portfolioPolicy).toEqual({
-      include: true,
-      slot: "data-memo",
-      requiredPublicLink: { label: "Session 3 public-safe data memo" },
-    });
+    const s3 = release.assessmentVersions.find((version) => version.id === "assess_s3_sample_analysis_v2");
+    expect(s3?.portfolioPolicy).toEqual({ include: false, slot: "data-analysis" });
     expect(s3?.materialManifest).toMatchObject({
-      materialIds: expect.arrayContaining(["mat_s3_public_memo_v1"]),
+      materialIds: ["mat_s3_sample_sheet_v2", "mat_s3_full_sheet_v2"],
+      gradedMaterialId: "mat_s3_sample_sheet_v2",
+      practiceMaterialId: "mat_s3_full_sheet_v2",
     });
-    const s3MemoMaterial = release.materials.find(
-      (material) => material.id === "mat_s3_public_memo_v1",
+    const sampleSheet = release.materials.find(
+      (material) => material.id === "mat_s3_sample_sheet_v2",
     );
-    expect(s3MemoMaterial).toMatchObject({
-      title: "Public-safe portfolio data memo template",
-      kind: "template",
+    expect(sampleSheet).toMatchObject({
+      title: "TrustMRR · 1,000-row dataset",
+      kind: "link",
+      externalUrl: expect.stringContaining("12Gl5MxibqaVOhLowNZotoapufn7UmQen34OVX0J-lKA"),
       instructorOnly: false,
     });
-    expect(release.pages.find((page) => page.sessionNo === 3)?.orderedMaterialIds).toContain(
-      "mat_s3_public_memo_v1",
-    );
-    const s3MemoObject = release.objects.find((object) => object.key === s3MemoMaterial?.s3Key);
-    const s3MemoText = new TextDecoder().decode(s3MemoObject?.bytes);
-    expect(s3MemoText).toMatch(/^# Session 3 public-safe portfolio data memo/m);
-    expect(s3MemoText).toContain("## Problem");
-    expect(s3MemoText).toContain("## Dataset grain and schema");
-    expect(s3MemoText).toContain("## Method");
-    expect(s3MemoText).toContain("## Independent verification");
-    expect(s3MemoText).toContain("## Limitation and ethics");
-    expect(s3MemoText).toContain("Do not include TrustMRR rows, derived values, or screenshots");
+    expect(release.pages.find((page) => page.sessionNo === 3)?.orderedMaterialIds).toEqual([
+      "mat_s3_sample_sheet_v2",
+      "mat_s3_full_sheet_v2",
+    ]);
 
     const s4 = release.assessmentVersions.find((version) => version.id === "assess_s4_app_v1");
     expect(s4?.improvementAllowed).toBe(true);
@@ -709,41 +711,27 @@ describe("Sessions 3–5 authored release", () => {
     expect(evaluateObjectiveSet(runtime.answerSpecs, knownSelections).correctCount).toBe(6);
   });
 
-  it("freezes the verified S3 adapter while binding seven objective and nine judgment fields", () => {
+  it("binds the ten sample-analysis questions to AI judgment without a full-dataset submission", () => {
     const release = buildFixtureRelease();
     const version = release.assessmentVersions.find(
-      (candidate) => candidate.id === "assess_s3_data_v1",
+      (candidate) => candidate.id === "assess_s3_sample_analysis_v2",
     )!;
-    expect(Object.keys((version.evaluator.answerKey as { items: object }).items)).toHaveLength(12);
     const runtime = parseAssessmentRuntimeConfig({
       rubric: version.rubric,
       evaluatorConfig: version.evaluator.config,
       answerKey: version.evaluator.answerKey,
       anchors: version.evaluator.anchors,
     });
-    expect(Object.keys(runtime.answerSpecs)).toHaveLength(7);
-    expect(runtime.judgmentFieldIds).toHaveLength(9);
-    const authoredWeights = Object.entries(runtime.answerSpecs).reduce<Record<string, number>>(
-      (weights, [fieldId, spec]) => {
-        const authoredId = fieldId.startsWith("S3-DATA-05.") ? "S3-DATA-05" : fieldId;
-        weights[authoredId] = (weights[authoredId] ?? 0) + (spec.weight ?? 1);
-        return weights;
-      },
-      {},
-    );
-    expect(authoredWeights).toEqual({
-      "S3-DATA-01": 1,
-      "S3-DATA-02": 1,
-      "S3-DATA-03": 1,
-      "S3-DATA-04": 1,
-      "S3-DATA-05": 1,
-      "S3-DATA-06": 1,
-    });
-    expect(evaluateObjectiveSet(runtime.answerSpecs, {}).totalWeight).toBe(6);
-    expect(evaluateObjectiveSet(
-      { "S3-DATA-01": runtime.answerSpecs["S3-DATA-01"] },
-      { "S3-DATA-01": 1 },
-    ).correctCount).toBe(1);
+    expect(Object.keys(runtime.answerSpecs)).toHaveLength(0);
+    expect(runtime.judgmentFieldIds).toEqual([
+      "S3-ANALYSIS-01", "S3-ANALYSIS-02", "S3-ANALYSIS-03", "S3-ANALYSIS-04", "S3-ANALYSIS-05",
+      "S3-ANALYSIS-06", "S3-ANALYSIS-07", "S3-ANALYSIS-08", "S3-ANALYSIS-09", "S3-ANALYSIS-10",
+    ]);
+    expect(runtime.trustedAggregateSummaries).toEqual([
+      expect.objectContaining({ id: "trustmrr-1000-answer-key-v2" }),
+    ]);
+    expect(release.assignments.find((assignment) => assignment.id === "asg_s3_sample_analysis_v2")).toBeTruthy();
+    expect(release.assignments.find((assignment) => assignment.id === "asg_s3_datamemo")).toBeUndefined();
   });
 
   it("rejects malformed release policy before touching object storage or the database", async () => {
@@ -905,6 +893,7 @@ describe("Sessions 3–5 authored release", () => {
     }
     const s3Page = memory.tables.sessionPage.find((row) => row.sessionNo === 3)!;
     expect(s3Page.orderedMaterialIds).not.toContain("mat_s3_moxie");
+    expect(s3Page.linkedAssignmentIds).not.toContain("asg_s3_datamemo");
     expect(s3Page.linkedQuizIds).not.toContain("quiz_s3");
     expect(memory.tables.material.some((row) => row.id === "mat_s3_moxie")).toBe(true);
     expect(memory.tables.quiz.some((row) => row.id === "quiz_s3")).toBe(true);
@@ -1117,6 +1106,7 @@ describe.runIf(process.env.U8_DISPOSABLE_DATABASE === "1")(
             directory: `${LMS_ROOT}/private/course-data/session-03/generated/v1`,
           }),
           quizPackage: quizPackageFixture(),
+          sampleAnalysis: sampleAnalysisFixture(),
           readFileBytes: evaluatorFileFixture(),
         });
         const objects = new Map<string, { sizeBytes: number; sha256: string }>();

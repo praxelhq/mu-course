@@ -31,7 +31,7 @@ import {
 import { headObject, putObject, readObjectVersion, s3Configured } from "../lib/s3";
 import { parseSubmissionSchema } from "../lib/submission-schema";
 import {
-  S3_DATA_ANCHORS,
+  S3_ANALYSIS_ANCHORS,
   S3_VISUAL_ANCHORS,
   S4_APP_ANCHORS,
   S4_PRODUCT_PROMPT_ANCHORS,
@@ -96,10 +96,19 @@ export type MaterialRelease = {
   sessionNo: 3 | 4 | 5;
   title: string;
   kind: string;
-  s3Key: string;
-  sizeBytes: number;
+  s3Key?: string;
+  externalUrl?: string;
+  sizeBytes: number | null;
   version: number;
   instructorOnly: boolean;
+};
+
+export type Session3SampleAnalysis = {
+  schemaVersion: "mu-s3-sample-analysis/2.0";
+  frozenAt: string;
+  sampleSheetUrl: string;
+  fullSheetUrl: string;
+  answerSummary: string;
 };
 
 export type PageRelease = {
@@ -273,97 +282,6 @@ function booleanValue(value: unknown, label: string): boolean {
   return value;
 }
 
-function s3AdapterAnswerKey(
-  adapter: Record<string, unknown>,
-  datasetVersion: string,
-): Record<string, unknown> {
-  if (adapter.dataset_version !== datasetVersion) {
-    throw new Error("Session 3 evaluator adapter is bound to a different dataset version.");
-  }
-  const items = objectValue(adapter.items, "Session 3 evaluator adapter items");
-  const item = (id: string) => objectValue(items[id], `Session 3 evaluator item ${id}`);
-  const privateKey = (id: string) => objectValue(item(id).private_key, `${id}.private_key`);
-  const specs: Record<string, unknown> = {
-    "S3-DATA-01": {
-      kind: "number",
-      mode: "exact",
-      expected: finiteValue(privateKey("S3-DATA-01").expected, "S3-DATA-01.expected"),
-      integer: true,
-    },
-    "S3-DATA-02": {
-      kind: "number",
-      mode: "exact",
-      expected: finiteValue(privateKey("S3-DATA-02").expected, "S3-DATA-02.expected"),
-      integer: true,
-    },
-    "S3-DATA-03": {
-      kind: "number",
-      mode: "tolerance",
-      expected: finiteValue(privateKey("S3-DATA-03").expected_numeric, "S3-DATA-03.expected_numeric"),
-      tolerance: 0.05,
-      unit: "percentage-points",
-      acceptedUnits: { "percentage-points": 1, percentage: 1, percent: 1 },
-    },
-    "S3-DATA-04": {
-      kind: "number",
-      mode: "tolerance",
-      expected: finiteValue(privateKey("S3-DATA-04").expected_numeric, "S3-DATA-04.expected_numeric"),
-      tolerance: 0.5,
-      unit: "USD",
-      acceptedUnits: { USD: 1 },
-    },
-    "S3-DATA-05.category": {
-      kind: "string",
-      weight: 0.5,
-      expected: (() => {
-        const value = privateKey("S3-DATA-05").categoryLabel;
-        if (typeof value !== "string" || !value) throw new Error("S3-DATA-05.categoryLabel is missing.");
-        return value;
-      })(),
-      trim: true,
-      caseInsensitive: false,
-    },
-    "S3-DATA-05.totalMrrUsd": {
-      kind: "number",
-      weight: 0.5,
-      mode: "tolerance",
-      expected: finiteValue(privateKey("S3-DATA-05").expected_numeric, "S3-DATA-05.expected_numeric"),
-      tolerance: 0.5,
-      unit: "USD",
-      acceptedUnits: { USD: 1 },
-    },
-    "S3-DATA-06": {
-      kind: "number",
-      mode: "tolerance",
-      expected: finiteValue(privateKey("S3-DATA-06").expected_numeric, "S3-DATA-06.expected_numeric"),
-      tolerance: 0.5,
-      unit: "USD",
-      acceptedUnits: { USD: 1 },
-    },
-  };
-  // Keep the verified adapter intact for audit/reproduction, while the explicit
-  // specs give the generic runtime the exact public field bindings it consumes.
-  return { ...adapter, specs };
-}
-
-function categoryOptionsFromFactPack(factPack: Record<string, unknown>): Array<{ value: string; label: string }> {
-  const summaries = objectValue(factPack.group_summaries, "Session 3 fact-pack group summaries");
-  if (!Array.isArray(summaries.category)) {
-    throw new Error("Session 3 fact pack has no category option set.");
-  }
-  const values = summaries.category.map((raw, index) => {
-    const row = objectValue(raw, `Session 3 category summary ${index}`);
-    if (typeof row.value !== "string" || !row.value.trim()) {
-      throw new Error(`Session 3 category summary ${index} has no value.`);
-    }
-    return row.value;
-  });
-  if (new Set(values).size !== values.length || values.length === 0) {
-    throw new Error("Session 3 category option set is empty or duplicated.");
-  }
-  return values.map((value) => ({ value, label: value }));
-}
-
 function trackedObject(args: {
   lmsRoot: string;
   path: string;
@@ -477,6 +395,7 @@ export function buildSessions3To5Release(args: {
   lmsRoot: string;
   privateData: VerifiedPrivateCourseData;
   quizPackage: VerifiedQuizImportPackage;
+  sampleAnalysis: Session3SampleAnalysis;
   readFileBytes?: (relativePath: string) => Uint8Array;
 }): Sessions3To5Release {
   const readReleaseFile = (relativePath: string): Uint8Array =>
@@ -829,58 +748,82 @@ export function buildSessions3To5Release(args: {
     (assessment) => assessment.id === "assess_s3_visuals_v1",
   );
   if (!s3Visual) throw new Error("Validated package is missing assess_s3_visuals_v1.");
-  const factPack = args.privateData.files.find((file) => file.role === "fact_pack");
-  const evaluatorAdapter = args.privateData.files.find((file) => file.role === "evaluator_adapter");
-  if (!factPack || !evaluatorAdapter) {
-    throw new Error("Validated private package is missing the Session 3 evaluator release.");
+  if (args.sampleAnalysis.schemaVersion !== "mu-s3-sample-analysis/2.0") {
+    throw new Error("Session 3 sample analysis uses an unsupported schema version.");
   }
-  const factPackJson = jsonObjectFromBytes(factPack.bytes, "Session 3 fact pack");
-  const adapterJson = jsonObjectFromBytes(evaluatorAdapter.bytes, "Session 3 evaluator adapter");
-  const s3AnswerKey = s3AdapterAnswerKey(adapterJson, args.privateData.datasetVersion);
-  const categoryOptions = categoryOptionsFromFactPack(factPackJson);
+  for (const [label, value] of [
+    ["sample sheet", args.sampleAnalysis.sampleSheetUrl],
+    ["full sheet", args.sampleAnalysis.fullSheetUrl],
+  ] as const) {
+    const parsed = new URL(value);
+    if (parsed.protocol !== "https:" || parsed.hostname !== "docs.google.com" || !parsed.pathname.startsWith("/spreadsheets/d/")) {
+      throw new Error(`Session 3 ${label} URL must be a Google Sheets HTTPS link.`);
+    }
+  }
+
+  materials.push(
+    {
+      id: "mat_s3_sample_sheet_v2",
+      sessionNo: 3,
+      title: "TrustMRR · 1,000-row dataset",
+      kind: "link",
+      externalUrl: args.sampleAnalysis.sampleSheetUrl,
+      sizeBytes: null,
+      version: 2,
+      instructorOnly: false,
+    },
+    {
+      id: "mat_s3_full_sheet_v2",
+      sessionNo: 3,
+      title: "TrustMRR · full dataset (practice only)",
+      kind: "link",
+      externalUrl: args.sampleAnalysis.fullSheetUrl,
+      sizeBytes: null,
+      version: 2,
+      instructorOnly: false,
+    },
+  );
 
   const s3Fields: ReleaseField[] = [
-    field("datasetVersionId", "Dataset version", "text", true, { readOnlyAfterFirstFinalSubmit: true }),
-    field("datasetSha256", "Dataset SHA-256", "text", true, { pattern: "^[0-9a-f]{64}$" }),
-    field("S3-DATA-01", "S3-DATA-01", "number", true, { integer: true }),
-    field("S3-DATA-02", "S3-DATA-02", "number", true, { integer: true }),
-    field("S3-DATA-03", "S3-DATA-03", "number", true, { unit: "percentage", decimals: 1 }),
-    field("S3-DATA-04", "S3-DATA-04", "number", true, { unit: "USD", decimals: 0 }),
-    field("S3-DATA-05.category", "S3-DATA-05 category", "singleChoice", true, { options: categoryOptions }),
-    field("S3-DATA-05.totalMrrUsd", "S3-DATA-05 total MRR", "number", true, { unit: "USD", decimals: 0 }),
-    field("S3-DATA-06", "S3-DATA-06", "number", true, { unit: "USD", decimals: 0 }),
-    field("S3-DATA-07", "S3-DATA-07", "writeup", true, { minWords: 120, maxWords: 180 }),
-    field("S3-DATA-08", "S3-DATA-08", "writeup", true, { minWords: 120, maxWords: 180 }),
-    field("S3-DATA-09", "S3-DATA-09", "writeup", true, { minWords: 180, maxWords: 250 }),
-    field("S3-DATA-10.verifiedItemId", "Verified item", "singleChoice", true, {
-      options: ["S3-DATA-03", "S3-DATA-04", "S3-DATA-05", "S3-DATA-06"],
+    field("S3-ANALYSIS-01", "1. Audit the dataset", "writeup", true, {
+      maxWords: 220,
+      helpText: "Report total rows; duplicate record_id count; missing count and percentage for country, audience_type, category and domain; and which of those four fields has the most missing values.",
     }),
-    field("S3-DATA-10.methodA", "Method A", "text"),
-    field("S3-DATA-10.workingA", "Working A", "writeup"),
-    field("S3-DATA-10.resultA", "Result A", "text"),
-    field("S3-DATA-10.unitA", "Unit A", "text"),
-    field("S3-DATA-10.methodB", "Method B", "text"),
-    field("S3-DATA-10.workingB", "Working B", "writeup"),
-    field("S3-DATA-10.resultB", "Result B", "text"),
-    field("S3-DATA-10.unitB", "Unit B", "text"),
-    field("S3-DATA-10.absoluteGap", "Absolute gap", "number"),
-    field("S3-DATA-10.independenceRationale", "Independence rationale", "writeup"),
-    field("S3-DATA-10.gapExplanation", "Gap explanation", "writeup"),
-    field("S3-SCALE-01", "Scale decision", "writeup", true, { minWords: 60, maxWords: 100 }),
-    field("S3-SCALE-02.prompt", "Method request", "writeup"),
-    field("S3-SCALE-02.working", "Formula or code", "writeup", true, { maxChars: 20_000 }),
-    field("S3-SCALE-02.correction", "Pre-run correction", "text"),
-    field("S3-SCALE-03.output", "Aggregate output", "file", true, {
-      acceptedMimeTypes: ["text/csv", "text/plain", "application/json"],
-      maxBytes: 2_000_000,
-      fileRole: "S3-SCALE-03.output",
+    field("S3-ANALYSIS-02", "2. Measure revenue concentration", "writeup", true, {
+      maxWords: 180,
+      helpText: "Report the count and percentage where revenue_30d_usd equals 0, total revenue_30d_usd, and the share of total revenue contributed by exactly the top 10 rows ranked by revenue_30d_usd.",
     }),
-    field("S3-SCALE-03.variant", "Method variant", "singleChoice", true, { options: ["formula", "python"] }),
-    field("S3-SCALE-03.validCount", "Valid count", "number", true, { integer: true, min: 0 }),
-    field("S3-SCALE-03.excludedCount", "Excluded count", "number", true, { integer: true, min: 0 }),
-    field("S3-SCALE-03.assertion", "Passed assertion", "text"),
-    field("verificationDeclaration", "Verification declaration", "singleChoice", true, {
-      options: ["I can rerun the submitted method against the stated dataset version, and I have named any unresolved mismatch or limitation."],
+    field("S3-ANALYSIS-03", "3. Compare product categories", "writeup", true, {
+      maxWords: 180,
+      helpText: "Exclude blank category. Identify the category with the highest total revenue_30d_usd and the category with the highest median revenue_30d_usd among categories with at least 10 rows. Explain the difference in no more than 60 words.",
+    }),
+    field("S3-ANALYSIS-04", "4. Test X followers against 90-day revenue", "writeup", true, {
+      maxWords: 120,
+      helpText: "Using complete x_followers and revenue_3m_usd pairs, report the number of valid pairs and Pearson correlation. Interpret it in no more than 40 words without claiming causation.",
+    }),
+    field("S3-ANALYSIS-05", "5. Compare payment providers", "writeup", true, {
+      maxWords: 160,
+      helpText: "Exclude blank payment_provider values and treat each remaining distinct cell label as a provider. Identify the provider used by the most companies and the provider processing the highest combined revenue_30d_usd. Report counts and revenue totals.",
+    }),
+    field("S3-ANALYSIS-06", "6. Compare US and India payment preferences", "writeup", true, {
+      maxWords: 160,
+      helpText: "For country = US and country = IN separately, report company count, top payment provider, provider count and provider percentage. Explain the observed difference in no more than 50 words.",
+    }),
+    field("S3-ANALYSIS-07", "7. Compare anonymous and named startups", "writeup", true, {
+      maxWords: 180,
+      helpText: "Define anonymous as startup_name exactly equal to Stealth Company. For anonymous and named startups, report company count and percentage, total revenue_30d_usd and percentage, and average revenue_30d_usd.",
+    }),
+    field("S3-ANALYSIS-08", "8. Compare domain TLD and domain rating", "writeup", true, {
+      maxWords: 180,
+      helpText: "Derive the domain TLD. Among TLDs with at least 10 rows, identify the highest median domain_rating, report its sample size, compare it with .com, and give a non-causal interpretation.",
+    }),
+    field("S3-ANALYSIS-09", "9. Compare on-sale B2B and B2C multiples", "writeup", true, {
+      maxWords: 180,
+      helpText: "Filter to on_sale=true, audience_type B2B or B2C, and nonblank revenue_multiple. Remove the x suffix, then report n, mean and median for each group. State the typical asking multiple and explain why mean and median may differ.",
+    }),
+    field("S3-ANALYSIS-10", "10. Design an indie hacker’s path to $1 million", "writeup", true, {
+      maxWords: 250,
+      helpText: "An indie hacker wants a new product capable of $1M annual revenue. Propose the product category, B2B/B2C audience, customer geography, payment provider, one specific problem, and a pricing model with customers needed for $1M annual revenue. Support the plan with at least four calculated findings from Questions 2–9. Identify one attractive signal—followers, category revenue or TLD—that you would not blindly follow, and explain why.",
     }),
   ];
 
@@ -976,16 +919,15 @@ export function buildSessions3To5Release(args: {
 
   const assignmentTypes: AssignmentTypeRelease[] = [
     {
-      id: "atype_data_memo",
-      slug: "data-memo",
-      title: "Verified data memo",
-      description: "Session 3 private, checksum-bound mixed data assessment.",
+      id: "atype_s3_sample_analysis_v2",
+      slug: "startup-data-analysis",
+      title: "Startup data analysis",
+      description: "Ten-question analysis of the frozen TrustMRR 1,000-row dataset.",
       teamBased: false,
       galleryEligible: false,
       aiGraded: true,
-      submissionSchema: { fields: s3Fields, groups: ["dataset", "small-data", "verification", "scale"] },
+      submissionSchema: { fields: s3Fields },
       rubric: RUBRIC_4DIM,
-      legacyFingerprints: ["Session 3 SHIP form"],
     },
     {
       id: "atype_s3_visuals",
@@ -1075,19 +1017,8 @@ export function buildSessions3To5Release(args: {
 
   const datasetReleaseId = `dataset_${args.privateData.datasetVersion.replace(/[^A-Za-z0-9_-]/g, "_")}`;
   const s3LearnerMaterialIds = [
-    "mat_s3_lab_v1",
-    "mat_s3_dictionary_v1",
-    "mat_s3_public_memo_v1",
-    "mat_s3_learner_csv_v1",
-    "mat_s3_formula_v1",
-    "mat_s3_colab_starter_v1",
-    "mat_s3_learner_sample_v1",
-    "mat_s3_scale_manifest_v1",
-    "mat_s3_scale_schema_v1",
-    "mat_s3_scale_sample_v1",
-    "mat_s3_scale_data_v1",
-    "mat_s3_visuals_a11y_v1",
-    "mat_s3_scoring_rubric_v1",
+    "mat_s3_sample_sheet_v2",
+    "mat_s3_full_sheet_v2",
   ];
   const s4LearnerMaterialIds = [
     "mat_s4_student_handout_v1",
@@ -1104,81 +1035,58 @@ export function buildSessions3To5Release(args: {
 
   const assessmentVersions: AssessmentVersionRelease[] = [
     assessmentVersion({
-      id: "assess_s3_data_v1",
-      assignmentId: "asg_s3_datamemo",
+      id: "assess_s3_sample_analysis_v2",
+      assignmentId: "asg_s3_sample_analysis_v2",
       version: 1,
       ownerKind: "individual",
       purpose: "graded",
-      publicSchema: { version: 1, fields: s3Fields, datasetBound: true },
+      publicSchema: { version: 1, fields: s3Fields },
       rubric: RUBRIC_4DIM,
-      materialManifest: { version: 1, materialIds: s3LearnerMaterialIds, datasetReleaseId },
-      scoringPolicy: { component: "artifact-quality", approvedAiProcessors: ["anthropic"] },
-      portfolioPolicy: {
-        include: true,
-        slot: "data-memo",
-        requiredPublicLink: { label: "Session 3 public-safe data memo" },
+      materialManifest: {
+        version: 1,
+        materialIds: s3LearnerMaterialIds,
+        gradedMaterialId: "mat_s3_sample_sheet_v2",
+        practiceMaterialId: "mat_s3_full_sheet_v2",
+        frozenAt: args.sampleAnalysis.frozenAt,
       },
+      scoringPolicy: { component: "artifact-quality", approvedAiProcessors: ["anthropic"] },
+      portfolioPolicy: { include: false, slot: "data-analysis" },
       publicationPolicy: {},
       exportPolicy: {
         praxy: { enabled: false, fieldKeys: [] },
-        dpdp: { fieldKeys: ["verificationDeclaration"], evidenceRoles: ["S3-SCALE-03.output"] },
+        dpdp: { fieldKeys: s3Fields.map((candidate) => candidate.key), evidenceRoles: [] },
       },
       previewPolicy: { learner: "no-answer-values", evaluator: "server-only" },
-      datasetReleaseId,
+      datasetReleaseId: null,
       retentionClassKey: "course-private-assessment",
       improvementAllowed: false,
       improvementWindowDays: 10,
       evaluator: {
-        id: "evalcfg_s3_data_v1",
+        id: "evalcfg_s3_sample_analysis_v2",
         config: {
-          mode: "s3-deterministic-first-v1",
+          mode: "s3-sample-analysis-v2",
           providerMode: "auto",
-          adapter: { s3Key: evaluatorAdapter.s3Key, sha256: evaluatorAdapter.sha256 },
-          factPack: { s3Key: factPack.s3Key, sha256: factPack.sha256 },
           approvedProcessor: "anthropic",
           approvedFlags: [
-            "dataset_version_mismatch",
-            "objective_internal_inconsistency",
             "numeric_claim_unverified",
             "working_not_reproducible",
-            "same_method_twice",
-            "raw_row_exposure",
             "causality_overclaim",
-            "population_overclaim",
             "prompt_injection",
-            "possible_duplicate",
             "low_confidence",
             "manual_review_requested",
           ],
-          citationsPerDimension: 1,
-          judgmentFieldIds: [
-            "S3-DATA-07",
-            "S3-DATA-08",
-            "S3-DATA-09",
-            "S3-DATA-10.independenceRationale",
-            "S3-DATA-10.gapExplanation",
-            "S3-SCALE-01",
-            "S3-SCALE-02.prompt",
-            "S3-SCALE-02.correction",
-            "S3-SCALE-03.assertion",
-          ],
-          providerContext: "judgment responses and aggregate summaries only; never TrustMRR rows",
-          objectiveConsistencyRules: [
-            {
-              id: "s3-country-missing-rate",
-              kind: "percentage_from_count",
-              countField: "S3-DATA-02",
-              denominatorField: "S3-DATA-01",
-              percentageField: "S3-DATA-03",
-              tolerancePercentagePoints: 0.05,
-              dimension: "functionality",
-              cap: 8,
-            },
-          ],
+          citationsPerDimension: 2,
+          judgmentFieldIds: s3Fields.map((candidate) => candidate.key),
+          providerContext: "Evaluate only the student's written aggregate analysis against the trusted frozen answer summary; never request or emit raw TrustMRR rows.",
+          trustedAggregateSummaries: [{
+            id: "trustmrr-1000-answer-key-v2",
+            safeForProcessor: true,
+            text: args.sampleAnalysis.answerSummary,
+          }],
         },
-        answerKey: s3AnswerKey,
-        anchors: S3_DATA_ANCHORS,
-        normalization: { units: "versioned", rounding: "per-item", nulls: "missing-is-not-zero" },
+        answerKey: null,
+        anchors: S3_ANALYSIS_ANCHORS,
+        normalization: { rounding: "reasonable-presentation-tolerance", nulls: "missing-is-not-zero" },
       },
     }),
     assessmentVersion({
@@ -1477,7 +1385,7 @@ export function buildSessions3To5Release(args: {
   ];
 
   const assignments: AssignmentRelease[] = [
-    { id: "asg_s3_datamemo", assignmentTypeSlug: "data-memo", title: "S3 · Verified data memo", brief: "Answer the checksum-bound data questions, show two-method verification, and submit the scaled analysis evidence.", sessionNo: 3, weightBucket: "artifact-quality", assessmentVersionId: "assess_s3_data_v1", legacyTitles: ["S3 · Verified data memo"] },
+    { id: "asg_s3_sample_analysis_v2", assignmentTypeSlug: "startup-data-analysis", title: "S3 · TrustMRR 1,000-row analysis", brief: "Answer all ten questions using the frozen 1,000-row Google Sheet. The full dataset is for in-class practice only and is not submitted.", sessionNo: 3, weightBucket: "artifact-quality", assessmentVersionId: "assess_s3_sample_analysis_v2" },
     { id: "asg_s3_visuals", assignmentTypeSlug: "data-visual-judgment", title: "S3 · Visualization scenario check", brief: "Choose a defensible visual and explain why for each scenario. This is formative.", sessionNo: 3, weightBucket: null, assessmentVersionId: "assess_s3_visuals_v1" },
     { id: "asg_s4_product_prompt", assignmentTypeSlug: "app-plan", title: "S4 · Product and first prompt", brief: "Freeze the original-brand feature contract and first prompt before the build gate opens.", sessionNo: 4, weightBucket: null, assessmentVersionId: "assess_s4_product_prompt_v1" },
     { id: "asg_s4_app", assignmentTypeSlug: "app", title: "S4 · Lovable app", brief: "Submit an immutable V1 and, if used, the one permitted V2 with verification evidence.", sessionNo: 4, weightBucket: "artifact-quality", assessmentVersionId: "assess_s4_app_v1", legacyTitles: ["S4 · Lovable app"] },
@@ -1491,13 +1399,13 @@ export function buildSessions3To5Release(args: {
       id: "spage_3",
       sessionNo: 3,
       title: "Working with data, using AI",
-      summaryMd: "Get defensible answers from a real startup dataset, move computation to Sheets or Colab when context runs out, and ship a verified data memo with a two-method check. After class, publish the separate public-safe method memo within 24 hours.",
+      summaryMd: "Explore a real startup dataset with filters, pivots and formulas, then answer ten graded questions using the 1,000-row sheet. Use the full dataset in class to learn when AI needs a schema, generated code and an external computation tool; the full dataset is not submitted.",
       orderedMaterialIds: s3LearnerMaterialIds,
-      linkedAssignmentIds: ["asg_s3_datamemo", "asg_s3_visuals"],
+      linkedAssignmentIds: ["asg_s3_sample_analysis_v2", "asg_s3_visuals"],
       linkedQuizIds: [],
       legacyTitles: ["Working with data using AI"],
-      staleMaterialIds: ["mat_s3_tokens", "mat_s3_context", "mat_s3_codeint", "mat_s3_sql", "mat_s3_tokenizer", "mat_s3_lmarena", "mat_s3_moxie", "mat_s3_stocks12", "mat_s3_sp500", "mat_s3_schema_stocks", "mat_s3_stocks_sample", "mat_s3_moxie_fy", "mat_s3_allstocks", "mat_s3_schema_moxie", "mat_s3_moxie_sample", "mat_s3_labsheet"],
-      staleAssignmentIds: [],
+      staleMaterialIds: ["mat_s3_tokens", "mat_s3_context", "mat_s3_codeint", "mat_s3_sql", "mat_s3_tokenizer", "mat_s3_lmarena", "mat_s3_moxie", "mat_s3_stocks12", "mat_s3_sp500", "mat_s3_schema_stocks", "mat_s3_stocks_sample", "mat_s3_moxie_fy", "mat_s3_allstocks", "mat_s3_schema_moxie", "mat_s3_moxie_sample", "mat_s3_labsheet", "mat_s3_lab_v1", "mat_s3_dictionary_v1", "mat_s3_public_memo_v1", "mat_s3_learner_csv_v1", "mat_s3_formula_v1", "mat_s3_colab_starter_v1", "mat_s3_learner_sample_v1", "mat_s3_scale_manifest_v1", "mat_s3_scale_schema_v1", "mat_s3_scale_sample_v1", "mat_s3_scale_data_v1", "mat_s3_visuals_a11y_v1", "mat_s3_scoring_rubric_v1"],
+      staleAssignmentIds: ["asg_s3_datamemo"],
       staleQuizIds: ["quiz_s3"],
     },
     {
@@ -1918,7 +1826,7 @@ export function validateReleaseContracts(release: Sessions3To5Release): void {
     }
 
     const expectedCounts: Record<string, { objective: number; judgment: number }> = {
-      assess_s3_data_v1: { objective: 7, judgment: 9 },
+      assess_s3_sample_analysis_v2: { objective: 0, judgment: 10 },
       assess_s3_visuals_v1: { objective: 6, judgment: 6 },
       assess_s4_product_prompt_v1: { objective: 0, judgment: 6 },
       assess_s4_app_v1: { objective: 0, judgment: 4 },
@@ -2247,8 +2155,8 @@ async function ensureMaterials(args: {
       sessionNo: material.sessionNo,
       title: material.title,
       kind: material.kind,
-      s3Key: material.s3Key,
-      externalUrl: null,
+      s3Key: material.s3Key ?? null,
+      externalUrl: material.externalUrl ?? null,
       version: material.version,
       sizeBytes: material.sizeBytes,
       instructorOnly: material.instructorOnly,
@@ -2967,6 +2875,21 @@ function parseSessions(value: string | undefined): Array<3 | 4 | 5> {
   return [...new Set(parsed)] as Array<3 | 4 | 5>;
 }
 
+export function loadSession3SampleAnalysis(path: string): Session3SampleAnalysis {
+  const parsed = objectValue(JSON.parse(readFileSync(path, "utf8")) as unknown, "Session 3 sample analysis");
+  const schemaVersion = stringValue(parsed.schemaVersion, "sampleAnalysis.schemaVersion");
+  if (schemaVersion !== "mu-s3-sample-analysis/2.0") {
+    throw new Error("Session 3 sample analysis uses an unsupported schema version.");
+  }
+  return {
+    schemaVersion,
+    frozenAt: stringValue(parsed.frozenAt, "sampleAnalysis.frozenAt"),
+    sampleSheetUrl: stringValue(parsed.sampleSheetUrl, "sampleAnalysis.sampleSheetUrl"),
+    fullSheetUrl: stringValue(parsed.fullSheetUrl, "sampleAnalysis.fullSheetUrl"),
+    answerSummary: stringValue(parsed.answerSummary, "sampleAnalysis.answerSummary"),
+  };
+}
+
 export async function main(argv = process.argv.slice(2)): Promise<void> {
   const dryRun = argv.includes("--dry-run");
   const reportJson = argv.includes("--report-json");
@@ -2983,6 +2906,7 @@ export async function main(argv = process.argv.slice(2)): Promise<void> {
     lmsRoot: resolvedLmsRoot,
     privateData: loadPrivateCourseDataPackage({ directory: privateDirectory }),
     quizPackage: loadQuizImportPackage({ lmsRoot: resolvedLmsRoot }),
+    sampleAnalysis: loadSession3SampleAnalysis(join(privateDirectory, "trustmrr_s3_sample_analysis_v2.json")),
   });
   const db = new PrismaClient();
   try {
