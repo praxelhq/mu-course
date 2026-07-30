@@ -7,6 +7,7 @@ import {
   reconcilePresentationSelection,
   stepPresentationIndex,
 } from "@/lib/gallery-presentation-navigation";
+import { projectorLayoutStyles } from "@/components/projector-gallery-layout";
 
 const mono: React.CSSProperties = {
   fontFamily: "var(--font-geist-mono)",
@@ -183,18 +184,19 @@ export function ImageGalleryPresenter({
             display: "grid",
             gridTemplateRows: "auto minmax(0, 1fr) auto",
             padding: "clamp(0.75rem, 2vw, 1.5rem)",
+            ...projectorLayoutStyles.overlay,
           }}
         >
-          <header style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "1rem" }}>
+          <header style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "1rem", ...projectorLayoutStyles.header }}>
             <div style={{ minWidth: 0 }}>
               <p style={{ ...mono, margin: 0, fontSize: "0.65rem", color: "var(--ochre)" }}>
                 Projector gallery · Section {sectionCode}
               </p>
-              <h2 style={{ margin: "0.25rem 0 0", fontSize: "clamp(1.15rem, 2vw, 1.75rem)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+              <h2 style={{ margin: "0.25rem 0 0", fontSize: "clamp(1.15rem, 2vw, 1.75rem)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", ...projectorLayoutStyles.heading }}>
                 {title}
               </h2>
             </div>
-            <div style={{ display: "flex", gap: "0.5rem", flexShrink: 0 }}>
+            <div data-testid="projector-actions" style={{ display: "flex", gap: "0.5rem", flexShrink: 0 }}>
               <button type="button" onClick={toggleFullscreen} style={{ ...control, padding: "0.55rem 0.75rem", fontSize: "0.65rem" }}>
                 {fullscreen ? "Exit full screen" : "F · Full screen"}
               </button>
@@ -204,7 +206,7 @@ export function ImageGalleryPresenter({
             </div>
           </header>
 
-          <div style={{ minHeight: 0, position: "relative", display: "grid", placeItems: "center", padding: "1rem clamp(3.5rem, 7vw, 7rem)" }}>
+          <div style={{ minHeight: 0, position: "relative", display: "grid", placeItems: "center", padding: "1rem clamp(3.5rem, 7vw, 7rem)", ...projectorLayoutStyles.stage }}>
             <button
               type="button"
               aria-label="Previous image"
@@ -213,8 +215,9 @@ export function ImageGalleryPresenter({
             >
               ←
             </button>
-            <figure style={{ margin: 0, width: "100%", height: "100%", minHeight: 0, display: "grid", gridTemplateRows: "minmax(0, 1fr) auto", placeItems: "center" }}>
+            <figure style={{ margin: 0, width: "100%", height: "100%", minHeight: 0, display: "grid", gridTemplateRows: "minmax(0, 1fr) auto", placeItems: "center", ...projectorLayoutStyles.figure }}>
               <img
+                data-testid="projector-main-image"
                 src={item.imageUrl}
                 alt={`Submission ${activeIndex + 1} from ${item.ownerName}`}
                 style={{ display: "block", maxWidth: "100%", maxHeight: "100%", width: "auto", height: "auto", objectFit: "contain" }}
@@ -236,11 +239,11 @@ export function ImageGalleryPresenter({
             </button>
           </div>
 
-          <footer>
+          <footer data-testid="projector-footer" style={projectorLayoutStyles.footer}>
             <p style={{ ...mono, margin: "0 0 0.5rem", textAlign: "center", fontSize: "0.6rem", color: "var(--sand)" }}>
               Use ← →, Space, or the side buttons · thumbnails scroll horizontally
             </p>
-            <div style={{ display: "flex", gap: "0.5rem", overflowX: "auto", padding: "0.25rem 0 0.5rem", scrollbarColor: "var(--ochre) var(--pine)" }}>
+            <div data-testid="projector-thumbnail-rail" style={{ display: "flex", gap: "0.5rem", overflowX: "auto", padding: "0.25rem 0 0.5rem", scrollbarColor: "var(--ochre) var(--pine)", ...projectorLayoutStyles.thumbnailRail }}>
               {items.map((thumbnail, thumbnailIndex) => {
                 const active = thumbnailIndex === activeIndex;
                 return (
