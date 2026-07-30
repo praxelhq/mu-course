@@ -1,0 +1,26 @@
+{
+  "artifact": "S5 lead-routing verification summary",
+  "suite_id": "S5-GTM-FIXTURES-v1",
+  "generated_at": "2026-07-30T09:50:00Z",
+  "evidence_mode": "controlled classroom replay",
+  "replay_completed_at": "2026-07-30T09:49:42Z",
+  "data_classification": "synthetic and redacted",
+  "result": {
+    "fixtures_run": 5,
+    "normal_drafts_or_queue_items": 1,
+    "duplicates_suppressed": 1,
+    "validation_quarantines": 1,
+    "manual_recovery_after_three_timeouts": 1,
+    "pending_approval": 1,
+    "external_actions_executed": 0
+  },
+  "states": [
+    {"fixture_id":"S5-FIX-NORMAL-01","state":"drafted","pass":true},
+    {"fixture_id":"S5-FIX-DUPLICATE-01","state":"duplicate_suppressed","pass":true},
+    {"fixture_id":"S5-FIX-MALFORMED-01","state":"quarantined_validation","pass":true},
+    {"fixture_id":"S5-FIX-TIMEOUT-01","first_state":"retrying","state":"manual_recovery","attempt_count":3,"pass":true,"note":"controlled replay; all three failed attempts and final owner are present in the run log"},
+    {"fixture_id":"S5-FIX-APPROVAL-01","state":"pending_approval","pass":true}
+  ],
+  "gallery_safe_claim": "The classroom scenario created one draft/queue item, suppressed one repeat event, quarantined invalid input, retained one timeout for bounded recovery, and held one high-risk lead for approval. It sent nothing externally.",
+  "known_limitation": "The classroom build serialises events and uses a Sheets search-then-write store; a production system needs atomic uniqueness and concurrency/load testing."
+}

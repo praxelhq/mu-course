@@ -1,0 +1,106 @@
+{
+  "status": "pass",
+  "artifact": "lms/output/session-03/session-03-formula-pivot-planner.xlsx",
+  "artifact_sha256": "d55f15ebcc4b168bfd9b8816fe80763ab14f06291da4eb4f0da0e94e97140163",
+  "artifact_bytes": 15075,
+  "sheets": [
+    "README",
+    "Analysis",
+    "Pivot Plan",
+    "startups",
+    "Schema"
+  ],
+  "sheet_count": 5,
+  "learner_header_count": 29,
+  "source_dataset_version": "trustmrr-s3-v1",
+  "source_manifest_version": "1.1",
+  "private_rows_read": false,
+  "answer_values_embedded": false,
+  "formula_placeholders": 6,
+  "live_formula_cells": 8,
+  "formula_error_scan": "pass",
+  "implicit_inspect_support_removed": true,
+  "inspections": [
+    {
+      "sheetName": "README",
+      "range": "A1:B27",
+      "ndjson_sha256": "70a70b1ddefb9334102965211547a72fd144420a389c3d9c9c7c8589d1619511"
+    },
+    {
+      "sheetName": "Analysis",
+      "range": "A1:J14",
+      "ndjson_sha256": "c790a657df130ceb5db513c540334131552b16483ff13e7618bc24a53dd0c738"
+    },
+    {
+      "sheetName": "Pivot Plan",
+      "range": "A1:H16",
+      "ndjson_sha256": "2ec80ac3b67bdf1ac0f8720beb9decb38e06c3d6f98565ae3857b5b286fe38a3"
+    },
+    {
+      "sheetName": "startups",
+      "range": "A1:AC2",
+      "ndjson_sha256": "2d05702f6990069b3d7c75ba84b97b1162619ece50d3127953cf85d43cd0e6fc"
+    },
+    {
+      "sheetName": "Schema",
+      "range": "A1:E32",
+      "ndjson_sha256": "f219e0011cbf6f2ff345a451e3949741e91b165ac0d00d5198770119511c5493"
+    }
+  ],
+  "renders": [
+    {
+      "sheetName": "README",
+      "range": "A1:B27",
+      "previewPath": "/tmp/mu-s3-workbook-previews/readme.png",
+      "bytes": 163052
+    },
+    {
+      "sheetName": "Analysis",
+      "range": "A1:J14",
+      "previewPath": "/tmp/mu-s3-workbook-previews/analysis.png",
+      "bytes": 193905
+    },
+    {
+      "sheetName": "Pivot Plan",
+      "range": "A1:H16",
+      "previewPath": "/tmp/mu-s3-workbook-previews/pivot-plan.png",
+      "bytes": 154677
+    },
+    {
+      "sheetName": "startups",
+      "range": "A1:AC2",
+      "previewPath": "/tmp/mu-s3-workbook-previews/startups-headers.png",
+      "bytes": 33945
+    },
+    {
+      "sheetName": "Schema",
+      "range": "A1:E32",
+      "previewPath": "/tmp/mu-s3-workbook-previews/schema.png",
+      "bytes": 245206
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "private-safe.trustmrr-s3-schema",
+      "version_id": "trustmrr-s3-v1",
+      "path": "lms/private/course-data/session-03/generated/v1/trustmrr_s3_schema_v1.json",
+      "sha256": "3265cf3ef375e2fce5253885c74edff4e34352f6c00f12a97bc5658d915af09d"
+    },
+    {
+      "source_id": "private-safe.trustmrr-s3-manifest",
+      "version_id": "1.1",
+      "path": "lms/private/course-data/session-03/generated/v1/trustmrr_s3_manifest_v1.json",
+      "sha256": "a8f79d1f010599436646a1052e0a828cf41bbfc5d4a6f1c77db7f366c4a39bef"
+    },
+    {
+      "source_id": "session-03.data-dictionary",
+      "path": "lms/course/session-03/data-dictionary.md",
+      "sha256": "6b3d4000c07aad78c588ac8be806559ad428d7f5c688eae4eeb280761a650f48"
+    },
+    {
+      "source_id": "session-03.spreadsheet-pathway",
+      "path": "lms/course/session-03/spreadsheet-pathway.md",
+      "sha256": "955958e5b36eb7484befe4f3b6a55f4636ce7d832dbc3b3260ecec3f7458d634"
+    }
+  ]
+}

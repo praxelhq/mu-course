@@ -1,0 +1,48 @@
+{
+  "status": "pass",
+  "assessment_count": 3,
+  "item_count": 21,
+  "option_count": 84,
+  "unique_item_versions": true,
+  "unique_option_ids": true,
+  "instructor_key_separate": true,
+  "s3_accessible_artifact_count": 6,
+  "s4_non_patterned_position_check": "pass",
+  "delivery_window_release_checks": "pass",
+  "roundtrip": [
+    {
+      "assessment_id": "assess_s3_visuals_v1",
+      "items": 6,
+      "options": 24,
+      "json_csv_id_roundtrip": "pass",
+      "learner_key_field_scan": "pass"
+    },
+    {
+      "assessment_id": "quiz_s4_product-build-judgment",
+      "items": 7,
+      "options": 28,
+      "json_csv_id_roundtrip": "pass",
+      "learner_key_field_scan": "pass"
+    },
+    {
+      "assessment_id": "quiz_s5_workflow-control",
+      "items": 8,
+      "options": 32,
+      "json_csv_id_roundtrip": "pass",
+      "learner_key_field_scan": "pass"
+    }
+  ],
+  "learner_files": [
+    "lms/output/quizzes/s3-visualization-scenarios.v1.json",
+    "lms/output/quizzes/s3-visualization-scenarios.v1.csv",
+    "lms/output/quizzes/s4-product-build-judgment.v1.json",
+    "lms/output/quizzes/s4-product-build-judgment.v1.csv",
+    "lms/output/quizzes/s5-workflow-control.v1.json",
+    "lms/output/quizzes/s5-workflow-control.v1.csv"
+  ],
+  "accessible_artifact_files": [
+    "lms/output/quizzes/s3-visualization-accessible-artifacts.v1.json",
+    "lms/output/quizzes/s3-visualization-accessible-artifacts.v1.csv"
+  ],
+  "learner_output_answer_key_scan": "pass"
+}

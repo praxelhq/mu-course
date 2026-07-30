@@ -1,0 +1,324 @@
+{
+  "import_schema_version": "mu-lms-assessment-import/1.0",
+  "audience": "learner",
+  "assessment": {
+    "assessment_id": "quiz_s4_product-build-judgment",
+    "assessment_version_id": "S4-SQ-v1",
+    "session_no": 4,
+    "title": "S4 · Product build judgment",
+    "assessment_class": "counted_surprise_candidate_or_retention_check",
+    "activation_rule": "dormant by default; when armed, replaces the protected 04–10 retrieval-prediction row",
+    "time_limit_seconds": 360,
+    "attempt_policy": "one attempt when counted",
+    "course_weight": "best-three surprise-quiz percentages when counted; none when retention",
+    "mastery_rule": "5/7",
+    "answer_release_rule": "attempt receipt only until the last participating section using S4-SQ-v1 closes",
+    "scoring_identity": "stable option ID; never display letter or array index",
+    "protected_time_source": {
+      "source_id": "lms.course.session-04.lesson-plan",
+      "source_version_id": "S4-SQ-v1-protected-04-10",
+      "source_path": "lms/course/session-04/01-lesson-plan.md",
+      "source_content_sha256": "495ef5bee40136e8176f0e4449f23a32509472cdda810203db5b5b4b2b2228b1"
+    },
+    "manifest_registration": {
+      "registered": true,
+      "source_id": "lms.course.session-04.lms-manifest",
+      "source_version_id": "1.0",
+      "source_path": "lms/course/session-04/09-lms-manifest.yaml",
+      "source_content_sha256": "d737b84aa8c034089a3c5c7e9e7b605f8903559b68a14dab00b37e23cb91771e"
+    },
+    "source_id": "lms.course.session-04.student-quiz",
+    "source_version_id": "S4-SQ-v1",
+    "source_path": "lms/course/session-04/12-student-quiz.md",
+    "source_content_sha256": "ce0b823cb5aac44137a549850401ae48546f49c08f44cd52a36e443217b53a54"
+  },
+  "items": [
+    {
+      "item_id": "S4-Q1",
+      "item_version_id": "S4-Q1@1",
+      "item_order": 1,
+      "outcome_ids": [
+        "S4-O1"
+      ],
+      "demand": "Product-selection judgment",
+      "difficulty": null,
+      "item_time_seconds": 45,
+      "prompt": "Three products have credible revenue. Which is the strongest one-hour classroom target?",
+      "response": {
+        "type": "single_choice",
+        "selected_option_field": "selectedOptionId"
+      },
+      "shuffle_options": true,
+      "volatile": false,
+      "stale_check_rule": "Revenue examples, not key",
+      "options": [
+        {
+          "option_id": "S4-Q1-FEATURE-LIST",
+          "canonical_order": 1,
+          "text": "The one with the longest official feature list"
+        },
+        {
+          "option_id": "S4-Q1-END-TO-END",
+          "canonical_order": 2,
+          "text": "The one whose valuable end-to-end behavior can be built and verified within the real constraints"
+        },
+        {
+          "option_id": "S4-Q1-HIGHEST-MRR",
+          "canonical_order": 3,
+          "text": "The one with the highest MRR, regardless of architecture"
+        },
+        {
+          "option_id": "S4-Q1-VISUAL",
+          "canonical_order": 4,
+          "text": "The one with the most visually impressive landing page"
+        }
+      ]
+    },
+    {
+      "item_id": "S4-Q2",
+      "item_version_id": "S4-Q2@1",
+      "item_order": 2,
+      "outcome_ids": [
+        "S4-O2"
+      ],
+      "demand": "Truthful mock boundary",
+      "difficulty": null,
+      "item_time_seconds": 45,
+      "prompt": "Which implementation treats an unavailable Instagram integration honestly?",
+      "response": {
+        "type": "single_choice",
+        "selected_option_field": "selectedOptionId"
+      },
+      "shuffle_options": true,
+      "volatile": false,
+      "stale_check_rule": "No",
+      "options": [
+        {
+          "option_id": "S4-Q2-TIMER-CONNECTED",
+          "canonical_order": 1,
+          "text": "Show “Connected” after a timer so the flow feels complete"
+        },
+        {
+          "option_id": "S4-Q2-PRESENTATION-ONLY",
+          "canonical_order": 2,
+          "text": "Remove the label but explain the mock in the final presentation"
+        },
+        {
+          "option_id": "S4-Q2-PASTE-PASSWORD",
+          "canonical_order": 3,
+          "text": "Ask the student to paste their Instagram password"
+        },
+        {
+          "option_id": "S4-Q2-LABELLED-FIXTURE",
+          "canonical_order": 4,
+          "text": "Load fictional posts and label the action “Demo import — no Instagram connection”"
+        }
+      ]
+    },
+    {
+      "item_id": "S4-Q3",
+      "item_version_id": "S4-Q3@1",
+      "item_order": 3,
+      "outcome_ids": [
+        "S4-O3"
+      ],
+      "demand": "First-prompt diagnosis",
+      "difficulty": null,
+      "item_time_seconds": 50,
+      "prompt": "Which addition most improves a vague first prompt?",
+      "response": {
+        "type": "single_choice",
+        "selected_option_field": "selectedOptionId"
+      },
+      "shuffle_options": true,
+      "volatile": false,
+      "stale_check_rule": "No",
+      "options": [
+        {
+          "option_id": "S4-Q3-OPERATING-CONTRACT",
+          "canonical_order": 1,
+          "text": "A specific user/job, state/actions, failure boundaries and observable acceptance tests"
+        },
+        {
+          "option_id": "S4-Q3-WORLD-CLASS",
+          "canonical_order": 2,
+          "text": "“Make it world-class”"
+        },
+        {
+          "option_id": "S4-Q3-ADVANCED-STACK",
+          "canonical_order": 3,
+          "text": "“Use the most advanced stack”"
+        },
+        {
+          "option_id": "S4-Q3-COPY-SCREENSHOT",
+          "canonical_order": 4,
+          "text": "A screenshot and “copy this exactly”"
+        }
+      ]
+    },
+    {
+      "item_id": "S4-Q4",
+      "item_version_id": "S4-Q4@1",
+      "item_order": 4,
+      "outcome_ids": [
+        "S4-O3"
+      ],
+      "demand": "Plan-mode operating fact",
+      "difficulty": null,
+      "item_time_seconds": 40,
+      "prompt": "Under Lovable’s documented behavior at the Session 4 source check, what happens in Plan mode?",
+      "response": {
+        "type": "single_choice",
+        "selected_option_field": "selectedOptionId"
+      },
+      "shuffle_options": true,
+      "volatile": true,
+      "stale_check_rule": "Yes, T-7",
+      "options": [
+        {
+          "option_id": "S4-Q4-AUTO-PUBLISH",
+          "canonical_order": 1,
+          "text": "It publishes automatically when the plan is complete"
+        },
+        {
+          "option_id": "S4-Q4-EDIT-FREE",
+          "canonical_order": 2,
+          "text": "It edits code immediately and costs nothing"
+        },
+        {
+          "option_id": "S4-Q4-NO-EDIT-ONE-CREDIT",
+          "canonical_order": 3,
+          "text": "It never changes code until approval, and each Plan message costs one credit"
+        },
+        {
+          "option_id": "S4-Q4-ALWAYS-CHEAPER",
+          "canonical_order": 4,
+          "text": "It always costs less than Build mode"
+        }
+      ]
+    },
+    {
+      "item_id": "S4-Q5",
+      "item_version_id": "S4-Q5@1",
+      "item_order": 5,
+      "outcome_ids": [
+        "S4-O4"
+      ],
+      "demand": "Publish/verification judgment",
+      "difficulty": null,
+      "item_time_seconds": 50,
+      "prompt": "A student has a tested app and zero build credits. What is the best current publication move?",
+      "response": {
+        "type": "single_choice",
+        "selected_option_field": "selectedOptionId"
+      },
+      "shuffle_options": true,
+      "volatile": true,
+      "stale_check_rule": "Yes, T-7",
+      "options": [
+        {
+          "option_id": "S4-Q5-PUBLISH-INCOGNITO",
+          "canonical_order": 1,
+          "text": "Use the Publish dialog, then verify the live URL in incognito"
+        },
+        {
+          "option_id": "S4-Q5-EDITOR-PREVIEW",
+          "canonical_order": 2,
+          "text": "Submit the editor preview"
+        },
+        {
+          "option_id": "S4-Q5-BUY-CREDITS",
+          "canonical_order": 3,
+          "text": "Buy credits before the deadline"
+        },
+        {
+          "option_id": "S4-Q5-CHAT-SHIP",
+          "canonical_order": 4,
+          "text": "Ask Lovable in chat to “ship it”"
+        }
+      ]
+    },
+    {
+      "item_id": "S4-Q6",
+      "item_version_id": "S4-Q6@1",
+      "item_order": 6,
+      "outcome_ids": [
+        "S4-O5"
+      ],
+      "demand": "Credit-plan reasoning",
+      "difficulty": null,
+      "item_time_seconds": 50,
+      "prompt": "Why can a student not assume ten days on Lovable Free equals fifty usable build credits?",
+      "response": {
+        "type": "single_choice",
+        "selected_option_field": "selectedOptionId"
+      },
+      "shuffle_options": true,
+      "volatile": true,
+      "stale_check_rule": "Yes, T-7",
+      "options": [
+        {
+          "option_id": "S4-Q6-CANNOT-PUBLISH",
+          "canonical_order": 1,
+          "text": "Free accounts cannot publish"
+        },
+        {
+          "option_id": "S4-Q6-PLAN-FIVE",
+          "canonical_order": 2,
+          "text": "Plan mode costs five credits per message"
+        },
+        {
+          "option_id": "S4-Q6-HOSTING-ONLY",
+          "canonical_order": 3,
+          "text": "Credits are used only for hosting"
+        },
+        {
+          "option_id": "S4-Q6-EXPIRY-CAP",
+          "canonical_order": 4,
+          "text": "Daily build grants do not roll over and the Free plan is capped at 30 per month"
+        }
+      ]
+    },
+    {
+      "item_id": "S4-Q7",
+      "item_version_id": "S4-Q7@1",
+      "item_order": 7,
+      "outcome_ids": [
+        "S4-O4"
+      ],
+      "demand": "Evidence quality",
+      "difficulty": null,
+      "item_time_seconds": 50,
+      "prompt": "Which submission is the strongest verification evidence?",
+      "response": {
+        "type": "single_choice",
+        "selected_option_field": "selectedOptionId"
+      },
+      "shuffle_options": true,
+      "volatile": false,
+      "stale_check_rule": "No",
+      "options": [
+        {
+          "option_id": "S4-Q7-MODEL-CLAIM",
+          "canonical_order": 1,
+          "text": "A long list of features Lovable said it implemented"
+        },
+        {
+          "option_id": "S4-Q7-REPRODUCIBLE-EVIDENCE",
+          "canonical_order": 2,
+          "text": "A public URL plus timestamped PASS/FAIL/NOT RUN log, negative test, incognito peer check and known limitations"
+        },
+        {
+          "option_id": "S4-Q7-UNMAPPED-SCREENSHOTS",
+          "canonical_order": 3,
+          "text": "Three screenshots with no test IDs"
+        },
+        {
+          "option_id": "S4-Q7-LAPTOP-CLAIM",
+          "canonical_order": 4,
+          "text": "“It worked on my laptop”"
+        }
+      ]
+    }
+  ]
+}

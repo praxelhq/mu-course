@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Session 3 offline lab</title>
+  <style>
+    body{font:18px/1.55 system-ui,sans-serif;max-width:900px;margin:40px auto;padding:0 24px;color:#15251f;background:#fffdf7}
+    h1,h2{line-height:1.15} code,pre{font-family:ui-monospace,monospace;background:#f0eee6} pre{padding:16px;overflow:auto}
+    .callout{border-left:6px solid #d36b3f;padding:12px 16px;background:#fff4ec}.step{border-top:1px solid #cfc8ba;padding-top:14px}
+    :focus{outline:3px solid #1b6f5a;outline-offset:3px}@media print{body{font-size:12pt;margin:0}.callout{break-inside:avoid}}
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Session 3 · Offline execution lab</h1>
+    <p>This no-notebook route has the same score ceiling. It runs the full gzip JSONL locally and writes only compact output plus an audit trace.</p>
+    <div class="callout"><strong>Privacy:</strong> keep the data and output in the section’s private folder. Do not attach rows to a personal AI workspace or publish the output.</div>
+    <section class="step"><h2>1 · Verify the pack</h2><p>Compare the dataset version and SHA-256 with the LMS/offline manifest. Stop on any mismatch.</p></section>
+    <section class="step"><h2>2 · Open a terminal in this folder</h2><pre><code>python -m pip install --require-virtualenv pandas==3.0.0
+python session-03-local-runner.py \
+  --input trustmrr_s3_peer_comparisons_v1.jsonl.gz \
+  --output session-03-scale-output.csv \
+  --trace session-03-scale-trace.json \
+  --dataset-version trustmrr-s3-v1 \
+  --expected-sha256 &lt;SHA-256-FROM-MATERIAL-CARD&gt;</code></pre></section>
+    <section class="step"><h2>3 · Read checks before results</h2><p>The command must print <code>PASS</code>. Open the private trace and confirm checksum, assertions, valid/excluded counts, and runtime version before using the aggregate.</p></section>
+    <section class="step"><h2>4 · Verify independently</h2><p>Recompute one bounded result with a pivot, formula, or a second implementation. A second prompt to the same model is not independent.</p></section>
+    <section class="step"><h2>5 · Submit after service returns</h2><p>Upload the numbered answer sheet, runner/code, compact CSV, and trace. Never upload the full peer file as evidence.</p></section>
+  </main>
+</body>
+</html>

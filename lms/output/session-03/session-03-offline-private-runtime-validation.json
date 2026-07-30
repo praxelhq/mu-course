@@ -1,0 +1,24 @@
+{
+  "status": "pass",
+  "validated_at": "2026-07-30",
+  "dataset_version": "trustmrr-s3-v1",
+  "execution_mode": "fresh uv no-project Python environment with pinned pandas",
+  "private_data_read": true,
+  "private_rows_or_answer_values_in_receipt": false,
+  "input_sha256": "ee04e481e220656049e074e6cd80989f2aba3a518a158e9381e74bb3b702359a",
+  "runner_sha256": "1e752fb0ceb5a4b9279b60f32f13e64ce16f25b57ae571261c2a23d5537fbb21",
+  "private_trace_sha256": "664d30e80e287ac93653a0531daa9f9707e412ddef5bbf63854d39e458f5ebc9",
+  "private_output_sha256": "b510e530829471a5fa76b9f2258794044548814c133cc367eeb26d59b3604601",
+  "assertions_passed": true,
+  "runtime": {
+    "python": "3.12.11",
+    "pandas": "3.0.0"
+  },
+  "private_artifacts": {
+    "tracked_in_git": false,
+    "location": "ignored Session 3 private generated pack",
+    "contains_answer_bearing_counts_or_rows": true,
+    "release_rule": "roster-gated; never learner-previewed before the assessment closes"
+  },
+  "lifecycle_note": "This proves the local runner executes the private file in a fresh runtime. It is not learner timing, outage rehearsal, piloting, deployment, or classroom rehearsal evidence."
+}

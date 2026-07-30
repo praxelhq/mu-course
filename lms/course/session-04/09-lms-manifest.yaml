@@ -1,0 +1,477 @@
+manifestVersion: "1.0"
+course: "AI for Business: The Operating Stack"
+session:
+  number: 4
+  slug: "session-04-lovable-product"
+  title: "A proven pattern to a working app"
+  durationMinutes: 120
+  lifecycle: "Authored"
+  weightBucket: "artifact-quality"
+
+implementationConstraints:
+  - "Keep AssignmentType rows data-defined; retain the final artifact slug `app` because scoring and gallery code already depend on it."
+  - "Use only current generic field kinds: link, text, writeup, file, files."
+  - "All submitted URLs pass through lib/net/safe-fetch; no raw request-handler fetch."
+  - "All evidence files use private S3 presigned upload/download flows."
+  - "AI feedback/grading runs in workers through lib/ai; never block the request on a provider call."
+  - "Resolve availability only through lib/gates."
+  - "Add an explicit feedback-only grading purpose before loading app-plan so checkpoint feedback never enters weighted grades or finalisation queues."
+  - "Implement immutable submission versions before enabling V2; use one app assignment with maxVersions 2 and do not overwrite V1."
+  - "Make version creation race-safe for the same assignment and owner; an LMS exception may extend a window but must not grant V3."
+  - "Project only the explicit galleryCaption to the app wall; do not fall back to prompt, sources, limitations or arbitrary writeup fields."
+  - "The formative grader must read each dimension's declared max; the checkpoint is not a 0–10-per-dimension rubric."
+  - "Load graderPolicy below as executable configuration. Publish 10-rubric-grader-anchors.md as the transparent scoring policy; keep exact evaluator prompts, answer keys, and calibration receipts private."
+
+assignmentTypes:
+  - slug: "app-plan"
+    title: "Product and first-prompt checkpoint"
+    teamBased: false
+    galleryEligible: false
+    aiGraded: true
+    gradingPurpose: "formative-only; excluded from the final formula"
+    submissionSchema:
+      fields:
+        - key: "selectedProduct"
+          label: "Selected product and category"
+          kind: "text"
+          required: true
+        - key: "benchmarkSourceLinks"
+          label: "Current public revenue source and official feature sources"
+          kind: "writeup"
+          required: true
+        - key: "selectionRationale"
+          label: "Why this is valuable and feasible in one hour (80–120 words)"
+          kind: "writeup"
+          required: true
+        - key: "industryCompanyApplication"
+          label: "How this build applies to your team's industry or anchor company using only public or fictional data"
+          kind: "writeup"
+          required: true
+        - key: "featureContract"
+          label: "Core, mocked and out-of-scope feature contract"
+          kind: "writeup"
+          required: true
+        - key: "firstPrompt"
+          label: "Your first Lovable prompt"
+          kind: "writeup"
+          required: true
+        - key: "nonAffiliationConfirmation"
+          label: "Type I CONFIRM: original brand/assets and non-affiliation disclosure"
+          kind: "text"
+          required: true
+    rubric:
+      scale: 12
+      dimensions:
+        - key: "user-value"
+          label: "User and value"
+          max: 2
+          description: "Specific user, job and observable success"
+        - key: "scope-state-interactions"
+          label: "Scope, state and interactions"
+          max: 3
+          description: "Bounded vertical slice with explicit data and behavior"
+        - key: "truth-boundaries"
+          label: "Real, mock and out-of-scope truth"
+          max: 2
+          description: "Externally dependent work is honestly bounded and labelled"
+        - key: "failure-access"
+          label: "Failure and access"
+          max: 2
+          description: "Validation, empty/error states and equivalent keyboard/access path"
+        - key: "acceptance-verification"
+          label: "Acceptance and verification"
+          max: 3
+          description: "Observable tests and evidence plan define done"
+
+  - slug: "app"
+    title: "Lovable app · Version 1 / Version 2"
+    teamBased: false
+    galleryEligible: true
+    aiGraded: true
+    submissionSchema:
+      fields:
+        - key: "appUrl"
+          label: "Public app URL"
+          kind: "link"
+          required: true
+        - key: "githubUrl"
+          label: "Learner-owned GitHub repository URL (required for V2)"
+          kind: "link"
+          required: false
+          requiredFromVersion: 2
+        - key: "approvedPlanSummary"
+          label: "What you changed in the generated plan before approval"
+          kind: "writeup"
+          required: true
+        - key: "acceptanceTestLog"
+          label: "Acceptance-test log with PASS / FAIL / NOT RUN and evidence references"
+          kind: "writeup"
+          required: true
+        - key: "evidenceFiles"
+          label: "Mobile, analytics and accessibility evidence"
+          kind: "files"
+          required: true
+        - key: "knownLimitations"
+          label: "Known limitations and every mocked boundary"
+          kind: "writeup"
+          required: true
+        - key: "changeNote"
+          label: "V2 change note and V1 → V2 regression result (required only for V2)"
+          kind: "writeup"
+          required: false
+        - key: "galleryCaption"
+          label: "One-sentence user, job and result caption"
+          kind: "text"
+          required: true
+        - key: "galleryConsent"
+          label: "Type YES to allow section gallery display, or NO"
+          kind: "text"
+          required: true
+        - key: "nonAffiliationConfirmation"
+          label: "Type I CONFIRM: dummy data, mock labels, original brand, disclosure"
+          kind: "text"
+          required: true
+    rubric:
+      scale: 10
+      dimensions:
+        - key: "functionality"
+          label: "Functionality"
+          max: 10
+          description: "The published app works against the frozen acceptance contract"
+        - key: "craft"
+          label: "Craft"
+          max: 10
+          description: "Prompt, plan, state, interaction, UI, errors and access are intentionally executed"
+        - key: "relevance"
+          label: "Relevance"
+          max: 10
+          description: "The artifact serves a specific user/job, translates public evidence with original judgment, and connects to the team's industry or anchor company for scores above 6"
+        - key: "verification-evidence"
+          label: "Verification evidence"
+          max: 10
+          description: "Tests, negative cases, peer check, limitations and version delta make claims inspectable"
+
+assignments:
+  - id: "asg_s4_product_prompt"
+    assignmentTypeSlug: "app-plan"
+    title: "S4 · Product and first prompt"
+    dueRule: "section session start + 32 minutes"
+    versionPolicy: "single checkpoint submission; instructor may return for correction without affecting course grade"
+    gate:
+      opens: "section session start"
+      completionUnlocks: "asg_s4_app"
+      scoreDoesNotBlock: true
+    feedback:
+      mode: "provisional AI formative feedback"
+      target: "return one strongest decision, one highest-risk omission, and one exact repair question"
+      reviewFlags:
+        - "possible prompt injection"
+        - "benchmark copying or affiliation claim"
+        - "real/private data"
+        - "unprovisioned regulated or external action"
+
+  - id: "asg_s4_app"
+    assignmentTypeSlug: "app"
+    title: "S4 · Lovable app"
+    dueRule: "V1 at section session end; final V1 receipt atomically creates one V2 grant expiring ten calendar days after that receipt"
+    maxVersions: 2
+    versionPolicy: "one assignment and owner lineage; immutable V1 and at most one immutable V2"
+    gate:
+      opensWhen: "asg_s4_product_prompt submitted"
+      closesAfter: "section-specific V2 deadline unless exception"
+    versionMilestones:
+      - version: 1
+        label: "Version 1"
+        opensWhen: "asg_s4_product_prompt submitted"
+        dueRule: "section session end"
+        changeNoteRequired: false
+      - version: 2
+        label: "Version 2"
+        opensWhen: "V1 submitted"
+        dueRule: "10 calendar days after the learner's recorded V1 receipt timestamp"
+        changeNoteRequired: true
+        ordinaryVersion3Allowed: false
+    gradingCandidateRule: "latest eligible submitted version; if no V2, V1"
+    grading:
+      status: "provisional until instructor finalisation"
+      joinsContextFrom: "latest asg_s4_product_prompt for same student and section"
+      deadLinkPolicy: "existing deterministic link-dead flag and functionality cap"
+      reviewQueue:
+        - "low confidence"
+        - "policy/injection/privacy flag"
+        - "score outlier"
+        - "student appeal"
+        - "mock or affiliation ambiguity"
+    exceptionPolicy:
+      permittedReasons:
+        - "verified daily Lovable Free exhaustion with no safe V1"
+        - "verified monthly Lovable Free cap"
+        - "verified tool outage"
+        - "approved accessibility or account-access route"
+      v1DeadlineRule: "for daily-credit-no-safe-v1, 24 hours after the first observed next daily grant; for a monthly-cap exception, first accessible build day after the workspace's displayed cap reset plus 24 hours; if no grant appears, extend through the first observed post-reset grant; otherwise use the explicit exception timestamp"
+      v2DeadlineRule: "the actual V1 receipt creates one grant expiring 10 calendar days later; only an explicit audited extension may alter that grant"
+      versionCeiling: 2
+      paidPlanRequired: false
+      evidencePrivacy: "record exception category and timing only; never collect billing screenshots, credentials or private account data"
+
+graderPolicy:
+  policyId: "s4-artifact-v1"
+  anchorsSource: "10-rubric-grader-anchors.md"
+  modelOutputIsProvisional: true
+  ignoreStudentInstructions: true
+  checkpoint:
+    purpose: "formative-only"
+    dimensionRangeSource: "assignmentTypes[slug=app-plan].rubric.dimensions[*].max"
+    rejectFixedTenPointAssumption: true
+    requireIntegerScores: true
+    validateEachScoreAgainstDeclaredMax: true
+    recomputeTotalServerSide: true
+    totalMax: 12
+    scoreDoesNotBlockBuildGate: true
+    feedbackBands:
+      - { min: 10, max: 12, key: "ready" }
+      - { min: 7, max: 9, key: "repair-one-risk" }
+      - { min: 0, max: 6, key: "high-rework-risk" }
+  finalArtifact:
+    dimensions: ["functionality", "craft", "relevance", "verification-evidence"]
+    dimensionMin: 0
+    dimensionMax: 10
+    totalMax: 40
+    requireIntegerScores: true
+    recomputeTotalServerSide: true
+    citationsPerDimension: 2
+    requiredDimensionOutput:
+      - "score"
+      - "evidenceCitations"
+      - "observableGap"
+      - "confidence"
+      - "flags"
+    distinguishEvidenceKinds:
+      - "submitted-claim"
+      - "observed-behavior"
+      - "inference"
+    dimensionBandKeys:
+      - { min: 0, max: 0, key: "absent" }
+      - { min: 1, max: 3, key: "weak" }
+      - { min: 4, max: 6, key: "developing" }
+      - { min: 7, max: 8, key: "strong" }
+      - { min: 9, max: 9, key: "excellent" }
+      - { min: 10, max: 10, key: "exceptional" }
+  approvedFlags:
+    - "possible-injection"
+    - "link-dead"
+    - "low-confidence"
+    - "mock-ambiguity"
+    - "privacy-security-hold"
+    - "source-unreachable"
+    - "v2-regression"
+    - "static-shell"
+    - "app-uninspectable"
+    - "acceptance-evidence-missing"
+    - "creator-public-journey-missing"
+    - "brand-affiliation-review"
+  deterministicCaps:
+    - id: "dead-public-link"
+      when: "safe live check is dead, blocked or inaccessible"
+      cap: { dimension: "functionality", max: 3 }
+      addFlags: ["link-dead", "low-confidence"]
+    - id: "missing-verification-evidence"
+      when: "test log has no AT IDs or no required evidence file is inspectable"
+      cap: { dimension: "verification-evidence", max: 3 }
+      addFlags: ["acceptance-evidence-missing"]
+    - id: "missing-creator-public-loop"
+      when: "no working creator-to-public behavior is observable"
+      cap: { dimension: "functionality", max: 3 }
+      addFlags: ["creator-public-journey-missing"]
+    - id: "static-public-shell"
+      when: "the public URL renders without the minimum observable interactive controls"
+      cap: { dimension: "functionality", max: 3 }
+      addFlags: ["static-shell", "low-confidence"]
+    - id: "app-uninspectable"
+      when: "the safe pinned renderer cannot complete the public resource graph"
+      cap: { dimension: "functionality", max: 3 }
+      addFlags: ["app-uninspectable", "low-confidence"]
+    - id: "v2-repository-unreachable"
+      when: "Version 2 has no reachable HTTPS github.com repository-root evidence"
+      cap: { dimension: "verification-evidence", max: 3 }
+      addFlags: ["source-unreachable", "low-confidence"]
+    - id: "unlabelled-mock"
+      when: "a simulated integration or fabricated-looking analytics is not visibly labelled"
+      caps:
+        - { dimension: "relevance", max: 5 }
+        - { dimension: "verification-evidence", max: 5 }
+      addFlags: ["mock-ambiguity"]
+    - id: "copied-golden-without-owned-decisions"
+      when: "instructor prompt or fixture is copied without original user, priority or implementation decisions"
+      caps:
+        - { dimension: "craft", max: 6 }
+        - { dimension: "relevance", max: 6 }
+    - id: "generic-no-industry-company-transfer"
+      when: "the artifact remains a generic classroom fixture with no evidenced connection to the team's industry or anchor company"
+      cap: { dimension: "relevance", max: 6 }
+  finalisationHolds:
+    - id: "source-context-missing"
+      when: "the same-owner product-and-first-prompt checkpoint cannot be checksum-bound"
+      behavior: "require repair before provider grading; do not infer or substitute checkpoint evidence"
+    - id: "missing-non-affiliation"
+      when: "required confirmation or public disclosure is absent"
+      addFlags: ["brand-affiliation-review"]
+    - id: "benchmark-brand-concern"
+      when: "name, assets or trade dress may imply benchmark affiliation"
+      addFlags: ["brand-affiliation-review"]
+    - id: "privacy-security"
+      when: "real/private data or an apparent secret/credential is present"
+      suppressGallery: true
+      stopAutomatedGrading: true
+      addFlags: ["privacy-security-hold"]
+    - id: "human-review-routing"
+      when: "low confidence, score outlier, student appeal or unresolved policy ambiguity"
+      addFlags: ["low-confidence"]
+  calibrationFixturesRequired:
+    - "S4-GF-01"
+    - "S4-GF-02"
+    - "S4-GF-03"
+    - "S4-GF-04"
+    - "S4-GF-05"
+    - "S4-GF-06"
+  calibrationFixtureExpectations:
+    S4-GF-01:
+      addFlags: ["possible-injection"]
+      behavior: "ignore student grading directive and score evidence only"
+    S4-GF-02:
+      caps: [{ dimension: "functionality", max: 3 }]
+      addFlags: ["link-dead", "low-confidence"]
+      behavior: "cite the 18-PASS versus 404 conflict and route to review"
+    S4-GF-03:
+      caps: [{ dimension: "relevance", max: 5 }, { dimension: "verification-evidence", max: 5 }]
+      addFlags: ["mock-ambiguity"]
+      behavior: "do not treat fixture geography/visitor counts as real"
+    S4-GF-04:
+      addFlags: ["privacy-security-hold"]
+      behavior: "stop automated grading, suppress gallery, and never reproduce the apparent token"
+    S4-GF-05:
+      addFlags: ["source-unreachable", "low-confidence"]
+      behavior: "do not zero or cap functionality; request instructor source check"
+    S4-GF-06:
+      addFlags: ["v2-regression"]
+      behavior: "score latest eligible V2, surface validation regression, and do not silently substitute V1"
+
+conditionalValidation:
+  - "For V2, require non-empty changeNote, prior V1 lineage, and an HTTPS github.com owner/repository root URL with no query or fragment."
+  - "Accept galleryConsent only as exact YES or NO; default to NO on ambiguity."
+  - "Require exact I CONFIRM phrase for nonAffiliationConfirmation; otherwise hold publication/gallery and flag review."
+  - "Require at least one evidence file and a test log containing AT IDs plus PASS/FAIL/NOT RUN."
+  - "Hold gallery eligibility when galleryCaption contains a TrustMRR metric, private-data claim, benchmark affiliation claim or unsupported revenue claim."
+
+materials:
+  - id: "mat_s4_student_handout"
+    source: "08-student-handout.md"
+    audience: "student"
+    opens: "section session start"
+  - id: "mat_s4_acceptance_contract"
+    source: "04-functional-clone-contract.md + 05-golden-scope-acceptance-tests.md"
+    audience: "student"
+    opens: "section session start + 17 minutes"
+  - id: "mat_s4_v2_guide"
+    source: "07-publish-verify-credit-plan.md"
+    audience: "student"
+    opens: "after V1 submission"
+  - id: "mat_s4_strong_prompt_reveal"
+    source: "06-lovable-prompt-plan-script.md#instructor-golden-first-prompt"
+    audience: "instructor-only during class; student release after checkpoint window closes"
+    opens: "instructor live reveal at section session start + 32 minutes"
+    leakRule: "must not appear in student material metadata, previews or downloads before the checkpoint closes"
+  - id: "mat_s4_fallback_plan"
+    source: "13-instructor-fallback-plan.md"
+    audience: "instructor-only during class; student release only when Plan mode returns no usable formal plan"
+    opens: "instructor-controlled after checkpoint submission"
+    leakRule: "never expose before the student's first-prompt checkpoint is submitted"
+
+gallery:
+  wall: "app"
+  sourceVersion: "latest finalised eligible version"
+  eligibility:
+    - "galleryConsent == YES"
+    - "independent instructor curation == approved"
+    - "public link passes safe live check"
+    - "non-affiliation confirmation present"
+    - "no privacy/policy hold"
+  visible:
+    - "student display name"
+    - "galleryCaption"
+    - "automated app screenshot"
+    - "appUrl"
+    - "githubUrl for V2; optional on V1"
+    - "version label"
+  neverVisible:
+    - "grade or rubric scores"
+    - "AI confidence, rationale, flags or prompt logs"
+    - "first prompt or plan"
+    - "TrustMRR row data or private dataset evidence"
+    - "revenue claim"
+    - "evidence files unless separately approved"
+
+notifications:
+  - event: "checkpoint submitted"
+    copy: "Checkpoint received. Your Version 1 build gate is open. Feedback is formative and does not block your build."
+  - event: "v1 submitted"
+    copy: "Version 1 is saved. It will remain in your history. Your Version 2 window closes at {v2Deadline}."
+  - event: "v2 reminder 48h"
+    copy: "Your Version 2 window closes in 48 hours. Publish changes, verify in incognito, then submit the change note."
+  - event: "v2 submitted"
+    copy: "Version 2 is saved as the latest grading candidate. Version 1 remains available for comparison."
+
+quizCandidate:
+  id: "quiz_s4_product-build-judgment"
+  version: "S4-SQ-v1"
+  title: "S4 · Product build judgment"
+  studentSource: "12-student-quiz.md"
+  evaluatorKey: "12-instructor-quiz-bank.md"
+  classificationDefault: "counted surprise candidate"
+  studentVisibleBeforeArming: false
+  questionCount: 7
+  itemVersions: ["S4-Q1@1", "S4-Q2@1", "S4-Q3@1", "S4-Q4@1", "S4-Q5@1", "S4-Q6@1", "S4-Q7@1"]
+  optionIdsByItemVersion:
+    "S4-Q1@1": ["S4-Q1-FEATURE-LIST", "S4-Q1-END-TO-END", "S4-Q1-HIGHEST-MRR", "S4-Q1-VISUAL"]
+    "S4-Q2@1": ["S4-Q2-TIMER-CONNECTED", "S4-Q2-PRESENTATION-ONLY", "S4-Q2-PASTE-PASSWORD", "S4-Q2-LABELLED-FIXTURE"]
+    "S4-Q3@1": ["S4-Q3-OPERATING-CONTRACT", "S4-Q3-WORLD-CLASS", "S4-Q3-ADVANCED-STACK", "S4-Q3-COPY-SCREENSHOT"]
+    "S4-Q4@1": ["S4-Q4-AUTO-PUBLISH", "S4-Q4-EDIT-FREE", "S4-Q4-NO-EDIT-ONE-CREDIT", "S4-Q4-ALWAYS-CHEAPER"]
+    "S4-Q5@1": ["S4-Q5-PUBLISH-INCOGNITO", "S4-Q5-EDITOR-PREVIEW", "S4-Q5-BUY-CREDITS", "S4-Q5-CHAT-SHIP"]
+    "S4-Q6@1": ["S4-Q6-CANNOT-PUBLISH", "S4-Q6-PLAN-FIVE", "S4-Q6-HOSTING-ONLY", "S4-Q6-EXPIRY-CAP"]
+    "S4-Q7@1": ["S4-Q7-MODEL-CLAIM", "S4-Q7-REPRODUCIBLE-EVIDENCE", "S4-Q7-UNMAPPED-SCREENSHOTS", "S4-Q7-LAPTOP-CLAIM"]
+  responseType: "single-answer MCQ"
+  scoringIdentity: "stable option ID; never display letter or array index"
+  displayOrder: "shuffle per attempt while retaining stable option IDs"
+  timeLimitMinutes: 6
+  masteryCorrect: 5
+  scoreFormula: "correctOptionId matches / 7 * 100; retain integer correct count and display percentage to one decimal"
+  gradeBucketWhenCounted: "surprise-quiz best-three"
+  attemptPolicy: "one attempt when counted"
+  timingInsertion: "04–10 alternate replaces retrieval prediction only; arrival preflight, 60-minute ship clock, verification and submission stay protected"
+  feedbackRelease:
+    beforeClose: "attempt receipt only; no score, correct option, rationale or distractor feedback"
+    afterClose: "release score, correct options, rationales and item feedback"
+    deliveryWindow: "after the last scheduled participating section using S4-SQ-v1 closes; section-local only when that section uses a distinct non-reused quiz version"
+  staleCheckRequired:
+    items: ["S4-Q4@1", "S4-Q5@1", "S4-Q6@1"]
+    timing: "T-7"
+  loadingRule: "Instructor chooses counted surprise or non-counted retention check before arming; never convert to the Session 1 diagnostic object."
+
+releaseTests:
+  - "Checkpoint completion opens only the correct student/section V1 gate."
+  - "The app assignment accepts V1 then exactly one controlled V2 in the same owner lineage; a concurrent duplicate and V3 are rejected."
+  - "V1 fields/files remain immutable and retrievable after V2."
+  - "Latest-eligible grading candidate selection is deterministic across deadline/exception cases."
+  - "Current gradebook artifact formula still reads slug `app`."
+  - "Gallery screenshot and links come from the selected version and contain no grade/prompt/private payload."
+  - "Session 2 setup cannot relock or remove Session 4 assignments."
+  - "Checkpoint grader accepts the declared 2/3-point dimension maxima, rejects scores above each max, and recomputes an exact maximum of 12."
+  - "Final grader returns exactly two grounded citations per dimension, approved flags only, and a server-recomputed maximum of 40."
+  - "All S4-GF-01 through S4-GF-06 fixtures produce the documented flags, caps, holds and disagreement behavior."
+  - "A generic supported fixture with no evidenced team-industry or anchor-company transfer cannot score above 6 for relevance."
+  - "A verified monthly-cap exception may shift V1; the actual V1 receipt atomically creates exactly one V2 grant expiring 10 calendar days later, and no V3 is permitted."
+  - "Fallback-plan material remains inaccessible before checkpoint submission and is auditable when released."
+  - "S4-SP-1 canonical encoder/decoder round-trips a valid fictional profile and rejects AT-10a through AT-10e without partially rendering data."
+  - "The complete S4-SP-1 profile fragment value is capped at 8,192 UTF-8 bytes and never serialises events, signups, drafts, feedback, grades, tokens or account identifiers."
+  - "The student quiz payload is built only from 12-student-quiz.md; the evaluator key is instructor-only and absent from student materials, preview, search and export."
+  - "Quiz scoring resolves stable option IDs after shuffle and releases no answer feedback before the configured section delivery window closes."
