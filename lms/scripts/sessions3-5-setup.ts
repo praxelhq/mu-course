@@ -2854,64 +2854,70 @@ export async function reconcileSessions3To5(args: {
   // the write transaction below so a concurrent legacy submission cannot race
   // the read-only check and be reinterpreted by the new contract.
   if (selected.quizzes.length > 0) await verifyQuizPersistenceContract(args.db);
-  await args.db.$transaction(async (tx) => {
-    await assertNoUnboundOwnedSubmissions(tx, selected.assignments.map((assignment) => assignment.id));
-  });
+  await args.db.$transaction(
+    async (tx) => {
+      await assertNoUnboundOwnedSubmissions(tx, selected.assignments.map((assignment) => assignment.id));
+    },
+    { maxWait: 10_000, timeout: 120_000 },
+  );
   await ensureObjects({ objects: selected.objects, store: args.objectStore, dryRun, report });
 
-  await args.db.$transaction(async (tx) => {
-    const sectionIds = (await tx.section.findMany({ select: { id: true } }))
-      .map((section) => section.id)
-      .sort();
-    if (sectionIds.length === 0) throw new Error("No course sections exist; run production bootstrap first.");
-    await assertNoUnboundOwnedSubmissions(tx, selected.assignments.map((assignment) => assignment.id));
-    const retentionPolicyIds = await ensureRetentionPolicies(tx, args.release, report, dryRun);
-    const typeIds = await ensureAssignmentTypes({
-      tx,
-      types: selected.assignmentTypes,
-      report,
-      dryRun,
-    });
-    await ensureAssignments({
-      tx,
-      assignments: selected.assignments,
-      typeIds,
-      sectionIds,
-      report,
-      dryRun,
-    });
-    await ensureMaterials({ tx, materials: selected.materials, sectionIds, report, dryRun });
-    const pageIds = await ensurePages({ tx, pages: selected.pages, report, dryRun });
-    if (sessions.includes(3)) {
-      const retentionPolicyId = retentionPolicyIds.get(args.release.datasetRelease.retentionClassKey);
-      if (!retentionPolicyId) throw new Error("Missing dataset retention policy.");
-      await ensureDatasetRelease({
+  await args.db.$transaction(
+    async (tx) => {
+      const sectionIds = (await tx.section.findMany({ select: { id: true } }))
+        .map((section) => section.id)
+        .sort();
+      if (sectionIds.length === 0) throw new Error("No course sections exist; run production bootstrap first.");
+      await assertNoUnboundOwnedSubmissions(tx, selected.assignments.map((assignment) => assignment.id));
+      const retentionPolicyIds = await ensureRetentionPolicies(tx, args.release, report, dryRun);
+      const typeIds = await ensureAssignmentTypes({
         tx,
-        release: args.release.datasetRelease,
-        retentionPolicyId,
+        types: selected.assignmentTypes,
         report,
         dryRun,
       });
-    }
-    await ensureAssessmentVersions({
-      tx,
-      versions: selected.assessmentVersions,
-      retentionPolicyIds,
-      report,
-      dryRun,
-    });
-    await pointAssignmentsAtVersions({ tx, assignments: selected.assignments, report, dryRun });
-    await ensureQuizzes({ tx, quizzes: selected.quizzes, sectionIds, report, dryRun });
-    await ensureLockedGates({
-      tx,
-      sectionIds,
-      pageIds,
-      selected,
-      report,
-      dryRun,
-      forceLock: args.forceLockGates ?? false,
-    });
-  });
+      await ensureAssignments({
+        tx,
+        assignments: selected.assignments,
+        typeIds,
+        sectionIds,
+        report,
+        dryRun,
+      });
+      await ensureMaterials({ tx, materials: selected.materials, sectionIds, report, dryRun });
+      const pageIds = await ensurePages({ tx, pages: selected.pages, report, dryRun });
+      if (sessions.includes(3)) {
+        const retentionPolicyId = retentionPolicyIds.get(args.release.datasetRelease.retentionClassKey);
+        if (!retentionPolicyId) throw new Error("Missing dataset retention policy.");
+        await ensureDatasetRelease({
+          tx,
+          release: args.release.datasetRelease,
+          retentionPolicyId,
+          report,
+          dryRun,
+        });
+      }
+      await ensureAssessmentVersions({
+        tx,
+        versions: selected.assessmentVersions,
+        retentionPolicyIds,
+        report,
+        dryRun,
+      });
+      await pointAssignmentsAtVersions({ tx, assignments: selected.assignments, report, dryRun });
+      await ensureQuizzes({ tx, quizzes: selected.quizzes, sectionIds, report, dryRun });
+      await ensureLockedGates({
+        tx,
+        sectionIds,
+        pageIds,
+        selected,
+        report,
+        dryRun,
+        forceLock: args.forceLockGates ?? false,
+      });
+    },
+    { maxWait: 10_000, timeout: 120_000 },
+  );
 
   for (const group of [
     report.objects.created,
