@@ -230,7 +230,33 @@ describe("handleClerkUserEvent (core)", () => {
     expect(result.outcome).toBe("linked");
     expect(calls.linked).toEqual([["u1", "clerk_abc"]]);
     expect(calls.metadata[0]).toMatchObject({
-      patch: { publicMetadata: { role: "student", sectionId: "sec_a" } },
+      patch: {
+        publicMetadata: { role: "student", sectionId: "sec_a" },
+        privateMetadata: { flaggedForDeletion: false },
+      },
+    });
+  });
+
+  it("links a temporary Section F enrollee instead of flagging the account", async () => {
+    const { deps, calls } = makeDeps();
+    deps.enrollTemporaryUser = async (email, clerkUserId) => {
+      expect(email).toBe("unknown@example.com");
+      expect(clerkUserId).toBe("clerk_abc");
+      return { id: "u_temp", role: "student", sectionId: "sec_f" };
+    };
+    const evt = JSON.parse(clerkUserPayload());
+    evt.data.email_addresses = [{ id: "em_1", email_address: "unknown@example.com" }];
+
+    const result = await handleClerkUserEvent(evt, deps);
+
+    expect(result.outcome).toBe("linked");
+    expect(calls.linked).toEqual([["u_temp", "clerk_abc"]]);
+    expect(calls.audits).toHaveLength(0);
+    expect(calls.metadata[0]).toMatchObject({
+      patch: {
+        publicMetadata: { role: "student", sectionId: "sec_f" },
+        privateMetadata: { flaggedForDeletion: false },
+      },
     });
   });
 

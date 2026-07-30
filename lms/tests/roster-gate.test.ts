@@ -15,6 +15,12 @@ import {
   TEST_LOGIN_COOKIE,
 } from "../lib/auth/test-login";
 import { AuthError, withAuth } from "../lib/auth";
+import {
+  enrollTemporarySectionFUser,
+  isTemporarySectionFEnrollmentOpen,
+  temporaryEnrollmentName,
+  type TemporaryEnrollmentDeps,
+} from "../lib/auth/temporary-section-f-enrollment";
 
 const student: SessionUserRow = {
   id: "u_student",
@@ -30,6 +36,187 @@ const instructor: SessionUserRow = {
   sectionId: null,
   teamId: null,
 };
+
+describe("temporary Section F enrollment window", () => {
+  const now = new Date("2026-07-30T07:00:00.000Z");
+
+  it("opens only before a valid near-term absolute expiry", () => {
+    expect(
+      isTemporarySectionFEnrollmentOpen(
+        { TEMPORARY_SECTION_F_ENROLLMENT_UNTIL: "2026-07-30T07:30:00.000Z" },
+        now,
+      ),
+    ).toBe(true);
+    expect(
+      isTemporarySectionFEnrollmentOpen(
+        { TEMPORARY_SECTION_F_ENROLLMENT_UNTIL: "2026-07-30T07:00:00.000Z" },
+        now,
+      ),
+    ).toBe(false);
+  });
+
+  it("fails closed for missing, invalid, or excessively long windows", () => {
+    expect(isTemporarySectionFEnrollmentOpen({}, now)).toBe(false);
+    expect(
+      isTemporarySectionFEnrollmentOpen(
+        { TEMPORARY_SECTION_F_ENROLLMENT_UNTIL: "not-a-date" },
+        now,
+      ),
+    ).toBe(false);
+    expect(
+      isTemporarySectionFEnrollmentOpen(
+        { TEMPORARY_SECTION_F_ENROLLMENT_UNTIL: "2026-07-30T07:30:00.001Z" },
+        now,
+      ),
+    ).toBe(false);
+    expect(
+      isTemporarySectionFEnrollmentOpen(
+        { TEMPORARY_SECTION_F_ENROLLMENT_UNTIL: "2026-07-30T09:00:00.000Z" },
+        now,
+      ),
+    ).toBe(false);
+  });
+
+  it("derives a usable temporary display name from the authenticated email", () => {
+    expect(temporaryEnrollmentName("first.last+class@mastersunion.org")).toBe(
+      "first last class",
+    );
+  });
+
+  function enrollmentDeps(
+    overrides: Partial<TemporaryEnrollmentDeps> = {},
+  ): TemporaryEnrollmentDeps {
+    return {
+      findSectionF: async () => ({ id: "sec_f" }),
+      createUser: async ({ email, sectionId }) => ({
+        id: `new:${email}`,
+        role: "student",
+        sectionId,
+      }),
+      claimExistingSectionFStudent: async () => null,
+      createAuditLog: async () => {},
+      ...overrides,
+    };
+  }
+
+  const openEnv = {
+    TEMPORARY_SECTION_F_ENROLLMENT_UNTIL: "2026-07-30T07:30:00.000Z",
+  };
+
+  it("creates an unknown authenticated user as a Section F student", async () => {
+    const creates: unknown[] = [];
+    const audits: unknown[] = [];
+    const claims: unknown[] = [];
+    const deps = enrollmentDeps({
+      createUser: async (data) => {
+        creates.push(data);
+        return { id: "u_new", role: "student", sectionId: "sec_f" };
+      },
+      claimExistingSectionFStudent: async (data) => {
+        claims.push(data);
+        return null;
+      },
+      createAuditLog: async (data) => {
+        audits.push(data);
+      },
+    });
+
+    const result = await enrollTemporarySectionFUser(
+      {
+        email: "First.Last@Example.com",
+        clerkUserId: "clerk_new",
+        env: openEnv,
+        now: () => now,
+      },
+      deps,
+    );
+
+    expect(result).toEqual({ id: "u_new", role: "student", sectionId: "sec_f" });
+    expect(creates).toEqual([
+      {
+        email: "first.last@example.com",
+        name: "first last",
+        sectionId: "sec_f",
+        clerkUserId: "clerk_new",
+      },
+    ]);
+    expect(claims).toHaveLength(0);
+    expect(audits).toEqual([
+      {
+        userId: "u_new",
+        email: "first.last@example.com",
+        expiresAt: openEnv.TEMPORARY_SECTION_F_ENROLLMENT_UNTIL,
+      },
+    ]);
+  });
+
+  it("claims only an existing Section F student after a concurrent create", async () => {
+    const deps = enrollmentDeps({
+      createUser: async () => null,
+      claimExistingSectionFStudent: async () => ({
+        id: "u_raced",
+        role: "student",
+        sectionId: "sec_f",
+      }),
+    });
+    await expect(
+      enrollTemporarySectionFUser(
+        { email: "race@example.com", clerkUserId: "clerk_race", env: openEnv, now: () => now },
+        deps,
+      ),
+    ).resolves.toEqual({ id: "u_raced", role: "student", sectionId: "sec_f" });
+  });
+
+  it("does not overwrite a privileged or differently assigned race winner", async () => {
+    const deps = enrollmentDeps({
+      createUser: async () => null,
+      claimExistingSectionFStudent: async () => null,
+    });
+    await expect(
+      enrollTemporarySectionFUser(
+        { email: "admin@example.com", clerkUserId: "clerk_new", env: openEnv, now: () => now },
+        deps,
+      ),
+    ).resolves.toBeNull();
+  });
+
+  it("does not create a user if the window closes during lookup", async () => {
+    const createUser = vi.fn<TemporaryEnrollmentDeps["createUser"]>();
+    const claimExisting = vi.fn<TemporaryEnrollmentDeps["claimExistingSectionFStudent"]>();
+    const times = [now, new Date("2026-07-30T07:30:00.000Z")];
+    const deps = enrollmentDeps({
+      createUser,
+      claimExistingSectionFStudent: claimExisting,
+    });
+    await expect(
+      enrollTemporarySectionFUser(
+        {
+          email: "late@example.com",
+          clerkUserId: "clerk_late",
+          env: openEnv,
+          now: () => times.shift() ?? times[0] ?? now,
+        },
+        deps,
+      ),
+    ).resolves.toBeNull();
+    expect(createUser).not.toHaveBeenCalled();
+    expect(claimExisting).not.toHaveBeenCalled();
+  });
+
+  it("keeps an enrollment usable when the audit write fails", async () => {
+    const deps = enrollmentDeps({
+      createAuditLog: async () => {
+        throw new Error("audit unavailable");
+      },
+    });
+    await expect(
+      enrollTemporarySectionFUser(
+        { email: "student@example.com", clerkUserId: "clerk_student", env: openEnv, now: () => now },
+        deps,
+      ),
+    ).resolves.toMatchObject({ role: "student", sectionId: "sec_f" });
+  });
+});
 
 function makeDeps(overrides: Partial<SessionDeps> = {}): SessionDeps {
   return {

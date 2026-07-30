@@ -6,6 +6,10 @@ import {
   handleClerkUserEvent,
   type ClerkWebhookEvent,
 } from "@/lib/auth/webhook";
+import {
+  enrollTemporarySectionFUser,
+  prismaTemporaryEnrollmentDeps,
+} from "@/lib/auth/temporary-section-f-enrollment";
 
 // Clerk → LMS user sync (defense-in-depth alongside the proxy roster gate).
 // Svix signature verification against CLERK_WEBHOOK_SECRET happens before ANY
@@ -53,6 +57,11 @@ export async function POST(req: Request): Promise<Response> {
       });
     },
     updateClerkMetadata: updateClerkUserMetadata,
+    enrollTemporaryUser: (email, clerkUserId) =>
+      enrollTemporarySectionFUser(
+        { email, clerkUserId },
+        prismaTemporaryEnrollmentDeps(prisma),
+      ),
   });
 
   // Always 200 quickly on verified events so Clerk doesn't retry forever.
