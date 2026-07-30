@@ -9,6 +9,12 @@ import {
   type SessionUserRow,
 } from "./session";
 import { isTestLoginEnabled, testUserIdFromCookieHeader } from "./test-login";
+import {
+  findUserByClerkIdentity,
+  findUserByEmailIdentity,
+  identityUserSelect,
+  linkClerkIdentity,
+} from "./user-identity";
 
 export type { SessionUser } from "./session";
 export { isTestLoginEnabled, TEST_LOGIN_COOKIE } from "./test-login";
@@ -17,15 +23,6 @@ export { isTestLoginEnabled, TEST_LOGIN_COOKIE } from "./test-login";
 // the proxy call getSessionUser/requireUser/requireRole/withAuth — never the
 // Clerk SDK directly — so tests and seed-demo can substitute fake sessions via
 // the test-login cookie, and the app runs without Clerk keys in local dev.
-
-const userSelect = {
-  id: true,
-  email: true,
-  role: true,
-  sectionId: true,
-  teamId: true,
-  flaggedForDeletion: true,
-} as const;
 
 async function readTestCookie(req?: Request): Promise<string | null> {
   if (req) return testUserIdFromCookieHeader(req.headers.get("cookie"));
@@ -47,13 +44,13 @@ function realDeps(req?: Request): SessionDeps {
     getClerkEmail: getClerkUserEmail,
     db: {
       findUserById: (id): Promise<SessionUserRow | null> =>
-        prisma.user.findUnique({ where: { id }, select: userSelect }),
+        prisma.user.findUnique({ where: { id }, select: identityUserSelect }),
       findUserByClerkId: (clerkUserId): Promise<SessionUserRow | null> =>
-        prisma.user.findUnique({ where: { clerkUserId }, select: userSelect }),
+        findUserByClerkIdentity(prisma, clerkUserId),
       findUserByEmail: (email): Promise<SessionUserRow | null> =>
-        prisma.user.findUnique({ where: { email }, select: userSelect }),
+        findUserByEmailIdentity(prisma, email),
       linkClerkId: async (userId, clerkUserId) => {
-        await prisma.user.update({ where: { id: userId }, data: { clerkUserId } });
+        await linkClerkIdentity(prisma, userId, clerkUserId);
       },
     },
   };

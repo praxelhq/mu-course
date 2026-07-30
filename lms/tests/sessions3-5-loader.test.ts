@@ -311,6 +311,7 @@ function memoryReleaseDatabase() {
       state: "open",
       changedBy: "instructor",
     })),
+    gateException: [],
     datasetRelease: [],
     datasetReleaseFile: [],
     assessmentVersion: [],
@@ -456,6 +457,37 @@ describe("Sessions 3–5 authored release", () => {
     expect(serialized).not.toContain("jsonl_row_count");
     expect(serialized).not.toContain("scalar_cell_count");
     expect(serialized).not.toContain("999");
+  });
+
+  it("refuses to force-lock while a selected target has a live learner exception", async () => {
+    const release = buildFixtureRelease();
+    const memory = memoryReleaseDatabase();
+    const objects = new Map<string, { sizeBytes: number; sha256: string }>();
+    const objectStore = {
+      stat: vi.fn(async (key: string) => objects.get(key) ?? null),
+      put: vi.fn(async (object: Sessions3To5Release["objects"][number]) => {
+        objects.set(object.key, { sizeBytes: object.sizeBytes, sha256: object.sha256 });
+      }),
+    };
+
+    await reconcileSessions3To5({ db: memory.db, objectStore, release });
+    memory.tables.gateException.push({
+      id: "exception-live",
+      targetType: "session",
+      targetId: "spage_3",
+      sectionId: "sec_A",
+      userId: "student-one",
+      expiresAt: null,
+    });
+
+    await expect(
+      reconcileSessions3To5({
+        db: memory.db,
+        objectStore,
+        release,
+        forceLockGates: true,
+      }),
+    ).rejects.toThrow(/live gate exception.*session:spage_3:student-one/i);
   });
 
   it("builds stable versioned contracts and keeps hidden material out of learner pages", () => {

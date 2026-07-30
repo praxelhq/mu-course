@@ -2750,6 +2750,36 @@ async function ensureLockedGates(args: {
     },
     select: { targetType: true, targetId: true, sectionId: true, state: true, opensAt: true },
   });
+  if (args.forceLock) {
+    const exceptions = await args.tx.gateException.findMany({
+      where: {
+        sectionId: { in: args.sectionIds },
+        OR: targets.map((target) => ({
+          targetType: target.targetType,
+          targetId: target.targetId,
+        })),
+      },
+      select: {
+        id: true,
+        targetType: true,
+        targetId: true,
+        userId: true,
+        expiresAt: true,
+      },
+    });
+    const now = new Date();
+    const liveExceptions = exceptions.filter(
+      (exception) => exception.expiresAt === null || exception.expiresAt > now,
+    );
+    if (liveExceptions.length > 0) {
+      const affected = liveExceptions
+        .map((exception) => `${exception.targetType}:${exception.targetId}:${exception.userId}`)
+        .join(", ");
+      throw new Error(
+        `Force-lock blocked by ${liveExceptions.length} live gate exception(s): ${affected}`,
+      );
+    }
+  }
   const existingKeys = new Set(
     existing.map((gate) => `${gate.targetType}:${gate.targetId}:${gate.sectionId}`),
   );

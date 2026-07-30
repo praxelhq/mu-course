@@ -93,6 +93,31 @@ describe("DPDP deletion route side-effect ordering", () => {
     );
   });
 
+  it("flags every Clerk identity attached to the canonical LMS user", async () => {
+    const erase = vi.fn(async (_input, options) => {
+      await options.beforeDatabaseCleanup({
+        parentReceiptId: result.receiptId,
+        clerkUserId: result.clerkUserId!,
+      });
+      return result;
+    });
+    const flagClerk = vi.fn(async () => undefined);
+    const getClerkUserIds = vi.fn(async () => ["clerk-user-1", "clerk-user-2"]);
+
+    await performDpdpDelete(
+      {
+        userId: "user-1",
+        confirmEmail: "student@example.test",
+        requestedBy: "admin-1",
+      },
+      { erase, flagClerk, getClerkUserIds },
+    );
+
+    expect(flagClerk).toHaveBeenCalledTimes(2);
+    expect(flagClerk).toHaveBeenCalledWith("clerk-user-1", expect.any(Object));
+    expect(flagClerk).toHaveBeenCalledWith("clerk-user-2", expect.any(Object));
+  });
+
   it("fails closed before local cleanup when Clerk cannot be fenced", async () => {
     let localCleanupRan = false;
     const erase = vi.fn(async (_input, options) => {

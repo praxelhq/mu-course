@@ -31,6 +31,10 @@ export type ClerkWebhookDeps = {
       privateMetadata?: Record<string, unknown>;
     },
   ) => Promise<void>;
+  enrollTemporaryUser?: (
+    email: string,
+    clerkUserId: string,
+  ) => Promise<{ id: string; role: Role; sectionId: string | null } | null>;
 };
 
 export function primaryEmail(data: ClerkUserEventData): string | null {
@@ -45,8 +49,9 @@ export function primaryEmail(data: ClerkUserEventData): string | null {
  * users row by email and push role/section INTO Clerk publicMetadata. Truth
  * flows roster-row → Clerk (KTD21); nothing from the Clerk payload is ever
  * written to local role/section. Unknown emails are flagged for manual
- * deletion (privateMetadata + AuditLog) — never auto-deleted, and no users
- * row is created for them.
+ * deletion (privateMetadata + AuditLog) unless the explicitly time-bounded
+ * emergency enrollment dependency admits them to Section F. Accounts are
+ * never auto-deleted.
  */
 export async function handleClerkUserEvent(
   evt: ClerkWebhookEvent,
@@ -59,7 +64,10 @@ export async function handleClerkUserEvent(
   const clerkUserId = evt.data.id;
   const email = primaryEmail(evt.data);
 
-  const row = email ? await deps.findUserByEmail(email) : null;
+  let row = email ? await deps.findUserByEmail(email) : null;
+  if (!row && email && deps.enrollTemporaryUser) {
+    row = await deps.enrollTemporaryUser(email, clerkUserId);
+  }
   if (!row) {
     await deps.createAuditLog({
       action: "auth.off_roster_rejected",
@@ -80,6 +88,7 @@ export async function handleClerkUserEvent(
   await deps.linkClerkId(row.id, clerkUserId);
   await deps.updateClerkMetadata(clerkUserId, {
     publicMetadata: { role: row.role, sectionId: row.sectionId },
+    privateMetadata: { flaggedForDeletion: false },
   });
   return { outcome: "linked" };
 }

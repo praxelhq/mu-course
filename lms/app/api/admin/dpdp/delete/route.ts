@@ -7,6 +7,7 @@ import {
   type DpdpErasureResult,
 } from "@/lib/dpdp-erasure";
 import { eraseDpdpUser } from "@/lib/dpdp-erasure-prisma";
+import { prisma } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
 
@@ -27,6 +28,23 @@ type EraseWithPreCleanup = (
   },
 ) => Promise<DpdpErasureResult>;
 
+async function getLinkedClerkUserIds(userId: string): Promise<string[]> {
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+    select: {
+      clerkUserId: true,
+      clerkIdentities: { select: { clerkUserId: true } },
+    },
+  });
+
+  return user
+    ? [
+        ...(user.clerkUserId ? [user.clerkUserId] : []),
+        ...user.clerkIdentities.map((identity) => identity.clerkUserId),
+      ]
+    : [];
+}
+
 /**
  * Fence Clerk after exact object-version verification but before local row
  * cleanup. The pending receipt can therefore be retried if Clerk is down, and
@@ -37,18 +55,31 @@ export async function performDpdpDelete(
   deps: {
     erase?: EraseWithPreCleanup;
     flagClerk?: (clerkUserId: string, patch: ClerkMetadataPatch) => Promise<void>;
+    getClerkUserIds?: (userId: string) => Promise<string[]>;
   } = {},
 ): Promise<DpdpErasureResult> {
   const erase: EraseWithPreCleanup = deps.erase ?? eraseDpdpUser;
   return erase(input, {
     beforeDatabaseCleanup: async ({ clerkUserId, parentReceiptId }) => {
-      await (deps.flagClerk ?? updateClerkUserMetadata)(clerkUserId, {
+      let linkedClerkUserIds: string[] = [];
+      if (deps.getClerkUserIds) {
+        linkedClerkUserIds = await deps.getClerkUserIds(input.userId);
+      } else if (!deps.erase) {
+        linkedClerkUserIds = await getLinkedClerkUserIds(input.userId);
+      }
+
+      const flagClerk = deps.flagClerk ?? updateClerkUserMetadata;
+      const metadata = {
         privateMetadata: {
           flaggedForDeletion: true,
           dpdpDeletedAt: new Date().toISOString(),
           dpdpDeletionReceiptId: parentReceiptId,
         },
-      });
+      } satisfies ClerkMetadataPatch;
+
+      for (const linkedClerkUserId of new Set([clerkUserId, ...linkedClerkUserIds])) {
+        await flagClerk(linkedClerkUserId, metadata);
+      }
     },
   });
 }

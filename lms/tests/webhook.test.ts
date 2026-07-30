@@ -14,6 +14,7 @@ import {
 // ---------------------------------------------------------------------------
 
 const dbCalls: { op: string; args: unknown }[] = [];
+let linkedIdentityUserId: string | null = null;
 let rosterByEmail: Record<
   string,
   { id: string; role: "student" | "instructor" | "admin"; sectionId: string | null }
@@ -21,6 +22,8 @@ let rosterByEmail: Record<
 
 vi.mock("@/lib/db", () => ({
   prisma: {
+    $transaction: async (fn: (tx: unknown) => Promise<unknown>) =>
+      fn((await import("@/lib/db")).prisma),
     user: {
       findUnique: async (args: { where: { email?: string } }) => {
         dbCalls.push({ op: "user.findUnique", args });
@@ -29,6 +32,28 @@ vi.mock("@/lib/db", () => ({
       update: async (args: unknown) => {
         dbCalls.push({ op: "user.update", args });
         return {};
+      },
+      updateMany: async (args: unknown) => {
+        dbCalls.push({ op: "user.updateMany", args });
+        return { count: 1 };
+      },
+    },
+    userEmailAlias: {
+      findUnique: async (args: { where: { email: string } }) => {
+        dbCalls.push({ op: "userEmailAlias.findUnique", args });
+        const user = rosterByEmail[args.where.email];
+        return user ? { user } : null;
+      },
+    },
+    userClerkIdentity: {
+      findUnique: async (args: unknown) => {
+        dbCalls.push({ op: "userClerkIdentity.findUnique", args });
+        return linkedIdentityUserId ? { userId: linkedIdentityUserId } : null;
+      },
+      createMany: async (args: { data: Array<{ userId: string }> }) => {
+        dbCalls.push({ op: "userClerkIdentity.createMany", args });
+        linkedIdentityUserId = args.data[0]?.userId ?? null;
+        return { count: 1 };
       },
     },
     auditLog: {
@@ -85,6 +110,7 @@ function clerkUserPayload(overrides: Partial<ClerkUserEventData> = {}, type = "u
 
 beforeEach(() => {
   dbCalls.length = 0;
+  linkedIdentityUserId = null;
   metadataCalls.length = 0;
   rosterByEmail = {};
   vi.stubEnv("CLERK_WEBHOOK_SECRET", SECRET);
@@ -139,10 +165,14 @@ describe("POST /api/webhooks/clerk — user.created", () => {
     const res = await POST(signedRequest(clerkUserPayload()));
     expect(res.status).toBe(200);
 
-    const update = dbCalls.find((c) => c.op === "user.update");
+    const update = dbCalls.find((c) => c.op === "user.updateMany");
     expect(update?.args).toMatchObject({
-      where: { id: "u_roster" },
+      where: { id: "u_roster", clerkUserId: null },
       data: { clerkUserId: "clerk_abc" },
+    });
+    expect(dbCalls.find((c) => c.op === "userClerkIdentity.createMany")?.args).toMatchObject({
+      data: [{ userId: "u_roster", clerkUserId: "clerk_abc" }],
+      skipDuplicates: true,
     });
     expect(metadataCalls).toHaveLength(1);
     expect(metadataCalls[0]).toMatchObject({
@@ -156,7 +186,7 @@ describe("POST /api/webhooks/clerk — user.created", () => {
     const res = await POST(signedRequest(clerkUserPayload()));
     expect(res.status).toBe(200);
 
-    expect(dbCalls.some((c) => c.op === "user.update")).toBe(false);
+    expect(dbCalls.some((c) => c.op === "user.updateMany")).toBe(false);
     const audit = dbCalls.find((c) => c.op === "auditLog.create");
     expect(audit?.args).toMatchObject({
       data: {
@@ -189,8 +219,10 @@ describe("POST /api/webhooks/clerk — user.created", () => {
     expect(metadataCalls[0]).toMatchObject({
       patch: { publicMetadata: { role: "instructor", sectionId: null } },
     });
-    // No DB write may touch role: the only user.update sets clerkUserId.
-    for (const c of dbCalls.filter((c) => c.op === "user.update")) {
+    // No DB write may touch role: the only user update sets clerkUserId.
+    for (const c of dbCalls.filter((c) =>
+      c.op === "user.updateMany" || c.op === "user.update"
+    )) {
       const data = (c.args as { data: Record<string, unknown> }).data;
       expect(Object.keys(data)).not.toContain("role");
       expect(Object.keys(data)).not.toContain("sectionId");
@@ -230,7 +262,33 @@ describe("handleClerkUserEvent (core)", () => {
     expect(result.outcome).toBe("linked");
     expect(calls.linked).toEqual([["u1", "clerk_abc"]]);
     expect(calls.metadata[0]).toMatchObject({
-      patch: { publicMetadata: { role: "student", sectionId: "sec_a" } },
+      patch: {
+        publicMetadata: { role: "student", sectionId: "sec_a" },
+        privateMetadata: { flaggedForDeletion: false },
+      },
+    });
+  });
+
+  it("links a temporary Section F enrollee instead of flagging the account", async () => {
+    const { deps, calls } = makeDeps();
+    deps.enrollTemporaryUser = async (email, clerkUserId) => {
+      expect(email).toBe("unknown@example.com");
+      expect(clerkUserId).toBe("clerk_abc");
+      return { id: "u_temp", role: "student", sectionId: "sec_f" };
+    };
+    const evt = JSON.parse(clerkUserPayload());
+    evt.data.email_addresses = [{ id: "em_1", email_address: "unknown@example.com" }];
+
+    const result = await handleClerkUserEvent(evt, deps);
+
+    expect(result.outcome).toBe("linked");
+    expect(calls.linked).toEqual([["u_temp", "clerk_abc"]]);
+    expect(calls.audits).toHaveLength(0);
+    expect(calls.metadata[0]).toMatchObject({
+      patch: {
+        publicMetadata: { role: "student", sectionId: "sec_f" },
+        privateMetadata: { flaggedForDeletion: false },
+      },
     });
   });
 

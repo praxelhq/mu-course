@@ -286,9 +286,9 @@ describe.skipIf(!live)("lib/submissions (live DB, seeded)", () => {
     expect(view!.history[0].version).toBeGreaterThan(view!.history[1].version);
     expect(view!.latest?.version).toBe(view!.history[0].version);
 
-    // Locked assignment → available false.
+    // A locked assignment with no learner history is undiscoverable by ID.
     const locked = await getAssignmentForStudent("user_s001", "asg_s4_app");
-    expect(locked!.available).toBe(false);
+    expect(locked).toBeNull();
   });
 
   it("extensibility: a NEW AssignmentType (via the admin code path) accepts a submission with zero code changes", async () => {

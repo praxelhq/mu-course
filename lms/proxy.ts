@@ -16,6 +16,15 @@ import {
   isTestLoginEnabled,
   testUserIdFromCookieHeader,
 } from "@/lib/auth/test-login";
+import {
+  enrollTemporarySectionFUser,
+  prismaTemporaryEnrollmentDeps,
+} from "@/lib/auth/temporary-section-f-enrollment";
+import {
+  findUserByClerkIdentity,
+  findUserByEmailIdentity,
+  linkClerkIdentity,
+} from "@/lib/auth/user-identity";
 
 // Roster gate: every authenticated request must map to a users row, or it is
 // bounced to /not-on-roster and the Clerk account is flagged for deletion.
@@ -45,15 +54,12 @@ function notOnRosterRedirect(req: NextRequest): NextResponse {
 }
 
 /**
- * Cheap roster lookup: select id only. Returns "error" (fail closed) if the
- * DB is unreachable.
+ * Resolve the canonical LMS user for a Clerk identity. Returns "error" (fail
+ * closed) if any identity or enrollment dependency is unavailable.
  */
 async function lookupRosterByClerkId(clerkUserId: string): Promise<RosterLookup> {
   try {
-    const linked = await prisma.user.findUnique({
-      where: { clerkUserId },
-      select: { id: true },
-    });
+    const linked = await findUserByClerkIdentity(prisma, clerkUserId);
     if (linked) return linked;
 
     // FIRST SIGN-IN: the roster row exists but has no clerkUserId yet — the
@@ -62,17 +68,34 @@ async function lookupRosterByClerkId(clerkUserId: string): Promise<RosterLookup>
     // treated as off-roster and FLAGGED for deletion. Match on the Clerk
     // account's primary email (the same rule the webhook and session layer
     // use) and backfill the link so this costs one Clerk call per student,
-    // once. A student genuinely not on the roster still falls through to
-    // null → flag + redirect.
+    // once. An unknown account is offered to the fail-closed, time-bounded
+    // Section F emergency enrollment path; outside that window it still
+    // falls through to null → flag + redirect.
     const email = await getClerkUserEmail(clerkUserId);
     if (!email) return null;
-    const byEmail = await prisma.user.findUnique({
-      where: { email: email.toLowerCase() },
-      select: { id: true },
-    });
-    if (!byEmail) return null;
-    await prisma.user.update({ where: { id: byEmail.id }, data: { clerkUserId } });
-    return byEmail;
+    const byEmail = await findUserByEmailIdentity(prisma, email);
+    if (byEmail) {
+      await linkClerkIdentity(prisma, byEmail.id, clerkUserId);
+      return byEmail;
+    }
+
+    const normalizedEmail = email.toLowerCase();
+    const enrolled = await enrollTemporarySectionFUser(
+      { email: normalizedEmail, clerkUserId },
+      prismaTemporaryEnrollmentDeps(prisma),
+    );
+    if (!enrolled) return null;
+
+    try {
+      await updateClerkUserMetadata(clerkUserId, {
+        publicMetadata: { role: enrolled.role, sectionId: enrolled.sectionId },
+        privateMetadata: { flaggedForDeletion: false },
+      });
+    } catch {
+      // Postgres enrollment is authoritative; Clerk sync is best-effort.
+    }
+
+    return enrolled;
   } catch {
     return "error";
   }

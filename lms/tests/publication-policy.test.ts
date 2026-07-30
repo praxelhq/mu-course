@@ -239,6 +239,8 @@ describe("publication policy", () => {
       "http://student-project.lovable.app/demo",
       "https://user:password@student-project.lovable.app/demo",
       "https://student-project.lovable.app/demo?api_token=secret",
+      "https://student-project.lovable.app/demo?next=sk_live_FAKE_SECRET_VALUE_123456",
+      "https://student-project.lovable.app/demo#token=not-redacted",
     ]) {
       const projection = project(unsafe);
       expect(projection.published && projection.actions, unsafe).toEqual([]);

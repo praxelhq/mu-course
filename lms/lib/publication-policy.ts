@@ -226,6 +226,20 @@ function allowedExternalUrl(
     for (const key of parsed.searchParams.keys()) {
       if (/(auth|credential|key|password|secret|token|webhook)/i.test(key)) return null;
     }
+    const decodedUrlSurface = [parsed.pathname, parsed.search.slice(1), parsed.hash.slice(1)]
+      .map((value) => {
+        try {
+          return decodeURIComponent(value);
+        } catch {
+          return value;
+        }
+      })
+      .join("\n");
+    if (
+      scanSensitiveText(decodedUrlSurface, "publication-url").some(
+        (finding) => finding.detector === "secret-token" || finding.detector === "sensitive-key",
+      )
+    ) return null;
     if (urlKind === "make-scenario") {
       if (!(host === "make.com" || host.endsWith(".make.com"))) return null;
       if (!/(?:^|\/)(?:public\/)?(?:shared-)?scenario(?:\/|$)/i.test(parsed.pathname)) return null;

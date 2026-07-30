@@ -81,6 +81,14 @@ export function contentHashOf(fields: Record<string, unknown>, files: string[]):
   return createHash("sha256").update(canonical).digest("hex");
 }
 
+export function isLockedAssignmentUndiscoverable(args: {
+  available: boolean;
+  hasLiveGrant: boolean;
+  historyCount: number;
+}): boolean {
+  return !args.available && !args.hasLiveGrant && args.historyCount === 0;
+}
+
 // ---------------------------------------------------------------------------
 // Gate helper
 // ---------------------------------------------------------------------------
@@ -418,6 +426,15 @@ export async function getAssignmentForStudent(
           select: { id: true },
         })
       : null;
+
+  // A first-time learner must not be able to discover a locked assignment's
+  // title, brief, or schema by guessing its stable URL. Existing work and an
+  // explicit live grant remain visible so learners can review prior evidence.
+  if (isLockedAssignmentUndiscoverable({
+    available,
+    hasLiveGrant: Boolean(liveGrant),
+    historyCount: history.length,
+  })) return null;
 
   return {
     assignment: {
