@@ -1,4 +1,8 @@
 import { prisma } from "@/lib/db";
+import {
+  buildGalleryPresentationItems,
+  type GalleryPresentationItem,
+} from "@/lib/gallery-presentation";
 import { isRevealed } from "@/lib/votes";
 
 // Instructor console data for the Session-2 artifacts: live per-section
@@ -19,6 +23,8 @@ export type ArtifactSummary = {
   avgTotal: number | null;
   /** whether vote counts are revealed to this section */
   revealed: boolean;
+  /** Privacy-safe projector sequence for this section; empty for non-image artifacts. */
+  presentationItems: GalleryPresentationItem[];
 };
 
 export type StudentRow = {
@@ -58,8 +64,11 @@ export async function getSession2Console(sectionId: string): Promise<Session2Con
     orderBy: { id: "asc" },
   });
   const assignmentIds = assignments.map((a) => a.id);
+  const galleryAssignmentIds = assignments
+    .filter((assignment) => assignment.assignmentType.galleryEligible)
+    .map((assignment) => assignment.id);
 
-  const [students, submissions, votes] = await Promise.all([
+  const [students, submissions, gallerySubmissions, votes] = await Promise.all([
     prisma.user.findMany({
       where: { sectionId, role: "student" },
       select: { id: true, name: true, email: true },
@@ -75,6 +84,25 @@ export async function getSession2Console(sectionId: string): Promise<Session2Con
         version: true,
         grades: { select: { total: true }, orderBy: { createdAt: "desc" }, take: 1 },
         _count: { select: { votes: true } },
+      },
+      orderBy: { version: "desc" },
+    }),
+    prisma.submission.findMany({
+      where: {
+        assignmentId: { in: galleryAssignmentIds },
+        user: { sectionId },
+        status: { in: ["submitted", "graded", "finalised"] },
+        galleryItem: { isNot: null },
+      },
+      select: {
+        id: true,
+        assignmentId: true,
+        userId: true,
+        status: true,
+        version: true,
+        fields: true,
+        files: true,
+        galleryItem: { select: { caption: true } },
       },
       orderBy: { version: "desc" },
     }),
@@ -116,11 +144,36 @@ export async function getSession2Console(sectionId: string): Promise<Session2Con
     return { userId: u.id, name: u.name, email: u.email, cells, votesCast, votesReceived };
   });
 
-  const artifacts: ArtifactSummary[] = [];
-  for (const a of assignments) {
-    const mine = [...latest.values()].filter((s) => s.assignmentId === a.id);
+  const ownerNames = new Map(students.map((student) => [student.id, student.name]));
+  const latestByAssignment = new Map<string, (typeof submissions)[number][]>();
+  for (const submission of latest.values()) {
+    const rows = latestByAssignment.get(submission.assignmentId) ?? [];
+    rows.push(submission);
+    latestByAssignment.set(submission.assignmentId, rows);
+  }
+  const presentationSourcesByAssignment = new Map<
+    string,
+    (typeof gallerySubmissions)[number][]
+  >();
+  for (const submission of gallerySubmissions) {
+    const rows = presentationSourcesByAssignment.get(submission.assignmentId) ?? [];
+    rows.push(submission);
+    presentationSourcesByAssignment.set(submission.assignmentId, rows);
+  }
+  const revealStates = new Map(
+    await Promise.all(
+      galleryAssignmentIds.map(async (assignmentId) => [
+        assignmentId,
+        await isRevealed(assignmentId, sectionId),
+      ] as const),
+    ),
+  );
+
+  const artifacts: ArtifactSummary[] = assignments.map((a) => {
+    const mine = latestByAssignment.get(a.id) ?? [];
     const totals = mine.map((s) => s.grades[0]?.total).filter((t): t is number => typeof t === "number");
-    artifacts.push({
+    const revealed = revealStates.get(a.id) ?? false;
+    return {
       assignmentId: a.id,
       title: a.title,
       slug: a.assignmentType.slug,
@@ -129,9 +182,19 @@ export async function getSession2Console(sectionId: string): Promise<Session2Con
       submitted: mine.length,
       graded: totals.length,
       avgTotal: totals.length ? totals.reduce((x, y) => x + y, 0) / totals.length : null,
-      revealed: a.assignmentType.galleryEligible ? await isRevealed(a.id, sectionId) : false,
-    });
-  }
+      revealed,
+      presentationItems: a.assignmentType.galleryEligible
+        ? buildGalleryPresentationItems({
+            assignmentTypeSlug: a.assignmentType.slug,
+            namesVisible: revealed,
+            rows: (presentationSourcesByAssignment.get(a.id) ?? []).map((submission) => ({
+                ...submission,
+                ownerName: ownerNames.get(submission.userId) ?? "Unknown",
+              })),
+          })
+        : [],
+    };
+  });
 
   return {
     sectionId: section.id,
