@@ -10,6 +10,10 @@ import {
   enrollTemporarySectionFUser,
   prismaTemporaryEnrollmentDeps,
 } from "@/lib/auth/temporary-section-f-enrollment";
+import {
+  findUserByEmailIdentity,
+  linkClerkIdentity,
+} from "@/lib/auth/user-identity";
 
 // Clerk → LMS user sync (defense-in-depth alongside the proxy roster gate).
 // Svix signature verification against CLERK_WEBHOOK_SECRET happens before ANY
@@ -39,12 +43,9 @@ export async function POST(req: Request): Promise<Response> {
 
   const result = await handleClerkUserEvent(evt, {
     findUserByEmail: (email) =>
-      prisma.user.findUnique({
-        where: { email },
-        select: { id: true, role: true, sectionId: true },
-      }),
+      findUserByEmailIdentity(prisma, email),
     linkClerkId: async (userId, clerkUserId) => {
-      await prisma.user.update({ where: { id: userId }, data: { clerkUserId } });
+      await linkClerkIdentity(prisma, userId, clerkUserId);
     },
     createAuditLog: async (entry) => {
       await prisma.auditLog.create({

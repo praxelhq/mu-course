@@ -36,7 +36,12 @@ export const POST = withAuth(
 
     const target = await prisma.user.findUnique({
       where: { id: userId },
-      select: { id: true, email: true, clerkUserId: true },
+      select: {
+        id: true,
+        email: true,
+        clerkUserId: true,
+        clerkIdentities: { select: { clerkUserId: true } },
+      },
     });
     if (!target) return Response.json({ error: "Unknown user" }, { status: 404 });
     if (target.email.toLowerCase() !== confirmEmail.trim().toLowerCase()) {
@@ -46,10 +51,12 @@ export const POST = withAuth(
       );
     }
 
-    // Best-effort Clerk flag BEFORE the row (and its clerkUserId) disappears.
-    if (target.clerkUserId) {
+    // Best-effort Clerk flags BEFORE the row and all linked identities disappear.
+    const clerkUserIds = new Set(target.clerkIdentities.map(({ clerkUserId }) => clerkUserId));
+    if (target.clerkUserId) clerkUserIds.add(target.clerkUserId);
+    for (const clerkUserId of clerkUserIds) {
       try {
-        await updateClerkUserMetadata(target.clerkUserId, {
+        await updateClerkUserMetadata(clerkUserId, {
           privateMetadata: { flaggedForDeletion: true, dpdpDeletedAt: new Date().toISOString() },
         });
       } catch (err) {

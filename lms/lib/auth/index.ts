@@ -9,6 +9,11 @@ import {
   type SessionUserRow,
 } from "./session";
 import { isTestLoginEnabled, testUserIdFromCookieHeader } from "./test-login";
+import {
+  findUserByClerkIdentity,
+  findUserByEmailIdentity,
+  linkClerkIdentity,
+} from "./user-identity";
 
 export type { SessionUser } from "./session";
 export { isTestLoginEnabled, TEST_LOGIN_COOKIE } from "./test-login";
@@ -48,11 +53,11 @@ function realDeps(req?: Request): SessionDeps {
       findUserById: (id): Promise<SessionUserRow | null> =>
         prisma.user.findUnique({ where: { id }, select: userSelect }),
       findUserByClerkId: (clerkUserId): Promise<SessionUserRow | null> =>
-        prisma.user.findUnique({ where: { clerkUserId }, select: userSelect }),
+        findUserByClerkIdentity(prisma, clerkUserId),
       findUserByEmail: (email): Promise<SessionUserRow | null> =>
-        prisma.user.findUnique({ where: { email }, select: userSelect }),
+        findUserByEmailIdentity(prisma, email),
       linkClerkId: async (userId, clerkUserId) => {
-        await prisma.user.update({ where: { id: userId }, data: { clerkUserId } });
+        await linkClerkIdentity(prisma, userId, clerkUserId);
       },
     },
   };

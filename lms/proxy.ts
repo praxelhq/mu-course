@@ -20,6 +20,11 @@ import {
   enrollTemporarySectionFUser,
   prismaTemporaryEnrollmentDeps,
 } from "@/lib/auth/temporary-section-f-enrollment";
+import {
+  findUserByClerkIdentity,
+  findUserByEmailIdentity,
+  linkClerkIdentity,
+} from "@/lib/auth/user-identity";
 
 // Roster gate: every authenticated request must map to a users row, or it is
 // bounced to /not-on-roster and the Clerk account is flagged for deletion.
@@ -52,10 +57,7 @@ function notOnRosterRedirect(req: NextRequest): NextResponse {
  */
 async function lookupRosterByClerkId(clerkUserId: string): Promise<RosterLookup> {
   try {
-    const linked = await prisma.user.findUnique({
-      where: { clerkUserId },
-      select: { id: true },
-    });
+    const linked = await findUserByClerkIdentity(prisma, clerkUserId);
     if (linked) return linked;
 
     // FIRST SIGN-IN: the roster row exists but has no clerkUserId yet — the
@@ -69,12 +71,9 @@ async function lookupRosterByClerkId(clerkUserId: string): Promise<RosterLookup>
     // falls through to null → flag + redirect.
     const email = await getClerkUserEmail(clerkUserId);
     if (!email) return null;
-    const byEmail = await prisma.user.findUnique({
-      where: { email: email.toLowerCase() },
-      select: { id: true },
-    });
+    const byEmail = await findUserByEmailIdentity(prisma, email);
     if (byEmail) {
-      await prisma.user.update({ where: { id: byEmail.id }, data: { clerkUserId } });
+      await linkClerkIdentity(prisma, byEmail.id, clerkUserId);
       return byEmail;
     }
 

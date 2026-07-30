@@ -178,6 +178,13 @@ describe.skipIf(!live)("U16 DPDP export + delete (live DB)", () => {
   });
 
   it("deletes every row for the student in one transaction, keeps the audit record, and 404s on repeat", async () => {
+    await prisma.userClerkIdentity.createMany({
+      data: [
+        { clerkUserId: "clerk_s004_personal", userId: "user_s004" },
+        { clerkUserId: "clerk_s004_company", userId: "user_s004" },
+      ],
+      skipDuplicates: true,
+    });
     // Preconditions: s004 really has data to delete.
     expect(await prisma.interview.count({ where: { userId: "user_s004" } })).toBeGreaterThan(0);
     expect(
@@ -201,6 +208,9 @@ describe.skipIf(!live)("U16 DPDP export + delete (live DB)", () => {
 
     // Row-level verification, table by table.
     expect(await prisma.user.findUnique({ where: { id: "user_s004" } })).toBeNull();
+    expect(
+      await prisma.userClerkIdentity.count({ where: { userId: "user_s004" } }),
+    ).toBe(0);
     expect(await prisma.submission.count({ where: { userId: "user_s004" } })).toBe(0);
     expect(await prisma.interview.count({ where: { userId: "user_s004" } })).toBe(0);
     expect(await prisma.quizAttempt.count({ where: { userId: "user_s004" } })).toBe(0);

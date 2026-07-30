@@ -76,9 +76,34 @@ model User {
   notifications      Notification[]
   portfolioEntry     PortfolioEntry?
   votesCast          Vote[]        @relation("Voter")
+  emailAliases       UserEmailAlias[]
+  clerkIdentities    UserClerkIdentity[]
 
   @@index([sectionId])
   @@index([teamId])
+}
+
+// Additional verified login addresses for one LMS student. This keeps the
+// canonical User id (and therefore submissions, grades, teams, and votes)
+// stable when a student signs in with either a personal or institution email.
+model UserEmailAlias {
+  email     String   @id
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+// Multiple Google/Clerk accounts can represent the same student (for example,
+// personal and institution accounts) while all LMS work remains on one User.
+model UserClerkIdentity {
+  clerkUserId String   @id
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+
+  @@index([userId])
 }
 
 model Section {
