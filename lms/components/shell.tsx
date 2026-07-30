@@ -3,6 +3,8 @@ import Link from "next/link";
 import type { Role } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import type { SessionUser } from "@/lib/auth";
+import { hasClerkKeys } from "@/lib/auth/clerk";
+import { AccountSignOutButton } from "./account-sign-out-button";
 import { ShellNav, type NavLink } from "./shell-nav";
 
 // App chrome for authenticated pages (docs/BRAND.md): Parchment surfaces,
@@ -83,6 +85,7 @@ export async function Shell({
             margin: "0 auto",
             padding: "1rem 2rem",
             display: "flex",
+            flexWrap: "wrap",
             alignItems: "center",
             justifyContent: "space-between",
             gap: "1rem",
@@ -136,6 +139,7 @@ export async function Shell({
             >
               Ntf {unread}
             </Link>
+            {hasClerkKeys() && <AccountSignOutButton />}
           </div>
         </div>
         <ShellNav links={LINKS_BY_ROLE[user.role]} />
