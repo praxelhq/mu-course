@@ -1,0 +1,179 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ProjectStatus {
+  draft
+  analyzing
+  review
+  approved
+  generating
+  complete
+  failed
+  deleting
+}
+
+enum JobKind {
+  analyze
+  rethink
+  generate
+}
+
+enum JobStatus {
+  queued
+  running
+  complete
+  failed
+}
+
+enum LicenseCreditStatus {
+  available
+  redeemed
+  revoked
+}
+
+model User {
+  id          String        @id @default(cuid())
+  clerkUserId String        @unique
+  email       String?
+  isAdmin     Boolean       @default(false)
+  projects    Project[]
+  licensePurchases LicensePurchase[]
+  licenseCredits   LicenseCredit[]
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+model Project {
+  id                   String                 @id @default(cuid())
+  userId               String
+  user                 User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name                 String
+  sourceUrl            String
+  uiReferenceUrl       String?
+  niche                String
+  usp                   String
+  buildTarget          String
+  status               ProjectStatus          @default(draft)
+  currentUnderstanding Int?
+  approvedVersion      Int?
+  understandings       UnderstandingVersion[]
+  promptSets           PromptSet[]
+  jobs                 ProviderRun[]
+  licenseCredit        LicenseCredit?
+  createdAt            DateTime               @default(now())
+  updatedAt            DateTime               @updatedAt
+
+  @@index([userId, updatedAt])
+}
+
+model UnderstandingVersion {
+  id         String    @id @default(cuid())
+  projectId  String
+  project    Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  version    Int
+  content    Json
+  evidence   Json
+  approvedAt DateTime?
+  createdAt  DateTime  @default(now())
+
+  @@unique([projectId, version])
+}
+
+model PromptSet {
+  id                   String   @id @default(cuid())
+  projectId            String
+  project              Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  understandingVersion Int
+  platform             String
+  templateVersion      String
+  model                 String
+  content               Json
+  inputTokens           Int?
+  outputTokens          Int?
+  estimatedCostUsd      Decimal? @db.Decimal(10, 6)
+  createdAt             DateTime @default(now())
+
+  @@unique([projectId, understandingVersion, platform, templateVersion])
+}
+
+model ProviderRun {
+  id                String    @id @default(cuid())
+  projectId         String
+  project           Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  kind              JobKind
+  status            JobStatus @default(queued)
+  idempotencyKey    String    @unique
+  requestedModel    String?
+  servedModel       String?
+  inputTokens       Int?
+  outputTokens      Int?
+  estimatedCostUsd  Decimal?  @db.Decimal(10, 6)
+  sanitizedError    String?
+  attempts          Int       @default(0)
+  startedAt         DateTime?
+  completedAt       DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  @@index([projectId, createdAt])
+}
+
+model LicensePurchase {
+  id           String          @id @default(cuid())
+  userId       String
+  user         User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  externalId   String          @unique
+  productId    String
+  status       String
+  licenseCount Int
+  studentGrant Boolean         @default(false)
+  effectiveAt  DateTime
+  credits      LicenseCredit[]
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+
+  @@index([userId, createdAt])
+}
+
+model LicenseCredit {
+  id         String              @id @default(cuid())
+  userId     String
+  user       User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  purchaseId String
+  purchase   LicensePurchase     @relation(fields: [purchaseId], references: [id], onDelete: Cascade)
+  projectId  String?             @unique
+  project    Project?            @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  status     LicenseCreditStatus @default(available)
+  redeemedAt DateTime?
+  createdAt  DateTime            @default(now())
+  updatedAt  DateTime            @updatedAt
+
+  @@index([userId, status, createdAt])
+}
+
+model SalesInquiry {
+  id         String   @id @default(cuid())
+  email      String
+  name       String
+  teamSize   String
+  message    String
+  createdAt  DateTime @default(now())
+
+  @@index([email, createdAt])
+}
+
+model WebhookReceipt {
+  id           String   @id
+  eventType    String
+  eventTime    DateTime?
+  payloadHash  String
+  processedAt  DateTime @default(now())
+  result       String
+}

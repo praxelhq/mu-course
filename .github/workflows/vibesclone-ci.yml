@@ -1,0 +1,27 @@
+name: VibesClone CI
+
+on:
+  pull_request:
+    paths: ["vibesclone/**", ".github/workflows/vibesclone-ci.yml"]
+  push:
+    branches: [main]
+    paths: ["vibesclone/**", ".github/workflows/vibesclone-ci.yml"]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: vibesclone
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: 9.15.9 }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: pnpm, cache-dependency-path: vibesclone/pnpm-lock.yaml }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm prisma generate
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm build
