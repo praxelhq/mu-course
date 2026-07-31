@@ -1,8 +1,9 @@
 import type { BuildUnderstanding, PromptSetContent, BuildTarget } from "./contracts";
+import { fallbackProductName } from "./domain";
 
 export function fixtureUnderstanding(input: { hostname: string; niche: string; usp: string }): BuildUnderstanding {
   return {
-    productName: input.hostname.replace(/^www\./, "").split(".")[0].replace(/(^|[-_])\w/g, (part) => part.replace(/[-_]/, "").toUpperCase()),
+    productName: fallbackProductName(input.niche),
     summary: `A focused adaptation of ${input.hostname} for ${input.niche}, differentiated through ${input.usp}.`,
     icp: [`Operators and teams in ${input.niche}`, "A hands-on buyer who values a short path to first value"],
     coreJobs: ["Capture the core work in one place", "Move an item through a clear workflow", "Understand progress without manual reporting"],

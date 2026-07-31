@@ -10,15 +10,28 @@ const platformGuidance: Record<BuildTarget, string> = {
 };
 
 export async function generatePromptSet(input: { understanding: BuildUnderstanding; target: BuildTarget }): Promise<{ promptSet: PromptSetContent; receipt: ModelReceipt }> {
-  const system = `You are VibesClone's build-sequence architect. Generate exactly one comprehensive base prompt followed by ordered implementation prompts. The approved understanding is the sole product authority. Removed features must never be implemented. Every follow-up must map to named approved features, build on prior steps, and include observable completion checks. Avoid vague instructions such as "make it modern". ${platformGuidance[input.target]}`;
+  const system = `You are the build-sequence architect inside VibesClone. Generate exactly one comprehensive base prompt followed by ordered implementation prompts. The approved understanding is the sole product authority. The product being built is named "${input.understanding.productName}". Use that name whenever the product needs a name. Never call the customer's product VibesClone and never reuse the analyzed source product's brand. Removed features must never be implemented. Every follow-up must map to named approved features, build on prior steps, and include observable completion checks. Avoid vague instructions such as "make it modern". ${platformGuidance[input.target]}`;
   const prompt = `PLATFORM: ${input.target}\nAPPROVED BUILD UNDERSTANDING:\n${JSON.stringify(input.understanding, null, 2)}\n\nCreate a practical sequence that a non-expert can copy one prompt at a time. Base order must be 0; follow-up orders must be contiguous from 1.`;
   try {
     const result = await requestStructured({ name: "prompt_set", system, prompt, schema: promptSetJsonSchema, validator: promptSetSchema });
-    return { promptSet: normalizeOrders(result.data), receipt: result.receipt };
+    return { promptSet: enforcePromptIdentity(normalizeOrders(result.data), input.understanding.productName), receipt: result.receipt };
   } catch {
     const result = await requestStructured({ name: "prompt_set", system: `${system}\nPrevious output was invalid. Return only schema-valid content.`, prompt, schema: promptSetJsonSchema, validator: promptSetSchema, fallback: true });
-    return { promptSet: normalizeOrders(result.data), receipt: result.receipt };
+    return { promptSet: enforcePromptIdentity(normalizeOrders(result.data), input.understanding.productName), receipt: result.receipt };
   }
+}
+
+export function enforcePromptIdentity(value: PromptSetContent, productName: string): PromptSetContent {
+  const replace = (text: string): string => text.replace(/Vibes\s*Clone/gi, productName);
+  const clean = <T extends PromptSetContent["base"] | PromptSetContent["followUps"][number]>(item: T): T => ({
+    ...item,
+    title: replace(item.title),
+    purpose: replace(item.purpose),
+    prompt: replace(item.prompt),
+    completionChecks: item.completionChecks.map(replace),
+    mappedFeatures: item.mappedFeatures.map(replace),
+  }) as T;
+  return { base: clean(value.base), followUps: value.followUps.map((item) => clean(item)) };
 }
 
 export function normalizeOrders(value: PromptSetContent): PromptSetContent {

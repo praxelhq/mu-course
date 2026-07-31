@@ -27,7 +27,7 @@ export async function POST(request: Request): Promise<Response> {
       to: [to],
       reply_to: email,
       subject: `VibesClone sales inquiry · ${parsed.data.teamSize} people`,
-      text: `Name: ${parsed.data.name}\nEmail: ${email}\nTeam / cohort: ${parsed.data.teamSize}\n\n${parsed.data.message}`,
+      text: `Name: ${parsed.data.name}\nEmail: ${email}\nTeam size: ${parsed.data.teamSize}\n\n${parsed.data.message}`,
     }),
   });
   if (!response.ok) return Response.json({ error: "Your inquiry was saved, but the notification is delayed." }, { status: 502 });

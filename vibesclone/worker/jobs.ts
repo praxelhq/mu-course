@@ -5,6 +5,7 @@ import { extractProductEvidence } from "@/lib/extraction/firecrawl";
 import { fixturePromptSet, fixtureUnderstanding } from "@/lib/fixtures";
 import { analyzeEvidence } from "@/lib/prompts/analysis";
 import { generatePromptSet } from "@/lib/prompts/generation";
+import { ensureDistinctProductName } from "@/lib/domain";
 
 function safeMessage(error: unknown): string {
   if (error instanceof Error && /configured|timeout|timed out|returned|evidence|URL/i.test(error.message)) return error.message.slice(0, 300);
@@ -36,6 +37,7 @@ export async function analyzeProject(data: { projectId: string; runId: string })
       result = await analyzeEvidence({ pages, uiPages, niche: project.niche, usp: project.usp });
       evidence = [...pages, ...(uiPages ?? [])].map((page) => ({ url: page.url, title: page.title, excerpt: page.markdown.slice(0, 500) }));
     }
+    result = { ...result, understanding: ensureDistinctProductName(result.understanding, project.sourceUrl, project.niche) };
     const nextVersion = (project.currentUnderstanding ?? 0) + 1;
     await prisma.$transaction([
       prisma.understandingVersion.create({ data: { projectId: project.id, version: nextVersion, content: result.understanding, evidence: evidence as Prisma.InputJsonValue } }),
