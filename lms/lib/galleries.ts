@@ -275,9 +275,11 @@ export function selectLegacyGalleryImageKey(args: {
     args.fields && typeof args.fields === "object" && !Array.isArray(args.fields)
       ? (args.fields as Record<string, unknown>)
       : {};
-  return typeof fields.image === "string" && fields.image
-    ? fields.image
-    : (args.files[0] ?? null);
+  // Current uploads bind fields.image to the reservation id while files[]
+  // contains the committed S3 key. Older Session 2 rows stored that key in
+  // both places, so preferring files[] supports both formats.
+  return args.files[0] ??
+    (typeof fields.image === "string" && fields.image ? fields.image : null);
 }
 
 export function selectGalleryOwnerScope(args: {

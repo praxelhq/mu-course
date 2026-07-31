@@ -84,6 +84,20 @@ describe("instructor image-gallery presentation", () => {
     ).toHaveLength(1);
   });
 
+  it("prefers the committed S3 file over a new-upload reservation id", () => {
+    const committedKey =
+      "submissions/individual/user/asg_s2_meme/legacy/v1/attempt-1/image/reservation/meme.png";
+
+    expect(
+      selectLegacyGalleryImageKey({
+        assignmentTypeSlug: "meme",
+        fields: { image: "cms8else8002oqi01c5thsx4u" },
+        files: [committedKey],
+        screenshotS3Key: null,
+      }),
+    ).toBe(committedKey);
+  });
+
   it("does not reinterpret another gallery artifact as a Session 2 image", () => {
     expect(
       buildGalleryPresentationItems({
