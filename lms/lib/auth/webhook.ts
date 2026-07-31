@@ -50,7 +50,7 @@ export function primaryEmail(data: ClerkUserEventData): string | null {
  * flows roster-row → Clerk (KTD21); nothing from the Clerk payload is ever
  * written to local role/section. Unknown emails are flagged for manual
  * deletion (privateMetadata + AuditLog) unless the explicitly time-bounded
- * emergency enrollment dependency admits them to Section F. Accounts are
+ * emergency enrollment dependency admits them to the configured section. Accounts are
  * never auto-deleted.
  */
 export async function handleClerkUserEvent(

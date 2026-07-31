@@ -18,6 +18,7 @@ import { AuthError, withAuth } from "../lib/auth";
 import {
   enrollTemporarySectionFUser,
   isTemporarySectionFEnrollmentOpen,
+  temporaryEnrollmentSectionCode,
   temporaryEnrollmentName,
   type TemporaryEnrollmentDeps,
 } from "../lib/auth/temporary-section-f-enrollment";
@@ -83,6 +84,41 @@ describe("temporary Section F enrollment window", () => {
     expect(temporaryEnrollmentName("first.last+class@mastersunion.org")).toBe(
       "first last class",
     );
+  });
+
+  it("targets the explicitly configured section instead of hard-coding F", () => {
+    expect(
+      temporaryEnrollmentSectionCode({
+        TEMPORARY_SECTION_ENROLLMENT_CODE: "A",
+        TEMPORARY_SECTION_ENROLLMENT_UNTIL: "2026-07-30T07:30:00.000Z",
+      }),
+    ).toBe("A");
+  });
+
+  it("creates an unknown authenticated user in the configured Section A", async () => {
+    const lookedUpCodes: string[] = [];
+    const deps = enrollmentDeps({
+      findSectionF: async (sectionCode) => {
+        lookedUpCodes.push(sectionCode);
+        return { id: "sec_a" };
+      },
+    });
+
+    await expect(
+      enrollTemporarySectionFUser(
+        {
+          email: "new.student@example.com",
+          clerkUserId: "clerk_new_a",
+          env: {
+            TEMPORARY_SECTION_ENROLLMENT_CODE: "A",
+            TEMPORARY_SECTION_ENROLLMENT_UNTIL: "2026-07-30T07:30:00.000Z",
+          },
+          now: () => now,
+        },
+        deps,
+      ),
+    ).resolves.toMatchObject({ role: "student", sectionId: "sec_a" });
+    expect(lookedUpCodes).toEqual(["A"]);
   });
 
   function enrollmentDeps(

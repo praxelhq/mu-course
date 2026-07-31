@@ -69,7 +69,7 @@ async function lookupRosterByClerkId(clerkUserId: string): Promise<RosterLookup>
     // account's primary email (the same rule the webhook and session layer
     // use) and backfill the link so this costs one Clerk call per student,
     // once. An unknown account is offered to the fail-closed, time-bounded
-    // Section F emergency enrollment path; outside that window it still
+    // Configured-section emergency enrollment path; outside that window it still
     // falls through to null → flag + redirect.
     const email = await getClerkUserEmail(clerkUserId);
     if (!email) return null;
