@@ -77,7 +77,7 @@ async function main() {
         })),
       });
     }
-  });
+  }, { maxWait: 10_000, timeout: 60_000 });
   for (const pack of parsed.packs) console.log(`Loaded Section ${pack.sectionCode}: ${pack.questions.length} questions`);
 }
 
