@@ -15,6 +15,7 @@
     "seed": "tsx prisma/seed.ts",
     "setup:sessions3-5": "tsx --env-file-if-exists=.env scripts/sessions3-5-setup.ts",
     "setup:sessions3-5:dry-run": "tsx --env-file-if-exists=.env scripts/sessions3-5-setup.ts --dry-run --report-json",
+    "load:data-race": "tsx --env-file-if-exists=.env scripts/load-data-race.ts",
     "check:evaluator-boundary": "node scripts/check-evaluator-boundary.mjs",
     "check:evaluator-boundary:release": "node scripts/check-evaluator-boundary.mjs --require-private",
     "eval:grading": "tsx --env-file-if-exists=.env scripts/eval-grading.ts",

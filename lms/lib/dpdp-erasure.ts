@@ -18,6 +18,7 @@ export type DpdpErasureCounts = {
   interviews: number;
   interviewRetakes: number;
   quizAttempts: number;
+  dataRaceResponses: number;
   peerReviews: number;
   portfolio: number;
   notifications: number;

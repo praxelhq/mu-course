@@ -3,7 +3,7 @@
 import { SignOutButton } from "@clerk/nextjs";
 
 export function AccountSignOutButton({
-  label = "Log out / switch account",
+  label = "Log out",
   prominent = false,
 }: {
   label?: string;

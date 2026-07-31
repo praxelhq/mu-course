@@ -26,6 +26,7 @@ const result: DpdpErasureResult = {
     interviews: 0,
     interviewRetakes: 0,
     quizAttempts: 0,
+    dataRaceResponses: 0,
     peerReviews: 0,
     portfolio: 0,
     notifications: 0,

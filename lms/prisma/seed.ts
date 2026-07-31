@@ -199,6 +199,8 @@ const ASSIGNMENT_TYPES = [
  */
 export const DEMO_SEED_TABLES = [
   "User",
+  "UserEmailAlias",
+  "UserClerkIdentity",
   "Section",
   "Team",
   "AssignmentType",
@@ -211,6 +213,9 @@ export const DEMO_SEED_TABLES = [
   "InterviewWindow",
   "Quiz",
   "QuizAttempt",
+  "DataRace",
+  "DataRaceQuestion",
+  "DataRaceResponse",
   "PeerReview",
   "GalleryItem",
   "Vote",

@@ -143,6 +143,14 @@ enum QuizAnswerMode {
   stable_id
 }
 
+enum DataRacePhase {
+  waiting
+  question
+  feedback
+  leaderboard
+  complete
+}
+
 model User {
   id                 String   @id @default(cuid())
   email              String   @unique
@@ -157,16 +165,17 @@ model User {
   flaggedForDeletion Boolean  @default(false)
   createdAt          DateTime @default(now())
 
-  submissions     Submission[]
-  interviews      Interview[]
-  quizAttempts    QuizAttempt[]
-  reviewsGiven    PeerReview[]    @relation("Reviewer")
-  reviewsReceived PeerReview[]    @relation("Reviewee")
-  notifications   Notification[]
-  portfolioEntry  PortfolioEntry?
-  votesCast       Vote[]          @relation("Voter")
-  emailAliases    UserEmailAlias[]
-  clerkIdentities UserClerkIdentity[]
+  submissions       Submission[]
+  interviews        Interview[]
+  quizAttempts      QuizAttempt[]
+  reviewsGiven      PeerReview[]        @relation("Reviewer")
+  reviewsReceived   PeerReview[]        @relation("Reviewee")
+  notifications     Notification[]
+  portfolioEntry    PortfolioEntry?
+  votesCast         Vote[]              @relation("Voter")
+  dataRaceResponses DataRaceResponse[]
+  emailAliases      UserEmailAlias[]
+  clerkIdentities   UserClerkIdentity[]
 
   @@index([sectionId])
   @@index([teamId])
@@ -204,6 +213,7 @@ model Section {
   teams            Team[]
   interviewWindows InterviewWindow[]
   gates            Gate[]
+  dataRaces        DataRace[]
 }
 
 model Team {
@@ -449,6 +459,64 @@ model QuizAttempt {
   // idempotency (double-submit returns the existing result, no pre-check race).
   @@unique([quizId, userId])
   @@index([userId])
+}
+
+// Session 3's instructor-paced, section-isolated live quiz. Correct answers
+// remain server-side; student and projector APIs expose only phase-safe DTOs.
+model DataRace {
+  id                String             @id @default(cuid())
+  sessionNo         Int                @default(3)
+  sectionId         String
+  section           Section            @relation(fields: [sectionId], references: [id])
+  title             String             @default("Data Race")
+  datasetId         String
+  sourceSha256      String
+  phase             DataRacePhase      @default(waiting)
+  currentPosition   Int                @default(0)
+  questionStartedAt DateTime?
+  questionEndsAt    DateTime?
+  version           Int                @default(1)
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  questions         DataRaceQuestion[]
+
+  @@unique([sessionNo, sectionId])
+  @@index([sectionId])
+}
+
+model DataRaceQuestion {
+  id              String             @id @default(cuid())
+  raceId          String
+  race            DataRace           @relation(fields: [raceId], references: [id], onDelete: Cascade)
+  position        Int
+  prompt          String
+  options         Json
+  correctOptionId String
+  difficulty      String
+  durationSeconds Int
+  sourceNote      String?
+  responses       DataRaceResponse[]
+
+  @@unique([raceId, position])
+  @@index([raceId])
+}
+
+model DataRaceResponse {
+  id               String           @id @default(cuid())
+  questionId       String
+  question         DataRaceQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  userId           String
+  user             User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  selectedOptionId String
+  correct          Boolean
+  responseMs       Int
+  points           Int
+  streak           Int
+  submittedAt      DateTime         @default(now())
+
+  @@unique([questionId, userId])
+  @@index([userId])
+  @@index([questionId, points])
 }
 
 model PeerReview {

@@ -1,4 +1,4 @@
-import { SignIn } from "@clerk/nextjs";
+import { SignInPanel } from "./sign-in-panel";
 
 // Sign-in via Clerk's prebuilt component. Google-only sign-in is Clerk
 // dashboard configuration (User & Authentication → Social connections →
@@ -38,7 +38,7 @@ export default function SignInPage() {
         <h1 style={{ fontSize: "2.5rem", lineHeight: 1.1, margin: 0 }}>The Forge</h1>
       </div>
       {clerkConfigured ? (
-        <SignIn />
+        <SignInPanel />
       ) : (
         <p style={{ color: "var(--charcoal)", maxWidth: "28rem", textAlign: "center" }}>
           Clerk is not configured in this environment. Local dev uses the

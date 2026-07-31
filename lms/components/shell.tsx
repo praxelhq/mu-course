@@ -15,6 +15,7 @@ import { ShellNav, type NavLink } from "./shell-nav";
 const STUDENT_LINKS: NavLink[] = [
   { label: "Dashboard", href: "/dashboard" },
   { label: "Sessions", href: "/sessions" },
+  { label: "Data Race", href: "/data-race" },
   { label: "Assignments", href: "/assignments" },
   { label: "Quizzes", href: "/quizzes" },
   { label: "Galleries", href: "/galleries" },
@@ -28,6 +29,7 @@ const INSTRUCTOR_LINKS: NavLink[] = [
   { label: "Dashboard", href: "/instructor" },
   // Live class surface: participation, marks, votes and the reveal toggles.
   { label: "Session 2", href: "/instructor/session2" },
+  { label: "Data Race", href: "/instructor/data-race" },
   { label: "Unlock Console", href: "/instructor/unlocks" },
   { label: "Quizzes", href: "/instructor/quizzes" },
   { label: "Materials", href: "/instructor/materials" },

@@ -156,6 +156,7 @@ const COUNT_KEYS = [
   "interviews",
   "interviewRetakes",
   "quizAttempts",
+  "dataRaceResponses",
   "peerReviews",
   "portfolio",
   "notifications",
@@ -2063,6 +2064,7 @@ async function applyDatabaseCleanup(
     where: { userId: targetUserId },
   });
   const quizAttempts = await tx.quizAttempt.deleteMany({ where: { userId: targetUserId } });
+  const dataRaceResponses = await tx.dataRaceResponse.deleteMany({ where: { userId: targetUserId } });
   const peerReviews = await tx.peerReview.deleteMany({
     where: { OR: [{ reviewerId: targetUserId }, { revieweeId: targetUserId }] },
   });
@@ -2098,6 +2100,7 @@ async function applyDatabaseCleanup(
     interviews: interviews.count,
     interviewRetakes: interviewRetakes.count,
     quizAttempts: quizAttempts.count,
+    dataRaceResponses: dataRaceResponses.count,
     peerReviews: peerReviews.count,
     portfolio: portfolio.count,
     notifications: notifications.count,
