@@ -10,7 +10,7 @@ import statistics
 from pathlib import Path
 
 SECTIONS = "ABCDEFGH"
-TIMES = [25, 25, 30, 35, 40, 45, 50, 55, 60, 75]
+TIMES = [60, 60, 60, 75, 75, 75, 90, 90, 105, 120]
 DIFFICULTIES = ["Easy", "Easy", "Easy", "Moderate", "Moderate", "Moderate", "Challenging", "Challenging", "Hard", "Expert"]
 EXPECTED_SOURCE_SHA256 = "36d32ac250effbba9cb2c2fcb2cb3ad4c61396a8b2f501d3d7e20be061f1ff77"
 
@@ -59,21 +59,41 @@ def corr(xs, ys):
     return numerator / denominator if denominator else 0
 
 
-def options(question_id, correct, wrong):
-    labels = [str(correct), *[str(item) for item in wrong]]
-    labels = list(dict.fromkeys(labels))
-    if len(labels) != 4:
+def ranked_values(rows, field):
+    """Rank populated values by frequency, then value, so ties are deterministic."""
+    values = {row[field] for row in rows if row[field] not in (None, "")}
+    return sorted(values, key=lambda value: (-sum(row[field] == value for row in rows), str(value)))
+
+
+def answer_position(section, position):
+    # Each section gets a non-sequential 3/3/2/2 distribution, rotated so
+    # A-D are exactly balanced across the full 80-question release.
+    base_counts = [3, 3, 2, 2]
+    shift = (ord(section) - ord("A")) % 4
+    counts = base_counts[-shift:] + base_counts[:-shift] if shift else base_counts
+    positions = [index for index, count in enumerate(counts) for _ in range(count)]
+    random.Random(f"data-race-answer-positions-{section}").shuffle(positions)
+    return positions[position - 1]
+
+
+def options(question_id, section, position, correct, wrong):
+    correct_label = str(correct)
+    wrong_labels = list(dict.fromkeys(str(item) for item in wrong))
+    if correct_label in wrong_labels or len(wrong_labels) != 3:
         raise ValueError(f"{question_id} does not have four distinct, plausible answer labels")
     rng = random.Random(int(hashlib.sha256(question_id.encode()).hexdigest()[:12], 16))
-    rng.shuffle(labels)
-    rendered = [{"id": chr(97 + index), "label": label} for index, label in enumerate(labels[:4])]
-    correct_id = next(item["id"] for item in rendered if item["label"] == str(correct))
+    rng.shuffle(wrong_labels)
+    correct_index = answer_position(section, position)
+    labels = wrong_labels.copy()
+    labels.insert(correct_index, correct_label)
+    rendered = [{"id": chr(97 + index), "label": label} for index, label in enumerate(labels)]
+    correct_id = chr(97 + correct_index)
     return rendered, correct_id
 
 
 def item(section, position, prompt, correct, wrong, note):
     stable_id = f"S3-DATA-RACE-{section}-{position:02d}@1"
-    choices, answer = options(stable_id, correct, wrong)
+    choices, answer = options(stable_id, section, position, correct, wrong)
     return {
         "stableId": stable_id,
         "position": position,
@@ -99,31 +119,31 @@ def main():
         raise ValueError("Input is not the frozen 1,000-row, 29-column Session 3 live dataset")
 
     missing_fields = ["country", "audience_type", "category", "domain", "x_followers", "domain_rating", "visitors_30d", "value_proposition"]
-    providers = sorted({row["payment_provider"] for row in rows if row["payment_provider"]}, key=lambda p: -sum(r["payment_provider"] == p for r in rows))
-    categories = sorted({row["category"] for row in rows if row["category"]}, key=lambda c: -sum(r["category"] == c for r in rows))
-    countries = sorted({row["country"] for row in rows if row["country"]}, key=lambda c: -sum(r["country"] == c for r in rows))
+    providers = ranked_values(rows, "payment_provider")
+    categories = ranked_values(rows, "category")
+    countries = ranked_values(rows, "country")
     packs = []
 
     for index, section in enumerate(SECTIONS):
         questions = []
         field = missing_fields[index]
         answer = sum(row[field] in (None, "") for row in rows)
-        questions.append(item(section, 1, f"How many rows have a missing value in `{field}`?", f"{answer:,}", [f"{answer+1:,}", f"{1000-answer:,}", f"{round(answer/10):,}"], f"COUNTBLANK({field}) over 1,000 data rows"))
+        questions.append(item(section, 1, f"How many rows have a blank or null value in `{field}`?", f"{answer:,}", [f"{answer+1:,}", f"{1000-answer:,}", f"{round(answer/10):,}"], f"COUNTBLANK({field}) over 1,000 data rows"))
 
         provider = providers[index % len(providers)]
         count = sum(row["payment_provider"] == provider for row in rows)
-        questions.append(item(section, 2, f"How many companies use {provider}?", f"{count:,}", [f"{count+1:,}", f"{max(0,count-1):,}", f"{round(count/10):,}"], "Count companies after exact payment_provider filter"))
+        questions.append(item(section, 2, f"How many rows have payment_provider exactly equal to '{provider}'?", f"{count:,}", [f"{count+1:,}", f"{max(0,count-1):,}", f"{round(count/10):,}"], "Count rows after exact payment_provider filter; composite values are separate labels"))
 
         category = categories[index % len(categories)]
         total = sum(number(row["revenue_30d_usd"]) or 0 for row in rows if row["category"] == category)
-        questions.append(item(section, 3, f"What is total 30-day revenue for the {category} category?", money(total), [money(total/10), money(total*1.1), money(total + median([number(r["revenue_30d_usd"]) for r in rows]))], "SUM revenue_30d_usd after category filter"))
+        questions.append(item(section, 3, f"What is total 30-day revenue for the {category} category, rounded to the nearest dollar?", money(total), [money(total/10), money(total*1.1), money(total + median([number(r["revenue_30d_usd"]) for r in rows]))], "SUM revenue_30d_usd after category filter; round to nearest dollar"))
 
         median_category = categories[(index + 5) % len(categories)]
         vals = [number(row["mrr_usd"]) for row in rows if row["category"] == median_category]
         med = median(vals)
         avg = statistics.mean([v for v in vals if v is not None]) if any(v is not None for v in vals) else 0
         wrong_medians = distinct_distractors(med, [avg, sum(v or 0 for v in vals), median([v for v in vals if v]), med + 1, med * 10 + 10], money)
-        questions.append(item(section, 4, f"Including zeroes but excluding blanks, what is median MRR for {median_category}?", money(med), wrong_medians, "MEDIAN of nonblank mrr_usd after category filter; zero retained"))
+        questions.append(item(section, 4, f"Including zeroes but excluding blanks, what is median MRR for {median_category}, rounded to the nearest dollar?", money(med), wrong_medians, "MEDIAN of nonblank mrr_usd after category filter; zero retained; round to nearest dollar"))
 
         pool = [countries[(index + offset * 3) % len(countries)] for offset in range(4)]
         country_totals = {country: sum(number(row["revenue_30d_usd"]) or 0 for row in rows if row["country"] == country) for country in pool}
@@ -133,7 +153,8 @@ def main():
         provider_pool = [providers[(index + offset) % len(providers)] for offset in range(4)]
         provider_totals = {name: sum(number(row["revenue_30d_usd"]) or 0 for row in rows if row["payment_provider"] == name) for name in provider_pool}
         winner = max(provider_pool, key=lambda name: (provider_totals[name], name))
-        questions.append(item(section, 6, f"Which provider processes the highest total 30-day revenue among these four?", winner, [name for name in provider_pool if name != winner], "Group by payment_provider and sum revenue_30d_usd"))
+        provider_referents = "; ".join(f"'{name}'" for name in provider_pool)
+        questions.append(item(section, 6, f"Among these four exact payment_provider values — {provider_referents} — which has the highest total 30-day revenue?", winner, [name for name in provider_pool if name != winner], "Group by exact payment_provider value and sum revenue_30d_usd"))
 
         metrics = ["companies", "revenue_30d_usd", "mrr_usd", "revenue_all_time_usd"]
         metric = metrics[index % len(metrics)]
@@ -148,7 +169,8 @@ def main():
             anon_value = sum(number(row[metric]) or 0 for row in rows if anonymous(row))
             answer_label = f"Named {money(named_value)} · Anonymous {money(anon_value)}"
             wrong = [f"Named {money(anon_value)} · Anonymous {money(named_value)}", f"Named {money(named_value/10)} · Anonymous {money(anon_value/10)}", f"Named {money(named_value+anon_value)} · Anonymous $0"]
-        questions.append(item(section, 7, f"Using stealth/hidden names as anonymous, what is the split by {metric}?", answer_label, wrong, f"Conditional aggregation of {metric} by anonymity rule"))
+        rounding = " Values are rounded to the nearest dollar." if metric != "companies" else ""
+        questions.append(item(section, 7, f"Treat a blank startup_name, 'Stealth Company', or 'Hidden Business' as anonymous. What is the named-versus-anonymous split by {metric}?{rounding}", answer_label, wrong, f"Conditional aggregation of {metric}; blank/Stealth Company/Hidden Business are anonymous" + ("; round to nearest dollar" if metric != "companies" else "")))
 
         pairs = [("x_followers", "revenue_30d_usd"), ("x_followers", "mrr_usd"), ("domain_rating", "mrr_usd"), ("domain_rating", "revenue_30d_usd"), ("active_subscriptions", "mrr_usd"), ("active_subscriptions", "revenue_30d_usd"), ("visitors_30d", "revenue_30d_usd"), ("revenue_3m_usd", "mrr_usd")]
         left, right = pairs[index]
@@ -162,7 +184,7 @@ def main():
                 corr_wrong.append(label)
             if len(corr_wrong) == 3:
                 break
-        questions.append(item(section, 8, f"What is the Pearson correlation between {left} and {right}, using complete pairs only?", correct_corr, corr_wrong, "Pearson r on rows where both variables are nonblank"))
+        questions.append(item(section, 8, f"What is the Pearson correlation between {left} and {right}, using complete pairs only and rounded to three decimal places?", correct_corr, corr_wrong, "Pearson r on rows where both variables are nonblank; round to three decimal places"))
 
         audience = ["B2B", "B2C", "Both"][index % 3]
         multiples = [number(row["revenue_multiple"]) for row in rows if row["audience_type"] == audience and row["on_sale"] is True]
@@ -170,7 +192,7 @@ def main():
         mean_multiple = statistics.mean([v for v in multiples if v is not None])
         multiple_format = lambda value: f"{value:.2f}x"
         wrong_multiples = distinct_distractors(multiple, [mean_multiple, multiple * 10, max(0, multiple - 1), multiple + 1, multiple / 10], multiple_format)
-        questions.append(item(section, 9, f"For on-sale {audience} companies with a stated multiple, what is the median revenue multiple?", multiple_format(multiple), wrong_multiples, "Filter on_sale=true and audience_type; parse revenue_multiple; median"))
+        questions.append(item(section, 9, f"For on-sale {audience} companies with a stated multiple, what is the median revenue multiple, rounded to two decimal places?", multiple_format(multiple), wrong_multiples, "Filter on_sale=true and audience_type; parse revenue_multiple; median; round to two decimal places"))
 
         focus = categories[(index + 9) % len(categories)]
         focus_rows = [row for row in rows if row["category"] == focus]
@@ -183,7 +205,7 @@ def main():
             f"{focus} has {focus_count+1} rows, {money(focus_revenue)} total 30-day revenue, and {money(focus_median)} median MRR.",
             f"{focus} has {focus_count} rows, {money(focus_revenue/max(1,focus_count))} total 30-day revenue, and {money(focus_median)} median MRR.",
         ]
-        questions.append(item(section, 10, f"Which statement about the {focus} category is fully supported by the dataset?", true_statement, wrong, "Multi-step filter, row count, total revenue, and median MRR verification"))
+        questions.append(item(section, 10, f"Which statement about the {focus} category is fully supported by the dataset? All dollar values are rounded to the nearest dollar.", true_statement, wrong, "Multi-step filter, row count, total revenue, and median MRR verification; round money to nearest dollar"))
         packs.append({"sectionCode": section, "title": "Data Race", "questions": questions})
 
     output = {"schemaVersion": "data-race-pack/1.0", "datasetId": "trustmrr-s3-live-2026-07-30-v1", "sourceSha256": source_hash, "rowCount": len(rows), "packs": packs}
