@@ -16,7 +16,9 @@ EXPECTED_SOURCE_SHA256 = "36d32ac250effbba9cb2c2fcb2cb3ad4c61396a8b2f501d3d7e20b
 
 
 def number(value):
-    if value in (None, "", True, False):
+    # Keep numeric 0 and 1. Equality-based membership would treat them as
+    # False and True in Python and silently drop legitimate observations.
+    if value is None or value == "" or isinstance(value, bool):
         return None
     try:
         result = float(str(value).replace("x", "").replace(",", ""))
