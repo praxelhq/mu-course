@@ -107,7 +107,7 @@ export function Workspace(): React.ReactNode {
       {!loading && project && project.status === "review" && project.understandings[0] ? <UnderstandingEditor project={project} onReload={() => loadProject(project.id)} /> : null}
       {!loading && project && project.status === "approved" ? <ApprovalGate project={project} onReload={() => loadProject(project.id)} /> : null}
       {!loading && project && project.status === "generating" ? <CenteredState icon={<LoaderCircle className="spin" />} title="Building your prompt sequence" body="Mapping every approved feature and flow into the right implementation order." /> : null}
-      {!loading && project && project.status === "complete" && project.promptSets[0] ? <PromptSequence project={project} entitled={entitled} availableLicenses={availableLicenses} lockedPromptCount={lockedPromptCount} onReload={() => loadProject(project.id)} /> : null}
+      {!loading && project && project.status === "complete" && project.promptSets[0] ? <PromptSequence key={`${project.promptSets[0].id}:${entitled}`} project={project} entitled={entitled} availableLicenses={availableLicenses} lockedPromptCount={lockedPromptCount} onReload={() => loadProject(project.id)} /> : null}
     </main>
   );
 }
@@ -169,14 +169,15 @@ function PromptSequence({ project, entitled, availableLicenses, lockedPromptCoun
   const [lineageMessage, setLineageMessage] = useState<string | null>(null);
   const [progressMessage, setProgressMessage] = useState<string | null>(null);
   const current = prompts[selected];
-  const nextIndex = nextIncompleteIndex(prompts, [...completed].map((index) => prompts[index]?.order ?? -1), selected);
+  const nextIndex = nextIncompleteIndex(prompts, [...completed].map((index) => prompts[index].order), selected);
   const allComplete = completed.size === prompts.length;
   const toggleCompleted = async () => {
     const wasCompleted = completed.has(selected);
     setProgressMessage(null);
     setCompleted((previous) => { const next = new Set(previous); if (wasCompleted) next.delete(selected); else next.add(selected); return next; });
     try {
-      await jsonRequest(`/api/projects/${project.id}/progress`, { method: "POST", body: JSON.stringify({ order: current.order, completed: !wasCompleted }) });
+      const response = await jsonRequest<{ completedOrders: number[] }>(`/api/projects/${project.id}/progress`, { method: "POST", body: JSON.stringify({ promptSetId: set.id, order: current.order, completed: !wasCompleted }) });
+      setCompleted(completedIndexes(prompts, response.completedOrders));
     } catch (reason) {
       setCompleted((previous) => { const next = new Set(previous); if (wasCompleted) next.add(selected); else next.delete(selected); return next; });
       setProgressMessage(reason instanceof Error ? reason.message : "Progress could not be saved.");

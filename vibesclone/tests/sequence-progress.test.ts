@@ -34,7 +34,7 @@ const promptContent = {
 };
 
 function post(body: unknown): Promise<Response> {
-  return POST(new Request("https://vibesclone.com/api/projects/project_test/progress", { method: "POST", body: JSON.stringify(body) }), context);
+  return POST(new Request("https://vibesclone.com/api/projects/project_test/progress", { method: "POST", body: JSON.stringify({ promptSetId: "prompts_test", ...(body as object) }) }), context);
 }
 
 function seedProject(completedOrders: number[] = []): void {
@@ -67,7 +67,7 @@ describe("sequence progress toggle", () => {
     expect(await unmarked.json()).toEqual({ completedOrders: [2] });
   });
 
-  it("persists the write so the stored row carries the order", async () => {
+  it("computes the merged array the update persists", async () => {
     mocks.hasProjectEntitlement.mockResolvedValue(true);
     seedProject([0]);
 
@@ -108,8 +108,8 @@ describe("sequence progress toggle", () => {
     const negative = await post({ order: -1, completed: true });
     const beyond = await post({ order: 3, completed: true });
 
-    expect(negative.status).toBeGreaterThanOrEqual(400);
-    expect(beyond.status).toBeGreaterThanOrEqual(400);
+    expect(negative.status).toBe(404);
+    expect(beyond.status).toBe(404);
     expect(mocks.promptSetUpdate).not.toHaveBeenCalled();
   });
 
@@ -118,9 +118,50 @@ describe("sequence progress toggle", () => {
 
     const missingOrder = await post({ completed: true });
     const badCompleted = await post({ order: 1, completed: "yes" });
+    const floatOrder = await post({ order: 1.5, completed: true });
 
     expect(missingOrder.status).toBe(400);
     expect(badCompleted.status).toBe(400);
+    expect(floatOrder.status).toBe(400);
+  });
+
+  it("rejects a toggle aimed at a superseded sequence row", async () => {
+    mocks.hasProjectEntitlement.mockResolvedValue(true);
+
+    const stale = await POST(new Request("https://vibesclone.com/api/projects/project_test/progress", { method: "POST", body: JSON.stringify({ promptSetId: "prompts_old", order: 0, completed: true }) }), context);
+    const missing = await post({ order: 99, completed: true });
+
+    expect(stale.status).toBe(missing.status);
+    expect(await stale.json()).toEqual(await missing.json());
+    expect(mocks.promptSetUpdate).not.toHaveBeenCalled();
+  });
+
+  it("returns the shared 404 when stored content is malformed", async () => {
+    mocks.hasProjectEntitlement.mockResolvedValue(true);
+    mocks.projectFindFirst.mockResolvedValue({ id: "project_test", userId: "user_test", promptSets: [{ id: "prompts_test", content: { base: "bad" }, completedOrders: [] }] });
+
+    const response = await post({ order: 0, completed: true });
+
+    expect(response.status).toBe(404);
+    expect(await response.json()).toEqual({ error: "Step not found." });
+  });
+
+  it("returns 404 when the project has no generated sequence", async () => {
+    mocks.hasProjectEntitlement.mockResolvedValue(true);
+    mocks.projectFindFirst.mockResolvedValue({ id: "project_test", userId: "user_test", promptSets: [] });
+
+    const response = await post({ order: 0, completed: true });
+
+    expect(response.status).toBe(404);
+  });
+
+  it("re-marking an already-completed order stays idempotent", async () => {
+    mocks.hasProjectEntitlement.mockResolvedValue(true);
+    seedProject([1]);
+
+    const response = await post({ order: 1, completed: true });
+
+    expect(await response.json()).toEqual({ completedOrders: [1] });
   });
 
   it("returns 401 through the existing auth error path when unauthenticated", async () => {

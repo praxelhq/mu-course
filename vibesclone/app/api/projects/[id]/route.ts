@@ -21,7 +21,7 @@ export async function GET(_: Request, context: { params: Promise<{ id: string }>
     const promptSet = project.promptSets[0];
     const parsed = promptSet ? promptSetSchema.safeParse(promptSet.content) : null;
     const safeProject = !entitled && promptSet
-      ? { ...project, promptSets: parsed?.success ? [{ ...promptSet, content: { base: parsed.data.base, followUps: [] } }] : [] }
+      ? { ...project, promptSets: parsed?.success ? [{ ...promptSet, completedOrders: (promptSet.completedOrders ?? []).filter((order) => order === parsed.data.base.order), content: { base: parsed.data.base, followUps: [] } }] : [] }
       : project;
     const lockedPromptCount = !entitled && parsed?.success ? parsed.data.followUps.length : 0;
     return Response.json({ project: safeProject, entitled, availableLicenses, lockedPromptCount });

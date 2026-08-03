@@ -4,7 +4,7 @@ import { hasProjectEntitlement } from "@/lib/billing";
 import { promptSetSchema } from "@/lib/contracts";
 import { prisma } from "@/lib/db";
 
-const bodySchema = z.object({ order: z.number().int(), completed: z.boolean() });
+const bodySchema = z.object({ promptSetId: z.string(), order: z.number().int(), completed: z.boolean() });
 
 // Locked and nonexistent orders share this response so the progress surface is not an oracle for paid steps.
 const stepNotFound = () => Response.json({ error: "Step not found." }, { status: 404 });
@@ -23,6 +23,7 @@ export async function POST(request: Request, context: { params: Promise<{ id: st
     const promptSet = project?.promptSets[0];
     if (!project || !promptSet) return Response.json({ error: "Project not found." }, { status: 404 });
 
+    if (promptSet.id !== body.data.promptSetId) return stepNotFound();
     const parsed = promptSetSchema.safeParse(promptSet.content);
     if (!parsed.success) return stepNotFound();
 
