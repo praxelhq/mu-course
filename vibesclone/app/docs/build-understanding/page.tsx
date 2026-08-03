@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ContentPage } from "@/components/content/layout";
+import { docEntry } from "@/lib/content";
 
-export const metadata: Metadata = { title: "The Build Understanding", description: "What the editable analysis contains, how to edit and rethink it, and why approval creates an immutable snapshot.", alternates: { canonical: "/docs/build-understanding" } };
+const entry = docEntry("build-understanding");
+
+export const metadata: Metadata = { title: entry.title, description: entry.description, alternates: { canonical: `/docs/${entry.slug}` } };
 
 export default function BuildUnderstandingPage(): React.ReactNode {
   return <ContentPage eyebrow="DOCS · BUILD UNDERSTANDING" title="The Build Understanding" lede="The editable middle step between analysis and generation. You approve a description of the product you intend to build — then everything else is derived from that approval.">

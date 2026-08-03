@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ContentPage } from "@/components/content/layout";
+import { postEntry } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Choosing your build target", description: "Honest guidance on Lovable, Replit, Base44, and Claude Code, and why the right answer depends on how you like to work.", alternates: { canonical: "/blog/choosing-your-build-target" } };
+const entry = postEntry("choosing-your-build-target");
+
+export const metadata: Metadata = { title: entry.title, description: entry.description, alternates: { canonical: `/blog/${entry.slug}` } };
 
 export default function ChoosingYourBuildTargetPage(): React.ReactNode {
   return <ContentPage eyebrow="BLOG" title="Choosing your build target" lede="Lovable, Replit, Base44, and Claude Code will all build your product. The honest question is not which tool is best, but which one fits the way you actually work.">
-    <div className="content-meta"><span>2026-07-27</span><span>VibesClone</span></div>
+    <div className="content-meta"><span>{entry.date}</span><span>{entry.author}</span></div>
     <section><h2>Fit, not ranking</h2><p>People ask for a ranking and there isn’t one. Each of the four build targets is the right answer for a real working style and the wrong answer for another. The useful move is to be honest about how you work: whether you think visually or in a terminal, whether you want hosting handled or want to own the stack, whether you will read the generated code or never open it.</p></section>
     <section><h2>Lovable</h2><p>Lovable is the fastest route to visual full-stack scaffolding. You describe, it renders, and within minutes you are looking at real pages backed by a real database. It rewards people who evaluate products by looking at them and iterate by reacting to what they see. If your instinct on any build is to get something on screen first and refine from there, this is your tool. The trade is that you are working at the level of the product, not the code; that is a feature until the day you want to reach underneath.</p></section>
     <section><h2>Replit</h2><p>Replit gives you a full development environment in the browser with an agent working alongside you, plus hosting when you are ready. It suits people who want to iterate: run the thing, poke at it, adjust, run it again, and eventually peek at the code without setting up a local machine. If you expect your build to be a living project you return to and grow, rather than a one-shot generation, the environment matters more than the first prompt, and this is where Replit earns its place.</p></section>

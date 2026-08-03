@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ContentPage } from "@/components/content/layout";
+import { postEntry } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Why mega-prompts fail", description: "The failure modes of describing an entire product in one prompt, and what verification before generation fixes about each of them.", alternates: { canonical: "/blog/why-mega-prompts-fail" } };
+const entry = postEntry("why-mega-prompts-fail");
+
+export const metadata: Metadata = { title: entry.title, description: entry.description, alternates: { canonical: `/blog/${entry.slug}` } };
 
 export default function WhyMegaPromptsFailPage(): React.ReactNode {
   return <ContentPage eyebrow="BLOG" title="Why mega-prompts fail" lede="The 4,000-word prompt that describes your whole product feels thorough. It is actually the least controlled way to run a build, and its failures are predictable enough to name.">
-    <div className="content-meta"><span>2026-07-30</span><span>VibesClone</span></div>
+    <div className="content-meta"><span>{entry.date}</span><span>{entry.author}</span></div>
     <section><h2>Hidden misunderstandings</h2><p>A mega-prompt is generated once and pasted once. Whatever the tool misread about your intent is baked into everything it produces, and you discover the misreading only by inspecting the output. By then the wrong assumption has touched the data model, the flows, and half the interface. You are not correcting a sentence anymore. You are unwinding a building.</p><p>The fix is structural, not stylistic. Intent has to be verified before generation, in a form you can read and edit. When the analysis is a document you approve rather than a prompt you fire, misunderstandings surface while they still cost nothing.</p></section>
     <section><h2>Default-filling</h2><p>No prompt specifies everything, and a mega-prompt hides which parts it left open. The tool fills every gap with defaults: generic auth, generic empty states, a settings page nobody asked for. The result reads as plausible, which is worse than reading as wrong. You ship someone else’s median product with your name on it and cannot point to the line where that happened.</p></section>
     <section><h2>Feature interference</h2><p>Ask for twelve features in one request and the tool trades them against each other silently. The notification system constrains the data model, which constrains the search, which quietly narrows what the export can do. Each compromise is individually reasonable and collectively unaccountable. Features built one step at a time cannot interfere this way, because each step lands on a working state before the next one begins.</p></section>

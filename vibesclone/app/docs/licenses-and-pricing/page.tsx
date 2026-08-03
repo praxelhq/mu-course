@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ContentPage } from "@/components/content/layout";
+import { docEntry } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Licenses and pricing", description: "What is free, what a project license unlocks, credit packs, the student code, and refund behavior.", alternates: { canonical: "/docs/licenses-and-pricing" } };
+const entry = docEntry("licenses-and-pricing");
+
+export const metadata: Metadata = { title: entry.title, description: entry.description, alternates: { canonical: `/docs/${entry.slug}` } };
 
 export default function LicensesAndPricingPage(): React.ReactNode {
   return <ContentPage eyebrow="DOCS · LICENSES AND PRICING" title="Licenses and pricing" lede="The boundary is simple: understanding the product is free, building the whole product takes a license. One license covers one project.">

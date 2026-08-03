@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ContentPage } from "@/components/content/layout";
+import { docEntry } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Getting started", description: "From a public product URL to your first Build Sequence: analyze, review, approve, and build.", alternates: { canonical: "/docs/getting-started" } };
+const entry = docEntry("getting-started");
+
+export const metadata: Metadata = { title: entry.title, description: entry.description, alternates: { canonical: `/docs/${entry.slug}` } };
 
 export default function GettingStartedPage(): React.ReactNode {
   return <ContentPage eyebrow="DOCS · GETTING STARTED" title="Getting started" lede="One path from a public product URL to a Build Sequence you can run in your build tool. Five steps, one approval, no guesswork.">

@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ContentPage } from "@/components/content/layout";
+import { postEntry } from "@/lib/content";
 
-export const metadata: Metadata = { title: "What is a Build Sequence", description: "One base prompt plus ordered, checked follow-up prompts, each bound to an approved understanding: the difference between prompts and a build discipline.", alternates: { canonical: "/blog/what-is-a-build-sequence" } };
+const entry = postEntry("what-is-a-build-sequence");
+
+export const metadata: Metadata = { title: entry.title, description: entry.description, alternates: { canonical: `/blog/${entry.slug}` } };
 
 export default function WhatIsABuildSequencePage(): React.ReactNode {
   return <ContentPage eyebrow="BLOG" title="What is a Build Sequence" lede="Most people hand an AI build tool a prompt and hope. A Build Sequence replaces the hope with structure: one base prompt, a fixed order of follow-ups, and a check at every step.">
-    <div className="content-meta"><span>2026-08-03</span><span>VibesClone</span></div>
+    <div className="content-meta"><span>{entry.date}</span><span>{entry.author}</span></div>
     <section><h2>The definition</h2><p>A Build Sequence is one base prompt plus 2 to 12 ordered follow-up prompts, all generated from a Build Understanding you have read, edited, and approved. The base prompt sits at order 0 and establishes the foundation. Each follow-up assumes the state the previous prompts produced and extends it. Every prompt in the sequence states its purpose, includes completion checks you can run before advancing, and traces back to named features in the approved understanding.</p><p>That is the whole idea. It is small enough to explain in a paragraph and strict enough to change how a build goes.</p></section>
     <section><h2>Why the order exists</h2><p>AI build tools do their best work when each request carries a bounded amount of intent. Ask for one working slice and the tool can hold the whole request in view, make consistent decisions, and land on something you can inspect. Ask for an entire product and the tool starts trading your requirements against each other in ways you cannot see.</p><p>The order in a Build Sequence is not presentation. It is the dependency structure of the build. Authentication before profiles, data model before the views that read it, the core flow before the settings that tune it. Each step stands on the ones before it, which is why the sequence is fixed rather than a menu.</p></section>
     <section><h2>The base prompt</h2><p>Order 0 is a complete prompt on its own. It sets up the product’s structure and the first working slice, phrased in the vocabulary of the build target you chose. If you stopped after the base prompt, you would still have something real running. That matters, because the most common failure in AI-assisted building is never reaching a working state at all.</p></section>

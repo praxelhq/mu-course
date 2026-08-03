@@ -21,6 +21,18 @@ export const docs: DocEntry[] = [
   { slug: "licenses-and-pricing", title: "Licenses and pricing", description: "What is free, what a project license unlocks, credit packs, the student code, and refund behavior." },
 ];
 
+export function docEntry(slug: string): DocEntry {
+  const entry = docs.find((doc) => doc.slug === slug);
+  if (!entry) throw new Error(`missing doc registry entry: ${slug}`);
+  return entry;
+}
+
+export function postEntry(slug: string): PostEntry {
+  const entry = posts.find((post) => post.slug === slug);
+  if (!entry) throw new Error(`missing post registry entry: ${slug}`);
+  return entry;
+}
+
 // Ordered for the /blog index: newest first.
 export const posts: PostEntry[] = [
   { slug: "what-is-a-build-sequence", title: "What is a Build Sequence", description: "One base prompt plus ordered, checked follow-up prompts, each bound to an approved understanding: the difference between prompts and a build discipline.", date: "2026-08-03", author: "VibesClone" },

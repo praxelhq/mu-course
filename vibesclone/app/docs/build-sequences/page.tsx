@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ContentPage } from "@/components/content/layout";
+import { docEntry } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Build Sequences", description: "Why one base prompt plus ordered, checked follow-up prompts beats a single mega-prompt.", alternates: { canonical: "/docs/build-sequences" } };
+const entry = docEntry("build-sequences");
+
+export const metadata: Metadata = { title: entry.title, description: entry.description, alternates: { canonical: `/docs/${entry.slug}` } };
 
 export default function BuildSequencesPage(): React.ReactNode {
   return <ContentPage eyebrow="DOCS · BUILD SEQUENCES" title="Build Sequences" lede="The product's core output: one base prompt plus an ordered set of follow-up prompts, each with a purpose, completion checks, and a lineage back to the approved understanding.">

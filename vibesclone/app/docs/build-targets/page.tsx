@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ContentPage } from "@/components/content/layout";
+import { docEntry } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Choosing a build target", description: "How to pick among Lovable, Replit, Base44, and Claude Code, and what platform adapters preserve.", alternates: { canonical: "/docs/build-targets" } };
+const entry = docEntry("build-targets");
+
+export const metadata: Metadata = { title: entry.title, description: entry.description, alternates: { canonical: `/docs/${entry.slug}` } };
 
 export default function BuildTargetsPage(): React.ReactNode {
   return <ContentPage eyebrow="DOCS · BUILD TARGETS" title="Choosing a build target" lede="A Build Sequence is generated for one of four tools. The approved product behavior is identical across all of them — the choice is about how you like to build.">
