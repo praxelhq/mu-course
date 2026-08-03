@@ -1,0 +1,162 @@
+[
+  {
+    "id": "memo-strong-01",
+    "typeSlug": "data-memo",
+    "fields": {
+      "number1": "₹41,20,650 clean October revenue for Moxie after removing CN invoices and zero-price rows",
+      "move1": "Recompute one number — rebuilt the figure with a Sheets pivot and matched within rounding",
+      "number2": "34,897 rows in moxie_retail_oct2025.csv",
+      "move2": "Reconcile the base — asked two differently-phrased prompts and cross-checked wc -l",
+      "number3": "NVDA is the best 5-year performer in stocks_lab_12.csv at +2,714%",
+      "move3": "Ask for the working — made the AI show its normalisation from first close",
+      "aiGotWrong": "It named GIFT WRAP the most popular product by counting units; by revenue the answer is rings, and it never disclosed it had chosen units."
+    },
+    "files": [],
+    "expectedBand": { "min": 28, "max": 40 },
+    "note": "strong: three verified numbers, moves named, real catch"
+  },
+  {
+    "id": "memo-strong-02",
+    "typeSlug": "data-memo",
+    "fields": {
+      "number1": "Median P/E of the S&P snapshot is 21.4 vs mean 26.8",
+      "move1": "Recompute one number — MEDIAN() over the price/earnings column myself",
+      "number2": "505 tickers in sp500_financials.csv, 5 with missing earnings",
+      "move2": "Reconcile the base — row count plus COUNTBLANK on the earnings column",
+      "number3": "Moxie's top revenue day in October is the 19th (Diwali week), ₹2.9L",
+      "move3": "Ask for the working — had it print the groupby it ran before trusting the day",
+      "aiGotWrong": "Its first mean P/E included negative-earnings rows, dragging the average to a meaningless 11.2; it only mentioned this when I asked for the working."
+    },
+    "files": [],
+    "expectedBand": { "min": 28, "max": 40 },
+    "note": "strong: statistical care, edge case caught"
+  },
+  {
+    "id": "memo-mid-03",
+    "typeSlug": "data-memo",
+    "fields": {
+      "number1": "October revenue about ₹41 lakh",
+      "move1": "Asked the AI twice and got the same figure",
+      "number2": "About 35,000 rows in the Moxie file",
+      "move2": "The AI reported it and the file size looked consistent",
+      "number3": "NVDA grew the most over five years",
+      "move3": "Compared against a chart the AI drew",
+      "aiGotWrong": "It rounded some rupee figures differently between answers."
+    },
+    "files": [],
+    "expectedBand": { "min": 16, "max": 30 },
+    "note": "mid: numbers roughly right, moves are weak re-asks"
+  },
+  {
+    "id": "memo-mid-04",
+    "typeSlug": "data-memo",
+    "fields": {
+      "number1": "Zero-price rows in Moxie October: 112",
+      "move1": "Recompute one number — filtered price=0 in Sheets myself",
+      "number2": "Best stock by 2018 close is AMZN in the 12-stock file",
+      "move2": "Asked for the working",
+      "number3": "Average daily volume of AAPL is about 54M shares",
+      "move3": "Asked a second prompt with different wording",
+      "aiGotWrong": "It initially counted CN invoice rows as sales."
+    },
+    "files": [],
+    "expectedBand": { "min": 16, "max": 30 },
+    "note": "mid: one real recompute, others soft"
+  },
+  {
+    "id": "memo-weak-05",
+    "typeSlug": "data-memo",
+    "fields": {
+      "number1": "Revenue is high in October",
+      "move1": "Trusted the AI",
+      "number2": "Lots of rows in the file",
+      "move2": "Trusted the AI",
+      "number3": "Stocks went up over five years",
+      "move3": "Looked at the chart",
+      "aiGotWrong": "Nothing, it seemed right."
+    },
+    "files": [],
+    "expectedBand": { "min": 8, "max": 22 },
+    "note": "weak: no numbers, no verification, 'nothing wrong'"
+  },
+  {
+    "id": "memo-mid-06",
+    "typeSlug": "data-memo",
+    "fields": {
+      "number1": "GST-inclusive vs exclusive revenue differ by ₹6.3L in October",
+      "move1": "Recompute one number — applied 18% to the taxable column and compared",
+      "number2": "18 SKUs account for 80% of Moxie revenue",
+      "move2": "Asked for the working — saw the cumulative-share table",
+      "number3": "The 12-stock file starts 2013-02-08 and ends 2018-02-07",
+      "move3": "Opened the file and checked the first and last rows",
+      "aiGotWrong": "It claimed the file covered 'exactly five calendar years', which is off by a day."
+    },
+    "files": [],
+    "expectedBand": { "min": 16, "max": 30 },
+    "note": "mid-strong: decent moves, small catch"
+  },
+  {
+    "id": "memo-weak-07",
+    "typeSlug": "data-memo",
+    "fields": {
+      "number1": "34897",
+      "move1": "counted",
+      "number2": "41 lakh",
+      "move2": "pivot",
+      "number3": "NVDA",
+      "move3": "chart",
+      "aiGotWrong": "-"
+    },
+    "files": [],
+    "expectedBand": { "min": 8, "max": 22 },
+    "note": "weak: bare tokens, no explanation, empty catch"
+  },
+  {
+    "id": "memo-strong-08",
+    "typeSlug": "data-memo",
+    "fields": {
+      "number1": "Refund-adjusted October net revenue: ₹39,88,410",
+      "move1": "Recompute one number — rebuilt with SUMIFS excluding CN and RET rows",
+      "number2": "The most-returned SKU is the silver anklet A-201 (7.1% return rate)",
+      "move2": "Reconcile the base — return counts from two independent pivots agree",
+      "number3": "Moxie sells in 23 states; 61% of revenue is from 4",
+      "move3": "Ask for the working — verified the state grouping handled NULLs",
+      "aiGotWrong": "It silently dropped rows with blank state codes, understating total revenue by ₹1.2L until I asked how NULLs were treated."
+    },
+    "files": [],
+    "expectedBand": { "min": 28, "max": 40 },
+    "note": "strong: NULL-handling catch, independent pivots"
+  },
+  {
+    "id": "memo-mid-09",
+    "typeSlug": "data-memo",
+    "fields": {
+      "number1": "Average order value in October: ₹1,214",
+      "move1": "Recompute one number — total revenue / order count in Sheets",
+      "number2": "Orders with more than 5 items: 214",
+      "move2": "Asked with a different phrasing and got the same count",
+      "number3": "GOOGL doubled over the file's five years",
+      "move3": "Read it off the AI's normalized chart",
+      "aiGotWrong": "Its AOV first included cancelled orders in the denominator."
+    },
+    "files": [],
+    "expectedBand": { "min": 16, "max": 30 },
+    "note": "mid: one solid recompute, one real catch, soft third move"
+  },
+  {
+    "id": "memo-weak-10",
+    "typeSlug": "data-memo",
+    "fields": {
+      "number1": "The data is from October 2025",
+      "move1": "It says so in the filename",
+      "number2": "The stocks file has 12 companies",
+      "move2": "It says so in the filename",
+      "number3": "Revenue exists",
+      "move3": "Looked at the file",
+      "aiGotWrong": "The AI was fine."
+    },
+    "files": [],
+    "expectedBand": { "min": 8, "max": 22 },
+    "note": "weak: filename reading is not verification"
+  }
+]

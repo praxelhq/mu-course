@@ -1,0 +1,418 @@
+// Praxel LMS ("The Forge") — full data model.
+// Single-course for now; tables are designed so a `courseId` column can be
+// added later without restructuring (no cross-course uniqueness assumptions
+// beyond slugs/codes that would simply gain a composite key).
+// Migrations are forward-only.
+
+generator client {
+  provider = "prisma-client-js"
+  // Pin the deploy targets explicitly: `native` alone misdetects the OpenSSL
+  // version on the node:22-slim (Debian bookworm, OpenSSL 3.0) base, so the
+  // standalone runtime cannot locate a matching query engine. Cover the
+  // container arches we build/run: amd64 (Railway) and arm64 (local Apple
+  // Silicon verification).
+  binaryTargets = ["native", "debian-openssl-3.0.x", "linux-arm64-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  student
+  instructor
+  admin
+}
+
+enum SubmissionStatus {
+  draft
+  submitted
+  grading
+  graded
+  finalised
+}
+
+enum InterviewStatus {
+  pending
+  live
+  completed
+  graded
+  escalated
+}
+
+enum GateTarget {
+  session
+  material
+  assignment
+  quiz
+}
+
+enum GateState {
+  locked
+  open
+  closed
+}
+
+model User {
+  id                 String    @id @default(cuid())
+  email              String    @unique
+  name               String
+  role               Role      @default(student)
+  sectionId          String?
+  section            Section?  @relation(fields: [sectionId], references: [id])
+  teamId             String?
+  team               Team?     @relation(fields: [teamId], references: [id])
+  clerkUserId        String?   @unique
+  avatarUrl          String?
+  flaggedForDeletion Boolean   @default(false)
+  createdAt          DateTime  @default(now())
+
+  submissions        Submission[]
+  interviews         Interview[]
+  quizAttempts       QuizAttempt[]
+  reviewsGiven       PeerReview[]  @relation("Reviewer")
+  reviewsReceived    PeerReview[]  @relation("Reviewee")
+  notifications      Notification[]
+  portfolioEntry     PortfolioEntry?
+
+  @@index([sectionId])
+  @@index([teamId])
+}
+
+model Section {
+  id    String @id @default(cuid())
+  code  String @unique // A–H
+  name  String
+
+  users            User[]
+  teams            Team[]
+  interviewWindows InterviewWindow[]
+  gates            Gate[]
+}
+
+model Team {
+  id         String  @id @default(cuid())
+  sectionId  String
+  section    Section @relation(fields: [sectionId], references: [id])
+  name       String
+  sectorName String
+
+  members     User[]
+  submissions Submission[]
+  signOff     SignOff?
+
+  @@index([sectionId])
+}
+
+model AssignmentType {
+  id               String  @id @default(cuid())
+  slug             String  @unique
+  title            String
+  description      String
+  submissionSchema Json
+  rubric           Json
+  galleryEligible  Boolean @default(false)
+  teamBased        Boolean @default(false)
+
+  assignments Assignment[]
+}
+
+model Assignment {
+  id               String         @id @default(cuid())
+  assignmentTypeId String
+  assignmentType   AssignmentType @relation(fields: [assignmentTypeId], references: [id])
+  title            String
+  brief            String
+  sessionNo        Int?
+  dueAt            DateTime?
+  weightBucket     String?
+  sectionIds       String[]
+
+  submissions Submission[]
+  signOffs    SignOff[]
+
+  @@index([assignmentTypeId])
+}
+
+model Submission {
+  id           String           @id @default(cuid())
+  assignmentId String
+  assignment   Assignment       @relation(fields: [assignmentId], references: [id])
+  userId       String
+  user         User             @relation(fields: [userId], references: [id])
+  teamId       String?
+  team         Team?            @relation(fields: [teamId], references: [id])
+  status       SubmissionStatus @default(draft)
+  submittedAt  DateTime?
+  fields       Json
+  files        String[]
+  version      Int              @default(1)
+  contentHash  String?
+  // U9: Gemini text-embedding vector over the concatenated text fields,
+  // used for near-duplicate detection. Empty when embeddings are disabled.
+  embedding    Float[]          @default([])
+  createdAt    DateTime         @default(now())
+
+  grades      Grade[]
+  galleryItem GalleryItem?
+
+  @@index([assignmentId])
+  @@index([userId])
+  @@index([assignmentId, userId, version])
+}
+
+model Grade {
+  id             String     @id @default(cuid())
+  submissionId   String
+  submission     Submission @relation(fields: [submissionId], references: [id])
+  rubricScores   Json
+  total          Float
+  confidence     Float
+  feedbackMd     String
+  flags          String[]
+  gradedBy       String
+  provisional    Boolean    @default(true)
+  overriddenBy   String?
+  overrideReason String?
+  promptLog      Json? // full prompt + response for audit
+  createdAt      DateTime   @default(now())
+
+  @@index([submissionId])
+}
+
+model Interview {
+  id                String          @id @default(cuid())
+  userId            String
+  user              User            @relation(fields: [userId], references: [id])
+  scheduledWindowId String?
+  status            InterviewStatus @default(pending)
+  transport         String?
+  audioS3Key        String?
+  rubricScores      Json?
+  confidence        Float?
+  escalationReason  String?
+  attemptNumber     Int             @default(1)
+  costUsd           Float           @default(0)
+  createdAt         DateTime        @default(now())
+  completedAt       DateTime?
+  // U13: realtime-room heartbeat — refreshed by state polls and agent turn
+  // posts; the ~30-room concurrency guard only counts rooms seen recently.
+  lastSeenAt        DateTime?
+
+  turns InterviewTurn[]
+
+  @@index([userId])
+}
+
+model InterviewTurn {
+  id          String    @id @default(cuid())
+  interviewId String
+  interview   Interview @relation(fields: [interviewId], references: [id])
+  turnNo      Int
+  speaker     String
+  text        String
+  audioS3Key  String?
+  startedAt   DateTime
+  meta        Json?
+
+  @@unique([interviewId, turnNo])
+}
+
+// U12: an instructor-granted extra interview attempt. A student's first
+// interview needs no grant; any further startInterview consumes exactly one
+// unused grant (usedByInterviewId set transactionally) or is rejected 409.
+model InterviewRetake {
+  id                 String   @id @default(cuid())
+  userId             String
+  grantedBy          String
+  usedByInterviewId  String?
+  createdAt          DateTime @default(now())
+
+  @@index([userId])
+}
+
+model InterviewWindow {
+  id        String   @id @default(cuid())
+  sectionId String
+  section   Section  @relation(fields: [sectionId], references: [id])
+  opensAt   DateTime
+  closesAt  DateTime
+  label     String
+
+  @@index([sectionId])
+}
+
+model Quiz {
+  id           String   @id @default(cuid())
+  sessionNo    Int
+  title        String
+  questions    Json
+  sectionIds   String[]
+  isDiagnostic Boolean  @default(false)
+
+  attempts QuizAttempt[]
+}
+
+model QuizAttempt {
+  id          String   @id @default(cuid())
+  quizId      String
+  quiz        Quiz     @relation(fields: [quizId], references: [id])
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  answers     Json
+  scorePct    Float
+  submittedAt DateTime @default(now())
+
+  @@index([userId])
+  // One attempt per student per quiz — the submit path relies on this for
+  // idempotency (double-submit returns the existing result, no pre-check race).
+  @@unique([quizId, userId])
+}
+
+model PeerReview {
+  id              String @id @default(cuid())
+  checkpoint      Int
+  reviewerId      String
+  reviewer        User   @relation("Reviewer", fields: [reviewerId], references: [id])
+  revieweeId      String
+  reviewee        User   @relation("Reviewee", fields: [revieweeId], references: [id])
+  pointsAllocated Int
+  ratings         Json
+
+  @@unique([checkpoint, reviewerId, revieweeId])
+}
+
+model GalleryItem {
+  id              String     @id @default(cuid())
+  submissionId    String     @unique
+  submission      Submission @relation(fields: [submissionId], references: [id])
+  featured        Boolean    @default(false)
+  caption         String?
+  screenshotS3Key String?
+}
+
+model Material {
+  id             String   @id @default(cuid())
+  sessionNo      Int
+  title          String
+  kind           String
+  s3Key          String?
+  externalUrl    String?
+  sectionIds     String[]
+  version        Int      @default(1)
+  sizeBytes      Int?
+  instructorOnly Boolean  @default(false)
+}
+
+model SessionPage {
+  id                  String   @id @default(cuid())
+  sessionNo           Int      @unique
+  title               String
+  summaryMd           String
+  orderedMaterialIds  String[]
+  linkedAssignmentIds String[]
+  linkedQuizIds       String[]
+}
+
+model Gate {
+  id         String     @id @default(cuid())
+  targetType GateTarget
+  targetId   String
+  sectionId  String
+  section    Section    @relation(fields: [sectionId], references: [id])
+  state      GateState  @default(locked)
+  opensAt    DateTime?
+  openedAt   DateTime?
+  closedAt   DateTime?
+  changedBy  String?
+
+  @@unique([targetType, targetId, sectionId])
+  @@index([sectionId])
+}
+
+// Per-student reopen: a closed/locked target made available to one student
+// (e.g. a late resubmission window). Resolution honors an unexpired exception
+// over both the target's own gate and its parent session gate — the grant is
+// the instructor's explicit override. Grants are audited via AuditLog.
+model GateException {
+  id         String     @id @default(cuid())
+  targetType GateTarget
+  targetId   String
+  sectionId  String
+  userId     String
+  expiresAt  DateTime?
+  grantedBy  String
+  createdAt  DateTime   @default(now())
+
+  @@unique([targetType, targetId, userId])
+  @@index([userId])
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  actorId    String?
+  action     String
+  targetType String
+  targetId   String
+  before     Json?
+  after      Json?
+  createdAt  DateTime @default(now())
+
+  @@index([targetType, targetId])
+}
+
+model Notification {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id])
+  kind      String
+  title     String
+  body      String?
+  readAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([userId, readAt])
+}
+
+model CostLog {
+  id        String   @id @default(cuid())
+  feature   String
+  provider  String
+  model     String?
+  tokensIn  Int?
+  tokensOut Int?
+  costUsd   Float
+  refType   String?
+  refId     String?
+  createdAt DateTime @default(now())
+}
+
+model SignOff {
+  id            String      @id @default(cuid())
+  teamId        String      @unique
+  team          Team        @relation(fields: [teamId], references: [id])
+  assignmentId  String?
+  assignment    Assignment? @relation(fields: [assignmentId], references: [id])
+  recordedBy    String
+  status        String      @default("none") // none | contacted | signed_off
+  evidenceS3Key String?
+  note          String?
+  updatedAt     DateTime    @updatedAt
+}
+
+model PortfolioEntry {
+  id          String @id @default(cuid())
+  userId      String @unique
+  user        User   @relation(fields: [userId], references: [id])
+  narrative   String?
+  links       Json
+  validations Json
+  lastCrawl   Json?
+}
+
+// Free-form configuration (interview script config, portfolio rubric, etc.)
+model ConfigKV {
+  key   String @id
+  value Json
+}

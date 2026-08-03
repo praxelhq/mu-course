@@ -1,0 +1,51 @@
+# syntax=docker/dockerfile:1
+# Web service (Next.js app). Build context: lms/ repo root.
+#   docker build -f Dockerfile.web -t praxel-web .
+#
+# Migrations run at container start: docker-entrypoint.web.sh runs
+# `prisma migrate deploy` before starting the standalone server. Railway's
+# healthcheck timeout (railway.json) is sized to tolerate migration time.
+
+FROM node:22-slim AS base
+ENV PNPM_HOME="/pnpm" \
+    PATH="/pnpm:$PATH" \
+    NEXT_TELEMETRY_DISABLED=1
+# packageManager field in package.json pins the exact pnpm version for corepack
+RUN corepack enable
+
+FROM base AS deps
+WORKDIR /app
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
+
+FROM base AS build
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+RUN pnpm prisma generate
+RUN pnpm build
+
+FROM node:22-slim AS runtime
+# openssl: required by Prisma engines on debian-slim.
+# prisma CLI installed globally (flat npm install — avoids copying pnpm's
+# symlinked node_modules) purely to run `migrate deploy` at container start.
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends openssl ca-certificates \
+ && rm -rf /var/lib/apt/lists/* \
+ && npm install -g prisma@6.19.3
+WORKDIR /app
+ENV NODE_ENV=production \
+    NEXT_TELEMETRY_DISABLED=1 \
+    PORT=3000 \
+    HOSTNAME=0.0.0.0
+# Next standalone output: server.js + minimal node_modules. Static assets and
+# public/ are not included by the tracer and must be copied alongside.
+COPY --from=build /app/.next/standalone ./
+COPY --from=build /app/.next/static ./.next/static
+COPY --from=build /app/public ./public
+# Schema + migrations for `prisma migrate deploy` at start
+COPY prisma ./prisma
+COPY docker-entrypoint.web.sh ./docker-entrypoint.web.sh
+RUN chmod +x ./docker-entrypoint.web.sh
+EXPOSE 3000
+CMD ["./docker-entrypoint.web.sh"]
