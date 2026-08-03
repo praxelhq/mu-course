@@ -1,0 +1,15 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ContentPage } from "@/components/content/layout";
+
+export const metadata: Metadata = { title: "The Build Understanding", description: "What the editable analysis contains, how to edit and rethink it, and why approval creates an immutable snapshot.", alternates: { canonical: "/docs/build-understanding" } };
+
+export default function BuildUnderstandingPage(): React.ReactNode {
+  return <ContentPage eyebrow="DOCS · BUILD UNDERSTANDING" title="The Build Understanding" lede="The editable middle step between analysis and generation. You approve a description of the product you intend to build — then everything else is derived from that approval.">
+    <section><h2>What it contains</h2><p>The Build Understanding is a structured description of the product assembled from the public-page analysis: the intended customer (ICP), the jobs the product does for them, the core flows a user moves through, and a feature map. Every feature in the map is classified for your chosen niche and USP as retain, modify, remove, or add — so the document describes your version, not a clone of the source.</p></section>
+    <section><h2>Evidence and uncertainty</h2><p>Analysis is bounded to public pages and every material claim links back to the evidence it came from. Where the public surface does not support a confident claim, the understanding says so explicitly instead of inventing detail. Treat marked uncertainty as an editing prompt: you know your product intent better than any public page does.</p></section>
+    <section><h2>Editing and rethinking</h2><p>Each section is editable in the <Link href="/workspace">workspace</Link>. Rewrite text directly when you know what it should say, or request a rethink of a section when you want the analysis reconsidered rather than hand-corrected. Iterate freely — nothing downstream exists yet, so edits at this stage are cheap. This is the highest-leverage step in the product: a sharper understanding produces a sharper Build Sequence.</p></section>
+    <section><h2>Why approval is immutable</h2><p>Approving the understanding creates an immutable snapshot, and that snapshot becomes the sole source for the generated Build Sequence. Immutability is what makes the sequence trustworthy: every prompt can cite exactly which approved feature it implements, and the document cannot shift underneath a half-finished build. If your scope changes after approval, the prior approval is invalidated and the sequence regenerates from a newly approved version — the prompts and the understanding never disagree.</p></section>
+    <section><h2>What happens after approval</h2><p>Generation reads only the approved snapshot, your niche and USP, and your chosen build target, then produces the base prompt and ordered follow-ups described in <Link href="/docs/build-sequences">Build Sequences</Link>. If you have not started yet, <Link href="/docs/getting-started">Getting started</Link> walks the full path from URL to sequence.</p></section>
+  </ContentPage>;
+}
