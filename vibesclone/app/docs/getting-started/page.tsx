@@ -1,0 +1,19 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ContentPage } from "@/components/content/layout";
+import { docEntry } from "@/lib/content";
+
+const entry = docEntry("getting-started");
+
+export const metadata: Metadata = { title: entry.title, description: entry.description, alternates: { canonical: `/docs/${entry.slug}` } };
+
+export default function GettingStartedPage(): React.ReactNode {
+  return <ContentPage eyebrow="DOCS · GETTING STARTED" title="Getting started" lede="One path from a public product URL to a Build Sequence you can run in your build tool. Five steps, one approval, no guesswork.">
+    <section><h2>1. Paste a product URL</h2><p>Start in the <Link href="/workspace">workspace</Link> with the public URL of a product whose logic you want to adapt. VibesClone runs a bounded analysis of the public pages behind that URL — it reads what any visitor can read, links each claim to the evidence it came from, and marks anything uncertain instead of guessing. Nothing is scraped from behind a login.</p></section>
+    <section><h2>2. Review the Build Understanding</h2><p>The analysis becomes an editable Build Understanding: the product&apos;s intended customer, the jobs it does, its core flows, and a feature map classified as retain, modify, remove, or add for the niche and USP you choose. Edit any section directly or ask for a rethink until it describes the product you actually want to build. The details live in <Link href="/docs/build-understanding">The Build Understanding</Link>.</p></section>
+    <section><h2>3. Approve it</h2><p>Approval creates an immutable snapshot of the understanding. That snapshot — not the live document, not the analyzed site — is the sole source for everything generated next. If you change scope later, the prior approval is invalidated and prompts regenerate from a newly approved version, so your prompts never drift from what you signed off on.</p></section>
+    <section><h2>4. Choose your niche, USP, and build target</h2><p>Tell VibesClone the niche you are building for, the USP that distinguishes your version, and which tool will do the building: Lovable, Replit, Base44, or Claude Code. Platform adapters keep the approved product behavior identical across all four and change only the terminology and instructions. <Link href="/docs/build-targets">Choosing a build target</Link> covers the trade-offs.</p></section>
+    <section><h2>5. Get your Build Sequence</h2><p>Generation produces a Build Sequence: one complete base prompt (order 0) plus 2 to 12 ordered follow-up prompts, each with a stated purpose, completion checks to run before advancing, and the features it maps to. The base prompt is free for every approved project. Follow-up prompts are generated at the same time but withheld server-side until the project consumes a license credit — see <Link href="/docs/licenses-and-pricing">Licenses and pricing</Link>.</p></section>
+    <section><h2>Where to go next</h2><p>Read <Link href="/docs/build-sequences">Build Sequences</Link> to understand why ordered prompts with checks beat one mega-prompt, or go straight to the <Link href="/workspace">workspace</Link> and start with a URL.</p></section>
+  </ContentPage>;
+}

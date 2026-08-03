@@ -9,6 +9,15 @@ test("marketing page communicates the workflow and stays usable", async ({ page 
   await page.getByRole("button", { name: /^Analyze/ }).click();
   await expect(page.getByText("Ordered prompts ready for Claude Code")).toBeVisible();
   await expect(page.getByRole("link", { name: "Start my build" })).toBeVisible();
+  await expect(page.getByText("From URL to Build Sequence.")).toBeVisible();
+  await expect(page.getByText(/complete base prompt are free/i)).toBeVisible();
+  await expect(page.locator("footer").getByRole("link", { name: "Docs" })).toBeVisible();
+  await expect(page.locator("footer").getByRole("link", { name: "Blog" })).toBeVisible();
+  const viewport = page.viewportSize();
+  if (viewport && viewport.width > 760) {
+    await expect(page.locator("header").getByRole("link", { name: "Docs" })).toBeVisible();
+    await expect(page.locator("header").getByRole("link", { name: "Blog" })).toBeVisible();
+  }
   await expect(page.getByRole("link", { name: "Privacy" })).toBeVisible();
   await expect(page.getByRole("link", { name: "Terms" })).toBeVisible();
   await expect(page.locator("body")).not.toContainText(/Masters’ Union|cohort|faculty|founder|Student results|Honest proof/i);
