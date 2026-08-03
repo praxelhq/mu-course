@@ -91,8 +91,20 @@ export function DataRaceStudent() {
     : 0;
   const waiting = state.phase === "waiting" || state.phase === "leaderboard";
 
+  // Nothing on this screen is meant to be lifted out of it, so selection, copy, cut,
+  // drag and the long-press/right-click menus are all refused. This raises friction; it
+  // is not a containment boundary, because the state endpoint still returns prompt text.
+  const blockCopy = (event: React.SyntheticEvent) => event.preventDefault();
+
   return (
-    <section aria-live="polite">
+    <section
+      aria-live="polite"
+      style={noCopy}
+      onCopy={blockCopy}
+      onCut={blockCopy}
+      onDragStart={blockCopy}
+      onContextMenu={blockCopy}
+    >
       <p style={eyebrow}>Data Race · Section {state.sectionCode}</p>
       <h1 style={{ fontSize: "clamp(2.25rem, 8vw, 4.5rem)", lineHeight: 0.95, margin: "0 0 1.25rem" }}>
         {state.title}
@@ -157,6 +169,14 @@ export function DataRaceStudent() {
     </section>
   );
 }
+
+// userSelect kills mouse and keyboard selection; touchCallout kills the iOS long-press
+// copy sheet. Neither affects assistive technology, which reads the DOM directly.
+const noCopy: React.CSSProperties = {
+  userSelect: "none",
+  WebkitUserSelect: "none",
+  WebkitTouchCallout: "none",
+};
 
 const eyebrow: React.CSSProperties = {
   fontFamily: "var(--font-geist-mono)",
