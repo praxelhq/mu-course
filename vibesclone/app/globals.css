@@ -157,11 +157,14 @@ button { color: inherit; }
 .sales-form .button { margin-top: 13px; }
 .sales-form > p { margin: 12px 0 0; color: var(--acid); font-size: 12px; }
 .honeypot { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; }
-footer { min-height: 110px; display: flex; align-items: center; gap: 30px; padding: 0 clamp(22px, 4vw, 64px); border-top: 1px solid var(--rule); color: var(--muted); }
+footer { display: flex; flex-direction: column; gap: 26px; padding: 44px clamp(22px, 4vw, 64px) 34px; border-top: 1px solid var(--rule); color: var(--muted); }
 footer .brand { color: var(--paper); }
-footer span:last-child { margin-left: auto; }
-footer nav { display: flex; gap: 20px; margin-left: auto; }
-footer nav a:hover { color: var(--acid); }
+.footer-map { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; padding-bottom: 30px; border-bottom: 1px solid var(--rule-soft); }
+.footer-col { display: flex; flex-direction: column; gap: 9px; font-size: 13px; }
+.footer-col strong, .footer-col strong a { color: var(--paper); font: 600 11px var(--font-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }
+.footer-col a:hover { color: var(--acid); }
+.footer-base { display: flex; align-items: center; gap: 20px; }
+.footer-base span { margin-left: auto; }
 
 /* Workspace */
 .workspace { min-height: 100vh; background: var(--ink); }
@@ -389,9 +392,10 @@ footer nav a:hover { color: var(--acid); }
   .pricing-grid > .button { grid-column: 1; }
   .sales-section { grid-template-columns: 1fr; padding: 74px 18px; }
   .sales-form > div { grid-template-columns: 1fr; }
-  footer { align-items: flex-start; flex-direction: column; padding: 32px 18px; }
-  footer nav { margin-left: 0; }
-  footer span:last-child { margin-left: 0; }
+  footer { padding: 32px 18px; }
+  .footer-map { grid-template-columns: 1fr 1fr; }
+  .footer-base { align-items: flex-start; flex-direction: column; gap: 10px; }
+  .footer-base span { margin-left: 0; }
   .workspace-header { min-height: 62px; padding: 0 14px; }
   .workspace-header .brand { padding-right: 12px; }
   .project-title { max-width: 45vw; padding-left: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
