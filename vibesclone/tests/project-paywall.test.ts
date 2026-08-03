@@ -57,6 +57,22 @@ describe("project prompt paywall", () => {
     expect(body.availableLicenses).toBe(3);
   });
 
+  it("filters completedOrders to the base order for an unlicensed project", async () => {
+    mocks.hasProjectEntitlement.mockResolvedValue(false);
+    mocks.projectFindFirst.mockResolvedValue({
+      id: "project_test",
+      userId: "user_test",
+      promptSets: [{ id: "prompts_test", content: promptContent, completedOrders: [0, 1, 2] }],
+      understandings: [],
+      jobs: [],
+    });
+
+    const response = await GET(new Request("https://vibesclone.com/api/projects/project_test"), context);
+    const body = await response.json();
+
+    expect(body.project.promptSets[0].completedOrders).toEqual([0]);
+  });
+
   it("returns the full sequence only after this project is licensed", async () => {
     mocks.hasProjectEntitlement.mockResolvedValue(true);
 
