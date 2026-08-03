@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { docs, posts } from "../lib/content";
+import { docs, posts } from "@/lib/content";
 
 test("docs are public, indexed, and cross-linked", async ({ page }) => {
   await page.goto("/docs");
