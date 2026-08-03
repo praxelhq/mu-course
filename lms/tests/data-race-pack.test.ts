@@ -8,24 +8,28 @@ import {
   validateDataRacePack,
 } from "../lib/data-race-pack";
 
+// Seven items per section: 2/2/2/1 locally, rotated so a-d each land 14 times across A-H.
 const answerSchedules = [
-  ["a", "b", "c", "d", "a", "b", "c", "d", "a", "b"],
-  ["b", "c", "d", "a", "b", "c", "d", "a", "b", "c"],
-  ["c", "d", "a", "b", "c", "d", "a", "b", "c", "d"],
-  ["d", "a", "b", "c", "d", "a", "b", "c", "d", "a"],
+  ["a", "b", "c", "d", "a", "b", "c"],
+  ["b", "c", "d", "a", "b", "c", "d"],
+  ["c", "d", "a", "b", "c", "d", "a"],
+  ["d", "a", "b", "c", "d", "a", "b"],
 ] as const;
 
-function validPack() {
+// A release covers only the sections being issued; A, F and H have already raced.
+const RELEASED_SECTIONS = ["B", "C", "D", "E", "G"] as const;
+
+function validPack(sections: readonly string[] = RELEASED_SECTIONS) {
   return {
     schemaVersion: "data-race-pack/1.0",
     datasetId: DATA_RACE_DATASET_ID,
     sourceSha256: DATA_RACE_SOURCE_SHA256,
     rowCount: 1000,
-    packs: DATA_RACE_SECTIONS.map((sectionCode, sectionIndex) => ({
+    packs: sections.map((sectionCode, sectionIndex) => ({
       sectionCode,
       title: "Data Race",
       questions: DATA_RACE_TIMERS.map((durationSeconds, index) => ({
-        stableId: `S3-DATA-RACE-${sectionCode}-${String(index + 1).padStart(2, "0")}@1`,
+        stableId: `S3-DATA-RACE-${sectionCode}-${String(index + 1).padStart(2, "0")}@2`,
         position: index + 1,
         prompt: `Question ${index + 1}`,
         options: ["a", "b", "c", "d"].map((id) => ({ id, label: `${id.toUpperCase()}-${index}` })),
@@ -39,8 +43,14 @@ function validPack() {
 }
 
 describe("Data Race pack validation", () => {
-  it("accepts the exact A-H release contract", () => {
-    expect(validateDataRacePack(validPack()).packs).toHaveLength(8);
+  it("accepts a release covering only the sections being issued", () => {
+    expect(validateDataRacePack(validPack()).packs).toHaveLength(RELEASED_SECTIONS.length);
+    expect(validateDataRacePack(validPack(DATA_RACE_SECTIONS)).packs).toHaveLength(8);
+  });
+
+  it("refuses a repeated or unknown section so a raced section cannot be reloaded twice", () => {
+    expect(() => validateDataRacePack(validPack(["B", "B"]))).toThrow("must not repeat a section");
+    expect(() => validateDataRacePack(validPack(["B", "Z"]))).toThrow("unknown section code Z");
   });
 
   it("rejects any timer below the approved progression", () => {
@@ -52,7 +62,7 @@ describe("Data Race pack validation", () => {
   it("rejects biased answer positions", () => {
     const pack = structuredClone(validPack());
     pack.packs[0].questions.forEach((question) => { question.correctOptionId = "a"; });
-    expect(() => validateDataRacePack(pack)).toThrow("2/2/3/3 distribution");
+    expect(() => validateDataRacePack(pack)).toThrow("1/2/2/2 distribution");
   });
 
   it("rejects unexpected option IDs and duplicate labels", () => {

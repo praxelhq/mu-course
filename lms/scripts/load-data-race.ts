@@ -4,7 +4,7 @@ import { createHash } from "node:crypto";
 import { prisma } from "../lib/db";
 import { validateDataRacePack } from "../lib/data-race-pack";
 
-const APPROVED_PACK_SHA256 = "3d2dd66e49ee2d208cb8216e97c38c503718ddc6e4baeaa1560c2b7f05e60356";
+const APPROVED_PACK_SHA256 = "bde5c3f7c8d95a3272e7d52fc0b0811ecb01ab579ca0780cde125127e966fb81";
 
 async function main() {
   const input = process.env.DATA_RACE_PACK_PATH;
