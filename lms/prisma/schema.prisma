@@ -245,6 +245,11 @@ model AssignmentType {
   // false (e.g. memes, AI-image submissions), submitting instead publishes the
   // artifact straight to its gallery — no grade is ever produced.
   aiGraded         Boolean @default(true)
+  // Whether a learner may replace their own submission while the assignment's
+  // gate is still open. The default keeps the one-submission-per-student course
+  // rule; types that opt in create a new version instead (v2 supersedes v1),
+  // so history, grades and gallery items are never destroyed.
+  allowSelfReplace Boolean @default(false)
 
   assignments Assignment[]
 }

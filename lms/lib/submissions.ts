@@ -180,10 +180,50 @@ export type AssignmentForStudent = {
   galleryEligible: boolean;
   /**
    * False once a submission exists — one submission per student (course rule).
-   * An instructor reopen (GateException) is the sanctioned way back in.
+   * An instructor reopen (GateException) is the sanctioned way back in, unless
+   * the type sets allowSelfReplace, which keeps this true while the gate is open.
    */
   canSubmit: boolean;
+  /**
+   * True when submitting again would replace existing work rather than create
+   * a first submission, so the form can say so before the learner commits.
+   */
+  canReplace: boolean;
 };
+
+export type SubmittedFileEvidenceRow = {
+  id: string;
+  fieldKey: string;
+  s3Key: string;
+  s3VersionId: string | null;
+  scanState: string;
+};
+
+/**
+ * Resolve what a submission field points at into the object to sign.
+ *
+ * The uploader stores an EVIDENCE ID in the field, not the S3 key, and it does
+ * so for legacy-contract rows as well — evidence is not exclusive to versioned
+ * submissions. Resolving this only when `assessmentVersionId` was set left every
+ * legacy row signing the raw id, which yields a valid-looking presigned URL to
+ * an object that does not exist, so learners could not reopen their own upload.
+ *
+ * Rows written before the uploader changed stored the S3 key directly in the
+ * field; those match no evidence row and correctly fall through as themselves.
+ */
+export function resolveSubmittedFileObject(
+  reference: string,
+  fieldKey: string,
+  evidence: readonly SubmittedFileEvidenceRow[],
+): { key: string; versionId: string | undefined } {
+  const receipt = evidence.find(
+    (candidate) =>
+      candidate.id === reference &&
+      candidate.fieldKey === fieldKey &&
+      candidate.scanState === "clean",
+  );
+  return { key: receipt?.s3Key ?? reference, versionId: receipt?.s3VersionId ?? undefined };
+}
 
 export type SubmissionSchemaBindingRow = {
   assessmentVersionId: string | null;
@@ -365,19 +405,15 @@ export async function getAssignmentForStudent(
       const references = Array.isArray(raw) ? raw : typeof raw === "string" && raw ? [raw] : [];
       for (const reference of references) {
         if (typeof reference !== "string") continue;
-        const receipt = newest.assessmentVersionId
-          ? newest.evidence.find(
-              (candidate) =>
-                candidate.id === reference &&
-                candidate.fieldKey === def.key &&
-                candidate.scanState === "clean",
-            )
-          : null;
-        const key = receipt?.s3Key ?? reference;
+        const { key, versionId } = resolveSubmittedFileObject(
+          reference,
+          def.key,
+          newest.evidence,
+        );
         let url: string | null = null;
         if (s3Configured()) {
           try {
-            url = await presignGet(key, { versionId: receipt?.s3VersionId });
+            url = await presignGet(key, { versionId: versionId ?? undefined });
           } catch {
             url = null; // a broken link must not break the page
           }
@@ -464,13 +500,16 @@ export async function getAssignmentForStudent(
     galleryEligible: type.galleryEligible,
     // Legacy remains one-shot. Versioned work may resume a bound draft or use
     // exactly one live improvement/repair grant independently of gate reopen.
+    // Types that opt into self-replace stay open for as long as their gate is,
+    // so a learner can correct a wrong upload without an instructor grant.
     canSubmit:
       assignment.contractMode === "legacy"
-        ? available && !selected.latestSubmitted
+        ? available && (type.allowSelfReplace || !selected.latestSubmitted)
         : Boolean(schema) &&
           (Boolean(selected.history.find((row) => row.status === "draft")) ||
             Boolean(liveGrant) ||
-            (available && !selected.latestSubmitted)),
+            (available && (type.allowSelfReplace || !selected.latestSubmitted))),
+    canReplace: Boolean(type.allowSelfReplace && available && selected.latestSubmitted),
   };
 }
 
@@ -558,11 +597,18 @@ export async function submitAssignment(input: SubmitInput): Promise<Submission> 
   // UI, so a stale form or a direct API call cannot create a second version.
   // An instructor who wants to let someone resubmit deletes the submission or
   // grants a reopen; that is the deliberate, audited path.
+  //
+  // Types that set allowSelfReplace opt out of the one-shot rule while their
+  // gate is open: the learner's new upload becomes the next version and
+  // supersedes the previous one everywhere reads take the latest. Nothing is
+  // deleted, so grades, gallery items and publication decisions keep pointing
+  // at the version that produced them. The gate was re-checked immediately
+  // above, so reaching here means the assignment is still live.
   const alreadySubmitted = await prisma.submission.findFirst({
     where: teamId ? { assignmentId, OR: [{ userId }, { teamId }] } : { assignmentId, userId },
     select: { id: true },
   });
-  if (alreadySubmitted) {
+  if (alreadySubmitted && !assignment.assignmentType.allowSelfReplace) {
     throw new SubmissionValidationError([
       "You have already submitted this artifact. Only one submission per student is allowed — ask your instructor if you need it reopened.",
     ]);

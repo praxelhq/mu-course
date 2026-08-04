@@ -269,22 +269,36 @@ export default async function SubmitPage({
           </p>
         </Card>
       ) : (
-        <SubmissionForm
-          assignmentId={view.assignment.id}
-          fields={view.schema.fields}
-          anyOf={view.schema.anyOf}
-          storageReady={s3Configured()}
-          history={assessmentProjection?.assignment.contractMode === "versioned" ? [] : history}
-          revisionGrants={(assessmentProjection?.grants ?? [])
-            .filter((grant) => grant.state === "eligible")
-            .map((grant) => ({
-              grantId: grant.grantId,
-              kind: grant.kind,
-              targetVersion: grant.targetVersion,
-              targetAttempt: grant.targetAttempt,
-              expiresAt: grant.expiresAt,
-            }))}
-        />
+        <>
+          {view.canReplace && (
+            <Card style={{ marginBottom: "1rem", borderColor: "var(--ochre)" }}>
+              <p style={{ ...mono, fontSize: "0.625rem", color: "var(--clay)", margin: "0 0 0.5rem" }}>
+                Replacing your submission
+              </p>
+              <p style={{ color: "var(--charcoal)", margin: 0, lineHeight: 1.6 }}>
+                You have already submitted this artifact. Uploading again while it is still open
+                replaces it — the new file becomes the one your instructor sees and grades. Your
+                earlier version is kept in your history, not deleted.
+              </p>
+            </Card>
+          )}
+          <SubmissionForm
+            assignmentId={view.assignment.id}
+            fields={view.schema.fields}
+            anyOf={view.schema.anyOf}
+            storageReady={s3Configured()}
+            history={assessmentProjection?.assignment.contractMode === "versioned" ? [] : history}
+            revisionGrants={(assessmentProjection?.grants ?? [])
+              .filter((grant) => grant.state === "eligible")
+              .map((grant) => ({
+                grantId: grant.grantId,
+                kind: grant.kind,
+                targetVersion: grant.targetVersion,
+                targetAttempt: grant.targetAttempt,
+                expiresAt: grant.expiresAt,
+              }))}
+          />
+        </>
       )}
     </main>
   );
