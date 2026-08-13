@@ -9,6 +9,7 @@ export const projectInputSchema = z.object({
   niche: z.string().trim().min(2).max(160),
   usp: z.string().trim().min(2).max(240),
   buildTarget: z.enum(buildTargets),
+  remixOrigin: z.union([z.string().trim().min(2).max(120), z.literal("")]).optional(),
 });
 
 export const evidenceSchema = z.object({

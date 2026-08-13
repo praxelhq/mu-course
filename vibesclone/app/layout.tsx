@@ -4,17 +4,15 @@ import { Clarity } from "@/components/analytics/clarity";
 import { hasClerkKeys } from "@/lib/auth";
 import "./globals.css";
 
-export const dynamic = "force-dynamic";
-
 const sans = Geist({ subsets: ["latin"], variable: "--font-sans" });
 const mono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
   applicationName: "VibesClone",
   title: { default: "VibesClone — Copy the product logic. Build your version.", template: "%s · VibesClone" },
-  description: "Turn any public product into a verified product understanding and an ordered prompt sequence for your build tool.",
+  description: "Explore the buildable core of proven products, adapt one for your niche, and generate a verified prompt sequence for your build tool.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? "https://vibesclone.com"),
-  keywords: ["product analysis", "vibe coding", "AI build prompts", "Lovable prompts", "Replit Agent prompts", "Claude Code prompts", "product teardown"],
+  keywords: ["product analysis", "vibe coding", "AI build prompts", "app clone blueprint", "SaaS alternative", "Lovable prompts", "Replit Agent prompts", "Claude Code prompts", "product teardown"],
   authors: [{ name: "VibesClone", url: "https://vibesclone.com" }],
   creator: "VibesClone",
   publisher: "VibesClone",

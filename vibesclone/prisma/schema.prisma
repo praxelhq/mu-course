@@ -60,7 +60,12 @@ model Project {
   niche                String
   usp                   String
   buildTarget          String
+  remixOrigin          String?
   status               ProjectStatus          @default(draft)
+  publicId             String?                 @unique
+  isPublic             Boolean                 @default(false)
+  publishedAt          DateTime?
+  publishedVersion     Int?
   currentUnderstanding Int?
   approvedVersion      Int?
   understandings       UnderstandingVersion[]
@@ -71,6 +76,33 @@ model Project {
   updatedAt            DateTime               @updatedAt
 
   @@index([userId, updatedAt])
+}
+
+model ProductEvent {
+  id            String   @id @default(cuid())
+  event         String
+  blueprintSlug String?
+  publicId      String?
+  createdAt     DateTime @default(now())
+
+  @@index([event, createdAt])
+  @@index([blueprintSlug, createdAt])
+  @@index([publicId, createdAt])
+}
+
+model NewsletterSubscriber {
+  id             String    @id @default(cuid())
+  email          String    @unique
+  source         String
+  active         Boolean   @default(true)
+  consentedAt    DateTime  @default(now())
+  unsubscribedAt DateTime?
+  reactivationRequestedAt DateTime?
+  unsubscribeToken String  @unique
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@index([active, createdAt])
 }
 
 model UnderstandingVersion {
