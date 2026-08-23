@@ -60,8 +60,8 @@ const T = {
   now: new Date("2026-07-27T09:00:00Z"), // fixed "seeded at" moment
   dueS2: new Date("2026-08-04T18:29:00Z"),
   dueS3: new Date("2026-08-11T18:29:00Z"),
-  dueS4: new Date("2026-08-18T18:29:00Z"),
-  dueS5: new Date("2026-08-25T18:29:00Z"),
+  dueS4: new Date("2026-08-25T18:29:00Z"),
+  dueS5: new Date("2026-08-30T18:29:00Z"),
   dueS6: new Date("2026-09-01T18:29:00Z"),
   dueMedia: new Date("2026-09-08T18:29:00Z"),
   dueFinal: new Date("2026-09-22T18:29:00Z"),
@@ -130,12 +130,16 @@ const ASSIGNMENT_TYPES = [
     id: "atype_app",
     slug: "app",
     title: "Lovable app",
-    description: "Session 4 individual artifact: a working app plus its GitHub repository.",
+    description: "Session 4 individual artifact: submit a hosted working web app plus a brief covering the idea, target audience, and key user flows. Keep the GitHub repository and evaluator evidence fields available for review.",
     teamBased: false,
+    allowSelfReplace: true,
     galleryEligible: true,
     submissionSchema: {
       fields: [
         field("appUrl", "Live app URL", "link"),
+        field("idea", "Brief: what is the app idea?", "writeup"),
+        field("audience", "Brief: who is the target audience?", "writeup"),
+        field("userFlows", "Brief: what are the key user flows?", "writeup"),
         field("githubUrl", "GitHub repository URL", "link"),
         field("writeup", "What the app does and who it is for", "writeup"),
       ],
@@ -145,13 +149,15 @@ const ASSIGNMENT_TYPES = [
     id: "atype_workflow",
     slug: "workflow",
     title: "Company automation workflow",
-    description: "Session 5 team artifact: a Make.com automation (blueprint JSON + screen recording) with a usefulness argument.",
+    description: "Session 5 team-owned artifact: one Make.com workflow for the team's sector, submitted with its blueprint, existing evidence, and a Loom/live-run screen recording explaining the workflow and demonstrating a live run.",
     teamBased: true,
+    allowSelfReplace: true,
     galleryEligible: true,
     submissionSchema: {
       fields: [
         field("blueprintFile", "Blueprint JSON export", "file"),
         field("recordingFile", "Screen recording of the workflow running", "file"),
+        field("recordingUrl", "Loom or live-run screen-recording URL", "link"),
         field("usefulness", "Usefulness argument — what does this save, specifically?", "writeup"),
       ],
     },
@@ -1022,6 +1028,7 @@ export async function main(): Promise<void> {
             rubric: RUBRIC_4DIM as Prisma.InputJsonValue,
             galleryEligible: t.galleryEligible,
             teamBased: t.teamBased,
+            allowSelfReplace: t.allowSelfReplace ?? false,
           })),
         });
         await tx.assignment.createMany({ data: assignments });

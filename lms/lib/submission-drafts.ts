@@ -60,10 +60,25 @@ type AssignmentContractRecord = {
   contractMode: ContractMode;
   assignmentType: {
     teamBased: boolean;
+    allowSelfReplace?: boolean;
     submissionSchema: Prisma.JsonValue;
   };
   activeAssessmentVersion: AssessmentContractVersion | null;
 };
+
+/** Return the next learner-visible version while preserving every prior row. */
+export function nextSelfReplaceVersion(latestVersion: number | null): number {
+  return (latestVersion ?? 0) + 1;
+}
+
+/** Versioned revisions are grant-bound unless the assignment explicitly opts into self-replace. */
+export function revisionNeedsGrant(args: {
+  version: number;
+  attempt: number;
+  allowSelfReplace: boolean;
+}): boolean {
+  return (args.version > 1 || args.attempt > 1) && !args.allowSelfReplace;
+}
 
 export type ResolvedSubmissionContract = {
   mode: ContractMode;
@@ -337,12 +352,15 @@ export async function ensureSubmissionDraft(args: {
             ownerId,
             status: { not: "draft" },
           },
-    select: { id: true },
+    orderBy: [{ version: "desc" }, { attempt: "desc" }, { createdAt: "desc" }],
+    select: { id: true, version: true },
   });
-  if (priorSubmitted && !grant) throw new RevisionNotAllowedError();
+  if (priorSubmitted && !grant && !assignment.assignmentType.allowSelfReplace) {
+    throw new RevisionNotAllowedError();
+  }
   if (!grant && !(await assignmentGateOpen(user, assignment.id))) throw new DraftGateClosedError();
 
-  const version = grant?.targetVersion ?? 1;
+  const version = grant?.targetVersion ?? nextSelfReplaceVersion(priorSubmitted?.version ?? null);
   const attempt = grant?.targetAttempt ?? 1;
   const fields = args.initialFields ?? {};
   const validation = validateSubmissionFields(contract.schema, fields, {

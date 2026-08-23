@@ -12,7 +12,11 @@ import { syncGalleryItem } from "@/lib/galleries";
 import { parentSessionPageIdFor, resolveGate } from "@/lib/gates";
 import { parseRubricScores } from "@/lib/review-queue";
 import { presignGet, s3Configured } from "@/lib/s3";
-import { getBoundDraftContext, RevisionNotAllowedError } from "@/lib/submission-drafts";
+import {
+  getBoundDraftContext,
+  revisionNeedsGrant,
+  RevisionNotAllowedError,
+} from "@/lib/submission-drafts";
 import {
   parseSubmissionSchema,
   validateSubmissionFields,
@@ -812,7 +816,11 @@ export async function finalizeSubmissionDraft(args: {
     attempt: bound.draft.attempt,
     now,
   });
-  const needsGrant = bound.draft.version > 1 || bound.draft.attempt > 1;
+  const needsGrant = revisionNeedsGrant({
+    version: bound.draft.version,
+    attempt: bound.draft.attempt,
+    allowSelfReplace: assignment.assignmentType.allowSelfReplace,
+  });
   if (needsGrant && !grant) throw new RevisionNotAllowedError();
   if (!grant && !(await assignmentAvailableTo(user, args.assignmentId))) throw new GateClosedError();
 

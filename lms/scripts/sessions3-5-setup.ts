@@ -73,6 +73,7 @@ export type AssignmentTypeRelease = {
   title: string;
   description: string;
   teamBased: boolean;
+  allowSelfReplace: boolean;
   galleryEligible: boolean;
   aiGraded: boolean;
   submissionSchema: { fields: ReleaseField[]; [key: string]: unknown };
@@ -87,6 +88,7 @@ export type AssignmentRelease = {
   brief: string;
   sessionNo: 3 | 4 | 5;
   weightBucket: string | null;
+  dueAt: Date | null;
   assessmentVersionId: string;
   legacyTitles?: string[];
 };
@@ -838,6 +840,9 @@ export function buildSessions3To5Release(args: {
   ];
   const s4AppFields = [
     field("appUrl", "Public app URL", "link"),
+    field("idea", "Brief: what is the app idea?", "writeup"),
+    field("audience", "Brief: who is the target audience?", "writeup"),
+    field("userFlows", "Brief: what are the key user flows?", "writeup"),
     field("githubUrl", "GitHub repository URL (required for Version 2)", "link", false, {
       requiredFromVersion: 2,
       httpsOnly: true,
@@ -897,6 +902,9 @@ export function buildSessions3To5Release(args: {
     field("blueprintFile", "Make blueprint JSON (below 2 MB)", "file", true, {
       acceptedMimeTypes: ["application/json", "text/json"], maxBytes: 2_000_000, maxBytesExclusive: true, fileRole: "blueprintFile",
     }),
+    field("recordingUrl", "Loom or live-run screen-recording URL", "link", true, {
+      helpText: "Share a recording that explains the workflow and includes a live run proving it works.",
+    }),
     field("runLogFile", "Redacted five-fixture run log", "file", true, {
       acceptedMimeTypes: ["application/json", "application/x-ndjson", "text/plain", "text/csv"], maxBytes: 2_000_000, fileRole: "runLogFile",
     }),
@@ -924,6 +932,7 @@ export function buildSessions3To5Release(args: {
       title: "Startup data analysis",
       description: "Ten-question analysis of the frozen TrustMRR 1,000-row dataset.",
       teamBased: false,
+      allowSelfReplace: false,
       galleryEligible: false,
       aiGraded: true,
       submissionSchema: { fields: s3Fields },
@@ -935,6 +944,7 @@ export function buildSessions3To5Release(args: {
       title: "Visualization scenario check",
       description: "Formative stable-ID selection and rationale assessment.",
       teamBased: false,
+      allowSelfReplace: false,
       galleryEligible: false,
       aiGraded: true,
       submissionSchema: { fields: s3Visual.publicSchema.fields as ReleaseField[] },
@@ -953,6 +963,7 @@ export function buildSessions3To5Release(args: {
       title: "Product and first-prompt checkpoint",
       description: "Session 4 formative product/feature contract checkpoint.",
       teamBased: false,
+      allowSelfReplace: false,
       galleryEligible: false,
       aiGraded: true,
       submissionSchema: { fields: s4PlanFields },
@@ -973,6 +984,7 @@ export function buildSessions3To5Release(args: {
       title: "Lovable app · Version 1 / Version 2",
       description: "Session 4 immutable Lovable V1 with one ten-calendar-day improvement V2.",
       teamBased: false,
+      allowSelfReplace: true,
       galleryEligible: true,
       aiGraded: true,
       submissionSchema: { fields: s4AppFields },
@@ -985,6 +997,7 @@ export function buildSessions3To5Release(args: {
       title: "Workflow design review",
       description: "Session 5 formative first-flowchart review with no weighted grade.",
       teamBased: false,
+      allowSelfReplace: false,
       galleryEligible: false,
       aiGraded: true,
       submissionSchema: { fields: s5InitialFields, anyOf: [["initialFlowchartFile", "flowchartTextEquivalent"]] },
@@ -996,6 +1009,7 @@ export function buildSessions3To5Release(args: {
       title: "Revised workflow design",
       description: "Session 5 post-feedback design milestone.",
       teamBased: false,
+      allowSelfReplace: false,
       galleryEligible: false,
       aiGraded: false,
       submissionSchema: { fields: s5RevisedFields, anyOf: [["revisedFlowchartFile", "revisedFlowchartText"]] },
@@ -1005,13 +1019,14 @@ export function buildSessions3To5Release(args: {
       id: "atype_workflow",
       slug: "workflow",
       title: "Revenue-supporting Make workflow",
-      description: "Session 5 individually owned, versioned workflow evidence.",
-      teamBased: false,
+      description: "Session 5 team-owned Make.com workflow. Submit one team workflow for your sector, a blueprint, evidence, and a Loom/live-run recording that explains the workflow and demonstrates it working.",
+      teamBased: true,
+      allowSelfReplace: true,
       galleryEligible: true,
       aiGraded: true,
       submissionSchema: { fields: s5WorkflowFields, anyOf: [["revisedFlowchartFile", "revisedFlowchartText"]] },
       rubric: RUBRIC_4DIM,
-      legacyFingerprints: ["Session 5 team artifact"],
+      legacyFingerprints: ["Session 5 individually owned", "Session 5 team artifact"],
     },
   ];
 
@@ -1303,7 +1318,7 @@ export function buildSessions3To5Release(args: {
       id: "assess_s5_workflow_v1",
       assignmentId: "asg_s5_workflow",
       version: 1,
-      ownerKind: "individual",
+      ownerKind: "team",
       purpose: "graded",
       publicSchema: {
         version: 1,
@@ -1385,13 +1400,13 @@ export function buildSessions3To5Release(args: {
   ];
 
   const assignments: AssignmentRelease[] = [
-    { id: "asg_s3_sample_analysis_v2", assignmentTypeSlug: "startup-data-analysis", title: "S3 · TrustMRR 1,000-row analysis", brief: "Answer all ten questions using the frozen 1,000-row Google Sheet. The full dataset is for in-class practice only and is not submitted.", sessionNo: 3, weightBucket: "artifact-quality", assessmentVersionId: "assess_s3_sample_analysis_v2" },
-    { id: "asg_s3_visuals", assignmentTypeSlug: "data-visual-judgment", title: "S3 · Visualization scenario check", brief: "Choose a defensible visual and explain why for each scenario. This is formative.", sessionNo: 3, weightBucket: null, assessmentVersionId: "assess_s3_visuals_v1" },
-    { id: "asg_s4_product_prompt", assignmentTypeSlug: "app-plan", title: "S4 · Product and first prompt", brief: "Freeze the original-brand feature contract and first prompt before the build gate opens.", sessionNo: 4, weightBucket: null, assessmentVersionId: "assess_s4_product_prompt_v1" },
-    { id: "asg_s4_app", assignmentTypeSlug: "app", title: "S4 · Lovable app", brief: "Submit an immutable V1 and, if used, the one permitted V2 with verification evidence.", sessionNo: 4, weightBucket: "artifact-quality", assessmentVersionId: "assess_s4_app_v1", legacyTitles: ["S4 · Lovable app"] },
-    { id: "asg_s5_flowchart", assignmentTypeSlug: "workflow-design-review", title: "S5 · First workflow design", brief: "Submit the problem frame and first flowchart before opening Make. Feedback is formative.", sessionNo: 5, weightBucket: null, assessmentVersionId: "assess_s5_flowchart_v1" },
-    { id: "asg_s5_revised_flowchart", assignmentTypeSlug: "workflow-revised-design", title: "S5 · Revised workflow design", brief: "Disposition the feedback and submit the repaired flowchart and control assertions.", sessionNo: 5, weightBucket: null, assessmentVersionId: "assess_s5_revised_flowchart_v1" },
-    { id: "asg_s5_workflow", assignmentTypeSlug: "workflow", title: "S5 · Revenue-supporting Make workflow", brief: "Submit private blueprint and five-case evidence plus the safe PNG, sample output and optional official Make scenario link.", sessionNo: 5, weightBucket: "artifact-quality", assessmentVersionId: "assess_s5_workflow_v1", legacyTitles: ["S5 · Company automation"] },
+    { id: "asg_s3_sample_analysis_v2", assignmentTypeSlug: "startup-data-analysis", title: "S3 · TrustMRR 1,000-row analysis", brief: "Answer all ten questions using the frozen 1,000-row Google Sheet. The full dataset is for in-class practice only and is not submitted.", sessionNo: 3, weightBucket: "artifact-quality", dueAt: null, assessmentVersionId: "assess_s3_sample_analysis_v2" },
+    { id: "asg_s3_visuals", assignmentTypeSlug: "data-visual-judgment", title: "S3 · Visualization scenario check", brief: "Choose a defensible visual and explain why for each scenario. This is formative.", sessionNo: 3, weightBucket: null, dueAt: null, assessmentVersionId: "assess_s3_visuals_v1" },
+    { id: "asg_s4_product_prompt", assignmentTypeSlug: "app-plan", title: "S4 · Product and first prompt", brief: "Freeze the original-brand feature contract and first prompt before the build gate opens.", sessionNo: 4, weightBucket: null, dueAt: null, assessmentVersionId: "assess_s4_product_prompt_v1" },
+    { id: "asg_s4_app", assignmentTypeSlug: "app", title: "S4 · Lovable app", brief: "By Aug 25, submit your hosted web app URL plus a brief covering the idea, target audience, and key user flows. Preserve the GitHub, acceptance-test, and verification evidence fields for evaluator review; you may update the submission while the gate is open.", sessionNo: 4, weightBucket: "artifact-quality", dueAt: new Date("2026-08-25T18:29:00Z"), assessmentVersionId: "assess_s4_app_v1", legacyTitles: ["S4 · Lovable app"] },
+    { id: "asg_s5_flowchart", assignmentTypeSlug: "workflow-design-review", title: "S5 · First workflow design", brief: "Submit the problem frame and first flowchart before opening Make. Feedback is formative.", sessionNo: 5, weightBucket: null, dueAt: null, assessmentVersionId: "assess_s5_flowchart_v1" },
+    { id: "asg_s5_revised_flowchart", assignmentTypeSlug: "workflow-revised-design", title: "S5 · Revised workflow design", brief: "Disposition the feedback and submit the repaired flowchart and control assertions.", sessionNo: 5, weightBucket: null, dueAt: null, assessmentVersionId: "assess_s5_revised_flowchart_v1" },
+    { id: "asg_s5_workflow", assignmentTypeSlug: "workflow", title: "S5 · Revenue-supporting Make workflow", brief: "By Aug 30, submit one team-owned Make.com workflow for your sector with the blueprint, existing run evidence, and a Loom/live-run recording that explains the workflow and demonstrates a live run. You may update the team submission while the gate is open.", sessionNo: 5, weightBucket: "artifact-quality", dueAt: new Date("2026-08-30T18:29:00Z"), assessmentVersionId: "assess_s5_workflow_v1", legacyTitles: ["S5 · Company automation"] },
   ];
 
   const pages: PageRelease[] = [
@@ -2026,6 +2041,7 @@ async function ensureAssignmentTypes(args: {
       teamBased: type.teamBased,
       galleryEligible: type.galleryEligible,
       aiGraded: type.aiGraded,
+      allowSelfReplace: type.allowSelfReplace,
       submissionSchema: type.submissionSchema,
       rubric: type.rubric,
     };
@@ -2055,6 +2071,7 @@ async function ensureAssignmentTypes(args: {
       teamBased: existing.teamBased,
       galleryEligible: existing.galleryEligible,
       aiGraded: existing.aiGraded,
+      allowSelfReplace: existing.allowSelfReplace,
       submissionSchema: existing.submissionSchema,
       rubric: existing.rubric,
     };
@@ -2078,6 +2095,7 @@ async function ensureAssignmentTypes(args: {
           teamBased: type.teamBased,
           galleryEligible: type.galleryEligible,
           aiGraded: type.aiGraded,
+          allowSelfReplace: type.allowSelfReplace,
           submissionSchema: jsonInput(type.submissionSchema),
           rubric: jsonInput(type.rubric),
         },
@@ -2104,6 +2122,7 @@ async function ensureAssignments(args: {
       title: assignment.title,
       brief: assignment.brief,
       sessionNo: assignment.sessionNo,
+      dueAt: assignment.dueAt,
       weightBucket: assignment.weightBucket,
       sectionIds: [...args.sectionIds].sort(),
       contractMode: "versioned" as const,
@@ -2122,12 +2141,32 @@ async function ensureAssignments(args: {
       title: existing.title,
       brief: existing.brief,
       sessionNo: existing.sessionNo,
+      dueAt: existing.dueAt,
       weightBucket: existing.weightBucket,
       sectionIds: [...existing.sectionIds].sort(),
       contractMode: existing.contractMode,
     };
     if (sameValue(actual, expected)) {
       reportUnchanged(args.report, "Assignment", existing.id);
+      continue;
+    }
+    // Deadlines are operational metadata, not part of the immutable
+    // assessment contract. A release may move a due date on an already
+    // versioned assignment without treating the authored assignment body as
+    // drift or forcing a new assessment version.
+    const actualContent = { ...actual, dueAt: null };
+    const expectedContent = { ...expected, dueAt: null };
+    if (
+      existing.contractMode === "versioned" &&
+      sameValue(actualContent, expectedContent)
+    ) {
+      reportUpdate(args.report, "Assignment.dueAt", existing.id);
+      if (!args.dryRun) {
+        await args.tx.assignment.update({
+          where: { id: existing.id },
+          data: { dueAt: expected.dueAt },
+        });
+      }
       continue;
     }
     const recognizedLegacy = existing.contractMode === "legacy" &&

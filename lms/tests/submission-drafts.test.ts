@@ -2,6 +2,8 @@ import { describe, expect, it } from "vitest";
 import type { ResubmissionGrant } from "@prisma/client";
 import {
   grantForDraftSelection,
+  nextSelfReplaceVersion,
+  revisionNeedsGrant,
   resolveSubmissionContract,
 } from "../lib/submission-drafts";
 
@@ -101,5 +103,20 @@ describe("revision grant selection", () => {
         "other-grant",
       ),
     ).toThrow(/unavailable/i);
+  });
+});
+
+describe("self-replace versioning", () => {
+  it("increments from the latest submitted version without mutating history", () => {
+    expect(nextSelfReplaceVersion(null)).toBe(1);
+    expect(nextSelfReplaceVersion(1)).toBe(2);
+    expect(nextSelfReplaceVersion(7)).toBe(8);
+  });
+
+  it("only requires an instructor grant when self-replace is not enabled", () => {
+    expect(revisionNeedsGrant({ version: 1, attempt: 1, allowSelfReplace: true })).toBe(false);
+    expect(revisionNeedsGrant({ version: 2, attempt: 1, allowSelfReplace: true })).toBe(false);
+    expect(revisionNeedsGrant({ version: 2, attempt: 1, allowSelfReplace: false })).toBe(true);
+    expect(revisionNeedsGrant({ version: 1, attempt: 2, allowSelfReplace: false })).toBe(true);
   });
 });

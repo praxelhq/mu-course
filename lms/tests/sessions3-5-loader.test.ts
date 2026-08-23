@@ -529,9 +529,18 @@ describe("Sessions 3–5 authored release", () => {
     expect(s4?.improvementAllowed).toBe(true);
     expect(s4?.improvementWindowDays).toBe(10);
 
+    const appAssignment = release.assignments.find((assignment) => assignment.id === "asg_s4_app");
+    expect(appAssignment?.dueAt).toEqual(new Date("2026-08-25T18:29:00Z"));
+    const workflowAssignment = release.assignments.find((assignment) => assignment.id === "asg_s5_workflow");
+    expect(workflowAssignment?.dueAt).toEqual(new Date("2026-08-30T18:29:00Z"));
+
     const s4Type = release.assignmentTypes.find((type) => type.slug === "app");
+    expect(s4Type?.allowSelfReplace).toBe(true);
     expect(s4Type?.submissionSchema.fields.map((field) => field.key)).toEqual([
       "appUrl",
+      "idea",
+      "audience",
+      "userFlows",
       "githubUrl",
       "approvedPlanSummary",
       "acceptanceTestLog",
@@ -568,9 +577,16 @@ describe("Sessions 3–5 authored release", () => {
     ]);
 
     const s5Type = release.assignmentTypes.find((type) => type.slug === "workflow");
-    expect(s5Type?.teamBased).toBe(false);
+    expect(s5Type?.teamBased).toBe(true);
+    expect(s5Type?.allowSelfReplace).toBe(true);
+    expect(s5Type?.description).toMatch(/team-owned/i);
     expect(s5Type?.submissionSchema.fields.map((field) => field.key)).toContain("blueprintFile");
     expect(s5Type?.submissionSchema.fields.map((field) => field.key)).toContain("workflowPngFile");
+    expect(s5Type?.submissionSchema.fields.map((field) => field.key)).toContain("recordingUrl");
+    expect(s5Type?.submissionSchema.fields.find((field) => field.key === "recordingUrl")).toMatchObject({
+      kind: "link",
+      required: true,
+    });
     expect(s5Type?.submissionSchema.fields.find((field) => field.key === "workflowPack")).toMatchObject({
       kind: "singleChoice",
       required: true,
@@ -579,6 +595,7 @@ describe("Sessions 3–5 authored release", () => {
     const s5 = release.assessmentVersions.find(
       (version) => version.id === "assess_s5_workflow_v1",
     );
+    expect(s5?.ownerKind).toBe("team");
     const fixtureKey = parseWorkflowEvaluatorAnswerKey(s5?.evaluator.answerKey);
     expect(fixtureKey.bundle.packs.map((pack) => pack.packId)).toEqual(
       SESSION_5_WORKFLOW_PACKS.map((pack) => pack.value),
