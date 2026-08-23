@@ -139,7 +139,6 @@ async function patchContract(input: {
         improvementAllowed: oldVersion.improvementAllowed,
         improvementWindowDays: oldVersion.improvementWindowDays,
         supersedesId: oldVersion.id,
-        publishedAt: new Date(),
         createdBy: "loader:sessions3-5:v1",
       },
     });
@@ -153,6 +152,10 @@ async function patchContract(input: {
         normalization: oldVersion.evaluatorConfig.normalization === null ? Prisma.JsonNull : jsonValue(oldVersion.evaluatorConfig.normalization),
         checksumSha256: evaluatorChecksum,
       },
+    });
+    await client.assessmentVersion.update({
+      where: { id: input.newVersionId },
+      data: { publishedAt: new Date() },
     });
   }
 
