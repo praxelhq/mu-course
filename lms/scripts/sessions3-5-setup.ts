@@ -145,6 +145,7 @@ export type AssessmentVersionRelease = {
   retentionClassKey: string;
   improvementAllowed: boolean;
   improvementWindowDays: number;
+  supersedesId?: string | null;
   checksumSha256: string;
   evaluator: {
     id: string;
@@ -1180,9 +1181,9 @@ export function buildSessions3To5Release(args: {
       },
     }),
     assessmentVersion({
-      id: "assess_s4_app_v1",
+      id: "assess_s4_app_v2",
       assignmentId: "asg_s4_app",
-      version: 1,
+      version: 2,
       ownerKind: "individual",
       purpose: "graded",
       publicSchema: { version: 1, fields: s4AppFields, maxVersions: 2 },
@@ -1217,8 +1218,9 @@ export function buildSessions3To5Release(args: {
       retentionClassKey: "course-private-assessment",
       improvementAllowed: true,
       improvementWindowDays: 10,
+      supersedesId: "assess_s4_app_v1",
       evaluator: {
-        id: "evalcfg_s4_app_v1",
+        id: "evalcfg_s4_app_v2",
         config: {
           policyId: "s4-artifact-v1",
           appInspectionPolicy: S4_APP_INSPECTION_POLICY_V1,
@@ -1315,9 +1317,9 @@ export function buildSessions3To5Release(args: {
       },
     }),
     assessmentVersion({
-      id: "assess_s5_workflow_v1",
+      id: "assess_s5_workflow_v2",
       assignmentId: "asg_s5_workflow",
-      version: 1,
+      version: 2,
       ownerKind: "team",
       purpose: "graded",
       publicSchema: {
@@ -1367,8 +1369,9 @@ export function buildSessions3To5Release(args: {
       retentionClassKey: "course-private-assessment",
       improvementAllowed: false,
       improvementWindowDays: 10,
+      supersedesId: "assess_s5_workflow_v1",
       evaluator: {
-        id: "evalcfg_s5_workflow_v1",
+        id: "evalcfg_s5_workflow_v2",
         config: {
           mode: "composite-workflow-v1",
           providerMode: "auto",
@@ -1403,10 +1406,10 @@ export function buildSessions3To5Release(args: {
     { id: "asg_s3_sample_analysis_v2", assignmentTypeSlug: "startup-data-analysis", title: "S3 · TrustMRR 1,000-row analysis", brief: "Answer all ten questions using the frozen 1,000-row Google Sheet. The full dataset is for in-class practice only and is not submitted.", sessionNo: 3, weightBucket: "artifact-quality", dueAt: null, assessmentVersionId: "assess_s3_sample_analysis_v2" },
     { id: "asg_s3_visuals", assignmentTypeSlug: "data-visual-judgment", title: "S3 · Visualization scenario check", brief: "Choose a defensible visual and explain why for each scenario. This is formative.", sessionNo: 3, weightBucket: null, dueAt: null, assessmentVersionId: "assess_s3_visuals_v1" },
     { id: "asg_s4_product_prompt", assignmentTypeSlug: "app-plan", title: "S4 · Product and first prompt", brief: "Freeze the original-brand feature contract and first prompt before the build gate opens.", sessionNo: 4, weightBucket: null, dueAt: null, assessmentVersionId: "assess_s4_product_prompt_v1" },
-    { id: "asg_s4_app", assignmentTypeSlug: "app", title: "S4 · Lovable app", brief: "By Aug 25, submit your hosted web app URL plus a brief covering the idea, target audience, and key user flows. Preserve the GitHub, acceptance-test, and verification evidence fields for evaluator review; you may update the submission while the gate is open.", sessionNo: 4, weightBucket: "artifact-quality", dueAt: new Date("2026-08-25T18:29:00Z"), assessmentVersionId: "assess_s4_app_v1", legacyTitles: ["S4 · Lovable app"] },
+    { id: "asg_s4_app", assignmentTypeSlug: "app", title: "S4 · Lovable app", brief: "By Aug 25, submit your hosted web app URL plus a brief covering the idea, target audience, and key user flows. Preserve the GitHub, acceptance-test, and verification evidence fields for evaluator review; you may update the submission while the gate is open.", sessionNo: 4, weightBucket: "artifact-quality", dueAt: new Date("2026-08-25T18:29:00Z"), assessmentVersionId: "assess_s4_app_v2", legacyTitles: ["S4 · Lovable app"] },
     { id: "asg_s5_flowchart", assignmentTypeSlug: "workflow-design-review", title: "S5 · First workflow design", brief: "Submit the problem frame and first flowchart before opening Make. Feedback is formative.", sessionNo: 5, weightBucket: null, dueAt: null, assessmentVersionId: "assess_s5_flowchart_v1" },
     { id: "asg_s5_revised_flowchart", assignmentTypeSlug: "workflow-revised-design", title: "S5 · Revised workflow design", brief: "Disposition the feedback and submit the repaired flowchart and control assertions.", sessionNo: 5, weightBucket: null, dueAt: null, assessmentVersionId: "assess_s5_revised_flowchart_v1" },
-    { id: "asg_s5_workflow", assignmentTypeSlug: "workflow", title: "S5 · Revenue-supporting Make workflow", brief: "By Aug 30, submit one team-owned Make.com workflow for your sector with the blueprint, existing run evidence, and a Loom/live-run recording that explains the workflow and demonstrates a live run. You may update the team submission while the gate is open.", sessionNo: 5, weightBucket: "artifact-quality", dueAt: new Date("2026-08-30T18:29:00Z"), assessmentVersionId: "assess_s5_workflow_v1", legacyTitles: ["S5 · Company automation"] },
+    { id: "asg_s5_workflow", assignmentTypeSlug: "workflow", title: "S5 · Revenue-supporting Make workflow", brief: "By Aug 30, submit one team-owned Make.com workflow for your sector with the blueprint, existing run evidence, and a Loom/live-run recording that explains the workflow and demonstrates a live run. You may update the team submission while the gate is open.", sessionNo: 5, weightBucket: "artifact-quality", dueAt: new Date("2026-08-30T18:29:00Z"), assessmentVersionId: "assess_s5_workflow_v2", legacyTitles: ["S5 · Company automation"] },
   ];
 
   const pages: PageRelease[] = [
@@ -1758,10 +1761,10 @@ export function validateReleaseContracts(release: Sessions3To5Release): void {
     const inspectionPolicy = parseS4AppInspectionPolicy(
       version.evaluator.config.appInspectionPolicy,
     );
-    if (version.id === "assess_s4_app_v1" && !inspectionPolicy) {
+    if (version.id === "assess_s4_app_v2" && !inspectionPolicy) {
       throw new Error(`${version.id} must bind the exact executable S4 app-inspection policy.`);
     }
-    if (version.id !== "assess_s4_app_v1" && "appInspectionPolicy" in version.evaluator.config) {
+    if (version.id !== "assess_s4_app_v2" && "appInspectionPolicy" in version.evaluator.config) {
       throw new Error(`${version.id} cannot bind the Session 4 app-inspection policy.`);
     }
     if (version.id.startsWith("assess_s5_")) {
@@ -1775,7 +1778,7 @@ export function validateReleaseContracts(release: Sessions3To5Release): void {
         throw new Error(`${version.id} must require one stable Session 5 workflow-pack ID.`);
       }
     }
-    if (version.id === "assess_s5_workflow_v1") {
+    if (version.id === "assess_s5_workflow_v2") {
       const fixtureKey = parseWorkflowEvaluatorAnswerKey(version.evaluator.answerKey);
       const fixtureObject = release.objects.find(
         (object) => object.key === fixtureKey.bundleObject.s3Key,
@@ -1844,10 +1847,10 @@ export function validateReleaseContracts(release: Sessions3To5Release): void {
       assess_s3_sample_analysis_v2: { objective: 0, judgment: 10 },
       assess_s3_visuals_v1: { objective: 6, judgment: 6 },
       assess_s4_product_prompt_v1: { objective: 0, judgment: 6 },
-      assess_s4_app_v1: { objective: 0, judgment: 4 },
+      assess_s4_app_v2: { objective: 0, judgment: 4 },
       assess_s5_flowchart_v1: { objective: 0, judgment: 3 },
       assess_s5_revised_flowchart_v1: { objective: 0, judgment: 0 },
-      assess_s5_workflow_v1: { objective: 0, judgment: 6 },
+      assess_s5_workflow_v2: { objective: 0, judgment: 6 },
     };
     const count = expectedCounts[version.id];
     if (
@@ -2439,7 +2442,7 @@ function expectedAssessmentParent(
     retentionPolicyId,
     improvementAllowed: version.improvementAllowed,
     improvementWindowDays: version.improvementWindowDays,
-    supersedesId: null,
+    supersedesId: version.supersedesId ?? null,
     createdBy: PRISMA_RELEASE_ACTOR,
   };
 }

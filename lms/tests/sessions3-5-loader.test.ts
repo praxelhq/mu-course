@@ -525,7 +525,7 @@ describe("Sessions 3–5 authored release", () => {
       "mat_s3_full_sheet_v2",
     ]);
 
-    const s4 = release.assessmentVersions.find((version) => version.id === "assess_s4_app_v1");
+    const s4 = release.assessmentVersions.find((version) => version.id === "assess_s4_app_v2");
     expect(s4?.improvementAllowed).toBe(true);
     expect(s4?.improvementWindowDays).toBe(10);
 
@@ -593,7 +593,7 @@ describe("Sessions 3–5 authored release", () => {
       options: SESSION_5_WORKFLOW_PACKS,
     });
     const s5 = release.assessmentVersions.find(
-      (version) => version.id === "assess_s5_workflow_v1",
+      (version) => version.id === "assess_s5_workflow_v2",
     );
     expect(s5?.ownerKind).toBe("team");
     const fixtureKey = parseWorkflowEvaluatorAnswerKey(s5?.evaluator.answerKey);
@@ -996,7 +996,7 @@ describe("Sessions 3–5 authored release", () => {
       },
     };
     await reconcileSessions3To5({ db: liveMemory.db, objectStore, release });
-    const published = liveMemory.tables.assessmentVersion.find((row) => row.id === "assess_s4_app_v1")!;
+    const published = liveMemory.tables.assessmentVersion.find((row) => row.id === "assess_s4_app_v2")!;
     published.rubric = { tampered: true };
     await expect(reconcileSessions3To5({
       db: liveMemory.db,
