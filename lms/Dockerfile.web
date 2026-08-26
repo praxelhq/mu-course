@@ -45,6 +45,10 @@ ENV NODE_ENV=production \
 COPY --from=build /app/.next/standalone ./
 COPY --from=build /app/.next/static ./.next/static
 COPY --from=build /app/public ./public
+# Session 8's authenticated download/deck routes serve this authored pack at
+# runtime. Keeping it outside public/ prevents answer keys from becoming bare
+# static URLs while avoiding duplicated classroom files.
+COPY --from=build /app/course/session-08 ./course/session-08
 COPY --from=build /app/BUILD_SOURCE_SHA ./BUILD_SOURCE_SHA
 # Schema + migrations for `prisma migrate deploy` at start
 COPY prisma ./prisma

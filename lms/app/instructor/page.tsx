@@ -6,6 +6,11 @@ import { Card, Eyebrow } from "@/components/ui";
 
 const TOOLS = [
   {
+    href: "/instructor/session-8",
+    title: "Session 8 · RAG + MCP",
+    body: "Projector deck, live RAG lab, verified challenge files, answer reveal, and MCP handoff in one place.",
+  },
+  {
     href: "/instructor/unlocks",
     title: "Unlock Console",
     body: "Open sessions, materials, assignments and quizzes per section, live in class.",

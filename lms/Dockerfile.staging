@@ -36,6 +36,7 @@ ENV NODE_ENV=production \
 COPY --from=build /app/.next/standalone ./
 COPY --from=build /app/.next/static ./.next/static
 COPY --from=build /app/public ./public
+COPY --from=build /app/course/session-08 ./course/session-08
 COPY --from=build /app/BUILD_SOURCE_SHA ./BUILD_SOURCE_SHA
 COPY prisma ./prisma
 COPY docker-entrypoint.web.sh ./docker-entrypoint.web.sh
