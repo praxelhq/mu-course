@@ -11,6 +11,15 @@ describe("Session 8 live launch contract", () => {
     expect(source).not.toContain("Reveal answer gate");
   });
 
+  it("loads the Kodo SupportFlow lab before the PraxelPay challenge", async () => {
+    const page = await readFile(path.join(ROOT, "app/(student)/tools/rag/page.tsx"), "utf8");
+    expect(page).toContain("SupportFlowRagLab");
+    expect(page).toContain("Kōdō Academy");
+    expect(page.indexOf("<SupportFlowRagLab />")).toBeLessThan(
+      page.indexOf("Open real embedding simulator"),
+    );
+  });
+
   it("uses valid instructor asset endpoints in the projector deck", async () => {
     const deck = await readFile(path.join(ROOT, "course/session-08/session-08-rag-mcp-instructor.html"), "utf8");
     for (const asset of ["blueprint", "mcp-test-cases", "package-guide", "source-ledger"]) {

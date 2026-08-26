@@ -13,6 +13,7 @@ Checked on 26 August 2026.
 | Make blueprint import | [Blueprints](https://help.make.com/blueprints) | Import behavior and connection caveat |
 | Make formula syntax | [General functions](https://help.make.com/general-functions), [Text and binary functions](https://help.make.com/text-and-binary-functions) | Current `if`, `switch`, `lower`, and `trim` syntax; avoids unsupported concatenation helpers |
 | RAG simulator | [MU Forge RAG simulator](https://rag-simulator-production.up.railway.app/experiment) | Existing hands-on retrieval exercise |
+| Kōdō Academy SupportFlow case | [Private Praxy-AI-PM repository](https://github.com/poojitha-rachuri/Praxy-AI-PM) | Module 3 sequence, SupportFlow corpus, chunking lab, Top-K/hybrid retrieval controls, retrieved-chunk inspection, and configuration comparison; adapted into the roster-gated LMS with user authorization |
 
 ## Deliberate scope choices
 

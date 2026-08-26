@@ -1,6 +1,7 @@
 import { requireUser } from "@/lib/auth";
 import { SESSION_8_SIMULATOR_URL } from "@/lib/session-8";
 import { RagLabControls } from "./rag-lab-controls";
+import { SupportFlowRagLab } from "./supportflow-rag-lab";
 
 export const dynamic = "force-dynamic";
 
@@ -47,15 +48,30 @@ export default async function RagSimulatorPage() {
             Give your AI<br />a reliable brain.
           </h1>
           <p style={{ maxWidth: "44rem", fontSize: "1.1rem", lineHeight: 1.65, color: "var(--charcoal)", margin: "1.25rem 0 0" }}>
-            Build a tiny RAG system, make it fail, then prove it can choose current evidence, refuse missing facts, and ignore hostile instructions.
+            Start as SupportFlow’s PM: tune chunking and retrieval in the Kōdō Academy case. Then move to PraxelPay and prove a real embedding system can survive stale and hostile evidence.
           </p>
         </div>
-        <a href={SESSION_8_SIMULATOR_URL} target="_blank" rel="noopener noreferrer" style={action}>
-          Open RAG simulator ↗
+        <a href="#kodo-lab" style={action}>
+          Start Kōdō case ↓
         </a>
       </div>
 
-      <section style={{ marginTop: "2.5rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(17rem, 1fr))", gap: "1px", background: "var(--sand)", border: "1px solid var(--sand)" }}>
+      <SupportFlowRagLab />
+
+      <section style={{ marginTop: "3rem", borderTop: "4px solid var(--ochre)", paddingTop: "2rem" }}>
+        <p style={{ fontFamily: "var(--font-geist-mono)", fontSize: ".7rem", letterSpacing: ".12em", textTransform: "uppercase", color: "var(--ochre)", margin: 0 }}>Part 2 · PraxelPay adversarial lab</p>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(18rem, 1fr))", gap: "1.25rem", alignItems: "end", marginTop: ".6rem" }}>
+          <div>
+            <h2 style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", lineHeight: 1, margin: 0 }}>Now use real embeddings.</h2>
+            <p style={{ lineHeight: 1.6, color: "var(--charcoal)", margin: ".8rem 0 0" }}>The controlled lab made every decision visible. Now upload conflicting documents, test real semantic retrieval, and prove the answer is grounded.</p>
+          </div>
+          <a href={SESSION_8_SIMULATOR_URL} target="_blank" rel="noopener noreferrer" style={action}>
+            Open real embedding simulator ↗
+          </a>
+        </div>
+      </section>
+
+      <section style={{ marginTop: "1.5rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(17rem, 1fr))", gap: "1px", background: "var(--sand)", border: "1px solid var(--sand)" }}>
         {[
           ["01 · Baseline", "Upload only the current policy. Ask for the current Pro price. Inspect the retrieved passage—not just the answer."],
           ["02 · Conflict", "Add the superseded policy. Tune chunking and retrieval until version 2.1 reliably wins."],

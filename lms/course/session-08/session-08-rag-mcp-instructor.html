@@ -135,7 +135,7 @@
       <aside class="notes"><div class="notes-grid"><div><h4>Say this</h4><p>“Last session we gave an AI a mouth and ears. But a confident voice is useless if it invents policy or cannot do anything. Today we fix both.”</p></div><div><h4>Do this</h4><p>Ask two students: What can your voice agent still not do?</p></div><div><h4>Students do</h4><p>Call out one knowledge failure and one action they wanted their agent to take.</p></div></div></aside>
     </section>
 
-    <section class="slide signal" data-minutes="4">
+    <section class="slide signal" data-minutes="3">
       <div class="eyebrow">The cold open</div>
       <p class="quote">A customer asks: “Can I get a refund?”</p>
       <div class="versus">
@@ -172,18 +172,40 @@
     </section>
 
     <section class="slide" data-minutes="12">
-      <div class="eyebrow">Live demo · MU RAG simulator</div>
-      <h2>First, make retrieval fail.</h2>
+      <div class="eyebrow">Kōdō Academy case · SupportFlow</div>
+      <h2>First, make retrieval <span class="accent">visible</span>.</h2>
       <div class="grid-2">
         <div>
           <ul class="checklist">
-            <li>Upload the current policy only.</li>
-            <li>Ask the Pro price and inspect the retrieved chunk.</li>
-            <li>Change chunk size and top-k. Ask again.</li>
-            <li>Add the outdated policy. Watch version conflict appear.</li>
-            <li>Add the untrusted note. Test whether evidence becomes an instruction.</li>
+            <li>Browse SupportFlow's six-article knowledge base.</li>
+            <li>Switch Fixed → Paragraph → Semantic sections.</li>
+            <li>Ask whether AI suggestions can send automatically.</li>
+            <li>Change Top-K from 2 to 6; inspect every added passage.</li>
+            <li>Turn on hybrid retrieval and run the A/B showdown.</li>
           </ul>
-          <div class="actionbar"><a class="action primary" href="https://rag-simulator-production.up.railway.app/experiment" target="_blank" rel="noreferrer">Open RAG simulator ↗</a></div>
+          <div class="actionbar"><a class="action primary" href="/tools/rag#kodo-lab" target="_blank" rel="noreferrer">Open Kōdō lab ↗</a></div>
+        </div>
+        <div class="card fill">
+          <div class="number">PM RELEASE QUESTION</div>
+          <div class="prompt">Which configuration returns the smallest sufficient evidence set—not merely the most chunks?</div>
+          <p class="small" style="margin-top:20px">Scores rank evidence. They do not certify truth. Read the actual passage before choosing.</p>
+        </div>
+      </div>
+      <aside class="notes"><div class="notes-grid"><div><h4>Demo sequence</h4><p>Use the four tabs in order: Corpus, Chunk, Retrieve, Compare. Make students predict the result before each change.</p></div><div><h4>Show</h4><p>Chunk boundaries, Top-K, matched terms, concept score, the complete retrieved passage, and how the grounded draft changes.</p></div><div><h4>Truth</h4><p>The internal engine is deterministic so trade-offs stay observable. Tell students the next lab replaces it with real browser embeddings.</p></div></div></aside>
+    </section>
+
+    <section class="slide" data-minutes="10">
+      <div class="eyebrow">PraxelPay · real embedding stress test</div>
+      <h2>Now make retrieval <span class="accent">fail safely</span>.</h2>
+      <div class="grid-2">
+        <div>
+          <ul class="checklist">
+            <li>Upload the current policy and ask the Pro price.</li>
+            <li>Inspect the retrieved chunk—not only the answer.</li>
+            <li>Add the superseded policy and expose version conflict.</li>
+            <li>Add the hostile note and test the instruction boundary.</li>
+          </ul>
+          <div class="actionbar"><a class="action primary" href="https://rag-simulator-production.up.railway.app/experiment" target="_blank" rel="noreferrer">Open real embedding simulator ↗</a></div>
         </div>
         <div class="card fill">
           <div class="number">PROJECT THIS QUESTION</div>
@@ -191,10 +213,10 @@
           <p class="small" style="margin-top:20px">Winning answer: ₹4,999/month, policy v2.1, effective 15 August 2026.</p>
         </div>
       </div>
-      <aside class="notes"><div class="notes-grid"><div><h4>Demo sequence</h4><p>Do not optimise immediately. A visible failure creates the need for chunking, metadata, and prompt rules.</p></div><div><h4>Show</h4><p>Similarity scores, the actual retrieved passage, and why a current document should outrank a superseded one.</p></div><div><h4>Files</h4><p>Use praxelpay-current-policy.txt first, then praxelpay-outdated-policy.txt and praxelpay-untrusted-note.txt.</p></div></div></aside>
+      <aside class="notes"><div class="notes-grid"><div><h4>Transition</h4><p>“The Kōdō lab let us see every design decision. Now the similarity model is real and the corpus is adversarial.”</p></div><div><h4>Files</h4><p>Use current first, then outdated, then untrusted. Never upload all three before the baseline succeeds.</p></div><div><h4>Fallback</h4><p>If model download stalls, run this once from the instructor laptop while teams predict the winning chunk.</p></div></div></aside>
     </section>
 
-    <section class="slide signal" data-minutes="12">
+    <section class="slide signal" data-minutes="10">
       <div class="eyebrow">Student race · five cases</div>
       <h2>Can your RAG system earn <span class="accent">5/5</span>?</h2>
       <div class="table">
@@ -261,7 +283,7 @@
       <aside class="notes"><div class="notes-grid"><div><h4>Say this</h4><p>“The canvas is small because the responsibility is small. A good tool has a crisp contract.”</p></div><div><h4>Show</h4><p>Open both modules. Show the named inputs, deterministic rules, and structured outputs.</p></div><div><h4>Why no send?</h4><p>Students first learn invocation, approval, and verification without irreversible classroom mistakes.</p></div></div></aside>
     </section>
 
-    <section class="slide signal" data-minutes="10">
+    <section class="slide signal" data-minutes="9">
       <div class="eyebrow">Instructor build · Make</div>
       <h2>Import. Inspect. Test. Activate.</h2>
       <div class="grid-4">
@@ -313,7 +335,7 @@
       <aside class="notes"><div class="notes-grid"><div><h4>Activity</h4><p>Each table picks one failure and proposes one control in 90 seconds.</p></div><div><h4>Controls</h4><p>Version metadata; typed booleans; least-privilege toolbox; approval gate; raw-result inspection; test cases.</p></div><div><h4>Extension</h4><p>Only after this works should students replace the draft-only output with a real CRM or email draft action.</p></div></div></aside>
     </section>
 
-    <section class="slide dark" data-minutes="18">
+    <section class="slide dark" data-minutes="10">
       <div class="eyebrow">Student build · one team, one trustworthy chain</div>
       <h2>Make one agent <span class="beacon">know</span> and <span class="beacon">do</span>.</h2>
       <div class="grid-3">

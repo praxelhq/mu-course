@@ -3,9 +3,10 @@
 This package turns RAG and MCP into one understandable build:
 
 1. The existing voice agent is the **mouth and ears**.
-2. The MU RAG simulator gives it a **brain grounded in PraxelPay policy**.
-3. The Make scenario gives it one **safe hand**: classify a lead and prepare a draft.
-4. Five RAG checks and seven Make baseline cases expose the system's known boundaries. A real Make import and MCP call are still required before class.
+2. Kōdō Academy’s SupportFlow case makes chunking, Top‑K, hybrid retrieval, chunk scores, and configuration comparison visible inside the LMS.
+3. The MU RAG simulator then gives it a **brain grounded in PraxelPay policy** using real browser embeddings.
+4. The Make scenario gives it one **safe hand**: classify a lead and prepare a draft.
+5. Five RAG checks and seven Make baseline cases expose the system's known boundaries. A real Make import and MCP call are still required before class.
 
 ## Open first
 
