@@ -70,7 +70,18 @@ export function SupportFlowRagLab() {
     });
   };
 
-  const changeConfig = (next: SupportFlowLabConfig) => setConfig(next);
+  const changeConfig = (next: SupportFlowLabConfig) => {
+    setConfig(next);
+    setRetrievalRun(null);
+  };
+  const changeQuery = (next: string) => {
+    setQuery(next);
+    setRetrievalRun(null);
+  };
+  const changeCompareQuery = (next: string) => {
+    setCompareQuery(next);
+    setComparisonRun(null);
+  };
 
   return (
     <section id="kodo-lab" style={{ marginTop: "2.5rem", border: "1px solid var(--pine)", background: "var(--cream)" }}>
@@ -164,11 +175,11 @@ export function SupportFlowRagLab() {
               <ConfigControls config={config} onChange={changeConfig} showRetrieval />
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: ".65rem", marginTop: "1.25rem" }}>
-              <label style={fieldLabel}>Question<span className="sr-only"> for SupportFlow</span><input value={query} onChange={(event) => setQuery(event.target.value)} onKeyDown={(event) => { if (event.key === "Enter") runQuery(); }} style={inputStyle} /></label>
+              <label style={fieldLabel}>Question for SupportFlow<input value={query} onChange={(event) => changeQuery(event.target.value)} onKeyDown={(event) => { if (event.key === "Enter") runQuery(); }} style={inputStyle} /></label>
               <button type="button" onClick={runQuery} disabled={!query.trim()} style={{ ...primaryButton, alignSelf: "end", opacity: query.trim() ? 1 : .5 }}>Retrieve</button>
             </div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: ".45rem", marginTop: ".65rem" }}>
-              {EXAMPLE_QUERIES.map((example) => <button key={example} type="button" onClick={() => setQuery(example)} style={chipButton}>{example}</button>)}
+              {EXAMPLE_QUERIES.map((example) => <button key={example} type="button" onClick={() => changeQuery(example)} style={chipButton}>{example}</button>)}
             </div>
             {retrievalRun && <RetrievalOutput run={retrievalRun} />}
           </div>
@@ -180,7 +191,7 @@ export function SupportFlowRagLab() {
             <h3 style={{ fontSize: "2rem", margin: ".45rem 0 .75rem" }}>One question. Two retrieval policies.</h3>
             <p style={{ maxWidth: "52rem", lineHeight: 1.6, color: "var(--charcoal)" }}>Baseline A uses small fixed windows and keyword search. Candidate B preserves semantic sections, blends concepts with keywords, and retrieves more evidence.</p>
             <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: ".65rem", marginTop: "1.25rem" }}>
-              <label style={fieldLabel}>Question<input value={compareQuery} onChange={(event) => setCompareQuery(event.target.value)} style={inputStyle} /></label>
+              <label style={fieldLabel}>Question<input value={compareQuery} onChange={(event) => changeCompareQuery(event.target.value)} onKeyDown={(event) => { if (event.key === "Enter") runComparison(); }} style={inputStyle} /></label>
               <button type="button" onClick={runComparison} disabled={!compareQuery.trim()} style={{ ...primaryButton, alignSelf: "end" }}>Run A/B</button>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(19rem, 1fr))", gap: "1rem", marginTop: "1rem" }}>
@@ -218,7 +229,11 @@ function RetrievalOutput({ run }: { run: RetrievalRun }) {
       <div>
         <p style={darkEyebrow}>Retrieved chunks · inspect before answer</p>
         <p style={{ color: "var(--clay)", fontSize: ".8rem", lineHeight: 1.5 }}>Run: “{run.query}” · {run.config.strategy} · Top‑{run.config.topK} · {run.config.hybridSearch ? "hybrid" : "keyword"}</p>
-        <div style={{ display: "grid", gap: ".65rem", marginTop: ".65rem" }}>{run.results.map((result, index) => <ResultCard key={result.id} result={result} index={index} />)}</div>
+        {run.results.length > 0 ? (
+          <div style={{ display: "grid", gap: ".65rem", marginTop: ".65rem" }}>{run.results.map((result, index) => <ResultCard key={result.id} result={result} index={index} />)}</div>
+        ) : (
+          <div style={{ ...panel, marginTop: ".65rem" }}><strong>No chunk matched.</strong><p style={{ margin: ".4rem 0 0", color: "var(--clay)", lineHeight: 1.5 }}>This is a knowledge-base gap. Refine the question or add the missing documentation.</p></div>
+        )}
       </div>
       <article style={{ ...panel, background: "var(--pine)", color: "var(--cream)", alignSelf: "start" }}>
         <p style={{ ...eyebrow, color: "var(--beacon)" }}>Grounded draft · deterministic preview</p>

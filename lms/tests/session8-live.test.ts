@@ -26,6 +26,10 @@ describe("Session 8 live launch contract", () => {
       expect(deck).toContain(`/api/instructor/session-8/assets/${asset}`);
     }
     expect(deck).not.toMatch(/href="(?:make|fixtures)\//);
+    const minutes = [...deck.matchAll(/data-minutes="(\d+)"/g)].map((match) => Number(match[1]));
+    expect(minutes).toHaveLength(18);
+    expect(minutes.reduce((total, value) => total + value, 0)).toBe(120);
+    expect(deck).toContain('<span class="count" id="count">01 / 18</span>');
   });
 
   it("ships every referenced authored asset", async () => {

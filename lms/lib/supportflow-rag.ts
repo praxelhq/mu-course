@@ -136,23 +136,26 @@ const CONCEPTS: Record<string, string[]> = {
 };
 
 function stem(token: string): string {
-  if (token.length > 5 && token.endsWith("ing")) return token.slice(0, -3);
-  if (token.length > 4 && token.endsWith("ed")) return token.slice(0, -2);
-  if (token.length > 4 && token.endsWith("es")) return token.slice(0, -2);
-  if (token.length > 3 && token.endsWith("s")) return token.slice(0, -1);
-  return token;
+  let value = token;
+  if (value.length > 4 && value.endsWith("ies")) value = `${value.slice(0, -3)}y`;
+  else if (value.length > 3 && value.endsWith("s") && !value.endsWith("ss")) value = value.slice(0, -1);
+  if (value.length > 5 && value.endsWith("ing")) value = value.slice(0, -3);
+  else if (value.length > 4 && value.endsWith("ed")) value = value.slice(0, -2);
+  if (value.length > 5 && value.endsWith("ion")) value = value.slice(0, -3);
+  return value;
+}
+
+function surfaceTokens(text: string): string[] {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .split(/\s+/)
+    .filter(Boolean)
+    .filter((token) => !STOP_WORDS.has(token));
 }
 
 function tokens(text: string): string[] {
-  return Array.from(new Set(
-    text
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, " ")
-      .split(/\s+/)
-      .filter(Boolean)
-      .filter((token) => !STOP_WORDS.has(token))
-      .map(stem),
-  ));
+  return Array.from(new Set(surfaceTokens(text).map(stem)));
 }
 
 function conceptsFor(textTokens: string[]): string[] {
@@ -233,6 +236,7 @@ export function retrieveSupportFlowChunks(
   query: string,
   config: RetrievalConfig,
 ): RetrievalResult[] {
+  const querySurfaceTokens = surfaceTokens(query);
   const queryTokens = tokens(query);
   const queryConcepts = conceptsFor(queryTokens);
   const topK = Math.max(1, Math.min(8, Math.round(config.topK)));
@@ -241,7 +245,9 @@ export function retrieveSupportFlowChunks(
     .map((chunk) => {
       const bodyTokens = tokens(`${chunk.title} ${chunk.heading} ${chunk.text}`);
       const bodySet = new Set(bodyTokens);
-      const matchedTerms = queryTokens.filter((token) => bodySet.has(token));
+      const matchedTerms = Array.from(new Set(
+        querySurfaceTokens.filter((token) => bodySet.has(stem(token))),
+      ));
       const keywordScore = queryTokens.length === 0 ? 0 : matchedTerms.length / queryTokens.length;
       const bodyConcepts = new Set(conceptsFor(bodyTokens));
       const conceptMatches = queryConcepts.filter((concept) => bodyConcepts.has(concept));
@@ -260,12 +266,15 @@ export function retrieveSupportFlowChunks(
         matchedTerms,
       };
     })
+    .filter((result) => result.score > 0)
     .sort((a, b) => b.score - a.score || a.id.localeCompare(b.id))
     .slice(0, topK);
 }
 
 export function groundedSupportFlowDraft(query: string, results: RetrievalResult[]): string {
-  const useful = results.filter((result) => result.score >= 0.12).slice(0, 2);
+  const useful = results
+    .filter((result) => result.score >= 0.12 && result.keywordScore > 0)
+    .slice(0, 2);
   if (useful.length === 0) {
     return `I could not find enough SupportFlow evidence to answer “${query}”. Ask a more specific question or add the missing documentation.`;
   }

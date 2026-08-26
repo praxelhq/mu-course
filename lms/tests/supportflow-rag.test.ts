@@ -42,14 +42,14 @@ describe("SupportFlow classroom retrieval engine", () => {
     expect(hybrid[0].text).toContain("Offline messages automatically create tickets");
     expect(hybrid[0].score).toBeGreaterThan(keywordOnly[0].score);
     expect(hybrid[4].title).toBe("AI Suggestions");
-    expect(keywordOnly[4].title).toBe("Automation Rules");
+    expect(hybrid[4].score).toBeGreaterThan(keywordOnly[4].score);
   });
 
   it("removes common words before stemming so they cannot create false matches", () => {
     const chunks = chunkSupportFlowArticles(SUPPORTFLOW_ARTICLES, "semantic", 320);
     const results = retrieveSupportFlowChunks(chunks, "does this", { topK: 3, hybridSearch: false });
 
-    expect(results.every((result) => result.score === 0)).toBe(true);
+    expect(results).toEqual([]);
   });
 
   it("refuses weak evidence and cites at most two useful passages", () => {
@@ -61,5 +61,28 @@ describe("SupportFlow classroom retrieval engine", () => {
     const draft = groundedSupportFlowDraft(query, results);
     expect(draft).toContain("[AI Suggestions · Human review boundary]");
     expect((draft.match(/\[[^\]]+\]/g) ?? [])).toHaveLength(2);
+  });
+
+  it("uses concepts to rank but refuses concept-only evidence", () => {
+    const chunks = chunkSupportFlowArticles(SUPPORTFLOW_ARTICLES, "semantic", 320);
+    const query = "Is this powered by machine learning?";
+    const results = retrieveSupportFlowChunks(chunks, query, { topK: 3, hybridSearch: true });
+
+    expect(results[0].conceptScore).toBe(1);
+    expect(results[0].keywordScore).toBe(0);
+    expect(groundedSupportFlowDraft(query, results)).toContain("could not find enough SupportFlow evidence");
+  });
+
+  it("returns an empty evidence set when the corpus has no overlap", () => {
+    const chunks = chunkSupportFlowArticles(SUPPORTFLOW_ARTICLES, "semantic", 320);
+    expect(retrieveSupportFlowChunks(chunks, "Where is the pricing page?", { topK: 3, hybridSearch: true })).toEqual([]);
+  });
+
+  it("matches related surface forms while displaying the words the learner typed", () => {
+    const chunks = chunkSupportFlowArticles(SUPPORTFLOW_ARTICLES, "semantic", 320);
+    const results = retrieveSupportFlowChunks(chunks, "Can the assistant send a suggested reply automatically?", { topK: 3, hybridSearch: false });
+
+    expect(results[0].title).toBe("AI Suggestions");
+    expect(results[0].matchedTerms).toContain("suggested");
   });
 });
