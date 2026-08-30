@@ -305,6 +305,10 @@ export const GET = withAuth(
         left.role.localeCompare(right.role),
     );
 
+    const appReviewsGiven = await prisma.appReview.findMany({
+      where: { reviewerId: userId },
+      select: { slot: true, visual: true, functionality: true, overall: true, comment: true, accessIssue: true, assignedAt: true, completedAt: true, retiredAt: true },
+    });
     const bundle = {
       contractVersion: DPDP_EXPORT_CONTRACT_VERSION,
       exportedAt: new Date().toISOString(),
@@ -326,6 +330,10 @@ export const GET = withAuth(
         submittedAt: attempt.submittedAt,
       })),
       peerReviewsGiven: reviewsGiven,
+      appReviewsGiven: appReviewsGiven.map((review) => ({ ...review,
+        comment: sanitizeExportText(review.comment, "dpdp:app-review:comment"),
+        accessIssue: review.accessIssue === null ? null : sanitizeExportText(review.accessIssue, "dpdp:app-review:issue"),
+      })),
       actorAttributions,
       notifications: notifications.map((notification) => ({
         kind: sanitizeExportText(notification.kind, "dpdp:notification:kind") ?? "notice",

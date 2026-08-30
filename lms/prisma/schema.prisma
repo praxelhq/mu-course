@@ -46,6 +46,7 @@ enum GateTarget {
   material
   assignment
   quiz
+  app_review
 }
 
 enum GateState {
@@ -176,6 +177,8 @@ model User {
   dataRaceResponses DataRaceResponse[]
   emailAliases      UserEmailAlias[]
   clerkIdentities   UserClerkIdentity[]
+  appReviewEntries  AppReviewEntry[]
+  appReviewsGiven   AppReview[]
 
   @@index([sectionId])
   @@index([teamId])
@@ -278,6 +281,7 @@ model Assignment {
   uploadReservations  UploadReservation[]
   workflowSelections  TeamWorkflowSelection[]
   workflowNominations TeamWorkflowNomination[]
+  appReviewRounds     AppReviewRound[]
 
   @@index([assignmentTypeId])
   @@index([activeAssessmentVersionId])
@@ -522,6 +526,60 @@ model DataRaceResponse {
   @@unique([questionId, userId])
   @@index([userId])
   @@index([questionId, points])
+}
+
+// App-quality feedback is deliberately separate from teammate contribution
+// and the gradebook. Entries freeze the reviewed URL and source reference.
+model AppReviewRound {
+  id            String   @id
+  assignmentId  String
+  assignment    Assignment @relation(fields: [assignmentId], references: [id])
+  title         String
+  rubricVersion String
+  createdAt     DateTime @default(now())
+  entries       AppReviewEntry[]
+  reviews       AppReview[]
+}
+
+model AppReviewEntry {
+  id         String @id @default(cuid())
+  roundId    String
+  round      AppReviewRound @relation(fields: [roundId], references: [id])
+  authorId   String
+  author     User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  sectionId  String
+  appUrl     String
+  sourceRef  String
+  createdAt  DateTime @default(now())
+  reviews    AppReview[]
+
+  @@unique([roundId, authorId])
+  @@index([roundId, sectionId])
+}
+
+model AppReview {
+  id            String @id @default(cuid())
+  roundId       String
+  round         AppReviewRound @relation(fields: [roundId], references: [id])
+  entryId       String
+  entry         AppReviewEntry @relation(fields: [entryId], references: [id], onDelete: Cascade)
+  reviewerId    String
+  reviewer      User @relation(fields: [reviewerId], references: [id], onDelete: Cascade)
+  slot          Int
+  visual        Int?
+  functionality Int?
+  overall       Int?
+  comment       String @default("")
+  accessIssue   String?
+  assignedAt    DateTime @default(now())
+  completedAt   DateTime?
+  retiredAt     DateTime?
+
+  // Active slot uniqueness is a partial index in the migration, so reported
+  // assignments can be replaced without destroying their original evidence.
+  @@unique([roundId, reviewerId, entryId])
+  @@index([roundId, reviewerId, retiredAt])
+  @@index([entryId])
 }
 
 model PeerReview {

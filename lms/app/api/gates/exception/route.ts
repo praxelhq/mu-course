@@ -10,7 +10,7 @@ import { grantException, listExceptions, revokeException } from "@/lib/gates";
 //   DELETE ?targetType=assignment&targetId=asg_x&userId → revoke
 
 const targetSchema = z.object({
-  targetType: z.enum(["session", "material", "assignment", "quiz"]),
+  targetType: z.enum(["session", "material", "assignment", "quiz", "app_review"]),
   targetId: z.string().min(1),
 });
 

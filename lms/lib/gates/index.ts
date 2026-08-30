@@ -45,8 +45,9 @@ async function hasLiveException(
   targetId: string,
   userId: string,
   now: Date,
+  db: TxClient,
 ): Promise<boolean> {
-  const exception = await prisma.gateException.findUnique({
+  const exception = await db.gateException.findUnique({
     where: { targetType_targetId_userId: { targetType, targetId, userId } },
     select: { expiresAt: true },
   });
@@ -58,9 +59,11 @@ async function hasLiveException(
  * Is this target available? Own gate effectively open AND (when given) the
  * parent session's gate effectively open — or an unexpired per-student
  * exception. Missing rows are locked.
+ * Pass the active transaction client when resolving inside a transaction;
+ * borrowing a second pooled connection can deadlock a saturated pool.
  */
-export async function resolveGate(ref: GateRef, now: Date = new Date()): Promise<boolean> {
-  return (await resolveGateDetail(ref, now)).available;
+export async function resolveGate(ref: GateRef, now: Date = new Date(), db: TxClient = prisma): Promise<boolean> {
+  return (await resolveGateDetail(ref, now, db)).available;
 }
 
 /**
@@ -100,13 +103,13 @@ export type GateDecision = {
  * (e.g. the quiz submit path accepts a submission for a short window after
  * the gate closes). Keeps Gate.closedAt reads inside lib/gates.
  */
-export async function resolveGateDetail(ref: GateRef, now: Date = new Date()): Promise<GateDecision> {
+export async function resolveGateDetail(ref: GateRef, now: Date = new Date(), db: TxClient = prisma): Promise<GateDecision> {
   const { targetType, targetId, sectionId, parentSessionPageId, userId } = ref;
   const keys = [{ targetType, targetId, sectionId }];
   if (parentSessionPageId) {
     keys.push({ targetType: "session", targetId: parentSessionPageId, sectionId });
   }
-  const gates = await prisma.gate.findMany({
+  const gates = await db.gate.findMany({
     where: { OR: keys },
     select: { targetType: true, targetId: true, state: true, opensAt: true, closedAt: true },
   });
@@ -120,10 +123,10 @@ export async function resolveGateDetail(ref: GateRef, now: Date = new Date()): P
     ? effectiveGateState(parent ?? null, now) === "open"
     : true;
   const contractEligible =
-    targetType !== "quiz" || (await quizEligibilityIn(prisma, targetId)).eligible;
+    targetType !== "quiz" || (await quizEligibilityIn(db, targetId)).eligible;
   let available = contractEligible && ownState === "open" && parentOpen;
   if (contractEligible && !available && userId) {
-    available = await hasLiveException(targetType, targetId, userId, now);
+    available = await hasLiveException(targetType, targetId, userId, now, db);
   }
   return { available, ownState, parentOpen, closedAt: own?.closedAt ?? null };
 }
@@ -432,14 +435,15 @@ export async function setGateState(args: {
   sectionId: string;
   state: GateState;
   actorId: string;
-}): Promise<SetGateResult> {
-  return prisma.$transaction(async (tx) => {
+}, transaction?: Prisma.TransactionClient): Promise<SetGateResult> {
+  const change = async (tx: Prisma.TransactionClient) => {
     if (args.state === "open" && args.targetType === "quiz") {
       const eligibility = await quizEligibilityIn(tx, args.targetId);
       if (!eligibility.eligible) throw new QuizGateContractError(eligibility.reason!);
     }
     return setGateStateIn(tx, args);
-  });
+  };
+  return transaction ? change(transaction) : prisma.$transaction(change);
 }
 
 async function sessionChildTargets(

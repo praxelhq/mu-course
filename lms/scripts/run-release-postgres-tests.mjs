@@ -26,6 +26,7 @@ const result = spawnSync(
       "tests/dpdp-erasure.pg.test.ts",
       "tests/review-queue-hold-resolution.pg.test.ts",
       "tests/sessions3-5-loader.test.ts",
+      "tests/app-reviews.pg.test.ts",
   ],
   {
     cwd: process.cwd(),
@@ -33,6 +34,7 @@ const result = spawnSync(
       ...process.env,
       RUN_DPDP_ERASURE_PG_TESTS: "1",
       RUN_REVIEW_QUEUE_PG_TESTS: "1",
+      RUN_APP_REVIEW_PG_TESTS: "1",
       U8_DISPOSABLE_DATABASE: "1",
     },
     stdio: "inherit",

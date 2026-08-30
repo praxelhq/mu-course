@@ -22,6 +22,7 @@ const STUDENT_LINKS: NavLink[] = [
   { label: "Galleries", href: "/galleries" },
   { label: "Interview", href: "/interview" },
   { label: "Peer Review", href: "/peer-review" },
+  { label: "App Reviews", href: "/app-reviews" },
   { label: "Grades", href: "/grades" },
   { label: "Portfolio", href: "/portfolio" },
 ];
@@ -40,6 +41,7 @@ const INSTRUCTOR_LINKS: NavLink[] = [
   { label: "Review Queue", href: "/instructor/review" },
   { label: "Interviews", href: "/instructor/interviews" },
   { label: "Peer", href: "/instructor/peer" },
+  { label: "App Reviews", href: "/instructor/app-reviews" },
   { label: "Validations", href: "/instructor/validations" },
   { label: "Exports", href: "/instructor/exports" },
 ];

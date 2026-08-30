@@ -19,7 +19,7 @@ import { useRouter } from "next/navigation";
 // current state at once. Worst-case student-visible latency stays under ~5s.
 
 export type PolledGate = {
-  targetType: "session" | "material" | "assignment" | "quiz";
+  targetType: "session" | "material" | "assignment" | "quiz" | "app_review";
   targetId: string;
   sectionId: string;
   state: "locked" | "open" | "closed";
