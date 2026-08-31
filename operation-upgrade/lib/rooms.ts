@@ -26,18 +26,28 @@ export function isFacilitator(key: string | null | undefined): boolean {
 
 export async function ensureRoom(sectionCode: string) {
   if (!hasDatabase) return null;
-  return prisma.room.upsert({
-    where: { sectionCode },
-    update: {},
-    create: { sectionCode },
-  });
+  try {
+    return await prisma.room.upsert({ where: { sectionCode }, update: {}, create: { sectionCode } });
+  } catch {
+    // Two students can create the same room in the same millisecond. The
+    // loser of that race just reads what the winner made.
+    return prisma.room.findUnique({ where: { sectionCode } });
+  }
+}
+
+/// Read-only. Sixty students poll this every three seconds; doing an upsert on
+/// each one would be twenty writes a second to answer "what phase are we on".
+export async function readRoom(sectionCode: string) {
+  if (!hasDatabase) return null;
+  return prisma.room.findUnique({ where: { sectionCode } });
 }
 
 export async function roomState(sectionCode: string) {
   // With no database there is no facilitator, so nothing is gated at all.
   if (!hasDatabase) return { phase: "offer" as PhaseId, pacing: "open", version: 0, phaseEndsAt: null as string | null, offline: true };
-  const room = await ensureRoom(sectionCode);
-  if (!room) return { phase: "offer" as PhaseId, pacing: "open", version: 0, phaseEndsAt: null, offline: true };
+  const room = await readRoom(sectionCode);
+  // No room yet simply means the facilitator has not opened this section.
+  if (!room) return { phase: "arrival" as PhaseId, pacing: "guided", version: 0, phaseEndsAt: null, offline: false };
   return {
     phase: room.phase as PhaseId,
     pacing: room.pacing,

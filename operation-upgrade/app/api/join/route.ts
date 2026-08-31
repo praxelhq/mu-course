@@ -32,23 +32,47 @@ export async function POST(req: Request) {
   const room = await ensureRoom(sectionCode);
   if (!room) return Response.json({ error: "The room is not ready yet." }, { status: 503 });
 
-  const existing = await prisma.player.findUnique({
-    where: { roomId_handle: { roomId: room.id, handle } },
-  });
+  // Sixty laptops hit this within about a minute of each other, and a good
+  // number of them within the same second. Reading the seat count and then
+  // writing it is a race that loses students at the door, so the whole
+  // allocation is serialised per room by a Postgres advisory lock — the same
+  // shape the LMS uses for its peer-review round.
+  try {
+    const result = await prisma.$transaction(async (tx) => {
+      // ::text because the lock function returns void, which Prisma cannot
+      // deserialise out of a raw query. Same shape as the LMS peer-review lock.
+      await tx.$queryRaw`SELECT pg_advisory_xact_lock(hashtextextended(${room.id}, 0))::text`;
 
-  if (existing) {
-    if (existing.secret !== secret) {
+      const existing = await tx.player.findUnique({
+        where: { roomId_handle: { roomId: room.id, handle } },
+      });
+      if (existing) {
+        if (existing.secret !== secret) return { conflict: true as const };
+        return { seat: existing.seat, board: existing.board, resumed: true as const };
+      }
+
+      const highest = await tx.player.aggregate({
+        where: { roomId: room.id },
+        _max: { seat: true },
+      });
+      const player = await tx.player.create({
+        data: { roomId: room.id, handle, secret, seat: (highest._max.seat ?? -1) + 1 },
+      });
+      return { seat: player.seat, resumed: false as const };
+    }, { maxWait: 15_000, timeout: 20_000 });
+
+    if ("conflict" in result) {
       return Response.json(
         { error: "Somebody in this section is already using that name. Add a surname or an initial." },
         { status: 409 },
       );
     }
-    return Response.json({ sectionCode, seat: existing.seat, board: existing.board, resumed: true });
+    return Response.json({ sectionCode, ...result });
+  } catch {
+    // Never a blank 500 at the door of a live class.
+    return Response.json(
+      { error: "The room is busy letting people in. Give it a second and try again." },
+      { status: 503 },
+    );
   }
-
-  const taken = await prisma.player.count({ where: { roomId: room.id } });
-  const player = await prisma.player.create({
-    data: { roomId: room.id, handle, secret, seat: taken },
-  });
-  return Response.json({ sectionCode, seat: player.seat, resumed: false });
 }

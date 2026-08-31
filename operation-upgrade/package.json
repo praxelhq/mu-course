@@ -11,7 +11,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "seed": "tsx --env-file-if-exists=.env prisma/seed.ts",
-    "build:pack": "tsx scripts/build-pack.ts"
+    "build:pack": "tsx scripts/build-pack.ts",
+    "simulate": "tsx scripts/simulate.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.19.3",
