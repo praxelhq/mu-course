@@ -10,6 +10,7 @@ const Body = z.object({
   secret: z.string().min(8).max(64),
   board: z.record(z.string(), z.unknown()),
   locked: z.boolean().optional(),
+  stage: z.string().max(24).optional(),
 }).strict();
 
 /// A backup, not a source of truth. The browser is authoritative while a
@@ -20,7 +21,7 @@ export async function POST(req: Request) {
 
   const parsed = Body.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return Response.json({ error: "Malformed board." }, { status: 400 });
-  const { sectionCode, handle, secret, board, locked } = parsed.data;
+  const { sectionCode, handle, secret, board, locked, stage } = parsed.data;
 
   const room = await ensureRoom(sectionCode);
   if (!room) return Response.json({ saved: false, offline: true });
@@ -39,6 +40,7 @@ export async function POST(req: Request) {
     where: { id: player.id },
     data: {
       board: board as never,
+      stage: stage ?? undefined,
       lockedAt: locked ? new Date() : null,
     },
   });

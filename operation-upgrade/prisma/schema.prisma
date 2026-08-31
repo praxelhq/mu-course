@@ -23,6 +23,11 @@ model Room {
   id            String   @id @default(cuid())
   sectionCode   String   @unique
   phase         String   @default("arrival")
+  /// "guided" — `phase` is the furthest a student may go, and they move freely
+  /// anywhere at or before it. "open" — no ceiling; students run the whole
+  /// ninety days at their own speed and the facilitator only calls the room
+  /// together for the pitches, the ballot and the close.
+  pacing        String   @default("guided")
   phaseStartedAt DateTime @default(now())
   phaseEndsAt   DateTime?
   /// Bumped on every facilitator action so a stale client can tell it is stale.
@@ -48,6 +53,9 @@ model Player {
   /// The whole board: decisions, indexed documents, answers, memo. Authored and
   /// scored client-side; stored so nothing is lost and the wall can count it.
   board       Json     @default("{}")
+  /// Where this student actually is, which in an open room is nothing like
+  /// where everybody else is. The console shows the spread.
+  stage       String   @default("offer")
   lockedAt    DateTime?
   pitching    Boolean  @default(false)
   votedForId  String?

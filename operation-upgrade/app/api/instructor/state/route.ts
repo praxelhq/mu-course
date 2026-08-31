@@ -35,13 +35,17 @@ export async function GET(req: Request) {
     votes,
   );
 
+  const spread: Record<string, number> = {};
+  for (const p of players) spread[p.stage] = (spread[p.stage] ?? 0) + 1;
+
   return Response.json({
-    section, phase: room.phase, version: room.version,
+    section, phase: room.phase, pacing: room.pacing, spread, version: room.version,
     phaseEndsAt: room.phaseEndsAt?.toISOString() ?? null,
     serverNow: new Date().toISOString(),
     view,
     roster: players.map((p) => ({
       handle: p.handle, seat: p.seat, locked: Boolean(p.lockedAt), pitching: p.pitching,
+      stage: p.stage,
       headline: (p.board as { headline?: string })?.headline ?? "",
     })),
   }, { headers: { "Cache-Control": "no-store" } });

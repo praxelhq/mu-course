@@ -1,13 +1,15 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { PHASES, PHASE, nextPhase, type PhaseId } from "@/lib/phases";
+import { PHASES, PHASE, nextPhase, needsTheRoom, type PhaseId } from "@/lib/phases";
 import type { RoomView } from "@/lib/engine/room";
 import { Button, Card, Eyebrow, Pill } from "@/components/ui";
 
 type State = {
-  section: string; phase: PhaseId; phaseEndsAt: string | null; view: RoomView;
-  roster: { handle: string; seat: number; locked: boolean; pitching: boolean; headline: string }[];
+  section: string; phase: PhaseId; pacing: "guided" | "open";
+  spread: Record<string, number>;
+  phaseEndsAt: string | null; view: RoomView;
+  roster: { handle: string; seat: number; locked: boolean; pitching: boolean; stage: string; headline: string }[];
 };
 
 const KEY_STORE = "bharatbites:facilitator";
@@ -106,7 +108,10 @@ export function Console() {
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 9, width: 250 }}>
                 <Button wide disabled={busy || !up} onClick={() => void act("advance")}>
-                  {up ? `Move the room to ${up.short}` : "The session is finished"}
+                  {!up ? "The session is finished"
+                    : state.pacing === "open" ? `Call the room to ${up.short}`
+                    : needsTheRoom(up.id) ? `Bring everyone to ${up.short}`
+                    : `Open ${up.short} to the room`}
                 </Button>
                 <div style={{ display: "flex", gap: 8 }}>
                   <Button tone="quiet" onClick={() => void act("back")}>Back</Button>
@@ -114,6 +119,55 @@ export function Console() {
                 </div>
               </div>
             </div>
+            <div style={{ marginTop: 18, paddingTop: 16, borderTop: "1px solid var(--line)", display: "flex", gap: 20, alignItems: "flex-start", flexWrap: "wrap" }}>
+              <div style={{ minWidth: 250 }}>
+                <Eyebrow>How the room moves</Eyebrow>
+                <div style={{ display: "flex", gap: 6, marginTop: 9 }}>
+                  {(["guided", "open"] as const).map((mode) => (
+                    <button key={mode} onClick={() => void act("pacing", { pacing: mode })} className="lift" style={{
+                      flexGrow: 1, borderRadius: "var(--r-md)", padding: "11px 14px", textAlign: "left", minHeight: 62,
+                      background: state.pacing === mode ? "var(--ink)" : "var(--paper-sunk)",
+                      color: state.pacing === mode ? "var(--paper)" : "var(--ink-3)",
+                    }}>
+                      <span className="display" style={{ fontSize: 14.5, fontWeight: 700, display: "block" }}>
+                        {mode === "guided" ? "You set a ceiling" : "Fully self-paced"}
+                      </span>
+                      <span style={{ fontSize: 12, lineHeight: 1.4, opacity: .78, display: "block", marginTop: 3 }}>
+                        {mode === "guided" ? "They move freely up to where you are" : "They run the whole thing at their own speed"}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+                <p style={{ fontSize: 12.5, lineHeight: 1.5, color: "var(--ink-4)", marginTop: 9 }}>
+                  Either way the pitches, the ballot and the close still pull everyone together — those are the only four that need it.
+                </p>
+              </div>
+
+              <div style={{ flexGrow: 1, minWidth: 280 }}>
+                <Eyebrow tone="var(--ink-4)">Where the room actually is</Eyebrow>
+                <div style={{ display: "flex", flexDirection: "column", gap: 5, marginTop: 9 }}>
+                  {PHASES.filter((p) => p.n >= 1 && p.n <= 8).map((p) => {
+                    const n = state.spread[p.id] ?? 0;
+                    const pct = v.joined ? (n / v.joined) * 100 : 0;
+                    return (
+                      <div key={p.id} style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                        <span style={{ fontSize: 12.5, color: n > 0 ? "var(--ink-2)" : "var(--ink-5)", width: 96, flexShrink: 0 }}>{p.short}</span>
+                        <div style={{ flexGrow: 1, height: 16, background: "var(--paper-sunk)", borderRadius: 5, overflow: "hidden" }}>
+                          <div style={{ height: "100%", width: `${pct}%`, background: p.id === state.phase ? "var(--human)" : "var(--ink-5)", borderRadius: 5 }} />
+                        </div>
+                        <span className="num" style={{ fontSize: 12.5, width: 26, textAlign: "right", color: n > 0 ? "var(--ink-2)" : "var(--ink-5)", flexShrink: 0 }}>{n}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+                <p style={{ fontSize: 12.5, lineHeight: 1.5, color: "var(--ink-4)", marginTop: 9 }}>
+                  {v.joined === 0
+                    ? "Nobody has joined yet."
+                    : `Call the room together when the tail has caught up — not when the front runners are bored.`}
+                </p>
+              </div>
+            </div>
+
             <div style={{ display: "flex", gap: 3, marginTop: 18, overflowX: "auto" }} className="scroll">
               {PHASES.slice(1, 13).map((p) => (
                 <button key={p.id} onClick={() => void act("goto", { phase: p.id })} style={{
@@ -134,7 +188,9 @@ export function Console() {
               {state.roster.map((p) => (
                 <div key={p.handle} style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 18px", borderBottom: "1px solid var(--line)" }}>
                   <span style={{ fontSize: 14, fontWeight: 600, width: 130, flexShrink: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{p.handle}</span>
-                  {p.locked ? <Pill fg="var(--flow-ink)" bg="var(--flow-soft)">Locked</Pill> : <Pill fg="var(--ink-4)" bg="var(--paper-sunk)">Working</Pill>}
+                  {p.locked
+                    ? <Pill fg="var(--flow-ink)" bg="var(--flow-soft)">Locked</Pill>
+                    : <Pill fg="var(--ink-4)" bg="var(--paper-sunk)">{PHASE.get(p.stage as PhaseId)?.short ?? "Working"}</Pill>}
                   <span style={{ flexGrow: 1, minWidth: 0, fontSize: 13, color: "var(--ink-4)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{p.headline || "—"}</span>
                   <button onClick={() => void act(p.pitching ? "unpitch" : "pitch", { handle: p.handle })} style={{
                     fontSize: 12, fontWeight: 600, padding: "6px 12px", borderRadius: 999, flexShrink: 0, minHeight: 34,

@@ -34,11 +34,13 @@ export async function ensureRoom(sectionCode: string) {
 }
 
 export async function roomState(sectionCode: string) {
-  if (!hasDatabase) return { phase: "offer" as PhaseId, version: 0, phaseEndsAt: null as string | null, offline: true };
+  // With no database there is no facilitator, so nothing is gated at all.
+  if (!hasDatabase) return { phase: "offer" as PhaseId, pacing: "open", version: 0, phaseEndsAt: null as string | null, offline: true };
   const room = await ensureRoom(sectionCode);
-  if (!room) return { phase: "offer" as PhaseId, version: 0, phaseEndsAt: null, offline: true };
+  if (!room) return { phase: "offer" as PhaseId, pacing: "open", version: 0, phaseEndsAt: null, offline: true };
   return {
     phase: room.phase as PhaseId,
+    pacing: room.pacing,
     version: room.version,
     phaseEndsAt: room.phaseEndsAt?.toISOString() ?? null,
     offline: false,

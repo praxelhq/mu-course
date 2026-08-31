@@ -8,16 +8,17 @@ export const dynamic = "force-dynamic";
 const Body = z.object({
   key: z.string().min(1),
   section: z.string().min(1).max(4),
-  action: z.enum(["advance", "back", "goto", "timer", "clear-timer", "pitch", "unpitch", "unlock", "reset"]),
+  action: z.enum(["advance", "back", "goto", "timer", "clear-timer", "pitch", "unpitch", "unlock", "reset", "pacing"]),
   phase: z.string().optional(),
   minutes: z.number().int().min(1).max(60).optional(),
   handle: z.string().max(28).optional(),
+  pacing: z.enum(["guided", "open"]).optional(),
 }).strict();
 
 export async function POST(req: Request) {
   const parsed = Body.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return Response.json({ error: "Malformed action." }, { status: 400 });
-  const { key, section, action, phase, minutes, handle } = parsed.data;
+  const { key, section, action, phase, minutes, handle, pacing } = parsed.data;
 
   if (!isFacilitator(key)) return Response.json({ error: "Not for students." }, { status: 403 });
   if (!hasDatabase) return Response.json({ error: "No database attached." }, { status: 503 });
@@ -38,6 +39,14 @@ export async function POST(req: Request) {
       data: { phase: target, phaseStartedAt: new Date(), phaseEndsAt: null, version: { increment: 1 } },
     });
     return Response.json({ ok: true, phase: target });
+  }
+
+  if (action === "pacing") {
+    await prisma.room.update({
+      where: { id: room.id },
+      data: { pacing: pacing ?? "guided", version: { increment: 1 } },
+    });
+    return Response.json({ ok: true, pacing: pacing ?? "guided" });
   }
 
   if (action === "timer") {

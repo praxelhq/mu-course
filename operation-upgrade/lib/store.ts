@@ -49,7 +49,7 @@ export function makeSecret(): string {
  * The board lives in the browser. The server is a backup and a phase clock.
  * Everything a student does is instant and works with the wifi down.
  */
-export function useBoard(identity: Identity) {
+export function useBoard(identity: Identity, stage: string) {
   const [board, setBoard] = useState<Board>(() => {
     const saved = read<Board>(BOARD_KEY);
     if (saved && saved.v === 1 && saved.handle === identity.handle) return saved;
@@ -77,6 +77,7 @@ export function useBoard(identity: Identity) {
             handle: identity.handle,
             secret: identity.secret,
             board,
+            stage,
             locked: Boolean(board.lockedAt),
           }),
         });
@@ -89,7 +90,7 @@ export function useBoard(identity: Identity) {
     return () => {
       if (timer.current) clearTimeout(timer.current);
     };
-  }, [board, identity]);
+  }, [board, identity, stage]);
 
   const update = useCallback((patch: (b: Board) => Board) => {
     setBoard((prev) => (prev.lockedAt ? prev : patch(prev)));
@@ -101,6 +102,7 @@ export function useBoard(identity: Identity) {
 /** The facilitator's phase, polled. Falls back to letting them play on. */
 export function useRoomPhase(sectionCode: string) {
   const [phase, setPhase] = useState<PhaseId>("offer");
+  const [pacing, setPacing] = useState<"guided" | "open">("guided");
   const [endsAt, setEndsAt] = useState<string | null>(null);
   const [connected, setConnected] = useState(true);
 
@@ -113,6 +115,7 @@ export function useRoomPhase(sectionCode: string) {
         const body = await res.json();
         if (!cancelled && res.ok) {
           setPhase(body.phase as PhaseId);
+          setPacing(body.pacing === "open" ? "open" : "guided");
           setEndsAt(body.phaseEndsAt ?? null);
           setConnected(!body.offline);
         }
@@ -128,5 +131,5 @@ export function useRoomPhase(sectionCode: string) {
     };
   }, [sectionCode]);
 
-  return { phase, endsAt, connected };
+  return { phase, pacing, endsAt, connected };
 }

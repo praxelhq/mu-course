@@ -64,3 +64,25 @@ One line per non-obvious choice, with what was rejected.
 - **The clock never advances a phase** · The facilitator moves the room ·
   Rejected: auto-advance, which takes the room away from the person running it
   mid-sentence.
+
+- **The facilitator's phase is a ceiling, not a position** · Students move
+  freely anywhere at or below it, and a moved gate arrives as an offer they can
+  dismiss rather than a screen that changes under their hands · Rejected:
+  marching the room in lockstep, which pulls a slow student out of a sentence
+  and leaves a fast one waiting with nothing to do.
+
+- **Only four stages compel the room** · The pitches, the ballot, the debrief
+  and the close — somebody is speaking, a ballot is closing, or reading ahead
+  spoils a reveal for the person next to you · Rejected: treating every stage as
+  collective, which is what made the first build feel like a march.
+
+- **An open mode with no ceiling at all** · For a make-up session, a section
+  that is ahead, or a facilitator who would rather not drive · Rejected:
+  forcing one pacing model on eight sections with different rooms and different
+  clocks.
+
+- **The console shows where the room is spread, not just where it was sent** ·
+  Once students are self-paced, the number that matters is how many are still
+  in the brain while four are already on the memo · Rejected: a single current
+  phase, which tells a facilitator nothing about when it is safe to call the
+  room together.

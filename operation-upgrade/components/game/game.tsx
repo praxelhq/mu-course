@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { loadIdentity, useBoard, useRoomPhase, type Identity } from "@/lib/store";
-import { PHASE, phaseReached, type PhaseId } from "@/lib/phases";
+import { PHASE, phaseReached, needsTheRoom, nextPhase, type PhaseId } from "@/lib/phases";
 import { Shell, Page } from "./shell";
 import { Offer } from "./offer";
 import { Problems } from "./problems";
@@ -29,22 +29,49 @@ export function Game() {
 }
 
 function Playing({ identity }: { identity: Identity }) {
-  const { board, update, saveState } = useBoard(identity);
-  const { phase, connected } = useRoomPhase(identity.sectionCode);
-  // Students can always revisit anything the room has already reached — a slow
-  // player is never locked out of a stage that has moved on. And when the
-  // classroom server is unreachable, the facilitator's gate cannot apply at
-  // all, so the student drives themselves rather than being stranded.
-  const [viewing, setViewing] = useState<PhaseId | null>(null);
-  const unlocked = (p: PhaseId) => !connected || phaseReached(phase, p);
-  const active = viewing && unlocked(viewing) ? viewing : phase;
+  const { phase, pacing, connected } = useRoomPhase(identity.sectionCode);
 
-  useEffect(() => { setViewing(null); }, [phase]);
+  // Where this student actually is — theirs, not the room's. The facilitator's
+  // phase is a ceiling in a guided room and nothing at all in an open one; it
+  // is never a position students get dragged to.
+  const [here, setHere] = useState<PhaseId>("offer");
+  const { board, update, saveState } = useBoard(identity, here);
+
+  const free = !connected || pacing === "open";
+  const allowed = (p: PhaseId) => free || phaseReached(phase, p);
+
+  // The one thing the facilitator can genuinely compel: the stages that only
+  // work with everyone at the same beat. Somebody is speaking, or a ballot is
+  // closing, and reading ahead would spoil a reveal for the person next to you.
+  useEffect(() => {
+    if (needsTheRoom(phase)) setHere(phase);
+  }, [phase]);
+
+  // Otherwise a moved gate is an offer, not a shove.
+  const [dismissed, setDismissed] = useState<PhaseId | null>(null);
+  const lastPhase = useRef(phase);
+  useEffect(() => {
+    if (lastPhase.current !== phase) {
+      lastPhase.current = phase;
+      setDismissed(null);
+    }
+  }, [phase]);
+
+  const behind = !free && !needsTheRoom(phase) && phase !== here && phaseReached(phase, here) && dismissed !== phase;
+  const active = allowed(here) ? here : phase;
 
   return (
     <Shell board={board} phase={active} saveState={saveState} connected={connected}>
+      {behind && (
+        <MovedOn
+          to={phase}
+          onGo={() => { setHere(phase); setDismissed(null); }}
+          onStay={() => setDismissed(phase)}
+        />
+      )}
+
       {active === "arrival" && <Waiting />}
-      {active === "offer" && <Offer onStart={() => setViewing("walk")} />}
+      {active === "offer" && <Offer onStart={() => setHere("walk")} />}
       {(active === "walk" || active === "decide") && <Problems board={board} update={update} />}
       {active === "brain" && <Brain board={board} update={update} />}
       {active === "plan" && <Plan board={board} />}
@@ -55,8 +82,27 @@ function Playing({ identity }: { identity: Identity }) {
       {active === "debrief" && <LookUp phase={active} />}
       {(active === "close" || active === "done") && <Close board={board} update={update} />}
 
-      {unlocked("walk") && <Revisit unlocked={unlocked} viewing={active} onPick={setViewing} />}
+      <Move here={active} allowed={allowed} free={free} onPick={setHere} />
     </Shell>
+  );
+}
+
+function MovedOn({ to, onGo, onStay }: { to: PhaseId; onGo: () => void; onStay: () => void }) {
+  const p = PHASE.get(to);
+  return (
+    <div className="rise" style={{
+      background: "var(--gold-soft)", borderBottom: "1px solid var(--line-strong)",
+      padding: "12px clamp(16px, 3vw, 32px)", display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap",
+    }}>
+      <span style={{ fontSize: 14.5, color: "var(--gold-ink)", flexGrow: 1, minWidth: 240 }}>
+        The room has moved on to <strong>{p?.title.toLowerCase()}</strong>. Finish what you are doing first — nothing is lost.
+      </span>
+      <button onClick={onGo} className="lift" style={{
+        background: "var(--gold-ink)", color: "#fff6ec", borderRadius: "var(--r-md)",
+        padding: "9px 16px", fontSize: 14, fontWeight: 700, minHeight: 40,
+      }}>Go there now</button>
+      <button onClick={onStay} style={{ fontSize: 13.5, color: "var(--gold-ink)", minHeight: 40 }}>Stay here</button>
+    </div>
   );
 }
 
@@ -74,44 +120,56 @@ function Waiting() {
 
 function LookUp({ phase }: { phase: PhaseId }) {
   const p = PHASE.get(phase);
-  const copy: Record<string, string> = {
-    pitch: "Four people are taking the floor for seventy-five seconds each. Listen for the one you would fund — you will be asked in a minute.",
-    vote: "Vote for the plan you would actually put money behind. You cannot vote for your own, and the room is watching the tally on the wall.",
-    debrief: "The wall is showing what the whole room decided. Yours is in there.",
-  };
   return (
     <Page>
       <Card style={{ textAlign: "center", padding: 56 }}>
         <Eyebrow>{p?.title}</Eyebrow>
         <h1 className="serif" style={{ fontSize: 40, lineHeight: 1.08, margin: "14px 0 12px" }}>Look up.</h1>
-        <p style={{ fontSize: 17, lineHeight: 1.6, color: "var(--ink-3)", maxWidth: 480, margin: "0 auto" }}>{copy[phase]}</p>
+        <p style={{ fontSize: 17, lineHeight: 1.6, color: "var(--ink-3)", maxWidth: 480, margin: "0 auto" }}>
+          The wall is showing what the whole room decided. Yours is in there.
+        </p>
       </Card>
     </Page>
   );
 }
 
-/// A quiet way back to anything already covered. Nothing is ever taken away
-/// from a student who was still typing when the room moved on.
-function Revisit({ unlocked, viewing, onPick }: { unlocked: (p: PhaseId) => boolean; viewing: PhaseId; onPick: (p: PhaseId) => void }) {
+/// Move at your own speed. In a guided room this stops at the facilitator's
+/// gate; in an open one it does not stop at all.
+function Move({ here, allowed, free, onPick }: {
+  here: PhaseId; allowed: (p: PhaseId) => boolean; free: boolean; onPick: (p: PhaseId) => void;
+}) {
   const options: PhaseId[] = ["walk", "brain", "plan", "constraint", "fault", "memo", "close"];
-  const available = options.filter(unlocked);
-  if (available.length < 2) return null;
+  const open = options.filter(allowed);
+  if (open.length < 2) return null;
+  const next = nextPhase(here);
+  const canGoOn = next && allowed(next);
+
   return (
     <div style={{
       position: "sticky", bottom: 0, background: "rgba(253,249,242,.94)", borderTop: "1px solid var(--line)",
       padding: "10px clamp(16px, 3vw, 32px)", display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap",
-      backdropFilter: "blur(8px)",
+      backdropFilter: "blur(8px)", zIndex: 20,
     }}>
-      <span style={{ fontSize: 12.5, color: "var(--ink-4)", marginRight: 4 }}>Jump to</span>
-      {available.map((o) => (
+      <span style={{ fontSize: 12.5, color: "var(--ink-4)", marginRight: 4 }}>
+        {free ? "Your pace" : "Open to you"}
+      </span>
+      {open.map((o) => (
         <button key={o} onClick={() => onPick(o)} style={{
           fontSize: 13, fontWeight: 600, padding: "8px 13px", borderRadius: 999, minHeight: 38,
-          background: viewing === o ? "var(--ink)" : "var(--paper-sunk)",
-          color: viewing === o ? "var(--paper)" : "var(--ink-3)",
+          background: here === o ? "var(--ink)" : "var(--paper-sunk)",
+          color: here === o ? "var(--paper)" : "var(--ink-3)",
         }}>
           {PHASE.get(o)?.short}
         </button>
       ))}
+      {canGoOn && (
+        <button onClick={() => onPick(next)} className="lift" style={{
+          marginLeft: "auto", fontSize: 13.5, fontWeight: 700, padding: "9px 16px", borderRadius: "var(--r-md)",
+          minHeight: 40, background: "var(--human)", color: "#fff6ec",
+        }}>
+          Next: {PHASE.get(next)?.short} →
+        </button>
+      )}
     </div>
   );
 }
