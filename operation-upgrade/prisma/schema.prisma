@@ -1,0 +1,56 @@
+// Operation Upgrade. Three tables, no accounts.
+//
+// The game is played and scored in the browser; this database exists so a
+// facilitator can drive the room, the wall can show what the room decided, and
+// a student who closes their laptop does not lose ninety days of work.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// One run per section per delivery. The facilitator advances `phase`; every
+/// student's screen follows it.
+model Room {
+  id            String   @id @default(cuid())
+  sectionCode   String   @unique
+  phase         String   @default("arrival")
+  phaseStartedAt DateTime @default(now())
+  phaseEndsAt   DateTime?
+  /// Bumped on every facilitator action so a stale client can tell it is stale.
+  version       Int      @default(1)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  players Player[]
+}
+
+/// A student. Identified by the name they typed and a browser-held secret, not
+/// by an account — there is no sign-in anywhere in this app.
+model Player {
+  id          String   @id @default(cuid())
+  roomId      String
+  room        Room     @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  /// Shown on the wall and to other students. Never an email.
+  handle      String
+  /// Random, generated in the browser, proves this is the same laptop.
+  secret      String
+  /// Stable position in the section, used to deal cards evenly across the room.
+  seat        Int
+  /// The whole board: decisions, indexed documents, answers, memo. Authored and
+  /// scored client-side; stored so nothing is lost and the wall can count it.
+  board       Json     @default("{}")
+  lockedAt    DateTime?
+  pitching    Boolean  @default(false)
+  votedForId  String?
+  joinedAt    DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([roomId, handle])
+  @@unique([roomId, seat])
+  @@index([roomId, lockedAt])
+}
