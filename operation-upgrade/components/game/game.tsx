@@ -11,6 +11,7 @@ import { Brain } from "./brain";
 import { Plan } from "./plan";
 import { Constraint, Fault } from "./events";
 import { Memo, Close } from "./finish";
+import { Ballot } from "./ballot";
 import { Card, Eyebrow } from "@/components/ui";
 
 export function Game() {
@@ -50,7 +51,8 @@ function Playing({ identity }: { identity: Identity }) {
       {active === "constraint" && <Constraint board={board} update={update} />}
       {active === "fault" && <Fault board={board} update={update} />}
       {active === "memo" && <Memo board={board} update={update} />}
-      {(active === "pitch" || active === "vote" || active === "debrief") && <LookUp phase={active} />}
+      {(active === "pitch" || active === "vote") && <Ballot identity={identity} phase={active} />}
+      {active === "debrief" && <LookUp phase={active} />}
       {(active === "close" || active === "done") && <Close board={board} update={update} />}
 
       {unlocked("walk") && <Revisit unlocked={unlocked} viewing={active} onPick={setViewing} />}
