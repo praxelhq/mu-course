@@ -6,6 +6,10 @@
 
 generator client {
   provider = "prisma-client-js"
+  // A known path, so the Dockerfile can copy the engine into the runtime image.
+  output   = "../lib/generated/prisma"
+  // The runtime image is node:22-slim, which is Debian 12 / OpenSSL 3.
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
 datasource db {

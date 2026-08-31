@@ -8,7 +8,9 @@ RUN corepack enable
 
 FROM base AS deps
 WORKDIR /app
-COPY package.json pnpm-lock.yaml* ./
+# pnpm-workspace.yaml carries the build-script allowlist in pnpm 11. Without
+# it, prisma and esbuild postinstalls are refused and the install exits 1.
+COPY package.json pnpm-lock.yaml* pnpm-workspace.yaml ./
 RUN pnpm install --no-frozen-lockfile
 
 FROM base AS build
@@ -27,6 +29,9 @@ ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 PORT=3000 HOSTNAME=0.0.0.0
 COPY --from=build /app/.next/standalone ./
 COPY --from=build /app/.next/static ./.next/static
 COPY --from=build /app/public ./public
+# The generated client plus its query engine. Next's tracer does not reliably
+# carry the engine binary into the standalone bundle.
+COPY --from=build /app/lib/generated ./lib/generated
 COPY prisma ./prisma
 COPY docker-entrypoint.sh ./docker-entrypoint.sh
 RUN chmod +x ./docker-entrypoint.sh

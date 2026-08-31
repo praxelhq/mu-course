@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "./generated/prisma/client";
 
 // One client per process. Next's dev server reloads modules, so it is stashed
 // on globalThis to avoid exhausting Postgres connections on every save.
