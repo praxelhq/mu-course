@@ -1,7 +1,7 @@
 import { prisma, hasDatabase } from "@/lib/db";
 import { ensureRoom } from "@/lib/rooms";
 import { planShape, headlineText } from "@/lib/engine/memo";
-import type { Board } from "@/lib/engine/types";
+import { readBoard } from "@/lib/engine/types";
 
 export const dynamic = "force-dynamic";
 
@@ -28,11 +28,11 @@ export async function GET(req: Request) {
     open: room.phase === "vote",
     votedFor: me?.votedForId ?? null,
     candidates: pitching.map((p) => {
-      const board = p.board as unknown as Board;
+      const board = readBoard(p.board);
       return {
         handle: p.handle,
-        headline: board?.v === 2 ? headlineText(board) : "",
-        shape: board?.v === 2 ? planShape(board) : { hire: 0, build: 0, redesign: 0 },
+        headline: board ? headlineText(board) : "",
+        shape: board ? planShape(board) : { hire: 0, build: 0, redesign: 0 },
       };
     }),
   }, { headers: { "Cache-Control": "no-store" } });

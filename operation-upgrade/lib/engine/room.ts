@@ -4,9 +4,9 @@ import { NEVER_INDEX, QUESTIONS } from "@/lib/content/documents";
 import { brainReport } from "./brain";
 import { totals, gateLoad } from "./economics";
 import { planShape, headlineText } from "./memo";
-import type { Board } from "./types";
+import { readBoard, type Board } from "./types";
 
-export type RoomPlayer = { handle: string; seat: number; locked: boolean; pitching: boolean; board: Board };
+export type RoomPlayer = { handle: string; seat: number; locked: boolean; pitching: boolean; board: unknown };
 
 /// What the wall shows. Every number here is something the room did, and the
 /// two that matter most in the debrief are how many named a person and how many
@@ -32,7 +32,10 @@ function median(ns: number[]): number {
 }
 
 export function roomView(players: RoomPlayer[], votes: Record<string, number>): RoomView {
-  const boards = players.map((p) => p.board).filter((b) => b && b.v === 2);
+  // Every board is client-authored JSON. Read it defensively once, here, so no
+  // aggregate below has to wonder whether a field is actually present.
+  const read = new Map<string, Board | null>(players.map((p) => [p.handle, readBoard(p.board)]));
+  const boards = [...read.values()].filter((b): b is Board => b !== null);
 
   const mix = { hire: 0, build: 0, redesign: 0 };
   const spends: number[] = [];
@@ -85,12 +88,15 @@ export function roomView(players: RoomPlayer[], votes: Record<string, number>): 
     rulings,
     pitches: players
       .filter((p) => p.pitching)
-      .map((p) => ({
-        handle: p.handle,
-        headline: p.board?.v === 2 ? headlineText(p.board) : "",
-        shape: p.board ? planShape(p.board) : { hire: 0, build: 0, redesign: 0 },
-        votes: votes[p.handle] ?? 0,
-      }))
+      .map((p) => {
+        const b = read.get(p.handle) ?? null;
+        return {
+          handle: p.handle,
+          headline: b ? headlineText(b) : "",
+          shape: b ? planShape(b) : { hire: 0, build: 0, redesign: 0 },
+          votes: votes[p.handle] ?? 0,
+        };
+      })
       .sort((a, b) => b.votes - a.votes),
     votesCast: Object.values(votes).reduce((n, v) => n + v, 0),
   };
