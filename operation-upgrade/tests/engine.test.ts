@@ -35,7 +35,7 @@ describe("the sequencing lesson is a rule of the game", () => {
     expect(sequenced.spendLakh).toBe(dirty.spendLakh);
     expect(resolveOption("docs", "build", board({ picks: { docs: ["redesign"] } })).risk).toBe("low");
     expect(resolveOption("docs", "build", board()).risk).toBe("high");
-    // But it costs a second change out of the four Meera will fund.
+    // But it costs a second change out of the four Cutesh will fund.
     expect(changeCount(board({ picks: { docs: ["redesign", "build"] } }))).toBe(2);
   });
 
@@ -188,7 +188,7 @@ describe("faults come from what they built", () => {
   });
 });
 
-describe("what stands between a student and showing Meera", () => {
+describe("what stands between a student and showing Cutesh", () => {
   it("lists everything at once, in sentences", () => {
     const list = blockers(board());
     expect(list.length).toBeGreaterThan(2);
@@ -203,12 +203,12 @@ describe("what stands between a student and showing Meera", () => {
   });
 
   it("refuses a plan with nobody named on a change", () => {
-    const b = board({ picks: { docs: ["redesign"] }, reasons: { docs: "It is the cheapest thing on the page and it unlocks the rest." } });
+    const b = board({ picks: { docs: ["redesign"] }, rationales: { docs: "prerequisite" } });
     expect(blockers(b).map((x) => x.code)).toContain("gate-docs");
   });
 
   it("holds the plan when the board wanted something inside thirty days", () => {
-    const b = board({ constraintId: "thirty-days", picks: { docs: ["hire"] }, gates: { docs: "meera" } });
+    const b = board({ constraintId: "thirty-days", picks: { docs: ["hire"] }, gates: { docs: "cutesh" } });
     expect(blockers(b).map((x) => x.code)).toContain("nothing-early");
   });
 
@@ -220,18 +220,13 @@ describe("what stands between a student and showing Meera", () => {
   it("lets a complete plan through", () => {
     const b = board({
       picks: { docs: ["redesign"], reporting: ["redesign"], analytics: ["redesign"] },
-      gates: { docs: "arun", reporting: "sunita", analytics: "meera" },
-      reasons: {
-        docs: "Everything else depends on there being one true version of each document.",
-        reporting: "One form and one deadline gives back three hours a day for one lakh.",
-        analytics: "Four of these reports have no reader at all, so we simply stop making them.",
-      },
+      gates: { docs: "arun", reporting: "sunita", analytics: "cutesh" },
+      rationales: { docs: "prerequisite", reporting: "cheapest-pain", analytics: "fastest" },
       leaving: "hiring",
-      leavingWhy: "Recruitment hurts but it does not stop a store trading tomorrow morning.",
+      leavingReason: "no-trading-impact",
       constraintId: "thirty-days",
-      constraintResponse: "Everything I chose lands by week four already, so nothing needs resequencing for the board update.",
-      headline:
-        "Fix what is written down before automating anything. One true version of every document, one daily form, and stop making the four reports nobody reads. That is three lakh a year, it all lands inside a month, and it makes every system we build next year cheaper and safer to run.",
+      constraintMove: "pull-forward",
+      headline: { opener: "o-ground", middle: "m-sequence", closer: "c-cost" },
     });
     expect(blockers(b)).toEqual([]);
     expect(canLock(b)).toBe(true);
@@ -243,13 +238,13 @@ describe("the memo", () => {
     const b = board({
       picks: { docs: ["redesign"] },
       gates: { docs: "arun" },
-      reasons: { docs: "One true version of everything, owned and dated, before we automate a word of it." },
+      rationales: { docs: "prerequisite" },
       leaving: "hiring",
-      leavingWhy: "It hurts, but nobody stops trading because a shortlist is slow.",
+      leavingReason: "no-trading-impact",
       indexed: ["allergen26", "refunds"],
       asked: ["nuts", "salary"],
-      headline: "Fix the documents first. Everything else in this company is downstream of them, and it costs two lakh.",
-      commitment: { what: "the weekly numbers I rebuild by hand", evidence: "Monday's summary is ready before nine without me" },
+      headline: { opener: "o-ground", middle: "m-sequence", closer: "c-cost" },
+      commitment: { target: "t-recurring", evidence: "e-time" },
     });
     const md = composeMemo(b);
     expect(md).toContain("One source of truth");

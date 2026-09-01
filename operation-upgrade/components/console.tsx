@@ -102,7 +102,7 @@ export function Console() {
           <Card>
             <div style={{ display: "flex", gap: 20, alignItems: "flex-start", flexWrap: "wrap" }}>
               <div style={{ flexGrow: 1, minWidth: 260 }}>
-                <Eyebrow>Now running · stage {here.n} of 12</Eyebrow>
+                <Eyebrow>Now running · stage {here.n} of 13</Eyebrow>
                 <h1 className="display" style={{ fontSize: 26, fontWeight: 700, margin: "8px 0 8px", letterSpacing: "-.015em" }}>{here.title}</h1>
                 <p style={{ fontSize: 14.5, lineHeight: 1.55, color: "var(--ink-3)" }}>{here.facilitator}</p>
               </div>
@@ -146,7 +146,7 @@ export function Console() {
               <div style={{ flexGrow: 1, minWidth: 280 }}>
                 <Eyebrow tone="var(--ink-4)">Where the room actually is</Eyebrow>
                 <div style={{ display: "flex", flexDirection: "column", gap: 5, marginTop: 9 }}>
-                  {PHASES.filter((p) => p.n >= 1 && p.n <= 8).map((p) => {
+                  {PHASES.filter((p) => p.n >= 1 && p.n <= 9).map((p) => {
                     const n = state.spread[p.id] ?? 0;
                     const pct = v.joined ? (n / v.joined) * 100 : 0;
                     return (
@@ -169,7 +169,7 @@ export function Console() {
             </div>
 
             <div style={{ display: "flex", gap: 3, marginTop: 18, overflowX: "auto" }} className="scroll">
-              {PHASES.slice(1, 13).map((p) => (
+              {PHASES.slice(1, 14).map((p) => (
                 <button key={p.id} onClick={() => void act("goto", { phase: p.id })} style={{
                   flexGrow: 1, minWidth: 62, padding: "8px 4px", borderRadius: 8, fontSize: 11.5, fontWeight: 600,
                   background: p.id === state.phase ? "var(--human)" : "var(--paper-sunk)",

@@ -52,7 +52,7 @@ export function makeSecret(): string {
 export function useBoard(identity: Identity, stage: string) {
   const [board, setBoard] = useState<Board>(() => {
     const saved = read<Board>(BOARD_KEY);
-    if (saved && saved.v === 1 && saved.handle === identity.handle) return saved;
+    if (saved && saved.v === 2 && saved.handle === identity.handle) return saved;
     return emptyBoard(identity.handle, identity.seat);
   });
   const [saveState, setSaveState] = useState<"idle" | "saving" | "saved" | "offline">("idle");

@@ -1,6 +1,7 @@
 import { prisma, hasDatabase } from "@/lib/db";
 import { ensureRoom, isFacilitator } from "@/lib/rooms";
 import { roomView, type RoomPlayer } from "@/lib/engine/room";
+import { headlineText } from "@/lib/engine/memo";
 import type { Board } from "@/lib/engine/types";
 
 export const dynamic = "force-dynamic";
@@ -46,7 +47,7 @@ export async function GET(req: Request) {
     roster: players.map((p) => ({
       handle: p.handle, seat: p.seat, locked: Boolean(p.lockedAt), pitching: p.pitching,
       stage: p.stage,
-      headline: (p.board as { headline?: string })?.headline ?? "",
+      headline: (p.board as unknown as Board)?.v === 2 ? headlineText(p.board as unknown as Board) : "",
     })),
   }, { headers: { "Cache-Control": "no-store" } });
 }

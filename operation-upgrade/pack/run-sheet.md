@@ -1,23 +1,24 @@
 # Run sheet
 
-Twelve stages. You advance the room; nothing advances on a timer.
+Fourteen stages. You advance the room; nothing advances on a timer.
 
 | | Stage | Minutes | What you do |
 | ---: | --- | ---: | --- |
 | 0 | Students joining | 3 | Put the join code on the wall and wait for the room to fill. |
-| 1 | Meera hires them | 3 | Let them read her note. Do not narrate it — she does the briefing. |
+| 1 | Cutesh hires them | 3 | Let them read his note. Do not narrate it — he does the briefing. |
 | 2 | Seven places it hurts | 8 | They open each problem and read the evidence. Tell them to look at Arun's tile. |
 | 3 | Hire, build, or change the work | 10 | Four changes maximum. Everyone names a person on every one. |
 | 4 | Teach the company brain | 10 | The centrepiece. Do not rush it. Everyone asks all five questions. |
 | 5 | What it costs and when it lands | 7 | Three minutes with a neighbour: find one thing in theirs with nobody checking it. |
 | 6 | The world moves | 6 | Deal the constraints. Neighbours get different ones on purpose. |
 | 7 | Something they built fails | 8 | Hands up before the wall reveals the split: continue, pause, or stop? |
-| 8 | The memo, and lock | 8 | They finish and lock. After this nothing changes. |
-| 9 | Four take the floor | 10 | Mark four on the console. Seventy-five seconds each, and challenge one of them. |
-| 10 | The room funds one plan | 4 | Everyone votes once and nobody votes for themselves. |
-| 11 | What the room learned | 6 | Walk the wall. The interlock count and the brain failures are the two to sit on. |
-| 12 | Radar and commitment | 20 | Protected. Do not let anything above eat into this. |
-| | **Total** | **103** | |
+| 8 | A second opinion | 5 | Mariga arrives for anyone whose plan is in trouble; everyone else gets two questions. Two minutes, then move on. |
+| 9 | The memo, and lock | 8 | They finish and lock. After this nothing changes. |
+| 10 | Four take the floor | 10 | Mark four on the console. Seventy-five seconds each, and challenge one of them. |
+| 11 | The room funds one plan | 4 | Everyone votes once and nobody votes for themselves. |
+| 12 | What the room learned | 6 | Walk the wall. The interlock count and the brain failures are the two to sit on. |
+| 13 | Radar and commitment | 20 | Protected. Do not let anything above eat into this. |
+| | **Total** | **108** | |
 
 ## If you are running late
 

@@ -1,135 +1,80 @@
 import { PROBLEMS } from "@/lib/content/problems";
-import { CONSTRAINTS } from "@/lib/content/events";
+import { CONSTRAINTS, FAULT_QUESTIONS } from "@/lib/content/events";
+import { DRILLS } from "@/lib/content/choices";
 import { totals, constraintOf, resolveOption, changeCount } from "./economics";
 import type { Board } from "./types";
 
-export type Blocker = { code: string; text: string; fixable: boolean };
+export type Blocker = { code: string; text: string };
 
-const words = (s: string) => s.trim().split(/\s+/u).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
-
-export const MIN_REASON_WORDS = 8;
-export const MIN_CONSTRAINT_WORDS = 15;
-export const MIN_FAULT_WORDS = 8;
-export const MIN_HEADLINE_WORDS = 25;
-export const MAX_HEADLINE_WORDS = 80;
-
-/// Everything standing between this student and showing Meera the plan. Written
-/// as sentences because the student reads them, not as codes.
+/// Everything standing between this student and showing Cutesh the plan,
+/// written as sentences because the student reads them.
 export function blockers(board: Board): Blocker[] {
   const out: Blocker[] = [];
   const t = totals(board);
 
   if (t.chosenCount === 0) {
-    out.push({ code: "nothing-chosen", text: "You have not committed to fixing anything yet.", fixable: true });
+    out.push({ code: "nothing-chosen", text: "You have not committed to fixing anything yet." });
   }
   const changes = changeCount(board);
   if (changes > 4) {
-    out.push({
-      code: "too-many",
-      text: `You are running ${changes} changes at once. Meera will fund four. Ninety days is not long enough for more.`,
-      fixable: true,
-    });
+    out.push({ code: "too-many", text: `You are running ${changes} changes at once. Cutesh will fund four. Ninety days is not long enough for more.` });
   }
   if (t.overBy > 0) {
-    out.push({
-      code: "over-budget",
-      text: `You are ₹${t.overBy}L a year over what the board approved.`,
-      fixable: true,
-    });
+    out.push({ code: "over-budget", text: `You are ₹${t.overBy}L a year over what the board approved.` });
   }
 
   for (const p of PROBLEMS) {
     const approaches = board.picks[p.id] ?? [];
     if (approaches.length === 0) continue;
     for (const approach of approaches) {
-      const resolved = resolveOption(p.id, approach, board);
-      if (resolved.blocked) {
-        out.push({
-          code: `blocked-${p.id}-${approach}`,
-          text: `${resolved.title} is off the table — ${resolved.blockedWhy}. Choose something else for ${p.title.toLowerCase()}.`,
-          fixable: true,
-        });
+      const r = resolveOption(p.id, approach, board);
+      if (r.blocked) {
+        out.push({ code: `blocked-${p.id}-${approach}`, text: `${r.title} is off the table — ${r.blockedWhy}. Choose something else for ${p.title.toLowerCase()}.` });
       }
     }
     if (!board.gates[p.id]) {
-      out.push({
-        code: `gate-${p.id}`,
-        text: `Nobody is named on ${p.title.toLowerCase()}. Meera's first rule: she wants to know who she is calling.`,
-        fixable: true,
-      });
+      out.push({ code: `gate-${p.id}`, text: `Nobody is named on ${p.title.toLowerCase()}. Cutesh wants to know who he is calling.` });
     }
-    if (words(board.reasons[p.id] ?? "") < MIN_REASON_WORDS) {
-      out.push({
-        code: `why-${p.id}`,
-        text: `Say in one line why you chose that for ${p.title.toLowerCase()}. This is the sentence that gets read out.`,
-        fixable: true,
-      });
+    if (!board.rationales[p.id]) {
+      out.push({ code: `why-${p.id}`, text: `Pick your reason for ${p.title.toLowerCase()}. It is the line that gets read out if your plan is chosen.` });
     }
   }
 
   if (!board.leaving) {
-    out.push({
-      code: "no-rejection",
-      text: "Name the problem you are deliberately leaving alone. Meera's fifth rule, and she will ask.",
-      fixable: true,
-    });
-  } else if (words(board.leavingWhy) < MIN_REASON_WORDS) {
-    out.push({ code: "no-rejection-why", text: "Say why you are leaving that one alone.", fixable: true });
+    out.push({ code: "no-rejection", text: "Name the problem you are deliberately leaving alone. Cutesh's fifth rule, and he will ask." });
+  } else if (!board.leavingReason) {
+    out.push({ code: "no-rejection-why", text: "Pick why you are leaving that one alone." });
   }
 
   const c = constraintOf(board);
   if (c) {
-    if (words(board.constraintResponse) < MIN_CONSTRAINT_WORDS) {
-      out.push({
-        code: "constraint",
-        text: `Answer ${c.title.toLowerCase()} — what changes in your plan, and why that one.`,
-        fixable: true,
-      });
+    if (!board.constraintMove) {
+      out.push({ code: "constraint", text: `Decide what you do about ${c.title.toLowerCase()}.` });
     }
     if (c.effect.kind === "require-early" && t.landsBefore(c.effect.byWeek) === 0) {
-      out.push({
-        code: "nothing-early",
-        text: `Nothing in your plan helps anybody before week ${c.effect.byWeek}, and the board is expecting something at day thirty.`,
-        fixable: true,
-      });
+      out.push({ code: "nothing-early", text: `Nothing in your plan helps anybody before week ${c.effect.byWeek}, and the board expects something at day thirty.` });
     }
     if (c.effect.kind === "max-builds" && t.buildCount > c.effect.n) {
-      out.push({
-        code: "too-many-builds",
-        text: `You have ${t.buildCount} new systems and you are allowed ${c.effect.n}. ${c.ask}`,
-        fixable: true,
-      });
+      out.push({ code: "too-many-builds", text: `You have ${t.buildCount} new systems and you are allowed ${c.effect.n}. ${c.ask}` });
     }
     if (c.effect.kind === "require-obligation") {
       const ob = t.obligations.find((o) => o.id === (c.effect as { obligationId: string }).obligationId);
-      if (ob && !ob.active) {
-        out.push({ code: "obligation", text: c.ask, fixable: true });
-      }
+      if (ob && !ob.active) out.push({ code: "obligation", text: c.ask });
     }
   }
 
   if (board.faultId) {
-    for (const key of ["failed", "prevented", "control"]) {
-      if (words(board.faultAnswers[key] ?? "") < MIN_FAULT_WORDS) {
-        out.push({ code: `fault-${key}`, text: "Finish your answer on what went wrong and what you are adding.", fixable: true });
-        break;
-      }
+    if (!board.faultDiagnosis) out.push({ code: "fault-diagnosis", text: "Say what actually broke." });
+    if (!board.faultControl) out.push({ code: "fault-control", text: "Choose the control you are adding." });
+    if (DRILLS[board.faultId] && board.drillOrder.length !== DRILLS[board.faultId].length) {
+      out.push({ code: "fault-drill", text: "Put the response steps in the order you would actually do them." });
     }
-    if (!board.ruling) {
-      out.push({ code: "ruling", text: "Decide whether that system keeps running, pauses, or stops.", fixable: true });
-    }
+    if (!board.ruling) out.push({ code: "ruling", text: "Decide whether that system keeps running, pauses, or stops." });
   }
 
-  const hw = words(board.headline);
-  if (hw < MIN_HEADLINE_WORDS || hw > MAX_HEADLINE_WORDS) {
-    out.push({
-      code: "headline",
-      text:
-        hw === 0
-          ? "Write the seventy-five seconds you would say to the board."
-          : `Your board recommendation is ${hw} words. Aim for ${MIN_HEADLINE_WORDS} to ${MAX_HEADLINE_WORDS}.`,
-      fixable: true,
-    });
+  const h = board.headline;
+  if (!h.opener || !h.middle || !h.closer) {
+    out.push({ code: "headline", text: "Build the seventy-five seconds you would say to the board — three lines." });
   }
 
   return out;
@@ -139,4 +84,4 @@ export function canLock(board: Board): boolean {
   return blockers(board).length === 0;
 }
 
-export { CONSTRAINTS };
+export { CONSTRAINTS, FAULT_QUESTIONS };

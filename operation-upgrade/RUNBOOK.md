@@ -32,23 +32,48 @@ Either way, **four stages still pull everyone together**: the pitches, the ballo
 
 ---
 
-## The twelve stages · 103 minutes
+## The fourteen stages · 108 minutes
 
 | # | Stage | Min | What you do |
 |---:|---|---:|---|
 | 0 | Doors | 3 | Code on the wall. Wait. |
-| 1 | The offer | 3 | Let them read Meera's note. **Don't narrate it** — she does the briefing. |
+| 1 | The offer | 3 | Company hero, then Cutesh's note. **Don't narrate it** — he does the briefing. |
 | 2 | Walk it | 8 | "Open all seven and read what's actually happening. Look at Arun's tile." |
-| 3 | Decide | 10 | Four changes max. Everyone names a person on every one. |
+| 3 | Decide | 10 | Four changes max. Everyone picks a reason and names a person. |
 | 4 | **The brain** | 10 | **The centrepiece. Do not rush this.** Everyone asks all five questions. |
 | 5 | The plan | 7 | Three minutes with a neighbour: find one thing in theirs with nobody checking it. |
 | 6 | It changed | 6 | Constraint cards land. Neighbours get different ones on purpose. |
-| 7 | It broke | 8 | **Hands up before the wall reveals the split.** Continue, pause, or kill? |
-| 8 | Sign it | 8 | They lock. After this nothing changes. |
-| 9 | Pitch | 10 | Mark four on the console. 75 seconds each. Challenge one. |
-| 10 | Fund one | 4 | Ballot opens. Nobody funds themselves. |
-| 11 | Debrief | 6 | Walk the wall. Two lines to sit on (below). |
-| 12 | Close | 20 | **Protected. Let nothing above eat into this.** |
+| 7 | **It broke** | 8 | **Hands up before the wall reveals the split.** See below — this is now a five-step drill. |
+| 8 | Mariga | 5 | The consultant arrives for anyone in trouble. Two minutes, then move on. |
+| 9 | Sign it | 8 | They lock. After this nothing changes. |
+| 10 | Pitch | 10 | Mark four on the console. 75 seconds each. Challenge one. |
+| 11 | Fund one | 4 | Ballot opens. Nobody funds themselves. |
+| 12 | Debrief | 6 | Walk the wall. Two lines to sit on (below). |
+| 13 | Close | 20 | **Protected. Let nothing above eat into this.** |
+
+---
+
+## Stage 7 in detail — the failure drill
+
+Nobody types anything. Each student gets a different fault and works it in five steps, each appearing only once the last is answered:
+
+1. **The trace.** The wall of evidence: what was asked, what the system answered, which document it cited, what it cost. Read in silence. This is the part that lands.
+2. **What actually went wrong** — four options, one right. Wrong picks say why they're wrong rather than just going red.
+3. **The response drill** — six steps to drag into order: stop, contain, diagnose, fix, verify, restore. Getting it wrong is the point: restoring before containing tells them the cost in plain words.
+4. **What stops it recurring** — the control.
+5. **What runs while it's down** — the fallback. Most people forget there has to be one.
+
+Then it reveals which of *their own* choices would have prevented it.
+
+**Ask the room after step 3:** "Who put 'tell people it's back' before 'check that it's right'?" Usually a third of the room.
+
+---
+
+## Stage 8 — Mariga Economova
+
+Anyone whose plan is genuinely in trouble — over budget, an assistant built on an uncleaned library, a brain that would repeat a salary, everything bet on AI — meets a turnaround consultant who names each problem, says what it costs, and says what to do instead. Everyone else gets two hard questions about their own plan; nobody gets a pat on the head.
+
+It's a self-correcting stage. You don't need to identify who's struggling — the app already has.
 
 ---
 

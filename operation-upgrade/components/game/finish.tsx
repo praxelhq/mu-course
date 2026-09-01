@@ -2,11 +2,12 @@
 
 import { useMemo, useState } from "react";
 import { AI_RADAR, COMMITMENT_PROMPT, CLOSING_QUESTIONS } from "@/lib/content/radar";
-import { composeMemo } from "@/lib/engine/memo";
-import { blockers, MIN_HEADLINE_WORDS, MAX_HEADLINE_WORDS } from "@/lib/engine/validate";
+import { composeMemo, headlineText } from "@/lib/engine/memo";
+import { blockers } from "@/lib/engine/validate";
+import { HEADLINE_OPENERS, HEADLINE_MIDDLES, HEADLINE_CLOSERS, COMMITMENT_TARGETS, COMMITMENT_EVIDENCE } from "@/lib/content/choices";
 import { brainReport } from "@/lib/engine/brain";
 import type { Board } from "@/lib/engine/types";
-import { Button, Card, Eyebrow, WordCount } from "@/components/ui";
+import { Button, Card, Choose, Eyebrow } from "@/components/ui";
 import { Briefing, Page } from "./shell";
 
 export function Memo({ board, update }: { board: Board; update: (fn: (b: Board) => Board) => void }) {
@@ -28,7 +29,7 @@ export function Memo({ board, update }: { board: Board; update: (fn: (b: Board) 
 
   return (
     <>
-      <Briefing speakerId="meera">
+      <Briefing speakerId="cutesh">
         {locked
           ? "“Got it. That is what I am taking to the board. Thank you — genuinely.”"
           : "“One page. What you are changing, what it costs, who is accountable, and what you are leaving alone. Then read me the seventy-five seconds.”"}
@@ -51,20 +52,25 @@ export function Memo({ board, update }: { board: Board; update: (fn: (b: Board) 
             <Card>
               <h2 className="display" style={{ fontSize: 16.5, fontWeight: 700 }}>Your seventy-five seconds</h2>
               <p style={{ fontSize: 13.5, color: "var(--ink-3)", margin: "5px 0 12px" }}>
-                If the room picks your plan, this is what you stand up and say. Between {MIN_HEADLINE_WORDS} and {MAX_HEADLINE_WORDS} words.
+                If the room picks your plan, this is what you stand up and say. Three lines — pick each one.
               </p>
-              <textarea
-                className="field"
-                rows={6}
-                disabled={locked}
-                value={board.headline}
-                onChange={(e) => update((b) => ({ ...b, headline: e.target.value }))}
-                placeholder="Fix what is written down before automating anything…"
-              />
-              <div style={{ marginTop: 8 }}><WordCount text={board.headline} min={MIN_HEADLINE_WORDS} max={MAX_HEADLINE_WORDS} /></div>
-              <p style={{ fontSize: 12.5, color: "var(--ink-5)", marginTop: 8, lineHeight: 1.5 }}>
-                Other students see this on the wall next to your name. Do not put anybody&rsquo;s personal details in it.
-              </p>
+              <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+                <Choose label="Open with" options={HEADLINE_OPENERS} value={board.headline.opener}
+                  showQuality={false} disabled={locked}
+                  onPick={(id) => update((b) => ({ ...b, headline: { ...b.headline, opener: id } }))} />
+                <Choose label="Then the substance" options={HEADLINE_MIDDLES} value={board.headline.middle}
+                  showQuality={false} disabled={locked}
+                  onPick={(id) => update((b) => ({ ...b, headline: { ...b.headline, middle: id } }))} />
+                <Choose label="And land it" options={HEADLINE_CLOSERS} value={board.headline.closer}
+                  showQuality={false} disabled={locked}
+                  onPick={(id) => update((b) => ({ ...b, headline: { ...b.headline, closer: id } }))} />
+              </div>
+              {board.headline.opener && board.headline.middle && board.headline.closer && (
+                <div className="rise" style={{ marginTop: 16, background: "var(--deep)", color: "var(--on-deep)", borderRadius: "var(--r-lg)", padding: "16px 18px" }}>
+                  <p style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--gold)", marginBottom: 8 }}>What you will say</p>
+                  <p className="serif" style={{ fontSize: 19, lineHeight: 1.4 }}>{headlineText(board)}</p>
+                </div>
+              )}
             </Card>
 
             {brain.asked > 0 && (
@@ -90,7 +96,7 @@ export function Memo({ board, update }: { board: Board; update: (fn: (b: Board) 
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {!locked && (
                 <Button wide disabled={problems.length > 0} onClick={() => update((b) => ({ ...b, lockedAt: new Date().toISOString() }))}>
-                  {problems.length > 0 ? `${problems.length} thing${problems.length === 1 ? "" : "s"} left before you can lock` : "Lock it and show Meera"}
+                  {problems.length > 0 ? `${problems.length} thing${problems.length === 1 ? "" : "s"} left before you can lock` : "Lock it and show Cutesh"}
                 </Button>
               )}
               <div style={{ display: "flex", gap: 10 }}>
@@ -127,7 +133,7 @@ export function Close({ board, update }: { board: Board; update: (fn: (b: Board)
 
   return (
     <>
-      <Briefing speakerId="meera">
+      <Briefing speakerId="cutesh">
         “That is ninety days. Whatever happens to Bharat Bites next, the habit you just practised is yours — look at the work, decide what should change, and know who stays accountable.”
       </Briefing>
       <Page>
@@ -165,18 +171,12 @@ export function Close({ board, update }: { board: Board; update: (fn: (b: Board)
           <Eyebrow tone="var(--gold-ink)">Thirty-day commitment</Eyebrow>
           <p style={{ fontSize: 15, color: "var(--ink-3)", margin: "8px 0 16px" }}>{COMMITMENT_PROMPT}</p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))", gap: 12 }}>
-            <label>
-              <span style={{ fontSize: 13.5, fontWeight: 600, color: "var(--ink-3)", display: "block", marginBottom: 6 }}>I will use AI to improve…</span>
-              <textarea className="field" rows={2} value={board.commitment.what}
-                onChange={(e) => update((b) => ({ ...b, commitment: { ...b.commitment, what: e.target.value } }))}
-                placeholder="the weekly numbers I currently rebuild by hand" />
-            </label>
-            <label>
-              <span style={{ fontSize: 13.5, fontWeight: 600, color: "var(--ink-3)", display: "block", marginBottom: 6 }}>The evidence it worked will be…</span>
-              <textarea className="field" rows={2} value={board.commitment.evidence}
-                onChange={(e) => update((b) => ({ ...b, commitment: { ...b.commitment, evidence: e.target.value } }))}
-                placeholder="Monday's summary is ready before nine without me touching it" />
-            </label>
+            <Choose label="I will use AI to improve…" options={COMMITMENT_TARGETS} showQuality={false}
+              value={board.commitment.target}
+              onPick={(id) => update((b) => ({ ...b, commitment: { ...b.commitment, target: id } }))} />
+            <Choose label="The evidence it worked will be…" options={COMMITMENT_EVIDENCE} showQuality={false}
+              value={board.commitment.evidence}
+              onPick={(id) => update((b) => ({ ...b, commitment: { ...b.commitment, evidence: id } }))} />
           </div>
         </Card>
 

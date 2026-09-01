@@ -12,6 +12,7 @@ import { Plan } from "./plan";
 import { Constraint, Fault } from "./events";
 import { Memo, Close } from "./finish";
 import { Ballot } from "./ballot";
+import { Rescue } from "./rescue";
 import { Card, Eyebrow } from "@/components/ui";
 
 export function Game() {
@@ -77,6 +78,7 @@ function Playing({ identity }: { identity: Identity }) {
       {active === "plan" && <Plan board={board} />}
       {active === "constraint" && <Constraint board={board} update={update} />}
       {active === "fault" && <Fault board={board} update={update} />}
+      {active === "review" && <Rescue board={board} />}
       {active === "memo" && <Memo board={board} update={update} />}
       {(active === "pitch" || active === "vote") && <Ballot identity={identity} phase={active} />}
       {active === "debrief" && <LookUp phase={active} />}
@@ -138,7 +140,7 @@ function LookUp({ phase }: { phase: PhaseId }) {
 function Move({ here, allowed, free, onPick }: {
   here: PhaseId; allowed: (p: PhaseId) => boolean; free: boolean; onPick: (p: PhaseId) => void;
 }) {
-  const options: PhaseId[] = ["walk", "brain", "plan", "constraint", "fault", "memo", "close"];
+  const options: PhaseId[] = ["walk", "brain", "plan", "constraint", "fault", "review", "memo", "close"];
   const open = options.filter(allowed);
   if (open.length < 2) return null;
   const next = nextPhase(here);

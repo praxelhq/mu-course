@@ -21,7 +21,7 @@ export type BrainReport = {
   asked: number;
   right: number;
   harmful: number;
-  /// Question ids whose answer would embarrass the student in front of Meera.
+  /// Question ids whose answer would embarrass the student in front of Cutesh.
   harmfulIds: string[];
 };
 

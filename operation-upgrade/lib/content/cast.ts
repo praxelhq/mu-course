@@ -14,12 +14,20 @@ export type Person = {
 
 export const CAST: readonly Person[] = [
   {
-    id: "meera",
-    name: "Meera Iyer",
-    initials: "MI",
+    id: "cutesh",
+    name: "Cutesh Ramanohan",
+    initials: "CR",
     role: "Founder and Managing Director",
     note: "Started the business with one counter in Coimbatore in 2011. Reads four of the eleven reports.",
     comfortableLoad: 1,
+  },
+  {
+    id: "mariga",
+    name: "Mariga Economova",
+    initials: "ME",
+    role: "Turnaround consultant",
+    note: "Brought in by the board when a transformation is in trouble. Has done this at eleven companies and is not here to be polite.",
+    comfortableLoad: 3,
   },
   {
     id: "arun",
@@ -75,7 +83,7 @@ export const COMPANY = {
   days: 90,
 } as const;
 
-/// Meera's note, sent at 6:48 on a Tuesday morning. This is the first thing a
+/// Cutesh's note, sent at 6:48 on a Tuesday morning. This is the first thing a
 /// student reads, and it has to do all the briefing work on its own.
 export const OPENING_LETTER: readonly string[] = [
   "I started this business with one counter and a pressure cooker. We are now twenty-five outlets across five cities and four hundred and fifty people, and I will be honest with you: we have got slower as we have got bigger.",
@@ -84,9 +92,28 @@ export const OPENING_LETTER: readonly string[] = [
   "Go and look at the seven places where we hurt. Then come back and tell me what you are going to fix, what you are deliberately leaving broken, and why.",
 ];
 
+/// The company, before anybody asks you to change it. A student who does not
+/// know what Bharat Bites actually is cannot judge whether a fix is worth ₹9L.
+export const COMPANY_STORY = {
+  what: "Bharat Bites sells South Indian food — dosa, biryani, thalis and a packaged range that now sits in supermarkets across five states.",
+  arc: [
+    { year: "2011", text: "One counter in Coimbatore, run by Cutesh Ramanohan and two cooks." },
+    { year: "2017", text: "Nine outlets and the first central kitchen. Everything still decided in one WhatsApp group." },
+    { year: "2023", text: "Packaged range launches. Head office grows to forty people." },
+    { year: "Today", text: "Twenty-five outlets, five cities, four hundred and fifty people — and answers that used to take a minute now take a day." },
+  ],
+  numbers: [
+    { v: "25", k: "outlets", sub: "Bengaluru, Chennai, Coimbatore, Hyderabad, Kochi" },
+    { v: "450", k: "people", sub: "stores, kitchens, central operations, head office" },
+    { v: "120", k: "documents", sub: "SOPs, menus, policies — three versions of some" },
+    { v: "22", k: "calls a day", sub: "to one person, asking what is written down" },
+  ],
+  symptom: "Nothing here is broken in a way you could point at. It is slower than it was at nine outlets, and nobody can say exactly where the time goes.",
+} as const;
+
 export type Rule = { n: number; text: string; tone: "human" | "flow" | "ai" | "plain" | "gold" };
 
-export const MEERA_RULES: readonly Rule[] = [
+export const FOUNDER_RULES: readonly Rule[] = [
   { n: 1, text: "Whatever you build, one person's name is on it. I want to know who I am calling when it is wrong.", tone: "human" },
   { n: 2, text: "Nobody loses their job because of this. If your plan needs that, bring me a different plan.", tone: "flow" },
   { n: 3, text: "Our customers' details and our people's details never go into anything public. That one is not a discussion.", tone: "ai" },

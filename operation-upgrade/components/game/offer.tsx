@@ -1,6 +1,6 @@
 "use client";
 
-import { COMPANY, MEERA_RULES, OPENING_LETTER } from "@/lib/content/cast";
+import { COMPANY, COMPANY_STORY, FOUNDER_RULES, OPENING_LETTER } from "@/lib/content/cast";
 import { Avatar, Button, Card, Eyebrow } from "@/components/ui";
 
 const RULE_TONE: Record<string, { bg: string; fg: string }> = {
@@ -14,26 +14,49 @@ const RULE_TONE: Record<string, { bg: string; fg: string }> = {
 export function Offer({ onStart }: { onStart: () => void }) {
   return (
     <div>
-      <div style={{ background: "var(--deep)", color: "var(--on-deep)", padding: "clamp(36px, 6vw, 64px) clamp(16px, 3vw, 32px) clamp(80px, 9vw, 108px)", position: "relative", overflow: "hidden" }}>
+      {/* the company, before anybody asks you to change it */}
+      <div style={{ background: "var(--deep)", color: "var(--on-deep)", padding: "clamp(36px, 6vw, 60px) clamp(16px, 3vw, 32px) clamp(80px, 9vw, 108px)", position: "relative", overflow: "hidden" }}>
         <div aria-hidden style={{ position: "absolute", right: -140, top: -180, width: 620, height: 620, borderRadius: 999, background: "var(--deep-2)" }} />
         <div aria-hidden style={{ position: "absolute", right: 70, top: -70, width: 340, height: 340, borderRadius: 999, background: "var(--deep-3)" }} />
         <div style={{ position: "relative", maxWidth: 1180, margin: "0 auto" }}>
-          <Eyebrow tone="var(--gold)">Day zero</Eyebrow>
-          <h1 className="serif" style={{ fontSize: "clamp(40px, 7vw, 70px)", lineHeight: 1.02, letterSpacing: "-.018em", margin: "14px 0 18px", color: "var(--on-deep)" }}>
-            Meera Iyer would like to<br />hire you for ninety days.
+          <Eyebrow tone="var(--gold)">The company</Eyebrow>
+          <h1 className="serif" style={{ fontSize: "clamp(38px, 6.5vw, 66px)", lineHeight: 1.02, letterSpacing: "-.018em", margin: "14px 0 16px", color: "var(--on-deep)" }}>
+            Bharat Bites feeds five cities<br />and cannot find its own paperwork.
           </h1>
-          <p style={{ fontSize: 18.5, lineHeight: 1.55, color: "var(--on-deep-2)", maxWidth: 640 }}>
-            She runs a food business that has grown faster than the way it works. She has read enough about AI to be curious and enough to be wary, and she is not going to tell you what to build.
+          <p style={{ fontSize: 18.5, lineHeight: 1.55, color: "var(--on-deep-2)", maxWidth: 660 }}>{COMPANY_STORY.what}</p>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 190px), 1fr))", gap: 14, margin: "34px 0 30px" }}>
+            {COMPANY_STORY.numbers.map((n) => (
+              <div key={n.k} style={{ background: "var(--deep-2)", borderRadius: "var(--r-lg)", padding: "18px 20px" }}>
+                <div className="display num" style={{ fontSize: 36, fontWeight: 700, letterSpacing: "-.03em", lineHeight: 1, color: "var(--gold)" }}>{n.v}</div>
+                <div style={{ fontSize: 14.5, fontWeight: 600, marginTop: 8 }}>{n.k}</div>
+                <div style={{ fontSize: 12.5, color: "var(--on-deep-3)", marginTop: 4, lineHeight: 1.4 }}>{n.sub}</div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ display: "flex", gap: 0, flexWrap: "wrap", borderTop: "1px solid var(--deep-3)", paddingTop: 22 }}>
+            {COMPANY_STORY.arc.map((a, i) => (
+              <div key={a.year} style={{ flex: "1 1 190px", paddingRight: 20, borderRight: i < COMPANY_STORY.arc.length - 1 ? "1px solid var(--deep-3)" : "none", paddingLeft: i === 0 ? 0 : 20 }}>
+                <div className="display num" style={{ fontSize: 14, fontWeight: 700, color: "var(--gold)", marginBottom: 6 }}>{a.year}</div>
+                <p style={{ fontSize: 13.5, lineHeight: 1.5, color: "var(--on-deep-2)" }}>{a.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <p style={{ fontSize: 16.5, lineHeight: 1.6, color: "var(--on-deep)", maxWidth: 660, marginTop: 26, paddingLeft: 16, borderLeft: "3px solid var(--gold)" }}>
+            {COMPANY_STORY.symptom}
           </p>
         </div>
       </div>
 
       <div style={{ maxWidth: 1180, margin: "-64px auto 0", padding: "0 clamp(16px, 3vw, 32px) 80px", display: "grid", gridTemplateColumns: "minmax(0, 1.35fr) minmax(0, 1fr)", gap: 26, alignItems: "start" }} className="rise">
         <Card style={{ padding: "clamp(24px, 3vw, 40px)", boxShadow: "var(--lift-3)", borderRadius: "var(--r-xl)" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 15, marginBottom: 26 }}>
-            <Avatar id="meera" size={56} />
+          <Eyebrow>The brief</Eyebrow>
+          <div style={{ display: "flex", alignItems: "center", gap: 15, margin: "12px 0 26px" }}>
+            <Avatar id="cutesh" size={56} />
             <div>
-              <div className="display" style={{ fontSize: 19, fontWeight: 700 }}>Meera Iyer</div>
+              <div className="display" style={{ fontSize: 19, fontWeight: 700 }}>Cutesh Ramanohan</div>
               <div style={{ fontSize: 14, color: "var(--ink-4)" }}>Founder and Managing Director</div>
             </div>
           </div>
@@ -46,7 +69,7 @@ export function Offer({ onStart }: { onStart: () => void }) {
 
           <div style={{ marginTop: 30, display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 22, flexWrap: "wrap" }}>
             <div>
-              <div className="serif" style={{ fontSize: 34, fontStyle: "italic", color: "var(--human)", lineHeight: 1 }}>Meera</div>
+              <div className="serif" style={{ fontSize: 34, fontStyle: "italic", color: "var(--human)", lineHeight: 1 }}>Cutesh</div>
               <div style={{ fontSize: 13, color: "var(--ink-5)", marginTop: 8 }}>Sent from her phone, 6:48 on a Tuesday morning</div>
             </div>
             <Button onClick={onStart}>Take the job →</Button>
@@ -69,7 +92,7 @@ export function Offer({ onStart }: { onStart: () => void }) {
             <h2 className="display" style={{ fontSize: 17.5, fontWeight: 700 }}>The five things she will not bend on</h2>
             <p style={{ fontSize: 13.5, color: "var(--ink-4)", margin: "6px 0 18px" }}>She said each of these out loud, twice.</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
-              {MEERA_RULES.map((rule) => {
+              {FOUNDER_RULES.map((rule) => {
                 const tone = RULE_TONE[rule.tone];
                 return (
                   <div key={rule.n} style={{ display: "flex", gap: 13, alignItems: "flex-start" }}>

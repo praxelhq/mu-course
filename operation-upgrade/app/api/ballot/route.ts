@@ -1,6 +1,6 @@
 import { prisma, hasDatabase } from "@/lib/db";
 import { ensureRoom } from "@/lib/rooms";
-import { planShape } from "@/lib/engine/memo";
+import { planShape, headlineText } from "@/lib/engine/memo";
 import type { Board } from "@/lib/engine/types";
 
 export const dynamic = "force-dynamic";
@@ -31,8 +31,8 @@ export async function GET(req: Request) {
       const board = p.board as unknown as Board;
       return {
         handle: p.handle,
-        headline: board?.headline ?? "",
-        shape: board?.v === 1 ? planShape(board) : { hire: 0, build: 0, redesign: 0 },
+        headline: board?.v === 2 ? headlineText(board) : "",
+        shape: board?.v === 2 ? planShape(board) : { hire: 0, build: 0, redesign: 0 },
       };
     }),
   }, { headers: { "Cache-Control": "no-store" } });

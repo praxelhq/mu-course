@@ -28,7 +28,7 @@ A hundred and twenty files, three versions of the allergen guide, no owner on an
 
 **A second operations manager.** Somebody else who knows the answers, so Arun is not the only one holding five cities together. You recruit and train a second operations manager to share the load. The calls still come, but they get answered by somebody who genuinely knows the business.
 
-*What Meera will say:* Fourteen lakh a year, every year, and in ten weeks you will have two people holding the knowledge in their heads instead of one. It is the safest thing you can do and it does not fix the underlying problem: the documents are still wrong.
+*What Cutesh will say:* Fourteen lakh a year, every year, and in ten weeks you will have two people holding the knowledge in their heads instead of one. It is the safest thing you can do and it does not fix the underlying problem: the documents are still wrong.
 
 **A company brain that reads your own documents.** Ask it a question in plain language, it finds the answer in your files and shows you the line it came from. You index the company's documents so anyone can ask a question and get an answer with a citation. Fast to stand up, and it reaches all twenty-five outlets on the same day.
 
@@ -65,7 +65,7 @@ Forty-one calls went unanswered last week during the lunch rush. Nine of them we
 
 **Two people on a shared phone line.** One number for all twenty-five outlets, answered by humans through the two rush hours. Calls that outlets cannot pick up roll to a small central desk. A person takes the catering details properly and routes anything unusual to the right store.
 
-*What Meera will say:* This works from the first day and it never says anything stupid to a customer. It also caps out — two people cannot cover five cities at dinner, and you are paying for it every year.
+*What Cutesh will say:* This works from the first day and it never says anything stupid to a customer. It also caps out — two people cannot cover five cities at dinner, and you are paying for it every year.
 
 **A voice agent for the questions people always ask.** It answers hours, menu, allergens and catering rates, takes lead details, and hands everything else to a person. Unanswered calls reach an agent that can answer the twenty questions people actually ask, capture a catering enquiry properly, and route the rest to a named human.
 
@@ -90,7 +90,7 @@ Every outlet asks head office for festival posts, local offers and replies to pu
 **From the operations group**
 
 > **Sneha Varma**, 10:15 am — “I have nineteen post requests open and Diwali is in three weeks.”
-> **Meera Iyer**, 10:31 am — “Which ones actually need you?”
+> **Cutesh Ramanohan**, 10:31 am — “Which ones actually need you?”
 > **Sneha Varma**, 10:33 am — “Honestly? Four. The rest are the same three formats with a different city name.”
 
 | Your options | Costs a year | Starts helping | Risk |
@@ -102,7 +102,7 @@ Every outlet asks head office for festival posts, local offers and replies to pu
 
 **A junior brand executive.** A third pair of hands so the queue moves, reporting to Sneha. Somebody junior takes the routine requests and Sneha keeps the ones that need judgement. The queue clears in about a day instead of six.
 
-*What Meera will say:* It works, and in eighteen months you will have three people holding the brand instead of two, with the same bottleneck one level up.
+*What Cutesh will say:* It works, and in eighteen months you will have three people holding the brand instead of two, with the same bottleneck one level up.
 
 **Approved templates the outlets run themselves.** A small set of instructions with the brand rules built in, so a store manager can produce a local offer that is already on-brand. Sneha writes the brand rules down once, into a handful of reusable instructions. Outlets generate their own posts and review replies; Sneha approves before anything is published.
 
@@ -125,7 +125,7 @@ Applications arrive four different ways and nobody agrees what a good store mana
 **From the operations group**
 
 > **Rahul Desai**, 9:02 am — “I have 140 CVs for Whitefield and no way to compare them.”
-> **Meera Iyer**, 9:20 am — “What are you actually looking for?”
+> **Cutesh Ramanohan**, 9:20 am — “What are you actually looking for?”
 > **Rahul Desai**, 9:24 am — “Someone who has run more than one outlet. It is not on most CVs in a way I can search.”
 
 | Your options | Costs a year | Starts helping | Risk |
@@ -137,7 +137,7 @@ Applications arrive four different ways and nobody agrees what a good store mana
 
 **A third recruiter.** More capacity against the same process. A third person joins the team and the backlog moves. Nothing about how a shortlist gets made changes.
 
-*What Meera will say:* Eight lakh a year to do more of something that is not consistent. If two recruiters disagree about what good looks like, three will disagree more.
+*What Cutesh will say:* Eight lakh a year to do more of something that is not consistent. If two recruiters disagree about what good looks like, three will disagree more.
 
 **Evidence sheets built from public information.** For each candidate, the specific things you asked about — multi-outlet experience, food service, opening a site — with a source next to each. You define what the role actually needs, then assemble a structured sheet per candidate from public professional information. Evidence, inference and missing information stay in separate columns. A human still picks.
 
@@ -145,7 +145,7 @@ Applications arrive four different ways and nobody agrees what a good store mana
 
 **One form, one scorecard, one weekly meeting.** Every application arrives the same way, gets scored against the same four things, and is decided in one meeting a week. You collapse four intake routes into one form, agree the four things that actually predict a good store manager, and make shortlisting a scheduled decision rather than a background task.
 
-*Do this first, whatever else you do:* Without an agreed definition of good, nothing downstream can help you. This is the cheapest way to find out that Rahul and Meera are looking for different people.
+*Do this first, whatever else you do:* Without an agreed definition of good, nothing downstream can help you. This is the cheapest way to find out that Rahul and Cutesh are looking for different people.
 
 ## E. Website changes over WhatsApp
 
@@ -172,7 +172,7 @@ The agency edits the site from messages. Wrong prices stayed live for four days 
 
 **Bring the website in-house.** Stop paying the agency and put the work with somebody who sits in the building. You end the agency retainer and hire someone to own the site. Changes get made by a person you can walk over to.
 
-*What Meera will say:* Eleven lakh a year and twelve weeks, to fix a problem that is not really about who holds the keyboard. Nobody wrote down who approved that price either way.
+*What Cutesh will say:* Eleven lakh a year and twelve weeks, to fix a problem that is not really about who holds the keyboard. Nobody wrote down who approved that price either way.
 
 **A change log every request goes through.** Every website change becomes a written request with a named approver, and nothing ships without one. Requests stop being WhatsApp messages and become tracked items: who asked, what changed, who approved, when it went live. The agency works from the list.
 
@@ -207,7 +207,7 @@ Head office spends three hours a day turning twenty-five spreadsheets into one.
 
 **An operations analyst.** Somebody whose actual job is the consolidation, so Sunita gets her mornings back. A person does the retyping properly and on time, and starts noticing patterns because they see it every day.
 
-*What Meera will say:* Six lakh a year to keep doing the thing by hand, faster. The six outlets that do not file still will not file.
+*What Cutesh will say:* Six lakh a year to keep doing the thing by hand, faster. The six outlets that do not file still will not file.
 
 **Automatic intake and consolidation.** Outlets file into one form, it validates and consolidates itself, and an exception list lands at 8am. The daily numbers arrive in one shape, get checked as they come in, and produce a short exception list that a human reads before acting.
 
@@ -226,14 +226,14 @@ Management gets more paper every month and still cannot answer the same six ques
 **What it costs this week**
 
 - 11 — recurring reports produced every month
-- 4 — of them that Meera actually reads
+- 4 — of them that Cutesh actually reads
 - 6 — questions the board asks every quarter that still take a week to answer
 
 **From the operations group**
 
-> **Meera Iyer**, 4:10 pm — “Why does the city margin number differ between two of these reports?”
+> **Cutesh Ramanohan**, 4:10 pm — “Why does the city margin number differ between two of these reports?”
 > **Sunita Menon**, 4:31 pm — “Different definitions of margin. Both are correct.”
-> **Meera Iyer**, 4:33 pm — “Then neither is useful. Which one do I take to the board?”
+> **Cutesh Ramanohan**, 4:33 pm — “Then neither is useful. Which one do I take to the board?”
 
 | Your options | Costs a year | Starts helping | Risk |
 | --- | ---: | --- | --- |
@@ -244,7 +244,7 @@ Management gets more paper every month and still cannot answer the same six ques
 
 **A business analyst.** Somebody senior enough to be trusted with the numbers and the definitions. A person owns the numbers, agrees the definitions, and answers management questions properly.
 
-*What Meera will say:* Ten lakh a year is the most expensive option on this page for the problem that is hurting us least. Is this really where the money goes?
+*What Cutesh will say:* Ten lakh a year is the most expensive option on this page for the problem that is hurting us least. Is this really where the money goes?
 
 **Six questions, answered the same way every week.** The six recurring questions get one agreed definition each and a script that answers them from the same source. You settle what margin means, write it once, and produce one short decision memo a week rather than eleven reports a month.
 
@@ -254,7 +254,7 @@ Management gets more paper every month and still cannot answer the same six ques
 
 *Free, and live in week one:* Not every improvement is something you add. This is the cheapest, fastest item in the whole simulation, and it is the one most people scroll straight past.
 
-## Two things Meera adds to your bill
+## Two things Cutesh adds to your bill
 
 **Somebody tests what these systems say** — ₹4L a year, from week 5. Triggered by: two or more ai systems.
 
@@ -262,5 +262,5 @@ You are building more than one AI system, so somebody writes down the hard quest
 
 **Teach the team what they can and cannot put in** — ₹4L a year, from week 4. Triggered by: anything touching customer or candidate details.
 
-Something you have chosen will handle personal details. Meera's third rule does not enforce itself — somebody has to sit with the store managers and explain, with examples, what must never be pasted into a public tool.
+Something you have chosen will handle personal details. Cutesh's third rule does not enforce itself — somebody has to sit with the store managers and explain, with examples, what must never be pasted into a public tool.
 

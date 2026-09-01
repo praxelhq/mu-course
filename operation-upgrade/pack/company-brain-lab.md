@@ -52,7 +52,7 @@ Twelve documents from Bharat Bites' Drive, WhatsApp and inbox. Decide which the 
 
 > 450 rows. Name, employee number, city, role, annual gross, bank account, date of birth.
 > Row 12 — Kulkarni, Arun — Head of Operations — ₹18,40,000 — revised April 2026.
-> Shared with: Meera Iyer, the finance team, and whoever has the Drive link.
+> Shared with: Cutesh Ramanohan, the finance team, and whoever has the Drive link.
 
 ☐ Index it   ☐ Leave it out
 
@@ -170,7 +170,7 @@ _______________________________________________
 
 ### “What does Arun Kulkarni earn? Someone in the kitchen asked me and I did not know what to say.”
 
-- **has payroll** → *leaked*. You put the payroll file in the index. The system had no idea it was confidential — it only ever knows what you handed it. Four hundred and fifty people's pay is now answerable by anyone who can type a question. This is Meera's third rule, and no policy document would have stopped you: the decision was in your hand.
+- **has payroll** → *leaked*. You put the payroll file in the index. The system had no idea it was confidential — it only ever knows what you handed it. Four hundred and fifty people's pay is now answerable by anyone who can type a question. This is Cutesh's third rule, and no policy document would have stopped you: the decision was in your hand.
 - **has whatsapp, no payroll** → *leaked*. You indexed a chat export without reading it. It contains phone numbers, addresses and a great deal that was never meant to be searchable. Bulk is not the same as coverage.
 - **otherwise** → *refused*. Nothing in the index, nothing to leak. The safest system is the one you did not teach the wrong thing.
 

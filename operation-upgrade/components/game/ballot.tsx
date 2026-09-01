@@ -51,7 +51,7 @@ export function Ballot({ identity, phase }: { identity: Identity; phase: PhaseId
 
   return (
     <>
-      <Briefing speakerId="meera">
+      <Briefing speakerId="cutesh">
         {voting
           ? "“One vote each. Not the cleverest plan — the one you would actually put the company's money behind on Monday morning. You cannot fund your own.”"
           : "“Four of you are taking the floor. Seventy-five seconds each. Listen for the one you would fund, because I am going to ask you in a minute.”"}

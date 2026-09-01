@@ -27,7 +27,7 @@ export type Constraint = {
 export const CONSTRAINTS: readonly Constraint[] = [
   {
     id: "budget-cut",
-    fromId: "meera",
+    fromId: "cutesh",
     title: "The board has taken twelve lakh back",
     body: "“Two of our leases came up for renewal in Pune and the landlord did not blink. I am not going to dress this up — you have twenty-eight lakh a year now, not forty. Same ninety days.”",
     effect: { kind: "budget", lakh: 28 },
@@ -43,7 +43,7 @@ export const CONSTRAINTS: readonly Constraint[] = [
   },
   {
     id: "legal-ban",
-    fromId: "meera",
+    fromId: "cutesh",
     title: "Legal has ruled on customer data",
     body: "“No customer record goes into anything we do not control. Not names, not numbers, not order history. I know that makes your life harder. It also means I can sleep.”",
     effect: { kind: "ban-approach", problemId: "calls", approach: "build" },
@@ -51,7 +51,7 @@ export const CONSTRAINTS: readonly Constraint[] = [
   },
   {
     id: "thirty-days",
-    fromId: "meera",
+    fromId: "cutesh",
     title: "The board wants to see something in thirty days",
     body: "“They have asked for an interim update. I need one real thing working by day thirty — not a plan for a thing, a thing. Otherwise this whole programme gets a harder look than it deserves.”",
     effect: { kind: "require-early", byWeek: 4 },
@@ -67,7 +67,7 @@ export const CONSTRAINTS: readonly Constraint[] = [
   },
   {
     id: "one-vendor",
-    fromId: "meera",
+    fromId: "cutesh",
     title: "Procurement will approve one new supplier",
     body: "“Finance has been burned by subscriptions nobody cancels. One new paid vendor this year. Everything else uses what we already own or costs nothing.”",
     effect: { kind: "max-builds", n: 1 },
@@ -87,7 +87,7 @@ export const CONSTRAINTS: readonly Constraint[] = [
     title: "People think this is about redundancies",
     body: "“There is a message going round the managers' group saying the AI project is how head office plans to cut staff. Two of them have stopped answering my questions. I need you to know that before you go any further.”",
     effect: { kind: "require-obligation", obligationId: "training" },
-    ask: "Meera's second rule is now the whole problem. You have to buy the training and adoption work, and you have to say what you will tell the managers.",
+    ask: "Cutesh's second rule is now the whole problem. You have to buy the training and adoption work, and you have to say what you will tell the managers.",
   },
 ];
 
@@ -108,6 +108,12 @@ export type Fault = {
   preventedBy: string;
   /// Which taught idea this fault is really about.
   teaches: string;
+  /// The chain, reconstructed. Students see exactly what happened before they
+  /// are asked to explain it — a failure you cannot see is a failure you
+  /// argue about rather than learn from.
+  trace: readonly { label: string; value: string; bad?: boolean }[];
+  /// What it cost, stated plainly.
+  toll: string;
 };
 
 export const FAULTS: readonly Fault[] = [
@@ -122,6 +128,15 @@ export const FAULTS: readonly Fault[] = [
     preventedBy:
       "Retiring superseded documents at the point of indexing, an owner and a review date on every file that survives, and an evaluation set containing the allergen questions specifically, run before anyone was told to trust it.",
     teaches: "A citation is not a correctness guarantee. It is a pointer to whatever was in the pile.",
+    trace: [
+      { label: "What Priya asked", value: "“Does the paneer kathi roll contain nuts? A guest is asking me right now.”" },
+      { label: "What your assistant answered", value: "“No, the paneer kathi roll does not contain nuts. It is suitable for guests with a nut allergy.”", bad: true },
+      { label: "The document it cited", value: "Menu and allergen guide — Google Drive, last edited November 2024" },
+      { label: "The line it quoted", value: "“Paneer kathi roll — no nut content. Suitable for guests with nut allergies.”" },
+      { label: "What was also in your index", value: "Menu and allergen guide — updated March 2026: “contains cashew (marinade, changed June 2025)”", bad: true },
+      { label: "The decision that caused it", value: "You indexed both versions. Nothing told it which one was current." },
+    ],
+    toll: "A guest was served a dish containing cashew after being told it was safe. She is going to be fine. Priya used the system exactly as you designed it.",
   },
   {
     id: "salary",
@@ -134,6 +149,14 @@ export const FAULTS: readonly Fault[] = [
     preventedBy:
       "Deciding what goes into the index one document at a time rather than by folder, and a rule that anything containing personal data is excluded before indexing rather than filtered afterwards.",
     teaches: "There is no such thing as private data inside a corpus you chose to index.",
+    trace: [
+      { label: "What was asked", value: "“What does Arun Kulkarni earn?”" },
+      { label: "What your assistant answered", value: "“Arun Kulkarni's annual salary is ₹18,40,000, revised in April 2026.”", bad: true },
+      { label: "The document it cited", value: "Payroll master, all staff — Google Sheets, 450 rows" },
+      { label: "Who could ask this", value: "Anybody with access to the assistant. There was no restriction, because you never set one." },
+      { label: "The decision that caused it", value: "You indexed the operations folder. The payroll file was in the operations folder.", bad: true },
+    ],
+    toll: "Four hundred and fifty people's pay, bank details and dates of birth sit in a system that will answer questions about them. It has already been asked once.",
   },
   {
     id: "refund-promise",
@@ -146,6 +169,14 @@ export const FAULTS: readonly Fault[] = [
     preventedBy:
       "An explicit list of what the agent may do — answer, capture details, route — with anything that commits money or makes a promise handed to a named human, and a sample of calls reviewed weekly by somebody who would notice.",
     teaches: "An agent's permissions are a design decision, not a consequence of what it knows.",
+    trace: [
+      { label: "What the caller said", value: "“My order on Saturday arrived cold and nobody has come back to me.”" },
+      { label: "What your agent said", value: "“I am very sorry about that — we will refund it today.”", bad: true },
+      { label: "What it was reading", value: "The refund and complaint policy, correctly. It knew the rule." },
+      { label: "What it was allowed to do", value: "Answer questions, capture lead details, route calls. Nothing about refunds.", },
+      { label: "The decision that caused it", value: "You gave it the policy to read and never wrote down what it was permitted to act on.", bad: true },
+    ],
+    toll: "A customer has a recording of Bharat Bites promising a refund that does not exist. She has called back twice. Sunita has to decide whether to honour it.",
   },
   {
     id: "copycat",
@@ -158,6 +189,14 @@ export const FAULTS: readonly Fault[] = [
     preventedBy:
       "The brand guide as the actual source for the instruction rather than a general sense of the category, and a human approval before anything reaches a public account — the same gate a person's draft would have gone through.",
     teaches: "A reusable skill with no approved context reproduces the average of its category.",
+    trace: [
+      { label: "What the outlet asked for", value: "“A Diwali post for Koramangala, mentioning the sweet box offer.”" },
+      { label: "What was published", value: "A post whose headline and layout are close to identical to Anna's Kitchen's current campaign.", bad: true },
+      { label: "What the instruction was grounded in", value: "A general sense of festival marketing. Not the brand guide, which was never referenced." },
+      { label: "Who approved it", value: "Nobody. It went from generation straight to a public account.", bad: true },
+      { label: "The decision that caused it", value: "You automated the drafting and removed the approval that a person's draft had always gone through." },
+    ],
+    toll: "Four hundred comments and counting on a competitor's post putting both side by side. Sneha is fielding it.",
   },
   {
     id: "shortlist-bias",
@@ -170,6 +209,14 @@ export const FAULTS: readonly Fault[] = [
     preventedBy:
       "Keeping evidence, inference and missing information in separate columns and never collapsing them into a score, plus somebody checking the shape of the shortlist against the shape of the applicant pool every round.",
     teaches: "Absence of evidence becomes evidence of absence the moment you sort by it.",
+    trace: [
+      { label: "What the sheet was asked for", value: "Evidence of multi-outlet, food-service and operations experience for each candidate." },
+      { label: "What came back for chain candidates", value: "Six or seven populated columns each — press coverage, listed roles, public profiles." },
+      { label: "What came back for single-outlet operators", value: "One or two columns. The rest read “not found”.", bad: true },
+      { label: "What happened next", value: "The sheet was sorted, and “not found” sorted like a low score.", bad: true },
+      { label: "The decision that caused it", value: "Evidence and missing information were allowed to sit in the same total." },
+    ],
+    toll: "Four rounds of shortlists. Rahul estimates nine strong single-outlet managers were ranked out without anybody reading their application.",
   },
   {
     id: "api-key",
@@ -182,11 +229,20 @@ export const FAULTS: readonly Fault[] = [
     preventedBy:
       "An automatic check for anything that looks like a credential before a change can be approved at all, so the control does not depend on a human being careful at 5pm on a Friday.",
     teaches: "A gate a person clicks through without reading is a gate in name only.",
+    trace: [
+      { label: "What the agency sent", value: "A configuration file for the new booking form." },
+      { label: "What was inside it", value: "The live payment gateway key, in plain text.", bad: true },
+      { label: "Who approved it", value: "Sunita, at 17:04 on a Friday." },
+      { label: "How long the review took", value: "Ninety seconds.", bad: true },
+      { label: "Who can read the change log", value: "Eleven people, plus the agency." },
+      { label: "The decision that caused it", value: "The gate was a person clicking a button, with nothing checking the contents." },
+    ],
+    toll: "The gateway has flagged the key as exposed. It has to be rotated, every integration using it re-pointed, and the window audited.",
   },
   {
     id: "missing-stores",
     from: "reporting:build",
-    reporterId: "meera",
+    reporterId: "cutesh",
     title: "I told the board wastage was down and it was not",
     body: "“I used your Monday summary in the board pack. Wastage down eleven percent across the company. It turns out six outlets did not file that week, and they are the six with the worst numbers. I have had to write to the board and correct it. Tell me how the summary did not mention that.”",
     whatFailed:
@@ -194,11 +250,20 @@ export const FAULTS: readonly Fault[] = [
     preventedBy:
       "A branch for missing data — the count of outlets that filed printed at the top of every summary, and the summary refusing to state a company-wide figure at all when the response rate is below a threshold.",
     teaches: "Trigger and action are the easy two. The branch people forget is the one for nothing arriving.",
+    trace: [
+      { label: "What the summary said", value: "“Wastage down 11% across the company, week ending Friday.”", bad: true },
+      { label: "How many outlets filed", value: "19 of 25." },
+      { label: "Which six did not", value: "The six with the worst wastage figures the previous month.", bad: true },
+      { label: "What the summary said about them", value: "Nothing. Silence and a good week look identical to it." },
+      { label: "Where the number went", value: "Into the board pack, under Cutesh's name." },
+      { label: "The decision that caused it", value: "You specified what to do with data that arrives, and never what to do about data that does not." },
+    ],
+    toll: "Cutesh has had to write to the board and correct a number he presented. He is not angry with you, which is worse.",
   },
   {
     id: "arun-leave",
     from: "*",
-    reporterId: "meera",
+    reporterId: "cutesh",
     title: "Arun is taking three weeks off, starting Monday",
     body: "“His father is unwell and he is going to Pune. He has not taken leave since March and I am not going to ask him to delay it. He tells me he is the named person on three of the things you built. Talk me through what happens on Tuesday.”",
     whatFailed:
@@ -206,6 +271,14 @@ export const FAULTS: readonly Fault[] = [
     preventedBy:
       "Spreading accountability while the systems were being designed rather than after, and treating 'who covers this when they are away' as part of naming an owner rather than a separate question nobody asked.",
     teaches: "A human gate is only a control if the human is actually available.",
+    trace: [
+      { label: "Systems Arun is named on", value: "Three of the four things you built." },
+      { label: "Systems anybody else is named on", value: "One." },
+      { label: "Cover arranged for his systems", value: "None. Nobody was asked.", bad: true },
+      { label: "Days of leave he has taken since March", value: "Zero." },
+      { label: "The decision that caused it", value: "Every gate was correct, and every gate was the same person.", bad: true },
+    ],
+    toll: "He leaves on Monday for three weeks. On Tuesday, three of your four systems have nobody who can answer for them.",
   },
 ];
 

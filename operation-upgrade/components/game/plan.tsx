@@ -17,19 +17,19 @@ export function Plan({ board }: { board: Board }) {
 
   const overloaded = Object.entries(load).find(([id, n]) => n > (PERSON.get(id)?.comfortableLoad ?? 1));
 
-  let meera: string;
-  if (over) meera = `“This is ${t.overBy} lakh more than the board approved. I cannot take that to them. Something comes out, and you tell me what.”`;
-  else if (t.chosenCount === 0) meera = "“You have not committed to anything yet. Go back and make some calls — I would rather you were wrong than undecided.”";
-  else if (t.buildCount >= 3) meera = `“${t.buildCount} new systems in ninety days, and one operations team to run all of them. Who is checking any of this on a Tuesday when you have gone?”`;
-  else if (t.earliestWeek !== null && t.earliestWeek > 5) meera = "“Nothing here helps anybody before week five. I have a board meeting on day ninety and nothing to show them in the meantime.”";
-  else if (overloaded) meera = `“${PERSON.get(overloaded[0])?.name} is the named person on ${overloaded[1]} of these. You do know that is the thing I hired you to fix?”`;
-  else meera = "“Show me the whole thing at once. What it costs a year, when it starts helping, and what you decided not to touch.”";
+  let cutesh: string;
+  if (over) cutesh = `“This is ${t.overBy} lakh more than the board approved. I cannot take that to them. Something comes out, and you tell me what.”`;
+  else if (t.chosenCount === 0) cutesh = "“You have not committed to anything yet. Go back and make some calls — I would rather you were wrong than undecided.”";
+  else if (t.buildCount >= 3) cutesh = `“${t.buildCount} new systems in ninety days, and one operations team to run all of them. Who is checking any of this on a Tuesday when you have gone?”`;
+  else if (t.earliestWeek !== null && t.earliestWeek > 5) cutesh = "“Nothing here helps anybody before week five. I have a board meeting on day ninety and nothing to show them in the meantime.”";
+  else if (overloaded) cutesh = `“${PERSON.get(overloaded[0])?.name} is the named person on ${overloaded[1]} of these. You do know that is the thing I hired you to fix?”`;
+  else cutesh = "“Show me the whole thing at once. What it costs a year, when it starts helping, and what you decided not to touch.”";
 
   const maxWeek = 13;
 
   return (
     <>
-      <Briefing speakerId="meera">{meera}</Briefing>
+      <Briefing speakerId="cutesh">{cutesh}</Briefing>
       <Page wide>
         <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1.1fr) minmax(0, 1fr)", gap: 18, alignItems: "start" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
@@ -89,7 +89,7 @@ export function Plan({ board }: { board: Board }) {
                   <span style={{ width: 4, height: 34, borderRadius: 999, background: "var(--gold)", flexShrink: 0 }} />
                   <div style={{ flexGrow: 1, minWidth: 0 }}>
                     <p style={{ fontSize: 14.5, fontWeight: 600, lineHeight: 1.3 }}>{o.title}</p>
-                    <p style={{ fontSize: 12.5, color: "var(--gold-ink)", marginTop: 2 }}>Meera requires this now — not optional</p>
+                    <p style={{ fontSize: 12.5, color: "var(--gold-ink)", marginTop: 2 }}>Cutesh requires this now — not optional</p>
                   </div>
                   <span className="display num" style={{ fontSize: 15, fontWeight: 700, width: 56, textAlign: "right", flexShrink: 0 }}>₹{o.costLakh}L</span>
                 </div>
@@ -102,7 +102,7 @@ export function Plan({ board }: { board: Board }) {
               <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 14, marginBottom: 16 }}>
                 <div>
                   <h2 className="display" style={{ fontSize: 17.5, fontWeight: 700 }}>When each one starts actually helping</h2>
-                  <p style={{ fontSize: 13.5, color: "var(--ink-4)", marginTop: 3 }}>Meera presents on day ninety. She would like something real before that.</p>
+                  <p style={{ fontSize: 13.5, color: "var(--ink-4)", marginTop: 3 }}>Cutesh presents on day ninety. She would like something real before that.</p>
                 </div>
                 <Pill fg={t.landsBefore(4) > 0 ? "var(--flow-ink)" : "var(--gold-ink)"} bg={t.landsBefore(4) > 0 ? "var(--flow-soft)" : "var(--gold-soft)"}>
                   {t.landsBefore(4) === 0 ? "Nothing lands by day 30" : `${t.landsBefore(4)} land${t.landsBefore(4) === 1 ? "s" : ""} by day 30`}

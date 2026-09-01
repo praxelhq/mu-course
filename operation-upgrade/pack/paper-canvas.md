@@ -104,7 +104,7 @@ _______________________________________________
 
 ## 7. Deliberately not fixing
 
-Which problem, and why? Meera will ask.
+Which problem, and why? Cutesh will ask.
 
 _______________________________________________
 

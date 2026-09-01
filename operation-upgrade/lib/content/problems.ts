@@ -50,7 +50,7 @@ export type Problem = {
 };
 
 const leaveNote =
-  "Nothing changes here. That is a legitimate answer if something else matters more — Meera's fifth rule is that you have to be able to say why.";
+  "Nothing changes here. That is a legitimate answer if something else matters more — Cutesh's fifth rule is that you have to be able to say why.";
 
 export const LEAVE_ALONE = { id: "none" as const, label: "Leave it", note: leaveNote };
 
@@ -81,7 +81,7 @@ export const PROBLEMS: readonly Problem[] = [
         body: "Somebody else who knows the answers, so Arun is not the only one holding five cities together.",
         costLakh: 14, liveWeek: 10, risk: "low",
         what: "You recruit and train a second operations manager to share the load. The calls still come, but they get answered by somebody who genuinely knows the business.",
-        noteHead: "What Meera will say",
+        noteHead: "What Cutesh will say",
         noteBody: "Fourteen lakh a year, every year, and in ten weeks you will have two people holding the knowledge in their heads instead of one. It is the safest thing you can do and it does not fix the underlying problem: the documents are still wrong.",
         faultIds: [],
       },
@@ -137,7 +137,7 @@ export const PROBLEMS: readonly Problem[] = [
         body: "One number for all twenty-five outlets, answered by humans through the two rush hours.",
         costLakh: 9, liveWeek: 6, risk: "low",
         what: "Calls that outlets cannot pick up roll to a small central desk. A person takes the catering details properly and routes anything unusual to the right store.",
-        noteHead: "What Meera will say",
+        noteHead: "What Cutesh will say",
         noteBody: "This works from the first day and it never says anything stupid to a customer. It also caps out — two people cannot cover five cities at dinner, and you are paying for it every year.",
         faultIds: [],
       },
@@ -183,7 +183,7 @@ export const PROBLEMS: readonly Problem[] = [
     ],
     thread: [
       { who: "sneha", text: "I have nineteen post requests open and Diwali is in three weeks.", at: "10:15 am" },
-      { who: "meera", text: "Which ones actually need you?", at: "10:31 am" },
+      { who: "cutesh", text: "Which ones actually need you?", at: "10:31 am" },
       { who: "sneha", text: "Honestly? Four. The rest are the same three formats with a different city name.", at: "10:33 am" },
     ],
     options: [
@@ -193,7 +193,7 @@ export const PROBLEMS: readonly Problem[] = [
         body: "A third pair of hands so the queue moves, reporting to Sneha.",
         costLakh: 7, liveWeek: 8, risk: "low",
         what: "Somebody junior takes the routine requests and Sneha keeps the ones that need judgement. The queue clears in about a day instead of six.",
-        noteHead: "What Meera will say",
+        noteHead: "What Cutesh will say",
         noteBody: "It works, and in eighteen months you will have three people holding the brand instead of two, with the same bottleneck one level up.",
         faultIds: [],
       },
@@ -234,7 +234,7 @@ export const PROBLEMS: readonly Problem[] = [
     ],
     thread: [
       { who: "rahul", text: "I have 140 CVs for Whitefield and no way to compare them.", at: "9:02 am" },
-      { who: "meera", text: "What are you actually looking for?", at: "9:20 am" },
+      { who: "cutesh", text: "What are you actually looking for?", at: "9:20 am" },
       { who: "rahul", text: "Someone who has run more than one outlet. It is not on most CVs in a way I can search.", at: "9:24 am" },
     ],
     options: [
@@ -244,7 +244,7 @@ export const PROBLEMS: readonly Problem[] = [
         body: "More capacity against the same process.",
         costLakh: 8, liveWeek: 9, risk: "low",
         what: "A third person joins the team and the backlog moves. Nothing about how a shortlist gets made changes.",
-        noteHead: "What Meera will say",
+        noteHead: "What Cutesh will say",
         noteBody: "Eight lakh a year to do more of something that is not consistent. If two recruiters disagree about what good looks like, three will disagree more.",
         faultIds: [],
       },
@@ -265,7 +265,7 @@ export const PROBLEMS: readonly Problem[] = [
         costLakh: 1, liveWeek: 3, risk: "low",
         what: "You collapse four intake routes into one form, agree the four things that actually predict a good store manager, and make shortlisting a scheduled decision rather than a background task.",
         noteHead: "Do this first, whatever else you do",
-        noteBody: "Without an agreed definition of good, nothing downstream can help you. This is the cheapest way to find out that Rahul and Meera are looking for different people.",
+        noteBody: "Without an agreed definition of good, nothing downstream can help you. This is the cheapest way to find out that Rahul and Cutesh are looking for different people.",
         faultIds: [],
       },
     ],
@@ -295,7 +295,7 @@ export const PROBLEMS: readonly Problem[] = [
         body: "Stop paying the agency and put the work with somebody who sits in the building.",
         costLakh: 11, liveWeek: 12, risk: "low",
         what: "You end the agency retainer and hire someone to own the site. Changes get made by a person you can walk over to.",
-        noteHead: "What Meera will say",
+        noteHead: "What Cutesh will say",
         noteBody: "Eleven lakh a year and twelve weeks, to fix a problem that is not really about who holds the keyboard. Nobody wrote down who approved that price either way.",
         faultIds: [],
       },
@@ -346,7 +346,7 @@ export const PROBLEMS: readonly Problem[] = [
         body: "Somebody whose actual job is the consolidation, so Sunita gets her mornings back.",
         costLakh: 6, liveWeek: 7, risk: "low",
         what: "A person does the retyping properly and on time, and starts noticing patterns because they see it every day.",
-        noteHead: "What Meera will say",
+        noteHead: "What Cutesh will say",
         noteBody: "Six lakh a year to keep doing the thing by hand, faster. The six outlets that do not file still will not file.",
         faultIds: [],
       },
@@ -382,18 +382,18 @@ export const PROBLEMS: readonly Problem[] = [
     area: "G",
     title: "Eleven reports, no answers",
     pain: "Management gets more paper every month and still cannot answer the same six questions.",
-    ownerId: "meera",
+    ownerId: "cutesh",
     severity: "coping",
     teaches: "Define the question before you reach for a tool. Sometimes the answer is subtraction.",
     facts: [
       { value: "11", text: "recurring reports produced every month", alarming: false },
-      { value: "4", text: "of them that Meera actually reads", alarming: true },
+      { value: "4", text: "of them that Cutesh actually reads", alarming: true },
       { value: "6", text: "questions the board asks every quarter that still take a week to answer", alarming: true },
     ],
     thread: [
-      { who: "meera", text: "Why does the city margin number differ between two of these reports?", at: "4:10 pm" },
+      { who: "cutesh", text: "Why does the city margin number differ between two of these reports?", at: "4:10 pm" },
       { who: "sunita", text: "Different definitions of margin. Both are correct.", at: "4:31 pm" },
-      { who: "meera", text: "Then neither is useful. Which one do I take to the board?", at: "4:33 pm" },
+      { who: "cutesh", text: "Then neither is useful. Which one do I take to the board?", at: "4:33 pm" },
     ],
     options: [
       {
@@ -402,7 +402,7 @@ export const PROBLEMS: readonly Problem[] = [
         body: "Somebody senior enough to be trusted with the numbers and the definitions.",
         costLakh: 10, liveWeek: 8, risk: "low",
         what: "A person owns the numbers, agrees the definitions, and answers management questions properly.",
-        noteHead: "What Meera will say",
+        noteHead: "What Cutesh will say",
         noteBody: "Ten lakh a year is the most expensive option on this page for the problem that is hurting us least. Is this really where the money goes?",
         faultIds: [],
       },
@@ -432,7 +432,7 @@ export const PROBLEMS: readonly Problem[] = [
 
 export const PROBLEM = new Map(PROBLEMS.map((p) => [p.id, p]));
 
-/// Two things Meera insists on once the plan reaches a certain shape. They are
+/// Two things Cutesh insists on once the plan reaches a certain shape. They are
 /// not options — they are consequences of what the student has already chosen.
 export type Obligation = {
   id: string;
@@ -465,7 +465,7 @@ export const OBLIGATIONS: readonly Obligation[] = [
     dormantText:
       "This becomes compulsory as soon as anything you build touches a customer's or a candidate's details.",
     activeText:
-      "Something you have chosen will handle personal details. Meera's third rule does not enforce itself — somebody has to sit with the store managers and explain, with examples, what must never be pasted into a public tool.",
+      "Something you have chosen will handle personal details. Cutesh's third rule does not enforce itself — somebody has to sit with the store managers and explain, with examples, what must never be pasted into a public tool.",
   },
 ];
 

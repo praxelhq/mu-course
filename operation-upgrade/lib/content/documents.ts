@@ -91,7 +91,7 @@ export const DOCUMENTS: readonly Doc[] = [
     excerpt: [
       "450 rows. Name, employee number, city, role, annual gross, bank account, date of birth.",
       "Row 12 — Kulkarni, Arun — Head of Operations — ₹18,40,000 — revised April 2026.",
-      "Shared with: Meera Iyer, the finance team, and whoever has the Drive link.",
+      "Shared with: Cutesh Ramanohan, the finance team, and whoever has the Drive link.",
     ],
   },
   {
@@ -314,7 +314,7 @@ export const QUESTIONS: readonly Question[] = [
         sourceId: "payroll",
         sourceLine: "Row 12 — Kulkarni, Arun — Head of Operations — ₹18,40,000 — revised April 2026.",
         lesson:
-          "You put the payroll file in the index. The system had no idea it was confidential — it only ever knows what you handed it. Four hundred and fifty people's pay is now answerable by anyone who can type a question. This is Meera's third rule, and no policy document would have stopped you: the decision was in your hand.",
+          "You put the payroll file in the index. The system had no idea it was confidential — it only ever knows what you handed it. Four hundred and fifty people's pay is now answerable by anyone who can type a question. This is Cutesh's third rule, and no policy document would have stopped you: the decision was in your hand.",
       },
       {
         requires: ["whatsapp"],

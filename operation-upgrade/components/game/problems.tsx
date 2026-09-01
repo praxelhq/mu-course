@@ -4,9 +4,10 @@ import { useState } from "react";
 import { CAST, PERSON } from "@/lib/content/cast";
 import { PROBLEMS, PROBLEM, type Approach, type Problem } from "@/lib/content/problems";
 import { resolveOption, changeCount, gateLoad, totals } from "@/lib/engine/economics";
-import { MIN_REASON_WORDS } from "@/lib/engine/validate";
+import { RATIONALES, LEAVING_REASONS } from "@/lib/content/choices";
+import { rationaleFit } from "@/lib/engine/score";
 import type { Board } from "@/lib/engine/types";
-import { Avatar, Button, Card, Eyebrow, Pill, TONE, WordCount } from "@/components/ui";
+import { Avatar, Button, Card, Choose, Eyebrow, Pill, TONE } from "@/components/ui";
 import { Briefing, Page } from "./shell";
 
 const SEVERITY: Record<string, { c: string; label: string }> = {
@@ -31,7 +32,7 @@ export function Problems({ board, update }: { board: Board; update: (fn: (b: Boa
   return (
     <>
       <Briefing
-        speakerId="meera"
+        speakerId="cutesh"
         pending={[
           { text: unread === 0 ? "You have read all seven" : `${unread} still unread`, done: unread === 0 },
           { text: `${changes} of four changes committed`, done: changes >= 3 && changes <= 4 },
@@ -116,7 +117,7 @@ export function Problems({ board, update }: { board: Board; update: (fn: (b: Boa
             <p style={{ fontSize: 12.5, color: "var(--on-deep-2)", marginTop: 10, lineHeight: 1.45 }}>
               {arunLoad >= 3
                 ? `You have now named Arun on ${arunLoad} of your changes. He was the problem you were hired to solve.`
-                : "He has not taken leave since March. Fix this and you have fixed what Meera actually hired you for."}
+                : "He has not taken leave since March. Fix this and you have fixed what Cutesh actually hired you for."}
             </p>
           </Card>
         </div>
@@ -131,7 +132,7 @@ function LeavingCard({ board, update }: { board: Board; update: (fn: (b: Board) 
   const untouched = PROBLEMS.filter((p) => (board.picks[p.id] ?? []).length === 0);
   return (
     <Card style={{ marginTop: 22, borderLeft: "4px solid var(--gold)" }}>
-      <Eyebrow tone="var(--gold-ink)">Meera&rsquo;s fifth rule</Eyebrow>
+      <Eyebrow tone="var(--gold-ink)">Cutesh&rsquo;s fifth rule</Eyebrow>
       <h2 className="display" style={{ fontSize: 18, fontWeight: 700, margin: "8px 0 4px" }}>
         Which one are you deliberately not fixing?
       </h2>
@@ -161,14 +162,12 @@ function LeavingCard({ board, update }: { board: Board; update: (fn: (b: Board) 
       </div>
       {board.leaving && (
         <>
-          <textarea
-            className="field"
-            rows={2}
-            value={board.leavingWhy}
-            onChange={(e) => update((b) => ({ ...b, leavingWhy: e.target.value }))}
-            placeholder="It hurts, but nobody stops trading tomorrow because of it, and the money buys more elsewhere."
+          <Choose
+            label=""
+            options={LEAVING_REASONS}
+            value={board.leavingReason}
+            onPick={(id) => update((b) => ({ ...b, leavingReason: id }))}
           />
-          <div style={{ marginTop: 7 }}><WordCount text={board.leavingWhy} min={MIN_REASON_WORDS} /></div>
         </>
       )}
     </Card>
@@ -182,6 +181,16 @@ function Detail({ problem, board, update, onBack }: {
   const picks = board.picks[problem.id] ?? [];
   const t = totals(board);
   const load = gateLoad(board);
+
+  // The same six reasons everywhere, judged against what they actually chose.
+  // Saying a new hire "reaches all twenty-five outlets on the same day"
+  // describes something that does not happen, and that is worth showing.
+  const lead = picks.includes("build") ? "build" : picks[0];
+  const unlocks = picks.includes("redesign") && picks.includes("build");
+  const rationaleOptions = RATIONALES.map((r) => {
+    const fit = lead ? rationaleFit(r.id, lead, unlocks) : { quality: "workable" as const, note: r.note };
+    return { id: r.id, text: r.text, note: fit.note, quality: fit.quality };
+  });
 
   const toggle = (a: Approach) =>
     update((b) => {
@@ -315,7 +324,7 @@ function Detail({ problem, board, update, onBack }: {
                 <div style={{ flexGrow: 1, display: "grid", placeItems: "center", textAlign: "center", gap: 10, padding: 20 }}>
                   <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--ink-5)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3v13" /><path d="M7 11l5 5 5-5" /><path d="M4 20h16" /></svg>
                   <p style={{ fontSize: 15, color: "var(--ink-4)", maxWidth: 330, lineHeight: 1.5 }}>
-                    Drop your choice here. Nothing is committed until you show Meera the whole plan.
+                    Drop your choice here. Nothing is committed until you show Cutesh the whole plan.
                   </p>
                 </div>
               ) : (
@@ -346,7 +355,7 @@ function Detail({ problem, board, update, onBack }: {
                     <div>
                       <h4 className="display" style={{ fontSize: 15, fontWeight: 700 }}>Who checks this?</h4>
                       <p style={{ fontSize: 12.5, color: "var(--ink-4)", margin: "3px 0 12px", lineHeight: 1.45 }}>
-                        Meera&rsquo;s first rule. One name, and it has to be somebody who could actually do it.
+                        Cutesh&rsquo;s first rule. One name, and it has to be somebody who could actually do it.
                       </p>
                       <div style={{ display: "flex", flexWrap: "wrap", gap: 7 }}>
                         {CAST.map((person) => {
@@ -377,18 +386,13 @@ function Detail({ problem, board, update, onBack }: {
                     </div>
 
                     <div>
-                      <h4 className="display" style={{ fontSize: 15, fontWeight: 700 }}>Why this, in one line</h4>
-                      <p style={{ fontSize: 12.5, color: "var(--ink-4)", margin: "3px 0 12px", lineHeight: 1.45 }}>
-                        This is the sentence that gets read out if your plan is picked.
-                      </p>
-                      <textarea
-                        className="field"
-                        rows={3}
-                        value={board.reasons[problem.id] ?? ""}
-                        onChange={(e) => update((b) => ({ ...b, reasons: { ...b.reasons, [problem.id]: e.target.value } }))}
-                        placeholder="Because everything else in this company is downstream of these documents being right."
+                      <Choose
+                        label="Why this?"
+                        hint="Pick the one closest to your thinking. It gets read out if your plan is chosen."
+                        options={rationaleOptions}
+                        value={board.rationales[problem.id] ?? null}
+                        onPick={(id) => update((b) => ({ ...b, rationales: { ...b.rationales, [problem.id]: id } }))}
                       />
-                      <div style={{ marginTop: 7 }}><WordCount text={board.reasons[problem.id] ?? ""} min={MIN_REASON_WORDS} /></div>
                     </div>
                   </div>
                 </>

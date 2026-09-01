@@ -6,7 +6,7 @@
 
 ### 1. The board has taken twelve lakh back
 
-*Meera Iyer:* “Two of our leases came up for renewal in Pune and the landlord did not blink. I am not going to dress this up — you have twenty-eight lakh a year now, not forty. Same ninety days.”
+*Cutesh Ramanohan:* “Two of our leases came up for renewal in Pune and the landlord did not blink. I am not going to dress this up — you have twenty-eight lakh a year now, not forty. Same ninety days.”
 
 **What you must do:** Something has to come out of the plan. Decide what, and be able to tell her why that one.
 
@@ -22,7 +22,7 @@
 
 ### 3. Legal has ruled on customer data
 
-*Meera Iyer:* “No customer record goes into anything we do not control. Not names, not numbers, not order history. I know that makes your life harder. It also means I can sleep.”
+*Cutesh Ramanohan:* “No customer record goes into anything we do not control. Not names, not numbers, not order history. I know that makes your life harder. It also means I can sleep.”
 
 **What you must do:** The voice agent as you specified it is off the table. Either it never touches a customer record, or it does not happen.
 
@@ -30,7 +30,7 @@
 
 ### 4. The board wants to see something in thirty days
 
-*Meera Iyer:* “They have asked for an interim update. I need one real thing working by day thirty — not a plan for a thing, a thing. Otherwise this whole programme gets a harder look than it deserves.”
+*Cutesh Ramanohan:* “They have asked for an interim update. I need one real thing working by day thirty — not a plan for a thing, a thing. Otherwise this whole programme gets a harder look than it deserves.”
 
 **What you must do:** At least one of your fixes has to be helping somebody by week four.
 
@@ -46,7 +46,7 @@
 
 ### 6. Procurement will approve one new supplier
 
-*Meera Iyer:* “Finance has been burned by subscriptions nobody cancels. One new paid vendor this year. Everything else uses what we already own or costs nothing.”
+*Cutesh Ramanohan:* “Finance has been burned by subscriptions nobody cancels. One new paid vendor this year. Everything else uses what we already own or costs nothing.”
 
 **What you must do:** One paid system. The rest has to be people, process, or something you already have.
 
@@ -64,7 +64,7 @@
 
 *Arun Kulkarni:* “There is a message going round the managers' group saying the AI project is how head office plans to cut staff. Two of them have stopped answering my questions. I need you to know that before you go any further.”
 
-**What you must do:** Meera's second rule is now the whole problem. You have to buy the training and adoption work, and you have to say what you will tell the managers.
+**What you must do:** Cutesh's second rule is now the whole problem. You have to buy the training and adoption work, and you have to say what you will tell the managers.
 
 ---
 
@@ -158,7 +158,7 @@
 
 *Deal only to: reporting:build*
 
-*Meera Iyer:* “I used your Monday summary in the board pack. Wastage down eleven percent across the company. It turns out six outlets did not file that week, and they are the six with the worst numbers. I have had to write to the board and correct it. Tell me how the summary did not mention that.”
+*Cutesh Ramanohan:* “I used your Monday summary in the board pack. Wastage down eleven percent across the company. It turns out six outlets did not file that week, and they are the six with the worst numbers. I have had to write to the board and correct it. Tell me how the summary did not mention that.”
 
 **Facilitator only — reveal after they have written their own answers.**
 
@@ -172,7 +172,7 @@
 
 *Deal only to: any plan where one person is named too often*
 
-*Meera Iyer:* “His father is unwell and he is going to Pune. He has not taken leave since March and I am not going to ask him to delay it. He tells me he is the named person on three of the things you built. Talk me through what happens on Tuesday.”
+*Cutesh Ramanohan:* “His father is unwell and he is going to Pune. He has not taken leave since March and I am not going to ask him to delay it. He tells me he is the named person on three of the things you built. Talk me through what happens on Tuesday.”
 
 **Facilitator only — reveal after they have written their own answers.**
 

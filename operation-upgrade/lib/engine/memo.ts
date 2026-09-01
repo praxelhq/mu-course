@@ -1,6 +1,7 @@
 import { PROBLEM, PROBLEMS } from "@/lib/content/problems";
 import { PERSON } from "@/lib/content/cast";
-import { FAULT, CONSTRAINTS, RULINGS } from "@/lib/content/events";
+import { FAULT, RULINGS } from "@/lib/content/events";
+import { RATIONALES, LEAVING_REASONS, CONSTRAINT_MOVES, FAULT_DIAGNOSIS, FAULT_CONTROLS, FALLBACKS, HEADLINE_OPENERS, HEADLINE_MIDDLES, HEADLINE_CLOSERS, COMMITMENT_TARGETS, COMMITMENT_EVIDENCE } from "@/lib/content/choices";
 import { chosenOptions, totals, constraintOf } from "./economics";
 import { brainReport } from "./brain";
 import type { Board } from "./types";
@@ -24,7 +25,7 @@ export function composeMemo(board: Board): string {
   const L: string[] = [];
   L.push(`# Ninety days at Bharat Bites`);
   L.push(``);
-  L.push(`**${board.handle}** · prepared for Meera Iyer, founder and managing director`);
+  L.push(`**${board.handle}** · prepared for Cutesh Ramanohan, founder and managing director`);
   L.push(``);
   L.push(`---`);
   L.push(``);
@@ -43,8 +44,8 @@ export function composeMemo(board: Board): string {
     L.push(`- Costs ₹${o.costLakh} lakh a year, starts helping in week ${o.liveWeek}.`);
     L.push(`- ${person ? `${person.name}, ${person.role.toLowerCase()}, is the person who checks it.` : "Nobody is named on this yet."}`);
     if (o.discounted && o.discountNote) L.push(`- Cheaper and safer than it would have been: ${o.discountNote}`);
-    const why = board.reasons[o.problemId];
-    if (why) L.push(`- Why: ${why.trim()}`);
+    const why = RATIONALES.find((r) => r.id === board.rationales[o.problemId]);
+    if (why) L.push(`- Why: ${why.text}`);
     L.push(``);
   }
 
@@ -60,7 +61,8 @@ export function composeMemo(board: Board): string {
     const left = PROBLEM.get(board.leaving);
     L.push(`## What I am deliberately not fixing`);
     L.push(``);
-    L.push(`**${left?.title ?? board.leaving}.** ${board.leavingWhy.trim()}`);
+    const lr = LEAVING_REASONS.find((r) => r.id === board.leavingReason);
+    L.push(`**${left?.title ?? board.leaving}.** ${lr?.text ?? ""}`);
     L.push(``);
   }
 
@@ -81,7 +83,8 @@ export function composeMemo(board: Board): string {
   if (c) {
     L.push(`## What changed under me`);
     L.push(``);
-    L.push(`**${c.title}.** ${board.constraintResponse.trim()}`);
+    const move = (CONSTRAINT_MOVES[c.id] ?? []).find((m) => m.id === board.constraintMove);
+    L.push(`**${c.title}.** ${move?.text ?? ""}`);
     L.push(``);
   }
 
@@ -90,22 +93,30 @@ export function composeMemo(board: Board): string {
     L.push(``);
     L.push(`**${fault.title}.**`);
     L.push(``);
-    L.push(`- What failed: ${(board.faultAnswers.failed ?? "").trim()}`);
-    L.push(`- What should have prevented it: ${(board.faultAnswers.prevented ?? "").trim()}`);
-    L.push(`- The control I am adding: ${(board.faultAnswers.control ?? "").trim()}`);
+    const diag = (FAULT_DIAGNOSIS[fault.id] ?? []).find((d) => d.id === board.faultDiagnosis);
+    const ctrl = (FAULT_CONTROLS[fault.id] ?? []).find((d) => d.id === board.faultControl);
+    const back = (FALLBACKS[fault.id] ?? []).find((d) => d.id === board.faultFallback);
+    if (diag) L.push(`- What failed: ${diag.text}`);
+    if (ctrl) L.push(`- The control I am adding: ${ctrl.text}`);
+    if (back) L.push(`- What happens when it is down: ${back.text}`);
     if (ruling) L.push(`- My ruling: **${ruling.label.toLowerCase()}** — ${ruling.sub.toLowerCase()}`);
     L.push(``);
   }
 
   L.push(`## What I would say to the board, in seventy-five seconds`);
   L.push(``);
-  L.push(board.headline.trim());
+  const opener = HEADLINE_OPENERS.find((x) => x.id === board.headline.opener);
+  const middle = HEADLINE_MIDDLES.find((x) => x.id === board.headline.middle);
+  const closer = HEADLINE_CLOSERS.find((x) => x.id === board.headline.closer);
+  L.push([opener?.text, middle?.text, closer?.text].filter(Boolean).join(" "));
   L.push(``);
 
-  if (board.commitment.what) {
+  const target = COMMITMENT_TARGETS.find((x) => x.id === board.commitment.target);
+  const evidence = COMMITMENT_EVIDENCE.find((x) => x.id === board.commitment.evidence);
+  if (target && evidence) {
     L.push(`---`);
     L.push(``);
-    L.push(`*Within thirty days I will use AI to improve ${board.commitment.what.trim()}. The evidence that it worked will be ${board.commitment.evidence.trim()}.*`);
+    L.push(`*Within thirty days I will use AI to improve ${target.text}. The evidence that it worked will be ${evidence.text}.*`);
     L.push(``);
   }
 
@@ -114,6 +125,15 @@ export function composeMemo(board: Board): string {
   L.push(`Bharat Bites is a fictional company built for this session. Every person, policy, number and failure above was invented for teaching.`);
 
   return L.join("\n");
+}
+
+/// The seventy-five seconds, as one sentence. Used on the wall, the ballot and
+/// the pitch list, so all three always say exactly the same thing.
+export function headlineText(board: Board): string {
+  const opener = HEADLINE_OPENERS.find((x) => x.id === board.headline.opener);
+  const middle = HEADLINE_MIDDLES.find((x) => x.id === board.headline.middle);
+  const closer = HEADLINE_CLOSERS.find((x) => x.id === board.headline.closer);
+  return [opener?.text, middle?.text, closer?.text].filter(Boolean).join(" ");
 }
 
 /// The one-line shape of a plan, for the wall and the pitch list.

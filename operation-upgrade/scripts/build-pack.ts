@@ -6,7 +6,7 @@
  */
 import { writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
-import { COMPANY, MEERA_RULES, OPENING_LETTER, CAST } from "../lib/content/cast";
+import { COMPANY, FOUNDER_RULES, OPENING_LETTER, CAST } from "../lib/content/cast";
 import { PROBLEMS, OBLIGATIONS } from "../lib/content/problems";
 import { DOCUMENTS, QUESTIONS } from "../lib/content/documents";
 import { CONSTRAINTS, FAULTS, FAULT_QUESTIONS, RULINGS } from "../lib/content/events";
@@ -19,11 +19,11 @@ const FICTION =
 function brief(): string {
   const L = [`# Bharat Bites — the case`, ``, `> ${FICTION}`, ``];
   L.push(`${COMPANY.outlets} outlets across ${COMPANY.cities} Indian cities. ${COMPANY.people} people. Founded in ${COMPANY.founded}.`, ``);
-  L.push(`## The note Meera sent you`, ``);
+  L.push(`## The note Cutesh sent you`, ``);
   for (const p of OPENING_LETTER) L.push(p, ``);
-  L.push(`— Meera Iyer, Founder and Managing Director`, ``);
+  L.push(`— Cutesh Ramanohan, Founder and Managing Director`, ``);
   L.push(`## What she will not bend on`, ``);
-  for (const r of MEERA_RULES) L.push(`${r.n}. ${r.text}`);
+  for (const r of FOUNDER_RULES) L.push(`${r.n}. ${r.text}`);
   L.push(``, `## What you have`, ``);
   L.push(`- **₹${COMPANY.budgetLakh} lakh a year**, for as long as your plan runs.`);
   L.push(`- **${COMPANY.days} days** until she presents to the board.`);
@@ -59,7 +59,7 @@ function problems(): string {
       }
     }
   }
-  L.push(`## Two things Meera adds to your bill`, ``);
+  L.push(`## Two things Cutesh adds to your bill`, ``);
   for (const o of OBLIGATIONS) {
     L.push(`**${o.title}** — ₹${o.costLakh}L a year, from week ${o.liveWeek}. Triggered by: ${o.triggerText.toLowerCase()}.`, ``, o.activeText, ``);
   }
@@ -85,7 +85,7 @@ function canvas(): string {
   for (const q of FAULT_QUESTIONS) L.push(`**${q.label}** _${q.hint}_`, ``, `_______________________________________________`, ``);
   L.push(`**Does it keep running?** ` + RULINGS.map((r) => `☐ ${r.label}`).join("  "), ``);
   L.push(`## 6. Seventy-five seconds to the board`, ``, `Between 25 and 80 words.`, ``, `_______________________________________________`, ``);
-  L.push(`## 7. Deliberately not fixing`, ``, `Which problem, and why? Meera will ask.`, ``, `_______________________________________________`, ``);
+  L.push(`## 7. Deliberately not fixing`, ``, `Which problem, and why? Cutesh will ask.`, ``, `_______________________________________________`, ``);
   L.push(`## 8. Before you leave`, ``, `Three people, two newsletters, one podcast, three official feeds. Then:`, ``);
   L.push(`Within thirty days I will use AI to improve ______________________.`, ``, `The evidence it worked will be ______________________.`, ``);
   return L.join("\n") + "\n";
@@ -141,7 +141,7 @@ function shelf(): string {
 }
 
 function runSheet(): string {
-  const L = [`# Run sheet`, ``, `Twelve stages. You advance the room; nothing advances on a timer.`, ``];
+  const L = [`# Run sheet`, ``, `Fourteen stages. You advance the room; nothing advances on a timer.`, ``];
   L.push(`| | Stage | Minutes | What you do |`, `| ---: | --- | ---: | --- |`);
   let total = 0;
   for (const p of PHASES) {

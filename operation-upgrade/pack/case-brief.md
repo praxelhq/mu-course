@@ -4,7 +4,7 @@
 
 25 outlets across 5 Indian cities. 450 people. Founded in Coimbatore, 2011.
 
-## The note Meera sent you
+## The note Cutesh sent you
 
 I started this business with one counter and a pressure cooker. We are now twenty-five outlets across five cities and four hundred and fifty people, and I will be honest with you: we have got slower as we have got bigger.
 
@@ -14,7 +14,7 @@ The board has approved forty lakh a year for you to change how this company work
 
 Go and look at the seven places where we hurt. Then come back and tell me what you are going to fix, what you are deliberately leaving broken, and why.
 
-— Meera Iyer, Founder and Managing Director
+— Cutesh Ramanohan, Founder and Managing Director
 
 ## What she will not bend on
 
@@ -32,7 +32,8 @@ Go and look at the seven places where we hurt. Then come back and tell me what y
 
 ## The people
 
-- **Meera Iyer**, founder and managing director. Started the business with one counter in Coimbatore in 2011. Reads four of the eleven reports.
+- **Cutesh Ramanohan**, founder and managing director. Started the business with one counter in Coimbatore in 2011. Reads four of the eleven reports.
+- **Mariga Economova**, turnaround consultant. Brought in by the board when a transformation is in trouble. Has done this at eleven companies and is not here to be polite.
 - **Arun Kulkarni**, head of operations. Fourteen years here, knows everything, has not taken leave since March. Twenty-two calls a day.
 - **Priya Nair**, store manager, indiranagar. Three years. Calls Arun about things that are written down somewhere she cannot find.
 - **Sunita Menon**, central operations. Spends three hours a day turning twenty-five spreadsheets into one.
