@@ -102,7 +102,7 @@ export function useBoard(identity: Identity, stage: string) {
 /** The facilitator's phase, polled. Falls back to letting them play on. */
 export function useRoomPhase(sectionCode: string) {
   const [phase, setPhase] = useState<PhaseId>("offer");
-  const [pacing, setPacing] = useState<"guided" | "open">("guided");
+  const [pacing, setPacing] = useState<"guided" | "open">("open");
   const [endsAt, setEndsAt] = useState<string | null>(null);
   const [connected, setConnected] = useState(true);
 
@@ -115,7 +115,7 @@ export function useRoomPhase(sectionCode: string) {
         const body = await res.json();
         if (!cancelled && res.ok) {
           setPhase(body.phase as PhaseId);
-          setPacing(body.pacing === "open" ? "open" : "guided");
+          setPacing(body.pacing === "guided" ? "guided" : "open");
           setEndsAt(body.phaseEndsAt ?? null);
           setConnected(!body.offline);
         }

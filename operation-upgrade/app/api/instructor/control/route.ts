@@ -44,9 +44,9 @@ export async function POST(req: Request) {
   if (action === "pacing") {
     await prisma.room.update({
       where: { id: room.id },
-      data: { pacing: pacing ?? "guided", version: { increment: 1 } },
+      data: { pacing: pacing ?? "open", version: { increment: 1 } },
     });
-    return Response.json({ ok: true, pacing: pacing ?? "guided" });
+    return Response.json({ ok: true, pacing: pacing ?? "open" });
   }
 
   if (action === "timer") {

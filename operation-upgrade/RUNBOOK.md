@@ -13,7 +13,7 @@ Join codes, one per section: `bharat-a` … `bharat-h`. Students type the code a
 1. Open `/instructor` on your laptop, enter the key, pick your section.
 2. Open the wall link on the projector. **Press F11 for full screen.** It shows the join code in huge type on its own — you don't need to write it anywhere.
 3. Check the roster says 0. If it doesn't, hit **Reset section**.
-4. Decide your pacing (below). Guided is the default and is right for a first delivery.
+4. Decide your pacing (below). Fully self-paced is the default.
 
 That's it. Nothing else to prepare.
 
@@ -23,8 +23,8 @@ That's it. Nothing else to prepare.
 
 | | What it does | Use when |
 |---|---|---|
-| **You set a ceiling** *(default)* | Students move freely up to where you are | Your first delivery. You keep the room roughly together. |
-| **Fully self-paced** | No ceiling at all | A make-up session, a section that's ahead, or if you'd rather not drive. |
+| **Fully self-paced** *(default)* | No ceiling at all — they run the whole thing at their own speed | Most deliveries. The room sorts itself out and you coach the tail. |
+| **You set a ceiling** | Students move freely up to where you are | You want the room held roughly together, or you are driving from the front. |
 
 Either way, **four stages still pull everyone together**: the pitches, the ballot, the debrief, the close. Advancing never yanks a student mid-sentence — they get a dismissible "the room has moved on" line and finish what they're doing.
 

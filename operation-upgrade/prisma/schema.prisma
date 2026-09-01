@@ -27,7 +27,7 @@ model Room {
   /// anywhere at or before it. "open" — no ceiling; students run the whole
   /// ninety days at their own speed and the facilitator only calls the room
   /// together for the pitches, the ballot and the close.
-  pacing        String   @default("guided")
+  pacing        String   @default("open")
   phaseStartedAt DateTime @default(now())
   phaseEndsAt   DateTime?
   /// Bumped on every facilitator action so a stale client can tell it is stale.
