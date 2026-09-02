@@ -7,14 +7,26 @@ import { APP_REVIEW_ROUND_ID, APP_REVIEW_RUBRIC_VERSION, chooseAppReviews, comme
 export class AppReviewError extends Error {
   constructor(message: string, readonly status = 409) { super(message); }
 }
+export function appReviewError(error: unknown): AppReviewError | null {
+  if (error instanceof AppReviewError) return error;
+  if (error instanceof Prisma.PrismaClientKnownRequestError && ["P2024", "P2028"].includes(error.code)) {
+    return new AppReviewError("The review service is busy. Your work was not changed; please retry.", 503);
+  }
+  return null;
+}
 type Db = PrismaClient;
 type Tx = Prisma.TransactionClient;
 const TRANSACTION_OPTIONS = { maxWait: 15000, timeout: 20000 };
 
-async function lockRound(tx: Tx) {
-  // All allocations, imports, replacements and submissions share one lock.
-  // A second browser tab can never create another set of five.
+async function lockRound(tx: Tx, shared = false) {
+  if (shared) {
+    await tx.$queryRaw`SELECT pg_advisory_xact_lock_shared(hashtextextended(${APP_REVIEW_ROUND_ID}, 0))::text`;
+    return;
+  }
   await tx.$queryRaw`SELECT pg_advisory_xact_lock(hashtextextended(${APP_REVIEW_ROUND_ID}, 0))::text`;
+}
+async function lockOperation(tx: Tx, key: string) {
+  await tx.$queryRaw`SELECT pg_advisory_xact_lock(hashtextextended(${`${APP_REVIEW_ROUND_ID}:${key}`}, 0))::text`;
 }
 function student(user: SessionUser): asserts user is SessionUser & { sectionId: string } {
   if (user.role !== "student" || !user.sectionId) throw new AppReviewError("A rostered student account with a section is required.", 403);
@@ -60,7 +72,10 @@ async function candidates(tx: Tx, sectionId: string) {
 export async function assignAppReviews(user: SessionUser, db: Db = prisma) {
   student(user);
   await db.$transaction(async (tx) => {
-    await lockRound(tx);
+    // The shared round lock keeps gate/import changes ordered without making
+    // unrelated students queue behind every review submission.
+    await lockRound(tx, true);
+    await lockOperation(tx, "allocation");
     await requireOpen(user, tx);
     const round = await tx.appReviewRound.findUnique({ where: { id: APP_REVIEW_ROUND_ID } });
     if (round?.rubricVersion !== APP_REVIEW_RUBRIC_VERSION) throw new AppReviewError("This review round is not ready.");
@@ -83,15 +98,23 @@ export async function submitAppReview(user: SessionUser, reviewId: string, body:
   const parsed = reviewSchema.safeParse(body);
   if (!parsed.success) throw new AppReviewError(parsed.error.issues[0]?.message ?? "Invalid review.", 422);
   return db.$transaction(async (tx) => {
-    await lockRound(tx);
+    await lockRound(tx, true);
+    await lockOperation(tx, `review:${reviewId}`);
     await requireOpen(user, tx);
     const review = await tx.appReview.findFirst({ where: { id: reviewId, ...activeWhere(user) } });
-    if (!review) throw new AppReviewError("Review not found.", 404);
+    if (!review) {
+      const retired = await tx.appReview.findFirst({
+        where: { id: reviewId, roundId: APP_REVIEW_ROUND_ID, reviewerId: user.userId, retiredAt: { not: null } },
+        select: { id: true },
+      });
+      if (retired) throw new AppReviewError("Your instructor replaced this app. Copy any feedback you want to keep, then reload for the new assignment.");
+      throw new AppReviewError("Review not found.", 404);
+    }
     if (review.completedAt) {
       if (["visual", "functionality", "overall", "comment"].every((key) => review[key as keyof typeof parsed.data] === parsed.data[key as keyof typeof parsed.data])) return { ok: true };
       throw new AppReviewError("This review has already been submitted and cannot be changed.");
     }
-    await tx.appReview.update({ where: { id: reviewId }, data: { ...parsed.data, completedAt: new Date(), accessIssue: null } });
+    await tx.appReview.update({ where: { id: reviewId }, data: { ...parsed.data, completedAt: new Date() } });
     return { ok: true };
   }, TRANSACTION_OPTIONS);
 }
@@ -101,7 +124,8 @@ export async function reportAppReviewIssue(user: SessionUser, reviewId: string, 
   const parsed = commentSchema.safeParse(comment);
   if (!parsed.success) throw new AppReviewError("Describe the access problem in at least 20 words (maximum 5,000 characters).", 422);
   return db.$transaction(async (tx) => {
-    await lockRound(tx);
+    await lockRound(tx, true);
+    await lockOperation(tx, `review:${reviewId}`);
     await requireOpen(user, tx);
     const row = await tx.appReview.findFirst({ where: { id: reviewId, ...activeWhere(user), completedAt: null } });
     if (!row) throw new AppReviewError("Pending review not found.", 404);
@@ -113,7 +137,9 @@ export async function reportAppReviewIssue(user: SessionUser, reviewId: string, 
 export type ImportAppRow = { email: string; section: string; appUrl: string; sourceRef: string; recordNumber?: number };
 export async function importAppReviewEntries(rows: ImportAppRow[], actorId: string, apply: boolean, db: Db = prisma) {
   return db.$transaction(async (tx) => {
-    await lockRound(tx);
+    // Preview performs no writes. Apply revalidates everything while holding
+    // the exclusive round lock, so a preview never needs to block learners.
+    if (apply) await lockRound(tx);
     const assignment = await tx.assignment.findUnique({ where: { id: "asg_s4_app" } });
     if (!assignment) throw new AppReviewError("Session 4 app assignment is not configured.");
     const users = await tx.user.findMany({ where: { role: "student", flaggedForDeletion: false }, include: { emailAliases: true, section: true } });
@@ -168,7 +194,8 @@ export async function setAppReviewGate(sectionId: string, state: "open" | "close
 
 export async function replaceReportedAppReview(reviewId: string, actorId: string, db: Db = prisma) {
   return db.$transaction(async (tx) => {
-    await lockRound(tx);
+    await lockRound(tx, true);
+    await lockOperation(tx, `review:${reviewId}`);
     const review = await tx.appReview.findFirst({ where: { id: reviewId, roundId: APP_REVIEW_ROUND_ID, retiredAt: null, completedAt: null, accessIssue: { not: null } }, include: { reviewer: true } });
     if (!review?.reviewer.sectionId) throw new AppReviewError("No unresolved access report found.", 404);
     const history = await tx.appReview.findMany({ where: { roundId: APP_REVIEW_ROUND_ID, reviewerId: review.reviewerId }, include: { entry: true } });

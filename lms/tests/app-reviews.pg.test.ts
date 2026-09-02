@@ -86,9 +86,22 @@ describe.skipIf(!live)("app reviews on an isolated migrated PostgreSQL", () => {
     const retired = await prisma.appReview.findUniqueOrThrow({ where: { id: original.id } });
     expect(retired.retiredAt).not.toBeNull();
     expect(retired.accessIssue).toBe(feedback.comment);
+    await expect(submitAppReview(user(0), original.id, feedback)).rejects.toThrow(
+      "Your instructor replaced this app.",
+    );
     const current = await getStudentAppReviews(user(0));
     expect(current.reviews).toHaveLength(5);
     expect(current.reviews.map((row) => row.appUrl)).not.toContain(original.appUrl);
+  });
+  it("retains an access report if the student later submits scores", async () => {
+    const target = (await assignAppReviews(user(7))).reviews[0];
+    await reportAppReviewIssue(user(7), target.id, feedback.comment);
+    await submitAppReview(user(7), target.id, feedback);
+    expect(await prisma.appReview.findUniqueOrThrow({ where: { id: target.id } })).toMatchObject({
+      accessIssue: feedback.comment,
+      visual: feedback.visual,
+      completedAt: expect.any(Date),
+    });
   });
   it("persists five reviews, makes retries idempotent, and leaves grades untouched", async () => {
     const targets = (await getStudentAppReviews(user(0))).reviews;

@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { withAuth } from "@/lib/auth";
-import { AppReviewError, assignAppReviews, getStudentAppReviews, reportAppReviewIssue, submitAppReview } from "@/lib/app-reviews/service";
+import { appReviewError, assignAppReviews, getStudentAppReviews, reportAppReviewIssue, submitAppReview } from "@/lib/app-reviews/service";
 
 export const dynamic = "force-dynamic";
 const commandSchema = z.discriminatedUnion("action", [
@@ -9,7 +9,8 @@ const commandSchema = z.discriminatedUnion("action", [
   z.object({ action: z.literal("report"), reviewId: z.string().min(1).max(100), comment: z.string().max(5000) }).strict(),
 ]);
 function failure(error: unknown): Response {
-  if (error instanceof AppReviewError) return Response.json({ error: error.message }, { status: error.status, headers: { "Cache-Control": "no-store" } });
+  const known = appReviewError(error);
+  if (known) return Response.json({ error: known.message }, { status: known.status, headers: { "Cache-Control": "no-store" } });
   throw error;
 }
 export const GET = withAuth(async (_req, { user }) => {

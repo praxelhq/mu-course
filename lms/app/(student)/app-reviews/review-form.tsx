@@ -8,7 +8,7 @@ type ReviewState = { ready: boolean; open: boolean; required: number; completed:
 
 async function command(body: unknown) {
   const response = await fetch("/api/app-reviews", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
-  const result = await response.json();
+  const result = await response.json().catch(() => ({}));
   if (!response.ok) throw new Error(result.error ?? "Your review could not be saved. Please retry.");
   return result;
 }
@@ -71,7 +71,7 @@ function ReviewCard({ review, onSaved }: { review: StudentAppReview; onSaved: (r
     try {
       await command(action === "submit" ? { action, reviewId: review.id, review: { ...scores, comment } } : { action, reviewId: review.id, comment });
       if (action === "submit") {
-        onSaved({ ...review, ...scores, comment: comment.trim(), completedAt: new Date().toISOString(), accessIssue: null });
+        onSaved({ ...review, ...scores, comment: comment.trim(), completedAt: new Date().toISOString() });
         setNotice("Review submitted. Thank you for the specific feedback.");
       } else {
         onSaved({ ...review, accessIssue: comment.trim() });

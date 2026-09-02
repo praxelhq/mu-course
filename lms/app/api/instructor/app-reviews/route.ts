@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { withAuth } from "@/lib/auth";
-import { AppReviewError, importAppReviewEntries, replaceReportedAppReview, setAppReviewGate } from "@/lib/app-reviews/service";
+import { AppReviewError, appReviewError, importAppReviewEntries, replaceReportedAppReview, setAppReviewGate } from "@/lib/app-reviews/service";
 import { parseAppReviewCsv } from "@/lib/app-reviews/import";
 
 const schema = z.discriminatedUnion("action", [
@@ -25,7 +25,8 @@ export const POST = withAuth(async (req, { user }) => {
     if (!rows.length || rows.length > 1000) throw new AppReviewError("Import between 1 and 1,000 student rows.", 422);
     return Response.json(await importAppReviewEntries(rows, user.userId, command.apply));
   } catch (error) {
-    if (error instanceof AppReviewError) return Response.json({ error: error.message }, { status: error.status });
+    const known = appReviewError(error);
+    if (known) return Response.json({ error: known.message }, { status: known.status });
     throw error;
   }
 }, { role: "instructor" });
