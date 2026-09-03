@@ -79,10 +79,31 @@ documented in `lms/.env.example`.
 ### agent
 - `LIVEKIT_URL`, `LIVEKIT_API_KEY`, `LIVEKIT_API_SECRET` (required — the
   worker exits with a clear message without them)
-- `DEEPGRAM_API_KEY`, `GEMINI_API_KEY`, `ELEVENLABS_API_KEY` (the agent maps
-  `GEMINI_API_KEY` -> `GOOGLE_API_KEY` for the livekit google plugin — set
-  only `GEMINI_API_KEY`)
+- `GEMINI_API_KEY` (dialog; the agent maps it to `GOOGLE_API_KEY` for the
+  livekit google plugin — set only `GEMINI_API_KEY`)
+- **Voice: exactly one complete pair is required.** Set `SARVAM_API_KEY` for
+  the primary pipeline (Sarvam STT + TTS). `DEEPGRAM_API_KEY` +
+  `ELEVENLABS_API_KEY` remain the fallback pair and are used only when
+  `SARVAM_API_KEY` is absent. The worker refuses to start with neither, and
+  logs which pair it selected at startup — if you see
+  `voice provider: deepgram+elevenlabs FALLBACK`, `SARVAM_API_KEY` did not
+  reach the service.
 - `AGENT_INTERNAL_TOKEN`, `APP_URL` = `https://<web-domain>`
+- Optional Sarvam tuning: `SARVAM_STT_LANGUAGE` (default `auto` — adaptive
+  language identification, so code-mixed English/Hindi still transcribes),
+  `SARVAM_TTS_MODEL` (default `bulbul:v3`), `SARVAM_TTS_SPEAKER` (default
+  `shubh`), `SARVAM_TTS_LANGUAGE` (default `en-IN`),
+  `INTERVIEW_EGRESS_LAYOUT` (default `speaker`)
+- Room recording is now **video** (MP4). The same `AWS_*` + `S3_BUCKET` vars
+  enable it; without them the interview runs unrecorded.
+
+### Opening the interview
+
+Interview v2 deploys **closed**. Students see a "not open yet" notice and no
+start control until an instructor opens it — deploying is never what starts a
+cohort's assessment. Open it from the instructor interviews page, or by
+setting the `ConfigKV` row `interview_v2` to `{"open": true}`. Any other value,
+and an absent row, mean closed.
 
 ## 4. Clerk webhook
 

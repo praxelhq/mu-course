@@ -1,8 +1,13 @@
 # Praxel Forge interview agent
 
 Python LiveKit Agents worker that runs the realtime voice interviews:
-LiveKit (audio transport) -> Deepgram (STT) -> Gemini Flash (dialog) ->
-ElevenLabs (TTS), calling back into the LMS over internal endpoints.
+LiveKit (transport) -> Sarvam (STT) -> Gemini Flash (dialog) -> Sarvam (TTS),
+calling back into the LMS over internal endpoints.
+
+Voice is selected as a **pair**: Sarvam whenever `SARVAM_API_KEY` is set,
+otherwise the Deepgram + ElevenLabs fallback. The worker refuses to start with
+neither and logs which pair it chose, so a key that never reached the service
+is visible rather than silently degrading a whole cohort.
 
 **Status: implemented (U13).** `main.py` runs a livekit-agents v1.x worker
 that only accepts jobs for rooms named `interview-{interviewId}`. Per job it:
@@ -10,20 +15,26 @@ that only accepts jobs for rooms named `interview-{interviewId}`. Per job it:
 1. Fetches `GET {APP_URL}/api/interview/agent-context?interviewId=` (header
    `X-Agent-Token: {AGENT_INTERNAL_TOKEN}`) — the assembled system prompt
    (InterviewTurn 0) plus the transcript so far. The agent has no DB access.
-2. Starts a room-composite **audio-only Egress** to
-   `s3://{S3_BUCKET}/interviews/{interviewId}/room.ogg` when the S3 env vars
-   are present (best-effort: failures log and the interview continues).
-3. Runs an `AgentSession` (deepgram.STT nova-3 / google.LLM gemini-2.0-flash /
-   elevenlabs.TTS / silero.VAD). The stored system prompt gets a voice-mode
+2. Starts a room-composite **video Egress** to
+   `s3://{S3_BUCKET}/interviews/{interviewId}/room-{reservation}.mp4` when the
+   S3 env vars are present (best-effort: failures log and the interview
+   continues — the interview is worth more than the tape). The MP4 carries the
+   audio; a speaker layout keeps the pixels on the student.
+3. Runs an `AgentSession` (sarvam STT / google.LLM gemini-2.0-flash /
+   sarvam.TTS bulbul:v3 / silero.VAD). The stored system prompt gets a voice-mode
    override appended (speak naturally, one question, call `end_interview`
    when done — the turn-based JSON contract is explicitly disabled).
 4. POSTs every finalized utterance to `/api/interview/agent-turn`
    (3 retries with backoff; failures are buffered and re-flushed before
    shutdown — a turn is never lost). These posts double as the room
    heartbeat for the LMS concurrency guard.
-5. On `end_interview` (LLM signal) or the 12-minute budget: says a closing
+5. On `end_interview` (LLM signal) or the 15-minute budget: says a closing
    line, stops Egress, and POSTs `/api/interview/agent-complete` with the
    recording key — the LMS marks the interview completed and enqueues grading.
+   Stop-and-report is ALSO registered as a shutdown callback, so an interview
+   that degrades to the turn-based loop still commits its video instead of
+   orphaning it in S3. It is idempotent, so the normal path never
+   double-commits.
 
 Independently of interview rooms, the process POSTs a bounded build-identity
 heartbeat to `/api/internal/service-heartbeat`. The web service authenticates
@@ -45,9 +56,10 @@ All required — the worker refuses to start without them, with a clear message:
 | `LIVEKIT_URL` | LiveKit server URL (`wss://...`) |
 | `LIVEKIT_API_KEY` | LiveKit API key |
 | `LIVEKIT_API_SECRET` | LiveKit API secret |
-| `DEEPGRAM_API_KEY` | Speech-to-text |
+| `SARVAM_API_KEY` | Speech-to-text and text-to-speech (primary). Either this OR both Deepgram and ElevenLabs must be set. |
+| `DEEPGRAM_API_KEY` | Speech-to-text (fallback pair) |
 | `GEMINI_API_KEY` | Dialog LLM. The livekit google plugin reads `GOOGLE_API_KEY`; `main.py` maps `GEMINI_API_KEY` -> `GOOGLE_API_KEY` automatically, so set only `GEMINI_API_KEY`. |
-| `ELEVENLABS_API_KEY` | Text-to-speech |
+| `ELEVENLABS_API_KEY` | Text-to-speech (fallback pair) |
 | `AGENT_INTERNAL_TOKEN` | Shared secret for internal LMS endpoints (must match the web service) |
 | `APP_URL` | Base URL of the web service |
 | `AGENT_HEARTBEAT_INTERVAL_SECONDS` | Durable service heartbeat cadence, 10–300 seconds (default `30`) |
@@ -66,8 +78,14 @@ Optional (room recording via LiveKit Egress; omit any to disable):
 | `AWS_REGION` | S3 bucket region |
 | `S3_BUCKET` | Destination bucket (same one the LMS presigns from) |
 | `INTERVIEW_GEMINI_MODEL` | Dialog model override (default `gemini-2.0-flash`) |
+| `SARVAM_STT_LANGUAGE` | STT language (default `auto` — adaptive identification, so code-mixed English/Hindi still transcribes) |
+| `SARVAM_STT_STREAM_TYPE` | Latency profile (default `balanced`) |
+| `SARVAM_TTS_MODEL` | TTS model (default `bulbul:v3`) |
+| `SARVAM_TTS_SPEAKER` | TTS voice (default `shubh`) |
+| `SARVAM_TTS_LANGUAGE` | TTS target language (default `en-IN`) |
+| `INTERVIEW_EGRESS_LAYOUT` | Composite layout (default `speaker`) |
 
-Deepgram/Gemini/ElevenLabs keys already exist in the other Praxel Railway
+Gemini/Deepgram/ElevenLabs keys already exist in the other Praxel Railway
 projects — copy them from there (see `docs/DEPLOY.md`).
 
 ## Run locally

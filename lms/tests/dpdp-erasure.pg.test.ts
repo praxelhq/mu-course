@@ -277,6 +277,8 @@ describe.skipIf(!runLive)("DPDP erasure against migrated PostgreSQL", () => {
       | "gallery_screenshot"
       | "publication_preview"
       | "interview_recording"
+      | "interview_video"
+      | "interview_prerequisite"
       | "interview_turn_audio";
     submissionId?: string;
     interviewId?: string;
@@ -574,6 +576,57 @@ describe.skipIf(!runLive)("DPDP erasure against migrated PostgreSQL", () => {
     expect(result.deleted).toMatchObject({ submissions: 2, resubmissionGrants: 1, user: 1 });
     expect(await db.submission.findUnique({ where: { id: revisionId } })).toBeNull();
     expect(await db.resubmissionGrant.findUnique({ where: { id: grantId } })).toBeNull();
+  });
+
+  it("deletes the interview video and the student's uploaded prerequisites", async () => {
+    // A resume is PII and prerequisites are user-scoped, so nothing in the
+    // submission or interview graph walks to them: without explicit coverage
+    // erasure would drop the row and leave the file in S3.
+    const user = await db.user.create({
+      data: {
+        id: "dpdp-pg-prereq-user",
+        email: "prereq@example.com",
+        name: "Prereq Student",
+        role: "student",
+        sectionId: SECTION_ID,
+      },
+    });
+    const interview = await db.interview.create({
+      data: { id: "dpdp-pg-video-interview", userId: user.id },
+    });
+    const videoKey = "interviews/dpdp-pg-video-interview/room-v.mp4";
+    const videoVersion = "video-version-1";
+    await db.interview.update({
+      where: { id: interview.id },
+      data: { videoS3Key: videoKey, videoS3VersionId: videoVersion },
+    });
+    const resumeKey = "interview-prerequisites/dpdp-pg-prereq-user/resume-a.pdf";
+    await db.interviewPrerequisite.create({
+      data: {
+        userId: user.id,
+        kind: "resume",
+        s3Key: resumeKey,
+        s3VersionId: "resume-version-1",
+        contentType: "application/pdf",
+        sizeBytes: 10,
+      },
+    });
+
+    const deleted: string[] = [];
+    await eraseDpdpUser(
+      { userId: user.id, requestedBy: ADMIN, confirmEmail: user.email },
+      {
+        now: NOW,
+        deleteObjectVersion: async (key: string) => {
+          deleted.push(key);
+          return true;
+        },
+      } as never,
+    );
+
+    expect(deleted).toContain(videoKey);
+    expect(deleted).toContain(resumeKey);
+    expect(await db.interviewPrerequisite.count({ where: { userId: user.id } })).toBe(0);
   });
 
   it("deletes exact generated previews and interview audio while ignoring policy markers", async () => {
