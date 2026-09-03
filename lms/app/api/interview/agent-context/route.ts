@@ -1,5 +1,8 @@
 import { prisma } from "@/lib/db";
-import { reserveInterviewRecording } from "@/lib/interview/audio-storage";
+import {
+  reserveInterviewRecording,
+  reserveInterviewVideo,
+} from "@/lib/interview/audio-storage";
 import { agentAuthResponse } from "@/lib/interview/realtime";
 
 // GET /api/interview/agent-context?interviewId=: the Python agent reads
@@ -26,12 +29,12 @@ export async function GET(req: Request): Promise<Response> {
   const transcript = interview.turns
     .filter((t) => t.turnNo > 0)
     .map((t) => ({ turnNo: t.turnNo, speaker: t.speaker, text: t.text }));
-  const recordingReservation =
+  const recordable =
     params.get("reserveRecording") === "1" &&
     interview.status === "live" &&
-    interview.transport === "realtime"
-      ? await reserveInterviewRecording(interviewId)
-      : null;
+    interview.transport === "realtime";
+  const recordingReservation = recordable ? await reserveInterviewRecording(interviewId) : null;
+  const videoReservation = recordable ? await reserveInterviewVideo(interviewId) : null;
 
   return Response.json({
     interviewId,
@@ -41,6 +44,9 @@ export async function GET(req: Request): Promise<Response> {
     transcript,
     recordingReservation: recordingReservation
       ? { id: recordingReservation.id, s3Key: recordingReservation.s3Key }
+      : null,
+    videoReservation: videoReservation
+      ? { id: videoReservation.id, s3Key: videoReservation.s3Key }
       : null,
   });
 }

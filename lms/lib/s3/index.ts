@@ -229,6 +229,11 @@ export function keyForInterviewRecording(interviewId: string, reservationId: str
   return `interviews/${sanitizeSegment(interviewId)}/room-${sanitizeSegment(reservationId)}.ogg`;
 }
 
+/** Write-once LiveKit room VIDEO recording key, scoped to its reservation. */
+export function keyForInterviewVideo(interviewId: string, reservationId: string): string {
+  return `interviews/${sanitizeSegment(interviewId)}/room-${sanitizeSegment(reservationId)}.mp4`;
+}
+
 /** File extension for an allowed interview answer content type. */
 export const INTERVIEW_AUDIO_EXTENSIONS: Record<string, string> = {
   "audio/webm": "webm",

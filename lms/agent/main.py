@@ -17,8 +17,10 @@ endpoints guarded by the shared secret AGENT_INTERNAL_TOKEN (header
 Every finalized user/agent utterance is POSTed to agent-turn with 3 retries;
 failed posts are buffered locally and re-flushed before shutdown — a turn is
 never lost. When Egress env is present (S3 creds + bucket), a room-composite
-audio-only Egress records the whole conversation to
-``interviews/{interviewId}/room.ogg`` and the key is reported on completion.
+VIDEO Egress records the whole conversation to
+``interviews/{interviewId}/room-{reservation}.mp4`` and the key is reported on
+completion — including on the degraded path, where the student has flipped to
+the turn-based loop and this worker is shutting down.
 
 Run: python main.py start   (subcommands come from the livekit-agents CLI)
 """
@@ -72,6 +74,9 @@ def missing_voice_env(env: Mapping[str, str] = os.environ) -> list[str]:
     return ["SARVAM_API_KEY", *LEGACY_VOICE_ENV]
 
 ROOM_PREFIX = "interview-"
+# Two participants, so a speaker layout spends pixels on the student's face
+# rather than on empty grid cells.
+EGRESS_LAYOUT = os.environ.get("INTERVIEW_EGRESS_LAYOUT", "speaker")
 MAX_INTERVIEW_SECONDS = 15 * 60
 QUESTION_BUDGET = 12  # hard ceiling across the five segments
 GEMINI_MODEL = os.environ.get("INTERVIEW_GEMINI_MODEL", "gemini-2.0-flash")
@@ -308,11 +313,16 @@ class LmsClient:
         interview_id: str,
         audio_s3_key: str | None,
         audio_reservation_id: str | None,
+        video_s3_key: str | None = None,
+        video_reservation_id: str | None = None,
     ) -> None:
         body: dict = {"interviewId": interview_id}
         if audio_s3_key and audio_reservation_id:
             body["audioS3Key"] = audio_s3_key
             body["audioReservationId"] = audio_reservation_id
+        if video_s3_key and video_reservation_id:
+            body["videoS3Key"] = video_s3_key
+            body["videoReservationId"] = video_reservation_id
         if not await self._post("/api/interview/agent-complete", body):
             self._pending.append(("/api/interview/agent-complete", body))
 
@@ -331,8 +341,11 @@ class LmsClient:
 
 
 class Egress:
-    """Room-composite audio-only Egress to S3. Strictly best-effort: any
-    failure logs and the interview continues without a room recording."""
+    """Room-composite VIDEO Egress to S3 (MP4 carries the audio too).
+
+    Strictly best-effort: any failure logs and the interview continues without
+    a room recording. The interview is worth more than the tape.
+    """
 
     def __init__(self, room_name: str, s3_key: str | None) -> None:
         self.room_name = room_name
@@ -350,10 +363,10 @@ class Egress:
             self._lkapi = api.LiveKitAPI()
             req = api.RoomCompositeEgressRequest(
                 room_name=self.room_name,
-                audio_only=True,
+                layout=EGRESS_LAYOUT,
                 file_outputs=[
                     api.EncodedFileOutput(
-                        file_type=api.EncodedFileType.OGG,
+                        file_type=api.EncodedFileType.MP4,
                         filepath=self.s3_key,
                         s3=api.S3Upload(
                             access_key=os.environ["AWS_ACCESS_KEY_ID"],
@@ -483,6 +496,13 @@ async def entrypoint(ctx) -> None:
         ctx.shutdown(reason="interview not live/realtime")
         return
 
+    video_reservation = context.get("videoReservation")
+    video_key = (
+        video_reservation.get("s3Key") if isinstance(video_reservation, dict) else None
+    )
+    video_reservation_id = (
+        video_reservation.get("id") if isinstance(video_reservation, dict) else None
+    )
     recording_reservation = context.get("recordingReservation")
     recording_key = (
         recording_reservation.get("s3Key")
@@ -494,8 +514,32 @@ async def entrypoint(ctx) -> None:
         if isinstance(recording_reservation, dict)
         else None
     )
-    egress = Egress(room_name, recording_key)
+    egress = Egress(room_name, video_key)
     await egress.start()
+
+    async def stop_and_report_recording() -> None:
+        """Stop Egress and report the key exactly once.
+
+        Registered as a shutdown callback as well as being called on the normal
+        path: when the student degrades to the turn-based loop mid-interview,
+        agent-turn posts start returning 409 and this worker shuts down with
+        the recording still running. Without this the video of every degraded
+        interview would be orphaned in S3 with no row pointing at it.
+        """
+        if getattr(stop_and_report_recording, "_done", False):
+            return
+        stop_and_report_recording._done = True  # type: ignore[attr-defined]
+        key = await egress.stop()
+        await lms.post_complete(
+            interview_id,
+            None,
+            None,
+            video_s3_key=key,
+            video_reservation_id=video_reservation_id if key else None,
+        )
+        await lms.flush()
+
+    ctx.add_shutdown_callback(stop_and_report_recording)
 
     started_at = time.monotonic()
     finished = asyncio.Event()
@@ -569,9 +613,7 @@ async def entrypoint(ctx) -> None:
     except Exception:  # noqa: BLE001
         pass
 
-    audio_key = await egress.stop()
-    await lms.post_complete(interview_id, audio_key, recording_reservation_id)
-    await lms.flush()
+    await stop_and_report_recording()
     try:
         await session.aclose()
     except Exception:  # noqa: BLE001

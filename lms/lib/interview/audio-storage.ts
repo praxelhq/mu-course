@@ -13,6 +13,7 @@ import {
 } from "@/lib/generated-object-reservations";
 import {
   keyForInterviewRecording,
+  keyForInterviewVideo,
   keyForReservedInterviewAudio,
   type PresignedPut,
 } from "@/lib/s3";
@@ -117,6 +118,8 @@ export async function inspectInterviewAnswerUpload(
 }
 
 const RECORDING_RESERVATION_PREFIX = "interview-recording:";
+/** Distinct prefix so audio and video reservations coexist on one interview. */
+const VIDEO_RESERVATION_PREFIX = "interview-video:";
 
 /** Idempotently reserve the room recording before LiveKit Egress can start. */
 export async function reserveInterviewRecording(
@@ -208,6 +211,117 @@ export async function commitInterviewRecording(
             },
           });
           if (attached.count !== 1) throw new Error("Interview recording target disappeared");
+        },
+      },
+      deps,
+    );
+  } catch (error) {
+    await compensateGeneratedObjectVersion(
+      inspected.reservation.id,
+      { versionId: inspected.metadata.versionId, etag: inspected.metadata.etag },
+      deps,
+    ).catch(() => undefined);
+    throw error;
+  }
+  return { s3Key: args.s3Key, s3VersionId: inspected.metadata.versionId };
+}
+
+// ---------------------------------------------------------------------------
+// Room VIDEO recording (U5). Mirrors the audio pair above but writes MP4 and
+// carries its own reservation prefix, so one interview can hold both an audio
+// and a video reservation without colliding on the reservation id.
+// ---------------------------------------------------------------------------
+
+/** Idempotently reserve the room video before LiveKit Egress can start. */
+export async function reserveInterviewVideo(
+  interviewId: string,
+  deps: GeneratedObjectReservationDeps = {},
+): Promise<GeneratedObjectReservation> {
+  const reservationId = `${VIDEO_RESERVATION_PREFIX}${interviewId}`;
+  try {
+    return await reserveGeneratedObject(
+      {
+        id: reservationId,
+        purpose: "interview_video",
+        interviewId,
+        targetId: interviewId,
+        s3Key: keyForInterviewVideo(interviewId, reservationId),
+      },
+      deps,
+    );
+  } catch (error) {
+    if (!(error instanceof Prisma.PrismaClientKnownRequestError) || error.code !== "P2002") {
+      throw error;
+    }
+    const existing = await prisma.generatedObjectReservation.findUnique({
+      where: { id: reservationId },
+    });
+    if (
+      !existing ||
+      existing.purpose !== "interview_video" ||
+      existing.interviewId !== interviewId ||
+      existing.targetId !== interviewId ||
+      existing.cancelledAt
+    ) {
+      throw new GeneratedObjectReservationError(409, "Interview video reservation is unavailable.");
+    }
+    return existing;
+  }
+}
+
+/** HEAD the Egress video object and atomically attach its immutable version. */
+export async function commitInterviewVideo(
+  args: { interviewId: string; reservationId: string; s3Key: string },
+  deps: GeneratedObjectReservationDeps = {},
+): Promise<{ s3Key: string; s3VersionId: string }> {
+  const existing = await prisma.generatedObjectReservation.findUnique({
+    where: { id: args.reservationId },
+  });
+  if (existing?.consumedAt && existing.s3VersionId) {
+    const interview = await prisma.interview.findUnique({
+      where: { id: args.interviewId },
+      select: { videoS3Key: true, videoS3VersionId: true },
+    });
+    if (
+      interview?.videoS3Key === args.s3Key &&
+      interview.videoS3VersionId === existing.s3VersionId
+    ) {
+      return { s3Key: args.s3Key, s3VersionId: existing.s3VersionId };
+    }
+  }
+
+  const inspected = await inspectGeneratedObjectUpload(
+    {
+      reservationId: args.reservationId,
+      expected: {
+        purpose: "interview_video",
+        interviewId: args.interviewId,
+        targetId: args.interviewId,
+        s3Key: args.s3Key,
+      },
+    },
+    deps,
+  );
+  try {
+    await consumeGeneratedObjectReservation(
+      {
+        reservation: inspected.reservation,
+        expected: {
+          purpose: "interview_video",
+          interviewId: args.interviewId,
+          targetId: args.interviewId,
+          s3Key: args.s3Key,
+          s3VersionId: inspected.metadata.versionId,
+        },
+        attach: async (tx) => {
+          const attached = await tx.interview.updateMany({
+            where: { id: args.interviewId },
+            data: {
+              videoS3Key: args.s3Key,
+              videoS3VersionId: inspected.metadata.versionId,
+            },
+          });
+          if (attached.count !== 1) throw new Error("Interview video target disappeared");
         },
       },
       deps,

@@ -1,6 +1,9 @@
 import { z } from "zod";
 import { prisma } from "@/lib/db";
-import { commitInterviewRecording } from "@/lib/interview/audio-storage";
+import {
+  commitInterviewRecording,
+  commitInterviewVideo,
+} from "@/lib/interview/audio-storage";
 import { interviewErrorResponse } from "@/lib/interview/http";
 import { agentAuthResponse } from "@/lib/interview/realtime";
 import { completeInterview } from "@/lib/interview/session";
@@ -19,8 +22,11 @@ const bodySchema = z
     /** Room-composite Egress output reserved before recording starts. */
     audioS3Key: z.string().min(1).max(500).optional(),
     audioReservationId: z.string().min(1).max(500).optional(),
+    videoS3Key: z.string().min(1).max(500).optional(),
+    videoReservationId: z.string().min(1).max(500).optional(),
   })
-  .refine((body) => Boolean(body.audioS3Key) === Boolean(body.audioReservationId));
+  .refine((body) => Boolean(body.audioS3Key) === Boolean(body.audioReservationId))
+  .refine((body) => Boolean(body.videoS3Key) === Boolean(body.videoReservationId));
 
 export async function POST(req: Request): Promise<Response> {
   const denied = agentAuthResponse(req);
@@ -28,7 +34,8 @@ export async function POST(req: Request): Promise<Response> {
 
   const parsed = bodySchema.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return Response.json({ error: "Invalid body" }, { status: 400 });
-  const { interviewId, audioS3Key, audioReservationId } = parsed.data;
+  const { interviewId, audioS3Key, audioReservationId, videoS3Key, videoReservationId } =
+    parsed.data;
 
   try {
     const interview = await prisma.interview.findUnique({
@@ -43,6 +50,13 @@ export async function POST(req: Request): Promise<Response> {
         return Response.json({ error: "audioS3Key outside interview namespace" }, { status: 400 });
       }
       await commitInterviewRecording({ interviewId, reservationId: audioReservationId, s3Key: audioS3Key });
+    }
+
+    if (videoS3Key && videoReservationId) {
+      if (!videoS3Key.startsWith(`interviews/${interviewId}/`)) {
+        return Response.json({ error: "videoS3Key outside interview namespace" }, { status: 400 });
+      }
+      await commitInterviewVideo({ interviewId, reservationId: videoReservationId, s3Key: videoS3Key });
     }
 
     await completeInterview(interviewId, interview.userId);
