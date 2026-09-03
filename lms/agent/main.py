@@ -77,7 +77,12 @@ ROOM_PREFIX = "interview-"
 # rather than on empty grid cells.
 EGRESS_LAYOUT = os.environ.get("INTERVIEW_EGRESS_LAYOUT", "speaker")
 MAX_INTERVIEW_SECONDS = 15 * 60
-QUESTION_BUDGET = 12  # hard ceiling across the five segments
+QUESTION_BUDGET = 20  # hard ceiling across the five segments (runaway guard)
+# The model may not end the interview before this many of its own turns. The
+# five-segment arc cannot be covered in fewer, and the final segment — the
+# student's own workflow and sector map — is the one that gets skipped when an
+# interview ends early. Prompt instructions alone did not hold; this does.
+MIN_TURNS_BEFORE_END = 10
 # Dialog runs through LiveKit Inference, which is included in LiveKit Cloud —
 # no extra provider key, and it is zero-data-retention by default, which matters
 # because this prompt carries the student's own resume.
@@ -457,6 +462,12 @@ def realtime_instructions(system_prompt: str) -> str:
         "  conversational sentences only, never JSON, code, or markup.\n"
         "- Ask exactly ONE question, then wait for the student to finish.\n"
         "- Keep each question under three sentences; no lists.\n"
+        "- Do NOT praise or evaluate answers. No \"great\", \"excellent\",\n"
+        "  \"perfect\", \"solid\", \"good point\", \"that makes sense\". Acknowledge\n"
+        "  briefly and ask the next question. Warmth comes from tone and\n"
+        "  curiosity, never from compliments.\n"
+        "- You MUST cover the student's own workflow and sector map before\n"
+        "  ending. Do not call end_interview until you have.\n"
         "- Many students speak English as a second or third language and may\n"
         "  mix in Hindi. Never treat accent, grammar or hesitation as a weak\n"
         "  answer. If you cannot follow an answer, ask them to put it another\n"
@@ -559,6 +570,25 @@ async def entrypoint(ctx) -> None:
         async def end_interview(self, ctx_: RunContext) -> str:
             """Call this when the interview should end: the question budget is
             reached, all categories are covered, or the student asks to stop."""
+            # Refuse an early finish. A previous run ended after the RAG segment
+            # having never asked about the student's own Make workflow or sector
+            # map, which is the only evidence the work-integrity score is drawn
+            # from. The grader correctly scored it 12/50 and flagged the
+            # transcript — but the interview was already unrecoverable.
+            if question_count < MIN_TURNS_BEFORE_END:
+                logger.info(
+                    "end_interview refused for %s at %s turns — workflow segment not covered",
+                    interview_id, question_count,
+                )
+                return (
+                    "Not yet — you have not covered the final segment. Do NOT end "
+                    "the interview. Ask the student about the workflow and sector "
+                    "map they built and uploaded: how it handles errors and "
+                    "timeouts, what trigger criteria they chose and why those are "
+                    "right for this workflow, what they discussed but decided not "
+                    "to implement, and how they kept credit use down. Ask one "
+                    "question now."
+                )
             finished.set()
             return "The interview is over. Say a short, warm goodbye."
 

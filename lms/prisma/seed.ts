@@ -948,6 +948,7 @@ export async function main(): Promise<void> {
         key: "interview_script",
         value: {
           durationMinutes: 15,
+          questionBudget: 16,
           categories: [
             { key: "intro", title: "Greeting and a brief introduction", sampleQuestions: ["Tell me a little about yourself and what you've been working on."] },
             { key: "ai_in_their_work", title: "Applying AI in their own prior role", sampleQuestions: ["In your last role, if you were told to make the team more efficient using AI, what would you automate first?", "What in that job would you deliberately NOT hand to an AI, and why?"] },

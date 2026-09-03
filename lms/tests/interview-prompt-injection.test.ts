@@ -196,6 +196,37 @@ describe("the interview arc", () => {
     expect(prompt).toMatch(/mixing English with Hindi/i);
   });
 
+  it("forbids ending before the student's own workflow is examined", async () => {
+    // Regression: a real interview ended after the RAG segment having never
+    // asked about the workflow or sector map. work_integrity is scored only
+    // from that segment, so the grader could award it nothing.
+    const prompt = await promptWith("x");
+    expect(prompt).toMatch(/COVERAGE IS MANDATORY/);
+    expect(prompt).toMatch(/may NOT end the interview until "own_work_defence"/i);
+    expect(prompt).toMatch(/never cut this one/i);
+  });
+
+  it("plans enough questions for five segments", async () => {
+    // 9 was the old four-category budget and starved the final segment.
+    const prompt = await promptWith("x");
+    const m = prompt.match(/roughly (\d+) questions/);
+    expect(m).not.toBeNull();
+    expect(Number(m![1])).toBeGreaterThanOrEqual(14);
+  });
+
+  it("forbids praising or evaluating answers", async () => {
+    // A real run said "excellent", "solid", "makes a lot of sense" — which
+    // signals to the student how they are scoring, in an interview that must
+    // never reveal that.
+    const prompt = await promptWith("x");
+    expect(prompt).toMatch(/Do NOT evaluate, praise, or validate answers/i);
+    for (const banned of ["great", "excellent", "solid", "good point"]) {
+      expect(prompt.toLowerCase()).toContain(banned);
+    }
+    expect(prompt).toMatch(/Acknowledge and move on/i);
+    expect(prompt).toMatch(/cold is not/i);
+  });
+
   it("states the 15-minute shape", async () => {
     expect(await promptWith("x")).toMatch(/15 minutes/);
   });
