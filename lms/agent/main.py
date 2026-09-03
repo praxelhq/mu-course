@@ -126,17 +126,39 @@ MIN_TURNS_BEFORE_END = 10
 # when the interviewer has genuinely turned to the artifact the student
 # uploaded; generic words like "workflow" are deliberately excluded because
 # they show up in the earlier AI-in-your-job segment too.
-OWN_WORK_MARKERS = (
+# Naming the artifact is not the same as interrogating it. A simulated run
+# ended having said "the Make.com workflow you built" inside the CONTEXT
+# ISOLATION question — the keyword matched, coverage passed, and the interview
+# closed without once asking about error handling, trigger criteria, what was
+# left unbuilt, or credit burn. So coverage needs both halves: the artifact
+# named, AND at least one of the things this segment exists to ask about.
+OWN_WORK_IDENTITY_MARKERS = (
     "sector map",
     "blueprint",
     "make.com",
-    "trigger criteria",
-    "error handling",
-    "error handler",
     "workflow you built",
     "workflow you uploaded",
     "automation you built",
     "scenario you built",
+)
+
+OWN_WORK_SUBSTANCE_MARKERS = (
+    "error handler",
+    "error handling",
+    "timeout",
+    "times out",
+    "trigger criteria",
+    "trigger did you",
+    "why that trigger",
+    "chose that trigger",
+    "decided not to",
+    "decide not to",
+    "did not implement",
+    "didn't implement",
+    "left out",
+    "credit",
+    "fails",
+    "breaks",
 )
 
 # An escape hatch so a model that will not comply cannot trap the student in a
@@ -145,9 +167,17 @@ END_GUARD_RELEASE_SECONDS = MAX_INTERVIEW_SECONDS - 120
 
 
 def own_work_covered(agent_utterances: "list[str]") -> bool:
-    """True once the interviewer has actually raised the student's own build."""
+    """True once the interviewer has actually INTERROGATED the student's build.
+
+    Both halves are required. Naming the artifact in passing — inside another
+    segment's question, say — is not the segment; neither is asking about error
+    handling in the abstract. work_integrity is scored from this and nothing
+    else, so a false positive here costs a student half their marks.
+    """
     haystack = " ".join(agent_utterances).lower()
-    return any(marker in haystack for marker in OWN_WORK_MARKERS)
+    named = any(marker in haystack for marker in OWN_WORK_IDENTITY_MARKERS)
+    probed = any(marker in haystack for marker in OWN_WORK_SUBSTANCE_MARKERS)
+    return named and probed
 # Dialog runs through LiveKit Inference, which is included in LiveKit Cloud —
 # no extra provider key, and it is zero-data-retention by default, which matters
 # because this prompt carries the student's own resume.

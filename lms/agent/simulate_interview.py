@@ -170,8 +170,11 @@ async def run(prompt_path: str, turns_path: str) -> int:
     print(f"  own work covered     : {covered}")
     print(f"  ended cleanly        : {ended}")
     print("=" * 62)
-    hits = [m for m in main.OWN_WORK_MARKERS if m in " ".join(agent_utterances).lower()]
-    print(f"  coverage markers hit : {hits or 'NONE'}")
+    said = " ".join(agent_utterances).lower()
+    named = [m for m in main.OWN_WORK_IDENTITY_MARKERS if m in said]
+    probed = [m for m in main.OWN_WORK_SUBSTANCE_MARKERS if m in said]
+    print(f"  artifact named       : {named or 'NONE'}")
+    print(f"  substance probed     : {probed or 'NONE'}")
 
     # Hand the transcript to the real grader so a simulated run reports a
     # score, not just coverage.

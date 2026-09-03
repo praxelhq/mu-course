@@ -134,19 +134,41 @@ class TestOwnWorkCoverage:
         ]
         assert main.own_work_covered(asked) is False
 
-    def test_naming_the_sector_map_counts(self):
-        assert main.own_work_covered(["Talk me through your sector map."]) is True
-
-    def test_naming_the_blueprint_counts(self):
-        assert main.own_work_covered(["Why does your blueprint retry that module?"]) is True
-
-    def test_asking_about_trigger_criteria_counts(self):
+    def test_naming_the_artifact_alone_is_not_coverage(self):
+        # Caught by simulation: the interviewer said "the Make.com workflow you
+        # built" INSIDE the context-isolation question, the keyword matched,
+        # and the interview ended without interrogating the build at all.
         assert main.own_work_covered(
-            ["What trigger criteria did you choose, and why those?"]
+            ["How would you apply that same context separation to the Make.com "
+             "workflow you built, where you process articles in a Google Sheet?"]
+        ) is False
+
+    def test_probing_without_naming_the_artifact_is_not_coverage(self):
+        # Error handling in the abstract is not a defence of their build.
+        assert main.own_work_covered(
+            ["In general, how should an automation handle a timeout?"]
+        ) is False
+
+    def test_naming_plus_probing_is_coverage(self):
+        assert main.own_work_covered(
+            ["Talk me through your sector map.",
+             "What does your error handling do when the HTTP module times out?"]
         ) is True
 
-    def test_error_handling_counts(self):
-        assert main.own_work_covered(["What does your error handling do on a timeout?"]) is True
+    def test_trigger_criteria_on_the_named_blueprint_counts(self):
+        assert main.own_work_covered(
+            ["Why does your blueprint use that trigger criteria?"]
+        ) is True
+
+    def test_what_they_left_out_counts_as_substance(self):
+        assert main.own_work_covered(
+            ["In the Make.com scenario you built, what did you decide not to implement?"]
+        ) is True
+
+    def test_credit_burn_counts_as_substance(self):
+        assert main.own_work_covered(
+            ["How did your blueprint avoid burning credits on every run?"]
+        ) is True
 
     def test_the_word_workflow_alone_is_not_enough(self):
         # "workflow" appears in the earlier AI-in-your-job segment, so counting
@@ -154,7 +176,9 @@ class TestOwnWorkCoverage:
         assert main.own_work_covered(["Which workflow would you automate first?"]) is False
 
     def test_matching_ignores_case(self):
-        assert main.own_work_covered(["Tell me about your SECTOR MAP."]) is True
+        assert main.own_work_covered(
+            ["Tell me about your SECTOR MAP.", "What happens when it TIMES OUT?"]
+        ) is True
 
     def test_no_questions_is_not_covered(self):
         assert main.own_work_covered([]) is False
