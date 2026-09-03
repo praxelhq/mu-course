@@ -172,3 +172,21 @@ describe("escalation", () => {
     expect(interviewEscalationReason({ confidence: 0.9, flags: [] })).toBeNull();
   });
 });
+
+describe("grader knows what good looks like on the set probes", () => {
+  it("credits context isolation, not better prompting, on the three-projects probe", () => {
+    const { system } = context();
+    expect(system).toMatch(/distinct project or workspace per stream of work/i);
+    expect(system).toMatch(/treat a context problem as a phrasing problem/i);
+  });
+
+  it("scores the regulated-shipping probe on reasoning, not on which side they pick", () => {
+    const { system } = context();
+    expect(system).toMatch(/not which side they land on/i);
+    expect(system).toMatch(/equally weak/i);
+  });
+
+  it("expects a real repetitive task for the skill probe", () => {
+    expect(context().system).toMatch(/naming a tool is not an answer/i);
+  });
+});

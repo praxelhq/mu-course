@@ -198,6 +198,30 @@ describe("an artifact we cannot read never reaches the student", () => {
   });
 });
 
+describe("the three set probes", () => {
+  it("asks for one skill they would build, and why that one", async () => {
+    const prompt = await promptWith("x");
+    expect(prompt).toMatch(/Name one skill you would build in your workspace/i);
+    expect(prompt).toMatch(/repetitive enough to be worth packaging/i);
+  });
+
+  it("asks the three-projects question without hinting at the answer", async () => {
+    const prompt = await promptWith("x");
+    expect(prompt).toMatch(/three different projects at work/i);
+    expect(prompt).toMatch(/Do NOT suggest an approach, name any feature, or hint/i);
+    // The interviewer must never be told the answer, or it will lead the student.
+    expect(prompt).not.toMatch(/separate (project|workspace) per/i);
+    expect(prompt).not.toMatch(/the answer is/i);
+  });
+
+  it("asks whether they would ship a Lovable build into US healthcare or fintech", async () => {
+    const prompt = await promptWith("x");
+    expect(prompt).toMatch(/healthcare or fintech enterprise in the US/i);
+    expect(prompt).toMatch(/Do not accept a bare yes or a bare no/i);
+    expect(prompt).toMatch(/HIPAA|SOC 2|PCI-DSS/);
+  });
+});
+
 describe("the interview arc", () => {
   it("runs the five segments in order", async () => {
     const prompt = await promptWith("Ravi Kumar, analyst.");

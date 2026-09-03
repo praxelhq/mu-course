@@ -2,7 +2,12 @@ import { notFound } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { presignGet, s3Configured } from "@/lib/s3";
 import { Card, Eyebrow } from "@/components/ui";
-import { INTERVIEW_CATEGORIES } from "@/lib/ai/interview-grading";
+import {
+  INTERVIEW_CATEGORIES,
+  INTERVIEW_CATEGORY_MAX,
+  LEGACY_INTERVIEW_CATEGORIES,
+  LEGACY_INTERVIEW_CATEGORY_MAX,
+} from "@/lib/ai/interview-grading";
 import { InterviewActions, RegenerateInterview } from "./actions";
 
 // One interview: transcript with per-turn audio (presigned, short TTL),
@@ -66,6 +71,14 @@ export default async function InterviewDetailPage({
   const unreadablePrereqs = prereqs.filter((p) => !p.extractedText).map((p) => p.kind);
 
   const scores = (interview.rubricScores ?? null) as Record<string, unknown> | null;
+  // Interviews graded before the two-axis rubric carry the four legacy
+  // categories scored out of 25. Render whichever shape the row actually has —
+  // hardcoding one made a 35/50 axis display as "35/25".
+  const usesCurrentAxes = INTERVIEW_CATEGORIES.some((k) => typeof scores?.[k] === "number");
+  const shownCategories: readonly string[] = usesCurrentAxes
+    ? INTERVIEW_CATEGORIES
+    : LEGACY_INTERVIEW_CATEGORIES;
+  const perAxisMax = usesCurrentAxes ? INTERVIEW_CATEGORY_MAX : LEGACY_INTERVIEW_CATEGORY_MAX;
   const rationales = (scores?.rationales ?? {}) as Record<string, string>;
   const t0 = turns[0]?.startedAt.getTime() ?? 0;
 
@@ -122,11 +135,11 @@ export default async function InterviewDetailPage({
             {interview.confidence != null ? ` · confidence ${interview.confidence.toFixed(2)}` : ""}
           </p>
           <div style={{ display: "grid", gap: "0.75rem" }}>
-            {INTERVIEW_CATEGORIES.map((key) => (
+            {shownCategories.map((key) => (
               <div key={key} style={{ borderTop: "1px solid var(--sand)", paddingTop: "0.75rem" }}>
                 <p style={{ margin: 0, fontWeight: 600 }}>
                   {key.replace(/_/g, " ")} —{" "}
-                  {typeof scores[key] === "number" ? `${scores[key]}/25` : "—"}
+                  {typeof scores[key] === "number" ? `${scores[key]}/${perAxisMax}` : "—"}
                 </p>
                 {rationales[key] && (
                   <p style={{ margin: "0.25rem 0 0", fontSize: "0.875rem", color: "var(--charcoal)" }}>
