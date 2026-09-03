@@ -163,3 +163,66 @@ class TestOwnWorkCoverage:
         # A model that refuses to comply must not trap the student in a loop.
         assert main.END_GUARD_RELEASE_SECONDS < main.MAX_INTERVIEW_SECONDS
         assert main.END_GUARD_RELEASE_SECONDS > 0
+
+
+# The legacy pair used to be unreachable: selection returned Sarvam whenever
+# SARVAM_API_KEY was set, so the "fallback" only covered a missing key — never
+# the vendor being down, which is the failure that actually happens.
+class TestVoiceFailover:
+    BOTH = {
+        "SARVAM_API_KEY": "s",
+        "DEEPGRAM_API_KEY": "d",
+        "ELEVENLABS_API_KEY": "e",
+    }
+
+    def test_both_providers_are_available_when_both_are_keyed(self):
+        assert main.available_voice_providers(self.BOTH) == [
+            main.VOICE_SARVAM,
+            main.VOICE_LEGACY,
+        ]
+
+    def test_sarvam_still_leads(self):
+        assert main.select_voice_provider(self.BOTH) == main.VOICE_SARVAM
+
+    def test_legacy_alone_when_sarvam_is_unkeyed(self):
+        env = {k: v for k, v in self.BOTH.items() if k != "SARVAM_API_KEY"}
+        assert main.available_voice_providers(env) == [main.VOICE_LEGACY]
+
+    def test_sarvam_alone_when_the_legacy_pair_is_incomplete(self):
+        # A half-configured pair is not a usable provider.
+        env = {"SARVAM_API_KEY": "s", "DEEPGRAM_API_KEY": "d"}
+        assert main.available_voice_providers(env) == [main.VOICE_SARVAM]
+
+    def test_nothing_available_with_no_keys(self):
+        assert main.available_voice_providers({}) == []
+        assert main.select_voice_provider({}) is None
+
+    def test_operator_can_pin_legacy_without_deleting_the_sarvam_key(self):
+        # The fastest mitigation when Sarvam degrades mid-cohort: a variable
+        # and a restart, with the key left in place for the way back.
+        env = {**self.BOTH, "INTERVIEW_VOICE_PROVIDER": "legacy"}
+        assert main.available_voice_providers(env) == [main.VOICE_LEGACY]
+        assert main.select_voice_provider(env) == main.VOICE_LEGACY
+
+    def test_operator_can_pin_sarvam(self):
+        env = {**self.BOTH, "INTERVIEW_VOICE_PROVIDER": "sarvam"}
+        assert main.available_voice_providers(env) == [main.VOICE_SARVAM]
+
+    def test_a_meaningless_override_is_ignored_rather_than_fatal(self):
+        env = {**self.BOTH, "INTERVIEW_VOICE_PROVIDER": "banana"}
+        assert main.voice_override(env) is None
+        assert main.available_voice_providers(env) == [
+            main.VOICE_SARVAM,
+            main.VOICE_LEGACY,
+        ]
+
+    def test_pinning_a_provider_with_no_key_leaves_nothing(self):
+        # Better to fail the env check loudly than to silently ignore the pin.
+        env = {"SARVAM_API_KEY": "s", "INTERVIEW_VOICE_PROVIDER": "legacy"}
+        assert main.available_voice_providers(env) == []
+
+    def test_missing_voice_env_still_names_every_key(self):
+        assert main.missing_voice_env({}) == [
+            "SARVAM_API_KEY",
+            *main.LEGACY_VOICE_ENV,
+        ]

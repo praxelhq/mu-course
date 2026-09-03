@@ -53,17 +53,41 @@ VOICE_LEGACY = "legacy"
 LEGACY_VOICE_ENV = ("DEEPGRAM_API_KEY", "ELEVENLABS_API_KEY")
 
 
+def voice_override(env: Mapping[str, str] = os.environ) -> str | None:
+    """Operator kill switch: INTERVIEW_VOICE_PROVIDER=sarvam|legacy.
+
+    Set this to pin one provider mid-cohort without deleting a key or shipping
+    code — a Railway variable and a restart is the fastest lever there is when
+    a vendor is degraded but not actually erroring.
+    """
+    value = (env.get("INTERVIEW_VOICE_PROVIDER") or "").strip().lower()
+    return value if value in (VOICE_SARVAM, VOICE_LEGACY) else None
+
+
+def available_voice_providers(env: Mapping[str, str] = os.environ) -> list[str]:
+    """Every provider this process could use, best first.
+
+    More than one means real failover: Sarvam leads and the legacy pair backs
+    it, rather than the legacy pair being dead code that only runs when someone
+    forgets to set SARVAM_API_KEY.
+    """
+    forced = voice_override(env)
+    providers: list[str] = []
+    if forced != VOICE_LEGACY and env.get("SARVAM_API_KEY"):
+        providers.append(VOICE_SARVAM)
+    if forced != VOICE_SARVAM and all(env.get(k) for k in LEGACY_VOICE_ENV):
+        providers.append(VOICE_LEGACY)
+    return providers
+
+
 def select_voice_provider(env: Mapping[str, str] = os.environ) -> str | None:
     """Which STT/TTS pair this process will use, or None if neither is complete.
 
     Sarvam wins whenever its key is present; a half-configured legacy pair is
     not a usable provider, so it never counts.
     """
-    if env.get("SARVAM_API_KEY"):
-        return VOICE_SARVAM
-    if all(env.get(k) for k in LEGACY_VOICE_ENV):
-        return VOICE_LEGACY
-    return None
+    providers = available_voice_providers(env)
+    return providers[0] if providers else None
 
 
 def missing_voice_env(env: Mapping[str, str] = os.environ) -> list[str]:
@@ -465,40 +489,78 @@ class Egress:
         return key
 
 
-def build_voice_components():
-    """Construct the (STT, TTS) pair for the selected provider.
+def _sarvam_pair():
+    from livekit.plugins import sarvam
 
-    Kept separate from ``select_voice_provider`` so the selection rule stays
-    importable and unit-testable without the livekit plugin packages installed.
-    """
-    provider = select_voice_provider()
-    if provider == VOICE_SARVAM:
-        from livekit.plugins import sarvam
-
-        # STTRealtime (saaras:v3-realtime) is the streaming class in newer
-        # plugin releases; older ones ship only STT. Prefer realtime, fall back
-        # rather than crashing on a version we did not pin.
-        if hasattr(sarvam, "STTRealtime"):
-            stt = sarvam.STTRealtime(
-                language=SARVAM_STT_LANGUAGE,
-                stream_type=SARVAM_STT_STREAM_TYPE,
-            )
-        else:
-            logger.warning(
-                "sarvam.STTRealtime unavailable in the installed plugin; "
-                "using sarvam.STT"
-            )
-            stt = sarvam.STT(language=SARVAM_STT_LANGUAGE)
-        tts = sarvam.TTS(
-            target_language_code=SARVAM_TTS_LANGUAGE,
-            model=SARVAM_TTS_MODEL,
-            speaker=SARVAM_TTS_SPEAKER,
+    # STTRealtime (saaras:v3-realtime) is the streaming class in newer plugin
+    # releases; older ones ship only STT. Prefer realtime, fall back rather
+    # than crashing on a version we did not pin.
+    if hasattr(sarvam, "STTRealtime"):
+        stt_impl = sarvam.STTRealtime(
+            language=SARVAM_STT_LANGUAGE,
+            stream_type=SARVAM_STT_STREAM_TYPE,
         )
-        return stt, tts
+    else:
+        logger.warning(
+            "sarvam.STTRealtime unavailable in the installed plugin; using sarvam.STT"
+        )
+        stt_impl = sarvam.STT(language=SARVAM_STT_LANGUAGE)
+    tts_impl = sarvam.TTS(
+        target_language_code=SARVAM_TTS_LANGUAGE,
+        model=SARVAM_TTS_MODEL,
+        speaker=SARVAM_TTS_SPEAKER,
+    )
+    return stt_impl, tts_impl
 
+
+def _legacy_pair():
     from livekit.plugins import deepgram, elevenlabs
 
     return deepgram.STT(model="nova-3"), elevenlabs.TTS()
+
+
+_VOICE_BUILDERS = {VOICE_SARVAM: _sarvam_pair, VOICE_LEGACY: _legacy_pair}
+
+
+def build_voice_components():
+    """Construct the (STT, TTS) the session will use.
+
+    When both providers are configured this returns LiveKit's FallbackAdapters
+    rather than one provider's clients, so a Sarvam outage, timeout or 429
+    fails over to Deepgram/ElevenLabs mid-session instead of ending the
+    interview. Previously the legacy pair was unreachable: selection returned
+    Sarvam whenever SARVAM_API_KEY was set, so the "fallback" only covered
+    someone forgetting to set the key — never the vendor being down, which is
+    the failure that actually happens.
+
+    Kept separate from the selection helpers so those stay importable and
+    unit-testable without the livekit plugin packages installed.
+    """
+    providers = available_voice_providers()
+    if not providers:
+        return None, None
+
+    pairs = []
+    for name in providers:
+        try:
+            pairs.append((name, *_VOICE_BUILDERS[name]()))
+        except Exception as err:  # noqa: BLE001 — a broken plugin must not take the others down
+            logger.error("voice provider %s failed to construct: %s", name, err)
+
+    if not pairs:
+        return None, None
+    if len(pairs) == 1:
+        logger.info("voice provider: %s (no failover configured)", pairs[0][0])
+        return pairs[0][1], pairs[0][2]
+
+    from livekit.agents import stt as stt_mod
+    from livekit.agents import tts as tts_mod
+
+    logger.info("voice providers: %s (failover in order)", " -> ".join(p[0] for p in pairs))
+    return (
+        stt_mod.FallbackAdapter([p[1] for p in pairs]),
+        tts_mod.FallbackAdapter([p[2] for p in pairs]),
+    )
 
 
 def realtime_instructions(system_prompt: str) -> str:
@@ -743,17 +805,24 @@ def main() -> None:
     # missing-env message instead of an SDK traceback.
     from livekit.agents import WorkerOptions, cli
 
-    provider = select_voice_provider()
-    if provider == VOICE_SARVAM:
+    providers = available_voice_providers()
+    forced = voice_override()
+    if forced:
+        logger.warning("voice provider PINNED to %s by INTERVIEW_VOICE_PROVIDER", forced)
+    if providers[:1] == [VOICE_SARVAM]:
         logger.info(
             "voice provider: sarvam (stt language=%s, tts %s/%s)",
             SARVAM_STT_LANGUAGE, SARVAM_TTS_MODEL, SARVAM_TTS_SPEAKER,
         )
-    else:
+    if len(providers) > 1:
+        logger.info("voice failover configured: %s", " -> ".join(providers))
+    elif providers == [VOICE_LEGACY]:
         logger.warning(
-            "voice provider: deepgram+elevenlabs FALLBACK — SARVAM_API_KEY is "
-            "not set on this service"
+            "voice provider: deepgram+elevenlabs only — no Sarvam, so nothing "
+            "to fail over FROM"
         )
+    else:
+        logger.warning("voice provider: %s with NO failover configured", providers or "none")
     logger.info("env OK — starting LiveKit interview agent worker")
     cli.run_app(WorkerOptions(entrypoint_fnc=entrypoint, request_fnc=request_fnc))
 
