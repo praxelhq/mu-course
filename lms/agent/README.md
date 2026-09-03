@@ -107,3 +107,23 @@ Add `python main.py download-files` as a Dockerfile build step so the Silero
 VAD weights bake into the image instead of downloading at boot.
 No HTTP healthcheck — it is an outbound worker; process liveness + restart
 policy (`ON_FAILURE`) cover it.
+
+## Simulating an interview
+
+`simulate_interview.py` replays an interview against the real dialog model and
+the real end guard, so a change to the interviewing rules can be tested without
+a student sitting through fifteen minutes of it.
+
+```bash
+uv run python simulate_interview.py <prompt-file> <prior-turns-file>
+```
+
+The interviewer is DIALOG_MODEL reached through LiveKit Inference exactly as
+the agent reaches it, wrapped in the same `realtime_instructions`, and
+`end_interview` is guarded by `own_work_covered` itself rather than a copy.
+The student is simulated from a real transcript. Needs `LIVEKIT_*` for the
+interviewer and `ANTHROPIC_API_KEY` for the simulated student — the latter is
+harness-only and never touches the production dialog path.
+
+Set `SIM_TRANSCRIPT_OUT` to write the transcript out for grading. The run exits
+non-zero if the interview ended without covering the student's own work.
