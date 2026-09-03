@@ -210,6 +210,22 @@ describe("the interviewer's failures are not the student's", () => {
   });
 });
 
+describe("rationales are student-facing", () => {
+  it("tells the grader the rationale is shown to the student", () => {
+    expect(context().system).toMatch(/SHOWN TO THE STUDENT, VERBATIM/i);
+  });
+
+  it("forbids putting an integrity accusation in a rationale", () => {
+    const { system } = context();
+    expect(system).toMatch(/never state or imply dishonesty, coaching, fabrication/i);
+    expect(system).toMatch(/belongs in "flags", which the student never sees/i);
+  });
+
+  it("frames an unexplored segment as the interview's gap, not the student's", () => {
+    expect(context().system).toMatch(/never as something the student failed to provide/i);
+  });
+});
+
 describe("escalation", () => {
   it("escalates below the confidence threshold", () => {
     expect(interviewEscalationReason({ confidence: 0.5, flags: [] })).toMatch(/confidence/i);

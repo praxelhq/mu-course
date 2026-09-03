@@ -65,6 +65,47 @@ describe("what the student must NOT see", () => {
   });
 });
 
+describe("the shape the worker actually writes", () => {
+  // grade-interview flattens the grade: bare numbers per axis, reasoning in a
+  // sibling `rationales` object. Reading only scores[key] gave the student a
+  // score with no feedback at all, which is what shipped.
+  const flattened = {
+    status: "graded",
+    completedAt: new Date("2026-09-04T10:00:00.000Z"),
+    rubricScores: {
+      conceptual_understanding: 38,
+      work_integrity: 32,
+      total: 70,
+      rationales: {
+        conceptual_understanding: "Solid on context separation and data privacy distinctions.",
+        work_integrity: "Defended the trigger choice; error handling was thin.",
+      },
+      flags: ["possible-coaching"],
+    },
+  };
+
+  it("shows the reasoning that lives in the sibling object", () => {
+    const view = buildInterviewResult(flattened);
+    if (view.state !== "ready") throw new Error("expected ready");
+    expect(view.axes[0].score).toBe(38);
+    expect(view.axes[0].rationale).toMatch(/context separation/);
+    expect(view.axes[1].rationale).toMatch(/trigger choice/);
+  });
+
+  it("still does not leak the flags stored alongside them", () => {
+    const serialised = JSON.stringify(buildInterviewResult(flattened));
+    expect(serialised).not.toMatch(/possible-coaching/);
+    expect(serialised).not.toMatch(/flags/);
+  });
+
+  it("totals from the axes rather than trusting the stored total", () => {
+    const view = buildInterviewResult(flattened);
+    if (view.state !== "ready") throw new Error("expected ready");
+    expect(view.total).toBe(70);
+    expect(view.axes).toHaveLength(2);
+  });
+});
+
 describe("historical rows still render", () => {
   it("reads the retired four-category rubric at 25 points each", () => {
     const view = buildInterviewResult({

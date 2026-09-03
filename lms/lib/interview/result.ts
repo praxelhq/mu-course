@@ -72,17 +72,30 @@ export function buildInterviewResult(
   const keys = usesCurrent ? INTERVIEW_CATEGORIES : LEGACY_INTERVIEW_CATEGORIES;
   const max = usesCurrent ? INTERVIEW_CATEGORY_MAX : LEGACY_INTERVIEW_CATEGORY_MAX;
 
+  // The worker FLATTENS the grade before storing it: each axis is a bare
+  // number at the top level and the reasoning lives in a sibling `rationales`
+  // object. Reading only scores[key] returned a score with an empty rationale,
+  // which is what shipped — a result page with no feedback on it.
+  const rationales =
+    raw && typeof (raw as { rationales?: unknown }).rationales === "object"
+      ? ((raw as { rationales?: Record<string, unknown> }).rationales ?? {})
+      : {};
+
   const axes: InterviewAxisView[] = [];
   for (const key of keys) {
     const entry = scores[key];
     if (entry === undefined || entry === null) continue;
-    // Historical rows stored a bare number; current rows store {score, rationale}.
     const score = typeof entry === "number" ? entry : Number((entry as StoredAxis).score);
     if (!Number.isFinite(score)) continue;
+    // Flattened shape first, then the nested {score, rationale} the grader
+    // itself returns, which older rows and the tests both use.
+    const flat = rationales[key];
     const rationale =
-      typeof entry === "object" && typeof (entry as StoredAxis).rationale === "string"
-        ? ((entry as StoredAxis).rationale as string)
-        : "";
+      typeof flat === "string" && flat
+        ? flat
+        : typeof entry === "object" && typeof (entry as StoredAxis).rationale === "string"
+          ? ((entry as StoredAxis).rationale as string)
+          : "";
     axes.push({ key, label: labelFor(key), score, max, rationale });
   }
 
