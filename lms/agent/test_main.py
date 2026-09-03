@@ -72,5 +72,45 @@ class RuntimeHeartbeatTests(unittest.TestCase):
         self.assertNotIn("secret-token", str(calls[0][1]))
 
 
+class VoiceProviderSelectionTests(unittest.TestCase):
+    """U1: Sarvam is primary; Deepgram/ElevenLabs remain the no-key fallback."""
+
+    def test_sarvam_key_selects_sarvam(self):
+        env = {
+            "SARVAM_API_KEY": "sk-sarvam",
+            "DEEPGRAM_API_KEY": "dg",
+            "ELEVENLABS_API_KEY": "el",
+        }
+        self.assertEqual(main.select_voice_provider(env), main.VOICE_SARVAM)
+
+    def test_without_sarvam_falls_back_to_legacy_pair(self):
+        env = {"DEEPGRAM_API_KEY": "dg", "ELEVENLABS_API_KEY": "el"}
+        self.assertEqual(main.select_voice_provider(env), main.VOICE_LEGACY)
+
+    def test_no_complete_pair_selects_nothing(self):
+        # A half-configured legacy pair is not a usable provider.
+        self.assertIsNone(main.select_voice_provider({"DEEPGRAM_API_KEY": "dg"}))
+        self.assertIsNone(main.select_voice_provider({}))
+
+    def test_sarvam_wins_even_when_legacy_pair_incomplete(self):
+        env = {"SARVAM_API_KEY": "sk-sarvam", "DEEPGRAM_API_KEY": "dg"}
+        self.assertEqual(main.select_voice_provider(env), main.VOICE_SARVAM)
+
+    def test_missing_voice_env_names_both_options(self):
+        missing = main.missing_voice_env({})
+        self.assertIn("SARVAM_API_KEY", missing)
+        self.assertIn("DEEPGRAM_API_KEY", missing)
+        self.assertIn("ELEVENLABS_API_KEY", missing)
+
+    def test_missing_voice_env_is_empty_when_sarvam_present(self):
+        self.assertEqual(main.missing_voice_env({"SARVAM_API_KEY": "k"}), [])
+
+
+class InterviewBudgetTests(unittest.TestCase):
+    def test_budget_is_fifteen_minutes(self):
+        """R3: the interview ends at 15 minutes, raised from 12."""
+        self.assertEqual(main.MAX_INTERVIEW_SECONDS, 15 * 60)
+
+
 if __name__ == "__main__":
     unittest.main()

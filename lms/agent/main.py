@@ -1,7 +1,10 @@
 """Praxel Forge interview agent — LiveKit Agents worker (U13).
 
-Pipeline: Deepgram STT -> Gemini Flash dialog -> ElevenLabs TTS, running as a
+Pipeline: Sarvam STT -> Gemini Flash dialog -> Sarvam TTS, running as a
 livekit-agents v1.x AgentSession in rooms named ``interview-{interviewId}``.
+Deepgram STT / ElevenLabs TTS remain wired as the fallback pair and are used
+whenever ``SARVAM_API_KEY`` is absent, so local dev and a Sarvam outage both
+still run (see ``select_voice_provider``).
 
 The agent owns NO database access. It talks to the LMS over three internal
 endpoints guarded by the shared secret AGENT_INTERNAL_TOKEN (header
@@ -35,19 +38,53 @@ logger = logging.getLogger("praxel-forge-agent")
 # livekit-agents reads these directly from the environment.
 REQUIRED_ENV = ["LIVEKIT_URL", "LIVEKIT_API_KEY", "LIVEKIT_API_SECRET"]
 
-# Required by the interview pipeline itself.
+# Required by the interview pipeline itself, regardless of voice provider.
 PIPELINE_ENV = [
-    "DEEPGRAM_API_KEY",
     "GEMINI_API_KEY",
-    "ELEVENLABS_API_KEY",
     "AGENT_INTERNAL_TOKEN",
     "APP_URL",
 ]
 
+# Voice is provider-swappable, so it is checked as a *pair* rather than as a
+# flat key list: exactly one complete pair is required.
+VOICE_SARVAM = "sarvam"
+VOICE_LEGACY = "legacy"
+LEGACY_VOICE_ENV = ("DEEPGRAM_API_KEY", "ELEVENLABS_API_KEY")
+
+
+def select_voice_provider(env: Mapping[str, str] = os.environ) -> str | None:
+    """Which STT/TTS pair this process will use, or None if neither is complete.
+
+    Sarvam wins whenever its key is present; a half-configured legacy pair is
+    not a usable provider, so it never counts.
+    """
+    if env.get("SARVAM_API_KEY"):
+        return VOICE_SARVAM
+    if all(env.get(k) for k in LEGACY_VOICE_ENV):
+        return VOICE_LEGACY
+    return None
+
+
+def missing_voice_env(env: Mapping[str, str] = os.environ) -> list[str]:
+    """Every key that would complete a voice pair, when none is complete."""
+    if select_voice_provider(env) is not None:
+        return []
+    return ["SARVAM_API_KEY", *LEGACY_VOICE_ENV]
+
 ROOM_PREFIX = "interview-"
-MAX_INTERVIEW_SECONDS = 12 * 60
+MAX_INTERVIEW_SECONDS = 15 * 60
 QUESTION_BUDGET = 10  # hard ceiling; the prompt targets 8-10
 GEMINI_MODEL = os.environ.get("INTERVIEW_GEMINI_MODEL", "gemini-2.0-flash")
+
+# Sarvam voice configuration. STT defaults to adaptive language identification:
+# the cohort code-mixes English and Hindi mid-answer, and pinning en-IN drops or
+# mangles those spans, which reads to the grader as incoherence and penalises
+# exactly what the rubric forbids penalising.
+SARVAM_STT_LANGUAGE = os.environ.get("SARVAM_STT_LANGUAGE", "auto")
+SARVAM_STT_STREAM_TYPE = os.environ.get("SARVAM_STT_STREAM_TYPE", "balanced")
+SARVAM_TTS_MODEL = os.environ.get("SARVAM_TTS_MODEL", "bulbul:v3")
+SARVAM_TTS_SPEAKER = os.environ.get("SARVAM_TTS_SPEAKER", "shubh")
+SARVAM_TTS_LANGUAGE = os.environ.get("SARVAM_TTS_LANGUAGE", "en-IN")
 
 CLOSING_LINE = (
     "That's everything from me — thank you for talking through your work. "
@@ -186,6 +223,16 @@ def check_env() -> None:
             "[praxel-forge-agent] Missing pipeline environment variables: "
             f"{', '.join(missing_pipeline)}. The interview pipeline cannot "
             "run without them (see agent/README.md). Exiting.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
+    missing_voice = missing_voice_env()
+    if missing_voice:
+        print(
+            "[praxel-forge-agent] No complete voice provider is configured. Set "
+            "SARVAM_API_KEY (preferred), or both DEEPGRAM_API_KEY and "
+            "ELEVENLABS_API_KEY for the fallback pair. Exiting.",
             file=sys.stderr,
         )
         sys.exit(1)
@@ -346,6 +393,42 @@ class Egress:
         return key
 
 
+def build_voice_components():
+    """Construct the (STT, TTS) pair for the selected provider.
+
+    Kept separate from ``select_voice_provider`` so the selection rule stays
+    importable and unit-testable without the livekit plugin packages installed.
+    """
+    provider = select_voice_provider()
+    if provider == VOICE_SARVAM:
+        from livekit.plugins import sarvam
+
+        # STTRealtime (saaras:v3-realtime) is the streaming class in newer
+        # plugin releases; older ones ship only STT. Prefer realtime, fall back
+        # rather than crashing on a version we did not pin.
+        if hasattr(sarvam, "STTRealtime"):
+            stt = sarvam.STTRealtime(
+                language=SARVAM_STT_LANGUAGE,
+                stream_type=SARVAM_STT_STREAM_TYPE,
+            )
+        else:
+            logger.warning(
+                "sarvam.STTRealtime unavailable in the installed plugin; "
+                "using sarvam.STT"
+            )
+            stt = sarvam.STT(language=SARVAM_STT_LANGUAGE)
+        tts = sarvam.TTS(
+            target_language_code=SARVAM_TTS_LANGUAGE,
+            model=SARVAM_TTS_MODEL,
+            speaker=SARVAM_TTS_SPEAKER,
+        )
+        return stt, tts
+
+    from livekit.plugins import deepgram, elevenlabs
+
+    return deepgram.STT(model="nova-3"), elevenlabs.TTS()
+
+
 def realtime_instructions(system_prompt: str) -> str:
     """The stored turn-0 prompt targets the turn-based JSON contract; append a
     voice-mode override so the same interviewing rules drive natural speech."""
@@ -366,7 +449,7 @@ async def entrypoint(ctx) -> None:
     every finalized utterance into the LMS, records via Egress, and completes
     the interview when the LLM signals done or the 12-minute budget expires."""
     from livekit.agents import Agent, AgentSession, RoomInputOptions, RunContext, function_tool
-    from livekit.plugins import deepgram, elevenlabs, google, silero
+    from livekit.plugins import google, silero
 
     await ctx.connect()
     room_name = ctx.room.name
@@ -433,10 +516,11 @@ async def entrypoint(ctx) -> None:
                 )
             )
 
+    stt, tts = build_voice_components()
     session = AgentSession(
-        stt=deepgram.STT(model="nova-3"),
+        stt=stt,
         llm=google.LLM(model=GEMINI_MODEL),
-        tts=elevenlabs.TTS(),
+        tts=tts,
         vad=silero.VAD.load(),
     )
 
@@ -517,6 +601,17 @@ def main() -> None:
     # missing-env message instead of an SDK traceback.
     from livekit.agents import WorkerOptions, cli
 
+    provider = select_voice_provider()
+    if provider == VOICE_SARVAM:
+        logger.info(
+            "voice provider: sarvam (stt language=%s, tts %s/%s)",
+            SARVAM_STT_LANGUAGE, SARVAM_TTS_MODEL, SARVAM_TTS_SPEAKER,
+        )
+    else:
+        logger.warning(
+            "voice provider: deepgram+elevenlabs FALLBACK — SARVAM_API_KEY is "
+            "not set on this service"
+        )
     logger.info("env OK — starting LiveKit interview agent worker")
     cli.run_app(WorkerOptions(entrypoint_fnc=entrypoint, request_fnc=request_fnc))
 

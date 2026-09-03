@@ -12,6 +12,15 @@ import { prisma as defaultPrisma } from "@/lib/db";
 
 export const TRANSPORT_REALTIME = "realtime";
 
+/**
+ * Join-token lifetime. It must stay comfortably ABOVE the agent's
+ * MAX_INTERVIEW_SECONDS (15 min): the room outlives the token, so a student who
+ * drops near the end of a full-length interview needs a token that is still
+ * valid to rejoin. At parity with the interview budget a late reconnect fails on
+ * the clock rather than the network and degrades to turn-based for no reason.
+ */
+export const ROOM_TOKEN_TTL_SECONDS = 25 * 60;
+
 /** A realtime room with no heartbeat for this long no longer counts. */
 export const HEARTBEAT_STALE_MS = 90_000;
 /** lastSeenAt writes are throttled to this granularity (cheap heartbeat). */
@@ -45,7 +54,7 @@ export async function mintRoomToken(args: {
   const roomName = roomNameFor(args.interviewId);
   const at = new AccessToken(process.env.LIVEKIT_API_KEY!, process.env.LIVEKIT_API_SECRET!, {
     identity: args.identity,
-    ttl: "15m", // one join window; the room outlives the token, not vice versa
+    ttl: ROOM_TOKEN_TTL_SECONDS, // room outlives the token, not vice versa
   });
   at.addGrant({
     room: roomName,
