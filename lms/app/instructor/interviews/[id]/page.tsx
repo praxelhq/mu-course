@@ -54,6 +54,17 @@ export default async function InterviewDetailPage({
     }
   }
 
+  // Which uploads the interviewer could actually read. Students are never told
+  // when extraction fails — the interview asks them to walk through it instead
+  // — so this is the only place the gap is visible, and it matters when
+  // reading a work_integrity score.
+  const prereqs = await prisma.interviewPrerequisite.findMany({
+    where: { userId: interview.user.id },
+    select: { kind: true, contentType: true, extractedText: true },
+    orderBy: { kind: "asc" },
+  });
+  const unreadablePrereqs = prereqs.filter((p) => !p.extractedText).map((p) => p.kind);
+
   const scores = (interview.rubricScores ?? null) as Record<string, unknown> | null;
   const rationales = (scores?.rationales ?? {}) as Record<string, string>;
   const t0 = turns[0]?.startedAt.getTime() ?? 0;
@@ -74,6 +85,26 @@ export default async function InterviewDetailPage({
         {interview.attemptNumber} · started {fmt.format(interview.createdAt)}
         {interview.completedAt ? ` · completed ${fmt.format(interview.completedAt)}` : ""}
       </p>
+
+      {prereqs.length > 0 && (
+        <Card style={{ marginBottom: "1.5rem" }}>
+          <p style={{ ...mono, fontSize: "0.6875rem", color: "var(--clay)", margin: "0 0 0.5rem" }}>
+            Uploaded artifacts
+          </p>
+          <p style={{ margin: 0, lineHeight: 1.6, color: "var(--charcoal)" }}>
+            {prereqs
+              .map((p) => `${p.kind}${p.extractedText ? "" : " (not machine-readable)"}`)
+              .join(" · ")}
+          </p>
+          {unreadablePrereqs.length > 0 && (
+            <p style={{ margin: "0.75rem 0 0", lineHeight: 1.6, color: "var(--ochre)" }}>
+              The interviewer could not read {unreadablePrereqs.join(" or ")}, so it asked the
+              student to walk through it instead. They were not told. Weigh the work-integrity
+              score on what they said, not on whether it matched a document.
+            </p>
+          )}
+        </Card>
+      )}
 
       {interview.escalationReason && (
         <Card style={{ marginBottom: "1.5rem", borderColor: "#8a3b1c" }}>

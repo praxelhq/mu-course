@@ -151,6 +151,53 @@ describe("the fence is explained to the model", () => {
   });
 });
 
+describe("an artifact we cannot read never reaches the student", () => {
+  function withPrereqs(rows: { kind: string; extractedText: string | null }[]) {
+    return buildSystemPrompt("u1", { prisma: fakePrisma({ prerequisites: rows }) });
+  }
+
+  it("asks the student to walk through an unreadable sector map", async () => {
+    const prompt = await withPrereqs([
+      { kind: "resume", extractedText: "Ravi, analyst." },
+      { kind: "sector_map", extractedText: null },
+    ]);
+    expect(prompt).toMatch(/HANDLING ARTIFACTS YOU CANNOT SEE/);
+    expect(prompt).toMatch(/Walk me through your sector map/i);
+    expect(prompt).toMatch(/three findings/i);
+    expect(prompt).toMatch(/one level deeper/i);
+  });
+
+  it("asks the student to talk through an unreadable workflow, probing the same things", async () => {
+    const prompt = await withPrereqs([{ kind: "blueprint", extractedText: null }]);
+    expect(prompt).toMatch(/step by step/i);
+    expect(prompt).toMatch(/what triggers it/i);
+    expect(prompt).toMatch(/error or a timeout/i);
+    expect(prompt).toMatch(/chose not to build/i);
+    expect(prompt).toMatch(/credit use/i);
+  });
+
+  it("forbids telling the student anything failed", async () => {
+    const prompt = await withPrereqs([{ kind: "sector_map", extractedText: null }]);
+    expect(prompt).toMatch(/NEVER say, hint, or imply that a file is missing/i);
+    expect(prompt).toMatch(/nothing is wrong/i);
+    expect(prompt).toMatch(/never mention documents or uploads/i);
+  });
+
+  it("keeps probing just as hard without the document", async () => {
+    const prompt = await withPrereqs([{ kind: "sector_map", extractedText: null }]);
+    expect(prompt).toMatch(/Probe as hard as you would with the document in front of you/i);
+  });
+
+  it("says nothing about unreadable artifacts when everything parsed", async () => {
+    const prompt = await withPrereqs([
+      { kind: "resume", extractedText: "Ravi, analyst." },
+      { kind: "blueprint", extractedText: "{}" },
+      { kind: "sector_map", extractedText: "Logistics map." },
+    ]);
+    expect(prompt).not.toMatch(/HANDLING ARTIFACTS YOU CANNOT SEE/);
+  });
+});
+
 describe("the interview arc", () => {
   it("runs the five segments in order", async () => {
     const prompt = await promptWith("Ravi Kumar, analyst.");
@@ -185,7 +232,10 @@ describe("the interview arc", () => {
     const prompt = await buildSystemPrompt("u1", {
       prisma: fakePrisma({ prerequisites: [{ kind: "resume", extractedText: null }] }),
     });
-    expect(prompt).toMatch(/No resume text is available/i);
+    // Phrasing is deliberately neutral now — the model must not be primed to
+    // tell the student a document was missing.
+    expect(prompt).toMatch(/Open the work segment by asking what they have worked on/i);
+    expect(prompt).toMatch(/Do not mention documents/i);
     expect(prompt).toMatch(/internships/i);
     expect(prompt).toMatch(/last resort/i);
   });

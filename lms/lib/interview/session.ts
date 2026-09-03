@@ -2,6 +2,7 @@ import { Prisma, type PrismaClient, type InterviewStatus } from "@prisma/client"
 import { z } from "zod";
 import { prisma as defaultPrisma } from "@/lib/db";
 import {
+  PREREQUISITE_KINDS,
   PREREQUISITE_LABELS,
   assertPrerequisitesComplete,
   listPrerequisites,
@@ -310,6 +311,30 @@ export async function buildSystemPrompt(
     );
   const resumeText = prerequisites.find((row) => row.kind === "resume")?.extractedText ?? null;
 
+  // An artifact we could not read must not weaken the interview, and the
+  // student must never learn that we failed to read it. A scanned map or an odd
+  // PDF export is our extraction problem, not their mistake — and telling them
+  // mid-viva would rattle them for no reason and invite "well, it's in the file"
+  // as an answer. Instead the interviewer sources the same evidence from the
+  // student directly, which is arguably a better test of whether they know
+  // their own work.
+  const uploaded = new Set(prerequisites.map((row) => row.kind));
+  const unreadable = PREREQUISITE_KINDS.filter(
+    (kind) => uploaded.has(kind) && !prerequisites.find((row) => row.kind === kind)?.extractedText,
+  );
+  const unreadableGuidance = unreadable.length
+    ? [
+        `HANDLING ARTIFACTS YOU CANNOT SEE:`,
+        `You do not have the contents of: ${unreadable.map((k) => PREREQUISITE_LABELS[k].replace(/^your /, "their ")).join(", ")}. The student DID upload ${unreadable.length === 1 ? "it" : "them"} — assume the work exists and is theirs.`,
+        `NEVER say, hint, or imply that a file is missing, unreadable, failed to load, or could not be opened. Never apologise for it and never mention documents or uploads at all. As far as the student is concerned nothing is wrong.`,
+        `Instead, have them walk you through it, which tests the same understanding:`,
+        `  - Sector map: "Walk me through your sector map." Then: "What are the three findings that came out of it?" Then pick the finding they sound least certain about and go one level deeper — where the number came from, what would change their mind, what surprised them.`,
+        `  - Workflow / blueprint: "Talk me through the workflow you built, step by step." Then push on the same things you would have checked in the file: what triggers it and why that trigger, what happens on an error or a timeout, what they chose not to build, and how they kept credit use down.`,
+        `  - Resume: ask them to summarise their last role and the work they owned, then continue as normal.`,
+        `Probe as hard as you would with the document in front of you. A student who genuinely built the thing can answer all of this; one who cannot is exactly what this segment is meant to surface.`,
+      ].join("\n")
+    : null;
+
   const categoryLines = categories
     .map((c) => {
       const samples = (c.sampleQuestions ?? []).map((q) => `    e.g. "${q}"`).join("\n");
@@ -344,8 +369,9 @@ export async function buildSystemPrompt(
     `STUDENT CONTEXT (their own submitted work — probe and defend against this):`,
     resumeText
       ? `The student uploaded a resume, so they have history to draw on.`
-      : `No resume text is available — open the work segment by asking what they have worked on, and fall back to internships or a hypothetical case as instructed above.`,
+      : `Open the work segment by asking what they have worked on, and fall back to internships or a hypothetical case as instructed above. Do not mention documents.`,
     ``,
+    ...(unreadableGuidance ? [unreadableGuidance, ``] : []),
     ...artifactBlocks,
     ``,
     sectorBlock,
