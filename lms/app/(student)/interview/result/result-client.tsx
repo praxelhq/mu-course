@@ -73,10 +73,15 @@ export function InterviewResult({
   if (view.state !== "ready") {
     return (
       <Card>
-        <p style={{ margin: 0 }}>
+        <p style={{ margin: 0, lineHeight: 1.6 }}>
           {polls >= MAX_POLLS
-            ? "Your interview is recorded and is still being marked. Check back shortly — nothing is lost."
-            : "Marking your interview. This usually takes under a minute."}
+            ? "Your interview is recorded and is still being marked. Nothing is lost — check back in a few minutes."
+            : "That\u2019s a wrap \u2014 thank you. Your interview is recorded and is being marked now; your score appears here in about a minute. You can leave this page and come back to it."}
+        </p>
+        <p style={{ margin: "0.75rem 0 0", fontSize: "0.875rem" }}>
+          <a href="/interview" style={{ color: "var(--pine)" }}>
+            Back to your interview page
+          </a>
         </p>
       </Card>
     );
@@ -147,6 +152,11 @@ export function InterviewResult({
 
       <p style={{ marginTop: "1.5rem", color: "var(--ink-soft)", fontSize: "0.875rem" }}>
         Grades are finalised after instructor review.
+      </p>
+      <p style={{ marginTop: "0.5rem", fontSize: "0.875rem" }}>
+        <a href="/interview" style={{ color: "var(--pine)" }}>
+          Back to your interview page
+        </a>
       </p>
     </>
   );

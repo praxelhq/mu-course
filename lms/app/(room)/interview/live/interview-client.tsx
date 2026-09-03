@@ -45,9 +45,7 @@ function CompletedCard() {
         That&apos;s a wrap — thank you
       </h2>
       <p style={{ margin: 0, lineHeight: 1.6 }}>
-        Your interview is recorded. Grading takes a while: your responses go through the
-        grading AI and then your instructor. You&apos;ll get a notification when there&apos;s
-        news — nothing more for you to do here.
+        Your interview is recorded. Taking you to your result…
       </p>
     </Card>
   );
@@ -130,6 +128,14 @@ export function InterviewRoom({ textMode }: { textMode: boolean }) {
     return () => clearInterval(t);
   }, [mode, requestRealtime]);
 
+  // Hanging up goes straight to the result, which shows the marking state and
+  // then the score. Navigating in an effect, not in render — a router.replace
+  // during render mutates the router while React is drawing.
+  useEffect(() => {
+    if (mode !== "done") return;
+    router.replace("/interview/result");
+  }, [mode, router]);
+
   const fallback = useCallback(
     async (reason: string) => {
       const id = rt?.interviewId;
@@ -176,7 +182,6 @@ export function InterviewRoom({ textMode }: { textMode: boolean }) {
   }
 
   if (mode === "done") {
-    router.replace("/interview/done");
     return (
       <div className={styles.centered}>
         <p style={{ color: "var(--charcoal)" }}>Wrapping up…</p>
@@ -215,6 +220,7 @@ export function InterviewRoom({ textMode }: { textMode: boolean }) {
 type Phase = "starting" | "live" | "thinking" | "completed" | "error";
 
 function TurnBasedRoom({ textMode, banner }: { textMode: boolean; banner: string | null }) {
+  const turnBasedRouter = useRouter();
   const [phase, setPhase] = useState<Phase>("starting");
   const [error, setError] = useState<string | null>(null);
   const [state, setState] = useState<State | null>(null);
@@ -230,6 +236,13 @@ function TurnBasedRoom({ textMode, banner }: { textMode: boolean; banner: string
   const streamRef = useRef<MediaStream | null>(null);
   const rafRef = useRef<number>(0);
   const chunksRef = useRef<Blob[]>([]);
+
+  // Same destination as the realtime path: the result, not a dead-end card.
+  useEffect(() => {
+    if (phase !== "completed") return;
+    const t = setTimeout(() => turnBasedRouter.replace("/interview/result"), 1200);
+    return () => clearTimeout(t);
+  }, [phase, turnBasedRouter]);
 
   const stopMeter = useCallback(() => {
     cancelAnimationFrame(rafRef.current);
@@ -434,6 +447,7 @@ function TurnBasedRoom({ textMode, banner }: { textMode: boolean; banner: string
   if (phase === "completed") {
     return <CompletedCard />;
   }
+
 
   const question = state?.pendingQuestion ?? null;
   const showTextInput = textMode || !micAvailable;
