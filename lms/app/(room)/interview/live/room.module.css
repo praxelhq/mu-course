@@ -5,14 +5,40 @@
  * student should have nothing else on screen: no nav, no upload card, no
  * scrolling away from the camera. */
 
-.overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
+/* The live route is its own page, so the room simply fills the viewport —
+ * no overlay, no portal, nothing stacked over an app shell. */
+.page {
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   background: var(--parchment);
   overflow: hidden;
+}
+
+/* Pre-room states (connecting, camera blocked, queued) centred on the page. */
+.centered {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.centered > * {
+  max-width: 34rem;
+  width: 100%;
+}
+
+/* The turn-based fallback keeps the page scrollable — it is a form, not a call. */
+.turnBased {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 2rem 1.5rem;
+}
+
+.turnBased > * {
+  max-width: 44rem;
+  margin: 0 auto;
 }
 
 .header {

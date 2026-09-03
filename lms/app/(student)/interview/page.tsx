@@ -4,7 +4,7 @@ import { Card, Eyebrow } from "@/components/ui";
 import { missingPrerequisites } from "@/lib/interview/prerequisites";
 import { interviewOpen } from "@/lib/interview/rollout";
 import { progressFromTurns, studentEscalationMail } from "@/lib/interview/escalation";
-import { InterviewRoom } from "./room";
+import { InterviewStart } from "./start";
 import { InterviewPrerequisites } from "./prerequisites";
 import { InterviewEscalation } from "./escalate";
 
@@ -132,11 +132,7 @@ export default async function InterviewPage() {
         <>
           {!canResume && <InterviewPrerequisites />}
 
-          <InterviewRoom
-            canStart={canStart}
-            canResume={canResume}
-            textMode={process.env.NEXT_PUBLIC_INTERVIEW_TEXT_MODE === "1"}
-          />
+          {canStart || canResume ? <InterviewStart canResume={canResume} /> : null}
         </>
       )}
     </main>

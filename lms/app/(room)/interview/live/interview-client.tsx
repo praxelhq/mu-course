@@ -2,7 +2,9 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Button, Card } from "@/components/ui";
+import { useRouter } from "next/navigation";
 import { RealtimeRoom } from "./realtime-room";
+import styles from "./room.module.css";
 
 // The interview room. One orchestrator (InterviewRoom) owns consent
 // and transport selection; the SERVER decides which transport runs:
@@ -76,16 +78,9 @@ type TokenResponse = {
   error?: string;
 };
 
-export function InterviewRoom({
-  canStart,
-  canResume,
-  textMode,
-}: {
-  canStart: boolean;
-  canResume: boolean;
-  textMode: boolean;
-}) {
-  const [mode, setMode] = useState<Mode>("entry");
+export function InterviewRoom({ textMode }: { textMode: boolean }) {
+  const router = useRouter();
+  const [mode, setMode] = useState<Mode>("requesting");
   const [banner, setBanner] = useState<string | null>(null);
   const [rt, setRt] = useState<{ url: string; token: string; interviewId: string } | null>(null);
 
@@ -118,6 +113,16 @@ export function InterviewRoom({
     }
   }, []);
 
+  // Consent and the gates were settled on /interview; arriving here IS the
+  // decision to begin, so the room opens immediately. The token route is
+  // resume-safe, so a reload rejoins rather than burning a second attempt.
+  const startedRef = useRef(false);
+  useEffect(() => {
+    if (startedRef.current) return;
+    startedRef.current = true;
+    void requestRealtime(true);
+  }, [requestRealtime]);
+
   // Waiting room: quietly retry every 10s until a room frees up.
   useEffect(() => {
     if (mode !== "waiting") return;
@@ -145,44 +150,17 @@ export function InterviewRoom({
     [rt],
   );
 
-  if (mode === "entry" || mode === "requesting") {
-    if (!canStart && !canResume) return null;
+  if (mode === "requesting") {
     return (
-      <Card>
-        <h2 style={{ fontFamily: "var(--font-fraunces)", fontSize: "1.25rem", margin: "0 0 0.75rem" }}>
-          Before you begin
-        </h2>
-        <p style={{ margin: "0 0 0.75rem", lineHeight: 1.6 }}>
-          This is a short one-on-one conversation with our AI interviewer — around 10 to 12
-          minutes, 8 to 10 questions about your industry and the work you have submitted this
-          term. It is relaxed and adaptive; there are no trick questions.
-        </p>
-        <p style={{ margin: "0 0 0.75rem", lineHeight: 1.6, color: "var(--charcoal)" }}>
-          <strong>What we record and why:</strong> your spoken answers, <strong>video from
-          your camera</strong>, and a written transcript are recorded and stored securely,
-          solely for assessing this course component. Your instructor can review them.
-          Recordings are retained for the duration of the course and the review period that
-          follows, then deleted per the programme&apos;s data policy. Scores never appear on
-          your public profile.
-        </p>
-        <p style={{ margin: "0 0 1.25rem", lineHeight: 1.6, color: "var(--charcoal)" }}>
-          Pressing Begin is your consent to this recording. A working camera is required to
-          begin; if it stops part-way the interview simply continues on audio. Your microphone
-          and camera are only accessed after you consent.
-        </p>
-        <Button onClick={() => void requestRealtime()} disabled={mode === "requesting"}>
-          {mode === "requesting"
-            ? "Setting up your interview…"
-            : canResume
-              ? "Resume interview (I consent)"
-              : "Begin interview (I consent)"}
-        </Button>
-      </Card>
+      <div className={styles.centered}>
+        <p style={{ color: "var(--charcoal)" }}>Setting up your interview…</p>
+      </div>
     );
   }
 
   if (mode === "waiting") {
     return (
+      <div className={styles.centered}>
       <Card>
         <h2 style={{ fontFamily: "var(--font-fraunces)", fontSize: "1.25rem", margin: "0 0 0.75rem" }}>
           You&apos;re in the queue
@@ -193,11 +171,17 @@ export function InterviewRoom({
           starts until you&apos;re in the room.
         </p>
       </Card>
+      </div>
     );
   }
 
   if (mode === "done") {
-    return <CompletedCard />;
+    router.replace("/interview/done");
+    return (
+      <div className={styles.centered}>
+        <p style={{ color: "var(--charcoal)" }}>Wrapping up…</p>
+      </div>
+    );
   }
 
   if (mode === "realtime" && rt) {
@@ -212,7 +196,11 @@ export function InterviewRoom({
     );
   }
 
-  return <TurnBasedRoom textMode={textMode} banner={banner} />;
+  return (
+    <div className={styles.turnBased}>
+      <TurnBasedRoom textMode={textMode} banner={banner} />
+    </div>
+  );
 }
 
 // ---------------------------------------------------------------------------
