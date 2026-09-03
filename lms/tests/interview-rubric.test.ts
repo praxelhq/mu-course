@@ -154,6 +154,62 @@ describe("grader prompt", () => {
   });
 });
 
+describe("score calibration", () => {
+  // Without explicit bands the grader anchors on "50 = flawless expert" and
+  // deducts, which put a competent student in the low twenties. These pin the
+  // guidance that moved a real transcript from 18/50 to 28/50.
+  it("gives the grader explicit bands rather than a bare 0-50 range", () => {
+    const { system } = context();
+    expect(system).toMatch(/43-50/);
+    expect(system).toMatch(/35-42/);
+    expect(system).toMatch(/27-34/);
+    expect(system).toMatch(/18-26/);
+    expect(system).toMatch(/0-17/);
+  });
+
+  it("tells it to build up from evidence, not deduct from a perfect score", () => {
+    const { system } = context();
+    expect(system).toMatch(/build the score UP/i);
+    expect(system).toMatch(/do NOT start at 50 and deduct/i);
+  });
+
+  it("names the solid-working-understanding band as the normal one", () => {
+    expect(context().system).toMatch(/THIS IS THE NORMAL BAND/);
+  });
+
+  it("resolves a borderline answer upward, not downward", () => {
+    expect(context().system).toMatch(/choose the higher one/i);
+  });
+
+  it("reserves the bottom bands for absent understanding, not thin depth", () => {
+    const { system } = context();
+    expect(system).toMatch(/NOT for incomplete depth/i);
+    expect(system).toMatch(/not for a student who answered well but briefly/i);
+  });
+
+  it("does not let 50 read as unreachable", () => {
+    expect(context().system).toMatch(/50 is not reserved for a flawless expert/i);
+  });
+});
+
+describe("the interviewer's failures are not the student's", () => {
+  // A 15-minute AI interviewer sometimes never reaches a segment. Scoring the
+  // student at zero for that is grading the interviewer, not the student.
+  it("forbids scoring an axis at zero for a segment that was never explored", () => {
+    const { system } = context();
+    expect(system).toMatch(/never score an axis at or near zero because the segment feeding it went unexplored/i);
+    expect(system).toMatch(/never treat unasked as unable/i);
+  });
+
+  it("routes missing coverage to confidence instead of to the score", () => {
+    expect(context().system).toMatch(/lower your CONFIDENCE instead/i);
+  });
+
+  it("still allows a low work_integrity when they were asked and could not defend", () => {
+    expect(context().system).toMatch(/only score low on "work_integrity" when they were actually asked/i);
+  });
+});
+
 describe("escalation", () => {
   it("escalates below the confidence threshold", () => {
     expect(interviewEscalationReason({ confidence: 0.5, flags: [] })).toMatch(/confidence/i);
