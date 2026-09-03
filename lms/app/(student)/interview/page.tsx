@@ -2,6 +2,7 @@ import { requireUser } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { Card, Eyebrow } from "@/components/ui";
 import { missingPrerequisites } from "@/lib/interview/prerequisites";
+import { interviewOpen } from "@/lib/interview/rollout";
 import { InterviewRoom } from "./room";
 import { InterviewPrerequisites } from "./prerequisites";
 
@@ -21,7 +22,7 @@ const fmt = new Intl.DateTimeFormat("en-IN", {
 export default async function InterviewPage() {
   const user = await requireUser();
 
-  const [window, latest, retake, missingPrereqs] = await Promise.all([
+  const [window, latest, retake, missingPrereqs, isOpen] = await Promise.all([
     user.sectionId
       ? prisma.interviewWindow.findFirst({
           where: { sectionId: user.sectionId },
@@ -38,6 +39,7 @@ export default async function InterviewPage() {
       select: { id: true },
     }),
     missingPrerequisites(user.userId),
+    interviewOpen(),
   ]);
 
   const now = new Date();
@@ -48,7 +50,8 @@ export default async function InterviewPage() {
   // The three prerequisite artifacts gate the start alongside the window and
   // attempt guards; startInterview enforces the same rule server-side.
   const prerequisitesComplete = missingPrereqs.length === 0;
-  const canStart = windowOpen && (!latest || Boolean(retake)) && prerequisitesComplete;
+  const canStart =
+    isOpen && windowOpen && (!latest || Boolean(retake)) && prerequisitesComplete;
 
   return (
     <main style={{ maxWidth: "44rem", margin: "0 auto", padding: "2.5rem 2rem" }}>
@@ -93,13 +96,24 @@ export default async function InterviewPage() {
         </Card>
       )}
 
-      {!canResume && <InterviewPrerequisites />}
+      {!isOpen && !canResume ? (
+        <Card>
+          <p style={{ margin: 0 }}>
+            Interviews are not open yet. Your instructor will let you know when they are — nothing
+            to do here until then.
+          </p>
+        </Card>
+      ) : (
+        <>
+          {!canResume && <InterviewPrerequisites />}
 
-      <InterviewRoom
-        canStart={canStart}
-        canResume={canResume}
-        textMode={process.env.NEXT_PUBLIC_INTERVIEW_TEXT_MODE === "1"}
-      />
+          <InterviewRoom
+            canStart={canStart}
+            canResume={canResume}
+            textMode={process.env.NEXT_PUBLIC_INTERVIEW_TEXT_MODE === "1"}
+          />
+        </>
+      )}
     </main>
   );
 }

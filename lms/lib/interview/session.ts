@@ -2,6 +2,7 @@ import { Prisma, type PrismaClient, type InterviewStatus } from "@prisma/client"
 import { z } from "zod";
 import { prisma as defaultPrisma } from "@/lib/db";
 import { assertPrerequisitesComplete } from "./prerequisites";
+import { assertInterviewOpen } from "./rollout";
 import {
   GeneratedObjectReservationError,
   compensateGeneratedObjectVersion,
@@ -433,6 +434,10 @@ export async function startInterview(
       })
     : null;
   if (!window) throw new InterviewWindowClosedError();
+
+  // Closed beats everything: a student who cannot enter should be told the
+  // interview is not open, not that they are missing an upload.
+  await assertInterviewOpen(client);
 
   // The student must have supplied all three artifacts personally: the whole
   // interview defends work they uploaded themselves (lib/interview/prerequisites).
