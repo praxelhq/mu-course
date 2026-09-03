@@ -45,6 +45,14 @@ const isPublicRoute = createRouteMatcher([
   "/api/health", // unauthenticated liveness probe (Railway healthcheck)
   "/api/readiness", // bearer-token guarded; proves DB/schema/service identity
   "/api/internal/service-heartbeat", // X-Agent-Token guarded
+  // The interview agent is a first-party worker, not a browser session: it
+  // authenticates with X-Agent-Token (constant-time, lib/interview/realtime)
+  // and has no Clerk cookie. Without these the proxy 307s the agent to the
+  // sign-in page and every realtime interview dies at "agent-context
+  // unavailable" — the room opens, the student waits, nobody ever speaks.
+  "/api/interview/agent-context",
+  "/api/interview/agent-turn",
+  "/api/interview/agent-complete",
   "/api/webhooks/clerk(.*)",
   "/api/test-login", // guards itself (404 outside dev/test)
 ]);
