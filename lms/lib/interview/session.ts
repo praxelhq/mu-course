@@ -125,17 +125,14 @@ function nowOf(deps: InterviewDeps): Date {
   return deps.now ? deps.now() : new Date();
 }
 
-/** Is any question source available (Gemini key or the scripted dev fallback)? */
+/**
+ * Is any question source available? Always — the seeded question bank needs no
+ * provider, so the turn-based loop can always run. Kept as a function because
+ * callers and tests depend on the seam.
+ */
 export function dialogAvailable(deps: InterviewDeps = {}): boolean {
-  if (deps.gemini) return true;
-  if (deps.gemini === null) return false;
-  return geminiConfigured() || scriptedFallbackEnabled();
-}
-
-function scriptedFallbackEnabled(): boolean {
-  return ["1", "true", "yes", "on"].includes(
-    (process.env.INTERVIEW_DEV_SCRIPTED ?? "").toLowerCase(),
-  );
+  if (deps.gemini === null) return true;
+  return true;
 }
 
 // ---------------------------------------------------------------------------
@@ -549,15 +546,23 @@ export type NextQuestionResult =
   | { done: true }
   | { done: false; turnNo: number; question: string; category: string; audioS3Key: string | null };
 
+/**
+ * Which question source the TURN-BASED loop uses.
+ *
+ * This loop is the safety net for the realtime interview, so it must never be
+ * the thing that is down. It therefore does NOT require a dialog provider: with
+ * none configured it serves the seeded ConfigKV question bank, which needs no
+ * key and cannot fail on someone else's outage.
+ *
+ * The realtime interviewer runs on LiveKit Inference inside the agent process
+ * and is unaffected by this. A direct provider key here is optional and only
+ * buys adaptive follow-ups in the fallback.
+ */
 function resolveGemini(deps: InterviewDeps): GeminiClient | "scripted" {
   if (deps.gemini) return deps.gemini;
-  if (deps.gemini === null) {
-    if (scriptedFallbackEnabled()) return "scripted";
-    throw new ProviderNotConfiguredError("gemini");
-  }
+  if (deps.gemini === null) return "scripted";
   if (geminiConfigured()) return realGeminiClient();
-  if (scriptedFallbackEnabled()) return "scripted";
-  throw new ProviderNotConfiguredError("gemini");
+  return "scripted";
 }
 
 function resolveTts(deps: InterviewDeps): TtsClient | null {
@@ -571,10 +576,14 @@ function resolveStt(deps: InterviewDeps): SttClient | null {
 }
 
 /**
- * DEV/TEXT FALLBACK ONLY (env INTERVIEW_DEV_SCRIPTED) — NOT a product mode.
- * With zero provider keys the loop still works end-to-end: questions come
- * deterministically from the ConfigKV interview_script sample bank, cycling
- * the four categories, done after the question budget.
+ * The provider-free question source. With no dialog key configured the
+ * turn-based loop still works end to end: questions come deterministically
+ * from the ConfigKV interview_script sample bank, walking the segments in
+ * order and finishing at the question budget.
+ *
+ * This is the SAFETY NET behind the realtime interview, so it deliberately
+ * depends on nothing external — no provider means no outage can take it down.
+ * The transcript it produces is graded exactly like a spoken one.
  */
 function scriptedQuestion(
   script: InterviewScript,

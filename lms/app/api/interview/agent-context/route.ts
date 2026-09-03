@@ -33,8 +33,35 @@ export async function GET(req: Request): Promise<Response> {
     params.get("reserveRecording") === "1" &&
     interview.status === "live" &&
     interview.transport === "realtime";
-  const recordingReservation = recordable ? await reserveInterviewRecording(interviewId) : null;
-  const videoReservation = recordable ? await reserveInterviewVideo(interviewId) : null;
+
+  // Recording is a NICE-TO-HAVE; the interview is the product. A reservation
+  // that throws must never reach the agent as a 500, because the agent treats
+  // a failed context fetch as fatal and leaves the room — which is exactly how
+  // a bad CHECK constraint on the video purpose silently killed every
+  // interview. Reserve best-effort; a null reservation simply means the agent
+  // records nothing and the conversation still happens.
+  async function reserveQuietly<T>(
+    what: string,
+    reserve: () => Promise<T>,
+  ): Promise<T | null> {
+    if (!recordable) return null;
+    try {
+      return await reserve();
+    } catch (err) {
+      console.error(
+        `[agent-context] ${what} reservation failed for ${interviewId}; continuing without it:`,
+        err instanceof Error ? err.message : err,
+      );
+      return null;
+    }
+  }
+
+  const recordingReservation = await reserveQuietly("audio", () =>
+    reserveInterviewRecording(interviewId),
+  );
+  const videoReservation = await reserveQuietly("video", () =>
+    reserveInterviewVideo(interviewId),
+  );
 
   return Response.json({
     interviewId,
