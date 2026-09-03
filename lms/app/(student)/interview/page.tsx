@@ -3,8 +3,10 @@ import { prisma } from "@/lib/db";
 import { Card, Eyebrow } from "@/components/ui";
 import { missingPrerequisites } from "@/lib/interview/prerequisites";
 import { interviewOpen } from "@/lib/interview/rollout";
+import { progressFromTurns, studentEscalationMail } from "@/lib/interview/escalation";
 import { InterviewRoom } from "./room";
 import { InterviewPrerequisites } from "./prerequisites";
+import { InterviewEscalation } from "./escalate";
 
 // The student interview entry + room. The server component resolves the
 // window/attempt situation; everything conversational happens in the client
@@ -32,7 +34,14 @@ export default async function InterviewPage() {
     prisma.interview.findFirst({
       where: { userId: user.userId },
       orderBy: [{ attemptNumber: "desc" }, { createdAt: "desc" }],
-      select: { id: true, status: true, attemptNumber: true, completedAt: true },
+      select: {
+        id: true,
+        status: true,
+        attemptNumber: true,
+        completedAt: true,
+        createdAt: true,
+        turns: { orderBy: { turnNo: "asc" }, select: { speaker: true, meta: true } },
+      },
     }),
     prisma.interviewRetake.findFirst({
       where: { userId: user.userId, usedByInterviewId: null },
@@ -94,6 +103,22 @@ export default async function InterviewPage() {
             </p>
           )}
         </Card>
+      )}
+
+      {latest && latest.status !== "completed" && latest.status !== "graded" && (
+        <InterviewEscalation
+          {...(() => {
+            const mail = studentEscalationMail(
+              progressFromTurns({
+                interviewId: latest.id,
+                attemptNumber: latest.attemptNumber,
+                createdAt: latest.createdAt,
+                turns: latest.turns,
+              }),
+            );
+            return { href: mail.href, body: mail.body, subject: mail.subject };
+          })()}
+        />
       )}
 
       {!isOpen && !canResume ? (

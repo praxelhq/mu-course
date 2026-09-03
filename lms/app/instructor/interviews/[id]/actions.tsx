@@ -9,6 +9,10 @@ import { Button, Card } from "@/components/ui";
 // server-side.
 
 const CATEGORY_LABELS: Record<string, string> = {
+  // Interview v2
+  conceptual_understanding: "Conceptual understanding",
+  work_integrity: "Work integrity",
+  // Pre-v2 rubric, kept so historical interviews still label their scores.
   industry_command: "Industry command",
   defence_of_submissions: "Defence of submissions",
   operators_loop: "Operator's Loop",
@@ -162,6 +166,94 @@ export function InterviewActions({
 
       {error && <p style={{ color: "#8a3b1c", margin: "1rem 0 0" }}>{error}</p>}
       {notice && <p style={{ color: "var(--pine)", margin: "1rem 0 0" }}>{notice}</p>}
+    </Card>
+  );
+}
+
+/**
+ * Reopen a dropped interview and produce the reply to send the student. There
+ * is no transactional email in this system, so this composes the text and the
+ * instructor pastes it — carrying what the student already covered so they are
+ * not asked to repeat it.
+ */
+export function RegenerateInterview({ interviewId }: { interviewId: string }) {
+  const router = useRouter();
+  const [draft, setDraft] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function regenerate() {
+    setBusy(true);
+    setError(null);
+    const res = await fetch("/api/interview/regenerate", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ interviewId }),
+    });
+    const json = (await res.json().catch(() => ({}))) as { draft?: string; error?: string };
+    setBusy(false);
+    if (!res.ok) {
+      setError(json.error ?? "Could not reopen the interview.");
+      return;
+    }
+    setDraft(json.draft ?? null);
+    router.refresh();
+  }
+
+  return (
+    <Card style={{ marginTop: "1.5rem" }}>
+      <p style={{ margin: "0 0 0.75rem", fontWeight: 600 }}>Interview cut off</p>
+      <p style={{ margin: "0 0 1rem", color: "var(--charcoal)", lineHeight: 1.6 }}>
+        Reopens the interview and writes a reply carrying what they already covered.
+      </p>
+      <Button onClick={() => void regenerate()} disabled={busy}>
+        {busy ? "Reopening…" : "Reopen and draft a reply"}
+      </Button>
+      {error && (
+        <p style={{ margin: "0.75rem 0 0", color: "#8a3b1c" }} role="alert">
+          {error}
+        </p>
+      )}
+      {draft && (
+        <>
+          <div style={{ display: "flex", gap: "0.75rem", marginTop: "1rem" }}>
+            <button
+              type="button"
+              onClick={() => {
+                void navigator.clipboard
+                  ?.writeText(draft)
+                  .then(() => setCopied(true))
+                  .catch(() => setCopied(false));
+              }}
+              style={{
+                border: "1px solid var(--sand)",
+                background: "transparent",
+                color: "var(--charcoal)",
+                padding: "0.5rem 1rem",
+                cursor: "pointer",
+                fontSize: "0.875rem",
+              }}
+            >
+              {copied ? "Copied" : "Copy reply"}
+            </button>
+          </div>
+          <pre
+            style={{
+              marginTop: "1rem",
+              whiteSpace: "pre-wrap",
+              fontFamily: "var(--font-geist-mono)",
+              fontSize: "0.8125rem",
+              lineHeight: 1.55,
+              color: "var(--charcoal)",
+              borderTop: "1px solid var(--sand)",
+              paddingTop: "1rem",
+            }}
+          >
+            {draft}
+          </pre>
+        </>
+      )}
     </Card>
   );
 }

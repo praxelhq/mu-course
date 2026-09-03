@@ -3,7 +3,7 @@ import { prisma } from "@/lib/db";
 import { presignGet, s3Configured } from "@/lib/s3";
 import { Card, Eyebrow } from "@/components/ui";
 import { INTERVIEW_CATEGORIES } from "@/lib/ai/interview-grading";
-import { InterviewActions } from "./actions";
+import { InterviewActions, RegenerateInterview } from "./actions";
 
 // One interview: transcript with per-turn audio (presigned, short TTL),
 // rubric + escalation reason, and the resolution actions (audited).
@@ -141,6 +141,7 @@ export default async function InterviewDetailPage({
         )}
         hasUnusedRetake={Boolean(retake)}
       />
+      <RegenerateInterview interviewId={interview.id} />
     </main>
   );
 }
