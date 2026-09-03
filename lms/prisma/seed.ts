@@ -947,18 +947,20 @@ export async function main(): Promise<void> {
       {
         key: "interview_script",
         value: {
-          durationMinutes: 12,
+          durationMinutes: 15,
           categories: [
-            { key: "industry_command", title: "Industry command", points: 25, sampleQuestions: ["Explain the economics of your industry in under a minute.", "Who are the three biggest players, and what actually differentiates them?"] },
-            { key: "defence_of_submissions", title: "Defence of own submissions", points: 25, sampleQuestions: ["Walk me through the automation you built. What would break it?", "Why did you pick this particular repetitive task to automate?"] },
-            { key: "operators_loop", title: "Operator's Loop reasoning", points: 25, sampleQuestions: ["Why did you use this tool over an obvious alternative?", "What's one number in your data memo you personally checked, and how?"] },
-            { key: "transfer", title: "Transfer", points: 25, sampleQuestions: ["Apply your industry knowledge to this scenario you haven't seen before."] },
+            { key: "intro", title: "Greeting and a brief introduction", sampleQuestions: ["Tell me a little about yourself and what you've been working on."] },
+            { key: "ai_in_their_work", title: "Applying AI in their own prior role", sampleQuestions: ["In your last role, if you were told to make the team more efficient using AI, what would you automate first?", "What in that job would you deliberately NOT hand to an AI, and why?"] },
+            { key: "data_and_privacy", title: "What data they would give an AI, and privacy", sampleQuestions: ["What data would you be willing to put into an AI tool at that company, and what would you keep out?", "How would you stop something confidential leaking into a prompt?"] },
+            { key: "rag_mcp", title: "RAG / MCP conceptual fluency", sampleQuestions: ["If you were giving an assistant access to your company's documents, how would you set that up?", "How would you tell whether it was actually doing a good job — not just sounding right?", "Which connectors would you give it, and which would you refuse?"] },
+            { key: "own_work_defence", title: "Defending their own sector map and workflow", sampleQuestions: ["Walk me through your workflow. What happens when a step times out?", "What trigger did you choose, and why is that the right trigger for this workflow?", "What did you talk about building and then decide not to?", "How did you keep it from burning through credits?", "Which part of your sector map are you least sure about?"] },
           ],
           tone: {
             rules: [
               "Professional and warm; never condescending.",
               "Ask one question at a time; follow up once when an answer is vague.",
               "Never reveal rubric bands or scores during the interview.",
+              "Judge understanding, never fluency: accent, grammar and code-mixed English are not weaknesses.",
               "Escalate to a human when answers contradict the student's submitted artifacts.",
             ],
           },

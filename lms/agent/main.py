@@ -73,7 +73,7 @@ def missing_voice_env(env: Mapping[str, str] = os.environ) -> list[str]:
 
 ROOM_PREFIX = "interview-"
 MAX_INTERVIEW_SECONDS = 15 * 60
-QUESTION_BUDGET = 10  # hard ceiling; the prompt targets 8-10
+QUESTION_BUDGET = 12  # hard ceiling across the five segments
 GEMINI_MODEL = os.environ.get("INTERVIEW_GEMINI_MODEL", "gemini-2.0-flash")
 
 # Sarvam voice configuration. STT defaults to adaptive language identification:
@@ -439,6 +439,10 @@ def realtime_instructions(system_prompt: str) -> str:
         "  conversational sentences only, never JSON, code, or markup.\n"
         "- Ask exactly ONE question, then wait for the student to finish.\n"
         "- Keep each question under three sentences; no lists.\n"
+        "- Many students speak English as a second or third language and may\n"
+        "  mix in Hindi. Never treat accent, grammar or hesitation as a weak\n"
+        "  answer. If you cannot follow an answer, ask them to put it another\n"
+        "  way rather than moving on.\n"
         "- When the question budget is reached or all categories are covered,\n"
         "  call the end_interview tool instead of asking another question."
     )
