@@ -240,3 +240,70 @@ describe("committing an upload", () => {
     expect(upserts).toHaveLength(0);
   });
 });
+
+describe("unreadable files are reported, not swallowed", () => {
+  const KEY2 = "interview-prerequisites/u1/resume-abc.pdf";
+  function deps(extract: unknown) {
+    return {
+      prisma: {
+        interviewPrerequisite: {
+          upsert: vi.fn(async (u: Record<string, unknown>) => ({
+            ...(u.create as Record<string, unknown>),
+            createdAt: new Date("2026-09-01T00:00:00.000Z"),
+          })),
+        },
+      },
+      head: async () => ({
+        versionId: "v1",
+        etag: "e",
+        contentLength: 42,
+        contentType: "application/pdf",
+      }),
+      extract,
+    } as never;
+  }
+
+  it("flags a PDF with no text layer and tells the student how to fix it", async () => {
+    const row = await commitPrerequisite(
+      { userId: "u1", kind: "resume", s3Key: KEY2 },
+      deps(async () => ({ extracted: [{ key: "k", kind: "pdf" as const, text: "" }], failures: [] })),
+    );
+    expect(row.readable).toBe(false);
+    expect(row.unreadableReason).toMatch(/re-export/i);
+    expect(row.unreadableReason).toMatch(/resume/i);
+  });
+
+  it("flags a malformed PDF that throws during parsing", async () => {
+    const row = await commitPrerequisite(
+      { userId: "u1", kind: "resume", s3Key: KEY2 },
+      deps(async () => {
+        throw new Error("Invalid PDF structure.");
+      }),
+    );
+    expect(row.readable).toBe(false);
+    expect(row.extractedText).toBeNull();
+  });
+
+  it("still stores the upload even when it cannot be read", async () => {
+    const row = await commitPrerequisite(
+      { userId: "u1", kind: "resume", s3Key: KEY2 },
+      deps(async () => {
+        throw new Error("Invalid PDF structure.");
+      }),
+    );
+    expect(row.s3Key).toBe(KEY2);
+    expect(row.kind).toBe("resume");
+  });
+
+  it("reports readable when text came through", async () => {
+    const row = await commitPrerequisite(
+      { userId: "u1", kind: "resume", s3Key: KEY2 },
+      deps(async () => ({
+        extracted: [{ key: "k", kind: "pdf" as const, text: "REAL RESUME TEXT" }],
+        failures: [],
+      })),
+    );
+    expect(row.readable).toBe(true);
+    expect(row.unreadableReason).toBeNull();
+  });
+});

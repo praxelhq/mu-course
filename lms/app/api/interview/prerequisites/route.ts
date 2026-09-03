@@ -90,6 +90,8 @@ export const POST = withAuth(async (req, { user }) => {
     return Response.json({
       kind: row.kind,
       uploadedAt: row.createdAt,
+      readable: row.readable,
+      unreadableReason: row.unreadableReason,
       missing,
       complete: missing.length === 0,
     });

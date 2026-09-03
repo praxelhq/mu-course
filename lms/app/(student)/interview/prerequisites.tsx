@@ -55,6 +55,7 @@ export function InterviewPrerequisites({
   const [missing, setMissing] = useState<Kind[]>([]);
   const [busy, setBusy] = useState<Kind | null>(null);
   const [errors, setErrors] = useState<Partial<Record<Kind, string>>>({});
+  const [warnings, setWarnings] = useState<Partial<Record<Kind, string | undefined>>>({});
   const [loaded, setLoaded] = useState(false);
   const router = useRouter();
   const notify = useRef(onCompleteChange);
@@ -111,6 +112,13 @@ export function InterviewPrerequisites({
       });
       const commitBody = await commit.json();
       if (!commit.ok) throw new Error(commitBody.error ?? "The upload could not be recorded.");
+      // The file is stored either way, but an unreadable one leaves the
+      // interview with nothing to quote — say so now, not mid-interview.
+      if (commitBody.readable === false && commitBody.unreadableReason) {
+        setWarnings((prev) => ({ ...prev, [kind]: commitBody.unreadableReason as string }));
+      } else {
+        setWarnings((prev) => ({ ...prev, [kind]: undefined }));
+      }
       await refresh();
     } catch (err) {
       setErrors((prev) => ({
@@ -147,6 +155,7 @@ export function InterviewPrerequisites({
         {SLOTS.map((slot) => {
           const row = have.get(slot.kind);
           const error = errors[slot.kind];
+          const warning = warnings[slot.kind];
           return (
             <div
               key={slot.kind}
@@ -200,6 +209,11 @@ export function InterviewPrerequisites({
               {error && (
                 <p style={{ margin: "0.5rem 0 0", color: "var(--ochre)" }} role="alert">
                   {error}
+                </p>
+              )}
+              {warning && !error && (
+                <p style={{ margin: "0.5rem 0 0", color: "var(--ochre)", lineHeight: 1.55 }} role="alert">
+                  {warning}
                 </p>
               )}
             </div>

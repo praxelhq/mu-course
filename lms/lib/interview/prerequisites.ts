@@ -147,6 +147,26 @@ export type PrerequisiteRow = {
   createdAt: Date;
 };
 
+/**
+ * Whether the interview will actually be able to quote this artifact.
+ * A PDF with no text layer, or a malformed export, reads as zero characters —
+ * the upload succeeds and the interview then has nothing to ground questions
+ * in. That has to reach the student at upload time, not be discovered mid-viva.
+ */
+export type PrerequisiteCommit = PrerequisiteRow & {
+  readable: boolean;
+  unreadableReason: string | null;
+};
+
+const UNREADABLE_ADVICE: Record<PrerequisiteKind, string> = {
+  resume:
+    "We could not read any text out of that PDF, so the interview will not be able to ask about your resume. Re-export it (File → Print → Save as PDF usually fixes it) and upload again.",
+  blueprint:
+    "We could not read that blueprint file. Re-export the blueprint JSON from Make and upload again.",
+  sector_map:
+    "We could not read any text out of that file, so the interview will not be able to quote your map. If it is a scan or an image, export a text-based PDF and upload again.",
+};
+
 export async function listPrerequisites(
   userId: string,
   deps: PrerequisiteDeps = {},
@@ -235,7 +255,7 @@ export async function commitPrerequisite(
     s3Key: string;
   },
   deps: PrerequisiteDeps = {},
-): Promise<PrerequisiteRow> {
+): Promise<PrerequisiteCommit> {
   const client = db(deps);
 
   // The key is server-derived, never client-chosen: a student may only commit
@@ -255,16 +275,30 @@ export async function commitPrerequisite(
     throw new PrerequisiteRejectedError("That file is larger than the upload limit.");
   }
 
+  // Extraction is best-effort — an unreadable file still counts as uploaded —
+  // but the outcome is REPORTED rather than swallowed. A silently empty resume
+  // produces an interview that cannot ask about the student's own history and
+  // gives nobody a clue why.
   const extract = deps.extract ?? extractSubmissionFiles;
   let extractedText: string | null = null;
+  let extractionFailure: string | null = null;
   try {
     const result = await extract([args.s3Key]);
     const text = result.extracted.map((file) => file.text ?? "").join("\n").trim();
     extractedText = text ? text.slice(0, PREREQUISITE_TEXT_CAP) : null;
-  } catch {
-    // Extraction is best-effort: an unreadable file still counts as uploaded,
-    // and the interview simply grounds fewer questions in it.
-    extractedText = null;
+    if (!extractedText) {
+      extractionFailure = result.failures[0] ?? "no text could be read from the file";
+    }
+  } catch (error) {
+    extractionFailure = error instanceof Error ? error.message : String(error);
+  }
+
+  if (extractionFailure) {
+    // Technical reason for whoever debugs this later; the student gets plain
+    // advice instead. Today this would have said "Invalid PDF structure".
+    console.warn(
+      `[interview-prerequisite] ${args.kind} for ${args.userId} produced no text: ${extractionFailure}`,
+    );
   }
 
   const row = await client.interviewPrerequisite.upsert({
@@ -294,5 +328,7 @@ export async function commitPrerequisite(
     sizeBytes: row.sizeBytes,
     extractedText: row.extractedText,
     createdAt: row.createdAt,
+    readable: extractedText !== null,
+    unreadableReason: extractedText === null ? UNREADABLE_ADVICE[args.kind] : null,
   };
 }
