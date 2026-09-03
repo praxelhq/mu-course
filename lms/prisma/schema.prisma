@@ -447,6 +447,12 @@ model InterviewPrerequisite {
   // Bounded text pulled out at commit time so the prompt builder never has to
   // re-read S3 per interview.
   extractedText String?
+  // A short prose summary of extractedText, written once by the queue worker.
+  // Raw Make blueprint JSON is unusable as interview grounding; the digest is
+  // what the interviewer actually reads. Null until the job runs (or when the
+  // kind is not digested), and the prompt falls back to extractedText.
+  digest        String?
+  digestedAt    DateTime?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 

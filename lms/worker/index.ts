@@ -16,15 +16,18 @@ import {
   QUEUE_GRADE_SUBMISSION,
   QUEUE_GRADE_SUBMISSION_DEAD,
   QUEUE_PORTFOLIO_CRAWL,
+  QUEUE_PREREQUISITE_DIGEST,
   QUEUE_RETENTION_CLEANUP,
   QUEUE_SCREENSHOT_CAPTURE,
   type PortfolioCrawlJobData,
+  type PrerequisiteDigestJobData,
 } from "../lib/queue";
 import { handleGradeSubmission } from "./jobs/grade-submission";
 import { createGradeSubmissionQueueHandler } from "./jobs/grade-submission-consumer";
 import { handleGradeInterview } from "./jobs/grade-interview";
 import { handleScreenshotCapture } from "./jobs/screenshot-capture";
 import { handlePortfolioCrawl } from "./jobs/portfolio-crawl";
+import { handleDigestPrerequisite } from "./jobs/digest-prerequisite";
 import { markAssessmentSubmissionDeadLettered } from "../lib/assessments/dead-letter";
 import { reconcileGradeSubmissionDeadLetters } from "./jobs/reconcile-grade-dead-letters";
 import { handleRetentionCleanup } from "./jobs/retention-cleanup";
@@ -133,6 +136,20 @@ async function main() {
         console.log(`[interview-grading] job ${job.id} → interview ${job.data.interviewId}`);
         await handleGradeInterview(job.data.interviewId);
         console.log(`[interview-grading] job ${job.id} done`);
+      }
+    }
+  );
+
+  // Prerequisite digest: one short Anthropic call per uploaded blueprint, so
+  // the interviewer reads prose instead of raw Make JSON. Serial and shallow.
+  await boss.work<PrerequisiteDigestJobData>(
+    QUEUE_PREREQUISITE_DIGEST,
+    { batchSize: 1 },
+    async (jobs) => {
+      for (const job of jobs) {
+        console.log(`[prerequisite-digest] job ${job.id} → ${job.data.kind} for ${job.data.userId}`);
+        const out = await handleDigestPrerequisite(job.data);
+        console.log(`[prerequisite-digest] job ${job.id} ${out.digested ? "done" : `skipped: ${out.reason}`}`);
       }
     }
   );

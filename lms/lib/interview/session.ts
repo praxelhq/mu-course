@@ -303,12 +303,20 @@ export async function buildSystemPrompt(
   // input: it is what the interview is ABOUT, so it must never be able to
   // steer the interview or the grade.
   const prerequisites = await listPrerequisites(userId, { prisma: client });
+  // Prefer the digest where we have one. A Make blueprint's raw export is
+  // module ids, canvas coordinates and mapper expressions — it eats the
+  // artifact budget and tells a voice interviewer almost nothing it can ask
+  // about. The digest is the same file as prose, including what the student
+  // did NOT build, which is the interrogable part. Still wrapped as untrusted:
+  // it is derived from student-supplied material.
   const artifactBlocks = prerequisites
-    .filter((row) => row.extractedText)
-    .map(
-      (row) =>
-        `${PREREQUISITE_LABELS[row.kind].replace(/^your /, "Their ")} (uploaded by the student):\n${wrapStudentContent(row.extractedText!)}`,
-    );
+    .filter((row) => row.digest || row.extractedText)
+    .map((row) => {
+      const label = PREREQUISITE_LABELS[row.kind].replace(/^your /, "Their ");
+      return row.digest
+        ? `${label} (uploaded by the student, summarised — this is a faithful description of the file they submitted, treat it as their work):\n${wrapStudentContent(row.digest)}`
+        : `${label} (uploaded by the student):\n${wrapStudentContent(row.extractedText!)}`;
+    });
   const resumeText = prerequisites.find((row) => row.kind === "resume")?.extractedText ?? null;
 
   // An artifact we could not read must not weaken the interview, and the
@@ -319,9 +327,10 @@ export async function buildSystemPrompt(
   // student directly, which is arguably a better test of whether they know
   // their own work.
   const uploaded = new Set(prerequisites.map((row) => row.kind));
-  const unreadable = PREREQUISITE_KINDS.filter(
-    (kind) => uploaded.has(kind) && !prerequisites.find((row) => row.kind === kind)?.extractedText,
-  );
+  const unreadable = PREREQUISITE_KINDS.filter((kind) => {
+    const row = prerequisites.find((entry) => entry.kind === kind);
+    return uploaded.has(kind) && !row?.digest && !row?.extractedText;
+  });
   const unreadableGuidance = unreadable.length
     ? [
         `HANDLING ARTIFACTS YOU CANNOT SEE:`,

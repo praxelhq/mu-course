@@ -10,6 +10,7 @@ export const QUEUE_SCREENSHOT_CAPTURE = "screenshot.capture"; // U11
 export const QUEUE_GRADE_INTERVIEW = "grade.interview"; // U12
 export const QUEUE_GRADE_INTERVIEW_DEAD = "grade.interview.dead";
 export const QUEUE_PORTFOLIO_CRAWL = "portfolio.crawl"; // U16
+export const QUEUE_PREREQUISITE_DIGEST = "interview.prerequisite-digest";
 export const QUEUE_RETENTION_CLEANUP = "maintenance.retention-cleanup";
 export const QUEUE_RETENTION_CLEANUP_DEAD = "maintenance.retention-cleanup.dead";
 
@@ -74,6 +75,14 @@ export async function ensureGradingQueues(b: PgBoss): Promise<void> {
     retryLimit: 2,
     retryBackoff: true,
     retryDelay: 30,
+  });
+  // Prerequisite digest: summarise an uploaded blueprint once at upload time.
+  // No dead letter — a failed digest is not an incident, the interview prompt
+  // simply falls back to the raw extracted text.
+  await b.createQueue(QUEUE_PREREQUISITE_DIGEST, {
+    retryLimit: 2,
+    retryBackoff: true,
+    retryDelay: 20,
   });
   await b.createQueue(QUEUE_RETENTION_CLEANUP_DEAD);
   await b.createQueue(QUEUE_RETENTION_CLEANUP, {
@@ -186,6 +195,29 @@ export async function enqueueScreenshotCapture(submissionId: string): Promise<st
   } catch (err) {
     console.error(
       `[queue] failed to enqueue screenshot capture for ${submissionId}:`,
+      err instanceof Error ? err.message : err,
+    );
+    return null;
+  }
+}
+
+export type PrerequisiteDigestJobData = { userId: string; kind: string };
+
+/**
+ * Best-effort enqueue of an artifact digest. The upload itself must always
+ * succeed — a queue outage just means the interviewer reads the raw extracted
+ * text instead of the summary.
+ */
+export async function enqueuePrerequisiteDigest(
+  data: PrerequisiteDigestJobData,
+): Promise<string | null> {
+  try {
+    const b = await getBoss();
+    await ensureGradingQueues(b);
+    return await b.send(QUEUE_PREREQUISITE_DIGEST, data);
+  } catch (err) {
+    console.error(
+      `[queue] failed to enqueue ${data.kind} digest for ${data.userId} (upload still recorded):`,
       err instanceof Error ? err.message : err,
     );
     return null;

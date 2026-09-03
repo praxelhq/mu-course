@@ -144,6 +144,8 @@ export type PrerequisiteRow = {
   contentType: string;
   sizeBytes: number;
   extractedText: string | null;
+  /** Short prose summary of extractedText; null until the digest job runs. */
+  digest: string | null;
   createdAt: Date;
 };
 
@@ -181,6 +183,7 @@ export async function listPrerequisites(
     contentType: row.contentType,
     sizeBytes: row.sizeBytes,
     extractedText: row.extractedText,
+    digest: row.digest,
     createdAt: row.createdAt,
   }));
 }
@@ -327,6 +330,7 @@ export async function commitPrerequisite(
     contentType: row.contentType,
     sizeBytes: row.sizeBytes,
     extractedText: row.extractedText,
+    digest: row.digest,
     createdAt: row.createdAt,
     readable: extractedText !== null,
     unreadableReason: extractedText === null ? UNREADABLE_ADVICE[args.kind] : null,

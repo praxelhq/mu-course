@@ -9,6 +9,8 @@ import {
   presignPrerequisiteUpload,
 } from "@/lib/interview/prerequisites";
 import { s3ErrorResponse } from "@/lib/s3";
+import { enqueuePrerequisiteDigest } from "@/lib/queue";
+import { shouldDigest } from "@/lib/ai/prerequisite-digest";
 
 // The student's three interview prerequisites: resume, Make blueprint JSON,
 // and sector map.
@@ -86,6 +88,14 @@ export const POST = withAuth(async (req, { user }) => {
       kind: parsed.data.kind,
       s3Key: parsed.data.s3Key,
     });
+    // Summarise the artifact out of band. Raw Make blueprint JSON is not
+    // usable interview grounding, but producing the summary is an Anthropic
+    // call and must not run in a request handler (CLAUDE.md) — nor make the
+    // student wait. Best-effort: the prompt falls back to the raw text.
+    if (row.readable && shouldDigest(row.kind)) {
+      void enqueuePrerequisiteDigest({ userId: user.userId, kind: row.kind });
+    }
+
     const missing = await missingPrerequisites(user.userId);
     return Response.json({
       kind: row.kind,
