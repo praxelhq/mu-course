@@ -56,6 +56,13 @@ export default async function InterviewPage() {
   // A live interview can always be resumed; otherwise a fresh start needs an
   // open window and either no prior attempt or an unused retake grant.
   const canResume = latest?.status === "live";
+  // Once the interview has happened there is nothing left to upload, so the
+  // whole "before you start" block goes away — leaving it up implies the
+  // student still owes something. A granted retake brings it back.
+  const interviewFinished =
+    !!latest &&
+    ["completed", "graded", "escalated"].includes(latest.status) &&
+    !retake;
   // The three prerequisite artifacts gate the start alongside the window and
   // attempt guards; startInterview enforces the same rule server-side.
   const prerequisitesComplete = missingPrereqs.length === 0;
@@ -130,7 +137,7 @@ export default async function InterviewPage() {
         </Card>
       ) : (
         <>
-          {!canResume && <InterviewPrerequisites />}
+          {!canResume && !interviewFinished && <InterviewPrerequisites />}
 
           {canStart || canResume ? <InterviewStart canResume={canResume} /> : null}
         </>

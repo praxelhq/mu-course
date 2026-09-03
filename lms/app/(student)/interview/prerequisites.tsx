@@ -40,6 +40,17 @@ const SLOTS: { kind: Kind; title: string; hint: string; accept: string }[] = [
   },
 ];
 
+/** What is on file, in the student's terms — not "No file chosen". */
+function fileSummary(row: Uploaded): string {
+  const kb = row.sizeBytes / 1024;
+  const size = kb >= 1024 ? `${(kb / 1024).toFixed(1)} MB` : `${Math.max(1, Math.round(kb))} KB`;
+  const when = new Date(row.uploadedAt).toLocaleDateString("en-IN", {
+    day: "numeric",
+    month: "short",
+  });
+  return `Uploaded ${when} · ${size}`;
+}
+
 const label: Record<Kind, string> = {
   resume: "Resume",
   blueprint: "Blueprint JSON",
@@ -182,24 +193,64 @@ export function InterviewPrerequisites({
               <p style={{ margin: "0.25rem 0 0.75rem", color: "var(--charcoal)", lineHeight: 1.55 }}>
                 {slot.hint}
               </p>
-              <input
-                type="file"
-                accept={slot.accept}
-                disabled={busy !== null}
-                aria-label={`Upload ${label[slot.kind]}`}
-                onChange={(event) => {
-                  const file = event.target.files?.[0];
-                  event.target.value = "";
-                  if (file) void upload(slot.kind, file);
+              {/* The native control renders "No file chosen" forever, which sat
+                  directly under an "Uploaded" badge and read as a contradiction.
+                  The input is still the real control — just visually replaced by
+                  a label so the button text can state what will happen. */}
+              <label
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  minHeight: 44,
+                  padding: "0 1.25rem",
+                  border: "1px solid var(--sand)",
+                  background: row ? "transparent" : "var(--pine)",
+                  color: row ? "var(--pine)" : "var(--parchment)",
+                  cursor: busy === null ? "pointer" : "progress",
+                  fontFamily: "var(--font-geist-mono)",
+                  fontSize: "0.75rem",
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  opacity: busy !== null && busy !== slot.kind ? 0.5 : 1,
                 }}
-                style={{ fontSize: "0.875rem" }}
-              />
-              {busy === slot.kind && (
-                <p style={{ margin: "0.5rem 0 0", color: "var(--clay)" }}>Uploading…</p>
-              )}
+              >
+                {busy === slot.kind
+                  ? "Uploading…"
+                  : row
+                    ? `Replace ${label[slot.kind].toLowerCase()}`
+                    : `Choose ${label[slot.kind].toLowerCase()}`}
+                <input
+                  type="file"
+                  accept={slot.accept}
+                  disabled={busy !== null}
+                  aria-label={`Upload ${label[slot.kind]}`}
+                  onChange={(event) => {
+                    const file = event.target.files?.[0];
+                    event.target.value = "";
+                    if (file) void upload(slot.kind, file);
+                  }}
+                  style={{
+                    position: "absolute",
+                    width: 1,
+                    height: 1,
+                    padding: 0,
+                    margin: -1,
+                    overflow: "hidden",
+                    clip: "rect(0 0 0 0)",
+                    whiteSpace: "nowrap",
+                    border: 0,
+                  }}
+                />
+              </label>
               {row && busy !== slot.kind && (
-                <p style={{ margin: "0.5rem 0 0", color: "var(--charcoal)" }}>
-                  {label[row.kind]} on file. Uploading again replaces it.
+                <p
+                  style={{
+                    margin: "0.5rem 0 0",
+                    color: "var(--pine)",
+                    fontSize: "0.875rem",
+                  }}
+                >
+                  ✓ {fileSummary(row)}
                 </p>
               )}
               {error && (
