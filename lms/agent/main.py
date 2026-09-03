@@ -1,6 +1,6 @@
 """Praxel Forge interview agent — LiveKit Agents worker (U13).
 
-Pipeline: Sarvam STT -> Claude dialog -> Sarvam TTS, running as a
+Pipeline: Sarvam STT -> LiveKit Inference dialog -> Sarvam TTS, running as a
 livekit-agents v1.x AgentSession in rooms named ``interview-{interviewId}``.
 Deepgram STT / ElevenLabs TTS remain wired as the fallback pair and are used
 whenever ``SARVAM_API_KEY`` is absent, so local dev and a Sarvam outage both
@@ -42,7 +42,6 @@ REQUIRED_ENV = ["LIVEKIT_URL", "LIVEKIT_API_KEY", "LIVEKIT_API_SECRET"]
 
 # Required by the interview pipeline itself, regardless of voice provider.
 PIPELINE_ENV = [
-    "ANTHROPIC_API_KEY",
     "AGENT_INTERNAL_TOKEN",
     "APP_URL",
 ]
@@ -79,11 +78,15 @@ ROOM_PREFIX = "interview-"
 EGRESS_LAYOUT = os.environ.get("INTERVIEW_EGRESS_LAYOUT", "speaker")
 MAX_INTERVIEW_SECONDS = 15 * 60
 QUESTION_BUDGET = 12  # hard ceiling across the five segments
-# The interviewer shares a model family with the grader (lib/ai/client.ts uses
-# claude-sonnet-4-5). Tool calling is load-bearing here — the agent ends the
-# interview by calling end_interview — and the dialog model reads student
-# uploads, so injection resistance matters as much as fluency.
-DIALOG_MODEL = os.environ.get("INTERVIEW_DIALOG_MODEL", "claude-sonnet-4-5")
+# Dialog runs through LiveKit Inference, which is included in LiveKit Cloud —
+# no extra provider key, and it is zero-data-retention by default, which matters
+# because this prompt carries the student's own resume.
+#
+# gemini-3.6-flash over the latency-tuned gemma-4-31b-it: the agent ends a
+# session by CALLING end_interview, and the context holds student-uploaded text
+# that may be engineered to manipulate the grade. The latency gap is small next
+# to the STT+TTS round trip; the instruction-following gap is not.
+DIALOG_MODEL = os.environ.get("INTERVIEW_DIALOG_MODEL", "google/gemini-3.6-flash")
 
 # Sarvam voice configuration. STT defaults to adaptive language identification:
 # the cohort code-mixes English and Hindi mid-answer, and pinning en-IN drops or
@@ -246,8 +249,8 @@ def check_env() -> None:
         )
         sys.exit(1)
 
-    # The livekit anthropic plugin reads ANTHROPIC_API_KEY directly — the same
-    # name the web and worker services already use, so there is no alias to map.
+    # No LLM key to check: LiveKit Inference authenticates with the LIVEKIT_*
+    # credentials this worker already needs to join a room at all.
 
 
 def egress_configured() -> bool:
@@ -468,7 +471,8 @@ async def entrypoint(ctx) -> None:
     every finalized utterance into the LMS, records via Egress, and completes
     the interview when the LLM signals done or the 12-minute budget expires."""
     from livekit.agents import Agent, AgentSession, RoomInputOptions, RunContext, function_tool
-    from livekit.plugins import anthropic, silero
+    from livekit.agents import inference
+    from livekit.plugins import silero
 
     await ctx.connect()
     room_name = ctx.room.name
@@ -569,7 +573,7 @@ async def entrypoint(ctx) -> None:
     stt, tts = build_voice_components()
     session = AgentSession(
         stt=stt,
-        llm=anthropic.LLM(model=DIALOG_MODEL),
+        llm=inference.LLM(model=DIALOG_MODEL),
         tts=tts,
         vad=silero.VAD.load(),
     )

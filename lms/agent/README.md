@@ -1,7 +1,7 @@
 # Praxel Forge interview agent
 
 Python LiveKit Agents worker that runs the realtime voice interviews:
-LiveKit (transport) -> Sarvam (STT) -> Claude (dialog) -> Sarvam (TTS),
+LiveKit (transport) -> Sarvam (STT) -> LiveKit Inference (dialog) -> Sarvam (TTS),
 calling back into the LMS over internal endpoints.
 
 Voice is selected as a **pair**: Sarvam whenever `SARVAM_API_KEY` is set,
@@ -20,7 +20,7 @@ that only accepts jobs for rooms named `interview-{interviewId}`. Per job it:
    S3 env vars are present (best-effort: failures log and the interview
    continues — the interview is worth more than the tape). The MP4 carries the
    audio; a speaker layout keeps the pixels on the student.
-3. Runs an `AgentSession` (sarvam STT / anthropic.LLM claude-sonnet-4-5 /
+3. Runs an `AgentSession` (sarvam STT / inference.LLM google/gemini-3.6-flash /
    sarvam.TTS bulbul:v3 / silero.VAD). The stored system prompt gets a voice-mode
    override appended (speak naturally, one question, call `end_interview`
    when done — the turn-based JSON contract is explicitly disabled).
@@ -58,7 +58,7 @@ All required — the worker refuses to start without them, with a clear message:
 | `LIVEKIT_API_SECRET` | LiveKit API secret |
 | `SARVAM_API_KEY` | Speech-to-text and text-to-speech (primary). Either this OR both Deepgram and ElevenLabs must be set. |
 | `DEEPGRAM_API_KEY` | Speech-to-text (fallback pair) |
-| `ANTHROPIC_API_KEY` | Dialog LLM (Claude). Same key the web and worker services already use. |
+| _(no LLM key)_ | Dialog runs on LiveKit Inference, authenticated by the `LIVEKIT_*` credentials above. |
 | `ELEVENLABS_API_KEY` | Text-to-speech (fallback pair) |
 | `AGENT_INTERNAL_TOKEN` | Shared secret for internal LMS endpoints (must match the web service) |
 | `APP_URL` | Base URL of the web service |
@@ -77,7 +77,7 @@ Optional (room recording via LiveKit Egress; omit any to disable):
 | `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY` | S3 credentials for the Egress upload |
 | `AWS_REGION` | S3 bucket region |
 | `S3_BUCKET` | Destination bucket (same one the LMS presigns from) |
-| `INTERVIEW_DIALOG_MODEL` | Dialog model override (default `claude-sonnet-4-5`) |
+| `INTERVIEW_DIALOG_MODEL` | Dialog model override (default `google/gemini-3.6-flash`; `google/gemma-4-31b-it` is lower latency but weaker at tool calls) |
 | `SARVAM_STT_LANGUAGE` | STT language (default `auto` — adaptive identification, so code-mixed English/Hindi still transcribes) |
 | `SARVAM_STT_STREAM_TYPE` | Latency profile (default `balanced`) |
 | `SARVAM_TTS_MODEL` | TTS model (default `bulbul:v3`) |

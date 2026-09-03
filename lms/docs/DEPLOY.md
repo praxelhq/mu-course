@@ -79,8 +79,10 @@ documented in `lms/.env.example`.
 ### agent
 - `LIVEKIT_URL`, `LIVEKIT_API_KEY`, `LIVEKIT_API_SECRET` (required — the
   worker exits with a clear message without them)
-- `ANTHROPIC_API_KEY` (dialog LLM — the same key the web and worker already
-  use; the interviewer and the grader share a model family)
+- **No LLM key.** Dialog runs on LiveKit Inference, which is included in
+  LiveKit Cloud and authenticates with the `LIVEKIT_*` credentials above. It is
+  zero-data-retention by default, which matters because the interview prompt
+  carries the student's own resume.
 - **Voice: exactly one complete pair is required.** Set `SARVAM_API_KEY` for
   the primary pipeline (Sarvam STT + TTS). `DEEPGRAM_API_KEY` +
   `ELEVENLABS_API_KEY` remain the fallback pair and are used only when
