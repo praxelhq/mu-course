@@ -175,7 +175,17 @@ describe("verified company sign-off", () => {
 // ---------------------------------------------------------------------------
 
 describe("aiInterview", () => {
-  it("sums the four 25-point categories: 22+19+21+17 = 79 (the seeded iv_001)", () => {
+  it("sums the two 50-point axes", () => {
+    expect(
+      aiInterview({
+        rubricScores: { conceptual_understanding: 41, work_integrity: 38 },
+      }).raw,
+    ).toBe(79);
+  });
+
+  it("keeps scoring interviews graded under the four-category rubric", () => {
+    // The seeded iv_001: 22+19+21+17 = 79. Historical interviews must keep
+    // contributing exactly what they always did — no backfill.
     expect(
       aiInterview({
         rubricScores: {
@@ -186,6 +196,44 @@ describe("aiInterview", () => {
         },
       }).raw,
     ).toBe(79);
+  });
+
+  it("names which rubric it read, so an instructor can tell them apart", () => {
+    expect(
+      aiInterview({ rubricScores: { conceptual_understanding: 10, work_integrity: 10 } }).detail,
+    ).toMatch(/two interview axes/i);
+    expect(aiInterview({ rubricScores: { industry_command: 10 } }).detail).toMatch(
+      /four interview categories/i,
+    );
+  });
+
+  it("prefers the current axes when an adjustment left both shapes on the row", () => {
+    // Instructor resolution writes the new axes over the prior object, so a
+    // legacy row that was adjusted legitimately carries both.
+    expect(
+      aiInterview({
+        rubricScores: {
+          industry_command: 22,
+          defence_of_submissions: 19,
+          operators_loop: 21,
+          transfer: 17,
+          conceptual_understanding: 45,
+          work_integrity: 45,
+        },
+      }).raw,
+    ).toBe(90);
+  });
+
+  it("scores a single-axis result on that axis alone", () => {
+    expect(
+      aiInterview({ rubricScores: { conceptual_understanding: 30, work_integrity: 0 } }).raw,
+    ).toBe(30);
+  });
+
+  it("caps at 100", () => {
+    expect(
+      aiInterview({ rubricScores: { conceptual_understanding: 80, work_integrity: 80 } }).raw,
+    ).toBe(100);
   });
 
   it("null rubric (not graded / escalated) → null (pending)", () => {

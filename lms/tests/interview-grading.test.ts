@@ -47,10 +47,14 @@ function mockModel(reply: InterviewGrade): StructuredCaller {
 
 const GOOD_GRADE: InterviewGrade = {
   rubricScores: {
-    industry_command: { score: 21, rationale: "Clear grasp of unit economics." },
-    defence_of_submissions: { score: 19, rationale: "Explained the automation and its failure mode." },
-    operators_loop: { score: 20, rationale: "Named the exact number re-derived." },
-    transfer: { score: 17, rationale: "Applied the model to the new scenario sensibly." },
+    conceptual_understanding: {
+      score: 40,
+      rationale: "Reasoned about what to automate and what to keep human, and why.",
+    },
+    work_integrity: {
+      score: 37,
+      rationale: "Defended the trigger criteria and named what was deliberately left out.",
+    },
   },
   total: 77,
   confidence: 0.88,
@@ -124,9 +128,9 @@ describe.skipIf(!live)("worker/jobs/grade-interview (live DB, seeded)", () => {
     // Flat, seed-compatible shape ({industry_command: n, ..., total}) plus
     // rationales/flags for the instructor page.
     const scores = iv.rubricScores as Record<string, unknown>;
-    expect(scores.industry_command).toBe(21);
+    expect(scores.conceptual_understanding).toBe(40);
     expect(scores.total).toBe(77);
-    expect((scores.rationales as Record<string, string>).transfer).toBeTruthy();
+    expect((scores.rationales as Record<string, string>).work_integrity).toBeTruthy();
     expect(iv.escalationReason).toBeNull();
 
     const ntf = await prisma.notification.findFirst({

@@ -116,25 +116,39 @@ export function workflowUsefulness(input: {
 // §4 AI interview
 // ---------------------------------------------------------------------------
 
-export const INTERVIEW_CATEGORIES = [
+/** Interview v2: two axes, 50 points each. */
+export const INTERVIEW_CATEGORIES = ["conceptual_understanding", "work_integrity"] as const;
+
+/** The pre-v2 rubric: four categories, 25 points each. */
+export const LEGACY_INTERVIEW_CATEGORIES = [
   "industry_command",
   "defence_of_submissions",
   "operators_loop",
   "transfer",
 ] as const;
 
-/** Sum of the four 25-point categories. Null (not graded yet) → pending. */
+/**
+ * Both rubric shapes reach 100, so this is the ONE place that has to know
+ * which one a row carries. An interview graded before v2 keeps contributing
+ * exactly what it always did — no backfill ever rewrites historical grade
+ * evidence, and no other reader needs to care.
+ *
+ * An instructor adjustment writes the current axes over the prior object, so a
+ * row can legitimately hold both shapes; the current axes win when present.
+ */
 export function aiInterview(input: {
-  rubricScores: Partial<Record<(typeof INTERVIEW_CATEGORIES)[number], number>> | null;
+  rubricScores: Partial<Record<string, number>> | null;
 }): ComponentScore {
   if (!input.rubricScores) {
     return { raw: null, detail: "Interview not graded yet." };
   }
-  const sum = INTERVIEW_CATEGORIES.reduce(
-    (acc, key) => acc + (input.rubricScores?.[key] ?? 0),
-    0,
-  );
-  return { raw: round2(Math.min(100, sum)), detail: "Four interview categories, 25 points each." };
+  const scores = input.rubricScores;
+  const hasCurrent = INTERVIEW_CATEGORIES.some((key) => typeof scores[key] === "number");
+  const [keys, detail] = hasCurrent
+    ? [INTERVIEW_CATEGORIES, "Two interview axes, 50 points each."]
+    : [LEGACY_INTERVIEW_CATEGORIES, "Four interview categories, 25 points each."];
+  const sum = keys.reduce((acc, key) => acc + (scores[key] ?? 0), 0);
+  return { raw: round2(Math.min(100, sum)), detail };
 }
 
 // ---------------------------------------------------------------------------

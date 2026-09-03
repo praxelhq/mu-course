@@ -2,7 +2,10 @@ import { z } from "zod";
 import type { Prisma } from "@prisma/client";
 import { withAuth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
-import { INTERVIEW_CATEGORIES } from "@/lib/ai/interview-grading";
+import {
+  INTERVIEW_CATEGORIES,
+  INTERVIEW_CATEGORY_MAX,
+} from "@/lib/ai/interview-grading";
 
 // Instructor resolution of interview escalations: mark the AI grade as
 // final, or adjust category scores (reason required). Both are audited.
@@ -11,7 +14,7 @@ export const dynamic = "force-dynamic";
 
 const scoresSchema = z.object(
   Object.fromEntries(
-    INTERVIEW_CATEGORIES.map((k) => [k, z.number().min(0).max(25)]),
+    INTERVIEW_CATEGORIES.map((k) => [k, z.number().min(0).max(INTERVIEW_CATEGORY_MAX)]),
   ) as Record<(typeof INTERVIEW_CATEGORIES)[number], z.ZodNumber>,
 );
 
