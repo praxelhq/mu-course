@@ -1,34 +1,29 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { LiveKitRoom } from "@livekit/components-react";
 import { Card } from "@/components/ui";
 import {
   CAMERA_REQUIRED_NOTICE,
-  VIDEO_LOST_NOTICE,
   cameraRemediation,
   classifyCameraError,
 } from "@/lib/interview/video";
+import { MeetingView } from "./meeting-view";
 
-// The realtime (LiveKit) interview room: publish mic and camera, play the
-// agent's audio, and show the live transcript by polling the state endpoint
-// every 5s (the poll doubles as the server-side heartbeat).
+// Connects the student to the LiveKit room and hands off to MeetingView.
 //
-// Video is required to START — every interview must leave a recording — but
-// losing it mid-call is NOT terminal: the conversation continues on audio and
-// the interview is flagged, so a device failure never costs the student their
-// single attempt.
-//
-// Degradation is this component's whole job: connect failure within ~8s,
-// a mid-session disconnect, or sustained poor connection quality all call
-// onFallback — the orchestrator flips the interview to the turn-based loop
-// in place. The student never loses the session or the transcript.
-
-type Turn = { turnNo: number; speaker: string; text: string };
-type State = { id: string; status: string; turns: Turn[] };
+// Two jobs live here rather than in the view:
+//   1. Tech check — camera and mic are proven BEFORE connecting, so a student
+//      never lands in a live graded interview only to discover their camera is
+//      blocked. Video is required to start; losing it later is not terminal.
+//   2. Degradation — a connect timeout (~8s), a disconnect, or sustained poor
+//      quality flips the interview to the turn-based loop in place. The same
+//      interview continues and the single attempt is never burned.
 
 const CONNECT_TIMEOUT_MS = 8_000;
-const POOR_QUALITY_SUSTAINED_MS = 10_000;
-const STATE_POLL_MS = 5_000;
+const BUDGET_MINUTES = 15;
+
+type Phase = "checking" | "blocked" | "connecting" | "live";
 
 export function RealtimeRoom({
   url,
@@ -43,13 +38,11 @@ export function RealtimeRoom({
   onFallback: (reason: string) => void;
   onCompleted: () => void;
 }) {
-  const [connected, setConnected] = useState(false);
+  const [phase, setPhase] = useState<Phase>("checking");
   const [cameraError, setCameraError] = useState<string | null>(null);
-  const [videoLost, setVideoLost] = useState(false);
-  const [turns, setTurns] = useState<Turn[]>([]);
-  const videoRef = useRef<HTMLDivElement | null>(null);
-  const audioRef = useRef<HTMLDivElement | null>(null);
-  const endedRef = useRef(false); // completed or fallen back — ignore late events
+  /** Bumped by "Try again" to re-run the tech check. */
+  const [attempt, setAttempt] = useState(0);
+  const endedRef = useRef(false);
   const fallbackRef = useRef(onFallback);
   const completedRef = useRef(onCompleted);
   useEffect(() => {
@@ -57,139 +50,50 @@ export function RealtimeRoom({
     completedRef.current = onCompleted;
   }, [onFallback, onCompleted]);
 
+  // Tech check: prove camera + mic before joining anything. State settles in
+  // the promise callbacks, never synchronously in the effect body.
   useEffect(() => {
     let cancelled = false;
-    let poll: ReturnType<typeof setInterval> | undefined;
-    let poorTimer: ReturnType<typeof setTimeout> | undefined;
-    let room: import("livekit-client").Room | undefined;
-
-    const end = (fn: () => void) => {
-      if (endedRef.current || cancelled) return;
-      endedRef.current = true;
-      fn();
-    };
-
-    async function run() {
-      try {
-        const { Room, RoomEvent, ConnectionQuality, Track } = await import("livekit-client");
-        room = new Room();
-
-        room.on(RoomEvent.TrackSubscribed, (track) => {
-          if (track.kind === Track.Kind.Audio && audioRef.current) {
-            audioRef.current.appendChild(track.attach());
-          }
-        });
-        room.on(RoomEvent.LocalTrackPublished, (publication) => {
-          // Self-view, so the student can see they are actually on camera.
-          if (publication.kind === Track.Kind.Video && videoRef.current) {
-            const el = publication.track?.attach();
-            if (el) {
-              el.style.width = "100%";
-              el.style.maxWidth = "18rem";
-              el.muted = true;
-              videoRef.current.replaceChildren(el);
-            }
-          }
-        });
-        room.on(RoomEvent.Disconnected, () => {
-          end(() => fallbackRef.current("disconnected"));
-        });
-        room.on(RoomEvent.ConnectionQualityChanged, (quality, participant) => {
-          if (participant !== room?.localParticipant) return;
-          if (quality === ConnectionQuality.Poor || quality === ConnectionQuality.Lost) {
-            poorTimer ??= setTimeout(() => {
-              void room?.disconnect();
-              end(() => fallbackRef.current("poor-connection"));
-            }, POOR_QUALITY_SUSTAINED_MS);
-          } else {
-            clearTimeout(poorTimer);
-            poorTimer = undefined;
-          }
-        });
-
-        // Connect within the timeout or degrade — no long spinners.
-        await Promise.race([
-          room.connect(url, token),
-          new Promise((_, reject) =>
-            setTimeout(() => reject(new Error("connect timeout")), CONNECT_TIMEOUT_MS),
-          ),
-        ]);
-        await room.localParticipant.setMicrophoneEnabled(true);
-
-        // Camera is a hard requirement to begin. Failing here leaves the room
-        // and shows remediation rather than degrading: a missing recording
-        // cannot be reviewed later, and there is no second attempt.
-        try {
-          await room.localParticipant.setCameraEnabled(true);
-        } catch (err) {
-          void room.disconnect().catch(() => {});
-          if (!cancelled) setCameraError(cameraRemediation(classifyCameraError(err)));
-          return;
-        }
-
-        if (cancelled) {
-          void room.disconnect();
-          return;
-        }
-        setConnected(true);
-      } catch {
-        void room?.disconnect().catch(() => {});
-        end(() => fallbackRef.current("connect-failed"));
-        return;
-      }
-
-      // A camera that dies mid-interview flags the recording and carries on.
-      // Deliberately NOT routed through end(): this is not terminal.
-      room.localParticipant.on("localTrackUnpublished", (publication) => {
-        if (publication.kind !== "video" || cancelled) return;
-        setVideoLost(true);
-        void fetch("/api/interview/video-lost", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ interviewId }),
-        }).catch(() => {
-          // The flag is best-effort; losing it must never end the interview.
-        });
+    navigator.mediaDevices
+      .getUserMedia({ video: true, audio: true })
+      .then((stream) => {
+        // Release immediately — LiveKit acquires its own tracks on connect.
+        // This is a permission and device probe, not the capture itself.
+        stream.getTracks().forEach((t) => t.stop());
+        if (cancelled) return;
+        setCameraError(null);
+        setPhase("connecting");
+      })
+      .catch((err: unknown) => {
+        if (cancelled) return;
+        setCameraError(cameraRemediation(classifyCameraError(err)));
+        setPhase("blocked");
       });
-
-      // Transcript poll (also the server-side heartbeat).
-      poll = setInterval(async () => {
-        try {
-          const res = await fetch(`/api/interview/state?id=${encodeURIComponent(interviewId)}`, {
-            cache: "no-store",
-          });
-          if (!res.ok) return;
-          const { state } = (await res.json()) as { state: State };
-          if (cancelled) return;
-          setTurns(state.turns);
-          if (state.status !== "live") {
-            void room?.disconnect();
-            end(() => completedRef.current());
-          }
-        } catch {
-          // transient — the next tick retries; a real drop fires Disconnected
-        }
-      }, STATE_POLL_MS);
-    }
-
-    void run();
     return () => {
       cancelled = true;
-      clearInterval(poll);
-      clearTimeout(poorTimer);
-      void room?.disconnect().catch(() => {});
     };
-  }, [url, token, interviewId]);
+  }, [attempt]);
 
-  if (cameraError) {
+  // Connect timeout: no long spinners on a graded assessment.
+  useEffect(() => {
+    if (phase !== "connecting") return;
+    const timer = setTimeout(() => {
+      if (endedRef.current) return;
+      endedRef.current = true;
+      fallbackRef.current("connect-failed");
+    }, CONNECT_TIMEOUT_MS);
+    return () => clearTimeout(timer);
+  }, [phase]);
+
+  if (phase === "blocked") {
     return (
       <Card>
         <p
           style={{
             margin: 0,
             fontFamily: "var(--font-geist-mono)",
-            fontSize: "0.75rem",
-            letterSpacing: "0.1em",
+            fontSize: "0.6875rem",
+            letterSpacing: "0.14em",
             textTransform: "uppercase",
             color: "var(--ochre)",
           }}
@@ -197,50 +101,75 @@ export function RealtimeRoom({
           Camera needed
         </p>
         <p style={{ margin: "0.5rem 0 0", lineHeight: 1.6 }}>{CAMERA_REQUIRED_NOTICE}</p>
-        <p style={{ margin: "0.75rem 0 0", color: "var(--charcoal)", lineHeight: 1.6 }}>
+        <p style={{ margin: "0.75rem 0 1.25rem", color: "var(--charcoal)", lineHeight: 1.6 }}>
           {cameraError}
+        </p>
+        <button
+          type="button"
+          onClick={() => {
+            setPhase("checking");
+            setAttempt((n) => n + 1);
+          }}
+          style={{
+            minHeight: 44,
+            padding: "0 1.25rem",
+            border: "1px solid var(--pine)",
+            background: "var(--pine)",
+            color: "var(--parchment)",
+            cursor: "pointer",
+            fontSize: "0.9375rem",
+          }}
+        >
+          Try again
+        </button>
+      </Card>
+    );
+  }
+
+  if (phase === "checking") {
+    return (
+      <Card>
+        <p style={{ margin: 0, color: "var(--charcoal)", lineHeight: 1.6 }}>
+          Checking your camera and microphone…
         </p>
       </Card>
     );
   }
 
   return (
-    <div style={{ display: "grid", gap: "1.5rem" }}>
-      <Card>
-        <p style={{ margin: 0, fontFamily: "var(--font-geist-mono)", fontSize: "0.8125rem", letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--clay)" }}>
-          {connected ? "Live conversation in progress" : "Connecting you to the interviewer…"}
-        </p>
-        <p style={{ margin: "0.5rem 0 0", color: "var(--charcoal)", lineHeight: 1.6 }}>
-          {connected
-            ? "Just talk naturally — the interviewer hears you and will ask one question at a time. It wraps up on its own; there is nothing to click."
-            : "Setting up your audio connection. If this takes more than a few seconds we switch you to step-by-step mode automatically."}
-        </p>
-        <div ref={audioRef} />
-        <div ref={videoRef} style={{ marginTop: "1rem" }} />
-        {videoLost && (
-          <p style={{ margin: "0.75rem 0 0", color: "var(--ochre)" }} role="status">
-            {VIDEO_LOST_NOTICE}
-          </p>
-        )}
-      </Card>
-
-      {turns.length > 0 && (
-        <Card>
-          <p style={{ margin: "0 0 1rem", fontFamily: "var(--font-geist-mono)", fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--clay)" }}>
-            Transcript so far
-          </p>
-          <div style={{ display: "grid", gap: "0.75rem" }}>
-            {turns.map((t) => (
-              <div key={t.turnNo} style={{ borderTop: "1px solid var(--sand)", paddingTop: "0.75rem" }}>
-                <span style={{ fontFamily: "var(--font-geist-mono)", fontSize: "0.6875rem", letterSpacing: "0.1em", textTransform: "uppercase", color: t.speaker === "agent" ? "var(--pine)" : "var(--charcoal)" }}>
-                  {t.speaker === "agent" ? "Interviewer" : "You"}
-                </span>
-                <p style={{ margin: "0.25rem 0 0", lineHeight: 1.55 }}>{t.text}</p>
-              </div>
-            ))}
-          </div>
-        </Card>
-      )}
-    </div>
+    <LiveKitRoom
+      serverUrl={url}
+      token={token}
+      connect
+      audio
+      video
+      onConnected={() => setPhase("live")}
+      onDisconnected={() => {
+        if (endedRef.current) return;
+        endedRef.current = true;
+        fallbackRef.current("disconnected");
+      }}
+      onError={() => {
+        if (endedRef.current) return;
+        endedRef.current = true;
+        fallbackRef.current("connect-failed");
+      }}
+      style={{ display: "block" }}
+    >
+      <MeetingView
+        interviewId={interviewId}
+        budgetMinutes={BUDGET_MINUTES}
+        onFallback={(reason) => {
+          if (endedRef.current) return;
+          endedRef.current = true;
+          fallbackRef.current(reason);
+        }}
+        onCompleted={() => {
+          if (endedRef.current) return;
+          endedRef.current = true;
+          completedRef.current();
+        }}
+      />
+    </LiveKitRoom>
   );
 }
