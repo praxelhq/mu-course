@@ -76,6 +76,14 @@ ROOM_PREFIX = "interview-"
 # Two participants, so a speaker layout spends pixels on the student's face
 # rather than on empty grid cells.
 EGRESS_LAYOUT = os.environ.get("INTERVIEW_EGRESS_LAYOUT", "speaker")
+# Record audio only. LiveKit bills composite egress at $0.02/min for video and
+# $0.005/min for audio-only, and across a 516-student cohort that is the single
+# largest line item in the whole system — larger than every model call combined.
+# Nothing downstream reads the video: grading works from the transcript, and a
+# human reviewing a flagged interview needs to hear it, not watch it.
+# The MP4 container and the reserved S3 key are deliberately unchanged, so the
+# reserve/commit path and every stored key stay exactly as they were.
+EGRESS_AUDIO_ONLY = os.environ.get("INTERVIEW_EGRESS_AUDIO_ONLY", "1") not in ("0", "false", "False")
 MAX_INTERVIEW_SECONDS = 15 * 60
 QUESTION_BUDGET = 20  # hard ceiling across the five segments (runaway guard)
 # The model may not end the interview before this many of its own turns. The
@@ -384,7 +392,8 @@ class LmsClient:
 
 
 class Egress:
-    """Room-composite VIDEO Egress to S3 (MP4 carries the audio too).
+    """Room-composite Egress to S3, audio-only by default (see
+    EGRESS_AUDIO_ONLY); the MP4 container is kept either way.
 
     Strictly best-effort: any failure logs and the interview continues without
     a room recording. The interview is worth more than the tape.
@@ -407,6 +416,7 @@ class Egress:
             req = api.RoomCompositeEgressRequest(
                 room_name=self.room_name,
                 layout=EGRESS_LAYOUT,
+                audio_only=EGRESS_AUDIO_ONLY,
                 file_outputs=[
                     api.EncodedFileOutput(
                         file_type=api.EncodedFileType.MP4,
@@ -422,7 +432,13 @@ class Egress:
             )
             info = await self._lkapi.egress.start_room_composite_egress(req)
             self.egress_id = info.egress_id
-            logger.info("egress %s recording %s -> %s", self.egress_id, self.room_name, self.s3_key)
+            logger.info(
+                "egress %s recording %s (%s) -> %s",
+                self.egress_id,
+                self.room_name,
+                "audio-only" if EGRESS_AUDIO_ONLY else "video",
+                self.s3_key,
+            )
         except Exception as err:  # noqa: BLE001 — recording is best-effort
             logger.error("egress start failed for %s: %s", self.room_name, err)
             self.egress_id = None
