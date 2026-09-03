@@ -114,3 +114,52 @@ class InterviewBudgetTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+# The end guard counted questions, which is a proxy for coverage and failed as
+# one: a real interview reached exactly MIN_TURNS_BEFORE_END having covered
+# every segment except the student's own build, and ended one question early.
+class TestOwnWorkCoverage:
+    def test_the_transcript_that_slipped_through_is_not_covered(self):
+        # These are the interviewer's actual questions from that interview.
+        asked = [
+            "Could you tell me a little about yourself and what you've been working on recently?",
+            "Thinking back to your role as a Senior Product Manager, if leadership had asked you to make your team more efficient with AI, what would you automate?",
+            "What is one specific part of your job that you would deliberately not hand over to AI, and why?",
+            "What specific company data would you be comfortable feeding an AI tool?",
+            "Suppose a US hospital network wants to buy a custom web application you built on a visual builder platform like Lovable.",
+            "Beyond vendor agreements and legal approvals, what technical and operational steps would be required?",
+            "Imagine you're using a single LLM assistant across three completely separate work projects.",
+            "What is one specific, repeated task you would package into a dedicated workspace skill?",
+        ]
+        assert main.own_work_covered(asked) is False
+
+    def test_naming_the_sector_map_counts(self):
+        assert main.own_work_covered(["Talk me through your sector map."]) is True
+
+    def test_naming_the_blueprint_counts(self):
+        assert main.own_work_covered(["Why does your blueprint retry that module?"]) is True
+
+    def test_asking_about_trigger_criteria_counts(self):
+        assert main.own_work_covered(
+            ["What trigger criteria did you choose, and why those?"]
+        ) is True
+
+    def test_error_handling_counts(self):
+        assert main.own_work_covered(["What does your error handling do on a timeout?"]) is True
+
+    def test_the_word_workflow_alone_is_not_enough(self):
+        # "workflow" appears in the earlier AI-in-your-job segment, so counting
+        # it would mark the segment covered before it had been reached.
+        assert main.own_work_covered(["Which workflow would you automate first?"]) is False
+
+    def test_matching_ignores_case(self):
+        assert main.own_work_covered(["Tell me about your SECTOR MAP."]) is True
+
+    def test_no_questions_is_not_covered(self):
+        assert main.own_work_covered([]) is False
+
+    def test_the_guard_releases_before_the_time_cap(self):
+        # A model that refuses to comply must not trap the student in a loop.
+        assert main.END_GUARD_RELEASE_SECONDS < main.MAX_INTERVIEW_SECONDS
+        assert main.END_GUARD_RELEASE_SECONDS > 0

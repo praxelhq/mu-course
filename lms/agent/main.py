@@ -83,6 +83,39 @@ QUESTION_BUDGET = 20  # hard ceiling across the five segments (runaway guard)
 # student's own workflow and sector map — is the one that gets skipped when an
 # interview ends early. Prompt instructions alone did not hold; this does.
 MIN_TURNS_BEFORE_END = 10
+
+# Counting questions was the wrong guard. An interview ended at exactly ten
+# questions having covered the resume, privacy, the regulated-shipping probe,
+# context isolation and skills — every segment EXCEPT the student's own work,
+# which is the only evidence work_integrity is scored from. The count said ten,
+# the guard stood down, and the model ended the interview one question early.
+#
+# So the guard now asks what was actually discussed. These markers only appear
+# when the interviewer has genuinely turned to the artifact the student
+# uploaded; generic words like "workflow" are deliberately excluded because
+# they show up in the earlier AI-in-your-job segment too.
+OWN_WORK_MARKERS = (
+    "sector map",
+    "blueprint",
+    "make.com",
+    "trigger criteria",
+    "error handling",
+    "error handler",
+    "workflow you built",
+    "workflow you uploaded",
+    "automation you built",
+    "scenario you built",
+)
+
+# An escape hatch so a model that will not comply cannot trap the student in a
+# refusal loop: inside the last two minutes, let the interview end regardless.
+END_GUARD_RELEASE_SECONDS = MAX_INTERVIEW_SECONDS - 120
+
+
+def own_work_covered(agent_utterances: "list[str]") -> bool:
+    """True once the interviewer has actually raised the student's own build."""
+    haystack = " ".join(agent_utterances).lower()
+    return any(marker in haystack for marker in OWN_WORK_MARKERS)
 # Dialog runs through LiveKit Inference, which is included in LiveKit Cloud —
 # no extra provider key, and it is zero-data-retention by default, which matters
 # because this prompt carries the student's own resume.
@@ -561,6 +594,7 @@ async def entrypoint(ctx) -> None:
     started_at = time.monotonic()
     finished = asyncio.Event()
     question_count = 0
+    agent_utterances: list[str] = []
 
     class Interviewer(Agent):
         def __init__(self) -> None:
@@ -575,10 +609,18 @@ async def entrypoint(ctx) -> None:
             # map, which is the only evidence the work-integrity score is drawn
             # from. The grader correctly scored it 12/50 and flagged the
             # transcript — but the interview was already unrecoverable.
-            if question_count < MIN_TURNS_BEFORE_END:
+            elapsed = time.monotonic() - started_at
+            covered = own_work_covered(agent_utterances)
+            # Two ways to be too early: too few questions, or — the one that
+            # actually bit — enough questions but never having raised the
+            # student's own build. Released near the time cap so a model that
+            # will not comply cannot trap the student in a refusal loop.
+            if (
+                question_count < MIN_TURNS_BEFORE_END or not covered
+            ) and elapsed < END_GUARD_RELEASE_SECONDS:
                 logger.info(
-                    "end_interview refused for %s at %s turns — workflow segment not covered",
-                    interview_id, question_count,
+                    "end_interview refused for %s at %s turns (own-work covered=%s, %.0fs elapsed)",
+                    interview_id, question_count, covered, elapsed,
                 )
                 return (
                     "Not yet — you have not covered the final segment. Do NOT end "
@@ -587,7 +629,8 @@ async def entrypoint(ctx) -> None:
                     "timeouts, what trigger criteria they chose and why those are "
                     "right for this workflow, what they discussed but decided not "
                     "to implement, and how they kept credit use down. Ask one "
-                    "question now."
+                    "question now, and say the words \"sector map\" or "
+                    "\"blueprint\" in it so the segment is on the record."
                 )
             finished.set()
             return "The interview is over. Say a short, warm goodbye."
@@ -616,6 +659,7 @@ async def entrypoint(ctx) -> None:
         speaker = "student" if ev.item.role == "user" else "agent"
         if speaker == "agent":
             question_count += 1
+            agent_utterances.append(text)
         # Persist-before-anything-else is the LMS's job; ours is never to drop
         # a finalized utterance (retry + buffer inside post_turn).
         asyncio.create_task(lms.post_turn(interview_id, speaker, text))
