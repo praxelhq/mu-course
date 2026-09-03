@@ -77,8 +77,16 @@ export function MeetingView({
   const [turns, setTurns] = useState<Turn[]>([]);
   const endedRef = useRef(false);
   const railRef = useRef<HTMLDivElement | null>(null);
+  const agentPresentRef = useRef(false);
+  const turnsRef = useRef<Turn[]>([]);
 
   const isConnected = connectionState === ConnectionState.Connected;
+
+  // How long a connected room may sit with no interviewer in it before we give
+  // up on the realtime path. Joining normally produces a greeting within a few
+  // seconds; a much longer silence means no agent job was ever dispatched —
+  // which happens if the worker was restarting when the student joined.
+  const NO_AGENT_GRACE_MS = 30_000;
 
   useEffect(() => {
     if (!room) return;
@@ -159,12 +167,41 @@ export function MeetingView({
     railRef.current?.scrollTo({ top: railRef.current.scrollHeight });
   }, [turns.length]);
 
+  // Watchdog: connected, but nobody ever joined to interview us.
+  //
+  // The connect timeout upstream only covers failing to reach LiveKit. This
+  // covers the opposite and nastier case — the room is fine, the student is
+  // live on camera, and no agent job was ever dispatched. Without this they
+  // sit watching themselves until the budget expires, and the budget is
+  // enforced by the agent that is not there. Degrade to the turn-based loop,
+  // which keeps the same interview and the same attempt.
+  useEffect(() => {
+    if (connectedAt === null) return;
+    const timer = setTimeout(() => {
+      if (endedRef.current) return;
+      const heardFromInterviewer =
+        agentPresentRef.current || turnsRef.current.some((t) => t.speaker === "agent");
+      if (heardFromInterviewer) return;
+      endedRef.current = true;
+      onFallback("no-interviewer");
+    }, NO_AGENT_GRACE_MS);
+    return () => clearTimeout(timer);
+  }, [connectedAt, onFallback]);
+
   const cameraTrack = useTracks([Track.Source.Camera], { onlySubscribed: false }).find(
     (t) => t.participant.identity === localParticipant?.identity,
   );
   const agentAudio = useTracks([Track.Source.Microphone], { onlySubscribed: true }).find(
     (t) => t.participant.identity !== localParticipant?.identity,
   );
+
+  // Read by the watchdog without making it re-arm on every render.
+  useEffect(() => {
+    agentPresentRef.current = Boolean(agentAudio);
+  }, [agentAudio]);
+  useEffect(() => {
+    turnsRef.current = turns;
+  }, [turns]);
 
   async function toggleMic() {
     if (!localParticipant) return;
