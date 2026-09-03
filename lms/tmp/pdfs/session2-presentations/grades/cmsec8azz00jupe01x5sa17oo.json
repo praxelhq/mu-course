@@ -1,0 +1,39 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 6.5,
+    "accuracy": 4.5,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong thesis-driven narrative with consistent \"SO WHAT\" takeaways and audience-segmented recommendations on slide 9.",
+  "fix_next": "Several headline claims (58% top-20, 5-6× B2B, \"spikes hurt\") lack verifiable grounding in the dataset; anchor every stat to a transparent calculation.",
+  "verdict": "Compelling storytelling undermined by multiple unverifiable or incorrect quantitative claims.",
+  "flags": [
+    "unverifiable-claims",
+    "concentration-figure-off",
+    "median-values-differ-from-reference",
+    "causal-language-on-observational-data",
+    "missing-data-not-acknowledged"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 2/3: '58% of revenue goes to top 20' — reference shows top-10 share is 49.6%, making 58% for top-20 plausible but unverified and the pie chart grouping (top 20 / next 30 / other 950) doesn't add to 1000. Slide 2/4: '5-6× more revenue for B2B' — reference median multiples are ~2.3-2.4×, not 5-6×; the $1,036 vs $181 figures appear to be means not medians, and the 5.7× claim conflates mean with 'typical'. Slide 5: Education median shown as $2,142 vs reference $2,435; AI median shown as $446 vs reference $503; Marketing shown as $1,586 vs reference $2,369.50 — significant discrepancy. Slide 5: 'Fintech' category listed but not present in reference categories. Slide 2/7: '2× more reliable predictor' for search vs social — no methodology shown, unverifiable from dataset. Slide 8: 'Spikes hurt' and buyer multiples (0.25×, 2.40×, 2.40×) — the B2B/B2C median multiples in reference are 2.35×/2.30×, but the claim about spikes lowering price is presented as causal without evidence.",
+  "evidence": {
+    "insight": "Slide 5's contrarian finding that Education outperforms AI on median revenue is genuinely interesting and directionally supported by the data. Slide 6's language analysis (tool vs. feeling) adds original texture. Slide 8's buyer-multiple analysis attempts decision-useful framing for M&A.",
+    "narrative": "Clear thesis on slide 1 ('worth buying'), executive summary on slide 2 previews four findings, each body slide builds toward the recommendation slide 9, and slide 10 closes with four numbered takeaways. The 'SO WHAT' footer on every slide enforces synthesis. Sequence moves logically: big picture → who to sell to → what category → how to pitch → discovery channels → exit pricing → recommendations.",
+    "framing": "Audience (founders/investors) and data freeze date stated on slide 1. However, no mention of missingness (274 missing categories, 288 missing audience_type, 241 missing country), no sample-size caveats on category comparisons (Education n=30), and no limitations slide. The 'Fintech' category appears without explanation.",
+    "accuracy": "Multiple median figures diverge from reference: Marketing $1,586 vs $2,369.50 is a 33% gap. Education $2,142 vs $2,435 is a 12% gap. The B2B advantage is overstated at 5-6× when reference medians show ~2.3×. 'Fintech' is not a reference category. The 58% concentration claim and the search-vs-social '2×' claim are unverifiable. The 67× Stripe comparison on slide 7 is directionally plausible but the exact figure is unverified.",
+    "visual": "Consistent warm palette (mauve/cream/gold), clean hierarchy with section labels, large stat callouts, and restrained chart choices (horizontal bars, simple bar charts). Good use of whitespace. Charts are simple and legible. Slide 6 word-cloud comparison is effective. Minor issue: slide 3 bar chart has only 3 bars for groups that don't sum to 1000 (20+30+950=1000, fine). Overall professional and readable.",
+    "ai_slop": "Some consulting-style language ('strategy briefing', 'playbooks') but generally restrained and specific rather than generic filler. The consistent template structure risks visual sameness but each slide has distinct content. Not flagging as significant slop."
+  },
+  "confidence": "high",
+  "total": 68,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19501,
+    "output_tokens": 1176
+  }
+}

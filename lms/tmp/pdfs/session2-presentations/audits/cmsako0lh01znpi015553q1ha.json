@@ -1,0 +1,43 @@
+{
+  "slide_count": 16,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 8,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Data-quality finding on 56% untagged MRR is genuinely original and shapes every downstream slide.",
+  "fix_next": "Reconcile category revenue totals against the source file—Marketing, E-comm, and AI totals are off by 2-3x, undermining the portfolio view.",
+  "verdict": "Strong strategic narrative built on systematically wrong category figures and a misidentified whale account.",
+  "flags": [
+    "revenue-definition-confusion",
+    "category-totals-wrong-by-2x-plus",
+    "top10-share-understated",
+    "median-values-diverge-from-reference",
+    "anonymous-count-wrong",
+    "whale-account-identity-conflated-with-anonymous-share",
+    "small-n-categories-over-interpreted"
+  ],
+  "factual_error_count": 9,
+  "factual_error_detail": "Slide 2/5: top-10 share stated 48% vs reference 49.6%. Slide 2/6: 'Stan' at 26.5% conflates anonymous revenue share with a single named account; anonymous count 114 vs reference 129. Slide 7: Marketing $444K vs ref $1,317K; E-comm $396K vs ref $1,112K; AI $1,806K vs ref $2,357K; SaaS $589K vs ref $704K. Slide 8: AI median $446 vs ref $503; Marketing median $1,586 vs ref $2,370; Education median $2,142 vs ref $2,435. Slide 3: $13.47M 'total MRR' is unexplained—actual total revenue is $15.6M.",
+  "evidence": {
+    "insight": "Slide 6 data-quality finding about 56% untagged MRR is original and decision-useful. Slide 9 portfolio matrix synthesizes growth and size. Slide 13 white-space analysis connects supply gaps to per-account economics. Slide 15 prioritization framework ties findings to effort/value.",
+    "narrative": "Clear five-finding thesis on slide 2 carried through concentration, data quality, category, B2B/B2C, infrastructure, risk, and recommendations. Each slide builds on prior findings. Strong landing with phased recommendations.",
+    "framing": "Slide 1 states audience, scope, and date. Slide 6 explicitly scopes category analysis to 44% of MRR. Slide 14 acknowledges data incompleteness. Slide 4 flags outlier caution. Limitations handled well throughout.",
+    "accuracy": "Category revenue totals on slide 7 are systematically and dramatically wrong (Marketing off by 3x, E-comm by 3x, AI by 24%). Top-10 share understated by 1.6pp. Multiple medians diverge from reference. The $13.47M 'total MRR' figure appears fabricated from Stripe-only revenue without disclosure. Anonymous listing count wrong (114 vs 129).",
+    "visual": "Consistent dark theme with clear hierarchy and section labels. Well-annotated charts. Bubble chart on slide 9 has overlapping labels. Pie chart on slide 12 acceptable. Y-axis labels on slide 9 truncated. Professional and restrained overall.",
+    "ai_slop": "Consulting frameworks (BCG matrix, prioritization grid) are formulaic but grounded in data. Language is polished but not hollow. Minimal generic filler."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.5 to 5.0 after confirming category revenue totals are systematically wrong by 2-3x for multiple categories, and the whale account identity is conflated with the anonymous revenue share—these are not rounding issues but fundamental data errors that undermine the portfolio analysis.",
+  "total": 73,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 30588,
+    "output_tokens": 2226
+  }
+}

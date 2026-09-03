@@ -1,0 +1,43 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 6,
+    "accuracy": 4.5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Freemium popularity-vs-performance paradox is a genuinely interesting finding; robustness check on slide 5 shows analytical care.",
+  "fix_next": "Fix the 16x arithmetic error ($11,557/$2,515≈4.6x), disclose n=20 for the headline group, and add survivorship/selection caveats.",
+  "verdict": "Sharp thesis built on a creative derived variable, undermined by a clear math error and missing caveats.",
+  "flags": [
+    "arithmetic-error-16x-claim",
+    "small-n-headline-claim",
+    "derived-variable-unverifiable",
+    "causal-language-from-observational-data",
+    "missing-sample-sizes-on-chart",
+    "no-limitations-discussed",
+    "569-vs-657-unexplained"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 3/6: '16x the next-best model' — $11,557/$2,515 ≈ 4.6x, not 16x. Slide 3 subtitle says '569 classified startups' but slide 2 says 657 have the field filled; the 88-row gap is never explained.",
+  "evidence": {
+    "insight": "The freemium-as-most-popular-yet-weakest paradox (slide 4) is a non-obvious finding. Slide 5 proactively tests whether usage-based advantage is an AI-category artifact. Structural explanation about removing the conversion event adds interpretive depth beyond chart-reading.",
+    "narrative": "Clear provocative thesis on slide 1, three findings build logically (standout → contradiction → robustness), and slide 6 synthesizes into a recommendation. Slightly dinged because the arc leans heavily on a group of only 20 startups without acknowledging fragility, and the summary repeats the erroneous 16x figure.",
+    "framing": "Slide 2 explains the derived variable and classification logic well with examples. However, the deck never discusses limitations: n=20 for the headline group, survivorship bias, or the 34% missing rate on pricing_model. The 569-vs-657 discrepancy is left unexplained. A cold reader cannot assess how robust the central claim is.",
+    "accuracy": "The 16x claim is arithmetically wrong given the chart's own numbers ($11,557/$2,515 ≈ 4.6x); it appears the 16x was computed against Tiered Subscription ($710) but the text says 'next-best model,' which is Free Trial Only ($2,515). The '100x Freemium' ($11,557/$108 ≈ 107x) is approximately correct. '50/50 B2B/B2C' for 20 startups means 10/10 — presented without acknowledging the tiny sample. Causal framing ('crushes,' 'wins,' 'trap') from purely observational cross-sectional data with no controls.",
+    "visual": "Clean, consistent design system with good hierarchy and restrained color palette. Bar chart on slide 3 is well-annotated with dollar values. Donut chart on slide 5 is appropriate for part-of-whole composition. Missing: sample size labels on the bar chart categories, any dispersion measure (IQR, range), and confidence intervals.",
+    "ai_slop": "None detected — the deck is focused, specific to the dataset, and avoids generic filler language."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5 to 4.5: the 16x error is a clear arithmetic mistake repeated on two slides (3 and 6) that directly undermines the headline claim. Lowered narrative from 8 to 7.5: the arc is strong but the repeated wrong multiplier weakens the landing. Lowered bonus from 2 to 1: creative derived-variable work is genuinely interesting but the n=20 foundation and lack of any limitations discussion prevent exceptional status. Framing lowered from 6.5 to 6 for complete absence of limitations or caveats about the tiny usage-based sample.",
+  "total": 65,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 12214,
+    "output_tokens": 1058
+  }
+}

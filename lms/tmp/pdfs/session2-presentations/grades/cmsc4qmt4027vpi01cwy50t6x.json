@@ -1,0 +1,39 @@
+{
+  "slide_count": 15,
+  "scores": {
+    "insight": 8,
+    "narrative": 8.5,
+    "framing": 8.5,
+    "accuracy": 6.5,
+    "visual": 8,
+    "bonus": 3
+  },
+  "what_worked": "Exceptional narrative arc from concentration through distribution to actionable acquisition screen, with honest methodology caveats.",
+  "fix_next": "Total revenue is $15.6M not $13.5M; the headline figure appears to confuse Stripe's share with the total, cascading into several derived claims.",
+  "verdict": "Strong strategic storytelling undermined by a material headline revenue error.",
+  "flags": [
+    "headline-revenue-error",
+    "total-revenue-understated",
+    "top10-share-slightly-off",
+    "ai-median-inflated",
+    "zero-revenue-count-mismatch"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1-2: '$13.5M aggregate MRR' — actual total 30-day revenue is $15.6M; $13.5M is approximately Stripe's share alone. Slide 2: '$133.8M trailing 12-month' and '$334M cumulative lifetime' cannot be verified but are derived from the wrong base. Slide 3: Top-10 share stated as 48% vs reference 49.6% — minor but directionally low. Slide 4: $0 revenue count shown as 197 but reference says 216 zero-revenue companies. Slide 7: AI median stated as $446 vs reference $503; also '40% of companies' on slide 12 — AI is 197/726 categorized = 27%, not 40%. Slide 12: 'AI is…40% of companies, 25% of revenue' — both figures are wrong (27% of categorized companies, ~15% of total revenue).",
+  "evidence": {
+    "insight": "Slide 5 threshold analysis comparing above/below $10k cohorts on domain authority, ARPU, and subscriber count is genuinely useful segmentation. Slide 8's finding that median growth is 0% even at scale is a non-obvious, decision-relevant insight. Slide 9 contrasts domain authority correlation (0.47) with social followers (0.18). Slide 11 acquisition market analysis with cautions about zero-revenue listings adds practical value.",
+    "narrative": "Clear thesis established on slide 2 (mean vs median gap 'is the entire story'), then systematically unpacked: concentration → threshold → distribution → growth → geography → acquisition → closing actions. Each slide builds on the prior. Slide 12 synthesizes four conclusions into three actions with a concrete next step and timeline.",
+    "framing": "Slide 1 states audience (executive team), dataset scope (1,000 companies, payment-processor verified), and freeze date. Slide 14 methodology appendix explicitly flags self-selection bias, missing data rates, thin traffic data, volatile growth rates, and point-in-time limitation. Denominator notes (n=893, n=212) appear throughout.",
+    "accuracy": "Headline MRR of $13.5M is materially wrong — actual is $15.6M. This propagates to annualized figures. Zero-revenue count (197 on slide 4 vs 216 actual). AI median $446 vs $503 reference. Slide 12 claims AI is '40% of companies' — actually 27% of categorized. Top-10 share 48% vs 49.6%. Stripe revenue share 87.2% stated — actual is $13.5M/$15.6M = 86.7%, close but the framing implies $13.5M is the total. B2B/B2C company counts (401+255+56=712) are plausible given 288 missing audience_type.",
+    "visual": "Consistent dark/gold/grey palette throughout. Clean hierarchy with section labels, bold headlines, and supporting callouts. Slide 4 paired bar charts effectively contrast company count vs revenue share. Slide 9 bar chart with correlation callouts is well-designed. Slide 5 comparison table is legible and purposeful. No decorative clutter. Donut chart on slide 8 is the weakest choice but still functional.",
+    "ai_slop": "none"
+  },
+  "confidence": "high",
+  "total": 82,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 28251,
+    "output_tokens": 1058
+  }
+}

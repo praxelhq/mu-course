@@ -1,0 +1,40 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 4.5,
+    "narrative": 5,
+    "framing": 4,
+    "accuracy": 4,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Clear thesis comparing domain rating vs. Twitter followers with specific correlation coefficients and DR-tier median breakdowns.",
+  "fix_next": "A 0.21 correlation is weak, not a \"compounding moat\"; acknowledge limitations, missingness, confounders, and avoid causal language throughout.",
+  "verdict": "One interesting comparison stretched into overconfident consulting pitch with thin data support.",
+  "flags": [
+    "causal-language-from-correlation",
+    "unearned-certainty",
+    "consulting-inflated-language",
+    "unsupported-external-claims",
+    "zero-revenue-count-wrong",
+    "missing-data-not-acknowledged"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 5: Zero revenue stated as 197, reference is 216. Slide 5: 'Trapped Under $10k' attributed to 'over-reliance on transient social hype'—causal claim unsupported by data. Slide 7: '3-5× higher conversion rates' for search vs social is an external claim presented as dataset finding with no source. Slide 3: Calling r=0.2149 'nearly 10× stronger' is technically correct ratio but misleadingly frames a weak correlation as a strong predictive signal. Slide 2: Claims 'Stripe-Verified' for all 1,000 but dataset includes multiple providers (RevenueCat, Polar, etc.).",
+  "evidence": {
+    "insight": "Core finding (DR correlates with MRR more than Twitter followers) is a valid observation but r=0.21 is weak; the deck treats it as definitive. DR-tier median breakdown (slide 4) adds useful granularity. No exploration of confounders (company age, category, provider). Secondary market slide (6) adds a tangential but interesting angle. Overall the deck mines one modest correlation and inflates it into a grand thesis.",
+    "narrative": "Coherent single thesis from slide 1 through slide 10. Sequence is logical: define data → show correlation → show revenue tiers → market implications → recommendations. However, the narrative is repetitive—slides 7, 8, 9, 10 all restate the same conclusion with no new evidence. The 'roadmap' (slide 9) and 'VC audit' (slide 8) are opinion frameworks, not data findings.",
+    "framing": "Audience framed as VC/M&A investors, which is clear. However, no mention of dataset limitations: 274 missing categories, 241 missing countries, 286 missing domains. No discussion of what 'Domain Rating' actually measures or its own limitations. The deck claims 'Stripe-Verified' universally but the dataset includes 7 payment providers. Cross-sectional design limitations never acknowledged.",
+    "accuracy": "Zero revenue count 197 vs reference 216. 'Stripe-Verified' framing ignores non-Stripe providers (RevenueCat 189, Dodo 50, etc.). The 3-5× conversion claim (slide 7) is unsourced external assertion. r=0.2149 explains ~4.6% of variance—calling it a 'distribution moat' is a stretch. The 500× median jump claim (slide 4: $22,624 vs $44) is plausible from the data but not independently verifiable. The '10× stronger' framing, while arithmetically correct for the ratio of correlations, is misleading about practical significance.",
+    "visual": "Consistent design system with teal/dark palette. Clean typography and good hierarchy. Cards and bar charts are legible. However, only one actual data visualization (slide 4 bar chart); the rest are stat cards and text. Donut chart on slide 6 is fine. No scatter plots showing the actual correlation data, which would be the most important chart for this thesis. Template-driven sameness across slides.",
+    "ai_slop": "Heavy consulting-speak throughout: 'institutional-grade SaaS assets,' 'compounding distribution moat,' 'revenue durability roadmap,' 'diligence playbook.' Slides 7-9 are generic strategic advice that could appear in any SaaS consulting deck without this dataset. The VC audit table (slide 8) contains zero data points—it's pure opinion framework dressed as analysis."
+  },
+  "confidence": "high",
+  "total": 46,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19064,
+    "output_tokens": 1089
+  }
+}

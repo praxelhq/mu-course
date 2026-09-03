@@ -1,0 +1,38 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8.5,
+    "framing": 7,
+    "accuracy": 5.5,
+    "visual": 8,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis arc from question to answer; problem-cluster taxonomy and pricing-model analysis show genuine analytical effort.",
+  "fix_next": "Lifetime revenue claim ($3.35M) contradicts reference ($173K); verify all headline numbers against the actual dataset before building narrative around them.",
+  "verdict": "Compelling storytelling undermined by unverifiable and likely inflated headline figures.",
+  "flags": [
+    "revenue-discrepancy",
+    "unverifiable-custom-metrics",
+    "small-n-caution-missing",
+    "no-limitations-slide"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 1: '$3.35M lifetime revenue' for Content Creation — reference total is $173,210.71 (30-day) and even a generous lifetime interpretation is far from $3.35M; this cascades to '$1.85M trailing 12 months' on slide 3 which is also unverifiable and likely inflated. Slide 3: Median MRR stated as $1,254 — the reference median 30-day revenue for Content Creation is $1,237.50; close but the deck never clarifies it is using MRR vs 30-day revenue, and the rounding direction is suspicious. Slide 6: Provider share percentages (Stripe 72%, RevenueCat 17%, Polar 8%, Dodo 3%) are within-category and plausible but unverifiable; the claim '6 companies bill through RevenueCat' within 36 is possible but cannot be confirmed.",
+  "evidence": {
+    "insight": "Slide 5's five-cluster taxonomy (Volume/Consolidation/Skill/Intelligence/Reach) is original analytical work that goes well beyond chart description. Slide 7's distinction between total revenue growth vs recurring revenue growth is a genuinely useful observation. Slide 9's acquisition-multiple analysis adds decision-useful framing.",
+    "narrative": "Clear question on slide 1, answered definitively on slide 10 ('It taxes it'). Sequence moves logically: why the category → snapshot → who pays → what they solve → how they price → growth quality → synthesis → investment → conclusion. Each slide has a one-line thesis at the bottom acting as a throughline.",
+    "framing": "Slide 1 sets scope (36 companies, Content Creation category). However, no limitations slide, no mention of missingness in the broader dataset, no acknowledgment that 36 is a small sample for the pricing and cluster claims. The 'attention economy' framing is evocative but never operationally defined.",
+    "accuracy": "The $3.35M lifetime revenue headline is the most serious concern — the reference shows Content Creation total 30-day revenue of $173,210.71 across 36 companies. Even if 'lifetime' means cumulative all-time, the deck provides no sourcing. The $200,472 MRR figure and $1.85M trailing-12-month figure are internally consistent but not verifiable against the frozen reference. The 75% volume-cluster claim, 2.4x B2B multiplier, and 53% top-5 concentration are plausible within-category analyses but rest on manual classification that cannot be audited.",
+    "visual": "Consistent dark palette with red/cream accent system. Strong typographic hierarchy — big headlines, supporting stats, footer takeaways. Bar charts are clean and appropriately labeled. Slide 9's waterfall of acquisition multiples is well-executed. The 'MORE' background on slide 2 and 'ATTENTION' on slide 1 are thematic rather than decorative. Minor issue: some slides are text-heavy (slide 7).",
+    "ai_slop": "The visual template is polished and consistent but not generic — the thematic backgrounds (ATTENTION, MORE) are tied to content. Language is sharp and specific rather than filler. No obvious AI slop detected."
+  },
+  "confidence": "medium",
+  "total": 75,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19719,
+    "output_tokens": 991
+  }
+}

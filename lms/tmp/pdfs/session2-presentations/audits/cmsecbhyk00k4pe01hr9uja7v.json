@@ -1,0 +1,42 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 6.5,
+    "accuracy": 4.5,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "Decomposing uncategorized MRR into stealth/single-account/other before presenting category data was genuinely useful framing.",
+  "fix_next": "Reconcile every number against the frozen dataset; fabricated KPIs (500K subs, $334M cumulative) and unverifiable growth windows undermine credibility.",
+  "verdict": "Strong narrative arc and visuals, but too many fabricated or unverifiable figures.",
+  "flags": [
+    "fabricated-kpis-slide2",
+    "unverifiable-growth-trajectory",
+    "mrr-vs-revenue-conflation",
+    "top10-share-mismatch",
+    "category-figures-diverge-from-reference",
+    "zero-revenue-not-disclosed"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 2: 'Active subscriptions 500,597' and 'Cumulative all-time revenue $334M' are not derivable from the dataset—fabricated. Slide 2: '$13.47M Total MRR' mislabels 30-day revenue ($15.6M total is $15,596,344.59, close but the $13.47M figure is unexplained). Slide 3: Trailing 12-mo ($11.2M) and 3-mo ($10.8M) averages cannot be computed from a single snapshot—unverifiable. Slide 4: Top-10 share shown as 48.0% vs reference 49.6%—material gap. Slide 6: AI total shown as $1,806K vs reference $2,356K; SaaS $589K vs $703K; Marketing $444K vs $1,317K; Education $524K vs $523K (OK); AI median $446 vs reference $503—multiple category figures diverge. Slide 6: median labels (Customer Support $5,163, Marketplace $4,322) cannot be verified against reference and appear inflated. Slide 9: '87% of MRR depends on Stripe'—Stripe is 636/1000 listings = 63.6% by count but $13.5M/$15.6M ≈ 86.7% by revenue, approximately correct but labeled as MRR not revenue. Slide 7: B2B median $1,036 and B2C $181 cannot be cross-checked against reference on-sale multiples but the 5.7x ratio claimed doesn't match 1036/181 ≈ 5.7x—internally consistent at least.",
+  "evidence": {
+    "insight": "Slide 5's uncategorized-MRR decomposition and slide 6's total-vs-median juxtaposition for AI are original and decision-useful. B2B/B2C comparison on slide 7 adds strategic value. Risk stacking on slide 9 is thoughtful. However, no TLD, founding-year, or payment-provider depth analysis.",
+    "narrative": "Clear arc from top-line → durability test → concentration → data quality caveat → category → B2B/B2C → geography → risk → actions. Thesis stated on slide 2 ('test how durable and well-distributed') is paid off. Landing with prioritized actions is effective. Sequence is purposeful.",
+    "framing": "Audience, dataset size, and freeze date are identified on slide 1. Slide 5 flags the 56% uncategorized limitation before category analysis—good sequencing. However, 'MRR' is used throughout when the dataset contains 30-day revenue snapshots, not verified recurring revenue. No mention of 216 zero-revenue listings or 288 missing audience_type rows. The 24% missing-country note is good but understates the 241/1000 = 24.1% figure.",
+    "accuracy": "Multiple fabricated or unverifiable figures: 500K subscriptions, $334M cumulative, $13.47M 'Total MRR', trailing averages from a single snapshot. Category totals diverge materially from reference (Marketing $444K vs $1,317K is a 3x error). Top-10 share 48.0% vs 49.6% reference. The 26.5% top-1 figure aligns with anonymous revenue share. Stripe revenue share approximately correct.",
+    "visual": "Clean, consistent template with strong hierarchy. Restrained color palette (navy, teal, orange). Chart choices are appropriate—horizontal bars for categories, vertical bars for comparisons. Slide 9's severity badges are clear. No chart junk. Slide 3's bar heights are roughly proportional. Good annotation throughout.",
+    "ai_slop": "Consulting-style framing ('Strategic Business Review') is slightly inflated but not generic filler. The fabricated KPIs on slide 2 (500K subs, $334M cumulative) are the most concerning—these appear invented to fill a dashboard template rather than derived from data."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.0 to 4.5: Marketing category total is off by 3x ($444K vs $1,317K), and two slide-2 KPIs are fabricated. Raised visual slightly to 7.5 for consistently clean execution. Reduced bonus from 2 to 1: the uncategorized-MRR decomposition is genuinely good but fabricated figures prevent higher bonus.",
+  "total": 67,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 19115,
+    "output_tokens": 1353
+  }
+}

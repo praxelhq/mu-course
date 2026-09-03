@@ -1,0 +1,44 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 1,
+    "narrative": 2,
+    "framing": 1,
+    "accuracy": 1.5,
+    "visual": 2,
+    "bonus": 0
+  },
+  "what_worked": "The 197 AI companies figure is correctly pulled from the dataset.",
+  "fix_next": "This is a startup pitch, not a data story—rebuild entirely around dataset analysis with charts, findings, and limitations.",
+  "verdict": "Startup pitch deck, not a data story; dataset is essentially unused.",
+  "flags": [
+    "wrong-assignment-type",
+    "no-charts",
+    "no-data-analysis",
+    "ai-slop",
+    "decorative-images-only",
+    "dataset-barely-used",
+    "garbled-ai-text",
+    "no-limitations-stated"
+  ],
+  "factual_error_count": 1,
+  "factual_error_detail": "Slide 2: 'B2B Resilience — Enterprise models produce stronger recurring revenue' is unsupported; dataset median multiples (B2B 2.35x vs B2C 2.30x) show negligible difference, and mean favors B2C (8.44x vs 7.97x). Presented as a clear finding without evidence.",
+  "evidence": {
+    "insight": "Only one dataset fact used (197 AI companies). No charts, no deeper analysis of revenue, categories, platforms, missingness, or any other dimension. Eight of ten slides are a product pitch for an agriculture startup with zero analytical content.",
+    "narrative": "Coherent as an investor pitch (problem → solution → moat → ask), but this is the wrong genre. The dataset appears on slide 2 and is immediately abandoned. No analytical arc, no synthesis, no landing tied to data.",
+    "framing": "No research question, no dataset description, no scope, no definitions, no mention of missingness or sample limitations. A cold reader cannot tell what dataset was analyzed or what the analytical objective was.",
+    "accuracy": "197 AI companies is correct. 'B2B Resilience' claim is misleading given near-identical medians and B2C-favoring means. 'Top startups remove repetitive tasks first' is unverifiable from the dataset. No denominators, no charts to audit.",
+    "visual": "Every slide uses AI-generated illustrations that are purely decorative. Slide 6 dashboard mockup contains garbled nonsensical text. Slide 9 illustration has misspelled labels ('AUTOCONNIZATION FRRMING'). No data visualizations exist anywhere in the deck. Gamma template is consistent but repetitive.",
+    "ai_slop": "Pervasive: every slide has AI-generated comic art with garbled text (slides 6, 7, 9). Generic consulting buzzwords throughout ('data moat', 'platform economics', 'full-stack autonomy'). Entire deck reads as a Gamma-generated pitch template with near-zero customization to the assigned dataset."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 1.5 to 1.0 (single correct number does not merit 1.5 when no analysis exists) and visual from 2.5 to 2.0 (garbled AI-generated text on multiple slides and zero data charts warrant lower score). Other scores unchanged; preliminary was already appropriately low.",
+  "total": 15,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 17933,
+    "output_tokens": 808
+  }
+}

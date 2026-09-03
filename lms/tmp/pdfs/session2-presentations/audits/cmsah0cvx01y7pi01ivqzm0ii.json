@@ -1,0 +1,43 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "Missingness-bias argument on slide 7 and stated-vs-implied multiple disconnect on slide 6 are genuinely useful.",
+  "fix_next": "Verify every median against the actual data—Marketing, E-comm, and AI medians are all materially wrong, undermining credibility.",
+  "verdict": "Strong narrative arc and design, but too many wrong medians to trust the numbers.",
+  "flags": [
+    "median-errors-marketing",
+    "median-errors-ecomm",
+    "median-errors-ai",
+    "anonymous-count-off",
+    "missing-productivity-category",
+    "b2b-b2c-title-claim-mismatch",
+    "missing-category-count-understated"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "S3: AI median stated $446, ref $503. S3: Marketing median stated $1,586, ref $2,369.50. S3: E-comm median stated $155, ref $387. S3: Productivity category (49 listings, $114K) entirely omitted from bar chart without disclosure. S5: Title says 'five times more' for B2B vs B2C but ref median multiples are 2.35x/2.30x (nearly identical); the slide's own chart shows B2B median MRR $1,036 vs B2C $181 which is ~5.7x, but the headline conflates per-listing MRR with the on-sale revenue-multiple framing. S7: '130 anonymous listings' stated vs ref 129 (minor). S7: '$4.19M / 27%' for anonymous revenue vs ref 26.525% ($4,136,…) — close but slightly inflated.",
+  "evidence": {
+    "insight": "Slide 2 cumulative concentration chart with 39x mean/median gap; slide 6 −0.01 correlation between stated and implied multiples; slide 7 missingness-bias argument that filtering deletes top earners. All go well beyond chart description and are decision-useful.",
+    "narrative": "Clear arc: concentration (S2) → category breakdown (S3) → growth stagnation (S4) → audience economics (S5) → buyer warning (S6) → data-quality caveat and three recommendations (S7). Coherent thesis about an uneven market sustained throughout.",
+    "framing": "Slide 1 sets scope (1,000 startups, 30-day snapshot) with four anchor stats. Slide 7 explicitly addresses limitations and missingness. However, no explicit audience statement or research question beyond the subtitle; a cold reader must infer who this is for.",
+    "accuracy": "Three category medians are materially wrong (Marketing off by ~$780, E-comm off by ~$230, AI off by ~$57). Productivity category silently dropped from the bar chart. The 'five times' headline on S5 is defensible only for median MRR, not for the on-sale multiples the reference tracks. Anonymous count 130 vs 129 and 27% vs 26.5% are minor but compound the pattern of loose numbers.",
+    "visual": "Consistent dark/light palette with good hierarchy; well-annotated cumulative area chart on S2; effective callout cards throughout. Donut chart on S4 is acceptable. Bar chart on S5 is somewhat cluttered with dual series. No decorative or fabricated charts.",
+    "ai_slop": "none"
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.5 to 5.0: three materially wrong medians plus a silently omitted category constitute a pattern of careless data handling, not isolated rounding. Reduced bonus from 2 to 1: the missingness-bias insight is genuinely strong but the factual errors prevent awarding full bonus credit.",
+  "total": 70,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 14090,
+    "output_tokens": 990
+  }
+}

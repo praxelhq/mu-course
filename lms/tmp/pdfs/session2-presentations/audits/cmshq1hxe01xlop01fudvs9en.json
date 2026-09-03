@@ -1,0 +1,45 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 1,
+    "narrative": 2,
+    "framing": 1,
+    "accuracy": 1.5,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "Clean, consistent visual template with good typography hierarchy and professional navy/white palette throughout.",
+  "fix_next": "Rebuild entirely as a data story: explore the actual dataset's distributions, missingness, and patterns instead of pitching a fictional startup.",
+  "verdict": "A polished startup pitch deck, not a data story; dataset is barely referenced.",
+  "flags": [
+    "wrong-assignment-type",
+    "dataset-barely-used",
+    "fabricated-claims",
+    "ai-slop",
+    "no-real-charts",
+    "consulting-language",
+    "unearned-certainty",
+    "decorative-stock-images",
+    "pitch-deck-not-data-story"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 3: Invents 'B2B AI (Workflow)', 'B2C AI (Utilities)', 'Template Builders' subcategories not in dataset; dollar figures ($14,998, $6,148, $3,779) are fabricated and labeled 'Mean MRR' without basis. Slide 3: '2.4x revenue premium' is close to actual median multiple (~2.35x) but applied to invented categories. Slide 8: '$1.5M+ ARR within 12-18 months' claim attributed to 'ecosystem dataset' with no supporting evidence. Slide 10: Growth curve and '$45M SOM' are entirely unsupported projections presented as data-backed.",
+  "evidence": {
+    "insight": "Zero original analytical insight from the dataset. No exploration of payment providers, category distributions, missingness patterns, revenue concentration, TLD effects, or any verifiable finding. The single data-adjacent slide (3) uses fabricated subcategories.",
+    "narrative": "Follows a coherent pitch-deck arc (problem→solution→pricing→moat→growth) but this is fundamentally the wrong assignment type. The dataset appears as a one-line prop on slide 3; the remaining 9 slides are a fictional product pitch with no analytical thread.",
+    "framing": "No statement of analytical question, no dataset description, no mention of 1,000 rows/missingness/limitations. A cold reader cannot determine what was analyzed or why. Audience is positioned as investors, not a course evaluator expecting data exploration.",
+    "accuracy": "Slide 3 fabricates subcategories and dollar figures not derivable from the dataset. Slide 5 uses an unrelated QuickBooks stock screenshot as if it were product evidence. Slide 8 and 10 make specific quantitative claims ($1.5M ARR, $45M SOM, 125% NDR) with zero data support. Revenue labeled 'Mean MRR' without justification for the unit.",
+    "visual": "Professional template with consistent palette, clean whitespace, and readable typography. However, slide 1 generic network image, slide 5 irrelevant QuickBooks screenshot, slide 8 decorative lock graphic are all stock filler. The only chart (slide 3 bar chart) shows fabricated data. Slide 10 growth curve is aspirational with no data backing.",
+    "ai_slop": "Pervasive throughout: 'hyper-personalized intent-driven interactions', 'autonomous revenue engine', 'self-optimizing feedback loops', 'defensible moat', 'exceptional unit economics', 'pristine domain reputations', 'elite human sales representative'. Every slide reads as AI-generated startup pitch boilerplate. Stock imagery reinforces generic feel."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 1.5 to 1.0; the single dataset reference on slide 3 uses fabricated subcategories, so even that minimal engagement is misleading rather than insightful. All other scores confirmed as appropriate.",
+  "total": 17,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 18837,
+    "output_tokens": 964
+  }
+}

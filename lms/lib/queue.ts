@@ -10,7 +10,7 @@ export const QUEUE_SCREENSHOT_CAPTURE = "screenshot.capture"; // U11
 export const QUEUE_GRADE_INTERVIEW = "grade.interview"; // U12
 export const QUEUE_GRADE_INTERVIEW_DEAD = "grade.interview.dead";
 export const QUEUE_PORTFOLIO_CRAWL = "portfolio.crawl"; // U16
-export const QUEUE_PREREQUISITE_DIGEST = "interview.prerequisite-digest";
+export const QUEUE_PREREQUISITE_PREPARE = "interview.prerequisite-prepare";
 export const QUEUE_RETENTION_CLEANUP = "maintenance.retention-cleanup";
 export const QUEUE_RETENTION_CLEANUP_DEAD = "maintenance.retention-cleanup.dead";
 
@@ -76,10 +76,10 @@ export async function ensureGradingQueues(b: PgBoss): Promise<void> {
     retryBackoff: true,
     retryDelay: 30,
   });
-  // Prerequisite digest: summarise an uploaded blueprint once at upload time.
-  // No dead letter — a failed digest is not an incident, the interview prompt
-  // simply falls back to the raw extracted text.
-  await b.createQueue(QUEUE_PREREQUISITE_DIGEST, {
+  // Prerequisite prepare: recover text the web tier could not extract (PDFs)
+  // and summarise a blueprint. No dead letter — a failure is not an incident,
+  // the interview prompt falls back to raw text, then to asking the student.
+  await b.createQueue(QUEUE_PREREQUISITE_PREPARE, {
     retryLimit: 2,
     retryBackoff: true,
     retryDelay: 20,
@@ -201,23 +201,23 @@ export async function enqueueScreenshotCapture(submissionId: string): Promise<st
   }
 }
 
-export type PrerequisiteDigestJobData = { userId: string; kind: string };
+export type PrerequisitePrepareJobData = { userId: string; kind: string };
 
 /**
- * Best-effort enqueue of an artifact digest. The upload itself must always
- * succeed — a queue outage just means the interviewer reads the raw extracted
- * text instead of the summary.
+ * Best-effort enqueue of artifact preparation. The upload itself must always
+ * succeed — a queue outage just means the interviewer works from whatever the
+ * web tier managed to extract.
  */
-export async function enqueuePrerequisiteDigest(
-  data: PrerequisiteDigestJobData,
+export async function enqueuePrerequisitePrepare(
+  data: PrerequisitePrepareJobData,
 ): Promise<string | null> {
   try {
     const b = await getBoss();
     await ensureGradingQueues(b);
-    return await b.send(QUEUE_PREREQUISITE_DIGEST, data);
+    return await b.send(QUEUE_PREREQUISITE_PREPARE, data);
   } catch (err) {
     console.error(
-      `[queue] failed to enqueue ${data.kind} digest for ${data.userId} (upload still recorded):`,
+      `[queue] failed to enqueue ${data.kind} preparation for ${data.userId} (upload still recorded):`,
       err instanceof Error ? err.message : err,
     );
     return null;

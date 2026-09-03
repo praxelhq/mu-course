@@ -1,0 +1,39 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 3.5,
+    "narrative": 5,
+    "framing": 3,
+    "accuracy": 2.5,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Coherent thesis with structured elimination of alternatives and honest labeling of subjective scoring.",
+  "fix_next": "The deck barely uses the assigned dataset; 9 of 10 slides rely on external market reports, making dataset-derived claims unverifiable window dressing.",
+  "verdict": "A polished consulting pitch that largely ignores the assigned dataset.",
+  "flags": [
+    "wrong-dataset-focus",
+    "unverifiable-external-claims",
+    "dataset-used-as-garnish",
+    "consulting-slop",
+    "fabricated-looking-statistics"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 5: Claims '289 are Europe-based' and '74 of 289 European listings' in AI — the dataset has 241 missing country values and no 'Europe' filter yields 289; the dataset contains no geographic region field that cleanly produces this number, and Health & Fitness has only 34 companies total (not a large vertical). Slide 5: States AI is largest category among European listings at 74 — cannot be verified and likely fabricated given missing-country rate. Slide 1/throughout: Presents the deck as analyzing the provided 1,000-row dataset for European startup trends, but the dataset is a global revenue-tracking list with no VC funding data, no European-specific funding figures, and no industry growth rates — virtually all quantitative claims ($63.8B, $17.5B AI VC, +15% digital health, 65% AI-powered share, etc.) come from external sources with no verifiable connection to the assigned data.",
+  "evidence": {
+    "insight": "The recommendation (Applied Health AI) is a reasonable consulting conclusion but is not derived from the assigned dataset. The scoring framework on slide 6 is entirely subjective author judgment. No novel analytical finding emerges from the 1,000-row dataset.",
+    "narrative": "Clear 10-section arc from ecosystem overview → vertical screening → gap analysis → recommendation → business model → roadmap. Logical flow, but repetitive — the same five bullet points (fastest vertical, €14B+, demographic tailwind, regulatory moat, evidence bar) appear on slides 1, 4, 6, 8, and 10.",
+    "framing": "Slide 1 states the objective clearly, but the framing implies the analysis is driven by the provided dataset when it is overwhelmingly driven by external market reports. The dataset is mentioned only on slide 5 as a 'bottom-up cross-check' with unverifiable numbers. No limitations about the mismatch between dataset scope and analysis scope are disclosed.",
+    "accuracy": "Nearly all quantitative claims ($63.8B European VC, $17.5B AI, +15% digital health, 65% AI-powered, €20B InvestAI) are from external sources and cannot be verified against the assigned dataset. The one dataset-derived claim (289 European companies, 74 in AI) is suspect given 241 missing country values and no clear methodology shown. The dataset contains no VC funding amounts, no European funding totals, and no growth rates — it tracks 30-day MRR for small startups.",
+    "visual": "Consistent dark-theme design with good typography hierarchy, readable tables, and appropriate chart types (bar, line). The 2x3 stat grid on slide 4 is clean. Some text density issues on slides 5 and 8. No chart dishonesty in the charts shown, though the charts represent external data.",
+    "ai_slop": "Heavy consulting-framework stacking (SWOT + Porter's + PESTLE + Blue Ocean matrix + Business Model Canvas + TAM/SAM/SOM) without depth in any. The 'Confidential Draft' footer is performative. The scoring matrix on slide 6 uses round subjective numbers presented as analytical output. Repetition of the same five talking points across multiple slides."
+  },
+  "confidence": "high",
+  "total": 39,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 21436,
+    "output_tokens": 1001
+  }
+}

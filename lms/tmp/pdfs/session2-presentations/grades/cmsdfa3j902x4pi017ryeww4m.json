@@ -1,0 +1,37 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 8,
+    "narrative": 9,
+    "framing": 8.5,
+    "accuracy": 7,
+    "visual": 8.5,
+    "bonus": 3
+  },
+  "what_worked": "Exceptional narrative discipline: one thesis, four levers tested, established-vs-argued separation, and honest causal restraint throughout.",
+  "fix_next": "Title says '4% of companies' hold DR 51+ but the data panel shows 5.9%; reconcile the denominator (714 with DR data vs 1,000 total).",
+  "verdict": "Tightly argued, well-designed deck with minor denominator inconsistencies.",
+  "flags": [
+    "denominator-inconsistency",
+    "domain-authority-base-not-1000",
+    "cohort-n-minor-drift"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 5: Title says '4% of companies' but the chart shows DR 51+ at 5.9% — these are contradictory on the same slide. Slide 5: Revenue-share chart omits DR 0 and DR 1–10 bands (their shares are missing, so the right-side chart doesn't sum to 100% visually, implying those bands contribute ~6% combined, which is plausible but unstated). Slide 6: Cohort sizes shift slightly between slides (n=212 vs n=209 for $10K+ cohort; n=591 vs n=582 for under-$1K cohort) without explanation of the filter difference.",
+  "evidence": {
+    "insight": "The core contrast — domain authority monotonically tracks revenue while follower count does not — is a genuinely original and decision-useful finding. The 8.75x vs 4.1x headline comparison and the zero-follower parity stat (31.6% vs 30.6%) are sharp, non-obvious insights. The synthesis table ranking four levers by evidence strength goes well beyond chart description.",
+    "narrative": "Textbook narrative arc: thesis on slide 1, executive summary, methodology with limitations, two contrasting findings, synthesis, interpretation separating established from argued, implication framework, recommendations, and a closing line. Every slide has a 'SO WHAT' that advances the argument. No orphan slides or tangents.",
+    "framing": "Slide 3 clearly defines four levers, states sample sizes, explains cohort splits, and lists three known limitations including self-selection and snapshot-only data. Slide 8's established-vs-argued framework is unusually rigorous for student work. Audience (founder educators/accelerators) is implicit but clear.",
+    "accuracy": "Slide 5 headline says '4%' but the chart shows 5.9% for DR 51+ — a material internal contradiction. Cohort n's drift between slides 3 and 6 without explanation (212→209, 591→582). The domain-authority analysis uses n=714 but some percentage claims appear computed against 1,000, creating ambiguity. The core directional claims (monotonic DA-revenue relationship, non-monotonic follower relationship) are plausible and internally consistent. Causal discipline is strong.",
+    "visual": "Clean, restrained design with consistent hierarchy. Bar charts are well-labeled with n-counts. The side-by-side comparison on slide 4 is effective. The stacked bar on slide 5 communicates concentration well. Color palette is consistent. Log scale is mentioned but bars appear linear — minor mismatch. No chartjunk or decorative graphics.",
+    "ai_slop": "none — the deck is substantive throughout with no filler language, no generic consulting frameworks, and no decorative-but-meaningless graphics. Every slide carries specific data points."
+  },
+  "confidence": "high",
+  "total": 85,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 21453,
+    "output_tokens": 931
+  }
+}

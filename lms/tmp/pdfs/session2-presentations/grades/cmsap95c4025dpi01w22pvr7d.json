@@ -1,0 +1,38 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7.5,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Strong narrative arc from volume to revenue to momentum to quadrant to recommendation, with consistent caveats.",
+  "fix_next": "Category counts and revenue figures diverge substantially from the reference dataset; verify whether multi-label inflation or filtering errors drove the discrepancies.",
+  "verdict": "Well-structured investment read undermined by unverifiable category numbers.",
+  "flags": [
+    "category-counts-inflated",
+    "multi-label-not-in-source",
+    "revenue-figures-unverifiable",
+    "categories-not-matching-reference"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1: 803 revenue-generating after excluding 197 implies 1000 total, but reference shows 784 non-zero (1000-216=784), not 803. Slide 2: Category counts (SaaS 388, AI 341, Productivity 237, Content Creation 198, Mobile Apps 180, Marketing 144, Analytics 119) far exceed reference single-label counts (AI 197, SaaS 66, Productivity 49, etc.); the multi-label explanation is asserted but not supported by the dataset schema. Slide 3: Revenue figures (SaaS $4.44M, AI $3.42M, Marketing $2.13M, Analytics $1.96M) do not match reference (AI $2.36M, Marketing $1.32M, SaaS $0.70M, Analytics $0.37M). Slide 5: Analytics n=93 with $3,633 median and Sales n=35 with $3,182 median are not verifiable against reference. Slide 6: Dev Tools revenue pool stated as $484K vs reference $163K.",
+  "evidence": {
+    "insight": "Slide 4-5 momentum metric (% companies with positive 30-day growth, filtered to MRR≥$100) is a genuinely thoughtful analytical choice that goes beyond simple medians. The quadrant synthesis on slide 5 combines two dimensions into an actionable framework. The AI-as-crowded contrarian call is interesting.",
+    "narrative": "Clear five-act structure: landscape (volume) → revenue concentration → momentum → quadrant synthesis → recommendation. Each slide explicitly references others (e.g., 'as Slide 3-4 show'). The thesis 'volume alone is not a signal' threads throughout consistently.",
+    "framing": "Slide 1 scope caveat is excellent: 'self-reported, self-selected marketplace data... directional, not a substitute for diligence.' Slide 3 caution about multi-label overlap. Slide 6 limits section. Audience (management/investors) is clear. However, the multi-label framing may be covering for inflated numbers.",
+    "accuracy": "Core category counts are 2-3x the reference values (AI 341 vs 197, SaaS 388 vs 66, Marketing 144 vs 42). Revenue figures also diverge significantly (SaaS $4.44M vs $0.70M). The multi-label explanation is plausible but unverifiable and conveniently explains away all discrepancies. Zero-revenue exclusion count (197) doesn't match reference (216). The 74% concentration claim on slide 3 is unverifiable given inflated base numbers.",
+    "visual": "Clean, restrained design throughout. Horizontal bar charts on slides 2 and 4 are well-labeled with direct annotation. Bubble chart on slide 5 uses color coding for quadrants and size encoding meaningfully. Slide 6 recommendation layout with color-coded boxes (green/blue/red borders) is effective. No decorative clutter. Dev Tools bar on slide 4 is partially cut off at bottom.",
+    "ai_slop": "Minimal slop. Language is precise and domain-appropriate rather than generic consulting filler. No decorative stock imagery. The 'Investment Read' framing is slightly performative but substantive enough to justify itself."
+  },
+  "confidence": "high",
+  "total": 70,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 12451,
+    "output_tokens": 1030
+  }
+}

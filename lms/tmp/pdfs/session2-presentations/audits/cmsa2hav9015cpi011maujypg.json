@@ -1,0 +1,43 @@
+{
+  "slide_count": 16,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 7,
+    "accuracy": 4.5,
+    "visual": 5.5,
+    "bonus": 1
+  },
+  "what_worked": "Volume-vs-profitability contrast for AI category is a genuinely useful, well-framed finding for founders.",
+  "fix_next": "Fix the correlation chart axis (truncated to 0/1) and reconcile category medians and total revenue against the actual dataset.",
+  "verdict": "Well-structured story undermined by multiple numerical inaccuracies and one unreadable chart.",
+  "flags": [
+    "median-discrepancies",
+    "correlation-chart-unreadable",
+    "revenue-field-confusion",
+    "b2b-b2c-ratio-inflated",
+    "stripe-count-mismatch",
+    "category-median-errors",
+    "column-count-inconsistency"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 3: claims 31 attributes then says 29 in same slide (dataset has 29). Slide 6: '$13.5M combined MRR' — reference total revenue is $15,596,344.59; unclear what field is summed but figure is wrong either way. Slide 7: tier counts (197/198/197/196/196/16) sum to 1,000 but the $0 tier shows 197 vs reference 216 zero-revenue rows — bucket definition unclear. Slide 8: multiple category medians diverge from reference — AI shown $446 vs ref $503; SaaS $303 vs $200.50; Education $2,142 vs $2,435; Marketing $1,586 vs $2,369.50; E-comm $155 vs $387; Content Creation $1,254 vs $1,237.50; Health & Fitness $392 vs $662.50. Slide 10: Stripe count 644 vs reference 636; RevenueCat 191 vs 189. Slide 11: B2B/B2C median ratio claimed as 5.7x ($1,036/$181) — reference on-sale median multiples are 2.35x/2.30x; the MRR medians may differ but 5.7x is unverifiable and likely inflated. Slide 12: correlation axis labels truncated to integers (0 and 1), making the chart functionally unreadable without the text panel. Slide 13: US listing count 258 vs reference 258 for country rows with Stripe (221/258=85.7%), but US volume share stated as ~24% — denominator is 1,000 but 241 rows have missing country, so effective denominator is 759, making US share ~34%, not 24%.",
+  "evidence": {
+    "insight": "Slide 9 volume-vs-profitability contrast and slide 12 Spearman ranking are the two strongest analytical moves; slide 16 segments recommendations by stakeholder. Solid but not deeply surprising findings.",
+    "narrative": "Clear 8-section arc from dataset intro through cleaning, distribution, categories, monetization, correlations, geography, to recap and recommendations. The 'so what' slide lands with three distinct audience takeaways.",
+    "framing": "Slide 4 states guiding questions explicitly; slide 5 addresses missingness transparently with interpretation. Audience defined on slide 16. Scope limitations mentioned but denominator issues not flagged.",
+    "accuracy": "At least 8 verifiable numerical discrepancies: total revenue figure, zero-revenue count, multiple category medians off by 20-50%, Stripe/RevenueCat counts slightly off, B2B/B2C ratio unverifiable, column count self-contradictory, US volume share uses wrong denominator.",
+    "visual": "Consistent dark/light theme with good hierarchy. Slide 12 correlation chart is broken — axis labels show only 0 and 1, making bars indistinguishable without reading the text panel. Pie chart on slide 10 is functional but suboptimal. Paired horizontal bars on slide 8 work well.",
+    "ai_slop": "Minimal. Language is dataset-specific throughout. Some consulting-style phrasing but grounded in actual numbers. No decorative filler charts."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.0 to 4.5 after counting 8 factual errors including systematically wrong category medians, wrong total revenue, wrong zero-revenue count, and self-contradictory column count. Lowered visual from 6.0 to 5.5 because the correlation chart (slide 12) is functionally unreadable — the single most analytical chart in the deck is broken.",
+  "total": 62,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 30646,
+    "output_tokens": 1160
+  }
+}

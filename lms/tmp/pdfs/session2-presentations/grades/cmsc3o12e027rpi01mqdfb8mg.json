@@ -1,0 +1,38 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 7.5,
+    "accuracy": 5,
+    "visual": 8,
+    "bonus": 3
+  },
+  "what_worked": "Reverse-engineering the marketplace multiple denominator is genuinely original investigative analysis with clear buyer implications.",
+  "fix_next": "The deck uses an 8,782-row dataset while the frozen reference has 1,000 rows; nearly every headline number is unverifiable against the assignment dataset.",
+  "verdict": "Exceptional storytelling and insight, but built on a different dataset than assigned.",
+  "flags": [
+    "wrong-dataset",
+    "unverifiable-counts",
+    "total-revenue-mismatch",
+    "row-count-mismatch"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 1: Claims 8,782 startups and $33.2M revenue; frozen dataset has 1,000 rows and $15.6M total revenue. Slide 4: Top-10 share 52.3% vs reference 49.6%. Slide 6: 807 Indian startups cannot be verified against 1,000-row dataset. Slide 8: Multiple analysis uses n=1,939 priced listings which exceeds total dataset rows.",
+  "evidence": {
+    "insight": "Slide 8 denominator reverse-engineering is genuinely novel; slide 5 distribution-vs-audience comparison with Spearman rho is analytically sophisticated; slide 7 controlled comparison (>500 followers) shows real analytical thinking; slide 9 backlink-as-motivation hypothesis is creative.",
+    "narrative": "Three-act structure (Great Filter → Distribution Delta → Trust Gap) builds logically from 'most earn nothing' to 'what separates winners' to 'the marketplace misleads buyers.' Slide 10 synthesizes with audience-specific takeaways and an explicit limitation caveat. Coherent thesis throughout.",
+    "framing": "Slide 2 sets up fixed/exposed/hidden framework well. Limitation noted on slide 10. However, the deck never clarifies it is using a larger dataset than the assignment's frozen 1,000-row sample, creating fundamental confusion about scope and denominator.",
+    "accuracy": "Core problem: every absolute number (8,782 startups, $33.2M revenue, 807 Indian startups, 1,939 for-sale listings) is drawn from a dataset roughly 8.8x larger than the frozen 1,000-row reference. Top-10 share of 52.3% doesn't match reference 49.6%. The analytical methods appear sound in structure but cannot be verified against the assignment dataset.",
+    "visual": "Clean, restrained design with consistent hierarchy. Funnel chart on slide 3 is effective. Slide 8 table is well-formatted. Color palette is consistent (navy/gold/red). No decorative clutter. Slide 4 cumulative bar chart communicates inequality clearly. Minor issue: slides 6-7 dark backgrounds reduce contrast slightly.",
+    "ai_slop": "none — the deck avoids generic filler, consulting language, and decorative graphics. Content is specific and data-driven throughout."
+  },
+  "confidence": "medium",
+  "total": 79,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19461,
+    "output_tokens": 788
+  }
+}

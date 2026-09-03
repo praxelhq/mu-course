@@ -1,0 +1,43 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 6.5,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Concentration thesis is sharp and sustained; stealth-company and uncategorized-revenue reframes show genuine analytical originality.",
+  "fix_next": "Reconcile the zero-revenue/MRR contradiction, verify uncategorized revenue total, and add a limitations slide covering all missingness fields.",
+  "verdict": "Strong narrative arc undermined by several unverifiable or contradictory numerical claims.",
+  "flags": [
+    "unverified-uncategorized-revenue",
+    "stealth-median-unverifiable",
+    "zero-revenue-mrr-contradiction",
+    "stripe-revenue-share-aggressive-rounding",
+    "top-10pct-not-top-10-accounts",
+    "missing-limitations-slide",
+    "no-stated-audience"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 1: 'top 10% of accounts = 83.7% of revenue' conflates top-10% (100 accounts) with the reference's top-10 accounts (49.6%); the 83.7% figure is unverifiable. Slide 3: Stripe revenue share stated as 87%; reference gives $13,526,762.05/$15,596,344.59 = 86.73%, rounds acceptably but is at the edge. Slide 4: Uncategorized revenue stated as $7.3M; summing the seven listed categories plus the reference totals yields roughly $8.9M uncategorized, not $7.3M — the labeled-category sum shown ($6.6M) also appears to undercount (reference top-7 labeled categories sum to ~$6.6M but there are additional categories). Slide 5: Claims 216 zero-revenue accounts 'still carry $283K in MRR' — if 30-day revenue is $0, carrying MRR is contradictory and the distinction is never explained; the $283K figure is unverifiable.",
+  "evidence": {
+    "insight": "Slide 5's stealth-vs-named median comparison and slide 4's reframe of uncategorized as the largest revenue bucket are genuinely original, decision-useful angles. The concentration thesis (slide 1) and silent-churn pocket (slide 5) add further depth. Loses half a point because the stealth median and MRR claims can't be verified.",
+    "narrative": "Excellent single-thesis structure: concentration introduced on slide 1, reinforced through infrastructure (3), data-quality (4), stealth insight (5), and landed with recommendations (6-7). 'So what' footers on every analytical slide enforce discipline. Each slide logically builds on the prior.",
+    "framing": "Dataset scope and frozen date are stated on slide 1. However, no audience is explicitly identified, no limitations or methodology slide exists, and missingness is disclosed only for category (27.4%) while country (24.1%) and audience_type (28.8%) go unmentioned. A cold reader cannot assess what they don't know.",
+    "accuracy": "Four material issues: (1) top-10% revenue share unverifiable and potentially conflated with top-10 accounts; (2) uncategorized revenue of $7.3M doesn't reconcile — reference category totals sum to ~$6.6M for top 7, leaving ~$9.0M uncategorized, not $7.3M; (3) zero-revenue accounts carrying $283K MRR is contradictory without explanation; (4) stealth median of $8,362 is unverifiable from reference data. Stripe account share (63.6% → 64%) is acceptable rounding.",
+    "visual": "Consistent navy/orange palette, restrained chart choices, well-labeled histogram on slide 2, effective proportional bars on slide 3. Slide 1 cumulative chart lacks a y-axis label. Slide 7 is dense but organized into clear quadrants. No decorative filler. Functional and professional throughout.",
+    "ai_slop": "Slides 6-7 have a consulting-template cadence ('Four moves,' 'Do this immediately') but content is dataset-specific enough to avoid generic filler. Minor concern only."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.5 to 5.0: the uncategorized revenue figure ($7.3M) does not reconcile with reference totals, and the zero-revenue/MRR contradiction is a conceptual error, not just an unverifiable claim. Lowered framing from 7.0 to 6.5: no limitations slide and selective missingness disclosure are more significant gaps for a cold reader. Reduced bonus from 2 to 1: the stealth insight is genuinely original but the unverifiable numbers weaken its impact.",
+  "total": 69,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 14544,
+    "output_tokens": 1193
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 3,
+    "narrative": 3.5,
+    "framing": 2.5,
+    "accuracy": 1.5,
+    "visual": 2.5,
+    "bonus": 0
+  },
+  "what_worked": "The social-growth-vs-revenue-growth null finding (r = -0.03) is a genuinely useful contrarian insight.",
+  "fix_next": "The dataset has 1,000 rows, not 5,000+; sample sizes, correlations, and many claims appear fabricated—anchor every number to the actual data.",
+  "verdict": "Fabricated dataset size and statistics undermine an otherwise structured but shallow deck.",
+  "flags": [
+    "fabricated-sample-size",
+    "placeholder-image",
+    "no-real-charts",
+    "inflated-consulting-language",
+    "unverifiable-correlations",
+    "ai-slop"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1: Claims '5,000+ Verified Stripe Startup Listings'—dataset has 1,000 rows. Slide 2: '99.9% MoM revenue scaling' for AI tools is unsupported and implausible. Slide 3: Anonymous operators called '~20%'—actual is 12.9%. Slide 4: r=0.43 for Revenue vs DR with n=5,130—dataset has 1,000 rows; correlation unverifiable. Slide 6: Revenue vs Time in Business r=0.48 with n=5,567—dataset has 984 usable pairs and r≈0.025. Revenue vs Founder X Followers r=0.29 with n=4,410—impossible sample size. Slide 6: Revenue vs DR n=5,130—again wrong dataset size.",
+  "evidence": {
+    "insight": "Slide 5 offers a useful null-result finding on social vs revenue growth. Slide 4 attempts to connect DR to revenue moats. But most 'insights' are consulting-speak assertions (CAC, NRR, expansion) not grounded in the actual dataset columns.",
+    "narrative": "There is a loose arc: market overview → distribution signals → correlations → strategy. But slides 2-3 are disconnected bullet-point assertions, and the deck jumps from unsupported claims to a 'playbook' without building evidence. No synthesis slide ties findings together.",
+    "framing": "Slide 1 states audience (Micro-PE investors) and focus, which is good. However, the dataset is misidentified as 5,000+ rows and '2026 Telemetry,' and no limitations or missingness are acknowledged. A cold reader would be misled about the data foundation.",
+    "accuracy": "Nearly every quantitative claim is wrong or unverifiable against the 1,000-row dataset. Sample sizes (5,567; 5,130; 4,410) are fabricated. The founded-year correlation is reported as r=0.48 when the reference shows r≈0.025. Anonymous share is stated as ~20% vs actual 12.9%. The '99.9% MoM revenue scaling' claim is unsupported. Revenue vs Time r=0.48 directly contradicts the near-zero relationship in the data.",
+    "visual": "Slide 2 contains a placeholder image ('600 × 400'). No actual charts or data visualizations appear anywhere in the deck. The template is consistent dark-theme cards but entirely text-based. The correlation slides show large r-values as hero text but no scatter plots or distributions. Visual sameness across all slides.",
+    "ai_slop": "Heavy consulting jargon throughout: 'compounding organic distribution,' 'defensive moats,' 'algorithmic due diligence,' 'expansion NRR,' 'near-zero CAC initial launches.' Placeholder image on slide 2. Fabricated-looking statistics with precise but wrong sample sizes. Template-driven card layouts repeated identically across slides."
+  },
+  "confidence": "high",
+  "total": 26,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 12638,
+    "output_tokens": 961
+  }
+}

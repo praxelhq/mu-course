@@ -1,0 +1,39 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 4.5,
+    "narrative": 6,
+    "framing": 5,
+    "accuracy": 4,
+    "visual": 6,
+    "bonus": 0
+  },
+  "what_worked": "Clear thesis with a focused question, effective side-by-side scatterplots, and consistent visual identity throughout.",
+  "fix_next": "The core finding is near-tautological (subscriptions×price≈revenue); address this circularity and add a proper statistical test instead of just comparing r values.",
+  "verdict": "Coherent narrative around a shallow, nearly tautological insight with no formal hypothesis test.",
+  "flags": [
+    "tautological-insight",
+    "no-formal-significance-test",
+    "causal-language-from-correlation",
+    "narrow-dataset-use",
+    "missing-limitations"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 8: 'empirically proves' causal/predictive language from cross-sectional correlation—no significance test was performed, yet null is 'REJECTED.' Slide 6: '40x multiplier' treats ratio of r values (0.906/0.022≈41) as a meaningful multiplier of predictive power, which is statistically misleading (R² ratio would be ~1,700x; neither is a valid 'multiplier'). Slide 3/8: Hypothesis framework claims to test significance but never reports a p-value, confidence interval, or any formal test—just compares two correlation coefficients.",
+  "evidence": {
+    "insight": "The entire deck rests on one comparison: r(subscriptions, MRR)=0.906 vs r(followers, MRR)=0.022. Active subscriptions correlating with MRR is near-tautological (subscriptions × ARPU ≈ MRR). No deeper exploration of categories, providers, missingness, or any other dataset dimension. Slides 10-11 offer generic strategic advice not grounded in data.",
+    "narrative": "Slides follow a logical sequence: question (S2) → hypothesis (S3) → data overview (S4) → evidence (S5-7) → resolution (S8) → interpretation (S9-10) → recommendations (S11) → closing (S12). This is a coherent arc, though repetitive—the same two numbers appear on at least 5 slides.",
+    "framing": "Slide 1-2 set up the question clearly for a cold reader. Slide 4 provides dataset context. However, no mention of missingness (274 missing categories, 241 missing countries), no discussion of limitations, no acknowledgment that correlation ≠ causation despite causal language throughout.",
+    "accuracy": "The r=0.906 for subscriptions-MRR and r=0.022 for followers-MRR are plausible but unverifiable against the frozen reference. The hypothesis test framework (S3, S8) is methodologically broken: no formal test statistic, no p-value, no Fisher z-transformation to compare correlations. 'Proves' language on S8 is overclaimed. The 40x framing (S6) is statistically misleading.",
+    "visual": "Consistent template with coral/green color coding throughout. Scatterplots on S7 are effective and appear data-driven. The signal-strength gauge on S5 is a creative visualization. However, the donut chart on S4 is overly decorated, and the scale/seesaw illustration on S6 is decorative rather than informative. Background grid/circuit-board motifs add visual noise.",
+    "ai_slop": "Slide 6 seesaw illustration is decorative AI-generated art. Slide 2 eye/growth illustrations are generic AI clip art. Slide 9 funnel diagram is conceptual filler not derived from data. Slides 10-11 contain generic consulting-style frameworks (vanity vs. value, operational playbook) that could apply to any dataset."
+  },
+  "confidence": "high",
+  "total": 51,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19924,
+    "output_tokens": 969
+  }
+}

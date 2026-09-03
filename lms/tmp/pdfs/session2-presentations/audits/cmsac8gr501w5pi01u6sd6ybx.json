@@ -1,0 +1,43 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 6,
+    "accuracy": 4.5,
+    "visual": 6,
+    "bonus": 1
+  },
+  "what_worked": "Growth-spike skepticism on slide 7 and anonymous-economy framing on slide 8 show genuine analytical judgment.",
+  "fix_next": "Verify headline numbers against the actual dataset—B2B/B2C multiple, anonymous share, and total revenue are all materially wrong.",
+  "verdict": "Coherent narrative arc undermined by several factual errors in key claims.",
+  "flags": [
+    "revenue-total-wrong",
+    "b2b-b2c-multiple-wrong",
+    "anonymous-count-off",
+    "anonymous-revenue-share-wrong",
+    "slide6-chart-illegible",
+    "no-provider-analysis",
+    "no-category-revenue-analysis"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: $334M total revenue is vastly inflated vs reference $15.6M (likely confused all-time with 12-month or used a different field without clarification). Slide 6: B2B/B2C ~3.8x median multiple; reference shows ~2.35x/2.30x, nearly equal—claim is substantially wrong. Slide 8: 130 anonymous startups vs reference 129 (minor); 17.8% anonymous revenue share vs reference 26.525% (materially wrong). Slide 8: $59.6M anonymous revenue is inconsistent with reference totals. Slide 6: chart axis labels and bar values nearly illegible on dark background, though this is visual not factual.",
+  "evidence": {
+    "insight": "Slide 7 growth-spike skepticism and slide 8 anonymous-economy framing are original. Slide 9 asking-price scatter with r=0.84 and 2.3x multiple adds decision-useful context. Missing: category-level revenue comparison, payment-provider analysis, TLD analysis.",
+    "narrative": "Six-chapter arc from distribution to deal market is purposeful and coherent. Summary slide ties threads. Sequence builds logically. Slightly listy but each chapter advances the story.",
+    "framing": "Slide 2 notes missingness in marketing metadata and correctly denominates geo-tagged (759). However, $334M is introduced without explaining the field used. No explicit audience stated. No limitations slide beyond the metadata note.",
+    "accuracy": "Category counts (slide 4) and US share (258/759=34%) match reference. 21.6% zero-revenue is correct (216/1000). However, $334M total revenue is ~21x the reference $15.6M—a major discrepancy. B2B/B2C 3.8x claim contradicts reference ~1.02x median ratio. Anonymous revenue share 17.8% vs reference 26.5%. These are central claims, not peripheral.",
+    "visual": "Slide 3 log-histogram with median annotation is well-chosen. Slide 9 log-log scatter is appropriate. Slide 6 bar chart is nearly illegible—white/light text on dark background with poor contrast. Consistent color palette otherwise. Some slides are text-heavy but clean. Slide 4 horizontal bar chart is clear.",
+    "ai_slop": "No obvious generic filler or inflated language. Writing is specific to the dataset throughout."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.5 to 4.5: the $334M total revenue figure is off by ~21x from the reference $15.6M, which is a foundational claim on slide 2 that propagates through the deck. Combined with the B2B/B2C multiple error and anonymous share error, accuracy problems are more severe than preliminary suggested. Lowered visual from 6.5 to 6.0 for slide 6 illegibility. Lowered framing from 6.5 to 6.0 for not clarifying the revenue field behind $334M.",
+  "total": 60,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 18289,
+    "output_tokens": 990
+  }
+}

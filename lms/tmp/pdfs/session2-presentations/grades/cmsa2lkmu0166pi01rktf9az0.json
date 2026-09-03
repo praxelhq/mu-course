@@ -1,0 +1,38 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 6,
+    "narrative": 6,
+    "framing": 6,
+    "accuracy": 4.5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Clear audience framing for indie hackers with actionable decision filters and category comparisons.",
+  "fix_next": "Multiple median values diverge from reference data (Education, Marketing, Analytics, AI, B2B/B2C ratio); verify calculations against raw dataset before presenting.",
+  "verdict": "Competent overview with useful framing but too many numerical inaccuracies.",
+  "flags": [
+    "median-values-off",
+    "missing-data-not-acknowledged",
+    "zero-revenue-count-wrong",
+    "b2b-b2c-ratio-inflated"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 2: Total MRR $13.5M — dataset gives 30-day revenue $15.6M, unclear derivation; $134M '12-mo revenue' appears fabricated (no annualized field in dataset). Slide 4: Education median $2,142 vs reference $2,435; Marketing $1,586 vs $2,369.50; Analytics $1,294 vs $419; AI $446 vs $503; SaaS $303 vs $200.50 — mixed accuracy, Analytics is wildly off. Slide 6: 197 startups at $0 vs reference 216 zero-revenue. Slide 7: B2B/B2C 5.7x ratio claimed ($1,036/$181) — reference shows ~2.35x median revenue multiple for B2B; the absolute medians and ratio don't match reference. Slide 8: Stripe total MRR $11.7M vs reference $13.5M; Dodo $12.7k vs reference $38.7k. Slide 12: 'Stripe processes 87% of all MRR' — reference shows $13.5M/$15.6M = 86.7%, close but the $11.7M on slide 8 contradicts this.",
+  "evidence": {
+    "insight": "Slide 11 synthesizes categories into high-MRR vs crowded buckets with screening criteria — goes beyond chart description. Slide 9 highlights growth-filtered acquisition targets. However, insights remain surface-level: no cross-cutting analysis (e.g., category × audience type, anonymity premium).",
+    "narrative": "Flows logically: snapshot → categories → geography → distribution → B2B/B2C → payments → growth → acquisitions → recommendations. But reads as a tour of dimensions rather than building toward a single thesis. The 'landing' on slide 12 is a recap list, not a synthesized argument.",
+    "framing": "Slide 1 clearly targets indie hackers. Scope and date are stated. However, 274 missing category values and 288 missing audience_type values are never disclosed, which materially affects category and B2B/B2C analyses. No limitations slide.",
+    "accuracy": "Multiple median values diverge from reference: Education off by ~$300, Marketing off by ~$780, Analytics off by ~$875, B2B/B2C ratio inflated from ~2.35x to 5.7x. Zero-revenue count 197 vs 216. Dodo Payments total revenue $12.7k vs $38.7k. Stripe total MRR internally inconsistent ($11.7M on slide 8 vs 87% claim on slide 12). The $134M '12-mo revenue' has no dataset basis.",
+    "visual": "Clean, consistent dark/light theme alternation. Bar charts are well-labeled and appropriately chosen. Card-based layouts on slides 5, 8, 10 are legible. Color coding is purposeful (green highlights, category differentiation). Slide 6 distribution visualization is creative. Minor issue: bar lengths on slide 6 don't proportionally represent counts.",
+    "ai_slop": "Minimal filler language. Slide design is template-consistent but not generic. No decorative-but-meaningless graphics. The deck avoids consulting jargon. Slight concern: the uniformity of layout suggests AI generation but quality is maintained."
+  },
+  "confidence": "high",
+  "total": 59,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22294,
+    "output_tokens": 1039
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "slide_count": 15,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 7,
+    "accuracy": 6,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Four-green-lights screening framework synthesizes multiple data dimensions into a genuinely actionable acquisition checklist.",
+  "fix_next": "Quantify missingness rates (e.g., 288 missing audience_type) on slides where they affect the denominator of key claims.",
+  "verdict": "Well-structured acquisition story with strong narrative arc but under-disclosed data limitations.",
+  "flags": [
+    "unverifiable-derived-metric",
+    "median-revenue-possibly-wrong",
+    "missing-data-not-quantified",
+    "notebooklm-watermark-every-slide",
+    "decorative-clip-art"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 8: $400 median 30-day revenue is not clearly reconcilable with reference data and methodology is undisclosed. Slide 11: median multiple stated as 2.3x; reference gives B2B median 2.35x and B2C 2.30x — plausible as a blended figure but the blending is not explained, and the denominator (on-sale only vs all) is unspecified.",
+  "evidence": {
+    "insight": "Revenue-per-visitor metric (slide 10) is a genuinely useful derived measure that goes beyond raw counts; the popularity≠profitability warning (slide 4) and four-criteria synthesis (slide 12) show analytical layering. However, the derived metrics lack transparent methodology, and no deeper statistical analysis (e.g., the near-zero founded-year correlation or anonymous revenue share) is surfaced.",
+    "narrative": "Clear five-act arc: landscape → monetisation → distribution → efficiency → valuation → synthesis. Thesis on slide 2 is paid off on slide 15 with stakeholder-specific recommendations. The roadmap on slide 1 and recap sidebar on slide 15 reinforce coherence. Strong sequencing.",
+    "framing": "Audience (board/acquirer) is set on slides 1-2; conceptual framework on slide 3 orients a cold reader. Slide 14 acknowledges selection bias, missing fields, volatile growth, and unstandardized multiples — good but generic. Specific missingness rates (241 country, 288 audience_type, 274 category) are never quantified, weakening claims on slides 5, 6, and 4 respectively. Denominator of 34% on slide 5 implicitly uses country-tagged rows but doesn't state this.",
+    "accuracy": "Slide 4 category counts (AI 197, SaaS 66, Mobile Apps 52, Marketing 42, Dev Tools 37, Content Creation 36) all match reference exactly. Slide 5 country counts (US 258, IN 59) match. Slide 6 B2B median $1,036 is plausible but unverifiable without audience_type missingness disclosure. Slide 8 $400 median is questionable. Slide 7 bar chart shows median MRR by pricing model but the y-axis label is ambiguous. Slide 11 2.3x multiple is approximately consistent. No causal overclaims detected; correlation on slide 9 (0.54) is presented as correlation.",
+    "visual": "Consistent beige/green/charcoal palette. Direct bar labels throughout. Clean hierarchy with action-oriented headlines. Decorative clip-art on slides 6, 7, 11 adds visual interest without misleading. Slide 15 rotated sidebar text is hard to read. Scatter plots on slide 6 are tiny thumbnails that don't convey much information. Slide 9 log-log scatter is well-executed. Overall restrained and professional.",
+    "ai_slop": "NotebookLM watermark on every slide. Decorative icons (money pile slide 6, cracked funnel slide 7, scales slide 11) are generic AI clip-art. Four-quadrant frameworks (slides 3, 12) feel template-adjacent but are substantively populated. 'Board thesis' and 'green lights' language is consulting-speak but grounded in actual data findings. Moderate AI-tool reliance; not empty filler."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Reduced bonus from 2 to 1: the screening framework is good but not rare — it applies standard acquisition logic to the data without surprising depth. Reduced framing from 7.5 to 7: missingness is acknowledged generically on slide 14 but never quantified where it matters most (slides 5, 6). Reduced factual error count from 3 to 2 after closer review: the 2.3x multiple is defensible as approximate blending.",
+  "total": 71,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 24585,
+    "output_tokens": 1164
+  }
+}

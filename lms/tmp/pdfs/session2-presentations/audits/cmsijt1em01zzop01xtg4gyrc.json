@@ -1,0 +1,42 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 6.5,
+    "accuracy": 5.5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Pain-point clustering from problem_solved text and opportunity matrix synthesizing growth vs. MRR are genuinely actionable.",
+  "fix_next": "Define and disclose how the 59-business 'creator economy' subset was constructed, including which categories and any manual tagging.",
+  "verdict": "Strong narrative arc with a concrete thesis, but accuracy gaps in labeling and subset transparency.",
+  "flags": [
+    "custom-subset-unverifiable",
+    "revenue-labeled-as-mrr",
+    "29-categories-unverified",
+    "community-category-not-in-reference",
+    "mean-on-tiny-n-no-caveat",
+    "market-median-called-mrr"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 1/3: '$282 market-wide median' labeled as MRR but dataset field is 30-day revenue, not MRR—systematic conflation throughout. Slide 3: '29 market categories' stated but reference data shows ~11-12 named categories; never reconciled. Slide 3: 'Community' included in 59-business creator-economy universe (contributing ~5 businesses) but Community is not a category in the reference data. Slide 9: B2B '2.4x better' claim uses mean MRR on n=13 without acknowledging extreme outlier sensitivity.",
+  "evidence": {
+    "insight": "Slides 4-5 perform genuine text-coding of problem_solved and value propositions, yielding non-obvious findings (monetization messaging underused, automation > revenue in positioning). Slide 10's dual-axis opportunity ranking across growth and MRR is decision-useful. Slide 8's outlier callout shows analytical maturity. Slide 12 synthesizes all threads into a concrete product concept with benchmarked pricing.",
+    "narrative": "Clear problem→landscape→pain points→positioning→revenue→growth→pricing→opportunity→funding→recommendation arc. Every slide carries a business question, analysis, and conclusion banner. The story builds logically toward the ReelOps recommendation. Slide 13 recaps without introducing new claims.",
+    "framing": "Slide 2 sets up the business problem and data source. Audience (aspiring founder) is clear. However, the 59-company 'creator economy' subset is never defined transparently—which categories, whether manual tagging was used, what 'Community' means as a category. '29 categories' is asserted but never shown. Small-n limitations (e.g., n=13 B2B, n=3 free) are not discussed. Missingness in category field (274 missing) is never mentioned.",
+    "accuracy": "Category counts on slide 3 (AI=197, SaaS=66, Content Creation=36, etc.) match reference. Power-law observation on slide 6 is sound. However: (1) 30-day revenue is systematically called 'MRR' throughout—these are different metrics. (2) '29 categories' is unverifiable and likely inflated. (3) 'Community' category contributing to the 59-business universe doesn't appear in reference data. (4) B2B 2.4x claim on n=13 means is highly outlier-sensitive and presented without caveat.",
+    "visual": "Consistent template with muted earth tones, business-question banners, and green conclusion bars. Charts use appropriate types (horizontal bars, grouped bars, scatter, histogram) with data labels. Slide 6's mean-vs-median grouped bar is effective. Color coding is restrained. Some slides are text-heavy (slide 12). Template repetition is slightly monotonous but professional.",
+    "ai_slop": "Four-icon problem cards on slide 2 feel templated. Conclusion-banner format is formulaic. However, content is substantive and dataset-specific throughout—no generic filler or fabricated charts. Pain-point and value-proposition analyses appear to involve genuine analytical work."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 7.0 to 6.5: the 59-business subset construction is never disclosed, 'Community' category is phantom, '29 categories' is unverified, and small-n caveats are absent. Other scores confirmed after independent review.",
+  "total": 71,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 26253,
+    "output_tokens": 1086
+  }
+}

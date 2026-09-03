@@ -1,0 +1,38 @@
+{
+  "slide_count": 15,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 8,
+    "accuracy": 5.5,
+    "visual": 6.5,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis-driven narrative with consistent \"SO WHAT\" takeaways and an honest confidence-check slide.",
+  "fix_next": "Several median MRR figures diverge materially from the reference data; verify category medians and the B2B/B2C multiplier against the frozen dataset.",
+  "verdict": "Well-structured and insightful story undermined by multiple numeric inaccuracies.",
+  "flags": [
+    "median-mrr-discrepancies",
+    "pie-chart-labels-broken",
+    "mrr-vs-30day-revenue-conflation",
+    "category-median-errors"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 3: States top-10 share is 48%; reference is 49.6% — minor but the total MRR is labeled $13.47M (MRR field) while the reference 30-day revenue total is $15.6M; conflating MRR with 30-day revenue is a recurring ambiguity. Slide 4: 19.7% zero MRR stated; reference shows 21.6% zero revenue — possible if using MRR field but unverifiable and potentially wrong. Slide 5: AI median MRR $446 vs reference median $503; Education median $2,142 vs reference $2,435; Marketing median $1,586 vs reference $2,369.50; Analytics median $1,294 vs reference $419 (n=19) — Analytics is severely wrong, and the count shown is 25 vs reference 19. Slide 6: B2B/B2C median multiple stated as 5.7x; reference B2B/B2C median revenue multiple is ~2.35x/2.30x (not directly comparable but the 5.7x claim is unverifiable and likely inflated). Slide 7: Stripe company count 645 vs reference 636. Slide 9: Pie chart labels all show 0% — rendering failure.",
+  "evidence": {
+    "insight": "Slides 6-8 go beyond chart description to compare predictive power of audience type, distribution channel, and SEO vs social. The anonymity finding (slide 10) and marketplace pricing inefficiency (slide 12) are genuinely interesting, non-obvious observations.",
+    "narrative": "Clear thesis on slide 3 (winner-take-most), built through predictors (slides 5-8), complicated by growth reality (slide 9), extended to marketplace dynamics (slides 11-12), and landed with four synthesized takeaways (slide 13) plus a closing thesis (slide 15). Purposeful sequence throughout.",
+    "framing": "Slide 2 clearly defines the dataset, its biases (US-heavy, AI-heavy), and verification method. Slide 14 explicitly separates high-confidence from directional findings — unusually rigorous for a student deck. Audience ('leadership review') is stated.",
+    "accuracy": "Multiple category medians are materially wrong (Analytics $1,294 vs $419 is a 3x error; Marketing off by ~$780; Education off by ~$290). Analytics company count 25 vs 19. Stripe count 645 vs 636. The deck consistently uses 'MRR' but the reference uses '30-day revenue' — the $13.47M vs $15.6M gap suggests these are different fields, yet the deck never clarifies this distinction. Pie chart on slide 9 has all segments labeled 0%.",
+    "visual": "Consistent template with navy/orange/white palette, clear hierarchy, and SO WHAT callouts on every slide. However: slide 9 pie chart is broken (all labels 0%), charts are simple bar charts throughout with limited variety, and slide 3's x-axis labels are cut off. No decorative clutter but also no annotation or data-ink innovation.",
+    "ai_slop": "Minimal slop. The 'Prepared for leadership review' tagline is slightly generic consulting-speak. The template is consistent but repetitive — every slide follows the same layout pattern. No fabricated-looking graphics or inflated language beyond that."
+  },
+  "confidence": "high",
+  "total": 73,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 28803,
+    "output_tokens": 1064
+  }
+}

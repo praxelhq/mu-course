@@ -1,0 +1,38 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7.5,
+    "accuracy": 4.5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Strong narrative arc from five clear decisions to a unified advisory framework on the closing slide.",
+  "fix_next": "Domain median claims are wildly off versus the reference data (.ai median is 25, not $21,161); verify all median calculations before presenting.",
+  "verdict": "Well-structured advisory story undermined by several large factual errors in key claims.",
+  "flags": [
+    "inflated-domain-medians",
+    "revenue-total-mismatch",
+    "causal-language-on-observational-data",
+    "unverifiable-category-medians"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 1: '$133.8M trailing 12-month revenue' — reference total 30-day revenue is $15.6M; even annualized this figure appears fabricated or uses a different field without disclosure. Slide 2/4: .ai median claimed as $21,161 and 13x .com — reference .ai median is 25 and .com median is 8 (likely monthly MRR units); the 13x ratio is wrong regardless of unit (reference ratio ~3.1x). Slide 2/5: AI median claimed as $4,301 — reference AI median revenue is $503. Education median claimed $14,310 — reference is $2,435. Marketing median $10,029 — reference is $2,369.50. Slide 2/6: B2B vs B2C claimed ~4x ($8,362 vs $2,213) — reference median multiples are 2.35x/2.30x, and the absolute figures don't match reference benchmarks.",
+  "evidence": {
+    "insight": "Slide 5 contrasts category crowding vs. median revenue — a genuinely useful framing for founders. Slide 7 introduces exit-multiple distribution and growth correlation (r=0.36), adding a less obvious dimension. Slide 8 case study synthesizes traits across top earners.",
+    "narrative": "Clear five-decision thesis stated on slide 2, each explored in order (slides 4–9), then synthesized into an advisory checklist on slide 10. The sequence is purposeful and lands with a practical framework.",
+    "framing": "Slide 3 discloses 27% missing categories, skewness, and median-first methodology. Audience (founders and advisors) is stated on slide 1. Scope and limitations are handled better than most decks. However, the revenue denominator (trailing 12-month vs. 30-day) is never clarified.",
+    "accuracy": "Multiple core claims are materially wrong against the reference dataset. Domain medians are off by orders of magnitude. Category medians (AI $4,301 vs reference $503; Education $14,310 vs $2,435) are substantially inflated. The headline $133.8M figure is unverifiable and likely wrong. The B2B/B2C ratio is overstated. The 27% category-missing rate (274/1000) is correctly stated.",
+    "visual": "Consistent dark-navy/gold palette, clean bar charts with labeled values and sample sizes, good use of callout boxes for actionable takeaways. Slide 9 paired charts work well. No chart-junk. Hierarchy is clear throughout. Slightly template-uniform but not offensively so.",
+    "ai_slop": "Minor consulting-speak ('actionable takeaway' repeated on every insight slide) but content is specific to the dataset, not generic filler. The visual template is uniform but purposeful. No decorative-but-meaningless graphics detected."
+  },
+  "confidence": "high",
+  "total": 68,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19704,
+    "output_tokens": 938
+  }
+}

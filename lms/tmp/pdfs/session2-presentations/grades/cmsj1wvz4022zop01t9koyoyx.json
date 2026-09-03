@@ -1,0 +1,38 @@
+{
+  "slide_count": 4,
+  "scores": {
+    "insight": 6,
+    "narrative": 7.5,
+    "framing": 6,
+    "accuracy": 4.5,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "Sharp thesis, tight narrative arc, excellent visual restraint, and a genuinely memorable title.",
+  "fix_next": "Multiple median figures are wrong (AI $446 vs $503, Education $2,142 vs $2,435, B2B 5.7× vs ~2.35×); verify every number against the dataset.",
+  "verdict": "Strong storytelling undermined by several material numerical errors.",
+  "flags": [
+    "median-errors",
+    "b2b-multiplier-wrong",
+    "narrow-scope",
+    "categories-with-missing-data-not-acknowledged"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 1/3: AI median stated $446, reference is $503. Slide 1/3: Education median stated $2,142, reference is $2,435. Slide 3/4: B2B vs B2C multiplier stated 5.7×, reference median multiple is ~2.35×. Slide 3: 'Customer Support' and 'Marketplace' categories with specific medians ($5,163, $4,322) do not appear in the reference category list—possibly fabricated or from uncategorized subsets with tiny n.",
+  "evidence": {
+    "insight": "Core insight (crowded AI underperforms boring B2B categories on median MRR) is genuinely useful and non-obvious, but analysis stays shallow—no discussion of sample sizes, survivorship, or why medians diverge. Only two data dimensions explored (category count vs median revenue, B2B/B2C split).",
+    "narrative": "Excellent four-slide arc: hook (title), evidence of crowding (slide 2), revenue contrast (slide 3), actionable takeaway (slide 4). Each slide builds on the prior. The 'it's early' framing on slide 4 adds nuance.",
+    "framing": "Dataset source and freeze date stated clearly. However, 274 missing category values (~27%) are never mentioned, which materially affects the 'crowded' claim. Audience is implied (indie builders) but never explicitly stated. No limitations slide.",
+    "accuracy": "AI median off by ~$57 ($446 vs $503). Education median off by ~$293 ($2,142 vs $2,435). B2B/B2C 5.7× multiplier is dramatically wrong—reference shows ~2.35× median. 'Customer Support' and 'Marketplace' categories with stated medians don't appear in the reference dataset at all, raising fabrication concerns. The n=1,000 source note is correct but misleadingly implies all 1,000 are categorized.",
+    "visual": "Clean, consistent dark palette with gold/rust accent. Horizontal bar charts are well-chosen and properly labeled. Good use of callout boxes. Typography hierarchy is clear. No chartjunk. Slight issue: slide 3 bar chart shows only 6 of 12+ categories, cherry-picking the contrast.",
+    "ai_slop": "none"
+  },
+  "confidence": "high",
+  "total": 64,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 8501,
+    "output_tokens": 791
+  }
+}

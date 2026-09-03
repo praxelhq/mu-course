@@ -1,0 +1,39 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 6.5,
+    "accuracy": 4.5,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis-driven narrative with each slide building toward a coherent investment recommendation backed by multiple data angles.",
+  "fix_next": "Multiple median figures are materially wrong versus the dataset; verify every number against raw data before presenting as investment-grade analysis.",
+  "verdict": "Compelling storytelling undermined by several fabricated or inaccurate statistics.",
+  "flags": [
+    "fabricated-branding",
+    "median-values-wrong",
+    "correlation-unverifiable",
+    "causal-overreach",
+    "fake-institutional-framing"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1: Anonymous median claimed $7,337 vs reference showing anonymous is 12.9% of companies with 26.5% of revenue share — the median figure is unverifiable but the 2.6× claim doesn't match reference multiples (B2B/B2C medians are ~2.3×). Named median $185 is plausible but unverified. Slide 2: AI median shown as $446 vs reference $503; Education shown as $2,142 vs reference $2,435; Marketing shown as $1,586 vs reference $2,369.50; Analytics shown as $1,294 vs reference $419 (wildly wrong — off by 3×); Content Creation shown as $1,254 vs reference $1,237.50 (close); Social Media shown as $912 vs reference $844 (reasonable). B2B/B2C 5.7× claim — reference shows median multiples of 2.35×/2.30×, not 5.7×. Slide 2 claims B2B median $1,036 and B2C $181 which don't match reference. Slide 3: Correlation values (0.54, 0.29) are unverifiable from reference but presented without methodology. Slide 5: Specific company examples unverifiable. Slide 2: 'Fintech' category not in reference categories at all.",
+  "evidence": {
+    "insight": "Slide 4's AI variance framing (stock-picker's category) is genuinely original. Slide 5's acquisition multiple dispersion analysis adds decision-useful perspective. The anonymous/named angle on slide 1 is provocative. Pricing tier analysis on slides 3-4 adds depth.",
+    "narrative": "Clear thesis arc: stealth operators outperform (S1) → revenue follows B2B/pricing not hype (S2) → distribution is search-led (S3) → AI is high-variance (S4) → market is mispriced (S5) → synthesis (S6) → recommendation (S7). Each slide has a takeaway banner. Strong landing.",
+    "framing": "Framed as Sequoia Capital investment committee memo — fabricated institutional branding is problematic for a student assignment. Audience is clear but the fake branding is misleading. No limitations slide, no discussion of 274 missing categories or 288 missing audience_type, which directly undermines the B2B/B2C claims.",
+    "accuracy": "Analytics median off by ~3× ($1,294 vs $419). AI median wrong ($446 vs $503). Marketing median wrong ($1,586 vs $2,369.50). Education median wrong ($2,142 vs $2,435). B2B/B2C 5.7× multiple contradicts reference 2.35×/2.30× medians. 'Fintech' category appears but is not in the reference dataset categories. Correlation figures (0.54, 0.29) are unverifiable. Missing data not acknowledged despite 274/1000 missing categories and 288/1000 missing audience_type.",
+    "visual": "Clean, consistent design system with navy/gold palette. Good hierarchy with large headlines, supporting text, and insight banners. Bar charts are simple and readable. Slide 5's three-card layout is effective. Chart choices are appropriate. Some slides are text-heavy but generally well-balanced.",
+    "ai_slop": "The Sequoia Capital branding is fabricated institutional cosplay — a hallmark of AI-generated consulting decks. The closing quote on slide 7 is generic inspirational filler. However, the content itself is substantive and not generic template material."
+  },
+  "confidence": "high",
+  "total": 70,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 14767,
+    "output_tokens": 1084
+  }
+}

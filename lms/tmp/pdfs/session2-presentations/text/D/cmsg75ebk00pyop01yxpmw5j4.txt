@@ -1,0 +1,765 @@
+ASSIGNMENT PREFACE
+Why I Built This Report?
+
+Y Combinator gets over 30,000 applications every year. I wanted to understand a real problem: how do investment partners
+actually decide where to focus their time when founder quality is still what matters most? The thing that got me thinking
+was this: companies now leave a data trail before they ever pitch. Revenue, growth, customer numbers, how they're pricing
+things. This stuff is publicly available, pulled straight from payment processors and APIs. It can't tell you if someone's a
+great founder, but it can tell you whether they deserve a founder interview. So I built a system to test this. I took 1,000 SaaS
+startups and created a discovery score using six dimensions.
+Revenue quality, growth, market opportunity, customer traction, pricing power, and efficiency. The score doesn't
+recommend investments. It recommends conversations. What really stood out to me was the market data. I noticed that
+Marketing, Analytics, and Education companies were making way more money than AI companies, but getting way fewer
+applications. Partners were chasing what everyone else was excited about instead of looking at what actually makes
+money. I wanted to show that data can help you focus your attention better without taking the founder judgment out of the
+equation. Let the data narrow down 30,000 applications to 250. Then partners do what they do best with the companies
+that actually have signal. The framework isn't supposed to be perfect or permanent. It gets better when you look at what
+actually worked with each batch and adjust it. It's a tool that improves over time, not a formula that stays frozen.
+    Y Combinator                                                                                                                                              Confidential       30 · 07 · 2026
+
+
+
+
+ Ex e c u tiv e R e p o r t · S e s s io n 3
+
+
+
+
+AI Startup
+                                                                                                                           Report at a glance
+
+
+
+
+                                                                                                                           1,000
+Report.
+                                                                                                                           SaaS startups analyzed
+
+
+
+
+                                                                                                                           65
+                                                                                                                           countries represented
+
+
+
+
+Improving startup discovery through data-driven investment signals — a proprietary framework for
+prioritizing where partner attention creates the most value – For Y Combinator
+                                                                                                                           6
+                                                                                                                           signal dimensions in framework
+
+
+
+
+Prepared for                              Prepared by                      Dataset
+                                                                                                                           10
+                                                                                                                           high-signal companies surfaced
+Y Combinator                              Kartikeya Sharma                 TrustMRR
+Investment Team                           MBA Candidate · Masters' Union   1,000 SaaS startups · frozen 30·07·2026
+
+
+§ 01 / 13 · Cover                                                                                                    Confidential — For Y Combinator Investment Committee only
+    YC · Startup Intelligence                                                                                                                                          § 01 · Executive Overview
+
+
+
+
+Business Question
+How can Y Combinator use startup intelligence to identify companies that deserve deeper investment attention?
+
+
+Great founders remain the answer.
+Data decides where partners look first.
+Y Combinator receives tens of thousands of applications each year. Founder quality is — and will remain     P roposed D iscovery W orkflow
+— the primary criterion. But partner time is finite, and every hour spent on a company that would not       Where intelligence sits in the funnel
+survive first-pass commercial scrutiny is an hour not spent with the next great founder.
+Public startup-intelligence platforms now capture measurable operational signals — recurring revenue,       01   Applications                                                                30k+/yr
+growth cadence, customer traction, pricing power — that were previously visible only mid-diligence.
+This briefing analyzes 1,000 SaaS startups from TrustMRR to test one hypothesis: that a quantitative pre-
+                                                                                                            02   TrustMRR intelligence enrichment                                            signals
+screen can dramatically improve where partners spend their time, without ever displacing the founder-
+first decision.
+                                                                                                            03   YC Discovery Score™ ranking                                                   0–100
+
+
+    St a r t ups                 Ma r k et s           Geogr a phy                Aggr ega t e MRR
+
+
+
+    1,000                        29                    65                         $13.5M                    04   Partner review — founder-first                                         interviews
+
+
+    frozen snapshot              SaaS categories       countries                  recurring / month
+
+
+
+
+§ 02 / 13 · Executive Overview                                                                                                                      Confidential — YC Investment Committee
+    YC · Startup Intelligence                                                                                                                                                                       § 02 · Understanding the Data Source
+
+
+
+
+Business Question
+
+What is TrustMRR — and why should an investment partner care?
+
+
+
+
+A public signal layer beneath every SaaS
+company — before the pitch deck arrives.
+What TrustMRR captures                                                                                                                                                            Why the partner should care
+                                                                                               Nine categories of observable signal
+TrustMRR is a startup-intelligence platform that aggregates publicly observable
+                                                                                               Every startup, one commercial fingerprint                                            Objectivity
+operational metrics for SaaS companies — pulled from payment providers,
+                                                                                                                                                                                    Founder-reported metrics can flatter; API-sourced metrics cannot.
+subscription APIs, web analytics, and social endpoints that the founders
+                                                                                                     Monthly Recurring Revenue           30-day revenue
+themselves connect.                                                                                  stripe · revenuecat · paddle        recent commercial activity
+
+                                                                                                     All-time revenue                    Growth (30d)                               Comparability
+                                                                                                     total commercial history            MRR & revenue momentum
+The result is a standardized commercial fingerprint for a company that would                                                                                                        One schema across 1,000 companies enables ranking, not
+otherwise be invisible until a partner asked for a data room.                                        Active subscribers                  Markets & category                         anecdotes.
+                                                                                                     paying customer base                tagged verticals
+
+                                                                                                     Pricing model                       Country & domain
+                                                                                                     tiers & contract structure          provenance & SEO authority                 Speed
+                                                                                                     Social presence                                                                Insights available before the interview, not two weeks after.
+                                                                                                     X / community following
+
+
+
+
+      Executive Insight                     Startup intelligence should complement — not replace — founder evaluation by providing measurable commercial signals before formal due diligence begins.
+
+
+§ 03 / 13 · Understanding the Data Source                                                                                                                                                     Confidential — YC Investment Committee
+  YC · Startup Intelligence                                                                                                                         § 03 · Analysis Methodology
+
+
+
+
+Business Question
+
+How rigorous is the analysis behind this briefing?
+
+
+
+
+A seven-step, reproducible pipeline
+from raw dataset to investment shortlist.
+The seven analytical steps
+                                                                         Data reduction funnel
+
+  01         Ingest dataset                                              From 1,000 startups to 10 partner conversations
+             1,000 rows × 29 fields — snapshot 30·07·2026
+
+
+
+  02         Clean & validate
+             deduplicate, cap outliers, exclude "Stealth" placeholders
+
+
+
+  03         Analyze revenue & MRR
+             distribution, concentration, growth-decile breakdown
+
+
+
+  04         Compare markets & countries
+             29 categories × 65 countries — heatmap intersections
+
+
+
+  05         Identify commercial patterns
+             pricing power, ARPU, revenue-per-visitor, velocity
+
+
+
+  06         Build YC Discovery Score™
+             6 dimensions, percentile-normalized, weighted composite
+
+
+
+  07         Generate recommendations
+             shortlist + deep-dives + pipeline design                                    All figures reproducible from source · methodology available on request
+    YC · Startup Intelligence                                                                                                                                                                                                                    § 04 · Ecosystem Overview
+
+
+
+
+Business Question
+What does the TrustMRR ecosystem actually look like — where do these 1,000 companies live, and how do their commercials distribute?
+
+
+An AI-heavy, US-centric ecosystem —
+with extreme revenue concentration.
+    Aggr ega t e 30- da y r evenue                              Aggr ega t e MRR                                                           Ac t i ve subsc r i ber s                                               T op- 10 r evenue sha r e
+
+
+    $15.6M                                                      $13.5M                                                                     500,597                                                                 49.6%
+    across all 1,000 companies                                  annualized $161.7M ARR                                                     paying customers ecosystem-wide                                         Pareto compression, extreme
+
+
+
+
+    T op c a t egor i es                                                                 T op c ount r i es                                                                              Revenue c onc ent r a t i on
+
+    AI dominates 1-in-5 startups                                                         US = ¼ of the ecosystem                                                                         A power-law commercial curve
+                                                                                                                                                                                         30-day revenue distribution
+    AI                                                                197 · 20%          🇺🇸 United States                                                                    258 · 26%
+                                                                                                                                                                                         < $100                                                                        381 · 38%
+    SaaS                                                                 66 · 7%         🇫🇷 France                                                                             79 · 8%
+                                                                                                                                                                                         $100–1K                                                                       198 · 20%
+    Mobile Apps                                                          52 · 5%         🇮🇳 India                                                                              59 · 6%
+
+    Productivity                                                         49 · 5%         🇬🇧 UK                                                                                 50 · 5%   $1K–10K                                                                       221 · 22%
+
+    Marketing                                                            42 · 4%         🇨🇦 Canada                                                                             29 · 3%
+                                                                                                                                                                                         $10K–100K                                                                     180 · 18%
+    Dev Tools                                                            37 · 4%         🇩🇪 Germany                                                                            24 · 2%
+                                                                                                                                                                                         $100K+                                                                          20 · 2%
+    Content                                                              36 · 4%         🇧🇷 Brazil                                                                             20 · 2%
+                                                                                                                                                                                            Pa r et o c ompr essi on
+    Health & Fit.                                                        34 · 3%         🇭🇰 Hong Kong                                                                          19 · 2%
+                                                                                                                                                                                            Top 50 startups (5%) generate 72.9% of ecosystem revenue.
+      n = 726 companies with tagged primary category                                      65 countries total · 241 companies undisclosed
+
+
+
+
+     Insight               The ecosystem is power-law shaped. 58% of startups report under $1K/mo — screening must isolate the 20% earning > $10K/mo where investable commercial signal actually exists.
+§ 05 / 13 · Ecosystem Overview                                                                                                                                                                                              Source: TrustMRR frozen dataset, n=1,000
+    YC · Startup Intelligence                                                                                                                                                                          § 05 · Market Intelligence
+
+
+
+
+Business Question
+
+Which markets create the strongest commercial outcomes — and which are crowded but underperforming?
+
+
+Volume ≠ value. Marketing, Analytics, Education
+monetize best; AI is crowded and average.
+                                                                                                                                                      Where value concentrates
+      Ma r k et oppor t uni t y ma p                                                                                   High-score market   Standard
+      Volume × Monetization × Quality                                                                                                                   Highest median MRR                                                     $/month
+      bubble size = mean YC Discovery Score™ · x = # companies · y = median MRR                                                                         Education                                                             $2,141
+                                                                                                                                                        Marketing                                                             $1,586
+                                                                                                                                                        Analytics                                                             $1,294
+                                                                                                                                                        Content Creation                                                      $1,254
+
+
+                                                                                                                                                        Highest mean Discovery Score                                       out of 100
+                                                                                                                                                        Marketing                                                                   56.9
+                                                                                                                                                        Analytics                                                                   53.9
+                                                                                                                                                        AI                                                                          52.9
+                                                                                                                                                        Content Creation                                                            50.5
+
+
+                                                                                                                                                        Largest customer bases (mean)                                      subs / co.
+                                                                                                                                                        Health & Fitness                                                       1,214
+                                                                                                                                                        Social Media                                                             801
+                                                                                                                                                        Education                                                                554
+                                                                                                                                                        Mobile Apps                                                              476
+
+
+
+
+      Executive Insight
+                                       Investment attention should skew toward under-hyped, high-monetization categories — Marketing, Analytics, Education, Content Creation — where median MRR is 3–
+                                       5× AI's despite carrying a fraction of the applicant volume. AI itself remains crowded with 197 competing companies but middling median monetization ($446); within AI,
+                                       only the outliers will earn partner time.
+§ 06 / 13 · Market Intelligence                                                                                                                                         Bubble size proportional to mean Discovery Score
+    YC · Startup Intelligence                                                                                                                                                                                                                         § 06 · Framework
+
+
+
+
+Business Question
+
+How do we rank 1,000 companies without letting a single number pretend to know everything?
+
+
+The YC Discovery Score™ —
+six dimensions, one triage lens.
+The six weighted dimensions
+
+      25         Revenue Quality                                                                                       Why it matters               F r a me wo r k i n a c t i o n                                                                              SCORE
+
+                                                                                                                                                                                                                                                        91.2 / 100
+                 MRR + 12-month revenue percentile. Sustainable, recurring cash outweighs one-off spikes.              Proves willingness-to-pay
+                                                                                                                                                    #1 GojiberryAI vs. dataset median
+
+
+      20         Growth                                                                                                Why it matters
+                 30-day MRR growth, winsorized ±50%. Rewards acceleration; suppresses one-shot spikes.                 Signals product-market fit
+
+
+
+
+      20         Market Opportunity                                                                                    Why it matters
+                 Category depth × market breadth (# of tagged markets served).                                         Bounds outcome ceiling
+
+
+
+
+      15         Customer Traction                                                                                     Why it matters
+                 Active subscribers + social following. Two proofs of demand.                                          Community & distribution
+
+
+
+
+      10         Pricing Power                                                                                          Why it matters
+                 ARPU = MRR ÷ active subscriptions. High ARPU = premium positioning.                                    Unit economics premium
+
+
+
+                                                                                                                                                                                      GojiberryAI (top-1 company)     Dataset median (n=1,000)
+      10         Commercial Efficiency                                                                                  Why it matters
+                 Revenue velocity = 30d rev ÷ all-time rev. High = accelerating share of lifetime revenue is recent.    Momentum, not legacy
+
+
+
+
+     Executive Insight                   Six axes prevent any single metric from dominating. A company can miss on one dimension and still be exceptional — the score triangulates, it does not judge.
+
+§ 07 / 13 · YC Discovery Score™                                                                                                                                                                                     Percentile-normalized · weights sum to 100
+      YC · Startup Intelligence                                                                                                                                                                                                         § 07 · High-Potential Shortlist
+
+
+
+
+Top 10 · By YC Discovery Score™
+                                                                                                                                                                                                                   Sc or e i nt er pr et a t i on
+
+
+Ten companies that warrant a partner conversation.                                                                                                                                                                    80+
+
+                                                                                                                                                                                                                     70–79
+                                                                                                                                                                                                                                Partner interview · priority
+
+                                                                                                                                                                                                                                Technical diligence
+
+These rankings do not recommend investment. They identify companies whose commercial signals justify moving from application inbox to founder interview. Every subsequent                                            60–69      Monitor · watchlist
+decision remains founder-first.
+
+
+
+
+  #     Company                           Geo     Market                                 30D Rev                        MRR                         MRR g/30d                 Subs                   SocialPricing                                  Score   Rec. Action
+
+
+               GojiberryAI                🇺🇸 US   AI                                                                                                   +23.6%                4,642                   18,050Contact sales                                    ▸ Partner interview
+ 01            gojiberry.ai
+                                                                                        $385.6K                      $494.7K                                                                                                                        91.2
+
+
+
+               LLM Gateway                🇺🇸 US   AI · Dev API                                                                                        +239.5%                  858                    1,265Usage-based                                      ▸ Partner interview
+ 02      LG    llmgateway.io
+                                                                                        $147.1K                       $47.2K                                                                                                                        87.5
+
+
+
+               Upscale System             🇺🇸 US   AI · B2B growth                                                                                      +27.7%                  243                      721Managed service                                  ▸ Partner interview
+ 03      Up    upscaleb2b.com
+                                                                                         $68.9K                       $86.5K                                                                                                                        85.6
+
+
+
+               AdStellar                  🇺🇸 US   AI · AdTech                                                                                          +25.5%                  168                    2,105Tiered SaaS                                      ▸ Partner interview
+ 04      Ad    adstellar.ai
+                                                                                         $15.3K                       $26.0K                                                                                                                        84.0
+
+
+
+               Kibu       DEEP DIVE
+                                          🇺🇸 US   Education · B2B                                                                                      +52.8%                  375                    1,066Contact sales                                    ▸ Partner interview
+ 05            kibu.com
+                                                                                        $200.2K                      $234.3K                                                                                                                        82.4
+
+
+
+               Laper                      🇺🇸 US   AI · Media                                                                                           +83.9%                  618                   40,035Tiered SaaS                                      ▸ Partner interview
+ 06       La   laper.ai
+                                                                                         $24.0K                       $19.9K                                                                                                                        82.0
+
+
+
+               SetSmart                   —       SaaS · AI SDR                                                                                       +100.0%                  139                       —Tiered SaaS                                       ▸ Partner interview
+ 07            setsmart.io
+                                                                                         $50.5K                       $15.7K                                                                                                                        81.8
+
+
+
+               Postiz         DEEP DIVE   🇭🇰 HK   Social Media                                                                                         +15.0%                5,237                   13,924$29–99/mo
+ 08            postiz.com
+                                                                                        $172.9K                      $177.1K                                                                                                                        81.0    ▸ Partner interview
+
+
+
+
+               MimikFlow                  🇫🇷 FR   AI · Sales                                                                                          +153.6%                   21                    1,708Freemium SaaS                                    ▸ Technical diligence
+ 09      Mi    mimikflow.com
+                                                                                           $2.9K                       $3.1K                                                                                                                        78.9
+
+
+
+               Apiframe                   🇸🇬 SG   AI · API                                                                                             +31.0%                  425                      396Usage-based
+ 10            apiframe.ai
+                                                                                         $31.4K                       $24.8K                                                                                                                        78.8    ▸ Technical diligence
+
+
+
+
+                                                                                                                                                     Score = weighted percentile of 6 dimensions · rankings are triage, not recommendation
+  YC · Startup Intelligence                                                                                                                                                  § 07 · High-Potential Shortlist
+
+
+
+
+Top 10 · By YC Discovery Score™
+
+
+
+
+Key Takeaways
+ Why each company appears — rationale in one line
+
+GojiberryAI — Only company scoring >90; $495K MRR growing 23.6% with 4.6k paying customers.
+
+AdStellar — Small revenue but strong percentile mix; AI adtech + $155 ARPU.
+
+Upscale System — High-ARPU B2B ($356/customer); premium positioning in outbound growth.
+
+LLM Gateway — Hyper-growth (+239.5% MRR) developer-tools API; recent capital-efficient inflection.
+
+MimikFlow — +154% MRR — smallest of top 10, watch as inflection candidate.
+
+Laper — 83.9% MRR growth on a 40k-strong X community; distribution moat forming.
+
+SetSmart — Doubled MRR in 30 days; validates AI-SDR category thesis.
+
+Postiz — HK builder, 5.2k paying customers on transparent SMB pricing — capital-light PLG.
+
+Apiframe — Singapore infra play; API business with 425 customers and 31% MRR growth.
+
+Kibu — $234K MRR compounding at 52.8% in disability-tech; enterprise contract-sales motion.
+
+
+                                                                                                     Score = weighted percentile of 6 dimensions · rankings are triage, not recommendation
+    YC · Startup Intelligence                                                                                                                                                                                                                                              § 08 · Deep Dive I / III
+
+
+
+
+                    Candidate I · Enterprise B2B                RANK #05
+
+
+
+                    Kibu
+                                                                                                                                                                                                                            YC Discovery Score™
+
+
+
+
+                    kibu.com · United States · Education · B2B disability-services SaaS                                                                                                                                     82.4                         / 100
+
+                                                                                                                                                                                                                              PARTNER INTERVIEW        Top 6% of dataset
+
+Kibu builds compliance and service-delivery software for Direct Service Providers (DSPs) — the disability-support agencies that manage
+day-to-day care for individuals with intellectual and developmental disabilities. The value proposition is narrow but essential: "Kibu gives                                                              Score breakdown
+
+DSPs the power to focus on delivering outstanding support" — automating documentation, billing, and audit-readiness in a heavily                                                                          Where Kibu wins vs. dataset median
+                                                                                                                                                                                                          Revenue Quality                                                                 96 / 100
+regulated market.
+                                                                                                                                                                                                          Growth                                                                          88 / 100
+    30-day revenue                                                         MRR                                                                 ARR (annualized MRR)
+                                                                                                                                                                                                          Market Opportunity                                                              72 / 100
+
+    $200,210
+    ▾ 25.6% period-over-period
+                                                                           $234,319
+                                                                           ▴ 52.8% growth · 30d
+                                                                                                                                               $2.81M
+                                                                                                                                               12-mo revenue $1.85M
+                                                                                                                                                                                                          Customer Traction                                                               78 / 100
+
+                                                                                                                                                                                                          Pricing Power                                                                   94 / 100
+
+                                                                                                                                                                                                          Commercial Efficiency                                                           62 / 100
+    Active customers                                                       ARPU (MRR ÷ subs)                                                   Pricing motion
+
+    375
+    DSP agencies on platform
+                                                                           $625
+                                                                           Top-decile pricing power
+                                                                                                                                               Contact sales
+                                                                                                                                               Enterprise · non-transparent
+                                                                                                                                                                                                           Vertical line = dataset median (50th percentile)
+
+
+
+
+Commerci al s t rengt hs                                                                              Signals to interrogate                                                                              Investment thesis · one-liner
+
+
+   Enterprise-quality unit economics                                                                    30-day revenue –25.6% vs prior
+   $625 ARPU sits in the top decile of the 1,000-company dataset — 4× the AI-category median.           A single large customer? Multi-month contract billing lumpiness? Or genuine attrition?
+                                                                                                                                                                                                          A "boring vertical SaaS in a regulated niche" — the
+                                                                                                                                                                                                          least crowded thesis in the dataset, executing at
+   Regulatory moat                                                                                      Domain rating only 37
+   Disability-services compliance is a high-switching-cost niche; incumbents rely on paper.             Web presence is thin for a company at this revenue scale — sales-led acquisition confirmed.
+                                                                                                                                                                                                          enterprise price points with real MRR compounding.
+
+                                                                                                                                                                                                          Conf i denc e · Pa r t ner i nt er vi ew
+   MRR compounding 52.8% MoM                                                                            Total addressable market
+   Sales-led motion producing genuine expansion, not lumpy service revenue.                                                                                                                                                            4 / 5 · High
+                                                                                                        DSPs are ~15k agencies in the US — sufficient for a $50-100M ARR business, but ceiling matters.
+
+
+
+
+§ 09 / 13 · Deep Dive · Kibu                                                                                                                                                                                                            Enterprise B2B · US · Education/Compliance
+    YC · Startup Intelligence                                                                                                                                                                                                                                                        § 09 · Deep Dive II / III
+
+
+
+
+                    C a n d i d a t e I I · P L G S MB   RANK #08
+
+
+
+                    Postiz
+                                                                                                                                                                                                                                 YC Discovery Score™
+
+
+
+
+                    postiz.com · Hong Kong · Social Media · Product-led AI for SMBs                                                                                                                                              81.0                             / 100
+
+                                                                                                                                                                                                                                    PARTNER INTERVIEW            Top 6% of dataset
+
+"Run your social media on autopilot with AI agents" — Postiz schedules, generates, and analyzes posts across 30+ social networks. It
+targets automation-savvy operators (developers, marketing teams, social managers) with transparent SMB pricing and a strong open-                                                                           Scor e br eakdown
+                                                                                                                                                                                                            Where Postiz wins vs. dataset median
+source-adjacent community narrative built out of Hong Kong.
+                                                                                                                                                                                                            Revenue Quality                                                                          94 / 100
+
+                                                                                                                                                                                                            Growth                                                                                   71 / 100
+
+    30-day revenue                                                          MRR                                                                       ARR (annualized MRR)                                  Market Opportunity                                                                       76 / 100
+
+    $172,955
+    ▴ 22.7% period-over-period
+                                                                            $177,102
+                                                                            ▴ 15.0% growth · 30d
+                                                                                                                                                      $2.13M
+                                                                                                                                                      12-mo revenue $727.6K
+                                                                                                                                                                                                            Customer Traction                                                                        93 / 100
+
+                                                                                                                                                                                                            Pricing Power                                                                            44 / 100
+
+                                                                                                                                                                                                            Commercial Efficiency                                                                    89 / 100
+    Active subscribers                                                      ARPU (MRR ÷ subs)                                                         Pricing tiers
+
+    5,237
+    Top-decile customer base
+                                                                            $33.8
+                                                                            Consistent with $29 base tier
+                                                                                                                                                      $29 → $99/mo
+                                                                                                                                                      Standard · Team · Pro · Ultimate
+                                                                                                                                                                                                              Vertical line = dataset median (50th percentile)
+
+
+
+
+Commerci al s t rengt hs                                                                                    Si gnal s t o i nt errogat e                                                                     I nves t ment t hes i s · one- l i ner
+
+
+   5,237 paying customers at $34 ARPU                                                                          SMB ARPU ceiling
+   Genuine bottom-up PLG signal — 26× the dataset median customer count.                                       $29–99 tiers cap revenue expansion; only the "Ultimate" plan meaningfully unlocks upmarket
+                                                                                                                                                                                                             A PLG SMB tool with genuine bottom-up traction
+                                                                                                               motion.
+                                                                                                                                                                                                             from an under-covered geography — the classic YC
+   73% of lifetime revenue is recent
+   Efficiency score 89. 12-mo rev = 90% of all-time — inflection is happening now, not two years ago.          Category saturation                                                                           "under-the-radar" pattern.
+                                                                                                               Buffer, Hootsuite, Later, Publer — established competitors with 10-100× budgets.
+
+                                                                                                                                                                                                             Conf i denc e · Pa r t ner i nt er vi ew
+   Domain rating 70 · 13.9k X followers
+   Distribution moat forming; capital-light acquisition without paid channels.                                 HK domicile                                                                                                                  4 / 5 · High
+                                                                                                               Not disqualifying, but partners should confirm founder location and target US enterprise-
+                                                                                                               readiness.
+
+
+
+
+§ 10 / 13 · Deep Dive · Postiz                                                                                                                                                                                                                        PLG SMB · Hong Kong · Social Media / AI
+   YC · Startup Intelligence                                                                                                                                                                                                                                                               § 10 · Deep Dive III / III
+
+
+
+
+                   C a n d i d a t e I I I · E me r g i n g - ma r k e t De v T o o l s           RANK #14
+
+
+
+                   Web3Forms
+                                                                                                                                                                                                                                              YC Discovery Score™
+
+
+
+
+                   web3forms.com · India · Dev Tools · Developer-beloved API infrastructure                                                                                                                                                   78.1                             / 100
+
+                                                                                                                                                                                                                                                TECHNICAL DILIGENCE            Top 8% of dataset
+A boring, beloved primitive: "receive your HTML contact form submissions directly in your email inbox — no backend code." Web3Forms
+is a serverless form-relay API for developers. It monetizes a real pain point (setting up a form-handling backend for a static site) with a                                                                                Score breakdown
+
+freemium tier (250 submissions/month) that converts on volume — from an unusual geography for infra tools: India.                                                                                                          Where Web3Forms wins vs. dataset median
+                                                                                                                                                                                                                           Revenue Quality                                                                 82 / 100
+
+                                                                                                                                                                                                                           Growth                                                                          77 / 100
+   30-day revenue                                                                         MRR                                                                     ARR (annualized MRR)
+                                                                                                                                                                                                                           Market Opportunity                                                              66 / 100
+
+   $42,813
+   ▾ 2.9% period-over-period
+                                                                                          $33,002
+                                                                                          ▴ 20.6% growth · 30d
+                                                                                                                                                                  $396K
+                                                                                                                                                                  12-mo rev $206K · all-time $206K
+                                                                                                                                                                                                                           Customer Traction                                                               87 / 100
+
+                                                                                                                                                                                                                           Pricing Power                                                                   21 / 100
+
+                                                                                                                                                                                                                           Commercial Efficiency                                                           96 / 100
+   Active subscribers                                                                     ARPU (MRR ÷ subs)                                                       Domain rating
+
+   2,408
+   Long-tail paying developers
+                                                                                          $13.7
+                                                                                          Low, but volume-defensible
+                                                                                                                                                                  81
+                                                                                                                                                                  Elite SEO authority for the size
+                                                                                                                                                                                                                            Vertical line = dataset median (50th percentile)
+
+
+
+
+Commerci al s t rengt hs                                                                                               Si gnal s t o i nt errogat e                                                                        Investment thesis · one-liner
+
+
+  Domain rating 81 · developer SEO moat                                                                                   ARPU only $13.70/mo
+  Higher than 95% of the dataset. Inbound traffic capital-light — a rare compounding asset.                               Growth requires volume scale; ceiling unclear without upmarket motion or usage-based
+                                                                                                                                                                                                                           Developer-primitive-turned-business: India-built,
+                                                                                                                          expansion.
+                                                                                                                                                                                                                           2,400 devs paying, elite SEO — the exact profile YC
+  100% of all-time revenue in last 12 months
+  This is an inflection company — efficiency score 96, freshly monetizing an existing user base.                          Commoditization risk                                                                             has historically funded from emerging markets.
+                                                                                                                          Formspree, Netlify Forms, FormKeep — real competitors; differentiation is trust and DevEx, not
+                                                                                                                          tech.
+                                                                                                                                                                                                                           Conf i denc e · T ec hni c a l di l i genc e
+  2,408 paying developers · 10k X followers
+  Community-led distribution; low CAC, high organic funnel.                                                                                                                                                                                              3 / 5 · Medium-high
+                                                                                                                          30-day revenue –2.9%
+                                                                                                                          Marginal; MRR still up 20.6% suggests seasonality rather than churn — validate in interview.
+
+
+
+
+§ 11 / 13 · Deep Dive · Web3Forms                                                                                                                                                                                                              Emerging-market Dev Tools · India · Freemium API
+    YC · Startup Intelligence                                                                                                                                                                    § 11 · The Discovery Pipeline
+
+
+
+
+The System, Not the List
+
+
+
+A seven-stage Discovery Pipeline —
+where data screens, and partners decide.
+Rather than recommending 10 companies, we recommend the scalable process that surfaced them. Each stage compresses the funnel while preserving founder-
+first judgment at the point where it matters most.
+
+
+
+
+   STAGE 01                                STAGE 02              STAGE 03 · CORE              STAGE 04                                STAGE 05 · HUMAN          STAGE 06                            STAGE 07
+
+   Applications                            Intelligence layer    Discovery Score™             Validation                              Founder interview         Partner meeting                     Investment
+   30k+                                    API                   0–100                        ~250                                    ~60                       ~20                                 Term sheet
+   Founder-submitted                       TrustMRR enrichment   6-dimensional ranking        Score > 60 threshold                    Judgment reintroduced     Group review                        The moment of "yes"
+
+
+
+
+   Owned by                                Automated             This report's contribution   Analyst QC                              YC Partner                Full partnership                    IC decision
+   YC Application Team                     Zero partner time     Reproducible framework       Signal quality check                    Founder-first from here   Convictions consolidated            Data has done its job
+
+
+
+
+            St ages 01 –04 · Dat a- l ed                                                                                 St ages 05 –07 · F ounder - f i rs t
+
+    Signal aggregation, ranking, and validation.                                                                     Interviews, partner meetings, committee. Humans decide 250 → yes. No data model
+    Machines compress 30,000 → 250. Partner time is spent zero.                                                      recommends an investment — it recommends a conversation.
+
+
+
+
+§ 12 / 13 · Discovery Pipeline                                                                                                                                            Illustrative funnel volumes; tunable per batch
+    YC · Startup Intelligence                                                                                                                                                                                                      § 12 · Executive Recommendations
+
+
+
+Five recommendations for the Managing Partners
+
+
+What to do Next.
+
+     01            Adopt intelligence as a pre-screening layer.
+                    Enrich every application with a Discovery Score before the first partner reads a founder answer. Cost: data-
+                   integration sprint. Payoff: partner hours redirected to the highest-signal 5%.
+                                                                                                                                             02          Benchmark applicants against top performers.
+                                                                                                                                                         Every founder conversation should open with an apples-to-apples comparison against 5 comparable-stage,
+                                                                                                                                                         comparable-market peers. Percentile positioning turns anecdote into evidence.
+
+
+
+
+     03            Weight commercial quality alongside founder vision.
+                    Every partner memo should carry both. Not to override founder judgment, but to force the two-part question:
+                   "Is this a great founder AND does the market already believe them with their wallet?"
+                                                                                                                                             04          Prioritize markets that monetize.
+                                                                                                                                                          The data shows Marketing, Analytics, Education, and Content Creation carry 3–5× the median MRR of AI at a
+                                                                                                                                                         fraction of the applicant volume. Rebalance intake attention accordingly.
+
+
+
+
+     05            Continuously refine the YC Discovery Score™.
+                   Re-weight annually against realized batch outcomes. If Pricing Power predicted graduation better than Growth for a given cohort, adjust. The framework is a living instrument, not a formula frozen in July 2026.
+
+
+
+
+                    Data will never replace great founders. But it can decisively improve where investors choose to look first — enabling faster,
+       “            more informed, more consistent startup discovery.
+                    — Closing thesis, Startup Intelligence Report · Session 3
+
+Prepared by                                                                                                                                                                                                                                                         Confidential
+
+Kartikeya Sharma · MBA Candidate · Masters' Union                                                                                                                                                                 Prepared for Y Combinator Investment Team · Session 3 · 30·07·2026
+
+
+§ 13 / 13 · End of Briefing                                                                                                                                                                                                                                          Thank you
+

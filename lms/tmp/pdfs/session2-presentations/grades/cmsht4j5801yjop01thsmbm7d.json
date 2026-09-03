@@ -1,0 +1,39 @@
+{
+  "slide_count": 14,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7,
+    "accuracy": 4.5,
+    "visual": 7.5,
+    "bonus": 3
+  },
+  "what_worked": "Genuinely opinionated synthesis with honest epistemic framing, survivorship-bias caveat, and actionable decision filters.",
+  "fix_next": "The deck barely touches the actual dataset it's graded on—founded-year correlation is overstated, country figures are unverifiable, and category growth percentages appear fabricated.",
+  "verdict": "Strong editorial voice and structure, but accuracy against the frozen dataset is poor.",
+  "flags": [
+    "age-revenue-correlation-overstated",
+    "country-figures-unverifiable-against-dataset",
+    "category-growth-figures-unsourced",
+    "missing-data-not-quantified",
+    "provider-analysis-absent"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 10: Claims 'revenue climbs with age more reliably than with any other visible factor'—the frozen dataset shows Pearson r=0.025, essentially zero linear relationship; this is materially misleading. Slide 11: Country revenue figures ($1.2B US, $86M Poland, etc.) cannot be reconciled with the dataset's total 30-day revenue of ~$15.6M across 1,000 rows; the deck appears to reference a larger TrustMRR universe without clarifying the sample mismatch. Slide 7: Category growth percentages (Customer support ~93%, Education ~63%, etc.) are presented without methodology and 'Customer support' and 'Entertainment' are not categories in the frozen dataset at all. Slide 8: The 2–2.5× annual revenue multiple claim is stated as fact; the frozen dataset shows B2B/B2C median multiples of ~2.3×, which is roughly consistent, but the deck never shows the calculation or acknowledges the dataset's actual fields.",
+  "evidence": {
+    "insight": "Slides 5-6 offer a genuinely useful outcome-vs-workspace framework; slide 13's five-test kill filter is original and decision-useful; slide 3's 'how to read it' heuristics go well beyond chart description. The insight is strong but largely qualitative—it synthesizes patterns rather than proving them with the data.",
+    "narrative": "Clear thesis arc: here's the landscape (slides 1-4) → what's working and why (5-10) → where to go (11-12) → how to decide (13) → caveats (14). Each slide builds on the prior. The landing on slide 13 is purposeful. This is not a list of facts.",
+    "framing": "Slide 2 explains the data source well; slide 14 lists limitations honestly including survivorship bias and small-base percentages. However, the deck never clarifies it is working from a 1,000-row sample versus the full TrustMRR database, creating confusion about denominators. Missing-data rates (24-29% across key fields) are never disclosed.",
+    "accuracy": "Slide 10's age-revenue claim directly contradicts the dataset (r=0.025). Slide 11's country figures are orders of magnitude larger than the dataset supports ($1.2B US vs. ~$15.6M total). Slide 7 references categories not in the frozen dataset. The deck appears to mix the full TrustMRR platform data with the assignment dataset without ever distinguishing them, which is a fundamental denominator problem. The 2-2.5× multiple on slide 8 is roughly consistent with dataset medians but presented without sourcing.",
+    "visual": "Consistent dark/light theme alternation, restrained color palette (dark background + orange accent), clean typography hierarchy, no decorative graphics. Bar charts on slides 4 and 7 are simple and legible. The design is professional and evidence-led. Slight monotony in the card-grid layout repeated across slides 2, 5, 6, 12.",
+    "ai_slop": "Minimal slop. The writing voice is distinctive and opinionated rather than generic. No inflated consulting language. The 'first customer' annotations on slide 12 are specific. However, the category growth figures on slide 7 and country figures on slide 11 have the hallmarks of fabricated-looking data—precise-seeming numbers without traceable methodology."
+  },
+  "confidence": "medium",
+  "total": 72,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 26908,
+    "output_tokens": 1065
+  }
+}

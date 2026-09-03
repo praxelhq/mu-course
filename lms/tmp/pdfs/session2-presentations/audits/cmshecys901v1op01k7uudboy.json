@@ -1,0 +1,43 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 5.5,
+    "accuracy": 4,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "AI-as-high-variance stock-picker framing and acquisition multiple dispersion analysis are genuinely original angles.",
+  "fix_next": "Verify every median against the actual data; multiple category medians are off by 2–5×, undermining the core claims.",
+  "verdict": "Strong storytelling and design, but too many wrong numbers to trust the analysis.",
+  "flags": [
+    "fabricated-branding",
+    "multiple-median-errors",
+    "missing-data-not-disclosed",
+    "causal-overreach",
+    "unverifiable-correlations",
+    "phantom-category-fintech",
+    "fake-institutional-framing"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "S1: anonymous median $7,337 claimed but reference anonymous revenue share is 26.5% — the 2.6× / exact medians are unverifiable but the named median $185 is implausibly low given overall dataset median. S2: AI median $446 vs reference $503; Marketing $1,586 vs $2,369.50; Analytics $1,294 vs $419 (wrong direction — Analytics actually lower than AI); Education $2,142 vs $2,435; Content Creation $1,254 vs $1,237.50 (close, acceptable). 'Fintech' shown as a category but absent from reference categories. B2B out-monetizes B2C '5.7×' contradicts reference on-sale medians of 2.35×/2.30× (roughly 1×). S2: 'B2C outnumbering B2B 401 to 255' — with 288 missing audience_type this is plausible but undisclosed. S3: correlation values 0.54 and 0.29 are unverifiable against reference (reference Pearson r for founded-year/revenue is 0.025, suggesting these are fabricated or at minimum unanchored).",
+  "evidence": {
+    "insight": "Slide 4 AI variance framing (both top winners and losers) is original and decision-useful. Slide 5 acquisition multiple dispersion (0.1×–76× ARR) with concrete examples is strong. Slide 1 anonymous-vs-named angle is provocative. Multiple analytical layers per slide.",
+    "narrative": "Clear seven-slide arc: stealth outperformance → B2B/category monetization → distribution channels → AI variance → acquisition mispricing → synthesis → recommendation. Each slide has an 'Investment Insight' banner. Thesis is coherent and builds. Landing on slide 7 is purposeful.",
+    "framing": "Fabricated Sequoia Capital Investment Committee branding is misleading for student work. No limitations or methodology slide. 274/1000 missing categories and 288/1000 missing audience_type are never disclosed, yet B2B/B2C and category claims depend on these fields. No sample-size caveats on smaller categories (Analytics n=19, Social Media n=18).",
+    "accuracy": "At least 5 category medians are materially wrong. Analytics is shown as $1,294 (reference: $419) — a 3× overstatement that reverses its rank relative to AI. Marketing shown $1,586 vs reference $2,369.50. AI shown $446 vs $503. B2B/B2C 5.7× multiple is unsupported by reference medians. Fintech is not a reference category. Correlation figures are unverifiable.",
+    "visual": "Consistent navy/gold design system with clear hierarchy. Bar charts are simple and legible. Slide 5 three-card layout is effective. Insight banners provide consistent structure. Some slides lean text-heavy but remain scannable. Chart choices are appropriate throughout.",
+    "ai_slop": "Sequoia Capital branding is fabricated institutional cosplay. Slide 7 closing quote is generic inspirational filler. Overall content is substantive, not boilerplate, but the fake branding and polished-but-wrong numbers suggest AI generation without verification."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 4.5 to 4.0: Analytics median is wrong by 3× and in the wrong direction (shown higher than AI when it's actually lower), which inverts a key claim. Added Fintech as phantom category (error #8). Lowered framing from 6.5 to 5.5: fabricated Sequoia branding combined with zero disclosure of ~29% missing data on the fields driving core claims is a more serious framing failure. Reduced bonus from 2 to 1: the fake institutional framing undercuts the otherwise strong presentation craft.",
+  "total": 66,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 14799,
+    "output_tokens": 1179
+  }
+}

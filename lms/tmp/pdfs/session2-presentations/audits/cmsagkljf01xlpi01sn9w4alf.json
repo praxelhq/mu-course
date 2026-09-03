@@ -1,0 +1,42 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 7,
+    "accuracy": 4.5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Growth-cluster segmentation and seven-check playbook synthesize data into genuinely decision-useful founder guidance.",
+  "fix_next": "Reconcile MRR vs revenue_30d throughout; the $13.5M total and category medians don't match the revenue field, creating systematic inaccuracy.",
+  "verdict": "Well-structured founder playbook undermined by using MRR where revenue was expected, causing pervasive number mismatches.",
+  "flags": [
+    "total-revenue-wrong",
+    "mrr-vs-revenue-conflation",
+    "category-medians-off",
+    "b2b-multiplier-inflated",
+    "country-missing-count-off",
+    "top10-share-rounded-down"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 1/4: Total stated as $13.5M MRR vs reference total revenue $15.6M — unclear denominator. Slide 4: Top-10 share stated 48% vs reference 49.6% (minor). Slide 5: Category median MRRs systematically diverge from reference revenue medians (e.g. AI $446 vs $503, Marketing $1,586 vs $2,369.50, Education $2,142 vs $2,435) — consistent with using MRR field not revenue_30d, but deck never clarifies which field. Slide 7: Country missingness 243 vs reference 241. Slide 9: B2B median 5.7x higher than B2C ($1,036 vs $181) — reference shows median multiples of 2.35x/2.30x; the 5.7x figure appears to be a median-MRR ratio, not the on-sale revenue multiple, but the framing is ambiguous. Slide 9: Revenue-per-visitor figures ($3.57 SaaS, $0.36 AI) not independently verifiable but plausible.",
+  "evidence": {
+    "insight": "Slide 3 correlation ladder against MRR is a useful analytical frame; slide 6 growth-cluster segmentation (rockets/cash-cows/declining) adds real analytical value; slide 5 category pivot with ARPU and exit multiples is multi-dimensional. However, most analysis is single-variable description rather than cross-cutting (e.g., no interaction between category and geography, no anonymity revenue analysis).",
+    "narrative": "Clear six-act arc: dataset overview → correlations → distribution → category/geo/gateway deep-dives → playbook → summary. Each section builds toward the actionable checklist on slide 9. Thesis (what actually drives monetization) is coherent and sustained.",
+    "framing": "Slide 1 sets scope; slide 2 honestly discloses 65-75% completeness for context fields; slide 7 notes 243 missing countries; slide 8 warns against confusing Superwall's median with gateway superiority. Implicit founder audience is clear. Missing: explicit audience statement, no mention of 216 zero-revenue rows or survivorship bias.",
+    "accuracy": "Systematic issue: deck uses MRR field throughout but the reference total revenue is $15.6M vs stated $13.5M. Category medians consistently differ from revenue-based reference values. B2B vs B2C '5.7x' claim on slide 9 conflates median MRR ratio with the reference on-sale revenue multiples (2.35x/2.30x). Country missingness 243 vs 241. The deck never explicitly states it is analyzing MRR rather than revenue_30d, creating ambiguity about which field is being reported.",
+    "visual": "Professional, restrained dark template with consistent teal/white palette. Slide 3 horizontal bar chart is well-chosen and annotated. Slide 5-8 tables are clean and readable. Slide 6 bar chart with color-coded clusters works well. No chart junk or decorative elements. Slight visual monotony but appropriate for data-heavy content.",
+    "ai_slop": "Minimal. Language is specific and grounded in data. No inflated superlatives or generic filler. The 'Best fit' column on slide 8 and growth-cluster descriptions show genuine editorial judgment."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.0 to 4.5: the MRR-vs-revenue conflation is pervasive (affects slides 1, 4, 5, 7, 9) and the B2B multiplier claim is misleading. The deck never clarifies it is reporting MRR rather than revenue, making the systematic discrepancy a framing failure as well as an accuracy one. Other scores confirmed as appropriate.",
+  "total": 65,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 19615,
+    "output_tokens": 1194
+  }
+}

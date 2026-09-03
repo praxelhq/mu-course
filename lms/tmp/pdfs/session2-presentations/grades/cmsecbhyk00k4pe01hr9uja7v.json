@@ -1,0 +1,38 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Data-quality transparency on slide 5 was genuinely useful; concentration-risk narrative was coherent and well-sequenced.",
+  "fix_next": "Multiple category figures diverge materially from the dataset (AI total, medians, Marketing total); verify every number against the frozen source before presenting.",
+  "verdict": "Strong narrative arc undermined by several fabricated-looking category and revenue figures.",
+  "flags": [
+    "fabricated-category-figures",
+    "unverifiable-growth-trajectory",
+    "MRR-vs-revenue-conflation",
+    "top10-share-mismatch"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 2: Total 30-day revenue stated as $15.6M but also $13.47M 'Total MRR'—the dataset total is $15,596,344; calling it MRR is unsupported since the data is 30-day revenue, not recurring. Slide 2: 'Active subscriptions 500,597' and 'Cumulative all-time revenue $334M' are unverifiable from the frozen dataset. Slide 4: Top-10 share stated as 48.0% vs reference 49.6%—material ~1.6pp gap. Slide 6: AI total shown as $1,806K vs reference $2,356K (off by ~$550K); Marketing total $444K vs reference $1,317K (off by ~$873K); SaaS total $589K vs reference $703K. AI median shown as $446 vs reference $503; Education median $2,142 vs reference $2,435. Slide 6: 'Customer Support' and 'Marketplace' medians ($5,163 and $4,322) appear in the top-median chart but are not in the reference category list—possibly small-n categories presented without sample-size caveat. Slide 9: Stripe described as '87% of MRR' vs reference 86.7% of revenue (636/1000 companies, $13.5M/$15.6M)—close but the company-count basis is 63.6%, not 87%, so the claim conflates revenue share with an unqualified '87%' which is approximately correct on revenue but misleadingly unlabeled.",
+  "evidence": {
+    "insight": "Slide 5's decomposition of uncategorized MRR into stealth-mode vs. single-account vs. other is an original and decision-useful breakdown. Slide 6's total-vs-median juxtaposition for AI is a genuine insight. Slide 7's B2B vs B2C median comparison adds strategic value. However, no analysis of payment providers beyond Stripe mention, no TLD or founding-year analysis.",
+    "narrative": "Clear arc: top-line → growth → concentration risk → data quality caveat → category deep-dive → B2B/B2C → geography → risk summary → action items. Each slide builds on the prior. The thesis ('test how durable and well-distributed') is stated on slide 2 and paid off through slides 4-9. Landing on slide 10 with prioritized actions is effective.",
+    "framing": "Slide 1 identifies audience (senior leadership), dataset (1,000 listings, frozen date), and purpose. Slide 5 explicitly flags the 56% uncategorized limitation before presenting category data on slide 6—good sequencing. However, 'MRR' is used throughout when the dataset contains 30-day revenue, not verified recurring revenue. Missing: no mention of 216 zero-revenue companies or 288 missing audience_type rows.",
+    "accuracy": "Multiple category totals and medians diverge materially from the reference dataset. The growth trajectory slide (slide 3) presents trailing 12-mo and 3-mo averages ($11.2M, $10.8M) that cannot be verified from a single 30-day snapshot. Top-10 concentration is 48.0% vs 49.6% reference. The 26.5% top-1 figure aligns with anonymous revenue share (26.525%). Stripe '87% of MRR' is approximately correct for revenue share but unlabeled.",
+    "visual": "Clean, consistent template with good hierarchy: section labels, bold headlines, supporting text. Bar charts are simple and appropriately chosen. Color palette is restrained (dark blue, teal, orange). Slide 5's horizontal bar breakdown is effective. Slide 9's risk matrix with severity badges is clear. No chart junk. However, slide 3's bar chart lacks a proper y-axis and the bars' heights don't proportionally match the labeled values well.",
+    "ai_slop": "Consulting-style framing ('Strategic Business Review') and some inflated language ('re-accelerating') but generally restrained. The 'Active subscriptions 500,597' and 'Cumulative all-time revenue $334M' on slide 2 appear fabricated—not derivable from the dataset. Template is polished but not generic filler."
+  },
+  "confidence": "high",
+  "total": 69,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18980,
+    "output_tokens": 1270
+  }
+}

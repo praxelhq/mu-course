@@ -1,0 +1,39 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 3.5,
+    "narrative": 5,
+    "framing": 4.5,
+    "accuracy": 2.5,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Clear audience framing for marketers, plain-language glossary, and a coherent marketing-angle thesis throughout.",
+  "fix_next": "You analyzed only 74 cherry-picked companies from a 1,000-row dataset, fabricated annualized revenue figures, and misrepresented category rankings—use the full data.",
+  "verdict": "Narrow self-selected subsample with fabricated figures undermines a readable but shallow deck.",
+  "flags": [
+    "cherry-picked-sample",
+    "fabricated-revenue-figures",
+    "annualization-without-disclosure",
+    "missing-limitations",
+    "low-analytical-depth"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 3: '$54M+ combined yearly revenue' — dataset total 30-day revenue is ~$15.6M; even annualized full dataset is ~$187M, not $54M for 74 firms (fabricated or opaque arithmetic). Slide 4: Category counts (AI=11, SaaS=7, Marketing=5, etc.) don't match dataset (AI=197, SaaS=66, Marketing=42); student used only 74 companies but presents counts as if representative without adequate caveat. Slide 5: 'Combined 12-month revenue' figures ($12.8M Marketing, $12.1M AI, $11.2M E-comm) are fabricated — dataset 30-day Marketing total is $1.317M, AI is $2.357M, E-comm is $1.112M; annualizing these gives ~$15.8M/$28.3M/$13.3M respectively, none matching the chart. Marketing is NOT the highest-revenue category; AI is. Slide 5: Claims Marketing 'generated the single largest slice of revenue' — false; AI has the highest total revenue. Slide 7: B2B 58% / B2C 40% — these percentages are from the 74-company subsample and presented without noting the massive audience_type missingness (288 missing in full dataset). Slide 10: '3.2x average asking price as a multiple of yearly revenue' — unverifiable and likely fabricated; the reference multiples in the dataset are B2B median 2.35x and B2C median 2.30x.",
+  "evidence": {
+    "insight": "Takeaways (slides 11-12) are generic marketing advice (trust-building, clear pricing) that could come from any business blog; the marketing-category spotlight (slide 8) adds some specificity but the 'insight' that marketing companies earn revenue is tautological. No median vs. mean analysis, no discussion of skew, no survivorship consideration.",
+    "narrative": "There is a coherent thread: dataset intro → category landscape → revenue → growth → audience → spotlight → pricing → for-sale → takeaways. The sequence is logical and lands on actionable recommendations. However, the narrative is thin — it's mostly descriptive with little analytical tension or surprise.",
+    "framing": "Audience (marketing teams) is stated clearly on slide 1. Slide 2 defines terms accessibly. However, the decision to analyze only 74 companies is buried in a footnote on slide 3 with no explanation of selection criteria, no discussion of the 274 missing category values, and no limitations slide. A cold reader would assume this represents the full dataset.",
+    "accuracy": "Multiple fabricated or unverifiable figures. Revenue figures on slide 5 don't match any reasonable calculation from the dataset. Category company counts on slide 4 reflect the cherry-picked 74 rather than the full 726 categorized companies. The central claim that Marketing is the top revenue category is wrong — AI is. The annualization from 30-day to 12-month is done without disclosure of the assumption.",
+    "visual": "Consistent color palette (navy, coral, gold accents), clean typography, good use of white space. Chart types are appropriate (bar charts, donut chart, table). Slide 8's table is well-formatted. However, the visual sameness across slides (identical card layouts on slides 2, 9) and the donut chart on slide 7 (pie charts are generally poor) are minor weaknesses. Overall above-average visual craft.",
+    "ai_slop": "Slide 9 (pricing patterns) is entirely generic knowledge not derived from the dataset — no data backs up 'most common approach' claims. Slide 11 takeaways read as generic marketing advice. The four-card template is reused identically on slides 2 and 9. The overall tone has a polished-but-hollow consulting feel."
+  },
+  "confidence": "high",
+  "total": 42,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 21951,
+    "output_tokens": 1153
+  }
+}

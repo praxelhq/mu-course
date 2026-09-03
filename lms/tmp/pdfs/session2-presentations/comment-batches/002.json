@@ -1,0 +1,125 @@
+{
+  "model": "claude-opus-4-6",
+  "rows": [
+    {
+      "id": "cmsa9scr401uppi016lnoch0s",
+      "what_worked": "Bubble chart contrasting category volume against median MRR is the deck's best analytical move.",
+      "fix_next": "Fix the wrong category medians, disclose missingness rates, and strip the fake consulting-firm branding entirely.",
+      "verdict": "Real ideas buried under factual errors and template theater."
+    },
+    {
+      "id": "cmsady2n201wppi0152mzdu59",
+      "what_worked": "Honest caveats slide and consistent missingness flagging set this apart from most submissions.",
+      "fix_next": "Move beyond redescribing charts—add cross-cuts like category-by-provider or median revenue comparisons.",
+      "verdict": "Honest and tidy but stays descriptive, never analytical."
+    },
+    {
+      "id": "cmsa2gopb0152pi018v0qhaom",
+      "what_worked": "B2B median multiple of 2.35x is correctly cited on one slide.",
+      "fix_next": "Rebuild as a data story with actual findings instead of a sales pitch for a fictional product.",
+      "verdict": "Marketing brochure, not a data story."
+    },
+    {
+      "id": "cmsdhnxw3001ppe0199f7ogk8",
+      "what_worked": "Power-law thesis with honest epistemic caveats threaded through every slide.",
+      "fix_next": "Use medians instead of means for skewed distributions—your own slide 4 says means mislead here.",
+      "verdict": "Thoughtful arc undercut by using means where medians matter."
+    },
+    {
+      "id": "cmsdgtig8000rpe01czki9zb2",
+      "what_worked": "Payment-rail-as-segmentation-proxy is a genuinely original thesis with a disciplined established-vs-argued separation.",
+      "fix_next": "Verify Stripe's 88% revenue share against the full dataset and correct the claim that no founding-date field exists.",
+      "verdict": "Disciplined and original with a few verifiable factual slips."
+    },
+    {
+      "id": "cmseg76ls0008op01l1l5q7hf",
+      "what_worked": "Stealth-company premium and for-sale growth-deceleration findings are genuinely non-obvious.",
+      "fix_next": "Reconcile aggregate revenue ($13.5M stated vs $15.6M actual) and verify category medians against source data.",
+      "verdict": "Sharp visual storytelling, several material numerical errors."
+    },
+    {
+      "id": "cmsli50xh0269op01upf4i7c3",
+      "what_worked": "Crowding-≠-quality thesis carried through a consistent visual arc aimed at investors.",
+      "fix_next": "Verify every category median against the data and disclose the 274 missing-category rows that define your denominator.",
+      "verdict": "Polished thesis, wrong medians, hidden missingness."
+    },
+    {
+      "id": "cmshjkfww01vzop01vwpgrc0r",
+      "what_worked": "SaaS 8× category-to-market amplification is a genuine finding surfaced from the data.",
+      "fix_next": "Disclose multi-tagging overlap, zero-revenue rows, total N, and missingness so a reader can assess the numbers.",
+      "verdict": "Consulting chrome hiding critical data-quality gaps."
+    },
+    {
+      "id": "cmsj5nvh3023jop01up63q0gf",
+      "what_worked": "Investor audience is clearly defined with a pointed thesis stated upfront.",
+      "fix_next": "Verify r=0.19 and r=0.91 against actual dataset columns—'monthly visitors' and 'active subscriptions' don't exist in this data.",
+      "verdict": "One unverifiable claim repeated across eight slides."
+    },
+    {
+      "id": "cmsj9r80d025top01by8grc6o",
+      "what_worked": "Agent-vs-AEO framing offers a genuinely interesting structural lens on AI startups.",
+      "fix_next": "Replace cherry-picked anecdotes with systematic dataset analysis—the 73% claim and case studies lack verifiable grounding.",
+      "verdict": "VC pitch cosplaying as data analysis."
+    },
+    {
+      "id": "cmsiqk6jd020top01daz90sca",
+      "what_worked": "Narrative arc from market structure through mispricing to a deployable four-filter funnel screen is exceptional.",
+      "fix_next": "Reconcile the $134M headline with the $15.6M frozen dataset total—the 8.6× inflation corrupts every downstream number.",
+      "verdict": "Brilliant storytelling on a materially inflated revenue base."
+    },
+    {
+      "id": "cmsj7eo0l023top01yiesuzor",
+      "what_worked": "Contrarian buy-boring-yield thesis is coherent and clearly stated.",
+      "fix_next": "Ground every number in actual dataset fields—ARR multiples, MRR, and active subscriptions don't exist in this data.",
+      "verdict": "Punchy thesis built on fabricated metrics."
+    },
+    {
+      "id": "cmsj9nq90025pop01zjmbd82z",
+      "what_worked": "Power-law framing with Stan callout and AI-crowding contrarian take are founder-relevant.",
+      "fix_next": "Disclose 27% missing categories and 29% missing audience_type, and reconcile the 5.7× B2B multiplier with reference data.",
+      "verdict": "Purposeful story, multiple wrong numbers, hidden missingness."
+    },
+    {
+      "id": "cmsj8fmi6024nop01x5n1tjd2",
+      "what_worked": "Myth-busting arc from power law through follower irrelevance to a 1,000→46 investment funnel is tightly constructed.",
+      "fix_next": "Verify the B2B 4× median claim against reference data and disclose the 288-row audience_type gap that defines your filter.",
+      "verdict": "Sharp investor brief with unverifiable core claims."
+    },
+    {
+      "id": "cmsiuk4jq021xop01v6cjbjca",
+      "what_worked": "Monetization-gap thesis with honest n=14 concentration-risk callout shows self-awareness.",
+      "fix_next": "Disclose the 288 missing audience_type values that define your B2B denominator and stop mixing % and $ on one axis.",
+      "verdict": "Focused thesis on a fragile n=14 foundation."
+    },
+    {
+      "id": "cmsirbuyq0213op01bavndr0y",
+      "what_worked": "Mann-Whitney test and size-controlled partial correlation on a novel recurring-share metric is genuinely rigorous.",
+      "fix_next": "Reconcile the cover's 3.8x with slide 7's 3.75x and document how the 784-row denominator was derived.",
+      "verdict": "Exceptional thesis and method with minor internal inconsistencies."
+    },
+    {
+      "id": "cmshbq72401ttop01ii8sjebd",
+      "what_worked": "Power-law framing with the 39× mean-median gap anchors the narrative coherently.",
+      "fix_next": "Fix the $13.5M total (actual $15.6M) and reconcile the pie chart's 73% US share with the text's 63%.",
+      "verdict": "Confident VC tone built on wrong core numbers."
+    },
+    {
+      "id": "cmsj5ezut023fop016490dvbc",
+      "what_worked": "Crowding-then-concentration-then-B2B-filter arc is editorially tight and purposeful.",
+      "fix_next": "Disclose sample sizes for the B2B/B2C AI split and reconcile the 5x claim with the reference ~2.3x median ratio.",
+      "verdict": "Tight narrative, thin and unverified evidence."
+    },
+    {
+      "id": "cmsiyjwsl022nop01nb41ceqs",
+      "what_worked": "Original 'Delusion Score' metric with named case studies in a 2×2 quadrant is memorable and decision-useful.",
+      "fix_next": "Disclose the 262-row subset criteria, missing-data rates, and flag n=6 and n=10 category samples as fragile.",
+      "verdict": "Clever original angle, absent scope and limitations disclosure."
+    },
+    {
+      "id": "cmsj473d0023bop0195m2dpsv",
+      "what_worked": "Value-vs-volume framework builds logically across four slides with visual restraint.",
+      "fix_next": "The ARPU metric is fabricated—the dataset has revenue, not per-subscriber pricing—rebuild on actual fields.",
+      "verdict": "Clean narrative built on numbers not from this dataset."
+    }
+  ]
+}

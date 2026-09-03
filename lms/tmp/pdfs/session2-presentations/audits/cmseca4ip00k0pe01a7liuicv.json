@@ -1,0 +1,43 @@
+{
+  "slide_count": 16,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 8,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Slide 6's data-quality finding scoping all category analysis to 44% of revenue is genuinely decision-useful.",
+  "fix_next": "Reconcile the $13.47M 'MRR' headline with the $15.6M reference total—the mislabel cascades into concentration and category figures throughout.",
+  "verdict": "Strong strategic narrative undermined by systematic revenue mislabeling and divergent category medians.",
+  "flags": [
+    "total-revenue-misidentified-as-mrr",
+    "category-revenue-figures-diverge-from-reference",
+    "median-values-off-for-multiple-categories",
+    "b2b-median-multiple-overstated",
+    "small-n-categories-presented-without-caveat",
+    "growth-trajectory-fabricated-from-cross-section",
+    "top10-share-48-vs-reference-49.6"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 2/3: $13.47M called 'Total MRR' but reference total is $15,596,344.59—likely confusing MRR with total revenue or using a different denominator. Slide 5: top-10 share stated as 48.0% vs reference 49.6%. Slide 7: AI revenue $1,806K vs reference $2,357K; Marketing $444K vs $1,317K; E-comm $396K vs $1,112K; SaaS $589K vs $704K—all substantially off. Slide 8: AI median $446 vs reference $503; Education median $2,142 vs $2,435; Marketing median $1,586 vs $2,370. Slide 10: B2B/B2C median multiple claimed 5.7x; reference on-sale medians show ~2.35x. Slide 4: trailing 12-month and 3-month averages ($11.15M, $10.80M) appear fabricated from a single cross-sectional snapshot with no time-series data.",
+  "evidence": {
+    "insight": "Slide 6 untagged-MRR finding is original and shapes every downstream category claim. Slide 9 portfolio matrix with trimmed-mean growth is analytically layered. Slide 13 white-space framing connecting median MRR to supply scarcity is decision-useful. Slide 15 prioritization matrix ties risks to engineering actions.",
+    "narrative": "Five-finding thesis on slide 2 flows logically through scale→concentration→data quality→category→B2B→geo→infra→risk→action. Each finding earns its own slide. Risk assessment on slide 14 synthesizes compounding threats. Recommendations on slides 15-16 are sequenced by urgency and effort.",
+    "framing": "Slide 1 states audience, dataset size, and frozen date. Slide 6 explicitly scopes category analysis to 44% of revenue—rare and commendable. Slide 4 flags outlier caution on growth percentages. Slide 10 notes 712/1000 audience-type coverage. Limitations acknowledged throughout, though small-n categories (Customer Support n=5, Marketplace n=7) lack explicit caveats.",
+    "accuracy": "Headline total ($13.47M) is ~$2.1M below reference ($15.6M) with no explanation. Category totals diverge substantially—Marketing understated by ~3x, E-comm by ~3x. Multiple median values are off by 10-40%. B2B/B2C 5.7x median multiple is far above the reference ~2.35x. Growth trajectory slide constructs trailing averages from what appears to be a cross-sectional snapshot with no time-series columns. Top-10 concentration 48% vs 49.6% is a minor but real discrepancy.",
+    "visual": "Consistent dark-theme design with clear hierarchy and direct chart labels. Bubble chart (slide 9) is effective for portfolio positioning. Slide 5 cumulative concentration bar chart is well-annotated. Slide 9 y-axis label is truncated. Pie chart on slide 12 is acceptable. Overall restrained and professional with no decorative clutter.",
+    "ai_slop": "Some consulting-framework language ('cash cow', 'stars', 're-accelerating') but each is grounded in specific data. No decorative or fabricated graphics. Template is polished but not generic filler."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Downgraded accuracy from 5.5 to 5.0: added the fabricated growth-trajectory averages and top-10 share discrepancy to the error count (now 8), and the systematic revenue/median divergences across multiple slides represent a pattern of unreliable numbers that compounds beyond what 5.5 reflects. All other scores unchanged.",
+  "total": 73,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 30567,
+    "output_tokens": 1228
+  }
+}

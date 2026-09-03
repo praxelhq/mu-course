@@ -1,0 +1,40 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 6,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Strong unifying thesis of power-law concentration, carried consistently through every slide with clear takeaways.",
+  "fix_next": "Multiple numerical errors (total revenue, AI median, B2B multiple, top-10 share) undermine the concentration story; verify every figure against the raw data.",
+  "verdict": "Coherent power-law narrative weakened by several material accuracy errors.",
+  "flags": [
+    "total-revenue-error",
+    "median-errors",
+    "b2b-multiple-inflated",
+    "missing-data-not-discussed",
+    "no-limitations-slide",
+    "top10-share-wrong"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 2: Total revenue stated as $13.47M; actual is $15.60M (≈14% off). Mean stated $13,472; should be ~$15,596. Slide 3: Top-10 share shown as 48% (26.5%+21.5%); reference is 49.6%. Stan at 26.5% not verifiable against reference but plausible rounding. Slide 5: AI median stated $446 vs reference $503; title claims AI is 'best monetized' per-company but Education has highest eligible median ($2,435). Bar chart values don't match reference totals (e.g., AI shown $1,806k vs $2,357k; SaaS $589k vs $704k). Slide 7: B2B median multiple stated 5.7x; reference gives ~2.35x median multiple. The $1,036 vs $181 figures and 5.7x ratio are not consistent with reference B2B/B2C medians. Slide 9: 2.3x annual revenue multiple — reference says B2B 2.35x/B2C 2.30x for revenue multiples, but deck conflates asking-price-to-revenue with audience-type multiples without clarity.",
+  "evidence": {
+    "insight": "Slide 4's equal-band revenue visualization is a genuinely useful framing of concentration. Slide 9's exit-market observation adds a less obvious angle. However, insights mostly describe the charts rather than explaining why or offering actionable implications beyond 'it's concentrated.'",
+    "narrative": "Clear thesis on slide 1 (power law), each slide builds a facet (concentration → category → growth → audience → geography → exits), and slide 10 synthesizes. The arc is coherent and purposeful, though it reads more as a list of findings than a causal argument.",
+    "framing": "Slide 1 sets dataset scope (1,000 rows, frozen date). However, no mention of 241 missing country values, 288 missing audience_type, 274 missing category, or 216 zero-revenue companies. No limitations or caveats slide. A cold reader doesn't know what TrustMRR is or how companies self-selected.",
+    "accuracy": "Total revenue off by ~$2.1M (slide 2). Category revenue bars don't match reference totals. AI median wrong ($446 vs $503). Claim AI is 'best monetized' ignores Education's higher median. B2B 5.7x multiple contradicts reference ~2.35x. Top-10 share slightly off. Multiple material errors.",
+    "visual": "Consistent color palette (coral/navy/light blue), clean typography, good use of callout boxes. Donut chart on slide 3 is effective. Bar charts are legible and well-labeled. Slide 4's equal-band bar is a smart design choice. No chart junk. Slight template sameness but restrained and functional.",
+    "ai_slop": "Minor template uniformity across slides but no egregious filler text, decorative-but-meaningless graphics, or inflated consulting language. The deck is substantive throughout."
+  },
+  "confidence": "high",
+  "total": 63,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18982,
+    "output_tokens": 989
+  }
+}

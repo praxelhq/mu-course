@@ -1,0 +1,40 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 9,
+    "accuracy": 7,
+    "visual": 8.5,
+    "bonus": 4
+  },
+  "what_worked": "Reverse-engineering the 30-day pricing formula and then testing the counter-hypothesis with p-values is genuinely original.",
+  "fix_next": "Reconcile slide 3 concentration figures with the dataset's actual top-10 share (49.6%), and clarify whether category medians are seller-only subsets.",
+  "verdict": "Exceptional thesis, strong arc, honest limitations; a few concentration figures need reconciliation.",
+  "flags": [
+    "top-1-percent-share-unverified",
+    "category-median-mrr-discrepancies",
+    "concentration-bar-sums-to-84.7-not-reconciled",
+    "median-mrr-282-unverifiable"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 3: top-1% share stated as 50.6% and top-10% as 84.7%; reference top-10 share is 49.6%, so the 50.6% for top-1% alone seems implausible or uses a different grouping. Slide 9: several category median MRRs diverge from reference medians (e.g., Mobile Apps $223 vs reference $232.50, AI $446 vs $503) without clarifying these may be seller-only or MRR vs revenue figures.",
+  "evidence": {
+    "insight": "Slide 5 reverse-engineers pricing as MRR×12 (87.6% match), slide 6 ranks six Spearman correlations showing growth is statistically zero in pricing, slide 7 rejects the 'list on a strong month' hypothesis with p=0.012/0.005, slide 8 shows inverse multiple-revenue relationship. Each builds on the prior finding.",
+    "narrative": "Clean arc: market shape (3) → who sells (4) → how pricing works (5) → core finding (6) → counter-hypothesis rejected (7) → multiple compression (8) → category exits (9-10) → zero-revenue listings (11) → actionable trade (12) → six named limitations (13). Single thesis sustained across 13 slides.",
+    "framing": "Slide 1 scopes to 1,000 businesses/262 for sale/218 priced. Slide 2 explains API-verified provenance and three trust tiers. Slide 13 devotes a full page to six specific limitations including survivorship bias, asking vs closed prices, small samples, causal discipline, and platform selection bias.",
+    "accuracy": "216 zero-revenue matches reference. 1,000 rows correct. Statistical reporting (Spearman rho, p-values, sample sizes on every chart) is transparent. However, slide 3 concentration figures (50.6% top 1%) cannot be reconciled with reference top-10 share of 49.6%. Category median MRRs on slide 9 differ modestly from reference medians without noting whether these are MRR vs 12-month revenue or seller-only subsets.",
+    "visual": "Consistent warm palette with dark/light alternation creating rhythm. Strong typographic hierarchy. Hatched bar for n=5 on slide 8 is effective uncertainty signaling. Horizontal Spearman chart on slide 6 is clean and well-annotated. Sample sizes and confidence labels on every chart. No chartjunk or decorative elements.",
+    "ai_slop": "none"
+  },
+  "confidence": "high",
+  "changed": false,
+  "change_reason": "no-change",
+  "total": 88,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 24826,
+    "output_tokens": 900
+  }
+}

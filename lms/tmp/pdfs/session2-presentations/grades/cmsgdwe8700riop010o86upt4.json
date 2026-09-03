@@ -1,0 +1,37 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 9,
+    "narrative": 9.5,
+    "framing": 9,
+    "accuracy": 7,
+    "visual": 9,
+    "bonus": 4
+  },
+  "what_worked": "Exceptional editorial discipline: every chart earns its place, every annotation drives a specific board-level decision.",
+  "fix_next": "Top-10 revenue share is 49.6% not 48.0%; the B2B/B2C comparison uses means labeled as yield without clarifying the statistic, and several sector figures are unverifiable.",
+  "verdict": "Outstanding strategic briefing with minor numerical inaccuracies in concentration and yield claims.",
+  "flags": [
+    "top10-share-understated",
+    "yield-statistic-ambiguous",
+    "fictional-framing-as-portfolio"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 1: Top-10 share stated as 48.0% vs reference 49.6% — material understatement of concentration risk (~1.6pp). Slide 1: B2B yield Rs 7,929 and B2C Rs 1,243 giving 6.4x — reference medians are ~2.35x/2.30x (close to 1x ratio); the 6.4x figure likely uses means, but is presented as 'yield per subscription' without clarifying mean vs median, and the magnitude doesn't match reference medians. Slide 2: AI net momentum stated as -5 but the heatmap's sector-level momentum figures are not directly verifiable against the reference and some (e.g., Analytics +32, Dev Tools +32) appear internally consistent but cannot be confirmed.",
+  "evidence": {
+    "insight": "Slide 4 decomposes AI growth into 5 names producing 64% of sector July revenue while 40% of remaining 192 shrank — genuine second-order insight. Slide 6 identifies mispricing: fastest-growing sector listed at lowest multiple. The 'What Follows' boxes consistently move beyond description to actionable implications.",
+    "narrative": "Six slides follow a tight arc: concentration → sector quality → positioning matrix → trajectory/breadth → whitespace → asks. Each slide's title is a finding, not a topic. The final slide synthesizes into Notice/Decide/Approve tiers, landing the narrative with specific capital allocation requests.",
+    "framing": "Slide 1 establishes scope (1,000 assets, frozen date, conversion rate, TTM window), flags 274 untagged assets at 56.5% of MRR as a limitation, and the final slide explicitly warns 'every judgement on these pages is taken against the remainder.' Audience (board) is clear from format and language.",
+    "accuracy": "Top-10 share 48.0% vs reference 49.6% is a ~1.6pp error. B2B/B2C yield gap of 6.4x doesn't match reference median ratio (~1.02x); likely uses means but presents as generic 'yield' without clarification. Revenue TTM Rs 1,277 cr ÷ 95.50 ≈ $13.37M vs reference $15.6M — plausible if only 30-day revenue × 12 or filtered subset. Category counts (AI 197, SaaS 66, etc.) match reference exactly. Zero-revenue count and missing-data counts align well.",
+    "visual": "Consistent restrained palette (teal, coral, grey). Cumulative concentration curve on slide 1 is perfectly annotated. Sector heatmap uses rank-based shading with clear legend. Bubble charts on slides 3 and 6 encode three variables legibly. Arrow chart on slide 5 is an original and effective encoding. No decorative elements; every visual element carries data.",
+    "ai_slop": "none — the deck has a distinctive editorial voice ('the book is not diversified, it is merely long'), bespoke chart types, and no generic filler or consulting boilerplate"
+  },
+  "confidence": "high",
+  "total": 91,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15662,
+    "output_tokens": 980
+  }
+}

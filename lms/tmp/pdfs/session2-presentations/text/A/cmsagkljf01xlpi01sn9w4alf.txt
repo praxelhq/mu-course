@@ -1,0 +1,315 @@
+     T R U S T M R R D ATA S E T · 1 , 0 0 0 S TA R T U P S
+
+
+
+
+    Revenue, growth & monetization insights
+     A structured read of the dataset — what drives revenue, which categories monetize best, and what to check
+     before launching a new app.
+
+
+
+
+                     1,000                                          29          $13.5M                            64
+                      Companies                                   Data fields    Total MRR                       Countries
+
+
+
+
+Source: TrustMRR listings, frozen 30 Jul 2026 · Cleaned dataset
+0 1 · T H E D ATA S E T
+
+
+
+29 columns, five stories
+Each company is one row. The fields fall into five natural groups — identity, money, growth & audience, product context, and sale status.
+
+
+
+ Identity                           Revenue & MRR                       Traffic & audience                 Product context                     Sale listing
+
+
+  record_id, startup_name,           revenue_30d/3m/12m/all-             visitors_30d,                      value_proposition,                 domain, domain_rating
+  trustmrr_url, website              time_usd                            revenue_per_visitor_usd            problem_solved
+
+
+
+
+  country, x_followers               mrr_usd, growth %,                  audience_type, target_persona      pricing_model, category,           on_sale, asking_price_usd,
+                                     active_subscriptions                                                   markets_json                       revenue_multiple
+
+
+
+
+Completeness note: core financials (revenue, MRR, subscriptions) are 100% populated. Context fields — category, pricing_model, audience_type — are 65-75% populated because
+TrustMRR only captured what the listing page exposed; these gaps are real, not corrupted data.
+
+
+
+
+                                                                                                                                                                              02
+0 2 · C O R R E L AT I O N S
+
+
+
+What actually predicts MRR
+Pearson correlation of each numeric field against mrr_usd, across all 1,000 rows.
+
+                                                                                                     Subscriptions & revenue move together
+            X followers        0.02
+                                                                                                     0.91-0.87 correlation - expected, but confirms the data is internally
+                                                                                                     consistent.
+       MRR growth %            0.03
+
+
+        30-day visitors               0.19                                                           Social proof barely matters
+
+                                                                                                     X follower count correlates just 0.02 with MRR. Audience size does not
+         Domain rating                 0.21
+                                                                                                     equal revenue.
+
+      All-time revenue                                                          0.80
+                                                                                                     Traffic alone doesn't convert
+           Asking price                                                             0.81
+                                                                                                     Visitor volume correlates only 0.19 - conversion quality matters more than
+                                                                                                     reach.
+    12-month revenue                                                                   0.85
+
+                                                                                                     Domain authority is a weak signal
+       30-day revenue                                                                      0.87
+
+                                                                                                     SEO strength (0.21) helps a little, but isn't a reliable revenue predictor.
+  Active subscriptions                                                                        0.91
+
+
+
+
+                                                                                                                                                                                   03
+03 · DISTRIBUTION
+
+
+
+Revenue is extremely concentrated
+Total MRR across the dataset is $13.47M. Almost all of it sits with a small number of companies.
+
+
+
+
+                 48%                                                       82%                                                       18%
+                      Top 1%                                                   Top 10%                                               Remaining 90%
+                    10 companies                                             100 companies                                             900 companies
+
+
+
+
+Implication: averages (mean MRR) are misleading for this dataset - a handful of outliers like Stan ($3.57M MRR) and a few stealth companies pull the mean far above what a
+typical company earns. Median is used throughout the rest of this deck for that reason.
+
+
+
+
+                                                                                                                                                                             04
+0 4 · BY C AT E G O R Y
+
+
+
+Category monetization pivot
+Categories with at least 8 companies, ranked by median MRR. ARPU = MRR per active subscription. Multiple = median asking-price / revenue multiple among on-sale listings.
+
+
+ Category                                       N                 Median MRR                   ARPU                   % B2B                  Exit multiple
+
+ Education                                      30                   $2,142                    $11.8                   10%                        4.0x
+
+ Marketing                                      42                   $1,586                    $53.8                   79%                        3.7x
+
+ Analytics                                      19                   $1,294                    $30.5                   63%                        3.4x
+
+ Content Creation                               36                   $1,254                    $20.7                   28%                        2.9x
+
+ Sales                                          13                   $1,036                    $102.9                  92%                        6.4x
+
+ Social Media                                   18                    $912                      $9.5                   11%                        1.5x
+
+ Fintech                                        16                    $500                     $20.0                   13%                        3.4x
+
+ AI                                            197                    $446                     $24.3                   38%                        3.2x
+
+ SaaS (general)                                 66                    $303                     $39.0                   58%                        1.2x
+
+ Mobile Apps                                    52                    $223                      $5.1                    2%                        2.3x
+
+ Dev Tools                                      37                    $185                     $14.8                   65%                        1.4x
+
+ Productivity                                   49                    $42                       $4.8                    8%                        2.3x
+
+
+
+                                                                                                                                                                            05
+05 · MOMENTUM
+
+
+
+Three growth clusters among top-half earners
+Companies at or above median MRR, split by 30-day MRR growth rate.
+
+
+
+                                                                         Rockets 84 companies
+                                  249                                    AI tools dominate this group - HotelHero.ai, LLM Gateway, MimikFlow. Fast growth, but often
+                                                                         small absolute revenue still.
+
+
+
+
+                                                                         Cash cows 249 companies
+                                                                         The healthy majority: steady, mature revenue without wild swings - the profile most acquirers
+                                                                         actually want.
+
+
+           84
+
+                                                          53
+                                                                         Declining 53 companies
+                                                                         High revenue today but shrinking fast. Worth flagging for churn or competitive-pressure review
+                                                                         before betting on the number.
+
+    Rockets (>+10%/mo)    Cash cows (+-10%/mo)    Declining (<-10%/mo)
+
+
+
+
+                                                                                                                                                                          06
+06 · GEOGRAPHY
+
+
+
+The US drives 56% of all MRR
+64 countries represented; 243 rows have no recorded country. Ranked by company count.
+
+
+ Country                           Companies          Median MRR       Share of total MRR   US = quality + quantity
+
+ United States                        258                $1,263              55.7%          Highest count and highest median MRR of any large market.
+
+
+ France                                79                 $435               6.6%           France, a strong #2
+
+ India                                 59                  $6                1.2%           6.6% of global MRR from a fraction of the company count.
+
+
+ United Kingdom                        50                 $153               2.6%           Volume does not equal revenue: India
+
+ Canada                                29                 $919               2.7%           3rd-highest company count, but median MRR is just $6 - largely
+                                                                                            early-stage/hobby projects.
+
+ Singapore                             9                 $2,126              1.0%
+                                                                                            Small but mighty: Singapore, UAE, Estonia
+
+                                                                                            Tiny company counts, but median MRR above the US benchmark.
+
+
+
+
+                                                                                                                                                             07
+0 7 · PAY M E N T G AT E WAY S
+
+
+
+Which gateway do successful listings use?
+payment_provider values as recorded on each listing. Single-provider rows only.
+
+
+ Gateway                                  Companies                  Median MRR             Best fit
+
+
+ Stripe                                       636                         $663              Direct web billing, broad default
+
+
+ RevenueCat                                   189                         $237              Mobile app subscriptions (iOS/Android)
+
+
+ Superwall                                     17                        $5,465             Paywall-optimized mobile subscriptions
+
+
+ Dodo Payments                                 50                          $2               Emerging, mostly early-stage listings
+
+
+ Paddle                                        16                         $146              Merchant-of-record, handles global tax
+
+
+ Polar                                         36                          $0               Developer-first, very early-stage cohort
+
+
+
+Reading it right: Superwall's high median MRR reflects its niche (paid mobile-subscription apps), not gateway superiority - pick based on your distribution channel, not this table
+alone.
+
+
+
+
+                                                                                                                                                                                      08
+0 8 · P L AY B O O K
+
+
+
+Before you build: seven checks
+If you're starting something new, run it against these dataset-backed checks first.
+
+
+          B2B vs. B2C                                                                                    Category crowding
+   1      B2B median MRR is 5.7x higher than B2C ($1,036 vs $181). Lean B2B if the idea allows
+                                                                                                     2   AI has the most entrants (197) but middling median monetization - a hard category to
+          it.                                                                                            stand out in.
+
+
+
+
+          Gateway matches channel                                                                        Pricing model clarity
+   3      Stripe for web-first, RevenueCat/Superwall for mobile subscriptions - not one-size-fits-
+                                                                                                     4   615 unique free-text pricing structures in this dataset - most listings are messy. Simple
+          all.                                                                                           tiers stand out.
+
+
+
+
+          Revenue-per-visitor, early                                                                     Growth trend, not snapshot
+   5      SaaS converts at $3.57/visitor median; AI apps convert at just $0.36 - traffic isn't
+                                                                                                     6   53 high-revenue companies were shrinking >10%/month - check the trajectory, not
+          revenue.                                                                                       just today's number.
+
+
+
+
+          Geography realism
+   7      Volume-heavy markets (e.g. India) skew early-stage; smaller markets (Singapore, UAE)
+          can be higher quality.
+
+
+
+
+                                                                                                                                                                                                     09
+SUMMARY
+
+
+
+
+Four things worth remembering
+
+
+          Revenue is winner-take-most                                                Sales, Marketing & Analytics monetize best
+          82% of MRR sits with the top 10% of companies. Design for that reality -   Highest ARPU, highest B2B share, and the richest exit multiples of any well-
+          don't plan around the average.                                             populated category.
+
+
+
+
+          Followers and traffic are weak signals                                     Pick infrastructure to match distribution
+          X followers (r=0.02) and visitor count (r=0.19) barely predict revenue -   Stripe for web, RevenueCat/Superwall for mobile - and watch growth trend,
+          conversion quality is what matters.                                        not just current MRR.
+
+
+
+
+TrustMRR dataset · frozen 30 Jul 2026                                                                                                                               10
+

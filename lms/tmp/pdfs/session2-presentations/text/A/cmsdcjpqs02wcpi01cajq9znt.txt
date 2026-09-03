@@ -1,0 +1,445 @@
+MASTERS' UNION              ·   SESSION 3         ·   TRUSTMRR
+
+
+
+
+The Indie Startup Power Law
+What 1,000 payment-verified startups say about where revenue actually lives
+
+
+
+    59% of them make less than $1,000 a month.
+
+
+1,000                                            65              $13.5M              $334M
+startups                                         countries       monthly recurring   earned all time
+
+
+
+
+TrustMRR 1,000-row dataset · 29 columns · frozen 30 July 2026
+ T H E P L AT F O R M
+
+
+
+ Revenue you cannot fake
+ Founders connect a read-only payment key. Numbers are pulled from the processor, not typed in.
+
+
+     01                                                        02                                                        03                                             04
+     Connect                                                   Verify                                                    Publish                                        Monetise
+                                                       →                                                         →                                                  →
+     Read-only API key from Stripe,
+                                                               Revenue syncs automatically — no                          Public profile with a live revenue badge       Free listings, paid placement, and an
+     RevenueCat, Polar, Paddle, Lemon
+                                                               screenshots, no self-reported claims                      and a backlink                                 acquisition marketplace
+     Squeezy
+
+
+
+
+ Where the money is processed
+     All others       3
+Lemon Squeezy         1                                                                                                            Stripe carries 636 listings and 87% of all revenue. RevenueCat and
+     Superwall        2                                                                                                            Superwall together are the mobile-app economy — 206 listings, 10%
+   RevenueCat             8                                                                                                        of revenue.
+         Stripe                                                                                       87
+                  0       10       20        30       40        50        60       70        80        90       100
+
+
+
+     S O W H AT               The product is trust, not data. Verification is what turned a weekend build into the default credibility layer for indie startups.
+
+
+ Not used: 22 individual provider strings shown separately. Eleven of them appear on fewer than five listings and add no decision value.
+T H E DATA S E T
+
+
+
+These 1,000 rows are not a sample
+Cross-checked against TrustMRR's full 8,782-row file — the same record IDs appear in both
+
+                                                                                                                           Verified money                                                         Complete on every row
+     What the 1,000 actually are
+                                                                                                                           Revenue at 30d / 3m / 12m / all-time · MRR · growth % · subscriptions
+
+
+     11%                                    of all companies on TrustMRR
+                                                                                                                           Reach & authority                                                      Visitors missing on 82%
+
+                                                                                                                           Domain rating · X followers · 30-day visitors · revenue per visitor
+
+
+     87.6%                                  of all the monthly revenue on it                                               Positioning                                                           Category missing on 27%
+
+                                                                                                                           Category · B2B/B2C · pricing model · persona · problem solved
+
+
+
+     $282                                   median MRR here — the full file's median is $0                                 Exit market                                                           262 listings, 26% of rows
+
+     20% of these rows earn nothing. In the full file, 57% do.                                                             For-sale flag · asking price · stated revenue multiple
+
+
+
+
+    S O W H AT             Every number in this deck describes the top eighth of the market. The floor is worse than anything here shows — treat these as best-case figures.
+
+
+Limitations carried throughout: self-selected platform (only founders willing to expose a payment key), one frozen snapshot with no time series, and $0 recorded in place of null.
+  REVENUE REALITY
+
+
+
+  Almost everyone is earning almost nothing
+  Distribution of monthly recurring revenue across all 1,000 companies
+
+250
+
+                                                                                                                            591
+            197                198                196
+200
+                                                                                                                            companies — 59% — earn under $1,000 a month
+                                                                                                           173
+                                                                     156
+150
+
+                                                                                                                            48x
+100                                                                                                                         gap between the median ($282) and the mean
+                                                                                                                            ($13,472)
+
+
+50                                                                                      40                           40
+                                                                                                                            59%
+ 0                                                                                                                          have earned under $10,000 in their entire lifetime
+            $0               $1–100            $100–1k             $1k–5k            $5k–10k           $10k–50k     $50k+
+
+
+
+      S O W H AT
+                            Every average written about this market is wrong. Building is not the bottleneck here — 80% of these companies shipped something and still
+                            charge nobody meaningfully.
+
+
+  Not used: mean MRR as a headline figure. With one company at $3.57M a month it describes nobody in the dataset.
+C O N C E N T R AT I O N
+
+
+
+Ten companies own half the money
+Cumulative share of total MRR held by the highest earners
+
+                                                                                                                        100    Who they are
+100                                                                                                97
+
+                                                                                                                               Stan                                                  $3.57M
+90
+                                                                              82                                               GojiberryAI                                             $495k
+80
+
+                                                        71                                                                     Rezi                                                    $260k
+70
+                                                                                                                               Kibu                                                    $234k
+60                                 58
+                                                                                                                               Cometly                                                 $208k
+             48
+50
+                                                                                                                               1Lookup                                                 $207k
+40
+                                                                                                                               Stan alone is 26.5% of all MRR in the dataset. Every one of these
+           Top 1%               Top 2%                Top 5%              Top 10%               Top 25%              Top 50%
+                                                                                                                               is US-based.
+
+
+      S O W H AT
+                          Do not learn from the outliers. One company holds a quarter of the money — the visible success stories are statistically unrepresentative of the
+                          room.
+
+
+Not used: revenue growth rates at this cut. At these levels a 3,000% jump is $10 becoming $310 — the percentage misleads.
+WHERE THE MONEY IS
+
+
+
+The most crowded category is not the best paid
+Company count against median monthly revenue — crowding on the left axis, money on the right
+
+250                                                                                                                                    2500
+                                                                                                                                              AI
+                                                                                                                            2,142
+           197                                                                                                                                197 companies — 4x the next. Median $446, a fifth of
+200                                                                                                                                    2000
+                                                                                                                                              Education's.
+                                                                           1,586
+
+150                                                                                                                                    1500
+                                                                                                           1,254                              Education & Marketing
+
+100                                                                                                                                    1000   30 and 42 companies. Medians of $2,142 and $1,586 —
+                                                                                                                                              the best-paid work nobody is doing.
+                           66
+           446                              52              49
+50                                                                          42               37                                        500
+                           303                                                                               36
+                                           223                                                                               30
+                                                                                            185                                               Productivity
+                                                            42
+ 0                                                                                                                                     0      49 companies, median $42 a month. The worst bet on
+            AI            SaaS         Mobile Apps     Productivity     Marketing        Dev Tools        Content         Education           the board.
+                                                                                                          Creation
+
+
+
+      S O W H AT          Crowding is supply of founders, not demand from customers. Where the grey bar is tall and the dark line is low, the market is being over-served.
+
+
+Not used: 21 categories with fewer than 15 companies. Medians on samples that small are noise — one shows $9,073 off seven listings.
+  T H E PAYO F F
+
+
+
+  Where the winners get biggest
+  Mean MRR per company — in a power law, the mean measures the size of the tail
+
+        E-comm                                                                                                            20,829
+                                                                                                                                           Education is the standout
+       Analytics                                                                                                18,831
+      Education                                                                                          17,458                            30 companies, mean $17,458 and median $2,142. High on
+                                                                                                                                           both measures — rare.
+    Social Media                                                                                       16,911
+      Marketing                                                          10,583
+               AI                                                9,167
+                                                                                                                                           E-comm and Analytics are lottery tickets
+            SaaS                                               8,920
+Content Creation                                5,569                                                                                      Highest means on the board, but built on 19 companies
+                                                                                                                                           each. Read the ceiling, not the odds.
+Health & Fitness                            5,030
+         Fintech                          4,620
+    Mobile Apps                        3,899                                                                                               Productivity is the trap
+       Dev Tools                    3,378
+                                                                                                                                           49 companies, mean $1,501, median $42. Easiest to build,
+    Productivity           1,501
+                                                                                                                                           hardest to charge for.
+                    0                    5000                    10000                   15000                    20000            25000
+
+
+
+      S O W H AT
+                             Read slides 6 and 7 together. Education is the only category that is both well paid at the median and large at the mean — and it has 30
+                             companies in it.
+
+
+  Categories with n ≥ 15 only. Mean is inflated by outliers by design — that is exactly what it is being used to measure here.
+POSITIONING
+
+
+
+Two corrections the data makes to how founders position
+Both sit in columns most people skip past
+
+
+
+     AI is a layer, not a market                                                                                          Everyone builds B2C. B2B pays.
+
+     197
+                                                                                                                                                                       B2B                      B2C
+                                          call AI their primary category
+                                                                                                                          Companies                                  255                       401
+
+                                                                                                                                                                 $1,036                        $181
+     392                                  apply AI to something else
+                                                                                                                          Median MRR
+
+
+                                                                                                                          Mean MRR                              $13,150                   $5,102
+     Twice as many companies treat AI as a capability as claim it as a category —
+     and the ones with a real vertical earn more. "AI" is not a market you can                                            Revenue per customer                   $49.00                    $9.34
+     sell into.
+                                                                                                                          5.7x the median revenue, 5.2x per customer, on 36% fewer attempts.
+
+
+    S O W H AT             Not "build an AI product" — apply AI to a business that already pays for something. B2B-first, vertical-first.
+
+
+Not used: the "Both" audience segment (56 companies). Too small to separate and it blurs the contrast that drives the decision.
+GEOGRAPHY
+
+
+
+India ships in volume and earns almost nothing
+Company count against median monthly revenue, for countries with 20+ listings
+
+300                                                                                                                            1400
+           1,263
+                                                                                                                                      The gap
+            258
+                                                                                                                               1200
+250
+
+                                                                                         919                                   1000
+                                                                                                                                      210x
+200                                                                                                                                   between the median US and median Indian startup
+                                                                                                                                      here
+                                                                                                                               800
+                                                                                                                         666
+
+                                                                                                                                      1.2%
+150
+                                                                                                                               600
+                               435
+100
+                                79                                                                                                    of all MRR is Indian, on 5.9% of the companies
+                                                                                                                               400
+                                                   59                                                       230
+                                                                       50
+50                                                                    153
+                                                                                          29                 24          20
+                                                                                                                               200    59%
+                                                    6
+                                                                                                                                      of Indian listings earn anything — against 88% for the
+ 0                                                                                                                             0
+                                                                                                                                      US
+            US                  FR                 IN                 GB                 CA                  DE          BR
+
+
+
+      S O W H AT
+                           India is third by volume and last by earnings among serious markets. Indian builders have shipping ability and no monetization ability — that is a
+                           fixable gap, not a talent gap.
+
+
+Not used: 58 countries with under 20 listings, and 241 rows with no country recorded. Both too thin to compare fairly.
+W H AT S E PA R AT E S W I N N E R S
+
+
+
+Distribution beats audience
+Median values: the 212 companies above $10k MRR against the 591 below $1k
+
+                                                                                                     Under $1k                                  Above $10k   Log correlation
+
+
+Active subscriptions                                                                                           2                                    555               0.82
+
+
+30-day visitors                                                                                          420                                    11,622                0.39
+
+
+Domain rating                                                                                                 4                                       35              0.51
+
+
+X followers                                                                                                 40                                      163               0.16
+
+The domain a founder picks says more than the following they built. X followers is the weakest correlate on the board — and the one founders spend the most time on.
+
+
+    S O W H AT            Build distribution before product. Paying subscriptions and search authority predict revenue; audience size barely does.
+
+
+Correlations are weak to moderate and computed on log values across earning companies. Read this as a pattern worth acting on, not a formula.
+THE DOMAIN TELL
+
+
+
+The extension a founder buys predicts what they earn
+Mean MRR and share monetized, by top-level domain
+
+20000            18,923                                                                                         100
+
+18000                                                                                                           95
+                                                                                                                           Read it as selection, not cause
+16000                                       88                                                                  90
+                  87
+                                                                                                   86
+14000                                                                                                           85
+                                          12,283
+12000                                                                                                           80
+                                                                                                                           Buying a .ai does not make money appear. But it
+                                                                                    75
+                                                                       73                                                  costs roughly 20x a .com, and paying that is the first
+10000                                                                                                           75
+                                                                                                                           evidence a founder intends to charge for something.
+8000                                                                 7,610         7,200                        70
+                                                                                                                           .app is the cheap default — highly monetized, but at
+6000                                                                                                            65         a fifth of .ai's mean.
+
+4000                                                                                              3,567         60         .com is the largest group at 312 domains and lands
+                                                                                                                           mid-table on both measures.
+2000                                                                                                            55
+
+    0                                                                                                           50
+                  .ai                       .io                       .co          .com           .app
+
+
+
+    S O W H AT            The cheapest signal of seriousness in the whole dataset costs about $70 a year — and it separates cohorts better than follower count does.
+
+
+Domains present on 71% of rows. Extensions with fewer than 15 listings excluded.
+THE MARKETPLACE
+
+
+
+One listing in four is quietly for sale
+262 companies carry an asking price — 26% of the dataset
+
+
+
+                                             8%
+                                                                                                    $35,000                                                    3.18x
+                                                                                                    median asking price                                        median multiple of ARR
+                   34%                                    18%
+
+
+
+                                                                                                    31%                          of listings are priced under $10,000 — a working business with verified
+                                                                                                                                 revenue for the price of a laptop and a holiday
+
+                                                          16%
+
+
+                                 24%                                                                These are assets, not corpses
+
+                                                                                                    For-sale listings earn 3.3x the dataset median over twelve months — $7,967 against $2,416.
+                                                                                                    Founders here list working products because they are bored, not because the product died.
+          Under $1k      $1k–5k      $5k–20k      $20k–100k       $100k+
+
+
+
+    S O W H AT            Buying beats building at this end of the market. A 3.18x ARR anchor on a verified P&L is cheaper than eighteen months of guessing.
+
+
+Not used: asking prices above $1M in the median, and stated revenue multiples running past 300x with no diligence behind them.
+THE DECISION
+
+
+
+Six moves this data supports
+For anyone choosing what to build next
+
+
+01         Quote medians, never averages                                                           02   Pick the category by its median
+
+           Median $282 · mean $13,472 · a 48x gap                                                       Education $2,142 vs Productivity $42
+
+
+
+
+03         Treat AI as a layer on a vertical                                                       04   Go B2B first
+
+           392 apply it · only 197 sell it                                                              $1,036 vs $181 median · $49 vs $9.34 per customer
+
+
+
+
+05         Build distribution before product                                                       06   Consider buying instead of building
+
+           Subscriptions 0.82 · domain rating 0.51 · followers 0.16                                     262 listings · 31% under $10,000 · 3.18x ARR
+
+
+
+
+The data does not say building is hard. It says charging is.
+
+TrustMRR 1,000-row dataset · frozen 30 July 2026 · cross-checked against the 8,782-row full file
+

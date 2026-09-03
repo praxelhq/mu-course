@@ -1,0 +1,45 @@
+{
+  "slide_count": 19,
+  "scores": {
+    "insight": 5,
+    "narrative": 6.5,
+    "framing": 7,
+    "accuracy": 4,
+    "visual": 6.5,
+    "bonus": 0
+  },
+  "what_worked": "Honest caveats slide, clear long-tail histogram, and the social-following-vs-revenue contrast on slide 15.",
+  "fix_next": "Verify every revenue figure against the actual dataset column; several category and total numbers are materially wrong.",
+  "verdict": "Polished, accessible market overview undermined by multiple wrong revenue figures and shallow analysis.",
+  "flags": [
+    "revenue-total-wrong",
+    "category-revenues-off",
+    "zero-revenue-count-wrong",
+    "unverifiable-ltm-alltime-figures",
+    "mrr-vs-30day-conflation",
+    "generic-advice-slide",
+    "ai-slop-filler-slides",
+    "no-median-analysis",
+    "no-deeper-analytical-cuts"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 3: total revenue stated as $13.5M MRR; frozen reference is $15.6M total revenue — off by ~$2M. Slide 3: $133.8M and $334M LTM/all-time figures unverifiable from dataset. Slide 5: AI at 31% of category revenue — actual share is ~15.1% ($2.36M/$15.6M) or ~32.5% of categorized-only revenue, but denominator is never clarified. Slide 7: Marketing $444.5K vs reference $1.317M total; E-commerce $395.7K vs $1.112M total — both appear to confuse MRR with total revenue or use wrong figures. Slide 12: $0 tier shows 197 startups; frozen reference says 216 have zero revenue. Slide 13: B2C/B2B/Both pie percentages computed on 712 non-missing rows but denominator not stated; 56% B2C plausible but audience_type missing for 288.",
+  "evidence": {
+    "insight": "Analysis stays descriptive: AI is biggest, US leads, long tail exists. Stan spotlight and social-following contrast are the only non-obvious observations. No B2B revenue premium, no median-vs-mean comparison, no anonymity revenue share, no TLD signal, no founded-year correlation — all available and more interesting.",
+    "narrative": "Coherent arc from context → segments → leaders → distribution → geography → model → gaps → advice → caveats. Thesis of 'winner-take-most indie economy' is sustained. Weakened by two slides (14, 17) that are opinion/advice rather than data-driven storytelling.",
+    "framing": "Slide 2 contextualizes well for a lay reader. Slide 19 caveats are honest about missingness and snapshot nature. However, the deck systematically labels 30-day revenue as 'MRR' without acknowledging the distinction, and never states denominators for percentage claims when missingness is high.",
+    "accuracy": "Total revenue materially wrong (~$13.5M vs $15.6M). Zero-revenue count wrong (197 vs 216). Category revenue figures for Marketing and E-commerce appear off by 2-3×. LTM and all-time figures on slide 3 are unverifiable and likely fabricated or pulled from a different source. The 'nearly 3×' claim for AI vs SaaS depends on whether you use total or categorized-only denominator, which is never stated.",
+    "visual": "Consistent dark/light theme with good whitespace and typography. Bar charts are well-annotated. Histogram on slide 12 is effective. Pie chart on slide 13 is acceptable. Card-based layouts repeat across many slides creating visual monotony. No misleading chart designs despite wrong underlying numbers.",
+    "ai_slop": "Slide 14 ('Why this market exists right now') is generic thought-leadership filler with no data support. Slide 17 ('Could you build one of these yourself?') is motivational advice disconnected from analysis — classic AI-generated padding that could fit any startup dataset."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 4.5 to 4.0 due to confirming 7 factual errors including materially wrong total revenue, wrong zero-revenue count, and unverifiable LTM/all-time figures. Removed bonus point: no element rises beyond the rubric given the shallow analytical depth and two filler slides.",
+  "total": 58,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 34897,
+    "output_tokens": 1108
+  }
+}

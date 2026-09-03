@@ -1,0 +1,39 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis sustained across every slide: pricing power beats audience size, with layered evidence.",
+  "fix_next": "Category medians are presented as 12-month figures but the frozen dataset only contains 30-day revenue; verify the underlying calculation before publishing.",
+  "verdict": "Compelling narrative undermined by several unverifiable or incorrect headline numbers.",
+  "flags": [
+    "revenue-timeframe-mismatch",
+    "top10-share-inflated",
+    "category-medians-unverifiable",
+    "b2b-b2c-direction-reversed",
+    "missing-data-not-disclosed"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 1: '$133.7M trailing-12-month revenue' — dataset provides 30-day revenue totaling ~$15.6M; annualizing by 12x is not stated and would yield ~$187M, so neither figure reconciles. '$3,068 median 12-month revenue' is unverifiable from 30-day data. Slide 3: 'top 1% captured 50.6%' — reference says top-10 (1%) share is 49.6%, close but stated as 50.6%. Category medians labeled '12-month' (Education $14.3k, Content Creation $13.7k, AI $4.3k, etc.) do not match the 30-day reference medians (Education $2,435, Content Creation $1,237.50, AI $503); even multiplied by 12 the numbers don't align cleanly (Education 30-day median × 12 = $29,220 ≠ $14.3k). Slide 5: B2B vs B2C arrows show '$2.2k → $8.4k' implying B2C earns more than B2B, but the heading says 'sell to businesses' as the winning strategy — the reference shows B2B median multiple is 2.35x vs B2C 2.30x with similar medians, making the 3.8x claim unsupported. Slide 7: 274 rows missing category is never disclosed, which inflates AI's '27% of companies' (197/726 = 27% of categorized, not of 1,000). Missingness for country (241 rows) also not disclosed for the geography claim.",
+  "evidence": {
+    "insight": "Slide 4's ARPU-quartile analysis (38x gap on similar subscriber counts) and Slide 7's five counter-folklore findings show genuine analytical depth beyond chart description. The pricing-over-audience thesis is original and decision-useful.",
+    "narrative": "Clear arc: data intro (1-2) → concentration (3) → pricing drivers (4-5) → valuation (6) → surprises (7) → composite portrait (8) → takeaway (9). Each slide advances the thesis rather than listing unrelated facts. Strong landing on Slide 9.",
+    "framing": "Slide 1 sets scope (1,000 companies, verified data). Slide 2 inventories variables. However, missingness rates (24-29% for key fields) are never disclosed, and the audience is implied but never explicitly stated. No limitations slide.",
+    "accuracy": "Multiple headline figures cannot be reconciled with the frozen 30-day dataset. The '12-month revenue' framing throughout is unverifiable. Category medians don't match reference even after reasonable annualization. B2B/B2C comparison on Slide 5 appears directionally confused. Top-10 share rounded up from 49.6% to 50.6%.",
+    "visual": "Consistent dark theme with gold/teal accent hierarchy. Good use of whitespace, restrained chart choices (horizontal bars, waffle chart). Typography is legible and hierarchical. Slight visual sameness across slides but purposeful. The waffle chart on Slide 3 effectively communicates concentration.",
+    "ai_slop": "Minimal slop. The deck avoids generic filler and decorative graphics. Language is crisp and specific rather than inflated. Template consistency is a design choice, not laziness. No fabricated-looking charts — though the underlying numbers have accuracy issues."
+  },
+  "confidence": "high",
+  "total": 72,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18599,
+    "output_tokens": 1066
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 6,
+    "narrative": 6.5,
+    "framing": 6.5,
+    "accuracy": 4.5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Clean layout, consistent chart-plus-key-read format, and genuinely useful median-vs-mean framing on slide 5.",
+  "fix_next": "Multiple core numbers are wrong (top-10 share, B2B multiple, AI median, concentration metric); verify every headline stat against the actual dataset.",
+  "verdict": "Polished and readable but undermined by several material factual errors.",
+  "flags": [
+    "factual-errors-multiple",
+    "wrong-denominator-lifetime-vs-30day",
+    "missing-data-quality-discussion",
+    "no-payment-provider-analysis"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 5: Top-10 revenue share stated as 61% of $334M lifetime; reference is 49.6% of 30-day revenue—conflating lifetime and 30-day metrics and inflating the figure. Slide 5: Mean stated as $15.6K; actual 30-day mean is ~$15,596 which is $15.6K—borderline OK but labeled ambiguously against the $334M lifetime frame. Slide 3: AI median MRR stated as $446; reference median is $503. Slide 7: B2B vs B2C described as '~6×'; actual ratio is closer to 5.7× ($1,036/$181) which is defensible, but the title says 'nearly 6×' while the reference multiples are 2.35×/2.30× for B2B/B2C respectively—the absolute medians shown don't match reference values. Slide 5: 22% zero-revenue stated; reference is 21.6% (216/1000)—minor rounding. Slide 4: '26% from the US' uses 258/1000 denominator but 241 rows have missing country, so the correct denominator is 759 known-country rows, making US share ~34%.",
+  "evidence": {
+    "insight": "Slide 3 contrasts AI count dominance with lower median MRR—a genuine beyond-the-chart observation. Slide 6 correctly frames growth volatility. Slide 9 bimodal pricing observation is interesting. However, insights remain at a survey level; no deeper cross-cuts (e.g., provider analysis, TLD, anonymity premium) are attempted.",
+    "narrative": "Clear four-act structure: landscape → revenue → economics → deal market, with a summary slide. Coherent thesis about power-law dynamics in micro-SaaS. However, the narrative is more of a tour than an argument; the takeaway slide restates findings rather than synthesizing a novel conclusion.",
+    "framing": "Slide 2 sets up the dataset well with scope and attributes. Missing: no discussion of missingness (274 missing categories, 241 missing countries, 288 missing audience_type) which materially affects denominators throughout. The '1 in 5' AI claim uses 197/1000 but only 726 have categories.",
+    "accuracy": "Multiple headline numbers are materially wrong or use incorrect denominators. The 61% lifetime concentration figure appears fabricated or conflated. AI median $446 vs reference $503. Country percentages ignore 241 missing values. The B2B/B2C medians shown don't align with reference multiples. No acknowledgment of missingness anywhere.",
+    "visual": "Consistent dark-teal palette, good hierarchy with section labels, chart-plus-annotation layout is effective. Bar charts are well-labeled with direct values. Donut chart on slide 5 is clear. Slide 9 histogram is well-chosen. Minor issue: visual sameness across slides, but restraint is appropriate.",
+    "ai_slop": "Mild consulting-style language ('brutal power law', 'genuinely globalized') but generally substantive. The template is polished but not generic filler. No decorative-but-meaningless graphics detected."
+  },
+  "confidence": "high",
+  "total": 62,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19351,
+    "output_tokens": 1003
+  }
+}

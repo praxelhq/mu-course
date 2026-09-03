@@ -1,0 +1,38 @@
+{
+  "slide_count": 15,
+  "scores": {
+    "insight": 6,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 4,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong narrative arc from data findings through persona to a concrete product recommendation with implementation roadmap.",
+  "fix_next": "Slide 6's bubble chart places AI/SaaS medians at $10M+ all-time revenue, wildly inconsistent with actual dataset medians of $503 and $200.50 respectively.",
+  "verdict": "Compelling strategic narrative undermined by fabricated chart values and unsupported claims.",
+  "flags": [
+    "fabricated-chart-values",
+    "inflated-consulting-language",
+    "causal-overclaims",
+    "missing-data-not-addressed"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: Claims SaaS has 'highest median revenue per visitor ($1.95+)' — metric not in dataset. Slide 6: Bubble chart positions AI median all-time revenue at ~$10M-$30M and SaaS similarly; actual AI median 30-day revenue is $503, SaaS is $200.50. Slide 6: Claims B2B SaaS and AI are 'the only categories demonstrating unit economics required to support premium B2B advisory' — Education ($2,435 median) and Marketing ($2,369.50 median) both exceed AI and SaaS medians. Slide 8: Labels 'Top Quartile' but subtitle says 'top 1%' — inconsistent framing. Slide 2: Claims SaaS platforms exhibit 'strongest MRR stability' — no stability metric exists in the dataset.",
+  "evidence": {
+    "insight": "The core insight about revenue concentration (slide 4) and the strategic pivot to risk advisory (slide 9) show genuine analytical thinking, but the 'Growth Paradox' framing on slide 9 is speculative inference not grounded in dataset variables. The go-to-market evaluation matrix (slide 10) adds decision-useful structure.",
+    "narrative": "Clear thesis introduced on slide 2, developed through concentration → geography → sector → archetype → risk gap → product → implementation. The 'Red Thread' metaphor provides coherence. Transition from slide 8 ('what do they need?') to slide 9 is effective. Landing on slides 14-15 with roadmap and KPIs is purposeful.",
+    "framing": "Slide 3 properly scopes the dataset, notes platform-level sample limitation, and flags skew toward solopreneurs. Caution about medians vs. outliers is good practice. However, missingness rates (241 country, 288 audience_type, 274 category, 286 domain) are never quantified, which matters for the category and geography claims.",
+    "accuracy": "Slide 4 Lorenz curve is directionally correct (top-10 share ~49.6%). Slide 6 bubble chart is the most serious problem: axis values show median all-time revenue in $10M-$100M range for AI and SaaS, which is orders of magnitude wrong. The claim that SaaS has 'highest median revenue per visitor' uses a metric not in the dataset. Education and Marketing categories have higher medians than AI/SaaS but are ignored to fit the thesis. The 718% growth figure is presented without context about whether it's one company or a pattern.",
+    "visual": "Consistent red/grey/dark palette throughout. Slide 4 Lorenz curve is well-annotated with 'Noise' and 'Signal' callouts. Slide 5 bubble map is clean. Slide 6 bubble chart is conceptually good (BCG-style quadrant) but values are fabricated. Slides 10 and 15 use effective table layouts. Some slides (9, 12, 13) lean heavily on decorative dark boxes. Overall professional but template-driven.",
+    "ai_slop": "Consulting-speak throughout: 'surgically targeting,' 'unassailable authority,' 'Aon's Right to Win,' 'ring-fence US-incorporated entities.' Slide 11 persona quote reads as fabricated. The 'ScaleProtect™' branding with trademark symbol is performative. Slide 6 bubble chart appears AI-generated with plausible-looking but incorrect values. Multiple slides use the same dark-box-with-arrow visual pattern."
+  },
+  "confidence": "high",
+  "total": 63,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 24514,
+    "output_tokens": 1099
+  }
+}

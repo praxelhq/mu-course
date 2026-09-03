@@ -1,0 +1,42 @@
+{
+  "slide_count": 5,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 5.5,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Original 'Delusion Score' metric with 2×2 quadrant and named case studies creates genuinely memorable, decision-useful analysis.",
+  "fix_next": "Disclose the 262-row subset selection criteria, missing-data rates, zero-revenue prevalence, and tiny category n's as explicit limitations.",
+  "verdict": "Clever original angle on a narrow subset, undermined by absent scope/limitations disclosure.",
+  "flags": [
+    "narrow-subset-analysis",
+    "unverifiable-derived-metric",
+    "missing-data-not-discussed",
+    "category-sample-sizes-tiny",
+    "no-limitations-slide",
+    "audience-unstated"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 2: correlation of -0.14 is for a derived variable pair (asking multiple vs growth) on a 262-row subset, not verifiable against frozen data and presented without caveat. Slide 3: category rankings built on n=6 and n=10 subsets presented as definitive leaderboard positions without uncertainty acknowledgment, which borders on misleading even if technically not 'wrong.'",
+  "evidence": {
+    "insight": "The Delusion Score (Ask Percentile − Growth Percentile) is a genuinely original derived metric. The 2×2 quadrant with named exemplars (Rolely, DodgePrint, imposter·ai, Linkeddit) adds real texture. The 'all-in-one' vs 'AI' pitch keyword finding (slide 4, n=11 vs n=82) is a surprising non-obvious nugget, though the all-in-one n=11 is fragile.",
+    "narrative": "Strong provocative thesis on slide 1, clean methodology on slide 2, category evidence on slide 3, case-study contrast on slide 4, three actionable takeaways on slide 5. The arc from provocation → method → evidence → examples → action is coherent and purposeful.",
+    "framing": "TrustMRR is never explained to a cold reader beyond 'marketplace.' The 262 for-sale subset is never contextualized against the 1,000-row dataset. No mention of 274 missing categories, 216 zero-revenue rows, or 241 missing countries. No limitations slide. Target audience (buyer? seller? analyst?) is implied but never stated. A cold reader cannot assess how representative the findings are.",
+    "accuracy": "The entire analysis operates on a self-selected 262-row subset with derived metrics that cannot be cross-checked against frozen reference data. The -0.14 correlation is for a different variable pair than the frozen r=0.025. Category sample sizes (n=6 E-comm, n=10 Education) are tiny yet presented as definitive rankings without confidence intervals or caveats. The 326.8× multiple and $81 revenue for Rolely are specific and plausible but unverifiable. No causal overclaims detected, which is good.",
+    "visual": "Clean dark/light contrast on slides 1 and 5. Effective red/blue dichotomy for deluded/honest on slides 2-4. Slide 3's diverging horizontal bar chart is well-labeled and appropriately colored. Slide 4's side-by-side comparison cards are effective. Slide 5 is text-heavy but readable. No chart junk. Consistent typography throughout. Only one true data visualization (slide 3) for a 5-slide deck.",
+    "ai_slop": "'Zero mercy' tagline and 'Certified Genius'/'Just Vibing' labels are slightly performative but serve the narrative voice rather than being generic filler. No decorative/fabricated charts. No inflated boilerplate language. Minimal slop overall."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 6.0 to 5.5: the deck never explains TrustMRR, never states the audience, and completely omits data-quality disclosures (missing categories, zero-revenue rows, subset selection). These are material omissions for a cold reader. Other scores confirmed as appropriate after independent review.",
+  "total": 68,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 10654,
+    "output_tokens": 1053
+  }
+}

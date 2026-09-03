@@ -1,0 +1,42 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 5.5,
+    "accuracy": 3,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Underrated/overhyped tables on slide 8 and revenue-per-visitor analysis are genuinely decision-useful framings.",
+  "fix_next": "Reconcile total revenue ($15.6M actual vs $334M claimed) and top-10 share (49.6% vs 61%) before any other revision.",
+  "verdict": "Strong structure and visuals undermined by ~20× revenue inflation and fabricated category rankings.",
+  "flags": [
+    "revenue-inflated-20x",
+    "top10-share-wrong",
+    "category-totals-fabricated",
+    "no-missingness-disclosure",
+    "mean-not-median-conflation",
+    "bookedin-not-in-table"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 1: total revenue $334M vs actual $15.6M (~20× inflated). Slide 1: top-10 share 61% vs actual 49.6%. Slide 3: E-comm shown as #1 total revenue ($54.8M) but actual total is $1.1M and AI is #1 ($2.36M); all six category totals on left chart are fabricated at ~20× scale. Slide 3: average MRR figures cannot be verified and appear inflated. Slide 4: 61% concentration repeated. Slide 6: US ~70% of revenue claim unverifiable and likely wrong given actual US Stripe share. Slide 8: key insight mentions Bookedin but Bookedin does not appear in the table shown.",
+  "evidence": {
+    "insight": "Slides 7-8 revenue-per-visitor and underrated/overhyped framing show genuine analytical creativity. Slide 4 outlier-trimming discussion demonstrates awareness of skew. However, the central E-comm-leads-on-efficiency thesis (slide 3) is built on fabricated numbers, undermining the headline insight.",
+    "narrative": "Clear three-question structure (slide 2) with consistent section headers, key-insight boxes on every content slide, and a six-point synthesis closing (slide 9). Performance→positioning→acquisition flow is logical and purposeful.",
+    "framing": "Slide 2 sets up questions clearly. No mention of substantial missingness (274 missing categories, 241 missing countries, 288 missing audience_type, 216 zero-revenue rows) which materially affects every analysis. No limitations or methodology slide. 'Personal reading notes' framing is functional but obscures audience.",
+    "accuracy": "Total revenue inflated ~20× ($334M vs $15.6M). Top-10 concentration stated as 61% vs actual 49.6%. Category revenue rankings on slide 3 are wrong (AI is #1 at $2.36M, not E-comm). All six category totals on slide 3 left chart are fabricated at inflated scale. Slide 8 key insight references Bookedin which is absent from the displayed table. Some figures are correct: AI count 197, follower correlation 0.23.",
+    "visual": "Consistent navy/gold palette, clean horizontal bar charts with direct labels, appropriate chart types throughout. Tables on slide 8 are well-structured. Slight density on slide 4 with four sub-charts but still readable. No chartjunk or decorative elements.",
+    "ai_slop": "Minimal — no stock imagery or generic filler. Template is polished but content-specific. Some consulting-speak ('measurably costing revenue') but not pervasive."
+  },
+  "confidence": "high",
+  "changed": false,
+  "change_reason": "no-change",
+  "total": 59,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 18526,
+    "output_tokens": 934
+  }
+}

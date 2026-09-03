@@ -1,0 +1,46 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 5,
+    "accuracy": 3.5,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Average-vs-median reveal across slides 3–4 is a genuinely effective narrative beat for any audience.",
+  "fix_next": "Fix the total revenue figure ($133.7M vs actual $15.6M) and verify every key stat against the raw dataset before presenting.",
+  "verdict": "Strong narrative arc undermined by multiple fabricated or wrong numbers throughout.",
+  "flags": [
+    "inflated-total-revenue-8x",
+    "wrong-zero-revenue-count",
+    "wrong-ai-median",
+    "wrong-b2b-multiple",
+    "unverifiable-growth-splits",
+    "decorative-stock-photo",
+    "fabricated-bar-chart-slide3",
+    "no-missingness-disclosure",
+    "no-audience-or-scope",
+    "trailing-12-month-unsupported"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1/2: total revenue $133.7M vs actual ~$15.6M (off ~8.6x, possibly confusing annual extrapolation but dataset is monthly). Slide 5: 197 zero-revenue startups vs reference 216. Slide 7: AI median $446/mo vs reference $503 annual (unit mismatch or wrong). Slide 8: B2B/B2C 5.7x multiple vs reference ~2.3x median multiple. Slide 3: $13,471 average monthly doesn't match $15.6M/1000=$15,596/yr=$1,300/mo. Slide 10: 26.5% attributed to 'Stan' — reference 26.525% is anonymous revenue share, not a single named company. Slide 4: $282 median monthly — plausible only if dataset revenue is monthly, but total revenue discrepancy casts doubt.",
+  "evidence": {
+    "insight": "Slides 3-4 average-vs-median contrast is effective; slide 9 findability-vs-loudness adds a non-obvious angle; slide 7 correctly flags AI crowding vs per-startup returns. Stays descriptive without deeper segmentation or actionable recommendations.",
+    "narrative": "Clear arc from overview → misleading average → real median → zero-revenue → stagnation → category → B2B → findability → concentration → exits → recap. Transition hooks ('Nobody actually gets that') work well. Recap slide ties threads with power-law framing.",
+    "framing": "No stated audience, guiding question, or decision context. 'Trailing 12 months' claim on slides 1-2 is unsupported by dataset structure. Zero mention of substantial missingness (241 country, 274 category, 288 audience_type). No limitations or caveats for a cold reader.",
+    "accuracy": "Total revenue inflated ~8.6x ($133.7M vs $15.6M). Zero-revenue count 197 vs 216. AI median $446 vs $503. B2B/B2C 5.7x vs ~2.3x. Average $13,471/mo doesn't reconcile with dataset total. Stan 26.5% likely misattributes anonymous revenue share to a named company. Growth splits on slide 6 unverifiable.",
+    "visual": "Clean minimal design with consistent orange/black palette and good typographic hierarchy. Slide 1 stock photo is decorative filler. Slide 3 bar chart shows six identical unlabeled bars — meaningless visualization. Slide 6 half-pie in grayscale is hard to parse. Slide 5 background grid impairs text legibility. Slide 7 truncated category labels.",
+    "ai_slop": "Slide 1 stock photo unrelated to data. Slide 3 fabricated identical-bar chart. Some rhetorical flourishes feel templated ('enough to cover a coffee habit'). No egregious filler text but decorative elements add no analytical value."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Removed 1 bonus point: no element rises beyond the rubric. Lowered accuracy from 4 to 3.5 — the 8.6x revenue inflation is a fundamental error that cascades through the entire deck's credibility, and the B2B multiple is off by ~2.5x. Lowered framing from 5.5 to 5 — no audience, no limitations, no missingness disclosure for a dataset with 24-29% missing in key fields.",
+  "total": 54,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 21710,
+    "output_tokens": 1116
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "slide_count": 15,
+  "scores": {
+    "insight": 3,
+    "narrative": 4.5,
+    "framing": 3,
+    "accuracy": 3,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "Coherent thesis arc from market selection through growth to exits, with consistent takeaway structure.",
+  "fix_next": "Replace generic advice slides with actual charts, numbers, and sourced data points from the dataset—most slides are unsupported assertions.",
+  "verdict": "Motivational startup guide with thin data backing and multiple factual errors.",
+  "flags": [
+    "ai-slop-template",
+    "no-real-charts",
+    "fabricated-looking-numbers",
+    "missing-data-source-acknowledgment",
+    "unearned-causal-claims"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 3: 'Sales' is not a dataset category; median MRR figures for Marketing ($1,586 vs ref $2,369.50) and Education ($2,142 vs ref $2,435) are wrong; AI at '20% of all startups' is 197/726≈27% of categorized or 197/1000≈20% of total—ambiguous denominator. Slide 4: 'Sales Software' median $2,153 has no matching category; Productivity median $42 vs ref $79.91. Slide 5: B2B median $1,036 and B2C $181 don't match reference medians; '5.7x' ratio is inconsistent with stated numbers (1036/181≈5.7x but reference median multiples are ~2.3x). Slide 10: 'Domain authority is the strongest revenue predictor' is an unsupported causal claim not verifiable from the dataset. Slide 13: '26% actively acquired or for sale' is unverifiable from reference data.",
+  "evidence": {
+    "insight": "Most slides offer generic startup advice (choose B2B, price for value, build MRR) that could apply to any dataset. No original analytical finding goes beyond surface-level category comparisons. Slide 7 claims '250x more per customer' with zero supporting data shown.",
+    "narrative": "There is a clear six-section structure (choose business → customer → model → reach → growth → exit) with a consistent 'Key Takeaway' format. However, the sequence reads as a startup advice listicle rather than a data-driven story with a synthesized argument.",
+    "framing": "No dataset description, sample size, time period, or methodology is ever mentioned. A cold reader would not know this is based on a 1,000-company dataset. No limitations or missingness acknowledged. Audience is implied (aspiring founders) but never stated.",
+    "accuracy": "Multiple median figures don't match reference data. 'Sales' and 'Sales Software' are not dataset categories. B2B/B2C multiplier claimed as 5.7x contradicts reference ~2.3x median multiple. Marketing median off by ~$783. Education median off by ~$293. Causal language on slide 10 ('generates,' 'strongest predictor') is unsupported.",
+    "visual": "Gamma template with uniform dark backgrounds, purple accent bars, and decorative AI-generated illustrations (slides 1, 14, 15). No actual data visualizations—no bar charts, scatter plots, or distributions. The iceberg graphic on slide 12 is decorative, not data-mapped. Repetitive layout across nearly every slide.",
+    "ai_slop": "Heavy template repetition: every slide has identical 'Key Takeaway' purple bar. Decorative AI illustrations on slides 1, 14, 15 add no analytical value. Slide 6 roadmap infographic is generic MRR explainer. Slide 15 is pure motivational filler. 'Sales Software' appears to be a fabricated category name."
+  },
+  "confidence": "high",
+  "total": 33,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 26195,
+    "output_tokens": 949
+  }
+}

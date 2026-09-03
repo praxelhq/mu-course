@@ -1,0 +1,38 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 7,
+    "framing": 6.5,
+    "accuracy": 6.5,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "Power-law framing, category crowding vs. median revenue contrast, and domain-rating staircase are genuinely useful original analyses.",
+  "fix_next": "B2B median revenue ($1,240 vs. reference ~$1,180 at 2.35x median) and B2C buyer-type counts don't match reference; acknowledge 274 missing categories and 241 missing countries.",
+  "verdict": "Strong analytical deck with good narrative arc; accuracy gaps and missing-data silence hold it back.",
+  "flags": [
+    "missing-data-not-disclosed",
+    "b2b-median-inflated",
+    "geographic-denominators-unclear",
+    "causal-language-on-observational-data"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 4: B2B median $1,240 doesn't match reference multiples (2.35x overall median ≈ ~$940–$1,180 range); B2C median $304 is far from implied ~$400 range; '~4x' claim is overstated vs. reference 2.35x/2.30x median multiples. Slide 3: AI described as 'nearly 1 in 5 of all 1,000' — it's 197/726 categorized (27%), not 197/1000 (19.7%); denominator should be 726 not 1,000 given 274 missing. Slide 8: 65 countries claimed but 241 rows have missing country data, making the count unverifiable and potentially misleading. Slide 4: Payment stack $0 percentages are unverifiable against reference but Stripe's 20.4% zero-revenue rate seems plausible (216/636 would be ~34%, not 20.4%).",
+  "evidence": {
+    "insight": "Slide 5 domain-rating staircase is an original, non-obvious finding with clear decision value. Slide 3 crowding-vs-median contrast is genuinely useful. Slide 7 momentum analysis adds a temporal dimension most decks miss. Slide 6 ARPU decomposition goes beyond surface-level company totals.",
+    "narrative": "Clear arc from power-law concentration (S2) → category crowding (S3) → structural signals (S4-S6) → momentum (S7) → geography (S8). Thesis is implicit ('where to build, compete, or buy') but the landing on S8 is weak — no synthesis slide or explicit recommendations tying findings together.",
+    "framing": "Slide 1 sets context well with dataset scope. Footer consistently cites source and freeze date. However, no mention of missing data rates (241 country, 274 category, 288 audience_type, 286 domain) which materially affect denominators throughout. No limitations slide.",
+    "accuracy": "Slide 2: Top-10 share 49.6% matches reference. 216 zero-revenue correct. $15.6M total correct. Slide 3: Category medians match reference well (Education $2,435, Marketing $2,370 vs $2,369.50, AI $503). Slide 4: B2B/B2C medians and the '~4x' claim conflict with reference 2.35x/2.30x multiples. Stripe zero-revenue % questionable. Slide 8: Country count and revenue figures unverifiable given 241 missing country values.",
+    "visual": "Consistent navy/coral palette throughout. Good use of big-number callouts paired with charts. Bar charts are well-labeled with sample sizes. Hierarchy is clear on every slide. Slight concern about chart-to-annotation ratio being template-heavy, but information density is appropriate. Slide 5 staircase visualization is particularly effective.",
+    "ai_slop": "Minimal slop. Design is polished but not generic — each slide has dataset-specific content. No decorative-but-meaningless graphics. The consulting-style big-number callouts border on formulaic but are substantively filled. Overall, content-driven rather than template-driven."
+  },
+  "confidence": "medium",
+  "total": 72,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 16154,
+    "output_tokens": 1048
+  }
+}

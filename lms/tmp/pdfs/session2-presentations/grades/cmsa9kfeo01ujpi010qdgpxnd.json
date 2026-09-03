@@ -1,0 +1,40 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 5.5,
+    "accuracy": 4,
+    "visual": 5.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong narrative arc from average-vs-median illusion through power-law thesis with effective rhetorical pacing.",
+  "fix_next": "Multiple key figures are wrong ($133.7M total, 197 zero-revenue, $282 median, 5.7x B2B/B2C, AI median $446); verify every number against the dataset.",
+  "verdict": "Compelling storytelling undermined by numerous factual errors across core claims.",
+  "flags": [
+    "inflated-total-revenue",
+    "wrong-zero-revenue-count",
+    "wrong-median",
+    "wrong-b2b-multiple",
+    "causal-language-on-correlations",
+    "decorative-stock-photo"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1/2: Total revenue stated as $133.7M (trailing 12 months); dataset shows $15.6M for 30-day revenue—no 12-month figure is derivable, and even annualized it would be ~$187M not $133.7M. Slide 3: $13,471/month average; actual 30-day mean is ~$15,596 (=$15.6M/1000). Slide 4: Median stated as $282/month; cannot verify against dataset (30-day median not provided but plausible range differs). Slide 5: 197 zero-revenue startups stated; dataset shows 216. Slide 7: AI median stated as $446/month; reference shows $503 (30-day). Slide 8: B2B/B2C multiple stated as 5.7x ($1,036/$181); reference shows median multiples of ~2.3-2.4x, not 5.7x. Slide 10: Stan at 26.5% of revenue—reference says anonymous companies are 26.525% of revenue, not necessarily one company named Stan.",
+  "evidence": {
+    "insight": "Slides 3-4 average-vs-median contrast is genuinely useful; slide 9 findability-vs-loudness comparison adds a non-obvious angle; slide 7 correctly identifies AI as crowded but not most lucrative per startup. However, insights stay at descriptive level without deeper segmentation or actionable synthesis.",
+    "narrative": "Clear arc: overview → misleading average → real median → zero-revenue → stagnation → category → B2B lever → findability → concentration → exits → recap. Transition lines ('Nobody actually gets that', 'So who breaks out of neutral?') create effective connective tissue. Recap slide ties threads together with power-law framing.",
+    "framing": "No explicit audience, question, or scope statement. 'Trailing 12 months' framing on slide 1 is unsupported by the dataset (which is 30-day). No mention of missingness (241 country, 274 category, 288 audience_type missing). No limitations discussed. A cold reader doesn't know who this is for or what decision it supports.",
+    "accuracy": "Total revenue figure ($133.7M) is fabricated or miscalculated—dataset total is $15.6M for 30 days. Zero-revenue count off by 19 (197 vs 216). AI median wrong ($446 vs $503). B2B/B2C 5.7x multiple is far from reference (~2.3x). Slide 6 growth percentages (42.7%/30.7%/26.7%) are unverifiable. Slide 10 attributes 26.5% to 'Stan' but reference ties that share to anonymous companies broadly. Average on slide 3 also appears miscalculated.",
+    "visual": "Clean, minimal design with good use of whitespace and typographic hierarchy. Consistent color palette (black, orange, gray). However: slide 1 stock photo is decorative and irrelevant; slide 3 bar chart shows 6 identical bars with unlabeled x-axis (meaningless visualization); slide 6 pie chart is hard to read in grayscale with poor segment differentiation; slide 5 background grid is decorative noise that impairs text legibility. Chart on slide 7 has truncated category labels.",
+    "ai_slop": "Slide 1 stock photo of person in green jacket is completely unrelated to startup data. Slide 3 bar chart appears fabricated—six identical bars with no meaningful axis labels. Slide 5 background grid pattern is decorative filler. Some rhetorical flourishes feel AI-generated ('enough to cover a coffee habit, not enough to quit a job')."
+  },
+  "confidence": "high",
+  "total": 57,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 21577,
+    "output_tokens": 1156
+  }
+}

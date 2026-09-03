@@ -1,0 +1,39 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 5,
+    "narrative": 5.5,
+    "framing": 4.5,
+    "accuracy": 5.5,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Clear thesis that conversion beats attention, supported by contrasting correlation stats (r=0.80 vs r=0.02).",
+  "fix_next": "Add actual charts (scatter plots, distributions) instead of just stating statistics; the deck is mostly text cards with numbers, not data visualization.",
+  "verdict": "Coherent thesis but shallow analysis, thin visuals, and unverified claims.",
+  "flags": [
+    "text-heavy-low-chart-count",
+    "missing-limitations-discussion",
+    "unverified-correlation-claim",
+    "empty-bullet-points",
+    "no-missingness-disclosure"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 4: r=0.80 for subscriptions vs 30-day revenue is unverifiable from reference data and presented without sourcing or scatter plot—may be fabricated. Slide 6: 21.6% at $0 implies ~216 startups which matches, but 58% under $1K claim (21.6+36.3=57.9%) is fine; however the denominator issue with 'nearly 1 in 5' on slide 9 uses 197/1000 but should note 274 missing category values (197/726≈27%, not ~20%). Slide 9: '14% of AI startups post $0 revenue' is an unverifiable specific claim presented without evidence.",
+  "evidence": {
+    "insight": "Slides 4-5 contrast subscriptions (r=0.80) vs followers (r=0.02) which is the core insight. Slide 10 identifies market inefficiencies with specific examples. However, insights remain surface-level—no median revenue by category, no provider analysis, no anonymous vs named comparison, no deeper segmentation.",
+    "narrative": "Slides follow a logical arc: what drives revenue → what doesn't → distribution → monetization strategy → valuations → anomalies → summary. The thesis 'conversion over attention' is consistent. But the sequence feels like a numbered list of observations rather than a building argument with synthesis.",
+    "framing": "Slide 2 poses four questions but never explicitly returns to answer them. Slide 3 describes the dataset but omits critical context: 241 missing country, 274 missing category, 288 missing audience_type. No limitations slide. The 'not survivorship-biased' claim on slide 3 is asserted without justification.",
+    "accuracy": "Slide 6 distribution percentages are plausible (21.6% zero-revenue matches 216/1000). Slide 5 r=0.02 for followers is close to the founded-year r but is stated for followers—plausible but unverified. Slide 4 r=0.80 is unverifiable. Slide 8 median multiple 2.3× is close to reference B2B/B2C medians (~2.3x). Slide 9 says 'nearly 1 in 5' for AI (197/1000=19.7%) but ignores that category is only known for 726 rows, making it 197/726=27%. Slide 9 '14% of AI startups post $0' is unverifiable.",
+    "visual": "Only two actual charts in 12 slides (bar chart slide 6, horizontal bar slide 9). Most slides are text-and-icon cards. Slide 4 has an empty bullet point. Slide 8 uses a decorative dot-on-line graphic that isn't a real chart. Consistent color scheme (purple/teal/dark) but repetitive template. No scatter plots despite discussing correlations.",
+    "ai_slop": "Empty bullet points on slides 4, 6, 8, 9 suggest template artifacts. The three-card layout on slides 7 and 10 is a generic consulting template. Decorative icons on slide 2 add no information. The closing quote on slide 12 reads as generic motivational filler."
+  },
+  "confidence": "medium",
+  "total": 51,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22264,
+    "output_tokens": 1016
+  }
+}

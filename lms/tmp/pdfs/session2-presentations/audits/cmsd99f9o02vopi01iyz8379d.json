@@ -1,0 +1,46 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 4.5,
+    "narrative": 6.5,
+    "framing": 4.5,
+    "accuracy": 3,
+    "visual": 6,
+    "bonus": 0
+  },
+  "what_worked": "Four-pillar investor thesis gives the deck a clear, purposeful arc from market to exit.",
+  "fix_next": "Fix the fabricated $133.8M revenue total, disclose 216 zero-revenue rows and all missingness, and label every chart axis.",
+  "verdict": "Polished pitch template undermined by multiple fabricated figures and zero risk disclosure.",
+  "flags": [
+    "fabricated-revenue-total",
+    "top10-share-wrong",
+    "ai-share-inflated",
+    "zero-revenue-not-disclosed",
+    "missing-data-not-disclosed",
+    "survivorship-bias-ignored",
+    "chart-axes-unlabeled",
+    "consulting-language",
+    "no-limitations-slide",
+    "one-sided-advocacy"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: $133.8M combined T12 revenue is ~8.6x the actual $15.6M total. Slide 2: '1,000 revenue-generating' ignores 216 zero-revenue rows. Slide 3: 48% top-1% share stated vs reference 49.6% (minor but rounded in wrong direction). Slide 5: AI claimed at 31% of combined MRR; actual AI share ~15.1% ($2.36M/$15.6M). Slide 5: chart bar 1 shows AI at $1,806K vs reference $2,357K—internally inconsistent with its own 31% claim and with the reference total.",
+  "evidence": {
+    "insight": "Power-law framing and exit-multiple analysis are genuine angles, but analysis stays surface-level: no median-vs-mean category comparison, no discussion of zero-revenue companies, no payment-processor or anonymity segmentation. Capital-efficiency metrics (slide 6) are asserted without methodology.",
+    "narrative": "Market → returns → efficiency → exits → thesis → CTA is a coherent, purposeful sequence. However, it is pure one-sided advocacy with no risk slide, no limitations, and no counterargument, which weakens credibility for the stated investor audience.",
+    "framing": "Audience and question are clearly stated on slide 1. But scope and limitations are entirely absent: 216 zero-revenue rows, 241 missing countries, 274 missing categories, 288 missing audience types are never disclosed. A self-selected TrustMRR sample is presented as representative without caveats.",
+    "accuracy": "The $133.8M total revenue (slide 2) is roughly 8.6× the actual $15.6M—a major fabrication. AI's 31% MRR share (slide 5) is roughly double the actual ~15%. The chart on slide 5 shows AI at $1,806K which contradicts both the 31% claim and the reference $2,357K. '1,000 revenue-generating' erases 216 zero-revenue companies. No missingness is disclosed anywhere.",
+    "visual": "Clean, consistent dark-teal template with good typographic hierarchy. But the bar charts on slides 3, 4, 5, and 7 lack category labels on axes (slide 5 uses only numbers 1–8 with no category names). Restraint in color is good; legibility suffers from missing annotations.",
+    "ai_slop": "Heavy consulting-speak throughout: 'precisely the dynamic disciplined early capital is built to capture,' 'a genuinely global asset class,' 'paid-hype flywheels.' Slide 9 four-quadrant summary is a classic AI template. Deck reads as polished AI-generated pitch with minimal critical engagement."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Removed 1 bonus point: deck lacks any element beyond the rubric—no novel visualization, no risk analysis, no original methodology. Lowered accuracy from 3.5 to 3.0 for the $133.8M fabrication being an order-of-magnitude error. Lowered framing from 5.0 to 4.5 for complete absence of limitations despite investor audience where disclosure is essential.",
+  "total": 49,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 19078,
+    "output_tokens": 1043
+  }
+}

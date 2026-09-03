@@ -1,0 +1,40 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 6,
+    "framing": 5,
+    "accuracy": 3,
+    "visual": 5,
+    "bonus": 1
+  },
+  "what_worked": "Coherent VC thesis structure with tiered allocation framework and consistent sector-level drill-downs.",
+  "fix_next": "Most numeric claims (category counts, medians, MoM growth, NDR, churn rates) appear fabricated or unverifiable from the dataset—anchor every figure to traceable calculations.",
+  "verdict": "Ambitious VC framing but too many invented metrics undermine credibility.",
+  "flags": [
+    "fabricated-metrics",
+    "unverifiable-claims",
+    "no-missingness-disclosure",
+    "consulting-language-inflation",
+    "decorative-code-snippet",
+    "no-real-charts"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 2: '3.22x median asking ARR multiple' not derivable from dataset. Slide 4: Category names remapped (e.g., 'AI Agents & Automation' vs dataset 'AI'; 'B2B SaaS & Cyber Compliance' not a dataset category); counts (84 AI, 13 DevTools, 25 B2B SaaS, 24 Marketing, 7 E-Comm, 7 Fintech) don't match dataset category counts (197 AI, 37 Dev Tools, 42 Marketing, 19 E-comm) even after filtering—no transparent filter disclosed. Slide 4: MoM growth rates (+27.6%, +11.3%, +24.7%, etc.) and NDR (>120%) on slide 6 are not in the dataset. Slide 5: '$1.79M cumulative MRR' for 84 AI startups implies ~$21k mean MRR; dataset AI total is $2.36M for 197 companies—filtered subset plausible but unverified. Slide 7: 0.8% monthly churn for B2B SaaS not in dataset. Slide 8: 43.4x MRR multiplier for DR>25 vs ≤25 and median $3,935.50 vs $90.60 not verifiable from reference data (reference gives .ai median 25, .com median 8—different variable). Slide 3: '262 on-sale target candidates' not derivable. Slide 2: '40.7% in $1K–$500K MRR cohort (407)' not verifiable.",
+  "evidence": {
+    "insight": "Slide 4 sector matrix and slide 9 valuation band segmentation show analytical ambition; however, the tiering logic relies on metrics (MoM growth, NDR, churn) absent from the dataset, so insights are asserted rather than demonstrated.",
+    "narrative": "Slides follow a logical arc: overview → data integrity → sector comparison → deep dives → unit economics → valuation → allocation → roadmap. The thesis is coherent but reads more like a pitch memo than a data story.",
+    "framing": "Slide 1 sets VC audience and $10M mandate clearly. However, no mention of 274 missing category values, 241 missing countries, or 216 zero-revenue rows. The 'audit framework' on slide 3 overstates data quality without disclosing limitations.",
+    "accuracy": "Category names are remapped without explanation; counts don't reconcile with dataset (84 AI vs 197). MoM growth, NDR, churn rates, ARR multiples, and CAC metrics are not present in the frozen dataset. The 43.4x DR multiplier on slide 8 is unverifiable. Revenue total on slide 3 ($15,596,344) is correct.",
+    "visual": "Clean, consistent template with good hierarchy and readable tables. However, zero actual data visualizations (scatter plots, distributions, histograms). The code snippet on slide 6 is decorative filler. The bar chart on slide 10 is the only real chart but has a truncated label. Heavy visual sameness across slides.",
+    "ai_slop": "Slide 6 decorative JavaScript code snippet adds no analytical value. Consulting-inflated language throughout ('empirical thesis fundamentals', 'valuation arbitrage', 'organic moat requirement'). Repetitive card-based template across all slides. Claims of 'zero self-reporting bias' and '100% API verified' overstate what the dataset provides."
+  },
+  "confidence": "high",
+  "total": 50,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 20548,
+    "output_tokens": 1099
+  }
+}

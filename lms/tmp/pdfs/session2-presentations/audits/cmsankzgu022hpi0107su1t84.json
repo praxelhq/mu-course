@@ -1,0 +1,43 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 6.5,
+    "framing": 5.5,
+    "accuracy": 3,
+    "visual": 7,
+    "bonus": 0
+  },
+  "what_worked": "Power-law thesis is coherent and each finding logically builds toward the summary takeaway slide.",
+  "fix_next": "Verify total revenue ($15.6M not $334M) and top-10 share before publishing; errors cascade through every claim.",
+  "verdict": "Polished deck undermined by a ~21× revenue error that invalidates its central claims.",
+  "flags": [
+    "wrong-total-revenue-21x",
+    "fabricated-concentration-stats",
+    "ai-median-mismatch",
+    "b2b-multiplier-unsupported",
+    "category-count-wrong",
+    "no-limitations-or-missingness",
+    "unearned-causal-language"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 3: total revenue stated as $334M vs actual $15.6M (~21× inflation); top-10 share 61.1% vs reference 49.6%. Slide 4: AI median MRR $446 vs reference $503; 'rest of market' median $277 unverifiable; AI exit multiple 3.15x unverifiable. Slide 2: '8 major categories' vs actual 11+. Slide 5: B2B/B2C 5.7x gap not supported by reference multiples (2.35x/2.30x are exit multiples, not MRR ratios, so this may reflect a different calculation but is presented without sourcing).",
+  "evidence": {
+    "insight": "Power-law framing (slide 3) is a genuine and useful lens; B2B vs B2C comparison (slide 5) adds a second dimension. But the deck stops at four surface-level findings and never explores payment-provider concentration, anonymity effects, missingness patterns, or TLD signals—leaving substantial analytical depth on the table.",
+    "narrative": "Clear four-finding arc building to a synthesized takeaway on slide 7. The 'don't build around the average' thesis is well-articulated and each finding supports it. Sequence (concentration → category → audience → liquidity → synthesis) is logical. However, the narrative never acknowledges data limitations, which weakens credibility.",
+    "framing": "Slide 2 provides useful context with MRR and multiple definitions. However, no mention of substantial missingness (274 missing categories, 288 missing audience_type, 241 missing country). '8 major categories' understates the actual count. No limitations slide. A cold reader would not know 22% of revenue is zero or that audience_type is missing for ~29% of rows.",
+    "accuracy": "Slide 3: $334M total revenue is ~21× the actual $15.6M—this is not a rounding issue but a fundamental error that propagates through the concentration analysis. Top-10 share 61.1% vs reference 49.6%. Slide 4: AI median $446 vs reference $503 (11% off). Slide 2: '8 major categories' vs 11+ in the data. Slide 5: 5.7x B2B/B2C MRR ratio is plausible as a separate calculation but unverifiable against reference. The $334M error alone is disqualifying for the deck's central thesis.",
+    "visual": "Clean, consistent dark/light palette with good typography hierarchy. Horizontal bars on slides 3–5 are appropriate. Donut chart on slide 6 is fine for a binary split. Annotations are well-placed. Professional and restrained overall, though the design feels templated.",
+    "ai_slop": "Slide 7's numbered-takeaway format is formulaic consulting boilerplate. 'Buyers are pricing in AI's durability, not just its hype' (slide 4) is unearned editorializing from cross-sectional data. Overall polish suggests heavy template/AI assistance but content is not generic filler—it engages the specific dataset."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Removed 1-point bonus: the deck is competent but not exceptional enough to warrant bonus given the severity of factual errors. Lowered framing by 0.5 for complete absence of missingness/limitations disclosure. All other scores confirmed as appropriate.",
+  "total": 55,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 13486,
+    "output_tokens": 1069
+  }
+}

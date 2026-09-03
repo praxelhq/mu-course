@@ -1,0 +1,39 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 5,
+    "narrative": 5.5,
+    "framing": 5.5,
+    "accuracy": 5,
+    "visual": 6,
+    "bonus": 0
+  },
+  "what_worked": "Honest acknowledgment of skew, median-vs-mean framing, and the volume-vs-value category distinction.",
+  "fix_next": "Using average MRR instead of median for categories hides the skew you just warned about; use median and verify against reference data.",
+  "verdict": "Competent overview with consistent design but shallow analysis and unverified category averages.",
+  "flags": [
+    "mean-over-median-inconsistency",
+    "no-payment-provider-analysis",
+    "no-missingness-disclosure",
+    "no-limitations-slide",
+    "category-avg-unverifiable"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 3: 21.6% report $0 30-day revenue — reference is 216/1000 = 21.6%, acceptable. Slide 4: Uses average MRR by category but does not note 274 missing category rows; E-comm avg MRR shown as $20,829 — reference total $1,111,605.67 / 19 = $58,506, far from $20,829 (error 1). Analytics avg shown $18,831 — reference $368,214.02 / 19 = $19,380, close but slide likely uses MRR not 30-day revenue so hard to verify precisely. Slide 3: 19.7% report $0 MRR — reference says 216 report $0 revenue (21.6%), MRR zeros may differ; claim is plausible but unverified. Slide 5: Country average MRR figures are unverifiable but plausible. Slide 6: B2B median MRR $1,036 — reference gives B2B median revenue multiple 2.35x not direct MRR; cannot fully verify but the ratio direction is correct. Slide 4: E-comm average MRR is materially wrong (error 1). Slide 8: 'AI has 3x more startups than any category' — AI has 197, SaaS has 66, ratio ~3x, acceptable. Slide 5: India shown with avg MRR $2,655 — with 59 startups this is plausible but unverifiable. Slide 7: ~3.9x median revenue multiple — reference gives B2B 2.35x and B2C 2.30x median multiples; 3.9x for for-sale subset is unverifiable but seems high (error 2). Slide 4: Category counts match reference well. Error 3: Presentation warns about mean vs median on slide 3 then exclusively uses mean on slide 4 without acknowledging the contradiction.",
+  "evidence": {
+    "insight": "Slide 3 median-vs-mean point is sound but basic; slide 4 volume-vs-value is the strongest analytical move. No deeper cross-cuts (provider, TLD, anonymity, founded-year). Takeaways on slide 8 are descriptive summaries, not actionable insights.",
+    "narrative": "Logical sequence: overview → skew → categories → geography → audience → marketplace → takeaways. Coherent but reads as a tour of dimensions rather than building toward a thesis. No single driving question is posed or answered.",
+    "framing": "Slide 2 sets context adequately. Missing: no mention of 241 missing country values, 288 missing audience_type, 274 missing category. No limitations or caveats slide. Audience is implied but never stated.",
+    "accuracy": "E-comm average MRR on slide 4 appears materially wrong vs reference ($20,829 shown vs ~$58,506 from total/count). The deck uses mean MRR on slide 4 after arguing against means on slide 3 — methodological inconsistency. Revenue multiple of ~3.9x on slide 7 is unverified and higher than reference medians. Country and B2B/B2C figures are directionally plausible.",
+    "visual": "Clean, consistent template with good hierarchy and legibility. Bar charts are appropriately chosen and labeled. Color palette is restrained. However, slide 3's bar chart is a poor choice for comparing two numbers (a simple callout would suffice). No chart annotations beyond labels. Circles on slide 2 are decorative containers, not data-driven.",
+    "ai_slop": "Template is polished and uniform but not egregiously generic. No fabricated-looking charts, but the consistent AI-template feel (circle callouts, numbered takeaway grid) is noticeable. Content is substantive enough to avoid slop classification."
+  },
+  "confidence": "medium",
+  "total": 54,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15641,
+    "output_tokens": 1162
+  }
+}

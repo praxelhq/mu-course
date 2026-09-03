@@ -1,0 +1,43 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 7.5,
+    "accuracy": 5,
+    "visual": 8,
+    "bonus": 3
+  },
+  "what_worked": "Investment-thesis framing with four-filter funnel and inverse-multiple mispricing analysis are genuinely original and decision-useful.",
+  "fix_next": "Reconcile the $134M headline figure with the actual $15.6M dataset total; this single error undermines every downstream calculation.",
+  "verdict": "Exceptional storytelling and structure, but core revenue figure is fabricated from unstated annualization.",
+  "flags": [
+    "annualized-revenue-not-disclosed",
+    "zero-revenue-count-wrong",
+    "top-concentration-unverifiable",
+    "b2b-median-ratio-inflated",
+    "ai-per-company-uses-hidden-annualization",
+    "no-limitations-slide",
+    "missing-data-rates-undisclosed"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 1/2/3/7: '$134M verified annual revenue' — dataset total is $15.6M (monthly snapshot); annualizing to ~$187M doesn't yield $134M either, and the annualization is never disclosed. Slide 3: '109 have never processed a single dollar' — reference shows 216 zero-revenue rows. Slide 4: 3.8x B2B/B2C median ratio — reference gives median multiples of 2.35x/2.30x for on-sale assets; even raw median revenues don't cleanly produce 3.8x without unstated filtering. Slide 5: AI '$94k per company' uses undisclosed annualization ($2,356,676/197≈$11,963 monthly, ×12≈$143k, not $94k — neither figure reconciles). Slide 7: US 64% revenue share and India 0.9% are unverifiable against reference but plausible only under the already-wrong $134M base. Slide 8: category multiples (Health & Fitness 11.7x, etc.) cannot be cross-checked but rest on the same suspect revenue base.",
+  "evidence": {
+    "insight": "Slide 8's inverse-multiple curve and slide 9's sequential filter funnel are genuinely original frameworks that produce a concrete, actionable deployment thesis. Slide 6's domain-authority vs. social-following contrast adds a non-obvious screening variable. These go well beyond chart narration.",
+    "narrative": "Textbook thesis arc: market definition → concentration → demand → supply → moat → geography → mispricing → deployment → recommendations. Every slide ends with a bolded implication sentence that advances the argument. The closing line ('discipline strategy, not a discovery strategy') lands the thesis cleanly.",
+    "framing": "Slide 2 establishes the dataset and audience (acquirer/investor). Footnotes on most slides disclose sample sizes and filters. However, missingness rates (24–29% across key fields) are never mentioned, survivorship bias is unaddressed, and the annualization assumption underlying the headline figure is completely hidden from the reader.",
+    "accuracy": "The $134M headline cannot be derived from the $15.6M dataset total by any disclosed method — annualizing gives ~$187M, not $134M. Zero-revenue count is 216, not 109. The 3.8x B2B/B2C median ratio doesn't match reference medians. AI per-company revenue ($94k) doesn't reconcile under any consistent annualization. These are structural, not rounding, errors that propagate through the entire thesis.",
+    "visual": "Consistent dark-navy/gold palette, clear typographic hierarchy, appropriate chart types (horizontal bars, grouped bars, funnel). Slide 9's filter cascade is particularly effective. Slide 5's stacked bar is slightly harder to parse than alternatives. No decorative or fabricated charts. Restraint is commendable.",
+    "ai_slop": "None detected. The voice is distinctive and editorial throughout. No generic filler, no consulting buzzwords, no decorative graphics. Every slide carries specific numbers and a pointed claim."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.5 to 5.0: the $134M headline figure doesn't reconcile under any disclosed or reasonable annualization of the $15.6M dataset, and this error propagates to per-company averages, concentration shares, and geography percentages across at least five slides. Also lowered framing from 8.0 to 7.5 because the undisclosed annualization and omitted missingness rates are framing failures, not just accuracy ones.",
+  "total": 79,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 19559,
+    "output_tokens": 1140
+  }
+}

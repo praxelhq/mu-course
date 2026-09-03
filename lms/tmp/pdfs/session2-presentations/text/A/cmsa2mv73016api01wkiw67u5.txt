@@ -1,0 +1,190 @@
+AI/SaaS Marketplace:
+Market Snapshot
+Internal analysis of 739 live listings — market composition, growth
+patterns, and the stealth company anomaly. Single snapshot: 30 Jul 2026.
+
+ INTERNAL USE · ANALYST AUDIENCE
+The Stealth
+Advantage
+The single most surprising finding in the dataset: anonymized listings
+punch far above their weight.
+
+
+
+    14.6%                                  42.5%
+ Share of All Listings                       Top-Decile MRR
+    Stealth Company entries —
+                                                 Share
+ anonymized, undisclosed names          Stealth listings captured nearly half
+                                               of all top earner slots
+
+
+
+
+                                15x
+                           Median MRR
+                            Premium
+                    $10,694 (stealth) vs. $699 (named)
+                      — a 15x gap in median revenue
+
+
+
+       Stealth listings are a disproportionate signal of platform quality
+       — the data strongly favors anonymous sellers.
+Market at a Glance
+Metric
+                                                                           Platform Composition
+
+                                                                            739 listings analyzed (not 1,000 as filename
+                                                                            implies)
+Median       1.12k
+
+                                                                            Top decile holds 78.2% of all platform MRR —
+                                                                            extreme concentration
+                                                                            Median MRR: $1,119 · Mean MRR: $17,630
+
+                                                                           Geography
+ Mean                                                        17.6k
+                                                                            🇺🇸 United States: 41%
+                                                                            🇫🇷 France: 11%
+         0    2k     4k   6k    8k      10k    12k   14k   16k       18k    🇬🇧 United Kingdom: 6.8%
+                                     MRR ($)
+                                                                            Undisclosed: 36%
+
+Mean is 16× higher than median — a textbook power-law
+distribution driven by a handful of high-MRR outliers.
+Growth Reality Check
+                                 What the Numbers Say
+
+                                  30.6% shrinking — active revenue decline
+                                  34.5% flat — zero net movement
+                                  ~35% genuinely growing
+            Shrinking · 30.57%
+
+            Flat · 34.47%        The Skew Problem
+            Growing · 34.97%
+                                  Median growth: 0%
+                                  Mean growth: +38.8%
+                                  A few breakout performers mask a stagnant majority
+
+
+                                     This is a stabilize-and-exit marketplace, not a
+                                     hypergrowth ecosystem. Most sellers are looking for
+                                     a clean out.
+How We Define Winners & Strugglers
+Before comparing performance extremes, here is the exact segmentation used throughout this analysis.
+
+
+  🏆 Winners — Top Decile                                          ⚠️ Strugglers — Bottom Decile
+  Highest 10% of listings by MRR. Median revenue                  Lowest 10% by MRR. Median under $100/month with near-
+  $10,694+/month with strong, active subscription bases.          zero subscriptions. Often listed for sale precisely because
+  These are the platform's revenue engines.                       organic growth has stalled.
+
+
+
+  The Gap
+  Winners grow 29× faster and carry 4,700× more active subscriptions than strugglers. The distribution is not gradual — it is
+  a cliff.
+Winners vs. Strugglers
+
+
+
+
+Top Decile · Winners                                        Bottom Decile · Strugglers
+  Avg growth: +197%                                              Avg growth: +6.8%
+  Active subscriptions: 4,291                                    Active subscriptions: 0.9
+  Compound momentum — each subscriber reinforces the             Effectively no recurring customer base to build from
+  next
+
+  Winners compound ~29× faster. Subscription count — not MRR alone — is the leading indicator that separates the two
+                                                       groups.
+Top Performers: Named Examples
+Three named listings that illustrate the ceiling of what this marketplace produces — and what buyers are paying for.
+
+
+  Company                             Country                  MRR                    Growth                 Note
+
+  GojiberryAI                         🇺🇸 US                    $494,668               +23.6%                 18,050
+                                                                                                             followers
+
+
+  Cometly                             🇺🇸 US                    $207,616               —                      High MRR
+                                                                                                             benchmark
+
+  1Lookup                             🇺🇸 US                    $207,064               —                      Listed at $10M
+                                                                                                             (2.1× ARR)
+
+
+All three are US-based — consistent with the 41% US share. 1Lookup's 2.1× revenue multiple at $10M asking price is notably
+conservative relative to platform averages.
+The Sale Market
+Price Metric
+                                                               Sale Market Overview
+
+                                                                208 of 739 listings (28.1%) actively for sale
+
+Median Ask         65k                                          Median ask: $65,000 — most sellers target a quick, clean
+                                                                exit
+                                                                Mean ask: $395,700 — dragged up by rare $1M+ outliers
+
+                                                               Market Character
+
+ Mean Ask                                            396k       The modal seller wants sub-$100K liquidity, not a
+                                                                strategic acquisition process
+                                                                $1M+ deals exist but are statistical outliers, not the norm
+               0         100k    200k         300k      400k
+                                                                Buyers should not anchor on mean price when sourcing
+                                 Amount ($)
+                                                                deal flow
+Mean is 6× the median — a small cluster of high-value
+listings inflates the average dramatically.
+Valuation Multiples:
+Handle with Care
+Median Multiple: 2.9×
+The central tendency — most defensible anchor for valuation
+benchmarking. Use this as the baseline before any adjustments.
+
+
+
+Mean Multiple: 8.82× — Badly Skewed
+Inflated by extreme outliers in the 60×–327× range. These are near-
+zero-MRR listings where any positive MRR creates an astronomical
+multiple. Noise, not signal.
+
+
+
+Trimmed Mean (Top 5% Removed): 4.15×
+Cleaner, but still inflated by small-MRR listings in the dataset.
+Recommend applying an MRR floor before using any multiple-based
+valuation — see next card.
+Key Caveats
+Before sharing or acting on this analysis, analysts should internalize these data quality constraints.
+
+
+       Row Count Mismatch                                                  Self-Reported Metrics Only
+       739 rows analyzed — not 1,000 as the filename                       All MRR, growth, and subscription figures are seller-
+       suggests. Confirm the correct universe before any                   provided. No independent verification exists. Treat all
+       external sharing or follow-on analysis.                             figures as directional, not audited.
+
+
+       Disclosure Bias                                                     Single Snapshot
+       36% undisclosed country, 15% undisclosed name.                      Data captured 30 Jul 2026 only. Growth trajectories and
+       Stealth listings demonstrably outperform — meaning                  sale status are already aging. Do not treat this as a live
+       high performers are systematically underrepresented                 or rolling dataset.
+       in the named dataset.
+Strategic Questions
+Three open questions this dataset raises for the sourcing and evaluation workflow — ranked by urgency.
+
+
+ 1    Shift Sourcing                       2 Define a Pre-                              3 Apply an MRR Floor
+      Toward Direct                              Screening                                  to Valuation Models
+      Outreach?                                  Threshold                                  Should we enforce a minimum
+      Stealth listings outperform                What minimum growth rate and               MRR (e.g., $1,000+/month)
+      named listings by 15× on median            active subscription count should           before applying any revenue-
+      MRR and hold 42.5% of top-decile           filter the pipeline before human           multiple valuation? The 60×–327×
+      slots. Should the team prioritize          review? The current dataset                outliers are all near-zero-MRR
+      direct seller outreach to                  suggests sub-10-subscriber                 listings — an MRR floor would
+      anonymous operators rather                 listings rarely justify analyst time       eliminate the noise cleanly.
+      than relying on public listing             regardless of asking price.
+      discovery?
+

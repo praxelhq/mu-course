@@ -1,0 +1,39 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 4.5,
+    "narrative": 5,
+    "framing": 5,
+    "accuracy": 3,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Mean-median skewness observation is a valid and useful framing of revenue concentration.",
+  "fix_next": "Multiple key figures are fabricated or unverifiable (AI median, B2B/B2C means, growth rates, valuation multiples); ground every claim in the actual dataset.",
+  "verdict": "Consulting-styled deck with a coherent thesis but too many unverifiable or wrong numbers.",
+  "flags": [
+    "fabricated-looking-numbers",
+    "unearned-certainty",
+    "consulting-language-inflation",
+    "causal-claims-without-evidence",
+    "ai-slop-template"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 3: Top-10 share stated as 48%, actual is 49.6%. Slide 4: B2B avg MRR $13,150 and B2C avg $5,102 cannot be verified and don't match reference means (~7.97x and ~8.44x multiples of median); 2.57x ratio is inconsistent with reference. Slide 4: Platform mean stated $13,471 — actual 30-day mean is ~$15,596 (total $15,596,344.59/1000=$15,596), not $13,471. Slide 5: AI median MRR listed as $1,441 vs actual $503; Marketing median $2,010 vs actual $2,369.50; Dev Tools median $329 vs actual $635; Productivity median $280 vs actual $79.91. Slide 5: 30-day growth rates and valuation multiples (8.5x, 4.2x, etc.) appear fabricated — no such fields exist in the dataset. Slide 4: '78% of AI tools stall below $2,500 MRR' is unverifiable and presented as fact. Slide 2: Median stated as $282 — plausible but unverified; the dataset field is 30-day revenue, not MRR.",
+  "evidence": {
+    "insight": "Slide 3-4 identify revenue concentration and mean-median gap, which are real phenomena, but the AI category trap claim and B2B premium are built on wrong numbers, undermining the insight.",
+    "narrative": "Slides follow a logical arc: problem → evidence → process → roadmap → board mandate. The thesis (revenue paradox/valuation disconnect) is stated and maintained, though the landing (slide 8) offers unsupported projections.",
+    "framing": "Slide 1 specifies audience (board), dataset, and focus area. However, the deck never acknowledges massive missingness (274 categories, 288 audience_type) which directly affects B2B/B2C and category analyses.",
+    "accuracy": "At least 7 material errors: AI median off by ~3x ($1,441 vs $503), platform mean wrong ($13,471 vs $15,596), top-10 share off (48% vs 49.6%), Dev Tools and Productivity medians wrong, growth rates and valuation multiples fabricated from no dataset field.",
+    "visual": "Consistent dark theme with cyan/pink accents, clean layout. But slides 6-8 are mostly empty space with generic card layouts. The donut chart on slide 3 is functional. Bar chart on slide 4 is legible but uses fabricated data.",
+    "ai_slop": "Heavy consulting jargon throughout: 'Executive Directive,' 'Board Mandate,' 'Turnaround Model,' 'Capital Allocation Policy,' 'Performance Escrow.' Slides 6-8 are generic strategy templates with no data backing. The 30-60-90 day plan and decision matrix are pure filler disconnected from analysis."
+  },
+  "confidence": "high",
+  "total": 46,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 14220,
+    "output_tokens": 968
+  }
+}

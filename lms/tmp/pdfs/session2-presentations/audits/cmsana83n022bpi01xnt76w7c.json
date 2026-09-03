@@ -1,0 +1,41 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Momentum/trend framework and Education hand-off narrative show genuine second-order analytical thinking beyond surface totals.",
+  "fix_next": "Reconcile or clearly source the trailing 12-month revenue figures; the frozen dataset provides only 30-day totals, making core claims unverifiable.",
+  "verdict": "Strong analytical arc undermined by unverifiable revenue window figures and a hard-to-read scatter plot.",
+  "flags": [
+    "unverifiable-revenue-window",
+    "category-count-discrepancy-672-vs-726",
+    "scatter-plot-illegible",
+    "19-categories-unlisted",
+    "concentration-63pct-unverifiable"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 3: Trailing 12-month revenue figures ($18.4M AI, $14.6M Marketing, etc.) cannot be verified against the frozen reference which provides only total revenue ($2.36M AI, $1.32M Marketing); the numbers are ~7-10x larger with no sourcing explanation. Slide 2: Claims 726 categorized startups but only 726 have category tags (1000-274=726 is correct), yet then uses 672 with 19 categories having 10+ startups—plausible but the 19 categories are never listed and the reference shows only ~11 named categories. Slide 3: '63% from 3 categories' is unverifiable against frozen totals since the revenue window used differs from reference data.",
+  "evidence": {
+    "insight": "Slides 4-6 construct a momentum/trend dual-ratio framework that meaningfully distinguishes compounding from coasting; the Education leader-cooling narrative on slide 6 is a genuinely useful second-order finding not obvious from aggregates. Revenue-per-visitor on slide 7 adds a monetization-efficiency dimension.",
+    "narrative": "Clear arc: concentration → AI compounding → Education counter-example → monetization efficiency → four synthesized takeaways. Each slide builds on the prior with forward references (slide 5 'see next slide'). Landing on slide 8 ties threads together coherently.",
+    "framing": "Slide 2 defines methodology, filtering criteria, and growth signals upfront. Limitations footnote on slide 8 acknowledges category missingness (726/1000) and traffic sample size (178). However, the intended audience is never stated, the 19 categories are never listed, and the jump from 726 to 672 is only loosely explained.",
+    "accuracy": "The core revenue figures use a 'trailing 12-month' window that does not correspond to any verifiable field in the frozen reference. AI total revenue in the reference is $2.36M, not $18.4M. The momentum/trend ratios are internally consistent constructions but unverifiable. The 726 categorized count (1000-274=726) checks out, but the 672 subset and 19-category claim cannot be confirmed against the 11 named reference categories. Revenue-per-visitor relies on only 178 startups, which is disclosed.",
+    "visual": "Consistent dark/teal palette with good hierarchy throughout. Slide 3 bar chart is clean and well-annotated. Slide 7 bar chart is effective. Slide 5 scatter plot is the weakest element: axes lack numeric scales, most dots are unlabeled, and the cluster in the upper-left is indistinguishable. Decorative circles on slides 1/9 are inert but harmless.",
+    "ai_slop": "Minimal. Language is specific and data-grounded throughout. No inflated consulting-speak or generic filler. The decorative shapes are template elements but not distracting."
+  },
+  "confidence": "medium",
+  "changed": true,
+  "change_reason": "Reduced bonus from 2 to 1: the momentum/trend framework is well-constructed but not rare enough for 2 bonus points given the unverifiable data foundation. All other dimension scores confirmed as appropriate after independent review.",
+  "total": 67,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 17432,
+    "output_tokens": 1015
+  }
+}

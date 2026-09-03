@@ -1,0 +1,36 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 9,
+    "narrative": 9.5,
+    "framing": 9.5,
+    "accuracy": 8,
+    "visual": 8.5,
+    "bonus": 4
+  },
+  "what_worked": "Single thesis pursued with statistical rigor, causal humility, and genuine editorial restraint throughout.",
+  "fix_next": "The total revenue figure ($13.5m) doesn't match the frozen reference ($15.6m); reconcile or explain the denominator difference explicitly.",
+  "verdict": "Exceptional thesis-driven deck with rare analytical discipline and honest limitations.",
+  "flags": [
+    "revenue-total-mismatch",
+    "some-unverifiable-derived-statistics"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 2: Total monthly revenue stated as $13.5m vs reference $15,596,344.59 (~$15.6m); likely a filtering choice but not explained. Slide 11: States Stan is 26.5% of all MRR — reference says anonymous companies are 26.525% of revenue, not necessarily one company; claim is plausible but unverifiable and potentially conflated.",
+  "evidence": {
+    "insight": "Slide 3-5: The ARPU-invariance thesis (median ~$20 across 650× scale, Spearman 0.013, elasticity 0.98, R²=0.72 from subscriber count alone) is a genuinely original and decision-useful inference. Slide 7: B2B exception framed as customer-selection not pricing-page decision adds real nuance. Slide 8: Domain authority as screening variable with monotonic probability curve is actionable. Slide 9: Growth-by-decile analysis with trimmed-mean correction shows analytical maturity.",
+    "narrative": "Perfect single-thesis architecture: title states claim → slide 2 establishes base → slides 3-5 prove ARPU invariance three ways → slide 6 eliminates alternative levers → slide 7 introduces the one exception → slide 8 identifies where the slope is → slide 9 shows compounding → slide 10 lands three decisions → slide 11 guardrails → slide 12 closes. Every slide advances the argument; nothing is a list of unrelated facts.",
+    "framing": "Slide 2: Explicit 'Read this before anything else' caveat about survivorship bias, opt-in selection, and scope. Slide 6: 'Correlation, not causation' disclaimer on free-tier finding. Slide 8: 'Read it honestly' box on reverse causality. Slide 11: Full guardrails page covering cost data absence, snapshot limitation, broken fields, and fat-tailed distribution. Audience (management/founders) and scope (internet-native subscription software) are crystal clear.",
+    "accuracy": "Slide 2: Total revenue $13.5m vs reference $15.6m is a ~$2.1m discrepancy — material. Slide 4: ARPU quartile analysis and Spearman correlation are internally consistent and plausible. Slide 5: R² of 0.72 and elasticity 0.98 are derived statistics not directly verifiable but methodologically sound. Slide 7: B2B median revenue multiple of 5.7× is in the right ballpark vs reference 2.35x median multiple (but these measure different things — MRR ratio vs revenue multiple field). Slide 9: 0% median growth and Gini 0.90 are consistent with reference data patterns. Slide 11: Tail index, bootstrap CI, and broken-field identification show genuine data quality work.",
+    "visual": "Consistent navy/gold/white palette throughout. Charts are restrained and purposeful: bar chart on slide 4 with direct labels, horizontal grouped bars on slide 7, monotonic bar chart on slide 8, line chart on slide 9. No decorative graphics. Card-based layouts for statistics are clean and scannable. Typography hierarchy is clear. Dark slides for thesis/bookend, light slides for evidence — intentional rhythm. Minor: slide 9 line chart could benefit from smoother labeling at D2 (0%).",
+    "ai_slop": "none — No generic filler, no decorative stock imagery, no inflated consulting language. Every sentence carries specific data. The deck reads as authored by someone who actually analyzed the dataset."
+  },
+  "confidence": "high",
+  "total": 93,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 23102,
+    "output_tokens": 1057
+  }
+}

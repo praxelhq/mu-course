@@ -1,0 +1,39 @@
+{
+  "slide_count": 14,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 6.5,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis on power-law dynamics with genuinely useful counterintuitive findings and audience-segmented recommendations.",
+  "fix_next": "Multiple median MRR figures deviate materially from reference data; verify every category median and the $0 MRR count against the actual dataset.",
+  "verdict": "Ambitious, well-structured analysis undermined by several inaccurate figures.",
+  "flags": [
+    "inflated-arr-claim",
+    "wrong-zero-revenue-count",
+    "median-mrr-deviations",
+    "missing-data-not-disclosed",
+    "causal-language-on-correlations"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 1/3: '$161.7M Combined Est. ARR' implies ~$13.5M monthly; actual 30-day revenue is $15.6M, so ARR would be ~$187M not $161.7M — or the $13.5M MRR figure is wrong. Slide 3: 26 categories claimed; reference shows 12 named categories. Slide 4: AI median shown as $446 vs reference $503; Education $2.1K vs reference $2,435; E-comm $155 vs reference $387; SaaS $303 vs reference $200.50; Dev Tools $185 vs reference $635; Content Creation $1.3K vs reference $1,237.50 (close but others are far off). Slide 6: 197 '$0 MRR startups' claimed; reference shows 216 zero-revenue rows. Slide 5: B2B/B2C median multiple claimed as 5.7× ($1,036/$181); reference medians give ~2.35×/2.30× multiples — the absolute medians and ratio appear fabricated or use a different metric without disclosure. Slide 11: 131 stealth companies claimed; reference says 129 anonymous companies.",
+  "evidence": {
+    "insight": "Slide 11 counterintuitive findings (stealth premium, low-MRR high-multiple, AI B2B vs B2C split) go beyond chart description. Slide 7 growth-by-tier analysis adds genuine analytical depth. Slide 10 payment processor as proxy is an original angle.",
+    "narrative": "Clear arc from overview (slides 1-3) → category landscape → B2B/B2C → concentration → growth → geography → acquisitions → counterintuitive findings → recommendations → conclusion. Thesis of power-law dynamics is sustained throughout.",
+    "framing": "Slide 3 establishes dataset scope and columns. Slide 12 segments recommendations by audience type. However, missingness (241-288 rows across key fields) is never disclosed, which is a significant framing gap for a 1,000-row dataset.",
+    "accuracy": "Multiple category medians deviate from reference (AI $446 vs $503, E-comm $155 vs $387, Dev Tools $185 vs $635). Zero-revenue count wrong (197 vs 216). B2B/B2C 5.7× claim conflicts with reference 2.35×/2.30× median multiples. ARR calculation inconsistent with stated MRR. The 26-category count is unverifiable against reference 12 named categories.",
+    "visual": "Consistent dark-teal color scheme with good hierarchy. Slide 4 dual-axis bar+dot chart is effective. Slide 7 growth distribution with tier breakdown is well-designed. However, slides are template-heavy with large whitespace blocks, and the visual sameness across slides suggests AI-generated templates. Slide 8 table is clean and functional.",
+    "ai_slop": "Some consulting-style inflation: 'Intelligence Report' branding, 'shapes destiny' language. Template uniformity across all slides. However, content is substantive enough that this is mild — the bigger issue is accuracy rather than slop."
+  },
+  "confidence": "high",
+  "total": 69,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 27603,
+    "output_tokens": 1022
+  }
+}

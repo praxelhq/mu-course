@@ -1,0 +1,44 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 0.5,
+    "narrative": 2,
+    "framing": 1,
+    "accuracy": 0.5,
+    "visual": 2.5,
+    "bonus": 0
+  },
+  "what_worked": "Consistent visual template and clear slide hierarchy across the deck.",
+  "fix_next": "Replace the entire deck with actual data analysis: charts, statistics, and findings from the 1,000-row dataset.",
+  "verdict": "A polished sales pitch with zero data analysis; fundamentally wrong assignment genre.",
+  "flags": [
+    "no-data-analysis",
+    "no-charts",
+    "wrong-assignment-genre",
+    "ai-slop",
+    "decorative-irrelevant-graphic",
+    "fabricated-self-quote",
+    "no-dataset-reference",
+    "inflated-language"
+  ],
+  "factual_error_count": 0,
+  "factual_error_detail": "No dataset claims are made, so no factual errors can be identified—but the absence itself is the core problem.",
+  "evidence": {
+    "insight": "Zero analytical findings from the dataset appear anywhere across 12 slides. No statistics, no comparisons, no distributions, no correlations. Claims like 'B2B Utility Outperforms Consumer Hype' (slide 6) are pure assertion with no data support.",
+    "narrative": "The deck follows a coherent sales-pitch arc (problem → thesis → process → quote → CTA), but this is a marketing brochure, not a data story. No analytical question is posed or answered.",
+    "framing": "Slide 1 frames as 'Investor Briefing' for 'SaaS Acquirers.' The dataset, its 1,000 rows, missingness, sample limitations, and any analytical scope are never mentioned. A cold reader has no idea what data exists.",
+    "accuracy": "No dataset figures appear—no revenue totals, category counts, provider shares, medians, or any verifiable metric. Impossible to assess accuracy when no data is cited.",
+    "visual": "Slide 6 contains a completely irrelevant 'Visual Comparison of Illustration Styles' stock graphic (coffee cups, bicycles, apples) unrelated to content. Slide 7 uses decorative stock photos. No data visualizations exist. Template is clean but serves no analytical purpose.",
+    "ai_slop": "Pervasive. Slide 6 misplaced illustration-styles graphic is a clear AI template artifact. Slide 10 self-quotes 'The TrustMRR Investment Philosophy.' Every slide uses inflated consulting jargon ('sourcing paradigm shift,' 'verified revenue telemetry,' 'capital efficiency first') with zero evidence. Entire deck reads as AI-generated marketing copy that could apply to any dataset or none."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 1→0.5 (truly nothing from the dataset), framing from 1.5→1 (dataset never acknowledged), accuracy from 1→0.5 (complete absence of data warrants near-floor), visual from 3→2.5 (the irrelevant illustration-styles graphic on slide 6 is an AI artifact that actively harms credibility). Narrative kept at 2 as the internal pitch logic is coherent, just wrong genre.",
+  "total": 13,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 20454,
+    "output_tokens": 795
+  }
+}

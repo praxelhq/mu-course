@@ -1,0 +1,44 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 4,
+    "narrative": 4,
+    "framing": 3.5,
+    "accuracy": 3,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "Mean-vs-median skew comparison on slide 3 is a genuinely useful framing for the audience.",
+  "fix_next": "Replace every pastel card grid with real data charts and remove the fabricated fishbone diagram and unverifiable country MRR figures.",
+  "verdict": "Card-grid deck with no real charts, several fabricated numbers, and a stock fishbone diagram.",
+  "flags": [
+    "fabricated-country-mrr",
+    "no-data-visualizations",
+    "irrelevant-fishbone-stock-graphic",
+    "ai-slop-language",
+    "unverifiable-figures",
+    "missing-limitations-disclosure",
+    "missing-missingness-disclosure",
+    "identical-card-layout"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 2: 19.7% pre-revenue is wrong (216/1000=21.6%). Slide 3: fishbone diagram is an unrelated stock template about 'Production Downtime Analysis'. Slide 4: AI '3× more companies than any other segment' — AI has 197 vs SaaS 66, ratio ~3× is borderline but 'any other segment' is misleading given category missingness. Slide 5: all six country mean MRR figures ($18,400, $11,200, $9,800, $8,500, $5,100, $7,200) appear fabricated with no verifiable basis; India count 38+ but reference shows 59 rows with country data. Slide 6: B2B median $1,036 and '6× higher' claim — not verifiable against reference and the 255+56+401=712 accounts for only ~71% of 1000 without noting 288 missing audience_type. Slide 8: r≈0.02 is attributed to 'social follower counts' vs MRR but reference r=0.024763 is for founded-year vs revenue — misattributed correlation. Slide 5: US count '430+' contradicts reference showing 258 US rows with non-missing country (out of 759 with country data).",
+  "evidence": {
+    "insight": "Headcount-vs-yield tension (slide 4) and B2B premium (slide 6) are reasonable angles but remain text-only assertions without supporting charts or correct numbers. No deeper original analysis emerges.",
+    "narrative": "Logical topic sequence from overview through categories, geography, audience, marketplace to takeaways, but each slide is a standalone factoid card with no connective thesis or cumulative argument.",
+    "framing": "No audience specified, no limitations disclosed, 24-29% missingness across key fields never mentioned, title promises 'verified bootstrap SaaS ventures' and 'exit multiples' but neither is substantiated. Scope is undefined for a cold reader.",
+    "accuracy": "Country MRR figures on slide 5 appear hallucinated (US count 430+ vs reference 258; India 38+ vs 59). Pre-revenue 19.7% vs correct 21.6%. Correlation r≈0.02 misattributed to social followers instead of founded-year. B2B/B2C sample sizes don't acknowledge 288 missing audience_type values.",
+    "visual": "Zero data visualizations across 8 slides — every slide uses identical pastel card grids. Slide 3 contains a completely irrelevant stock fishbone diagram labeled 'Production Downtime Analysis' with MAN/MACHINE/METHOD categories unrelated to the dataset.",
+    "ai_slop": "Fishbone diagram is a stock template pasted without modification. Consulting buzzwords throughout ('strategic ecosystem insight,' 'revenue density,' 'micro-PE,' 'global gravity'). Identical card-grid template repeated on every content slide. Country MRR figures show hallmarks of AI hallucination."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing by 0.5 (no limitations, no audience, misleading title claims) and visual by 0.5 (the fishbone diagram is not just irrelevant but actively misleading, and zero real charts across 8 slides is below the preliminary 3.5). Lowered accuracy to 3.0 given 8 factual errors including fabricated country figures and misattributed correlation. Other scores confirmed.",
+  "total": 35,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 15324,
+    "output_tokens": 1099
+  }
+}

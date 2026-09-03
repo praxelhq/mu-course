@@ -1,0 +1,139 @@
+TrustMRR
+
+
+
+Decoding 1,000 Indie Startups
+Insights into revenue, growth, and category dynamics derived from the TrustMRR startup dataset.
+
+Dataset frozen 30 Jul 2026 • 1,000 startups • 29 fields
+Dataset Overview
+What TrustMRR tracks, and the shape of the sample
+
+TrustMRR lists real, revenue-verified indie and small SaaS startups. Each record captures:
+Revenue & MRR — 30-day, 3-month, 12-month, all-time, plus growth %
+Traction — active subscriptions, X followers, domain rating
+Positioning — category, audience type, pricing model, persona
+Marketplace status — whether for sale, asking price, revenue multiple
+                                                                                              1,000
+                                                                                                29
+                                                                                              26.2%
+                                                                                             startups tracked
+                                                                                                data fields
+                                                                                              listed for sale
+
+
+                                                                                               19.7%
+                                                                                                50+
+                                                                                                 29
+                                                                                              report $0 MRR
+                                                                                                countries
+                                                                                                categories
+A wide, messy, real-world dataset — heavy skew and missing fields are part of the story, not noise to ignore.
+TrustMRR 1,000-Row Dataset | Frozen 30 Jul 2026
+                                                                                                                2
+A Few Giants, a Long Tail
+MRR is heavily right-skewed — mean is not a fair summary
+
+Why it matters
+
+   Mean MRR ($13,472) is ~48x the median ($282) — a handful of outliers (Stan, Brand On Demand) pull the average far
+   above what a typical startup earns.
+   19.7% of startups report exactly $0 MRR.
+   21.6% report $0 in 30-day revenue.
+   Median active subscriptions is just 16, vs. a mean of 501.
+   Takeaway: report the median as the 'typical' startup, and use the mean only to describe total market value.
+
+TrustMRR 1,000-Row Dataset | Frozen 30 Jul 2026
+
+                                                                                                                       3
+Category Volume vs. Category Value
+AI dominates by headcount — but not by average revenue
+
+TrustMRR 1,000-Row Dataset | Frozen 30 Jul 2026
+
+                                                         4
+The US Leads on Both Volume and Value
+Top 6 countries by startup count, and their average MRR
+
+TrustMRR 1,000-Row Dataset | Frozen 30 Jul 2026
+
+                                                          5
+B2B Startups Out-Earn B2C
+Median and average MRR by audience type
+
+
+255
+B2B startups — median MRR $1,036
+
+
+401
+B2C startups — median MRR $181
+
+
+56
+Serve both — median MRR $352
+
+TrustMRR 1,000-Row Dataset | Frozen 30 Jul 2026
+
+                                                  6
+The Acquisition Marketplace
+1 in 4 startups is listed for sale — and sellers skew mid-size, not top-of-market
+
+
+                                                                                     262
+                                                                                    $35K
+On sale vs. not for sale (MRR)
+
+
+                                                                                    ~3.9x
+Median MRR — on sale: $1,055
+Median MRR — not for sale: $187
+Mean MRR — on sale: $7,809
+Mean MRR — not for sale: $15,482
+                                                                              startups on sale (26.2%)
+
+                                                                                median asking price
+
+                                                                             median revenue multiple
+
+Top asking prices: 1Lookup ($10M), Project A ($5M), POST BRIDGE ($4.2M) — all with MRR in the $30K–$210K range.
+
+The biggest whales (Stan, Brand On Demand) aren't for sale — listings cluster in the established-but-not-massive range.
+
+TrustMRR 1,000-Row Dataset | Frozen 30 Jul 2026
+
+                                                                                                                          7
+Key Takeaways
+01
+Skew, not scale
+
+02
+Volume ≠ value
+
+Median MRR ($282) tells the real story of a typical startup — the mean is dominated by a handful of outliers.
+
+AI has 3x more startups than any category, but E-comm and Analytics earn more per company on average.
+
+03
+Geography compounds
+
+04
+B2B pays more
+
+The US leads on both count and average MRR — success isn't evenly spread globally.
+
+Median B2B MRR ($1,036) is nearly 6x median B2C MRR ($181).
+
+05
+Followers ≠ revenue
+
+06
+Sellers are mid-market
+
+X follower count barely correlates with MRR (r   ≈ 0.02) — audience size isn't a reliable revenue signal.
+Startups for sale skew toward established-but-not-massive MRR — the true top performers aren't listed.
+
+TrustMRR 1,000-Row Dataset | Frozen 30 Jul 2026
+
+                                                                                                                8
+

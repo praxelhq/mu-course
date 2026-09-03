@@ -1,0 +1,42 @@
+{
+  "slide_count": 17,
+  "scores": {
+    "insight": 6,
+    "narrative": 7.5,
+    "framing": 6,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Honest India pivot (slide 8) and payment-rails observation show genuine analytical curiosity, not confirmation bias.",
+  "fix_next": "Cite Education's $2,435 median—the dataset's strongest support for your chosen vertical—and acknowledge survivorship/selection bias in TrustMRR listings.",
+  "verdict": "Strong narrative arc, but the thesis rests on claims the presented data doesn't fully support.",
+  "flags": [
+    "custom-filter-unverifiable",
+    "content-automation-strongest-signal-unsupported",
+    "total-avg-revenue-misleading",
+    "missing-limitations-slide",
+    "education-median-not-cited",
+    "survivorship-bias-unaddressed"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 7: Total avg $15,596 is total revenue / 1000 but 216 rows have zero revenue, making the denominator choice misleading without disclosure. Slide 16: Claims 'Content Automation is the strongest data signal' but Content Creation has only 36 startups and $173K total revenue, far below AI (197/$2.36M) or Marketing (42/$1.32M); the claim conflates the AI category with Content Creation without justification. Slide 4: US Stripe share shown as 86% vs reference 85.7%—minor rounding, acceptable, but the India Dodo figure of 61% matches reference 61.0%.",
+  "evidence": {
+    "insight": "India payment-rails finding (slide 4) is a genuinely interesting observation. The automation-thread synthesis (slide 15) is an original interpretive move but borders on tautological—nearly all software automates something. Education's $2,435 median (highest among major categories) is never cited, which is the single strongest dataset-grounded argument for the chosen vertical and a missed insight.",
+    "narrative": "Clear 5-step arc: landscape → India clue → reality check → pivot to top earners → synthesis → personal thesis. The 'Not Yet' slide (8) is an unusually honest analytical pivot. Transitions are explicit. The arc lands on a concrete recommendation with next steps. However the final leap from data to SAT tutoring relies more on personal biography than on dataset evidence.",
+    "framing": "Slide 2 sets up the question and dataset context adequately. However: no discussion of survivorship bias in TrustMRR listings (these are businesses for sale, not representative of all startups), no limitations slide, and the 274 missing categories get only a one-line footnote on slide 3. The 135-startup shortlist uses custom thresholds that a cold reader cannot verify or evaluate for reasonableness.",
+    "accuracy": "Slide 7 total avg $15,596 uses 1000 as denominator despite 216 zero-revenue rows—not wrong per se but misleading without disclosure. Slide 16 asserts Content Automation is 'the strongest data signal' but the data shows AI (197 startups, $2.36M) and Marketing (42, $1.32M) far outpace Content Creation (36, $173K). The 135-startup filter is unverifiable. US Stripe 86% is acceptable rounding of 85.7%.",
+    "visual": "Consistent navy/orange palette. Bar charts on slide 3 are clean with direct labels. Slide 4 grouped bar chart is effective. Slide 9 funnel diagram communicates filtering logic well. Slides 5, 8 are text-heavy with no visual data. Professional and restrained but slightly template-uniform across slides 12-13.",
+    "ai_slop": "Minimal. Language is specific and personal. 'Golden Thread' framing (slide 15) borders on inflated but is grounded in category descriptions. No decorative-but-meaningless graphics detected."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing by 0.5 (no limitations slide, survivorship bias unaddressed for a marketplace-for-sale dataset), lowered accuracy by 0.5 (the 'strongest data signal' claim on slide 16 is materially unsupported by the numbers shown), and reduced bonus from 2 to 1 (the India pivot is commendable but the final thesis leap is more biographical than data-driven, which limits the 'beyond rubric' case).",
+  "total": 64,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 31263,
+    "output_tokens": 1099
+  }
+}

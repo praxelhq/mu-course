@@ -1,0 +1,39 @@
+{
+  "slide_count": 15,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 5.5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis-driven narrative with honest validated/to-validate split and original monetization-ratio analysis across categories and geographies.",
+  "fix_next": "Annualized run-rate of $161.7M implies ~$13.47M monthly, but total 30-day revenue is $15.6M; the 48% top-1% claim and category share percentages need verification against actual data.",
+  "verdict": "Compelling acquisition thesis with real analytical ambition, undermined by several numerical inaccuracies.",
+  "flags": [
+    "annualized-revenue-mismatch",
+    "category-share-percentages-unverifiable",
+    "top10-share-understated",
+    "missing-data-not-disclosed-on-category-slide",
+    "causal-language-on-observational-data"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1/14: $161.7M annualized implies $13.475M/mo, but actual 30-day total is $15,596,345 (~$187M annualized)—material undercount. Slide 2: Category share chart labels (AI=13%, SaaS=4%, Education=4%) are presented as % of total MRR but denominator unclear given 274 missing categories; chart says n=1,000 but only 726 have categories. Slide 3: Top 1% = 48% claim; reference says top 10 = 49.6% share, so top 1% (10 companies) holding 48% is plausible but the slide 14 repeat of '48%' is slightly inconsistent with 49.6% top-10 benchmark. Slide 4: 26.5% from uncategorized is stated as anonymous revenue share; reference says anonymous = 26.525% of revenue, but the slide conflates 'uncategorized' with 'anonymous'—these are different fields (category missing ≠ anonymous). Slide 9: 'Search Authority Predicts Revenue' title implies causation from observational quartile data; the 0.02 correlation for Twitter is fine but domain-authority relationship is presented with causal framing.",
+  "evidence": {
+    "insight": "Slide 5 bubble chart creating monetization over-index by category is genuinely original; slide 8 geographic monetization ratio table provides decision-useful comparison; slide 9 contrasts domain authority vs. social followers as diligence signals—goes well beyond chart description.",
+    "narrative": "Clear arc: market exists (slides 1-4) → it's concentrated and categorizable (5-6) → geography matters (7-8) → diligence signals (9) → actionable for-sale cohort (10) → synthesis wedge (11) → roadmap (12-13) → ask (14) → honest limitations (15). Purposeful sequence with a real landing.",
+    "framing": "Slide 1 establishes audience (acquirer/investor), scope (1,000 verified businesses), and question (how to systematically buy profitable indie software). Slide 15 'validated vs. to validate' is excellent epistemic framing. However, 274/1000 missing categories and 241 missing countries are never disclosed as limitations on the analytical slides that use them.",
+    "accuracy": "Annualized revenue figure is ~$25M too low. Category percentages on slide 2 use n=1,000 denominator but only 726 have categories. Slide 4 conflates 'uncategorized' category with 'anonymous' status. The 2.3x median multiple and 26.2% for-sale rate appear internally consistent. Geographic figures on slides 7-8 cannot be fully verified but ratios are internally coherent.",
+    "visual": "Consistent navy/gold/coral palette throughout. Good hierarchy with section labels, big-number callouts, and footnotes. Slide 11 Venn diagram has text overlap/legibility issues with title colliding with circle labels. Slide 5 bubble chart labels are partially cut off. Charts are generally well-chosen (bar charts for rankings, table for comparison). Some slides are text-heavy callout boxes rather than evidence-led.",
+    "ai_slop": "Mild consulting-speak ('The wedge isn't a guess', 'mispricing is where returns live') but generally restrained. Slide 13 six-step process diagram is generic template material. Overall the deck avoids worst AI-slop patterns—content is specific to this dataset."
+  },
+  "confidence": "high",
+  "total": 73,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 25159,
+    "output_tokens": 1132
+  }
+}

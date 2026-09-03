@@ -1,0 +1,41 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 5,
+    "narrative": 6,
+    "framing": 5,
+    "accuracy": 4.5,
+    "visual": 4.5,
+    "bonus": 0
+  },
+  "what_worked": "Category-vs-market dual lens is a genuinely interesting analytical frame that produces a real finding.",
+  "fix_next": "Market-tag revenue figures are unverifiable against the frozen dataset and the deck never addresses missingness, sample size, or median vs. total distinctions.",
+  "verdict": "Polished consulting template over narrow data; market numbers unverified, no limitations acknowledged.",
+  "flags": [
+    "ai-slop-consulting-language",
+    "unverifiable-market-figures",
+    "no-limitations-slide",
+    "no-missingness-disclosure",
+    "decorative-stock-photo",
+    "repetitive-investor-insight-boxes",
+    "inflated-certainty"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 4: Pie-chart percentages are computed on categorized-only revenue (~$7.5M) but denominator is never stated; 274 rows lack category, so 'overwhelming majority of startup revenue' is misleading since categorized revenue is only ~48% of total $15.6M. Slide 9: Chart x-axis labeled 'Category' but text discusses 'markets'; Productivity shown as $1.72M market but earlier (slide 5) also $1.72M—yet Productivity category revenue is $0.11M (slide 3), creating confusion about which dimension is plotted. Slide 7: Claims six markets = $19.69M of $26.46M total market revenue (74%), but these market-tag totals are not verifiable from the frozen reference and the sum of all 15 market bars on slide 5 is ~$30.17M, not $26.46M. Slide 4: States top four categories account for 'vast majority' but their share of total dataset revenue ($15.6M) is only ~35%, not a vast majority—concentration claim only holds within categorized rows.",
+  "evidence": {
+    "insight": "The category-vs-market comparison (slide 6) is the deck's best idea—SaaS 8× amplification and Content Creation surprise are genuine observations. However, the deck never examines median revenue, company counts, provider mix, anonymity effects, or any per-company metric, so insight stays surface-level. Investment themes (slide 10) are generic VC talking points not uniquely supported by this dataset.",
+    "narrative": "Clear arc: executive summary → category → concentration → market → dual lens → clusters → emerging → long tail → thesis → recommendations. Sequence is logical and builds. However, every slide repeats the same 'Investor Insight' box format, creating monotony. The narrative never introduces tension, limitations, or counter-evidence.",
+    "framing": "Audience (investors) and question are stated on slide 1. However, the deck never defines 'market tags' vs 'categories' operationally, never discloses 274 missing categories or 286 missing domains, never mentions the 216 zero-revenue companies, and never states total dataset size (1,000). A cold reader cannot assess how representative the analysis is.",
+    "accuracy": "Category-level totals on slide 3 match the frozen reference well (AI $2.36M, Marketing $1.32M, E-commerce $1.11M, SaaS $0.70M, Education $0.52M, etc.). However, market-tag figures (slide 5) cannot be verified and the total across all 15 bars (~$30.17M) exceeds total dataset revenue ($15.6M), suggesting companies are multi-tagged—this is never explained. The concentration percentages (slide 4) use categorized-only denominator without disclosure. The $26.46M figure on slide 7 contradicts the slide 5 bar totals.",
+    "visual": "Gamma-generated template with consistent dark theme and purple palette. Charts are readable and appropriately chosen (horizontal bars, donut). However: decorative boat photo on slide 1 adds nothing; identical purple wave stock images on slide 8 are filler; every slide has an identical 'Investor Insight' purple banner creating visual sameness; slide 9 x-axis says 'Category' when discussing markets; truncated labels on slide 5 bar chart reduce readability.",
+    "ai_slop": "Heavy consulting-speak throughout: 'structural shift,' 'asymmetric upside,' 'convergence is the alpha generator,' 'picks-and-shovels,' 'best-in-class NRR,' 'secular tailwind.' Bessemer/Sequoia name-drop on slide 4 is unsupported. Identical 'Investor Insight' boxes on every slide. Decorative stock photos. Generic investment recommendations that could apply to any software dataset."
+  },
+  "confidence": "medium",
+  "total": 50,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22666,
+    "output_tokens": 1173
+  }
+}

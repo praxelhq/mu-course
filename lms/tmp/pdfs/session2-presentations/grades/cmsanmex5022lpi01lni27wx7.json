@@ -1,0 +1,39 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 6,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Strong narrative arc contrasting total vs. median revenue; barbell distribution observation was genuinely useful.",
+  "fix_next": "Slide 4 uses 12-month revenue figures (~$18M AI) that don't match the 30-day dataset reference; clarify time window or fix numbers.",
+  "verdict": "Coherent story with good visual craft, undermined by unverifiable revenue figures and missing limitations.",
+  "flags": [
+    "revenue-time-window-mismatch",
+    "missing-missingness-disclosure",
+    "stripe-causation-implied",
+    "median-values-off",
+    "no-scatter-plot-shown"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 4: AI revenue shown as $18,428k (12-mo) — dataset reference gives 30-day AI total of $2,356,676; time window unclear/unverifiable. Slide 6: Stripe count 644 vs reference 636; RevenueCat 191 vs 189; Polar 40 vs 36; Lemon Squeezy 27 vs 25 — multiple provider counts inflated. Slide 9: Education median shown as $2,142 vs reference $2,435; AI median $446 vs reference $503; Marketing median $1,586 vs reference $2,369.50 — median values materially wrong. Slide 6: '90% of all revenue flows through Stripe' — reference gives Stripe 30-day share as $13.5M/$15.6M ≈ 86.7%, close but overstated. Slide 3: 34% denominator implicitly uses ~759 (258/759) but country is missing for 241 rows; not disclosed.",
+  "evidence": {
+    "insight": "Slide 9 contrasts total vs median revenue across categories — a genuinely useful analytical move. Slide 7 compares Singapore vs India per-startup revenue. Slide 5 barbell observation adds interpretive value beyond chart description.",
+    "narrative": "Clear arc: introduce data → geography → markets → distribution → payments → leaderboard → median twist → correlation debunk → surprises → recommendations. Each slide builds toward the thesis that surface metrics mislead.",
+    "framing": "Slide 1-2 set up the question and dataset scope. However, no mention of 241 missing country values, 274 missing categories, or 288 missing audience types. No limitations slide. Audience (founders) is implicit but never stated.",
+    "accuracy": "Slide 4 uses a different revenue window (12-month) without sourcing or reconciling with 30-day figures. Slide 9 median values diverge materially from reference (Education $2,142 vs $2,435; Marketing $1,586 vs $2,370). Provider counts on slide 6 are inflated by 8-14 across multiple providers. Slide 10 reports r≈0.02 for followers-revenue which is plausible but the reference r=0.025 is for founded-year, not followers — different variable, cannot verify.",
+    "visual": "Consistent color palette (teal/coral), clear hierarchy with section labels, good use of callout boxes. Charts are simple and legible. Slide 10 is notably empty — claims a scatter plot relationship but shows no chart at all. Bar charts are well-labeled with direct values.",
+    "ai_slop": "Slide 11 'Plot Twists' heading feels slightly performative but content is substantive. Overall the deck avoids generic filler. Template is polished but not excessively decorative."
+  },
+  "confidence": "high",
+  "total": 64,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22622,
+    "output_tokens": 932
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 6.5,
+    "framing": 6,
+    "accuracy": 3,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Strong thesis about power-law concentration, coherent narrative arc, clean visual design with good restraint.",
+  "fix_next": "Total revenue is $15.6M not $334M—this 20x error cascades through concentration claims and undermines the entire deck's credibility.",
+  "verdict": "Polished narrative built on a catastrophic revenue total error.",
+  "flags": [
+    "wrong-total-revenue",
+    "fabricated-concentration-stats",
+    "ai-median-mismatch",
+    "b2b-multiplier-wrong",
+    "category-count-wrong"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 3: Total revenue stated as $334M; actual is $15.6M. Top-10 share claimed 61.1%; reference is 49.6%. Top-10%/90.7% unverifiable but suspect given wrong denominator. Slide 4: AI median MRR $446 vs reference $503; 'rest of market' median $277 unverifiable but dubious. AI exit multiple 3.15x not supported by reference data. Slide 5: B2B median $1,036 and B2C $181 yielding 5.7x gap; reference shows B2B/B2C median multiples ~2.35x/2.30x, not revenue medians of that magnitude. Slide 2: '8 major categories' stated; reference shows 12 categories.",
+  "evidence": {
+    "insight": "Power-law framing is a genuine insight (slide 3/7), and the B2B vs B2C comparison (slide 5) adds a useful dimension. However, the AI slide (4) overclaims 'durability' from cross-sectional data, and the deck never explores missingness, payment providers, or anonymity—staying shallow.",
+    "narrative": "Clear four-finding structure building to a coherent takeaway on slide 7. The 'don't build around the average' thesis is well-articulated and each finding supports it. Sequence is logical: concentration → category → audience → liquidity → synthesis.",
+    "framing": "Slide 2 sets context well with definitions and dataset overview. However, no mention of substantial missingness (274 missing categories, 288 missing audience_type, 241 missing country). '8 major categories' understates the actual 12. No limitations slide.",
+    "accuracy": "The $334M total revenue figure (slide 3) is off by ~21x from the actual $15.6M. Top-10 revenue share of 61.1% vs reference 49.6%. AI median $446 vs $503. B2B/B2C 5.7x gap not supported by reference data. These are not rounding differences—they are fundamental errors that invalidate core claims.",
+    "visual": "Clean, consistent dark/light palette. Good use of horizontal bars, donut chart is appropriate for binary split. Typography hierarchy is clear. Annotations are well-placed. Slight overuse of callout boxes but overall restrained and professional.",
+    "ai_slop": "Moderate signs: the consulting-style numbered takeaway slide (7) is formulaic; 'buyers are pricing in AI's durability, not just its hype' is unearned editorializing. Overall design is polished but templated."
+  },
+  "confidence": "high",
+  "total": 57,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 13548,
+    "output_tokens": 863
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 8,
+    "narrative": 8.5,
+    "framing": 8,
+    "accuracy": 5.5,
+    "visual": 6,
+    "bonus": 2
+  },
+  "what_worked": "Genuinely compelling thesis with a coherent narrative arc from concentration to actionable portfolio strategy.",
+  "fix_next": "Multiple key figures are materially wrong (median, AI median, Education median, B2B/B2C gap, Stripe share); verify every number against the raw data.",
+  "verdict": "Strong storytelling and original synthesis undermined by numerous factual errors.",
+  "flags": [
+    "multiple-factual-errors",
+    "median-revenue-wrong",
+    "category-medians-wrong",
+    "b2b-b2c-gap-inflated",
+    "stripe-share-wrong",
+    "unverifiable-derived-cohorts"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 2: Median stated as $282; no benchmark confirms this (dataset has complex median calculation but 30-day total is $15.6M not matching $13,472 mean either). 'Top 11' claimed for 50% share; reference says top 10 = 49.6%, so 11 is plausible but imprecise framing. Slide 3: AI median stated $446, reference says $503. Education median stated $2,142, reference says $2,435. Productivity median stated $42, reference says $79.91. Slide 4: Stripe stated as 64% of apps; reference says 636/1000 = 63.6% (minor). B2B vs B2C gap stated as 5.7x ($1,036/$181); reference says median multiples are 2.35x/2.30x respectively — the 5.7x figure appears fabricated. Stripe revenue share stated 87%; reference says $13.5M/$15.6M = 86.7% (acceptable rounding). Slide 2: All-time revenue $334M is unverifiable from the reference which only gives 30-day totals.",
+  "evidence": {
+    "insight": "Slide 7 synthesizes concentration, category, pricing, and time data into a portfolio strategy with specific kill rules — goes well beyond chart description. The DR vs. social following comparison on Slide 6 is an original angle.",
+    "narrative": "Clear spine from hook (trophy case as obituary) through five evidence slides to a closing recommendation. Each slide has a labeled role (Hook, Shape, Categories, Money, Time, Predictors, Close). The narrative builds cumulatively.",
+    "framing": "Title page states dataset, date, verification method. Appendix covers survivorship bias, missing data rates, derived field methodology. Audience (aspiring indie hackers) is implicit but clear. Limitations are surfaced honestly.",
+    "accuracy": "AI median off by ~11%, Education median off by ~12%, Productivity median off by ~47%. B2B/B2C 5.7x gap contradicts reference 2.35x/2.30x multiples. Free-tier correlation caveat is good but the underlying numbers are unverifiable. Age cohorts are derived via an acknowledged but unverifiable method.",
+    "visual": "Consistent dark theme with red accents. Cumulative revenue curve on Slide 2 is well-annotated. Scatter plot on Slide 3 is conceptually good but bubble sizes and positions are approximate/schematic rather than data-driven. Bar charts are simple and readable. Some slides are text-heavy (Slide 7). The Gamma template creates visual sameness across slides.",
+    "ai_slop": "Minimal generic filler — the prose is pointed and specific. However, the Gamma template creates some visual repetitiveness. The decorative illustration on the title page is stock/generic. Overall, content quality is well above typical AI slop."
+  },
+  "confidence": "high",
+  "total": 74,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18006,
+    "output_tokens": 942
+  }
+}

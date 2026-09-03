@@ -1,0 +1,42 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 3,
+    "narrative": 5,
+    "framing": 3.5,
+    "accuracy": 2,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Clean methodology slide with honest caveat about voluntary listing bias and sample limitations.",
+  "fix_next": "Analyze the actual 1,000-row dataset provided; every key claim references a fabricated parallel dataset instead.",
+  "verdict": "Polished pitch deck built on fabricated data, not the assigned dataset.",
+  "flags": [
+    "fabricated-data",
+    "pitch-deck-not-data-story",
+    "no-charts",
+    "wrong-dataset",
+    "category-mismatch",
+    "unverifiable-claims"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1: '$1.51B revenue tracked' — actual dataset total is $15.6M. '138 security startups' — no Security category exists in the 1,000-row dataset. Slide 3: '1,187 startups in Developer Tools/API' — dataset has only 1,000 rows total; Dev Tools has 37 entries. '375 Fintech startups' — no Fintech category in dataset. 'Security ranked #2 by total revenue' — unverifiable, no such category. '1Lookup earns $224,419/month' — cannot be verified against frozen data. Slide 3: '8x fewer rivals' — ratio of 1,187/138 ≈ 8.6x but both numerators are fabricated from a non-existent dataset.",
+  "evidence": {
+    "insight": "The strategic positioning idea (security category = higher revenue, less competition) is reasonable but entirely built on numbers from a different, unverifiable dataset — not the assigned 1,000-row file. Slides 4-8 contain zero data analysis, only product marketing.",
+    "narrative": "Coherent arc from data finding through problem/solution/GTM/moat/summary. However only slide 3 attempts any data engagement; slides 4-9 are a startup pitch with no analytical content, making this a pitch deck rather than a data story.",
+    "framing": "Slide 2 methodology describes '$1.51B across 53M transactions' — a completely different universe than the frozen 1,000-row, $15.6M dataset. The audience is framed as investors/strategic stakeholders, not as a data-story audience. No scope or limitations tied to the actual assignment data.",
+    "accuracy": "Nearly every quantitative claim is drawn from an apparent external scrape or fabrication rather than the provided dataset. Category names (Security, Fintech, Developer Tools/API with 1,187 entries), total revenue ($1.51B), and startup counts are all irreconcilable with the frozen reference. The dataset contains categories like AI (197), Marketing (42), SaaS (66) — none of which appear anywhere in the deck.",
+    "visual": "Professional dark-theme design with consistent typography, good hierarchy, and restrained color. However, there are zero data visualizations — no charts, no plots, no tables of actual data. Every slide is text-only layout, which is well-executed as a pitch deck but fails as a data story.",
+    "ai_slop": "Consulting-style language ('Trojan Horse strategy', 'moat', 'platform lock-in') is specific enough to the company to avoid generic filler, but the entire deck reads as AI-assisted pitch material rather than data analysis."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 4→3.5 and accuracy from 2.5→2.0. The methodology slide explicitly describes a different dataset ($1.51B, 53M transactions) than the assigned one, and the framing never acknowledges the actual assignment data. Accuracy worsens because every verifiable number contradicts the frozen reference, and the '8x fewer rivals' claim, while internally consistent, is built on wholly fabricated category counts.",
+  "total": 38,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 17756,
+    "output_tokens": 975
+  }
+}

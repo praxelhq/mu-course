@@ -1,0 +1,43 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 6,
+    "narrative": 5.5,
+    "framing": 5,
+    "accuracy": 5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Slide 7's PROSP recommendation is well-argued with five distinct, data-grounded supporting points and a runner-up contrast.",
+  "fix_next": "Add an opening thesis slide defining the audience, research question, portfolio scope, and key dataset limitations (zero-revenue rows, missingness rates).",
+  "verdict": "Competent ranked-list deck with a strong final recommendation but thin framing and limited original analysis.",
+  "flags": [
+    "no-thesis-or-framing-slide",
+    "missing-portfolio-level-stats",
+    "no-limitations-discussion",
+    "narrow-scope",
+    "repeated-dual-bar-layout",
+    "mrr-chart-scale-collapse-slide6",
+    "category-revenue-figures-unverifiable-against-frozen-ref"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 5: E-comm total all-time revenue shown as $54.8M but frozen reference gives E-comm total as $1,111,605.67 — the slide likely includes companies outside the category label (e.g., Stan/Brand On Demand classified differently) or uses a broader grouping, but the figure is far from the reference and unexplained. Slide 5: Marketing shown as $33.8M vs frozen reference $1,317,303.28 — same issue; these appear to be summing a different revenue field (all-time rather than 30-day) which is legitimate but the magnitudes suggest category assignments differ from the frozen reference or include uncategorized companies. However, since the frozen reference explicitly provides category totals and the slide's figures diverge by orders of magnitude, this counts as unverifiable/likely erroneous category aggregation. Other claims (197 AI, 19 E-comm, 274 missing categories) match the reference.",
+  "evidence": {
+    "insight": "Slide 7 builds a multi-factor acquisition case (MRR outlier at 188x median, 0.8x multiple vs 3.15x category median, growth trajectory, diversified subscribers). Slide 4 flags visitors_30d gap and uses subscriptions as proxy. Slide 5 contrasts lifetime vs recurring revenue leadership across categories. However, no portfolio-wide statistics (total revenue, top-10 concentration, Pearson r, payment-provider splits, anonymity share) are explored — insights stay at the ranking/comparison level.",
+    "narrative": "Logical sequence: for-sale → watchlist → deep-dive → categories → domains → recommendation. But the title slide promises an 'Executive Summary' that never appears. No opening question or thesis ties the slides together. The deck reads as sequential ranked lists converging on a buy recommendation rather than a structured argument with a landing.",
+    "framing": "No audience defined, no research question stated, no scope or limitations slide. Footnotes mention 274 missing categories and 178/1000 traffic coverage but these are not discussed as analytical constraints. The 216 zero-revenue companies, country missingness, and anonymous/named split are never addressed. A cold reader cannot assess how representative the analysis is.",
+    "accuracy": "Slide 5 category revenue totals ($54.8M E-comm, $33.8M Marketing) are orders of magnitude above the frozen reference totals ($1.1M, $1.3M respectively). The frozen reference totals appear to be 30-day revenue while the slide uses all-time revenue — this is a legitimate analytical choice but the discrepancy is so large it suggests different category assignments or inclusion of uncategorized rows. Company counts (197 AI, 19 E-comm) and missing-category count (274) match. Slide 4 honestly flags Stan's $0 3-month figure. Slide 7 median comparisons use a filtered for-sale AI subset that cannot be fully verified but is internally consistent.",
+    "visual": "Consistent navy/gold palette with clean bar charts and direct labels throughout. Slide 7's KPI cards and comparison table are effective. Slide 6 MRR chart suffers from scale collapse — positions 2-5 all show '$0M' which conveys no information. The repeated dual-bar-chart layout across slides 2, 3, 5, 6 creates visual monotony. Slide 4 line chart is readable. No chart junk but also no annotations or trend callouts on the charts themselves.",
+    "ai_slop": "Spaced-uppercase section headers and polished template are typical of AI presentation tools. The repeated dual-bar layout feels templated. However, content is substantive and dataset-specific — no generic filler paragraphs or fabricated charts detected."
+  },
+  "confidence": "medium",
+  "changed": true,
+  "change_reason": "Raised accuracy from 4.5 to 5.0. The slide 5 category figures use all-time revenue (explicitly labeled) rather than 30-day, which is a legitimate choice; the frozen reference totals are 30-day sums. The magnitude gap is explained by the different revenue window, not necessarily wrong category assignments. Reduced factual error count from 4 to 2 since the category revenue field choice is defensible even if unverifiable against the frozen 30-day reference. All other scores confirmed as appropriate.",
+  "total": 57,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 14591,
+    "output_tokens": 1281
+  }
+}

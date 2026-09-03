@@ -1,0 +1,46 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 3,
+    "narrative": 4,
+    "framing": 2.5,
+    "accuracy": 2,
+    "visual": 4.5,
+    "bonus": 0
+  },
+  "what_worked": "Mean-vs-median gap observation on slide 2 is a genuine, data-grounded analytical point worth highlighting.",
+  "fix_next": "Strip all fabricated metrics (IRR, EV, CAGR, invented startups) and rebuild every claim from verifiable dataset fields with disclosed methodology.",
+  "verdict": "Polished template over fabricated data; consulting theater replaces honest analysis.",
+  "flags": [
+    "fabricated-metrics",
+    "invented-startup-names",
+    "unverifiable-composite-scores",
+    "no-limitations-disclosed",
+    "consulting-slop",
+    "missing-data-ignored",
+    "causal-overclaim",
+    "inflated-language",
+    "decorative-charts",
+    "methodology-absent"
+  ],
+  "factual_error_count": 13,
+  "factual_error_detail": "Slide 2: AI median listed as $446 vs reference $503; SaaS median listed as $303 vs reference $200.50. Slide 3: 'Marketplace' is not a dataset category; ARPU, valuation multiples, and revenue-per-visitor figures are unverifiable/invented; Marketing row shows 22 visitors which is suspiciously cherry-picked with no denominator. Slide 4: At least 4 startup names (ApexMetrics, CoreFlow, SynthAI, NovaCorp) appear fabricated; composite score methodology never disclosed. Slide 5: Enterprise valuations ($1.25B, $289M, $187M) are wholly invented with no basis in dataset. Slide 6: IRR (45.2%, 22.1%, 28.5%, 8.3%), CAGR (49.7%, 15.5%), 3Y projected EV, and 'A- Rated' confidence are all fabricated. Slide 7: Repeats all fabricated figures from slide 6 as settled conclusions.",
+  "evidence": {
+    "insight": "Only the mean-vs-median power-law observation (slide 2) reflects genuine dataset analysis. All other claimed insights (ARPU leverage, multiple premiums, IRR projections, positioning matrix) rest on invented numbers, yielding zero decision-useful depth.",
+    "narrative": "A coherent thesis arc exists (AI dominance → unit economics → portfolio allocation → recommendation), but the logical sequence is built on fabricated evidence. Slides 6-7 are near-duplicates repeating the same unsupported claims, weakening the landing.",
+    "framing": "No mention of 274 missing categories, 241 missing countries, 216 zero-revenue rows, or 288 missing audience types. Audience framed as institutional investors making 'multi-million dollar capital deployment' from a 30-day MRR snapshot of 1,000 startups—a severe scope mismatch. No limitations section anywhere.",
+    "accuracy": "AI median $446 vs reference $503; SaaS median $303 vs reference $200.50. 'Marketplace' is not a valid category. Four startup names are hallucinated. All valuation multiples, IRR, CAGR, and enterprise values are fabricated with false precision. No sample sizes or denominators disclosed for any sub-analysis.",
+    "visual": "Clean, consistent blue-and-white design with strong typographic hierarchy and legible layouts. However, the bubble chart (slide 3), quadrant matrix (slide 5), EV projection line chart (slide 6), and treemap (slide 6) all visualize fabricated data, making them decorative rather than evidence-based.",
+    "ai_slop": "Heavy throughout: 'Dynamic Scenario Hedging,' 'A- Rated,' 'exponential long-term upside,' 'micro-injections,' 'capital-efficient creator automation engine.' Invented startup names (ApexMetrics, CoreFlow, SynthAI, NovaCorp) are classic LLM hallucination artifacts. Fabricated precision (45.2% IRR, $1.25B EV, 36.4% CAGR) with zero methodology. Slides 6-7 are near-pure repetitive filler."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 3 to 2.5 due to complete absence of data-quality disclosure and severe audience/scope mismatch; raised visual from 4 to 4.5 acknowledging genuinely clean design execution despite decorative charts. All other scores confirmed as appropriate.",
+  "total": 32,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 15009,
+    "output_tokens": 1120
+  }
+}

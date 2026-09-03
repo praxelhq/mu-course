@@ -1,0 +1,43 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7.5,
+    "framing": 6,
+    "accuracy": 5.5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Three-decision structure with synthesis slide and explicit causal discipline on slide 8 is genuinely strong.",
+  "fix_next": "Disclose missingness (274 categories, 216 zero-revenue rows, 288 audience_type) and show sample sizes next to every median.",
+  "verdict": "Well-structured decision deck undermined by missing-data silence and unverifiable claims.",
+  "flags": [
+    "missing-data-never-disclosed",
+    "correlation-values-unverifiable",
+    "acquisition-data-unverifiable",
+    "slide2-text-truncation",
+    "slide3-decorative-blocks",
+    "slide6-progress-bars-no-scale",
+    "consulting-speak-inflated"
+  ],
+  "factual_error_count": 1,
+  "factual_error_detail": "Slide 2: Spearman correlations stated without verifiable basis; values plausible but unconfirmable. Slide 7 median values are in reasonable range but cannot be exactly verified. Slide 5 acquisition targets are dataset-specific and unverifiable but not necessarily wrong. No hard factual contradiction found except: the deck never acknowledges ~27% missing category data or 216 zero-revenue rows, which materially affects median calculations presented as authoritative—this is an accuracy-by-omission issue rather than a discrete factual error. Counting conservatively as 1 for the omission that distorts interpretation.",
+  "evidence": {
+    "insight": "Slide 2 correlation hierarchy (followers 0.17 vs subscriptions-MRR 0.90) is a useful finding; slide 8 causality check is rare and valuable. But the 'build' recommendation (revenue-health copilot) is a startup pitch extrapolated well beyond dataset evidence—more imagination than insight.",
+    "narrative": "Clear build/buy/pay three-act arc with slide 9 synthesis and slide 10 action plan. 'One portfolio logic' line ties decisions together. Sequence is purposeful. Landing is concrete with measurable proof points.",
+    "framing": "Slide 1 sets up three questions clearly; audience (indie SaaS founder) is identifiable. However, dataset limitations are never disclosed: 274 missing categories, 216 zero-revenue rows, 288 missing audience_type, 241 missing country. This is a significant framing gap that a cold reader needs. Downgraded from preliminary 7.0.",
+    "accuracy": "Provider counts (636, 189) match reference. Median revenue figures on slide 7 are plausible but unverifiable. Acquisition data on slide 5 is specific to named companies and unverifiable. Zero-revenue rows and missingness are never acknowledged despite materially affecting medians. No outright false number contradicts the reference, but omission of data quality context is an accuracy concern.",
+    "visual": "Clean typography, consistent color coding, good hierarchy. Slide 2 and 7 bar charts are clear. Slide 2 has visible text truncation ('Implicatio/n', 'conversio/n'). Slide 3 colored blocks are decorative not informative. Slide 6 progress bars lack scale. Overall competent but not polished.",
+    "ai_slop": "Slide 3 'revenue-health copilot' and slide 5 'conversational revenue OS' feel like startup pitch template language. Slide 4 business model canvas is more pitch than data story. Generally restrained but consulting-speak appears in places."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Reduced framing from 7.0 to 6.0 because complete silence on missingness and zero-revenue rows is a material gap for a data story. Reduced bonus from 2 to 1: the causality check on slide 8 is genuinely good but the startup-pitch slides (3-4) dilute the data-story merit. Other scores unchanged.",
+  "total": 65,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 18786,
+    "output_tokens": 990
+  }
+}

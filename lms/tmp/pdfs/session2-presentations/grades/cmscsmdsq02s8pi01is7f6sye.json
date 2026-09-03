@@ -1,0 +1,37 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 5.5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Strong decision-oriented framing with Buy/Build/Operate lens and honest caveats on limitations.",
+  "fix_next": "Per-company revenue uses mean not median, inflating E-comm/Marketing claims; use medians to match the skewed distributions you acknowledge elsewhere.",
+  "verdict": "Decision-useful and well-structured, but mean-vs-median confusion undermines key claims.",
+  "flags": [
+    "mean-median-confusion",
+    "unverifiable-growth-figures",
+    "revenue-timeframe-mismatch"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: Per-company revenue uses mean (total/count) but dataset is heavily skewed; E-comm $59K mean vs $387 median—misleading juxtaposition with total chart. Slide 2: Presents mean-per-company as 'efficiency view' without labeling it as mean, while slide 3 uses medians, creating inconsistency. Slide 10: Stripe revenue stated as $119.9M (12M) but reference 30-day revenue is $13.5M; the 12M annualization is not explained and may be fabricated (×12 would give ~$162M, not $119.9M). Slide 3: Revenue multiples (3.95x Education, etc.) cannot be verified against reference B2B/B2C multiples of ~2.3x; these appear to be different metrics. Slide 7: 'Total 12M revenue' column values (e.g., US-AI $13.26M) are unverifiable and the annualization methodology is unstated.",
+  "evidence": {
+    "insight": "Slides 7-8 contrast followers vs subscribers as revenue predictors (r=0.03 vs r=0.80), yielding a genuinely actionable diligence rule. Slide 5 bubble chart synthesizes growth breadth and depth. Slide 6 cross-tabs country×category for granular targeting.",
+    "narrative": "Clear Buy/Build/Operate thesis introduced on slide 1, developed through 9 numbered insights, and synthesized in a decision card on slide 11. Each slide has a labeled takeaway. Sequence moves from market landscape → growth → geography → acquisition → correlation → operations → summary.",
+    "framing": "Slide 1 states dataset, row count, freeze date. Slide 11 includes caveats about multiples coverage (26%), plateau firms, and indie-hacker skew. However, audience persona is implicit rather than stated; missing-data rates for category (274/1000) and country (241/1000) are never disclosed despite heavy reliance on both.",
+    "accuracy": "Slide 2 total revenues match reference (AI $2.36M, Marketing $1.32M, E-comm $1.11M). But per-company figures are means not medians—E-comm mean $59K vs reference median $387, a 150x discrepancy that is never flagged. Slide 10 uses '12M revenue' without explaining derivation; $119.9M for Stripe doesn't match simple ×12 of 30-day reference ($13.5M×12=$162M). Slide 3 growth and multiple figures are plausible but unverifiable against reference data. Slide 8 subscription correlation (r=0.80) is internally consistent but not in reference set.",
+    "visual": "Consistent layout with labeled insight numbers, color-coded takeaway bars, and paired charts (slides 2, 3, 10). Bubble chart on slide 5 is effective. Heatmap on slide 4 is readable. Log-log scatterplots on slides 8-9 are well-chosen for skewed data. Minor issues: slide 4 heatmap has some empty cells without explicit zeros; slide 7 is a plain table that could benefit from conditional formatting.",
+    "ai_slop": "Minimal slop. Language is direct and specific rather than generic consulting-speak. No decorative stock imagery. The '9 decision-grade insights' framing on slide 1 is slightly inflated but each insight is substantive. Template is consistent but not repetitively decorative."
+  },
+  "confidence": "high",
+  "total": 71,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22082,
+    "output_tokens": 1066
+  }
+}

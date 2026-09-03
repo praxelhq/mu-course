@@ -1,0 +1,495 @@
+   MU        ·   SESSION 3               ·    EDA STORYBOARD
+
+
+
+
+  Decoding TrustMRR
+   What 1,000 Indie Startups Reveal About Revenue, Categories & the Micro-Acquisition
+   Economy
+
+
+
+   Dataset: TrustMRR marketplace snapshot, 1,000 listings, 29 attributes, frozen 30 Jul 2026
+   Prepared by: Bhavika | Masters' Union
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                1
+ THE STORYBOARD
+
+
+ How We'll Walk Through the Data
+
+                   The Dataset                                                         Category Landscape
+     01            What TrustMRR is, and what 1,000 rows actually contain         05   Where the volume is vs. where the money is
+
+
+
+
+                   Problem & Approach                                                  Monetization
+     02            The question we're answering, and how we cleaned & framed it   06   B2B vs B2C, and the payment rails startups build on
+
+
+
+
+                   Market Snapshot                                                     What Drives Growth
+     03            Headline numbers — size, scale, and shape of the sample        07   Correlation view — the metrics that actually move MRR
+
+
+
+
+                   Revenue Reality                                                     Geography & the Deal Economy
+     04            The long tail: who earns what, and why medians beat averages   08   Where startups sit, and what they're worth when sold
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                2
+ 01 · THE DATASET
+
+
+ What Is TrustMRR, and What Are We Looking At?
+
+ TrustMRR is a public marketplace / directory where founders list indie SaaS, AI,                   29 columns, four themes
+ and mobile apps with verified revenue. Some listings are simply showcasing                           Identity
+ traction; others are actively for sale, turning this into a snapshot of the micro-
+                                                                                                      record_id, startup_name, url, website, country, x_followers
+ startup economy.
+                                                                                                      Revenue & Growth
+
+                                                                                                      revenue_30d/3m/12m/all-time, mrr_usd, mrr_growth_30d_pct,
+      1,000                           31                    29                    65                  revenue_growth_30d_pct, active_subscriptions
+
+
+       startups (rows)          attributes (columns)   product categories   countries represented     Product & Positioning
+
+                                                                                                      value_proposition, problem_solved, pricing_model, target_persona, audience_type,
+ Each row = one listed startup, spanning revenue (30d / 3m / 12m / all-time), growth rates,           category, markets_json
+ subscriptions,
+ traffic, pricing model, audience type, category tags, domain authority, and — where                  Traffic & Deal Terms
+ applicable —                                                                                         visitors_30d, revenue_per_visitor_usd, domain, domain_rating, on_sale,
+ asking price and revenue multiple for buyers.                                                        asking_price_usd, revenue_multiple
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                                                          3
+ 02 · PROBLEM & APPROACH
+
+
+ Making Sense of the Data: The Question and the Method
+                                                                                       The approach
+        The problem statement
+                                                                                              Clean & scope
+                                                                                        1
+                                                                                              Parsed messy fields (revenue_multiple text, markets_json arrays, multi-provider strings);
+        TrustMRR gives us a raw, messy cross-section of 1,000 real startups.                  flagged 129 anonymized “Stealth Company” rows and heavy nulls in traffic/deal-term fields
+                                                                                              rather than dropping them silently.
+        The task: turn scattered financial and product fields into a coherent
+                                                                                              Profile
+        story about how the indie-startup economy actually makes money —                2
+        where revenue concentrates, what categories dominate, what                            Ran distribution checks on every revenue field — found extreme right-skew, so medians
+                                                                                              (not means) anchor every headline metric.
+        correlates with growth, and what this means for founders, investors,
+        and buyers browsing the marketplace.                                                  Segment
+                                                                                        3
+                                                                                              Cut the data by category, audience type (B2B/B2C), country, and payment provider to
+        Guiding questions                                                                     compare like-for-like.
+
+        • Is revenue evenly spread, or concentrated in a few winners?                         Correlate
+                                                                                        4
+        • Which categories carry volume vs. which carry money?                                Used Spearman correlation (robust to outliers/skew) to rank what actually moves MRR.
+
+        • What actually predicts higher MRR — followers, traffic, or something else?
+                                                                                              Translate
+        • What does the marketplace tell us about how these businesses get valued?      5
+                                                                                              Converted every pattern into a business-relevant takeaway — for a founder, an investor, or
+                                                                                              a buyer.
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                                                            4
+ 02 · PROBLEM & APPROACH
+
+
+ Before the Story: Know the Gaps in the Data
+ Missing values by field (% of 1,000 rows)
+
+          domain_rating                           28.6%
+                                                                                    129
+                  domain                          28.6%
+                                                                                    listings are anonymized “Stealth Company” rows — no category,
+                                                                                    no country. We keep them in volume counts but exclude them
+          audience_type                           28.8%
+                                                                                    from category/geo breakdowns.
+
+         problem_solved                            29.9%
+
+
+           pricing_model                              34.3%
+
+                                                                                    Reading the gaps
+          target_persona                                  36.1%
+
+
+       revenue_multiple                                           73.8%
+                                                                                    • Traffic fields (visitors, revenue/visitor) are self-reported — only
+                                                                                    ~15% of founders share them.
+       asking_price_usd                                           73.9%
+                                                                                    • ~74% missing on asking price / multiple simply means most listings
+                                                                                    aren't for sale — this is expected, not an error.
+             visitors_30d                                                 82.2%     • Category, audience type & pricing model are optional profile fields
+                                                                                    — we treat their absence as “unclassified,” not zero.
+revenue_per_visitor_usd                                                     85.8%
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                             5
+ 03 · MARKET SNAPSHOT
+
+
+ The Headline Numbers
+
+
+       $13.5M                                     $282                                          $134M
+       Combined MRR across all 1,000 listings     Median MRR — half of all startups earn less   Combined trailing-12-month revenue
+
+
+
+
+       20%                                        21%                                           262
+       of listings currently earn $0 MRR          have crossed $10K MRR                         startups (26%) are actively listed for sale
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                               6
+ 04 · REVENUE REALITY
+
+
+ The Long Tail: Most Startups Earn Little, a Few Earn a Lot
+250
+                                                                                             Why this matters
+
+             197                   198                  197    196        196
+200
+
+
+
+
+150                                                                                          The distribution is almost perfectly stepped across tiers
+                                                                                             — until the top. Only 16 startups (1.6%) clear $100K
+                                                                                             MRR, led by an outlier at $3.57M. That single listing
+100                                                                                          alone is larger than the bottom 600 combined.
+
+
+                                                                                             Takeaway: always report the median ($282/mo), never
+ 50                                                                                          the mean ($13.5K/mo) — the mean is dragged 48x higher
+                                                                                             by a handful of breakout businesses.
+                                                                                     16
+
+  0
+              $0                 $1-100           $100-1K     $1K-10K   $10K-100K   $100K+
+
+ Number of startups by monthly recurring revenue tier
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                          7
+   05 · CATEGORY LANDSCAPE
+
+
+   Where the Volume Is vs. Where the Money Is
+  Top 10 categories — number of listings                   Median MRR by category (USD)
+
+
+        E-comm            19                                      E-comm            $155
+
+
+      Education                30                               Education                                                  $2,142
+
+
+Health & Fitness                34                        Health & Fitness                   $392
+
+
+Content Creation                 36                       Content Creation                               $1,254
+
+
+      Dev Tools                     37                          Dev Tools           $185
+
+
+      Marketing                      42                         Marketing                                         $1,586
+
+
+     Productivity                         49                   Productivity   $42
+
+
+    Mobile Apps                           52                  Mobile Apps             $223
+
+
+           SaaS                                66                    SaaS                  $303
+
+
+              AI                                    197                 AI                        $446
+
+
+
+
+ TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                    8
+ 05 · CATEGORY LANDSCAPE
+
+
+ AI Owns the Volume — But Not the Wallet
+
+
+        197
+                                                                                      Business takeaway
+
+
+
+
+        AI-tagged startups — nearly 1 in 5 of all classified listings, more than 3x
+                                                                                      Category popularity and category profitability are not the same signal.
+        the next category (SaaS, 66).
+
+                                                                                      Founders chasing “hot” categories like AI are entering the most crowded
+        But median MRR tells a different story:                                       lane on the platform — high competition, only average monetization.
+
+
+                                                                                      For an investor or acquirer screening listings, the categories worth a
+        • AI's median MRR is just $446/mo — mid-pack, not top.                        second look are the quieter, higher-median ones: Education, Marketing,
+        • Education ($2,142) and Marketing ($1,586) post the highest median MRR
+                                                                                      Analytics, and Social Media — where fewer players are extracting more
+        despite far fewer listings.
+                                                                                      revenue per business.
+        • Productivity has volume (49 listings) but the lowest median MRR ($42) of
+        any major category — it's the most crowded, least monetized space.
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                                 9
+ 06 · MONETIZATION
+
+
+ Who They Sell To, and How They Get Paid
+Audience type                                                    Primary payment provider (top 7)
+
+                                      56                            644
+                                      8%
+
+
+
+
+             255
+             36%
+                                                           401
+                                                           56%
+                                                                                191
+
+
+
+
+                                                                                            50        40
+                                                                                                               27         19        16
+
+                                                                   Stripe    RevenueCat     Dodo     Polar    Lemon    Superwall   Paddle
+                                     B2C      B2B   Both                                  Payments           Squeezy
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                             10
+ 06 · MONETIZATION
+
+
+ B2B Charges More — Even With Fewer Customers
+
+      B2B                                                           B2C                                                          Both
+      255 startups                                                  401 startups                                                 56 startups
+
+
+      $1,036                                                        $181                                                         $352
+      median MRR                                                    median MRR                                                   median MRR
+
+
+
+
+        What it means
+
+        B2B startups earn roughly 5.7x the median MRR of B2C peers, despite representing far fewer listings (255 vs 401). This tracks with classic SaaS economics — B2B
+        customers tolerate higher price points and lower churn.
+
+
+        On the rails side, Stripe powers 64% of listings and carries the deepest revenue base ($11.8M of $13.5M total MRR), while RevenueCat (19%) dominates mobile-app
+        subscription billing — a clean signal that most of this dataset is web-first SaaS, with a distinct mobile-subscription cluster layered on top.
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                                           11
+ 07 · WHAT DRIVES GROWTH
+
+
+ What Actually Correlates With Higher MRR?
+
+                                                                                         Reading the ranking
+               x_followers                        0
+
+
+
+
+revenue_per_visitor_usd                                              0
+
+                                                                                         Active subscriptions (0.90) and asking price (0.85) move
+                                                                                         almost in lockstep with MRR — unsurprising, since more paying
+            domain_rating                                                0
+                                                                                         users directly is revenue, and sellers price listings off revenue.
+
+
+                                                                                         Traffic (0.55) and domain authority (0.49) matter, but far less
+              visitors_30d                                                   1
+                                                                                         than conversion. Revenue-per-visitor (0.43) confirms it: getting
+                                                                                         visitors matters less than converting them.
+
+        asking_price_usd                                                         1
+                                                                                         X followers (0.17) barely correlates with MRR — social
+                                                                                         following is a weak proxy for revenue in this dataset.
+
+     active_subscriptions                                                            1
+
+
+
+ Spearman correlation coefficient (rank-based, robust to outliers)
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                               12
+ 08 · GEOGRAPHY & THE DEAL ECONOMY
+
+
+ Where the Startups Sit
+Top 8 countries by listing count                                                                                 Total MRR by country (USD)
+
+                                                                                                                   $7,504K
+
+    258
+
+
+
+
+                  79
+
+                                59
+                                              50
+
+                                                         29                                                                  $894K
+                                                                       24           20            19
+                                                                                                                                              $350K   $366K
+                                                                                                                                      $157K                                 $208K
+                                                                                                                                                              $75K   $84K
+
+
+    US            FR            IN            GB         CA           DE            BR           HK                  US       FR       IN     GB       CA     DE     BR      HK
+
+
+US listings hold ~24% of volume but ~56% of total MRR — concentration mirrors the broader long-tail pattern seen earlier.
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                                                     13
+ 08 · GEOGRAPHY & THE DEAL ECONOMY
+
+
+ Inside the Marketplace: What Startups Sell For
+
+
+     262                                          $35K                  2.3x                      $10.0M
+     startups listed for sale (26.2% of all)      median asking price   median revenue multiple   highest asking price in the sample
+
+
+
+
+ Top 10 listings by MRR
+ Startup                                               Category         Country                               MRR                        Subs
+
+ Stan                                                  —                US                              $3,569,654                     101,590
+
+ Stealth Company                                       —                —                                 $747,069                       1,677
+
+ GojiberryAI                                           AI               US                                $494,668                       4,642
+
+ Stealth Company                                       —                —                                 $364,101                       2,134
+
+ Rezi                                                  AI               US                                $259,701                      10,749
+
+ Kibu                                                  Education        US                                $234,319                        375
+
+ Cometly                                               Analytics        US                                $207,616                        307
+
+ 1Lookup                                               SaaS             US                                $207,064                        655
+
+ Stealth Company                                       —                FR                                $191,268                       8,108
+
+ Brand On Demand, Inc.                                 E-comm           US                                $187,459                       3,631
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                             14
+ RECAP
+
+
+ Five Things This Dataset Tells Us
+
+        1           It's a long tail, not a bell curve             20% of startups earn $0 MRR; just 1.6% clear $100K. Always lead with the median.
+
+
+
+
+                                                                   Highest listing count, only mid-pack median MRR — Education & Marketing monetize better
+        2           AI is crowded, not necessarily lucrative       per listing.
+
+
+
+
+        3           B2B out-earns B2C by ~5.7x                     Fewer B2B listings, but sharply higher median MRR — pricing power beats volume.
+
+
+
+
+        4           Conversion beats reach                         Active subscriptions & revenue-per-visitor predict MRR far better than followers or raw traffic.
+
+
+
+
+        5           The US anchors the money, not just the count   24% of listings, ~56% of total MRR — geography concentrates value even more than volume.
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                                       15
+   SO WHAT?
+
+
+  Turning the Data Into Decisions
+
+                                                   Category choice matters more than hype — quieter, higher-median spaces (Education, Marketing, Analytics) may offer less
+         For Founders
+                                                   noise and better monetization than the crowded AI lane.
+
+
+
+
+                                                   Screen listings on active subscriptions and conversion (revenue/visitor), not follower counts or traffic alone — these are the
+         For Investors / Buyers
+                                                   metrics that actually predict revenue.
+
+
+
+
+                                                   With a 2.3x median revenue multiple and a $35K median asking price, most deals here are small, founder-to-founder
+         For the Marketplace
+                                                   transactions — the platform is a micro-M&A market, not a growth-equity one.
+
+
+
+   Thank you — Bhavika | Masters' Union | MU Session 3
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                                                     16
+

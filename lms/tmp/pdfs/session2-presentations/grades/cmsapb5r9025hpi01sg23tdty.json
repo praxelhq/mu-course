@@ -1,0 +1,37 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 9,
+    "narrative": 9.5,
+    "framing": 9,
+    "accuracy": 7,
+    "visual": 8.5,
+    "bonus": 4
+  },
+  "what_worked": "Exceptional investment-memo framing with genuine forensic skepticism—cross-checking MRR against collected cash is real analytical work.",
+  "fix_next": "Several median category figures are materially wrong (Education $2,141 vs $2,435; Marketing $1,586 vs $2,370); verify all benchmark numbers against the raw dataset.",
+  "verdict": "Outstanding narrative and analytical depth, undermined by several inaccurate category medians.",
+  "flags": [
+    "median-category-errors",
+    "top10-share-understated",
+    "total-revenue-understated"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1: '$13.5M combined monthly revenue' — actual total 30-day revenue is $15.6M (understated ~$2M). Slide 3: Top-10 share stated as 48%, actual is 49.6%. Slide 3: Education median $2,141 vs actual $2,435. Slide 3: Marketing median $1,586 vs actual $2,369.50. Slide 3: AI median $446 vs actual $503. Analytics median $1,294 vs actual $419 (large error, though 'Analytics' may be defined differently). SaaS median $303 vs actual $200.50. Productivity median $42 vs actual $79.91.",
+  "evidence": {
+    "insight": "Slides 5-8 perform genuine forensic analysis: cross-referencing reported MRR against collected cash, subscriber counts against implied ARPU (63×$30≈$1,890 vs $36k MRR on slide 8), and identifying that every cheap-ownership listing has contradictory financials. The thesis that 'proof is the scarcer asset' is original and decision-useful.",
+    "narrative": "Perfect funnel structure: landscape (slide 3) → investable universe (slide 4) → deep dives with explicit advance/eliminate verdicts (slides 5-8) → elimination round (slide 9) → finalist comparison (slide 10) → decision (slide 11) → alternate scenarios (slide 12). Every slide advances one argument toward a single decision. The closing line lands.",
+    "framing": "Slide 1 sets the constraint ($10k, one investment). Slide 2 establishes the eight-lens framework before any data appears. Assumptions are explicitly labelled (slide 4: fractional/SPV; slide 11: churn caveat). Slide 12 acknowledges the recommendation is risk-profile-dependent. A cold reader understands the question, scope, and limitations immediately.",
+    "accuracy": "Total revenue understated by ~$2M (slide 1). Top-10 share 48% vs 49.6%. Multiple category medians are materially off: Education, Marketing, Analytics, AI, SaaS, Productivity all deviate from reference values. Some could reflect different filtering but the pattern suggests systematic error. Company-level deep-dive numbers (GoTall, PROSP, Speel, Notionlytics, DropPop) appear internally consistent and plausible. The 197 AI companies count is correct.",
+    "visual": "Consistent dark-red/white palette with restrained use of green/red for verdict signals. Clean hierarchy: section labels, bold headlines, supporting stats in cards. Slide 10's horizontal bar comparison is effective. No decorative charts or gratuitous graphics. The funnel visualization on slide 4 is elegant. Minor issue: some slides are text-dense (slide 11) but remain legible.",
+    "ai_slop": "none — the writing is sharp, specific, and dataset-grounded throughout. No generic filler, no inflated language, no decorative-but-meaningless graphics. Every claim references specific numbers."
+  },
+  "confidence": "high",
+  "total": 90,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 24798,
+    "output_tokens": 984
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 5,
+    "narrative": 5.5,
+    "framing": 4,
+    "accuracy": 3.5,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Power-law distribution insight and the automated filtering funnel showed genuine analytical thinking about the dataset.",
+  "fix_next": "Strip the fictional board-pitch framing; ground every number in verifiable dataset facts and acknowledge massive missingness (27-29% across key fields).",
+  "verdict": "Consulting theater over data story; several fabricated numbers undermine real insights.",
+  "flags": [
+    "ai-slop-consulting-language",
+    "fabricated-statistics",
+    "unacknowledged-missingness",
+    "inflated-framing",
+    "no-real-charts"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1/12: '$13.5M Monthly Platform MRR' — total 30-day revenue is $15.6M, not $13.5M, and calling it 'MRR' misrepresents the field. Slide 3: AI median stated as $446 vs reference $503; mean/median gap stated as 48x ($13,472/$282) — actual mean is ~$15,596 and median differs. Slide 4: AI median '$446' wrong (should be ~$503); DevTools & Analytics combined median '$1,294' is fabricated — Dev Tools median is $635, Analytics $419. Slide 4: '197 Listings (20% of Exchange)' — 197/726 categorized = 27%, not 20% of 1000 since 274 have no category. Slide 5: r=0.91 for subscribers vs MRR is unverifiable from the reference data and presented without sourcing. Slide 7: '38x Median' asking multiple is asserted without derivation. Slide 12: '$13.5M Combined Monthly Revenue' repeated error; '65 Countries' and '262 live listings' unverifiable and inconsistent with 241 missing country values.",
+  "evidence": {
+    "insight": "Slide 3 power-law observation and slide 10 filtering funnel show real analytical work; slide 4 AI-vs-DevTools comparison is a useful contrast but uses wrong numbers; slides 8-9 propose business strategies that go beyond the data assignment.",
+    "narrative": "Deck follows a coherent arc: market overview → distribution → category analysis → correlations → valuation mismatches → strategy → roadmap. However, it reads as a fictional board pitch rather than a data story, and the strategic recommendations (slides 8-9, 11) are speculative business plans untethered from the dataset.",
+    "framing": "Framed as a 'CEO Board Briefing' for TrustMRR — an invented audience/context that obscures the actual analytical task. No mention of dataset limitations, missingness rates (24-29% across key fields), or scope constraints. A cold reader would not understand this is a student data analysis.",
+    "accuracy": "Multiple fabricated or wrong numbers: $13.5M vs $15.6M total revenue, AI median $446 vs $503, DevTools+Analytics combined median $1,294 is invented, 20% share miscalculated, r=0.91 unverifiable, 38x median multiple unsourced. Zero acknowledgment of 274 missing categories or 241 missing countries. The 70% plateaued/shrinking claim (slide 6) is unsupported.",
+    "visual": "Dark theme with neon green accents is consistent but every slide uses the same card-and-text layout with zero actual data visualizations — no scatter plots, histograms, bar charts, or any chart at all. The bar chart on slide 5 is a simple horizontal bar showing three correlation values. Massive empty space on most slides. Status badges on slides 6-7 have rendering/legibility issues.",
+    "ai_slop": "Heavy consulting jargon throughout: 'sovereign software asset exchange,' 'institutional-grade deal stream,' 'capital allocation efficiencies,' 'asymmetric information.' Every slide has a 'WHY THE BOARD SHOULD CARE' or 'BOARD STRATEGIC TAKEAWAY' footer that reads as template filler. Slides 8-9 and 11 are pure speculative business strategy with fabricated financial projections ($1.8M arbitrage revenue, 88% gross margin) that have no basis in the dataset."
+  },
+  "confidence": "high",
+  "total": 44,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22615,
+    "output_tokens": 1088
+  }
+}

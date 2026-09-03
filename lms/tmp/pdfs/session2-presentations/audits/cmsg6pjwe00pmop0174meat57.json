@@ -1,0 +1,45 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 6.5,
+    "framing": 4.5,
+    "accuracy": 3.5,
+    "visual": 6,
+    "bonus": 0
+  },
+  "what_worked": "Two-sided finding (AI helps some categories, hurts others) gives the thesis genuine analytical tension.",
+  "fix_next": "Disclose how 'AI-enabled' was tagged, show sample sizes per category, and acknowledge missing data and skew.",
+  "verdict": "Polished storytelling built on an unverifiable segmentation with no disclosed limitations.",
+  "flags": [
+    "fabricated-or-unexplained-segmentation",
+    "unverifiable-revenue-lifts",
+    "no-sample-sizes-shown",
+    "missing-data-not-addressed",
+    "means-on-skewed-data",
+    "causal-language-risk",
+    "ai-slop-visual-template",
+    "no-real-charts-beyond-one-bar",
+    "slide7-generic-filler"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 4: '27% already AI-enabled' and '803 non-AI startups' rely on an AI-enabled flag that does not exist in the dataset and whose derivation is never explained. Slide 5: Revenue lift percentages (+285%, +219%, +228%, +88%) are presented without sample sizes, confidence intervals, or any way to verify against known category data; using means on highly right-skewed revenue distributions is misleading. Slide 6: Same issue for negative lifts (-84%, -95%, etc.). Slide 3: Claims methodology is 'rigorous' but never explains how AI-enabled tagging was performed, making the entire analytical chain unverifiable.",
+  "evidence": {
+    "insight": "Slides 5-6 present a genuinely interesting contrast—AI lifts revenue in education/content/health but not in marketing/SaaS/dev tools. Slide 7 attempts a 'why' explanation. However, without sample sizes or statistical tests, the insight is suggestive rather than substantiated, and the explanatory slide 7 is generic theory, not data-driven.",
+    "narrative": "Clear arc: question (slide 2) → method (slide 3) → positive evidence (5) → negative evidence (6) → explanation (7) → decision framework (8) → summary (9) → close (10). Coherent and purposeful. Slides 9-10 are somewhat redundant. The narrative would be stronger if limitations were acknowledged anywhere.",
+    "framing": "Founder audience is well-targeted on slide 2. However, 274 missing category values, 288 missing audience_type, and 216 zero-revenue rows are never mentioned. No limitations slide. The critical methodological choice—how 'AI-enabled' was determined—is completely opaque, which undermines the entire framing for a cold reader.",
+    "accuracy": "The entire analysis rests on an 'AI-enabled' segmentation that cannot be verified from known dataset fields. Revenue lift figures use means on extremely skewed data without noting this. The 803 figure (1000−197) is arithmetically consistent but the underlying classification is unexplained. No denominators, no n-values, no confidence intervals. Causal hedging is inconsistent—slide 3 subtitle says 'drives' while slide 5 says 'appears to.'",
+    "visual": "Consistent dark theme with teal/gold accents; professional appearance. Only one actual data chart (slide 4 bar chart). Slides 5-6 present numbers as text callouts, not visualizations. Heavy icon-in-circle motif is templated. Decision tree on slide 8 is well-structured. Slide 10 rocket/particle imagery is purely decorative.",
+    "ai_slop": "Futuristic cityscape (slide 1), scale imagery (slide 2), particle-effect rocket (slide 10) are decorative AI-generated images. Slide 7's four-pillar framework (Personalization/Automation/Prediction/Recommendation) is generic consulting content unsupported by data—could appear in any AI deck. Consistent icon template across all slides suggests heavy AI-assisted design."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Removed 1 bonus point: slide 7's explanatory framework is generic filler rather than data-driven, and the deck lacks any element truly beyond the rubric. Lowered framing by 0.5 for complete absence of limitations disclosure on a dataset with substantial missingness. Other scores confirmed as appropriate.",
+  "total": 52,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 17498,
+    "output_tokens": 1097
+  }
+}

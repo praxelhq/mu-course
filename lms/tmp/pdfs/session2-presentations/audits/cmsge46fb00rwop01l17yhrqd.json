@@ -1,0 +1,43 @@
+{
+  "slide_count": 14,
+  "scores": {
+    "insight": 6,
+    "narrative": 6.5,
+    "framing": 4,
+    "accuracy": 3,
+    "visual": 4.5,
+    "bonus": 0
+  },
+  "what_worked": "Volume-vs-efficiency framing for AI categories and the uncategorized-revenue transparency observation are genuinely original.",
+  "fix_next": "Reconcile all headline numbers with the 1,000-row assigned dataset or explicitly document and justify using a larger source.",
+  "verdict": "Polished storytelling on an unverifiable dataset; accuracy gap undermines the entire deck.",
+  "flags": [
+    "wrong-dataset",
+    "inflated-row-count",
+    "unverifiable-claims",
+    "unlabeled-chart-axes",
+    "chart-labels-missing-category-names",
+    "no-limitations-slide",
+    "audience-not-explicit"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 1/2: 8,782 startups, $15.4M MRR, $33.2M 30-day revenue, 646,933 subs — none reconcilable with 1,000-row reference ($15.6M total revenue). Slide 3: 57.2% zero MRR vs reference 216/1000=21.6% zero revenue. Slide 4: 1,430 AI startups vs reference 197. Slide 5: 3,264 uncategorized startups vs reference 274 missing category. Slide 6: 1,657 US startups vs reference ~258 with country data in US. All core metrics appear drawn from a different or inflated dataset.",
+  "evidence": {
+    "insight": "Slide 4 volume-vs-efficiency split for AI is decision-useful; slide 5 uncategorized-revenue blind-spot is an original observation rarely surfaced; slide 10 domain-authority vs social-reach correlation comparison adds genuine analytical depth.",
+    "narrative": "Clear arc: market overview → concentration → category → transparency → geography → model → infrastructure → growth → drivers → acquisitions → leaderboard → takeaways. Top-heaviness thesis sustained coherently across 13 content slides.",
+    "framing": "No explicit audience statement. No limitations or methodology slide. Dataset described as 8,782 rows with no acknowledgment of the 1,000-row assignment scope. A cold reader cannot assess what population these numbers represent or why they diverge from the assigned data.",
+    "accuracy": "Every headline metric (8,782 startups, $15.4M MRR, 1,430 AI startups, 57.2% zero MRR, 1,657 US startups, 3,264 uncategorized) is irreconcilable with the frozen 1,000-row reference. Category counts, revenue totals, and geographic breakdowns all fail verification. Either a larger scraped dataset was used without disclosure or figures were fabricated.",
+    "visual": "Consistent navy/gold palette with clear typographic hierarchy. However, bar charts on slides 3, 4, 6, 7 use bare numeric axis labels (1, 2, 3…) instead of category names, rendering them unreadable without cross-referencing body text. Stacked bar on slide 9 is effective. Template pattern (big-stat callouts) repeats on 6+ slides, becoming formulaic.",
+    "ai_slop": "Moderate template repetition with the numbered big-stat callout pattern on slides 1, 2, 3, 5, 6, 11. Consulting-style phrases ('hits-driven market,' 'priced like a garage sale') are catchy but border on filler. Unlabeled chart axes suggest auto-generated visuals not manually reviewed."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered visual from 5.0 to 4.5: multiple charts with unlabeled categorical axes (slides 3, 4, 6, 7) are a more serious legibility failure than initially weighted. All other scores confirmed as appropriate.",
+  "total": 48,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 25744,
+    "output_tokens": 986
+  }
+}

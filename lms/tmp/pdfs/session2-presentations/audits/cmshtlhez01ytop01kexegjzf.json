@@ -1,0 +1,47 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 3.5,
+    "narrative": 4.5,
+    "framing": 3,
+    "accuracy": 2,
+    "visual": 4.5,
+    "bonus": 0
+  },
+  "what_worked": "Clear thesis with logical slide sequence from problem to mechanism to archetype to conclusion.",
+  "fix_next": "Ground every claim in verifiable dataset columns; remove invented subcategories, fabricated ARPU, and unsupported churn assertions.",
+  "verdict": "Polished VC template over fabricated subcategories; thesis outpaces the actual data.",
+  "flags": [
+    "fabricated-subcategories",
+    "fabricated-arpu-column",
+    "ai-median-wrong",
+    "marketing-median-wrong",
+    "churn-claimed-without-data",
+    "no-limitations-slide",
+    "no-methodology-slide",
+    "denominator-uses-1000-not-726",
+    "ai-generated-decorative-image",
+    "missing-sample-sizes",
+    "generic-consulting-language"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 3: AI median $446 vs reference $503. Slide 3: 27.7% uses n=1000 denominator; only 726 rows have category data (197/726=27.1%). Slide 5: 'Marketing Workflow SaaS' $1,586 median is an invented subcategory; Marketing category median is $2,369.50. Slide 5: 'B2B Operational SaaS' $1,036 is unverifiable fabrication. Slide 7: 'Productivity Utilities' $42 median and ARPU $4.85/mo have no dataset basis. Slide 7: ARPU column entirely fabricated—no per-user pricing data exists. Slide 7: >$10k hit rates (31.0%, 18.2%, etc.) are unverifiable against reference data.",
+  "evidence": {
+    "insight": "The wrapper-vs-workflow framing is borrowed from existing VC discourse, not discovered in the data. No novel finding emerges from the actual dataset; slides 4, 5, 8, 10 are conceptual frameworks imported wholesale rather than data-driven discoveries.",
+    "narrative": "Logical arc from question (slide 2) through problem (3-4) to evidence (5-7) to archetype (8-10). However, the evidence slides rest on fabricated subcategories, making the persuasive structure hollow. Closing slide 10 is a generic aphorism, not a synthesized landing.",
+    "framing": "Target audience (investors) implied but never stated. No methodology, no missingness disclosure (274 missing categories, 288 missing audience_type), no limitations, no sample sizes on any chart. 'TrustMRR Benchmark' badge on slide 3 is unexplained branding. A cold reader cannot assess validity.",
+    "accuracy": "AI median wrong ($446 vs $503). Category share denominator wrong (uses 1000 not 726 categorized rows). 'Marketing Workflow SaaS' and 'B2B Operational SaaS' are invented subcategories absent from the dataset. ARPU column is entirely fabricated—no per-user data exists. Churn claims on slides 3-4 have zero dataset support. Multiple core quantitative claims are unverifiable or contradicted.",
+    "visual": "Consistent dark theme with good typography and readable bar chart on slide 5. Slide 7 pie chart poorly chosen for rate comparison across groups. Slide 9 uses decorative AI-generated sci-fi image adding no analytical value. Repetitive three-card template on slides 4, 8, 10. Overall polished but formulaic.",
+    "ai_slop": "Slide 9 sci-fi control panel is pure AI-generated decorative filler. Slides 4, 5, 8 reuse identical card layouts with generic consulting jargon ('Zero Moat UI', 'Context Engine', 'Agentic Workflow'). Slide 10 closing quote is a generic platitude. Overall deck reads as a VC pitch template with data backfilled."
+  },
+  "confidence": "high",
+  "changed": false,
+  "change_reason": "no-change",
+  "total": 35,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 23141,
+    "output_tokens": 1034
+  }
+}

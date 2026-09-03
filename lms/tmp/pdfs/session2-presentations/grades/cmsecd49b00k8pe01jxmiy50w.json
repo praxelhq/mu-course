@@ -1,0 +1,38 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 7,
+    "framing": 6,
+    "accuracy": 4.5,
+    "visual": 6,
+    "bonus": 1
+  },
+  "what_worked": "Clear narrative arc from myth-busting (followers) to real driver (subscribers) with consistent takeaway boxes.",
+  "fix_next": "Slide 4 uses 12-month revenue figures that don't match the 30-day dataset; verify all provider counts and revenue against the frozen data.",
+  "verdict": "Coherent story, but provider data appears fabricated and depth is thin.",
+  "flags": [
+    "fabricated-looking-revenue-figures",
+    "wrong-time-horizon",
+    "missing-denominator-disclosure-slide5",
+    "no-correlation-statistic-reported"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 4: Stripe shown as 644 startups (frozen: 636) and $120.5M 12-month revenue—dataset only provides 30-day revenue ($13.5M for Stripe); RevenueCat 191 vs frozen 189; Superwall 19 vs frozen 17. Slide 4 revenue figures appear to be annualized or invented without disclosure. Slide 5: category percentages computed on non-missing rows only (AI 27.1% = 197/726 ≈ 27.1%, acceptable) but audience-type percentages don't acknowledge 288 missing values and are presented as whole-dataset shares.",
+  "evidence": {
+    "insight": "Slide 2 debunks follower-revenue myth and Slide 3 identifies subscribers as the real driver—useful but not novel. No quantitative correlation coefficients given. No category-level revenue analysis (e.g., Education's high median). Pricing insight mentioned but never explored with data.",
+    "narrative": "Four-act structure (Myth → Real Driver → Concentration → Market Shape) with a closing synthesis slide. Logical flow and consistent 'WHAT THIS MEANS' boxes. Thesis is clear and sustained.",
+    "framing": "Title slide names dataset and audience. Slide 6 footnote acknowledges missingness for country/category. However, Slide 4 never discloses it's using a different time horizon (12-month) or how those figures were derived. Slide 5 doesn't flag audience_type missingness (288 rows).",
+    "accuracy": "Slide 4 is the main problem: provider startup counts are off (644 vs 636, 191 vs 189, 19 vs 17), and revenue figures ($120.5M for Stripe) don't correspond to any column in the frozen 30-day dataset—they appear annualized without explanation. Slide 2 claims 'virtually no connection' which is directionally correct (r≈0.025) but no statistic is provided. Slide 5 category shares roughly check out against 726-row denominator.",
+    "visual": "Clean, consistent template with navy/coral palette. Scatter plots on Slides 2-3 use log scales appropriately. Slide 4 bar chart is readable. Slide 5 uses three pie charts—functional but pie charts are suboptimal for 10+ categories. Charts on Slide 2 are quite small and hard to read.",
+    "ai_slop": "Moderate template uniformity but not egregious. 'WHAT THIS MEANS' boxes are formulaic but contain substantive content. No decorative-but-meaningless graphics."
+  },
+  "confidence": "high",
+  "total": 59,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 12189,
+    "output_tokens": 862
+  }
+}

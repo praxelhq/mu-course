@@ -1,0 +1,44 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 0.5,
+    "narrative": 2,
+    "framing": 1,
+    "accuracy": 1,
+    "visual": 4.5,
+    "bonus": 0
+  },
+  "what_worked": "Visually polished card layouts with clear hierarchy and consistent, restrained design across all six slides.",
+  "fix_next": "Replace the entire deck with actual analysis of the assigned dataset—charts, findings, limitations, and a data-grounded thesis.",
+  "verdict": "A motivational pamphlet, not a data-story presentation. Dataset is completely absent.",
+  "flags": [
+    "no-data-analysis",
+    "no-charts",
+    "no-dataset-engagement",
+    "ai-slop-motivational",
+    "unsupported-claims",
+    "notebooklm-generated",
+    "decorative-graphics-only",
+    "wrong-assignment-genre"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 5: Four revenue figures (Web3Forms $42,813, Supergrow $32,216, MagicSlides $10,176, Guidejar $6,151) presented without source and unverifiable against the frozen dataset. Slide 6: 'The blueprint is proven' is an unsupported causal/evidentiary claim with zero analytical backing.",
+  "evidence": {
+    "insight": "Zero analytical findings from the 1,000-row dataset. No category comparisons, revenue distributions, provider breakdowns, median-vs-mean analysis, or any quantitative observation. The deck contains only generic startup platitudes.",
+    "narrative": "A coherent motivational arc exists (easy to start → small problems → recurring revenue → examples → call to action), but it is a self-help pitch, not a data narrative. No thesis is grounded in dataset findings; no synthesis or landing tied to evidence.",
+    "framing": "The dataset is never introduced, named, or described. No methodology, scope, sample size, missingness, or limitations are mentioned. A cold reader would have no idea this was a data-analysis assignment. The stated audience ('undergrad students pursuing business') has no analytical question.",
+    "accuracy": "The frozen dataset is entirely ignored. Slide 5's revenue figures are unattributed and cannot be cross-checked against the reference data. No denominators, no sample sizes, no caveats. 'The blueprint is proven' on slide 6 is stated as fact without evidence. Lowered from preliminary because the complete absence of dataset engagement means accuracy cannot even be partially credited.",
+    "visual": "Clean, professional design with good typography, card-based layouts, effective before/after comparison (slide 2), and visual restraint. However, there are zero data visualizations—no charts, tables, or analytical graphics of any kind. All graphics are decorative/conceptual.",
+    "ai_slop": "NotebookLM watermark visible on every slide. Entire deck reads as AI-generated motivational content with generic startup advice ('solve one small problem,' 'start this weekend,' 'the tools are free'). No content is specific to the assigned dataset. This could apply to any entrepreneurship context."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 1→0.5 (truly zero dataset engagement), narrative from 2.5→2 (motivational arc exists but is wrong genre entirely), framing from 1.5→1 (no dataset, question, or scope whatsoever), accuracy from 1.5→1 (unverifiable external claims, complete dataset absence). Visual unchanged at 4.5. The deck fundamentally fails the assignment by presenting a motivational pamphlet instead of a data story.",
+  "total": 18,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 10902,
+    "output_tokens": 880
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "slide_count": 15,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 8.5,
+    "accuracy": 4.5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Dedicated caveats slide mapping each field's missingness to the specific slide it affects is exemplary.",
+  "fix_next": "Anchor total revenue is wrong by ~$2.1M; fix that and re-derive every downstream figure before presenting.",
+  "verdict": "Strong storytelling and framing undermined by a materially wrong anchor number and multiple median errors.",
+  "flags": [
+    "total-revenue-wrong-by-2M",
+    "zero-count-wrong-197-vs-216",
+    "ai-median-off",
+    "education-median-off",
+    "marketing-median-off",
+    "analytics-median-wildly-off",
+    "fintech-not-in-reference",
+    "top10-share-slightly-off",
+    "mean-mrr-derived-from-wrong-total",
+    "repetitive-slide-layout"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 1/2/3: total revenue $13.47M vs reference $15.60M (off ~$2.1M, cascades to mean on slide 4: $13,472 vs $15,596). Slide 4: zero-revenue count 197 vs reference 216. Slide 5: AI median $446 vs ref $503; Education median $2,142 vs ref $2,435; Marketing median $1,586 vs ref $2,370; Analytics median $1,294 vs ref $419 (wildly wrong direction—Analytics should be below AI, not above). Slide 5: Fintech (n=16) category not in frozen reference. Slide 3: top-10 share shown as 48% vs reference 49.6% (minor).",
+  "evidence": {
+    "insight": "Domain-rating vs follower correlation (slide 8), stealth-as-signal reframing (slide 10), growth-noise debunking with small-base median $384 (slide 9), and for-sale shelf analysis (slide 11) are genuinely analytical moves beyond chart description. Layered 'predictors' framing builds a useful argument.",
+    "narrative": "Clear thesis on slide 1 reinforced throughout: 'category hype is a poor proxy; durable signals separate real businesses.' Numbered arc from Context → Concentration → Reality Check → Predictors → Caveats → Conclusion is purposeful. Summary slide 13 synthesizes four actionable takeaways. Conclusion slide recaps without redundancy.",
+    "framing": "Slide 2 explicitly states dataset skew, point-in-time limitation, and verification method. Slide 14 caveats table is unusually thorough, mapping each field's missingness to the specific slide it affects. 'SO WHAT' callouts on every slide orient a cold reader. Audience ('leadership briefing') is clear. Missingness for audience_type (288) correctly disclosed on slide 6.",
+    "accuracy": "Anchor total revenue wrong by ~$2.1M ($13.47M stated vs $15.60M reference)—this propagates to mean MRR on slide 4. Zero-revenue count 197 vs 216. Analytics median $1,294 vs reference $419 is directionally wrong and changes the slide 5 ranking claim. Education and Marketing medians also diverge materially. Fintech category appears but is absent from reference. Top-10 share 48% vs 49.6% is minor. The domain-rating correlation (r=0.47) uses log-transform which is disclosed but cannot be verified against the raw-revenue Pearson r=0.025 in the reference.",
+    "visual": "Consistent dark-navy template with teal/gold/red accent palette. Every chart has labeled axes, n-counts, and source footers. Chart types are appropriate (cumulative line, horizontal bar, grouped bar, histogram). Slide 14 caveats table is well-formatted. Weakness: every slide follows the identical chart-left/sidebar-right layout, creating monotony; no scatter plots shown where they would add value (e.g., slide 8 correlation).",
+    "ai_slop": "Mild consulting-speak in SO WHAT labels but generally restrained. Template is polished but repetitive. Content is dataset-specific throughout—no generic filler detected."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.5 to 4.5: the Analytics median is not just off but directionally wrong ($1,294 claimed vs $419 reference), which invalidates the slide 5 ranking claim that Analytics 'beats AI.' Combined with the $2.1M total-revenue error, wrong zero-count, and fabricated Fintech category, there are 8 factual errors including one that reverses a key analytical claim. Other scores unchanged.",
+  "total": 73,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 29128,
+    "output_tokens": 1199
+  }
+}

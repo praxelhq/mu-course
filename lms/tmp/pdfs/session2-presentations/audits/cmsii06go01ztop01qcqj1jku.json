@@ -1,0 +1,42 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 6.5,
+    "accuracy": 5.5,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "Bubble chart on slide 9 powerfully synthesizes crowdedness vs. monetization, making the AI-trap argument visually undeniable.",
+  "fix_next": "Acknowledge 27–29% missingness in category and audience_type before making B2B/B2C and category median claims; verify or remove correlation coefficients.",
+  "verdict": "Strong narrative arc undermined by unacknowledged missingness and a suspect B2B/B2C multiplier.",
+  "flags": [
+    "b2b-b2c-median-unverifiable",
+    "unverified-correlation-coefficients",
+    "slide-10-duplicate-text-bug",
+    "missing-data-never-acknowledged",
+    "mean-denominator-unclear-slide2",
+    "content-creation-median-mismatch"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 2: mean shown as $15,596 — total/1000=$15,596.34, fine, but denominator question unaddressed given 216 zero-revenue rows. Slide 5: B2B median $1,240 and B2C $304 with '4.1x' claim; reference on-sale medians give ~2.35x, so the multiplier is likely inflated or computed on a different subset without disclosure. Slide 7: correlation coefficients 0.17, 0.52, 0.82 are unverifiable against reference data; the founded-year Pearson r=0.025 is the only anchored correlation. Slide 8: Content Creation median shown as $1,238 vs reference $1,237.50 — acceptable rounding, but Marketing shown as $2,370 vs reference $2,369.50 — acceptable. However, these are presented as 'B2B workflow tools' without noting that Education and Marketing categories include B2C entries too.",
+  "evidence": {
+    "insight": "Slides 6 and 9 deliver the core crowdedness-vs-monetization insight with AI as the poster child (197 startups, $503 median). The opportunity matrix (slide 11) synthesizes multiple dimensions into a usable framework. The 'picks and shovels' framing on slide 4 adds qualitative texture beyond raw numbers.",
+    "narrative": "Clean arc from sobering reality (slides 2-3) through what winners look like (4), B2B advantage (5), AI trap (6), vanity metrics (7), high-median categories (8), bubble chart synthesis (9), red zones (10), matrix (11), to actionable checklist (12). Each slide advances the argument. Strong landing.",
+    "framing": "Slide 1 states the question clearly with dataset parameters at bottom. However, ~27% category missingness and ~29% audience_type missingness are never disclosed, which directly undermines the B2B/B2C split (slide 5, n=255+401=656 of 1000) and category median claims. A cold reader cannot assess how representative these subsets are.",
+    "accuracy": "Top-10 share 49.6% correct. AI count 197 and median $503 correct. Education median $2,435 correct. Zero-revenue ~21% acceptable (216/1000=21.6%). But B2B/B2C 4.1x multiplier diverges substantially from reference ~2.35x on-sale median multiple. Slide 7 correlation coefficients are unanchored. Slide 10 duplicates 'Focus 2: 401 startups analyzed' text — a production error.",
+    "visual": "Consistent warm palette with strong typographic hierarchy throughout. Seesaw metaphor (slide 2), proportional stacked bar (slide 3), and bubble chart (slide 9) are well-chosen. Vanity-Value slider (slide 7) is creative. Slide 10 duplicate text is a clear production defect. Generally restrained and purposeful.",
+    "ai_slop": "Slide 10 duplicate text block ('Focus 2' repeated with identical 401 count) is a clear unproofread AI artifact. 'Right of passage' should be 'rite of passage.' Otherwise the deck avoids generic filler effectively."
+  },
+  "confidence": "medium",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 6.0 to 5.5: the B2B/B2C 4.1x claim diverges materially from reference (~2.35x), three correlation coefficients are unverifiable, and missingness is never acknowledged despite affecting core claims. Lowered framing from 7.0 to 6.5 for same missingness omission. Reduced bonus from 2 to 1: the opportunity matrix is useful but the unacknowledged data gaps and inflated multiplier weaken the overall contribution beyond the rubric.",
+  "total": 71,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 19915,
+    "output_tokens": 1214
+  }
+}

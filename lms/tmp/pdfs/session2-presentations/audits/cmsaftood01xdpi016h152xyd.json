@@ -1,0 +1,42 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 4,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Category-crowding-vs-median-revenue contrast on slide 5 is a genuinely useful founder-facing insight.",
+  "fix_next": "Reconcile domain and category medians against actual data; current figures are inflated by 5–20x versus reference values.",
+  "verdict": "Strong storytelling and design undermined by materially inflated median revenue figures throughout.",
+  "flags": [
+    "inflated-domain-medians",
+    "inflated-category-medians",
+    "revenue-total-mismatch",
+    "causal-language-on-observational-data",
+    "unverifiable-exit-correlation",
+    "b2b-b2c-ratio-overstated"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1: $133.8M total revenue vs reference $15.6M — off by ~8.6x. Slide 4: .ai median $21,161 vs reference ~$25, .com median $1,652 vs reference $8 — both wildly inflated (likely using monthly MRR dollars or a different revenue field). Slide 5: AI median $4,301 vs reference $503; Education median $14,310 vs reference $2,435; Marketing median $10,029 vs reference $2,369.50 — all inflated by 4–8x. Slide 2/6: B2B/B2C ratio claimed ~4x ($8,362/$2,213) but reference on-sale medians show ~2.3x multiple, and the absolute values don't match. Slide 4: 'Domain extension is a revenue signal' and takeaway to 'secure a .ai domain' implies causation from purely observational correlation.",
+  "evidence": {
+    "insight": "Slide 5 crowding-vs-revenue framing and slide 7 exit-multiple distribution with growth correlation (r=0.36) add genuine analytical depth beyond simple rankings. Slide 8 case study synthesizes traits across top earners effectively.",
+    "narrative": "Five-decision thesis on slide 2 maps cleanly to slides 4–9, closing with an advisory checklist on slide 10. Sequence is purposeful and lands with a practical framework for the stated audience.",
+    "framing": "Slide 3 discloses 27% missing categories, skewness, and median-first methodology. However, the revenue field used (trailing 12-month vs. some other measure) is never clarified, and the $133.8M headline is unexplained against the reference total of $15.6M. No mention of 216 zero-revenue records or how they affect medians.",
+    "accuracy": "Headline revenue ($133.8M vs $15.6M reference) is off by ~8.6x. Domain medians are inflated by orders of magnitude (.ai $21,161 vs ~$25 reference). Category medians are inflated 4–8x across the board. These are not rounding differences — they suggest a different revenue field or calculation error. The 197 AI count and 27% missing-category rate are correct.",
+    "visual": "Consistent navy/gold palette, clean bar charts with labeled values and sample sizes, effective callout boxes. Slide 9 paired country charts work well. No chart-junk. Hierarchy is clear. Slightly template-uniform but purposeful.",
+    "ai_slop": "'Actionable takeaway' box repeated identically on every insight slide is mildly formulaic but content is dataset-specific, not generic filler. No decorative fabricated graphics detected."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 4.5 to 4.0: the magnitude of errors is severe — headline revenue is off by 8.6x, domain medians by orders of magnitude, and category medians by 4–8x. These are not rounding issues but fundamental calculation errors that undermine the deck's core claims. Also lowered framing by 0.5 for not disclosing zero-revenue records or clarifying the revenue denominator that produces such divergent totals.",
+  "total": 66,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 19664,
+    "output_tokens": 1042
+  }
+}

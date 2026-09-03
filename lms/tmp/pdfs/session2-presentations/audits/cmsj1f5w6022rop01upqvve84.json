@@ -1,0 +1,45 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 3.5,
+    "narrative": 5.5,
+    "framing": 2.5,
+    "accuracy": 1.5,
+    "visual": 4.5,
+    "bonus": 0
+  },
+  "what_worked": "Clear narrative arc from concentration problem through five strategic dimensions to actionable founder playbook.",
+  "fix_next": "Ground every chart and statistic in actual dataset fields; the data has revenue not MRR, and lacks team size, distribution channel, or moat columns.",
+  "verdict": "Polished consulting template built on fabricated fields and invented statistics, not the actual dataset.",
+  "flags": [
+    "fabricated-charts",
+    "fabricated-statistics",
+    "no-dataset-fidelity",
+    "invented-fields",
+    "ai-slop",
+    "consulting-language",
+    "unearned-certainty",
+    "missingness-ignored",
+    "dataset-mischaracterized-as-ai-only"
+  ],
+  "factual_error_count": 14,
+  "factual_error_detail": "S1-2: Dataset called '1,000 AI startups' when it covers all categories (AI is only 197 of 1,000). S2: 'Median MRR $5K-$15K' — field is 30-day revenue not MRR; actual overall median is far lower. S2: '70% flat or negative growth' — no growth-rate field exists. S3: Gini 0.82 unverifiable; top-1% '$2M-$3.5M MRR' fabricated (top-10 share is ~49.6% of $15.6M total ≈ $7.7M across 10, not $2-3.5M each monthly). S4: Growth distribution percentages (65/20/10/5) fabricated — no growth field. S5: '60% horizontal / 70% of top earners vertical' — no horizontal/vertical field. S6: Team size, solopreneur MRR, growth by team — no team-size field exists. S7: Geographic percentages and 'EU 20% dataset / 10% top earners' — unverifiable; country has 241 missing; dataset has no EU flag. S8: Pricing tiers and customer counts — no pricing-tier field. S9: Distribution channel MRR/growth — no distribution-channel field. S10: '80% no moat' — no moat field. S11: '19x' team multiplier repeats fabricated team data.",
+  "evidence": {
+    "insight": "Thesis of revenue concentration is directionally supported by actual top-10 share (49.6%), but every other dimension (team, distribution, moat, pricing tier, growth rate) is invented rather than discovered from data.",
+    "narrative": "Logical sequence from problem through five lenses to playbook; each slide builds on the prior. Reads coherently but as a pre-written strategy memo, not a data-driven discovery story.",
+    "framing": "Mischaracterizes entire dataset as 'AI startups' (only 197/1,000 are AI category). No mention of 241 missing countries, 274 missing categories, 288 missing audience types, or 216 zero-revenue rows. Audience implied but never stated. No scope or limitations slide.",
+    "accuracy": "Revenue field is 30-day revenue, not MRR. At least six slide-level analyses rely on fields that do not exist in the dataset (team size, growth rate, distribution channel, pricing tier, moat classification, horizontal/vertical). Specific numbers on slides 3, 4, 6, 7, 8, 9 are round fabrications with no derivation path from actual data.",
+    "visual": "Consistent dark Gamma template, readable typography, appropriate bar chart choices for the comparisons shown. Donut chart on slide 4 is legible. Layout is clean but repetitive. Charts are well-labeled but display fabricated data, undermining their purpose.",
+    "ai_slop": "Heavy throughout: 'winner-take-most dynamics,' 'commodity collapse,' 'the moat blueprint,' 'demand is real, useful supply is not.' Suspiciously round numbers across all charts (8, 35, 150, 12, 45, 120). Entire deck reads as AI-generated strategy template with placeholder statistics."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Raised narrative 0.5 for genuinely coherent arc; lowered framing 0.5 for mischaracterizing entire dataset as AI-only (197/1000); raised visual 0.5 for consistent legible execution despite fabricated content. Net effect minor; core problem remains: nearly all quantitative claims are fabricated from nonexistent fields.",
+  "total": 35,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 21018,
+    "output_tokens": 1137
+  }
+}

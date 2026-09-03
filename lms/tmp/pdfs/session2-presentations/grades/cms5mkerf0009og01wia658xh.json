@@ -1,0 +1,38 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 0,
+    "narrative": 0,
+    "framing": 0,
+    "accuracy": 0,
+    "visual": 0,
+    "bonus": 0
+  },
+  "what_worked": "Nothing — this is a workshop marketing deck, not a data-story presentation.",
+  "fix_next": "Submit the actual assignment: a data-story presentation analyzing the provided dataset, not a product brochure.",
+  "verdict": "Wrong deliverable — workshop ad, no data analysis whatsoever.",
+  "flags": [
+    "wrong-assignment",
+    "no-data-analysis",
+    "no-charts",
+    "no-dataset-engagement"
+  ],
+  "factual_error_count": 0,
+  "factual_error_detail": "",
+  "evidence": {
+    "insight": "Zero analytical claims; no engagement with the dataset at all across all 10 slides.",
+    "narrative": "Deck tells a marketing story for a 'Praxel' workshop — completely unrelated to the assignment.",
+    "framing": "No research question, no dataset context, no audience framing for a data story.",
+    "accuracy": "No data presented, so no accuracy to evaluate — but also nothing correct by default.",
+    "visual": "Visually polished marketing collateral, but contains zero charts, tables, or data visualizations.",
+    "ai_slop": "Entire deck appears to be a branded workshop advertisement; not AI slop per se, but entirely off-topic."
+  },
+  "confidence": "high",
+  "total": 0,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 16994,
+    "output_tokens": 368
+  }
+}

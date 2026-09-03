@@ -1,0 +1,38 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 6.5,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Strong thesis (crowded ≠ lucrative) carried consistently through every slide with honest caveats on small samples.",
+  "fix_next": "Median revenue figures appear to be annualized (×12) without disclosure; the dataset reports 30-day revenue, so state your transformation or use the raw metric.",
+  "verdict": "Coherent category story undermined by silently annualized medians and some unverifiable figures.",
+  "flags": [
+    "undisclosed-annualization",
+    "median-values-inflated",
+    "missing-data-not-addressed",
+    "sales-category-not-in-reference"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: 'Median 12-mo revenue' values appear to be 30-day medians × 12 but are presented as observed data without disclosing the multiplication (e.g., Education $14.3K ≈ $2,435×~5.9 or Content Creation $13,733 ≈ $1,237.50×11.1—neither cleanly ×12). Marketing shown as $10,029 vs reference median $2,369.50 (×4.2, not ×12). The multipliers are inconsistent across categories, suggesting either fabrication or a different unreported calculation. Slide 3: Education '$14.3K median 12-mo rev' and Content Creation '$13.7K' carry forward the same problematic figures. Slide 3: 'Sales' category with 13 listings and $8.2K median is not in the frozen reference set—cannot verify. Slide 2: AI median shown as $4,301; reference 30-day median is $503 (×8.6, not ×12). Slide 4: Rev/customer figures for Sales ($103), Marketing ($54), etc. are unverifiable derived metrics with no formula shown.",
+  "evidence": {
+    "insight": "Slide 2 delivers a genuinely useful 'crowded ≠ lucrative' insight comparing AI's 197 companies to its low median. Slide 4 adds per-customer value with an honest caveat about Sales' tiny n=13. Slide 6 distinguishes reliable vs unreliable signals. These go beyond chart description.",
+    "narrative": "Clear arc: problem (AI overcrowded) → alternatives (Education/Content/Marketing) → operational setup (Slide 5) → signal quality (Slide 6) → summary recommendations (Slide 7). Each slide builds on the prior. The thesis lands cleanly.",
+    "framing": "Audience is implicitly a newcomer choosing a category, stated on Slide 1. However, 274 missing category values (27.4% of data) are never mentioned. No discussion of survivorship bias or what the 216 zero-revenue companies mean for median interpretation. Scope is clear but limitations are thin.",
+    "accuracy": "The central issue: median values labeled '12-mo revenue' don't consistently match reference 30-day medians × 12. AI: $4,301 vs $503×12=$6,036. Marketing: $10,029 vs $2,369.50×12=$28,434. Education: $14,300 vs $2,435×12=$29,220. Content Creation: $13,733 vs $1,237.50×12=$14,850. The numbers don't match any single consistent transformation. Company counts (197 AI, 66 SaaS, 52 Mobile Apps, 42 Marketing, 36 Content Creation, 34 Health & Fitness, 30 Education) all match reference. 'Sales' category with 13 companies is not in the reference but may exist in the data.",
+    "visual": "Slide 2's dual-axis chart (bars + line) is clearly labeled and annotated. Slide 3's card layout is clean and scannable. Slide 5's table is well-structured. Slide 6's trust/skeptical split is effective. Consistent color palette throughout. No decorative-but-meaningless graphics. Minor issue: Slide 2 line chart connects categorical data, which is misleading.",
+    "ai_slop": "none"
+  },
+  "confidence": "medium",
+  "total": 67,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 14054,
+    "output_tokens": 1069
+  }
+}

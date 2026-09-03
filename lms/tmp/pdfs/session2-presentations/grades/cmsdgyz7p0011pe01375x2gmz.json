@@ -1,0 +1,37 @@
+{
+  "slide_count": 17,
+  "scores": {
+    "insight": 8,
+    "narrative": 8.5,
+    "framing": 8.5,
+    "accuracy": 6.5,
+    "visual": 7.5,
+    "bonus": 3
+  },
+  "what_worked": "Genuinely decision-useful screening funnel with named targets, explicit filter criteria, and honest risk caveats.",
+  "fix_next": "Category median figures (slide 5) diverge materially from reference data; verify denominators and confirm whether MRR or 30-day revenue is being used.",
+  "verdict": "Strong investment-memo narrative with real analytical teeth, undermined by several unverifiable category medians.",
+  "flags": [
+    "category-median-discrepancies",
+    "zero-revenue-count-mismatch",
+    "stripe-share-rounded-down"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 4: 197 $0-revenue listings stated; reference says 216. Slide 5: Category medians diverge substantially from reference — Education shown $2,142 vs ref $2,435; Marketing $1,586 vs ref $2,369.50; Analytics $1,294 vs ref $419; Content Creation $1,254 vs ref $1,237.50; AI $446 vs ref $503; SaaS $303 vs ref $200.50. Several are directionally wrong in ranking (Analytics shown above Marketing). Slide 6: Stripe share stated as 64% (≈636/1000 is 63.6%, acceptable rounding, but denominator ambiguity). Slide 2: '19% growing >10%' stated but slide 7 shows 12%+8%=20% — internal inconsistency.",
+  "evidence": {
+    "insight": "Slides 10-13 go well beyond chart description: identifying specific acquisition targets with price/fundamentals mismatches, flagging 18 overpriced declining assets, and articulating a micro-PE thesis (slide 15). The correlation analysis on slide 8 yields a concrete diligence recommendation. The 'avoid' list on slide 13 is genuinely useful negative screening.",
+    "narrative": "Clear funnel structure: landscape → performance → screening → targets → risks → thesis → next steps. Each slide builds toward the investment recommendation. The executive summary (slide 2) previews all key findings. Slide 17 closes with a crisp bottom line. No orphan slides.",
+    "framing": "Slide 3 explicitly defines the dataset, known gaps (traffic 18%, category 27%, country 24%, anonymized 13%), and screening logic. Audience (Investment Committee) is stated on every slide footer. Slide 14 enumerates five specific caveats including self-reported financials and single-month growth limitations. Scope is well-bounded.",
+    "accuracy": "Slide 4: $0-revenue count is 197 vs reference 216 — material error affecting the funnel math (803 vs correct 784). Slide 5: Multiple category medians are wrong — Analytics at $1,294 vs ref $419 is a 3x overstatement; Education at $2,142 vs ref $2,435; Marketing at $1,586 vs ref $2,369.50. These errors affect the category ranking and the 'revenue quality' narrative. Slide 2 says 19% growing >10% but slide 7 shows 20% (12%+8%). The 48x mean/median gap and 38x median multiple claims are not directly verifiable but plausible. Correlation figures on slide 8 appear reasonable but cannot be fully verified.",
+    "visual": "Consistent navy/gold/red color scheme throughout. Charts are simple and appropriate (bar charts, donut, funnel). Tables on slides 10 and 13 are clean and scannable. Big-number callouts are well-sized. Slide 7 pie chart is the weakest visual — hard to read segment sizes. No decorative graphics. Consistent footer and slide numbering. Good restraint overall.",
+    "ai_slop": "none — the deck avoids generic filler, consulting buzzwords, and decorative graphics. Every slide carries dataset-specific content. The investment-memo framing is appropriate to the stated audience rather than inflated."
+  },
+  "confidence": "high",
+  "total": 81,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 31955,
+    "output_tokens": 1028
+  }
+}

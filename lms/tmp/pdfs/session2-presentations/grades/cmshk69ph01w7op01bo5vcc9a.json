@@ -1,0 +1,38 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 7,
+    "accuracy": 4.5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis-driven narrative arc that systematically eliminates alternative explanations before landing on B2B/B2C.",
+  "fix_next": "Several key numbers appear fabricated or unverifiable against the dataset—verify the B2B/B2C medians, AI multiples, and growth percentages against actual data.",
+  "verdict": "Compelling narrative structure undermined by multiple unverifiable or incorrect statistics.",
+  "flags": [
+    "fabricated-looking-statistics",
+    "unverifiable-claims",
+    "median-revenue-mismatch",
+    "consulting-language-heavy"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 4: '$4.3K vs $3.2K median 12-month revenue' for AI vs rest—not verifiable from reference data and the dataset tracks 30-day revenue, not 12-month. Slide 5: AI multiple of 3.15x vs 2.30x—reference shows B2B median multiple ~2.35x and B2C ~2.30x, not an AI-specific split; the 37% premium claim is unverifiable. Slide 7: B2B median $8,264 vs B2C $2,396 '12-month revenue'—the dataset contains 30-day revenue, not 12-month; even annualized, these figures don't align with reference medians. Slide 7: 5.7x MRR gap ($1,034 vs $183)—unverifiable. Slide 4: Growth/shrinking percentages (35.5%/40.1% for AI, 38.2%/35.3% for rest) are unverifiable and the framing of '12-month revenue' throughout is suspect since the dataset measures 30-day revenue.",
+  "evidence": {
+    "insight": "The central insight—B2B/B2C split matters more than category—is genuinely interesting and the within-AI replication (slide 7) adds analytical depth. The 'ruled out' framework on slide 6 shows structured thinking. However, the claim that this 'proves it isn't a category effect' overstates what observational data can show.",
+    "narrative": "Excellent sequential structure: crowding (slide 3) → weak performance (slide 4) → mispricing (slide 5) → pivot to real signal (slide 6) → evidence (slide 7) → implications (slide 8) → framework (slide 9) → landing (slide 10). Each slide ends with a forward-looking question that pulls the reader through. The 'Clue No. 1' framing works well.",
+    "framing": "Slide 2 clearly establishes three audiences (founders, investors, operators) and the 'why it matters' framing. Source lines consistently note 726/1000 categorized startups. However, no discussion of missingness in audience_type (288 missing) which is critical given the B2B/B2C thesis. No limitations slide.",
+    "accuracy": "Multiple statistics appear fabricated or use a '12-month revenue' metric that doesn't exist in the dataset (which tracks 30-day revenue). The B2B/B2C median multiples in the reference are ~2.35x/2.30x, not the AI-specific 3.15x/2.30x shown. The growth/shrinking percentages on slide 4 are unverifiable. The 27.1% AI share (197/726) and category counts on slide 3 are correct. The 288 missing audience_type values are never acknowledged despite being central to the thesis.",
+    "visual": "Clean, consistent design system with navy/coral palette. Good use of callout boxes for key statistics. Bar charts are appropriately simple. Hierarchy is clear with section headers, headlines, and supporting text. Slight consulting-template sameness across slides but not egregious. Chart on slide 4 could be clearer—grouped bars with similar heights are hard to distinguish.",
+    "ai_slop": "The 'McKinsey-style read' self-description on slide 1 is a red flag. The three-column card layout appears on slides 2, 6, 8—repetitive template. The consulting-speak ('underwrite the audience, not the label') is heavy but the content behind it is substantive enough to avoid pure slop. The hype cycle framework on slide 9 is generic but tied to specific data points."
+  },
+  "confidence": "medium",
+  "total": 69,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19505,
+    "output_tokens": 1114
+  }
+}

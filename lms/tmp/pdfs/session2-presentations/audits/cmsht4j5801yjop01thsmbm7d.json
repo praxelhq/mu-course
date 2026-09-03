@@ -1,0 +1,42 @@
+{
+  "slide_count": 14,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 6.5,
+    "accuracy": 4.5,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "Outcome-vs-workspace framework and five-test kill filter are genuinely original, decision-useful analytical contributions.",
+  "fix_next": "Clearly separate platform-wide figures from the 1,000-row assignment dataset; disclose which numbers come from where.",
+  "verdict": "Strong editorial voice and structure, but accuracy gaps from mixing data sources undermine trust.",
+  "flags": [
+    "age-revenue-correlation-overstated",
+    "country-figures-unverifiable-against-dataset",
+    "category-growth-figures-unsourced",
+    "missing-data-not-quantified",
+    "denominator-confusion-platform-vs-sample",
+    "no-charts-from-actual-dataset"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 10: 'Revenue climbs with age more reliably than with any other visible factor' directly contradicts r=0.025 in the dataset. Slide 8: 2–2.5× multiple presented as typical; dataset medians are ~2.3× but the claim elides B2B/B2C distinction and is unsourced. Slide 11: country revenue figures ($1.2B US alone) vastly exceed the dataset total of $15.6M, implying full-platform data used without disclosure.",
+  "evidence": {
+    "insight": "Slides 5-6 outcome-vs-workspace distinction and slide 13's five kill-tests are original frameworks that go beyond describing data. Slide 3's five reading heuristics are practitioner-grade. Insight is largely qualitative rather than proven from the dataset, but the pattern recognition is sharp.",
+    "narrative": "Clear arc: context (1-4) → patterns (5-10) → opportunities (11-12) → decision filter (13) → caveats (14). Each slide advances the argument. The landing on slide 13 is purposeful and memorable. This reads as a coherent essay, not a chart dump.",
+    "framing": "Slide 2 explains the data source; slide 14 lists survivorship bias, snapshot nature, small-base volatility, and labels-vs-revenue distinction—all honest. However, the deck never discloses it draws from a 1,000-row sample with 24-29% missingness across key fields, nor distinguishes sample findings from full-platform statistics. A cold reader cannot tell which denominator applies.",
+    "accuracy": "Slide 10 overstates age-revenue correlation (actual Pearson r=0.025, essentially zero). Slide 11 country figures are platform-scale, not dataset-scale, presented without flagging the switch. Slide 7 category growth percentages have no traceable methodology against the frozen dataset. Slide 8's multiple range is roughly consistent but imprecise. Revenue distribution on slide 4 is plausible given 68% under $1k aligns with the dataset's 216 zero-revenue plus many sub-$1k entries.",
+    "visual": "Professional, restrained design: consistent dark/light alternation, orange accent, clean typography hierarchy, no decorative filler. Bar charts on slides 4, 7, 11 are legible and appropriately simple. Card-grid layout repeats across slides 2, 5, 6, 12 creating slight monotony but maintaining coherence. No chart junk.",
+    "ai_slop": "Minimal. Writing voice is distinctive, opinionated, and specific to this dataset. 'First customer' annotations on slide 12 are concrete. No generic consulting filler. The main concern is not slop but fabricated-looking precision in growth and country figures."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 7.0 to 6.5: the deck's failure to distinguish platform-wide figures from the assignment dataset is a material framing gap for a cold reader, not just an accuracy issue. Reduced bonus from 3 to 2: the editorial craft is strong but the data-mixing problem means the deck's authority is partly borrowed from unverifiable platform claims rather than earned from the dataset. Other scores confirmed as appropriate.",
+  "total": 70,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 26992,
+    "output_tokens": 1036
+  }
+}

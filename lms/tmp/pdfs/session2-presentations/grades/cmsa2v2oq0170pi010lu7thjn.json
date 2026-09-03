@@ -1,0 +1,40 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 8,
+    "accuracy": 5.5,
+    "visual": 6.5,
+    "bonus": 2
+  },
+  "what_worked": "Exceptionally disciplined inference labeling, thorough risk/limitations slide, and a genuinely coherent thesis from data to action.",
+  "fix_next": "Several key numbers are wrong or unverifiable against the frozen dataset—total revenue is $15.6M not $13.5M, and the B2B multiplier and anonymous median need checking.",
+  "verdict": "Strong strategic narrative undermined by material revenue and multiplier errors.",
+  "flags": [
+    "total-revenue-error",
+    "b2b-multiplier-inflated",
+    "anonymous-median-unverifiable",
+    "top10-share-approximate",
+    "consulting-tone",
+    "no-real-data-charts"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1: Total revenue stated as $13.5M; frozen dataset total 30-day revenue is $15,596,344.59 (~$15.6M). Slide 1: Top-10 share stated as 48%; reference is 49.6%. Slide 3: B2B monetizes '5.7x better'—reference medians are 2.35x/2.30x multiples, not 5.7x; the $1,036 vs $181 figures may reflect a different calculation but the 5.7x framing is misleading vs. the benchmark B2B/B2C median ratio. Slide 3: Anonymous median stated as $7,337 and '40x named-founder median of $185'—reference says anonymous is 26.525% of revenue (not 28%), and the median figures are not directly verifiable from the reference but the 40x claim is extraordinary and likely conflates selection effects. Slide 2: Stripe share stated as 63.6%—reference is 636/1000 = 63.6%, correct. RevenueCat 18.9% = 189/1000, correct.",
+  "evidence": {
+    "insight": "Slide 3's seven ranked findings go well beyond chart description—power law framing, anonymity premium, stagnation-as-opportunity, and AI-as-commodity are genuinely useful reframes. Slide 7 translates findings into five concrete business opportunities with evidence, target, model, and moat. The segmentation on slide 5 synthesizes multiple dimensions into actionable archetypes.",
+    "narrative": "Clear thesis on slide 1 ('Fund the infrastructure, not the average startup') sustained through market landscape (slide 2), findings (slide 3), psychology (slide 4), segmentation (slide 5), hidden patterns (slide 6), opportunities (slide 7-8), investor lens (slide 9), roadmap (slide 10), risks (slide 11), and takeaways (slide 12). Each slide builds on the prior. The landing on slide 12 is crisp.",
+    "framing": "Slide 1 establishes audience (investment committee), dataset scope, and freeze date. Slide 2 explicitly separates 'observed in data' from 'inference—sizing estimate.' Slide 4 labels every claim as MEDIUM/INFERENCE/HIGH confidence. Slide 11 dedicates a full page to risks and blind spots including survivorship bias, missingness, and snapshot limitations. Slide 13 appendix defines terms.",
+    "accuracy": "Total revenue is materially wrong ($13.5M vs $15.6M actual), propagated across multiple slides. The 48% top-10 share is close but slightly off (49.6%). The B2B 5.7x claim ($1,036/$181) doesn't match the reference B2B/B2C median multiples of 2.35x/2.30x—the student appears to have computed raw medians differently. Anonymous revenue share stated as 28% vs reference 26.525%. Stripe 63.6% and RevenueCat 18.9% are correct. The 0.81 asking-price correlation and 0.906 subscription correlation are not verifiable from the reference but are plausible internal calculations.",
+    "visual": "Clean, consistent dark/light theme throughout. Good use of color-coded confidence badges (slide 4). Tables on slides 3, 5, 7 are well-structured but text-heavy with small font sizes that hurt legibility. Only one actual chart in the entire deck (slide 6 bar chart, slide 9 horizontal bar). The deck is overwhelmingly text-and-table driven with no distribution plots, scatter plots, or histograms that would strengthen evidence. Slide 7 table is cut off on the right edge.",
+    "ai_slop": "Some consulting-speak ('toll booth,' 'moat compounds with data,' 'fund the infrastructure') but generally earned by the analysis. The VC scorecard on slide 9 with subjective 0-10 scores is decorative—the scores are invented, not data-derived. Slide 8's five company pitches feel like a consulting deliverable bolted onto a data story. Overall the deck leans toward strategy consulting output rather than data storytelling, but the analysis underneath is substantive enough to avoid pure slop."
+  },
+  "confidence": "high",
+  "total": 73,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 28966,
+    "output_tokens": 1282
+  }
+}

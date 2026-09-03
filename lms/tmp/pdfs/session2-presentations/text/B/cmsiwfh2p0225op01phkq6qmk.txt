@@ -1,0 +1,256 @@
+T R U S T M R R · 1 , 0 0 0 V E R I F I E D B U S I N E S S E S · F R O Z E N 3 0 J U LY 2 0 2 6
+
+
+
+The Exit Hatch
+A market that prices the past.
+A quarter of these businesses are for sale. The market that prices
+them can't see growth. And the people selling are the ones who've
+stopped growing.
+
+1,000                       262                       218
+verified businesses         for sale · 26.2%          priced with real revenue
+
+
+PRESENTED BY Raghav Dua                                                                            AI in Business I
+T H E D ATA                                                                                                             02 / 13
+
+
+                                                     THREE LAYERS, THREE LEVELS OF TRUST
+
+Revenue here
+                                                       Verified financials                                           ~100%
+is checked at                                          revenue, MRR, subscriptions, growth · payment-processor API
+the source
+TrustMRR reads each company's payment
+processor through an API key. The money is             Self-described profile                                        65–72%
+verified by the processor, not typed in by the         value prop, persona, pricing, category · founder-entered
+founder. That's rare for indie-startup data. It's
+why the rest of this analysis is worth anything.
+
+ 1,000 rows       29 variables                         Third-party enrichment                                        18–98%
+ cross-sectional snapshot        no time dimension     domain rating, visitors, followers · SEO and traffic tools
+THE MARKET                                                                                                                  03 / 13
+
+Most of these aren't businesses
+                                                                                          The bottom of the board
+Median MRR                                Mean MRR
+                                                                                          216
+$282                   48× gap            $13,472                                                  earned nothing in the last 30
+                                                                                                   days · 21.6%
+The average is 48 times the middle. When a mean
+runs that far ahead of the median, a handful of                                           101      have never earned a single
+companies hold nearly everything.                                                                  dollar
+
+Share of all 12-month revenue                                           1,000 companies   162      fully dormant: zero revenue,
+                  50.6%                                 34.1%                                      MRR, subscribers
+
+Top 1%                                      Next 9% → 84.7%               Bottom 90%
+                                                                                          59.1% make under $1,000 a
+                                                                                                    month
+
+Medians throughout. Source: TrustMRR, 1,000 rows, frozen 30 Jul 2026.
+THE LISTINGS                                                                                                            04 / 13
+
+The better businesses are the ones on the block
+
+
+
+26.2%
+                                                                                                         Sellers   Everyone else
+
+                                                     Median MRR
+
+262 of 1,000 are listed for sale. This isn't           Sellers                                                 $1,055     5.6×
+a distressed dump. The stronger                                    $187
+businesses are the ones leaving.
+                                                     Median 12-month revenue            Median subscribers
+        of sellers are dead,
+  16.8% vs 23.3% of everyone                                                   $7,967                                      32
+        else                                              $2,416                                  11
+
+
+
+
+Medians. Sellers n=262, everyone else n=738. Bars scaled within each metric.
+THE REVEAL                                                                                                                                  05 / 13
+
+Every price rests on a single month
+
+     multiple = asking price ÷                                  last 30 days of revenue × 12
+
+
+
+    This month × 12 reconstructs the platform's own stated                           Trailing twelve months, the intuitive guess, matches
+    multiple
+
+    87.6%                            match to one decimal
+                                                                                     1.8%                    Assume TTM and
+                                                                                                             you misprice
+                                     93.5% to whole                                                          every listing.
+                                     numbers · n=217
+
+
+
+
+The whole market runs on 30 days of data. n=217 listings with both a price and a stated multiple.
+THE CORE FINDING                                                                                                               06 / 13
+
+Growth is priced at zero
+What the asking price actually moves with. Spearman's rank correlation, revenue-positive listings.
+
+
+
+          12-month revenue n=217                                                                                      +0.911
+                         MRR n=217                                                                                  +0.867
+         Active subscriptions n=217                                                                        +0.676
+               Domain rating n=139                                                       +0.483
+                MRR growth n=214                           −0.088 not significant · p=0.20
+         Founder X followers n=217                         +0.014 not significant · p=0.83
+
+
+
+In venture, growth is the valuation. Here it's the one thing the price ignores. The market pays for what
+happened, not what's happening.
+THE TURN                                                                                                                   07 / 13
+
+I tested the obvious explanation. It reversed.
+
+                                          Non-sellers                                                                        Sellers
+  HYPOTHESIS
+                                          Current month vs annual pace p=0.012
+  If the price comes from                                                                      +42% ahead                   +12%
+  one month, sellers will
+  list on a strong month.                 Mean MRR growth p=0.005
+                                                                                                        41.9%              10.1%
+    Rejected
+                                          Share still growing
+  It goes the other way. Sellers are                                               33.0%                                   24.6%
+  running behind their own annual pace,
+  not ahead of it.                        People list when the curve flattens. The buyer pays a multiple of peak run-rate on a
+                                          business that's already rolled over.
+T H E C H A R T T H AT C A R R I E S I T                                                                                                          08 / 13
+
+The smallest sellers ask the most                                                                                        Spearman's rho = −0.19 · p = 0.005
+      MEDIAN ASK
+        $5,000
+                                                                      MEDIAN ASK
+                                                                     $500,000
+      4.45×                           MEDIAN ASK
+                                       $57,500                                                       MEDIAN ASK
+                                                                      2.90×                         $3,000,000
+                                                                                                                               Hobby projects priced
+                                                                                                                               like assets. Real
+                                      2.30×                                                                                    businesses priced like
+                                                                                                                               exits. The bars fall as the
+                                                                                                      1.90×                    ask climbs from $5k to
+                                                                                                                               $3M.
+
+
+
+
+     Under $500                       $500 – $5k                     $5k – $50k                         $50k+
+           n=68                            n=70                           n=67                    n=5 · low confidence
+Bar height is median asking multiple. Median asking price shown above each bar. The $50k+ bar rests on 5 listings.
+W H O ' S L E AV I N G                                                                                                           09 / 13
+                                                                                                         Share of category listed for sale.
+Over half of all mobile apps are for sale                                                         Green sits above the 26.2% market rate.
+
+
+
+Mobile Apps                                                                                          55.8%             n=52 · $223
+Analytics                                                                            36.8%                             n=19 · $1,294
+Education                                                                       33.3%                                  n=30 · $2,142
+SaaS                                                                            33.3%                                  n=66 · $303
+E-commerce                                                                    31.6%                                    n=19 · $155
+Fintech                                                                      31.2%                                     n=16 · $500
+Content Creation                                                           30.6%                                       n=36 · $1,254
+Health & Fitness                                                          29.4%                                        n=34 · $392
+Social Media                                                           27.8%                                           n=18 · $912
+AI                                                                     27.4%                                           n=197 · $446
+Dev Tools                                                    21.6%                                                     n=37 · $185
+Marketing                                                    21.4%                                                     n=42 · $1,586
+Productivity                                        16.3%                                                              n=49 · $42
+
+
+Categories with n ≥ 15. Trailing figure is median MRR. Mobile Apps capitulate at a $223 median.
+W H AT B UY E R S P AY U P F O R                                                                                                        10 / 13
+                                                                                                              Median asking multiple by category.
+Buyers pay a premium for the word AI                                                                           Faded bars rest on small samples.
+
+
+
+AI                                                                                                          4.15×           n=48 · high confidence
+Education                                                                                               3.95×               n=10 · low
+Marketing                                                                                            3.80×                  n=8 · low
+Analytics                                                                                    3.40×                          n=7 · low
+Fintech                                                                                      3.40×                          n=5 · very low
+Mobile Apps                                                                          3.10×                                  n=25 · high confidence
+Content Creation                                                                 2.90×                                      n=11 · medium
+Health & Fitness                                                               2.80×                                        n=9 · low
+Productivity                                                        2.30×                                                   n=8 · low
+SaaS                                                                2.30×                                                   n=15 · medium
+Dev Tools                                        1.35×                                                                      n=8 · low
+
+
+AI carries a narrative premium on the largest, most reliable sample here, 4.15× against a 2.90× market median,
+despite mid-table revenue. Buyers are paying for the noun.
+THE CORPSES                                                                                                                                      11 / 13
+
+A sixth of the market earns nothing
+44                                                     47                                                   $2,750
+listings with zero revenue in the last 30              listings priced at a multiple of exactly 0.0×        median ask for a listing that currently earns
+days · 16.8% of the market                                                                                  nothing
+
+
+
+This is why every figure in this deck is a median. Watch what the outliers do to a mean.
+
+
+                                 2.3× – 2.9×                                                                       7.77×
+                        medians, all and revenue-positive                                                      the mean, do not use
+0×                            2×                                4×                              6×
+                                                                                                                                           → max 326.8×
+
+
+All pricing cuts use medians on revenue-positive listings only. The mean is shown here to be discredited.
+THE TRADE                                                                                                          12 / 13
+
+Buy the boring middle, avoid the story
+
+  Buy       2.90×                                             Avoid
+  $5k to $50k MRR, still growing, in an                       4.45×   sub-$500 MRR, an asset price on a hobby
+  unglamorous category.                                               project
+  The one cohort where the revenue is real and the multiple   4.15×   anything labelled AI, that's the narrative
+  isn't inflated. Boring is the whole point.                          premium
+                                                              ⚑       any listing where the pricing month wildly
+                                                                      outruns the annual pace
+
+
+
+
+               The market can't price growth. If you can, you're the only person in the
+  The edge
+               room who can.
+R E A D T H I S B E F O R E Y O U AC T O N A N Y O F I T                                                                                      13 / 13
+                                                                                                      Naming the edges out loud is what separates an
+                                                                                                      analyst from a spreadsheet. None of these break
+What this data can't tell you                                                                                    the findings. All of them bound them.
+
+
+   Asking prices, not sales                          Stale inventory could explain                    Correlation, not cause
+   No closed prices exist here. Every number         the curve                                        There's no founding or listing date. "Listed
+   is seller intent. Real sales usually land         What's left on the board is what didn't sell.    because growth stalled" and "stalled
+   below ask, so read each figure as an              Small sellers may still be visible because       because it's mature" can't be told apart.
+   asking multiple.                                  nobody paid 4.45×, not because they're           Sellers are flatter. That's all we can say.
+                                                     worth it.
+
+
+
+
+   Some samples are tiny                             One platform, one day                            A supply-side snapshot
+   A few category multiples rest on a handful        TrustMRR only, frozen 30 July. Founders          No listing dates, no outcomes, no buyers, no
+   of rows. Fintech is five. Sample size sits on     who verify revenue by API key are self-          time axis. How long they sit, what fraction
+   every chart for a reason. Concede the small       selected. This is "this market," not the whole   sell, who buys, whether it's growing: each
+   ones first.                                       micro-acquisition world.                         needs a second dataset.
+

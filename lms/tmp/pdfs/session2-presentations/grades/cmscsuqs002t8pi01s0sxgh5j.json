@@ -1,0 +1,38 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7,
+    "accuracy": 5.5,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "Strong narrative arc from distribution through momentum, pricing, exits, to a ranked synthesis slide.",
+  "fix_next": "The bubble chart (slide 5) is visually broken—all bubbles cluster around 40% growth, contradicting the bar chart on slide 3 that shows 23–57% spread.",
+  "verdict": "Well-structured story with real insights, undermined by several numerical inaccuracies.",
+  "flags": [
+    "b2b-b2c-multiplier-inflated",
+    "bubble-chart-broken",
+    "ai-median-wrong",
+    "histogram-bins-dont-sum-to-1000"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 4: Claims B2B earns 'nearly 6x' B2C; reference data shows median multiples of ~2.3x (B2B) and ~2.3x (B2C)—the 6x claim appears fabricated or uses non-standard medians. Slide 5: Bubble chart y-axis shows median revenue in $0–70 range, but actual category medians range from $79 to $2,435—chart values are off by orders of magnitude. Slide 2: Histogram bins sum to 803, not 1,000 (198+197+156+128+108+16=803); 197 missing companies unacknowledged (likely zero-revenue, but not stated). Slide 10: AI median stated as $446/mo; reference shows $503. Slide 10: Education described as 'highest revenue' but its total revenue ($523k) is far below AI ($2.36M); the claim works only for median, which should be specified.",
+  "evidence": {
+    "insight": "Slide 7's juxtaposition of Dev Tools having fastest growth but lowest exit multiple is a genuinely useful, non-obvious finding. Slide 9's domain-rating vs. follower correlation adds a practical signal. Slide 10 synthesizes four dimensions into a ranked recommendation.",
+    "narrative": "Clear thesis on title slide, purposeful 10-section arc (overview → momentum → audience → viability → pricing → exits → geography → predictors → verdict → caveats), and a strong closing slide that ties threads together.",
+    "framing": "Slide 1 states scope (1,000 companies, frozen date). Slide 11 provides four honest limitations including missing categories and snapshot nature. However, audience_type missingness (288 rows) is never disclosed despite B2B/B2C being a central claim.",
+    "accuracy": "Slide 4's ~6x B2B/B2C claim is the most consequential error—it's a headline finding built on numbers that don't match reference medians. The bubble chart on slide 5 has axis values inconsistent with known category medians. Histogram doesn't account for all 1,000 companies.",
+    "visual": "Consistent template with navy/gold palette, good use of callout boxes, well-labeled bar charts. Slide 5 bubble chart fails—bubbles are clustered and unreadable, undermining the slide's point. Otherwise restrained and legible throughout.",
+    "ai_slop": "Minimal slop. The template is repetitive (bar chart + two callout boxes on most slides) but each slide carries distinct content. No decorative-but-meaningless graphics. Language is direct, not inflated."
+  },
+  "confidence": "high",
+  "total": 73,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22927,
+    "output_tokens": 880
+  }
+}

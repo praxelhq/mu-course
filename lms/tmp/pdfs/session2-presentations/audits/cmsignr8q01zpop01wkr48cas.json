@@ -1,0 +1,46 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 3,
+    "narrative": 4.5,
+    "framing": 2.5,
+    "accuracy": 1.5,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "Coherent strategic arc from regional comparison through category analysis to actionable dual-market recommendation.",
+  "fix_next": "Ground every claim in actual dataset fields; the revenue, categories, and growth metrics are fabricated wholesale.",
+  "verdict": "Polished template over fabricated data; consulting theater without analytical substance.",
+  "flags": [
+    "fabricated-statistics",
+    "ai-slop",
+    "no-real-charts",
+    "revenue-figure-wrong-8x",
+    "category-taxonomy-invented",
+    "no-limitations-disclosed",
+    "no-missingness-acknowledged",
+    "decorative-ai-images",
+    "invented-metrics-not-in-dataset",
+    "urgency-button-act-now"
+  ],
+  "factual_error_count": 15,
+  "factual_error_detail": "Slide 2: '$127M+ combined revenue' vs actual $15.6M (~8x inflation). Slide 2: 'AI & SaaS Startups' framing ignores actual category taxonomy. Slide 3: +18.3% MRR growth, +8.7% Europe, 2.1x customer acquisition, 34% subscription adoption — none of these metrics exist in the dataset. Slide 4: $0.47/$0.15 revenue per visitor, 2.8x valuation multiples (5.2x vs 1.9x), 62% vs 41% B2B focus — all fabricated. Slide 5: Donut chart uses invented categories (SaaS 42%, AI-Native Tools 24%, Productivity Tools 16%, Developer Tools 12%) that don't match actual dataset categories (AI 197, Marketing 42, E-comm 19, etc.). Slide 5: '38% of startups' for SaaS vs actual 66/726≈9%. Slide 6: 'top 10% by visitor volume capture only 28% of revenue' — unverifiable. Slide 6: '4.1x LTV advantage' for subscriptions — LTV not in dataset. Slide 6: 'Healthcare AI and Legal Tech 3.2x higher revenue per visitor' — Legal Tech not a dataset category. Slide 8: '3x lower CAC' — CAC not in dataset. Slide 9: 2.4x, 3.1x, 5.2x multipliers all fabricated. Slide 10: '2.1x more total value' — fabricated.",
+  "evidence": {
+    "insight": "The India-vs-Europe and traffic≠revenue themes attempt strategic framing, but every supporting statistic is invented, rendering insights hollow and unverifiable.",
+    "narrative": "Logical arc from data overview → regional comparison → categories → hidden insight → recommendation. Structure is coherent but entirely built on fabricated numbers.",
+    "framing": "Slide 2 misstates total revenue by ~8x. No mention of 241 missing country values, 274 missing categories, 216 zero-revenue rows, or 288 missing audience_type. Audience implied but never stated. No limitations or caveats anywhere.",
+    "accuracy": "At least 15 material factual errors. Revenue inflated ~8x. Category taxonomy completely invented. Metrics like MRR growth rates, CAC, LTV, revenue-per-visitor, and valuation multiples do not exist in the dataset. The sole chart (slide 5 donut) displays fabricated category shares.",
+    "visual": "Gamma template with dark background and pink/purple palette. Decorative AI-generated stock images on slides 3, 4, 7, 9 add zero analytical value. Only one chart (slide 5 donut) shows fabricated data. No scatter plots, bar charts, or tables from actual data. Slide 8 flowchart is decorative.",
+    "ai_slop": "Pervasive: inflated consulting language ('monetization architecture,' 'structural tailwind,' 'arbitrage window'), decorative AI-generated images, precise-sounding fabricated statistics (18.3%, 2.1x, 4.1x, 3.2x, 5.2x), urgency buttons ('ACT NOW'), invented category taxonomy, and a donut chart with no grounding in actual data."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing by 0.5 (no limitations, no missingness, no audience stated, revenue 8x wrong on framing slide) and visual by 0.5 (sole chart is fabricated, all images decorative AI-generated, no real data visualization). Other scores confirmed as appropriate.",
+  "total": 29,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 18539,
+    "output_tokens": 1151
+  }
+}

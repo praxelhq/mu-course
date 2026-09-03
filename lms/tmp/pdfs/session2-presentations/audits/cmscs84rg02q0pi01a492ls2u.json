@@ -1,0 +1,42 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 4.5,
+    "accuracy": 2.5,
+    "visual": 6.5,
+    "bonus": 0
+  },
+  "what_worked": "Composite scoring methodology with transparent weights and the AI-vs-No-Code defensibility contrast show genuine strategic thinking.",
+  "fix_next": "Use the actual 1,000-row dataset; every headline number is inflated ~8.8x, and several categories are fabricated.",
+  "verdict": "Strong narrative arc built on a fabricated version of the dataset; accuracy failures are disqualifying.",
+  "flags": [
+    "fabricated-dataset-scale",
+    "inflated-row-count",
+    "inflated-revenue",
+    "invented-categories",
+    "unverifiable-composite-score",
+    "no-reference-data-categories"
+  ],
+  "factual_error_count": 9,
+  "factual_error_detail": "S1/S2: 8,782 startups claimed vs 1,000 actual (~8.8x inflation). S1/S2: $247M revenue vs $15.6M actual (~16x). S2: 1,430 AI startups vs 197 actual. S2: 41 No-Code startups — category does not exist in reference data. S3: All category counts inflated (e.g. SaaS 525 vs 66, Marketing 322 vs 42). S3: Categories Fintech, Utilities, Productivity not in reference data. S5: No-Code, Community, Sales, News & Magazines categories fabricated. S4: Stripe 59% claimed vs 63.6% actual (636/1000). S6: E-comm count 101 vs 19 actual.",
+  "evidence": {
+    "insight": "The six-dimension weighted composite (slide 5) and the AI-commoditized vs No-Code-premium contrast are genuinely useful frameworks; however, the No-Code category is fabricated, undermining the core recommendation.",
+    "narrative": "Clear arc from landscape → access → scoring → shortlist → recommendation → caveats; thesis stated on slide 1 and landed on slide 7. Sequence is purposeful and each slide builds logically.",
+    "framing": "Audience and question are stated upfront; appendix discloses missingness and skew. However, presenting 8,782 rows when the dataset has 1,000 is a fundamental misrepresentation that a cold reader cannot detect. Dropped from preliminary 5 to 4.5.",
+    "accuracy": "Row count inflated 8.8x, revenue inflated ~16x, category counts all wrong by similar multiples. At least six categories shown (No-Code, Community, Fintech, Sales, News & Magazines, Utilities, Productivity) do not exist in the reference data. Stripe share slightly off. Composite scores are unverifiable and built on fabricated inputs. Lowered from preliminary 3 to 2.5.",
+    "visual": "Consistent navy/gold palette, clean hierarchy, well-labeled bar charts, legible table on slide 6. Typo on slide 4 ('beings Sold'). Professional but template-driven; no annotation or chart innovation beyond labels.",
+    "ai_slop": "The 8.8x dataset inflation and invention of multiple categories strongly suggest AI hallucination or use of a wholly different dataset. Consulting-style 'CONFIDENTIAL' branding is decorative filler."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Removed 1-point bonus: no element rises beyond the rubric given that the core recommendation rests on a fabricated category. Lowered accuracy from 3→2.5 because the magnitude of fabrication (invented categories, not just inflated counts) is more severe than rounding errors. Lowered framing from 5→4.5 because the 8.8x row-count misrepresentation is a framing failure, not just an accuracy one.",
+  "total": 53,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 16418,
+    "output_tokens": 958
+  }
+}

@@ -1,0 +1,410 @@
+        TRUSTMRR DATASET DEEP-DIVE
+
+
+
+
+From 1,000 Startups to a Brand Thesis
+How the data pointed toward automation — and toward tutoring as where my own experience meets the
+opportunity
+
+
+
+
+Purnisha Tomar | MBA Data Analysis Project
+        THE OBJECTIVE
+
+
+
+
+What is this data,                                   1,000                                                    29
+and what am I                                        Startup listings                                         Data points per
+                                                     on TrustMRR                                              startup
+looking for?
+
+                                                     $76.6M                                                   65
+I want to identify a vertical worth building an
+                                                     Highest all-time                                         Countries
+automation-focused brand in — grounded in            revenue in the set                                       represented
+real revenue data, not gut feel.
+
+
+
+
+                                                  TrustMRR is a marketplace where founders list their startups for sale — each listing carries verified
+                                                  revenue, MRR, traffic, pricing, and buyer-facing positioning data. That makes it a rare window into
+                                                  what small, real, revenue-generating internet businesses actually look like today.
+         ST EP 1 · FIRST CUT ACROSS ALL 1,000
+
+
+The Landscape
+Startups by Country (top 8 of 65)                                     Startups by Category (top 9 of 29)
+
+
+
+   258
+                                                                          197
+
+
+
+
+                                                                                      66
+              79                                                                                 52         49
+                       59                                                                                              42
+                                                                                                                            37   36   34
+                                50                                                                                                         30
+
+                                      29
+                                                24     20       19
+
+
+
+    US      France    India     UK   Canada Germany   Brazil   Hong
+                                                               Kong
+
+                                                                      27% of listings (274) carry no category tag at all.
+      ST EP 1 · FIRST CUT ACROSS ALL 1,000
+
+
+A Curious Clue
+Same categories, same marketplace — but a completely different payment stack shows up in one country.
+
+
+                                                                           US   India
+                    86%
+
+
+
+
+                                                                   61%
+
+
+
+
+                                   22%
+
+                                                                                        10%                          10%
+                                                                                                        4%
+                                                      0%                                         2%
+
+                          Stripe                      Dodo Payments                      RevenueCat          Other
+
+
+  Why would India lean so heavily on a provider almost nobody else uses?
+        STEP 2 · THE REVEAL
+
+
+
+
+What This Told Us
+
+
+           Dodo Payments is built for local GST compliance and emerging-market payment rails. Stripe still leads everywhere else —
+           including the US, at 86% — but in India it drops to 22%, overtaken by a provider almost nobody else on the platform uses.
+
+
+
+
+That's not noise. It's a sign that India might behave like a genuinely different market — worth a dedicated look, not just a footnote in
+the global numbers.
+
+
+So that's exactly what we did next.
+      ST EP 2 · GOING DEEPER
+
+
+So We Went Looking for India, Specifically
+India is the market I ultimately want to build for. With a first signal already in hand, the natural next step was a dedicated cut of the
+data: country-wise, provider-wise, category-wise, revenue-wise.
+
+
+
+
+       59                                              4                                                 4
+       Indian startups                                 Payment providers                                 Revenue windows to
+       in the dataset (5.9%)                           India relies on                                   compare vs. US & Total
+
+
+
+
+                                  Question on the table: does India's revenue picture support building here first?
+       ST EP 2 · GOING DEEPER
+
+
+The India Reality Check
+Average & median revenue per startup — Total vs. US vs. India
+
+
+Revenue Window                                            Total                            US                    India
+                                                      Avg / Median                    Avg / Median           Avg / Median
+
+
+Last 30 Days                                        $15,596 / $400                  $38,152 / $1,396         $2,389 / $24
+
+
+
+Last 3 Months                                       $32,400 / $944                  $66,137 / $3,166         $5,281 / $31
+
+
+
+Last 12 Months                                     $133,750 / $3,068               $329,560 / $12,292        $19,823 / $98
+
+
+
+
+                                           So — does this justify building India-first, right now, or not?
+        STEP 2 · THE VERDICT
+
+
+
+
+Not Yet
+
+     India's median revenue runs 60–125x below the US's across every window, and average revenue is still 13–17x lower.
+     Combined with a sample of just 59 startups — 14 of them at literally $0 in the last year — there isn't enough signal yet
+     to build a standalone India analysis.
+
+
+
+
+Decision: set India aside for now — not ruled out, just not enough data yet — and go find out what the highest, most consistent
+earners in the full dataset actually look like.
+
+
+We'll come back to India within that lens.
+       ST EP 3 · THE PIVOT
+
+
+Chasing the Real Earners
+Instead of one market, widen the lens to the whole dataset: which startups are earning the most, most consistently?
+
+
+
+                                                                30-day revenue > $10,000
+
+
+      1,000                                                  3-month revenue > $30,000
+                                                                                                                      135
+        startups in the                          ALL THREE MUST BE TRUE · ALL-TIME REVENUE DELIBERATELY                top, sustained
+          full dataset                                                 EXCLUDED                                       earners (13.5%)
+                                                           12-month revenue > $120,000
+
+
+
+
+This is the shortlist we now dig into — category by category.
+         ST EP 3 · INSIDE THE SHORTLIST OF 135
+
+
+Who Makes the Cut
+By country (top 7)                                                            By category (top 7 of 22 tagged)
+
+
+    46
+                                                                                   22
+
+
+               37
+
+
+
+
+                                                                                              9            9
+
+
+
+                         10                                                                                         5
+                                                                                                                               4         4           4
+                                 7        7
+                                                      4         4
+
+
+
+    US       Hidden /   France   UK     Canada    Singapore    India               AI     Marketing       SaaS   Analytics   E-comm   Education   Content
+             Stealth                                                                                                                              Creation
+
+
+
+                                              Remember India's payment-rails clue? Let's check back in.
+   STEP 3 · CIRCLING BACK TO INDIA
+
+
+
+
+Only 4 of India's 59 Startups Clear This Bar
+
+
+
+   7%                                                                         18%
+   of India's startups                                                        of US startups
+   reach the top-earner tier                                                  reach the same tier
+
+
+
+
+         Small sample, and a lower hit-rate too — this is the same story the revenue table already told us, from a different angle.
+      ST EP 3 · INSIDE THE SHORTLIST OF 135
+
+
+Category X-Ray: The Software & Service Plays
+
+
+
+
+ AI                                              Marketing                                   SaaS
+ 22 startups                                     9 startups                                  9 startups
+
+
+
+
+ What: Automates knowledge work — SEO,           What: SEO, backlinks & lead-gen — agency-   What: Vertical workflow tools — scheduling,
+ prospecting, writing, tutoring                  style service, not pure software            client mgmt, fraud checks
+
+ Pricing: $13–$99/mo tiered, often a free tier   Pricing: $250–$4,000/mo retainers           Pricing: 3-tier monthly, $19–$400/mo
+
+ Persona: Split B2B / B2C                        Persona: B2B — agencies & local trades      Persona: B2B — service professionals
+     ST EP 3 · INSIDE THE SHORTLIST OF 135
+
+
+Category X-Ray: The Commerce & Skill-Building Plays
+
+
+
+
+ E-comm                                      Content Creation                              Education
+ 4 startups                                  4 startups                                    4 startups
+
+
+
+
+ What: Private-label, dropshipping, ticket   What: AI video / post / book generation, on   What: Coding, interview prep, writing-
+ resale, WhatsApp commerce                   autopilot                                     detection, presentations
+
+ Pricing: Flat monthly, $49–$200/mo          Pricing: $39–$199/mo tiered                   Pricing: Low-cost, $9.99–$34/mo
+
+ Persona: B2B entrepreneurs                  Persona: B2C — creators, self-publishers      Persona: B2C — students, career-switchers
+
+
+                                                                                           ★ MOST PERSONALLY RELEVANT
+         ST EP 3 · WHERE INDIA SHOWS UP
+
+
+The 4 Indian Startups in the Shortlist
+One per category — cleared the top-earner bar
+
+
+
+           Education                                                  $215,480 /12mo                                   AI                                                    $206,255 /12mo
+
+
+    MagicSlides.app                                                                                        Kortex-Notebooklm
+
+    Turns a prompt or document into a ready-to-use PPT in seconds                                          Bridges AI chats, web research & notes into one searchable base
+
+
+    Pricing: $29–$34/mo                                                                                    Pricing: Free → $3.75/mo
+
+
+
+
+            Dev Tools                                                 $205,788 /12mo                           Recruiting & HR                                               $126,595 /12mo
+
+
+    Web3Forms                                                                                              Hirevire
+
+    Backend-free contact-form API for developers                                                           One-way video interview screening for recruiters
+
+
+    Pricing: Free forever (capped)                                                                         Pricing: 7-day free trial
+
+All four are low-cost, self-serve, prosumer-leaning tools — a different shape from the higher-ticket, agency-style plays that show up more often in the US cohort. Flagged for deeper India-specific
+research once a vertical is chosen.
+          STEP 4 · THE SYNTHESIS
+
+The Golden Thread Running Through Every Category
+                                                                              AUTOMATION
+
+
+
+
+         AI                                                         Marketing                                                    SaaS
+
+
+ Automates knowledge work — writing, research,
+                                                            Automates lead-gen & SEO operations                         Automates scheduling & client operations
+ prospecting
+
+
+
+
+         E-comm                                                     Content Creation                                             Education
+
+
+ Automates commerce ops — fulfillment, resale, WhatsApp     Automates content ops — video, posts, books                 Automates skill-building & practice loops
+
+
+
+
+ Every high-earning category is, underneath, a different flavor of the same bet: replace a repetitive task a human used to do with software that does it automatically.
+       THE PERSONAL FIT
+                                                     The Market Case
+
+                                                            SAT prep is a proven, high-value category
+Why Tutoring.
+Why Me.
+                                                            Test prep for the US market is one of the largest, most consistent tutoring niches globally — a
+                                                            large, willing-to-pay audience with a recurring, high-stakes need.
+
+
+
+
+                                                            The shortlist already proves the model works
+Content Automation is the strongest data signal.
+Tutoring is where it meets real, lived experience.
+                                                            Rezi, Atlas, Codédex, DataExpert, and fastwrite.io — all education/tutoring-adjacent AI tools —
+                                                            cleared the top-earner bar on exactly this kind of content automation.
+
+    SAT Verbal Faculty
+    SATnPaper
+                                                            Real teaching credibility de-risks the hardest part
+    Academic Manager & Verbal/Reasoning
+    Faculty
+    Global Creed                                            The biggest question for any tutoring product is whether the content is actually good. Direct
+                                                            classroom and test-prep experience answers that before a single line of code is written.
+
+
+
+
+                                                      This is the throughline the rest of the conclusion builds on.
+     ST EP 5 · THE CONCLUSION
+
+Where I'll Build
+
+ #1 · TOP PICK                                                #2 · ON THE RADAR                                             #3 · ANOTHER OPTION
+
+
+ Content Automation —                                                                                                       Vertical SaaS, For a New
+                                                              B2B Lead Generation
+ Tutoring-Led                                                                                                               Niche
+
+
+ Writing, prospecting, resume-building — and,
+                                                              Local-trades lead-gen and influencer/creator                  Scheduling, cold-email deliverability, and client
+ above all, SAT tutoring for the US market. The
+                                                              collaboration at scale. Higher ticket size ($250–             management — the EliteTrainer model,
+ broadest revenue evidence in the shortlist (22 of
+                                                              $4,000/mo) stood out in the data — worth                      generalized beyond personal trainers to a
+ 135) meets direct teaching experience — the
+                                                              watching, but not a commitment right now.                     different profession.
+ strongest personal-fit case of any option here.
+
+
+
+
+ Also reinforcing the same automation thread: private-label/dropshipping enablement, ticket resale automation, WhatsApp commerce automation, and content creation tools
+ — folded into this lens rather than treated as standalone bets for now.
+
+
+
+    Next: validate the SAT-tutoring angle with real conversations in the US market. B2B lead-gen and vertical SaaS stay background options to watch. India gets revisited
+    within whichever vertical launches first — set aside for thin data, not ruled out.
+

@@ -1,0 +1,39 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 5.5,
+    "accuracy": 4.5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Strong coherent thesis (efficiency moat) threaded from title through action plan with consistent narrative arc.",
+  "fix_next": "Total revenue is $15.6M not $13.47M; the deck's anchor number is materially wrong, undermining every derivative claim.",
+  "verdict": "Polished investment narrative built on an incorrect total revenue figure.",
+  "flags": [
+    "total-revenue-error",
+    "missing-data-not-acknowledged",
+    "no-limitations-slide",
+    "consulting-language-heavy",
+    "unverifiable-growth-claims"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 1: Combined MRR stated as $13.47M; actual total 30-day revenue is $15,596,344.59 (~$15.6M), a ~14% undercount. Slide 1: Mean/median ratio claimed as 48x; with correct total the mean is ~$15,596 vs median $282, ratio ~55x not 48x. Slide 5: Claims Marketing & Sales is the single largest revenue domain at $2.4M+; AI category total is $2,356,676 which is comparable or larger depending on how 'Marketing & Sales' is defined—the deck conflates category with domain without clarifying. Slide 5: '197 of 1,000' on slide 2 is stated as if category is known for all 1,000, but 274 rows have missing category data; 197 is out of 726 categorized rows (~27%), not 1 in 5.",
+  "evidence": {
+    "insight": "Slide 6's 'efficiency moat' thesis (high-friction, low-creativity tasks) is a genuine interpretive claim beyond chart description. Slide 10's API/platform risk framing adds useful investor perspective. However, the deck never engages with payment provider concentration (Stripe at 87% of revenue), anonymous vs named dynamics, or median-vs-mean by category—missing the dataset's richest analytical seams.",
+    "narrative": "Clear arc: market overview (slides 1-2) → winners (3-4) → sector thesis (5-6) → geography (7) → secondary market (8-9) → risk (10) → action (11) → conclusion (12). The 'efficiency-first' thread is maintained throughout. Weakness: slides 7-8 feel loosely connected to the core thesis.",
+    "framing": "Framed as an 'Investment Briefing' for an implied LP/investor audience, which is clear. However, no slide acknowledges data limitations: 274 missing categories, 241 missing countries, 216 zero-revenue entries, or 288 missing audience types. No methodology or source slide. The denominator problem (197 of 726 categorized, not 1,000) is never surfaced.",
+    "accuracy": "Core total revenue figure ($13.47M) is materially wrong vs $15.6M reference. The 197/1000 framing ignores 274 missing category values. The 2.3x median revenue multiple on slide 8 and the 262 for-sale count cannot be verified against the reference but are plausible. Growth percentages on slide 4 are unverifiable. The mean-to-median ratio is wrong given the wrong total.",
+    "visual": "Consistent dark theme with good hierarchy: section labels, large headlines, supporting stats in cards. Color coding is restrained (blue, green, orange, white). Bar chart on slide 3 effectively shows skew. Slide 9's horizontal bar chart clearly contrasts speculative vs conservative multiples. Donut chart on slide 2 is appropriate. No chart junk. Weakness: slides 4, 7, 8 are essentially card layouts with no actual data visualization—they could benefit from charts.",
+    "ai_slop": "Moderate consulting-speak throughout ('agentic,' 'operating system,' 'acqui-hire or quick asset flips'). The self-attributed quote on slide 6 is a red flag for AI-generated filler. Slide 7's geography section is vague and unsupported by numbers. However, the deck avoids the worst AI template patterns—each slide has distinct content and layout variation."
+  },
+  "confidence": "high",
+  "total": 61,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22944,
+    "output_tokens": 1072
+  }
+}

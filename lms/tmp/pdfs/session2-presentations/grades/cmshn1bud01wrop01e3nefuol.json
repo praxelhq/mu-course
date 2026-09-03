@@ -1,0 +1,39 @@
+{
+  "slide_count": 15,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis-driven M&A framing with genuine growth-vs-spike distinction and actionable phased recommendations.",
+  "fix_next": "Aggregate revenue is $6.31M vs. actual $15.6M—a 60% undercount that undermines every share percentage and the entire opportunity-sizing logic.",
+  "verdict": "Well-structured investment memo undermined by a major revenue denominator error.",
+  "flags": [
+    "aggregate-revenue-wrong",
+    "top-5-share-claim-unverifiable",
+    "consulting-language-heavy",
+    "denominator-mismatch",
+    "missing-data-handling-unclear"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1: Aggregate 30D revenue stated as $6.31M; actual is $15.60M—massive undercount (likely filtered to named-only or on-sale subset without disclosure). Slide 4: AI share stated as 37.3%—correct against their $6.31M denominator but wrong against the true $15.6M total (actual ~15.1%). Slide 4: 'Top 5 largest platforms account for 88.4% of total dataset revenue'—actual top-10 share is 49.6%, so top-5 at 88.4% is implausible against full dataset. Slide 4: E-commerce share 17.6% uses wrong denominator. Slide 9: 'Dataset median listing multiple of 2.2x ARR' is unverifiable and likely fabricated from filtered subset; reference medians are 2.35x B2B / 2.30x B2C.",
+  "evidence": {
+    "insight": "Slide 6 distinguishes genuine scaled growth (Backlinker AI $577% on $21.9k base) from micro-base spikes (RonFax $87 base), enforcing a $10k threshold—this is a genuinely useful analytical move. Slide 8 derives implied ARPU to compare B2B vs B2C unit economics. Slide 9 introduces ARR multiple arbitrage framing. However, insights are narrowly focused on 6 companies and don't explore broader dataset patterns (provider mix, TLD signals, audience type, geographic distribution).",
+    "narrative": "Clear arc: market landscape → segment attractiveness → growth quality filter → individual targets → comparative ranking → diligence checklist → execution plan. The core thesis on slide 2 ('Prioritize B2B AI/SaaS with proven MRR under 2.5x ARR') is stated early and consistently supported. The phased action plan on slide 15 provides a genuine landing. Sequence is purposeful, not a list.",
+    "framing": "Slide 1 states scope, dataset size, and freeze date. Slide 3 discloses limitations (no CAC, LTV, gross margins, churn) and explains methodology including stealth exclusion and scoring model. Audience is clearly M&A leadership. However, the critical decision to analyze only ~231 'on-sale' named assets is never clearly justified, and the $6.31M aggregate is presented as if it represents the full dataset, which misleads the cold reader about market size.",
+    "accuracy": "The $6.31M aggregate revenue is the most damaging error—it's roughly 40% of the actual $15.6M total, suggesting the presenter silently filtered to a subset but presented percentages as if they were dataset-wide. Category counts and absolute revenues for AI ($2.36M/197), Marketing ($1.32M/42), E-commerce ($1.11M/19), SaaS ($703k/66), Mobile Apps ($227k/52) all match reference data. Individual company metrics appear internally consistent. The 88.4% top-5 concentration claim is implausible against the full dataset. The 2.2x median ARR multiple is unverifiable.",
+    "visual": "Consistent dark/light theme with good hierarchy. Slide badges (MARKET LANDSCAPE, GROWTH QUALITY, etc.) aid navigation. Tables on slides 8, 9, 13 are clean and legible. The 2x2 matrix on slide 5 is conceptually useful but axis values are unlabeled and bubble sizes appear arbitrary. Bar chart on slide 7 is well-annotated with target highlighting. Color coding for valuation assessments (green/yellow/red) on slide 9 is effective. Some slides (10, 11, 12) are repetitive in layout—three nearly identical target profile slides.",
+    "ai_slop": "Moderate consulting-speak throughout ('Strategic Investment & Acquisition Opportunities,' 'Quadrant Strategy,' 'Arbitrage Opportunity'). The 100-point scoring model on slide 3 appears fabricated—weights are presented with false precision but no validation. The 89/100, 86/100, 82/100 scores feel manufactured to support a predetermined conclusion. Repetitive target profile template across slides 10-12. However, the content is substantive enough that this is inflated language rather than pure filler."
+  },
+  "confidence": "high",
+  "total": 69,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 25294,
+    "output_tokens": 1261
+  }
+}

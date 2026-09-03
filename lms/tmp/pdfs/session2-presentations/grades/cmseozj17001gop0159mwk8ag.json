@@ -1,0 +1,39 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 5.5,
+    "accuracy": 4,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Clear thesis with a purposeful four-point narrative arc and restrained, legible visual design.",
+  "fix_next": "Multiple key figures are materially wrong (top-10 share, median values, B2B/B2C multiplier); verify every number against the actual data before presenting.",
+  "verdict": "Clean storytelling undermined by several factual errors in core claims.",
+  "flags": [
+    "inflated-top10-share",
+    "wrong-median-values",
+    "wrong-b2b-b2c-multiplier",
+    "missing-limitations-discussion",
+    "no-sample-size-caveats"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: Claims top-10 share is 61%; actual is ~49.6%. Slide 4: Education median shown as $2,141 (actual $2,435); Marketing median $1,586 (actual $2,369.50); AI median $446 (actual $503). Slide 5: B2B/B2C described as 'nearly 6x' ($1,036/$181 ≈ 5.7x); reference medians give ~2.35x. The absolute values ($1,036 and $181) don't match reference multipliers and likely reflect different filtering or calculation errors.",
+  "evidence": {
+    "insight": "The crowd-vs-median-revenue contrast (slides 3-4) and vanity-metrics debunk (slide 6) are genuinely useful observations, though not deeply original. No second-order analysis or segmentation beyond surface comparisons.",
+    "narrative": "Strong arc: long-tail reality → AI hype → category medians → audience type → vanity metrics → synthesis. Each slide builds toward the summary slide. The closing qualifier ('the data doesn't say don't build AI') adds nuance.",
+    "framing": "Audience is implied (aspiring founders) but never stated. No mention of missingness (274 missing categories, 288 missing audience_type), sample limitations, or survivorship bias. Revenue described as 'monthly' without clarifying it's 30-day tracked revenue.",
+    "accuracy": "Top-10 revenue share inflated from ~49.6% to 61% (slide 2). Three category medians are materially wrong (slide 4). B2B/B2C multiplier claimed as ~6x but reference medians show ~2.3x; the absolute values don't match either. The 0.02 correlation (slide 6) is plausible but unverifiable against the specific variable pair claimed (Twitter followers vs revenue, not founded-year).",
+    "visual": "Consistent dark-navy/orange palette, clean typography, good hierarchy with numbered sections. Bar chart on slide 4 is well-labeled. Scatter plot on slide 6 appears illustrative/schematic rather than data-derived (few points, no axes scales). Donut chart on slide 3 is appropriate. Overall restrained and professional.",
+    "ai_slop": "Scatter plot on slide 6 looks fabricated/illustrative rather than plotted from actual data. Otherwise the deck avoids generic filler and consulting language. The closing slide's four-quadrant summary is template-like but substantive."
+  },
+  "confidence": "high",
+  "total": 60,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 13632,
+    "output_tokens": 839
+  }
+}

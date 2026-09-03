@@ -1,0 +1,45 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 3.5,
+    "narrative": 4.5,
+    "framing": 3,
+    "accuracy": 2.5,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "Superwall median-revenue observation on slide 4 is a genuinely interesting, data-grounded finding worth exploring further.",
+  "fix_next": "Replace decorative AI illustrations with real data charts; verify every statistic against the dataset and acknowledge missingness.",
+  "verdict": "Mostly motivational filler with fabricated stats, one real chart, and corrupted AI graphics.",
+  "flags": [
+    "ai-slop",
+    "fabricated-statistics",
+    "decorative-not-informative-visuals",
+    "missing-data-acknowledgment",
+    "unearned-certainty",
+    "no-category-analysis",
+    "corrupted-graphic-slide-9",
+    "no-limitations-disclosed",
+    "inflated-language"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 3: 68%/17%/10%/5% revenue buckets are unverifiable and likely fabricated. Slide 6: r=0.29 for followers-revenue correlation is unsourced (dataset Pearson r for founded-year/revenue is 0.025; no Twitter-follower field is documented). Slide 6: '80% grew revenue faster than audience' is fabricated—no longitudinal data exists. Slide 8: '1 in 5' (20%) stealth claim; actual anonymous share is 129/1000 = 12.9%. Slide 4: Stripe called '60% market share'—actual is 636/1000 = 63.6%, minor but imprecise. Slide 4: Stripe median stated as $234 vs reference value that is plausible but unconfirmed against frozen medians; Superwall median $4,159 vs chart label $4.16k is consistent but sample size not disclosed.",
+  "evidence": {
+    "insight": "Only slide 4's Superwall median observation offers non-obvious analytical depth. No category revenue analysis, no top-10 concentration (49.6%), no TLD comparison, no B2B/B2C multiples, no anonymity revenue-share analysis. Remaining slides are platitudes.",
+    "narrative": "Loose arc from dataset intro to takeaways, but middle slides (geography, followers, stealth, outliers) are disconnected vignettes without a unifying thesis. Conclusion is generic motivational advice ('boring is profitable') untethered from specific data.",
+    "framing": "No audience defined, no research question stated, no scope or limitations acknowledged. 24% missing country, 27–29% missing category/audience_type, 21.6% zero-revenue rows never mentioned. Dataset called 'verified, audited' without justification—misleading framing.",
+    "accuracy": "At least 6 fabricated or unverifiable statistics across slides 3, 6, and 8. Revenue distribution percentages, follower correlation r=0.29, '80% grew faster,' and '1 in 5 stealth' all lack dataset support. Missing payment providers (Paddle, Lemon Squeezy) from slide 4 chart without explanation.",
+    "visual": "One real data chart (slide 4 horizontal bar). Slides 1, 2, 3, 5, 7, 8, 10 use large decorative AI illustrations conveying zero data. Slide 9 has visibly corrupted AI-generated graphic with garbled text ('Romeri CAT,' 'Sone %0$'). Repetitive three-card layouts on slides 7 and 11. No chart variety.",
+    "ai_slop": "Pervasive: every slide features decorative AI art; consulting-buzzword language throughout ('The Anti-Hype Source,' 'The Winning Formula,' 'hidden economy'); slide 9 corrupted graphic is clear AI-generation artifact; generic card templates repeated."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy by 0.5 (fabricated stats more numerous than preliminary weighted) and visual by 0.5 (slide 9 corrupted graphic is a serious quality failure). Framing also lowered 0.5 for calling dataset 'audited' without basis and zero limitations disclosure. Insight and narrative unchanged—preliminary was already fair.",
+  "total": 33,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 20198,
+    "output_tokens": 1069
+  }
+}

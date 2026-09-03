@@ -1,0 +1,39 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 4,
+    "narrative": 5,
+    "framing": 4,
+    "accuracy": 2.5,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Clear thesis that subscriber conversion matters more than traffic, supported by correlation figures.",
+  "fix_next": "Category counts and revenues are fabricated (437 SaaS, $4.44M SaaS, $1.96M Analytics, $1.9M Productivity); verify every number against the actual dataset.",
+  "verdict": "Coherent narrative undermined by multiple fabricated category figures.",
+  "flags": [
+    "fabricated-numbers",
+    "missing-limitations",
+    "no-missingness-disclosure",
+    "consulting-language",
+    "ai-slop-decorative-graphics"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 3: Claims 437 SaaS companies (actual 66) and 392 AI companies (actual 197); SaaS revenue $4.44M (actual $703K); AI revenue $3.42M (actual $2.36M). Slide 5: Average MRR stated as $13,500 (actual ~$15,596). Slide 6: Analytics shown at $1.96M (actual $368K); Productivity at $1.9M (actual $114K); Marketing at $2.13M (actual $1.32M). Slide 7: '40% of companies use AI' — AI category has 197/726 categorized = 27%, not 40%.",
+  "evidence": {
+    "insight": "Slide 4 correlation insight (0.91 subscribers vs 0.19 traffic) is the strongest analytical point but is not deeply interrogated; slide 5 power-law observation is reasonable but the 12,700× claim uses fabricated top-1% figure. No median-by-category analysis, no discussion of missingness driving results.",
+    "narrative": "Slides follow a logical arc: data intro → category landscape → correlation → concentration → takeaways → recommendation. However the arc is thin (only 6 content slides) and the takeaways largely restate earlier slides rather than synthesize.",
+    "framing": "Slide 2 states goal and source but omits audience definition, scope limitations, 27% missing category data, 22% zero-revenue companies, and any caveats about cross-sectional snapshot vs. causal claims. 'Executive Briefing' framing is vague.",
+    "accuracy": "Slide 3 numbers are wildly wrong: SaaS has 66 companies not 437, AI has 197 not 392, SaaS total revenue is $703K not $4.44M. Slide 6 chart shows Analytics at $1.96M (actual $368K) and Productivity at $1.9M (actual $114K). These are not rounding differences; they appear fabricated or computed from a different dataset/methodology without disclosure.",
+    "visual": "Clean, consistent blue palette with good hierarchy and readable type. Only one actual chart (slide 6 bar chart). Decorative illustrations on slides 1 and 8 add no information. Bar charts on slide 4 are simple progress bars, adequate but not sophisticated. Overall restrained but sparse — more data visualization would strengthen the deck.",
+    "ai_slop": "Decorative cityscape (slide 1) and rocket/desk illustration (slide 8) are generic AI-generated graphics adding no analytical value. 'MARKET INTELLIGENCE EXECUTIVE BRIEFING' badge is inflated consulting language. 'Build. Convert. Retain. Win.' is generic motivational filler."
+  },
+  "confidence": "high",
+  "total": 41,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15101,
+    "output_tokens": 890
+  }
+}

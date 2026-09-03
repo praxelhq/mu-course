@@ -1,0 +1,38 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 8,
+    "framing": 8,
+    "accuracy": 6.5,
+    "visual": 7,
+    "bonus": 3
+  },
+  "what_worked": "Genuinely original thesis—re-deriving multiples on trailing-year revenue—delivers actionable buyer diligence advice throughout.",
+  "fix_next": "Country chart (slide 4) strips labels to anonymous numbers; verify the 210x claim against the reference median and show country names.",
+  "verdict": "Sharp acquisition-buyer lens with strong narrative, weakened by unverifiable and likely off charts.",
+  "flags": [
+    "unlabeled-chart-axes",
+    "unverifiable-country-medians",
+    "possible-fabricated-210x-claim",
+    "small-slide-count"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 1/3: 'median MRR $282' and 'mean $13,472' are plausible but unverifiable against the frozen reference which gives 30-day revenue totals, not MRR; the 48x ratio may be approximately correct but the exact figures cannot be confirmed. Slide 4: US median stated as $1,262 and India as $6 (210x gap)—the reference gives no country-level median revenue figures to confirm; the chart y-axis uses anonymous numbers (1–8) instead of country names, making verification impossible. Slide 3: '197 listings report $0 MRR and zero subscriptions' conflicts with the reference's 216 zero-revenue listings (these are related but distinct measures, so this is a minor discrepancy). Slide 7: the 4.75x re-derived median multiple is presented on the title slide as a headline fact but the derivation methodology, while clever, cannot be cross-checked against the frozen reference.",
+  "evidence": {
+    "insight": "Slides 6–7 deliver the deck's strongest original insight: reverse-engineering how quoted multiples are constructed (30-day × 12) and showing the 2.07x inflation factor. The sub-$1K band analysis (6.5x real multiple) is genuinely decision-useful. Slide 5's observation that for-sale listings earn 5.6x non-sellers challenges the 'distressed asset' assumption.",
+    "narrative": "Clear acquisition-buyer thesis from slide 1 ('Finding Value') through data quality (slide 2), skew warning (slide 3), screening heuristics (slides 4–5), to multiple re-derivation (slides 6–7). Each slide builds on the prior. The deck ends on a concrete diligence rule rather than a generic summary, though it lacks a formal closing/synthesis slide.",
+    "framing": "Slide 2 is an unusually strong data-provenance slide that distinguishes verified from declared fields and states missingness counts (241 country, 274 category). The 'diligence rule' framing throughout gives the audience a clear role (acquirer). Scope is implicitly 30-day revenue window. No explicit limitations slide, but caveats are woven in.",
+    "accuracy": "The verified/declared split and missingness counts on slide 2 match the reference exactly (241 country, 274 category). However, the 210x US-to-India median gap on slide 4 cannot be confirmed and the chart hides country names behind numbers 1–8. The 197 zero-MRR figure (slide 3) doesn't match the 216 zero-revenue count in the reference—these could be legitimately different measures but the distinction isn't explained. The multiple re-derivation logic is internally consistent but the specific numbers (2.3x quoted, 4.75x real) are hard to verify. The 55.7% US revenue share is plausible but unconfirmed.",
+    "visual": "Consistent dark-teal palette with cream callout boxes. Charts are clean horizontal bars with value labels. However, slide 4's y-axis uses anonymous numbers instead of country names—a significant legibility failure for the deck's key geographic claim. Slide 7's grouped bar chart effectively shows quoted vs. re-derived multiples. The layout template (chart left, callouts right) is repeated on every slide, creating some visual monotony but maintaining readability. No decorative graphics.",
+    "ai_slop": "none—the deck avoids generic filler, consulting language, and decorative graphics. Every slide makes a specific, data-grounded claim."
+  },
+  "confidence": "medium",
+  "total": 79,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 13605,
+    "output_tokens": 1078
+  }
+}

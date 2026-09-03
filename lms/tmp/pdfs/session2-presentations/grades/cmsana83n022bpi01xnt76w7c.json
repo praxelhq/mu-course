@@ -1,0 +1,38 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 6.5,
+    "bonus": 2
+  },
+  "what_worked": "Momentum/trend framework is genuinely original and the Education deep-dive adds real analytical depth beyond surface-level charts.",
+  "fix_next": "Slide 3 uses trailing-12-month figures that don't match the frozen 30-day dataset; verify which revenue window you're actually plotting before building claims on it.",
+  "verdict": "Strong analytical framework undermined by unverifiable revenue figures and narrow dataset coverage.",
+  "flags": [
+    "unverifiable-revenue-window",
+    "category-count-discrepancy",
+    "concentration-claim-unverified",
+    "19-categories-claim-questionable"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 1/2: Claims '19 categories analyzed' but reference data shows 12 named categories (with 274 missing); the 672-company filter is unexplained against 726 categorized rows. Slide 3: Revenue figures labeled 'trailing 12-month' ($18.4M for AI, $14.6M for Marketing, etc.) cannot be verified against the frozen 30-day dataset reference (AI 30-day total is $2.36M, Marketing $1.32M); these appear to be fabricated or from an unspecified source. Slide 3: '63% from 3 categories' claim is unverifiable against known 30-day totals. Slide 7: Revenue-per-visitor metric ($56.34 for AI) is presented without showing the traffic denominator data or sample sizes per category beyond the 3+ threshold, making the 90x claim unauditable.",
+  "evidence": {
+    "insight": "Slides 4-6 build a momentum/trend framework that goes well beyond describing charts; the Education hand-off narrative (slide 6) is a genuinely useful second-order finding. Revenue-per-visitor on slide 7 adds a monetization-efficiency lens.",
+    "narrative": "Clear thesis arc: concentration → AI compounding → Education as counter-example → monetization efficiency → takeaways. Each slide builds on the prior. The landing on slide 8 synthesizes four distinct findings coherently.",
+    "framing": "Slide 2 defines methodology, growth signals, and filtering criteria upfront. Limitations footnote on slide 8 acknowledges category missingness and traffic sample size. However, the audience for the analysis is never stated, and '19 categories' is asserted without listing them.",
+    "accuracy": "The 30-day reference totals (AI $2.36M, Marketing $1.32M) don't match the 'trailing 12-month' figures on slide 3 ($18.4M, $14.6M), which are ~7-10x larger and unverifiable from the frozen dataset. The dataset provides 30-day revenue; the deck claims to use 12-month windows without explaining the source. 672 companies used vs. 726 categorized is unexplained. The momentum/trend ratios (1.12x, 1.37x for AI) are plausible constructions but unverifiable.",
+    "visual": "Consistent dark/teal palette with good hierarchy. Slide 5 scatter plot is hard to read—many dots are unlabeled and axes lack numeric scales. Slide 3 bar chart is clean and well-annotated. Slide 7 bar chart is effective. Overall restrained but the scatter plot legibility is a real weakness.",
+    "ai_slop": "Minimal slop. The decorative circle shapes on slides 1 and 9 are generic but not distracting. Language is specific and data-driven throughout, not inflated consulting-speak."
+  },
+  "confidence": "medium",
+  "total": 68,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 17458,
+    "output_tokens": 944
+  }
+}

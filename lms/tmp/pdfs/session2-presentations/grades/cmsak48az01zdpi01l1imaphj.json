@@ -1,0 +1,37 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7.5,
+    "accuracy": 6,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Strong narrative arc from data quality through segmentation to action plan, with consistent median-vs-mean discipline.",
+  "fix_next": "Several median figures are materially wrong (E-comm $155 vs $387, AI $446 vs $503, Analytics $1K vs $419); verify all medians against source data.",
+  "verdict": "Well-structured segmentation playbook with good narrative but multiple median inaccuracies undermine trust.",
+  "flags": [
+    "median-errors-multiple-categories",
+    "mrr-vs-revenue-conflation",
+    "anonymous-share-inflated"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 2: Top-10 share stated as 48.0% of MRR; reference is 49.6% of revenue—metric conflation. Slide 4: Uses 'MRR' throughout but reference dataset measures 30-day revenue, not MRR; the 26.5% top-1 share and 48% top-10 may be close but the metric label is wrong. Slide 6: AI median MRR $446 vs reference $503; E-comm median $155 vs reference $387; Analytics median $1K vs reference $419; SaaS median $303 vs reference $200.50; Education median $2K vs reference $2,435 (rounding acceptable but others are not). Slide 11: Anonymous revenue share stated as 28.1% vs reference 26.525%. Slide 10: B2B average MRR claimed 2.6× B2C; reference median multiples are ~2.35×/2.30× and mean multiples are 7.97×/8.44× (B2C actually higher on means), so the 2.6× claim is unverifiable from reference data.",
+  "evidence": {
+    "insight": "Slide 7 cross-cuts category × audience type to find actionable pockets like AI-B2B vs AI-B2C with different medians. Slide 5 revenue-band analysis with 16 companies driving 55% is genuinely useful. Slide 11 correctly identifies followers as non-predictive (r=0.024). However, insights remain largely descriptive rather than surprising.",
+    "narrative": "Clear thesis on slide 2 ('protect whales, scale proven segments, be disciplined on acquisitions') carried through every slide. Each slide has a section label, headline insight, data, and action box. Slides flow logically: data quality → concentration → bands → category → cross-cuts → geography → providers → audience → signals → M&A → action plan.",
+    "framing": "Slide 1 establishes scope (1,000 companies, $15.6M). Slide 3 explicitly addresses data readiness and warns against CAC claims—strong epistemic discipline. CBO audience is named throughout. However, the deck never clarifies that 'MRR' as used may differ from 30-day revenue, and 274 missing categories are not flagged on the category slide.",
+    "accuracy": "Multiple median values diverge from reference: E-comm median $155 vs $387 (slide 6), Analytics $1K vs $419, AI $446 vs $503, SaaS $303 vs $200.50. Top-10 concentration stated as 48.0% vs reference 49.6%. Anonymous share 28.1% vs 26.525%. The deck systematically labels 30-day revenue as 'MRR' without clarifying the distinction. Stripe revenue ($13.5M) and RevenueCat ($1.31M) match well. Total revenue $15.6M is correct.",
+    "visual": "Consistent template: dark header, horizontal bar chart left, data table right, action callout bottom. Clean typography, good hierarchy, restrained color palette (navy/gold/teal). Charts are simple and legible. However, the uniformity across 13 slides creates visual monotony—every slide uses the same layout. No scatter plots, distributions, or more sophisticated visualizations despite opportunities (e.g., slide 11 correlation could show a scatter).",
+    "ai_slop": "Mild consulting-speak ('revenue operating system,' 'GTM wedge,' 'segmentation playbook') but generally substantive. Template repetition across all slides suggests AI-generated layout. Action boxes on every slide feel formulaic but contain specific content. No decorative-but-meaningless graphics."
+  },
+  "confidence": "high",
+  "total": 72,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 25294,
+    "output_tokens": 1136
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 1,
+    "narrative": 1.5,
+    "framing": 1,
+    "accuracy": 1,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "Consistent dark visual template with readable typography and clean layout throughout.",
+  "fix_next": "This deck uses zero data from the assigned dataset; it is a generic AI thought-leadership piece with unsourced statistics, not a data story.",
+  "verdict": "Wrong assignment: generic AI strategy deck, no use of the required dataset.",
+  "flags": [
+    "wrong-dataset",
+    "no-dataset-analysis",
+    "ai-slop",
+    "unsourced-statistics",
+    "decorative-stock-images",
+    "consulting-filler"
+  ],
+  "factual_error_count": 0,
+  "factual_error_detail": "No claims from the assigned dataset are made, so no dataset-specific errors can be counted. However, all statistics (60% task reduction, 80% Global 2000 adoption, industry adoption rates, deployment maturity percentages, use-case ROI figures) are presented without any citation or source and appear fabricated or pulled from unknown external sources.",
+  "evidence": {
+    "insight": "Every slide presents generic industry talking points about agentic AI (slides 3-11). No original analysis, no findings derived from the 1,000-row dataset. Zero decision-useful insights tied to actual data.",
+    "narrative": "The deck follows a coherent consulting-style arc (evolution → metrics → use cases → risks → roadmap), but this narrative has nothing to do with the assigned data-story task. It reads as a McKinsey-style thought piece.",
+    "framing": "No mention of the assigned dataset, its scope, limitations, or analytical question. The audience is framed as enterprise strategy leaders (slide 1: 'Enterprise Strategy 2026'), not as someone expecting a data story from the provided dataset.",
+    "accuracy": "Slides 4-6 and 8-9 present specific percentages (60% task reduction, 33% tech adoption, 62% pilots, 64% CX adoption, 72% enterprise adopters) with zero sourcing. None of these numbers come from the assigned dataset. Cannot verify any claim.",
+    "visual": "Slides use a polished dark theme with gradient backgrounds, consistent typography, and clean card layouts (slides 3, 7). However, decorative stock images on slides 8-9 (futuristic server room, shield graphic) add no analytical value. The pie chart on slide 6 and bar chart on slide 5 show unsourced data.",
+    "ai_slop": "Entire deck is classic AI-generated consulting slop: 'paradigm shift' (slide 2), 'persistent multi-agent orchestration across core operations' (slide 2), 'deterministic guardrails' (slide 7), generic Q1-Q4 roadmap (slide 10), decorative stock imagery (slides 8-9), and a fake contact email 'strategy@enterprise-ai.com' (slide 12). No evidence of engagement with actual data."
+  },
+  "confidence": "high",
+  "total": 15,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22130,
+    "output_tokens": 749
+  }
+}

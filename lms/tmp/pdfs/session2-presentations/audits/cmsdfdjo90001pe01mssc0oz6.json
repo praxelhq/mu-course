@@ -1,0 +1,41 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 6,
+    "bonus": 1
+  },
+  "what_worked": "Layered AI-compounding argument and Education leader-deceleration counter-example show genuine analytical depth.",
+  "fix_next": "Fix the scatter plot: show all 18+ categories or drop the 'almost every category' headline claim.",
+  "verdict": "Strong analytical arc undermined by an empty scatter plot and unverifiable revenue figures.",
+  "flags": [
+    "scatter-plot-nearly-empty",
+    "revenue-figures-unverifiable-against-reference",
+    "19-categories-claim-exceeds-reference",
+    "trailing-12mo-not-in-frozen-reference",
+    "slide3-bar-values-mismatch-reference"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 3: AI shown as $18.4M and Marketing as $14.6M trailing-12-month, but reference gives only all-time totals (AI $2.36M, Marketing $1.32M); these are plausible 12-month figures but completely unverifiable. Slide 3: '19 categories analyzed' — reference lists only ~12 named categories with counts; claim is unreconciled. Slide 5: Title says 'almost every category is accelerating' but scatter shows only 3 of 18+ dots, making the claim unsupported visually. Slide 3: 63% concentration claim for top-3 categories cannot be checked against reference totals (reference top-3 all-time share is roughly 33%, not 63%).",
+  "evidence": {
+    "insight": "Momentum/trend 2×2 framework on slide 5 is an original contribution; revenue-per-visitor on slide 7 adds a monetization-efficiency lens; Education hand-off narrative on slide 6 is a genuine synthesis moment.",
+    "narrative": "Clear arc from concentration → AI deep-dive → growth signals → Education counter-example → monetization efficiency → takeaways. Each slide builds purposefully. Takeaway slide synthesizes without merely repeating.",
+    "framing": "Slide 2 defines methodology, windows, and growth signals well. Limitations on slide 8 are honest (726/1000 tags, 178 traffic reporters, Kibu anomaly). However, no explicit audience or decision-maker is stated — who should act on these findings?",
+    "accuracy": "Primary metric is trailing 12-month revenue, which is not in the frozen reference and cannot be verified. The 19-category claim exceeds the ~12 categories in the reference. The scatter plot shows 3 dots but the headline claims 18+ categories accelerate. Kibu $0 three-month anomaly is flagged but still used in analysis without adequate caveat about data quality.",
+    "visual": "Clean dark/light palette, well-labeled bar charts, clear tables. But the scatter plot on slide 5 is critically flawed — nearly empty with only 3 visible dots for a claim about 18+ categories. Slide 3 rotated axis labels reduce legibility. Overall consistency is good but the one broken chart is prominent.",
+    "ai_slop": "Minimal. 'Beyond the Hype' title is mildly cliché but substance-backed. No decorative filler or generic boilerplate detected. Content is dataset-specific throughout."
+  },
+  "confidence": "medium",
+  "changed": true,
+  "change_reason": "Reduced visual from 6.5 to 6 because the scatter plot failure is a central analytical chart, not a minor blemish. Reduced bonus from 2 to 1; the momentum/trend framework is a nice contribution but the execution gaps (empty scatter, unverifiable figures) prevent a higher bonus. Other scores unchanged — the preliminary assessment was largely sound.",
+  "total": 66,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 17725,
+    "output_tokens": 933
+  }
+}

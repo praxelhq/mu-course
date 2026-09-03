@@ -1,0 +1,38 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 6.5,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Sharp thesis, tight narrative arc, and genuine attempt to stress-test the finding against confounders.",
+  "fix_next": "n=20 usage-based startups is dangerously small for a headline claim; report sample sizes on the chart and discuss survivorship/selection bias.",
+  "verdict": "Compelling story built on a thin, unverifiable sample—needs more caution.",
+  "flags": [
+    "small-n-headline-claim",
+    "derived-variable-unverifiable",
+    "causal-language-from-observational-data",
+    "missing-sample-sizes-on-chart"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 2: Claims 657 of 1,000 have pricing_model filled; the frozen dataset has no 'pricing_model' field in the reference schema, so this is a derived/constructed variable whose denominator and classification cannot be verified against the benchmark. Slide 3: States '569 classified startups' but slide 2 says 657 have the field—the 88-row gap is unexplained. Slide 3: '16x the next-best model' — $11,557/$2,515 ≈ 4.6x, not 16x; the 16x figure would require comparing to Tiered Subscription ($710), which is not 'next-best' as shown on the same chart.",
+  "evidence": {
+    "insight": "Slide 3-5 go beyond chart description: the freemium-popularity-vs-performance paradox is a genuinely interesting finding, and slide 5 proactively tests whether the usage-based edge is just an AI artifact. The structural explanation (removing the conversion event) adds interpretive depth.",
+    "narrative": "Clear thesis on slide 1, three findings build logically (standout → contradiction → robustness check), and slide 6 synthesizes into a recommendation. The arc is purposeful and lands cleanly.",
+    "framing": "Slide 2 explains the derived variable and classification logic well. However, the deck never discusses limitations: n=20 for the headline group, survivorship bias (usage-based companies that failed aren't here), or the fact that 343 startups lack the field entirely. No mention of the 34% missing rate.",
+    "accuracy": "The 16x claim on slide 3 is arithmetically wrong given the chart's own numbers ($11,557/$2,515 ≈ 4.6x). The 569 vs 657 discrepancy is unexplained. The entire analysis rests on a self-constructed variable from free text, which is reasonable but unverifiable. The '50/50 B2B/B2C split' on slide 5 for 20 startups means 10/10—presented as if it's a robust finding. Causal framing ('crushes,' 'wins,' 'trap') from purely observational cross-sectional data.",
+    "visual": "Clean, consistent design system with good hierarchy. Bar chart on slide 3 is well-annotated with values. Donut chart on slide 5 is appropriate for part-of-whole. Color palette is restrained and professional. Missing: sample size labels on the bar chart, confidence intervals or any dispersion measure.",
+    "ai_slop": "none — the deck is focused, specific to the dataset, and avoids generic filler language"
+  },
+  "confidence": "medium",
+  "total": 69,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 12249,
+    "output_tokens": 875
+  }
+}

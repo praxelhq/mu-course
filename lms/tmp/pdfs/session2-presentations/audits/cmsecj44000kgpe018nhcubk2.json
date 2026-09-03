@@ -1,0 +1,44 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7,
+    "accuracy": 5.5,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "AI crowding-vs-revenue comparison and anonymity revenue signal are genuinely original, decision-useful findings.",
+  "fix_next": "Reconcile total revenue figure ($13.47M stated vs $15.60M actual); cascading mean and share errors follow from this.",
+  "verdict": "Strong narrative and insight undermined by a foundational total-revenue error that cascades throughout.",
+  "flags": [
+    "total-revenue-wrong",
+    "mean-revenue-wrong",
+    "top10-share-off",
+    "ai-median-off",
+    "education-median-off",
+    "anonymous-revenue-share-off",
+    "stripe-company-share-off",
+    "no-systematic-missingness-table"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 3: total MRR $13.47M vs reference $15.60M (~$2.1M gap). Slides 2-3: mean $13,472 vs ~$15,596; top-10 share 48.0% vs 49.6%. Slide 5: AI median $446 vs $503; Education median $2,141 vs $2,435. Slide 6: anonymous revenue share 28.1% vs 26.5%. Slide 9: Stripe company share 64.4% vs 63.6%.",
+  "evidence": {
+    "insight": "Slide 5 AI crowding-vs-revenue and slide 6 anonymity signal are original angles not obvious from raw data; slide 7 SEO-vs-social adds actionable channel guidance; slide 8 growth-rate skepticism shows analytical maturity.",
+    "narrative": "Clear concentration thesis on slide 1, reinforced quantitatively on slides 2-3, then explored through six distinct lenses (segments, categories, anonymity, predictors, growth, infrastructure, geography, exits) before synthesizing five implications on slide 12. Coherent arc with purposeful landing.",
+    "framing": "Slide 1 states audience (CEO), freeze date, source, n=1,000. Slide 10 flags 24.1% missing country. Slide 5 notes 726 categorized denominator. However, no consolidated missingness disclosure for audience_type (288 missing) or category (274 missing).",
+    "accuracy": "Total revenue is ~$2.1M below reference ($13.47M vs $15.60M), cascading into wrong mean ($13,472 vs $15,596) and inflated 47x gap. Top-10 share 48% vs 49.6%. Category medians for AI and Education both understated. Anonymous revenue share overstated by ~1.6pp. Stripe company share overstated by ~0.8pp.",
+    "visual": "Consistent two-column layout (chart + callout cards) with restrained navy-gold palette. Bar charts are clean, labeled, and appropriately simple. Hierarchy is clear via section headers and big-number callouts. Slide 11 is text-only cards but still legible. Minor risk of visual sameness across slides.",
+    "ai_slop": "Minimal. Each slide contains dataset-specific content with no decorative imagery or generic filler. Language is direct. Repeating layout template is functional, not padded."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Reduced framing from 7.5 to 7 for incomplete missingness disclosure; reduced bonus from 2 to 1 given accuracy issues undercut otherwise strong analytical work.",
+  "total": 72,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 22859,
+    "output_tokens": 2329
+  }
+}

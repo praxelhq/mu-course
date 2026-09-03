@@ -1,0 +1,45 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 3,
+    "narrative": 4,
+    "framing": 3,
+    "accuracy": 2,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Consistent dark-theme design with clear chart labeling and readable callout boxes throughout the deck.",
+  "fix_next": "Replace fabricated percentages with actual dataset figures, add revenue analysis, and acknowledge missingness and zero-revenue rows.",
+  "verdict": "Polished visuals over fabricated numbers; no revenue analysis; heavy AI-generated consulting filler.",
+  "flags": [
+    "fabricated-numbers",
+    "no-revenue-analysis",
+    "ai-slop",
+    "missing-data-not-acknowledged",
+    "inflated-consulting-language",
+    "no-limitations-discussed",
+    "hallucinated-pricing-slide",
+    "wrong-provider-shares",
+    "wrong-category-shares"
+  ],
+  "factual_error_count": 12,
+  "factual_error_detail": "Slide 2: '100% Monetization Active' false—216 have zero revenue. Slide 3: 'all past MVP stage and generating live revenue' false. Slide 4: country counts computed on 759 non-missing rows but denominator used as 1000 (US 180/1000=18% vs 180/759≈23.7%). Slide 5: Stripe 78%/780 vs actual 636/1000=63.6%; RevenueCat 7%/70 vs actual 189; Polar 8%/80 not verifiable. Slide 7: B2B 58%/B2C 35% ignores 288 missing audience_type values. Slide 8: AI 42% vs actual 197/726≈27%; SaaS 38% vs 66/726≈9%; category percentages appear fabricated; claim totals exceed 100% due to multi-tagging is unverified. Slide 9: entire pricing strategy breakdown (Freemium 65%, Subscription 22%, One-time 8%, Pay-per-use 5%) has no apparent basis in dataset columns. Slide 10: 'Documented Pricing 85%' and 'Website Active 92%' not verifiable from known fields.",
+  "evidence": {
+    "insight": "Zero engagement with revenue figures—$15.6M total, top-10 concentration at 49.6%, category median differences, anonymous revenue share all absent. Takeaways are generic platitudes without revenue-backed reasoning.",
+    "narrative": "Logical slide sequence (overview→geo→payments→social→model→category→pricing→traction→takeaways) but reads as disconnected descriptive charts. No thesis builds across slides; no synthesis connecting findings to each other or to a central argument.",
+    "framing": "Slide 3 sets scope but never mentions 241 missing countries, 274 missing categories, 288 missing audience types, or 216 zero-revenue rows. Claims all startups are 'generating live revenue' which is false. No limitations or caveats slide anywhere.",
+    "accuracy": "Stripe share inflated from ~63.6% to 78%; RevenueCat deflated from ~18.9% to 7%. AI category inflated from ~27% to 42%; SaaS from ~9% to 38%. Entire slide 9 pricing breakdown appears hallucinated—no pricing_model column in known dataset. B2B/B2C split ignores 288 missing audience_type values without disclosure.",
+    "visual": "Clean, consistent dark theme with purple accents. Bar charts well-labeled with data values. Callout boxes aid readability. However, every analytical slide uses identical donut-or-bar + text-box template creating visual monotony. Charts are decorative given underlying numbers are wrong.",
+    "ai_slop": "Pervasive consulting-speak: 'Empowering Your Recurring Revenue Business', 'the long tail is real, and it's profitable', 'Stripe is not just the market leader — it is the market.' Slide 9 data appears entirely AI-hallucinated. Slide 11 takeaways are generic enough to fit any startup dataset. Repetitive donut chart template on slides 5, 7, 9."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Raised visual from 4.5 to 5.0 recognizing genuinely clean design execution; lowered framing from 3.5 to 3.0 for complete absence of missingness disclosure and false 100% monetization claim. Other scores confirmed as appropriate given extensive fabrication and absent revenue analysis.",
+  "total": 34,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 21126,
+    "output_tokens": 1117
+  }
+}

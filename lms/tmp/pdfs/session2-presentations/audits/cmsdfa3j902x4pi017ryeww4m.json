@@ -1,0 +1,42 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 8,
+    "narrative": 9,
+    "framing": 8.5,
+    "accuracy": 6.5,
+    "visual": 8,
+    "bonus": 3
+  },
+  "what_worked": "Established-vs-argued slide is unusually rigorous; monotonic DA contrast with non-monotonic followers is genuinely sharp.",
+  "fix_next": "Reconcile the 4% headline with the 5.9% shown in the chart, and lock cohort n's across slides.",
+  "verdict": "Excellent narrative discipline and original thesis, held back by several internal number inconsistencies.",
+  "flags": [
+    "headline-4pct-vs-chart-5.9pct",
+    "cohort-n-drift-unexplained",
+    "log-scale-claimed-bars-appear-linear",
+    "domain-authority-base-714-not-1000",
+    "share-of-companies-denominator-ambiguous",
+    "revenue-share-missing-DR0-DR1-10"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 5 headline says '4% of companies' but chart shows DR 51+ = 5.9% — material contradiction repeated on slide 8. Slide 5 revenue-share chart omits DR 0 and DR 1–10 bands (shown percentages sum to ~93.9%, not 100%, or those bands are hidden at near-zero without annotation). Slide 6 cohort n's (209, 582) differ from slide 3 (212, 591) with no explanation. Slide 4 subtitle says 'Log scale' but bar heights appear proportional to linear values ($9→$111→$521→$3020→$23536 would look very different on a true log axis).",
+  "evidence": {
+    "insight": "The DA-monotonic vs follower-non-monotonic contrast is original and decision-useful. The 8.75x/4.1x headline stat and zero-follower parity (31.6% vs 30.6%) are sharp. Four-lever ranking table adds genuine analytical depth beyond chart narration.",
+    "narrative": "Near-textbook arc: thesis → summary → method → two contrasting findings → synthesis → interpretation → implication → recommendation → close. Every slide carries a SO WHAT that advances the argument. No orphan slides.",
+    "framing": "Methodology slide states sample sizes, cohort definitions, and three limitations. Slide 8 separates established from argued — rare epistemic discipline. Audience (founder educators) is implicit but clear. Missing: explicit note on 286 rows without domain-authority data.",
+    "accuracy": "Core directional claims are plausible and internally consistent. Causal discipline is strong. However: 4% vs 5.9% is a clear internal contradiction; cohort n's drift without explanation; log-scale label contradicts visual rendering; revenue-share chart appears incomplete for lower DR bands. These are not trivial — the 4% figure is repeated as a key finding.",
+    "visual": "Clean, restrained palette with consistent hierarchy. Side-by-side bar comparison on slide 4 is effective. Stacked bar on slide 5 communicates concentration well. n-counts shown throughout. Minor issues: log-scale mismatch, and the revenue-share chart omitting two bands without annotation reduces clarity.",
+    "ai_slop": "none — every slide carries specific data points, no filler language, no generic frameworks, no decorative-but-meaningless graphics"
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 7.0 to 6.5: the 4%-vs-5.9% contradiction is a headline-level error repeated across two slides, the log-scale label is visually false, and the revenue-share chart silently omits two bands. Lowered visual from 8.5 to 8.0 for the log-scale mismatch and incomplete revenue chart. Other scores confirmed.",
+  "total": 83,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 21455,
+    "output_tokens": 965
+  }
+}

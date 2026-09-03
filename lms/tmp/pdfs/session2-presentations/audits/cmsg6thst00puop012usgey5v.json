@@ -1,0 +1,44 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 1.5,
+    "narrative": 2.5,
+    "framing": 2,
+    "accuracy": 1,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Clear title question and consistent dark-theme template provide visual cohesion across slides.",
+  "fix_next": "Ground every chart and claim in the actual dataset; remove all fabricated categories, metrics, and textbook filler slides.",
+  "verdict": "Fabricated data and generic AI filler with almost no connection to the actual dataset.",
+  "flags": [
+    "fabricated-data",
+    "ai-slop",
+    "no-dataset-grounding",
+    "generic-filler-slides",
+    "unearned-certainty",
+    "invented-categories",
+    "missing-limitations",
+    "decorative-charts"
+  ],
+  "factual_error_count": 14,
+  "factual_error_detail": "Slide 2: Median MRR $8K is wrong (dataset median ~$503 for AI, varies by category, overall likely far lower); 'Top 5% = 52% of all revenue' unverifiable and inconsistent with top-10% share of 49.6%. Slide 3: Revenue tier percentages (65/20/10/5 and 8/15/25/52) are fabricated with no dataset basis. Slide 4: Categories entirely invented—AI Writing, Video Automation, SEO & Content, Design & Repurposing, Workflow do not exist in dataset (actual: AI, Marketing, E-comm, SaaS, Education, etc.); all percentage figures (28%, 22%, etc.) fabricated; Top/Bottom performer table ($85K median, 4200 subscribers, 18.5% growth, revenue multiples 8-12x) not derivable from data. Slide 7: NDR, LTV:CAC, Customer Payback metrics do not exist in dataset. Slide 8: Organic Traffic, Subscriber Base dimensions fabricated; scoring weights invented. Slide 9: Market opportunities (metaverse, sustainable content) are pure speculation unconnected to data. Slide 2: '50+ countries' unverified given 241 missing country values.",
+  "evidence": {
+    "insight": "Zero original findings from the actual dataset. No analysis of payment platforms, TLD patterns, anonymity revenue share, or any real column. The 'thesis' is generic SaaS acquisition advice.",
+    "narrative": "Loose arc from overview to thesis exists but slides 5, 6, 7, 9 are pure textbook filler breaking any analytical flow. Pipeline diagram on slide 3 is decorative and unexplained.",
+    "framing": "Never identifies the dataset source, its 1000-row scope, or any limitations. No mention of 274 missing categories, 241 missing countries, 216 zero-revenue rows. Audience implied but unstated.",
+    "accuracy": "Categories on slide 4 are entirely fabricated. Median MRR claim is wildly wrong. Revenue tier distributions are invented. Metrics like NDR, LTV:CAC, organic traffic, subscriber counts do not exist in the dataset. Top 5%=52% claim contradicts reference top-10%=49.6%.",
+    "visual": "Gamma template provides consistent dark theme with decent contrast and legibility. But charts plot fabricated numbers throughout (slides 2, 3, 4, 8). Bar chart on slide 2 mixing 1000 with $8K on same axis is poor design. AI-generated image on slide 10 has garbled text.",
+    "ai_slop": "Slides 5, 6, 7, 9 are textbook AI-generated content—generic revenue model pros/cons, SaaS KPI definitions, and speculative market opportunities (metaverse, sustainable content) that could appear in any deck. AI image on slide 10 shows garbled text 'Veretia CAL VCO'."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight (1.5), narrative (2.5), framing (2), and accuracy (1) from preliminary. The accuracy problems are more severe than initially scored: every quantitative claim is fabricated or unverifiable, categories are entirely invented, and multiple slides present metrics not in the dataset. Increased factual error count to 14.",
+  "total": 21,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 18763,
+    "output_tokens": 1041
+  }
+}

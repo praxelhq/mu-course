@@ -1,0 +1,39 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 8,
+    "narrative": 8.5,
+    "framing": 7.5,
+    "accuracy": 5.5,
+    "visual": 6.5,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis-driven narrative with a genuine editorial voice; findings build toward actionable synthesis.",
+  "fix_next": "Total revenue is $15.6M not $13.5M; B2B/B2C median multiple is ~2.3x not 5.7x—core claims collapse if numbers are wrong.",
+  "verdict": "Compelling storytelling undermined by several material numerical errors.",
+  "flags": [
+    "total-revenue-wrong",
+    "b2b-b2c-multiplier-inflated",
+    "top10-share-slightly-off",
+    "zero-revenue-percentage-off",
+    "revenue-called-MRR-ambiguously"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1: Total stated as $13.5M; actual is $15.6M (≈13% understatement). Slide 2: Top-10 share stated 48%, reference is 49.6%; '20% earn nothing' implies 200 zeros but actual is 216 (21.6%)—minor. Slide 4: B2B/B2C median multiple stated as 5.7× ($1,036/$181); reference medians imply ~2.35×/2.30× multiples and the actual B2B vs B2C median gap is far smaller than 5.7×. Slide 3: AI listed as 27% of listings—197/726=27.1% is correct among categorized rows, but denominator choice is unstated. Slide 2: Bottom 500 stated as 0.2% and top-1 as 26.5%—the 26.5% figure implies one company earned ~$4.1M on a $15.6M base, plausible but unverifiable; the bands sum to 100.0% which is internally consistent but the total base is wrong.",
+  "evidence": {
+    "insight": "Slide 3's revenue-to-listing ratio is a genuinely original derived metric; slide 5's domain-authority vs social-follower comparison adds real decision value; slide 8's acquisition-vs-build framing is creative.",
+    "narrative": "Clear thesis ('wrong room') introduced on slide 1, each finding builds a layer (concentration → category → customer → price → distribution → geography → acquisition), and slide 9 synthesizes into five decisions. Excellent arc.",
+    "framing": "Slide 1 sets scope, sample, and date clearly. Slide 10 explicitly names survivorship bias, self-reporting, and small-n caveats. Missing: no mention of 274 missing category values or 288 missing audience_type, which directly affect the B2B/B2C and category analyses.",
+    "accuracy": "Total revenue wrong by ~$2M. B2B/B2C 5.7× claim is the most damaging error—reference shows median multiples of ~2.3×, not 5.7×. The $1,036 and $181 figures cannot be verified against reference but the claimed multiplier far exceeds the reference gap. 20% zero-revenue is close but slightly understated (21.6%). Revenue-to-listing ratios on slide 3 are a custom metric that can't be fully verified but the direction is plausible.",
+    "visual": "Consistent dark theme with orange/yellow accent palette. Charts are simple and legible. However, the Gamma template creates visual sameness across slides—every slide follows the same layout pattern. Bar charts are adequate but not annotated beyond labels. Slide 8 is text-heavy with no chart. The yellow-on-dark color scheme works but the dashed chart borders feel decorative.",
+    "ai_slop": "Gamma template is evident throughout. Some consulting-style quotation blocks at the bottom of every slide feel formulaic. However, the writing voice is distinctive and the content is substantive—not generic filler. Mild template repetition but not severe slop."
+  },
+  "confidence": "high",
+  "total": 74,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19788,
+    "output_tokens": 1017
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 6.5,
+    "accuracy": 6,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Strong narrative arc from geography through monetization to synthesis, with consistent causal discipline disclaimers.",
+  "fix_next": "Slide 5 has a phantom 'AI terat' category with $2.77M revenue that doesn't exist in the dataset—verify every treemap cell against source data.",
+  "verdict": "Coherent ecosystem story with good design, undermined by several numerical inaccuracies.",
+  "flags": [
+    "fabricated-category",
+    "anonymous-count-off",
+    "mean-not-median-b2b",
+    "missing-data-not-discussed"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 5: 'AI terat' (36 companies, $2.77M) is a fabricated/garbled category not in the dataset. Slide 7: B2B/B2C comparison uses means (~4x) but the reference median multiples are ~2.3x; the ~4x claim is plausible for means but the specific dollar figures ($22,638 and $5,723) cannot be verified and the denominators (255 B2B, 401 B2C) don't account for 288 missing audience_type rows—total is only 656 not 1000. Slide 10: Anonymous count shown as 130 (should be 129) and named as 870 (should be 871)—minor but systematic. Revenue share 26.9% vs reference 26.525%—borderline. Slide 6: Stripe revenue shown as ~$13.53M vs reference $13.53M—acceptable rounding, but Stripe share labeled 64% vs reference 63.6%—minor.",
+  "evidence": {
+    "insight": "Slide 8 long-tail analysis with top-10 at 49.6% and top-100 at 83.7% is genuinely useful; slide 10 stealth-giant finding is interesting. Slide 9 revenue-subscription correlation (r=0.802) adds analytical depth. However, most insights remain descriptive rather than prescriptive.",
+    "narrative": "Clear three-question framework (slide 2) carried through geography (4), categories (5), providers (6), B2B/B2C (7), distribution (8), mechanics (9), anonymity (10), and synthesis (11). The sequence is purposeful and builds logically. Landing on slide 11 ties threads together.",
+    "framing": "Slide 2 sets scope and questions well. Slide 3 methodology pipeline is a nice touch. However, missing data is never quantified (241 missing country, 274 missing category, 288 missing audience_type)—this is a significant omission given how much it affects denominators throughout.",
+    "accuracy": "Slide 5 contains a phantom category 'AI terat' with $2.77M that appears fabricated. Slide 7 B2B/B2C counts (255+401=656) don't acknowledge 344 missing audience_type values. Slide 10 anonymous count off by 1. Top-10 share (49.6%) and total revenue ($15.60M) are correct. Stripe figures are close but slightly rounded.",
+    "visual": "Consistent orange/grey palette throughout. Treemap (slide 5), nested donut (slide 6), and long-tail curve (slide 8) are well-chosen chart types. Slide 9 scatter plot is clean and annotated. However, slide 6 donut chart is dense and hard to parse at the smaller segments. Overall good hierarchy and restraint.",
+    "ai_slop": "Slide 3 'Transforming raw data into structured business intelligence' is generic consulting language. The methodology slide adds little substance. 'AI terat' on slide 5 appears to be an AI hallucination/rendering artifact. Title 'Unlocking the Startup Ecosystem' is generic."
+  },
+  "confidence": "high",
+  "total": 67,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18394,
+    "output_tokens": 1000
+  }
+}

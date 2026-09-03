@@ -1,0 +1,39 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 6,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis sustained across all slides; honest caveats on sample sizes and data quality throughout.",
+  "fix_next": "Top-10 revenue share is 49.6%, not 61%; the $400 median and AI rank claims need verification against the reference data.",
+  "verdict": "Well-structured, decision-useful story undermined by several numeric inaccuracies.",
+  "flags": [
+    "top10-share-inflated",
+    "median-revenue-unverified",
+    "zero-revenue-undercount",
+    "b2b-median-unverifiable-metric",
+    "ai-rank-claim-questionable"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 1: Top-10 revenue share stated as 61%, reference is 49.6%—material overstatement. Slide 1: '$400 median 30-day revenue' not verifiable from reference (reference gives category medians but not overall; plausible but unconfirmed). Slide 1: '10% earned $0 all-time' — reference says 216 zero-revenue rows (21.6% of 1,000), not 10%. Slide 4: B2B median 12-month revenue $8,362 vs B2C $2,213 claimed as 3.8x gap; reference gives 30-day median multiples of 2.35x/2.30x respectively—the 3.8x figure and the absolute dollar amounts appear fabricated or use an unspecified metric. Slide 5: AI 'ranks 8th of 12 sized categories on median revenue'—reference shows AI median $503, which ranks roughly 7th, minor but the framing overstates how poorly AI performs.",
+  "evidence": {
+    "insight": "Slide 3 'Crowded ≠ lucrative' insight is genuinely useful; slide 4 whitespace analysis with revenue-per-listing ratio is original; slide 5 synthesizes data quality warnings. Goes beyond chart description.",
+    "narrative": "Clear arc: landscape → health check → takeaways → where to build → synthesis → next steps. Each slide builds on the prior. Thesis ('few big winners, long tail') is sustained throughout. Landing on slide 6 is practical and sequenced.",
+    "framing": "Slide 1 establishes dataset scope (1,000 rows, frozen date). Audience is clearly buyers/builders/sellers. Slide 4 notes small-sample caveats. Missing: no mention of 241 missing country values or 274 missing category values, which materially affect denominators.",
+    "accuracy": "61% top-10 share is materially wrong (49.6%). Zero-revenue claim of 10% is wrong (21.6%). B2B/B2C 3.8x gap uses unspecified 12-month metric not in reference data. The 27% AI share uses 197/726 (categorized) = 27.1% which is defensible if denominator is stated, but they say 'of all businesses' implying /1000 = 19.7%. Average $15.6K checks out ($15,596,344/1000 ≈ $15,596).",
+    "visual": "Consistent dark-blue palette with gold accents. Bar charts are clean and labeled. Pie chart on slide 1 lacks percentage labels. Slide 4 horizontal bar chart is effective. Slides 3 and 5 are text-heavy card layouts—functional but visually repetitive. No chart junk or misleading axes.",
+    "ai_slop": "Minimal slop. Language is specific and data-grounded rather than generic. Card layouts on slides 3/5 are somewhat template-like but contain substantive content. No decorative-but-meaningless graphics."
+  },
+  "confidence": "high",
+  "total": 74,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 13233,
+    "output_tokens": 977
+  }
+}

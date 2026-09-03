@@ -1,0 +1,38 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7,
+    "accuracy": 5.5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis that concentration, not category mix, drives the portfolio—sustained coherently across all slides.",
+  "fix_next": "Verify key numbers against the dataset: Stripe revenue share is ~86.7% not 87%, and the uncategorized revenue figure of $7.3M needs reconciliation against the $15.6M total.",
+  "verdict": "Coherent, thesis-driven deck undermined by several unverifiable or inflated numbers.",
+  "flags": [
+    "unverified-uncategorized-revenue",
+    "stealth-median-unverifiable",
+    "zero-revenue-mrr-claim-unverifiable",
+    "stripe-share-rounded-aggressively"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 1/3: Stripe revenue share stated as 87%; reference is $13,526,762/$15,596,345 = 86.7%, rounding to 87% is aggressive but borderline. Slide 1: '83.7% from top 10%' — reference gives top-10 share as 49.6%, not top-10%; top 100 accounts (10%) would be a different figure and 83.7% is unverifiable but plausible given concentration. Slide 4: Uncategorized revenue claimed at $7.3M; total categorized revenue across all 12 listed categories sums to ~$7.5M, leaving ~$8.1M uncategorized — $7.3M is plausible but imprecise. Slide 5: Stealth median claimed as $8,362 and named median as $255; these are not verifiable from reference data but the ~33x multiple conflicts with the reference ratio which would be closer to a different figure. Slide 5/6/7: '$283K in MRR on the books' for zero-revenue accounts is an unverifiable claim mixing MRR and 30-day revenue concepts — zero 30-day revenue means $0 revenue, so carrying $283K MRR is conceptually confused or fabricated.",
+  "evidence": {
+    "insight": "Slide 5's stealth-company analysis and slide 4's 'uncategorized is the biggest category' reframe are genuinely original angles that go beyond chart description. The concentration thesis on slide 1 is decision-useful. The zero-revenue/MRR audit idea is creative even if the numbers are shaky.",
+    "narrative": "Clear single thesis introduced on slide 1 (concentration > category mix), reinforced through infrastructure (slide 3), category data quality (slide 4), stealth insight (slide 5), and landed with actionable recommendations (slides 6-7). Each slide builds on the prior. The 'So what' footers on every analytical slide enforce narrative discipline.",
+    "framing": "Slide 1 establishes dataset scope (1,000 accounts, frozen date). However, no explicit audience is stated, no limitations slide exists, and missingness is mentioned only for category (27.4%) but not for country (24.1%) or audience_type (28.8%). The deck assumes a platform operator audience without stating it.",
+    "accuracy": "Slide 1: top-10% revenue share of 83.7% is not directly verifiable from reference (top-10 accounts = 49.6%, not top 10%). Slide 3: Stripe at 636/1000 = 63.6% rounds to 64%, acceptable. Stripe revenue 86.7% rounded to 87% is aggressive. Slide 4: uncategorized revenue arithmetic is approximately right but stated as $7.3M when calculation yields ~$8.1M. Slide 5: $283K MRR for zero-revenue accounts is conceptually confused — if they have $0 in 30-day revenue, claiming they carry MRR is contradictory unless MRR is a separate field, which is not clarified. Slide 5: stealth median of $8,362 is unverifiable.",
+    "visual": "Consistent dark-navy/orange palette throughout. Charts are simple and readable. Slide 2's histogram is well-labeled with counts. Slide 3's stacked bar effectively shows the Stripe disproportion. Slide 7 is dense but organized into clear quadrants. No decorative graphics. Some charts lack axis labels (slide 1 cumulative chart has no y-axis label). Overall restrained and functional.",
+    "ai_slop": "Slide 6 and 7 have some consulting-template feel ('Four moves to convert findings into action', 'Do this immediately') but the content is specific enough to the dataset that it doesn't read as generic filler. Minor concern only."
+  },
+  "confidence": "medium",
+  "total": 72,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 14427,
+    "output_tokens": 1173
+  }
+}

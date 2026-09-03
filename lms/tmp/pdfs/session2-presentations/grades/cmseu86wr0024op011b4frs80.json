@@ -1,0 +1,38 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 8,
+    "accuracy": 6,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis arc from power-law distribution through M&A mispricing, with honest caveats on forecast decay assumptions.",
+  "fix_next": "Category median MRR figures diverge materially from reference data (e.g., Education $2,142 vs. $2,435; AI $446 vs. $503); verify denominators and statistic definitions.",
+  "verdict": "Well-structured market briefing with a clear thesis, weakened by several median-value discrepancies.",
+  "flags": [
+    "median-values-off",
+    "fabricated-12mo-revenue-stat",
+    "b2b-b2c-multiplier-inflated",
+    "ecosystem-mrr-unverifiable"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1/2: '$133.8M trailing 12-month revenue' and '$334M all-time cumulative revenue' are unverifiable from the dataset (30-day revenue totals $15.6M, not $13.5M monthly). Slide 4: Education median listed as $2,142 vs. reference $2,435; Marketing $1,586 vs. $2,369.50; AI $446 vs. $503 — systematic understatement suggests MRR was used instead of 30-day revenue, but labels are inconsistent. Slide 4: B2B/B2C ratio stated as 5.7x; reference medians show ~2.35x/2.30x multiples, not 5.7x. Slide 6: Revenue-per-visitor chart labels B2C at $0.26 and 'Both' at $0.04 — the ordering appears swapped relative to typical B2B>B2C>Both patterns but is unverifiable.",
+  "evidence": {
+    "insight": "Slide 7 'Scarce Target' finding (29 high-growth-and-for-sale at 2.2x) is genuinely decision-useful. Slide 5 AI premium analysis separates monetization from growth — a non-obvious distinction. Slide 3 declining-cohort-has-higher-MRR observation is counterintuitive and valuable.",
+    "narrative": "Clear 8-section arc: macro → segmentation → category → AI focus → monetization → M&A → forecast → playbook. Closing slide synthesizes thesis ('underpriced on momentum'). Each slide builds on prior findings for the playbook.",
+    "framing": "Slide 2 explicitly flags 726/1000 category coverage and 759/1000 country coverage. Audience defined on title slide. Slide 8 forecast includes decay assumptions and warns against naive extrapolation. Missing: no discussion of 216 zero-revenue rows or 288 missing audience_type.",
+    "accuracy": "Category medians systematically differ from reference (Education off by ~$293, Marketing off by ~$784, AI off by ~$57). B2B/B2C 5.7x claim doesn't match reference 2.35x median multiple. The $13.5M 'ecosystem MRR' figure doesn't reconcile with $15.6M total 30-day revenue. The 893 growth-data denominator and segment counts (173+550+170=893) are internally consistent.",
+    "visual": "Consistent dark-navy + teal + gold palette throughout. Charts are clean horizontal bars and scatter plots with labeled values. Good use of callout boxes for interpretation. Scatter plot on slide 3 is dense but readable. No gratuitous decoration. Slight visual sameness across slides but functional.",
+    "ai_slop": "Mild consulting-speak ('Market Intelligence Briefing', 'Strategic Playbook') but content is substantive and data-specific throughout. No generic filler paragraphs or decorative-only graphics. The template is polished but not empty."
+  },
+  "confidence": "high",
+  "total": 76,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 20474,
+    "output_tokens": 1003
+  }
+}

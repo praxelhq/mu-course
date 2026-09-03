@@ -1,0 +1,39 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong thesis about hidden concentration; excellent data-quality slide; clean visual hierarchy throughout.",
+  "fix_next": "Aggregate MRR is $15.6M not $13.5M; the 5.7× B2B claim uses means not medians (actual median ratio ≈2.35×); verify every headline number.",
+  "verdict": "Well-structured narrative undermined by several material numerical errors.",
+  "flags": [
+    "aggregate-revenue-wrong",
+    "b2b-multiplier-inflated",
+    "top10-share-not-verified",
+    "category-medians-off",
+    "stealth-median-unverifiable"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 1: Aggregate MRR stated as $13.5M; actual total 30-day revenue is $15,596,344.59. Slide 2: '5.7× more monthly revenue for B2B vs B2C' — reference median multiples are ~2.35× (B2B) and ~2.30× (B2C); even the median ratio is about 5.7× only if using non-standard medians ($1,036/$181), but the reference B2B/B2C median revenue multiples are 2.35×/2.30×, suggesting the $1,036/$181 figures on slide 6 are not aligned with the frozen dataset. Slide 2: '48% of all revenue earned by top 1%' — top-10 share is 49.6%, so top 1% (10 startups) earning 48% is close but slightly understated. Slide 4: Top 10% share stated as 81.8% — not directly verifiable but plausible extrapolation; top-10 share is 49.6% so this is a different cut. Slide 7: Category medians diverge from reference — AI median shown as $446 vs reference $503; Education shown as $2,142 vs reference $2,435; Marketing shown as $1,586 vs reference $2,369.50; SaaS shown as $303 vs reference $200.50; Content Creation shown as $1,254 vs reference $1,237.50. Multiple category medians are materially off. Slide 10: Stealth median $7,337 — 40× claim; anonymous share of revenue is 26.5% which is about 2× their population share, not 40× in median terms without verification.",
+  "evidence": {
+    "insight": "Slide 7's AI-crowding insight is genuinely useful; slide 10's stealth-company observation is interesting; slide 9's listed-for-sale growth deceleration is a non-obvious finding. However, several insights rest on incorrect numbers.",
+    "narrative": "Clear numbered progression from concentration → growth → audience → category → channels → marketplace → visibility → pricing → recommendations. Coherent thesis about hidden winners. Landing slide synthesizes for two audiences.",
+    "framing": "Slide 3 handles missingness well with a clear threshold rule. Audience (founders and investors) stated on slide 12. However, no explicit mention that this is self-reported/survivorship-biased data beyond the subtitle.",
+    "accuracy": "Aggregate revenue wrong by ~$2M (slide 1). B2B/B2C multiplier headline claim doesn't match reference medians. Multiple category medians diverge materially from reference. The 20% zero-revenue claim is close (216/1000=21.6%). Country missing 24% matches reference 241/1000=24.1%. Category missing 27% matches 274/1000=27.4%.",
+    "visual": "Consistent dark-navy/orange palette, clean chart labeling, good use of callout stats alongside charts, appropriate chart types (horizontal bars, vertical bars). Slight template sameness across slides but functional. Legible hierarchy.",
+    "ai_slop": "Mild template repetition (every slide uses identical layout: chart left, three callout stats right), but content is substantive and specific to the dataset. No generic filler text. The consulting-style 'Four Numbers That Define This Market' is slightly inflated but backed by data."
+  },
+  "confidence": "high",
+  "total": 69,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22597,
+    "output_tokens": 1064
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 2.5,
+    "narrative": 3.5,
+    "framing": 3,
+    "accuracy": 2,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "Clear thesis statement about distribution as a moat; coherent narrative arc from problem to framework.",
+  "fix_next": "The deck's central claim ('clear link between audience size and revenue') is asserted with a fabricated-looking pie chart and zero actual dataset analysis—show real numbers.",
+  "verdict": "Thesis-driven but evidence-free; almost no real data from the dataset.",
+  "flags": [
+    "fabricated-chart",
+    "no-real-data-analysis",
+    "ai-slop",
+    "unearned-causal-claims",
+    "decorative-images"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 4: Follower distribution percentages (60/25/10/5%) appear invented—no verifiable source from the dataset or any shown calculation. Slide 4: Claims 'directly and measurably correlates' between founder reach and MRR with zero correlation coefficient, scatter plot, or statistical evidence shown. Slide 4: Subtitle states 'clear link between audience size and sustainable revenue' as proven by the dataset, but no actual dataset figures are presented anywhere in the deck.",
+  "evidence": {
+    "insight": "The entire deck rests on one claim (distribution > product) but never demonstrates it with data. No revenue figures, category breakdowns, provider analysis, or any quantitative finding from the 1,000-row dataset appears anywhere. The 'insight' is a pre-existing opinion dressed as data-driven.",
+    "narrative": "There is a logical sequence: landscape → problem → data proof → framework → action plan. However, the 'data proof' slide (4) contains no actual proof, making the narrative arc hollow. The framework (slide 5) and action plan (slide 6) follow logically from the thesis but are generic investment advice.",
+    "framing": "Slide 1 frames the audience as investors, which is a reasonable choice. However, scope, definitions (what counts as 'audience ownership'), dataset limitations (288 missing audience_type, etc.), and sample context are never addressed. A cold reader would not know what dataset was analyzed beyond the sources slide.",
+    "accuracy": "Slide 4's pie chart shows round percentages (60/25/10/5) with no methodology, sample sizes, or connection to actual dataset fields. The claim of measurable correlation is stated without any statistic. No dataset figures (revenue totals, category counts, provider splits, missingness) appear anywhere in the deck. The entire analytical foundation is missing or fabricated.",
+    "visual": "Dark theme is consistent. Slides 2-3 use decorative stock/AI-generated images (globe with pins, mousetrap with app icons) that add no analytical value. Slide 6 features an AI-generated castle/shield image that is pure decoration. The pie chart on slide 4 uses similar purple tones making segments hard to distinguish. No data visualizations from actual analysis exist.",
+    "ai_slop": "AI-generated decorative images on slides 2, 3, and 6 (globe, mousetrap, castle). Generic consulting language throughout ('CAC Death Spiral', 'Distribution Velocity', 'Fast-moving moat'). Slide 5's three-column framework is a boilerplate template. The entire deck could apply to any startup market without modification—nothing is specific to this dataset."
+  },
+  "confidence": "high",
+  "total": 28,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 13269,
+    "output_tokens": 849
+  }
+}

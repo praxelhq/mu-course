@@ -1,0 +1,39 @@
+{
+  "slide_count": 1,
+  "scores": {
+    "insight": 1.5,
+    "narrative": 2,
+    "framing": 2.5,
+    "accuracy": 2,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Honest about data-quality limitations and correctly warns against cross-category averages.",
+  "fix_next": "This is a planning memo, not a data story—actually analyze the 1,000 rows and present findings with charts and evidence.",
+  "verdict": "A pre-analysis scoping note, not a presentation of findings.",
+  "flags": [
+    "no-charts",
+    "no-findings",
+    "analysis-not-performed",
+    "single-slide",
+    "sample-of-10-only"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 1: Claims analysis based on '10-record validated sample' when the full 1,000-row dataset was available and usable. States 'Stripe-connected startups' implying all use Stripe—only 636 of 1,000 use Stripe; others use RevenueCat, Paddle, etc.",
+  "evidence": {
+    "insight": "No original analytical findings are presented. Every bullet is either a generic observation ('revenue is power-law distributed') or a promise to do future work. The Pearson r ≈ 0.14 is from a 10-row sample, not the dataset.",
+    "narrative": "The slide is structured as Situation → Observations → Decision Areas → Next Steps, but this is a project-kickoff memo, not a data story with a thesis, evidence arc, or conclusion.",
+    "framing": "The audience and decision question are vaguely implied ('acquisition screening,' 'fair benchmarking') but never sharpened. Scope is explicitly deferred: 'full-scale confirmation pending clean export.'",
+    "accuracy": "Claims all startups are 'Stripe-connected' (false—multiple providers exist). The 10-row sample correlation (r ≈ 0.14) is statistically meaningless and not comparable to the full-dataset founded-year correlation. No verifiable numbers from the actual dataset are presented.",
+    "visual": "Clean layout with three-column structure, numbered steps, and readable typography. However, there are zero charts, zero data visualizations, and zero quantitative evidence displayed—just text boxes.",
+    "ai_slop": "Consulting-framework language ('SITUATION,' 'DECISION AREAS,' 'HOW WE'LL PROCEED') without substance. The entire slide reads like a generic AI-generated project-scoping template that could apply to any dataset."
+  },
+  "confidence": "high",
+  "total": 23,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 3893,
+    "output_tokens": 647
+  }
+}

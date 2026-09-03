@@ -1,0 +1,38 @@
+{
+  "slide_count": 15,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Strong narrative arc from concentration reveal through stealth-category insight to actionable go/no-go scorecard.",
+  "fix_next": "Total revenue is $15.6M not $13.47M; top-10 share is ~49.6% not 48%; verify every headline number against the actual dataset.",
+  "verdict": "Compelling story undermined by a wrong total-revenue anchor repeated throughout.",
+  "flags": [
+    "wrong-total-revenue",
+    "conflates-anonymous-with-uncategorized",
+    "stealth-revenue-claim-unverified",
+    "category-count-unverifiable"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1/3: Total 30-day revenue stated as $13.47M; actual is $15,596,344.59 (~$15.6M). This wrong anchor propagates to the $133.75M TTM figure (which is just 10×$13.47M, fabricated). Slide 4: Top-10 share stated as 48%; reference is 49.6%. Slide 6: Claims 56.5% of MRR is uncategorized/stealth; category is missing for 274 rows but anonymous companies (129) are a separate field—the deck conflates these two distinct missingness patterns and the 56.5% figure is unverifiable from reference data. Slide 7: Stripe share of MRR stated as 87.2%; reference shows $13.53M/$15.60M ≈ 86.7%, close but the denominator is wrong because total revenue is wrong. Slide 2: Claims 29 categories; reference lists 12 named categories with 274 missing—29 is unverifiable.",
+  "evidence": {
+    "insight": "Slide 6's observation that the largest revenue bucket is unlabeled is genuinely interesting and decision-relevant. Slide 11's median-vs-mean growth framing adds real interpretive value. The go/no-go scorecard on slide 12 synthesizes findings into actionable questions rather than generic advice.",
+    "narrative": "Clear seven-act structure with consistent thesis (power-law market, averages mislead). Each slide advances the argument: concentration → category → payments → monetization → audience → growth → decision. The 'museum of attempts' line lands well. Closing slides convert analysis into team questions.",
+    "framing": "Slide 2 sets context clearly for a cold reader. The audience (internal team evaluating a new project) is explicit. Limitations around stealth/uncategorized data are acknowledged on slide 6. However, no mention of missingness rates for key fields (country 24%, audience_type 29%, category 27%) which would qualify several claims.",
+    "accuracy": "The foundational revenue figure ($13.47M) is materially wrong—actual is $15.6M, a 14% undercount. The TTM figure ($133.75M) appears to be a naive 10× multiplication with no basis. Top-10 concentration is 48% vs actual 49.6%. The 56.5% stealth/uncategorized MRR claim conflates anonymous listings with missing category data without clarifying the distinction. B2B/B2C counts on slide 9 (255+401+56=712) don't account for 288 missing audience_type values, which is never disclosed.",
+    "visual": "Consistent navy/gold/white palette with good hierarchy. Charts are readable and appropriately chosen (cumulative line for concentration, grouped bar for provider comparison, donut for binary splits). Slide 10's dot-strip for multiples range is a nice touch. Some slides are text-heavy (slide 12 table). No chart junk. Slight visual sameness across donut charts on slides 6 and 8.",
+    "ai_slop": "Mild consulting-speak ('museum of attempts,' 'money pipes') but generally earned by the data. The act-structure labeling is slightly theatrical but functional. No decorative-but-meaningless graphics. Overall restrained."
+  },
+  "confidence": "high",
+  "total": 71,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 27631,
+    "output_tokens": 1026
+  }
+}

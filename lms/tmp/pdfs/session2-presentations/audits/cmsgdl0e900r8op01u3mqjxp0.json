@@ -1,0 +1,45 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 2,
+    "narrative": 4,
+    "framing": 2,
+    "accuracy": 2,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Consistent visual identity and a clear funnel structure from market to company to recommendation.",
+  "fix_next": "Ground every claim in actual dataset columns (revenue, category, provider, missingness) instead of opaque fabricated composite scores.",
+  "verdict": "Polished shell around fabricated scores with no connection to the actual dataset.",
+  "flags": [
+    "fabricated-composite-scores",
+    "dataset-disconnect",
+    "consulting-language-inflation",
+    "unearned-certainty",
+    "ai-slop",
+    "no-limitations-acknowledged",
+    "circular-scoring",
+    "no-real-revenue-figures",
+    "taxonomy-mismatch"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "S1/S4: 'Marketplace' category with score 100.00 does not exist in the dataset's actual categories; taxonomy invented. S4: AI shown as lowest-ranked market despite being the highest-count and highest-total-revenue category. S1/S3: '31 unique markets' claimed but dataset has ~12 categories (with 274 missing). S1/S7: 'Investment Score 55.97' and 'average baseline 2.43' are opaque fabrications with no derivable basis. S4: 'Surune Marketing' is not a recognizable dataset category. S1-S10: Zero acknowledgment of ~24-29% missingness across key fields or 216 zero-revenue rows.",
+  "evidence": {
+    "insight": "All 'insights' are tautological: fabricated composite scores are computed then the top scorer is declared best. No actual dataset patterns (revenue skew, provider dominance, category medians, TLD differences, on-sale multiples) are surfaced anywhere across 10 slides.",
+    "narrative": "The funnel structure (ecosystem → market ranking → clustering → company pick → next steps) is coherent as a template, but every layer rests on unverifiable invented constructs. The story would fit any dataset or none at all.",
+    "framing": "No description of the actual dataset (1,000 rows, 30-day revenue snapshots, payment providers, missingness rates). No audience definition beyond implied 'board.' No limitations, caveats, or scope boundaries stated. A cold reader cannot evaluate what data underpins any claim.",
+    "accuracy": "Category taxonomy ('Marketplace,' 'Recruiting & HR,' 'Sales,' 'Surune Marketing') does not match actual dataset categories (AI, Marketing, E-comm, SaaS, etc.). AI is ranked lowest despite being the largest category by count and total revenue. Composite scores (100.00, 55.97, 2.43) have zero transparent derivation. No real revenue figures, provider splits, or missingness rates appear anywhere.",
+    "visual": "Navy/gold palette is consistent and professional. Chart variety (bar, network, PCA scatter, 2×2 matrix, chevron process) is good. However: PCA plot (S6) lacks color-coded clusters making it uninterpretable; network graph (S3) is too dense to read labels; 2×2 matrix (S8) plots a single decorative data point; bar chart axes on S7 lack numeric labels for comparison companies.",
+    "ai_slop": "Pervasive: 'synergistic bridges,' 'structural interconnectedness,' 'nascent risk,' 'ecosystem-driven returns,' 'optimal strategic fit,' 'frictionless avenues for horizontal expansion.' NotebookLM watermark on every slide. The entire analytical framework of adaptive weighting, PCA clustering, and composite scoring reads as AI-generated analytical theater with no transparent methodology or reproducible steps."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 2.5 to 2.0 (zero dataset-grounded findings) and framing from 2.5 to 2.0 (complete absence of dataset description, limitations, or missingness). Other scores confirmed as appropriate.",
+  "total": 30,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 16930,
+    "output_tokens": 1006
+  }
+}

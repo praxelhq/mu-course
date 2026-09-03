@@ -1,0 +1,39 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Strong contrarian thesis with purposeful reveal structure: volume vs. median pivot is genuinely insightful.",
+  "fix_next": "Multiple revenue figures don't match the frozen dataset; verify totals, medians, and means against source before presenting claims as precise.",
+  "verdict": "Compelling narrative arc undermined by several unverifiable or incorrect numbers.",
+  "flags": [
+    "revenue-figures-mismatch",
+    "unverifiable-sub-niche-counts",
+    "fabricated-looking-correlation",
+    "mean-not-matching-reference",
+    "median-discrepancy"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 3: AI total shown as $1.81M (~$1,806K); reference is $2,356,676 (~$2.36M). SaaS shown as $589K; reference is $703K. Education shown as $524K; reference is $524K (OK). Marketing $444K vs reference $1,317K — major miss. E-comm $396K vs $1,112K — major miss. Analytics $358K vs $368K (close). Slide 5: AI mean shown as $9,167; reference gives $2,356,676/197 = $11,963 — wrong. E-comm shown as $20,829; reference gives $1,111,606/19 = $58,506 — drastically wrong. Analytics $18,831 vs $368,214/19 = $19,380 (close). Slide 9: Domain Rating correlation of 0.50 within AI is unverifiable and suspiciously high given the dataset's near-zero founded-year correlation; presented without sample size or p-value. Slide 10: AI median stated as $446; reference median for AI category is $503. Slide 10: Mean/median ratio claimed 20.5x using $9,167/$446; both numerator and denominator are off from reference values.",
+  "evidence": {
+    "insight": "Slides 6-8 decompose AI into sub-niches by median MRR, revealing a 46x spread — this goes well beyond describing a bar chart and offers genuinely actionable segmentation for founders.",
+    "narrative": "Clear four-act structure: headline story (slide 3) → reveal (slide 4) → unpack (slides 6-8) → recommendations (slides 11-12). The pivot from 'AI wins on volume' to 'AI loses on per-founder economics' is well-executed.",
+    "framing": "Slide 2 sets the question clearly for builders and investors. However, no mention of 274 missing category labels or 216 zero-revenue rows, which materially affect denominators and medians. No limitations slide.",
+    "accuracy": "Multiple category revenue totals on slide 3 are substantially wrong (Marketing off by 3x, E-comm off by 2.8x). Mean per startup on slide 5 is wrong for AI and wildly wrong for E-comm. AI median cited as $446 vs reference $503. The r=0.50 domain rating claim on slide 9 is unverifiable and presented without caveats.",
+    "visual": "Consistent dark theme with teal/coral accent coding. Charts are legible with data labels. Good use of big-number callouts. Slight sameness across slides 7-8 and 11-12 card layouts. No chart junk. Y-axis labels present. Reasonable restraint overall.",
+    "ai_slop": "Minor: the two recommendation slides (11-12) have a consulting-template feel with numbered cards, but content is specific enough to avoid pure filler. The decorative circle on slides 1 and 13 is meaningless but harmless."
+  },
+  "confidence": "high",
+  "total": 71,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 23836,
+    "output_tokens": 960
+  }
+}

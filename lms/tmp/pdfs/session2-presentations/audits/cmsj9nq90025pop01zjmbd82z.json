@@ -1,0 +1,43 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 6,
+    "accuracy": 4.5,
+    "visual": 7,
+    "bonus": 0
+  },
+  "what_worked": "Power-law framing with Stan callout and contrarian AI-crowding argument are genuinely decision-useful for founders.",
+  "fix_next": "Disclose missing-data rates for category (27%) and audience_type (29%), and reconcile the B2B/B2C multiplier with reference medians.",
+  "verdict": "Clean, purposeful story undermined by multiple numerical errors and undisclosed missingness.",
+  "flags": [
+    "total-revenue-wrong",
+    "top10-share-rounded-down",
+    "b2b-multiplier-wrong",
+    "ai-not-weakest-self-contradiction",
+    "missing-data-not-disclosed",
+    "unverifiable-growth-metric",
+    "no-limitations-noted"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1: '$13.5M combined MRR' — reference total is $15,596,344.59 (~$15.6M), off by ~$2M. Slide 2: '48% of all MRR…by just the top 10' — reference is 49.6%, rounded down beyond tolerance. Slide 3: AI called 'the weakest hit-rate of any major category' at 25%, but Mobile Apps at 10% is shown on the same chart and is clearly lower — internal self-contradiction. Slide 5: '5.7×' B2B-to-B2C median multiple — reference on-sale medians give ~2.35×, off by more than 2×. Slide 3: 197 AI startups called '27% of the dataset' — 197/726 (non-missing) ≈ 27% is defensible only if denominator is stated; 197/1000 = 19.7%, so denominator ambiguity is misleading without disclosure.",
+  "evidence": {
+    "insight": "Slide 2 power-law + Stan annotation, Slide 3 AI-crowding contrarian take, Slide 4 India zero-revenue gap are all founder-relevant. But analysis stays descriptive — no cross-cuts (category × audience), no median-vs-mean distinction, no payment-processor or TLD angles explored.",
+    "narrative": "Four 'rules' build logically: macro distribution → category → geography → audience type, with Slide 6 synthesizing into an actionable playbook. Sequence is purposeful and the landing ties back to each prior slide.",
+    "framing": "Slide 1 names audience and source clearly. However, 274 missing category values (27%) and 288 missing audience_type values (29%) are never disclosed, directly affecting Slides 3 and 5. No limitations or caveats slide. 'Revenue-verified' framing overstates certainty given 216 zero-revenue rows.",
+    "accuracy": "Five verifiable errors: total revenue ~$2M off, top-10 share understated, B2B multiplier inflated by ~2.4×, AI mislabeled as weakest when Mobile Apps is lower on same chart, and AI share denominator ambiguous. Growth-rate percentages (MoM) are unverifiable against frozen reference.",
+    "visual": "Consistent dark theme with gold accent; strong hierarchy via large stat callouts. Slide 2 bar chart effectively dramatizes power law. Slide 3 horizontal bars well-sorted. Slide 5 side-by-side is clean. Minor: angled x-axis labels on Slide 2 slightly reduce legibility. Decorative corner dots are minimal.",
+    "ai_slop": "No significant AI slop detected. Content is dataset-specific throughout. Template is consistent without filler paragraphs or generic motivational language."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Removed 1 bonus point: while the deck is polished, the multiple factual errors (especially the $2M revenue discrepancy and inflated B2B multiplier) and undisclosed missingness disqualify bonus credit. Lowered framing by 0.5 for complete absence of limitations/missingness disclosure. Other scores confirmed as appropriate.",
+  "total": 62,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 12024,
+    "output_tokens": 1047
+  }
+}

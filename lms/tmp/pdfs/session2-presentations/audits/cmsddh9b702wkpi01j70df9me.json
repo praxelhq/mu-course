@@ -1,0 +1,44 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 7,
+    "framing": 7,
+    "accuracy": 4.5,
+    "visual": 6.5,
+    "bonus": 0
+  },
+  "what_worked": "Honest caveat slide and cluster framing prevent over-claiming a 1-point difference as definitive.",
+  "fix_next": "Verify median figures against actual data; Marketing and Education medians are materially wrong, and 'MRR' vs 30-day revenue conflation undermines the core metric.",
+  "verdict": "Well-structured but narrow story with multiple accuracy problems that weaken the thesis.",
+  "flags": [
+    "median-mismatch-marketing",
+    "median-mismatch-education",
+    "revenue-labeled-as-mrr",
+    "fintech-not-in-reference-categories",
+    "unverifiable-success-rate",
+    "speculative-causal-claims-slide4",
+    "narrow-single-dimension",
+    "x-axis-starts-negative"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 5: Marketing median listed as $1,586 vs reference $2,369.50; Education median listed as $2,142 vs reference $2,435. Slide 3: 'Fintech' appears as a category but is absent from the reference category list. Slides 2-7: dataset field is 30-day revenue, systematically relabeled as 'MRR' throughout — this is a definitional error that affects the entire analysis.",
+  "evidence": {
+    "insight": "The $1,000 threshold framing is a reasonable analytical choice, but the entire story rests on a single dimension (success rate) with a 1-percentage-point spread at the top. No exploration of revenue concentration, platform mix, or other cross-cuts. Slide 5 adds median MRR but those figures are wrong, undermining the added depth.",
+    "narrative": "Clean seven-slide arc: question → method → finding → deep dive → comparison → caveats → recommendation. Slide 6 honestly walks back the headline claim. Slide 7 ties back to the thesis with actionable language. The partial retraction of the title claim (cluster not single winner) is intellectually honest and strengthens the story.",
+    "framing": "Slide 2 defines the metric, threshold, and n≥15 filter clearly. Slide 6 provides three substantive caveats (survivorship, snapshot, sample size). Audience is implicitly a portfolio investor. The 274 missing categories are acknowledged (726 usable). However, the 'Portfolio Strategy Brief' framing slightly oversells the depth of analysis.",
+    "accuracy": "Two median values are materially wrong (Marketing off by ~$784, Education off by ~$293). 'Fintech' is not in the reference category list. The systematic relabeling of 30-day revenue as 'MRR' is a definitional error that pervades the entire deck. Content Creation n=36 matches reference. The success rate percentages cannot be verified but the methodology is transparent.",
+    "visual": "Horizontal bar chart on slide 3 is appropriate and well-labeled. KPI cards and data table on slide 4 are effective. Three-column comparison on slide 5 is clear. Consistent color palette with restraint. The x-axis starting at -5% on slide 3 is unnecessary. Professional template but somewhat generic.",
+    "ai_slop": "Slide 4 'Why this niche is converting' contains three speculative causal claims (low delivery cost, willingness to pay, exit-ready) that are not grounded in the dataset and read as AI-generated narrative filler. The consulting-style framing is mildly inflated."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 6 to 5.5 (single-dimension analysis with 1-point spread is thin), framing from 7.5 to 7 (slightly oversold scope), accuracy from 5 to 4.5 (systematic MRR mislabeling compounds the median errors), removed bonus (speculative causal claims on slide 4 and narrow scope do not warrant extra credit).",
+  "total": 61,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 14137,
+    "output_tokens": 1010
+  }
+}

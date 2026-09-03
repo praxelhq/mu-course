@@ -1,0 +1,39 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 3.5,
+    "narrative": 5,
+    "framing": 3,
+    "accuracy": 2.5,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Strong narrative arc framing the dataset as a market opportunity with a clear thesis throughout.",
+  "fix_next": "Every chart referenced in slide subtitles is missing—no actual data visualizations appear anywhere in the deck, making claims unverifiable.",
+  "verdict": "A pitch deck masquerading as a data story, with zero visible charts.",
+  "flags": [
+    "missing-charts",
+    "pitch-deck-not-data-story",
+    "unverifiable-claims",
+    "fabricated-statistics",
+    "no-data-visualization"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 3: '803 revenue-generating startups' — dataset has 784 non-zero revenue rows (1000-216=784), not 803. Slide 3: 'top 10% generate almost all revenue' — top 10 share is 49.6%, not 'almost all.' Slide 5: 'acquisition multiple by category' references 215 listings with no chart or numbers shown; claim that AI commands a premium is unsupported and contradicts data where AI median ($503) is far below Education ($2,435) or Marketing ($2,370). Slide 6: 'B2B startups generate dramatically higher recurring revenue' — actual B2B median multiple is 2.35x vs B2C 2.30x, hardly 'dramatic.' Slide 8: '63% of acquirers are new asset class buyers' appears fabricated with no dataset basis.",
+  "evidence": {
+    "insight": "Slide 6 lists four 'behavioural truths' but none are quantified or shown with evidence. Claims like 'domain authority is the moat nobody talks about' are asserted without any supporting data point, correlation coefficient, or chart. The B2B claim overstates a near-identical median multiple difference.",
+    "narrative": "The deck follows a coherent arc: founder problem → market discovery → signals → opportunity → product → close. This is well-structured as a pitch but the narrative serves a sales argument rather than a data-driven story with evidence-based reasoning.",
+    "framing": "This is framed as a startup pitch deck for TrustMRR, not as a data-story presentation. The audience, analytical question, dataset limitations, and missingness are never addressed. Slide 1 mentions '29 data signals' but the dataset context (scope, collection method, limitations) is absent.",
+    "accuracy": "Slide 3 miscounts revenue-generating businesses (803 vs 784). Top-10 revenue share is ~49.6%, not 'almost all.' Slide 5 claims AI commands an acquisition premium but AI's median revenue ($503) is far below Education and Marketing. Slide 8's '63%' and '262' figures have no dataset basis. The '30x' valuation claim on slide 2 is unsupported.",
+    "visual": "Clean typography and consistent color-coded card layouts across slides. However, slides 3, 4, and 5 each reference a chart in their subtitles (MRR distribution, Twitter followers vs revenue, acquisition multiples) but the chart areas are completely blank—no visualizations rendered. The deck is text-only with colored boxes.",
+    "ai_slop": "Heavy consulting-style language throughout: 'new asset class,' 'the most overlooked asset class in the internet economy,' 'revenue follows attention—the data makes this undeniable.' Slide 8's stat cards (1,000 / 10+ / 262 / 63%) follow a generic pitch-deck template pattern. Multiple slides use inflated certainty language without supporting evidence."
+  },
+  "confidence": "high",
+  "total": 36,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 20584,
+    "output_tokens": 925
+  }
+}

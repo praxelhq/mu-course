@@ -1,0 +1,39 @@
+{
+  "slide_count": 5,
+  "scores": {
+    "insight": 1,
+    "narrative": 3,
+    "framing": 1.5,
+    "accuracy": 0.5,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Visually cohesive branding and clear consulting-style layout with consistent design language.",
+  "fix_next": "This deck analyzes Meesho logistics, not the assigned 1,000-row startup revenue dataset — it addresses the wrong assignment entirely.",
+  "verdict": "Wrong dataset, wrong assignment — a polished deck that answers nothing asked.",
+  "flags": [
+    "wrong-dataset",
+    "no-assigned-data-used",
+    "unsourced-claims",
+    "consulting-pitch-not-data-story",
+    "fabricated-projections"
+  ],
+  "factual_error_count": 0,
+  "factual_error_detail": "Cannot count factual errors against the frozen dataset because the deck never references it. All claims are about Meesho logistics with no verifiable sourcing.",
+  "evidence": {
+    "insight": "No insight derived from the assigned dataset. All claims are generic logistics strategy assertions (slides 3-5) about Meesho's last-mile costs, RTO rates, and kirana networks.",
+    "narrative": "The deck has internal coherence as a consulting pitch (problem → economics → solution), but it tells no data story from the assigned dataset.",
+    "framing": "Framing is for a Meesho strategy case, not the assigned data-story task. No mention of the 1,000-row dataset, its variables, or any analytical question derived from it.",
+    "accuracy": "No claims can be verified against the frozen dataset because none are made. Industry statistics (RTO 20-30%, last-mile 40-55% of cost) are presented without citations. Slide 5 fine print admits numbers are 'indicative.'",
+    "visual": "Consistent pink/magenta Meesho branding, clear hierarchy, readable bar charts on slides 4-5, good use of icons. Slide 4 is dense but navigable. Professional template quality.",
+    "ai_slop": "Heavy consulting-speak throughout: 'Re-Architecting Last-Mile Through Trust, Density & Behavioural Design,' 'distributed commerce ecosystem,' 'layered logistics architecture.' Decorative icons dominate over data. Projected savings (₹300 Cr) appear fabricated."
+  },
+  "confidence": "high",
+  "total": 23,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 9474,
+    "output_tokens": 1055
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "slide_count": 15,
+  "scores": {
+    "insight": 8,
+    "narrative": 8.5,
+    "framing": 9,
+    "accuracy": 6,
+    "visual": 7.5,
+    "bonus": 3
+  },
+  "what_worked": "Exceptional epistemic discipline: every finding carries confidence rating, falsification condition, and confirmation test.",
+  "fix_next": "Total revenue is $15.6M not $133.75M—an 8.6x overstatement that cascades through the entire deck's dollar figures and percentages.",
+  "verdict": "Outstanding analytical framework undermined by a fundamental revenue total error.",
+  "flags": [
+    "total-revenue-wrong-by-8x",
+    "top10-share-inflated",
+    "ai-category-count-conflates-tag-with-category",
+    "ttm-vs-30day-field-confusion"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2/12/15: Total revenue stated as $133.75M; actual 30-day total is $15.6M (no TTM field exists in the frozen reference—likely multiplied by ~12 or used a different field without disclosure). Slide 2: Top-10 share stated as 50.6%; reference says 49.6%—minor but the denominator is wrong if total is wrong. Slide 5: States AI category has 392 of 726 labelled startups (54%); reference shows AI category has 197 companies—the student appears to count an 'AI' tag in markets_json rather than the category field, conflating two different fields while calling it 'category.' Slide 12: '$58.5M of $133.75M' for uncategorised revenue is built on the wrong total. Slide 4: Top-10 share 50.6% is close to reference 49.6% but only if denominator is correct; with wrong total it's coincidental.",
+  "evidence": {
+    "insight": "Theme 1's argument that AI is commoditized (54% of population, 24% of revenue) is genuinely original and decision-useful. Theme 5's recomputation of published multiples on TTM is a strong analytical contribution. The pricing-structure-beats-category thesis (Theme 2) synthesizes multiple cuts well.",
+    "narrative": "Five themes build a coherent arc: AI label is noise → monetization matters more → distribution matters → momentum is negative → the dataset itself is treacherous. Slide 14's prioritization matrix and slide 15's three-conclusion landing are unusually well-structured for a student deck.",
+    "framing": "Slide 2's 'Read This First' box explicitly scopes the dataset as self-listed and Stripe-skewed. Slide 3's methodology card with confidence ratings, definitions, and null-handling is among the best framing I've seen. The caveat is repeated on the final slide. Audience (investment review) is stated on slide 1.",
+    "accuracy": "The foundational revenue figure ($133.75M) is roughly 8.6x the actual $15.6M 30-day total. The deck claims this is 'TTM' but the frozen reference provides only 30-day revenue. If the student annualized 30-day × 12, that's $187M not $133.75M, so the derivation is unclear and unverifiable. AI count of 392 vs reference 197 suggests tag-vs-category conflation. The top-10 concentration (50.6%) is close to reference (49.6%) but may be coincidental given the wrong denominator.",
+    "visual": "Clean, consistent dark-navy palette with gold accents. Bar charts on slides 4, 7, 13 are well-labeled and appropriately simple. The insight-card format (slides 5-12) is highly legible with clear hierarchy. Slight visual sameness across the card slides, but the consistency serves the structure. No decorative-but-meaningless graphics.",
+    "ai_slop": "none—the deck avoids generic filler, consulting buzzwords, and decorative graphics. The structured card format is purposeful rather than template-driven."
+  },
+  "confidence": "high",
+  "total": 81,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 30206,
+    "output_tokens": 1012
+  }
+}

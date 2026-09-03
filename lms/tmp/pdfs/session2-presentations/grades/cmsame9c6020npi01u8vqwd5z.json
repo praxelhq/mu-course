@@ -1,0 +1,41 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 2.5,
+    "narrative": 3.5,
+    "framing": 2.5,
+    "accuracy": 1.5,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "Clear thesis structure with a single takeaway landing slide tying three claims together.",
+  "fix_next": "Most claims (YoY growth, exit multiples, pricing tiers, category counts) appear fabricated—none match the actual dataset fields or values.",
+  "verdict": "Confident-sounding narrative built almost entirely on invented data.",
+  "flags": [
+    "fabricated-charts",
+    "fabricated-statistics",
+    "no-dataset-fidelity",
+    "ai-slop",
+    "decorative-stock-imagery",
+    "no-limitations-acknowledged",
+    "causal-overclaiming"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 3: Categories shown (Fintech, Healthtech) don't exist in dataset; AI shown at ~340 (34%) but actual AI count is 197/726 categorized (27%); SaaS shown as second-largest but Marketing has higher revenue. Slide 4: '48% AI YoY growth' and '22% SaaS YoY growth' — dataset has no YoY growth field; these figures are fabricated. Slide 5: 'Enterprise/Mid-Market/SMB pricing tiers' — no such field exists in the dataset; chart is invented. Slide 6: 'Exit multiples vs YoY growth' scatter — dataset contains no exit multiple or YoY growth fields; entire chart is fabricated. Slide 3: '34% of all startups' uses 1000 as denominator ignoring 274 missing category values.",
+  "evidence": {
+    "insight": "All three core claims (AI growth advantage, enterprise pricing premium, exit multiples rewarding growth) rely on fields not present in the dataset. No genuine insight from actual data columns (revenue, provider, country, TLD, audience_type).",
+    "narrative": "Slides 3→4→5→6→7→8 follow a logical sequence (category → growth → pricing → exits → synthesis), which is structurally competent even though the content is fabricated.",
+    "framing": "Slide 2 defines MRR and dataset size but never addresses missingness (274 categories, 241 countries), audience, or analytical scope. No limitations mentioned anywhere.",
+    "accuracy": "Slides 4-6 present charts based on fields (YoY growth %, pricing tier, exit multiples) that do not exist in the 1,000-row dataset. Category labels on slide 3 include 'Fintech' and 'Healthtech' which are not in the reference categories. The 34% figure uses wrong denominator.",
+    "visual": "Gamma template with consistent red palette. Decorative stock images on slides 1, 2, 4, 7 add no analytical value. Charts are clean but fabricated. Scatter plot on slide 6 has only ~8 points with no explanation of aggregation.",
+    "ai_slop": "Heavy AI-generated decorative imagery (slides 1, 2, 4, 7). Consulting-style language ('The Winning Formula Is Not a Secret', 'Everything else is a compromise'). Entire analytical claims appear hallucinated by AI rather than derived from data."
+  },
+  "confidence": "high",
+  "total": 26,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 14780,
+    "output_tokens": 828
+  }
+}

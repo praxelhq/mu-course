@@ -1,0 +1,37 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8.5,
+    "framing": 7,
+    "accuracy": 5.5,
+    "visual": 8,
+    "bonus": 2
+  },
+  "what_worked": "Tight thesis with a genuine contrarian angle, excellent narrative arc from supply to price to recommendation.",
+  "fix_next": "Median revenue figures on slide 4 diverge materially from the reference data; verify every number against the frozen dataset before presenting.",
+  "verdict": "Strong storytelling and design, undermined by several inaccurate median values.",
+  "flags": [
+    "median-revenue-discrepancies",
+    "combined-revenue-mislabeled-as-mrr",
+    "unverifiable-slide-7-figures"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: $13.5M called 'Combined MRR' but dataset total 30-day revenue is $15.6M, not $13.5M; labeling it MRR is unsupported. Slide 4: AI median shown as $446 vs reference $503; Education median shown as $2,142 vs reference $2,435; Marketing median shown as $1,586 vs reference $2,369.50; Content Creation shown as $1,254 vs reference $1,237.50 (minor). The 4.8x ratio claim (Education/AI) would be ~4.84x with correct figures, but the underlying numbers are wrong. Slide 4: Productivity median $42 vs reference $79.91; Dev Tools $185 vs reference $635; Health & Fitness $392 vs reference $662.50; SaaS $303 vs reference $200.50 — multiple categories are materially off. Slide 7: Trailing-12mo revenue and multiple figures for the for-sale subset are unverifiable but internally plausible; the 19.7% denominator on slide 3 uses 1,000 rather than 726 categorized rows, which is debatable but not clearly wrong given framing.",
+  "evidence": {
+    "insight": "The core insight — AI commands a pricing premium disproportionate to its median revenue — is genuinely interesting and decision-useful for a buyer audience. The supply-vs-revenue-vs-multiple three-step build is original.",
+    "narrative": "Slides follow a clear Supply → Revenue → Price → Thesis → Playbook → Caveats arc. The thesis slide (6) lands at the right moment. The closing tagline echoes the title. One of the tighter narrative structures seen.",
+    "framing": "Audience (micro-SaaS acquirer) is implicit but clear. Dataset source and date are stated. Slide 9 discloses limitations including small sample sizes. However, 274 missing category values are never mentioned, and the denominator choice (1,000 vs 726) is not flagged.",
+    "accuracy": "Multiple median values on slide 4 are materially wrong (Dev Tools off by 3.4x, Productivity off by ~2x, Health & Fitness off by ~1.7x). Slide 2 labels total revenue as 'MRR' without basis and understates it. These are not rounding differences — they suggest a computation or filtering error.",
+    "visual": "Clean, restrained dark-theme design with consistent typography, good use of highlight color for AI bars, effective callout boxes. Chart types are appropriate. Hierarchy is clear. No decorative clutter.",
+    "ai_slop": "none — the deck is concise, specific, and avoids generic filler language"
+  },
+  "confidence": "high",
+  "total": 75,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 16896,
+    "output_tokens": 879
+  }
+}

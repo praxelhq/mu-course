@@ -1,0 +1,44 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 6,
+    "narrative": 6,
+    "framing": 5.5,
+    "accuracy": 4.5,
+    "visual": 6.5,
+    "bonus": 0
+  },
+  "what_worked": "Slide 11's three-column decision filter synthesizes category and screening criteria into actionable indie-hacker guidance.",
+  "fix_next": "Disclose missingness (274 category, 288 audience_type, 216 zero-revenue) and reconcile median values against the actual dataset before publishing.",
+  "verdict": "Clean layout, useful framing, but too many unchecked numbers undermine credibility.",
+  "flags": [
+    "median-values-off",
+    "missing-data-not-acknowledged",
+    "zero-revenue-count-wrong",
+    "b2b-b2c-multiplier-inflated",
+    "stripe-87pct-inconsistent",
+    "134m-revenue-unverifiable",
+    "dodo-total-wrong",
+    "no-limitations-slide"
+  ],
+  "factual_error_count": 9,
+  "factual_error_detail": "Slide 2: $134M '12-mo revenue' has no dataset basis (total revenue is ~$15.6M). Slide 2: zero-revenue implied 197 (slide 6) vs reference 216. Slide 4: Education median $2,142 vs ref $2,435; Marketing $1,586 vs ref $2,369.50; Analytics $1,294 vs ref $419; AI $446 vs ref $503; SaaS $303 vs ref $200.50 (direction ok but magnitude off for Analytics especially). Slide 7: B2B/B2C 5.7x ratio; reference median multiples are ~2.3x. Slide 8: Dodo total $12.7k vs ref $38.7k. Slide 12: 'Stripe processes 87% of all MRR' — $11.7M/$13.5M ≈ 87% internally consistent with slide's own total, but slide 2 total MRR $13.5M itself is suspect given reference total revenue $15.6M (unclear if MRR vs annual). Slide 5: regional counts sum to 747 out of 1000, unexplained gap (241 missing country) but never disclosed.",
+  "evidence": {
+    "insight": "Category-vs-median-MRR contrast (slide 4) and decision-filter matrix (slide 11) show analytical effort beyond simple counts; growth-filtered acquisition targets on slide 9 add practical value. However, no cross-dimensional analysis (category × audience, anonymity premium, TLD signal) limits depth.",
+    "narrative": "Logical dimension-by-dimension tour: snapshot → categories → geography → distribution → B2B/B2C → payments → growth → acquisitions → recommendations → recap. Sequence is coherent but reads as a dashboard walkthrough rather than building toward a single argued thesis. Slide 12 recap restates findings without synthesizing a unified recommendation.",
+    "framing": "Slide 1 clearly identifies indie hackers as audience and states data freeze date. However, 274 missing categories, 288 missing audience_type, and 216 zero-revenue rows are never disclosed anywhere. No limitations or methodology slide. The denominator for B2B/B2C (slide 7: 401+255=656) implicitly excludes ~344 rows but this is invisible to the reader.",
+    "accuracy": "Analytics median off by ~3x ($1,294 vs $419). B2B/B2C median ratio inflated from ~2.3x to 5.7x. Dodo total revenue roughly 3x too low. $134M annual figure fabricated or miscalculated. Zero-revenue count 197 vs 216. Education and Marketing medians each off by $300–$780. Multiple errors compound to undermine the deck's core claims.",
+    "visual": "Consistent dark/light alternation, clean card layouts, well-labeled bar charts, purposeful color coding. Slide 6 distribution visualization is creative. Bar lengths on slide 6 don't proportionally represent counts (visual misrepresentation). Overall professional and restrained.",
+    "ai_slop": "Minimal filler language; no consulting jargon or decorative-but-meaningless graphics. Template uniformity suggests AI generation but quality is maintained and content is dataset-specific."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Removed 1 bonus point: while slide 11 is useful, the deck lacks the cross-cutting originality or methodological rigor that warrants bonus credit. Nine factual errors (up from 8) after identifying the $134M fabrication as a distinct major error. Framing lowered 0.5 for complete absence of missingness disclosure affecting core analyses.",
+  "total": 57,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 22296,
+    "output_tokens": 1158
+  }
+}

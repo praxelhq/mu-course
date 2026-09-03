@@ -1,0 +1,37 @@
+{
+  "slide_count": 4,
+  "scores": {
+    "insight": 6,
+    "narrative": 6.5,
+    "framing": 6,
+    "accuracy": 6,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Clear power-law thesis with well-chosen median-vs-mean contrast and honest zero-revenue caveat.",
+  "fix_next": "The deck is too thin at four slides—add category, provider, or anonymity analysis to substantiate the concentration thesis beyond top-line deciles.",
+  "verdict": "Focused and honest but too narrow to be truly insightful.",
+  "flags": [
+    "narrow-scope",
+    "mean-calculation-error",
+    "decile-chart-questionable"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 2: Title says 83.7% in top 10% of startups—the frozen reference gives top-10 companies (not top decile) at 49.6%; 83.7% for top decile is unverified and likely conflates decile with top-10. Slide 2: Mean stated as $15,596—actual mean is $15,596,344.59/1000 ≈ $15,596, which is correct, but the median of $400 is not verifiable from the reference (overall median not provided). Slide 2: 21.6% zero-revenue—actual is 216/1000 = 21.6%, correct. Slide 3: Top-10 revenue sum ($2,845K+$985K+$868K+$858K+$575K+$391K+$386K+$365K+$242K+$222K = ~$7,737K) yields 49.6% of $15.6M, which checks out, but the claim that Stan alone earns more than #2–#6 combined ($985+$868+$858+$575+$391 = $3,677K vs $2,845K) is false.",
+  "evidence": {
+    "insight": "Slide 2 decile chart and median-vs-mean comparison are the core insight; slide 4 offers practical takeaways but stays generic. No category or segment-level analysis.",
+    "narrative": "Slides flow logically: market shape → whales → implications. Coherent but brief; the 'so what' on slide 4 is reasonable but could be sharper with data backing.",
+    "framing": "Slide 1 sets dataset, n, and date. No discussion of missingness (274 missing category, 241 missing country) or selection bias. Audience implied but not stated.",
+    "accuracy": "83.7% top-decile claim is unverified against reference. Stan vs #2–#6 comparison appears arithmetically wrong. Mean $15,596 is correct. 21.6% zero-revenue correct. 49.6% top-10 share correct.",
+    "visual": "Clean, restrained design with consistent typography and color. Decile bar chart is effective. Slide 4 uses decorative colored squares that add nothing. Good legibility throughout.",
+    "ai_slop": "Slide 4 decorative squares are mildly sloppy template artifacts; otherwise minimal slop."
+  },
+  "confidence": "medium",
+  "total": 64,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 7856,
+    "output_tokens": 798
+  }
+}

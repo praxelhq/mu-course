@@ -1,0 +1,39 @@
+{
+  "slide_count": 5,
+  "scores": {
+    "insight": 5,
+    "narrative": 5.5,
+    "framing": 4,
+    "accuracy": 3,
+    "visual": 4.5,
+    "bonus": 0
+  },
+  "what_worked": "Clear contrarian thesis with a coherent buy-boring-yield narrative arc across five slides.",
+  "fix_next": "ARR multiples, median MRR figures, and correlation claims appear fabricated—none are verifiable from the dataset's actual fields; ground every number.",
+  "verdict": "Punchy thesis built on unverifiable and likely fabricated metrics.",
+  "flags": [
+    "fabricated-metrics",
+    "unverifiable-correlation",
+    "no-limitations-slide",
+    "no-sample-size-disclosure",
+    "consulting-language-inflation"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: 0.90 correlation of 'Active Subscriptions' with 'MRR'—dataset has no MRR or active-subscription field; correlation is unverifiable/fabricated. Slide 3: 'Mean ARR multiples' (AI 20.89×, Marketing 10.46×, Content 10.26×)—dataset contains no asking-price or ARR field, so these multiples cannot be computed. Slide 4: Analytics median MRR $1,294—no MRR field exists; reference median revenue for Analytics is $419. Slide 4: 'Same cash flow. 5× lower entry price' claim is arithmetically unsupported. Slide 4: Social Media Tools called 'lowest multiple in the dataset' at 2.89×—unverifiable and ignores categories like Productivity with far lower median revenue.",
+  "evidence": {
+    "insight": "The contrarian framing (buy boring, avoid AI hype) is a genuine strategic angle, but it rests on metrics not present in the dataset, so the insight is hollow.",
+    "narrative": "Slides follow a clear problem→evidence→recommendation arc (vanity metrics bad → AI overpriced → buy boring → target matrix), giving it coherence despite brevity.",
+    "framing": "No dataset description, no mention of 1,000 rows' missingness (274 missing category, 216 zero-revenue), no audience definition, no limitations. 'M&A Strategy' framing is never grounded in who the audience is.",
+    "accuracy": "Core quantitative claims (MRR correlation, ARR multiples, median MRR) reference fields that do not exist in the dataset. The deck appears to have invented variables. No denominators or sample sizes disclosed.",
+    "visual": "Dark theme is consistent; bar charts are readable. Slide 5 clipboard graphic is decorative filler. Chart on slide 3 truncates category labels. No annotations or source citations on any chart.",
+    "ai_slop": "Consulting-speak throughout ('deploy capital', 'zero margin for error', 'alpha', 'arbitrage'). Decorative clipboard icon on slide 5 adds no information. 'Deploy Capital' button is meaningless. Inflated certainty without data backing."
+  },
+  "confidence": "high",
+  "total": 44,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 9985,
+    "output_tokens": 761
+  }
+}

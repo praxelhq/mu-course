@@ -1,0 +1,39 @@
+{
+  "slide_count": 14,
+  "scores": {
+    "insight": 8,
+    "narrative": 8.5,
+    "framing": 8,
+    "accuracy": 6,
+    "visual": 7,
+    "bonus": 3
+  },
+  "what_worked": "Concentration thesis is genuinely original, sustained across every slide, and lands with actionable recommendations.",
+  "fix_next": "Several key numbers are materially wrong (top-10 share, B2B median multiple, AI total MRR); verify every headline stat against the raw data before presenting.",
+  "verdict": "Strong strategic narrative undermined by multiple factual errors in core claims.",
+  "flags": [
+    "inflated-top-10-share",
+    "wrong-ai-total-revenue",
+    "wrong-b2b-multiple",
+    "unverified-external-benchmark",
+    "denominator-unclear-on-category-shares"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: Top-20 share stated as 57.7%; reference shows top-10 at 49.6%, making 57.7% for top-20 plausible but the 48% for top-10 on slide 7 conflicts (reference: 49.6%). Slide 5: AI total MRR shown as $1,806K (~$1.806M monthly); reference total 30-day revenue is $2,356,676 — significant undercount (~23% off). Slide 7: Top-10 share shown as 48% vs reference 49.6% — a ~1.6pp error. Slide 14: B2B median stated as 5.7x B2C ($1,036 vs $181); reference B2B median multiple is 2.35x and B2C is 2.30x — the 5.7x figure appears fabricated or uses wrong metric. Slide 10: Anonymous share stated as 6.3%/27.2% referencing '8,782-startup universe' — this is not the assignment dataset (1,000 rows); mixing universes without clear labeling is misleading. Reference for 1,000-row set: anonymous is 12.9% of companies, 26.525% of revenue.",
+  "evidence": {
+    "insight": "Slide 4's four-axis concentration framework with category as the exception is a genuinely original analytical move. Slide 7's churn-scenario costing translates concentration into dollar risk. Slide 9 correctly contextualizes high-growth percentages on small bases. Slide 14's strategic recommendations logically follow from the analysis.",
+    "narrative": "The deck has a clear thesis ('concentrated on every axis except category') introduced on slide 4 and sustained through performance (slides 8-10), risk (slides 11-12), and opportunities (slides 13-14). Each section builds on the prior one. The landing on slide 14 directly answers 'so what' by pointing to category as the actionable lever.",
+    "framing": "Slide 1 clearly identifies audience (Board of Directors), data freeze date, and universe size. Slide 3 provides external context benchmarking. Slide 6 notes Superwall's small n. Slide 12 flags that -100% may be integration errors. Missing: no explicit mention of 274 missing category values or 241 missing country values, which materially affect category/geography share calculations.",
+    "accuracy": "Slide 5 AI total MRR ~$1.806M vs reference $2.357M (off by ~$550K). Slide 7 top-10 at 48% vs reference 49.6%. Slide 10 uses an '8,782-startup universe' for anonymous stats rather than the assignment's 1,000-row dataset — mixing denominators. Slide 14 B2B 5.7x claim doesn't match reference multiples (2.35x/2.30x). Slide 2 median MRR $282 is plausible but not directly verifiable against reference median. The $19.7% zero-revenue figure (197 companies) is close to but not exactly the reference 216 (21.6%).",
+    "visual": "Clean, consistent template with good hierarchy — section headers, color-coded dots, and callout boxes. Charts on slides 5, 6, 7, 10 are functional but basic (bar charts with raw axis labels showing raw numbers like 1000000). Slide 10 labels chart as 'log scale' but displays a linear scale. Slide 5 right chart x-axis labels are cluttered. No decorative-but-meaningless graphics. Tables are well-formatted and readable.",
+    "ai_slop": "Minimal slop. The consulting-style framing ('Portfolio Strategy Review,' 'Board of Directors') is purposeful given the chosen audience. No generic filler paragraphs. The external benchmark on slide 3 cites a specific source but the numbers cannot be independently verified and the comparison methodology is unclear."
+  },
+  "confidence": "high",
+  "total": 78,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 27187,
+    "output_tokens": 1188
+  }
+}

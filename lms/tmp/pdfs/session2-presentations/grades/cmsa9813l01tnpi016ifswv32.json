@@ -1,0 +1,40 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 3,
+    "narrative": 4,
+    "framing": 3.5,
+    "accuracy": 2.5,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "The revenue-skew narrative (most startups are tiny) is a valid and engaging thesis.",
+  "fix_next": "Charts appear fabricated—growth distribution, follower-revenue pie, and region counts lack verifiable dataset grounding; anchor every chart to real data.",
+  "verdict": "Thin, largely fabricated-looking charts wrapped in motivational language.",
+  "flags": [
+    "fabricated-looking-charts",
+    "ai-slop",
+    "missing-data-not-acknowledged",
+    "no-category-analysis",
+    "no-provider-analysis",
+    "unverifiable-claims"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 2: Title says 'AI Startups' but dataset covers all categories, not just AI; 40% US claim unverifiable and ignores 241 missing country values. Slide 3: '22.86% total conversion rate' is unexplained and unverifiable; 'Median MRR under $500' is stated as monthly but dataset is 30-day revenue (not MRR); '60% have yet to break even' is fabricated. Slide 4: Growth distribution (30/30/20/12/8) appears entirely invented—no growth-rate field exists in the reference dataset. Slide 5: Follower-vs-revenue pie chart (40/35/15/10%) has no evident dataset basis and looks fabricated.",
+  "evidence": {
+    "insight": "Claims stay at surface level ('most startups are small,' 'hype ≠ revenue'). No category, provider, TLD, or anonymity analysis. No original finding beyond obvious skew.",
+    "narrative": "There is a loose arc (geography → revenue → growth → social → takeaway), but it reads as a list of loosely connected observations rather than a thesis-driven argument with synthesis.",
+    "framing": "Title frames this as '1,000 AI startups' when the dataset spans 12+ categories. No mention of data source, missingness, or limitations. Audience is vague ('for you').",
+    "accuracy": "Slide 4 growth chart appears wholly invented (no growth-rate variable in reference data). Slide 5 pie chart percentages are unverifiable. Slide 3 conflates 30-day revenue with MRR. Slide 2 ignores 241 missing country values. '22.86% conversion rate' is unexplained.",
+    "visual": "Gamma template is clean but repetitive dark-mesh background adds no information. Charts are legible but suspiciously round numbers (30/30/20/12/8). Pie chart on slide 5 is a poor choice for 4 categories with no source annotation.",
+    "ai_slop": "Motivational filler throughout ('The AI era is just beginning,' 'Consistency beats virality,' 'Hype doesn't pay the bills'). Round fabricated-looking chart numbers. Generic three-column takeaway cards on every slide. Decorative mesh background repeated on every page."
+  },
+  "confidence": "high",
+  "total": 34,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 12012,
+    "output_tokens": 790
+  }
+}

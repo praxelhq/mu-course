@@ -1,0 +1,41 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 3,
+    "narrative": 4,
+    "framing": 3,
+    "accuracy": 2,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Consistent visual template with clear hierarchy; the mean-vs-median disparity observation on slide 2 is valid.",
+  "fix_next": "Most numbers (IRR, EV, multiples, CAGR, composite scores, several startup names) appear fabricated—ground every claim in the actual dataset.",
+  "verdict": "Polished consulting shell built on largely fabricated metrics and unearned certainty.",
+  "flags": [
+    "fabricated-metrics",
+    "invented-startup-names",
+    "unverifiable-composite-scores",
+    "no-limitations-disclosed",
+    "consulting-slop",
+    "missing-data-ignored",
+    "causal-overclaim"
+  ],
+  "factual_error_count": 12,
+  "factual_error_detail": "Slide 2: AI median listed as $446 vs reference $503; SaaS median $303 vs reference $200.50; mean MRR $8,920 for SaaS not verifiable ($703K/66≈$10,659). Slide 3: 'Revenue per Visitor,' ARPU $418, valuation multiples (6.3x, 22.9x), and the entire heatmap appear fabricated—no valuation data exists in the dataset. 'Marketplace' is not a dataset category. Slide 4: 'ApexMetrics,' 'CoreFlow,' 'SynthAI,' 'NovaCorp' are not in the dataset—names appear invented. Composite performance scores have no disclosed methodology. Slide 5: Enterprise valuations ($1.25B, $289M, $187M) are wholly fabricated from a 30-day revenue snapshot. Slide 6: Expected IRR (45.2%, 22.1%, 28.5%), projected CAGR (36.4%, 49.7%), 'A- Rated' confidence, and 3Y/5Y EV projections are invented with no basis in the data. Slide 7: Repeats all fabricated figures as settled conclusions.",
+  "evidence": {
+    "insight": "The mean-vs-median gap observation (slide 2) is the only genuine analytical point. All other 'insights'—ARPU leverage, valuation multiples, IRR projections—are built on numbers not present in the dataset, so they add no real analytical value.",
+    "narrative": "There is a coherent thesis arc (AI dominance → unit economics → portfolio allocation), but it is undermined by the fact that the supporting evidence is largely invented. The sequence is logical in form but hollow in substance.",
+    "framing": "No discussion of missingness (274 missing categories, 241 missing countries, 216 zero-revenue rows). No limitations section. Audience framed as institutional investors ('multi-million dollar capital deployment') but the dataset is a 30-day MRR snapshot of 1,000 startups—wildly insufficient for such claims. Scope mismatch is severe.",
+    "accuracy": "At least 4 startup names appear fabricated. Valuation multiples, IRR, CAGR, and enterprise values are invented wholesale. Median values for AI and SaaS are wrong. 'Marketplace' is not a dataset category. No denominators or sample sizes disclosed for any sub-analysis. The 'composite performance score' methodology is never explained.",
+    "visual": "Clean, consistent blue-and-white template with good typographic hierarchy. Charts are legible but several (bubble chart slide 3, quadrant matrix slide 5, EV projection slide 6) visualize fabricated data, making them decorative rather than evidence-led. Treemap and bar chart are competently executed.",
+    "ai_slop": "Heavy consulting-speak throughout ('Dynamic Scenario Hedging,' 'A- Rated,' 'exponential long-term upside,' 'micro-injections'). Invented startup names (ApexMetrics, CoreFlow, SynthAI, NovaCorp) are classic AI hallucination artifacts. Fabricated precision (45.2% IRR, $1.25B EV) with no methodology. Slides 6-7 are nearly pure filler repeating the same unsupported claims."
+  },
+  "confidence": "high",
+  "total": 32,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15005,
+    "output_tokens": 1050
+  }
+}

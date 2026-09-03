@@ -1,0 +1,39 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 6.5,
+    "framing": 5,
+    "accuracy": 4.5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Clear thesis that volume ≠ wealth, with the AI vs. E-comm per-startup contrast well executed.",
+  "fix_next": "Mean-based per-startup figures hide skew; use medians, acknowledge 274 missing categories, and verify the 31% concentration claim against correct denominators.",
+  "verdict": "Clean narrative arc but uses means over medians and ignores major missingness.",
+  "flags": [
+    "mean-not-median",
+    "missing-data-unacknowledged",
+    "denominator-issue",
+    "unverifiable-12-month-figures",
+    "causal-language-on-correlations"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1: '29 categories' — only ~12 named categories are populated with 726 rows; 274 rows have missing category. Slide 2: '31% of all 30-day revenue' — (2.36+1.32+1.11)/15.60 = 30.7%, minor but the denominator should note 274 uncategorized rows contributing revenue. Slide 5: Uses mean revenue per startup ($58.5K E-comm, $12.0K AI) but presents them as 'richest' without noting these are means heavily skewed by outliers; reference medians differ dramatically (E-comm median $387, AI median $503). Slide 4: '$133.75M earned in 12 months' and 8.6× multiplier are unverifiable from the frozen dataset reference and the per-category 12-month figures appear fabricated or extrapolated. Slide 7: 'Build the product, not the audience' — causal claim from correlation; active subscriptions correlating with revenue is near-tautological (subscriptions generate revenue), not an actionable insight.",
+  "evidence": {
+    "insight": "Slide 5 contrasts total vs. per-startup revenue — a genuine analytical move. But reliance on means rather than medians undermines the insight; E-comm's median ($387) tells a completely different story than the $58.5K mean. The correlation slide (7) presents a near-tautology as a myth-buster.",
+    "narrative": "Slides 2→3→5 build a coherent concentration→per-founder arc. Slide 9 summarizes well. However slides 4 (time windows) and 8 (quartiles + exit market) feel bolted on without connecting back to the thesis.",
+    "framing": "No mention of 274 missing category rows or 216 zero-revenue companies. '29 categories' is stated but never substantiated. No limitations slide. Audience is implied but never stated.",
+    "accuracy": "Mean used instead of median throughout per-startup analysis, which is misleading given extreme skew. 12-month revenue figures ($133.75M, per-category 12-month) are not in the frozen dataset reference and appear extrapolated without disclosure. The 31% figure is approximately correct but ignores uncategorized revenue.",
+    "visual": "Consistent color palette (navy/gold), clean bar charts with direct labels, good hierarchy with callout boxes. Slide 4 grouped bar chart is readable. Slide 8 quartile visualization is creative but the staircase shape doesn't encode magnitude. No chart junk.",
+    "ai_slop": "Moderate template feel with repeated card layouts across slides 2, 6, 8. 'Myth-buster' framing on slide 7 is slightly inflated given the tautological nature of the correlation. Overall restrained but the consulting-style callout boxes repeat."
+  },
+  "confidence": "high",
+  "total": 57,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 17284,
+    "output_tokens": 928
+  }
+}

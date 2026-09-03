@@ -1,0 +1,38 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 5.5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Strong total-vs-typical thesis sustained throughout, with honest sample-size caveats and clearly labeled hypotheses versus facts.",
+  "fix_next": "The deck consistently uses MRR instead of 30-day revenue for category/concentration figures, creating systematic mismatches with the frozen dataset that undermine credibility.",
+  "verdict": "Well-structured narrative with genuine insight, undermined by using MRR where the dataset reports 30-day revenue.",
+  "flags": [
+    "metric-conflation-mrr-vs-revenue",
+    "anonymous-count-off",
+    "top10-share-wrong",
+    "category-figures-unverifiable-basis"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 2: AI total stated as $1.81M (MRR basis) vs frozen reference $2.36M (30-day revenue); AI median $446 vs reference $503. Slide 2: anonymous count 130 vs reference 129; anonymous revenue share 26.9% vs reference 26.525%. Slide 3: 197 report $0 MRR but frozen dataset shows 216 zero-revenue rows. Slide 7: Top-10 share stated as 48.0% vs reference 49.6%. Slide 5: Education median $2,142 vs reference $2,435; Marketing median $1,586 vs reference $2,369.50. Throughout: the deck frames all category totals as 'MRR' figures that don't match the frozen 30-day revenue totals (e.g. AI $1.81M vs $2.36M, SaaS $589K vs $703K), suggesting either a different field was used or systematic miscalculation.",
+  "evidence": {
+    "insight": "Slide 5's total-vs-median juxtaposition for AI is genuinely useful; slide 8's 'AI is not a uniform tailwind' interpretation goes beyond chart-reading; slide 9 separates near-term vs longer-term monetization with appropriate epistemic hedging.",
+    "narrative": "Clear five-point executive summary (slide 2) sets up the rest; slides progress logically from overview → composition → performance → dynamics → distortions → opportunity → risks → actions. The Now/Next/Explore framework on slide 12 lands the story.",
+    "framing": "Slide 1 identifies dataset, audience, and scope. Slide 10 explicitly notes missing fields and their analytical consequences. Repeated caveats about small samples (n=5, n=7) and missing cost/effort data show awareness of limitations. However, 'Senior Management & Key Stakeholders' is generic framing.",
+    "accuracy": "Multiple category figures don't match frozen reference (AI total $1.81M vs $2.36M; Education median $2,142 vs $2,435; Marketing median $1,586 vs $2,369.50). Top-10 concentration stated as 48% vs reference 49.6%. Anonymous count 130 vs 129. Zero-revenue count 197 vs 216. The systematic gap suggests the deck used a different column (possibly MRR rather than 30-day revenue) without clarifying the distinction.",
+    "visual": "Consistent color scheme (navy/teal/coral), clean bar charts with labeled values, good use of callout boxes. Slide 3's size-band chart is effective. Some slides are text-heavy (slides 10, 11) but remain readable. No decorative-only graphics. Chart choices are appropriate throughout.",
+    "ai_slop": "Minimal slop. 'Prepared for: Senior Management & Key Stakeholders' is generic consulting language. Template is uniform but not distractingly so. Content is substantive throughout with no filler slides."
+  },
+  "confidence": "high",
+  "total": 73,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 24942,
+    "output_tokens": 978
+  }
+}

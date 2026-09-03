@@ -1,0 +1,38 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 8,
+    "narrative": 8.5,
+    "framing": 7.5,
+    "accuracy": 5.5,
+    "visual": 6,
+    "bonus": 2
+  },
+  "what_worked": "Sharp investment-thesis framing with a genuine narrative arc from problem through evidence to recommendation.",
+  "fix_next": "The dataset tracks 30-day revenue, not 12-month; annualizing without stating so inflates every figure and undermines the core comparison.",
+  "verdict": "Strong thesis and narrative undercut by a likely 12x revenue inflation throughout.",
+  "flags": [
+    "possible-annualization-without-disclosure",
+    "small-sample-claims",
+    "unverifiable-country-counts",
+    "chart-labels-missing-values"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 2: Labels say '12-Month Revenue' but dataset is 30-day; $98/$2,279/$12,293 appear to be annualized without disclosure, making the headline '14x' gap plausible only under unstated assumptions. Slide 4: Claims 61% of Indian founders use Dodo Payments; reference shows 36/59=61% Dodo share, but the slide title says '61% can't use Stripe'—conflating Dodo usage with Stripe inability is imprecise (some may use other providers). Slide 5: Education median for India shown as $215k is almost certainly a single outlier (MagicSlides) treated as a median; with n likely ≤3 this is misleading. Slide 6: B2B/B2C median multiples claimed as 5.3x for India; reference data shows overall B2B/B2C multiples of ~2.3x, so the India-specific 5.3x is unverifiable and likely driven by n<15 without adequate caveat on the chart itself.",
+  "evidence": {
+    "insight": "Slide 3's revenue-funnel analysis (cross $10k/$100k/$500k thresholds) and slide 4's payment-infrastructure argument are genuinely original, going well beyond chart description to identify structural barriers. Slide 9's listing-rate vs. multiple comparison adds a liquidity dimension.",
+    "narrative": "Clear thesis on slide 1, escalating evidence through slides 2-9 (revenue gap → funnel → infrastructure → category → B2B/B2C → ARPU → top companies → exits), landing cleanly on slide 10 with a dual recommendation. Each slide title advances the argument.",
+    "framing": "Audience (Investment Committee) and question (where to deploy) are explicit on slide 1. Scope is India vs Europe with US benchmark. However, no slide addresses dataset limitations (241 missing countries, 288 missing audience_type), selection bias of the TrustMRR panel, or the 30-day vs annual revenue window.",
+    "accuracy": "Slide 2 labels axis '12-Month Revenue' but dataset contains 30-day figures—either the student annualized without disclosure or fabricated the timeframe. Europe count of 288 suspiciously matches the missing audience_type count (coincidence or error). India n=59 is not verifiable from reference data. Slide 5's Education $215k median for India is likely a single company. Slide 4's Dodo/Stripe numbers align with reference (36/50 Dodo Indian) but the causal framing overstates.",
+    "visual": "Clean, readable slides with consistent typography. Charts are simple and appropriate (horizontal bars, grouped bars, donut charts). However: slide 6 bar chart lacks value labels making B2B/B2C comparison hard to read; slide 3's stacked bar is confusing (three series overlaid without clear separation); decorative geometric shapes on slide 4 donut charts add no information. Gamma template is uniform but not distracting.",
+    "ai_slop": "Slide 4 has decorative geometric shapes (diamonds, circles, squiggles) around donut charts that serve no analytical purpose—classic AI template filler. Otherwise the content is substantive and specific, not generic."
+  },
+  "confidence": "medium",
+  "total": 73,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18826,
+    "output_tokens": 1006
+  }
+}

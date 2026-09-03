@@ -1,0 +1,38 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 8.5,
+    "accuracy": 6,
+    "visual": 7.5,
+    "bonus": 3
+  },
+  "what_worked": "Exceptional limitations slide, consistent missingness disclosure, and genuinely useful power-law framing with median-vs-mean discipline.",
+  "fix_next": "Several category medians are materially off from reference values (Education $2,142 vs $2,435; AI $446 vs $503); verify calculations against the frozen dataset.",
+  "verdict": "Strong, well-structured data story with notable accuracy gaps in category medians.",
+  "flags": [
+    "median-discrepancies",
+    "top10-share-understated",
+    "stripe-share-inflated",
+    "uses-mrr-not-30day-revenue"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 3: Top-10 share claimed ~81.8% but reference is 49.6% for 30-day revenue (deck may use MRR, but the claim 'top 10 earn more than the other 990 combined' is not supported by the 49.6% benchmark). Slide 6: Education median $2,142 vs reference $2,435; AI median $446 vs reference $503; Marketing median $1,586 vs reference $2,369.50; Analytics median $1,294 vs reference $419 (large discrepancy, opposite direction). Slide 8: Stripe share stated as 64.4% of companies but reference is 636/1000=63.6%; Stripe revenue $11.8M MRR vs reference $13.5M combined revenue. Slide 1: '$133.8M revenue last 12 months' and '500,597 active subscriptions' are unverifiable against the frozen reference but plausible as dataset fields.",
+  "evidence": {
+    "insight": "Slide 5 growth-by-band analysis is genuinely original; slide 10 revenue-multiple-by-price-band adds decision-useful acquisition intelligence; slide 8 domain-rating vs social following comparison is a non-obvious finding.",
+    "narrative": "Clear arc from 'what is this data' (slide 2) → power law (3-4) → growth dynamics (5) → category/model/distribution (6-8-9) → marketplace (10) → limitations (11) → synthesis (12). Each finding builds on the prior.",
+    "framing": "Slide 2 explicitly warns about field coverage with percentages; slide 11 dedicates a full page to four limitations including survivorship bias and single-window noise. Audience is implicitly founders/investors, clear to a cold reader.",
+    "accuracy": "Multiple category medians diverge materially from reference (Analytics $1,294 vs $419 is a 3× overstatement). Top-10 revenue share claim of 81.8% appears to use MRR not 30-day revenue; the subtitle 'top 10 earn more than the other 990 combined' is misleading against the 49.6% reference. Education median off by ~$293. Stripe company share and revenue figures show minor discrepancies.",
+    "visual": "Consistent navy/coral palette throughout; log-scale chart on slide 8 is well-chosen; bar charts are clean with direct labels; side-panel callouts add interpretation without clutter. Slight template sameness across findings but functional, not decorative.",
+    "ai_slop": "Minimal slop. The deck avoids generic filler and consulting language. Each slide has specific numbers and interpretive text. The visual template is repetitive but purposeful rather than decorative."
+  },
+  "confidence": "high",
+  "total": 78,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 23516,
+    "output_tokens": 901
+  }
+}

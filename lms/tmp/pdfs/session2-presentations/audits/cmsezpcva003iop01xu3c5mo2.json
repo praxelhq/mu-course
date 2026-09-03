@@ -1,0 +1,43 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 0.5,
+    "narrative": 1.5,
+    "framing": 0.5,
+    "accuracy": 0.5,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "Consistent dark-theme template with clean card layouts and readable typography throughout the deck.",
+  "fix_next": "Start over using the actual assigned dataset—every claim here is fabricated or from unrelated industry sources.",
+  "verdict": "Generic AI-generated e-commerce deck with zero connection to the assigned dataset.",
+  "flags": [
+    "wrong-dataset",
+    "fabricated-statistics",
+    "ai-slop",
+    "no-data-analysis",
+    "broken-image",
+    "no-source-citations",
+    "decorative-charts"
+  ],
+  "factual_error_count": 12,
+  "factual_error_detail": "Slides 2-9: Every statistic (65% mobile, 68% mobile traffic, 2.4x desktop order value, 48/32/20 channel split, 52/28/14/6 payment split, 41/33/26 return reasons, -35% AR returns, 48% cart abandonment, 24% forced-account deterrence) cannot be traced to the assigned dataset, which contains company revenue, payment providers (Stripe/RevenueCat/Dodo), categories (AI/Marketing/SaaS etc.), TLDs, and audience types. No dataset field is ever referenced. Slide 3 donut chart is decorative with invented percentages. Slide 7 has a broken image placeholder showing alt text.",
+  "evidence": {
+    "insight": "Zero analytical findings from the 1,000-row dataset. No mention of categories, providers, revenue distribution, TLDs, or any actual column. All claims are generic e-commerce platitudes.",
+    "narrative": "Follows a coherent consulting template arc (overview→channels→behavior→tech→friction→recommendations) but the sequence is entirely untethered from any data analysis, so the narrative is hollow.",
+    "framing": "Slide 1 labels this 'Q3 Analysis' and 'Executive Data Insight Report' but never identifies the dataset, sample size (1,000 rows), fields, or population. A cold reader has no idea what data was analyzed.",
+    "accuracy": "Every percentage and multiplier across slides 2-9 appears fabricated or sourced from unrelated industry reports without citation. The assigned dataset concerns startup revenue by provider/category/TLD—none of which appear anywhere.",
+    "visual": "Template is polished and consistent. However, slide 7 shows a broken image placeholder with visible alt text. Slide 3 donut chart is decorative with no data provenance. No real data visualization exists in the deck.",
+    "ai_slop": "Entire deck reads as AI-generated generic e-commerce content. Slide 2 buzzwords (Mobile First, Social Selling, Retention Focus), slide 8 generic buyer funnel, slide 7 broken stock image placeholder all confirm auto-generation without dataset engagement."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 1.0 to 0.5 and framing from 1.0 to 0.5 because there is literally zero engagement with the assigned dataset—not a single field or finding is referenced. The deck is entirely fabricated generic content. Kept other scores aligned with preliminary.",
+  "total": 12,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 18849,
+    "output_tokens": 818
+  }
+}

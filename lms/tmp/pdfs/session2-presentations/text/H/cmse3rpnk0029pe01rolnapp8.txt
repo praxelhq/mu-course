@@ -1,0 +1,227 @@
+   TRUSTMRR: A LOOK INSIDE
+   1,000 BOOTSTRAPPED STARTUPS
+   Revenue, growth, and market patterns across a public dataset of self-reported SaaS and indie
+   startup metrics.
+
+
+   Masters' Union · Session 3 Dataset · Frozen 30 Jul 2026
+
+
+
+
+Confidential — Analysis Draft                                                                     TrustMRR Dataset · 1,000 Startups
+   Dataset Snapshot
+   1,000 self-reported startups spanning 65 countries and 29 categories.
+
+
+
+
+        1,000                              $13.47M                         $334M                     29
+        Startups tracked                   Combined MRR                    All-time revenue          Categories tracked
+
+        Across 65 countries                Median just $282                Self-reported, all time   AI leads at 27% of listings
+
+
+
+
+Analysis · Dataset Snapshot                                                                              TrustMRR Dataset · 1,000 Startups
+   Geographic Footprint
+   The US anchors the dataset, followed by France, India, and the UK.
+
+
+
+
+         258
+
+
+                                                                                  241 unlisted
+                                                                                  Nearly a quarter of startups omit country —
+                                                                                  likely stealth or unverified listings.
+
+
+
+
+                       79
+                            59
+                                    50                                            US carries the value
+                                              29       24        20     19   17   US-based startups hold $7.5M of the $13.47M
+                                                                                  total MRR — 56% from 26% of listings.
+
+         US            FR   IN      GB       CA        DE        BR     HK   AU
+
+
+
+Analysis · Geography                                                                                       TrustMRR Dataset · 1,000 Startups
+   Category Landscape
+   AI dominates listings, but its share of revenue is far more modest.
+
+
+
+    Health & Fitness           34
+
+
+   Content Creation            36
+                                                                               AI: 27% of listings,
+            Dev Tools           37                                             only 13% of MRR
+
+             Marketing              42
+                                                                               197 startups self-identify as AI — more
+                                                                               than the next three categories combined —
+          Productivity                   49
+                                                                               but they generate just $1.8M of the
+                                                                               $13.47M total MRR, well below their share
+         Mobile Apps                     52                                    of listings.
+
+
+                   SaaS                       66
+                                                                               E-comm & Analytics punch above their
+                        AI                                               197   weight: fewer listings, higher average MRR
+                                                                               per startup.
+
+
+
+
+Analysis · Categories                                                                                TrustMRR Dataset · 1,000 Startups
+   Top Performers by MRR
+   A handful of standouts dwarf the rest of the dataset.
+
+
+
+   Startup                                      Country               Category                                       MRR   All-time Rev.   Growth (30d)
+
+   Stan                                         US                    —                                          $3.57M         $76.6M            +0.4%
+
+   Stealth Company                              —                     —                                          $747.1K         $0.6M           -74.3%
+
+   GojiberryAI                                  US                    AI                                         $494.7K         $1.5M           +23.6%
+
+   Stealth Company                              —                     —                                          $364.1K        $11.3M            +1.0%
+
+   Rezi                                         US                    AI                                         $259.7K         $9.7M             -4.9%
+
+   Kibu                                         US                    Education                                  $234.3K         $3.1M           +52.8%
+
+   Cometly                                      US                    Analytics                                  $207.6K         $9.4M            +3.0%
+
+   1Lookup                                      US                    SaaS                                       $207.1K         $4.2M             -7.5%
+
+
+   Note: "Stealth Company" entries are anonymized listings from the source dataset, not a single repeated company.
+Analysis · Top Performers                                                                                                                     TrustMRR Dataset · 1,000 Startups
+   Growth Dynamics
+   Most startups are flat month over month — growth is concentrated in a fast-moving minority.
+
+
+                                                                      FA S TES T 3 0 -D A Y MOVERS ( MRR ≥ $ 5 K)
+
+
+
+                                                                         Hong Xuan Kow                              AI                       +458.6%
+                       24%
+                                               27%
+
+                                                                         Kickly – Pronos IA                         Games                    +384.5%
+
+
+
+                                                                         LLM Gateway                                AI                       +239.5%
+
+
+
+                                                                         SetSmart                                   SaaS                     +100.0%
+                               49%
+
+
+                                                                         overrank SEO                               Marketing                 +91.2%
+                    Growing   Flat / no data   Shrinking
+
+
+
+
+Analysis · Growth                                                                                                               TrustMRR Dataset · 1,000 Startups
+ B2B vs. B2C                                           Average MRR per startup, by audience type
+ Economics                                   $13,150
+
+
+
+ B2B startups are fewer in number but
+ monetize far more per company — a
+ classic enterprise-value-density pattern.
+
+                                                                          $6,042
+                                                                                                        $5,102
+
+
+
+
+                                              B2B                          Both                          B2C
+
+
+
+
+             255 B2B · 401 B2C · 56 both      B2B companies earn 2.6x more MRR on average than B2C peers — despite
+                                              representing 36% fewer listings.
+
+
+
+
+Analysis · B2B vs B2C                                                                                 TrustMRR Dataset · 1,000 Startups
+   Payment Rails
+   Stripe is the default — used by nearly two-thirds of listed startups.
+
+
+
+             636
+
+
+
+
+                                                                                              63.6%
+                                                                                              of startups run billing on Stripe alone
+
+
+
+                                                                                              RevenueCat is the clear #2, likely reflecting
+                              189
+                                                                                              mobile-app subscription billing rather than
+                                                                                              web SaaS — consistent with Mobile Apps
+                                                                                              being the third-largest category.
+
+                                             50
+                                                         36                25        17
+
+            Stripe         RevenueCat   Dodo Payments   Polar     Lemon Squeezy   Superwall
+
+
+
+Analysis · Payment Rails                                                                                             TrustMRR Dataset · 1,000 Startups
+   Marketplace Signal
+   About one in four listed startups is currently for sale.
+
+
+
+
+         262                                              $332K                     0.0x–2.9x
+         Startups on sale                                 Avg. asking price         Revenue multiple range
+
+         26.2% of the dataset                             Across on-sale listings   Most cluster under 2.5x
+
+
+
+
+Analysis · Marketplace                                                                                        TrustMRR Dataset · 1,000 Startups
+                                                            THE HEADLINE TAKEAWAY
+
+
+
+                                     Top 10 startups = 48%
+                                           of all MRR
+                          Just 1% of listed startups capture nearly half of the dataset's combined MRR — a steep power-law curve
+                           typical of bootstrapped and indie SaaS ecosystems, where a few breakout winners dwarf a long tail of
+                                                                     early-stage revenue.
+
+
+
+
+Analysis · Key Takeaway                                                                                                       TrustMRR Dataset · 1,000 Startups
+

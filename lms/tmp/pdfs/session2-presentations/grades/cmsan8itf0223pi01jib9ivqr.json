@@ -1,0 +1,39 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 4,
+    "narrative": 5,
+    "framing": 4.5,
+    "accuracy": 3.5,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Power-law framing with median-vs-mean contrast is a genuinely useful analytical move.",
+  "fix_next": "Multiple key figures are wrong (top-10 share, category revenue rankings, $334M lifetime claim); verify every number against the actual dataset before presenting.",
+  "verdict": "Polished marketing brochure with several material factual errors and shallow analysis.",
+  "flags": [
+    "factual-errors-multiple",
+    "promotional-tone",
+    "missing-limitations",
+    "no-missingness-disclosure",
+    "lifetime-vs-30day-confusion"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1/4: Top-10 revenue share stated as 61.1% — dataset shows 49.6%. Slide 1/3: '$334M combined lifetime revenue' is unverifiable from the dataset (30-day total is ~$15.6M); presented as if from the data without sourcing. Slide 5: E-commerce shown as highest revenue share (29.6%) and Marketing second (18.3%) — dataset shows AI is highest total revenue ($2.36M), E-comm is third ($1.11M), Marketing second ($1.32M); the percentages and ranking are wrong. Slide 5: Claims 'nearly 1 in 5 startups build in AI' — 197/726 categorized = 27%, or 197/1000 = 19.7%; denominator ambiguity not addressed. Slide 6: AI growth 75.8% MoM and platform average 41.9% are unverifiable claims presented without methodology or denominator clarity.",
+  "evidence": {
+    "insight": "Slide 4 power-law observation and median ($3,620) vs. outlier contrast is the strongest analytical point. Slide 7 payback-period interpretation of 2.3x multiple adds modest decision-usefulness. But overall the deck stays at the level of describing summary stats rather than generating non-obvious insights.",
+    "narrative": "There is a loose arc: overview → concentration → categories → growth → marketplace → summary. It flows but reads more like a marketing overview than a thesis-driven data story. The closing slide (8) simply restates earlier points rather than synthesizing.",
+    "framing": "Slide 2 explains the data source well. However, no mention of missingness (274 missing categories, 241 missing countries, 288 missing audience_type), no discussion of survivorship bias or selection bias in a voluntary listing platform, and no scope/limitations slide. The deck conflates lifetime revenue (unverifiable $334M) with 30-day revenue without clarifying which metric drives which claim.",
+    "accuracy": "Top-10 share is 61.1% vs. actual 49.6% — a major error repeated on slides 1, 4, and 8. Category revenue rankings on slide 5 contradict the dataset (AI is highest, not E-commerce). The $334M lifetime figure cannot be verified from the provided dataset. The 344+305+337=986 growth breakdown on slide 6 doesn't account for the remaining 14 companies or explain methodology.",
+    "visual": "Consistent teal/dark color scheme, clean typography, good use of whitespace. Donut chart on slide 4 is appropriate. Bar chart on slide 5 is clear. Slide 6 bar chart uses color coding (green/light/red) effectively. However, the deck is heavily template-driven with repetitive card layouts (slides 1, 3, 7 all use near-identical 3-4 stat card formats). No data-dense visualizations; everything is big-number callouts.",
+    "ai_slop": "Repetitive stat-card template used on at least 4 of 8 slides. Promotional language throughout ('the trust the name promises,' 'Explore the live, hourly-verified data'). The deck reads more like a TrustMRR marketing pitch than an analytical data story. Decorative circle graphics add nothing."
+  },
+  "confidence": "high",
+  "total": 45,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15319,
+    "output_tokens": 1017
+  }
+}

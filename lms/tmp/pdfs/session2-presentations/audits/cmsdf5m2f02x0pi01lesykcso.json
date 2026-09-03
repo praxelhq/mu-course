@@ -1,0 +1,41 @@
+{
+  "slide_count": 16,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 8,
+    "accuracy": 4.5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Data-quality finding on slide 6 honestly scopes every downstream category claim to the tagged 44%.",
+  "fix_next": "Reconcile the $13.47M vs $15.6M figures—one revenue field exists—and verify that 26.5% is 129 anonymous listings, not one account.",
+  "verdict": "Strong strategic storytelling undermined by a wrong headline revenue figure and misattributed concentration.",
+  "flags": [
+    "revenue-definition-confusion",
+    "anonymous-cohort-misattributed-as-single-account",
+    "category-totals-systematically-low",
+    "median-values-diverge-from-reference",
+    "top10-share-rounded-down"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 2/3: $13.47M 'total MRR' is Stripe-only revenue, not total $15.6M; the 'acceleration' narrative is fabricated from one field. Slide 2/5/6: '26.5% one account (Stan)' actually represents 129 anonymous listings, not a single whale. Slide 5: top-10 share stated 48.0% vs reference 49.6%. Slide 7: AI $1,806K vs ref $2,357K; Marketing $444K vs ref $1,317K; E-comm $396K vs ref $1,112K—systematically ~40-65% low. Slide 8: AI median $446 vs ref $503; Marketing median $1,586 vs ref $2,370.",
+  "evidence": {
+    "insight": "Slide 6 data-quality scoping is genuinely original; slide 9 portfolio matrix and slide 13 white-space analysis synthesize volume vs. value vs. growth across categories; slide 15 prioritization framework ties findings to actionable roadmap.",
+    "narrative": "Five-finding thesis on slide 2 carried coherently through concentration, data quality, category, B2B/B2C, infrastructure, risk, and recommendations; each slide builds on prior with clear section labels and a strong landing on slides 15-16.",
+    "framing": "Slide 1 states audience and scope; slide 6 explicitly warns that category analysis covers only 44% of MRR; slide 14 acknowledges data incompleteness; slide 4 flags outlier caution on growth percentages.",
+    "accuracy": "Headline revenue ($13.47M) equals Stripe-only revenue ($13,526,762), not total ($15,596,345); the 'acceleration' bar chart compares apples to oranges. The 26.5% 'single account' is actually 129 anonymous listings misattributed as one entity. Category totals on slide 7 are 35-65% below reference values. Multiple medians diverge.",
+    "visual": "Consistent dark theme with clear hierarchy and section labels; charts are annotated with data labels; bubble chart on slide 9 has overlapping labels; pie chart on slide 12 is acceptable; y-axis truncation on slide 9 is a minor issue; overall professional and restrained.",
+    "ai_slop": "Consulting frameworks (BCG matrix, effort/value) are formulaic but grounded in actual data points; language is polished but not vacuous; no decorative-only graphics detected."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.5 to 4.5: the $13.47M headline figure is Stripe-only revenue misrepresented as total MRR, fabricating an acceleration narrative; the 26.5% 'single account' conflates 129 anonymous listings into one entity. Reduced bonus from 2 to 1 because cascading errors undermine the otherwise strong strategic framing.",
+  "total": 71,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 30588,
+    "output_tokens": 2176
+  }
+}

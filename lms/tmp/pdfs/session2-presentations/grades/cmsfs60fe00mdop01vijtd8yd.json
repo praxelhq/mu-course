@@ -1,0 +1,38 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 6.5,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Strong thesis-driven narrative arc with a clear audience, purposeful sequencing, and concrete deal examples.",
+  "fix_next": "Revenue figures ($334M, $134M, $162M) appear fabricated from the dataset; the 30-day total is only ~$15.6M, undermining the entire thesis.",
+  "verdict": "Polished pitch deck with a coherent thesis, but headline revenue figures are wildly inflated.",
+  "flags": [
+    "inflated-revenue-figures",
+    "missing-data-not-acknowledged",
+    "unverifiable-multiples",
+    "pitch-deck-not-data-story"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 3: $334M cumulative, $134M trailing-12-month, $162M implied ARR are not derivable from the dataset (30-day total is ~$15.6M; even annualized that's ~$187M, but the dataset only has 30-day revenue, not cumulative or TTM fields, so these figures appear fabricated or sourced externally without disclosure). Slide 3: Median trailing-12-month revenue stated as $3,069 — the dataset provides 30-day revenue, not TTM; this conflates metrics. Slide 5: 2.3x median revenue multiple and 4.2x blended multiple are unverifiable from the provided dataset fields. Slide 7: Country counts (US 258, France 79, India 59) cannot be verified against reference (241 rows missing country); US should have far fewer non-missing entries if 241 are missing. Slide 3: histogram bins sum to 1,000 but the revenue field used is unclear given the dataset only contains 30-day revenue.",
+  "evidence": {
+    "insight": "Slide 5 compares internal multiples to external SaaS M&A benchmarks — a genuinely useful framing for an investor audience. Slide 8 names six specific deals with multiples. However, insight stays at the level of 'cheap deals exist' without exploring why median revenue is so low, churn risk, or category-level revenue quality differences.",
+    "narrative": "Clear five-act structure: thesis (S2) → market scale (S3) → deal flow (S4) → arbitrage (S5) → categories (S6) → geography (S7) → examples (S8) → playbook (S9) → timing (S10) → CTA (S11). Each slide advances the argument. The landing is a fundraising ask, which is coherent with the framing.",
+    "framing": "Audience (potential fund LPs/partners) and question (should you invest in micro-SaaS acquisitions?) are clear from slide 1. However, no limitations, risks, survivorship bias, or data-quality caveats are mentioned. The 274 missing category values and 241 missing country values are never disclosed.",
+    "accuracy": "The headline revenue figures on slide 3 ($334M, $134M, $162M) are the most serious problem — the dataset's total 30-day revenue is ~$15.6M, and there is no TTM or cumulative field in the frozen reference. The 2.3x multiple is stated without showing the calculation. Country counts on slide 7 don't account for 241 missing country values. The 109 companies at $0 on slide 3 is plausible (216 zero-revenue in reference, but if using a different revenue field the discrepancy is unexplained).",
+    "visual": "Consistent navy/gold palette, clean typography, good hierarchy with section labels. Bar charts are simple and legible. Slide 8 table is well-formatted. No chartjunk. Slight monotony across slides but restrained and professional. The histogram on slide 3 and bar charts on slides 4, 6, 7 are appropriate chart types.",
+    "ai_slop": "Slide 9 playbook (Source → Acquire → Operate → Compound) reads as generic PE consulting language. Slide 10 'Why Now' is standard pitch-deck filler. Overall the deck reads more like a fundraising pitch than a data story, which limits analytical depth."
+  },
+  "confidence": "medium",
+  "total": 64,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 21076,
+    "output_tokens": 1063
+  }
+}

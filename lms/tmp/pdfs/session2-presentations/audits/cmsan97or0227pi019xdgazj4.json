@@ -1,0 +1,46 @@
+{
+  "slide_count": 29,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 4.5,
+    "accuracy": 2,
+    "visual": 6.5,
+    "bonus": 0
+  },
+  "what_worked": "Anonymized-cohort governance risk and billing-provider-as-maturity-proxy are genuinely original analytical angles.",
+  "fix_next": "Anchor every claim to the actual 1,000-row dataset; the entire quantitative foundation is built on a hallucinated 8,782-row file.",
+  "verdict": "Strong consulting narrative built entirely on fabricated numbers; accuracy is fatally compromised.",
+  "flags": [
+    "wrong-dataset-size",
+    "fabricated-row-count",
+    "total-revenue-wrong",
+    "category-counts-wrong",
+    "anonymous-count-wrong",
+    "zero-revenue-count-wrong",
+    "country-count-wrong",
+    "category-revenue-rankings-wrong",
+    "consulting-persona-without-basis",
+    "llm-hallucinated-dataset"
+  ],
+  "factual_error_count": 14,
+  "factual_error_detail": "Slide 1-2: 8,782 companies claimed vs actual 1,000 rows. Slide 1: $33.9M total revenue vs actual $15.6M. Slide 1: 117 countries vs actual far fewer (241 missing). Slide 4: 51% at $0 (implies ~4,481) vs actual 216 zero-revenue rows (21.6%). Slide 7: 560 anonymized companies vs actual 129. Slide 7: anonymized share 50% of revenue vs actual 26.5%. Slide 14: AI 751 companies vs actual 197; Productivity 237 vs not in reference top categories; SaaS 295 vs actual 66. Slide 13: Productivity shown as #1 category at $3.05M; actual top is AI at $2.36M. Slide 14: Marketing 168 companies vs actual 42. Slide 6: top-10% share 97% vs reference top-10 share 49.6%. Slide 15: US 1,577 companies — actual US count far smaller. Slide 12: top company $7.14M — not verifiable against reference total of $15.6M for entire dataset. Slide 2: 31 categories claimed vs reference shows ~11 named categories. Slide 17: 59% Stripe — reference shows 636/1000=63.6%.",
+  "evidence": {
+    "insight": "Billing-provider maturity as a screening proxy (slide 24), anonymized-cohort governance gap (slide 7), follower-revenue disconnect as upsell list (slide 21) are decision-useful angles that go beyond surface description, though all rest on wrong denominators.",
+    "narrative": "Clear three-act structure: diagnose concentration → expose blind spots → recommend triage. Consistent section numbering, purposeful sequencing from health through SWOT to next steps, and a memorable closing line on slide 29.",
+    "framing": "Slide 2 explicitly addresses methodology and data confidence tiers, which is good practice. However, the entire framing is built on the false claim of 8,782 rows when the dataset has 1,000. The 'board-level consulting review' persona is adopted without any grounding in the actual assignment. A cold reader would be misled about the dataset's scale.",
+    "accuracy": "Virtually every quantitative claim is wrong by large multiples. Row count inflated 8.8x, total revenue inflated ~2.2x, zero-revenue count inflated ~20x, anonymous count inflated ~4.3x, category company counts off 3-10x, category revenue rankings reshuffled. The 97% top-decile concentration claim contradicts the reference 49.6% top-10 share. Internal consistency of the fabricated numbers does not redeem external inaccuracy.",
+    "visual": "Professional, consistent dark-navy template with good hierarchy. Pareto curve (slide 6), bubble chart (slide 9), correlation heatmap (slide 22), and bar charts (slide 15) are well-chosen and labeled. Treemap (slide 13) partially illegible for small categories. Risk matrix (slide 20) has overlapping text. Overall restrained and readable.",
+    "ai_slop": "Heavy consulting-template language throughout ('board-level assessment,' 'capital-allocation opportunity,' 'option book,' 'de-risk the core'). The fabrication of an internally consistent but externally wrong 8,782-row dataset with precise-looking statistics is characteristic of LLM confabulation. SWOT slide is formulaic."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 2.5 to 2.0: upon closer review, at least 14 distinct factual errors identified, with the foundational dataset size wrong by 8.8x — this is not rounding error but wholesale fabrication. Lowered framing from 5 to 4.5: the methodology slide's claim of a larger dataset actively misleads rather than contextualizes. Removed bonus point: while the consulting framing is polished, the work cannot merit bonus when its entire quantitative foundation is hallucinated.",
+  "total": 52,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 55362,
+    "output_tokens": 1263
+  }
+}

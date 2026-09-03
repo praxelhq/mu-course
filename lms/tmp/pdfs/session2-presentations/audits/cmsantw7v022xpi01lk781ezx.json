@@ -1,0 +1,44 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 5,
+    "narrative": 5.5,
+    "framing": 4,
+    "accuracy": 5,
+    "visual": 4.5,
+    "bonus": 0
+  },
+  "what_worked": "Contrasting subscriptions r=0.80 vs followers r=0.02 gives a clear, data-grounded takeaway for the audience.",
+  "fix_next": "Add scatter plots for the two correlation claims and a limitations slide disclosing missingness rates across key fields.",
+  "verdict": "Coherent thesis but too text-heavy, chart-sparse, and missing critical data-quality disclosure.",
+  "flags": [
+    "text-heavy-low-chart-count",
+    "no-missingness-disclosure",
+    "no-limitations-slide",
+    "empty-bullet-points",
+    "denominator-error-category-slide",
+    "survivorship-claim-unjustified",
+    "no-scatter-for-correlations",
+    "template-card-filler"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 9: '1 in 5 startups' uses 197/1000 but category is known for only ~726 rows, making AI share ~27%, not ~20%. Slide 9: '14% of AI startups post $0 revenue vs 22% dataset-wide' — dataset-wide zero-revenue is 216/1000=21.6% but the 14% AI figure is unverifiable and the denominator mismatch (726 vs 1000) undermines the comparison. Slide 3: 'not a survivorship-biased sample' is asserted without evidence and is questionable given self-reported listing data.",
+  "evidence": {
+    "insight": "Subscriptions-vs-followers contrast (slides 4-5) and market inefficiency anecdotes (slide 10) are the strongest original points, but no category-level revenue analysis, no provider breakdown, no anonymous-vs-named split — depth stays at surface correlations.",
+    "narrative": "Clear arc from drivers → non-drivers → distribution → monetization → valuation → anomalies → summary, tied by 'conversion over attention' thesis. However, the four questions on slide 2 are never explicitly revisited, and the sequence reads as a numbered list rather than a building argument with synthesis.",
+    "framing": "Slide 3 describes the dataset but omits all missingness (241 country, 274 category, 288 audience_type missing). No limitations slide. The survivorship-bias disclaimer is unsupported. A cold reader cannot judge data quality or scope constraints.",
+    "accuracy": "Slide 6 zero-revenue 21.6% matches 216/1000 — correct. Slide 8 median 2.3× is consistent with reference B2B/B2C medians. Slide 5 r=0.02 is plausible for followers-revenue but unspecified which revenue field. Slide 4 r=0.80 is unverifiable against reference but plausible. Slide 9 denominator errors noted above. Slide 4 says 'Subscriptions Drive Revenue' — causal language for a correlation.",
+    "visual": "Only two real charts across 12 slides (histogram slide 6, horizontal bar slide 9). Correlation claims on slides 4-5 lack scatter plots. Slide 8 uses a decorative dot-on-line that is not a real visualization. Multiple slides have orphan empty bullet points. Consistent color palette but heavy reliance on text cards and icon grids rather than data graphics.",
+    "ai_slop": "Empty bullet points on slides 4, 6, 8, 9 are template artifacts. Three-card layouts on slides 7 and 10 are generic consulting templates. Closing quote on slide 12 is motivational filler. Decorative icons on slide 2 add no analytical value."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 4.5→4.0 for complete absence of missingness/limitations disclosure and unjustified survivorship claim. Lowered visual from 5→4.5 for only two real charts in 12 slides with no scatter plots despite two correlation claims. Lowered accuracy from 5.5→5.0 for denominator error on slide 9 and causal language on slide 4. Other scores held or confirmed.",
+  "total": 48,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 22372,
+    "output_tokens": 1062
+  }
+}

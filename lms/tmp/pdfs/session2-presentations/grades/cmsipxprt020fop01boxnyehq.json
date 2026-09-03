@@ -1,0 +1,39 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 4,
+    "narrative": 5,
+    "framing": 5.5,
+    "accuracy": 5,
+    "visual": 6.5,
+    "bonus": 0
+  },
+  "what_worked": "Power-law concentration slide is well-framed with clear mean-median contrast and supporting histogram.",
+  "fix_next": "Deck stays at surface-level description—add median-vs-mean per category, provider analysis, B2B/B2C splits, or missingness discussion to generate real insight.",
+  "verdict": "Clean but shallow tour of top-line stats; lacks analytical depth.",
+  "flags": [
+    "shallow-insight",
+    "missing-data-not-discussed",
+    "no-provider-analysis",
+    "no-audience-type-analysis",
+    "revenue-figure-mismatch"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 2: States $13.5M combined MRR; the dataset's total 30-day revenue is $15.6M—unclear what denominator or field produced $13.5M. Slide 3: Top-10 share stated as 48%; reference is 49.6%. Slide 5: AI category revenue shown as $1.81M; reference total is $2.36M (likely MRR vs 30-day mismatch but no explanation given, and other categories also diverge significantly—e.g., Marketing shown $0.44M vs reference $1.32M).",
+  "evidence": {
+    "insight": "Slides 3 and 5 describe concentration and category size but never compare medians across categories, explore why AI leads despite low median, or examine provider infrastructure. No non-obvious finding is surfaced.",
+    "narrative": "Slides follow a logical sequence (overview → concentration → categories → geography → M&A → takeaways), but the arc is a descriptive tour rather than building toward a thesis or recommendation.",
+    "framing": "Slide 1 sets dataset scope and date clearly. However, 274 missing categories and 241 missing countries are never acknowledged, nor is the 216 zero-revenue cohort discussed.",
+    "accuracy": "Total revenue figure ($13.5M) doesn't match reference ($15.6M). Category revenues are systematically lower than reference totals with no explanation. Top-10 share rounded down from 49.6% to 48%. The 48× mean/median ratio is internally consistent with stated figures but those figures themselves are off.",
+    "visual": "Consistent dark-green/gold palette, clean card layouts, legible bar charts with direct labels. Histogram on slide 3 is effective. However, every slide uses the same card-and-icon template, creating visual sameness. No annotations or callouts on charts.",
+    "ai_slop": "Moderate template repetition with icon-in-circle cards on nearly every slide. Takeaway slide (8) repeats earlier slides verbatim. Trophy icon on slide 4 is decorative filler."
+  },
+  "confidence": "high",
+  "total": 52,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15385,
+    "output_tokens": 731
+  }
+}

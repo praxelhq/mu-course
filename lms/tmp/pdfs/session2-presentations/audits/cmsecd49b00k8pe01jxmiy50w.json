@@ -1,0 +1,43 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 5,
+    "narrative": 7,
+    "framing": 5.5,
+    "accuracy": 3.5,
+    "visual": 6,
+    "bonus": 0
+  },
+  "what_worked": "Four-act myth-to-reality arc is coherent, and the follower-vs-subscriber contrast is well-structured.",
+  "fix_next": "Reconcile Slide 4 revenue figures with the actual dataset column; explain or remove the apparent 12-month annualization that produces phantom $120M.",
+  "verdict": "Clean narrative arc undermined by fabricated-looking revenue figures and shallow quantitative support.",
+  "flags": [
+    "fabricated-looking-revenue-figures",
+    "provider-counts-wrong",
+    "undisclosed-time-horizon-slide4",
+    "no-correlation-coefficient-reported",
+    "missing-audience-type-missingness-slide5",
+    "pie-charts-for-many-categories",
+    "pricing-insight-asserted-not-shown"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 4: Stripe count 644 vs frozen 636; RevenueCat 191 vs 189; Stripe revenue $120.5M vs frozen $13.5M (off by ~9×, no column or method justifies this); total implied ~$134M vs frozen $15.6M. Slide 4: Superwall listed with 19 startups—frozen reference shows Dodo at 50, not Superwall at 19, suggesting provider grouping errors. Slide 5: audience-type percentages computed without disclosing 288 missing rows (denominator ~712 not stated).",
+  "evidence": {
+    "insight": "Follower-revenue debunk is directionally correct but never quantified (no r value, no R²). Subscriber-revenue link asserted as 'strong' with no statistic. Pricing teased but never explored with data. No category-level median analysis, no anonymity revenue share, no TLD finding—many accessible insights left on the table.",
+    "narrative": "Myth → Real Driver → Concentration → Market Shape → Closing is a logical, purposeful sequence. 'WHAT THIS MEANS' boxes provide consistent synthesis. Closing slide recaps without new insight but lands the thesis.",
+    "framing": "Title slide names dataset and freeze date. Slide 6 footnote acknowledges country/category missingness. However, Slide 4 never explains the 12-month revenue column or how $120.5M was derived. Slide 5 omits audience_type missingness (288 rows). No scope/limitations slide for a cold reader.",
+    "accuracy": "Slide 4 is seriously problematic: Stripe revenue $120.5M is roughly 9× the frozen total revenue of $15.6M for the entire dataset—this figure appears fabricated or derived from an undisclosed annualization with no explanation. Provider counts are wrong (644 vs 636, 191 vs 189). Slide 2 'virtually no connection' is directionally consistent with r≈0.025 but no statistic is given. Slide 5 category shares roughly check out against ~726 denominator but audience-type denominator is unstated.",
+    "visual": "Consistent navy/coral palette, clean layout. Log-scale scatters on Slides 2–3 are appropriate. Slide 2 triple scatter is too small to read. Slide 5 uses three pie charts for 10+ slices—hard to compare. Slide 4 bar chart is clear and well-labeled.",
+    "ai_slop": "Formulaic 'WHAT THIS MEANS' boxes repeated on every slide feel template-driven but contain substantive content. No decorative filler graphics. Language is measured, not inflated."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 4.5 to 3.5: Slide 4 revenue figures are off by an order of magnitude with no disclosed methodology, constituting a serious data fidelity failure. Lowered insight from 5.5 to 5.0: no quantitative coefficients reported for the central claims. Removed bonus point: work is competent but does not exceed rubric expectations. Lowered framing from 6 to 5.5 for undisclosed denominators on Slide 5.",
+  "total": 54,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 12157,
+    "output_tokens": 1054
+  }
+}

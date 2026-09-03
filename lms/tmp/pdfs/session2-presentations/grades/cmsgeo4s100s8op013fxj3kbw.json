@@ -1,0 +1,38 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 5.5,
+    "visual": 6,
+    "bonus": 2
+  },
+  "what_worked": "Strong funnel narrative from 1,000 companies down to 6 actionable targets with explicit screening criteria.",
+  "fix_next": "Revenue figures on slide 3 appear fabricated (AI shown as $18.4M vs. actual $2.36M); verify all sector totals against the dataset before presenting.",
+  "verdict": "Well-structured investment screen undermined by inflated revenue figures.",
+  "flags": [
+    "inflated-revenue-figures",
+    "possible-fabricated-chart",
+    "revenue-metric-confusion",
+    "template-repetition"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 2: '891 with 12M revenue available' — dataset shows 784 non-zero revenue (1000-216=784), not 891; the 109 figure is unexplained. Slide 3: AI revenue shown as $18.4M — actual is $2.36M; Marketing $14.6M vs actual $1.32M; E-comm $12M vs actual $1.11M. These are roughly 8x inflated, suggesting 12-month extrapolation or fabrication. Slide 3: '24.5% AI share of tagged-sector revenue' — actual AI share of categorized revenue is ~31% ($2.36M/$7.50M). Slide 2: Claims '29 tagged industries' but reference shows 12 named categories.",
+  "evidence": {
+    "insight": "Slides 4-9 build a genuine acquisition-screening funnel: sector selection → target list → B2B/B2C split → domain authority → pricing power → valuation multiples → shortlist. The word cloud on slide 5 adds qualitative texture about competitive crowding. The final shortlist of 6 with explicit criteria is decision-useful.",
+    "narrative": "Clear thesis: identify investable AI targets from a SaaS panel. Logical progression from data overview → sector focus → target deep-dive → screening → caveats. Each slide title is an assertion. The narrative lands on a specific recommendation (PROSP) with appropriate hedging.",
+    "framing": "Slide 2 sets data scope and missingness. Slide 10 explicitly lists caveats (single snapshot, missing fields, revenue quality). Audience is clearly an investor/acquirer. However, the '12M revenue' metric is never clearly defined as trailing-12-month vs. 30-day annualized, creating ambiguity about what's actually being measured.",
+    "accuracy": "Major issue: Slide 3 bar chart shows AI at $18.4M, Marketing at $14.6M, E-comm at $12M — these are roughly 8x the actual 30-day dataset totals. If annualized from 30-day data, the multiplier would be 12x, not ~8x. The numbers don't reconcile with any obvious transformation. Slide 2 claims 891 companies have revenue but dataset shows 784 non-zero. The 274 untagged count matches reference. Company-level data on slides 4 and 9 cannot be independently verified but appears internally consistent.",
+    "visual": "Consistent template with yellow background, KPI cards, key-points boxes, and charts. Legible but repetitive — every slide uses the same three-KPI-card + key-points layout, creating visual monotony. The pie chart on slide 2 has cramped labels ('3%4%4%4%'). The bar chart on slide 7 showing only High/Median/Low is an odd choice for a distribution. Charts are functional but not sophisticated.",
+    "ai_slop": "The rigid three-KPI-card + key-points template repeated identically across 8 slides suggests AI-generated layout. The word cloud on slide 5 is a common AI filler element. However, the content itself is substantive and specific to the dataset, not generic filler."
+  },
+  "confidence": "high",
+  "total": 68,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 21229,
+    "output_tokens": 1009
+  }
+}

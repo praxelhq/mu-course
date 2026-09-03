@@ -1,0 +1,38 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 6.5,
+    "accuracy": 5.5,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "A single, testable thesis carried cleanly from hypothesis through evidence to actionable recommendation.",
+  "fix_next": "The core analysis uses a self-constructed 'momentum' metric and filtered subset (231/246) whose derivation and robustness are never disclosed or stress-tested.",
+  "verdict": "Sharp thesis, clean narrative, but unverifiable bespoke metric and thin accuracy guardrails.",
+  "flags": [
+    "unverifiable-derived-metric",
+    "no-limitations-slide",
+    "narrow-dataset-use",
+    "case-study-cherry-pick-risk"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 2: '29 categories' — reference data shows 12 named categories (with 274 missing); 29 is unsubstantiated. Slide 2: '2.3x median asking multiple' presented as a dataset-wide fact but the denominator and filter (B2B vs B2C, for-sale only) are unspecified; reference medians are 2.35x B2B / 2.30x B2C, so the number is plausible but the framing as a single market median is imprecise. Slide 5 switches from n=231 to n=246 without explanation.",
+  "evidence": {
+    "insight": "Slide 4's quintile analysis showing an inverted-U relationship between momentum and asking multiple is a genuinely interesting and non-obvious finding. The correlation chart on slide 5 reinforces the thesis. The case-study contrast on slide 6 makes the abstract concrete. However, the insight stays within one angle (pricing inefficiency) and never explores category, provider, or audience-type dimensions that could strengthen or challenge the thesis.",
+    "narrative": "Exceptionally tight arc: assumption (slide 3) → refutation (slide 4) → broadening (slide 5) → concrete example (slide 6) → thesis (slide 7). Each slide earns the next. The 'Buy the signal. Ignore the price tag.' landing is memorable. Loses half a point because the deck never considers alternative explanations (e.g., fastest growers may have higher churn risk, smaller absolute revenue, or other quality issues that justify lower multiples).",
+    "framing": "Slide 1-2 set context adequately. The audience (micro-SaaS acquirers) is implicit but clear. However, there is no limitations slide, no discussion of missingness (274 rows lack category, 288 lack audience_type), no acknowledgment that 'momentum' is a bespoke metric, and no mention that asking prices ≠ transaction prices. The 231/246 filter discrepancy is unexplained. Scope is narrow but never flagged as such.",
+    "accuracy": "The '29 categories' claim on slide 2 is not supported by reference data (12 named categories exist; 274 rows have missing category). The momentum metric is self-defined and unverifiable against the frozen dataset reference. The n=231 vs n=246 inconsistency between slides 4 and 5 is unexplained. The case study on slide 6 uses specific company names and numbers that cannot be verified against the reference but are plausible. The correlation values are plausible but the constructed variable makes them hard to audit. The 2.3x median is close to reference values (2.30-2.35x) but presented without specifying the denominator.",
+    "visual": "Clean, restrained design with strong hierarchy. Slide 4's bar chart with color-coded extremes (gold for Q1/Q5) is effective. Slide 5's horizontal bar chart clearly communicates near-zero correlations. Slide 6's side-by-side comparison cards are well-designed. Consistent color palette (navy/gold/light blue). No chart junk. Minor issue: slide 5's bars all extend left of zero, which could mislead about the magnitude of negative correlations—the visual scale makes -0.03 look substantial.",
+    "ai_slop": "none — the deck is concise, specific, and avoids filler language or decorative graphics"
+  },
+  "confidence": "medium",
+  "total": 71,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 13526,
+    "output_tokens": 1043
+  }
+}

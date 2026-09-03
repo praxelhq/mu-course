@@ -1,0 +1,335 @@
+   T R U S T M R R · 1 , 0 0 0 S TA R T U P S · F R O Z E N 3 0 J U L 2 0 2 6
+
+
+
+
+   Nobody is buying                                                                      $282
+                                                                                         median MRR across the universe
+
+
+
+   your product.                                                                         0.18
+                                                                                         correlation of followers to revenue
+
+   They're buying whoever they found first.
+                                                                                         0.48
+                                                                                         correlation of domain authority to revenue
+   An investment thesis on 1,000 indie software businesses — and the one variable that
+   separates the 21% that make money from the 59% that never will.
+
+
+
+
+Analysis of self-reported Stripe / RevenueCat / Paddle revenue data · n = 1,000
+   THE UNIVERSE
+
+
+
+$133.8M of revenue — almost none of it where you'd look.
+One thousand live, revenue-connected software businesses. The average tells you nothing — the median tells you everything.
+
+
+
+
+   1,000                                               $133.8M                        $282                                59%
+   businesses                                          trailing 12-mo revenue         median MRR                          below $1k MRR
+
+                                                                                      the typical business earns pocket
+   with live payment-processor data                    across the full universe                                           not yet a business, at any valuation
+                                                                                      money
+
+
+
+
+The mean MRR is $13,472. The median is $282. Any thesis built on the average is a thesis about eleven outliers.
+
+
+
+
+Source: TrustMRR dataset, n = 1,000 · MRR as reported by connected payment provider
+   C O N C E N T R AT I O N
+
+
+
+Ten companies own half the market.
+Cumulative share of the $133.8M in trailing 12-month revenue, ranked largest first.
+
+
+
+                  Top 1                                                                                        18.7%
+
+                 Top 10                                                                                        50.6%
+
+                 Top 50                                                                                        72.9%
+
+               Top 100                                                                                         84.7%
+
+               Top 250                                                                                         97.1%
+
+
+    Investor read: the bottom 750 companies contribute under 3% of revenue. There is no index to buy here — only a selection problem.
+
+
+Cumulative revenue_12m_usd, ranked descending · n = 1,000
+   MYTH 1
+
+
+
+"AI" is a label, not a moat.
+27% of all categorised businesses call themselves AI. It buys them almost nothing.
+
+
+
+     AI-labelled                                                                           Everything else
+
+     197 companies                                                                         529 companies                      AI cos. are
+                                                                                                                              no more likely
+
+
+     $446                                                                                  $277
+                                                                                                                              to clear
+                                                                                                                              $10k MRR
+
+
+     median MRR                                                                            median MRR
+
+
+     18.3%                     reach $10k MRR                                              19.8%             reach $10k MRR
+                                                                                                                              −1.5pt
+                                                                                                                              vs the rest
+
+
+
+
+The AI label crowds the category without changing the outcome. Priced as a differentiator, it is a commodity.
+
+
+n = 726 with a declared category · $10k MRR hit-rate = share of cohort at or above $10,000 MRR
+    MYTH 2
+
+
+
+The follower count is rented attention.
+Median MRR by X (Twitter) following. The relationship is weak, and it isn't monotonic.
+
+
+                                                                                 $2,560              $2,462
+
+
+                                                                                                                        0.18
+                                                                                                                        correlation
+                                                                                                                        between followers
+                                                                                                                        and MRR
+
+
+             $214
+                                                  $96                  $184                                             41%
+                                                                                                                        of zero-follower
+                                                                                                                        cos. still clear
+          0 followers                            1 – 100              100 – 1k   1k – 10k             10k+              $1k MRR
+
+              n=307                               n=225                n=251      n=144               n=57
+
+
+
+Businesses with no audience at all out-earn those with a few hundred followers. Attention you rent does not compound.
+
+n = 984 with reported follower counts · log-log Pearson correlation
+   THE SIGNAL
+
+
+
+One variable explains almost all of it.
+Median MRR by Domain Rating — a measure of how much of the open web points back at you.
+
+
+                                                                                                        $23,536
+
+                                                                                                                                 2,600×
+                                                                                                                                 median MRR gap
+                                                                                                                                 from bottom tier
+                                                                                                                                 to top tier
+                                                                                             $3,020
+                                                                                                                                 0.48
+               $9                              $111                                $521
+                                                                                                                                 correlation with MRR
+                                                                                                                                 — 2.7× the strength of
+                                                                                                                                 follower count
+             DR 0                            DR 1–10                              DR 11–30   DR 31–50    DR 51+
+             n=157                              n=203                              n=196       n=116       n=42
+
+
+Domain Rating is not a marketing metric here. It is the only proxy in this dataset for distribution the founder actually owns.
+n = 714 with a measurable web domain · Domain Rating 0–100 (backlink authority)
+   THE ASYMMETRY
+
+
+
+
+22% of the companies.
+81% of the money.
+Share of companies
+
+
+                                                                                                    22%         158 of 714
+
+
+
+
+Share of revenue
+
+
+                                                                                                    81%         $81.7M of $100.9M
+
+
+
+
+Everything above Domain Rating 31 — one quarter of the universe — absorbs four fifths of every dollar earned.
+
+
+Companies with a measurable domain, n = 714 · trailing 12-month revenue
+   THE SECOND LEVER
+
+
+
+B2C sells to more people for less money.
+Median subscriber count, median revenue per subscriber, and median MRR — by audience.
+
+
+    Active subscribers                                                     Revenue per subscriber   Median MRR
+
+
+    B2C           40                                                       B2C      $9              B2C      $366
+    B2B
+                  22                                                       B2B
+                                                                                    $49             B2B
+                                                                                                             $1,638
+    B2C reaches more people                                                B2B charges 5.2× more    B2B earns 4.5× more
+
+
+
+
+B2B is 36% of the labelled universe and 70% of its revenue. Same effort, a customer worth five times as much.
+
+
+
+n = 712 with a declared audience type · medians across paying businesses only
+   THE COMPOUND
+
+
+
+The two levers multiply. They don't add.
+Median MRR at each intersection of domain authority and audience.
+
+                                      B2C                                  Both         B2B
+
+
+
+                                  $3,864                                $5,163        $9,493
+                                                                                                              123×
+            DR 31+
+
+
+
+                                                                                                              between the weakest cell and the
+         DR 11–30                   $408                                 $697         $1,036                  strongest.
+
+
+                                                                                                              48%
+                                                                                                              of the DR 31+ / B2B cell clears $10k MRR —
+          DR 0–10                     $77                                 $50          $110                   against a 21% base rate.
+
+
+
+
+Neither lever alone is enough. Authority without a business customer is a blog; a business customer without authority is a cold-email problem.
+
+
+Median MRR per cell · n = 578 with both a measurable domain and a declared audience
+    THE SCREEN
+
+
+
+Two filters. 11% of the universe, 42% of the money.
+A mechanical screen, applied to the same 1,000 rows — no judgement, no founder meetings.
+
+
+
+        1      Has a real domain                                                   2        Domain Rating ≥ 31                  3     Sells to businesses
+
+
+     714 companies                                                              158 companies                                 81 companies
+     Discard anything without owned web presence.                               Keep only earned, compounding distribution.   Keep only the audience that pays 5× more.
+
+
+
+
+      11%                                                   42%                                           $9,493                       48%
+      of the screened universe                              of its total revenue                          median MRR                   clear $10k MRR (base: 21%)
+
+
+
+
+Screen applied to TrustMRR frozen dataset, 30 Jul 2026 · no discretionary filters applied
+    DEPLOYMENT
+
+
+
+And 262 of them are already for sale.
+The dataset carries live asking prices — which means the thesis is testable with real capital, today.
+
+
+262
+                                                businesses listed for sale
+                                                26% of the universe                        L I S T I N G S T H AT PA S S T H E S C R E E N
+
+
+
+
+$35,000
+                                                median asking price                        15
+                                                at 4.8× trailing revenue
+                                                                                           companies currently on the market clear both filters.
+
+
+
+                                                                                           $150,000                             3.2 yrs
+$1,055
+                                                median MRR of listed cos.
+                                                5.6× the unlisted median                   median ask                           payback at current MRR
+
+
+
+
+A basket of fifteen, roughly $2.2M all-in, buys ~$700k of annualised recurring revenue attached to distribution that cannot be rebuilt quickly.
+
+
+n = 262 listings · implied multiple = asking price ÷ trailing 12-month revenue · medians
+   THE THESIS
+
+
+
+
+Buy distribution. The product is the cheap part.
+
+01                                                      02                                                      03
+Ignore the category.                                    Ignore the audience.                                    Underwrite the domain.
+
+AI, SaaS, mobile — the label moves the median           Follower count correlates 0.18 with revenue.            Domain Rating correlates 0.48. The top tier
+by nothing. Category is how founders describe           Rented attention doesn't survive a platform's           earns 2,600× the bottom. It is slow to build, and
+themselves, not how they earn.                          algorithm change.                                       therefore actually defensible.
+
+
+
+
+     What would break this
+
+
+     Revenue is self-reported and unaudited. Domain Rating is only measurable for 71% of the sample. And the causality could run backwards — successful
+     companies can afford SEO. The rebuttal: the 262 live asking prices are a market willing to price this today, and the screen is cheap enough to test.
+
+
+
+
+TrustMRR frozen dataset, 30 July 2026 · n = 1,000
+

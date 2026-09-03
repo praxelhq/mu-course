@@ -1,0 +1,43 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 4.5,
+    "narrative": 5,
+    "framing": 4,
+    "accuracy": 3,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Power-law framing and median-over-mean advice show genuine statistical awareness worth preserving.",
+  "fix_next": "Rebuild every number from the assigned 1,000-row dataset; the 8,782-row source invalidates nearly all claims.",
+  "verdict": "Wrong dataset undermines otherwise reasonable but shallow analysis with decorative filler visuals.",
+  "flags": [
+    "wrong-dataset-used",
+    "fabricated-looking-numbers",
+    "decorative-stock-imagery",
+    "ai-slop-visuals",
+    "no-original-data-charts",
+    "gamma-template-cookie-cutter",
+    "no-research-question-stated"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 2: 8,782 rows vs required 1,000; 59% Stripe (5,185) vs reference 636/1000=63.6%; 36% country unknown vs 241/1000=24.1%; 22%/1,952 for-sale count not verifiable against 1,000-row set. Slide 4: AI 1,430 listings vs reference 197; SaaS 525 vs 66; median MRR figures ($16.90, $57.10, $20.52) unverifiable against reference medians. Slide 5: B2B median $15.99 / B2C $8.37 not reconcilable with reference. Slide 6: US 1,657, India 807, France 612, UK 603 all from larger dataset. Slide 7: Stripe 5,185, RevenueCat 1,236 vs reference 636 and 189.",
+  "evidence": {
+    "insight": "AI-paradox (volume vs revenue quality), B2B/B2C split, and power-law observation are directionally sound ideas but each slide makes one surface-level point with no cross-cutting analysis, no correlation work, no actionable recommendation.",
+    "narrative": "Loose topic sequence (overview→distribution→categories→geography→infra→marketplace→takeaways) but no stated thesis, no building argument, and the summary slide merely restates prior slides without synthesis.",
+    "framing": "No audience, research question, or scope statement. Missingness is mentioned (36% country unknown) but the percentage is wrong for the assigned dataset. The 8,782 figure suggests the student analyzed a different or full-platform dump rather than the course dataset.",
+    "accuracy": "Systematic mismatch: every slide's counts, percentages, and medians correspond to an ~8,782-row dataset, not the 1,000-row assignment. This is the most damaging issue—at least 8 distinct numerical claims cannot be verified against the reference and most are demonstrably wrong for the assigned data.",
+    "visual": "Charts are minimal two-bar horizontal bars that restate text. Slide 1 neon dashboard, slide 6 fantasy map, slide 8 AI-generated storefront are purely decorative with no analytical value. No annotations, no multi-variable visualizations, no data-driven color encoding. Gamma template is repetitive.",
+    "ai_slop": "Three slides (1, 6, 8) use AI-generated decorative imagery unrelated to the data. Gamma template produces uniform layout with no customization. Callout boxes and numbered takeaways feel templated rather than crafted."
+  },
+  "confidence": "high",
+  "changed": false,
+  "change_reason": "no-change",
+  "total": 40,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 16898,
+    "output_tokens": 897
+  }
+}

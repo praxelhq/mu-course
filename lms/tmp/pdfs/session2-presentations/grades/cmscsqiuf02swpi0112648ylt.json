@@ -1,0 +1,38 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 3,
+    "accuracy": 2.5,
+    "visual": 7,
+    "bonus": 0
+  },
+  "what_worked": "Strong narrative arc from market structure through growth dynamics to actionable acquisition screen with clear thesis.",
+  "fix_next": "The deck analyzes a completely wrong dataset (8,782 rows vs. the assigned 1,000-row frozen dataset), invalidating nearly every number presented.",
+  "verdict": "Polished deck built on the wrong dataset; numbers cannot be verified.",
+  "flags": [
+    "wrong-dataset",
+    "fabricated-row-count",
+    "unverifiable-statistics",
+    "consulting-language-inflation"
+  ],
+  "factual_error_count": 12,
+  "factual_error_detail": "Slide 1: Claims 8,782 records; actual dataset is 1,000 rows. Slide 2: '3,757 of 8,782' revenue-generating—actual dataset has 784 non-zero revenue (1000-216=784). '57.8% top 1%' unverifiable. Slide 3: '$15.4M total active MRR'—actual total 30-day revenue is $15,596,344.59 but across 1,000 rows not 8,782; top-10 share is 49.6% not the implied concentration levels. Slide 5: B2B median MRR $180 vs $86—reference shows median revenue multiples of 2.35x/2.30x, not the absolute values claimed; counts 1,042 B2B vs 1,820 B2C impossible in a 1,000-row dataset. Slide 6: AI median MRR $170 and '824 active listings'—actual AI count is 197 with median $503; Education median $133 vs actual $2,435; Marketing median $204 vs actual median $2,369.50. Slide 7: US '879 listings'—impossible in 1,000-row dataset. Slide 8: Multiples by growth bucket unverifiable against wrong base.",
+  "evidence": {
+    "insight": "Slide 8's mispricing-by-growth-bucket analysis and Slide 9's acquisition screen show genuine analytical ambition, moving beyond description to decision-useful output. The AI oversupply thesis on Slide 6 is a good conceptual move, though built on wrong numbers.",
+    "narrative": "Clear four-act structure: market structure (Slide 3) → growth stagnation (Slide 4) → where to play (Slides 5-7) → how to buy (Slides 8-9) → recommendations (Slide 10). Each slide builds logically toward the acquisition thesis. Landing on Slide 10 is purposeful.",
+    "framing": "Slide 1 states 8,782 records and 'Frozen 30 July 2026'; the actual assigned dataset has 1,000 rows. This is a fundamental framing failure—the audience, scope, and dataset identity are misrepresented. The appendix (Slide 11) doubles down on the wrong dataset size. No acknowledgment that this is a different or larger dataset than assigned.",
+    "accuracy": "Nearly every quantitative claim is unverifiable or contradicted by the reference dataset. Row count wrong by 8.78x. Category medians (Slide 6) wildly off: Education $133 vs actual $2,435, AI $170 vs actual $503. B2B/B2C counts exceed total dataset size. Total revenue figure ($15.4M) coincidentally close to actual ($15.6M) but denominators are completely different. The 'top 10% capture 90%' claim on Slide 3 cannot be verified. Geographic counts (879 US listings) impossible.",
+    "visual": "Consistent navy/gold palette, clean typography, good chart-text balance on every slide. Bar charts are well-labeled with direct annotation. Slide 4's donut + breakdown is effective. Slide 9's table is clean and scannable. No chartjunk. Hierarchy is clear throughout with section headers, KPI callout boxes, and interpretation panels.",
+    "ai_slop": "Moderate consulting-speak inflation: 'M&A Arbitrage,' 'Executive & Investment Committee Review,' 'quality-of-earnings review.' The overall template is polished but generic—every slide follows the same chart-left/insight-box-right pattern. The 'Four Moves for the Executive Committee' slide is boilerplate strategy consulting format. However, content is substantive enough to avoid pure slop classification."
+  },
+  "confidence": "high",
+  "total": 51,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22173,
+    "output_tokens": 1121
+  }
+}

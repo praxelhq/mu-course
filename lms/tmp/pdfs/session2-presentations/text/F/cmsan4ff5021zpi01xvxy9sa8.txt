@@ -1,0 +1,360 @@
+TRUSTMRR        ·   SESSION 3      ·   DATA FROZEN 30 JUL 2026
+
+
+
+
+Inside the Micro-SaaS
+Economy
+What separates the 20% who build businesses from the 80% who build projects
+
+
+
+         1,000 startups · 29 variables · $15.6M monthly revenue
+
+
+
+
+Business Data Analysis | Prepared by Aaryan
+01    ·   DATASET OVERVIEW
+
+A verified-revenue census of independent software
+businesses
+1,000 rows × 29 fields, snapshot frozen 30 July 2026 — cross-sectional, not a time series
+
+
+
+          $15.6M                                            $334M                                           500,597                                           $400
+            Combined revenue,                                  Cumulative all-time                                     Active paid                            MEDIAN startup's
+               last 30 days                                     revenue recorded                                      subscriptions                           monthly revenue
+
+
+
+     What the file contains                                                                                     Coverage gaps that shape the analysis
+
+                                                                                                               Revenue (core)       0%
+     •      Revenue windows: 30-day, 3-month, 12-month, all-time                                                       Country                   24%
+     •      Subscription economics: MRR, active subs, growth %
+                                                                                                                      Category                    27%
+     •      Firmographics: country, category, B2B/B2C, persona
+                                                                                                                 Pricing model                          34%
+     •      Distribution: X followers, domain rating, visitors
+                                                                                                                   Asking price                                                  74%
+     •      Market signals: payment provider, for-sale flag, asking price
+                                                                                                               Traffic (visitors)                                                      82%
+
+
+
+
+Source: TrustMRR 1,000-row dataset, frozen 30 Jul 2026. All revenue figures are payment-provider verified (Stripe, RevenueCat, Paddle et al.).
+02     ·   OBJECTIVE & APPROACH
+
+
+The question: what actually predicts revenue?
+Moving from description to explanation — and then to a decision rule
+
+
+                Segment                                                                                     Stated assumptions
+     1
+                Split 1,000 firms by revenue tier, category, audience, geography and distribution asset —
+                then test which splits actually separate outcomes.
+                                                                                                            •   "Last 30 days" is treated as one month; 3-month and
+                                                                                                                12-month totals are divided by 3 and 12 to give
+                                                                                                                comparable average months.
+                Reconstruct trend
+     2                                                                                                      •   Blank category / audience fields are excluded from
+                                                                                                                those cuts, not imputed — 726 rows carry a category.
+                With no time series, derive an implied monthly path from three nested revenue windows       •   ARPU = MRR ÷ active subscriptions, computed only
+                to test whether the cohort is accelerating or plateauing.                                       where both are above zero (789 firms).
+                                                                                                            •   Medians lead throughout; means are shown only to
+                                                                                                                expose skew.
+                Isolate levers
+     3                                                                                                      •   32 rows report 30-day revenue above their 3-month
+                                                                                                                total. These are logically impossible and excluded from
+                                                                                                                all trend maths.
+                Rank candidate drivers by rank correlation with revenue, then test whether they
+                compound when stacked.
+
+
+
+
+Every figure in this deck is computed directly from the 1,000-row file; no external data is introduced.
+   1        INSIGHT 1           · REVENUE CONCENTRATION
+
+
+            Ten companies earn half the money
+
+                                                                                                          Why it matters
+Bottom 50% (500)        0.2%
+
+
+
+                                                                                                          •      The 500 smallest firms produced $30,822
+   Top 20% (200)                                                                                  94.3%          between them in a month — 0.2% of the market.
+
+                                                                                                          •      216 firms (21.6%) earned nothing at all in the last
+                                                                                                                 30 days; 101 have never earned a dollar.
+                                                                                                          •      579 firms (57.9%) sit below $1,000 a month —
+   Top 10% (100)                                                                          83.7%
+                                                                                                                 below the threshold of a business.
+                                                                                                          •      Mean revenue is 39× the median. Any average
+                                                                                                                 quoted from this market is meaningless.
+       Top 5% (50)                                                                72.9%
+
+
+
+
+                                                                                                              Recommendation: benchmark against the median
+Top 1% (10 firms)                                                   49.6%                                     ($400), never the mean.
+
+
+
+
+n = 1,000. Shares computed on last-30-day revenue; ranking by the same measure.
+   2         INSIGHT 2           · MOMENTUM
+
+
+             Growth over the year — but a flat last quarter
+             Implied average monthly revenue, 968 firms (32 logically inconsistent rows excluded)
+
+
+
+
+                                                                                           $11.13M
+                                                                                                                           +29.1%                                  +3.2%
+                                                    $10.78M
+                                                                                                                           last 30 days vs. the average month of   but only vs. the recent three-month run
+                                                                                                                           the past year                           rate
+              $8.62M
+
+
+
+                                                                                                                                Beneath the average: three cohorts
+
+                                                                                                                                     Accelerating
+                                                                                                                                                                                       47% of revenue
+                                                                                                                                     198 firms · 34%
+
+
+                                                                                                                                     Flat
+                                                                                                                                                                                       47% of revenue
+                                                                                                                                     235 firms · 40%
+
+
+                                                                                                                                     Decaying
+                                                                                                                                                                                   just 6% of revenue
+          Average month                         Average month                            Last 30 days                                155 firms · 26%
+         across 12 months                     across last 3 months
+
+
+
+
+Cohorts defined on last-30-day revenue vs. the average month of the last 3 months: ±15% band = flat. Active firms only (≥$1,200 trailing 12-month revenue).
+   3         INSIGHT 3            · CATEGORY ECONOMICS
+
+
+             Everyone is building AI. Almost nobody is being paid for it.
+
+    Productivity          $80                                                                                                 The AI paradox
+             SaaS               $201
+                                                                                                                              •     27% of all categorised firms call themselves AI
+                                                                                                                                    — the largest category by far.
+         E-comm                        $387
+                                                                                                                              •     They capture only 15% of revenue: the
+                AI                        $503                                                                                      category under-earns its own headcount.
+                                                                                                                              •     Median AI firm: $503/month — a fifth of the
+       Dev Tools                               $635                                                                                 median Education firm.
+
+Health & Fitness                                 $663
+
+    Social Media                                        $844
+                                                                                                                              Why it matters
+             Sales                                           $986
+
+                                                                                                                              Category choice is a supply decision, not a demand
+Content Creation                                                      $1,238
+                                                                                                                              one. AI is crowded because it is easy to enter, and
+                                                                                                                              easy entry compresses price. The boring categories —
+       Marketing                                                                                                  $2,370      teaching people things, helping them sell — are
+                                                                                                                              where the median founder is actually paid.
+       Education                                                                                                     $2,435
+
+
+
+
+Categories with n ≥ 10 shown; 726 of 1,000 firms carry a category label. Bars ordered by median, not by total revenue.
+   4         INSIGHT 4           · PRICING POWER
+
+
+             B2C wins the customers. B2B wins the money.
+             Share of the labelled population, of paying subscribers, and of revenue captured
+
+
+
+                                                                                                                                       Median revenue per user
+  Firms in dataset                      35.8%                                              56.3%                              7.9%
+
+                                                                                                                                       $49.00                      $9.34
+Paying subscribers             19.0%                                              74.1%                                       6.9%
+                                                                                                                                       B2B                         B2C — 5.2× lower
+
+
+
+
+Revenue captured                                           69.5%                                                27.6%           2.8%
+                                                                                                                                       Two supporting tests
+
+                                                         B2B       B2C     Both                                                        Channel. Web-billed firms (Stripe) run a $30.78
+                                                                                                                                       median ARPU; mobile-billed firms (RevenueCat) $5.00.
+                                                                                                                                       App-store norms cap the ceiling at roughly a sixth.
+
+
+   B2C holds three quarters of every paying subscriber in this market — and just over a quarter                                        Free tiers. Among B2C firms, a free tier coincides with
+                                                                                                                                       a $179 median against $675 without — 3.8× lower.
+   of the money. B2B does the inverse: a fifth of the customers, seventy per cent of the
+                                                                                                                                       The same test in B2B shows no penalty at all ($1,147
+   revenue.                                                                                                                            vs $1,150).
+
+
+
+
+712 firms carry an audience label. ARPU = MRR ÷ active subscriptions, per firm, where both > 0 (n = 789); medians reported.
+   5         INSIGHT 5           · DISTRIBUTION
+
+
+             Owned distribution beats rented audience
+             Median monthly revenue by domain authority band — the strongest single predictor in the file
+
+
+
+                                                                                                                                        Rank correlation with revenue
+                                                                                                          $11,788
+                                                                                                                                        Domain rating ρ = 0.52
+
+                                                                                                                                        X followers            ρ = 0.17
+
+                                                                                                                                        Search authority is three times the signal that social following is.
+                                                                                                                                        Both are significant; only one is decisive.
+
+
+
+
+                                                                                                                                        The scale of the gap
+
+                                                                                  $1,776                                                •     DR 41+ firms are 12% of the rated population and take 50%
+                                                                                                                                              of all revenue.
+
+          $7                      $122                    $288                                                                          •     A DR 41+ firm's median month is 1,767× a DR 0 firm's.
+                                                                                                                                        •     By contrast, 10k+ followers buys only a 14.5× median lift
+                                                                                                                                              over zero followers.
+
+         DR 0                   DR 1–5                  DR 6–20                 DR 21–40                  DR 41+
+
+
+
+
+Domain rating available for 714 firms; X followers for 984. Spearman rank correlation used because both distributions are heavily skewed.
+THE MAIN STORY
+
+
+Revenue is not luck. It is three levers, stacked.
+Sell to businesses · price above $50 per user · own a search-authority domain
+
+
+
+
+                                                                                                       $24,454       65×     median revenue, three levers vs.
+                                                                                                                             none
+
+
+
+
+                                                                                                                     71%     of three-lever firms clear
+                                                                                                                             $10k/month
+
+
+
+
+                                                                         $3,884
+
+           $379                           $870                                                                       13.6%   of no-lever firms manage the
+                                                                                                                             same
+
+        No levers                      One lever                     Two levers                   All three levers
+
+
+Levers: audience = B2B · ARPU ≥ $50 · domain rating ≥ 40. Tested on the 495 firms carrying all three fields.
+03    ·   RECOMMENDATIONS
+
+
+Four moves, ranked by expected impact
+Each tied to the insight that generated it and the evidence behind it
+
+
+                   Reprice before you re-market
+      01           Move from a consumer price point to a business one. The median B2B user is worth $49/month against $9.34 in B2C, and
+                                                                                                                                                    Insight 4 · Highest impact
+                   ARPU rises from $8 to $89 as firms scale — price is the compounding half of growth.
+
+
+
+                   Build a search asset, not a following
+      02           Domain authority carries three times the rank correlation with revenue that follower count does (ρ 0.52 vs 0.17). Treat
+                                                                                                                                                 Insight 5 · High, slow-burning
+                   content and links as capital expenditure with a 12-month payback.
+
+
+
+                   Leave the crowd, or differentiate inside it
+      03           AI holds 27% of firms and 15% of revenue. If staying in AI, attach to a paying vertical — education and marketing both out-
+                                                                                                                                                  Insight 3 · Medium, decisive
+                   earn it 4–5× at the median.
+
+
+
+                   Kill the free tier in B2C — keep it in B2B
+      04           B2C firms with a free tier earn $179 against $675 without. The identical test in B2B shows no penalty. Segment the policy
+                                                                                                                                                      Insight 4 · Fast, low cost
+                   rather than copying it.
+
+
+
+Impact ranking reflects the size of the observed revenue gap and the speed at which a founder could act on it.
+04   · CONCLUSION
+
+The market is not short of builders. It is short of
+businesses.
+     What the data says                                                                               Limitations worth stating
+
+                                                                                                      •   Self-selected directory: firms opt in, so failures are
+     •   A thousand firms produced $15.6M in a month — and ten of them produced half of it.               under-represented and success is likely
+                                                                                                          overstated.
+     •   The cohort grew 29% against its own yearly average but only 3% against last quarter: the
+                                                                                                      •   Single snapshot: trend is inferred from nested
+         surge has cooled into a plateau.
+                                                                                                          revenue windows, not observed month by month.
+     •   Crowding does not pay. The most populated category earns the least per firm.                 •   Traffic missing for 82% of rows — no conversion or
+                                                                                                          CAC analysis is possible.
+     •   The gap between a $400 month and a $24,000 month is not effort or luck. It is who you sell
+         to, what you charge, and whether you own your distribution.                                  •   Association, not causation: no lever here is proven
+                                                                                                          to cause revenue.
+
+
+
+
+     If you take one thing away: stop optimising the product and start optimising who it is sold to, what it costs,
+     and how it is found.
+Questions
+Happy to go deeper on method, on any single figure, or on the rows I excluded and
+why.
+
+
+
+
+            1,000                                     $15.6M                            ρ = 0.52           65×
+            firms analysed                             monthly revenue                   top predictor   three-lever lift
+
+
+
+
+Source: TrustMRR 1,000-row dataset, frozen 30 July 2026 · Analysis prepared by Aaryan
+

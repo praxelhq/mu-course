@@ -1,0 +1,43 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 3,
+    "narrative": 4.5,
+    "framing": 3.5,
+    "accuracy": 2,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Revenue concentration insight (slide 3) with median-vs-top comparison is genuinely grounded in the dataset.",
+  "fix_next": "Remove all fabricated churn/customer-segment data (slides 4–5); replace with verifiable category, provider, or missingness analysis.",
+  "verdict": "Polished template over fabricated data; only slide 3 is grounded in reality.",
+  "flags": [
+    "fabricated-data",
+    "unverifiable-claims",
+    "missing-limitations",
+    "no-missingness-disclosure",
+    "no-category-analysis",
+    "ai-hallucinated-metrics",
+    "total-revenue-error"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 3: total revenue stated as $13.4M/mo; actual is ~$15.6M (and it is MRR, not necessarily monthly revenue—but the magnitude is wrong by ~$2.2M). Slide 4: 70%/8% customer-segment splits and 55%/30%/15% revenue splits have no basis in the dataset fields. Slide 5: 8.5%/4.2%/1.1% churn rates by segment are entirely fabricated—no churn field exists. Slide 6: 26% for-sale figure is unverified against the reference data. Slide 3: median $282 is plausible but not exactly verifiable against the reference median conventions across all 1000 rows.",
+  "evidence": {
+    "insight": "Only the revenue-gap observation (slide 3) reflects real data patterns. No exploration of categories, payment providers, TLDs, anonymity, or B2B/B2C multiples—all richer and verifiable.",
+    "narrative": "Four-section arc (gap → customer size → churn → sell) is coherent and the conclusion ties back, but three of four analytical sections rest on invented numbers, undermining the entire story.",
+    "framing": "Slide 2 introduces the platform and dataset size adequately, but omits all missingness (241 country, 288 audience_type, 274 category, 286 domain missing), zero-revenue prevalence (216 rows), and any scope limitations. A cold reader would assume complete, clean data.",
+    "accuracy": "Slides 4 and 5 present precise percentage breakdowns for customer segments and churn rates that correspond to no field in the dataset—these are wholesale fabrications. Total revenue is off by ~$2.2M. The 26% for-sale claim is unverified.",
+    "visual": "Clean, consistent template with good typographic hierarchy, readable fonts, and appropriate donut/bar chart choices. Layout is professional. However, charts on slides 4–5 visualize fabricated data, which limits their substantive value.",
+    "ai_slop": "Heavy AI consulting tone throughout ('Startup Success, Decoded', 'The Playbook', 'leaky bucket'). Customer-segment and churn data appear to be AI hallucinations presented as empirical findings. Uniform template structure across all slides."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 4.0 to 3.5 due to complete absence of missingness/limitations disclosure; raised visual slightly from 5.0 to 5.5 for genuinely clean design execution. Other scores confirmed as appropriate.",
+  "total": 37,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 13509,
+    "output_tokens": 874
+  }
+}

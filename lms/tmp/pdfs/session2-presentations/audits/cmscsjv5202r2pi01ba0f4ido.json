@@ -1,0 +1,44 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 3,
+    "narrative": 4.5,
+    "framing": 2.5,
+    "accuracy": 2,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Coherent topography metaphor sustained across slides with a clear chaos-to-prescription arc.",
+  "fix_next": "Replace every illustrative schematic with real data charts showing actual values, axes, n-counts, and dataset-grounded evidence.",
+  "verdict": "Polished consulting theater with no real data; illustrations masquerade as analysis.",
+  "flags": [
+    "fabricated-charts",
+    "no-real-data-shown",
+    "consulting-language-inflation",
+    "ai-slop",
+    "unearned-causal-claims",
+    "missing-dataset-specifics",
+    "decorative-not-analytical",
+    "scope-mislabeled-as-saas"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 1/title: frames dataset as 'SaaS Market' when it covers AI, Marketing, E-comm, Education, etc. Slide 7: table dimensions (product velocity, churn rate, pricing power) do not exist in the dataset—entirely fabricated. Slide 5: claims about Domain Rating vs X Followers as archetype drivers are asserted without any supporting correlation or data. Slide 3: quadrant scatter presented as data-derived but has no axis values, thresholds, or sample sizes—appears wholly illustrative.",
+  "evidence": {
+    "insight": "Core thesis (social attention → domain authority → MRR) is a plausible strategic idea but never substantiated with a single number from the dataset. No category, provider, TLD, or revenue analysis appears anywhere.",
+    "narrative": "Arc is purposeful: chaos → framework → archetypes → drivers → anomalies → prescriptions → conclusion. Topography metaphor holds. But the narrative is built entirely on assertions, making it a story about a story rather than a data story.",
+    "framing": "Title says 'SaaS Market' but dataset spans all categories. No mention of 1,000 rows, 216 zero-revenue entries, or 24–29% missingness across key fields. No audience specified. Scope and limitations entirely absent.",
+    "accuracy": "Not a single verifiable figure from the frozen reference appears. Slide 6 cites 'Stealth Co 17, 718% growth' and slide 8 cites '12,983% MRR growth jump'—specific but unverifiable. Slide 7's four dimensions are fabricated columns not in the dataset. Zero revenue totals, medians, category counts, or provider shares shown.",
+    "visual": "Illustrations are stylistically consistent and polished (NotebookLM-generated). However, every 'chart' (slides 3, 6, 8, 9) is a schematic illustration, not a data visualization—no real axes, values, or labels. This is decorative design, not evidence-led design. Downgraded from preliminary for decorative/fabricated charts.",
+    "ai_slop": "Pervasive: 'operational velocity,' 'structural authority,' 'weaponise capital,' 'forensic audit of churn drivers,' 'existential timer,' 'fleeting social noise → permanent structural authority.' Slide 7 is generic SaaS consulting boilerplate. Every illustration is AI-generated decoration."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing by 0.5 (scope mislabeled, zero limitations) and visual by 0.5 (all charts are decorative schematics, not data visualizations—penalized per rubric for fabricated/decorative charts). Other scores confirmed as appropriate.",
+  "total": 31,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 20004,
+    "output_tokens": 913
+  }
+}

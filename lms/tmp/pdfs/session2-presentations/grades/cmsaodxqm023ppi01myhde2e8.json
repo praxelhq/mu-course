@@ -1,0 +1,38 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 6.5,
+    "accuracy": 5.5,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis-driven arc: growth illusion → reveal → stress test → vanity metrics → recommendations. Genuinely persuasive structure.",
+  "fix_next": "The 5.7x B2B median MRR claim ($1,036 vs $181) doesn't match the reference multiples (2.35x); verify denominators and show sample sizes per split.",
+  "verdict": "Compelling narrative with a clear thesis, but core B2B/B2C numbers need verification.",
+  "flags": [
+    "median-mrr-multiple-unverified",
+    "missing-sample-sizes-on-key-claims",
+    "no-limitations-slide",
+    "category-subcell-sizes-unreported"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 4: Claims B2B median MRR is $1,036 and B2C is $181, yielding 5.7x. Reference gives median revenue multiples of ~2.35x (B2B) and ~2.30x (B2C), not 5.7x; the absolute medians appear fabricated or computed differently without explanation. Slide 6: States X/Twitter followers vs revenue r=0.02 with n=984; the reference r=0.024763 is for founded-year vs revenue, not followers vs revenue — the variable is misattributed. Slide 5: Within-category B2B vs B2C comparisons are plausible in direction but specific values (e.g., Analytics $3,390/$157, Marketing $2,625/$162) are unverifiable and subcell sample sizes are never disclosed, making the 22x claim unauditable.",
+  "evidence": {
+    "insight": "Slide 3-4 setup-and-reveal structure (growth rate vs. monetization) is genuinely insightful; slide 5 stress-tests within categories; slide 6 adds vanity metric debunking. Goes beyond chart description.",
+    "narrative": "Clear thesis on slide 1, each slide builds sequentially (illusion → reveal → stress test → vanity trap → recommendations → takeaway). 'SO WHAT' boxes on every analytical slide enforce narrative discipline.",
+    "framing": "Slide 1-2 set context well (1,000 startups, $15.6M, audience split). However, no limitations slide, no mention of 274 missing categories or 288 missing audience types affecting the B2B/B2C analysis. 29 categories claimed but reference shows ~12 named categories.",
+    "accuracy": "Slide 4's 5.7x multiple is the deck's central claim but conflicts with reference median multiples (~2.3x). Slide 6 attributes r≈0.02 to Twitter followers but reference r=0.024763 is for founded-year. Revenue total $15.6M and audience split (401/255/56/288) are correct. Slide 2 median MRR $282 is plausible but unverifiable against reference.",
+    "visual": "Consistent design system with dark/light panels, orange/navy palette, clear hierarchy. Charts are simple and readable. Slide 5 grouped bar chart is effective. Slide 6 scatter plot is legible with highlighted cases. No chart junk. Minor: decorative curve on slide 1 is meaningless.",
+    "ai_slop": "Minimal slop. Design is polished but not generic-template feeling. 'SO WHAT' boxes add substance. Slide 1 decorative curve is borderline decorative-but-meaningless. Overall restrained and purposeful."
+  },
+  "confidence": "medium",
+  "total": 71,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15787,
+    "output_tokens": 926
+  }
+}

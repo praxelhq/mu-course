@@ -1,0 +1,38 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 6.5,
+    "bonus": 2
+  },
+  "what_worked": "Momentum/trend ratio framework adds genuine analytical depth; Education deep-dive shows real investigative instinct.",
+  "fix_next": "Slide 3 uses 12-month revenue figures (~$18.4M for AI) that are far larger than the 30-day reference totals; verify which window you're charting and reconcile denominators.",
+  "verdict": "Thoughtful framework, strong narrative arc, but revenue figures don't match the frozen dataset.",
+  "flags": [
+    "revenue-figures-unverifiable",
+    "scatter-plot-nearly-empty",
+    "19-categories-claim-unverified",
+    "trailing-12mo-not-in-reference"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 3: AI shown as $18.4M (12-month); reference 30-day total is $2.36M — the 12-month figures are plausible but unverifiable against the frozen reference, and the 63% concentration claim cannot be confirmed. Slide 1/2: '19 categories analyzed' — reference shows 12 named categories (with 274 missing); claiming 19 with 10+ startups is suspect. Slide 5: scatter plot claims to show all categories but only 3 dots are visible (Marketing, Utilities, Education), making the 'almost every category is accelerating' claim unsupported by the visual. Slide 7: revenue-per-visitor metric built on only 178 startups with self-reported traffic is presented without adequate caveat on the chart itself (caveat only on slide 8).",
+  "evidence": {
+    "insight": "Slides 4-6 build a layered argument: AI isn't just large but compounding, while Education's aggregate health masks leader deceleration. The momentum/trend 2x2 framework (slide 5) is an original analytical contribution. Revenue-per-visitor (slide 7) adds a monetization-efficiency lens beyond raw totals.",
+    "narrative": "Clear arc: concentration → AI deep-dive → growth signals → Education counter-example → monetization efficiency → takeaways. Each slide builds on the prior. The 'hand-off not broad-based strength' read on Education (slide 6) is a genuine synthesis moment.",
+    "framing": "Slide 2 defines methodology, windows, and growth signals clearly. Limitations noted on slide 8. However, the audience/decision-maker is never explicitly stated — who should act on these findings? The 672-company filter is explained but the jump to '19 categories' is not reconciled with the data.",
+    "accuracy": "The deck uses 'trailing 12-month revenue' as its primary metric, which is not directly in the frozen 30-day reference. AI at $18.4M 12-month vs. $2.36M 30-day reference is plausible but unverifiable. The 19-category claim conflicts with the reference showing 12 named categories. The scatter plot on slide 5 shows only 3 of the claimed 18+ categories, undermining the 'almost every category' headline. Kibu's $0 three-month / $1.85M twelve-month is flagged as anomalous but still used in analysis.",
+    "visual": "Clean, consistent dark/light palette with good hierarchy. Bar charts are well-labeled. However, the scatter plot (slide 5) is nearly empty — only 3 dots visible for what should be 18+ categories, making it the weakest chart. Tables on slides 4 and 6 are clear. Some axis labels on slide 3 are rotated and hard to read.",
+    "ai_slop": "Minimal slop. The template is consistent but not generic. Content is specific to the dataset. The title 'Beyond the Hype' is slightly cliché but the substance backs it up. No decorative-but-meaningless graphics detected."
+  },
+  "confidence": "medium",
+  "total": 68,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 17689,
+    "output_tokens": 987
+  }
+}

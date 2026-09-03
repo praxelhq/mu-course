@@ -1,0 +1,39 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 6,
+    "narrative": 6.5,
+    "framing": 5,
+    "accuracy": 3.5,
+    "visual": 4.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong thesis about revenue concentration carried through to actionable recommendations with consistent editorial voice.",
+  "fix_next": "Multiple key numbers are fabricated or unverifiable (82% top-10 share, $13.5M total, E-comm ~$19-20K avg); replace stock images with actual charts.",
+  "verdict": "Punchy narrative undermined by several material factual errors and decorative visuals.",
+  "flags": [
+    "fabricated-statistics",
+    "decorative-stock-images",
+    "missing-data-charts",
+    "unverifiable-claims",
+    "no-missingness-disclosure"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1: Total MRR stated as $13.5M; dataset total 30-day revenue is $15.6M—unclear where $13.5M comes from. $334M 'all-time revenue' is completely unverifiable from dataset. Slide 2: Claims top 10% control 82% of revenue; reference says top-10 companies (not top 10%) hold 49.6%—conflating top-10 companies with top-10-percent is misleading, and 82% is unverified. Slide 3: B2C avg $5.1K and B2B avg $13.1K—dataset reference shows B2B mean multiplier ~7.97x and B2C ~8.44x with medians ~2.3x; the stated averages don't match known benchmarks and 'proves' language overstates observational data. Slide 4: E-comm/Analytics average MRR claimed ~$19-20K; dataset shows E-comm total $1.11M/19 companies = ~$58.5K avg and Analytics $368K/19 = ~$19.4K—the E-comm figure is plausible for Analytics but the combined claim is misleading. AI avg $9.1K is roughly plausible ($2.36M/197≈$12K, not $9.1K). Slide 5: Domain Rating correlation 0.21 stated; dataset reference gives founded-year r=0.025 but no DR correlation is in the reference—0.21 is unverifiable. Slide 7: Dodo Payments shown as 10% of companies; actual is 50/1000=5%, not 10%. Stripe at 65% is close to 63.6% (acceptable rounding), but Dodo is materially wrong.",
+  "evidence": {
+    "insight": "Slide 2's concentration thesis and slide 4's AI-vs-niche comparison show genuine analytical thinking; slide 6's mean-vs-median multiple distinction is a good instinct. However, many claims rest on unverified numbers.",
+    "narrative": "Clear arc from problem (concentration, slide 1-2) through contributing factors (B2B/B2C, categories, SEO, M&A) to roadmap (slide 8). The 'haves and have-nots' framing is maintained throughout. Loses points for some slides feeling like standalone hot-takes rather than building evidence.",
+    "framing": "No explicit audience definition, no dataset description, no mention of sample size (1,000), no disclosure of substantial missingness (274 missing categories, 288 missing audience_type). A cold reader wouldn't know what TrustMRR is or what time period the data covers.",
+    "accuracy": "At least 7 material errors: total MRR wrong, top-10% share fabricated/conflated, Dodo Payments share doubled, AI average off, E-comm/Analytics averages misleading, $334M unverifiable, DR correlation unverifiable. Uses means without noting 274 missing categories. 'Proves' language on B2B vs B2C is causal overreach.",
+    "visual": "Dark theme is consistent and legible. Slide 7 pie chart is the only real data visualization. Slides 3 and 5 use decorative sci-fi stock images that add zero information. Slide 6 bar chart is useful but only one of two actual charts in 8 content slides. No scatter plots, histograms, or distributions shown despite claims about skewness and concentration. The deck is text-heavy for a data story.",
+    "ai_slop": "Decorative sci-fi stock images on slides 3 and 5 are classic AI-tool filler—visually impressive but semantically empty. Consulting-style language ('bifurcate our strategy,' 'existential dependency,' 'Pareto Principle on Steroids') borders on inflated. However, the editorial voice is distinctive enough to avoid pure template feel."
+  },
+  "confidence": "high",
+  "total": 52,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15802,
+    "output_tokens": 1175
+  }
+}

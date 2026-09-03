@@ -1,0 +1,43 @@
+{
+  "slide_count": 5,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 6.5,
+    "framing": 5.5,
+    "accuracy": 3,
+    "visual": 7,
+    "bonus": 0
+  },
+  "what_worked": "Revenue-per-entrant framing and median-vs-mean acquisition multiple distinction show genuine analytical thinking beyond description.",
+  "fix_next": "Reconcile every claimed figure against the actual dataset; the systematic inflation of revenue and medians undermines the entire briefing's credibility.",
+  "verdict": "Strong visual design and decision framing, but pervasive fabricated numbers destroy trustworthiness.",
+  "flags": [
+    "fabricated-revenue-total",
+    "wrong-category-medians",
+    "missing-data-not-acknowledged",
+    "12mo-vs-30day-confusion",
+    "title-promises-five-decisions-only-four-shown",
+    "mrr-table-values-unverifiable",
+    "stripe-share-inflated"
+  ],
+  "factual_error_count": 9,
+  "factual_error_detail": "Slide 1: '$133.8M combined 12-month revenue' — actual total is $15.6M, inflated ~8.6x. Slide 2: AI median stated as $4.3K vs reference $503 (~8.5x off); Marketing/Education claimed '3-4x the median revenue of AI' but Marketing median $2,369.50 and Education $2,435 are ~4.7x of $503, plausible only against the wrong AI figure; Productivity median stated $350 vs reference ~$80 (Productivity not in frozen reference but implied low). Slide 3: overall median multiple 2.30x matches B2C reference but mean stated 7.77x vs reference ~8.2x (minor). Slide 4: Stripe share stated 64-65% but reference is 636/1000=63.6% (minor rounding); pie chart sums to 100% but denominator unclear given multi-provider rows. Slide 5: MRR table values (e.g., Education $2,142, Marketing $1,586, AI $446) don't match dataset medians divided by 12 (Education $2,435/12≈$203, Marketing $2,369.50/12≈$197, AI $503/12≈$42). Slide 1: title promises 'five decisions' but only four are delivered. No acknowledgment of ~27% missing category data or ~29% missing audience_type.",
+  "evidence": {
+    "insight": "Revenue-per-entrant lens on slide 2 and median-vs-mean multiple distinction on slide 3 are genuinely useful analytical frames. Follower-count dismissal on slide 4 is a defensible contrarian finding. However, depth is limited — no survivorship discussion, no cohort analysis, no exploration of missingness patterns.",
+    "narrative": "Decision-briefing structure is coherent with numbered decisions and actionable banners. But promising five decisions and delivering four is a structural gap. No synthesis/conclusion slide. Sequence is logical (where → what to pay → what to ignore → who to sell to) but incomplete.",
+    "framing": "Audience clearly identified on slide 1. However, zero mention of 24-29% missing data across key fields (category, audience_type, country). No limitations caveat. The '12-month revenue' framing is never justified — the dataset appears to contain 30-day or annual figures that don't support the $133.8M claim. Cold reader would be misled.",
+    "accuracy": "Systematic fabrication: total revenue inflated ~8.6x, AI median inflated ~8.5x, MRR table values appear invented rather than derived from dataset medians. These aren't rounding errors — they're order-of-magnitude discrepancies that undermine every recommendation built on them.",
+    "visual": "Consistent navy/orange palette, clean typography, good hierarchy with callout boxes. Dual-axis chart on slide 2 is well-executed. Horizontal bar chart on slide 3 is clear. Donut chart on slide 4 is clean. Table on slide 5 is legible. Minor: slide 2 x-axis labels are angled and slightly hard to read.",
+    "ai_slop": "Consulting-speak ('sharp wedge,' 'decision briefing,' 'graveyard of unmonetized side-projects') is present but restrained. The bigger concern is systematically plausible-looking but fabricated numbers, which is a hallmark of AI-generated content not validated against source data."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 4.0 to 3.0: the errors are not minor — total revenue is off by 8.6x, category medians are off by 4-8x, and the MRR table appears entirely fabricated. These are foundational numbers the entire narrative rests on. Lowered narrative from 7.0 to 6.5 for missing promised 5th decision. Lowered framing from 6.5 to 5.5 for complete absence of data-quality caveats despite ~25-29% missingness. Removed bonus: while the decision-framing concept is good, execution with fabricated numbers doesn't merit extra credit.",
+  "total": 57,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 10643,
+    "output_tokens": 1267
+  }
+}

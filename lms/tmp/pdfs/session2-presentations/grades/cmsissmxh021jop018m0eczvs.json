@@ -1,0 +1,38 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7,
+    "accuracy": 5.5,
+    "visual": 8,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis-driven narrative with a genuine analytical angle distinguishing Revenue AI from generic AI.",
+  "fix_next": "The \"392 AI-tagged\" and \"20× Sales-AI\" claims use custom tag unions not verifiable against the frozen dataset; show your filter logic transparently.",
+  "verdict": "Polished, thesis-driven deck with creative segmentation but several unverifiable headline claims.",
+  "flags": [
+    "unverifiable-custom-segmentation",
+    "small-n-hero-claims",
+    "aggregate-revenue-rounded-down",
+    "concentration-stat-inflated"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 1: '$13.5M aggregate MRR' — dataset total 30-day revenue is $15.6M; unclear denominator or filter. Slide 1: '392 AI-tagged' — only 197 have AI as primary category; the union with market tags is plausible but unverifiable and not transparently defined. Slide 2: '58% MRR concentration from top 20 startups' — reference benchmark gives top-10 at 49.6%, so top-20 at 58% is plausible but presented without sourcing. Slide 1/3: '20× Sales-AI median MRR vs generic AI' — $9.0K/$446 ≈ 20× is internally consistent but the $446 generic-AI median differs from the reference $503 median for the AI category (197 companies), suggesting a different denominator or filter without explanation.",
+  "evidence": {
+    "insight": "Slide 3's bubble chart segmenting AI by market tag (Sales, Marketing, Analytics, etc.) and identifying Sales AI as a high-median, low-count wedge is a genuinely original analytical move. The Revenue AI vs Other AI comparison on Slide 4 with four metrics including valuation multiples adds decision-useful depth. The 'valuation disconnect' callout with named examples is actionable.",
+    "narrative": "Clear thesis on Slide 1 ('revenue infrastructure not AI'), built through landscape (Slide 2), discovery (Slide 3), evidence (Slide 4), color (Slide 5), recommendation (Slide 6), and summary (Slide 7). Each slide has a takeaway banner. The arc is coherent and purposeful, not a list of charts.",
+    "framing": "Slide 1 identifies audience (investors and founders), dataset scope (1,000 startups, frozen date), and the question being answered. Slide 2 notes 274 missing categories and 726 usable. However, the 'AI-tagged = category or market tag contains AI' footnote on Slide 1 is the only explanation of the custom segmentation that drives the entire thesis — this is insufficient for a cold reader to verify.",
+    "accuracy": "The $13.5M aggregate figure is ~$2.1M below the frozen total ($15.6M) with no clear explanation. The 392 AI-tagged count relies on a tag union that cannot be verified against the reference. The generic AI median of $446 vs reference $503 suggests a different filter. The 20× claim (n=20) and 6.7× claim both rest on small, custom-defined subgroups. The Sales-AI listed multiple footnote (n=4) is honestly disclosed but still used as a headline stat. Top-20 concentration at 58% is plausible but not in the reference.",
+    "visual": "Dark theme is consistent and well-executed across all 7 slides. The bubble chart on Slide 3 is the standout — log scale, labeled bubbles, reference line for generic AI median, and sidebar callout. Slide 4's paired horizontal bars are clean and readable. Slide 5's card grid for outliers is effective. Hierarchy is strong throughout: section labels, headlines, sub-headlines, takeaway banners. No chart junk.",
+    "ai_slop": "Minor: some text duplication artifacts on Slides 6-7 ('Marketing + Marketing + Analytics', 'another another generic wrapper', 'be the smartest model' repeated) suggest AI generation without final proofreading. The dark-theme aesthetic is polished but uniform. Overall not egregious slop."
+  },
+  "confidence": "medium",
+  "total": 74,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15030,
+    "output_tokens": 1076
+  }
+}

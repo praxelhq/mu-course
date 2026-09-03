@@ -1,0 +1,39 @@
+{
+  "slide_count": 15,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 8.5,
+    "accuracy": 6.5,
+    "visual": 7.5,
+    "bonus": 4
+  },
+  "what_worked": "Exceptional narrative arc with a genuine thesis, honest limitations section, and category-blind investment framework.",
+  "fix_next": "Median MRR figures and category ranking claims don't match the reference data; verify all computed medians against the raw dataset before presenting.",
+  "verdict": "Outstanding storytelling and structure, undermined by several unverifiable or incorrect median figures.",
+  "flags": [
+    "median-mrr-discrepancy",
+    "category-rank-unverifiable",
+    "bar-chart-unlabeled-categories",
+    "non-ai-denominator-unclear",
+    "education-median-mismatch"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 4 (p5): AI median MRR stated as $446 but reference median revenue is $503 (and MRR vs 30-day revenue conflation is unclear); non-AI median $277 is unverifiable. Slide 4: non-AI multiple stated as 2.30× matches B2C but the 'non-AI' bucket mixes B2B and B2C; AI multiple 3.15× is unverifiable. Slide 5 (p6): Claims AI ranks 8th of 21 categories on median MRR and Education is 4.8× AI — reference Education median is $2,435 vs AI $503, which is ~4.8×, but the chart shows the top category at 2141.5 not ~2435, suggesting the median computation differs. Slide 5: chart bars are numbered 1-12 with no category labels, making verification impossible and reducing chart honesty.",
+  "evidence": {
+    "insight": "The core thesis — AI has size but not momentum, and the label commands a premium over weaker growth — is genuinely original and decision-useful. The 2×2 matrix (slide 11) and 'hidden gems' arbitrage concept (slide 12) go well beyond describing charts. The 'what would change my mind' panel (slide 14/p17) shows rare intellectual honesty.",
+    "narrative": "Five-act structure (Hype → Myth → Winners → Map → Portfolio) builds a single coherent argument from question to recommendation. Each transition slide (p7) explicitly sharpens the question. The deck lands on a concrete $10M allocation with a specific ask. This is among the best narrative structures I've seen in student work.",
+    "framing": "Slide 2 (p3) clearly states the question, audience (investment committee), dataset scope (1,000 startups, frozen date), and roadmap. Limitations are handled explicitly on slide 14 with five specific caveats. The 'who gets scored' filter criteria on slide 8 are transparent. Missing-data handling for the 274 uncategorized rows is noted implicitly (n=197 AI, n=529 non-AI = 726 categorized).",
+    "accuracy": "AI count (197) and SaaS count (66) match reference. The ~2.9× ratio is correct. Category counts in the bar chart (p4) match reference values. However: median MRR $446 for AI doesn't match reference median of $503; the bar chart on p6 lacks category labels making verification impossible; the 'non-AI' asking multiple of 2.30× suspiciously matches the B2C median exactly; the 21-category count implies categories with very small n were included despite the min-8 filter shown. The 64% outside AI claim (6/9 = 66.7%, not 64%) on the final slide is a minor arithmetic error.",
+    "visual": "Clean, consistent dark/light theme throughout. Good use of highlight color (amber for AI). Tables are well-structured with interpretive columns. The 2×2 matrix is effective. However: the bar chart on p6 has numbered y-axis (1-12) instead of category names, which is a significant legibility failure. The bar chart on p4 similarly uses numbers instead of category names. The scatter plot on p11 is acknowledged as 'illustrative, not to scale' which is honest but reduces analytical value.",
+    "ai_slop": "Minimal slop. The prose is sharp and specific rather than generic. Each startup in the portfolio has a concrete one-line description. The 'what would change my mind' section is the opposite of AI filler. Minor consulting-speak in the gold-rush metaphor but it's earned by the analysis."
+  },
+  "confidence": "medium",
+  "total": 84,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 29631,
+    "output_tokens": 1115
+  }
+}

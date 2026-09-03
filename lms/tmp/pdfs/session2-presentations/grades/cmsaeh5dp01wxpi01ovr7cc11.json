@@ -1,0 +1,39 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7,
+    "accuracy": 5.5,
+    "visual": 8,
+    "bonus": 2
+  },
+  "what_worked": "Strong investor-oriented thesis with a coherent arc from market shape to actionable buy/avoid list.",
+  "fix_next": "Multiple median figures are materially wrong (Education, Marketing, AI, others); verify every number against the actual dataset before presenting.",
+  "verdict": "Compelling narrative and design undermined by several incorrect category medians.",
+  "flags": [
+    "median-errors",
+    "total-revenue-mislabeled",
+    "zero-revenue-count-wrong",
+    "missing-data-not-acknowledged",
+    "denominator-claim-unsupported"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 1/2: '$13.5M monthly recurring revenue' — total 30-day revenue is $15.6M, not $13.5M. Slide 4: Education median shown as $2,142 vs reference $2,435; Marketing $1,586 vs $2,369.50; AI $446 vs $503; Content Creation $1,254 vs $1,237.50 (minor); SaaS $303 vs $200.50; E-comm $155 vs $387. Several are materially off. Slide 6: Says 197 earn $0 — reference says 216 have zero revenue, not 197. Also says '803 earning revenue' (1000-197=803) but should be 784. The '~650 live businesses' denominator claim is unsupported. Slide 4: 'AI is 1 in 5 listings' — 197/726 categorized = 27%, not 20% of all 1000 (197/1000 ≈ 20% only if ignoring 274 missing).",
+  "evidence": {
+    "insight": "Slide 4's crowd-vs-money framing (popular ≠ profitable) is genuinely useful. Slide 7's arbitrage argument (domain authority unpriced) adds depth. Slide 5's correlation hierarchy is decision-relevant. Slide 8 names specific assets with multiples — goes beyond description.",
+    "narrative": "Clear five-beat arc: what is TrustMRR → market shape → what drives value → pricing → investment thesis. Executive summary on slide 9 recaps cleanly. The 'if I had $100k' closer lands the story. Sequence is purposeful, not a list.",
+    "framing": "Slide 1-2 orient a cold reader well with the Zillow analogy. However, no mention of 274 missing category values (27% of data) which materially affects category analysis. No limitations slide. Audience (potential acquirer/investor) is implicit but clear.",
+    "accuracy": "Total revenue wrong ($13.5M vs $15.6M). Zero-revenue count wrong (197 vs 216). Multiple category medians materially off. The '1 in 3 dead' claim uses wrong numerator. The correlation figures on slide 5 are plausible but unverifiable against reference. The 2.3× B2C median aligns with reference 2.30×. Top-10 concentration claim of 82% for top 100 is plausible but not directly verifiable against the 49.6% top-10 share benchmark.",
+    "visual": "Clean, consistent design system with good hierarchy. Lorenz curve on slide 3 is well-executed with annotation. Bar chart on slide 4 uses color coding effectively. Slide 8's buy/avoid cards are immediately scannable. No chart junk. Good restraint throughout.",
+    "ai_slop": "Minimal slop. The 'dyno-verified revenue, not brochure horsepower' metaphor is slightly forced. Overall the writing is sharp and specific rather than generic filler."
+  },
+  "confidence": "high",
+  "total": 74,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19202,
+    "output_tokens": 966
+  }
+}

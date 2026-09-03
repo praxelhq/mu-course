@@ -1,0 +1,42 @@
+{
+  "slide_count": 4,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 6,
+    "framing": 5,
+    "accuracy": 5.5,
+    "visual": 6,
+    "bonus": 0
+  },
+  "what_worked": "Flagging 305 zero-growth rows as likely untracked data is honest and analytically useful.",
+  "fix_next": "Deliver on the title's promise: show which categories or companies are actually moving, not just that size doesn't predict growth.",
+  "verdict": "Narrow, honest four-slide read that never answers its own headline question.",
+  "flags": [
+    "narrow-scope",
+    "thin-deck",
+    "title-promise-undelivered",
+    "no-category-analysis",
+    "missingness-undisclosed",
+    "histogram-bins-unclear"
+  ],
+  "factual_error_count": 1,
+  "factual_error_detail": "Slide 2: visible bar values (96+346+51+92 = 585 shown, plus unlabeled bars) don't clearly reconcile with callout totals 344+305+337=986; 14 rows unaccounted for vs n=1000. Minor but sloppy. Slide 3 Spearman ≈ 0.18 is asserted without sourcing; reference Pearson r=0.025 is for a different pair, so unverifiable but not clearly wrong.",
+  "evidence": {
+    "insight": "Only real finding is that revenue size and 30-day growth are weakly correlated (Spearman ~0.18) and that 305 flat-growth rows are suspect. No exploration of categories, providers, geography, or audience type—misses most of the dataset's richness.",
+    "narrative": "Three-beat arc (split → size≠speed → implication) is coherent but thin. The title 'Who's Actually Moving?' sets up an identification question the deck never answers—no company or category breakdown is provided.",
+    "framing": "Dataset size and freeze date stated on slide 1. No audience explicitly named. No mention of missingness (category 27%, country 24%) which directly affects any growth segmentation. No scope/limitations slide.",
+    "accuracy": "Slide 2 callouts 344+305+337=986, leaving 14 rows unaccounted from n=1000 with no explanation. The 216 zero-revenue rows likely overlap with the 305 flat-growth group but this is never clarified. Spearman ≈ 0.18 is plausible but unverifiable against reference data. No causal overclaims, which is good.",
+    "visual": "Clean palette, readable bar charts, consistent footer. Slide 4 placeholder colored squares are decorative filler. Only two real charts across four slides feels sparse. Adequate but unremarkable.",
+    "ai_slop": "Slide 4 three-card layout with decorative squares feels template-generated. Language is generally substantive, not inflated."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Reduced insight from 6→5.5 (single finding, no category/provider exploration), narrative from 6.5→6 (title promise undelivered), framing from 5.5→5 (no missingness disclosure, no explicit audience), accuracy from 6→5.5 (bin reconciliation gap unexplained), removed bonus point (nothing beyond rubric expectations in a 4-slide deck with one finding).",
+  "total": 56,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 7802,
+    "output_tokens": 831
+  }
+}

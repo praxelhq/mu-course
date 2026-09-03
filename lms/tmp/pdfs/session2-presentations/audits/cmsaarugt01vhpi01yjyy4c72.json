@@ -1,0 +1,41 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 9,
+    "accuracy": 6.5,
+    "visual": 8,
+    "bonus": 2
+  },
+  "what_worked": "Three-way decomposition of zero-MRR startups is genuinely original and the synthesis slide ties all findings together.",
+  "fix_next": "Reconcile the $133.8M total and 197 zero-MRR count against the frozen dataset's $15.6M and 216 zeros before presenting.",
+  "verdict": "Excellent narrative and framing undermined by several unverifiable or incorrect headline figures.",
+  "flags": [
+    "revenue-total-mismatch",
+    "zero-mrr-count-discrepancy",
+    "top10-share-slightly-off",
+    "combined-mrr-132.9M-unverifiable",
+    "19.7-vs-21.6-percent-zero"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 2: $133.8M combined revenue vs frozen total $15,596,344.59 — off by ~8.6×, likely confusing a field or multiplying MRR×12 on wrong column. Slide 2: 19.7% zero-MRR (197 rows) vs frozen 216 zero-revenue rows (21.6%). Slide 3/4: 48.0% top-10 share vs frozen 49.6% (minor). Slide 4: $132.9M trailing-12-month footnote inherits the same inflated total.",
+  "evidence": {
+    "insight": "Slide 8's never-started/stopped/non-subscription taxonomy is decision-useful and original. Slide 7's anonymity-revenue paradox is a strong finding. B2B/B2C price-vs-volume argument (slides 5-6) goes beyond description.",
+    "narrative": "Four findings previewed on slide 2, each developed across 1-2 slides, synthesized on slide 9 into a single thesis. Slide 10 closes with limitations. Arc is tight and purposeful with a clear landing.",
+    "framing": "Slide 2 sets scope clearly (cross-sectional, no time series). Slide 10 dedicates a full page to limitations including MNAR missingness, arithmetic inconsistencies, and varying coverage. Cohort footnotes on every analytical slide.",
+    "accuracy": "The $133.8M headline is the most serious problem — the frozen dataset totals ~$15.6M, making this figure roughly 8.6× too high and unverifiable. The 197 zero-MRR count doesn't match the 216 zero-revenue rows. Top-10 share stated as 48.0% vs frozen 49.6%. Directional claims about skew, B2B/B2C, and anonymity appear sound, and median usage is appropriate.",
+    "visual": "Clean navy/gold/teal palette, strong typographic hierarchy, well-chosen chart types (cumulative curve, horizontal bar). Consistent template with numbered sections. Slight visual sameness but justified by content density. No chart junk.",
+    "ai_slop": "none — every slide carries specific numbers tied to stated cohorts, no generic filler or decorative graphics"
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 7.0 to 6.5: the $133.8M total revenue figure is ~8.6× the frozen dataset total ($15.6M), which is a major headline error repeated on slides 2 and 4. The zero-MRR count discrepancy (197 vs 216) compounds this. Reduced bonus from 3 to 2: the work is strong but the foundational revenue figure being wrong at this magnitude limits confidence in derived statistics.",
+  "total": 84,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 19120,
+    "output_tokens": 937
+  }
+}

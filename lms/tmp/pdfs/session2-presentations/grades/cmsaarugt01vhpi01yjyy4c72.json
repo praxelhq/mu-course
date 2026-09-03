@@ -1,0 +1,37 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 9,
+    "accuracy": 7,
+    "visual": 8,
+    "bonus": 3
+  },
+  "what_worked": "Exceptional narrative discipline: four findings build one thesis about hidden concentration and misleading summary statistics.",
+  "fix_next": "The $133.8M TTM revenue figure (slide 2) doesn't match the frozen dataset's $15.6M 30-day total; verify the denominator and reconcile.",
+  "verdict": "Rigorous, well-argued story with a few numerical discrepancies that need reconciling.",
+  "flags": [
+    "revenue-total-mismatch",
+    "zero-mrr-count-discrepancy",
+    "top10-share-slightly-off"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 2: $133.8M TTM revenue is not directly verifiable from the 30-day total of $15.6M (×12 ≈ $187M, not $133.8M); the figure may use a different revenue window but is presented without derivation. Slide 2: 19.7% zero-MRR (197 firms) vs reference 216 zero-revenue rows (21.6%); the distinction between zero-MRR and zero-revenue is plausible but not explained. Slide 3: 48.0% of MRR with top 10 firms vs reference 49.6% top-10 revenue share — minor but notable. Slide 7: 14.4% anonymous (116/803) vs reference 129/1000=12.9% overall; the cohort restriction to MRR>0 explains the denominator shift but the 28.1% MRR share differs from the reference 26.5% revenue share, suggesting possible miscalculation.",
+  "evidence": {
+    "insight": "Slide 8's three-way decomposition of zero-MRR (never started / stopped / non-subscription) is genuinely original and decision-useful. Slide 3's 16.2× mean-to-median ratio is a sharp framing of skew. The B2B/B2C price-vs-volume analysis (slides 5-6) goes beyond description to argue a mechanism.",
+    "narrative": "Four numbered findings announced on slide 2, each developed across 1-2 slides, then synthesized on slide 9 into a single thesis ('every headline number is set by firms you cannot see'). Slide 10 closes with limitations. The arc is tight and purposeful.",
+    "framing": "Slide 2 sets scope (1,000 rows, cross-sectional, no time series), defines cohorts, and previews findings. Slide 10 dedicates an entire page to limitations including missing-not-at-random, arithmetic inconsistencies, and coverage variation. Audience is implicitly anyone using TrustMRR benchmarks.",
+    "accuracy": "Core claims about skew, B2B/B2C pricing gap, and anonymity concentration are directionally correct and well-sourced to cohort footnotes. However, the $133.8M TTM figure is unverifiable from the frozen dataset, the zero-MRR count (197 vs 216) needs clarification, and the top-10 share (48.0% vs 49.6%) is slightly off. The deck is careful to use medians and state cohort sizes, which partially compensates.",
+    "visual": "Clean, consistent template with strong hierarchy: large headline numbers, supporting stats in callout boxes, minimal chart decoration. The cumulative revenue curve (slide 4) and horizontal bar chart (slide 7) are well-chosen. Color palette is restrained (navy, gold, teal). Slight sameness across slides but earned by content density.",
+    "ai_slop": "none — no generic filler, no decorative graphics, no inflated language. Every slide carries specific numbers tied to stated cohorts."
+  },
+  "confidence": "high",
+  "total": 86,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19135,
+    "output_tokens": 984
+  }
+}

@@ -1,0 +1,105 @@
+SLIDE 1 · THE DATA
+
+One flat table of 1,000 businesses — and a visible defect rate
+
+    1,000                                                  262                                                    80%                                                    52
+    Businesses in the table                                Of them listed for sale                                Of those 262 for-sale listings                         For-sale listings that trip
+    29 fields, one flat sheet                              $86.8M asked in total                                  trip at least one screen rule                          no rule at all
+
+
+The table holds seven entities                                                                       The screen: 12 rules on price, business health and data trust
+                                                                                                     Seven most-triggered rules — count of businesses, out of all 1,000
+   Business                        identity, country, category
+
+   Financials                      revenue, MRR, growth, subs
+
+   Listing                         on_sale, price, multiple
+
+   Description                     value prop, pricing, persona
+
+   Payment providers               many-to-many
+
+   Markets                         many-to-many (JSON)
+
+   Countries                       lookup
+
+
+Source: TrustMRR 1,000-row dataset, frozen 30 Jul 2026. Rules read only fields already in the table. Two multi-valued columns (payment_provider, markets_json) drive the many-to-many splits.
+SLIDE 2 · THE THESIS
+
+The market does not price the defect
+     Clean listings ask $37k against $35k for flagged ones — 6% more — yet carry
+     3.3× the MRR, 3.6× the subscribers and 2.1× the domain authority.
+Each panel compares median values across the 262 for-sale listings. Clean = trips no rule (52) · Flagged = trips one or more (210) · Severe = trips three or more (87)
+
+
+
+
+Flagged listings also carry the higher multiple — a 2.4× median against 1.75× for clean ones. A buyer pays more per dollar of revenue for the weaker asset.
+
+Medians, not means: the pool contains a handful of $1M+ listings that would distort an average.
+SLIDE 3 · WHAT WEAKENS IT
+
+The thesis rests on a dataset with holes in it
+How often each field is simply empty                                                         Three limits worth stating
+
+                                                                                                Revenue cannot be cross-checked
+                                                                                                Traffic is the one independent test of whether revenue is
+                                                                                                real. It is missing for 82% of records, so the
+                                                                                                screen cannot run it.
+
+                                                                                                Flags are counted, not weighted
+                                                                                                A 5× multiple currently scores the same as a missing
+                                                                                                website. Weighting would move the $28.0M figure.
+
+                                                                                                One frozen snapshot
+                                                                                                Dated 30 Jul 2026, with no history. Growth reads as a
+                                                                                                single 30-day number, so a good month and a good
+                                                                                                trend look identical.
+
+
+Net effect: the 80% defect rate is a floor, not a ceiling. Fields that would catch more defects are the ones most often empty.
+Missingness computed across all 1,000 records.
+SLIDE 4 · DEAL RISKS
+
+A clean screen still leaves a thin, small-ticket pipeline
+                                                                                 The pipeline is 52 listings
+                                                                                 Screening 1,000 businesses yields 52 candidates. Any further
+                                                                                 filter — category, geography, ticket size — cuts into single
+                                                                                 digits fast.
+                                                                                 More than half sit under $50k
+                                                                                 29 of 52 clean listings are below $50k, and 13 below $10k.
+                                                                                 Diligence and transfer costs consume a large share of a
+                                                                                 deal that size.
+                                                                                 Clean data is not a clean business
+                                                                                 The screen tests what is reported, not what transfers.
+                                                                                 Key-person dependency, platform lock-in and undisclosed
+                                                                                 churn all survive it.
+                                                                                 Concentration, and a blind spot
+                                                                                 AI is the most common named category among for-sale
+                                                                                 listings (54 of 262), so a category correction hits much of
+                                                                                 the pool. A further 53 record no category at all.
+
+52 clean listings · $9.3M combined asking value · median $37k · 29 below $50k.
+SLIDE 5 · RISK AND RETURN
+
+The screen is the edge
+What the screen removes, stage by stage
+                                                                                                        $28.0M                         32%
+                                                                                                        Asking value screened out      That $28.0M as a share
+                                                                                                        (listings tripping 3+ rules)   of the $86.8M asked
+
+
+
+                                                                                                        13.3×                          1.75×
+                                                                                                        Median MRR of clean            Median revenue multiple
+                                                                                                        versus severe listings         paid on clean listings
+
+
+The reward
+The defect is visible in fields the platform already publishes, but it is not reflected in price. A buyer who screens pays a 6%
+premium and a lower multiple for roughly triple the recurring revenue, while sidestepping the $28.0M of asking value
+concentrated in listings that fail on three or more independent measures at once.
+The edge is not picking winners. It is refusing to buy from a pool where four in five for-sale listings trip a rule.
+All figures derived from the frozen dataset; see TrustMRR Risk Flags.xlsx for the per-listing screen.
+

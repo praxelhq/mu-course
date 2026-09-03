@@ -1,0 +1,38 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Strong thesis about power-law concentration, well-sequenced narrative arc targeting a specific investor audience.",
+  "fix_next": "Multiple numeric claims deviate materially from the dataset (MRR vs 30-day revenue, top-10 share, B2B multiple, Education median); verify every figure against raw data.",
+  "verdict": "Compelling narrative undermined by systematic unit confusion and several wrong numbers.",
+  "flags": [
+    "mrr-vs-30day-revenue-confusion",
+    "fabricated-looking-histogram",
+    "multiple-numeric-errors",
+    "unverifiable-correlation-claims"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 2: $13.47M called 'Total MRR/month' — dataset provides 30-day revenue ($15.6M), not MRR; ARR/T12M/all-time figures are extrapolations not in dataset. Slide 3: Median $282 and Mean $13,472 don't match dataset (total 30-day rev $15.6M / 1000 = $15,596 mean; median should be computed from 30-day revenue). Histogram labeled 'illustrative' — bins don't sum to 1000 (340+300+180+110+55+15=1000, OK, but labeled 'illustrative' suggesting fabrication). Slide 4: Top-10 share stated as 48% vs reference 49.6% — close but rounded aggressively; title says 'half' which is acceptable. Slide 5: AI total stated $1.8M vs reference $2.36M; AI median $446 vs reference $503; Education median $2,141 vs reference $2,435. Slide 7: B2B/B2C multiple stated 5.7x ($1,036/$181) — reference medians yield ~2.35x; these numbers appear fabricated or use different field. Slide 8: Correlation of 0.02 for Twitter followers with MRR and 0.21 for domain authority — not verifiable from provided reference but plausible; founded-year correlation is 0.025 which is similar magnitude. Slide 9: 2.3x median revenue multiple — reference says B2B 2.35x/B2C 2.30x for listed companies, so this is roughly consistent.",
+  "evidence": {
+    "insight": "Power-law framing (slide 4), B2B vs B2C comparison (slide 7), India monetization gap (slide 6), and micro-M&A market sizing (slide 9) show genuine analytical ambition beyond chart description. The 'so what' slide synthesizes actionable takeaways.",
+    "narrative": "Clear numbered sequence from scale → distribution → power law → categories → geography → audience → contrarian → M&A → synthesis. Each slide builds toward the thesis that bootstrapped startups follow venture-like concentration. Landing on slide 10 is effective.",
+    "framing": "Slide 1 sets audience (capital allocators) and context (verified data). Slide 2 caveat about 274 missing categories is good. However, the deck never clarifies that the dataset field is '30-day revenue' not MRR, creating a systematic framing error throughout.",
+    "accuracy": "Systematic confusion of 30-day revenue with MRR inflates all derivative calculations. AI total off by ~$500K (slide 5). B2B/B2C 5.7x multiple (slide 7) contradicts reference 2.35x — a major error that is a headline claim. Education median off by ~$300. Total revenue stated as $13.47M vs actual $15.6M. The histogram is labeled 'illustrative' which is honest but undermines the 'API-verified' branding.",
+    "visual": "Consistent dark theme with gold/cyan accent hierarchy. Clean card layouts. Charts are simple and readable. The cumulative share chart (slide 4) has an odd -15% y-axis start. Bar charts are appropriately minimal. No chart junk. Slight visual sameness across slides but restrained and professional.",
+    "ai_slop": "Some consulting-style language ('uncomfortable truth,' 'contrarian read,' 'capital allocators') borders on inflated framing but is purposeful rather than filler. The 'illustrative' histogram is a yellow flag — presenting a fabricated chart shape in a deck that brands itself as 'API-verified' is contradictory."
+  },
+  "confidence": "high",
+  "total": 68,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19387,
+    "output_tokens": 1131
+  }
+}

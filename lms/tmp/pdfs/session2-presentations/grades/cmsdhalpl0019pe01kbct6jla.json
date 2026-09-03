@@ -1,0 +1,39 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 6.5,
+    "visual": 6.5,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis on power-law dynamics, well-supported with consistent data points and actionable recommendations.",
+  "fix_next": "Stripe revenue share is 86.7% but reference is 86.8%; B2B ~4x claim uses means while ignoring median multiples (~2.3x); verify all provider figures.",
+  "verdict": "Solid, thesis-driven analysis with good data literacy but several accuracy slips.",
+  "flags": [
+    "stripe-revenue-share-off",
+    "duplicate-count-contradicts-reference",
+    "b2b-mean-comparison-without-median-caveat",
+    "anonymous-count-130-vs-129",
+    "consulting-tone"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2/8: Stripe revenue share stated as 86.7% — reference shows $13,526,762/$15,596,345 = 86.7%, actually close but company count 636 vs stated 63.6% (636/1000=63.6%, OK). Slide 3: Anonymous listings stated as 130 (13.0%) — reference says 129 (12.9%), minor but wrong. Slide 3: States 0 duplicate rows, which matches reference, but slide 10 then identifies Draft AI as a duplicate — contradictory (reference confirms 0 duplicates, so the 'duplicate' claim on slide 10 is fabricated or at minimum unverifiable). Slide 2: B2B average $22,638 vs B2C $5,723 — reference gives means as implied by multiples 7.97x and 8.44x of medians; the ~4x claim is plausible but the exact figures are unverifiable and the deck doesn't note the 288 missing audience_type rows. Slide 4: Mean 30-day revenue stated as $15,596 — total is $15,596,344.59/1000 = $15,596.34, OK. Slide 6: Marketing average $31,364 — $1,317,303/42 = $31,364, checks out. AI mean $11,963 — $2,356,676/197 = $11,963, checks out. Slide 8: US revenue share 63.1% — not directly verifiable from reference but plausible. The 'duplicate listing' claim on slide 10 contradicts the dataset's 0-duplicate status — this is a material fabricated finding.",
+  "evidence": {
+    "insight": "Slide 9 delivers four genuinely interpretive reads: followers as vanity metric, valuation market inefficiency (r=-0.04 between multiple and growth), stealth-company revenue concentration, and category size vs quality divergence. These go beyond chart description.",
+    "narrative": "Clear power-law thesis introduced on slide 2, reinforced through distribution (slide 5), segmentation (slide 6), correlation (slide 7), and trends (slide 8), landing on prioritized recommendations (slide 11) and conclusion (slide 12). Coherent arc.",
+    "framing": "Slide 3 explains dataset provenance, missingness rates, and anonymization. Slide 10 flags data quality issues. However, the deck never explicitly states who the audience is or what decision it serves beyond generic 'internal discussion.' Missing audience_type denominator caveat on slide 6.",
+    "accuracy": "Most top-line figures check out (49.6% top-10 share, $15.6M total, AI category stats). However: anonymous count 130 vs 129; fabricated duplicate-listing claim on slide 10 contradicts 0-duplicate reference; B2B/B2C comparison uses means without noting 288 missing audience_type rows could bias results; category chart labels show $1M for multiple categories without distinguishing actual values ($1.3M Marketing vs $0.7M SaaS vs $0.5M Education).",
+    "visual": "Clean, consistent template with navy/gold palette. Charts are legible but the category bar chart (slide 6) rounds all non-AI categories to '$1M' losing discrimination. Pie chart on slide 8 has cramped labels. Correlation heatmap (slide 7) is well-executed. No decorative-but-meaningless graphics. Some visual sameness across slides.",
+    "ai_slop": "Subtitle 'Consultant-level reads beyond the summary statistics' on slide 9 is mildly inflated language. 'Confidential — For Internal Discussion' framing is performative. Overall the deck avoids major slop but has a polished-consulting-template feel throughout."
+  },
+  "confidence": "high",
+  "total": 72,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 23973,
+    "output_tokens": 1163
+  }
+}

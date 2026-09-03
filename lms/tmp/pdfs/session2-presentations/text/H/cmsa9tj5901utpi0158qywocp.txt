@@ -1,0 +1,133 @@
+TrustMRR Startup
+Database: Exploratory
+Analysis
+Analysis of ~700 self-reported indie & bootstrapped startups (founders
+list revenue, MRR, growth, subscribers, and asking price). Concise, data-
+forward insights for investors, analysts, and founders.
+What is TrustMRR?
+                    TrustMRR is a public, self-reported registry where indie founders
+                    list business metrics and (often) asking prices. The dataset used
+                    here contains ~700 entries with fields including:
+
+                       Monthly Recurring Revenue (MRR) / reported revenue
+                       Growth % (monthly or annual when provided)
+                       Subscriber / user counts
+                       Payment processor and geography
+                       Asking price or sale intent
+
+                    Population skews toward solo founders and small teams — high
+                    signal for bootstrapped marketplace dynamics.
+Dataset Snapshot
+
+Entries                                   Dominant Metrics                     Founder Profile
+~700 self-reported startups (global)      MRR, growth %, subscribers, asking   Predominantly solo or small-team
+                                          price                                indie operators
+
+
+
+Data Quality
+Self-reported — contains zeros, ranges, and optimistic estimates
+The Long Tail of Revenue
+Revenue is strongly power-law distributed. A handful of outliers
+(examples: Stan≈ $2.8M/mo, Comp AI ≈ $575K/30 days, Postiz ≈
+$177K/mo, Brand On Demand/Supliful ≈ $51M all-time) sit far above a long
+tail of listings reporting $0–a few hundred dollars/month. Many rows
+show 0 MRR or early-stage experiments.
+
+
+      Implication: median metrics understate the economic impact of
+      top outliers — treat mean and median separately and inspect
+      tails.
+Revenue Distribution (Histogram)
+MRR range
+
+
+
+
+$0
+
+
+
+
+     0      20      40       60       80      100      120      140      160     180     200      220      240     260      280
+                                                         Number of startups
+
+
+Most listings cluster at or near zero MRR; a small number scale into meaningful revenue bands. Use log-scale analysis for
+modeling valuation or growth dynamics.
+Category Breakdown
+                                                 Categories reflect the 2024–2026 AI-tool boom: AI is
+                                                 the dominant tag (~37%). Fintech is small (16
+                                                 companies) with a low median MRR (~$500) and many
+                     AI · 37.14%
+                                                 zeros, indicating even traditionally high-value
+                                                 verticals are early-stage in this dataset.
+                     SaaS · 17.14%
+
+                     Productivity · 9.29%
+
+                     Content / Creator · 7.14%
+                                                       Signal: category tag frequency ≠ maturity. AI
+                                                       tag proliferation includes many narrow
+                     Marketing · 5.71%
+                                                       utilities and experimental tools.
+                     Fintech · 2.29%
+
+                     Other · 21.29%
+Geography & Payment Infrastructure
+
+
+
+                                                            Geography: US-dominant but truly global — notable clusters
+                                                            in India, France, UK, and Germany plus many smaller
+                                                            countries. Distribution highlights global indie-hacker
+                                                            activity.
+
+
+
+
+Stripe                                 RevenueCat                               Niche Processors
+Default processor for most web-based   Mostly mobile subscription apps.         Lemon Squeezy, Paddle, Whop, Dodo
+SaaS listings.                                                                  Payments — indicators of scrappy,
+                                                                                indie-hacker models.
+The "For Sale" Market
+Many founders list an asking price and revenue multiple. Observed
+patterns:
+
+   Typical indie SaaS multiples: ~1x–5x annual revenue for pragmatic
+   listings
+   Occasional extreme asks: 100x+ — often pricing on potential rather
+   than trailing metrics
+   Zero or 0x asks: fire sales, strategic transfers, or symbolic listings
+
+
+      Valuation divergence reflects heterogeneous goals — hobby
+      sellers, growth-seekers, and speculators coexist in the market.
+Synthesis — What the Data Says
+
+
+Large Winner Effect                          Category Noise                         Global, Indie-Focused
+A tiny subset drives most dollar             AI tag dominance reflects hype and     Geographically diverse with
+value; mean ≠ median. Expect high            tooling proliferation; many listings   payment stack signals that identify
+variance when modeling ARR or exit           are narrow utilities.                  product form factor (web, mobile,
+pools.                                                                              micro-SaaS).
+
+
+
+
+Valuation Disconnect
+Asking prices often reflect narratives or optionality, not only trailing revenue.
+Key Takeaways & Next Steps
+
+Key Takeaways                                                  Recommended Next Steps
+1. Power-law revenue: plan models around heavy-tail             Deep-dive top percentile (~5–10%) to characterize
+   behavior.                                                    breakout features and channels.
+2. AI category surge — high volume, mixed quality.              Segment buyers vs. sellers to quantify intent and closing
+3. Payment processors act as a proxy for product type and       velocity.
+   maturity.                                                    Enrich with verified revenue or payment-linked data to
+4. For-sale listings show valuation noise; multiples vary by    reduce noise from zeros/estimates.
+   seller motivation.
+                                                                   If desired: prepare granular models (cohort, survival,
+                                                                   and valuation sensitivity) using a vetted subset of
+                                                                   50–100 verified entries.
+

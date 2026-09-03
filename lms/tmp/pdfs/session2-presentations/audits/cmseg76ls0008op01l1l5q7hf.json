@@ -1,0 +1,43 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 6.5,
+    "accuracy": 5,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "Stealth-company and listed-for-sale growth-deceleration insights are genuinely non-obvious and decision-useful for acquirers.",
+  "fix_next": "Reconcile aggregate revenue ($13.5M vs $15.6M actual), B2B/B2C multiplier, and category medians against the source data before publishing.",
+  "verdict": "Strong visual storytelling undermined by several material numerical errors across key claims.",
+  "flags": [
+    "aggregate-revenue-wrong",
+    "b2b-multiplier-inflated",
+    "category-medians-diverge",
+    "top1pct-share-not-top10-share",
+    "stealth-median-unverifiable",
+    "no-survivorship-bias-caveat",
+    "84x-growth-gap-unverifiable"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1: Aggregate MRR stated $13.5M vs reference $15.6M (~$2M gap). Slide 2/6: 5.7× B2B vs B2C claim uses medians $1,036/$181=5.7× but reference on-sale medians are 2.35×/2.30×; the 5.7× may conflate MRR with different subsets and is not verifiable from reference. Slide 4: top-10 share 47.9% stated as top 1%; reference top-10 share is 49.6% (close but labeled as top 1% = 10 startups, which is correct for 1000; the 47.9% vs 49.6% is a ~1.7pp discrepancy). Slide 7: AI median $446 vs reference $503; Marketing median $1,586 vs reference $2,369.50; Education median $2,142 vs reference $2,435; Content Creation median $1,254 vs reference $1,237.50 (close). Slide 2: 48% top-1% claim rounds 47.9% but reference top-10 share is 49.6%, suggesting different calculation.",
+  "evidence": {
+    "insight": "Slide 10 stealth-company premium, slide 9 for-sale deceleration, slide 7 AI-crowding-vs-revenue, and slide 8 SEO-vs-social are all specific and actionable. Depth is good but not exceptional—most analyses are single-variable comparisons without controls.",
+    "narrative": "Clear eight-chapter arc from concentration through growth, audience, category, channels, marketplace, visibility, and pricing, landing with dual-audience recommendations. Thesis ('what's visible is not what's winning') threads through consistently. Slight repetitiveness in layout dampens momentum.",
+    "framing": "Slide 3 missingness disclosure is strong with a clear 30% threshold rule. However, no explicit survivorship-bias or self-report-bias caveat beyond the subtitle's 'self-reported.' Slide 12 recommendations lack hedging given data limitations. Audience identified only on final slide.",
+    "accuracy": "Aggregate revenue understated by ~$2M. Several category medians diverge materially from reference (AI off by ~11%, Marketing off by ~33%). The 5.7× B2B/B2C multiplier cannot be reconciled with reference on-sale medians. Top-1% share 47.9% vs reference top-10 share 49.6% is a modest discrepancy. Zero-revenue 20% is close to 21.6%. Country/category missingness percentages are accurate.",
+    "visual": "Consistent navy/orange palette with clear hierarchy. Chart types appropriate (horizontal bars, vertical bars, percentile ladder). Annotations and callout stats well-placed. Template sameness across all content slides is noticeable but functional. Legibility is strong throughout.",
+    "ai_slop": "Mild consulting-speak ('Four Numbers That Define This Market') but all content is dataset-specific. No generic filler paragraphs. Layout template is repeated identically but carries substantive content each time. No decorative or fabricated charts detected."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing by 0.5 for absent survivorship-bias caveat and late audience identification. Retained other preliminary scores as supported by evidence. Accuracy issues are real and material but the preliminary 5.0 already reflects them adequately.",
+  "total": 68,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 22503,
+    "output_tokens": 1116
+  }
+}

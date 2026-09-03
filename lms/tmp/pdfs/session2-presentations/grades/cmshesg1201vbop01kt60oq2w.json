@@ -1,0 +1,37 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 8.5,
+    "accuracy": 7,
+    "visual": 8.5,
+    "bonus": 4
+  },
+  "what_worked": "Exceptional narrative discipline: a single investment thesis with honest risk callouts and a transparent screening funnel.",
+  "fix_next": "The dataset has 1,000 rows, not 8,782; this foundational claim undermines trust in every downstream filter count and denominator.",
+  "verdict": "Outstanding storytelling and craft, undermined by an unexplained row-count discrepancy.",
+  "flags": [
+    "row-count-mismatch",
+    "unverifiable-filter-counts",
+    "possible-external-data"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 1/2: Claims 8,782 rows and 116 countries; frozen dataset has 1,000 rows (possibly used a larger source file, but assignment specifies the frozen 1,000-row dataset). Slide 3: Category counts (e.g., AI n=364, Marketing n=72) do not match reference (AI 197, Marketing 42); sector growth ratios therefore unverifiable. Slide 3: 'Entertainment n=13' is not in the reference category list at all, suggesting either a different dataset or fabricated segmentation.",
+  "evidence": {
+    "insight": "Slide 3's 'biggest is not fastest' analysis with run-rate/trailing-year ratio is a genuinely original metric. Slide 4's MRR-vs-collected-revenue discrepancy flagged proactively. Slide 7's 'what I left on the table' with specific reasons for exclusion shows real analytical depth. The AI Trap callout (46% shrinking vs 23% growing) is a strong contrarian insight.",
+    "narrative": "Perfect funnel structure: 8,782 → 9 filters → 3 picks → portfolio sizing → rejected alternatives → data-quality caveat. Every slide advances one argument. The closing 'read the data with one hand on the brake' is an earned landing, not a platitude. Each company profile pairs 'the case' with 'what could break it.'",
+    "framing": "Slide 1 immediately establishes audience (investment committee), mandate (minority stake, developing-economy HQ), and scope. Slide 2's filter funnel makes the methodology transparent. Limitations acknowledged explicitly on slide 7 (self-reported data, 51% zero-growth caveat, missing fields).",
+    "accuracy": "The 8,782-row claim is the central problem: the frozen dataset has 1,000 rows. All filter counts (1,706 developing-economy, 434 with 9+ months, etc.) are unverifiable against the reference. Category counts diverge significantly from reference (AI 197 vs 364 claimed). Individual company metrics (MRR, subscribers, growth rates) cannot be verified against the reference but are internally consistent and plausible. The self-critical notes about data quality partially compensate.",
+    "visual": "Dark theme with restrained yellow-green accent is consistent and purposeful. Slide 2's horizontal bar funnel is clean and immediately readable. Slide 3's bar chart with 1.00 reference line is well-annotated. Company profile slides use a consistent card layout with clear metric hierarchy. No decorative clutter. Typography hierarchy is strong throughout. The AI Trap callout box on slide 3 is well-integrated.",
+    "ai_slop": "none — the writing is specific, opinionated, and dataset-grounded throughout. No generic filler, no inflated language, no decorative-but-meaningless graphics."
+  },
+  "confidence": "medium",
+  "total": 87,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15177,
+    "output_tokens": 902
+  }
+}

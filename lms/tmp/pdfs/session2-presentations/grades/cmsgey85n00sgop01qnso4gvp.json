@@ -1,0 +1,39 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 1,
+    "narrative": 2.5,
+    "framing": 1.5,
+    "accuracy": 1.5,
+    "visual": 4.5,
+    "bonus": 0
+  },
+  "what_worked": "Clean visual design with good contrast, legible typography, and consistent card-based layout throughout.",
+  "fix_next": "This is a motivational pitch, not a data story—present actual dataset analysis with charts, statistics, and sourced claims.",
+  "verdict": "Motivational blog post, not a data-story presentation. Dataset barely touched.",
+  "flags": [
+    "no-data-analysis",
+    "no-charts",
+    "missing-dataset-engagement",
+    "ai-slop-motivational",
+    "unsupported-claims"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 5: Revenue figures for Web3Forms ($42,813), Supergrow ($32,216), MagicSlides ($10,176), Guidejar ($6,151) are presented without sourcing or verification against the dataset—these may be cherry-picked or fabricated. Slide 6: 'The blueprint is proven' is an unsupported causal claim with no evidence presented.",
+  "evidence": {
+    "insight": "Zero analytical insight from the dataset. No category comparisons, no revenue distributions, no provider analysis, no median vs. mean discussion. The entire deck is generic startup advice.",
+    "narrative": "There is a coherent motivational arc (it's easy → solve small problems → recurring revenue → examples → start now), but it is a self-help narrative, not a data narrative. No thesis grounded in data findings.",
+    "framing": "No dataset is introduced, no methodology described, no scope or limitations mentioned. A cold reader would not know this was supposed to be a data analysis assignment. Audience is 'undergrad students' but the analytical question is absent.",
+    "accuracy": "Slide 5 presents four company revenue figures with no source attribution or connection to the frozen dataset. The dataset is never referenced. Claims like 'the blueprint is proven' have no evidentiary basis. Revenue figures cannot be verified.",
+    "visual": "Slides are visually clean and well-designed with good hierarchy, readable fonts, and effective use of card layouts and icons. The 'Years Ago vs Today' comparison on slide 2 is well-executed. However, there are zero data visualizations—no charts, no tables, no analytical graphics.",
+    "ai_slop": "Entire deck reads as AI-generated motivational content (NotebookLM watermark visible). Generic startup advice ('solve one small problem,' 'start this weekend') with no dataset-specific content. Decorative graphics substitute for analytical charts."
+  },
+  "confidence": "high",
+  "total": 22,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 11056,
+    "output_tokens": 663
+  }
+}

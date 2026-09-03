@@ -1,0 +1,39 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 3,
+    "narrative": 3.5,
+    "framing": 4,
+    "accuracy": 4,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Clean visual design, legible charts, and the micro-M&A table adds a distinctive angle.",
+  "fix_next": "The deck describes individual companies but never analyzes the dataset—no distributions, category comparisons, provider splits, or missingness discussion.",
+  "verdict": "Polished marketing brochure, not a data-story presentation.",
+  "flags": [
+    "descriptive-not-analytical",
+    "no-dataset-level-analysis",
+    "missing-data-not-addressed",
+    "no-distribution-charts",
+    "magazine-style-listicle"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 1: '1,900+ startups tracked' — the frozen dataset has 1,000 rows; the larger figure is unsubstantiated from the provided data. Slide 1/8: '$76.6M top earner' is presented as all-time revenue, which may be from the broader platform but is not verifiable against the 1,000-row dataset whose total 30-day revenue is ~$15.6M; conflating all-time with the dataset scope is misleading framing.",
+  "evidence": {
+    "insight": "Takeaways (slide 8) are surface-level observations ('revenue is a long tail,' 'e-commerce wins big') that any reader could see from the bar chart. No median vs. mean analysis, no category-level comparison, no provider analysis, no anonymity effect, no missingness impact—none of the deeper patterns in the dataset are surfaced.",
+    "narrative": "The sequence is: intro → data description → top earners list → spotlight on 3 companies → growth chart → M&A table → category grid → takeaways. It reads as a magazine feature or marketing overview rather than a thesis-driven data story. There is no central argument that builds across slides.",
+    "framing": "Slide 2 explains data provenance (verified via payment providers), which is good context. However, the deck never states the actual dataset size (claims 1,900+ vs. 1,000 rows), never mentions missingness (241 country, 288 audience_type, 274 category, 286 domain), and never defines scope or limitations. A cold reader would not know what population is being analyzed.",
+    "accuracy": "The deck mostly reports individual company figures that are hard to cross-check against the frozen 30-day dataset. The '1,900+' count contradicts the 1,000-row dataset. No statistical claims are made (no medians, means, correlations), so there are few opportunities for calculation errors, but also no analytical rigor to evaluate. The all-time revenue figures appear to come from a different scope than the assigned dataset.",
+    "visual": "Consistent dark-blue/teal/orange palette throughout. The bar chart on slide 3 is well-proportioned and labeled. The growth chart on slide 5 is clear. The M&A table on slide 6 is clean. Slide 7's category grid is decorative but low-information. Overall professional but template-driven with visual sameness across slides.",
+    "ai_slop": "Slide 7 is a decorative category grid listing company names with no quantitative content—pure filler. Slide 2's four-quadrant 'what this data measures' layout is generic explainer content. The overall structure feels like an AI-generated marketing one-pager rather than an analytical presentation. Takeaways on slide 8 are generic enough to fit many datasets."
+  },
+  "confidence": "high",
+  "total": 40,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15812,
+    "output_tokens": 892
+  }
+}

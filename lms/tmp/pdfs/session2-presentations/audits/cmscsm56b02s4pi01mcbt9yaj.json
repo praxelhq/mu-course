@@ -1,0 +1,44 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 5,
+    "narrative": 5.5,
+    "framing": 4,
+    "accuracy": 3.5,
+    "visual": 4.5,
+    "bonus": 0
+  },
+  "what_worked": "Concentration cascade on slide 4 is the strongest analytical thread, well-structured with cumulative percentages.",
+  "fix_next": "Acknowledge missingness (274 categories, 241 countries), remove fabricated stats (500K subs, $13.5M MRR), and verify median figures against data.",
+  "verdict": "Polished consulting template with multiple fabricated stats and no data-quality disclosure.",
+  "flags": [
+    "inflated-consulting-language",
+    "fabricated-stats-500k-subs-13.5m-mrr",
+    "missing-data-not-acknowledged",
+    "ai-slop-template",
+    "top10-share-understated",
+    "median-category-errors",
+    "domain-authority-denominator-gap",
+    "no-limitations-slide"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 2: top-10 share stated 48% vs reference 49.6% (~1.6pp off). Slide 2: '$13.5M Total MRR' and '500K+ Active Subscriptions' appear fabricated—no such fields in dataset. Slide 6: Education median $2.1K vs reference $2,435; Marketing median $1.6K vs reference $2,370; Analytics median $1.3K vs reference $419 (off by 3x). Slide 10: domain authority buckets sum to 814, not 1000, with no explanation of the 186 missing. Slide 1: '1,000 verified revenue data points via Stripe' is misleading—only 636 use Stripe.",
+  "evidence": {
+    "insight": "Slide 4 concentration cascade and slide 5 growth bifurcation provide useful descriptive framing, but no cross-dimensional analysis (e.g., category × geography, growth × payment provider). Acquisition slide 8 notes median/mean spread but doesn't connect it to category or revenue tier.",
+    "narrative": "Logical arc from summary through composition, concentration, growth, monetization, infrastructure, geography, maturity, to recommendations. But reads as a generic consulting template—no single surprising thesis drives the story. Slide 11 is a pure text recap adding nothing new.",
+    "framing": "Never defines the audience or decision being supported despite 'Financial Consulting Brief' label. 274 missing categories, 241 missing countries, 288 missing audience types, and 216 zero-revenue rows are never disclosed. No limitations or methodology slide. Survivorship bias unaddressed.",
+    "accuracy": "Multiple verifiable errors: top-10 share understated, three category medians wrong (Analytics off by 3x), fabricated KPIs ($13.5M MRR, 500K+ subscriptions not in dataset), domain authority buckets missing 186 rows. Slide 1 implies all data is 'via Stripe' when only 63.6% is.",
+    "visual": "Clean, consistent dark-header template. Slides 3, 7, 9, 10 all use identical horizontal bar charts creating monotony. No axis labels, no annotations on charts. Slide 4 color differentiation (blue/green/red) is effective. Slide 5 quadrant layout is clear. No chart shows actual distributions or scatter—everything is counts or percentages.",
+    "ai_slop": "Pervasive consulting jargon: 'winner-take-most market dynamics,' 'cascading impact,' 'ruthless consolidation of mid-market assets,' 'untenable in this market structure,' 'durable unit economics.' Slide 11 is entirely redundant text. KPI cards on slide 2 include fabricated metrics to fill template slots."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 4.0 to 3.5: upon closer review, the fabricated 500K/13.5M stats, three wrong category medians (Analytics off 3x), and misleading 'via Stripe' framing constitute serious accuracy failures beyond rounding. Other scores confirmed as appropriate.",
+  "total": 45,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 23820,
+    "output_tokens": 1034
+  }
+}

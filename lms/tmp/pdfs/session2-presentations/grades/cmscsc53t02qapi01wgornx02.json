@@ -1,0 +1,38 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 8,
+    "accuracy": 5.5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Strong narrative arc from concentration thesis through category economics to actionable deal shortlist with honest caveats.",
+  "fix_next": "Multiple median MRR figures diverge materially from reference data (Education $2,142 vs $2,435; AI $446 vs $503; Marketing $1,586 vs $2,370); verify calculations.",
+  "verdict": "Well-structured investor-oriented story undermined by several inaccurate category medians.",
+  "flags": [
+    "median-discrepancies",
+    "mean-growth-not-median",
+    "top10-82pct-unverifiable",
+    "b2b-multiplier-inflated"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 4: Education median $2,142 vs reference $2,435; AI median $446 vs $503; Marketing median $1,586 vs $2,369.50; Content Creation median $1,254 vs $1,237.50 (minor). Slide 3: Mean MRR stated $13,472 — reference total $15,596,344.59/1000 = $15,596, off by ~$2,100. Slide 7: B2B out-earns B2C '5.7x' — reference median multiple is ~2.35x (B2B median revenue multiple), and the exec summary says '3–6x per user' which conflates MRR ratio with per-user metric. Slide 8: Uses average growth rates rather than medians, making the enormous percentages (+6440% SaaS) likely driven by outliers — contradicts the deck's own median-first philosophy.",
+  "evidence": {
+    "insight": "Slide 10-11 deal-sourcing framework (cheap+growing vs cheap+flat) with payback periods is genuinely decision-useful and original. Volume-vs-value divergence on slide 4 is a real insight. The Kickly anomaly flag shows analytical maturity.",
+    "narrative": "Clear four-point thesis on slide 2, each unpacked sequentially: concentration (3) → category economics (4-5) → geography (6) → audience (7) → growth (8) → caveats (9) → deal screening (10-11). Coherent arc from landscape to action.",
+    "framing": "Slide 1 states scope, date, and sample size. Slide 9 dedicates a full page to limitations (selection bias, self-reported data, missingness rates, snapshot caveat). Category missing for '27%' stated vs 27.4% reference — close. Audience framed as investor/acquirer.",
+    "accuracy": "Multiple category medians are materially wrong. Mean MRR calculation is off (~$13,472 vs ~$15,596). The 82% top-10% concentration claim is not verifiable against reference (reference gives top-10 revenue share at 49.6%, a different metric). Growth slide uses averages despite the deck's own median-first principle. B2B/B2C multiplier overstated.",
+    "visual": "Consistent dark/red/white palette. Clean bar charts with labeled values. Table on slide 11 is well-structured. Slide 8 has label overlap issues ('Content Cre-60.0%' and '-450.0%any' are illegible). Overall restrained and functional but not exceptional.",
+    "ai_slop": "none — language is specific to the dataset, caveats are genuine, no generic filler or decorative graphics"
+  },
+  "confidence": "high",
+  "total": 74,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 21376,
+    "output_tokens": 925
+  }
+}

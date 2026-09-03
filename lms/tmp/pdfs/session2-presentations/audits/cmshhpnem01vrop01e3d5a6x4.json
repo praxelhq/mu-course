@@ -1,0 +1,46 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 2.5,
+    "narrative": 3.5,
+    "framing": 3,
+    "accuracy": 2,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Clean Gamma template with legible bar charts on slides 3 and 5; consistent visual hierarchy throughout.",
+  "fix_next": "Replace fabricated category taxonomy and invented statistics with actual dataset figures; disclose missingness and show real revenue analysis.",
+  "verdict": "Polished investor pitch built on fabricated statistics, not a data story.",
+  "flags": [
+    "fabricated-categories",
+    "fabricated-statistics",
+    "no-revenue-analysis",
+    "consulting-language-slop",
+    "unearned-certainty",
+    "missing-limitations",
+    "no-source-citations",
+    "stealth-count-wrong",
+    "ai-share-questionable",
+    "no-missingness-disclosure"
+  ],
+  "factual_error_count": 10,
+  "factual_error_detail": "Slide 4: 'AI-native 34%' – AI category is 197/726 valid ≈27%, not 34% of 1000. Slide 6: '18% stealth / 180 startups' – anonymous count is 129, not 180; share is ~12.9%. Slide 7: Entire category taxonomy fabricated (AI Tools 18%, Marketing Tech 16%, Creator Economy 14%, etc.) – actual categories are AI 197, Marketing 42, SaaS 66, Education 30, etc. Slide 3: '3.2x faster product adoption' for 100k+ follower founders – no such metric exists in the dataset. Slide 4: '2-3x higher margins' for AI-native SaaS – not in dataset. Slide 5: Geographic percentages (US 42%, UK 12%, India 11%) computed on full 1000 without disclosing 241 missing country values. Slide 7: '34% combined' for AI Tools + Marketing Tech uses fabricated shares. Slide 9: '2-3x higher valuations' for audience founders – invented. Slide 9: '50%+ will reach $100k MRR without institutional capital' – unsupported projection. Slide 1: 'AI-Native Share 34%' repeats the inflated AI figure.",
+  "evidence": {
+    "insight": "Zero analysis of $15.6M total revenue, top-10 concentration (49.6%), payment provider dominance (Stripe 636/$13.5M), category medians, B2B/B2C multiples, or .ai vs .com TLD signals. Every 'insight' is a generic VC talking point untethered from the actual data.",
+    "narrative": "Logical slide sequence (overview → distribution → AI → geography → stealth → categories → thesis → future → close) but reads as a sales pitch, not an analytical story. No tension, surprise, or data-driven turning point. Closing CTA ('Will you lead or follow?') is rhetoric, not synthesis.",
+    "framing": "Audience is implicitly investors but never stated. No analytical question defined. No methodology. 241-288 missing values across key fields never disclosed. 'July 2026' dating unexplained. No limitations section anywhere.",
+    "accuracy": "Slide 7 category taxonomy is wholly invented and contradicts actual dataset categories. Stealth count (180 vs 129), AI share (34% vs ~27%), and multiple quantitative claims (3.2x adoption, 2-3x margins, 2-3x valuations) are fabricated. Geographic percentages ignore missingness without disclosure.",
+    "visual": "Gamma template provides clean dark-mode aesthetic with consistent typography. Bar charts (slides 3, 5) are legible and appropriately chosen. Donut chart (slide 7) is readable but encodes fabricated data. Heavy text density on slides 4, 6, 8, 9, 10. No axis labels, source annotations, or data provenance on any chart.",
+    "ai_slop": "Pervasive: 'structurally impossible,' 'the signal is unambiguous,' 'Will you lead this wave, or follow it?', 'capital efficiency is structurally superior,' 'first-look advantage.' Slides 4, 6, 8, 9, 10 are nearly pure VC rhetoric with no dataset-specific content. Fabricated statistics (3.2x, 2-3x) are hallmarks of AI-generated filler."
+  },
+  "confidence": "high",
+  "changed": false,
+  "change_reason": "no-change",
+  "total": 30,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 19906,
+    "output_tokens": 1108
+  }
+}

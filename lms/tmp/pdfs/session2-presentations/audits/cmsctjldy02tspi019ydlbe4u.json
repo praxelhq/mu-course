@@ -1,0 +1,45 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 8.5,
+    "framing": 7.5,
+    "accuracy": 6,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "AI-crowding-vs-boring-category juxtaposition and the 'what to check before acting' column show real analytical maturity.",
+  "fix_next": "Reconcile median revenue figures against source data — Analytics median is off by 3x, Marketing by nearly 2x, and top-10 concentration diverges significantly.",
+  "verdict": "Strong storytelling and structure undermined by multiple inaccurate category medians and concentration figures.",
+  "flags": [
+    "top10-share-inflated",
+    "analytics-median-3x-off",
+    "marketing-median-2x-off",
+    "ai-median-off",
+    "ai-revenue-share-misstated",
+    "education-median-off",
+    "saas-median-off",
+    "missing-count-off-by-one",
+    "revenue-base-confusion-334m-vs-15.6m"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 3: top-10 share 61.1% vs reference 49.6%; missing country stated as 242 vs 241. Slide 4: AI median $446 vs ref $503; Marketing median $1,292 vs ref $2,369.50; Analytics median $1,294 vs ref $419 (3x off); Education median $2,142 vs ref $2,435; AI revenue share 13% vs computed 15.1%. Slide 4 footnote: 275 missing category vs ref 274.",
+  "evidence": {
+    "insight": "Slide 4 juxtaposes AI builder crowding (197 firms, 27%) against higher-earning boring categories — genuinely decision-useful. Slide 3's domain-rating revenue ladder ($78→$24.6k) is a strong original finding. Slide 6 pairs each recommendation with explicit counter-arguments.",
+    "narrative": "Four-act structure (what is → what to build → what changed → what to do) stated on slide 2 and followed faithfully. Every slide title is an action-oriented claim. Narrative lands on concrete, differentiated options for builders vs investors.",
+    "framing": "Slide 1 sets audience (builders/investors), scope, and provenance. Slide 6 footer warns about selection bias and self-reporting. However, the $334m lifetime revenue vs $15.6M dataset total revenue creates confusion about which base concentration is computed on. Missing-data counts off by 1.",
+    "accuracy": "Top-10 concentration 61.1% vs reference 49.6% is a headline-level error. Analytics median $1,294 vs $419 is off by 3x; Marketing median $1,292 vs $2,369.50 is off by ~2x. AI median, Education median, SaaS median, and AI revenue share all deviate from reference values. Revenue base ($334m vs $15.6M) is never reconciled.",
+    "visual": "Clean dark palette with consistent green accents. Paired count-vs-median bar charts on slide 4 are effective. Slide 5 payment-provider table is well-structured. Slide 3 is dense with two charts plus extensive bullets. No decorative or fabricated visuals.",
+    "ai_slop": "None detected. Writing is specific, opinionated, and dataset-grounded. Caveats are genuine and contextual, not performative."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 6.5 to 6.0 due to Analytics median being off by 3x and Marketing median by ~2x — these are not rounding issues but material errors. Lowered framing from 8.0 to 7.5 for unresolved $334m vs $15.6M revenue base confusion. Reduced bonus from 3 to 2; work is strong but errors prevent top-tier bonus.",
+  "total": 77,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 14241,
+    "output_tokens": 2790
+  }
+}

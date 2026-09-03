@@ -1,0 +1,39 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7.5,
+    "accuracy": 5.5,
+    "visual": 5,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis-driven structure with honest limitations, causal discipline, and actionable investment implications tied to evidence.",
+  "fix_next": "Charts lack category labels on axes (slides 4, 6, 9, 10 use only index numbers), making them unreadable without cross-referencing a legend that doesn't exist.",
+  "verdict": "Well-reasoned investment narrative undermined by unlabeled charts and several numerical errors.",
+  "flags": [
+    "unlabeled-chart-axes",
+    "revenue-figure-mismatch",
+    "b2b-multiple-inflated",
+    "consulting-tone",
+    "top10-metric-conflated-mrr-revenue"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 2/5: Claims top 10 = 48% of MRR; reference says top-10 revenue share is 49.6% — close but the deck conflates 30-day revenue with MRR throughout. Slide 2: '$134M' aggregate trailing-12-month revenue is unverifiable from the frozen dataset (total 30-day revenue is ~$15.6M; annualizing gives ~$187M, not $134M). Slide 8: B2B median MRR '5.7x' B2C — reference gives median revenue multiples of 2.35x/2.30x for B2B/B2C; the 5.7x figure appears fabricated or uses a non-standard calculation. Slide 12: AI valuation multiple stated as 4.15x — this appears to come from the chart on slide 9 but is presented without denominator or sample-size context for AI specifically.",
+  "evidence": {
+    "insight": "Slide 10 cross-references sale-listing rate with growth consistency to identify Mobile Apps as roll-up vs. growth profile — a genuinely useful synthesis. Slide 12 recommendations follow logically from prior slides. The AI premium scrutiny point (slide 12) is a non-obvious insight.",
+    "narrative": "Clear five-signal executive summary (slide 2) sets up the rest; slides progress from landscape → concentration → growth → geography → model → valuation → liquidity → risks → implications. Coherent arc with a landing.",
+    "framing": "Slide 3 methodology page is unusually thorough: flags 27% uncategorized, 24% missing country, skewness in growth, and limited valuation sample. Audience (internal investment review) is stated on slide 1. Scope and limitations are well-handled.",
+    "accuracy": "Category counts on slide 4 match reference exactly. Provider counts/percentages on slide 8 are correct. However, the $134M TTM figure is unverifiable and likely wrong. The 5.7x B2B/B2C median MRR claim doesn't match reference multiples (2.35x/2.30x). The 48% figure is close to 49.6% but applied to MRR rather than 30-day revenue. Missing Productivity category (49 companies) from slide 4 table.",
+    "visual": "Consistent navy/gold color scheme throughout. However, major problem: bar charts on slides 4, 6, 9, and 10 use numeric indices (1-12) instead of category names, making them essentially unreadable without a legend. Slide 5 bar chart has four unlabeled bars with values 48, 71, 82, 94 — unclear what they represent. Slide 7 geography chart also uses indices instead of country names. Charts are clean but functionally broken.",
+    "ai_slop": "Some consulting-style language ('institutionalize the re-screen,' 'conviction on category leaders') but generally restrained. The five-point numbered list format repeats across slides 2, 11, and 12 — template-like but each has distinct content. Not egregious slop but noticeable pattern repetition."
+  },
+  "confidence": "high",
+  "total": 67,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 23126,
+    "output_tokens": 1001
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 5.5,
+    "accuracy": 3.5,
+    "visual": 5,
+    "bonus": 1
+  },
+  "what_worked": "Strong central thesis—power-law inequality—carried consistently through every slide with punchy takeaways.",
+  "fix_next": "Multiple key numbers are fabricated or wrong (total revenue, zero-revenue count, B2B medians, provider shares); verify every claim against the actual dataset.",
+  "verdict": "Compelling narrative undermined by numerous factual errors across core claims.",
+  "flags": [
+    "fabricated-total-revenue",
+    "wrong-zero-revenue-count",
+    "wrong-provider-percentages",
+    "inflated-b2b-median",
+    "unverifiable-chart-data",
+    "ai-generated-imagery"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1: '$270M+ combined revenue' — actual total 30-day revenue is ~$15.6M (even annualized ~$187M, not $270M+). Slide 2: 'average makes $133,750' — not consistent with dataset ($15,596/company 30-day, ~$187K annualized, but claim of $270M base makes this internally inconsistent). Slide 3: '111 zero-revenue listings' and '11%' — actual count is 216 (21.6%). Slide 5: B2B median $8,362 and B2C median $2,213 — reference shows B2B median multiplier ~2.35x and B2C ~2.30x, with much lower absolute medians; these figures appear fabricated. Slide 6: Stripe at 64% — actual is 636/1000 = 63.6% (close but acceptable); RevenueCat at 19% = 189/1000 (acceptable); but PayPal, Gumroad listed as major providers are not in the reference dataset at all — likely fabricated provider names. Slide 8: '2.3× revenue' exit multiple — presented without sourcing from dataset; the B2B/B2C multiples in reference are 2.35x/2.30x which are revenue *growth* multiples, not sale-price multiples. Slide 4: 'nearly 3× the next category' — next largest categorized group is SaaS at 66, so 197/66 ≈ 3×, which is correct.",
+  "evidence": {
+    "insight": "The power-law framing (slide 2) and growth-rate skepticism (slide 7) show genuine analytical thinking beyond chart description. The 'graveyard vs leaderboard' framing and 'marketplace as distress signal' are original interpretive angles.",
+    "narrative": "Clear thesis on slide 1 (power-law economy), built through distribution (slide 2), zero-revenue (slide 3), category saturation (slide 4), B2B advantage (slide 5), infrastructure (slide 6), vanity metrics (slide 7), exits (slide 8), and synthesis (slide 9). Coherent arc with a landing.",
+    "framing": "Dataset source and N=1,000 noted on every slide. However, no mention of missingness (274 missing categories, 241 missing countries, 288 missing audience_type). No limitations slide. Audience is implied but never stated. The '$270M+' total revenue claim on slide 1 is never reconciled.",
+    "accuracy": "Zero-revenue count off by nearly 2× (111 vs 216). Total revenue figure appears fabricated. B2B/B2C median figures don't match reference. Provider pie chart includes PayPal and Gumroad which aren't in the reference provider list. The 2.3× exit multiple is unverifiable. Slide 7 chart uses anonymized 'Startup A-E' labels making verification impossible.",
+    "visual": "Consistent dark-blue palette, clean typography, good use of callout boxes. However: AI-generated decorative images (slides 1, 3, 9) add no analytical value. Slide 8 scatter plot is confusing with dual y-axes and few data points. Slide 5 dual-axis bar chart is hard to read. Pie chart on slide 6 is acceptable but not ideal for 6 categories.",
+    "ai_slop": "AI-generated server room image (slide 1), abandoned office (slide 3), and glowing world map (slide 9) are decorative filler. Some consulting-style punchlines ('The house always wins') border on inflated language. However, the analytical narrative is substantive enough to avoid pure slop classification."
+  },
+  "confidence": "high",
+  "total": 55,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 17047,
+    "output_tokens": 1141
+  }
+}

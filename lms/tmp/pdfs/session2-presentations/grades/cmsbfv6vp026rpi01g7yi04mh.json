@@ -1,0 +1,38 @@
+{
+  "slide_count": 5,
+  "scores": {
+    "insight": 6,
+    "narrative": 6.5,
+    "framing": 6,
+    "accuracy": 5,
+    "visual": 5,
+    "bonus": 1
+  },
+  "what_worked": "Clear thesis linking subscription + B2B + growth status; honest caution about AI category volume trap.",
+  "fix_next": "The 5.7× B2B/B2C claim is materially wrong (reference is ~2.35×); add actual charts and acknowledge missingness in audience_type (288 rows).",
+  "verdict": "Coherent argument with a sound structure, undermined by inflated B2B multiplier and sparse visuals.",
+  "flags": [
+    "inflated-b2b-multiplier",
+    "no-charts",
+    "missing-data-not-disclosed",
+    "text-heavy-slides"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 1 & 5: B2B vs B2C median MRR ratio stated as 5.7× ($1,036/$181); reference median multiple is ~2.35× — the $1,036 and $181 figures don't match reference medians and the ratio is overstated by >2×. Slide 1: 'B2B outperforms B2C by 5.7× on median MRR with a stronger growing share (44% vs 34%)' — the 44% growing share for B2B is plausible but the 5.7× is wrong. Slide 5: n=255 B2B and n=401 B2C sums to 656, but audience_type is missing for 288 rows (only 712 have values) — the denominator issue is never disclosed, which could bias the comparison substantially.",
+  "evidence": {
+    "insight": "Slide 3 revenue-concentration insight (34% of startups → 57% revenue) is genuinely useful; slide 4 'AI volume trap' distinguishes total from median well. But insights stay at one-cut descriptive level — no interaction analysis (e.g., B2B × subscription × category).",
+    "narrative": "Slides follow a logical arc: overview → monetization model → growth distribution → category → B2B/recommendations. The thesis (subscription + B2B + growth weighting) is stated upfront and revisited. However, the arc is somewhat predictable and the landing is generic.",
+    "framing": "Slide 1 states scope (1,000 startups, frozen dataset, 'not a portfolio'). But missingness is never mentioned — 288 missing audience_type, 274 missing category — which directly affects the B2B/B2C and category analyses presented. No limitations slide.",
+    "accuracy": "5.7× B2B/B2C multiplier is the headline stat and it's materially wrong vs reference 2.35×. AI median ~$503 matches reference. Category leader table on slide 4 appears plausible but unverifiable for all entries. The 255+401=656 B2B/B2C total is never reconciled with 288 missing audience_type rows. Usage/Credits 'med MRR $10k+' is vague and unverifiable.",
+    "visual": "Dark theme is consistent and legible. But there are zero data visualizations — no bar charts, scatter plots, or distribution plots across all 5 slides. Slide 3 is almost entirely empty space with a single text box. Slide 4's table is the closest thing to a data display. The deck reads more like a memo than a data presentation.",
+    "ai_slop": "Mild consulting-speak ('intelligence briefing', 'materiality insight') but generally restrained. The emptiness of slide 3 and the template-like card layouts suggest AI generation with minimal customization."
+  },
+  "confidence": "high",
+  "total": 58,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 10310,
+    "output_tokens": 930
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "slide_count": 21,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 8.5,
+    "accuracy": 6,
+    "visual": 7.5,
+    "bonus": 3
+  },
+  "what_worked": "Exceptional narrative architecture: thesis → evidence → risk → recommendation with honest epistemic discipline throughout.",
+  "fix_next": "Category totals and medians are systematically wrong (e.g., AI $18.4M vs. reference $2.36M), undermining the accuracy of the entire category slide.",
+  "verdict": "Outstanding strategic storytelling undermined by materially incorrect category revenue figures.",
+  "flags": [
+    "category-revenue-totals-inflated",
+    "trailing-revenue-total-wrong",
+    "anonymous-revenue-share-misstated",
+    "stripe-revenue-inflated"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1/6: Total trailing revenue stated as $133.8M; reference is $15.6M (30-day revenue) — the dataset field being summed is unclear but the figure is ~8.6x the reference 30-day total, suggesting they may be using a different revenue window, but the reference total 30-day revenue is $15.6M. Slide 5: Anonymous records said to hold 21% of trailing revenue; reference says 26.5%. Slide 10: AI total $18.43M vs reference $2.36M; Marketing $14.64M vs $1.32M; Education $5.52M vs $0.52M; all category totals are roughly 8-11x the reference 30-day figures, suggesting the student used a 12-month field not in the reference, but medians also diverge significantly (AI median $4,301 vs reference $503; Education median $14,309 vs $2,435). Slide 12: Stripe revenue $119.91M vs reference $13.53M. Slide 7: Top-10 share 50.6% is close to reference 49.6% — acceptable rounding. Slide 2: 129 anonymous is correct (12.9%), consistent with reference.",
+  "evidence": {
+    "insight": "Slides 7-8 deliver the 'two hundred businesses plus eight hundred profiles' framing — a genuinely decision-useful reframe. Slide 15 identifies the ARR-vs-trailing-revenue anchoring problem with correlation evidence. Slide 16 builds an actionable acquisition screen. Slide 14 identifies the barbell structure and derives a two-track operational model.",
+    "narrative": "The deck follows a tight investment-memo arc: thesis (slide 2-3) → data quality audit (5) → KPIs (6) → concentration (7-8) → segmentation (9-10) → growth (11) → risk (12-13) → marketplace economics (14-15) → opportunity (16) → risk matrix (17) → recommendations (18) → roadmap (19) → conclusion (20) → appendix (21). Every slide title is an assertion. The conclusion includes a falsification condition.",
+    "framing": "Slide 2 sets the audience (investment committee), question (invest or not), and scope (1,000-row frozen extract). Slide 5 audits data quality before making claims. Footnotes consistently distinguish fact from interpretation. Limitations are flagged (e.g., 'no historical transaction record').",
+    "accuracy": "The revenue figures throughout appear to use a 12-month trailing revenue field rather than the 30-day field in the reference. Category totals and medians are systematically inflated vs. reference (AI $18.43M vs $2.36M). Stripe revenue $119.91M vs reference $13.53M. Anonymous share stated as 21% vs reference 26.5%. Top-10 concentration at 50.6% is close to reference 49.6%. Zero-revenue count 21.6% vs reference 21.6% (216/1000) checks out. The 636 Stripe company count matches. The 129 anonymous count matches. Category company counts match (AI 197, Marketing 42, etc.).",
+    "visual": "Consistent navy/gold palette with clear hierarchy. Every slide has a section label, assertion title, chart, and interpretation panel. Charts are appropriately simple (bar, line, scatter). The left-chart/right-callout layout repeats but serves the content. Slide 8's truncated y-axis (185-215) exaggerates uniformity. Scatter on slide 15 is well-annotated with base notes.",
+    "ai_slop": "none — the deck avoids generic filler, every claim is data-specific, and footnotes distinguish fact from assumption"
+  },
+  "confidence": "medium",
+  "total": 82,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 41661,
+    "output_tokens": 1133
+  }
+}

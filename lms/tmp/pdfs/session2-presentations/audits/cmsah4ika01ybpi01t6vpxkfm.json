@@ -1,0 +1,45 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 5,
+    "narrative": 5.5,
+    "framing": 4.5,
+    "accuracy": 3.5,
+    "visual": 6,
+    "bonus": 0
+  },
+  "what_worked": "Power-law concentration theme is genuine and well-illustrated across multiple slides with consistent design.",
+  "fix_next": "Fix the false 'no founding dates' claim, correct the .ai-leads-revenue subtitle that contradicts your own chart, and add missingness/limitations.",
+  "verdict": "Clean template tour of the data with several factual errors and missing key analyses.",
+  "flags": [
+    "false-no-founding-dates-claim",
+    "subtitle-contradicts-own-chart",
+    "wrong-dotcom-count",
+    "missing-provider-analysis",
+    "missing-anonymity-analysis",
+    "no-limitations-slide",
+    "no-missingness-discussion",
+    "template-driven-layout",
+    "unverifiable-alltime-revenue"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 4: claims 'dataset has no founding dates' — false, 984 founded-year/revenue pairs exist. Slide 7: subtitle says '.ai leads on both domain authority and revenue per company' but own chart shows .com ($391K) > .ai ($364K). Slide 7: .com count shown as 317 vs reference 312.",
+  "evidence": {
+    "insight": "Power-law concentration (slides 2, 10) and B2B vs B2C comparison (slide 9) are useful but surface-level. No provider, anonymity, or founded-year analysis attempted. Most slides describe rather than synthesize.",
+    "narrative": "Logical arc from overview → categories → momentum → reach → leaderboard → domains → audience → power law. Closing slide attempts synthesis with three takeaways. Reads as a data tour rather than a story driven by a central question.",
+    "framing": "Scope stated (1,000 startups) but no audience defined, no decision context, no limitations discussed. Missingness (24-29% across key fields) never acknowledged. False claim about no founding dates undermines credibility.",
+    "accuracy": "Three confirmed errors: false 'no founding dates' claim contradicts 984 usable pairs; .ai revenue-per-company claim contradicted by own chart; .com count 317 vs 312. Category totals and company counts use an all-time column not in the frozen reference, making most revenue figures unverifiable.",
+    "visual": "Consistent color palette, clean card layout, good whitespace, legible data labels on charts. Grouped bar chart (slide 4) well-annotated. Template-driven repetition (card after card) reduces visual variety. No in-chart annotations highlighting key comparisons.",
+    "ai_slop": "Clearly AI-generated template (likely Gamma). 'Prepared as a data narrative · Neutral, factual tone' is boilerplate. Visual sameness across slides. Content is substantive enough to avoid pure slop but lacks originality in presentation."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Reduced framing from 5.0 to 4.5 for false founding-dates claim and zero limitations discussion. Reduced factual error count from 8 to 3 confirmed errors — preliminary overcounted by treating unverifiable all-time figures as errors. Other scores held steady after independent review.",
+  "total": 49,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 19471,
+    "output_tokens": 2106
+  }
+}

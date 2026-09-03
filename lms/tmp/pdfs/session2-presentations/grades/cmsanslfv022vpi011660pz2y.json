@@ -1,0 +1,39 @@
+{
+  "slide_count": 48,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 8.5,
+    "framing": 9,
+    "accuracy": 6.5,
+    "visual": 7.5,
+    "bonus": 3
+  },
+  "what_worked": "Exceptional framing discipline: every slide ends with a 'SO WHAT' that converts analysis into decision.",
+  "fix_next": "Revenue figures appear to use all-time totals (~$334m) rather than the frozen 30-day total ($15.6m); verify which denominator drives category and concentration claims.",
+  "verdict": "Outstanding analytical architecture undermined by a likely revenue-field mismatch.",
+  "flags": [
+    "revenue-denominator-mismatch",
+    "top10-share-discrepancy",
+    "category-revenue-inflated",
+    "stripe-count-slightly-off",
+    "possible-all-time-vs-30day-confusion"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1/6: '$334m total revenue' and '$15.6k mean' — the frozen 30-day total is $15.6m, not $334m; the deck appears to use an all-time/lifetime revenue field not in the benchmark spec, making concentration and category totals unverifiable. Slide 9: 'Top 10% hold 91% of all-time revenue' — benchmark top-10 share of 30-day revenue is 49.6%, not 91%; even if using all-time, the claim is unverified. Slide 20: Stripe listed as 644 firms (benchmark 636) and RevenueCat as 191 (benchmark 189); Polar 40 vs 36, Lemon Squeezy 27 vs 25 — minor but systematic overcounts suggesting different counting methodology. Slide 22: Category revenues (E-comm $54.8m, Marketing $33.8m, AI $31.9m) are vastly larger than benchmark 30-day totals (E-comm $1.1m, AI $2.4m); these appear to be all-time figures from a field not in the benchmark. Slide 22: Education median MRR $2,142 vs benchmark median revenue $2,435 — plausible if MRR differs from 30-day revenue, but the deck conflates the two elsewhere. Slide 27: B2B median MRR $1,036 — benchmark gives median revenue multiples of 2.35x (B2B) and 2.30x (B2C), not the 5.7x MRR gap claimed; the B2B premium magnitude may be overstated. Slide 5: 'Top 10% hold 49.6% of revenue' is the benchmark figure but the deck claims 91% — a major discrepancy.",
+  "evidence": {
+    "insight": "Slides 33, 34, 39: Growth-is-free arbitrage (r=-0.01 on multiples vs growth), underpriced listing table with payback math, three-variable underwriting model — these go well beyond chart description into actionable investment logic.",
+    "narrative": "Clear seven-section arc from data quality → distributions → segments → M&A → correlations → recommendations. Every content slide has a 'SO WHAT' box that synthesizes. Final thesis ('buy flat-to-growing B2B at 1-3x') is earned by the preceding analysis.",
+    "framing": "Slides 3-4: Explicit data quality table with coverage percentages, missingness counts, and 'investment read' column. Appendix restates methodology. Audience (investment committee) is clear. Limitations on traffic data (17.8% coverage) are flagged repeatedly.",
+    "accuracy": "The deck's central revenue figure ($334m 'all-time') does not match the benchmark's 30-day total ($15.6m). This propagates into concentration claims (91% vs benchmark 49.6%), category totals, and provider revenue shares. Stripe firm count 644 vs benchmark 636. Provider and category medians are in the right ballpark but category totals are off by 10-50x from benchmark 30-day figures.",
+    "visual": "Consistent dark-navy template with gold accents. Charts are well-chosen: Pareto curve (slide 9), log-log scatters (slides 12, 16-18), waterfall (slide 10), Sankey (slide 36), bubble chart (slide 24), correlation heatmap (slide 38). All charts have axis labels and titles. Some slides are text-heavy (slides 40-42 with 9 insight cards each).",
+    "ai_slop": "The 27-insight listicle across slides 40-42 borders on quantity-over-quality padding — several repeat points made earlier. The investment-memo framing ('CONFIDENTIAL') is performative. However, most content is substantive and dataset-specific, not generic filler."
+  },
+  "confidence": "high",
+  "total": 83,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 90336,
+    "output_tokens": 1190
+  }
+}

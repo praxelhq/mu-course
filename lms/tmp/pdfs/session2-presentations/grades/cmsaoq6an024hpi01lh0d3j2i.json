@@ -1,0 +1,37 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 5,
+    "narrative": 6.5,
+    "framing": 4,
+    "accuracy": 1.5,
+    "visual": 6.5,
+    "bonus": 0
+  },
+  "what_worked": "Coherent narrative arc with honest limitations section and appropriate caution about extreme growth rates.",
+  "fix_next": "You analyzed the wrong dataset entirely—every number references ~8,782 rows, not the frozen 1,000-row dataset required by the assignment.",
+  "verdict": "Well-structured deck built on the completely wrong dataset.",
+  "flags": [
+    "wrong-dataset",
+    "all-numbers-wrong",
+    "fabricated-or-mismatched-scale"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1: 8,782 startups vs 1,000 actual rows; $227M Stripe revenue vs $13.5M reference; $255M total vs $15.6M. Slide 2: country counts (US 1,657) from wrong dataset. Slide 3: provider revenues all wrong (RevenueCat ~$9.8M vs $1.3M; Polar ~$1.9M vs $6.4K). Slide 7: AI 1,430 listings vs 197 reference; E-comm avg MRR $4,168 inconsistent with reference median $387/n=19. Every quantitative claim derives from a non-matching dataset.",
+  "evidence": {
+    "insight": "Slide 4 mean-vs-median divergence and slide 9 under-monetized traffic cohort show genuine analytical thinking, but all built on wrong data.",
+    "narrative": "Clear 9-section arc from scope through infrastructure, revenue, leaders, momentum, categories, pricing, monetization signals to conclusion. Thesis of power-law concentration is coherent.",
+    "framing": "Slide 2 data completeness table and slide 10 limitations are thoughtful, but the fundamental dataset is wrong—8,782 rows vs the required 1,000-row frozen dataset.",
+    "accuracy": "Every single quantitative claim is wrong relative to the frozen reference dataset. 8,782 vs 1,000 rows; $227M vs $13.5M Stripe revenue; 1,430 AI listings vs 197. Not rounding—completely different dataset.",
+    "visual": "Consistent navy/orange/accent palette, appropriate chart types (bar, scatter, pie), log scales used well on slides 4 and 9. Labels present. Competent but not exceptional.",
+    "ai_slop": "Some consulting-style language ('go-to-market motion', 'defensible niche') but generally restrained. The bigger issue is dataset mismatch rather than AI slop."
+  },
+  "confidence": "high",
+  "total": 47,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18950,
+    "output_tokens": 1602
+  }
+}

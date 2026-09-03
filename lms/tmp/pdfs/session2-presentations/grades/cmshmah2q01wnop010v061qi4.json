@@ -1,0 +1,39 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 2.5,
+    "narrative": 5,
+    "framing": 3,
+    "accuracy": 3,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Strong editorial voice and consistent visual identity; the trust-gap thesis is clearly articulated.",
+  "fix_next": "This is a marketing brochure, not a data story—replace prose assertions with actual charts, distributions, and cited dataset analysis.",
+  "verdict": "Polished pitch deck with almost no data analysis underneath.",
+  "flags": [
+    "marketing-not-analysis",
+    "no-charts",
+    "unverifiable-claims",
+    "dataset-underused",
+    "ai-slop-consulting-language"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 5: '20% of every listing sits in each revenue band' — fabricated-looking claim with no supporting data or chart, and the actual distribution is heavily right-skewed (216 zero-revenue alone = 21.6%). Slide 6: '500× higher MRR at top authority tier vs bottom' — unsourced, unverifiable from dataset, presented without caveats. Slide 8: 'AI-labeled startups more than three times the runner-up' — AI has 197 companies vs Marketing 42 (~4.7×) by count, but only ~1.8× by revenue vs runner-up Marketing; the '3×' framing is imprecise and the comparison dimension is unstated.",
+  "evidence": {
+    "insight": "No original analytical finding is presented with methodology. Claims like '500× higher MRR' and '~3x asking multiple' float without derivation, chart, or denominator. No category medians, provider breakdowns, missingness discussion, or distribution analysis anywhere.",
+    "narrative": "The 7-chapter arc (trust gap → mechanism → census → stages → benchmarking → selling → future) is coherent as a product story, giving it a clear beginning-middle-end. But it is a product narrative, not a data narrative.",
+    "framing": "The deck never states what question it is answering with data, who the analytical audience is, or what dataset limitations exist (241 missing countries, 274 missing categories, 288 missing audience_type). It reads as a pitch to investors/users, not a data-story presentation.",
+    "accuracy": "Slide 5's equal-20% distribution claim is almost certainly false given 216 zero-revenue rows. The 500× domain-authority claim is unverifiable. The '3× the runner-up' for AI is imprecise. No missingness or sample-size caveats anywhere. $3.57M max revenue figure is plausible but uncited.",
+    "visual": "Consistent warm palette, strong typography hierarchy, good use of whitespace. However, there are zero data visualizations—no charts, no distributions, no scatter plots. Every 'data point' is a big number in a card. The stage-gradient bar on slide 5 is decorative, not data-driven.",
+    "ai_slop": "Heavy consulting/marketing register throughout: 'the ledger is open,' 'a receipt, not a pitch,' 'the missing plumbing.' Four future-product cards on slide 8 are generic strategy filler. Entire deck could describe any verified-revenue platform without this specific dataset."
+  },
+  "confidence": "high",
+  "total": 38,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 17637,
+    "output_tokens": 820
+  }
+}

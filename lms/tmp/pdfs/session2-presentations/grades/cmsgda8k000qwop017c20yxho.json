@@ -1,0 +1,39 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 4.5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Strong three-act narrative structure with honest self-selection caveat and memorable thesis about power laws.",
+  "fix_next": "Total revenue is $15.6M not $13.4M; B2B/B2C median ratio is ~2.3x not 5.7x—verify core numbers against the actual dataset.",
+  "verdict": "Well-crafted story undermined by multiple material numerical errors.",
+  "flags": [
+    "total-revenue-wrong",
+    "b2b-b2c-ratio-fabricated",
+    "mean-mrr-wrong",
+    "top10-share-rounded-loosely",
+    "correlation-unverifiable"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 1: Total MRR stated as $13.4M; actual is $15,596,344.59 (~$15.6M). Slide 4: Mean MRR stated as $13,472; should be ~$15,596 ($15.6M/1000). Slide 6: B2B/B2C median ratio claimed as 5.7x ($1,036 vs $181); reference shows median revenue multiples of ~2.35x/2.30x, not 5.7x—the absolute medians appear fabricated. Slide 3: Top-10 share stated as 48%; reference is 49.6%—borderline but presented as a headline claim without rounding note.",
+  "evidence": {
+    "insight": "Power-law framing (slide 3-4) is genuinely useful; the for-sale marketplace angle (slide 8) adds an original lens. However, the 'clout isn't cash' correlation slide (5) and traffic-vs-RPV slide (7) present numbers that cannot be verified and the interpretive leap ('focus beats reach') overreads a negative correlation without controlling for confounders.",
+    "narrative": "Three-act structure (Reveal → Red Herrings → Marketplace) is coherent and purposeful. Each slide advances the thesis. The closing slide synthesizes four takeaways that map back to earlier slides. The 'moral of the story' landing is effective.",
+    "framing": "Slide 2 explicitly flags self-selection bias and warns against treating data as representative. Missing-data rates are not quantified (274 missing category, 288 missing audience_type). Audience is implicitly founders/investors but never stated.",
+    "accuracy": "Multiple material errors: total revenue off by ~$2.2M (slide 1), mean MRR consequently wrong (slide 4), B2B/B2C median ratio dramatically overstated at 5.7x vs ~2.3x (slide 6). The 20% zero-revenue figure (216/1000=21.6%) is close but rounded down. Correlation figures on slides 5 and 7 are unverifiable from the reference but plausible in structure.",
+    "visual": "Consistent dark theme with good hierarchy, restrained color palette, legible typography. Charts are simple and appropriate (horizontal bars, vertical bars). Slide 7 lacks a chart entirely—just text boxes. No chart on slide 4 either, though the big-number layout works. Overall clean but slightly repetitive card-based layout across slides.",
+    "ai_slop": "Minor: the terminal-prompt motif on slide 9 is decorative but harmless. Language is generally sharp and avoids generic filler. No obvious AI slop patterns."
+  },
+  "confidence": "high",
+  "total": 66,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 17103,
+    "output_tokens": 893
+  }
+}

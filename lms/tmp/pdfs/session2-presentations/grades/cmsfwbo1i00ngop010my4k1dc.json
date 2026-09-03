@@ -1,0 +1,39 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7.5,
+    "framing": 6,
+    "accuracy": 5,
+    "visual": 5.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong contrarian thesis with a clear through-line; robustness check on median was a smart analytical move.",
+  "fix_next": "The $133.7M total revenue figure is ~8.6× the actual $15.6M dataset total—verify core numbers before building a thesis on them.",
+  "verdict": "Compelling narrative angle undermined by a major revenue error and thin data exploration.",
+  "flags": [
+    "fabricated-total-revenue",
+    "median-values-off",
+    "missing-data-not-discussed",
+    "small-n-not-hedged",
+    "decorative-image-slide-8"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 3: '$133.7M Combined TTM Revenue' — actual 30-day total is $15.6M; even annualized (~$187M) doesn't match $133.7M, and the dataset field is 30-day revenue, not TTM. Slide 5: Education median MRR stated as $2,142; reference median is $2,435 (30-day revenue, not MRR). AI median stated as $446; reference is $503. Slide 9: SaaS median implied ~$301 (from 7.1× claim); reference is $200.50—ratio would be ~12×, not 7.1×. Slide 3: '24 categories' — the dataset has ~12 named categories (with 274 missing); 24 is unsupported.",
+  "evidence": {
+    "insight": "The core insight—Education has the highest median revenue per company despite low company count—is genuinely interesting and decision-relevant. The robustness check (slide 6) adds analytical credibility. However, the deck doesn't explore why (B2B vs B2C mix, audience type, pricing model) or address whether 30 companies is a sufficient sample for investment conviction.",
+    "narrative": "Clear thesis-driven arc: consensus view → surprising data point → robustness check → proof points → thesis → ask. The narrative is coherent and purposeful, with each slide building toward the conclusion. The 'mispricing' framing is well-constructed even if the underlying numbers have issues.",
+    "framing": "Audience (investor/fund manager) is implicit but clear. However, the deck never discusses the 274 missing category values (27.4% of data), which could materially change the Education ranking. The 30-day revenue window is presented as TTM without justification. No limitations slide.",
+    "accuracy": "The $133.7M figure is materially wrong—the dataset contains $15.6M in 30-day revenue. Calling 30-day revenue 'MRR' or 'TTM' without conversion disclosure is misleading. Education median is off ($2,142 vs $2,435). AI median is off ($446 vs $503). The '24 categories' claim doesn't match the ~12 named categories. The ratio claims (4.8× AI, 7.1× SaaS) don't hold against reference values.",
+    "visual": "Clean dark theme with consistent typography. Charts are simple and readable bar charts with appropriate axis labels. However, the decorative abstract image on slide 8 adds nothing. The robustness check diagram (slide 6) is a nice touch but could be more informative. Overall the Gamma template creates visual sameness across slides.",
+    "ai_slop": "Slide 8 decorative abstract cityscape image is meaningless filler. Some consulting-pitch language ('scoping session,' 'entry terms') on slide 10. Template uniformity from Gamma is noticeable but not egregious."
+  },
+  "confidence": "high",
+  "total": 62,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18354,
+    "output_tokens": 937
+  }
+}

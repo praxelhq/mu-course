@@ -1,0 +1,42 @@
+{
+  "slide_count": 5,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 5,
+    "accuracy": 4.5,
+    "visual": 7,
+    "bonus": 0
+  },
+  "what_worked": "Revenue-index concept on slide 2 is a genuinely useful analytical lens for category comparison.",
+  "fix_next": "Disclose 274 missing category rows and recompute all category shares using the correct 726-row denominator.",
+  "verdict": "Clean design and clear thesis undermined by denominator errors and unverifiable slide-3 claims.",
+  "flags": [
+    "denominator-error-slide2",
+    "unverifiable-claims-slide3",
+    "fabricated-distribution-slide3",
+    "missing-limitations-disclosure",
+    "category-missingness-ignored",
+    "revenue-metric-conflation"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: E-comm called 2.6% of 1,000 but only 726 have categories; true share ~2.6% of 726 is similar count but revenue share 13.4% is wrong (actual ~7.1% of total revenue). AI called 27% of 1,000 startups — actually 197/726≈27.1% of categorized rows, but framed against 1,000 is misleading. Revenue index values cascade from wrong shares. Slide 2 uses '30-day revenue' while slide 4 switches to 'all-time revenue' without clarifying these are different metrics. Slide 3: 5.6x median MRR ratio, $1,055 vs $187 figures, and the revenue-multiple distribution (34/27/18/13/8%) are all unverifiable and the round percentages suggest fabrication. Slide 3: 2.3x median multiple claimed — reference shows B2B median 2.35x and B2C 2.30x, so blended 2.3x is plausible but presented without B2B/B2C distinction.",
+  "evidence": {
+    "insight": "Revenue-index ratio (slide 2) and vanity-metric debunking (slide 4) are decision-useful framings. Marketplace insight (slide 3) is more descriptive than analytical. Three insights is adequate but not deep.",
+    "narrative": "Clear three-act structure with thesis, numbered insights, and summary slide that synthesizes into recommendations. Sequence is logical. Landing is actionable. However, the three insights feel somewhat disconnected from each other.",
+    "framing": "Dataset size noted but 274 missing category values never disclosed, which directly affects slide 2 calculations. No limitations section. 'Prepared for Sritam' gives no decision context. 30-day revenue vs all-time revenue used across slides without clarifying they are different fields.",
+    "accuracy": "Slide 2 denominators wrong: category shares computed against 1,000 when only 726 have categories, inflating E-comm revenue index. E-comm revenue share ~7.1% of $15.6M total, not 13.4%. Slide 3 numbers largely unverifiable; round-number distribution (34/27/18/13/8) looks fabricated. Slide 4 correlations are plausible directionally but specific r values unverifiable beyond the X-followers figure being close to the known founded-year r≈0.025.",
+    "visual": "Consistent teal/orange palette, clean bar charts, effective big-number callouts. Chart choices appropriate. Good legibility and hierarchy. Slight template repetition but not distracting. Slide 3 bar chart is simple and effective.",
+    "ai_slop": "Uniform template structure across all insight slides. Revenue-multiple distribution on slide 3 uses suspiciously round percentages summing to exactly 100%. Overall polish is high but some numbers appear generated rather than computed from data."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Removed bonus point: work is competent but not exceptional beyond rubric. Lowered accuracy from 5.0 to 4.5 due to confirmed denominator error cascading through slide 2 and unverifiable/likely fabricated slide 3 distribution. Lowered framing from 5.5 to 5.0 for revenue-metric conflation (30-day vs all-time) and absent limitations.",
+  "total": 60,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 10443,
+    "output_tokens": 1054
+  }
+}

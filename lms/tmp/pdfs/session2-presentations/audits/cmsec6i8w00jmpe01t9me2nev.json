@@ -1,0 +1,45 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 6,
+    "framing": 7,
+    "accuracy": 4.5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "MRR-vs-12-month divergence analysis and Anderson-Darling log-transform slide show genuine analytical thinking beyond surface stats.",
+  "fix_next": "Verify top-10 share (claimed 61% vs. reference 49.6%) and reconcile zero-revenue count (101 vs. 216); these undermine trust in key claims.",
+  "verdict": "Solid structure and honest framing, but several factual errors erode credibility of core claims.",
+  "flags": [
+    "top10-share-inflated",
+    "total-revenue-unverifiable-334M",
+    "sector-medians-not-matching-reference",
+    "missing-slide-4",
+    "no-payment-provider-analysis",
+    "no-anonymity-analysis",
+    "no-tld-analysis",
+    "no-marketplace-multiple-analysis",
+    "zero-revenue-count-ambiguous"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 3: top-10 share claimed 61% vs reference 49.6% — material overstatement. Slide 3: total revenue $334M vs reference $15.6M — off by ~21×, likely confusing a field or summing wrong column. Slide 3: $0 revenue count 101 doesn't match reference 216 zero-revenue rows. Slide 4 (sector medians): E-comm median shown $34,880 vs reference $387, Education $19,399 vs $2,435, AI $4,853 vs $503 — appears to use all-time revenue but values still don't match reference medians for any window.",
+  "evidence": {
+    "insight": "MRR×12 vs 12-month divergence (73%), correlation pair (0.91 subs-MRR vs 0.27 DA-revenue), and Anderson-Darling analysis are original and decision-useful. However, omitting provider ecosystem, anonymity premium, TLD, and marketplace multiples limits breadth.",
+    "narrative": "Flows logically: overview → power law → sectors → growth → geography → distribution → conclusions. But reads as a tour of findings rather than thesis-driven. No single guiding question or recommendation ties slides together.",
+    "framing": "Slide 2 transparently flags missingness (274 categories, 142 traffic) and defines metrics well. Data quality callouts on slide 4 about whale companies are commendable. Never states target audience or decision context.",
+    "accuracy": "Total revenue $334M is wildly inconsistent with reference $15.6M — a 21× discrepancy suggesting a fundamental calculation error. Top-10 share 61% vs 49.6% reference. Sector medians don't match reference values for any revenue window. Zero-revenue count 101 vs reference 216. These are not rounding issues but material errors in headline figures.",
+    "visual": "Clean, consistent template with well-labeled bars and annotation panels. Chart choices appropriate but limited to bar charts throughout. Anderson-Darling reduction chart is an effective and unusual choice. No scatter plots despite discussing correlations.",
+    "ai_slop": "none"
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.0 to 4.5: the $334M total revenue figure is off by 21× from the $15.6M reference, which is a fundamental error in the deck's most prominent headline number, compounding the already-noted top-10 share and sector median discrepancies. Other scores unchanged as preliminary assessment was reasonable.",
+  "total": 62,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 16073,
+    "output_tokens": 911
+  }
+}

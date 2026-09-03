@@ -1,0 +1,40 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 4,
+    "narrative": 5,
+    "framing": 4.5,
+    "accuracy": 3,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Volume-vs-value framing for AI category is a genuinely useful observation supported by the data.",
+  "fix_next": "Average MRR figures appear fabricated or badly miscalculated; use medians, disclose missingness, and drop the unverifiable investment funnel numbers.",
+  "verdict": "Consulting theater over a shaky analytical foundation with multiple fabricated-looking numbers.",
+  "flags": [
+    "fabricated-looking-numbers",
+    "mean-without-median-caveat",
+    "decorative-stock-dashboard",
+    "consulting-language-inflation",
+    "missing-data-unacknowledged",
+    "unverifiable-funnel-classification"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 4: E-Commerce avg MRR $20,828 — reference total is $1,111,606/19=$58,506 (mean) or $387 (median); $20.8k matches neither. Analytics avg $18,831 — reference $368,214/19=$19,380 (close but still off) or median $419. Social Media avg $16,911 — reference $257,454/18=$14,303; inflated. AI avg $9,166 — reference $2,356,676/197=$11,963; understated. Slide 5: Recruiting & HR 267% growth and SaaS 64.36% growth are unverifiable from reference data and presented without sample sizes or methodology. Slide 6: The 194/68/738 funnel split is entirely invented with no disclosed filtering criteria — presented as 'proprietary' but untraceable to the dataset.",
+  "evidence": {
+    "insight": "Slide 4 and 7 attempt a volume-vs-value thesis contrasting AI count with E-comm/Analytics revenue, which is directionally interesting but built on wrong numbers. Slide 6 funnel is fabricated classification with no reproducible methodology. No discussion of missingness, payment providers, anonymity, or TLD patterns.",
+    "narrative": "Slides follow a logical arc: market composition → revenue → growth → funnel → strategy → action. The sequence is coherent but the thesis ('high-conviction pipeline') rests on an opaque, unverifiable scoring system. Landing on slide 9 with actionable deployment is purposeful but hollow without trustworthy inputs.",
+    "framing": "Slide 1 identifies audience (VC partners) and dataset. However, 274 missing category values and 216 zero-revenue companies are never acknowledged. The 'proprietary filtering system' is never defined. No limitations slide exists.",
+    "accuracy": "Multiple average MRR figures on slide 4 do not match reference calculations by either mean or median. The entire funnel classification (194/68/738) is asserted without methodology. Growth rates on slide 5 are unverifiable. Slide 8 presents fictional company profiles with invented MRR figures presented as dataset examples. The denominator issue (726 categorized vs 1000 total) is ignored throughout.",
+    "visual": "Consistent dark theme with green/blue accent palette. Donut chart on slides 2-3 is readable. Bar chart on slide 4 is clean. Slide 9 includes a completely irrelevant stock photo of a financial dashboard that has nothing to do with the dataset — pure decoration. Slide 6 has rendering artifacts ('Hold' text overlapping). Overall template-driven sameness.",
+    "ai_slop": "Heavy consulting jargon throughout: 'proprietary filtering system,' 'high-conviction pipeline,' 'asymmetric growth pockets,' 'bespoke structuring,' 'capital allocation vehicles.' Slide 9 stock dashboard image is decorative filler unrelated to the analysis. The entire funnel framework (Strong Buy/Hold/Pass) mimics equity research language without substance. Slide 8 fictional company profiles are AI-generated scenario illustrations, not data analysis."
+  },
+  "confidence": "high",
+  "total": 41,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 21003,
+    "output_tokens": 995
+  }
+}

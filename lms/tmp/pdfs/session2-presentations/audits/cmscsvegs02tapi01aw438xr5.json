@@ -1,0 +1,42 @@
+{
+  "slide_count": 1,
+  "scores": {
+    "insight": 1.5,
+    "narrative": 2,
+    "framing": 2.5,
+    "accuracy": 2,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Clean three-column layout with numbered next-steps shows competent visual organization of text.",
+  "fix_next": "Actually analyze the full 1,000-row dataset: produce charts, verify claims, and present concrete findings instead of a project-kickoff memo.",
+  "verdict": "A planning memo, not a data story—no analysis was performed.",
+  "flags": [
+    "no-charts",
+    "no-findings",
+    "analysis-not-performed",
+    "single-slide",
+    "sample-of-10-only",
+    "ai-scoping-template"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 1: Claims all startups are 'Stripe-connected' — dataset includes RevenueCat (189) and Dodo (50) providers. Slide 1: Reports Pearson r ≈ 0.14 from a 10-row sample as if meaningful; full-dataset founded-year/revenue r = 0.025, and a 10-row correlation is statistically vacuous.",
+  "evidence": {
+    "insight": "Zero original findings from the dataset. Every bullet is either a generic truism ('revenue is power-law distributed') or a promise of future work. No category breakdowns, no revenue distributions, no provider analysis, no median comparisons — nothing decision-useful.",
+    "narrative": "Structured as Situation → Observations → Decision Areas → Next Steps, but this is a project-scoping document, not a data story. There is no thesis, no evidence arc, no synthesis, and no conclusion. The 'landing' is literally 'we will do the analysis later.'",
+    "framing": "Audience and decision question are vaguely gestured at ('acquisition screening,' 'fair benchmarking') but never sharpened. Scope is explicitly deferred with 'full-scale confirmation pending clean export.' A cold reader learns almost nothing about the dataset's actual contents.",
+    "accuracy": "Claiming all startups are 'Stripe-connected' is false (Stripe is 636/1000). The 10-row Pearson r ≈ 0.14 is statistically meaningless and presented without caveat about sample size adequacy. No verifiable figures from the full dataset are offered for cross-checking.",
+    "visual": "Typography is clean, three-column layout is readable, numbered steps are well-formatted. However, there are zero charts, zero data visualizations, and zero quantitative evidence displayed — the entire slide is text boxes. For a data-story presentation this is fundamentally insufficient.",
+    "ai_slop": "Heavy consulting-framework language ('SITUATION,' 'DECISION AREAS,' 'HOW WE'LL PROCEED') without analytical substance. The entire slide reads like a generic AI-generated project-scoping template that could apply to virtually any tabular dataset."
+  },
+  "confidence": "high",
+  "changed": false,
+  "change_reason": "no-change",
+  "total": 23,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 3737,
+    "output_tokens": 758
+  }
+}

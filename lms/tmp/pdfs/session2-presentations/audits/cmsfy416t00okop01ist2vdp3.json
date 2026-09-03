@@ -1,0 +1,45 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 1.5,
+    "narrative": 2.5,
+    "framing": 2,
+    "accuracy": 1.5,
+    "visual": 4.5,
+    "bonus": 0
+  },
+  "what_worked": "Polished visual template with consistent typography, color system, and clean card-based layout throughout.",
+  "fix_next": "Replace the pitch-deck format with actual data analysis: show distributions, comparisons, missingness, and cite verifiable numbers from the dataset.",
+  "verdict": "A startup pitch deck, not a data story; one verifiable number, one fabricated.",
+  "flags": [
+    "wrong-genre",
+    "fabricated-chart",
+    "fabricated-revenue-claim",
+    "inflated-claims",
+    "ai-slop",
+    "missing-analysis",
+    "no-limitations-discussed",
+    "no-real-data-visualizations",
+    "repetitive-persona-templates"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 4: AI cohort revenue claimed as $31.8M vs actual $2.36M (~13x inflation). Slide 4: 75.8% average 30-day growth rate is unsubstantiated and not derivable from the dataset. Slide 2: fabricated Q1–Q6 line chart with no data source or axis units.",
+  "evidence": {
+    "insight": "Only slide 4 touches the dataset at all, citing 197 AI startups (correct) and 19.7% share (correct), but the remaining 9 slides describe hypothetical product features and personas with zero analytical exploration of categories, providers, geography, missingness, or distributions.",
+    "narrative": "Structure is problem→solution→4 identical persona slides→vision→CTA — a seed-pitch arc, not a data-story arc. Slides 5–8 are copy-paste templates with different icons. No analytical argument builds across slides; no synthesis or landing grounded in evidence.",
+    "framing": "No dataset description, no mention of 1,000-row scope, no missingness disclosure (241 country, 274 category, 288 audience_type missing), no research question, no limitations. A cold reader cannot evaluate what was analyzed or how trustworthy the claims are.",
+    "accuracy": "$31.8M AI revenue is roughly 13x the actual $2.36M — either fabricated or confused with total dataset revenue ($15.6M), which itself doesn't match. The 75.8% growth figure has no derivation path in the dataset. The 197 count and 19.7% share are correct. The slide 2 chart is entirely invented.",
+    "visual": "Dark-mode design is professionally executed: consistent cyan accent, good type hierarchy, clean card layouts. However, the only chart (slide 2) is fabricated with no real data, slide 3's chaos-to-grid graphic is purely decorative, and no actual data visualization appears anywhere in the deck.",
+    "ai_slop": "Heavy AI-generated pitch template: identical card structures on slides 5–8, decorative network-node backgrounds on 4 slides, inflated language ('shadow tech GDP,' 'Bloomberg Terminal for the next generation of internet commerce,' 'real-time economic truth'), and the fabricated line chart on slide 2 is classic AI filler."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 2→1.5 (only two correct numbers amid fabricated claims), narrative from 3→2.5 (pitch structure with four clone slides is below adequate), and framing from 2.5→2 (complete absence of dataset context, scope, or limitations). Accuracy and visual unchanged; both were already appropriately scored.",
+  "total": 24,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 18815,
+    "output_tokens": 888
+  }
+}

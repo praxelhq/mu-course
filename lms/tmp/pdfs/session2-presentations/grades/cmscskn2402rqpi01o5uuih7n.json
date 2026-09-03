@@ -1,0 +1,40 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 4.5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong thesis on power-law concentration with responsible data-quality caveats and median-vs-mean discipline throughout.",
+  "fix_next": "Total revenue is $15.6M not $13.5M; top-10 share is ~49.6% not 48%; several category medians are materially wrong—verify every number against the dataset.",
+  "verdict": "Compelling narrative undermined by multiple factual errors in core figures.",
+  "flags": [
+    "total-revenue-wrong",
+    "top10-share-inaccurate",
+    "category-medians-off",
+    "zero-revenue-count-wrong",
+    "b2b-multiple-inflated",
+    "includes-unlabeled-sales-category"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1-2: Total revenue stated as $13.5M; actual is $15.6M. Slide 2: Top-10 share stated 48%; reference is 49.6%. Slide 3: Education median $2,142 vs reference $2,435; Marketing $1,586 vs $2,369.50; AI median $446 vs $503; SaaS $303 vs $200.50 (direction ok but magnitude off); Content $1,254 vs $1,237.50 (close). 'Sales' category with n=13 not in reference categories. Slide 4: B2B premium stated as 4.5x; reference multiples are ~2.3-2.4x median, far lower. Slide 5: Zero-revenue count stated as 197; reference is 216. Slide 3: AI mean/median ratio claim of 20x ($9,167/$446) cannot be verified but $2,356,676/197 ≈ $11,963 mean, making ratio ~24x if median were $503.",
+  "evidence": {
+    "insight": "Slide 2 power-law framing is genuinely useful; slide 3 hype-vs-value contrast is original; slide 4 identifies three predictive signals beyond simple description; slide 6 marketplace analysis adds a novel angle.",
+    "narrative": "Clear arc: concentration → category hype → predictive signals → marketplace dynamics. Title thesis ('power law') threads through. Closing line synthesizes. Sequence is purposeful, not a list.",
+    "framing": "Slide 1 sets scope (1,000 startups, frozen date). Slide 5 sidebar explicitly flags missingness (241 country, 129 anonymous, 197 zero-rev). Audience implied but never stated. No limitations on causal claims for slide 4 correlations or slide 5 title ('predicts').",
+    "accuracy": "Total revenue wrong by ~$2.1M (13.5% error). Multiple category medians deviate materially from reference. B2B multiple overstated roughly 2x. Zero-revenue count off by 19. Top-10 share rounded loosely. 'Sales' category appears without reference basis. These are not rounding issues—they are systematic.",
+    "visual": "Consistent navy/gold palette, clean typography, good hierarchy. Pie chart on slide 2 is readable but pie charts are suboptimal for this comparison. Bar charts on slides 3 and 5 are clear with labeled values. Slide 4 is text-heavy with no chart. Slide 6 uses big-number layout effectively. No chart junk but some visual sameness across slides.",
+    "ai_slop": "Minimal slop. Language is specific to the dataset rather than generic. Some consulting-style phrasing ('A Market With Its Own Physics') but not excessive. No decorative-but-meaningless graphics."
+  },
+  "confidence": "high",
+  "total": 66,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 12068,
+    "output_tokens": 952
+  }
+}

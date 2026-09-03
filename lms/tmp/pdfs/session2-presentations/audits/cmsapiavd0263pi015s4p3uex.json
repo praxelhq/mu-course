@@ -1,0 +1,44 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 9,
+    "accuracy": 6,
+    "visual": 7.5,
+    "bonus": 3
+  },
+  "what_worked": "Slide 9's concealment-vs-incompleteness distinction is genuinely original; triangulation across slides 4-5 is well-executed.",
+  "fix_next": "Verify every category median against source data; several (Education, Marketing, Dev Tools, E-Commerce) diverge materially from reference values.",
+  "verdict": "Exceptional storytelling and framing undermined by multiple factual errors in category and segment figures.",
+  "flags": [
+    "median-category-discrepancies",
+    "top10-share-rounded-up",
+    "b2b-b2c-median-mismatch",
+    "zero-revenue-197-conflation",
+    "annual-revenue-inflated",
+    "decorative-sidebar-clutter",
+    "live-data-feed-contradicts-frozen-snapshot",
+    "29000-datapoints-misleading"
+  ],
+  "factual_error_count": 9,
+  "factual_error_detail": "Slide 2: Top-10 share 50.6% vs reference 49.6%. Slide 2: Stan $25.0M annual = 18.7% of dataset, but 18.7% of $15.6M total would be ~$2.9M not $25M (internally inconsistent or total revenue wrong). Slide 1/2: $134M annual revenue vs reference $15.6M total (appears to annualize monthly figures without disclosure). Slide 3: 197 companies with $0 MRR — reference shows 216 zero-revenue, 197 is the AI category count. Slide 4: B2B median $1,036 vs B2C $181 = 5.7× but reference on-sale medians show 2.35×/2.30× multiples; even if different denominators, the 5.7× claim is unverifiable against reference. Slide 6: Education median $2,142 vs reference $2,435; Marketing $1,586 vs $2,369.50; Dev Tools $185 vs $635; E-Commerce $155 vs $387; Content Creation $1,254 vs $1,237.50 (minor). Slide 6: AI median $446 vs reference $503. Slide 7: India shown as 59 companies — reference shows India Dodo 36/59=61%, consistent count but median $5.97 not directly verifiable. Slide 10: Advertised multiple 2.3× vs reference B2B 2.35×/B2C 2.30× — close but presented as a single blended figure.",
+  "evidence": {
+    "insight": "Slide 9 distinguishes deliberate concealment from incomplete records — a genuinely novel analytical move. Slide 5 independently triangulates the B2B advantage through pricing model. Slide 10's valuation recalculation is decision-useful for acquirers. The crowd-vs-profit tension on slide 6 is well-framed.",
+    "narrative": "Textbook arc: extreme distribution (1-3) → success predictors (4-6) → geography and signals (7-8) → hidden patterns in missingness (9) → synthesis and recommendations (10). Explicit cross-references ('Slide 2 revealed the giants, Slide 3 reveals the floor') create cohesion. The landing synthesizes five grounded recommendations.",
+    "framing": "Slide 1 interpretation note ('self-listed directory—not a market survey') is exemplary. Warning triangles for small samples, 'Interpret with Care' boxes, 'descriptive rather than causal' disclaimers appear throughout. Slide 6 notes 274 missing categories, slide 7 notes 241 missing countries. Unusually rigorous for student work.",
+    "accuracy": "Multiple category medians diverge from reference (Education, Marketing, Dev Tools, E-Commerce, AI). The 197 zero-MRR figure likely conflates AI category count with zero-revenue count (reference: 216). Top-10 share rounded up from 49.6% to 50.6%. The $134M annual revenue figure appears to be monthly×12 without clear basis from the $15.6M total. B2B/B2C 5.7× gap uses different metric than reference 2.35× on-sale multiple.",
+    "visual": "Consistent dark-theme dashboard with clear hierarchy and effective annotation (callout boxes, warning triangles). Waffle chart on slide 2 communicates concentration well. Scatter plot on slide 6 with labeled quadrants is effective. However, left-sidebar mini-charts repeat identically across all slides as decorative chrome, adding clutter without information. Slides 9-10 are extremely dense.",
+    "ai_slop": "Left-sidebar widgets (LIVE DATA FEED, REVENUE FLOW, MRR SCATTERPLOT, DATA POINTS 29,000) repeat identically across all 10 slides as decorative dashboard padding. 'LIVE DATA FEED' badge contradicts the frozen-snapshot framing. '29,000 data points' (1000×29 columns) is presented misleadingly as observation count. These are template artifacts, not analytical content."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 6.5 to 6.0: the $134M annual revenue figure is a major inflation (reference total is $15.6M), the 197 zero-MRR conflation with AI category count is a clear error, and multiple category medians diverge substantially. Lowered visual from 8.0 to 7.5 for repetitive decorative sidebar chrome across all slides and misleading 'LIVE DATA FEED' badge. Other scores confirmed as appropriate.",
+  "total": 83,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 17554,
+    "output_tokens": 1409
+  }
+}

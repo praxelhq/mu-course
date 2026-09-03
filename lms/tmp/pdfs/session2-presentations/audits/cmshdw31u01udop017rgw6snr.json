@@ -1,0 +1,41 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 6,
+    "visual": 6.5,
+    "bonus": 2
+  },
+  "what_worked": "Genuine competitive-map synthesis (slide 8) and four concrete entry strategies grounded in observed whitespace gaps.",
+  "fix_next": "Add more charts from the frozen dataset (e.g., median comparisons, domain-rating distributions) to replace text-heavy assertion slides.",
+  "verdict": "Focused niche thesis with strong narrative arc, but thin on verifiable data visualization.",
+  "flags": [
+    "external-data-mixed-with-frozen",
+    "unverifiable-live-site-claims",
+    "low-chart-count",
+    "revenuecat-count-mismatch",
+    "median-unverified"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 3: states 262 use RevenueCat; frozen reference is 189. Slide 5: whole-dataset median $400 is not verifiable against reference and likely inaccurate (frozen overall median is harder to pin but category medians suggest a different figure).",
+  "evidence": {
+    "insight": "Slides 7-10 go beyond description: Jungle Bee outlier dissected for booking-volume vs. take-rate, competitive map of 6 sub-segments with density labels, four actionable entry strategies with comp pricing. Domain-rating comparison (24.2 vs 16.7) adds a novel angle.",
+    "narrative": "Clean arc: method → market context → category positioning → outlier → competitive map → synthesis → recommendations → caveats. Slide 9 synthesis ties five threads. Slide 12 closes with a punchy reframe. Each slide advances the 'small but untried' thesis.",
+    "framing": "Slide 1 states compset/opportunity-mapping purpose; slide 2 explains dual-source method and 8-of-1000 sampling caveat; slide 11 lists four honest limitations including survivorship bias and snapshot nature. Target reader (indie builder vs investor) could be sharper.",
+    "accuracy": "Slide 4 category totals match reference (AI $2.36M, Marketing $1.32M, E-comm $1.11M, SaaS $704K, Education $524K, Analytics $368K). But RevenueCat 262 vs 189 is a clear error. Whole-dataset median $400 unverified. Live-site Travel figures ($378 median, 133 listings) are external and unauditable against frozen data.",
+    "visual": "Consistent dark theme, clear typography hierarchy, section labels. Only one data chart (slide 4 bar with square-root scale, well-annotated). Slides 8 and 10 use card layouts effectively. Deck is text-heavy; more frozen-data visualizations would strengthen evidence substantially.",
+    "ai_slop": "none"
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 6.5 to 6.0: RevenueCat count error (262 vs 189) is a clear factual mistake on a verifiable frozen-data figure, and the whole-dataset median $400 claim is unsupported. Other scores confirmed as appropriate.",
+  "total": 73,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 20384,
+    "output_tokens": 812
+  }
+}

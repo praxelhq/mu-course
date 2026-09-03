@@ -1,0 +1,41 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 7,
+    "framing": 6,
+    "accuracy": 6,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "Domain-rating staircase and momentum acceleration analysis are genuinely original, decision-useful findings from this dataset.",
+  "fix_next": "Add a limitations slide disclosing missing-data rates (24–29% across key fields) and correct the 4.7x ratio error on slide 3.",
+  "verdict": "Strong analytical deck undermined by undisclosed missingness and one clear arithmetic error.",
+  "flags": [
+    "missing-data-not-disclosed",
+    "slide3-ratio-error-4.7x-should-be-3x",
+    "geographic-denominators-unclear",
+    "no-synthesis-slide",
+    "superlative-claim-unsubstantiated-slide5"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 3: claims AI is '4.7x the size of the next-largest category (SaaS, 66)' but 197/66 = 2.98x, not 4.7x. Slide 8: states '65 countries' without disclosing 241 missing country values (24.1% of dataset), inflating apparent geographic breadth.",
+  "evidence": {
+    "insight": "Slide 5 DR-staircase is a non-obvious, well-quantified finding (4000x gap). Slide 7 momentum split adds temporal dimension. Slide 6 ARPU decomposition deepens the B2B/B2C story beyond company-level medians. Slide 3 crowding-vs-median contrast is useful.",
+    "narrative": "Clear arc: power-law (S2) → category crowding (S3) → structural signals (S4-S6) → momentum (S7) → geography (S8). But no synthesis or recommendation slide ties the 'build, compete, or buy' thesis together at the end.",
+    "framing": "Footer consistently cites source and freeze date. However, missing-data rates (241 country, 274 category, 288 audience_type) are never disclosed despite materially affecting denominators on slides 3, 4, and 8. No limitations acknowledgment anywhere.",
+    "accuracy": "Slide 2 top-10 share 49.6%, 216 zero-revenue, $15.6M total all verified. Slide 3 category medians match reference within rounding. However, 4.7x ratio is arithmetically wrong (should be ~3x). Slide 4 audience_type counts sum to 712 = 1000-288 missing, consistent but undisclosed. Slide 8 country count ignores 241 missing values.",
+    "visual": "Consistent navy/coral palette. Big-number callouts paired with charts create clear hierarchy. Bar charts labeled with sample sizes throughout. Slide 5 staircase is particularly effective. Layout is polished and information-dense without clutter.",
+    "ai_slop": "Minimal. Each slide contains dataset-specific content. Consulting-style callout boxes are formulaic but substantively filled. No decorative filler or generic language."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing 6.5→6.0 for undisclosed missingness affecting multiple slides. Lowered accuracy 6.5→6.0 for clear 4.7x arithmetic error on slide 3. Reduced bonus 2→1 as work is strong but not exceptional enough for 2-point bonus. Reduced factual error count from 4 to 2 confirmed errors; preliminary flags on B2B median inflation were not substantiated by reference data.",
+  "total": 69,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 16197,
+    "output_tokens": 2536
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 5,
+    "narrative": 6,
+    "framing": 4,
+    "accuracy": 3,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Coherent thesis arc from data audit through sector tiering to portfolio allocation with consistent visual template.",
+  "fix_next": "Strip fabricated metrics (MoM growth, NDR, churn, CAC) not in the dataset and disclose missingness and zero-revenue rows.",
+  "verdict": "Polished pitch memo built on largely fabricated metrics; accuracy undermines the thesis.",
+  "flags": [
+    "fabricated-metrics",
+    "unverifiable-claims",
+    "no-missingness-disclosure",
+    "consulting-language-inflation",
+    "decorative-code-snippet",
+    "no-real-data-visualizations",
+    "category-remapping-unexplained",
+    "count-mismatch"
+  ],
+  "factual_error_count": 9,
+  "factual_error_detail": "Slide 2: '3.22x median asking ARR multiple' unverifiable from frozen data (reference medians are 2.35x B2B / 2.30x B2C). Slide 3: '100% API verified' overstates; 216 zero-revenue rows and substantial missingness undisclosed. Slide 4: AI category count 84 vs frozen 197; category names remapped without explanation; MoM growth percentages (27.6%, 11.3%, 24.7%, etc.) not in dataset. Slide 5: '$1.79M cumulative MRR' for AI unverifiable (frozen AI total ~$2.36M across all rows, not a filtered band). Churn rates (2.5%, 12%) fabricated. Slide 6: NDR >120% not in dataset. Slide 7: 0.8% monthly churn not in dataset. Slide 8: 43.4x DR multiplier and $3,935.50 median unverifiable against frozen reference (.ai median 25 vs .com median 8 are TLD-based, not DR-based). Slide 10: percentage labels (32.5%, 24.7%, 22.0%) are relative to AI bar at 100%, misleading framing.",
+  "evidence": {
+    "insight": "Sector tiering (slides 4-7) and valuation band segmentation (slide 9) show genuine analytical ambition, but the core differentiating metrics (MoM growth, NDR, churn, CAC ratios) are fabricated rather than derived from the dataset, reducing real insight to surface-level category grouping.",
+    "narrative": "Clear arc: overview → integrity → sector matrix → deep dives → unit economics → valuation → allocation → roadmap. Reads as a VC pitch memo rather than a data story; the synthesis landing (slide 12) is thin, offering a generic 4-stage playbook without reflecting on data limitations.",
+    "framing": "Slide 1 establishes VC audience and $10M mandate. However, zero disclosure of 274 missing categories, 241 missing countries, 286 missing domains, or 216 zero-revenue rows. Slide 3 claims '100% API verified' which actively misleads about data quality. No scope limitations stated for a cold reader.",
+    "accuracy": "Revenue total ($15,596,344 on slide 3) is correct. Nearly everything else is problematic: category names remapped without mapping key, counts don't reconcile (84 AI vs 197 frozen), MoM growth/NDR/churn/CAC metrics absent from dataset, 3.22x median multiple doesn't match frozen B2B/B2C medians, 43.4x DR multiplier unverifiable. At least 9 distinct factual issues.",
+    "visual": "Consistent, clean template with good typographic hierarchy and readable tables. However, only one actual chart (slide 10 bar chart, which has a truncated label). No scatter plots, distributions, or histograms. Slide 6 decorative JavaScript code snippet is pure filler. Heavy visual sameness reduces engagement.",
+    "ai_slop": "Decorative code snippet (slide 6) adds zero analytical value. Consulting-inflated language throughout: 'empirical thesis fundamentals', 'valuation arbitrage', 'organic moat requirement', 'zero self-reporting bias'. Repetitive card-based layout across all 12 slides suggests template-driven generation. Claims like 'zero CAC drag' and 'non-linear scale' are generic filler."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Removed 1 bonus point: the work does not exceed rubric expectations given pervasive fabricated metrics and absence of real data visualizations. Lowered insight from 5.5 to 5.0 because the analytical depth is asserted rather than demonstrated from actual dataset fields.",
+  "total": 46,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 20505,
+    "output_tokens": 1178
+  }
+}

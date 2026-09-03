@@ -1,0 +1,46 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 4,
+    "narrative": 5,
+    "framing": 5,
+    "accuracy": 3.5,
+    "visual": 6,
+    "bonus": 0
+  },
+  "what_worked": "Consistent visual identity, good callout of 241 missing countries, and honest outlier flagging for Stan.",
+  "fix_next": "Reconcile total revenue ($13.47M claimed vs $15.6M actual); this single error cascades through every share and average on every slide.",
+  "verdict": "Polished descriptive tour undermined by a wrong revenue base and no analytical thesis.",
+  "flags": [
+    "wrong-total-revenue",
+    "zero-revenue-count-wrong",
+    "top10-share-understated",
+    "histogram-bins-implausible",
+    "ai-revenue-wrong",
+    "stripe-revenue-wrong",
+    "no-original-thesis",
+    "descriptive-not-analytical",
+    "missing-category-caveat-absent",
+    "mean-used-where-median-needed"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 2: total MRR $13.47M vs reference $15.6M (off ~$2.1M), mean $13,472 also wrong. Slide 3: $0 MRR count 197 vs reference 216; top-10 share 48% vs 49.6%. Slide 5: AI total $1.8M vs reference $2.36M; AI avg $9,167 derived from wrong total. Slide 8: Stripe revenue $11.75M and 87% share both derived from wrong denominator. Slide 3 histogram: near-uniform bin heights (197-198-197-196-196) are implausible given 216 zeros and a claimed power law.",
+  "evidence": {
+    "insight": "Every slide reports a single descriptive statistic (count, sum, or average) per dimension. No cross-cutting analysis: no median-vs-mean by category, no TLD effect, no anonymous-vs-named revenue share, no founded-year correlation, no survivorship or selection-bias discussion. B2B/B2C slide uses means only, missing the more robust median comparison.",
+    "narrative": "Slides proceed logically (overview → distribution → category → geography → audience → payments → growth → marketplace → takeaways), but there is no unifying thesis or argument. Takeaways slide restates each section headline verbatim. No synthesis, no 'so what' for a decision-maker or founder.",
+    "framing": "Source and record count stated on slide 1. Missing-country caveat on slide 6 is good. However, 274 missing categories and 288 missing audience_type are never disclosed. No discussion of TrustMRR's self-selection bias or what listing criteria mean for generalizability. Target audience never stated.",
+    "accuracy": "Foundational total ($13.47M) is ~$2.1M below the reference $15.6M, propagating errors to every percentage and average. Zero-revenue count (197 vs 216), top-10 share (48% vs 49.6%), AI revenue ($1.8M vs $2.36M), and Stripe revenue ($11.75M) are all materially off. Histogram bin counts on slide 3 are suspiciously uniform and inconsistent with 216 zeros.",
+    "visual": "Navy-gold palette is consistent and professional. Typography hierarchy is clear. Callout boxes are effective. However, every analytic slide uses the same bar-chart-plus-callout layout, becoming repetitive. No scatter plots, box plots, or small multiples to reveal distributional patterns. Slide 3 histogram visually contradicts its own 'steep power law' headline.",
+    "ai_slop": "Template is polished but generic — identical layout repeated across slides. The suspiciously uniform histogram bins (197, 198, 197, 196, 196) suggest AI-generated placeholder counts rather than actual computation. Language is clean but lacks dataset-specific texture."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 4.0 to 3.5: the wrong revenue base ($13.47M vs $15.6M) is not a rounding issue but a ~14% undercount that corrupts every derived share and average across multiple slides. Lowered insight from 4.5 to 4.0: no cross-dimensional analysis at all. Other scores confirmed as appropriate.",
+  "total": 47,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 21024,
+    "output_tokens": 1082
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 6,
+    "narrative": 6,
+    "framing": 6.5,
+    "accuracy": 5.5,
+    "visual": 5.5,
+    "bonus": 1
+  },
+  "what_worked": "Honest data-quality framing, consistent causal discipline, and the volume-vs-value category contrast was genuinely useful.",
+  "fix_next": "Use medians (not means) for category comparisons given your own skew argument; verify provider counts against the actual dataset before publishing.",
+  "verdict": "Solid descriptive tour with good causal restraint, but lacks deeper original insight.",
+  "flags": [
+    "mean-vs-median-inconsistency",
+    "pie-chart-label-bug",
+    "provider-counts-off",
+    "no-anonymity-analysis",
+    "no-tld-analysis",
+    "descriptive-not-prescriptive"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 3: Top-10 share stated as ~48% vs reference 49.6%—minor rounding, acceptable. Slide 4: Uses mean MRR for category ranking despite arguing median is the right measure; AI mean $9,167 doesn't match reference ($2,356,676/197≈$11,963). Slide 8: Stripe count 644 vs reference 636; RevenueCat 191 vs reference 189; Polar 40 vs reference 36; Lemon Squeezy 27 vs reference 25; Superwall 19 vs reference 17. Pie chart labels show raw counts with '0.0%' appended (e.g., '6440.0%') which is a rendering error. Slide 6: B2B median $1,036 and B2C median $181 don't match reference median revenue multiples (2.35x/2.30x) but the deck uses absolute MRR not multiples, so these are plausible MRR medians from the audience_type field. Slide 5: Country counts based on 759 non-missing rows (241 missing), not flagged. Slide 3: 19.7% zero MRR stated but reference says 216/1000=21.6%.",
+  "evidence": {
+    "insight": "Slide 4's volume-vs-value contrast for AI is the strongest original observation. Slide 7's correlation analysis is useful but the subscriptions-revenue correlation is near-tautological. Slide 10's marketplace analysis adds texture. Overall the deck describes patterns without synthesizing toward a decision or recommendation.",
+    "narrative": "Follows a logical sequence: overview → distribution → categories → geography → audience → drivers → infrastructure → momentum → marketplace → summary. But it reads as a tour of facets rather than building toward a thesis. The summary (slide 11) lists 8 takeaways that largely restate slide titles without synthesis.",
+    "framing": "Slide 2 does good work: acknowledges missingness, skew, and warns about directional cuts. Data quality note is honest. However, no explicit research question or audience decision is stated. '65 countries' claim needs caveat about 241 missing country values.",
+    "accuracy": "Provider counts are consistently inflated (Stripe 644 vs 636, RevenueCat 191 vs 189, Polar 40 vs 36, etc.). Zero-MRR percentage stated as 19.7% but should be 21.6%. AI average MRR of $9,167 doesn't match computed $11,963. The deck argues for medians over means on slide 3 but then uses means for category ranking on slide 4, an internal inconsistency.",
+    "visual": "Consistent dark theme with teal/green accent is clean. Pie chart on slide 8 has a serious label rendering bug ('6440.0%' instead of '64.4%'). Bar charts are readable but generic. No scatter plots or distributions shown despite the skew narrative. Chart choices are safe but not evidence-led—a histogram or box plot would have strengthened slide 3.",
+    "ai_slop": "Pie chart label bug on slide 8 is a telltale AI-tool rendering artifact. Template is uniform across all slides suggesting AI generation. Content is substantive enough to avoid pure slop, but the 8-point summary slide is listicle-style padding."
+  },
+  "confidence": "high",
+  "total": 60,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 21877,
+    "output_tokens": 1050
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 9,
+    "narrative": 9.5,
+    "framing": 9,
+    "accuracy": 7,
+    "visual": 8.5,
+    "bonus": 4
+  },
+  "what_worked": "Forensic cross-referencing of reported MRR against collected cash exposes contradictions most analyses would miss.",
+  "fix_next": "Reconcile category medians and top-10 share against the raw dataset; several landscape figures are materially off from reference values.",
+  "verdict": "Exceptional investment-memo narrative with genuine forensic insight; landscape-level accuracy drags it down slightly.",
+  "flags": [
+    "median-category-errors",
+    "top10-share-understated",
+    "total-revenue-understated"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1: $13.5M total revenue vs reference $15.6M (~$2M under). Slide 3: top-10 share stated 48% vs reference 49.6%. Slide 3: category medians deviate from reference — Education $2,141 vs $2,435, Marketing $1,586 vs $2,369.50, AI $446 vs $503, SaaS $303 vs $200.50 (direction wrong). Analytics $1,294 vs $419 is a large discrepancy suggesting possible mean/median confusion or different filtering.",
+  "evidence": {
+    "insight": "Slides 5-8 cross-reference MRR, 30-day cash, 12-month cash, and subscriber counts to expose inflated run-rates (Notionlytics 63×$30≈$1,890 vs $36k MRR). The thesis that 'proof is the scarcer asset' is original and decision-useful. Slide 8's pattern recognition across all cheap-ownership listings is genuinely analytical.",
+    "narrative": "Perfect funnel: landscape → investable universe → deep dives with advance/eliminate verdicts → elimination round → finalist comparison → decision → alternate scenarios. Every slide advances one argument. The closing line lands. No wasted slides.",
+    "framing": "Slide 1 sets the $10k constraint. Slide 2 establishes eight lenses before data. Assumptions explicitly labelled (slide 4: fractional/SPV; slide 11: churn caveat). Slide 12 acknowledges risk-profile dependency. A cold reader immediately understands question, scope, and limitations.",
+    "accuracy": "Company-level deep-dive numbers appear internally consistent and plausible. However, landscape-level figures have multiple errors: total revenue ~$2M low, top-10 share 1.6pp off, and several category medians deviate materially from reference (Analytics $1,294 vs $419 is especially large). The 197 AI count and 262 for-sale count are correct.",
+    "visual": "Consistent dark-red/white palette with restrained green/red verdict signals. Clean hierarchy throughout. Slide 4 funnel and slide 10 horizontal bars are effective. No decorative charts. Slide 11 is text-dense but legible. Professional restraint throughout.",
+    "ai_slop": "none — writing is sharp, specific, and dataset-grounded. No generic filler, no inflated language, no decorative-but-meaningless graphics."
+  },
+  "confidence": "high",
+  "changed": false,
+  "change_reason": "no-change — preliminary scores are well-calibrated. The high insight/narrative/framing scores are justified by the forensic depth and purposeful structure. The accuracy score of 7.0 correctly reflects multiple landscape-level factual deviations while acknowledging strong company-level consistency. Bonus of 4 is warranted for the rare combination of genuine analytical framework and actionable decision-making.",
+  "total": 90,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 24845,
+    "output_tokens": 920
+  }
+}

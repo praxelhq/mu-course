@@ -1,0 +1,39 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7.5,
+    "framing": 5,
+    "accuracy": 3.5,
+    "visual": 5,
+    "bonus": 1
+  },
+  "what_worked": "Strong thesis about power-law dynamics with a coherent narrative arc from distribution to takeaways.",
+  "fix_next": "The deck uses a different, larger dataset (8,782 rows) than the assigned 1,000-row frozen dataset, making most statistics unverifiable and many wrong.",
+  "verdict": "Compelling storytelling on the wrong dataset undermines credibility.",
+  "flags": [
+    "wrong-dataset",
+    "unverifiable-statistics",
+    "ai-generated-illustrations",
+    "decorative-map-illegible",
+    "fabricated-looking-numbers"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 1-2: Claims 8,782 startups, $15.4M MRR, $185M ARR, $1.5B all-time—dataset has 1,000 rows and $15.6M 30-day revenue. Slide 3: 5,025 zero MRR vs. 216 zero-revenue in dataset; 42.8% earning revenue vs. 78.4% in dataset. Slide 4: Top 10 = 42% claimed vs. 49.6% reference. Slide 5: Stan $3.57M MRR / 11.3% share unverifiable. Slide 7: AI median $17 vs. reference median $503 (30-day); 1,430 AI startups vs. 197 in dataset. Slide 8: India 807 listings vs. dataset context of ~59 Indian companies. Slide 10: 1,952 for-sale listings not from the assigned dataset.",
+  "evidence": {
+    "insight": "Slide 7's AI-as-noise argument and slide 9's mobile-vs-web floor/ceiling framing show genuine analytical thinking beyond chart description. Slide 11 synthesizes well with audience-specific takeaways.",
+    "narrative": "Clear thesis (power law, not ladder) introduced on slide 3, built through concentration (4-5), category (7), geography (8), channel (9), market (10), and landed with five truths (11). Purposeful sequence.",
+    "framing": "Slide 1 sets up the question well, but the deck never acknowledges it is working from a 1,000-row sample—it consistently references 8,782 startups, suggesting either a different dataset or fabrication. No limitations slide. No mention of missingness.",
+    "accuracy": "Nearly every quantitative claim is drawn from a dataset roughly 9x larger than the assigned 1,000-row frozen dataset. Zero-revenue count (216 vs. 5,025), total revenue ($15.6M vs. $15.4M monthly), top-10 share (49.6% vs. 42%), AI company count (197 vs. 1,430)—all diverge materially. The deck may have used the full TrustMRR platform data rather than the frozen assignment dataset.",
+    "visual": "Gamma template provides consistent typography and layout. Charts are simple bar charts that communicate clearly but lack annotation. AI-generated illustrations (whale, gold bars, price tags, map) are decorative; the map on slide 8 is nearly illegible with garbled text. No data tables or source annotations on charts.",
+    "ai_slop": "AI-generated illustrations on every slide (whale, gold coins, futuristic office, price tags) are decorative filler. The map on slide 8 has garbled/nonsensical country labels typical of AI image generation. Some consulting-style language ('picks-and-shovels,' 'disciplined capital wins') borders on generic."
+  },
+  "confidence": "high",
+  "total": 56,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 20316,
+    "output_tokens": 933
+  }
+}

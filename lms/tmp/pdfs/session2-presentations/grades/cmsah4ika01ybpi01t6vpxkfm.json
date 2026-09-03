@@ -1,0 +1,40 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 5,
+    "narrative": 5.5,
+    "framing": 5,
+    "accuracy": 3.5,
+    "visual": 6,
+    "bonus": 0
+  },
+  "what_worked": "Power-law framing is a genuine thesis; consistent visual template with clear hierarchy throughout.",
+  "fix_next": "Category revenue figures are wildly wrong (all-time not 30-day used, E-comm $55M vs reference $1.1M); verify every number against the frozen dataset.",
+  "verdict": "Clean template, coherent theme, but category revenue figures are fabricated-looking and unverifiable.",
+  "flags": [
+    "wrong-revenue-column",
+    "all-time-vs-30day-confusion",
+    "missing-provider-analysis",
+    "missing-anonymity-analysis",
+    "no-limitations-slide",
+    "no-missingness-discussion"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 1/2: '$334M All-Time Revenue' is not verifiable from the frozen dataset (30-day total is $15.6M, which matches, but all-time total is unanchored). Slide 3: Category totals (E-comm $55M, Marketing $34M, AI $32M) do not match the frozen reference (E-comm $1.1M, Marketing $1.3M, AI $2.4M for 30-day; the all-time figures shown are far larger than any reference and appear to use a different column or are fabricated). Slide 3: 'Revenue efficiency' figures ($2.9M for E-comm, $805.9K for Marketing) are inconsistent with reference averages. Slide 7: .com shown with 317 companies vs reference 312; .ai shown leading on revenue-per-company ($364K) but reference median is 25 (domain rating) — the claim '.ai leads on revenue per company' uses mean not median, which is misleading given skew. Slide 9: B2B/B2C comparison uses all-time revenue and averages rather than medians; the reference gives median multiples of ~2.3x, not the ~5x claimed. Slide 10: 'Top 1% earn 61%' — reference says top-10 share of 30-day revenue is 49.6%, not 61%; this appears to use all-time revenue which is unanchored. Slide 4: Claims 'dataset has no founding dates' — the dataset does have founded_year (984 usable pairs).",
+  "evidence": {
+    "insight": "The power-law concentration theme (slides 2, 10) is a real insight, and the B2B vs B2C comparison (slide 9) adds a useful dimension. However, most slides describe charts rather than synthesize actionable findings. No provider analysis, no anonymity analysis, no founded-year exploration.",
+    "narrative": "There is a coherent arc: overview → categories → momentum → reach → leaderboard → domains → audience → power law. The sequence is logical and the closing slide attempts synthesis. However, it reads more as a tour of the data than a story with a single driving question.",
+    "framing": "Slide 1 sets up the scope (1,000 startups) but never defines the audience, the decision context, or limitations. Missingness (24-29% across key fields) is never discussed. The claim 'no founding dates' is factually wrong. No caveats on survivorship bias or self-selection.",
+    "accuracy": "Multiple category revenue figures appear to use an 'all-time revenue' column that doesn't match the frozen 30-day reference at all — E-comm at $55M vs $1.1M reference. The deck conflates all-time and 30-day revenue without clarity. The .com count is 317 vs 312. The 'no founding dates' claim contradicts the dataset (984 usable pairs). The 61% top-10 share doesn't match the 49.6% reference for 30-day revenue.",
+    "visual": "Consistent color palette, clean card-based layout, good use of whitespace. Charts are legible with data labels. The grouped bar chart on slide 4 is well-annotated. However, the design is template-driven and somewhat repetitive (card after card). No annotations highlighting key comparisons within charts.",
+    "ai_slop": "Template is clearly AI-generated (Gamma or similar). The phrase 'Prepared as a data narrative · Neutral, factual tone' is boilerplate. Visual sameness across slides. However, content is substantive enough to avoid pure slop classification."
+  },
+  "confidence": "medium",
+  "total": 50,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19475,
+    "output_tokens": 1113
+  }
+}

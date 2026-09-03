@@ -1,0 +1,42 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 8.5,
+    "accuracy": 6,
+    "visual": 8,
+    "bonus": 3
+  },
+  "what_worked": "Every slide pairs a data finding with a 'Not used' footnote showing genuine editorial judgment.",
+  "fix_next": "TLD median figures on slide 10 are off by ~75x versus reference; verify whether medians or means were used.",
+  "verdict": "Exceptional narrative and framing undermined by several verifiable numerical errors.",
+  "flags": [
+    "tld-median-inflated-~75x",
+    "b2b-b2c-median-unverifiable",
+    "revenue-per-customer-unverifiable",
+    "stripe-revenue-share-rounded-up",
+    "revenuecat-listing-count-inflated",
+    "dataset-median-unverifiable"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 10: .ai median shown $1,914 vs reference $25 (n=91), .com median $204 vs reference $8 (n=312)—off by ~75x and ~25x respectively, likely means not medians. Slide 2: RevenueCat+Superwall listed as 206 listings; reference shows RevenueCat alone at 189 and no Superwall count that reaches 206 combined with other providers summing to 1,000. Slide 2: Stripe '87% of all revenue'—reference gives $13,526,762/$15,596,345 = 86.7%, rounded to 87% is acceptable but borderline. Slide 8: B2B median $1,240 and B2C median $304 cannot be verified against reference on-sale medians; the 4x claim is plausible but the absolute figures are unconfirmed.",
+  "evidence": {
+    "insight": "Slide 7 juxtaposes category crowding vs median revenue to surface the non-obvious AI-is-crowded-but-low-paying finding. Slide 8 reframes AI as a layer not a market. Slide 11 introduces micro-acquisition as a curriculum pillar—genuinely original. Slide 9 quantifies the India monetisation gap as a market opportunity. Each insight is decision-useful for the stated audience.",
+    "narrative": "Clear thesis on slide 1 (scaling is the bottleneck), built through revenue reality (5), concentration (6), category (7), positioning (8), geography (9), distribution (10), marketplace (11), synthesized into six recommendations (12). Every slide carries an 'Insight for Praxel' callout tying back to the thesis. Arc moves problem → evidence → solution with no detours.",
+    "framing": "Slide 1 states the ask explicitly. Slide 4 discloses limitations (self-selected sample, frozen snapshot, 216 zero-revenue rows). Each slide has a 'Not used' footnote explaining excluded data and why. Audience (Praxel course designers) is clear throughout. Correlation caveats on slide 10 footer show causal discipline.",
+    "accuracy": "Verified correct: 579 under $1k = 58% (slide 5), mean $15,596 (slide 5), top-10 share 49.6% (slide 6), AI median $503 and Education median $2,435 (slides 7/12). Material errors: TLD medians on slide 10 are dramatically inflated versus reference (.ai $1,914 vs $25, .com $204 vs $8). RevenueCat+Superwall count of 206 on slide 2 doesn't reconcile cleanly with reference 189 for RevenueCat alone. B2B/B2C absolute medians on slide 8 are unverifiable against reference.",
+    "visual": "Consistent dark/light theme alternation creates rhythm. Slide 5 bar chart is well-labeled with count annotations and color-coded below/above $1k. Slide 7 dual-axis chart is appropriate. Typography hierarchy is strong—big numbers, supporting text, footnotes. No decorative graphics. Color used sparingly and purposefully. Slide 8 splits into two clean panels.",
+    "ai_slop": "None detected. The 'Not used' footnotes, specific limitation disclosures, and correlation caveats demonstrate genuine analytical judgment. No generic filler or inflated language."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 7.0 to 6.0: TLD medians on slide 10 are off by 25–75x (likely means presented as medians), a material mislabeling that drives a key recommendation. Reduced bonus from 4 to 3: the errors weaken the otherwise exceptional analytical discipline. Other dimensions confirmed as warranted.",
+  "total": 83,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 23328,
+    "output_tokens": 1177
+  }
+}

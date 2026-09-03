@@ -1,0 +1,39 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8.5,
+    "framing": 7,
+    "accuracy": 5.5,
+    "visual": 8,
+    "bonus": 3
+  },
+  "what_worked": "Exceptional narrative arc from problem (raw metrics fail) through solution, with concrete company examples grounding every claim.",
+  "fix_next": "Total revenue is $15.6M not $13.47M; top-10 share is ~49.6% not 48%; the deck under-engages with dataset limitations and missingness.",
+  "verdict": "Polished product pitch with strong storytelling but material revenue figure errors.",
+  "flags": [
+    "total-revenue-wrong",
+    "top10-share-rounded-down",
+    "limited-dataset-exploration",
+    "missingness-not-discussed",
+    "product-pitch-over-data-story"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 2: '$13.47M combined verified MRR' — actual total 30-day revenue is $15,596,344.59 (~$15.6M), a ~$2.1M undercount. Slide 2: '48% of all MRR held by top 10' — reference value is 49.6%, a non-trivial rounding. Slide 4: 'Median asking multiple by category' chart with specific multiples (1.9×, 2.6×, 3.7×, 3.9×) — these appear to reference listing/asking-price data not present in the frozen dataset, making them unverifiable and potentially fabricated.",
+  "evidence": {
+    "insight": "Slides 3 and 5 deliver genuinely useful insights: percentage growth vs. dollar growth distinction (Wutt.net vs. GojiberryAI) and price-without-quality analysis (Hypeflare vs. Notionlytics). Slide 9 shows how different buyer objectives reshape rankings — a non-obvious, decision-useful point. The composite scoring framework on slide 7 is thoughtful. However, the deck stays within a product-proposal frame rather than deeply mining the dataset for surprising patterns.",
+    "narrative": "Outstanding coherence: slides 2-5 establish the problem (concentration, misleading metrics, missing valuation context), slide 6 diagnoses the gap (discovery ≠ decision), slides 7-10 present the solution with escalating specificity, slide 11 monetizes, slide 12 lands cleanly. The 'from transparency to transaction' throughline is maintained from title to close. Each slide builds on the prior one with no orphan sections.",
+    "framing": "The audience (TrustMRR product team / leadership) and question (how to add a decision layer) are clear. However, the deck never discusses dataset limitations: 274 missing categories, 241 missing countries, 216 zero-revenue companies, or how these gaps affect the proposed scoring system. No mention of sample sizes behind the 'asking multiple' chart. The framing as a product proposal rather than a data story means analytical scope and methodology are thin.",
+    "accuracy": "Slide 2 total revenue is wrong by ~$2.1M ($13.47M vs. $15.6M actual). Top-10 share stated as 48% vs. 49.6% actual — close but consistently rounded in the same direction. Slide 4's 'median asking multiple by category' uses data fields (asking price, multiples) that may exist in the dataset but the specific values cannot be verified against the frozen reference, and the category counts shown (45 AI listings, 7 Analytics, 19 SaaS, 8 Marketing) don't match the full category counts (197 AI, 19 Analytics, 66 SaaS, 42 Marketing), suggesting a filter to 'for sale' listings that is never explained. The Notionlytics 0.11× multiple math checks out internally ($48K / $437K annualized ≈ 0.11×).",
+    "visual": "Clean, restrained design with strong hierarchy. Consistent color coding (teal for positive, red for avoid). The comparison cards on slides 3, 5, 8, and 9 are effective and purposeful. Chart on slide 2 is simple and appropriate. Slide 4's bar chart is well-labeled. No chartjunk, no gratuitous decoration. The QR code on slide 1 is the only questionable element. Typography is confident and readable throughout. Dark/light slide alternation creates rhythm.",
+    "ai_slop": "Minimal slop. The deck avoids generic filler language. The '™' on slide 6 is slightly precious. The product-proposal framing could be seen as consulting-adjacent, but the specific data examples and internal consistency elevate it above template work. No decorative-but-meaningless graphics."
+  },
+  "confidence": "high",
+  "total": 76,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22822,
+    "output_tokens": 1167
+  }
+}

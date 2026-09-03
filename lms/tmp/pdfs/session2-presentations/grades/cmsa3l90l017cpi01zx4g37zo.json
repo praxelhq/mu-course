@@ -1,0 +1,40 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 6.5,
+    "accuracy": 4.5,
+    "visual": 6,
+    "bonus": 2
+  },
+  "what_worked": "Strong central thesis about concentration; the 44× mean/median contrast and followers-vs-subscribers comparison land well.",
+  "fix_next": "AI revenue figures are wildly inflated (~8× the reference); verify every number against the actual dataset before presenting claims as fact.",
+  "verdict": "Compelling narrative undermined by several fabricated-looking revenue figures.",
+  "flags": [
+    "fabricated-numbers",
+    "ai-revenue-inflated",
+    "ecommerce-revenue-inflated",
+    "zero-revenue-count-off",
+    "missing-data-not-acknowledged",
+    "gamma-template"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 3: Average stated as $133,750; actual total $15.6M/1000 ≈ $15,596, off by ~8.6×. The 44× ratio and $3,068 median may follow from the inflated mean. Slide 4: Top-10 share stated 50.6% vs reference 49.6%—minor but the largest company figure $25M and 18.7% share are unverifiable and suspicious given total revenue is only $15.6M (that single company would exceed total). Slide 5: 109 companies earned zero vs reference 216—roughly half the correct count. Slide 9: AI total revenue stated $18,428,213 vs reference $2,356,676—inflated ~7.8×. AI median stated $4,301 vs reference $503—inflated ~8.5×. E-commerce revenue stated $12,018,508 vs reference $1,111,606—inflated ~10.8×. These appear to be annualized (×12) from 30-day figures without disclosure, but even then the multiplier doesn't consistently match.",
+  "evidence": {
+    "insight": "Slide 8's juxtaposition of 205× MRR gap vs 6× follower gap is a genuinely useful insight. Slide 9's 'crowded ≠ profitable' framing adds value. The B2B/B2C flip (slide 7) is a strong analytical move.",
+    "narrative": "Clear arc: establish skew (slides 3-5) → ask what winners do differently (slide 6) → three answers (slides 7-9) → geography/exits (10-11) → synthesis (12). The title 'The Thousand and the Ten' anchors everything. Closing line is memorable.",
+    "framing": "Slide 2 sets up the dataset but never mentions missingness (241 country, 288 audience_type, 274 category missing). No source attribution. No time period specified for revenue. The audience is implied (founders) but never stated. '29 data points' is stated but columns aren't enumerated.",
+    "accuracy": "Multiple revenue figures appear inflated by roughly 8-12× (possibly annualizing 30-day data without stating so, but even then inconsistent). Zero-revenue count (109 vs 216) is materially wrong. The single largest company earning $25M would exceed the entire dataset's total revenue of $15.6M—a logical impossibility that wasn't caught. Top-10 share 50.6% vs 49.6% is minor.",
+    "visual": "Gamma template provides consistent styling. Charts are simple and readable. Slide 4's bar chart has a mislabel ('Total conversion rate'). Decorative AI-generated illustrations on slides 1, 2, 6, 10 add atmosphere but no information. Slide 3's comparison chart is effective. Slide 11's bar chart comparing $86.8M to $35K is a poor use of a bar chart (scale makes median invisible).",
+    "ai_slop": "Gamma watermark visible. Decorative illustrations on 4 slides are AI-generated and content-free. Slide 4 has a spurious 'Total conversion rate' label—likely a template artifact. The illustrations (storefront, forking road, globe) are thematic but generic."
+  },
+  "confidence": "high",
+  "total": 67,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 21827,
+    "output_tokens": 1028
+  }
+}

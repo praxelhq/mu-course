@@ -1,0 +1,40 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 8.5,
+    "accuracy": 7,
+    "visual": 8.5,
+    "bonus": 3
+  },
+  "what_worked": "Three-question hypothesis structure with Mann-Whitney test and size-controlled partial correlation is genuinely rigorous and original.",
+  "fix_next": "Reconcile cover 3.8x with slide 7's 3.75x; disclose how 784 denominator was derived and verify against frozen zero-revenue count.",
+  "verdict": "Exceptional narrative and original MRR-based thesis; minor numerical inconsistencies prevent top accuracy marks.",
+  "flags": [
+    "cover-stat-mismatch-3.8x-vs-3.75x",
+    "unverifiable-derived-metrics",
+    "small-n-one-time-subgroup-29",
+    "churn-unobserved-acknowledged"
+  ],
+  "factual_error_count": 1,
+  "factual_error_detail": "Slide 1 states 3.8x recurring revenue multiple; slide 7 shows 3.75x median. This is a minor rounding inconsistency but still a mismatch within the deck. The 784 figure (1000−216 zero-revenue) is consistent with frozen data. The 8x gap ($13,499/$1,682≈8.03x) checks out. The +97% premium (3.75/1.90−1≈97.4%) checks out. No other verifiable factual errors found.",
+  "evidence": {
+    "insight": "Constructs a novel recurring-share metric (MRR÷revenue), segments the dataset into three tiers, tests valuation premium with Mann-Whitney U (p=0.007), controls for size via partial correlation (0.26), and builds a tercile analysis showing the discount deepens with scale (slide 8). The arbitrage thesis on slide 10-11 is decision-useful and specific to three audiences.",
+    "narrative": "Textbook hypothesis-driven arc: question (slide 3) → three sequential tests (exists? changes asset? market pays?) → supporting evidence that recurrence is engineerable (slide 9) → audience-segmented implications (slide 10) → actionable recommendation (slide 11) → memorable close (slide 12). Every slide advances the argument without redundancy.",
+    "framing": "Slide 3 states hypothesis clearly. Slide 4 defines the metric, explains the 30-day window, shows the funnel (1000→784→380→215), and acknowledges churn is not reported. Slide 11 includes a falsifiability caveat. Audience made explicit on slide 10 (investors, founders, acquirers). Missing: no mention of survivorship bias or platform selection effects.",
+    "accuracy": "784 = 1000−216 zero-revenue rows matches frozen data. 151/784 = 19.3% ≈ 19% checks out. $13,499/$1,682 = 8.03x supports '8x' claim. 3.75/1.90−1 = 97.4% supports '+97%'. Cover says 3.8x but slide 7 says 3.75x — minor internal inconsistency. The 1.9x one-time median cannot be cross-checked against frozen reference (which gives B2B/B2C medians of 2.35x/2.30x, not one-time/recurring split). Mann-Whitney with n=29 is acknowledged as small but not flagged as a limitation.",
+    "visual": "Consistent dark navy/white/gold palette across all 12 slides. Clear hierarchy with section labels. Bar charts with direct labels, no gridline clutter. Effective callout boxes for key stats. Case-study comparison table on slide 6 is well-designed. Grouped bar on slide 8 is appropriate. No chartjunk or decorative elements. Density is well-managed throughout.",
+    "ai_slop": "none"
+  },
+  "confidence": "high",
+  "changed": false,
+  "change_reason": "no-change. Preliminary scores are well-calibrated. The cover 3.8x vs 3.75x mismatch is minor (rounding), warranting 1 factual error rather than 2. All other scores hold upon close re-examination.",
+  "total": 86,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 22057,
+    "output_tokens": 1045
+  }
+}

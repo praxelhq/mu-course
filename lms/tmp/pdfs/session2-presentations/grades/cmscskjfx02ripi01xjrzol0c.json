@@ -1,0 +1,38 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 6.5,
+    "framing": 5,
+    "accuracy": 4,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Coherent thesis of a maturing ecosystem threaded across all slides with disciplined visual restraint.",
+  "fix_next": "Several key numbers are wrong or unverifiable (Marketing median, Productivity count, MRR baseline, 1.20x multiple); anchor claims to the actual dataset.",
+  "verdict": "Clean narrative arc undermined by multiple factual errors and thin analytical depth.",
+  "flags": [
+    "factual-errors-multiple",
+    "unverifiable-multiple-claim",
+    "missing-denominator-context",
+    "notebooklm-watermark"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: Productivity shown as 38 (actual 49), Marketing shown as 31 (actual 42), Mobile Apps shown as 42 (actual 52). Slide 3: Marketing MRR box-plot shows IQR $1,292–$1,880 which doesn't match the known median of $2,369.50; Social Media shown $912 vs reference median $844. Slide 4: 1.20x median SaaS multiple is unverifiable from the provided reference and likely fabricated or miscalculated. Slide 5: B2B+B2C+Hybrid = 712, but audience_type has 288 missing so denominator is 712—numbers are internally consistent but the 26% on-sale claim (slide 7) is not cross-checkable against reference data.",
+  "evidence": {
+    "insight": "The 'maturity not hypergrowth' thesis (slides 3, 7, 8) is a genuine interpretive claim beyond chart description, but the deck never explores revenue concentration, category median differences, or anonymous-company dynamics—leaving the analysis shallow.",
+    "narrative": "Clear four-beat arc: volume → revenue health → infrastructure → exit intent, synthesized on slide 8. Sequence is purposeful and the summary table lands the story. Loses points for being more of a profile than an argument with stakes.",
+    "framing": "Slide 1 sets up three dimensions but never states the audience, the decision question, or the dataset source/scope (1,000 rows, what platform). A cold reader doesn't know who should care or why. No limitations slide beyond the category caveat on slide 2.",
+    "accuracy": "Multiple category counts are wrong (slides 2). Marketing median doesn't match reference. The 1.20x SaaS multiple (slide 4) is presented without methodology and cannot be verified. The ~$1.5k MRR claim on slide 8 is unanchored. The 26% on-sale figure is plausible but unsourced from reference data.",
+    "visual": "Consistent grid/newspaper aesthetic with strong hierarchy, restrained palette (blue/grey/black), and readable type. Treemap on slide 2 is effective. Dot-strip on slide 4 is clean. Person icons on slide 7 are slightly decorative but functional. Box-plot on slide 3 is incomplete (only two categories shown).",
+    "ai_slop": "NotebookLM watermark visible on slide 5. Some consulting-style language ('ecosystem X-ray', 'liquidity context') but generally restrained. The person-icon pictograph on slide 7 is borderline decorative."
+  },
+  "confidence": "high",
+  "total": 56,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 14220,
+    "output_tokens": 857
+  }
+}

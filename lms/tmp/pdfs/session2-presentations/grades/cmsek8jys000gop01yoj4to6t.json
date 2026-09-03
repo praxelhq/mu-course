@@ -1,0 +1,40 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 3,
+    "narrative": 3.5,
+    "framing": 3,
+    "accuracy": 2.5,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Consistent visual identity and clear slide hierarchy make the deck easy to scan.",
+  "fix_next": "Nearly every quantitative claim (LTV 3x, 80% skew, correlations, pie chart splits, tier rankings) appears fabricated rather than derived from the dataset.",
+  "verdict": "Polished consulting template filled with invented numbers, not data analysis.",
+  "flags": [
+    "fabricated-charts",
+    "ai-slop",
+    "unearned-certainty",
+    "no-dataset-fidelity",
+    "consulting-jargon-over-evidence",
+    "missing-limitations"
+  ],
+  "factual_error_count": 9,
+  "factual_error_detail": "Slide 3: '3x higher LTV predictability' chart uses an invented 'LTV Predictability Index' not in the dataset. Slide 5: Pie chart claims 60% Subscription SaaS / 18% Digital Products / 12% Marketplaces—these categories don't exist in the dataset's category field. Slide 8: Stripe shown as 71.43%—actual is 636/1000=63.6% by count or 86.8% by revenue; RevenueCat 21.43% vs actual 18.9% by count; Polar and Lemon Squeezy merged without justification. Slide 9: Churn rates, capital efficiency, and valuation multiples (6-10x, 8-12x) are generic industry heuristics not from the data. Slide 10: Claims 'top 10% drive 80%+ of revenue'—actual top-10 share is ~49.6%; correlation figures (DR↔Subscriptions 0.45, Visitors↔Subscriptions 0.82) appear invented; 'DR 30+ inflection point' unsupported. Slide 10: '6.25% total conversion rate' has no derivation from dataset fields. Slide 7: Tier rankings (Dev Tools as Tier 1) contradict data where Dev Tools median revenue ($635) is modest. Slide 12: 25% allocation to Analytics despite Analytics being only 19 companies/$368K revenue.",
+  "evidence": {
+    "insight": "Recommendations (slides 4, 7, 12) read as generic VC playbook advice (power law, SaaS multiples, DR moats) rather than discoveries from this specific dataset. No mention of Education's highest median, anonymous company revenue concentration, or founded-year non-correlation.",
+    "narrative": "There is a loose investment-thesis arc (landscape → drivers → categories → picks), but each slide restates the same 'double down on B2B SaaS' conclusion without building evidence. No tension, no surprise, no synthesis.",
+    "framing": "Audience is implied (investor/allocator) but dataset provenance, time window, what '30-day revenue' means, missingness (241 country, 274 category, 288 audience_type), and limitations are never disclosed. A cold reader cannot assess reliability.",
+    "accuracy": "Multiple fabricated statistics: the LTV Predictability Index, the 60/18/12/10 business model split, the 80%+ skew claim (actual top-10 is ~49.6%), correlation coefficients, pie chart provider shares, valuation multiples, and churn ratings. The dataset's actual category taxonomy is ignored in favor of invented categories.",
+    "visual": "Dark theme with pink accents is consistent and legible. Pie and bar charts are clean. However, charts visualize fabricated data, decorative AI illustrations consume ~40% of many slides without informational value, and slide 12's pie chart is partially cut off.",
+    "ai_slop": "Heavy consulting jargon throughout ('monetization engine,' 'distribution flywheel,' 'capital deployment,' 'organic distribution flywheels'). Decorative AI-generated illustrations on slides 1, 2, 4, 6 add no analytical content. Slide 9's table is a generic SaaS industry framework pasted in without dataset evidence. The entire deck could describe any startup dataset."
+  },
+  "confidence": "high",
+  "total": 32,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 21845,
+    "output_tokens": 1035
+  }
+}

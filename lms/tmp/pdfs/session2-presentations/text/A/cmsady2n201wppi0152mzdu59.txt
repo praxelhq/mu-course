@@ -1,0 +1,415 @@
+TRUSTMRR · SESSION 3 · SUBMISSION BY SNEHA GANESH
+
+
+
+
+A Deep Dive into TrustMRR
+What 1,000 self-reported startup ledgers tell us about categories,
+monetization patterns, and payment infrastructure.
+
+
+
+
+1,000                         29                             FROZEN
+companies tracked             data fields                    30 Jul 2026
+      01 · CONTEXT
+
+
+
+What data did we look at, and why?
+                                                                                            DATA COMPLETENESS BY FIELD GROUP
+TrustMRR is a public ledger of revenue from indie and early-stage startups. Each row is
+                                                                                            % of 1,000 rows populated, averaged per group
+one company, verified against a connected payment provider — giving us a rare,
+granular read on how small software businesses actually make money.
+                                                                                           Financials                                                            100%
+
+                                                                                          Infra & deal                                             74%
+WHY THIS ANALYSIS
+                                                                                              Identity                                                   83%
+     Map the market: which categories and business models actually exist here
+                                                                                          Positioning                                           70%
+
+     Understand monetization: what makes a company here money-making vs. not                   Traffic            16%
+
+
+
+     Scan payment infrastructure: which gateways this market already runs on
+
+
+
+                                                                                            Every company is priced and reports financials. Traffic data (visitors,
+                                                                                            revenue-per-visitor) is the thin spot — only 16% average completeness
+                                                                                            — so read those two fields as directional, not comprehensive.
+
+
+
+
+                                                                                                                                                                        0
+                                                                                                                                                                        1
+       02 · OVERVIEW
+
+
+
+The ledger at a glance
+Across all 1,000 companies, before we split by category, country, or business model.
+
+
+
+
+   1,000                                                      $13.47M                          $282
+   Companies tracked                                          Total pooled MRR                 Median company MRR
+
+   65 countries · 29 categories                               $15.6M trailing 30-day revenue   mean is $13.5K — heavily skewed
+
+
+
+
+   80.3%                                                      64.9%                            26.2%
+   Companies monetized                                        Run on Stripe                    Listed for sale
+
+   803 report MRR above $0                                    the default payment rail         $86.8M combined asking price
+
+
+
+
+                                                                                                                                 0
+                                                                                                                                 2
+       03 · CATEGORIES
+
+
+
+29 categories exist — one dominates
+TOP 10 OF 29 CATEGORIES SHOWN
+
+
+              AI                                     197   AI is nearly 1 in 5
+
+           SaaS                                 66
+                                                           197 companies — 3x the next largest category (SaaS, 66).
+
+    Mobile Apps                            52
+
+
+     Productivity                          49
+                                                           Long tail beyond the top 10
+      Marketing                       42
+
+                                                           19 more categories exist, from Fintech (16) down to single-
+      Dev Tools                      37                    company niches like Legal and Crypto & Web3.
+
+
+Content Creation                 36
+
+
+Health & Fitness                 34                        27.4% carry no tag
+
+      Education                 30                         274 rows have no category — read leaderboards as a view of the
+                                                           ~73% tagged, not the full 1,000.
+        E-comm           19
+
+
+
+
+                                                                                                                            0
+                                                                                                                            3
+        04 · BUSINESS NATURE
+
+
+
+Who these companies are built for
+AUDIENCE TYPE
+                                                             WEBSITE & DOMAIN FOOTPRINT
+
+
+
+
+                                                             86.2%                      have a live website URL on file
+                                                                                        862 of 1,000 rows
+
+
+
+                                                             71.4%                      have a scoreable domain (Ahrefs-style rating)
+                                                                                        714 of 1,000 rows
+
+
+
+                                                             10                         median Domain Rating across all scored sites
+                                                                                        range 0–89
+                     B2C    B2B    Both
+
+
+
+401 B2C · 255 B2B · 56 both — 288 unspecified. A consumer-
+                                                             35                         median Domain Rating among $10K+/mo earners
+                                                                                        3.5x the overall median — authority tracks revenue
+leaning, indie-hacker market.
+
+
+                                                             Reading: a live, authoritative website isn't just a presence signal — the data shows a real correlation with
+                                                             revenue scale.
+
+
+
+
+                                                                                                                                                                            0
+                                                                                                                                                                            4
+           05 · MONETIZATION
+
+
+
+   What's actually monetizable here
+                     1,000                       →              862                   →                   803                   →                        212
+                  companies tracked                        have a live website                      generate MRR above $0                        have scaled past $10K/mo
+
+
+
+
+   From 1,000 tracked listings, 8 in 10 monetize at all — but only 1 in 5 has reached meaningful scale ($10K+/mo).
+
+
+   HOW THEY PRICE (of 657 rows with a stated model)
+
+
+Enterprise / contact sales            7%                                                                     READING THE MODEL MIX
+
+
+    Usage / credit-based              7%
+                                                                                                                 Recurring subscription and a free tier are the two most common patterns —
+                                                                                                                 many companies run both at once (freemium-to-paid).
+
+         In-app purchase                   12%
+
+                                                                                                                 Usage/credit-based pricing shows up almost entirely in the AI category — a
+       One-time / lifetime                  13%                                                                  monetization signature worth tracking as that category grows.
+
+           Free tier / trial                                                             53%
+                                                                                                                 343 rows (34%) have no pricing model on file — likely pre-monetization or not
+  Recurring subscription                                                                    56%                  yet publicly priced.
+
+
+                                                                                                                                                                                                 0
+                                                                                                                                                                                                 5
+      06 · INFRASTRUCTURE
+
+
+
+The payment gateway landscape
+
+        Stripe                        644             64.9%
+                                            of companies run on Stripe
+  RevenueCat                    191
+                                            By a wide margin the default rail — general-purpose card payments and
+                                            subscriptions.
+Dodo Payments              50
+
+
+
+         Polar            40                          19.1%
+                                            run on RevenueCat
+Lemon Squeezy        27
+                                            The #2 gateway, concentrated in mobile subscription apps (in-app
+                                            purchase pricing).
+     Superwall       19
+
+
+
+       Paddle    16                                   ~4%
+                                            run more than one gateway
+        Whop     7
+                                            A small stacked-provider segment, often Stripe paired with a niche
+                                            processor.
+
+
+                                                                                                                    0
+                                                                                                                    6
+         07 · CONCENTRATION
+
+
+
+Revenue is a power law, not a bell curve
+MRR distribution across all 1,000 companies (bucketed)
+
+
+
+                                                                                                     THE CONCENTRATION READ
+        197                                                   197       196        196
+
+
+                                                                                                       The single top company (Stan, $3.57M MRR) is 26.5% of the
+                                            138                                                        entire ecosystem's $13.47M pooled MRR — alone.
+
+
+
+
+                           60
+                                                                                                       Just 16 companies (1.6%) clear $100K/mo — that sliver drives
+                                                                                                       the bulk of total value.
+                                                                                              16
+
+
+         $0             $0–10            $10–100            $100–1K   $1K–10K   $10K–100K   $100K+
+                                                                                                       The median company earns $282/mo — the true center of this
+TOP 3 BY MRR                                                                                           market is small, pre-scale software businesses.
+
+
+
+  $3.57M                                          $494.7K                       $259.7K
+                                                                                                       For sourcing or benchmarking: aggregate averages will always
+  Stan                                            GojiberryAI                   Rezi                   be misleading here. Segment by scale tier, not by mean.
+  US                                              US · AI                       US · AI
+
+
+
+                                                                                                                                                                      0
+                                                                                                                                                                      7
+       08 · GEOGRAPHY
+
+
+
+A US-anchored, globally long-tailed market
+TOP 9 OF 65 COUNTRIES SHOWN
+
+
+
+US                                   258   25.8% of companies, 55.7% of MRR
+
+FR                              79         The US holds 258 companies but $7.5M of the $13.47M pooled MRR
+                                           — outsized revenue share, not just headcount.
+IN                         59
+
+
+
+GB                    50
+                                           France and India lead the rest
+CA               29
+                                           79 and 59 companies respectively — but neither cracks the MRR top 3,
+                                           pointing to earlier-stage cohorts.
+DE              24
+
+
+
+BR          20
+
+                                           241 rows have no country
+HK          19
+
+                                           24.1% of listings — treat the geographic split as a read on the ~76%
+AU         17                              that are tagged.
+
+
+
+                                                                                                                  0
+                                                                                                                  8
+          09 · SECONDARY MARKET
+
+
+
+   1 in 4 companies is already for sale
+
+     262                                      $86.8M                           2.35x                                                 $35K
+     companies on sale                        combined asking price            median revenue multiple                               median asking price
+
+     26.2% of all 1,000 listings              across those 262 listings        of the 262 with a stated multiple                     half ask more, half ask less
+
+
+
+
+   MOST-LISTED CATEGORIES ON SALE
+                                                                                          READING FOR A BUYER'S LENS
+
+                AI                                                        54
+                                                                                              AI leads on-sale listings by far (54) — mirrors its dominance in the overall
+                                                                                              category mix, not a distress signal.
+    Mobile Apps                                    29
+
+
+
+           SaaS                          22                                                   The median multiple (2.35x revenue) is modest next to the mean (~8x) — a
+                                                                                              handful of high-multiple outliers pull the average up.
+
+Content Creation                    11
+
+
+                                                                                              Multiples cluster low (25th pct ≈ 0.9x) — most listings here are small, early-
+      Education                    10
+                                                                                              revenue businesses, not proven scalers.
+
+
+                                                                                                                                                                               0
+                                                                                                                                                                               9
+       10 · CAVEATS
+
+
+
+Reading the gaps honestly
+Before acting on any of the above, four caveats worth carrying into the room.
+
+
+
+
+              27.4% / 24.1% untagged                                                         82.2% missing traffic data
+
+
+
+    Category and country are missing on roughly a quarter of rows — leaderboards   visitors_30d is only populated for 178 companies — revenue-per-visitor
+    reflect the tagged subset, not the full 1,000.                                 comparisons are a thin, self-selected sample.
+
+
+
+
+              28.6% missing domain rating                                                    Anonymized top performers
+
+
+
+    SEO/authority comparisons rest on 714 of 1,000 rows — directionally useful,    Several "Stealth Company" listings sit near the top of the MRR leaderboard —
+    not exhaustive.                                                                rankings include masked identities we can't attribute.
+
+
+
+
+                                                                                                                                                                  1
+                                                                                                                                                                  0
+       11 · CONCLUSION
+                                                                                                                                                                                 55% OF ALL MRR SITS WITH 1.6% OF COMPANIES
+
+
+What the data means for the business                                                                                                                                         16 companies — 55%
+
+Six patterns worth acting on, drawn from the full read of categories, monetization, infrastructure, geography, and the secondary                                             984 companies — 45%
+market.
+
+
+
+
+            Segment by scale, not average                                                       AI is the center of gravity                                                       Freemium-to-paid is the default playbook
+
+
+   Mean MRR ($13.5K) is skewed by outliers; median is $282. Any                         197 companies, $1.8M pooled MRR, and the most on-sale                           56% recurring subscription, 53% free tier, only 34% unpriced —
+   benchmark, forecast, or eligibility filter needs a scale tier — not                  listings (54) — the largest, most active, and most liquid segment               expect a low-friction upgrade funnel when engaging companies
+   a blended figure.                                                                    to prioritize for sourcing or partnerships.                                     in this market.
+
+
+
+
+                                                                                                Revenue is more concentrated than
+            Stripe is the de facto rail                                                                                                                                           A real, if early-stage, acquisition pool
+                                                                                                headcount
+
+   65% run on Stripe, RevenueCat covers most of the mobile-                             The US holds 25.8% of companies but 55.7% of MRR — a                            262 companies for sale at a median 2.35x revenue — a viable
+   subscription remainder — any integration or diligence workflow                       blended global view understates how US-weighted outcomes                        sourcing channel for tuck-ins, though most listings are small and
+   should default to Stripe-first.                                                      really are.                                                                     early-revenue, not proven scalers.
+
+
+
+
+    RE C OMME ND E D NE X T STE P S
+
+        Segment benchmarks by MRR scale tier                             Prioritize an AI-category sourcing pipeline                   Assume Stripe-first for any integration                Screen on-sale listings under 3x multiple
+
+
+
+
+                                                                                                                                                                                                                                            1
+                                                                                                                                                                                                                                            1
+

@@ -16,18 +16,18 @@ import {
   QUEUE_GRADE_SUBMISSION,
   QUEUE_GRADE_SUBMISSION_DEAD,
   QUEUE_PORTFOLIO_CRAWL,
-  QUEUE_PREREQUISITE_DIGEST,
+  QUEUE_PREREQUISITE_PREPARE,
   QUEUE_RETENTION_CLEANUP,
   QUEUE_SCREENSHOT_CAPTURE,
   type PortfolioCrawlJobData,
-  type PrerequisiteDigestJobData,
+  type PrerequisitePrepareJobData,
 } from "../lib/queue";
 import { handleGradeSubmission } from "./jobs/grade-submission";
 import { createGradeSubmissionQueueHandler } from "./jobs/grade-submission-consumer";
 import { handleGradeInterview } from "./jobs/grade-interview";
 import { handleScreenshotCapture } from "./jobs/screenshot-capture";
 import { handlePortfolioCrawl } from "./jobs/portfolio-crawl";
-import { handleDigestPrerequisite } from "./jobs/digest-prerequisite";
+import { handlePreparePrerequisite } from "./jobs/prepare-prerequisite";
 import { markAssessmentSubmissionDeadLettered } from "../lib/assessments/dead-letter";
 import { reconcileGradeSubmissionDeadLetters } from "./jobs/reconcile-grade-dead-letters";
 import { handleRetentionCleanup } from "./jobs/retention-cleanup";
@@ -140,16 +140,19 @@ async function main() {
     }
   );
 
-  // Prerequisite digest: one short Anthropic call per uploaded blueprint, so
-  // the interviewer reads prose instead of raw Make JSON. Serial and shallow.
-  await boss.work<PrerequisiteDigestJobData>(
-    QUEUE_PREREQUISITE_DIGEST,
+  // Prerequisite prepare: recover PDF text the web tier cannot extract, and
+  // summarise a blueprint so the interviewer reads prose, not Make JSON.
+  await boss.work<PrerequisitePrepareJobData>(
+    QUEUE_PREREQUISITE_PREPARE,
     { batchSize: 1 },
     async (jobs) => {
       for (const job of jobs) {
-        console.log(`[prerequisite-digest] job ${job.id} → ${job.data.kind} for ${job.data.userId}`);
-        const out = await handleDigestPrerequisite(job.data);
-        console.log(`[prerequisite-digest] job ${job.id} ${out.digested ? "done" : `skipped: ${out.reason}`}`);
+        console.log(`[prerequisite] job ${job.id} → ${job.data.kind} for ${job.data.userId}`);
+        const out = await handlePreparePrerequisite(job.data);
+        console.log(
+          `[prerequisite] job ${job.id} extracted=${out.extracted} digested=${out.digested}` +
+            (out.reason ? ` (${out.reason})` : ""),
+        );
       }
     }
   );

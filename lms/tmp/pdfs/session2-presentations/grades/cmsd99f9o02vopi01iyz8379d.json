@@ -1,0 +1,40 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 4.5,
+    "narrative": 6.5,
+    "framing": 5,
+    "accuracy": 3.5,
+    "visual": 6,
+    "bonus": 1
+  },
+  "what_worked": "Clear thesis structure with four pillars building toward a coherent investment case with purposeful sequencing.",
+  "fix_next": "The $133.8M trailing-12-month revenue figure, top-10 share of 48%, and 82% top-decile claim all appear fabricated or miscalculated—verify every number against the actual dataset.",
+  "verdict": "Polished pitch deck with a clear thesis, undermined by multiple fabricated or unverifiable numbers.",
+  "flags": [
+    "fabricated-revenue-total",
+    "top10-share-wrong",
+    "missing-data-not-disclosed",
+    "survivorship-bias-ignored",
+    "consulting-language",
+    "chart-labels-missing"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 2: $133.8M trailing 12-month revenue is unverifiable/fabricated—dataset shows $15.6M 30-day revenue, which annualizes to ~$187M, not $133.8M; 29 categories and 65 countries are unverifiable and likely inflated given 274 missing category values and 241 missing country values. Slide 3: Top-10 (1%) share stated as 48%—reference is 49.6%, close but the 82% top-decile claim is unverifiable and likely inflated. Slide 5: 31% AI share of combined MRR—actual AI share is $2.36M/$15.6M = ~15.1% of total 30-day revenue, not 31%; the chart bar values ($1806K for #1) don't match reference ($2,357K for AI). Slide 5: Claims SaaS, education, marketing, e-commerce, analytics each cleared $350K+ but reference shows Analytics at $368K and Education at $524K while SaaS-category is $704K—the claim is roughly defensible for those but the denominator issue (274 missing categories) is never disclosed. Slide 2: States '1,000 revenue-generating SaaS companies' but 216 have zero revenue.",
+  "evidence": {
+    "insight": "The investment-case framing (power law, capital efficiency, exit liquidity) is a genuine angle, but insights stay at surface level—no median vs. mean analysis, no discussion of the 216 zero-revenue companies, no category-level median comparisons that would reveal Education's superior unit economics. The 'capital efficiency' slide (6) offers metrics like $0.40/visitor and 500 median subscriptions without sourcing or methodology.",
+    "narrative": "Four-pillar structure (market → returns → efficiency → exits) is coherent and builds toward a thesis slide (9) and CTA (10). The sequence is purposeful. However, the narrative is one-sided advocacy with no risk acknowledgment, no limitations section, and no discussion of survivorship bias or missing data.",
+    "framing": "Audience (prospective investors) and question (should you invest in bootstrapped SaaS?) are stated clearly on slide 1. However, scope and limitations are absent: 216 zero-revenue companies, 274 missing categories, 241 missing countries, and 288 missing audience types are never disclosed. The deck frames a self-selected TrustMRR dataset as representative of the SaaS market without caveats.",
+    "accuracy": "Multiple material errors: $133.8M T12 revenue appears fabricated (slide 2). AI's 31% MRR share is roughly double the actual ~15% (slide 5). The chart on slide 5 shows AI at $1,806K, not the reference $2,357K. '1,000 revenue-generating' ignores 216 zero-revenue rows (slide 2). The 48% top-1% claim is close to 49.6% but rounded down. The 82% top-decile claim is unverifiable. No missingness disclosure anywhere.",
+    "visual": "Clean, consistent template with good hierarchy (section labels, big numbers, supporting text). Charts on slides 3-5 lack axis labels and category names—the bar chart on slide 5 uses only numbers 1-8 with no category identification. The stacked bar on slide 3 is minimal but readable. Color palette is restrained. Overall professional but the unlabeled charts are a significant legibility problem.",
+    "ai_slop": "Moderate consulting-speak throughout ('precisely the dynamic disciplined early capital is built to capture,' 'a genuinely global asset class,' 'paid-hype flywheels'). The four-pillar summary slide (9) is a classic AI template pattern. The deck reads like polished AI-generated investor pitch material with limited critical engagement with the data."
+  },
+  "confidence": "high",
+  "total": 52,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18965,
+    "output_tokens": 1193
+  }
+}

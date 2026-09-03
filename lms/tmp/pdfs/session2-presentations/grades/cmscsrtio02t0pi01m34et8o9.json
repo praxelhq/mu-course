@@ -1,0 +1,39 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 5,
+    "framing": 5,
+    "accuracy": 4.5,
+    "visual": 6,
+    "bonus": 0
+  },
+  "what_worked": "Power-law concentration thesis is well-articulated; median-vs-mean comparisons show statistical awareness.",
+  "fix_next": "Total revenue is $15.6M not $13.47M; top-10 share is ~49.6% not 48%; zero-revenue count is 216 not 197; use medians not means for skewed categories.",
+  "verdict": "Decent structure but multiple factual errors undermine the data-driven premise.",
+  "flags": [
+    "wrong-total-revenue",
+    "wrong-zero-revenue-count",
+    "mean-not-median-for-categories",
+    "no-limitations-slide",
+    "no-conclusion-or-recommendation"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1: Total revenue stated as $13.47M; actual is $15,596,344.59 (~$15.6M). Slide 2: Top-10 share stated as 48%; reference is 49.6%. Slide 2: Zero-revenue startups stated as 197 (20%); actual is 216 (21.6%). Slide 3: Uses average MRR per category (E-comm avg ~$20.8K) which is heavily outlier-driven; reference median for E-comm is only $387, making the 'E-comm monetizes better' claim misleading. Slide 4: B2B mean/median multiples (2.6x mean, 5.7x median) differ substantially from reference (mean ~7.97x/8.44x, median ~2.35x/2.30x), suggesting different calculations or denominators.",
+  "evidence": {
+    "insight": "Slide 2 power-law observation and slide 5 median-vs-mean growth comparison are genuinely useful framings. Slide 3 'Crowded ≠ Lucrative' is a good question but the reliance on means undermines the insight. No recommendations or synthesis slide.",
+    "narrative": "Slides follow a logical sequence (concentration → categories → audience → growth → geography) but lack a unifying thesis statement, conclusion, or strategic landing. The deck reads as a series of observations rather than a coherent argument.",
+    "framing": "Audience and purpose are never stated. No limitations or missingness discussion despite 241-288 missing values across key fields. No mention of 274 missing category values which affects slide 3 substantially. Denominator of 1,000 used throughout without acknowledging filtered subsets.",
+    "accuracy": "Multiple numerical errors: total revenue off by ~$2.1M, zero-revenue count wrong by 19, top-10 share off by ~1.6pp. Slide 3 uses means for category comparison in a power-law distribution the deck itself identifies on slide 2—internally inconsistent. Slide 4 B2B/B2C figures don't match reference multiples. Slide 6 country counts and for-sale stats are unverifiable but plausible.",
+    "visual": "Consistent dark navy/gold/maroon palette with good hierarchy. Charts are readable with clear labels. Donut chart on slide 2 is effective. Dual-axis chart on slide 3 is legible but rotated x-labels are hard to read. Layout is clean but repetitive (chart left, callout boxes right on every slide). No decorative clutter.",
+    "ai_slop": "Moderate template repetition—every slide uses identical chart-left/callout-right layout with maroon boxes. Language is generally specific to the data rather than generic filler. The concentric circles on slide 1 are decorative but minimal."
+  },
+  "confidence": "high",
+  "total": 52,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 12132,
+    "output_tokens": 933
+  }
+}

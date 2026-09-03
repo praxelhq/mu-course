@@ -1,0 +1,40 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 9.5,
+    "accuracy": 7,
+    "visual": 7,
+    "bonus": 4
+  },
+  "what_worked": "Exceptional framing discipline: limitations, caveats, and anti-conclusions are woven throughout, not bolted on.",
+  "fix_next": "Several key figures diverge from the frozen reference (top-10 share, Stripe count, AI median, Education median); reconcile before claiming precision.",
+  "verdict": "Rigorous, narratively outstanding deck undermined by a cluster of numerical inaccuracies.",
+  "flags": [
+    "top-10-share-mismatch",
+    "stripe-count-mismatch",
+    "ai-median-mismatch",
+    "education-median-mismatch",
+    "mrr-vs-30d-revenue-conflation",
+    "80pct-vs-78pct-monetized"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1: '80.3% earn something' — 784 rows have >0 MRR (78.4%), or 216 zeros means 78.4%, not 80.3%; also '26.5% of all revenue belongs to one product' uses MRR not 30-day revenue (top-1 share of 30-day revenue differs). Slide 4: AI median stated as $446 vs reference $503. Slide 5: Stripe count stated as 644 vs reference 636; Stripe MRR share stated as 87.7% — reference shows Stripe 30-day revenue share ~86.7%. Slide 6: top-10 share stated as 48.0% vs reference 49.6%. Slide 10: Education median $2,142 vs reference $2,435. Slide 11: '89.9% of products earned something' — unverifiable claim conflating all-time with current MRR.",
+  "evidence": {
+    "insight": "Slide 10's composite scoring framework (35/25/20/20 weighted rank) is an original, decision-useful synthesis. The 'hit rate' metric (% clearing $10k) on slide 4 reframes category choice beyond simple median comparison. Slide 7's observation that 3 of top 8 are unlabelled/anonymous is a genuinely useful insight about leaderboard reliability. The r=0.906 subscriber-revenue correlation is a novel finding.",
+    "narrative": "The Bob persona creates a single coherent thread from problem (slide 1) through constraints (slide 2), context (slide 3), category choice (slide 4), positioning (slide 5), reality check (slide 6), leaderboard critique (slide 7), toolkit (slide 8), hazards (slide 9), composite ranking (slide 10), to decision (slide 11). Every slide ends with 'Bob's Call' that advances the argument. The construction-metaphor ('plot of land', 'blueprint', 'skyline') is sustained without becoming forced.",
+    "framing": "Slide 2 explicitly lists what is and isn't answerable, with field counts. Slide 9 quantifies four distinct hazards including the 56.5% unlabelled-revenue problem. Slides 12-13 provide a full validation appendix with formulas, source fields, missingness, and six explicit anti-conclusions. The persona disclaimer on slide 1 is honest. Scope and limitations are handled with rare thoroughness.",
+    "accuracy": "Total MRR $13,471,682 is close to reference but uses MRR not 30-day revenue ($15.6M). Top-10 share 48.0% vs reference 49.6%. Stripe at 644 vs 636. AI median $446 vs $503. Education median $2,142 vs $2,435. The '80.3% earn something' doesn't match 216 zeros (which gives 78.4%). The founded-year correlation r=0.024 is correctly cited. The deck appears to use mrr_usd throughout rather than revenue_30d_usd, which is internally consistent but creates discrepancies against the 30-day revenue reference.",
+    "visual": "Clean, consistent template with good hierarchy (section headers, numbered points, callout cards). The horizontal bar chart on slide 4 is well-chosen and properly labeled. The cumulative share chart on slide 6 communicates concentration effectively. However, the visual design is repetitive across slides — same card layout, same Bob callout bar, same background texture. No chart on slides 5, 8, 9, 10, 11. The leaderboard table on slide 7 is effective. Overall restrained but could use more visual variety.",
+    "ai_slop": "The Bob persona and construction metaphor could be seen as a framing gimmick, but it is substantively integrated rather than decorative. The consistent 'Bob's Call' footer risks template-feel but each one contains a specific, non-generic insight. The background grid/blueprint texture is decorative but unobtrusive. No fabricated-looking charts or inflated consulting language detected. The appendix slides demonstrate genuine analytical work rather than filler."
+  },
+  "confidence": "high",
+  "total": 86,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 27413,
+    "output_tokens": 1263
+  }
+}

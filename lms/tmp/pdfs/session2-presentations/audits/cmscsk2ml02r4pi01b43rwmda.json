@@ -1,0 +1,44 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 5,
+    "accuracy": 3.5,
+    "visual": 6.5,
+    "bonus": 0
+  },
+  "what_worked": "Efficiency-times-momentum framework on slides 4–5 produces a genuinely decision-useful category ranking beyond raw totals.",
+  "fix_next": "Reconcile every headline number against the actual dataset; total revenue, top-10 share, and zero-revenue rate are all materially wrong.",
+  "verdict": "Strong narrative arc undermined by multiple wrong headline statistics and no limitations disclosure.",
+  "flags": [
+    "inflated-revenue-figures",
+    "top10-share-wrong",
+    "zero-revenue-rate-wrong",
+    "mean-over-median-contradicts-own-skew-argument",
+    "missing-limitations-disclosure",
+    "missing-missingness-disclosure",
+    "no-category-revenue-verifiable-against-reference",
+    "b2b-5x-claim-unverified"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 2: total revenue stated $334M vs reference $15.6M (~21× inflated). Slide 2: top-10 share stated 61% vs reference 49.6%. Slide 2: zero-revenue rate stated 26% vs reference 21.6% (216/1000). Slide 3: category revenue figures (e.g. E-comm $54.8M vs reference $1.1M) are ~50× the reference totals with no explanation of which field is summed.",
+  "evidence": {
+    "insight": "Slides 4–5 combine per-company efficiency with 12-month momentum share to rank categories—an original, useful lens. Slide 6 adds cross-cutting tactical findings (B2B advantage, vanity metrics). However, using mean revenue as 'efficiency' in a self-described power-law market is internally contradictory; median would be more honest.",
+    "narrative": "Clear seven-beat arc: market reality → landscape → efficiency+momentum → shortlist → playbook → two routes → next steps. Thesis ('find efficient, not biggest, category') is sustained throughout. Dual-route landing on slide 7 is purposeful and audience-aware.",
+    "framing": "Audience ('new entrant') is named but never specified (solo founder? funded team?). No limitations slide despite 274 missing categories, 288 missing audience_type, and 241 missing country. No mention of survivorship bias, self-selection into TrustMRR, or that 'all-time revenue' field used is unspecified. Cold reader cannot assess data quality.",
+    "accuracy": "Total revenue $334M is ~21× the reference $15.6M—either a different column was summed or a unit error, but it is presented without caveat. Top-10 share 61% vs reference 49.6%. Zero-revenue 26% vs 21.6%. Category totals (E-comm $54.8M, AI $31.9M) are orders of magnitude above reference totals ($1.1M, $2.4M). B2B '5×' claim and Analytics '$695K avg' cannot be verified and are suspect given the inflated base. The 0.92 correlation for 30-day revenue is plausible but unsourced.",
+    "visual": "Clean, consistent dark/light palette with good hierarchy. Bar charts on slides 3–4 are well-labeled and legible. Shortlist card layout on slide 5 is effective. However, only two data charts across eight slides; no scatter, distribution, or box plots despite discussing skew and correlation. Slide 6 is entirely text cards.",
+    "ai_slop": "Slides 5–8 have a consulting-template feel with numbered cards and badge labels ('HIGH EFFICIENCY', 'PROVEN DEMAND'). Structure is somewhat generic but content references specific dataset values, so not pure filler."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 4 to 3.5: a fourth factual error confirmed (category-level revenue figures are ~50× reference values across the board, not just a rounding issue). Removed bonus point: while the narrative arc is competent, the pervasive numerical errors and lack of any limitations disclosure mean the work does not exceed the rubric in any dimension.",
+  "total": 57,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 15384,
+    "output_tokens": 1060
+  }
+}

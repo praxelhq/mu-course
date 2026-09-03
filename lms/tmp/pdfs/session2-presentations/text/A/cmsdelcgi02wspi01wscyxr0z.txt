@@ -1,0 +1,371 @@
+TRUSTMRR DATASET STUDY
+
+
+
+
+Inside 1,000 Indie Startups
+A data-driven look at revenue, growth, category mix, and marketplace dynamics across the
+TrustMRR startup dataset
+
+
+   1,000 startups              29 data fields                65 countries   Frozen 30 Jul 2026
+
+
+
+
+Prepared for Masters' Union | Session 3 Analytics Exercise
+ DAT ASET OVERVIEW
+
+
+ What TrustMRR Tracks, and the Shape of the Sample
+ A wide, messy, real-world dataset — heavy skew and missing fields are part of the story, not noise to clean away
+
+
+     Each Record Captures
+
+     Revenue & MRR:
+                                                                             1,000                                           29
+                                                                             startups tracked                                data fields per record
+     30-day, 3-month, 12-month, and all-time revenue, plus 30-day growth %
+
+
+     Traction:
+
+     Active subscriptions, X followers, domain rating, visitors              65                                              29
+                                                                             countries represented                           startup categories
+     Positioning:
+
+     Category, audience type, pricing model, target persona
+
+
+     Marketplace status:
+                                                                             26.2%                                           19.7%
+     Whether listed for sale, asking price, revenue multiple                 listed for sale on the                          report exactly $0 MRR
+                                                                             marketplace
+
+
+                                                                              Data Quality Note
+                                                                              Optional profile fields are sparsely filled: 34% of records have no listed pricing
+TrustMRR 1,000-Row Dataset | Frozen 30 Jul 2026                               model, 29% no category tag, and 86% no visitor-traffic data. Treat category-         2
+ REVENUE DIST RIBUT ION
+
+
+ A Few Giants, a Long Tail
+ MRR is heavily right-skewed — the mean is not a fair summary of a 'typical' startup
+
+                             Median vs. Mean MRR ($)                               MRR by Percentile
+ $16,000
+ $14,000                                                $13,472                    Percentile                                                      MRR ($)
+
+ $12,000                                                                           P10                                                                   $0
+ $10,000                                                                           P25                                                                  $10
+  $8,000
+                                                                                   P50 (median)                                                        $282
+  $6,000
+                                                                                   P75                                                               $5,040
+  $4,000
+  $2,000                                                                           P90                                                              $23,369
+                            $282
+       $0                                                                          P99                                                             $177,206
+                       Median MRR                      Mean MRR
+
+
+
+     Why It Matters
+
+     Mean MRR ($13,472) is ~48x the median ($282) — a handful of outliers (Stan, Brand On Demand, GojiberryAI) pull the average far above what a typical
+     startup earns. The top 10 startups alone account for ~48% of all MRR on the platform. Median active subscriptions is just 16, vs. a mean of 501 — the
+     same skew shows up in traction, not just revenue.
+
+
+
+
+TrustMRR 1,000-Row Dataset | Frozen 30 Jul 2026                                                                                                               3
+ CAT EGORY M IX
+
+
+ Category Volume vs. Category Value
+ AI dominates by headcount — but it isn't the category that earns the most per company
+
+                           Most Common Categories (count)                                                      Highest Avg. MRR by Category ($)
+
+Health & Fitness               34                                                           Community                               $10,514
+
+
+Content Creation               36                                                            Marketing                              $10,583
+
+
+       Dev Tools               37                                                        Entertainment                                  $12,445
+
+
+       Marketing                 42                                                       Cust. Support                                       $13,787
+
+
+     Productivity                   49                                                    Social Media                                                  $16,911
+
+
+    Mobile Apps                       52                                                     Education                                                   $17,458
+
+
+           SaaS                            66                                                 Analytics                                                     $18,831
+
+
+               AI                                                     197                      E-comm                                                              $20,829
+
+                    0            50               100   150         200          250                      $0      $5,000      $10,000     $15,000          $20,000      $25,000
+
+
+    AI ranks only 9th in average MRR ($9,167) despite having 3x more startups than the next category — a crowded field competing on volume, not average revenue per
+    company.
+TrustMRR 1,000-Row Dataset | Frozen 30 Jul 2026                                                                                                                                   4
+ GEOGRAPHIC PAT T ERNS
+
+
+ The US Leads on Both Volume and Value
+ Top countries by startup count, and how their average MRR compares
+
+                                Startup Count by Country                                                             Average MRR by Country ($)
+300                                                                                         $35,000
+
+
+           258
+                                                                                            $30,000    $29,084
+250
+
+
+                                                                                            $25,000
+200
+
+                                                                                            $20,000
+
+150
+
+                                                                                            $15,000
+                                                                                                                   $12,638
+                                                                                                                               $11,320
+100
+                          79                                                                $10,000
+                                         59                                                                                                $7,006
+                                                    50
+50
+                                                                 29                          $5,000                                                     $3,146
+                                                                               24                                                                                   $2,655
+
+  0                                                                                              $0
+           US             FR             IN         GB           CA            DE                        US          CA          FR          GB           DE          IN
+
+
+      US startups average 11x India's average MRR despite India having the 3rd-highest startup count (59) — success is concentrated, not evenly spread across the 65 countries
+      represented.
+TrustMRR 1,000-Row Dataset | Frozen 30 Jul 2026                                                                                                                                  5
+ AUDIENCE T Y PE
+
+
+ B2B Startups Out-Earn B2C
+ Median and average MRR by who the startup actually sells to
+
+                                        MRR by Audience Type ($)
+$14,000
+
+                                                                                               255
+                              $13,150
+
+$12,000
+                                                                                               B2B startups — median MRR $1,036
+
+$10,000
+
+
+ $8,000
+
+
+ $6,000
+                                                                                      $6,042   401
+                                                               $5,102
+                                                                                               B2C startups — median MRR $181
+ $4,000
+
+
+ $2,000
+               $1,036
+
+                                                                                               56
+                                                  $181                  $352
+    $0
+                        B2B                              B2C                   Both            Serve both — median MRR $352
+                                            Median MRR    Mean MRR
+
+
+
+                                                                                               Median B2B MRR is nearly 6x median B2C MRR — enterprise-
+                                                                                               style pricing outweighs consumer scale in this sample.
+TrustMRR 1,000-Row Dataset | Frozen 30 Jul 2026                                                                                                           6
+ DRIVERS OF REVENUE
+
+
+ What Actually Predicts Revenue?
+ Correlation of MRR with three commonly-cited 'traction' signals
+
+                                   Correlation Coefficient (r) vs. MRR
+                                                                                                          Reading the Signal
+
+                                                                                                          Active subscriptions (r = 0.91)
+     X follower count          0.02
+                                                                                                          The strongest predictor by far — paying-user count tracks
+                                                                                                          revenue almost mechanically, as expected.
+
+
+
+                                                                                                          Domain rating (r = 0.21)
+Domain rating (SEO)                               0.21
+                                                                                                          A weak positive link. SEO authority correlates loosely with
+                                                                                                          revenue but explains only a small share of it.
+
+
+
+                                                                                                          X followers (r = 0.02)
+ Active subscriptions                                                                          0.91
+                                                                                                          Effectively no relationship. Social audience size is not a
+                                                                                                          reliable stand-in for revenue.
+
+                           0       0.1     0.2       0.3   0.4   0.5   0.6   0.7   0.8   0.9          1
+
+
+
+
+TrustMRR 1,000-Row Dataset | Frozen 30 Jul 2026                                                                                                                         7
+   INFRAST RUCT URE
+
+
+   Payment Rails: Who Indie Founders Use
+   Stripe dominates by adoption — but the highest-earning startups aren't always on the most popular rail
+
+                  Share of Startups by Payment Provider (%)
+                       480.0%                                                   Median & Mean MRR by Provider
+            270.0%
+       400.0%                                                                   Provider                             n             Median                  Mean
+
+ 500.0%                                                                         Stripe                            644                 $663               $18,344
+
+                                                                                RevenueCat                        191                 $237                $6,006
+
+                                                                Stripe          Superwall                           19              $7,337               $16,641
+                                                                RevenueCat
+                                                                                Lemon Squeezy                       27                 $15                $1,043
+                                                                Dodo Payments
+1910.0%                                                         Polar           Dodo Payments                       50                  $2                  $255
+                                                                Lemon Squeezy
+                                                                                Polar                               40                  $0                   $77
+                                                                Other
+
+                                                      6440.0%
+
+                                                                                Superwall's small cohort (n=19) skews mobile-subscription apps and posts a median
+                                                                                MRR ($7,337) over 10x Stripe's — a reminder that provider choice often reflects
+                                                                                business model, not causation.
+
+
+
+
+ TrustMRR 1,000-Row Dataset | Frozen 30 Jul 2026                                                                                                                    8
+ M OM E NT UM
+
+
+ This Month's Fastest Movers
+ Startups with MRR above $1,000 that posted the largest 30-day MRR growth
+
+
+      Startup                                       Category                                                     MRR ($)                 30-Day MRR Growth
+
+      Hidden Jobs                                   Recruiting & HR                                               $1,076                               +1,357%
+
+      HotelHero.ai                                  AI                                                            $1,460                               +1,227%
+
+      Hong Xuan Kow                                 AI                                                           $20,254                                 +459%
+
+      Kickly – Pronos IA                            Games                                                        $10,236                                 +385%
+
+      BillionVerify                                 Marketing                                                     $1,292                                 +294%
+
+      LLM Gateway                                   AI                                                           $47,172                                 +240%
+
+
+
+
+     AI shows up 3 of 6 times among growth leaders — even though it lags on average revenue per company, it's where the fastest month-over-month momentum is
+     concentrated.
+
+TrustMRR 1,000-Row Dataset | Frozen 30 Jul 2026                                                                                                                  9
+ M ARKET PLACE
+
+
+ The Acquisition Marketplace
+ 1 in 4 startups is listed for sale — and sellers skew mid-size, not top-of-market
+
+
+
+
+    262                                                          $35K                                               2.3x
+    startups on sale (26.2%)                                     median asking price                                median revenue multiple
+
+
+
+
+     On Sale vs. Not for Sale (MRR)                                                      Top Asking Prices
+                                                  On Sale             Not for Sale       Startup                                         MRR            Asking Price
+
+     Median MRR                                    $1,055                         $187   1Lookup                                     $207,064                  $10.0M
+
+     Mean MRR                                      $7,809                  $15,482       Project A                                    $61,543                  $5.0M
+
+                                                                                         POST BRIDGE                                  $41,777                  $4.2M
+     Mean MRR is lower for on-sale startups than for the platform overall — the          All three sit in the $40K–$210K MRR range — established, mid-market
+     biggest whales (Stan, GojiberryAI) aren't listed.                                   businesses rather than category giants.
+
+
+
+
+TrustMRR 1,000-Row Dataset | Frozen 30 Jul 2026                                                                                                                         10
+ SUM M ARY
+
+
+ Key Takeaways
+
+                                                                                                  Volume ≠ value
+    01           Skew, not scale
+                                                                                             02
+                 Median MRR ($282) tells the real story of a typical startup — the top 10         AI has 3x more startups than any other category, but ranks only 9th in
+                 alone hold ~48% of all platform MRR.                                             average MRR per company.
+
+
+
+
+                 Subscriptions predict revenue — little else does
+    03                                                                                       04   Geography compounds
+
+                 Active subscriptions correlate at r=0.91 with MRR; domain rating barely          The US leads on both count and average MRR ($29K) — 11x India's
+                 helps (r=0.21) and followers don't at all (r=0.02).                              average despite India's larger sample.
+
+
+
+
+    05           B2B pays more
+                                                                                             06   Rails reflect business model
+
+                                                                                                  Stripe dominates adoption (64%), but niche rails like Superwall post higher
+                 Median B2B MRR ($1,036) is nearly 6x median B2C MRR ($181).
+                                                                                                  medians — a proxy for mobile-subscription models, not causation.
+
+
+
+
+    07           Momentum clusters in AI
+                                                                                             08   Sellers are mid-market
+
+                 3 of the 6 fastest-growing startups this month are in AI, even though the        Startups for sale skew toward established-but-not-massive MRR (median
+                category
+TrustMRR 1,000-Row Datasetlags
+                            | on  average
+                              Frozen 30     revenue.
+                                        Jul 2026                                                  $1,055) — the true top performers aren't listed.                              11
+

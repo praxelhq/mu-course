@@ -1,0 +1,40 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 4,
+    "narrative": 4.5,
+    "framing": 5,
+    "accuracy": 4.5,
+    "visual": 6,
+    "bonus": 0
+  },
+  "what_worked": "Clean visual template, correct provider counts, and honest callout of 241 missing-country rows.",
+  "fix_next": "The deck is a descriptive tour of columns, not an argument—build a thesis, use medians over means, and verify revenue figures against the dataset.",
+  "verdict": "Polished dashboard walkthrough with several numerical errors and no unifying thesis.",
+  "flags": [
+    "no-thesis",
+    "descriptive-not-analytical",
+    "mrr-not-30d-revenue",
+    "multiple-factual-errors",
+    "means-over-medians",
+    "ai-slop-template-risk"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: '$334M all-time revenue' is unverifiable from the frozen dataset and likely wrong; total 30-day revenue is ~$15.6M. Slide 4: AI revenue stated as '$1.8M of MRR' — reference shows AI 30-day revenue is $2.36M, not $1.8M. Slide 7: B2B avg MRR $13,150 and 2.6x claim — reference median multiples are ~2.35x (B2B) and ~2.30x (B2C), nearly identical; using means without noting outlier sensitivity is misleading. Slide 10: 'Top 10 = 48% of all MRR' — reference shows top-10 revenue share is 49.6%, and the metric in the dataset is 30-day revenue not MRR. Slide 4: '27% of listings' uses 197/726 (categorized) = 27.1% but the denominator is ambiguous and not disclosed; 197/1000 = 19.7%.",
+  "evidence": {
+    "insight": "Every slide describes a single variable (geography, category, providers) without cross-cutting analysis. No slide connects two dimensions (e.g., category × growth, provider × revenue). The 'headline takeaway' on slide 10 is a restatement of concentration, not an insight derived from synthesis.",
+    "narrative": "Slides proceed as a topic-by-topic tour (snapshot → geography → category → top performers → growth → B2B/B2C → payments → marketplace → takeaway) with no stated question, no thesis introduced early, and no synthesis. The final slide restates a single stat rather than landing an argument.",
+    "framing": "Slide 1 and 2 set context (1,000 startups, self-reported). Missing-data rates for category (274) and audience_type (288) are not disclosed. The deck never states what question it is answering or who the audience is. Limitations of self-reported data are mentioned once but not threaded through.",
+    "accuracy": "Multiple figures don't match the frozen reference: AI revenue off by ~$500K, 'all-time revenue' figure unverifiable, top-10 share rounded down from 49.6% to 48%, B2B/B2C comparison uses means without acknowledging extreme outlier sensitivity (medians are nearly equal). The deck consistently conflates MRR with 30-day revenue without clarifying the distinction.",
+    "visual": "Consistent dark/light template with good hierarchy, readable bar charts, clean table on slide 5, appropriate use of callout cards. However, the donut chart on slide 6 is a poor choice for three-way split, and slide 9's three stat cards add little analytical value. No chart annotations beyond labels.",
+    "ai_slop": "Slide 9 (Marketplace Signal) is three stat cards with no chart or analysis — feels like filler. 'Classic enterprise-value-density pattern' on slide 7 is inflated consulting language. The overall structure (stat cards → bar chart → callout box) repeats identically across slides, suggesting template-driven generation."
+  },
+  "confidence": "high",
+  "total": 48,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18807,
+    "output_tokens": 1003
+  }
+}

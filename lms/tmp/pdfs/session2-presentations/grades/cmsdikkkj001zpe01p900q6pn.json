@@ -1,0 +1,41 @@
+{
+  "slide_count": 18,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 5.5,
+    "visual": 6,
+    "bonus": 2
+  },
+  "what_worked": "Strong investment-screening thesis with clear funnel logic, actionable shortlist, and honest risk/caveat disclosures.",
+  "fix_next": "AI median is $503 not $446; SaaS median is $200.50 not $303; verify all category statistics against the actual dataset before presenting.",
+  "verdict": "Compelling screening narrative undermined by several unverified category statistics.",
+  "flags": [
+    "ai-median-wrong",
+    "saas-median-wrong",
+    "stripe-share-rounded-loosely",
+    "decorative-stock-image",
+    "no-real-data-charts",
+    "mean-mrr-not-verifiable",
+    "subscriber-r-unverifiable"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 5: AI median stated as $446 vs reference $503. Slide 4: Median MRR $282 is plausible but not directly verifiable against 30-day revenue reference; mean $13,472 roughly checks ($15.6M/1000≈$15,596 not $13,472—denominator unclear, possibly excluding zeros gives ~$13.5k for 784 non-zero which is reasonable). Slide 12: SaaS category average stated as $303 MRR; reference median is $200.50 and mean would be $703k/66≈$10,659, so $303 is wrong by any measure. Slide 6: Stripe verified stated as 64% (636/1000=63.6%, minor rounding). Slide 2: 48× gap between mean and median—$13,472/$282≈47.8×, acceptable rounding. Slide 11: Analytics median stated as $1,294; reference is $419 for Analytics (n=19)—materially wrong.",
+  "evidence": {
+    "insight": "Slide 2 executive summary identifies power-law distribution, AI oversupply, seller anchoring on declining assets, and subscriber-count as key diligence variable—goes well beyond chart description. Slide 13 overpriced-declining table with 70% price-cut recommendation is genuinely decision-useful. Slide 15 NOT THIS/THIS thesis framing is sharp.",
+    "narrative": "Clear funnel: market overview (slides 2-4) → sector breakdown (5) → transparency (6) → growth (7) → predictors (8) → screening methodology (9) → shortlist (10) → deep dives (11-12) → anti-targets (13) → risks (14) → thesis (15) → next steps (16) → close (17). Coherent arc from data to action.",
+    "framing": "Slide 1 clearly states audience (Investment Committee), data source (TrustMRR 1,000 listings), and purpose (acquisition screening). Slide 3 explicitly lists data gaps with percentages. Slide 14 enumerates four caveats including selection bias and single-month snapshots. Scope is well-defined.",
+    "accuracy": "AI median wrong ($446 vs $503, slide 5). Analytics median wrong ($1,294 vs $419, slide 11). SaaS 'average' $303 wrong by any measure (slide 12). Subscriber count r=0.91 is unverifiable from provided reference and suspiciously high. Mean MRR $13,472 is plausible only if denominator excludes some rows. Category missing 27% matches reference 274/1000=27.4%—correct. Country missing 24% matches 241/1000=24.1%—correct. Anonymous 13%/129 correct.",
+    "visual": "Clean, consistent template with good hierarchy and section labels. However, almost no actual data visualizations—only one horizontal bar chart (slide 7) and one decorative stock image (slide 8). Most slides are KPI cards and text. The stock chart image on slide 8 is purely decorative and adds no analytical value. Broken image placeholder visible on slide 5 ('SaaS Dashboard' alt text). Consistent color coding for positive/negative values in tables is effective.",
+    "ai_slop": "Decorative stock image on slide 8 from vecteezy is meaningless filler. Broken image on slide 5. Template is polished but repetitive card-based layout across nearly every slide creates visual sameness. Some consulting-style language ('Funnel Architecture', 'Diligence Constraints') but generally substantive rather than hollow."
+  },
+  "confidence": "high",
+  "total": 71,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 30040,
+    "output_tokens": 1149
+  }
+}

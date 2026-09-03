@@ -1,0 +1,38 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8.5,
+    "framing": 8,
+    "accuracy": 6,
+    "visual": 8.5,
+    "bonus": 3
+  },
+  "what_worked": "A genuinely original thesis—trust the revenue, discount everything else—sustained with editorial discipline throughout.",
+  "fix_next": "The headline revenue figure ($13.5M) is materially wrong ($15.6M actual); provider counts are off; verify numbers before publishing.",
+  "verdict": "Sharp buyer's lens with strong craft, undermined by several wrong numbers.",
+  "flags": [
+    "revenue-total-wrong",
+    "provider-counts-off",
+    "top10-share-rounded-down",
+    "median-revenue-unverifiable"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1: '$13.5M combined monthly recurring revenue' — actual 30-day total is $15,596,344.59 (~$15.6M), a ~$2.1M understatement. Slide 2: Stripe shown as 644 (actual 636), RevenueCat 191 (actual 189), Polar 40 (actual 36), Lemon Squeezy 27 (actual 25); these sum to 1,000 but individual counts are wrong. Slide 4: 'top 10 = 48%' — reference is 49.6%, minor but directionally rounded down. Slide 4: median MRR stated as $284 — cannot verify against reference (reference gives no overall median, but 216 zeros + distribution makes this plausible though unverifiable). Slide 3: Country completeness shown as 76% — actual non-missing is 759/1000 = 75.9%, acceptable rounding.",
+  "evidence": {
+    "insight": "Slide 5's 'four things to check' (revenue window inconsistencies, stealth companies, missing multiples, low domain ratings) is genuinely useful buyer-oriented analysis that goes well beyond chart description. The 'trust gap' framing on slide 3 is an original interpretive layer.",
+    "narrative": "Clear three-act structure: trust source (slides 1-2), trust gaps (slides 3-5), buyer action (slides 6-7). The thesis 'Trust the revenue. Verify the rest.' is stated early and landed cleanly. Every slide advances the argument without detours.",
+    "framing": "Slide 1 immediately establishes audience (solo acquirer), question (can I trust these numbers?), and dataset scope. Limitations are surfaced explicitly (missing fields, no valuation column). The 'buyer's read' framing is clear to a cold reader.",
+    "accuracy": "Headline revenue is ~$2.1M off ($13.5M vs $15.6M)—a material error for a trust-themed deck. Provider counts are wrong for 4 of 6 named providers. Top-10 share rounded from 49.6% to 48%. The 26% Stan claim and $3.57M figure cannot be verified but are plausible. The revenue window inconsistency claim (32 listings) is an original finding that cannot be checked against reference but is a reasonable analytical contribution.",
+    "visual": "Elegant, restrained two-color palette (blue/orange) with consistent typography. Bar charts are clean and appropriately labeled. The histogram on slide 4 is an effective choice for showing distribution skew. Hierarchy is excellent—big numbers draw the eye, supporting text is subordinate. No chartjunk or decorative graphics.",
+    "ai_slop": "none"
+  },
+  "confidence": "high",
+  "total": 80,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 12579,
+    "output_tokens": 883
+  }
+}

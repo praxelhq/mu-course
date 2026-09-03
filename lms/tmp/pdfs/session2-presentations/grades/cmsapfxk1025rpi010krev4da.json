@@ -1,0 +1,39 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 7,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong editorial voice, clean visual hierarchy, and honest framing of self-reported data limitations throughout.",
+  "fix_next": "The combined MRR figure ($13.47M) doesn't match the frozen 30-day revenue ($15.6M); verify core totals before building a deck around them.",
+  "verdict": "Polished magazine-style report with solid narrative but several unchecked numbers.",
+  "flags": [
+    "revenue-total-mismatch",
+    "ai-median-unverified",
+    "missing-data-underdiscussed",
+    "no-provider-analysis",
+    "no-causal-discipline-on-b2b"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 2: Combined MRR stated as $13.47M; frozen dataset total 30-day revenue is $15,596,344.59 — a ~$2.1M discrepancy. Slide 3: AI median MRR stated as $446; reference value is $503 (and the 58% above $282 claim doesn't hold for either figure). Slide 4: Top-1% share stated as 48%; reference top-10 share is 49.6%, so 'top 1%' (10 companies) capturing 48% is plausible but the slide conflates MRR with 30-day revenue inconsistently across the deck. Slide 3: Dataset-wide median stated as $282 — not directly verifiable against reference but the deck uses MRR and 30-day revenue interchangeably without clarifying the distinction, which compounds the slide-2 error.",
+  "evidence": {
+    "insight": "Findings are real but largely descriptive: power-law concentration, B2B vs B2C gap, growth thirds split. The marketplace-signals insight (slide 8) is the most original claim. No provider analysis, no TLD analysis, no founded-year exploration. Depth stays at surface level.",
+    "narrative": "Clear nine-chapter arc from overview → categories → distribution → growth → audience → geography → marketplace → top performers → verdict. The verdict slide synthesizes five takeaways coherently. Sequence is logical and purposeful, not a random list.",
+    "framing": "Slide 1 sets dataset scope (1,000 rows, frozen date, 29 categories, 65 countries). Slide 2 notes self-reported data caveat. Missing-data rates (241 country, 288 audience, 274 category) are partially acknowledged (726 categorized, 712 audience, 759 country) but never discussed as a limitation that could bias findings.",
+    "accuracy": "Slide 2 total MRR $13.47M vs reference $15.6M is a material error. AI median $446 vs reference $503. The deck freely swaps 'MRR' and '30-day revenue' without defining which field it uses. B2B/B2C percentages are plausible but unverifiable against reference without the same denominator. Top-8 performer table values appear reasonable.",
+    "visual": "Consistent warm palette (rust, gold, cream, dark). Treemap on slide 3 is effective. Dumbbell chart on slide 6 is well-chosen. Area chart on slide 4 communicates concentration clearly. Typography hierarchy is strong. Minor issue: $35,000 displays as '$35,00 0' on slide 8 due to line break. Overall restrained and professional.",
+    "ai_slop": "No obvious generic filler or decorative-but-meaningless graphics. The design is polished but not sloppy. The 'Field Report No. 03' framing is a stylistic choice, not slop. Content is specific to the dataset."
+  },
+  "confidence": "high",
+  "total": 65,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19712,
+    "output_tokens": 976
+  }
+}

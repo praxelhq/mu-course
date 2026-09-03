@@ -1,0 +1,38 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 7,
+    "narrative": 8.5,
+    "framing": 6.5,
+    "accuracy": 5,
+    "visual": 8,
+    "bonus": 2
+  },
+  "what_worked": "Sharp thesis with a punchy contrarian angle, tight narrative arc, and disciplined six-slide structure.",
+  "fix_next": "B2B/B2C medians, the 4.1× multiple, 73% top-5% claim, and \"Fintech\" category are unverifiable or wrong—audit every number against the dataset.",
+  "verdict": "Compelling story undermined by several fabricated or unverifiable statistics.",
+  "flags": [
+    "fabricated-category-fintech",
+    "b2b-b2c-median-mismatch",
+    "unverifiable-concentration-claim",
+    "missing-limitations-disclosure"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 3: 'Fintech' ($583) is not a category in the dataset—appears fabricated. Slide 3: '3.5×' callout is misleading; Education median ($2,435) over AI ($503) is ~4.8×, not 3.5×. Slide 5: B2B median $1,240 and B2C median $304 do not match reference values (reference: B2B median revenue multiple 2.35×, B2C 2.30×; actual medians not $1,240/$304). Slide 5: '4.1× more revenue' conflicts with reference ~2.35× median multiple for B2B. Slide 5: '73% of all revenue captured by top 5%' and '$399 median' are unverifiable against reference data and likely fabricated (reference gives top-10 share at 49.6%, making 73% for top 5% implausible).",
+  "evidence": {
+    "insight": "Core insight—AI is crowded but low-earning—is genuinely interesting and supported by correct category count (197) and correct AI median ($503). The followers-vs-subscriptions contrast (slide 4) adds a second useful dimension. However, the deck doesn't explore why (e.g., zero-revenue prevalence, missingness) or acknowledge limitations.",
+    "narrative": "Exceptionally clean arc: crowd → twist → evidence → thesis. Each slide builds on the prior. The closing slide synthesizes four numbered takeaways that map directly to preceding charts. One of the strongest narrative structures seen.",
+    "framing": "Audience (investor) and question (where to invest) are clear. However, no mention of dataset limitations: 274 missing categories (27.4%), 216 zero-revenue companies, 288 missing audience_type. The 'investment thesis' framing implies causal/predictive power the cross-sectional data cannot support. No sample-size caveats for small categories like Education (n=30).",
+    "accuracy": "Slide 2 category counts match reference. Slide 3 AI median ($503) and Education ($2,435) match. However: 'Fintech' is not in the reference categories—fabricated or miscoded. B2B/B2C medians on slide 5 ($1,240/$304) don't match reference multiples (~2.3×). The 4.1× claim is wrong. '73% by top 5%' is implausible given top-10 is 49.6%. The r=0.80 for subscriptions→revenue is plausible but unverifiable from provided reference. SaaS median shown as $200 matches reference $200.50 (acceptable rounding).",
+    "visual": "Consistent dark/light theme, excellent use of highlight color (coral for AI, green for outperformers). Bar charts are well-labeled with direct annotation. Scatter plots on slide 4 are effective side-by-side comparisons. Good restraint—no gratuitous icons or stock imagery. Minor issue: slide 5 bar chart lacks axis labels.",
+    "ai_slop": "Minimal slop. The deck is concise and avoids filler language. The 'same effort' tagline on slide 5 is an unsupported editorial claim but not egregious. Overall the deck reads as intentionally crafted rather than template-generated."
+  },
+  "confidence": "high",
+  "total": 72,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 12000,
+    "output_tokens": 1041
+  }
+}

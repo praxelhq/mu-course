@@ -1,0 +1,38 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 6.5,
+    "accuracy": 4.5,
+    "visual": 6,
+    "bonus": 1
+  },
+  "what_worked": "Strong narrative arc from market overview through sub-segments to actionable quadrant framework with consistent limitations noted.",
+  "fix_next": "The 83% top-10 concentration, $582.8K total, and $416 median are unverifiable against the frozen dataset's Health & Fitness category (n=34, $178.6K total, $662.50 median).",
+  "verdict": "Coherent niche story undermined by numbers that don't match the reference dataset.",
+  "flags": [
+    "unverifiable-cohort-numbers",
+    "inflated-consulting-language",
+    "possible-fabricated-subcategories",
+    "ai-generated-template"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: Claims n=74 startups, $582.8K total revenue, $416 median, 83% top-10 share — reference shows Health & Fitness has n=34, total $178,606.72, median $662.50. The 83% top-10 share within this sub-cohort is unverifiable and far exceeds the full-dataset 49.6% benchmark. Slide 2: Mean stated as $7.9K ($582.8K/74=$7,876) is internally consistent but based on wrong totals. Slide 5: Sub-categories (Clinical Support, Healthcare Software, Women's Health, etc.) appear fabricated — the dataset's category field contains 'Health & Fitness' as a single category, not these sub-segments. Slide 7: Box plots comparing Mobile Apps, AI, and SaaS within the health cohort imply cross-category filtering that contradicts the stated n=74 Health & Fitness filter. Slide 6: B2B median MRR baseline of $201 and subscription baseline of 29.5 are unverifiable.",
+  "evidence": {
+    "insight": "Slide 9 BCG-style quadrant synthesizes revenue and growth dimensions; slide 8 growth-momentum breakdown (28% positive) adds useful portfolio-risk framing. However, insights rest on unverifiable sub-category splits.",
+    "narrative": "Clear arc: market overview (slide 2) → methodology (slide 3) → concentration (slide 4) → sub-segments (slide 5) → business model (slide 6) → tech stack (slide 7) → growth (slide 8) → synthesis (slides 9-10). Each slide has a decision-maker implication box creating purposeful sequence.",
+    "framing": "Slide 3 explicitly states cohort parameters, data hygiene approach, and disclaimers. Audience (portfolio decision-maker) is clear. However, the n=74 cohort size contradicts the reference n=34 for Health & Fitness, raising questions about the filter used.",
+    "accuracy": "Core numbers are materially wrong vs. reference: n=74 vs 34, total $582.8K vs $178.6K, median $416 vs $662.50. Sub-categories on slide 5 appear invented — the dataset has 'Health & Fitness' as one category, not 10 sub-sectors. The 83% top-10 share is dramatically higher than the full-dataset 49.6%.",
+    "visual": "Consistent dark theme with teal/coral palette throughout. Pareto chart (slide 4) and stacked bar (slide 8) are well-chosen. However, slide 6's abstract bar visualization lacks axis values. Slide 5 bar chart lacks revenue-value labels on bars. Every slide follows identical template with right-side bullet panel — visually monotonous.",
+    "ai_slop": "NotebookLM watermark on every slide. Inflated consulting language throughout ('Executive Portfolio Analysis & Resource Allocation Briefing', 'zombie-state operations', 'structurally incapable of self-funding'). Identical slide template repeated 9 times. Sub-categories on slide 5 appear AI-fabricated rather than derived from actual dataset fields."
+  },
+  "confidence": "high",
+  "total": 62,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 16864,
+    "output_tokens": 1018
+  }
+}

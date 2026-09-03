@@ -1,0 +1,39 @@
+{
+  "slide_count": 20,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8.5,
+    "framing": 7,
+    "accuracy": 5.5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Exceptionally coherent thesis-driven narrative with each insight explicitly bridging to the next.",
+  "fix_next": "Several median figures deviate materially from the reference data; verify every number against the actual dataset before presenting.",
+  "verdict": "Strong narrative architecture undermined by multiple inaccurate figures.",
+  "flags": [
+    "median-values-off",
+    "b2b-multiple-inflated",
+    "category-medians-wrong",
+    "stripe-count-wrong",
+    "zero-revenue-share-rounded-loosely"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 6: Top-10 share stated as 48% vs reference 49.6%—minor but the claim '82% top 10%' is unverifiable and plausible. Mean $13,472 implies total ~$13.47M vs reference $15.6M—material error. Slide 7: 20% zero-revenue stated; reference is 216/1000=21.6%—acceptable rounding. Slide 8: AI median $446 vs reference $503; Marketing median $1,586 vs reference $2,369.50; SaaS median $303 vs reference $200.50; Content Creation median $1,254 vs reference $1,237.50; Dev Tools $185 vs $635; Productivity $42 vs $79.91; Mobile Apps $223 vs $232.50—multiple material deviations. Slide 10: B2B/B2C 5.7x claimed; reference median multiple is ~2.35x (B2B median ~$1,036 plausible but B2C $181 doesn't match reference patterns yielding 2.35x)—materially inflated. Slide 13: Stripe n=644 vs reference 636; RevenueCat n=191 vs 189; Polar n=40 vs 36—counts off. Slide 15: US n=258 stated as 26% of all listings, but 241 rows have missing country so denominator is unclear—not flagged as limitation.",
+  "evidence": {
+    "insight": "The four-signal filter framework (B2B, domain authority, payment stack, follower-as-noise) is a genuinely useful synthesis that goes beyond chart description. The power-law framing and the 'concentration is reinforcing' loop (Insight 10 back to 1) show real analytical thinking.",
+    "narrative": "Outstanding sequencing: each slide ends with an explicit bridge sentence (→) connecting to the next insight. The 1→2→3 chapter structure with a funnel metaphor on slide 3 creates a single coherent argument. The synthesis slide (18) and bottom-line slide (19) land the conclusion cleanly.",
+    "framing": "Slide 1 sets context (dataset, date, author). Slide 20 appendix acknowledges self-reported data and missing fields. However, the deck never quantifies missingness rates for key fields (category 27.4%, audience_type 28.8%), which matters for the B2B and category analyses. The 'investor/acquirer' audience is implied but never explicitly stated.",
+    "accuracy": "Multiple median values diverge from reference: AI $446 vs $503, Marketing $1,586 vs $2,370, Dev Tools $185 vs $635, B2B/B2C multiple 5.7x vs ~2.35x. Mean revenue $13,472 implies ~$13.5M total vs $15.6M reference. Stripe count 644 vs 636. The B2B premium is the deck's headline claim and appears substantially overstated.",
+    "visual": "Consistent navy/gold palette, clean bar charts, good use of callout boxes with key stats. Progress dots track position through 10 insights. Section dividers are clean. However, the donut chart (slide 7) is a weak choice, and the correlation bar chart (slide 12) comparing only two bars is visually thin. No chart is misleading in design, but the template is repetitive across all insight slides.",
+    "ai_slop": "The 'STRICTLY PRIVATE AND CONFIDENTIAL' footer on every slide is performative consulting theater. The overall template is polished but repetitive—every insight slide follows the identical layout (chart left, callout box right, bridge sentence bottom). This is template-driven but not egregiously sloppy."
+  },
+  "confidence": "high",
+  "total": 73,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 37525,
+    "output_tokens": 1114
+  }
+}

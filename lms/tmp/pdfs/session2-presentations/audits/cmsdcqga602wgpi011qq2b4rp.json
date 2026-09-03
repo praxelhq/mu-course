@@ -1,0 +1,42 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 6.5,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "Contrasting followers ρ=0.17 vs domain rating ρ=0.52 is a genuinely useful paired finding with causal discipline.",
+  "fix_next": "Verify slide 10 categories (Marketplace, Customer Support, No-Code) against the actual dataset; they are absent from the reference schema.",
+  "verdict": "Well-structured, visually disciplined deck with a few unverifiable category claims that dent accuracy.",
+  "flags": [
+    "unverifiable-categories-slide-10",
+    "missing-provider-analysis",
+    "missing-anonymity-analysis",
+    "positive-revenue-rounding-78-vs-78.4",
+    "b2b-b2c-revenue-share-unverifiable",
+    "slide-6-chart-labels-partially-obscured"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 10: Marketplace ($9K), Customer Support ($6K), and No-Code ($2K) appear as categories with specific medians but are not in the frozen reference category list—possibly fabricated or from a different grouping. Slide 5: 22% zero-revenue stated; reference says 216/1000 = 21.6%, minor but rounds incorrectly upward.",
+  "evidence": {
+    "insight": "Three-signal executive summary (S2) is well-chosen; followers-vs-domain-rating contrast (S8-9) is the strongest original finding; AI median vs Marketing/Education (S10) is non-obvious. However, no analysis of payment providers (Stripe/RevenueCat/Dodo), anonymous vs named companies, or TLD patterns limits the analytical surface area.",
+    "narrative": "Clean arc from summary → data quality → ecosystem → revenue → B2B → geography → attention → domain → category economics → M&A → implications → close. The thesis 'monetization architecture, not visibility' is introduced on S2 and sustained through S13. Each slide advances the argument rather than repeating it.",
+    "framing": "Slide 3 is an exemplary data-quality disclosure with specific missingness rates and a denominator warning. Audience segmentation on S12 (founders/investors/operators) is explicit. However, no driving question is stated upfront, and no limitations section addresses survivorship bias or self-selection in the TrustMRR platform.",
+    "accuracy": "Top-10 share ~50% aligns with 49.6% reference. Total revenue $15.6M matches $15,596,344.59. AI median $503 matches. Category/country/audience missingness percentages match. However, slide 10 introduces three categories (Marketplace, Customer Support, No-Code) absent from the reference list, raising data fidelity concerns. The 22% zero-revenue claim rounds 21.6% upward. B2B 70% revenue share and $1,240 median are plausible but not directly verifiable against reference.",
+    "visual": "Consistent dark theme with restrained green/cyan palette. Log-scale axes on histograms and scatterplots are appropriate for power-law data. Median/percentile annotations on S5 and S11 aid interpretation. Bar charts on S4, S7, S10 include counts alongside percentages. Slide 6 bar chart has partially obscured axis labels but sidebar compensates. No decorative or gratuitous visuals.",
+    "ai_slop": "Minimal. Language is precise and measured. Slide 12 recommendations are somewhat generic ('instrument subscribers, MRR and retention') but grounded in prior analysis. Closing slide (S13) is dramatic but earned. No inflated superlatives or filler paragraphs detected."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Reduced accuracy from 7.0 to 6.5 due to unverifiable categories on slide 10 (Marketplace, Customer Support, No-Code not in reference) which could indicate fabricated or re-grouped data. Reduced bonus from 2 to 1: the deck is polished and well-structured but does not explore provider analysis, anonymity patterns, or TLD findings that would constitute truly exceptional depth beyond the rubric.",
+  "total": 74,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 23718,
+    "output_tokens": 1051
+  }
+}

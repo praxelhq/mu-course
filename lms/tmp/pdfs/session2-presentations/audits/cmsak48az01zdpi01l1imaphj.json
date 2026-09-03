@@ -1,0 +1,43 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 5.5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Category × audience cross-cuts on slide 7 and data-readiness guardrails on slide 3 show real analytical discipline.",
+  "fix_next": "Reconcile MRR vs 30-day revenue throughout; verify category medians against source data before publishing numbers in tables.",
+  "verdict": "Well-structured CBO playbook undermined by systematic median errors and MRR/revenue conflation.",
+  "flags": [
+    "median-errors-multiple-categories",
+    "mrr-revenue-conflation",
+    "anonymous-share-inflated",
+    "top10-share-understated",
+    "missing-category-count-unacknowledged",
+    "visual-monotony",
+    "template-repetition"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 6: AI median $446 vs ref $503; SaaS median $303 vs $200.50; E-comm median $155 vs $387; Analytics median $1K vs $419. Slide 4: top-10 share 48.0% vs ref 49.6%. Slide 11: anonymous revenue share 28.1% vs ref 26.525%. Slides throughout conflate 30-day revenue with MRR without clarification, and slide 6 category analysis never notes 274 rows have missing category.",
+  "evidence": {
+    "insight": "Slide 7 category×audience cross-cut is the strongest original move, surfacing AI-B2B vs AI-B2C divergence. Slide 5 revenue-band tiering is useful. Slide 11 correctly flags r=0.024 as non-predictive. However, most analysis stays descriptive—no cohort surprises, no TLD analysis, no founded-year exploration.",
+    "narrative": "Slide 2 thesis ('protect whales, scale proven segments, be disciplined on acquisitions') threads cleanly through all 13 slides. Section labels, headline insights, and action callouts create a consistent decision-oriented arc from data quality through to 90-day plan. The sequence is logical and purposeful.",
+    "framing": "Slide 3 data-readiness framing is strong epistemic practice. CBO audience is named consistently. However, 274 missing categories (27.4% of rows) are never disclosed on the category slide, which weakens the denominator transparency. The MRR/revenue distinction is never clarified despite being used interchangeably throughout.",
+    "accuracy": "Seven verifiable errors: four category medians diverge materially from reference (E-comm off by 2.5×, Analytics off by ~2.4×), top-10 share understated by 1.6pp, anonymous share overstated by ~1.6pp. The systematic labeling of 30-day revenue as MRR without caveat is a conceptual accuracy issue that pervades the deck. Stripe and RevenueCat totals are correct. Total revenue rounds correctly.",
+    "visual": "Clean, professional template with consistent navy/gold/teal palette, good hierarchy, and legible typography. Every slide uses identical layout (bar chart left, table right, action box bottom), which aids scannability but creates monotony across 13 slides. No scatter plots, distributions, or varied chart types despite clear opportunities (slide 11 correlation, slide 5 distribution). Restrained but repetitive.",
+    "ai_slop": "Consulting-speak present but mostly substantive ('revenue operating system,' 'GTM wedge'). The identical slide template across all 13 pages and formulaic action-box pattern suggest AI-assisted generation. No decorative or fabricated charts. Content is dataset-specific, not generic filler."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 6.0 to 5.5: seven factual errors including multiple category medians off by 2×+ and systematic MRR/revenue conflation warrant a score below 'adequate.' Lowered framing from 7.5 to 7.0: missing-category denominator (274 rows) never disclosed on category slides. Reduced bonus from 2 to 1: the work is competent and well-structured but not rare enough for 2 bonus points—cross-cuts are solid but the analysis stays descriptive without deeper surprises.",
+  "total": 69,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 25393,
+    "output_tokens": 1080
+  }
+}

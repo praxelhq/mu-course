@@ -1,0 +1,44 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 7,
+    "framing": 5.5,
+    "accuracy": 3.5,
+    "visual": 7,
+    "bonus": 0
+  },
+  "what_worked": "Equal-band revenue bar (slide 4) is a genuinely clever way to visualize power-law concentration.",
+  "fix_next": "Recompute all totals from the raw data; total revenue is off by $2.1M and multiple category figures are wrong.",
+  "verdict": "Clean design and clear arc undermined by pervasive numerical errors across key slides.",
+  "flags": [
+    "total-revenue-error",
+    "ai-median-wrong",
+    "category-totals-wrong",
+    "best-monetized-claim-false",
+    "top10-share-off",
+    "zero-revenue-count-wrong",
+    "missing-data-not-discussed",
+    "no-limitations-slide"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 2: total revenue $13.47M vs reference $15.60M, mean also wrong. Slide 3: top-10 share 48% vs 49.6%. Slide 4: $0 band shows 197 companies vs 216 zero-revenue. Slide 5: AI median $446 vs $503; AI total $1,806k vs $2,357k; Marketing total $444k vs $1,317k; E-comm $396k vs $1,112k; claim AI is 'best monetized' is false—Education median $2,435 and Marketing $2,370 far exceed AI's $503.",
+  "evidence": {
+    "insight": "Power-law thesis is well-supported by slide 4's equal-band design and slide 3's Stan callout, but the AI-is-best-monetized claim (slide 5) is factually wrong, weakening the category analysis.",
+    "narrative": "Clear thesis stated on slide 1, each slide adds a facet (concentration→category→growth→audience→geography→exits), slide 10 synthesizes six takeaways. Arc is coherent though more descriptive than explanatory.",
+    "framing": "Dataset scope and freeze date stated on slide 1. No mention of 241 missing country, 288 missing audience_type, 274 missing category, or 216 zero-revenue rows. No limitations or selection-bias discussion for a cold reader.",
+    "accuracy": "Total revenue off by ~$2.1M. Multiple category revenue bars are wildly wrong (Marketing off by 3x, E-comm off by 3x). AI median wrong. Zero-revenue count wrong. Top-10 share off. The 'best monetized' claim ignores categories with 4-5x higher medians.",
+    "visual": "Consistent coral/navy palette, clean typography, effective donut chart (slide 3), smart equal-band bar (slide 4), well-labeled axes, good callout boxes. No chart junk. Slight template uniformity but restrained.",
+    "ai_slop": "No egregious filler or inflated language. Deck is substantive throughout with dataset-specific claims on every slide."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5 to 3.5: total revenue off by $2.1M, multiple category totals wildly wrong (Marketing 3x off, E-comm 3x off), false 'best monetized' claim. Lowered insight to 5.5 and framing to 5.5 for wrong analytical conclusion and absent missingness discussion. Removed bonus given pervasive errors.",
+  "total": 57,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 18931,
+    "output_tokens": 2744
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 6.5,
+    "framing": 5,
+    "accuracy": 4.5,
+    "visual": 6,
+    "bonus": 1
+  },
+  "what_worked": "Gini coefficient, power-law concentration analysis, and M&A arbitrage thesis show genuine analytical ambition beyond description.",
+  "fix_next": "Disclose missingness (288 audience_type, 274 category, 241 country) and stop using causal language for observational correlations.",
+  "verdict": "Ambitious M&A playbook undermined by hidden missingness, inflated language, and several factual errors.",
+  "flags": [
+    "causal-language-on-observational",
+    "mean-not-median-misleads",
+    "missing-data-not-disclosed",
+    "consulting-inflated-language",
+    "stripe-count-inflated",
+    "dr-correlation-presented-as-causal",
+    "audience-type-missingness-hidden"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 9: Stripe count 643 vs reference 636; RevenueCat count 213 vs reference 189. Slide 4: B2B/B2C counts (255/401/56) sum to 712, not 1000—288 missing audience_type hidden; '4× higher' claim understates actual mean ratio (~3.96× is close but the 25.5% share claim is based on 255/1000 not 255/712). Slide 8: title says 'Correlates Directly'—causal language for observational association; DR 40-50 bin is skipped (jumps from 20-40 to 50-60). Slide 2: '86.4% MRR' and '$133.75M trailing revenue' are unverifiable against reference and may be fabricated. Slide 12: 'unlock a 145× organic revenue increase' treats cross-sectional averages as achievable causal gains. Slide 7: AI '15% revenue share' stated as 15.1% of volume (count), not revenue share—$2.36M/$15.60M ≈ 15.1% revenue does roughly check but the chart title says 'Ecosystem Volume' while the text conflates volume and revenue.",
+  "evidence": {
+    "insight": "Slide 3 Gini (0.9055) and cumulative concentration tiers are genuinely useful; slide 11 bottleneck framing adds qualitative depth; M&A multiple analysis on slide 5 is decision-relevant. However, reliance on means throughout a self-identified power-law distribution weakens most comparisons.",
+    "narrative": "Clear M&A-playbook arc from macro overview (slide 2) through concentration (3), B2B premium (4), M&A opportunity (5), geography (6), categories (7,10), channels (9), to four recommendations (12). Sequence is logical and purposeful. But the narrative never pauses to acknowledge uncertainty or data gaps, reducing credibility.",
+    "framing": "Audience stated (Business Management Team) and question framed (M&A opportunity). However, 288 missing audience_type values are silently absorbed into denominators on slide 4, 274 missing categories affect slides 7/10, and 241 missing countries affect slide 6. No data source, collection date, or methodology disclosed. '1,000 verified startups' is never defined. A cold reader cannot assess reliability.",
+    "accuracy": "Total revenue ($15.60M) and top-10 share (49.61%) match. Category counts (AI 197, Marketing 42, E-comm 19, SaaS 66, Education 30) match. Stripe count inflated by 7 (643 vs 636), RevenueCat inflated by 24 (213 vs 189). B2B/B2C/Both sum to 712, hiding 288 missing values while claiming '1,000 total.' Median multiple 2.3× is consistent with reference (~2.35×/2.30×). The 145× DR claim treats cross-sectional correlation as causal. Slide 2 MRR and trailing revenue figures are unverifiable.",
+    "visual": "Consistent navy/gold palette with clean bar charts and effective big-number callouts (slides 3, 5). Slide 5 has significant dead space. Slide 7 pie chart dominated by 61.5% 'Others' reduces utility. Slide 8 stacked cards are clear but static. Professional template but some wasted space and no annotations on axes. Chart choices are generally appropriate.",
+    "ai_slop": "Pervasive consulting-speak: 'high-conviction focus,' 'highly liquid exit environment,' 'organic amplification engine feeding the SEO funnel,' 'highly insulated from economic downturns,' 'prime acquisition targets.' Slide 11 takeaway is an unearned macro claim. The overall tone reads as AI-generated consulting deck rather than student analytical work."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.0 to 4.5: Stripe/RevenueCat counts are both wrong, B2B/B2C denominator silently hides 288 missing values while claiming 1000 total, and multiple causal claims from correlational data. Lowered framing from 5.5 to 5.0: complete absence of missingness disclosure is more damaging given that missingness directly affects key claims (B2B premium, category shares, geography). Other scores confirmed as appropriate.",
+  "total": 58,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 23059,
+    "output_tokens": 1347
+  }
+}

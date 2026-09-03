@@ -1,0 +1,38 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 4.5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis with honest self-critique on limitations; outlier decomposition on slide 7 was genuinely useful analytical work.",
+  "fix_next": "Multiple category counts and revenue figures are materially wrong versus the frozen dataset—verify every number against raw data before presenting.",
+  "verdict": "Compelling narrative undermined by numerous factual errors in core claims.",
+  "flags": [
+    "wrong-category-counts",
+    "wrong-revenue-figures",
+    "wrong-company-counts",
+    "narrow-dataset-scope"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 2/4: AI count stated as 189, reference is 197. Slide 2/4: SaaS stated as 64, reference is 66. Slide 2: 'next-largest category' called SaaS—actually Mobile Apps (52) is not next; Marketing (42) is larger than Content Creation (36) but the ordering shown on slide 4 (Mobile Apps 50, Marketing 41) also wrong vs reference (52, 42). Slide 2: AI median stated $461 vs reference $503; SaaS median stated $303 vs reference $200.50. Slide 5: AI total revenue $1,768k vs reference $2,356k; SaaS $583k vs $703k; Education $501k from 28 companies vs reference $523k from 30 companies; Marketing $427k vs $1,317k (severely wrong). Slide 6: avg MRR figures ($9,355 AI, $9,109 SaaS) inconsistent with reference totals divided by counts. Slide 8: 'active companies' counts (AI n=92, SaaS n=30) use an unexplained filter without clear disclosure of denominator change.",
+  "evidence": {
+    "insight": "Slide 7 outlier decomposition is genuinely original—showing one company drives SaaS mean growth from 5% to 139%. Slide 5 highlights Education's revenue density. The thesis (crowding vs. workflow focus) goes beyond chart description.",
+    "narrative": "Clear single thesis from slide 1 through slide 12. Sequence: crowding → revenue parity → growth parity → where to build → examples → recommendations → limitations → close. Coherent arc with a real landing.",
+    "framing": "Slide 1 states audience (someone planning 'the next build'), slide 3 explains data source well, slide 11 honestly flags limitations (self-reported categories, single snapshot, survivorship). Missing: no mention of 274 missing category values affecting all category-level claims.",
+    "accuracy": "AI company count off (189 vs 197), SaaS off (64 vs 66). AI median $461 vs reference $503; SaaS median $303 vs reference $200.50—the gap direction may still hold but magnitudes are wrong. Marketing total revenue $427k is dramatically wrong vs $1,317k. Education count 28 vs 30. Revenue totals for AI and SaaS both substantially understated. Slide 8 uses filtered 'active' counts without explaining the filter, creating confusion about denominators.",
+    "visual": "Clean two-color palette (navy/crimson), consistent typography, good use of big-number callouts. Slide 8 scatter plot is readable with labeled legend. No chart junk. Some slides are text-heavy (slide 3). The bar charts are simple and effective. Consistent layout across slides.",
+    "ai_slop": "none—the deck avoids generic filler, uses specific numbers and company names, and includes a self-critical limitations slide"
+  },
+  "confidence": "high",
+  "total": 70,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22276,
+    "output_tokens": 931
+  }
+}

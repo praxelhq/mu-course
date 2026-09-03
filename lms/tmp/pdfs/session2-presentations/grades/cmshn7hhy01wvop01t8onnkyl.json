@@ -1,0 +1,37 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 6,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Genuinely skeptical investor framing with earn-out structure and cohort-data requests shows real analytical thinking.",
+  "fix_next": "The deck barely touches the provided dataset (category medians, provider benchmarks, missingness); anchor Speel's position against the 1,000-company distribution to strengthen claims.",
+  "verdict": "Strong investor narrative, but thin dataset engagement limits analytical credibility.",
+  "flags": [
+    "limited-dataset-use",
+    "illustrative-chart-not-actual-data",
+    "external-sources-over-provided-data"
+  ],
+  "factual_error_count": 1,
+  "factual_error_detail": "Slide 3: The illustrative MRR trajectory (5,300→9,400→18,700→65,843) implies roughly 77%/99%/252% MoM growth across three steps, not a consistent 253% MoM as the title implies. The chart is labeled 'illustrative' which partially mitigates this, but the framing is misleading about what 253% MoM would actually look like (5,300 × 3.53³ ≈ 233K, not 65,843).",
+  "evidence": {
+    "insight": "Slide 5's ARPU calculation ($59 vs. tier prices) is a genuine micro-insight. Slide 6's observation that 0.63x ARR pricing near distressed comps signals market-discounted risk is the deck's strongest analytical move. Slide 3's caveat about small-base growth rates shows maturity. However, insights stay at the single-company level without leveraging the broader dataset for comparative depth.",
+    "narrative": "Clear thesis arc: snapshot → growth interrogation → market context → business model → valuation with comps → diligence flags → bull/bear → conditional recommendation. Each slide advances the acquisition question. The landing on slide 9 with four concrete next-steps is purposeful and actionable, not generic.",
+    "framing": "Slide 1 sets audience (investor simulation), question (should we acquire?), and source clearly. Slide 10 sources every claim. Limitations are acknowledged (short revenue history, illustrative chart). However, the deck doesn't define its relationship to the 1,000-row dataset or explain scope choices about what dataset analysis was omitted.",
+    "accuracy": "Company-specific numbers (MRR $65,843, asking price $500K, 1,115 subs, $180,966 all-time) appear sourced from the TrustMRR listing and are internally consistent. The $790K ARR = $65,843 × 12 checks out. The 0.63x multiple checks out. However, the illustrative MRR trajectory on slide 3 is mathematically inconsistent with 253% MoM growth. The comparable multiples on slide 6 are from external listings not verifiable against the frozen dataset. The deck makes almost no claims against the provided 1,000-row dataset, so there are few dataset-accuracy issues to flag, but this also means it largely sidesteps the assignment's analytical foundation.",
+    "visual": "Clean, consistent template with good hierarchy (section labels, bold headlines, card layouts). Slide 6's comparison table is well-structured. Color coding (green for bull, red for bear/flags) is effective. The single chart on slide 3 is simple and readable. However, the visual palette is somewhat template-uniform across slides, and the deck relies heavily on text cards rather than data visualization. Only one actual chart in 10 slides.",
+    "ai_slop": "Minimal slop. Language is precise and domain-appropriate rather than inflated. No decorative meaningless graphics. The consistent card-based layout borders on template sameness but serves the content. No fabricated-looking charts — the one chart is explicitly labeled illustrative."
+  },
+  "confidence": "medium",
+  "total": 74,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19540,
+    "output_tokens": 983
+  }
+}

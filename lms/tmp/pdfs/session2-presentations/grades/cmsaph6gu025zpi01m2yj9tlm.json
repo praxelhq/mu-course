@@ -1,0 +1,39 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 8,
+    "accuracy": 5.5,
+    "visual": 8,
+    "bonus": 3
+  },
+  "what_worked": "Exceptional narrative arc from market structure through mispricing to a concrete deployable screen with specific capital figures.",
+  "fix_next": "The $134M annualized figure inflates 30-day revenue (~$15.6M) by ~12x rather than the correct ~$187M, and several derived statistics cascade from this or other errors.",
+  "verdict": "Outstanding storytelling and structure undermined by a significant revenue base error and several cascading inaccuracies.",
+  "flags": [
+    "annualized-revenue-discrepancy",
+    "zero-revenue-count-off",
+    "top-concentration-claim-unverified",
+    "ai-revenue-per-company-uses-annualized",
+    "b2b-median-multiplier-inflated"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 1/3: $134M 'verified annual revenue' — 30-day total is ~$15.6M; annualizing gives ~$187M, not $134M; the base figure is unexplained and likely wrong. Slide 3: '109 have never processed a single dollar' — dataset shows 216 zero-revenue rows, not 109. Slide 3: 'Top 13 produce more than the other 987 combined' — top-10 share is 49.6%, so top-13 exceeding 50% is plausible but the 54% claim and the 13+87+150+750=1000 partition percentages are unverifiable and the 987 framing is misleading. Slide 4: 3.8x B2B/B2C median — reference shows ~2.35x median multiple, not 3.8x; the annualized medians ($8,362 vs $2,213) don't match reference medians. Slide 5: AI revenue per company '$94k' — $2,356,676/197 ≈ $11,963 monthly or ~$143k annualized, not $94k; Marketing '$349k' — $1,317,303/42 ≈ $31,364 monthly or ~$376k annualized. Slide 7: France '79 businesses, second-highest count' and India revenue share 0.9% — cannot be verified against reference but India company count of 60 (6%) is plausible while France at 8% = 80 is close.",
+  "evidence": {
+    "insight": "Slide 8's mispricing analysis (inverse multiple curve) and slide 9's four-filter funnel are genuinely original, decision-useful frameworks that go well beyond chart description. The domain-authority signal on slide 6 adds a non-obvious screening variable.",
+    "narrative": "Perfect thesis-driven arc: market definition (slide 2) → concentration reality (slide 3) → demand side (slide 4) → supply side (slide 5) → moat identification (slide 6) → geography (slide 7) → mispricing (slide 8) → deployment (slide 9) → recommendations (slide 10). Every slide ends with a bolded implication that advances the argument.",
+    "framing": "Slide 2 clearly establishes what the dataset is, who the audience is (an acquirer/investor), and the frozen date. Footnotes on most slides disclose sample sizes and filters (e.g., '726 businesses carrying a classified category'). Missing: no explicit limitations section discussing missingness rates or survivorship bias.",
+    "accuracy": "Core revenue figure ($134M) does not reconcile with the frozen dataset ($15.6M × 12 ≈ $187M). Zero-revenue count (109 vs 216) is materially wrong. B2B/B2C median multiple (3.8x) overstates the reference (2.35x). AI per-company revenue calculation appears inconsistent. These are not rounding issues but structural errors that affect the thesis.",
+    "visual": "Consistent dark-navy palette with gold accents, clear hierarchy with section labels, bold headlines, and implication callouts. Charts are simple and appropriate (horizontal bars, grouped bars, funnel). Slide 9's filter funnel is particularly effective. Minor issue: slide 5's stacked bar is slightly harder to parse than side-by-side would be.",
+    "ai_slop": "none — the deck avoids generic filler, decorative graphics, and consulting buzzwords. Every slide carries specific numbers and a pointed claim. The voice is distinctive and editorial."
+  },
+  "confidence": "high",
+  "total": 81,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19558,
+    "output_tokens": 1147
+  }
+}

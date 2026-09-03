@@ -1,0 +1,404 @@
+AI Presentation Assignment
+
+
+
+
+The Trust MRR Landscape
+A data-driven read on scale, concentration, typical-company performance, and monetization potential across 1,000
+tracked startups, cross-checked against the class Q&A analysis
+
+
+
+Datasets: TrustMRR 1,000-row snapshot (frozen 30 Jul 2026)
+Prepared for: Senior Management & Key Stakeholders
+
+                                                                                  By:
+                                                                                  Soham Dhamnaskar
+                                                                                  Section F
+EXECUTIVE SUMMARY
+
+A concentrated $13.5M MRR base, where “total” and “typical” tell different stories
+
+
+                Scale is real, ownership is narrow.
+   01
+                1,000 tracked startups generate $13.47M in combined MRR, but 16 startups (1.6%) hold 55% of it and a single listing (“Stan”) alone is 26.5%.
+
+
+                Total ≠ typical: AI wins on volume, not on the typical company.
+   02
+                AI is #1 of 29 categories by total MRR ($1.81M) but ranks 13th by median company MRR (just $446). Customer Support, Marketplace, Education, Marketing and Analytics show the
+                strongest typical per-company performance.
+
+                Anonymous listings are a measurable, non-trivial slice.
+   03
+                130 listings with a blank name, “Stealth Company,” or “Hidden Business” — carry 28.1% of MRR ($3.79M) and $4.19M of last-30-day revenue (26.9% of the $15.6M total).
+
+
+                Subscription count predicts revenue; follower count doesn't.
+   04
+                Active subscriptions correlates strongly with 30-day revenue (r = 0.802, all 1,000 rows). X followers barely correlate with 3-month revenue (r = 0.025, 984 complete pairs), vanity
+                metrics aren't a revenue signal here.
+
+                A concrete, evidence-backed action list exists.
+   05
+                Data-quality fixes, a named risk (a top-2 listing down 74% in 30 days), and a defined Now/Next/Explore agenda are ready for sign-off.
+
+
+
+
+Source: TrustMRR dataset (1,000 startups, frozen 30 Jul 2026)                                                                                                                                         2
+TRUST MRR AT A GLANCE
+
+$13.47M in tracked MRR across 1,000 startups, the typical listing earns far less than the
+average
+
+
+
+  $13.47M                                                       803 / 1,000                             $282                                               87.2%
+  Total combined MRR                                            Startups reporting MRR > $0             Median MRR, incl. zeroes (class convention)        Of total MRR runs on Stripe
+  across all 1,000 tracked startups                             (197 report $0 recurring MRR)           among active-only startups, median is              as the payment processor
+                                                                                                        $1,036
+
+
+
+Where the money actually sits: MRR by startup size band
+
+
+                                                                                                           55.0%
+                                                                                                                                      16 startups
+                                                                                                39.8%                                 (1.6% of the platform)
+                                                                                                                                      generate 55% of all MRR
+
+                                                                                                                                      Median MRR including zeroes ($282) sits well below the active-
+                                                                                                                                      only median ($1,036) because 197 listings report no recurring
+                                                                      4.7%                                                            revenue at all. Both figures use the class-established convention
+             0.0%                         0.6%                                                                                        (zeroes included, blanks excluded).
+
+               $0                        $1–999                     $1K–9.9K              $10K–99.9K      $100K+
+
+
+Source: TrustMRR dataset (1,000 startups, frozen 30 Jul 2026)                                                                                                                                             3
+WHERE MRR COMES FROM
+
+The US, a handful of named categories, and B2B relationships carry disproportionate weight
+
+
+MRR by named category (top 8 of 29)                                                                 MRR by country (top 6 of 60+)
+
+ Mobile Apps                  $203K                                                                         India      $0M
+ Social Media                     $304K
+                                                                                                     Hong Kong         $0M
+      Analytics                      $358K
+
+      E-comm                           $396K                                                                  UK         $0M
+
+    Marketing                            $444K                                                           Canada          $0M
+    Education                                $524K
+                                                                                                          France               $1M
+           SaaS                                 $589K
+
+              AI                                                                          $1,806K             US                                                                                    $8M
+
+
+                                                                                                    Cross-check on 30-day revenue: US leads all countries ($9.84M); AI leads all categories ($2.36M) —
+56.5% of total MRR ($7.6M) sits in startups with no category tag — not shown above.
+                                                                                                    consistent with the MRR picture above.
+
+
+
+
+    B2B startups monetize ~2.6x deeper per listing than B2C                                                    $13,150                                                   $5,102
+                                                                                                              avg MRR per B2B startup                                 avg MRR per B2C startup
+    255 B2B startups average $13,150 in MRR each ($3.35M total); 401 B2C startups average $5,102
+    each ($2.05M total) — despite outnumbering B2B listings.
+
+
+
+
+Source: TrustMRR dataset (1,000 startups, frozen 30 Jul 2026)                                                                                                                                             4
+WHAT IS ACTUALLY PERFORMING WELL?
+
+AI wins on total MRR, but the typical AI company is not the strongest performer
+
+
+Top 5 categories by TOTAL MRR                                                                            Top 5 categories by MEDIAN company MRR
+
+
+    E-comm                         $396K                                                                        Analytics                    $1,294
+
+
+ Marketing                           $444K                                                                    Marketing                         $1,586
+
+
+  Education                              $524K                                                                 Education                                 $2,142
+
+
+        SaaS                                $589K                                                           Marketplace                                                            $4,322
+
+
+           AI                                                                       $1,806K                Cust. Support                                                                      $5,163
+
+
+
+
+Education and Marketing appear on both lists , genuinely strong at both scale and typical-company level. Customer Support (n=5) and Marketplace (n=7) lead on median but from small samples — directional,
+not a scaled trend.
+
+
+     AI: rank #1 total, #13 of 29 median                                                                    E-comm: highest AVERAGE MRR, low median
+
+
+     197 companies drive a $1.81M total, but the typical AI company earns just $446/month — a               $20,829 mean MRR (highest of any category) but median only $155, ranking #22 of 29 — a few
+     handful of large names pull the average far above the median.                                          big winners (e.g. Eloking) skew the mean.
+
+
+
+
+Source: TrustMRR dataset (1,000 startups, frozen 30 Jul 2026)                                                                                                                                                5
+WHAT IS CHANGING
+
+Of MRR that matters at scale, most is flat, growth is real but concentrated in a minority
+
+
+30-day MRR trajectory, among startups with $3,000+ MRR (295 startups, $13.2M)
+
+
+                                                                59.1%                                         Named movers worth watching
+                                                                                                                GojiberryAI
+                                                                                                                                            $494.7K MRR, +23.6%
+                                                                                                                AI · US
+
+
+                                                                                                                Kibu
+                                                                                                                                            $234.3K MRR, +52.8%
+                                                                                                                Education · US
+                                                                                       22.9%
+                                                                                                                Postiz
+                   15.7%                                                                                                                    $177.1K MRR, +15.0%
+                                                                                                                Social Media · HK
+
+
+                                                                                                                “Stealth Company”
+                                                                                                                                            $747.1K MRR, –74.3%
+                                                                                                                Anonymous · US
+                  Declining                                   Flat                    Growing
+                   (< –5%)                                (–5% to +5%)                (> +5%)                   PolyPick
+                                                                                                                                             $20.7K MRR, –66.6%
+                                                                                                                Fintech · —
+
+     Declining 63 startups · $2.07M               Flat 138 startups · $7.81M   Growing 85 startups · $3.02M
+                                                                                                                Sight AI
+                                                                                                                                             $10.3K MRR, –54.6%
+                                                                                                                AI · —
+
+
+
+
+Source: TrustMRR dataset (1,000 startups, frozen 30 Jul 2026)                                                                                                     6
+WHAT IS DRIVING / DISTORTING THE PICTURE
+
+One listing and a class of anonymous names both distort the aggregate picture
+
+
+Cumulative share of total MRR held by the N largest startups
+                                                                                                                          FACT
+
+                                                                                                    81.8%
+                                                                                                                        130 listings are anonymous
+                                                                              70.6%
+                                                                                                                        Per the class-established definition — blank startup_name, “Stealth Company”,
+                                                                57.7%                                                   or “Hidden Business” (129 + 1 respectively):
+                                     48.0%
+
+                                                                                                                        Named: $11.40M revenue′30d (870 listings)
+           26.5%
+                                                                                                                        Anonymous: $4.19M revenue′30d (130 listings)
+
+
+                                                                                                                        In MRR terms: anonymous listings hold 28.1% of total MRR ($3.79M)
+                                                                                                                        including the #2 largest listing overall.
+            Top 1                    Top 10                     Top 20        Top 50                Top 100
+           (“Stan”)
+
+
+
+Including “Stan”: Top 10 = 48.0% of $13.47M. Excluding “Stan”: Top 10 = 31.0% of the $9.90M remaining.
+
+
+
+
+Why it matters: any platform-level metric is exposed both to a handful of dominant names and to a meaningfully sized anonymous cohort that cannot be attributed, explained, or drilled into.
+
+
+
+
+Source: TrustMRR dataset (1,000 startups, frozen 30 Jul 2026)                                                                                                                                           7
+WHERE IS THE OPPORTUNITY
+
+AI wins on volume, not consistency. Education pairs scale with a cleaner signal
+
+
+
+  197                                                           $446                                 +239.5%                                      –54.6%
+  AI startups tracked                                           Median AI company MRR                Fastest-growing AI name at scale:            Steepest AI decliner at scale:
+  (largest named category by count)                             (rank #13 of 29 — volume ≠ typical   LLM Gateway, $47.2K MRR                      Sight AI, $10.3K MRR
+                                                                strength)
+
+
+Reading the opportunity
+                                                                                                                                Growth leaders at scale ($1K+ MRR)
+
+                                                                                                                                GojiberryAI
+AI is not a uniform tailwind. The category carries the platform's biggest named winners (GojiberryAI at $494.7K                                                                    $494.7K, +23.6%
+                                                                                                                                AI
+MRR, +23.6%; Rezi at $259.7K MRR) alongside sharp decliners (Sight AI –54.6%, Adle –36.3%, Comp AI –22.3%) —
+and a typical company earning just $446/month. INTERPRETATION: opportunity in AI depends on picking the right                   Kibu
+                                                                                                                                                                                   $234.3K, +52.8%
+                                                                                                                                Education
+names, not riding a category-wide wave.
+
+                                                                                                                                Postiz
+                                                                                                                                                                                   $177.1K, +15.0%
+                                                                                                                                Social Media
+
+
+Second-tier opportunity: Education. 30 startups, $523.7K MRR (3.9% of total) AND a $2,142 median company                        Supergrow
+                                                                                                                                                                                    $79.5K, +24.9%
+                                                                                                                                Social Media
+MRR (top 3 of 29 by typical performance), with a standout grower (Kibu, $234.3K MRR, +52.8%) — scale and
+typical-company strength together, unlike AI.                                                                                   LLM Gateway
+                                                                                                                                                                                   $47.2K, +239.5%
+                                                                                                                                AI
+
+
+
+Source: TrustMRR dataset (1,000 startups, frozen 30 Jul 2026)                                                                                                                                        8
+MONETIZATION OPPORTUNITIES
+
+Two distinct pockets of untapped monetization, one near-term, one requiring validation
+
+
+
+       NEAR-TERM                                                                              LONGER-TERM
+
+
+
+    Convert one-time revenue to recurring                                                   Monetize the marketplace itself
+
+
+
+
+    FACT: 108 startups report $0 MRR but real revenue, combined $2.48M+ in all-time         FACT: 262 startups (26.2%) are listed for sale, carrying a combined asking price of
+    revenue with nothing captured as recurring (e.g. Eloking, $1.33M all-time revenue; an   $86.8M against only $2.05M of their own MRR (15.2% of platform total). The median
+    anonymous listing at $456.7K).                                                          revenue multiple across these listings is 2.30x.
+
+
+    HYPOTHESIS: some of this is a genuine subscription-conversion opportunity; some may     INTERPRETATION: this is a sizeable transaction pool that is not visibly monetized by the
+    be intentional one-time/e-commerce business models. The dataset cannot distinguish      platform today — e.g. via a success fee or take-rate on completed sales, benchmarked
+    these — validation needed before sizing any upside.                                     off the 2.30x median multiple.
+
+
+
+
+Source: TrustMRR dataset (1,000 startups, frozen 30 Jul 2026)                                                                                                                          9
+IMPLICATIONS FOR PRODUCT & DEVELOPERS
+
+Subscription count predicts revenue, follower count doesn't
+
+
+    Relationships worth acting on                                                                     What this means for the roadmap
+                                                                                                        Treat subscription count as the health metric
+    r = 0.802 Active subscriptions vs. 30-day revenue (all 1,000 rows), a strong, intuitive
+                                                                                                        Build dashboards, alerts, and benchmarks around active_subscriptions — it's the field with real
+    signal. Subscription count is a legitimate internal health metric.
+                                                                                                        predictive weight, unlike social metrics.
+
+    r = 0.025 X followers vs. 3-month revenue (984 complete pairs, full dataset), essentially           Don’t chase follower-based features
+    no relationship. Don’t build features that assume social following predicts revenue.
+                                                                                                        Any roadmap item premised on “social reach drives revenue” isn’t supported by this data
+                                                                                                        (r=0.025) — deprioritize until better evidence appears.
+
+
+    Field coverage gaps                                                                                 Backfill category, country & domain_rating
+
+                                                                                                        These three fields gate the majority of segmented analysis — mandate capture at listing
+    domain_rating: 286 of 1,000 rows blank (28.6%)                                                      creation/edit.
+
+    category: 72.6% populated — gates 56.5% of MRR out of any segmented view
+    country: 75.9% populated — 21.8% of MRR unattributed                                                No effort/cost/timeline data exists
+    visitors / revenue-per-visitor: populated for under 18% of listings — not enough for any funnel
+    claim                                                                                               The dataset contains no engineering-effort, cost, or timeline fields — prioritization reflects
+                                                                                                        evidence strength only, not build cost.
+
+
+
+
+Source: TrustMRR dataset (1,000 startups, frozen 30 Jul 2026)                                                                                                                                             10
+RISKS, WHITESPACE & STRATEGIC TRADE -OFFS
+
+What to watch, and where the less obvious potential sits
+
+RISKS                                                                                                                    WHITESPACE
+  !     Single-name & anonymous concentration                                                                            +   Typical-performer categories are under-discussed
+
+        “Stan” alone is 26.5% of MRR; 130 anonymous listings hold another 28.1% — over half of total MRR                     Customer Support ($5,163 median) and Marketplace ($4,322 median) outperform AI and E-comm
+        sits in names that are either singular or unattributable.                                                            per company — worth deliberate investigation despite small samples (n=5, n=7).
+
+
+
+  !     Opacity in the #2 listing                                                                                        +   High volume, shallow monetization (India)
+
+        The second-largest listing ($747.1K MRR, anonymous) fell 74.3% in 30 days with no way to                             59 listed startups (6th-highest by count) but only $156.6K combined MRR (1.2% of total) — stage,
+        investigate why.                                                                                                     pricing, or purchasing-power differences not yet confirmed.
+
+
+
+  !     Growth is narrow, not systemic                                                                                   +   Revenue-but-no-MRR cohort
+
+        Within the $3K+ MRR cohort, 59% of that MRR is flat and 16% is declining — only 23% is actively                      108 startups with $2.48M+ in real revenue and $0 recurring MRR remain the clearest concrete
+        growing.                                                                                                             pocket of potential, pending business-model validation.
+
+
+
+
+No cost/effort data exists in the source — the priorities on the next slide reflect evidence strength, not build cost.
+
+Source: TrustMRR dataset (1,000 startups, frozen 30 Jul 2026)                                                                                                                                                                   11
+PRIORITIZATION & RECOMMENDED ACTIONS
+
+
+What management should do next
+
+                 NOW                                                                    NEXT                                                       EXPLORE / LATER
+
+
+
+
+     • Fix category/country/domain_rating tags on the highest-               • Validate why Customer Support & Marketplace lead on             • Investigate India's high-volume, low-MRR pattern before
+     MRR anonymous listings                                                  median, test whether the pattern holds beyond n=5/n=7             any go-to-market shift
+
+
+
+
+     • Investigate the anonymous listing down 74.3% in 30                    • Validate the recurring-conversion hypothesis on the             • Design a marketplace take-rate model against the
+     days                                                                    108-startup cohort                                                $86.8M pool (2.30x median multiple as benchmark)
+
+
+
+
+                                                                                                                                               • Re-run follower/engagement correlation checks
+     • Add concentration monitoring (single-name +                           • Study what separates AI growers from decliners before
+                                                                                                                                               periodically — r=0.025 today, but worth re-testing as the
+     anonymous cohort) so metrics aren't silently distorted                  broad category investment
+                                                                                                                                               platform grows
+
+
+
+
+    Management: sponsor data-completeness work; commission a review of the down-74% listing. Product/Business: validate typical-performer categories & recurring-conversion cohort. Developers: mandate
+    category/country/domain_rating capture; build on subscription count, not follower count.
+
+
+Source: TrustMRR dataset (1,000 startups, frozen 30 Jul 2026)                                                                                                                                              12
+

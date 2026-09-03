@@ -1,0 +1,41 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 3,
+    "narrative": 4.5,
+    "framing": 3,
+    "accuracy": 1.5,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Clear dual-market thesis with a consistent India-vs-Europe narrative thread throughout the deck.",
+  "fix_next": "Nearly every quantitative claim appears fabricated—anchor every number to verifiable dataset fields before building a story around them.",
+  "verdict": "Confident consulting tone built on largely invented statistics.",
+  "flags": [
+    "fabricated-statistics",
+    "ai-slop",
+    "no-real-charts",
+    "revenue-figure-wrong",
+    "category-taxonomy-invented",
+    "no-limitations-disclosed",
+    "no-missingness-acknowledged"
+  ],
+  "factual_error_count": 14,
+  "factual_error_detail": "Slide 2: '$127M+ Combined Annual Revenue' — dataset shows $15.6M 30-day revenue, not $127M annual. Slide 2: 'MRR & growth rates' and 'revenue per visitor' are not fields in the dataset. Slide 3: +18.3% MRR growth, 2.1x customer acquisition, 34% higher subscription adoption — none of these metrics exist in the dataset; appear fabricated. Slide 4: '$0.47 vs $0.15 revenue per visitor,' '5.2x vs 1.9x valuation multiples,' '62% B2B focus vs 41%' — no visitor or valuation fields in dataset; B2B split unverifiable at stated precision. Slide 5: Category taxonomy (SaaS 42%, AI-Native 24%, Productivity 16%, Developer Tools 12%) does not match actual dataset categories; SaaS is only 66 companies (~9%), not 38%. Claims of 6.1x and 5.8x revenue multiples for Productivity/Dev Tools are invented. Slide 6: 'Top 10% by visitor volume capture only 28% of revenue' — no visitor data in dataset. '4.1x LTV advantage' for subscriptions — LTV not in dataset. 'Healthcare AI and Legal Tech deliver 3.2x higher revenue per visitor' — Legal Tech is not a dataset category. Slide 8: '3x lower CAC' — CAC not in dataset. Slide 9: '2.4x vertical SaaS outperformance,' '3.1x AI-as-a-Feature growth,' '5.2x margin expansion' — all appear fabricated from outside the dataset.",
+  "evidence": {
+    "insight": "The India-vs-Europe comparison and traffic≠revenue theme (slide 6) attempt genuine strategic framing, but every supporting number is unverifiable or wrong, so insights are hollow.",
+    "narrative": "Slides follow a logical arc: data overview → regional comparison → categories → hidden insight → recommendation. Structure is coherent but built on sand.",
+    "framing": "Slide 2 sets scope but misstates total revenue by ~8x. No mention of 241 missing country values, 274 missing categories, or 216 zero-revenue rows. Audience is implied (investor/operator) but never stated.",
+    "accuracy": "At least 14 material factual errors. Revenue inflated ~8x. Category taxonomy invented. Metrics like MRR growth, CAC, LTV, revenue-per-visitor, valuation multiples do not exist in the dataset. The donut chart on slide 5 uses fabricated category shares.",
+    "visual": "Gamma template with dark background, pink/purple palette. Decorative AI-generated stock images on slides 3, 4, 7, 9 add no analytical value. Only one chart (slide 5 donut) and it displays fabricated data. No data-driven charts, scatter plots, or tables. Text is legible but dense on slide 8.",
+    "ai_slop": "Pervasive: inflated consulting language ('monetization architecture,' 'structural tailwind,' 'the arbitrage window is open'), decorative AI-generated images, precise-sounding but fabricated statistics (18.3%, 2.1x, 4.1x, 3.2x, 5.2x), urgency buttons ('ACT NOW'), and a donut chart with invented categories. Classic high-confidence AI generation with no grounding in actual data."
+  },
+  "confidence": "high",
+  "total": 31,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18603,
+    "output_tokens": 1054
+  }
+}

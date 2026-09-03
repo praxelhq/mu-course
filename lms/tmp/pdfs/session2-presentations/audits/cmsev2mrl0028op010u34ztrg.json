@@ -1,0 +1,42 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 8,
+    "framing": 8,
+    "accuracy": 6.5,
+    "visual": 6.5,
+    "bonus": 2
+  },
+  "what_worked": "Reverse-engineering quoted multiples from 30-day revenue is genuinely original and decision-useful for acquirers.",
+  "fix_next": "Label country names on chart axes—hiding them behind numbers 1–8 undermines the deck's strongest geographic claim.",
+  "verdict": "Sharp acquirer-focused analysis with strong framing, weakened by unlabeled axes and unverifiable claims.",
+  "flags": [
+    "unlabeled-country-axes-slide4-slide5",
+    "unverifiable-210x-claim",
+    "zero-mrr-vs-zero-revenue-conflation",
+    "no-closing-synthesis-slide",
+    "small-slide-count",
+    "repetitive-layout-template"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 3: '197 listings report $0 MRR and zero subscriptions' — reference shows 216 zero-revenue rows; these may measure different things (MRR vs total revenue) but the distinction is never explained, risking confusion. Slide 4: 210x US-to-India median gap is unverifiable from the chart since country names are hidden behind numeric indices; the reference gives US median $1,262 but India median is not directly confirmable at $6, making the 210x claim suspect.",
+  "evidence": {
+    "insight": "Slides 6–7 deliver the deck's core original finding: quoted multiples are built on 30-day×12 annualization (206/217 reconcile), and re-deriving on trailing-year revenue doubles the effective multiple from 2.3x to 4.75x. The sub-$1K band at 6.5x real multiple is a sharp, actionable segmentation. Slide 5's 5.6x seller-vs-non-seller median gap challenges distressed-asset assumptions.",
+    "narrative": "Clean thesis arc: data provenance (slide 2) → skew warning (slide 3) → geographic screening (slide 4) → competitive dynamics (slide 5) → multiple construction (slide 6) → re-derivation payoff (slide 7). Each slide builds logically. Ends on a concrete diligence rule rather than platitudes. Missing a formal synthesis/closing slide that ties the thread together for a cold reader.",
+    "framing": "Slide 2 is an unusually disciplined data-provenance slide distinguishing verified from declared fields with exact missingness counts (241 country, 274 category — both match reference). Audience is clearly an acquirer/buyer. 'Diligence rule' callouts throughout reinforce the decision context. No explicit limitations slide, but caveats are woven into each analysis.",
+    "accuracy": "Missingness counts on slide 2 match reference exactly (241 country, 274 category). The 197 zero-MRR figure (slide 3) differs from the 216 zero-revenue reference count without explanation. The 210x claim (slide 4) is unverifiable because country labels are hidden. 55.7% US revenue share is plausible but not directly confirmable. The multiple re-derivation logic (slides 6–7) is internally consistent. The 130 anonymous listings (slide 2) vs reference 129 is a minor discrepancy.",
+    "visual": "Consistent dark-teal/cream palette with clean horizontal bars and value labels. However, slides 4 and 5 use anonymous numeric indices (1–8) instead of country names on y-axes — a critical legibility failure that undermines the deck's most prominent geographic claims. Slide 7's grouped bar chart effectively contrasts quoted vs. re-derived multiples. The rigid chart-left/callout-right template repeats on every slide, creating monotony. No decorative filler.",
+    "ai_slop": "None detected. Every slide makes specific, data-grounded claims. No generic consulting language, no decorative graphics, no inflated adjectives."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered visual from 7.0 to 6.5: the unlabeled country axes on slides 4 and 5 are not minor cosmetic issues — they hide the identity behind the deck's headline geographic claim (210x gap), which is a substantive legibility failure. Reduced bonus from 3 to 2: while the multiple re-derivation insight is strong, the 7-slide scope and lack of a closing synthesis slide limit the case for exceptional bonus. Other scores confirmed as appropriate.",
+  "total": 77,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 13714,
+    "output_tokens": 1125
+  }
+}

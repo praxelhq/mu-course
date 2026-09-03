@@ -1,0 +1,38 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 6,
+    "accuracy": 3.5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong thesis-driven narrative arc from concentration to geography to pricing inefficiency, with a clear landing.",
+  "fix_next": "Slide 4 category counts and medians are badly wrong (e.g., SaaS 437 vs. actual 66, AI 392 vs. 197); verify every number against the dataset.",
+  "verdict": "Compelling thesis undermined by fabricated-looking category figures on the key slide.",
+  "flags": [
+    "fabricated-category-counts",
+    "fabricated-medians",
+    "missing-data-not-acknowledged",
+    "limited-scope"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 4: SaaS count 437 (actual 66), AI count 392 (actual 197), Productivity 275 (actual 49), Marketing 159 (actual 42), Analytics 131 (actual 19), E-comm 56 (actual 19). Medians also wrong: SaaS $527 (actual $200.50), AI $490 (actual $503), Productivity $328 (actual ~$80), Marketing $1,277 (actual $2,369.50), Analytics $886 (actual $419), E-comm $306 (actual $387). Slide 3: US 63% revenue claim and 26% startup share are unverifiable but plausible given 241 missing country values—no acknowledgment of missingness. Slide 5: 2.3x median multiple is close to reference B2B/B2C medians (~2.3x) so acceptable; 0.09 correlation is unverifiable but plausible.",
+  "evidence": {
+    "insight": "The concentration thesis (slide 2) and pricing-inefficiency angle (slide 5) go beyond chart description and offer a decision-relevant frame for a buyer/investor audience. However, the category crowding insight on slide 4 is built on wrong numbers, undermining its value.",
+    "narrative": "Clear three-act structure: concentration exists (slide 2), it pools geographically (slide 3), categories show crowding vs. returns (slide 4), exit pricing is inefficient (slide 5), synthesis (slide 6). The landing on slide 6 ties back to the thesis. Sequence is purposeful.",
+    "framing": "Title slide sets up the question well. Audience (capital allocators) is implicit but clear by slide 6. However, no mention of dataset limitations: 241 missing countries, 274 missing categories, 286 missing domains. The 26% US startup share is computed on a denominator that excludes ~24% of rows with missing country—never disclosed.",
+    "accuracy": "Slide 2 stats (49.6% top-10 share, 21.6% zero-revenue) are correct. Slide 4 is catastrophically wrong: every category count is inflated by roughly 3-7x (total shown ~1,450 vs. actual 726 categorized), and medians diverge substantially from reference values. This is the analytical centerpiece slide and it fails.",
+    "visual": "Consistent red/grey palette, clean typography, good use of big-number callouts. Bar charts are legible and well-labeled. The stacked bar on slide 2 is effective. Slide 4 uses a smart paired-chart layout. No chart junk. Slightly repetitive three-card template across slides 2 and 5.",
+    "ai_slop": "The inflated category counts on slide 4 look like AI hallucination—numbers don't match any reasonable filter of the dataset. The consulting-style 'The read:' box on slide 5 borders on filler but contains a substantive claim."
+  },
+  "confidence": "high",
+  "total": 59,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 11648,
+    "output_tokens": 951
+  }
+}

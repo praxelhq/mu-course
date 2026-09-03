@@ -1,0 +1,42 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 2,
+    "narrative": 3,
+    "framing": 2,
+    "accuracy": 1.5,
+    "visual": 1.5,
+    "bonus": 0
+  },
+  "what_worked": "Consistent thesis about B2B distribution moats over feature novelty is coherent as a narrative arc.",
+  "fix_next": "You presented zero data from the actual dataset—no charts, no numbers, no evidence. This is a strategy essay, not a data story.",
+  "verdict": "Pure consulting rhetoric with no data evidence whatsoever.",
+  "flags": [
+    "no-data-visualization",
+    "no-charts",
+    "no-numbers-cited",
+    "extreme-ai-slop",
+    "dataset-not-used",
+    "identical-slide-template",
+    "consulting-filler",
+    "unearned-certainty"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 2: Claims B2B models show 'vastly superior' monetization but cites no data; actual B2B/B2C median revenue multiples are nearly identical (~2.3x). Slide 7: Implies AI has 'exceptional growth trajectory' without noting AI's low median ($503) despite highest total revenue. Slide 8: Calls E-Commerce 'highest-conviction' but E-comm median is only $387, far below Education ($2,435) and Marketing ($2,370)—mischaracterizes the data.",
+  "evidence": {
+    "insight": "Every slide makes generic VC strategy claims (moats, flywheels, lock-in) without a single specific number, company name, category comparison, or dataset finding. No original analysis exists.",
+    "narrative": "There is a coherent B2B-over-B2C thesis threaded across 12 slides, but it reads as a pre-written investment memo template, not a data-driven narrative. The sequence is logical but repetitive.",
+    "framing": "No dataset is identified, no sample size mentioned, no methodology described, no limitations acknowledged. A cold reader would not know what data this is based on or that 1,000 companies were analyzed.",
+    "accuracy": "Not a single statistic from the dataset appears anywhere in 12 slides. No revenue figures, no category counts, no provider analysis, no missingness discussion. Claims about B2B superiority, AI trajectory, and category attractiveness are unsupported and in some cases contradicted by the data.",
+    "visual": "All 12 slides use an identical dark template with the exact same layout: headline insight box, 4 bullet points left, two boxes right, recommended visual framework box at bottom. No actual charts, tables, or data visualizations exist. The 'recommended visual framework' boxes describe charts that should exist but were never created. Extreme visual monotony.",
+    "ai_slop": "Textbook AI slop throughout: every slide follows an identical 5-section template, uses inflated consulting language ('capital efficiency,' 'compounding moat effect,' 'multiple arbitrage'), describes recommended visuals instead of showing them, and contains generic strategy advice interchangeable with any SaaS dataset. The 'Strictly Confidential' footer and 'Investment Committee Presentation' branding are performative framing with no substance behind them."
+  },
+  "confidence": "high",
+  "total": 20,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 25415,
+    "output_tokens": 788
+  }
+}

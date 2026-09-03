@@ -1,0 +1,46 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 3,
+    "narrative": 3.5,
+    "framing": 2.5,
+    "accuracy": 2,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Revenue tier bar chart on slide 4 effectively communicates the power-law skew with clear labels.",
+  "fix_next": "Ground every claim in actual dataset computations; total revenue is ~$15.6M not $1.4M, and category labels are fabricated.",
+  "verdict": "Polished template masking fabricated numbers, generic advice, and no real dataset engagement.",
+  "flags": [
+    "fabricated-total-revenue",
+    "fabricated-category-labels",
+    "fabricated-valuation-ranges",
+    "broken-image-slide5",
+    "missing-data-acknowledgment",
+    "promotional-tone",
+    "ai-slop",
+    "unsupported-prescriptive-slides",
+    "no-missingness-disclosure",
+    "provider-coverage-incomplete"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 3: Total revenue stated $1.4M+ vs actual $15.6M (off >10x). Slide 6: Category labels (AI Tools 38%, DevTools 24%, Marketing 18%, Directory 12%, Others 8%) do not match dataset categories or proportions—AI is 197/726≈27%, not 38%; DevTools+Boilerplates is not a dataset category at 24%. Slide 7: DR ranges, valuation multiples (3.5-5.0x vs 1.8-2.5x), and tech stack claims appear fabricated with no dataset basis; actual median multiples are ~2.3x. Slide 8: Valuation curve (1.5x to 4.8x) unsupported by data. Slide 2: Claims only Stripe and LemonSqueezy, ignoring Dodo and other providers. Slide 3: Median $850 is plausible but unverifiable without denominator clarity. Slide 4: Tier counts (480/270/170/80) sum to 1000 but boundary definitions and exact counts are unverified against frozen reference.",
+  "evidence": {
+    "insight": "Slides 7-10 present strategic frameworks (cohort comparison, growth levers, roadmap) entirely without data derivation; no dataset-specific finding beyond the tier distribution on slide 4.",
+    "narrative": "Arc moves from overview to distribution to categories to cohort to valuation to playbook, but slides 9-11 abandon data completely for generic prescriptive advice and a motivational closing.",
+    "framing": "No mention of 24-29% missingness across key fields, no disclosure of 216 zero-revenue rows, no discussion of what 'verified MRR' actually measures. Reads as TrustMRR marketing pitch rather than analytical presentation. Audience never defined.",
+    "accuracy": "Total revenue wrong by order of magnitude. Category taxonomy invented rather than drawn from dataset. Valuation multiples, DR ranges, and tech stack claims have no traceable computation. Provider landscape reduced to two of at least three major providers.",
+    "visual": "Consistent purple/teal palette, clean typography, good hierarchy on metric cards. Slide 5 shows broken image alt-text placeholder. Slide 8 line chart lacks Y-axis label. Donut chart on slide 6 is well-rendered but depicts fabricated data.",
+    "ai_slop": "Heavy consulting jargon throughout ('power-law dynamics', 'tech stack leverage', 'programmatic growth'). Slides 9-11 are pure generic startup advice and motivational content with stock illustration. Broken image alt-text on slide 5 suggests AI-generated template with failed image embedding."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 3.0 to 2.5: no missingness disclosure, no audience definition, and promotional framing are more severe than preliminary suggested. Other scores confirmed as appropriate after independent review.",
+  "total": 30,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 22033,
+    "output_tokens": 976
+  }
+}

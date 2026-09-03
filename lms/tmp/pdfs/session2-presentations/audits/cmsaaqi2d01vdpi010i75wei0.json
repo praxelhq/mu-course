@@ -1,0 +1,43 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7.5,
+    "accuracy": 4.5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Bifurcation framing (337 growing vs 302 declining) and processor-as-quality-signal are genuinely decision-useful insights.",
+  "fix_next": "Reconcile category taxonomy and concentration figures with the actual dataset before publishing; several headline numbers are materially wrong.",
+  "verdict": "Strong narrative arc undermined by multiple fabricated or inflated headline statistics.",
+  "flags": [
+    "top10-share-inflated-83pct-vs-49pct",
+    "category-taxonomy-mismatch",
+    "stripe-company-share-overstated",
+    "country-missingness-wrong",
+    "top1-share-close-but-swapped",
+    "revenue-total-rounded-up",
+    "redundant-dashboard-slide"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1/6/8/9/11: 83.8% 'top 10% share' is dramatically wrong — reference top-10 (1%) share is 49.6%, no basis for 83.8%. Slide 6/8/11: 48.6% for top 1% (10 companies) is close to reference 49.6% but inverted with the 83.8% figure. Slide 5: category rankings use non-standard labels (SaaS $4M, Analytics $3M) that don't match reference categories (AI $2.36M is top by count/total; 'SaaS' at $703K, 'Analytics' at $368K in reference). Slide 6: Stripe is 64% of companies — reference says 636/1000 = 63.6%, acceptable rounding, but 87% revenue share = $13.5M/$15.6M = 86.7%, fine. Slide 1: $15.9M vs reference $15,596,344 — rounds to $15.6M not $15.9M, a ~$300K overstatement. Slide 2/4: country missingness stated as 28.5% — reference is 241/1000 = 24.1%. Slide 4: India stated as 57 startups — reference shows 59 with country disclosed for India.",
+  "evidence": {
+    "insight": "Power-law concentration thesis, processor-as-signal, audience≠revenue, and acquisition-market pricing are all original and actionable. Volume-vs-value reframe on slide 5 is a good idea but built on wrong numbers. Bifurcation analysis is the strongest original contribution.",
+    "narrative": "Clear 11-slide arc: scope → data quality → performance → geography → category → concentration → momentum → synthesis → dashboard → recommendations → summary. Thesis of 'healthy but concentrating' is sustained. Slides 8, 9, and 11 are partially redundant, diluting the landing.",
+    "framing": "Slide 2 explicitly flags missingness rates and warns about directional findings — strong for a cold reader. However, the missingness percentages themselves are wrong (28.5% vs 24.1% for country), and the 37% category coverage is close to reference (726/1000 missing = 72.6% missing, so 27.4% have tags — slide says 37%). Actually reference says category missing 274, so 726 have it — wait, no: reference says missing category 274, meaning 726 have a category. Slide says only 37% tagged. This is a significant error: 726/1000 = 72.6% have tags, not 37%.",
+    "accuracy": "Multiple material errors: the 83.8% top-10% concentration figure has no basis in reference data and is the most-repeated claim. Total revenue overstated by ~$300K. Category taxonomy appears fabricated or from a different grouping scheme. Country and category missingness percentages are wrong. India company count is off.",
+    "visual": "Consistent navy/coral palette, clean typography, good chart-plus-annotation layout on slides 4-5. Pie chart on slide 7 is suboptimal for three categories. Dashboard (slide 9) is professional but redundant. Bar chart $0M labels on slide 4 lose granularity. No major legibility issues.",
+    "ai_slop": "Some consulting-speak ('center of gravity,' 'bifurcating market') but mostly substantive. Dashboard slide 9 is near-duplicate of prior content. No decorative filler charts detected."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.5 to 4.5: on closer inspection the 83.8% top-10% figure (repeated 5 times) has no reference basis, total revenue is overstated, category missingness is inverted (slide says 37% tagged but reference shows ~72.6% tagged), and category revenue rankings appear fabricated. Lowered framing 8→7.5 because the missingness figures used to contextualize findings are themselves wrong. Reduced bonus from 2 to 1: the work is polished but the factual foundation is too shaky for full bonus credit.",
+  "total": 67,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 21805,
+    "output_tokens": 1273
+  }
+}

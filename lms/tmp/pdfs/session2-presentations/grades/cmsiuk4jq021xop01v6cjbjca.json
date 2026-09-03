@@ -1,0 +1,38 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 6,
+    "accuracy": 4.5,
+    "visual": 5.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong thesis with coherent narrative arc; honest small-sample caveats on pricing slide were commendable.",
+  "fix_next": "The \"255 B2B startups\" denominator and key metrics (238x gap, median revenues) appear fabricated or unverifiable—anchor every claim to traceable filters.",
+  "verdict": "Compelling story built on a shaky n=14 foundation with several unverifiable numbers.",
+  "flags": [
+    "tiny-sample-overinterpreted",
+    "unverifiable-denominator",
+    "fabricated-looking-metrics",
+    "missing-data-not-addressed"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1: Claims '255 B2B startups' but dataset has ~1000 rows with audience_type missing for 288; the B2B subset and India-B2B count of 14 cannot yield '255 B2B startups in TrustMRR' as framed. Slide 1: '238x revenue gap' — 5.5%/0.4% ≈ 13.75x ratio of shares, not 238x; the 238x appears to be $11.2M/$47K which is a total-revenue ratio, not a per-startup gap, yet it's presented as a 'revenue gap' conflating two different concepts. Slide 2: Median 30D Revenue RoW $5,800 and Median MRR $3,900 are unverifiable against reference data and likely inflated given overall dataset median is far lower. Slide 2: Chart plots growth % (22, 18) on same axis as dollar values up to 6k, making the visual misleading. Slide 5: 'Valuation Signal: Indian founders pricing at 4-5x revenue multiples' — the reference B2B median multiples are 2.35x, so claiming 4-5x is 'rational' without acknowledging the dataset benchmark is misleading.",
+  "evidence": {
+    "insight": "The monetization-vs-growth framing (slides 1-2) and 2x2 investment map (slide 7) go beyond chart description to offer decision-useful segmentation. However, all insights rest on n=14 Indian B2B startups, severely limiting generalizability. The concentration risk callout (55% from one company) is genuinely useful.",
+    "narrative": "Clear thesis on slide 1, consistent thread through gap→categories→outliers→pricing→recommendations→conclusion. The landing on slide 8 ('early, not absent') ties back well. Sequence is purposeful, not a list.",
+    "framing": "Audience (investors) is implicit but clear. However, the subtitle '255 B2B startups' is confusing—it seems to be total B2B in dataset, but the India analysis uses n=14, which is buried. Scope limitations around 288 missing audience_type values are never mentioned. The small-sample caveat on slide 6 is good but insufficient for the broader analysis.",
+    "accuracy": "Multiple issues: the '255 B2B' framing is unclear and potentially misleading; the '238x' metric conflates total revenue ratio with per-startup gap; median RoW figures ($5,800 30D revenue, $3,900 MRR) are unverifiable and seem high; the chart on slide 2 plots percentages and dollars on the same axis. The n=14 base makes most statistical claims fragile. Growth percentages for Indian categories (28%, 32%, 18%) are presented without methodology.",
+    "visual": "Consistent dark theme via Gamma. The 2x2 matrices (slides 4, 7) are effective frameworks. However, slide 2's bar chart mixing % and $ on one axis is poor practice. Tables are readable. Some visual sameness across slides from the template. The pricing scatter plot on slide 6 is well-constructed with clear annotations.",
+    "ai_slop": "Gamma template produces visual sameness across slides. Some consulting-style language ('highest-conviction bets,' 'no irrational exuberance detected') borders on filler. The emoji-heavy signal column (🟢🟠🟡🔴) is decorative but functional."
+  },
+  "confidence": "medium",
+  "total": 60,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15885,
+    "output_tokens": 1079
+  }
+}

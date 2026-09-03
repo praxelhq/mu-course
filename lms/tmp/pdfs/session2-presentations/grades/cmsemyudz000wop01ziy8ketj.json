@@ -1,0 +1,39 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 6.5,
+    "framing": 5.5,
+    "accuracy": 5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Clear thesis about revenue concentration and a coherent recommendation framework grounded in top-30 analysis.",
+  "fix_next": "The B2B 2.6x claim uses means not medians (reference is ~2.35x median), missingness is never disclosed, and causal language around DR needs hedging.",
+  "verdict": "Coherent narrative with a polished look, but accuracy gaps and shallow causal reasoning hold it back.",
+  "flags": [
+    "causal-language-without-hedging",
+    "missingness-not-disclosed",
+    "mean-median-conflation",
+    "chart-axes-unlabeled",
+    "provider-list-incomplete"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1: Lists 5 payment rails (Stripe, RevenueCat, Superwall, Paddle, Creem) but dataset includes Dodo Payments, Lemon Squeezy, and Polar — Creem is not a recognized provider in the reference. Slide 2: '$13.5M combined monthly MRR' — reference total 30-day revenue is $15,596,344.59 (~$15.6M), not $13.5M; '803 currently generating revenue' — reference says 1000−216=784 non-zero. Slide 2/5/7: B2B pulls '2.6x the average MRR of B2C' — reference median multiples are ~2.35x; the mean ratio is much higher (~7.97x/8.44x) but neither equals 2.6x, suggesting a fabricated or miscalculated figure. Slide 3: '48% of all MRR sits with just the top 10' — reference is 49.6%, close but the total denominator ($13.5M) is already wrong. Slide 6/8: 'Domain rating tracks MRR almost linearly' — this is a causal-sounding claim from observational cross-sectional data with no regression shown; calling it 'the strongest single predictor' is unsubstantiated.",
+  "evidence": {
+    "insight": "Slide 3 identifies concentration (top-10 = ~48%), slide 6 introduces domain-rating bands as a signal, and slide 5 profiles top-30 commonalities. These go modestly beyond chart description but remain pattern-listing rather than deep analysis — no discussion of survivorship bias, selection effects, or why DR might correlate.",
+    "narrative": "Slides follow a logical arc: context → sample → concentration → leaderboard → commonalities → authority signal → recommendations → summary. The thesis ('focus wins') is stated and revisited. However, the story is essentially a consulting-style 'profile the winners and copy them' template without interrogating alternative explanations.",
+    "framing": "Slide 1 introduces TrustMRR clearly; slide 2 sets sample size. But missingness is never mentioned (241 country, 288 audience_type, 274 category, 286 domain missing), which materially affects every claim about category mix, B2B/B2C ratios, and geography. No limitations slide exists.",
+    "accuracy": "Total revenue wrong ($13.5M vs $15.6M). Revenue-generating count wrong (803 vs 784). B2B multiplier unverifiable at 2.6x. Provider list includes 'Creem' not in reference and omits Dodo Payments, Lemon Squeezy, Polar. 'Almost linearly' for DR-MRR is unsupported. Top-10 share close but built on wrong denominator.",
+    "visual": "Consistent dark theme with green accent; clean typography and hierarchy. Bar charts on slides 2, 3, 6 lack axis labels (x-axis shows only numbers 1–4 or 1–8 without category names). Table on slide 4 is well-formatted. Overall restrained and legible but charts are under-annotated and somewhat generic.",
+    "ai_slop": "Moderate template feel — four-quadrant card layouts on slides 5 and 7 are generic consulting patterns. Decorative concentric circles on slides 1 and 8 add nothing. Language like 'authority compounds into revenue' and 'the blueprint for the next company' leans toward inflated consulting tone. Not egregious but noticeable."
+  },
+  "confidence": "high",
+  "total": 59,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15749,
+    "output_tokens": 1106
+  }
+}

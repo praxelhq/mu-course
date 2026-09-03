@@ -1,0 +1,39 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 6,
+    "narrative": 6.5,
+    "framing": 5.5,
+    "accuracy": 5,
+    "visual": 3,
+    "bonus": 1
+  },
+  "what_worked": "Consistent thesis that averages mislead; good median-vs-mean framing and honest acknowledgment of data limitations.",
+  "fix_next": "Replace every decorative AI illustration with actual charts from the data—not a single real visualization appears in ten slides.",
+  "verdict": "Solid analytical instincts buried under wall-of-text slides with zero real charts.",
+  "flags": [
+    "no-real-charts",
+    "ai-generated-illustrations",
+    "decorative-images-only",
+    "several-numeric-errors",
+    "text-heavy-slides"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: top-10 share stated as 48%, reference is 49.6%—borderline but rounded down noticeably. Slide 3: zero-revenue count stated as 197, reference is 216. Slide 7: B2B/B2C median multiple stated as 5.7× ($1,036 vs $181); reference medians imply ~2.35×/2.30× multiples and the absolute median figures don't match reference benchmarks. Slide 9: AI median stated as $446, reference is $503. Slide 7: claims France ranks second by count—cannot verify and country data has 241 missing values, not acknowledged.",
+  "evidence": {
+    "insight": "Scenes 3 and 8 offer genuinely useful contrarian points (mean vs median growth, AI label ≠ monetization). Scene 5 on multiples is a practical buyer warning. However, insights remain at the 'describe the pattern' level without quantifying actionable thresholds or combining dimensions.",
+    "narrative": "Eight-scene structure provides a coherent arc from concentration → typical business → growth → selling → pricing → segments → geography → AI → synthesis. The 'scenes' metaphor holds. However, the conclusion mostly restates earlier points rather than synthesizing new implications.",
+    "framing": "Slide 1 sets up the thesis for a cold reader. However, the audience is never explicitly defined, missingness is only mentioned for category/anonymized firms on the final slide, and 241 missing country values are never noted despite a geography slide.",
+    "accuracy": "Zero-revenue count off by 19 (197 vs 216). B2B/B2C revenue multiple of 5.7× doesn't match reference medians (~2.35×). AI median $446 vs reference $503. Top-10 share 48% vs 49.6%. These are not rounding—they suggest different calculations or fabricated numbers.",
+    "visual": "Every slide uses AI-generated cartoon/illustration art that adds no analytical value. Not a single data chart, histogram, scatter plot, or table appears in the entire deck. Slides are text-heavy paragraphs beside decorative images. The 2×2 matrix on slide 4 is the only structured visual but its axes are conceptual, not data-driven.",
+    "ai_slop": "Heavy reliance on Gamma-generated AI illustrations (comic-style storefronts, mountains, phone screens, AI collages) that are purely decorative and contain garbled text. The marketplace screenshot on slide 5 has nonsensical text. Every slide follows the same template: title + paragraph + decorative image."
+  },
+  "confidence": "high",
+  "total": 53,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18684,
+    "output_tokens": 844
+  }
+}

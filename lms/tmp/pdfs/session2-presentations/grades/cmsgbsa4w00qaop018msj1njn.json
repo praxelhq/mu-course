@@ -1,0 +1,37 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 8,
+    "accuracy": 6.5,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "Disciplined thesis with explicit data-quality caveats and a clear 'what the data cannot say' thread throughout.",
+  "fix_next": "The deck never explores category-level medians, payment providers, or anonymous-company revenue skew—missed analytical depth that was available in the data.",
+  "verdict": "Well-framed, cautious narrative with solid craft but shallow analytical coverage.",
+  "flags": [
+    "narrow-scope",
+    "median-revenue-not-checked-by-category",
+    "revenue-multiple-range-vague"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 5: 30-day revenue mean stated as $15.6K; actual total is $15.6M so mean is ~$15,596 which rounds to $15.6K—this is actually correct. Slide 5: median revenue $400 not verifiable against reference (reference gives category medians, not overall, so uncertain). Slide 7: France shown as second-largest country ahead of India—reference data shows India at 59 known entries; France's count is not in reference but the bar chart implies France > India which may be wrong depending on how missing-country rows are handled. Slide 10: '~2–5× typical revenue multiple' is vague; reference shows B2B median 2.35× and B2C 2.30×, so the upper bound of 5× is unsupported. Slide 4: Visitors 30d completeness shown as 17.8%—this is not directly verifiable from reference but seems plausible as a derived field.",
+  "evidence": {
+    "insight": "Slide 2 thesis ('three things and one it cannot say') is genuinely useful framing. Slide 8 correlation hierarchy (subscriptions→MRR 0.91 vs followers→revenue 0.02) is a strong, decision-relevant finding. Slide 11 proposes a weighted scoring framework. However, the deck never digs into category medians (Education highest at $2,435), provider economics, or anonymous-company revenue concentration—leaving significant analytical territory unexplored.",
+    "narrative": "Clear four-part thesis on slide 2, each point developed in sequence (slides 5-9), then synthesized into a decision framework (slide 11) and boardroom takeaway (slide 12). The 'what the data cannot say' thread on geography is maintained consistently. Strong arc from data quality → market structure → signal → action.",
+    "framing": "Slide 1 sets audience (conglomerate AI expansion decision), slide 3 explains the data source, slide 4 explicitly addresses completeness and limitations. The 24.1% country missingness is flagged on slide 7. Scope is clearly defined as 'commercial validation, not demand.' This is above-average framing discipline.",
+    "accuracy": "Slide 5 mean revenue $15.6K is consistent with $15.6M/1000. The 0.91 MRR↔subscriptions correlation is plausible. 197 AI listings correct. 258 US listings correct. However, slide 10 claims '~2–5× typical revenue multiple' when reference shows medians around 2.3×, making the 5× upper bound misleading. Slide 7 bar chart showing France ahead of India is questionable. The $282 median MRR is not directly verifiable from reference but is plausible.",
+    "visual": "Consistent design system with section labels, dark/light contrast used purposefully (slides 1, 8, 12 for emphasis). Bar charts are simple and readable. Slide 4 data-quality visualization is effective. Slide 8 correlation bars with color coding (blue/yellow/red) work well. Some slides are text-heavy card layouts rather than data visualizations (slides 2, 3, 10). No chart junk or misleading axes detected.",
+    "ai_slop": "Minimal slop. The Build/Partner/Buy framework on slide 10 is somewhat generic consulting template material, and the weighted scoring framework on slide 11 uses invented percentages (30%/20%/15%/15%/10%/10%) not derived from data. Otherwise the deck avoids filler language and decorative graphics."
+  },
+  "confidence": "high",
+  "total": 76,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 20548,
+    "output_tokens": 1074
+  }
+}

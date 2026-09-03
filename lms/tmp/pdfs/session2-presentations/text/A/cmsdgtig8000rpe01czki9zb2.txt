@@ -1,0 +1,331 @@
+PG P T BM          |   AI I N BUS I NE S S           |   SESSION 3
+
+
+
+
+Payment Rail Choice
+Doubles as a Maturity Signal
+An evidence review of payment infrastructure across 1,000 verified-revenue startups
+
+
+
+H ead l i n e f i n d i n g
+
+Stripe-billed companies show a median lifetime revenue of $8,738 — 103x the $85 median
+among companies on emerging payment rails.
+
+
+
+
+Source: TrustMRR public dataset, 1,000 verified startups, frozen 30 Jul 2026. Team analysis.
+EXECUTI VE SUM M ARY
+
+
+Which payment API a founder connects reveals their stage before any survey does
+
+               Payment rail tracks company stage, not just billing preference
+ 01
+               Median lifetime revenue steps from $85 (emerging rails) to $2,184 (mobile subscription infrastructure) to $8,738 (Stripe) — a 103x range across three tiers.
+
+
+
+
+               Stripe is the default at scale
+ 02
+               636 of 981 single-provider companies (65%) bill through Stripe, accounting for 88% of all 30-day revenue in the dataset.
+
+
+
+
+               RevenueCat and Superwall mark a distinct mobile-subscription economy
+ 03
+               This group is 72% B2C and essentially 0% B2B, concentrated in Mobile Apps and Health & Fitness — a different business model from Stripe's balanced B2B/B2C
+               SaaS mix.
+
+
+               The signal is free and available immediately
+ 04
+               Payment-provider metadata alone can pre-segment a cohort by stage and business model, without waiting on a survey or a founder interview.
+
+
+
+
+      SO W HAT          Use payment-provider metadata as a zero-cost first pass to segment startups by stage and business model.
+
+
+Source: TrustMRR public dataset, 1,000 verified startups, frozen 30 Jul 2026. Team analysis.                                                                                  2
+APPROACH                                                                                                                                                           M ETHODOLOGY
+
+
+We grouped payment providers into four tiers and tested them against maturity
+signals
+
+     Stripe                                                         Mobile infra                      Emerging rails                                Other
+
+                                                                                                      Dodo, Polar, Lemon Squeezy,
+     The general-purpose default for                                RevenueCat + Superwall —                                                        Paddle — merchant-of-record
+                                                                                                      Whop, Creem — newer indie
+     web software billing.                                          mobile subscription paywalls.                                                   billing, mixed profile.
+                                                                                                      processors.
+
+     n = 636                                                        n = 206                           n = 123                                       n = 16
+
+
+
+
+Method                                                                                              Know n lim itations
+
+— 981 of 1,000 companies report a single payment provider                                           — No founding-date field — stage is inferred, not observed
+
+— Maturity proxied by lifetime revenue and domain rating                                            — Superwall alone is n=17; read as directional, not robust
+
+— Medians used throughout; both metrics are heavily skewed                                          — 19 multi-provider companies excluded from clean comparison
+
+
+
+
+      SO W HAT          Findings below describe an association between rail choice and stage — a useful proxy, not a causal mechanism.
+
+
+Source: TrustMRR public dataset, 1,000 verified startups, frozen 30 Jul 2026. Team analysis.                                                                                      3
+FI NDI NG 01                                                                                                                                           EXHI BI T 1
+
+
+Stripe is 65% of companies and 88% of revenue — the market is a lopsided default
+
+                                                       Share of companies                                                    Share of 30-day revenue
+
+
+
+
+                                                             Stripe 64.8%
+
+                                                                                                                                   Stripe 87.8%
+
+
+
+
+                                                         Mobile infra 21.0%
+
+
+                                                       Emerging rails 12.5%                                                     Mobile infra 10.0%
+
+
+                           READ ACROSS
+
+                           Stripe over-indexes on revenue relative to its company share; emerging rails under-index by a wide margin.
+
+
+      SO W HAT          A company's payment rail is a rough but immediate read on how much revenue-scale it has likely reached.
+
+
+Source: TrustMRR public dataset, 1,000 verified startups, frozen 30 Jul 2026. Team analysis.                                                                     4
+FI NDI NG 02                                                                                                                                                                      EXHI BI T 2
+
+
+Lifetime revenue and domain authority both step up in the same order across rails
+
+Median lifetime revenue by rail tier                                                                    Median domain rating by rail tier
+Monotonic — every tier earns more than the one before it. Log scale.                                    Same order, smaller range — a second, independent maturity signal.
+
+                                                                                                                                                                             12.0
+                                                                                               $8,738
+
+                                                     $2,184
+                                                                                                                                                     5.5
+
+
+
+               $85
+                                                                                                                     2.0
+
+
+
+
+            Emerging                                 Mobile                                    Stripe             Emerging                          Mobile                   Stripe
+              rails                                   infra                                                         rails                            infra
+
+
+
+
+      SO W HAT          Two independent metrics — revenue and domain authority — rank the three tiers in the same order.
+
+
+Source: TrustMRR public dataset, 1,000 verified startups, frozen 30 Jul 2026. Team analysis.                                                                                                5
+FI NDI NG 03                                                                                                                                                                    EXHI BI T 3
+
+
+Mobile infrastructure is a distinct economy, not just an earlier stage of the same
+one
+Audience type by rail tier
+                                                                                                         Top categories by rail tier
+Stripe                                                                                         n = 636
+
+                                                                                                         Stripe
+
+B2C 31.8% · B2B 35.1%                                                                                    AI, SaaS, Marketing
+
+
+Mobile infra                                                                                   n = 206
+                                                                                                         Mobile infra
+
+                                                                                                         Mobile Apps, AI, Health & Fitness
+B2C 71.8% · B2B 1%
+
+
+Emerging rails                                                                                 n = 123
+                                                                                                         Emerging rails
+
+                                                                                                         AI, Productivity, SaaS
+B2C 26.8% · B2B 20.3%                                                                                    Mobile infra is consumer-app territory; Stripe and emerging rails share the
+                                                                                                         same software categories at different scale.
+    B2C                B2B
+
+
+
+
+      SO W HAT          Rail choice signals business model as much as stage: mobile infra is a different economy, not an earlier version of Stripe's.
+
+
+Source: TrustMRR public dataset, 1,000 verified startups, frozen 30 Jul 2026. Team analysis.                                                                                              6
+SYNTHESI S                                                                                                                                                     EXHI BI T 4
+
+
+What each payment rail tells you, at a glance
+
+
+  Rail tier                                        Reads as                                    Maturity signal               Audience             Coverage
+
+
+
+
+  Stripe                                           Established, broad software                 High ($8,738 lifetime med.)   Balanced B2B / B2C   636 of 981
+
+
+
+
+  Mobile infra                                     Scaling consumer app                        Mid ($2,184 lifetime med.)    72% B2C              206 of 981
+
+
+
+
+  Emerging rails                                   Early-stage / just launched                 Low ($85 lifetime med.)       Mixed, B2C-leaning   123 of 981
+
+
+
+
+  Other (Paddle)                                   Small, mixed profile                        Directional only              Balanced             16 of 981
+
+
+
+
+      SO W HAT          Three tiers, three distinguishable archetypes — legible from one metadata field, before any outreach happens.
+
+
+Source: TrustMRR public dataset, 1,000 verified startups, frozen 30 Jul 2026. Team analysis.                                                                             7
+I NTERPRETA TI O N                                                                                                                                                  EXHI BI T 5
+
+
+Separating what the data establishes from what it merely suggests
+
+
+       E S T ABL I S H E D BY T H E D AT A                                                     N O T E S T ABL I S H E D — AR G U E D
+
+               Lifetime revenue and domain rating both step up in the same order                    That switching payment providers changes a company's stage. Rail
+               across the three rail tiers                                                          choice is a marker of stage, not a lever on it
+
+
+
+               Stripe accounts for 88% of revenue from 65% of companies — a clear                   That founding date or age is measured directly. No such field exists —
+               over-index                                                                           stage is inferred from revenue and authority
+
+
+
+               Mobile infra is overwhelmingly B2C and concentrated in consumer                      The Superwall-specific numbers, taken alone. n=17 is too small to
+               categories, unlike Stripe or emerging rails                                          generalise beyond the combined mobile-infra tier
+
+
+
+               Emerging-rail companies show the lowest revenue and domain                           That this pattern holds outside self-selected, payment-key-verified
+               authority of any tier, consistent with very early stage                              founders on this platform
+
+
+
+
+      SO W HAT          The recommendation stands on the left column alone; the right column is the argument built on top of it.
+
+
+Source: TrustMRR public dataset, 1,000 verified startups, frozen 30 Jul 2026. Team analysis.                                                                                  8
+IM PLICATION                                                                                                                                                       EXHI BI T 6
+
+
+One metadata field does the work a founder survey would otherwise need to do
+
+Conventional segmentation
+
+
+
+                       Survey founders                                                         Wait on responses                      Manually tag stage
+
+
+
+
+What the payment field already gives you
+
+
+
+    Stage                                                          Model                                    Category                     Priority
+    Revenue tier, at a glance                                      B2B, B2C, or mobile-consumer             Likely vertical cluster      Who to route outreach to first
+
+
+
+
+      SO W HAT          A single existing field — payment provider — substitutes for a chunk of manual founder-cohort tagging.
+
+
+Source: TrustMRR public dataset, 1,000 verified startups, frozen 30 Jul 2026. Team analysis.                                                                                 9
+RECOM M ENDATI ON
+
+
+Three moves the evidence supports
+
+
+
+       01                                                                                 02                                               03
+
+
+
+     Use payment rail as a free first-                                                  Treat mobile infra as a separate                  Watch emerging-rail adoption as
+     pass filter                                                                        track, not an earlier Stripe                      an early-stage leading indicator
+
+
+     Before any outreach, sort prospective cohorts                                      RevenueCat/Superwall companies are a              Dodo, Polar, Lemon Squeezy and similar rails
+     by payment provider to get a rough, zero-cost                                      distinct consumer-app economy. Curriculum,        cluster at the very earliest, lowest-revenue
+     read on stage and likely revenue band.                                             outreach, and benchmarks built for Stripe-style   stage — useful for spotting brand-new cohorts
+                                                                                        SaaS will not fit them.                           first.
+
+
+     Evidence: Exhibit 1, Exhibit 2                                                     Evidence: Exhibit 3                               Evidence: Exhibit 2, Exhibit 4
+
+
+
+
+      SO W HAT          None of this needs new data collection — only reading a field the dataset already has.
+
+
+Source: TrustMRR public dataset, 1,000 verified startups, frozen 30 Jul 2026. Team analysis.                                                                                              10
+                               PG P T BM          |   AI I N BUS I NE S S            |   SESSION 3
+
+
+
+
+           The billing stack a founder chooses
+           is already telling you who they are.
+Payment infrastructure is metadata the dataset already has — and a proxy for stage this analysis shows is
+                                             worth reading.
+
+
+
+
+                        Source: TrustMRR public dataset, 1,000 verified startups, frozen 30 Jul 2026. Team analysis.
+

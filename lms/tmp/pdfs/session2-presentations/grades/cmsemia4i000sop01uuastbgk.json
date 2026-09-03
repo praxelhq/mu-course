@@ -1,0 +1,39 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 6.5,
+    "accuracy": 5.5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Strong thesis that data messiness is the story; missingness analysis on stealth listings was genuinely insightful.",
+  "fix_next": "Top-10 revenue share is 49.6% not 50.6%; category percentages use wrong denominators (726 categorized vs 1000); verify all numbers against actual data.",
+  "verdict": "Well-structured exploratory deck with several material accuracy issues undermining its claims.",
+  "flags": [
+    "top10-revenue-share-inflated",
+    "denominator-confusion-categories",
+    "zero-revenue-percentage-off",
+    "no-provider-analysis",
+    "no-actionable-recommendations"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 3: Top-10 revenue share stated as 50.6%, reference is 49.6%. Slide 3: '10.9% report $0' — should be 21.6% (216/1000). Slide 4: AI shown as 19.7% of startups — 197/1000 is correct only if denominator is all 1000, but 274 rows lack category, so the share-of-categorized is 197/726=27.1%; the chart mixes denominators (% of startups vs % of total MRR where MRR denominator likely includes uncategorized revenue). Slide 4: Marketing described as 'punches above its weight' at 4.2% startups / 3.3% MRR — that's actually below parity, not near it.",
+  "evidence": {
+    "insight": "Slide 7 (for-sale vs not) and slide 8 (missingness by stealth status) go beyond descriptive stats. Slide 6 vanity-metrics debunking is useful. However, insights remain observational without actionable framing or deeper segmentation.",
+    "narrative": "Slide 2 sets up six threads, each gets a slide, slide 9 recaps. Clear arc from 'this data is messy' to specific findings. However, it reads as a list of six parallel observations rather than building toward a synthesized conclusion or recommendation.",
+    "framing": "Slide 1 states dataset scope clearly. Slide 5 and 8 note missingness caveats. However, no explicit audience is stated, no research question beyond 'look deeper,' and no limitations section beyond scattered caveats. The 30-day vs 12-month revenue distinction is muddled (slide 3 says '12-month revenue' while slide 5 says 'MRR').",
+    "accuracy": "Slide 3: top-10 share 50.6% vs reference 49.6% (~1pp off). Zero-revenue count 10.9% vs actual 21.6% (216/1000) — significant error. Slide 4 denominator issue with category percentages. Slide 4 Marketing interpretation contradicts its own numbers. Slide 5 geography figures are plausible but unverifiable against reference. Slide 8 country missing 24.1% aligns with 241/1000.",
+    "visual": "Consistent color palette (navy/green/coral), clean chart types, good use of callout boxes. Horizontal bar on slide 5 is effective. Slide 7 comparison layout is clear. Minor issues: slide 4 grouped bar chart is slightly dense; no chart annotations beyond labels. Overall restrained and readable.",
+    "ai_slop": "Minimal slop. Template is consistent but not generic. Language is direct, not inflated. No decorative meaningless graphics. The six-box layout on slide 2 is slightly formulaic but functional."
+  },
+  "confidence": "high",
+  "total": 66,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 17465,
+    "output_tokens": 942
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 6,
+    "narrative": 6.5,
+    "framing": 4.5,
+    "accuracy": 3.5,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Revenue concentration thesis and mean-vs-median multiple distinction show genuine analytical instinct across slides.",
+  "fix_next": "Verify every number against the actual dataset; acknowledge missingness and sample size so a cold reader can trust claims.",
+  "verdict": "Strong narrative arc undermined by multiple fabricated statistics and no real data visualizations.",
+  "flags": [
+    "fabricated-statistics",
+    "unverifiable-claims",
+    "decorative-stock-images",
+    "missing-data-not-acknowledged",
+    "causal-overclaiming",
+    "no-scatter-or-distribution-charts",
+    "inflated-language"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1: Total MRR stated $13.5M vs reference $15.6M; $334M all-time revenue unsourced/unverifiable. Slide 2: 'Top 10% control 82%' — reference top-10 companies (1%) = 49.6%, top-10% figure unverified and likely inflated. Slide 4: AI avg MRR stated $9.1K but reference total/count gives ~$11.96K; E-comm/Analytics avg stated ~$19-20K but reference E-comm avg ~$58.5K and Analytics ~$19.4K — conflated or wrong. Slide 7: Dodo shown as 10% of startups but reference is 50/1000 = 5%. Slide 3: B2C 401 and B2B 255 counts unverifiable given 288 missing audience_type. Slide 5: Domain Rating correlation stated 0.21 but reference Pearson r for founded-year/revenue is 0.025; no domain-rating correlation in reference to confirm.",
+  "evidence": {
+    "insight": "Slide 2 concentration analysis and slide 6 mean-vs-median multiple split show real analytical ambition; slide 4 AI-vs-niche comparison is a useful framing even if numbers are wrong.",
+    "narrative": "Clear arc from concentration risk (1-2) → category guidance (3-4) → vanity metrics (5) → M&A (6) → infrastructure risk (7) → roadmap (8). Thesis about ecosystem fragility is coherent and each slide advances it.",
+    "framing": "Never states dataset is 1,000 rows, never mentions missingness (274 categories, 288 audience_type, 216 zero-revenue). Audience implied as platform operator but never defined. A cold reader cannot assess scope or reliability.",
+    "accuracy": "At least 7 factual errors across slides 1-5 and 7. Total MRR off by ~$2M, top-10% share likely fabricated, category averages wrong, Dodo share doubled, B2B/B2C counts built on field with 29% missingness without caveat.",
+    "visual": "Consistent dark theme with teal/coral is polished. But only two actual data visualizations (slide 6 bar chart, slide 7 pie chart). Slides 3 and 5 use decorative sci-fi stock photos adding zero analytical value. Deck is text-and-big-number heavy; no distributions, scatter plots, or histograms despite claims about skewness.",
+    "ai_slop": "Sci-fi stock images on slides 3 and 5 are pure decoration. Language inflation throughout: 'Pareto Principle on Steroids,' 'printing money,' 'existential dependency,' 'lottery-ticket exits.' Confident tone masks unverified numbers."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Removed 1-point bonus: while the narrative arc is competent, the pervasive factual errors and decorative imagery do not merit above-rubric recognition. Lowered framing by 0.5 for complete absence of dataset metadata. Lowered visual by 0.5 for reliance on decorative stock images over data charts. Other scores confirmed as appropriate.",
+  "total": 49,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 15846,
+    "output_tokens": 1024
+  }
+}

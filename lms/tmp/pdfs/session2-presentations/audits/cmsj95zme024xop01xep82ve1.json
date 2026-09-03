@@ -1,0 +1,45 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 4.5,
+    "narrative": 5.5,
+    "framing": 4,
+    "accuracy": 2,
+    "visual": 2.5,
+    "bonus": 0
+  },
+  "what_worked": "Coherent thesis arc from AI premium to growth divergence to capital deployment recommendation is genuinely purposeful.",
+  "fix_next": "Replace every stock/AI-generated infographic with charts built from the actual frozen dataset using real category names and counts.",
+  "verdict": "Compelling thesis built entirely on fabricated numbers and decorative stock visuals.",
+  "flags": [
+    "fabricated-charts",
+    "wrong-category-counts",
+    "invented-category-names",
+    "stock-infographic-not-from-data",
+    "ai-slop-visuals",
+    "unverifiable-growth-claims",
+    "fictional-scorecard-companies",
+    "missing-data-quality-disclosure",
+    "wrong-source-attribution"
+  ],
+  "factual_error_count": 9,
+  "factual_error_detail": "Slide 3: AI shown as 312 (actual 197); categories Finance 128, HR & Recruiting 64, Security 42, Productivity 58 do not exist in dataset. Slide 4: category names (Digital Marketing, Healthcare Tech, Cybersecurity, Fintech, EdTech, IT Services, Non-Profit Tech) are fabricated; cites 'BizBuySell Insights' not the actual dataset; AI median multiple 3.15x unverifiable against reference multiples. Slide 5: AI growth 14.8%, market 23.3%, Dev Tools 62.5% are unverifiable from frozen data. Slide 6: bubble chart uses categories absent from dataset (Machine Learning, Data Infrastructure, Cloud Infrastructure, etc.). Slide 8: scorecard uses fictional companies (Northpeak, Catalyst, Greenflow, etc.) not in dataset. Slide 2: dashboard image is a generic real-estate template unrelated to data.",
+  "evidence": {
+    "insight": "Core thesis that AI commands premium multiples despite weaker growth is a genuinely interesting angle, but every supporting number is fabricated, so the insight is aspirational rather than demonstrated.",
+    "narrative": "Clean arc: landscape → AI dominance → premium → growth divergence → synthesis → recommendation → limitations. Slide 10 limitations section is thoughtful. Sequence is purposeful even though content is hollow.",
+    "framing": "Audience clearly defined as acquirer/investor (slides 2, 9). However, no disclosure of 274 missing categories, 216 zero-revenue rows, or 241 missing countries. Scope conflates the full 1,000-row dataset with the 262 on-sale subset without clarifying denominators.",
+    "accuracy": "Nearly every quantitative claim is fabricated or unverifiable. Category names on slides 3-4-6 do not match the dataset. AI count inflated from 197 to 312. Source attribution to 'BizBuySell Insights' on slide 4 is false. Scorecard on slide 8 uses entirely fictional companies. Growth percentages on slide 5 cannot be traced to frozen data.",
+    "visual": "Every data visualization is a pre-made stock infographic or AI-generated illustration rather than a chart built from actual data. Slide 2 uses a real-estate dashboard mockup. Slides 3-6 use comic-book/cityscape style graphics that look polished but encode fabricated numbers. Slide 9 has broken word-wrapping. No chart is traceable to the dataset.",
+    "ai_slop": "Pervasive. Every chart is decorative AI/stock art. Consulting buzzwords throughout ('asymmetric opportunity,' 'buy-low scale-fast acquisition windows'). Fictional company scorecard on slide 8. Generic dashboard on slide 2. Comic-book infographic style applied uniformly regardless of content."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 2.5 to 2.0: identified additional fabrication (false source attribution slide 4, total of 9 errors vs 8). Lowered visual from 3.0 to 2.5: every single chart is stock/AI-generated art encoding fabricated data, which is worse than no charts at all since it actively misleads. Other dimensions confirmed as reasonable.",
+  "total": 37,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 18296,
+    "output_tokens": 1041
+  }
+}

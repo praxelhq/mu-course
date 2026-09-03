@@ -1,0 +1,705 @@
+INVESTMENT COMMITTEE MEMORANDUM
+
+
+
+
+TrustMRR
+A payment verified view of the micro SaaS long tail, and the case for backing the marketplace that
+owns it
+
+
+
+1,000                                           $133.8M                                    $161.7M          262
+startups                                        verified TTM revenue                       annualised MRR   live acquisition listings
+
+
+
+
+Dataset frozen 30 July 2026 | Session 3 analysis | Prepared for the Investment Committee
+EXECUTIVE SUMMARY
+
+Invest, but underwrite the marketplace rather than the directory: 212 companies
+carry 95% of the revenue and a quarter of the 262 live listings are mispriced by
+more than a factor of two
+        1        The asset is real                                                                                                    2     The value is narrow
+
+
+     1,000 startups report $133.8M of trailing revenue and $161.7M of annualised                                                    The top 10 companies hold 50.6% of trailing revenue and 212 companies hold
+     MRR, all sourced through payment provider API keys rather than self reported                                                   94.7% of MRR. The bottom 500 contribute 0.21%. Any monetisation model
+     forms. Stripe alone underwrites 636 records and $119.9M.                                                                       priced per listing will fail.
+
+
+
+
+        3        The marketplace is mispriced                                                                                         4     The edge is verification
+
+
+     262 listings carry $86.8M of asking value. Stated multiples are anchored on ARR,                                               38 listings with ARR above $60k are asking 3.0x ARR or less against a median of
+     yet only 51% reconcile within 25% and 22.6% are wrong by more than a factor of                                                 3.18x, a $17.5M ask on $11.7M of verified ARR. Underwriting that spread is the
+     two.                                                                                                                           business.
+
+
+
+
+Source: TrustMRR 1,000 row extract, frozen 30 July 2026. All revenue figures as reported through connected payment provider APIs.
+INVESTMENT THESIS
+
+TrustMRR owns the only payment verified inventory of sub $1M software
+businesses, in a market where buyers currently have no way to price anything
+
+                                                                                Revenue arrives through Stripe, RevenueCat, Paddle and six other provider API keys. A competitor cannot scrape
+      Proprietary and hard to copy
+                                                                                this. 636 Stripe connections represent 90% of trailing revenue on the platform.
+
+
+
+
+                                                                                262 of 1,000 companies are already listed, a 26.2% supply rate. Combined asking value is $86.8M with a median
+      A real transaction pool
+                                                                                ask of $35,000, so the pool spans both hobby exits and institutional size assets.
+
+
+
+
+                                                                                Stated multiples rank correlate 0.63 with price divided by ARR but only 0.33 with price divided by trailing revenue,
+      A market without a price standard
+                                                                                the basis most acquirers use. 47 listings display 0.0x. Whoever supplies the standard captures the take rate.
+
+
+
+
+                                                                                The 212 companies above $10k MRR are exactly the acquisition target profile for search funds, holdcos and PE
+      Ready made buy side demand
+                                                                                rollups now active in the sub $5M software segment.
+
+
+
+
+Fact: counts and sums from the frozen extract. Interpretation: competitive read is the author's, not stated in the data.
+BUSINESS OVERVIEW
+
+TrustMRR converts a payment API connection into two products: a public revenue
+credential and a liquidity venue for the resulting listings
+
+
+       01                                                             02                                       03                                          04
+
+
+    Founder connects                                               Revenue is verified                       Profile is published                        Asset is listed
+
+                                                            >                                            >                                           >
+    A read only API key from Stripe,                               Platform pulls 30 day, 3 month, 12        Category, audience, pricing model and       262 owners flag the business for sale
+    RevenueCat, Polar, Paddle or six other                         month and all time revenue plus MRR       persona enrich 716 of 1,000 records;        with an asking price and a stated
+    providers.                                                     and active subscriptions.                 284 stay anonymous.                         revenue multiple.
+
+
+
+    1,000 companies connected                                      $133.8M TTM verified                      71.6% profile completion                    $86.8M live supply
+
+
+
+
+      Where the money can come from
+
+      Success fee on transacted listings is the only revenue line the data supports at scale. A per listing subscription would monetise 1,000 accounts of which 391 report under $100 of
+      monthly revenue, while a 5% fee on the $86.8M live pool is worth $4.3M gross at full clearance and roughly $650k at a 15% clear rate.
+
+
+
+Assumption: 5% success fee and 15% annual clearance are illustrative, not observed in the dataset.
+D ATA S E T O V E R V I E W
+
+The revenue spine is complete and clean; everything used to segment, price or
+market the inventory is not
+Field completeness gaps (% of 1,000 records missing)
+
+
+  Revenue per visitor                                                                                          85.8%
+                                                                                                                                  PASS        Zero missing on the revenue spine
+
+                                                                                                                             record_id, MRR, and all four revenue windows are 100% populated with no duplicate
+           Visitors 30d                                                                                      82.2%           record ids.
+
+
+          Asking price                                                                               73.9%
+                                                                                                                                 WATCH        129 anonymous records hold $28.6M
+       Target persona                                           36.1%
+                                                                                                                             Stealth Company rows carry 21% of trailing revenue with no category, audience or
+                                                                                                                             country attached.
+        Audience type                                   28.8%
+
+
+        Domain rating                                   28.6%                                                                     FAIL        128 records fail an internal consistency test
+
+                                                                                                                             MRR multiplied by six exceeds trailing twelve month revenue, and 32 records show 3
+              Category                                 27.4%                                                                 month revenue below 30 day revenue.
+
+               Country                               24.1%
+                                                                                                                                  FAIL        Traffic data is effectively absent
+     MRR growth 30d                     10.7%
+                                                                                                                             Only 178 records carry visitor counts, so unit economics cannot be built from acquisition
+                                                                                                                             cost.
+                          0        10           20     30        40        50        60         70     80        90    100
+
+
+
+
+Source: completeness computed across all 1,000 rows. Consistency tests defined by the author.
+K E Y P E R F O R M A N C E I N D I C AT O R S
+
+Nine metrics frame the asset: large aggregate revenue, tiny median company, and a
+supply side already flagged for sale
+
+
+     $133.8M                                                     $161.7M                                                       $3,069
+     Trailing 12 month revenue                                   Annualised MRR                                                Median company TTM revenue
+
+
+
+
+     $282                                                        212                                                           16
+     Median company MRR                                          Companies above $10k MRR                                      Median active subscriptions
+
+
+
+
+     26.2%                                                       $86.8M                                                        21.6%
+     Of companies listed for sale                                Total asking value                                            Report zero 30 day revenue
+
+
+
+The gap between the $133.8M aggregate and the $3,069 median is the whole story: this is not a market of a thousand businesses, it is a market of roughly two hundred businesses plus
+eight hundred profiles.
+Source: TrustMRR frozen extract, 30 July 2026, n = 1,000.
+R E V E N U E C O N C E N T R AT I O N
+
+Ten companies produce half of all revenue on the platform and the bottom 500
+produce 0.21%, so platform economics must be built around the head
+Cumulative share of $133.8M trailing revenue
+                                                                                               99.8%     100.0%
+  100                                                                                95.0%
+                                                                                                                    Stan alone is 18.7% of the platform
+                                                                           84.7%
+                                                                                                                    One company, $25.0M of trailing revenue and $3.57M of MRR across
+                                                                                                                    101,590 subscriptions. Losing it would remove almost a fifth of the
+    80
+                                                                  72.9%                                             platform's headline number.
+
+
+                                                         59.3%
+    60                                                                                                              The long tail is a marketing asset, not a revenue
+                                          50.6%                                                                     asset
+                           41.1%                                                                                    500 companies together contribute $281k of trailing revenue. They
+                                                                                                                    matter for search volume and network effect, and should cost close
+    40
+                                                                                                                    to nothing to serve.
+
+
+            18.7%
+    20
+                                                                                                                    Implication for pricing
+
+                                                                                                                    Charge the head for liquidity and distribution; keep the tail free and
+                                                                                                                    automated. A flat fee across 1,000 accounts destroys value at both
+     0
+                                                                                                                    ends.
+             Top 1          Top 5         Top 10         Top 20   Top 50   Top 100   Top 200   Top 500   Top 1000
+
+
+
+
+Source: revenue_12m_usd ranked descending across 1,000 records.
+THE MONETISABLE CORE
+
+212 companies above $10k MRR hold 94.7% of platform MRR; the 391 accounts below
+$100 are a cost line, not a customer segment
+Companies by MRR tier                                                                                Share of $13.5M monthly recurring revenue
+
+  215                                                                                                  100
+                                                                                                                                                                                       94.7%
+                                                                                              212
+                                                                                                        90
+  210
+                                                                                                        80
+
+                                                                                                        70
+  205
+                                                                                                        60
+
+  200                                                                                                   50
+                 197                                          197                   197
+                                                                                                        40
+  195                                   194
+                                                                                                        30
+
+                                                                                                        20
+  190
+                                                                                                        10
+                                                                                                                                                                      4.7%
+                                                                                                                  0.0%             0.0%              0.5%
+  185                                                                                                    0
+                  $0                   $1-99               $100-999               $1k-9.9k   $10k+                 $0              $1-99          $100-999          $1k-9.9k           $10k+
+
+
+
+     Company count is almost perfectly uniform across the five tiers, roughly 197 each, while MRR is not. Equal supply, radically unequal value: the platform's segmentation must be built on
+     revenue tier, not on category or geography.
+
+
+Source: mrr_usd across 1,000 records. Tier counts: 197 / 194 / 197 / 197 / 212.
+CUSTOMER INSIGHT
+
+B2B is 36% of profiled companies but 70% of profiled revenue, and earns five times
+the revenue per subscriber
+Companies                                                                          Trailing revenue                                                  Median monthly revenue per subscriber
+ 450                                                                                 60                                                                60
+                                        401                                                      $53.3M
+ 400
+                                                                                                                                                                  $49.0
+                                                                                     50                                                                50
+ 350
+
+ 300                                                                                 40                                                                40
+                 255
+ 250
+                                                                                     30                                                                30
+ 200
+                                                                                                              $20.9M
+ 150                                                                                 20                                                                20                                                $17.4
+
+ 100
+                                                                                                                                                                                      $9.3
+                                                               56                    10                                                                10
+  50
+                                                                                                                                   $2.2M
+    0                                                                                 0                                                                 0
+                 B2B                    B2C                   Both                                 B2B         B2C                  Both                           B2B                B2C                Both
+
+
+
+     What happened                                                                                                     What it means for the platform
+
+     401 B2C companies generate $20.9M while 255 B2B companies generate $53.3M. Median                                 Buyer demand concentrates where cash flow is durable. Prioritising B2B supply raises
+     B2B company revenue is $8,362 against $2,213 for B2C.                                                             average deal size and take rate without adding listings.
+
+
+
+Base: 712 records with audience type populated; 288 records are blank and excluded from these three charts.
+C AT E G O R Y E C O N O M I C S
+
+AI supplies one in five listings but Marketing, Education and Content Creation
+produce two to three times the median revenue per company
+Median trailing revenue per company, top 10 categories by total revenue
+                                                                                                                            Category                          n         Total            Median             Listed
+                   AI                              $4,301
+                                                                                                                            AI                                197       $18.43M          $4,301             27.4%
+          Marketing                                                                   $10,028
+                                                                                                                            Marketing                         42        $14.64M          $10,028            21.4%
+        Ecommerce                                   $4,310
+                                                                                                                            Ecommerce                         19        $12.02M          $4,310             31.6%
+
+                SaaS                  $2,281                                                                                SaaS                              66        $6.56M           $2,281             33.3%
+
+          Education                                                                                          $14,309        Education                         30        $5.52M           $14,309            33.3%
+
+           Analytics                            $3,876                                                                      Analytics                         19        $3.75M           $3,876             36.8%
+
+                                                                                                                            Content Creation                  36        $1.85M           $13,732            30.6%
+  Content Creation                                                                                        $13,732
+                                                                                                                            Mobile Apps                       52        $1.65M           $1,745             55.8%
+       Mobile Apps                 $1,745
+
+       Social Media                                                             $9,028
+                                                                                                                                 Where to hunt
+          Dev Tools                            $3,711                                                                            Mobile Apps has the highest listing rate at 55.8% and the second lowest median revenue
+                                                                                                                                 at $1,745. Supply is abundant and cheap there. Education carries the highest median at
+                        0        2000        4000         6000        8000        10000          12000   14000      16000        $14,309 across only 30 companies, so demand generation should target that category
+                                                                                                                                 specifically.
+
+
+
+
+Base: 726 records with a category label. Categories with fewer than 15 companies are excluded.
+GROWTH DIAGNOSTIC
+
+Only 274 of 893 companies with reported growth are actually growing, and 381
+report exactly zero, which is a measurement failure as much as a business one
+Companies by 30 day MRR growth band
+
+  450
+                                                                                                                     238 companies are shrinking
+  400                                                          381
+                                                                                                                     62 lost more than a fifth of MRR in thirty days. Their combined MRR is
+  350                                                                                                                $3.5M, so decay is not confined to dormant accounts.
+
+  300
+
+  250                                                                                                                381 exact zeros are suspicious
+
+  200                                                                                                                A precise 0.0% reading across 43% of records points to stale snapshots
+                                         176                                                                         or accounts with no billing event in the window, not to genuinely flat
+                                                                                142                                  businesses.
+  150
+                                                                                             108
+  100
+                  62                                                                                                 Growth sits in the middle band
+    50
+                                                                                                           24
+                                                                                                                     The 142 companies growing 0% to 20% hold $6.2M of MRR, 46% of
+     0                                                                                                               the platform total. Steady compounders, not hypergrowth, are the
+             Below -20%             -20% to 0%              Exactly 0%        0% to 20%   20% to 100%   Above 100%   asset class here.
+
+
+
+
+Base: 893 records with mrr_growth_30d_pct populated. 107 records are blank.
+O P E R AT I O N A L R I S K
+
+One integration, Stripe, carries 90% of verified revenue on the platform; the newer
+providers deliver volume with almost no revenue behind it
+Trailing revenue by payment provider
+
+
+             Stripe                                                                           $119.91M     Single point of failure
+
+                                                                                                           636 of 1,000 connections run through Stripe. An API policy change, a rate limit or a
+      RevenueCat             $6.83M                                                                        competing Stripe owned directory would compromise the core product.
+
+
+        Superwall          $2.60M
+
+                                                                                                           Superwall punches far above its count
+            Paddle        $1.03M
+                                                                                                           17 companies, a $22,077 median trailing revenue and 729 median subscriptions, the
+                                                                                                           strongest cohort on the platform. Deepening that integration is cheap leverage.
+  Dodo Payments           $0.32M
+
+
+
+  Lemon Squeezy           $0.32M
+                                                                                                           Polar and Dodo add noise
+
+              Polar       $0.04M                                                                           86 companies between them contribute $0.36M. 41.7% of Polar records report zero
+                                                                                                           trailing revenue, which drags median quality and buyer trust.
+                      0             20         40           60            80           100   120     140
+
+
+
+
+Base: providers with at least 15 connected companies. 13 companies connect two providers.
+MARKET COVERAGE
+
+The United States is 34% of profiled companies and 64% of all revenue; India
+contributes 59 companies at a $97 median, so coverage does not equal value
+Trailing revenue by country, markets with 15 or more companies
+
+  90                                                                                                                           Market              Companies             Total revenue             Median revenue
+        $85.0M
+
+  80                                                                                                                           US                  258                   $85.03M                   $12,292
+
+  70                                                                                                                           FR                  79                    $6.09M                    $4,787
+
+                                                                                                                               GB                  50                    $4.79M                    $1,124
+  60
+
+                                                                                                                               CA                  29                    $3.08M                    $8,165
+  50
+                                                                                                                               IN                  59                    $1.17M                    $97
+  40
+                                                                                                                               HK                  19                    $1.15M                    $773
+  30
+                                                                                                                               AU                  17                    $1.01M                    $2,576
+  20
+                                                                                                                               PL                  15                    $0.99M                    $3,097
+  10               $6.1M      $4.8M
+                                         $3.1M
+                                                   $1.2M      $1.2M      $1.0M      $1.0M     $0.9M      $0.7M         $0.5M
+    0
+                                                                                                                                France is the surprise: 79 companies and a $4,787 median, second only to the United
+           US         FR        GB         CA         IN        HK         AU         PL        BR         ES           DE
+                                                                                                                                States on count. Any expansion budget should follow that signal rather than raw
+                                                                                                                                population.
+
+
+
+
+Base: 759 records with a country. 241 records have no country attached, including several of the largest by revenue.
+MARKETPLACE ECONOMICS
+
+The $86.8M of live supply is barbelled: 96 listings under $10,000 contribute 0.5% of
+value while 21 listings above $1M contribute 60%
+Total asking value by price band, $M
+
+  60
+                                                                                                                     262                                           $86.8M
+                                                                                                          $51.7M
+  50                                                                                                                 listings live                                 combined ask
+
+
+
+  40
+                                                                                                                     $35,000                                       42.3%
+                                                                                                                     median ask                                    value in top 10 listings
+  30
+                                                                                            $26.7M
+
+
+
+  20                                                                                                                 Two marketplaces in one
+
+                                                                                                                     The 96 listings below $10,000 need a self serve, zero touch flow; the economics do
+  10                                                                                                                 not support a human in the loop. The 63 listings above $250,000 carry $78.4M of
+                                                                              $6.4M
+                                                                                                                     value, 90% of the pool, and justify a brokered process with diligence, escrow and a
+                                                         $1.5M                                                       negotiated fee. Running one process for both is the fastest way to lose the high
+              $0.0M                 $0.4M
+    0                                                                                                                value sellers.
+            Under $1k           $1k to $10k          $10k to $50k         $50k to $250k   $250k to $1M   Above $1M
+
+
+
+
+Base: 261 listings with an asking price. One flagged listing has no price attached.
+THE CENTRAL PROBLEM
+
+Listing multiples are anchored on ARR rather than trailing revenue, and one listing
+in four is wrong by more than a factor of two
+Stated multiple against price divided by ARR, 187 listings shown (both values 15x or below)
+
+
+                                   14                                                                                                              The base is ARR, not revenue
+
+                                                                                                                                                   Rank correlation with price divided by ARR is 0.63 and the median ratio between
+                                   12
+                                                                                                                                                   the two is 1.00. Against trailing revenue it falls to 0.33, so the headline multiple
+                                                                                                                                                   answers a question few acquirers ask.
+
+
+
+
+    Implied multiple (ask / ARR)
+                                   10
+
+
+                                    8                                                                                                              Dispersion is the real defect
+
+                                    6                                                                                                              Only 51% of listings reconcile within 25% and 22.6% are off by more than a factor of
+                                                                                                                                                   two. 47 listings display an impossible 0.0x and 36 priced listings carry no MRR at all.
+                                    4
+
+
+                                    2
+                                                                                                                                                   The consequence
+                                    0                                                                                                              A buyer must rebuild every calculation before comparing two listings. That friction is
+                                        0   2   4             6               8              10              12              14
+                                                                                                                                                   why $86.8M of supply sits unsold, and fixing it is a product change rather than a
+                                                          Stated revenue multiple                                                                  capital requirement.
+
+
+
+
+Base: 224 listings with a stated multiple and positive MRR. 37 outliers above 15x are excluded from the plot but included in every statistic quoted. Spearman used because Pearson on the full sample, 0.06, is driven entirely by those outliers.
+O P P O R T U N I T Y I D E N T I F I C AT I O N
+
+Thirty eight listings with more than $60k of ARR are asking 3.0x or less, a $17.5M
+ask against $11.7M of verified annual revenue
+
+  Company                                                         Category                                           Verified ARR                         Asking price                           Implied multiple
+
+  PROSP                                                           AI                                                 $1,536,060                           $1,000,000                             0.65x
+
+  Stealth Company                                                 Undisclosed                                        $1,000,056                           $3,000,000                             3.00x
+
+  Speel.co                                                        SaaS                                               $790,116                             $500,000                               0.63x
+
+  GoTall                                                          Health & Fitness                                   $702,120                             $1,000,000                             1.42x
+
+  Taller                                                          Health & Fitness                                   $530,508                             $750,000                               1.41x
+
+  Stealth Company                                                 Undisclosed                                        $439,524                             $1,000,000                             2.28x
+
+  Notionlytics                                                    Analytics                                          $437,484                             $48,000                                0.11x
+
+  Conductor                                                       Dev Tools                                          $424,692                             $1,250,000                             2.94x
+
+
+
+    Read the screen carefully                                                                                                       The other side of the book
+    Notionlytics at 0.11x and DropPop at 0.16x are either genuine mispricings or data errors.                                       29 listings are asking 10x ARR or more, $8.9M of ask that will not clear. Median across the
+    Both are testable in an afternoon with a provider level revenue pull.                                                           pool is 3.18x, which is the anchor a pricing engine should publish.
+
+
+Screen: on_sale = true, MRR x 12 at or above $60,000, implied multiple at or below 3.0x. Top 8 of 38 shown by ARR.
+RISK ASSESSMENT
+
+Four risks are material; two of them, key company concentration and provider
+dependence, are structural and cannot be fixed by execution alone
+    RISK                                                                 EVIDENCE                                                                          M I T I G AT I O N
+
+
+          HIGH
+
+                                                                         Ten companies are 50.6% of platform revenue and Stan alone is 18.7%.              Diversify the head by recruiting 50 companies above $100k ARR.
+                                                                         Departure of the head materially resets every headline metric.                    Report metrics excluding the top 10 in every board pack.
+    Key company concentration
+
+
+
+          HIGH
+
+                                                                         Stripe carries 636 connections and 90% of revenue. A terms change or a first      Reach 25% of revenue on non Stripe rails within 12 months.
+                                                                         party competing product removes the moat.                                         Superwall and Paddle cohorts are the highest quality starting point.
+    Payment provider dependence
+
+
+
+        MEDIUM
+
+                                                                         128 records fail an internal consistency test, 47 listings show a 0.0x multiple   Publish a verification standard with a visible timestamp. Suppress any
+                                                                         and 381 report exactly zero growth.                                               listing that fails reconciliation rather than displaying it.
+    Data integrity and trust
+
+
+
+        MEDIUM
+
+                                                                         The dataset contains no completed transactions, so the take rate that             Make the investment tranched. Release the second tranche on a
+                                                                         underwrites the whole model is untested against real closings.                    demonstrated closed deal count over two consecutive quarters.
+    Unproven clearance
+
+
+
+Severity assessed by the author against revenue at risk and reversibility.
+S T R AT E G I C R E C O M M E N D AT I O N S
+
+Four moves, ranked by value released per unit of effort: fix pricing first, because
+every other lever depends on listings a buyer can trust
+
+                                                                                                 Replace the seller entered multiple with two computed figures, asking price over
+
+    01              Publish a verified pricing standard
+                                                                                                 ARR and over trailing twelve month revenue, recalculated on every data refresh and
+                                                                                                 shown against the 3.18x pool median. Suppress the 47 listings displaying 0.0x until
+                                                                                                                                                                                          Unlocks $86.8M of supply currently
+                                                                                                                                                                                          unscreenable
+                                                                                                 they reconcile.
+
+
+
+
+    02              Split the funnel at $250,000
+                                                                                                 Self serve, zero touch flow for the 199 listings below the line; brokered process with
+                                                                                                 diligence and escrow for the 63 above it, which hold $78.4M of the value.
+                                                                                                                                                                                          Concentrates human cost on 90% of the
+                                                                                                                                                                                          pool value
+
+
+
+
+    03
+                                                                                                 Target Marketing, Education and Analytics founders above $10k MRR. Those
+                                                                                                                                                                                          Raises average deal size without adding
+                    Recruit against the B2B gap                                                  categories carry medians two to four times the platform average and the 212
+                                                                                                                                                                                          volume
+                                                                                                 company core is where buyer demand already sits.
+
+
+
+
+    04
+                                                                                                 Deepen Superwall and Paddle integrations, whose cohorts show the strongest
+                    Reduce Stripe dependence                                                     median revenue on the platform, and set a 25% non Stripe revenue target for the          Removes the single largest structural risk
+                                                                                                 next twelve months.
+
+
+
+
+Sequencing reflects dependency, not effort. Recommendation 01 is a prerequisite for the value released by 02 and 03.
+GROWTH ROADMAP
+
+Twelve months to a credible marketplace: prove clearance by quarter two, then
+scale supply against demonstrated demand rather than ahead of it
+
+     Quarter 1                                                       Trust                 Quarter 2                                           Liquidity   Quarters 3 to 4                                 Scale
+
+
+
+
+     Fix the record                                                                        Prove clearance                                                 Scale the head
+     •       Computed multiples replace stated ones on all                                 •       Brokered pilot on the 63 listings above $250k           •   Recruit 50 companies above $100k ARR in B2B
+             262 listings                                                                                                                                      categories
+                                                                                           •       Target 8 closed transactions and a published take
+     •       Reconciliation test suppresses the 128                                                rate                                                    •   Push non Stripe revenue share to 25%
+             inconsistent records
+                                                                                           •       Test the 38 listing arbitrage screen against real       •   Open a buyer side subscription for screened deal
+     •       Verification timestamp shown on every profile                                         bids                                                        flow
+
+
+
+
+     Gate the second capital tranche on quarter two: eight closed transactions and a published take rate, or the model is unproven and the investment should not scale.
+
+
+
+Targets set by the author. The dataset contains no historical transaction record against which to calibrate them.
+INVESTMENT CONCLUSION
+
+
+
+Proceed, with a tranched structure gated on transaction
+clearance
+     What we are buying                                                                                                What we are fixing
+
+                                                                                                                       A pricing display that half of buyers cannot use. 22.6% of listings are off by more than
+     A verified revenue dataset covering $161.7M of annualised MRR that no competitor
+                                                                                                                       a factor of two, 47 show an impossible 0.0x, and the multiple is anchored on ARR
+     can scrape, attached to $86.8M of live acquisition supply.
+                                                                                                                       rather than trailing revenue.
+
+
+
+
+     What we are betting on                                                                                            What would change our mind
+
+     That verified pricing converts idle supply into closed transactions. 38 listings already                          A quarter two pilot that closes fewer than eight of the 63 premium listings, or
+     sit at or below 3.0x ARR against a 3.18x median, so the spread exists.                                            evidence that the 381 exact zero growth readings reflect a broken data pipeline.
+
+
+
+
+All figures drawn from the TrustMRR 1,000 row extract frozen 30 July 2026. Take rate, clearance and expansion targets are stated assumptions.
+APPENDIX
+
+Detailed exploratory data analysis: method, tests run and the findings that did not
+make the main narrative
+
+     Method                                                                                                                Distribution
+
+     1,000 records, 29 fields. Distribution analysis on 12 numeric fields, log transformed correlation                     Every revenue field is severely right skewed. Trailing revenue: median $3,069, mean $133,750,
+     matrix on revenue drivers, segmentation across category, audience, provider and country, and                          maximum $25.0M. The mean exceeds the 90th percentile, so mean based reasoning is
+     a consistency test suite across the four revenue windows.                                                             unusable throughout.
+
+
+
+
+     Correlation                                                                                                           Momentum
+
+     Against log trailing revenue: MRR 0.86, active subscriptions 0.77, domain rating 0.29, X                              Annualising 30 day revenue against the trailing figure gives a median ratio of 1.37, so the
+     followers 0.21, visitors 0.11. Audience size and SEO authority are weak revenue proxies;                              typical company is accelerating. 11% of the 605 testable companies sit below 0.5, indicating
+     subscription count is a strong one.                                                                                   material decay.
+
+
+
+
+     Market breadth                                                                                                        Outliers retained
+
+     Companies tagged into five or more markets show a $6,310 median trailing revenue against                              Six companies report MRR growth above 1,000%, peaking at 12,983%. These were retained in
+     $1,316 for single market companies. Breadth correlates with revenue, though direction of                              counts but excluded from medians. 32 records show 3 month revenue below 30 day revenue,
+     causation is untested.                                                                                                which is arithmetically impossible.
+
+
+
+
+Full analysis run in Python over the frozen extract. Medians reported throughout in preference to means because of skew.
+

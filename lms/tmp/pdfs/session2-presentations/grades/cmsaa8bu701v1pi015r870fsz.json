@@ -1,0 +1,38 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7.5,
+    "framing": 5.5,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Strong central thesis—pricing model and buyer type matter more than category—carried consistently through every slide.",
+  "fix_next": "Analysis stays at the top-earner anecdote level; use dataset-wide medians, distributions, and missingness disclosure to substantiate the pricing-model claim.",
+  "verdict": "Coherent narrative thesis, but thin on dataset-wide evidence and accuracy.",
+  "flags": [
+    "top-heavy-anecdote-analysis",
+    "no-missingness-disclosure",
+    "pricing-claim-unsupported-by-data",
+    "ai-revenue-range-wrong"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 2: Shows only 9 companies in top list; top-10 share (~49.6%) never stated. Slide 5: Claims pricing model is 'consistently the biggest single driver of revenue-per-account in the dataset' — no systematic evidence from the 1,000-row dataset supports this; it is inferred from ~7 hand-picked cases. Slide 6: States AI-tagged companies range '$0 to $575K' — the highest AI-category revenue is part of the $2.36M total but the single-company max needs verification; $575K appears fabricated or misread. Slide 4: Claims '6 of top 8 earners are B2B' — the actual audience_type field has 288 missing values and the B2B/B2C median multipliers (~2.35x/2.30x) are nearly identical, undermining the strong causal framing presented.",
+  "evidence": {
+    "insight": "The pricing-model spectrum (slide 5) and revenue-per-user calculations (slide 3) show genuine analytical thinking, but insights are derived from only 7-9 cherry-picked companies rather than the full dataset. No medians, distributions, or category-level comparisons are offered.",
+    "narrative": "Clear five-part structure with a consistent thesis ('pricing and buyer > category') that builds logically from leaderboard → subscribers → B2B/B2C → pricing → domain rating → summary. The closing slide lands the argument well.",
+    "framing": "No mention of dataset size (1,000 rows), missingness (241-288 missing across key fields), zero-revenue companies (216), or total revenue ($15.6M). Audience is implied but never stated. No limitations section. A cold reader cannot assess how representative the analysis is.",
+    "accuracy": "Revenue-per-user calculations on slide 3 are internally consistent with the bar chart values. However, the AI revenue range ($575K max) appears incorrect. The central pricing-model claim is asserted from ~7 examples without systematic dataset evidence. No denominators, sample sizes, or statistical measures are provided anywhere. The B2B vs B2C framing ignores that median revenue multiples are nearly identical (~2.3x) across the full dataset.",
+    "visual": "Clean, professional design with consistent color palette, good hierarchy, and readable charts. Bar charts on slides 2-3 are well-labeled. The pricing spectrum on slide 5 is an effective conceptual diagram. Slight concern: slide 6 uses a bar chart for only 5 cherry-picked DR values, which could mislead about the DR-revenue relationship across the full dataset.",
+    "ai_slop": "The deck avoids generic filler and consulting buzzwords. The pricing spectrum diagram (slide 5) is conceptually useful but not grounded in dataset columns — it reads as an externally-sourced framework imposed on a few examples rather than emerging from data analysis."
+  },
+  "confidence": "high",
+  "total": 64,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 14468,
+    "output_tokens": 914
+  }
+}

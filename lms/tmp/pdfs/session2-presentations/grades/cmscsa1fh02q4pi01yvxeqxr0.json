@@ -1,0 +1,38 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong narrative arc from landscape to actionable acquisition screening with honest caveats slide.",
+  "fix_next": "Category median MRR figures are materially wrong (e.g., Marketing $1,586 vs. reference $2,370; Education $2,142 vs. $2,435); verify all computations against raw data.",
+  "verdict": "Well-structured decision brief undermined by several incorrect median figures.",
+  "flags": [
+    "median-mrr-errors",
+    "missing-data-not-quantified",
+    "no-provider-analysis",
+    "no-concentration-analysis"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 3: Marketing median shown as $1,586 (ref: $2,369.50); Content Creation shown as $1,254 (ref: $1,237.50, close but others off); AI median shown as $446 (ref: $503); Health & Fitness shown as $392 (ref: $662.50); Education stated as $2,142 (ref: $2,435). Slide 3 also omits Analytics from the monetization chart despite claiming it in recommendations (slide 8). Slide 5: B2B median $1,036 — cannot verify precisely but reference gives median revenue multiple of 2.35x, not the ~5.7x claimed from these absolute medians.",
+  "evidence": {
+    "insight": "Slide 3's 'Crowded ≠ Profitable' framing is a genuine insight comparing count vs. median MRR. Slide 6's acquisition funnel (262→224→6) adds decision-useful screening. However, no analysis of revenue concentration (top-10 share ~50%), payment providers, or anonymous vs. named listings — missing several rich angles.",
+    "narrative": "Clear arc: summary → category landscape → geography → B2B/B2C → acquisitions → caveats → recommendations. Each slide builds toward the 'where to invest' thesis. The landing on slide 8 ties back to findings. Coherent but somewhat predictable consulting-brief structure.",
+    "framing": "Slide 1 sets context well (TrustMRR as marketplace, snapshot date, scope). Slide 7 dedicates a full page to caveats including selection bias and self-reporting — commendable. However, missingness rates are not quantified (274/1000 missing category, 241 missing country) which matters for the category and geography analyses presented.",
+    "accuracy": "Multiple median MRR values on slide 3 diverge materially from reference: Marketing off by ~$784, AI off by ~$57, Health & Fitness off by ~$271, Education off by ~$293. Slide 2's $15.6M and 1,000 startups are correct. Slide 2's average MRR calculation: $15,596,344.59/1000 ≈ $15,596, not $13,472 — this appears to use a different denominator (perhaps excluding zero-revenue), which is not stated. The 48x multiplier claim ($13,472/$282) also depends on this unstated denominator.",
+    "visual": "Clean, consistent design system with navy/orange palette. Bar charts on slide 3 are readable and the dual-chart comparison is effective. Slide 4's table+chart combo works well. Slide 5's card layout is clear. However, slide 3's y-axis starts at -30 (odd), and the rotated x-axis labels are hard to read. No chart annotations beyond data labels. Overall professional but template-driven.",
+    "ai_slop": "Minimal overt slop — no decorative stock imagery or meaningless graphics. The design is template-consistent but not generic filler. Language is direct and specific rather than inflated. The caveats slide shows genuine editorial care rather than boilerplate."
+  },
+  "confidence": "high",
+  "total": 65,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15885,
+    "output_tokens": 989
+  }
+}

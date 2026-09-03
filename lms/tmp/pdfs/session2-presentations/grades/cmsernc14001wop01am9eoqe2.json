@@ -1,0 +1,39 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 5,
+    "narrative": 5.5,
+    "framing": 4.5,
+    "accuracy": 3.5,
+    "visual": 5.5,
+    "bonus": 1
+  },
+  "what_worked": "Clear investment-quadrant framework ties findings to actionable capital allocation decisions across categories and geographies.",
+  "fix_next": "Multiple revenue figures are materially wrong (total MRR $13.5M vs actual $15.6M; SaaS, Marketing, E-comm totals all off); verify every number against the dataset.",
+  "verdict": "Coherent strategic frame undermined by numerous factual errors and thin analysis.",
+  "flags": [
+    "total-revenue-wrong",
+    "category-revenues-wrong",
+    "missing-data-not-acknowledged",
+    "small-n-overconfidence",
+    "consulting-language-heavy"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1/2: Total MRR stated as $13.5M; actual is $15.6M. Slide 2: AI shown as $1,806K vs actual $2,357K; SaaS $589K vs $704K; Marketing $444K vs $1,317K (severely understated); E-commerce $396K vs $1,112K (severely understated); Analytics $358K vs $368K (minor); Social Media $304K vs $257K (overstated). Slide 4: B2B avg MRR $13,150 claimed as 2.6x B2C; reference data shows median multiples ~2.3x and mean multiples ~8x, and company counts (401+255+56=712) don't account for 288 missing audience_type rows. Slide 3: US share stated as 56% but $7.5M/$15.6M ≈ 48%.",
+  "evidence": {
+    "insight": "Slide 5 identifies underbuilt whitespaces (Customer Support, Recruiting & HR) with growth rates, and Slide 6 synthesizes into a four-quadrant allocation framework—these go beyond chart description. However, the whitespace categories have n=4-7 companies, making growth percentages unreliable, and this fragility is never acknowledged.",
+    "narrative": "The deck follows a logical arc: market snapshot → geography → business model → whitespaces → roadmap. The thesis (allocate capital using a growth-share matrix) is stated on Slide 1 and lands on Slide 6. However, the promised 'Category Portfolio Matrix' (Slide 3 title) never actually appears—Slide 3 shows geographic data instead, breaking the sequence.",
+    "framing": "Slide 1 sets up the audience (internal investment review) and scope (1,000 companies). However, 274 missing category values and 288 missing audience_type values are never disclosed, which is critical when making category and B2B/B2C claims. The '29 Market Categories' stat is unverifiable and the '65 Countries' claim ignores 241 missing country values.",
+    "accuracy": "Total revenue is understated by ~$2M. Marketing revenue is understated by nearly 3x ($444K vs $1,317K). E-commerce understated by nearly 3x. The B2B/B2C comparison on Slide 4 uses means but the reference median multiples are ~2.3x, not 2.6x. US revenue share is overstated. Brazil and Singapore claims on Slide 3 are unverifiable and based on tiny samples. The '27% grew MRR' and '26% listed for acquisition' stats are unverifiable from reference data.",
+    "visual": "Consistent dark theme with good hierarchy and readable typography. Bar charts on Slides 2-3 are clean and appropriately chosen. Card-based layouts on Slides 4-6 are clear. However, the visual sameness across slides (dark cards with colored accents) feels template-driven. Slide 3's bar chart has misleading proportions—France's bar appears nearly as long as the US bar despite being 8x smaller in value.",
+    "ai_slop": "Consulting-speak throughout: 'Capital Allocation Framework,' 'Growth-Share Read,' 'Scale Anchor,' 'B2B Premium,' 'High Momentum.' The strategic roadmap on Slide 6 uses generic quadrant labels (Harvest & Defend, Double Down, Selective Bets, Build New) that could apply to any dataset. The 'Strategic Rule' on Slide 4 presents an observation as a rule without sufficient rigor."
+  },
+  "confidence": "high",
+  "total": 49,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 11976,
+    "output_tokens": 1109
+  }
+}

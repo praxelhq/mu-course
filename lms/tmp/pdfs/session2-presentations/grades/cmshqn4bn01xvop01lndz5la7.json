@@ -1,0 +1,39 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 1.5,
+    "narrative": 2,
+    "framing": 1.5,
+    "accuracy": 2,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Polished, consistent visual design with clear hierarchy and restrained color palette throughout.",
+  "fix_next": "This is a product pitch deck, not a data-story presentation; it barely analyzes the dataset and fabricates key statistics.",
+  "verdict": "A marketing deck for TrustMRR, not a data-story from the dataset.",
+  "flags": [
+    "wrong-genre",
+    "fabricated-statistics",
+    "no-dataset-analysis",
+    "pitch-deck-not-data-story",
+    "correlation-fabricated"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 5: r=0.48 for age-revenue correlation is fabricated; actual Pearson r=0.025. Slide 5: r=0.43 and r=0.28 are unverifiable and likely fabricated. Slide 6: 'Most profitable categories' list includes Security (not in dataset categories) and avg revenue figures don't match reference data (e.g., E-commerce avg ~$58.5K not $538.6K; Content Creation avg ~$4.8K not $277.3K). Slide 6: Country revenue figures ($86M Poland, $24M France) are orders of magnitude larger than the dataset's total revenue of ~$15.6M. Slide 5: 80% claim about revenue vs follower growth is unverifiable.",
+  "evidence": {
+    "insight": "Only slide 5 attempts data analysis, and it presents fabricated correlations. No original analytical insight derived from the 1,000-row dataset. The rest is product marketing copy.",
+    "narrative": "The deck tells a coherent product-marketing story for TrustMRR but does not tell a data story. There is no analytical thesis, no question posed to the dataset, no synthesis of findings.",
+    "framing": "No analytical question is framed. No audience for a data story is identified. No scope, definitions, limitations, or missingness discussed. The deck frames itself as a sales pitch for potential users/buyers of TrustMRR.",
+    "accuracy": "Slide 5 fabricates r=0.48 for founded-year/revenue (actual r≈0.025). Slide 6 country revenues exceed total dataset revenue (~$15.6M) by multiples. Category averages on slide 6 are wildly wrong. Security is not a category in the dataset.",
+    "visual": "Consistent dark green/gold/cream palette, good typography hierarchy, clean layouts, appropriate use of whitespace. Bar chart on slide 5 is legible. Cards and tables are well-structured. Professional template execution.",
+    "ai_slop": "The entire deck reads as AI-generated marketing copy for a fictional or real product. Slides 2-4, 7-12 are pure promotional content with no dataset engagement. Fabricated statistics on slides 5-6 suggest AI hallucination of plausible-sounding but incorrect numbers."
+  },
+  "confidence": "high",
+  "total": 24,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 21349,
+    "output_tokens": 774
+  }
+}

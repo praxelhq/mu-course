@@ -1,0 +1,37 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 7,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis-driven arc from concentration through monetization to actionable implications, with consistent causal discipline.",
+  "fix_next": "Slide 10 shows categories (Marketplace, Customer Support, No-Code) absent from the reference dataset—verify category labels and median values against raw data.",
+  "verdict": "Well-structured, honest data story with a few unverifiable category figures.",
+  "flags": [
+    "unverifiable-categories-slide-10",
+    "missing-provider-analysis",
+    "positive-revenue-78pct-vs-78.4pct-minor"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 5: 22% zero-revenue stated; reference says 216/1000=21.6%—minor rounding. Slide 10: Marketplace ($9K median), Customer Support ($6K), No-Code ($2K) appear as categories but are not in the reference category list—these are either fabricated or from a non-standard grouping. Marketing median shown as $2K; reference is $2,369.50 (acceptable rounding). Education shown as $2K; reference is $2,435 (acceptable rounding). The inclusion of phantom categories is the primary accuracy concern.",
+  "evidence": {
+    "insight": "Slide 2 synthesizes three signals into a thesis (concentration, B2B advantage, attention weakness). Slides 8-9 contrast followers vs domain rating with Spearman rho, going beyond chart description. Slide 10 offers the non-obvious insight that AI lags in per-unit monetization. Slide 12 segments recommendations by stakeholder type. However, no provider/payment infrastructure analysis or anonymous-company analysis limits depth.",
+    "narrative": "Clear arc: executive summary (S2) → data quality caveat (S3) → ecosystem (S4) → revenue distribution (S5) → B2B engine (S6) → geography (S7) → attention vs domain (S8-9) → category economics (S10) → M&A (S11) → implications (S12) → closing thesis (S13). Each slide builds on the prior. The thesis 'monetization architecture, not visibility' is sustained throughout.",
+    "framing": "Slide 3 transparently addresses missingness with specific percentages and a warning to 'read every percentage with its denominator.' Audience is implicitly founders/investors/operators (made explicit on S12). Scope is clear (1,000-row frozen snapshot). However, no explicit statement of the driving question or why this analysis matters beyond the dataset.",
+    "accuracy": "Top-10 concentration ~50% matches 49.6% reference (acceptable). Total revenue $15.6M matches. AI $503 median matches. B2B/B2C median revenue $1,240 vs $304 is plausible but not directly verifiable from reference (reference gives multiples 2.35x/2.30x). Slide 10 includes Marketplace, Customer Support, and No-Code as categories with specific medians—these do not appear in the reference category list, raising concern about data fidelity. Spearman rho 0.17 for followers is stated but reference only gives Pearson r=0.025 for founded-year; the followers correlation is not directly contradicted but not verifiable. Category missingness 27% matches 274/1000. Country missingness 24% matches 241/1000.",
+    "visual": "Consistent dark theme with green/cyan accent palette. Log-scale histograms (S5, S11) and scatterplots (S8, S9) are appropriate chart choices. Annotations (median lines, percentile markers) aid interpretation. Bar charts on S4, S7, S10 are well-labeled with counts. The B2B/B2C bar chart on S6 has partially obscured labels but the key numbers are readable in the sidebar. Overall restrained and evidence-led, though the visual template is uniform enough to feel slightly templated.",
+    "ai_slop": "Minimal slop. Language is precise rather than inflated. Slide 12 recommendations border on generic consulting advice ('instrument subscribers, MRR and retention') but are grounded in prior slides. No decorative-but-meaningless graphics. The closing slide (S13) is dramatic but earned by the narrative."
+  },
+  "confidence": "medium",
+  "total": 76,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 23505,
+    "output_tokens": 1085
+  }
+}

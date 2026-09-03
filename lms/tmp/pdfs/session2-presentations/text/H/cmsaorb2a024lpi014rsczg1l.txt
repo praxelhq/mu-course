@@ -1,0 +1,824 @@
+S T R AT E G Y E N G A G E M E N T        ·   BOARD REVIEW
+
+
+
+
+Where Value Hides in the Market
+for Small Internet Businesses
+An analysis of 1,000 listings on TrustMRR — the marketplace where founders sell profitable internet businesses
+
+
+
+Dataset frozen 30 July 2026 · 1,000 listings · 29 fields
+W H AT S H O U L D W E C O N C L U D E F R O M 1 , 0 0 0 L I S T I N G S ?
+
+
+A liquid market for small internet businesses now exists — but it prices assets on one
+month of revenue, concentrating opportunity in the buyers who normalise it.
+
+
+          A                                                                     B                                             C
+
+      The market is thinner                                                  Business model beats                          The pricing mechanism
+      than it looks                                                          category                                      is broken — knowably
+
+
+      Listings are abundant; revenue is not. A small                         Pricing model, audience and persona explain
+                                                                                                                           The headline multiple annualises a single month,
+      minority of listings carries almost all the                            revenue durability far better than what the
+                                                                                                                           creating a predictable and exploitable spread.
+      economic value.                                                        product actually does.
+
+      Slides 6–9                                                             Slides 10–15                                  Slides 16–21
+
+
+
+
+       THREE MOVES FOLLOW
+
+       Screen on twelve-month revenue, not the platform multiple · Weight recurring revenue over headline revenue · Treat traffic quality, not traffic volume, as
+       the growth signal
+
+
+Source: TrustMRR listing dataset, 1,000 records, frozen 30 July 2026.
+01   What is TrustMRR?
+     A market that did not exist five years ago — and why it deserves board attention
+W H AT I S T R U S T M R R A N D W H Y D O E S I T E X I S T ?
+
+
+TrustMRR turns private, unverifiable side businesses into publicly comparable assets by
+connecting directly to their payment systems.
+     S O W H AT The product is not the listing — it is the verification. Revenue is pulled from the founder's payment processor by API, which is what makes cross-listing
+     comparison possible at all.
+
+
+
+
+          1       Founder connects                                                                 2        Platform verifies                                                                  3   Buyers transact
+                                                                                    →                                                                                         →
+      Grants API access to Stripe, Paddle, Lemon Squeezy,                                      Revenue, MRR and subscriptions are read from the                                          Listings become filterable, comparable and — where
+      RevenueCat or Polar                                                                      processor — not typed in by the seller                                                    flagged — purchasable
+
+
+
+
+Verified payment rails behind the listings
+                                                                                                                                                     Why verification is the whole product
+                                                                                                                                                     In private small-business M&A, the buyer's single largest cost is proving
+                                                                                                                                                     the seller's revenue is real.
+                                                                                                                                                     TrustMRR removes that cost by reading the payment processor directly
+                                                                                                                                                     — which is also why this dataset is worth analysing at all.
+                                                                                                                                                     Note: not every listing is for sale. The on_sale flag separates the public
+                                                                                                                                                     directory from the actual marketplace.
+
+
+
+Columns: payment_provider, trustmrr_url, website, on_sale, record_id. Calculation: share of listings by provider; share where on_sale = TRUE. Provider mix illustrative — compute from data.
+W H Y W O U L D A N Y O N E S E L L A P R O F I TA B L E B U S I N E S S ?                                                                                                                                           I L L U S T R AT I V E S H A P E
+
+
+Most listings are liquidity events, not distress sales — the supply side is dominated by
+small, healthy, founder-fatigued assets.
+     S O W H AT The dominant seller is a solo founder with a working product, no team, and a better use of their next twelve months. That profile is what makes these assets
+     acquirable — and what limits how big they get.
+
+
+
+Failure is the minority case
+Only one of the four seller archetypes involves a broken                                                        Strategic pivot                                                          Portfolio rotation
+business. The other three are choices.
+
+The build-to-boredom cycle
+                                                                                                                Healthy asset, founder's attention has moved on                          Growing asset sold deliberately to recycle
+Solo founders build these in months and lose interest in
+                                                                                                                to a new project                                                         capital into the next build
+years. The asset outlives the enthusiasm.
+
+The quadrant that should worry a buyer
+                                                     FOUNDER COMMITMENT → DISENGAGED
+Real revenue with zero active subscriptions usually means
+one-time or service revenue that does not carry forward to
+the new owner.
+                                                                               Genuine distress                                                                                          Founder fatigue
+
+
+                                                                                                                Declining revenue, founder disengaged — the                              Flat or slowly declining, still earning, founder
+                                                                                                                smallest of the four groups                                              simply done
+
+
+
+
+                                                                                                                                                         BUSINESS HEALTH: DECLINING → GROWING
+
+
+
+Columns: on_sale, revenue_growth_30d_pct, mrr_usd, active_subscriptions, asking_price_usd. Calculation: segment on_sale = TRUE by growth sign and subscription density; report share still growing.
+W H Y D O E S T H I S M A R K E T M AT T E R ?
+
+
+Below the threshold where private equity and investment banks operate, TrustMRR is
+the only price discovery mechanism that exists.
+     S O W H AT  A structural gap has been filled. Businesses too small for a banker and too real to abandon now have a route to liquidity — which changes how founders build
+     and creates a new asset class for small buyers.
+
+
+
+    $0 – $ 1K                                                           $ 1K – $ 1M                                                                                                    $ 1 M – $ 1 0 0M +
+
+    ABANDONED                                                           TRUSTMRR / MICRO-ACQUISITION                                                                                   PE & INVESTMENT BANKING
+    No market existed. Founder switches off the                                                                                                                                        Established process, advisers, diligence, negotiated
+                                                                        The new middle. Verified metrics, standard terms, self-serve.
+    server.                                                                                                                                                                            terms.
+
+
+DEAL VALUE (log scale) →
+
+
+
+Where this dataset physically sits
+                                                                                                                                                                        The upstream effect
+
+
+                                                                                                                                                                        Once an exit route exists at this size, founder behaviour
+                                                                                                                                                                        changes before the exit: people build to sell, instrument
+                                                                                                                                                                        revenue early, and connect a payment processor on day one.
+
+                                                                                                                                                                        Liquidity is what turns a project into an asset class.
+
+
+
+
+Columns: asking_price_usd. Calculation: distribution for on_sale = TRUE — median, p25, p75, p90; share priced under $50K. Bar shape illustrative — compute from data.
+02   The dataset
+     What we can honestly claim — and what we cannot
+W H AT A R E W E A N A LY S I N G , A N D W H AT C A N I T N O T T E L L U S ?                                                                                                                                 I L L U S T R AT I V E S H A P E
+
+
+1,000 listings and 29 fields — but the analytically rich fields are populated for only a
+minority, so conclusions come from the populated core, not the full census.
+
+     S O W H AT        Treat this as a directional map of a market, not an audited financial database. Every downstream conclusion is stated on a named subset and sized accordingly.
+
+
+
+                                                                                                                                                                     The financial spine is trustworthy
+                                                                                                                                                                     Revenue, MRR and subscriptions are API-verified from the payment
+                                                                                                                                                                     processor.
+
+                                                                                                                                                                     The descriptive skin is not
+                                                                                                                                                                     Category, persona and value proposition are founder-written marketing
+                                                                                                                                                                     copy, carrying positioning bias.
+
+                                                                                                                                                                     Traffic data is thin
+                                                                                                                                                                     Visitor and revenue-per-visitor columns are sparse, so Section 5 is
+                                                                                                                                                                     directional and stated on a named subset.
+
+                                                                                                                                                                     Watch the stealth rows
+                                                                                                                                                                     Listings with no name, website or country. Keep for revenue analysis;
+                                                                                                                                                                     exclude from geography and category cuts.
+
+
+
+
+* Populated only where on_sale = TRUE. Calculation: fill rate = non-null count ÷ 1,000, per column. Fill rates illustrative — compute from data before presenting.
+03   Market landscape
+     What is listed, who lists it, and where the value actually sits
+W H AT K I N D S O F S TA RT U P S A R E L I S T E D ?                                                                                                                                                        I L L U S T R AT I V E S H A P E
+
+
+The market is a power law: roughly half of all listings generate no revenue at all — the
+economic weight sits in a thin top decile.
+     S O W H AT Listing volume is a vanity metric. Any market sizing, category ranking or geographic claim must be revenue-weighted, or it describes a market that does not
+     economically exist.
+
+
+
+
+                                                                                                                                                                         ~50%
+                                                                                                                                                                         of listings report zero twelve-month revenue
+
+
+
+
+                                                                                                                                                                         Higher still
+                                                                                                                                                                         the share reporting zero MRR — many earning businesses are
+                                                                                                                                                                         simply not subscription
+
+
+
+
+                                                                                                                                                                         Top 10%
+                                                                                                                                                                         carries the overwhelming majority of all revenue on the
+                                                                                                                                                                         platform
+
+
+
+
+Columns: revenue_12m_usd, mrr_usd, revenue_all_time_usd. Calculation: Lorenz curve and Gini on revenue_12m_usd; revenue share of top decile and top percentile. Curve shape illustrative.
+W H I C H C AT E G O R I E S D O M I N AT E ?                                                                                                                                                        I L L U S T R AT I V E S H A P E
+
+
+AI, SaaS and Productivity dominate listing volume — but that reflects low build cost,
+not demand.
+
+     S O W H AT        Category crowding signals ease of building, not attractiveness of the market. High listing share with low median revenue is a warning, not an endorsement.
+
+
+Listings by category (count)                                                                                                            Median 12-month revenue for the same categories (US$)
+
+
+
+
+Columns: category, markets_json, revenue_12m_usd, mrr_usd. Calculation: count and median (never mean) revenue per category; report blanks as an explicit 'Uncategorised' bar. Values illustrative.
+W H I C H C AT E G O R I E S A R E AT T R A C T I V E R AT H E R T H A N M E R E LY P O P U L A R ?                                                                                           I L L U S T R AT I V E S H A P E
+
+
+Value concentrates in unglamorous categories — the strongest per-listing economics are
+not where the listings are.
+
+     S O W H AT        Target the high-value, low-crowding quadrant. Categories that are hard to build in are exactly the ones where a built asset is worth buying rather than rebuilding.
+
+
+
+Split at the medians, not at zero
+State the split values on the slide so the quadrants are auditable                                       SPARSE & RICH — hunt here
+
+by anyone in the room.                                                                                  20,000
+
+Suppress thin categories
+Fewer than ten listings and the median is noise — fold them into                                        16,000
+an 'Other' bubble.
+
+Expect the reordering
+Fintech, Security and Sales tooling should sit higher than their                                        12,000
+
+listing counts suggest; consumer AI utilities low and far right.
+
+What the quadrant really measures                                                                         8,000
+Build difficulty. Where a build needs domain knowledge rather
+than an API key, the built asset holds value.
+                                                                                                          4,000
+
+
+
+                                                                                                                0                                                                               CROWDED & THIN — avoid
+                                                                                                                    0                        100                         200            300   400                        500
+
+
+
+
+Columns: category, revenue_12m_usd, mrr_usd, record_id. Calculation: per category count, median revenue, total revenue; bubble size = total category revenue; log scale on both axes.
+W H I C H C O U N T R I E S P R O D U C E T H E M O S T S TA RT U P S ?                                                                                                                                                   I L L U S T R AT I V E S H A P E
+
+
+Supply is global; revenue is not — geography predicts monetisation far more than it
+predicts output.
+     S O W H AT  Building capability has globalised faster than pricing power. Read a founder's country as a signal about pricing confidence and payment infrastructure, not about
+     product quality.
+
+
+Rank by listing count                                                                                                                   Rank by median 12-month revenue (US$)
+
+
+
+
+     THE REORDERING IS THE INSIGHT             The mechanism is pricing, not capability: the same product sold into US buyers earns a multiple of what it earns sold domestically elsewhere. A
+     strong product with weak geographic pricing is an improvable asset.
+
+Columns: country, revenue_12m_usd, mrr_usd, asking_price_usd. Calculation: count by ISO-2 country; median revenue restricted to countries with n ≥ 15; report blank-country rows as 'Undisclosed'. Values illustrative.
+04   Business model analysis
+     How a business charges matters more than what it sells
+W H I C H P R I C I N G M O D E L S G E N E R AT E H I G H E R M R R ?                                                                                                                                                  I L L U S T R AT I V E S H A P E
+
+
+Subscription businesses convert revenue into recurring revenue at several times the rate
+of one-time and credit models — the pricing model is the asset.
+
+     S O W H AT       Revenue that does not recur transfers poorly. Pay a multiple for a recurring revenue ratio above ~0.8; pay a price for anything below it.
+
+
+
+
+                                                                                                                                                                         R E C U R R I N G R E V E N U E R AT I O
+
+                                                                                                                                                                         RRR       =    (mrr_usd × 12)              ÷      revenue_12m_usd
+
+                                                                                                                                                                         What share of last year's revenue is locked in as of today. Capped at
+                                                                                                                                                                         2.0 to contain growth distortion.
+
+
+                                                                                                                                                                   The test in one sentence
+                                                                                                                                                                   $60K a year with $5K MRR scores 1.0 and is genuinely recurring.
+                                                                                                                                                                   $60K a year with zero MRR sells something one-time and starts every
+                                                                                                                                                                   month from zero.
+
+                                                                                                                                                                   Why buyers should care
+                                                                                                                                                                   One-time revenue is an earnings stream that resets the day the founder
+                                                                                                                                                                   stops promoting it.
+
+                                                                                                                                                                   Report n on every bar
+                                                                                                                                                                   pricing_model is sparsely populated and needs keyword normalisation
+                                                                                                                                                                   first — several buckets will be thin.
+
+
+
+Columns: pricing_model (normalise first), mrr_usd, revenue_12m_usd, active_subscriptions, revenue_30d_usd. Calculation: RRR per listing where revenue_12m_usd > 0; median by bucket. Values illustrative.
+W H I C H M O D E L S C R E AT E R E C U R R I N G R E V E N U E M O S T E F F I C I E N T LY ?                                                                                                                I L L U S T R AT I V E S H A P E
+
+
+B2B earns per customer; B2C earns per crowd — two different games with two different
+risk profiles.
+     S O W H AT       B2B assets carry concentration risk and pricing power; B2C assets carry churn risk and volume. Match the acquisition thesis to the operating capability of the
+     buyer.
+
+
+Median ARPU (US$ per subscription per month)                                                                                         Median active subscriptions
+
+
+
+
+     The concentration flag                                                                                                               The diligence question changes sides
+
+     A B2B listing with $2,000 MRR across three subscriptions is not a business — it is                                                   B2B buys pricing power at the cost of transfer risk. B2C at the same MRR across 400
+     three relationships with the departing founder, and those rarely survive transfer.                                                   subscriptions has no single churn event that moves the number.
+
+
+
+Columns: audience_type, mrr_usd, active_subscriptions, revenue_12m_usd. Calculation: ARPU = mrr_usd ÷ active_subscriptions where subs > 0; flag listings with subs < 10 and MRR > $500. Values illustrative.
+W H I C H C U S TO M E R P E R S O N A S G E N E R AT E H I G H E R S U B S C R I P T I O N C O U N T S ?                                                                                                             I L L U S T R AT I V E S H A P E
+
+
+The customer you choose sets the ceiling you can reach — personas with a professional
+budget and a recurring workflow sustain the largest subscriber bases.
+
+     S O W H AT        Buy into personas where the product sits inside a paid workflow. A tool a marketer opens every Monday retains; a tool a hobbyist opens once does not.
+
+
+
+                                                                                                                                                                      Budget-holders versus browsers
+                                                                                                                                                                      Developers, marketers and agencies expense software without a
+                                                                                                                                                                      decision cycle. Consumers churn the moment the novelty fades.
+
+                                                                                                                                                                      Why consumer AI utilities spike and decay
+                                                                                                                                                                      Large early revenue, thin subscription counts — the pattern shows up
+                                                                                                                                                                      repeatedly in the data.
+
+                                                                                                                                                                      Flag high ARPU with low scale
+                                                                                                                                                                      Median ARPU high but subscriptions under 20 means high value, low
+                                                                                                                                                                      scale and high transfer risk.
+
+                                                                                                                                                                      This clustering is judgement
+                                                                                                                                                                      target_persona is founder-written free text. Publish the bucket rules on
+                                                                                                                                                                      a backup slide so the analysis is auditable.
+
+
+
+
+Columns: target_persona (normalise into 8 buckets), active_subscriptions, mrr_usd, mrr_growth_30d_pct, audience_type. Calculation: median subscriptions, ARPU and growth per bucket; report n. Values illustrative.
+05   Revenue & growth
+     Separating momentum from noise, and audience from monetisation
+W H I C H S TA RT U P S G R O W T H E FA S T E S T — A N D D O E S I T M E A N A N Y T H I N G ?                                                                                                                   I L L U S T R AT I V E S H A P E
+
+
+The fastest growth rates belong to the smallest businesses: growth without an absolute
+base is noise, not momentum.
+
+     S O W H AT       Screen on absolute revenue added, not percentage growth. A business going from $20 to $60 MRR is not outgrowing one adding $4,000 a month.
+
+
+
+                                                                                                                                                                          Rank on absolute MRR added
+                                                                                                                                                                          mrr − (mrr ÷ (1 + growth)). Percentages flatter the smallest listings and
+                                                                                                                          MEANINGFUL GROWTH ZONE                          hide the real compounders.
+         500
+                                                                                                                            high MRR and positive growth
+                                                                                                                                                                          The divergence flag
+                                                                                                                                                                          Where total revenue rises but MRR does not, the business sold something
+         400
+                                                                                                                                                                          one-time — a lifetime deal, a bulk pack, a service engagement.
+
+                                                                                                                                                                          Why that matters for price
+         300
+                                                                                                                                                                          A buyer valuing that month at a multiple is paying twelve times for
+                                                                                                                                                                          something that happened once.
+         200                                                                                                                                                              Handle −100% separately
+                                                                                                                                                                          Churned-to-zero rows destroy averages. Exclude and report as their own
+                                                                                                                                                                          group.
+         100
+
+
+
+            0
+
+
+                0                             10,000                            20,000                            30,000                             40,000
+
+
+
+
+Columns: mrr_usd, mrr_growth_30d_pct, revenue_growth_30d_pct, revenue_30d_usd, startup_name, category. Points shown are real observations from the visible sample; full scatter to be computed.
+I S W E B S I T E T R A F F I C C O R R E L AT E D W I T H R E V E N U E ?                                                                                                                                                        I L L U S T R AT I V E S H A P E
+
+
+Traffic is necessary but nowhere near sufficient — high-traffic listings routinely earn less
+than low-traffic ones.
+     S O W H AT        Do not pay for visitors. Pay for the rate at which visitors become revenue — and treat weak monetisation on strong traffic as the most improvable profile in the
+     market.
+
+
+                                                                                                                                                                              State the sample size first
+                                                                                                                                                                              visitors_30d is sparsely populated. With data this thin, a confident
+      8,000                                                                                                                                                                   correlation coefficient would be dishonest.
+
+                                                                                                                                                                              Report Spearman as well as Pearson
+                                                                                                                                                                              Rank correlation is far more robust to the power law established earlier.
+
+      6,000                                                                                                                                                                   The upper-left quadrant is the prize
+                                                                                                                                                                              Real audience, weak extraction. Acquiring traffic is expensive;
+                                                                                                                                                                              converting it is a pricing decision.
+
+      4,000                                                                                                                                                                   Read the lower-right carefully
+                                                                                                                                                                              High revenue on almost no traffic usually means direct sales or an app
+                                                                                                                                                                              store — the traffic column simply is not capturing the channel.
+
+
+      2,000
+
+                                                                                                                                       HIGH TRAFFIC, WEAK
+                                                                                                                                            MONETISATION
+            0                                                                                                                               the improvable set
+                0                       10,000                      20,000                      30,000                      40,000                      50,000
+
+
+
+
+Columns: visitors_30d, revenue_30d_usd, revenue_per_visitor_usd, domain_rating. Calculation: Pearson on log-transformed values plus Spearman rank; restrict to rows where both are non-null and non-zero; state n on the chart.
+W H I C H C AT E G O R I E S H AV E T H E H I G H E S T R E V E N U E P E R V I S I TO R ?                                                                                                                               I L L U S T R AT I V E S H A P E
+
+
+A visitor is worth an order of magnitude more in some categories than others — the
+same audience monetises radically differently.
+
+     S O W H AT       Use revenue per visitor as the underwriting yardstick. It normalises for scale and exposes whether a business is efficient or merely large.
+
+
+
+                                                                                                                                                                   Rebuild the column before using it
+                                                                                                                                                                   revenue_per_visitor_usd is largely empty, but its two inputs are present
+                                                                                                                                                                   far more often. Recompute and the usable sample expands materially.
+
+                                                                                                                                                                   Willingness to pay drives the spread
+                                                                                                                                                                   B2B tooling, security and fintech at the top; consumer entertainment at
+                                                                                                                                                                   the bottom. Nothing about product quality is involved.
+
+                                                                                                                                                                   Use it as a diligence benchmark
+                                                                                                                                                                   A target below its category median is either a pricing problem you can
+                                                                                                                                                                   fix or a traffic-quality problem you cannot.
+
+                                                                                                                                                                   Distinguishing the two
+                                                                                                                                                                   That is the core diligence question for any traffic-led asset.
+
+
+
+
+Columns: revenue_per_visitor_usd, revenue_30d_usd, visitors_30d, category, audience_type. Calculation: recompute RPV = revenue_30d ÷ visitors_30d where blank; median by category, minimum n = 5. Values illustrative.
+06   Valuation insights
+     The pivot: how this market actually sets its prices
+H O W I S A S K I N G P R I C E S E T — A N D C A N W E T R U S T T H E S TAT E D M U LT I P L E ?
+
+
+The platform's headline multiple annualises a single month of revenue. This is the
+largest single source of mispricing in the market.
+   revenue_multiple                                    =          asking_price_usd                                    ÷          ( revenue_30d_usd                                   ×          VERIFIED TO THE DECIMAL
+                                                                          12 )                                                                                                                  across five listings
+
+
+
+                                                                                                                                                   Platform
+  Listing                                                 Asking price                Revenue, last 30d                 Computed
+                                                                                                                                                      states                  The zero trap
+  Last Followed                                             $130,000                               $7,202                    1.50x                      1.5x
+                                                                                                                                                                              Where last-month revenue is zero, the multiple displays as
+  Writing9                                                  $200,000                               $5,372                    3.10x                      3.0x                  0.0x. That is undefined, not cheap.
+
+  Eloking                                                   $300,000                               $5,055                    4.95x                      4.9x                  Anyone sorting the marketplace by multiple ascending is
+  ChurchCalls.ai                                              $50,000                                  $191                  21.8x                    21.8x                   sorting straight into the worst assets on the platform.
+
+  Decodex Mobile App                                            $4,900                               $2.99                 136.6x                   136.6x
+
+
+     The correction                                                                                                                                                           Distortion index
+     Corrected multiple                          =     asking_price_usd ÷ revenue_12m_usd                                                                                     revenue_12m ÷ (revenue_30d × 12)
+
+     Never screen on the platform multiple. Recompute every multiple on twelve months of revenue, and treat the                                                               Above 1: the last month was weak, so the asset looks more
+     gap between the two as a ranked list of mispriced assets. A business with one bad month appears to trade at a                                                            expensive than it is.
+     punitive multiple; one with a single lifetime-deal spike appears to be a bargain. Neither has anything to do                                                             Below 1: the last month spiked, so it looks cheaper than it is.
+     with the underlying business.
+                                                                                                                                                                              Rank the whole market by this and you have a list of mispriced
+                                                                                                                                                                              assets.
+
+
+All five worked examples are actual dataset values. Columns: asking_price_usd, revenue_30d_usd, revenue_12m_usd, revenue_multiple, on_sale. Replicate across the full for-sale set and report the match rate.
+H O W D O E S A S K I N G P R I C E C O M PA R E W I T H A N N U A L R E V E N U E ?                                                                                                                                      I L L U S T R AT I V E S H A P E
+
+
+On corrected multiples the market has no consistent price — comparable businesses
+trade across a several-fold range.
+     S O W H AT       Dispersion is the opportunity. In a market with no price consensus, a buyer with a consistent valuation method has a structural edge over sellers pricing on
+     intuition.
+
+
+                                                                                                                                                                   Some dispersion is real
+                                                                                                                                                                   A recurring B2B asset should command more than a one-time
+                                                                                                                                                                   consumer app. That premium is legitimate, not an error.
+
+                                                                                                                                                                   Much of it is not
+                                                                                                                                                                   Founders anchor on effort, hope, or a number they read on a social
+                                                                                                                                                                   feed.
+
+                                                                                                                                                                   Cross-check against run-rate
+                                                                                                                                                                   asking_price ÷ (mrr × 12). Where the two multiples diverge sharply,
+                                                                                                                                                                   revenue is not recurring.
+
+                                                                                                                                                                   Bring one method to every listing
+                                                                                                                                                                   Corrected multiple, adjusted for RRR, then negotiate against the seller's
+                                                                                                                                                                   anchor rather than around it.
+
+
+
+
+Columns: asking_price_usd, revenue_12m_usd, revenue_3m_usd, mrr_usd, category, on_sale. Restrict to on_sale = TRUE and revenue_12m_usd > 0; report count excluded for having a price but no annual revenue. Values illustrative.
+D O E S D O M A I N R AT I N G I N F L U E N C E VA L U AT I O N ?                                                                                                                                                               I L L U S T R AT I V E S H A P E
+
+
+Domain authority predicts revenue but not price — the one genuinely non-replicable
+asset is being given away.
+
+     S O W H AT        Weight domain rating in your own valuation even though the market does not. It is the only asset in a micro-business that cannot be rebuilt in a weekend.
+
+
+Domain rating vs. price paid                                                                                                            Domain rating vs. revenue earned
+
+
+
+
+Flat — the market does not pay for it                                                                                                   Steep — it strongly predicts revenue
+
+
+
+                                                   An attribute that predicts revenue but not price is the textbook definition of underpriced. A DR-30 domain represents years of accumulated
+     T H E A S Y M M E T RY I S T H E A R G U M E N T
+     links a new owner cannot buy or shortcut, and it makes every future product launched on it cheaper to distribute. Separately: test x_followers — the dataset contains a listing with 52,000
+     followers and effectively no revenue.
+
+
+
+Columns: domain_rating, asking_price_usd, revenue_12m_usd, visitors_30d, x_followers, category. Calculation: correlation of DR with corrected multiple vs. with revenue and visitors; medians by DR band. Values illustrative.
+07   Acquisition opportunities
+     From 1,000 listings to a shortlist you can diligence
+W H I C H C H A R A C T E R I S T I C S M A K E A N AT T R A C T I V E A C Q U I S I T I O N TA R G E T ?                                                                                                                        I L L U S T R AT I V E S H A P E
+
+
+Four sequential filters reduce 1,000 listings to a shortlist small enough to diligence
+properly.
+
+     S O W H AT        The screen is the deliverable. It survives this dataset and can be re-run on the platform monthly as new listings appear.
+
+
+                                                                                                                                                                                                   Filter 1 removes fantasy
+                                                                                                                                                                                                   The zero-revenue tail from the power law.
+    1,000                     All listings
+                                                                                                                                                                                                   Filter 2 removes revenue that will not transfer
+                                                                                                                                                                                                   Recurring, with enough customers to survive churn.
+
+                                                                                                                                                                                                   Filter 3 removes founder-dependency
+            ~340                       Real revenue                                  revenue_12m ≥ $10K · on_sale = TRUE
+                                                                                                                                                                                                   An asset, not a set of relationships.
+
+                                                                                                                                                                                                   Filter 4 is the only one about price
+                                                                                                                                                                                                   Deliberately last. Cheap assets failing the first three are
+                                                                                                                                                                                                   the trap.
+                     ~95                       Recurring                                     RRR ≥ 0.6 · active_subscriptions ≥ 25
+
+
+
+
+                             ~38                        Transferable
+                                                                                                      DR ≥ 5 or above-median traffic · no single-
+                                                                                                      customer concentration
+
+
+
+
+                                      ~14                       Priced right
+                                                                                                              corrected multiple ≤ category
+                                                                                                              median
+
+
+
+Columns: on_sale, revenue_12m_usd, mrr_usd, active_subscriptions, domain_rating, visitors_30d, asking_price_usd, category. Run a ±20% sensitivity on each threshold; if the shortlist swings wildly, widen them. Counts illustrative.
+W H I C H S TA RT U P S A P P E A R U N D E RVA L U E D ?                                                                                                                                                                      I L L U S T R AT I V E S H A P E
+
+
+A small set combines recurring revenue, real traffic and a corrected multiple below its
+category median — these are the market's genuine opportunities.
+
+     S O W H AT        These warrant diligence. Each is undervalued for a specific and stateable reason, not because it is cheap.
+
+
+
+  Listing                                  Category                   ARR                    Corrected                Platform                RRR             DR            Why undervalued
+
+  [Target 1]                               Fintech                    $—                     —x                       —x                      —               —             Soft trailing month distorts platform multiple
+
+  [Target 2]                               Security                   $—                     —x                       —x                      —               —             Under-monetised traffic vs. category RPV
+
+  [Target 3]                               SaaS                       $—                     —x                       —x                      —               —             Domain strength not reflected in price
+
+  [Target 4]                               Analytics                  $—                     —x                       —x                      —               —             High RRR, priced as a one-time asset
+
+  [Target 5]                               Sales                      $—                     —x                       —x                      —               —             Subscriber base well above category median
+
+
+
+
+     Rank by dollars, not by multiple                                                                                                        The profile to look for
+     Value gap = (category median corrected multiple − listing                                                                               A business whose last thirty days were soft for a visible reason while twelve-month
+     corrected multiple) × revenue_12m                                                                                                       revenue and subscriber base held steady. The platform multiple punishes it; the
+                                                                                                                                             corrected multiple does not.
+     Ranking on dollars of mispricing correctly favours larger assets over cheap noise.
+                                                                                                                                             Cap the table at 8–10 rows — a board cannot act on more.
+
+
+Table to be populated from the Slide 19 survivors, ranked by value gap. Columns: startup_name, category, country, revenue_12m_usd, mrr_usd, asking_price_usd, revenue_multiple, active_subscriptions, domain_rating, visitors_30d.
+W H I C H S TA RT U P S A P P E A R O V E R P R I C E D ?                                                                                                                                                                     I L L U S T R AT I V E S H A P E
+
+
+And the assets to walk away from — comparable listings at several times their category
+median, plus a large block advertising a meaningless 0.0x.
+
+     S O W H AT        Overpricing here is usually structural, not greedy. Founders anchor on a single strong month, and the platform's arithmetic amplifies it.
+
+
+Listings displaying 0.0x — asking price against actual trailing revenue
+                                                                                                                                                                       These are real dataset rows
+                                                                                                                                                                       Every one carries a genuine asking price, zero revenue in the last thirty
+                                                                                                                                                                       days, and a platform multiple of 0.0x.
+
+                                                                                                                                                                       Be fair to the sellers
+                                                                                                                                                                       Most overpricing is not deception — it is a founder extrapolating their
+                                                                                                                                                                       best month, and a platform that does the extrapolation automatically.
+
+                                                                                                                                                                       The zero-substance flag
+                                                                                                                                                                       Asking price above $1,000 with no annual revenue and no
+                                                                                                                                                                       subscriptions. Priced on hope.
+
+                                                                                                                                                                       The screening consequence
+                                                                                                                                                                       Any automated screen sorting on multiple ascending will surface
+                                                                                                                                                                       precisely the wrong assets first.
+
+
+
+
+Listings shown are actual dataset rows with revenue_multiple = 0.0x and a positive asking price. Also compute: corrected multiple above category p90 where revenue_12m_usd > 0; sum of asking prices behind the 0.0x block.
+08   Recommendations
+     What founders and investors should do differently on Monday
+W H AT S H O U L D A F O U N D E R D O D I F F E R E N T LY ?
+
+
+Valuation is set by recurring revenue, subscriber count and domain strength — the three
+things most founders instrument last.
+
+     S O W H AT        Five moves, each traceable to evidence in this deck. One of them changes the headline valuation without changing the business at all.
+
+
+
+  Move                                                                                           Why it pays                                                     Evidence        Horizon
+
+  Convert one-time pricing to subscription                                                       RRR is the single largest driver of the corrected multiple      Slide 10        6–12 months
+
+  Grow subscriber count, not just revenue                                                        Concentration destroys transfer value in diligence              Slide 11        6–12 months
+
+  Sell to budget-holding personas                                                                Professional buyers retain; consumers churn on novelty          Slide 12        Strategic
+
+  Protect the last 90 days before listing                                                        The platform multiple reads only the trailing 30 days           Slide 16        Immediate
+
+  Invest in the domain, not just the product                                                     DR predicts revenue and is not priced into the ask              Slide 18        12+ months
+
+
+
+
+      LEAD WITH ROW FOUR             Because the platform annualises the trailing thirty days, the month a founder chooses to list can move the headline valuation by a large factor with no change
+      to the business. That is not gaming the system — it is the same discipline as not selling a seasonal business in its off-season.
+
+
+Quantify row four before presenting: median difference between platform and corrected multiple, expressed as the valuation swing a single weak month produces.
+W H AT S H O U L D A B U Y E R D O D I F F E R E N T LY ?
+
+
+Replace the platform's multiple with a four-part underwriting standard, and this market
+becomes systematically screenable.
+
+     S O W H AT        Underwrite on corrected multiple, recurring revenue, concentration and domain strength. Re-run monthly — the shortlist refreshes as listings turn over.
+
+
+
+
+                             Price discipline                                                                                                         Scoring method
+      35%                    Corrected multiple
+                                                                                                                ≤ category median
+
+                                                                                                                                                      Weighted sum of within-category percentile ranks —
+                                                                                                                                                      not raw values.
+                             Revenue durability
+      30%                    Recurring revenue ratio
+                                                                                                                ≥ 0.6                                 A 3x multiple means something entirely different in
+                                                                                                                                                      Fintech than in consumer mobile apps.
+
+
+
+                             Transfer risk
+      20%                                                                                                       ≥ 25 subscriptions                    Reweight for who you are
+                             Subscriptions; single-customer share
+
+                                                                                                                                                      Strong at pricing and packaging? Weight the
+                                                                                                                                                      monetisation gap far higher. Want passive income?
+                             Moat                                                                                                                     Weight transfer risk highest.
+      15%                                                                                                       ≥ 5
+                             Domain rating
+
+
+
+
+Columns: asking_price_usd, revenue_12m_usd, mrr_usd, active_subscriptions, domain_rating, category. Weights are a starting position, not a finding.
+EXECUTIVE SUMMARY
+
+
+A new asset class has become liquid before it has become efficiently priced — and
+that gap is the opportunity.
+TOP FIVE FINDINGS
+
+
+ 1     The market is a power law                                                                                                                      SLIDE 6
+
+
+       Roughly half of listings have no revenue; the top decile carries the overwhelming majority. Listing counts describe enthusiasm, not markets.
+
+
+
+ 2     The headline multiple annualises one month                                                                                                     SLIDE 16
+
+
+       asking_price ÷ (revenue_30d × 12), verified to the decimal. One weak or strong month resets apparent valuation.
+
+
+
+ 3
+       Recurring revenue determines transferable value                                                                                                SLIDE 10
+
+
+       Subscription models convert revenue into durable MRR at multiples of what one-time and credit models achieve.
+
+
+
+ 4     Traffic does not equal revenue                                                                                                                 SLIDE 14
+
+
+       Monetisation quality dominates audience size. High traffic with low monetisation is the most improvable profile in the market.
+
+
+ 5     Domain authority predicts revenue but not price                                                                                                SLIDE 18
+
+
+       The one genuinely non-replicable asset in a micro-business is not being paid for.
+    EXECUTIVE SUMMARY                       ·    I M P L I C AT I O N S & R I S K S
+
+
+    Liquidity has arrived in this market ahead of pricing efficiency. Participants who bring a
+    consistent method will capture that gap.
+    FOR FOUNDERS                                                            FOR INVESTORS                                                           A C Q U I S I T I O N O P P O RT U N I T I E S
+
+•      Build recurring revenue early — it is the multiple              •         Recompute every multiple on twelve months                     •            Shortlist ranked by dollar value gap, not by multiple
+
+•      Diversify subscribers to survive diligence                      •         Screen on recurring revenue before price                      •            Strongest profile: steady twelve-month revenue with a
+                                                                                                                                                            soft trailing month
+•      Sell to budget-holders, not browsers                            •         Treat sub-25-subscriber B2B revenue as founder
+                                                                                 relationships                                                 •            Punished by the platform's arithmetic, unharmed in
+•      Manage the trailing 30 days before listing                                                                                                           fundamentals
+                                                                       •         Bid for domain strength the market is not charging for
+•      Treat the domain as a compounding asset                                                                                         •                    Second tier: real traffic, weak monetisation, fixable by
+                                                                       •         Re-run the screen monthly — the inefficiency is                            pricing
+                                                                                 structural
+
+
+
+
+      R I S K S I N I N T E R P R E T I N G T H I S D ATA S E T
+
+      Sparsity Traffic, category, pricing and persona are populated for a   The 0.0x trap A zero multiple means zero trailing revenue, not a       Self-authored fields Revenue is API-verified; category and
+      minority. Every cut on those fields is a subset claim.                free business.                                                         persona are founder-written marketing copy.
+
+
+      Survivorship bias This is what founders chose to list. Businesses     Asks, not clears No column records what anything actually sold         Point-in-time Frozen 30 July 2026. Thirty-day metrics are volatile
+      that failed quietly never appear.                                     for. The realised discount is unobservable.                            by construction.
+

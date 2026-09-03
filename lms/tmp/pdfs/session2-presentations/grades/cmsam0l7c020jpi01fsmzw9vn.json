@@ -1,0 +1,38 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 7,
+    "accuracy": 6.5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong thesis on anonymity premium, honest missingness caveat, and disciplined causal language throughout.",
+  "fix_next": "Slide 4 claims r=0.802 for subscriptions vs. revenue but shows no scatter plot and is unverifiable against the frozen dataset—show the chart or cite the filter.",
+  "verdict": "Honest, focused, and well-framed but narrow in scope and light on charts.",
+  "flags": [
+    "unverifiable-correlation-claim",
+    "missing-scatter-plot",
+    "anonymous-count-slightly-off",
+    "all-time-revenue-not-30day-on-outlier-slide"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 2: States 130 anonymous / 870 named; reference is 129/871—minor but wrong. Slide 2: Claims $4.2M (26.9%) anonymous revenue; reference is 26.525% (~$4.14M), close but the rounded 26.9% overstates slightly. Slide 5: Table header says 'All-Time Revenue' but the narrative text references 30-day median/mean ($400 / $15,596); the mean 30-day revenue is $15,596 which checks out, but juxtaposing it with an all-time revenue table without clear labeling is misleading. Slide 6: '2.3x median revenue multiple' is stated without specifying B2B vs B2C; reference shows B2B 2.35x and B2C 2.30x—acceptable rounding but the denominator/filter is unspecified.",
+  "evidence": {
+    "insight": "The anonymity-as-signal thesis (slides 2, 8) is genuinely interesting and goes beyond chart description. The subscriber-revenue correlation (slide 4) adds a second actionable finding. However, the deck doesn't explore category-level median differences, provider ecosystem, or TLD signals—scope is narrow for 1,000 rows.",
+    "narrative": "Clear arc: hook (anonymity premium) → landscape → core relationship → outliers → exit market → caveat → takeaway. Each slide has a labeled role. The landing on slide 8 synthesizes four points coherently. Sequence is purposeful, not a list.",
+    "framing": "Slide 1 sets scope (1,000 startups, 65 countries, frozen date). Slide 7 dedicates an entire slide to data quality caveats—rare and commendable. Audience (marketplace buyer/analyst) is implicit but clear. Definitions of 'anonymous' are given on slide 2.",
+    "accuracy": "Anonymous count 130 vs reference 129 is a minor error. Revenue share 26.9% vs 26.525% is a small overstatement. Slide 5 mixes 30-day statistics in text with all-time revenue in the table without clear separation. The r=0.802 claim (slide 4) cannot be verified against the frozen dataset reference and no chart is shown. The 2.3x multiple is approximately correct but filter is unspecified.",
+    "visual": "Clean, consistent dark-theme design with good hierarchy and legible typography. However, slide 4 prominently claims a correlation but shows no scatter plot—the chart area is empty. Slide 3 has two well-executed bar charts. Overall the deck is text-heavy for a data story; only one slide (3) has actual data visualizations. The stacked bar on slide 2 is simple but effective.",
+    "ai_slop": "Decorative teal circles on slides 1 and 8 add nothing. The overall template is polished but the visual sameness across dark slides is noticeable. No fabricated-looking charts, but the absence of charts where claimed (slide 4) is concerning."
+  },
+  "confidence": "high",
+  "total": 68,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15586,
+    "output_tokens": 976
+  }
+}

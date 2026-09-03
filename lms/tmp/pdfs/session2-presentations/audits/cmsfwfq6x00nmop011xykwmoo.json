@@ -1,0 +1,34 @@
+{
+  "slide_count": 16,
+  "scores": {
+    "insight": 9,
+    "narrative": 9,
+    "framing": 9,
+    "accuracy": 7.5,
+    "visual": 9,
+    "bonus": 4
+  },
+  "what_worked": "The custom market map, live simulator, and editorial charting turn analysis into an actual decision tool.",
+  "fix_next": "Separate official categories from keyword-derived market tags, and remove the incorrect claim that Productivity has 275 category rows.",
+  "verdict": "Exceptional data story with one important classification error.",
+  "flags": [
+    "category-tag-conflation",
+    "custom-taxonomy-needs-method"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 12 calls Productivity the most crowded category at 275, but the official category has 49 rows; 275 appears to be a keyword-derived tag. Slide 16's custom market tags need an explicit classification method.",
+  "evidence": {
+    "insight": "Slides 10, 15, and 16 add original keyword grouping, a benchmark simulator, and a strategic crowding-versus-pay synthesis.",
+    "narrative": "The deck moves from source and base rates through rejected signals, useful predictors, buy-versus-build, and a decisive closing recommendation.",
+    "framing": "Slide 2 states provenance, selection bias, and limits; later slides label sample sizes and distinguish benchmarks from forecasts.",
+    "accuracy": "Core reference values and category medians match the frozen key. The main flaw is conflating official category counts with a custom keyword taxonomy.",
+    "visual": "Claim-led titles, annotated charts, disciplined hierarchy, and restrained color make sixteen dense slides unusually readable.",
+    "ai_slop": "none"
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Manual final audit corrected the first pass's mistaken treatment of all custom market tags as fabricated categories while retaining the genuine Productivity-count conflation penalty.",
+  "total": 91,
+  "model": "manual-final-audit",
+  "prompt_version": "manual-final-audit-v1"
+}

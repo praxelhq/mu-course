@@ -1,0 +1,42 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7.5,
+    "framing": 6,
+    "accuracy": 4,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Investor-framed thesis that crowding ≠ quality, carried through a clean arc with consistent visual design.",
+  "fix_next": "Verify every median against the actual data; disclose 274 missing categories and flag n<10 samples before drawing conclusions.",
+  "verdict": "Sharp thesis and polished design undermined by numerous wrong medians and undisclosed missingness.",
+  "flags": [
+    "inaccurate-medians",
+    "wrong-total-revenue",
+    "wrong-ai-revenue-share",
+    "small-n-without-caveat",
+    "missing-data-not-disclosed",
+    "cherry-picked-anecdotes"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 1: '$13.5M combined MRR' vs actual $15.6M total revenue. Slide 3: AI revenue share stated 13.4% but should be ~15.1% ($2.36M/$15.6M); also 19.7% is based on 1000 denominator ignoring 274 missing categories. Slide 4: Multiple medians wrong—Marketing $1,586 vs ref $2,369.50; Content Creation $1,254 vs $1,237.50 (close); AI $446 vs $503; Health & Fitness $392 vs $662.50; SaaS $303 vs $200.50 (direction change relative to AI); Mobile Apps $223 vs $232.50 (close); Dev Tools $185 vs $635 (off by 3.4×); Productivity $42 not verifiable but suspicious. Slide 7: Analytics median $1,294 vs ref $419 (off by 3×); Education $2,142 vs $2,435 (moderate). Slide 5: 66% concentration claim unverifiable but plausible. Slide 7: Customer Support n=5 and Marketplace n=7 used without statistical caveat.",
+  "evidence": {
+    "insight": "Core thesis—crowded AI category yields worse median outcomes than less-populated categories—is decision-useful for investor audience. Concentration analysis (slide 5) adds depth. However, analysis stays one-dimensional: no exploration of what distinguishes AI winners, no B2B/B2C or provider-level cuts, no discussion of survivorship or selection bias in the dataset.",
+    "narrative": "Clean five-beat arc: gold rush → median reality → winner-take-most concentration → hype≠traction → alternatives → actionable takeaways. Each slide advances the thesis. Landing slide synthesizes three numbered lessons. Loses credit for no counterargument or alternative explanation (e.g., AI startups may be younger).",
+    "framing": "Investor/due-diligence audience is clear from title and language. Source and freeze date cited on every slide. However, 274 missing category values (27.4% of dataset) are never disclosed, which is critical when the entire argument rests on category comparisons. Slide 7 draws conclusions from n=5 and n=7 without flagging fragility. The '1,000 live, revenue-generating startups' framing on slide 2 ignores 216 zero-revenue rows.",
+    "accuracy": "At least 8 material errors. Total revenue wrong by ~$2M. Dev Tools median off by 3.4×, Analytics off by 3×, Marketing off by ~$800, Health & Fitness off by ~$270. These errors corrupt the ranking that is the deck's central exhibit. AI revenue share also miscalculated. The SaaS median ($303 shown vs $200.50 ref) actually reverses its position relative to some peers, though the AI-is-low thesis broadly survives. Denominator for category percentages ignores missingness.",
+    "visual": "Consistent navy/orange/teal palette with clear hierarchy. Section labels, annotated bar charts, and donut charts are well-executed. Slide 6 case-study layout is clean and effective. Slide 4 color-highlights AI bar appropriately. No chart junk or decorative excess. Minor: donut charts on slide 3 are imprecise for comparing two percentages; a bar or dot comparison would be sharper.",
+    "ai_slop": "Minimal. Deck is focused, avoids generic filler. 'Lottery ticket' metaphor on slide 5 is slightly overblown but grounded in a specific (if unverifiable) claim. No repetitive template language or decorative charts."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 4.5 to 4.0: on closer inspection, at least 8 material errors including Dev Tools median off by 3.4× and Analytics off by 3×, which directly corrupt the central ranking argument. Lowered framing from 6.5 to 6.0: claiming '1,000 live, revenue-generating startups' while 216 have zero revenue and 274 lack category data is a meaningful framing omission for the deck's core argument. Other scores confirmed as appropriate.",
+  "total": 63,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 15470,
+    "output_tokens": 1270
+  }
+}

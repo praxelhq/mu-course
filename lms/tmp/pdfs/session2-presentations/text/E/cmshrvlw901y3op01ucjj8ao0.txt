@@ -1,0 +1,255 @@
+TrustMRR Screen               ·   Part II                                             THE FOUR CUTS
+
+
+                                                                                      01   Can it pay?
+
+From a thousand                                                                            1,000 → 85
+
+
+
+
+to four.                                                                              02   Is it worth owning?
+                                                                                           85 → 12
+
+
+
+                                                                                      03   Do the numbers agree?
+Four cuts, each one a question a real investment committee would ask — and the four
+                                                                                           12 → 5
+names left standing at the end of them.
+
+
+                                                                                      04   Can it be diligenced?
+                                                                                           5→4
+
+Session 3 · Data Analysis · Masters' Union
+ CUT 01 · 1,000 → 85
+
+
+
+
+Can it actually get paid?
+Four revenue gates, all using fields that are 100% populated
+
+
+                                                                          Every company on the list
+                             1,000                                        The starting universe
+
+
+                                                                          MRR of at least $1,000
+          409                                                             Is anyone paying, repeatedly?
+
+
+                                                                          MRR growing month on month
+   164                                                                    Is it going up rather than down?
+
+
+                                                                          50 or more active subscriptions
+   125                                                                    Spread demand, or one whale?
+
+
+                                                                          Trailing revenue above $50,000
+    85                                                                    Has it survived a full year?
+
+
+
+    Why these four fields: MRR, subscriptions and trailing revenue are complete for all 1,000 rows. Nothing is excluded for staying quiet — the sparse fields explain the
+    survivors, they never select them.
+   CUT 02 · 85 → 12
+
+
+
+
+Is it worth owning?
+Seven parameters scored 0–2, because clearing a revenue bar is not the same as being investable
+
+
+ Parameter                         Measured by                                      1 pt / 2 pts   Tier                   n         Median ARR          Growth           ARPU           For sale
+
+ Scale                             ARR                                              $250k / $1M    Tier 1                12           $1.52M             24.3%            $82              0
+
+ Momentum                          30-day MRR growth                                5% / 15%
+                                                                                                   Tier 2                37            $323k             12.1%            $55              6
+ Durability                        Run-rate ÷ trailing                              1.0x / 1.5x
+                                                                                                   Tier 3                36            $185k             5.0%             $38             15
+ Revenue quality                   MRR ÷ monthly revenue                            0.6 / 0.85
+
+ Monetisation                      ARPU                                             $20 / $75
+
+
+ Concentration                     Active subscriptions                             200 / 1,000           The tiers validate themselves
+
+ Moat                              Domain authority                                 25 / 50
+                                                                                                          Nobody in Tier 1 is for sale. Six of 37 in Tier 2 are. Fifteen of 36 in Tier 3 are.
+                                                                                                          Founders are pricing their own businesses in exactly the order the scorecard
+                                                                                                          ranks them — an independent check that the seven parameters are
+                                                                                                          measuring something real.
+Being listed for sale is held outside the score — it is a discount on price, not a mark against
+the business.                                                                                             Tier 1 holds 66% of the ARR inside the 85 while being 14% of its companies.
+
+
+
+Thresholds set from the distribution of the 85. Maximum score 14; Tier 1 = 10–13.
+    CUT 03 · 12 → 5
+
+
+
+
+Do the company's own numbers agree?
+The score rewards size and speed. It cannot tell you whether the story matches the bank account
+
+Two checks: reported MRR should not exceed the cash collected last month, and MRR growth should point the same way as revenue growth. Seven of the twelve fail one
+or both.
+
+ Company                                           MRR ÷ cash                    MRR growth     Revenue growth   Verdict
+
+ Postiz                                               1.02                         +15.0%          +22.7%        Clean — cash growing faster than MRR
+
+ Cometly                                              0.94                          +3.0%          +17.0%        Clean — cash accelerating
+
+ Apiframe                                             0.79                         +31.0%          +31.9%        Clean — near-perfect agreement
+
+ RankAI                                               1.03                         +23.4%          +35.4%        Clean
+
+ Stealth Company                                      0.97                         +32.6%          +34.7%        Clean
+
+ GojiberryAI                                          1.28                         +23.6%          +19.7%        Both growing, but MRR runs ahead of cash
+
+ Supergrow                                            2.47                         +24.9%          +14.0%        MRR is 2.5x the cash collected
+
+ Kibu                                                 1.17                         +52.8%          −25.6%        MRR up 53% while revenue fell 26%
+
+ Stan                                                 1.25                          +0.4%           −7.6%        Barely growing; revenue already falling
+
+Upscale System, Web3Forms and AdStellar fail the same way and are not shown. Supergrow scores 12, with only two companies scoring higher, and is the first name this cut
+removes.
+
+MRR ÷ cash = mrr_usd ÷ revenue_30d_usd. Revenue growth as reported in revenue_growth_30d_pct.
+    CUT 04 · 5 → 4
+
+
+
+
+Can it actually be diligenced?
+Two removals and one conditional readmission
+
+
+
+   REMOVE
+                                        $2.01M ARR growing 32.6% across 6,673 customers — the numbers are clean and the growth is the
+                                                                                                                                                There is no way to underwrite a company
+   Stealth Company                      best of the five. But there is no name, no domain, no country and no sector. Nothing can be verified,
+                                                                                                                                                you cannot identify.
+                                        no reference called, no market sized.
+
+
+
+
+   REMOVE
+                                        $685k ARR growing 23.4% at a $350 ARPU, and it passes every integrity check. But 163 customers,
+                                                                                                                                                Closest call on the page. A watch-list name,
+   RankAI                               domain authority 34 and 79 followers means the distribution is unproven — every new customer is
+                                                                                                                                                not a decline.
+                                        bought, none arrives.
+
+
+
+
+   READMIT
+                                        The only asset combining real scale with real speed: $5.94M ARR growing 23.6% across 4,642              MRR ahead of cash is a billing-timing
+   GojiberryAI                          customers. It failed cut 03 on one measure — MRR 1.28x collected cash — while both growth signals       question, not a falsified number. Admitted
+                                        still point up.                                                                                         subject to reconciliation.
+
+
+
+
+Postiz, Cometly and Apiframe survive all four cuts untouched. GojiberryAI returns as the fourth, conditionally.
+The decision
+
+
+
+Four names.
+            Postiz
+     1      HK · Social Media · B2B
+                                                                  $2.13M ARR · +15.0% · 5,237 subs · DR 70   40%
+
+
+            GojiberryAI
+     2      US · AI · B2B
+                                                                  $5.94M ARR · +23.6% · 4,642 subs · DR 47   30%
+
+
+            Cometly
+     3      US · Analytics · B2B
+                                                                  $2.49M ARR · +3.0% · 307 subs · DR 69      20%
+
+
+            Apiframe
+     4      SG · AI · B2B
+                                                                  $297k ARR · +31.0% · 425 subs · DR 70      10%
+
+
+All four are B2B. None is listed for sale. None was selected on a field the dataset leaves blank.
+The case, and the risk, for each
+What I am buying and what would break it
+
+
+
+   Postiz                                                                     AN CH OR · 40%     GojiberryAI                                                              G R OWT H · 30%
+
+
+
+   Open-source social scheduling for developers and agencies. 5,237 subscribers at $34           The only name pairing scale with speed: $5.94M ARR growing 23.6% across 4,642
+   — demand is spread, not concentrated. Domain authority 70 means traffic it owns               customers at $107 ARPU. Run-rate 3.01x trailing. Sales tooling at a $99 entry price
+   rather than rents. Run-rate 2.85x trailing revenue.                                           with an enterprise tier above it.
+
+
+   Risk: $34 ARPU leaves little room to absorb churn, and an open-source core invites a free     Risk: MRR is 1.28x collected cash and all lifetime revenue arrived within 12 months.
+   alternative.                                                                                  Reconcile billing before funding.
+
+
+
+
+   Cometly                                                                    B ALLAST · 20%     Apiframe                                                                  OPTION · 10%
+
+
+
+   $676 ARPU, domain authority 69 and $9.4M of lifetime revenue — the only company               Cleanest numbers in the dataset: MRR +31.0% against revenue +31.9%. Developer
+   here proven across more than one cycle. MRR is flat at 3%, but cash revenue grew              API with domain authority 70 and 425 customers at $58. Small enough that entry is
+   17%.                                                                                          cheap and a full loss is survivable.
+
+
+                                                                                                 Risk: at $297k ARR it is one enterprise customer away from a different business. Size
+   Risk: flat MRR. This is a durability position, not a compounder. Do not price it as growth.
+                                                                                                 accordingly.
+Before the money moves
+
+
+
+Four questions this dataset
+cannot answer.
+
+     1 Monthly churn                                Every growth figure here is a single 30-day reading. A good month and a compounding business are not the same claim.
+                                                    Ask for twelve months of cohort retention.
+
+
+
+
+     2 Cost to acquire                              82% of the dataset never disclosed traffic, all four picks included. Without CAC there is no payback period and no
+                                                    defensible entry price.
+
+
+
+
+     3 Revenue concentration                        Cometly at 307 customers and Apiframe at 425 could each carry a client worth a fifth of revenue. Ask for the top-ten
+                                                    customer table.
+
+
+
+
+     4 Billing reconciliation                       GojiberryAI's MRR runs 28% ahead of collected cash. Either annual contracts booked early, or a refund problem. Resolve
+                                                    before funding.
+
+
+Four of a thousand. If only one question can be asked, ask for churn.
+

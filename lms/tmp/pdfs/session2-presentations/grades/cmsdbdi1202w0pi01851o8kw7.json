@@ -1,0 +1,36 @@
+{
+  "slide_count": 4,
+  "scores": {
+    "insight": 6,
+    "narrative": 6.5,
+    "framing": 5.5,
+    "accuracy": 6,
+    "visual": 6,
+    "bonus": 1
+  },
+  "what_worked": "Honest treatment of 0%-growth rows as likely untracked data, plus disciplined causal restraint on size-vs-growth.",
+  "fix_next": "Four slides is too thin—add category, provider, or anonymity analysis to substantiate the 'who's moving' promise in the title.",
+  "verdict": "Focused and honest but too narrow to fully deliver on its title's promise.",
+  "flags": [
+    "narrow-scope",
+    "thin-deck"
+  ],
+  "factual_error_count": 1,
+  "factual_error_detail": "Slide 2: 96+346+51+305+92 = 890 visible bars; the missing ~110 bar (>20% bucket) is unlabeled, and the stated split 344 grew / 337 lost / 305 flat sums to 986, not 1000—14 startups unaccounted, suggesting the growth/flat/shrink trichotomy doesn't reconcile cleanly with the histogram or the 216 zero-revenue companies.",
+  "evidence": {
+    "insight": "Slide 3 correctly identifies weak Spearman correlation (~0.18) between size and growth, and notes outlier growth comes from near-zero bases—useful analytical nuance. Slide 4 translates into actionable screening advice. However, the deck never explores categories, providers, or other dimensions.",
+    "narrative": "Clear three-beat arc: market split → size ≠ speed → implication. Coherent thesis that momentum and size are independent. But the title 'Who's Actually Moving?' promises identification of movers, which is never delivered—no category or company-level breakdown.",
+    "framing": "Slide 1 states dataset size and freeze date. Audience is implied (investor/portfolio screener) but never explicitly stated. No mention of missingness rates for key fields (category 27%, country 24%), which matters for the growth analysis.",
+    "accuracy": "Slide 2 histogram bins don't fully reconcile: visible bars sum to ~890 but callouts say 344+305+337=986. The 216 zero-revenue companies likely overlap with the 305 'flat' group but this isn't clarified. Slide 3's Spearman ≈ 0.18 is plausible but unverifiable from reference data (Pearson r=0.025 is for founded-year, not revenue-vs-growth). Median growth of 0% across quartiles is consistent with the large flat population.",
+    "visual": "Clean, restrained design with consistent color palette. Bar chart on slide 2 is readable with good annotation. Slide 3 bar chart effectively shows the Q4 outlier. Slide 4 uses card layout appropriately. However, the small colored squares on slide 4 are decorative placeholders that add nothing. Overall slightly template-feeling but not egregiously so.",
+    "ai_slop": "Slide 4's three-card layout with decorative colored squares feels template-generated but content is substantive enough to avoid pure slop classification."
+  },
+  "confidence": "medium",
+  "total": 61,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 7856,
+    "output_tokens": 795
+  }
+}

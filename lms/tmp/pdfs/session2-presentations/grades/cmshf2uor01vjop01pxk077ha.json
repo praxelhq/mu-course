@@ -1,0 +1,38 @@
+{
+  "slide_count": 17,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 8.5,
+    "accuracy": 6,
+    "visual": 8,
+    "bonus": 4
+  },
+  "what_worked": "Exceptional narrative arc: from market reality through screening framework to actionable portfolio with honest risk disclosure.",
+  "fix_next": "Revenue figures appear fabricated—dataset total is $15.6M not $133.8M TTM; top-10 share is ~49.6% not 51%; verify all core numbers against actual data.",
+  "verdict": "Outstanding storytelling and structure undermined by significant revenue figure discrepancies.",
+  "flags": [
+    "revenue-total-mismatch",
+    "possible-fabricated-portfolio",
+    "ttm-vs-30day-confusion",
+    "top10-share-inflated"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 4: Claims $133.8M TTM revenue and $13.5M MRR—dataset total 30-day revenue is $15.6M, making TTM ~$187M only if annualized, but $133.8M is unexplained and inconsistent. Slide 4: 'Top 10 companies take 51% of annual revenue'—reference is 49.6%. Slide 3: Revenue distribution bars show ~20% each for bands $0 through $10k-100k which is suspiciously uniform and likely fabricated (the $0 band alone should be ~21.6% given 216 zero-revenue companies). Slide 3: Claims median MRR $282—plausible but unverifiable against 30-day revenue reference. Slide 8: B2B earns '4.5 times more' than B2C but reference median multiples are 2.35x/2.30x, very close, not 4.5x apart.",
+  "evidence": {
+    "insight": "Slides 7, 11-12 deliver genuinely original analysis: domain authority vs. follower correlation comparison, implied-vs-quoted multiple gap, U-shaped multiple curve by deal size with 'two traps and one window' framing. The screening funnel (slide 13) synthesizes findings into a decision tool. The adverse-selection-runs-backwards insight on slide 10 is non-obvious.",
+    "narrative": "Perfect thesis-driven arc: establish market reality (slides 3-5) → identify predictive signals (6-8) → build framework (9) → apply screen (10-13) → propose portfolio (14) → model returns (15) → disclose risks (16) → make the ask (17). Every slide advances the argument. Section headers function as chapter titles. The landing is clean and specific.",
+    "framing": "Slide 1 immediately establishes audience (investment committee), data source (payment-provider-verified), and scope (1,000 companies, 262 for sale). Limitations acknowledged on slide 16 including missingness (274 no category, disclosure gaps). The 'cold reader' test is passed—context is self-contained.",
+    "accuracy": "Slide 4 claims $133.8M TTM revenue which is irreconcilable with the $15.6M 30-day total (annualized ~$187M). Top-10 share stated as 51% vs reference 49.6%. Slide 3 distribution is suspiciously uniform across non-zero bands. Slide 8 B2B/B2C comparison overstates the revenue gap—reference shows median multiples of 2.35x/2.30x, nearly identical, not the 4.5x claimed. The portfolio-level numbers ($4.85M, $3.61M ARR, 25 companies) cannot be independently verified but the screening logic is internally consistent.",
+    "visual": "Strong hierarchy throughout: bold headlines, supporting callout numbers, annotated charts, consistent color palette (purple/orange/lime on dark or light backgrounds). Charts are simple and purposeful—bar charts with direct labels, no chartjunk. The funnel visualization on slide 13 is effective. Slide 7's side-by-side comparison is well-executed. Minor issues: slide 8's scaled axis (÷10) is confusing, and some slides are text-heavy.",
+    "ai_slop": "Minimal slop. The deck avoids generic filler, consulting buzzwords, and decorative graphics. Every slide carries specific data points. The writing is crisp and opinionated rather than hedged. The color-block cards are slightly templatey but serve the content. No meaningless stock imagery."
+  },
+  "confidence": "high",
+  "total": 84,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 32017,
+    "output_tokens": 1105
+  }
+}

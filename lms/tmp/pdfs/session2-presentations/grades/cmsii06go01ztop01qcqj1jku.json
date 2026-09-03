@@ -1,0 +1,38 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7,
+    "accuracy": 6,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis-driven arc from market reality through category analysis to actionable founder decision framework.",
+  "fix_next": "B2B/B2C median figures ($1,240/$304 and 4.1x) don't match reference data (~2.35x); verify correlation coefficients and acknowledge missing-data denominators.",
+  "verdict": "Compelling narrative with genuine insight, undermined by several unverified statistics.",
+  "flags": [
+    "b2b-b2c-median-mismatch",
+    "unverified-correlation-coefficients",
+    "slide-10-duplicate-text-bug",
+    "missing-data-not-acknowledged"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 2: Mean shown as $15,596 — actual mean is ~$15,596 but denominator unclear (all 1000 vs non-zero). Slide 5: B2B median $1,240 and B2C median $304 with 4.1x multiple; reference shows median multiples ~2.3x, not 4.1x. Slide 7: Correlation coefficients (0.17, 0.52, 0.82) are presented without sourcing or methodology and cannot be verified against reference data; 'proves' is causal overclaim. Slide 8: Marketing median shown as $2,370 vs reference $2,369.50 (acceptable rounding), but Content Creation shown as $1,238 vs reference $1,237.50 (acceptable). Slide 10: Duplicate 'Focus 2' text with repeated '401 startups analyzed' is a production error. Slide 9: Bubble chart shows many more categories than the 12 in the reference data, suggesting possible sub-categorization or fabrication.",
+  "evidence": {
+    "insight": "Slides 6 and 9 deliver the key insight that category popularity (AI=197 companies) inversely relates to median monetization ($503). The opportunity matrix on slide 11 synthesizes multiple findings into a decision tool. The 'picks and shovels' observation on slide 4 adds qualitative depth.",
+    "narrative": "Clear arc: market reality (slides 2-3) → what winners look like (4) → B2B vs B2C (5) → AI trap (6) → vanity metrics (7) → where to compete (8-9) → avoid zones (10) → matrix (11) → checklist (12). Each slide builds on the prior. Strong landing.",
+    "framing": "Slide 1 sets question clearly for a cold reader. Dataset parameters stated at bottom. However, 274 missing category values and 288 missing audience_type values are never acknowledged, which matters greatly for B2B/B2C and category claims.",
+    "accuracy": "Top-10 revenue share 49.6% matches reference. AI count (197) and median ($503) match. Education median ($2,435) matches. Productivity median ($80 vs $79.91) acceptable. But B2B/B2C medians and the 4.1x claim diverge significantly from reference (~2.35x). Zero-revenue '21%' is close to 216/1000=21.6%. Correlation coefficients on slide 7 are unverifiable.",
+    "visual": "Consistent warm palette, strong typographic hierarchy, effective use of scale/seesaw metaphor (slide 2), stacked bar (slide 3), bubble chart (slide 9). Slide 10 has a duplicate text bug. Generally restrained and evidence-led. The vanity-value slider on slide 7 is creative.",
+    "ai_slop": "Slide 10 has a clear duplicate text production error ('Focus 2' repeated with identical stats), suggesting rushed AI-generated output not proofread. Otherwise the deck avoids generic filler effectively."
+  },
+  "confidence": "medium",
+  "total": 74,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19924,
+    "output_tokens": 985
+  }
+}

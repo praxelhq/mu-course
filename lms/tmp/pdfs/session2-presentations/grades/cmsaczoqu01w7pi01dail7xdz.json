@@ -1,0 +1,38 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 6.5,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis that verification ≠ vetting, with genuinely interesting anonymity paradox and marketplace forensics angles.",
+  "fix_next": "The B2B/B2C median values and multiplier don't match the reference data; verify all computed statistics against the raw dataset before presenting.",
+  "verdict": "Well-narrated, insightful deck with a few material accuracy gaps.",
+  "flags": [
+    "b2b-b2c-median-discrepancy",
+    "anonymity-median-unverifiable",
+    "missing-data-caveat-absent",
+    "superwall-median-off"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 6: B2B median stated as $1,240 but reference shows median revenue multiples of 2.35x/2.30x implying different underlying medians; the 4.1x ratio doesn't match reference 2.35x/2.30x B2B/B2C multiples. Slide 3: Superwall median stated as $2,999 but reference data shows 17 companies with $237,834.40 total revenue (~$13,990 mean), median not verifiable but the 7.5x claim against a $400 platform median would require $3,000 which is plausible but unconfirmed. Slide 8: Anonymous median stated as $8,362 — reference shows anonymous companies are 12.9% of companies but 26.5% of revenue; total anonymous revenue ~$4,133,498 / 129 = ~$32,042 mean, but median $8,362 is not directly verifiable and the 21x multiplier claim is unverified. Slide 7: Education category ($2,435 median) is mentioned in text but omitted from the chart while being the highest eligible median — selective omission that weakens the AI-is-middling argument. Category counts for Content Creation shown as n=36 matches reference.",
+  "evidence": {
+    "insight": "Slide 8 anonymity paradox is genuinely original — connecting verification with identity concealment. Slide 9 marketplace forensics (0x multiples, $0-revenue listings asking real money) goes beyond chart description. Slide 3 insight about RevenueCat revealing mobile-app economy beneath 'SaaS' label is sharp.",
+    "narrative": "Clear arc: context (slide 2) → infrastructure (3) → distribution (4) → momentum (5) → segments (6-7) → paradoxes (8-9) → synthesis (10). Each slide builds toward the 'verified ≠ vetted' thesis. The landing on slide 10 ties five takeaways back to the story coherently.",
+    "framing": "Slide 1-2 establish dataset, source, and freeze date clearly. Audience (founders/builders) is implicit and made explicit on slide 10. However, no mention of missingness rates (241-288 missing across key fields) which matters for category and audience_type analyses.",
+    "accuracy": "Slide 4: top-10 share 49.6% matches reference. Slide 3: Stripe 63.6% matches (636/1000). RevenueCat 18.9% matches (189/1000). Slide 6: B2B/B2C medians don't align with reference multiples. Slide 7: category medians mostly match reference (Marketing $2,370 vs $2,369.50, AI $503 matches, SaaS $201 vs $200.50). Education omitted from chart despite being highest eligible median. Slide 8: 129 anonymous count and 12.9% match. The 344+305+337=986 on slide 5 doesn't sum to 1000 (14 unaccounted).",
+    "visual": "Consistent color palette (teal, gold, muted sage). Good chart choices — horizontal bar for providers, vertical bar for categories, donut for three-way split. Annotations are integrated with callout boxes rather than cluttering charts. Hierarchy is clear with section labels. Slight overuse of the three-card layout pattern (slides 4, 8, 9).",
+    "ai_slop": "Minimal slop. Writing is specific and data-grounded rather than generic. No decorative stock imagery. The three-card layout repeats but carries distinct content each time. Language avoids consulting buzzwords."
+  },
+  "confidence": "high",
+  "total": 76,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19615,
+    "output_tokens": 1115
+  }
+}

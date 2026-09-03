@@ -1,0 +1,45 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 4.5,
+    "narrative": 6,
+    "framing": 5,
+    "accuracy": 4.5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Mean-vs-median callout on slide 3 and cumulative concentration curve on slide 5 are genuinely useful analytical moments.",
+  "fix_next": "Strip the promotional fund-pitch wrapper and interrogate the data—why 216 zero-revenue companies, category median differences, provider-revenue efficiency.",
+  "verdict": "Polished pitch deck that describes data without genuinely analyzing it; several fabricated or misattributed figures.",
+  "flags": [
+    "consulting-language-inflation",
+    "promotional-framing-over-analysis",
+    "missing-data-underplayed",
+    "annualized-revenue-fabricated-metric",
+    "26pct-single-position-misattributed",
+    "cumulative-lifetime-revenue-invented",
+    "74pct-outside-us-ignores-missing-country",
+    "slide11-filler-methodology",
+    "fictional-fund-displaces-analysis"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1/2: $161.7M ARR implies $13.47M MRR, but total 30-day revenue is $15.6M—unexplained gap. Slide 2: $334.0M cumulative lifetime revenue has no basis in the dataset. Slide 5: 26.5% 'single largest position' conflates the anonymous-cohort revenue share with a single company. Slide 6: 74% outside US uses 1,000 denominator but 241 rows have missing country (correct base is 759 known). Slide 12: '26% operates outside the US' contradicts slide 6's own 74% claim—internally inconsistent.",
+  "evidence": {
+    "insight": "Only two real analytical moves: slide 3 mean/median gap and slide 5 power-law curve. No exploration of zero-revenue companies (216), no category-median comparison, no provider-revenue efficiency, no TLD or audience-type analysis. Insights describe rather than interrogate.",
+    "narrative": "Coherent LP-update arc from overview through risk to fundraising ask. Sequence is purposeful but the thesis (diversification + breakouts) is asserted, never stress-tested. The narrative never challenges its own premise or surfaces uncomfortable findings.",
+    "framing": "Creative VC-fund persona but obscures the student data-story assignment. A cold reader cannot tell this is coursework. Scope/limitations partially addressed on slides 11-12 but missingness rates are understated and the 'coming soon' methodology slide is filler that displaces real analysis.",
+    "accuracy": "Category counts on slide 4 match reference. Provider shares on slide 8 approximately correct by company count. However, $334M lifetime revenue is fabricated, 26.5% single-position claim misreads anonymous cohort data, 74% outside-US ignores 241 missing country values, and the MRR figure doesn't reconcile with total 30-day revenue. Slide 12 internally contradicts slide 6 on US/non-US split.",
+    "visual": "Consistent navy/gold/teal palette, clean typography, good hierarchy. Bar charts on slides 4 and 6 are well-labeled. Cumulative curve on slide 5 is effective. Pie chart on slide 8 is acceptable. Some slides are KPI-card walls with no real visualization (slides 2, 7, 9). Visual sameness across the deck.",
+    "ai_slop": "Pervasive pitch-deck language: 'high-velocity startups,' 'real-time visibility — by design,' 'punching well above its weight,' 'the outlier we underwrote for,' 'built to withstand the power law.' Fictional fund wrapper with fake contact info, Fund II raise, and $150M target displaces analytical substance. Slide 11 is pure filler."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 5→4.5 (data described not interrogated, zero-revenue and category-median analyses absent), narrative from 6.5→6.0 (thesis never challenged, promotional arc substitutes for analytical tension), framing from 5.5→5.0 (fictional fund obscures assignment context, missingness understated), accuracy from 5.5→4.5 (five factual errors including fabricated $334M figure and internal contradiction on US share). Visual and bonus unchanged.",
+  "total": 54,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 25167,
+    "output_tokens": 1107
+  }
+}

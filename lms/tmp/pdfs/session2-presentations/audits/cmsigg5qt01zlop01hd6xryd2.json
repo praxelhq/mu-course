@@ -1,0 +1,41 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8.5,
+    "framing": 6.5,
+    "accuracy": 5.5,
+    "visual": 8.5,
+    "bonus": 2
+  },
+  "what_worked": "Five-cluster taxonomy on slide 5 and recurring-vs-total growth distinction on slide 7 are genuinely original analysis.",
+  "fix_next": "Add a limitations callout: 36 companies is tiny, custom classifications are unauditable, and headline revenue figures need sourcing.",
+  "verdict": "Exceptional storytelling and design on a thin, hard-to-verify 36-company slice.",
+  "flags": [
+    "revenue-figures-unverifiable",
+    "custom-cluster-unauditable",
+    "no-limitations-disclosure",
+    "small-n-no-caveat",
+    "lifetime-revenue-unsourced"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 1: $3.35M 'lifetime revenue' cannot be reconciled with frozen reference total of $173,210.71 for Content Creation; likely a cumulative figure but no sourcing or definition provided. Slide 3: $1.85M 'trailing 12 months' also unverifiable against reference snapshot. Slide 3 states median MRR $1,254 — plausible but the frozen reference gives median lifetime revenue $1,237.50, which is a different metric; conflation risk.",
+  "evidence": {
+    "insight": "Slide 5's problem-cluster taxonomy (Volume 75%, Intelligence 3%) is hand-built analytical work yielding a genuinely surprising finding. Slide 7's revenue-vs-MRR growth divergence is a non-obvious, decision-useful observation. Slide 9's acquisition-multiple spread adds investor-relevant depth.",
+    "narrative": "Opens with a provocative question (slide 1), answers it definitively on slide 10 ('It taxes it'). Each slide carries a footer thesis line creating a throughline. Sequence is logical: why → snapshot → buyer → problem → pricing → growth → synthesis → investment → close.",
+    "framing": "Scope is set clearly (36 companies, Content Creation). However, no limitations slide, no mention of missingness or dataset provenance, no caveat that 36 is too small for robust pricing or cluster inferences. 'Attention economy' framing is evocative but never operationally defined. A cold reader cannot assess how the five clusters were assigned.",
+    "accuracy": "The $3.35M lifetime revenue headline and $1.85M trailing-12-month figure are not derivable from the frozen reference and lack sourcing. The 75% volume-cluster share, 2.4x B2B multiplier, and 53% top-5 concentration rest on manual classifications that cannot be audited externally. Company count (36) and median ($1,237.50 reference vs $1,254 MRR claimed) are close but conflate different metrics. No outright fabrication detected, but key claims are unverifiable.",
+    "visual": "Exceptionally cohesive dark palette with red/cream accents. Typographic hierarchy is strong — big headlines, stat callouts, footer takeaways. Thematic backgrounds (ATTENTION, MORE) reinforce content rather than decorating. Slide 9's sorted bar chart of multiples is well-executed. Slide 3's horizontal bar chart is clean. Minor: slide 7 is slightly text-heavy.",
+    "ai_slop": "None detected. Language is specific and sharp ('one-off purchases wearing a subscription's clothes'). No generic filler or inflated phrasing. Template is distinctive and content-tied."
+  },
+  "confidence": "medium",
+  "changed": true,
+  "change_reason": "Raised visual from 8.0 to 8.5 — the thematic typography and consistent design system are above-strong. Lowered framing from 7.0 to 6.5 — complete absence of limitations disclosure and no sourcing for headline figures is a meaningful gap for a cold reader. All other scores and bonus unchanged.",
+  "total": 75,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 19760,
+    "output_tokens": 977
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 5.5,
+    "framing": 5,
+    "accuracy": 6.5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Clean, restrained visual design with consistent hierarchy; stealth/anonymous analysis adds a less-obvious angle.",
+  "fix_next": "Deck reads as a dashboard summary, not a data story—add a thesis, discuss limitations (27% missing category), and go beyond describing numbers.",
+  "verdict": "Accurate, clean dashboard summary but lacks a thesis and deeper analytical insight.",
+  "flags": [
+    "dashboard-not-story",
+    "no-limitations-discussed",
+    "missing-data-not-acknowledged",
+    "no-charts-beyond-one-bar"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 7: 131 stealth startups vs reference 129 anonymous companies (minor). Slide 7: $4.2M / 27% stealth revenue vs reference 26.525% (~$4.13M) — close but slightly inflated. Slide 3: Top-10 share stated as 50% vs reference 49.6% — acceptable rounding. Slide 5: '26% of startups' for US — 258/1000 is 25.8%, but 258 out of 759 with known country is 34%; denominator choice unclear and not disclosed.",
+  "evidence": {
+    "insight": "Findings are real but surface-level: concentration, AI leads, B2B > B2C, US dominance. No surprising cross-cuts, no median-vs-mean discussion for categories, no provider analysis, no founded-year exploration. The stealth observation (slide 7) is the most original point but still descriptive.",
+    "narrative": "Slides proceed topic-by-topic (snapshot → concentration → categories → geography → marketplace → growth → takeaways) without a unifying thesis or argument. The takeaway slide repeats prior slides verbatim. No synthesis or 'so what' beyond listing facts.",
+    "framing": "No stated audience, question, or scope. No mention of missingness (274 missing category, 241 missing country, 288 missing audience_type). The 'market tags' on slide 4 appear to be a different field than 'category' but this is never explained. No limitations slide.",
+    "accuracy": "Core numbers are largely correct: $15.6M total, 1000 startups, AI $2.4M/197, Marketing $1.3M/42, E-comm $1.1M/19, top-10 ~50%. B2B/B2C medians plausible. Stealth count 131 vs 129 is a minor discrepancy. US denominator issue (26% of all 1000 vs % of known-country) is not disclosed. Revenue tier table sums to 1000 which is fine.",
+    "visual": "Consistent card-based layout, good use of teal accent color, legible typography, proper footer with source. Only one actual chart (bar chart on slide 6). Heavy reliance on big-number cards becomes repetitive across 6 slides. No scatter plots, distributions, or richer visualizations. The bar chart on slide 6 has a minor label overlap issue.",
+    "ai_slop": "Template is uniform but not egregiously generic. No decorative meaningless graphics. Some consulting-style phrasing ('volume play', 'commands higher ARPU') but restrained. The repetitive card layout across nearly every slide borders on template sameness."
+  },
+  "confidence": "high",
+  "total": 59,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15467,
+    "output_tokens": 876
+  }
+}

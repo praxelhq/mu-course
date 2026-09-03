@@ -1,0 +1,899 @@
+P O R T F O L I O S T R AT E G Y R E V I E W
+
+
+
+The TrustMRR Portfolio
+8,782 Startups Under the Microscope
+
+A board-level assessment of revenue quality, growth durability, concentration risk
+and capital-allocation opportunity across the full tracked universe.
+
+
+
+
+8,782                                            $33.9M                              117         97%
+Companies tracked                                30-day revenue                      Countries   Revenue in top decile
+
+
+
+
+Prepared as a strategy consulting review · Data frozen 30 July 2026 · Confidential
+     M E T H O D O LO G Y & S C O P E
+
+
+A note on scope: this is 8,782 companies, not ~1,000
+
+The source file frozen 30 Jul 2026 is materially larger than the initial brief assumed. We analyzed the full dataset as received rather than a sample.
+
+
+
+
+    8,782                                              117                                                 31                                                  5
+                                                                                                                                                               Data domains reconciled: identity,
+    Companies in the frozen dataset                    Countries represented                               Product categories tracked                          revenue, MRR/usage, category, exit/
+                                                                                                                                                               monetization
+
+
+
+
+Extraction approach & confidence
+●      High confidence: company identity, country, X-follower counts, all four revenue windows, MRR, growth %, active subscriptions, sale status, asking price, revenue multiple — cleanly parsed
+       and cross-validated on row counts.
+
+●      Best-effort (~71% coverage): product category, reconstructed from a nested market-tag field; remaining rows shown as "unclassified" rather than guessed.
+
+●      Not reliably recoverable: free-text pricing tiers, target-persona narrative, and problem-statement fields — the source PDF's text layer overlaps at the character level for long wrapped cells
+       and cannot be split with confidence, so these are excluded rather than reported inaccurately.
+
+
+
+
+METHODOLOGY                                                                                                                                                      TrustMRR Portfolio Review · Frozen 30 Jul 2026   2
+    0 1 · E X E C U T I V E S U M M A RY
+
+
+Ten takeaways for the partner meeting
+
+1      A revenue base, not a portfolio of equals                                                        1   Social proof does not predict revenue
+
+       Top 10% of companies generate 97% of all revenue; the median company earns $0/month.                 Follower count correlates with revenue at r=0.01 — audience size is not a reliable signal of
+       Portfolio value is a handful of positions, not a diversified base.                                   monetization in this portfolio.
+
+
+2      One anonymized cohort explains half the book                                                     2   MRR and realized revenue disagree
+
+       560 "stealth"/anonymized entries (6.4% of companies) generate 50% of total revenue — the             Stated MRR correlates with 30-day GMV at only r=0.09, pointing to inconsistent revenue
+       single largest governance and diligence gap in the dataset.                                          recognition or stale MRR snapshots across the book.
+
+
+3      Half the portfolio is pre-revenue or dormant                                                     3   Geography is US-anchored but not US-exclusive
+
+       51% of tracked companies show $0 in trailing 30-day revenue — either early-stage,                    The US contributes 21% of revenue from 18% of companies; Hong Kong is a disproportionate
+       abandoned, or mis-tracked.                                                                           #2 by revenue concentration.
+
+
+4      Growth is bimodal, not normal                                                                    4   A fifth of the book is already for sale
+
+       56% of companies show ~0% growth (stalled), 25% are declining, and 8% are in hypergrowth             22% of companies (1,952) are actively listed, at a median asking multiple of ~1.0x trailing
+       (>50%/mo) — few companies sit in a "steady compounding" middle.                                      revenue — a signal of founder fatigue at the long tail.
+
+
+5      Productivity, AI and SaaS carry the portfolio                                                    5   The opportunity is triage, not blanket investment
+                                                                                                            With revenue this concentrated, the highest-leverage moves are: double down on proven
+       These three categories alone contribute 53%+ of tracked revenue; AI is the largest category by
+                                                                                                            categories, professionalize the stealth cohort, and deprioritize the ~4,500 companies with no
+       company count (751) but a mid-pack performer by revenue per company.
+                                                                                                            monetization signal.
+EXECUTIVE SUMMARY                                                                                                                                                TrustMRR Portfolio Review · Frozen 30 Jul 2026   3
+     0 2 · P O R T F O L I O H E A LT H
+
+
+A large, long-tailed portfolio with a thin core of real businesses
+
+
+     $33.9M                                          $247M                                           49%                                      51%
+     30-day revenue run-rate                         Trailing 12-month revenue                       Companies with any revenue               Companies at $0 (30d)
+
+
+
+
+Reading the base rate
+                                                                                                                                  K E Y TA K E AWAY
+●       Median 30-day revenue is $0; mean revenue is $3,865 — the gap between median and mean is itself the headline:
+        a small number of large earners pull the average far above the typical company's experience.                              This is a power-law portfolio. Treat the top
+                                                                                                                                  decile as the business; treat the rest as an
+●       117 countries and 31 categories are represented, but participation is shallow in most — the portfolio is wide, not        option book.
+        deep, across most geographies and verticals.
+
+●       Business maturity is polarized: a maturity core of Stripe-integrated, subscription-billed companies coexists with a       RECOMMENDED ACTION
+
+        much larger cohort of pre-revenue or hobby-stage listings on lighter-weight billing rails (see Section 12).               Segment reporting and resource allocation by
+                                                                                                                                  revenue tier, not by category or geography
+                                                                                                                                  alone.
+
+
+
+
+P O R T F O L I O H E A LT H                                                                                                                   TrustMRR Portfolio Review · Frozen 30 Jul 2026   4
+     0 2 · P O R T F O L I O H E A LT H
+
+
+Revenue tiers: the portfolio's center of gravity is $0–$1K/month
+
+                                                                       Fact vs. interpretation
+
+                                                                       FACT: 3,111 companies sit in the $1–$1K band;
+                                                                       only 9 companies exceed $500K/month.
+
+
+                                                                       FACT: The $10K+ tiers (298 companies, 3.4% of
+                                                                       the portfolio) already represent durable,
+                                                                       fundable businesses.
+
+
+                                                                       INTERPRETATION: The $0 and sub-$1K tiers are
+                                                                       not one population — they blend true pre-launch
+                                                                       companies with abandoned or mis-integrated
+                                                                       ones. Billing-provider connection status is a
+                                                                       useful cheap filter to separate the two before
+                                                                       deeper diligence.
+
+
+
+
+P O R T F O L I O H E A LT H — R E V E N U E D I S T R I B U T I O N              TrustMRR Portfolio Review · Frozen 30 Jul 2026   5
+     0 2 · P O R T F O L I O H E A LT H
+
+
+Concentration risk: 10% of companies carry 97% of revenue
+
+
+                                                              21%
+                                                              of ALL revenue from one company
+
+
+
+
+                                                              76%
+                                                              of revenue from top 1% (88 cos.)
+
+
+
+
+                                                              97%
+                                                              of revenue from top 10% (878 cos.)
+
+                                                          Concentration this extreme means portfolio-level KPIs (mean
+                                                          revenue, mean growth) are driven almost entirely by single-digit
+                                                          numbers of companies — they should never be reported without
+                                                          the median alongside.
+
+P O R T F O L I O H E A LT H — C O N C E N T R AT I O N                   TrustMRR Portfolio Review · Frozen 30 Jul 2026     6
+     0 2 · P O R T F O L I O H E A LT H
+
+
+The single biggest blind spot: anonymized companies
+Companies tagged "Stealth Company," "Anonymous Startup," "Hidden Business/Venture," or "Private Enterprise" in the source data
+
+
+
+
+560                                                                  50%                                                                 14.7x
+Anonymized companies (6.4% of portfolio)                             Share of total portfolio revenue                                    Average revenue vs. disclosed companies
+
+
+
+
+       Why this matters
+       The single largest revenue line in the entire dataset — $7.14M/month — belongs to an unidentified "Anonymous Startup." Four of the ten largest revenue generators in the portfolio
+       carry no disclosed name, country, or category.
+
+
+
+       This is not necessarily a red flag on the underlying businesses — but it is a red flag on portfolio governance. Half the book's economics are currently un-auditable at the standard
+       diligence fields (geography, category, identity).
+
+
+
+
+KEY TAKEAWAY: Treat the anonymized cohort as its own risk class, not as noise to exclude from analysis.
+P O R T F O L I O H E A LT H — A N O N Y M I Z E D C O H O R T                                                                                                   TrustMRR Portfolio Review · Frozen 30 Jul 2026   7
+     0 3 · G R O W T H A N A LY S I S
+
+
+Growth is bimodal: most companies are either stalled or sprinting
+
+
+                                                         56%
+                                                         Flat / no growth signal (~0%)
+
+
+
+
+                                                         25%
+                                                         Declining month-over-month
+
+
+
+
+                                                         8%
+                                                         Hypergrowth (>50%/month)
+
+
+                                                     Sustainable growth reads as steady 5–20%/month, not the
+                                                     extreme tails — hypergrowth outliers often reflect a low base or
+                                                     a one-time spike, not compounding demand.
+
+
+G R O W T H A N A LY S I S                                           TrustMRR Portfolio Review · Frozen 30 Jul 2026     8
+    0 3 · G R O W T H A N A LY S I S
+
+Fintech and Analytics grow fastest; Games and Design Tools are
+shrinking
+
+                                                         Reading the matrix
+
+                                                         FASTEST-GROWING: Analytics (+42% median),
+                                                         Fintech (+34%), Content Creation (+16%) — all
+                                                         still small in absolute revenue.
+
+
+                                                         SLOWEST / DECLINING: Design Tools (–6%),
+                                                         Games (–6%), Travel (–1%) — small categories
+                                                         with negative median momentum.
+
+
+                                                         SCALE LEADERS: Productivity and AI carry the
+                                                         most revenue but near-flat median growth —
+                                                         mature, defensible, but not compounding fast.
+
+
+
+
+G R O W T H A N A LY S I S — C AT E G O R Y M AT R I X              TrustMRR Portfolio Review · Frozen 30 Jul 2026   9
+     0 3 · G R O W T H A N A LY S I S
+
+Movers: who's compounding and who's cratering (min. $5K/mo
+revenue)
+Fastest growers                                                                                       Steepest declines
+Company                             Geo    Category                 Rev (30d)         Growth         Company                       Geo      Category                       Rev (30d)             Growth
+
+Stealth Company (redacted)          —      —                          $12,310       +1230899%        Juiced Leads Llc              US       —                                 $5,799                -76%
+
+Stealth Company (redacted)          —      Marketing                  $15,654          +8096%        Coralflavor                   US       —                                 $5,149                -65%
+
+Sermon Scribe                       —      Travel                     $11,699          +5076%        Pdb Online Diensten           NL       —                                $24,463                -65%
+
+Mentionable 1                       FR     —                           $7,493          +3094%        Paccofly                      IT       AI                                $6,744                -63%
+
+Nocapmocap                          US     Mobile Apps                $11,786          +1810%        Friendfilter Groupfilter      US       AI                               $68,817                -62%
+
+Hidden Venture 12345                —      Marketing                  $87,529          +1530%        Overrank Seo                  US       —                                $16,833                -58%
+
+
+
+
+      KEY TAKEAWAY: Extreme growth rates at this revenue scale ($5–90K/mo) are usually base-effect artifacts (a new payment integration, a viral spike) rather than durable trend — verify
+      with 3-month and 12-month windows before acting. Declines above 50%/mo at meaningful revenue warrant an immediate call to the founder.
+
+
+
+
+G R O W T H A N A LY S I S — M O V E R S                                                                                                                    TrustMRR Portfolio Review · Frozen 30 Jul 2026 10
+     0 4 · R E V E N U E A N A LY S I S
+
+
+Revenue spread by category: wide dispersion even among leaders
+
+
+                                                    Median vs. mean, by the numbers
+
+                                                    Segment                   Median          Mean
+
+
+                                                    Portfolio-wide           $0              $3,865
+
+
+
+                                                    Revenue-generating only $580             $7,884
+
+
+
+
+                                                    Even within revenue-generating companies only,
+                                                    the mean ($7,884) is 13.6x the median ($580) —
+                                                    the box plot confirms this isn't a data artifact:
+                                                    every top category shows multi-order-of-
+                                                    magnitude spread between its smallest and
+                                                    largest earners.
+
+
+                                                    Long-tail dynamic: the bottom half of revenue-
+                                                    generating companies in every category earns
+                                                    under ~$500/month — consistent with a
+                                                    portfolio of side-projects and early-stage tools
+                                                    rather than funded operating companies.
+
+
+R E V E N U E A N A LY S I S                                   TrustMRR Portfolio Review · Frozen 30 Jul 2026 11
+     0 4 · R E V E N U E A N A LY S I S
+
+
+The revenue leaderboard: eight companies, one governance question
+
+Company                                                 Geo           Category                                             Revenue (30d)                      Growth                           % of Portfolio
+
+
+Stealth Company (redacted)                              —             —                                                       $7,143,938                          n/a                                  21.0%
+
+
+Postiz                                                  HK            Productivity                                            $2,844,652                          -8%                                    8.4%
+
+
+Stealth Company (redacted)                              —             —                                                       $2,703,570                          n/a                                    8.0%
+
+
+Llm Gateway                                             US            —                                                         $984,522                         +4%                                     2.9%
+
+
+Stealth Company (redacted)                              —             —                                                         $868,322                         +8%                                     2.6%
+
+
+Stealth Company (redacted)                              —             —                                                         $857,622                       +719%                                     2.5%
+
+
+Maidsnblack                                             US            —                                                         $575,343                         +4%                                     1.7%
+
+
+Stealth Company (redacted)                              —             Social Media                                              $509,774                         +8%                                     1.5%
+
+
+
+         KEY TAKEAWAY: These 8 companies alone represent ~40% of total portfolio revenue. Half of them are anonymized. Identity verification on this list should be the single highest-priority
+         diligence action from this review.
+
+
+
+
+R E V E N U E A N A LY S I S — L E A D E R B O A R D                                                                                                             TrustMRR Portfolio Review · Frozen 30 Jul 2026 12
+    0 5 · C AT E G O RY A N A LY S I S
+
+
+Where the revenue actually lives: Productivity, AI, SaaS dominate
+
+
+
+
+C AT E G O R Y A N A LY S I S — R E V E N U E M A P        TrustMRR Portfolio Review · Frozen 30 Jul 2026 13
+        0 5 · C AT E G O RY A N A LY S I S
+
+
+Category scorecard: revenue, count, and monetization rate
+Category                                            Companies   Total Rev (30d)   Avg Rev/Co.            %
+                                                                                                Monetizing
+Productivity                                              237       $3,054,690        $12,889         55%    Winners & underperformers
+
+AI                                                        751       $1,521,543         $2,026         59%    WINNERS
+                                                                                                             Productivity ($3.05M, 38% of tracked revenue from just
+SaaS                                                      295         $786,223         $2,665         59%
+                                                                                                             237 companies — the highest revenue-per-company base)
+Social Media                                               54         $526,300         $9,746         56%    and Social Media (small n, $9,746 avg revenue — a
+                                                                                                             monetization-efficient niche).
+Marketing                                                 168         $333,099         $1,983         61%
+
+Health & Fitness                                          140         $282,138         $2,015         65%
+                                                                                                             UNDERPERFORMERS
+                                                                                                             Dev Tools (208 companies, only $729 avg revenue — high
+Mobile Apps                                               108         $281,884         $2,610         69%    builder interest, weak monetization) and Fintech (100
+                                                                                                             companies, $551 avg — likely blocked on compliance/trust
+Education                                                 141         $249,299         $1,768         58%
+                                                                                                             rather than demand).
+E-comm                                                     49         $238,635         $4,870         61%
+                                                                                                             WATCH
+Content Creation                                          131         $208,877         $1,594         55%
+                                                                                                             AI has the most companies (751) but only mid-pack
+Security                                                   18         $173,528         $9,640         44%    revenue per company — a crowded category where
+                                                                                                             differentiation, not category selection, will decide
+Entertainment                                              39         $152,296         $3,905         56%    winners.
+Dev Tools                                                 208         $151,547           $729         55%
+
+Sales                                                      29         $141,274         $4,872         72%
+
+
+
+C AT E G O R Y A N A LY S I S — S C O R E C A R D                                                                                 TrustMRR Portfolio Review · Frozen 30 Jul 2026 14
+     0 6 · G EO G R A P H I C A N A LY S I S
+
+
+US-anchored, but Hong Kong punches far above its company count
+
+                                                   Geographic concentration
+
+                                                   US: 18% of companies (1,577), 21% of revenue
+                                                   — the anchor market by both measures.
+
+                                                   Hong Kong: just 104 companies but $2.93M in
+                                                   revenue ($28,195 avg/company — 6x the US
+                                                   average) — a small, unusually monetized cluster
+                                                   worth a dedicated look.
+
+                                                   India: largest company count outside the US
+                                                   (769) but lowest monetization rate among major
+                                                   markets (37% generating any revenue, $416
+                                                   average) — a volume-not-value market today.
+
+                                                   Top 3 countries: concentrate ~48% of total
+                                                   revenue — real, but materially less extreme than
+                                                   the company-level concentration seen in Section
+                                                   2.
+
+
+
+
+G E O G R A P H I C A N A LY S I S                           TrustMRR Portfolio Review · Frozen 30 Jul 2026 15
+     0 6 · G EO G R A P H I C A N A LY S I S
+
+Emerging ecosystems: smaller markets with outsized revenue per
+company
+Country                                                                    Companies   Avg Revenue / Company
+
+Ukraine (UA)                                                                      39                 $13,097
+                                                                                                               Opportunity read
+                                                                                                               Ukraine leads emerging markets at $13,097 average
+Slovenia (SI)                                                                     14                  $8,824   revenue per company across 39 companies — comparable
+                                                                                                               engineering-heavy ecosystems (Lithuania, Estonia) show
+Lithuania (LT)                                                                    33                  $5,703   the same pattern: small counts, high monetization.
+
+New Zealand (NZ)                                                                  13                  $4,783   This looks like a talent-arbitrage signal: technically strong,
+                                                                                                               English-fluent founder bases building for global (often US)
+Singapore (SG)                                                                    65                  $3,963   customers while operating at local cost bases — a
+                                                                                                               structurally attractive combination for follow-on capital.
+Cyprus (CY)                                                                       11                  $2,694
+
+Estonia (EE)                                                                      54                  $2,480
+
+Belgium (BE)                                                                      48                  $2,176
+
+
+
+                                                                                                               Note: Anguilla (ISO "AI") excluded from this view to avoid confusion with
+                                                                                                               the AI product category.
+
+
+
+
+G E O G R A P H I C A N A LY S I S — E M E R G I N G E C O S Y S T E M S                                                                     TrustMRR Portfolio Review · Frozen 30 Jul 2026 16
+    07 · STRENGTHS
+
+
+What's working in this portfolio
+
+       A genuine power-law core exists
+1
+       Nine companies clear $500K/month and 298 clear $10K/month — proof the platform can originate and surface real, fundable businesses, not just hobby projects.
+
+
+       High-growth pockets are real and diversified
+2
+       708 companies (8.2%) are in hypergrowth across categories from Fintech to Content Creation — momentum is not confined to one vertical.
+
+
+       Billing infrastructure is modern and consolidated
+3
+       59% of companies bill through Stripe and a small set of modern providers (RevenueCat, Polar, Lemon Squeezy) — clean, auditable revenue data versus legacy billing sprawl.
+
+
+       Geographic reach is broad without being shallow everywhere
+4
+       117 countries represented, with several (Hong Kong, Ukraine, Lithuania) showing genuine monetization depth, not just headcount.
+
+
+       Category diversification limits single-vertical risk
+5
+       No single category exceeds ~38% of revenue; a downturn in any one vertical would not be portfolio-threatening on its own.
+
+
+
+
+STRENGTHS                                                                                                                                               TrustMRR Portfolio Review · Frozen 30 Jul 2026 17
+    08 · WEAKNESSES
+
+
+What's structurally weak in this portfolio
+
+       Over half the portfolio has no monetization signal
+1
+       51% of companies show $0 in trailing-30-day revenue — a large share of tracked "startups" are pre-revenue, dormant, or abandoned.
+
+
+       Revenue quality is unverifiable for the biggest earners
+2
+       560 anonymized companies — including the single largest revenue line in the dataset — cannot be diligenced on category, geography, or identity.
+
+
+       Growth is mostly stalled, not just slow
+3
+       56% of companies with growth data show ~0% month-over-month change — the modal outcome is stagnation, not gradual growth.
+
+
+       Weak categories carry real company counts
+4
+       Dev Tools (208 companies, $729 avg revenue), Fintech (100, $551 avg), and Design Tools (67, $477 avg) show high founder interest but poor monetization — capital or attention
+       may be misallocated here.
+
+       Revenue-recognition data is inconsistent
+5
+       MRR and 30-day realized revenue correlate at only r=0.09 — billing data across the portfolio is not standardized enough to trust blended metrics without company-level
+       verification.
+
+
+
+WEAKNESSES                                                                                                                                               TrustMRR Portfolio Review · Frozen 30 Jul 2026 18
+     09 · OPPORTUNITIES
+
+
+Where the portfolio could unlock growth — ranked by expected impact
+Opportunity                                             Rationale                                                                                                                                                      Impact
+
+
+
+
+Identity-verify the top 25 revenue companies            40%+ of portfolio revenue sits with 8 companies, half anonymized — closing this gap de-risks the core of the book's value.                                      High
+
+
+                                                        Both show 5–6x average revenue vs. portfolio norm on modest company counts — a repeatable sourcing/monetization pattern worth studying and
+Double down on Hong Kong & Ukraine-style clusters       replicating.                                                                                                                                                    High
+
+
+
+Build a monetization playbook for Dev Tools & Fintech   300+ companies with strong founder interest but weak revenue — likely fixable with pricing, compliance, or GTM support rather than product rebuilds.            High
+
+
+Cross-sell payment-rail upgrades to legacy billing      Companies on lighter-weight rails (Dodo Payments: $128 avg revenue) trail Stripe-integrated peers ($5,743 avg) by 45x — infrastructure maturity itself
+                                                        may be gating growth.                                                                                                                                         Medium
+cohort
+
+
+Triage the $0-revenue cohort into an activation
+                                                        4,481 companies generate no revenue — even a 5% activation rate at category-average revenue would be a meaningful uplift.                                     Medium
+program
+
+
+Package the 22% "on sale" cohort as a structured
+                                                        1,952 companies are already listed at a median ~1.0x multiple — a curated marketplace or bulk-acquisition vehicle could unlock liquidity cheaply.             Medium
+secondary program
+
+
+Investigate the follower/revenue disconnect as a GTM
+                                                        36 companies have 50K+ followers but under $1K/month revenue — an unusually clean monetization-upsell target list.                                              Low
+gap
+
+
+
+OPPORTUNITIES                                                                                                                                                                           TrustMRR Portfolio Review · Frozen 30 Jul 2026 19
+   10 · RISKS
+
+
+Risk landscape: concentration and opacity dominate the priority zone
+
+                                                   Priority risks
+                                                   1. Revenue concentration
+                                                   Top 1% = 76% of revenue. A handful of company-level events
+                                                   (churn, fraud, mispricing) could swing headline portfolio
+                                                   numbers materially.
+
+                                                   2. Stealth-cohort opacity
+                                                   50% of revenue is un-auditable on standard fields. This is a
+                                                   diligence and reporting-integrity risk, not just a data gap.
+
+                                                   3. Declining-company exposure
+                                                   25% of companies with growth data are shrinking — left
+                                                   unaddressed, this erodes the base the top decile is built on.
+
+                                                   4. Data-quality / recognition risk
+                                                   Weak MRR-to-GMV correlation means blended metrics
+                                                   should be treated as directional, not precise, until
+                                                   reconciled.
+
+
+
+
+RISKS                                                                 TrustMRR Portfolio Review · Frozen 30 Jul 2026 20
+   11 · OUTLIERS
+
+
+Statistical outliers worth a direct look
+
+   RE VENUE OUTL I ER                                                             G ROW T H O U T L IE R
+
+
+   Anonymous Startup 25                                                           Stealth 03
+
+   $7.14M/month — 21% of total portfolio revenue in one unverified company. 3.6   +1,230,899% in 30 days on $12.3K revenue — a base-effect artifact (likely $0 to
+   standard deviations above the category mean.                                   $12.3K), not organic hypergrowth.
+
+
+
+
+   D EC LINE O UT LIER                                                            ENGAGEMENT O UTLIER
+
+
+   Juiced Leads LLC                                                               36 companies
+
+   -75.7% in 30 days at $5.8K revenue — steepest verified decline above the $5K   50,000+ X followers but under $1,000/month revenue — the largest audience-to-
+   materiality threshold.                                                         revenue mismatch cluster in the dataset.
+
+
+
+
+OUTLIERS                                                                                                                            TrustMRR Portfolio Review · Frozen 30 Jul 2026 21
+     1 2 · C O R R E L AT I O N A N A LY S I S
+
+
+What actually predicts revenue? Not what you'd expect
+
+                                                 Meaningful relationships only
+
+                                                 Asking price ↔ Revenue (r=0.81) & MRR (r=0.81)
+                                                 Expected and healthy — the marketplace prices companies primarily off
+                                                 realized revenue, as it should.
+
+                                                 MRR ↔ Active subscriptions (r=0.90)
+                                                 Strong and expected — subscription count is doing what it should to explain
+                                                 MRR.
+
+                                                 MRR ↔ 30-day revenue (r=0.09) — weak
+                                                 The two revenue measures barely move together. This points to stale MRR
+                                                 snapshots, one-time-purchase businesses miscoded as subscription, or timing
+                                                 mismatches between data sources.
+
+                                                 Followers ↔ Revenue (r=0.01) — negligible
+                                                 Social audience size has essentially no relationship with monetization in this
+                                                 portfolio — a useful myth-buster for anyone using follower count as a
+                                                 screening proxy.
+
+
+
+
+C O R R E L AT I O N A N A LY S I S                                                        TrustMRR Portfolio Review · Frozen 30 Jul 2026 22
+     1 3 · S W OT A N A LY S I S
+
+
+Portfolio SWOT at a glance
+
+           STRENGTHS                                                      WEAKNESSES
+
+       ●       Proven power-law core (9 companies >$500K/mo)          ●     51% of companies at $0 revenue
+
+       ●       Diversified hypergrowth pockets (708 companies)        ●     50% of revenue sits with unverified anonymized entities
+
+       ●       Modern, consolidated billing infrastructure            ●     56% of companies show flat/no growth
+
+       ●       Broad geographic reach with real depth in pockets      ●     MRR and realized revenue poorly correlated
+
+
+
+
+           OPPORTUNITIES                                                  THREATS
+
+       ●       Identity-verify and re-underwrite top revenue cohort   ●     Single-company/event risk given 21% concentration
+
+       ●       Replicate Hong Kong / Ukraine monetization pattern     ●     Governance exposure from anonymized revenue
+
+       ●       Monetization playbook for Dev Tools & Fintech          ●     25% of tracked companies actively declining
+
+       ●       Activation program for the dormant long tail           ●     22% of book already listed for sale (fatigue signal)
+
+
+
+
+S W O T A N A LY S I S                                                                                                             TrustMRR Portfolio Review · Frozen 30 Jul 2026 23
+   14 · KEY INSIGHTS (1/2)
+
+
+Insights grounded in the data — part 1
+  OBSERVATION                                         EVIDENCE                                        BUSINESS IMPLICATION
+
+
+                                                                                                                                              Portfolio-level KPIs must be reported with median alongside mean, or they
+  Revenue follows an extreme power law                           Top 1% of companies = 76% of revenue; top 10% = 97%.
+                                                                                                                                              mislead.
+
+
+
+
+  Half the tracked base is not an operating business yet         51.0% of companies show $0 in trailing 30-day revenue.                       "8,782 startups" overstates the size of the active portfolio by roughly 2x.
+
+
+
+
+                                                                 560 anonymized companies average $30,336/mo vs. $2,062 for disclosed         Anonymity is being used by the largest, not the smallest, positions — a
+  Anonymization correlates with scale, not risk                  peers.                                                                       deliberate confidentiality choice worth understanding, not just a data gap.
+
+
+
+                                                                 56% flat, 25% declining, 8% hypergrowth — few companies in the moderate-     "Average growth rate" is a misleading single metric for this portfolio;
+  Growth outcomes are bimodal                                    growth middle.                                                               segment by growth regime instead.
+
+
+
+                                                                                                                                              Company count is a poor proxy for category attractiveness; use revenue-
+  Category size and category quality are different axes          AI has the most companies (751) but ranks mid-pack on revenue-per-company.
+                                                                                                                                              per-company and monetization rate instead.
+
+
+
+                                                                 Stripe-integrated companies average $5,743/mo vs. $128 for Dodo Payments-    Payment-provider mix is a free, high-signal proxy for company stage —
+  Billing infrastructure maturity tracks revenue maturity        only companies.                                                              usable as a cheap screening filter.
+
+
+
+                                                                                                                                              Any sourcing or scoring model using follower count as a quality signal
+  Social proof is not a monetization signal here                 Follower count vs. revenue correlation: r=0.01.
+                                                                                                                                              should be recalibrated or dropped.
+
+
+KEY INSIGHTS (1/2)                                                                                                                                                             TrustMRR Portfolio Review · Frozen 30 Jul 2026 24
+   14 · KEY INSIGHTS (2/2)
+
+
+Insights grounded in the data — part 2
+
+                                                                                                                                                      Do not blend MRR and GMV-based revenue in a single metric without reconciliation;
+  MRR and realized revenue disagree in this dataset          MRR-to-30-day-revenue correlation: r=0.09.
+                                                                                                                                                      they answer different questions.
+
+
+
+                                                                                                                                                      This is a live secondary-market signal — both a risk (founder fatigue) and an
+  A fifth of the portfolio is already for sale               22.2% of companies (1,952) are listed, median revenue multiple ~1.0x.
+                                                                                                                                                      opportunity (cheap acquisition pipeline).
+
+
+
+                                                             India: 769 companies, 37% monetizing. Hong Kong: 104 companies, 52% monetizing at
+  Geography and monetization quality diverge                 6x average revenue.
+                                                                                                                                                      Sourcing volume and sourcing quality require separate country-level strategies.
+
+
+
+
+                                                             Ukraine, Lithuania, Estonia show 3–6x average revenue vs. portfolio norm on modest       A repeatable geographic pattern — worth a dedicated sourcing thesis rather than
+  Small, English-fluent tech ecosystems overperform          counts.                                                                                  treating as noise.
+
+
+
+                                                                                                                                                      Filter growth leaderboards by a revenue floor (e.g. $5K/mo) before using them for
+  Extreme growth figures are usually base-effect artifacts   Top growth outlier: +1,230,899% in 30 days on $12.3K revenue.
+                                                                                                                                                      decisions.
+
+
+
+                                                                                                                                                      A small, high-precision monetization-support outreach list — better ROI than broad-
+  The audience-to-revenue gap is a targeted upsell list      36 companies have 50K+ followers but <$1K/month revenue.
+                                                                                                                                                      based campaigns.
+
+
+
+  Revenue multiples compress sharply outside the top         Median on-sale multiple is ~1.0x; only Recruiting & HR, No-Code, and Mobile Apps clear   Category should be a primary input to any acquisition or valuation model applied to
+  categories                                                 2.5x median.                                                                             this book.
+
+
+
+                                                             29% of companies have no recoverable category tag; growth data is missing for ~2% of     Incomplete self-reported data correlates with earlier-stage, lower-diligence
+  Data completeness itself is a portfolio signal             companies.                                                                               companies — worth testing as a screening feature.
+
+
+KEY INSIGHTS (2/2)                                                                                                                                                                        TrustMRR Portfolio Review · Frozen 30 Jul 2026 25
+     1 5 · S T R AT E G I C R E C O M M E N DAT I O N S
+
+
+High-impact recommendations
+
+       Re-underwrite the anonymized top-revenue cohort                                                                                      Difficulty: Medium
+
+
+                                                                                                                                            Horizon: 0–3 months
+       Verify identity, geography, and category on all 560 anonymized companies, prioritizing the 8 that individually exceed $250K/month.
+                                                                                                                                            Priority: 1
+
+
+
+
+       Segment all reporting by revenue tier, not just category/geography                                                                   Difficulty: Low
+
+
+                                                                                                                                            Horizon: Immediate
+       Replace blended portfolio averages with tier-based reporting ($0 / $1–10K / $10–100K / $100K+) across every future review.
+                                                                                                                                            Priority: 2
+
+
+
+
+       Build and fund a monetization playbook for Dev Tools & Fintech                                                                       Difficulty: Medium
+
+
+                                                                                                                                            Horizon: 3–6 months
+       300+ companies with founder engagement but weak revenue — targeted GTM/pricing/compliance support rather than fresh
+       capital.
+                                                                                                                                            Priority: 3
+
+
+
+
+S T R AT E G I C R E C O M M E N D AT I O N S — H I G H I M PA C T                                                                                                TrustMRR Portfolio Review · Frozen 30 Jul 2026 26
+     1 5 · S T R AT E G I C R E C O M M E N DAT I O N S
+
+
+Medium- and low-impact recommendations
+
+Recommendation                                                                   Impact   Difficulty                        Horizon
+
+
+
+
+Reconcile MRR vs. GMV reporting methodology across billing providers             Medium   Medium                            3–6 mo
+
+
+
+Launch a structured secondary/acquisition program for the on-sale cohort         Medium   Medium                            3–6 mo
+
+
+
+Study Hong Kong / Ukraine / Lithuania as a repeatable sourcing thesis            Medium     Low                             3–6 mo
+
+
+
+Design an activation nudge program for the $0-revenue long tail                  Medium     High                           6–12 mo
+
+
+
+Targeted monetization-support outreach to high-follower, low-revenue cos.         Low       Low                             0–3 mo
+
+
+
+Standardize category tagging to close the 29% unclassified gap                    Low       Low                             0–3 mo
+
+
+
+
+S T R AT E G I C R E C O M M E N D AT I O N S — M E D I U M & L O W I M PA C T                     TrustMRR Portfolio Review · Frozen 30 Jul 2026 27
+    16 · NEXT STEPS
+
+
+If presenting to the CEO tomorrow morning
+TOP 5 ACTIONS THIS WEEK                                                    WHO NEEDS IMMEDIATE ATTENTION
+
+                                                                           Companies: Anonymous Startup 25 ($7.14M/mo, unverified); the 8 largest anonymized earners;
+1     Identity-verify the 8 companies driving ~40% of portfolio revenue
+                                                                           the 15 steepest decliners above $5K/mo.
+
+
+2     Stand up tier-based (not blended) revenue and growth reporting       Categories to fund further: Productivity, SaaS, Analytics, Fintech — proven revenue quality or
+                                                                           genuine growth momentum.
+
+3     Reconcile MRR vs. 30-day GMV methodology with billing/data team      Segments to monitor, not chase: AI (crowded, mid-pack monetization), Design Tools & Games
+                                                                           (negative median growth).
+4     Pull founder calls for the 15 steepest revenue declines >$5K/mo
+                                                                           Segments to deprioritize: The ~4,500 companies at $0 revenue, absent a low-cost activation
+                                                                           program with a defined test-and-learn budget.
+5     Scope a monetization-support pilot for Dev Tools & Fintech cohorts
+
+
+
+
+NEXT STEPS                                                                                                                        TrustMRR Portfolio Review · Frozen 30 Jul 2026 28
+Bottom line
+
+
+
+This is a power-law portfolio of 8,782 companies
+built on the economics of roughly 90.
+Protect the core, verify the anonymized cohort that carries half of it, and treat the long tail as a
+low-cost option book rather than a reporting liability.
+
+
+
+
+Confidential — Prepared for internal portfolio review · Data frozen 30 July 2026
+

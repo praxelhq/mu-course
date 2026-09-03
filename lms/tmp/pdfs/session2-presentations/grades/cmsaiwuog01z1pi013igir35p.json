@@ -1,0 +1,38 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 8,
+    "accuracy": 6.5,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "Exceptionally coherent narrative arc from diagnosis through board-ready decisions with clear owners and timelines.",
+  "fix_next": "The B2B ~4x premium claim uses means not medians (actual median multiple ~2.3x), and Stripe is 636/1000=63.6% not 64%; verify core stats more carefully.",
+  "verdict": "Polished board deck with strong narrative but several unverified numerical claims.",
+  "flags": [
+    "b2b-premium-uses-mean-not-median",
+    "stealth-revenue-share-inflated",
+    "concentration-bar-rounding",
+    "consulting-tone-heavy"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 2/3: B2B ~4x revenue-per-venture premium ($22.6K vs $5.7K) uses means, not stated as such — the median multiple is only ~2.3x, misrepresenting the typical venture. Slide 2: Top-10 revenue share stated as 50% vs actual 49.6% — borderline acceptable rounding but presented as exact. Slide 5: 'Stealth/Undisclosed' $7.31M (47%) — category is missing for 274 rows, but the revenue attributed to them ($15.6M - sum of categorized) should be ~$8.3M based on reference totals, suggesting either miscalculation or different filtering. Slide 3: '29 categories' stated but reference shows only 12 named categories with 274 missing — the 29 figure is unverifiable and likely inflated. Slide 6: AI +76% avg 30-day growth is unverifiable and suspiciously precise given the skewed distribution.",
+  "evidence": {
+    "insight": "Slide 5 identifies 29 undervalued deals with sub-2.5x multiple + growth as actionable screen; slide 2 flags zero-revenue mispriced inventory ($4.4M); concentration risk quantified at top-10/top-100 levels. These go beyond chart description into decision-useful territory, though the B2B premium insight is overstated.",
+    "narrative": "Clear thesis on slide 1 (concentration risk + sourcing opportunity), built through context (slide 3), trends (slide 4), segmentation (slide 5), risk/opportunity (slide 6), recommendations (slide 7), impact (slide 8), roadmap (slide 9), and board decisions (slide 10). Excellent sequential logic with a strong landing.",
+    "framing": "Slide 3 explicitly states business objective, scope, snapshot date, and pipeline process. Audience (Board of Directors) is clear throughout. Limitations partially addressed (point-in-time snapshot, stealth listings). Missing: explicit discussion of missingness rates across key fields (country 24%, category 27%, audience_type 29%).",
+    "accuracy": "Total 30-day revenue $15.6M matches reference. AI category $2.36M matches. Top-10 ~50% is close to 49.6%. However, B2B 4x premium uses means without disclosure (median is ~2.3x). Stealth revenue of $7.31M doesn't reconcile cleanly with reference category totals summing to ~$7.5M categorized leaving ~$8.1M uncategorized. The 29 categories claim is unverifiable. 784/1000 active revenue ventures implies 216 zero-revenue which matches reference.",
+    "visual": "Consistent design system with navy/gold palette, clear hierarchy, well-structured cards and tables. Treemap on slide 5 is effective. Cumulative concentration chart is clean. Impact vs. effort matrix on slide 6 is useful but axis labels are minimal. Waterfall chart on slide 4 is somewhat hard to read with small labels. Overall professional and restrained — no decorative clutter.",
+    "ai_slop": "Some consulting-speak patterns ('active sourcing edge' repeated 4+ times, 'stop the bleeding' metaphor). The roadmap slide 9 and board decisions slide 10 feel templated. However, content is substantively tied to data rather than generic filler. Moderate but not egregious."
+  },
+  "confidence": "high",
+  "total": 76,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 20810,
+    "output_tokens": 1085
+  }
+}

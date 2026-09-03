@@ -1,0 +1,39 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 6,
+    "narrative": 6.5,
+    "framing": 5.5,
+    "accuracy": 4.5,
+    "visual": 5.5,
+    "bonus": 1
+  },
+  "what_worked": "Clear thesis arc from concentration to category selection to strategic recommendations, with consistent takeaway bars.",
+  "fix_next": "Multiple median/mean figures are materially wrong (slides 2–3); verify every number against the dataset before presenting as intelligence.",
+  "verdict": "Coherent strategic story undermined by several wrong numbers and consulting-speak inflation.",
+  "flags": [
+    "inflated-consulting-language",
+    "multiple-factual-errors",
+    "ai-slop-template-chrome",
+    "missing-limitations-discussion",
+    "pearson-r-variable-mismatch"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1: Total revenue stated $15.60M, correct is $15.596M—acceptable rounding. BUT '29 Business Categories' is unverifiable and likely wrong (dataset has 12 named categories + missing). Slide 2: Average MRR stated $13,472; actual mean revenue is ~$15,596 ($15,596,344/1000=$15,596)—off by ~$2,100. Total MRR pool stated $13.47M vs actual $15.6M—materially wrong. Median $282 is plausible but unverifiable without exact dataset median. Slide 3: AI median stated $446 vs reference $503; Marketing median stated $1,586 vs reference $2,369.50; Education median stated $2,142 vs reference $2,435; SaaS median stated $303 vs reference $200.50; E-commerce median stated $155 vs reference $387. Multiple category medians are materially wrong. Slide 5: B2B median multiple 2.35x is correct but the claim that B2B 'commands highly attractive multiples compared to consumer equivalents' is misleading—B2C median is 2.30x, nearly identical. Slide 7: Pearson r=0.024 is stated for Twitter/X followers vs revenue, but the reference r=0.024763 is for founded-year vs revenue—variable mismatch or coincidence. Slide 10: Recommends E-commerce as high-density MRR category but E-commerce median ($387) is low.",
+  "evidence": {
+    "insight": "Slide 3 bubble chart contrasting total vs median revenue by category is the strongest analytical move; slide 9 synthesis matrix ties findings together. However, the B2B vs B2C insight (slide 5) overstates a negligible difference (2.35x vs 2.30x).",
+    "narrative": "Slides flow logically: concentration → category → geography → audience → infrastructure → vanity metrics → valuation → synthesis → recommendations. The arc is coherent but each slide repeats the same 'strategic takeaway' formula.",
+    "framing": "Slide 1 sets up questions clearly. However, no mention of missingness (241 country, 288 audience_type, 274 category missing), no limitations slide, no denominator transparency. The 'Telemetry Intelligence Group // Confidential Briefing' framing is fabricated consulting theater.",
+    "accuracy": "At least 5 category medians are materially wrong (slide 3). Total MRR pool on slide 2 is $13.47M vs actual $15.6M. The Pearson r=0.024 is attributed to Twitter followers but the reference value is for founded-year. The B2B superiority claim is overstated given near-identical medians.",
+    "visual": "Consistent template with clear hierarchy and bold headlines. Bubble chart (slide 3) and bar chart (slide 6) are effective. However, the 'intelligence slide' chrome, fake dates, and 'confidential briefing' branding are pure AI-template decoration. Slide 3 y-axis labeled 'Monetization Efficiency (Median MRR)' but scaled to 200K which doesn't match median values shown.",
+    "ai_slop": "Heavy consulting-speak throughout: 'Gravitational Well,' 'Architectural Blueprint,' 'Strategic Mandates,' 'Tactical Deployment Checklist,' 'Telemetry Intelligence Group // Confidential Briefing.' Fake organizational branding and dates. Every slide ends with a formulaic 'STRATEGIC TAKEAWAY' bar. Template chrome (DATA.1EB DATE, DATE 5.187 P8M) is meaningless decoration."
+  },
+  "confidence": "high",
+  "total": 57,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 17510,
+    "output_tokens": 1115
+  }
+}

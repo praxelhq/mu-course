@@ -1,0 +1,46 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 2.5,
+    "narrative": 4,
+    "framing": 2.5,
+    "accuracy": 1.5,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Clear thesis-driven structure with consistent visual identity and a defined strategic question throughout.",
+  "fix_next": "Ground every chart and claim in actual dataset numbers—cite sample sizes, medians, missingness, and stop fabricating temporal data.",
+  "verdict": "Polished consulting template with fabricated charts and no real dataset evidence behind claims.",
+  "flags": [
+    "fabricated-chart",
+    "no-numbers-cited",
+    "ai-slop",
+    "mean-vs-median-confusion",
+    "no-limitations-acknowledged",
+    "no-sample-sizes",
+    "cherry-picked-scatter",
+    "generic-consulting-filler",
+    "no-dataset-description",
+    "decorative-quadrant"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 2: Analytics shown as highest avg MRR—actual mean ~$19.4K on 19 companies vs Marketing $31.4K on 42; ranking is wrong. Slide 2: SaaS shown as second-highest avg MRR but actual mean ~$10.7K, far below Marketing/E-comm/Education. Slide 2: Claims SaaS 'consistently monetizes well' but median is $200.50, among the lowest. Slide 3: Entire cumulative revenue index chart is fabricated—dataset has no temporal/retention data; 30-day/3-month/12-month periods do not exist. Slide 4: Scatter plot shows ~12 cherry-picked points from 1,000 rows with no explanation of filtering; axis scales ($40K-$90K monthly revenue) don't match dataset revenue distribution. Slide 5: 2x2 matrix positions are not derived from data (competition axis has no dataset basis). Slide 1: Claims 'Enterprise workflow products create higher customer lifetime value'—no LTV or retention data exists in the dataset.",
+  "evidence": {
+    "insight": "Zero original quantitative findings from the dataset. No mention of provider concentration (Stripe 86%), anonymity revenue share (26.5%), TLD median differences, top-10 share (49.6%), or on-sale multiples. Every insight is generic SaaS/AI industry wisdom imported without dataset grounding.",
+    "narrative": "Structure exists: thesis (slide 1) → category analysis (2) → retention (3) → audience vs revenue (4) → strategic matrix (5) → recommendation (6). But the arc is a predetermined conclusion seeking decoration rather than evidence-driven discovery. Each slide repeats the same conclusion.",
+    "framing": "No dataset description anywhere—no mention of 1,000 rows, no sample sizes on any chart, no acknowledgment of ~27% missing categories or ~24% missing countries, no definition of revenue metric, no limitations section. A cold reader has no way to evaluate credibility.",
+    "accuracy": "Slide 2 bar chart rankings contradict actual data (Analytics n=19 mean ~$19.4K is not highest; Marketing mean ~$31.4K is higher). Slide 3 is entirely fabricated from nonexistent temporal data. Slide 4 scatter cherry-picks ~12 points with unexplained filtering and misleading axis scales. SaaS median ($200.50) is among the lowest, directly contradicting repeated claims of strong monetization.",
+    "visual": "Consistent dark theme with pink gradient is visually cohesive. But slide 3 line chart is decorative fiction, slide 5 quadrant is conceptual with no data mapping, slide 4 scatter is cherry-picked. No data labels with actual values on any chart. Slide 6 is a pure Gamma template with gradient icons. Layout is repetitive: headline + subtitle + chart + 4 bullets + implication box on every slide.",
+    "ai_slop": "Pervasive consulting buzzwords: 'monetization efficiency,' 'durable moats,' 'compounding value,' 'switching costs,' 'Net Revenue Retention and LTV,' 'CAC Payback Period.' Slide 6 is entirely template-generated with gradient icon cards. Every bullet follows identical bold-phrase-then-elaboration pattern. Content could describe any SaaS pitch deck without modification."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 3→2.5 (no dataset-grounded finding at all) and accuracy from 2→1.5 (slide 3 is wholly fabricated, slide 2 rankings are verifiably wrong, slide 4 is cherry-picked). Lowered framing from 3.5→2.5 (complete absence of dataset context, sample sizes, or limitations). Narrative and visual unchanged—structure exists but is hollow; visual theme is consistent but charts are decorative.",
+  "total": 28,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 11825,
+    "output_tokens": 1171
+  }
+}

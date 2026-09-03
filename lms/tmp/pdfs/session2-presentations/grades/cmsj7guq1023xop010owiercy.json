@@ -1,0 +1,38 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7.5,
+    "framing": 6.5,
+    "accuracy": 6,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "Sharp thesis with a clean narrative arc; the scatter plot with dual correlation stats is well-executed.",
+  "fix_next": "Slide 5's mechanism claims are unsupported speculation—ground them in dataset evidence (e.g., B2B/B2C splits, category medians, provider data).",
+  "verdict": "Focused, well-designed single-thesis deck that needs deeper data engagement beyond followers.",
+  "flags": [
+    "narrow-scope",
+    "speculative-mechanism-slide",
+    "missing-limitations-slide",
+    "unverifiable-quartile-chart"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 3: Pearson r for followers vs 30-day revenue stated as 0.02; the frozen reference gives r=0.024763 for founded-year/revenue, not followers/revenue—the follower correlation is a different variable and the claim is unverifiable but plausible. Slide 6: Quartile medians (Q1=$1,070, Q2=$9, Q3=$311, Q4=$1,786) cannot be verified against reference data and the extreme Q2 value ($9) looks suspicious—possibly an artifact of how zero-revenue companies cluster. Slide 2: refers to 'balance sheets' when the dataset contains revenue/MRR data, not balance sheet items (minor mischaracterization).",
+  "evidence": {
+    "insight": "The core finding (followers ≈ 0 correlation with revenue) is genuinely useful and well-supported on slide 3. The quartile analysis on slide 6 adds texture. However, the deck never explores category, provider, anonymity, or B2B/B2C dimensions—staying shallow on a single variable pair.",
+    "narrative": "Strong arc: assumption (slide 2) → correlation test (slide 3) → extreme examples (slide 4) → mechanism (slide 5) → alternative metrics (slide 6) → thesis (slide 7). Each slide advances the argument. The landing on slide 7 is punchy and earned.",
+    "framing": "Audience (investment committee) and question are clearly stated on slides 1-2. However, no limitations slide: no mention of missingness (241 country, 288 audience_type, etc.), survivorship bias, or that 216 companies have zero revenue. No scope definition for what 'followers' means (X only? all social?).",
+    "accuracy": "Slide 3 raw r=0.02 is close to the reference r≈0.025 for a different variable pair (founded-year), but the follower correlation is a separate computation—plausible but unverifiable. Slide 5 makes four causal/mechanistic claims ('Sales-Led, Not Feed-Led', 'Enterprise Doesn't Scroll') with zero data backing from the dataset. Slide 6 quartile chart values cannot be verified. The specific company examples on slide 4 appear dataset-sourced but revenue figures are unverifiable.",
+    "visual": "Consistent dark-green/gold palette throughout. Scatter plot on slide 3 uses appropriate log scales with clear annotations. Slide 6 grouped bar chart is clean and labeled. Slide 4's two-column comparison table is effective. Good whitespace and hierarchy. Slide 5 is a 2x2 text grid that feels generic.",
+    "ai_slop": "Slide 5 reads as consulting-style speculation ('Enterprise Doesn't Scroll', 'Virality ≠ Intent') with no dataset evidence—classic AI filler that sounds authoritative but is ungrounded. The VC investment memo framing is slightly performative but not egregious."
+  },
+  "confidence": "medium",
+  "total": 69,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 13824,
+    "output_tokens": 938
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7,
+    "accuracy": 5.5,
+    "visual": 8,
+    "bonus": 2
+  },
+  "what_worked": "Strong unifying thesis (power-law concentration) carried through every slide with punchy, memorable headlines.",
+  "fix_next": "Multiple key numbers are wrong (top-10 share, mean revenue, title says 12 but data says 10); verify every stat against the dataset before publishing.",
+  "verdict": "Compelling narrative and polished design undermined by several material numerical errors.",
+  "flags": [
+    "top10-share-inflated",
+    "mean-revenue-wrong",
+    "title-number-mismatch",
+    "zero-revenue-count-inconsistent",
+    "missing-data-not-acknowledged",
+    "superwall-count-wrong"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 3: Title says '12 Startups Hold Half the Money' but callout says Top 10 = 50.6%; actual top-10 share is 49.6%, not 50.6%. $6.46M for top 10 implies total ~$12.77M, but actual total 30-day revenue is $15.60M (top-10 dollar amount or total is off). Mean revenue stated $133,750 — actual mean ≈$15,596 (if monthly) — likely conflating monthly with 30-day or miscalculating. Slide 9: Title says '37 of Them Have No Revenue' but callout says 16 asking money with zero revenue — internal inconsistency. Slide 8: Superwall listed as ~15 startups; reference says 17. RevenueCat shown as ~120; reference says 189. Slide 3: '$7.01M shared by other 990 startups' — arithmetic doesn't reconcile with $15.6M total minus stated $6.46M top-10.",
+  "evidence": {
+    "insight": "Slide 5 (momentum breakdown by revenue tier) and slide 6 (follower threshold at 1K) go beyond simple description to identify non-obvious thresholds. Slide 8 (infrastructure) contrasts mobile vs. web SaaS unit economics. Slide 9 exit-intent analysis is genuinely interesting. However, no category-level analysis (AI, Education medians) is attempted.",
+    "narrative": "Clear thesis introduced on slide 2 ('every startup wants to scale, very few do'), built through revenue → customers → growth → audience → traffic → infrastructure → exits → conclusion. Slide 11 synthesizes all seven threads into a single power-law framework. Sequence is purposeful and each slide advances the argument.",
+    "framing": "Slide 1-2 set context (1,000 startups, TrustMRR Marketplace, 30 Jul 2026). Audience implicitly investors ('Investor Takeaway' on every slide). However, no mention of missingness (274 missing category, 241 missing country, 288 missing audience_type) which matters for slides 6-7 especially. No limitations slide.",
+    "accuracy": "Top-10 share 50.6% vs actual 49.6% — 1 pp off. Mean revenue $133,750 doesn't match $15,596,344/1000 = $15,596. Title '12 startups' contradicts own callout 'top 10'. Slide 9 title says 37 zero-revenue for-sale but body says 16. Superwall count ~15 vs actual 17. RevenueCat ~120 vs actual 189. Revenue split ($6.46M + $7.01M = $13.47M) doesn't equal total ~$15.6M. Some numbers (customer distribution, growth percentages) appear plausible but unverifiable.",
+    "visual": "Highly consistent template: blue/white/grey palette, numbered sections, KPI cards at top, chart left, insights right, source footer. Charts are well-chosen (log-scale cumulative curve, stacked bars, bubble chart, scatter). Annotations on charts (e.g., 'Half the market' line, outlier labels on slide 10). Good hierarchy with bold headlines. Slight over-reliance on icon cards creates visual sameness across slides. Slide 8 bubble chart is creative but axis labels could be clearer.",
+    "ai_slop": "Repetitive 'KEY INSIGHT' / 'INVESTOR TAKEAWAY' boxes on every slide feel templated. Rocket ship graphic on slide 1 is decorative stock imagery. Some takeaway language is generic ('Focus on traction quality, not listing activity'). Overall the content is substantive enough to avoid heavy slop penalties, but the rigid template creates mild visual monotony."
+  },
+  "confidence": "high",
+  "total": 74,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 20548,
+    "output_tokens": 1164
+  }
+}

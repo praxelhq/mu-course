@@ -1,0 +1,46 @@
+{
+  "slide_count": 14,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 6.5,
+    "accuracy": 5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Layered category-vs-monetization tension (slides 4-5) and within-AI B2B drill-down show genuine analytical depth.",
+  "fix_next": "Disclose missing-data rates for audience_type, category, and country; recalculate B2B/B2C median multiple against correct denominator.",
+  "verdict": "Strong narrative arc undermined by several material numerical errors and undisclosed missingness.",
+  "flags": [
+    "revenue-total-wrong",
+    "top10-share-wrong",
+    "b2b-multiplier-inflated",
+    "ai-median-wrong",
+    "mean-revenue-wrong",
+    "provider-shares-off",
+    "missing-data-not-disclosed",
+    "geo-chart-us-off-canvas",
+    "slide11-layout-broken",
+    "categories-count-wrong"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 2: total MRR stated $13.47M vs reference $15.60M (~$2.1M gap); mean $13,472 vs correct $15,596. Slide 3: top-10 share 48.0% vs reference 49.6%. Slide 4: AI median $446 vs reference $503; 27.1% share implies denominator of ~727 categorized companies but 274 missing category not disclosed. Slide 6: B2B/B2C 5.7x median multiple vs reference 2.35x (on-sale median); 288 missing audience_type not disclosed. Slide 10: Stripe 64.4% vs reference 63.6%, RevenueCat 19.1% vs 18.9% — minor but pattern of drift. Slide 1: 29 categories vs reference showing 11+ named categories — plausible but unverifiable.",
+  "evidence": {
+    "insight": "Slide 5 quadrant framework mapping scale vs monetization is genuinely decision-useful; slide 6 within-AI B2B/B2C breakdown adds analytical layering; slide 11 marketplace/deal-room angle is an original contribution not obvious from raw data.",
+    "narrative": "Clear investor-briefing arc: context → concentration → category → customer → geography → data moat → marketplace → synthesis → roadmap → close. Each slide explicitly builds on prior evidence toward a single strategic recommendation (US B2B verified wedge).",
+    "framing": "Slide 1 sets investor-briefing context; slide 14 includes honest risk caveats (single snapshot, TAM unknowable, self-selected for-sale subset). However, 241 missing country, 288 missing audience_type, and 274 missing category values are never disclosed anywhere, materially undermining denominator integrity of the B2B, geographic, and category claims.",
+    "accuracy": "Total revenue understated by ~$2.1M. B2B/B2C median multiple of 5.7x is the most consequential error — reference shows 2.35x for on-sale median multiples, making the headline claim on slide 6 roughly 2.4x inflated. AI median off by ~$57. Top-10 concentration off by ~1.6pp. Mean revenue wrong. Provider shares show small systematic drift. Revenue band histogram sums to 1,000 which is correct.",
+    "visual": "Consistent navy/gold palette is professional and restrained. Slide 7 scatter plot axes max at 1.2 but the US — the slide's central claim — appears to be off-canvas or invisible, making the key assertion unverifiable visually. Slide 5 bubble chart lacks direct labels, requiring readers to match bubbles to footnote list. Slide 11 has broken text wrapping on 'Median Asking Multiple (Trailing MRR)'. Otherwise charts are clean and appropriately labeled.",
+    "ai_slop": "Mild consulting-speak ('category-defining platform,' 'data moat,' 'deal room') but generally substantive. Slide 13 phased roadmap is somewhat generic template material. No decorative/fabricated charts detected. Overall restrained."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.5 to 5.0: the B2B/B2C 5.7x claim is a headline finding that is dramatically wrong (reference 2.35x), and undisclosed missingness on three key fields compounds the problem. Lowered visual from 7 to 6.5: the US point missing from its own scatter plot (slide 7) and slide 11 layout breakage are substantive readability failures. Lowered framing from 7 to 6.5: missingness disclosure is absent despite being material to every major claim. Reduced bonus from 2 to 1: marketplace layer is original but the numerical errors undercut the 'beyond rubric' standard.",
+  "total": 68,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 26534,
+    "output_tokens": 1219
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 4.5,
+    "narrative": 5.5,
+    "framing": 4,
+    "accuracy": 3.5,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Power-law distribution insight and signal-vs-noise correlation framing show genuine analytical engagement with the dataset.",
+  "fix_next": "The $134M revenue figure is ~8.6× the actual $15.6M total; this foundational error undermines every downstream claim and valuation logic.",
+  "verdict": "Ambitious pitch narrative built on a fabricated revenue total and thin dataset engagement.",
+  "flags": [
+    "fabricated-revenue-total",
+    "consulting-language-over-analysis",
+    "pitch-deck-not-data-story",
+    "missing-limitations",
+    "unverifiable-external-claims"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 3: '$134M verified 12-month operating revenue' — actual 30-day total is $15.6M; even annualized ~$187M, not $134M, and annualizing 30-day data is methodologically unsound. Slide 6: Median MRR $282 and Mean MRR $13,472 are presented without clear denominators or filters; dataset-wide median/mean of 30-day revenue don't match these cleanly. Slide 10: Stripe shown as 64% — actual is 63.6% (636/1000), acceptable rounding, but the text says '258 US startups' using Stripe when reference says 221 US Stripe users out of 258 US total. Slide 3: '262 startups actively listed for sale with disclosed multiples' is unverifiable from the dataset description provided.",
+  "evidence": {
+    "insight": "Slide 5-6 identify zero-revenue prevalence and power-law skew; slide 7 contrasts signal (subscriptions r≈0.91) vs noise (vanity metrics). These are real analytical moves, but most slides repackage observations as strategy rather than deepening analysis.",
+    "narrative": "Coherent arc from market opportunity → dataset advantage → filtering logic → build+buy strategy → ask. However, it reads as an investment pitch, not a data story; the dataset serves as decoration for a pre-formed thesis rather than driving discovery.",
+    "framing": "Slide 1 frames audience as investors, but the assignment is a data-story presentation. No mention of dataset limitations (241 missing country, 274 missing category, 288 missing audience_type). No source citations for external claims (41% CAGR, $109B investment).",
+    "accuracy": "Slide 3's $134M is the most damaging error — off by ~8.6× from the actual $15.6M 30-day total. Slide 10 conflates 258 (total US startups) with 258 US Stripe users (actual is 221). The correlation claims (r≈0.91, r≈0.87) are plausible but unverifiable and presented without caveats. Founded-year correlation is never mentioned despite being essentially zero.",
+    "visual": "Clean, consistent template with good hierarchy and restrained color palette. Charts are simple but legible. Slide 10 has a text duplication bug ('for ing, we possess'). The infinity-loop diagram on slide 7 is decorative rather than informative. Overall professional but repetitive layout.",
+    "ai_slop": "Heavy consulting-speak throughout: 'unfair advantage,' 'asymmetric target,' 'dual-engine strategy,' 'seamlessly integrating into a singular SaaS ecosystem.' Slide 9 bottom text is classic AI filler. The infinity loop on slide 7 is decorative-but-meaningless. Template sameness across slides."
+  },
+  "confidence": "high",
+  "total": 46,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19924,
+    "output_tokens": 930
+  }
+}

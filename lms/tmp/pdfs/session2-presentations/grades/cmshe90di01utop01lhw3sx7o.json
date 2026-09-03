@@ -1,0 +1,38 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 7,
+    "framing": 6.5,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Strong narrative arc from platform overview through screening funnel to conditional recommendation with clear caveats.",
+  "fix_next": "The deck never engages the broader dataset analytically—no charts, no distributions, no category/provider/missingness analysis to ground the screening claims.",
+  "verdict": "Coherent investment memo, but thin on dataset analysis and evidence.",
+  "flags": [
+    "no-charts",
+    "minimal-dataset-exploration",
+    "unverifiable-screening-numbers",
+    "consulting-template-feel"
+  ],
+  "factual_error_count": 1,
+  "factual_error_detail": "Slide 7: Claims asking price implies ~0.8× annualized 30-day revenue and ~2.7× ARR. $15.7K MRR × 12 = $188.4K ARR; $499K / $188.4K ≈ 2.65× ARR, which is roughly consistent, but the 0.8× framing is confusing—$499K / ($15.7K × 12) is not 0.8×. The slide seems to conflate 30-day revenue with annualized revenue in the 0.8× claim. Minor but muddled.",
+  "evidence": {
+    "insight": "The screening funnel (slide 4) and conditional-go decision (slide 7) show applied judgment, but insights never go beyond the three shortlisted companies. No broader dataset patterns (concentration, missingness, category medians, provider skew) are surfaced. The value-creation slide (8) is generic strategy advice untethered from data.",
+    "narrative": "Clear three-act structure: understand the platform (slides 1-3), screen the data (4-5), decide and plan (6-8). Each slide has a key takeaway. The thesis lands with appropriate conditionality. However, the first three slides are essentially product marketing, not data storytelling.",
+    "framing": "Audience (MBA/investor), data freeze date, and illustrative-not-advisory disclaimers are well handled. However, scope is narrow—the deck frames itself around one acquisition case without explaining dataset shape, limitations, or missingness. A cold reader learns almost nothing about the 1,000-row dataset beyond '262 on sale.'",
+    "accuracy": "Screening funnel numbers (262 → 27 → 13 → 3) cannot be verified against the reference data and are taken on faith. The 0.8× multiple framing on slide 7 is muddled. No dataset-level statistics are presented, so there are few claims to check but also little demonstrated rigor. The product-level figures (MRR, growth, ask) appear plausible but are unverifiable without row-level lookup.",
+    "visual": "Consistent dark/light theme, good hierarchy with numbered steps and icon cards, legible typography, and restrained color palette. However, there are zero data visualizations—no charts, scatter plots, or distributions. Every slide uses the same card-grid template, creating visual sameness. The design is polished but decorative rather than evidence-led.",
+    "ai_slop": "Moderate template repetition: every slide uses identical card-grid layouts with colored circle icons. Slides 2-3 and 8 read like consulting frameworks that could apply to any marketplace product. The key-takeaway footer pattern, while useful, becomes formulaic across all 8 slides."
+  },
+  "confidence": "high",
+  "total": 63,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15751,
+    "output_tokens": 868
+  }
+}

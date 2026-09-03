@@ -1,0 +1,40 @@
+{
+  "slide_count": 3,
+  "scores": {
+    "insight": 3.5,
+    "narrative": 4,
+    "framing": 3.5,
+    "accuracy": 3.5,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Clear thesis built around active subscribers as a retention signal, with consistent ranking logic across slides.",
+  "fix_next": "Three slides is far too thin—no limitations, no median analysis, no missingness disclosure, and subscriber counts are unverifiable against the frozen dataset.",
+  "verdict": "Shallow three-slide pitch with a single metric and no analytical rigor.",
+  "flags": [
+    "too-few-slides",
+    "no-limitations-discussed",
+    "missing-data-not-acknowledged",
+    "unverifiable-subscriber-figures",
+    "no-median-or-distribution-analysis",
+    "consulting-language-inflation"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 1: '24 categories compared'—the reference dataset has 12 named categories (plus missing); likely inflated. Slide 2: AI total revenue cited as '$6.30M 3-mo revenue' vs reference $2.36M total 30-day revenue; the 3-month figure is fabricated or extrapolated without disclosure. Slide 2: Health & Fitness '$494K 3-mo revenue' vs reference $178.6K 30-day; same extrapolation issue with no stated methodology.",
+  "evidence": {
+    "insight": "The entire analytical lens is one metric (active subscribers). No per-company median revenue, no revenue-per-subscriber calculation, no churn or growth-rate distribution, no comparison to categories that actually lead on median revenue (Education, Marketing). The 'retention efficiency' claim for Health & Fitness is interesting but underdeveloped and unvalidated.",
+    "narrative": "Three slides follow a logical sequence: signal definition → data → recommendation. But the arc is too compressed—there is no complication, no alternative hypothesis, no limitations slide, and the recommendation feels predetermined rather than earned through analysis.",
+    "framing": "The audience (investor) and question (where to invest) are stated, but scope is unclear: what does 'active subscribers' actually measure in this dataset? No definitions given. 274 missing category values and 288 missing audience_type values are never mentioned. The '24 categories' claim is unexplained and likely wrong.",
+    "accuracy": "Revenue figures appear to be 3× the 30-day dataset values, labeled '3-mo revenue' without explaining the multiplication or its validity. The 24-category count doesn't match the reference. Subscriber figures cannot be verified but are presented with false precision. No denominators or sample-size caveats for Health & Fitness (n=34).",
+    "visual": "Clean, professional dark-theme design with good hierarchy and readable bar chart. Consistent color palette. However, the visual sameness across slides and the decorative circles add little. The bar chart is well-labeled. Overall competent but unremarkable.",
+    "ai_slop": "Consulting-style language ('Scale AND stickiness,' 'upside lever rather than a red flag,' 'volume, retention, and momentum all agree') feels templated. The three-card recommendation layout is generic pitch-deck filler."
+  },
+  "confidence": "high",
+  "total": 40,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 6958,
+    "output_tokens": 788
+  }
+}

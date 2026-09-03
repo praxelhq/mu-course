@@ -1,0 +1,42 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7.5,
+    "framing": 6,
+    "accuracy": 4.5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "B2B-vs-B2C health median comparison is a genuinely useful, audience-specific finding grounded in the data.",
+  "fix_next": "Disclose how the 89-company health subset was constructed, acknowledge n=8 B2B fragility, and correct the total revenue figure.",
+  "verdict": "Well-structured health-founder briefing undermined by an unverifiable subset and several numerical errors.",
+  "flags": [
+    "total-revenue-wrong",
+    "unverifiable-health-subset",
+    "small-n-overreach",
+    "zero-revenue-count-mismatch",
+    "missing-data-undisclosed",
+    "takeaways-without-data-support"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 2: '$13.5M combined monthly revenue' vs frozen total $15,596,344.59 (~$2M off). Slide 2: '89 health-related' is unverifiable; the dataset's Health & Fitness category has only 34 companies — the broader definition is never explained. Slide 3: $0 bucket shows 197 companies vs frozen zero-revenue count of 216. Slide 8: market-wide median multiple stated as 2.3x; frozen reference gives B2B 2.35x and B2C 2.30x medians separately, so a blended 2.3x is plausible but the 2.05x health figure is unverifiable.",
+  "evidence": {
+    "insight": "Slide 5's B2B/B2C health split is the standout finding and genuinely decision-useful for the stated audience, but the ~24x headline rests on only 8 B2B companies with no confidence interval or caveat. Slide 4's under-monetization observation (9% of companies, 5% of revenue) is a reasonable read. Slide 8's exit-multiple comparison adds value but is also built on a small, unverifiable subset.",
+    "narrative": "Strong arc: market context (slide 3) → health zoom (4) → headline insight (5) → case studies (6) → reality check (7) → exit pricing (8) → actionable takeaways (9) → closing (10). Each slide builds logically. The thesis ('sell to the clinic, go narrow') lands clearly and is reinforced throughout.",
+    "framing": "Slide 2 sets context well and the audience (health founders) is explicit. However, the 89-company health filter is never defined — which categories or keywords were combined beyond the 34 Health & Fitness rows? Missing-data rates (24–29% for country, category, audience_type) are never acknowledged, which matters especially for the B2B/B2C split where 288 rows lack audience_type.",
+    "accuracy": "Total revenue understated by ~$2M. The $0 bucket count (197) doesn't match the frozen 216. The 89-company health subset likely merges multiple categories or uses keyword matching but this is undisclosed, making most health-specific claims unverifiable. The 24x B2B/B2C claim on n=8 is presented as a confident headline without any uncertainty language. Slide 2 calls revenue 'verified' — the data is self-reported.",
+    "visual": "Clean, professional design with consistent color palette and good visual hierarchy. Bar charts are well-labeled with counts. Donut charts on slide 4 are appropriate for part-to-whole. Horizontal bar on slide 7 reads well. No chartjunk. Large orange callout numbers are effective for emphasis without being excessive.",
+    "ai_slop": "Consulting-briefing framing is a deliberate audience choice rather than filler. Slide 9 takeaways 4 and 5 (freemium strategy, retention-for-exit) lack supporting data from the deck and read as generic advice. Otherwise restrained."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 6.5 to 6.0: the undisclosed construction of the 89-company subset is a more serious framing gap than initially scored, since it is the foundation of every health-specific claim. All other scores confirmed as appropriate.",
+  "total": 64,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 18927,
+    "output_tokens": 1071
+  }
+}

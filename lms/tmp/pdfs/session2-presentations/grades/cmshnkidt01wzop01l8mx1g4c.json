@@ -1,0 +1,39 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 3.5,
+    "narrative": 5,
+    "framing": 5,
+    "accuracy": 3,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Accessible tone, clear audience framing for marketers, and honest caveats about small-tool volatility.",
+  "fix_next": "The deck makes numerous specific claims (revenue figures, growth multiples, pricing tiers) with no verifiable connection to the frozen dataset; ground every number.",
+  "verdict": "Readable but shallow, with unverifiable claims and almost no real data analysis.",
+  "flags": [
+    "unverifiable-revenue-figures",
+    "no-charts",
+    "narrow-category-filter-unstated-denominator",
+    "pricing-claims-not-in-dataset",
+    "missing-limitations-discussion"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: '158 marketing tools' — dataset has only 42 rows categorized as Marketing (274 rows missing category); denominator and filter criteria never explained. Slide 2: '6 in 10 lean on AI' — AI is a separate category (197 companies), not a feature flag; conflating category label with product feature. Slide 4: Specific annual revenue figures ($10.5M, $2.3M, etc.) for named tools cannot be verified against the frozen dataset and appear fabricated or externally sourced without citation. Slide 6: Pricing tiers ($29–$99, $300–$3,000) are not in the dataset at all — this is invented or external data presented as dataset findings. Slide 7: '1 in 3 are for sale' and '2–3 years of revenue' valuation claim — no sale/listing data exists in the frozen dataset.",
+  "evidence": {
+    "insight": "Slides 3-5 describe revenue tiers and name fast-growing tools, but never go beyond surface description. No comparative analysis, no distribution charts, no median/mean discussion, no cross-category insight. The 'three things worth remembering' on slide 7 are generic advice, not data-driven conclusions.",
+    "narrative": "There is a coherent thread — help marketers evaluate tools — with a logical sequence (why it matters → landscape → winners → growth → pricing → takeaways). However, the narrative is more editorial opinion than data story; it reads like a blog post rather than an analytical presentation.",
+    "framing": "Audience (marketers evaluating tools) is clearly stated on slide 2. However, the scope is never properly defined: how were '158 marketing tools' selected from the 1,000-row dataset? The 42-row Marketing category doesn't match 158. No mention of missing data, survivorship bias, or dataset limitations.",
+    "accuracy": "Multiple claims cannot be traced to the frozen dataset. The 158-tool count is unexplained. Revenue figures for specific companies are presented without methodology. Pricing data doesn't exist in the dataset. The '6 in 10 use AI' conflates the AI category with a feature attribute. The '1 in 3 for sale' claim has no dataset basis.",
+    "visual": "Clean, consistent template with good hierarchy and legibility. Teal accent color used well. Dot-array visualization on slide 3 is effective. However, there are zero actual data charts — no scatter plots, bar charts, or distributions. For a data-story assignment, this is a significant gap. The deck is visually pleasant but not evidence-led.",
+    "ai_slop": "Moderate. The three-card layout is repeated on slides 5, 6 creating template sameness. Language like 'What's catching fire' and 'Running the show' feels like polished filler. The specific revenue figures on slide 4 look potentially fabricated — precise enough to seem real but unverifiable."
+  },
+  "confidence": "high",
+  "total": 44,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 13832,
+    "output_tokens": 930
+  }
+}

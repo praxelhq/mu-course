@@ -1,0 +1,40 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 1.5,
+    "narrative": 2.5,
+    "framing": 2,
+    "accuracy": 1,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Clean, consistent visual template with readable typography and clear slide hierarchy.",
+  "fix_next": "This is a fictional investor pitch, not a data-story; nearly every quantitative claim is fabricated or unsupported by the dataset.",
+  "verdict": "Generic AI-generated pitch deck with fabricated metrics; not a data analysis.",
+  "flags": [
+    "ai-slop",
+    "fabricated-charts",
+    "fabricated-metrics",
+    "wrong-genre",
+    "no-dataset-analysis",
+    "unearned-certainty"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "S3: Claims '$30M aggregate MRR'—actual total 30-day revenue is ~$15.6M. Claims 'CAC, churn retention' benchmarks exist in dataset—they do not. S4: 'Average MRR $4,682'—not verifiable as stated; revenue share tiers (85%, 55%, 35%, 18%) appear fabricated and don't sum logically (cumulative? overlapping?). Top-10 share is 49.6%, not 85%. S5: 'MRR Growth Velocity' chart is entirely fabricated—dataset is a cross-sectional snapshot, no time-series data exists. '3.4x faster payback period' is invented. S7: 'Dataset Industry Average' column ($420 CAC, 2.2x LTV:CAC, 72% gross margin, 94% NRR) are all fabricated—none of these metrics exist in the dataset. S2: '60% of potential LTV left on the table' is unsupported. S1: '31 SaaS categories'—dataset has ~12 named categories with 274 missing.",
+  "evidence": {
+    "insight": "No genuine insight derived from the dataset. Slides 4-5 present fabricated tiering and growth curves rather than actual findings about category revenue, provider distribution, or audience-type patterns.",
+    "narrative": "Follows a standard investor pitch template (opportunity → data → product → unit economics → projections → ask) but this is the wrong genre for a data-story assignment. No analytical thesis is developed or tested.",
+    "framing": "Slide 1 frames as 'investor pitch' rather than data analysis. No mention of missingness (274 category, 241 country, 288 audience_type missing). No limitations discussed. Audience and question are misaligned with assignment.",
+    "accuracy": "Virtually every number is either fabricated or wrong. $30M total (actual ~$15.6M). Revenue tier shares don't match dataset. CAC/LTV/NRR/gross margin metrics don't exist in the data. Growth velocity chart has no basis. '31 categories' is wrong.",
+    "visual": "Template is clean and professional with consistent blue palette, good whitespace, and readable fonts. But charts on slides 4-5 are decorative fabrications, and slide 7's table presents invented benchmarks as data-derived.",
+    "ai_slop": "Pervasive. Consulting buzzwords throughout ('workflow-first SaaS platform with automated acquisition loops,' 'defensible stickiness,' 'top-quartile velocity'). Slide 6 is pure product marketing filler. Slide 9 is a generic roadmap. Slide 10 is a boilerplate VC ask. The entire deck reads as an AI-generated pitch template with dataset name inserted."
+  },
+  "confidence": "high",
+  "total": 21,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 17384,
+    "output_tokens": 886
+  }
+}

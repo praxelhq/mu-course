@@ -1,0 +1,39 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 5,
+    "narrative": 5.5,
+    "framing": 3.5,
+    "accuracy": 2,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Consistent thesis contrasting AI hype with unit-economics quality in smaller verticals; clear narrative arc.",
+  "fix_next": "Nearly every number appears fabricated—median revenues off by 10x+, category counts wrong, composite scores unexplained. Ground claims in the actual dataset.",
+  "verdict": "Ambitious thesis built on numbers that don't match the dataset.",
+  "flags": [
+    "fabricated-numbers",
+    "wrong-category-counts",
+    "unexplained-composite-scores",
+    "median-revenue-off-by-10x",
+    "sample-unclear"
+  ],
+  "factual_error_count": 12,
+  "factual_error_detail": "Slide 1: AI count shown as 35 (actual 197); Marketing 15 (actual 42); SaaS 12 (actual 66); Education 9 (actual 30); '16 primary sectors' unclear origin. Slide 2: Dev Tools median 30d revenue $31,125 (actual median $635); Education median $30,903 (actual $2,435); composite 'scores' (67.08, 66.28, etc.) have no disclosed methodology. Slide 3: Games and Marketplace categories not in the reference dataset categories; growth rates unverifiable. Slide 5: Rev/Visitor axis labeled in hundreds of USD with no clear derivation. Slide 6: AI median rev $22,571 vs actual $503; SaaS median $23,709 vs actual $200.50. Slide 7: Stan and Supliful figures cannot be verified against reference but are plausible individual rows; 'investment thesis' language is speculative filler. Slide 8: '$40 Rev/Sub' for AI and '$105' for Dev Tools are derived from fabricated medians.",
+  "evidence": {
+    "insight": "The core thesis (unit economics > hype) is a reasonable contrarian angle, but it rests on fabricated numbers, so the insight is performative rather than earned. The volume-vs-value framing on slide 4 is conceptually interesting but unsupported.",
+    "narrative": "Clear arc: overview → quality screen → velocity → funnel → efficiency → AI vs SaaS → outliers → recommendations. Sequence is purposeful and builds toward a capital-deployment conclusion. However, the narrative is undermined by unverifiable data.",
+    "framing": "No audience definition, no dataset description, no mention of 1,000 rows, no discussion of missingness (274 missing categories, 288 missing audience_type). The 'Verified Startup Index' framing implies a curated sub-sample but never explains selection criteria or sample size. A cold reader cannot assess scope or limitations.",
+    "accuracy": "Category counts are wrong by 5-10x (AI 35 vs 197, Marketing 15 vs 42, SaaS 12 vs 66, Education 9 vs 30). Median revenues are inflated by roughly 10-50x (Dev Tools $31,125 vs $635, Education $30,903 vs $2,435, AI $22,571 vs $503). Composite quality scores lack any disclosed methodology. Games and Marketplace are not standard categories in the reference. The 0.819 MRR ratio and other derived metrics are unverifiable.",
+    "visual": "Clean, consistent design with good use of color coding (green/blue/red for tiers). Scatter plot on slide 5 is well-structured. Gauge charts on slide 3 are decorative but readable. Funnel vs cylinder metaphor on slide 4 is creative. However, the scatter plots on slides 5-6 appear to show individual data points that don't correspond to the stated sample sizes.",
+    "ai_slop": "Heavy consulting-speak throughout: 'Aggregate Alpha,' 'Capital Deployment Playbook,' 'The Substance Play,' 'picks-and-shovels play,' 'Investment Thesis.' Composite scores (67.08, 66.28, etc.) presented with false precision and no methodology—classic AI-generated authoritative-sounding filler. NotebookLM watermark visible on every slide."
+  },
+  "confidence": "high",
+  "total": 42,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 13804,
+    "output_tokens": 1045
+  }
+}

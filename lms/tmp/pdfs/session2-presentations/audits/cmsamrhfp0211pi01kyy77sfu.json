@@ -1,0 +1,45 @@
+{
+  "slide_count": 14,
+  "scores": {
+    "insight": 5,
+    "narrative": 6.5,
+    "framing": 3.5,
+    "accuracy": 2,
+    "visual": 6.5,
+    "bonus": 0
+  },
+  "what_worked": "Data-transparency slide (5) surfacing uncategorized revenue as the biggest blind spot is genuinely useful framing.",
+  "fix_next": "Rerun every calculation on the assigned 1,000-row frozen extract; the 8,782-row base invalidates nearly all claims.",
+  "verdict": "Polished deck built on the wrong dataset; accuracy failures undermine otherwise competent storytelling.",
+  "flags": [
+    "wrong-dataset",
+    "fabricated-row-count",
+    "revenue-total-mismatch",
+    "category-counts-mismatch",
+    "zero-revenue-count-mismatch",
+    "no-limitations-slide",
+    "no-explicit-audience",
+    "provider-percentages-mismatch",
+    "causal-language-on-correlations"
+  ],
+  "factual_error_count": 12,
+  "factual_error_detail": "Slide 1/2: claims 8,782 rows vs frozen 1,000. Slide 2: $15.4M MRR vs reference $15.6M total revenue (and conflates MRR with revenue). Slide 2: 57.2% zero-revenue vs reference 216/1000=21.6%. Slide 3: mean $1,752 not verifiable against 1,000-row set. Slide 4: AI count 1,430 vs reference 197; category totals all wrong. Slide 5: 3,264 uncategorized vs reference 274 missing. Slide 6: US 1,657 startups vs reference dataset scale. Slide 7: B2B/B2C counts (1,883/3,143) unverifiable against 1,000 rows. Slide 8: Stripe 59.4% of startups vs reference 636/1000=63.6%; Dodo 9.3% vs 50/1000=5%. Slide 8: Stripe 85.3% MRR vs reference 85.3% plausible but denominator wrong. Slide 10: correlation values drawn from wrong n. Slide 11: 1,952 for-sale vs 1,000-row cap.",
+  "evidence": {
+    "insight": "Slide 5 invisible-revenue observation and slide 10 correlation hierarchy (subs > DR > social) are decision-useful angles, but all underlying numbers are from a different dataset, so the insights cannot be trusted as stated.",
+    "narrative": "Clear thesis ('top-heavy market') threaded from exec summary through distribution, categories, geography, payments, growth, drivers, acquisitions, and five takeaways. Logical arc with a purposeful landing slide. Bumped slightly from preliminary for coherent sequencing.",
+    "framing": "Title slide names dataset and freeze date but claims 8,782 rows instead of 1,000. No limitations or missingness disclosure for the actual assigned dataset. Audience implied (builders/buyers) but never stated. Entire framing is built on wrong-scale data, leaving a cold reader unable to assess validity.",
+    "accuracy": "Virtually every quantitative claim is derived from a larger (likely full-platform) dataset rather than the assigned 1,000-row frozen extract. Row count, revenue totals, category counts, zero-revenue share, provider splits, geography counts, and B2B/B2C figures all fail reference checks. At least 12 distinct factual mismatches identified.",
+    "visual": "Consistent dark theme with teal/orange accents. Good hierarchy: section labels, big-number callouts, annotation boxes. Appropriate chart types (horizontal bar, donut, grouped bar, table). Slide 5 bar-chart axis labels slightly clipped. Professional but repetitive template feel across slides.",
+    "ai_slop": "Uniform template layout across all 14 slides suggests automated generation. Phrases like 'brutally concentrated' and 'priced like a garage sale' are punchy but border on consulting-speak filler. The 8,782-row figure strongly suggests the student fed a full-platform scrape into an AI tool without verifying against the assigned 1,000-row extract."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Raised narrative from 6.0 to 6.5 for genuinely coherent thesis threading and purposeful slide sequence; all other scores confirmed after independent review. Accuracy remains at 2.0 due to pervasive wrong-dataset errors.",
+  "total": 47,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 26331,
+    "output_tokens": 1108
+  }
+}

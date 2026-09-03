@@ -1,0 +1,41 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 6,
+    "narrative": 7.5,
+    "framing": 6,
+    "accuracy": 5.5,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong thesis arc from assumption through correlation test to punchy landing on slide 7.",
+  "fix_next": "Add a limitations slide addressing missingness, zero-revenue rows, survivorship bias, and back slide 5 claims with data.",
+  "verdict": "Clean, focused single-question story undermined by ungrounded mechanism claims and missing caveats.",
+  "flags": [
+    "narrow-scope",
+    "speculative-mechanism-slide",
+    "missing-limitations-slide",
+    "unverifiable-quartile-chart",
+    "no-missingness-disclosure"
+  ],
+  "factual_error_count": 1,
+  "factual_error_detail": "Slide 3: raw Pearson r=0.02 is presented for followers vs 30-day revenue; this is a different variable pair than the reference (founded-year vs revenue, r≈0.025), so the number is plausible but unverifiable. Slide 5 makes four mechanistic/causal claims ('Sales-Led, Not Feed-Led', 'Enterprise Doesn't Scroll', etc.) with zero supporting data from the dataset—these are speculative assertions dressed as findings.",
+  "evidence": {
+    "insight": "Core finding (near-zero follower-revenue correlation) is genuinely useful and the quartile non-monotonicity on slide 6 adds texture, but the deck never explores category, payment provider, anonymity, B2B/B2C, or TLD dimensions—staying shallow on one variable pair.",
+    "narrative": "Well-sequenced: assumption (s2) → scatter test (s3) → extreme examples (s4) → mechanism (s5) → alternative metrics (s6) → thesis (s7). Each slide advances the argument. Landing is punchy and earned.",
+    "framing": "Audience (investment committee) and question are clearly stated on slides 1-2. However, no limitations or data-quality slide: no mention of 241 missing country, 288 missing audience_type, 216 zero-revenue rows, or survivorship bias. A cold reader cannot assess how robust the findings are.",
+    "accuracy": "Slide 3 r=0.02 is plausible but unverifiable against reference (reference r≈0.025 is for a different pair). Slide 5's four mechanism claims are entirely unsupported by dataset evidence—presented as findings but are editorial speculation. Slide 4 company-level figures appear dataset-sourced but cannot be fully verified. Slide 6 quartile medians are unverifiable. No denominators or sample sizes disclosed anywhere.",
+    "visual": "Consistent dark-green/gold palette. Slide 3 log-log scatter is well-annotated with both raw and log-log r values. Slide 6 grouped bar chart is clean. Slide 4 two-column table is effective. Good whitespace and hierarchy throughout. Slide 5 is a generic 2×2 text grid with no data visualization.",
+    "ai_slop": "Slide 5 reads as consulting-template speculation ('Enterprise Doesn't Scroll', 'Virality ≠ Intent') with zero grounding in the dataset—classic AI-generated authoritative-sounding filler. The VC memo framing is slightly performative but not egregious."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 6.0 to 5.5: slide 5 presents four causal mechanism claims as 'findings' with no dataset support, and no missingness/sample-size disclosure anywhere weakens trust. Lowered insight from 6.5 to 6.0: single variable pair explored with no category/provider/B2B segmentation. Lowered framing from 6.5 to 6.0: complete absence of limitations or data-quality context for a cold reader.",
+  "total": 66,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 13853,
+    "output_tokens": 969
+  }
+}

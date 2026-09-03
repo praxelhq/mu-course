@@ -1,0 +1,39 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 6.5,
+    "accuracy": 4.5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Clear thesis-driven structure with four actionable \"rules\" that build toward a coherent founder playbook.",
+  "fix_next": "Multiple numerical claims are materially wrong (total revenue, top-10 share, B2B median multiplier, AI growth claim); verify every stat against the dataset.",
+  "verdict": "Strong narrative and design undermined by several factual errors in key claims.",
+  "flags": [
+    "factual-errors-multiple",
+    "total-revenue-wrong",
+    "b2b-multiplier-wrong",
+    "unverifiable-growth-metric",
+    "missing-data-not-acknowledged"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1: States '$13.5M combined MRR' but total 30-day revenue is $15.6M—understated by ~$2M. Slide 2: Claims top-10 share is 48%; reference is 49.6%. Slide 3: Claims AI has 'weakest hit-rate of any major category' at 25% growth, but Mobile Apps shows 10%—AI is not the weakest. The growth-rate metric itself is unverifiable from the frozen dataset reference. Slide 5: B2B median $1,036 vs B2C $181 yields 5.7× but reference shows median multiples of ~2.35×/2.30× respectively; the absolute medians and multiplier appear fabricated or computed on a different basis. Slide 5: Says 'revenue per customer' but the data is revenue per company—conflation of terms.",
+  "evidence": {
+    "insight": "Slide 2 power-law framing is genuinely useful for founders; Slide 3 contrarian AI-crowding argument adds value; Slide 4 India zero-revenue observation is interesting. However, insights stay at a descriptive level—no deeper segmentation (e.g., category × audience type, or median vs mean distinction).",
+    "narrative": "Four numbered 'rules' build logically from macro distribution → category → geography → audience type, culminating in a summary playbook on Slide 6. Sequence is purposeful and the landing synthesizes prior slides.",
+    "framing": "Slide 1 clearly states audience ('a founder deciding what to build'), dataset source, and scope. However, 274 missing category values and 288 missing audience_type values are never disclosed, which matters for Slides 3 and 5. No limitations slide.",
+    "accuracy": "Total revenue off by ~$2M (Slide 1). Top-10 share rounded down from 49.6% to 48% (Slide 2). AI called 'weakest growth rate' when Mobile Apps is lower at 10% on the same chart (Slide 3)—self-contradictory. B2B/B2C multiplier of 5.7× contradicts reference ~2.3× (Slide 5). Growth percentages are unverifiable.",
+    "visual": "Consistent dark theme with gold accent; good hierarchy with large stat callouts paired with charts. Bar chart on Slide 2 effectively shows power law. Horizontal bar on Slide 3 is well-sorted. Slide 5 comparison layout is clean. Minor issue: bar labels on Slide 2 are slightly hard to read at angle.",
+    "ai_slop": "Template is consistent and polished without excessive decoration. The decorative dots in the upper-right corner are purely ornamental but minimal. No major slop detected—content is specific to the dataset."
+  },
+  "confidence": "high",
+  "total": 64,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 12063,
+    "output_tokens": 906
+  }
+}

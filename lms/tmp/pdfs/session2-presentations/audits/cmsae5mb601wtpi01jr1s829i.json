@@ -1,0 +1,44 @@
+{
+  "slide_count": 14,
+  "scores": {
+    "insight": 4,
+    "narrative": 4.5,
+    "framing": 3,
+    "accuracy": 2.5,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "Revenue-per-visitor derived metric across categories and revenue stages shows genuine analytical effort beyond raw counts.",
+  "fix_next": "Remove dollar signs from non-monetary axes (percentages, counts, visitors), disclose missingness, and add sample sizes to every chart.",
+  "verdict": "Repetitive template with pervasive labeling errors undermines otherwise reasonable analytical questions.",
+  "flags": [
+    "dollar-sign-on-non-dollar-axes",
+    "no-missingness-disclosure",
+    "no-sample-sizes",
+    "causal-language-from-cross-section",
+    "ai-slop-template",
+    "unverifiable-derived-ratios",
+    "implausible-conversion-rates",
+    "truncated-axis-labels"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 2: avg MRR $13,472 doesn't match reference $15,596 total/1000≈$15,596 (mean should be ~$15,596 or ~$20K excluding zeros depending on denominator). Slide 5: labels bar chart '$93/$37/$26' as 'Revenue Growth Rate' but this is cross-sectional data with no temporal growth dimension; metric undefined. Slide 8: '$60' labeled as 60% conversion rate is implausibly high and uses dollar sign for a percentage; '$15' and '$2' also dollar-signed percentages. Slide 9: visitor chart uses dollar signs ($29, $2, $1, $0) for what should be millions of visitors. Slide 10: subscription counts labeled with dollar signs ($158, $392, $261). Slide 5: '93% faster growth' claim has no methodological basis in a snapshot dataset. Slide 8: 'Both' shown as '$2' but text says 1.5%—internal inconsistency.",
+  "evidence": {
+    "insight": "Revenue-per-visitor by category (slide 3) and by revenue band (slide 6) are genuinely derived metrics. However, the $10K-50K 'sweet spot' on slide 6 likely reflects outlier sensitivity. Recommendations on slide 13 are generic consulting boilerplate. No exploration of missingness patterns, anonymity effects, or payment-provider selection bias.",
+    "narrative": "Question-per-slide structure provides some logical flow, but no unifying thesis connects the deck. Takeaway slide 12 lists 9 points that repeat earlier slides without synthesis or prioritization. Conclusions slide 13 splits audience (founders/investors) never established upfront.",
+    "framing": "Slide 2 gives basic dataset stats but completely omits massive missingness: 241 country, 288 audience_type, 274 category, 286 domain missing. No survivorship bias discussion. No mention that 216 rows have zero revenue. Audience never defined upfront. 'MRR' used without clarifying it's a snapshot not longitudinal.",
+    "accuracy": "Dollar signs on non-monetary axes across slides 8, 9, 10. Slide 5 fabricates a 'growth rate' from cross-sectional data. Slide 8 claims 60% visitor-to-subscriber conversion which is implausibly high. Slide 2 average MRR of $13,472 is questionable against reference total of $15.6M. No n-counts on any chart makes claims unverifiable. Slide 7 payment provider comparison lacks sample sizes—multi-provider combos likely have tiny n.",
+    "visual": "Identical layout repeated 8 times: bar chart left, red 'KEY FINDING:' header right, three bullets. Truncated labels ('Marketin g'). No axis titles, no error bars, no annotations. Dollar signs on percentage and count axes. Crude bar charts with no gridlines. Color coding changes between slides without legend consistency.",
+    "ai_slop": "Eight consecutive slides use identical template with same red 'KEY FINDING:' header, same three-bullet structure, same chart placement. Dollar signs incorrectly applied to every y-axis regardless of unit. Generic consulting phrases ('sweet spot', 'superior growth', 'pick ONE audience', 'volume game'). Could fit any SaaS dataset with minimal modification."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 3.5 to 3.0: complete omission of missingness affecting 24-29% of key columns is a more serious framing failure than preliminary score reflected. Other scores confirmed as appropriate.",
+  "total": 34,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 25294,
+    "output_tokens": 1128
+  }
+}

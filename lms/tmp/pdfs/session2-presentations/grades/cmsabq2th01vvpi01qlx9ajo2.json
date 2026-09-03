@@ -1,0 +1,39 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 5,
+    "narrative": 6,
+    "framing": 5.5,
+    "accuracy": 3.5,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Clear four-beat narrative arc with a coherent thesis that crowding ≠ earning.",
+  "fix_next": "AI revenue is $2.36M not $1.81M; the acceleration chart appears fabricated from unavailable time-series data—verify every number against the actual dataset.",
+  "verdict": "Coherent story undermined by multiple wrong numbers and fabricated-looking charts.",
+  "flags": [
+    "fabricated-chart-suspected",
+    "multiple-revenue-errors",
+    "ai-slop-decorative-illustrations",
+    "missing-data-not-acknowledged",
+    "denominator-confusion"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 2: AI revenue stated as $1.81M; actual is $2.36M. Slide 2: total MRR stated as $13.47M; actual 30-day total is $15.60M—denominator appears to exclude uncategorized rows without disclosure. Slide 3: SaaS revenue $588K vs actual $703.5K. Slide 3: Marketing revenue $444K vs actual $1.32M (severely understated). Slide 3: Marketing share stated 3.3% of total—actual is ~8.4%. Slide 4: US revenue $7.5M and 55.7%—cannot be verified against frozen reference but denominator is unclear given 241 missing country values; percentage basis unstated. Slide 5: Entire acceleration chart claims time-series data (3-month pace, 12-month pace) that does not exist in the cross-sectional dataset—chart appears fabricated.",
+  "evidence": {
+    "insight": "The crowding-vs-earning framing (slides 2-3) and median-vs-mean distinction (slide 6) are genuinely useful observations, but they don't go deep enough—no median revenue by category comparison, no discussion of Education's high median, no provider analysis.",
+    "narrative": "Four-beat structure (crowded → where money lives → acceleration → so-what) is purposeful and lands on actionable recommendations. Sequence is logical. However the acceleration beat (slide 5) rests on fabricated data, weakening the arc.",
+    "framing": "Slide 1 sets up audience (investors/founders), scope (1,000 startups), and data source (payment-verified). However, 274 missing category values and 241 missing country values are never acknowledged, creating misleading denominators throughout.",
+    "accuracy": "Multiple revenue figures are materially wrong: AI $1.81M vs $2.36M, Marketing $444K vs $1.32M, SaaS $588K vs $703.5K. The acceleration chart on slide 5 references time-series data not available in the cross-sectional dataset. Total MRR denominator ($13.47M) is unexplained and wrong vs $15.6M. The 26.2% for-sale figure on slide 6 is unverifiable.",
+    "visual": "Gamma template with repetitive decorative illustrations that add no information. Only one actual data chart (slide 5), which appears fabricated. No real data visualizations for the category or geography claims. Map on slide 4 is decorative. Color palette is consistent but the deck is visually sparse and text-heavy.",
+    "ai_slop": "Decorative Gamma illustrations on every slide add no analytical value. Phrases like 'Infrastructure bets with outsized per-customer value' and 'High utility category with concentrated winners' are generic filler unsupported by data. The acceleration chart appears AI-generated from nonexistent time-series data."
+  },
+  "confidence": "high",
+  "total": 47,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 13824,
+    "output_tokens": 945
+  }
+}

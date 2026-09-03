@@ -1,0 +1,39 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 6.5,
+    "framing": 5,
+    "accuracy": 4.5,
+    "visual": 5,
+    "bonus": 1
+  },
+  "what_worked": "Clear thesis contrasting vanity metrics versus structural revenue signals, with a coherent stop/start/accelerate landing.",
+  "fix_next": "Correlation claims (0.90, 0.17, 0.49, 0.34) are presented without showing the underlying data, sample sizes, or variable definitions—verify and cite them.",
+  "verdict": "Coherent narrative arc but unverifiable correlation claims and thin data evidence undermine credibility.",
+  "flags": [
+    "unverifiable-statistics",
+    "no-sample-sizes",
+    "missing-data-not-quantified",
+    "consulting-language-inflation",
+    "ai-slop-critical-insight-banners"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 6: Analytics shown as high-median 'Substance Zone' alongside Education, but Analytics median ($419, n=19) is far below Marketing ($2,369.50) and Content Creation ($1,237.50), making the pairing misleading. Slide 3: 0.90 correlation for active subscriptions to revenue is stated without variable specification and cannot be verified against the dataset; calling it 'ungameable predictor' overstates an observational correlation. Slide 4: Social following correlation stated as 0.17 but on slide 5 social reach correlation is 0.34—internally inconsistent (0.17 vs 0.34 for what appears to be the same or closely related metric).",
+  "evidence": {
+    "insight": "Slides 3-5 attempt to rank proxy signals by correlation strength, and slide 6 contrasts crowded vs. profitable categories—these go beyond chart description. However, the 'hype vs substance' framing for AI vs Education is a known trope, not deeply original.",
+    "narrative": "Clear arc: problem (slide 2) → signal (slide 3) → noise (slide 4) → comparison (slide 5) → category strategy (slide 6) → structural advantage (slide 7) → recommendation (slide 8). The stop/start/accelerate framework provides a landing. Sequence is purposeful.",
+    "framing": "Slide 1 identifies audience (CEOs) and question (capital allocation). However, scope is vague ('in the industry'), dataset limitations (274 missing categories, 241 missing countries, 216 zero-revenue) are not quantified beyond a hard-to-read missingness chart on slide 2. No definitions of key variables.",
+    "accuracy": "Slide 6 misidentifies Analytics as a top-median category when Marketing ($2,369.50) is much higher. Slides 4 and 5 give inconsistent correlation values for social metrics (0.17 vs 0.34). The 0.90 correlation on slide 3 is unverifiable. No denominators, sample sizes, or confidence intervals accompany any claim. Founded-year correlation (r=0.025) is never mentioned, which is fine, but the deck never acknowledges that its own correlations are observational.",
+    "visual": "Slide 2 missingness chart has duplicate/garbled labels (revenue_per_visitor_usd appears twice, visitors_30d appears multiple times). Slide 6 bubble chart is conceptually effective but axis values are absent. Slide 7 Venn diagram is generic and data-free. Consistent 'Critical Insight' footer banners on every slide become repetitive. Slide 3 is a giant blue box with one number—low information density.",
+    "ai_slop": "Every slide has a formulaic 'Critical Insight' banner at the bottom with inflated language ('undisputed primary drivers of enterprise value,' 'mathematically superior'). The pillar-column decorative elements on slides 3-8 are purely ornamental. Slide 3 is essentially a giant stat card with no supporting chart. The consulting-style stop/start/accelerate framework on slide 8 is generic."
+  },
+  "confidence": "medium",
+  "total": 54,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 14220,
+    "output_tokens": 999
+  }
+}

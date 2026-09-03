@@ -1,0 +1,40 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 0.5,
+    "narrative": 1,
+    "framing": 0.5,
+    "accuracy": 0.5,
+    "visual": 2,
+    "bonus": 0
+  },
+  "what_worked": "Consistent visual template with clean typography and adequate whitespace throughout.",
+  "fix_next": "This deck contains zero analysis of the assigned dataset—every number, chart, and segment appears entirely fabricated.",
+  "verdict": "Fabricated corporate deck with no connection to the assigned dataset.",
+  "flags": [
+    "fabricated-data",
+    "no-dataset-connection",
+    "ai-slop",
+    "wrong-dataset",
+    "consulting-filler",
+    "decorative-chart"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 3: Total revenue $14.2M (actual $15.6M); +34% YoY growth, 92% retention, 4.8x LTV/CAC not in dataset. Slide 4: Enterprise SaaS/Mid-Market/SMB/Consumer segments don't exist in dataset. Slide 5: North America 45%/EU 30%/APAC 15% geographic split fabricated—dataset uses country not region and has 241 missing. Slide 6: Quarterly trend Q1 2025–Q1 2026 not in dataset (30-day snapshot). Slide 7: All target/actual metrics (CAC $385, MAU 168,400, NPS 68) fabricated. Slide 8: 18% overhead reduction, 27% deal size increase unsupported. Slide 9: 14% infrastructure cost reduction unsupported. Slide 11: Dashboard image from rib-software.com construction dashboard, unrelated.",
+  "evidence": {
+    "insight": "No slide references any actual dataset field (category, provider, TLD, audience_type, anonymous status). All 'insights' are generic consulting platitudes about CAC, LTV, retention with no grounding.",
+    "narrative": "Slides follow a generic corporate report template (overview → metrics → segments → geography → trends → summary → roadmap) with no thesis tied to the actual data assignment.",
+    "framing": "No mention of the 1,000-company dataset, 30-day revenue window, payment providers, or any actual analytical question. Audience and scope are undefined beyond 'Executive Analytics Division.'",
+    "accuracy": "Every quantitative claim is fabricated: $14.2M total revenue, segment breakdowns, geographic splits, quarterly trends, CAC/NPS/MAU figures. None match the dataset. Zero correct figures found.",
+    "visual": "Template is clean and consistent with good color palette, but charts are decorative fabrications. Slide 11 includes a cropped, unrelated construction dashboard screenshot from rib-software.com.",
+    "ai_slop": "Entire deck is AI-generated template filler: 'robust momentum across all core verticals,' 'disciplined acquisition costs,' 'enhanced lifetime value,' 'executive agility in decision-making.' No content is dataset-specific."
+  },
+  "confidence": "high",
+  "total": 9,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22130,
+    "output_tokens": 751
+  }
+}

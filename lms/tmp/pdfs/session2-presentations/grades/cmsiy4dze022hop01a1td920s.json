@@ -1,0 +1,39 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 3,
+    "narrative": 3.5,
+    "framing": 3,
+    "accuracy": 2,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Clear thesis that most micro-SaaS startups fail and B2B utility beats vanity metrics.",
+  "fix_next": "Almost every data claim appears fabricated or unverifiable from the dataset—anchor charts and statistics to actual dataset fields and values.",
+  "verdict": "Consulting-style advice deck with fabricated charts, not a data story.",
+  "flags": [
+    "fabricated-charts",
+    "unverifiable-claims",
+    "ai-slop",
+    "no-dataset-grounding",
+    "missing-methodology"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 2: '67.8% under $1,000 lifetime revenue'—unverifiable and conflates 30-day with lifetime. r=0.28 for social media clout not in dataset. Slide 3: Categories 'Content Creation $12,531 MRR', 'Customer Support AI', 'General SaaS' do not match dataset categories; MRR figures and growth percentages have no basis in the data. Slide 3 omits AI, the highest-revenue category. Slide 4: Saturation levels, pricing power, and churn risk percentages are entirely fabricated—no churn or pricing fields exist in the dataset. Slide 2: 'top 10% ($20,000+ MRR)' threshold is unverifiable.",
+  "evidence": {
+    "insight": "Slide 4 saturation matrix and slide 6 takeaways offer generic startup advice (build surgical tools, disregard vanity metrics) that could apply to any dataset or none. No original analytical finding grounded in the actual data.",
+    "narrative": "There is a loose arc from problem (most startups fail) to opportunity (pick B2B niches) to action (4-week framework), but the middle analytical slides don't build on each other and the framework (slide 5) is generic advice unconnected to data.",
+    "framing": "Slide 1 names the audience (indie founders) and question (high-MRR categories), but never defines scope, sample, missingness, or limitations. No mention of 30-day revenue window, 274 missing categories, or 216 zero-revenue rows.",
+    "accuracy": "Slide 3 uses categories not in the dataset (Customer Support AI, General SaaS) and fabricates MRR/growth figures. Slide 4 invents churn rates and pricing tiers from fields that don't exist. Slide 2's correlation claim (r=0.28) references a variable not in the dataset. The dataset's actual top category (AI at $2.36M) is absent from the bar chart.",
+    "visual": "Clean template with consistent typography and color coding. Slide 4 table is readable with color-coded badges. However, the stock photo on slide 2 adds nothing, and slide 3's bar chart presents fabricated data in a polished wrapper.",
+    "ai_slop": "Pervasive: stock photo of man at laptop (slide 2), generic 4-week framework (slide 5), consulting-language takeaways (slide 6), fabricated category names and statistics throughout, inflated language ('verified financial signals', 'Dataset Intelligence & Market Analysis')."
+  },
+  "confidence": "high",
+  "total": 31,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 11658,
+    "output_tokens": 838
+  }
+}

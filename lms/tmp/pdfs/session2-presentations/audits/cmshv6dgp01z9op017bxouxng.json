@@ -1,0 +1,43 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 8,
+    "narrative": 8.5,
+    "framing": 7,
+    "accuracy": 5.5,
+    "visual": 6,
+    "bonus": 2
+  },
+  "what_worked": "Payment-infrastructure thesis (Stripe/Dodo) and revenue-funnel choke-point analysis are genuinely original and decision-useful.",
+  "fix_next": "Disclose whether figures are 30-day or annualized, and flag missing-country rate (24%) and small-sample sizes on every relevant slide.",
+  "verdict": "Strong thesis and narrative arc undermined by undisclosed annualization and missing-data silence.",
+  "flags": [
+    "possible-annualization-without-disclosure",
+    "small-sample-claims-without-caveat",
+    "no-missingness-disclosure",
+    "europe-n-matches-missing-audience-type",
+    "decorative-chart-elements",
+    "slide6-bar-lacks-value-labels",
+    "education-median-likely-single-company"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 2: axis labeled '12-Month Revenue' but dataset is 30-day; if annualized, no disclosure; if not, values don't match reference medians. Slide 2: Europe n=288 suspiciously equals missing audience_type count—likely coincidence but unverified. Slide 5: India Education median $215k almost certainly a single company presented as a category median without caveat. Slide 9: title says European founders list 'at a higher premium' but Europe's 3.35x multiple is lower than India's 4.7x—the premium claim is inverted or ambiguous.",
+  "evidence": {
+    "insight": "Slide 3 funnel thresholds ($10k/$100k/$500k) and slide 4 Stripe/Dodo infrastructure argument go well beyond description to identify structural barriers. Slide 9 listing-rate vs. multiple comparison adds a liquidity lens. Slide 5 category-level India-vs-Europe comparison surfaces a non-obvious pattern.",
+    "narrative": "Clear question on slide 1, escalating evidence (revenue gap → funnel → infrastructure → category → B2B/B2C → ARPU → top companies → exits), clean landing on slide 10 with differentiated recommendations. Every slide title advances the argument.",
+    "framing": "Audience (Investment Committee) and question (where to deploy) are explicit. US benchmark is a smart anchor. However, no slide discloses 241 missing countries, 288 missing audience_type, 216 zero-revenue rows, or panel selection bias. Revenue timeframe (30-day vs annual) is never clarified.",
+    "accuracy": "Slide 4 Dodo stats (36/50 Indian) match reference. But slide 2 '12-Month Revenue' label is unsubstantiated from a 30-day dataset. Slide 5 Education $215k median for India is almost certainly one company. Slide 9 title implies Europe lists at higher premium but the multiple is actually lower than India's—confusing wording. India n=59 and Europe n=288 are plausible but unverifiable against reference.",
+    "visual": "Clean Gamma template with consistent typography and appropriate chart types (horizontal bars, donuts, grouped bars). Slide 4 donut charts have decorative geometric shapes adding no information. Slide 6 grouped bar chart lacks value labels. Slide 3 stacked/grouped bar is somewhat confusing in distinguishing three threshold series.",
+    "ai_slop": "Slide 4 decorative geometric shapes (diamonds, squiggles) around donut charts are classic AI template filler. Otherwise content is specific and substantive, not generic."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 7.5 to 7.0: complete silence on missingness (24% countries, 29% audience_type, 22% zero-revenue) is a material omission for an investment-committee audience. Other scores confirmed after independent review.",
+  "total": 72,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 18850,
+    "output_tokens": 989
+  }
+}

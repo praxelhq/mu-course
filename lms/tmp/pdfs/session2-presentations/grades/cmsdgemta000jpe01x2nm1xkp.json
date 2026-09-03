@@ -1,0 +1,39 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis-driven narrative with genuinely useful median-vs-mean framing and actionable acquisition-market analysis.",
+  "fix_next": "Multiple revenue figures are materially wrong—total pooled MRR is ~$13.5M not the dataset's $15.6M 30-day total; category medians diverge from reference values throughout.",
+  "verdict": "Compelling story undermined by systematic numerical errors across key claims.",
+  "flags": [
+    "total-revenue-mismatch",
+    "category-median-errors",
+    "zero-revenue-count-wrong",
+    "mrr-vs-30day-conflation",
+    "b2b-b2c-multiplier-off"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 2/3: Claims pooled MRR is $13.5M; dataset total 30-day revenue is $15.6M—unclear denominator, and the cohort sums (6.5+3.1+3.9+0.1=$13.6M) don't match either figure. Top-10 share stated as 48% vs reference 49.6%. Slide 2/3: 197 zero-revenue companies stated; reference is 216. Slide 2/5: AI median stated $446 vs reference $503; Education median $2,142 vs reference $2,435; Marketing median $1,586 vs reference $2,369.50. Slide 5: Dev Tools median $185 vs reference $635; Analytics median $1,294 vs reference $419; SaaS median $303 vs reference $200.50—several are far off. Slide 6: B2B/B2C multiplier stated as 5.7x; reference median multiples are ~2.35x/2.30x, not the absolute medians presented. The 255+401+56=712 companies don't account for 288 missing audience_type rows transparently. Slide 4: Median MRR $282 not directly verifiable but plausible if treating as MRR rather than 30-day revenue.",
+  "evidence": {
+    "insight": "Slide 4's mean-vs-median comparison (48x overstatement) is a genuinely useful insight. Slide 8's acquisition-market analysis with portfolio sizing is decision-useful. Slide 9's growth-rate skepticism (mean vs median) adds analytical depth.",
+    "narrative": "Clear four-finding thesis on slide 2 carried through concentration→categories→B2B/B2C→acquisition→momentum→recommendations. Each slide advances the argument. Landing on slide 10 with three timed moves is purposeful.",
+    "framing": "Slide 1 sets scope and freeze date. Risk caveat on slide 10 acknowledges self-reported data. However, no explicit discussion of 274 missing category rows or 288 missing audience_type rows, which materially affect denominators throughout.",
+    "accuracy": "Systematic errors: zero-revenue count wrong (197 vs 216), category medians diverge substantially from reference (Dev Tools off by 3.4x, Analytics off by 3x), total revenue denominator unclear, B2B/B2C multiplier doesn't match reference. The deck consistently uses 'MRR' but the dataset provides 30-day revenue—this conflation is never acknowledged.",
+    "visual": "Clean, consistent template with navy/gold palette. Good use of big-number callouts on slides 3, 6, 8, 9. Bar charts on slides 4-5 are well-labeled. Pie chart on slide 7 lacks value labels, reducing utility. Slide 11 appendix table is clean. No chartjunk.",
+    "ai_slop": "Minimal slop. The consulting-style 'session 3' framing and 'internal discussion document' positioning feel slightly performative but not egregious. Content is substantive throughout, not generic filler."
+  },
+  "confidence": "high",
+  "total": 72,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 21258,
+    "output_tokens": 1007
+  }
+}

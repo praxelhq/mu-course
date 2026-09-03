@@ -1,0 +1,48 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 1.5,
+    "narrative": 3,
+    "framing": 1.5,
+    "accuracy": 1,
+    "visual": 1,
+    "bonus": 0
+  },
+  "what_worked": "Consistent B2B-over-B2C thesis threaded across all twelve slides provides a coherent, if hollow, storyline.",
+  "fix_next": "Replace every slide's prose with actual charts, numbers, and dataset findings—not one statistic from the 1,000-row dataset appears anywhere.",
+  "verdict": "Polished consulting template with zero data; a strategy memo untethered from the dataset.",
+  "flags": [
+    "no-data-visualization",
+    "no-charts",
+    "no-numbers-cited",
+    "extreme-ai-slop",
+    "dataset-not-used",
+    "identical-slide-template",
+    "consulting-filler",
+    "unearned-certainty",
+    "recommended-visuals-never-created",
+    "no-limitations-acknowledged",
+    "no-sample-size-mentioned",
+    "performative-confidential-branding"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 7: Claims AI shows 'exceptional short-term growth trajectory' — AI category median revenue ($503) is among the lowest, contradicting this. Slide 8: Claims Marketing, E-Commerce, and Education are 'highest-conviction' categories without citing any data; the dataset does support high medians for Marketing ($2,370) and Education ($2,435), but E-Commerce median ($387) is low, undermining the claim. Slide 2: Asserts B2B 'overwhelmingly dominates' recurring cash flows — the dataset's B2B median multiple (2.35x) is nearly identical to B2C (2.30x), offering no overwhelming dominance. Slide 9: Claims 'depressed multiples for listed assets' without citing any on-sale multiple data; actual data shows mean B2C on-sale multiples (8.44x) exceed B2B (7.97x), complicating the narrative.",
+  "evidence": {
+    "insight": "Zero original analytical findings from the dataset. No category revenue comparisons, no provider analysis, no concentration metrics, no correlation findings. Every claim is generic VC wisdom that could apply to any SaaS market without data.",
+    "narrative": "A coherent B2B-superiority thesis runs across 12 slides with logical sequencing (landscape → models → distribution → winners → losers → AI → opportunities → risks → recommendations → synthesis). However, the arc is repetitive — slides 1, 2, 5, 6, 11, and 12 essentially restate the same point. No narrative tension or surprise from data.",
+    "framing": "No dataset is ever identified. No sample size (1,000 rows), no source, no time period, no missingness rates (24–29% across key fields), no methodology. A cold reader has no idea what evidence underlies any claim. The 'Strictly Confidential / Investment Committee' framing is performative theater.",
+    "accuracy": "Not a single number from the dataset appears in 12 slides. No revenue totals, no category counts, no medians, no provider shares, no Pearson r, no top-10 concentration. Claims about AI growth, B2B dominance, and category attractiveness are either unsupported or actively contradicted by the data (e.g., AI median $503 is near-bottom; E-Commerce median $387 is low).",
+    "visual": "All 12 slides use an identical layout: cyan headline-insight box, left bullet panel, two right-side boxes, bottom 'recommended visual framework' box. No charts, tables, scatter plots, bar graphs, or any data visualization exists. The 'recommended visual' boxes describe diagrams that were never built — effectively placeholders. Extreme monotony; no visual hierarchy differentiation across slides.",
+    "ai_slop": "Severe. Every slide follows the same 5-section template verbatim. Language is uniformly inflated ('compounding moat effect,' 'multiple arbitrage,' 'capital efficiency flywheel,' 'alpha horizon'). Recommended visuals are described but never rendered. Content is interchangeable with any SaaS/AI market commentary. The 'Strictly Confidential' footer appears on a student assignment with no proprietary content."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 2→1.5 (no dataset-specific finding exists at all), accuracy from 1.5→1 (multiple claims actively contradicted by data, zero statistics cited), visual from 1.5→1 (identical template ×12 with zero actual visualizations; described-but-absent charts are worse than simply omitting them). Narrative held at 3 for coherent sequencing despite heavy repetition. Framing lowered from 2→1.5 (complete absence of dataset identification, scope, or limitations).",
+  "total": 16,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 25345,
+    "output_tokens": 1175
+  }
+}

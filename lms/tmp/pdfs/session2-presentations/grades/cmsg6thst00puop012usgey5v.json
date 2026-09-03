@@ -1,0 +1,39 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 2,
+    "narrative": 3,
+    "framing": 2.5,
+    "accuracy": 1.5,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Clear thesis question in the title and a consistent prioritize/avoid framework at the end.",
+  "fix_next": "Almost every chart and statistic appears fabricated—categories, metrics, and numbers don't match the actual dataset. Ground claims in real data.",
+  "verdict": "Consulting-style shell with fabricated data; no real analysis performed.",
+  "flags": [
+    "fabricated-data",
+    "ai-slop",
+    "no-dataset-grounding",
+    "generic-filler-slides",
+    "unearned-certainty"
+  ],
+  "factual_error_count": 12,
+  "factual_error_detail": "Slide 2: Median MRR $8K—dataset median is far lower (~$519 total 30-day revenue); 'Top 10% Avg MRR $150K' unverifiable and implausible; 'Top 5% = 52% of revenue' stated but reference is top-10 share 49.6%. Slide 3: Revenue tier percentages (65/20/10/5 and 8/15/25/52) appear invented, not derived from dataset. Slide 4: Categories 'AI Writing, Video Automation, SEO & Content, Design & Rendering, Workflow' do not exist in the dataset; revenue shares and growth rates are fabricated; 'Top 25% Median MRR $85K' and table metrics (Active Subscribers, Revenue Multiple) are not in the dataset. Slide 7: NDR, LTV:CAC, Customer Payback metrics are not in the dataset—entirely fabricated. Slide 8: Organic Traffic, Subscriber Base, Valuation Multiple dimensions and numbers are invented. Slide 9: Market opportunities (metaverse, sustainable content) are generic filler with no data backing.",
+  "evidence": {
+    "insight": "No original insight derived from the actual dataset. Slides 5-7 present textbook SaaS concepts (LTV:CAC, NDR, churn) not found in the data. The 'investment thesis' on slide 10 is generic advice unconnected to any analysis.",
+    "narrative": "There is a loose arc (market overview → categories → models → thesis), but slides 5, 7, and 9 are pure filler that break flow. The pipeline diagram on slide 3 is decorative and unexplained.",
+    "framing": "Title poses a clear question but never defines the dataset, its source, scope, or limitations. No mention of missingness (274 missing categories, 241 missing countries). Audience is implied but never stated.",
+    "accuracy": "Categories on slide 4 are entirely invented (AI Writing, Video Automation, SEO & Content, etc.)—the dataset has AI, Marketing, E-comm, SaaS, Education, etc. Median MRR $8K on slide 2 is wildly wrong. Revenue tier breakdowns on slide 3 are fabricated. Metrics like NDR, LTV:CAC, organic traffic, subscriber base do not exist in the dataset.",
+    "visual": "Gamma template is consistent and legible with decent color contrast. However, charts on slides 2, 3, 4, 8 plot fabricated numbers. The bar chart on slide 2 mixing 1000 startups with $8K median on the same axis is a poor chart choice. Slide 3 pipeline arrows are decorative filler.",
+    "ai_slop": "Slides 5, 6, 7, 9 are textbook AI-generated filler—generic revenue model comparisons, SaaS metrics definitions, and 'market opportunities' (metaverse, sustainable content) that could apply to any deck. AI-generated boardroom image on slide 10 with garbled text ('Veretia CAL VCO'). Fabricated-looking charts throughout."
+  },
+  "confidence": "high",
+  "total": 25,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18787,
+    "output_tokens": 973
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 3.5,
+    "narrative": 4.5,
+    "framing": 4,
+    "accuracy": 2.5,
+    "visual": 2.5,
+    "bonus": 0
+  },
+  "what_worked": "Slide 2 data-completeness chart and slide 9 quadrant framework show genuine analytical intent.",
+  "fix_next": "Fix broken charts on slides 7–8, replace fabricated category names and unsourced statistics with actual dataset values.",
+  "verdict": "Consulting-style platitudes over broken charts; too little data, too much filler.",
+  "flags": [
+    "missing-charts",
+    "fabricated-categories",
+    "unsupported-statistics",
+    "ai-slop",
+    "decorative-graphics",
+    "unearned-certainty",
+    "broken-renders",
+    "duplicate-summary-slides"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 3: US share stated as 42% but dataset has ~258/759≈34%; 'Developer Tools' and 'Creator Economy' are not dataset categories; YoY growth claim has no temporal basis. Slide 5: chart axis values don't match known category counts (AI=197, not ~90). Slide 8: '3× Higher RPV' is unverifiable from dataset. Slide 3: category ranking doesn't match reference (AI is largest by count, not Dev Tools). Slide 5: 'Finance' and 'Creator Economy' highest revenue per startup contradicts reference medians (Marketing and Education lead).",
+  "evidence": {
+    "insight": "Only slide 9 quadrant offers an original framework. Remaining slides restate generic SaaS advice (niche > broad, subscription > one-time) without dataset-specific numbers or surprising findings.",
+    "narrative": "Coherent 'specificity wins' thesis but slides 6 and 10 repeat the same four bullet points nearly verbatim, padding rather than advancing the argument.",
+    "framing": "Slide 2 transparency on missingness is commendable. However, 'marketing anatomy' title promises channel-level analysis never delivered; audience and limitations remain vague.",
+    "accuracy": "Category names are renamed or fabricated (Developer Tools, Creator Economy, Finance not in reference). US 42% overstates actual ~34%. 3× RPV claim unsourced. YoY growth asserted without time-series data. Slide 5 bar lengths inconsistent with known counts.",
+    "visual": "Slides 7 and 8 have completely empty/broken chart areas—only axis labels render. Slides 6 and 10 use decorative clip art (trophy, compass) with zero informational value. Slide 4 scatter has ~10 points representing 1,000 rows. Monotone navy palette with no meaningful color encoding.",
+    "ai_slop": "Pervasive consulting buzzwords ('competitive moat,' 'flywheel,' 'out-position,' 'compounds across every channel'). Slides 6 and 10 are near-identical advice listicles with stock illustrations. Claims stated with unearned certainty throughout."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered visual from 3.0 to 2.5: two slides with completely broken/empty charts is a severe rendering failure that warrants a harder penalty than preliminary score reflected. All other scores confirmed independently.",
+  "total": 34,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 18934,
+    "output_tokens": 826
+  }
+}

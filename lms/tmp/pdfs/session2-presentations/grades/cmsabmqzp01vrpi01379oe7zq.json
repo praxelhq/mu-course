@@ -1,0 +1,40 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 2.5,
+    "narrative": 3.5,
+    "framing": 3,
+    "accuracy": 1.5,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Power-law thesis is directionally sound; revenue distribution bar chart on slide 4 is well-structured.",
+  "fix_next": "Most specific claims (churn rates, code metrics, bootstrapped vs VC table, category splits) are fabricated—not derivable from the dataset at all.",
+  "verdict": "Polished shell over largely fabricated data; consulting theater, not analysis.",
+  "flags": [
+    "fabricated-metrics",
+    "no-dataset-grounding",
+    "ai-slop",
+    "inflated-consulting-language",
+    "unearned-certainty",
+    "missing-limitations"
+  ],
+  "factual_error_count": 9,
+  "factual_error_detail": "Slide 3: 'top 3% control 76% of revenue'—top-10 share is 49.6%, making 76% for top 3% implausible. Slide 4: 84% under $1k/mo and bucket counts (520, 320, 110, 38) are plausible approximations but the data is 30-day revenue not MRR; 216 have zero revenue. Slide 5: Category percentages (AI 38%, B2B Core SaaS 27%, Dev Infra 18%) use invented super-categories not in the dataset; actual AI is 197/726=27%. '68% of revenue above $20k MRR' is unverifiable and likely fabricated. Slide 6: Churn rates (12-18% AI, <2.5% B2B) are completely absent from the dataset—no churn field exists. Slide 7: Entire bootstrapped vs VC table (MRR $4,200 vs $38,500, profit margins, time-to-$1k, churn 3.2% vs 7.1%) is fabricated; no funding-status or profit-margin fields exist. Slide 8: '$42.50 MRR per line of code'—no lines-of-code data exists in the dataset. Slide 11: Revenue scaling curve with specific month/dollar milestones is invented; dataset is a cross-sectional snapshot with no time-series data.",
+  "evidence": {
+    "insight": "Claims about power-law concentration are directionally correct but overstated. Most 'insights' (AI vs B2B retention, code density, bootstrapped vs VC) are generic SaaS wisdom dressed as data findings with no actual dataset support.",
+    "narrative": "There is a coherent arc (reality check → category analysis → strategy → playbook → mandate), but it reads as a pre-written SaaS blog post with dataset references bolted on rather than a story emerging from data.",
+    "framing": "Title slide says 'Stripe-verified' but dataset includes multiple providers. No mention of 274 missing categories, 241 missing countries, or 216 zero-revenue rows. No limitations slide. Audience framing as 'CONFIDENTIAL BOARDROOM BRIEFING' is performative.",
+    "accuracy": "At least 9 material fabrications: churn rates, bootstrapped vs VC metrics, lines-of-code analysis, revenue scaling time-series, and category percentages all cite data fields that do not exist. The dataset is a single cross-sectional snapshot with no churn, funding status, profit margin, or codebase size fields.",
+    "visual": "Consistent dark theme with good hierarchy and color coding. Bar chart on slide 4 is effective. Donut chart on slide 5 is readable. However, the revenue scaling curve (slide 11) and the bootstrapped vs VC table (slide 7) visualize fabricated data. Template is polished but repetitive across slides.",
+    "ai_slop": "Heavy consulting-speak throughout ('BOARDROOM TAKEAWAY', 'EXECUTIVE SO WHAT?', 'CONFIDENTIAL BOARDROOM BRIEFING', 'SUMMARY DOCTRINE', 'The Executive Mandate'). Slides 6-10 contain generic SaaS advice indistinguishable from any AI-generated startup blog post. Fabricated specificity ($42.50/line of code, 2.4 months to first $1k) is a hallmark of AI hallucination presented as data."
+  },
+  "confidence": "high",
+  "total": 29,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 21994,
+    "output_tokens": 1064
+  }
+}

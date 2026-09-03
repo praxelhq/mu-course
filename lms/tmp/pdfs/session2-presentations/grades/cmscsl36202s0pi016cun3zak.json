@@ -1,0 +1,39 @@
+{
+  "slide_count": 5,
+  "scores": {
+    "insight": 3.5,
+    "narrative": 3.5,
+    "framing": 3,
+    "accuracy": 2.5,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Power-law concentration framing and top-company bar chart communicate skewness clearly.",
+  "fix_next": "The category revenue chart uses all-time data but contradicts the frozen 30-day reference dataset; verify every number against the actual dataset columns.",
+  "verdict": "Thin, inaccurate five-slide deck that describes charts without genuine analysis.",
+  "flags": [
+    "fabricated-looking-chart",
+    "wrong-category-ranking",
+    "unverifiable-correlation",
+    "missing-limitations",
+    "no-missingness-disclosure"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 4: Chart shows E-commerce as highest all-time category (~$54M) above AI; reference shows AI is highest ($2.36M 30-day) and E-comm is third—ranking is wrong regardless of time window. Slide 4: Stripe stated as 64% of companies; reference is 636/1000=63.6%, minor but the denominator context (by revenue share $13.5M/$15.6M=86.7%) is omitted. Slide 2: 30-day revenue $15.6M is correct, but '61% top 1% share' is unverifiable and likely refers to all-time, not 30-day; top-10 (1%) 30-day share is 49.6% per reference, not 61%. Slide 5: Correlation r=0.92 between 30-day and all-time revenue is presented without methodology; the only frozen correlation (founded-year vs revenue) is r=0.025, and no 30-day/all-time r is provided in reference—claim is unverifiable and likely inflated by outliers without log-transform disclosure. Slide 4: No acknowledgment of 274 missing category values, making category totals misleading.",
+  "evidence": {
+    "insight": "Slides mostly restate big numbers (total revenue, top companies) without actionable interpretation. The 'predictive correlation' on slide 5 is the only analytical claim but is unverified and lacks nuance about outlier-driven correlations.",
+    "narrative": "Five slides move from overview → top companies → sectors → correlations, but there is no stated thesis, no synthesis slide, and no recommendations. The deck reads as a disconnected fact list.",
+    "framing": "No audience is identified, no research question is posed, no limitations or missingness are disclosed. A cold reader cannot tell what decision this analysis serves. Scope mixes 30-day and all-time without clarifying which is primary.",
+    "accuracy": "Category ranking on slide 4 contradicts reference data. Top-1% share of 61% doesn't match the 49.6% top-10 30-day figure. Correlation claims on slide 5 are unverifiable. Missing data (274 category, 241 country, 216 zero-revenue) never acknowledged.",
+    "visual": "Clean, consistent template with good hierarchy and readable fonts. Bar charts are appropriately chosen. However, charts lack axis labels/units on some slides, and the category chart appears fabricated given data mismatch. Only two chart types across five slides.",
+    "ai_slop": "Consulting-style language ('power-law reality,' 'high-confidence indicator,' 'dominant payment rail') without substantive backing. Template uniformity and inflated certainty suggest AI-generated content with minimal verification."
+  },
+  "confidence": "high",
+  "total": 33,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 10130,
+    "output_tokens": 878
+  }
+}

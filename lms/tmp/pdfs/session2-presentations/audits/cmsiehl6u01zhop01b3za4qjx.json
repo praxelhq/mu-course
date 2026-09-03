@@ -1,0 +1,43 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 5,
+    "accuracy": 4,
+    "visual": 8,
+    "bonus": 1
+  },
+  "what_worked": "MRR-vs-trailing-revenue mispricing thesis is original, decision-useful, and tightly sequenced across six slides.",
+  "fix_next": "Disclose how 262 on-market listings were filtered, define the multiple denominator, and reconcile 44 vs 216 zero-revenue rows.",
+  "verdict": "Visually polished pitch deck with an interesting thesis but unverifiable core claims.",
+  "flags": [
+    "pitch-deck-not-data-story",
+    "unverifiable-core-claim",
+    "denominator-unclear",
+    "missing-methodology",
+    "no-limitations-disclosed",
+    "small-n-no-uncertainty",
+    "zero-revenue-count-mismatch"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 4: '44 listings earned nothing last month' — dataset has 216 zero-revenue rows; the filtering to 44 is never explained and the number cannot be reconciled. Slide 3: 119+40=159 of 262 accounted for; remaining 103 listings unaddressed, and the multiples (2.4x, 3.3x) use an undefined denominator against fields not present in the frozen dataset.",
+  "evidence": {
+    "insight": "The core observation — that asking-price multiples are higher for decaying businesses than healthy ones — is a genuinely original, counterintuitive finding with clear decision relevance for acquirers. However, the insight rests on derived metrics (asking price / live revenue multiples) that cannot be verified against the frozen dataset, which limits its evidentiary weight.",
+    "narrative": "Six slides follow a clean arc: provocative hook → problem definition → quantified anomaly → concrete examples → strategic implication → CTA. The sequence is purposeful. Downgraded slightly from preliminary because the deck reads as an investor pitch rather than a data story — slide 6 is a fundraising ask, not analytical synthesis, and there is no reflection or limitation acknowledgment.",
+    "framing": "Audience (fund investors) is implied but never stated. The 262-listing filter is introduced without methodology. Definitions of 'healthy' and 'decaying' appear only in slide 3 footnotes. No mention of missingness (241 missing country, 274 missing category, etc.), sample-size limitations (n=40 for decaying group), or alternative explanations. A cold reader cannot evaluate whether the thesis survives scrutiny.",
+    "accuracy": "The frozen dataset contains no asking-price or listed-MRR field, so the 2.4x/3.3x multiples are unverifiable. The 44 zero-revenue count on slide 4 conflicts with the 216 zero-revenue rows without explanation — the 262 on-market filter may explain this but is never disclosed. The $4.43M aggregate is similarly unverifiable. No confidence intervals despite n=40. The +38% premium claim lacks statistical testing.",
+    "visual": "Exceptional design restraint: dark palette, serif typography, two-color accent system (teal/gold), generous whitespace. Slide 3 bar chart is simple and effective. Slide 4 card layout communicates concretely. Consistent design language. No chart junk or decorative filler. One of the better-designed decks visually.",
+    "ai_slop": "none — editorially tight, no filler language, no generic consulting phrases, no decorative meaningless graphics"
+  },
+  "confidence": "medium",
+  "changed": true,
+  "change_reason": "Reduced narrative from 8→7.5 (fundraising CTA displaces analytical synthesis), accuracy from 4.5→4.0 (zero-revenue count mismatch is a clearer error than initially weighted, and no statistical testing on small-n claim), bonus from 2→1 (strong design but the pitch-deck framing and unverifiable claims limit how far beyond the rubric this goes). Framing reduced 5.5→5.0 for complete absence of limitations and missingness disclosure.",
+  "total": 64,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 11555,
+    "output_tokens": 1015
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 8,
+    "narrative": 8.5,
+    "framing": 6,
+    "accuracy": 5,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "Contrarian thesis is genuinely earned by multiple data cuts; stealth-vs-named and growth-rate base-effect slides are original.",
+  "fix_next": "Disclose missingness (274 category, 288 audience_type) and reconcile median values against the actual data before publishing claims.",
+  "verdict": "Sharp editorial voice and strong thesis undermined by several uncorrected median errors and silent missingness.",
+  "flags": [
+    "median-values-off",
+    "missing-data-not-acknowledged",
+    "causal-language-on-observational-data",
+    "denominator-ambiguity",
+    "text-chart-inconsistency"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 3: AI median $446 vs reference $503; Marketing median $1,586 vs reference $2,370; Dev Tools median $185 vs reference $635; Mobile Apps median $223 vs reference $232.50 (minor). Slide 4: text says $514, chart bar reads $515. Slide 7: '2.3x MRR' stated as single figure but reference gives B2B 2.35x / B2C 2.30x — close but collapses distinct values. Slide 3 text claims AI median is 'below Marketing, Education, and Analytics' which is directionally correct per reference but the specific $446 figure is wrong.",
+  "evidence": {
+    "insight": "Slide 4 growth-rate base-effect illusion and Slide 5 stealth-identity revenue gap are genuinely original, decision-useful angles that go beyond chart reading. The crowd-vs-money juxtaposition on Slide 3 is a well-constructed analytical move.",
+    "narrative": "Title slide establishes noise-vs-revenue thesis; six claims each dismantle a different conventional signal in cumulative sequence; Slide 8 synthesizes into five numbered takeaways. The arc is purposeful and builds momentum, though the valuation slide (7) feels slightly bolted on rather than organically connected.",
+    "framing": "Dataset, size, and freeze date are stated on every slide. However, 274 missing category values (27.4%) and 288 missing audience_type values (28.8%) are never disclosed, directly affecting the denominators and representativeness of Claims 2 and 5. No limitations or caveats slide. A cold reader cannot assess how much the missing data might change conclusions.",
+    "accuracy": "AI median off by ~11% ($446 vs $503), Marketing median off by ~33% ($1,586 vs $2,370), Dev Tools median off by ~71% ($185 vs $635). These are not rounding differences — they suggest a computation or filtering error. Slide 4 has internal text/chart inconsistency ($514 vs $515). Causal framing ('piling into the hype label bought founders competition, not revenue') on purely observational cross-sectional data.",
+    "visual": "Consistent navy/gold two-color palette with clean bar charts, direct data labels, and effective big-number callouts (Slides 4, 7). Chart types are appropriate and restrained. Hierarchy is clear throughout. Minor: Slide 4 text/chart mismatch.",
+    "ai_slop": "None detected — writing has a distinctive editorial voice, each slide makes a specific claim, no filler or generic template language."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered narrative from 9→8.5 (valuation slide slightly disconnected from arc), lowered framing from 7→6 (silent missingness on two key fields directly affecting two claims is a meaningful framing gap for a cold reader), lowered accuracy from 5.5→5 (Dev Tools median error is 71% off, Marketing 33% off — these are not rounding issues and undermine the specific claims made). Retained bonus at 2 for genuinely original contrarian framing that is well-earned.",
+  "total": 72,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 15930,
+    "output_tokens": 1012
+  }
+}

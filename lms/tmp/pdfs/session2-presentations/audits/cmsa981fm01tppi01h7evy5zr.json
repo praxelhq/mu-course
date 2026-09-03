@@ -1,0 +1,40 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 7,
+    "accuracy": 5.5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Median-vs-mean skewness framing on slide 4 is genuinely illuminating and well-presented.",
+  "fix_next": "Explicitly define whether each figure is MRR or 30-day revenue; verify the AI-exceeds-combined claim against Marketing's large total.",
+  "verdict": "Clean, well-structured deck with a persistent MRR-vs-revenue ambiguity and one suspect category claim.",
+  "flags": [
+    "revenue-metric-ambiguity",
+    "ai-combined-claim-suspect",
+    "anonymous-count-off-by-one",
+    "marketing-revenue-omitted-from-ranking"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 6: claim AI MRR exceeds SaaS+Education+Marketing combined is suspect given Marketing's $1.32M total revenue. Slide 8: anonymous count 130 vs reference 129 (off by 1), named 870 vs 871. Slide 6: MRR-by-category top 3 omits Marketing which has the second-highest total revenue in the reference.",
+  "evidence": {
+    "insight": "Slide 4 median/mean contrast and slide 8 anonymity-vs-transparency observation provide genuine analytical texture, but most other slides describe distributions without deeper causal or comparative analysis.",
+    "narrative": "Five-chapter arc from concentration to geography to category to audience to marketplace builds logically; slide 10 synthesizes threads into a coherent landing. Slide 9 missingness disclosure strengthens credibility.",
+    "framing": "Slide 2 contextualizes TrustMRR well for cold readers; slide 9 addresses data gaps. However, the deck never clarifies whether its primary metric is MRR from a dedicated column or 30-day revenue, creating ambiguity across slides.",
+    "accuracy": "Core stats (1000 rows, category counts, B2C multiple 2.30x, country missingness ~24%) check out. Anonymous count off by 1. The AI-exceeds-combined claim on slide 6 is questionable given Marketing's high reference total. MRR figures are internally consistent but unverifiable against the reference's total-revenue column.",
+    "visual": "Consistent teal palette, clean typography, effective stat cards and bar charts. Slide 5 bar chart clearly conveys US dominance. Slide 7 horizontal bars work well. No chart junk. Some slides (3, 8) are stat-card heavy but not cluttered.",
+    "ai_slop": "Minimal. Headlines like 'AI Is Eating the Leaderboard' are slightly buzzy but backed by data. No generic filler or decorative charts detected."
+  },
+  "confidence": "medium",
+  "changed": true,
+  "change_reason": "Raised accuracy from 5.0 to 5.5: anonymous count is off by only 1, and MRR-vs-revenue distinction is maintained internally even if ambiguous. Reduced framing from 7.5 to 7.0 for never defining the MRR metric explicitly. Net effect is minor adjustment.",
+  "total": 66,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 19033,
+    "output_tokens": 2091
+  }
+}

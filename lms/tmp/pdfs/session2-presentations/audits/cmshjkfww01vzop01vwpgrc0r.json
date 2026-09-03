@@ -1,0 +1,46 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 5,
+    "narrative": 6,
+    "framing": 4.5,
+    "accuracy": 4.5,
+    "visual": 4.5,
+    "bonus": 0
+  },
+  "what_worked": "Category-vs-market dual lens (slide 6) surfaces the SaaS 8× amplification genuinely from the data.",
+  "fix_next": "Disclose missingness, zero-revenue rows, multi-tagging overlap, and total N so a cold reader can assess representativeness.",
+  "verdict": "Polished template over substance; key data-quality issues hidden behind consulting rhetoric.",
+  "flags": [
+    "ai-slop-consulting-language",
+    "unverifiable-market-figures",
+    "no-limitations-slide",
+    "no-missingness-disclosure",
+    "decorative-stock-photo",
+    "repetitive-investor-insight-boxes",
+    "inflated-certainty",
+    "multi-tag-double-counting-unexplained",
+    "axis-label-mismatch-slide9",
+    "unsupported-name-drops"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 5/7: market-tag revenue sums (~$30M and $26.46M) exceed total dataset revenue ($15.6M) due to undisclosed multi-tagging, presented as if additive. Slide 7: claims six markets = $19.69M of $26.46M (74%) but $26.46M itself is inconsistent with slide 5 bar totals (~$30.1M). Slide 9: x-axis labeled 'Category' when chart shows market-tag data. Slide 4: concentration percentages use categorized-only denominator (~$7.45M) without disclosing 274 missing-category rows.",
+  "evidence": {
+    "insight": "The SaaS 8× category-to-market gap and Content Creation surprise are genuine dataset-driven observations. But the deck never examines medians, company counts, provider splits, anonymity share, or per-company metrics—keeping insight at the surface level. Investment themes (slides 10-11) are generic VC talking points not uniquely derivable from this dataset.",
+    "narrative": "Logical arc from summary through category, concentration, market, dual lens, clusters, emerging, long tail, to thesis and recommendations. However, every slide ends with an identical 'Investor Insight' purple box, creating monotony. No tension, counter-evidence, or limitations are ever introduced.",
+    "framing": "Audience (investors) and question stated on slide 1. But 'market tags' vs 'categories' are never operationally defined, 274 missing categories and 286 missing market tags are never disclosed, 216 zero-revenue rows are invisible, and total N (1,000) is never stated. A cold reader cannot judge representativeness or scope.",
+    "accuracy": "Category totals (slide 3) match frozen reference well. Market-tag totals (slide 5) sum to ~$30M, far exceeding $15.6M total revenue, because multi-tagging is never acknowledged. The $26.46M denominator on slide 7 is internally inconsistent with slide 5. Slide 9 mislabels its x-axis as 'Category' for market data. Concentration percentages use a categorized-only denominator without disclosure.",
+    "visual": "Consistent dark/purple Gamma template; bar and donut charts are appropriate and readable. Decorative boat photo (slide 1) and identical purple wave images (slide 8) are filler. Truncated labels on slide 5 reduce readability. Identical purple 'Investor Insight' banners on every slide create visual sameness rather than hierarchy.",
+    "ai_slop": "Pervasive consulting jargon: 'structural shift,' 'asymmetric upside,' 'convergence is the alpha generator,' 'picks-and-shovels,' 'secular tailwind,' 'best-in-class NRR.' Unsupported Bessemer/Sequoia name-drop (slide 4). Identical templated 'Investor Insight' boxes on all 11 slides. Decorative stock photos. Recommendations (slides 10-11) could apply to any software revenue dataset."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 5.0 to 4.5: complete absence of dataset size, missingness rates, and multi-tag methodology is a material framing failure for a cold reader. All other scores confirmed after independent review.",
+  "total": 49,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 22838,
+    "output_tokens": 1098
+  }
+}

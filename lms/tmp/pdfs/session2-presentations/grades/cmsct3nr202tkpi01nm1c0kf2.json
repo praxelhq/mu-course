@@ -1,0 +1,38 @@
+{
+  "slide_count": 14,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7.5,
+    "accuracy": 4.5,
+    "visual": 6.5,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis-driven structure with invest/selective/avoid framework that synthesizes multiple dimensions into actionable calls.",
+  "fix_next": "Revenue figures appear fabricated or from a different field (12-mo vs 30-day); the dataset's total 30-day revenue is $15.6M, not $133.8M trailing-12.",
+  "verdict": "Well-structured investment memo undermined by unverifiable revenue figures and unlabeled charts.",
+  "flags": [
+    "revenue-figures-unverifiable",
+    "unlabeled-chart-axes",
+    "category-revenue-mismatch",
+    "concentration-stat-inflated"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: '$133.8M trailing 12-mo revenue' and '$13.5M total current MRR' are not derivable from the frozen dataset (total 30-day revenue is $15.6M); annualizing would give ~$187M, not $133.8M. Slide 2: '59.3% of revenue held by top 20' — reference shows top-10 hold 49.6%, so top-20 at 59.3% is plausible but unverified and the slide says 'top 20 of 1,000' while the thesis slide says 'top 20 startups'. Slide 4: Revenue figures labeled '12-mo revenue' (Stan $25M, Brand On Demand $10.6M, etc.) cannot be verified against the frozen 30-day dataset and appear extrapolated or fabricated. Slide 5: Category revenue figures (AI $18.4M, Marketing $14.6M, E-comm $12.0M) are dramatically different from the reference 30-day totals (AI $2.36M, Marketing $1.32M, E-comm $1.11M) — even a 12x annualization doesn't reconcile (AI would be ~$28.3M, not $18.4M). Slide 5: Lists 13 categories including 'Fintech' and 'Creator commerce' which don't appear in the reference 12-category breakdown; category counts sum to 615 vs reference 726.",
+  "evidence": {
+    "insight": "Slide 6 invest/selective/avoid framework combines multiple, growth, and decline rate into a coherent screening logic. Slide 7 correctly identifies bimodal growth distribution and warns against mean anchoring. Slide 10-11 pattern-matching of undervalued growers vs overpriced decliners is genuinely useful.",
+    "narrative": "Clear arc: snapshot → thesis → category evidence → growth/pricing → geography → for-sale pool → opportunities → risks → allocation → actions → caveats. Each slide builds on the prior. Thesis stated early (slide 3) and revisited in allocation (slide 12).",
+    "framing": "Slide 1 clearly identifies audience (investor/acquirer), dataset (1,000 startups, frozen 30 Jul 2026), and scope. Slide 14 caveats handle limitations well including anonymized records, missing fields, and snapshot nature. Appropriate disclaimers throughout.",
+    "accuracy": "Core revenue figures cannot be reconciled with the frozen dataset. The deck appears to use '12-month revenue' throughout but the dataset provides 30-day revenue; the annualization math doesn't consistently work (AI: 12×$2.36M=$28.3M ≠ $18.4M). Category listing counts don't match reference (e.g., slide 5 shows 615 total categorized vs 726 in reference). The r≈0.36 for multiple-to-growth is stated without sourcing and differs from the founded-year correlation in the reference.",
+    "visual": "Consistent color palette (dark teal, cream, orange) and typography throughout. Clean table formatting on slides 5, 10, 11. However: slide 8 bar chart has numeric axis labels (1-6) instead of country names — a significant legibility failure. Slide 9 histogram also uses numeric labels (1-7) instead of multiple ranges. No actual data visualizations (scatterplots, distributions) despite discussing correlations and bimodality.",
+    "ai_slop": "Minimal filler language; the deck is substantive throughout. However, the unlabeled chart axes on slides 8-9 suggest auto-generated charts that weren't reviewed. The 'MRR trend' column on slides 10-11 just says 'High growth' or 'Declining' without actual numbers, which feels like placeholder content."
+  },
+  "confidence": "high",
+  "total": 68,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 26466,
+    "output_tokens": 1172
+  }
+}

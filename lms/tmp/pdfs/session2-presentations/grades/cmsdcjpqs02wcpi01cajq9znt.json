@@ -1,0 +1,37 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 9,
+    "accuracy": 7,
+    "visual": 8,
+    "bonus": 3
+  },
+  "what_worked": "Exceptional narrative discipline: every slide earns its place, ends with a 'so what,' and builds toward actionable recommendations.",
+  "fix_next": "Several median figures diverge from reference data (Education $2,142 vs $2,435; AI $446 vs $503; Productivity $42 vs $79.91); verify category medians against the frozen dataset.",
+  "verdict": "Outstanding data story with strong editorial craft; a few median figures need tightening.",
+  "flags": [
+    "median-discrepancies",
+    "revenue-field-ambiguity-mrr-vs-30d",
+    "stripe-revenue-share-87-vs-86.8"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: Stripe '87% of all revenue' — reference shows $13.5M/$15.6M ≈ 86.8%, minor rounding but labeled as 87 in chart. Slide 4: $0 count shown as 197 but reference says 216 have zero revenue (may reflect MRR vs 30-day revenue difference — ambiguous). Slide 5: Top-10 share stated as 48% at 'Top 1%' (10 companies) — reference says 49.6%, a ~1.6pp gap. Slide 6: Education median shown as $2,142 vs reference $2,435; AI median $446 vs $503; Marketing median $1,586 vs $2,369.50; Productivity median $42 vs $79.91. These are consistent directional but materially off, suggesting a different revenue field (MRR) was used rather than 30-day revenue. Slide 8: B2B median $1,036 — hard to verify but the B2B/B2C median revenue multiple of 5.7x shown is plausible against reference 2.35x only if using MRR not 30-day revenue.",
+  "evidence": {
+    "insight": "Slide 6-7 pairing of median vs mean by category to identify Education as uniquely strong on both measures is genuinely original. Slide 8's 'AI is a layer not a market' reframe is decision-useful. Slide 10's correlation hierarchy (subscriptions > domain rating > followers) challenges founder priors. Slide 12's acquisition marketplace analysis adds a non-obvious strategic option.",
+    "narrative": "Clear thesis ('the power law') introduced on slide 1, built through distribution (slide 4), concentration (slide 5), category analysis (slides 6-7), positioning corrections (slide 8), geography (slide 9), distribution channels (slide 10), domain signals (slide 11), marketplace (slide 12), and synthesized into six actionable moves (slide 13). Every slide has a 'SO WHAT' box and a 'Not used' footnote explaining editorial choices. The closing line 'The data does not say building is hard. It says charging is' lands perfectly.",
+    "framing": "Slide 3 is an exemplary dataset framing slide: explains the 1,000 rows are the top 11% of the platform representing 87.6% of revenue, states limitations (self-selected, snapshot, $0-as-null), and flags missingness rates per variable group. The 'Not used' footnotes on every slide show editorial restraint and transparency. Audience (founders choosing what to build) is clear from slide 1.",
+    "accuracy": "The deck consistently uses MRR rather than 30-day revenue, which creates systematic discrepancies against the reference dataset's 30-day revenue figures. Education median $2,142 vs reference $2,435; AI $446 vs $503; Marketing $1,586 vs $2,369.50; Productivity $42 vs $79.91. The $0 count of 197 vs reference 216 suggests different field. Top-10 share at 48% vs reference 49.6%. The B2B/B2C median ratio of 5.7x is much higher than reference 2.35x. However, the deck is internally consistent and the directional claims hold. Causal discipline is strong throughout — slide 11 explicitly says 'Read it as selection, not cause.'",
+    "visual": "Consistent dark/light theme alternation creates rhythm. Dual-axis charts on slides 6, 9, 11 are well-labeled with both axes clearly marked. Hierarchy is strong: section label → headline → subtitle → chart → callout boxes → SO WHAT → Not Used footnote. The pie chart on slide 12 is the weakest choice (donut for proportions of price ranges). Slide 10's table is clean and effective. No decorative graphics; every visual element carries data.",
+    "ai_slop": "none — the deck shows strong editorial voice throughout. 'Not used' footnotes, specific callouts like 'These are assets, not corpses,' and the closing aphorism all reflect genuine authorial judgment rather than template filling."
+  },
+  "confidence": "high",
+  "total": 86,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 25469,
+    "output_tokens": 1263
+  }
+}

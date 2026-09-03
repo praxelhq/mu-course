@@ -1,0 +1,44 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 7.5,
+    "accuracy": 5,
+    "visual": 8,
+    "bonus": 2
+  },
+  "what_worked": "Exceptional narrative arc from market structure through mispricing to a concrete deployable funnel screen.",
+  "fix_next": "Reconcile the $134M headline with the $15.6M frozen dataset total; the 8.6× inflation undermines every downstream claim.",
+  "verdict": "Brilliant storytelling built on a materially inflated revenue base and several wrong counts.",
+  "flags": [
+    "revenue-inflated-8x",
+    "zero-revenue-count-wrong",
+    "top-concentration-unverifiable",
+    "annualization-unstated",
+    "b2b-median-ratio-suspect",
+    "ai-revenue-per-company-suspect",
+    "no-limitations-slide",
+    "missing-data-rates-unacknowledged"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 1/2/3/7: $134M total revenue is ~8.6× the frozen $15.6M; no annualization caveat given. Slide 3: 109 zero-revenue businesses vs frozen 216. Slide 4: 3.8× B2B/B2C median ratio; reference median multiples are ~2.35×/2.30× (≈1.02×), so even if different metric the magnitude is suspect. Slide 5: AI $94k/company implies ~$18.5M AI total vs frozen $2.36M. Slide 7: US 64% revenue share and $330k average are downstream of the inflated total. Slide 3: 'Top 13 produce more than other 987 combined' (54%) — top-10 share is 49.6%, so top-13 > 50% is plausible but the exact 54% is unverifiable.",
+  "evidence": {
+    "insight": "Slide 3 power-law decomposition, slide 6 domain-authority-vs-social-following contrast, slide 8 inverse-multiple finding, and slide 9 four-filter funnel are all genuinely original, decision-useful analytical moves that go beyond description.",
+    "narrative": "Textbook arc: context (2) → structure (3) → demand (4) → supply (5) → moat (6) → geography (7) → mispricing (8) → screen (9) → recommendations (10). Each slide ends with a bolded implication feeding the next. Thesis 'scale, not category' is sustained throughout and lands cleanly.",
+    "framing": "Audience (acquirer/investor) is unmistakable; base notes on every slide state sample sizes and filters. However, no limitations slide acknowledges the 30-day snapshot nature, survivorship bias, or 24-29% missing-data rates across key fields. The implicit annualization is never disclosed.",
+    "accuracy": "$134M headline is irreconcilable with the $15.6M frozen total without an explicit annualization caveat that is never given. Zero-revenue count (109 vs 216) is materially wrong. B2B/B2C 3.8× median ratio is far from the reference ~1.02× on sale multiples (different metric possible but magnitude still suspect). AI per-company revenue ($94k) implies ~$18.5M AI total vs frozen $2.36M. These are structural, not rounding, errors.",
+    "visual": "Consistent dark-navy palette, strong typographic hierarchy with section labels, bold headlines, italic footnotes. Charts are simple and appropriate (horizontal bars, grouped bars, funnel). Annotation is excellent — every chart has a takeaway callout. Slide 5 stacked bar labeling slightly confusing. No chartjunk or decorative filler.",
+    "ai_slop": "Consulting-voice framing ('Strategy & Capital Deployment Review,' 'the deployable set') is purposeful for the chosen audience persona. No decorative-but-meaningless graphics. Template consistency is high but earned by content density. Minimal slop."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy by 0.5 (unstated annualization is a methodological omission, not just a missing caveat; zero-revenue count error is clear-cut). Lowered framing by 0.5 (missing-data rates of 24-29% and survivorship bias are never acknowledged despite being material to the investment thesis). Reduced bonus from 3 to 2 (the accuracy problems undercut the otherwise exceptional work enough that full bonus is unwarranted, though the analytical ambition and narrative craft remain genuinely rare).",
+  "total": 78,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 19578,
+    "output_tokens": 1145
+  }
+}

@@ -1,0 +1,472 @@
+MEET BOB THE BUILDER
+
+
+                                                                                                                                                                                   BOB
+He can build anything.                                                                                                                                                             Solo founder · pre-revenue
+
+
+
+
+He just picked the                                                                                                                                            THE JOB
+
+                                                                                                                                                              Build one app that makes money
+wrong plot of land.                                                                                                                                           THE BUDGET
+
+                                                                                                                                                              His own time. No capital.
+
+                                                                                                                                                              THE INSTINCT
+
+Bob is a solo founder with a laptop, no funding and no co-founder. He wants one thing: an app                                                                 "I'll build an AI tool."
+that earns real money. His instinct is to build an AI tool, because that is what everyone builds.                                                             THE RISK
+TrustMRR is 1,000 products that already made that choice — with verified revenue attached to                                                                  197 people already did
+every one. Bob can read the outcome before he pours a single foundation.
+
+
+
+
+   1,000                                                   80.3%                                                   $282                                                    26.5%
+   products already built on this site                     of them earn something                                  median monthly revenue                                  of all revenue belongs to one product
+
+
+
+
+Bob is an illustrative persona used to frame this analysis; he is not in the dataset. All figures shown are computed from the TrustMRR 1,000-row dataset, frozen 30 Jul 2026.
+THE JOB SPEC
+
+
+Bob gets five decisions. This site can answer four of them.
+
+      Which category?                                         29 labelled categories, 726 rows                          ANSWERABLE
+                                                                                                                                      No launch dates
+                                                                                                                                      No founding, launch or listing date field exists. Every
+                                                                                                                                      claim here is a cross-section, not a time series.
+
+      Which audience?                                         712 rows state B2B / B2C / Both                           ANSWERABLE
+
+
+
+
+                                                                                                                                      No churn or cost
+      Which pricing model?                                    657 rows disclose pricing                                 ANSWERABLE
+                                                                                                                                      No churn, CAC, margin or headcount fields. Revenue is
+                                                                                                                                      gross, not profit.
+
+
+
+      Which gateway?                                          1,000 rows name a provider                                ANSWERABLE
+
+
+                                                                                                                                      One snapshot
+                                                                                                                                      Frozen 30 Jul 2026. Only movement signal is
+      What will I earn?                                       No dates, no cohorts, no churn                         NOT ANSWERABLE
+                                                                                                                                      mrr_growth_30d_pct, on 893 of 1,000 rows.
+
+
+
+
+            BOB'S CALL                "So the site can't tell me what I'll earn. Fine — it can tell me where the money already is."
+
+
+Field counts are raw: category 726, audience_type 712, pricing_model 657, payment_provider 1,000, mrr_growth_30d_pct 893.
+SURVEYING THE SITE
+
+
+The site sells proof — and that proof is Bob's distribution
+
+  1     Every one of the 1,000 listings is bound to a live payment-provider API                                                                W H AT A L I S T I N G P L U G S I N T O
+        key. Revenue is read from the rails, not typed in by the founder.
+                                                                                                                                                       Connect a payment gateway
+                                                                                                                                                       9 providers · 1,000 of 1,000 rows connected
+  2     TrustMRR lists itself: $22,333 MRR · $263,633 all-time · 17 subscriptions
+        · domain rating 68 · 73,326 visitors in 30 days · Singapore · B2B.
+                                                                                                                                                                                      ▼
+
+                                                                                                                                                       Revenue is verified
+  3     The site has an exit gate: 262 listings are flagged on sale, $86.8M in                                                                         MRR · 30d / 3m / 12m / all-time · subscriptions
+
+        combined asks, median ask $35,000 at a median 2.3x revenue.
+                                                                                                                                                                                      ▼
+
+                                                                                                                                                       A public profile goes live
+                                                                                                                                                       On a domain-rating-68 site with 73,326 monthly visits
+
+
+
+                                                                                                                                                                                      ▼
+
+                                                                                                                                                       Optional: list it for sale
+                                                                                                                                                       262 listings · median 2.3x revenue
+
+
+
+
+             BOB'S CALL                  "Listing isn't vanity. It's a profile on a DR-68 domain with 73k monthly visitors — that's free footfall."
+
+
+Derived: the four-step loop is inferred from schema fields (payment_provider, trustmrr_url, domain_rating, on_sale). Raw: all figures cited.
+CHOOSING THE PLOT
+
+
+Bob's instinct is the worst plot on the site
+
+ 1      29 labelled categories cover 726 of 1,000 products. AI is the largest at                                                                      Hit rate: % of category clearing $10,000 MRR
+        197 — nearly 3x the next, SaaS at 66. It is where Bob was heading.                                                           E-comm                                                                                  31.6
+                                                                                                                                    Analytics                                                                                31.6
+                                                                                                                                    Marketing                                                                               31.0
+ 2      Crowding does not pay. AI's median MRR is $446 and only 18.3% clear                                                             Sales                                                                               30.8
+        $10k. Analytics has 19 products, a $1,294 median and 31.6% clearing                                                           Games                                                                             30.0
+        $10k.                                                                                                                      Education                                                                    26.7
+                                                                                                                                  Content Cr.                                                            25.0
+ 3      The floor is Productivity: 49 products, median MRR $42.20, and just                                                           Fintech                                                            25.0
+        6.1% above $10k — the worst hit rate of any category with n ≥ 10.                                                               SaaS                                                            24.2
+                                                                                                                                            AI                                                 18.3
+                                                                                                                                 Social Media                                               16.7
+                                                                                                                                 Mobile Apps                                         13.5
+                                                                                                                                  Health & Fit                                11.8
+                                                                                                                                      Utilities                        10.0
+                                                                                                                                 Design Tools                    8.3
+                                                                                                                                  Real Estate                    8.3
+                                                                                                                                   Dev Tools                     8.1
+                                                                                                                                  Productivity             6.1
+
+                                                                                                                                                  0    5           10                 15           20   25             30           35   40
+
+
+
+
+             BOB'S CALL                 "I was about to build the 198th AI tool. One in five of them clears $10k. I'd rather take better odds."
+
+
+Derived: hit rate = count(mrr_usd ≥ 10000) / category count. Categories with n < 10 excluded. 274 rows have no category label.
+DRAWING THE BLUEPRINT
+
+
+Two lines on the blueprint are worth a 9x median
+
+ 1      B2B products post a median MRR of $1,036 across 255 rows. B2C                                                          THE SAME SITE, THREE POSITIONS
+        posts $181 across 401 — a 5.7x gap on the same platform.
+                                                                                                                                    B2C + Freemium
+
+ 2      Tiered subscription converts best: 211 products, 92.9% with live MRR,
+                                                                                                                                    159 products                 $142
+                                                                                                                                    12.6% clear $10k
+        median $1,077. Freemium is 249 products at a $149 median.                                                                                                 median MRR
+
+
+
+
+ 3      Gateway is a consequence, not a choice. 644 of 1,000 route through
+                                                                                                                                    All products
+        Stripe carrying 87.7% of MRR; 97 of the 106 B2B-subscription products
+        use it.                                                                                                                     1,000 products               $282
+                                                                                                                                    21.2% clear $10k
+                                                                                                                                                                  median MRR
+
+
+
+
+                                                                                                                                    B2B + Subscription
+                                                                                                                                    106 products                $1,284
+                                                                                                                                    25.5% clear $10k
+                                                                                                                                                                  median MRR
+
+
+
+
+             BOB'S CALL                 "Same effort either way. Charging a business a subscription is the cheapest decision I'll ever make."
+
+
+Derived: pricing buckets from keyword classification of 616 unique pricing_model strings. Association only — the dataset cannot establish causation.
+THE GROUND TRUTH
+
+
+Bob should plan for $282, not $13,472
+
+ 1      Total MRR is $13,471,682 across 1,000 products. Mean $13,472.                                                           Cumulative share of ecosystem MRR (%)
+        Median $282. Among only the 803 that earn, the median is $1,036.                                    110
+                                                                                                                                                                                100.0
+
+
+ 2      Stan alone holds 26.5% of ecosystem MRR. The top 10 hold 48.0%, the                                  90
+                                                                                                                                                                        81.8
+        top 50 hold 70.6%, the top 100 hold 81.8%.
+                                                                                                                                                             70.6
+                                                                                                             70
+
+ 3      591 products earn under $1,000/month. The bottom 500 combined hold                                                                          57.7
+        0.19% of all MRR. Only 16 products clear $100k.                                                                                    48.0
+                                                                                                             50
+                                                                                                                                40.3
+
+
+                                                                                                             30      26.5
+
+
+
+                                                                                                             10
+
+
+
+                                                                                                             -10
+                                                                                                                    Top 1      Top 5      Top 10   Top 20   Top 50   Top 100   All 1,000
+
+
+
+            BOB'S CALL                "The average is a fantasy. If I hit $1,036 a month I've already beaten half the site that earns anything."
+
+
+Raw: all figures computed from mrr_usd across 1,000 rows, no nulls. Total MRR $13,471,681.52.
+READING THE SKYLINE
+
+
+The tallest buildings on this site were not built from a plan
+#       PRODUCT                                C AT E G O R Y                                   MRR         SHARE        SUBS
+
+
+1       Stan                                   —                                        $3,569,654              26.5%   101,590   3 of the top 8
+                                                                                                                                  are anonymous or uncategorised — the two largest earners have no
+2       Stealth Company                        —                                          $747,069              5.5%      1,677
+                                                                                                                                  category label, so the leaderboard can't teach Bob what to build
+
+3       GojiberryAI                            AI                                         $494,668              3.7%      4,642
+
+
+4       Stealth Company                        —                                          $364,101              2.7%      2,134
+                                                                                                                                  Rank 2 is unstable
+5       Rezi                                   AI                                         $259,701              1.9%     10,749   $747,069 MRR against $440,104 of 12-month revenue, with 30-day
+                                                                                                                                  MRR growth of −74.3%. A spike, not a business
+6       Kibu                                   Education                                  $234,319              1.7%       375
+
+
+7       Cometly                                Analytics                                  $207,616              1.5%       307
+
+
+8       1Lookup                                SaaS                                       $207,064              1.5%       655
+                                                                                                                                  r = 0.906
+                                                                                                                                  correlation between active_subscriptions and MRR (n=1,000).
+                                                                                                                                  Subscriber count is the only variable that tracks revenue
+Best category by hit rate: Analytics — 19 products, 100% monetized, 31.6% above $10k. Worst: Productivity — 49
+products, median $42.20, 6.1% above $10k.
+
+
+             BOB'S CALL                  "Nobody at the top is copyable. But subscribers track revenue at r = 0.906 — that's the number I chase."
+
+
+Raw: ranked by mrr_usd. "—" = blank field. Derived: hit rates and correlations. Correlation is not causation.
+BOB'S TOOLKIT
+
+
+The toolkit is proof and footfall. There is no capital and no
+foreman.
+W H AT T H E D ATA E V I D E N C E S                                                                                                  W H AT T H E D ATA D O E S N O T E V I D E N C E
+
+
+            Revenue verification                                                                                                          ✕        No capital or funding field
+            1,000 / 1,000 rows carry a live gateway connection and a full revenue series
+
+
+
+                                                                                                                                          ✕        No mentorship, accelerator or programme field
+            A public profile page
+            1,000 / 1,000 rows have a trustmrr_url, hosted on a domain-rating-68 site
+
+
+                                                                                                                                          ✕        No community, support-ticket or SLA field
+
+            Peer benchmarking
+            893 rows expose 30-day growth; 726 a category; 712 an audience type
+                                                                                                                                          ✕        No credits, discounts or vendor perks field
+
+
+
+            An exit gate
+            262 listings on sale, $86.8M in asks, median 2.3x revenue                                                                    73,326
+                                                                                                                                         visitors to trustmrr.com in 30 days — the footfall a listing actually buys
+
+
+
+
+             BOB'S CALL                 "No money, no mentor, no shortcuts. What I get is proof and traffic — and I have to build the rest."
+
+
+Derived: toolkit categories inferred from schema. The dataset has no funding, mentorship, community or service-level fields — absence is stated, not assumed.
+HAZARDS ON SITE
+
+
+Every ranking Bob is about to trust rests on 43.5% of the
+money
+     RANKING RISK                                                                                                  FUNNEL BLIND SPOT
+
+
+
+     56.5%                                                                                                         822 / 1,000
+     of ecosystem MRR sits in the 274 rows with no category label, including the two                               products have no traffic data and 858 no revenue-per-visitor. The path from visitor to
+     largest earners. Category rankings describe the labelled minority of the money.                               dollar is invisible for roughly 85% of the site.
+
+
+
+
+     S TA G N AT I O N R I S K                                                                                     EXIT RISK
+
+
+
+     381 of 893                                                                                                    0.0x – 326.8x
+     products with a growth figure are exactly flat at 0.0%; 238 are negative. The median                          range of asking multiples across 262 listings, median 2.3x. Rolely asks $4,000 on $76
+     month here is a month where nothing moves.                                                                    of annual revenue. Exit pricing is unanchored.
+
+
+
+
+             BOB'S CALL                 Underserved plots worth a look: Analytics (19, 100% monetized) · Sales (13, 100%) · Fintech (16, 93.8%) · Customer Support (5, median $5,163)
+
+
+Raw: missing-data counts exact. Derived: the underserved shortlist. Categories with n < 15 are directional only.
+BOB'S PLAN
+
+
+Score the plots on four things Bob can verify — not on size
+COMPOSITE = 35% median MRR rank + 25% hit-rate rank + 20% monetization-rate rank + 20% thinness rank (fewer competitors scores higher). 18 categories with n ≥ 10.
+
+
+RANK            C AT E G O R Y                                                N                   MEDIAN MRR                        MONETIZED                         H I T R AT E                    SCORE
+
+
+1               Analytics                                                    19                            $1,294                             100%                         31.6%                          86.5
+
+2               Sales                                                        13                            $1,036                             100%                         30.8%                          83.1
+
+3               Education                                                    30                            $2,142                            93.3%                         26.7%                          77.5
+
+4               Marketing                                                    42                            $1,586                            88.1%                         31.0%                          73.1
+
+5               Fintech                                                      16                               $500                           93.8%                         25.0%                          69.3
+
+6               Content Creation                                             36                            $1,254                            91.7%                         25.0%                          66.3
+
+…               AI ← Bob's instinct                                        197                                $446                           86.3%                         18.3%                          46.1
+
+17              Dev Tools                                                    37                               $185                           83.8%                           8.1%                         28.9
+
+18              Productivity                                                 49                                $42                           85.7%                           6.1%                         17.8
+
+
+
+             BOB'S CALL                 "AI ranks 11th of 18. Analytics and Sales rank 1st and 2nd. That settles where I dig."
+
+
+Ranks 7–16 omitted for space: Games 55.6 · E-comm 54.6 · Health & Fitness 54.4 · Social Media 51.9 · AI 46.1 · Mobile Apps 43.3 · SaaS 38.1 · Real Estate 36.5 · Utilities 35.8 · Design Tools 31.2. Weights are analyst judgement;
+inputs are raw.
+T H E D E C I S I O N T H E D ATA S U P P O R T S
+
+
+
+What Bob Builds
+                   A B2B analytics or sales tool, priced as a tiered subscription, billed through
+                   Stripe.
+
+    01           Analytics and Sales are the only plots where every product earns.                                                                        THE MAIN RISK
+
+                 19 and 13 products, 100% with live MRR, hit rates of 31.6% and 30.8% against AI's 18.3%.
+                                                                                                                                                          Thin plots. Analytics is 19 products and Sales 13 —
+                                                                                                                                                          and 56.5% of site revenue sits in unlabelled rows,
+                                                                                                                                                          so the ranking rests on a minority of the money.
+
+    02           B2B plus subscription is a 9x median over the freemium default.
+                 106 products, median $1,284 and 25.5% above $10k, versus 159 B2C-freemium products at $142 and 12.6%.
+                                                                                                                                                          BOB'S NEXT ACTION
+
+
+                                                                                                                                                          Pull the 19 Analytics and 13 Sales rows. Read their
+    03           Stripe is the only gateway with proven scale at this position.                                                                           value_proposition and target_persona fields. Find
+                                                                                                                                                          the persona none of those 32 serve. That is the
+                 644 of 1,000 products, 87.7% of ecosystem MRR, and 97 of the 106 B2B-subscription products already on it.
+                                                                                                                                                          product.
+
+
+
+
+Bob's closing insight: on this site the hard part was never building — 89.9% of products earned something. The hard part is charging a business enough to matter.
+
+
+All figures computed from the TrustMRR 1,000-row dataset, frozen 30 Jul 2026. No external data used. Bob is an illustrative persona, not a dataset row.
+VA L I D AT I O N A P P E N D I X A
+
+
+Every derived number, its formula, and its source fields
+DERIVED METRIC                                                         FORMULA                                      FIELDS USED                                        MISSING / AMBIGUOUS
+
+Total MRR — $13,471,682                                                SUM(mrr_usd)                                 mrr_usd                                            None — 0 nulls
+
+
+Median MRR — $282 / monetized $1,036                                   MEDIAN(mrr_usd) · MEDIAN(mrr_usd WHERE >0)   mrr_usd                                            None
+
+
+% monetized — 80.3%                                                    COUNT(mrr_usd>0) / 1000                      mrr_usd                                            None
+
+
+Ever earned — 89.9%                                                    COUNT(revenue_all_time_usd>0) / 1000         revenue_all_time_usd                               None
+
+
+Concentration — top 10 = 48.0%                                         SUM(top-10 mrr_usd) / SUM(mrr_usd)           mrr_usd                                            None
+
+
+Hit rate — e.g. Analytics 31.6%                                        COUNT(mrr_usd≥10000) / category count        mrr_usd, category                                  274 rows unlabelled
+
+
+Gateway share — Stripe 87.7%                                           SUM(mrr_usd) by first provider / total       payment_provider, mrr_usd                          19 rows list 2+ providers
+
+
+Pricing buckets — 7 groups                                             Keyword classification of free text          pricing_model                                      343 nulls; 616 unique strings
+
+
+B2B/B2C medians — $1,036 / $181                                        MEDIAN(mrr_usd) grouped by audience          audience_type, mrr_usd                             288 nulls
+
+
+Cohort median — $1,284                                                 MEDIAN WHERE B2B AND sub/enterprise          audience_type, pricing_model                       Depends on bucketing
+
+
+Composite score — Analytics 86.5                                       Weighted percentile ranks 35/25/20/20        mrr_usd, category                                  Weights are analyst judgement
+
+
+Correlations — 0.906 / 0.024 / 0.215                                   Pearson r, complete pairs only               active_subscriptions, x_followers, domain_rating   n = 1000 / 984 / 714
+
+
+Median multiple — 2.3x                                                 MEDIAN(revenue_multiple stripped of 'x')     revenue_multiple, on_sale                          738 nulls; range 0.0x–326.8x
+
+
+
+
+Raw = direct field aggregation. Derived = computed or classified by the analyst. All source fields named above.
+VA L I D AT I O N A P P E N D I X B
+
+
+What not to conclude from this deck
+
+            Do not read association as causation                                                                 Do not treat thin categories as proven
+
+            B2B products earn more than B2C products on this platform. The dataset cannot show                   Analytics n=19, Sales n=13, Customer Support n=5, Legal / Crypto & Web3 / News each
+            that switching to B2B raises revenue — there is no before/after and no time dimension.               n=1. A single product moves these medians materially.
+
+
+
+
+            Do not generalise from the leaderboard                                                               Do not infer growth trends
+
+            Stan holds 26.5% of MRR with no category label. Rank 2's MRR ($747,069) exceeds its                  No launch, founding or listing dates exist. mrr_growth_30d_pct covers 893 rows and 381
+            own 12-month revenue ($440,104) while shrinking 74.3% — treat it as a data spike.                    of those are exactly 0.0% — this is a snapshot, not a trajectory.
+
+
+
+
+            Do not assume the category ranking covers the money                                                  Do not claim founder support beyond the schema
+
+            274 unlabelled rows hold 56.5% of ecosystem MRR. All category conclusions describe the               No funding, mentorship, community, credits or service-level fields exist. Any such claim
+            labelled 43.5%.                                                                                      cannot be determined from the provided data.
+
+
+
+
+Fields with the weakest coverage: revenue_per_visitor_usd 14.2% · visitors_30d 17.8% · asking_price_usd 26.1% · revenue_multiple 26.2% · target_persona 63.9% · pricing_model 65.7%
+
+Coverage percentages are exact non-null counts over 1,000 rows.
+

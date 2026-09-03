@@ -1,0 +1,44 @@
+{
+  "slide_count": 5,
+  "scores": {
+    "insight": 6,
+    "narrative": 5.5,
+    "framing": 5,
+    "accuracy": 4,
+    "visual": 6.5,
+    "bonus": 0
+  },
+  "what_worked": "Power-law framing with mean/median contrast and seller-listing-signal observation are genuinely decision-useful findings.",
+  "fix_next": "Reconcile all revenue totals against the actual dataset; acknowledge missing-category and missing-audience-type rates that affect every denominator.",
+  "verdict": "Clean design, useful angles, but multiple revenue figures are materially wrong and limitations absent.",
+  "flags": [
+    "revenue-figures-wrong",
+    "category-totals-understated",
+    "missing-data-not-acknowledged",
+    "no-limitations-slide",
+    "no-synthesis-or-landing",
+    "short-deck",
+    "title-slide-total-wrong",
+    "bonus-removed"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 1: '$13.5M Combined MRR' — actual total revenue is $15.6M, off by ~$2M. Slide 2: AI total shown $1,806K vs reference $2,357K (understated ~$550K); Marketing $444K vs $1,317K (understated ~$873K); E-comm $396K vs $1,112K (understated ~$716K); SaaS $589K vs $704K (understated ~$115K); Education $524K vs reference $524K is close but others are badly off. Slide 3: mean MRR $13,472 appears derived from the wrong total ($13.5M/1000) rather than $15,596. Slide 3: top-10 share stated as 48% vs reference 49.6% — close but the underlying total is wrong. Slide 5: '3.9x annual MRR' multiple is not directly verifiable against reference medians of 2.35x/2.30x for B2B/B2C, suggesting possible miscalculation or different denominator.",
+  "evidence": {
+    "insight": "Slide 3 power-law decomposition (top 1%/10%/bottom 50%) and slide 5 seller-listing-stronger-businesses observation are original. Slide 4 B2B vs B2C monetization adds a useful dimension. However, no cross-variable synthesis or multivariate analysis.",
+    "narrative": "Sequence (landscape → distribution → audience → growth/sales) is logical but lacks a stated thesis, synthesis slide, or actionable landing. Reads as a findings catalog, not an argument.",
+    "framing": "Dataset and freeze date stated on slide 1. No audience identified, no research question posed, no mention of 274 missing categories or 288 missing audience_type values — both directly affect slides 2 and 4. No limitations or caveats anywhere.",
+    "accuracy": "At least 8 material errors across slides 1-3 and 5. Revenue totals are systematically understated, likely from an incorrect base calculation. Category-level totals for Marketing and E-comm are off by 2-3x. The mean MRR inherits the wrong total. The asking-price multiple doesn't match reference medians. These are not rounding issues — they are substantive miscalculations.",
+    "visual": "Consistent dark/teal palette, clean typography, effective paired bar charts on slide 2, well-designed stat cards on slides 3-5. However, only one actual chart in the entire deck; slides 3-5 are styled text/numbers only. Five slides is thin for the dataset's richness.",
+    "ai_slop": "No obvious decorative filler or generic language. '29 categories' on slide 1 is unverified but minor. Template is polished but content is dataset-specific."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 4.5 to 4 due to confirming 8 material errors including systematically wrong revenue totals across multiple slides. Removed 1-point bonus: while the seller-listing insight is interesting, the pervasive inaccuracy and absence of limitations/synthesis do not warrant above-rubric recognition.",
+  "total": 54,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 10424,
+    "output_tokens": 1018
+  }
+}

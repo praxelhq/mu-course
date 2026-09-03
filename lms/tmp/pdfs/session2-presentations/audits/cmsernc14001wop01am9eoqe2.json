@@ -1,0 +1,44 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 5,
+    "narrative": 5.5,
+    "framing": 4,
+    "accuracy": 3.5,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Four-quadrant capital allocation framework on Slide 6 ties geographic and category findings into actionable recommendations.",
+  "fix_next": "Reconcile total revenue (~$15.6M not $13.5M), disclose 274 missing categories and 288 missing audience types before making segment claims.",
+  "verdict": "Polished template with a coherent thesis, undermined by multiple revenue errors and undisclosed missingness.",
+  "flags": [
+    "total-revenue-understated",
+    "category-revenues-wrong",
+    "missing-data-not-acknowledged",
+    "small-n-overconfidence",
+    "slide3-title-content-mismatch",
+    "bar-chart-proportions-misleading",
+    "consulting-language-heavy",
+    "unverifiable-growth-claims"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1/2: Total MRR stated $13.5M vs reference $15.6M (~$2M undercount). Slide 2: AI shown $1,806K vs reference $2,357K; Marketing $444K vs $1,317K; E-commerce $396K vs $1,112K; SaaS $589K vs $704K. Slide 3: US $7,504K implies ~56% share but reference total is higher so share is overstated; title says 'Category Portfolio Matrix' but content is geographic. Slide 4: B2B 2.6x multiple vs reference median multiples ~2.3x; company counts (401+255+56=712) leave 288 unaccounted without disclosure.",
+  "evidence": {
+    "insight": "Slide 5 whitespace identification (Customer Support 80% growth, Recruiting 83%) is genuinely useful but built on n=5 and n=6 samples with no confidence caveat. Slide 6 quadrant framework synthesizes findings but recommendations are generic.",
+    "narrative": "Arc from market snapshot through geography, business model, whitespaces to roadmap is logical. However Slide 3 title promises 'Category Portfolio Matrix & Investment Quadrants' but delivers geographic analysis—a sequencing break that confuses the reader.",
+    "framing": "Audience (internal investment review) and scope (1,000 companies) are set on Slide 1. Critical missingness—274 categories, 288 audience types, 241 countries, 216 zero-revenue rows—is never disclosed, fatally weakening category and B2B/B2C claims. '65 Countries' ignores 241 missing values.",
+    "accuracy": "Total revenue understated by ~$2M. At least five category-level revenue figures are materially wrong (AI, Marketing, E-commerce, SaaS, Analytics). B2B/B2C 2.6x multiplier doesn't match reference medians (~2.3x). Brazil 65% growth and Singapore 44% growth are unverifiable and based on tiny samples presented without sample sizes.",
+    "visual": "Dark theme is consistent and typography is readable. Bar charts on Slides 2-3 are clean choices. Slide 3 bar proportions are misleading—France bar appears nearly as long as US despite 8x smaller value. Card layouts on Slides 4-6 are clear but template-repetitive.",
+    "ai_slop": "Heavy consulting jargon throughout: 'Scale Anchor,' 'B2B Premium,' 'High Momentum,' 'Growth-Share Read.' Slide 6 quadrant labels (Harvest & Defend, Double Down, Selective Bets, Build New) are generic BCG-matrix language that could fit any dataset."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Removed 1-point bonus: the strategic framework, while structured, relies on materially incorrect figures and undisclosed missingness, and consulting-template language does not constitute work beyond the rubric. Core dimension scores confirmed as appropriate.",
+  "total": 47,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 12119,
+    "output_tokens": 999
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 6,
+    "accuracy": 4.5,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "India outlier spotlight and AI volume-vs-economics contrast show genuine analytical depth beyond chart-reading.",
+  "fix_next": "Verify total revenue, category medians, and B2B/B2C multiplier against raw data; disclose missingness rates for key fields.",
+  "verdict": "Strong storytelling undermined by multiple material numerical errors and undisclosed missingness.",
+  "flags": [
+    "total-revenue-wrong",
+    "category-medians-off",
+    "b2b-multiplier-inflated",
+    "zero-revenue-count-wrong",
+    "missing-data-not-disclosed",
+    "ai-median-off",
+    "content-creation-median-off",
+    "analytics-median-off"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1: '$13.5M combined MRR' — actual total is $15.6M, off by ~$2M. Slide 2: top-10 share stated as 48% vs reference 49.6%, minor but directionally rounded down. Slide 2: mean $13,472 implies total ~$13.5M, consistent with wrong total. Slide 3: 10.9% zero-revenue (109 cos.) vs reference 216 zero-revenue companies (21.6%) — roughly half the true figure. Slide 4: B2B/B2C median ratio claimed 5.7x ($1,036/$181); reference on-sale medians give 2.35x — even if these are full-dataset medians the magnitude is suspect and unverifiable without disclosure. Slide 6: AI median $446 vs reference $503; Content Creation median $1,254 vs reference $1,237.50 (close); Analytics median $1,294 vs reference $419 (off by ~3x); Education median $2,142 vs reference $2,435; Marketing median $1,586 vs reference $2,369.50 (off significantly). Slide 6: multiple category medians materially diverge. Slides 5-6: no disclosure of 241 missing countries or 274 missing categories affecting denominators.",
+  "evidence": {
+    "insight": "Slide 6 volume-vs-economics framing for AI is genuinely useful; slide 5 India Supergrow outlier analysis demonstrates analytical depth; slide 7 correlation hierarchy (subscribers vs followers) is decision-relevant.",
+    "narrative": "Clear arc: concentration → audience economics → geography → category → correlations → synthesis. Slide 8 ties four takeaways back to earlier slides. Each slide has a thesis-driven title.",
+    "framing": "Slide 1 states scope and data source. However, 241 missing countries (24%), 274 missing categories (27%), and 288 missing audience_type (29%) are never disclosed — this materially affects geographic, category, and B2B/B2C claims. Target audience implied but not stated.",
+    "accuracy": "Total revenue off by ~$2M. Zero-revenue count understated by roughly half. Analytics median off by ~3x. Marketing median off by ~$800. B2B/B2C multiplier appears inflated vs reference. Multiple category medians diverge materially. These are not rounding issues.",
+    "visual": "Consistent dark/gold palette with clear hierarchy. Appropriate chart types (horizontal bars for rankings, vertical for growth split). Labels include sample sizes. Slide 8 slightly dense but readable. No decorative or fabricated charts.",
+    "ai_slop": "None detected — all slides reference specific companies, precise figures, and dataset-specific findings with no generic filler."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.0 to 4.5: confirmed 7 factual errors including total revenue off by $2M, zero-revenue count roughly halved, Analytics median off by 3x, Marketing median materially wrong, and B2B/B2C multiplier likely inflated. Lowered framing from 6.5 to 6.0 for complete omission of substantial missingness across three key fields used in analysis. Other scores unchanged as preliminary assessment was well-calibrated.",
+  "total": 66,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 16068,
+    "output_tokens": 1057
+  }
+}

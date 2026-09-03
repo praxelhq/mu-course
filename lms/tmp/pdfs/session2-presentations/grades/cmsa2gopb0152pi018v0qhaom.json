@@ -1,0 +1,41 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 2,
+    "narrative": 2.5,
+    "framing": 2,
+    "accuracy": 2.5,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "B2B median multiple of 2.35x is correct and specifically cited.",
+  "fix_next": "This is a sales pitch for a fictional product, not a data-story presentation analyzing the dataset with supported findings.",
+  "verdict": "Marketing brochure masquerading as a data story; almost no real analysis.",
+  "flags": [
+    "not-a-data-story",
+    "sales-pitch-format",
+    "ai-slop",
+    "fabricated-claims",
+    "missing-analysis",
+    "inflated-language",
+    "no-limitations-discussed"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 4: 'AI captures 45% of all tracked startups' — AI is 197/726 categorized = 27.1%, not 45%; 'SaaS/Productivity commands another 30%' — SaaS 66 + Productivity 49 = 115/726 = 15.8%, not 30%. Slide 5: 'Stripe 75% of top-earning startups' — Stripe is 636/1000 = 63.6% of all companies; the 75% figure for 'top-earning' is unsubstantiated and the chart labels it as overall share. Slide 6: '$3.5M MRR' claim for a creator store is unverifiable from the dataset and appears fabricated.",
+  "evidence": {
+    "insight": "No original analytical findings beyond surface-level category counts and provider shares. No exploration of revenue distributions, missingness, median vs mean dynamics, anonymity patterns, or TLD associations. The deck describes what TrustMRR supposedly does rather than what the data reveals.",
+    "narrative": "The deck follows a product-pitch arc (problem → features → audience → CTA) rather than a data-story arc. There is no analytical thesis, no building argument from evidence, and no synthesis. Slides 8-10 are pure marketing copy with no data.",
+    "framing": "No research question is posed. No audience for a data story is identified — instead the deck addresses hypothetical customers. No definitions, scope, limitations, or acknowledgment of missingness (274 missing categories, 241 missing countries). The framing is that of a SaaS landing page.",
+    "accuracy": "Slide 4: AI share inflated from ~27% to 45%. SaaS/Productivity inflated from ~16% to 30%. Slide 5: Stripe share stated as 75% vs actual 63.6%. Slide 7: B2B median 2.35x is correct. 'Market Average 4.8' is unverifiable. The pie chart has no percentage labels. Denominators are never disclosed.",
+    "visual": "Gamma template is clean and consistent but entirely generic. Pie chart on slide 4 lacks labels/percentages. Bar chart on slide 5 shows only 4 providers, omitting Paddle, Superwall, Polar. Decorative illustrations (magnifying glass, iceberg, cityscape) add no analytical value. No data tables, scatter plots, or distributions shown.",
+    "ai_slop": "Pervasive: 'The private tech ecosystem's best-kept secrets — finally exposed,' 'Bloomberg terminal. Until now,' 'The era of information asymmetry in private tech is over,' 'intelligence no broker or analyst report has ever surfaced at this scale.' Every slide uses inflated consulting/marketing language. Decorative AI-generated illustrations on 6 of 11 slides. Repetitive template structure across slides 2, 3, 6, 8."
+  },
+  "confidence": "high",
+  "total": 24,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 20205,
+    "output_tokens": 922
+  }
+}

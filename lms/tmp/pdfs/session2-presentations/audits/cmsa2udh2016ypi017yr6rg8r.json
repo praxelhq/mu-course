@@ -1,0 +1,46 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 5,
+    "narrative": 6,
+    "framing": 5,
+    "accuracy": 2,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Power-law thesis and missingness-as-signal framing show genuine analytical thinking worth developing further.",
+  "fix_next": "Verify every headline number against the actual dataset; $334M total revenue is ~21× the real $15.6M, poisoning every downstream claim.",
+  "verdict": "Strong narrative arc built on fabricated numbers; accuracy failures undermine the whole deck.",
+  "flags": [
+    "total-revenue-fabricated",
+    "top10-share-wrong",
+    "category-revenue-fabricated",
+    "ecommerce-not-top-category",
+    "stripe-revenue-share-inflated",
+    "b2b-multiple-inflated",
+    "zero-revenue-count-approximate",
+    "decorative-ai-art",
+    "missing-denominator-disclosures",
+    "no-audience-stated"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 2/3: Total revenue stated $334M, actual $15.6M (~21× inflated). Slide 2/3: Top-10 share stated 61%, actual ~49.6%. Slide 3: Pareto percentile breakdown (61/19/10/7/3) unverifiable and likely fabricated from wrong base. Slide 5: US 70% revenue share plausible direction but unverifiable against wrong total; 258 startups matches but 241 missing country not disclosed. Slide 6: E-Commerce stated $54.8M from 19 startups; actual E-comm total ~$1.1M; AI actually has highest total revenue ($2.36M), not E-Commerce — category ranking inverted. Slide 7: Stripe revenue share stated 96%, actual ~87% ($13.5M/$15.6M). Slide 9: B2B median 4× B2C; reference shows median multiples ~2.35×. Slide 8: 20% zero revenue stated; reference shows 216 zero-revenue rows = 21.6%, close but '10% never earned a dollar' is unverifiable additional claim.",
+  "evidence": {
+    "insight": "Power-law concentration thesis is genuinely interesting and directionally correct; AI-vs-commerce tension is a good question but answer is factually inverted; stealth-company observation on slide 4 is original.",
+    "narrative": "Clear arc: hook → shape → gaps → winners → takeaways. Slide 10 synthesizes five points coherently. Sequence is purposeful. But the narrative rests on fabricated numbers, so the story told is fiction.",
+    "framing": "Slide 1 sets date and sample size. Slide 4 addresses missingness thoughtfully and suggests future data needs. However, no disclosure of 241 missing country values on slide 5, 274 missing category on slide 6, or 288 missing audience_type on slide 9. Target audience never stated.",
+    "accuracy": "Foundational total revenue is wrong by 21×, cascading into every percentage and dollar figure. Category ranking is inverted. Stripe share overstated. B2B multiple inflated. At least 8 material factual errors across the deck.",
+    "visual": "Consistent dark Gamma template. Only two real charts (slides 3, 6); slide 6 chart collapses all categories into one bar, hiding the actual distribution. Donut charts on slide 7 are adequate. Three slides carry large decorative AI illustrations with no analytical purpose. Heavy text density throughout.",
+    "ai_slop": "Decorative AI illustrations (anime figure slide 2, Japanese-themed map slide 5, cityscape slide 1) are thematically disconnected from the data. Consulting-style framing ('cold open,' 'uncomfortable truths') is mildly inflated but not egregious."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 2.5 to 2.0 given 8 material errors including a 21× revenue fabrication that poisons every claim; lowered visual from 4.5 to 4.0 for decorative-only AI art and only two real charts across 10 slides; lowered framing from 5.5 to 5.0 for missing denominator disclosures on key slides; removed bonus point — stealth observation is interesting but not rare enough to warrant bonus given pervasive inaccuracy.",
+  "total": 44,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 18992,
+    "output_tokens": 1102
+  }
+}

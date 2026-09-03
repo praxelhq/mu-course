@@ -1,0 +1,38 @@
+{
+  "slide_count": 16,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 8,
+    "accuracy": 6.5,
+    "visual": 7,
+    "bonus": 3
+  },
+  "what_worked": "Unusually disciplined separation of observed dataset facts from illustrative estimates, with honest caveats throughout.",
+  "fix_next": "Top-10 revenue share is 49.6%, not 50.6%; the $133.8m 'verified 12-month card volume' figure has no clear derivation from the 30-day dataset total.",
+  "verdict": "Strong thesis built on real data, but key headline numbers don't reconcile cleanly.",
+  "flags": [
+    "top10-share-inflated",
+    "annualized-revenue-unclear-derivation",
+    "pitch-deck-not-data-story",
+    "median-not-shown-for-some-providers"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 4: Top-10 share stated as 50.6%, reference is 49.6%. Slide 3: $133.8m '12-month card volume' — dataset is 30-day ($15.6M); annualizing gives ~$187M, not $133.8M; unclear filter or derivation. Slide 5: Stripe share of volume 90.9% vs reference 86.7% ($13.5M/$15.6M); may reflect a different denominator but is not explained.",
+  "evidence": {
+    "insight": "Slide 6 'quality of book not size of book' is a genuinely original cut — comparing % of accounts above $10k MRR across providers. Slide 9 identifies 14% MoR switchers carrying only 1.8% of volume as a wedge signal. Slide 14 comparison table synthesizes dataset observations into a strategic contrast.",
+    "narrative": "Clear arc: market context (slides 2-6) → compliance wedge thesis (7-9) → NRI corridor opportunity (10-12) → solution (13-14) → ask (15) → caveats (16). Each section builds on the prior. The thesis — compliance, not checkout, is the next value layer — is sustained throughout.",
+    "framing": "Slide 2 explicitly flags missingness rates (country 76%, category 73%), marks NRI figures as illustrative estimates, and distinguishes dataset from external sources. Slide 16 dedicates an entire page to caveats. Audience (seed investors) and scope are clear from slide 1.",
+    "accuracy": "Top-10 share off by ~1 percentage point (50.6% vs 49.6%). The $133.8m figure doesn't reconcile with the dataset total ($15.6M × 12 ≈ $187M) — some unstated filter may be applied but it's not disclosed. Stripe volume share 90.9% doesn't match reference 86.7%. Provider account shares are roughly consistent. Median/mean distinction on slide 4 is correctly noted. Country/category missingness percentages are correct (76% = 759/1000, 73% = 726/1000).",
+    "visual": "Clean dark theme with consistent section labels, orange accent hierarchy, and restrained chart use. Slide 4 bar chart is clear with annotations. Slide 6 bar chart with cohort average line is effective. Two section-divider slides (7, 10) are pure decoration. Table on slide 5 is legible. No chart junk, but also only two actual charts in 16 slides — mostly text-heavy.",
+    "ai_slop": "none — the deck reads as genuinely authored with domain-specific knowledge of Indian financial regulation (NRE/NRO accounts, SEBI, FATCA/CRS, PIS/LRS). No generic filler or decorative meaningless graphics."
+  },
+  "confidence": "high",
+  "total": 77,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 26732,
+    "output_tokens": 960
+  }
+}

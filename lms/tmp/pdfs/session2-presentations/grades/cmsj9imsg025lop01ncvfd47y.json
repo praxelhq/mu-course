@@ -1,0 +1,40 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 3.5,
+    "narrative": 4.5,
+    "framing": 4,
+    "accuracy": 2.5,
+    "visual": 4.5,
+    "bonus": 0
+  },
+  "what_worked": "Clear thesis stated early; B2B vs B2C comparison is a legitimate and useful angle.",
+  "fix_next": "Category medians, B2B/B2C figures, and correlation claims are fabricated or badly wrong—verify every number against the actual dataset before presenting.",
+  "verdict": "Confident thesis built on largely incorrect numbers and unsupported claims.",
+  "flags": [
+    "fabricated-category-medians",
+    "wrong-b2b-b2c-values",
+    "unsupported-correlation-claims",
+    "no-sample-sizes-shown",
+    "missing-data-not-acknowledged",
+    "ai-slop-consulting-language"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 4: B2B median claimed $1,036 and B2C $181, yielding 5.7×; reference shows B2B median multiple 2.35× and B2C 2.30× (not absolute medians of $1,036/$181). Slide 6: Customer Support $5,163 and Marketplace $4,322 are not in the reference categories at all; Education median shown as $2,140 vs reference $2,435; Marketing $1,590 vs reference $2,369.50; Analytics $1,290 vs reference $419. These are materially wrong. Slide 5: Claims about 'strong correlation' of active subscriptions and 'weak correlation' of traffic/followers are stated without any correlation coefficients or evidence from the dataset. Slide 1: 197 AI + 803 Non-AI sums to 1,000 but ignores 274 missing category values—the 197 AI count matches the category reference, but the 803 'Non-AI' conflates missing-category rows with non-AI categorized rows.",
+  "evidence": {
+    "insight": "Core thesis (B2B workflow embedding > AI label) is a reasonable interpretation but is stated as proven fact without rigorous support. No original quantitative finding beyond two bar charts. Slide 5 correlation claims have zero quantitative backing.",
+    "narrative": "Slides follow a logical sequence: overview → thesis → evidence → drivers → categories → recommendation. However, the narrative is thin—only 6 content slides, and two (slides 5, 7) are pure assertion without data visualization or numbers from the dataset.",
+    "framing": "Audience implied as investors (slide 5, 7). No mention of missingness (274 categories, 288 audience_type, 241 country missing). No limitations slide. Scope is vague—'what drives SaaS revenue' is broad but the dataset is 30-day snapshots.",
+    "accuracy": "Multiple category medians are fabricated (Customer Support, Marketplace not in reference; Education, Marketing, Analytics all wrong). B2B/B2C medians don't match reference. Correlation claims on slide 5 are unsupported assertions. No sample sizes shown for any category. 274 missing category values never mentioned.",
+    "visual": "Consistent dark theme with cyan/green accent palette. Charts are legible. Bar charts on slides 4 and 6 are clean. However, visual sameness across slides (Gamma template), and slides 5 and 7 are text-only with no data visualization despite making data claims.",
+    "ai_slop": "Heavy consulting-speak throughout: 'The data is unambiguous,' 'Capital deployed against workflow dependency wins,' 'structurally limited.' Slide 7 reads like a VC pitch template with no grounding in specific numbers. Repetitive three-column card layouts on slides 5 and 7. Generic Gamma template with no customization."
+  },
+  "confidence": "high",
+  "total": 38,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15492,
+    "output_tokens": 940
+  }
+}

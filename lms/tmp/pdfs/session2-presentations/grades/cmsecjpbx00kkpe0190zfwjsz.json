@@ -1,0 +1,39 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 5,
+    "narrative": 6,
+    "framing": 4.5,
+    "accuracy": 5,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Coherent thesis linking business fundamentals over hype, with consistent observation-interpretation-recommendation structure per slide.",
+  "fix_next": "Anchor claims with actual numbers from the dataset (medians, counts, missingness); the B2B median shown as $1,000+ is vague and unverifiable against the data.",
+  "verdict": "Structured but shallow—reads like generic startup advice lightly decorated with data.",
+  "flags": [
+    "generic-recommendations",
+    "missing-limitations",
+    "no-missingness-disclosure",
+    "vague-numbers",
+    "consulting-language"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 5: B2B median shown as '$1,000+' — reference is ~$1,000-range but the '+' is vague and the claim 'B2B consistently outperform' overstates a modest median difference (2.35x vs 2.30x multiples). Slide 4: chart title says 'Top 12 Categories' but only 10 categories are visible (Analytics and Social Media missing). Slide 2: 'B2B startups consistently outperform B2C startups in recurring revenue' — median ratio is only ~2.3x and 288 rows have missing audience_type, making 'consistently' an overstatement without acknowledging missingness.",
+  "evidence": {
+    "insight": "Insights are real but surface-level: power-law distribution (slide 3), AI crowding (slide 4), B2B vs B2C (slide 5), revenue-MRR correlation (slide 6), weak domain rating correlation (slide 7). None go beyond describing the chart pattern. No surprising cross-cuts or quantified thresholds.",
+    "narrative": "Clear four-theme structure from executive summary (slide 2) through insights to conclusion (slide 12). Sequence is logical. However, slides 9 and 10 largely repeat earlier slides without adding new synthesis. The 'landing' on slide 12 is generic.",
+    "framing": "No audience definition, no dataset provenance beyond '1,000 startups,' no mention of missingness (241-288 rows missing key fields), no limitations slide, no definitions of MRR vs 30-day revenue. A cold reader cannot assess reliability.",
+    "accuracy": "Slide 6 correlation of 0.87 between revenue 30d and MRR is plausible but unverifiable from reference data. Slide 7 correlation 0.21 is stated without sample size. Slide 5 B2B median '$1,000+' is imprecise. Slide 4 chart shows only 10 of claimed 12 categories. No denominators or sample sizes given anywhere in the main slides. Revenue multiple median 2.2x on slide 8 is in the right ballpark for B2B/B2C but not directly verifiable.",
+    "visual": "Clean, consistent layout with left-text/right-chart pattern. Charts are legible. However, slide 6 scatter plot shows very few points (appears filtered/sampled without disclosure). Slide 7 scatter also shows very few points. Slide 5 bar chart lacks y-axis scale. Appendix (slide 13) shows full charts but they're too small to read. Color palette is inconsistent across slides (blue, green, orange, purple, red).",
+    "ai_slop": "Repetitive observation/interpretation/recommendation template on every insight slide. Phrases like 'product-market fit, customer retention, and scalable business models' on slides 3 and 12 are generic consulting language. Slides 9 and 10 restate earlier points without adding value. Recommendations on slide 11 could apply to any startup dataset."
+  },
+  "confidence": "high",
+  "total": 52,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22130,
+    "output_tokens": 959
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8.5,
+    "framing": 8.5,
+    "accuracy": 6,
+    "visual": 7.5,
+    "bonus": 3
+  },
+  "what_worked": "Exceptional causal discipline, explicit established-vs-argued separation, and a genuinely original thesis with clear decision-usefulness.",
+  "fix_next": "Stripe's revenue share is ~87% of total but the deck says 88% of 981-company subset—verify denominators and reconcile the 88% claim against full-dataset figures.",
+  "verdict": "Disciplined, original, well-structured story with some unverifiable median claims.",
+  "flags": [
+    "unverifiable-median-claims",
+    "revenue-share-denominator-ambiguity",
+    "emerging-rails-grouping-includes-unlisted-providers"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 1/2/5: Stripe median lifetime revenue claimed as $8,738—not verifiable from reference data but plausible; emerging-rail median $85 and mobile-infra median $2,184 are custom-tier calculations that cannot be cross-checked but are internally consistent. Slide 2/4: '88% of all 30-day revenue'—Stripe's known share is $13.53M/$15.60M = 86.7%, and the 981-subset denominator would differ further; 88% appears inflated by ~1.3pp. Slide 3: Emerging-rails tier includes 'Whop' and 'Creem' which are not in the reference provider list, inflating n=123 beyond the five named reference providers (Dodo 50 + Polar 36 + Lemon Squeezy 25 = 111, not 123). Slide 8: Claims 'No founding-date field' but the dataset does have a founded_year field (984 usable pairs); this is a factual error about the dataset structure.",
+  "evidence": {
+    "insight": "Slide 6 (Exhibit 3) distinguishes mobile-infra as a separate economy rather than earlier-stage Stripe—an original, non-obvious finding. Slide 8 (Exhibit 5) separates established from argued claims, showing analytical maturity. The central thesis that payment rail is a free segmentation proxy is genuinely decision-useful.",
+    "narrative": "Clear four-finding arc: dominance (slide 4) → maturity gradient (slide 5) → qualitative difference (slide 6) → synthesis (slide 7) → interpretation (slide 8) → recommendation (slide 10). Every slide has a 'SO WHAT' box that advances the argument. The closing slide lands the thesis cleanly.",
+    "framing": "Slide 3 defines methodology, tier groupings, sample sizes, and known limitations upfront. Slide 8 explicitly separates what is established from what is argued. Causal disclaimers are consistent throughout. Audience (cohort managers, accelerator operators) is implicit but clear from recommendation language.",
+    "accuracy": "Stripe revenue share overstated (~88% vs ~86.7%). Emerging-rails n=123 includes providers not in reference data. Slide 8 incorrectly claims no founding-date field exists when founded_year is present with 984 usable pairs. The custom tier medians ($85, $2,184, $8,738) are plausible but unverifiable. Company count 636 for Stripe matches reference exactly. Mobile infra n=206 matches RevenueCat 189 + Superwall 17 = 206.",
+    "visual": "Consistent purple palette, clean hierarchy with section labels (FINDING/SYNTHESIS/INTERPRETATION), appropriate use of stacked bar charts (slide 4), bar charts (slide 5), horizontal stacked bars (slide 6), and summary table (slide 7). Charts are annotated with values. Slide 5 claims log scale but bars appear linear. Restraint is good—no decorative graphics.",
+    "ai_slop": "none"
+  },
+  "confidence": "high",
+  "total": 79,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 21442,
+    "output_tokens": 992
+  }
+}

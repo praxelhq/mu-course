@@ -1,0 +1,42 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 2,
+    "narrative": 3.5,
+    "framing": 2.5,
+    "accuracy": 1,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "Attempted a coherent investor-thesis arc with bull/bear framing on the final slides.",
+  "fix_next": "Nearly every quantitative claim is fabricated—categories, row count, total revenue, correlations all contradict the actual dataset. Start over from the data.",
+  "verdict": "Polished-looking AI-generated deck built on almost entirely fabricated numbers.",
+  "flags": [
+    "fabricated-data",
+    "wrong-row-count",
+    "wrong-total-revenue",
+    "wrong-categories",
+    "wrong-correlation",
+    "ai-slop",
+    "decorative-stock-imagery",
+    "no-source-citations"
+  ],
+  "factual_error_count": 14,
+  "factual_error_detail": "Slide 2: Claims 1,047 startups (actual 1,000), $8.2B total MRR (actual ~$15.6M 30-day revenue), '94% completeness' unsupported. Slide 3: Categories listed as SaaS/Fintech/HealthTech/CleanTech—none match actual categories (AI, Marketing, E-comm, Education, etc.); SaaS at 27% is wrong (actual 66 of 726 categorized ≈9%); Fintech and HealthTech do not exist in dataset. Slide 4: Business model breakdown (Subscription 38%, Marketplace 22%, etc.) appears entirely invented; no such field structure in dataset. Slide 5: Revenue bins use MRR framing but dataset tracks 30-day revenue; bar chart unverifiable. Slide 6: $18.4M average valuation, $6.2M median, 8.3x ARR, 11x SaaS multiple—all fabricated; stock 'AlphaTech Global' screenshot is irrelevant decoration. Slide 7: Geographic percentages (NA 47%, Europe 29%, APAC 18%) and avg MRR figures fabricated; dataset has 'country' not 'region' and 241 missing. Slide 8: Claims r=0.71 for age vs MRR; actual founded-year/revenue r=0.025—off by ~29x; r=0.34 for funding vs MRR also unsupported. Slide 9-10: Recommendations rest on fabricated statistics (11x ARR, 62% MRR concentration, APAC growth rates).",
+  "evidence": {
+    "insight": "No genuine insight derived from the actual dataset; every analytical claim (categories, correlations, multiples) is fabricated, so there is nothing decision-useful.",
+    "narrative": "There is a recognizable arc (overview → categories → models → revenue → geography → correlations → recommendations → thesis), giving partial credit for structure, but the story is built on invented facts.",
+    "framing": "Audience is stated (investors/founders) but scope, definitions, and limitations are poorly handled—claims '94% completeness' and '1,047 startups' contradict the dataset; no mention of actual missingness patterns.",
+    "accuracy": "At least 14 material factual errors: wrong n (1,047 vs 1,000), wrong total revenue ($8.2B vs ~$15.6M), entirely wrong category taxonomy, fabricated correlation (r=0.71 vs actual 0.025), invented valuation multiples, invented geographic splits. Essentially no claim checks out.",
+    "visual": "Consistent dark-blue Gamma template is legible; chart types are reasonable in principle. However, slide 6 uses an irrelevant stock-ticker screenshot ('AlphaTech Global'), slide 9 uses AI-generated boardroom art, and slide 8's scatter plot has ~15 points for 1,000 rows. Decorative over evidential.",
+    "ai_slop": "Pervasive: entire category taxonomy (SaaS/Fintech/HealthTech/CleanTech) appears hallucinated by AI; stock imagery on slides 6 and 9; consulting buzzwords ('asymmetric upside', 'barbell strategy', 'capital deployment') without data backing; Gamma watermark confirms AI tool with minimal human verification."
+  },
+  "confidence": "high",
+  "total": 24,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18918,
+    "output_tokens": 1054
+  }
+}

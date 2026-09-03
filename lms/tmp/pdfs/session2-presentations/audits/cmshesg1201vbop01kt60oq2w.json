@@ -1,0 +1,41 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 8.5,
+    "accuracy": 5.5,
+    "visual": 8.5,
+    "bonus": 3
+  },
+  "what_worked": "Pairing every bull case with a specific bear case shows genuine analytical discipline throughout.",
+  "fix_next": "Reconcile the 8,782-row claim with the 1,000-row frozen dataset; all downstream filter counts become unverifiable and undermine trust.",
+  "verdict": "Exceptional storytelling and structure, but row-count mismatch undermines the entire analytical foundation.",
+  "flags": [
+    "row-count-mismatch-8782-vs-1000",
+    "unverifiable-filter-counts",
+    "likely-external-or-augmented-dataset",
+    "category-n-divergence-from-reference",
+    "individual-company-metrics-unverifiable"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 1/2: Claims 8,782 rows and 116 countries; frozen reference has 1,000 rows — either a different dataset or fabricated scope. Slide 3: AI category shown as n=364 with 9+ months history; reference shows only 197 AI companies total across all rows, making the 364 figure inconsistent even as a filtered subset.",
+  "evidence": {
+    "insight": "Slide 3's run-rate/trailing-year ratio is a genuinely original momentum metric. The AI Trap callout (46% shrinking vs 23% growing) is a strong contrarian finding. Slide 4 proactively flags the MRR-vs-collected gap ($79k vs $32k). Slide 7's rejected-alternatives section with specific disqualification reasons (SEOBOT's 0.61x, Web3Forms failing the 9-month gate) shows real depth.",
+    "narrative": "Textbook funnel: universe → filters → 3 picks → portfolio sizing → what was refused → data-quality caveat. Each company slide pairs 'the case' with 'what could break it.' The closing 'read the data with one hand on the brake' is earned, not performative. Every slide advances exactly one argument.",
+    "framing": "Slide 1 immediately names the audience (investment committee), mandate (minority stake, developing economy), and scope. Slide 2 makes methodology transparent. Slide 7 acknowledges self-reported data, 51% zero-growth caveat, and missing fields. However, the 8,782-row framing creates a false impression of analytical breadth if the actual dataset is 1,000 rows.",
+    "accuracy": "The central accuracy problem: the frozen reference is 1,000 rows, but the deck claims 8,782 throughout. This means every filter count (1,706 developing-economy, 434 with 9+ months, etc.) is unverifiable. AI n=364 contradicts the reference's 197 total AI companies. Individual company metrics are internally consistent and plausible but cannot be cross-checked. The student may have used a larger TrustMRR export, but against the frozen reference this is a significant mismatch. Data-quality caveats on slide 7 partially compensate but do not resolve the foundational discrepancy.",
+    "visual": "Dark theme with yellow-green accent is consistent and purposeful across all 7 slides. Slide 2's horizontal funnel bar chart is immediately legible. Slide 3's bar chart with 1.00 reference line and color-coded AI bar (red) is well-designed. Company profile cards use consistent metric hierarchy. No decorative clutter. Typography hierarchy is strong. The AI Trap callout box integrates cleanly.",
+    "ai_slop": "None detected. Writing is specific, opinionated, and grounded in dataset particulars throughout. No generic filler, no inflated adjectives, no decorative-but-meaningless charts."
+  },
+  "confidence": "medium",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 7.0 to 5.5: the 8,782-row claim vs. 1,000-row frozen reference is not a minor rounding issue but a foundational mismatch that makes all filter counts and category sizes unverifiable. Reduced bonus from 4 to 3: the work is genuinely excellent in craft and structure, but the unresolvable dataset discrepancy prevents the highest bonus tier. All other scores confirmed as warranted by slide evidence.",
+  "total": 83,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 15210,
+    "output_tokens": 1080
+  }
+}

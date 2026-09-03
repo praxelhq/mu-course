@@ -1,0 +1,42 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "Efficiency-index metric on slide 3 is a genuinely constructed, decision-useful analytical contribution.",
+  "fix_next": "Verify B2B/B2C median multiplier against actual data; the 5.7x claim is far from the ~2.3x reference and undermines credibility.",
+  "verdict": "Strong structure and visual craft, but several key numbers don't survive fact-checking.",
+  "flags": [
+    "revenue-labeled-as-mrr",
+    "b2b-b2c-multiplier-materially-wrong",
+    "stripe-revenue-share-inflated",
+    "histogram-bins-suspiciously-uniform",
+    "zero-revenue-count-wrong",
+    "anonymized-share-rounded-down"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 1: '$13.5M combined MRR' — total revenue is $15.6M and the field is all-time revenue, not MRR. Slide 4: B2B/B2C median multiplier stated as 5.7x ($1,036/$181); reference medians imply ~2.3x. Slide 5: Stripe revenue share stated as 87%; reference gives $13.5M/$15.6M ≈ 86.7% which rounds acceptably, but Stripe listing share stated as 64.4% vs reference 63.6% (636/1000) — minor. Slide 6: $0-revenue bin shows 197; reference is 216 zero-revenue rows. Slide 6: histogram bins (197/198/197/196/196/16) are implausibly uniform for a power-law distribution — likely fabricated or mis-bucketed. Slide 1: '13% anonymized' vs reference 12.9% (129/1000) — acceptable rounding, but anonymous revenue share is 26.5%, not addressed.",
+  "evidence": {
+    "insight": "The revenue-share ÷ listing-share efficiency index on slide 3 is an original constructed metric that surfaces non-obvious winners (E-comm, Education). The AI volume-vs-value tension on slide 2 is a genuine finding. Slide 5's Stripe concentration analysis adds infrastructure perspective.",
+    "narrative": "Clear arc from landscape (slide 1) through category (2), profitability (3), monetization (4), infrastructure (5), data quality (6), to recommendations (7). The 'underserved value, not crowded volume' thesis on slide 7 synthesizes prior slides well. Guiding question is implicit until the final slide.",
+    "framing": "Slide 1 sets source, date, and key caveats (anonymization, zero-revenue). Slide 6 addresses power-law distribution. Slide 7 includes survivorship/selection bias caveat. However, no explicit guiding question is stated upfront, and the deck never clarifies that 'revenue' in the dataset is all-time, not monthly recurring.",
+    "accuracy": "B2B/B2C 5.7x multiplier is materially wrong vs ~2.3x reference. Zero-revenue count 197 on slide 6 contradicts reference 216. Revenue is systematically mislabeled as 'MRR' throughout — the dataset field is all-time revenue, not monthly recurring. Histogram bins are suspiciously uniform (197/198/197/196/196) for a power-law, suggesting fabrication or error. Stripe listing share 64.4% is close but slightly off from 63.6%.",
+    "visual": "Consistent navy/orange/grey palette throughout. Clean horizontal bar charts with direct labels. Slide 3 dual-panel layout is effective. Callout boxes on slides 4 and 6 work well. No chartjunk or decorative imagery. Chart types are appropriate throughout.",
+    "ai_slop": "No generic filler paragraphs or decorative stock imagery. The suspiciously uniform histogram bins on slide 6 may indicate AI-generated visualization rather than data-derived. Language is generally precise and dataset-specific."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.5 to 5.0: the systematic mislabeling of all-time revenue as 'MRR' pervades the entire deck and compounds with the materially wrong B2B/B2C multiplier and fabricated-looking histogram bins. Six factual errors across a 7-slide deck is a significant density. Other scores confirmed as appropriate.",
+  "total": 69,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 13941,
+    "output_tokens": 1138
+  }
+}

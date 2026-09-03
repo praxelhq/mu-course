@@ -1,0 +1,40 @@
+{
+  "slide_count": 14,
+  "scores": {
+    "insight": 4,
+    "narrative": 4.5,
+    "framing": 3.5,
+    "accuracy": 2.5,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "Question-driven slide titles and consistent key-finding/action structure create a readable rhythm.",
+  "fix_next": "Most charts have dollar-sign labels on non-dollar metrics (conversion %, subscriptions, visitors), and several claims are unverifiable or misleading—fix units and verify numbers.",
+  "verdict": "Formulaic template with pervasive labeling errors and unverifiable derived metrics.",
+  "flags": [
+    "dollar-sign-on-non-dollar-axes",
+    "fabricated-looking-metrics",
+    "no-missingness-disclosure",
+    "causal-language-without-warrant",
+    "ai-slop-template",
+    "unverifiable-derived-ratios"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 2: 'Average MRR $13,472' — total 30-day revenue is $15.6M across 1000 companies giving mean ~$15,596, not $13,472; no mention of 216 zero-revenue rows or heavy missingness. Slide 5: 'B2B grows 93% faster' — chart shows $93/$37/$26 but labels these as 'Revenue Growth Rate' with dollar signs; the dataset is cross-sectional with no growth-rate field; the 2.5x claim ($93/$37) doesn't equal 93% faster. Slide 5: B2B/B2C median revenue multiples in reference are ~2.35x/2.30x, not 2.5x. Slide 8: '60% B2C conversion rate' is implausibly high and labeled with dollar signs; metric definition unclear and likely fabricated. Slide 9: Chart labeled 'Total Monthly Visitors' but y-axis shows $29, $2, $1, $0 — units are nonsensical; Poland shown as highest-traffic country which is implausible. Slide 7: 'Stripe + Superwall = 75% more revenue' — causal framing from observational data with unknown n for combo groups; Superwall alone is only 17 companies. Slide 10: Active subscriptions labeled with dollar signs ($158, $392, $261). Slide 2: No disclosure of 241 missing country, 288 missing audience_type, 274 missing category, 286 missing domain.",
+  "evidence": {
+    "insight": "Slide 3 revenue-per-visitor by category and slide 6 revenue-per-visitor by stage are somewhat original derived metrics, but the 'scaling sweet spot' interpretation on slide 6 likely reflects outlier sensitivity rather than genuine insight. Recommendations on slide 13 are generic consulting advice ('target B2B or AI').",
+    "narrative": "Slides follow a question-per-slide structure which provides some sequence, but there is no single thesis tying the deck together—it reads as a list of loosely related findings. The takeaway slide (12) lists 9 points that largely repeat earlier slides without synthesis.",
+    "framing": "Slide 2 provides basic dataset overview but omits all missingness (241 country, 288 audience_type, 274 category missing). No discussion of limitations, survivorship bias, or cross-sectional nature. Audience is split between founders and investors on slide 13 but never established upfront. Revenue labeled as 'MRR' without clarifying it's 30-day revenue.",
+    "accuracy": "Multiple charts use dollar-sign prefixes on non-monetary metrics (slide 8 conversion %, slide 9 visitors in millions, slide 10 subscription counts). Slide 5 claims a 'growth rate' from cross-sectional data with no temporal dimension. Slide 8's 60% conversion rate is implausibly high. Average MRR on slide 2 doesn't match reference. No sample sizes shown on any chart.",
+    "visual": "Every analytical slide uses the identical layout: bar chart left, KEY FINDING right, same blue/green/orange palette. Charts are crude with truncated axis labels ('Marketin g'). Dollar signs appear on non-dollar metrics throughout. No annotations, no error bars, no n-counts. The repetitive template signals AI-generated slop.",
+    "ai_slop": "Identical slide template repeated 8 times with same layout, same 'KEY FINDING:' red header, same three-bullet structure. Dollar signs incorrectly applied to percentages and counts suggest auto-generated charts without human review. Generic consulting language ('sweet spot', 'superior growth', 'pick ONE audience')."
+  },
+  "confidence": "high",
+  "total": 35,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 25267,
+    "output_tokens": 1133
+  }
+}

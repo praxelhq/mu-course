@@ -1,0 +1,248 @@
+What the Numbers Hide
+A deep read of the TrustMRR dataset — 1,000 startups, beyond the obvious
+
+
+
+
+1 , 0 0 0 S TA R T U P S   ·   29 FIELDS   ·   S N A P S H O T: 3 0 J U L 2 0 2 6
+ This isn't a clean dataset — that's the story
+ Six things immediately jump out once you look past the summary stats
+
+
+
+                   Extreme concentration                           Hype ≠ revenue                                          Geography gap
+        1                                                 2                                                       3
+      Revenue isn't spread across the dataset — a tiny   The most popular category by headcount is not the       Median revenue varies by 200x+ between top
+      sliver of startups own most of it                  most valuable per company                               countries — not just volume
+
+
+
+
+                   Vanity metrics lie                              'For sale' ≠ struggling                                 The blanks are informative
+        4                                                 5                                                       6
+      Follower counts barely predict revenue at all      Businesses listed for sale actually out-earn the rest   Missing fields cluster in ways that reveal how
+                                                         of the dataset                                          listings were built
+
+
+
+
+TrustMRR Dataset · 1,000 Startups · Frozen 30 Jul 2026                                                                                                            2
+ The Power Law: 10 startups out-earn the other 990
+ Share of total 12-month revenue, cumulative by top slice of startups
+
+                           100
+
+
+
+                                                                                                           50.6%
+                            90
+                                                                            84.7%
+                            80
+                                                           72.9%
+                            70
+                                                                                                           of all revenue in the dataset comes from just 10
+                            60                                                                             startups (1%)
+
+
+
+
+      % of total revenue
+                                   50.6%
+                            50
+
+                            40
+                                                                                                           10.9% of startups report $0 in trailing 12-month
+                            30                                                                             revenue — pre-revenue or dormant listings sit
+                                                                                                           alongside multi-million dollar businesses in the
+                            20                                                                             same dataset.
+
+                            10
+                                                                                              0.2%
+                             0
+                                   Top 1%                  Top 5%          Top 10%         Bottom 50%
+                                 (10 startups)           (50 startups)   (100 startups)   (500 startups)
+
+
+
+
+TrustMRR Dataset · 1,000 Startups · Frozen 30 Jul 2026                                                                                                        3
+ AI is the most crowded category — not the most valuable
+ Share of startup count vs. share of total MRR, by category
+
+   25
+                                                                                                                           Reading the gap
+                                                                                                                           AI: 1 in 5 startups, but only 13% of MRR —
+             19.7%
+   20                                                                                                                      heavily crowded, thin margins per entrant.
+
+                                                                                                                           Productivity: 5% of startups, just 0.5% of
+                                                                                                                           MRR — the weakest monetizer of the group.
+   15
+                          13.4%                                                                                            Marketing: Punches above its weight —
+                                                                                                                           4.2% of startups capture 3.3% of MRR, near
+                                                                                                                           parity.
+   10
+
+                                           6.6%
+                                                                     5.2%                    4.9%
+    5                                                    4.4%                                                4.2%
+                                                                                                                    3.3%
+
+                                                                               1.5%
+                                                                                                      0.5%
+    0
+                     AI                          SaaS                 Mobile Apps             Productivity    Marketing
+
+                                                            % of startups   % of total MRR
+
+
+
+
+TrustMRR Dataset · 1,000 Startups · Frozen 30 Jul 2026                                                                                                                  4
+ A 200x revenue gap hides behind the country column
+ Median MRR (USD) by top labeled countries
+
+
+
+
+                                                                                                                   212x
+      IN       $6
+
+
+
+     GB                    $153
+                                                                                                                   gap between the median US startup
+                                                                                                                   ($1,262 MRR) and the median India-based
+     DE                            $230                                                                            startup ($6 MRR) in this dataset
+
+
+     FR                                                  $435
+
+
+
+     BR                                                               $666                                         24% of rows have no country listed at all —
+                                                                                                                   geographic analysis here is a sample, not the
+                                                                                                                   full population.
+     CA                                                                            $919
+
+
+
+     US                                                                                            $1,263
+
+
+           0                 200                 400            600          800     1000   1200            1400
+
+
+
+
+TrustMRR Dataset · 1,000 Startups · Frozen 30 Jul 2026                                                                                                             5
+ Followers don't predict revenue. Almost at all.
+ Correlation of each signal with monthly recurring revenue (MRR)
+
+
+
+                                                                                                                      Why this matters
+              Domain rating                                                 0.21                                      A correlation near 0 means a huge X following tells you
+                                                                                                                      almost nothing about whether a startup actually
+                                                                                                                      makes money.
+
+                                                                                                                      Domain rating and site traffic are weakly positive —
+                                                                                                                      real, but far from decisive.
+
+        Site visitors (30d)                                           0.19                                            Takeaway: audience size is not a substitute for
+                                                                                                                      checking the revenue line directly.
+
+
+
+
+    X (Twitter) followers                 0.02
+
+
+
+
+                                    0        0.05        0.1   0.15   0.2      0.25   0.3   0.35   0.4   0.45   0.5
+
+
+
+
+TrustMRR Dataset · 1,000 Startups · Frozen 30 Jul 2026                                                                                                                          6
+ Businesses listed for sale out-earn the rest
+ Median MRR: startups marked 'on sale' vs. everyone else
+
+
+
+
+           NOT FOR SALE (738 startups)                                                             ON SALE (262 startups)
+
+
+
+
+           $187                                                                                    $1,055
+           median MRR                                                                              median MRR — 5.6x higher
+
+
+
+
+           median 11 active subscriptions                                                          median 32 active subscriptions
+
+
+
+
+     This flips the usual assumption that a listed-for-sale business is a struggling one. Here, sellers appear to be cashing out of healthier, more established businesses —
+     not offloading failures.
+TrustMRR Dataset · 1,000 Startups · Frozen 30 Jul 2026                                                                                                                         7
+ The blanks tell their own story
+ Share of rows missing each field — and what it implies
+
+
+
+               Country                                   24.1%                                                  129 'Stealth Company' listings
+
+                                                                                                                88% are missing a category, vs. 27% dataset-wide.
+              Category                                     27.4%
+                                                                                                                66% are missing a country, vs. 24% dataset-wide.
+
+                                                                                                                Anonymized listings systematically withhold more than
+       Pricing model                                             34.3%                                          named ones — missingness isn't random, it's a signal of
+                                                                                                                listing type.
+
+         Asking price                                                                   73.9%
+
+
+
+        Visitors (30d)                                                                          82.2%
+
+
+
+    Revenue/visitor                                                                               85.8%
+
+
+                            0         10         20        30      40    50   60   70     80       90     100
+
+
+
+
+TrustMRR Dataset · 1,000 Startups · Frozen 30 Jul 2026                                                                                                                    8
+   Six takeaways, in one place
+    1         Revenue is a power law — top 1% of startups hold half of all revenue.
+
+
+    2         AI is the most crowded category but not the best per-startup monetizer.
+
+
+    3         Country matters enormously — median MRR spans a 200x+ range.
+
+
+    4         Social following is a weak-to-nonexistent predictor of revenue.
+
+
+    5         'On sale' listings out-earn the rest — sellers are cashing out winners.
+
+
+    6         Missing data isn't random — anonymized listings withhold systematically more.
+
+
+
+
+TrustMRR Dataset · 1,000 Startups · Frozen 30 Jul 2026                                        9
+

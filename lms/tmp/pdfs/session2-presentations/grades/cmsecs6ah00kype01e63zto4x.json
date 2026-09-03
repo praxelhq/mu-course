@@ -1,0 +1,38 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Growth-share matrix framework gives the data a genuine strategic spine with actionable quadrant recommendations.",
+  "fix_next": "Total revenue is ~$15.6M not $13.5M; the entire deck's headline number and downstream arithmetic are wrong, undermining credibility.",
+  "verdict": "Strong strategic narrative built on a materially wrong headline revenue figure.",
+  "flags": [
+    "wrong-total-revenue",
+    "category-revenue-discrepancies",
+    "small-n-overconfidence",
+    "missing-data-not-disclosed"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1-2: Total MRR stated as $13.5M; actual 30-day revenue is $15,596,344.59 (~$15.6M). Slide 2: AI category shown as $1,806K; reference is $2,356,676 (~$2,357K). SaaS shown as $589K vs reference $703,526. Marketing shown as $444K vs reference $1,317,303 — roughly 3x undercount. Slide 2: '29 market categories' claimed on slide 1 but reference shows 12 named categories with 274 rows uncategorized — 29 is unverifiable and likely inflated.",
+  "evidence": {
+    "insight": "Slide 3 growth-share matrix is a genuinely useful analytical framework applied to the dataset, going beyond simple bar charts. Slide 6 whitespace analysis (Customer Support, Recruiting & HR) is an original finding with revenue-per-company backing. Slide 5 B2B vs B2C comparison adds a useful cross-cut. These go beyond chart description into decision-useful synthesis.",
+    "narrative": "Clear thesis ('Where should capital go next?') established on slide 1, carried through market snapshot → portfolio strategy → geography → business model → whitespace → action plan. Each slide builds on the prior. Slide 7 synthesizes all threads into a four-tier action plan with geographic overlay. Strong landing.",
+    "framing": "Audience (internal investment review) and question (capital allocation) are stated clearly on slide 1. Dataset date is frozen. However, 274 missing category values and 241 missing country values are never disclosed, which matters for the category and geographic analyses. No limitations section.",
+    "accuracy": "Total revenue wrong by ~$2M ($13.5M vs $15.6M). AI revenue understated by ~$550K. Marketing revenue understated by ~$870K — this is the most egregious, as Marketing at $1.3M would be the clear #2 category, not #4 as shown. SaaS also understated. These errors cascade into the growth-share matrix placements and the action plan. The B2B/B2C 2.6x average ratio is in the right ballpark (reference shows means ~8x but medians ~2.3x). Whitespace claims about small categories (n=4-7) are presented without sample-size caveats.",
+    "visual": "Consistent warm color palette, clean typography, good hierarchy with section numbering. Bar charts are simple and legible. Growth-share bubble chart is well-executed with labeled bubbles and quadrant labels. Slide 5 card layout is effective. Some visual sameness across slides but restrained and purposeful. No decorative-but-meaningless graphics.",
+    "ai_slop": "Minor consulting-speak ('harvest efficiently,' 'selective bets') but grounded in specific data points rather than generic filler. The framework application is substantive, not decorative. No fabricated-looking charts — the errors appear to stem from incorrect calculations rather than invention."
+  },
+  "confidence": "high",
+  "total": 71,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 14480,
+    "output_tokens": 935
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 3.5,
+    "narrative": 5.5,
+    "framing": 3,
+    "accuracy": 2.5,
+    "visual": 5.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong narrative arc from data observation to product pitch with a clear, memorable thesis.",
+  "fix_next": "Slide 3's chart uses fabricated categories (Tools, Communities, Accountability) not in the dataset; ground claims in actual data fields and cite numbers.",
+  "verdict": "Compelling pitch deck, but weak data story—fabricated categories undermine the analytical foundation.",
+  "flags": [
+    "fabricated-categories",
+    "unsupported-multipliers",
+    "pitch-deck-not-data-story",
+    "unverifiable-chart"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 3: Categories 'Tools', 'Communities', 'Accountability' do not exist in the dataset; the chart appears entirely fabricated. Slide 2: Claims 'accountability products dominate the high-revenue band' with no supporting evidence from the dataset. Slide 4: Labels MRR in $K but Content Creation median is $1,237.50 and Productivity median is $79.91—cherry-picking top performers while claiming the categories 'stood out' is misleading. Slide 9: '2X Retention', '3X Referrals', '4X Moat' multipliers are presented as data-backed but have no source in the dataset. Slide 2: '100% Real MRR' label is misleading—the data is 30-day revenue, not verified MRR.",
+  "evidence": {
+    "insight": "The core insight—that accountability/consistency is an underserved niche—is interesting but not actually derived from the dataset. The data shows Education has the highest eligible median, not 'accountability.' The leap from data to product concept is creative but analytically unsupported.",
+    "narrative": "Slides flow logically: market overview → imbalance → standout categories → problem framing → personal story → product concept → business model → close. The arc is coherent and purposeful, though it reads as a startup pitch rather than a data story.",
+    "framing": "The audience is unclear—is this for investors, a class, or a product team? The dataset scope, limitations (274 missing categories, 216 zero-revenue), and definitions are never stated. No mention of what 'accountability' means as a dataset category because it doesn't exist in the data.",
+    "accuracy": "Slide 3 is the most damaging: it presents a stacked bar chart with categories (Tools, Communities, Accountability) that do not exist in the dataset. The numbers (18/42/65, 48/36/12, etc.) cannot be verified. Slide 9's 2X/3X/4X claims are unsourced. The dataset has specific categories (AI, Marketing, E-comm, etc.) that are never referenced. The presentation treats the data as a springboard for a pre-determined conclusion rather than analyzing it honestly.",
+    "visual": "Consistent dark theme with yellow accents throughout. Good use of contrast and hierarchy. Slide 5's infinity loop is effective. Slide 3's chart is legible. However, decorative AI-generated illustrations (skull, candle, desk scene) add style but not substance. The donut chart on slide 9 shows made-up revenue splits.",
+    "ai_slop": "AI-generated illustrations on slides 1, 6, 11 are decorative but not meaningless. The 9-point feature grid on slide 8 feels like consulting template filler. The 2X/3X/4X metrics on slide 9 are classic AI-generated impressive-sounding but unsourced claims."
+  },
+  "confidence": "high",
+  "total": 41,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18966,
+    "output_tokens": 911
+  }
+}

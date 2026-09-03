@@ -1,0 +1,387 @@
+TRUSTMRR · 1,000-COMPANY DATASET
+
+
+
+
+TrustMRR Market Intelligence
+Exploratory Data Analysis and Strategic Insights on the Revenue,
+Growth, and Valuation Signals of 1,000 Indie SaaS and App Businesses
+
+
+
+
+Prepared by Business Analytics & Strategy Team
+Confidential — For Internal Discussion
+ Executive Summary
+ A power-law market where a small elite captures most of the value
+
+
+
+
+               1,000                                  $15.6M                                       83.7%                                          0.02
+               companies tracked                         combined monthly                           of all revenue held by                     correlation between
+               across 65 countries                        revenue in scope                        just the top 10% of firms                   followers and revenue
+
+
+
+
+  •        Extreme revenue concentration. The top 1% of companies (10 of 1,000) generate 49.6% of all tracked monthly revenue — this is a power-law market, not
+           a normal distribution.
+
+  •        Audience size is a vanity metric here. X/social followers show virtually no relationship to revenue (r = 0.02); domain authority and B2B positioning matter
+           far more.
+
+  •        B2B monetizes ~4x better than B2C. Average B2B revenue is $22,638/mo versus $5,723/mo for B2C, despite B2C having 57% more companies in the
+           dataset.
+
+  •        Valuation multiples are noisy. The average asking multiple (7.8x) is more than 3x the median (2.3x) — a handful of near-zero-revenue listings distort the
+           average.
+
+
+
+TrustMRR Market Intelligence                                                                                                                                             2
+ Dataset Overview
+ What the data represents and how complete it is
+
+
+ The dataset is a snapshot from TrustMRR — a public leaderboard of self-                        Sample & Data Quality
+ reported, API-verified revenue for bootstrapped SaaS products, mobile apps,
+ and online businesses. Each row is one company; each column is a business,
+                                                                                                1,000 companies · 29 variables · 0 duplicate rows
+ financial, or firmographic attribute at a point in time.
+
+                                                                                                asking_price_usd / revenue_multiple                       73.9%
+ Variable
+  Variablegroup
+           group               Examples
+                                Examples                                        Type
+                                                                                                revenue_per_visitor_usd                                   85.8%
+                                                                                Categorical /
+ Identity & firmographics      startup_name, country, category, audience_type
+                                                                                Text            visitors_30d                                              82.2%
+                               revenue_30d/3m/12m/all-time, mrr_usd,
+ Revenue & subscriptions                                                        Numerical
+                               active_subscriptions                                             category                                                  27.4%
+
+ Growth signals                revenue_growth_30d_pct, mrr_growth_30d_pct       Numerical
+                                                                                                country                                                   24.1%
+                               x_followers, visitors_30d,
+ Marketing & traffic                                                            Numerical
+                               revenue_per_visitor_usd, domain_rating
+
+                                                                                Binary /
+ Deal / M&A signals            on_sale, asking_price_usd, revenue_multiple                      Anonymized listings: 130 companies (13.0%) are posted as “Stealth
+                                                                                Numerical
+                                                                                                Company” or “Hidden Business,” yet still contribute ~27% of total revenue.
+                               value_proposition, problem_solved,
+ Qualitative descriptors                                                        Text
+                               pricing_model
+
+
+
+TrustMRR Market Intelligence                                                                                                                                                 3
+ Descriptive Statistics
+ Every core revenue metric is right-skewed — the mean is not the typical company
+
+ Metric                                                        Median                     Mean                   Std Dev                     P90                        Max
+
+                                   Revenue (30d, $)                400                   15,596                  108,136                  24,588                2,844,652
+
+                                            MRR ($)                282                   13,472                  118,987                  23,369                3,569,654
+
+                                   Revenue (12m, $)               3,069                 133,750                  968,978                 215,591               25,017,876
+
+                                Active subscriptions                16                      501                    3,561                     769                     101,590
+
+                                         X followers                67                    4,070                   26,300                    3,762                    365,992
+
+                               Domain rating (0-100)                10                     16.7                     18.5                     45.7                        89
+
+
+
+
+        !          Interpretation: For every core metric, the mean sits far above the median (e.g., mean 30-day revenue of $15,596 vs. a median of just $400) — a
+                   signature of a right-skewed, power-law distribution. Reporting means alone would badly overstate the typical company's performance; medians and
+                   percentile bands are the more honest benchmark for this population.
+
+
+
+
+TrustMRR Market Intelligence                                                                                                                                                   4
+ Distribution Analysis
+ Revenue concentration follows a textbook Pareto curve
+
+                           Cumulative Share of Total Revenue by Company Tier
+ 100                                                                                           Reading the Curve
+                                                                  94.3%
+
+   90
+                                                   83.7%                                         The top 10 companies alone (1% of the dataset)
+   80                                                                                            generate almost half of all tracked monthly revenue.
+                                   72.9%
+   70
+
+   60                                                                                            The top 200 companies (20%) account for 94% of
+                                                                                                 revenue — the other 800 firms share the remaining 6%.
+                49.6%
+   50
+
+   40                                                                                            This is consistent with typical marketplace and creator-
+                                                                                                 economy dynamics: a small number of breakout
+   30                                                                                            winners, a long tail of early-stage or side-project
+                                                                                                 revenue.
+   20
+
+                                                                                                 Implication: any 'average company' framing is
+   10                                                                              5.7%
+                                                                                                 misleading. Segment analysis, benchmarking, and BD
+    0
+                                                                                                 prioritization should be tier-based, not average-based.
+               Top 1%              Top 5%         Top 10%        Top 20%       Remaining 80%
+              (10 firms)          (50 firms)     (100 firms)    (200 firms)      (800 firms)
+
+
+
+
+TrustMRR Market Intelligence                                                                                                                                5
+ Customer Segmentation
+ B2B commands a clear revenue premium; a handful of categories dominate
+
+ Average 30-Day Revenue by Audience Type
+ 25000
+                                                                                    What the Segments Tell Us
+                    $22,638
+
+ 20000
+                                                                                    B2B ≈ 4x B2C on average revenue.
+ 15000                                                                              $22,638/mo vs. $5,723/mo — despite B2C having 57% more listed companies.
+                                                                                    Business buyers pay more per seat/account than consumers.
+ 10000
+                                              $5,723
+                                                                  $4,195
+  5000
+                                                                                    AI is the largest category by count (197 firms) but wildly uneven.
+      0                                                                             Median AI revenue is just $503/mo against a mean of $11,963 — a few
+                      B2B                       B2C                Both             breakout AI products carry the category.
+                   (255 firms)               (401 firms)         (56 firms)
+
+
+ Top Categories by Total 30-Day Revenue ($)                                         Marketing tools monetize best per company.
+                                                                                    42 firms average $31,364/mo — nearly 3x the AI category average —
+                                                                                    suggesting tighter product-market fit and willingness to pay for measurable
+ Education                       $1M                                                ROI tools.
+
+      SaaS                             $1M
+                                                                                    'Both' (B2B+B2C hybrid) audiences underperform pure B2B.
+   E-comm                                        $1M                                At $4,195/mo average, hybrid positioning may signal unclear ICP focus rather
+                                                                                    than market expansion.
+ Marketing                                                 $1M
+
+          AI                                                                  $2M
+
+
+TrustMRR Market Intelligence                                                                                                                                       6
+ Correlation Analysis
+ What actually moves with revenue — and what doesn't
+
+                                           Revenue                         Active            X            Domain          Asking         Growth
+                                             30d            MRR             Subs         Followers        Rating           Price           %
+
+              Revenue
+                               1.00         0.87            0.80            0.02            0.28           0.85            0.00
+                  30d
+
+
+
+                  MRR          0.87         1.00            0.91            0.02            0.21           0.81            -0.01
+
+
+                 Active
+                               0.80         0.91            1.00            0.01            0.20           0.33            -0.01
+                  Subs
+
+
+                     X
+                               0.02         0.02            0.01            1.00            0.20           0.24            0.00
+             Followers
+
+
+               Domain
+                               0.28         0.21            0.20            0.20            1.00           0.22            -0.03
+                Rating
+
+
+                 Asking
+                               0.85         0.81            0.33            0.24            0.22           1.00            -0.04
+                  Price
+
+
+                Growth
+                               0.00         -0.01           -0.01           0.00           -0.03           -0.04           1.00
+                    %
+
+      Key reads: (1) X followers correlate with almost nothing (r ≤ 0.24 everywhere) — social reach is not a revenue driver on this platform. (2) Asking price tracks revenue closely (r
+      = 0.85) — sellers price mainly off trailing revenue, not growth. (3) 30-day revenue growth is essentially uncorrelated with size, multiple, or followers — growth is idiosyncratic,
+      not structural.
+
+
+TrustMRR Market Intelligence                                                                                                                                                                7
+ Key Trends
+ Platform concentration extends beyond revenue — into geography and payments
+
+ Revenue Share by Payment Provider                                                        Revenue Share by Country (Top 5)
+
+                                         3.4%
+                                      1.5%
+                                                                                          HK      $0M
+                               8.4%
+
+
+                                                                                          CA      $0M
+                                                                             Stripe
+                                                                             RevenueCat
+                                                                                          GB       $0M
+                                                                             Superwall
+                                                                             Other
+                                                                                          FR         $1M
+
+
+
+                                                86.7%                                     US                                                                        $10M
+
+
+
+
+ Stripe processes 63.6% of companies but 86.7% of dollars — its merchants skew toward     The US alone accounts for 63.1% of all tracked revenue from just 25.8% of companies — US-
+ larger, higher-revenue businesses than RevenueCat's largely mobile/app-store base.       based listings monetize roughly 4.5x more per company than the global average.
+
+
+
+
+TrustMRR Market Intelligence                                                                                                                                                          8
+ Deep Insights
+ Consultant-level reads beyond the summary statistics
+
+
+
+
+        01                                                                                    02
+        Followers are theater, not fundamentals.                                              The valuation market is inefficient today.
+
+        A social following of 100,000 correlates with revenue no better than one of 100       Revenue multiple shows no relationship to growth rate (r = -0.04). Buyers are not
+        (r = 0.02 overall). Any acquisition or scoring model that weights follower count as   yet paying a systematic premium for faster-growing businesses — a mispricing
+        a quality signal on this platform is measuring the wrong thing.                       that disciplined buyers could arbitrage.
+
+
+
+
+        03                                                                                    04
+        Confidentiality doesn't mean small.                                                   Category size and category quality diverge.
+
+        The 130 anonymized 'Stealth' listings collectively hold roughly 27% of total          AI is the most populous category (197 firms) but Marketing tools generate ~3x
+        tracked revenue — larger, more successful sellers appear just as likely to mask       more revenue per company on average — a smaller, tighter niche can out-
+        identity as smaller ones, likely for competitive reasons.                             monetize a crowded, hyped one.
+
+
+
+
+TrustMRR Market Intelligence                                                                                                                                                      9
+ Problems Identified
+ Data quality issues that could distort downstream analysis
+
+
+                                                    The average revenue multiple (7.8x) is inflated by listings with near-zero trailing revenue posting multiples above 100x (max
+       !           Outlier-driven multiples
+                                                    326.8x) — a valuation floor is needed before averaging.
+
+
+
+
+                                                    visitors_30d and revenue_per_visitor_usd are missing for 82% and 86% of companies respectively, making conversion-rate
+       ○           Sparse funnel data
+                                                    or CAC-efficiency analysis unreliable at the full-dataset level.
+
+
+
+
+                                                    'Draft AI' appears twice with identical MRR, followers, and revenue figures under two different domains (getdraft.io /
+       ■           Duplicate listing
+                                                    getdraft.app) — a rollup that doesn't dedupe will double-count it.
+
+
+
+
+                                                    57+ rows contain literal placeholder strings such as 'PRICING_NOT_FOUND' or '[Private metric reference available after
+      ▲            Placeholder / redacted text
+                                                    login.]' in text fields — these should be treated as missing, not as real content, in any NLP or theming pass.
+
+
+
+
+                                                    category (27%), country (24%), and audience_type (29%) are all missing at rates high enough that segment-level totals in
+       ●           Optional self-tagging gaps
+                                                    this deck should be read as 'among tagged companies,' not as the full population.
+
+
+
+
+TrustMRR Market Intelligence                                                                                                                                                        10
+ Recommendations
+ Prioritized by expected impact on decision quality
+
+                        Benchmark and price off medians, not means.
+      HIGH
+                        Use median revenue multiple (2.3x) and median revenue ($400/mo) as the default reference points; reserve means for total-market sizing only.
+
+
+                        Apply a minimum-revenue floor before computing valuation comps.
+      HIGH
+                        Exclude or flag listings under a set MRR threshold (e.g., $500) from multiple-based benchmarking to remove the outliers driving the 7.8x vs. 2.3x gap.
+
+
+                        Prioritize BD, partnerships, and support resources on the top decile.
+      HIGH
+                        The top 10% of companies drive 83.7% of visible revenue — a tiered coverage model will outperform equal-weighted outreach.
+
+
+                        Drop follower count from any quality or lead-scoring model.
+    MEDIUM
+                        Replace it with domain rating and audience-type (B2B vs. B2C) flags, which carry meaningfully more signal (r = 0.28 and a ~4x revenue gap respectively).
+
+
+                        Investigate payment-processor concentration risk.
+    MEDIUM
+                        86.7% of revenue flows through a single processor (Stripe); assess resilience and consider surfacing multi-processor adoption as a stability signal.
+
+
+                        Improve traffic/funnel data capture and de-duplicate listings.
+      LOW
+                        Close the 82-86% gap in visitor and conversion data, and add a domain/metric fingerprint check to catch duplicate listings like 'Draft AI' before publication.
+
+
+
+
+TrustMRR Market Intelligence                                                                                                                                                             11
+       Conclusion
+
+       This dataset paints a consistent picture: TrustMRR is a power-law market. A small elite of companies — disproportionately US-based,
+       B2B, Stripe-processed — captures most of the revenue, while the broad base of listed businesses earns modestly. Popularity metrics
+       like social following carry almost no predictive weight; fundamentals like domain authority, audience type, and category fit matter far
+       more.
+
+
+       Next Steps
+       1        Rebuild valuation benchmarks on median, outlier-floored multiples
+
+       2        Stand up a tiered coverage model around the top revenue decile
+
+       3        Replace follower-based scoring with domain-rating and audience-type signals
+
+       4        Close funnel-data gaps and de-duplicate listings before the next reporting cycle
+
+
+
+
+       Thank you
+TrustMRR Market Intelligence                                                                                                                     12
+

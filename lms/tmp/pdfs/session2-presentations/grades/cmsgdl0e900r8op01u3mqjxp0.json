@@ -1,0 +1,41 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 2.5,
+    "narrative": 4,
+    "framing": 2.5,
+    "accuracy": 2,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Consistent visual template with clear hierarchy; the PCA scatter plot and network graph show analytical ambition.",
+  "fix_next": "The entire analysis runs on fabricated composite scores disconnected from the actual dataset columns; ground claims in real revenue, provider, and category fields.",
+  "verdict": "Polished consulting theater built on invented metrics, not the actual dataset.",
+  "flags": [
+    "fabricated-composite-scores",
+    "dataset-disconnect",
+    "consulting-language-inflation",
+    "unearned-certainty",
+    "ai-slop",
+    "no-limitations-acknowledged",
+    "circular-scoring"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "S1/S4: 'Marketplace' is not a category in the dataset (actual categories: AI, Marketing, E-comm, SaaS, Education, etc.); the '31 unique markets' claim doesn't match the ~12 known categories. S4: AI ranked last in the fabricated attractiveness chart despite being the highest-revenue category ($2.36M). S1/S7: 'Brand On Demand, Inc.' and its 55.97 'investment score' cannot be verified against the dataset and appear fabricated. S6: 'Average baseline company score of 2.43' is an invented metric with no dataset column. S3/S5: 'Interconnectedness' and 'synergistic bridges' between categories are asserted without any relational data in the dataset. S7: Stan dismissed as 'statistical outlier' without justification—convenient narrative manipulation.",
+  "evidence": {
+    "insight": "Every 'insight' is circular: a fabricated score is computed, then the highest scorer is declared best. No actual dataset findings (revenue distribution, provider dominance, missingness, category medians) appear anywhere. The recommendation to invest in 'Brand On Demand, Inc.' is unverifiable and adds no decision-useful knowledge.",
+    "narrative": "The deck does follow a logical funnel structure (market → methodology → cluster → company → recommendation) which gives it basic coherence, but the entire narrative rests on invented constructs ('Market Attractiveness Score,' 'Investment Score') that are never validated against real data.",
+    "framing": "No audience is defined beyond vague 'board/committee.' The dataset's actual structure (1,000 companies, 30-day revenue, payment providers, categories with heavy missingness) is never described. No limitations, sample sizes, or missingness rates are mentioned. A cold reader cannot assess what data was actually used.",
+    "accuracy": "The deck's category taxonomy ('Marketplace,' 'Recruiting & HR,' 'Sales,' 'Surune Marketing') does not match the dataset's actual categories. The composite scores (100.00, 55.97, 2.43) have no transparent derivation. AI is shown as the lowest-ranked market despite being the highest-revenue category. The '31 unique markets' claim is unexplained given ~12 dataset categories. No real revenue figures, provider data, or missingness rates appear.",
+    "visual": "Slides are visually consistent with a navy/gold palette, clear titles, and readable fonts. The network graph (S3), bar charts (S4, S7), PCA scatter (S6), and 2×2 matrix (S8) show variety. However, the PCA plot lacks color-coded clusters, and the network graph is too dense to read node labels. The 2×2 matrix (S8) has only one data point plotted, making it decorative.",
+    "ai_slop": "Heavy consulting jargon throughout: 'synergistic bridges,' 'structural interconnectedness,' 'nascent risk,' 'ecosystem-driven returns,' 'optimal strategic fit.' The entire framework of composite scores, PCA clustering, and adaptive weighting reads as AI-generated analytical theater with no transparent methodology. NotebookLM watermark on every slide. Slide 8's 2×2 matrix is a classic AI-generated decorative framework."
+  },
+  "confidence": "high",
+  "total": 32,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 16864,
+    "output_tokens": 1001
+  }
+}

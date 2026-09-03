@@ -1,0 +1,43 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 3.5,
+    "narrative": 5.5,
+    "framing": 4,
+    "accuracy": 2.5,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Clear problem→evidence→implication arc with a well-defined investor audience and pointed thesis.",
+  "fix_next": "Verify claims against the actual dataset columns; the core r=0.19/0.91 values appear unverifiable from the provided data.",
+  "verdict": "Polished shell around one unverifiable, near-tautological claim repeated across eight slides.",
+  "flags": [
+    "unverifiable-core-claim",
+    "ai-generated-decorative-imagery",
+    "near-tautological-finding",
+    "missing-data-not-addressed",
+    "dataset-underutilized",
+    "fabricated-case-studies",
+    "no-limitations-disclosed"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 4/5/8: r=0.19 and r=0.91 correlations reference 'monthly visitors' and 'active subscriptions' which are not standard columns in the frozen dataset; these values cannot be verified. Slide 3: dataset called 'broad, representative' with no justification and no acknowledgment of substantial missingness (241 country, 288 audience_type, 274 category missing). Slide 6: Stan and DataExpert case study numbers (15,600 followers, 51,000 followers, 2,343 subscriptions, 4.6% conversion) appear fabricated or drawn from outside the dataset without attribution.",
+  "evidence": {
+    "insight": "Entire deck repeats one comparison (r=0.19 vs r=0.91) across slides 4, 5, and 8 with no additional analytical layers. No exploration of categories, providers, revenue concentration, anonymity, TLD patterns, or any other dataset dimension. The subscription→MRR correlation is near-tautological (paying subscribers predict revenue mechanically).",
+    "narrative": "Logical arc from assumption (slide 2) through evidence (slides 4-5) to cases (slide 6) and framework (slide 7). But the story is one finding stretched thin—no second act, no complication, no nuance. Conclusion on slide 8 restates slide 4.",
+    "framing": "Investor audience is clearly identified on slide 2. Slide 3 provides sample size and freeze date. However, no mention of missingness rates, zero-revenue rows (216), variable definitions, or limitations. 'Representative' is asserted without basis.",
+    "accuracy": "The two central correlation values cannot be verified against the frozen reference dataset, which documents revenue, category, provider, country, audience_type, and domain—not 'monthly visitors' or 'active subscriptions' as named fields. The only verifiable Pearson r (founded-year/revenue = 0.025) is absent. Case study figures on slide 6 appear fabricated. No acknowledgment of 216 zero-revenue entries or ~27% missing category/country fields.",
+    "visual": "Consistent warm palette and clean typography. But slides 1, 2, 3, 5, 6, 8 use AI-generated decorative illustrations with no analytical content. Slide 5 left panel is a generic fintech dashboard unrelated to the dataset. Slide 4 scatter plot shows ~15 points for a 1,000-row dataset. Slide 6 screenshots are AI-generated mockups, not real data.",
+    "ai_slop": "Heavy AI-generated illustrations on 6 of 8 slides (office scenes, fintech dashboards, coin imagery, app mockups). Consulting buzzwords throughout ('acquisition theater,' 'fundamental reframe'). Slide 5 left panel is a stock fintech dashboard clearly not from the dataset. Slide 6 case study images are AI-generated."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight (4→3.5) because the single near-tautological finding is repeated without development. Lowered framing (4.5→4) for no limitations or missingness disclosure. Lowered accuracy (3→2.5) because core claims reference variables not verifiable in the dataset and case studies appear fabricated. Lowered visual (4.5→4) for pervasive decorative AI imagery displacing actual data visualization.",
+  "total": 39,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 14310,
+    "output_tokens": 1059
+  }
+}

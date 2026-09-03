@@ -1,0 +1,216 @@
+TRU STMRR DATASE T ANALYSIS · SESSION 3
+
+
+
+
+Beyond the Hype:
+What 1,000 Startups' Revenue
+Really Tells Us
+A category-level inference study on trailing revenue windows, growth momentum, and
+monetization efficiency
+
+
+
+1,000                                                   19                    4
+startups tracked                                        categories analyzed   trailing revenue windows
+
+
+Source: TrustMRR public revenue index · Frozen 30 Jul 2026
+The Dataset & How We Read It
+29 fields per startup - revenue, audience, pricing, category, and marketplace signals
+
+
+          1,000 startups, 19 usable categories
+ 1
+                                                                                                       O U R T WO GRO WT H S I GNAL S
+          726 of 1,000 startups carry a category tag; this analysis keeps the 19 categories with 10+
+          startups (672 companies) so averages aren't skewed by one-off entries.                       Momentum
+                                                                                                       Last-30-day revenue ÷ average monthly revenue over the last 3
+          Four trailing revenue windows                                                                months.
+ 2                                                                                                     > 1.0 → this month is running hotter than the recent quarter
+          Each startup reports cumulative revenue for the trailing 30 days, 3 months, 12 months,
+          and all-time - not sequential monthly buckets.                                               Trend
+                                                                                                       Average monthly revenue over the last 3 months ÷ average
+          Built for comparison, not vanity totals                                                      monthly revenue over the last 12 months.
+ 3
+                                                                                                       > 1.0 → the category is compounding over the full year
+          Raw totals reward category size. We normalize every window to a monthly rate before
+          comparing categories.
+
+
+                                                                                                       Together they separate a category that's genuinely accelerating from
+                                                                                                       one that's coasting on old wins.
+Revenue Is Extremely Concentrated
+Trailing 12-month revenue by category, across 672 categorized startups
+
+
+
+      Dev Tools       $1.2M
+
+
+   Social Media
+
+
+    Mobile Apps
+                        $1.5M
+
+
+                        $1.7M
+                                                                                                    63%
+                                                                                                    of all tracked revenue comes from just
+Content Creation         $1.9M
+                                                                                                    3 categories
+
+                                                                                                    AI · Marketing · E-commerce
+       Analytics                  $3.8M
+
+
+      Education                           $5.5M
+
+
+           SaaS                                $6.6M
+                                                                                                    AI alone accounts for 25.8% of tracked
+                                                                                                    revenue with more than triple the startup
+        E-comm                                                           $12.0M
+                                                                                                    count (197) of any other category - scale
+                                                                                                    and popularity are moving together.
+      Marketing                                                                   $14.6M
+
+
+              AI                                                                           $18.4M
+AI Isn't Just Big - It's Compounding
+The category leads on every window, and is still accelerating on top of that lead
+
+
+
+
+  $18.4M                                   197                                      1.12x                      1.37x
+  trailing 12-month revenue                AI startups tracked                      momentum (30d vs 3m avg)   trend (3m avg vs 12m avg)
+
+
+
+
+Spotlight: the AI startups driving it
+                                                                                                                  Why this matters
+STARTUP                                          12-MONTH REVENUE                     LAST 30 DAYS
+
+
+  Comp AI                                         $3.94M                              $575K                       A category can lead on total revenue
+                                                                                                                  purely by having more startups. AI
+  Rezi                                            $2.98M                              $242K                       leads on total revenue AND on both
+                                                                                                                  growth ratios - its lead is widening,
+                                                                                                                  not just large.
+  GojiberryAI                                     $1.54M                              $386K
+            Almost Every Category Is Accelerating -
+            Education Is the Exception
+            Momentum (recent 30 days) vs. Trend (recent quarter vs. full year), by category
+
+
+Trend
+(3-mo avg        Accelerating                                                                              EDUCATION
+vs 12-mo         (trend > 1.0)                                                                 Utilities
+avg) →
+
+                                                                                                           Trend = 0.58x
+
+                                        AI                                                                 the only category among the top 18 where the
+                                                                                                           recent quarter's monthly average sits below the full
+                                                                                                           year's - revenue is cooling on a 12-month view.
+
+
+                                 Marketing
+
+                                                                                                           Momentum = 1.95x
+
+                                                                                                           but the very last 30 days spiked well above that
+                                                                                                           cooling average - a volatile, uneven recovery
+                 Decelerating                                                                              rather than steady growth. See next slide.
+                 (trend < 1.0)                                                     Education
+
+
+                                             Momentum (30-day vs. 3-month avg) →
+Inside Education: A Few Early Winners Are Cooling Off
+Top Education startups by trailing 12-month revenue
+
+
+STARTUP                                                  12-MONTH REV.                    3-MONTH REV.                    30-DAY REV.                   30d GROWTH
+
+
+
+Kibu                                                     $1.85M                           $0                              $200K                         -25.6%
+
+
+DataExpert / TechCreator                                 $1.47M                           $226K                           $82K                          -4.0%
+
+
+Codédex                                                  $844K                            $233K                           $77K                          +0.4%
+
+
+Lunchbreak                                               $557K                            $106K                           $31K                          -8.9%
+
+
+MagicSlides.app                                          $215K                            $35K                            $10K                          -15.5%
+
+
+
+
+             Kibu and DataExpert together hold ~60% of the category's 12-month revenue but both show negative 30-day growth. Education's overall “recent spike”
+    Read:
+             (previous slide) is smaller, less-established startups picking up share while the early leaders decelerate - a hand-off, not broad-based strength.
+Traffic Doesn't Convert to Revenue Equally
+Average revenue earned per visitor in the last 30 days, by category (categories with 3+ reporting startups)
+
+
+      $56.34
+
+
+
+
+                        $12.05
+                                           $10.16             $10.13              $9.52
+                                                                                                    $7.40              $6.49
+                                                                                                                                          $3.17
+                                                                                                                                                             $1.28              $0.62
+
+        AI         Health & Fitness Content Creation          Fintech          Marketing           Analytics           SaaS            Mobile Apps          E-comm            Education
+
+
+
+    AI monetizes visitors ~90x more efficiently than Education and ~44x more than E-commerce - its lead isn't just about traffic volume, it's about converting that traffic into paid
+    revenue.
+Takeaways
+               Winners keep winning
+ 1
+               AI leads on total revenue, momentum, trend, and monetization efficiency at once - its advantage is compounding, not plateauing.
+
+
+
+
+               Watch cooling leaders, not just hot categories
+ 2
+               Education looks healthy in aggregate 12-month revenue, but its two biggest startups (Kibu, DataExpert) are already shrinking month-over-month.
+
+
+
+               Concentration is the norm
+ 3
+               Just 3 of 19 categories generate 63% of tracked revenue - category choice matters as much as execution.
+
+
+
+
+               Revenue per visitor is a hidden differentiator
+ 4
+               Two categories with similar traffic can produce wildly different revenue; monetization model matters more than raw audience size.
+
+
+
+Limitations: only 726/1,000 startups carry a category tag; “revenue per visitor” relies on self-reported traffic present for just 178 startups; trailing windows can shift sharply from single large contracts (e.g., Kibu’s $0
+three-month figure against a $1.85M twelve-month figure).
+          Thank You
+
+
+
+
+Data source: TrustMRR revenue index (1,000 startups) · Frozen 30 Jul 2026
+

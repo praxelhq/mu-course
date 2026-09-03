@@ -1,0 +1,41 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 7,
+    "accuracy": 4.5,
+    "visual": 8,
+    "bonus": 3
+  },
+  "what_worked": "Reverse-engineering the marketplace multiple denominator is genuinely novel and decision-useful investigative analysis.",
+  "fix_next": "Use the frozen 1,000-row sample as assigned; every absolute figure is unverifiable against the reference dataset.",
+  "verdict": "Exceptional analytical craft undermined by using an entirely different dataset than assigned.",
+  "flags": [
+    "wrong-dataset",
+    "row-count-mismatch",
+    "total-revenue-mismatch",
+    "unverifiable-counts",
+    "top10-share-mismatch"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1: 8,782 rows vs frozen 1,000. Slide 1: $33.2M total vs frozen $15.6M. Slide 4: top-10 share 52.3% vs frozen 49.6%. Slide 6: 807 Indian startups not verifiable against 1,000-row set. Slide 9: 1,939 for-sale listings exceeds entire frozen dataset.",
+  "evidence": {
+    "insight": "Slide 8 denominator reverse-engineering with correlation table is genuinely original; slide 5 Domain Rating vs X followers with Spearman rho is analytically sophisticated; slide 7 controlled >500-follower comparison is strong quasi-experimental thinking; slide 9 backlink-motivation hypothesis is creative.",
+    "narrative": "Three-act structure (Great Filter → Distribution Delta → Trust Gap) builds logically. Slide 10 synthesizes with audience-segmented takeaways and an explicit self-selection limitation. Coherent thesis from 'verified ≠ valuable' sustained throughout.",
+    "framing": "Slide 2 fixed/exposed/hidden framework is effective. Limitation caveat on slide 10 is good. However, the deck never acknowledges it uses a different/larger dataset than the frozen 1,000-row assignment sample, which is a fundamental framing gap for any cold reader evaluating against the rubric.",
+    "accuracy": "Every absolute figure (8,782 startups, $33.2M revenue, 807 Indian startups, 1,939 for-sale listings, 117 countries) is drawn from a dataset ~8.8x larger than the frozen 1,000-row reference. Top-10 share 52.3% vs reference 49.6%. Internal consistency within the larger dataset appears plausible but is unverifiable. Analytical methods are structurally sound.",
+    "visual": "Clean, restrained design with consistent navy/gold/red palette. Funnel chart (slide 3) and cumulative bar (slide 4) are effective. Slide 8 table is well-formatted. No decorative clutter. Dark backgrounds on slides 6-7 slightly reduce contrast.",
+    "ai_slop": "None detected — content is specific, data-driven, avoids generic filler and consulting boilerplate throughout."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.0 to 4.5: the dataset mismatch is not a minor scope choice but a fundamental departure from the assignment's frozen reference, making every claim unverifiable. Five distinct mismatches identified vs preliminary four. Other scores confirmed as appropriate.",
+  "total": 77,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 19388,
+    "output_tokens": 850
+  }
+}

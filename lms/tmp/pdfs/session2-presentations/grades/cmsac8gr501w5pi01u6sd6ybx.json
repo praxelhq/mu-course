@@ -1,0 +1,39 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 6.5,
+    "accuracy": 5.5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Honest skepticism about growth spikes and anonymous listings shows genuine analytical maturity beyond chart-reading.",
+  "fix_next": "The $334M all-time revenue figure, 3.8x B2B/B2C multiple, 130 anonymous count, and 17.8% revenue share all diverge from the reference data—verify core numbers.",
+  "verdict": "Thoughtful narrative arc undermined by several unverified headline statistics.",
+  "flags": [
+    "revenue-total-unverified",
+    "b2b-b2c-multiple-off",
+    "anonymous-count-off",
+    "anonymous-revenue-share-off",
+    "slide6-chart-illegible"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: '$334M combined all-time revenue' is unverifiable from the dataset which shows $15.6M 30-day revenue; may conflate all-time with 30-day but no basis given. Slide 6: Claims B2B median is ~3.8x B2C; reference shows B2B median multiple 2.35x and B2C 2.30x (nearly identical), and the bar chart appears to show ~$8,362 vs ~$2,219 which doesn't match reference medians. Slide 8: States 130 anonymous startups (reference: 129) — minor, but 17.8% revenue share conflicts with reference 26.525% of 30-day revenue. Slide 8: $59.6M 'all-time' anonymous revenue is unverifiable against reference. Slide 6: 401 B2C vs 255 B2B counts — audience_type has 288 missing values so these counts need scrutiny; 401+255=656 which leaves 344 unaccounted, plausible but unstated.",
+  "evidence": {
+    "insight": "Slide 7's growth-spike skepticism and slide 8's anonymous-economy framing go beyond chart description. Slide 9's asking-price analysis adds decision-useful context. However, no category-level revenue analysis (e.g., median by category) or provider analysis appears.",
+    "narrative": "Clear chapter structure (Distribution → What's Built → Who Pays → Growth Caveats → Hidden Value → Deal Market → Summary). The arc from 'what exists' to 'what to watch out for' is coherent. Summary slide ties threads together. Slightly listy but purposeful.",
+    "framing": "Slide 2 sets scope and notes missingness in marketing metadata. However, the $334M figure is introduced without explaining whether it's all-time or 30-day, and the denominator for geo-tagged (759) correctly accounts for 241 missing countries. No explicit audience stated.",
+    "accuracy": "Multiple figures diverge from reference: the B2B/B2C 3.8x claim is substantially wrong (reference ~2.35x vs 2.30x median multiples, nearly equal). The 17.8% anonymous revenue share conflicts with 26.525%. The 21.6% zero-revenue is close to reference 21.6% (216/1000). Category counts on slide 4 match reference exactly. The 34% US share (258/759) is correct.",
+    "visual": "Log-scale histogram on slide 3 is well-chosen for skewed data with median annotation. Slide 6 bar chart is nearly illegible—labels and axis text are too dark against dark background. Slide 9 scatter plot is appropriate. Consistent color palette and layout. Slide 7 is text-only but clean. Some slides feel sparse.",
+    "ai_slop": "none"
+  },
+  "confidence": "medium",
+  "total": 64,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18352,
+    "output_tokens": 943
+  }
+}

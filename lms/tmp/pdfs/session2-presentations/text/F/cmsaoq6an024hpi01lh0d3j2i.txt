@@ -1,0 +1,180 @@
+TRUS TMRR MAR KETPLAC E
+
+
+
+Startup Revenue Data Analysis
+Executive Summary — Frozen 30 Jul 2026 Dataset · 8,782 Startups, 117 Countries
+
+
+
+
+  8,782                                   $227M                                   $91                                     r = 0.12
+  Startups tracked across 117 countries   12-month revenue processed via          Median 12-month revenue — the           Log-log correlation between X
+                                          Stripe alone (89% of gateway            mean ($28K) is skewed by a handful      followers and MRR — a weak, mostly
+                                          revenue)                                of large players                        negligible link
+
+
+
+
+The story in brief: Stripe dominates the payment layer (60% of listings, 89% of tracked revenue). Revenue is extremely concentrated — a small number
+of breakout products (Stan, Gojiberry, Rezi) carry the top line while the typical startup earns under $100/year. Social proof doesn't predict monetization,
+tiered subscriptions are the default pricing motion, and e-commerce tools generate the highest average MRR of any category. Roughly 40% of context
+fields (category, pricing, audience) are missing, so this dataset is best used as a sourcing funnel — not a precise valuation tool.
+
+
+
+
+                                                                                                                                                               1
+01 — S COP E
+
+
+Dataset Overview: Where the Startups Are
+
+                                                                                                       D A T A C OM P LE T E N ES S
+
+
+                                                                                                       Core financials
+                                                                                                       100% populated
+
+
+                                                                                                       Category / pricing / audience
+                                                                                                       37–45% missing
+
+
+                                                                                                       Visitor traffic
+                                                                                                       83% missing
+
+
+                                                                                                       Revenue per visitor
+                                                                                                       91% missing
+
+
+                                                                                                       Asking price / multiple
+                                                                                                       78% missing (non-listed startups)
+  Interpretation: The US leads with 1,657 startups (19%), nearly double India in second place. The
+  top 5 countries account for just under half of all listings. Context fields (category, pricing,
+  audience) are missing on over a third of rows — read every category- or pricing-based stat in this
+  report as a sample, not the full population.                                                                                             2
+0 2 — I N F R AS T R U C T U R E
+
+
+Payment Gateway Landscape
+
+
+
+
+                                   Interpretation: Stripe is the default choice for 60% of startups and carries
+                                   89% of all tracked 12-month revenue ($227M of $255M) — the gateway of
+                                   choice for revenue-generating SaaS/API businesses. RevenueCat is a distant
+                                   second, concentrated among mobile-subscription apps. Niche gateways
+                                   (Superwall, Whop, Polar) show healthy revenue-per-user despite low
+                                   volume.
+
+                                                                                                                  3
+0 3 — R E V E NU E
+
+
+Revenue Distribution: Mean vs. Median
+
+
+
+
+   Interpretation: Mean and median diverge enormously (12-month mean $28,124 vs. median $91) — a classic power-law distribution where a small number of
+   breakout startups pull the average far above what a typical listing earns. Use the median to describe a "typical" startup on this marketplace; use the mean only
+   when sizing total addressable revenue.                                                                                                                             4
+04 — LEADERS
+
+
+Top 10 Startups by MRR
+
+
+
+
+  Interpretation: Stan's $3.57M MRR is an order of magnitude above the next closest competitor — it alone represents roughly 40% of total MRR across the entire
+  top 10. Category is uneven at the top: AI tools (Gojiberry, Rezi) and vertical SaaS (Kibu, Cometly, 1Lookup) both break through, so there's no single winning
+  category, but each leader owns a defensible niche.
+
+                                                                                                                                                                  5
+0 5 — MO M E NT UM
+
+
+Fastest-Growing MRR (30-Day)
+
+
+
+
+  Interpretation: Filtered to startups with MRR above $1,000 to remove noise from near-zero bases. Growth rates above 1,000% in a single month are extreme
+  even by startup standards and most likely reflect a low starting base, a pricing change, or a data artifact rather than organic demand — verify directly with the
+  seller before using these figures to justify a premium.
+
+                                                                                                                                                                      6
+0 6 — C AT E G O R I E S
+
+
+Category Economics: Average MRR
+
+
+
+
+   Interpretation: E-commerce tools post the highest average MRR ($4,168), ahead of Social Media and Analytics — likely because e-comm tools bill against a
+   merchant's revenue and scale with GMV. AI, despite having the most listings overall (1,430), ranks 8th on average MRR: the category is crowded with many
+   small/early products dragging the average down.                                                                                                            7
+07 — GO -TO-MARKET
+
+
+Most Common Pricing Models
+
+
+
+
+  Interpretation: Pricing text was freeform, so models were grouped into buckets by keyword. Tiered subscriptions (e.g. Starter/Pro/Scale) domi nate at 2,769
+  listings — more than 3x the next bucket — confirming SaaS-style tiering is the default go-to-market motion. 43% of all listings left pricing_model blank entirely.
+                                                                                                                                                                       8
+08 — MON E T IZ A T IO N SI GN A L S
+
+
+Does Audience Size Predict Revenue?
+
+
+
+
+Interpretation: Neither audience size nor site traffic reliably predicts revenue. X followers vs. MRR is essentially flat (log -log r = 0.12, explaining under 2% of variance).
+And 80 startups combine top-quartile traffic with bottom-quartile revenue-per-visitor — real audiences that are heavily under-monetized, a easier fix than acquiring
+new traffic from zero.
+
+
+
+
+                                                                                                                                                                                  9
+0 9 — C O NC L U SI O N
+
+
+Key Takeaways & Data Limitations
+KEY TAKEAWAYS                                                                         L IMITATIONS TO KEEP IN MIN D
+
+
+   Stripe is the infrastructure backbone: 60% of startups, 89% of tracked revenue.      Self-reported, unaudited data — sellers have an incentive to round figures up.
+
+
+   Revenue is a power law — median $91/yr vs. mean $28K/yr on a 12-month
+                                                                                        37–45% of context fields (category, pricing, audience) are blank.
+   basis.
+
+
+   Tiered subscriptions are the default pricing model (55% of listings with pricing
+                                                                                        No cost, margin, or churn data — revenue alone can't show profitability.
+   data).
+
+
+   E-commerce leads category economics; AI leads volume but trails on average
+                                                                                        Single time snapshot (30 Jul 2026) — no trend history beyond 30-day growth.
+   MRR.
+
+
+   Social following and traffic size are weak-to-no predictors of revenue.              Revenue is flat USD with no currency or purchasing-power adjustment.
+
+
+
+
+                                                                                                                                                                         10
+

@@ -1,0 +1,44 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 3,
+    "narrative": 4,
+    "framing": 3,
+    "accuracy": 1.5,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Coherent arc from context to scorecard; popularity-vs-profitability thesis is a defensible direction worth exploring.",
+  "fix_next": "Replace every fabricated number with actual dataset statistics; cite real category counts, medians, missingness, and payment-provider splits.",
+  "verdict": "Polished template over fabricated data; no verifiable dataset claim found anywhere.",
+  "flags": [
+    "fabricated-data",
+    "ai-slop",
+    "no-real-charts",
+    "category-counts-wrong",
+    "decorative-stock-image",
+    "unearned-certainty",
+    "no-missingness-disclosure",
+    "invented-leaderboard"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 4: category counts (320/240/180/140/120) are invented; actual dataset has 726 non-null categories with different labels (AI 197, SaaS 66, etc.). Slide 5: merged category MRR averages ($4,850/$3,200/$2,150/$980) are unverifiable and use fabricated groupings. Slide 7: leaderboard companies (Enterprise AI Agent, Developer API Hub, etc.) do not exist in the dataset. Slide 9: claims 'data correlation analysis proves' weak correlations but shows no r-values or actual analysis. Slide 4: '56% of total market supply' based on fabricated counts. Slide 10: thresholds (>$2,500 MRR, >85% subscriptions, RPV >$1.50, 2-3x ARR) presented as data-derived but have no dataset backing.",
+  "evidence": {
+    "insight": "The B2B pricing-power vs B2C volume thesis (slides 5, 8) is a reasonable analytical direction but is asserted as a truism rather than derived from actual dataset medians or distributions; no surprising finding emerges from the data.",
+    "narrative": "Logical arc from marketplace context → categories → revenue → vanity metrics → scorecard → conclusion. But the sequence reads as generic consulting advice that could apply to any SaaS marketplace without this specific dataset.",
+    "framing": "Slide 1 sets marketplace context and slide 3 explains metrics, but no mention of dataset size caveats, 27% category missingness, 24% zero-revenue rows, or observational-only limitations. Audience is vaguely 'executive investor' with no scope boundaries.",
+    "accuracy": "Slide 4 fabricates category counts summing to 1,000 when only 726 rows have categories, using invented merged labels. Slide 7 presents a leaderboard of companies not in the dataset. No actual dataset figure (total revenue, category medians, payment provider splits) is correctly cited anywhere in 13 slides.",
+    "visual": "Consistent dark/light template with clean typography and color-coded bars. However, slide 6 uses an irrelevant Spruko stock image. All 'charts' display suspiciously round fabricated numbers. No real data visualizations (scatter plots, histograms, box plots) appear anywhere.",
+    "ai_slop": "Pervasive: perfectly round fabricated bar-chart numbers (320/240/180/140/120), consulting buzzwords ('Critical Business Lesson', 'Value Engine'), invented company names in leaderboard table, decorative stock image on slide 6, emoji-laden callout boxes, generic checklist slides with no dataset grounding."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 3.5 to 3.0 because zero dataset limitations are disclosed despite heavy missingness and zero-revenue rows; all other scores confirmed as appropriate given pervasive fabrication.",
+  "total": 31,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 22038,
+    "output_tokens": 951
+  }
+}

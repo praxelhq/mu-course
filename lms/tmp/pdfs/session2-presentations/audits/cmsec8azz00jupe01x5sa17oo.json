@@ -1,0 +1,43 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 6,
+    "accuracy": 4.5,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "Education-over-AI contrarian finding and tool-vs-feeling language analysis are genuinely original, dataset-specific insights.",
+  "fix_next": "Acknowledge missingness (274 categories, 288 audience_type) and add sample-size caveats; several median figures diverge materially from reference.",
+  "verdict": "Strong storytelling and design undermined by multiple unverifiable or incorrect numerical claims.",
+  "flags": [
+    "unverifiable-claims",
+    "concentration-figure-off",
+    "median-values-differ-from-reference",
+    "causal-language-on-observational-data",
+    "missing-data-not-acknowledged",
+    "phantom-category-fintech",
+    "b2b-advantage-overstated"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 2/4: B2B '5-6×' advantage; reference median multiples are ~2.3× not 5-6×. Slide 5: Marketing median $1,586 vs reference $2,369.50 (33% off); Education median $2,142 vs reference $2,435 (12% off); AI median $446 vs reference $503 (11% off). Slide 5: 'Fintech' listed as a category but absent from reference categories. Slide 2/3: '58% to top 20' is unverifiable against reference (top-10 share is 49.6%, making 58% for top-20 plausible but unconfirmed and presented without sourcing). Slide 7: '2× more reliable predictor' and '67×' Stripe comparison are unverifiable claims presented without methodology. Slide 8: sale multiples 2.40× shown for both mid and large; reference B2B/B2C medians are 2.35×/2.30× — close but the grouping scheme is unexplained.",
+  "evidence": {
+    "insight": "Slide 5 Education-vs-AI median comparison is contrarian and directionally supported. Slide 6 language analysis adds original texture. Slide 8 buyer-multiple framing is decision-useful for M&A audience. Multiple angles explored beyond surface stats.",
+    "narrative": "Clear thesis from slide 1 ('worth buying'), exec summary previews four findings, body slides build logically (concentration → buyer type → category → pitch language → channels → exit pricing), recommendations on slide 9 segmented by role, slide 10 closes cleanly. 'SO WHAT' footers enforce synthesis on every slide.",
+    "framing": "Audience and freeze date stated on slide 1. However, no mention of missingness (274 categories, 288 audience_type, 241 country missing), no sample-size caveats (Education n=30, Analytics n=19), no limitations slide. 'Fintech' appears as a category without explanation. Cold reader cannot assess reliability of claims.",
+    "accuracy": "B2B advantage overstated at 5-6× vs reference ~2.3× median multiples. Marketing median off by 33%, Education by 12%. Fintech is a phantom category. 58% concentration, 2× search claim, and 67× Stripe claim are all unverifiable. Search-vs-social '2×' presented as fact without methodology. Causal framing ('search rankings beat social') applied to observational cross-sectional data.",
+    "visual": "Consistent warm mauve/cream/gold palette, clean hierarchy with section labels, large stat callouts, restrained chart choices. Good whitespace. Slide 6 word-cloud comparison is effective. Professional and legible throughout. Minor: slide 3 bar chart groups are clear but unconventional.",
+    "ai_slop": "Consulting-style framing ('strategy briefing', 'playbooks') is present but restrained. Each slide has distinct, dataset-specific content rather than generic filler. Not significant slop."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 6.5 to 6.0 for complete absence of missingness disclosure and sample-size caveats, which is a meaningful gap for a cold reader. Added Fintech phantom category to error count (now 7). All other scores confirmed as appropriate.",
+  "total": 67,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 19587,
+    "output_tokens": 1079
+  }
+}

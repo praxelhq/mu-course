@@ -1,0 +1,38 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 6,
+    "framing": 4.5,
+    "accuracy": 3.5,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Clear build-vs-buy thesis with B2B/B2C ARPU contrast provides a genuine strategic through-line.",
+  "fix_next": "Multiple fabricated or wrong numbers ($623K total, 975/1000 Stripe, Health median $392, E-comm median $511) undermine the entire argument's credibility.",
+  "verdict": "Ambitious strategic framing built on too many incorrect numbers.",
+  "flags": [
+    "fabricated-statistics",
+    "inflated-consulting-language",
+    "missing-limitations",
+    "no-real-charts"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 1: '$623K Total Sample MRR' — actual total 30-day revenue is $15.6M, off by ~25x. Slide 2: '975/1000 Primary Stripe API Verifications' — Stripe has 636 companies, not 975. '29 Exclusive Lemon Squeezy' — reference shows 25. Slide 4: Health & Fitness median '$392' — reference is $662.50. Slide 5: E-commerce median '$511' — reference is $387. Slide 5: '2.30x Median Annualized Revenue Multiple (Mobile Apps)' labeled as such but reference shows B2C median multiple is 2.30x; conflating category with audience type.",
+  "evidence": {
+    "insight": "Slide 3 B2B vs B2C ARPU comparison is the strongest analytical move, deriving implied ARPU from individual company examples. Slide 7 synthesizes into two actionable paths. However, the insight rests on cherry-picked single-company examples rather than population-level statistics.",
+    "narrative": "Slides follow a logical arc: data landscape → unit economics → category targets → valuation → playbook → verdict. The build-vs-buy framing is coherent. But the narrative asserts conclusions ('the data is conclusive') far beyond what two cherry-picked examples support.",
+    "framing": "No audience definition, no scope statement, no limitations slide. The title says 'SaaS Market Entry Strategy' but the dataset covers all categories not just SaaS. Missing data (274 categories, 288 audience_type) is never acknowledged despite being critical to the B2B/B2C and category claims.",
+    "accuracy": "Total revenue wrong by ~25x (slide 1). Stripe count inflated from 636 to 975 (slide 2). Lemon Squeezy count wrong (29 vs 25). Health & Fitness median wrong ($392 vs $662.50). E-commerce median wrong ($511 vs $387). The 2.30x multiple is attributed to Mobile Apps but actually corresponds to B2C median revenue multiple. These are not rounding differences.",
+    "visual": "Consistent dark theme with green/purple accents. No actual data charts — every slide uses text cards, Venn diagrams, or schematic diagrams. The 3D stack on slide 6 and funnel on slide 7 are decorative rather than data-driven. Legible but repetitive template feel.",
+    "ai_slop": "Heavy consulting jargon throughout: 'Financial Truth Hierarchy,' 'Value Pivot Engine Diagram,' 'Target Payload,' 'Optimized Architectural Stack,' 'connective tissue.' Slide 6's 3D pyramid and slide 7's funnel are decorative-only graphics. NotebookLM watermark on every slide. Unearned certainty ('The data is conclusive') from two cherry-picked examples."
+  },
+  "confidence": "high",
+  "total": 49,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 12274,
+    "output_tokens": 927
+  }
+}

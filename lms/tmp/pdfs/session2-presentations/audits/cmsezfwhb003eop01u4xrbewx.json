@@ -1,0 +1,42 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 0.5,
+    "narrative": 1,
+    "framing": 0.5,
+    "accuracy": 0,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "Consistent visual template with clear hierarchy, color-coded bars, and legible typography throughout.",
+  "fix_next": "Use the actual assigned dataset (1,000 indie startups, ~$15.6M revenue) instead of fabricating a fictional enterprise narrative.",
+  "verdict": "Entirely fabricated analysis of a fictional company; zero connection to the assigned dataset.",
+  "flags": [
+    "wrong-dataset",
+    "fabricated-data",
+    "ai-slop",
+    "no-dataset-fidelity",
+    "inflated-consulting-language",
+    "zero-real-analysis"
+  ],
+  "factual_error_count": 15,
+  "factual_error_detail": "Slide 2: claims 12,450 audited records from 'Nexus B2B Software & Infrastructure' with GAAP reconciliation; actual dataset is 1,000 indie startup rows. Slide 3: $1.42B Cloud SaaS, $1.15B AI revenue, 60.1% share, 71% margin—all invented; real total revenue is ~$15.6M across categories like AI, Marketing, SaaS. Slide 4: $2.10B North America, $1.20B APAC, +31.5% YoY—fabricated; dataset has country-level data with 241 missing, no regional revenue in billions. Slide 5: 124% NRR, Tier-1 enterprise $2.23B—no NRR or ACV fields exist. Slide 6: quarterly trajectory $920M–$1.26B—no quarterly time dimension in dataset. Slide 7: 18% CAC reduction, 4.2× LTV:CAC—no CAC or LTV fields. Slide 8: 0.4% churn, 98.2% GDR, +$340k ACV expansion—all fabricated. Slide 9: 800 bps margin compression, inventory cycles 34→52 days—no such variables. Slide 10: 35% EBITDA margin target—entirely fictional.",
+  "evidence": {
+    "insight": "Zero insights from the actual dataset. Every claim (60.1% revenue share, 124% NRR, 31.5% APAC growth, 4.2× LTV:CAC) is invented for a fictional company called Nexus.",
+    "narrative": "Internally coherent structure (portfolio → regions → segments → efficiency → action plan) but narrates a completely fictional story with no connection to the assignment.",
+    "framing": "Slide 2 frames around 'Nexus B2B Software & Infrastructure' with 12,450 GAAP-reconciled records. The actual dataset is 1,000 rows of indie/startup 30-day revenue with fields like category, domain, audience_type, founded_year. No acknowledgment of real data or its limitations.",
+    "accuracy": "Every quantitative claim is fabricated. Dataset has ~$15.6M total revenue across 1,000 startups; deck discusses billions for a fictional enterprise. No fields for ACV, NRR, CAC, gross margin, quarterly periods, or regions exist in the data.",
+    "visual": "Clean template with consistent color scheme, readable typography, proper hierarchy. Bar chart (slide 3), pie chart (slide 5), line chart (slide 6) are well-formatted but visualize entirely fabricated data.",
+    "ai_slop": "Extreme. Entire deck is a generic AI-generated board presentation. Phrases like 'margin expansion vectors,' 'regional velocity,' 'corporate growth levers,' 'EBITDA expansion' are inflated consulting filler. Every slide follows identical Key Finding → cards → Executive Recommendation template."
+  },
+  "confidence": "high",
+  "changed": false,
+  "change_reason": "no-change",
+  "total": 10,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 18573,
+    "output_tokens": 968
+  }
+}

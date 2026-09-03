@@ -1,0 +1,41 @@
+TrustMRR Dataset — Market Scan & Decision Framework
+Working session: 10-record validated sample + full 1,000-record schema (frozen 30 Jul 2026)
+
+    SITUATION
+    1,000 Stripe-connected startups tracked on revenue, subscriptions, and firmographic fields, plus acquisition-readiness data (asking price, revenue multiple). The source PDF export is
+    reliable for short numeric/categorical fields but corrupts long text (names, URLs, personas) where columns overflow — so this pass leans on the clean, validated sample and full-
+    dataset structure rather than unverified full-scale numbers.
+
+
+   WHAT WE'RE SEEING                                                                       DECISION AREAS                                                                        HOW WE'LL PROCEED
+
+
+    Revenue is power-law distributed                                                       Acquisition screening                                                                      Source a clean CSV/XLSX of the full 1,000 rows —
+                                                                                                                                                                                  1
+    One or two names (e.g. Stan) dwarf the rest — typical of                               Use revenue_multiple + asking_price against MRR growth to                                  resolves the PDF text-overlap issue for names, URLs,
+    creator/SaaS marketplaces. Averages will mislead; use                                  flag under/over-valued targets once those fields are                                       personas.
+    medians and percentiles.                                                               populated.
+    Followers ≠ revenue                                                                                                                                                               Re-run correlation and Top-10 rankings at full scale
+                                                                                                                                                                                  2
+    Pearson r ≈ 0.14 between X followers and MRR on the                                    Fair benchmarking                                                                          (followers vs. MRR, active subs, visitors, revenue-per-
+    sample — audience size is a weak monetization signal on its                            Compare startups within category and audience_type (B2B                                    visitor).
+    own.                                                                                   vs B2C) — cross-category averages will be misleading given
+                                                                                           the spread.                                                                                Segment every comparison by category and
+    Subscriber count ≠ revenue quality                                                                                                                                            3
+    Some low-subscriber names post solid MRR — likely                                                                                                                                 audience_type before benchmarking across startups.
+    premium/B2B pricing vs. high-volume freemium. Worth                                    Growth-signal selection
+    splitting by pricing model.                                                            Weight MRR growth %, active subscriptions, and revenue-
+    Category mix is broad                                                                  per-visitor over vanity metrics like follower count.                                       Build an acquisition shortlist once asking_price and
+                                                                                                                                                                                  4
+    E-comm, Marketing, AI, Analytics, Education, and more                                                                                                                             revenue_multiple are populated for on-sale records.
+    appear even in a 10-row slice — no single vertical
+    benchmark will fit the full set.                                                       Data reliability call
+    Engagement fields are sparse                                                           Decide whether to proceed on PDF-derived numbers                                           Layer in visitor and conversion metrics where
+                                                                                           (numeric fields only, flagged) or request a clean CSV/XLSX                             5
+    Visitors (30d) and revenue-per-visitor are unpopulated in                                                                                                                         available to separate reach from monetization
+                                                                                           for full-scale, defensible analysis.                                                       efficiency.
+    the sample — conversion-efficiency analysis needs a more
+    complete pull.
+
+Source: TrustMRR 1,000-Row Dataset (frozen 30 Jul 2026) — figures above are illustrative from the validated sample unless noted; full-scale confirmation pending clean export.
+

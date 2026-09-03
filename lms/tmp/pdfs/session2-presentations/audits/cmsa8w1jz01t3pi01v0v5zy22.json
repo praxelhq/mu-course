@@ -1,0 +1,44 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 4.5,
+    "narrative": 4,
+    "framing": 3,
+    "accuracy": 3.5,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Power-law skew observation and build-to-flip framing show genuine analytical instinct worth developing further.",
+  "fix_next": "Replace fabricated statistics with verifiable dataset calculations, add a limitations slide, and swap decorative images for real charts.",
+  "verdict": "Consulting-flavored listicle with fabricated stats, no real charts, and missing context.",
+  "flags": [
+    "fabricated-statistics",
+    "no-real-data-charts",
+    "decorative-stock-images",
+    "ai-slop-language",
+    "missing-limitations",
+    "unearned-certainty",
+    "missing-dataset-framing",
+    "partially-illegible-chart"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 3: average revenue stated as $13.5k but actual is ~$15,596 (total $15.6M/1000); '1% capture 50%+' — top-10 share is 49.6% which is 10 products not 1%. Slide 4: '+1,000% 30-day growth' is fabricated/unsupported by dataset. Slide 6: B2C 56.3%/B2B 35.8%/Hybrid 7.9% presented without acknowledging 288 missing audience_type values (~29% of data). Slide 9: '2.4x higher traffic conversion' is fabricated with no dataset basis.",
+  "evidence": {
+    "insight": "Slides 3 and 5 identify meaningful patterns (power-law distribution, build-to-flip culture at 2.3x median multiple) but most inferences (slides 4, 7, 8, 9) are generic startup commentary not grounded in specific dataset findings.",
+    "narrative": "Seven numbered inferences read as a disconnected listicle; no progressive argument builds toward the synthesis quote on slide 10, which is a platitude rather than a data-driven conclusion. Slide 11 playbook is prescriptive advice untethered from evidence.",
+    "framing": "No slide introduces the dataset, sample size, or what TrustMRR is. No mention of substantial missingness (241-288 across key fields). No limitations or caveats anywhere. A cold reader has no context.",
+    "accuracy": "Average revenue wrong ($13.5k vs ~$15.6k); '1% capture 50%+' misrepresents top-10 share; fabricated precise stats on slides 4 and 9; audience-type pie chart ignores 29% missing values; Dodo percentage on slide 7 partially illegible but appears ~5% which is close to 50/1000.",
+    "visual": "Consistent dark template but almost no real data visualizations. Slide 6 pie chart is the only chart and lacks source/denominator note. Slide 7 bar chart has truncated text. Slides 5 and 9 use decorative stock/clip art images that add no analytical value. Text-heavy throughout.",
+    "ai_slop": "Pervasive consulting jargon ('Strategic Arbitrage Advantage,' 'Actionable Founder Playbook,' 'Core Strategic Inferences,' 'Trust is algorithmic'); decorative rocket clipart and network stock image; fabricated precise statistics; quote-format synthesis slide attributed to 'Key Strategic Inference Summary.'"
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 3.5 to 3.0 (zero dataset introduction or limitations for cold reader) and accuracy from 4.0 to 3.5 (confirmed average revenue error, fabricated stats, and misleading denominator on audience-type pie chart). Other scores unchanged as preliminary assessment was well-calibrated.",
+  "total": 37,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 20446,
+    "output_tokens": 962
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "slide_count": 5,
+  "scores": {
+    "insight": 6,
+    "narrative": 5.5,
+    "framing": 5,
+    "accuracy": 4.5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Power-law framing with mean/median contrast and concentration percentiles was genuinely useful and well-presented.",
+  "fix_next": "Multiple revenue figures are materially wrong (AI total, combined MRR, category revenues); verify every number against the actual dataset before presenting.",
+  "verdict": "Decent structure and some real insight, undermined by pervasive numerical inaccuracies.",
+  "flags": [
+    "revenue-figures-wrong",
+    "missing-data-not-acknowledged",
+    "no-limitations-slide",
+    "short-deck"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1: '$13.5M Combined MRR' — actual total 30-day revenue is $15.6M; '29 categories' unverifiable and likely wrong given 274 missing category values. Slide 2: AI total shown as $1,806K vs reference $2,356K; Marketing $444K vs $1,317K; SaaS $589K vs $703K; E-comm $396K vs $1,112K — all materially understated. Slide 2 takeaway '30.8% of category-tagged MRR' is based on wrong numerator and denominator. Slide 3: Mean $13,472 — should be ~$15,596 if using total/1000; top-10 share stated as 48% vs reference 49.6% (borderline). Slide 4: B2B median $1,036 — reference median multiple is 2.35x implying different absolute values; the 5.7x ratio claimed doesn't match reference multiples of ~2.35x/2.30x.",
+  "evidence": {
+    "insight": "Slide 3 power-law analysis (mean vs median, concentration tiers) and slide 5 seller-listing-signal observation go beyond chart description. Slide 4 B2B vs B2C monetization efficiency is a useful angle. However, most insights are single-variable descriptions rather than cross-cutting synthesis.",
+    "narrative": "Slides move from category landscape → distribution → audience type → growth/exits, which is a reasonable sequence. But there is no stated thesis on slide 1 beyond 'data snapshot,' no synthesis slide, and no clear landing or recommendation. The deck reads as a list of findings rather than a coherent argument.",
+    "framing": "Slide 1 identifies dataset and freeze date, which is good. However, there is no stated audience, no research question, no acknowledgment of 274 missing category values or 288 missing audience_type values, and no limitations discussion. A cold reader doesn't know who this is for or what decision it supports.",
+    "accuracy": "At least 7 material errors: total revenue wrong by ~$2M, AI category revenue understated by ~$550K, Marketing understated by ~$873K, E-comm understated by ~$716K, SaaS understated by ~$114K. Mean MRR calculation appears to use wrong total. B2B/B2C median figures don't align with reference. Missing-data impact on category analysis is never mentioned despite 274/1000 rows lacking category.",
+    "visual": "Clean, consistent dark/light palette with teal accents. Good use of paired horizontal bar charts on slide 2. Slide 3 concentration bars are effective. Slide 4 card layout is clear. However, only 5 slides with no actual chart on slides 3-5 (just styled stat cards), and the deck feels thin. No annotations on charts beyond labels.",
+    "ai_slop": "Template is polished but generic dark-mode SaaS style. No decorative-but-meaningless graphics detected. Content is specific to the dataset. Minor slop: '29 categories' on slide 1 feels like an unchecked auto-generated stat."
+  },
+  "confidence": "high",
+  "total": 56,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 10433,
+    "output_tokens": 976
+  }
+}
