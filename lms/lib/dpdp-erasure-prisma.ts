@@ -124,6 +124,8 @@ const affectedInterviewSelect = Prisma.validator<Prisma.InterviewSelect>()({
   id: true,
   audioS3Key: true,
   audioS3VersionId: true,
+  videoS3Key: true,
+  videoS3VersionId: true,
   generatedObjectReservations: {
     select: { id: true, s3Key: true, s3VersionId: true, cancelledAt: true },
   },
@@ -134,6 +136,16 @@ const affectedInterviewSelect = Prisma.validator<Prisma.InterviewSelect>()({
 
 type AffectedInterview = Prisma.InterviewGetPayload<{
   select: typeof affectedInterviewSelect;
+}>;
+
+const affectedPrerequisiteSelect = Prisma.validator<Prisma.InterviewPrerequisiteSelect>()({
+  id: true,
+  s3Key: true,
+  s3VersionId: true,
+});
+
+type AffectedPrerequisite = Prisma.InterviewPrerequisiteGetPayload<{
+  select: typeof affectedPrerequisiteSelect;
 }>;
 
 const COUNT_KEYS = [
@@ -155,6 +167,7 @@ const COUNT_KEYS = [
   "interviewTurns",
   "interviews",
   "interviewRetakes",
+  "interviewPrerequisites",
   "quizAttempts",
   "dataRaceResponses",
   "peerReviews",
@@ -385,6 +398,8 @@ function associationRank(table: string): number {
       return 6;
     case "Interview":
       return 7;
+    case "InterviewPrerequisite":
+      return 8;
     default:
       return 10;
   }
@@ -731,6 +746,7 @@ async function preparationFromReceipt(
 function inventoryFor(
   submissions: AffectedSubmission[],
   interviews: AffectedInterview[],
+  prerequisites: AffectedPrerequisite[],
   zeroVersionProofs: Map<string, string>,
 ): {
   objects: ObjectCandidate[];
@@ -887,6 +903,14 @@ function inventoryFor(
         interviewId: interview.id,
       });
     }
+    if (interview.videoS3Key) {
+      exact(interview.videoS3Key, interview.videoS3VersionId ?? "", {
+        databaseTable: "Interview",
+        databaseRecordId: interview.id,
+        submissionId: null,
+        interviewId: interview.id,
+      });
+    }
     for (const turn of interview.turns) {
       if (!turn.audioS3Key) continue;
       exact(turn.audioS3Key, turn.audioS3VersionId ?? "", {
@@ -896,6 +920,17 @@ function inventoryFor(
         interviewId: interview.id,
       });
     }
+  }
+  // Prerequisites are user-scoped, not interview-scoped, so nothing in the
+  // submission or interview graph reaches them. A resume is PII: without this
+  // loop an erasure would delete the row and leave the file in S3.
+  for (const prerequisite of prerequisites) {
+    exact(prerequisite.s3Key, prerequisite.s3VersionId ?? "", {
+      databaseTable: "InterviewPrerequisite",
+      databaseRecordId: prerequisite.id,
+      submissionId: null,
+      interviewId: null,
+    });
   }
 
   return {
@@ -1101,12 +1136,22 @@ async function prepareNewIntent(
     select: affectedInterviewSelect,
     orderBy: { id: "asc" },
   });
+  const prerequisites = await tx.interviewPrerequisite.findMany({
+    where: { userId: user.id },
+    select: affectedPrerequisiteSelect,
+    orderBy: { id: "asc" },
+  });
   const zeroVersionProofs = await zeroVersionProofsFor(
     tx,
     individualSubmissions,
     interviews,
   );
-  const inventory = inventoryFor(individualSubmissions, interviews, zeroVersionProofs);
+  const inventory = inventoryFor(
+    individualSubmissions,
+    interviews,
+    prerequisites,
+    zeroVersionProofs,
+  );
   if (inventory.missingVersionSources.length > 0) {
     throw new DpdpErasureError(
       "object-version-missing",
@@ -2063,6 +2108,9 @@ async function applyDatabaseCleanup(
   const interviewRetakes = await tx.interviewRetake.deleteMany({
     where: { userId: targetUserId },
   });
+  const interviewPrerequisites = await tx.interviewPrerequisite.deleteMany({
+    where: { userId: targetUserId },
+  });
   const quizAttempts = await tx.quizAttempt.deleteMany({ where: { userId: targetUserId } });
   const dataRaceResponses = await tx.dataRaceResponse.deleteMany({ where: { userId: targetUserId } });
   const peerReviews = await tx.peerReview.deleteMany({
@@ -2099,6 +2147,7 @@ async function applyDatabaseCleanup(
     interviewTurns: interviewTurns.count,
     interviews: interviews.count,
     interviewRetakes: interviewRetakes.count,
+    interviewPrerequisites: interviewPrerequisites.count,
     quizAttempts: quizAttempts.count,
     dataRaceResponses: dataRaceResponses.count,
     peerReviews: peerReviews.count,

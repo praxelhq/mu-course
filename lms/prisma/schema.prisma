@@ -97,6 +97,8 @@ enum GeneratedObjectPurpose {
   gallery_screenshot
   publication_preview
   interview_recording
+  interview_video
+  interview_prerequisite
   interview_turn_audio
 }
 
@@ -169,16 +171,17 @@ model User {
   submissions       Submission[]
   interviews        Interview[]
   quizAttempts      QuizAttempt[]
-  reviewsGiven      PeerReview[]        @relation("Reviewer")
-  reviewsReceived   PeerReview[]        @relation("Reviewee")
+  reviewsGiven      PeerReview[]            @relation("Reviewer")
+  reviewsReceived   PeerReview[]            @relation("Reviewee")
   notifications     Notification[]
   portfolioEntry    PortfolioEntry?
-  votesCast         Vote[]              @relation("Voter")
+  votesCast         Vote[]                  @relation("Voter")
   dataRaceResponses DataRaceResponse[]
   emailAliases      UserEmailAlias[]
   clerkIdentities   UserClerkIdentity[]
   appReviewEntries  AppReviewEntry[]
   appReviewsGiven   AppReview[]
+  interviewPrereqs  InterviewPrerequisite[]
 
   @@index([sectionId])
   @@index([teamId])
@@ -373,6 +376,14 @@ model Interview {
   transport         String?
   audioS3Key        String?
   audioS3VersionId  String?
+  videoS3Key        String?
+  videoS3VersionId  String?
+  // Flags the PLATFORM observes, as opposed to the ones the grading model
+  // infers into rubricScores. `video-lost` is the first: the camera track
+  // ending mid-call is something only the client can see, and the grader must
+  // never be able to emit or clear it. Different writers, different trust
+  // levels, so a different column.
+  systemFlags       String[]        @default([])
   rubricScores      Json?
   confidence        Float?
   escalationReason  String?
@@ -415,6 +426,31 @@ model InterviewRetake {
   usedByInterviewId String?
   createdAt         DateTime @default(now())
 
+  @@index([userId])
+}
+
+// The three artifacts a student must supply personally before the interview
+// can start: their resume, their Make blueprint JSON, and their sector map.
+// Deliberately NOT a Submission — Submission carries assignment, grade, gallery
+// and version semantics that none of these should acquire; a resume must never
+// become a graded artifact or reach a gallery. Unique on (userId, kind) so a
+// re-upload replaces in place rather than accumulating copies.
+model InterviewPrerequisite {
+  id            String   @id @default(cuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [id])
+  kind          String
+  s3Key         String
+  s3VersionId   String?
+  contentType   String
+  sizeBytes     Int
+  // Bounded text pulled out at commit time so the prompt builder never has to
+  // re-read S3 per interview.
+  extractedText String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@unique([userId, kind])
   @@index([userId])
 }
 
@@ -531,47 +567,47 @@ model DataRaceResponse {
 // App-quality feedback is deliberately separate from teammate contribution
 // and the gradebook. Entries freeze the reviewed URL and source reference.
 model AppReviewRound {
-  id            String   @id
+  id            String           @id
   assignmentId  String
-  assignment    Assignment @relation(fields: [assignmentId], references: [id])
+  assignment    Assignment       @relation(fields: [assignmentId], references: [id])
   title         String
   rubricVersion String
-  createdAt     DateTime @default(now())
+  createdAt     DateTime         @default(now())
   entries       AppReviewEntry[]
   reviews       AppReview[]
 }
 
 model AppReviewEntry {
-  id         String @id @default(cuid())
-  roundId    String
-  round      AppReviewRound @relation(fields: [roundId], references: [id])
-  authorId   String
-  author     User @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  sectionId  String
-  appUrl     String
-  sourceRef  String
-  createdAt  DateTime @default(now())
-  reviews    AppReview[]
+  id        String         @id @default(cuid())
+  roundId   String
+  round     AppReviewRound @relation(fields: [roundId], references: [id])
+  authorId  String
+  author    User           @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  sectionId String
+  appUrl    String
+  sourceRef String
+  createdAt DateTime       @default(now())
+  reviews   AppReview[]
 
   @@unique([roundId, authorId])
   @@index([roundId, sectionId])
 }
 
 model AppReview {
-  id            String @id @default(cuid())
+  id            String         @id @default(cuid())
   roundId       String
   round         AppReviewRound @relation(fields: [roundId], references: [id])
   entryId       String
   entry         AppReviewEntry @relation(fields: [entryId], references: [id], onDelete: Cascade)
   reviewerId    String
-  reviewer      User @relation(fields: [reviewerId], references: [id], onDelete: Cascade)
+  reviewer      User           @relation(fields: [reviewerId], references: [id], onDelete: Cascade)
   slot          Int
   visual        Int?
   functionality Int?
   overall       Int?
-  comment       String @default("")
+  comment       String         @default("")
   accessIssue   String?
-  assignedAt    DateTime @default(now())
+  assignedAt    DateTime       @default(now())
   completedAt   DateTime?
   retiredAt     DateTime?
 

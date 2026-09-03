@@ -30,6 +30,7 @@ const emptyCounts: DpdpErasureCounts = {
   interviewTurns: 0,
   interviews: 0,
   interviewRetakes: 0,
+  interviewPrerequisites: 0,
   quizAttempts: 0,
   dataRaceResponses: 0,
   peerReviews: 0,
