@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { LiveKitRoom } from "@livekit/components-react";
 import { Card } from "@/components/ui";
 import {
@@ -9,6 +10,7 @@ import {
   classifyCameraError,
 } from "@/lib/interview/video";
 import { MeetingView } from "./meeting-view";
+import styles from "./room.module.css";
 
 // Connects the student to the LiveKit room and hands off to MeetingView.
 //
@@ -19,6 +21,12 @@ import { MeetingView } from "./meeting-view";
 //   2. Degradation — a connect timeout (~8s), a disconnect, or sustained poor
 //      quality flips the interview to the turn-based loop in place. The same
 //      interview continues and the single attempt is never burned.
+//
+// The live room is PORTALLED to document.body and rendered full-screen. It is
+// a timed, recorded, graded conversation, so it takes the whole viewport
+// instead of sitting in the page's content column underneath the upload card.
+// The student should have nothing else on screen and nothing to scroll away
+// from — the camera included.
 
 const CONNECT_TIMEOUT_MS = 8_000;
 const BUDGET_MINUTES = 15;
@@ -85,6 +93,16 @@ export function RealtimeRoom({
     return () => clearTimeout(timer);
   }, [phase]);
 
+  // Lock the page behind the overlay so the interview cannot be scrolled away.
+  useEffect(() => {
+    if (phase !== "connecting" && phase !== "live") return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [phase]);
+
   if (phase === "blocked") {
     return (
       <Card>
@@ -126,7 +144,9 @@ export function RealtimeRoom({
     );
   }
 
-  if (phase === "checking") {
+  // The portal needs a DOM. The first render is always the tech-check card
+  // (phase starts as "checking"), so there is no hydration mismatch here.
+  if (phase === "checking" || typeof document === "undefined") {
     return (
       <Card>
         <p style={{ margin: 0, color: "var(--charcoal)", lineHeight: 1.6 }}>
@@ -136,40 +156,48 @@ export function RealtimeRoom({
     );
   }
 
-  return (
-    <LiveKitRoom
-      serverUrl={url}
-      token={token}
-      connect
-      audio
-      video
-      onConnected={() => setPhase("live")}
-      onDisconnected={() => {
-        if (endedRef.current) return;
-        endedRef.current = true;
-        fallbackRef.current("disconnected");
-      }}
-      onError={() => {
-        if (endedRef.current) return;
-        endedRef.current = true;
-        fallbackRef.current("connect-failed");
-      }}
-      style={{ display: "block" }}
+  return createPortal(
+    <div
+      className={styles.overlay}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Interview in progress"
     >
-      <MeetingView
-        interviewId={interviewId}
-        budgetMinutes={BUDGET_MINUTES}
-        onFallback={(reason) => {
+      <LiveKitRoom
+        serverUrl={url}
+        token={token}
+        connect
+        audio
+        video
+        onConnected={() => setPhase("live")}
+        onDisconnected={() => {
           if (endedRef.current) return;
           endedRef.current = true;
-          fallbackRef.current(reason);
+          fallbackRef.current("disconnected");
         }}
-        onCompleted={() => {
+        onError={() => {
           if (endedRef.current) return;
           endedRef.current = true;
-          completedRef.current();
+          fallbackRef.current("connect-failed");
         }}
-      />
-    </LiveKitRoom>
+        style={{ display: "contents" }}
+      >
+        <MeetingView
+          interviewId={interviewId}
+          budgetMinutes={BUDGET_MINUTES}
+          onFallback={(reason) => {
+            if (endedRef.current) return;
+            endedRef.current = true;
+            fallbackRef.current(reason);
+          }}
+          onCompleted={() => {
+            if (endedRef.current) return;
+            endedRef.current = true;
+            completedRef.current();
+          }}
+        />
+      </LiveKitRoom>
+    </div>,
+    document.body,
   );
 }
