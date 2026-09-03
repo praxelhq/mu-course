@@ -1,6 +1,7 @@
 import { S3NotConfiguredError, UploadRejectedError } from "@/lib/s3";
 import { GeneratedObjectReservationError } from "@/lib/generated-object-reservations";
 import { ProviderNotConfiguredError } from "./providers";
+import { MissingPrerequisitesError, PrerequisiteRejectedError } from "./prerequisites";
 import {
   AttemptExhaustedError,
   DuplicateAnswerError,
@@ -22,6 +23,15 @@ export function interviewErrorResponse(err: unknown): Response | null {
     err instanceof InterviewNotLiveError ||
     err instanceof DuplicateAnswerError
   ) {
+    return Response.json({ error: err.message }, { status: err.status });
+  }
+  if (err instanceof MissingPrerequisitesError) {
+    return Response.json(
+      { error: err.message, missingPrerequisites: err.missing },
+      { status: err.status },
+    );
+  }
+  if (err instanceof PrerequisiteRejectedError) {
     return Response.json({ error: err.message }, { status: err.status });
   }
   if (err instanceof ProviderNotConfiguredError) {

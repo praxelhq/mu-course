@@ -209,6 +209,21 @@ export function keyForReservedInterviewAudio(
   return `interviews/${sanitizeSegment(interviewId)}/${kind}${turnNo}-${sanitizeSegment(reservationId)}.${safeExt}`;
 }
 
+/**
+ * Write-once interview prerequisite key, scoped to its durable reservation.
+ * Namespaced per student rather than per interview: these three artifacts are
+ * uploaded before any interview row exists and survive across attempts.
+ */
+export function keyForInterviewPrerequisite(
+  userId: string,
+  kind: string,
+  reservationId: string,
+  ext: string,
+): string {
+  const safeExt = ext.replace(/[^a-z0-9]/gi, "").toLowerCase() || "bin";
+  return `interview-prerequisites/${sanitizeSegment(userId)}/${sanitizeSegment(kind)}-${sanitizeSegment(reservationId)}.${safeExt}`;
+}
+
 /** Write-once LiveKit room recording key scoped to its durable reservation. */
 export function keyForInterviewRecording(interviewId: string, reservationId: string): string {
   return `interviews/${sanitizeSegment(interviewId)}/room-${sanitizeSegment(reservationId)}.ogg`;

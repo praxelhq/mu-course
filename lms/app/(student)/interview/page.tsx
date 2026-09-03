@@ -1,7 +1,9 @@
 import { requireUser } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { Card, Eyebrow } from "@/components/ui";
+import { missingPrerequisites } from "@/lib/interview/prerequisites";
 import { InterviewRoom } from "./room";
+import { InterviewPrerequisites } from "./prerequisites";
 
 // The student interview entry + room. The server component resolves the
 // window/attempt situation; everything conversational happens in the client
@@ -19,7 +21,7 @@ const fmt = new Intl.DateTimeFormat("en-IN", {
 export default async function InterviewPage() {
   const user = await requireUser();
 
-  const [window, latest, retake] = await Promise.all([
+  const [window, latest, retake, missingPrereqs] = await Promise.all([
     user.sectionId
       ? prisma.interviewWindow.findFirst({
           where: { sectionId: user.sectionId },
@@ -35,6 +37,7 @@ export default async function InterviewPage() {
       where: { userId: user.userId, usedByInterviewId: null },
       select: { id: true },
     }),
+    missingPrerequisites(user.userId),
   ]);
 
   const now = new Date();
@@ -42,7 +45,10 @@ export default async function InterviewPage() {
   // A live interview can always be resumed; otherwise a fresh start needs an
   // open window and either no prior attempt or an unused retake grant.
   const canResume = latest?.status === "live";
-  const canStart = windowOpen && (!latest || Boolean(retake));
+  // The three prerequisite artifacts gate the start alongside the window and
+  // attempt guards; startInterview enforces the same rule server-side.
+  const prerequisitesComplete = missingPrereqs.length === 0;
+  const canStart = windowOpen && (!latest || Boolean(retake)) && prerequisitesComplete;
 
   return (
     <main style={{ maxWidth: "44rem", margin: "0 auto", padding: "2.5rem 2rem" }}>
@@ -86,6 +92,8 @@ export default async function InterviewPage() {
           )}
         </Card>
       )}
+
+      {!canResume && <InterviewPrerequisites />}
 
       <InterviewRoom
         canStart={canStart}

@@ -1,6 +1,7 @@
 import { Prisma, type PrismaClient, type InterviewStatus } from "@prisma/client";
 import { z } from "zod";
 import { prisma as defaultPrisma } from "@/lib/db";
+import { assertPrerequisitesComplete } from "./prerequisites";
 import {
   GeneratedObjectReservationError,
   compensateGeneratedObjectVersion,
@@ -432,6 +433,10 @@ export async function startInterview(
       })
     : null;
   if (!window) throw new InterviewWindowClosedError();
+
+  // The student must have supplied all three artifacts personally: the whole
+  // interview defends work they uploaded themselves (lib/interview/prerequisites).
+  await assertPrerequisitesComplete(userId, { prisma: client });
 
   const systemPrompt = await buildSystemPrompt(userId, deps);
 
