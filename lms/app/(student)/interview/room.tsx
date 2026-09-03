@@ -158,15 +158,17 @@ export function InterviewRoom({
           term. It is relaxed and adaptive; there are no trick questions.
         </p>
         <p style={{ margin: "0 0 0.75rem", lineHeight: 1.6, color: "var(--charcoal)" }}>
-          <strong>What we record and why:</strong> your spoken answers (audio) and a written
-          transcript are recorded and stored securely, solely for assessing this course
-          component. Your instructor can review them. Recordings are retained for the duration
-          of the course and the review period that follows, then handled per the programme&apos;s
-          data policy. Scores never appear on your public profile.
+          <strong>What we record and why:</strong> your spoken answers, <strong>video from
+          your camera</strong>, and a written transcript are recorded and stored securely,
+          solely for assessing this course component. Your instructor can review them.
+          Recordings are retained for the duration of the course and the review period that
+          follows, then deleted per the programme&apos;s data policy. Scores never appear on
+          your public profile.
         </p>
         <p style={{ margin: "0 0 1.25rem", lineHeight: 1.6, color: "var(--charcoal)" }}>
-          Pressing Begin is your consent to this recording. Your microphone is only accessed
-          after you consent.
+          Pressing Begin is your consent to this recording. A working camera is required to
+          begin; if it stops part-way the interview simply continues on audio. Your microphone
+          and camera are only accessed after you consent.
         </p>
         <Button onClick={() => void requestRealtime()} disabled={mode === "requesting"}>
           {mode === "requesting"

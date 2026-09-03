@@ -2,10 +2,21 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Card } from "@/components/ui";
+import {
+  CAMERA_REQUIRED_NOTICE,
+  VIDEO_LOST_NOTICE,
+  cameraRemediation,
+  classifyCameraError,
+} from "@/lib/interview/video";
 
-// The realtime (LiveKit) interview room. Audio-only: publish the mic,
-// play the agent's audio, and show the live transcript by polling the state
-// endpoint every 5s (the poll doubles as the server-side heartbeat).
+// The realtime (LiveKit) interview room: publish mic and camera, play the
+// agent's audio, and show the live transcript by polling the state endpoint
+// every 5s (the poll doubles as the server-side heartbeat).
+//
+// Video is required to START — every interview must leave a recording — but
+// losing it mid-call is NOT terminal: the conversation continues on audio and
+// the interview is flagged, so a device failure never costs the student their
+// single attempt.
 //
 // Degradation is this component's whole job: connect failure within ~8s,
 // a mid-session disconnect, or sustained poor connection quality all call
@@ -33,7 +44,10 @@ export function RealtimeRoom({
   onCompleted: () => void;
 }) {
   const [connected, setConnected] = useState(false);
+  const [cameraError, setCameraError] = useState<string | null>(null);
+  const [videoLost, setVideoLost] = useState(false);
   const [turns, setTurns] = useState<Turn[]>([]);
+  const videoRef = useRef<HTMLDivElement | null>(null);
   const audioRef = useRef<HTMLDivElement | null>(null);
   const endedRef = useRef(false); // completed or fallen back — ignore late events
   const fallbackRef = useRef(onFallback);
@@ -65,6 +79,18 @@ export function RealtimeRoom({
             audioRef.current.appendChild(track.attach());
           }
         });
+        room.on(RoomEvent.LocalTrackPublished, (publication) => {
+          // Self-view, so the student can see they are actually on camera.
+          if (publication.kind === Track.Kind.Video && videoRef.current) {
+            const el = publication.track?.attach();
+            if (el) {
+              el.style.width = "100%";
+              el.style.maxWidth = "18rem";
+              el.muted = true;
+              videoRef.current.replaceChildren(el);
+            }
+          }
+        });
         room.on(RoomEvent.Disconnected, () => {
           end(() => fallbackRef.current("disconnected"));
         });
@@ -89,6 +115,18 @@ export function RealtimeRoom({
           ),
         ]);
         await room.localParticipant.setMicrophoneEnabled(true);
+
+        // Camera is a hard requirement to begin. Failing here leaves the room
+        // and shows remediation rather than degrading: a missing recording
+        // cannot be reviewed later, and there is no second attempt.
+        try {
+          await room.localParticipant.setCameraEnabled(true);
+        } catch (err) {
+          void room.disconnect().catch(() => {});
+          if (!cancelled) setCameraError(cameraRemediation(classifyCameraError(err)));
+          return;
+        }
+
         if (cancelled) {
           void room.disconnect();
           return;
@@ -99,6 +137,20 @@ export function RealtimeRoom({
         end(() => fallbackRef.current("connect-failed"));
         return;
       }
+
+      // A camera that dies mid-interview flags the recording and carries on.
+      // Deliberately NOT routed through end(): this is not terminal.
+      room.localParticipant.on("localTrackUnpublished", (publication) => {
+        if (publication.kind !== "video" || cancelled) return;
+        setVideoLost(true);
+        void fetch("/api/interview/video-lost", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ interviewId }),
+        }).catch(() => {
+          // The flag is best-effort; losing it must never end the interview.
+        });
+      });
 
       // Transcript poll (also the server-side heartbeat).
       poll = setInterval(async () => {
@@ -129,6 +181,29 @@ export function RealtimeRoom({
     };
   }, [url, token, interviewId]);
 
+  if (cameraError) {
+    return (
+      <Card>
+        <p
+          style={{
+            margin: 0,
+            fontFamily: "var(--font-geist-mono)",
+            fontSize: "0.75rem",
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+            color: "var(--ochre)",
+          }}
+        >
+          Camera needed
+        </p>
+        <p style={{ margin: "0.5rem 0 0", lineHeight: 1.6 }}>{CAMERA_REQUIRED_NOTICE}</p>
+        <p style={{ margin: "0.75rem 0 0", color: "var(--charcoal)", lineHeight: 1.6 }}>
+          {cameraError}
+        </p>
+      </Card>
+    );
+  }
+
   return (
     <div style={{ display: "grid", gap: "1.5rem" }}>
       <Card>
@@ -141,6 +216,12 @@ export function RealtimeRoom({
             : "Setting up your audio connection. If this takes more than a few seconds we switch you to step-by-step mode automatically."}
         </p>
         <div ref={audioRef} />
+        <div ref={videoRef} style={{ marginTop: "1rem" }} />
+        {videoLost && (
+          <p style={{ margin: "0.75rem 0 0", color: "var(--ochre)" }} role="status">
+            {VIDEO_LOST_NOTICE}
+          </p>
+        )}
       </Card>
 
       {turns.length > 0 && (
