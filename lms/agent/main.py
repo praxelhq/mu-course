@@ -1,6 +1,6 @@
 """Praxel Forge interview agent — LiveKit Agents worker (U13).
 
-Pipeline: Sarvam STT -> Gemini Flash dialog -> Sarvam TTS, running as a
+Pipeline: Sarvam STT -> Claude dialog -> Sarvam TTS, running as a
 livekit-agents v1.x AgentSession in rooms named ``interview-{interviewId}``.
 Deepgram STT / ElevenLabs TTS remain wired as the fallback pair and are used
 whenever ``SARVAM_API_KEY`` is absent, so local dev and a Sarvam outage both
@@ -42,7 +42,7 @@ REQUIRED_ENV = ["LIVEKIT_URL", "LIVEKIT_API_KEY", "LIVEKIT_API_SECRET"]
 
 # Required by the interview pipeline itself, regardless of voice provider.
 PIPELINE_ENV = [
-    "GEMINI_API_KEY",
+    "ANTHROPIC_API_KEY",
     "AGENT_INTERNAL_TOKEN",
     "APP_URL",
 ]
@@ -79,7 +79,11 @@ ROOM_PREFIX = "interview-"
 EGRESS_LAYOUT = os.environ.get("INTERVIEW_EGRESS_LAYOUT", "speaker")
 MAX_INTERVIEW_SECONDS = 15 * 60
 QUESTION_BUDGET = 12  # hard ceiling across the five segments
-GEMINI_MODEL = os.environ.get("INTERVIEW_GEMINI_MODEL", "gemini-2.0-flash")
+# The interviewer shares a model family with the grader (lib/ai/client.ts uses
+# claude-sonnet-4-5). Tool calling is load-bearing here — the agent ends the
+# interview by calling end_interview — and the dialog model reads student
+# uploads, so injection resistance matters as much as fluency.
+DIALOG_MODEL = os.environ.get("INTERVIEW_DIALOG_MODEL", "claude-sonnet-4-5")
 
 # Sarvam voice configuration. STT defaults to adaptive language identification:
 # the cohort code-mixes English and Hindi mid-answer, and pinning en-IN drops or
@@ -242,10 +246,8 @@ def check_env() -> None:
         )
         sys.exit(1)
 
-    # Our codebase's canonical name is GEMINI_API_KEY; the livekit google
-    # plugin reads GOOGLE_API_KEY. Map the alias so only one needs setting.
-    if os.environ.get("GEMINI_API_KEY") and not os.environ.get("GOOGLE_API_KEY"):
-        os.environ["GOOGLE_API_KEY"] = os.environ["GEMINI_API_KEY"]
+    # The livekit anthropic plugin reads ANTHROPIC_API_KEY directly — the same
+    # name the web and worker services already use, so there is no alias to map.
 
 
 def egress_configured() -> bool:
@@ -466,7 +468,7 @@ async def entrypoint(ctx) -> None:
     every finalized utterance into the LMS, records via Egress, and completes
     the interview when the LLM signals done or the 12-minute budget expires."""
     from livekit.agents import Agent, AgentSession, RoomInputOptions, RunContext, function_tool
-    from livekit.plugins import google, silero
+    from livekit.plugins import anthropic, silero
 
     await ctx.connect()
     room_name = ctx.room.name
@@ -567,7 +569,7 @@ async def entrypoint(ctx) -> None:
     stt, tts = build_voice_components()
     session = AgentSession(
         stt=stt,
-        llm=google.LLM(model=GEMINI_MODEL),
+        llm=anthropic.LLM(model=DIALOG_MODEL),
         tts=tts,
         vad=silero.VAD.load(),
     )

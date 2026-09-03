@@ -79,8 +79,8 @@ documented in `lms/.env.example`.
 ### agent
 - `LIVEKIT_URL`, `LIVEKIT_API_KEY`, `LIVEKIT_API_SECRET` (required — the
   worker exits with a clear message without them)
-- `GEMINI_API_KEY` (dialog; the agent maps it to `GOOGLE_API_KEY` for the
-  livekit google plugin — set only `GEMINI_API_KEY`)
+- `ANTHROPIC_API_KEY` (dialog LLM — the same key the web and worker already
+  use; the interviewer and the grader share a model family)
 - **Voice: exactly one complete pair is required.** Set `SARVAM_API_KEY` for
   the primary pipeline (Sarvam STT + TTS). `DEEPGRAM_API_KEY` +
   `ELEVENLABS_API_KEY` remain the fallback pair and are used only when
