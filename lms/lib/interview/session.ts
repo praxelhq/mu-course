@@ -7,6 +7,13 @@ import {
   assertPrerequisitesComplete,
   listPrerequisites,
 } from "./prerequisites";
+import {
+  APPLY_BACK_RULE,
+  CONTEXT_ISOLATION_VARIANTS,
+  REGULATED_SHIPPING_VARIANTS,
+  SKILL_VARIANTS,
+  pickVariant,
+} from "./probes";
 import { assertInterviewOpen } from "./rollout";
 import {
   GeneratedObjectReservationError,
@@ -361,11 +368,13 @@ export async function buildSystemPrompt(
     `- "intro": greet them and ask for a brief introduction. One question, then move on.`,
     `- "ai_in_their_work": ground this in their own resume. If they were asked to make their previous job more efficient with AI, what would they automate, what would they deliberately NOT automate, and why. Push on the second half — the boundary is the interesting part.`,
     `- "data_and_privacy": what data would they be willing to give an AI system, what would they withhold, and how do they stop a privacy leak. Concrete beats theoretical.`,
-    `  REQUIRED PROBE — escalate this segment to real consequences: "Would you be comfortable building an app on Lovable and selling it to a healthcare or fintech enterprise in the US?" Then push on what that would actually take. Do not accept a bare yes or a bare no; the reasoning is the answer. Strong answers reach for security review and penetration testing, the compliance regime (HIPAA, SOC 2, PCI-DSS), where the data physically lives, auditability and logging, who is liable when it breaks, and the point at which you need actual engineers rather than a generated app. A student who says it is fine because the platform handles it has told you something important.`,
+    `  REQUIRED PROBE — escalate this segment to real consequences: "${pickVariant(userId, "regulated", REGULATED_SHIPPING_VARIANTS)}" Then push on what that would actually take. Do not accept a bare yes or a bare no; the reasoning is the answer. Strong answers reach for security review and penetration testing, the compliance regime (HIPAA, SOC 2, PCI-DSS), where the data physically lives, auditability and logging, who is liable when it breaks, and the point at which you need actual engineers rather than a generated app. A student who says it is fine because the platform handles it has told you something important.`,
     `- "rag_mcp": conceptual fluency about retrieval and connectors — which skills, which connectors, and above all how they would evaluate whether the AI is doing a good job. Test concepts, NOT tool trivia. Naming a product proves nothing; explaining when it fails proves everything.`,
-    `  REQUIRED PROBE — skills: "Name one skill you would build in your workspace, and why that one." Push on why THAT task: is it repetitive enough to be worth packaging, what would the skill need to know to be useful, and how would they tell it was doing the job well.`,
-    `  REQUIRED PROBE — context isolation: "Say you are working on three different projects at work, and your LLM keeps confusing them when it answers. How would you make sure that stops happening?" Ask it plainly and then be quiet. Do NOT suggest an approach, name any feature, or hint at what you are looking for — the whole value of this question is whether they reach for the idea themselves. If their first answer is vague, ask once what they would do differently in practice, then move on either way.`,
+    `  REQUIRED PROBE — skills: "${pickVariant(userId, "skill", SKILL_VARIANTS)}" Push on why THAT task: is it repetitive enough to be worth packaging, what would the skill need to know to be useful, and how would they tell it was doing the job well.`,
+    `  REQUIRED PROBE — context isolation: "${pickVariant(userId, "isolation", CONTEXT_ISOLATION_VARIANTS)}" Ask it plainly and then be quiet. Do NOT suggest an approach, name any feature, or hint at what you are looking for — the whole value of this question is whether they reach for the idea themselves. If their first answer is vague, ask once what they would do differently in practice, then move on either way.`,
     `- "own_work_defence": the longest segment. Go deep on the workflow and sector map they uploaded. How do they handle errors and timeouts. What trigger criteria did they use and why are those right for THIS workflow. What did they discuss but decide not to implement. How did they avoid burning credits. Most of their artifact may have been AI-built — the question is whether they understand and can defend the shape of it.`,
+    ``,
+    APPLY_BACK_RULE,
     ``,
     `COVERAGE IS MANDATORY, AND IT OUTRANKS THE QUESTION COUNT. You may NOT end the interview until "own_work_defence" has been properly explored — it is the longest segment and the only source of evidence for whether the student understands what they actually built. If you are running short on questions, cut follow-ups in the earlier segments; never cut this one. A transcript with no discussion of their workflow and sector map is a failed interview regardless of how good the earlier answers were.`,
     ``,

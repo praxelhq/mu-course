@@ -199,26 +199,38 @@ describe("an artifact we cannot read never reaches the student", () => {
 });
 
 describe("the three set probes", () => {
+  // The exact wording rotates per student (lib/interview/probes.ts), so these
+  // assert that SOME variant of each probe is present and framed correctly —
+  // pinning one phrasing would just re-freeze what rotation exists to avoid.
   it("asks for one skill they would build, and why that one", async () => {
     const prompt = await promptWith("x");
-    expect(prompt).toMatch(/Name one skill you would build in your workspace/i);
+    expect(prompt).toMatch(/SKILL_PROBE_PRESENT|why that one|why that task/i);
     expect(prompt).toMatch(/repetitive enough to be worth packaging/i);
   });
 
   it("asks the three-projects question without hinting at the answer", async () => {
     const prompt = await promptWith("x");
-    expect(prompt).toMatch(/three different projects at work/i);
+    expect(prompt).toMatch(/confusing them|bleeding between them|does not belong|into answers about another/i);
     expect(prompt).toMatch(/Do NOT suggest an approach, name any feature, or hint/i);
     // The interviewer must never be told the answer, or it will lead the student.
     expect(prompt).not.toMatch(/separate (project|workspace) per/i);
     expect(prompt).not.toMatch(/the answer is/i);
   });
 
-  it("asks whether they would ship a Lovable build into US healthcare or fintech", async () => {
+  it("asks whether they would ship a Lovable build into a regulated US sector", async () => {
     const prompt = await promptWith("x");
-    expect(prompt).toMatch(/healthcare or fintech enterprise in the US/i);
+    expect(prompt).toMatch(/healthcare|fintech|hospital|bank|insurance/i);
+    expect(prompt).toMatch(/lovable/i);
     expect(prompt).toMatch(/Do not accept a bare yes or a bare no/i);
     expect(prompt).toMatch(/HIPAA|SOC 2|PCI-DSS/);
+  });
+
+  it("makes them apply every set answer to their own uploaded work", async () => {
+    // This is the real leak defence: the follow-up cannot be rehearsed from a
+    // friend's account, because it is about the student's own file.
+    const prompt = await promptWith("x");
+    expect(prompt).toMatch(/workflow or sector map they uploaded/i);
+    expect(prompt).toMatch(/may be borrowed/i);
   });
 });
 
