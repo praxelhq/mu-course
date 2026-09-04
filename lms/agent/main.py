@@ -108,7 +108,12 @@ EGRESS_LAYOUT = os.environ.get("INTERVIEW_EGRESS_LAYOUT", "speaker")
 # The MP4 container and the reserved S3 key are deliberately unchanged, so the
 # reserve/commit path and every stored key stay exactly as they were.
 EGRESS_AUDIO_ONLY = os.environ.get("INTERVIEW_EGRESS_AUDIO_ONLY", "1") not in ("0", "false", "False")
-MAX_INTERVIEW_SECONDS = 15 * 60
+# Interview length. Raised from 15 to 20 minutes: a real student spent 738 of
+# her 913 seconds talking and still only reached six questions, so the arc ran
+# out of clock before RAG/MCP and all three set probes. Env-tunable so it can
+# be pulled back without a deploy if throughput becomes the binding constraint
+# (each concurrent slot is held for the full budget).
+MAX_INTERVIEW_SECONDS = int(os.environ.get("INTERVIEW_MAX_SECONDS", 20 * 60))
 QUESTION_BUDGET = 20  # hard ceiling across the five segments (runaway guard)
 # The model may not end the interview before this many of its own turns. The
 # five-segment arc cannot be covered in fewer, and the final segment — the
@@ -744,6 +749,20 @@ async def entrypoint(ctx) -> None:
             return "The interview is over. Say a short, warm goodbye."
 
         async def on_enter(self) -> None:
+            # Greeting before the student is in the room throws the greeting
+            # away. One real interview burned 167 seconds — 18% of its budget —
+            # because the agent greeted an empty room at t=0, the student
+            # arrived at t=167 having heard nothing, said "Hello", and was
+            # greeted a second time. Wait for them, then speak.
+            try:
+                await asyncio.wait_for(ctx.wait_for_participant(), timeout=120)
+            except asyncio.TimeoutError:
+                logger.warning(
+                    "no participant joined %s within 120s — greeting anyway",
+                    interview_id,
+                )
+            except Exception as err:  # noqa: BLE001 — never block the greeting
+                logger.warning("wait_for_participant failed for %s: %s", interview_id, err)
             self.session.generate_reply(
                 instructions=(
                     "Greet the student warmly in one or two sentences, then ask "

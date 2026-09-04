@@ -107,9 +107,19 @@ class VoiceProviderSelectionTests(unittest.TestCase):
 
 
 class InterviewBudgetTests(unittest.TestCase):
-    def test_budget_is_fifteen_minutes(self):
-        """R3: the interview ends at 15 minutes, raised from 12."""
-        self.assertEqual(main.MAX_INTERVIEW_SECONDS, 15 * 60)
+    def test_budget_is_twenty_minutes(self):
+        """Raised from 15: a real interview spent 738 of its 913 seconds on the
+        student talking and still reached only six questions, running out of
+        clock before RAG/MCP and all three set probes."""
+        self.assertEqual(main.MAX_INTERVIEW_SECONDS, 20 * 60)
+
+    def test_the_budget_is_tunable_without_a_deploy(self):
+        # Each concurrent slot is held for the whole budget, so throughput may
+        # force this back down mid-cohort.
+        assert "INTERVIEW_MAX_SECONDS" in open("main.py", encoding="utf-8").read()
+
+    def test_the_end_guard_releases_before_the_budget_not_at_it(self):
+        assert main.END_GUARD_RELEASE_SECONDS == main.MAX_INTERVIEW_SECONDS - 120
 
 
 if __name__ == "__main__":

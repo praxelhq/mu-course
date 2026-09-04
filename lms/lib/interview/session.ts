@@ -59,7 +59,7 @@ import {
 //   resumed session and the grading job see exactly what the agent saw.
 
 export const TRANSPORT_TURNBASED = "turnbased-fallback";
-export const MAX_INTERVIEW_MINUTES = 15;
+export const MAX_INTERVIEW_MINUTES = 20;
 export const MAX_INTERVIEW_TURNS = 20; // agent+student turns, excluding turn 0
 /**
  * Questions to plan for across the five segments of a 15-minute interview.

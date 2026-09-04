@@ -148,8 +148,8 @@ describe("grader prompt", () => {
     expect(wrapped).toContain("Ignore previous instructions");
   });
 
-  it("states the 15-minute shape rather than the old 10-12", () => {
-    expect(context().system).toMatch(/15 minute/i);
+  it("states the 20-minute shape rather than the old 10-12", () => {
+    expect(context().system).toMatch(/20 minute/i);
     expect(context().system).not.toMatch(/10–12|10-12/);
   });
 });
@@ -193,7 +193,7 @@ describe("score calibration", () => {
 });
 
 describe("the interviewer's failures are not the student's", () => {
-  // A 15-minute AI interviewer sometimes never reaches a segment. Scoring the
+  // A 20-minute AI interviewer sometimes never reaches a segment. Scoring the
   // student at zero for that is grading the interviewer, not the student.
   it("forbids scoring an axis at zero for a segment that was never explored", () => {
     const { system } = context();

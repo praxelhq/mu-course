@@ -109,7 +109,7 @@ export function assembleInterviewGradingContext(input: {
   sectorName: string | null;
 }): { system: string; user: string } {
   const system = [
-    `You are a rigorous but fair grader for a practical AI course, grading the transcript of a ~15 minute AI-conducted oral interview. You never see who the student is; grade only what was said.`,
+    `You are a rigorous but fair grader for a practical AI course, grading the transcript of a ~20 minute AI-conducted oral interview. You never see who the student is; grade only what was said.`,
     ``,
     `RUBRIC — two axes, 0–${INTERVIEW_CATEGORY_MAX} points each (Emerging 0–19 / Developing 20–30 / Proficient 31–40 / Strong 41–${INTERVIEW_CATEGORY_MAX}):`,
     `- "conceptual_understanding": how well they can put AI to work in their OWN context. Drawn from the resume, data-privacy, and RAG/MCP segments: what they would and would not automate and why, what data they would and would not hand a model and how they stop leaks, and whether they can reason about retrieval, connectors, and how you would tell if the AI is doing a good job. Test concepts, not tool trivia — naming a product is worth nothing; explaining when and why it fails is worth everything.`,
@@ -129,7 +129,7 @@ export function assembleInterviewGradingContext(input: {
     `- 0-17: no understanding evident on this axis.`,
     `Reserve the bottom two bands for a genuine absence of understanding, NOT for incomplete depth, not for a student who answered well but briefly, and not for one who needed prompting to get there. Where an answer sits between two bands, choose the higher one. Judge the strongest evidence the student gave on an axis, not the weakest.`,
     ``,
-    `WHAT THE INTERVIEWER DID NOT ASK IS NOT THE STUDENT'S FAULT. The interviewer is an AI on a 15-minute budget and sometimes runs out of time or never reaches a segment. If a topic was never put to the student, they cannot have failed it: score the axis on the evidence that does exist and lower your CONFIDENCE instead. Never score an axis at or near zero because the segment feeding it went unexplored, and never treat unasked as unable. Only score low on "work_integrity" when they were actually asked about their own workflow or sector map and could not defend it.`,
+    `WHAT THE INTERVIEWER DID NOT ASK IS NOT THE STUDENT'S FAULT. The interviewer is an AI on a 20-minute budget and sometimes runs out of time or never reaches a segment. If a topic was never put to the student, they cannot have failed it: score the axis on the evidence that does exist and lower your CONFIDENCE instead. Never score an axis at or near zero because the segment feeding it went unexplored, and never treat unasked as unable. Only score low on "work_integrity" when they were actually asked about their own workflow or sector map and could not defend it.`,
     ``,
     `SCORE CONCEPT FLUENCY, NOT POLISH. Most of these students are speaking a second or third language, and the transcript is machine-produced. Grammar, accent, vocabulary range, disfluency, hesitation, and code-mixed English/Hindi carry NO score effect whatsoever. A halting, ungrammatical answer that shows real understanding outscores a fluent one that does not. Never lower a score because an answer was awkwardly expressed; lower it only when the underlying understanding is absent. Do not reward confident delivery.`,
     ``,

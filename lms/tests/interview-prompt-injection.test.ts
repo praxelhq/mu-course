@@ -313,7 +313,7 @@ describe("the interview arc", () => {
     expect(prompt).toMatch(/cold is not/i);
   });
 
-  it("states the 15-minute shape", async () => {
-    expect(await promptWith("x")).toMatch(/15 minutes/);
+  it("states the 20-minute shape", async () => {
+    expect(await promptWith("x")).toMatch(/20 minutes/);
   });
 });
