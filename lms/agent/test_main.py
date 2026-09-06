@@ -302,3 +302,19 @@ class TestPromptCache:
 
     def test_deleting_a_cache_that_never_existed_is_a_no_op(self):
         main.delete_prompt_cache(None)  # must not raise
+
+
+class TestCacheKeepsTheFallback:
+    def test_a_cached_leg_does_not_cost_the_chain(self):
+        # The plugin decides per INSTANCE whether to bake system_instruction and
+        # tools out of a request, so a cached leg and an uncached leg can share
+        # one chat context. Collapsing to a single leg when caching was on gave
+        # up the fallback for nothing.
+        src = open("main.py", encoding="utf-8").read()
+        assert "gemini+cache" in src
+        # the cached leg is appended to `built`, not returned early
+        body = src[src.index("def build_dialog_llm("):src.index("def realtime_instructions(")]
+        assert "return google.LLM(" not in body
+
+    def test_the_chain_still_honours_the_pinned_order(self):
+        assert main.dialog_order({"INTERVIEW_DIALOG_PROVIDER": "gemini"})[0] == "gemini"

@@ -297,24 +297,28 @@ def build_dialog_llm(cache_name: str | None = None):
     A failover changes who is billed and nothing the student can hear — but it
     costs a round trip, so the order matters when one leg is known-dead.
 
-    With a cache attached the chain collapses to Gemini alone: the cache holds
-    the instructions and the tool schema, and no other leg can read it, so a
-    failover would drop the interviewer's instructions entirely. That is an
-    acceptable trade only because the cache is what makes the interview
-    affordable; INTERVIEW_PROMPT_CACHE=0 restores the two-leg chain.
+    A cached leg does NOT cost the fallback. The plugin decides per INSTANCE
+    whether to bake system_instruction and tools out of a request, so the cached
+    leg reads them from the cache while the uncached legs still receive them
+    from the chat context. Both share one context and both work — the cheap leg
+    leads and the resilient ones stand behind it.
     """
     from livekit.agents import inference
     from livekit.agents import llm as llm_mod
 
     key = os.environ.get("GEMINI_API_KEY")
+    built: list[tuple[str, object]] = []
     if cache_name and key:
         from livekit.plugins import google
 
-        logger.info("dialog LLM: gemini with prompt cache (no failover leg)")
-        return google.LLM(
-            model=DIALOG_FALLBACK_MODEL, api_key=key, cached_content=cache_name
+        built.append(
+            (
+                "gemini+cache",
+                google.LLM(
+                    model=DIALOG_FALLBACK_MODEL, api_key=key, cached_content=cache_name
+                ),
+            )
         )
-    built: list[tuple[str, object]] = []
     for name in dialog_order():
         if name == "inference":
             built.append(("inference", inference.LLM(model=DIALOG_MODEL)))

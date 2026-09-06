@@ -124,10 +124,9 @@ async def run(prompt_path: str, turns_path: str) -> int:
     # Same wrapping production applies: the stored prompt targets the
     # turn-based JSON contract, and the voice override is what turns it into
     # speech. Skipping it made the first run emit JSON envelopes.
-    # With a cache attached the plugin bakes system_instruction out of every
-    # request; without one this is where the interviewer gets its rules.
-    if not cache:
-        ctx.add_message(role="system", content=main.realtime_instructions(system_prompt))
+    # Always present. The cached leg bakes it out of its own requests; the
+    # fallback legs need it, and they share this one context.
+    ctx.add_message(role="system", content=main.realtime_instructions(system_prompt))
     ctx.add_message(role="user", content="[The student has joined the room.]")
 
     history: list[tuple[str, str]] = []
