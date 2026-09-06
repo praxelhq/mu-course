@@ -114,12 +114,20 @@ async def run(prompt_path: str, turns_path: str) -> int:
         ended = True
         return "The interview is over. Say a short, warm goodbye."
 
-    interviewer = inference.LLM(model=main.DIALOG_MODEL)
+    # Exercise the same cached path production uses, so the harness tests what
+    # actually runs rather than a cheaper approximation of it.
+    cache = main.create_prompt_cache(main.realtime_instructions(system_prompt))
+    print(f"  prompt cache: {cache or 'DISABLED / unavailable — running uncached'}")
+    interviewer = main.build_dialog_llm(cache)
+
     ctx = llm.ChatContext.empty()
     # Same wrapping production applies: the stored prompt targets the
     # turn-based JSON contract, and the voice override is what turns it into
     # speech. Skipping it made the first run emit JSON envelopes.
-    ctx.add_message(role="system", content=main.realtime_instructions(system_prompt))
+    # With a cache attached the plugin bakes system_instruction out of every
+    # request; without one this is where the interviewer gets its rules.
+    if not cache:
+        ctx.add_message(role="system", content=main.realtime_instructions(system_prompt))
     ctx.add_message(role="user", content="[The student has joined the room.]")
 
     history: list[tuple[str, str]] = []
@@ -173,6 +181,7 @@ async def run(prompt_path: str, turns_path: str) -> int:
     said = " ".join(agent_utterances).lower()
     named = [m for m in main.OWN_WORK_IDENTITY_MARKERS if m in said]
     probed = [m for m in main.OWN_WORK_SUBSTANCE_MARKERS if m in said]
+    main.delete_prompt_cache(cache)
     print(f"  artifact named       : {named or 'NONE'}")
     print(f"  substance probed     : {probed or 'NONE'}")
 

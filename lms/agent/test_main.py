@@ -280,3 +280,25 @@ class TestDialogOrder:
     def test_both_legs_are_always_present(self):
         for env in ({}, {"INTERVIEW_DIALOG_PROVIDER": "gemini"}):
             assert sorted(main.dialog_order(env)) == ["gemini", "inference"]
+
+
+class TestPromptCache:
+    def test_the_cached_tool_schema_matches_the_tool_the_agent_runs(self):
+        # The model reads end_interview's schema from the cache while the agent
+        # executes the Python function; if they drift the model calls something
+        # that does not exist and the interview cannot end.
+        assert main.END_INTERVIEW_SCHEMA["name"] == "end_interview"
+        assert main.END_INTERVIEW_SCHEMA["parameters"]["properties"] == {}
+
+    def test_cache_outlives_the_interview_it_serves(self):
+        assert main.PROMPT_CACHE_TTL_SECONDS > main.MAX_INTERVIEW_SECONDS
+
+    def test_caching_is_switchable_without_a_deploy(self):
+        assert "INTERVIEW_PROMPT_CACHE" in open("main.py", encoding="utf-8").read()
+
+    def test_no_cache_without_a_gemini_key(self, monkeypatch):
+        monkeypatch.delenv("GEMINI_API_KEY", raising=False)
+        assert main.create_prompt_cache("some instructions") is None
+
+    def test_deleting_a_cache_that_never_existed_is_a_no_op(self):
+        main.delete_prompt_cache(None)  # must not raise

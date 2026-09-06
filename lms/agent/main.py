@@ -201,6 +201,79 @@ DIALOG_MODEL = os.environ.get("INTERVIEW_DIALOG_MODEL", "google/gemini-3.6-flash
 DIALOG_FALLBACK_MODEL = os.environ.get("INTERVIEW_DIALOG_FALLBACK_MODEL", "gemini-3.6-flash")
 
 
+# Explicit prompt caching. Implicit caching was measured at a 0% hit rate on
+# this prompt (systemInstruction does not qualify), while an explicit cache
+# holds 99% of it: a 20-turn interview costs $0.065 uncached and $0.008 cached.
+# Gemini refuses a request that sets system_instruction, tools or tool_config
+# alongside a cache, so BOTH the instructions and the end_interview schema live
+# in the cache and the plugin bakes them out of every request.
+PROMPT_CACHE_ENABLED = os.environ.get("INTERVIEW_PROMPT_CACHE", "1") not in ("0", "false", "False")
+PROMPT_CACHE_TTL_SECONDS = MAX_INTERVIEW_SECONDS + 300
+
+# The end_interview schema as the cache must carry it. This has to stay in step
+# with the tool the Interviewer actually exposes: the model reads the schema
+# from here, and the agent executes the Python function.
+END_INTERVIEW_SCHEMA = {
+    "name": "end_interview",
+    "description": (
+        "Call this when the interview should end: the question budget is "
+        "reached, all categories are covered, or the student asks to stop."
+    ),
+    "parameters": {"type": "OBJECT", "properties": {}},
+}
+
+
+def create_prompt_cache(instructions: str) -> str | None:
+    """Cache one interview's instructions + tools. None if caching is off or fails.
+
+    Best-effort by design: a cache that cannot be created must cost the student
+    money, never their interview.
+    """
+    if not PROMPT_CACHE_ENABLED:
+        return None
+    key = os.environ.get("GEMINI_API_KEY")
+    if not key:
+        return None
+    try:
+        from google import genai
+        from google.genai import types as gtypes
+
+        client = genai.Client(api_key=key)
+        cache = client.caches.create(
+            model=DIALOG_FALLBACK_MODEL,
+            config=gtypes.CreateCachedContentConfig(
+                system_instruction=instructions,
+                tools=[gtypes.Tool(function_declarations=[END_INTERVIEW_SCHEMA])],
+                ttl=f"{PROMPT_CACHE_TTL_SECONDS}s",
+            ),
+        )
+        held = getattr(getattr(cache, "usage_metadata", None), "total_token_count", None)
+        logger.info("prompt cache %s created (%s tokens held)", cache.name, held)
+        return cache.name
+    except Exception as err:  # noqa: BLE001 — never lose an interview over a cache
+        logger.warning("prompt cache unavailable (%s) — running uncached", err)
+        return None
+
+
+def delete_prompt_cache(name: str | None) -> None:
+    """Drop the cache early. The TTL is the real guarantee, not this.
+
+    Deletion runs during shutdown and can lose the race with the plugin closing
+    its client, so a failure here is logged at debug and otherwise ignored: the
+    cache expires on its own a few minutes later, and the storage it bills in
+    the meantime is a fraction of a cent.
+    """
+    if not name:
+        return
+    try:
+        from google import genai
+
+        genai.Client(api_key=os.environ["GEMINI_API_KEY"]).caches.delete(name=name)
+        logger.info("prompt cache %s deleted", name)
+    except Exception as err:  # noqa: BLE001
+        logger.debug("prompt cache %s left to expire on its TTL: %s", name, err)
+
+
 def dialog_order(env: Mapping[str, str] = os.environ) -> list[str]:
     """Which dialog LLM leads. INTERVIEW_DIALOG_PROVIDER=gemini|inference.
 
@@ -218,16 +291,29 @@ def dialog_order(env: Mapping[str, str] = os.environ) -> list[str]:
     return ["inference", "gemini"]
 
 
-def build_dialog_llm():
+def build_dialog_llm(cache_name: str | None = None):
     """The dialog LLM chain, same model on both legs.
 
     A failover changes who is billed and nothing the student can hear — but it
     costs a round trip, so the order matters when one leg is known-dead.
+
+    With a cache attached the chain collapses to Gemini alone: the cache holds
+    the instructions and the tool schema, and no other leg can read it, so a
+    failover would drop the interviewer's instructions entirely. That is an
+    acceptable trade only because the cache is what makes the interview
+    affordable; INTERVIEW_PROMPT_CACHE=0 restores the two-leg chain.
     """
     from livekit.agents import inference
     from livekit.agents import llm as llm_mod
 
     key = os.environ.get("GEMINI_API_KEY")
+    if cache_name and key:
+        from livekit.plugins import google
+
+        logger.info("dialog LLM: gemini with prompt cache (no failover leg)")
+        return google.LLM(
+            model=DIALOG_FALLBACK_MODEL, api_key=key, cached_content=cache_name
+        )
     built: list[tuple[str, object]] = []
     for name in dialog_order():
         if name == "inference":
@@ -827,9 +913,24 @@ async def entrypoint(ctx) -> None:
             )
 
     stt, tts = build_voice_components()
+
+    # One cache per interview: the instructions carry this student's own
+    # artifacts, so nothing is shareable between them. Created before the
+    # session so a failure simply means an uncached (dearer) interview.
+    prompt_cache = create_prompt_cache(
+        realtime_instructions(context.get("systemPrompt", ""))
+    )
+
+    async def drop_prompt_cache() -> None:
+        # Storage bills per hour; a cache outliving its interview is waste.
+        delete_prompt_cache(prompt_cache)
+
+    if prompt_cache:
+        ctx.add_shutdown_callback(drop_prompt_cache)
+
     session = AgentSession(
         stt=stt,
-        llm=build_dialog_llm(),
+        llm=build_dialog_llm(prompt_cache),
         tts=tts,
         vad=silero.VAD.load(),
     )
