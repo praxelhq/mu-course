@@ -263,8 +263,11 @@ class TestVoiceFailover:
 
 
 class TestDialogOrder:
-    def test_default_leads_with_inference(self):
-        assert main.dialog_order({}) == ["inference", "gemini"]
+    def test_default_leads_with_gemini(self):
+        # Not by configuration: LiveKit's gateway credit hit zero twice in one
+        # day and 429'd on every turn, so nothing may depend on an env var
+        # being set for the reliable provider to lead.
+        assert main.dialog_order({}) == ["gemini", "inference"]
 
     def test_gemini_can_be_pinned_to_lead(self):
         # Once LiveKit's credit is exhausted it 429s on every turn, and the
@@ -275,7 +278,15 @@ class TestDialogOrder:
         assert main.dialog_order({"INTERVIEW_DIALOG_PROVIDER": "inference"}) == ["inference", "gemini"]
 
     def test_a_meaningless_pin_falls_back_to_the_default(self):
-        assert main.dialog_order({"INTERVIEW_DIALOG_PROVIDER": "banana"}) == ["inference", "gemini"]
+        assert main.dialog_order({"INTERVIEW_DIALOG_PROVIDER": "banana"}) == ["gemini", "inference"]
+
+    def test_an_unset_env_still_leads_with_gemini(self):
+        # The deployed override can be removed without changing behaviour.
+        assert main.dialog_order({"SOMETHING_ELSE": "1"}) == ["gemini", "inference"]
+
+    def test_livekit_is_kept_as_the_last_leg(self):
+        # A second vendor behind Gemini is worth having; depending on it is not.
+        assert "inference" in main.dialog_order({})
 
     def test_both_legs_are_always_present(self):
         for env in ({}, {"INTERVIEW_DIALOG_PROVIDER": "gemini"}):

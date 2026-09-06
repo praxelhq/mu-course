@@ -277,18 +277,23 @@ def delete_prompt_cache(name: str | None) -> None:
 def dialog_order(env: Mapping[str, str] = os.environ) -> list[str]:
     """Which dialog LLM leads. INTERVIEW_DIALOG_PROVIDER=gemini|inference.
 
-    A FallbackAdapter only helps if the leader usually works. Once LiveKit's
-    gateway credit is exhausted it 429s on EVERY turn, and the student pays for
-    the failed attempt and its retries before the fallback answers — a student
-    typed "You can start asking questions" and left after two minutes of it.
-    While that credit is dead, Gemini has to lead.
+    Gemini leads BY DEFAULT, not by configuration. LiveKit Inference meters
+    against an opaque gateway credit that ran to zero twice inside one day, and
+    each time it 429'd on every turn rather than intermittently: the agent
+    joined, Sarvam transcribed the student, and the interviewer never spoke.
+    Four students sat through that, one of whom typed "You can start asking
+    questions" and left. A FallbackAdapter only helps if the leader usually
+    works, and leading with that endpoint made every question pay for a failed
+    attempt and its retries first.
+
+    It stays in the chain as the last leg — a different vendor is worth having
+    behind Gemini — but nothing depends on it being up, and no env var has to
+    be set for that to be true.
     """
     pinned = (env.get("INTERVIEW_DIALOG_PROVIDER") or "").strip().lower()
-    if pinned == "gemini":
-        return ["gemini", "inference"]
     if pinned == "inference":
         return ["inference", "gemini"]
-    return ["inference", "gemini"]
+    return ["gemini", "inference"]
 
 
 def build_dialog_llm(cache_name: str | None = None):
