@@ -329,3 +329,20 @@ class TestCacheKeepsTheFallback:
 
     def test_the_chain_still_honours_the_pinned_order(self):
         assert main.dialog_order({"INTERVIEW_DIALOG_PROVIDER": "gemini"})[0] == "gemini"
+
+
+class TestDialogAttemptTimeout:
+    def test_it_clears_geminis_minimum_deadline(self):
+        # FallbackAdapter passes attempt_timeout down as the request deadline
+        # and defaults to 5s. Gemini rejects anything under 10s with a
+        # non-retryable 400, so every leg failed instantly and an interview
+        # ended with "all LLMs are unavailable" before its first question.
+        assert main.DIALOG_ATTEMPT_TIMEOUT_SECONDS >= 10
+
+    def test_it_is_tunable_without_a_deploy(self):
+        assert "INTERVIEW_DIALOG_ATTEMPT_TIMEOUT" in open("main.py", encoding="utf-8").read()
+
+    def test_the_adapter_is_constructed_with_it(self):
+        src = open("main.py", encoding="utf-8").read()
+        body = src[src.index("def build_dialog_llm("):src.index("def realtime_instructions(")]
+        assert "attempt_timeout=DIALOG_ATTEMPT_TIMEOUT_SECONDS" in body

@@ -200,6 +200,20 @@ DIALOG_MODEL = os.environ.get("INTERVIEW_DIALOG_MODEL", "google/gemini-3.6-flash
 # looks like the student's fault.
 DIALOG_FALLBACK_MODEL = os.environ.get("INTERVIEW_DIALOG_FALLBACK_MODEL", "gemini-3.6-flash")
 
+# FallbackAdapter passes attempt_timeout down as the provider request deadline,
+# and its default is 5s. Gemini REJECTS any deadline under 10s outright:
+#
+#   400 INVALID_ARGUMENT
+#   "Manually set deadline 5s is too short. Minimum allowed deadline is 10s."
+#
+# Non-retryable, so every leg failed instantly and the session gave up with
+# "all LLMs are unavailable" before asking a single question. A student's
+# retake died this way. Anything at or above 10s works; 15 leaves headroom for
+# a slow first token without making a genuinely dead leg hold the student up.
+DIALOG_ATTEMPT_TIMEOUT_SECONDS = float(
+    os.environ.get("INTERVIEW_DIALOG_ATTEMPT_TIMEOUT", "15")
+)
+
 
 # Explicit prompt caching. Implicit caching was measured at a 0% hit rate on
 # this prompt (systemInstruction does not qualify), while an explicit cache
@@ -341,8 +355,15 @@ def build_dialog_llm(cache_name: str | None = None):
         logger.warning("dialog LLM: %s with NO fallback", built[0][0])
         return built[0][1]
 
-    logger.info("dialog LLM: %s", " -> ".join(n for n, _ in built))
-    return llm_mod.FallbackAdapter([impl for _, impl in built])
+    logger.info(
+        "dialog LLM: %s (attempt timeout %ss)",
+        " -> ".join(n for n, _ in built),
+        DIALOG_ATTEMPT_TIMEOUT_SECONDS,
+    )
+    return llm_mod.FallbackAdapter(
+        [impl for _, impl in built],
+        attempt_timeout=DIALOG_ATTEMPT_TIMEOUT_SECONDS,
+    )
 
 # Sarvam voice configuration. STT defaults to adaptive language identification:
 # the cohort code-mixes English and Hindi mid-answer, and pinning en-IN drops or
