@@ -1,0 +1,14 @@
+import { readFileSync } from "fs";
+import { assembleInterviewGradingContext, interviewGradeSchema } from "@/lib/ai/interview-grading";
+import { structuredCall, gradingModel } from "@/lib/ai/client";
+const turns = JSON.parse(readFileSync("tmp/sim-transcript.json", "utf8")) as { speaker: string; text: string }[];
+const t0 = Date.now();
+const transcript = turns.map((t, i) => ({ turnNo: i + 1, speaker: t.speaker, text: t.text, startedAt: new Date(t0 + i * 25_000) }));
+const ctx = assembleInterviewGradingContext({ transcript: transcript as never, submissions: [], sectorName: null });
+const r = await structuredCall({ system: ctx.system, user: ctx.user, schema: interviewGradeSchema(), maxTokens: 2000, temperature: 0, model: gradingModel() });
+const rs = r.data.rubricScores as Record<string, { score: number; rationale: string }>;
+for (const [k, v] of Object.entries(rs)) console.log(`  ${k.padEnd(26)} ${String(v.score).padStart(2)}/50`);
+console.log(`  TOTAL ${r.data.total}/100  confidence ${r.data.confidence}`);
+const all = Object.values(rs).map(v => v.rationale).join(" ");
+console.log(`  second-person: ${/\byou\b/i.test(all)} · accusations: ${/dishonest|coach|fabricat|contradict/i.test(all)}`);
+process.exit(0);

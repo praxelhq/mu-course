@@ -32,9 +32,17 @@ export const POST = withAuth(async (req, { user }) => {
       // the transcript ends on a student turn with no pending question — /answer
       // would 409 forever. nextQuestion is idempotent for the agent-turn-last
       // case, so regenerate the question (completing if the budget says done).
+      //
+      // The `last.speaker === "student"` condition was the bug: an interview
+      // whose agent never posted a single turn — the realtime worker restarting
+      // as the student joined, the commonest failure there is — has NO last
+      // turn to hang that test on. It resumed with no pending question, and the
+      // turn-based room has no poll, so the student sat on "Waiting for the
+      // next question…" with no answer box, no error and no way out. Refreshing
+      // reproduced it exactly. Any live interview missing its question gets one.
       if (state.status === "live" && !state.pendingQuestion) {
         const last = state.turns[state.turns.length - 1];
-        if (last && last.speaker === "student") {
+        if (!last || last.speaker === "student") {
           const q = await nextQuestion(existing.id);
           if (q.done) await completeInterview(existing.id, user.userId);
           state = await getInterviewState(existing.id, user.userId);

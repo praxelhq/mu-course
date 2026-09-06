@@ -96,13 +96,16 @@ export default async function InterviewPage() {
       {latest && !canResume && (
         <Card style={{ marginBottom: "1.5rem" }}>
           <p style={{ margin: 0 }}>
+            {/* `escalated` deliberately reads EXACTLY like `graded`. The result
+                page goes to some length to keep the two indistinguishable, and
+                this line quietly told every flagged student they had been
+                flagged — which hands a cheater the feedback loop they need and
+                turns every borderline case into a dispute. */}
             {latest.status === "completed"
-              ? "Your interview is recorded. Grading takes a while — results will be shared after instructor review."
-              : latest.status === "escalated"
-                ? "Your interview is with an instructor for review. You'll hear once it's finalised."
-                : latest.status === "graded"
-                  ? "Your interview has been reviewed. Results are shared by your instructor."
-                  : "Your interview is on record."}
+              ? "Your interview is recorded and is being marked."
+              : latest.status === "graded" || latest.status === "escalated"
+                ? "Your interview is marked."
+                : "Your interview is on record."}
           </p>
           {retake && windowOpen && (
             <p style={{ margin: "0.75rem 0 0", color: "var(--charcoal)" }}>
@@ -112,7 +115,12 @@ export default async function InterviewPage() {
         </Card>
       )}
 
-      {latest && latest.status !== "completed" && latest.status !== "graded" && (
+      {/* Shown for a cut-off interview — but NOT for `escalated`, whose
+          presence here was itself a disclosure: graded students never saw it. */}
+      {latest &&
+        latest.status !== "completed" &&
+        latest.status !== "graded" &&
+        latest.status !== "escalated" && (
         <InterviewEscalation
           {...(() => {
             const mail = studentEscalationMail(

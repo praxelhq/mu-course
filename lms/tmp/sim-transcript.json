@@ -1,0 +1,98 @@
+[
+  {
+    "speaker": "agent",
+    "text": "Hello! Welcome to the interview. To start off, could you tell me a little about yourself and what you've been working on recently?"
+  },
+  {
+    "speaker": "student",
+    "text": "Hi, my name is Anudeep, I'm from the PGP Sports Management Program. Recently I've been working on a few projects around automation, mainly in the supply chain space \u2014 building workflows that reduce manual follow-up work. I've also got a background as a Senior Product Manager at MoEngage before this, so I've been trying to bring that same automation and workflow-design mindset into these projects, and a couple of others I'm still working on that aren't fully done yet."
+  },
+  {
+    "speaker": "agent",
+    "text": "Thanks for sharing that background. Looking back at your time as a Senior Product Manager at MoEngage, if you were asked to make your product or operations team more efficient using AI, what specific task would you automate first?"
+  },
+  {
+    "speaker": "student",
+    "text": "Honestly, the first thing I'd automate is the secondary research and competitive intelligence gathering piece \u2014 that's exactly the kind of thing I did as an associate consultant, where instead of manually scraping data for every industry report, I built workflows that pull data, summarise it, and draft it into a usable format. In a product role at MoEngage, that would translate to auto-tracking competitor feature releases, customer feedback threads, and support tickets, then summarising them so the PM isn't spending hours reading raw data before every roadmap decision. I'd still keep a human check on it though, because for actual prioritization decisions I wouldn't just trust the AI summary \u2014 I'd want to verify the underlying data myself before it goes into any real decision-making."
+  },
+  {
+    "speaker": "agent",
+    "text": "Got it. On the flip side of that, what is one task from that role that you would deliberately NOT hand over to an AI, and why?"
+  },
+  {
+    "speaker": "student",
+    "text": "I would deliberately not hand over the actual decision-making part \u2014 like final prioritization calls or market-entry recommendations. If my company wants me to understand the market, I wouldn't just prompt an AI \"give me the market data, give me the competitors\" and take that at face value, because I'm the one responsible for giving knowledgeable, verified insight to my upper management. So I'd use AI as one of my sources, but I'd still do my own due diligence \u2014 gathering and verifying the data myself \u2014 before it goes into anything that actually drives a key decision."
+  },
+  {
+    "speaker": "agent",
+    "text": "Understood. Thinking about the data involved in product operations at a company like MoEngage, what specific data would you be comfortable putting into a public AI tool, and what would you strictly keep out?"
+  },
+  {
+    "speaker": "student",
+    "text": "So the stuff I'd be comfortable putting in is generic, already-public information \u2014 like current market scenario, competitor financials that are public, or news articles about product launches that MoEngage or competitors have officially released. What I'd strictly keep out is anything unreleased \u2014 unreleased product specs, roadmap items, customer data, or internal metrics \u2014 basically nothing that hasn't already been made public by the company. And honestly I'd want a prior SOP in place that clearly states what's classified versus what's fair game, so it's not left to individual judgment every time someone uses the tool."
+  },
+  {
+    "speaker": "agent",
+    "text": "That makes sense. If you were building a custom AI tool for product management and wanted to make sure confidential roadmap details or customer data never leaked into a prompt, how would you prevent that in practice?"
+  },
+  {
+    "speaker": "student",
+    "text": "So practically, first I'd take a license of the AI tool that's scoped only to the company's environment, not the public version, so nothing we input trains an external model. Then I'd build a workflow layer on top that acts as a boundary check \u2014 if it detects something trying to pass externally outside the enterprise, like a roadmap doc or customer data leaving the system, it just restricts that particular request or flags it before it goes out. And on top of that, access would only be given through official company devices, official logins \u2014 similar to how Apple restricts its internal tools only to employer-issued devices \u2014 so it's not just policy on paper, it's actually enforced at the system level."
+  },
+  {
+    "speaker": "agent",
+    "text": "Let's say an American insurance enterprise wants to buy a custom web application built on a no-code AI platform like Lovable to process real customer claims. Would you be comfortable selling it to them as it stands?"
+  },
+  {
+    "speaker": "student",
+    "text": "No, I would not be comfortable selling it as it stands. Since we haven't licensed the app properly and haven't built the compliance layer around it, I wouldn't put genuine customer claims data through it \u2014 insurance claims data is heavily sensitive, financial and health-related information, and there'd be regulatory exposure like HIPAA or state insurance regulations on the US side. I'd first want proper technical and compliance steps in place \u2014 reporting protocols, data protection adherence similar to how I'd follow DPDP Act guidelines here in India, and I'd want to test it with masked or ghost data first to understand the trends and workflows before ever connecting it to a live customer's financial or claims account."
+  },
+  {
+    "speaker": "agent",
+    "text": "What specific technical or compliance steps would that application actually need before you could ship it to an enterprise insurance client?"
+  },
+  {
+    "speaker": "student",
+    "text": "Okay, so first, technically, I'd need the app running on a licensed, enterprise-scoped version of whatever LLM or platform is powering it \u2014 not the public Lovable build \u2014 so customer claims data isn't training any external model. Then I'd need that workflow layer I mentioned, where if any sensitive field like a claim number, SSN, or health data tries to move outside the enterprise boundary, the system flags or blocks it automatically, plus proper access control so only official, authenticated systems can log in, not just any device.\n\nOn the compliance side, since it's a US insurance client, I'd need to map it against whatever's equivalent to our DPDP Act there \u2014 so things like HIPAA if health data's involved, state insurance data protection laws, and a clear reporting protocol to authorities if there's ever a breach, with sign-off from upper management before that decision's even taken. And before any of that, I'd want to run it end-to-end with masked or ghost claims data, not real customer accounts, just to validate the workflow's actually doing what it's supposed to before it touches genuine customer information."
+  },
+  {
+    "speaker": "agent",
+    "text": "Got it. Now moving to RAG and connectors: if you wanted to package one task you do repeatedly into a reusable skill or connector that an AI assistant could run for you, what would that task be, and why that one?"
+  },
+  {
+    "speaker": "student",
+    "text": "Honestly, it'd be the competitor comparison research task \u2014 like when I was doing secondary research for, say, the pharmaceutical or supply chain industry, and I'd have to pull market data, who the competitors are, their financials, all from scratch every single time. So I'd build a skill where employees can just say \"compare these two competitors\" for a given industry at any point, and it instantly pulls structured data instead of them redoing secondary research manually. I picked that one because it's the most repetitive and time-consuming part of consulting-style work, and it directly saves the most hours if automated well."
+  },
+  {
+    "speaker": "agent",
+    "text": "How would you test or evaluate whether that competitor comparison skill was actually giving you reliable, accurate insights, rather than just generating confident-sounding text?"
+  },
+  {
+    "speaker": "student",
+    "text": "So I wouldn't just trust the output directly, I'd cross-verify it against actual primary sources \u2014 like if it's giving me a competitor's financials, I'd check that against their actual annual report or official filings, not just take the number as is. Similarly to how I mentioned the 3PL margin figure, I'd treat AI-generated numbers as a benchmark or direction rather than a guaranteed figure, and only after validating a sample of outputs against real data would I trust the skill to scale across other competitors or industries.\n\nI'd also build in source citations as part of the skill itself, so whenever it gives me a number or insight, it has to show where it pulled that from \u2014 that way I'm not just getting confident-sounding text, I can actually trace it back and do my own due diligence before it goes into a report for upper management."
+  },
+  {
+    "speaker": "agent",
+    "text": "Now, let's talk about the actual workflow blueprint and sector map you submitted for this course. Talk me through the Make blueprint workflow you built step by step, including how it triggers and what branches it uses."
+  },
+  {
+    "speaker": "student",
+    "text": ""
+  },
+  {
+    "speaker": "agent",
+    "text": "Could you please share the details of the Make blueprint workflow you built? Tell me step-by-step how it triggers, what its main branches do, and how you set it up."
+  },
+  {
+    "speaker": "student",
+    "text": "So this one's actually a content summarization workflow, different from the vendor one I built earlier. It triggers off a Google Sheet where I have a list of article URLs, so it reads each row from the sheet first. Then for each URL, it makes an HTTP call to fetch that page's raw content, strips out all the HTML tags since I just need the actual text, and passes that cleaned text into an AI module to generate a summary.\n\nThen the last step writes that summary back into the same row in the sheet, so I can just glance at the sheet and get a gist of every article without opening each one. In terms of branches, it's fairly linear right now \u2014 read sheet, fetch, strip, summarize, write back \u2014 I haven't built in a filter to check if a row's already been summarized, so if I run it again it'll just resummarize everything, and I also don't have an error handler on the HTTP module, so if a URL is broken or times out the whole run just"
+  },
+  {
+    "speaker": "agent",
+    "text": "What happens in that workflow if one of those HTTP calls times out or returns a broken link, and how would you fix that to make it more reliable?"
+  },
+  {
+    "speaker": "student",
+    "text": "Right now since there's no error handler on that HTTP module, if one URL is broken or times out, it just breaks the whole run \u2014 the scenario stops and none of the rows after that one get processed, which isn't reliable at all. To fix it, I'd add an error handler path, like a resume or ignore route, so if that particular HTTP call fails, it logs the failure against that row and just moves to the next URL instead of halting everything.\n\nI'd also add a retry mechanism, maybe two or three attempts with a delay before marking it as failed, similar to what I mentioned for the vendor workflow \u2014 that way genuine timeouts get a second chance, but a truly broken link doesn't block the rest of the sheet from getting summarized."
+  }
+]

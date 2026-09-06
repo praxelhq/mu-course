@@ -321,6 +321,12 @@ export async function commitPrerequisite(
       contentType: metadata.contentType,
       sizeBytes: metadata.contentLength,
       extractedText,
+      // The digest describes the PREVIOUS file. The prompt builder prefers a
+      // digest over raw text and counts one as proof the artifact is readable,
+      // so leaving it here meant a student who replaced their blueprint was
+      // then interrogated about the file they had just replaced.
+      digest: null,
+      digestedAt: null,
     },
   });
 

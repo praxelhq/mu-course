@@ -30,6 +30,7 @@ import { handlePortfolioCrawl } from "./jobs/portfolio-crawl";
 import { handlePreparePrerequisite } from "./jobs/prepare-prerequisite";
 import { markAssessmentSubmissionDeadLettered } from "../lib/assessments/dead-letter";
 import { reconcileGradeSubmissionDeadLetters } from "./jobs/reconcile-grade-dead-letters";
+import { sweepInterviews } from "./jobs/sweep-interviews";
 import { handleRetentionCleanup } from "./jobs/retention-cleanup";
 import {
   parseHeartbeatIntervalSeconds,
@@ -170,7 +171,23 @@ async function main() {
       );
     }
   };
+  // Interviews that fell through: completed-but-ungraded, and abandoned live
+  // rooms. Runs on the same cadence as the submission reconciler.
+  const sweep = async () => {
+    const result = await sweepInterviews();
+    if (result.requeued > 0 || result.reaped > 0) {
+      console.log(
+        `[interview-sweep] requeued=${result.requeued} reaped=${result.reaped}`,
+      );
+    }
+  };
+
   await reconcileDeadLetters();
+  await sweep();
+  const interviewSweepTimer = setInterval(() => {
+    void sweep().catch((error) => console.error("[interview-sweep] failed", error));
+  }, 60_000);
+  interviewSweepTimer.unref();
   const deadLetterReconcileTimer = setInterval(() => {
     void reconcileDeadLetters().catch((error) =>
       console.error("[grading] dead-letter reconciliation failed", error),

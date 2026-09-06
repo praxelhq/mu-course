@@ -78,6 +78,8 @@ export function MeetingView({
   const endedRef = useRef(false);
   const railRef = useRef<HTMLDivElement | null>(null);
   const agentPresentRef = useRef(false);
+  // When the interviewer last actually SPOKE — a published track is not speech.
+  const lastAgentAtRef = useRef(0);
   const turnsRef = useRef<Turn[]>([]);
 
   const isConnected = connectionState === ConnectionState.Connected;
@@ -175,17 +177,32 @@ export function MeetingView({
   // sit watching themselves until the budget expires, and the budget is
   // enforced by the agent that is not there. Degrade to the turn-based loop,
   // which keeps the same interview and the same attempt.
+  //
+  // Two things were wrong with this. It counted a SUBSCRIBED AUDIO TRACK as
+  // having heard from the interviewer, so an agent that joined and published
+  // silence — a dead dialog loop, which is exactly what a quota outage
+  // produces — passed forever while the student sat watching themselves. And
+  // it was one-shot, so an agent that spoke once and then died was never
+  // noticed at all. Only an actual agent TURN counts now, and the check
+  // repeats: if the student has spoken and no agent turn has followed within
+  // the grace period, the interviewer is gone whatever its track says.
   useEffect(() => {
     if (connectedAt === null) return;
-    const timer = setTimeout(() => {
+    const interval = setInterval(() => {
       if (endedRef.current) return;
-      const heardFromInterviewer =
-        agentPresentRef.current || turnsRef.current.some((t) => t.speaker === "agent");
-      if (heardFromInterviewer) return;
+      const turns = turnsRef.current;
+      const agentTurns = turns.filter((t) => t.speaker === "agent");
+      const lastAgentAt = agentTurns.length && lastAgentAtRef.current ? lastAgentAtRef.current : connectedAt;
+      const waitedTooLong = Date.now() - lastAgentAt > NO_AGENT_GRACE_MS;
+      if (!waitedTooLong) return;
+      // Before the first question, silence alone is enough. After it, only
+      // treat it as dead if the student is actually waiting on a reply.
+      const studentSpokeLast = turns.length > 0 && turns[turns.length - 1].speaker === "student";
+      if (agentTurns.length > 0 && !studentSpokeLast) return;
       endedRef.current = true;
-      onFallback("no-interviewer");
-    }, NO_AGENT_GRACE_MS);
-    return () => clearTimeout(timer);
+      onFallback(agentTurns.length === 0 ? "no-interviewer" : "interviewer-stopped");
+    }, 5_000);
+    return () => clearInterval(interval);
   }, [connectedAt, onFallback]);
 
   const cameraTrack = useTracks([Track.Source.Camera], { onlySubscribed: false }).find(
@@ -200,6 +217,9 @@ export function MeetingView({
     agentPresentRef.current = Boolean(agentAudio);
   }, [agentAudio]);
   useEffect(() => {
+    const hadAgentTurns = turnsRef.current.filter((t) => t.speaker === "agent").length;
+    const hasAgentTurns = turns.filter((t) => t.speaker === "agent").length;
+    if (hasAgentTurns > hadAgentTurns) lastAgentAtRef.current = Date.now();
     turnsRef.current = turns;
   }, [turns]);
 

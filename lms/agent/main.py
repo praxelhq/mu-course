@@ -576,8 +576,12 @@ class LmsClient:
         audio_reservation_id: str | None,
         video_s3_key: str | None = None,
         video_reservation_id: str | None = None,
+        finished: bool = False,
     ) -> None:
-        body: dict = {"interviewId": interview_id}
+        # `finished` is the ONLY thing that may end an interview. A shutdown
+        # reports the recording and nothing else: the worker dying, a deploy,
+        # or a student's wifi blipping must never mark their interview done.
+        body: dict = {"interviewId": interview_id, "finished": finished}
         if audio_s3_key and audio_reservation_id:
             body["audioS3Key"] = audio_s3_key
             body["audioReservationId"] = audio_reservation_id
@@ -831,14 +835,18 @@ async def entrypoint(ctx) -> None:
     egress = Egress(room_name, video_key)
     await egress.start()
 
-    async def stop_and_report_recording() -> None:
+    async def stop_and_report_recording(finished: bool = False) -> None:
         """Stop Egress and report the key exactly once.
 
-        Registered as a shutdown callback as well as being called on the normal
-        path: when the student degrades to the turn-based loop mid-interview,
-        agent-turn posts start returning 409 and this worker shuts down with
-        the recording still running. Without this the video of every degraded
-        interview would be orphaned in S3 with no row pointing at it.
+        Runs on the normal path AND as a shutdown callback, because a recording
+        with no row pointing at it is lost either way. But only the normal path
+        passes finished=True.
+
+        This used to complete the interview on ANY shutdown. A student whose
+        connection blipped — or who simply refreshed the page — had their
+        interview marked done and sent to grading while they were still in it,
+        and a deploy did the same to everyone live. The docstring claimed the
+        LMS guarded against that; it did not.
         """
         if getattr(stop_and_report_recording, "_done", False):
             return
@@ -850,10 +858,15 @@ async def entrypoint(ctx) -> None:
             None,
             video_s3_key=key,
             video_reservation_id=video_reservation_id if key else None,
+            finished=finished,
         )
         await lms.flush()
 
-    ctx.add_shutdown_callback(stop_and_report_recording)
+    async def report_recording_only() -> None:
+        # Shutdown of any kind: keep the recording, leave the interview alone.
+        await stop_and_report_recording(finished=False)
+
+    ctx.add_shutdown_callback(report_recording_only)
 
     started_at = time.monotonic()
     finished = asyncio.Event()
@@ -914,6 +927,12 @@ async def entrypoint(ctx) -> None:
                 )
             except Exception as err:  # noqa: BLE001 — never block the greeting
                 logger.warning("wait_for_participant failed for %s: %s", interview_id, err)
+            # The budget and the end-guard release both count from here, not
+            # from process start: a student who takes two minutes to get their
+            # camera working was otherwise handed an 18-minute interview whose
+            # guard released before the own-work segment was reachable.
+            nonlocal started_at
+            started_at = time.monotonic()
             self.session.generate_reply(
                 instructions=(
                     "Greet the student warmly in one or two sentences, then ask "
@@ -926,13 +945,31 @@ async def entrypoint(ctx) -> None:
     # One cache per interview: the instructions carry this student's own
     # artifacts, so nothing is shareable between them. Created before the
     # session so a failure simply means an uncached (dearer) interview.
-    prompt_cache = create_prompt_cache(
-        realtime_instructions(context.get("systemPrompt", ""))
-    )
+    # google-genai's sync client builds its httpx client with timeout=None, so
+    # this is an unbounded blocking call on the job's event loop — a Gemini
+    # stall here freezes the agent before the session even starts, with the
+    # student already in the room. Off-thread, with a hard ceiling.
+    try:
+        prompt_cache = await asyncio.wait_for(
+            asyncio.to_thread(
+                create_prompt_cache, realtime_instructions(context.get("systemPrompt", ""))
+            ),
+            timeout=20,
+        )
+    except (asyncio.TimeoutError, Exception) as err:  # noqa: BLE001
+        logger.warning("prompt cache setup skipped for %s: %s", interview_id, err)
+        prompt_cache = None
 
     async def drop_prompt_cache() -> None:
-        # Storage bills per hour; a cache outliving its interview is waste.
-        delete_prompt_cache(prompt_cache)
+        # Same blocking-client problem, and this one runs inside the shutdown
+        # gather where Railway's kill window is already ticking. The TTL is the
+        # real guarantee, so give it a few seconds and move on.
+        try:
+            await asyncio.wait_for(
+                asyncio.to_thread(delete_prompt_cache, prompt_cache), timeout=5
+            )
+        except Exception:  # noqa: BLE001
+            pass
 
     if prompt_cache:
         ctx.add_shutdown_callback(drop_prompt_cache)
@@ -972,6 +1009,27 @@ async def entrypoint(ctx) -> None:
                 return
             await asyncio.sleep(5)
 
+    # If every LLM leg fails, AgentSession closes ITSELF. Nothing used to
+    # notice: `finished` stayed unset, the student got dead air until the
+    # 20-minute budget expired, and the fragment was then completed and graded.
+    aborted = False
+
+    def on_session_close(_ev=None) -> None:
+        nonlocal aborted
+        if not finished.is_set():
+            aborted = True
+            logger.error(
+                "interview %s: session closed on its own after %s questions — "
+                "NOT completing, leaving it live so the student can rejoin",
+                interview_id, question_count,
+            )
+            finished.set()
+
+    try:
+        session.on("close", on_session_close)
+    except Exception as err:  # noqa: BLE001 — never fail startup over a listener
+        logger.warning("could not watch session close for %s: %s", interview_id, err)
+
     watcher = asyncio.create_task(budget_watch())
     await finished.wait()
     watcher.cancel()
@@ -986,7 +1044,9 @@ async def entrypoint(ctx) -> None:
     except Exception:  # noqa: BLE001
         pass
 
-    await stop_and_report_recording()
+    # An aborted session reports its recording and stops there. Completing it
+    # would grade whatever fragment exists and burn the student's one attempt.
+    await stop_and_report_recording(finished=not aborted)
     try:
         await session.aclose()
     except Exception:  # noqa: BLE001

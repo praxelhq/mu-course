@@ -580,18 +580,23 @@ export async function getGradeLine(userId: string): Promise<GradeLine> {
     pci: pci.pci,
   });
 
-  // --- §4 AI interview (graded only; escalated stays pending until resolved) ---
+  // --- §4 AI interview ---------------------------------------------------------
+  // `escalated` is scored exactly like `graded`, and says the same thing. It
+  // used to sit at "—" with the detail "Interview under instructor review
+  // (escalated)", which told the student outright that they had been flagged —
+  // while the result page was already showing them the same score. Two
+  // surfaces disagreeing, and the disagreement itself was the disclosure. An
+  // instructor adjustment rewrites the scores and this line follows it.
+  const interviewGraded =
+    interview?.status === "graded" || interview?.status === "escalated";
   const interviewScores =
-    interview?.status === "graded" &&
-    interview.rubricScores &&
+    interviewGraded &&
+    interview?.rubricScores &&
     typeof interview.rubricScores === "object" &&
     !Array.isArray(interview.rubricScores)
       ? (interview.rubricScores as Record<string, number>)
       : null;
   const interviewComponent = aiInterview({ rubricScores: interviewScores });
-  if (interview?.status === "escalated") {
-    interviewComponent.detail = "Interview under instructor review (escalated).";
-  }
 
   // --- §5 peer contribution (standalone) ---------------------------------------
   const peer = peerContribution({

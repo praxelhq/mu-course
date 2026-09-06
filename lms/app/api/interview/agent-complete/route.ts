@@ -24,6 +24,8 @@ const bodySchema = z
     audioReservationId: z.string().min(1).max(500).optional(),
     videoS3Key: z.string().min(1).max(500).optional(),
     videoReservationId: z.string().min(1).max(500).optional(),
+    /** True only from the agent's normal end path. Absent/false = shutdown. */
+    finished: z.boolean().optional(),
   })
   .refine((body) => Boolean(body.audioS3Key) === Boolean(body.audioReservationId))
   .refine((body) => Boolean(body.videoS3Key) === Boolean(body.videoReservationId));
@@ -34,13 +36,13 @@ export async function POST(req: Request): Promise<Response> {
 
   const parsed = bodySchema.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return Response.json({ error: "Invalid body" }, { status: 400 });
-  const { interviewId, audioS3Key, audioReservationId, videoS3Key, videoReservationId } =
+  const { interviewId, audioS3Key, audioReservationId, videoS3Key, videoReservationId, finished } =
     parsed.data;
 
   try {
     const interview = await prisma.interview.findUnique({
       where: { id: interviewId },
-      select: { userId: true },
+      select: { userId: true, transport: true, status: true },
     });
     if (!interview) return Response.json({ error: "Interview not found." }, { status: 404 });
 
@@ -59,8 +61,23 @@ export async function POST(req: Request): Promise<Response> {
       await commitInterviewVideo({ interviewId, reservationId: videoReservationId, s3Key: videoS3Key });
     }
 
+    // The recording is always committed above; completion is not automatic.
+    //
+    // Two ways this route used to end an interview it had no business ending:
+    // the agent posts here from its SHUTDOWN callback, so a worker restart, a
+    // deploy, or a student refreshing the page marked them complete and sent a
+    // fragment to grading; and once a student had degraded to the turn-based
+    // loop the agent was no longer the thing conducting their interview, yet
+    // its shutdown still finished it underneath them.
+    if (!finished) {
+      return Response.json({ ok: true, completed: false, reason: "recording-only" });
+    }
+    if (interview.transport && interview.transport !== "realtime") {
+      return Response.json({ ok: true, completed: false, reason: "not-realtime" });
+    }
+
     await completeInterview(interviewId, interview.userId);
-    return Response.json({ ok: true });
+    return Response.json({ ok: true, completed: true });
   } catch (err) {
     const mapped = interviewErrorResponse(err);
     if (mapped) return mapped;
