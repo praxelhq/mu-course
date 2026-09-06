@@ -4,7 +4,7 @@ import { structuredCall, type StructuredCaller } from "@/lib/ai/client";
 import { extractSubmissionFiles } from "@/lib/ai/extract";
 import { PREREQUISITE_TEXT_CAP } from "@/lib/interview/prerequisites";
 import {
-  DIGEST_SYSTEM,
+  digestSystem,
   buildDigestUser,
   digestModel,
   digestSchema,
@@ -82,7 +82,7 @@ export async function handlePreparePrerequisite(
   const call = deps.model ?? (structuredCall as StructuredCaller);
   const model = digestModel();
   const result = await call({
-    system: DIGEST_SYSTEM,
+    system: digestSystem(data.kind),
     user: buildDigestUser(text),
     schema: digestSchema(),
     maxTokens: 1_500,

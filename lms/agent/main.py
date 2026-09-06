@@ -192,6 +192,42 @@ def own_work_covered(agent_utterances: "list[str]") -> bool:
 # that may be engineered to manipulate the grade. The latency gap is small next
 # to the STT+TTS round trip; the instruction-following gap is not.
 DIALOG_MODEL = os.environ.get("INTERVIEW_DIALOG_MODEL", "google/gemini-3.6-flash")
+# The same model reached directly, as a fallback. LiveKit Inference is metered
+# against a gateway credit that four interviews were enough to exhaust; when it
+# returned 429 the agent joined, Sarvam transcribed the student fine, and the
+# interviewer said nothing at all for the whole call. Three students sat through
+# that. A mute interviewer is the worst failure this system has, because it
+# looks like the student's fault.
+DIALOG_FALLBACK_MODEL = os.environ.get("INTERVIEW_DIALOG_FALLBACK_MODEL", "gemini-3.6-flash")
+
+
+def build_dialog_llm():
+    """Primary LiveKit Inference, with direct Gemini behind it.
+
+    Same model either way, so a failover changes who is billed and nothing the
+    student can hear.
+    """
+    from livekit.agents import inference
+    from livekit.agents import llm as llm_mod
+
+    primary = inference.LLM(model=DIALOG_MODEL)
+    key = os.environ.get("GEMINI_API_KEY")
+    if not key:
+        logger.warning(
+            "no GEMINI_API_KEY — dialog LLM has NO fallback; an inference quota "
+            "error will leave the interviewer silent for the whole call"
+        )
+        return primary
+    try:
+        from livekit.plugins import google
+
+        backup = google.LLM(model=DIALOG_FALLBACK_MODEL, api_key=key)
+    except Exception as err:  # noqa: BLE001 — never lose the primary over the backup
+        logger.error("dialog fallback unavailable (%s) — running without one", err)
+        return primary
+
+    logger.info("dialog LLM: %s -> %s (fallback)", DIALOG_MODEL, DIALOG_FALLBACK_MODEL)
+    return llm_mod.FallbackAdapter([primary, backup])
 
 # Sarvam voice configuration. STT defaults to adaptive language identification:
 # the cohort code-mixes English and Hindi mid-answer, and pinning en-IN drops or
@@ -773,7 +809,7 @@ async def entrypoint(ctx) -> None:
     stt, tts = build_voice_components()
     session = AgentSession(
         stt=stt,
-        llm=inference.LLM(model=DIALOG_MODEL),
+        llm=build_dialog_llm(),
         tts=tts,
         vad=silero.VAD.load(),
     )

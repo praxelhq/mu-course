@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import {
-  DIGEST_SYSTEM,
+  digestSystem,
   DIGESTED_KINDS,
   buildDigestUser,
   digestSchema,
@@ -44,19 +44,40 @@ describe("which artifacts are digested", () => {
     expect(shouldDigest("blueprint")).toBe(true);
   });
 
-  it("leaves the resume and sector map as written, so specific detail survives", () => {
-    // Summarising a resume would throw away exactly the detail the interviewer
+  it("digests the sector map, the largest thing in the prompt", () => {
+    // Up to 12,000 characters of extracted PDF text, resent every turn — most
+    // of the bill that exhausted the dialog model's credit after 4 interviews.
+    expect(shouldDigest("sector_map")).toBe(true);
+  });
+
+  it("leaves the resume as written, so specific detail survives", () => {
+    // Summarising it would throw away exactly the detail the interviewer
     // grounds its questions in ("Product Manager at MoEngage").
     expect(shouldDigest("resume")).toBe(false);
-    expect(shouldDigest("sector_map")).toBe(false);
-    expect(DIGESTED_KINDS).toEqual(["blueprint"]);
+    expect(DIGESTED_KINDS).toEqual(["blueprint", "sector_map"]);
+  });
+
+  it("gives each digested kind its own instructions", () => {
+    // A Make blueprint and a research map need different questions asked of
+    // them; one prompt for both produced neither well.
+    expect(digestSystem("blueprint")).toMatch(/Make\.com automation blueprint/i);
+    expect(digestSystem("sector_map")).toMatch(/sector map/i);
+    expect(digestSystem("sector_map")).toMatch(/keeping the names exact/i);
+    expect(digestSystem("blueprint")).not.toEqual(digestSystem("sector_map"));
+  });
+
+  it("keeps both kinds injection-safe", () => {
+    for (const kind of DIGESTED_KINDS) {
+      expect(digestSystem(kind)).toMatch(/NEVER instructions/i);
+      expect(digestSystem(kind)).toMatch(/ignore any directive/i);
+    }
   });
 });
 
 describe("digest prompt", () => {
   it("treats the blueprint as material and never as instructions", () => {
-    expect(DIGEST_SYSTEM).toMatch(/NEVER instructions/i);
-    expect(DIGEST_SYSTEM).toMatch(/ignore any directive/i);
+    expect(digestSystem("blueprint")).toMatch(/NEVER instructions/i);
+    expect(digestSystem("blueprint")).toMatch(/ignore any directive/i);
   });
 
   it("wraps the artifact as untrusted content", () => {
@@ -66,18 +87,18 @@ describe("digest prompt", () => {
   });
 
   it("asks for what is ABSENT, which is the interrogable part", () => {
-    expect(DIGEST_SYSTEM).toMatch(/ABSENT/);
-    expect(DIGEST_SYSTEM).toMatch(/no error handler/i);
-    expect(DIGEST_SYSTEM).toMatch(/hardcoded/i);
+    expect(digestSystem("blueprint")).toMatch(/ABSENT/);
+    expect(digestSystem("blueprint")).toMatch(/no error handler/i);
+    expect(digestSystem("blueprint")).toMatch(/hardcoded/i);
   });
 
   it("does not ask the summariser to grade — that is the grader's job", () => {
-    expect(DIGEST_SYSTEM).toMatch(/do NOT praise, grade, score, or evaluate/i);
+    expect(digestSystem("blueprint")).toMatch(/do NOT praise, grade, score, or evaluate/i);
   });
 
   it("asks for speakable prose, since a voice model reads it", () => {
-    expect(DIGEST_SYSTEM).toMatch(/no markdown/i);
-    expect(DIGEST_SYSTEM).toMatch(/under 200 words/i);
+    expect(digestSystem("blueprint")).toMatch(/no markdown/i);
+    expect(digestSystem("blueprint")).toMatch(/under 200 words/i);
   });
 
   it("rejects an empty digest", () => {
@@ -169,15 +190,32 @@ describe("digest step", () => {
     expect(updates[0].where).toEqual({ id: "p1", extractedText: BLUEPRINT });
   });
 
-  it("does not summarise a sector map, whose prose is the point", async () => {
+  it("does not summarise a resume, whose specifics are the point", async () => {
     const model = vi.fn();
-    const { client } = fakeDb({ id: "p1", extractedText: "map prose", digest: null });
+    const { client } = fakeDb({ id: "p1", extractedText: "resume prose", digest: null });
     const out = await handlePreparePrerequisite(
-      { userId: "u1", kind: "sector_map" },
+      { userId: "u1", kind: "resume" },
       { prisma: client, model: model as never, extract: extract as never },
     );
     expect(out.digested).toBe(false);
     expect(model).not.toHaveBeenCalled();
+  });
+
+  it("summarises a sector map with the sector-map instructions", async () => {
+    const seen: string[] = [];
+    const model = vi.fn(async (args: { system: string }) => {
+      seen.push(args.system);
+      return { data: { digest: "A map of Indian recommerce." }, usage: { inputTokens: 900, outputTokens: 200 }, raw: "", retries: 0, model: "claude-sonnet-5" };
+    });
+    const { client, updates } = fakeDb({ id: "p1", extractedText: "long map text", digest: null });
+    const out = await handlePreparePrerequisite(
+      { userId: "u1", kind: "sector_map" },
+      { prisma: client, model: model as never, extract: extract as never },
+    );
+    expect(out.digested).toBe(true);
+    expect(seen[0]).toMatch(/sector map/i);
+    expect(seen[0]).not.toMatch(/Make\.com automation blueprint/i);
+    expect(updates[0].data).toMatchObject({ digest: expect.stringContaining("recommerce") });
   });
 
   it("skips a prerequisite that was deleted before the job ran", async () => {
