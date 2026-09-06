@@ -201,33 +201,53 @@ DIALOG_MODEL = os.environ.get("INTERVIEW_DIALOG_MODEL", "google/gemini-3.6-flash
 DIALOG_FALLBACK_MODEL = os.environ.get("INTERVIEW_DIALOG_FALLBACK_MODEL", "gemini-3.6-flash")
 
 
-def build_dialog_llm():
-    """Primary LiveKit Inference, with direct Gemini behind it.
+def dialog_order(env: Mapping[str, str] = os.environ) -> list[str]:
+    """Which dialog LLM leads. INTERVIEW_DIALOG_PROVIDER=gemini|inference.
 
-    Same model either way, so a failover changes who is billed and nothing the
-    student can hear.
+    A FallbackAdapter only helps if the leader usually works. Once LiveKit's
+    gateway credit is exhausted it 429s on EVERY turn, and the student pays for
+    the failed attempt and its retries before the fallback answers — a student
+    typed "You can start asking questions" and left after two minutes of it.
+    While that credit is dead, Gemini has to lead.
+    """
+    pinned = (env.get("INTERVIEW_DIALOG_PROVIDER") or "").strip().lower()
+    if pinned == "gemini":
+        return ["gemini", "inference"]
+    if pinned == "inference":
+        return ["inference", "gemini"]
+    return ["inference", "gemini"]
+
+
+def build_dialog_llm():
+    """The dialog LLM chain, same model on both legs.
+
+    A failover changes who is billed and nothing the student can hear — but it
+    costs a round trip, so the order matters when one leg is known-dead.
     """
     from livekit.agents import inference
     from livekit.agents import llm as llm_mod
 
-    primary = inference.LLM(model=DIALOG_MODEL)
     key = os.environ.get("GEMINI_API_KEY")
-    if not key:
-        logger.warning(
-            "no GEMINI_API_KEY — dialog LLM has NO fallback; an inference quota "
-            "error will leave the interviewer silent for the whole call"
-        )
-        return primary
-    try:
-        from livekit.plugins import google
+    built: list[tuple[str, object]] = []
+    for name in dialog_order():
+        if name == "inference":
+            built.append(("inference", inference.LLM(model=DIALOG_MODEL)))
+        elif key:
+            try:
+                from livekit.plugins import google
 
-        backup = google.LLM(model=DIALOG_FALLBACK_MODEL, api_key=key)
-    except Exception as err:  # noqa: BLE001 — never lose the primary over the backup
-        logger.error("dialog fallback unavailable (%s) — running without one", err)
-        return primary
+                built.append(("gemini", google.LLM(model=DIALOG_FALLBACK_MODEL, api_key=key)))
+            except Exception as err:  # noqa: BLE001 — never lose a leg over the other
+                logger.error("gemini dialog leg unavailable: %s", err)
 
-    logger.info("dialog LLM: %s -> %s (fallback)", DIALOG_MODEL, DIALOG_FALLBACK_MODEL)
-    return llm_mod.FallbackAdapter([primary, backup])
+    if not built:
+        raise RuntimeError("no dialog LLM could be constructed")
+    if len(built) == 1:
+        logger.warning("dialog LLM: %s with NO fallback", built[0][0])
+        return built[0][1]
+
+    logger.info("dialog LLM: %s", " -> ".join(n for n, _ in built))
+    return llm_mod.FallbackAdapter([impl for _, impl in built])
 
 # Sarvam voice configuration. STT defaults to adaptive language identification:
 # the cohort code-mixes English and Hindi mid-answer, and pinning en-IN drops or

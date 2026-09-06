@@ -260,3 +260,23 @@ class TestVoiceFailover:
             "SARVAM_API_KEY",
             *main.LEGACY_VOICE_ENV,
         ]
+
+
+class TestDialogOrder:
+    def test_default_leads_with_inference(self):
+        assert main.dialog_order({}) == ["inference", "gemini"]
+
+    def test_gemini_can_be_pinned_to_lead(self):
+        # Once LiveKit's credit is exhausted it 429s on every turn, and the
+        # student waits through the failed attempt before the fallback answers.
+        assert main.dialog_order({"INTERVIEW_DIALOG_PROVIDER": "gemini"}) == ["gemini", "inference"]
+
+    def test_inference_can_be_pinned_back(self):
+        assert main.dialog_order({"INTERVIEW_DIALOG_PROVIDER": "inference"}) == ["inference", "gemini"]
+
+    def test_a_meaningless_pin_falls_back_to_the_default(self):
+        assert main.dialog_order({"INTERVIEW_DIALOG_PROVIDER": "banana"}) == ["inference", "gemini"]
+
+    def test_both_legs_are_always_present(self):
+        for env in ({}, {"INTERVIEW_DIALOG_PROVIDER": "gemini"}):
+            assert sorted(main.dialog_order(env)) == ["gemini", "inference"]
