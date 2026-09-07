@@ -1,0 +1,37 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 8,
+    "accuracy": 7,
+    "visual": 7.5,
+    "bonus": 3
+  },
+  "what_worked": "Investment-committee funnel is genuinely original, with self-aware limitations and a coherent thesis throughout.",
+  "fix_next": "The deck never engages the broader dataset (category medians, provider splits, missingness rates); anchor your filters against published benchmarks to prove thresholds aren't arbitrary.",
+  "verdict": "Rigorous, opinionated screening narrative with strong editorial craft but narrow dataset engagement.",
+  "flags": [
+    "narrow-dataset-coverage",
+    "unverifiable-intermediate-counts",
+    "no-charts"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 3: Tier counts 12+37+36=85 is internally consistent but thresholds/tier stats cannot be verified against reference data. Slide 7: Postiz listed as 'HK · Social Media' — category field is among the 274 missing rows for many companies, and country has 241 missing; claims about specific company metadata are plausible but unverifiable. Slide 4/5: The MRR-to-cash ratio methodology is sound in concept but the specific company-level numbers (e.g., Apiframe 0.79, Supergrow 2.47) cannot be cross-checked against the frozen reference, so accuracy is taken on trust. No material arithmetic errors detected against verifiable benchmarks, but the deck makes almost no claims that can be checked against the frozen reference stats (total revenue, category breakdowns, provider shares, etc.), which limits accuracy verification. Counted as ~2 soft errors: the deck's complete avoidance of any checkable aggregate statistic means its analytical pipeline is essentially unauditable.",
+  "evidence": {
+    "insight": "The four-cut funnel (revenue gates → scorecard → integrity checks → diligence screen) is a genuinely original analytical framework. The MRR-to-cash ratio as an integrity check (slide 4) is a sophisticated idea. The 'for sale' validation of tier quality (slide 3) is clever. Risk callouts per pick (slide 7) and the limitations slide (slide 8) show real analytical maturity.",
+    "narrative": "Perfect sequential structure: title sets up the funnel, each slide is one cut with clear entry/exit counts, culminating in four names with allocation weights and a closing limitations slide. The thesis ('from a thousand to four') is stated on slide 1 and delivered on slide 6. Every slide earns its place.",
+    "framing": "The investment-committee framing is clear to a cold reader. Scope is defined (1,000 companies, four cuts). Limitations are explicitly addressed on slide 8. However, the deck never defines its audience beyond 'investment committee,' never states what dataset this is or its provenance, and never contextualizes against the broader dataset's characteristics (missingness, category distribution, provider landscape).",
+    "accuracy": "The deck operates almost entirely at the company level with derived metrics (ARR, ARPU, MRR/cash ratios) that cannot be verified against the frozen reference. It makes no claims about total revenue, category medians, provider shares, or other checkable aggregates. The claim that MRR/subscriptions/trailing revenue are '100% populated' is consistent with the reference (0 missing for those fields). The 216 zero-revenue companies would affect the 1000→409 filter. No obvious arithmetic contradictions within the deck itself.",
+    "visual": "Clean, restrained design with consistent navy/white palette. Tables are well-structured and legible. The funnel visualization on slide 2 is effective. No charts at all — the entire deck is text and tables, which is a deliberate choice that works for this format but means no data visualization craft to evaluate. Slide 6 and 7 use card layouts effectively. Color coding (green/red/orange) for pass/fail/conditional is intuitive.",
+    "ai_slop": "none — the writing is precise, domain-specific, and avoids filler language. Each sentence carries information. The investment-committee voice is consistent and earned rather than performative."
+  },
+  "confidence": "medium",
+  "total": 83,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 16625,
+    "output_tokens": 1013
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 2,
+    "narrative": 3,
+    "framing": 2.5,
+    "accuracy": 1.5,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "Clear thesis statement and consistent investor-facing framing across all slides.",
+  "fix_next": "Replace decorative images and fabricated pie chart with actual dataset analysis—revenue splits, provider breakdowns, correlation statistics.",
+  "verdict": "Opinion piece with no real data analysis; fabricated chart undermines credibility entirely.",
+  "flags": [
+    "fabricated-chart",
+    "no-dataset-analysis",
+    "ai-generated-decorative-images",
+    "unearned-causal-claims",
+    "generic-consulting-template",
+    "ai-slop",
+    "missing-limitations"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 4: pie chart percentages (60/25/10/5) appear fabricated with no derivation from dataset fields or stated methodology. Slide 4: claims 'directly and measurably correlates with sustainable MRR' but provides no correlation statistic (actual founded-year/revenue r=0.025, and no follower-revenue correlation is computed). Slide 4: subtitle claims 'clear link between audience size and sustainable revenue' without any supporting evidence from the dataset.",
+  "evidence": {
+    "insight": "No dataset finding appears anywhere—no revenue totals, category breakdowns, provider splits, median comparisons, or missingness acknowledgment. The thesis (distribution > code) is asserted, never demonstrated.",
+    "narrative": "Sequence is logical (landscape → problem → proof → framework → action) but the 'proof' slide is empty of real evidence, collapsing the entire arc into unsupported assertion.",
+    "framing": "Investor audience is stated but dataset scope, sample size context, 288 missing audience_type values, and definitions of key terms (audience ownership, distribution velocity) are never provided. A cold reader learns almost nothing about the underlying data.",
+    "accuracy": "Slide 4's round-number pie chart (60/25/10/5) has no traceable basis in the 1,000-row dataset. No actual figures from the frozen reference appear. The correlation claim is stated without any statistic. Zero engagement with missingness, zero-revenue rows, or denominators.",
+    "visual": "Consistent dark theme and typography. However, three slides (2, 3, 6) use AI-generated decorative images (globe, mousetrap, castle/shield) that carry zero analytical content. Pie chart color palette uses similar purple tones making segments hard to distinguish. No genuine data visualization exists.",
+    "ai_slop": "AI-generated images on slides 2, 3, 6. Buzzword-heavy labels ('CAC Death Spiral', 'Distribution Velocity', 'Fast-moving moat'). Slide 5 is a generic three-column consulting template. Entire deck is interchangeable with any startup market—nothing dataset-specific."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 2.5→2.0 (zero dataset findings surfaced), narrative from 3.5→3.0 (hollow proof slide breaks the arc), framing from 3→2.5 (no limitations or dataset context), accuracy from 2→1.5 (fabricated chart with no traceable numbers, unsubstantiated correlation claim). Visual held at 3.0. Preliminary was already low but still slightly generous given complete absence of real analysis.",
+  "total": 24,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 13270,
+    "output_tokens": 857
+  }
+}

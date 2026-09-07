@@ -1,0 +1,43 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7.5,
+    "framing": 5,
+    "accuracy": 3,
+    "visual": 5,
+    "bonus": 1
+  },
+  "what_worked": "Strong thesis arc from power-law distribution through AI/geography/channel to audience-specific takeaways on slide 11.",
+  "fix_next": "Use the assigned 1,000-row frozen dataset; every core statistic (8,782 startups, 5,025 zeros, 1,430 AI) appears drawn from a different source.",
+  "verdict": "Compelling narrative built on the wrong dataset; accuracy collapses under verification.",
+  "flags": [
+    "wrong-dataset",
+    "unverifiable-statistics",
+    "ai-generated-illustrations",
+    "decorative-map-illegible",
+    "no-limitations-disclosed",
+    "no-missingness-acknowledgment",
+    "fabricated-looking-numbers"
+  ],
+  "factual_error_count": 9,
+  "factual_error_detail": "S1-S3: Claims 8,782 startups vs assigned 1,000 rows. S3: 5,025 zero-MRR vs frozen 216 zero-revenue. S4: Top-10 = 42% vs frozen 49.6%. S5: Top-10 = 43.6% (contradicts own slide 4's 42%). S2: $15.4M monthly MRR vs frozen $15.6M total revenue (conflates MRR with total). S7: 1,430 AI startups vs frozen 197. S7: Median AI MRR $17 vs frozen median $503. S8: India 807 listings vs frozen 59 rows with country data for India. S10: 1,952 for-sale listings unverifiable against 1,000-row dataset.",
+  "evidence": {
+    "insight": "Slide 7 AI-as-noise framing and slide 9 mobile-floor vs web-lottery-ticket distinction show genuine analytical thinking; slide 11 audience-segmented takeaways add decision-usefulness beyond description.",
+    "narrative": "Clear power-law thesis introduced slide 3, built through concentration (4-5), category (7), geography (8), channel (9), secondary market (10), synthesized in five truths (11). Purposeful and coherent sequence.",
+    "framing": "No limitations slide, no mention of missingness (~24-29% across key fields), no acknowledgment that the analysis uses a 1,000-row sample. Deck presents itself as a full-census analysis of 8,782 startups without scoping caveats.",
+    "accuracy": "Virtually every quantitative claim diverges from the frozen 1,000-row reference: row count (8,782 vs 1,000), zero-revenue (5,025 vs 216), top-10 share (42% vs 49.6%), AI count (1,430 vs 197), AI median ($17 vs $503). Slide 5 internally contradicts slide 4 (43.6% vs 42% for top 10). The deck appears to have used the full TrustMRR platform rather than the assigned dataset.",
+    "visual": "Gamma template gives consistent typography and clean bar charts. AI-generated illustrations on every slide are decorative; slide 8 map has garbled/nonsensical country labels. No chart annotations, no source labels, no data tables.",
+    "ai_slop": "AI-generated illustrations on every slide (whale, gold coins, futuristic office, price tags, garbled map). Consulting-speak ('disciplined capital wins,' 'picks-and-shovels') is borderline generic but not pervasive."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 3.5 to 3.0: slide 5 internally contradicts slide 4 on top-10 share (43.6% vs 42%), adding a ninth factual error; the deck's entire quantitative foundation is built on a dataset not matching the assignment. Other scores unchanged as preliminary reasoning was sound.",
+  "total": 55,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 20282,
+    "output_tokens": 997
+  }
+}

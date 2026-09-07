@@ -1,0 +1,46 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 3,
+    "narrative": 3.5,
+    "framing": 2.5,
+    "accuracy": 2,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Consistent dark-theme visual identity with clear hierarchy and legible pink-accent typography throughout the deck.",
+  "fix_next": "Replace every fabricated statistic with verifiable dataset figures; disclose missingness, sample sizes, and limitations for a cold reader.",
+  "verdict": "Polished template over fabricated data; reads as generic VC playbook, not a data story.",
+  "flags": [
+    "fabricated-charts",
+    "fabricated-statistics",
+    "ai-slop",
+    "unearned-certainty",
+    "no-dataset-fidelity",
+    "consulting-jargon-over-evidence",
+    "missing-limitations",
+    "decorative-illustrations",
+    "no-missingness-disclosure",
+    "generic-framework-pasted-in"
+  ],
+  "factual_error_count": 10,
+  "factual_error_detail": "Slide 3: 'LTV Predictability Index' chart is entirely fabricated—no such metric exists in the dataset. Slide 5: 60/18/12/10% business model split is invented; dataset categories are AI, Marketing, E-comm, SaaS, etc. Slide 5: '60%+ SaaS & Subscription' claim unverifiable. Slide 8: Stripe 71.43% and RevenueCat 21.43% shares are wrong (actual: Stripe 636/875≈72.7%, RevenueCat 189/875≈21.6%—close but the '75% combined' text claim rounds misleadingly and Dodo at 4.76% overstates its 50/875≈5.7% share). Slide 9: Churn, capital efficiency, and valuation multiple table is generic industry boilerplate with no dataset backing. Slide 10: 'Top 10% drive 80%+ of revenue' is fabricated—actual top-10 share is ~49.6%. Slide 10: Correlation coefficients (DR↔Subscriptions 0.45, Visitors↔Subscriptions 0.82) are unverifiable and likely invented. Slide 10: '6.25% total conversion rate' has no derivation shown. Slide 10: 'DR 30+ tipping point' claim unsupported. Slide 12: Investment allocation pie (30/25/20/15/10%) is a recommendation chart with no data basis and is partially cut off.",
+  "evidence": {
+    "insight": "No dataset-specific discoveries surfaced: misses Education's high median ($2,435), anonymous revenue share (26.5%), near-zero founded-year correlation (r=0.025), .ai vs .com median gap, or actual top-10 concentration (49.6%). Tier rankings on slide 7 and buy recommendations on slide 11 are opinion without shown evidence.",
+    "narrative": "Loose investment-thesis arc exists (landscape → drivers → categories → picks) but every slide restates 'double down on B2B SaaS' without building cumulative evidence, introducing tension, or synthesizing findings. No landing slide ties back to data.",
+    "framing": "Audience is implied as investor/allocator but dataset provenance, time window, revenue definition, and critical missingness (241 country, 274 category, 288 audience_type, 216 zero-revenue rows) are never disclosed. A cold reader cannot assess any claim's reliability.",
+    "accuracy": "Multiple statistics are fabricated or unverifiable: the LTV index, business-model split, 80%+ skew claim, correlation coefficients, conversion rate, valuation multiples, and churn ratings. The dataset's actual category taxonomy is replaced with invented categories. Slide 8 payment shares are approximately close but text rounds misleadingly.",
+    "visual": "Dark theme with pink accents is consistent and legible. Chart types are appropriate in principle. However, charts visualize fabricated data, decorative AI illustrations consume ~40% of slides 1, 2, 4, 6 without informational value, and slide 12's pie chart is cut off at the bottom.",
+    "ai_slop": "Pervasive consulting jargon ('monetization engine,' 'distribution flywheel,' 'capital deployment,' 'organic distribution flywheels,' 'de facto infrastructure standard'). Decorative AI-generated illustrations on slides 1, 2, 4, 6. Slide 9 is a generic SaaS industry framework pasted without dataset evidence. The entire deck could describe any startup dataset without modification."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 2.5 to 2.0: on closer review, the fabricated 80%+ skew claim (actual ~49.6%) and invented correlation coefficients represent more serious data integrity failures than initially weighted. Lowered framing from 3.0 to 2.5: complete absence of missingness disclosure and dataset provenance is more damaging for a cold reader than preliminary score reflected. Other dimensions confirmed.",
+  "total": 30,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 21800,
+    "output_tokens": 1233
+  }
+}

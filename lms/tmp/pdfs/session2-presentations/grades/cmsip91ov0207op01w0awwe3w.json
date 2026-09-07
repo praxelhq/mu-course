@@ -1,0 +1,38 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 7,
+    "narrative": 8.5,
+    "framing": 6.5,
+    "accuracy": 5.5,
+    "visual": 8,
+    "bonus": 3
+  },
+  "what_worked": "Genuinely original thesis with a compelling detective-noir narrative arc and consistent editorial voice throughout.",
+  "fix_next": "The 28% revenue share claim conflicts with the reference 26.5%; the bar chart on slide 4 lacks axis labels and group names.",
+  "verdict": "Stylish, focused investigation with a real thesis, weakened by unverifiable numbers and narrow scope.",
+  "flags": [
+    "revenue-share-inflated",
+    "chart-unlabeled",
+    "narrow-scope",
+    "median-claims-unverifiable"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 5: Claims anonymous companies account for 28% of MRR; reference value is 26.525% — a ~1.5pp overstatement presented as a headline stat. Slide 4: Claims 40x median MRR gap (185 vs 7337); while the reference confirms a large gap, the specific 40x multiplier and underlying medians cannot be verified against the frozen reference and the bar chart x-axis labels ('1' and '2') are meaningless. The 'more subjects than any single product category' claim on slide 2 is borderline: 129 anonymous < 197 AI companies, though the comparison is to categorized rows which is ambiguous.",
+  "evidence": {
+    "insight": "The core thesis — that anonymous 'Stealth Company' listings are disproportionately high-revenue — is a genuinely original angle most students would miss. The field-completeness comparison on slide 7 adds a second dimension. The three closing theories (slide 8) show interpretive effort. However, the deck never explores alternative explanations quantitatively (e.g., are stealth companies older? different providers?) and the scope is deliberately narrow — one finding explored from multiple angles rather than a broader dataset investigation.",
+    "narrative": "Exceptional narrative structure: title hook → roster introduction → hypothesis → evidence exhibits A-D → closing argument → memorable sign-off. The detective-case metaphor is sustained without breaking. Each slide advances the argument. The methodology note on the final slide is a nice touch. This is one of the strongest narrative arcs I've seen.",
+    "framing": "The audience and question are clear from slide 1. The methodology footnote on slide 9 defines 'Stealth Company' precisely. However, the deck never discusses limitations of this analysis: selection bias in who chooses to list anonymously, whether the platform itself anonymizes certain listings (which theory 3 mentions but doesn't flag as a data limitation), or the fact that 274 rows are missing category data (which undermines the 'more than any category' claim). Scope is acknowledged implicitly but not explicitly bounded.",
+    "accuracy": "Slide 2: 129/1000 = 12.9% ✓. Slide 5: 28% revenue share is inflated vs. reference 26.525%. Slide 4: The 185 vs 7337 median values and 40x claim cannot be directly verified; the reference confirms anonymous median is much higher but gives no exact MRR median figures. Slide 7: Field completeness percentages are plausible but unverifiable. The bar chart on slide 4 has no labeled axes or group names — '1' and '2' are meaningless. The claim on slide 2 that 129 is 'more subjects than any single product category' is incorrect: AI has 197 companies.",
+    "visual": "The detective-noir theme is executed with remarkable consistency: monospaced type, redacted bars, classified stamps, evidence log headers, dark/light alternating slides. The top-16 grid on slide 6 is clever and effective. The donut chart on slide 5 is simple and appropriate. However, the bar chart on slide 4 is poorly labeled (axes say '1' and '2' with no legend). Overall restraint is excellent — no decorative clutter, every element serves the theme.",
+    "ai_slop": "none — the theme is distinctive and purposeful, not generic template work"
+  },
+  "confidence": "high",
+  "total": 74,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 17214,
+    "output_tokens": 1018
+  }
+}

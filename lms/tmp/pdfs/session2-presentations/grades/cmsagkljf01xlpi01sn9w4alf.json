@@ -1,0 +1,38 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Strong narrative arc from data overview to actionable playbook, with honest caveats on correlation vs. causation.",
+  "fix_next": "Total MRR is reported as $13.5M but the actual 30-day revenue is $15.6M; several category medians and the B2B multiplier are materially off.",
+  "verdict": "Well-structured and readable, but multiple numerical errors undermine credibility.",
+  "flags": [
+    "total-revenue-wrong",
+    "category-medians-off",
+    "b2b-multiplier-inflated",
+    "mrr-vs-revenue-conflation"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 1/4: Total stated as $13.5M/$13.47M; actual 30-day revenue is $15.60M — ~14% undercount. Slide 4: Top-10 share stated as 48%; reference is 49.6%. Slide 5: Education median listed as $2,142 vs reference $2,435; Marketing $1,586 vs $2,369.50; AI median $446 vs $503 — these are not rounding differences but systematically low, suggesting MRR field was used instead of revenue_30d or a different calculation. Slide 9: B2B vs B2C median multiple stated as 5.7x ($1,036/$181); reference shows ~2.35x. Slide 7: Country missing count stated as 243; reference is 241.",
+  "evidence": {
+    "insight": "Slide 3 correlation ladder is a useful framing; slide 6 growth-cluster segmentation adds analytical value beyond simple description; slide 9 playbook synthesizes findings into decisions. However, most insights are descriptive summaries of single variables rather than cross-cutting analysis.",
+    "narrative": "Clear five-act structure: dataset → correlations → distribution → categories/geo/gateways → playbook → summary. Each section builds toward the 'before you build' checklist. The thesis (what matters for monetization) is coherent throughout.",
+    "framing": "Slide 1 sets scope clearly; slide 2 explains data completeness and missingness honestly (65-75% for context fields). Audience is implicitly a founder/builder. Limitations on correlation vs causation noted on slide 8. Missing: no explicit statement of who the audience is or what decision this serves.",
+    "accuracy": "Total revenue is materially wrong ($13.5M vs $15.6M). The deck appears to use MRR rather than revenue_30d throughout, conflating the two without clarification. Category medians are systematically different from the revenue_30d reference. B2B multiplier of 5.7x is far from the reference 2.35x. Country missingness off by 2. Top-10 concentration close but rounded down.",
+    "visual": "Clean, consistent template with good hierarchy. Tables are well-formatted and readable. Slide 3 horizontal bar chart is effective. Slide 6 bar chart with annotations works well. Color palette is restrained. No chart junk. Slight monotony across slides but professional throughout.",
+    "ai_slop": "Minimal slop. The deck avoids generic filler language. The 'Best fit' column on slide 8 adds contextual judgment. Template is consistent but not repetitive in a meaningless way. No decorative graphics."
+  },
+  "confidence": "high",
+  "total": 66,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19678,
+    "output_tokens": 895
+  }
+}

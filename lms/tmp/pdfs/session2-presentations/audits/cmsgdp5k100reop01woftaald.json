@@ -1,0 +1,42 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 5.5,
+    "bonus": 1
+  },
+  "what_worked": "Four-filter sourcing funnel (slide 9) synthesizes earlier findings into a genuinely actionable investor screening framework.",
+  "fix_next": "Replace placeholder labels ('Metric 5/6/7', unlabeled axes on slide 4) and verify every stated figure against the actual dataset.",
+  "verdict": "Strong investor narrative undermined by placeholder labels and unverifiable correlation claims.",
+  "flags": [
+    "placeholder-metric-labels",
+    "unlabeled-category-axes",
+    "unverifiable-correlations",
+    "notebooklm-watermark-every-slide",
+    "slide11-conflates-anonymous-with-category-missing",
+    "mean-revenue-discrepancy"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 4: category bars numbered 1-8 with no labels; visible median values cannot be matched to reference categories (e.g., no bar near $2,369.50 Marketing or $2,435 Education medians clearly). Slide 5: mean stated as $13,472; reference total $15,596,344.59/1000 = $15,596.34, so ~$2K off. Slide 6: correlation values (r=0.91, 0.87, etc.) are unverifiable against the frozen reference and 'Metric 5/6/7' are outright placeholders. Slide 11: says '129 rows (13%) hide the website category entirely'—129 is the anonymous company count, not the 274 rows missing category data.",
+  "evidence": {
+    "insight": "Slide 7 scale-vs-momentum decoupling (r=0.03) and slide 9 four-filter funnel show genuine analytical layering beyond description. Power-law warning on slide 5 is decision-useful. However, the correlation chart (slide 6) would be the strongest insight if the numbers were verifiable—placeholder labels weaken trust.",
+    "narrative": "Clear arc from brief→data quality→market map→distribution→predictors→momentum→pipeline→framework→shortlist→risks→next steps. Each slide advances toward the executable shortlist. Slight redundancy between slides 2 and 3. Landing on slide 12 is purposeful.",
+    "framing": "Investor audience established clearly on slides 1-2. Slide 11 handles four limitations well (geographic bias, frozen snapshots, self-reported data, stealth obfuscation). However, 274-row category missingness and 216 zero-revenue rows are never disclosed as scope constraints, which matters for slides 4 and 5.",
+    "accuracy": "Slide 5 mean off by ~$2K. Slide 11 conflates 129 anonymous companies with category missingness (actual: 274). Slide 6 correlation values entirely unverifiable with placeholder labels. Slide 4 bars unlabeled so claims about AI having 197 companies cannot be visually confirmed. Median $282 on slide 5 and $35K asking price on slide 8 are plausible but not directly verifiable.",
+    "visual": "Consistent black/white/green palette with monospace typography is distinctive and restrained. Slide 5 power-law illustration is effective. But slide 4 omits category names (just numbers 1-8), slide 6 uses 'Metric 5/6/7' placeholders—clear unfinished AI output. NotebookLM watermark on every slide signals minimal post-processing.",
+    "ai_slop": "NotebookLM watermark on all 12 slides. Slide 6 contains 'Metric 5', 'Metric 6', 'Metric 7' placeholder labels—unedited AI output. Slide 4 uses numeric indices instead of category names. These are not cosmetic issues; they undermine the credibility of the analysis."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.5→5.0 (mean revenue error, anonymous/category conflation, unverifiable correlations with placeholders). Lowered visual from 6.5→5.5 (placeholder labels and missing axis labels are functional failures, not just cosmetic). Lowered narrative from 8→7.5 (slight redundancy slides 2-3). Reduced bonus from 2→1 (placeholder labels in a supposedly finished deck disqualify 'beyond rubric' credit).",
+  "total": 65,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 19926,
+    "output_tokens": 1119
+  }
+}

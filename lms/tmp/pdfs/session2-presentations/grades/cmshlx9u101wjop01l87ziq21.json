@@ -1,0 +1,39 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 6.5,
+    "accuracy": 4,
+    "visual": 5,
+    "bonus": 1
+  },
+  "what_worked": "Strong thesis arc from crowding diagnosis through winner/loser profiles to actionable investment checklist.",
+  "fix_next": "Every claim is asserted without a single number, chart, or citation from the dataset—add concrete evidence on every analytical slide.",
+  "verdict": "Polished narrative shell with no quantitative evidence shown anywhere.",
+  "flags": [
+    "no-numbers-anywhere",
+    "no-charts",
+    "consulting-language-heavy",
+    "ai-slop-template-repetition",
+    "unverifiable-claims"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 3: AI called 'dominant by volume'—true by count (197) but 274 rows have missing category, so dominance claim is overstated without caveat. Slide 9: Claims AI businesses 'command a clear premium in the secondary market' and ties pricing to growth momentum—no variable in the dataset supports exit-multiple or pricing-premium analysis; this appears fabricated.",
+  "evidence": {
+    "insight": "The core thesis (AI label ≠ quality, conversion efficiency matters more than followers, B2B workflow AI is underserved) is a reasonable interpretive layer. However, every insight is stated as prose assertion—no median, no count, no correlation coefficient, no comparison figure is ever shown. Slide 5 claims 'organic authority tracks revenue' and 'followers do not' but provides zero scatter plots, r-values, or even directional numbers. Slide 8 identifies 'B2B workflow AI' as white space but never quantifies the B2B/B2C revenue gap (dataset shows ~2.3x median multiple). Insight exists conceptually but is never grounded.",
+    "narrative": "The deck follows a clear investment-memo arc: market landscape → key patterns → winner/loser profiles → opportunities → risks → surprises → recommendations → closing. Each slide has a 'WHY THIS MATTERS' callout tying back to the fund's decision. The sequence is purposeful and builds toward the recommendation slide. This is the deck's strongest dimension.",
+    "framing": "Audience (investment committee) and question ('how to source AI deals') are explicit from slide 1. However, the dataset is never described: no mention of n=1,000, 30-day revenue window, missingness rates, or what the data actually represents. A cold reader would not know the evidence base. Scope is implicitly 'AI vertical' but limitations and data provenance are absent.",
+    "accuracy": "The most serious problem: not a single number from the dataset appears anywhere in 12 slides. No revenue figures, no company counts, no medians, no percentages, no sample sizes. Claims like 'AI is the single largest vertical by volume' (slide 3) are directionally correct (197 companies) but presented without the number or the caveat that 274 rows lack category. Slide 9's 'pricing premium / exit multiple' framework references variables not in the dataset. Slide 4's pricing-architecture table uses qualitative labels (High/Low) with no underlying data shown. The B2B/B2C claim on slide 6 is plausible (median multiples ~2.3x) but never quantified. Without any numbers, accuracy cannot be properly verified for most claims.",
+    "visual": "Consistent dark-blue template with teal/purple accents throughout. Professional typography and layout. However, every analytical slide uses the identical four-card layout with icon + short text, creating extreme visual sameness. There are zero data visualizations—no bar charts, scatter plots, histograms, or tables with actual numbers. The 2×2 matrices on slides 5 and 8 are conceptual frameworks with no data points plotted. The node diagram on slide 3 explicitly disclaims 'not exact share.' The visual design is polished but entirely decorative—it communicates no quantitative information.",
+    "ai_slop": "Heavy template repetition: slides 2, 4, 6, 7 all use identical four-card icon layouts. Every slide has the same 'WHY THIS MATTERS' footer and pull-quote structure. Language is inflated consulting-speak throughout ('compounding,' 'durable distribution equity,' 'underwrite durability separately from momentum'). The 2×2 matrices and node diagrams are generic strategy frameworks that could apply to any dataset. The deck reads as a polished AI-generated consulting template with dataset-specific nouns inserted into pre-built structures."
+  },
+  "confidence": "high",
+  "total": 58,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22855,
+    "output_tokens": 1108
+  }
+}

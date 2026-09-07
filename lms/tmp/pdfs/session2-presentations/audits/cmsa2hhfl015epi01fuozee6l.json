@@ -1,0 +1,41 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 9,
+    "accuracy": 6.5,
+    "visual": 8,
+    "bonus": 3
+  },
+  "what_worked": "Falsifiable A/B hypothesis tested dimension-by-dimension with honest missingness disclosure on every slide.",
+  "fix_next": "Reconcile category medians against raw data—Education, Marketing, Analytics, E-comm, and Content Creation all diverge materially from reference values.",
+  "verdict": "Exceptional structure and narrative discipline, undermined by multiple category-median computation errors.",
+  "flags": [
+    "category-median-discrepancies",
+    "anonymous-count-off-by-one",
+    "stripe-share-denominator-debatable",
+    "revenue-multiple-median-not-split-by-audience",
+    "marketing-median-off-by-783"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 6: Education median $2,142 vs ref $2,435 (off ~$293); Marketing median $1,586 vs ref $2,369.50 (off ~$784); Analytics median $1,294 vs ref $419 (off ~$875); Content Creation median $1,254 vs ref $1,237.50 (minor); E-comm median $155 vs ref $387 (off ~$232); SaaS median $303 vs ref $200.50 (off ~$103); Social Media median $912 vs ref $844 (off ~$68). Slide 9: anonymous count 130 vs ref 129 (off by 1). Slide 8: median revenue multiple reported as 2.3× without B2B/B2C split; ref gives 2.35×/2.30× which rounds acceptably but the mean 7.8× vs ref 7.97×/8.44× is a blended figure not disclosed as such.",
+  "evidence": {
+    "insight": "Slide 4's growth decomposition (61.9% flat/shrinking vs +33.1% mean) is genuinely decision-useful. Slide 6's AI volume-vs-unit-economics contrast and slide 8's marketplace multiple analysis go beyond description to reframe how a reader should interpret the platform.",
+    "narrative": "Slide 2 sets a falsifiable A/B frame; slides 3–9 each test one dimension sequentially; slide 10 synthesizes with a Lorenz curve and a concrete 'so what' for two audiences (benchmarkers and acquirers). The arc is tight and lands cleanly.",
+    "framing": "Every slide carries footnotes declaring denominators, exclusions, and field names. Slide 9 dedicates a full slide to missingness and self-report caveats. The cold-reader can follow without external context.",
+    "accuracy": "Core figures (total revenue $15,596,344, top-10 share 49.6%, zero-revenue 216, mean 30-day $15,596) match reference. However, at least 5 category medians diverge materially from reference—Analytics is off by 3×, Marketing by ~$784, Education by ~$293, E-comm by ~$232. These are not rounding; they suggest a filtering or computation error. Anonymous count 130 vs 129 is minor. Blended revenue multiple not disclosed as blended.",
+    "visual": "Consistent navy/orange palette with clear hierarchy (section tags, big-number callouts, footnotes). Log-scale histogram on slide 3 is well-annotated with median/mean markers and $0 callout. Lorenz curve on slide 10 is effective. Charts are purposeful. Minor: some footnotes are dense.",
+    "ai_slop": "None detected—writing is specific, opinionated, and dataset-bound throughout. No generic filler or consulting boilerplate."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 7.0 to 6.5: the Analytics median is off by roughly 3× ($1,294 vs $419), and multiple other category medians diverge well beyond rounding. Seven factual errors identified rather than five. Other dimensions unchanged.",
+  "total": 85,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 19698,
+    "output_tokens": 1024
+  }
+}

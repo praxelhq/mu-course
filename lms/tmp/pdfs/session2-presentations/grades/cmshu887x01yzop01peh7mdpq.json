@@ -1,0 +1,40 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 1,
+    "narrative": 2,
+    "framing": 1.5,
+    "accuracy": 1,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "Clean, consistent visual template with good typographic hierarchy and restrained color palette.",
+  "fix_next": "This is a startup pitch deck, not a data-story presentation; it contains zero charts, zero dataset analysis, and zero quantitative findings.",
+  "verdict": "A marketing pitch deck with no data analysis whatsoever.",
+  "flags": [
+    "no-data-analysis",
+    "no-charts",
+    "wrong-assignment-genre",
+    "ai-slop",
+    "decorative-meaningless-graphic",
+    "fabricated-quote"
+  ],
+  "factual_error_count": 0,
+  "factual_error_detail": "No verifiable quantitative claims from the dataset are made, so no factual errors to count—but this is because the dataset is never referenced at all.",
+  "evidence": {
+    "insight": "Zero slides contain any analytical finding from the dataset. No charts, no statistics, no comparisons. Every claim (e.g., 'B2B Utility Outperforms Consumer Hype' on slide 6) is asserted without evidence.",
+    "narrative": "The deck has a coherent internal structure as a sales pitch (problem → thesis → process → CTA), but it is the wrong narrative entirely—it never tells a data story.",
+    "framing": "Slide 1 frames this as an 'Investor Briefing' for 'SaaS Acquirers & Private Investors,' but never defines the dataset, sample size, limitations, or analytical question. A cold reader would not know what data was analyzed.",
+    "accuracy": "No dataset figures are cited anywhere across 12 slides. No revenue totals, category breakdowns, provider distributions, or any other metric from the 1,000-row dataset appears. Cannot assess accuracy of claims that don't exist.",
+    "visual": "Template is polished and consistent. However, slide 6 contains a completely irrelevant stock graphic ('Visual Comparison of Illustration Styles' showing coffee cups, bicycles, apples) that has nothing to do with the content. Slide 7 uses decorative stock photos. No data visualizations exist.",
+    "ai_slop": "Pervasive. Slide 6 has an obviously misplaced AI-generated illustration-styles comparison graphic. Slide 10 is a self-attributed quote ('The TrustMRR Investment Philosophy'). Every slide uses inflated consulting language ('sourcing paradigm shift,' 'verified revenue telemetry,' 'capital efficiency first') with zero supporting evidence. The entire deck reads as AI-generated marketing copy."
+  },
+  "confidence": "high",
+  "total": 17,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 20548,
+    "output_tokens": 667
+  }
+}

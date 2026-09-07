@@ -1,0 +1,40 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 4.5,
+    "narrative": 4,
+    "framing": 3.5,
+    "accuracy": 4,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Power-law skew observation and build-to-flip inference show genuine engagement with the dataset's structure.",
+  "fix_next": "Replace decorative stock images and unsupported claims (e.g., '2.4x conversion,' '+1,000% growth') with actual charts from the dataset.",
+  "verdict": "Consulting-flavored assertions with thin data backing and several fabricated statistics.",
+  "flags": [
+    "fabricated-statistics",
+    "no-real-charts",
+    "decorative-images",
+    "ai-slop-language",
+    "missing-limitations",
+    "unearned-certainty"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 3: '97.9% gap' is a meaningless metric; median $282 is plausible but average $13.5k needs checking ($15,596/1000≈$15.6k, not $13.5k); '1% capture 50%+' — reference says top-10 (1%) capture ~49.6%, close but stated without sourcing. Slide 4: '+1,000% 30-day growth' for AI apps is fabricated — no such metric in dataset. Slide 5: 2.30x median multiple stated without specifying B2B vs B2C (B2C median is 2.30x, B2B is 2.35x — conflated). Slide 6: B2C 56.3%/B2B 35.8%/Hybrid 7.9% — these percentages are unverifiable from the dataset and audience_type has 288 missing values, not acknowledged. Slide 7: Dodo/Polar combined as 'Emerging MoR' at ~5.6% is roughly correct by count but text is partially cut off. Slide 9: '2.4x higher traffic conversion rates' for 10k+ X followers is completely fabricated — no such variable in dataset. Slide 8: France & UK combined at 129 startups is unverifiable and suspiciously round given 241 missing country values.",
+  "evidence": {
+    "insight": "Slide 3 power-law observation and slide 5 build-to-flip framing show some analytical thinking, but most 'inferences' are generic startup advice dressed as data findings.",
+    "narrative": "Seven numbered 'inferences' read as a listicle rather than a coherent argument building toward a thesis; the synthesis slide (10) is a platitude quote, not a data-driven conclusion.",
+    "framing": "No dataset description, no mention of sample size context, no acknowledgment of 241-288 missing values across key fields, no limitations slide. Cold reader would not know what TrustMRR is.",
+    "accuracy": "Average revenue miscalculated (slide 3: $13.5k vs actual ~$15.6k); fabricated statistics on slides 4 and 9 ('+1,000% growth,' '2.4x conversion'); audience-type percentages presented without noting 288 missing values; geographic counts unverifiable.",
+    "visual": "Dark template is consistent but slides are text-heavy with no real data visualizations. Slide 6 pie chart has no axis/source. Slide 5 uses decorative stock network image. Slide 9 uses generic rocket clipart. Slide 7 bar chart is partially illegible (text cut off).",
+    "ai_slop": "Pervasive consulting language ('Strategic Arbitrage Advantage,' 'Actionable Founder Playbook,' 'Core Strategic Inferences'); decorative stock images (slides 5, 9); generic rocket clipart; fabricated-sounding precise statistics ('2.4x higher traffic conversion'); quote-style synthesis slide with no attribution."
+  },
+  "confidence": "high",
+  "total": 39,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 20548,
+    "output_tokens": 966
+  }
+}

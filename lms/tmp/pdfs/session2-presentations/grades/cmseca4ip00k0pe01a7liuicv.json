@@ -1,0 +1,39 @@
+{
+  "slide_count": 16,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 8,
+    "accuracy": 5.5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Data-quality caveat on 56% untagged MRR is genuinely useful and consistently threaded through every subsequent category claim.",
+  "fix_next": "Total revenue is $15.6M not $13.47M; conflating MRR with 30-day revenue corrupts the headline metric and cascades into concentration and category figures.",
+  "verdict": "Strong strategic narrative undermined by a foundational denominator error on the headline number.",
+  "flags": [
+    "total-revenue-misidentified-as-mrr",
+    "category-revenue-figures-diverge-from-reference",
+    "median-values-off-for-multiple-categories",
+    "b2b-median-multiple-overstated",
+    "small-n-categories-presented-without-caveat"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 2/3: Reports $13.47M as 'Total MRR' — the dataset total 30-day revenue is $15,596,344.59; the $13.47M figure appears to be Stripe-only revenue misrepresented as total. Slide 5: Top-10 share stated as 48.0% vs reference 49.6%. Slide 7: Category revenues diverge materially — AI shown as $1,806K vs reference $2,356K; SaaS $589K vs $703K; Education $524K vs $523K (close); Marketing $444K vs $1,317K (very large miss); E-comm $396K vs $1,111K (very large miss). Slide 8: Education median shown $2,142 vs reference $2,435; AI median $446 vs reference $503; Analytics $1,294 vs $419. Slide 10: B2B median stated as 5.7x B2C ($1,036/$181=5.7x) — reference shows ~2.35x median multiple; the $1,036 and $181 figures don't match reference. Slide 12: Stripe share stated 87.2% of MRR — reference shows Stripe at $13.53M/$15.60M = 86.7% of revenue (close but the denominator is wrong since they use $13.47M as total). Slide 4: Claims trailing 12-month average of $11.15M/month and 3-month of $10.8M/month — these figures are not verifiable from the frozen snapshot and appear fabricated from a single cross-section.",
+  "evidence": {
+    "insight": "Slide 6 data-quality finding about 56% untagged MRR is original and decision-relevant. Slide 9 portfolio matrix with trimmed-mean growth adds analytical depth. Slide 13 white-space framing connects median MRR to supply gaps. Slide 15 prioritization matrix ties findings to actions.",
+    "narrative": "Clear five-finding thesis on slide 2, each finding gets its own slide, risks synthesized on slide 14, recommendations sequenced on slides 15-16. Coherent arc from diagnosis to action.",
+    "framing": "Slide 1 states audience (senior leadership), dataset (1,000 listings, frozen date), and scope. Slide 6 explicitly scopes category analysis to 44% of revenue. Slide 4 flags outlier caution. Limitations acknowledged throughout.",
+    "accuracy": "Headline total ($13.47M) contradicts the $15.6M reference total. Category revenues for Marketing and E-comm are off by 2-3x. Median MRR values for several categories diverge significantly from reference. B2B/B2C median multiple overstated at 5.7x vs ~2.35x. Growth trajectory slide fabricates trailing averages from a cross-sectional snapshot.",
+    "visual": "Consistent dark-theme design with clear hierarchy. Charts are readable with direct labels. Bubble chart on slide 9 is effective. Pie chart on slide 12 is acceptable. Some y-axis labels truncated (slide 9). Overall restrained and professional.",
+    "ai_slop": "Minor consulting-speak ('re-accelerating', 'cash cow', 'stars') but generally substantive. No decorative-but-meaningless graphics. Template is consistent but not generic filler."
+  },
+  "confidence": "high",
+  "total": 74,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 30617,
+    "output_tokens": 1103
+  }
+}

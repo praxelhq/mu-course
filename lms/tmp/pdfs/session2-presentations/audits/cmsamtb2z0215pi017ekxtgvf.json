@@ -1,0 +1,46 @@
+{
+  "slide_count": 20,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8.5,
+    "framing": 7,
+    "accuracy": 4.5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Four-signal filter framework is genuinely original; bridge sentences between every insight create exceptional narrative flow.",
+  "fix_next": "Recompute all median values against the actual dataset; the B2B 5.7x headline claim appears substantially overstated versus reference 2.35x.",
+  "verdict": "Superb narrative architecture undermined by multiple inaccurate median values and an inflated headline claim.",
+  "flags": [
+    "b2b-multiple-inflated",
+    "category-medians-wrong",
+    "stripe-count-wrong",
+    "mean-revenue-inconsistent",
+    "ai-median-off",
+    "marketing-median-off",
+    "dev-tools-median-off",
+    "zero-revenue-denominator-unclear",
+    "missingness-not-quantified",
+    "consulting-theater-footer"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 10: B2B median $1,036/B2C $181 yields 5.7x but reference median multiple is 2.35x — headline claim overstated. Slide 8: AI median $446 vs reference $503; Marketing $1,586 vs $2,370; Dev Tools $185 vs $635 — all materially off. Slide 6: mean $13,472 implies total ~$13.47M vs reference $15.60M. Slide 13: Stripe n=644 vs reference 636. Slide 7: 20% zero-revenue (200 listings) vs reference 216 (21.6%) — minor but denominator unclear. Slide 2/6: top-10% share 82% not directly verifiable but top-10 share is 49.6% per reference, so 82% for top-100 is plausible but unverified.",
+  "evidence": {
+    "insight": "The four-signal filter (B2B, DR, payment stack, followers-as-noise) is a genuinely useful synthesis beyond chart description. Insight 10 closing the loop back to Insight 1 (concentration is reinforcing) shows real analytical thinking. The vanity-metric debunking adds decision value.",
+    "narrative": "Every insight slide ends with an explicit arrow-bridge sentence connecting to the next. The three-chapter funnel metaphor on slide 3 creates a single coherent argument. Synthesis slide 18 and bottom-line slide 19 land the conclusion cleanly. One of the strongest narrative arcs seen.",
+    "framing": "Slide 1 sets context (dataset, date, author). Appendix slide 20 acknowledges self-reported data and missing fields. However, missingness rates for key fields (category 27.4%, audience_type 28.8%) are never quantified, which matters critically for the B2B and category analyses. Target audience is implied but never explicitly stated.",
+    "accuracy": "Multiple median values diverge materially from reference: AI $446 vs $503, Marketing $1,586 vs $2,370, Dev Tools $185 vs $635. The deck's headline B2B premium of 5.7x appears substantially overstated vs reference 2.35x median multiple. Mean $13,472 implies ~$13.47M total vs $15.60M reference. Stripe count 644 vs 636. These are not rounding differences — several are 50%+ off.",
+    "visual": "Consistent navy/gold palette, clean bar charts, effective callout boxes with key stats. Progress dots track position through 10 insights. Section dividers are clean. Donut chart on slide 7 is a weak choice; correlation chart on slide 12 comparing only two bars is visually thin. Template is polished but every insight slide follows identical layout, becoming repetitive.",
+    "ai_slop": "STRICTLY PRIVATE AND CONFIDENTIAL footer on every slide is performative consulting theater. Template is highly uniform — identical layout (chart left, callout right, bridge bottom) across all insight slides. Polished but formulaic; not egregious filler."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.5 to 4.5: the B2B 5.7x headline claim is the deck's central finding and appears roughly 2.4x overstated versus reference (2.35x); Marketing and Dev Tools medians are off by 33-70%; mean revenue implies a total ~$2.1M below reference. Reduced bonus from 2 to 1: the narrative craft is strong but the factual foundation is too unreliable for full bonus credit.",
+  "total": 70,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 37571,
+    "output_tokens": 1146
+  }
+}

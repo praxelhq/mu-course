@@ -1,0 +1,44 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 1,
+    "narrative": 1.5,
+    "framing": 1,
+    "accuracy": 1.5,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Polished visual design with consistent palette, typography hierarchy, and clean card layouts throughout.",
+  "fix_next": "Build an actual data story from the 1,000-row dataset instead of a product pitch deck with fabricated statistics.",
+  "verdict": "A marketing pitch deck, not a data story; fabricated correlations and figures throughout.",
+  "flags": [
+    "wrong-genre",
+    "pitch-deck-not-data-story",
+    "fabricated-statistics",
+    "correlation-fabricated",
+    "no-dataset-analysis",
+    "no-limitations-discussed",
+    "no-missingness-acknowledged",
+    "category-not-in-dataset"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 5: r=0.48 for age-revenue correlation is fabricated (actual r≈0.025). Slide 5: r=0.43 and r=0.28 correlations unverifiable and likely fabricated. Slide 6: country revenues (US unlabeled but huge, Poland $86M, France $24M, UK $22M, Canada $10M) vastly exceed total dataset revenue of ~$15.6M. Slide 6: 'Security' listed as #2 category—does not exist in the dataset. Slide 6: E-commerce avg $538.6K vs actual mean ~$58.5K (1,111,605/19). Slide 6: Content Creation avg $277.3K vs actual ~$4.8K (173,210/36).",
+  "evidence": {
+    "insight": "Only slide 5 attempts analytical claims, all with fabricated correlations. No original finding derived from the actual 1,000-row dataset. Remaining 11 slides are product marketing.",
+    "narrative": "Coherent as a sales pitch for TrustMRR but entirely fails as a data story—no analytical question, no hypothesis, no dataset-driven synthesis or landing.",
+    "framing": "No analytical question posed. No audience for data analysis identified. No scope, sample size, missingness, or limitations discussed. Deck is framed as a product pitch to potential marketplace users.",
+    "accuracy": "Slide 5 age-revenue r=0.48 is 19x the actual value (~0.025). Slide 6 country totals exceed the entire dataset total by an order of magnitude. 'Security' is a phantom category. Category averages are off by 10-60x.",
+    "visual": "Professional dark-green/gold/cream palette, strong typographic hierarchy, well-structured cards and comparison tables, legible bar chart on slide 5. Consistent and restrained throughout.",
+    "ai_slop": "Entire deck reads as AI-generated marketing copy. Slides 2-4, 7-12 are pure promotional content. Fabricated statistics on slides 5-6 are hallmark AI hallucinations—plausible-sounding but wildly incorrect numbers."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 1.5→1.0 (zero genuine dataset findings), narrative from 2→1.5 (no data-story arc at all), framing from 1.5→1.0 (no analytical framing whatsoever), accuracy from 2→1.5 (six fabricated claims, not five; errors are severe). Raised visual from 5→5.5 (template execution is genuinely polished despite being wrong genre).",
+  "total": 21,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 21210,
+    "output_tokens": 893
+  }
+}

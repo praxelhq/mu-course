@@ -1,0 +1,37 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 8.5,
+    "accuracy": 7,
+    "visual": 8.5,
+    "bonus": 3
+  },
+  "what_worked": "Single thesis pursued through three escalating tests with statistical rigor and honest limitations.",
+  "fix_next": "The 1.9x/3.8x cover stats and the +97% claim lack clear derivation from the dataset's known fields; show the asking-price calculation transparently.",
+  "verdict": "Tightly argued, well-designed thesis deck with some unverifiable derived statistics.",
+  "flags": [
+    "unverifiable-derived-metrics",
+    "cover-stats-unsourced",
+    "small-n-subgroups"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 1: 1.9x and 3.8x multiples appear without derivation and don't match slide 7's 1.90x/3.75x figures exactly (3.8x vs 3.75x). Slide 2/7: +97% premium is computed as (3.75-1.90)/1.90 = 97.4%, which is internally consistent but the cover rounds 3.75 to 3.8, creating a discrepancy. The 784 and 215 subsample sizes cannot be verified against the frozen dataset (1,000 rows with 216 zero-revenue would leave 784 non-zero, which is plausible but the MRR filter logic is unverifiable).",
+  "evidence": {
+    "insight": "The deck goes well beyond describing charts: it constructs a novel recurring-share metric (MRR/revenue), segments by it, tests valuation impact with Mann-Whitney U (slide 7, p=0.007), controls for size with partial correlation (0.26), and builds an actionable arbitrage thesis (slide 10-11). The tercile analysis on slide 8 showing the discount deepening with scale is genuinely original.",
+    "narrative": "Exceptional narrative architecture: hypothesis (slide 3) → three sequential questions (does the split exist? does it change the asset? does the market pay?) → supporting evidence that recurrence is a design choice (slide 9) → audience-specific implications (slide 10) → recommendation (slide 11) → memorable closing (slide 12). Every slide advances the argument.",
+    "framing": "Slide 3 states the hypothesis clearly. Slide 4 defines the metric (recurring share = MRR ÷ revenue), explains the 30-day window, acknowledges churn is not reported, and shows the funnel from 1,000 to 784 to 380 to 215. The limitation caveat on slide 11 ('churn is not observable') is honest. Audience is implicitly investors/acquirers, made explicit on slide 10.",
+    "accuracy": "784 non-zero revenue companies is plausible (1000-216=784). The 19% one-time figure (151/784) is internally consistent. The Mann-Whitney test with n=29 vs n=140 is appropriate but the one-time group is small. The 8x MRR gap claim on slide 6 ($13,499/$1,682 ≈ 8.0x) checks out internally. However, the cover's 3.8x doesn't match slide 7's 3.75x. The valuation multiples and MRR segmentation rely on derived fields whose computation cannot be fully verified against the frozen reference data.",
+    "visual": "Clean, consistent design system throughout: dark navy/white/gold palette, clear hierarchy with section labels, well-chosen bar charts with direct labels, effective use of callout boxes for key statistics. The paired bar chart on slide 5 and the grouped bar on slide 8 are appropriate chart types. No chartjunk. The case-study table on slide 6 is effective. Slide density is well-managed.",
+    "ai_slop": "none"
+  },
+  "confidence": "medium",
+  "total": 86,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 21995,
+    "output_tokens": 972
+  }
+}

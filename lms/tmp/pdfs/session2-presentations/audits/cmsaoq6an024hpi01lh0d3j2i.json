@@ -1,0 +1,40 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 5,
+    "narrative": 6.5,
+    "framing": 4,
+    "accuracy": 1.5,
+    "visual": 6.5,
+    "bonus": 0
+  },
+  "what_worked": "Power-law framing, mean-vs-median log chart, under-monetized traffic cohort, and honest limitations slide show real analytical thinking.",
+  "fix_next": "Use the correct 1,000-row frozen dataset; every number is wrong because the wrong source file was analyzed.",
+  "verdict": "Strong analytical structure built entirely on the wrong dataset; accuracy is fatally compromised.",
+  "flags": [
+    "wrong-dataset",
+    "all-numbers-wrong",
+    "fabricated-or-mismatched-scale",
+    "row-count-mismatch-8782-vs-1000"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1: 8,782 startups vs frozen 1,000 rows; $227M Stripe revenue vs $13.5M; median $91 vs frozen data. Slide 2: country counts (1,657 US etc.) from wrong dataset. Slide 3: $227M/$255M totals wrong; Stripe share percentages unverifiable against frozen reference. Slide 5: MRR figures for top 10 cannot be reconciled with frozen top-10 share of 49.6%. Slide 7: 1,430 AI listings vs frozen 197; E-comm average MRR $4,168 unverifiable. Slide 9: r=0.12 vs frozen r≈0.025 (different variable pair but presented correlation is from wrong population).",
+  "evidence": {
+    "insight": "Slide 4 mean-vs-median divergence on log scale and slide 9 identification of 80 under-monetized high-traffic startups show genuine analytical depth, though all built on wrong data.",
+    "narrative": "Clear 9-section arc (scope → infrastructure → revenue → leaders → momentum → categories → pricing → monetization → conclusion) with a coherent power-law concentration thesis throughout.",
+    "framing": "Slide 2 data-completeness table and slide 10 limitations section are thoughtful and honest, but the fundamental dataset is wrong—8,782 rows vs the required 1,000-row frozen reference.",
+    "accuracy": "Every quantitative claim is irreconcilable with the frozen reference: row count (8,782 vs 1,000), Stripe revenue ($227M vs ~$13.5M), category counts (AI 1,430 vs 197), correlation coefficient (0.12 vs 0.025). This is not rounding—it is a completely different dataset.",
+    "visual": "Consistent navy/orange palette, appropriate chart types (bar, scatter, pie, log-scale grouped bar), data labels present, reasonable restraint. Competent but not exceptional; pie chart on slide 3 has overlapping labels.",
+    "ai_slop": "Some consulting jargon ('go-to-market motion', 'defensible niche', 'total addressable revenue') but generally restrained and dataset-specific. Not flagged as major issue."
+  },
+  "confidence": "high",
+  "changed": false,
+  "change_reason": "no-change",
+  "total": 47,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 18747,
+    "output_tokens": 803
+  }
+}

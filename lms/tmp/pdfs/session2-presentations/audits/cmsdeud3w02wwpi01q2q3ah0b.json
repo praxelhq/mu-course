@@ -1,0 +1,39 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 9,
+    "narrative": 9.5,
+    "framing": 9.5,
+    "accuracy": 7.5,
+    "visual": 8.5,
+    "bonus": 4
+  },
+  "what_worked": "Single-thesis architecture with three independent proofs and an honest guardrails page is exemplary craft.",
+  "fix_next": "Reconcile the $13.5m total revenue claim against the verified $15.6m figure and explain the discrepancy explicitly.",
+  "verdict": "Outstanding thesis-driven deck with one material revenue discrepancy and some unverifiable derived stats.",
+  "flags": [
+    "revenue-total-mismatch",
+    "unverifiable-derived-statistics",
+    "revenue-positive-denominator-unclear"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 2: States total monthly revenue $13.5m; reference total is $15,596,344.59 (~$2.1m gap, possibly excluding zero-revenue rows but not stated). Slide 5: Claims n=789 revenue-positive companies; reference shows 216 zero-revenue rows implying 784 revenue-positive, a minor but unclarified discrepancy.",
+  "evidence": {
+    "insight": "Slides 3-5: ARPU-invariance thesis (median ~$20, Spearman 0.013, elasticity 0.98, R²=0.72) is genuinely original and decision-useful. Slide 7: B2B exception reframed as customer-selection not pricing-page decision adds real nuance. Slide 8: Domain authority monotonic probability curve is actionable. Slide 9: Growth-by-decile with trimmed-mean correction shows analytical maturity.",
+    "narrative": "Perfect single-thesis arc: title claim → evidence base → three proofs of ARPU invariance → elimination of alternative levers → one exception → where the slope is → compounding → three decisions → guardrails → close. Every slide advances the argument; nothing is a disconnected list.",
+    "framing": "Slide 2: Explicit survivorship/opt-in/scope caveat before any analysis. Slide 6: Correlation-not-causation on free tiers. Slide 8: Reverse-causality warning on domain authority. Slide 11: Full guardrails covering cost data absence, snapshot limitation, broken fields, fat tails, and single-company concentration. Audience and scope are crystal clear throughout.",
+    "accuracy": "Slide 2: $13.5m total vs reference $15.6m is a material ~13% discrepancy with no explanation. Slide 5: n=789 revenue-positive vs expected 784 (1000−216) is a minor unexplained gap. Slide 11: Correctly flags Stan as 26.5% of MRR, broken revenue_multiple field, and fat-tailed distribution. Most derived statistics (elasticity, R², Spearman, Mann-Whitney) are internally consistent but not independently verifiable from the frozen reference.",
+    "visual": "Consistent navy/gold/white palette with intentional dark-slide/light-slide rhythm. Charts are restrained and purposeful: bar charts with direct labels (slides 4, 8), grouped horizontal bars (slide 7), line chart (slide 9). Card-based stat layouts are clean and scannable. Typography hierarchy is clear. No decorative graphics or chart junk.",
+    "ai_slop": "none — No generic filler, no decorative stock imagery, no inflated consulting language. Every sentence carries specific data points. The deck reads as genuinely authored analysis."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 8.0 to 7.5: the $13.5m vs $15.6m revenue discrepancy is a ~13% gap on the dataset's most fundamental aggregate, and the n=789 vs expected 784 adds a second unexplained denominator issue. These are not trivial rounding differences. All other scores confirmed as warranted by slide evidence.",
+  "total": 92,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 23335,
+    "output_tokens": 980
+  }
+}

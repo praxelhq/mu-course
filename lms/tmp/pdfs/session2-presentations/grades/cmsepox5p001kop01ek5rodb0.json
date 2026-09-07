@@ -1,0 +1,40 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 3,
+    "narrative": 4,
+    "framing": 3.5,
+    "accuracy": 2.5,
+    "visual": 4.5,
+    "bonus": 0
+  },
+  "what_worked": "Screening matrix on slide 8 attempts a structured multi-criteria filter with named companies and thresholds.",
+  "fix_next": "Category percentages on slide 6 are fabricated (AI is 27% not 35%, SaaS 9% not 28%), and the deck ignores 274 missing-category rows entirely.",
+  "verdict": "Consulting-styled pitch with fabricated category shares and shallow dataset engagement.",
+  "flags": [
+    "fabricated-percentages",
+    "ai-slop-consulting-language",
+    "missing-data-ignored",
+    "no-limitations-discussed",
+    "unverifiable-company-claims",
+    "no-aggregate-statistics"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 6: AI shown as 35% and SaaS 28%—actual shares among categorized rows are AI ~27% (197/726) and SaaS ~9% (66/726); Mobile Apps 15% vs actual ~7%; Productivity 12% vs actual ~7%; percentages sum to 100% ignoring 274 missing rows and 7+ other categories. Slide 3: claims 'high correlation between MRR stability and annual growth' with no evidence or data support. Slide 6: labels 5 categories as exhaustive when dataset has 12+. Slide 3: labels chart as ARR ($M) but dataset provides 30-day revenue, not verified ARR. Slide 3: 1Lookup $3.12M ARR—dataset total 30-day revenue is $15.6M so a single company at $3.12M ARR (~$260K/month) would be ~1.7% of total, plausible but presented without sourcing the ARR conversion.",
+  "evidence": {
+    "insight": "Deck cherry-picks ~6 companies without exploring distributions, medians, missingness, provider patterns, or any dataset-wide patterns. No insight goes beyond listing individual company stats.",
+    "narrative": "Has a logical sequence (framework → financials → growth → unit economics → screening → allocation → execution) but it reads as a generic PE pitch template filled with a handful of names rather than a data story.",
+    "framing": "Slide 1 states scope and market context but never defines the dataset's limitations (274 missing categories, 216 zero-revenue companies, 241 missing countries). No audience definition beyond implied investor. TrustMRR described as 'acquisition marketplace' which mischaracterizes the dataset.",
+    "accuracy": "Slide 6 category percentages are materially wrong and appear fabricated. Slide 3 claims about MRR-growth correlation are unsupported. The deck treats 30-day revenue as ARR without noting the conversion assumption. No mention of 216 zero-revenue rows or missingness rates.",
+    "visual": "Consistent warm-toned template with clean typography and readable charts. However, visual sameness across slides 4-5 (identical card layouts) and pie charts used where bar charts would be more honest. No annotations or source labels on any chart.",
+    "ai_slop": "Heavy consulting jargon throughout ('Pareto concentration in the top percentile,' 'high-yield long-term acquisitions,' 'downside valuation risk'). Slide 2 evaluation framework is generic filler that could apply to any dataset. Slide 10 execution steps are boilerplate PE due-diligence steps unrelated to data analysis."
+  },
+  "confidence": "high",
+  "total": 35,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 21931,
+    "output_tokens": 887
+  }
+}

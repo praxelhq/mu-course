@@ -1,0 +1,39 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 3,
+    "narrative": 5,
+    "framing": 4,
+    "accuracy": 2.5,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Clear land-expand-upsell GTM sequence tied to a real regulatory deadline is genuinely strategic thinking.",
+  "fix_next": "The deck claims to use the frozen dataset but fabricates categories, counts, and revenue figures that don't exist in it—anchor every number to actual data.",
+  "verdict": "A polished pitch deck masquerading as a data story, built on fabricated figures.",
+  "flags": [
+    "fabricated-data",
+    "pitch-deck-not-data-story",
+    "no-charts",
+    "unverifiable-claims",
+    "category-mismatch"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1: '$1.51B revenue tracked' — actual dataset total 30-day revenue is $15.6M, off by ~100x. Slide 1: '138 security startups' — no 'Security' category exists in the frozen dataset; categories are AI, Marketing, E-comm, SaaS, etc. Slide 3: 'Security ranked #2 by total platform revenue' — cannot be verified; highest category is AI at $2.36M. Slide 3: 'Developer Tools/API 1,187 startups' — dataset has 1,000 rows total, Dev Tools has 37 companies. Slide 3: 'Fintech 375 startups' — no Fintech category exists in the dataset. Slide 3: '1Lookup earns $224,419/month, 6th-highest' — unverifiable against frozen data. Slide 3: '8x fewer rivals' claim — ratio 1187/138 ≈ 8.6x but both numerator and denominator are fabricated.",
+  "evidence": {
+    "insight": "The core insight (position as security/compliance to avoid crowded categories) is a reasonable strategic idea but is entirely unsupported by the actual dataset. Slides 4-8 are product/GTM slides with no data analysis whatsoever.",
+    "narrative": "The deck has a coherent arc: data finding → problem → solution → GTM → moat → summary. However, only slide 3 attempts data analysis; slides 4-9 are a startup pitch deck, not a data story.",
+    "framing": "Slide 2 methodology section is commendable in intent but describes a different dataset ('$1.51B across 53M transactions') than the frozen 1,000-row dataset provided. Audience framing as investor/strategic positioning is clear but misaligned with the assignment.",
+    "accuracy": "Nearly every quantitative claim on slide 1 and slide 3 is fabricated or unverifiable against the frozen dataset. The dataset has no 'Security', 'Fintech', or 'Developer Tools/API with 1,187 companies' categories. Total revenue is $15.6M not $1.51B. The 1,000-row dataset cannot contain 1,187 companies in one category.",
+    "visual": "Clean, consistent dark-theme design with good typography hierarchy and restrained color palette. No actual data visualizations (charts, plots) anywhere in the deck. Layout is professional but entirely text-based.",
+    "ai_slop": "Consulting-style language throughout ('Trojan Horse strategy', 'moat', 'platform lock-in') but reasonably specific to the company. The bigger issue is that the data appears entirely fabricated rather than AI-generated from the actual dataset."
+  },
+  "confidence": "high",
+  "total": 40,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 17856,
+    "output_tokens": 905
+  }
+}

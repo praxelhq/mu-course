@@ -1,0 +1,40 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 3,
+    "narrative": 3.5,
+    "framing": 3,
+    "accuracy": 2,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Revenue tier breakdown on slide 4 communicates power-law concentration clearly and concisely.",
+  "fix_next": "Most numbers are fabricated or unverifiable against the dataset; ground every claim in actual computed figures before presenting.",
+  "verdict": "Polished template over fabricated numbers; more marketing pitch than data story.",
+  "flags": [
+    "fabricated-numbers",
+    "ai-slop",
+    "broken-image",
+    "missing-data-acknowledgment",
+    "promotional-tone",
+    "unsupported-claims"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 3: Total revenue stated as $1.4M+ (actual $15.6M). Slide 3: Median MRR $850 (unverifiable, dataset is 30-day revenue not MRR). Slide 2: Claims only Stripe and LemonSqueezy providers, omitting RevenueCat, Dodo, Polar, Paddle, Superwall. Slide 6: Category percentages (38% AI, 24% DevTools, 18% Marketing, 12% Directory) do not match dataset categories or proportions; AI is 197/726≈27%, not 38%; categories are renamed/merged without basis. Slide 7: Valuation multiples (3.5-5x, 1.8-2.5x) and DR ranges presented as data findings but appear fabricated; dataset B2B/B2C medians are ~2.3x. Slide 8: Valuation multiple curve presented as empirical finding with no Y-axis labels and no sourcing from dataset. Slide 4: Claim top 8% generate 74% of revenue is unverified and the tier counts (480/270/170/80) look rounded/fabricated. Slide 3: No acknowledgment of 274 missing category values or 241 missing country values.",
+  "evidence": {
+    "insight": "Slides 7-9 offer strategic comparisons and growth levers but none are grounded in dataset computation; they read as generic indie-hacker advice rather than data-derived insights.",
+    "narrative": "Loose arc from overview→distribution→categories→cohort→valuation→playbook, but the second half (slides 9-11) abandons data entirely for unsupported prescriptive advice and motivational content.",
+    "framing": "Slide 2 executive summary mentions 'Stripe and LemonSqueezy' only, ignoring 5 other providers. No mention of missingness, sample limitations, or what the revenue figure actually measures (30-day not MRR). Audience unclear—reads as TrustMRR marketing.",
+    "accuracy": "Total revenue off by >10x ($1.4M vs $15.6M). Category breakdown uses invented labels and percentages. Provider coverage incomplete. Valuation multiples and DR ranges appear fabricated. No acknowledgment of missing data fields.",
+    "visual": "Clean template with consistent typography and color. Slide 5 has a broken image placeholder. Slide 8 line chart lacks Y-axis label. Donut chart on slide 6 is readable but based on wrong data. Overall polished but repetitive template feel.",
+    "ai_slop": "Consulting-speak throughout ('power-law dynamics', 'tech stack leverage', 'profitability drivers'). Slide 9 'Core Growth Levers' is generic startup advice with no data backing. Slide 10 'Path to $10k' roadmap is pure prescriptive filler. Slide 11 motivational quote with stock illustration. Broken image alt-text visible on slide 5."
+  },
+  "confidence": "high",
+  "total": 31,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22130,
+    "output_tokens": 934
+  }
+}

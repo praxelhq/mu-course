@@ -1,0 +1,410 @@
+    SESSION 3 · DATASET ANALYSIS
+
+
+
+
+Inside 1,000 Startups
+What the TrustMRR revenue data actually says about who is making money
+
+
+
+
+$13.5M                                           $133.8M                                           500,597                65
+aggregate MRR                                    revenue, last 12 months                           active subscriptions   countries represented
+
+
+
+
+Source: TrustMRR verified payment-provider data · 1,000 records × 29 fields · snapshot frozen 30 July 2026
+    THE DATASET
+
+
+What we are actually looking at
+Every startup connects a live payment provider, so revenue is verified rather than self-reported.
+
+
+
+              Money                                                                             Business model
+       1                                                                                    2
+              MRR, 30-day / 3-month / 12-month / all-time revenue, growth rates,                Value proposition, problem solved, pricing model, target persona, B2B vs
+              active subscriptions                                                              B2C, category
+
+
+
+
+              Distribution                                                                      Liquidity
+       3                                                                                    4
+                                                                                                On-sale flag, asking price, revenue multiple — a live market for these
+              Domain rating, X followers, 30-day visitors, revenue per visitor, country
+                                                                                                businesses
+
+
+
+
+      Coverage warning: the fields are not equally populated
+
+      100%                                        76%                            73%                  71%                                  18%
+      revenue & MRR                               country                        category             domain rating                        web traffic
+
+
+
+
+TrustMRR 1,000-row dataset · frozen 30 Jul 2026                                                                                                                            2
+    FINDING 01
+
+
+Revenue is a brutal power law
+The top 10 companies out of 1,000 earn more than the other 990 combined.
+
+
+ 110%
+                                                                                 99.8%
+                                                                                              48%
+                                                                       98.1%
+                                                             93.8%
+   90%
+                                                   81.8%
+                                                                                              of all MRR sits with the single largest company, Stan
+                                       70.6%
+   70%
+
+
+
+   50%
+                 48.0%
+                                                                                              $282
+                                                                                              median monthly recurring revenue across the cohort
+   30%
+
+
+
+   10%
+                                                                                              0.2%
+  -10%
+                                                                                              of MRR earned by the entire bottom half of the list
+                 Top 1%               Top 5%      Top 10%   Top 20%   Top 30%   Top 50%
+                                                                                          Averages are meaningless here. Mean MRR is $13,472 — 48× the
+                                                                                          median.
+
+
+TrustMRR 1,000-row dataset · frozen 30 Jul 2026                                                                                                          3
+    FINDING 02
+
+
+Four out of five startups earn under $10k a month
+The cohort splits cleanly into a long tail of experiments and a thin layer of real businesses.
+
+
+
+                                                           % of startups      % of total MRR
+                                                                                                                                Read this way
+ 65%
+
+                                                                                                                        55.0%
+ 55%
+
+                                                                                                                                •    197 startups report zero MRR — a fifth
+ 45%
+                                                                                                         39.8%                       of the list has connected billing but no
+                                                                                                                                     recurring revenue.
+ 35%
+                                                                                                                                •    16 companies above $100k/month carry
+                                                                                                                                     55% of the cohort's recurring revenue.
+ 25%
+             19.7%                   19.8%                  19.7%                19.6%           19.6%
+                                                                                                                                •    The $10k–100k band is the real middle
+                                                                                                                                     class: 196 companies, 40% of MRR.
+ 15%
+                                                                                                                                •    162 startups show no revenue at all in
+                                                                                          4.7%
+   5%                                                                                                            1.6%                the last 30 days.
+                          0.0%                    0.1%               0.5%
+
+
+  -5%
+                     $0                  $1–100                $100–1k             $1k–10k        $10k–100k        $100k+
+
+                                                         MRR band (monthly recurring revenue)
+
+
+
+TrustMRR 1,000-row dataset · frozen 30 Jul 2026                                                                                                                                 4
+    FINDING 03
+
+
+Most of the cohort is standing still
+Median 30-day MRR growth is exactly 0%. Momentum concentrates where revenue already exists.
+
+
+
+
+      43%                                                   27%                                         31%
+      flat — no change in MRR month over month              shrinking — MRR down over 30 days           growing — only 15% grew faster than 20%
+
+
+
+Share of startups growing month over month, by revenue band
+ 80%
+                                                                                                        Growth compounds upward
+ 70%                                                                                            66.7%
+
+ 60%                                                                                                    •    A startup above $10k MRR is roughly twice as
+ 50%                                                                                                         likely to be growing as one under $100.
+                                                             39.3%           41.8%
+ 40%                                               35.3%                                                •    Two-thirds of the $100k+ tier is still growing at
+ 30%                                                                                                         scale.
+                                       23.4%
+ 20%                                                                                                    •    55% of revenue-generating startups are running
+ 10%
+                                                                                                             ahead of their trailing-year pace; 26% are behind
+                 0.0%                                                                                        it.
+   0%
+                  $0                  $1–100      $100–1k   $1k–10k       $10k–100k         $100k+
+
+
+
+TrustMRR 1,000-row dataset · frozen 30 Jul 2026                                                                                                                  5
+    FINDING 04
+
+
+AI is the most crowded category, not the richest
+AI accounts for 27% of tagged startups. Education, Marketing and Analytics earn more per company.
+
+
+
+           Education                                                                                        $2,142            197
+         Marketing                                                                            $1,586                          AI startups — the largest single category, and the most
+                                                                                                                              competitive
+           Analytics                                                              $1,294
+
+ Content Creation                                                                $1,254
+                                                                                                                              $18.4M
+               Sales                                                    $1,036
+
+      Social Media                                               $912                                                         12-month revenue from AI: the biggest pool, spread thinnest
+
+             Fintech                           $500
+
+                  AI                         $446                                                                             Education
+  Health & Fitness                        $392
+                                                                                                                              highest median MRR at $2,142 and the deepest subscriber bases
+               SaaS                   $303
+
+      Mobile Apps                  $223
+                                                                                                                              Dev Tools
+           Dev Tools             $185
+
+   -$400                 $100                  $600                 $1,100                 $1,600      $2,100        $2,600
+                                                                                                                              lowest median MRR, but the fastest median growth at +8.9%
+
+
+
+
+Categories with 10+ tagged startups · 726 of 1,000 records carry a category                                                                                                                   6
+    FINDING 05
+
+B2B is one third of the cohort and nearly two thirds of
+the    money
+Consumer startups win on volume of companies; business startups win on revenue per customer.
+
+
+
+      B2B                                                                    B2C                                                 Both
+      255 startups · 36% of tagged                                           401 startups · 56% of tagged                        56 startups · 8% of tagged
+
+
+      $1,036                     median MRR                                  $181                  median MRR                    $352                  median MRR
+
+
+
+      $49                        revenue per subscriber                      $9                    revenue per subscriber        $23                   revenue per subscriber
+
+
+
+      58%                        of all tagged MRR                           36%                   of all tagged MRR             6%                    of all tagged MRR
+
+
+
+      16                         median active subscriptions                 19                    median active subscriptions   22                    median active subscriptions
+
+
+
+
+      The pricing tell: 53% of startups that describe their pricing offer a free tier — and they run a median MRR of $159 against $751 for those that do not.
+
+
+
+712 of 1,000 records carry an audience type · 657 describe a pricing model                                                                                                           7
+    FINDING 06
+
+Owned distribution predicts revenue. Social following
+does       not.
+Domain authority tracks revenue closely; X follower counts barely move with it.
+
+
+Median MRR by domain rating                                                                     Where the money is collected
+ $100,000
+                                                                                      $30,890   Stripe                                          64.4%        $11.8M MRR
+
+
+   $10,000
+                                                                            $3,995
+                                                                                                RevenueCat                                      19.1%        $1.15M MRR
+
+    $1,000                                                        $521
+                                                                                                Dodo Payments                                   5.0%         $13k MRR
+                                           $111
+      $100
+
+
+                       $9                                                                       Polar                                           4.0%         $3k MRR
+        $10
+
+
+
+         $1                                                                                     Lemon Squeezy / Paddle / other                  7.5%         $0.5M MRR
+                      DR 0               DR 1–10                DR 11–30   DR 31–60   DR 61+
+
+Log scale · correlation with revenue 0.48, versus 0.18 for X followers
+
+
+                                                                                                    Consumer-mobile stacks skew differently: Superwall users show a median 1,534
+                                                                                                    subscriptions but low prices, while Stripe carries 88% of the cohort's MRR.
+
+
+
+
+Domain rating available for 714 records · X followers for 984                                                                                                                      8
+    FINDING 07
+
+American startups dominate the revenue, not the
+headcount
+The US is a third of the located startups and more than 70% of located MRR.
+
+
+
+     United States                                                                    258
+                                                                                                  $7.5M    US total MRR — 71% of all located revenue
+             France                                      79
+
+               India                                59
+
+ United Kingdom                                50                                                 $1,263   US median MRR, the highest of any major market
+            Canada                   29
+
+          Germany                24
+
+              Brazil            20                                                                $6       India's median MRR across 59 startups — high
+                                                                                                           volume, early stage
+        Hong Kong               19
+
+          Australia            17
+
+              Spain            16                                                                 241      records with no country at all, a quarter of the
+                                                                                                           dataset
+                       0                  50                  100   150   200   250         300
+
+
+
+
+759 of 1,000 records carry a country · 65 countries in total                                                                                                  9
+    FINDING 08
+
+
+A quarter of these startups are for sale
+262 listings, $86.8M in combined asking price, at a median of 2.3× annual revenue.
+
+
+
+      262                                                  $86.8M                                  $35,000                                            2.3×
+      startups listed for sale (26%)                       combined asking price                   median asking price                                median revenue multiple
+
+
+
+Bigger businesses command bigger multiples
+                                                                                                                         What sellers look like
+ 6x
+
+ 5x                                                                                         4.6x
+                                                                                                                         •    Listed startups are materially larger: $1,055 median MRR
+                                                                                                                              versus $187 for those not on sale.
+ 4x
+
+                                               2.8x                                                                      •    96 listings sit under $10,000 and price at just 1.05× revenue
+ 3x
+                                                             2.4x                  2.5x                                       — near-abandoned assets.
+ 2x                                                                                                                      •    21 listings ask over $1M and command 4.6×, the premium for
+                 1.1x                                                                                                         scale and durability.
+ 1x
+                                                                                                                         •    AI and Mobile Apps are the most-listed categories — 83 of
+ 0x                                                                                                                           the 262 listings.
+             Under $10k                  $10–50k           $50–250k           $250k–1M    Over $1M
+
+                                                      Asking price band
+
+261 of 262 listings disclose an asking price                                                                                                                                                  10
+    READ WITH CARE
+
+
+Four things this data cannot tell you
+The revenue figures are verified. Almost everything around them is partial.
+
+
+   !         Survivorship
+                                                    Only startups that voluntarily connect a payment provider appear here. Failures and the privately profitable are both
+                                                    invisible.
+
+
+
+
+   !         Sparse traffic data
+                                                    Visitors are recorded for 178 startups and revenue-per-visitor for 142. Any acquisition-efficiency conclusion rests on
+                                                    14% of the sample.
+
+
+
+
+   !         Anonymous entries
+                                                    129 records are labelled Stealth Company, several with six-figure MRR. They carry no category, persona or country.
+
+
+
+
+   !         A single 30-day window
+                                                    Growth rates come from one month, ranging from −100% to +12,983%. Treat them as noisy signals, not trends.
+
+
+
+
+TrustMRR 1,000-row dataset · frozen 30 Jul 2026                                                                                                                              11
+    SO WHAT
+
+
+
+Five conclusions
+01             Scale, not survival, is the hard part                Reaching $1k MRR is common — 40% of the cohort clears it. Reaching $10k is rare, and $100k is a
+                                                                    rounding error at 1.6%.
+
+
+
+02             Momentum is bought with revenue                      The likelihood of growing rises at every band, from 23% under $100 MRR to 67% above $100k. Distress
+                                                                    does not reverse itself.
+
+
+
+03             Crowded is not the same as lucrative                 AI has the most companies and the thinnest median. Education, Marketing and Analytics quietly out-
+                                                                    earn it per company.
+
+
+
+04             Charge businesses, or charge more                    B2B is a third of the companies and 58% of the money, at 5× the revenue per subscriber.
+
+
+
+
+05             Owned distribution is the real moat                  Domain authority tracks revenue across every band. Social following barely does. SEO beats reach.
+
+
+
+Analysis of 1,000 TrustMRR records · snapshot frozen 30 July 2026
+

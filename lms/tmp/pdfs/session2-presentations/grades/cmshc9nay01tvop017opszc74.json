@@ -1,0 +1,38 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 6,
+    "accuracy": 5.5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Sharp thesis contrasting AI hype with median reality; mean-vs-median slide is genuinely insightful storytelling.",
+  "fix_next": "Charts lack Y-axis values and dollar labels; source cites 'all 1,000 startups' but category field has 274 missing rows, inflating AI's apparent share.",
+  "verdict": "Tight narrative with a strong thesis, undermined by missing labels and denominator errors.",
+  "flags": [
+    "missing-y-axis-values",
+    "denominator-error-slide2",
+    "unverifiable-growth-claims",
+    "no-limitations-slide"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 2: Says 'all 1,000 startups' but category is missing for 274 rows; 197/726 ≈ 27%, not 'every fifth' (20%). Slide 3: 76% average and 0% median 30-day growth for AI are unverifiable against the frozen reference and may be fabricated or miscalculated. Slide 4: Source cites 'revenue_12m_usd' but the dataset's revenue field is 30-day revenue, not 12-month; this mislabeling recurs on slides 5 and 6.",
+  "evidence": {
+    "insight": "Slide 3's mean-vs-median contrast is a genuinely useful analytical move; slide 4's power-law framing (top 5 = 55%) adds decision-relevant depth beyond chart description; slide 5 ranking AI 9th by median is a strong counternarrative.",
+    "narrative": "Clear five-act arc: crowd → misleading average → power law → category comparison → geography → recommendation. Each slide builds toward the closing thesis. Coherent and purposeful sequence.",
+    "framing": "Audience implicitly investors/founders but never stated explicitly. No limitations slide, no mention of 274 missing categories or 216 zero-revenue rows. Scope is narrowly AI-focused which works but leaves dataset underexplored.",
+    "accuracy": "Slide 2 denominator error (uses 1,000 not 726). Slides 4-6 reference 'revenue_12m_usd' which doesn't match the 30-day revenue field in the dataset. AI median revenue of $503 from reference would place it well below 9th if the chart's unlabeled Y-axis is accurate. The 76%/0% growth figures on slide 3 cannot be verified.",
+    "visual": "Consistent dark theme with gold/teal accent palette; clean hierarchy; bar charts are well-chosen. However, no Y-axis dollar values on slides 5 and 6 makes the charts decorative rather than informative. Slide 4's stacked bar is effective. Overall restrained and legible.",
+    "ai_slop": "Minimal slop. Design is polished but not generic template-heavy. The decorative circle motif on slides 1 and 7 is purely ornamental but not egregious."
+  },
+  "confidence": "high",
+  "total": 67,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15035,
+    "output_tokens": 802
+  }
+}

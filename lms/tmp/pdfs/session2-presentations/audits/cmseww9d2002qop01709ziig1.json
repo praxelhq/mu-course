@@ -1,0 +1,43 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 5,
+    "narrative": 5,
+    "framing": 3.5,
+    "accuracy": 3,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Power-law observation and three-step filtering funnel show genuine analytical thinking applied to the dataset.",
+  "fix_next": "Replace speculative business projections with actual charts, acknowledge missingness rates, and correct fabricated statistics against the real data.",
+  "verdict": "Polished consulting cosplay with fabricated numbers, no real charts, and heavy AI-generated filler.",
+  "flags": [
+    "ai-slop-consulting-language",
+    "fabricated-statistics",
+    "no-real-data-visualizations",
+    "unacknowledged-missingness",
+    "inflated-framing",
+    "speculative-projections-untethered-from-data",
+    "invented-audience-context"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 1/12: $13.5M monthly revenue vs actual $15.6M total revenue (mislabeled and wrong). Slide 3: median MRR $282 not verifiable as dataset median. Slide 4: AI median $446 vs reference $503; 'DevTools & Analytics' combined median $1,294 is fabricated (Dev Tools median $635, Analytics median $419). Slide 4: '20% of Exchange' — 197/1000 is 19.7% but 274 categories missing so denominator is 726, making AI actually 27.1% of categorized listings. Slide 5: r=0.91 for subscribers vs MRR is unverifiable from the frozen reference and likely fabricated. Slide 6: '70% plateaued or shrinking' is unsupported. Slide 7: '38x median' multiple is unsourced. Slide 12: '262 live listings' contradicts 1,000 listings without explanation.",
+  "evidence": {
+    "insight": "Slide 3 power-law framing and slide 10 funnel are genuine analytical contributions; slide 4 AI-vs-DevTools contrast is a useful idea but built on wrong numbers; slides 8-9 and 11 are speculative strategy, not data insight.",
+    "narrative": "Coherent arc from market overview through distribution, categories, correlations, valuation mismatches to strategy/roadmap. But the second half (slides 8-11) abandons data analysis for fictional business planning with fabricated financial projections ($1.8M arbitrage, $1.2M ARR, 88% margin).",
+    "framing": "Fictional 'CEO Board Briefing' framing obscures the actual analytical task. No mention of 24-29% missingness across country/category/audience_type/domain fields, no scope limitations, no caveats. A cold reader cannot tell this is student data analysis.",
+    "accuracy": "At least 8 factual errors: wrong total revenue, wrong AI median, fabricated combined DevTools+Analytics median, wrong denominator for category share, unverifiable r=0.91, unsupported 70% claim, unsourced 38x median, contradictory 262 live listings. Zero acknowledgment of missingness.",
+    "visual": "Zero actual data visualizations across 12 slides — no scatter plots, histograms, or bar charts. Slide 5 has a minimal horizontal bar but it displays fabricated correlations. Every slide uses identical card-and-text layout with massive empty space. Status badges on slides 6-7 have rendering/legibility issues. Consistent dark theme but no visual variety or data encoding.",
+    "ai_slop": "Pervasive consulting jargon: 'sovereign software asset exchange,' 'capital allocation efficiencies,' 'asymmetric information,' 'institutional-grade deal stream.' Every slide has templated 'WHY THE BOARD SHOULD CARE' footer. Slides 8-9 and 11 contain fabricated financial projections entirely untethered from the dataset. Language is interchangeable with any SaaS marketplace pitch."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered narrative 5.5→5.0 because half the deck is speculative strategy not data storytelling; lowered accuracy 3.5→3.0 after confirming 8 errors including fabricated combined median and wrong total revenue label; lowered visual 4→3.5 because there are literally zero data charts across 12 slides; lowered framing 4→3.5 for complete absence of limitations/missingness disclosure.",
+  "total": 40,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 22680,
+    "output_tokens": 1112
+  }
+}

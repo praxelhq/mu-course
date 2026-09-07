@@ -1,0 +1,39 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7.5,
+    "accuracy": 5,
+    "visual": 8,
+    "bonus": 1
+  },
+  "what_worked": "Layered volume-vs-quality argument across slides 4–6 is genuinely insightful and well-sequenced.",
+  "fix_next": "Reconcile AI total/median, B2B/B2C medians, and Education median against the frozen dataset before presenting.",
+  "verdict": "Strong design and narrative undermined by multiple revenue figures that don't match the data.",
+  "flags": [
+    "factual-errors-multiple",
+    "causal-language-on-observational-data",
+    "unverifiable-customer-support-median"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 5: AI total $1.81M vs frozen $2.36M; AI median $446 vs frozen $503; Education median $2,142 vs frozen $2,435. Slide 5: B2B median $1,036 and B2C median $181 yield 5.7× ratio but frozen medians give 2.35×/2.30× multiples suggesting different denominators or metric confusion. Slide 7: 'SEO authority drives revenue' is causal language on cross-sectional observational data.",
+  "evidence": {
+    "insight": "Slides 4–6 build a three-layer argument (count → median MRR → revenue-per-visitor) showing AI's volume dominance masks weak per-company monetization. Traffic conversion angle on slide 6 is original. Slide 8 acquisition analysis adds a useful marketplace lens. However, 'two predictors' framing on slide 9 overstates observational associations.",
+    "narrative": "Clear 01–08 numbered arc with a single thesis introduced on slide 4 ('biggest ≠ best') and landed on slide 9. Bottom-line statement is crisp. Slides 2–3 are setup-heavy but necessary. Each analytical slide builds on the prior. The landing synthesizes well.",
+    "framing": "Slide 2 explains verification model and limitations (unsupported processors, indie-scale only). Slide 3 shows missingness with ~30% caveat. Slide 6 flags ~18% visitor coverage. Slide 9 explicitly notes self-selection bias. Audience (indie founders/acquirers) is implicit but clear from context.",
+    "accuracy": "AI total revenue off by ~$550K (slide 5). AI median off by ~$57 (slide 5). Education median off by ~$293 (slide 5). B2B/B2C median ratio (5.7×) doesn't align with frozen reference multiples (2.35×/2.30×), suggesting the MRR figures shown may use different filters or definitions without disclosure. Customer Support as highest-median category is unverifiable against reference. Anonymous count 130 vs 129 is acceptable rounding. Category missing 27.4% matches 274/1000.",
+    "visual": "Consistent dark theme with disciplined green/orange/yellow palette. Strong hierarchy: large headline numbers, supporting annotations, source lines on every slide. Bar charts are clean and labeled. Slide 6 left chart lacks y-axis scale labels. Donut on slide 8 is appropriate. Color coding for warnings (orange) is purposeful and consistent.",
+    "ai_slop": "None detected — every slide contains specific data points with interpretive annotations rather than generic filler."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.5 to 5.0: five material numerical discrepancies (AI total, AI median, Education median, B2B/B2C medians) plus causal overreach on slide 7 title. Reduced bonus from 2 to 1: the design craft is excellent but the factual errors prevent a higher bonus. Other dimensions confirmed as appropriate.",
+  "total": 71,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 15814,
+    "output_tokens": 965
+  }
+}

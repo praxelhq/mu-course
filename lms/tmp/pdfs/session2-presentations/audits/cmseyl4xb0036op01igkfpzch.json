@@ -1,0 +1,47 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 4.5,
+    "visual": 6,
+    "bonus": 1
+  },
+  "what_worked": "Clear hypothesis-driven structure with honest caveats about scale incomparability and small-sample noise throughout.",
+  "fix_next": "Reconcile category medians with actual data—several are far off reference values—and address why B2B/B2C ratio diverges from ~2.3× reference.",
+  "verdict": "Well-structured hypothesis test undermined by multiple median values that don't match the data.",
+  "flags": [
+    "median-values-off-multiple-categories",
+    "b2b-b2c-ratio-inflated",
+    "effect-size-comparison-across-incompatible-scales",
+    "no-provider-or-anonymity-analysis",
+    "top10-share-slightly-off",
+    "education-median-off",
+    "analytics-median-3x-off",
+    "marketing-median-off",
+    "ai-median-off",
+    "saas-median-off",
+    "health-fitness-median-off"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 3: top-10 share stated 48% vs reference 49.6% (minor). Slide 5: Education median $2,142 vs ref $2,435; Marketing $1,586 vs ref $2,369.50; Analytics $1,294 vs ref $419 (3× off); AI $446 vs ref $503; SaaS $303 vs ref $200.50; Health & Fitness $392 vs ref $662.50; Content Creation $1,254 vs ref $1,237.50 (close). Slide 4: B2B/B2C median ratio claimed 5.7× but reference on-sale median multiples are ~2.3×, suggesting the audience-type medians ($1,036/$181) are substantially wrong.",
+  "evidence": {
+    "insight": "Central question (structural vs popularity) is genuine and the Spearman ρ=0.09 null finding for category crowding adds value. But the comparison across incompatible scales (ratios vs correlations) weakens the headline claim. No confounders explored (e.g., B2B clustering in high-DR categories).",
+    "narrative": "Excellent sequential logic: baseline → three structural tests → popularity test → head-to-head → conclusion. Each slide builds toward the thesis. Slide 8 explicitly acknowledges scale incomparability. Landing directly answers the opening question.",
+    "framing": "Slide 2 sets up hypothesis and data completeness well. Caveats about small samples and marketplace bias stated. Never defines what 'MRR' means in this dataset. Audience for the analysis implied but not stated. No mention of provider concentration (Stripe 64%) or anonymity effects.",
+    "accuracy": "Multiple category medians diverge substantially from reference: Analytics $1,294 vs $419 (3× off), Marketing $1,586 vs $2,369.50, Education $2,142 vs $2,435, AI $446 vs $503, SaaS $303 vs $200.50, H&F $392 vs $662.50. B2B/B2C 5.7× gap is inflated vs reference ~2.3× median multiples. Top-10 share 48% vs 49.6%. These are not rounding differences—several are directionally misleading.",
+    "visual": "Consistent dark theme with green palette. Horizontal bars appropriate for ranked categories. Tables duplicate chart data adding clarity but also redundancy. Slide 8 dual-chart layout is effective. Same bar chart type repeated across slides reduces visual variety. Gamma template evident throughout.",
+    "ai_slop": "Gamma template branding visible on every slide. Visual design uniform but content is substantive and dataset-specific. No decorative-but-meaningless graphics or generic filler text. Minor template feel but not egregious."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.0 to 4.5: at least 6-7 category medians are materially wrong (Analytics off by 3×, Marketing off by ~33%, H&F off by ~40%), and the central B2B/B2C 5.7× claim appears inflated vs reference 2.3× multiples. These aren't rounding issues—they undermine the deck's core quantitative argument. Other scores held steady as preliminary assessment was sound.",
+  "total": 64,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 17871,
+    "output_tokens": 1106
+  }
+}

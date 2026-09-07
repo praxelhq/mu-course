@@ -1,0 +1,16 @@
+{
+  "fixture_id": "S5-OPS-MALFORMED-01",
+  "trace_id": "trc_ops_malformed_001",
+  "incident_id": "inc_test_2002",
+  "resource_id": "page_test_302",
+  "service": "publishing",
+  "detected_at": "2026-07-30T10:02:00Z",
+  "signal": "publish_failed",
+  "severity": "critical",
+  "customer_visible": false,
+  "retryable": false,
+  "attempt": 0,
+  "details": {"code": "INVALID_FIXTURE_SEVERITY"},
+  "test_mode": "malformed"
+}
+

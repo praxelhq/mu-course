@@ -1,0 +1,43 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 6,
+    "accuracy": 4.5,
+    "visual": 5,
+    "bonus": 1
+  },
+  "what_worked": "Strong decision-oriented arc from market scan to shortlist to board ask, with honest limitations slide.",
+  "fix_next": "Fix the illegible chart legend on slide 3, verify PROSP revenue arithmetic, and disclose dataset missingness rates explicitly.",
+  "verdict": "Well-structured board briefing undermined by unverifiable fields, arithmetic errors, and sloppy chart output.",
+  "flags": [
+    "possible-fabricated-fields",
+    "unverifiable-multiples",
+    "chart-legend-illegible",
+    "PROSP-revenue-arithmetic-mismatch",
+    "missing-data-not-disclosed",
+    "repetitive-kpi-card-template",
+    "unreviewed-tool-output"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 4: PROSP $128,005 MRR × 12 = $1,536,060, not $507K as stated — the 12-month figure appears to be the dataset's 30-day revenue misrepresented as annual. Slide 3: country counts presented without acknowledging 241 missing country values (24.1% of dataset). Slide 3: category chart legend shows unformatted floats (e.g., '8.02069455172414'), not meaningful labels. Slide 5: '1.2x median revenue multiple' and asking-price-based metrics rely on fields not present in the frozen reference schema, making them unverifiable — if fabricated, all multiple-based claims (slides 2, 4, 5, 7, 8, 10) are unsupported.",
+  "evidence": {
+    "insight": "Slides 7-8 move beyond description to rank targets by revenue-to-ask ratio and propose a concrete four-company shortlist with differentiated rationale. The 'motivated seller vs. weak business' framing on slide 9 shows genuine analytical maturity. However, the core insight depends entirely on asking-price and multiple fields whose provenance is unclear from the reference dataset.",
+    "narrative": "Clean arc: executive summary (2) → market landscape (3) → sector deep-dives (4-5) → scatter-plot target identification (6) → shortlist (7) → ROI ranking (8) → risks (9) → recommendation with next steps (10). Thesis ('pricing gaps create acquisition opportunity') is stated early and sustained throughout. Each slide advances the argument.",
+    "framing": "Audience (CEO/Board), question (where to deploy capital), and scope (262 for-sale startups from 1,000) are explicit on slides 1-2. Limitations slide (9) is genuinely useful and honest. However, the deck never explains where asking-price data originates, never acknowledges 24% missing country or 27% missing category values, and never quantifies the 216 zero-revenue rows that could distort median multiples.",
+    "accuracy": "PROSP arithmetic is wrong: $128,005 × 12 = $1,536,060, not $507K. The entire valuation framework rests on asking-price and revenue-multiple fields absent from the frozen reference. Country counts ignore 241 missing values. The slide-3 chart legend pastes raw unformatted floats. The ~$4.86M combined trailing revenue on slide 10 cannot be verified without GoTall/Taller annual figures (only MRR given). Multiple internal consistency issues.",
+    "visual": "Consistent muted palette and typography. Card-based KPI layout is clean but used identically on slides 2, 4, 5, and 10 — repetitive. Slide 6 scatter plot is functional but lacks annotations for the named targets and has an overly crowded legend. Slide 3 category chart legend is completely illegible with raw decimal numbers — clear unreviewed tool output. No chart on slides 4-5 despite being 'sector spotlights.'",
+    "ai_slop": "Slide 3 chart legend showing unformatted floats (e.g., '8.02069455172414') is unreviewed AI/tool output. Repetitive KPI card template across four slides suggests mechanical reuse. Phrases like 'genuine buyer's market' and 'highest-leverage acquisition candidates' lean toward consulting filler but are not egregious."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing by 0.5 for failure to disclose substantial missingness rates (24% country, 27% category, 22% zero-revenue). Lowered visual by 0.5 for the completely illegible slide-3 legend which is a serious presentation defect. Retained other scores as well-supported by evidence. Accuracy remains at 4.5 given the PROSP arithmetic error and reliance on unverifiable fields.",
+  "total": 59,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 19726,
+    "output_tokens": 1197
+  }
+}

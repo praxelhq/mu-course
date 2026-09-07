@@ -1,0 +1,1308 @@
+INVESTMENT ANALYSIS · CONFIDENTIAL
+
+
+
+
+1,000 Micro-SaaS Startups:
+Where the Revenue Actually Is
+A data-driven investment memo on the TrustMRR universe — traction quality, monetisation, valuation dispersion and
+where capital is mispriced.
+
+
+
+
+ $334.0m                                            $13.5m            91%                            262
+ all-time revenue                                   aggregate MRR     revenue in top 10%             assets for sale
+
+
+
+
+Frozen dataset: 30 July 2026 · n = 1,000 startups · all figures USD
+CONTENTS
+
+
+How this deck is built: from raw file to investment decision
+
+
+                    Data preparation & assumptions
+ 01                                                        What we cleaned, dropped and inferred
+
+
+
+                    Executive summary & dashboard
+ 02                                                        The whole thesis on two pages
+
+
+
+                    Business performance
+ 03                                                        Revenue, MRR, growth, traffic, monetisation quality
+
+
+
+                    Segment economics
+ 04                                                        Providers, categories, pricing, personas, geography
+
+
+
+                    M&A / for-sale market
+ 05                                                        262 listed assets, multiples and mispricing
+
+
+
+                    Correlations & 25+ investor insights
+ 06                                                        What actually predicts revenue
+
+
+
+                    Investment memo
+ 07                                                        Ten bets and fifteen recommendations
+
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+01 · DATA PREPARATION
+
+
+The file is usable — but 4 of 29 fields are too sparse to carry a thesis
+
+■       1,000 unique record_ids, zero duplicates removed; 129 shared names are genuine anonymised listings ("Stealth Company", "Hidden Business"), kept but excluded
+        from named call-outs.
+■       Currency: every monetary field is already USD-denominated (revenue, MRR, asking price); no FX normalisation required. No negative money values found.
+■       Sentinel strings (PRICING_NOT_FOUND, "[Private metric ... after login]") converted to missing — otherwise they contaminate every text-based segmentation.
+■       revenue_multiple stored as text ("2.3x") → parsed to numeric; we recompute an independent multiple = asking price ÷ trailing-12M revenue and use that for
+        valuation work.
+■       Growth outliers: 7 records above +1,000% (max +7,900%). Winsorised at [-100%, +1,000%] for averages; medians used throughout as the headline statistic.
+■       Payment provider is multi-valued for 13 startups; we analyse the primary (first-listed) provider and flag multi-provider stacks separately.
+■       Free-text pricing_model (615 unique strings) and target_persona (603) normalised into 8 pricing archetypes and 13 persona clusters via keyword mapping.
+
+
+
+
+     SO WHAT Treat revenue, MRR and subscriptions as decision-grade; treat traffic, revenue-per-visitor and stated multiples as directional only — they exist for a self-selected
+     minority.
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+01 · DATA QUALITY
+
+
+Coverage — not accuracy — is the binding constraint
+
+Field                                                               Coverage            Missing             Investment read
+
+Revenue / MRR / subscriptions                                                   100%                    0                                                   Decision-grade — full population
+Revenue growth 30D                                                              98.6%                 14                                                                      Decision-grade
+MRR growth 30D                                                                  89.3%                107                                     Usable; absence correlates with zero-MRR firms
+X followers                                                                     98.4%                 16                                               Usable; 44% of firms have 0 followers
+Domain rating                                                                   71.4%                286                                  Directional — SEO-invisible firms often unmeasured
+Country                                                                         75.9%                241                                  Directional — 24% of revenue geography unknown
+Category / audience / persona                                                  72–73%             274–361                                                     Directional segmentation only
+Asking price (of 262 for sale)                                                  99.6%                   1                                             Decision-grade within the listed subset
+Visitors 30D                                                                    17.8%                822                                        NOT decision-grade — self-reported minority
+Revenue per visitor                                                             16.5%                858                                      NOT decision-grade — derived from the above
+
+
+
+■       Structural zeros are real signal, not error: 216 startups (22%) booked $0 in the last 30 days and 44% have zero social following.
+■       Assumption: absence of a field is informative (unlisted traffic skews to weak traffic), so we never impute — we report on the observed subset and state n.
+
+
+
+
+     SO WHAT Any thesis built on traffic or SEO data covers at most a fifth of the universe; underwrite on revenue, MRR and subscription counts, which are complete.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+02 · EXECUTIVE SUMMARY
+
+
+A barbell market: ten companies own the economics, 900 are experiments
+
+     Biggest finding
+                                                      ▪   Top 10% of startups hold 91% of all-time revenue and 82% of MRR; the bottom half holds 0.1%.
+                                                      ▪   Median startup: $3,620 lifetime revenue, $282 MRR — this is a hobby-project distribution with a venture tail.
+
+
+
+     Key patterns
+                                                      ▪   Distribution beats product: revenue tracks subscriptions (ρ 0.90) and traffic (ρ 0.60) — not social following (ρ 0.23).
+                                                      ▪   B2B monetises 5.7x better than B2C on median MRR ($1,036 vs $181) and 5x on ARPU ($49 vs $9).
+
+
+
+     Surprises
+                                                      ▪   Growth is uncorrelated with size (ρ 0.07) AND with asking price (r -0.01) — the market prices revenue, not momentum.
+                                                      ▪   34% of startups are shrinking and 31% are exactly flat; only 66 (6.6%) grew >100% in 30 days.
+
+
+
+     Largest opportunity
+                                                      ▪   110 startups run >$3k MRR with almost no audience or SEO — acquirable cash flow invisible to the market.
+                                                      ▪   Underpriced listings exist at <1x TTM revenue while the median ask is 4.8x.
+
+
+
+     Key risks                                        ▪   Revenue quality: 12% of trading firms are one-time-revenue heavy and 34% are in decline; MRR growth is the least reliable field (11%
+                                                          missing).
+                                                      ▪   Concentration: a single company (Stan) is 23% of all-time revenue — remove it and the market halves.
+
+
+        Investor takeaway: this is an acquisition market, not a venture market — buy proven small cash flows at 1–3x revenue and
+                                                         consolidate distribution.
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+02 · EXECUTIVE DASHBOARD
+
+
+The universe on one screen
+
+
+   $334.0m                                            $334k                                     $3,620                                        $13.5m
+   Total revenue (all-time)                           Average revenue                           Median revenue                                Total MRR
+
+
+
+
+   $13k                                               $282                                      0.0%                                          17.4%
+   Average MRR                                        Median MRR                                Median growth 30D                             Mean growth 30D (winsorised)
+
+
+
+
+   Stripe (64%)                                       262 (26%)                                 $332k                                         4.8x
+   Most-used provider                                 Startups for sale                         Average asking price (median $35k)            Median revenue multiple
+
+
+
+
+     SO WHAT Mean-to-median ratios of 92x (revenue) and 48x (MRR) mean every 'average' in this market is a fiction — underwrite on medians and cohort percentiles, never averages.
+
+
+
+
+Cohort benchmarks · P25 MRR $10 · median $282 · P75 $5,040 · P90 $23,369 · P99 $177,206 · 212 startups above $10k MRR, 16 above $100k
+
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+03
+Business performance
+Revenue, traction quality, growth and the monetisation engine
+03 · DISTRIBUTIONS
+
+
+Log-normal revenue, spiked-at-zero growth: two different businesses in one file
+
+
+
+
+■       Revenue and MRR are log-normal across five orders of magnitude — the modal live startup earns hundreds of dollars a month, not thousands.
+■       Growth is a spike at exactly 0% (305 firms) with fat tails both ways: 337 shrinking, 66 above +100%. Flat is the single most common outcome.
+■       22% of the universe booked zero revenue in the last 30 days — a dead-weight tail that distorts any mean-based benchmark.
+
+
+
+
+     SO WHAT Benchmark candidates against the P75 ($5.5k 30-day revenue) not the mean ($15.6k): the mean is one company away from being wrong.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+03 · CONCENTRATION
+
+
+91% of all revenue sits in 100 companies — deal sourcing is a top-decile problem
+
+                                                                                                                           Cohort                                  Share of all-time revenue
+
+                                                                                                                           Top 1% (10 firms)                                            61%
+                                                                                                                           Top 10% (100 firms)                                          91%
+                                                                                                                           Top 20%                                                      97%
+                                                                                                                           Bottom 50%                                                    0%
+                                                                                                                           Bottom 10%                                                  0.0%
+                                                                                                                           MRR in top 10%                                               82%
+
+
+
+
+                                                                                                                           ■     Largest single asset, Stan, is 23% of the dataset's
+                                                                                                                                 lifetime revenue.
+                                                                                                                           ■     Bottom 500 startups combined generated $330k — less
+                                                                                                                                 than one mid-tier listing's asking price.
+
+
+
+
+     SO WHAT Screening effort should be spent almost entirely on the top two deciles; a random sample of this market is a sample of zero-revenue projects.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+03 · REVENUE BRIDGE
+
+
+Strip the ten mega-outliers and the addressable pool falls to $31m
+
+
+
+
+■       The ten largest companies (>$4m lifetime each) are not realistically acquirable at micro-PE prices.
+■       The economically reachable universe for a sub-$1m cheque is ~$31m of lifetime revenue spread over 900 firms — thin, but full of $10–50k assets.
+
+
+
+
+     SO WHAT Size the fund to the reachable pool, not the headline pool: a roll-up strategy here buys dozens of $2–20k MRR assets, not a handful of trophies.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+03 · 30-DAY REVENUE & REVENUE QUALITY
+Two thirds of trading revenue is genuinely recurring — PMF is real for the top
+quartile
+
+    $400                                                            $5,513 / $24,588                                               62%
+    Median 30-day revenue                                           P75 / P90                                                      Recurring-heavy (MRR ≥80% of 30D rev)
+
+
+
+
+    12%                                                             66%                                                            216 (21.6%)
+    One-time heavy (<30%)                                           Run-rate > trailing 12M (accelerating)                         Zero-revenue startups
+
+
+
+
+■       Traction: median run-rate (30-day revenue × 12) is 1.36x trailing-12M revenue — the typical trading company is genuinely growing into its history, not decaying.
+■       Sustainability: 62% of trading firms are recurring-heavy; 12% depend on one-off sales and should be discounted materially on any multiple.
+■       PMF marker used: >$1k 30-day revenue AND ≥80% recurring AND non-negative growth — only 218 of 1,000 startups clear all three.
+
+
+
+
+     SO WHAT Revenue quality, not revenue level, is the cheapest edge in this dataset — the multiple paid for a recurring dollar should be double that of a one-time dollar.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+03 · MRR & SUBSCRIPTIO NS
+
+
+MRR is a subscription-count game — ARPU is remarkably tight around $20–50
+
+                                                                                                                 Metric                                     Value
+
+                                                                                                                 Total MRR                                                     $13.5m
+                                                                                                                 Median MRR                                                       $282
+                                                                                                                 P90 MRR                                                          $23k
+                                                                                                                 Median subscriptions                                               16
+                                                                                                                 P90 subscriptions                                                 769
+                                                                                                                 Median ARPU                                                    $19.50
+                                                                                                                 B2B ARPU (median)                                              $49.00
+                                                                                                                 B2C ARPU (median)                                               $9.34
+
+
+
+                                                                                                                 ■     ρ(MRR, subs) = 0.90 — the strongest relationship in the entire
+                                                                                                                       dataset.
+                                                                                                                 ■     Highest-ARPU operators (Cometly $676, Kibu $625, VirtualJK
+                                                                                                                       $487) are all B2B with <400 customers.
+
+
+
+
+     SO WHAT Diligence should test customer count and churn, not headline MRR: at fixed ARPU, MRR is simply a proxy for how many logos the founder can close.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+03 · GROWTH
+
+
+Scale buys no growth — and a third of the market is already shrinking
+
+                                                                                                                            ■     Hypergrowth (>100% 30D): 66 firms (6.6%)
+                                                                                                                            ■     Declining: 337 firms (33.7%)
+                                                                                                                            ■     Exactly flat: 305 firms (30.5%)
+                                                                                                                            ■     Above $10k MRR: 212 firms
+                                                                                                                            ■     Above $100k MRR: 16 firms
+                                                                                                                            ■     ρ(MRR, revenue growth) = 0.07 — statistically no size
+                                                                                                                                  premium
+                                                                                                                            ■     Median MRR growth: 0.0%; mean +33% is outlier-driven
+
+
+
+
+     SO WHAT Growth is idiosyncratic, so it cannot be bought by buying scale: pay for growth only where it is verified in the last 30 days, and pay nothing for it in a flat asset.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+03 · GROWTH QUADRANTS
+
+
+Three portfolios hide inside one dataset
+
+                                                                                  High MRR / negative growth — value traps or
+    Hypergrowth with real MRR (>$1k)                                                                                                              Low MRR / high growth — option value
+                                                                                  turnarounds
+
+Company                                  MRR                   Growth           Company                     MRR              Growth            Company                     MRR           Growth
+
+HotelHero.ai                                          $1,460            1245%   Stealth Company                   $747,069            -74.3%   Stealth Company                     $54            1708%
+
+Stealth Company                                 $135,899                719%    Rezi                              $259,701             -4.9%   The Prettiest Girl                 $168            1209%
+
+Hong Xuan Kow                                    $20,254                598%    1Lookup                           $207,064             -7.5%   SHIPDOCS.sh                         $36            403%
+
+Backlinker AI                                    $26,950                577%    Brand On Demand, I…               $187,459             -1.8%   VibeCom                             $50            401%
+
+BillionVerify                                         $1,292            548%    Stealth Company                   $172,201             0.0%    philosopherinvesto…                $145            393%
+
+Hidden Jobs                                           $1,076            427%    PROSP                             $128,005             n/a%    moadly                               $7            224%
+
+
+
+
+■       'Stealth Company' entries are anonymised listings and are reported as-is; they cluster in the high-MRR cohort, which suggests larger sellers hide their identity.
+■       Value traps matter: four of the ten largest MRR assets are contracting month-over-month, including two of the biggest AI names.
+
+
+
+
+     SO WHAT Build the portfolio from column three (cheap optionality) and column one (verified momentum); underwrite column two only with an operator who can fix churn.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+03 · TOP & BOTTOM PERFORMERS
+
+
+The leaderboard is US-based, Stripe-powered and B2B
+
+Rank        Top 10 by all-time revenue                          Category                Country        Revenue     Rank   Top 10 by MRR                           Category                Country        MRR
+
+1                                                        Stan         Uncategorised               US      $76.6m   1                                       Stan         Uncategorised               US         $3.6m
+
+2                                  Brand On Demand, Inc.                    E-comm                US      $51.2m   2                           Stealth Company          Uncategorised      Unknown             $747k
+
+3                                           Stack Influence                Marketing              US      $26.3m   3                                GojiberryAI                     AI              US         $495k
+
+4                                         Stealth Company             Uncategorised      Unknown          $11.3m   4                           Stealth Company          Uncategorised      Unknown             $364k
+
+5                                                        Rezi                     AI              US       $9.7m   5                                       Rezi                     AI              US         $260k
+
+6                                                     Cometly               Analytics             US       $9.4m   6                                       Kibu              Education              US         $234k
+
+7                                         Stealth Company             Uncategorised               GB       $5.9m   7                                   Cometly                Analytics             US         $208k
+
+8                                         Stealth Company             Uncategorised               US       $4.8m   8                                   1Lookup                    SaaS              US         $207k
+
+9                               DataExpert / TechCreator                   Education              US       $4.5m   9                           Stealth Company          Uncategorised               FR         $191k
+
+10                                         Hidden Business            Uncategorised      Unknown           $4.4m   10                     Brand On Demand, Inc.               E-comm                US         $187k
+
+
+
+■       Bottom decile: 100 startups with $0 lifetime revenue — mostly launched-and-abandoned AI wrappers with no subscriptions and no traffic.
+■       10 of 10 revenue leaders and 10 of 10 MRR leaders use Stripe as primary provider; 8 of 10 are US-domiciled.
+■       Only one consumer-app business appears in either leaderboard — this is a B2B revenue market.
+
+
+
+
+     SO WHAT If you want scale in this universe you are buying US B2B software on Stripe; anything else is a small-cheque, high-variance bet.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+03 · TRAFFIC & MONETISATION
+
+
+Traffic explains revenue where it is reported — but most winners never disclose it
+
+                                                                                                                  Revenue per visitor                           Value
+
+                                                                                                                  Median                                                              $0.26
+                                                                                                                  P75                                                                 $1.27
+                                                                                                                  P90                                                                 $4.81
+                                                                                                                  Max                                                             $1,502.63
+                                                                                                                  Coverage                                                 178 firms (17.8%)
+
+
+
+
+                                                                                                                  ■     Best monetisers per visit: Laper ($1,503), ADELANTE ($232), Avium
+                                                                                                                        ($48), Khosmos ($37) — all sales-assisted or high-ticket AI.
+                                                                                                                  ■     Poor monetisers: large consumer apps with >100k visits and <$0.05
+                                                                                                                        per visitor — traffic without a paywall.
+                                                                                                                  ■     ρ(visitors, 30-day revenue) = 0.60 on the reporting subset.
+
+
+
+
+     SO WHAT Revenue per visitor is the single best quick-screen for pricing power — anything above $1 signals a business that does not need scale to be profitable.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+03 · SEO AUTHORITY
+
+
+Domain rating is a lagging badge of scale, not a growth engine
+
+                                                                                                                 ■    Median domain rating is 10 and P25 is 1: three quarters of this
+                                                                                                                      market has effectively no search authority.
+                                                                                                                 ■    ρ(DR, all-time revenue) = 0.57, but ρ(DR, growth) ≈ 0.01 —
+                                                                                                                      authority correlates with age and size, not momentum.
+                                                                                                                 ■    110 startups clear $3k MRR with DR<20 and <200 followers —
+                                                                                                                      revenue without any discoverable footprint.
+                                                                                                                 ■    Coverage caveat: DR is present for 71% of firms; the missing 29%
+                                                                                                                      skew tiny.
+
+
+
+
+     SO WHAT SEO is an underwriting opportunity, not a filter: acquiring a $5k-MRR asset with DR<10 leaves the entire organic channel as unexploited upside.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+03 · SOCIAL PRESENCE
+
+
+An audience is neither necessary nor sufficient for revenue
+
+                                                                                                                   ■    ρ(X followers, revenue) = 0.23 — the weakest of the scale metrics.
+                                                                                                                   ■    44% of startups have zero followers; median is 67.
+                                                                                                                   ■    The 36 accounts above 20k followers do earn more (median MRR
+                                                                                                                        $1,695 vs $268) — a 6x gap, but on a tiny base.
+                                                                                                                   ■    Largest audiences monetise inconsistently: several 100k+ follower
+                                                                                                                        accounts sit below $500 MRR.
+
+
+
+
+     SO WHAT Do not pay a premium for founder audience: it is a distribution accelerant for a good product, never a substitute for one — and it does not transfer in an acquisition.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+04
+Segment economics
+Providers, categories, pricing, personas and geography
+04 · PAYMENT PROVIDERS
+
+
+Stripe is the market — and it is where the money is, not just the logos
+
+                                                                                                                  Provider                         Firms         % of MRR         Median MRR
+
+                                                                                                                  Stripe                                   644              88%           $663
+                                                                                                                  RevenueCat                               191              9%            $237
+
+                                                                                                                  Dodo Payments                            50               0%                 $2
+
+                                                                                                                  Polar                                    40               0%                 $0
+                                                                                                                  Lemon Squeezy                            27               0%             $15
+                                                                                                                  Superwall                                19               2%           $7,337
+                                                                                                                  Paddle                                   16               1%            $146
+
+
+
+                                                                                                                  ■        Stripe: 64% of startups but 88% of MRR and 95% of lifetime
+                                                                                                                           revenue.
+                                                                                                                  ■        Among high-growth firms (>50% 30D), Stripe's share rises to 73%;
+                                                                                                                           RevenueCat is 17%.
+                                                                                                                  ■        13 startups run multi-provider stacks — a maturity signal (median
+                                                                                                                           MRR well above cohort).
+
+
+
+
+     SO WHAT Provider choice is a proxy for business model: a Stripe key implies web B2B billing, a RevenueCat key implies app-store consumer economics with structurally lower
+     ARPU.
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+04 · PROVIDER ECONOMICS
+
+
+Niche providers signal niche economics — with two exceptions worth screening
+
+
+
+
+ ■       Superwall (19 firms, median MRR $7,337) and Whop ($910) index to serious paywall-optimised operators — a high-yield screening list despite tiny n.
+ ■       Dodo Payments, Polar and Lemon Squeezy skew to pre-revenue builders: median MRR under $20 across 117 firms.
+ ■       RevenueCat's 191 mobile apps hold 8.5% of MRR at $237 median — volume without pricing power (ARPU $3.42 in mobile IAP).
+ ■       Superwall and Creem cohorts show negative median growth — high revenue but contracting; diligence churn hard.
+
+
+
+
+     SO WHAT Use the provider field as a free pre-qualification layer: Stripe + Superwall + Whop covers 67% of firms and virtually all of the acquirable cash flow.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+04 · CATEGORIES
+
+
+Revenue is concentrated in commerce and marketing; AI is crowded but pays
+
+                                                                                                                Category                        n         Revenue            Median MRR
+
+                                                                                                                E-comm                              19              $54.8m          $155
+                                                                                                                Marketing                           42              $33.8m        $1,586
+
+                                                                                                                AI                                  197             $31.9m          $446
+
+                                                                                                                SaaS                                66              $14.2m          $303
+                                                                                                                Analytics                           19              $13.2m        $1,294
+                                                                                                                Education                           30              $12.2m        $2,142
+                                                                                                                Social Media                        18              $3.4m           $912
+
+                                                                                                                Content Creation                    36              $3.4m         $1,254
+
+
+                                                                                                                ■      E-comm: 19 firms, $55m — driven by two outliers; median MRR
+                                                                                                                       only $155.
+                                                                                                                ■      Marketing and Analytics combine high totals with high medians:
+                                                                                                                       the healthiest categories.
+
+
+
+
+     SO WHAT Totals are outlier artefacts — rank categories on median MRR (Education $2,142, Marketing $1,586, Analytics $1,294) when choosing where to hunt.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+04 · CROWDING VS VALUE
+
+
+Founders pile into AI; the money sits in Marketing, Analytics and Education
+
+                                                                                                                    Highest median MRR                   Median MRR          n
+
+                                                                                                                    Education                                      $2,142             30
+                                                                                                                    Marketing                                      $1,586             42
+
+                                                                                                                    Analytics                                      $1,294             19
+
+                                                                                                                    Content Creation                               $1,254             36
+                                                                                                                    Social Media                                      $912            18
+                                                                                                                    AI                                                $446           197
+                                                                                                                    Productivity                                      $42             49
+
+
+
+
+                                                                                                                    ■     AI is 20% of all startups but delivers a median MRR 79% below
+                                                                                                                          Education.
+                                                                                                                    ■     Productivity is the worst risk-adjusted category: 49 firms, $42
+                                                                                                                          median MRR.
+
+
+
+
+     SO WHAT Category crowding is inversely related to monetisation — the contrarian screen (Education, Analytics, Marketing) offers 3–5x better median economics per deal
+     reviewed.
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+04 · CATEGORY MAP
+
+
+Only Dev Tools and Analytics combine positive momentum with real revenue
+
+
+
+
+■       Fastest median growth: Recruiting & HR (+61%, n=6), Dev Tools (+6.4%), Customer Support (+5.3%), Analytics (+4.9%).
+■       Fintech (-6.7%) and Sales (-12%) are contracting cohorts despite decent MRR — regulatory and competitive pressure.
+
+
+
+     SO WHAT Two-factor category screen — median MRR > $500 AND median growth > 0 — reduces 28 categories to five and captures most of the attractive deal flow.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+04 · PRICING ARCHITECTURE
+
+
+Charging money beats freemium by 8x on median MRR
+
+                                                                                                                     ■     Paid subscription (n=223): median MRR $1,024, ARPU $34 — the
+                                                                                                                           highest-performing mainstream strategy.
+                                                                                                                     ■     Contact Sales / Enterprise: highest median MRR ($1,466) and
+                                                                                                                           ARPU ($42) but negative median growth and n=13 — pricing
+                                                                                                                           power without velocity.
+                                                                                                                     ■     Freemium tiers (n=141): median MRR $126 — 8x worse than
+                                                                                                                           pure paid, and the most common architecture after paid.
+                                                                                                                     ■     Mobile IAP (n=77): most subscriptions (median 36) but ARPU of
+                                                                                                                           $3.42 — volume masquerading as traction.
+
+
+
+
+     SO WHAT The single highest-ROI post-acquisition lever is removing the free tier: same product, same traffic, 3–8x the median revenue per customer.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+04 · CUSTOMER PERSONAS
+
+
+Sell to businesses that already have revenue — everything else pays in cents
+
+                                                                                                                   Persona                       n         Median MRR      Growth
+
+                                                                                                                   E-commerce                        10          $11,320            3.5%
+                                                                                                                   SMB                               10           $5,103        12.8%
+
+                                                                                                                   Health & wellness                 17           $1,111           -3.4%
+
+                                                                                                                   Marketing teams                   35           $1,032            0.0%
+                                                                                                                   Finance / traders                 14            $828             0.0%
+                                                                                                                   Creators                          91            $446             0.0%
+                                                                                                                   HR / recruiting                   11            $394             3.7%
+
+                                                                                                                   Other niche                       268           $386             0.0%
+
+
+
+                                                                                                                   ■     E-commerce operators ($11,320) and SMBs ($5,103) pay 25–80x
+                                                                                                                         more than developers ($140) and founders ($77).
+                                                                                                                   ■     Creators are the most crowded persona (91 firms) at a median
+                                                                                                                         $446 MRR.
+
+
+
+
+     SO WHAT Persona choice is the biggest determinant of outcome in this dataset — a mediocre product sold to e-commerce operators out-earns an excellent product sold to indie
+     founders.
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+04 · B2B VS B2C
+
+
+The B2B premium is structural: 5.7x MRR, 5.2x ARPU, 3.8x lifetime revenue
+
+
+                                                                                                             Segment             n         Median MRR         Median revenue     ARPU
+
+                                                                                                             B2B                     255            $1,036             $10,319          $49.00
+                                                                                                             B2C                     401              $181              $2,735           $9.34
+                                                                                                             Both                     56              $352              $4,235          $17.37
+
+
+
+
+                                                                                                             ■      B2C is the majority of firms (401) but a minority of value — the classic
+                                                                                                                    micro-SaaS trap.
+                                                                                                             ■      'Both' sits exactly between the two: hybrid positioning dilutes pricing
+                                                                                                                    power rather than expanding the market.
+                                                                                                             ■      B2C wins only on subscription counts, never on revenue per
+                                                                                                                    subscription.
+
+
+
+
+     SO WHAT Any B2C asset should be underwritten at a materially lower multiple than an equivalent-MRR B2B asset — the same revenue is harder to hold and cheaper per customer.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+04 · GEOGRAPHY
+
+
+US firms are 26% of the count and 80% of the disclosed revenue
+
+                                                                                                                     Country            n         Revenue            Median MRR        Growth
+
+                                                                                                                     US                     258         $235.4m             $1,263         0.0%
+                                                                                                                     GB                     50              $13.5m            $153         0.0%
+
+                                                                                                                     FR                     79              $10.6m            $435         0.0%
+                                                                                                                     CA                     29              $5.7m             $919         -0.1%
+
+                                                                                                                     SG                      9              $4.1m           $2,126         0.0%
+
+                                                                                                                     NL                     13              $2.4m           $1,022        -15.4%
+                                                                                                                     IN                     59              $2.2m                 $6       0.0%
+
+
+
+
+                                                                                                                     ■     Fastest growing (n≥8): Australia +9.5%, Spain +6.8%, Estonia +3.5%.
+                                                                                                                     ■     India: 59 firms but median MRR of just $6 — high volume, near-zero
+                                                                                                                           monetisation.
+                                                                                                                     ■     Singapore punches highest per firm: $2,126 median MRR on 9
+                                                                                                                           companies.
+                                                                                                                     ■     24% of firms disclose no country — treat geographic totals as a lower
+                                                                                                                           bound.
+
+
+
+
+     SO WHAT Global sourcing, US pricing: the arbitrage is buying non-US-built products with US-quality economics (Estonia, Singapore, Australia) before they re-price.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+05
+The for-sale market
+262 listed assets, what they ask and where the mispricing sits
+05 · FOR-SALE OVERVIEW
+
+
+A quarter of the universe is for sale — and sellers are the bigger businesses
+
+
+                                                                                                                   262 (26.2%)                    $35k
+                                                                                                                   Listed for sale                Median asking price
+
+
+
+
+                                                                                                                   $332k                          4.8x
+                                                                                                                   Average asking price (median
+                                                                                                                                                  Median implied multiple
+                                                                                                                   $35k)
+
+
+
+
+                                                                                                                   $1,055 vs $282                 $86.8m
+                                                                                                                   Median MRR (listed vs rest)    Aggregate ask value
+
+
+
+
+■       Price dispersion is extreme: P25 $5,000 vs P90 $1,000,000 — a 200x range inside one marketplace.
+■       Listed assets grow no faster or slower than the rest (median 0% both ways): sellers are exiting size, not decline.
+
+
+
+
+     SO WHAT Supply is abundant and quality-skewed upward — a disciplined buyer can be extremely selective without leaving the dataset.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+05 · VALUATION LEVELS
+
+
+The median ask is 4.8x revenue — roughly 60% above the private micro-SaaS norm
+
+                                                                                                                    Implied multiple (ask ÷ TTM revenue)                Value
+
+                                                                                                                    P25                                                                   2.5x
+                                                                                                                    Median                                                                4.8x
+                                                                                                                    P75                                                                 10.6x
+                                                                                                                    P90                                                                 23.8x
+                                                                                                                    Listings below 3x                                                72 of 243
+                                                                                                                    Listings above 10x                                               61 of 243
+
+
+
+
+                                                                                                                    ■     Sellers' own stated multiples (median 2.3x) are systematically
+                                                                                                                          lower than the multiple implied by their asking price and trailing
+                                                                                                                          revenue — the marketing number is not the real number.
+                                                                                                                    ■     47 listings state a 0.0x multiple, mostly pre-revenue assets being
+                                                                                                                          sold as ideas.
+
+
+
+
+     SO WHAT Always recompute the multiple yourself: relying on the listed 'x' understates the true ask by roughly 2x across the marketplace.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+05 · PRICE FORMATION
+
+
+Price tracks revenue tightly at scale and completely breaks down below $10k revenue
+
+
+                                                                                                                                  ■     Correlation of log(price) with log(TTM revenue) =
+                                                                                                                                        0.87 — a real, functioning pricing mechanism at the
+                                                                                                                                        top.
+                                                                                                                                  ■     Below $10k trailing revenue the scatter is vertical:
+                                                                                                                                        identical revenue attracts asks from $2.5k to $1.5m.
+                                                                                                                                  ■     Every point above the 10x line requires a narrative —
+                                                                                                                                        not a spreadsheet — to justify.
+
+
+
+
+     SO WHAT The exploitable inefficiency is concentrated in sub-$100k-revenue listings, where price is set by seller sentiment rather than by cash flow.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+05 · MISPRICING
+
+
+Growth is not priced in — the market's biggest single blind spot
+
+
+                                                                                                                               ■     Correlation between 30-day growth and implied
+                                                                                                                                     multiple: -0.01.
+                                                                                                                               ■     A company growing +100% and one shrinking -50%
+                                                                                                                                     command statistically identical multiples.
+                                                                                                                               ■     In venture and public markets, growth is the
+                                                                                                                                     dominant multiple driver; here it is noise.
+
+
+
+
+     SO WHAT Buy growth for free: screen listings for >20% verified 30-day growth and pay the market's flat 3–5x — this alone is the most repeatable alpha in the dataset.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+05 · UNDERPRICED
+
+
+Eight listings priced below 1x trailing revenue — with real MRR behind them
+
+Company                                                Asking price               TTM revenue                MRR                     Multiple                30D growth
+BuildMyAgent.io                                                          $289k                      $542k                 $20,494                    0.53x                          8.0%
+Videotok                                                                  $75k                      $137k                   $4,731                   0.55x                         20.3%
+Stealth Company                                                          $160k                      $278k                 $19,240                    0.57x                     -31.6%
+Supaflo                                                                     $3k                        $4k                     $96                   0.58x                     360.7%
+Linkeddit                                                                   $5k                        $8k                  $1,036                   0.61x                     105.2%
+divinetalk                                                                $14k                       $20k                   $2,054                   0.70x                     -48.4%
+ColdSire                                                                 $215k                      $303k                 $18,887                    0.71x                         -0.3%
+Kortex-Notebooklm                                                        $150k                      $206k                   $3,020                   0.73x                     -29.7%
+
+
+
+■       BuildMyAgent.io: $289k for $542k trailing revenue and $20.5k MRR while still growing — a 14-month payback at face value.
+■       Videotok and Linkeddit combine sub-0.65x pricing with +20% and +105% growth respectively.
+■       Caveats: three of the eight are contracting sharply (-30% to -48%) and 'Stealth Company' listings hide the underlying brand — cheap for a reason until proven otherwise.
+
+
+
+
+     SO WHAT Two or three of these clear a 24-month cash payback even under conservative churn — this is where the first cheques should go, subject to code and churn diligence.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+05 · OVERPRICED
+
+
+The tail of the market is selling stories: multiples of 200x to 62,500x
+
+Company                                                                 Asking price                  TTM revenue                      MRR                    Implied multiple
+Hypeflare                                                                                    $1.5m                            $24.00                  $0.00                      62,500x
+SmarterCal                                                                                      $3k                            $1.17                  $0.00                       2,137x
+DataSaaS                                                                                       $10k                            $7.99                  $7.99                       1,252x
+VENTRIUM AI                                                                                    $10k                           $12.90                  $0.00                        775x
+Orato AI: Speak clearly. Grow your                                                              $3k                            $4.99                  $0.00                        501x
+Ringtones for iPhone 2019                                                                      $10k                           $32.50                 $25.63                        308x
+MyBite                                                                                         $10k                           $37.06                  $1.20                        270x
+Scrivibe | AI Book Generator                                                                   $49k                          $261.00                  $0.00                        188x
+
+
+
+■       Hypeflare asks $1.5m against $24 of trailing revenue — a 62,500x multiple; this is an idea sale, not a business sale.
+■       Systematic pattern: near-zero revenue plus a $2.5k–$10k ask. 47 listings price at a stated 0.0x, i.e. pre-revenue.
+■       These listings inflate every marketplace-level average — the mean implied multiple (289x) is meaningless; the median (4.8x) is the market.
+
+
+
+
+     SO WHAT Filter the marketplace to listings with >$1k MRR before forming any view on price levels; otherwise pre-revenue noise dominates the comparables set.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+04 · STRUCTURE
+
+
+How audience choice cascades into pricing architecture
+
+
+
+
+■       B2C founders overwhelmingly choose freemium and mobile IAP — the two lowest-ARPU architectures in the dataset.
+■       B2B founders default to paid subscription, which is also the highest-performing architecture: strategy and segment reinforce each other.
+
+
+
+     SO WHAT The B2C monetisation gap is a pricing-design problem as much as a market problem — and pricing design is fixable post-acquisition within one quarter.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+06
+Correlations & insights
+What actually predicts revenue — and 25 investable observations
+06 · CORRELATION MATRIX
+
+
+Spearman rank correlations across the ten core metrics
+
+                                                                                                 Strongest relationships            ρ
+
+                                                                                                 Rev (all-time) ↔ Rev 30D               0.90
+                                                                                                 MRR ↔ Active subs                      0.90
+
+                                                                                                 Rev 30D ↔ MRR                          0.89
+
+                                                                                                 Rev (all-time) ↔ MRR                   0.87
+                                                                                                 Rev 30D ↔ Active subs                  0.82
+                                                                                                 Rev (all-time) ↔ Active subs           0.78
+                                                                                                 Rev 30D ↔ Rev/visitor                  0.65
+
+
+
+                                                                                                 Weakest / surprising               ρ
+
+                                                                                                 Rev (all-time) ↔ MRR growth            -0.05
+                                                                                                 Active subs ↔ Rev growth               0.05
+                                                                                                 MRR ↔ MRR growth                       0.03
+                                                                                                 Visitors ↔ Rev growth                  0.03
+                                                                                                 X followers ↔ MRR growth               -0.03
+
+
+
+
+     SO WHAT Everything that predicts revenue is a measure of customers; nothing that predicts revenue is a measure of attention.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+06 · READ-THROUGH
+
+
+Three conclusions the correlation matrix forces on us
+
+
+    Customers, not clicks                                         Growth is orthogonal                                         Monetisation is a choice
+
+
+
+    ▪       MRR ↔ subscriptions ρ 0.90 · revenue ↔                ▪    Growth ↔ MRR ρ 0.07 · growth ↔ visitors ρ               ▪     Revenue/visitor ↔ revenue ρ 0.57 — pricing
+            subscriptions ρ 0.78                                       0.03                                                          power scales with success
+    ▪       Followers ↔ revenue only ρ 0.23; DR ↔                 ▪    Revenue growth and MRR growth correlate                 ▪     Traffic ↔ revenue ρ 0.60 but only for the 18%
+            growth ≈ 0.01                                              only ρ 0.38 with each other                                   who report
+    ▪       Underwrite customer counts; discount                  ▪    Momentum must be verified per company; it               ▪     Two firms with identical traffic can differ 100x
+            audience claims                                            cannot be inferred from any other field                       in revenue
+
+
+
+
+     SO WHAT A three-variable underwriting model — subscriptions, ARPU and verified 30-day growth — explains more of this market than any amount of traffic or social analysis.
+
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+06 · ADVANCED INSIGHTS
+
+
+Twenty-seven investable observations (1–9 of 27)
+
+    01 Hidden gems                                       02 Anonymity premium                                      03 Growth is free
+
+                                                         Anonymised listings ('Stealth Company') hold a median
+    110 startups earn >$3k MRR with <200 followers and                                                             Implied multiple vs growth correlation is -0.01: buying
+                                                         MRR far above the market — the biggest sellers hide, so
+    DR<20 — cash flow the market cannot see.                                                                       momentum costs nothing today.
+                                                         screen them in, not out.
+
+
+
+
+    04 The free-tier tax                                 05 Mobile IAP trap                                        06 B2B pricing power
+
+
+    Freemium medians $126 MRR vs $1,024 for pure paid    77 mobile apps hold the most subscriptions and the        B2B ARPU $49 vs B2C $9.34; the same engineering
+    — an 8x self-inflicted discount.                     least ARPU ($3.42) — scale without economics.             effort earns 5x more pointed at businesses.
+
+
+
+
+    07 Persona beats product                             08 Category contrarianism                                 09 Exceptional monetisation
+
+    E-commerce buyers pay $11.3k median MRR; indie
+                                                         AI holds 20% of firms and a median MRR 79% below          Laper converts 16 monthly visitors into $24k — $1,503
+    founders pay $77 — a 147x spread on buyer choice
+                                                         Education's.                                              per visitor; high-touch AI beats volume funnels.
+    alone.
+
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+06 · ADVANCED INSIGHTS
+
+
+Twenty-seven investable observations (10–18 of 27)
+
+    10 Revenue without traffic                              11 The zero-growth majority                                12 Decline is common
+
+    Six firms clear $10k+ monthly revenue on under 2,000
+                                                            31% of firms are exactly flat: stable, boring, and ideal   34% are shrinking — always price in a negative-growth
+    visits — proof that distribution can be entirely
+                                                            roll-up targets at low multiples.                          base case for the median asset.
+    outbound.
+
+
+
+
+    13 Provider as a screen                                 14 Stripe monoculture                                      15 Payback maths
+
+
+    Superwall firms carry a $7,337 median MRR — a 19-       95% of lifetime revenue flows through Stripe; a Stripe-    Median listed asset: $35k ask on $1,055 MRR — a 33-
+    company shortlist worth a full pass.                    only diligence toolkit covers the whole market.            month payback; only sub-2x deals clear a 2-year hurdle.
+
+
+
+
+    16 Stated multiples mislead                             17 Pre-revenue clutter                                     18 Sub-1x opportunities
+
+
+    Median stated 2.3x vs 4.8x recomputed — sellers quote   47 listings quote a 0.0x multiple; excluding them          Eight listings sit below 1x trailing revenue with live MRR
+    the friendlier denominator.                             changes the market's apparent price level completely.      — the shortest payback in the file.
+
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+06 · ADVANCED INSIGHTS
+
+
+Twenty-seven investable observations (19–27 of 27)
+
+    19 The Estonia/Singapore arbitrage                             20 India volume trap                                          21 Run-rate acceleration
+
+
+    Non-US firms with US-level median MRR ($1,024–                 59 Indian startups, median MRR $6 — count without             66% of trading firms are running above their trailing-
+    $2,126) at lower founder price expectations.                   monetisation; avoid volume-driven geographic theses.          12M pace — the market is expanding, not decaying.
+
+
+
+
+    22 Revenue quality split                                       23 Subscription arithmetic                                    24 Enterprise paradox
+
+                                                                                                                                 'Contact Sales' firms have the highest ARPU and
+    62% recurring-heavy vs 12% one-time-heavy: two asset           ARPU is tight ($20–50 B2B); MRR upside comes from
+                                                                                                                                 negative median growth — pricing power without
+    classes needing two different multiples.                       logo count, so distribution beats pricing experiments.
+                                                                                                                                 pipeline.
+
+
+
+
+    25 Recruiting & HR momentum                                    26 Marketing double win                                       27 Concentration risk
+
+                                                                   Marketing is top-3 in both total revenue ($34m) and           Removing one company (Stan) removes 23% of the
+    +61% median growth on a 6-firm base — smallest,
+                                                                   median MRR ($1,586) — the only large, healthy                 market's lifetime revenue — never benchmark against
+    fastest cohort; a thematic worth early positioning.
+                                                                   category.                                                     dataset totals.
+
+
+
+
+     SO WHAT Every insight above is a filter we can run again next month against the live marketplace — the edge is process, not a one-off snapshot.
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+07
+Investment memo
+The ten bets and fifteen recommendations
+07 · THE TEN MOST IMPORTANT INSIGHTS
+
+
+If I were investing in this dataset, these are the patterns I would bet on
+
+  1           Revenue is a top-decile phenomenon: 100 firms hold 91% of it — source narrow, not wide.
+
+
+  2           Growth is free at the point of sale: multiples ignore momentum (r = -0.01).
+
+
+  3           B2B out-earns B2C by 5.7x on MRR and 5.2x on ARPU, at the same build cost.
+
+
+  4           Pricing architecture is worth 8x: paid subscription $1,024 median MRR vs freemium $126.
+
+
+  5           Customers — not audience — drive revenue: subscriptions ρ 0.90, followers ρ 0.23.
+
+
+  6           The median listed asset is a 33-month payback; only disciplined sub-2x buying beats a 24-month hurdle.
+
+
+  7           62% of trading revenue is genuinely recurring — the asset class is real, but 12% is one-time and must be discounted.
+
+
+  8           110 profitable-but-invisible firms have zero SEO or social footprint: acquirable upside sits in the unexploited channel.
+
+
+  9           Category crowding (AI: 20% of firms) is inversely related to monetisation; the money is in Education, Marketing, Analytics.
+
+
+ 10           One company is 23% of the market — every dataset-level average is unusable; medians are the only honest benchmark.
+
+
+          The bet: buy flat-to-growing B2B micro-SaaS at 1–3x trailing revenue, remove the free tier, and consolidate distribution.
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+07 · STRATEGY
+
+
+Five strategic recommendations
+
+
+     R1
+                      Run a buy-and-fix roll-up, not a venture portfolio      Target 15–25 assets at $2–20k MRR, 1–3x revenue, with a shared pricing and growth playbook.
+
+
+
+
+     R2
+                      Anchor the mandate on B2B SaaS and e-commerce tooling   These segments carry 5x the ARPU at the same acquisition cost; exclude generic consumer apps.
+
+
+
+
+     R3
+                      Institutionalise the 'growth is free' arbitrage         Standing screen: listings with >20% verified 30-day growth priced below 5x — re-run monthly.
+
+
+
+
+     R4
+                      Treat revenue quality as a pricing input                Two multiple bands: recurring-heavy assets up to 3.0x, one-time-heavy capped at 1.2x.
+
+
+
+
+     R5
+                      Build the thesis on medians and cohorts                 Ban dataset averages from investment committee materials; one outlier moves them by 23%.
+
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+07 · OPERATIONS
+
+
+Five operational recommendations
+
+
+     R1
+                      Kill the free tier in the first 90 days   Freemium-to-paid conversion is the single largest observed value gap (8x median MRR).
+
+
+
+
+     R2
+                                                                Move acquired products from the $9 consumer point toward the $34–49 B2B band with
+                      Re-price to B2B ARPU benchmarks           grandfathering.
+
+
+
+
+     R3
+                                                                Require subscription count, churn cohort and ARPU history; MRR alone hides a 90%-correlated
+                      Diligence customers, not revenue          proxy.
+
+
+
+
+     R4
+                                                                95% of the market's revenue already runs there; one integration serves the whole portfolio's
+                      Standardise on Stripe billing             reporting.
+
+
+
+
+     R5
+                                                                82% of firms cannot report traffic — the acquirer who measures conversion immediately owns
+                      Instrument analytics on day one           an information edge.
+
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+07 · GROWTH
+
+
+Five growth recommendations
+
+
+     R1
+                                                                                   Median domain rating is 10; content and programmatic SEO on acquired assets is an
+                      Harvest the SEO vacuum                                       uncontested channel.
+
+
+
+
+     R2
+                      Shift acquired B2C assets toward B2B use cases               Same product, business buyer, 5x ARPU — the fastest revenue lever short of re-pricing.
+
+
+
+
+     R3
+                      Cross-sell across the portfolio                              Shared personas (marketing teams, e-commerce operators) let one CAC serve several products.
+
+
+
+
+     R4
+                      Prioritise Education, Marketing and Analytics for new bets   Highest median MRR with the least founder crowding.
+
+
+
+
+     R5
+                                                                                   Companies earning $10k+ on <2,000 visits prove sales-led motion works better than funnel scale
+                      Add outbound to high-ARPU, low-traffic assets                here.
+
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+APPENDIX
+
+
+Methodology, assumptions and limitations
+
+■       Source: single frozen extract of the TrustMRR universe, 1,000 rows × 29 fields, dated 30 July 2026. Pivot sheets in the workbook were ignored; all analysis re-derived from the
+        raw 'Data' sheet.
+■       All monetary values are treated as USD as labelled; no FX conversion or inflation adjustment applied.
+■       Medians are the headline statistic throughout. Means are reported only where explicitly labelled and are winsorised for growth at [-100%, +1,000%].
+■       Implied multiple = asking price ÷ trailing-12-month revenue, recomputed independently of the marketplace's stated 'x'. Listings with zero revenue are excluded from multiple
+        statistics (n=243 of 262 usable).
+■       Correlations are Spearman rank correlations, chosen because every monetary variable is heavily skewed; they measure monotonic association, not causation.
+■       Category, persona, pricing and audience segmentation rely on free-text fields with 27–36% missingness; segment-level conclusions are directional and stated with n.
+■       Traffic and revenue-per-visitor are self-reported by 17.8% of firms and are almost certainly upward-biased; no imputation was performed.
+■       Company-level call-outs are screening candidates, not investment recommendations, and are subject to code, churn, contract and ownership diligence.
+
+
+
+
+Prepared for investment committee discussion · figures as at 30 July 2026
+
+
+
+TrustMRR 1,000-startup dataset · frozen 30 Jul 2026
+

@@ -1,0 +1,39 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7,
+    "accuracy": 5.5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis-driven narrative arc from market landscape through pain points to a concrete, data-grounded business recommendation.",
+  "fix_next": "The 59-company 'creator economy' universe is a custom filter mixing dataset categories with unverifiable text-field coding—define and defend it rigorously.",
+  "verdict": "Ambitious, well-structured founder thesis undermined by unverifiable subset construction and accuracy gaps.",
+  "flags": [
+    "custom-subset-unverifiable",
+    "market-median-mismatch",
+    "mean-vs-median-mixing",
+    "category-count-discrepancy",
+    "29-categories-unverified"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1/3: Claims market-wide median MRR is $282; dataset reference gives median 30-day revenue around $283 but this is revenue not MRR—conflation of revenue and MRR throughout. Slide 1: '29 market categories' — reference data shows ~12 named categories (with 274 missing), not 29. Slide 3: '59 creator-economy businesses' combines Content Creation (36) + Social Media (18) + 'Community' (5?) — Community is not a recognized category in the reference data; the sum doesn't clearly reconcile. Slide 9: B2B 2.4x claim uses mean MRR ($17,762 vs $7,519) but the reference B2B/B2C median multiples are ~2.35x/2.30x for revenue, not MRR; using means on n=13 is misleading and the 2.4x framing overstates the B2B advantage. Slide 3: '3.8x the market-wide median' — the $1,077/$282 ratio is 3.82x but both figures conflate MRR with 30-day revenue and the denominator includes zero-revenue companies, making the comparison unreliable.",
+  "evidence": {
+    "insight": "Slides 4-5 go beyond chart description: pain-point clustering from problem_solved text and value-proposition theme analysis yield actionable positioning advice. Slide 10's opportunity matrix synthesizes growth and MRR across categories. Slide 8's outlier callout (Solo Content Studio) shows analytical maturity. The final recommendation (slide 12) ties multiple findings together into a concrete business concept with pricing benchmarks.",
+    "narrative": "Clear problem→landscape→pain points→positioning→revenue→growth→pricing→opportunity→funding→recommendation arc. Each slide has a business question, analysis, and conclusion banner. The story builds logically toward the ReelOps recommendation. Slide 13 summarizes without introducing new claims. The narrative never feels like a disconnected list.",
+    "framing": "Slide 2 sets up the business problem and data source clearly. However, the 'creator economy' subset (59 businesses) is constructed from an undefined combination of categories including 'Community' which isn't in the reference data. '29 categories' is stated but never shown or reconciled with the ~12 named categories in the reference. Limitations of the 59-company filter (small n, subjective text coding) are never discussed. The audience (founder/investor) is clear.",
+    "accuracy": "Multiple issues: (1) Systematic conflation of 30-day revenue with MRR throughout—the dataset tracks 30-day revenue, not necessarily MRR. (2) '29 categories' claim is unsupported by reference data showing ~12 categories. (3) The 59-company 'creator economy' universe includes 'Community' which isn't a reference category—5 businesses appear from nowhere. (4) B2B 2.4x advantage (slide 9) uses means on n=13, highly sensitive to outliers, presented without caveat. (5) Market median of $282 is plausible for 30-day revenue but labeled as MRR. Category counts on slide 3 (AI=197, SaaS=66, etc.) match reference data well. The power-law observation on slide 6 is sound.",
+    "visual": "Consistent template with business question banners, conclusion bars, and numbered sections. Charts are clean bar charts with data labels. Color palette is cohesive (muted earth tones). Slide 6's grouped bar chart effectively shows mean vs. median divergence. Slide 8's scatter plot is readable but sparse. Some slides are text-heavy (slide 12). The template repetition borders on monotonous but maintains professionalism. Chart types are appropriate throughout.",
+    "ai_slop": "Minor signs: the four-icon problem cards on slide 2 feel templated, and the consistent conclusion-banner format is formulaic. However, content is substantive and dataset-specific throughout—no generic filler or fabricated-looking charts. The pain-point and value-proposition analyses (slides 4-5) appear to involve genuine text coding work."
+  },
+  "confidence": "medium",
+  "total": 72,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 26062,
+    "output_tokens": 1242
+  }
+}

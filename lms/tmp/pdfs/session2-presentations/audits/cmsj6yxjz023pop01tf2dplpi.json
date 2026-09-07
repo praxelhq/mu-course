@@ -1,0 +1,44 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 2,
+    "narrative": 3,
+    "framing": 2,
+    "accuracy": 2.5,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Clean dark-theme visual design with consistent color hierarchy and readable card-based layout throughout.",
+  "fix_next": "Replace the four external Cursor/market slides with actual dataset analysis: medians, payment providers, missingness, and per-company efficiency.",
+  "verdict": "Polished shell around one shallow dataset slide and four slides of external marketing filler.",
+  "flags": [
+    "fabricated-chart-data",
+    "dataset-underused",
+    "no-limitations-discussed",
+    "missing-data-ignored",
+    "survivorship-bias",
+    "ai-slop-consulting-language",
+    "external-content-dominates",
+    "median-vs-total-conflation"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 2: SaaS shown as #2 at $1420K (actual $703K); Marketing shown $610K (actual $1,317K); Mobile Apps $980K (actual $228K); Productivity $720K (not a named category in reference); Dev Tools $540K (actual $163K); Health $390K (actual $179K); Education $310K (actual $524K). The ranking order is wrong—Marketing should be #2, E-comm #3. The 1.7x claim vs SaaS is based on fabricated SaaS figure.",
+  "evidence": {
+    "insight": "Only one slide (slide 2) touches the dataset, making the single obvious point that AI has the highest total revenue. No median analysis (AI median $503 is among the lowest), no payment-provider breakdown, no anonymity analysis, no per-company efficiency. Slides 3-7 are entirely external research about Cursor and the global AI market—zero analytical depth from the dataset.",
+    "narrative": "Thesis 'AI is dominant' stated on slide 1, repeated on slide 8, but the middle four slides (3-7) are an external Cursor case study disconnected from dataset evidence. DAU/MAU slide (4) uses no TrustMRR data. No synthesis between the one dataset finding and the external claims.",
+    "framing": "No mention of 274 missing categories, 241 missing countries, 216 zero-revenue rows, or ~27% missing across key fields. No acknowledgment that AI's total revenue lead is partly a volume effect (197 companies vs. smaller categories). Audience and analytical question never stated. '29 categories' claimed but reference shows many fewer named categories with heavy missingness.",
+    "accuracy": "Slide 2 bar chart contains at least 6 materially fabricated revenue figures—SaaS, Mobile Apps, Marketing, Dev Tools, Health, Education all wrong by 2x-5x. Category ranking is incorrect. The 1.7x claim is built on a fabricated SaaS number. External Cursor/market claims (slides 3-7) are unsourced inline and unverifiable from the dataset.",
+    "visual": "Consistent dark theme, good typography, clean card layouts, readable bar chart format. Visual polish is the strongest dimension but masks fabricated data. Slides 5-7 are marketing collateral, not analytical visuals.",
+    "ai_slop": "Slides 3 and 7 are textbook AI-generated consulting filler: 'Product-Led Flywheel,' 'Massive TAM,' 'Capital Efficiency,' 'The $540B Opportunity.' The entire Cursor deep-dive (slides 4-7) could appear in any AI hype deck regardless of dataset. Generic three-column framework on slide 7."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 2.5 to 2.0 because the single dataset slide lacks any non-obvious analysis and ignores median revenue where AI ranks poorly. Lowered framing from 2.5 to 2.0 for complete absence of limitations, missingness, and denominator context. Lowered accuracy from 3.0 to 2.5 because at least 6 of 8 category revenue figures on slide 2 are fabricated, making the core chart unreliable. Raised visual slightly from 4.5 to 5.0 as the design execution is competent even if content is hollow.",
+  "total": 29,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 15270,
+    "output_tokens": 1063
+  }
+}

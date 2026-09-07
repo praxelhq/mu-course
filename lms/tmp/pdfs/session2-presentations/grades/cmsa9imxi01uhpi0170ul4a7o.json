@@ -1,0 +1,38 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 4.5,
+    "narrative": 5,
+    "framing": 4.5,
+    "accuracy": 4,
+    "visual": 3.5,
+    "bonus": 1
+  },
+  "what_worked": "Honest null result on the for-sale t-test, with p-value reported and correctly interpreted.",
+  "fix_next": "Total revenue is $15.6M not $334M; the E-commerce-beats-AI claim is wrong—AI has highest total revenue; fix core numbers before storytelling.",
+  "verdict": "Promising skeptical framing undermined by major factual errors and thin analysis.",
+  "flags": [
+    "wrong-total-revenue",
+    "fabricated-category-ranking",
+    "duplicate-slides",
+    "thin-scope"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 1: Total revenue stated as $334M; actual is ~$15.6M. Slide 2/5: Claims E-commerce total revenue exceeds AI—false; AI total ($2.36M) is highest, E-comm ($1.11M) is lower. Slide 2: Revenue bar labels show E-comm at $55M and AI at $32M, which are fabricated figures. Slide 2: 'AI has 10x more businesses than E-commerce'—197 vs 19 is ~10x, acceptable, but the revenue comparison is inverted. Slide 2: Missing-data percentages (e.g., Country 24% vs actual 24.1% OK, Category 27% vs 27.4% OK, but 'Target persona' and 'Pricing model' at 36%/34% are unverifiable and may conflate audience_type 28.8% with other fields).",
+  "evidence": {
+    "insight": "Three observations (skew, crowding, missingness) plus one hypothesis test. The skew point is valid but obvious; the crowding claim is factually wrong; the missingness point is useful but shallow. No deeper analysis of providers, TLDs, B2B/B2C, or concentration metrics.",
+    "narrative": "There is a coherent 'case file' metaphor with observed/confirmed labels, building toward a verdict. However the verdict ('execution wins') is an unsupported platitude—nothing in the data directly measures execution. The arc is thin: three observations and one test across 7 slides.",
+    "framing": "Slide 1 sets context (1,000 businesses, dataset date). But the $334M total revenue is wildly wrong, undermining credibility. No audience is specified. Limitations are partially addressed via missingness slide but no discussion of survivorship bias or 30-day snapshot nature.",
+    "accuracy": "$334M total revenue is off by ~21x. The central claim that E-commerce earns more total revenue than AI is the opposite of reality. The revenue bar chart numbers ($32M, $14M, $34M, $12M, $55M) appear fabricated. The t-test reporting (p=0.158, n=262/738) is plausible and correctly interpreted. Missing-data percentages are approximately right for some fields.",
+    "visual": "Slides 1-3 have a polished 'case file' aesthetic with good hierarchy. Slides 4-6 are raw, unstyled Excel charts with rainbow colors, no legends on slide 5, and essentially duplicate the content of slide 2—suggesting unfinished work or padding. Slide 7 mixes bullet points with a dark callout box. Inconsistent design language across the deck.",
+    "ai_slop": "Slide 7's 'Final Takeaway' about 'execution, not trends' and 'sustainable recurring revenue' is generic consulting language unsupported by the analysis. The verdict on slide 3 about 'turning attention into dollars' is similarly unearned filler."
+  },
+  "confidence": "high",
+  "total": 44,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 13515,
+    "output_tokens": 938
+  }
+}

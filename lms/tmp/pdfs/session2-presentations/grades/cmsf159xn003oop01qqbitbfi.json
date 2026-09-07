@@ -1,0 +1,38 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 8.5,
+    "accuracy": 6,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "Exceptional framing of dataset limitations and selection bias; the skeptical lens is genuinely earned.",
+  "fix_next": "Total revenue is $15.6M not $13.5M; the top-10 share is ~49.6% not 48%; B2B multiple is ~5.7x vs reference 2.35x—check denominators and filters.",
+  "verdict": "Sharp editorial voice and honest framing, undermined by several numerical errors on core claims.",
+  "flags": [
+    "total-revenue-error",
+    "top10-share-understated",
+    "b2b-multiple-discrepancy",
+    "narrow-scope"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 1/3: States $13.5M combined MRR; actual total 30-day revenue is $15,596,344.59. Slide 1/3: Claims top-10 share is 48%; reference is 49.6%. Slide 5: Claims B2B median is 5.7x B2C; reference multiples are 2.35x (B2B) and 2.30x (B2C) with median revenues that don't yield 5.7x—the $1,036/$181 figures appear fabricated or computed on a non-standard filter without disclosure.",
+  "evidence": {
+    "insight": "Slide 3 mean/median contrast (48x) is a genuinely useful observation; slide 4's volatility framing (24% shrinking, 0% median growth) adds real analytical value; slide 6 correlation ladder is a strong structural insight. However, only four substantive insights across seven slides keeps depth moderate.",
+    "narrative": "Clear thesis—'read the data with its filter on'—established on slide 2 and landed on slide 7. Each insight builds: concentration → instability → structural drivers → visibility ≠ revenue. The arc is coherent and purposeful, not a list.",
+    "framing": "Slide 2 is outstanding: explains what TrustMRR verifies vs. doesn't, notes opt-in bias, anonymization rate (13%), and prior gaming. This is rare self-limiting framing. Audience (someone evaluating startups or the platform) is implicit but clear.",
+    "accuracy": "Total revenue wrong by ~$2M ($13.5M vs $15.6M). Top-10 share understated (48% vs 49.6%). B2B/B2C median figures ($1,036/$181) don't match reference medians and the 5.7x multiple conflicts with the 2.35x reference. The 288 missing audience_type rows aren't acknowledged when presenting B2B/B2C counts (255+401+56=712, plausible given 288 missing). Correlation values on slide 6 are not directly verifiable against the frozen reference but the X-followers r=0.02 is consistent with the near-zero r pattern.",
+    "visual": "Consistent earthy palette, restrained chart choices (horizontal bars, simple bar chart), good text hierarchy with large callout numbers. Slide 7 summary uses numbered blocks effectively. No chartjunk. Minor issue: slide 6 bar chart lacks axis label. Overall clean and purposeful.",
+    "ai_slop": "none"
+  },
+  "confidence": "high",
+  "total": 77,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 14095,
+    "output_tokens": 859
+  }
+}

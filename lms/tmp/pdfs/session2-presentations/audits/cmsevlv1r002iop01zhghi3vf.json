@@ -1,0 +1,44 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 4.5,
+    "narrative": 5,
+    "framing": 3.5,
+    "accuracy": 3.5,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Mean-vs-median gap on slide 2 is a genuine, well-framed finding that motivates the rest.",
+  "fix_next": "Replace speculative product-pitch slides (7–12) with real charts, limitations disclosure, and verifiable category medians from the actual dataset.",
+  "verdict": "Polished pitch deck, but half the slides abandon data for unverifiable product speculation.",
+  "flags": [
+    "fabricated-correlations",
+    "invented-categories",
+    "no-real-charts",
+    "consulting-filler",
+    "missing-limitations",
+    "ai-slop-template",
+    "wrong-zero-revenue-count",
+    "meaningless-100pct-stat"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 2: $0 lifetime revenue count shown ~101 but reference is 216 zero-revenue rows. Slide 3: r=0.91 for active subscriptions is unverifiable/likely fabricated; no methodology shown. Slide 4: 19.7%/197 zero-MRR framed as zero-revenue but dataset has 216 zero-revenue rows; 10.1%/101 figure also inconsistent. Slide 5: 'B2B Software' and 'B2C Apps' and 'Productivity' are not dataset categories; Marketing median $1,586 vs reference $2,369.50; Content Creation $1,254 vs reference $1,237.50 (close but labeled as MRR not lifetime); AI $446 vs reference $503. Slide 9: 38x asking multiple is unverifiable; reference multiples are ~2.3x–8.4x median/mean, not 38x.",
+  "evidence": {
+    "insight": "Slide 2 mean-vs-median contrast is the strongest original finding. Subscriber Gap concept (slide 6) is creative but rests on an unverified r=0.91. Slides 7–12 contain zero new analytical findings—pure feature speculation.",
+    "narrative": "Clear arc: misleading averages → correlation signals → monetization gap → product proposal → stakeholders → flywheel. Reads as a consulting pitch rather than a data story; the second half abandons evidence for speculative product features.",
+    "framing": "Positioned as 'Strategic Proposal / Product Roadmap 2026' with no mention of 274 missing categories, 241 missing countries, or observational-only nature of data. No scope or limitations slide. A cold reader cannot assess data quality or generalizability.",
+    "accuracy": "Multiple category names invented (B2B Software, B2C Apps, Productivity). Marketing median off by ~$780. Zero-revenue count (101) contradicts reference (216). 38x multiple wildly inconsistent with reference 2.3x–8.4x. Correlation r=0.91 presented without methodology or reproducibility.",
+    "visual": "Consistent dark theme, clean card layouts, readable typography. However, zero actual data visualizations (no scatter plots, histograms, bar charts). Slide 3 has a large decorative orange circle obscuring table text. Slide 1 uses a generic AI-generated server-room photo. Every slide reuses the same card-grid template.",
+    "ai_slop": "Heavy consulting jargon throughout: 'Intelligence Engine,' 'monetization pipelines,' 'self-reinforcing flywheel,' 'white space,' 'decision engine.' '100% Opportunity Gap' on slide 4 is a meaningless statistic. Decorative stock imagery. Slides 7–12 are interchangeable product-pitch filler."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing by 0.5 from 4.0 to 3.5: no limitations disclosure, no dataset provenance, invented audience framing as internal roadmap obscures accountability to data. All other scores confirmed as appropriate after independent review.",
+  "total": 43,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 22118,
+    "output_tokens": 1007
+  }
+}

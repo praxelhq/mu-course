@@ -1,0 +1,39 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 9.5,
+    "accuracy": 6.5,
+    "visual": 8,
+    "bonus": 3
+  },
+  "what_worked": "Exceptional framing discipline—every slide flags limitations, survivorship bias, and causal caveats unprompted.",
+  "fix_next": "Several median category figures deviate materially from the reference data; verify calculations against the raw dataset before publishing.",
+  "verdict": "Outstanding narrative and framing, undermined by multiple quiet numerical errors.",
+  "flags": [
+    "median-category-discrepancies",
+    "top10-share-rounded-up",
+    "annual-revenue-inflated",
+    "zero-revenue-conflation",
+    "b2b-b2c-median-mismatch"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 1: Total annual revenue stated as $134M; 30-day total is $15.6M, annualized ≈$187M, not $134M (unclear derivation). Slide 1: 'Top 1% 50.6%' — reference says top-10 share is 49.6%, and top 1% = 10 companies is correct but 50.6% vs 49.6% is a ~1pp overstatement. Slide 2: Top 10% = 84.7%, Top 20% = 95.0%, Bottom 80% = 5.0% — unverifiable but plausible; Stan $25M annual (18.7%) is plausible if monthly ~$2.08M. Slide 3: 216 companies made $0 in last 30 days is correct; but 197 at $0 MRR is stated separately — the reference says 216 zero-revenue, not 197; the 197 figure matches AI category count, suggesting possible confusion. Slide 4: B2B median MRR $1,036 and B2C $181 giving 5.7× — reference says B2B/B2C median revenue multiples are 2.35×/2.30× (these are likely 12-month multiples); the monthly medians shown don't match reference benchmarks. Slide 6: Education median MRR $2,142 vs reference median $2,435; Marketing median $1,586 vs reference $2,369.50; AI median $446 vs reference $503; Content Creation $1,254 vs reference $1,237.50; E-Commerce $155 vs reference $387; Productivity $42 vs reference $79.91; SaaS $303 vs reference $200.50; Dev Tools $185 vs reference $635. Multiple categories are materially off. Slide 7: India shown as 59 companies — reference says India has 59 companies with Dodo Payments at 36/59=61%, consistent. Slide 9: Anonymous 129 companies — reference says 129 anonymous = 12.9% of companies, 26.525% of revenue; the slide's $39,885 median 12-month and 20.4× higher claim are unverifiable but directionally consistent.",
+  "evidence": {
+    "insight": "Slide 9's insight that anonymous companies are the highest earners (deliberate concealment vs incomplete listings) is genuinely original. Slide 5 triangulates B2B advantage through pricing model independently. Slide 10's valuation recalculation (advertised vs actual multiple) adds decision-useful analysis for acquirers.",
+    "narrative": "Clear thesis arc: distribution is extreme (slides 1-3) → what predicts success (slides 4-8) → hidden patterns in data quality (slide 9) → actionable synthesis (slide 10). Each slide explicitly references prior slides ('Slide 2 revealed the giants, Slide 3 reveals the floor'). The landing on slide 10 synthesizes five numbered recommendations grounded in prior evidence.",
+    "framing": "Slide 1 interpretation note explicitly states 'self-listed directory—not a market survey.' Every subsequent slide includes caution flags (⚠️ symbols for small samples, 'Interpret with Care' boxes, 'descriptive rather than causal' disclaimers). Slide 6 notes 274 missing categories. Slide 7 notes 241 missing countries. This is unusually rigorous framing for student work.",
+    "accuracy": "Multiple category medians on slide 6 diverge from reference: Education $2,142 vs $2,435, Marketing $1,586 vs $2,369.50, Dev Tools $185 vs $635, E-Commerce $155 vs $387. Top-10 revenue share stated as 50.6% vs reference 49.6%. The 197 '$0 MRR' figure on slide 3 appears to conflate AI category count with zero-revenue count. B2B/B2C multiplier of 5.7× doesn't align with reference 2.35×.",
+    "visual": "Consistent dark-theme dashboard aesthetic with clear hierarchy. Good use of annotation (callout boxes on scatter plot, warning triangles for small samples). The waffle chart on slide 2 effectively communicates concentration. However, the left-sidebar mini-charts (Revenue Flow, MRR Distribution, etc.) repeat across slides as decorative elements adding no new information — visual clutter. Some slides are extremely dense (slide 9, slide 10).",
+    "ai_slop": "Left-sidebar widgets ('LIVE DATA FEED', 'REVENUE FLOW', 'MRR SCATTERPLOT', 'DATA POINTS 29,000') repeat identically across all 10 slides as decorative dashboard chrome — classic AI template padding. The '29,000 data points' claim (1,000 rows × 29 columns) is technically true but presented misleadingly as if it were 29,000 observations. 'LIVE DATA FEED' badge on a frozen snapshot is contradictory decoration."
+  },
+  "confidence": "high",
+  "total": 86,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 17384,
+    "output_tokens": 1438
+  }
+}

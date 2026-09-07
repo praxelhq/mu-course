@@ -1,0 +1,38 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 6.5,
+    "accuracy": 5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong central thesis—durability over growth—threaded consistently from slide 2 through the closing.",
+  "fix_next": "Several key numbers are wrong (top-3 categories, AI median, $334M total revenue); verify every claim against the frozen dataset before presenting.",
+  "verdict": "Coherent story undermined by multiple factual errors in core claims.",
+  "flags": [
+    "factual-errors-in-key-claims",
+    "unlabeled-chart-axes",
+    "small-n-overinterpretation",
+    "revenue-figure-mismatch"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 2: '$334M combined all-time revenue' is unexplained and inconsistent with the $15.6M 30-day total; average $13,472 and median $282 not verifiable against frozen 30-day figures (30-day mean ≈$15,596 and median should differ). Slide 3: Claims top 3 are AI+SaaS+Education at 49.8%—actual top 3 by revenue are AI+Marketing+E-comm; SaaS is 4th and Education is 5th. The 49.8% figure doesn't match AI+SaaS+Education ($3,583,726/$7,653,889 among categorized ≈46.8%). Slide 4: AI median stated as $446; reference is $503. Slide 5: 'Hidden gems' Customer Support and Marketplace highlighted with n=5 and n=7 without adequate small-sample caveats—median from 5 observations is not a reliable signal. Slide 9: AI median again cited as $446 instead of $503.",
+  "evidence": {
+    "insight": "The popularity-vs-profitability scatter (slide 4), growth-vs-subscriber quartile comparison (slide 7), and freemium median gap (slide 8) go beyond chart description to challenge assumptions. The 'vanity growth' anecdote is well-chosen. However, the 'hidden gems' insight rests on categories with n=5–7, which limits decision-usefulness.",
+    "narrative": "Clear arc: long-tail framing (slide 2) → where money lives (slide 3) → crowding paradox (slides 4-5) → what actually predicts revenue (slides 6-7) → surprising patterns (slide 8) → recommendations (slide 9) → closing thesis (slide 10). Each slide builds on the prior. The thesis is stated early and landed cleanly.",
+    "framing": "Audience (founders and investors) is stated on slide 1. Dataset scope (1,000 startups, frozen date) is noted. However, no mention of missingness (274 missing categories, 241 missing countries) which materially affects category-level claims. The '$334M all-time revenue' figure appears without sourcing or reconciliation with the 30-day snapshot. Limitations section is absent.",
+    "accuracy": "Top-3 category composition is wrong (slide 3): Marketing and E-commerce outrank SaaS and Education by total revenue. AI median is $503 not $446 (slides 4, 5, 9). The $334M figure is unverifiable. The 49.8% share doesn't match the stated categories. The bar chart on slide 3 uses only numeric labels (1-8) with no category names, making verification impossible. Spearman correlations on slide 6 are plausible but unverifiable. Freemium/paid median comparison on slide 8 is interesting but not in the reference data.",
+    "visual": "Consistent navy/gold palette, clean typography, good use of callout boxes. However: slide 3 bar chart has no category labels (just numbers 1-8), making it unreadable without guessing. Slide 5 bar chart also uses only numbers 1-5. Slide 6 correlation chart similarly unlabeled on the y-axis (numbers 1-5 instead of metric names). The scatter plot on slide 4 is well-constructed with color coding. Overall the template is polished but the missing axis labels are a significant legibility problem across three charts.",
+    "ai_slop": "Some consulting-style language ('executive briefing,' 'hidden gems,' 'gold rush') but generally restrained. The four-card layout on slides 2 and 8 is template-ish but filled with specific data. Not egregious slop but the template repetition is noticeable."
+  },
+  "confidence": "high",
+  "total": 66,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19152,
+    "output_tokens": 1139
+  }
+}

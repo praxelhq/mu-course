@@ -1,0 +1,39 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 4.5,
+    "narrative": 4,
+    "framing": 4.5,
+    "accuracy": 5,
+    "visual": 2,
+    "bonus": 0
+  },
+  "what_worked": "Correct emphasis on median over mean and honest acknowledgment of skew and missingness.",
+  "fix_next": "Slides 4 and 5 are completely empty—no charts rendered—making half the analytical claims unverifiable and the deck incomplete.",
+  "verdict": "Half-built deck: reasonable ideas but missing charts and shallow analysis.",
+  "flags": [
+    "missing-charts",
+    "empty-slides",
+    "no-visualizations-rendered",
+    "ai-tool-export-failure",
+    "thin-depth"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 3: 21.6% report $0 30-day revenue; reference is 216/1000 = 21.6% which matches, but 19.7% for $0 MRR is unverifiable against the frozen reference (reference says 216 zero-revenue, not MRR specifically—minor). Slide 8: Claims E-comm and Analytics earn more per company 'on average' than AI—by mean E-comm ($58,506) > AI ($11,963) is plausible, but Analytics mean ($19,380) is also above AI, yet the slide uses 'average' when median tells a different story (Education has highest median, not E-comm or Analytics). Slide 7: ~3.9x median revenue multiple is presented without clarity on denominator or which revenue metric is used.",
+  "evidence": {
+    "insight": "Slide 3 correctly identifies skew; slide 6 notes B2B vs B2C gap; slide 8 lists six takeaways but none go beyond surface-level observations. No provider analysis, no TLD analysis, no founded-year correlation discussed.",
+    "narrative": "Loose sequence: overview → skew → categories → geography → B2B/B2C → marketplace → takeaways. No single thesis ties these together; reads as a list of separate findings rather than a coherent argument.",
+    "framing": "Slide 2 sets up dataset scope and acknowledges messiness. Missing-data rates for key fields (category 27.4%, country 24.1%) are not quantified despite being critical. Audience is implied but never stated.",
+    "accuracy": "Core numbers (1000 rows, median $282, 26.2% for sale, B2B median $1,036, B2C median $181) are plausible. Slide 8 claim that 'E-comm and Analytics earn more per company on average' is misleading—Education has the highest eligible median. The 19.7% $0 MRR figure is close to but not identical to the 21.6% zero-revenue figure; these may be different fields.",
+    "visual": "Slides 4 and 5 are completely blank—titles and subtitles only, no charts or data rendered. Remaining slides are text-only with big-number callouts but no actual charts, graphs, or visual evidence anywhere in the deck. Layout is monotonous Gamma template output.",
+    "ai_slop": "Gamma template with uniform gray/dark slides, no actual charts rendered on slides 4-5, and generic big-number formatting throughout. The deck appears to be an incomplete Gamma export where visualizations failed to render."
+  },
+  "confidence": "high",
+  "total": 40,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15350,
+    "output_tokens": 840
+  }
+}

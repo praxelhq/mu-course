@@ -1,0 +1,38 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 7,
+    "accuracy": 5.5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Question-and-answer structure creates genuine narrative momentum; median-vs-mean awareness on slide 12 is smart.",
+  "fix_next": "Several key numbers are wrong (B2B/B2C median, revenue multiple, country missingness rate); verify every stat against the actual dataset before presenting.",
+  "verdict": "Well-structured and readable, but multiple factual errors undermine credibility.",
+  "flags": [
+    "factual-errors-multiple",
+    "missing-category-missingness-caveat",
+    "b2b-b2c-median-inflated",
+    "denominator-issues"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 6: says 24% don't disclose country — actual is 24.1% (241/1000), close enough, but denominator framing '25.8% of all startups' is based on 1000 including missing, which is fine. Slide 9 (Q8): Domain Authority bar visually shows ~0.4 but is labeled '0' — misleading chart. Slide 10: B2B median claimed $1,240 vs reference ~$1,240 is plausible from 2.35x multiple interpretation, but B2C median claimed $304 — reference shows B2C median revenue not directly given but the multiple is 2.30x; the actual B2B/B2C ratio should be roughly 2.35x/2.30x ≈ similar multiples, not '4x more.' The 4x claim is materially overstated vs the reference multiples. Slide 12: median revenue multiple stated as 2.3x — reference gives B2B 2.35x and B2C 2.30x as median revenue multiples, but these are for audience type, not for-sale multiples; conflation of different metrics. Slide 7: Stripe median claimed $735/mo — not verifiable from reference but Stripe's combined revenue $13.5M / 636 = ~$21K mean, median likely much lower; the $735 figure is unverifiable but plausible. Slide 5: '197 of 1,000' — actually 197 of 726 categorized companies (27% of categorized, not '1 in 5 of all 1,000'); category is missing for 274 rows, so saying 'nearly 1 in 5 startups' without noting 27% have no category is misleading.",
+  "evidence": {
+    "insight": "Slide 12's mean-vs-median twist on for-sale startups is a genuine analytical observation. Slide 9's correlation comparison (followers vs subscribers) adds value. However, most slides describe distributions without deeper cross-cutting analysis — e.g., no category-level median revenue comparison, no exploration of why AI dominates count but not necessarily revenue per company.",
+    "narrative": "The 13-question structure provides a clear through-line from 'what is this data' to 'what can you do with it.' Each slide answers one question and feeds the next. The recap on slide 13 synthesizes well. However, the title promises '13 questions' but the recap only lists 7 answers, and slides 7-8 (trial length, social media) feel tangential to the core thesis.",
+    "framing": "Slide 1 clearly explains TrustMRR for a cold reader, defines the dataset scope, and sets expectations. The 'In plain terms' box is effective. Slide 6 notes 24% country missingness. However, category missingness (274/1000 = 27.4%) is never mentioned despite being critical to slide 5's claims. Audience_type missingness (288) is never noted despite B2B/B2C analysis on slide 10.",
+    "accuracy": "Slide 5: 197 AI companies is correct but denominator should be 726 categorized, not 1,000 total — '1 in 5' is misleading. Slide 10: B2B median $1,240 and B2C $304 giving '4x' — the reference multiples (2.35x/2.30x) suggest the gap is much smaller; this appears materially wrong. Slide 9: chart labels show '0' and '1' with no decimal precision, and Domain Authority bar is visually ~0.4 but labeled 0. Slide 3: 216 zero-revenue is correct. Slide 11: 129 anonymous is correct (12.9%).",
+    "visual": "Consistent teal color palette, clean typography, good use of callout boxes. Bar charts are appropriately chosen and well-labeled. Slide 9's correlation chart is misleading — the Domain Authority bar is visually substantial but labeled '0.' Slide 8's dark-on-dark cards are slightly harder to read. Overall restrained and professional, no decorative clutter.",
+    "ai_slop": "Minor signs: the uniform card-based layouts and consistent 'THE ANSWER' footer pattern suggest template-driven generation, but content is substantive enough to avoid pure slop. The question-answer format is a legitimate editorial choice, not filler."
+  },
+  "confidence": "high",
+  "total": 66,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 24361,
+    "output_tokens": 1287
+  }
+}

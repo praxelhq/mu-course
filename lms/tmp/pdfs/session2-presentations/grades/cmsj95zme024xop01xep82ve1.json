@@ -1,0 +1,40 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 4.5,
+    "narrative": 5.5,
+    "framing": 4,
+    "accuracy": 2.5,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "Clear thesis that AI premium diverges from growth; limitations slide shows self-awareness.",
+  "fix_next": "Nearly every chart and number appears fabricated—categories, counts, multiples, and growth rates don't match the actual dataset at all.",
+  "verdict": "Compelling thesis built on fabricated data and stock infographics.",
+  "flags": [
+    "fabricated-charts",
+    "wrong-category-counts",
+    "wrong-category-names",
+    "stock-infographic-not-from-data",
+    "ai-slop-visuals",
+    "unverifiable-claims"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 3: AI shown as 312 companies (actual 197); Finance 128, HR & Recruiting 64, Security 42 are not dataset categories; total sums to 1000 ignoring 274 missing. Slide 4: Categories shown (Digital Marketing, Healthcare Tech, Cybersecurity, Fintech, EdTech, IT Services, Non-Profit Tech) do not exist in dataset; AI median multiple 3.15x is unverifiable and likely fabricated; source cited as 'BizBuySell Insights' not the actual dataset. Slide 5: AI growth 14.8%, market 23.3%, Dev Tools 62.5%—none verifiable from dataset and likely fabricated. Slide 6: Bubble chart uses categories not in dataset (Machine Learning, Data Infrastructure, Cloud Infrastructure, etc.). Slide 8: Scorecard companies (Northpeak, Catalyst, etc.) are not from the dataset. Slide 2: Dashboard image is a generic stock graphic unrelated to the data.",
+  "evidence": {
+    "insight": "The core thesis (AI overpriced relative to growth) is interesting but entirely unsupported by verifiable data. The 'mispricing' argument on slides 5-7 could be compelling if the numbers were real.",
+    "narrative": "Slides follow a logical arc: market overview → AI dominance → premium → growth divergence → recommendation → limitations. Structure is coherent even if content is fabricated.",
+    "framing": "Audience framed as acquirer/investor (slide 2, 9). But scope is muddled—slide 2 says 'acquisition market' yet dataset is about revenue verification. No mention of 274 missing categories, 216 zero-revenue companies, or other key data quality issues.",
+    "accuracy": "Catastrophic. Slide 3 invents categories (Finance, HR & Recruiting, Security) and inflates AI to 312 vs actual 197. Slide 4 uses entirely wrong category names and cites 'BizBuySell Insights' as source. Slide 5 growth percentages are unverifiable. Slide 6 bubble chart uses categories absent from dataset. Slide 8 scorecard uses fictional companies. Almost no number can be traced to the frozen dataset.",
+    "visual": "Every chart is a pre-made stock infographic or AI-generated illustration, not built from the actual data. Comic-book style charts on slides 3-6 are decorative but misleading—they imply data-driven analysis while showing fabricated numbers. Dashboard on slide 2 is a generic real-estate dashboard. Slide 9 layout is cramped with broken word wrapping.",
+    "ai_slop": "Pervasive. Stock/AI-generated infographics on every data slide (comic-book charts, cityscape illustrations, generic dashboard). Consulting buzzwords ('asymmetric opportunity,' 'buy-low scale-fast acquisition windows'). Scorecard on slide 8 with fictional companies. Every visual is decorative rather than evidence-led."
+  },
+  "confidence": "high",
+  "total": 39,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18318,
+    "output_tokens": 941
+  }
+}

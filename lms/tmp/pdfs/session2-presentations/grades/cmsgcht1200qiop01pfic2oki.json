@@ -1,0 +1,40 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 3,
+    "narrative": 4,
+    "framing": 3,
+    "accuracy": 2,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Clear thesis about SaaS/AI dominance with a consistent strategic through-line across slides.",
+  "fix_next": "Revenue figures are fabricated—SaaS is not $5.7M, Content Creation is not $3.1M, Analytics is not $2.1M; rebuild from actual data.",
+  "verdict": "Consulting-styled deck built on deeply wrong numbers throughout.",
+  "flags": [
+    "fabricated-numbers",
+    "no-median-analysis",
+    "no-missingness-disclosure",
+    "ai-slop",
+    "decorative-venn-diagram",
+    "broken-chart-slide6"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 1: Title says '$10M+ SaaS and AI revenue surge'—actual combined SaaS+AI total is ~$3.06M, not $10M+. Slide 2: SaaS shown as $5.74M vs actual $703K; AI shown as $3.85M vs actual $2.36M. Slide 3: Nearly every category revenue is wildly wrong—SaaS $5.74M (actual $703K), Content Creation $3.15M (actual $173K), Marketing $2.80M (actual $1.32M), Analytics $2.15M (actual $368K), E-comm $2.11M (actual $1.11M). Slide 5: Content Creation $3.15M and Marketing $2.80M both wrong. Slide 6: Analytics $2.15M and E-commerce $2.11M both wrong; chart y-axis is nonsensical (range 2.10–2.15 with repeated labels). Slide 7: Categories like 'Sales' and 'Green Tech' and 'News & Mag' don't appear in the reference dataset categories. Slide 10: SaaS/AI combined shown as $9.58M (actual ~$3.06M).",
+  "evidence": {
+    "insight": "Analysis never goes beyond total revenue ranking; no median, per-company, or distributional analysis. No discussion of payment providers, audience type, anonymity, or TLD patterns. The 'Market Sweet Spot' Venn diagram (slide 8) is decorative, not data-driven.",
+    "narrative": "There is a coherent arc (identify top sectors → secondary opportunities → risks → roadmap → summary), which is the deck's strongest structural element, but it is undermined by fabricated data at every step.",
+    "framing": "No dataset description, sample size, missingness rates, or methodology. A cold reader has no idea where these numbers come from. The '90-day roadmap to $1M revenue run-rate' (slide 9) is unsupported aspiration, not data framing.",
+    "accuracy": "At least 8 material factual errors. Revenue figures for SaaS, AI, Content Creation, Analytics, E-commerce are all inflated by 2x–8x vs reference data. Categories like 'Sales', 'Green Tech', 'News & Mag' are not in the reference category list. The slide 6 chart has a broken y-axis with repeated '2.13' and '2.15' labels, rendering it unreadable.",
+    "visual": "Consistent green color scheme and clean typography. However, slide 6 chart is broken/unreadable. Slide 8 Venn diagram is purely decorative. Slide 1 stock photo with unrelated 'Q3 Revenue Growth' chart is misleading. Slide 9 circular roadmap is generic consulting template.",
+    "ai_slop": "Pervasive: inflated consulting language ('dual engines of growth', 'Market Sweet Spot', 'synergy potential'), decorative Venn diagram with no data mapping, generic 90-day roadmap template, stock cover image with irrelevant chart, and numbers that appear fabricated rather than extracted from the dataset."
+  },
+  "confidence": "high",
+  "total": 31,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 17384,
+    "output_tokens": 1000
+  }
+}

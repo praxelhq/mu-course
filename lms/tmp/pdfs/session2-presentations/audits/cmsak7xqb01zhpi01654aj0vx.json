@@ -1,0 +1,46 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 6.5,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Median-vs-total category distinction and undervalued-cluster scatter with bundled multiple are genuinely decision-useful.",
+  "fix_next": "Fix category medians and AI total revenue against the frozen reference before presenting; errors undermine the 'data-verified' brand promise.",
+  "verdict": "Polished investor narrative undermined by multiple verifiable numerical errors in category statistics.",
+  "flags": [
+    "inaccurate-medians",
+    "ai-total-revenue-wrong",
+    "headline-revenue-inconsistent",
+    "top10-share-rounded-down",
+    "ecomm-median-off",
+    "education-median-off",
+    "marketing-median-off",
+    "22-questions-never-enumerated",
+    "category-missingness-unacknowledged",
+    "self-quoting-filler"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 1: $13.5M combined MRR vs frozen $15.6M total revenue. Slide 4: top-1% share 48% vs reference 49.6% (borderline). Slide 6: E-comm median $155 vs reference $387. Slide 7: AI median $446 vs reference $503; Marketing median $1,586 vs reference $2,370; Education median $2,142 vs reference $2,435; AI total stated $1.81M vs reference $2.36M. Slide 10: followers r=0.02 stated but slide 8 says 0.03 (internal inconsistency).",
+  "evidence": {
+    "insight": "Slide 8 correlation hierarchy (subscribers 0.80 vs followers 0.03) and slide 9 undervalued-cluster identification with specific bundled multiple are analytically strong. Slide 7 median-vs-total framing is a useful investor lens. However, insights describe computed statistics without exploring mechanisms or survivorship bias.",
+    "narrative": "Six-chapter roadmap (slide 2) builds logically from data integrity through concentration, geography, categories, predictors, to M&A. Closing synthesis (slide 10) distills five pillars into a one-line thesis. The arc is purposeful. The '22 questions' framing is never enumerated, weakening the structural promise.",
+    "framing": "Slide 1 sets audience (investor), scope (1,000 companies), and snapshot date. Slide 3 acknowledges domain-rating missingness (286 rows). However, category missingness (274 rows) is never flagged despite being critical to slides 6-7 claims. The 22-question conceit is asserted but invisible — a cold reader cannot verify it.",
+    "accuracy": "At least 8 verifiable numerical discrepancies. Headline $13.5M vs $15.6M total is a 13% understatement. AI median $446 vs $503 (11% off), Marketing $1,586 vs $2,370 (33% off), Education $2,142 vs $2,435 (12% off), E-comm $155 vs $387 (60% off). AI total $1.81M vs $2.36M (23% off). Internal inconsistency: slide 10 says followers r=0.02, slide 8 says 0.03. The 2.30x median multiple aligns with B2C reference. Stripe/RevenueCat shares approximately correct.",
+    "visual": "Consistent dark theme with clear hierarchy. Lorenz curve (slide 4), bubble chart (slide 6), horizontal bar (slide 7), and scatter with highlighted cluster (slide 9) are well-chosen and annotated. Billing infrastructure stacked bar (slide 5) is hard to parse. Overall polished but template-uniform across slides.",
+    "ai_slop": "Consulting-speak ('underwrite,' 'diligence-grade') is mildly inflated but mostly substantive. Self-quoting blocks on slides 3 and 7 read as filler. The '22 questions' claim is never substantiated."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.5 to 5.0: Marketing median is 33% off and E-comm median is 60% off — these are not rounding issues but material errors in a deck branded as 'data-verified.' Lowered framing from 7.0 to 6.5: category missingness (274 rows) is never acknowledged despite being the basis for two full slides. Reduced bonus from 2 to 1: the investor-thesis framing is strong but the unsubstantiated '22 questions' claim and multiple factual errors prevent exceptional-tier bonus.",
+  "total": 67,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 20298,
+    "output_tokens": 1185
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 4,
+    "narrative": 6,
+    "framing": 4.5,
+    "accuracy": 4.5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Strong visual identity, clean hierarchy, and the MRR tier breakdown on slide 6 is genuinely useful.",
+  "fix_next": "This reads as a fundraising pitch, not a data story—missing data quality caveats, median vs. mean analysis, and any acknowledgment of missingness.",
+  "verdict": "Beautiful investor pitch deck, but shallow data analysis dressed as insight.",
+  "flags": [
+    "pitch-deck-not-data-story",
+    "missing-limitations",
+    "no-missingness-disclosure",
+    "inflated-consulting-language",
+    "unverifiable-claims"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 3: 'Combined MRR $13.5M' — the dataset's 30-day revenue is $15.6M, and the $13.5M figure appears to conflate Stripe's revenue ($13.53M) with total MRR. Slide 3: '64% of the dataset flows through Stripe' — actual figure is 63.6% (636/1000), minor but presented without noting this is by company count not revenue (Stripe is ~87% of revenue). Slide 5: US described as 'roughly 1 of every 4' — 258/759 (non-missing) is 34%, or 258/1000 is 25.8%; denominator ambiguity is misleading given 241 missing country values are never mentioned. Slide 8: 'Median multiple 2.3×' presented without specifying B2B vs B2C (reference: B2B 2.35×, B2C 2.30×) — not wrong per se but the blended figure is unverified and the distinction is analytically important.",
+  "evidence": {
+    "insight": "Deck stays at surface level: category counts, geographic counts, top performers by name. No median-vs-mean analysis, no exploration of why Education has highest median despite low count, no power-law quantification beyond vague 'vast majority,' no analysis of anonymous vs named revenue concentration (26.5% of revenue from 12.9% of companies). The 'thesis' on slide 9 is investment strategy, not analytical insight.",
+    "narrative": "There is a coherent arc: dataset intro → landscape → geography → revenue shape → performers → deal flow → thesis → ask. It flows logically as a pitch. However, it's a fundraising narrative, not a data-story narrative — the data serves a predetermined conclusion rather than revealing discoveries. The landing is a capital raise, not an analytical synthesis.",
+    "framing": "No mention of 274 missing categories, 241 missing countries, 288 missing audience types, or 216 zero-revenue companies. The deck says '1,000 live, revenue-generating businesses' but 216 have zero revenue. No definitions of MRR vs 30-day revenue. No limitations section. Audience framing as 'investor briefing' is clear but inappropriate for a data-story assignment.",
+    "accuracy": "The $334M lifetime revenue and 500K subscribers are not verifiable from the frozen dataset provided (which contains 30-day revenue of $15.6M). The $13.5M 'Combined MRR' doesn't match total 30-day revenue of $15.6M. The 1-in-5 AI claim (197/1000=19.7%) ignores that 274 rows lack category data — it's actually 197/726=27.1% of categorized companies. Tier counts on slide 6 sum to 1,000 which is internally consistent.",
+    "visual": "Exceptionally polished design system: consistent serif/sans-serif pairing, restrained three-color palette (cream, navy, coral), strong typographic hierarchy, good use of whitespace. The tiered bar visualization on slide 6 is effective. The horizontal bar chart on slide 4 is clean and properly labeled. However, the visual polish masks analytical thinness — every slide looks like a magazine spread but carries little analytical density.",
+    "ai_slop": "Consulting-grade language throughout: 'asymmetric returns,' 'the dataset is the moat,' 'deal flow compounds every month,' 'verified revenue, not vibes.' The three-thesis structure on slide 9 ('Buy the tier / Ride the curve / Own the lens') is classic AI-generated pitch deck phrasing. The entire framing as a fictional fund ('TrustMRR Signal Fund') is elaborate roleplay that substitutes for actual data analysis."
+  },
+  "confidence": "high",
+  "total": 53,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19376,
+    "output_tokens": 1131
+  }
+}

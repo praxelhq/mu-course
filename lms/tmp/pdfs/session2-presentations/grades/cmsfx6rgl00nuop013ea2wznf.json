@@ -1,0 +1,40 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 5,
+    "narrative": 6.5,
+    "framing": 5,
+    "accuracy": 2.5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Clear narrative arc from problem to recommendation with a useful competition-vs-value quadrant chart.",
+  "fix_next": "Category counts on slide 4 are fabricated (SaaS 437, AI 392, Productivity 275 vs. actual 66, 197, 49); verify every number against the dataset.",
+  "verdict": "Compelling story built on badly wrong numbers undermines the entire recommendation.",
+  "flags": [
+    "fabricated-category-counts",
+    "total-revenue-wrong",
+    "mean-presented-as-typical",
+    "no-limitations-slide",
+    "missing-data-not-acknowledged",
+    "categories-not-in-dataset"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 3: Total revenue stated as $13.4M; actual is $15.6M. Median MRR $282 is unverifiable and likely wrong. Slide 4: Category counts wildly wrong—SaaS shown as 437 (actual 66), AI as 392 (actual 197), Productivity as 275 (actual 49), Content Creation as 228 (actual 36), Mobile Apps as 195 (actual 52). Slide 5: AI '392 startups' and '$9,817 revenue per startup' inconsistent with actual (197 companies, mean ~$11,963). Productivity '275 startups/$6,268' wrong (actual 49 companies, mean ~$2,328). 'Marketplace' and 'Security' categories with $63,673 and $59,808 per startup are not in the reference dataset categories. Slide 7: SaaS ecosystem $5.73M and 'Overall Market Score 70.0' are unexplained/unverifiable. Slide 8: Emerging/Niche ~80 combined is roughly correct (Polar 36 + Lemon Squeezy 25 + Paddle 16 = 77), but Dodo Payments (50) is omitted.",
+  "evidence": {
+    "insight": "The competition-vs-value framing (slide 6) is a genuinely useful analytical lens, but the underlying numbers are wrong, so the insight is unreliable. Using mean revenue per startup rather than median inflates outlier-driven categories. No discussion of survivorship bias or small-n risk.",
+    "narrative": "Slides follow a logical sequence: question → data overview → crowd behavior → revenue reality → opportunity map → business model → infrastructure → recommendation → closing principle. The arc is coherent and purposeful, though it reads as a consulting pitch rather than an analytical story.",
+    "framing": "Audience (founders) and question (where to build) are clear. However, no limitations are discussed, 274 missing category values are never mentioned, the 216 zero-revenue companies are ignored, and the dataset's observational/cross-sectional nature is not acknowledged. No source citation.",
+    "accuracy": "Multiple category counts are off by 3-6x (slide 4). Total revenue is understated by ~$2.2M. Categories like 'Marketplace' and 'Security' appear in analysis but are not in the reference dataset's top categories. Revenue-per-startup figures use means without stating so, misleading given extreme skew. The 'Overall Market Score 70.0' on slide 7 is unexplained.",
+    "visual": "Consistent dark theme with good typography hierarchy. The quadrant chart on slide 6 is well-conceived. Donut chart on slide 8 is readable. Bar chart on slide 4 is clean. However, the donut chart labels are truncated/hard to read. Slide 7's bar chart lacks a label for 'All Other' value. Overall polished but somewhat template-driven.",
+    "ai_slop": "Moderate consulting-speak ('existential question,' 'underserved goldmines,' 'supremacy of web-based B2B'). The founder-funnel graphic on slide 2 is decorative filler. Closing slide is a generic aphorism. The 'Overall Market Score 70.0' appears to be an invented metric."
+  },
+  "confidence": "high",
+  "total": 52,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18558,
+    "output_tokens": 1043
+  }
+}

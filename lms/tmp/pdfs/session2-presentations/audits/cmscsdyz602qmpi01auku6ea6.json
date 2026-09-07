@@ -1,0 +1,43 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 4.5,
+    "framing": 4,
+    "accuracy": 4,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Slide 4's social-follower null finding contrasted with M&A valuation premium is a genuinely interesting analytical juxtaposition.",
+  "fix_next": "Replace decorative stock images with actual data charts (scatter plots, histograms) and disclose missingness affecting every denominator.",
+  "verdict": "Bullet-heavy EDA dump with few real charts, several median errors, and no unifying thesis.",
+  "flags": [
+    "decorative-stock-image",
+    "no-real-data-charts",
+    "median-discrepancies",
+    "missing-data-not-discussed",
+    "list-not-narrative",
+    "ai-slop-consulting-language",
+    "percentages-sum-over-100"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 6: AI median $446 vs ref $503; SaaS median $303 vs ref $200.50; Marketing median $1,586 vs ref $2,369.50. Slide 7: Education median $2,141 vs ref $2,435. Slide 6: audience split percentages use full 1000 denominator ignoring 288 missing audience_type. Slide 5: pricing model percentages (~38%+~65%+~22%=125%) sum >100% with no explanation of overlap or sourcing.",
+  "evidence": {
+    "insight": "Slide 4 contrasting r=0.022 (followers vs MRR) with r=0.244 (followers vs M&A asking price) is a genuinely decision-useful finding. Slide 7 category volume-vs-median asymmetry is useful. But most slides describe distributions without deeper synthesis or actionable recommendations.",
+    "narrative": "Deck proceeds topic-by-topic (MRR, payments, social, pricing, audience, takeaways) without a unifying question or thesis stated upfront. Slide 7 summarizes but doesn't synthesize toward a decision. No purposeful arc or landing beyond restating earlier bullets.",
+    "framing": "Title slide says 'Comprehensive Dataset Deep-Dive' but never defines audience, decision context, or key question. No mention of substantial missingness (241 country, 288 audience_type, 274 category) which materially affects denominators used on slides 5 and 6. No scope or limitations section.",
+    "accuracy": "Multiple category medians on slide 6 diverge materially from reference values. Audience split percentages ignore 288 missing values. Pricing model percentages on slide 5 sum to >100% without acknowledging overlap. Stripe share 63.6% is consistent with 636/1000. Dodo 5.0% matches 50/1000.",
+    "visual": "Only one real data visualization exists (slide 2 horizontal bar chart). Slide 3 uses a decorative fintech stock photo adding zero information. Slide 4 displays r=0.022 as large text but no scatter plot. Slide 5 uses generic icon cards. Repeated teal corner gradient on every slide is template filler. Deck is visually monotonous and text-heavy.",
+    "ai_slop": "Slide 3 stock 'FINTECH' image is purely decorative. Consulting-style headers ('Infrastructure Usage & Revenue Correlation', 'Pricing Model Taxonomy & Feature Mechanics') are inflated. Three-card layout on slide 5 is a generic template pattern."
+  },
+  "confidence": "high",
+  "changed": false,
+  "change_reason": "no-change",
+  "total": 43,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 14313,
+    "output_tokens": 909
+  }
+}

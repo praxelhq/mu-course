@@ -1,0 +1,213 @@
+T R U S T M R R M A R K E T P L A C E A N A LY S I S
+
+
+
+
+The Hidden Premium
+Why anonymous startups earn more than named ones—and what 1,000 indie SaaS listings reveal about
+the micro-acquisition market
+
+
+
+
+1,000 startups • 65 countries • Frozen 30 Jul 2026
+ THE HOOK
+
+
+ 13% of listings, 27% of revenue
+ Startups listed as “Stealth Company” or “Hidden Business”—no
+ public name, no visible identity—make up only a small slice of the
+ marketplace by count, but punch far above their weight in revenue.
+
+
+                                                                                 S H A R E O F 3 0 - D AY R E V E N U E
+
+
+
+
+     ANONYMOUS                                         NAMED                                                73.1%                          26.9%
+
+
+     130                                               870                       Read: named founders dominate the marketplace by sheer numbers,
+                                                                                 but stealth listings—often larger, more mature businesses shielding
+     startups (13%)                                    startups (87%)
+                                                                                 their identity ahead of a sale—carry outsized revenue weight relative
+                                                                                 to their count.
+
+     $4.2M                                             $11.4M
+     26.9% of 30-day revenue                           73.1% of 30-day revenue
+
+
+
+
+TrustMRR 1,000-row dataset • revenue_30d_usd, startup_name                                                                                               2
+ THE LANDSCAPE
+
+
+ A US-led, AI-heavy marketplace
+ TOP COUNTRIES BY 30-DAY REVENUE                        TOP CATEGORIES BY LISTING COUNT
+
+                                                          Health &
+ES     $131K                                                               34
+                                                          Fitness
+
+                                                          Content
+ IN    $141K                                                                36
+                                                          Creation
+
+
+SG      $172K                                            Dev Tools          37
+
+
+
+HK      $210K                                            Marketing              42
+
+
+
+CA       $312K                                         Productivity              49
+
+
+
+GB        $445K                                        Mobile Apps                   52
+
+
+
+FR          $669K                                            SaaS                         66
+
+
+
+US                                           $9,843K            AI                             197
+
+
+
+
+country (241 blank) • category (274 blank)                                                           3
+ T H E C O R E R E L AT I O N S H I P
+
+
+ Subscribers predict revenue—strongly
+
+ Pearson r = 0.802
+ across 736 startups with both active subscriptions and
+ 30-day revenue reported
+
+
+
+ For a subscription-driven marketplace, this is the strongest
+ single signal in the dataset. Traffic (visitors) and social
+ reach (followers) are far noisier—and mostly unreported—
+ making subscriber count the most trustworthy quick proxy
+ for revenue when evaluating a listing.
+
+
+
+
+                                                                Showing 683 of 736 startups (99th-percentile range) for readability — r is computed on the full set
+
+
+
+
+active_subscriptions vs revenue_30d_usd • complete pairs only                                                                                                         4
+ THE OUTLIERS
+
+
+ A handful of breakouts drive the total
+ The median startup has earned just $400 in the last 30 days—but the mean is $15,596, dragged up by a long tail of breakout companies.
+
+
+ STARTUP                                              COUNTRY               CATEGORY                                                ALL-TIME REVENUE
+
+
+ Stan                                                 US                    —                                                            $76,627,685
+
+
+ Brand On Demand, Inc.                                US                    E-comm                                                       $51,152,595
+
+
+ Stack Influence                                      US                    Marketing                                                    $26,284,476
+
+
+ Stealth Company                                      —                     —                                                            $11,337,749
+
+
+ Rezi                                                 US                    AI                                                            $9,726,513
+
+
+ Cometly                                              US                    Analytics                                                     $9,437,775
+
+
+ Stealth Company                                      GB                    —                                                             $5,856,328
+
+
+ Stealth Company                                      US                    —                                                             $4,753,822
+
+
+revenue_all_time_usd • top 8 of 1,000                                                                                                                  5
+ THE EXIT MARKET
+
+
+ 1 in 4 listings is for sale
+
+      LISTED FOR SALE                                     MEDIAN REVENUE MULTIPLE                               MEDIAN ASKING PRICE
+
+
+
+
+      262                                                 2.3x                                                  $35,000
+      of 1,000 startups (26%)                             among listings with a stated multiple                 across all on-sale listings
+
+
+
+
+ A 2.3x median revenue multiple is well below typical SaaS acquisition benchmarks (often 3–5x for larger, more established companies)—
+ consistent with a marketplace of small, early-stage, higher-risk assets. The wide spread (0x to 300x+ outliers) means multiples should always be
+ read alongside the underlying revenue trend, not on their own.
+
+
+
+
+on_sale, asking_price_usd, revenue_multiple                                                                                                         6
+ A N E C E S S A R Y C A V E AT
+
+
+ This is a partially-completed dataset
+ Before drawing conclusions, it's worth being upfront about coverage. Self-reported marketplace listings are inconsistently filled in—treat single-
+ country or single-category conclusions as directional, not exhaustive.
+
+
+
+
+     453                                                   241                                                   274                     82
+     fully complete records                                rows missing country                                  rows missing category   rows fully blank profile
+
+     out of 1,000 (45%)                                    24% of all listings                                   27% of all listings     mostly stealth listings
+
+
+
+
+completeness across website, country, value_proposition, problem_solved, pricing_model, category, domain, domain_rating                                             7
+      TA K E A W AY
+
+
+
+      Anonymity is a signal, not noise.
+            Stealth listings skew larger and more revenue-dense—likely pre-exit businesses protecting their identity, not hobby projects.
+
+
+
+            Active subscriptions is the single most reliable revenue proxy in this dataset (r = 0.802); prioritize it over followers or traffic
+            when screening listings.
+
+
+            The market is US- and AI-heavy, but nearly a quarter of listings carry no country or category tag—worth fixing before this data
+            drives real decisions.
+
+
+            At a 2.3x median multiple, most listings price as small, early-stage assets—treat higher multiples as outliers requiring extra
+            diligence.
+
+
+
+
+TrustMRR 1,000-row dataset • frozen 30 Jul 2026                                                                                                   8
+

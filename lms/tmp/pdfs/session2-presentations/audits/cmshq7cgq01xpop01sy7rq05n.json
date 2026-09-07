@@ -1,0 +1,42 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 0.5,
+    "narrative": 2,
+    "framing": 0.5,
+    "accuracy": 1,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Consistent visual identity, clean layout, and well-structured competitive comparison table on slide 8.",
+  "fix_next": "This is a startup pitch deck, not a data-story presentation—redo entirely using the assigned 1,000-row dataset.",
+  "verdict": "Wrong assignment entirely: a fintech pitch with zero dataset analysis.",
+  "flags": [
+    "wrong-assignment",
+    "no-dataset-usage",
+    "ai-slop-template",
+    "fabricated-projections",
+    "zero-data-analysis",
+    "decorative-charts"
+  ],
+  "factual_error_count": 0,
+  "factual_error_detail": "",
+  "evidence": {
+    "insight": "No slide references or analyzes the assigned 1,000-row dataset. All content is speculative fintech product ideation with external market stats. Zero original analytical depth from the data.",
+    "narrative": "Internally coherent pitch-deck arc (problem → solution → market → monetization → CTA), but it answers the wrong question entirely—no data story is told.",
+    "framing": "No mention of the assigned dataset, its scope, limitations, missingness, or analytical question. Audience is framed as investors, not as someone evaluating dataset findings.",
+    "accuracy": "No dataset figures appear so dataset fidelity cannot be assessed. External claims (228B UPI transactions, $38B abandoned purchases, $25.7B biometric market) cite named sources but are unverifiable and irrelevant. Five-year revenue projections on slide 11 ($0.8M→$95M) are fabricated with no disclosed assumptions.",
+    "visual": "Clean blue/purple palette, good hierarchy, legible type, appropriate icons, comparison table (slide 8), pie chart (slide 9), area chart (slide 11). But all charts depict hypothetical business projections, not dataset analysis. Repetitive three-column card layout on slides 3, 6, 10.",
+    "ai_slop": "Heavy AI pitch-deck template: 'Join the Payment Revolution,' 'paradigm shift,' decorative icons, generic card layouts repeated across slides. Footer factoids with vague source attributions ('Visa Biometric Payment Consumer Study' with no year/link) appear fabricated or unverifiable."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 1→0.5 and framing from 1→0.5 because the deck contains literally zero engagement with the assigned dataset; preliminary scores were already low but still slightly generous for a completely off-task submission.",
+  "total": 15,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 22011,
+    "output_tokens": 668
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 4,
+    "narrative": 5,
+    "framing": 5.5,
+    "accuracy": 3.5,
+    "visual": 6,
+    "bonus": 0
+  },
+  "what_worked": "Thorough caveats slide and consistent, clean visual design with honest missing-data callouts on most slides.",
+  "fix_next": "Verify all computed figures against raw data; the $133.8M annualized total and mean MRR are materially wrong.",
+  "verdict": "Clean-looking descriptive summary undermined by fabricated totals and no analytical depth.",
+  "flags": [
+    "descriptive-not-analytical",
+    "annualized-revenue-fabricated",
+    "mean-mrr-wrong",
+    "distribution-bins-suspect",
+    "category-medians-off",
+    "no-cross-tabulation",
+    "template-repetitive"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 2/12: $133.8M combined 12-month revenue not derivable from $15.6M dataset total. Slide 2: mean MRR $13,472 is ~10x too high. Slide 3: category median MRR values (AI $446, Marketing $1,586, Education $2,142) don't match reference medians. Slide 6: $0 bin shows 197 but reference has 216 zero-revenue rows.",
+  "evidence": {
+    "insight": "Every slide reports a single variable without combining dimensions; no correlation, segmentation, or cross-tab attempted. Takeaway restates slide 2.",
+    "narrative": "Logical topic sequence (overview→categories→geo→audience→distribution→top10→growth→sales→payments→caveats→close) but no cumulative argument; each slide is a standalone fact card.",
+    "framing": "Slide 11 caveats are thorough; missing-data noted on slides 3-4. But no stated audience or decision question; slide 5 omits 288 missing audience_type rows.",
+    "accuracy": "$133.8M figure appears extrapolated rather than summed from data; mean MRR $13,472 inconsistent with $15.6M total; distribution bins suspiciously uniform and contradict 216 zero-revenue count; category medians deviate from reference.",
+    "visual": "Consistent teal palette, direct-labeled bar charts, readable tables, good big-number callouts. Repetitive card template; slide 8 text-only where a chart would help.",
+    "ai_slop": "Near-uniform bin counts on slide 6 look fabricated. Template repetition across slides 2, 8, 9. Structure resembles AI-generated executive summary with data plugged in."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Downgraded accuracy from 4.0 to 3.5 after confirming the $133.8M figure is materially fabricated and distribution bins contradict known zero-revenue count; other scores confirmed as appropriate.",
+  "total": 48,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 22457,
+    "output_tokens": 2044
+  }
+}

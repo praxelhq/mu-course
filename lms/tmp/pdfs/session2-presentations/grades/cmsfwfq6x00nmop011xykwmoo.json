@@ -1,0 +1,38 @@
+{
+  "slide_count": 16,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 9,
+    "accuracy": 6.5,
+    "visual": 9,
+    "bonus": 4
+  },
+  "what_worked": "Exceptional narrative arc from base rates through category economics to a concrete strategic recommendation with honest caveats.",
+  "fix_next": "Several category figures (Education median, Productivity count, Analytics median) diverge from the frozen dataset; audit every number against source before publishing.",
+  "verdict": "Outstanding storytelling and design, undermined by a cluster of factual inaccuracies.",
+  "flags": [
+    "category-median-errors",
+    "fabricated-category-tags",
+    "productivity-count-inflated",
+    "small-n-recommendations"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 3: top-10 share stated as 50%, reference is 49.6%—borderline acceptable rounding. Slide 3: mean stated $15,596—correct. Slide 12: Education median $2.4k vs reference $2,435—fine. Marketing median $2.4k vs $2,369.50—fine. BUT: Slide 12 lists 'Sales' ($986, n=13) and 'Fintech' ($584, n=16) as separate categories not in the frozen reference set; these appear fabricated or re-tagged. Slide 12: Productivity listed at 275 startups and $80 median; reference shows 49 startups and $79.91 median—the count is wildly inflated (275 vs 49). Slide 16: 'Sales' shown with $3.1k median and 'Customer Support' with $1.9k median—neither exists in the reference categories; these are invented groupings presented as dataset categories. Slide 16: Analytics median shown as $886 vs reference $419 (n=19)—a 2× overstatement. Slide 16: Analytics shown at 131 startups vs reference 19. Slide 9: anonymous median stated $8,362—plausible but unverifiable; anonymous revenue share 26.5% aligns with reference. Slide 11: B2B/B2C revenue per customer $49/$9 not directly verifiable but the median revenue ratio (~4×) roughly aligns with reference 2.35×/2.30× median multiples, though the deck claims a larger gap.",
+  "evidence": {
+    "insight": "Slide 7 domain-rating analysis with 6,000× multiplier and Spearman correlations is genuinely original. Slide 10 treemap reframing problem-space crowding vs. pay-per-builder goes well beyond chart description. Slide 14 buy-vs-build payback table is decision-useful. Slide 16 synthesizes crowding × median into a strategic quadrant.",
+    "narrative": "Perfect arc: source → shape → base rate → what doesn't work (followers) → what does (domain rating, B2B, category) → buy option → simulator → strategic answer. Every slide title is a claim, not a label. The thesis 'where should you build' is answered concretely on slide 16.",
+    "framing": "Slide 2 explains data provenance, limitations ('not profit'), and selection bias ('founders confident enough to publish') before any analysis. Slide 4 sets base rates before category analysis. Slide 15 simulator explicitly disclaims 'benchmark not forecast'. Slide 16 caveat about n=42 sample size.",
+    "accuracy": "Core stats (1,000 rows, $15.6M total, 216 zero-revenue, top-10 ~50%) are correct. However, the deck introduces category tags not in the reference (Sales, Customer Support, Fintech, Games, No-Code) and presents them as dataset categories. Productivity count inflated from 49 to 275. Analytics count inflated from 19 to 131 and median doubled. The final strategic recommendation rests on these non-reference categories with small samples.",
+    "visual": "Lorenz curve (slide 3) with equality line is textbook-perfect. Dumbbell chart (slide 5) is inventive. Scatter plot (slide 6) with log axes, bubble sizing, and named outliers is well-executed. Treemap (slide 10) encodes two variables cleanly. Final quadrant chart (slide 16) is the right synthesis visual. Consistent color palette, restrained use of orange for emphasis, excellent typography hierarchy throughout.",
+    "ai_slop": "none — every slide has specific data points, named companies, sample sizes, and caveats. No generic filler or decorative graphics."
+  },
+  "confidence": "high",
+  "total": 88,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 32262,
+    "output_tokens": 1147
+  }
+}

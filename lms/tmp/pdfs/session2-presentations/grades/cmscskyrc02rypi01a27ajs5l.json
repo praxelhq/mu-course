@@ -1,0 +1,39 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 6,
+    "narrative": 7.5,
+    "framing": 5.5,
+    "accuracy": 3,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Strong narrative arc from market size → concentration → exit multiples → actionable 2×2 recommendation matrix.",
+  "fix_next": "Revenue figures are inflated ~5× versus the actual dataset ($15.6M not $75.2M); verify every number against the frozen data before presenting.",
+  "verdict": "Compelling story structure undermined by fabricated revenue totals and unverifiable exit-multiple data.",
+  "flags": [
+    "inflated-revenue-total",
+    "fabricated-exit-multiples",
+    "unverifiable-for-sale-data",
+    "missing-median-analysis",
+    "no-limitations-slide"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 2: Total revenue stated as $75.2M; actual is $15.6M (~5× inflation). Slide 3: AI shown as $18.4M (actual $2.36M), Marketing $14.6M (actual $1.32M), E-comm $12.0M (actual $1.11M), SaaS $6.6M (actual $703K), Education $5.5M (actual $524K), Analytics $3.8M (actual $368K), Content Creation $1.9M (actual $173K), Mobile Apps $1.7M (actual $228K). Slide 5: Avg revenue per company figures are inflated proportionally (E-comm $632.6K vs actual ~$58.5K; Marketing $348.6K vs ~$31.4K; AI $93.5K vs ~$12.0K). Slide 6: Exit multiples (8.5x AI, 9.2x Marketing, etc.) and 'for sale' listings (54 AI listings) appear fabricated — no such field exists in the frozen dataset. Slide 2: Claims 29 categories; reference data shows 12 named categories. Slide 3: '60% from top 3 categories' claim built on wrong totals.",
+  "evidence": {
+    "insight": "Slide 4 concentration analysis (top-3 share per category) is a genuinely useful lens, and slide 7's 2×2 matrix synthesizes multiple dimensions into a decision framework. However, the insight is undermined by wrong underlying numbers.",
+    "narrative": "Clear thesis stated on slide 1, each slide builds logically (size → concentration → exit value → recommendation). Slide 7 lands with actionable enter/selective calls. The sequence is purposeful, not a list.",
+    "framing": "Slide 1 sets context (1,000 startups, product category lens). However, no limitations slide, no mention of 274 missing category values affecting analysis, no discussion of what '30-day revenue' means vs the '12-month' label used on slide 2, and no audience definition.",
+    "accuracy": "Nearly every dollar figure is wrong by ~5×. The dataset contains 30-day revenue totaling $15.6M, but the deck reports $75.2M as '12-month revenue' without explaining the annualization (and even 12× monthly would be ~$187M, not $75.2M — the multiplier is unclear). Exit multiples and 'for sale' listings appear entirely fabricated with no corresponding dataset field. Category count of 29 vs 12 named categories is unexplained.",
+    "visual": "Clean, consistent dark/gold/muted palette. Bar charts are well-labeled and sorted. The 2×2 bubble matrix on slide 7 is effective. Good use of callout boxes. Minor issue: slide 7 text wrapping on 'Marketing & E-comm' is awkward.",
+    "ai_slop": "Minimal generic filler language. The 'Reading it right' callout on slide 4 borders on consulting-speak but adds genuine interpretive value. The decorative circles on slide 1 are purely ornamental but restrained."
+  },
+  "confidence": "high",
+  "total": 59,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 13901,
+    "output_tokens": 1011
+  }
+}

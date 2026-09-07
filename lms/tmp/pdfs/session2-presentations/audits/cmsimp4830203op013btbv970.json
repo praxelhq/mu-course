@@ -1,0 +1,44 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 1,
+    "narrative": 2,
+    "framing": 1.5,
+    "accuracy": 1,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Clean, consistent visual template with good whitespace, readable typography, and professional color palette.",
+  "fix_next": "Replace the fabricated investor pitch with actual exploratory analysis of the dataset's real distributions, categories, and providers.",
+  "verdict": "AI-generated pitch template with fabricated metrics; almost no genuine dataset analysis present.",
+  "flags": [
+    "ai-slop",
+    "fabricated-charts",
+    "fabricated-metrics",
+    "wrong-genre",
+    "no-dataset-analysis",
+    "unearned-certainty",
+    "missing-limitations",
+    "inflated-language"
+  ],
+  "factual_error_count": 9,
+  "factual_error_detail": "Slide 3: claims '$30M aggregate MRR' (actual ~$15.6M). Slide 3: '31 software verticals' (dataset has fewer distinct categories). Slide 4: revenue tier shares (85%/55%/35%/18%) are fabricated and don't sum or match dataset. Slide 4: 'Average dataset MRR $4,682' is unverifiable and likely wrong. Slide 5: growth velocity curve is entirely fabricated with no dataset basis; '3.4x faster payback' is invented. Slide 7: CAC $420, LTV:CAC 2.2x, gross margin 72%, NRR 94% are all fabricated—none of these fields exist in the dataset. Slide 2: '80% fail to cross $5,000 MRR' and '60% LTV left on table' are unsourced claims presented as data findings. Slide 8: ARR projections ($360K→$8.5M) have no dataset grounding.",
+  "evidence": {
+    "insight": "Zero original findings from the actual dataset. No analysis of category distributions, provider splits, audience types, TLD patterns, or revenue concentration. Every 'insight' is a fabricated benchmark or generic SaaS truism.",
+    "narrative": "Follows a boilerplate investor pitch arc (opportunity→data→product→economics→roadmap→ask) which is the wrong genre entirely. No analytical question is posed, tested, or resolved with data.",
+    "framing": "Framed as 'DATA-BACKED INVESTOR PITCH' rather than a data-story. No mention of missingness (~24-29% across key fields), zero-revenue rows (216), or any dataset limitations. A cold reader would not understand what was actually analyzed.",
+    "accuracy": "Total revenue inflated nearly 2x ($30M vs $15.6M). Revenue tier percentages, unit economics, CAC, LTV:CAC, gross margin, and NRR are all invented—these metrics do not exist in the dataset. The growth velocity chart (slide 5) is a decorative fabrication with no underlying data.",
+    "visual": "Professional template with consistent blue palette, clean cards, and readable hierarchy. However, the charts on slides 4-5 and the table on slide 7 are decorative fabrications presenting invented numbers, which undermines the visual score despite polish.",
+    "ai_slop": "Pervasive throughout. 'Workflow-first SaaS platform with automated acquisition loops,' 'defensible stickiness,' 'top-quartile velocity,' 'compounding ARR velocity,' 'organic API loops.' Slides 6, 9, and 10 are pure boilerplate product marketing and VC ask filler with no dataset connection."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 1.5→1.0 (no genuine dataset finding at all), narrative from 2.5→2.0 (wrong genre with no analytical thesis), and framing from 2.0→1.5 (no limitations, no missingness, audience completely misaligned). Added factual error for the $30M claim being nearly 2x the actual total. Visual unchanged—template is polished but charts are fabricated.",
+  "total": 18,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 17281,
+    "output_tokens": 997
+  }
+}

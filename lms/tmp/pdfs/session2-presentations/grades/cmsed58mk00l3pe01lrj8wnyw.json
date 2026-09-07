@@ -1,0 +1,41 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 3,
+    "narrative": 4,
+    "framing": 3.5,
+    "accuracy": 2.5,
+    "visual": 2,
+    "bonus": 0
+  },
+  "what_worked": "The build/buy/wait framework gives the deck a coherent strategic spine throughout.",
+  "fix_next": "Replace garbled, illegible charts with accurate data visualizations anchored to verified dataset figures and proper category names.",
+  "verdict": "Consulting-style framing over an empty analytical foundation with broken visuals.",
+  "flags": [
+    "ai-slop",
+    "garbled-charts",
+    "fabricated-looking-data",
+    "no-data-citations",
+    "decorative-graphics",
+    "repetitive-template",
+    "missing-limitations"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: 'Total MRR $13.5M' — dataset shows $15.6M total 30-day revenue, not MRR; labeling as MRR is unsupported. Slide 2: 'Median MRR $282' — cannot be verified as MRR; dataset median is different from this figure. Slide 5: Categories 'Sales' and 'Security' are not in the dataset's category list; these appear fabricated. Slide 6: 'Entertainment' and 'Games' cited as high-growth markets — not present in dataset categories. Slide 7: Table is completely garbled/illegible with nonsensical numbers and text, making all data claims unverifiable and effectively fabricated.",
+  "evidence": {
+    "insight": "Recommendations are generic consulting advice (buy low-multiple companies, build in high-MRR markets, avoid saturated ones). No original analytical finding emerges from the data — no mention of revenue concentration quantified (49.6% top-10), provider landscape, anonymity premium, or B2B/B2C differences.",
+    "narrative": "The build/buy/wait thesis is stated on slide 1 and returned to on slides 8-10, giving structural coherence. However, the middle slides (3-7) repeat the same point — acquire cheap startups — without building progressive evidence. Slides 6 and 9 largely restate earlier slides.",
+    "framing": "Audience is named (founders, investors, corporate decision-makers) but scope, dataset provenance, limitations, and missingness (274 missing categories, 241 missing countries) are never mentioned. No definitions of 'MRR' vs. 30-day revenue. The 'revenue-verified' framing implies more rigor than shown.",
+    "accuracy": "Total revenue mislabeled as MRR and wrong ($13.5M vs $15.6M). Categories 'Sales,' 'Security,' 'Entertainment,' 'Games' do not exist in the dataset. Slide 7 table is completely garbled with unreadable numbers. Slide 4 acquisition examples cannot be verified. No sample sizes, no missingness disclosure, no denominators given anywhere.",
+    "visual": "Slide 5 chart has garbled axis labels ('MAZHUS,' 'MIRRKPLLACE') and unreadable values. Slide 7 table is entirely illegible gibberish. Slide 1 and 10 use decorative AI-generated illustrations that add no analytical value. Every slide follows identical Gamma template with 'Business insight' and 'Recommendation' blocks — highly repetitive. Slide 3 uses generic icon process diagram with no data.",
+    "ai_slop": "Pervasive: every slide uses identical 'Business insight' / 'Recommendation' template structure. Decorative AI illustrations on slides 1, 7, 10. Garbled chart text on slides 5 and 7 is classic AI-generation artifact. Consulting buzzwords throughout ('bolt-on acquisitions,' 'GTM investment,' 'defensible differentiator'). Content is generic enough to fit any startup dataset."
+  },
+  "confidence": "high",
+  "total": 30,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18810,
+    "output_tokens": 958
+  }
+}

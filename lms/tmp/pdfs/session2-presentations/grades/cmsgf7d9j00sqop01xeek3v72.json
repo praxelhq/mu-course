@@ -1,0 +1,40 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 6.5,
+    "framing": 5,
+    "accuracy": 3,
+    "visual": 6,
+    "bonus": 1
+  },
+  "what_worked": "Strong central thesis with a memorable quadrant matrix and consistent signal-vs-noise framing throughout.",
+  "fix_next": "Most charts appear fabricated—the MRR bell curve, the perfect DR scatter, and the r>0.6 claim are unverifiable or contradict the dataset's actual structure.",
+  "verdict": "Compelling narrative built on illustrative-looking but unverifiable and likely fabricated charts.",
+  "flags": [
+    "fabricated-looking-charts",
+    "unverified-correlation-claims",
+    "dataset-mislabeled-as-all-saas",
+    "causal-language-from-observational-data",
+    "no-missingness-disclosure",
+    "revenue-scale-errors"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 2: calls all 1,000 companies 'SaaS startups'—dataset spans 12+ categories. Slide 3: MRR distribution shown as smooth bell curve; actual revenue is heavily right-skewed with 216 zeros. Slide 3: '65% of Ghosts maintain healthy MRR' is unverifiable and implausible given 21.6% zero-revenue rate. Slide 6: revenue axis reaches $500M—max 30-day revenue in dataset is far below that; chart looks entirely fabricated. Slide 8: claims Domain Rating r>0.6 with MRR—no such variable is in the frozen reference and the only tested correlation (founded-year) is ~0.025; this is unverifiable at best, fabricated at worst. Slide 8: 'definitively proves' causal-sounding language from cross-sectional observational data.",
+  "evidence": {
+    "insight": "The vanity-vs-sanity quadrant (slide 4) and the anonymous/stealth wealth angle are genuinely interesting framings, but the underlying claims lack verifiable numeric support from the dataset.",
+    "narrative": "Clear arc from hook (slide 1) through problem (slides 3-5), mechanism (slides 6-8), to recommendation (slides 9-10) and close (slide 11). Coherent thesis throughout.",
+    "framing": "Slide 2 states N=1,000 and core question clearly, but mislabels the dataset as 'SaaS companies,' never discloses missingness (274 missing category, 216 zero revenue), and never defines 'healthy MRR' or 'negligible followers.'",
+    "accuracy": "Slide 3 MRR distribution is a smooth bell curve contradicting the actual heavy right skew. Slide 6 revenue axis goes to $500M when total 30-day revenue is ~$15.6M. Slide 8 claims r>0.6 for Domain Rating—unverifiable and suspicious. Slide 5 bar chart values ($240k, $180k MRR) are unverifiable. The 50%/35%/15% budget split on slide 10 has no data basis.",
+    "visual": "Consistent green/coral/grey palette, clean typography, good use of white space. Slide 4 quadrant is effective. However, slide 6 has a duplicated title rendering glitch. Charts lack axis labels, scales, and units consistently. The magnifying glass on slide 5 is decorative filler.",
+    "ai_slop": "Smooth bell-curve MRR distribution (slide 3) is a classic AI-generated illustrative chart that contradicts real data shape. The perfect linear scatter on slide 6 looks AI-generated rather than data-derived. Consulting-style pyramid (slide 10) with invented percentages. NotebookLM watermark on every slide."
+  },
+  "confidence": "high",
+  "total": 53,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18394,
+    "output_tokens": 949
+  }
+}

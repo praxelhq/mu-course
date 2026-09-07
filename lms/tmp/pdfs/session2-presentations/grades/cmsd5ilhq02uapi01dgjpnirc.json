@@ -1,0 +1,38 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 5.5,
+    "visual": 6.5,
+    "bonus": 2
+  },
+  "what_worked": "Strong three-decision thesis with explicit causal discipline on slide 8 and honest diligence gates on slide 6.",
+  "fix_next": "Verify median revenue figures against the frozen dataset—Stripe median, Paddle median, and others appear fabricated or miscalculated, undermining the payments argument.",
+  "verdict": "Coherent strategic narrative undermined by unverifiable median figures and thin dataset engagement.",
+  "flags": [
+    "median-values-not-matching-reference",
+    "acquisition-data-unverifiable",
+    "missing-data-not-discussed",
+    "correlation-values-unverifiable"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 7: Stripe median shown as $735 vs no direct reference but plausible; RevenueCat median $309 vs reference not directly given for median revenue but total/count suggests different; Paddle median $138 vs reference $96,742/16≈$6,046 total but median not directly given; Lemon Squeezy $38 vs reference $140,414/25 total—medians are plausible but Dodo shown as $9 while Polar $0 are roughly consistent. Slide 7: Dodo median $9 is plausible given $38,693/50. However the claim 'strongest median revenue among general-purpose web providers' conflates selection bias with provider quality without noting sample composition differences. Slide 2: Spearman correlations (0.89, 0.90, 0.60, 0.17) are stated without verification possible against reference—not counted as errors but unverifiable. Slide 5: SetSmart acquisition figures ($499k ask, $15.7k MRR, +29% rev growth, +100% MRR growth, 0.8× multiple) are presented as dataset facts but cannot be verified against reference and may be cherry-picked or fabricated. Slide 3: Omits Dodo (50), Superwall (17), Polar (36) from provider landscape while claiming to show fragmentation. Slide 4: Claims 'crowded categories with weak median economics' for productivity/social but doesn't show the data. Material errors: (1) Provider counts on slide 3 selectively omit 3 providers while framing as comprehensive, (2) No acknowledgment of 274 missing category values or 286 missing domain values affecting build thesis, (3) No mention of 216 zero-revenue companies affecting median calculations, (4) Acquisition slide presents specific company data without sourcing or acknowledging these may not be verifiable from the frozen dataset.",
+  "evidence": {
+    "insight": "Slide 2 offers a useful hierarchy of correlation strengths; slide 4 proposes a specific product concept grounded in observed fragmentation; slide 6 provides a genuine diligence framework. However, the 'build' recommendation (revenue-health copilot) is more startup pitch than dataset insight—it extrapolates far beyond what the data shows.",
+    "narrative": "Clear three-act structure (build/buy/pay) with synthesis on slide 9 and actionable 90-day plan on slide 10. The 'one portfolio logic' line ties the three decisions together. Sequence is purposeful and each slide advances the argument.",
+    "framing": "Slide 1 sets up three questions clearly. Audience (indie SaaS founder) is implicit but identifiable. However, dataset limitations (274 missing categories, 216 zero-revenue rows, 288 missing audience_type) are never disclosed, which is a significant framing gap for a data-story.",
+    "accuracy": "Provider counts on slide 3 (636, 189, 16, 25) match reference for Stripe, RevenueCat, Paddle, Lemon Squeezy. Median revenue figures on slide 7 cannot be fully verified but are in plausible ranges for some providers. The acquisition target data on slide 5 is entirely unverifiable. Missing data is never acknowledged. The correlation figures on slide 2 are stated as Spearman but unverifiable.",
+    "visual": "Clean, consistent layout with good hierarchy and readable typography. Color coding is consistent across slides. Bar charts on slides 2 and 7 are clear. However, the colored blocks on slide 3 are decorative rather than informative, and the progress-bar-style indicators on slide 6 have no clear scale or meaning. Some text truncation visible on slide 2 ('Implication' and 'conversion' are cut off).",
+    "ai_slop": "Slide 3 'revenue-health copilot' concept and slide 4 business model canvas feel like startup pitch template output rather than data-driven findings. The colored rounded rectangles on slide 3 are decorative. 'Conversational revenue OS' on slide 5 is inflated consulting language. Generally restrained but some consulting-speak creeps in."
+  },
+  "confidence": "medium",
+  "total": 68,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18746,
+    "output_tokens": 1226
+  }
+}

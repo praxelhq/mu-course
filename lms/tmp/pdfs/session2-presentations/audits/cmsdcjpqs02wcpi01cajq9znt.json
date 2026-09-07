@@ -1,0 +1,42 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 9,
+    "accuracy": 7,
+    "visual": 8,
+    "bonus": 3
+  },
+  "what_worked": "Slides 6–7 median-vs-mean pairing and 'Not used' footnotes show rare editorial discipline and analytical maturity.",
+  "fix_next": "Reconcile MRR vs 30-day revenue field throughout; several category medians and the $0 count diverge from the reference materially.",
+  "verdict": "Exceptional narrative and framing; systematic MRR-field ambiguity keeps accuracy from matching the rest.",
+  "flags": [
+    "median-discrepancies",
+    "revenue-field-ambiguity-mrr-vs-30d",
+    "stripe-revenue-share-87-vs-86.8",
+    "zero-revenue-count-197-vs-216",
+    "top10-share-48-vs-49.6",
+    "b2b-b2c-median-ratio-overstated"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 4/6: AI median $446 vs ref $503, Education $2,142 vs $2,435, Marketing $1,586 vs $2,369.50 — likely MRR vs 30-day field. Slide 4: $0 count 197 vs ref 216. Slide 5: top-1% share shown as 48% implying top-10 ≈49.6% but headline says 'ten companies own half' while chart shows 48% at top 1% (10 companies) — actually close but rounds down. Slide 8: B2B/B2C median ratio 5.7x vs ref 2.35x — substantial discrepancy suggesting different field or denominator.",
+  "evidence": {
+    "insight": "Slide 6-7 category pairing (crowding vs payoff) is genuinely original; slide 8 'AI is a layer' reframe and slide 10 correlation hierarchy (subs 0.82 > DR 0.51 > followers 0.16) challenge founder priors with data. Slide 12 acquisition marketplace angle adds non-obvious strategic dimension.",
+    "narrative": "Clear power-law thesis from slide 1, built through distribution→concentration→categories→positioning→geography→distribution channels→domains→marketplace→six actionable moves. Every slide has SO WHAT + Not Used footnote. Closing line 'charging is hard' lands the thesis perfectly.",
+    "framing": "Slide 3 is exemplary: explains 1,000 rows = top 11% of platform holding 87.6% of revenue, flags self-selection, snapshot limitation, $0-as-null, and missingness per variable group. Audience (founders choosing what to build) is explicit from slide 1.",
+    "accuracy": "Directional claims hold but systematic field ambiguity (MRR vs 30-day revenue) creates ~5 discrepancies against reference. Education median off by ~$293, Marketing by ~$784, B2B/B2C ratio 5.7x vs 2.35x is the largest concern. Causal discipline is strong — slide 11 explicitly disclaims causation.",
+    "visual": "Consistent dark/light alternation creates rhythm. Dual-axis charts (slides 6, 9, 11) well-labeled. Strong hierarchy: section→headline→subtitle→chart→callouts→SO WHAT→footnote. Donut chart on slide 12 is weakest choice. No decorative filler; every element carries data.",
+    "ai_slop": "none — strong editorial voice throughout ('These are assets, not corpses,' specific Not Used justifications, closing aphorism). No generic filler or template language detected."
+  },
+  "confidence": "high",
+  "changed": false,
+  "change_reason": "no-change — preliminary scores align with independent assessment across all dimensions. Accuracy at 7.0 correctly reflects systematic field-level discrepancies while acknowledging directional validity and strong causal discipline.",
+  "total": 86,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 25673,
+    "output_tokens": 994
+  }
+}

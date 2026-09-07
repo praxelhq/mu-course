@@ -1,0 +1,40 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 3,
+    "accuracy": 2.5,
+    "visual": 7,
+    "bonus": 0
+  },
+  "what_worked": "Growth-bucket mispricing analysis and acquisition screening table show genuine decision-useful analytical ambition beyond description.",
+  "fix_next": "Use the assigned 1,000-row dataset; every denominator, count, and category median is wrong because the source data is different.",
+  "verdict": "Polished deck built on the wrong dataset; nearly every number is unverifiable.",
+  "flags": [
+    "wrong-dataset",
+    "fabricated-row-count",
+    "unverifiable-statistics",
+    "consulting-language-inflation"
+  ],
+  "factual_error_count": 12,
+  "factual_error_detail": "Slide 1/11: 8,782 rows vs actual 1,000. Slide 2: 3,757 revenue-generating vs actual 784. Slide 3: $15.4M total vs actual $15.6M but computed over wrong N. Slide 5: 1,042 B2B and 1,820 B2C exceed total dataset. Slide 6: AI median $170 vs actual $503; Education $133 vs actual $2,435; category counts (824 AI) impossible. Slide 7: 879 US listings vs actual ~258. Slide 8: 995 for-sale listings impossible from 1,000 rows. Slide 2/4: growth distribution percentages unverifiable against wrong base.",
+  "evidence": {
+    "insight": "Slide 8 growth-bucket vs multiple analysis and Slide 9 acquisition screen are genuinely analytical and decision-oriented; AI oversupply thesis on Slide 6 is a good conceptual move despite wrong numbers.",
+    "narrative": "Clear four-act arc: market structure → growth stagnation → where to play → how to buy → recommendations. Each slide builds toward the acquisition thesis with a purposeful landing on Slide 10.",
+    "framing": "Slide 1 claims 8,782 records and 'Frozen 30 July 2026'; assigned dataset is 1,000 rows. Appendix doubles down. A cold reader would believe this analyzes a completely different dataset. No acknowledgment of the actual scope.",
+    "accuracy": "Row count wrong by 8.78x. Category medians wildly off (Education $133 vs $2,435, AI $170 vs $503). B2B+B2C counts (2,862) exceed total dataset. Geographic counts (879 US) impossible. Revenue multiples and for-sale counts unverifiable. Nearly every quantitative claim fails against the reference.",
+    "visual": "Consistent navy/gold palette, clean typography, well-labeled bar charts with direct annotation. Slide 4 donut+breakdown effective. Slide 9 table scannable. Good chart-text balance and hierarchy throughout. No chartjunk.",
+    "ai_slop": "Moderate consulting-speak inflation ('M&A Arbitrage,' 'Executive & Investment Committee Review,' 'quality-of-earnings review'). Template is polished but formulaic—every slide follows chart-left/insight-box-right pattern. Substantive enough to avoid pure slop classification."
+  },
+  "confidence": "high",
+  "changed": false,
+  "change_reason": "no-change",
+  "total": 51,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 22244,
+    "output_tokens": 820
+  }
+}

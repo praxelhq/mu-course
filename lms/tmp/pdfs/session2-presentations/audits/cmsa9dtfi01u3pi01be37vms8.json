@@ -1,0 +1,44 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 5,
+    "accuracy": 3.5,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Power-law thesis is genuinely argued; growth-rate skepticism and 'graveyard vs leaderboard' framing show real analytical thinking.",
+  "fix_next": "Verify every number against the actual dataset—zero-revenue count, total revenue, provider shares, and B2B medians are all wrong.",
+  "verdict": "Strong narrative arc undermined by multiple fabricated or unverifiable statistics.",
+  "flags": [
+    "fabricated-total-revenue",
+    "wrong-zero-revenue-count",
+    "wrong-provider-percentages",
+    "inflated-b2b-median",
+    "unverifiable-chart-data",
+    "ai-generated-decorative-imagery",
+    "no-missingness-disclosure",
+    "no-limitations-stated"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1: '$270M+ combined revenue' vs actual $15.6M—off by ~17×. Slide 3: 111 zero-revenue listings vs actual 216 (and 11% vs actual 21.6%). Slide 5: B2B median $8,362 and B2C median $2,213 don't match reference on-sale medians or any obvious subset. Slide 6: Stripe 64% vs actual ~63.6% is close, but RevenueCat 19% vs actual ~18.9% is fine; however PayPal 8%, Paddle 4%, Gumroad 3% are unverifiable—reference lists only Stripe/RevenueCat/Dodo. Slide 8: '2.3× revenue' exit multiple is stated without specifying B2B vs B2C (reference: 2.35×/2.30× medians)—borderline acceptable but imprecise. Slide 2: average $133,750 implies total ~$133.75M for 1000, contradicting both the $270M claim and actual $15.6M total.",
+  "evidence": {
+    "insight": "Power-law framing (slide 2), vanity-metric debunking (slide 7), and marketplace-as-distress-signal (slide 8) are original, decision-useful angles that go beyond chart narration.",
+    "narrative": "Clear thesis introduced on slide 1, built through distribution→zeros→saturation→B2B→infrastructure→vanity→exits→synthesis. Arc lands with a memorable closing line. Sequence is purposeful.",
+    "framing": "N=1,000 and source cited on every slide, which is good. But no mention of substantial missingness (241 country, 288 audience_type, 274 category). No limitations. Audience never stated. The $270M headline is never reconciled and is wildly wrong.",
+    "accuracy": "Total revenue fabricated by ~17×. Zero-revenue count understated by ~2×. Average revenue internally inconsistent with the headline total. B2B/B2C medians unverifiable against reference. Provider breakdown includes platforms not in reference data. Multiple core claims cannot be traced to the frozen dataset.",
+    "visual": "Consistent monochrome palette, clean typography, effective callout boxes. AI-generated decorative images on slides 1, 3, 9 add no analytical value. Slide 8 scatter is confusing with sparse points and dual axes. Slide 5 dual-axis bar is hard to parse. Pie chart on slide 6 is acceptable.",
+    "ai_slop": "Three AI-generated decorative images (server room, abandoned office, glowing map) are pure filler. Consulting-style punchlines ('The house always wins') are mildly inflated but the analytical substance behind them is real enough to avoid full slop classification."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Removed 1-point bonus: the fabricated $270M total revenue (off by 17×) and multiple unverifiable statistics disqualify bonus-level work. Lowered framing by 0.5 for absent limitations and audience specification. All other scores confirmed as appropriate.",
+  "total": 53,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 17078,
+    "output_tokens": 1018
+  }
+}

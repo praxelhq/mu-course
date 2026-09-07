@@ -1,0 +1,40 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 2.5,
+    "narrative": 3.5,
+    "framing": 3,
+    "accuracy": 1.5,
+    "visual": 4.5,
+    "bonus": 0
+  },
+  "what_worked": "Consistent visual template with clear key-takeaway boxes on every slide; readable hierarchy.",
+  "fix_next": "Nearly every quantitative claim appears fabricated—categories, percentages, medians, and geographic splits don't match the dataset at all.",
+  "verdict": "Polished template over fabricated numbers; not a data story.",
+  "flags": [
+    "fabricated-charts",
+    "no-dataset-fidelity",
+    "ai-slop",
+    "unverifiable-claims",
+    "no-limitations-disclosed",
+    "no-source-cited"
+  ],
+  "factual_error_count": 12,
+  "factual_error_detail": "Slide 3: '6,000+ startups' — dataset has 1,000 rows; '85%+ revenue-validated' unsupported. Slide 4: Category percentages (35% SaaS & Productivity, 28% AI, 15% Mobile Apps, 12% Creator Tools, 10% Ecommerce) don't match dataset categories or counts; 274 rows have missing category. Slide 5: 'Subscriptions 65%' revenue share is a fabricated category not in the dataset; AI actual share is ~15.1% not 20%; Mobile Apps ~1.5% not 10%. Slide 6: AI median '$2K–$5K' — actual AI median is $503; SaaS median '$8K–$25K' — actual is $200.50; 'top 5% generate 40%' — actual top-10 (top 1%) share is 49.6%, so 5%/40% is plausible but unverified. Slide 7: Geographic percentages entirely fabricated — dataset has country missing for 241 rows and no 'Western Europe' or 'Canada' aggregation provided. Slide 8: Stripe 72% — actual is 63.6%; RevenueCat 12% — actual ~18.9%; Polar 8% — actual ~3.6%. Slide 6 key takeaway 'inversely correlated' is a misuse of the term.",
+  "evidence": {
+    "insight": "Claims like 'popularity ≠ value' and 'maturity gap' are interesting framings but rest on fabricated numbers, so insights are hollow. No original analysis of missingness, anonymity premium, or founded-year correlation.",
+    "narrative": "There is a loose arc from business model → composition → revenue → geography → infrastructure → strategy, but it reads as a marketing pitch for TrustMRR rather than a critical data story. No thesis is tested.",
+    "framing": "Slide 1-2 set context but never define the dataset (1,000-row sample), never mention missingness (241 country, 274 category, 288 audience_type), and never state limitations. A cold reader would think this covers 6,000+ companies.",
+    "accuracy": "Almost every quantitative claim is wrong relative to the frozen dataset. Categories are renamed/merged without disclosure. Medians are off by 4–50x. Provider shares are wrong. Geographic data appears invented. Revenue category chart uses 'Subscriptions' which is not a dataset category.",
+    "visual": "Consistent dark teal + coral palette, legible typography, donut/bar charts are clean. But charts encode fabricated data, and the donut-chart-heavy approach (3 donuts) becomes repetitive. Decorative clip-art (slide 1-2, slide 9) adds no analytical value.",
+    "ai_slop": "Heavy AI-generated feel: decorative clip-art, identical slide templates, inflated consulting language ('category of one,' 'network effects'), round fabricated percentages (35/28/15/12/10), and no evidence of actual data analysis."
+  },
+  "confidence": "high",
+  "total": 30,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18208,
+    "output_tokens": 961
+  }
+}

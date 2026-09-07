@@ -1,0 +1,37 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 7,
+    "visual": 7.5,
+    "bonus": 3
+  },
+  "what_worked": "Exceptional epistemic discipline—self-ranking claim confidence and flagging causal limits throughout is rare and genuinely impressive.",
+  "fix_next": "Slide 4's B2B Analytics median ($3,390, n=12) and B2B AI median ($1,357, n=75) are unverifiable custom cross-tabs; acknowledge the 274 missing-category rows that shrink denominators.",
+  "verdict": "Disciplined, thesis-driven deck with strong narrative arc; minor accuracy gaps in custom cross-tabs.",
+  "flags": [
+    "missing-data-not-disclosed",
+    "custom-crosstab-unverifiable",
+    "zero-revenue-count-slightly-off"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 1/2: '20%' / '19.7%' zero-revenue startups—actual is 21.6% (216/1000). Slide 2: '$282 median MRR across all 1,000'—not directly verifiable but plausible; no issue flagged. Slide 4: B2B Analytics median $3,390 (n=12) and B2B Marketing median $2,625 (n=33) are custom audience×category cross-tabs that cannot be verified against reference data and ignore 274 missing-category + 288 missing-audience rows without disclosure. Slide 6: Stripe median shown as $663 vs. no direct reference median provided, but Stripe total revenue ($13.5M) and count (636) are correct; Superwall median $5,465 is plausible but unverifiable.",
+  "evidence": {
+    "insight": "Slide 4's volume-vs-value inversion is a genuinely original finding; slide 7's mean-vs-median growth decomposition adds real analytical depth; slide 5's DR-tier analysis goes beyond describing a chart to argue a mechanism. The 'loud vs quiet signals' framework on slide 8 synthesizes multiple findings into a decision-useful heuristic.",
+    "narrative": "Clear thesis on slide 1 ('loudest signals are least trustworthy'), baseline on slide 2, progressive evidence build (slides 3-7), synthesis (slide 8), actions (slide 9), and confidence calibration (slide 10). Each slide advances the argument rather than listing facts. The question posed at end of slide 3 ('does building activity translate into revenue?') creates effective narrative tension resolved on slide 4.",
+    "framing": "Slide 2 sets baseline well with median/mean distinction and outlier warning. Dataset source, freeze date, and row count are consistently footnoted. However, the 274 missing-category rows and 288 missing-audience rows are never disclosed, which matters significantly for slides 3-4. The audience (investor/founder screening startups) is implied but never stated explicitly.",
+    "accuracy": "Slide 1: $15.6M total revenue matches reference ($15,596,344.59). Slide 2: 19.7% zero-revenue is wrong—should be 21.6% (216/1000). Slide 3: category counts match reference (AI 197, SaaS 66, Mobile Apps 52, Productivity 49, Marketing 42, Dev Tools 37). Slide 6: provider sample sizes match reference exactly (Stripe 636, RevenueCat 189, Dodo 50, Polar 36, Superwall 17, Paddle 16). Slide 4: cross-tab medians are custom calculations that cannot be verified. Missing-data impact on category/audience analyses is never acknowledged.",
+    "visual": "Consistent navy/gold/white palette throughout. Bar charts are clean with direct labels, no chartjunk. The sidebar callout boxes on slides 4-7 effectively separate the 'so what' from the data. Slide 7's grouped bar chart clearly shows the mean-median divergence. Slide 10's confidence-ranking layout is effective. Minor issue: slide 5 bar heights don't visually match the 535x spread claimed (the DR 50+ bar looks ~5x the DR 30-50 bar, not ~8x). Overall restrained and evidence-led.",
+    "ai_slop": "none"
+  },
+  "confidence": "high",
+  "total": 78,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19167,
+    "output_tokens": 1071
+  }
+}

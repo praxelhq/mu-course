@@ -1,0 +1,39 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 6,
+    "narrative": 6.5,
+    "framing": 5,
+    "accuracy": 3.5,
+    "visual": 4.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong thesis about revenue concentration with a coherent narrative arc leading to actionable recommendations.",
+  "fix_next": "Multiple fabricated or unverifiable numbers (82% top-10 share, E-comm $19-20K avg, AI $9.1K avg) undermine credibility; verify every claim against the dataset.",
+  "verdict": "Compelling narrative undermined by numerous fabricated statistics and decorative imagery.",
+  "flags": [
+    "fabricated-statistics",
+    "unverifiable-claims",
+    "decorative-stock-images",
+    "missing-data-not-acknowledged",
+    "causal-overclaiming"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1: Total MRR stated as $13.5M; dataset shows $15.6M total 30-day revenue—unclear denominator. Slide 1: $334M 'all-time revenue' is unverifiable from dataset. Slide 2: Claims top 10% control 82% of MRR; reference shows top-10 companies (1%) hold ~49.6%, not top 10% holding 82%—conflation or fabrication. Slide 3: B2C avg $5.1K and B2B avg $13.1K are unverifiable and don't match reference medians (B2C median multiple 2.30x, B2B 2.35x; means ~8.4x/~7.97x). Slide 4: AI average MRR stated as $9.1K; actual is $2,356,676/197 ≈ $11,963—wrong. E-comm/Analytics claimed ~$19-20K avg; E-comm actual is $1,111,606/19 ≈ $58,506, Analytics $368,214/19 ≈ $19,380—E-comm figure is wildly off. Slide 7: Dodo Payments shown as 10% of companies; actual is 50/1000 = 5%, and Stripe shown as 65% vs actual 63.6%—minor but Dodo is doubled. Slide 7: Pie chart percentages sum to 100% but omit several providers (Polar, Lemon Squeezy, Superwall, Paddle) lumped into 6% 'Others' which understates their combined share.",
+  "evidence": {
+    "insight": "Slide 2 concentration thesis and slide 4 category comparison show genuine analytical ambition; slide 6 mean-vs-median multiple distinction is a good instinct. However, the underlying numbers are often wrong, limiting the value of the insights.",
+    "narrative": "Clear arc: concentration problem (slides 1-2) → where to build (slides 3-4) → vanity metrics (slide 5) → M&A (slide 6) → infrastructure risk (slide 7) → roadmap (slide 8). Coherent thesis about ecosystem fragility. Loses points for recommendations that feel like consulting boilerplate rather than data-derived specifics.",
+    "framing": "Audience is implicitly a platform operator ('our ecosystem'), but this is never explicitly stated. No mention of dataset scope (1,000 companies), missingness (274 categories missing, 288 audience_type missing), or time window. A cold reader wouldn't know what TrustMRR is or what the data covers.",
+    "accuracy": "Slide 1 total MRR off by ~$2M. Slide 2 top-10% = 82% is unverified and likely fabricated (top-10 companies = 49.6%). Slide 4 AI avg wrong, E-comm avg wildly wrong. Slide 7 Dodo share doubled. B2B/B2C figures on slide 3 unverifiable. Multiple claims presented with false precision but no sourcing.",
+    "visual": "Consistent dark theme with teal/coral accent colors. Slide 7 pie chart is functional. However, slides 3 and 5 use purely decorative sci-fi stock images that add zero information. Slide 6 bar chart is the only real data visualization. No scatter plots, histograms, or distributions shown despite claims about skewness and concentration. The deck is text-heavy with big numbers used as visual anchors rather than actual charts.",
+    "ai_slop": "Decorative sci-fi stock images on slides 3 and 5 are classic AI-tool filler—visually striking but semantically empty. Language like 'Pareto Principle on Steroids,' 'printing money,' 'existential dependency' has consulting-deck inflation. The confident tone masks fabricated numbers."
+  },
+  "confidence": "high",
+  "total": 52,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15802,
+    "output_tokens": 1175
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "slide_count": 1,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 4,
+    "framing": 3.5,
+    "accuracy": 3.5,
+    "visual": 6,
+    "bonus": 0
+  },
+  "what_worked": "Clear B2B vs B2C revenue-per-subscriber multiplier with actionable sector-level recommendations.",
+  "fix_next": "The 12.6x multiplier and subscription-share figures don't match the frozen dataset's B2B/B2C median multiples (~2.3x); verify denominators and source metrics.",
+  "verdict": "Single slide with a bold claim but unverifiable numbers and no framing or narrative arc.",
+  "flags": [
+    "single-slide-deck",
+    "unverifiable-multiplier",
+    "missing-framing",
+    "no-limitations-stated",
+    "no-narrative-arc"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 1: 12.6x B2B/B2C revenue-per-subscriber multiplier is far from the dataset's median multiples (2.35x/2.30x) or mean multiples (7.97x/8.44x); the mean ratio actually slightly favors B2C, contradicting the claim. Slide 1: '8% of subscriptions → 42% of all-time revenue' and '31% → 13%' cannot be verified against the frozen dataset and appear to reference a different metric (active subscriptions) not present in the provided data.",
+  "evidence": {
+    "insight": "The B2B whitespace idea (introducing B2B tiers in consumer-heavy sectors) is a genuinely useful recommendation, though the underlying numbers are suspect. The 'double down' vs 'whitespace' framing adds decision-usefulness.",
+    "narrative": "Only one slide—there is no narrative arc, no setup, no build, no landing. It reads as a single analytical exhibit, not a story. No synthesis across multiple findings.",
+    "framing": "No audience identification, no question statement, no scope definition, no mention of dataset size, missingness (274 missing categories, 288 missing audience_type), or limitations. A cold reader doesn't know what TrustMRR is or what the portfolio represents.",
+    "accuracy": "The 12.6x multiplier doesn't align with known B2B/B2C median multiples (~2.3x). The presentation references 'active subscriptions' and 'all-time revenue' which are not standard columns in the frozen dataset, suggesting either a different data source or fabricated metrics. The 9.9x trailing-12-month claim is also unverifiable. Sector B2B percentages (Analytics 82%, E-comm 87%) cannot be checked but audience_type has 288 missing values, making such precise claims fragile.",
+    "visual": "Clean layout with good hierarchy: large callout stat, supporting text, stacked bar chart. Color palette is consistent and restrained. Chart is legible and well-labeled. However, the bar chart lacks axis labels/scale, making absolute comparisons impossible. Overall professional but a single slide limits assessment.",
+    "ai_slop": "none"
+  },
+  "confidence": "medium",
+  "total": 45,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 3437,
+    "output_tokens": 768
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 6.5,
+    "framing": 6,
+    "accuracy": 3.5,
+    "visual": 5.5,
+    "bonus": 1
+  },
+  "what_worked": "Stealth-company anomaly is a genuinely original angle; valuation-multiple decomposition shows real analytical thinking beyond description.",
+  "fix_next": "Explain why 261 rows were dropped, reconcile all denominators to the full 1,000-row dataset, and verify stealth statistics against reference.",
+  "verdict": "Original thesis undermined by unexplained row exclusion and multiple unverifiable statistics.",
+  "flags": [
+    "wrong-denominator",
+    "fabricated-row-count",
+    "missing-category-analysis",
+    "missing-provider-analysis",
+    "unverifiable-stealth-stats",
+    "decorative-stock-art"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 3: 739 rows claimed as universe with no explanation for excluding 261 of 1,000; mean MRR $17,630 inconsistent with reference total/1000≈$15,596. Slide 2: anonymous share 14.6% vs reference 12.9% (129/1000); 15× median premium and 42.5% top-decile share unverifiable. Slide 3: undisclosed country 36% vs reference 24.1% (241/1000). Slide 10: repeats 739 row count as caveat but never justifies the exclusion criteria.",
+  "evidence": {
+    "insight": "Stealth-company finding (slide 2) is the strongest original angle; winners-vs-strugglers segmentation (slides 5-6) adds useful depth; valuation-multiple decomposition with trimmed mean (slide 9) shows analytical maturity beyond chart description.",
+    "narrative": "Clear arc: stealth anomaly → market overview → growth → winners/strugglers → sale market → valuation → caveats → strategic questions. Coherent 'stabilize-and-exit' thesis. However, stealth finding is front-loaded then not deeply revisited or stress-tested.",
+    "framing": "Slide 1 sets audience (internal analysts) and scope (single snapshot). Slide 10 caveats are commendable and honest. However, the deck frames itself around 739 rows without ever explaining why 261 rows were excluded—a fundamental framing failure for a cold reader. No category or payment-provider analysis despite these being major dataset dimensions.",
+    "accuracy": "Core denominator error: analysis uses 739 rows without justifying exclusion of 261. Anonymous share 14.6% vs reference 12.9%. Country undisclosed 36% vs reference 24.1%. Mean MRR $17,630 vs reference ~$15,596 total/1000. The 15× median premium and 42.5% top-decile share for stealth companies cannot be verified against reference. Median multiple 2.9× and mean 8.82× are plausible but not directly checkable against B2B/B2C reference splits.",
+    "visual": "Consistent Gamma template with navy/teal palette. Bar charts for mean vs median (slides 3, 8) are effective and well-labeled. Donut chart (slide 4) adequate. Table on slide 7 clean. Decorative illustrations on slides 2, 6, 9 are generic stock art adding no analytical value. Competent but template-driven.",
+    "ai_slop": "Decorative Gamma stock illustrations on slides 2, 6, and 9 add no information. Some consulting-style language ('compound momentum,' 'revenue engines') but generally restrained. No egregious filler paragraphs."
+  },
+  "confidence": "high",
+  "changed": false,
+  "change_reason": "no-change",
+  "total": 57,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 20707,
+    "output_tokens": 939
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 7,
+    "framing": 5.5,
+    "accuracy": 4.5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Coherent investor-thesis arc with real deal examples and consistent, restrained visual design throughout.",
+  "fix_next": "Reconcile headline revenue figures ($334M, $134M) against the dataset's $15.6M total and disclose missing-data rates.",
+  "verdict": "Polished pitch deck with a clear thesis, undermined by unverifiable headline revenue figures.",
+  "flags": [
+    "inflated-revenue-figures",
+    "missing-data-not-acknowledged",
+    "unverifiable-multiples",
+    "pitch-deck-not-data-story",
+    "no-limitations-slide",
+    "survivorship-bias-unaddressed"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "S3: $334M cumulative and $134M TTM revenue cannot be reconciled with dataset total revenue of $15.6M — likely fabricated or from an external source without disclosure. S3: $162M implied ARR similarly unverifiable. S7: '65 countries' stated without noting 241 missing country values (~24% of dataset). S4: 64% under $100k claim (146+25=171/262=65.3%) is close but slightly off the stated 64%.",
+  "evidence": {
+    "insight": "Core insight is 'micro-SaaS trades cheap vs. institutional SaaS M&A' — useful but shallow. No exploration of category-level revenue quality, churn, or why median revenue is only $3k. Slide 5 arbitrage comparison is the strongest analytical moment but external benchmarks are unsourced specifics.",
+    "narrative": "Strong sequential structure: thesis → scale → deal flow → arbitrage → categories → geography → examples → playbook → timing → CTA. Each slide advances the argument logically. The fundraising ask on S11 is coherent with the framing.",
+    "framing": "Audience (LP/partner) and question (should you back micro-SaaS acquisitions?) are clear from S1. However, zero mention of limitations, risks, data missingness (241 country, 274 category, 288 audience_type missing), survivorship bias, or the 216 zero-revenue companies. A cold reader gets no caveats.",
+    "accuracy": "The $334M/$134M/$162M figures on S3 are the most serious issue — the frozen reference total revenue is $15.6M and no TTM or cumulative field exists to support these claims. The 2.3x median multiple is plausible per reference (B2B 2.35x, B2C 2.30x) but the denominator and calculation are never shown. Category counts on S6 match the reference. The 109 at $0 on S3 vs 216 zero-revenue in reference is unexplained.",
+    "visual": "Consistent navy/gold palette, clean typography, proper hierarchy with section labels. Bar charts on S3/4/6/7 are appropriate and legible. S8 table is well-formatted. No chartjunk. Professional and restrained throughout, though slides 9-10 are text-heavy with no data visualization.",
+    "ai_slop": "S9 playbook (Source/Acquire/Operate/Compound) is generic PE consulting language. S10 'Why Now' is standard pitch-deck filler. S11 CTA is boilerplate. These three slides add no analytical value and could fit any acquisition thesis."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.0 to 4.5 — the $334M/$134M/$162M headline figures are the deck's central quantitative claims and cannot be reconciled with the dataset. Lowered insight from 6.0 to 5.5 — analysis stays surface-level without exploring revenue quality, churn, or category economics. Lowered framing from 6.5 to 5.5 — complete absence of limitations, missingness disclosure, or risk acknowledgment is a significant gap for a data story. Retained narrative and visual scores as appropriate.",
+  "total": 60,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 21142,
+    "output_tokens": 1022
+  }
+}

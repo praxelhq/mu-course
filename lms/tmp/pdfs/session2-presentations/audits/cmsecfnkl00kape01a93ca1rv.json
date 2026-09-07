@@ -1,0 +1,44 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 4,
+    "narrative": 5,
+    "framing": 3.5,
+    "accuracy": 2.5,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Slide 4's subscriber-vs-traffic correlation contrast is a genuinely useful, data-grounded insight worth highlighting.",
+  "fix_next": "Verify every number against the actual dataset—SaaS count (66 not 437), AI count (197 not 392), and all revenue totals are wrong.",
+  "verdict": "Clean design wrapping severely fabricated numbers; accuracy failures undermine the entire story.",
+  "flags": [
+    "fabricated-numbers",
+    "missing-limitations",
+    "no-missingness-disclosure",
+    "consulting-language",
+    "ai-slop-decorative-graphics",
+    "no-causal-discipline",
+    "category-counts-wrong",
+    "revenue-totals-wrong"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 3: SaaS count 437 (actual 66), AI count 392 (actual 197), SaaS revenue $4.44M (actual ~$704K), AI revenue $3.42M (actual ~$2.36M). Slide 5: average MRR $13,500 (actual ~$15,596). Slide 6: Analytics $1.96M (actual ~$368K), Productivity $1.9M (not a recognized top category; no Productivity in reference). Marketing shown as $2.13M (actual ~$1.32M). Slide 5: top 1% at $3.57M and 12,700× multiple appear fabricated from wrong base figures.",
+  "evidence": {
+    "insight": "Subscriber correlation (0.91) vs traffic (0.19) on slide 4 is the strongest analytical contribution; power-law observation on slide 5 is reasonable in concept but built on wrong numbers. No per-category median analysis, no payment-platform segmentation, no anonymity analysis attempted.",
+    "narrative": "Logical arc from data intro → category landscape → correlation → concentration → takeaways → recommendation. But only 6 content slides, and takeaways (slide 7) largely restate earlier slides verbatim rather than synthesizing new meaning. The landing is generic consulting advice.",
+    "framing": "Slide 2 states goal and source but omits audience definition, ~27% missing category data, ~29% missing audience_type, 22% zero-revenue rows, and any caveats about cross-sectional snapshot vs. causal inference. 'Executive Briefing' label is aspirational framing without substance.",
+    "accuracy": "Core category counts and revenue totals are wrong by 3–6× (SaaS 437 vs 66, AI 392 vs 197). Revenue figures on slides 3 and 6 do not match reference data. Analytics and Productivity totals on slide 6 are inflated ~5×. These are not rounding issues—they suggest a different computation or fabrication.",
+    "visual": "Clean navy/blue palette, good typographic hierarchy, readable. Only one real chart (slide 6 horizontal bar). Slide 4 uses simple progress bars—adequate. Decorative illustrations on slides 1 and 8 are generic and add no analytical value. Sparse overall—more data visualization would strengthen the deck.",
+    "ai_slop": "Decorative cityscape (slide 1) and rocket/desk illustration (slide 8) are generic AI-generated graphics. 'MARKET INTELLIGENCE EXECUTIVE BRIEFING' badge and 'Build. Convert. Retain. Win.' are inflated consulting filler. Takeaway language is motivational rather than analytical."
+  },
+  "confidence": "high",
+  "changed": false,
+  "change_reason": "Preliminary scores are well-calibrated. The fabricated category counts and revenue totals (off by 3–6×) justify the low accuracy score. Framing deserves a slight downward nudge to 3.5 for complete absence of limitations and missingness disclosure, but other dimensions hold.",
+  "total": 40,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 15081,
+    "output_tokens": 986
+  }
+}

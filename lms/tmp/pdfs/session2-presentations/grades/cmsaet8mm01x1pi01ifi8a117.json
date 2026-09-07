@@ -1,0 +1,38 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 8.5,
+    "accuracy": 4.5,
+    "visual": 8,
+    "bonus": 3
+  },
+  "what_worked": "Exceptional framing of limitations, power-law thesis sustained throughout, and genuinely useful category-vs-revenue bubble chart.",
+  "fix_next": "Multiple category medians (Education, Marketing, Analytics) are substantially wrong; verify every computed statistic against raw data before presenting.",
+  "verdict": "Strong narrative and design undermined by numerous factual errors in core statistics.",
+  "flags": [
+    "multiple-median-errors",
+    "anonymous-count-wrong",
+    "stripe-share-inflated",
+    "top10-share-off"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 2: anonymous count 72 vs actual 129. Slide 3: top-10 share 50.6% vs 49.6%. Slide 7: Education median $2,142 vs $2,435; Marketing median $1,586 vs $2,369.50; Analytics median $1,294 vs $419. Slide 9: Stripe revenue share 89.7% vs 86.7%.",
+  "evidence": {
+    "insight": "Slide 9 B2B pricing-not-scale decomposition is genuinely original; slide 11 pricing anomaly (similar multiples despite 5.7× MRR gap) is a real finding. Slide 6 bubble chart reframes AI crowding effectively.",
+    "narrative": "Clear five-act structure: universe → concentration → categories → monetisation → exits. Each slide builds on the power-law thesis. Conclusion slide synthesizes coherently.",
+    "framing": "Slide 2 'Read this before you trust any chart' box is exemplary: declares no time dimension, self-selection bias, and disclosure gaps upfront. Consistent footer with caveats on every slide.",
+    "accuracy": "Six material errors: anonymous count off by 57 (slide 2), top-10 share inflated ~1pp (slide 3), three category medians substantially wrong (slide 7 — Analytics off by 3×), Stripe share inflated 3pp (slide 9).",
+    "visual": "Consistent dark theme with clear hierarchy. Lorenz curve (slide 3), log-log bubble chart (slide 6), and growth histogram (slide 10) are well-chosen. Annotations are purposeful. Side panels with key stats aid scanning.",
+    "ai_slop": "none"
+  },
+  "confidence": "high",
+  "total": 76,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 23005,
+    "output_tokens": 1863
+  }
+}

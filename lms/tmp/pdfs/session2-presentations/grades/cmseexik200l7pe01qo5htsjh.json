@@ -1,0 +1,40 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 3,
+    "narrative": 4,
+    "framing": 3.5,
+    "accuracy": 2,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Clear thesis on slide 1 with a consistent strategic thread through all slides.",
+  "fix_next": "Charts appear fabricated—slide 2 rankings contradict dataset, slide 3 has no dataset basis, and no actual numbers are cited anywhere.",
+  "verdict": "Consulting-template veneer over fabricated charts and unsupported claims.",
+  "flags": [
+    "fabricated-chart",
+    "no-numbers-cited",
+    "ai-slop",
+    "mean-vs-median-confusion",
+    "no-limitations-acknowledged",
+    "no-sample-sizes"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 2: Analytics shown as highest avg MRR (~$85K); actual mean is ~$19.4K, far below E-commerce (~$58.5K) and Marketing (~$31.4K). SaaS shown second highest; actual mean ~$10.7K, median $200.50—one of the lowest. Ranking order is wrong. Slide 2: Claims SaaS 'consistently monetizes well'; median $200.50 is among the lowest categories. Slide 3: Cumulative Revenue Index chart (30 days to 12 months) has no basis in the dataset, which contains only 30-day revenue. This is entirely fabricated. Slide 4: Scatter plot shows ~12 points for 1,000-row dataset; axes and values don't correspond to actual data distribution. Slide 5: 2x2 matrix places AI SaaS in low-competition quadrant; AI has 197 companies, the most competitive category. Slide 1/6: Claims 'SaaS demonstrates strongest recurring revenue growth'—no temporal data exists to support this.",
+  "evidence": {
+    "insight": "No original quantitative finding grounded in the dataset. Claims about retention, compounding, and switching costs are generic SaaS wisdom imported without evidence. No mention of provider analysis, anonymity patterns, TLD signals, or concentration metrics.",
+    "narrative": "Slide 1 states thesis, slides 2-4 attempt supporting arguments, slide 5 synthesizes, slide 6 recommends. Structure exists but each slide's evidence is hollow, making the narrative a predetermined conclusion looking for support.",
+    "framing": "No dataset description, no sample size, no mention of missingness (274 missing categories, 241 missing countries), no definitions of metrics, no limitations. A cold reader cannot assess credibility.",
+    "accuracy": "Slide 2 bar chart rankings are wrong vs. actual data. Slide 3 chart is fabricated from nonexistent temporal data. Slide 4 scatter uses ~12 cherry-picked points from 1,000 rows. SaaS median revenue ($200.50) contradicts repeated claims of strong monetization. Analytics placed first but has only 19 companies and $19.4K mean.",
+    "visual": "Consistent dark theme with pink accent is visually coherent. But charts are decorative rather than evidence-based. Slide 3 line chart and slide 5 2x2 matrix appear hand-drawn/conceptual with no data mapping. No data labels, no annotations with actual values, no axis units verified.",
+    "ai_slop": "Heavy consulting-speak throughout: 'monetization efficiency,' 'durable moats,' 'compounding value,' 'switching costs,' 'Net Revenue Retention and LTV.' Slide 6 is pure template with gradient icons and buzzword cards. Slide 3 chart appears entirely invented. Every slide follows identical layout: headline + subtitle + chart + 4 bullets + implication box."
+  },
+  "confidence": "high",
+  "total": 32,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 11885,
+    "output_tokens": 922
+  }
+}

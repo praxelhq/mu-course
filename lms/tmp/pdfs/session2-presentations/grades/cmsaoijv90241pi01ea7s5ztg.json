@@ -1,0 +1,39 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 6.5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis-driven arc from power-law reality through category opportunity to actionable recommendations, with honest limitations slide.",
+  "fix_next": "Stealth median claim ($8,362 vs $253) and zero-revenue percentage (22% vs 21.6%) need verification; missing-category denominator issue unaddressed.",
+  "verdict": "Well-structured founder briefing with genuine insights, marred by several unverifiable claims.",
+  "flags": [
+    "stealth-median-unverifiable",
+    "zero-revenue-percentage-slightly-off",
+    "missing-category-denominator-unaddressed",
+    "dev-tools-growth-claim-unverifiable",
+    "per-visitor-revenue-unverifiable"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 4/3: 22% zero-revenue stated; actual is 21.6% (216/1000)—minor rounding but presented as exact. Slide 7: Stealth company median $8,362 vs named $253—reference shows anonymous median not verifiable at these exact figures; anonymous share is 12.9% of companies (129), not matching 'Stealth Company' framing. Slide 7: Per-visitor revenue ($3.57 SaaS vs $0.36 AI) is unverifiable from the frozen dataset reference and may be fabricated. Slide 9: Stripe company count yields 636/1000=63.6% but the denominator is stated as n=981, which would give 636/981=64.8%; the 63.6% figure only works with denominator 1000, contradicting the stated n=981.",
+  "evidence": {
+    "insight": "Slide 5 median-vs-total category analysis is genuinely useful; slide 7 stealth/follower/per-visitor angles go beyond obvious; slide 8 build-vs-buy payback framing is original and decision-relevant.",
+    "narrative": "Clear arc: cheat sheet (s2) → market landscape (s3-4) → opportunity (s5-6) → uncommon angles (s7-8) → infrastructure (s9) → caveats (s10) → action plan (s11). Thesis ('follow the money to where median revenue is highest') is sustained throughout.",
+    "framing": "Slide 1 sets audience (founders), source, and date. Slide 10 dedicates a full page to limitations including snapshot bias, small-n noise, listing bias, and flat growth data. Does not address 274 missing category rows affecting category comparisons.",
+    "accuracy": "Core figures (AI $2.36M total, 197 companies, $503 median; Education $2,435 median, 30 companies; Marketing $2,370 median, 42 companies) match reference well. However: zero-revenue 22% vs actual 21.6%; Stripe denominator inconsistency (n=981 stated but percentages use n=1000); stealth median and per-visitor revenue claims are unverifiable/potentially fabricated; Dev Tools +8.9% growth claim unverifiable.",
+    "visual": "Consistent warm palette, clean typography, good hierarchy with section headers. Bar chart on slide 3 is well-labeled. Donut chart on slide 4 is effective. Table on slide 5 is clear. Card layouts on slides 6-8 are readable but repetitive. No chart on slides 7-8 where one would strengthen claims. Icons are decorative but not misleading.",
+    "ai_slop": "Mild template repetition in card layouts across slides 6, 7, 8, 10. Tagline 'Built on receipts, not hype' is slightly performative. Overall the content is substantive enough to avoid major slop concerns."
+  },
+  "confidence": "high",
+  "total": 75,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22848,
+    "output_tokens": 971
+  }
+}

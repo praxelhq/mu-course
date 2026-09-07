@@ -1,0 +1,38 @@
+{
+  "slide_count": 17,
+  "scores": {
+    "insight": 6,
+    "narrative": 7.5,
+    "framing": 6.5,
+    "accuracy": 5.5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Genuinely purposeful narrative arc: India hypothesis tested, honestly rejected, pivoted to broader shortlist with clear logic.",
+  "fix_next": "The 135-startup shortlist is unverifiable custom filtering—anchor more claims to the frozen dataset's known totals, medians, and category benchmarks.",
+  "verdict": "Strong storytelling and honest pivots, but thin on verifiable dataset-level accuracy.",
+  "flags": [
+    "custom-filter-unverifiable",
+    "total-avg-revenue-wrong",
+    "missing-key-benchmarks",
+    "education-median-not-cited"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 7: Total 30-day avg stated as $15,596—this is the total sum ($15,596,344.59), not the average per startup (~$15,596 only if dividing by 1000, which conflates zero-revenue rows and is misleading without noting it. The median $400 is plausible but unverifiable against frozen reference. Slide 4: US Stripe share stated 86% vs reference 85.7% (acceptable rounding), but India Dodo stated 61% vs reference 61.0% (fine). However RevenueCat for India stated 2%—not directly verifiable but plausible. Slide 16: Claims 'Content Automation is the strongest data signal' but the data actually shows AI as highest total revenue category and Education as highest median—neither is 'Content Creation/Automation' which ranks low in revenue. This mischaracterizes the dataset signal to fit the personal thesis.",
+  "evidence": {
+    "insight": "Slide 15 synthesizes an 'automation thread' across categories—an original interpretive move. But the insight is somewhat tautological (most software automates something). The India payment-rails observation (slides 4-5) is genuinely interesting. Education's high median ($2,435) is never cited despite being the strongest data-backed argument for the chosen vertical.",
+    "narrative": "Clear 5-step structure: landscape → India clue → India reality check → pivot to top earners → synthesis → personal thesis. The 'Not Yet' slide (8) is an unusually honest analytical pivot. Transitions are explicit and purposeful. The arc lands on a concrete recommendation with next steps.",
+    "framing": "Slide 2 sets up the question and dataset context well. Missing: no discussion of survivorship bias in TrustMRR listings, no mention of 274 missing categories or 241 missing countries as limitations beyond one footnote. The 'automation-focused brand' framing is stated but the connection between dataset findings and that specific framing is asserted more than demonstrated.",
+    "accuracy": "Slide 7 total avg $15,596 appears to be total revenue divided by 1000 (correct arithmetic but misleading framing as 'average per startup' without noting 216 zero-revenue rows). The 135-startup shortlist uses custom thresholds that cannot be verified against frozen data. Slide 16 claims Content Automation is 'the strongest data signal' but Content Creation has only 36 companies and $173K total revenue—far below AI or Marketing. The deck never cites Education's $2,435 median (highest eligible), which would actually support the thesis.",
+    "visual": "Consistent navy/orange palette throughout. Bar charts on slide 3 are clean with direct labels. Slide 4's grouped bar chart is effective. Slide 9's funnel diagram communicates the filtering logic well. Slides 12-13 card layouts are readable. Some slides (5, 8) are text-heavy with no visual data. Overall professional and restrained but slightly template-uniform.",
+    "ai_slop": "Minimal slop. Language is specific and personal rather than generic consulting-speak. The 'Golden Thread' framing (slide 15) borders on inflated but is grounded in specific category descriptions. No decorative-but-meaningless graphics detected."
+  },
+  "confidence": "medium",
+  "total": 67,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 31214,
+    "output_tokens": 1006
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 4,
+    "narrative": 5,
+    "framing": 3.5,
+    "accuracy": 4.5,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Framing the dataset as a pitch deck was creative; key aggregate numbers are roughly correct.",
+  "fix_next": "This is a startup pitch, not a data story—almost no analytical insight, no charts exploring relationships, and massive missingness is never acknowledged.",
+  "verdict": "Pitch deck cosplaying as data analysis; thin on actual insight.",
+  "flags": [
+    "wrong-genre",
+    "ai-slop-template",
+    "missing-data-unacknowledged",
+    "no-limitations-discussed",
+    "consulting-language",
+    "decorative-venn-diagram"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 5: SaaS shown as second-largest revenue bar, but reference shows Marketing ($1.32M) far exceeds SaaS ($703K); chart ordering/bar lengths are misleading. Slide 5: Claims 'Marketing and E-commerce punch above their weight on a per-company basis' — E-commerce per-company revenue ($1,111K/19≈$58.5K) is high, but its median ($387) is low, making the claim ambiguous and unsupported by median data. Slide 6: Claims India has 'the lowest revenue-per-company ratio in the dataset' — this is unverifiable and likely false given smaller countries exist; also ignores 241 rows with missing country.",
+  "evidence": {
+    "insight": "No slide explores relationships (e.g., provider vs. revenue, anonymity premium, TLD patterns, founded-year correlation). Slide 5 describes a bar chart. Slide 7 lists cherry-picked growth examples without context or base rates. No analytical depth beyond aggregation.",
+    "narrative": "Follows a coherent pitch-deck arc (problem → solution → proof → model → ask), which gives it structural flow, but this is a VC pitch narrative, not a data-story narrative. No thesis about the data is tested or synthesized.",
+    "framing": "The assignment was a data-story presentation; this is a fictional seed-round pitch deck for 'TractionIQ.' No audience/question framing for a data analysis. No mention of missingness (274 missing categories, 241 missing countries, 288 missing audience_type). No limitations, no definitions of metrics, no scope statement for the analysis.",
+    "accuracy": "$15.6M 30-day revenue is a reasonable round of $15,596,344 — acceptable. 1,000 companies correct. AI $2.36M correct. But the category bar chart on slide 5 visually misrepresents SaaS vs. Marketing revenue ordering. India claim about 'lowest revenue-per-company' is unsupported. 216 zero-revenue companies and 274 missing categories never mentioned.",
+    "visual": "Gamma-generated dark template with uniform card layouts across nearly every slide. Two charts total (slides 5 and 6); both are basic grouped bars. Decorative Venn/diamond graphic on slide 9 adds no information. Competitive comparison table on slide 10 is a standard feature-matrix. Visual sameness throughout — every slide uses the same card-in-dark-background pattern.",
+    "ai_slop": "Heavy consulting language throughout: 'intelligence layer,' 'structurally invisible,' 'category-defining data source,' 'data network effects.' Decorative diamond graphic on slide 9. Repetitive 4-card layout on slides 2, 3. Gamma watermark on every slide. The entire deck reads as AI-generated pitch boilerplate with dataset numbers dropped in."
+  },
+  "confidence": "high",
+  "total": 42,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 21341,
+    "output_tokens": 913
+  }
+}

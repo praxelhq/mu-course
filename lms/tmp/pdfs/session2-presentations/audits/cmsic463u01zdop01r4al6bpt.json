@@ -1,0 +1,43 @@
+{
+  "slide_count": 14,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 7.5,
+    "framing": 6.5,
+    "accuracy": 4.5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Counterintuitive findings slide and payment-processor-as-proxy analysis show genuine original thinking beyond chart reading.",
+  "fix_next": "Disclose missingness rates for key fields and reconcile category medians and zero-revenue count against source data before publishing.",
+  "verdict": "Strong analytical arc undermined by multiple factual errors and undisclosed missing data.",
+  "flags": [
+    "inflated-arr-claim",
+    "wrong-zero-revenue-count",
+    "median-mrr-deviations",
+    "missing-data-not-disclosed",
+    "causal-language-on-correlations",
+    "total-revenue-mismatch",
+    "template-heavy-visuals"
+  ],
+  "factual_error_count": 9,
+  "factual_error_detail": "Slide 1/3: $161.7M ARR implies ~$13.5M MRR, but total revenue in dataset is $15.6M not $13.5M — unclear basis. Slide 6: 197 $0-MRR startups claimed vs reference 216 zero-revenue rows. Slide 4: AI median $446 vs ref $503; E-comm $155 vs ref $387; Dev Tools $185 vs ref $635; Content Creation $1.3K vs ref $1,237.50 (close but others are far off); Education $2.1K vs ref $2,435. Slide 2: top-10 share stated as 48% vs ref 49.6% (borderline). Slide 5: B2B/B2C 5.7× headline — ref on-sale median multiples are 2.35×/2.30×, though this may refer to MRR medians not acquisition multiples, but $1,036/$181 = 5.72× which is internally consistent yet unverifiable against ref. Slide 11: stealth count 131 vs ref anonymous 129 (close). Slide 8: US count 258 vs ref 258 for Stripe-US is 221 — 258 appears to be total US startups which is plausible but unverifiable. Slide 10: title says 'predicts' revenue — causal language for observational correlation.",
+  "evidence": {
+    "insight": "Slide 11 counterintuitive findings (stealth premium, low-MRR high-multiple, AI B2B vs B2C) are genuinely decision-useful. Slide 10 payment processor proxy is an original analytical angle. Slide 7 growth-by-tier breakdown adds real depth.",
+    "narrative": "Clear arc: overview → category landscape → B2B/B2C → concentration → growth → geography → acquisitions → surprises → recommendations → conclusion. Power-law thesis sustained throughout. Slide 12 audience segmentation is a strong synthesis move.",
+    "framing": "Slide 3 establishes dataset scope and key columns. However, missingness across country (241), audience_type (288), category (274), domain (286) is never disclosed — a critical omission for a 1,000-row dataset where 24-29% of key fields are missing. Denominators on several slides silently use n=1,000 when effective n is much smaller.",
+    "accuracy": "Multiple category medians deviate materially from reference: AI $446 vs $503, E-comm $155 vs $387 (60% off), Dev Tools $185 vs $635 (71% off). Zero-revenue count 197 vs 216. Total MRR stated as $13.5M but reference total revenue is $15.6M. Top-10 share 48% vs 49.6%. These are not rounding differences — several are large systematic errors.",
+    "visual": "Consistent dark-teal palette with good hierarchy. Slide 4 dual-axis bar+dot is effective. Slide 7 growth distribution well-designed. Slide 8 table is clean. However, heavy template uniformity with large whitespace blocks across all slides suggests AI-generated layout. No chart annotations beyond labels.",
+    "ai_slop": "Consulting-style branding ('Intelligence Report', 'shapes destiny', 'structural advantage'). Template uniformity across all 14 slides. Mild but present — content substance partially compensates."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.0 to 4.5 due to confirming 9 factual errors including large median deviations (E-comm 60% off, Dev Tools 71% off) and wrong zero-revenue count. Lowered framing from 7.0 to 6.5 for undisclosed missingness affecting ~25% of key fields. Reduced bonus from 2 to 1 — work is competent but errors and template uniformity prevent exceptional status.",
+  "total": 66,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 27580,
+    "output_tokens": 1207
+  }
+}

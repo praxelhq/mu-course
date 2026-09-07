@@ -1,0 +1,39 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 4,
+    "narrative": 5,
+    "framing": 4,
+    "accuracy": 3,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Scatter plot on slide 5 effectively illustrates the weak followers-revenue relationship with clear annotation.",
+  "fix_next": "Claims like 'AI startups grow 3-4x faster' and 'B2B median 2.35x' need visible data support; most slides lack any numbers from the dataset.",
+  "verdict": "Visually polished but analytically thin—assertions outrun the evidence shown.",
+  "flags": [
+    "unsupported-claims",
+    "missing-data-evidence",
+    "no-limitations-discussed",
+    "consulting-language",
+    "fabricated-looking-statistic"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 6: 'AI startups grow 3-4x faster than standard applications' — no growth rate data exists in the dataset (cross-sectional 30-day snapshot). Slide 7: The $15 vs $500 B2C/B2B comparison is presented as data-derived but the actual dataset median multiples are ~2.3x, not 33x; the specific dollar figures appear fabricated. Slide 5: 'Top 10 Earners possess fewer than 5,000 followers' — plausible directionally but unverifiable from the reference and stated with unearned certainty.",
+  "evidence": {
+    "insight": "Three 'myths' on slide 4 are reasonable directions but none is developed with actual dataset statistics. The B2B vs B2C point (slide 7) could have cited the 2.35x median multiple but instead uses invented $15/$500 figures. No category-level analysis, no missingness discussion, no revenue concentration (49.6% top-10 share) mentioned.",
+    "narrative": "Slides follow a logical myth-busting arc (hype → data → ROI), ending with a strategic quadrant. However, the sequence is more rhetorical than analytical—slides 6-7 make claims without showing the underlying charts or numbers, so the 'story' is asserted rather than built from evidence.",
+    "framing": "Slide 1-2 set up the 'verified data' framing, but the audience is vague ('management'), the specific research question is never stated, scope/definitions (30-day revenue, what 'category' means, 274 missing categories) are never addressed, and no limitations are acknowledged.",
+    "accuracy": "Slide 6 fabricates a growth rate ('3-4x faster') from a cross-sectional dataset with no time-series data. Slide 7's $15/$500 comparison doesn't match the dataset's B2B/B2C median ratio (~2.3x). The deck never mentions missingness (241 country, 288 audience_type, 274 category, 286 domain missing), 216 zero-revenue companies, or the total revenue figure. No denominators or sample sizes shown anywhere.",
+    "visual": "Consistent color palette (red/black/cream), clean typography, good use of white space. Slide 5 scatter plot is the strongest visual—real data, clear annotation. Slide 3 treemap is decorative (no labels, no legend, unclear what it encodes). Slide 6-7 use conceptual illustrations rather than data charts. Slide 8 quadrant is a generic consulting framework with no data backing.",
+    "ai_slop": "Slide 3 treemap is a decorative-but-meaningless graphic with no labels or legend. Slide 2's 'Market Hype → Verified Data → ROI' pipeline is generic consulting framing. Slide 8's 2x2 matrix is a template that could apply to any dataset. Language like 'empowering management to direct resources toward the highest financial yield' is inflated consulting speak."
+  },
+  "confidence": "high",
+  "total": 43,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 13804,
+    "output_tokens": 961
+  }
+}

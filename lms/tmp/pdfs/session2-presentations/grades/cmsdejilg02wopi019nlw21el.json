@@ -1,0 +1,40 @@
+{
+  "slide_count": 14,
+  "scores": {
+    "insight": 1.5,
+    "narrative": 2.5,
+    "framing": 1.5,
+    "accuracy": 1,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "Clean, consistent slide template with readable typography and logical problem-solution-vision arc.",
+  "fix_next": "This is a product pitch for TrustMRR, not a data-story; zero charts or analysis from the assigned dataset appear anywhere.",
+  "verdict": "A marketing pitch deck, not a data analysis presentation.",
+  "flags": [
+    "no-dataset-analysis",
+    "no-charts",
+    "product-pitch-not-data-story",
+    "ai-slop-stock-images",
+    "broken-image-placeholder-slide8",
+    "irrelevant-stock-images"
+  ],
+  "factual_error_count": 0,
+  "factual_error_detail": "No verifiable dataset claims are made, so no factual errors against the dataset—but this itself is the fundamental problem: the dataset is entirely absent.",
+  "evidence": {
+    "insight": "All 13 content slides describe TrustMRR's value proposition, workflow, SWOT, and roadmap. No finding from the 1,000-row dataset is presented—no revenue distributions, category breakdowns, provider analysis, anonymity patterns, or any quantitative insight.",
+    "narrative": "There is a coherent product-pitch narrative (problem → solution → ecosystem → monetization → vision → close), but it is the wrong narrative: it never tells a data story or derives conclusions from the assigned dataset.",
+    "framing": "No dataset scope, sample size, missingness, definitions, or analytical question is stated. A cold reader would not know a dataset exists. The framing is entirely about a startup acquisition trust problem, not about analyzing provided data.",
+    "accuracy": "No dataset statistics, calculations, or charts are present to evaluate. The deck cannot be assessed for dataset fidelity because it never engages with the data.",
+    "visual": "Consistent blue/white template, readable fonts, clear hierarchy. However: Slide 6 uses an unrelated 'Securing Agentic AI' stock image; Slide 8 has a broken image placeholder (alt text visible); Slide 11 uses an unrelated 'Enterprise AI Upskilling' stock image. These are decorative and misleading.",
+    "ai_slop": "Heavy AI-slop indicators: generic stock images unrelated to content (Slides 6, 11), broken image placeholder on Slide 8, consulting-style SWOT framework with no data backing, inflated language ('cryptographic and API-level truth,' 'foundational infrastructure for the future of private market liquidity'), and cookie-cutter three-column card layouts repeated across multiple slides."
+  },
+  "confidence": "high",
+  "total": 19,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 23712,
+    "output_tokens": 672
+  }
+}

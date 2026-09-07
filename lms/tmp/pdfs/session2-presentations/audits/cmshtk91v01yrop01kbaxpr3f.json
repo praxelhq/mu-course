@@ -1,0 +1,42 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Funnel from ecosystem to specific venture is genuinely earned, with TrustMRR data anchoring each transition.",
+  "fix_next": "Disclose missing-country and missing-category rates for the EU subset; several EU-specific medians look fabricated or unverifiable.",
+  "verdict": "Strong strategic narrative undermined by unverifiable EU subset claims and overstated multipliers.",
+  "flags": [
+    "unverifiable-eu-subset-medians",
+    "b2b-multiplier-overstated",
+    "marketing-us-median-suspect",
+    "missing-data-undisclosed",
+    "cagr-inconsistency",
+    "subjective-scoring-matrix"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 1/3: B2B earns '3x more than B2C' — global frozen median multiple is ~2.35x, not 3x. Slide 5: US Marketing median MRR $20,170 is implausible against frozen global Marketing median of $2,369.50 (would require extreme EU drag on a small-n category). Slide 1: '11.1% of 30-day revenue' — with 241 missing country values the EU share denominator is uncertain and this precision is misleading. Slide 1/4: TAM CAGR stated as 10.8% on slide 1 but the same sector is 15.3% on slide 4; these are applied to overlapping concepts without reconciliation.",
+  "evidence": {
+    "insight": "Genuine analytical arc: EU monetisation gap → B2B as profitable layer → regulatory-driven demand → scored shortlist → specific venture. Porter's and PESTLE add structure. However, the recommended niche is mostly justified by external market reports, not dataset evidence — the dataset confirms B2B > B2C and low EU AI medians but cannot speak to supply-chain AI specifically.",
+    "narrative": "Textbook funnel: ecosystem (slide 2) → industry (3) → forward view (4) → white space (5) → evaluation (6) → feasibility (7) → venture (8) → risk (9) → conclusion (10). Thesis stated on slide 1, reinforced on slide 10. Each section builds logically. The landing is decisive and earned.",
+    "framing": "Question, dataset, and method are stated on slide 1. Frozen date noted. However, 241 missing country values and 274 missing category values are never disclosed — a critical omission when the entire analysis rests on a 288-row EU subset filtered on country. The 288 count itself is unverifiable. Modelled assumptions are disclaimed on slides 7-9, which is good.",
+    "accuracy": "B2B/B2C '3x' overstates the frozen ~2.35x median ratio. US Marketing median $20,170 is implausible given global median $2,369.50 with only 42 total Marketing rows. EU revenue share '11.1%' is stated with false precision given 241 missing countries. The two different CAGRs (10.8% slide 1, 15.3% slide 4) applied to overlapping supply-chain concepts are never reconciled. EU-specific medians ($228 AI, $553 B2B SaaS, $165 B2C) cannot be verified and may be computed on incomplete subsets without acknowledgment.",
+    "visual": "Consistent teal-gold palette, clear section headers, legible charts. Horizontal bars, grouped bars, and tier histograms are appropriate choices. Business model canvas (slide 8) is well laid out. Slide 6 is overloaded (scoring table + Porter's + PESTLE + SWOT). The $20,170 outlier on slide 5 compresses all other bars, undermining readability. Overall professional but template-driven.",
+    "ai_slop": "Moderate consulting register: 'agentic AI assurance layer,' 'blue ocean test passed,' 'regulatory complexity is the moat.' The scoring matrix on slide 6 uses opaque subjective 1-10 scores. PESTLE and Porter's feel formulaic. However, content is specific enough to the dataset and domain to avoid pure filler."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.5 to 5: the B2B 3x claim, the $20,170 US Marketing median, the undisclosed missingness affecting the EU subset, and the unreconciled CAGR figures collectively represent material accuracy problems. Lowered framing from 7.5 to 7: failure to disclose missing-country rate is a significant omission for subset analysis. Reduced bonus from 2 to 1: the venture concept is well-developed but the scoring matrix is subjective and the dataset connection to the final recommendation is thin.",
+  "total": 69,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 22609,
+    "output_tokens": 1211
+  }
+}

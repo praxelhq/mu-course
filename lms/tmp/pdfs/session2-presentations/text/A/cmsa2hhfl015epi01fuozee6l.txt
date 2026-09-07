@@ -1,0 +1,289 @@
+The Long Tail of Indie SaaS
+What 1,000 TrustMRR listings reveal about a marketplace that looks bigger than it is
+   T HE QU ES T IO N
+
+
+
+
+What this deck is actually testing
+
+     “TrustMRR aggregates 1,000 self-reported indie / micro-SaaS startups with public revenue dashboards. Does this
+     dataset describe a healthy, diverse startup ecosystem — or a highly concentrated, US-and-Stripe-dependent market
+     where a small number of outliers explain most of the revenue and most listed companies are stagnant or dying? This
+     presentation uses the dataset itself to test that question.”
+
+
+
+
+      A     A healthy, diverse ecosystem                                            B      A concentrated long-tail market
+
+   Revenue spread across many companies, many countries and many payment          A few breakouts hold most of the revenue. The typical listing is tiny and flat,
+   rails. Growth is broad-based. The average listing is a reasonable benchmark.   clustered in one country and on one payment provider.
+
+
+
+
+The next seven slides test A against B, one dimension at a time.
+      01 · SC AL E & SH A PE
+
+
+
+
+The typical company is tiny. The average one doesn’t exist.
+    3 0 - D AY RE VE N U E
+
+
+    $400
+    median │ mean $15,596 — 39× apart
+
+
+
+    AL L - T I M E R E V E N U E
+
+
+    $3,620
+    median │ mean $334,044 — 92× apart
+
+
+
+    CO N CE N T R AT I ON
+
+
+    49.6%
+    of all 30-day revenue comes from 10 of the 1,000 listings
+
+
+
+          The mean is not a usable “typical company” number here — a handful of outliers (largest: $76.6M all-time) drag it 39× above the median. Report
+          both, always, and lead with the median.
+
+All 1,000 rows. Median and mean computed over the full dataset; the log-scale histogram omits the 216 listings reporting $0 in the last 30 days, which a log axis cannot show.
+    02 · GR OWT H
+
+
+
+
+Growth is mostly an illusion of the average
+                                                                                                                                                               M E AN 3 0- D AY MR R G R OW T H
+
+
+
+                                                                                                                                                               +33.1%
+                                                                                                                                                               Sounds like a healthy, expanding market.
+
+
+
+                                                                                                                                                               M E DI A N 3 0 - D AY MR R G R OW T H
+
+
+
+                                                                                                                                                               0.0%
+                                                                                                                                                               The middle company in this dataset did not grow at all.
+
+
+
+                                                                                                                                                          61.9% of listings are flat or shrinking.
+                                                                                                                                                          Only 27.4% grew.
+
+
+
+
+          “Average growth” is being carried by a few rocketships. Strip them out and the middle of this marketplace is standing still — or going backwards.
+
+Field: mrr_growth_30d_pct. Shares are of all 1,000 listings; the 10.7% (107 rows) with no reported growth value are shown as their own band rather than silently dropped. “Exactly flat” means a reported value of precisely 0%.
+     03 · GEO GR AP H Y
+
+
+
+
+Globally listed. American in revenue.
+    U N I T E D ST A T E S
+
+
+
+    25.8%
+    of listings — but 63.1% of all 30-day revenue
+
+
+
+
+    N E X T L AR G E ST — FR A N CE
+
+
+
+    $669K
+    30-day revenue: under 7% of the US total, from
+    7.9% of listings
+
+
+24.1% of rows carry no country at all — and those rows hold 17.6% of the revenue, so the geographic picture is genuinely incomplete, not just sparse.
+
+
+
+
+          By headcount TrustMRR looks like a global marketplace. By revenue it is an American one with international spectators.
+
+Country field, all 1,000 rows; unlisted rows shown as their own band rather than excluded. Two rows carry a corrupted boolean value (FALSE) where a country code should be — they hold $1,709 combined and are excluded from named-
+country figures.
+     04 · CAT E GO R Y
+
+
+
+
+AI wins on volume. It does not win per company.
+                                                                                                                                                                      AI is the biggest by both counts
+                                                                                                                                                                      197 listings (the largest category) and $2.36M in 30-day
+                                                                                                                                                                      revenue (the largest total).
+
+
+
+
+                                                                                                                                                                      …and near the bottom per company
+                                                                                                                                                                      Median MRR of $446 — below Fintech, Social Media,
+                                                                                                                                                                      Content Creation, Analytics, Marketing and Education.
+
+
+
+
+                                                                                                                                                                      Small categories punch above their weight
+                                                                                                                                                                      Education: 30 listings, $2,142 median MRR. Marketing:
+                                                                                                                                                                      42 listings, $1,586. Both beat AI per company by 3–5×.
+
+
+
+
+          Volume and hype are not unit economics. The categories with the strongest typical company are the small, unglamorous ones — and “AI” is
+          where the crowd is, not where the money-per-company is.
+
+Categories with at least 15 listings shown (13 of 30). 27.4% of all rows have no category and are excluded from this view. Bars are medians; category totals are separately dominated by one or two outliers each.
+      05 · INF R AS T R UCT UR E
+
+
+
+
+Two-thirds of this ecosystem runs on one vendor
+    S T RI P E
+
+
+
+    64.8%
+    of single-provider listings run on Stripe and nothing
+    else
+
+
+
+    R E V E N U E CAT
+
+
+
+    19.3%
+    a distant second — largely mobile-app subscription
+    billing
+
+
+Everything else — Dodo, Polar, Lemon Squeezy, Superwall, Paddle, Whop, Creem — shares the remaining 15.9%.
+
+
+
+          This is a Stripe-centric ecosystem. One vendor’s pricing change, policy shift or outage would land on roughly two-thirds of the businesses listed
+          here at the same time.
+
+Single-provider listings only (n = 981 of 1,000). The 19 listings reporting two or more providers are excluded so that shares sum cleanly; counting Stripe anywhere in the field instead gives 64.9% of all 1,000 rows — the conclusion is
+unchanged.
+      06 · T HE M AR K ET P L AC E
+
+
+
+
+Priced like side businesses, not like startups
+
+    L I ST I N G S F OR S AL E                                     M E DI A N AS K I N G PR I CE                                  M E DI A N R E V E N U E M U L T I PL E                        M E AN R E V E N U E M U L T I PL E
+
+
+
+    26.2%                                                          $35,000                                                        2.3×                                                           7.8×
+    262 of 1,000 listings are actively on                          the midpoint of what a listed                                  what buyers are being asked to pay                             the same outlier distortion, now in
+    the market                                                     business asks for itself                                       per unit of revenue                                            the pricing layer
+
+
+
+
+      For scale: a $35,000 asking price against a $400 median 30-day revenue is roughly seven years of revenue at the median — which is why the multiple, not the
+      price, is the number to argue about. The 2.3× median is small-business territory; the 7.8× mean is what happens when a handful of listings ask for venture -style
+      pricing on the same page.
+
+
+
+
+          This is not a market of aspiring unicorns. It prices like what it is: a market for small, cash-flowing side businesses.
+
+On-sale listings only (n = 262). asking_price_usd and revenue_multiple are structurally missing for the 73.8% of listings not on sale — that missingness is by design, not a data fault. One on-sale listing has no asking price.
+       07 · T RU ST & D AT A Q UAL I T Y
+
+
+
+
+What the data won’t tell you
+    AN O N YM OU S L I ST I N G S                                                                                                     M I SS I N G N E SS , D E CL AR E D H ON E ST L Y
+
+
+    13.0%                                                                                                                             revenue_per_visitor_usd                                                                     85.8%
+
+    130 listings trade as “Stealth Company” or “Hidden Business” — on a platform named                                                visitors_30d                                                                                82.2%
+    TrustMRR
+                                                                                                                                      asking_price_usd (structural)                                                               73.9%
+
+    D OM AI N A U T H OR I T Y V S R E V E N U E
+                                                                                                                                      revenue_multiple (structural)                                                               73.8%
+
+
+    r = 0.278
+                                                                                                                                      domain_rating                                                                               28.6%
+
+                                                                                                                                      category                                                                                    27.4%
+    weak linear correlation (Spearman ρ = 0.516). SEO strength is not a reliable predictor of
+    revenue here.                                                                                                                     country                                                                                     24.1%
+
+                                                                                                                                      mrr_growth_30d_pct                                                                          10.7%
+Everything on this platform is self-reported, with no audit trail. Treat each figure as
+a claim, not a measurement.                                                                                                           Plus: 2 rows carry a boolean FALSE in the country field — a type error, not a missing
+                                                                                                                                      value.
+
+
+
+          Two of the most analytically interesting fields are more than 80% empty, and an eighth of the companies are anonymous. Any conclusion drawn
+          here is a conclusion about what founders chose to publish.
+
+Correlations computed on the 714 rows carrying a domain_rating. Pearson is depressed by revenue outliers; the higher rank correlation (ρ = 0.516) says the ordering holds better than the linear fit — the gap between the two is itself
+evidence of the long tail.
+   T HE VE R DI CT
+
+
+
+
+A concentrated long-tail market — not a diverse ecosystem
+Every dimension pointed the same way:
+
+• Revenue: 10 of 1,000 listings hold half of it
+• Growth: the median company grew 0%
+• Geography: 25.8% of listings, 63.1% of revenue
+• Infrastructure: 64.8% on a single payment vendor
+• Pricing: a 2.3× median multiple on a $35,000 ask
+
+
+
+
+   T H E ON E N U M B E R T O R EM E M B E R
+
+
+
+   $400 vs $15,596
+   Median vs mean 30-day revenue. If you only keep one figure, keep this one —
+   it reframes every other number in the deck.
+
+
+
+
+   So what? If you are benchmarking yourself against TrustMRR, benchmark against the median, not the average — the average describes nobody. If you are shopping for an
+   acquisition, the 2.3× median multiple is the real market; the long tail is where the listings are, not the revenue.
+

@@ -1,0 +1,39 @@
+{
+  "slide_count": 5,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 6.5,
+    "accuracy": 4,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Decision-oriented framing with actionable takeaways per slide creates a genuinely useful narrative arc.",
+  "fix_next": "Multiple fabricated numbers ($133.8M revenue, $4.3K AI median, $350 Productivity median, 12-month framing) undermine credibility; verify every stat against the actual dataset.",
+  "verdict": "Strong narrative structure badly undermined by numerous fabricated or inflated figures.",
+  "flags": [
+    "fabricated-revenue-total",
+    "wrong-medians",
+    "missing-data-not-acknowledged",
+    "12mo-vs-30day-confusion",
+    "title-says-five-decisions-only-four-shown"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 1: '$133.8M combined 12-month revenue' — dataset shows $15.6M 30-day revenue; no 12-month field exists, and 8.6x extrapolation is unjustified. Slide 2: AI median stated as '$4.3K' — reference is $503. Productivity median stated as '$350' — reference is $79.91. Marketing/Education '3-4x the median revenue of AI' is wrong given actual medians ($2,370/$2,435 vs $503 ≈ 4.7-4.8x, but their own $4.3K base makes the ratio ~0.6x). Chart y-axis shows values up to $16K for median which doesn't match any category. Slide 4: Stripe share stated as 64-65% — reference is 636/936≈67.9% (minor). Slide 5: MRR table presents fabricated monthly figures (e.g., Education $2,142, AI $446) that don't match dataset medians even after dividing by 12. Title promises 'Five decisions' but only four are delivered (slides 2-5).",
+  "evidence": {
+    "insight": "The revenue-per-entrant framing (slide 2) and median-vs-mean acquisition multiple distinction (slide 3) show genuine analytical thinking beyond chart description. The follower-count dismissal (slide 4) is a useful contrarian finding.",
+    "narrative": "Clear decision-briefing structure with numbered decisions, each slide ending with an actionable recommendation banner. Coherent thesis of 'where to build, what to pay, what to ignore.' Missing the promised 5th decision.",
+    "framing": "Audience (indie/micro-SaaS builders and acquirers) is clearly stated on slide 1. However, no mention of missing data (274 missing categories, 288 missing audience_type, 241 missing country), no limitations section, and the 12-month revenue framing is unsubstantiated.",
+    "accuracy": "Slide 1 inflates total revenue ~8.6x without justification. Slide 2 AI median off by ~8.5x ($4.3K vs $503), Productivity median off by ~4.4x ($350 vs $79.91). Slide 5 MRR table values don't correspond to dataset medians divided by 12 (Education: $2,435/12=$203 not $2,142). The deck systematically presents fabricated or miscalculated figures.",
+    "visual": "Consistent dark-navy/orange color scheme, clean chart types (dual-axis bar+line, horizontal bar, donut, table), good use of callout boxes. Legible typography and clear hierarchy. Chart on slide 2 has readable axes. Donut chart on slide 4 is clean.",
+    "ai_slop": "Minor consulting-style language ('decision briefing,' 'sharp wedge') but generally restrained. The systematic fabrication of plausible-looking but wrong numbers is more concerning than typical AI slop."
+  },
+  "confidence": "high",
+  "total": 63,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 10686,
+    "output_tokens": 979
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 8,
+    "accuracy": 5,
+    "visual": 6,
+    "bonus": 1
+  },
+  "what_worked": "Observation-vs-inference discipline and confidence labeling throughout is genuinely rigorous and rare in student work.",
+  "fix_next": "Fix the total revenue figure ($15.6M not $13.5M) and add real data visualizations—scatter plots, distributions—to support claims.",
+  "verdict": "Strong analytical narrative undermined by a material revenue error and near-absence of data charts.",
+  "flags": [
+    "total-revenue-error-propagated",
+    "anonymous-share-slightly-off",
+    "mean-figure-wrong",
+    "no-distribution-charts",
+    "vc-scorecard-decorative",
+    "slide7-table-clipped",
+    "consulting-memo-over-data-story"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 1/2/13: total revenue stated as $13.5M, actual $15,596,345 (~$15.6M), propagated to ARR ($161.7M vs ~$187M) and mean ($13,472 vs $15,596). Slide 3/5/7: anonymous revenue share stated as 28%, reference is 26.525%. Slide 3: mean-median gap stated as 47x, should be ~55x given correct total.",
+  "evidence": {
+    "insight": "Seven ranked findings on slide 3 go beyond description—power law, anonymity premium, B2B gap, AI commoditization, stagnation-as-opportunity are genuinely reframed for decision-making. Segmentation on slide 5 synthesizes multiple dimensions.",
+    "narrative": "Thesis on slide 1 ('fund the infrastructure') sustained through landscape→findings→psychology→segmentation→opportunities→investor lens→roadmap→risks→takeaways. Each slide advances the argument. Landing on slide 12 is crisp and actionable.",
+    "framing": "Slide 2 explicitly separates observed from inferred. Slide 4 labels every claim with confidence. Slide 11 dedicates full page to survivorship bias, missingness, snapshot limitations. Slide 13 appendix defines terms. Audience (investment committee) stated upfront.",
+    "accuracy": "Total revenue is $13.5M vs actual $15.6M—a 13.5% understatement propagated to ARR and mean. Anonymous share 28% vs 26.5%. Many other figures verified correct: Stripe 63.6%, RevenueCat 18.9%, AI 19.7%, anonymous count 129. The 0.81 and 0.906 correlations are not contradicted by reference.",
+    "visual": "Clean dark/light theme, consistent typography, effective confidence badges on slide 4. But only two simple bar charts across 13 slides. No scatter plots for the 0.81 correlation claim, no histogram for the power-law claim, no distribution plots. Slide 7 table clipped on right edge. Text-heavy throughout.",
+    "ai_slop": "VC scorecard on slide 9 uses invented subjective scores not derived from data. Slide 8's five company pitches read as consulting deliverable. Some consulting jargon ('toll booth,' 'moat compounds') but generally earned by analysis. Not pervasive slop."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Downgraded accuracy from 5.5 to 5.0 (total revenue error is the deck's headline number and is materially wrong by 13.5%), visual from 6.5 to 6.0 (near-total absence of data charts in a data story), and bonus from 2 to 1 (VC scorecard and company pitches are consulting filler, not above-rubric data work).",
+  "total": 70,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 29215,
+    "output_tokens": 2186
+  }
+}

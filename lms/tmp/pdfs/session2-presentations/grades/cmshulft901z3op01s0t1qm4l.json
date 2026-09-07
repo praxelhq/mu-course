@@ -1,0 +1,40 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 5,
+    "narrative": 5.5,
+    "framing": 4.5,
+    "accuracy": 3.5,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Coherent investment-memo framing with tiered cohort architecture and actionable risk/opportunity pairing on slide 5.",
+  "fix_next": "The dataset contains 30-day revenue, not MRR; reframing everything as monthly recurring revenue inflates credibility and produces fabricated ARR figures.",
+  "verdict": "Consulting-styled deck built on a fundamental misread of the underlying data.",
+  "flags": [
+    "metric-misidentification",
+    "fabricated-ARR",
+    "no-charts",
+    "consulting-slop",
+    "unverifiable-growth-claims",
+    "missing-limitations"
+  ],
+  "factual_error_count": 9,
+  "factual_error_detail": "Slide 1: Total MRR stated $13.47M; actual 30-day revenue is $15.60M—wrong metric and wrong number. '$161.7M ARR' is fabricated (no ARR field exists). Top-10 share stated 48.0%, reference is 49.6%. 'Median $282' doesn't match dataset median. Slide 1: B2B ARPU '2.58x' uses means ($13,150/$5,102); reference medians give ~2.35x, and the mean ratio is ~7.97x—neither matches 2.58x cleanly. Slide 2: '$133.8M L12M realized' and '$161.7M Forward ARR' are invented; no historical or forward revenue fields exist. '+64.4% Avg 30D SaaS growth' is unverifiable. AI '$1.81M total category MRR' vs reference $2.36M total (÷12 ≈ $196k monthly, not $1.81M; if treating 30-day as monthly it should be ~$2.36M). Slide 3: B2B avg $13,150 and B2C avg $5,102 use means not medians, presented without clarification; total segment MRRs don't reconcile with dataset totals. Slide 4: Education listed at $523.7k which matches reference total revenue, but labeled 'MRR'. Marketing $444.5k vs reference $1.317M—large discrepancy. Slide 5: 'Top 1 asset (Stan) holds 26.5% ($3.57M)' — 26.5% of $13.47M ≈ $3.57M but 26.5% of actual $15.6M ≈ $4.13M; percentage itself unverifiable. Slide 7: Tier percentages sum to ~100.1% which is fine, but underlying MRR framing remains wrong throughout.",
+  "evidence": {
+    "insight": "Slide 5 risk/opportunity pairing and slide 7 tier-escalation math show analytical effort, but insights rest on fabricated MRR/ARR framing rather than the actual dataset field (30-day revenue). Mid-tier scaling thesis is reasonable but generic.",
+    "narrative": "Slides flow logically: snapshot → growth → unit economics → drivers → risks → memo → cohorts. However, the throughline is a portfolio-manager pitch that assumes MRR data the dataset doesn't contain, weakening the entire narrative foundation.",
+    "framing": "Deck frames itself as an 'Investment Committee Briefing' for a 'Portfolio MRR Analysis' but never defines the dataset, its source, its limitations, or the 274-row category missingness. No mention that 216 companies have zero revenue. Audience framing is clear but scope/definitions are absent.",
+    "accuracy": "Fundamental error: the dataset field is 30-day revenue, not MRR. All ARR calculations ($161.7M) are therefore fabricated. Multiple numbers don't match reference: total revenue wrong, top-10 share off, category totals inconsistent, growth rates unverifiable. B2B/B2C comparison uses means labeled as 'Avg MRR' without noting median differences or outlier sensitivity.",
+    "visual": "Clean, consistent card-based layout with good typography hierarchy and restrained color palette. However, there are zero actual charts or data visualizations across 7 slides (slide 7's horizontal bars are the only exception). Heavy whitespace on every slide suggests template padding. No annotations, no axis labels on the one chart present.",
+    "ai_slop": "Heavy consulting-speak throughout: 'Power-Law Portfolio,' 'Revenue Cohort Architecture,' 'Strategic Balance Sheet,' 'Freemium Conversion Chasm.' Every slide follows identical card-with-bottom-callout template. Decorative emoji-icons add no information. The investment-memo framing feels templated rather than earned from the data."
+  },
+  "confidence": "high",
+  "total": 47,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 12638,
+    "output_tokens": 1182
+  }
+}

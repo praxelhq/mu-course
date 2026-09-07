@@ -1,0 +1,368 @@
+{
+  "import_schema_version": "mu-lms-assessment-import/1.0",
+  "audience": "learner",
+  "assessment": {
+    "assessment_id": "quiz_s5_workflow-control",
+    "assessment_version_id": "S5-SQ-v1",
+    "session_no": 5,
+    "title": "S5 · Workflow control",
+    "assessment_class": "counted_surprise_if_activated",
+    "activation_rule": "dormant by default; when armed, runs 00–07 and replaces retrieval without shortening assessed build work",
+    "time_limit_seconds": 420,
+    "attempt_policy": "one attempt when counted; no replacement retake",
+    "course_weight": "best-three surprise-quiz percentages within existing 5% component when counted",
+    "mastery_rule": "6/8",
+    "answer_release_rule": "attempt receipt only until the last participating section using S5-SQ-v1 closes",
+    "scoring_identity": "stable option ID; never display letter or array index",
+    "protected_time_source": {
+      "source_id": "lms.course.session-05.lesson-plan",
+      "source_version_id": "S5-SQ-v1-protected-00-07",
+      "source_path": "lms/course/session-05/lesson-plan.md",
+      "source_content_sha256": "2cd44f6cf768937a60693a7cae8c4cdfc604dbd4c9211cba9918cd5652dd056c"
+    },
+    "manifest_registration": {
+      "registered": true,
+      "source_id": "lms.course.session-05.lms-manifest",
+      "source_version_id": "0.1.0",
+      "source_path": "lms/course/session-05/lms-manifest.yaml",
+      "source_content_sha256": "6025f7cf5f7fd2f3b2749a5031dfd4604a4c8516b8c55534ca749b1a514e5f68"
+    },
+    "source_id": "lms.course.session-05.surprise-quiz-student",
+    "source_version_id": "S5-SQ-v1",
+    "source_path": "lms/course/session-05/assessment/surprise-quiz-student.md",
+    "source_content_sha256": "4a7e709dbc3295500a0d248166e4d81a58e21b93d9bc089cce2ebf220a473d4e"
+  },
+  "items": [
+    {
+      "item_id": "S5-Q01",
+      "item_version_id": "S5-Q01@1",
+      "item_order": 1,
+      "outcome_ids": [
+        "S5-O4"
+      ],
+      "demand": "apply",
+      "difficulty": "medium",
+      "item_time_seconds": 50,
+      "prompt": "A webhook delivers the same paid-plan inquiry twice because the sender did not receive the first response. Which design most directly prevents two outreach actions?",
+      "response": {
+        "type": "single_choice",
+        "selected_option_field": "selectedOptionId"
+      },
+      "shuffle_options": true,
+      "volatile": false,
+      "stale_check_rule": "deterministic MCQ",
+      "options": [
+        {
+          "option_id": "S5-Q01-ROUTER-FIRST",
+          "canonical_order": 1,
+          "text": "Put the outreach route first in the router"
+        },
+        {
+          "option_id": "S5-Q01-DELAY",
+          "canonical_order": 2,
+          "text": "Add a five-second delay before outreach"
+        },
+        {
+          "option_id": "S5-Q01-IDEMPOTENCY",
+          "canonical_order": 3,
+          "text": "Check a stable event idempotency key before outreach and record its state"
+        },
+        {
+          "option_id": "S5-Q01-RETRY-SUCCESS",
+          "canonical_order": 4,
+          "text": "Retry the outreach module when it succeeds"
+        }
+      ]
+    },
+    {
+      "item_id": "S5-Q02",
+      "item_version_id": "S5-Q02@1",
+      "item_order": 2,
+      "outcome_ids": [
+        "S5-O2",
+        "S5-O4"
+      ],
+      "demand": "apply",
+      "difficulty": "easy",
+      "item_time_seconds": 40,
+      "prompt": "A lead payload has an invalid email address. Consent is present. What should the workflow do?",
+      "response": {
+        "type": "single_choice",
+        "selected_option_field": "selectedOptionId"
+      },
+      "shuffle_options": true,
+      "volatile": false,
+      "stale_check_rule": "deterministic MCQ",
+      "options": [
+        {
+          "option_id": "S5-Q02-INVENT-EMAIL",
+          "canonical_order": 1,
+          "text": "Invent a safe-looking address so the run succeeds"
+        },
+        {
+          "option_id": "S5-Q02-RETRY-INVALID",
+          "canonical_order": 2,
+          "text": "Retry the same payload until the email becomes valid"
+        },
+        {
+          "option_id": "S5-Q02-QUARANTINE",
+          "canonical_order": 3,
+          "text": "Quarantine the event with a validation reason and owner"
+        },
+        {
+          "option_id": "S5-Q02-BYPASS",
+          "canonical_order": 4,
+          "text": "Send it down the warm-lead route without email"
+        }
+      ]
+    },
+    {
+      "item_id": "S5-Q03",
+      "item_version_id": "S5-Q03@1",
+      "item_order": 3,
+      "outcome_ids": [
+        "S5-O2",
+        "S5-O4"
+      ],
+      "demand": "analyse",
+      "difficulty": "medium",
+      "item_time_seconds": 55,
+      "prompt": "A temporary dependency times out while creating a draft. Which response best preserves the work without retrying forever?",
+      "response": {
+        "type": "single_choice",
+        "selected_option_field": "selectedOptionId"
+      },
+      "shuffle_options": true,
+      "volatile": false,
+      "stale_check_rule": "deterministic MCQ",
+      "options": [
+        {
+          "option_id": "S5-Q03-SKIP-SUCCESS",
+          "canonical_order": 1,
+          "text": "Skip the bundle and mark the run successful"
+        },
+        {
+          "option_id": "S5-Q03-BOUNDED-RECOVERY",
+          "canonical_order": 2,
+          "text": "Use bounded retry/incomplete execution, then assign manual recovery on exhaustion"
+        },
+        {
+          "option_id": "S5-Q03-DELETE-SOURCE",
+          "canonical_order": 3,
+          "text": "Roll back and delete the source event"
+        },
+        {
+          "option_id": "S5-Q03-UNBOUNDED-LOOP",
+          "canonical_order": 4,
+          "text": "Add a router route that always repeats the same module"
+        }
+      ]
+    },
+    {
+      "item_id": "S5-Q04",
+      "item_version_id": "S5-Q04@1",
+      "item_order": 4,
+      "outcome_ids": [
+        "S5-O2"
+      ],
+      "demand": "apply",
+      "difficulty": "medium",
+      "item_time_seconds": 50,
+      "prompt": "A high-value enterprise lead must be approved before any outreach. Which flow is safest?",
+      "response": {
+        "type": "single_choice",
+        "selected_option_field": "selectedOptionId"
+      },
+      "shuffle_options": true,
+      "volatile": false,
+      "stale_check_rule": "deterministic MCQ",
+      "options": [
+        {
+          "option_id": "S5-Q04-SEND-THEN-NOTIFY",
+          "canonical_order": 1,
+          "text": "Send outreach and notify the founder afterward"
+        },
+        {
+          "option_id": "S5-Q04-NOTIFY-AS-APPROVAL",
+          "canonical_order": 2,
+          "text": "Notify the founder and treat the notification as approval"
+        },
+        {
+          "option_id": "S5-Q04-RECORDED-TRANSITION",
+          "canonical_order": 3,
+          "text": "Store `pending_approval`, block outreach, then act only after a recorded approved transition"
+        },
+        {
+          "option_id": "S5-Q04-WAIT-ASSUME",
+          "canonical_order": 4,
+          "text": "Wait ten seconds, then assume approval"
+        }
+      ]
+    },
+    {
+      "item_id": "S5-Q05",
+      "item_version_id": "S5-Q05@1",
+      "item_order": 5,
+      "outcome_ids": [
+        "S5-O5"
+      ],
+      "demand": "understand",
+      "difficulty": "easy",
+      "item_time_seconds": 40,
+      "prompt": "Which statement correctly distinguishes a Make blueprint from a public scenario-sharing link?",
+      "response": {
+        "type": "single_choice",
+        "selected_option_field": "selectedOptionId"
+      },
+      "shuffle_options": true,
+      "volatile": true,
+      "stale_check_rule": "deterministic MCQ; T-7",
+      "options": [
+        {
+          "option_id": "S5-Q05-REVERSED-UPDATE",
+          "canonical_order": 1,
+          "text": "A blueprint always updates; a public link is a fixed file"
+        },
+        {
+          "option_id": "S5-Q05-SNAPSHOT-DYNAMIC",
+          "canonical_order": 2,
+          "text": "A blueprint is a point-in-time JSON export; the public link shows the latest saved scenario"
+        },
+        {
+          "option_id": "S5-Q05-LINK-HAS-CONNECTIONS",
+          "canonical_order": 3,
+          "text": "A public link includes account connections; a blueprint does not"
+        },
+        {
+          "option_id": "S5-Q05-BLUEPRINT-ONLY-PUBLIC",
+          "canonical_order": 4,
+          "text": "Only a blueprint can be viewed without a Make account"
+        }
+      ]
+    },
+    {
+      "item_id": "S5-Q06",
+      "item_version_id": "S5-Q06@1",
+      "item_order": 6,
+      "outcome_ids": [
+        "S5-O3",
+        "S5-O5"
+      ],
+      "demand": "apply",
+      "difficulty": "easy",
+      "item_time_seconds": 40,
+      "prompt": "A classmate imports your Make blueprint. What must they still do before running it?",
+      "response": {
+        "type": "single_choice",
+        "selected_option_field": "selectedOptionId"
+      },
+      "shuffle_options": true,
+      "volatile": true,
+      "stale_check_rule": "deterministic MCQ; T-7",
+      "options": [
+        {
+          "option_id": "S5-Q06-NO-SETUP",
+          "canonical_order": 1,
+          "text": "Nothing; connection credentials are inside the JSON"
+        },
+        {
+          "option_id": "S5-Q06-RECONNECT-TEST",
+          "canonical_order": 2,
+          "text": "Recreate their own connections and any omitted dependencies, then test mappings"
+        },
+        {
+          "option_id": "S5-Q06-RENAME-MODULES",
+          "canonical_order": 3,
+          "text": "Rename every module or Make will reject the file"
+        },
+        {
+          "option_id": "S5-Q06-CONVERT-PNG",
+          "canonical_order": 4,
+          "text": "Convert the blueprint to PNG first"
+        }
+      ]
+    },
+    {
+      "item_id": "S5-Q07",
+      "item_version_id": "S5-Q07@1",
+      "item_order": 7,
+      "outcome_ids": [
+        "S5-O2"
+      ],
+      "demand": "apply",
+      "difficulty": "medium",
+      "item_time_seconds": 45,
+      "prompt": "Two instant webhook events must be processed strictly in arrival order. What setting is most relevant?",
+      "response": {
+        "type": "single_choice",
+        "selected_option_field": "selectedOptionId"
+      },
+      "shuffle_options": true,
+      "volatile": true,
+      "stale_check_rule": "deterministic MCQ; T-7",
+      "options": [
+        {
+          "option_id": "S5-Q07-PROCESS-IN-ORDER",
+          "canonical_order": 1,
+          "text": "Process data in order"
+        },
+        {
+          "option_id": "S5-Q07-PUBLIC-PAGE",
+          "canonical_order": 2,
+          "text": "Enable the public scenario page"
+        },
+        {
+          "option_id": "S5-Q07-THUMBNAIL",
+          "canonical_order": 3,
+          "text": "Add an image thumbnail"
+        },
+        {
+          "option_id": "S5-Q07-CONFIDENTIAL-LOGS",
+          "canonical_order": 4,
+          "text": "Keep data confidential"
+        }
+      ]
+    },
+    {
+      "item_id": "S5-Q08",
+      "item_version_id": "S5-Q08@1",
+      "item_order": 8,
+      "outcome_ids": [
+        "S5-O5"
+      ],
+      "demand": "evaluate",
+      "difficulty": "easy",
+      "item_time_seconds": 40,
+      "prompt": "Which gallery package is safest and most useful?",
+      "response": {
+        "type": "single_choice",
+        "selected_option_field": "selectedOptionId"
+      },
+      "shuffle_options": true,
+      "volatile": false,
+      "stale_check_rule": "deterministic MCQ",
+      "options": [
+        {
+          "option_id": "S5-Q08-RAW-PAYLOAD",
+          "canonical_order": 1,
+          "text": "A canvas screenshot plus raw execution payload containing lead email"
+        },
+        {
+          "option_id": "S5-Q08-SAFE-PACKAGE",
+          "canonical_order": 2,
+          "text": "A workflow PNG, optional safe official Make scenario link, redacted sample output, and limitation note"
+        },
+        {
+          "option_id": "S5-Q08-PUBLIC-WEBHOOK",
+          "canonical_order": 3,
+          "text": "A public webhook URL so viewers can test the live trigger"
+        },
+        {
+          "option_id": "S5-Q08-GRADE-DATA",
+          "canonical_order": 4,
+          "text": "The grading prompt, rubric score, and model confidence"
+        }
+      ]
+    }
+  ]
+}

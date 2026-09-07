@@ -1,0 +1,39 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 8,
+    "narrative": 8.5,
+    "framing": 7.5,
+    "accuracy": 5.5,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "Genuinely compelling narrative arc with plain language, strong thesis, and findings that build toward actionable recommendations.",
+  "fix_next": "Multiple revenue figures are materially wrong (total, medians, zero-revenue count, top-10 share); verify every number against the actual dataset before presenting.",
+  "verdict": "Excellent storytelling undermined by numerous factual errors in core figures.",
+  "flags": [
+    "total-revenue-wrong",
+    "zero-revenue-count-wrong",
+    "median-category-values-off",
+    "top10-share-wrong",
+    "b2b-b2c-multiplier-overstated"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 3: States 197 earn $0; dataset shows 216 zero-revenue. Median $282 is plausible but unverifiable without checking (dataset reference doesn't give overall median explicitly, so not counted as error). Slide 4: Total monthly revenue stated as $13.47M; actual 30-day total is $15.60M. Top-10 share stated as 48.0%; actual is 49.6%. Slide 5: Education median stated $2,142; actual $2,435. Marketing median stated $1,586; actual $2,369.50. Analytics median stated $1,294; actual $419. AI median stated $446; actual $503. Slide 6: B2B/B2C multiplier claimed as 6x ($1,036/$181); actual median ratio is ~2.3x. Title says 'six times more' which is materially overstated. Slide 8: India count 59 matches reference. USA median $1,263 vs reference $1,262.50 is acceptable rounding.",
+  "evidence": {
+    "insight": "Slide 7 (for-sale marketplace analysis with price-to-revenue multiples) and Slide 8 (India pricing insight with named examples) go well beyond chart description. The crowding-vs-median insight on Slide 5 is genuinely useful despite wrong numbers.",
+    "narrative": "Clear thesis on Slide 1, context on Slide 2, seven findings building from distribution → concentration → category → audience → social → geography → exit, landing on Slide 10 with four crisp recommendations. Each finding feeds the next logically.",
+    "framing": "Slide 2 explains data provenance, verification mechanism, and presentation goal. Footnotes on every finding slide show denominators and sample sizes. Missing: no mention of 274 missing category values or 288 missing audience_type, which weakens category and B2B/B2C claims.",
+    "accuracy": "At least 8 material errors: zero-revenue count off by 19, total revenue off by ~$2.1M, top-10 share off by 1.6pp, Education/Marketing/Analytics/AI medians all wrong, B2B/B2C ratio overstated by ~2.6x. The errors aren't random rounding—they suggest a different computation or fabricated figures.",
+    "visual": "Consistent earth-tone palette, restrained icon use, effective unit charts (Slide 3 rockets, Slide 4 dot grid). Bar-as-stacked-blocks metaphor works well for comparisons. No chart junk. Hierarchy is clear with bold headlines and muted footnotes. Slight repetitiveness in the stacked-bar motif across slides 5-8.",
+    "ai_slop": "none — writing is specific, avoids consulting jargon, every claim references a number. Icons are purposeful rather than decorative."
+  },
+  "confidence": "high",
+  "total": 76,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18892,
+    "output_tokens": 944
+  }
+}

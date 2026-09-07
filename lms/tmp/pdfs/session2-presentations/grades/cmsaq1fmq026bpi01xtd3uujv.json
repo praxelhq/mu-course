@@ -1,0 +1,39 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 4,
+    "narrative": 5,
+    "framing": 5.5,
+    "accuracy": 4,
+    "visual": 6,
+    "bonus": 0
+  },
+  "what_worked": "Consistent missingness disclosures, clean chart labeling, and a dedicated caveats slide show data-quality awareness.",
+  "fix_next": "Most slides describe one variable at a time without cross-cutting analysis; add original insights that combine dimensions and challenge surface-level readings.",
+  "verdict": "Clean descriptive tour with several factual errors and almost no analytical depth.",
+  "flags": [
+    "descriptive-not-analytical",
+    "multiple-factual-errors",
+    "annualized-revenue-fabricated",
+    "median-MRR-discrepancies",
+    "b2b-b2c-multiple-wrong"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 2: '$133.8M combined 12-month revenue' — dataset total 30-day revenue is $15.6M; annualizing to ~$187M would be one approach, but $133.8M matches neither that nor any documented figure. Slide 2: Mean MRR $13,472 — plausible but unverifiable and presented without denominator clarity. Slide 3: Median MRR values for categories are materially wrong — AI shown as $446 vs reference $503; SaaS $303 vs $200.50; Marketing $1,586 vs $2,369.50; Content Creation $1,254 vs $1,237.50; Education $2,142 vs $2,435. Slide 5: B2B/B2C median multiple claimed as 5.7x ($1,036/$181) — reference medians give ~2.3x; the absolute values $1,036 and $181 don't match reference multiples of 2.35x/2.30x either. Slide 6: Bin counts (197, 198, 197, 196, 196) are suspiciously uniform and sum to 984 + 16 = 1,000, but 216 rows have zero revenue, not 197. Slide 9: Revenue multiple labeled '2.3x' as median — close to reference B2B/B2C multiples but presented without clear denominator (monthly vs annual).",
+  "evidence": {
+    "insight": "Every slide reports a single variable (category counts, country counts, provider counts) without combining dimensions. No cross-tabulation, no regression, no segment comparison beyond B2B/B2C. The closing takeaway restates the title rather than synthesizing findings into a decision-relevant conclusion.",
+    "narrative": "Slides follow a logical sequence (overview → categories → geography → audience → distribution → top companies → growth → sales → payments → caveats → takeaway), but each is a standalone fact card. No argument builds across slides; the 'takeaway' on slide 12 is a restatement of slide 2 numbers, not a synthesis.",
+    "framing": "Slide 1 sets context (TrustMRR listings, frozen date). Slide 11 caveats are thorough. However, the audience and decision question are never stated — 'what 1,000 businesses reveal' is vague. Missing-data denominators are noted on some slides but not all (slide 5 doesn't note 288 missing audience_type rows).",
+    "accuracy": "Multiple median MRR figures deviate materially from reference (slide 3). The $133.8M annualized figure is not derivable from the dataset's $15.6M 30-day total. B2B/B2C 5.7x multiple claim is roughly double the actual ratio. Distribution bin counts on slide 6 don't align with known zero-revenue count of 216.",
+    "visual": "Consistent teal/dark palette, clean bar charts with direct labels, readable tables. Good use of big-number callouts. However, slides are visually repetitive (same bar chart template repeated), and slide 8 is text-only when a histogram or box plot would add value. No chart on slide 12.",
+    "ai_slop": "Template repetition across slides (same card layout on slides 2, 8, 9). The near-uniform bin counts on slide 6 look fabricated or poorly computed. Overall structure feels like an AI-generated executive summary template with data plugged in."
+  },
+  "confidence": "high",
+  "total": 49,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22464,
+    "output_tokens": 1087
+  }
+}

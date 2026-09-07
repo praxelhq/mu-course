@@ -1,0 +1,43 @@
+{
+  "slide_count": 21,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 8.5,
+    "accuracy": 5.5,
+    "visual": 7.5,
+    "bonus": 3
+  },
+  "what_worked": "Investment-memo framing with falsification conditions turns a dataset exercise into a genuine decision document.",
+  "fix_next": "Reconcile the revenue field used throughout—every dollar figure is ~8-9x the reference total, suggesting a field-mapping error.",
+  "verdict": "Exceptional storytelling and structure undermined by systematic revenue-field mismatch across every slide.",
+  "flags": [
+    "systematic-revenue-inflation",
+    "category-totals-inflated",
+    "category-medians-inflated",
+    "stripe-revenue-inflated",
+    "anonymous-share-misstated",
+    "revenuecat-revenue-inflated",
+    "dodo-revenue-inflated"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slides 1-7,12: total revenue $133.8M vs reference $15.6M (~8.6x). Slide 12: Stripe $119.91M vs ref $13.5M; RevenueCat $6.83M vs ref $1.3M; Dodo $0.32M vs ref $0.039M. Slide 10: AI total $18.43M vs ref $2.36M, Marketing $14.64M vs ref $1.32M; AI median $4,301 vs ref $503, Marketing median $10,028 vs ref $2,370. Slide 5: anonymous revenue share 21% vs ref 26.5%.",
+  "evidence": {
+    "insight": "Slides 7-8 reframe the platform as '200 businesses plus 800 profiles'—genuinely decision-useful. Slide 15 identifies ARR-vs-trailing anchoring with rank-correlation evidence. Slide 16 builds an actionable acquisition screen with specific company-level data. Slide 14 derives a two-track operational model from the barbell distribution.",
+    "narrative": "Tight investment-memo arc: thesis→data audit→KPIs→concentration→segmentation→growth→risk→marketplace→opportunity→recommendations→roadmap→conclusion→appendix. Every slide title is an assertion. Conclusion includes explicit falsification conditions. Sequencing footnote on slide 18 shows deliberate ordering.",
+    "framing": "Slide 2 sets audience (investment committee), question (invest or not), scope (1,000-row frozen extract). Slide 5 audits data quality before making claims. Footnotes consistently distinguish fact from interpretation (e.g., 'competitive read is the author's'). Limitations flagged throughout including 'no historical transaction record.'",
+    "accuracy": "Structural counts are correct: 636 Stripe, 129 anonymous, 241 missing country, 288 missing audience, 274 missing category, 216 zero-revenue. Top-10 share 50.6% close to ref 49.6%. However, every revenue figure is systematically ~8-9x the reference total ($133.8M vs $15.6M), propagating through Stripe, RevenueCat, Dodo, and all category totals/medians. Anonymous share stated as 21% vs reference 26.5%.",
+    "visual": "Consistent navy/gold palette with clear hierarchy. Every slide has section label, assertion title, chart, and interpretation panel. Charts are appropriately simple. Slide 8 truncated y-axis (185-215) slightly exaggerates uniformity. Slide 15 scatter is well-annotated with base notes and outlier handling disclosed.",
+    "ai_slop": "None detected—every claim is dataset-specific, footnotes distinguish fact from assumption, no generic filler or inflated language."
+  },
+  "confidence": "medium",
+  "changed": true,
+  "change_reason": "Reduced accuracy from 6.0 to 5.5; the systematic revenue-field mismatch affects the headline figure on nearly every slide and cascades into category totals, provider breakdowns, and marketplace economics. Structural counts and ratios are correct, preventing a lower score.",
+  "total": 81,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 41761,
+    "output_tokens": 2065
+  }
+}

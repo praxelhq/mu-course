@@ -1,0 +1,38 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7.5,
+    "framing": 5.5,
+    "accuracy": 4.5,
+    "visual": 5.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong thesis-driven structure with buy/build/acquire framework tying every slide to a capital-allocation decision.",
+  "fix_next": "Growth claims (slide 3) and revenue-per-user figures (slides 4-5) appear fabricated or unverifiable from the frozen dataset; anchor every number to documented fields.",
+  "verdict": "Coherent investment narrative undermined by unverifiable metrics and missing data caveats.",
+  "flags": [
+    "unverifiable-growth-metric",
+    "missing-data-caveats",
+    "no-sample-size-disclosure",
+    "fabricated-looking-figures"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 2: 'Market median of 2.4x' — the dataset contains 30-day revenue, not MRR or listing prices; multiples are not derivable from the frozen dataset. Slide 3: Median 30-day growth percentages (Dev Tools +6.4%, Analytics +4.9%) — no growth-rate field exists in the reference dataset; these appear fabricated. Slide 4: 'Revenue per active subscriber' figures ($9.46 for Social Media, ~$53.83 for Marketing) — no subscriber/user count field is documented, making these unverifiable. Slide 5: Same issue — revenue-per-active-user metric has no documented denominator in the dataset.",
+  "evidence": {
+    "insight": "Slides 4-5 attempt a genuinely interesting audience-vs-monetization gap analysis, and the buy/build/acquire framework on slide 6 synthesizes findings into actionable recommendations rather than just describing charts.",
+    "narrative": "Clear three-act structure: slide 1 sets thesis, slides 2-5 each support one leg (buy underpriced, build in growing categories, acquire under-monetized audiences), slide 6 synthesizes. Each slide ends with a recommendation box.",
+    "framing": "No dataset description, no mention of 1,000-row scope details, no missingness disclosure (274 missing categories, 288 missing audience_type), no limitations slide. Audience is implied (investor/operator) but never stated. A cold reader cannot assess reliability.",
+    "accuracy": "Multiple metrics appear derived from fields not in the frozen dataset: MRR multiples (slide 2), 30-day growth rates by category (slide 3), active subscriber counts (slides 4-5). Category missingness (274/1000 rows) is never acknowledged, which could materially bias category-level claims. The 'Fintech' category on slide 3 does not appear in the reference category list.",
+    "visual": "Consistent dark theme with muted olive palette; charts are simple and legible. However, all charts use the same horizontal/vertical bar format with no annotation of sample sizes. Slide 4's dual-chart layout is effective. No gridline clutter. Dashed borders around chart areas feel like Gamma template artifacts rather than intentional design.",
+    "ai_slop": "Gamma watermark on every slide. Template-consistent styling with minimal customization. Recommendation boxes are formulaic but substantive. Not egregious slop but clearly template-driven."
+  },
+  "confidence": "medium",
+  "total": 60,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 11789,
+    "output_tokens": 825
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "slide_count": 14,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 6,
+    "framing": 5,
+    "accuracy": 4.5,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Power-law framing (39× gap) is a genuine insight that anchors the narrative coherently throughout.",
+  "fix_next": "Total revenue is $15.6M not $13.5M; the pie chart percentages don't match the text claims; fix core numbers before building a thesis.",
+  "verdict": "Confident VC tone built on several wrong numbers and too much decorative filler.",
+  "flags": [
+    "total-revenue-wrong",
+    "pie-chart-mismatch",
+    "consulting-language-inflation",
+    "decorative-stock-art",
+    "missing-data-not-acknowledged",
+    "ai-slop-template"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: Total MRR stated as $13.5M; actual 30-day revenue is $15.6M (and MRR ≠ revenue). Slide 4: Pie chart shows US at 73.05% but text says 63%—internally contradictory; $9.84M/15.6M ≈ 63%, so the pie is wrong. Slide 4: Title says '26% of Startups' but 258/1000=25.8% among all, and 258 is 25.8% not 26% (minor). Slide 9: Provider shares shown as percentages of only 5 providers (sum ~100%) but presented as if they are the full market; Paddle (16 companies) and Superwall (17) are omitted, making the pie misleading. Slide 8: Claims B2B achieves 'consistently higher revenue-per-customer' without showing any supporting data from the dataset; the actual median multiples (B2B 2.35× vs B2C 2.30×) are nearly identical.",
+  "evidence": {
+    "insight": "Slide 3's mean/median gap observation is genuinely useful; slide 7's revenue-per-visitor calculation adds value. But slides 10-14 repeat the same thesis without new data, and 'valuation multiples' discussion on slide 10 references no actual multiples from the dataset.",
+    "narrative": "There is a clear through-line: power law → geography → category → monetization → thesis. The arc is coherent but the last four slides (11-14) are repetitive summaries that add no new evidence, padding the deck.",
+    "framing": "No mention of missingness (241 country, 274 category, 288 audience_type missing). Audience is implicitly VC investors but never stated. No limitations slide. 'Revenue-generating companies across all verticals' on slide 2 is misleading—216 have zero revenue.",
+    "accuracy": "Slide 2 headline figure $13.5M is wrong (total 30-day revenue is $15.6M). Slide 4 pie chart (73.05% US) contradicts its own text (63%). Provider pie omits Paddle and Superwall. Slide 8 B2B claims are unsupported. Slide 6 SaaS MRR of $589K and Education $524K are unverifiable and may conflate MRR with revenue.",
+    "visual": "Gamma template throughout with decorative AI-generated illustrations on 6 of 14 slides that add no information. Only 2 actual data charts (slides 3 and 6). Slide 8's abstract bubble diagram is decorative, not data-driven. Pie charts on slides 4 and 9 are functional but one is factually wrong. Heavy text density on slides 11-12.",
+    "ai_slop": "Pervasive consulting-speak: 'brutal precision,' 'alpha,' 'quiet compounder,' 'The Efficiency Mandate,' 'Close it before the market does.' Decorative stock illustrations on slides 1, 5, 7, 10, 13 add nothing. Slides 11-14 are nearly interchangeable strategy summaries with no new data. Risk/mitigation grid on slide 12 is generic enough to fit any dataset."
+  },
+  "confidence": "high",
+  "total": 50,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 26228,
+    "output_tokens": 1055
+  }
+}

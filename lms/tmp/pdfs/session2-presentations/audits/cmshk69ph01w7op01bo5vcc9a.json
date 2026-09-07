@@ -1,0 +1,43 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 6,
+    "accuracy": 4.5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Structured elimination framework (category → attention → customer) builds a genuinely compelling, data-grounded argument across slides.",
+  "fix_next": "Acknowledge the 288 missing audience_type values and stop citing '12-month revenue' — the dataset tracks 30-day revenue, not annual.",
+  "verdict": "Strong narrative arc undermined by fabricated-looking metrics and unacknowledged missingness in its core variable.",
+  "flags": [
+    "fabricated-12-month-revenue-metric",
+    "missing-audience-type-not-disclosed",
+    "ai-multiple-3.15x-unverifiable",
+    "growth-shrink-percentages-unverifiable",
+    "overclaims-causal-language",
+    "mckinsey-style-self-label",
+    "repetitive-three-column-template"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 4: '12-month revenue' metric ($4.3K vs $3.2K) does not exist in the dataset, which tracks 30-day revenue. Slide 5: AI median multiple 3.15x is unverifiable against reference (B2B/B2C medians are 2.35x/2.30x, not AI/non-AI split as presented). Slide 7: '$8,264 vs $2,396 median 12-month revenue' again uses a nonexistent annual metric and the 3.4x ratio doesn't match reference B2B/B2C median multiples (~2.35x). Slide 7: 5.7x MRR gap ($1,034 vs $183) is unverifiable. Slide 4 growth/shrink percentages (35.5%/40.1% vs 38.2%/35.3%) are unverifiable but not directly contradicted.",
+  "evidence": {
+    "insight": "The B2B/B2C-matters-more-than-category thesis is genuinely interesting and the within-AI replication on slide 7 adds real analytical depth. The 'ruled out' elimination on slide 6 shows structured thinking. However, 'proves it isn't a category effect' overstates observational data.",
+    "narrative": "Excellent sequential logic: crowding → weak performance → mispricing → pivot to real signal → evidence → implications → framework → landing. Each slide ends with a forward-pulling question. The arc is tight and purposeful.",
+    "framing": "Slide 2 establishes three audiences well. Source lines consistently note 726/1000. But 288 missing audience_type values (~29% of dataset) are never acknowledged despite being the thesis's core variable — a serious omission for a cold reader assessing reliability. No limitations discussion.",
+    "accuracy": "AI count 197/726 = 27.1% is correct. Category counts on slide 3 match reference. However, the deck repeatedly cites '12-month revenue' which doesn't exist in the dataset. The 3.15x AI acquisition multiple, the B2B/B2C median revenue figures, and the growth/shrink percentages are all unverifiable or inconsistent with reference data. The r=0.30 for followers-revenue is unverifiable.",
+    "visual": "Clean navy/coral palette, good hierarchy, appropriate bar charts, effective callout boxes. The three-column card layout repeats on slides 2, 6, 8 — template-heavy but not egregious. Slide 4 grouped bars with similar heights are hard to parse. Overall professional and restrained.",
+    "ai_slop": "The 'McKinsey-style read' self-label on slide 1 is gratuitous. Three-column card layout repeats three times. Consulting-speak is heavy ('underwrite the audience, not the label') but backed by substantive content. Slide 9 hype-cycle framework is generic but anchored to specific dataset findings."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Reduced bonus from 2 to 1: the deck is polished but the fabricated '12-month revenue' metric and unacknowledged audience_type missingness undercut the analytical credibility that would justify a higher bonus. Core scores confirmed after independent review.",
+  "total": 66,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 19608,
+    "output_tokens": 1060
+  }
+}

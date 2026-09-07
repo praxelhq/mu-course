@@ -1,0 +1,38 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 6,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis linking concentration, business model, and data quality into a coherent investor-oriented narrative with causal discipline.",
+  "fix_next": "Title slide says $13.5M combined MRR but total 30-day revenue is $15.6M; reconcile which metric you're reporting and fix category medians.",
+  "verdict": "Well-structured investor story with genuine insight, undermined by several numeric inaccuracies.",
+  "flags": [
+    "revenue-total-inconsistency",
+    "category-median-discrepancies",
+    "b2b-multiplier-overstated",
+    "anonymous-share-inflated"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 1: '$13.5M combined MRR' — total 30-day revenue is $15,596,344.59; if MRR is a different field the deck never clarifies. Slide 3: Uses $13.47M as total MRR and claims top-10 hold 48% — reference is 49.6%. Slide 4: Category medians diverge materially from reference — AI shown $446 vs ref $503; Education $2,142 vs ref $2,435; Marketing $1,586 vs ref $2,369.50; Content Creation $1,254 vs ref $1,237.50 (close); Analytics $1,294 vs ref $419 (very large error); SaaS $303 vs ref $200.50; Dev Tools $185 vs ref $635 (inverted). Slide 6: Claims B2B is '6x' better ($1,036/$181=5.7x); headline says 'nearly 6x' but conclusion slide says 5.7x — the reference B2B/B2C median revenue multiple is 2.35x/2.30x suggesting different metric or filter, though MRR vs 30-day revenue may differ. Slide 9: Claims 28.1% of MRR is anonymous — reference says 26.525% of revenue. Slide 9: Says 130 anonymous companies — reference says 129.",
+  "evidence": {
+    "insight": "Slide 4's juxtaposition of AI headcount vs. monetization is genuinely useful. Slide 8's median-vs-mean growth critique is sharp and decision-relevant. Slide 7's domain-rating cliff analysis adds a non-obvious screening heuristic. Slide 10's survivorship-bias observation on for-sale companies is original.",
+    "narrative": "Clear arc: concentration (slide 3) → category illusion (4) → geography (5) → business model (6) → credibility signal (7) → growth skepticism (8) → data quality caveat (9) → deal market (10) → synthesis (11) → actionable recommendations (12). Each slide builds on the prior. Conclusion ties threads together coherently.",
+    "framing": "Slide 2 sets scope well with four data dimensions. Investor audience is explicit throughout. Limitations acknowledged on slide 9 (missingness) and slide 7 (correlation caveat). However, the deck never clarifies whether it's analyzing MRR or 30-day revenue — these are used interchangeably, creating confusion.",
+    "accuracy": "Multiple category medians are materially wrong (Analytics off by 3x, Dev Tools inverted). The total revenue figure is inconsistent between slides. Anonymous revenue share is overstated. The B2B/B2C comparison uses MRR medians that don't match the reference 30-day revenue multiples. The 'nearly 6x' claim is internally inconsistent with the 5.7x on the conclusion slide.",
+    "visual": "Clean, consistent template with good hierarchy. Bar charts are well-labeled and appropriately chosen. Slide 4's side-by-side count vs. median is effective. Slide 9's missingness chart is well-designed. Color palette is restrained and professional. Slide 7's cliff visualization effectively supports the headline. Minor issue: slide 3's bar chart has an unusual vertical ordering that initially confuses reading direction.",
+    "ai_slop": "Minimal slop. The template is polished but not generic — content is specific to the dataset. Slide 12's recommendations are concrete and data-grounded rather than generic consulting advice. No decorative-but-meaningless graphics detected."
+  },
+  "confidence": "high",
+  "total": 75,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22486,
+    "output_tokens": 1100
+  }
+}

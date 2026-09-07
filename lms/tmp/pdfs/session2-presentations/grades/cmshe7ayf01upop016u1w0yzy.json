@@ -1,0 +1,38 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 8,
+    "narrative": 9,
+    "framing": 7,
+    "accuracy": 5.5,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "A genuine contrarian thesis sustained across six claims with consistent rhetorical discipline and strong editorial voice.",
+  "fix_next": "Several median figures diverge materially from the reference data—verify AI median ($503 not $446), Marketing ($2,370 not $1,586), and the B2B/B2C multiplier before publishing.",
+  "verdict": "Sharp thesis and excellent narrative arc undermined by multiple inaccurate median values.",
+  "flags": [
+    "median-values-off",
+    "missing-data-not-acknowledged",
+    "causal-language-on-observational-data",
+    "denominator-ambiguity"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 3: AI median stated $446, reference $503; Marketing median stated $1,586, reference $2,369.50; SaaS median $303 vs reference $200.50; Mobile Apps median $223 vs $232.50; Dev Tools median $185 vs $635. Slide 5: stealth median $7,337 — plausible direction but unverifiable precision; '40x gap' claim depends on these numbers. Slide 6: B2B/B2C ratio claimed as ~6x; reference medians give ~2.3x (median-based), a substantial overstatement. Slide 3 also omits Education ($2,435 median), which would weaken the 'Marketing is the quiet winner' framing.",
+  "evidence": {
+    "insight": "Slide 4 (growth-rate base-effect illusion) and Slide 5 (stealth vs. named identity gap) are genuinely original analytical angles that go well beyond chart description. The contrarian framing is earned by multiple data cuts.",
+    "narrative": "Title slide sets up 'noise vs. revenue' thesis; Claims 1–6 each dismantle a different conventional signal; Slide 8 synthesizes into five numbered takeaways. The sequence is purposeful and cumulative, not a list.",
+    "framing": "Slide 1 identifies dataset, size, and date. However, 274 missing category values and 288 missing audience_type values are never disclosed, which matters for Claims 2 and 5. No limitations slide.",
+    "accuracy": "Multiple median values diverge from reference: AI $446 vs $503, Marketing $1,586 vs $2,370, Dev Tools $185 vs $635, B2B ~6x claim vs ~2.3x reference. The 27.1% AI share uses 197/726≈27.1% which is correct for labeled rows but denominator choice is unstated. Slide 4 bar chart shows $515 but text says $514.",
+    "visual": "Consistent navy/gold palette, clean bar charts with direct labels, good use of big-number callouts (Slides 4, 7). Charts are simple and appropriate. Slight inconsistency: Slide 4 text says $514, chart says $515. No chart junk. Hierarchy is clear throughout.",
+    "ai_slop": "none — the writing has a distinctive editorial voice, avoids filler, and each slide makes a specific claim rather than generic observations"
+  },
+  "confidence": "high",
+  "total": 76,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 16024,
+    "output_tokens": 834
+  }
+}

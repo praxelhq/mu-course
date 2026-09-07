@@ -1,0 +1,40 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 9,
+    "narrative": 9.5,
+    "framing": 9,
+    "accuracy": 6.5,
+    "visual": 9,
+    "bonus": 4
+  },
+  "what_worked": "Decomposing AI growth into five names while 40% of the sector shrank is genuinely sharp portfolio analysis.",
+  "fix_next": "Reconcile top-10 share (48.0% vs 49.6%) and clarify whether B2B/B2C 6.4x yield gap uses means or medians—current label is ambiguous.",
+  "verdict": "Exceptional strategic narrative with a few numerical discrepancies that need tightening.",
+  "flags": [
+    "top10-share-understated",
+    "yield-metric-ambiguous-mean-vs-median",
+    "ttm-revenue-appears-low",
+    "fictional-portfolio-framing"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 1: top-10 share stated 48.0% vs reference 49.6% (~1.6pp gap). Slide 1: B2B/B2C yield labelled generically as Rs/sub/mo with 6.4x gap; reference medians give ~2.35x/2.30x (≈1.02x ratio) while means give ~7.97x/8.44x (≈0.94x ratio)—neither matches 6.4x, suggesting a non-standard or filtered calculation without disclosure. Slide 1: TTM revenue Rs 1,277 cr ÷ 95.50 ≈ $13.37M vs reference $15,596,344.59—roughly 14% low, possibly from excluding zero-revenue assets but not stated.",
+  "evidence": {
+    "insight": "Slide 4 isolates that AI's 53-point index rise comes from just 5 of 197 assets while 40% of the rest shrank—second-order concentration risk. Slide 6 juxtaposes listing multiples against momentum to show mispricing (Dev Tools at 1.35x growing vs Sales at 6.4x shrinking). Every 'What Follows' box converts observation into a decision lever.",
+    "narrative": "Six slides follow a disciplined arc: concentration → sector quality heatmap → positioning matrix → trajectory and breadth → whitespace gaps → board asks. Each title is a finding ('Where we are big, we are pale on everything that compounds'). Final slide synthesises into Notice/Decide/Approve tiers with specific capital allocation requests and disposal targets.",
+    "framing": "Slide 1 header establishes scope (1,000 assets, frozen date, Rs 95.50 conversion, TTM window). Untagged MRR flagged at 56.5% on 274 assets as a standing limitation. Final slide explicitly warns 'every judgement on these pages is taken against the remainder.' Board audience is clear from format, language, and ask structure.",
+    "accuracy": "Category counts (AI 197, SaaS 66, Marketing 42, etc.) match reference exactly. Missing-category count 274 matches. However top-10 share is 1.6pp low, the B2B/B2C 6.4x yield ratio cannot be reproduced from reference medians (~1.02x) or means (~0.94x), and TTM revenue converts ~14% below reference total. These are material enough to warrant a half-point reduction from preliminary.",
+    "visual": "Restrained two-colour palette (teal, coral) with grey for context. Cumulative concentration curve (slide 1) is cleanly annotated at three thresholds. Heatmap (slide 2) uses rank-based shading with inverted sale-pressure column and clear legend. Bubble charts (slides 3, 6) encode three variables legibly. Arrow chart (slide 5) is an original and effective encoding of position-vs-attractiveness gaps. No decorative elements.",
+    "ai_slop": "None detected. Distinctive editorial voice ('the book is not diversified, it is merely long'; 'pricing is being set by hope rather than by performance'). Bespoke chart types, no generic consulting templates or filler paragraphs."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Reduced accuracy from 7.0 to 6.5. The B2B/B2C 6.4x yield gap is not reproducible from reference medians or means and is presented without clarifying the metric used—this is a substantive accuracy concern beyond simple rounding. TTM revenue also converts ~14% below reference without explanation. Top-10 share is 1.6pp low. Three errors in a 6-slide deck with strong quantitative claims warrants a sharper penalty. All other scores confirmed.",
+  "total": 90,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 15697,
+    "output_tokens": 1159
+  }
+}

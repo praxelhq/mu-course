@@ -1,0 +1,39 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 1,
+    "narrative": 2,
+    "framing": 1,
+    "accuracy": 1,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Clean, consistent visual template with readable typography and adequate white space throughout.",
+  "fix_next": "This is a startup pitch deck, not a data-story presentation; it uses zero data from the assigned dataset.",
+  "verdict": "Wrong assignment: a product pitch with no dataset analysis.",
+  "flags": [
+    "wrong-assignment",
+    "no-dataset-usage",
+    "ai-slop-template",
+    "fabricated-projections",
+    "zero-data-analysis"
+  ],
+  "factual_error_count": 0,
+  "factual_error_detail": "No claims from the assigned dataset are made, so no dataset-specific errors can be counted. However, the entire deck is irrelevant to the assignment.",
+  "evidence": {
+    "insight": "No slide references the 1,000-row dataset. All content is a speculative fintech pitch (ThumbPay) with external market stats. Zero analytical insight from the assigned data.",
+    "narrative": "The deck has a coherent internal pitch-deck narrative (problem → solution → market → monetization → CTA), but it is the wrong narrative entirely—it does not tell a data story.",
+    "framing": "No framing of the assigned dataset question, scope, audience, or limitations. The audience is positioned as investors, not as someone interested in the dataset's findings.",
+    "accuracy": "Cannot assess dataset accuracy because no dataset figures appear. External claims (228B UPI transactions, $38B abandoned purchases, $25.7B biometric market by 2030) are cited to named sources but are unverifiable and irrelevant to the assignment. Five-year revenue projections (slide 11) are fabricated with no disclosed assumptions.",
+    "visual": "Consistent blue/purple palette, good hierarchy, legible fonts, appropriate use of icons, comparison table (slide 8), pie chart (slide 9), and area chart (slide 11). However, charts represent hypothetical business projections, not dataset analysis. Repetitive card-based layout across many slides.",
+    "ai_slop": "Heavy AI-generated pitch-deck template feel: 'Join the Payment Revolution,' 'paradigm shift,' decorative icons, generic three-column cards repeated on slides 3, 6, 10. Footer factoids with vague source attributions (e.g., 'Visa Biometric Payment Consumer Study' with no year/link) feel fabricated or unverifiable."
+  },
+  "confidence": "high",
+  "total": 17,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22130,
+    "output_tokens": 632
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "slide_count": 5,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 6,
+    "framing": 5,
+    "accuracy": 4,
+    "visual": 6.5,
+    "bonus": 0
+  },
+  "what_worked": "Pareto curve with median-vs-mean distinction is a genuinely useful framing of revenue skew.",
+  "fix_next": "Top-10 share is 49.6%, not top-1%; category mean MRR figures appear fabricated—verify every number against the actual dataset.",
+  "verdict": "Polished consulting template with several material factual errors undermining credibility.",
+  "flags": [
+    "top-percent-share-mislabeled",
+    "fabricated-category-means",
+    "consulting-slop-language",
+    "missing-data-handling-unclear",
+    "b2b-b2c-figures-unverifiable",
+    "no-limitations-slide"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 1: '49.6% captured by Top 1%' — the 49.6% figure is the Top-10 share, not Top-1%. Slide 2: 'Top 10% control 83.7%' — unverifiable and likely inflated. Slide 3: 'Top Categories: E-commerce ($20.8k), Analytics ($18.8k), Education ($17.5k)' — these mean MRR figures are wildly inconsistent with reference data (E-comm total is $1.1M across 19 companies ≈ $58.5k mean revenue, not MRR; Analytics $368k/19 ≈ $19.4k total revenue, not MRR). The deck conflates 30-day revenue with MRR throughout without justification. Slide 3: B2B mean $13,150 vs B2C $5,102 — reference shows B2B/B2C median multiples of ~2.35x/2.30x and means of ~7.97x/8.44x; the presented figures don't align. Slide 1: '500K+ Active Subscriptions' — unverifiable hero metric presented without sourcing. Slide 4: '82.2% missing visitor data' — not verifiable from reference but plausible; minor concern.",
+  "evidence": {
+    "insight": "Slide 2 usefully distinguishes median ($282) from mean ($13.5k) and highlights concentration risk. Slide 3 correlation matrix adds analytical depth. However, the 'Top Categories' ranking by mean MRR appears fabricated, undermining the insight's foundation.",
+    "narrative": "Five slides follow a logical arc: summary → distribution → drivers → risks → recommendations. The thesis (B2B subscription depth > volume) is stated clearly and revisited. However, the narrative is generic consulting-speak ('elite performance,' 'strategic blind spots') rather than data-driven storytelling.",
+    "framing": "Audience is implied (ecosystem leadership/investors) but never explicitly stated. No definitions of MRR vs 30-day revenue. No mention of 274 missing category values or 288 missing audience_type values, which directly affect the B2B/B2C and category analyses. No limitations section.",
+    "accuracy": "Multiple material errors: the 49.6% top-10 share is attributed to top-1%; category mean MRR figures don't match reference totals/counts; the deck uses 'MRR' and '30-day revenue' interchangeably without noting they are the same field; B2B/B2C figures are not consistent with reference multiples; 'Top 10% = 83.7%' is unverified.",
+    "visual": "Clean, consistent design system with teal/dark navy palette. Pareto curve is well-executed with appropriate annotations. Correlation heatmap is readable. Scatter plot on slide 4 uses log scale appropriately. Layout is professional. However, visual sameness across slides suggests template-driven production.",
+    "ai_slop": "Heavy consulting language throughout: 'elite performance,' 'strategic blind spots,' 'subscription-driven moats,' 'roadmap for elite performance.' The 'LEADERSHIP ACTION' boxes on every slide are formulaic. Recommendations are generic enough to apply to any SaaS dataset."
+  },
+  "confidence": "high",
+  "total": 54,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 10500,
+    "output_tokens": 1038
+  }
+}

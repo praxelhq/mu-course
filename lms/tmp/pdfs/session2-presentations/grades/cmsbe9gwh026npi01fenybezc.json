@@ -1,0 +1,39 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis that buyer intent trumps audience scale, supported by multiple converging analyses across slides.",
+  "fix_next": "Category medians are materially wrong (Education $2,142 vs. $2,435; AI $446 vs. $503; several others off), undermining the core chart's credibility.",
+  "verdict": "Compelling narrative with a clear thesis, but several category medians and claims don't match the data.",
+  "flags": [
+    "median-discrepancies",
+    "top10-share-rounded-down",
+    "ai-total-revenue-wrong",
+    "unverifiable-correlation-claims",
+    "zero-revenue-count-wrong"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 2: Top-10 revenue share stated as 48%, reference is 49.6%—material rounding. 80% report MRR>$0 implies 200 zero-revenue, but reference says 216 (21.6% zero). Mean stated $13,471 but $15,596,344.59/1000=$15,596.34. Slide 4: Education median $2,142 vs. reference $2,435; AI median $446 vs. $503; Marketing $1,586 vs. $2,369.50; SaaS $303 vs. $200.50; Content Creation $1,254 vs. $1,237.50 (close); Analytics $1,294 vs. $419 (very wrong). AI combined MRR stated $1.8M vs. reference $2.36M. Slide 6: B2B/B2C median ratio stated 5.7x ($1,036/$181) but reference B2B median multiplier is ~2.35x. Slide 5: Spearman correlations are unverifiable but plausible in direction.",
+  "evidence": {
+    "insight": "Slide 3 identifies two distinct failure-to-monetize patterns (audience-revenue disconnect and revenue attrition) with specific examples and counts—genuinely useful segmentation. Slide 7 poses smart follow-up questions about AI cohort-age confounding.",
+    "narrative": "Clear arc: distribution overview → leaders/laggards → category performance → audience inefficiency → secondary variables → thesis landing. Each slide builds toward the conclusion that buyer type matters more than audience scale.",
+    "framing": "Slide 1 sets scope (1,000 bootstrapped ventures, cross-sectional). Slide 4 notes n≥8 filter. Slide 7 includes limitations. However, missing-data rates for category (274/1000) and audience_type (288/1000) are never disclosed, which matters for the core thesis.",
+    "accuracy": "Multiple category medians are materially wrong: Analytics $1,294 vs. reference $419 (3x off), Marketing $1,586 vs. $2,369.50, Education $2,142 vs. $2,435, AI $446 vs. $503. Mean MRR calculation is wrong ($13,471 vs. $15,596). Zero-revenue count implied as 200 but is 216. AI total revenue stated $1.8M vs. $2.36M. Top-10 share 48% vs. 49.6%.",
+    "visual": "Clean, consistent template with good hierarchy. Bar charts are well-labeled and appropriately chosen. Donut chart on slide 2 is clear. Color coding is restrained (green/gold/red used purposefully). Slide 6 packs three analyses effectively. No chartjunk.",
+    "ai_slop": "Minimal slop. The deck is concise and specific rather than generic. The 'Sales' and 'Fintech' categories on slide 4 appear in the chart but are not in the reference category list, suggesting possible fabrication or different categorization scheme."
+  },
+  "confidence": "high",
+  "total": 72,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 14214,
+    "output_tokens": 994
+  }
+}

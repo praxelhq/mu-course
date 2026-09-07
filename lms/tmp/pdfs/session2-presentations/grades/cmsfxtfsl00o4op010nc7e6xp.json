@@ -1,0 +1,38 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 6.5,
+    "framing": 5.5,
+    "accuracy": 5,
+    "visual": 6,
+    "bonus": 1
+  },
+  "what_worked": "Power-law concentration analysis with Gini coefficient and cumulative share tiers was genuinely useful.",
+  "fix_next": "Title on slide 8 says DR 'correlates directly'—that's causal language for an observational association with n=11 in the top bucket; discipline needed throughout.",
+  "verdict": "Solid M&A thesis with real numbers, undermined by causal overreach and several factual errors.",
+  "flags": [
+    "causal-language-on-observational",
+    "mean-not-median-misleads",
+    "missing-data-not-disclosed",
+    "consulting-inflated-language"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 2: 'B2B yields $22,637.91 average—nearly 4× higher than B2C ($5,722.55)' uses means; reference median multiples are ~2.3×/2.3×, and the mean ratio is actually ~7.97×/8.44× (B2C mean is higher), so '4×' is neither the median nor the mean ratio. Slide 2: '86.4% MRR' claim is unverifiable from the reference and presented as a dataset fact without basis. Slide 4: 255+401+56=712, not 1,000; 288 rows have missing audience_type, which is never disclosed. Slide 7: '15.1%' share for AI—197/1000=19.7% of companies, but 15.1% appears to be a volume/revenue share; AI revenue share is $2.36M/$15.60M=15.1% which checks out, but the pie chart is labeled 'Ecosystem Volume' suggesting company count, creating confusion. Slide 8: 'Correlates Directly' in title implies causation for DR vs. revenue with n=11 in top tier. Slide 9: Stripe count stated as 643 vs. reference 636; revenue $13.59M vs. reference $13.53M—minor but systematic inflation. Slide 12: 'Drive DR to 50+ to unlock a 145× organic revenue increase'—treats observational average difference as a guaranteed causal outcome.",
+  "evidence": {
+    "insight": "Slide 3 Gini analysis (0.9055), slide 11 bottleneck framing of top earners, and slide 5 M&A arbitrage thesis show genuine analytical effort beyond chart description. However, most insights rely on means in a power-law distribution, which the deck itself identifies as highly skewed.",
+    "narrative": "Clear M&A-playbook thesis runs from slide 1 through slide 12's four strategic moves. Sequence is logical: macro → concentration → B2B premium → M&A → geography → categories → channels → recommendations. But the narrative oversells certainty and never acknowledges limitations or missingness.",
+    "framing": "Audience ('Business Management Team') and question (M&A opportunity) are stated on slide 1. However, no mention of 241 missing country values, 288 missing audience_type, or 274 missing category values—these are material to every claim. No data source or date disclosed. Scope of '1,000 verified startups' is never defined.",
+    "accuracy": "Total revenue ($15.60M) and top-10 share (49.61%) match reference. Category counts for AI (197), Marketing (42), E-comm (19), Education (30), SaaS (66) all match. However: Stripe count inflated (643 vs 636), B2B/B2C mean comparison is misleading and the '4×' ratio doesn't match reference means (~8×), audience_type missingness (288) hidden making B2B/B2C counts suspect, and causal claims from correlational data throughout.",
+    "visual": "Consistent navy/gold palette, clean bar charts, good use of big-number callouts on slides 3 and 5. Pie chart on slide 7 is acceptable but 'Others 61.5%' dominates and reduces usefulness. Slide 8 stacked cards are clear but static. No chart on slide 5 leaves dead space. Overall professional but template-driven with some wasted space.",
+    "ai_slop": "Consulting-inflated language throughout: 'high-conviction focus,' 'highly liquid exit environment,' 'prime acquisition targets,' 'organic amplification engine feeding the SEO funnel.' Slide 11 'highly insulated from economic downturns' is an unearned claim. The M&A framing feels like AI-generated consulting deck language rather than student analysis."
+  },
+  "confidence": "high",
+  "total": 60,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22992,
+    "output_tokens": 1167
+  }
+}

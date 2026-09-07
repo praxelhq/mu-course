@@ -1,0 +1,41 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 5.5,
+    "accuracy": 4.5,
+    "visual": 6.5,
+    "bonus": 0
+  },
+  "what_worked": "Logical five-insight arc from category viability through momentum creates a genuinely decision-oriented storyline.",
+  "fix_next": "Recompute all median MRR values—AI should be ~$503, SaaS ~$200.50, Marketing ~$2,369.50—and acknowledge missing-data rates.",
+  "verdict": "Good narrative structure undermined by multiple wrong medians and absent data-quality caveats.",
+  "flags": [
+    "median-mrr-errors",
+    "missing-data-not-acknowledged",
+    "no-limitations-slide",
+    "b2b-b2c-multiple-mislabeled",
+    "bonus-removed"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 2: AI median shown 446 vs ref 503; SaaS 303 vs 200.50; Marketing 1586 vs 2369.50; Mobile Apps 223 vs 232.50 (minor). Slide 4: claims B2B monetizes ~5.7x better citing $1,036/$181 medians—reference on-sale multiples are 2.35x/2.30x, so the 5.7x framing is misleading or uses a different metric without clarification. Slide 5: Recruiting & HR n=6 highlighted as accelerating without caveat that n<10 was explicitly excluded on Slide 2 for being too thin—internal inconsistency.",
+  "evidence": {
+    "insight": "Slide 3 ARPU-per-subscriber angle and Slide 5 large-flat vs small-accelerating tension are genuinely useful framings, but no cross-cutting synthesis (e.g., combining ARPU with growth or exit multiples) limits depth.",
+    "narrative": "Clear through-line from 'Where Should We Build Next?' through five sequenced insights to a summary slide. Loses credit for no concrete final recommendation and no explicit landing beyond restating findings.",
+    "framing": "No dataset description, no mention of 274 missing category or 288 missing audience_type values, no survivorship-bias caveat. The n≥42 filter on Slide 2 is good but contradicted on Slide 5 where n=6 Recruiting & HR is featured prominently.",
+    "accuracy": "At least four median MRR values on Slide 2 deviate materially from reference (AI off by ~11%, SaaS off by ~51%, Marketing off by ~33%). Slide 4 B2B/B2C comparison uses raw median MRR ratio (5.7x) but the phrasing 'monetizes 5.7x better' conflates MRR with revenue multiples. Slide 5 growth figures are plausible but unverifiable.",
+    "visual": "Consistent navy palette, clean bar charts with data labels, effective card layout on Slide 4. Mono-color throughout creates sameness; no color encoding for emphasis or comparison. Charts are legible and appropriately restrained.",
+    "ai_slop": "No obvious generic filler or inflated language. Content is concise and dataset-specific. Slight template uniformity but not penalizable."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Removed 1-point bonus: while the deck is competent, the multiple factual errors and internal inconsistency (applying n≥42 filter then featuring n=6 category) prevent bonus-worthy status. Core dimension scores unchanged as preliminary assessment was well-calibrated.",
+  "total": 60,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 13782,
+    "output_tokens": 906
+  }
+}

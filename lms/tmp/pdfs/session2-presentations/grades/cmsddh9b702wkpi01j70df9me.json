@@ -1,0 +1,38 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 7.5,
+    "accuracy": 5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Clear thesis, honest caveats about sample size and selection bias, and a well-structured narrative arc.",
+  "fix_next": "Median MRR figures for Content Creation ($1,254) and Education ($2,142) conflict with the frozen dataset; verify calculations against actual revenue field.",
+  "verdict": "Focused and well-framed but median figures don't match the reference data.",
+  "flags": [
+    "median-mismatch",
+    "unverifiable-success-rate-metric",
+    "narrow-scope",
+    "fintech-not-in-reference-categories"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 4/5: Content Creation median MRR reported as $1,254 vs reference median $1,237.50 (minor but the label says MRR while dataset field is 30-day revenue). Slide 5: Education median reported as $2,142 vs reference $2,435 — material discrepancy. Slide 5: Marketing median reported as $1,586 vs reference $2,369.50 — significant understatement. Slide 3: 'Fintech' appears as a category with 44% success rate but Fintech is not in the reference category list, suggesting either a fabricated or miscoded category.",
+  "evidence": {
+    "insight": "The $1,000 MRR threshold as a 'success' metric is a creative framing that goes beyond simple revenue ranking, but the analysis stays at one dimension (success rate) without exploring revenue magnitude, concentration, or other cross-cuts. Slide 5 adds median MRR comparison which adds depth, but the insight is ultimately thin — a 1-percentage-point difference (58% vs 57%) is not meaningful given n=36.",
+    "narrative": "Strong arc: question (slide 1) → methodology (slide 2) → finding (slide 3) → deep dive (slide 4) → comparison (slide 5) → caveats (slide 6) → recommendation (slide 7). Each slide has a clear role. The landing on slide 7 ties back to the thesis. The narrative honestly acknowledges the top 3 are a cluster, partially walking back the title claim.",
+    "framing": "Slide 2 clearly defines the metric, threshold, and filter (n≥15). Slide 6 provides three substantive caveats including survivorship bias, snapshot limitation, and sample size disparity. Audience is implicitly a portfolio investor/acquirer. The 274 missing categories are noted (726 usable). Scope is narrow but well-bounded.",
+    "accuracy": "The 'success rate' metric is self-constructed and cannot be directly verified against the reference, but the median MRR figures can be checked and two of three are materially wrong (Marketing $1,586 vs $2,369.50; Education $2,142 vs $2,435). 'Fintech' appears on slide 3 but is not in the reference category list. The dataset field is 30-day revenue, not MRR — conflating these is a systematic labeling issue. Content Creation n=36 matches reference.",
+    "visual": "Clean, consistent template with good hierarchy. Horizontal bar chart on slide 3 is appropriate and well-labeled. Slide 4 uses KPI cards and a data table effectively. Slide 5's three-column comparison is clear. Color palette is restrained. The x-axis starting at -5% on slide 3 is odd. Overall professional but somewhat template-driven.",
+    "ai_slop": "Slide 4's 'Why this niche is converting' section contains speculative claims ('Low delivery cost,' 'Clear willingness to pay') not grounded in the dataset — reads as AI-generated narrative filler. The consulting-style 'Portfolio Strategy Brief' framing is slightly inflated but not egregious."
+  },
+  "confidence": "medium",
+  "total": 65,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 14043,
+    "output_tokens": 984
+  }
+}

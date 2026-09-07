@@ -1,0 +1,209 @@
+TRUS TMRR D ATAS ET ANALY SIS
+
+
+
+Revenue Concentration & Monetization
+Drivers
+A cross-sectional analysis of MRR, audience metrics, and conversion efficiency across 1,000 bootstrapped SaaS
+and consumer ventures
+
+
+
+
+Prepared for vr · 1 Aug 2026
+ Revenue Distribution Overview
+ n = 1,000; monetization is right-skewed and heavy-tailed, consistent with a Pareto-type distribution
+
+
+
+
+                                                                                   Revenue concentration (Pareto structure)
+
+                1,000                                80%                                                                                  Rank 1-10 — 48% of total MRR
+
+
+             companies in sample                    report MRR > $0
+                                                                                                                                          Rank 11-50 — 23% of total MRR
+                                                                                          29%
+
+                                                                                                                                          Remaining 950 — 29% of total
+                                                                                                                    48%
+                                                                                                                                          MRR
+
+
+
+                                                                                             23%
+
+
+
+                 $282                                20%
+            median monthly MRR                      report $0 MRR                  Mean MRR ($13,471) exceeds median MRR ($282) by ~48x — a small number of
+                                                                                   high-revenue outliers dominate the aggregate; median is the more representative
+                                                                                   central-tendency measure here.
+
+
+
+
+TrustMRR Dataset · n = 1,000 · Frozen 30 Jul 2026                                                                                                                         2
+ Revenue Leaders vs. Monetization Laggards
+ Top-decile concentration on the left; two distinct failure-to-monetize patterns on the right
+
+
+
+       Top earners by MRR
+                                                                                                 1         Pattern 1: audience-revenue disconnect
+       Predominantly B2B / prosumer tools with seat- or usage-based pricing
+
+
+                                                                                                29 companies (of n=259 with >500 X followers) report $0 MRR
+                        Stan                                                  $3,570K
+                                                                                                — an 11% conversion-failure rate within this cohort despite
+                                                                                                established distribution.
+                GojiberryAI                 $495K
+
+                                                                                                e.g. Stealth Co. (SaaS, 366K followers) · Stalkr (AI, 362K followers)
+                        Rezi           $260K
+
+
+                        Kibu           $234K
+
+
+                    Cometly           $208K
+                                                                                                 2         Pattern 2: revenue attrition
+                   1Lookup            $207K
+
+                                                                                                15 companies with >$50K lifetime revenue now report
+       Brand On Demand                $187K
+                                                                                                ≤$100/month MRR — evidence of churn to zero, not pre-revenue
+                                                                                                status.
+                       Postiz         $177K
+
+                                                                                                e.g. Eloking (E-comm): $1.33M lifetime → $0/mo current
+
+
+
+TrustMRR Dataset · n = 1,000 · Frozen 30 Jul 2026                                                                                                                       3
+ Category-Level Monetization Performance
+ Median monthly MRR by vertical, restricted to categories with n≥8 to control for small-sample noise
+
+
+           Education                                                                       $2,142
+                                                                                                       Analytics & Sales: near-universal conversion
+
+           Marketing                                                              $1,586
+
+                                                                                                       100% of companies in these categories report MRR
+            Analytics                                                    $1,294
+                                                                                                       > $0 — buyers have pre-existing budget authority
+                                                                                                       and clear ROI justification.
+ Content Creation                                                       $1,254
+
+
+                Sales                                          $1,036
+
+
+       Social Media                                         $912
+                                                                                                       AI: scale without unit economics
+              Fintech                                $500
+
+
+                     AI                             $446                                               n=197, $1.8M combined MRR — the largest total
+                                                                                                       revenue pool of any category, but the lowest per-
+                                                                                                       company median ($446).
+                 SaaS                      $303
+
+
+        Productivity          $42
+
+
+
+
+TrustMRR Dataset · n = 1,000 · Frozen 30 Jul 2026                                                                                                          4
+ Audience Scale vs. Monetization Efficiency
+ Traffic and follower growth are weak predictors of revenue conversion in this sample
+
+
+
+
+        Revenue per visitor
+                                                                                                                 67%
+                                                                             of companies with 1,000+ followers show flat or declining MRR over the trailing 30 days
+                            $0.40
+
+
+                                                        $0.24
+                                                                                Statistical interpretation
+                                                                                •    Follower count correlates weakly with MRR (Spearman ρ = 0.30) —
+                                                                                     materially weaker than visitor volume (ρ = 0.51) or domain authority (ρ
+                                                                                     = 0.46)
+                                                                                •    Owned/search traffic converts at a higher rate than social-referred
+                                                                                     audience
+                                                                                •    Large followings tend to be attention-based rather than purchase-intent-
+                                                     High-traffic subset
+                         Sample median                                               based
+                                                    (1,000+ visitors/mo)
+
+
+
+
+TrustMRR Dataset · n = 1,000 · Frozen 30 Jul 2026                                                                                                                      5
+ Secondary Explanatory Variables
+ Buyer type and payment infrastructure show a stronger association with MRR than audience size
+
+
+
+
+       B2B premium                                         Payment infrastructure effect
+                                                                                                               3
+                                                             $7,337
+             $1,036
+                                                                                                              Listed-for-sale ≠ distressed
+                                                                                                              asset
+
+
+                                                                                                              $1,055
+                                  $352
+                                                                                                              median MRR — companies listed for sale
+                                                    $181
+                                                                           $910
+                                                                                        $663
+                                                                                                      $0
+                                                                                                              $187
+               B2B                Both              B2C     Superwall      Whop         Stripe       Polar
+                                                                                                              median MRR — companies not listed
+
+                                                           Superwall-integrated apps (mobile paywalls)
+       B2B earns 5.7x B2C at the median despite                                                               Consistent with an adverse-selection dynamic in
+                                                           monetize at 100%; lighter-weight providers trail
+       comparable monetization rates (89% vs. 85%).                                                           reverse: owners appear to list once revenue is proven,
+                                                           materially.
+                                                                                                              not to offload non-performing assets.
+
+
+
+
+TrustMRR Dataset · n = 1,000 · Frozen 30 Jul 2026                                                                                                                      6
+   CONCLUSIO N
+
+
+
+
+   Monetization is a function of buyer type and
+   purchase intent — not audience scale.
+
+   Categories sold to buyers with a defined budget line — Analytics, Sales, Marketing, Education — monetize near-universally and at materially
+   higher price points. Consumer- and audience-driven categories frequently show traffic or followings that fail to convert, and the incidence of
+   this pattern (67% of large-audience companies flat or declining) is high enough to indicate a structural relationship rather than isolated cases.
+
+
+   L IM ITATION S & S U GGES TED FU RTH ER AN AL YS IS
+
+   •       Do the 29 high-follower, zero-revenue companies lack a paid tier entirely, or is this a pricing/positioning gap?
+   •       For the 15 companies exhibiting revenue attrition, does the decline correlate with a pricing, platform, or payment -provider change?
+   •       Is AI's low per-company MRR a category effect, or a cohort-age effect (newer listings, less time to convert)?
+
+
+
+
+TrustMRR Dataset · n = 1,000 · Frozen 30 Jul 2026                                                                                                      7
+

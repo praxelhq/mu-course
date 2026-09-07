@@ -1,0 +1,39 @@
+{
+  "slide_count": 5,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7.5,
+    "framing": 6,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Sharp thesis with a genuine argument arc—crowding, concentration, then B2B filter—delivered with editorial restraint.",
+  "fix_next": "The B2B AI median and 5x claim lack verifiable denominators or sample sizes; the revenue-share denominator silently excludes 274 uncategorized rows.",
+  "verdict": "Tight narrative, but thin evidence and unverified numbers undercut the conviction.",
+  "flags": [
+    "denominator-unclear",
+    "missing-sample-sizes",
+    "unverifiable-median-claims",
+    "no-limitations-slide",
+    "narrow-scope"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 2: AI share of revenue stated as 13.4%; actual is $2,356,676/$15,596,345 = 15.1% of total revenue (or ~32% of categorized revenue). The 19.7% startup share uses 197/1000 but 274 rows lack category, so the denominator choice is undisclosed and misleading. Slide 4: B2B AI median $1,357 and B2C AI median $278 are unverifiable against reference data; the overall B2B/B2C median multiple is ~2.3x, not 5x, making the '5x' headline claim suspect. Slide 3: 48% top-10 share rounds acceptably from 49.6%, but 66% AI top-10 concentration is unverifiable.",
+  "evidence": {
+    "insight": "The core insight—that AI is crowded but B2B AI specifically monetizes better—is a genuine analytical step beyond chart description. However, only three data points support the entire thesis, and the deck never explores alternative explanations (survivorship, category overlap, sample sizes within AI B2B/B2C splits).",
+    "narrative": "Clean thesis-evidence-recommendation arc across 5 slides. Each evidence slide builds toward the final recommendation. The sequence is purposeful and the landing is clear. Loses points for being so brief that it feels more like an assertion than a demonstrated argument.",
+    "framing": "Audience (investors) and question (where to allocate capital in AI) are clear. However, no mention of missingness (274 rows lack category, 288 lack audience_type), no sample sizes for the B2B/B2C AI split, no limitations, and no definition of what counts as 'AI' vs other categories. A cold reader cannot assess how robust the claims are.",
+    "accuracy": "Slide 2 revenue share 13.4% is off from the correct ~15.1%. The denominator for startup share (197/1000 vs 197/726) is not disclosed. Slide 4's 5x B2B/B2C AI median claim cannot be verified and conflicts with the overall dataset B2B/B2C median ratio of ~2.3x. Slide 3's 48% is close to 49.6% (acceptable rounding) but 66% AI concentration is unverifiable. No n-values reported anywhere.",
+    "visual": "Consistent dark theme with gold accent, clean typography, strong hierarchy. Bar chart on slide 2 is simple and effective. Big-number cards on slides 3-4 are legible. However, the visual palette is repetitive across slides and the deck relies entirely on big numbers rather than actual charts—no distributions, no scatterplots, no comparisons that would let the reader interrogate the data.",
+    "ai_slop": "No obvious generic filler or consulting buzzwords. The prose is tight and purposeful. The visual template is consistent but not offensively generic. Minimal slop detected."
+  },
+  "confidence": "high",
+  "total": 65,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 10065,
+    "output_tokens": 952
+  }
+}

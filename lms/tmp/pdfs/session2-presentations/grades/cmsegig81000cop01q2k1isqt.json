@@ -1,0 +1,38 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 8,
+    "accuracy": 6,
+    "visual": 8,
+    "bonus": 3
+  },
+  "what_worked": "Exceptional narrative architecture: each slide builds a single thesis from market structure through screening funnel to ask.",
+  "fix_next": "Category slide (p8) uses non-standard labels (Sales, Customer Support) that don't match the dataset's canonical categories, undermining accuracy of the sector thesis.",
+  "verdict": "Outstanding strategic narrative with several unverifiable or misaligned category claims.",
+  "flags": [
+    "category-labels-dont-match-dataset",
+    "top-10-share-mislabeled-as-top-1-percent",
+    "unverifiable-funnel-counts",
+    "ai-revenue-share-claim-wrong"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 4 (p4): Claims 'top 1% hold 49.6% of revenue' — the reference data says top-10 (100 companies) hold 49.6%, not top 1% (10 companies). Slide 8 (p8): Category labels (Sales, Customer Support) do not appear in the frozen dataset categories; median values cannot be verified. AI median shown as $431 vs reference $503. Claim 'AI is 27% of categorised companies' — reference shows 197/726=27.1% which is close, but 'only 15% of revenue' — reference shows AI is $2.36M/$15.6M=15.1% of total, though denominator should arguably exclude uncategorized revenue. Slide 4 (p4): 'top 10% = 83.7%' is presented without verification path and may conflate top-10 companies with top-10%.",
+  "evidence": {
+    "insight": "Slides 5-6 (adverse selection gap, multiple compression by MRR band) and slide 7 (domain authority as pre-LOI signal) go well beyond chart description to build actionable screening criteria. The funnel on slide 10 synthesizes all findings into a concrete workflow. The pricing-structure analysis on slide 9 adds genuine diligence value.",
+    "narrative": "Perfect pyramid structure: market exists (p3) → selection matters (p4) → inefficiency identified (p5) → where to buy (p6) → how to screen (p7-9) → funnel applied (p10) → cohort results (p11) → risks (p12) → ask (p13). Every slide has a 'SO WHAT' box that advances the argument. The thesis sentence on p11 ('disciplined selection buys growing revenue at parity') lands the entire arc.",
+    "framing": "Audience (investor) and question (should we fund micro-SaaS acquisitions?) are crystal clear from slide 1. Scope defined as 1,000 verified-revenue companies. Limitations addressed on p12 including sample stratification, data completeness, and single-month growth noise. Missing: no explicit definition of MRR vs 30-day revenue distinction used throughout.",
+    "accuracy": "Top-1% vs top-10 revenue share error on p4 is material — 49.6% is the top-10 share (100 companies = 10%), not top 1%. Category slide uses labels not in the reference dataset. AI median ($431) doesn't match reference ($503). The 2.3× median multiple and $35k median asking price on p3 are unverifiable but plausible. The 24% missing country aligns with reference (241/1000=24.1%). Total revenue $15.6M rounds correctly from $15,596,344.59.",
+    "visual": "Clean, restrained design with consistent navy/teal/red palette. Charts are simple and appropriate (horizontal bars, donut, funnel). Every exhibit is numbered and sourced. The funnel visualization on p10 is particularly effective. Tables on p9 and p12 are well-structured. Minor issue: donut chart on p3 is a poor choice for a two-category split. No decorative graphics or gratuitous imagery.",
+    "ai_slop": "The '[amount]', '[n]', '[period]' placeholders on the final slide suggest template-awareness rather than slop. The consistent 'SO WHAT' boxes and exhibit numbering feel consulting-template-derived but are substantively filled. No generic filler detected — every slide carries specific data points. Overall: minimal slop."
+  },
+  "confidence": "high",
+  "total": 82,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 25629,
+    "output_tokens": 1110
+  }
+}

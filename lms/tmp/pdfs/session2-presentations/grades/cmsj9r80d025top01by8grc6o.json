@@ -1,0 +1,39 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 4,
+    "narrative": 5.5,
+    "framing": 3.5,
+    "accuracy": 3,
+    "visual": 6,
+    "bonus": 0
+  },
+  "what_worked": "Strong thesis-driven narrative arc with a clear investment conclusion and consistent slide-level takeaways.",
+  "fix_next": "Cherry-picked anecdotes replace systematic analysis; the 73% claim, category definitions, and revenue multiples lack verifiable dataset grounding.",
+  "verdict": "Pitch deck cosplaying as data story; anecdotes replace rigorous analysis.",
+  "flags": [
+    "cherry-picked-examples",
+    "unverifiable-claims",
+    "pitch-deck-not-data-story",
+    "missing-denominators",
+    "causal-overclaim"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 1: calls all 1,000 companies 'AI startups' — dataset spans 12+ categories, many non-AI. Slide 2: '73% of AI startups generate under $10K MRR' — unclear denominator; if using AI category (n=197), median is $503 which is consistent with many being low, but 73% is unverified and the 'wrapper' label is imposed without dataset support. Slide 3: GojiberryAI called 'highest-MRR AI-native company in the dataset' — cannot verify this is the single highest; top-10 companies capture ~49.6% of $15.6M total, so the top company likely exceeds $494K, making this claim suspect. Slide 4: '20+ startups exist solely to get brands cited by ChatGPT' — this sub-category is not in the dataset schema; the count is fabricated or manually curated without transparency. Slide 6: Revenue multiples (10.4x, 6.4x, 5.7x) appear to reference listing/asking prices, not dataset revenue fields — sourcing is opaque.",
+  "evidence": {
+    "insight": "Slides 3-4 identify an interesting agent vs. AEO framing, but insights are built on hand-picked company examples rather than systematic dataset patterns. No distribution analysis, no median comparisons across categories, no use of the dataset's structural variables (provider, audience_type, TLD, anonymity).",
+    "narrative": "Clear two-shift structure (agents + death of search) converging on slide 5's Venn diagram and slide 7's 2x2 matrix. The arc is coherent and lands on an investment thesis (slide 8). However, it reads as a venture pitch, not a data story.",
+    "framing": "Slide 1 says 'revenue-verified AI startups' but the dataset contains 12+ categories beyond AI. No mention of missingness (274 missing categories, 241 missing countries). No scope, limitations, or methodology. A cold reader cannot assess what population these findings generalize to.",
+    "accuracy": "The 73% figure on slide 2 is unverified. GojiberryAI as 'highest-MRR AI-native' is dubious given top-10 revenue concentration. The '20+' AEO startups claim on slide 4 is not derivable from dataset categories. Revenue multiples on slide 6 appear to come from outside the dataset. Growth percentages on slide 8 (23,950%, 5,170%) are extraordinary and unsourced.",
+    "visual": "Consistent dark theme with good typography hierarchy, restrained color palette (cyan/gold), and readable big-number callouts. The Venn diagram on slide 5 has legibility issues (truncated labels). The 2x2 on slide 7 is clean. No actual data visualizations (distributions, scatterplots, bar charts from the full dataset) — only styled cards with cherry-picked numbers.",
+    "ai_slop": "The deck has a polished VC-pitch aesthetic that is stylistically consistent but substantively thin. Takeaway lines like 'Intelligence is commoditized. What's next is autonomy' are punchy but generic. The Venn diagram on slide 5 is decorative rather than data-driven. Overall pattern: high production value masking shallow engagement with the actual dataset."
+  },
+  "confidence": "high",
+  "total": 44,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 14220,
+    "output_tokens": 1042
+  }
+}

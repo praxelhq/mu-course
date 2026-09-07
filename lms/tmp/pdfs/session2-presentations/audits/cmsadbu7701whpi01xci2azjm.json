@@ -1,0 +1,42 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 8,
+    "accuracy": 6.5,
+    "visual": 9,
+    "bonus": 3
+  },
+  "what_worked": "Lorenz curve with Gini, anonymity paradox, and selection-bias diagram form a genuinely original analytical arc.",
+  "fix_next": "Disclose missing-value rates for category (27%) and audience_type (29%) before making claims that depend on those fields.",
+  "verdict": "Exceptional storytelling with a few unchecked numbers; disclose missingness to earn full trust.",
+  "flags": [
+    "ai-median-discrepancy",
+    "anonymous-count-off-by-one",
+    "zero-revenue-pct-rounded-up",
+    "missing-values-undisclosed",
+    "b2b-b2c-metric-unclear",
+    "lifetime-revenue-unverifiable"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 5: AI median MRR stated as $446 vs reference $503 (material). Slide 4: anonymous count 130 vs reference 129 (minor). Slide 3: 22% zero-revenue vs 216/1000=21.6% (minor rounding). Slide 5: B2B/B2C '$49/$9 revenue per customer' doesn't map to any reference metric (unverifiable, possibly conflating ARPU with median multiples).",
+  "evidence": {
+    "insight": "Slide 3 Gini 0.906 and Lorenz framing, slide 4 anonymous-cohort median $9,008 vs $253, slide 6 dual selection-bias argument, slide 7 zero-revenue listings for sale — each is decision-useful and non-obvious.",
+    "narrative": "Clean arc from headline optimism (slide 2) through inequality (3), anonymity paradox (4), signal testing (5), epistemological caveat (6), market pricing (7), to a memorable landing (8). Every slide advances one claim; no filler.",
+    "framing": "Slide 1 sets scope and freeze date; slide 6 explicitly addresses survivorship and selection bias. However, ~27% missing category and ~29% missing audience_type are never disclosed, weakening slides 5's category and B2B/B2C claims.",
+    "accuracy": "Top-10 share 'half' ≈ 49.6% is fine. $15.6M monthly total matches reference. AI median $446 vs $503 is a real miss. 130 vs 129 anonymous is minor. 22% vs 21.6% zero-revenue is acceptable rounding. B2B/B2C per-customer figures are not traceable to reference metrics.",
+    "visual": "Two-color palette (gold, charcoal) used with discipline throughout. Lorenz curve annotated at three points. Slide 4 proportional bar is effective. Slide 6 dark-background selection-bias diagram is a strong conceptual visualization. Typography hierarchy is consistent and elegant. No chart junk.",
+    "ai_slop": "none"
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 8.5 to 8.0: the presentation never discloses substantial missingness in category and audience_type fields, which directly underpin claims on slides 5 and 7. All other scores confirmed.",
+  "total": 85,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 14223,
+    "output_tokens": 850
+  }
+}

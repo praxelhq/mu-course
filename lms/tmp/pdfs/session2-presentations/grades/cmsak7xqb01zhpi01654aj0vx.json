@@ -1,0 +1,38 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 5.5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Strong investor-thesis framing with a coherent six-chapter arc that builds toward actionable M&A recommendations.",
+  "fix_next": "Several median category figures are materially wrong (AI $446 vs $503, Education $2,142 vs $2,435, E-comm $155 vs $387); verify every number against the raw data.",
+  "verdict": "Well-structured investor narrative undermined by multiple inaccurate category medians.",
+  "flags": [
+    "inaccurate-medians",
+    "top10-share-rounded-down",
+    "ai-total-revenue-wrong",
+    "unverifiable-categories"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1/4: '$13.5M combined MRR' — total 30-day revenue is $15.6M; calling it MRR is misleading and the figure is wrong. Slide 4: Top-10 share stated as 48% vs reference 49.6%. Slide 6: E-comm median stated $155 vs reference $387. Slide 7: AI median $446 vs reference $503; Education median $2,142 vs reference $2,435; Marketing median $1,586 vs reference $2,369.50; AI total stated $1.81M vs reference $2.36M. Slide 10: follower r stated 0.02 vs 0.03 on slide 8 (internal inconsistency, minor).",
+  "evidence": {
+    "insight": "Slide 7's median-vs-total distinction is genuinely useful; slide 9's undervalued-cluster identification with specific bundled multiple is decision-relevant. Slide 8's correlation hierarchy is a solid analytical contribution. However, insights stay at the level of describing computed statistics rather than explaining mechanisms.",
+    "narrative": "Six-chapter roadmap (slide 2) provides clear structure from data integrity → concentration → geography → categories → predictors → M&A. Closing synthesis (slide 10) ties five pillars together with a one-line thesis. The arc is purposeful and builds logically.",
+    "framing": "Slide 1 sets audience (investor), scope (1,000 companies), and snapshot date. Limitations around missingness are acknowledged on slide 3 (domain rating coverage). However, the 274-row category missingness is never flagged, which matters for category claims. The '22 questions' framing is never enumerated.",
+    "accuracy": "Multiple category medians are materially off: AI $446 (should be ~$503), Education $2,142 ($2,435), Marketing $1,586 ($2,370), E-comm $155 ($387). AI total revenue stated as $1.81M vs $2.36M. The $13.5M headline figure doesn't match the $15.6M total. Top-10 share 48% vs 49.6%. Superwall count (17) and revenue ($237,834) are correct. Stripe share and RevenueCat count are approximately correct. The 2.30x median multiple aligns with B2C reference.",
+    "visual": "Consistent dark theme with good hierarchy; Lorenz curve (slide 4), bubble chart (slide 6), horizontal bar (slide 7), and scatter (slide 9) are well-chosen. Color coding is restrained. Some chart annotations are helpful (undervalued cluster). The billing infrastructure stacked bar (slide 5) is hard to read. Overall polished but template-uniform.",
+    "ai_slop": "Mild consulting-speak ('underwrite,' 'diligence-grade') but generally substantive. The '22 questions' claim is never backed up — feels like inflated framing. Quote blocks on slides 3 and 7 are self-quoting, which reads as filler."
+  },
+  "confidence": "high",
+  "total": 70,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 20257,
+    "output_tokens": 978
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 1.5,
+    "narrative": 2,
+    "framing": 1.5,
+    "accuracy": 0.5,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Consistent dark visual template with clear typographic hierarchy across all eight slides.",
+  "fix_next": "Nearly every number appears fabricated—use the actual dataset instead of inventing VC-style metrics like ARR multiples, NRR, and burn rates.",
+  "verdict": "Polished-looking but almost entirely fabricated; not a data story.",
+  "flags": [
+    "fabricated-data",
+    "no-dataset-fidelity",
+    "ai-slop",
+    "consulting-language",
+    "unearned-certainty",
+    "no-limitations-stated"
+  ],
+  "factual_error_count": 15,
+  "factual_error_detail": "Slide 1: Total Sector ARR '$2.84B' — actual AI category total is $2.36M; Median ARR '$6.4M' — actual AI median is $503; Top Decile ARR '$42.5M' — fabricated; '+312% YoY' — no YoY data in dataset. Slide 2: Invented taxonomy (Vertical AI Agents, Developer Tools & LLMOps, Generative Media & Design, AI Security & Governance, Autonomous Enterprise ERP) with fabricated company counts and avg ARR figures — none of these categories exist in the dataset. Slide 3: 'Top 5% Capture 68% of Total ARR' — unverifiable claim presented as dataset finding; 'Top Decile Median $42.5M ARR' — fabricated; 'Median Team Size 38 FTEs' — no team size data in dataset. Slide 4: All B2B vs B2C metrics (Gross Margin 82/74, NRR 142/112, CAC Payback 9.2/4.5, Magic Number 1.35/0.95, Annual Churn 7.5/24) are fabricated — dataset contains only audience_type and revenue, not these SaaS metrics. Slide 5: All ARR multiples (45x, 32x, 24x, 18x) and top quartile figures are fabricated — no valuation or funding stage data in dataset. Slide 6: Revenue/employee '$1.14M', burn multiple '0.75x', inference cost '-74%' — no employee count, burn, or cost data in dataset. Slide 7: Strategic moats section is pure opinion with no data backing. Slide 8: Takeaways unsupported by actual data.",
+  "evidence": {
+    "insight": "No genuine insight from the actual dataset; every 'finding' (power-law distribution, B2B advantage, valuation multiples) is either fabricated or generic VC commentary unconnected to the provided data.",
+    "narrative": "There is a coherent VC-pitch structure (landscape → distribution → monetization → valuation → efficiency → moats → thesis), but it narrates fabricated data, so the sequence serves fiction rather than analysis.",
+    "framing": "Slide 1 frames this as an 'Exclusive VC Market Report 2026' for 197 AI-native companies, but never acknowledges the actual 1,000-row dataset, its missingness, or its actual variables. No limitations, no methodology, no source attribution.",
+    "accuracy": "Virtually nothing is traceable to the frozen dataset. The dataset has 30-day revenue in dollars (total ~$15.6M); the deck inflates this to '$2.84B ARR' and invents metrics (NRR, CAC payback, burn multiple, gross margin, team size, valuation multiples) that do not exist in any column. The 197 count matches the AI category count, but all associated figures are fabricated.",
+    "visual": "Dark theme is consistent and professional-looking. Typography hierarchy is clear. The histogram on slide 3 and donut chart on slide 2 are legible. However, charts visualize fabricated data. Slide 4 bar comparisons are clean but meaningless. Template repetition across slides (dark cards with green/yellow accents) is visually monotonous.",
+    "ai_slop": "Extreme AI slop throughout: inflated consulting language ('unprecedented capital efficiency', 'power-law dominant', 'category-defining AI-native pioneers'), fabricated-looking metrics with false precision, generic strategic frameworks (moats, flywheels), and a CTA button ('Explore 197 AI Companies Database') that reads as marketing collateral rather than academic analysis."
+  },
+  "confidence": "high",
+  "total": 18,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 14148,
+    "output_tokens": 1119
+  }
+}

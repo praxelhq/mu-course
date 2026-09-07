@@ -1,0 +1,567 @@
+TRUST MRR - PORTFOLIO STRATEGY REVIEW
+
+
+
+Where the Trust Business Really Stands
+A data-driven read on scale, growth, concentration risk, and where engineering should invest next - based on
+the 1,000-listing verified-revenue sample (frozen 30 Jul 2026).
+
+
+
+
+Prepared for Senior Leadership • Product, Growth & Engineering Strategy
+August 2026
+EXECUTIVE SUMMARY
+
+A $13.5M portfolio that looks concentrated, half-classified, and still
+accelerating
+Five findings should shape the next two quarters of product and engineering priority - more than half the revenue base is invisible to category-level
+reporting.
+
+             Scale is real, ownership is narrow
+ 01
+             $13.47M total MRR across 1,000 listings - but one account (Stan) is 26.5% of it, and the top 10 accounts are 48%.
+
+
+             56% of MRR has no category tag
+ 02
+             $7.6M in MRR - led by one whale account and 114 stealth-mode listings - sits outside the taxonomy. Every category ranking below is a read on <44% of the business.
+
+
+             Momentum is turning up, not down
+ 03
+             30-day revenue run-rate ($15.6M) is running ~40% above the trailing 3-month monthly average ($10.8M) - the portfolio is re-accelerating.
+
+
+             B2B is the better dollar, not the bigger crowd
+ 04
+             B2B listings are 5.7x the median MRR of B2C and grow ~4.5x faster, despite being outnumbered 401 B2C to 255 B2B listings.
+
+
+             Infrastructure and data hygiene are the real bottlenecks
+ 05          87% of MRR runs through a single payment integration (Stripe); domain authority barely correlates with revenue (r=0.21) or growth (r=-0.07) - SEO is not the growth lever
+             teams may assume.
+
+
+
+Executive Summary                                                                                                                                   Trust MRR - Strategic Business Review
+TRUST BUSINESS AT A GLANCE
+
+
+A mid-seven-figure MRR base built on 1,000 verified listings
+Scale looks healthy on every top-line metric - the next slides test how durable and well-distributed that scale actually is.
+
+
+
+
+     $13.47M                                            $15.6M                                                1,000
+     Total MRR                                          30-day revenue run-rate                               Verified listings
+
+
+
+
+     500,597                                            $334M                                                 26
+     Active subscriptions                               Cumulative all-time revenue verified                  Countries represented
+
+
+
+
+Trust Business at a Glance                                                                                                    Trust MRR - Strategic Business Review
+GROWTH TRAJECTORY
+
+The portfolio is re-accelerating: the last 30 days outpaced the
+trailing trend by ~40%
+Monthly-equivalent revenue has stepped up from an $11.1M 12-month average to a $15.6M 30-day run-rate.
+
+
+                   18                                                                      Read it as acceleration, not noise
+
+                   16                                               $15.60M
+                                                                                           All three windows use the same definition (portfolio revenue ÷
+                                                                                           months). A ~40% step-up from the 3-month run-rate is too large to
+                   14                                                                      be rounding.
+
+                   12      $11.15M             $10.80M
+                                                                                           But treat per-company growth % with care
+
+
+   USD, millions
+                   10
+                                                                                           mrr_growth_30d_pct has extreme outliers (one listing shows
+                   8                                                                       +12,983% off a tiny base). Portfolio-level revenue is the reliable
+                                                                                           signal; company-level growth % should be trimmed before
+                                                                                           averaging.
+                   6
+
+
+                   4                                                                       38% of listings show zero recorded growth
+
+                   2                                                                       381 of 1,000 companies report exactly 0% MRR growth for the
+                                                                                           period - worth checking whether that's true stagnation or a
+                   0                                                                       reporting gap before using it to judge product-market health.
+                        Trailing 12-month   Trailing 3-month       Last 30 days
+                           avg / month        avg / month            (actual)
+
+
+
+
+Growth Trajectory                                                                                                      Trust MRR - Strategic Business Review
+REVENUE CONCENTRATION
+
+
+One account is more than a quarter of total MRR
+Cumulative share of MRR held by the top N accounts - concentration this steep is a single point of failure, not a diversified base.
+
+
+                               90
+                                                                                                                                                81.8%
+                               80
+                                                                                                                  70.6%
+                               70
+
+
+
+
+   Cumulative % of total MRR
+                               60                                                                 57.7%
+
+                               50                                       48.0%
+
+                                             40.3%
+                               40
+
+
+                               30   26.5%
+
+                               20
+
+
+                               10
+
+
+                               0
+                                    Top 1    Top 5                     Top 10                     Top 20          Top 50                      Top 100
+
+ Losing the single largest account would remove more MRR than the bottom ~800 listings combined generate today.
+
+Revenue Concentration                                                                                                      Trust MRR - Strategic Business Review
+DATA QUALITY FINDING
+
+56% of MRR carries no category tag - every category ranking in this
+deck reads on the other 44%
+The gap isn't random: it's dominated by the single largest account and 114 stealth-mode listings that intentionally withhold identity.
+
+
+ 50                                                                                                      What this means
+ 45                    43.5%
+                                                                                                         Any statement of the form “AI is the leading category” is
+ 40                                                                                                      true only among the categorized 44% - it says nothing about
+                                                                                                         the largest account or the stealth cohort.
+ 35
+
+ 30                                                                                                      Why it's fixable
+                                    26.5%                  27.0%
+ 25
+                                                                                                         value_proposition and problem_solved text exists for most
+                                                                                                         rows even without a category tag - this is a classification job,
+ 20
+                                                                                                         not a data-collection job.
+ 15
+
+ 10                                                                                                      Why it matters now
+
+   5                                                                                3.1%                 Product and pricing decisions guided by category mix today
+                                                                                                         are effectively guided by a 44% sample that skews toward
+   0                                                                                                     smaller, self-tagged listings.
+                 Categorized          Stan             Stealth Company       Other uncategorized
+                   listings     (single account)         listings (114)      named listings (159)
+
+
+
+
+Data Quality Finding                                                                                                          Trust MRR - Strategic Business Review
+CATEGORY PORTFOLIO (OF THE CATEGORIZED 44% OF MRR)
+
+AI carries the categorized book, but the top 6 categories already
+explain 80% of tagged MRR
+Reference only - remember this covers the categorized subset, not total portfolio MRR (see prior slide).
+
+
+$2,000K
+               $1,806K
+$1,800K
+
+$1,600K
+
+
+$1,400K
+
+$1,200K
+
+
+$1,000K
+
+ $800K                                                                                                                                                                                                      $734K
+
+                          $589K
+ $600K                              $524K
+                                                      $444K
+                                                                       $396K
+ $400K                                                                                $358K
+                                                                                                       $304K
+                                                                                                                             $203K              $200K              $171K
+ $200K                                                                                                                                                                                     $125K
+
+    $0K
+                     AI     Sa        Ed                Ma               E- c           An               So                    Mo                 Co                       He                   De             Oth
+                               aS        uca              rke                o   mm        aly              cia                  bi le              nte                      al th                vT              e   r (1
+                                            t   ion          t   ing                           ti cs            l   Me                   Ap            n   tC                        &F             oo
+                                                                                                                       dia                 ps                rea                       itne           ls                  1c
+                                                                                                                                                                 tio                                                        ats
+                                                                                                                                                                       n                   ss                                   )
+
+
+
+
+Category Portfolio                                                                                                                                                              Trust MRR - Strategic Business Review
+THE VOLUME VS. VALUE PARADOX
+
+AI wins on total dollars; Customer Support and Marketplace win on
+dollars per company
+Median MRR per listing - a cleaner read on which categories produce individually healthy businesses, unskewed by a few outsized accounts.
+
+
+6000
+
+
+             $5,163
+5000
+
+                             $4,322
+
+4000
+
+
+
+
+3000
+
+
+                                             $2,142
+2000
+                                                                                                 $1,586
+                                                              $1,294           $1,254
+                                                                                                                                   $1,036
+                                                                                                                   $912
+1000
+                                                                                                                                                    $500                   $446
+
+   0
+           Customer        Marketplace     Education         Analytics         Content         Marketing          Social            Sales          Fintech                   AI
+            Support                                                            Creation                           Media
+
+
+AI's median listing earns $446/mo - 12x less than the median Customer Support listing - despite AI carrying 31% of categorized total MRR.
+Volume vs. Value Paradox                                                                                                                    Trust MRR - Strategic Business Review
+          PORTFOLIO MATRIX
+
+          Dev Tools and Analytics are the small, fast-growing categories
+          worth watching; Content Creation is shrinking
+          Bubble = category; x-axis = trimmed-mean 30-day MRR growth; y-axis = total categorized MRR; bubble size = number of listings.
+
+
+           CASH COW                                                                                                  STARS   Stars
+
+
+                                                                                                                             Analytics & Dev Tools: smaller today, growing fastest
+                                                                        AI                                                   (+11-12%). Prime candidates for feature investment.
+
+
+
+
+                                                                                                                             Cash cow
+
+ Total
+categor                                                                                                                      AI: dominant size, near-flat growth (+1%). Defend share;
+  ized                                                                                                                       don't expect it to be the growth engine.
+ MRR
+
+
+
+
+                                                                                                                             Watch list
+
+                                                                             SaaS
+                                                                                      Education                              Content Creation is the only sizeable category in outright
+                                                                                                 Marketing                   decline (-2.2%).
+                                                                                             E-comm
+                                                                                                              Analytics
+                                                                                          Social Media
+           WATCH LIST                              Content
+                                                              Mobile Apps
+                                                   Creation
+                                                                                                             Dev Tools
+                      Sales
+                                     ← Declining   Trimmed-mean 30d MRR growth      Growing →
+
+          Portfolio Matrix                                                                                                                    Trust MRR - Strategic Business Review
+CUSTOMER MIX: B2B VS. B2C
+
+B2B is outnumbered 401-to-255 by B2C listings but delivers 5.7x
+the revenue per account and grows 4.5x faster
+Where audience type is tagged (712 of 1,000 listings), B2B is the stronger dollar - not the bigger crowd.
+
+
+
+                        Median MRR by audience                                                          Growth by audience
+1200                                                                          7
+
+               $1,036                                                                                                                       6.2%
+                                                                              6
+1000
+
+
+                                                                              5
+                                                                                         4.6%
+ 800
+
+                                                                              4
+
+ 600
+
+                                                                              3
+
+ 400                                                     $352
+                                                                              2
+
+
+ 200
+                                   $181                                                                        1.0%
+                                                                              1
+
+
+
+   0                                                                          0
+                B2B                B2C                   Both                             B2B                  B2C                          Both
+
+
+
+
+Customer Mix                                                                                                          Trust MRR - Strategic Business Review
+GEOGRAPHIC FOOTPRINT
+
+
+The US alone is 56% of total MRR; France is a distant but clear #2
+Among the 76% of listings with a recorded country - concentration mirrors the account-level pattern seen portfolio-wide.
+
+
+$8,000K
+                $7,504K
+
+
+$7,000K
+
+
+
+$6,000K
+
+
+
+$5,000K
+
+
+
+$4,000K
+
+
+
+$3,000K
+
+
+
+$2,000K
+
+
+                          $894K
+$1,000K
+                                       $366K         $350K
+                                                                   $208K         $157K          $129K         $106K              $75K                  $84K
+    $0K
+                   US     France      Canada          UK         Hong Kong        India       Singapore     Australia         Germany                  Brazil
+
+
+
+
+Geographic Footprint                                                                                                    Trust MRR - Strategic Business Review
+ MONETIZATION INFRASTRUCTURE
+
+ 87% of MRR runs through one payment integration - and per-
+ subscriber revenue varies 20x by category
+ Two views of monetization health: platform dependency risk, and where the pricing model is actually working.
+
+
+
+                                  MRR by payment provider                                                           Highest revenue-per-subscriber categories
+                                                                                                 900
+                                           4.3%
+                                                                                                 800       $774
+                                    8.5%
+                                                                                                 700
+
+
+                                                                                                 600
+
+
+                                                                                                 500
+
+
+                                                                                                 400
+
+
+                                                                                                 300
+
+
+                                                                                                 200
+                                                       87.2%                                                                $103
+                                                                                                 100                                        $54                 $40                  $39
+
+                                                                                                   0
+                                                                                                         Customer          Sales          Marketing           E-comm                SaaS
+                               Stripe   RevenueCat   All other providers                                  Support
+
+
+Domain authority is not a growth lever: domain_rating correlates weakly with MRR (r=0.21) and not at all with growth (r=-0.07). SEO-led investment would be a low-ROI bet based on this
+sample.
+ Monetization Infrastructure                                                                                                                          Trust MRR - Strategic Business Review
+WHITE SPACE OPPORTUNITIES
+
+The highest-value categories are also the most under-supplied on
+the platform
+Categories with strong per-account economics but very few listings - the platform is thin exactly where the model works best.
+
+
+
+
+      Customer Support              5 listings             $5,163 median MRR             Highest revenue-per-subscriber in the portfolio (7.5x the next category).
+
+
+
+
+      Marketplace                   7 listings             $4,322 median MRR             Second-highest median MRR; almost no supply to court more of.
+
+
+
+
+      Education                     30 listings            $2,142 median MRR             Already has scale and the best combination of size + median value.
+
+
+
+
+      Analytics                     19 listings            $1,294 median MRR             Fastest trimmed-mean growth of any sizeable category (+11.7%).
+
+
+
+
+White Space Opportunities                                                                                                      Trust MRR - Strategic Business Review
+RISK ASSESSMENT
+
+Four risks compound each other: concentration, blind spots,
+decline, and incomplete data
+None of these are catastrophic in isolation, but they stack - the biggest account is also the biggest data gap.
+
+
+                  Single-account concentration
+    HIGH
+                  Top 1 account = 26.5% of MRR; top 10 = 48%. A churn or dispute event on the #1 account is a material portfolio event.
+
+
+                  Category blind spot
+    HIGH
+                  56% of MRR is untagged. Every category-level decision made today is based on <44% visibility into the business.
+
+
+                  Declining & volatile segments
+    MED
+                  Content Creation trending negative (-2.2%); Sales (-11.1%) and Security (-9.5%) are the weakest trimmed-mean performers among sizeable categories.
+
+
+                  Payment infrastructure concentration
+    MED
+                  87% of MRR depends on one processor (Stripe). Fine operationally today, but a single point of platform risk as international mix grows.
+
+
+                  Broad data incompleteness
+    LOW           Country (24%), audience type (29%), pricing model (34%), and domain rating (29%) are all missing on a material share of listings - limits confidence in every cut in this
+                  deck.
+
+
+
+Risk Assessment                                                                                                                                             Trust MRR - Strategic Business Review
+       PRIORITIZATION FRAMEWORK
+
+       Fix the category blind spot and concentration monitoring first -
+       both are high-impact, low-to-medium effort
+       Engineering value vs. effort for the initiatives implied by this analysis. Effort is a directional estimate, not an engineering estimate - flag for sizing
+       before roadmap commitment.
+
+
+        QUICK WINS                                                                                                                       BIG BETS   Do first
+
+                                                                                                                                                    Auto-classification and concentration monitoring both address
+                      Auto-classify
+                  uncategorized listings                                                                               B2B / enterprise tier        the two HIGH risks flagged on the prior slide, and both are
+                                                                        Stealth-listing                              for high-ARPU categories
+                                                                       verification flow                                                            largely data/logic work - not new infrastructure.
+
+
+                                             Concentration-risk
+                                             monitoring & alerts
+                                                                                                                                                    Sequence next
+Busi
+                                                                                                                 M&A matching engine
+ness                                                                                                              (on-sale, multiples)              Stealth-listing verification and alt-payment connectors unlock
+valu                  Data-completeness                                              Alt. payment-provider
+                     capture at onboarding                                            connectors (non-US)                                           international and trust gains but need product design work, not
+e↑                                                                                                                                                  just engineering.
+
+
+
+                                                                                                                                                    Fund deliberately
+
+                                                                                                                                                    B2B tiering and the M&A matching engine are the highest
+                                                                                                                                                    ceiling but multi-quarter builds - scope as deliberate bets, not
+                                                                                           SEO / domain-rating                                      quick sprints.
+                                                                                             marketing push
+                                                                                                                                  DEPRIORITIZE
+
+                                                            Engineering effort →
+
+
+       Prioritization Framework                                                                                                                                            Trust MRR - Strategic Business Review
+KEY RECOMMENDATIONS
+
+
+What Leadership Should Do Next
+
+     Immediate (0–4 weeks)                            Near-term (1–2 quarters)                          Long-term (2+ quarters)
+
+         Stand up concentration-risk monitoring on      Build a stealth-listing identity/verification     Design a B2B / enterprise tier for high-ARPU
+         the top 10 accounts                            flow                                              categories
+
+
+
+
+         Kick off auto-classification of the 274        Add 2–3 alt-payment connectors for non-US         Invest in the M&A matching engine for the
+         uncategorized listings                         markets                                           on-sale segment
+
+
+
+
+         Audit and disclose data-completeness gaps      Launch onboarding prompts to close                Re-evaluate SEO/domain-authority spend
+         to teams using category reports                audience-type & pricing-model gaps                given weak correlation to growth
+
+
+
+
+Trust MRR - Strategic Business Review | August 2026
+

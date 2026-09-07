@@ -1,0 +1,44 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 6,
+    "accuracy": 4,
+    "visual": 6,
+    "bonus": 1
+  },
+  "what_worked": "The 205× MRR vs 6× follower juxtaposition is genuinely sharp and decision-useful for founders.",
+  "fix_next": "Verify every revenue figure against the actual dataset total ($15.6M); the $25M single-company claim alone exceeds it.",
+  "verdict": "Strong storytelling undermined by multiple fabricated or impossible revenue figures.",
+  "flags": [
+    "fabricated-top-company-revenue",
+    "ai-total-revenue-inflated-8x",
+    "ecommerce-revenue-inflated-10x",
+    "zero-revenue-count-wrong",
+    "missing-data-unacknowledged",
+    "gamma-template-artifacts",
+    "no-source-attribution",
+    "spurious-chart-label"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 4: largest company $25,017,876 exceeds entire dataset total $15,596,345—impossible. Slide 4: top-10 share 50.6% vs reference 49.6% (minor). Slide 5: 109 zero-revenue companies vs reference 216. Slide 9: AI total $18,428,213 vs reference $2,356,676 (~8× inflated); AI median $4,301 vs reference $503 (~8.5× inflated). Slide 9: E-commerce total $12,018,508 vs reference $1,111,606 (~10.8× inflated). Slide 3: average $133,750 is plausible only if computed differently from total/1000=$15,596 — suggests systematic confusion of annualized vs 30-day revenue without disclosure. Slide 4: chart labeled 'Total conversion rate' — spurious template artifact.",
+  "evidence": {
+    "insight": "Slide 8's three-metric comparison (MRR 205×, subscribers 81×, followers 6×) is an original and useful decomposition. Slide 9's crowded-vs-profitable framing with AI vs e-commerce is a strong analytical move. Slide 7's B2B/B2C flip at the top is well-constructed.",
+    "narrative": "Clear arc: establish skew (3-5) → pivot question (6) → three answers (7-9) → geography/exits (10-11) → synthesis (12). Title 'The Thousand and the Ten' anchors the whole deck. Closing line lands well. Transition slide 6 is effective.",
+    "framing": "No mention of missingness (241 country, 288 audience_type, 274 category missing). No source attribution or time period for revenue. No acknowledgment of whether figures are monthly or annual—critical given apparent 12× inflation pattern. Audience implied but never stated.",
+    "accuracy": "The single largest company claim ($25M) exceeds the entire dataset total ($15.6M)—a logical impossibility. AI and e-commerce revenue figures are inflated roughly 8-10× vs reference. Zero-revenue count (109) is roughly half the actual (216). The systematic pattern suggests 30-day revenue was multiplied by 12 without disclosure, but even that doesn't reconcile all figures. Multiple claims cannot be verified against the dataset.",
+    "visual": "Gamma template gives consistent warm palette. Slide 3's average-vs-median bar is effective. Slide 4 has spurious 'Total conversion rate' label. Slide 11's bar chart comparing $86.8M to $35K makes the median bar invisible—poor scale choice. AI-generated decorative illustrations on slides 1, 2, 6, 10 are atmospheric but content-free.",
+    "ai_slop": "Gamma watermark on multiple slides. Four decorative AI illustrations add no analytical value. Slide 4's 'Total conversion rate' label is a template artifact never corrected. Overall writing quality is high and not generic filler."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 4.5 to 4.0: the $25M single-company claim exceeding the entire dataset total is a fundamental impossibility that should have been caught, compounding the already-inflated AI/e-commerce figures. Lowered framing 6.5→6.0 for complete silence on missingness and revenue time-period ambiguity. Reduced bonus from 2 to 1: strong narrative craft but fabricated numbers undercut the 'beyond rubric' standard.",
+  "total": 64,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 21859,
+    "output_tokens": 1126
+  }
+}

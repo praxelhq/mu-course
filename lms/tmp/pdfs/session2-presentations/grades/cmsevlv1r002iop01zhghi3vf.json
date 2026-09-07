@@ -1,0 +1,40 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 4.5,
+    "narrative": 5,
+    "framing": 4,
+    "accuracy": 3.5,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Mean-vs-median framing is a genuine insight; subscriber-gap concept is a creative product idea.",
+  "fix_next": "Category medians are materially wrong (Marketing $1,586 vs $2,370; Education omitted), and correlation claims (r=0.91) appear fabricated—verify all numbers against the dataset.",
+  "verdict": "Polished pitch deck with multiple fabricated statistics undermining its credibility.",
+  "flags": [
+    "fabricated-statistics",
+    "consulting-language",
+    "ai-slop-template",
+    "missing-limitations",
+    "no-real-charts",
+    "unverifiable-correlations"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 2: $0 MRR '197 startups' and '101 $0 lifetime' don't match reference (216 zero-revenue). Slide 4: 19.7% and 10.1% inconsistent with 216/1000=21.6%. Slide 5: Marketing median $1,586 vs reference $2,369.50; Content Creation $1,254 vs $1,237.50 (close but others wrong); AI $446 vs $503; Productivity $42 vs $79.91; 'B2B Software' and 'B2C Apps' are not dataset categories—fabricated groupings. Education (highest eligible median $2,435) entirely omitted. Slide 3: r=0.91 for active subscriptions and r=0.87 for revenue last 30 days are unverifiable and likely fabricated—no methodology shown. Slide 9: 26.2% listed for sale, $1,055 on-sale median, $187 not-on-sale median, 38x multiple—all unverifiable and presented without sourcing.",
+  "evidence": {
+    "insight": "Slide 2 mean-vs-median gap is a real finding. Subscriber Gap concept (slide 6) is creative but built on unverified r=0.91. Later slides (7-12) shift to product pitching with no new data insights.",
+    "narrative": "Coherent arc from problem (misleading averages) → data signals → product proposal → stakeholders → flywheel. But it reads as a product pitch, not a data story—half the slides are speculative feature descriptions.",
+    "framing": "Framed as internal 'Strategic Proposal' for TrustMRR Product Roadmap 2026. No mention of dataset limitations (274 missing categories, 241 missing countries). No acknowledgment of observational-only data. Audience unclear—is this a class assignment or roleplay?",
+    "accuracy": "Multiple category medians are wrong. Zero-revenue count doesn't match (197 vs 216). Correlation values appear fabricated with no methodology. 'B2B Software' and 'B2C Apps' are invented categories not in the dataset. Education category entirely omitted despite having highest eligible median.",
+    "visual": "Consistent dark theme with color-coded cards. Clean layout. But no actual data visualizations—no scatter plots, histograms, or bar charts. The slide 2 'bar chart' is just colored rectangles with numbers. Slide 3 has a large decorative orange circle overlapping the table, obscuring text. Repetitive card-based template across all slides.",
+    "ai_slop": "Heavy consulting language throughout: 'Intelligence Engine,' 'monetization pipelines,' 'self-reinforcing flywheel,' 'white space.' Decorative server room stock photo on slide 1. Every slide uses identical card-grid template. Slides 7-12 are product pitch filler with no data. '100% Opportunity Gap' on slide 4 is meaningless."
+  },
+  "confidence": "high",
+  "total": 44,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22166,
+    "output_tokens": 964
+  }
+}

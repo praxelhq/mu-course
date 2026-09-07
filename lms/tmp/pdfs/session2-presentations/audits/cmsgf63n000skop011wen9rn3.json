@@ -1,0 +1,44 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 5,
+    "accuracy": 4.5,
+    "visual": 6.5,
+    "bonus": 0
+  },
+  "what_worked": "Lorenz curve with annotated zero-revenue tail effectively communicates the power-law thesis visually and substantively.",
+  "fix_next": "Add a limitations slide disclosing missingness rates and anchor all claims to verifiable dataset figures, not ungrounded assertions.",
+  "verdict": "Polished consulting aesthetic wraps a thesis that outruns its quantitative evidence.",
+  "flags": [
+    "inflated-aggregate-claim",
+    "fabricated-looking-scatter-slide6",
+    "missing-limitations-slide",
+    "consulting-language",
+    "no-missingness-disclosure",
+    "equation-not-tested",
+    "revenue-window-conflation",
+    "decorative-funnel-slide8"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 2: 'hundreds of millions in aggregate all-time revenue' — total 30-day revenue is $15.6M; even if all-time is larger, the dataset column used is 30-day MRR, making this claim unverifiable and likely inflated. Slide 3: 'top 15 companies account for over $250,000,000 in all-time revenue' — cannot be verified from the 30-day revenue dataset and appears fabricated or drawn from an external source. Slide 6: scatter axes labeled 'Median 30-Day Revenue' as percentages (0–100%) and 'Velocity (30-Day Growth %)' with no clear derivation from dataset fields; values and groupings appear ungrounded.",
+  "evidence": {
+    "insight": "The 'low barriers to entry, extreme barriers to scale' thesis (slides 2, 11) is a genuine interpretive frame. Outlier-vs-median juxtaposition (slide 9) is effective. However, the 'success equation' (slide 10) is asserted not tested — no correlation coefficients, no regression, no controlled comparison. B2B/B2C slide (7) omits the actual median multiples available in the data (2.35x/2.30x). Category-level analysis is entirely absent despite being one of the richest dataset dimensions.",
+    "narrative": "Three-act structure is clear: macro (2–4), sectoral (5–8), micro synthesis (9–11). Thesis stated early and returned to in conclusion. However, the middle section drifts into conceptual diagrams (slide 8 funnel, slide 10 equation) that are not earned by prior quantitative demonstration, weakening the evidence chain.",
+    "framing": "N=1,000 stated on slide 1. No limitations slide. No disclosure of 241 missing country, 288 missing audience_type, 274 missing category, or 216 zero-revenue rows. Revenue windows (30-day vs all-time) are conflated without definition. Target audience never identified. 'Economist' credential on title slide is unusual framing for a student data-story.",
+    "accuracy": "Stan figures on slide 3 ($2,844,652 30-day, $76,627,685 all-time) appear plausible but the all-time figure cannot be verified against the frozen 30-day reference. 'Hundreds of millions' (slide 2) and '$250M top 15' (slide 3) are unverifiable and likely inflated. Slide 6 scatter has percentage axes with no clear mapping to dataset columns. Total dataset revenue of $15.6M and top-10 share of 49.6% are never cited. The median $0 claim (slide 2) is directionally consistent with 216 zero-revenue rows but the actual dataset median is not necessarily $0 — with 1000 rows and 216 zeros, the median could be positive.",
+    "visual": "Consistent cream/grey palette with red accents is restrained and professional. Lorenz curve (slide 4) is the strongest chart — well-annotated with outlier callouts. Dot map (slide 5) is attractive but imprecise. Slide 6 scatter appears AI-generated with unclear provenance. Slide 8 funnel is purely conceptual with no data encoding. Slide 3 bar charts are hard to read with overlapping elements. Overall clean but several charts are decorative rather than evidence-bearing.",
+    "ai_slop": "Heavy consulting register throughout: 'structural synthesis,' 'economic engine,' 'proprietary audience capture,' 'value extraction per visitor,' 'compounding structural advantages.' Slide 8 funnel and slide 10 equation are generic frameworks not grounded in dataset metrics. Slide 6 scatter has hallmarks of AI-generated visualization. Language is polished but often substitutes jargon for specificity."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.0 to 4.5: the 'hundreds of millions' and '$250M top 15' claims are unverifiable from the dataset and likely fabricated; slide 6 scatter axes are ungrounded; median $0 claim is questionable. Lowered framing from 5.5 to 5.0: no limitations, no missingness, no audience definition. Removed bonus point: the 'success equation' is asserted not demonstrated, and the consulting-style presentation, while polished, does not constitute work beyond the rubric — it substitutes rhetoric for rigor.",
+  "total": 59,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 18563,
+    "output_tokens": 1322
+  }
+}

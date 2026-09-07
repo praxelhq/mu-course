@@ -1,0 +1,39 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 6,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Honest data-quality callouts, outlier warnings on E-comm/Marketing, and the MRR-vs-revenue divergence analysis were genuinely useful.",
+  "fix_next": "The top-10 revenue share is 49.6%, not 61%; the sector medians appear to use all-time revenue, not 30-day, yet don't match reference values for either—verify your aggregation code.",
+  "verdict": "Honest framing and decent structure, but several key numbers are wrong.",
+  "flags": [
+    "top10-share-inflated",
+    "sector-medians-unverifiable",
+    "missing-slide-4",
+    "no-payment-provider-analysis",
+    "no-anonymity-analysis"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 3: Top-10 share stated as 61%, reference is 49.6%. Slide 3: $0-revenue count shown as 101, reference is 216 (if using 30-day) or needs clarification of which revenue window. Slide 4: Sector median values (e.g., E-comm $34,880, Education $19,399, AI $4,853) don't match 30-day reference medians and are not clearly labeled as all-time, making them unverifiable and likely wrong. Slide 3: Total all-time revenue $334M is plausible for all-time but the 30-day total is $15.6M; mixing revenue windows without clarity is misleading.",
+  "evidence": {
+    "insight": "Slide 5 MRR divergence analysis (73% gap) and correlation pair (0.91 subs-MRR vs 0.27 DA-revenue) are original and decision-useful. Slide 7 Anderson-Darling analysis adds analytical depth. However, no provider, anonymity, TLD, or B2B/B2C analysis limits breadth.",
+    "narrative": "Flows from dataset overview → power law → sectors → growth → geography → distribution → conclusions. Coherent arc but reads more as a tour of findings than a thesis-driven argument. Conclusions summarize but don't synthesize toward a single recommendation.",
+    "framing": "Slide 2 clearly defines metrics, flags missingness (274 categories, 142 traffic), and sets scope. Data quality note is commendably upfront. However, the deck never states who the audience is or what decision it serves.",
+    "accuracy": "Top-10 share 61% vs reference 49.6% is a material error. The $0 count of 101 likely refers to all-time $0 rather than 30-day $0 (216), but this is ambiguous. Sector medians appear to be all-time rather than 30-day but don't match any known reference cleanly. The ~11% zero-revenue claim is consistent with 101/1000 but contradicts the 216/1000 (21.6%) for 30-day. Slide numbering jumps from 3 to 5, suggesting a missing slide.",
+    "visual": "Clean, consistent template with good use of horizontal bars, labeled data points, and annotation panels. Chart choices are appropriate (bar charts for distributions, horizontal bars for ranked categories). However, visual variety is limited—every chart is a bar chart. The Anderson-Darling chart (slide 7) is somewhat unusual and effective. No scatter plots or distributions shown despite discussing them.",
+    "ai_slop": "none"
+  },
+  "confidence": "high",
+  "total": 63,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 16111,
+    "output_tokens": 899
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "fixture_id": "S5-REV-MALFORMED-01",
+  "trace_id": "trc_rev_malformed_001",
+  "expected_snapshot": {"snapshot_id":"exp_20260730_c","rows":[{"invoice_id":"inv_test_403","payment_reference":"pay_test_403","amount_minor":399900,"currency":"INR","customer_ref":"cust_test_43","expected_status":"paid","due_at":"2026-07-30T00:00:00Z"}]},
+  "settlement_snapshot": {"snapshot_id":"set_20260730_c","rows":[{"settlement_id":"stl_test_503","line_id":"line_test_503","payment_reference":"pay_test_403","amount_minor":"3999.00","currency":"INR","type":"charge","occurred_at":"2026-07-30T08:00:00Z"}]},
+  "test_mode": "malformed"
+}
+

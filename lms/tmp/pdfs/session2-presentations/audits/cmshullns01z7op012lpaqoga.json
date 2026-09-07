@@ -1,0 +1,42 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 5.5,
+    "accuracy": 3.5,
+    "visual": 6.5,
+    "bonus": 0
+  },
+  "what_worked": "Concentration thesis is genuinely decision-useful; top-10 share and pricing-inefficiency angles land well together.",
+  "fix_next": "Rebuild slide 4 entirely—every category count and median is fabricated; acknowledge missingness on country and category fields.",
+  "verdict": "Strong thesis undermined by fabricated category data on the analytical centerpiece slide.",
+  "flags": [
+    "fabricated-category-counts",
+    "fabricated-medians",
+    "missingness-not-disclosed",
+    "no-limitations-slide",
+    "denominator-opacity",
+    "possible-ai-hallucination"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 4: SaaS count 437 vs ref 66; AI count 392 vs ref 197; Marketing count 159 vs ref 42; Analytics count 131 vs ref 19; E-comm count 56 vs ref 19; 'Productivity' not a reference category at all. Medians also wrong (e.g., SaaS $527 vs ref $200.50; Marketing $1,277 vs ref $2,369.50; AI $490 vs ref $503). Slide 3: US 63% revenue claim and 26% startup share not independently verifiable but plausible given Stripe dominance; however denominator excludes 241 missing-country rows without disclosure.",
+  "evidence": {
+    "insight": "Slide 2 concentration finding and slide 5 pricing-inefficiency angle are original and decision-relevant for a buyer audience. Slide 4 crowding-vs-median insight would be strong if the numbers were real.",
+    "narrative": "Clear three-act arc: concentration exists → pools geographically → categories show crowding → exit pricing is inefficient → synthesis. Slide 6 ties back to thesis. Purposeful sequence.",
+    "framing": "Audience (capital allocators) is implicit but clear by slide 6. No mention of 241 missing countries, 274 missing categories, or 216 zero-revenue nuance beyond the headline. The 26% US share uses an undisclosed reduced denominator. No limitations acknowledged anywhere.",
+    "accuracy": "Slide 2 top-10 share (49.6%) and zero-revenue (21.6%) are correct. Slide 4 is catastrophically wrong: every category count is inflated 3-7x (shown total ~1,450 vs actual ~726 categorized rows), a phantom 'Productivity' category appears, and medians diverge substantially from reference. Slide 5 median multiple 2.3x is close to reference B2B 2.35x but not clearly scoped.",
+    "visual": "Consistent red/grey palette, clean typography, effective big-number callouts. Paired bar layout on slide 4 is smart in concept. No chart junk. Three-card template reused on slides 2 and 5 is slightly repetitive but functional.",
+    "ai_slop": "Slide 4 category counts and medians strongly suggest AI hallucination—numbers match no reasonable filter of the dataset. 'Productivity' category does not exist in reference data. Consulting-style 'The read' box on slide 5 borders on filler but contains a substantive claim."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Removed 1-point bonus: the fabricated slide 4 data disqualifies work-beyond-rubric recognition. Core scores unchanged as preliminary assessment was well-calibrated.",
+  "total": 57,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 11619,
+    "output_tokens": 900
+  }
+}

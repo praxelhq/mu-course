@@ -1,0 +1,42 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 5,
+    "narrative": 6,
+    "framing": 5,
+    "accuracy": 3.5,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Four-beat structure is purposeful; crowding-vs-earning and median-vs-mean contrasts are genuinely useful framings.",
+  "fix_next": "Fix revenue figures against the actual dataset, acknowledge missing-data rates, and replace the fabricated acceleration chart with verifiable analysis.",
+  "verdict": "Decent narrative arc undermined by multiple wrong numbers and a fabricated time-series chart.",
+  "flags": [
+    "fabricated-chart-suspected",
+    "multiple-revenue-errors",
+    "ai-slop-decorative-illustrations",
+    "missing-data-not-acknowledged",
+    "denominator-confusion",
+    "gamma-template-filler"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 2/3: AI revenue stated $1.81M vs reference $2.36M. Slide 3: SaaS $588K vs $703.5K; Marketing $444K vs $1.32M. Slide 2: denominator '$13.47M listed MRR' unexplained and wrong vs $15.6M total. Slide 4: US revenue share 55.7% uses unclear denominator (country-known subset?) but is not transparently scoped. Slide 5: acceleration chart claims time-series comparison (last 30 days vs 3-month vs 12-month pace) from a cross-sectional snapshot—data does not exist in the dataset. Slide 6: 26.2% for-sale and $332K avg asking price are unverifiable against frozen reference.",
+  "evidence": {
+    "insight": "Crowding-vs-earning contrast (slides 2-3) and median-vs-mean skew (slide 6) are decision-useful observations, but analysis stays surface-level—no median-revenue-by-category comparison, no provider breakdown, no TLD or anonymity analysis.",
+    "narrative": "Four-beat arc (crowded → money location → acceleration → so-what) is coherent and lands on actionable recommendations. However the acceleration beat (slide 5) rests on fabricated data, hollowing out the strongest narrative claim.",
+    "framing": "Slide 1 identifies audience (investors/founders), scope (1,000 startups), and data provenance (payment-verified). But 274 missing categories and 241 missing countries are never disclosed, making every denominator silently wrong. No limitations slide.",
+    "accuracy": "At least 5 revenue figures are materially incorrect (AI, SaaS, Marketing totals and derived shares). The acceleration chart on slide 5 references temporal data unavailable in a single cross-sectional snapshot. The 26.2% for-sale stat and $332K asking price cannot be verified. Denominators shift without explanation.",
+    "visual": "Only one real data chart (slide 5, likely fabricated). Remaining slides are text-heavy with decorative Gamma illustrations that carry zero analytical information. Map on slide 4 is schematic, not data-driven. No bar/scatter/table for category or geography claims that could be verified.",
+    "ai_slop": "Gamma template decorative illustrations on every slide. Generic filler phrases: 'Infrastructure bets with outsized per-customer value,' 'High utility category with concentrated winners,' 'focused revenue pools'—none backed by data. Acceleration chart appears AI-generated from nonexistent time-series."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 5.5 to 5.0: missing-data rates (27% category, 24% country) are never acknowledged anywhere, which is a more serious framing gap than the preliminary score reflected. All other scores confirmed after independent review.",
+  "total": 46,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 13796,
+    "output_tokens": 933
+  }
+}

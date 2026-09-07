@@ -1,0 +1,155 @@
+Indie Startup Economics:
+What 8,782 Founders Reveal
+A data-driven analysis of bootstrapped startups tracked by TrustMRR —
+revenue-verified, category-tagged, and geographically diverse. Snapshot:
+July 30, 2026.
+The Dataset at a Glance
+TrustMRR is a revenue-verification directory connecting directly to Stripe, RevenueCat, and similar APIs. Each row is a real
+company with verified revenue and metadata — not self-reported estimates.
+
+
+
+                       8,782                                                                 22%
+                     Startups Tracked                                                       Listed for Sale
+             Verified listings with revenue metadata                                    1,952 marketplace listings
+
+
+
+
+                        59%                                                                 36%
+                          Use Stripe                                                     Country Unknown
+               Dominant payment infrastructure                                         Unlabeled geographic data
+A Power-Law Market, Not a Normal Distribution
+Segment
+                                                                     The Outlier Problem
+                                                                     The #1 earner, Stan, generates $3.57M MRR and $76.6M all-
+    $0 Current MRR
+                                                                     time revenue — while the median startup earns $0/month.
+
+                                                                     Mean MRR ($1,752) is over 20× the 75th percentile ($76). A
+                                                                     handful of outliers drag the average. Median, not mean, is the
+$0 All-Time Revenue
+                                                                     honest summary statistic here.
+
+
+                                                                            57% report $0 current MRR — mostly pre-revenue or
+    For Sale Listings
+                                                                            dormant projects tracked for transparency.
+
+                        0   10   20        30         40   50   60
+                                      % of Startups
+AI Dominates by Volume — But Not by Revenue
+Quality
+                            Listings
+                                       The AI Paradox
+                               1.5k
+                                       AI leads with 1,430 listings (~16% of dataset) — over 2.7× the
+                                       next-largest category, SaaS (525).
+
+                               1k      Yet AI's median MRR is only $16.90 — mid-pack, well behind
+                                       Mobile Apps ($57.10) and Health & Fitness ($20.52).
+
+                                       The AI segment is thick with early-stage and experimental
+                               500
+                                       projects. Smaller, less-hyped categories skew toward more
+                                       established, monetizing products.
+
+
+                               0
+     AI              SaaS
+          Category
+B2B Out-Earns B2C — But B2C Outnumbers It
+Segment
+                                                           Willingness to Pay vs. Builder Frequency
+                                                           B2B startups have nearly 2× the median MRR of B2C ($15.99
+                                                           vs $8.37), consistent with typical enterprise willingness-to-pay
+B2B
+                                                           differences.
+
+                                                           However, B2C listings outnumber B2B nearly 2-to-1 (3,143 vs
+                                                           1,883). Consumer apps are simply more common to build and
+                                                           list — even though they monetize less per company.
+
+B2C
+
+
+
+
+      0   2   4   6         8          10   12   14   16
+                      Median MRR ($)
+Geography: US, India &
+Europe Lead
+  🇺🇸 United States
+  1,657 listings — largest by far
+
+
+
+  🇮🇳 India
+  807 listings — second place
+
+
+
+  🇫🇷 France
+  612 listings — strong EU presence
+
+
+
+  🇬🇧 United Kingdom
+  603 listings — close behind France
+
+
+These four countries account for roughly 45% of all rows with known
+country. A significant 36% of listings have no labeled country — a data gap
+worth noting for geographic analysis.
+Stripe Is the Infrastructure Backbone
+Provider
+                                                 Payment Infrastructure Concentration
+                                                 Stripe underlies 59% of all listings (5,185 of 8,782).
+                                                 RevenueCat — focused on mobile subscriptions — is a distant
+     Stripe
+                                                 second at 1,236.
+
+                                                 This reflects that the dataset likely draws heavily on Stripe's
+                                                 public API for revenue verification, which may introduce a
+                                                 subtle bias toward Stripe-native businesses.
+
+RevenueCat
+
+                                                        Payment processor data can serve as a rough proxy
+                                                        for business maturity and subscription model
+              0   1k   2k         3k   4k   5k
+                                                        sophistication.
+                            Listings
+The "For Sale" Market: Small, Early Deals
+
+
+                                                       1,952 Listings — But Modest
+                                                       Stakes
+
+                                                       Roughly 22% of the dataset is listed for
+                                                       sale, but the deals are small:
+
+                                                       Most marketplace activity here is in tiny,
+                                                       early-stage acquisitions rather than
+                                                       meaningful exits.
+
+
+
+
+ Median Asking Price                   Median MRR of Listings
+ Just $5,000 — early-stage territory   Only ~$1.90/month — mostly pre-revenue or dormant
+Key Takeaways & Data Caveats
+1   Use median, not mean                                         2      AI volume ≠ AI revenue quality
+    Power-law distribution makes mean MRR misleading —                  AI leads in listings but trails Mobile Apps and Health &
+    outliers dominate the average.                                      Fitness in median MRR.
+
+
+
+3   B2B earns more; B2C is more common                           4      Ignore vanity metrics for due diligence
+    Nearly 2× median MRR for B2B, but B2C listings                      Domain Authority and social followers show weak
+    outnumber B2B 2-to-1.                                               correlation with actual revenue.
+
+
+    Data quality note: Growth-percentage fields have extreme outliers (max 30D growth: 1,230,899%) likely from small-
+    denominator effects. Treat with caution — don't average directly.
+

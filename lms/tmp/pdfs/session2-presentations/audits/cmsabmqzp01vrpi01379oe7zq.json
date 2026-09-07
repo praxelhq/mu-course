@@ -1,0 +1,45 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 2,
+    "narrative": 3.5,
+    "framing": 2.5,
+    "accuracy": 1,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Slide 4 bar chart effectively communicates revenue concentration with clear labels and correct bucket counts.",
+  "fix_next": "Strip every fabricated metric (churn, LoC, profit margins, VC splits) and rebuild slides from actual dataset columns only.",
+  "verdict": "Polished template over wholesale fabrication; most quantitative claims have no dataset basis.",
+  "flags": [
+    "fabricated-metrics",
+    "no-dataset-grounding",
+    "ai-slop",
+    "inflated-consulting-language",
+    "unearned-certainty",
+    "missing-limitations",
+    "fabricated-chart-slide-11",
+    "fabricated-table-slide-7",
+    "no-missingness-disclosure"
+  ],
+  "factual_error_count": 10,
+  "factual_error_detail": "Slide 3: 'top 3% control 76% of revenue' unverifiable and inconsistent with known top-10 share of 49.6%. Slide 5: category percentages (38% AI, 27% B2B Core SaaS, 18% Dev Infra) are fabricated super-categories not in dataset; AI is 197/726≈27% of non-missing, not 38%. Slide 5: '68% of revenue above $20k MRR' from Dev Infra + B2B Core SaaS is invented. Slide 6: churn rates (12-18% AI, <2.5% B2B) not in dataset. Slide 7: entire bootstrapped vs VC table ($4,200 vs $38,500 MRR, 78% profit, -15% burn, 2.4 vs 6.8 months, 3.2% vs 7.1% churn) fabricated—no funding-status field exists. Slide 8: $42.50 MRR per line of code and codebase size claims fabricated—no LoC field exists. Slide 11: revenue scaling time-series ($1k→$85k over 24 months) fabricated—dataset is cross-sectional with no time-series. Slide 1: 'Stripe-verified' implies all data is Stripe-only; dataset includes RevenueCat (189) and Dodo (50). Slide 4: 520+320+110+38+≈12=1000 adds up but the revenue field is total not monthly, so 'monthly revenue' framing may misrepresent the data.",
+  "evidence": {
+    "insight": "Only genuinely data-grounded insight is the power-law skew on slide 3-4, but even that overstates concentration (76% vs actual 49.6% top-10). Slides 6-10 present generic SaaS playbook advice as dataset findings without any supporting columns.",
+    "narrative": "Coherent three-act structure (reality check → category → playbook → mandate) gives a readable arc, but the story was written first and data references were bolted on afterward rather than emerging from analysis.",
+    "framing": "No limitations slide. No mention of 274 missing categories, 241 missing countries, 216 zero-revenue rows, or 288 missing audience_type. 'CONFIDENTIAL BOARDROOM BRIEFING' framing is performative. Claims 'Stripe-verified' when dataset includes three providers.",
+    "accuracy": "At least 10 material fabrications across slides 3, 5, 6, 7, 8, and 11. Churn rates, funding status, profit margins, codebase sizes, and time-series growth curves reference fields that do not exist in the dataset. Category percentages are invented super-groupings that don't match actual category counts.",
+    "visual": "Consistent dark theme with good typographic hierarchy and color palette. Slide 4 horizontal bar chart is effective. Donut chart on slide 5 is readable. However, slides 7 and 11 visualize entirely fabricated data. Template is polished but repetitive with identical callout-box formatting on every slide.",
+    "ai_slop": "Pervasive: 'BOARDROOM TAKEAWAY', 'EXECUTIVE SO WHAT?', 'SUMMARY DOCTRINE', 'The Executive Mandate', 'CONFIDENTIAL BOARDROOM BRIEFING'. Slides 6-10 are indistinguishable from generic AI-generated SaaS blog content. Fabricated precision ($42.50/LoC, 2.4 months) is characteristic of AI hallucination presented as empirical findings."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight 2.5→2.0 because the one verifiable power-law claim overstates concentration by ~26pp. Lowered framing 3→2.5 for zero disclosure of missingness and misleading 'Stripe-verified' framing. Lowered accuracy 1.5→1.0 after identifying a 10th fabrication (monthly vs total revenue framing on slide 4). Narrative and visual unchanged; preliminary was already well-calibrated on those.",
+  "total": 26,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 21975,
+    "output_tokens": 1266
+  }
+}

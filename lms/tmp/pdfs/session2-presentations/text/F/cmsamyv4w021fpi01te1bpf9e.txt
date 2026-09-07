@@ -1,0 +1,165 @@
+A O N E - VA R I A B L E D E E P D I V E · T R U S T M R R D ATA S E T
+
+
+
+
+Free Trials Are Fine.
+Freemium Is a Trap.
+What 657 startups' actual pricing pages reveal about which monetization model wins — and which one
+everyone defaults to anyway.
+
+
+
+
+Source: TrustMRR dataset, frozen 30 Jul 2026 · pricing_model field, original classification
+T H E VA R I A B L E
+
+
+
+One Free-Text Field, Seven Pricing Strategies
+TrustMRR captures each startup's actual pricing copy verbatim — not a category. 657 of 1,000 startups have this field filled in. To analyze it, each entry was
+classified into one dominant pricing strategy based on its language and structure.
+
+
+
+
+  Usage/Credit-Based                                       "Universal Credit System: Pay only for what you use"
+
+
+
+
+  Freemium                                                 "Free: 5 reports/month, Pro: $15/mo, Pro+: $39/mo"
+
+
+
+
+  Tiered Subscription                                      "Starter $19.99/mo, Pro $39.99/mo, Business $59.99/mo"
+
+
+
+
+Classification logic: presence of usage/credit language, trial mentions, one-time/lifetime pricing, and count of distinct price points (2+ = tiered). Full taxonomy: Usage-Based, Free Trial Only, Free
+Trial + Tiers, Tiered Subscription, Freemium, Free (no paid tier), One-Time Payment.
+
+                                                                                                                                                                                                          02
+F I N D I N G 0 1 · T H E S TA N D O U T
+
+
+
+Usage-Based Pricing Crushes Every Alternative
+Median MRR by pricing strategy, across 569 classified startups. Median (not average) is used so a few huge outliers don't distort the comparison.
+
+
+
+
+         $11,557
+
+
+
+
+                                   $2,515
+
+                                                          $710
+                                                                                  $254                     $230                    $108               $0
+         Usage /                  Free Trial             Tiered                   Trial +                  Free                 Freemium            One-Time
+       Credit-Based                 Only               Subscription                Tiers               (no paid tier)                               Payment
+
+
+
+
+    Usage-based startups post a median of $11,557 MRR — 16x the next-best model and over 100x plain Freemium.
+
+                                                                                                                                                               03
+FINDING 02 · THE CONTRADICTION
+
+
+
+Freemium Is the Most Popular — and Weakest — Choice
+
+  M O S T C O M M O N S T R AT E G Y
+                                                                   Why the gap is real, not random
+
+
+  162                                                              • Free tiers set an anchor of $0 — converting a user off that anchor is a
+                                                                   much harder ask than metering usage from day one.
+
+                                                                   • Freemium is concentrated in crowded, low-friction categories — 37 of 162
+                                                                   are AI tools, where free alternatives are one tab away.
+  startups use Freemium — more than any other classified pricing
+  strategy
+                                                                   • Usage-based pricing ties revenue directly to value delivered — power
+                                                                   users simply pay more, with no conversion event required.
+  BUT ITS MEDIAN MRR IS
+
+
+
+
+  $108
+  — the lowest of any strategy with a paid tier at all
+
+
+
+                                                                                                                                                04
+FINDING 03 · IS IT JUST AI?
+
+
+
+The Usage-Based Edge Isn't an AI Artifact
+The 20 usage-based startups span 9 categories — AI is the largest single slice, but the model shows up in Design Tools, Recruiting, Real Estate, and more.
+
+
+
+
+                            4                                                              50 / 50
+                                                                                           B2B / B2C split among usage-based startups — the model works on both
+                                                             8                             sides, not just enterprise API buyers
+
+                   2
+
+
+                                                                                           Top performers by name
+                       2
+
+
+                                 2            2                                            1Lookup (fraud-check API) — $207K MRR
+                                                                                           ChatDash (AI usage billing) — $38.6K MRR
+                                                                                           Capgo (dev tools) — $24.4K MRR
+                                                                                           Sleek (design tools) — $22.2K MRR
+                  AI       Design Tools       Education
+                  SaaS     Content Creation   Other (5 categories)
+
+
+                                                                                                                                                                  05
+T H E TA K E A W AY
+
+
+
+
+Meter Value, Don't Give It Away
+If you're choosing a pricing model for a new SaaS product, this dataset argues for one clear default.
+
+
+
+01             Usage-based wins by a mile.
+                                                                                      02   Freemium is the default trap.
+
+
+                                                                                           Most-used strategy (162 startups), but the weakest earner of any model
+               Median $11,557 MRR — 16x tiered subscriptions, 100x+ Freemium.
+                                                                                           with a paid tier.
+
+
+
+
+03             It's not an AI-only effect.
+                                                                                      04   The lesson is structural.
+
+
+               Usage-based pricing outperforms across 9 categories and both B2B and        Metering revenue to value delivered removes the free-to-paid conversion
+               B2C.                                                                        event entirely.
+
+
+
+
+Source: TrustMRR dataset, 569 classified startups, frozen 30 Jul 2026
+

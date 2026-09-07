@@ -1,0 +1,42 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 5.5,
+    "accuracy": 4.5,
+    "visual": 5.5,
+    "bonus": 1
+  },
+  "what_worked": "Monetization-gap thesis is coherent and the concentration-risk callout on n=14 is genuinely self-aware.",
+  "fix_next": "Disclose the 288 missing audience_type values that define your B2B denominator and stress-test every claim against n=14.",
+  "verdict": "Focused thesis on a tiny slice; strong narrative undermined by fragile denominators.",
+  "flags": [
+    "tiny-sample-overinterpreted",
+    "unverifiable-denominator",
+    "missing-data-not-addressed",
+    "mixed-units-on-axis",
+    "238x-metric-conflation",
+    "gamma-template-sameness"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 1/2: '238x revenue gap' divides total revenues ($47K vs $11.2M ≈ 238x) but is framed as a per-startup gap, conflating aggregate and unit-level disparity. Slide 2: bar chart plots Median 30D Revenue ($), Median MRR ($), and Median Growth (%) on the same numeric axis—growth % values (22, 18) are visually compared against dollar values, which is misleading. Slide 1: '255 B2B startups' denominator is unverifiable given 288 missing audience_type values (28.8% of dataset); the true B2B count could differ materially, yet missingness is never disclosed. Slide 5: 'Indian founders pricing at 4–5x revenue multiples' stated as a general pattern but derived from exactly 3 startups (acknowledged on slide 6 but not on slide 5).",
+  "evidence": {
+    "insight": "The monetization-vs-growth framing and 2×2 investment map (slides 4, 7) offer decision-useful segmentation beyond chart description. Concentration risk callout (55% from one company) is useful. However, all insights rest on n=14 Indian B2B startups, severely limiting generalizability and novelty.",
+    "narrative": "Clear thesis on slide 1, consistent thread through gap→categories→outliers→pricing→recommendations→conclusion. Slide 8 landing ('early, not absent') ties back well. Sequence is purposeful.",
+    "framing": "Investor audience is implicit but clear. However, '255 B2B startups' subtitle is potentially misleading given 288 missing audience_type values are never disclosed. The n=14 India base is buried until slide 2's table. Slide 6 caveat on n=3 pricing sample is good but the broader small-sample fragility is under-acknowledged.",
+    "accuracy": "The 238x figure conflates aggregate and per-startup gaps. Slide 2 chart mixes % and $ on one axis. 255 B2B denominator is unverifiable without addressing 288 missing audience_type values. Category-level medians for India (e.g., AI $186, Recruiting $438) are computed on n=1–4 per category, making them individual data points, not distributional summaries. Growth percentages lack methodology disclosure.",
+    "visual": "Consistent dark theme via Gamma. 2×2 matrices (slides 4, 7) are effective conceptual frameworks. Slide 6 scatter plot is well-annotated. However, slide 2 bar chart mixing units is poor practice. Template produces visual sameness. Emoji signal columns are decorative but functional.",
+    "ai_slop": "Gamma template produces visual sameness. Consulting-style phrases ('highest-conviction bets,' 'no irrational exuberance detected') border on filler but are not pervasive. Emoji-heavy signal columns are decorative."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing by 0.5 from 6.0 to 5.5: the 288 missing audience_type values directly threaten the '255 B2B' denominator that anchors the entire story, and this is never disclosed. All other scores confirmed after independent review.",
+  "total": 59,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 15913,
+    "output_tokens": 1040
+  }
+}

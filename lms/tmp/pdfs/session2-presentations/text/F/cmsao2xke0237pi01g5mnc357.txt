@@ -1,0 +1,535 @@
+                                        $
+
+                          INSIDE TRUSTMRR
+
+
+
+   What 1,000 Verified Startups
+Reveal About Small Business Success
+   A data investigation into the TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026
+ROADMAP
+
+
+
+What We'll Cover
+
+              What Is This Data About?
+ 01
+              Where it comes from and what a single record represents
+
+
+
+              Anatomy of a Listing
+ 02
+              The 29 data points captured for every startup
+
+
+
+              The Investigation
+ 03
+              12 questions we put directly to the data
+
+
+
+              What We Learned
+ 04
+              The patterns, gaps, and surprises the numbers revealed
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                         2
+SECT ION 01
+
+
+
+What Is This Data About?
+
+TrustMRR is a directory of small, mostly bootstrapped startups whose
+revenue is verified directly through their payment processor — not self-                         ✓
+reported. Each row is one listed business: a real product, with real
+(verified) money moving through it.
+                                                                                   Verified, Not Claimed
+
+                                                                               Revenue is pulled straight from Stripe,
+Some listings are purely informational — a public track record. Others     RevenueCat, Paddle, and similar processors —
+are actively for sale, turning the same dataset into a live marketplace    the same trust layer that makes the marketplace
+
+for buying and selling small internet businesses.                                              usable.
+                                                                                     Stripe powers 64% of listings
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                              3
+SECT ION 02
+
+
+
+Anatomy of a Listing
+Every one of the 1,000 rows carries the same 29 data points, grouped into five families:
+
+
+
+
+                                           Financial               Traffic &                                       Marketplace &
+   Identity & Links                                                                         Business Profile
+                                           Performance             Efficiency                                      Sale
+
+
+
+   record ID, name,                        30d / 3m / 12m / all-   monthly visitors,        category, audience,
+                                                                                                                   on-sale flag, asking
+   TrustMRR URL,                           time revenue, MRR,      revenue per visitor, X   pricing model, value
+                                                                                                                   price, revenue multiple
+   website, domain                         growth %                followers                proposition
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                              4
+SECT ION 02
+
+
+
+The Dataset at a Glance
+
+
+                 1,000                                    29                          65
+                  Startup listings                 Data points per row         Countries represented
+
+
+
+
+                      29                           26.2%                       $15.6M
+               Business categories                Currently listed for sale   Combined 30-day revenue
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                         5
+SECT ION 03
+
+
+
+Why Would Someone Need This?
+
+
+                   1                                           2                               3                                4
+
+          Buy a Startup                           Benchmark Your Own                 Study the Market             Build Screening Tools
+
+
+    Screen the on-sale listings by                                                    See which categories,        Feed the verified numbers
+                                                  Compare your MRR, growth,
+     revenue multiple, MRR, and                                                    countries, and payment rails   into ranking models — exactly
+                                                  or revenue-per-visitor against
+      growth to scout acquisition                                                    are actually generating        what we did earlier in this
+                                                   real peers in your category.
+                targets.                                                                 revenue today.                      project.
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                   6
+SECT ION 03
+
+
+
+
+The Investigation
+Twelve questions we put directly to the 1,000-row dataset — and what each one turned up.
+QUEST ION 01
+
+
+
+How Complete Is the Data?
+                 domain_rating completeness
+
+
+                                                            28.6%
+                                                       of listings have no Domain Rating
+                                                                      on file
+
+
+
+
+                                                     286 of 1,000 listings are missing a Domain Rating — an SEO authority score
+                                                     that hints at organic traffic potential. Nearly 3 in 10 listings simply haven't
+                                                     been checked, a real diligence gap for anyone evaluating these businesses
+                                                     site-unseen.
+
+                       Blank / Not Rated     Rated
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                        8
+QUEST ION 02
+
+
+
+Which Payment Rails Power These Startups?
+
+          Other              47
+
+
+      Superwall        17
+                                                                                                               17
+                                                                                                listings run on Superwall — out of 1,000
+Lemon Squeezy          25
+
+
+
+           Polar            36
+
+                                                                                        Stripe processes nearly two-thirds of all listed
+Dodo Payments                50                                                         startups — it's the default rail for indie founders.
+                                                                                        Niche processors like Superwall (mobile
+   RevenueCat                                 189                                       subscription paywalls) mark a small but distinct
+                                                                                        slice of the market: in-app subscription products
+          Stripe                                                            636         rather than web SaaS.
+
+                   0              100       200     300   400   500   600         700
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                9
+QUEST IONS 03 & 04
+
+
+
+Category Spotlight: Dev Tools vs. E-comm
+
+     D E V TOOLS                                                        E -C O M M
+
+
+
+     $163,402                                                           $155
+     total 30-day revenue across 37 listings                            median MRR across 19 listings (zeros included)
+
+
+
+
+     A real, aggregate revenue pool — developer tooling converts        A small sample, and mostly hobby-scale: the typical listed e-
+     into steady, collective dollars even without any single breakout   comm store earns well under $200/month — revenue here is
+     star.                                                              concentrated in a few standouts, not the median business.
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                         10
+QUEST ION 05
+
+
+
+A Small Geography Sprint: DE, AU, NL & SG
+200000
+
+180000                                                      $172,218
+
+160000                                                                                   Singapore
+140000                                                                                  $172,218 from just 9 listings
+                                       $124,806
+120000
+
+100000
+                                                  $82,845
+ 80000
+                                                                       Singapore wins outright — and does it with the fewest
+ 60000
+                 $42,289                                               companies of the four (9). Its per-company average
+ 40000
+                                                                       revenue dwarfs the other three, a reminder that country-
+ 20000                                                                 level totals can hide very different average outcomes.
+
+      0
+                   DE                     AU        NL        SG
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                   11
+QUEST ION 06
+
+
+
+Which Payment Rail Actually Earns More?
+250000          $237,834
+
+
+
+200000                                                                               Superwall
+                                                                                      $237,834 from 17 listings
+
+150000
+
+
+
+                                        $96,742
+100000
+                                                                    Despite Paddle having almost the same number of listings
+                                                                    (16 vs. 17), Superwall-powered apps earn nearly 2.5x more
+                                                  $50,661
+ 50000
+                                                                    in aggregate — consistent with mobile subscription
+                                                                    paywalls commanding stronger monetization than typical
+
+                                                            $407
+                                                                    web checkouts.
+      0
+               Superwall                Paddle    Whop      Creem
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                12
+QUEST ION 07
+
+
+
+Hidden in Plain Sight: Anonymous vs. Named
+(Anonymous = blank name, “Stealth Company,” or “Hidden Business”)
+
+
+
+
+     AN ON YM OU S                                                  N AM E D
+
+     130 companies (13.0%)                                          870 companies (87.0%)
+
+
+
+     $4,191,784                                                     $11,404,560
+     total 30-day revenue (26.9% of all revenue)                    total 30-day revenue (73.1% of all revenue)
+
+
+
+     $32,244                                                        $13,109
+     average revenue per company                                    average revenue per company
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                   13
+QUEST ION 08
+
+
+
+Do More Subscriptions Mean More Revenue?
+
+                    Active subscriptions, grouped into 5 equal-size bins (low → high)
+70000
+
+
+60000
+                                                                                          $58,966
+                                                                                                                     r = 0.802
+                                                                                                         Pearson correlation, active subscriptions vs. 30-day
+50000                                                                                                                   revenue (n = 1,000)
+
+40000
+
+
+30000
+                                                                                                       A strong, clean relationship. Startups in the top
+                                                                                                       fifth for subscriptions earn on average over 125x
+20000
+                                                                      $14,424                          what the bottom fifth earns — subscription count
+10000                                                                                                  is one of the most reliable revenue signals in the
+                                                    $3,552
+               $469                  $570                                                              whole dataset.
+   0
+           Q1 (lowest)                Q2              Q3                Q4              Q5 (highest)
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                                 14
+QUEST ION 09
+
+
+
+Pricing the Deal: What Are Sellers Asking?
+
+
+
+                    262                                       2.3x                                      $35,000
+              listings currently for sale              median revenue multiple asked                        median asking price
+
+
+
+
+Across the 262 on-sale listings with a stated multiple, buyers are typically asked to pay about 2.3x the underlying revenue figure — in line
+with typical small-SaaS acquisition pricing. Asking prices range all the way from $0 up to $10M, so the multiple is a far more useful yardstick
+than the sticker price alone.
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                15
+QUEST ION 10
+
+
+
+Putting the Data to the Test: Design Tools
+
+   A         Design Tools has 12 rows, $2,650 total 30-day revenue, and $83 median MRR.
+
+
+
+   B         Design Tools has 13 rows, $31,797 total 30-day revenue, and $83 median MRR.
+
+
+
+   C         Design Tools has 12 rows, $31,797 total 30-day revenue, and $83 median MRR.            ✓ CONFIRMED
+
+
+
+
+   D         Design Tools has 12 rows, $83 total 30-day revenue, and $31,797 median MRR.
+
+
+
+Verified directly against the 12 Design Tools rows: $31,797 total 30-day revenue, $83 median MRR.
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                   16
+QUEST ION 11
+
+
+
+Who's Really Thriving? Scale vs. Typical Success
+
+                                                  Average MRR       Median MRR
+
+
+
+
+                                                                                                                                                   $446
+Customer Support
+
+
+     Marketplace                                                                                                                    AI's median MRR across 197 listings — vs.
+                                                                                                                                                 $9,167 average
+
+        Education
+
+
+                                                                                                                                AI dominates total dollars simply by volume (197
+        Marketing
+                                                                                                                                listings). But its typical listing earns modestly — a
+                                                                                                                                few outsized winners pull the average far above
+         Analytics
+                                                                                                                                the median. Categories like Customer Support,
+                                                                                                                                Marketplace, and Education have far fewer
+ Content Creation                                                                                                               listings, but the typical business in them earns
+                                                                                                                                more.
+                     $0    $2,000    $4,000       $6,000   $8,000   $10,000   $12,000   $14,000   $16,000   $18,000   $20,000
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                                                     17
+QUEST ION 12
+
+
+
+Do X Followers Predict 90-Day Revenue?
+First 11 rows of the dataset · 10 rows had both fields present
+
+Startup                                           X Followers    90-Day Revenue
+
+Stealth Company                                   0              $131,432
+
+Speak Silq                                        3,458          $64,435                      r = 0.171
+NOTE BOOSTER                                      2,428          $276
+                                                                                           Pearson correlation (n = 10)
+VELA                                              0              $0
+
+LaunchGuard                                       400            $203
+
+Stealth Company                                   271            $2,979
+                                                                                  Practically no relationship in this tiny sample
+ImgX Studio                                       1              $0
+                                                                                  — the highest-revenue company here
+WRITING9                                          73             $16,069          (“Stealth Company”) had zero recorded
+SimpleBankExcel                                   0              $0               followers. With only 10 data points, this is far
+                                                                                  too small a sample to draw any real
+Faithwake                                         0              $14.99
+                                                                                  conclusion either way.
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                  18
+QUEST IONS 13 & 14
+
+
+
+Where the Revenue Concentrates
+T OP COUNT RIES BY 30 -DAY REVENUE                                                     T OP CAT EGORIES BY 30 -DAY REVENUE
+
+
+
+HK       $210K                                                                         Education           $524K
+
+
+
+CA       $312K                                                                             SaaS                 $704K
+
+
+
+GB        $445K                                                                         E-comm                               $1,112K
+
+
+
+FR         $669K                                                                       Marketing                                  $1,317K
+
+
+
+US                                                                $9,843K                     AI                                                      $2,357K
+
+
+     0           2000000    4000000       6000000   8000000   10000000      12000000               0   500000      1000000        1500000   2000000   2500000
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                           19
+SECT ION 04
+
+
+
+What We Learned
+1     Revenue is concentrated, not evenly spread
+
+      A handful of large listings — and one dominant category, AI — account for a hugely disproportionate share of total revenue.
+
+
+2     Scale isn't the same as typical success
+      AI wins on total dollars through sheer volume; categories like Education and Customer Support show stronger typical (median) performance per
+      company.
+
+
+3     Anonymity correlates with higher earners
+      “Stealth” and unnamed listings are a small minority but earn well above the per-company average — anonymity looks more like a choice made
+      after success, not before it.
+
+
+4     Subscriptions are a reliable revenue signal; followers aren't
+
+      Active subscriptions correlate strongly with revenue (r = 0.802); X follower counts show no such pattern in this data.
+
+
+5     The data has real gaps
+
+      Domain Rating, traffic, and growth fields are blank for a large share of listings — genuine diligence is still required before acting on any single row.
+                      $
+
+         Thank You
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026
+

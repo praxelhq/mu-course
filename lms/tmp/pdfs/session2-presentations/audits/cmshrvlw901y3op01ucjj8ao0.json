@@ -1,0 +1,41 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 7.5,
+    "accuracy": 6.5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "MRR-to-cash integrity check and for-sale tier validation are genuinely original analytical moves.",
+  "fix_next": "Anchor at least two claims to verifiable dataset-wide aggregates so the reader can cross-check your funnel counts.",
+  "verdict": "Exceptional narrative and framework, but nearly all numbers are unverifiable against the source data.",
+  "flags": [
+    "narrow-dataset-coverage",
+    "unverifiable-intermediate-counts",
+    "no-charts",
+    "no-dataset-provenance",
+    "tier-counts-dont-sum"
+  ],
+  "factual_error_count": 1,
+  "factual_error_detail": "Slide 3: Tier counts 12+37+36=85, consistent. However, slide 2 claims MRR, subscriptions, and trailing revenue are '100% populated for all 1,000 rows' — trailing revenue (revenue_usd) has 216 zero-revenue entries which, depending on interpretation, may not be 'missing' but the blanket '100% populated' claim is at minimum misleading given those zeros could distort the $50k trailing-revenue gate.",
+  "evidence": {
+    "insight": "Four-cut funnel is a genuinely original framework. MRR÷cash ratio as integrity screen (slide 4) and the for-sale gradient validating tier quality (slide 3) show real analytical sophistication. Risk callouts per pick and the closing limitations slide demonstrate investment-grade thinking.",
+    "narrative": "Near-flawless sequential structure: thesis stated on slide 1, each slide is one cut with entry/exit counts, culminating in four names with portfolio weights and a limitations coda. Every slide earns its place. The 'from a thousand to four' arc is compelling and fully delivered.",
+    "framing": "Investment-committee framing is clear. Limitations explicitly addressed on slide 8. However, the deck never names the dataset or its provenance, never contextualizes against broader dataset characteristics (missingness rates, category landscape, provider distribution), and a cold reader has no way to understand what 'TrustMRR' is or why these 1,000 companies exist.",
+    "accuracy": "The deck is internally consistent but almost entirely unverifiable against the frozen reference. No claims about total revenue, category medians, provider shares, or other checkable aggregates. The 100%-populated claim for filtering fields is defensible but glosses over 216 zero-revenue rows. Individual company metrics (ARR, ARPU, growth rates) cannot be cross-checked. The integrity-check logic on slide 4 is sound in concept but the specific numbers are opaque.",
+    "visual": "Clean, restrained navy/white palette with consistent typography. Tables are well-structured and legible. Funnel bar visualization on slide 2 is effective. Card layouts on slides 5-7 work well. However, zero charts means no data-visualization craft to evaluate — the entire deck is text and tables. Color coding for pass/fail is intuitive but the absence of any chart showing distributions, comparisons, or trends is a notable gap for a data-analysis presentation.",
+    "ai_slop": "None detected. Writing is precise, domain-specific, and avoids filler. Every sentence carries information. The investment-committee voice is consistent and earned."
+  },
+  "confidence": "medium",
+  "changed": true,
+  "change_reason": "Reduced accuracy from 7.0 to 6.5: nearly all quantitative claims are unverifiable against the frozen reference, and the 100%-populated claim is misleading given 216 zero-revenue rows. Reduced bonus from 3 to 2: the framework is excellent but the complete absence of dataset-level context and verifiable anchors limits how far beyond the rubric this goes. Reduced framing from 8.0 to 7.5: no dataset provenance or broader context for a cold reader.",
+  "total": 79,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 16660,
+    "output_tokens": 969
+  }
+}

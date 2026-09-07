@@ -1,0 +1,38 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 5,
+    "narrative": 7,
+    "framing": 6,
+    "accuracy": 4.5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Sharp decision-oriented framing with a clear thesis, consistent structure, and actionable recommendation throughout.",
+  "fix_next": "The deck makes almost no verifiable use of the dataset—show the actual analysis (charts, distributions, provider breakdowns) that supports each claim.",
+  "verdict": "Well-structured recommendation deck, but thin on data evidence and verifiable analysis.",
+  "flags": [
+    "light-on-data",
+    "unverifiable-claims",
+    "no-charts",
+    "missing-analytical-depth"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 3: Median listing revenue stated as $282; dataset overall median is harder to pin but category medians range widely and no clear basis for $282 is shown. Slide 5: '4.8x median ask against trailing revenue'—the dataset contains B2B/B2C median multiples of ~2.3x, not 4.8x; this figure appears fabricated or conflated. Slide 4: '82% of listings report no traffic at all'—no traffic field exists in the dataset reference, making this unverifiable/likely invented.",
+  "evidence": {
+    "insight": "The four-route framework (slides 3-6) is a genuinely useful decision structure, but each route's assessment relies on assertions rather than demonstrated analysis. Claims like 'B2B far richer' (slide 6) align with the data but are never shown with numbers. The 252 companies above $5K is a useful filter but unverified.",
+    "narrative": "Strong arc: title question → four options evaluated → comparison matrix (slide 7) → final recommendation (slide 8). The thesis 'credible data, not a credible channel' is maintained throughout. Sequence is purposeful and lands clearly.",
+    "framing": "The audience (internal decision-maker evaluating a platform) and question (go/no-go) are clear. However, the dataset scope, definitions, limitations, and missingness (~24-29% missing in key fields) are never acknowledged. No mention of what 'TrustMRR' is for a cold reader beyond context clues.",
+    "accuracy": "Slide 3 median $282 is plausible but unsourced from visible analysis. Slide 5 '4.8x median ask' doesn't match dataset multiples (~2.3x). Slide 4 '82% report no traffic' references a field not in the dataset. Slide 6 '252 companies clearing $5,000/month' is unverifiable but plausible. No charts, no denominators shown, no missingness acknowledged.",
+    "visual": "Clean, consistent template with good hierarchy: section labels, headline claims, pros/cons layout, callout stats. The comparison matrix (slide 7) is effective. Color coding for verdicts works well. However, there are zero data visualizations—no charts, distributions, or analytical graphics anywhere in 8 slides.",
+    "ai_slop": "The template is polished but repetitive—every route slide uses identical structure (3 checks, 3 warnings, big stat, italic conclusion). This uniformity feels templated. However, the content is specific enough to avoid pure filler. Borderline."
+  },
+  "confidence": "high",
+  "total": 60,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15160,
+    "output_tokens": 829
+  }
+}

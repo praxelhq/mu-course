@@ -1,0 +1,38 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 6,
+    "accuracy": 3,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Strong narrative arc with actionable takeaways; outlier-trimming and underrated/overhyped tables show analytical effort.",
+  "fix_next": "Revenue figures are off by ~20x ($334M vs actual $15.6M; category totals wildly inflated); verify every number against the raw dataset before presenting.",
+  "verdict": "Well-structured story undermined by severely wrong revenue figures throughout.",
+  "flags": [
+    "revenue-inflated-20x",
+    "top10-share-wrong",
+    "category-totals-fabricated",
+    "mean-not-median-conflation"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 1: Total revenue stated as $334M; actual is $15.6M (~21x inflation). Top-10 share stated as 61%; actual is 49.6%. Slide 3: E-comm total $54.8M vs actual $1.1M; Marketing $33.8M vs $1.3M; AI $31.9M vs $2.4M (AI should be #1 not #3); all category totals inflated ~20-30x and rank order is wrong. Average MRR figures ($9K-$21K) appear fabricated and inconsistent with dataset medians. Slide 4: 61% concentration repeated (should be ~49.6%). Slide 6: B2B out-earns B2C '5-to-1' — reference data shows median multiples of ~2.3x, not 5x; the 5x appears to use means heavily skewed by outliers without acknowledging this. Slide 6: US accounts for '~70% of all dataset revenue' — unverifiable but plausible given Stripe dominance, though the inflated base makes the percentage suspect.",
+  "evidence": {
+    "insight": "Slides 7-8 offer genuinely useful revenue-per-visitor analysis and underrated/overhyped framing. Slide 4's outlier-trimming discussion shows analytical awareness. However, the E-comm-leads-on-efficiency claim (slide 3) is built on wrong numbers, undermining the central insight.",
+    "narrative": "Clear three-question structure (slide 2) with consistent section headers, key insight boxes on every content slide, and a synthesis closing slide (9). The performance→positioning→acquisition flow is logical and purposeful.",
+    "framing": "Slide 2 sets up questions clearly. 'Personal reading notes' framing is unusual but functional. However, no mention of missingness (274 missing categories, 241 missing countries, 288 missing audience_type) which materially affects every analysis. No limitations slide.",
+    "accuracy": "Core revenue figures are inflated ~20x throughout (slides 1, 3, 6). Category rank order is wrong on slide 3 (AI is actually #1 by total, not E-comm). Top-10 concentration is 61% vs actual 49.6%. The B2B 5x claim uses means without noting outlier sensitivity. The 197 AI count and 0.23 follower correlation are correct.",
+    "visual": "Consistent navy/gold palette, clean bar charts with direct labels, good use of horizontal bars. Tables on slide 8 are well-structured. Chart types are appropriate. Slight density issues on slide 4 with four sub-charts. No chartjunk.",
+    "ai_slop": "Minimal slop — no generic stock imagery, no inflated consulting language. The 'Personal Reading Notes' framing feels authentic. However, the uniformly polished template and some phrasing ('measurably costing revenue') edges toward consulting-speak."
+  },
+  "confidence": "high",
+  "total": 60,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18594,
+    "output_tokens": 940
+  }
+}

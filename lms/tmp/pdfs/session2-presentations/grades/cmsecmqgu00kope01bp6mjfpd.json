@@ -1,0 +1,38 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 6.5,
+    "accuracy": 5,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong narrative arc from concentration to B2B premium to correlations, with genuine outlier-awareness on India.",
+  "fix_next": "Total revenue is $15.6M not $13.5M; multiple category medians are off—verify every number against the actual dataset before presenting.",
+  "verdict": "Well-structured story undermined by several material numerical errors.",
+  "flags": [
+    "total-revenue-wrong",
+    "category-medians-off",
+    "b2b-multiplier-inflated",
+    "missing-data-not-disclosed"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 1/2: Combined MRR stated as $13.5M; actual total 30-day revenue is $15,596,344.59. Slide 2: Top-10 share stated as 48%; reference is 49.6%. Slide 4: B2B median $1,036 vs B2C $181 yields 5.7x; reference medians imply ~2.35x multiple—the absolute values appear fabricated or computed on a different basis. Slide 6: AI median stated $446 vs reference $503; Education median $2,142 vs reference $2,435; Marketing median $1,586 vs reference $2,369.50; Content Creation $1,254 vs reference $1,237.50 (close); Productivity $42 vs reference $79.91. Slide 6: Analytics median $1,294 vs reference $419—substantially wrong.",
+  "evidence": {
+    "insight": "Slide 6 'AI dominates by volume not economics' is a genuinely useful insight; slide 7 correlation hierarchy adds decision-useful framing; slide 5 India outlier analysis shows analytical depth beyond chart-reading.",
+    "narrative": "Clear thesis on revenue concentration → audience economics → category → correlations → takeaways. Each slide builds on the prior. Final slide synthesizes four numbered takeaways that reference earlier findings.",
+    "framing": "Slide 1 sets scope (1,000 companies, frozen dataset, no external data). However, 241 missing countries and 274 missing categories are never disclosed, which matters for geographic and category claims. Audience is implied (founders) but never explicitly stated.",
+    "accuracy": "Total revenue wrong by ~$2M (slide 1). Multiple category medians diverge materially from reference (Analytics off by 3x). B2B/B2C multiplier of 5.7x conflicts with reference 2.35x. Zero-revenue count 10.9% = 109 companies vs reference 216. Top-10 share roughly close but still off.",
+    "visual": "Consistent dark/gold palette, clear hierarchy with section headers, well-labeled bar charts with company counts in parentheses. Chart types appropriate (horizontal bars for rankings, vertical bars for growth split). Legible typography. Slight density on slide 8 but manageable.",
+    "ai_slop": "none—slides are specific to this dataset with named companies, precise figures, and no generic filler language"
+  },
+  "confidence": "high",
+  "total": 68,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 16207,
+    "output_tokens": 804
+  }
+}

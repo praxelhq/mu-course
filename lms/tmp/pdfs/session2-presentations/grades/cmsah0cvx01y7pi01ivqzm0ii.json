@@ -1,0 +1,38 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 5.5,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis about concentration and missingness bias, with genuinely useful buyer-side skepticism about stated multiples.",
+  "fix_next": "Multiple category medians are materially wrong (Marketing $1,586 vs $2,370; E-comm $155 vs $387; AI $446 vs $503); verify every median against the dataset.",
+  "verdict": "Insightful narrative undermined by several incorrect category-level statistics.",
+  "flags": [
+    "median-errors",
+    "anonymous-count-off",
+    "missing-productivity-category",
+    "b2b-b2c-title-mismatch"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 3: AI median stated as $446, reference is $503. Marketing median stated as $1,586, reference is $2,369.50. E-comm median stated as $155, reference is $387. Slide 5: Title says 'five times more' but body says $1,036 vs $181 (~5.7x); reference medians are 2.35x/2.30x ratio, and the absolute B2B/B2C medians don't match reference benchmarks well. Slide 7: Anonymous count stated as 130, reference is 129 (minor). Revenue share stated as 27%, reference is 26.525% (borderline). Slide 3: Productivity category omitted from the bar chart entirely despite having 49 companies.",
+  "evidence": {
+    "insight": "Slide 2 cumulative revenue chart with 39x mean/median gap; Slide 6 correlation of stated vs implied multiples at -0.01; Slide 7 missingness-bias argument that filtering deletes top earners—all go beyond chart description.",
+    "narrative": "Clear arc: concentration (S2) → category breakdown (S3) → growth stagnation (S4) → audience economics (S5) → buyer warning (S6) → data quality caveat and recommendations (S7). Coherent thesis about an uneven market.",
+    "framing": "Slide 1 sets scope (1,000 startups, 30-day snapshot) and key stats. Slide 7 explicitly addresses limitations. However, no explicit audience statement or research question beyond the subtitle.",
+    "accuracy": "Multiple median values are materially wrong: Marketing $1,586 (should be ~$2,370), E-comm $155 (should be $387), AI $446 (should be $503). Productivity category (49 companies, $114K revenue) entirely missing from Slide 3 bar chart. The '22% earn nothing' on Slide 7 vs 216/1000=21.6% is minor rounding. The 'five times' headline on Slide 5 doesn't match the 2.35x/2.30x median revenue multiples from reference.",
+    "visual": "Consistent dark/light palette, good hierarchy with section headers, well-annotated cumulative chart on Slide 2, effective use of callout cards. Donut chart on Slide 4 is acceptable but pie charts are suboptimal for three-way splits. Bar chart on Slide 5 is somewhat hard to read with overlapping legend items.",
+    "ai_slop": "none"
+  },
+  "confidence": "high",
+  "total": 72,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 14163,
+    "output_tokens": 852
+  }
+}

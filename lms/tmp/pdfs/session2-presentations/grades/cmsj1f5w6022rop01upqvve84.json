@@ -1,0 +1,40 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 3.5,
+    "narrative": 5,
+    "framing": 3,
+    "accuracy": 1.5,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Strong thesis with a clear through-line; the concentration framing is compelling and well-sequenced.",
+  "fix_next": "Nearly every chart and statistic appears fabricated—MRR figures, growth percentages, Gini, team size, and distribution data are not in the dataset.",
+  "verdict": "Confident narrative built almost entirely on invented data.",
+  "flags": [
+    "fabricated-charts",
+    "fabricated-statistics",
+    "no-dataset-fidelity",
+    "ai-slop",
+    "consulting-language",
+    "unearned-certainty"
+  ],
+  "factual_error_count": 12,
+  "factual_error_detail": "Slide 1-2: '50 matter / 5% generate meaningful revenue' and 'Median MRR $5K-15K' are invented; dataset has 30-day revenue not MRR, and 216 zero-revenue rows not 950. Slide 2: '70% flat or negative growth'—no growth rate field in dataset. Slide 3: Average MRR $2.75M for top 1%, $300K for top 10%, $22K for bottom 90%—all fabricated; Gini 0.82 not derivable/stated in dataset. Slide 4: Growth distribution (65%/20%/10%/5%) entirely invented—no monthly growth field exists. Slide 5: '60% horizontal, 70% of top earners vertical, 3-5x revenue'—no horizontal/vertical classification in dataset; category data shows AI highest total but Education highest median. Slide 6: Team size vs MRR chart ($8K/$35K/$150K) entirely fabricated—no team size variable in dataset. Slide 7: Geographic percentages and 'EU 20% of dataset, 10% of top earners'—dataset has 241 missing country values; EU is not a dataset category. Slide 8: Pricing tier analysis fabricated—no pricing tier field. Slide 9: Distribution channel MRR data fabricated—no distribution channel field. Slide 10: '80% no moat'—no moat variable in dataset. Slide 11: '19x' team multiplier repeats fabricated team data.",
+  "evidence": {
+    "insight": "The thesis (concentration, vertical > horizontal, enterprise pricing) is a reasonable strategic argument, but every supporting claim is asserted without grounding in the actual dataset fields. No actual category medians, provider analysis, or missingness discussion.",
+    "narrative": "Clear arc from problem (concentration) through dimensions (category, team, geography, pricing, distribution, moat) to playbook. Sequence is logical and builds. However, it reads as a pre-written consulting template rather than data-driven discovery.",
+    "framing": "Calls it '1,000 AI startups' when the dataset covers all categories, not just AI. No mention of missingness (241 country, 274 category, 288 audience_type). No definitions of 'meaningful revenue.' Audience is implied (founders) but never stated.",
+    "accuracy": "Virtually no verifiable claim ties to the actual dataset. The dataset contains 30-day revenue, not MRR. Fields like team size, distribution channel, growth rate, pricing tier, and moat classification do not exist. Revenue concentration claim (top 10 = 49.6%) is roughly consistent with the reference but presented as '$2M-$3.5M MRR' which is fabricated. The entire analytical apparatus is invented.",
+    "visual": "Consistent dark theme, readable typography, clear chart labeling. Bar charts are appropriate for the (fabricated) comparisons shown. Donut chart on slide 4 is legible. Layout is clean but repetitive across slides. Gamma template is competent but generic.",
+    "ai_slop": "Heavy consulting-speak throughout ('winner-take-most dynamics,' 'commodity collapse,' 'the moat blueprint'). Charts appear AI-generated with round invented numbers. Slides 6, 8, 9 show suspiciously clean fabricated data. The entire deck reads as an AI-generated strategy template with placeholder numbers rather than actual data analysis."
+  },
+  "confidence": "high",
+  "total": 34,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 21073,
+    "output_tokens": 1044
+  }
+}

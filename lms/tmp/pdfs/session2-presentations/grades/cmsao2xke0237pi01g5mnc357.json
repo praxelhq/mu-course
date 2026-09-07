@@ -1,0 +1,39 @@
+{
+  "slide_count": 21,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 5,
+    "framing": 6,
+    "accuracy": 5.5,
+    "visual": 6,
+    "bonus": 1
+  },
+  "what_worked": "Honest about data gaps, small samples, and the median-vs-mean distinction across categories.",
+  "fix_next": "The X-followers analysis used only 10 rows instead of the full dataset—this is a methodological failure that undermines credibility.",
+  "verdict": "Competent tour of the data, but too shallow and list-like to stand out.",
+  "flags": [
+    "list-of-questions-not-narrative",
+    "artificially-small-sample-slide18",
+    "anonymous-count-off",
+    "stripe-share-rounded-down",
+    "missing-top10-concentration"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 13: anonymous count 130 vs reference 129, revenue $4,191,784 vs ~$4,134,576 (26.9% vs 26.5%); named revenue $11,404,560 doesn't reconcile with total $15,596,345. Slide 3: 'Stripe powers 64% of listings'—actual is 63.6% (636/1000), borderline but stated as 64% while slide 9 shows 636 correctly. Slide 13: 13.0% vs reference 12.9%. Slide 18: X followers analysis on only 10 rows is a methodological error, not a data constraint—the full dataset was available.",
+  "evidence": {
+    "insight": "Slide 14 subscription-revenue correlation (r=0.802) and slide 17 mean-vs-median category comparison are the strongest analytical moments, but most other slides just report single statistics without interpretation beyond the obvious. No top-10 concentration analysis, no founded-year investigation, no TLD analysis, no B2B/B2C comparison.",
+    "narrative": "Structure is '12 questions we asked the data'—a list, not a thesis-driven story. The summary slide (20) synthesizes five takeaways but they emerge as afterthoughts rather than building toward a central argument. No clear audience decision or recommendation.",
+    "framing": "Slides 1-6 set context well: what TrustMRR is, what a row represents, who would use it, and dataset dimensions. Missingness is acknowledged (slide 8, slide 20). However, scope of the investigation is never motivated—why these 12 questions?",
+    "accuracy": "Slide 13 anonymous figures are slightly off (130 vs 129, revenue shares don't match reference). Slide 18 artificially restricts X-followers analysis to 10 rows when the full dataset was available—this is a serious analytical shortcut. Category figures on slides 10 and 19 align with reference. Stripe 636 correct. Superwall $237,834 correct. Dev Tools $163,402 correct.",
+    "visual": "Consistent dark-blue/teal/gold palette, clean typography, good use of callout boxes. Charts are simple bar charts with data labels—functional but unremarkable. Donut chart on slide 8 is fine. Slide 17 mean-vs-median paired bar chart is the most informative visualization. No chart is misleading but none is particularly sophisticated either. Some slides are very sparse (slides 6, 7, 16).",
+    "ai_slop": "Slide 16 multiple-choice quiz format feels like filler. Slides 6-7 are generic setup that could apply to any dataset. The overall template is polished but repetitive—every question slide follows the same layout pattern."
+  },
+  "confidence": "high",
+  "total": 57,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 38206,
+    "output_tokens": 905
+  }
+}

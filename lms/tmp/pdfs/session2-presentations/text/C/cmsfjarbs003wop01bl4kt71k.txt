@@ -1,0 +1,249 @@
+TRUSTMRR DATASET
+
+
+
+
+Anatomy of 1,000
+Indie & Micro-SaaS Startups
+A data-driven look at revenue, markets, geography, and the economics of building small software
+companies in 2026.
+
+
+
+
+Personal research brief · Data frozen 30 Jul 2026 · n = 1,000 startups
+ OVERVIEW
+
+
+ What's in this dataset — and its limits
+
+
+       1,000                                                  29                                                        ~30%
+       startups tracked                                       data fields                                               fields with gaps
+
+
+
+       Live revenue pulled directly from founders'            Revenue (30d/3m/12m/all-time), MRR &                      129 rows are anonymized 'Stealth Company'
+       payment APIs (Stripe, RevenueCat, etc.), not           growth, subscribers, traffic, category/market             listings with no name, site, or category —
+       self-reported.                                         tags, and resale asking price.                            expect blanks throughout.
+
+
+
+
+ Read every stat in this deck against that backdrop: this is a snapshot of indie-hacker and micro-SaaS businesses, skewed toward the smallest and most active
+ listings — not venture-scale companies.
+
+
+
+
+TrustMRR Dataset · 1,000 Startups · Frozen 30 Jul 2026                                                                                                               2
+ HEADLINE INSIGHTS
+
+
+ Five things that stood out
+
+                   Revenue is a power law                                                      1 in 5 startups earns nothing
+       1           Median MRR is just $282, but the mean is $13,472 — 48x higher. One
+                                                                                           2   197 of 1,000 startups report exactly $0 current MRR despite having
+                   company (Stan) holds 26% of all MRR in the dataset.                         historical revenue — likely dead, paused, or pre-relaunch.
+
+
+
+                   SaaS and AI lead every market cut                                           Consumer beats business, 56/36
+       3           By total MRR, SaaS ($4.4M) and AI ($3.4M) markets dominate — AI alone
+                                                                                           4   B2C outnumbers B2B startups on this platform — consistent with a solo-
+                   tags 39% of all categorized startups.                                       founder, product-led building wave.
+
+
+
+                   Stripe is the default rail
+       5           66% of startups run on Stripe; RevenueCat (20%) is a distant second,
+                   reflecting the mobile-app subset.
+
+
+
+
+TrustMRR Dataset · 1,000 Startups · Frozen 30 Jul 2026                                                                                                                  3
+ REVENUE & MRR
+
+
+ MRR is heavily right-skewed
+                                                         Startups by MRR bucket
+ 300                                                                                                    $282
+                                                             258
+                                                                           249                          Median MRR
+ 250
+
+
+
+
+                                                                                                        $13.5K
+                 197
+ 200
+
+                                        158
+ 150                                                                                                    Mean MRR
+
+                                                                                      111
+
+
+                                                                                                        26%
+ 100
+
+
+
+   50                                                                                                   Share of all MRR held by the #1 startup (Stan)
+                                                                                                 27
+
+
+    0
+                  $0                  $1–99               $100–999       $1K–9.9K   $10K–99K   $100K+
+                                                                                                        Takeaway: a handful of breakout companies carry most of
+                                                                                                        the dollar volume. The typical listed startup is a small, low-
+                                                                                                        revenue side project.
+
+TrustMRR Dataset · 1,000 Startups · Frozen 30 Jul 2026                                                                                                                   4
+ MARKETS
+
+
+ SaaS and AI lead every market by MRR
+                                                         Total MRR by market tag ($)                       Market pivot: count & typical size
+
+                                                                                                           Market                                 # Startups           Median MRR
+                Sales                                    $1,115K
+                                                                                                           SaaS                                           437                   $438
+
+ Content Creation                                                  $1,585K
+                                                                                                           AI                                             392                   $431
+
+
+        Productivity                                                    $1,899K                            Marketing                                      159                 $1,357
+
+                                                                                                           Analytics                                      131                   $910
+           Analytics                                                     $1,962K
+                                                                                                           Productivity                                   275                   $197
+
+          Marketing                                                          $2,133K
+                                                                                                           Sales                                           42                 $2,153
+
+
+                    AI                                                                 $3,417K
+                                                                                                           Note: markets are multi-label (one startup can carry several tags), so a
+                                                                                                           startup's MRR counts toward every market it's tagged with.
+                SaaS                                                                             $4,445K
+
+
+
+
+TrustMRR Dataset · 1,000 Startups · Frozen 30 Jul 2026                                                                                                                                 5
+ GEOGRAPHY & AUDIENCE
+
+
+ Consumer-first, US-anchored, global tail
+                                  Audience type (% of labeled)                                                                       Top countries by startup count
+
+
+                                                                                                           258
+                                              8%
+
+
+
+
+                            36%
+                                                                  56%
+
+
+                                                                                                                          79
+                                                                                                                                        59
+                                                                                                                                                      50
+                                                                                                                                                                   29   24   20
+
+
+                                            B2C      B2B   Both                                             US            FR            IN            GB           CA   DE   BR
+
+
+
+ 241 of 1,000 rows have no country listed. Among those with one, the US leads decisively — but France, India, and the UK show meaningful indie-founder activity.
+
+TrustMRR Dataset · 1,000 Startups · Frozen 30 Jul 2026                                                                                                                            6
+ PAYMENT INFRASTRUCTURE
+
+
+ Stripe is the default rail for indie founders
+
+                                                                               What the stack tells us
+
+
+                                            3%2%                                  Stripe (66%) is the default for web-based SaaS and e-commerce
+                                       4%
+                                                                                  billing — the platform's core audience.
+                                5%
+
+                                                               Stripe
+                                                               RevenueCat
+
+                      20%                                      Dodo Payments      RevenueCat (20%) manages in-app purchase billing — this maps
+                                                               Polar              closely to the Mobile Apps category (52 startups).
+                                                               Lemon Squeezy
+                                                         66%   Other
+                                                                                  The long tail (Dodo, Polar, Lemon Squeezy, Whop, Creem) reflects
+                                                                                  newer, indie-friendly Merchant-of-Record tools gaining share from
+                                                                                  Stripe.
+
+
+
+
+TrustMRR Dataset · 1,000 Startups · Frozen 30 Jul 2026                                                                                                7
+ SECONDARY MARKET
+
+
+ 262 startups are listed for sale
+
+
+     262                                                 $35,000                            $1,055                                       2.3x
+     of 1,000 startups                                                                      median MRR of                                median revenue
+                                                         median asking price
+     (26%) are on sale                                                                      for-sale startups                            multiple asked
+
+
+
+
+ Reading the multiple
+
+
+
+ A 2.3x revenue multiple means a typical buyer is pricing these micro-SaaS businesses at roughly 2-3x their annual revenue — well below the 4-8x+ multiples seen for
+ larger, more established SaaS companies. This is consistent with a market of small, high-churn-risk, single-founder-dependent businesses, where buyers price in the risk
+ that revenue doesn't survive an ownership transition.
+
+
+
+
+TrustMRR Dataset · 1,000 Startups · Frozen 30 Jul 2026                                                                                                                      8
+CLOSING
+
+
+What this dataset really shows
+
+
+    1            This is a snapshot of the indie/micro-SaaS economy, not venture-scale startups — median MRR of $282 says it plainly.
+
+
+
+
+    2            AI and SaaS aren't just popular labels — they carry the most aggregate revenue too, suggesting real monetization, not just hype tagging.
+
+
+
+
+    3            The resale market (26% of listings) prices these businesses cautiously — around 2x revenue — reflecting key-person and durability risk.
+
+
+
+
+    4            Stripe's dominance (66%) and RevenueCat's mobile niche (20%) map cleanly onto where these founders actually sell: web SaaS vs. mobile apps.
+
+
+
+Source: TrustMRR public listings dataset, frozen 30 Jul 2026, n = 1,000 startups.
+

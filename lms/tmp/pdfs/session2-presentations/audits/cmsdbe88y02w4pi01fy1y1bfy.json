@@ -1,0 +1,41 @@
+{
+  "slide_count": 4,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 6,
+    "framing": 5,
+    "accuracy": 5,
+    "visual": 6.5,
+    "bonus": 0
+  },
+  "what_worked": "Power-law thesis is clearly stated and the median-vs-mean contrast is decision-useful.",
+  "fix_next": "Fix the Stan-vs-#2–#6 arithmetic error and acknowledge missingness and selection bias explicitly.",
+  "verdict": "Clean but narrow deck with a key arithmetic error undermining credibility.",
+  "flags": [
+    "narrow-scope",
+    "arithmetic-error-slide3",
+    "decile-axis-inverted",
+    "no-missingness-disclosure",
+    "no-limitations"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 3: claims Stan alone earns more than #2–#6 combined, but $2,845K < $985K+$868K+$858K+$575K+$391K=$3,677K. Slide 2: decile chart labels D1 as bottom yet assigns it 83.7% share—axis appears inverted.",
+  "evidence": {
+    "insight": "Single power-law angle with median-vs-mean; no category, geography, or payment-processor analysis attempted.",
+    "narrative": "Three-beat arc (shape→whales→so-what) is coherent but thin; slide 4 takeaways lack data backing.",
+    "framing": "Dataset size and date noted; no mention of 241 missing country, 274 missing category, or survivorship/selection bias.",
+    "accuracy": "Stan vs #2-#6 claim is arithmetically wrong by the deck's own numbers; decile chart axis labeling is confusing/inverted; 49.6% top-10 and 21.6% zero-revenue are correct.",
+    "visual": "Consistent palette and typography; decile bar chart effective in concept but axis confusion hurts; slide 4 decorative squares add nothing.",
+    "ai_slop": "Slide 4 decorative colored squares are template filler; otherwise minimal."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy for confirmed arithmetic error on slide 3; removed bonus—deck is competent but not exceptional; narrowed insight and framing scores for single-angle analysis and absent limitations.",
+  "total": 56,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 7635,
+    "output_tokens": 1586
+  }
+}

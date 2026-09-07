@@ -1,0 +1,38 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 6.5,
+    "accuracy": 4.5,
+    "visual": 8,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis sustained across every slide with a memorable gold-rush metaphor and clean visual hierarchy.",
+  "fix_next": "Median values are systematically wrong (Education $2,142 vs. $2,435; AI $446 vs. $503); verify all numbers against the actual dataset before presenting.",
+  "verdict": "Compelling narrative undermined by pervasive median-revenue errors and an unsourced exit-multiple claim.",
+  "flags": [
+    "median-values-systematically-off",
+    "unsourced-exit-multiple",
+    "missing-data-not-discussed",
+    "fintech-not-in-reference-categories"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 3/4/5: Education median shown as $2,142 (actual $2,435); AI median $446 (actual $503); Marketing $1,586 (actual $2,369.50); Analytics $1,294 (actual $419); E-comm $155 (actual $387). Multiple other category medians also diverge materially. Slide 7: 3.15x AI exit multiple and 2.3x market median appear fabricated—no revenue-multiple field exists in the frozen dataset. Slide 2: 'Fintech' listed as a category with 16 companies but does not appear in the reference category list. Slide 4: '5x the median revenue' claim based on wrong medians (actual ratio ~4.8x, minor but built on wrong inputs).",
+  "evidence": {
+    "insight": "The core insight—AI is the most crowded category yet mid-pack in median revenue—is genuinely interesting and decision-useful. The AI-vs-Education comparison (slide 4) and the growth-rate parity observation (slide 6) add layers. However, the exit-multiple argument (slide 7) would be the strongest insight if it were verifiable, but it appears unsourced from the dataset.",
+    "narrative": "Excellent arc: title question → crowding → yield → head-to-head → ranking → momentum → valuation → verdict → recommendations. Each slide builds on the prior one. The gold-rush metaphor is sustained without becoming forced. The landing on slide 8 synthesizes cleanly.",
+    "framing": "Slide 1 sets up the question well. Slide 9 cites source and n=1,000/726 categorized, which is good. However, 274 missing categories and 241 missing countries are never discussed as limitations. The audience is implicitly founders/buyers/analysts (slide 9) but this isn't established until the end. No mention of the 216 zero-revenue companies across the full dataset or how missingness might bias category medians.",
+    "accuracy": "Systematic median errors across nearly every category shown (slides 3-5). Education off by ~$293, Marketing off by ~$783, Analytics off by ~$875, AI off by ~$57, E-comm off by ~$232. The exit-multiple figures (3.15x, 2.3x, 1.2x on slide 7) have no apparent basis in the frozen dataset—the dataset contains revenue multiples but the reference B2B/B2C medians are 2.35x/2.30x, not category-specific multiples as presented. Fintech appears as a 13th category not in the reference list. The 27% claim on slide 2 (197/726 ≈ 27.1%) is correct.",
+    "visual": "Consistently excellent design system: warm palette, gold-rush theming, clear hierarchy with section labels, restrained use of color to highlight AI. Bubble chart (slide 2) is effective. Nugget sizing (slide 3) is creative. The balance/seesaw on slide 7 is visually appealing. Typography is strong throughout. Minor issue: slide 6's large circles are somewhat decorative for just two numbers.",
+    "ai_slop": "none—the metaphor is sustained and specific, not generic filler. Design is cohesive and purposeful."
+  },
+  "confidence": "high",
+  "total": 70,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 16891,
+    "output_tokens": 1029
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "slide_count": 5,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 8,
+    "accuracy": 6.5,
+    "visual": 8.5,
+    "bonus": 3
+  },
+  "what_worked": "Exceptional narrative arc from power-law thesis through myth-busting to actionable investment funnel with honest risk caveats.",
+  "fix_next": "B2B median revenue claim ($1,240 vs $304, 4×) doesn't match the reference ~2.35× multiple; verify and cite the 288-row audience_type missingness.",
+  "verdict": "Sharp, opinionated investor brief with strong craft but several unverifiable or inflated claims.",
+  "flags": [
+    "b2b-median-inflated",
+    "top10-revenue-share-rounded-up",
+    "missing-data-not-disclosed",
+    "some-unverifiable-claims"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 1: '75% by top 5.8%' — reference says top-10 share is 49.6%, so 75% from 5.8% is plausible but unverifiable and the 50% claim on slide 2 contradicts the 49.6% benchmark (minor). Slide 2: '50% from just 10 startups' — reference is 49.6%, acceptable rounding. Slide 3: B2B median 4× B2C ($1,240 vs $304) — reference shows median multiples of 2.35×/2.30× and means skewed by outliers; the 4× claim appears materially inflated. Slide 3: Mobile Apps median shown as $233 vs reference $232.50 (fine), but SaaS shown as $201 vs reference $200.50 (fine). Slide 3: Content Creation $1,238 vs reference $1,237.50 (fine). Slide 4: 2.4× median asking price — plausible but the reference gives B2B 2.35× and B2C 2.30×, which are asking-price multiples, not necessarily the same filter used here (≥$10K revenue). Slide 3: '27% of categorized startups' for AI — 197/726 = 27.1%, correct. Slide 1: median $400 — not directly verifiable from reference but plausible given category medians.",
+  "evidence": {
+    "insight": "Slide 3 myth-busting (AI crowding, follower irrelevance) and slide 5 funnel screen from 1,000→46 show genuine analytical depth beyond chart description. The 'pricing power > hype' thesis is well-supported.",
+    "narrative": "Five slides form a tight arc: hook (power law) → distribution proof → what wins → valuation entry → actionable screen. Each slide builds on the prior. The 'basket not bet' thesis threads throughout. Landing slide synthesizes three numbered takeaways.",
+    "framing": "Slide 1 header clearly identifies audience (investors), dataset (TrustMRR, n=1,000, frozen date), and scope. Slide 5 includes source citation and 'not investment advice' disclaimer. However, no mention of 274 missing categories or 288 missing audience_type — a material omission for the B2B/B2C claims.",
+    "accuracy": "B2B 4× claim on slide 3 is materially inflated vs reference 2.35× median multiple. The 50% top-10 revenue share is slightly generous (49.6%). The funnel numbers on slide 5 (387, 209, 65, 46) are unverifiable but internally consistent. Missing-data rates for category (274/1000) and audience_type (288/1000) are never disclosed despite being central to slides 3 and 5.",
+    "visual": "Clean, consistent dark-navy palette with green/teal accents. Slide 2 grouped bar chart is well-labeled with clear legend. Slide 4 histogram is effective. Slide 5 funnel waterfall is elegant. Typography hierarchy is strong throughout. Slide 3 horizontal bar + callout boxes balance data and interpretation well. No chartjunk.",
+    "ai_slop": "none — the deck is tightly edited with specific claims, no filler language, and purpose-built visuals tied to the dataset"
+  },
+  "confidence": "high",
+  "total": 84,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 10676,
+    "output_tokens": 1088
+  }
+}

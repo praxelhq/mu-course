@@ -1,0 +1,38 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 5.5,
+    "accuracy": 2,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong narrative arc from market structure through myth-busting to actionable takeaways, with honest limitations slide.",
+  "fix_next": "The entire deck references 8,782 rows when the frozen dataset contains 1,000—every absolute number is wrong, undermining all analysis.",
+  "verdict": "Polished storytelling on the wrong dataset destroys credibility.",
+  "flags": [
+    "wrong-dataset-size",
+    "fabricated-or-mismatched-n",
+    "pervasive-count-errors",
+    "zero-revenue-pct-wrong"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 1-13: n=8,782 vs actual 1,000 (pervasive). Slide 4-5: 57% zero-revenue vs actual 21.6% (216/1000). Slide 3: 555 anonymous vs actual 129. Slide 6: AI=1,430 startups vs actual 197; all category counts inflated ~7-9x. Slide 8: B2B=1,883 and B2C=3,143 vs actual dataset with 288 missing audience_type out of 1,000. Slide 7: US=1,657 startups vs actual ~258 (from provider reference).",
+  "evidence": {
+    "insight": "Power-law concentration thesis (slide 4), B2B vs B2C monetization gap (slide 8), myth-busting on social followers (slide 11), and acquisition market rationality (slide 10) show genuine analytical thinking beyond chart description.",
+    "narrative": "Clear arc: market structure → distribution → category → geography → business model → growth → acquisitions → limitations → takeaways. Each slide builds on the prior. Takeaways on slide 13 synthesize earlier findings.",
+    "framing": "Slide 3 provides data context and three caveats; slide 12 adds limitations. However, the fundamental framing claims 8,782 rows when the frozen dataset has 1,000, which means the entire scope statement is wrong.",
+    "accuracy": "Every absolute count is wrong by ~8.78x (8,782 vs 1,000 rows). Zero-revenue share claimed at 57% vs actual 21.6%. Anonymous companies claimed at 555 vs actual 129. Category counts (AI=1,430 vs 197) all inflated. Some proportional relationships loosely hold (anonymous revenue share ~27%, AI as top category), suggesting possible access to a larger platform export, but the assignment specifies the frozen 1,000-row dataset.",
+    "visual": "Clean, consistent dark-navy-and-gold template. Good hierarchy with section labels, KPI cards, annotated bar charts. Pie chart on slide 5 is readable. Bar charts properly labeled. Restraint in decoration. Slight visual sameness across slides but functional.",
+    "ai_slop": "Template is polished and consistent but not generic filler. Content is substantive and dataset-specific. Some consulting-style language ('rational market,' 'reference tier') but grounded in data claims. Not flagrant slop."
+  },
+  "confidence": "high",
+  "total": 57,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 25889,
+    "output_tokens": 1874
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 6,
+    "framing": 7,
+    "accuracy": 6,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Honest caveats slide, consistent missingness flagging, and clear power-law framing with actionable segmentation advice.",
+  "fix_next": "Claims mostly redescribe charts without deeper cross-cuts; add category-level median revenue comparisons or provider-revenue analysis to generate non-obvious insight.",
+  "verdict": "Well-structured, honest tour of the data but stays descriptive rather than analytical.",
+  "flags": [
+    "mostly-descriptive",
+    "limited-cross-analysis",
+    "stripe-count-discrepancy",
+    "ai-revenue-understated",
+    "zero-revenue-count-wrong",
+    "median-multiple-ambiguous-denominator"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 7 (p7): Stripe count 644 vs reference 636. Slide 3 (p3): '80.3% monetized' implies 197 at $0, but reference says 216 zero-revenue rows (78.4% monetized). Slide 7 (p8): $0 bucket shows 197 companies, contradicting both the 80.3% claim and the 216 reference. Slide 12 (p12): AI pooled MRR stated as $1.8M vs reference $2.36M—materially understated.",
+  "evidence": {
+    "insight": "Slide 8 concentration read and slide 12 six-pattern summary are useful but largely restate what charts already show. No cross-dimensional analysis (e.g., category × provider, category median revenue, B2B vs B2C revenue). The domain-rating observation on slide 5 hints at deeper analysis but stops at correlation without quantifying it.",
+    "narrative": "Clear sequential structure: context → overview → categories → audience → monetization → infra → concentration → geography → secondary market → caveats → conclusion. Logical but reads as a topic-by-topic tour rather than building toward a single thesis. The conclusion synthesizes but doesn't surprise.",
+    "framing": "Slide 2 sets up the dataset well with completeness chart and three clear questions. Missingness is flagged repeatedly (slides 4, 9, 11). Audience is implicitly a buyer/investor. Scope and limitations are handled better than most decks.",
+    "accuracy": "Stripe count off by 8 (644 vs 636). Zero-revenue count inconsistent: slide says 197 at $0 but also claims 80.3% monetized (which would be 197 at zero), while reference shows 216 at zero. AI revenue understated at $1.8M vs $2.36M. The 2.35x median multiple is stated as applying to all 262 for-sale companies but reference gives B2B median 2.35x—denominator unclear. RevenueCat count 191 vs reference 189.",
+    "visual": "Consistent design system with teal/coral palette, clear hierarchy, good use of callout boxes alongside charts. Bar charts are appropriately chosen and labeled. The funnel on slide 6 is effective. Slight monotony from repeated horizontal bar + callout-box layout across slides 4, 7, 8, 9. No chart is misleading in form.",
+    "ai_slop": "Minor template repetitiveness in layout (bar chart + three callout boxes pattern used on 4+ slides). Language is generally specific and data-grounded, not generic filler. No decorative-but-meaningless graphics. Overall low slop."
+  },
+  "confidence": "high",
+  "total": 64,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 23344,
+    "output_tokens": 898
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 8,
+    "narrative": 8.5,
+    "framing": 8,
+    "accuracy": 5.5,
+    "visual": 7,
+    "bonus": 3
+  },
+  "what_worked": "Exceptional funnel logic: total revenue → growth screen → concentration test → gap analysis → specific product proposal.",
+  "fix_next": "Revenue figures on slide 4 appear to use all-time revenue (~10–40x higher than the frozen 30-day totals); reconcile the denominator before presenting.",
+  "verdict": "Strong strategic narrative undermined by using wrong revenue denominator throughout category charts.",
+  "flags": [
+    "revenue-denominator-mismatch",
+    "possible-all-time-vs-30day-confusion",
+    "top10-share-inflated"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 3: Claims 61% of total revenue held by top 10 companies; frozen reference is 49.6% for 30-day revenue (top-10 share). Slide 3: '$334M total all-time revenue' is used as the evidence base but the assignment's frozen dataset tracks 30-day revenue ($15.6M); mixing denominators. Slide 4: Category revenue figures (E-comm $54.8M, Marketing $33.9M, AI $31.9M, etc.) are roughly 10–50x higher than the frozen 30-day category totals (AI $2.36M, Marketing $1.32M, E-comm $1.11M), indicating all-time revenue was used but presented without clarifying this is a different metric than the dataset's primary 30-day revenue field. Slide 7: Dev Tools category revenue stated as $2.07M — frozen reference is $163K for 30-day; again likely all-time. Slide 3: 20% report $0 current MRR vs frozen reference of 216/1000 = 21.6% reporting $0 30-day revenue — minor but the metric label conflates MRR with 30-day revenue.",
+  "evidence": {
+    "insight": "Slides 5-6 apply a concentration test that genuinely goes beyond surface rankings — showing 3 of 4 'growing' categories are single-company stories. Slide 8 identifies a structural gap (no AI-serving Dev Tools) and proposes a specific product. This is original, decision-useful synthesis.",
+    "narrative": "Clear funnel: platform context (S2) → evidence base (S3) → category landscape (S4) → growth screen (S5) → concentration test (S6) → recommendation (S7) → gap (S8) → proposal (S9) → limitations (S10). Each slide builds on the prior one with explicit cross-references.",
+    "framing": "Slide 1 states audience (founder evaluating category choice), slide 2 clarifies what TrustMRR is, slide 10 lists three specific limitations including snapshot nature, self-selection bias, and small n. Scope is well-bounded. Missing: explicit statement of which revenue metric is being used throughout.",
+    "accuracy": "The deck appears to use all-time/lifetime revenue throughout category comparisons while the frozen dataset reference uses 30-day revenue. E-comm at $54.8M vs frozen $1.1M (30-day) is a ~50x discrepancy. Top-10 share claimed at 61% vs frozen 49.6%. The analytical logic is sound but built on a different denominator than the assignment's primary metric, which is a material issue. Category company counts (AI 197, Dev Tools 37, Analytics 19) match the reference well.",
+    "visual": "Clean, consistent template with good hierarchy. Bar charts are appropriately chosen and labeled. Stacked bar on slide 6 effectively communicates concentration. Comparison table on slide 7 is well-structured. No chartjunk. Slight monotony in color palette but restrained and professional. Dark-background slides (8, 10) provide visual variety.",
+    "ai_slop": "Minimal slop. Language is specific and data-grounded throughout. No generic filler paragraphs. The 'MeterKit' proposal on slide 9 edges toward speculative consulting-speak but is grounded in prior slides' evidence."
+  },
+  "confidence": "high",
+  "total": 77,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 20801,
+    "output_tokens": 1036
+  }
+}

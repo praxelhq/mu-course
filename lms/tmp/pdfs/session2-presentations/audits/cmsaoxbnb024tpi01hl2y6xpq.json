@@ -1,0 +1,42 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 6.5,
+    "accuracy": 4.5,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "ARPU-quartile analysis and pricing-over-audience thesis are genuinely original and decision-useful throughout.",
+  "fix_next": "Reconcile the $133.7M headline total with the dataset's actual $15.6M sum and disclose field-level missingness rates.",
+  "verdict": "Strong storytelling undermined by a headline revenue figure that doesn't match the dataset.",
+  "flags": [
+    "headline-revenue-unreconcilable",
+    "top10-share-inflated",
+    "category-medians-not-reconcilable",
+    "missingness-undisclosed",
+    "no-limitations-slide",
+    "revenue-timeframe-ambiguous"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 1: $133.7M total revenue vs reference $15.6M (~8.6x discrepancy). Slide 3: top-10 share stated as 50.6% vs reference 49.6%. Slide 3: category medians (e.g., Education $14.3k, Marketing $10.0k) do not reconcile with reference medians even after ×12 annualization.",
+  "evidence": {
+    "insight": "Slide 4 ARPU-quartile 38x gap on similar subscriber counts is a genuinely surprising, decision-useful finding. Slide 7 counter-folklore items (r=0.04 followers, 55-customer enterprise, geography 125x spread) add depth.",
+    "narrative": "Clear arc from data intro (1-2) → concentration (3) → pricing drivers (4-5) → valuation (6) → surprises (7) → composite (8) → takeaway (9). Each slide advances the pricing thesis. Landing on slide 9 is crisp.",
+    "framing": "Slide 1 sets scope and data provenance well. However, 24-29% missingness in country/category/audience_type fields is never disclosed. No limitations or caveats slide. Audience implied (founders/operators) but never stated.",
+    "accuracy": "Headline $133.7M cannot be reconciled with reference total $15,596,344.59. Top-10 share inflated by 1pp. Category medians systematically diverge from reference even with reasonable annualization. 216 zero-revenue businesses not contextualized.",
+    "visual": "Consistent dark theme with gold/teal hierarchy. Waffle chart on slide 3 effectively communicates concentration. Horizontal bar charts are appropriate. Typography is legible. Slight visual sameness but purposeful restraint.",
+    "ai_slop": "Minimal — language is specific and crisp, no generic filler or decorative charts. Template consistency is a design choice."
+  },
+  "confidence": "medium",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5 to 4.5 due to $133.7M headline being irreconcilable with $15.6M reference total. Lowered framing from 7 to 6.5 for undisclosed missingness. Reduced bonus from 2 to 1 because accuracy issues undermine otherwise strong work.",
+  "total": 69,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 18542,
+    "output_tokens": 2436
+  }
+}

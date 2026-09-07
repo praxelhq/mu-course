@@ -1,0 +1,43 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 9.5,
+    "accuracy": 6.5,
+    "visual": 7,
+    "bonus": 3
+  },
+  "what_worked": "Composite scoring framework on slide 10 and relentless hazard disclosure make the recommendation genuinely earned.",
+  "fix_next": "Reconcile MRR-based figures against the frozen revenue reference; top-10 share, Stripe count, and monetization rate all drift from verifiable totals.",
+  "verdict": "Exceptional framing and narrative discipline, but several numeric claims don't survive audit.",
+  "flags": [
+    "top-10-share-mismatch",
+    "stripe-count-mismatch",
+    "ai-median-mismatch",
+    "education-median-mismatch",
+    "monetization-rate-error",
+    "total-mrr-vs-total-revenue-unclear",
+    "closing-slide-89.9-vs-80.3-inconsistency"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1/6: '80.3% earn something' implies 197 zeros, but reference shows 216 zeros → 78.4%. Slide 6: top-10 share 48.0% vs reference 49.6%. Slide 5/11: Stripe at 644 vs reference 636. Slide 4/10: AI median $446 vs reference $503. Slide 10: Education median $2,142 vs reference $2,435. Slide 6: total MRR $13,471,682 vs reference total revenue $15,596,345 (field conflation unclear). Slide 11: '89.9% earned something' contradicts slide 1's 80.3% without clarifying the denominator switch (all-time vs current MRR).",
+  "evidence": {
+    "insight": "Slide 10's weighted composite (35/25/20/20) is original and decision-useful. Slide 4's hit-rate reframing and slide 9's 56.5% unlabelled-revenue caveat show genuine analytical depth. The r=0.906 subscriber correlation on slide 7 is a novel, verifiable finding.",
+    "narrative": "Bob persona threads every slide from instinct through data to decision. Construction metaphor (plot, blueprint, skyline) is sustained without strain. Each 'Bob's Call' advances the argument with a specific, non-generic takeaway. The arc from crowded AI → B2B analytics/sales is logically tight.",
+    "framing": "Slide 2 explicitly maps answerable vs unanswerable questions with field counts. Slide 9 quantifies four hazards. Slides 12–13 provide full validation appendix with formulas, source fields, missingness, and six explicit anti-conclusions. Rare thoroughness for student work.",
+    "accuracy": "Multiple figures deviate from frozen reference: monetization rate, top-10 concentration, Stripe count, AI median, Education median. The deck uses mrr_usd consistently but never clarifies the gap between its total ($13.47M) and the reference total revenue ($15.60M). Slide 11 states 89.9% 'earned something' (all-time) while slide 1 says 80.3% (current MRR) — the switch is explained in appendix A but not on the main slides, risking reader confusion.",
+    "visual": "Clean hierarchy, consistent template, good chart choices on slides 4 and 6. Leaderboard table on slide 7 is effective. However, slides 5, 8, 9, 10, 11 lack charts, relying on card layouts that become repetitive. Blueprint-grid background is decorative but unobtrusive. Restraint is appropriate but variety is limited.",
+    "ai_slop": "None detected. The Bob persona is substantively integrated, not decorative filler. Each callout contains dataset-specific content. Appendix slides demonstrate genuine analytical work."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 7.0 to 6.5: seven verifiable numeric discrepancies including monetization rate, top-10 share, Stripe count, and two category medians warrant a stronger penalty. Reduced bonus from 4 to 3: the work is excellent but the numeric drift across multiple slides prevents the highest bonus tier.",
+  "total": 84,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 27688,
+    "output_tokens": 1068
+  }
+}

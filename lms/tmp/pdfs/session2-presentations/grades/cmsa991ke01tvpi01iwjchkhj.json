@@ -1,0 +1,39 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 5,
+    "narrative": 6,
+    "framing": 5.5,
+    "accuracy": 4.5,
+    "visual": 6.5,
+    "bonus": 0
+  },
+  "what_worked": "Clear power-law framing with mean/median gap and valuation multiple benchmarks for investors.",
+  "fix_next": "Revenue figures are materially wrong ($13.5M vs $15.6M actual; AI shown as $1.8M vs $2.4M); verify totals before presenting.",
+  "verdict": "Polished but shallow deck with significant revenue errors and narrow coverage.",
+  "flags": [
+    "revenue-total-error",
+    "category-revenue-errors",
+    "missing-data-not-acknowledged",
+    "narrow-scope",
+    "consulting-tone"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: '$13.5M combined MRR' — actual total 30-day revenue is $15.6M, a ~$2M undercount. Slide 3: AI revenue shown as $1,806K ($1.81M) vs actual $2,357K; SaaS shown as $589K vs actual $704K; E-comm shown as $396K vs actual $1,112K — massive undercount. Slide 3 text claims AI is '3x the next category (SaaS) on revenue' — actual ratio is ~3.3x which is close but the underlying numbers are wrong. Slide 4: Mean MRR $13,471 — if total is $15.6M/1000 = $15,596, not $13,471. Slide 6: 2.30x median multiple stated without clarifying B2B vs B2C distinction (reference shows B2C 2.30x, B2B 2.35x — may be conflating).",
+  "evidence": {
+    "insight": "Slide 4 mean/median gap (48x) and slide 5 growth distribution are genuinely useful observations. Slide 6 valuation benchmarks add decision-relevant context. However, no analysis of payment providers, anonymity premium, TLD signals, or B2B/B2C differences — coverage is narrow.",
+    "narrative": "Coherent investor-briefing arc: market size → category landscape → concentration → growth scarcity → valuations → recommendations. Logical sequence but recommendations (slide 7) merely restate prior slides without new synthesis.",
+    "framing": "Audience (investors/board) is stated clearly. However, 274 missing category values and 241 missing country values are never disclosed, which materially affects category counts and revenue figures. No limitations slide.",
+    "accuracy": "Total revenue understated by ~$2M. Multiple category revenues are materially wrong (E-comm off by ~$716K). Mean MRR calculation inconsistent with stated total. The 30 categories claim is unverified. Missing data not acknowledged despite affecting 27% of rows for category.",
+    "visual": "Clean, professional template with good hierarchy, consistent color coding, and readable charts. Bar charts are appropriate choices. However, visual sameness across slides — every slide uses the same card/stat layout. No scatter plots, distributions, or richer visualizations.",
+    "ai_slop": "Moderate consulting-speak ('durable demand,' 'capital allocation,' 'portfolio marks'). Template is polished but repetitive. Recommendations are generic enough to fit many datasets. No fabricated charts detected but underlying numbers appear incorrectly computed."
+  },
+  "confidence": "high",
+  "total": 55,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 13820,
+    "output_tokens": 851
+  }
+}

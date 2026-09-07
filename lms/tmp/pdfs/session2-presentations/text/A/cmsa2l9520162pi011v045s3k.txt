@@ -1,0 +1,400 @@
+TRUSTMRR · MARKETPLACE INTELLIGENCE
+
+
+
+
+What 1,000 Listings Reveal
+About Building a Micro-SaaS
+A data-driven read of the TrustMRR dataset — revenue patterns, what separates top earners, and a
+launch checklist for listing your own product.
+
+
+
+
+1,000 startup listings • 65 countries • 29 categories • Frozen 30 Jul 2026
+THE DATASET
+
+
+A snapshot of the TrustMRR marketplace
+1,000 startups listed on TrustMRR, captured in a single frozen snapshot. Here's the scale we're working with before we dig into what actually drives
+revenue.
+
+
+
+
+  1,000                                                $15.6M                                                 $13.5M
+  startup listings analyzed                            combined 30-day revenue across all listings            combined monthly recurring revenue (MRR)
+
+
+
+
+  65                                                   29                                                     26%
+  countries represented                                product categories                                     of listings are currently for sale
+
+
+
+
+TrustMRR · 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                        2
+OBSERVATION 01
+
+
+This is a winner-take-most market
+Average MRR looks healthy — until you compare it to the typical listing. The gap between the two tells the real story.
+
+
+
+
+  $13,472
+  Average MRR per listing
+                                                                                          47.8×
+                                                                          the average listing earns 47.8× more than the median listing
+
+
+
+
+  $282                                                        Top 10% of listings (100 startups) capture 81.8% of all MRR in the dataset. A small set of
+                                                                      breakout products — not the median business — defines this market.
+
+  Median MRR per listing — the typical startup
+
+
+
+
+TrustMRR · 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                          3
+OBSERVATION 02
+
+
+The most crowded category isn't the most profitable one
+AI has 4× more listings than the next category — but its typical business earns far less than smaller, more focused categories.
+
+
+                                            Listings by category                                             Median MRR per listing ($)
+
+
+       Education                  30                                                        Education                                                           2,142
+
+
+
+             Sales         13                                                                    Sales                         1,036
+
+
+
+         Analytics           19                                                              Analytics                                  1,294
+
+
+
+Content Creation                   36                                                 Content Creation                                 1,254
+
+
+
+       Marketing                       42                                                   Marketing                                            1,586
+
+
+
+                AI                                                        197                       AI        446
+
+
+                     0                 50            100           150   200    250                      0   500        1000              1500           2000           2500
+
+
+
+TrustMRR · 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                                              4
+OBSERVATION 03
+
+
+B2B listings out-earn B2C by a wide margin
+Fewer B2B businesses are listed, but each one is worth substantially more — both in recurring revenue and in how well it converts traffic.
+
+
+
+
+    B2B                                                  Both                                                   B2C
+    255 listings                                         56 listings                                            401 listings
+
+
+
+
+    $1,036                                               $352                                                   $181
+    median MRR                                           median MRR                                             median MRR
+
+
+
+    $0.90                                                $0.04                                                  $0.26
+    revenue per visitor                                  revenue per visitor                                    revenue per visitor
+
+
+    5.7× B2C median MRR
+
+
+
+
+TrustMRR · 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                            5
+OBSERVATION 04
+
+
+Domain authority tracks revenue almost perfectly
+Group listings by domain rating (0–100, a proxy for SEO authority) and median MRR climbs in lockstep — a 3,370× range from the weakest to the
+strongest domains.
+
+
+                                                                                                                                      $30,890
+
+
+
+
+                                                                                                        $3,995
+
+                     $9                              $111                 $521
+
+                    DR 0                            DR 1–10             DR 11–30                       DR 31–60                      DR 61–100
+
+
+
+TrustMRR · 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                6
+OBSERVATION 05
+
+
+Subscribers predict revenue. Followers don't.
+Two “growth” metrics, two very different relationships with money in the bank.
+
+
+
+
+                                    0.91                                                            0.02
+                      correlation: active subscriptions ↔ MRR                      correlation: X (Twitter) followers ↔ 30-day revenue
+
+
+
+
+           Near-perfect. Subscriber count is the single strongest predictor       Essentially zero. A big social following shows up in almost every
+                        of recurring revenue in this dataset.                    founder's bio here — but it doesn't show up in the revenue line.
+
+
+
+
+TrustMRR · 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                     7
+OBSERVATION 06
+
+Free tiers correlate with lower revenue, not more users
+converted
+Listings whose pricing model has no free or freemium option show meaningfully higher MRR than those that lead with “free.”
+
+
+
+
+  $554                                                                                       $159
+  Median MRR — paid-only pricing                                                             Median MRR — includes a free / freemium tier
+  (654 listings)                                                                             (346 listings)
+
+
+
+
+                                    3.5× higher median MRR for listings that charge from day one, versus those offering a free or freemium tier.
+
+TrustMRR · 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                  8
+OBSERVATION 07
+
+
+Stripe is the default — and the median performer
+64% of all listings run on Stripe. Niche billing tools show lower typical MRR, likely reflecting earlier-stage or hobby projects rather than the tool itself.
+
+
+                                                                                Median MRR by payment provider ($, count of listings)
+                                                         $663
+
+  63.6%
+  of listings (636 / 1,000) use Stripe
+
+
+
+
+                                                                                 $237
+
+
+                                                                                                         $146
+
+                                                                                                                                 $76
+
+                                                                                                                                                          $2
+
+                                                         Stripe                RevenueCat               Paddle               Lemon Squeezy          Dodo Payments
+                                                         (636)                    (189)                  (16)                    (25)                    (50)
+
+
+
+TrustMRR · 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                                   9
+OBSERVATION 08
+
+
+Revenue is heavily concentrated in a handful of markets
+Of listings with a known country, the US alone generates almost two-thirds of all 30-day revenue in the dataset.
+
+
+                                                                                   Top 5 countries by 30-day revenue ($M)
+
+
+                                                    Hong Kong   $0.21M
+
+
+
+
+  63.1%
+                                                      Canada    $0.31M
+
+
+
+
+                                                          UK     $0.44M
+
+
+  of total 30-day revenue comes from US-based
+  listings alone
+                                                       France      $0.67M
+
+
+
+
+                                                          US                                                                $9.84M
+
+
+
+
+TrustMRR · 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                    10
+OBSERVATION 09
+
+
+A quarter of this marketplace is already for sale
+TrustMRR isn't just a place to launch — it's a live exit market, with real asking prices attached to real MRR.
+
+
+
+
+  26.2%                                                                              $35,000
+  of all 1,000 listings are marked “on sale” (262 startups)                          median asking price among listed-for-sale startups
+
+
+
+
+  $10.0M                                                                             2.3×
+  highest asking price in the dataset (1Lookup, $207K MRR)                           median self-reported revenue multiple (highly variable by listing)
+
+
+
+
+TrustMRR · 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                         11
+OBSERVATION 10
+
+
+A few stories worth knowing
+Behind the aggregate numbers, individual listings tell sharper stories.
+
+
+                Stan — the market leader
+  ★
+                $3.57M MRR and the dataset's highest domain rating (89/100). The clearest case of category-defining scale.
+
+
+                An anonymous breakout
+  ↑
+                A “Stealth Company” grew MRR +12,983% in 30 days, from roughly $1K to $135,899 — the fastest mover in the dataset.
+
+
+                GojiberryAI
+  +
+                $494,668 MRR, the largest fully-named AI-category listing, and #3 overall by revenue.
+
+
+                Privacy is common
+  ◉
+                13% of founders (130 of 1,000) list under “Stealth Company” or “Hidden Business” rather than a real name.
+
+
+
+
+TrustMRR · 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                    12
+THE TAKEAWAY
+
+
+What you need before listing on TrustMRR
+Seven things the data says separate a well-positioned launch from a median one.
+
+
+ 1
+           A focused category, not the crowded one                                               5
+                                                                                                     Domain authority built in early
+           Education, Marketing, Content Creation and Sales all out-earn AI on a per-listing         Median MRR rises from $9 to $30,890 moving from the lowest to highest domain-
+           basis. Pick where you can lead, not where everyone else is.                               rating band — SEO groundwork compounds.
+
+
+
+ 2
+           A B2B or mixed buyer, if you can                                                      6
+                                                                                                     Stripe (or equivalent) wired up
+           B2B listings post 5.7× the median MRR of B2C, and monetize traffic 3.5× better per        64% of listings already run on Stripe — it's the default buyers and integrations
+           visitor.                                                                                  expect.
+
+
+
+ 3
+           A subscription model from day one                                                     7
+                                                                                                     A north-star metric that isn't followers
+           Active subscriber count is the strongest single predictor of MRR (r = 0.91) in this       Social following shows almost no relationship with revenue (r = 0.02). Track
+           dataset — stronger than any other visible field.                                          subscribers and MRR instead.
+
+
+
+ 4
+           Real pricing, not an extended free tier
+           Paid-only listings show 3.5× the median MRR of listings that lead with a free or
+           freemium plan.
+
+
+
+
+TrustMRR · 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                                                       13
+READ WITH CARE
+
+
+What this dataset can—and can't—tell you
+Financial fields are complete for every listing. Enrichment fields are not — that shapes how confidently each observation should be read.
+
+
+
+
+ 100%                                                                 ~28%–36%                                                            <15%
+
+ complete: revenue, MRR, subscriptions, payment                       complete: category, country, domain rating, pricing                 complete: X followers, visitor counts, growth-rate
+ provider, on-sale status                                             model, audience type                                                fields
+
+
+
+
+Implication: category-, country-, and pricing-based comparisons in this deck reflect the ~30–70% of listings where that field was reported, not the full 1,000 — directionally reliable, not
+exhaustive.
+TrustMRR · 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                                                              14
+IN SUMMARY
+
+
+
+
+A small share of focused, subscription-first, B2B-leaning products
+with strong domains capture almost all the value on TrustMRR.
+
+
+     Top 10% hold 81.8% of MRR
+
+
+     B2B earns 5.7× B2C
+
+
+     Subscribers, not followers, predict MRR (r=0.91)
+
+
+     Domain authority: $9 → $30,890 median MRR
+
+
+     26% of listings are already for sale
+
+
+TrustMRR · 1,000-Row Dataset · Frozen 30 Jul 2026                    15
+

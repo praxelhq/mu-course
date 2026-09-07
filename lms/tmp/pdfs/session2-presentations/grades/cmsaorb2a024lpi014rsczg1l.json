@@ -1,0 +1,39 @@
+{
+  "slide_count": 34,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8.5,
+    "framing": 8,
+    "accuracy": 5,
+    "visual": 4,
+    "bonus": 2
+  },
+  "what_worked": "Exceptional narrative architecture: thesis → evidence → screening framework → actionable recommendations, with honest limitations throughout.",
+  "fix_next": "Nearly every chart and table is a placeholder labeled 'illustrative shape' with no actual computed data—populate them before presenting.",
+  "verdict": "Brilliant analytical blueprint, but it's a wireframe, not a finished deck.",
+  "flags": [
+    "illustrative-placeholders-throughout",
+    "no-actual-data-in-charts",
+    "unpopulated-target-table",
+    "missing-computed-values",
+    "template-not-analysis"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 10: Claims '~50% of listings report zero twelve-month revenue'—the dataset shows 216/1000 (21.6%) with zero 30-day revenue; the 50% figure appears fabricated or conflated with a different metric. Slide 11: Lists 'Productivity' as dominating listing volume alongside AI and SaaS—Productivity has only 49 listings, far from dominant; Mobile Apps (52) and Marketing (42) are comparable or larger.",
+  "evidence": {
+    "insight": "Slide 23's multiple-verification table and distortion index concept are genuinely original and decision-useful. The RRR formula (slide 15) and four-filter funnel (slide 27) show real analytical thinking. The domain-authority asymmetry argument (slide 25) is a strong non-obvious finding.",
+    "narrative": "Slide 2 sets up three pillars (thin market, model > category, broken pricing) and every subsequent section maps cleanly to them. The deck flows from context → data quality → landscape → model → growth → valuation → opportunities → recommendations with a clear thesis throughout.",
+    "framing": "Slide 8 explicitly addresses data limitations (financial spine trustworthy, descriptive skin not). Slide 34 lists six specific risks including survivorship bias and asks-not-clears. Audience (board/investor) is clear from slide 1. The 'illustrative shape' badges are honest about incompleteness.",
+    "accuracy": "Slide 23 verifies five actual listings against the multiple formula—these appear correct. However, the ~50% zero-revenue claim is materially wrong. Nearly every quantitative claim elsewhere is hedged as 'illustrative' with no actual computed values, making accuracy largely unverifiable. The deck references 'revenue_12m_usd' as a column but the frozen dataset reference uses 'revenue' (30-day); the 12-month field usage is plausible but unconfirmed.",
+    "visual": "Charts on slides 12, 19, 20 show data points but are labeled 'illustrative shape.' Most analytical slides (11, 13, 16, 17, 21, 24, 25, 28, 29) have empty chart areas or dark placeholder blocks where visualizations should be. The design system (navy/gold/cream) is consistent but the empty spaces dominate. Slide 33's executive summary has overlapping elements obscuring text.",
+    "ai_slop": "The deck reads as a sophisticated AI-generated analytical template/wireframe. Every data slide is tagged 'ILLUSTRATIVE SHAPE' with instructions like 'Values illustrative—compute from data before presenting.' Slide 28's target table has placeholder '[Target 1]' through '[Target 5]' with '$—' and '—x' throughout. This is a prompt-to-deck output that was never populated with actual analysis."
+  },
+  "confidence": "high",
+  "total": 68,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 62806,
+    "output_tokens": 917
+  }
+}

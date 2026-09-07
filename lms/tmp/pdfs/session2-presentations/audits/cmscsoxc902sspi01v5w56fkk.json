@@ -1,0 +1,42 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 6,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Crowded-vs-lucrative thesis is genuinely useful; Sales caveat and signal-quality slide show analytical maturity.",
+  "fix_next": "Disclose how median 12-mo revenue was computed, acknowledge 27% missing categories, and reconcile figures with raw medians.",
+  "verdict": "Strong narrative arc with a real thesis, undermined by unverifiable and likely inflated median figures.",
+  "flags": [
+    "undisclosed-annualization",
+    "median-values-not-reconcilable",
+    "missing-category-data-unmentioned",
+    "zero-revenue-cohort-ignored",
+    "line-on-categorical-axis",
+    "sales-category-unverified"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 2: AI median 12-mo rev $4,301 doesn't match reference median $503 annualized ($6,036) or raw; Marketing $10,029 vs ref $2,369.50×12=$28,434; Education $14,300 vs ref $2,435×12=$29,220. Slide 2: Productivity listed at 49 companies with median $350 — 'Productivity' is not in the reference category set, possibly conflated. Slide 3: Content Creation called 'highest rev/customer of the four' but Sales ($102.9) is higher than Content Creation ($20.7) — contradicts their own Slide 4.",
+  "evidence": {
+    "insight": "Slide 2's crowded≠lucrative framing is original and decision-useful. Slide 4 adds per-customer value with honest n=13 caveat. Slide 6 trust-vs-skeptical signal framework goes beyond chart narration. Depth is good but not exceptional.",
+    "narrative": "Clear arc: AI overcrowding problem → alternative categories → operational playbook → signal quality → actionable summary. Each slide builds purposefully. Thesis lands cleanly on Slide 7. Synthesis is present.",
+    "framing": "Audience (newcomer picking a category) is clear from Slide 1. However, 274 missing category values (27.4%) never disclosed. 216 zero-revenue companies not discussed. No survivorship bias mention. Scope is stated but limitations are thin, dropping from 6.5 to 6.",
+    "accuracy": "Core median revenue figures cannot be reconciled with reference data under any consistent transformation (raw monthly, ×12, or otherwise). AI $4,301 vs ref $503; Marketing $10,029 vs ref $2,369.50; Education $14,300 vs ref $2,435. Category counts match reference. Slide 3 calls Content Creation 'highest rev/customer of the four' but Slide 4 shows Sales at $102.9 vs Content Creation $20.7 — internal contradiction. 'Productivity' and 'Sales' categories not in reference set.",
+    "visual": "Consistent teal palette, clean card layouts (Slide 3), well-structured table (Slide 5), effective trust/skeptical split (Slide 6). Slide 2 line connecting categorical bars is misleading chart choice. Annotations are helpful throughout. No decorative filler.",
+    "ai_slop": "none"
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 6.5 to 6: missing-data and zero-revenue omissions are more significant given 27% category missingness directly affects the category-focused thesis. Accuracy stays at 5: median figures remain irreconcilable and an internal contradiction exists between Slides 3 and 4. All other scores confirmed.",
+  "total": 66,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 14090,
+    "output_tokens": 935
+  }
+}

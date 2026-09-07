@@ -1,0 +1,38 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 5.5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Strong narrative arc from market context through five findings to a coherent investment thesis with actionable recommendations.",
+  "fix_next": "The top-10 revenue share is ~49.6%, not 48%; B2B median multiple (~2.35x) is far below the claimed ~5.7x; verify core numbers before presenting.",
+  "verdict": "Well-structured investor briefing undermined by several material numerical errors.",
+  "flags": [
+    "inflated-b2b-multiple",
+    "top10-revenue-share-error",
+    "missing-data-not-disclosed",
+    "causal-language-from-correlation"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 7: Top 1% (10 companies) said to capture 48% — reference says top-10 share is 49.6%, close but presented as 'top 1%' which conflates rank with percentile. Slide 4: '$13.5M Combined Monthly Recurring Revenue' — dataset total 30-day revenue is $15.6M, not $13.5M; unclear derivation. Slide 11: B2B ~5.7x higher median revenue than B2C — reference shows B2B median multiple is 2.35x, B2C 2.30x, nowhere near 5.7x. Slide 5: AI shown as 27% of category mix — 197/726 categorized = 27.1% is correct, but the denominator (274 missing) is never disclosed to the reader.",
+  "evidence": {
+    "insight": "Slide 9 domain-rating analysis with tiered medians and r=0.48 correlation is a genuinely useful finding; slide 8 social-followers-vs-revenue overlap analysis adds decision value; the cause/effect boxes attempt to move beyond description.",
+    "narrative": "Clear five-highlight structure (slides 6-10) building from who's here → who earns → what doesn't predict revenue → what does → marketplace layer, culminating in a four-point thesis on slide 11. Coherent arc.",
+    "framing": "Slides 2-3 establish platform context and market backdrop well for a cold reader. Audience (investment committee) is explicit. However, missing-data rates (24-29% for key fields) are never disclosed, which is a significant framing gap.",
+    "accuracy": "Slide 4 total revenue ($13.5M) doesn't match reference ($15.6M). Slide 11 claims B2B ~5.7x median revenue advantage — reference shows ~2.35x. Top-10 share stated as 48% vs reference 49.6%. Category percentages on slide 5 are roughly correct given denominator choice but denominator not disclosed.",
+    "visual": "Consistent design system with navy/teal palette, good hierarchy, readable charts. Cause/effect boxes are a nice recurring motif. Donut chart on slide 8 lacks segment labels. Slide 5 pie chart is adequate but could use direct labeling. Overall clean and professional.",
+    "ai_slop": "Mild consulting-speak ('Verified Revenue Intelligence', 'Confidential · Investor Briefing') but generally substantive. The cause/effect boxes risk feeling formulaic but contain specific content. No decorative-but-meaningless graphics detected."
+  },
+  "confidence": "high",
+  "total": 69,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 21317,
+    "output_tokens": 861
+  }
+}

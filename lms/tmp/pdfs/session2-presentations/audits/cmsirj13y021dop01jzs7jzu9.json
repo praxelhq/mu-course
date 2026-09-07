@@ -1,0 +1,42 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 6,
+    "accuracy": 5.5,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "Tight assumption-refutation arc with the quintile bar chart is genuinely compelling and non-obvious.",
+  "fix_next": "Add a limitations slide addressing missingness, asking-vs-transaction prices, bespoke momentum definition, and the 231/246 sample discrepancy.",
+  "verdict": "Sharp thesis on one narrow angle, undermined by unverifiable metrics and missing caveats.",
+  "flags": [
+    "unverifiable-derived-metric",
+    "no-limitations-slide",
+    "narrow-dataset-use",
+    "case-study-cherry-pick-risk",
+    "29-categories-unsupported",
+    "sample-size-inconsistency-unexplained"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 2: '29 categories' — reference data names only ~12 categories with 274 rows missing category entirely, making 29 unsupported. Slides 4 vs 5: sample sizes shift from 231 to 246 with no explanation of the filtering difference.",
+  "evidence": {
+    "insight": "Quintile analysis on slide 4 revealing an inverted-U between momentum and asking multiple is original and decision-useful. Slide 5 broadens to multiple fundamentals. However, the deck never explores category, payment provider, or audience-type dimensions that could challenge or deepen the thesis.",
+    "narrative": "Excellent arc: assumption (slide 3) → data refutation (slide 4) → reinforcement (slide 5) → concrete case (slide 6) → thesis (slide 7). Each slide earns the next. Loses credit for never considering alternative explanations—fastest growers may have higher churn, smaller absolute revenue, or other quality issues justifying lower multiples.",
+    "framing": "Audience (micro-SaaS acquirers) is implicit but clear. No limitations slide. No discussion of missingness (274 missing category, 288 missing audience_type). No acknowledgment that asking prices ≠ transaction prices. Momentum is a bespoke metric never flagged as such. The 231/246 filter discrepancy is unexplained. A cold reader cannot assess reliability.",
+    "accuracy": "'29 categories' on slide 2 is unsupported by reference data. The n=231 (slide 4) vs n=246 (slide 5) inconsistency is unexplained. The 2.3x median multiple is plausible against reference (B2B 2.35x, B2C 2.30x). Correlation values are plausible but built on an unverifiable constructed variable. Case study numbers on slide 6 are specific but unverifiable; cherry-pick risk is real.",
+    "visual": "Clean, restrained design with strong hierarchy and consistent navy/gold palette. Slide 4's color-coded quintile extremes are effective. Slide 5's horizontal bars clearly communicate near-zero correlations, though the visual scale slightly exaggerates small negative values. Slide 6's comparison cards are well-designed. No chart junk.",
+    "ai_slop": "none — concise, specific, no filler language or decorative graphics"
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Reduced bonus from 2 to 1: the deck is polished and has a clear thesis but stays narrow (one angle, no alternative explanations, no limitations), which doesn't reach 'rare beyond the rubric' territory. Reduced framing by 0.5 for the complete absence of caveats about constructed metrics and asking-vs-transaction prices. Other scores confirmed.",
+  "total": 69,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 13682,
+    "output_tokens": 917
+  }
+}

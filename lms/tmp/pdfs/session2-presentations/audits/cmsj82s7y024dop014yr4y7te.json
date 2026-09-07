@@ -1,0 +1,43 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 0.5,
+    "narrative": 1.5,
+    "framing": 0.5,
+    "accuracy": 0.5,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "Consistent dark visual theme with clean card layouts and readable typography throughout the deck.",
+  "fix_next": "Use the assigned 1,000-row dataset; every chart and claim must trace to that data, not unsourced industry statistics.",
+  "verdict": "Wrong assignment: a generic AI consulting deck with zero engagement with the required dataset.",
+  "flags": [
+    "wrong-dataset",
+    "no-dataset-analysis",
+    "ai-slop",
+    "unsourced-statistics",
+    "decorative-stock-images",
+    "consulting-filler",
+    "fabricated-contact-info"
+  ],
+  "factual_error_count": 0,
+  "factual_error_detail": "No claims can be checked against the assigned dataset because none reference it. Statistics on slides 4-6, 8-9 are unsourced but not verifiably wrong against external sources either.",
+  "evidence": {
+    "insight": "Zero findings from the 1,000-row dataset. Every slide (3-11) presents generic agentic-AI talking points available in any blog post. No original analysis or decision-useful discovery.",
+    "narrative": "Coherent consulting arc (evolution → metrics → use cases → risks → roadmap) but entirely disconnected from the assigned data-story task. The sequence would fit any AI strategy pitch.",
+    "framing": "No mention of the assigned dataset, its 1,000 rows, missingness, revenue distribution, payment processors, or any analytical question. Audience framed as enterprise strategists (slide 1), not data-story reviewers.",
+    "accuracy": "Slides 4-6 and 8-9 present precise percentages (60%, 33%, 62%, 64%, 72%, 82%, etc.) with no citations or dataset grounding. Cannot be verified. No denominators, sample sizes, or sources disclosed.",
+    "visual": "Polished dark gradient theme, clean card layouts (slides 3, 7), legible bar chart (slide 5) and pie chart (slide 6). Decorative stock images (slides 8-9) add no analytical value. Timeline (slide 10) is generic.",
+    "ai_slop": "Pervasive: 'paradigm shift' (slide 2), 'persistent multi-agent orchestration across core operations' (slide 2), 'deterministic guardrails' (slide 7), boilerplate Q1-Q4 roadmap (slide 10), fake email 'strategy@enterprise-ai.com' (slide 12), decorative AI-generated stock imagery (slides 8-9)."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 1→0.5 and framing from 1→0.5 and accuracy from 1→0.5 because the deck contains literally zero engagement with the assigned dataset—every analytical dimension is absent, not merely weak. Visual score kept at 3 for polish. Narrative kept at 1.5 for internal coherence despite total irrelevance.",
+  "total": 12,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 22075,
+    "output_tokens": 773
+  }
+}

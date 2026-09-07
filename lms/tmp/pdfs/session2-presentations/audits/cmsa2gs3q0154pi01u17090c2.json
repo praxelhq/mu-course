@@ -1,0 +1,44 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 2,
+    "narrative": 3.5,
+    "framing": 2.5,
+    "accuracy": 1,
+    "visual": 4.5,
+    "bonus": 0
+  },
+  "what_worked": "Consistent visual identity with clean palette; the popularity-vs-value framing was a promising analytical direction.",
+  "fix_next": "Replace every fabricated percentage with actual dataset calculations, disclose the 1,000-row sample, and acknowledge missingness rates.",
+  "verdict": "Polished marketing pitch built on fabricated numbers, not a data story.",
+  "flags": [
+    "fabricated-charts",
+    "no-dataset-fidelity",
+    "ai-slop",
+    "unverifiable-claims",
+    "no-limitations-disclosed",
+    "no-source-cited",
+    "categories-renamed-without-disclosure",
+    "decorative-clipart"
+  ],
+  "factual_error_count": 14,
+  "factual_error_detail": "Slide 3: '6,000+ startups' misrepresents 1,000-row sample; '85%+ revenue-validated' unverifiable. Slide 4: Category names invented (SaaS & Productivity 35%, AI-Powered 28%, etc.) — actual top category is AI at 197/726≈27% of non-missing, but other groupings don't match. Slide 5: 'Subscriptions 65%' is not a dataset category; AI at 20% revenue share is wrong (actual AI share ≈15.1%). Slide 6: AI median '$2K–$5K' vs actual $503; SaaS median '$8K–$25K' vs actual $200.50; 'top 5% generate 40%' — actual top-10 share is 49.6% so top-5% claim is unverified/likely wrong. Slide 7: Geographic percentages (US 35% listings/45% revenue) appear invented — no match to dataset. Slide 8: Stripe 72% vs actual 636/1000=63.6%; RevenueCat 12% vs actual 189/1000=18.9%; Polar 8% not verifiable as named 'Dodo' at 5%. '60% revenue from US/UK/Canada' unverifiable with 241 missing countries.",
+  "evidence": {
+    "insight": "Core ideas (AI maturity gap, concentration risk) are directionally interesting but built on fabricated numbers, rendering them hollow. No analysis of anonymity premium, TLD signals, sale multiples, or missingness patterns.",
+    "narrative": "Loose arc from model→composition→revenue→geography→infrastructure→strategy exists but reads as a consulting pitch for TrustMRR rather than a critical, thesis-driven data story. No hypothesis tested or tension resolved.",
+    "framing": "Never identifies the 1,000-row sample; implies coverage of 6,000+ startups. Zero mention of missingness (241 country, 274 category, 288 audience_type). No limitations, no source citation. Cold reader would be misled about scope.",
+    "accuracy": "Nearly every quantitative claim departs from the frozen reference. Categories renamed/merged without disclosure. Median MRR figures inflated 4–50x. Payment provider shares wrong. Geographic data appears wholly invented. Revenue-by-category chart uses 'Subscriptions' which doesn't exist in the dataset.",
+    "visual": "Cohesive dark teal + coral palette, legible type, clean chart formatting. Three donut charts become repetitive. Decorative clip-art on slides 1, 2, 9 adds no analytical value. Charts are well-rendered but encode fabricated data.",
+    "ai_slop": "Heavy AI-generated indicators: identical slide templates, decorative clip-art, inflated consulting language ('category of one,' 'network effects'), suspiciously round percentages (35/28/15/12/10), no evidence of actual data manipulation or code."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight 2.5→2.0 (no genuine dataset analysis underpins any claim) and accuracy 1.5→1.0 (identified additional fabricated figures including median MRR off by 4–50x and invented geographic data); lowered framing 3→2.5 (actively misleading about dataset scope). Visual and narrative unchanged.",
+  "total": 27,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 18106,
+    "output_tokens": 1054
+  }
+}

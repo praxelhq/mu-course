@@ -1,0 +1,37 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 6,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong narrative arc from power-law concentration through categories, geography, and exits with honest caveats throughout.",
+  "fix_next": "Use medians instead of means for skewed category comparisons (slide 8); means mislead in power-law distributions you yourself identified on slide 5.",
+  "verdict": "Well-structured, visually clean deck with good narrative but accuracy gaps in key comparisons.",
+  "flags": [
+    "mean-vs-median-inconsistency",
+    "missing-data-not-disclosed",
+    "revenue-field-ambiguity"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 4: $13.47M 'combined MRR' — the frozen dataset field is 30-day revenue ($15.60M total), not MRR; conflating these inflates or deflates the figure. Slide 5: Top 1% (10 cos) stated as 48% — reference says top-10 revenue share is 49.6%, close but the slide rounds down and the denominator may differ since the dataset total is $15.6M not $13.47M. Slide 8: Uses average MRR per category but the reference shows medians tell a very different story (e.g., Education median $2,435 vs AI median $503); presenting only means after explicitly noting power-law skew on slide 5 is internally contradictory and misleading. Slide 9: B2B/B2C comparison uses averages and claims 2.6× ratio; reference median multiples are ~2.3×, and the deck never mentions the 288 rows with missing audience_type, which is a large share of the sample.",
+  "evidence": {
+    "insight": "Slide 5 power-law framing is genuinely useful; slide 8 'AI has the crowd not the crown' is a memorable finding; slide 11 acquisition-market analysis adds a less-obvious angle. However, insights mostly stay at descriptive level — no multivariate analysis or surprising cross-cuts.",
+    "narrative": "Clear arc: context → verification → concentration → categories → geography → B2B/B2C → growth → exits → takeaways. Each slide transitions with a teaser. The thesis ('winner-take-most') is established early and revisited. Slide 12 synthesizes well.",
+    "framing": "Slide 2 sets up the dataset and audience clearly. The 'founder-in-training' framing is appropriate. However, missingness is never quantified (274 missing categories, 241 missing countries, 288 missing audience_type) — a significant omission for a dataset where ~25-29% of key fields are null.",
+    "accuracy": "Slide 4 uses $13.47M as 'combined MRR' but the dataset's 30-day revenue total is $15.60M — unclear what was summed. Slide 8 uses means in a power-law distribution after slide 5 argued against exactly this; medians would reverse some rankings. Slide 9 doesn't disclose 288 missing audience_type rows. The 96+77+67+21=261 on slide 11 vs stated 262 is a minor discrepancy.",
+    "visual": "Consistent color palette (teal, gold, white), clean bar charts with direct labels, good use of annotation boxes beside charts. Layout is repeatable but not monotonous. Chart choices are appropriate (horizontal bars for ranked lists, vertical bars for comparisons). Slide 9's card layout is effective. No chartjunk.",
+    "ai_slop": "Mild template repetition in the three-callout-box layout used on slides 3, 5, 7. Otherwise the writing is specific to the dataset and avoids generic filler. No decorative-but-meaningless graphics."
+  },
+  "confidence": "high",
+  "total": 70,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 24498,
+    "output_tokens": 971
+  }
+}

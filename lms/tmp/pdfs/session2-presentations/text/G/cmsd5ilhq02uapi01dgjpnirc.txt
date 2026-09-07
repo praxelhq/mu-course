@@ -1,0 +1,281 @@
+CONTEXT · DATASET TO DECISIONS
+
+
+
+
+The dataset behind
+three decisions
+For this analysis, I used the TrustMRR 1,000-row dataset,
+frozen on 30 July 2026.
+
+
+
+The dataset contains company revenue, growth, business models,
+industry categories, payment platforms and performance indicators.
+
+
+BASIS THIS DATA, I ANALYSED                                          Correlation-led · comparative ·
+                                                                                   decision-focused
+01           What SaaS business should I build?
+
+02           Which company should I acquire?
+
+03           Which payment gateway should I use?
+
+
+
+TrustMRR decision deck
+THE PATTERN BENEATH THE LEADERBOARD                                                   02
+
+
+
+
+Scale comes from customers—not followers
+Rank correlations expose what moves with revenue across the dataset.
+
+
+                                                                              Implicatio
+ MRR ↔ revenue                                                         0.89   n
+
+                                                                              Build for
+                                                                              recurring
+                                                                              usage and
+ Subscriptions ↔ MRR                                                   0.90   paid
+                                                                              conversio
+                                                                              n.
+
+ Visitors ↔ revenue                                                    0.60   Audience
+                                                                              size alone
+                                                                              is a weak
+                                                                              moat.
+ Followers ↔ revenue                                                   0.17
+
+
+
+
+ Spearman rank correlation; pairwise complete observations.
+LENS ONE · BUILD                                                                                                             03
+
+
+
+
+The whitespace is a revenue-health copilot
+A control layer that explains churn, conversion and gateway performance across the fragmented SaaS stack.
+
+
+
+
+                   Stripe                                                                                        Paddle
+                                                                 REVENUE
+                                                              HEALTH COPILOT
+       636 startups in dataset                                                                              16   startups
+
+                                                                One view of growth quality
+
+
+
+            RevenueCat                                                                                       Lemon Squeezy
+
+
+       189 startups in dataset                                                                              25   startups
+
+
+
+
+ Why now: payment data is fragmented, while follower count barely predicts revenue.
+LENS ONE · BUSINESS MODEL                                                                                                                                04
+
+
+
+
+Start narrow: diagnose “why MRR moved” in 60 seconds
+The wedge is explanation, not another dashboard.
+
+
+
+WHO                                        WEDGE                                      PRICE                                      MOAT
+
+
+                                                                                                                                 Anonymous
+Indie SaaS founders                        Connect billing + traffic                  $49 / $149 / $399
+                                                                                                                                 benchmarks
+$1k–$100k MRR                              → anomaly diagnosis                        per month
+                                                                                                                                 by category + gateway
+
+
+
+
+Minimum lovable product
+
+1. MRR bridge 2. churn alerts 3. conversion benchmark 4. gateway reconciliation
+
+
+Avoid: generic AI writing, broad productivity and social dashboards—the dataset shows crowded categories with weak median economics.
+LENS TWO · ACQUIRE                                                                                                                            05
+
+
+
+
+SetSmart is the best lead—not yet a blind buy
+It combines growth, recurring revenue and a low asking multiple, but the quality of that growth needs verification.
+
+
+ Target                                   Ask                       MRR                      Rev. growth              MRR growth   Multiple
+
+
+ SetSmart                                 $499k                     $15.7k                   +29%                     +100%        0.8×
+
+
+
+
+ Groups Watcher                           $500k                     $21.4k                   +20%                     +20%         2.2×
+
+
+
+
+ Conductor                                $1.25m                    $35.4k                   +8%                      +10%         3.0×
+
+
+
+
+ BUY THESIS
+
+
+ Acquire the automated Instagram DM-to-booking wedge, then expand into a broader conversational revenue OS.
+LENS TWO · DEAL GATE                                                                              06
+
+
+
+
+The 0.8× multiple is attractive only if MRR is real
+A four-part diligence gate prevents a cheap-looking asset from becoming an expensive mistake.
+
+
+
+ 01          Retention                         Logo churn < 4% monthly
+
+
+
+
+ 02          Revenue quality                   MRR reconciles to cash
+
+
+
+
+ 03          Platform risk                     Meta API access is durable
+
+
+
+
+ 04          Concentration                     No client > 10% MRR
+
+
+
+
+ Walk away if the +100% MRR growth is migration, annual-plan timing or a single-customer spike.
+LENS THREE · PAYMENTS                                                                                                                                    07
+
+
+
+
+For web SaaS, Stripe is the default answer
+It owns the deepest sample and the strongest median revenue among general-purpose web providers.
+                                                                                                                                         Median 30-day
+                                                                                                                                              revenue
+
+Stripe                                                                                                                                      $735
+
+
+RevenueCat                                                                                                                                  $309
+
+
+Paddle                                                                                                                                      $138
+
+
+Lemon Squeezy                                                                                                                                 $38
+
+
+Dodo                                                                                                                                           $9
+
+
+Polar                                                                                                                                          $0
+
+
+Selection guide         Web SaaS → Stripe · Mobile subscriptions → RevenueCat + Stripe · Tax simplicity → evaluate a merchant-of-record separately
+LENS THREE · CAUSALITY CHECK                                                                                            08
+
+
+
+
+Gateway performance is a signal—not proof of superiority
+Provider choice is entangled with product type, maturity and platform.
+
+
+ What the dataset says
+
+                                                                         Decision rule
+ Stripe users show
+ $735 median 30-day revenue                                              Choose for product architecture
+                                                                         first, then optimise economics.
+
+ What it does not say
+
+                                                                         Web billing · ecosystem · reporting → Stripe
+ Switching to Stripe will
+ create higher revenue
+
+
+
+ Correlation guides the shortlist; operating requirements make the final choice.
+THE INTEGRATED BET                                                                                                             09
+
+
+Build the intelligence layer. Buy the distribution wedge. Use Stripe
+at the core.
+
+BUILD                                   BUY                                       PAY
+
+
+
+Revenue-health copilot                  SetSmart, conditionally                   Stripe first
+
+
+Turns fragmented billing data into an   Adds a live acquisition-to-booking        Best fit for web SaaS; add RevenueCat only
+answer: “why did MRR move?”             workflow and a fast route to customers.   if mobile becomes core.
+
+
+
+
+One portfolio logic
+
+Acquire attention → measure conversion → protect recurring revenue.
+90-DAY ACTION PLAN                                                                                                          10
+
+
+
+
+Test the thesis before committing capital
+Each decision has a measurable proof point.
+
+
+DAYS 1–30                                         DAYS 31–60                           DAYS 61–90
+
+
+Prototype                                         Validate                             Commit
+
+Connect Stripe + RevenueCat; recruit 15           Run paid pilot; complete SetSmart    Decide build-only vs acquisition +
+founders                                          diligence                            integration
+
+
+
+
+PROOF                                             PROOF                                PROOF
+
+
+5 weekly active testers                           ≥ 5 paid accounts                    Retention + payback pass
+
+
+
+
+The dataset reveals where to investigate; customer evidence decides where to invest.
+

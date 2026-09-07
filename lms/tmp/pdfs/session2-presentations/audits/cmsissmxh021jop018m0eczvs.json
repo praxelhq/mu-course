@@ -1,0 +1,42 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 6.5,
+    "accuracy": 5.5,
+    "visual": 8,
+    "bonus": 1
+  },
+  "what_worked": "Bubble chart segmenting AI by market tag into revenue-adjacent wedges is genuinely original and decision-useful.",
+  "fix_next": "Reconcile the $13.5M aggregate with the $15.6M frozen total and explain the AI-tagged segmentation methodology for cold readers.",
+  "verdict": "Strong thesis and visuals, but custom segmentation and unverifiable numbers undercut accuracy.",
+  "flags": [
+    "unverifiable-custom-segmentation",
+    "small-n-hero-claims",
+    "aggregate-revenue-mismatch",
+    "text-duplication-artifacts",
+    "generic-ai-median-discrepancy",
+    "n4-multiple-used-as-headline"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 1/2: $13.5M aggregate MRR vs frozen reference $15.6M — unexplained ~$2.1M gap, likely scoped to AI-tagged only but not labeled as such. Slide 3: Generic AI median shown as $446 vs reference category median $503 for AI (n=197) — suggests different filtering or denominator. Slide 1: '392 AI-tagged' and '20× Sales-AI median MRR' rest on a custom tag-union definition that cannot be verified against the reference; the 20× multiplier (9000/446) is internally consistent but the $446 base deviates from reference.",
+  "evidence": {
+    "insight": "Slide 3's bubble chart decomposing AI by market tag (Sales, Marketing, Analytics, etc.) and identifying Sales AI as a high-median low-count wedge is original. Slide 4's four-metric Revenue AI vs Other AI comparison with valuation multiples adds genuine decision-useful depth. The 'valuation disconnect' callout with named startups is actionable.",
+    "narrative": "Clear thesis stated on Slide 1 ('revenue infrastructure not AI'), built through landscape (S2), discovery (S3), evidence (S4), color (S5), recommendation (S6), summary (S7). Each slide has a takeaway banner. The arc is coherent and purposeful — not a chart dump.",
+    "framing": "Slide 1 identifies audience (investors/founders), dataset scope (1,000 startups, frozen date). Slide 2 notes 274 missing categories. However, the custom 'AI-tagged = category or market tag contains AI' definition that drives the entire thesis gets only a footnote on Slide 1 — insufficient for a cold reader to verify or reproduce. The $13.5M figure appears to be AI-only aggregate but is labeled 'AGGREGATE MRR' without qualifier, misleading a cold reader into thinking it's the full dataset total.",
+    "accuracy": "$13.5M labeled as 'AGGREGATE MRR' without clarifying it's AI-subset only — cold reader would assume full dataset ($15.6M). Generic AI median $446 vs reference $503 is a discrepancy. 392 AI-tagged count is unverifiable. Sales-AI multiple n=4 is honestly footnoted but still headlined. Top-20 concentration at 58% is plausible but differs from reference top-10 share of 49.6%. Revenue AI vs Other AI split (137+255=392) is internally consistent with the 392 AI-tagged claim.",
+    "visual": "Dark theme is consistent and polished across all 7 slides. Slide 3 bubble chart with log scale, labeled bubbles, reference line, and sidebar is the standout. Slide 4 paired horizontal bars are clean. Slide 5 card grid for outliers is effective. Strong hierarchy throughout: section labels, headlines, takeaway banners. Text duplication artifacts on Slides 6-7 ('Marketing + Marketing + Analytics', 'another another generic wrapper') are cosmetic blemishes.",
+    "ai_slop": "Text duplication on Slides 6-7 ('Marketing + Marketing + Analytics', 'another another generic wrapper', 'will not be be the smartest model') indicates AI-generated text without final proofreading. The polished dark-theme aesthetic is uniform but not generic filler. Not egregious overall."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Reduced bonus from 2 to 1: the work is strong but the unverifiable custom segmentation driving the entire thesis and the misleading $13.5M 'AGGREGATE MRR' label (appears to be AI-subset, not full dataset) prevent top-tier bonus. Reduced framing from 7.0 to 6.5 because the $13.5M labeling actively misleads cold readers and the custom segmentation methodology is insufficiently explained. Other scores confirmed after independent review.",
+  "total": 72,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 15156,
+    "output_tokens": 1186
+  }
+}

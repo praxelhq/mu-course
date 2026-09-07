@@ -1,0 +1,42 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7.5,
+    "framing": 6,
+    "accuracy": 4.5,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "Setup-and-reveal narrative structure with consistent SO WHAT boxes drives purposeful analytical storytelling throughout.",
+  "fix_next": "Verify the 5.7x B2B/B2C median claim and confirm the r≈0.02 correlation is for the correct variable pair.",
+  "verdict": "Strong storytelling undermined by a misattributed correlation and an inflated central multiplier.",
+  "flags": [
+    "misattributed-correlation",
+    "inflated-median-multiple",
+    "internal-arithmetic-inconsistency",
+    "no-limitations-slide",
+    "subcell-sizes-unreported",
+    "missing-data-impact-undiscussed"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 6: r≈0.02 (n=984) matches reference founded-year/revenue correlation, not Twitter followers/revenue as claimed. Slide 4: 5.7x B2B/B2C median MRR multiple conflicts with reference 2.35x. Slide 4: stated $1,036/16=$49 per subscriber but actual division yields ~$65.",
+  "evidence": {
+    "insight": "Slides 3-4 growth-illusion-to-monetization reveal is genuinely useful framing; slide 5 within-category stress test adds depth; but core 5.7x claim appears inflated vs reference 2.35x",
+    "narrative": "Clear thesis from slide 1, sequential build (illusion→reveal→stress test→vanity trap→recs→takeaway), SO WHAT boxes enforce discipline on every analytical slide",
+    "framing": "Slide 2 shows 288 unclassified audience types but never discusses how this 29% missingness affects B2B/B2C conclusions; no limitations slide; sub-cell sample sizes for slide 5 categories unreported",
+    "accuracy": "Revenue total and audience split verified correct; however r≈0.02 is misattributed (reference: founded-year/revenue not Twitter/revenue); 5.7x multiple conflicts with reference 2.35x; $49 per-subscriber arithmetic inconsistent with own stated inputs",
+    "visual": "Consistent navy/orange palette, clean hierarchy, effective grouped bar chart on slide 5, readable scatter on slide 6, no chart junk; decorative curve on slide 1 is meaningless but minor",
+    "ai_slop": "Minimal — design is polished and purposeful, SO WHAT boxes add substance, no generic filler language detected"
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Downgraded accuracy from 5.5 to 4.5 due to confirmed misattributed correlation (founded-year r passed off as Twitter-followers r) and inflated 5.7x multiple vs reference 2.35x. Reduced bonus from 2 to 1 and adjusted insight/narrative/framing slightly downward given factual foundation issues.",
+  "total": 65,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 15744,
+    "output_tokens": 2057
+  }
+}

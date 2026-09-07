@@ -1,0 +1,300 @@
+TrustMRR:Does Positioning
+Predict Revenue
+More Than Popularity?
+An analysis of 1,000 startup listings — testing whether structural segment explains revenue better than
+popularity signals
+
+Dataset source: TrustMRR marketplace · Data frozen · Sample size: n=1,000
+ BACKGROUND
+
+
+
+What TrustMRR Is — and Why This Dataset
+TrustMRR is a marketplace where founders list SaaS and digital businesses for sale, with self-reported or platform-verified revenue, subscriber, and traffic
+metrics. Because every listing carries a consistent revenue metric (MRR), the dataset is unusually well-suited for comparative analysis.
+
+This dataset suits the hypothesis because it contains both popularity fields (X followers, domain rating, category size) and structural fields (audience type,
+category, country) alongside a consistent revenue metric, letting us compare which set of signals better separates high- and low-revenue businesses.
+
+One caveat upfront: data completeness varies by field. Followers and domain rating are populated for ~70% of listings; category and country for ~73–76%. All
+downstream comparisons use only the rows with valid data for that specific test.
+
+
+  Field                                                                            % Populated
+
+  mrr_usd                                                                          100%
+
+  audience_type                                                                    ~94%
+
+  category                                                                         ~73%
+
+  country                                                                          ~76%
+
+  domain_rating                                                                    ~71%
+
+  x_followers                                                                      ~71%
+ BASELINE
+
+
+
+Revenue Distribution Across the Dataset
+MRR Bucket                                                                    Revenue Is Highly Concentrated
+
+    $0–$1                                             19.7%                   Before testing any predictor, the baseline shows revenue is far
+                                                                              from normally distributed.
+
+
+
+                                                                                                  $13,472
+  $1–$100                                                     21.4%
+
+
+
+
+$100–$500                                                             25.8%
+                                                                                                        Mean MRR
+
+$500–$2k                                      17.2%                                 Pulled up by a small number of high-revenue listings
+
+
+
+
+                                                                                                      $282
+ $2k–$10k               10.3%
+
+
+
+
+                 5.6%
+    $10k+                                                                                              Median MRR
+             0     50      100              150               200       250
+                                                                                       The typical listing earns far less than the mean
+                                 Number of Listings
+                                                                              The top 10 listings account for 48% of total MRR. The top 50
+                                                                              listings account for 71%. Any variable we test has to explain this
+                                                                              concentration — not just describe an average business.
+ STRUCTURAL TEST 1
+
+
+
+Audience Type: B2B vs. B2C
+The first structural variable tested — who a business sells to — shows the largest   Median MRR by Audience Type
+effect size of any variable in the analysis. B2B businesses post 5.7× the median
+revenue of B2C businesses.
+                                                                                      Audience Type            Median MRR             Count
+Audience Type
+                                                                                      B2B                      $1,036                 255
+
+
+                                                                   1.04k
+                                                                                      Both                     $352                   56
+B2B
+
+                                                                                      B2C                      $181                   401
+
+
+
+
+Both                        352                                                        5.7× Gap
+                                                                                       B2B median MRR vs. B2C median MRR — the largest effect size
+                                                                                       observed across all variables tested in this analysis.
+
+
+B2C             181
+
+
+
+
+       0              200         400         600        800         1k
+                                        Median MRR ($)
+ STRUCTURAL TEST 2
+
+
+
+Category: Revenue Varies Widely — but Category Size Doesn't Predict It
+Category
+                                                              Categories with n≥15, sorted by Median MRR
+      Education
+       Marketing                                                Category                       n                Median MRR
+       Analytics
+Content Creation                                                Education                      30               $2,142
+    Social Media
+           Fintech                                              Marketing                      42               $1,586
+                 AI
+ Health & Fitness                                               Analytics                      19               $1,294
+              SaaS
+           Games
+                                                                Content Creation               36               $1,254
+    Mobile Apps
+                                                                Social Media                   18               $912
+       Dev Tools
+    E-commerce
+                                                                Fintech                        16               $500
+     Real Estate
+    Design Tools
+                                                                AI                             197              $446
+           Utilities
+    Productivity                                                Health & Fitness               34               $392
+                       0   500     1k             1.5k   2k
+                                 Median MRR ($)                 SaaS                           66               $303
+
+                                                                Productivity                   49               $42
+
+                                                              Category size does not predict category revenue: Spearman ρ = 0.09
+                                                              between category count and category median MRR — effectively zero. AI
+                                                              (n=197, the largest category) posts only $446 median MRR.
+ STRUCTURAL TEST 3
+
+
+
+Geography: Real but Less Consistent Than Audience Type
+Country
+                                                                           Countries with n≥15, sorted by Median MRR
+US                                                                 1.26k
+
+                                                        919                  Country           n                 Median MRR
+CA
+
+                                       666
+BR                                                                           US                258               $1,263
+FR                              435
+                                                                             CA                29                $919
+AU                        326
+
+                    236                                                      BR                20                $666
+PL
+
+                    230
+DE                                                                           FR                79                $435
+GB            153
+                                                                             AU                17                $326
+ES       78
+
+
+IN       6                                                                   DE                24                $230
+
+         0
+HK                                                                           GB                50                $153
+     0              200         400   600         800         1k   1.2k
+                                      Median MRR ($)                         ES                16                $78
+
+                                                                             IN                59                $6
+
+                                                                             HK                19                $0
+
+                                                                           The gap between top and bottom is over 200×, though Poland, Spain, and
+                                                                           Hong Kong have small enough samples that estimates are noisy. Notably,
+                                                                           Canada and Brazil outperform India and the UK despite smaller counts.
+ POPULARITY TEST
+
+
+
+Followers & Domain Rating vs. Revenue
+Testing the "popularity" side of the hypothesis directly: does audience size (X followers) or site authority (domain rating) correlate with MRR? Based on n=700 listings with both
+fields populated.
+
+
+Domain Rating vs. MRR                                                                        Correlation Summary (n=700)
+                                                                Spearman ρ
+                                                                       0.5                     Popularity Signal                           Spearman ρ with MRR
+
+                                                                                               Domain rating                               0.48
+                                                                       0.4
+                                                                                               X followers                                 0.28
+
+                                                                       0.3
+
+                                                                                                Domain Rating
+                                                                       0.2                      Moderate positive correlation (ρ = 0.48) — the strongest single popularity signal
+                                                                                                tested. A secondary but genuinely useful predictor.
+
+                                                                       0.1
+
+
+                                                                                                X Followers
+                                                                       0
+                                                                                                Weak positive correlation (ρ = 0.28). Pearson r = 0.03 — the relationship is non-
+             Domain Rating                       X Followers
+                                                                                                linear and driven by a small number of outliers.
+                             Popularity Signal
+
+
+                                                                                             Neither popularity signal approaches the effect size seen for audience type (B2B vs.
+                                                                                             B2C).
+ HEAD-TO-HEAD
+
+
+
+Structural Segmentation vs. Popularity Signals
+Direct comparison of effect sizes across all tested variables to answer the hypothesis. Two distinct scales are used below — median MRR ratios for structural variables, and Spearman ρ for popularity signals — to avoid implying false
+comparability between a ratio and a correlation coefficient.
+
+Structural Variables — Median MRR Gap                                                                                   Popularity Signals — Spearman ρ
+Variable                                                                                                                Signal
+
+
+
+
+Audience Type (B2B/B2C)         5.7
+
+                                                                                                                        Domain Rating                                                        0.48
+
+
+
+
+   Geography (US/India)                                           210
+
+
+
+
+                                                                                                                           X Followers                             0.28
+
+Category Size (crowding)       0.09
+
+
+
+
+                           0          50      100         150     200                                                                    0        0.1       0.2           0.3          0.4          0.5
+                                           Median MRR Ratio (×)                                                                                                   Spearman ρ
+
+Note: Geography ratio is large but includes small-sample countries (India n=59, HK n=19) — treat as directional.        Summary Table
+
+                                                                                                                           Variable                                       Type                       Effect
+
+                                                                                                                           Audience type (B2B vs B2C)                     Structural                 5.7× median MRR gap
+
+                                                                                                                           Domain rating                                  Popularity                 ρ = 0.48
+
+                                                                                                                           Geography (US vs IN)                           Structural                 ~200× (small-sample caveat)
+
+                                                                                                                           X followers                                    Popularity                 ρ = 0.28
+
+                                                                                                                           Category size (crowding)                       Structural                 ρ = 0.09 (no relationship)
+ CONCLUSION
+
+
+
+Structural Positioning Wins
+Direct answer to the hypothesis: structural positioning — specifically who a business
+sells to (B2B vs. B2C) — is the strongest predictor of revenue in this dataset,
+outperforming both popularity signals and category crowding.
+
+
+  Primary Finding                                Secondary Signal
+  Audience type (B2B vs. B2C) is the             Domain rating (ρ = 0.48) is a
+  single strongest variable: 5.7× median         moderately useful secondary
+  MRR gap. Check this first before any           predictor. Follower count (ρ = 0.28)
+  popularity metric.                             and category size (ρ = 0.09) are weak
+                                                 or negligible.
+
+
+
+  Caveats
+  Based on listings with complete data (~70–76%); country-level findings for small
+  samples are directional only; this is a marketplace sample, not a random startup
+  sample.
+
+
+Practical implication: if using popularity metrics as a proxy for business quality,
+audience type is a more reliable — and much simpler — signal to check first.
+

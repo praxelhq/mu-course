@@ -1,0 +1,39 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 5,
+    "accuracy": 4,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Clear thesis linking efficiency and momentum to actionable category recommendations with two distinct routes.",
+  "fix_next": "Verify core statistics against the actual dataset—top-10 share, zero-revenue rate, and category totals appear materially wrong or unverifiable.",
+  "verdict": "Coherent strategy story undermined by multiple unverifiable or incorrect headline statistics.",
+  "flags": [
+    "inflated-revenue-figures",
+    "missing-limitations-disclosure",
+    "mean-over-median-misleading",
+    "zero-revenue-rate-wrong",
+    "top10-share-wrong"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 2: zero-revenue stated as 26% (actual 21.6%); top-10 revenue share stated as 61% (reference 49.6%); Slide 6: B2B 5x advantage doesn't match reference median multiples (~2.3x) or mean multiples (~8x).",
+  "evidence": {
+    "insight": "Slide 4-5 combine efficiency (rev/company) with momentum (12-mo share) to rank categories—goes beyond simple totals. Slide 6 adds cross-cutting playbook. However, using mean for 'efficiency' in a power-law market they themselves identified is internally contradictory.",
+    "narrative": "Clear arc: market reality → category landscape → efficiency+momentum → shortlist → playbook → two routes → next steps. Coherent thesis throughout. Landing on slide 7-8 is purposeful.",
+    "framing": "Audience ('new entrant') is stated but vague. No limitations slide despite 274 missing categories (37.7% of categorized data) and 288 missing audience_type. No mention of survivorship bias or dataset scope. Scope of 'all-time revenue' vs '30-day revenue' never clarified.",
+    "accuracy": "Multiple headline stats don't match reference: 26% zero-revenue (should be 21.6%), 61% top-10 share (reference 49.6%), B2B 5x claim misaligned. Category revenue figures appear to use an unspecified 'all-time' field at ~10-25x the 30-day reference, making them unverifiable. Mean used for efficiency despite acknowledged power-law skew.",
+    "visual": "Clean, consistent design with good hierarchy. Bar charts are well-labeled and readable. Color palette is restrained. Slide 5 shortlist layout is effective. However, only two actual data charts across 8 slides—mostly text cards. No scatter plots or distributions despite discussing skew.",
+    "ai_slop": "Moderate consulting-template feel on slides 5-8 with numbered card layouts. 'The Efficiency Playbook' title and structure feel generic. However, content is specific enough to the dataset to avoid pure filler."
+  },
+  "confidence": "medium",
+  "total": 59,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15442,
+    "output_tokens": 1897
+  }
+}

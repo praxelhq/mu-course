@@ -1,0 +1,39 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 6,
+    "narrative": 7.5,
+    "framing": 5.5,
+    "accuracy": 4,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong thesis about the emptiness of 'profitable' as a label, carried consistently through every slide.",
+  "fix_next": "Total revenue is $15.6M not $133.75M, and top-10 share is ~49.6% not 51%—verify core numbers before building a narrative on them.",
+  "verdict": "Compelling thesis undermined by a wildly wrong total revenue figure and thin analysis.",
+  "flags": [
+    "total-revenue-off-by-8x",
+    "median-annualized-without-disclosure",
+    "growth-claims-unverifiable",
+    "b2b-multiple-overstated",
+    "narrow-dataset-coverage"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 5: Total revenue stated as $133.75M; actual 30-day total is $15.6M (off ~8.6×, even annualized would be ~$187M not $133.75M). Slide 6: Top-10 share stated as 51%; reference is 49.6%. Slide 4: $3,069 'median annual revenue' appears to annualize the 30-day median without disclosing the multiplication or verifying it's valid. Slide 9: B2B median claimed 4× higher than B2C; reference shows ~2.35× median multiple, not 4×. Slide 8: 70% flat/shrinking and 19% growing—these growth-status figures cannot be verified from the frozen dataset and are presented without methodology.",
+  "evidence": {
+    "insight": "The core observation—that 'profitable' is a meaningless label when the distribution is this skewed—is genuinely useful. But the deck stops at describing concentration and never explores what distinguishes the top from the bottom (category, provider, audience type, anonymity). Slide 9's B2B/B2C point is the only structural factor explored, and it's inaccurate.",
+    "narrative": "Clear arc: introduce skepticism (slide 1), establish data source (2-3), reveal median (4), show concentration (5-7), add growth dimension (8), pivot to B2B (9), dramatize range (10), land with reframing (11). This is a well-sequenced story with a genuine landing. The thesis is sustained throughout.",
+    "framing": "Audience is implicitly indie founders/investors. The dataset is introduced clearly (slides 2-3). However, the deck never mentions missingness (274 categories, 241 countries, 288 audience types missing), never clarifies that revenue is 30-day not annual, and never states limitations. Calling the data 'annual revenue' (slide 4) without disclosure is a framing failure.",
+    "accuracy": "The $133.75M total (slide 5) is the most damaging error—it's roughly 8.6× the actual $15.6M 30-day total and doesn't match any reasonable annualization. The 51% top-10 share is close but rounded up from 49.6%. The 4× B2B claim overstates the ~2.35× median multiple. The $3,069 median may be a rough annualization of the 30-day median but is presented as fact without methodology. Growth percentages on slide 8 are unverifiable from the dataset.",
+    "visual": "Clean, restrained design with good hierarchy and readable typography. The Pareto curve on slide 5 and the stacked bar on slide 7 are conceptually appropriate. Color is used sparingly (pink/blue accents). However, the charts are schematic/illustrative rather than data-driven—no axes, no real scale. Slides 2-3 are text-heavy walls. Overall consistent but lacks data-rich visualization.",
+    "ai_slop": "Mild signs: the rhetorical cadence is polished in a way that feels templated ('The lie isn't that they're wrong. It's that the word stopped meaning anything.'). The schematic charts avoid real data plotting. However, the thesis is specific enough to the dataset that this isn't pure filler."
+  },
+  "confidence": "high",
+  "total": 60,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19747,
+    "output_tokens": 1039
+  }
+}

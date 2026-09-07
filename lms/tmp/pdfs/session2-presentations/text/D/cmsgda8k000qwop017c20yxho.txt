@@ -1,0 +1,227 @@
+1,000 startups.
+One brutal power law.
+What the TrustMRR dataset actually tells us — a data story in three acts.
+
+
+  1,000 startups            29 signals each          $13.4M total MRR
+
+
+
+
+Analysis by Yashika Singh   ·   Frozen 30 Jul 2026
+SETTING          THE     SCENE
+
+
+
+Meet the cast
+TrustMRR is a marketplace where founders list their business for the world to browse — revenue verified live through Stripe, RevenueCat
+and friends. Every company here chose to show up. That's the world we're reading.
+
+
+
+
+  1,000                                       197                                        $282                                   20%
+  companies on stage                          AI companies alone                          median monthly revenue                 earning literally $0
+
+
+
+Read this as a self-selected slush pile — the mix of founders willing to list publicly — not a random sample of all startups.
+
+
+                                                                 The five most crowded categories
+   Marketing                            42
+  Productivity                               49
+ Mobile apps                                  52
+         SaaS                                         66
+            AI                                                                                                                  197
+
+                                                                                                                                                        02 / 09
+ACT     I    ·   THE   REVEAL
+
+
+
+This is a power-law story,
+not a bell curve
+                                                                                              Share of all revenue in the dataset (%)
+Sort every company by revenue and a handful of protagonists carry the
+entire plot. The rest barely get a line.
+                                                                             Remaining 900                    18%
+
+
+1     Stan                                                $3.57M / mo
+                                                                               Rank 51–100             11%
+2     Stealth Company                                      $747K / mo
+
+3     GojiberryAI                                          $495K / mo
+                                                                                Rank 11–50                          23%
+
+
+
+
+    48% of every dollar in this dataset goes to just 10 companies out of   Top 10 companies                                             48%
+    1,000.
+
+
+
+
+                                                                                                                                              03 / 09
+ACT   I   ·   THE   FINE    PRINT
+
+
+
+The “average startup”
+doesn’t exist
+
+  MEDIAN MRR                                                                 MEAN MRR
+
+
+
+
+  $282                                                                       $13,472
+  what half of these startups make in a month — less than a                  what the average looks like once a few outliers walk into the
+  decent phone bill.                                                         room.
+
+
+
+
+  47x gap between mean and median — the single clearest sign this is a skewed, winner-heavy dataset, not a normal distribution.
+
+
+                                                                                                                                             04 / 09
+ACT    II    ·   RED    HERRINGS
+
+
+
+Clout isn’t cash
+Not every metric that looks impressive on a profile actually predicts revenue. Here’s what really moves the needle — and what’s just
+noise.
+
+
+                        Spearman correlation with monthly revenue
+                                                                                                  0.90 — real customers paying real money. No
+                                                                                                  surprise here.
+X / Twitter followers          0.17
+
+
+
+                                                                                                  0.49 — earned search authority tracks with
+                                                                                                  revenue.
+  Domain authority                                    0.49
+
+
+
+
+                                                                                                  0.17 — a big following barely moves the
+  Active subscribers                                                            0.90              needle.
+
+
+
+
+                                                                                                                                                05 / 09
+ACT    II   ·   WHO    PAYS     MORE
+
+
+
+Businesses pay.
+Consumers browse.
+                                                                                 Median MRR by audience type ($)
+The median B2B company out-earns the median B2C company
+nearly 6 to 1 — even inside a dataset full of scrappy indie products.   $1,036
+
+
+
+
+   5.7x
+   more median revenue for B2B vs. B2C
+
+
+                                                                                              $352
+
+
+                                                                                                                   $181
+
+
+
+
+                                                                         B2B                  Both                 B2C
+
+
+                                                                                                                          06 / 09
+ACT    II   ·   PLOT      TWIST
+
+
+
+Less traffic,
+more money per click
+                                                                               BROAD REACH
+Revenue-per-visitor and total visitor volume move in opposite directions
+(−0.46). The sites converting best per person aren’t the ones going viral —
+                                                                               High traffic, low intent — revenue per visitor thins
+they’re the ones going deep.                                                   out.
+
+
+
+
+    −0.46                                                                      NARROW FOCUS
+
+
+
+    correlation between traffic and revenue-per-visitor — focus beats reach,   Smaller, targeted audience — revenue per visitor
+    dollar for dollar.                                                         climbs.
+
+
+
+
+                                                                                                                                      07 / 09
+ACT     III     ·    THE     MARKETPLACE
+
+
+
+It’s the steady ones
+that go up for sale
+262 companies are listed for sale — and they aren’t the flops or the superstars. They’re the solid mid-list: proven enough to trust, not
+growing so fast that holding on beats selling.
+
+
+
+
+   $1,055                                                    $187                                       ~3.2x
+                                                                                                        typical asking price, as a multiple of
+   median MRR of on-sale companies                           median MRR of companies not for sale
+                                                                                                        annual revenue
+
+
+
+
+The billion-dollar outliers from Act I? Not one of them is listed. They’re still writing their story.
+
+
+
+                                                                                                                                                 08 / 09
+~/trustmrr $ echo $MORAL_OF_THE_STORY
+
+
+
+
+The moral of the story
+      Build for a few, not the crowd — the top 10 out-earn the bottom 900 combined.
+
+
+      Businesses pay more than consumers, every time this data was cut.
+
+
+      Followers are a vanity metric. Subscribers and search authority are the real ones.
+
+
+      Depth beats reach — niche products monetize their visitors better.
+
+
+
+
+Caveat, in the spirit of full disclosure: this is a self-selected sample of founders willing to list publicly, with real gaps in traffic and pricing data. Treat it as one
+story TrustMRR tells — not the whole truth about startups everywhere.
+
+
+
+Analysis by Yashika Singh         ·   Source: TrustMRR 1,000-row dataset, frozen 30 Jul 2026
+

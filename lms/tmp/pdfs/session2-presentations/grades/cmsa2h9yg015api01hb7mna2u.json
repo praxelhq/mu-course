@@ -1,0 +1,38 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 6,
+    "accuracy": 5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Question-and-answer slide structure creates a coherent, readable narrative arc with a clear thesis.",
+  "fix_next": "The \"top 10% capture 84%\" claim conflicts with the 49.6% benchmark; verify concentration figures and use medians alongside means for skewed categories.",
+  "verdict": "Clean narrative structure undermined by a key concentration claim that appears fabricated.",
+  "flags": [
+    "inflated-concentration-claim",
+    "mean-over-median-misleading",
+    "missing-data-not-acknowledged",
+    "no-limitations-slide"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 3: 'Top 10% capture 84% of revenue' — benchmark shows top-10 share is 49.6%, so 84% for top 100 companies is highly suspect and repeated on slide 8. Slide 3: Mean revenue stated as $15,596 — total revenue $15,596,344.59 / 1,000 = $15,596.34, technically fine, but labeling it 'mean monthly revenue' when it is 30-day revenue is slightly misleading. Slide 6: Uses mean revenue per category without noting extreme skew or showing medians; E-commerce mean $58,506 (total $1,111,606/19 = $58,506) checks out arithmetically, but presenting means for n=19 without caveats is misleading. Slide 7: Quartile table values (e.g., Q1 avg subscribers 78 > Q2 avg subscribers 12) are internally inconsistent and likely fabricated — bottom-quartile revenue companies having more subscribers than Q2 is suspicious and unexplained.",
+  "evidence": {
+    "insight": "Slide 5's traffic-vs-revenue disconnect (r=0.16, 2-of-50 overlap) is a genuinely useful finding. Slide 7's revenue-multiple inversion is interesting. However, most insights restate well-known power-law patterns without novel synthesis.",
+    "narrative": "The Q&A structure (Is it evenly distributed? → No. Does popularity translate? → Barely.) builds logically toward the summary slide. Each slide answers one question, creating purposeful flow.",
+    "framing": "Slide 1-2 set context adequately. However, no limitations slide, no mention of 274 missing categories or 241 missing countries, no discussion of selection bias in a marketplace dataset. Audience is implied but never stated.",
+    "accuracy": "The 84% concentration claim is the most prominent number in the deck and appears materially wrong vs. the 49.6% top-10 benchmark. Slide 7 quartile table has internally suspicious patterns (Q1 subscribers > Q2). Category analysis uses only means on small samples without medians. The 29 categories claim is unverifiable but plausible.",
+    "visual": "Clean, consistent template with good hierarchy. Charts are appropriately chosen (bar, scatter, horizontal bar). Log-log scatter on slide 5 is well-labeled. However, the visual sameness across slides and generic icon usage suggest AI template. Slide 7 bar chart is nearly unreadable for Q1-Q3 due to Q4 scale dominance.",
+    "ai_slop": "Moderate template uniformity. Closing quote on slide 8 ('The value of this dataset lies not in describing...') is generic consulting-speak. Lightning-bolt callout boxes are decorative filler. Overall polish is high but content depth is shallow for 8 slides."
+  },
+  "confidence": "high",
+  "total": 62,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15874,
+    "output_tokens": 909
+  }
+}

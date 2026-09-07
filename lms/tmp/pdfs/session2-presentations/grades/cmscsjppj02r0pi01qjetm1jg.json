@@ -1,0 +1,37 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 5.5,
+    "accuracy": 4.5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Clear thesis with five insights building toward a coherent \"where to build\" recommendation framework.",
+  "fix_next": "Multiple median MRR values are materially wrong versus the reference data—verify every number against the actual dataset before presenting.",
+  "verdict": "Coherent narrative undermined by several incorrect median figures.",
+  "flags": [
+    "median-mrr-errors",
+    "missing-data-not-acknowledged",
+    "no-limitations-slide"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 2: AI median shown as $446 vs reference $503; SaaS shown as $303 vs $200.50; Mobile Apps $223 vs $232.50; Productivity $42 vs $79.91; Marketing $1,586 vs $2,369.50—all materially off. Slide 4: B2B/B2C multiplier claimed as 5.7x; reference median revenue multiples are 2.35x/2.30x respectively, and the $1,036/$181 figures don't match reference benchmarks. Slide 5: Recruiting & HR cited with n=6, below the deck's own n≥42 threshold from Slide 2, creating internal inconsistency.",
+  "evidence": {
+    "insight": "Slide 3 (ARPU per subscriber) and Slide 5 (growth vs. scale tension) go beyond simple chart description and offer decision-relevant framing. Slide 5's observation that large categories show 0% median growth is a genuine analytical contribution. However, insights remain at a surface strategic level without deeper cross-cutting analysis.",
+    "narrative": "The five insights follow a logical sequence: what to build → how to monetize → who to sell to → exit value → momentum. Slide 7 synthesizes well. The title question 'Where Should We Build Next?' provides a through-line. Loses points for not delivering a single concrete recommendation at the end.",
+    "framing": "No explicit audience definition, no dataset description slide, no mention of 274 missing category values or 288 missing audience_type values. The deck never states limitations or caveats about survivorship bias. The n≥42 filter on Slide 2 is good practice but is abandoned on later slides without explanation.",
+    "accuracy": "Slide 2 has at least four wrong median values (AI, SaaS, Marketing, Productivity all deviate materially from reference). Slide 4's 5.7x B2B advantage doesn't align with reference median multiples of 2.35x/2.30x. Slide 3 ARPU figures are novel calculations not directly verifiable but the methodology is stated. Slide 5 growth figures are plausible but unverifiable. The consistent direction of errors on Slide 2 suggests a computation or filtering issue.",
+    "visual": "Consistent navy color scheme, clean bar charts with data labels, good use of horizontal bars on Slide 3. Slide 4's card layout is effective for comparison. Charts are legible and appropriately simple. However, mono-color bars throughout all slides create visual sameness. No annotations highlighting key comparisons. Slide 7 summary is clean but text-heavy.",
+    "ai_slop": "No obvious generic filler or inflated consulting language. The deck is concise and data-focused. Slight template uniformity across slides but content is substantive enough to avoid slop classification."
+  },
+  "confidence": "high",
+  "total": 61,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 13790,
+    "output_tokens": 877
+  }
+}

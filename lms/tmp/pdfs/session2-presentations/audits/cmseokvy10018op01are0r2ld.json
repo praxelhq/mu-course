@@ -1,0 +1,45 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 6.5,
+    "framing": 5,
+    "accuracy": 4,
+    "visual": 4.5,
+    "bonus": 0
+  },
+  "what_worked": "Clear signal-vs-noise arc from correlation ranking through category strategy to actionable CEO recommendations.",
+  "fix_next": "Add sample sizes, confidence intervals, and acknowledge observational nature of every correlation claim made.",
+  "verdict": "Coherent thesis but unverifiable correlations, garbled charts, and repetitive AI-generated filler undermine credibility.",
+  "flags": [
+    "unverifiable-statistics",
+    "no-sample-sizes",
+    "inconsistent-correlation-values",
+    "garbled-chart-labels",
+    "ai-slop-critical-insight-banners",
+    "missing-limitations-disclosure",
+    "decorative-pillar-ornaments",
+    "low-information-density-slide3",
+    "consulting-language-inflation"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 4 states social following correlation is 0.17 but slide 5 gives Social Reach correlation as 0.34—these may be different variables but the deck never clarifies, creating apparent inconsistency. Slide 6 places Analytics in the 'Substance Zone' with high median MRR, but per reference data Analytics median is $419, far below Marketing ($2,369.50) which is omitted—misleading category selection. Slide 3 claims 0.90 correlation for active subscriptions vs revenue with no sample size, variable definition, or scatter plot to verify.",
+  "evidence": {
+    "insight": "Slides 3-5 rank proxy signals by correlation strength and slide 6 contrasts crowded vs profitable categories—goes beyond description but the AI-hype-vs-substance framing is a well-worn trope, not deeply original.",
+    "narrative": "Problem (slide 2) → signal (3) → noise (4) → comparison (5) → category (6) → geography/audience (7) → recommendation (8). Stop/start/accelerate landing is purposeful. Sequence is logical.",
+    "framing": "Audience identified as CEOs on slide 1, but 'in the industry' is vague. Dataset limitations (274 missing categories, 241 missing countries, 216 zero-revenue rows) never quantified beyond a garbled missingness chart. No variable definitions provided.",
+    "accuracy": "Slide 6 Analytics median ($419 per reference) is lower than Marketing ($2,369.50), yet Analytics is highlighted as high-median 'Substance Zone.' Correlation values shift between slides 4 and 5 without explanation. 0.90 correlation on slide 3 is presented without scatter plot, n, or confidence interval. No causal disclaimers anywhere despite 'structural drivers' language.",
+    "visual": "Slide 2 missingness chart has duplicate/garbled labels (revenue_per_visitor_usd and visitors_30d each appear multiple times). Slide 3 is a giant blue stat card with minimal information density. Slide 6 bubble chart lacks axis values. Slide 7 Venn diagram is data-free. Decorative pillar columns on slides 3-8 add no information.",
+    "ai_slop": "Every slide has a formulaic 'Critical Insight' footer banner with inflated language ('undisputed primary drivers,' 'mathematically superior'). Decorative pillar-column motifs on slides 3-8. Slide 3 is essentially a giant number card. Stop/start/accelerate framework on slide 8 is a generic consulting template."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 4.5 to 4.0 because slide 6 Analytics placement is factually misleading per reference medians, and the inconsistent social correlation values (0.17 vs 0.34) are never reconciled. Lowered visual from 5.0 to 4.5 for garbled chart labels on slide 2 and multiple data-free conceptual diagrams. Removed bonus point: the stop/start/accelerate framework and repeated 'Critical Insight' banners are generic AI-generated templates, not evidence of exceptional work beyond the rubric.",
+  "total": 51,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 14302,
+    "output_tokens": 1032
+  }
+}

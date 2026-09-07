@@ -1,0 +1,39 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 5,
+    "narrative": 6,
+    "framing": 5.5,
+    "accuracy": 4,
+    "visual": 6,
+    "bonus": 1
+  },
+  "what_worked": "Clear thesis with a structured six-signal scoring framework leading to one actionable recommendation.",
+  "fix_next": "Show the actual scoring math—weights, raw inputs, normalization—so the composite scores are auditable rather than opaque assertions.",
+  "verdict": "Coherent narrative but thin evidence; composite scores are unverifiable black boxes.",
+  "flags": [
+    "opaque-composite-score",
+    "median-mrr-discrepancy",
+    "missing-data-not-addressed",
+    "categories-omitted-without-justification",
+    "fintech-not-in-dataset-categories"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 7: Dev Tools median MRR listed as $185 vs reference $635; Content Creation median listed as $1,254 vs reference $1,237.50 (minor). Slide 5: 'Fintech' appears as a scored category but is not among the 12 named categories in the dataset. Slide 5: Several known categories (SaaS, Productivity, E-commerce, Social Media, Mobile Apps) are silently dropped without explanation despite having 15+ startups. Slide 6: Analytics top-company concentration claimed at 60%—plausible but unverifiable and the category has only 19 companies, making the 'trap' framing misleading given tiny n.",
+  "evidence": {
+    "insight": "The concentration test (slide 6) is the strongest original idea—questioning whether a top composite score is meaningful when one company dominates. However, the six signals are never weighted or justified, and the composite scores cannot be reproduced from the deck.",
+    "narrative": "Four-part structure (framework → ranking → concentration caveat → verdict) flows logically and lands on a clear recommendation. The sequence is purposeful, not a list of charts.",
+    "framing": "Slide 2 sets up the dataset and decision question clearly. However, 274 missing category values are never mentioned, the audience persona is vague ('where should I build'), and the 15+ cutoff silently drops categories like SaaS (66 companies) and Productivity (49).",
+    "accuracy": "Dev Tools median MRR $185 is far from the reference $635—a material error that undermines the monetization comparison. 'Fintech' is not a recognized category in the dataset. The composite scores are presented without any derivation, making them unverifiable. Missing data is never acknowledged.",
+    "visual": "Clean, consistent design with good hierarchy and restrained color use. The concentration bar chart (slide 6) communicates well. However, the deck is visually monotonous—every slide uses the same pink background and card layout. No data-rich charts appear; the ranking bar chart (slide 5) is the only real visualization.",
+    "ai_slop": "The uniform pink card-based template across all slides and generic next-steps ('validate before building') lean toward template-driven output, but the content is specific enough to avoid pure slop."
+  },
+  "confidence": "high",
+  "total": 54,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15143,
+    "output_tokens": 779
+  }
+}

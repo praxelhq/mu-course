@@ -1,0 +1,40 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 5,
+    "narrative": 5.5,
+    "framing": 4.5,
+    "accuracy": 3.5,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Revenue concentration analysis and B2B/B2C segmentation comparison provide a coherent strategic thread.",
+  "fix_next": "Multiple figures appear fabricated or wrong (MRR vs 30-day revenue conflation, tier counts suspiciously identical, Stripe revenue off); verify every number against the dataset.",
+  "verdict": "Consulting-styled deck with a coherent thesis undermined by numerous numerical errors.",
+  "flags": [
+    "mrr-vs-revenue-conflation",
+    "fabricated-looking-tier-counts",
+    "external-chart-not-from-dataset",
+    "inflated-consulting-language",
+    "missing-data-not-acknowledged",
+    "ai-slop-detected"
+  ],
+  "factual_error_count": 9,
+  "factual_error_detail": "Slide 1: '$13.47M Total Ecosystem MRR' is fabricated; dataset has $15.60M 30-day revenue, not MRR—no MRR field exists. '80.3% Active Monetization' unverifiable (784/1000=78.4% non-zero). Slide 2: Top-10 share stated as 48.0% vs reference 49.6%; '$6.46M MRR' and denominator $13.47M are wrong. Slide 3: B2B/B2C median multiplier claimed 5.7x; reference shows ~2.35x median multiple. Product counts (255+401+56=712) don't acknowledge 288 missing audience_type rows. Slide 4: Uses mean revenue per product but labels suggest these are verified—E-commerce $20,828 doesn't match reference ($1,111,606/19≈$58,506 for 30-day revenue, or the chart's own number is inconsistent). Analytics $18,831 vs reference $368,214/19≈$19,380 is close but the metric is mislabeled as MRR. Slide 5: Four tiers each show exactly 197 startups (19.7%)—this is almost certainly fabricated; real data would not produce identical bin counts. Slide 6: Stripe revenue stated as $11.75M; reference is $13.53M. Slide 8: External ChartMogul chart is not from the dataset.",
+  "evidence": {
+    "insight": "Slide 2 power-law concentration and Slide 7 opportunity matrix attempt strategic synthesis, but the matrix quadrants are loosely tied to data rather than rigorously plotted. Slide 4's per-product yield is a useful reframing but numbers are questionable.",
+    "narrative": "Deck follows a logical arc: overview → concentration → segments → categories → maturity → infrastructure → strategy. However it reads as a list of dashboard panels rather than building an argument with tension and resolution.",
+    "framing": "No explicit audience, research question, or scope statement. Missing-data rates (24-29% for key fields) are never disclosed. Slide 1 subtitle implies completeness. No limitations slide.",
+    "accuracy": "Systematic conflation of 30-day revenue with MRR throughout. Tier counts on Slide 5 appear fabricated (four bins each at exactly 197). Stripe revenue understated by ~$1.8M. B2B/B2C median multiplier overstated (5.7x vs ~2.35x). Top-10 share off by 1.6pp. External ChartMogul chart on Slide 8 is not from the dataset.",
+    "visual": "Consistent green/white template with clear hierarchy and readable tables. However, the spreadsheet-tab conceit ('SHEET 1: OVERVIEW') is decorative filler. Slide 5's identical-count tiers look suspicious visually. Slide 6 donut chart is fine. No actual scatter plots or distributions shown despite claims about power laws.",
+    "ai_slop": "Heavy consulting language throughout ('Key Executive Takeaway', 'Executive Conclusion', 'Strategic Market Opportunity Matrix'). Slide 8 uses an external ChartMogul graphic unrelated to the dataset. Slide 5's suspiciously uniform tier counts suggest AI-generated numbers. Repetitive card-based template across all slides."
+  },
+  "confidence": "high",
+  "total": 47,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18994,
+    "output_tokens": 1066
+  }
+}

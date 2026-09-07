@@ -1,0 +1,38 @@
+{
+  "slide_count": 15,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 6.5,
+    "accuracy": 5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong narrative arc with numbered surprises, clear plain-language framing, and effective callback structure between slides.",
+  "fix_next": "Slide 10 claims top 10% earn 91% and slide 12 uses means not medians; verify statistics against the actual dataset before presenting.",
+  "verdict": "Well-structured storytelling undermined by several factual inaccuracies and shallow analysis.",
+  "flags": [
+    "mean-median-confusion",
+    "cumulative-share-inflated",
+    "missing-data-not-disclosed",
+    "b2b-multiplier-wrong-statistic"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 10: Claims top 10% earn 91% of revenue; reference shows top-10 share is ~49.6%, so 91% for top 100 is plausible but unverified and the chart's cumulative structure (97%, 99%, 100%…) looks fabricated/inflated. Slide 10: Claims single biggest business earns 23% — unverifiable and suspiciously high. Slide 12: B2B vs B2C comparison uses means ($10,319 vs $2,735) and claims '4×' but reference medians show only ~2.3× difference; presenting means as 'typical' is misleading. Slide 11: Uses mean revenue per country but calls it 'typical' — median would be appropriate given extreme skew acknowledged on slide 10. Slide 9: Says B2C is 56% and 'the biggest group (4 in 10)' — internally contradictory (56% ≠ 4 in 10). Slide 6: Omits that 274 rows lack category data, presenting counts as if they cover all 1,000.",
+  "evidence": {
+    "insight": "Slides 10-14 attempt genuine surprises (concentration, dormancy, for-sale pricing). The count-vs-cash framing on slide 11 is a real insight. However, analysis stays at descriptive level — no cross-cuts, no category-revenue median analysis, no discussion of AI's low median despite high total.",
+    "narrative": "Clear five-surprise structure with callbacks (slide 7→11, slide 9→12). Summary slide 15 ties it together. The 'crowded doesn't mean profitable' thread is set up on slide 6 but never fully delivered with category median data.",
+    "framing": "Slides 1-4 establish context well for a cold reader. However, missing data is never disclosed (241 missing country, 274 missing category, 288 missing audience_type). The claim on slide 4 that 'money numbers are complete for every single business' is true but misleadingly implies all fields are complete.",
+    "accuracy": "Slide 10's 91% top-decile claim and 23% single-company claim are unverified against reference. Slide 12 uses means labeled as 'typical' despite acknowledging extreme skew. Slide 9 internal contradiction (56% vs '4 in 10'). Slide 11 uses means for skewed data. Missing-data denominators never addressed for category/country charts.",
+    "visual": "Consistent teal color scheme, clean bar charts with direct labels, good use of sidebar callout boxes. Donut chart on slide 9 is acceptable. Slide 10's bar chart is a poor choice for cumulative percentages — a stacked area or Lorenz curve would communicate inequality better. Overall restrained and legible but repetitive template.",
+    "ai_slop": "Moderate template repetition (every slide has identical sidebar callout box pattern). The 'everyday analogy' on slide 2 feels like generic AI filler. Overall not severe but the uniform structure across all slides suggests AI-generated template with minimal customization."
+  },
+  "confidence": "high",
+  "total": 63,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 27281,
+    "output_tokens": 980
+  }
+}

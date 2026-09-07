@@ -1,0 +1,38 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 7.5,
+    "accuracy": 5,
+    "visual": 6.5,
+    "bonus": 2
+  },
+  "what_worked": "Excellent epistemic discipline: flagging unreliable multiple field, missingness, and snapshot limitations throughout.",
+  "fix_next": "The deck barely engages the dataset's richest dimensions—payment providers, anonymity, TLDs, B2B/B2C, founded-year—leaving insight shallow despite strong framing.",
+  "verdict": "Well-framed and honest, but analytically thin and carries several factual errors.",
+  "flags": [
+    "narrow-scope",
+    "concentration-claim-off",
+    "missing-provider-analysis",
+    "rounded-chart-labels-lose-signal"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 2: 'top 1.6% (16) generate 55% of all platform MRR'—reference shows top-10 share is 49.6%, so 16 generating 55% is plausible but unverifiable and the framing as 'MRR' vs 30-day revenue is imprecise. Slide 4: 197 businesses at $0 claimed but reference says 216 have zero revenue. Slide 7: category missingness stated as 27% (would be 274/1000=27.4%, acceptable rounding) but country stated as 24% when 241/1000=24.1%—acceptable. Domain rating 29% missingness is unverifiable. Slide 6: chart labels are integers (3, 2, 1) losing all discriminating power between categories—e.g., Education and Fintech both show '3' but the reference B2B/B2C medians are 2.35x/2.30x, and the stated median is 2.30x, so many of these rounded integers are misleading. Slide 8: AI multiple stated as 2.65x and Mobile Apps as 2.30x but slide 6 shows both rounded to 3 and 2 respectively—internal inconsistency. Slide 4: $0 tier shows 197 but should be ~216.",
+  "evidence": {
+    "insight": "Concentration analysis (slide 4) and multiple-reliability finding (slides 2, 5) are the strongest insights, but the deck never explores payment providers (Stripe at 63.6% of companies, 86.7% of revenue), anonymity premium, TLD patterns, or B2B/B2C splits—all rich analytical veins left untouched.",
+    "narrative": "Clear three-act structure: market composition → deal market/valuation → strategic implications. The exec summary (slide 2) sets up the thesis well, and the 'so what' slide (8) lands with prioritized recommendations. Sequence is logical and purposeful.",
+    "framing": "Audience (executive leadership), scope (acquisition screening), data source, date, and n are stated on slide 1. Slide 7 dedicates a full page to data integrity caveats. Missingness is acknowledged. The framing as an 'intelligence brief' is appropriate and consistently maintained.",
+    "accuracy": "Zero-revenue count off by ~19 (197 vs 216). The valuation chart (slide 6) rounds all multiples to integers, destroying the analytical signal the slide claims to provide. The 55% concentration claim for top 16 is not directly verifiable against the reference (top-10 = 49.6%). Category counts on slide 3 match reference. The 2.30x median multiple on slide 1 aligns with B2C median but is presented without specifying the denominator or population.",
+    "visual": "Consistent color palette (navy/teal), clean typography, good use of whitespace. Slide 4's histogram is effective. However, slide 6's bar chart with integer-only labels is a significant design failure—it flattens meaningful variation into useless buckets. No scatter plots, no distribution views beyond the one histogram. The deck is visually polished but chart-light for a data story.",
+    "ai_slop": "The consulting-style 'High impact / Low effort' tags on slide 8 feel formulaic. The 'intelligence brief' framing and numbered recommendations have a template quality. However, the content is substantive enough that this is mild—not egregious slop."
+  },
+  "confidence": "high",
+  "total": 66,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 17693,
+    "output_tokens": 1071
+  }
+}

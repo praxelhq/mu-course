@@ -1,0 +1,39 @@
+{
+  "slide_count": 14,
+  "scores": {
+    "insight": 5,
+    "narrative": 6,
+    "framing": 4,
+    "accuracy": 2,
+    "visual": 6.5,
+    "bonus": 0
+  },
+  "what_worked": "Strong thesis about revenue concentration; good slide on data transparency gap from uncategorized startups.",
+  "fix_next": "The deck analyzes a completely different dataset (8,782 rows) than the assigned 1,000-row frozen dataset, making nearly every number unverifiable or wrong.",
+  "verdict": "Polished deck built on the wrong dataset; accuracy collapses entirely.",
+  "flags": [
+    "wrong-dataset",
+    "fabricated-row-count",
+    "revenue-total-mismatch",
+    "category-counts-mismatch",
+    "zero-revenue-count-mismatch"
+  ],
+  "factual_error_count": 12,
+  "factual_error_detail": "Slide 1/2: Claims 8,782 startups; frozen dataset has 1,000 rows. Slide 2: $15.4M MRR and $33.2M 30-day revenue stated; actual 30-day revenue is $15,596,344.59 (no MRR field confirmed at that level). Slide 2: 57.2% at $0 MRR; actual zero-revenue is 216/1000 = 21.6%. Slide 3: Top 1% = 69.5% — unverifiable against 1,000-row dataset where top-10 share is 49.6%. Slide 4: 1,430 AI startups; actual is 197. AI total $2.25M MRR vs actual $2,356,676 (close in magnitude but denominator is wrong). Slide 4: Avg MRR per company figures (E-comm $4,168, etc.) don't match frozen medians or means. Slide 5: 3,264 uncategorized; actual missing category is 274. Slide 6: 1,657 US startups; cannot verify against 1,000-row set. Slide 7: B2B avg $2,099 vs B2C $868 — frozen reference shows median multiples of ~2.35x/2.30x, not means of 2.4x. Slide 8: Stripe 59.4% of startups; actual is 636/1000 = 63.6%. Stripe 85.3% of MRR; actual is $13.5M/$15.6M ≈ 86.7%. Slide 12: Leaderboard figures unverifiable against the assigned dataset.",
+  "evidence": {
+    "insight": "Slide 5 data-transparency observation is genuinely interesting; slide 10 correlation hierarchy (subscriptions > DR > social) is a useful framing. However, insights are undermined by wrong-dataset numbers and reliance on means over medians in a skewed distribution.",
+    "narrative": "Coherent arc from market overview → distribution → categories → geography → model → payments → growth → drivers → acquisitions → takeaways. Logical sequence with a clear 'top-heavy market' thesis threaded throughout.",
+    "framing": "Slide 1 names the dataset and freeze date but claims 8,782 rows instead of 1,000. No mention of missingness rates from the actual dataset. No limitations slide. Audience is implied (builders/buyers) but never explicitly stated. The entire framing is built on a different dataset scale.",
+    "accuracy": "Nearly every quantitative claim is drawn from a larger dataset (8,782 rows) rather than the assigned 1,000-row frozen dataset. Row count, revenue totals, category counts, zero-revenue share, provider percentages, and geographic figures all fail to match the reference. This is a fundamental accuracy failure.",
+    "visual": "Consistent dark theme with teal/orange accent palette. Good hierarchy with section labels, big-number callouts, and annotation boxes. Charts are appropriate types (bar, donut, grouped bar). Some chart labels are slightly clipped (slide 5 bar chart x-axis). Overall clean and professional but repetitive template feel.",
+    "ai_slop": "Template is polished but uniform across all slides — same layout patterns repeated. Language like 'brutally concentrated' and 'priced like a garage sale' adds color but borders on consulting-speak. The 8,782-row figure and all derived statistics strongly suggest the student ran an AI tool on a different or full-platform dataset without verifying against the assigned frozen extract."
+  },
+  "confidence": "high",
+  "total": 47,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 26391,
+    "output_tokens": 1094
+  }
+}

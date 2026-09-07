@@ -1,0 +1,41 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 5.5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Total-vs-median AI juxtaposition and epistemic hedging on monetization hypotheses show genuine analytical maturity.",
+  "fix_next": "Explicitly define whether each figure is MRR or 30-day revenue; the systematic conflation undermines otherwise strong analysis.",
+  "verdict": "Strong narrative and insight, but MRR-vs-revenue conflation creates persistent accuracy drag.",
+  "flags": [
+    "metric-conflation-mrr-vs-revenue",
+    "anonymous-count-off",
+    "top10-share-wrong",
+    "category-figures-unverifiable-basis",
+    "zero-revenue-count-wrong"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 2/5/8: AI total stated $1.81M (MRR) vs reference $2.36M (revenue) — likely column mismatch but never clarified. Slide 5: Education median $2,142 vs ref $2,435; Marketing median $1,586 vs ref $2,369.50. Slide 7: top-10 share 48.0% vs ref 49.6%. Slide 7: anonymous count 130 vs ref 129. Slide 3: 197 report $0 MRR but ref shows 216 zero-revenue rows — again column ambiguity. Slide 2: anonymous revenue share 28.1%/$3.79M MRR vs ref 26.525% of revenue.",
+  "evidence": {
+    "insight": "Slide 5's dual-ranking (total vs median) for AI is decision-useful; slide 8's 'not a uniform tailwind' interpretation with named winners/losers goes beyond chart-reading; slide 9 cleanly separates near-term recurring-conversion from longer-term marketplace monetization with appropriate epistemic hedging.",
+    "narrative": "Five-point executive summary (slide 2) previews all threads; slides progress logically from overview → composition → performance → dynamics → distortions → opportunity → risks → Now/Next/Explore actions (slide 12). Each slide title is an assertion, not a label.",
+    "framing": "Slide 1 identifies dataset, audience, scope. Slide 10 explicitly flags missing-field rates and their analytical consequences. Repeated small-sample caveats (n=5, n=7) and 'no cost/effort data' disclaimers show limitation awareness. 'Senior Management & Key Stakeholders' is generic but minor.",
+    "accuracy": "Systematic gap between deck figures and frozen reference suggests MRR column was used for some claims while reference uses 30-day revenue, but the deck never disambiguates. AI total, Education/Marketing medians, top-10 share, anonymous count, and zero-revenue count all diverge from reference. The MRR-vs-revenue distinction is analytically important and its omission is a material accuracy issue.",
+    "visual": "Consistent navy/teal/coral palette, clean bar charts with labeled values, effective size-band chart (slide 3), good callout boxes. Slides 10-11 are text-heavy but remain scannable. No decorative-only graphics. Chart choices appropriate throughout.",
+    "ai_slop": "Minimal. 'Prepared for: Senior Management & Key Stakeholders' is generic consulting boilerplate. Template is uniform but content-driven with no filler slides."
+  },
+  "confidence": "high",
+  "changed": false,
+  "change_reason": "no-change",
+  "total": 73,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 24919,
+    "output_tokens": 893
+  }
+}

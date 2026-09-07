@@ -1,0 +1,44 @@
+{
+  "slide_count": 14,
+  "scores": {
+    "insight": 2.5,
+    "narrative": 4.5,
+    "framing": 2,
+    "accuracy": 1,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Five-layer stack gives a coherent organizing spine; color-coded verticals and card layouts are readable.",
+  "fix_next": "Use the actual assigned dataset—every revenue figure, company name, and metric appears fabricated with no dataset connection.",
+  "verdict": "Polished VC roleplay built on fabricated data; ignores the assigned dataset entirely.",
+  "flags": [
+    "fabricated-data",
+    "dataset-not-used",
+    "ai-slop",
+    "unearned-certainty",
+    "decorative-ai-imagery",
+    "no-limitations-stated",
+    "no-missingness-acknowledged",
+    "repetitive-template"
+  ],
+  "factual_error_count": 15,
+  "factual_error_detail": "Slides 4,6,8,10,12: All 15 company profiles (AEO Engine, ReddGrow AI, Lima, Supliful, DodgePrint, Catalister, Postiz, Vid.AI, StoryShort, Stan, Plutio, Rezi, Comp AI, Capgo, 1Lookup) present revenue, MRR, growth, and subscriber figures that do not appear in the frozen 1,000-row dataset. Slide 13 bubble chart plots these fabricated numbers. No reference to actual dataset totals ($15.6M), category distributions, provider shares (Stripe 86%), missingness rates, or any verifiable benchmark.",
+  "evidence": {
+    "insight": "No analytical finding derived from the assigned data; 'Strong Buy' verdicts and 'undeniable product-market fit' (slide 13) are asserted without evidence. The autonomous-enterprise thesis is generic industry commentary.",
+    "narrative": "The five-layer stack (slide 2) through to Q4 deployment (slide 14) is a coherent arc, and the deck follows it consistently. Structure is competent but content is entirely hollow—narrative without substance.",
+    "framing": "No mention of the assigned dataset, its 1,000 rows, missingness (~24-29% across key fields), zero-revenue rows, or any analytical scope. No audience or question is established. A cold reader would mistake this for a real VC memo.",
+    "accuracy": "Every quantitative claim appears fabricated. None of the 15 company names, revenue figures, MRR values, growth rates, or subscriber counts correspond to the frozen dataset. The slide 13 scatter plot visualizes fabricated data. Zero engagement with actual benchmarks (category medians, provider shares, TLD patterns, on-sale multiples).",
+    "visual": "Consistent dark theme with color-coded verticals (cyan/orange/magenta/green/red). Card layouts are clean and readable. Slide 13 bubble chart is well-formatted. However, slides 1,2,5,7,11 use purely decorative AI-generated imagery. Mini sparklines on company cards appear ornamental. NotebookLM watermark throughout.",
+    "ai_slop": "Heavy AI-generated decorative imagery on 5 slides; inflated consulting language ('fundamental macroeconomic shift,' 'undeniable product-market fit,' 'deterministic fraud prevention,' 'real-time regulatory immune systems'); identical card template repeated 5 times; suspiciously round fabricated numbers."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 3→2.5 (no data-derived finding at all), framing from 2.5→2 (zero dataset context), accuracy from 1.5→1 (every quantitative claim fabricated, not merely inaccurate). Narrative and visual unchanged; preliminary was already appropriately low.",
+  "total": 30,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 22964,
+    "output_tokens": 921
+  }
+}

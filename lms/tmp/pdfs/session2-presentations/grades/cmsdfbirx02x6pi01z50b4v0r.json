@@ -1,0 +1,39 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 4.5,
+    "narrative": 5,
+    "framing": 4,
+    "accuracy": 3,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Consistent emphasis on median over mean and honest acknowledgment of data quality issues.",
+  "fix_next": "The deck appears built on a different (larger) dataset than the 1,000-row assignment dataset, making most numbers unverifiable and likely wrong.",
+  "verdict": "Wrong dataset undermines every claim; surface-level insights with decorative visuals.",
+  "flags": [
+    "wrong-dataset",
+    "fabricated-looking-numbers",
+    "decorative-stock-imagery",
+    "ai-slop-visuals",
+    "no-original-charts-from-data"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 1/2: Claims 8,782 startups; dataset has 1,000 rows. Slide 2: '59% Use Stripe' = 5,185; reference is 636/1000=63.6%. '36% Country Unknown' stated; reference is 241/1000=24.1%. Slide 4: AI at 1,430 listings; reference is 197. SaaS at 525; reference is 66. AI median MRR $16.90 not verifiable against reference median $503 (30-day revenue). Slide 5: B2B median $15.99 vs B2C $8.37; reference shows median revenue multiples ~2.35x/2.30x, not these absolute values. Slide 6: US 1,657, India 807, France 612, UK 603 — all far from the 1,000-row dataset. Slide 7: Stripe at 5,185 vs reference 636; RevenueCat at 1,236 vs reference 189.",
+  "evidence": {
+    "insight": "Observations (power-law, AI paradox, B2B vs B2C) are directionally reasonable but shallow — each slide makes one obvious point without deeper analysis, cross-cuts, or decision-useful recommendations.",
+    "narrative": "There is a loose arc from overview → distribution → categories → geography → providers → marketplace → takeaways, but it reads as a topic list rather than building toward a thesis. No synthesis or strategic landing.",
+    "framing": "Slide 2 attempts dataset context but uses wrong row count (8,782 vs 1,000). No stated audience, research question, or scope definition. Missingness noted but percentages wrong.",
+    "accuracy": "Nearly every quantitative claim is based on what appears to be a different, larger dataset (8,782 rows vs the 1,000-row assignment dataset). Category counts, provider counts, geographic counts, and median values all diverge substantially from reference benchmarks. This is the most serious problem.",
+    "visual": "Charts are minimal two-bar comparisons that add little beyond the text. Decorative AI-generated imagery (slide 1 dashboard, slide 6 fantasy map, slide 8 storefront illustration) is visually noisy and unrelated to the data. Gamma template is repetitive. No annotations, no multi-variable charts.",
+    "ai_slop": "Slide 1 features a generic neon dashboard image unrelated to the dataset. Slide 6 uses a stylized fantasy-style world map. Slide 8 uses an AI-generated storefront illustration. All are decorative filler with no analytical value. Template structure is cookie-cutter Gamma output."
+  },
+  "confidence": "high",
+  "total": 40,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 17010,
+    "output_tokens": 868
+  }
+}

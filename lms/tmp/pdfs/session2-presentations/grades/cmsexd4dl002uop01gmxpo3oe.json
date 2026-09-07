@@ -1,0 +1,40 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 1,
+    "narrative": 1.5,
+    "framing": 1,
+    "accuracy": 1,
+    "visual": 1,
+    "bonus": 0
+  },
+  "what_worked": "Slide titles hint at a B2B + AI thesis that loosely connects to dataset themes.",
+  "fix_next": "Every chart is a broken placeholder (600×400 grey box); no actual data, analysis, or evidence is presented anywhere in the deck.",
+  "verdict": "A marketing landing page with placeholder images, not a data-story presentation.",
+  "flags": [
+    "no-charts-rendered",
+    "placeholder-images-throughout",
+    "product-pitch-not-data-story",
+    "ai-slop",
+    "no-data-shown",
+    "duplicate-slides-7-8"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 3: Claims B2B generates 'significantly higher and more stable recurring revenue' vs B2C—actual median multiples are nearly identical (2.35x vs 2.30x). Slide 4: Calls AI 'the absolute strongest revenue driver' without noting it has the most companies (197) and a low median ($503), overstating the finding.",
+  "evidence": {
+    "insight": "No quantitative finding is actually shown; slides 3-5 make vague claims ('B2B dominance', 'AI leads') with zero supporting numbers, charts, or analysis visible.",
+    "narrative": "Slides follow a product-pitch arc (problem → solution → market → CTA) rather than a data-story arc; no synthesis or analytical landing.",
+    "framing": "No dataset description, no scope/definitions, no mention of sample size, missingness, or limitations. A cold reader would not know what data underlies any claim.",
+    "accuracy": "Cannot verify any chart because every chart area is a 600×400 placeholder. The two textual claims made (slides 3, 4) are misleading or unsupported.",
+    "visual": "Every slide where a chart should appear shows only a grey '600 × 400' placeholder box. Slides 7 and 8 are identical duplicates. Template is a SaaS landing page, not a presentation.",
+    "ai_slop": "Entire deck is an AI-generated SaaS marketing template with placeholder images never replaced, consulting buzzwords ('ARPU', 'zero-growth line'), and no actual content. Slides 7-8 are duplicated image-source pages."
+  },
+  "confidence": "high",
+  "total": 11,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 14220,
+    "output_tokens": 623
+  }
+}

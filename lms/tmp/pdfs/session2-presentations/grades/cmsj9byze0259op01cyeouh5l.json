@@ -1,0 +1,40 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 3,
+    "narrative": 4,
+    "framing": 3.5,
+    "accuracy": 2.5,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Revenue concentration slide (7) attempts a real chart and connects concentration to strategic advice.",
+  "fix_next": "Nearly every quantitative claim (3-5x B2B advantage, 2-3x retention, 40%+ predictability, top-5% = 40%) appears fabricated or unsupported by the dataset.",
+  "verdict": "Confident tone masking thin, largely unverifiable claims—reads as consulting filler, not data analysis.",
+  "flags": [
+    "fabricated-statistics",
+    "no-data-charts",
+    "ai-slop",
+    "missing-limitations",
+    "no-source-citations",
+    "unearned-certainty"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 3: '3-5x higher revenue B2B vs B2C' — actual median multiple is ~2.3x, not 3-5x. Slide 7: 'Top 5% capture 40%+' — dataset shows top 10 (1%) capture ~49.6%; the 5% figure is unverifiable and the chart values (40/35/18/7) don't sum to 100. Slide 7: '17.5% total conversion rate' appears from nowhere in the dataset. Slide 8: '2-3x better retention' and '40%+ revenue predictability' — no retention or predictability data exists in the dataset. Slide 3: 'Faster scaling' and 'retain customers longer' — no time-series or retention data in dataset. Slide 6: Geographic arbitrage claims (Brazil, Turkey, Eastern Europe) are not grounded in any dataset figures.",
+  "evidence": {
+    "insight": "Claims on slides 3-6 and 8 are generic startup advice (B2B > B2C, subscriptions win, geographic arbitrage) without original analysis from the dataset. No category-level medians, no provider analysis, no missingness discussion.",
+    "narrative": "There is a loose arc (opportunity → models → geography → concentration → pricing → action), but it reads as a listicle of startup truisms rather than a thesis built from data findings. The 'three paths' conclusion (slide 9) is generic enough to apply to any dataset.",
+    "framing": "Slide 2 sets up the question but never defines scope, limitations, or what '30-day revenue' means. 241 missing countries and 274 missing categories are never acknowledged. Audience is implied (aspiring indie hackers) but dataset constraints are hidden.",
+    "accuracy": "Multiple invented statistics: 3-5x B2B advantage (actual ~2.3x median), 2-3x retention (no retention data), 40%+ predictability (no such metric), 17.5% conversion rate (unexplained). The bar chart on slide 7 uses round fabricated-looking numbers (40/35/18/7). No denominators, sample sizes, or methodology shown anywhere.",
+    "visual": "Consistent warm color palette and bold typography. However, only one actual chart (slide 7) across 9 slides, and it uses suspicious round numbers. Decorative illustrations (robot hand, conveyor belt, crowd) add no analytical value. Heavy reliance on text boxes with bold headers — template-driven layout.",
+    "ai_slop": "Pervasive: decorative clip-art illustrations on every slide, inflated consulting language ('brutally concentrated,' 'revenue treadmill,' 'life-changing revenue'), fabricated-looking statistics presented without sourcing, and generic three-column card layouts repeated across slides 3, 5, 8, 9."
+  },
+  "confidence": "high",
+  "total": 33,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 16604,
+    "output_tokens": 921
+  }
+}

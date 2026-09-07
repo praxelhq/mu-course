@@ -1,0 +1,38 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Strong thesis-driven arc from crowding to median revenue to actionable recommendation, with honest limitations slide.",
+  "fix_next": "Total revenue is $15.6M not $13.47M; several median values diverge from reference data—verify all calculations against the raw dataset.",
+  "verdict": "Well-structured narrative undermined by multiple numerical inaccuracies.",
+  "flags": [
+    "total-revenue-wrong",
+    "median-values-off",
+    "sas-median-contradicts-reference",
+    "narrow-scope"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: Total revenue stated as $13.47M; reference is $15.60M. Slide 4: AI median $446 vs reference $503; Dev Tools $185 vs $635; SaaS median $303 vs $200.50; Education $2,142 vs $2,435; Content Creation $1,254 vs $1,237.50 (close but pattern of errors suggests calculation issues). Slide 9: B2B median MRR ratio claimed as 5.7x ($1,036/$181=5.7x) which is internally consistent but the underlying B2B/B2C medians cannot be verified and the claim 'every measure that matters' is overstated. Analytics median on slide 4 shown as $1,294 vs reference $419—significant error.",
+  "evidence": {
+    "insight": "The crowding-vs-median-revenue contrast (slide 3→4) is the core insight and is genuinely useful for a founder audience. The revenue-per-visitor angle (slide 5) adds a second dimension. However, the deck doesn't explore provider infrastructure, TLD signals, anonymous companies, or top-10 concentration—limiting depth.",
+    "narrative": "Clear five-act structure: landscape → reveal → efficiency → audience → recommendation. Each slide builds on the prior. The thesis slide (10) lands cleanly. The limitations slide (8) is well-placed before recommendations. Sequence is purposeful, not a list.",
+    "framing": "Slide 1-2 set up the question clearly for a cold reader. The n=726 denominator is noted on slide 3. Limitations slide acknowledges missing categories and outliers. However, scope is narrow—no discussion of payment providers, geography, or founding year—and the audience for the recommendation (aspiring founder) is implied but never stated.",
+    "accuracy": "Slide 2 total revenue $13.47M is materially wrong (actual $15.60M—off by ~$2.1M). Slide 4 Analytics median $1,294 vs reference $419 is a 3x overstatement. AI median $446 vs $503, Dev Tools $185 vs $635 (huge miss). SaaS $303 vs $200.50. Education $2,142 vs $2,435. Multiple medians are wrong, undermining the central argument. The 27.4% missing category figure is correct (274/1000).",
+    "visual": "Clean, consistent template with navy/gold palette. Charts are simple and legible. Good use of callout boxes on slide 4. Slide 6 card layout is effective. No chartjunk. However, slides are somewhat sparse—slide 7 could use a chart. No dual-axis or misleading chart tricks, which is good.",
+    "ai_slop": "Minimal slop. The writing is crisp and avoids consulting jargon. Slide titles are specific and argumentative rather than generic. No decorative stock imagery. The template is clean but repetitive across slides—mild visual sameness."
+  },
+  "confidence": "high",
+  "total": 67,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18802,
+    "output_tokens": 932
+  }
+}

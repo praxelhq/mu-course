@@ -1,0 +1,38 @@
+{
+  "slide_count": 15,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 5.5,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "Coherent thesis from ecosystem overview through scoring framework to actionable deep dives with balanced strengths/risks.",
+  "fix_next": "Median MRR figures on slide 7 diverge materially from dataset reference values; verify all category medians against the frozen data before publishing.",
+  "verdict": "Strong narrative and framework, undermined by several inaccurate category statistics.",
+  "flags": [
+    "median-mrr-discrepancies",
+    "missing-data-limitations-understated",
+    "consulting-tone-slightly-inflated",
+    "aggregate-mrr-label-ambiguous"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 7 (p7): Education median MRR listed as $2,141 vs reference $2,435; Marketing $1,586 vs $2,369.50; Analytics $1,294 vs $419; AI median listed as $446 vs reference $503. These are not rounding—Analytics is off by 3×. Slide 3 (p3): '29 SaaS categories' stated but dataset has 12 named categories (with 274 missing); 29 is unsubstantiated. Slide 6 (p6): Aggregate MRR stated as $13.5M labeled 'recurring/month'—this conflates MRR with 30-day revenue ($15.6M); the relationship between these two figures is never clarified. Slide 1 preface claims 'Marketing, Analytics, and Education companies were making way more money than AI companies'—by total revenue AI ($2.36M) far exceeds Analytics ($368K) and Education ($524K); only median supports this claim partially, and even those medians are misstated.",
+  "evidence": {
+    "insight": "The volume≠value thesis on slide 7 is genuinely useful, and the six-dimension scoring framework (slide 8) goes beyond chart description. Deep dives (slides 11-13) include both bull and bear signals per company, showing analytical maturity. The pipeline recommendation (slide 14) elevates from list to system.",
+    "narrative": "Clear arc: problem (partner time scarcity) → data source → methodology → ecosystem → market intelligence → framework → shortlist → deep dives → pipeline → recommendations. Each slide has a business question header that maintains thread. The 'data screens, partners decide' refrain lands well.",
+    "framing": "Audience (YC investment committee) and question are explicit from slide 2. Scope (1,000 SaaS, frozen snapshot) is stated. However, limitations around 274 missing categories and 241 missing countries are mentioned only in passing footnotes rather than substantively discussed. The 'Confidential' framing is performative but harmless.",
+    "accuracy": "Multiple median MRR values are materially wrong (Analytics 3× overstated). The claim of '29 SaaS categories' is unsupported by the dataset's 12 named categories. The preface's claim that Marketing/Analytics/Education make 'way more money' than AI is false by total revenue and only partially true by median. Top-10 revenue share (49.6%) and total 30-day revenue ($15.6M) are correct. The scoring framework is self-constructed so not verifiable, but internally consistent.",
+    "visual": "Consistent orange/black/white palette with clear hierarchy. Bubble chart on slide 7 is well-conceived though axis labels are partially occluded. Deep dive slides use a strong template with score breakdowns, KPI cards, and balanced strengths/risks columns. The data reduction funnel (slide 5) is effective. Some text density is high but manageable. No decorative-but-meaningless graphics.",
+    "ai_slop": "Minor consulting-speak inflation ('proprietary framework,' 'YC Discovery Score™' with trademark symbol, 'Confidential — For Y Combinator Investment Committee only') but the content beneath is substantive enough that this is stylistic rather than sloppy. The preface page is text-heavy filler but serves as context-setting."
+  },
+  "confidence": "high",
+  "total": 74,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 31796,
+    "output_tokens": 1047
+  }
+}

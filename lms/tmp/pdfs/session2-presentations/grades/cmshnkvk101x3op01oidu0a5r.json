@@ -1,0 +1,40 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 3.5,
+    "narrative": 4,
+    "framing": 4.5,
+    "accuracy": 4.5,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Clean visual template, honest skewness callouts on followers and subscriptions, and actionable final recommendation slide.",
+  "fix_next": "Half the deck is descriptive top-10 lists (followers, subscriptions) that add no investment insight; replace with category-revenue analysis, missingness audit, and selection-criteria transparency.",
+  "verdict": "Polished shell around shallow, mostly descriptive analysis with thin analytical justification.",
+  "flags": [
+    "descriptive-not-analytical",
+    "missing-category-revenue-analysis",
+    "no-missingness-discussion",
+    "selection-criteria-opaque",
+    "provider-counts-off",
+    "country-missing-count-off"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 3: States 757 with country disclosed and 243 not disclosed; reference is 759/241. Slide 5: Stripe listed as 644 startups (reference 636), RevenueCat as 191 (reference 189). Slide 9: Median revenue multiple stated as 2.3x without specifying B2B vs B2C; reference gives B2B median 2.35x and B2C 2.30x — conflation is minor but the average 7.8x is presented without clarification of which population (mean for B2B is ~7.97x, B2C ~8.44x). These are individually small but collectively indicate imprecise data handling.",
+  "evidence": {
+    "insight": "Slides 4, 7 are pure top-10 leaderboards (followers, subscriptions) with no cross-variable analysis. No category-by-revenue breakdown, no founded-year correlation, no missingness impact discussion. The final recommendation (slide 10) names five companies but never explains the screening methodology or weighting criteria — the reader cannot evaluate why these five beat alternatives.",
+    "narrative": "The deck follows a logical sequence (source → scope → metrics → recommendation) but the middle slides (4-8) feel like a disconnected tour of individual columns rather than building toward a thesis. There is no synthesis slide bridging descriptive findings to the recommendation. The jump from 'here are top-10 lists' to 'invest in these 5' is abrupt.",
+    "framing": "Slide 1-2 set context well (TrustMRR explanation, frozen date, audience). However, no limitations slide, no discussion of 274 missing categories or 288 missing audience types, no acknowledgment of survivorship bias or that 216 companies have zero revenue. Scope slide lists countries but doesn't discuss what the missingness means for conclusions.",
+    "accuracy": "Country missing count off by 2 (243 vs 241). Stripe count 644 vs reference 636 — an 8-company discrepancy. RevenueCat 191 vs 189. These suggest the student may have used a slightly different filter or made counting errors. The revenue multiple figures (7.8x average, 2.3x median) are plausible but not precisely sourced to B2B/B2C splits. No total revenue figure cited anywhere for verification. The top-10 revenue table (slide 6) uses all-time revenue rather than 30-day, which is fine but unlabeled relative to the dataset's primary 30-day metric.",
+    "visual": "Consistent purple/mint/coral palette, good use of white space, legible tables, numbered sections. However, the pie charts (slides 5, 8) have too many small slices with cramped labels. The bar charts on slides 4 and 7 duplicate information already in the adjacent tables. Slide 10 is well-designed with clear card layout. Overall: polished template but repetitive layout across slides.",
+    "ai_slop": "Moderate template repetition: slides 4 and 7 are near-identical in structure (big number cards + top-10 table + top-5 bar chart + italic caveat). The 'Why This Matters' box on slide 9 reads as generic consulting filler. The country list on slide 3 is space-filling without analytical purpose."
+  },
+  "confidence": "high",
+  "total": 44,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 20629,
+    "output_tokens": 1036
+  }
+}

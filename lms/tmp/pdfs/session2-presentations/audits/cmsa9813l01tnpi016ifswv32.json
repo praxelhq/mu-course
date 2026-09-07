@@ -1,0 +1,45 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 3,
+    "narrative": 4,
+    "framing": 3,
+    "accuracy": 2.5,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Revenue skew narrative is directionally correct and the arc from geography to takeaway has logical flow.",
+  "fix_next": "Replace fabricated-looking charts with verifiable data; acknowledge missingness, cite actual category/provider/TLD findings from the dataset.",
+  "verdict": "Surface-level story with multiple unverifiable charts and motivational filler masking thin analysis.",
+  "flags": [
+    "fabricated-looking-charts",
+    "ai-slop",
+    "missing-data-not-acknowledged",
+    "no-category-analysis",
+    "no-provider-analysis",
+    "unverifiable-claims",
+    "round-number-suspicion",
+    "gamma-template-filler",
+    "no-limitations-slide"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 2: claims 'over 40%' US share without accounting for 241 missing country values (~24% of data). Slide 3: '22.86% total conversion rate' is unexplained and unverifiable; labels revenue as 'MRR' when dataset records 30-day revenue. Slide 4: growth-rate distribution (30/30/20/12/8) uses suspiciously round numbers with no corresponding variable in the reference data—appears fabricated. Slide 5: pie chart percentages (40/35/15/10) for followers-vs-revenue quadrants are unverifiable and sum too neatly. Slide 3: '60% of startups have yet to break even' is an unsupported claim with no cost data in the dataset.",
+  "evidence": {
+    "insight": "No analysis of categories, payment providers, TLDs, anonymity, or sale multiples. Observations ('most startups are small,' 'followers ≠ revenue') are generic truisms, not dataset-specific discoveries.",
+    "narrative": "Loose geography→revenue→growth→social→takeaway arc exists but lacks a unifying thesis. Each slide reads as an independent observation rather than building toward a synthesized argument.",
+    "framing": "Title frames dataset as '1,000 AI startups' when it spans 12+ categories beyond AI. No mention of data source, collection method, 241 missing countries, 274 missing categories, or 216 zero-revenue rows. Audience ('for you') is undefined.",
+    "accuracy": "Slide 4 growth chart appears wholly invented—no growth-rate field exists in the reference data to produce those bins. Slide 5 pie chart percentages are unverifiable. Slide 3 conflates 30-day revenue with MRR and introduces an unexplained '22.86% conversion rate.' Slide 2 ignores massive country missingness. Slide 3 claims '60% haven't broken even' without cost data.",
+    "visual": "Gamma template is clean and legible but repetitive dark-mesh background is purely decorative. Three-column takeaway cards repeat on every slide. Pie chart on slide 5 is a poor choice. Suspiciously round bar values on slide 4 undermine credibility.",
+    "ai_slop": "Pervasive motivational filler: 'The AI era is just beginning,' 'Consistency beats virality,' 'Hype doesn't pay the bills,' 'one paying customer at a time.' Three-column insight cards on every slide are a generic AI template pattern. Content could describe any startup dataset."
+  },
+  "confidence": "high",
+  "changed": false,
+  "change_reason": "Preliminary scores are well-calibrated. Fabricated charts, unverifiable claims, absent dataset-specific analysis, and heavy AI filler all justify the low marks across dimensions. No adjustment needed.",
+  "total": 33,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 11892,
+    "output_tokens": 929
+  }
+}

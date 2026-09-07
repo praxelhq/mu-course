@@ -1,0 +1,41 @@
+{
+  "slide_count": 29,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 5,
+    "accuracy": 2.5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong narrative arc from concentration risk through anonymized-cohort governance gap to actionable triage recommendations.",
+  "fix_next": "The entire deck analyzes a fabricated 8,782-row dataset when the actual frozen dataset has 1,000 rows—every absolute number is wrong.",
+  "verdict": "Polished consulting deck built on a phantom dataset; accuracy collapses everything.",
+  "flags": [
+    "wrong-dataset-size",
+    "fabricated-row-count",
+    "total-revenue-wrong",
+    "category-counts-wrong",
+    "anonymous-count-wrong",
+    "zero-revenue-count-wrong",
+    "consulting-framing-over-substance"
+  ],
+  "factual_error_count": 12,
+  "factual_error_detail": "Slide 1: 8,782 companies (actual 1,000), $33.9M revenue (actual ~$15.6M). Slide 2: repeats 8,782 and 31 categories. Slide 3: 560 anonymized companies (actual 129), 50% revenue share from anon (actual ~26.5%). Slide 4: $33.9M revenue, 51% at $0 (actual 216/1000=21.6%). Slide 5: 4,481 at $0 (actual 216). Slide 7: 560 anon companies, 50% revenue share, $7.14M top company—all fabricated magnitudes. Slide 13: Productivity $3.05M top category (actual AI $2.36M is highest); AI $1.52M (actual $2.36M). Slide 14: AI 751 companies (actual 197), Productivity 237 (actual 49), SaaS 295 (actual 66). Slide 15: US 1,577 companies, India 769—wildly inflated. Slide 24: Stripe avg $5,743 vs Dodo $128—Dodo actual avg ~$774.",
+  "evidence": {
+    "insight": "The anonymized-cohort governance insight (slides 7, 12) and billing-provider-as-maturity-proxy (slide 24) are genuinely useful analytical angles, though built on wrong numbers.",
+    "narrative": "Clear thesis (power-law portfolio → verify the core → triage the tail) sustained across 29 slides with consistent section numbering and a strong closing slide.",
+    "framing": "Slide 2 explicitly addresses scope and methodology, but the framing is built on a false premise: claiming 8,782 rows when the dataset has 1,000. The 'board-level' consulting persona is adopted without establishing the actual assignment context.",
+    "accuracy": "Nearly every quantitative claim is wrong. Row count 8.8x inflated, total revenue ~2.2x inflated, zero-revenue count ~20x inflated, anonymous count ~4.3x inflated, category company counts off by 3-5x. Category revenue rankings are reshuffled (Productivity shown as #1 at $3.05M; actual is AI at $2.36M). The deck appears to have been built from a different or hallucinated dataset.",
+    "visual": "Consistent dark-navy/white template, well-labeled charts (Pareto curve slide 6, bubble chart slide 9, correlation heatmap slide 22, bar charts slide 15), good hierarchy with section numbering and footers. Treemap on slide 13 is partially illegible for smaller categories. Risk matrix on slide 20 has overlapping text.",
+    "ai_slop": "Heavy consulting-template language ('board-level assessment,' 'capital-allocation opportunity,' 'option book') throughout. The fabrication of an 8,782-row dataset with internally consistent but externally wrong numbers is characteristic of LLM hallucination rather than deliberate fraud. SWOT slide 23 is generic template filler."
+  },
+  "confidence": "high",
+  "total": 55,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 55402,
+    "output_tokens": 994
+  }
+}

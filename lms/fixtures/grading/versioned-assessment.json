@@ -1,0 +1,46 @@
+{
+  "rubric": {
+    "dimensions": [
+      { "key": "functionality", "label": "Functionality", "max": 10 },
+      { "key": "craft", "label": "Craft", "max": 10 }
+    ]
+  },
+  "evaluator": {
+    "config": {
+      "approvedProcessor": "anthropic",
+      "approvedFlags": ["insufficient-evidence", "possible-injection"],
+      "citationsPerDimension": 2,
+      "judgmentFieldIds": ["q2"],
+      "trustedAggregateSummaries": [
+        {
+          "id": "shape-summary",
+          "text": "The supplied teaching distribution is right-skewed.",
+          "safeForProcessor": true
+        },
+        {
+          "id": "unreviewed-summary",
+          "text": "This text was not approved for processor context.",
+          "safeForProcessor": false
+        }
+      ]
+    },
+    "answerKey": {
+      "items": {
+        "q1": {
+          "contract": {
+            "evaluation": "deterministic",
+            "response_schema": "integer",
+            "acceptance": { "mode": "exact" }
+          },
+          "private_key": { "expected": 42 }
+        },
+        "q2": {
+          "contract": {
+            "evaluation": "ai_judgment",
+            "response_schema": "text"
+          }
+        }
+      }
+    }
+  }
+}

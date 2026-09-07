@@ -1,0 +1,38 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 6.5,
+    "accuracy": 5.5,
+    "visual": 5.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong thesis that concentration matters more than averages, sustained coherently across all slides.",
+  "fix_next": "Bar charts lack axis labels (categories/bins unnamed), and the B2B median and \"4×\" claim don't match the reference data—verify numbers before styling.",
+  "verdict": "Coherent narrative with real insight, undermined by unlabeled charts and inflated B2B figures.",
+  "flags": [
+    "unlabeled-chart-axes",
+    "inflated-b2b-median",
+    "missing-data-caveats",
+    "title-slide-claim-unverified"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 1: '2% generate almost 60%' — top 20 is 2% of 1,000 and generates 59.6%, borderline acceptable but the title slide also says it on slide 3 more precisely. Slide 2: Average $15.6K — total revenue $15.6M / 1,000 = $15,596, displayed as $15.6K which is the mean, acceptable; median $400 is plausible but unverifiable precisely. Slide 4: B2B median $1,240 and B2C median $304 — reference shows B2B median multiple is 2.35× (not 4×); the stated medians don't match the reference multiplier pattern, and '4×' is materially wrong (reference ~2.35×). Slide 4: '70% of revenue' for B2B among known audience types is unverifiable but plausible. Slide 5: Marketing median $2,370 vs reference $2,369.50 — fine rounding. Education $2,435 matches. AI $503 matches.",
+  "evidence": {
+    "insight": "Slide 3's concentration ladder and slide 5's 'AI is crowded not richer' are genuinely useful reframings that go beyond chart description. Slide 6's stealth-breakout vs small-base-spike contrast is a smart analytical move.",
+    "narrative": "Clear arc: averages mislead → concentration is real → B2B monetizes better → AI is overhyped → growth needs scale → actionable recommendations. Each slide builds on the prior. Landing on slide 7 ties back to the thesis.",
+    "framing": "Audience is implied ('client') but never specified—what kind of client? Investor, operator, platform? No mention of dataset source, time period, or the substantial missingness (274 missing categories, 288 missing audience_type). 'Prepared for client discussion' is vague.",
+    "accuracy": "B2B median claimed as $1,240 with '4× B2C' — reference data shows median multiples of ~2.35×, making this a material overstatement. Charts on slides 2, 5, and 6 have numbered x-axes (1,2,3...) with no category/bin labels, making them unverifiable. The 216 zero-revenue companies and extensive missingness are never acknowledged.",
+    "visual": "Consistent color scheme and layout template. However, multiple bar charts have unlabeled x-axes (slides 2, 5, 6), which is a serious legibility failure. The pie chart on slide 4 works. The horizontal bar on slide 3 is effective. Charts feel template-generated without careful annotation. Y-axis on slide 5 starts at -$400 which is odd for revenue medians.",
+    "ai_slop": "Some consulting-speak ('signal engine', 'hunting map', 'monetization lane') borders on filler but is restrained enough. The unlabeled bar charts suggest auto-generated visuals not carefully reviewed."
+  },
+  "confidence": "high",
+  "total": 65,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 13709,
+    "output_tokens": 954
+  }
+}

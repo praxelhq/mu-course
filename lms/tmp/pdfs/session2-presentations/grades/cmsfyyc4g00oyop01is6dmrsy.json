@@ -1,0 +1,38 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 4.5,
+    "visual": 6.5,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis-driven narrative with a clear investment recommendation, honest risk register, and valuation comps.",
+  "fix_next": "Education median is $2,435 not $2,142; the bar chart categories and medians don't match the dataset, undermining the core claim.",
+  "verdict": "Compelling investment memo format, but key median figures are wrong.",
+  "flags": [
+    "median-revenue-error",
+    "fabricated-category-names",
+    "decorative-stock-photos",
+    "unverifiable-company-claims"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 3: Education median shown as $2,142 vs actual $2,435. Slide 3: Categories 'Sales' and 'Fintech' do not exist in the dataset; Marketing median shown $1,586 vs actual $2,369.50; Analytics shown $1,294 vs actual $419; AI shown $446 vs actual $503. Slide 3: 7.6x multiplier is based on wrong median ($2,142/$282) and the all-company baseline of $282 is unverified. Slide 3: Bar chart medians for Content Creation ($1,254 vs actual $1,237.50) is close but Social Media ($912 vs $844) is off. Slide 1 title says '12 Live Opportunities' but only 5 are profiled in detail.",
+  "evidence": {
+    "insight": "Slides 10-12 provide genuine analytical value: valuation comps with real deal multiples (2.3x-5.8x), a risk register acknowledging academic-integrity concerns and sample bias, and a tiered recommendation (acquire vs outreach vs monitor). Goes beyond chart description to decision-making.",
+    "narrative": "Clear three-chapter arc: market landscape → top 5 deep-dives → valuation/risks/recommendation. Each section builds toward the final ask on slide 12. The thesis ('education is defensible and under-priced') is stated and supported throughout.",
+    "framing": "Slide 1 sets scope (30 education businesses from 1,000-company dataset, acquisition/investment lens). Audience is clearly an investor/acquirer. Slide 11 acknowledges limitations (US-heavy, self-reported, point-in-time). However, the '12 Live Opportunities' title is never reconciled with only 5 profiled.",
+    "accuracy": "Education median wrong ($2,142 vs $2,435). Bar chart includes non-existent categories (Sales, Fintech) while omitting real ones (E-comm, SaaS, Productivity, etc.). Marketing median wildly off ($1,586 vs $2,369.50). Analytics median off ($1,294 vs $419). These errors undermine the central '7.6x' claim. Company-level MRR figures (Kibu $234K, Codédex $88K, etc.) cannot be verified against the frozen dataset reference but are presented with high confidence.",
+    "visual": "Consistent warm-toned template with clear typographic hierarchy, monochrome palette, and well-structured tables. However, stock photos (wheat fields, tulips, autumn leaves, codfish labels) are purely decorative and unrelated to education or the data. Three chapter divider slides consume 25% of the deck with no analytical content. Bar chart on slide 3 is functional but uses fabricated categories.",
+    "ai_slop": "Stock photography is generic and unrelated to content (wheat fields for 'Market Landscape', tulips for 'Valuation'). Chapter divider slides are template-heavy with minimal content. However, the actual analytical slides show genuine engagement with the data rather than pure filler."
+  },
+  "confidence": "high",
+  "total": 67,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 20548,
+    "output_tokens": 953
+  }
+}

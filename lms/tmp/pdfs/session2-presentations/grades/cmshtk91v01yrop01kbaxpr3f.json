@@ -1,0 +1,39 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 5.5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Exceptionally coherent thesis arc from ecosystem gap through scored alternatives to a specific, defensible venture recommendation.",
+  "fix_next": "EU-subset claims (74 AI startups, $228 median, B2B 3x) are unverifiable against the frozen dataset and several global-level figures are misstated; anchor every number to a checkable filter.",
+  "verdict": "Strong strategic narrative undermined by several unverifiable or incorrect dataset claims.",
+  "flags": [
+    "unverifiable-subset-claims",
+    "possible-fabricated-eu-medians",
+    "b2b-multiplier-overstated",
+    "marketing-median-suspect",
+    "consulting-tone-moderate"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1/10: 'B2B earns 3x more than B2C' — global dataset shows B2B/B2C median multiples of ~2.35x, not 3x; EU subset unverifiable but likely inflated. Slide 3: 'EU AI median MRR is 16x below the US' — global AI median is $503; claiming US AI median of $3,645 is unverifiable and implausibly high given the full-dataset median. Slide 5: US Marketing median MRR shown as $20,170 — global Marketing median is $2,369.50; even a US-only filter is unlikely to produce 20K median with n=42 total. Slide 5: EU SaaS median $553 and EU Content $1,319 are presented as dataset facts but are unverifiable subsets and may be fabricated. Slide 1: '11.1% of 30-day revenue' for EU — total 30-day revenue is $15.6M; 11.1% = ~$1.73M, plausible but unverifiable; the 288/1000 EU count itself cannot be confirmed from the frozen reference (241 missing country values complicates this).",
+  "evidence": {
+    "insight": "The deck goes well beyond chart description: it synthesizes a EU monetization gap (slide 1), identifies B2B as the profitable layer (slide 3), scores four alternatives on six criteria (slide 6), and lands on a specific vertical with TAM/SAM/SOM and a go-to-market motion (slides 7-8). The Porter's Five Forces and PESTLE on slide 6 add analytical depth. However, the 'supply chain AI' recommendation is largely driven by external market research rather than dataset evidence.",
+    "narrative": "Textbook funnel structure: ecosystem → industry scan → forward view → white space → evaluation → feasibility → venture → risk → conclusion. Each slide builds on the prior. The thesis ('build agentic AI for industrial supply chain assurance') is stated on slide 1 and reinforced on slide 10. Transitions are explicit. The narrative earns its conclusion rather than asserting it.",
+    "framing": "Slide 1 clearly states the question ('single most profitable, scalable and defensible startup opportunity'), the dataset (1,000 rows, frozen date), and the method (geography screen, industry screen, convergence). Limitations are partially acknowledged (modelled assumptions noted on slides 7-8, working concept name disclaimed). However, the 274 missing category values and 241 missing country values are never discussed, which is a significant omission given the EU subset analysis depends heavily on country field completeness.",
+    "accuracy": "Multiple claims cannot be verified against the frozen reference and several appear incorrect. The B2B/B2C 3x claim overstates the ~2.35x global median ratio. The US Marketing median of $20,170 (slide 5) is wildly inconsistent with the global Marketing median of $2,369.50. EU-specific medians ($228 AI, $553 SaaS, $165 B2C) are presented as dataset facts but are unverifiable subsets. The 288 EU count is plausible but hard to confirm given 241 missing country values. The 10.8% TAM CAGR vs the 15.3% CAGR on slide 4 are from external sources and internally inconsistent in how they're applied.",
+    "visual": "Consistent design system with teal/gold palette, clear section numbering, and good hierarchy. Charts are simple and legible (horizontal bars, grouped bars, tier distribution). The business model canvas on slide 8 is well-structured. The scoring table on slide 6 is effective. However, the visual sameness across slides suggests template-driven production. Some slides are dense (slide 6 packs scoring table + Porter's + PESTLE + SWOT). The EU vs US grouped bar chart on slide 5 has a scale problem with the $20,170 outlier compressing all other bars.",
+    "ai_slop": "Moderate consulting-style language ('agentic AI assurance layer,' 'blue ocean test passed,' 'regulatory complexity is the moat'). The PESTLE and Porter's frameworks feel formulaic rather than deeply reasoned. The scoring matrix on slide 6 uses subjective 1-10 scores without transparent methodology. However, the content is substantive enough and sufficiently specific to the dataset that it avoids pure filler territory."
+  },
+  "confidence": "medium",
+  "total": 72,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22346,
+    "output_tokens": 1323
+  }
+}

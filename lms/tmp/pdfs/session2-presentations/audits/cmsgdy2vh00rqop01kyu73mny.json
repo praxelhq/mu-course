@@ -1,0 +1,44 @@
+{
+  "slide_count": 15,
+  "scores": {
+    "insight": 2.5,
+    "narrative": 4.5,
+    "framing": 2.5,
+    "accuracy": 2.5,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "Clear six-section arc with consistent takeaway format gives the deck a readable, purposeful skeleton.",
+  "fix_next": "Replace decorative slides with real charts tied to the actual dataset, cite sample size, and fix fabricated category names and wrong medians.",
+  "verdict": "Startup advice listicle with no real data visualization and multiple factual errors.",
+  "flags": [
+    "ai-slop-template",
+    "no-real-charts",
+    "fabricated-category-names",
+    "missing-data-source-acknowledgment",
+    "unearned-causal-claims",
+    "wrong-median-values",
+    "decorative-ai-illustrations",
+    "no-limitations-stated"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 3: 'Sales' is not a dataset category; median $2,153 unverifiable. Marketing median $1,586 vs reference $2,369.50 (~$783 off). Education median $2,142 vs reference $2,435 (~$293 off). Slide 4: 'Sales Software' and 'Productivity Apps' not dataset categories; $42 median unverifiable. Slide 5: B2B/B2C '5.7x' claim contradicts reference median multiples of ~2.3x. Slide 10: 'Domain authority is the strongest revenue predictor' stated as fact with no evidence shown and contradicts near-zero Pearson r for founded-year (causal language unsupported). Slide 13: '2–3x annual revenue' exit multiple stated without distinguishing B2B vs B2C reference values (~2.35x/2.30x median).",
+  "evidence": {
+    "insight": "Every slide offers generic startup advice (choose B2B, price for value, build MRR). No original finding surfaces from the dataset; 'revenue proximity' concept on slide 4 uses fabricated categories. Slide 7 claims '250x more per customer' with zero supporting data shown.",
+    "narrative": "Six-section structure (business → customer → model → reach → growth → exit) is coherent and the consistent Key Takeaway bars create rhythm. But the arc reads as a motivational listicle, not a data-driven argument with synthesis.",
+    "framing": "No dataset description, sample size (1,000 rows), time period, source, or methodology is ever mentioned. No missingness or limitations acknowledged. A cold reader cannot evaluate any claim. Audience implied but never stated.",
+    "accuracy": "At least 7 verifiable errors: fabricated category names ('Sales', 'Sales Software', 'Productivity Apps'), wrong Marketing and Education medians, inflated B2B/B2C multiplier (5.7x vs ~2.3x), unsupported causal claim about domain authority. Exit multiples loosely stated without nuance.",
+    "visual": "Gamma template with uniform dark backgrounds and purple accent bars. Zero actual data visualizations—no bar charts, scatter plots, histograms, or distributions. Iceberg on slide 12 is decorative, not data-mapped. AI-generated illustrations on slides 1, 14, 15 add no analytical value. Repetitive layout.",
+    "ai_slop": "Every slide uses identical purple Key Takeaway bar. Slides 1, 14, 15 feature decorative AI-generated art. Slide 6 is a generic MRR explainer roadmap infographic. Slide 15 is pure motivational filler ('exceptional decision-making'). Content could fit any startup blog post without this dataset."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 3→2.5 and framing from 3→2.5 because the deck contains zero dataset-specific analysis and never identifies its data source; lowered accuracy from 3→2.5 for fabricated category names compounding the median errors. Narrative and visual unchanged; preliminary was already fair on those.",
+  "total": 30,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 26168,
+    "output_tokens": 1003
+  }
+}

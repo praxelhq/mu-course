@@ -1,0 +1,43 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 7,
+    "accuracy": 4,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Slide 7 outlier decomposition is genuinely sharp; limitations slide shows real intellectual honesty.",
+  "fix_next": "Reconcile all category counts and revenue totals against the actual dataset; disclose the 274 missing-category rows affecting every category claim.",
+  "verdict": "Strong storytelling undermined by multiple wrong numbers across core claims.",
+  "flags": [
+    "wrong-category-counts",
+    "wrong-median-revenues",
+    "wrong-total-revenues",
+    "education-count-off",
+    "marketing-revenue-wildly-wrong",
+    "missing-category-not-disclosed",
+    "undisclosed-active-filter-slide8"
+  ],
+  "factual_error_count": 9,
+  "factual_error_detail": "Slide 2/4: AI count 189 vs reference 197; SaaS 64 vs 66. Slide 2: AI median $461 vs ref $503; SaaS median $303 vs ref $200.50 (direction of gap may reverse for SaaS). Slide 5: AI total $1,768k vs ref ~$2,357k; SaaS $583k vs ~$704k; Marketing $427k vs ref $1,317k (off by 3x); Education count 28 vs 30, $501k vs ~$524k. Slide 5: Mobile Apps $202k vs ref ~$228k. Slide 8: 'active' company counts (e.g. AI n=92, SaaS n=30) use an undisclosed filter with no explanation of denominator.",
+  "evidence": {
+    "insight": "Outlier decomposition on slide 7 is original and decision-useful. Education revenue-density callout on slide 5 adds a second layer. Thesis (crowding ≠ opportunity) is specific to this dataset, not generic.",
+    "narrative": "Clean arc: crowding → revenue parity → growth parity → quadrant map → examples → recommendations → limitations → close. Each slide advances the argument. The landing on slide 12 is tight.",
+    "framing": "Slide 3 explains data provenance well; slide 11 flags three real limitations. However, 274 missing category values (~27% of rows) are never mentioned, which materially affects every category-level claim. Slide 8 introduces a filtered 'active' denominator without defining it.",
+    "accuracy": "At least 9 verifiable errors: AI count (189 vs 197), SaaS count (64 vs 66), AI median ($461 vs $503), SaaS median ($303 vs $200.50), AI total revenue (~$1,768k vs ~$2,357k), SaaS total (~$583k vs ~$704k), Marketing total ($427k vs $1,317k — off by 3x), Education count (28 vs 30), and undisclosed filtering on slide 8. The Marketing revenue error is severe enough to undermine the comparative ranking.",
+    "visual": "Consistent navy/crimson palette, clean big-number callouts, readable bar charts, effective scatter on slide 8. No chart junk. Slide 3 is text-heavy but informational. Layout is professional throughout.",
+    "ai_slop": "None detected. Deck uses specific company names, dataset-specific numbers, and includes a self-critical limitations slide. No generic filler or inflated language."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 4.5 to 4: Marketing revenue is off by 3x ($427k vs $1,317k), a severe error that distorts the category ranking chart on slide 5. Also lowered framing 7.5→7 for failing to disclose 274 missing category values. Reduced bonus from 2 to 1: the outlier analysis is good but the volume of factual errors prevents a higher bonus.",
+  "total": 67,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 22195,
+    "output_tokens": 981
+  }
+}

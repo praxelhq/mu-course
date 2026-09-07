@@ -1,0 +1,39 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 3,
+    "narrative": 4,
+    "framing": 3,
+    "accuracy": 3.5,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "The scale-vs-velocity scatter on slide 7 is a genuinely useful framing for portfolio segmentation.",
+  "fix_next": "This is a pitch deck cosplaying as a data story; replace sales rhetoric with honest analysis of missingness, distributions, and limitations.",
+  "verdict": "Sales pitch dressed as analysis; thin on rigor, heavy on hype.",
+  "flags": [
+    "pitch-deck-not-data-story",
+    "inflated-consulting-language",
+    "missing-data-unacknowledged",
+    "unearned-certainty",
+    "ai-slop-detected"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 2: '$13.5M Combined Portfolio MRR' is unexplained and not derivable from the dataset (Stripe revenue is $13.5M but that is 30-day revenue, not MRR, and it is provider revenue not 'portfolio MRR'). Slide 3: Bar chart shows SaaS and Marketing as nearly equal in company count; actual counts are SaaS 66 vs Marketing 42—Marketing should be visibly much shorter. The 42% claim for AI+SaaS+Marketing of classified companies: (197+66+42)/726 = 42.0%, which is correct, but the chart visual misrepresents relative sizes. Slide 5: Stan '$3.6M monthly-recurring pace' stated alongside '$2.8M trailing 30-day revenue'—these two figures are inconsistent and the $3.6M MRR claim is unsubstantiated from the dataset.",
+  "evidence": {
+    "insight": "Slides 4 and 7 attempt a portfolio segmentation framework (Graduate/Core Engine/Stealth Alpha) but the tiers are asserted rather than derived from systematic criteria. No analysis of distributions, medians, concentration, or provider patterns. The anonymous-company revenue premium (26.5% of revenue from 12.9% of companies) is noted obliquely via 'stealth premium' but never quantified properly.",
+    "narrative": "There is a coherent arc: overview → segmentation → case studies → stealth thesis → flywheel → CTA. However, it reads as an investor pitch rather than a data story. The 'Value Engine' on slide 9 is pure process diagram with no data support. Slide 10 is a generic CTA with no analytical landing.",
+    "framing": "Framed as 'INVESTOR BRIEFING | JULY 2026' for a fictional fund 'TrustMRR.' No mention of dataset limitations, missingness (274 missing categories, 241 missing countries, 288 missing audience_type), or the 216 zero-revenue companies. 'DATASET: LIVE AND VERIFIED' badge is misleading given these gaps. No definitions of MRR vs 30-day revenue are provided despite using both interchangeably.",
+    "accuracy": "Slide 2 conflates Stripe provider revenue with 'Portfolio MRR.' Slide 5 gives two inconsistent Stan figures ($3.6M MRR vs $2.8M 30-day). Slide 3 bar chart misrepresents relative category sizes. Slide 6 company-level figures are plausible but unverifiable. Slide 7 claims Stealth Company 17 grew 12,983% MoM—extraordinary claim with no sourcing or caveats about base effects.",
+    "visual": "Clean, consistent monochrome + blue palette. Good use of large type for key metrics. Slide 7 scatter plot is effective conceptually but lacks axis scales. Slide 8 radar diagram is creative but decorative. Bar chart on slide 3 lacks value labels and misrepresents proportions. Overall restrained and legible but repetitive card-based layouts.",
+    "ai_slop": "Heavy consulting/VC language throughout: 'The New Asset Class,' 'Continuous Proprietary Deal Flow,' 'Invest in the Infrastructure of the Future,' 'category-defining scale,' 'hyper-growth anomalies.' Slide 9 flywheel diagram is a generic strategy consulting template. 'DATASET: LIVE AND VERIFIED' badge appears on multiple slides as false authority signal. NotebookLM watermark on every slide."
+  },
+  "confidence": "high",
+  "total": 37,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 17294,
+    "output_tokens": 1086
+  }
+}

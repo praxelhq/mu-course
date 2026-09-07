@@ -1,0 +1,45 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 0.5,
+    "narrative": 1,
+    "framing": 0.5,
+    "accuracy": 0.5,
+    "visual": 0.5,
+    "bonus": 0
+  },
+  "what_worked": "Consistent visual template and branding; slide titles hint at a logical progression of ideas.",
+  "fix_next": "Replace every placeholder image with actual data charts and ground every claim in visible, cited numbers from the dataset.",
+  "verdict": "Unfinished SaaS pitch deck with zero rendered charts or data evidence.",
+  "flags": [
+    "no-charts-rendered",
+    "placeholder-images-throughout",
+    "product-pitch-not-data-story",
+    "ai-slop-template",
+    "no-data-shown",
+    "duplicate-slides-7-8",
+    "no-dataset-framing",
+    "no-limitations-stated",
+    "no-numbers-visible"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 3: Claims 'B2B audiences generate significantly higher and more stable recurring revenue' with no visible supporting data or chart. Slide 4: States 'AI is the absolute strongest revenue driver in the portfolio' — AI has the highest total revenue ($2.36M) but the lowest median ($503), making 'absolute strongest' misleading without qualification; no chart is shown to support the claim.",
+  "evidence": {
+    "insight": "Zero quantitative findings are actually displayed. Slides 3-5 make broad strategic assertions ('B2B Dominance', 'AI Leads the Market', 'Identifying Churn Risk') but every chart area is a grey 600×400 placeholder with no data, numbers, or analysis visible anywhere in the deck.",
+    "narrative": "The arc is a SaaS product pitch (hero → solution → market → engine → bottleneck → CTA) rather than a data-story. There is no analytical thesis, no evidence-driven progression, and no synthesis or landing that ties findings together.",
+    "framing": "No dataset is described anywhere. No mention of sample size (1,000 rows), missingness, scope, definitions, or limitations. A cold reader has no idea what data underlies any claim or who the intended analytical audience is.",
+    "accuracy": "No chart or number is rendered, so no claim can be verified visually. The two textual claims on slides 3 and 4 are unsupported and the slide 4 claim ('absolute strongest revenue driver') is misleading given AI's low median revenue. No denominators, no sample sizes, no caveats.",
+    "visual": "Every data slide (3, 4, 5) shows only a grey '600 × 400' placeholder rectangle where a chart should be. Slides 7 and 8 are exact duplicates (Image Sources). The overall template is a SaaS landing page mockup, not a data presentation. No chart choice, annotation, or data-ink exists.",
+    "ai_slop": "The entire deck is an AI-generated SaaS marketing template with placeholder images never replaced. Consulting buzzwords ('maximizing ARPU', 'zero-growth line', 'active routing engine') fill slides with no substantive content. Slides 7-8 are duplicated boilerplate image-source pages."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered scores from preliminary assessment. The deck is fundamentally broken: not a single chart is rendered, no data is visible, it reads as an unfinished AI-generated product pitch template rather than a data story. Scores near 1 were still generous for work that shows zero analytical content; moved most dimensions to 0.5 to reflect near-total absence.",
+  "total": 6,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 14024,
+    "output_tokens": 880
+  }
+}

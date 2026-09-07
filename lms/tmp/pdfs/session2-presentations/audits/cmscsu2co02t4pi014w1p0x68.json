@@ -1,0 +1,46 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 4.5,
+    "narrative": 5.5,
+    "framing": 3,
+    "accuracy": 1.5,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Contrarian thesis (unit economics over hype) is a genuinely interesting angle with purposeful narrative arc.",
+  "fix_next": "Ground every claim in the actual 1,000-row dataset; disclose sample selection, missingness, and composite-score methodology transparently.",
+  "verdict": "Polished consulting theater built on fabricated numbers; thesis is unearned.",
+  "flags": [
+    "fabricated-numbers",
+    "wrong-category-counts",
+    "median-revenue-off-by-10x-plus",
+    "unexplained-composite-scores",
+    "no-dataset-description",
+    "no-missingness-disclosure",
+    "no-sample-selection-criteria",
+    "consulting-jargon-filler",
+    "notebooklm-watermark",
+    "phantom-categories-games-marketplace"
+  ],
+  "factual_error_count": 14,
+  "factual_error_detail": "S1: AI count 35 vs actual 197; Marketing 15 vs 42; SaaS 12 vs 66; Education 9 vs 30; '16 primary sectors' unverifiable. S2: Dev Tools median $31,125 vs reference $635 (~49x inflated); Education median $30,903 vs $2,435 (~13x); composite scores (67.08, 66.28, 63.84, 62.57, 50.57) have zero disclosed methodology. S3: 'Games' and 'Marketplace' are not recognized categories in the reference data—appear fabricated. S5: Dev Tools $105.67 Rev/Sub and $0.90 Rev/Visitor unverifiable from reference. S6: AI median rev $22,571 vs reference median $503 (~45x inflated); AI count again 35 vs 197. S7: Stan and Supliful figures cannot be verified against reference but MRR > 30-day Rev for Stan ($3.57M vs $2.84M) is suspicious without explanation.",
+  "evidence": {
+    "insight": "The volume≠value thesis and AI-hype-vs-substance framing are conceptually interesting but entirely performative—every supporting number appears fabricated or drawn from an undisclosed sub-sample, so no insight is actually earned from the data.",
+    "narrative": "Clear arc from overview → quality screen → velocity → funnel → efficiency → AI vs SaaS → outliers → recommendations. Sequence is purposeful and builds to actionable conclusion. Undermined fatally by unverifiable data foundation.",
+    "framing": "No dataset description, no mention of 1,000 rows, no disclosure of 274 missing categories or 288 missing audience_type. 'Verified Startup Index' implies curated sub-sample but never explains selection criteria, sample size, or filtering logic. Cold reader has no way to assess scope or limitations.",
+    "accuracy": "Category counts wrong by 5-10x across all four named categories. Median revenues inflated by 10-50x. Games and Marketplace appear as phantom categories not in reference. Composite quality scores presented to two decimal places with zero methodology. Derived metrics (MRR ratios, Rev/Sub, Rev/Visitor) are unverifiable. Systematic pattern of fabrication rather than honest error.",
+    "visual": "Clean, consistent design language with effective color-coding (green/blue/red tiers). Scatter plot on slide 5 is well-constructed. Funnel-vs-cylinder metaphor on slide 4 is creative. Gauge charts are decorative but readable. Dot counts on slides 5-6 don't match stated sample sizes. Overall professional appearance.",
+    "ai_slop": "Heavy consulting-speak: 'Aggregate Alpha,' 'Capital Deployment Playbook,' 'The Substance Play,' 'picks-and-shovels play,' 'Investment Thesis,' 'Alpha Cohort.' Composite scores with false precision (67.08, 66.28) and no methodology are classic AI-generated authoritative filler. NotebookLM watermark on every slide. Language pattern is generic enough to fit any startup dataset."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 5→4.5 because the thesis, while conceptually interesting, is entirely unearned from the data. Lowered framing from 3.5→3 for complete absence of dataset description and sample methodology. Lowered accuracy from 2→1.5 reflecting systematic fabrication across 14+ verifiable errors including phantom categories and 10-50x median inflation. Raised visual slightly from 5→5.5 for genuinely clean design execution despite decorative elements. Narrative unchanged at 5.5.",
+  "total": 40,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 13853,
+    "output_tokens": 1166
+  }
+}

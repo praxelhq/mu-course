@@ -1,0 +1,40 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 5,
+    "narrative": 6.5,
+    "framing": 4.5,
+    "accuracy": 4,
+    "visual": 6,
+    "bonus": 1
+  },
+  "what_worked": "Strong editorial voice with a coherent power-law-to-anonymity narrative arc and good base-rate skepticism on growth percentages.",
+  "fix_next": "The deck uses lifetime revenue throughout but the frozen dataset measures 30-day revenue; this mismatch undermines the core power-law claim and top-10 share figure.",
+  "verdict": "Polished storytelling on a misread dataset; accuracy gaps limit credibility.",
+  "flags": [
+    "wrong-revenue-metric",
+    "dataset-size-inflated",
+    "missing-limitations-slide",
+    "no-missingness-disclosure",
+    "top10-share-unverifiable",
+    "slide7-text-overlap"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1-2: Claims ~1,500 startups; dataset has 1,000 rows. Slide 3: Top-10 combined '$204M+' and the title 'out-earn nearly everyone else combined' appear to use lifetime/all-time revenue, but the frozen dataset's revenue field is 30-day ($15.6M total); the benchmark top-10 share is 49.6% of 30-day revenue, not a majority. Slide 3: The power-law framing ('out-earn everyone else combined') overstates concentration—49.6% is large but not >50%. Slide 7: Text at bottom of slide 7 is garbled/overlapping, making the Paddle/Superwall description unreadable. Slide 2: Lists 9 payment providers; the dataset shows 7 distinct providers in the reference data (Stripe, RevenueCat, Dodo, Polar, Lemon Squeezy, Superwall, Paddle) plus possibly Whop/Creem—count is ambiguous but not clearly wrong, so not counted as error.",
+  "evidence": {
+    "insight": "Slide 4 (Stan slowing) and slide 5 (base-rate caveat on growth %) show genuine analytical thinking. Slide 6 ('AI as default setting') is an interesting qualitative observation. Slide 9 (valuation multiples) adds a useful angle. However, most insights stay at the descriptive level—no median vs. mean analysis, no category comparison, no missingness discussion, no B2B/B2C split.",
+    "narrative": "Clear chapter structure (power law → leader → fast growers → categories → infrastructure → stealth → valuations → takeaways) with a coherent thesis about concentration and asymmetry. The arc holds together well. Loses points because the narrative never addresses limitations or data quality, and the summary slide merely restates prior slides without synthesis.",
+    "framing": "No explicit audience definition. No mention of 274 missing categories, 241 missing countries, or 216 zero-revenue rows. Dataset size is overstated (~1,500 vs. 1,000). No discussion of survivorship bias or selection effects. The 'lifetime revenue' framing throughout suggests the student may have confused the revenue metric entirely.",
+    "accuracy": "Core metric confusion: the dataset's revenue figures are 30-day, not lifetime/all-time. The $204M+ top-10 figure and $76.6M 'all-time revenue' for Stan cannot be verified against the frozen 30-day dataset ($15.6M total). The ~1,500 count is 50% higher than the actual 1,000 rows. The slide 3 title ('out-earn nearly everyone else combined') overstates the 49.6% top-10 share. Individual company figures on slides 4-5 are plausible but unverifiable against the frozen reference.",
+    "visual": "Consistent dark/light theme with teal and gold accent colors. Good typography hierarchy. Bar chart on slide 3 is well-labeled. Slide 9 valuation chart is clear. However, slide 7 has garbled overlapping text at the bottom. No data-dense charts (scatter, distribution, histogram). The pill/tag layout on slide 6 is decorative rather than data-driven. Overall clean but repetitive template feel.",
+    "ai_slop": "Moderate. The chapter naming convention ('The Power Law,' 'Hiding in Plain Sight') and the polished-magazine tone feel AI-generated but are well-executed enough to avoid pure filler. The pill tags on slide 6 are decorative without quantitative backing. The 'THE LESSON' callout box pattern repeats across slides in a templated way."
+  },
+  "confidence": "high",
+  "total": 53,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19452,
+    "output_tokens": 1132
+  }
+}

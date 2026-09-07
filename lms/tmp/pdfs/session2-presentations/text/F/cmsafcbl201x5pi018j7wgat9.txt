@@ -1,0 +1,249 @@
+TRUSTMRR
+
+
+
+
+Where Should the Next Startup
+Actually Get Built?
+A pattern analysis of 1,000 live startups on TrustMRR — revenue, growth,
+and category economics, frozen 30 Jul 2026.
+
+
+       Prakhar · PGP-TBM · Building Marketing Strategies
+ WHY THIS EXERCISE
+
+ Counting startups is easy.
+ Finding where the money actually is — isn't.
+
+
+ 1,000 rows of revenue, growth, and category data can turn into a spreadsheet
+ of trivia, or into a decision. The job here isn't to summarize the dataset —
+                                                                                    1,000
+ it's to find the gap between where founders are building and where the               live startups analyzed
+
+ revenue actually sits, and argue for where the next one should build.
+                                                                                       $13.47M
+                                                                                combined monthly recurring revenue
+
+
+
+
+TrustMRR 1,000-row snapshot · frozen 30 Jul 2026                                                                     2
+ THE LANDSCAPE
+
+
+
+ Everyone is building in the same three rooms
+ Startup count by category — this is a crowding map, not a leaderboard.
+
+
+          Education                            30
+
+  Health & Fitness                                34
+
+ Content Creation                                   36
+
+          Dev Tools                                 37
+
+          Marketing                                      42
+
+        Productivity                                           49
+
+       Mobile Apps                                                 52
+
+                SaaS                                                    66
+
+                    AI                                                                   197
+
+                         0                                    50             100   150   200   250
+
+
+
+TrustMRR 1,000-row snapshot · category field, n=726 tagged records                                   3
+ THE REVEAL
+
+
+
+ Volume and revenue point in opposite directions
+ Median monthly recurring revenue per startup, by category (USD).
+
+ $2,500
+
+                                                                                                           $2,142
+
+ $2,000
+                                                                                                                      197 vs 30
+                                                                                               $1,586
+ $1,500                                                                                                               AI has 197 startups chasing a
+                                                                                   $1,294
+                                                                        $1,254                                        median of $446/mo. Education has
+                                                                                                                      just 30 — and a median of
+ $1,000                                                                                                               $2,141/mo.
+
+
+                                                                                                                      That's 4.8x more revenue per
+   $500        $446
+                                                             $392
+                                                     $303                                                             startup in a category with 6.6x fewer
+                             $223             $185                                                                    players.
+
+      $0
+                AI      Mobile Apps Dev Tools        SaaS   Health &   Content    Analytics   Marketing   Education
+                                                            Fitness    Creation
+
+
+
+TrustMRR 1,000-row snapshot · mrr_usd field                                                                                                                   4
+ THE EFFICIENCY CUT
+
+
+
+ Traffic isn't the bottleneck — conversion is
+ Median revenue earned per site visitor, by category (USD).
+
+
+
+               SaaS                                                                                                                                  $3.57
+
+
+ Content Creation                                                                                       $2.13
+
+
+          Marketing                                                              $1.51
+
+
+           Analytics                                                 $1.00
+
+
+  Health & Fitness                                $0.52
+
+
+                    AI                    $0.36
+
+
+          Dev Tools               $0.19
+
+                      $0.00                $0.50                 $1.00       $1.50             $2.00              $2.50              $3.00   $3.50           $4.00
+
+
+ SaaS converts visitors into revenue at ~10x the rate of AI ($3.57 vs $0.36 per visitor) — fewer eyeballs needed to build a real business.
+TrustMRR 1,000-row snapshot · revenue_per_visitor_usd, categories with n≥8                                                                                           5
+ THE AUDIENCE CUT
+
+
+
+ B2B out-earns B2C on every measure that matters
+
+
+                          B2B                           B2C                Both
+                       255 startups                  401 startups         56 startups
+
+
+
+
+                  $1,036                            $181                $352
+                        median MRR                   median MRR          median MRR
+
+
+
+
+                        $0.90                         $0.26               $0.04
+                      revenue / visitor             revenue / visitor   revenue / visitor
+
+
+
+
+TrustMRR 1,000-row snapshot · audience_type field                                           6
+ THE HIDDEN LAYER
+
+
+
+ A quarter of this dataset isn't building — it's exiting
+
+
+
+ 262 of 1,000 startups (26.2%) are listed for sale on TrustMRR, at revenue
+ multiples typically between 2x–10x MRR. This dataset isn't only a map of
+                                                                               26.2%
+ where startups are built — it's also a live secondary market for buying     of all startups are listed for sale
+ cash-flowing products instead of building from zero.
+
+
+                                                                                    2x–10x
+                                                                             typical asking multiple on MRR
+
+
+
+
+TrustMRR 1,000-row snapshot · on_sale, revenue_multiple fields                                                     7
+ BEING UPFRONT
+
+
+
+ Where this analysis is weaker than it looks
+
+              27.4% of records have no category tag
+   !
+
+              Category-level conclusions are built on the 726 tagged records, not the full 1,000 — the untagged group could shift the picture.
+
+
+
+              "Stealth Company" entries recur across the dataset
+   !
+
+              Several of the highest-growth and highest-revenue rows are anonymized founders, so those specific outliers can't be traced or verified.
+
+
+
+              Growth-rate outliers are extreme (up to 12,983%)
+   !
+
+              Median, not mean, is used throughout — a handful of viral 30-day spikes would otherwise distort every category comparison.
+
+
+
+
+TrustMRR 1,000-row snapshot · data quality notes                                                                                                        8
+ THE RECOMMENDATION
+
+
+
+ Where the next startup should actually build
+
+
+
+      01                                             02                                         03
+                                                     Target under-crowded, high-                Treat AI as a distribution
+      Build B2B, not B2C
+                                                     value niches                               play, not a moat
+
+
+
+                                                     Education and Analytics carry AI-beating
+      5.7x higher median MRR, 3.5x higher                                                       197 competitors and a $446 median MRR
+                                                     median revenue with a fraction of the
+      revenue per visitor. The audience gap is the                                              means the category rewards go-to-market
+                                                     competitors — Marketing and Content
+      single strongest signal in the dataset.                                                   execution, not the model itself.
+                                                     Creation follow closely.
+
+
+
+
+TrustMRR 1,000-row snapshot · synthesis                                                                                                   9
+THE THESIS
+
+
+
+
+AI is where founders are building.
+B2B, Education, and SaaS are where the money is.
+
+The gap between the two is the opportunity.
+
+
+
+
+      Source: TrustMRR, 1,000-row snapshot, frozen 30 Jul 2026
+

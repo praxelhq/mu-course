@@ -1,0 +1,41 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 4.5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis of crowded-vs-profitable mismatch, carried consistently through categories, geography, and audience type to actionable recommendations.",
+  "fix_next": "Median MRR figures on slide 3 are substantially wrong for most categories; verify all computed medians against the actual dataset before presenting.",
+  "verdict": "Compelling narrative undermined by multiple incorrect median figures and missing-data blind spots.",
+  "flags": [
+    "median-values-wrong",
+    "missing-data-not-quantified",
+    "education-median-wrong",
+    "marketing-median-wrong",
+    "content-creation-median-wrong",
+    "ai-median-wrong",
+    "b2b-b2c-counts-unverifiable"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 3: AI median shown $446 (ref $503); SaaS median $303 (ref $200.50); Marketing median $1,586 (ref $2,369.50); Content Creation median $1,254 (ref $1,237.50); Dev Tools median $185 (ref $635); Health & Fitness median $392 (ref $662.50); Productivity median $42 (ref $79.91). Education median stated as $2,142 in text (ref $2,435). Slide 2: average MRR $13,472 implies mean ~$13,472 but total revenue $15.6M/1000=$15,596 so this is off. Slide 6: B2B median $1,036 and B2C median $181 do not match reference multiples well (ref median ratio ~2.35x for B2B, shown as ~5.7x). Slide 3 omits Education, Analytics, Social Media, E-comm from charts without noting 274 missing category rows.",
+  "evidence": {
+    "insight": "Slide 3 crowded-vs-profitable framing is genuinely useful; slide 4 momentum-vs-monetization cross-cut adds a second dimension; slide 8 acquisition screening with payback period is original and decision-relevant.",
+    "narrative": "Clear arc: summary → category mismatch → momentum → geography → audience → authority signal → acquisition screen → recommendations. Each slide builds toward the acquisition-intelligence thesis stated on slide 1.",
+    "framing": "Slide 1 sets scope (1,000 listings, acquisition intelligence). Slide 2 notes median-vs-mean skew and promises sample-size reporting. However, 241 missing country and 274 missing category values are never quantified, weakening geographic and category claims.",
+    "accuracy": "Slide 3 median MRR values diverge materially from reference for 7 of 8 shown categories (e.g., Marketing $1,586 vs ref $2,369.50; Dev Tools $185 vs ref $635). Slide 6 B2B/B2C median ratio (~5.7x) conflicts with reference (~2.35x). Education median cited as $2,142 vs ref $2,435. Average MRR $13,472 doesn't reconcile with total/1000.",
+    "visual": "Consistent navy/orange palette, clear chart labels, good use of paired bar charts on slide 3, clean card layout on slides 6 and 8. Slide 2 has rendering overlap artifacts. Some charts could use n-labels directly on bars.",
+    "ai_slop": "Minimal slop. Language is specific and data-tied throughout. No decorative filler graphics. Slide 2 rendering duplication looks like a tool artifact rather than content padding."
+  },
+  "confidence": "high",
+  "total": 69,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15802,
+    "output_tokens": 930
+  }
+}

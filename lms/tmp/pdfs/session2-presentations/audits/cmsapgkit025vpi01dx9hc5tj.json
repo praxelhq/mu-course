@@ -1,0 +1,46 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 1.5,
+    "narrative": 3,
+    "framing": 2,
+    "accuracy": 1,
+    "visual": 2.5,
+    "bonus": 0
+  },
+  "what_worked": "Recognizable executive-briefing arc from overview through recommendations gives structural coherence despite fabricated content.",
+  "fix_next": "Rebuild every claim from the actual 1,000-row dataset; the current deck's categories, totals, correlations, and counts are all invented.",
+  "verdict": "Nearly every quantitative claim is fabricated; polished template cannot rescue absent data fidelity.",
+  "flags": [
+    "fabricated-data",
+    "wrong-row-count",
+    "wrong-total-revenue",
+    "wrong-categories",
+    "wrong-correlation",
+    "decorative-stock-imagery",
+    "ai-generated-art",
+    "ai-slop",
+    "no-source-citations",
+    "no-missingness-disclosure"
+  ],
+  "factual_error_count": 15,
+  "factual_error_detail": "S2: 1,047 startups (actual 1,000); $8.2B total MRR (actual ~$15.6M total revenue); 312 funded companies unverifiable. S3: category taxonomy entirely wrong—SaaS/Fintech/HealthTech/CleanTech/EdTech do not exist in dataset (actual: AI, Marketing, E-comm, SaaS, Education, etc.); 27%/19%/14% shares fabricated. S4: business model splits (38% subscription, 22% marketplace, etc.) not from dataset. S6: $18.4M avg valuation, $6.2M median, 8.3x/11x/6x ARR multiples all fabricated; stock-ticker screenshot (AlphaTech Global) is unrelated. S7: geographic splits (47% NA, 29% Europe, 18% APAC) and avg MRR figures fabricated; actual data has 241 missing country values. S8: r=0.71 age-MRR correlation fabricated (actual founded-year/revenue r≈0.025); scatter plot shows ~15 points for 1,000 rows. S10: 'top 13% drive 62% of MRR' unverifiable and inconsistent with actual top-10 share of 49.6%.",
+  "evidence": {
+    "insight": "Zero genuine findings from the actual dataset; every analytical claim (categories, correlations, multiples, geographic splits) is hallucinated, rendering all 'insights' fictional.",
+    "narrative": "Template follows a logical arc (overview→categories→models→revenue→geography→correlations→recommendations→thesis) but the story is built entirely on invented numbers, so the synthesis is hollow.",
+    "framing": "Audience stated (investors/founders) but scope is wrong (1,047 vs 1,000), '94% completeness' claim is unsubstantiated, actual missingness patterns (241 country, 288 audience_type, etc.) never disclosed, no limitations section.",
+    "accuracy": "At minimum 15 material errors: wrong n, wrong total revenue by 500x, entirely wrong category taxonomy, fabricated correlation inflated from 0.025 to 0.71, invented valuation multiples, invented geographic percentages, invented business-model distribution. Essentially nothing is verifiable against the frozen reference.",
+    "visual": "Consistent dark Gamma template with readable typography. However: S6 uses an irrelevant stock-ticker screenshot (AlphaTech Global NYSE); S9 uses AI-generated boardroom illustration; S8 scatter has ~15 points representing 1,000 rows; S5 chart lacks annotation. Decorative imagery dominates over data-driven visuals.",
+    "ai_slop": "Pervasive. Entire category taxonomy hallucinated. Consulting jargon ('asymmetric upside', 'barbell strategy', 'capital deployment', 'highest-conviction category') used without data support. Gamma watermark on every slide. Stock and AI-generated imagery on slides 6 and 9. Inflated language throughout."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 2→1.5 (no real finding exists), narrative from 3.5→3 (coherent template but entirely hollow), framing from 2.5→2 (wrong dataset size and no real limitations), visual from 3→2.5 (decorative/irrelevant imagery penalized further). Accuracy unchanged at 1. Total effect is a modest downward correction reflecting that fabrication is even more pervasive than preliminary suggested.",
+  "total": 20,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 18839,
+    "output_tokens": 1116
+  }
+}

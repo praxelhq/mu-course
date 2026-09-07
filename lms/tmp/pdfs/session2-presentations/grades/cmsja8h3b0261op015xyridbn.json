@@ -1,0 +1,38 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 6.5,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Single governing thesis sustained across every slide with disciplined narrative arc and honest caveats.",
+  "fix_next": "The deck uses 894 startups (excluding 274 missing-category rows from 1,000) but never discloses this filter or the full dataset size.",
+  "verdict": "Tight thesis, strong narrative, but denominator and revenue figures need correction.",
+  "flags": [
+    "wrong-denominator",
+    "revenue-total-mismatch",
+    "category-count-discrepancy",
+    "missing-data-undisclosed"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1/2/3: Claims 894 startups — dataset has 1,000 rows with 726 having category data (274 missing), not 894. The 894 figure is unexplained and wrong under any obvious filter. Slide 2: Says 19% of all startups are AI — reference shows 197 AI companies out of 726 categorized (27.1%) or 197/1000 (19.7%); 173/894 = 19.4%, none exactly 19%. Slide 3: Shows AI count as 173, but reference says 197 AI companies. Slide 5: States AI category revenue is $1.75M; reference shows $2,356,676 (~$2.36M). Slide 5: Says '5 of 173 companies' hold 58% — but AI has 197 companies per reference. Slide 8: Median AI company earns $614/mo — reference median is $503; $614 is unverified.",
+  "evidence": {
+    "insight": "The 'winner-take-most' concentration analysis (slide 5) and the $10K+ hit-rate comparison (slide 4) go beyond chart description to build an investment-relevant argument. The rebuttal-anticipation on slide 7 adds analytical depth.",
+    "narrative": "Clear thesis on slide 2, each subsequent slide builds one supporting pillar (crowding → hit rate → concentration → growth → implication). Slide 8 lands with dual audience recommendations. Excellent sequencing.",
+    "framing": "Investment angle and audience are stated. However, the deck never discloses the full dataset is 1,000 rows with significant missingness (274 category, 241 country, etc.). The 894 denominator is unexplained. Limitations footnotes exist but are incomplete.",
+    "accuracy": "Multiple material errors: AI company count (173 vs. 197), AI total revenue ($1.75M vs. $2.36M), median ($614 vs. $503), and the 894 denominator. The 721 non-AI pooled figure depends on the wrong base. The concentration claim (58% by top 5) cannot be verified against correct totals.",
+    "visual": "Consistent dark theme with gold accent for AI highlight. Bar charts are clean and legible. Donut chart on slide 5 is effective. Category labels replaced with numbers (1-10) on bar charts, which hurts readability — reader cannot identify which categories correspond to which bars.",
+    "ai_slop": "none — the deck is restrained, specific, and avoids filler language"
+  },
+  "confidence": "high",
+  "total": 69,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15385,
+    "output_tokens": 843
+  }
+}

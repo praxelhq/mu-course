@@ -1,0 +1,44 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 0.5,
+    "narrative": 1,
+    "framing": 0.5,
+    "accuracy": 0.5,
+    "visual": 2,
+    "bonus": 0
+  },
+  "what_worked": "Clean, consistent visual template with readable typography and restrained color palette.",
+  "fix_next": "Discard the generic template and build every slide from the actual 1,000-row dataset's fields and figures.",
+  "verdict": "Entirely fabricated corporate template with zero connection to the assigned dataset.",
+  "flags": [
+    "fabricated-data",
+    "no-dataset-connection",
+    "ai-slop",
+    "consulting-filler",
+    "decorative-charts",
+    "wrong-total-revenue",
+    "unrelated-screenshot",
+    "generic-template"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 3: $14.2M total revenue (actual $15.6M); +34% YoY growth, 92% retention, 4.8x LTV/CAC all fabricated. Slide 4: Enterprise SaaS/Mid-Market/SMB/Consumer segments don't exist in dataset. Slide 5: 45/30/15/10% geographic split fabricated (dataset has country field with 241 missing). Slide 6: quarterly trend Q1 2025–Q1 2026 fabricated. Slide 7: $12.5M target, $385 CAC, 168K MAU, NPS 68 all fabricated. Slide 11: cropped construction dashboard screenshot from rib-software.com is unrelated.",
+  "evidence": {
+    "insight": "Zero analytical findings reference any actual dataset dimension (category, provider, TLD, audience_type, anonymous status, on-sale multiples). All claims are generic consulting boilerplate.",
+    "narrative": "Follows a cookie-cutter corporate report arc (overview → KPIs → segments → geography → trends → roadmap → Q&A) with no thesis, no analytical question, and no synthesis tied to the data.",
+    "framing": "No mention of the 1,000-company dataset, payment providers, 30-day revenue window, missingness rates, or any scope/limitation. Audience labeled 'Executive Analytics Division' with no context.",
+    "accuracy": "Every quantitative claim is invented: total revenue wrong, segments nonexistent, geographic percentages fabricated, quarterly time series fabricated, CAC/NPS/MAU figures have no dataset basis. Zero verifiable correct figures.",
+    "visual": "Template is polished with consistent styling, but all charts are decorative fabrications. Slide 11 pastes a cropped, unrelated construction-software dashboard screenshot from rib-software.com.",
+    "ai_slop": "Pervasive: 'robust momentum across all core verticals,' 'disciplined acquisition costs,' 'enhanced lifetime value,' 'executive agility in decision-making and resource deployment,' 'high-potential APAC regions.' Every text block is interchangeable filler."
+  },
+  "confidence": "high",
+  "changed": false,
+  "change_reason": "no-change",
+  "total": 9,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 21937,
+    "output_tokens": 760
+  }
+}

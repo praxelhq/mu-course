@@ -1,0 +1,338 @@
+   MICROECONOMICS · APPLIED DATA READ
+
+
+
+   TrustMRR Market Read
+   A structural analysis of 1,000 self-reported micro-SaaS businesses
+
+
+
+   Prepared as an applied economics exercise · Dataset frozen 30 Jul 2026 · 1,000 records / 29 fields
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                         1
+      Executive Summary
+      What the data actually shows, in five findings
+
+
+
+                  Revenue is a power-law market, not a bell curve.
+       1          Median MRR is $282 vs a mean of $13,472 — a 48x gap. One listing (Stan, $3.6M MRR) alone exceeds the combined MRR of roughly the bottom          48x
+                  950 startups.
+
+
+                  Category hype and category economics have diverged.
+       2          AI absorbs ~1 in 5 startups by volume but ranks 6th of 13 categories on average revenue per business. E-comm, Analytics & Education monetize   #6 of 13
+                  2x+ better.
+
+
+                  Business model beats product category.
+       3          B2B businesses are outnumbered nearly 2:1 by B2C, yet earn 5.7x the median MRR — pricing power matters more than which vertical a founder       5.7x
+                  chose.
+
+
+                  "Growth" is not the default state of these businesses.
+       4          Only ~34% of listings grew revenue in the trailing 30 days; almost identical shares shrank or sat flat. Most micro-SaaS plateaus rather than    34%
+                  compounds.
+
+
+                  A real secondary market exists, priced well below traditional SaaS.
+       5          26% of listings are for sale at a median 2.3x revenue multiple — a fraction of the 5–10x+ typical in institutional SaaS M&A.                    2.3x
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                                             2
+      The Dataset, at a Glance
+      A directory of self-reported revenue from small, mostly solo-founder software businesses
+
+
+
+
+      1                                            2                                           3                                            4
+
+     1,000                                        29                                           $13.5M                                      26%
+     startups tracked with revenue,               columns — revenue                            combined monthly recurring revenue          of listed startups are currently for
+     growth, pricing & category fields            (30d/3m/12m/lifetime), MRR, growth           across all 1,000 listings                   sale on the marketplace
+                                                  %, pricing, audience, sale status
+
+
+
+
+        How to read this analysis
+        – This is a directory of mostly self-listed "indie hacker" micro-SaaS products — not a random sample of all startups, so it over-represents solo/small teams
+          that publish revenue publicly.
+
+        – Revenue figures are self-reported by founders via connected payment APIs — treat this as directional market structure, not audited financials.
+        – The goal: understand how revenue is actually distributed, which categories monetize best, and what "for sale" pricing implies about typical multiples.
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                                                   3
+        Most "Startups" Here Aren't Businesses Yet
+        Monthly recurring revenue is a brutal long-tail distribution
+
+
+
+                                Startups by Monthly Recurring Revenue (MRR) bracket
+ 220
+                                                                                                A
+                197                  198           197
+                                                                                                $282 median MRR
+ 170                                                                                            half the dataset earns less than this per month
+                                                                 156
+
+                                                                                128     124
+ 120
+                                                                                                B
+
+
+   70
+                                                                                                48x gap
+                                                                                                mean MRR ($13.5K) vs median ($282) — breakout winners
+                                                                                                pull the average way up
+
+   20
+
+                                                                                                C
+
+  -30
+                 $0                $1–100         $100–1k      $1k–5k         $5k–20k   $20k+
+                                                                                                19.7% at $0
+                                                                                                of all 1,000 listings earn literally no MRR today
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                         4
+      AI Is Where Everyone's Building
+      Startup count by category — AI is nearly 3x the next-largest category
+
+
+
+
+ Health & Fitness                                 34
+
+
+ Content Creation                                 36                                            1 in 5
+          Dev Tools                                37
+                                                                                                of all 1,000 startups in the dataset are
+                                                                                                building in AI — nearly 3x the next-
+          Marketing                                    42                                       largest category (SaaS, 66).
+
+
+        Productivity                                        49
+
+
+       Mobile Apps                                           52
+
+
+                SaaS                                              66
+
+
+                     AI                                                             197
+
+       -30                          20                            70   120    170         220
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                            5
+      Volume ≠ Monetization
+      Average MRR per startup, by category (15+ listings) — AI is crowded but middling
+
+
+
+
+        Productivity                 $1,501
+
+          Dev Tools                               $3,378
+
+       Mobile Apps                                   $3,898
+
+             Fintech                                       $4,620
+
+  Health & Fitness                                            $5,030
+
+ Content Creation                                                $5,569
+
+               SaaS                                                       $8,920
+
+                    AI                                                     $9,167
+
+          Marketing                                                                  $10,583
+
+      Social Media                                                                                       $16,911
+
+          Education                                                                                         $17,458
+
+           Analytics                                                                                                  $18,831
+
+            E-comm                                                                                                                $20,829
+
+                         $0                            $5,000              $10,000             $15,000                  $20,000             $25,000
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                       6
+      B2B Charges More — By a Wide Margin
+      Median & mean MRR by audience type
+
+
+
+                                                  MRR (USD) by audience type
+ $14,000
+                                                                                               A
+                                  $13,150
+
+ $12,000                                                                                       255 vs 401
+                                                                                               B2B startups (255) are outnumbered nearly 2:1 by B2C
+ $10,000                                                                                       startups (401)
+
+
+   $8,000
+
+                                                                                      $6,042
+   $6,000
+                                                                    $5,102                     B
+
+   $4,000
+                                                                                               5.7x
+   $2,000                                                                                      higher median MRR for B2B ($1,036) vs B2C ($181) — fewer
+                       $1,036                                                                  players, better pricing power
+                                                            $181               $352
+       $0
+                              B2B                                 B2C             Both
+                                                     Median MRR    Mean MRR
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                           7
+      Stripe Runs the Rails; the US Leads the Map
+      Payment provider choice and geographic concentration
+
+
+
+ Payment provider (single-provider listings)                                  Top countries by number of listings
+
+
+                                                                             Hong Kong                19
+
+
+                                                                                    Brazil            20
+
+
+                                                                               Germany                 24
+                                                             Stripe
+                                                             RevenueCat
+                                                                                 Canada                    29
+                                                             Dodo Payments
+                                                             Polar                     UK                            50
+                                                             Lemon Squeezy
+                                                             Superwall               India                            59
+
+
+                                                                                  France                                   79
+
+
+                                                                                       US                                                                                        258
+
+                                                                                             0                  50          100            150             200            250               300
+
+                                                                             Note: country is unlisted for 24% of startups (often "stealth" listings) — so the US share is a floor, not a
+                                                                             ceiling.
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                                                              8
+      "Growth Startup" Is Mostly Aspirational
+      30-day revenue growth is split almost evenly three ways
+
+
+
+
+                                                                                 A
+
+                                                                                 34.4% growing
+                         305
+                                                                                 grew revenue in the last 30 days
+                                                                           344
+
+
+
+                                                                                 B
+
+                                                                                 33.7% shrinking
+                                                                                 nearly identical size to the "growing" group
+
+
+
+
+                                                  337                            C
+
+                                  Growing          Shrinking   Flat (0%)         30.5% flat
+                                                                                 sat completely flat at 0% growth
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                 9
+      1 in 4 Are for Sale — Priced All Over the Map
+      Asking price & revenue multiples among the 262 startups listed for sale
+
+
+
+                                                                 Highest asking prices in the dataset
+      A
+                                                                 Startup                                                       Category                          Asking Price                       Multiple
+     26.2%
+                                                                 1Lookup                                                         SaaS                            $10,000,000                           2.1x
+     of all 1,000 startups (262) are currently listed for sale
+
+                                                                 Project A                                                 Entertainment                          $5,000,000                           4.9x
+
+                                                                 POST BRIDGE                                                       —                              $4,206,969                           8.2x
+      B
+                                                                 Stealth Company                                          Health & Fitness                        $3,800,000                           9.6x
+     2.3x median
+     revenue multiple asked — typical for tiny, unaudited        Launch Club                                                  Marketing                           $3,000,000                           4.6x
+     micro-SaaS deals
+                                                                 Based Labs AI                                                     AI                             $2,180,000                           0.0x
+
+
+      C
+                                                                 Note: high multiples on near-zero revenue (e.g. 0.0x, or triple-digit multiples elsewhere in the data) reflect micro-revenue bases, not real
+     $35K median                                                 valuation logic.
+
+
+     asking price (mean is $332K, skewed by a few multi-
+     million listings)
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                                                                                 10
+      So What?
+      Five takeaways for reading any "indie startup revenue" dataset
+
+
+
+
+      1        The market is a lottery, not a ladder.                                         2   Crowding ≠ opportunity.
+               48x gap between mean and median MRR means a handful of winners define              AI has 3x the startups of the next category, but E-comm, Analytics, and
+               the "average" — most listings are pre-revenue or hobby-scale.                      Education monetize better per startup on average.
+
+
+
+
+      3        B2B still commands a premium.                                                  4   "Growth" is a coin flip.
+               Fewer B2B products exist here, but they earn 5–6x more per business than B2C       Roughly equal shares are growing, shrinking, or flat — sustained month-over-
+               — pricing power beats volume.                                                      month growth is the exception, not the rule.
+
+
+
+
+      5        Self-reported data needs a grain of salt.
+               Revenue, country, and category fields are missing for a meaningful share of
+               listings — treat conclusions as directional.
+
+
+
+
+TrustMRR 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                                                  11
+

@@ -1,0 +1,38 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 5.5,
+    "accuracy": 4.5,
+    "visual": 8,
+    "bonus": 2
+  },
+  "what_worked": "A single provocative thesis carried through six slides with exceptional editorial restraint and visual clarity.",
+  "fix_next": "The core claim (2.4x vs 3.3x multiples) is unverifiable from the frozen dataset and the 262-listing filter is unexplained—show your derivation.",
+  "verdict": "Beautifully told pitch built on an unverifiable analytical claim.",
+  "flags": [
+    "unverifiable-core-claim",
+    "pitch-deck-not-data-story",
+    "denominator-unclear",
+    "missing-methodology"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 1/4: '262 on the market' — dataset has 1,000 rows with no obvious 'listed' flag yielding 262; filter criteria never disclosed. Slide 4: '44 listings earned nothing' — dataset shows 216 zero-revenue rows, not 44; the subset logic is unstated. Slide 3: The 2.4x and 3.3x multiples and the +38% premium cannot be verified against the frozen dataset because no asking-price or MRR field is documented in the reference schema, making the central quantitative claim unauditable.",
+  "evidence": {
+    "insight": "The MRR-vs-trailing-30-day-revenue divergence as a mispricing signal is a genuinely original angle that goes beyond describing charts. The 'decaying businesses command a premium' inversion is thought-provoking and decision-useful if true.",
+    "narrative": "Six slides follow a tight arc: hook (slide 1), problem definition (slide 2), quantified anomaly (slide 3), concrete examples (slide 4), strategic implication (slide 5), call to action (slide 6). The sequence is purposeful with a clear landing.",
+    "framing": "The audience (potential fund investors) is implied but never stated. The dataset scope, filtering criteria ('262 on the market'), and definitions of 'healthy' vs 'decaying' are introduced but not grounded in disclosed methodology. Limitations and missingness are entirely absent. A cold reader cannot assess whether the 262 filter is legitimate.",
+    "accuracy": "The dataset reference contains no asking-price or listed-MRR field, so the 2.4x/3.3x multiples and the 262-listing subset cannot be verified. The 44 zero-revenue listings conflict with the 216 zero-revenue rows in the dataset without explanation. The $4.43M aggregate for zero-revenue listings is unverifiable. No confidence intervals, no acknowledgment of small n=40 for the 'decaying' group.",
+    "visual": "Exceptional restraint: dark palette, serif typography, two-color accent system (teal/gold), generous whitespace. Slide 3's bar chart is simple and effective. Slide 4's card layout communicates concretely. Consistent design language across all six slides. No chart junk.",
+    "ai_slop": "none — the deck is editorially tight with no filler, no generic consulting language, and no decorative-but-meaningless graphics"
+  },
+  "confidence": "medium",
+  "total": 68,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 11620,
+    "output_tokens": 813
+  }
+}

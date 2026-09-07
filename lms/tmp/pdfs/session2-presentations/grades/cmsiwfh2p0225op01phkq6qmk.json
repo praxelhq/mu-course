@@ -1,0 +1,38 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 9,
+    "accuracy": 7,
+    "visual": 8.5,
+    "bonus": 4
+  },
+  "what_worked": "Original thesis—growth is priced at zero—built methodically with Spearman correlations, hypothesis testing, and honest limitations.",
+  "fix_next": "Slide 3's top-10 revenue share (84.7%) and concentration figures don't match the frozen reference (49.6%); verify denominators and percentile cuts.",
+  "verdict": "Exceptional narrative and analytical craft, dinged by several verifiable numerical misses.",
+  "flags": [
+    "concentration-figures-unverified",
+    "top-10-share-mismatch",
+    "revenue-share-slide3",
+    "median-MRR-figures-unverifiable"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 3: Claims top 1% hold 50.6% and top 10% hold 84.7% of 12-month revenue; reference says top-10 revenue share is 49.6%, making the 84.7% figure suspect and the framing misleading. Slide 3: 'Share of all 12-month revenue' header but the reference total is 30-day revenue ($15.6M); conflating 12-month and 30-day denominators is ambiguous. Slide 9: Median MRR figures by category diverge from reference medians (e.g., AI shown $446 vs reference $503; Education $2,142 vs $2,435; Marketing $1,586 vs $2,369.50)—these may reflect seller-only subsets but are presented without that qualifier.",
+  "evidence": {
+    "insight": "Slide 5 reverse-engineers the pricing formula (30-day × 12 matches 87.6%), slide 6 ranks Spearman correlations showing growth is statistically insignificant to price, slide 7 tests and rejects the 'list on a strong month' hypothesis with p-values, slide 8 shows inverse relationship between revenue tier and asking multiple. These go well beyond chart description.",
+    "narrative": "Clear arc: market overview (3) → who's selling (4) → how pricing works (5) → core finding that growth is ignored (6) → counter-hypothesis rejected (7) → multiple compression chart (8) → category exits (9-10) → zero-revenue listings (11) → actionable trade (12) → limitations (13). Single thesis sustained throughout.",
+    "framing": "Slide 1 sets scope (1,000 businesses, 262 for sale, 218 priced). Slide 2 explains data provenance and three trust tiers. Slide 13 devotes an entire page to six specific limitations including survivorship bias, asking vs. closed prices, small samples, and causal discipline. Audience (potential acquirer) is implicit but clear.",
+    "accuracy": "Slide 3 concentration figures (top 1% = 50.6%, top 10% = 84.7%) cannot be reconciled with reference top-10 share of 49.6%. Category median MRRs on slide 9 differ from reference medians without noting they may be seller-only subsets. However, the 216 zero-revenue figure matches, the 1,000 row count is correct, and statistical methods (Spearman, p-values, sample sizes) are transparently reported. The pricing-formula reverse-engineering on slide 5 is a novel and plausible analysis.",
+    "visual": "Consistent warm palette, strong typographic hierarchy with bold serif headlines and clean body text. Bar charts on slides 8-10 are well-annotated with sample sizes and confidence flags. The hatched pattern for n=5 on slide 8 is a nice touch. Slide 6's horizontal bar chart with Spearman coefficients is effective. No chartjunk. Dark/light slide alternation creates rhythm without distraction.",
+    "ai_slop": "none"
+  },
+  "confidence": "high",
+  "total": 88,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 24784,
+    "output_tokens": 986
+  }
+}

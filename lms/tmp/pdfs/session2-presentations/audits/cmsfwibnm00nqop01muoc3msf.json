@@ -1,0 +1,45 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 1,
+    "narrative": 2,
+    "framing": 1,
+    "accuracy": 0.5,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Consistent dark visual theme with clear typographic hierarchy and legible chart formatting throughout.",
+  "fix_next": "Rebuild entirely from the actual 1,000-row dataset; every key metric shown is fabricated or unverifiable from the source data.",
+  "verdict": "Polished marketing template over wholly fabricated data; no connection to the actual dataset.",
+  "flags": [
+    "fabricated-data",
+    "no-dataset-fidelity",
+    "ai-slop",
+    "consulting-language",
+    "unearned-certainty",
+    "no-limitations-stated",
+    "invented-metrics",
+    "inflated-revenue",
+    "decorative-charts"
+  ],
+  "factual_error_count": 16,
+  "factual_error_detail": "Slide 1: '$2.84B Total Sector ARR' — actual total revenue is ~$15.6M; '$6.4M Median ARR' and '$42.5M Top Decile ARR' are fabricated (AI category median is $503). '+312% YoY' is unverifiable. Slide 2: Five invented categories (Vertical AI Agents, Developer Tools & LLMOps, etc.) with fabricated counts and avg ARR figures; actual dataset uses categories like AI, Marketing, SaaS, etc. Slide 3: 'Top 5% Capture 68% of Total ARR' — unverifiable; actual top-10 share is ~49.6%. '38 FTEs Median Team Size' — no team-size column exists. Slide 4: All five B2B vs B2C metrics (Gross Margin, NRR 142%, CAC Payback 9.2/4.5 months, Magic Number, Annual Churn 7.5%/24%) are entirely invented — none of these fields exist in the dataset. Slide 5: All valuation multiples (45x, 32x, 24x, 18x) are fabricated; actual on-sale median multiples are ~2.3x. Slide 6: '$1.14M Revenue/Employee', '0.75x Burn Multiple', '-74% Inference Cost' — no employee count, burn, or cost columns exist. Slide 7: Strategic moats discussion is pure opinion with no data backing. Slide 8: Takeaways summarize fabricated findings.",
+  "evidence": {
+    "insight": "Zero genuine analytical insight derived from the actual dataset; every claim (power-law concentration, B2B advantage, valuation multiples) is either fabricated or generic VC commentary with no grounding in the provided data.",
+    "narrative": "A coherent VC-pitch arc exists (landscape → distribution → monetization → valuation → efficiency → moats → thesis), but it narrates entirely fabricated data, making the sequence serve fiction rather than analysis.",
+    "framing": "Branded as 'Exclusive VC Market Report 2026' for 197 AI-native companies. Never acknowledges the actual 1,000-row dataset, its missingness (~24-29% across key fields), its actual variables (payment processor, TLD, on-sale multiples), or any limitations. No methodology or source attribution.",
+    "accuracy": "Virtually nothing is traceable to the frozen reference. The dataset contains 30-day revenue totaling ~$15.6M; the deck inflates this to '$2.84B ARR'. Metrics like NRR, CAC payback, burn multiple, gross margin, team size, and valuation multiples do not exist in any column. The 197 count matches the AI category row count, but all associated figures are invented. Actual AI category total is ~$2.36M with median $503, not millions.",
+    "visual": "Dark theme is consistent and polished. Typography hierarchy is clear. Histogram (slide 3) and donut chart (slide 2) are legible. However, all charts visualize fabricated data, making them decorative. Template repetition (dark cards, green/yellow accents) is visually monotonous but coherent.",
+    "ai_slop": "Pervasive: 'unprecedented capital efficiency', 'power-law dominant', 'category-defining AI-native pioneers', 'uncopyable domain dataset', 'zero human-in-the-loop dependencies'. CTA button ('Explore 197 AI Companies Database') reads as marketing collateral. Every slide uses inflated consulting language with false precision on invented numbers."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 1.5 to 1.0 and framing from 1.5 to 1.0; the deck fabricates its entire analytical foundation and invents categories, metrics, and magnitudes that bear no relation to the source dataset. The preliminary scores were already low but still slightly generous given the complete disconnection from data.",
+  "total": 16,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 14116,
+    "output_tokens": 1199
+  }
+}

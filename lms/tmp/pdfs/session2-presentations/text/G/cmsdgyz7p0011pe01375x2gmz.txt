@@ -1,0 +1,489 @@
+TRUSTMRR DEAL FLOW
+
+
+
+Investment Screening Analysis
+Screening 1,000 micro-SaaS marketplace listings for acquisition-ready targets
+
+
+
+
+Prepared for the Investment Committee | August 2026
+Source: TrustMRR marketplace export, 1,000 listings
+EXECUTI VE SUMMARY
+
+
+A power-law market: a handful of assets carry the average, and most of
+the rest are mispriced
+
+
+    78                                                     48x                             27%                                38x
+    of 1,000 listings pass a basic                         gap between mean ($13.5k) and   of listings are shrinking month-   typical asking multiple on monthly
+    acquisition-quality screen                             median ($282) monthly MRR       over-month, vs. 19% growing >10%   MRR — with a long overpriced tail
+
+
+
+
+•     AI is the most crowded category (197 listings, 20% of the market) but sits near the bottom on revenue quality — supply is outrunning demand.
+
+•     Subscriber count predicts revenue (r = 0.91); social followers and domain authority do not (r ≈ 0.02–0.21) — diligence should weight the
+      former.
+
+•     Two listings — Notionlytics and DropPop — trade at 1–2x monthly MRR against a 38x market median: the clearest price/fundamentals
+      mismatches in the dataset.
+
+•     18 declining listings are still priced at 40–900x monthly MRR — sellers anchoring on historical peaks, not current trajectory.
+
+
+
+
+TrustMRR Deal Flow | Investment Committee | Confidential                                                                                                           2
+DATASET & APPROACH
+
+
+1,000 listings, 29 fields — treated as a sourcing funnel, not a curated
+pipeline
+
+What the data is                                                                       Known gaps
+
+
+•     A point-in-time export from TrustMRR, a marketplace where founders
+      list revenue-verified micro-SaaS and app businesses for sale.                    •    Traffic data: present for only 18% of listings
+
+•     Financials (MRR, revenue, growth, subscriptions), traffic,                       •    Category: missing for 27% of listings
+      firmographics, and deal terms (asking price, multiple, on-sale flag).            •    Country: missing for 24% of listings
+•     Revenue is pulled from the seller's connected payment processor                  •    13% of listings are anonymized (“Stealth Company”)
+      (mostly Stripe) — self-reported, not audited.
+
+
+
+
+     Screening logic applied throughout this report
+
+
+     1) Exclude $0-revenue listings → 2) Keep only listings marked for sale → 3) Apply MRR ≥ $1,000, asking multiple < 60x monthly MRR, growth ≥ -5%/mo → 4)
+     Rank survivors for diligence priority
+
+
+
+TrustMRR Deal Flow | Investment Committee | Confidential                                                                                                       3
+MARKET L ANDSCAPE
+
+
+The market is a power law: outliers carry the average, most listings are
+tiny
+                                           Listings by monthly MRR band
+
+
+                                    394                                                                                       $282
+                                                                                                                              Median monthly MRR across all listings
+
+
+
+
+           197                                               197          196
+                                                                                                                              $13,472
+                                                                                                                              Mean monthly MRR — skewed by a small number of
+                                                                                                                              outliers
+
+
+
+
+                                                                                                16
+                                                                                                                              $3.57M
+                                                                                                                              Highest single listing (Stan), MRR
+           $0                      Micro                     Small       Mid                   Large
+        (no rev.)                  <$1 k                   $1k–$10k   $10k–$100k              >$1 00k
+
+
+
+Implication: this is search-fund territory, not venture-style upside hunting — 61% of listings are sub-$1k “side projects.”
+TrustMRR Deal Flow | Investment Committee | Confidential                                                                                                                       4
+MARKET L ANDSCAPE
+
+
+
+AI is the most crowded category — and one of the weakest performers
+
+                                                  Median monthly MRR by category ($)
+                                                                                                                  AI CATEGORY
+
+
+
+                                                                                                                  197
+     $5,163
+
+
+                   $4,322
+                                                                                                                  listings — 20% of the entire market
+
+
+
+                                                                                                                  $446
+                                                                                                                  median MRR — bottom third of
+                                  $2,142
+                                                                                                                  categories
+                                                 $1,586
+                                                           $1,294      $1,254
+                                                                                  $1,036                          Read: category popularity and
+                                                                                                                  revenue quality are inversely related
+                                                                                           $446                   here. Founders are launching into AI
+                                                                                                  $303   $223
+                                                                                                                  faster than customers are paying for
+                                                                                                                  it.
+   Customer      Marketplace     Education     Marketing   Analytics   Content    Sales     AI    SaaS   Mobile
+    Support                                                            Creation                           Apps
+
+
+
+
+TrustMRR Deal Flow | Investment Committee | Confidential                                                                                                  5
+MARKET L ANDSCAPE
+
+
+
+A US-led, Stripe-native market — with a meaningful diligence blind spot
+
+                                      Listings by country (top 6)
+
+
+       258
+                                                                                       64%
+                                                                                       of listings run on Stripe — exportable, verifiable transaction history
+
+
+
+
+                                                                                       24%
+                                                                                       of listings have no country tagged at all
+
+
+                          79
+                                            59
+                                                           50
+                                                                     29        24
+                                                                                       13%
+                                                                                       of listings (129) are anonymized “Stealth Company” records — including two
+                                                                                       top-10 earners by MRR — unverifiable pre-NDA
+        US              France             India           UK       Canada   Germany
+
+
+
+
+TrustMRR Deal Flow | Investment Committee | Confidential                                                                                                            6
+PERFORMANCE ANAL YSI S
+
+
+
+More listings are shrinking than scaling fast
+
+                              Trailing 30-day MRR growth (n = 893)
+                                                                                       Read
+
+
+
+
+                                                                                       •   43% of listings show exactly 0% growth — the largest single
+                                                                                           bucket. Most of the market is plateaued, not compounding.
+
+                                                                                       •   27% are actively declining month-over-month; only 20% are
+                                                                                           growing faster than 10%/month.
+
+                                                                                       •   Growth, where real, is concentrated in a minority — it should
+                                                                                           be the highest-weighted screening variable, ahead of absolute
+                                                                                           revenue size.
+
+
+
+                Declining (27%)             Flat, 0 % (43%)      Growing 0–10% (11%)
+                Growing 10–50% (12%)        Growing >50% (8 %)
+
+
+
+
+TrustMRR Deal Flow | Investment Committee | Confidential                                                                                                   7
+PERFORMANCE ANAL YSI S
+
+
+
+Subscriber count predicts revenue — followers and SEO authority don’t
+
+                                             Correlation coefficient (r) with monthly MRR
+                                                                                                            Diligence takeaway
+             0.91
+                                          0.87
+                                                                 0.81
+
+
+
+
+                                                                                                            Weight subscriber counts and
+                                                                                                            payment-processor data heavily.
+                                                                                                            Don’t let a large social following or
+                                                                                                            SEO footprint substitute for
+                                                                                                            verified financials — they barely
+                                                                                       0.21                 correlate with revenue in this
+                                                                                                            dataset.
+
+
+                                                                                                  0.02
+
+           Active                        30-day                 Asking                Domain    X/Twitter
+        subscriptions                   revenue                  price                 rating   followers
+
+
+
+
+TrustMRR Deal Flow | Investment Committee | Confidential                                                                                            8
+SCREENI NG METHODOL OGY
+
+
+
+A four-step filter turns 1,000 listings into 78 real candidates
+
+
+                                                                         Step 4 filter criteria
+  4. Passes quality
+                                78
+        filter
+
+                                                                         •     MRR ≥ $1,000/month
+
+                                                                         •     Asking multiple < 60x monthly
+3. Actually for sale                               261                         MRR (≈ 5x annual)
+
+                                                                         •     Growth ≥ -5%/month (not
+                                                                               sharply declining)
+
+   2. Has revenue
+                                                           803
+      (MRR > 0)
+
+
+
+                                                                         78 candidates warrant a first look; the
+                                                                         top 7 by price/fundamentals mismatch
+      1. All l istings                                           1,000
+                                                                         are detailed next.
+
+
+
+
+TrustMRR Deal Flow | Investment Committee | Confidential                                                           9
+SCREENI NG METHODOL OGY
+
+
+
+Seven names lead the shortlist on price-to-fundamentals mismatch
+
+Startup                                        MRR                 MoM growth                 Multiple                Asking price                    Category
+                                                                                              (x MRR)
+
+Notionlytics                                   $36,457             -2.9%                      1.3x                    $48,000                         Analytics
+
+DropPop                                        $27,797             -0.3%                      2.0x                    $55,000                         SaaS
+
+Reloop                                         $1,119              +24.3%                     4.5x                    $5,000                          Marketing
+
+Linkeddit                                      $1,036              +90.1%                     4.8x                    $5,000                          Sales
+
+Leadbomb                                       $3,633              +38.9%                     6.9x                    $25,000                         SaaS
+
+Speel.co                                       $65,843             0.0%                       7.6x                    $500,000                        SaaS
+
+Kickly – Pronos IA                             $10,236             +384.5%*                   9.8x                    $100,000                        Games
+
+
+
+Notionlytics and DropPop show meaningful revenue at 1–2x monthly MRR — a steep discount to the 38x market median — the clearest first-call priorities. *Kickly’s growth figure is on a small
+base; verify before weighting.
+
+
+TrustMRR Deal Flow | Investment Committee | Confidential                                                                                                                                       10
+DI L I GENCE PRI ORI TY 1
+
+
+
+Notionlytics: $36k MRR priced at a fraction of market multiples
+
+
+    $36,457                                                -2.9%                                1.3x                             $48,000
+    Monthly MRR                                            MoM growth (mild decline)            Asking multiple vs. 38x market   Asking price
+                                                                                                median
+
+
+
+
+Why this deserves a first call
+
+
+•     Analytics is a category with above-median revenue quality (category median MRR $1,294) — this listing is well above that bar.
+
+•     At 1.3x monthly MRR (vs. a 38x market median), the price implies the seller either has an undisclosed problem or is simply mispricing a real asset — both
+      are worth a direct conversation.
+
+•     Revenue decline is mild (-2.9%/month) — not the sharp deterioration seen in the “avoid” list later in this deck.
+
+
+
+Diligence focus: churn drivers behind the mild decline, customer concentration, and reason for sale.
+TrustMRR Deal Flow | Investment Committee | Confidential                                                                                                     11
+DI L I GENCE PRI ORI TY 2
+
+
+
+DropPop: $28k MRR SaaS asset at 2x monthly revenue
+
+
+    $27,797                                                -0.3%                                 2.0x                             $55,000
+    Monthly MRR                                            MoM growth (essentially flat)         Asking multiple vs. 38x market   Asking price
+                                                                                                 median
+
+
+
+
+Why this deserves a first call
+
+
+•     Revenue is essentially flat (-0.3%/month) — a stable, retained-revenue base rather than a business in freefall.
+
+•     SaaS-category listings this size are uncommon; most SaaS listings in the dataset cluster near the $303 category median — DropPop is roughly 90x that.
+
+•     At 2.0x monthly MRR, payback on the asking price would be under 2 months of cash flow if revenue holds — an unusually short payback for a stable
+      asset.
+
+
+
+Diligence focus: verify Stripe-connected revenue directly, check for platform/API dependency risk, confirm reason for sale.
+TrustMRR Deal Flow | Investment Committee | Confidential                                                                                                      12
+SCREENI NG METHODOL OGY
+
+
+
+18 declining assets are still priced as if they were growing
+
+Startup                                       MRR          MoM growth   Multiple (x MRR)   Category
+
+
+Launch Club                                   $29,100      -11.8%       103x               Marketing     18
+                                                                                                         listings declining >10%/mo, priced >40x MRR
+Yakkr Growth                                  $5,452       -11.7%       138x               Content
+                                                                                           Creation
+Fiddl.art                                     $1,691       -18.6%       917x               —             Pattern
+
+                                                                                                         Sellers are pricing off historical peak revenue,
+BambooVPN                                     $11,780      -11.4%       68x                Mobile Apps
+                                                                                                         not current trajectory — a hallmark of a
+                                                                                                         business in decline being marketed as a growth
+Blabla                                        $10,397      -19.6%       48x                AI
+                                                                                                         asset.
+
+MON RDV PREFECTURE                            $636         -15.3%       102x               SaaS
+
+                                                                                                         Recommendation: hard pass at asking price;
+                                                                                                         revisit only if price drops more than 70%.
+
+
+
+
+TrustMRR Deal Flow | Investment Committee | Confidential                                                                                                    13
+RI SK FACTORS
+
+
+
+Five caveats limit how far this snapshot can be trusted
+
+1                                                          Revenue comes from the seller's payment-processor connection — not audited. Verify via direct dashboard access in
+           Self-reported financials
+                                                           diligence.
+
+
+2                                                          Distressed businesses are over-represented among sellers — people sell when things go wrong, so the for-sale pool
+           Survivorship / selection bias
+                                                           skews worse than the platform average.
+
+
+3
+           Anonymized listings                             13% of listings (129) can't be identity-verified pre-NDA — exclude from any ranked shortlist until confirmed.
+
+
+
+4
+           Single-month growth figure                      Only one trailing 30-day growth % per listing — no trendline. Request 6–12 months of history before committing capital.
+
+
+
+5
+           Incomplete metadata                             Category (27%) and country (24%) are frequently missing — segment-level stats are directional, not exhaustive.
+
+
+
+
+TrustMRR Deal Flow | Investment Committee | Confidential                                                                                                                         14
+I NVESTMENT THESI S
+
+
+
+This is a micro-PE roll-up opportunity, not a venture-style bet
+
+
+     NOT THIS: venture-style growth hunting                                  THIS: disciplined cash-flow acquisition
+
+
+
+
+                                                                             •   Acquiring small, profitable, already-operating businesses at a
+                                                                                 discount to fundamentals
+     •     Betting on a handful of outliers reaching massive scale
+                                                                             •   Screening on verified subscriber counts and processor data, not
+     •     Underwriting pre-revenue potential over verified cash flow
+                                                                                 vanity metrics
+     •     Chasing category hype (e.g. AI) for narrative, not fundamentals
+                                                                             •   Prioritizing categories with proven revenue density (Customer
+                                                                                 Support, Marketplace, Education) over hyped, crowded ones
+
+
+
+
+TrustMRR Deal Flow | Investment Committee | Confidential                                                                                           15
+RECOMMENDED NEXT STEPS
+
+
+
+Screen monthly, diligence the mismatches, verify before wiring capital
+
+
+    1                                                                             2
+    Run the screen monthly                                                        Prioritize price/fundamentals mismatches
+
+    Re-apply the 4-step filter (MRR ≥ $1k, multiple < 60x, growth ≥ -5%) as new   Lead with Notionlytics and DropPop — the two listings most decoupled from
+    listings appear on TrustMRR.                                                  the 38x market pricing norm.
+
+
+
+
+    3                                                                             4
+    Avoid AI as a blanket allocation                                              Require verified history pre-close
+
+    Select only AI-category names whose subscriber counts and growth genuinely    6–12 months of processor-verified revenue and direct dashboard access
+    back up the asking multiple.                                                  before any capital is committed.
+
+
+
+
+TrustMRR Deal Flow | Investment Committee | Confidential                                                                                                      16
+Bottom line
+
+
+TrustMRR is a viable sourcing funnel — but only with a strict,
+fundamentals-first screen. Buying at asking price without adjusting for
+growth and revenue quality would be value-destructive in most cases.
+
+
+
+
+Questions & discussion
+
+
+TrustMRR Deal Flow | Investment Committee | Confidential                  17
+

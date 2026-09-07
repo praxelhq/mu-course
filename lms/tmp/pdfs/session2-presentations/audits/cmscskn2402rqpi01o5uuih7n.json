@@ -1,0 +1,44 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 6.5,
+    "accuracy": 4,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Power-law framing with hype-vs-value contrast is genuinely original and decision-useful for the dataset.",
+  "fix_next": "Verify every headline number against the actual dataset; total revenue, medians, and zero-revenue count are all materially wrong.",
+  "verdict": "Strong storytelling undermined by systematic numerical errors across nearly every slide.",
+  "flags": [
+    "total-revenue-wrong",
+    "top10-share-inaccurate",
+    "category-medians-off",
+    "zero-revenue-count-wrong",
+    "b2b-multiple-inflated",
+    "unlabeled-sales-category",
+    "causal-language-in-titles",
+    "ai-median-wrong"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 1/2: '$13.5M combined MRR' vs reference $15.6M (~$2.1M error, 13%). Slide 2: top-10 share stated 48% vs reference 49.6% (minor but compounded with wrong denominator). Slide 3: AI median $446 vs reference $503; Education median $2,142 vs reference $2,435; Marketing median $1,586 vs reference $2,369.50; SaaS median $303 vs reference $200.50; Content Creation median $1,254 vs reference $1,237.50 (close); 'Sales' category (n=13) not in reference categories. Slide 4: B2B 4.5x multiple vs reference on-sale medians ~2.3x; claims presented as predictive without causal hedging. Slide 5: '197 rows report exactly $0 MRR' vs reference 216. Slide 3: AI mean stated $9,167 — reference total/count gives ~$11,963 ($2,356,676/197).",
+  "evidence": {
+    "insight": "Slide 2 power-law decomposition (top 10 vs next 40 vs rest) is a genuinely useful framing. Slide 3 hype-vs-value contrast between AI count dominance and low median is original. Slide 4 surfaces three non-obvious signals (B2B premium, domain rating, freemium penalty). Slide 6 marketplace flip-rate analysis adds a novel angle.",
+    "narrative": "Clear four-beat arc: concentration → category hype → predictive signals → marketplace dynamics. Title thesis ('power law') threads through consistently. Closing line synthesizes. Sequence is purposeful rather than a data dump.",
+    "framing": "Slide 1 sets scope with count and frozen date. Slide 5 sidebar explicitly flags missingness (241 country, 129 anonymous). However, audience is never stated. Slide 5 title says 'predicts' without causal hedging. Slide 4 title 'What Actually Predicts Value' uses causal language for correlational findings. No overall limitations slide.",
+    "accuracy": "Total revenue understated by ~$2.1M (13.5M vs 15.6M). Multiple category medians deviate materially from reference (Education off by $293, Marketing off by $784, AI off by $57, AI mean off by ~$2,800). B2B multiple overstated ~2x. Zero-revenue count 197 vs 216. 'Sales' category (n=13) has no reference basis. These are systematic, not rounding.",
+    "visual": "Consistent navy/gold palette with clean typography and good hierarchy. Pie chart on slide 2 is readable but suboptimal for part-to-whole with only 3 segments. Bar charts on slides 3 and 5 are clear with labeled values. Slide 4 is entirely text with no supporting chart. Slide 6 big-number layout is effective. No chart junk but some visual monotony.",
+    "ai_slop": "Minimal. Language is dataset-specific rather than generic. Some consulting-style phrasing ('A Market With Its Own Physics') but not excessive. No decorative meaningless graphics or filler paragraphs."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 4.5 to 4: identified additional factual error (AI mean $9,167 vs ~$11,963) bringing count to 8. Lowered framing from 7 to 6.5: causal language in two slide titles without hedging, and no stated audience. Other scores confirmed as appropriate.",
+  "total": 64,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 12017,
+    "output_tokens": 1133
+  }
+}

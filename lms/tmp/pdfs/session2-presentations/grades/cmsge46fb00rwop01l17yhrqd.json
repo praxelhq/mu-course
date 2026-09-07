@@ -1,0 +1,39 @@
+{
+  "slide_count": 14,
+  "scores": {
+    "insight": 6,
+    "narrative": 6.5,
+    "framing": 4,
+    "accuracy": 3,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Strong thesis about revenue concentration; good volume-vs-efficiency distinction for AI category; data transparency slide was thoughtful.",
+  "fix_next": "The deck analyzes a different, larger dataset (8,782 rows) than the assigned 1,000-row dataset, making most numbers unverifiable and many demonstrably wrong against the rubric.",
+  "verdict": "Wrong dataset undermines an otherwise competent analytical narrative.",
+  "flags": [
+    "wrong-dataset",
+    "inflated-row-count",
+    "unverifiable-claims",
+    "unlabeled-chart-axes",
+    "chart-labels-missing-category-names"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 1: Claims 8,782 startups and $33.2M trailing 30-day revenue; dataset has 1,000 rows and $15.6M total 30-day revenue. Slide 2: Top 1% capturing 69.5% — cannot verify against 1,000-row dataset; 1,430 AI startups vs reference 197. Slide 3: 57.2% at $0 MRR vs reference 216/1000=21.6% zero revenue. Slide 4: AI count 1,430 vs 197; category avg MRR figures don't match reference (e.g. E-comm avg should be ~$58,505 from $1.11M/19, not $4,168). Slide 7: B2B 2.4x claim — reference shows median multiples ~2.35x but mean multiples ~7.97x/8.44x, so the 2.4x average claim is in the right neighborhood for medians but presented as means. Slide 8: Stripe at 59.4% of startups vs reference 636/1000=63.6%; 85.3% of MRR vs reference 86.8%. Slide 6: 1,657 US startups vs reference dataset of 1,000 total rows.",
+  "evidence": {
+    "insight": "Slide 4 volume-vs-efficiency framing for AI is genuinely useful; slide 5 data-transparency observation about uncategorized revenue is original; slide 10 domain-authority vs social-reach comparison adds analytical depth beyond chart description.",
+    "narrative": "Clear arc from market overview (slides 1-2) → concentration (3) → category (4) → transparency gap (5) → geography (6) → model (7) → infrastructure (8) → growth (9) → drivers (10) → acquisitions (11) → leaderboard (12) → takeaways (13). Coherent thesis about top-heaviness sustained throughout.",
+    "framing": "Slide 1 states 8,782 startups but the assigned dataset has 1,000 rows. No mention of the actual dataset scope, no acknowledgment of the discrepancy. Audience is implied (builders/buyers) but never explicitly stated. Limitations are not discussed beyond the transparency slide.",
+    "accuracy": "Fundamental mismatch: every headline number (8,782 startups, $15.4M MRR, $33.2M 30-day revenue, 646,933 subs, 1,430 AI startups, 57.2% zero MRR, 1,657 US startups) is inconsistent with the 1,000-row reference dataset. Either the student used a different/larger dataset or fabricated scale. Category counts, revenue totals, and percentages cannot be reconciled with the frozen reference.",
+    "visual": "Consistent dark-navy/gold/white palette with clear hierarchy. However, bar charts on slides 3, 4, 6 use numeric axis labels (1,2,3...) instead of category names, making them unreadable without cross-referencing text. Slide 7 charts also lack category labels. The template is clean but repetitive across slides.",
+    "ai_slop": "Moderate template repetition across slides; the numbered big-stat callout pattern repeats on slides 1, 2, 3, 5, 6, 11. Some consulting-style language ('hits-driven market,' 'priced like a garage sale') but generally restrained. Charts with unlabeled axes suggest auto-generated visuals not reviewed for clarity."
+  },
+  "confidence": "high",
+  "total": 49,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 25710,
+    "output_tokens": 1093
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "slide_count": 21,
+  "scores": {
+    "insight": 5,
+    "narrative": 5,
+    "framing": 6,
+    "accuracy": 5,
+    "visual": 6,
+    "bonus": 0
+  },
+  "what_worked": "Subscription-revenue quintile chart (slide 14) and mean-vs-median category comparison (slide 17) show genuine analytical thinking.",
+  "fix_next": "Replace the 10-row X-followers analysis with the full dataset and build a thesis-driven arc instead of a question list.",
+  "verdict": "Competent descriptive tour with some accuracy slips but no unifying thesis or deeper insight.",
+  "flags": [
+    "list-of-questions-not-narrative",
+    "artificially-small-sample-slide18",
+    "anonymous-count-off",
+    "revenue-share-off",
+    "quiz-slide-filler",
+    "no-top10-concentration",
+    "no-tld-analysis",
+    "no-founded-year-analysis",
+    "no-b2b-b2c-comparison"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 13: anonymous count 130 vs reference 129, revenue share stated 26.9% vs reference 26.525%, named revenue $11,404,560 implies total $15,596,344 which is close but anonymous share is inflated. Slide 3: 'Stripe powers 64% of listings' — 636/1000=63.6%, rounded up. Slide 17: AI median MRR stated $446 vs reference median revenue $503 (may reflect MRR vs 30d revenue difference but not clarified). Slide 18: correlation computed on only 10 rows when 1000 were available — methodologically misleading.",
+  "evidence": {
+    "insight": "Only slides 14 (subscription quintiles r=0.802) and 17 (mean vs median by category) offer non-obvious analysis. Most other slides report single descriptive stats (payment rail counts, geography totals) without deeper interpretation. Major dataset angles (top-10 concentration, TLD median, B2B/B2C multiples, founded-year correlation) are entirely absent.",
+    "narrative": "Structure is a flat list of 12 questions with no connecting thesis. Summary slide 20 lists five takeaways but they don't build toward a recommendation or central argument. The audience is never given a decision to make.",
+    "framing": "Slides 1-6 provide solid context: what TrustMRR is, what a row represents, who would use it, and high-level dataset dimensions. Missingness is acknowledged on slides 8 and 20. However, the choice of 12 questions is never motivated, and scope limitations beyond data gaps are not discussed.",
+    "accuracy": "Anonymous count 130 vs 129 (slide 13); anonymous revenue share 26.9% vs 26.525%; Stripe '64%' is 63.6% rounded up (slide 3); AI median MRR $446 vs reference $503 median revenue (slide 17, ambiguous metric); slide 18 restricts X-followers analysis to 10 rows — methodologically unjustifiable when 1000 rows exist.",
+    "visual": "Consistent dark-blue/teal/gold palette with clean typography. Charts are simple labeled bar charts — functional but not sophisticated. Slide 17 paired bar chart is the most informative. Slide 16 quiz format is filler. No misleading axes but no annotation or layering that elevates beyond basic.",
+    "ai_slop": "Slide 16 multiple-choice quiz is template filler. Slide 6 use-case cards are generic. Overall layout is polished but repetitive — every question slide follows identical callout-box pattern."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Removed bonus point: no element rises beyond the rubric. Lowered insight 5.5→5.0 because most slides are single-stat descriptive with limited analytical depth. Lowered accuracy 5.5→5.0 for the slide-18 methodological shortcut (10-row sample when full data available) compounding the anonymous-count and share errors.",
+  "total": 54,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 38208,
+    "output_tokens": 1013
+  }
+}

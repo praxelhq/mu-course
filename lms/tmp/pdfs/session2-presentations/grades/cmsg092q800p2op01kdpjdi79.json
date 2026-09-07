@@ -1,0 +1,38 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 8.5,
+    "accuracy": 6,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Exceptional framing discipline: terms defined upfront, risks enumerated, sample-size caveats repeated throughout, composite score transparent.",
+  "fix_next": "The composite attractiveness score is unverifiable and several underlying numbers (avg deal size, on-sale rates, E-comm revenue per company) cannot be confirmed against the reference data—show the raw inputs.",
+  "verdict": "Well-structured strategic deck with strong narrative discipline but partially unverifiable scoring model.",
+  "flags": [
+    "unverifiable-composite-score",
+    "missing-data-denominator-handling-unclear",
+    "no-payment-provider-analysis",
+    "no-b2b-b2c-analysis"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 5: AI avg revenue $11,963 — reference gives $2,356,676/197 = $11,963, this checks out. Slide 6: E-comm avg deal size $20,829 — reference gives $1,111,606/19 ≈ $58,506 mean, not $20,829; appears to use MRR not 30-day revenue or a different denominator. Slide 6: Marketing avg deal size $10,583 — reference gives $1,317,303/42 ≈ $31,364, not $10,583; same denominator confusion. Slide 7: US = 63% of full dataset revenue — reference total is $15.6M; 63% = ~$9.8M which is plausible but unverifiable precisely. The 77% of country-tagged revenue claim is internally consistent but hard to cross-check.",
+  "evidence": {
+    "insight": "Slide 4's composite scorecard with explicit weights creates a novel ranking framework. The AI-crowding insight (slide 5) and Marketing-as-Goldilocks argument (slide 6) go beyond chart description. However, the deck never explores payment providers, B2B/B2C splits, anonymous vs named patterns, or TLD signals—missing several available analytical angles.",
+    "narrative": "Clear thesis on slide 2 ('build marketing, sell to US B2B'), every subsequent slide builds toward or qualifies that thesis. The sequence—scorecard → AI deep dive → Goldilocks tier → geography → exit signals → risks → recommendation—is purposeful and cumulative. SO WHAT boxes on every slide enforce synthesis.",
+    "framing": "Slide 1 defines every term and states five explicit assumptions including sample bias and missing data rates. Slide 3 explains methodology and exclusion criteria. Slide 9 enumerates six risks. Slide 11 states audience and deliverable. This is unusually thorough framing for a student deck.",
+    "accuracy": "Marketing company count (42) and revenue ($1.32M vs reference $1.317M) are correct. AI count (197) and revenue ($2.36M vs $2.357M) are correct. However, 'avg deal size' figures on slide 6 appear to use MRR rather than 30-day revenue without clarifying the denominator—Marketing shows $10,583 vs expected ~$31,364 mean 30-day revenue, and E-comm shows $20,829 vs expected ~$58,506. The composite score methodology is stated but inputs are not shown, making it unauditable. Analytics revenue ($368K vs reference $368,214) checks out.",
+    "visual": "Consistent navy/gold palette, clear hierarchy with section labels and slide numbers. Bar charts on slides 4 and 8 are well-labeled with data values. Pie chart on slide 7 is readable. The KPI card layout on slide 5 is clean. However, the design is somewhat template-heavy—every slide uses the same SO WHAT box pattern, and the visual variety is limited. No scatter plots, distributions, or more sophisticated chart types despite opportunities.",
+    "ai_slop": "Minor signs: the uniform SO WHAT box on every slide feels formulaic, and the 'Note on This Engagement' slide (11) reads like consulting boilerplate. However, content is substantive and specific to the dataset throughout—not generic filler. Overall low slop level."
+  },
+  "confidence": "high",
+  "total": 75,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22648,
+    "output_tokens": 1073
+  }
+}

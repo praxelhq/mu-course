@@ -1,0 +1,44 @@
+{
+  "slide_count": 3,
+  "scores": {
+    "insight": 3.5,
+    "narrative": 4,
+    "framing": 3,
+    "accuracy": 3.5,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Clear investor-facing question with a single consistent metric (active subscribers) carried through all three slides.",
+  "fix_next": "Acknowledge missing category data (274 rows), add median revenue and revenue-per-subscriber analysis, and include a limitations slide.",
+  "verdict": "Polished but shallow three-slide deck built on one unverifiable metric with no caveats.",
+  "flags": [
+    "too-few-slides",
+    "no-limitations-discussed",
+    "missing-data-not-acknowledged",
+    "unverifiable-subscriber-figures",
+    "no-median-or-distribution-analysis",
+    "consulting-language-inflation",
+    "questionable-24-category-count",
+    "3x-revenue-multiplier-unjustified"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 1: '24 categories compared' does not match the reference category list (likely fewer non-missing distinct values or a different count). Slide 2: '3-mo revenue' figures appear to be 3× the total-revenue column values without justification or explanation of the multiplication methodology (e.g., AI $6.30M vs reference total $2.36M suggests tripling monthly figures without validation).",
+  "evidence": {
+    "insight": "Entire analysis rests on a single metric (active subscribers) with no per-company median, no revenue-per-subscriber ratio, no comparison to categories that lead on median revenue (Marketing $2,370, Education $2,435). The 'retention efficiency' idea for Health & Fitness is promising but never quantified beyond subs/startup.",
+    "narrative": "Three slides follow signal→data→recommendation, a coherent but extremely compressed arc. No complication, no alternative hypothesis, no 'what could go wrong' moment. The recommendation feels predetermined rather than earned through layered analysis.",
+    "framing": "Audience (investor) and question (where to invest) are stated, but 'active subscribers' is never defined against the dataset schema. 274 missing category values and 288 missing audience_type values are never disclosed. No scope or limitations slide. A cold reader cannot assess how robust the ranking is.",
+    "accuracy": "AI startup count (197) and Health & Fitness count (34) match the reference. However, the 3-mo revenue figures imply a 3× multiplier on what appears to be total (not monthly) revenue without explanation. The '24 categories' claim is unverified and likely inaccurate given 274 missing category rows. Subscriber figures cannot be cross-checked against the frozen reference.",
+    "visual": "Clean dark-theme design, readable horizontal bar chart with direct labels, consistent color palette, good typographic hierarchy. Layout is professional but the three-card recommendation slide is generic pitch-deck template. Decorative circles add nothing. Competent but unremarkable.",
+    "ai_slop": "Phrases like 'Scale AND stickiness,' 'upside lever rather than a red flag,' 'volume, retention, and momentum all agree' are consulting-template language. The three-card layout with numbered circles is a common AI-generated pitch-deck pattern."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 3.5 to 3.0: the deck never defines 'active subscribers' against the dataset schema, never discloses 274 missing category values, and the '24 categories' claim is unsubstantiated. Other scores confirmed as appropriate.",
+  "total": 39,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 6894,
+    "output_tokens": 882
+  }
+}

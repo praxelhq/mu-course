@@ -1,0 +1,38 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 8,
+    "narrative": 8.5,
+    "framing": 8,
+    "accuracy": 6,
+    "visual": 8,
+    "bonus": 3
+  },
+  "what_worked": "Exceptional narrative arc from universe to shortlist with honest risk framing and causal discipline throughout.",
+  "fix_next": "Category counts and medians on slide 4 are materially wrong (Education ~45 vs 30, AI median $4.3k vs $503); verify all segment stats against raw data.",
+  "verdict": "Sharp investor memo with strong structure, undermined by several inaccurate category figures.",
+  "flags": [
+    "category-counts-wrong",
+    "category-medians-wrong",
+    "revenue-field-ambiguity",
+    "b2b-median-not-verified"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 4: AI median shown as $4.3k, actual is $503 (massive error). Education count ~45 vs actual 30. Marketing count ~60 vs actual 42. Dev Tools count ~40 vs actual 37. Analytics count ~35 vs actual 19. The B2B median of $8.4k on slide 4 cannot be directly verified but the reference B2B median multiple is 2.35x, not the ~3.8x gap implied.",
+  "evidence": {
+    "insight": "Slide 5 funnel from 1,000→3-5 is genuinely decision-useful. Slide 7 valuation trap analysis (0.0x listings = broken not bargains) shows original thinking. Slide 6 names specific companies with verify/hold flags showing intellectual honesty.",
+    "narrative": "Clean arc: executive summary (S1) → distribution reality (S2) → on-sale pool (S3) → segment signals (S4) → screening funnel (S5) → shortlist (S6) → risk matrix (S7) → recommendation (S8). Each slide builds on the prior. The thesis 'buy a short list, not the market' is established on S1 and paid off on S8.",
+    "framing": "Slide 1 immediately establishes audience (investor/acquirer), scope (1,000 listings as sourcing universe), and the core question. Footer assumptions/risks on every slide. Limitations called out explicitly (missing categories, subscription vs one-off mixing on S2, no margin/churn data on S7).",
+    "accuracy": "Slide 2: median $3.1k and mean $133.8k are plausible but the dataset field is 30-day revenue not 12M (label says '12-MONTH REVENUE' but source says REVENUE_12M_USD—ambiguous). Slide 4 category figures are substantially wrong: AI median $4.3k vs reference $503; Education count ~45 vs 30; Marketing ~60 vs 42; Analytics ~35 vs 19. Slide 1 mean $133.8k is plausible if computed on non-zero subset but not clearly stated.",
+    "visual": "Dark-mode terminal aesthetic is consistent across all 8 slides. Monospace headers, color-coded signals (green/yellow/red), clean card layouts. Slide 5 funnel visualization is effective. Slide 7 scatter plot with quadrant labels is well-annotated. No chartjunk. Restraint in decoration. Hierarchy is clear with section labels, headlines, and supporting text.",
+    "ai_slop": "none — the deck avoids generic filler, uses specific numbers and company names, includes self-skeptical verify flags, and maintains a distinctive editorial voice throughout"
+  },
+  "confidence": "high",
+  "total": 80,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 14220,
+    "output_tokens": 908
+  }
+}

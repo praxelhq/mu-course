@@ -1,0 +1,38 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 6,
+    "framing": 7,
+    "accuracy": 4.5,
+    "visual": 6,
+    "bonus": 1
+  },
+  "what_worked": "Honest framing of dataset limits, missingness, and skew; secondary-market multiple interpretation was genuinely useful.",
+  "fix_next": "Slide 5 uses 'market tags' (multi-label) instead of the dataset's 'category' field, producing unverifiable numbers that don't match the reference at all.",
+  "verdict": "Competent overview with good framing but significant accuracy gaps in category/market data.",
+  "flags": [
+    "market-vs-category-mismatch",
+    "mrr-vs-30d-revenue-conflation",
+    "zero-revenue-count-wrong",
+    "fabricated-looking-market-figures"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 3/4: States 197 startups earn $0 MRR; reference says 216 have zero revenue. Slide 3: Claims '1 in 5' (20%) but 197/1000=19.7% is borderline; 216 would be '1 in 5'. Slide 5: Market tag figures (SaaS $4.4M, AI $3.4M, 437 SaaS startups, 392 AI startups) do not match the category reference (AI $2.36M with 197 companies, SaaS $703K with 66 companies). The deck appears to use a different 'market' multi-label field without clarifying this is not the category field, but the numbers are unverifiable and dramatically different. Slide 3: States Stripe at 66% — reference says 636/1000 = 63.6%, not 66%. Slide 7: Dodo Payments shown at 5% — reference says 50/1000 = 5.0%, this is correct; but Polar at 4% — reference says 36/1000 = 3.6%, rounded up. RevenueCat at 20% — reference says 189/1000 = 18.9%, inflated to 20%.",
+  "evidence": {
+    "insight": "Power-law observation (slide 3-4) is solid but standard. Secondary market multiple interpretation (slide 8) adds genuine analytical value. No deeper cross-cuts (e.g., anonymous vs named revenue share, TLD analysis, founded-year correlation).",
+    "narrative": "Clear arc: overview → revenue distribution → markets → geography → payments → resale → closing synthesis. Coherent but reads more as a descriptive tour than an argument-driven story with a single thesis.",
+    "framing": "Slide 2 explicitly addresses dataset limits, missingness (~30%), stealth companies, and selection bias. Slide 5 notes multi-label caveat. Slide 6 notes 241 missing countries. This is above-average transparency.",
+    "accuracy": "Slide 5 market figures are the biggest concern — they don't match the category reference at all (e.g., 'SaaS' 437 startups vs reference 66; AI 392 vs 197). Zero-revenue count off (197 vs 216). Stripe share inflated from 63.6% to 66%. RevenueCat inflated from 18.9% to 20%. The deck may be using a different field ('market' vs 'category') but the numbers remain unverifiable.",
+    "visual": "Clean, consistent design with good hierarchy. Bar chart on slide 4 is well-labeled and appropriate. Donut charts on slides 6-7 are readable. Slide 5 horizontal bar + table combo works well. No chart junk. However, visual variety is limited and no annotations highlight key comparisons.",
+    "ai_slop": "Minimal slop. Design is template-consistent but not generic filler. Language is direct and specific rather than inflated. No decorative-but-meaningless graphics."
+  },
+  "confidence": "high",
+  "total": 59,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 17592,
+    "output_tokens": 984
+  }
+}

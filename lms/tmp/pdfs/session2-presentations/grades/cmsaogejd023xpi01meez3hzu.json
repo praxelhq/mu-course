@@ -1,0 +1,39 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 4,
+    "narrative": 4.5,
+    "framing": 5,
+    "accuracy": 4,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Consistent slide template with paired chart-plus-insight boxes; Games monetization comparison was a genuinely useful angle.",
+  "fix_next": "The deck cherry-picks niche slices (4 countries, 4 providers) while ignoring the dominant patterns (Stripe at 87% of revenue, AI as top category, top-10 concentration).",
+  "verdict": "Narrow, cherry-picked analysis that avoids the dataset's major stories.",
+  "flags": [
+    "cherry-picked-comparisons",
+    "missing-major-findings",
+    "transparency-slide-uses-all-time-not-30day",
+    "no-missingness-discussion",
+    "no-limitations-slide"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 7: Anonymous companies are 12.9% of companies but 26.5% of 30-day revenue—the deck uses all-time revenue and claims 4.6x ratio without noting anonymous companies punch above their weight on a per-company basis, misleading the 'transparency premium' narrative. Slide 5: Compares four tiny provider configs while omitting Stripe (636 companies, $13.5M) and other major providers—framing is misleading about 'provider revenue.' Slide 9: Claims '3-month revenue is a weak predictor of current MRR (r=0.145)' but this correlation is not verifiable from the reference data and the framing implies a causal/predictive relationship from a cross-sectional snapshot.",
+  "evidence": {
+    "insight": "Slides 4-8 each present one narrow comparison but never address the dataset's headline patterns: top-10 concentration at ~50%, AI dominance, Stripe's 87% share, 21.6% zero-revenue rate, or massive missingness. The Games/SaaS RPV comparison (slide 8) is the most original point but sample sizes are unstated.",
+    "narrative": "There is a loose 'deal sourcing' thread connecting slides, but the five takeaways on slide 9 feel like disconnected factoids rather than a synthesized argument. No thesis is stated upfront; the deck reads as a list of cherry-picked comparisons.",
+    "framing": "Slide 3 sets up the dataset reasonably well with field descriptions and a diligence framing for 'Kaelor Capital.' However, no limitations, missingness rates (241-288 missing across key fields), or survivorship bias are mentioned anywhere. The 'four benchmark markets' on slide 4 are never justified as a selection.",
+    "accuracy": "Health & Fitness total ($178,607, n=34) matches reference. But the transparency slide uses all-time revenue rather than 30-day, and the narrative overstates the 'premium' without per-company normalization. The provider slide compares four marginal configs while ignoring Stripe's $13.5M dominance. The r=0.145 claim on slide 9 is unverifiable.",
+    "visual": "Clean, consistent template with good hierarchy and readable charts. Color palette is restrained. However, every chart is a simple bar chart with the same layout—no variation in chart type despite different analytical questions. The Whop chart (slide 5) axis is well-labeled. Some slides are text-heavy with large empty space.",
+    "ai_slop": "Moderate consulting-style language ('revenue density,' 'outreach sequencing,' 'deal quality signal') that adds polish but little substance. The 'Platform at a Glance' stats on slide 2 ($1.5B+, 840+, 200K, 54M) appear sourced from marketing materials, not the dataset, and are presented without caveat."
+  },
+  "confidence": "high",
+  "total": 46,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 17576,
+    "output_tokens": 946
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 5,
+    "narrative": 6.5,
+    "framing": 4.5,
+    "accuracy": 2.5,
+    "visual": 6.5,
+    "bonus": 0
+  },
+  "what_worked": "Competition-vs-value quadrant (slide 6) is a genuinely useful analytical framing for the target audience.",
+  "fix_next": "Verify every number against the actual dataset; category counts are inflated 3–6× and total revenue is wrong by ~$2M.",
+  "verdict": "Polished consulting pitch built on fabricated category counts and unverifiable figures.",
+  "flags": [
+    "fabricated-category-counts",
+    "total-revenue-wrong",
+    "categories-not-in-dataset",
+    "mean-not-median-unlabeled",
+    "no-limitations-slide",
+    "missing-data-not-acknowledged",
+    "invented-market-score",
+    "zero-revenue-ignored",
+    "slide-numbering-inconsistent"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 3: Total revenue stated $13.4M vs actual $15.6M (~$2.2M off). Slide 4: SaaS 437, AI 392, Productivity 275, Content Creation 228, Mobile Apps 195 — reference shows AI 197, SaaS 66, Content Creation 36, Mobile Apps 52; counts inflated 3–6×. Slide 5: AI '392 Startups / $9,817 per startup' — count wrong; 'Marketplace' and 'Security' categories not in reference top categories, figures unverifiable. Slide 7: '$5.73M SaaS Ecosystem' and 'Overall Market Score 70.0' are unexplained/unverifiable. Slide 9: page numbered 09/10 but deck has 12-page numbering elsewhere.",
+  "evidence": {
+    "insight": "The crowd-vs-revenue and quadrant framing are analytically interesting ideas, but every underlying number is wrong or unverifiable, so the insights cannot be trusted. No survivorship-bias or small-n discussion for 17–18 startup niches.",
+    "narrative": "Clear arc: question → data → crowd behavior → revenue reality → opportunity map → model → infrastructure → recommendation → closing. Coherent and purposeful, though it reads as a consulting pitch with a predetermined conclusion rather than an honest analytical exploration.",
+    "framing": "Audience (founders) and question (where to build) are stated clearly. However, 274 missing category values, 241 missing countries, and 216 zero-revenue rows are never acknowledged. No source citation, no limitations slide, no mention of observational/cross-sectional nature.",
+    "accuracy": "Category counts on slide 4 are fabricated or drawn from a different field (possibly tags, not the 'category' column); they exceed the dataset's 1,000 rows when summed. Total revenue understated by ~$2.2M. 'Marketplace' and 'Security' are not among the reference categories. Mean revenue per startup used without labeling, hiding extreme skew. 'Market Score 70.0' is an invented metric with no methodology.",
+    "visual": "Consistent dark theme, strong typography hierarchy, clean bar chart (slide 4), well-conceived quadrant (slide 6), readable donut (slide 8). Donut labels are truncated. Slide 7 bar chart omits the 'All Other' dollar value. Polished but template-driven; slide 2 funnel graphic is decorative filler.",
+    "ai_slop": "Moderate: 'existential question,' 'underserved goldmines,' 'supremacy of web-based B2B,' closing aphorism on slide 10 is generic motivational filler. The founder-funnel on slide 2 adds no data value."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Removed 1-point bonus: the quadrant idea is good but built on fabricated numbers, and closing slide is generic filler — not bonus-worthy. Lowered framing from 5.0 to 4.5 for complete absence of limitations, missingness, and source citation. Other scores confirmed as appropriate.",
+  "total": 50,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 18559,
+    "output_tokens": 1022
+  }
+}

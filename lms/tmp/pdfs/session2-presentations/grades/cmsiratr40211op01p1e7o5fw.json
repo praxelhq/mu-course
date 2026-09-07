@@ -1,0 +1,38 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 8,
+    "accuracy": 6,
+    "visual": 8.5,
+    "bonus": 3
+  },
+  "what_worked": "Genuinely thesis-driven narrative with a falsifiable investment screen and honest self-critique on causality.",
+  "fix_next": "Top-10 share is 49.6% not 50.6%, AI median is $503 not $446, and mean MRR calculation appears off—verify all anchor statistics.",
+  "verdict": "Exceptional storytelling and design undermined by several verifiable numerical errors.",
+  "flags": [
+    "top10-share-off",
+    "ai-median-wrong",
+    "mean-mrr-discrepancy",
+    "correlation-overstated-as-explains-all"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 3: Top-10 share stated 50.6% vs reference 49.6%. Slide 4: AI median MRR $446 vs reference median $503. Slide 2: Mean MRR $13,472 vs computed $15,596 from 30-day total.",
+  "evidence": {
+    "insight": "Slide 9 cross-tabulation of DR × audience type is original synthesis; slide 10 builds a deployable screen with payback math; slide 4 debunks AI label with hit-rate comparison.",
+    "narrative": "Clear myth-busting arc (slides 4-5) builds to signal (6-7), compounds levers (8-9), deploys thesis (10-11), and lands with falsifiable summary and limitations (12). Every slide advances one argument.",
+    "framing": "Slide 1 sets audience (investor), question (what predicts revenue), and scope. Slide 12 explicitly names what would break the thesis. Missing: no discussion of missingness rates (274 category, 288 audience_type).",
+    "accuracy": "Top-10 share overstated by 1pp (50.6 vs 49.6). AI median $446 vs $503. Mean MRR $13,472 vs ~$15,596. Slide 6 headline 'explains almost all of it' overstates r=0.48 (~23% variance). Revenue denominators shift between slides without flagging.",
+    "visual": "Consistent dark/light palette, strong typographic hierarchy, restrained chart choices (bar, heatmap matrix, stacked bars). Every chart has n-counts and source lines. No decorative graphics. Slide 9 matrix is particularly effective.",
+    "ai_slop": "none — deck has a distinctive editorial voice, no filler slides, no generic icons or stock imagery, no inflated consulting language"
+  },
+  "confidence": "high",
+  "total": 83,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22755,
+    "output_tokens": 1710
+  }
+}

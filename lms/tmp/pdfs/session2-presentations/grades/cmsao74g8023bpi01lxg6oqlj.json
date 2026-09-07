@@ -1,0 +1,39 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 4,
+    "narrative": 5.5,
+    "framing": 4,
+    "accuracy": 3.5,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Myth-busting narrative arc is coherent and the MRR correlation point is well-framed.",
+  "fix_next": "Slide 7 chart values are fabricated (not real revenue figures), and the deck ignores missingness, sample limitations, and most dataset dimensions.",
+  "verdict": "Polished template, thin analysis, multiple accuracy problems.",
+  "flags": [
+    "fabricated-chart-values",
+    "missing-data-not-acknowledged",
+    "shallow-dataset-exploration",
+    "tautological-insight",
+    "ai-slop-template"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 7: Bar chart labels (186, 152, 134, 121) match neither total revenue ($M) nor company counts for AI/SaaS/E-commerce/Marketing—values appear fabricated. E-commerce is shown above Marketing in revenue, but actual data shows Marketing ($1.32M) > E-commerce ($1.11M). SaaS shown as #2 but actual total revenue ($703K) is well below Marketing and E-commerce. Slide 4: r≈0.02 is stated for followers vs revenue; the reference r≈0.025 is for founded-year vs revenue—followers-revenue correlation is unverified and may be conflated.",
+  "evidence": {
+    "insight": "Core insight (MRR correlates with revenue, slide 6) is near-tautological since MRR is a component of revenue. Followers/visitors myths are surface-level. No exploration of providers, anonymity, B2B/B2C, pricing, TLD, or revenue concentration.",
+    "narrative": "Myth→Reality arc (slides 2-9) provides a clear through-line with a landing on slide 10. However, only three data points support the entire thesis, and the investor exercise (slide 8) is hypothetical filler rather than data-driven.",
+    "framing": "No mention of missing data (241-288 missing values across key fields), no discussion of 216 zero-revenue companies, no limitations slide, no definition of revenue metric (30-day). Audience is implied but never stated.",
+    "accuracy": "Slide 7 chart values do not correspond to any real metric in the dataset. Category ranking is wrong (SaaS above E-commerce and Marketing in the visual). The r≈0.02 on slide 4 may be borrowed from founded-year correlation. MRR-revenue r≈0.87 is plausible but unverifiable without the actual computation shown.",
+    "visual": "Consistent dark theme, clean typography, good use of callout boxes. Scatter plots are readable. However, decorative icons on slides 2-3 add no information, and the slide 7 bar chart is misleading with unexplained numeric labels.",
+    "ai_slop": "Slides 2-3 use decorative icon clusters that convey no data. Slide 8 investor exercise is generic consulting filler. Slide 9 myths-vs-reality table is a common AI template pattern. Overall visual sameness across slides."
+  },
+  "confidence": "high",
+  "total": 45,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18162,
+    "output_tokens": 808
+  }
+}

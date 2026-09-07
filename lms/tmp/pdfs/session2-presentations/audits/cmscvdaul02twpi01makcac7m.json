@@ -1,0 +1,44 @@
+{
+  "slide_count": 15,
+  "scores": {
+    "insight": 0.5,
+    "narrative": 2,
+    "framing": 0.5,
+    "accuracy": 0.5,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Consistent blueprint visual theme with clear typography hierarchy and varied conceptual layout types.",
+  "fix_next": "Analyze the actual 1,000-row dataset; every slide must contain or reference real data findings.",
+  "verdict": "A polished design-philosophy lecture that entirely ignores the assigned dataset.",
+  "flags": [
+    "wrong-assignment",
+    "no-dataset-analysis",
+    "zero-data-charts",
+    "ai-slop",
+    "consulting-language",
+    "decorative-graphics",
+    "fabricated-comparison-table",
+    "dubious-60000x-claim"
+  ],
+  "factual_error_count": 1,
+  "factual_error_detail": "Slide 3: '60,000x faster' visual processing claim is a widely debunked marketing statistic presented as fact without citation. Slide 8: fabricated dot-rating comparison table has no empirical basis.",
+  "evidence": {
+    "insight": "Zero analytical findings from the dataset appear across all 15 slides. No revenue, category, provider, TLD, or any column is mentioned. Content is entirely generic presentation-design advice.",
+    "narrative": "Internally coherent as a design-principles lecture (problem → pillars → techniques → protocol → close), but completely off-topic for a data-story assignment. No dataset thesis exists.",
+    "framing": "Slide 1 frames as 'strategic visual narratives for the C-Suite'—a generic meta-topic. No mention of the 1,000-row dataset, its domain, scope, questions, or limitations. A cold reader cannot identify the assignment.",
+    "accuracy": "No dataset figures cited anywhere. No calculations, denominators, sample sizes, or missingness acknowledgment. The only quantitative claim (60,000x) is unsourced and dubious. Slide 8 presents fabricated efficacy ratings.",
+    "visual": "Polished and consistent: blueprint/orange palette, strong type hierarchy, varied layouts (pillars, funnel, Venn, heatmap, 2×2 matrix, rope metaphor). However, every graphic is decorative or conceptual—not a single data-driven chart exists in the deck.",
+    "ai_slop": "Pervasive: 'cognitive resonance,' 'narrative architecture,' 'engineering the visual consumption,' 'compounding cognitive momentum.' Decorative AI-generated 3D renders on slides 1 and 15. Generic consulting frameworks (pillars, flywheels, Venn diagrams) with no dataset-specific content. Entire deck reads as an AI-generated presentation-design tutorial applicable to any context."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 1.0 to 0.5 and framing from 1.0 to 0.5 because the deck contains literally zero engagement with the assigned dataset—not a single column, metric, or finding is referenced. The preliminary scores were already very low but still slightly generous for a submission that completely misses the assignment.",
+  "total": 15,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 24428,
+    "output_tokens": 767
+  }
+}

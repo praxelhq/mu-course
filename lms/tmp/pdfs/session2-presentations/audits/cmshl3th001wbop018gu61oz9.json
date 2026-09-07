@@ -1,0 +1,43 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 4.5,
+    "narrative": 5,
+    "framing": 4.5,
+    "accuracy": 3,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Mean-median skew observation on slide 4 is a genuine, data-grounded insight worth highlighting.",
+  "fix_next": "Verify every claimed number against the actual dataset and disclose missingness that undermines B2B/B2C and category splits.",
+  "verdict": "Polished template masking fabricated numbers and unsupported strategic claims.",
+  "flags": [
+    "fabricated-numbers",
+    "unearned-certainty",
+    "consulting-jargon-inflation",
+    "missing-data-undisclosed",
+    "ai-slop-template",
+    "causal-claims-without-evidence",
+    "empty-strategy-slides"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 3: top-10 share shown as 48% vs reference 49.6%. Slide 4: platform mean $13,471 is total revenue/1000 not mean MRR; AI median $1,441 vs reference $503 (~3x off); B2B/B2C averages unverifiable and likely fabricated given 288 missing audience_type. Slide 5: AI median $1,441 again wrong; Dev Tools median $329 vs reference $635; 'Productivity Applications' category and 'Marketing & Sales SaaS' median $2,010 do not match dataset categories; growth rates and valuation multiples (8.5x, 4.2x, 5.8x, 3.9x) appear fabricated with no source field.",
+  "evidence": {
+    "insight": "Slides 3-4 correctly identify power-law concentration and mean-median divergence, but the AI category trap and B2B premium claims rest on wrong numbers, diluting analytical value. Valuation disconnect thesis on slide 5 uses fabricated multiples.",
+    "narrative": "Logical arc from problem to evidence to roadmap to board mandate. Thesis is stated and maintained. However slides 6-8 are generic strategy filler disconnected from any data finding, weakening the landing.",
+    "framing": "Slide 1 names audience, dataset, and focus area. But the deck never discloses massive missingness (274 categories, 288 audience_type) that directly invalidates the B2B/B2C and category analyses presented. No limitations acknowledged anywhere.",
+    "accuracy": "At least 7 material errors across slides 3-5. AI median inflated ~3x, top-10 share rounded down, Dev Tools median halved, platform mean conflated with MRR, fabricated growth rates and valuation multiples with no dataset basis. Categories on slide 5 don't match dataset taxonomy.",
+    "visual": "Consistent dark theme, clean cyan/pink palette, functional donut chart. But slides 6-8 are mostly empty space with generic card layouts. Bar chart on slide 4 is legible but displays wrong data. Restraint is adequate but no annotation or sourcing on charts.",
+    "ai_slop": "Heavy consulting boilerplate: 'Executive Directive,' 'Board Mandate,' 'Turnaround Model,' 'Capital Allocation Policy,' 'Performance Escrow,' '3x-5x Expected Expansion in ARPU.' Slides 6-8 are generic strategy templates that could apply to any dataset. 30-60-90 plan and decision matrix are pure filler."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 5.0 to 4.5 because zero disclosure of missingness for the two fields (category, audience_type) most central to the deck's claims is a material framing failure. All other scores confirmed as appropriate.",
+  "total": 45,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 14132,
+    "output_tokens": 939
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 6,
+    "accuracy": 4.5,
+    "visual": 5,
+    "bonus": 1
+  },
+  "what_worked": "Clear thesis arc: AI monetizes better but doesn't grow faster, so pick on customer depth.",
+  "fix_next": "The AI vs non-AI split (414/586) is fabricated—category field has 274 missing and only 197 AI rows; verify grouping methodology and disclose it.",
+  "verdict": "Coherent narrative built on an unverified and likely incorrect AI/non-AI partition.",
+  "flags": [
+    "fabricated-grouping",
+    "unverifiable-median-claims",
+    "no-limitations-slide",
+    "missing-data-not-disclosed",
+    "decorative-background-overuse",
+    "top1-revenue-share-wrong"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 3: Claims 414 AI-related and 586 non-AI; dataset has only 197 companies in the AI category (274 rows have no category at all), so the partition is unverifiable and likely wrong, making all downstream AI vs non-AI comparisons suspect. Slide 4: Median MRR of $423 for AI and $222 for non-AI cannot be verified against the reference (AI category median is $503 for 197 companies); these numbers depend on the fabricated grouping. Slide 7: Claims top 1 startup captures 26.5% of all MRR; reference shows top-10 share is 49.6%, but no single company holds 26.5% of $15.6M (~$4.1M)—this figure is unverified and the '31.18% total conversion rate' label is unexplained and appears spurious. Slide 7: Claims top 10 control 48% of MRR; reference says 49.6%—close but presented without rounding caveat, and the top-100 = 85% claim is unverifiable.",
+  "evidence": {
+    "insight": "Slide 5 offers a genuinely useful tension (monetization premium vs. negligible growth advantage) and slide 8's 2×2 framework synthesizes findings into an actionable lens. However, the insight is undermined by the questionable data partition.",
+    "narrative": "Strong arc: question (slide 2) → premium (slide 4) → catch (slide 5) → driver (slide 6) → concentration (slide 7) → framework (slide 8) → thesis (slide 9) → summary (slide 10). Purposeful sequence with a clear landing.",
+    "framing": "Audience (investor) and question are stated upfront on slide 2. However, no limitations are disclosed: 274 missing categories, 216 zero-revenue companies, how 'AI-related' was defined beyond category tags, or survivorship bias. The 414/586 split is presented without methodology.",
+    "accuracy": "The core AI/non-AI partition cannot be reconciled with the reference dataset (197 AI-category companies, 274 missing). All median comparisons ($423 vs $222, 19 vs 13 subscribers, 28.7% vs 26.5% growth) rest on this unverifiable grouping. Top-1 revenue share of 26.5% and '31.18% conversion rate' are unexplained. Top-10 at 48% is close to but not exactly the reference 49.6%.",
+    "visual": "Gamma template with repetitive red mesh background on 5 of 10 slides. Charts are simple and legible (bar charts, scatter plot) but the scatter plot on slide 6 shows only ~4 visible points, making the 'clear story' claim hollow. The 2×2 on slide 8 is conceptual, not data-driven. Slide 7's bar chart runs in reverse order (Top 100 to Top 1) which is counterintuitive for a cumulative concentration chart.",
+    "ai_slop": "Repetitive decorative red mesh background on half the slides adds no information. Phrases like 'The monetization advantage is structural, not accidental' and 'Recurring customers predict everything' are assertive consulting-speak without supporting evidence. The '31.18% Total conversion rate' label on slide 7 appears to be unexplained AI-generated filler."
+  },
+  "confidence": "medium",
+  "total": 58,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18306,
+    "output_tokens": 1070
+  }
+}

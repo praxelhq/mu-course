@@ -1,0 +1,255 @@
+Revenue Decoded: Insights from
+1,000 Startups
+ What's In The Dataset
+ A snapshot of 1,000 startups tracked on TrustMRR, each with revenue, growth, audience and marketplace fields
+
+
+
+
+              1,000                                        29                                         65                                            29
+             Companies tracked                      Data fields per company                    Countries represented                          Business categories
+
+
+
+
+ Core metrics defined
+                                                                                                                       Data quality note
+      MRR (Monthly Recurring Revenue) Predictable revenue billed every month from active subscriptions
+                                                                                                                       274 of 1,000 companies (27%) have no category
+      Revenue windows 30-day, 3-month, 12-month, and all-time revenue reported separately                              assigned — including the single largest company in the
+                                                                                                                       dataset. Category-level analysis therefore covers ~73%
+                                                                                                                       of total revenue.
+      Growth % Month-over-month change in revenue and MRR
+                                                                                                                       Only 142 companies report visitor traffic, so revenue-
+      Marketplace fields on_sale flag, asking price, and revenue multiple for businesses listed for sale               per-visitor should be read as a thin sample.
+
+
+
+
+TrustMRR · 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                                               2
+ Revenue Follows A Steep Power Law
+ A tiny number of companies account for almost all revenue in the dataset
+
+
+
+                              $334M                                 $3,620                                      61%
+                             Total all-time revenue              Median company revenue               Held by just the top 10 companies
+
+
+
+ Companies by all-time revenue tier
+
+                       300
+                                                       276
+
+                       250
+                                                                     214                     206
+
+
+
+
+ Number of companies
+                       200
+                                                                                                            161
+                       150
+
+                                  101
+                       100
+
+
+                       50                                                                                                                  42
+
+
+                         0
+                                   $0                 $1–1K        $1K–10K                $10K–100K     $100K–1M                          $1M+
+
+
+TrustMRR · 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                3
+ Sector Performance: Scale vs. Consistency
+ Median all-time revenue per company, by sector (sectors with n ≥ 18 companies)
+
+
+           SaaS
+          (n=66)
+                               $3,293                                                                                      Read the chart carefully
+
+            AI                                                                                                                E-comm's #1 rank is one company. 94% of E-comm's
+                                    $4,853                                                                                    total revenue is Brand On Demand alone.
+         (n=197)
+
+
+       Analytics
+                                 $3,876
+        (n=19)
+                                                                                                                              Marketing is similar. 78% of Marketing's total is Stack
+      Marketing
+                                                       $11,931
+                                                                                                                              Influence.
+       (n=42)
+
+
+   Content
+                                                            $14,289
+Creation (n=36)
+                                                                                                                              AI is the broadest base. 197 companies — the largest
+                                                                                                                              cohort by far — with the 2nd-highest total revenue
+   Social Media
+     (n=18)
+                                                             $14,766                                                          ($31.9M) and highest total MRR ($1.8M), without one
+                                                                                                                              dominant outlier.
+      Education
+                                                                         $19,399                                              SaaS and AI have low medians. Most individual
+       (n=30)
+                                                                                                                              companies are still small; sector totals lean on a handful
+        E-comm                                                                                                                of larger players.
+                                                                                                           $34,880
+         (n=19)
+
+                   $0          $5,000        $10,000     $15,000      $20,000      $25,000   $30,000   $35,000   $40,000
+
+
+
+
+TrustMRR · 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                                                          5
+ Growth Is Flat For Half The Dataset
+ 30-day revenue growth split, and what MRR reveals about revenue quality
+
+ 30-day revenue growth (986 companies reporting)
+                                                                         344                 MRR vs. reported revenue diverge
+350                  337
+                                                      305
+300                                                                                          For a pure subscription business, MRR × 12 should roughly equal 12-
+                                                                                             month revenue. In this dataset the typical company's actual figure differs
+250                                                                                          from that estimate by 73%.
+200
+                                                                                             This means most companies here aren't pure-subscription — one-time
+150                                                                                          sales, usage-based pricing, or seasonal spikes make up a meaningful share
+                                                                                             of revenue alongside MRR.
+100
+
+ 50
+                                                                                                                      Correlation between active subscriptions and MRR
+  0
+             Declining (<0%)                        Flat (0%)      Growing (>0%)             0.91                     — subscriber count is a strong, reliable predictor
+                                                                                                                      of recurring revenue.
+
+
+ Median growth = 0%. Mean growth = +42% — pulled up by a few extreme spikes (max +7,900%).
+
+                                                                                                                      Correlation between domain authority (SEO
+
+                                                                                             0.27                     rating) and revenue — a much weaker
+                                                                                                                      relationship.
+
+
+
+
+TrustMRR · 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                                          6
+ The US Dominates Tracked Revenue
+ Top countries by total all-time revenue, across 65 countries represented
+
+
+
+
+                                                                                            ~70%
+    Netherlands           $2M
+
+
+
+
+       Singapore          $4M                                                               of all revenue with a known country traces back
+                                                                                            to US-based companies
+
+
+          Canada           $6M
+
+
+                                                                                            258 US companies (26% of the dataset) generate the
+                                                                                            large majority of tracked revenue — the next 5
+           France            $11M
+                                                                                            countries combined still total less than 1/6th of the
+                                                                                            US figure.
+
+United Kingdom                $14M
+                                                                                            12% of total revenue sits with companies whose country
+                                                                                            field is blank (mostly “Stealth” / “Hidden” listings) and isn't
+                                                                                            attributable to any country above.
+   United States                                                                    $235M
+
+
+                    $0M                    $50M     $100M      $150M        $200M   $250M
+
+
+
+
+TrustMRR · 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                             7
+ Revenue Isn't Normally Distributed — Even After Log Transform
+ Anderson-Darling normality test on raw revenue/MRR columns, compared before and after log transform
+
+ Reduction in Anderson-Darling statistic after log-transforming each column
+100%                                                 96%            97%
+                  92%                                                               94%
+                                             91%
+ 90%                                                                                                   What the test found
+                                                                                                         Every raw revenue, MRR, and growth column fails the
+ 80%
+                                                                                                         Anderson-Darling normality test by a huge margin
+                                                                                                         (statistic 267–328 vs. a 0.751 critical value).
+ 70%
+
+
+ 60%                                                                                                     Log-transforming revenue/MRR cuts the AD statistic by
+                                                                                                         91–97% — the data becomes roughly bell-shaped in the
+ 50%                                                                                                     middle.
+
+ 40%
+                                                                                                         But log-revenue still formally fails, because ~11% of
+ 30%                                                                                                     companies report exactly $0 all-time revenue — a spike
+                                                                                                         no log-normal curve can produce.
+ 20%
+
+                                                                                                         Practical takeaway: use log(1+revenue) for modeling, not
+ 10%
+                                                                                                         raw revenue — and handle the zero-revenue companies
+  0%
+                                                                                                         as a separate group rather than assuming one smooth
+                30-Day                    3-Month   12-Month      All-Time          MRR                  distribution.
+               Revenue                    Revenue   Revenue       Revenue
+
+
+
+
+TrustMRR · 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                                   8
+   Conclusions
+                This is a power-law market, not a normal one. Median company revenue is $3,620; mean is $334,000. 61% of all revenue sits with 10 companies out of
+    1
+                1,000.
+
+
+
+                “Best sector” depends on the question. By total revenue, E-comm and Marketing look strongest — but that's one whale company each. AI is the sector
+    2
+                with genuine breadth: 197 companies, highest total MRR, no single dominant outlier.
+
+
+
+                Growth is flat for half the dataset. Median 30-day growth is 0%. Extreme swings (-100% to +7,900%) exist but are the exception, not the norm.
+    3
+
+
+
+                Revenue quality varies — not everyone is pure-subscription. MRR × 12 diverges from 12-month revenue by 73% typically, pointing to mixed one-time
+    4
+                and recurring revenue models.
+
+
+
+                Model log-revenue, not raw revenue. Log-transforming closes 91–97% of the normality gap, but ~11% of companies at exactly $0 revenue still need
+    5
+                separate treatment.
+
+
+
+
+TrustMRR · 1,000-Row Dataset · Frozen 30 Jul 2026                                                                                                                    9
+

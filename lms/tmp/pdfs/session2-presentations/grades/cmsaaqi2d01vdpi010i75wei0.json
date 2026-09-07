@@ -1,0 +1,39 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 8,
+    "accuracy": 5.5,
+    "visual": 6.5,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis on bifurcation and power-law concentration, with honest limitations flagging throughout.",
+  "fix_next": "Category figures (slide 5) appear fabricated—SaaS and Analytics are not in the reference dataset's top categories; verify all category totals against raw data.",
+  "verdict": "Well-structured executive story undermined by several wrong category numbers and inflated concentration claims.",
+  "flags": [
+    "fabricated-category-rankings",
+    "top10-share-inflated",
+    "top10-revenue-share-mismatch",
+    "stripe-share-overstated",
+    "trailing-12m-unverifiable"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 1/6/9/11: 'Top 10% hold 83.8%' — reference says 49.6% for top-10 companies (top 1%), not 83.8% for top 10%; the 83.8% figure is unsubstantiated. Slide 1: '$15.9M' total 30-day revenue rounds up from $15,596,344.59 — borderline but acceptable. Slide 5: Category bar chart shows 'SaaS' as top category at $4M and 'Analytics' at $3M; the reference dataset's top category is AI at $2.36M, and Analytics is $368K with 19 companies, not 70 at $3M. The entire category ranking appears wrong. Slide 5: AI listed as 198 companies — reference says 197, minor. Slide 6: 'Top 1% (10 startups) capture 48.6%' — reference top-10 share is 49.6%, off by ~1 percentage point. Slide 6: Stripe at 64% of companies — reference says 636/1000 = 63.6%, acceptable rounding; but 87% of revenue: reference is $13.53M/$15.60M = 86.7%, acceptable. Slide 4: '28.5% don't disclose country' — reference says 241/1000 = 24.1%, not 28.5%.",
+  "evidence": {
+    "insight": "Slide 8's four key insights go beyond chart description: power-law in bootstrapped markets, processor-as-signal, audience≠revenue, and acquisition market pricing. The bifurcation framing (337 growing vs 302 declining) is genuinely useful. However, the volume-vs-value reframe on slide 5 uses wrong numbers, weakening the insight.",
+    "narrative": "Clear arc from scope (slide 1-2) → market performance (3) → geography (4) → category (5) → concentration (6) → momentum (7) → synthesis (8) → dashboard (9) → recommendations (10) → summary (11). Thesis of 'healthy but concentrating' is maintained throughout. Slight redundancy between slides 8, 9, and 11.",
+    "framing": "Slide 2 explicitly addresses data quality, missingness rates, and warns readers to treat category/geography findings as directional. Scope, snapshot date, and data source are clearly stated on slide 1. The 'cold reader' test is well-handled. Audience (executive/investor) is implicit but clear.",
+    "accuracy": "Multiple material errors: category rankings on slide 5 do not match reference data (SaaS and Analytics are not standard categories in the dataset; the numbers appear fabricated or from a different grouping). The 83.8% top-10% concentration figure is stated repeatedly but doesn't match the reference 49.6% for top-10 companies. Country missingness stated as 28.5% vs actual 24.1%. The 48.6% top-1% figure is close but not exact (49.6%).",
+    "visual": "Clean, consistent design system with navy/coral palette. Good use of bar charts paired with business-read annotations (slide 4, 5). Pie chart on slide 7 is a weak choice for three-way split. Dashboard slide 9 is useful but redundant. Chart labels at $0M resolution on slide 4 lose information. No axis gridlines on most charts. Overall professional but not exceptional.",
+    "ai_slop": "Mild consulting-speak ('center of gravity,' 'bifurcating market') but generally substantive. The dashboard slide (9) is somewhat redundant filler. No decorative-but-meaningless graphics detected."
+  },
+  "confidence": "high",
+  "total": 71,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 21757,
+    "output_tokens": 1130
+  }
+}

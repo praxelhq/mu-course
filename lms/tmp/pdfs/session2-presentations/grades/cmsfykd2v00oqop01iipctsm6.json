@@ -1,0 +1,40 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 5,
+    "narrative": 6,
+    "framing": 5,
+    "accuracy": 3.5,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Clear thesis stated upfront with a coherent B2B-vs-B2C throughline and practical decision framework.",
+  "fix_next": "The 5.7× claim uses fabricated-looking medians ($1,036/$181) that don't match the dataset's ~2.35× median multiple; verify all core numbers against actual data.",
+  "verdict": "Focused narrative undermined by unverifiable numbers and thin analytical depth.",
+  "flags": [
+    "unverifiable-core-metric",
+    "100-percent-stripe-claim-false",
+    "no-limitations-discussed",
+    "exit-multiples-not-in-dataset",
+    "growth-rates-not-in-dataset",
+    "per-customer-revenue-not-in-dataset"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1: Claims '100% Stripe-verified data, zero self-reported claims' — dataset includes 7 providers, not just Stripe (Stripe is 636/1000). Slide 3: 255+401=656 tagged companies — audience_type is missing for 288 rows so 712 have data, not 656; counts may be off. Slide 4: B2B median $1,036/mo and B2C $181/mo yielding 5.7× — reference shows median multiples of ~2.35×/2.30× (annual revenue), not 5.7×; these figures appear fabricated or conflate mean with median. Slide 7: Growth rates (20.3% B2C, 13.5% B2B) are not derivable from the cross-sectional dataset which has no time-series data. Slide 8: Exit multiples (3.3× vs 2.9×) from '224 listings' — this data is not in the provided dataset and is presented without sourcing.",
+  "evidence": {
+    "insight": "The core comparison (B2B vs B2C revenue) is a reasonable question but the analysis stays surface-level: median comparison, a per-customer chart, and anecdotal top performers. No distributional analysis, no controlling for category or company age, no discussion of the 216 zero-revenue companies or survivorship bias. The 'pricing power drives the gap' claim on slide 6 is asserted without evidence from the dataset.",
+    "narrative": "Slides follow a logical arc: question → answer → evidence → nuance → action. The 'other side of the story' slide (7) adds balance. However, the narrative relies on numbers that cannot be verified, weakening the entire structure. The final recommendation is generic startup advice not uniquely earned by the analysis.",
+    "framing": "Audience (founders) and question (B2B vs B2C) are clear. However, no limitations are acknowledged: 288 missing audience_type values, survivorship bias in the dataset, cross-sectional nature preventing growth claims. The '100% Stripe-verified' claim on slide 1 is misleading framing.",
+    "accuracy": "Multiple core figures cannot be verified against the frozen dataset. The 5.7× multiple doesn't match known median multiples (~2.35×). Growth rates require time-series data not present. Exit multiples come from an unspecified external source. The Stripe-only claim is factually wrong. Per-customer revenue ($49 vs $9.34) is not derivable from the dataset columns available.",
+    "visual": "Consistent dark theme with cyan/purple color coding for B2B/B2C throughout. Bar charts are simple and readable. Layout is clean with good hierarchy. However, every chart is the same horizontal bar format — repetitive. No distribution plots, scatter plots, or anything showing variance. The decorative circle element adds nothing. Slide 2 is mostly empty space.",
+    "ai_slop": "Repetitive bar chart template across slides 4-8. Consulting-style language ('superior revenue outcomes,' 'pricing power alone drives the entire revenue gap'). The decision framework on slide 10 is generic startup advice not uniquely derived from data. Slide 9 'Proof, Not Theory' is cherry-picked anecdotes presented as proof."
+  },
+  "confidence": "high",
+  "total": 50,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 20096,
+    "output_tokens": 1044
+  }
+}

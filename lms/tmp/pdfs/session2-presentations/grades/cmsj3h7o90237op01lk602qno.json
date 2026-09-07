@@ -1,0 +1,37 @@
+{
+  "slide_count": 5,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 6.5,
+    "accuracy": 5.5,
+    "visual": 8,
+    "bonus": 2
+  },
+  "what_worked": "A genuinely original angle with a tight investigative narrative arc and disciplined visual restraint.",
+  "fix_next": "The revenue share claim (16.5% vs. reference 26.5%) and the \"40× MRR\" multiplier need verification against the frozen dataset.",
+  "verdict": "Compelling thesis with strong craft, undermined by a key revenue-share discrepancy.",
+  "flags": [
+    "revenue-share-mismatch",
+    "unverifiable-median-claims",
+    "causal-language-risk"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 2/5: Claims stealth listings hold 16.5% of revenue; reference says 26.525%. Slide 2: Median MRR $7,337 for stealth and $185 for named are unverifiable against provided benchmarks but the 40× multiplier is internally inconsistent ($7,337/$185 ≈ 39.7×, minor). Slide 5: 'The more a company earns, the more likely it is to disappear from view' is stated as a confirmed causal-direction pattern without evidence of that directionality (selection bias not addressed).",
+  "evidence": {
+    "insight": "Choosing the anonymous-company angle is genuinely original; testing and ruling out the 'for-sale' hypothesis (slide 4) adds analytical depth beyond description. The missingness-pattern analysis on slide 3 is a nice second layer.",
+    "narrative": "Clear four-act structure: hook (slide 1), reveal (slide 2), depth (slide 3), counter-theory (slide 4), synthesis (slide 5). Each slide advances the argument. 'CASE STATUS: PATTERN CONFIRMED · MOTIVE UNKNOWN' is an honest, satisfying landing.",
+    "framing": "Dataset, date, and denominator (129 vs 871) are stated. However, no explicit audience is identified, no limitations section addresses survivorship or self-selection bias in who opts for anonymity, and the scope of 'stealth' is only footnoted on the final slide.",
+    "accuracy": "Revenue share 16.5% contradicts reference 26.525%—a material error repeated on slides 2 and 5. The median figures ($7,337 stealth, $185 named) cannot be directly verified but the revenue-share gap suggests possible calculation issues. Slide 3's disclosure percentages (82% named for website/industry/country) are plausible but unverifiable. Slide 4's for-sale comparison is an interesting test but the numbers are unverifiable.",
+    "visual": "Dark palette with red accent is consistent and purposeful. Waffle chart on slide 1 is well-executed. Bar charts are clean with direct labels. Typography hierarchy is strong. No chartjunk. Slide 5 summary cards are effective. Minor: bar chart aspect ratios slightly exaggerate differences.",
+    "ai_slop": "none"
+  },
+  "confidence": "high",
+  "total": 72,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 10334,
+    "output_tokens": 777
+  }
+}

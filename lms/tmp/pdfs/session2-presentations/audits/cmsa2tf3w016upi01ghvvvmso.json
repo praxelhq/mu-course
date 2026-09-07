@@ -1,0 +1,47 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 6.5,
+    "framing": 4.5,
+    "accuracy": 3,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Sustained thesis that revenue concentration matters more than product count, with logical slide sequencing.",
+  "fix_next": "Verify every statistic against the actual dataset; top-10 share is 49.6% not 38%, zero-revenue count is 216 not 620.",
+  "verdict": "Coherent narrative built on pervasively wrong numbers undermines an otherwise competent deck.",
+  "flags": [
+    "fabricated-zero-mrr-segmentation",
+    "total-revenue-wrong",
+    "zero-revenue-count-wrong",
+    "top10-share-wrong",
+    "category-percentages-wrong",
+    "stripe-share-wrong",
+    "no-limitations-disclosed",
+    "no-missingness-acknowledged",
+    "ai-generated-template",
+    "unverifiable-archetype-claims",
+    "decorative-ai-images"
+  ],
+  "factual_error_count": 9,
+  "factual_error_detail": "Slide 1: '$1.2M' total revenue vs actual $15.6M (~12× off); '62% unmonetized' implies 620 zero-rev but actual is 216 (21.6%); '38% top-10 share' vs actual 49.6%. Slide 2: AI/ML '8% of products, 18% of MRR' — AI count is 197 (19.7% not 8%); SaaS '18% count, 24% MRR' — SaaS is 66 (6.6% not 18%), total $703K (4.5% not 24%); category bar chart values inconsistent with reference. Slide 5: repeats 38% top-10 claim. Slide 6: Stripe '71% of monetized products' — reference shows 636/1000 total, share of revenue is 86.7% not 78%. Slide 7: 620 zero-MRR count wrong (216 actual); entire reason-breakdown (early-stage 40%, free 29%, etc.) has no supporting field in dataset — appears fabricated.",
+  "evidence": {
+    "insight": "Core thesis (concentration > volume) is sound and decision-relevant. B2B vs B2C comparison and archetype frameworks add structure. But insights rest on wrong numbers, so analytical depth is shallow despite good framing instincts.",
+    "narrative": "Clear arc from overview through category economics, segments, concentration, monetization, long tail, archetypes, opportunities, to conclusion. Thesis sustained throughout. Conclusion lands with three actionable takeaways. Sequence is purposeful.",
+    "framing": "No dataset provenance, no mention of substantial missingness (241 country, 288 audience_type, 274 category, 286 domain missing), no limitations section, no definition of MRR vs 30-day revenue. Audience implied but never stated. Cold reader cannot assess reliability.",
+    "accuracy": "At least 9 verifiable factual errors. Total revenue off by 12×. Zero-revenue count tripled. Top-10 share understated by ~12pp. Category counts and shares inverted (AI called 8% when it's ~20%; SaaS called 18% when it's ~7%). Stripe revenue share wrong. Slide 7's zero-MRR reason breakdown is entirely fabricated — no dataset field supports it.",
+    "visual": "Clean Gamma template, readable typography, good whitespace. Bar and donut charts are legible. However, charts visualize incorrect data. 2×2 matrix and zero-MRR breakdown chart present fabricated categories. No source annotations on any chart. Decorative AI cityscape and stock images add no analytical value.",
+    "ai_slop": "Gamma-generated template throughout. Decorative AI illustrations (slides 1, 9). Consulting-speak ('monetization architecture,' 'repeatable architecture'). Slide 7 zero-MRR segmentation and slide 8 archetypes read as AI-imposed frameworks rather than data-derived findings. The 70% claim on slide 8 is unverifiable."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 5.0 to 4.5 — no limitations, no missingness disclosure, no dataset definition for a cold reader. All other scores confirmed as appropriate given pervasive factual errors against a coherent but hollow narrative.",
+  "total": 49,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 19285,
+    "output_tokens": 1091
+  }
+}

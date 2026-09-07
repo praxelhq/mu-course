@@ -1,0 +1,39 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 5.5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Strong narrative arc from data quality through concentration analysis to actionable recommendations, with honest caveats slide.",
+  "fix_next": "The E-comm median is $387 not $155, and the anonymous revenue math doesn't match reference figures—verify all appendix numbers against raw data.",
+  "verdict": "Well-structured marketplace briefing undermined by several verifiable factual errors.",
+  "flags": [
+    "e-comm-median-wrong",
+    "anonymous-revenue-split-off",
+    "subscriber-correlation-unverifiable",
+    "concentration-figures-unverifiable",
+    "domain-missing-conflated-with-audience-type"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 6/13: E-comm median stated as $155; reference is $387 (material error). Slide 9/13: Anonymous count 130 vs reference 129, named 870 vs 871—minor but anonymous total revenue $4.19M implies avg ~$32.2K which roughly checks, yet named avg $13.1K × 871 = $11.41M + $4.19M = $15.60M is close to total, so the split is approximately consistent but the anonymous share of revenue should be 26.5% not exactly 27% (minor). Slide 3: 'Domain rating' missing listed as 28.6% (286) which matches reference for 'domain' field, but the 13.8% for 'Website' doesn't correspond to any reference missing field. Slide 8: Revenue-per-subscriber figures ($353 Marketing, $51 AI) are a custom metric not directly verifiable but the framing as 'per subscriber' rather than median revenue is a different metric than the reference medians—not an error per se but potentially misleading. Slide 6: E-comm median $155 is clearly wrong vs $387 reference.",
+  "evidence": {
+    "insight": "Slide 7 concentration analysis (72.9% top-5%) and slide 8 revenue-per-subscriber comparison offer genuinely decision-useful framing beyond simple chart description. The anonymous-premium insight on slide 9 is original and actionable.",
+    "narrative": "Clear five-point executive summary (slide 2) sets up the entire deck; slides progress logically from overview → revenue → new analyses → insights → recommendations → caveats → thesis. The investment-thesis landing on slide 12 synthesizes well.",
+    "framing": "Slide 1 establishes audience (TrustMRR founding team), sample size, and data freeze date. Slide 3 addresses missingness upfront. Slide 11 dedicates a full page to risks and caveats including small-sample warnings and selection bias. Missing: no explicit statement of the central question until slide 12.",
+    "accuracy": "E-comm median $155 vs reference $387 is a clear error (slide 6). The correlation r=0.802 for subscribers vs revenue is presented confidently but cannot be verified against the reference (which gives r=0.025 for founded-year vs revenue—different variable pair, so not directly contradictory but suspicious given no scatter plot shown). Anonymous split counts (130/870) are off by 1 from reference (129/871). Category revenue figures on slide 5 match reference well. Country counts on slide 4 match reference for US (258) and appear reasonable.",
+    "visual": "Consistent teal-on-dark/white color scheme throughout. Bar charts are clean and appropriately labeled. The 'So What?' callout boxes on slides 3, 5, 7, 8 are effective. However, visual variety is limited—nearly every chart is a horizontal bar. No scatter plot for the r=0.802 claim. Slide 7's bar chart for cumulative percentages would be better as a Lorenz curve. Template is polished but somewhat repetitive.",
+    "ai_slop": "Minimal slop. Language is specific and data-grounded rather than generic. The consulting-style framing ('Marketplace Intelligence Briefing') is slightly inflated but the content backs it up. No decorative-but-meaningless graphics detected."
+  },
+  "confidence": "high",
+  "total": 73,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 25529,
+    "output_tokens": 1062
+  }
+}

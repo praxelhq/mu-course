@@ -1,0 +1,39 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 6,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 6,
+    "bonus": 1
+  },
+  "what_worked": "Honest limitations framing, median-over-mean discipline, and careful handling of stealth/anonymous rows throughout.",
+  "fix_next": "The $13.5M \"tracked MRR\" headline conflates MRR with 30-day revenue ($15.6M total); category revenue figures on slide 4 don't match the dataset, undermining trust.",
+  "verdict": "Competent descriptive overview with good data hygiene but limited original insight and several numerical errors.",
+  "flags": [
+    "revenue-metric-confusion",
+    "category-revenue-mismatch",
+    "b2b-median-ratio-off",
+    "no-payment-provider-analysis",
+    "descriptive-not-analytical"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1/3: '$13.5M tracked MRR' — total 30-day revenue is $15.6M, not $13.5M; conflating MRR field with revenue_30d is unclear. Slide 3: '25.5% of startups are B2B' — 255/712 (non-missing audience_type) = 35.8%, not 25.5% of 1,000 (denominator issue given 288 missing). Slide 4: AI total MRR shown as $1,806K — reference is $2,356K for 30-day revenue; SaaS shown $589K vs reference $703K; Education $524K matches but other categories systematically low, suggesting wrong revenue field or filter. Slide 6: B2B/B2C median ratio claimed as 5.7x ($1,036/$181) — reference shows median revenue multiples of ~2.35x/2.30x, and $1,036/$181 doesn't match known medians. Slide 3: '74% of tracked MRR sits in US-based startups' — plausible but unverifiable and potentially inflated by the MRR vs revenue confusion.",
+  "evidence": {
+    "insight": "Findings stay at the descriptive level: 'AI has the most startups,' 'B2B earns more,' 'US dominates.' The volume-vs-revenue divergence (slide 4) is the closest to a genuine insight but is stated without exploring why. No provider analysis, no founded-year exploration, no anonymity premium discussion. Takeaways on slide 10 restate chart readings rather than synthesizing implications.",
+    "narrative": "Clear linear structure: dataset intro → summary → category → geography → audience → top earners → growth → positioning → takeaways. This is coherent and purposeful, though it reads more as a tour of dimensions than a thesis-driven argument. No single driving question is posed and answered.",
+    "framing": "Slide 2 is an unusually strong data-source slide: self-report caveat, sparsity rates, stealth-company explanation, skewness warning, and median-over-mean rationale. Denominator for positioning stats (~65%) is noted on slide 9. This is above-average methodological transparency.",
+    "accuracy": "Multiple numerical discrepancies: the headline $13.5M figure doesn't match total 30-day revenue of $15.6M. Category revenue bars on slide 4 are systematically lower than reference values (AI $1,806K vs $2,357K). B2B percentage denominator is unclear (25.5% implies dividing by 1,000 including missing). The 5.7x B2B/B2C median ratio doesn't align with reference multiples of ~2.3x. These are material, not rounding differences.",
+    "visual": "Clean, consistent template with good use of teal/dark palette. Bar charts are appropriately chosen and labeled. Slide 5's bar chart rounds everything to $0M except US, making the comparison useless — a log scale or table would serve better. Slide 8 uses a different color (orange) for growth, providing visual distinction. No chart junk, but also no annotations or callouts that add analytical value beyond labels.",
+    "ai_slop": "Minimal slop. Template is polished but not generic-filler. Language is restrained and specific. The decorative teal circles on slides 1 and 10 are purely ornamental but not distracting. No fabricated consulting language or meaningless graphics."
+  },
+  "confidence": "high",
+  "total": 60,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19620,
+    "output_tokens": 1112
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 3,
+    "narrative": 4.5,
+    "framing": 3,
+    "accuracy": 2,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Consistent topography metaphor and the anomaly-validation framework on slides 8–9 showed genuine analytical thinking.",
+  "fix_next": "Nearly every chart is decorative illustration, not data-driven; ground claims in actual dataset numbers, categories, providers, and sample sizes.",
+  "verdict": "Polished consulting theater with almost no verifiable data behind it.",
+  "flags": [
+    "fabricated-charts",
+    "no-real-data-shown",
+    "consulting-language-inflation",
+    "ai-slop",
+    "unearned-causal-claims",
+    "missing-dataset-specifics"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "S1: calls it 'thousands of SaaS entities' — dataset has 1,000 rows. S2: same 'thousands' claim. S3: quadrant scatter appears fabricated — no axes with real units, no thresholds defined, no evidence these clusters exist in the data. S7: 'Anatomy of Outperformance' table claims about churn, pricing power, product velocity are entirely invented — none of these variables exist in the dataset. S4/S5: causal pipeline from X Followers → Domain Rating → MRR is asserted without correlation evidence or controlling for confounders; dataset has observational associations only.",
+  "evidence": {
+    "insight": "The core thesis (convert social attention into domain authority) is a plausible strategic idea but is never substantiated with any actual numbers from the dataset. No category analysis, no provider analysis, no revenue distributions, no median comparisons. Slide 7's table is pure invention — churn rate, pricing power, product velocity are not in the dataset.",
+    "narrative": "There is a coherent arc: chaos → framework → archetypes → drivers → anomalies → prescriptions → conclusion. The sequence is purposeful and the topography metaphor holds. However, the narrative is built on assertions rather than evidence, making it a story about a story rather than a data story.",
+    "framing": "Title says 'SaaS Market' but the dataset covers all categories (AI, Marketing, E-comm, Education, etc.), not just SaaS. No mention of dataset size (1,000 rows), missingness (241–288 across fields), or the 216 zero-revenue companies. No audience is specified. Scope is undefined.",
+    "accuracy": "Slide 3's quadrant chart has no real axis values, thresholds, or n-counts — it appears entirely illustrative. Slide 6 cites 'Stealth Co 17, 718% growth' which cannot be verified but is at least specific. Slide 8 cites '12,983% MRR growth jump' — plausible but unverifiable. Slide 7's four dimensions (product velocity, churn rate, pricing power) do not exist in the dataset. No actual revenue figures, category breakdowns, provider shares, or statistical measures appear anywhere in the deck.",
+    "visual": "Illustrations are polished and consistent in style (NotebookLM-generated). The topography/mechanical metaphors are visually appealing. However, not a single chart shows real data with proper axes, labels, and values. The slide 3 scatter, slide 6 radar, slides 8–9 line charts are all schematic illustrations, not data visualizations. This is decorative design, not evidence-led design.",
+    "ai_slop": "Heavy AI slop throughout: 'operational velocity,' 'structural authority,' 'weaponise capital,' 'forensic audit of churn drivers,' 'existential timer,' 'fleeting social noise → permanent structural authority.' Slide 7's entire comparison table is generic SaaS consulting boilerplate with no dataset grounding. Every illustration is AI-generated decoration rather than a data chart."
+  },
+  "confidence": "high",
+  "total": 33,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19924,
+    "output_tokens": 962
+  }
+}

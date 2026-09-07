@@ -1,0 +1,42 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 6,
+    "accuracy": 5,
+    "visual": 6,
+    "bonus": 1
+  },
+  "what_worked": "Popularity-vs-profitability scatter and growth-vs-subscriber quartile comparison deliver genuinely contrarian, data-grounded arguments.",
+  "fix_next": "Label every chart axis with actual category/metric names—three charts use only numeric indices, crippling readability and verifiability.",
+  "verdict": "Strong narrative arc undermined by mislabeled charts and several factual errors in category claims.",
+  "flags": [
+    "factual-errors-in-key-claims",
+    "unlabeled-chart-axes",
+    "small-n-overinterpretation",
+    "revenue-figure-mismatch",
+    "no-limitations-disclosure",
+    "missing-data-not-acknowledged"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 3: Top-3 stated as AI/SaaS/Education but by frozen reference Marketing ($1.32M) and E-commerce ($1.11M) both outrank SaaS ($703K) and Education ($524K); 49.8% share doesn't match those three. Slide 4/5/9: AI median stated as $446 but reference gives $503. Slide 2: '$334M combined all-time revenue' is unverifiable and inconsistent with the $15.6M monthly snapshot. Slide 3: '30.8% AI share of revenue' doesn't reconcile with reference AI total ($2.36M of ~$7.4M categorized ≈ 32%, close but denominator unclear given 274 missing categories). Slide 9: AI median repeated as $446.",
+  "evidence": {
+    "insight": "Crowding-vs-median scatter (slide 4), subscriber-quartile staircase vs flat growth quartiles (slide 7), freemium median gap, and vanity-growth anecdote all challenge conventional wisdom with dataset-specific evidence. Small-n caveat on hidden gems (n=5–7) limits actionability.",
+    "narrative": "Clean arc: long-tail framing → concentration → crowding paradox → predictive signals → surprising patterns → recommendations → closing thesis. Each slide advances the argument. Thesis stated early (slide 2) and landed cleanly (slide 10).",
+    "framing": "Audience (founders/investors) stated on slide 1; dataset scope and freeze date noted. However, no mention of 274 missing categories or 241 missing countries, which materially affect category-level claims. No limitations slide. The $334M all-time figure appears without reconciliation.",
+    "accuracy": "Top-3 category composition is wrong—Marketing and E-commerce outrank SaaS and Education by total revenue. AI median is $503 not $446. The 49.8% share doesn't match the stated AI/SaaS/Education grouping against reference totals. Spearman correlations on slide 6 are plausible but unverifiable. Freemium/paid comparison is interesting but outside reference data.",
+    "visual": "Consistent navy/gold palette, clean typography, effective callout boxes. But slides 3, 5, and 6 use numeric-only y-axis labels (1–8, 1–5) instead of category or metric names, making charts unreadable without guessing. Scatter plot on slide 4 is well-executed with color coding. Template is polished but repeated unlabeled axes are a serious legibility flaw.",
+    "ai_slop": "Consulting-style phrasing ('executive briefing,' 'hidden gems,' 'gold rush') is present but not excessive. Four-card layouts on slides 2 and 8 are template-ish but populated with specific data points. Not egregious."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing by 0.5 (no missingness disclosure is more serious given category-dependent claims) and visual by 0.5 (three charts with unlabeled axes is a recurring legibility failure, not a one-off). Other scores confirmed as appropriate.",
+  "total": 64,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 19307,
+    "output_tokens": 1017
+  }
+}

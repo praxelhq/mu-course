@@ -1,0 +1,39 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 6.5,
+    "accuracy": 5,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "Strong throughline connecting crowding, pricing power, domain equity, and exits into one coherent argument.",
+  "fix_next": "Median MRR figures on slide 3 don't match the frozen dataset (Education $2,142 vs. reference $2,435; AI $446 vs. $503); verify all computed metrics against raw data.",
+  "verdict": "Cohesive narrative with real insight, undermined by unverifiable and incorrect median figures.",
+  "flags": [
+    "median-mismatch",
+    "unverifiable-derived-metrics",
+    "customer-support-category-not-in-reference",
+    "b2b-b2c-multiplier-inflated",
+    "causal-language-on-observational-data"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 3: AI median shown as $446, reference is $503; Education median $2,142 vs. $2,435; 'Customer Support' and 'Marketplace' categories with high medians are not in the frozen reference top-12 and sample sizes are unstated, making the headline claim unverifiable. Slide 9: B2B beats B2C '5.7×' on median MRR — reference shows ~2.35× median multiple, a large overstatement. Slide 9: 'charging from day one beats freemium 6×' is unverifiable against reference data and likely inflated. Slide 6: Domain-tier analysis is plausible but '$13,00,000' formatting suggests $1.3M which is stated correctly in text, though the chart label formatting is ambiguous (Indian numeral grouping).",
+  "evidence": {
+    "insight": "Slide 3's crowd-vs-reward framing is genuinely useful; slide 7 momentum analysis adds a second dimension beyond static medians; slide 6 pairs exit valuation with growth persistence by DR tier — a non-obvious double-payoff argument.",
+    "narrative": "Clear four-part throughline (slide 9) that each preceding slide builds toward; sequence moves logically from category crowding → pricing → geography → domains → momentum → exits → synthesis. The closing slide lands the thesis crisply.",
+    "framing": "Slide 2 explains data provenance well; footnotes on most slides note exclusion criteria and sample sizes. However, the deck never states total dataset size prominently, doesn't quantify missingness for category (274 rows), and doesn't define 'MRR' vs. '30-day revenue' distinction clearly. Audience is implied (indie founders/buyers) but never explicitly stated.",
+    "accuracy": "Multiple median values diverge from reference: AI $446 vs $503, Education $2,142 vs $2,435. Customer Support and Marketplace categories appear with high medians but aren't in the reference top-12, and no n-counts are given for them on slide 3. The B2B/B2C 5.7× claim on slide 9 substantially overstates the reference 2.35× median ratio. Price-per-customer metrics on slide 4 are derived and unverifiable but plausible. Geography slide percentages are plausible but not directly verifiable.",
+    "visual": "Consistent dark theme with good hierarchy; bar charts are well-labeled and appropriately simple; color coding (green for positive, red/yellow for caution) is effective. Slide 6 uses dual charts well. Number formatting uses Indian-style comma grouping ($13,00,000) which may confuse international readers. Overall restrained and evidence-led design with no decorative clutter.",
+    "ai_slop": "Minimal slop. The deck avoids generic filler and consulting buzzwords. Each slide has a specific claim. The closing slide ('Build outside the crowd. Price like you mean it.') is punchy rather than generic. Template consistency is high but not repetitive in a meaningless way."
+  },
+  "confidence": "high",
+  "total": 70,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19483,
+    "output_tokens": 1006
+  }
+}

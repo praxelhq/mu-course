@@ -1,0 +1,45 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 2.5,
+    "narrative": 3,
+    "framing": 2.5,
+    "accuracy": 1.5,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Clean visual template with consistent typography, color-coded badges, and readable table layout on slide 4.",
+  "fix_next": "Ground every chart and claim in actual dataset fields and values; remove all fabricated categories, MRR figures, and churn rates.",
+  "verdict": "Polished template wrapping fabricated data; almost no verifiable connection to the actual dataset.",
+  "flags": [
+    "fabricated-charts",
+    "fabricated-categories",
+    "unverifiable-claims",
+    "ai-slop",
+    "no-dataset-grounding",
+    "missing-methodology",
+    "stock-photo-filler",
+    "no-limitations-disclosed",
+    "invented-metrics"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 2: r=0.28 correlation references a variable (social media clout) not in the dataset; 67.8% under $1K claim unverifiable. Slide 3: Categories 'Customer Support AI' and 'General SaaS' do not exist in the dataset; MRR and growth % figures are fabricated (no MRR or growth fields exist). Slide 3: Content Creation shown as top category at $12.5K MRR while actual top category AI ($2.36M total) is absent. Slide 4: Churn rates (>15%, <2%, <4%, 8-10%) and pricing tiers ($10-$20, $49/user, $15/mo) are invented—no churn or pricing fields exist in the dataset. Slide 4: 'Dunning / Payment Recovery' and 'Vertical Meeting Intelligence' are not dataset categories.",
+  "evidence": {
+    "insight": "No original finding traceable to the 1,000-row dataset. Slide 4 saturation matrix and slide 6 takeaways are generic startup consulting advice applicable to any context. Actual dataset signals (top-10 share 49.6%, Stripe dominance at 636 rows, .ai vs .com median gap, anonymous revenue share 26.5%) are entirely absent.",
+    "narrative": "Loose arc from problem to opportunity to action, but the analytical middle (slides 3-4) presents fabricated data rather than building from real findings. Slide 5's 4-week framework is disconnected from any dataset evidence. No synthesis ties back to actual data patterns.",
+    "framing": "Audience (indie founders) is named but dataset scope, sample size details, missingness (274 missing categories, 216 zero-revenue rows, 241 missing countries), revenue definition (lifetime not MRR), and limitations are never disclosed. A cold reader cannot assess validity.",
+    "accuracy": "Pervasive fabrication: slide 3 invents categories and MRR figures from fields that don't exist; slide 4 invents churn rates and pricing from nonexistent columns; slide 2 cites a correlation coefficient for a variable not in the dataset. The dataset contains lifetime revenue, not MRR, making the entire MRR framing misleading.",
+    "visual": "Professional template with good hierarchy, consistent color palette, and readable table. However, slide 2 stock photo is pure filler, slide 3 bar chart presents fabricated data attractively, and slide 5 is a generic framework card layout with no data visualization.",
+    "ai_slop": "Pervasive: stock photo of man at laptop (slide 2), generic 4-week validation framework (slide 5) indistinguishable from any startup blog post, consulting-speak takeaways (slide 6), inflated branding ('Dataset Intelligence & Market Analysis', 'Verified Micro-SaaS Financial Signals'), fabricated category names and statistics throughout that appear AI-generated without dataset consultation."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 2 to 1.5 and insight from 3 to 2.5 because the fabrication is more extensive than preliminary suggested—every quantitative claim on slides 3-4 is invented, the dataset's actual top categories are absent, and lifetime revenue is misrepresented as MRR throughout. Lowered narrative from 3.5 to 3 because the arc relies on fabricated evidence. Lowered framing from 3 to 2.5 for complete absence of methodology and limitations disclosure.",
+  "total": 27,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 11582,
+    "output_tokens": 1082
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "slide_count": 5,
+  "scores": {
+    "insight": 1,
+    "narrative": 3,
+    "framing": 1,
+    "accuracy": 0.5,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Visually polished deck with consistent branding, clear hierarchy, and readable before/after bar charts on slides 4–5.",
+  "fix_next": "Use the assigned 1,000-row dataset; every claim must trace to that data, not unsourced industry assertions.",
+  "verdict": "A consulting pitch for Meesho, not a data story from the assigned dataset.",
+  "flags": [
+    "wrong-dataset",
+    "no-assigned-data-used",
+    "unsourced-claims",
+    "consulting-pitch-not-data-story",
+    "fabricated-projections",
+    "decorative-over-analytical"
+  ],
+  "factual_error_count": 0,
+  "factual_error_detail": "",
+  "evidence": {
+    "insight": "Zero analytical findings from the assigned 1,000-row dataset. All claims (RTO 20-30%, last-mile 40-55%, AOV ≈₹350) are generic industry assertions about Meesho logistics with no derivation shown.",
+    "narrative": "Internally coherent three-act consulting pitch (problem → unit economics → VAANI solution), but it is entirely disconnected from any assigned data-story task. No analytical question is posed or answered with data.",
+    "framing": "Framed as a Meesho strategy case for an internal audience. No mention of the 1,000-row dataset, its variables, missingness, or any scope/limitation relevant to the assigned task. A cold reader would not know this was a data-story assignment.",
+    "accuracy": "No claims reference the frozen dataset, so none can be verified against it. Industry figures (COD ~75%, RTO 20-30%, pickup adoption <10%) are stated without citations. Slide 5 fine print concedes numbers are 'indicative and based on internal estimates'—effectively admitting fabrication. ₹300 Cr savings is an unsubstantiated projection.",
+    "visual": "Professional Meesho-branded template with consistent pink/magenta palette, clear icon usage, readable bar charts (slides 4-5), and good visual hierarchy. Slide 4 is dense but navigable. However, charts illustrate assumed/estimated figures rather than analyzed data.",
+    "ai_slop": "Heavy consulting jargon throughout: 'Re-Architecting Last-Mile Through Trust, Density & Behavioural Design,' 'distributed commerce ecosystem,' 'layered logistics architecture for Bharat.' Decorative icons and slogans dominate over any analytical content."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 1.5 to 1.0; the deck makes zero reference to the assigned dataset, its schema, or any analytical scope—worse than merely weak framing. All other scores confirmed as appropriate.",
+  "total": 22,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 9307,
+    "output_tokens": 730
+  }
+}

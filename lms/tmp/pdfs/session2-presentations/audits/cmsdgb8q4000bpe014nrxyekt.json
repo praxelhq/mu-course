@@ -1,0 +1,45 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 0.5,
+    "narrative": 2,
+    "framing": 0.5,
+    "accuracy": 0.5,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "Consistent visual template and clear icon-based layouts show basic design competence.",
+  "fix_next": "Replace the entire pitch deck with an actual data-story analyzing the provided 1,000-row dataset with charts and statistical findings.",
+  "verdict": "A startup pitch deck, not a data-story presentation. Dataset completely ignored.",
+  "flags": [
+    "wrong-assignment-type",
+    "no-data-analysis",
+    "no-charts",
+    "no-dataset-engagement",
+    "placeholder-image-600x400",
+    "broken-image-slide12",
+    "ai-slop-consulting-language",
+    "decorative-icons-no-substance",
+    "generic-swot-no-data"
+  ],
+  "factual_error_count": 0,
+  "factual_error_detail": "",
+  "evidence": {
+    "insight": "Zero analytical findings from the dataset. No statistics, no comparisons, no patterns identified. Every slide describes a hypothetical product (TrustMRR) rather than exploring the 1,000-row dataset.",
+    "narrative": "Coherent pitch-deck arc (problem → solution → features → SWOT → vision) but entirely wrong genre. No data story is told; no analytical question is posed or answered.",
+    "framing": "No dataset description, no research question, no audience framing, no scope or limitations. A cold reader would have no idea a 1,000-row dataset exists or what analytical question is being explored.",
+    "accuracy": "The dataset is never referenced—no revenue figures, category breakdowns, provider distributions, or any quantitative claims. Slide 3 contains an unfinished placeholder image ('600 × 400'). Slide 12 has a broken image (alt-text visible). Cannot verify claims because none are data-derived.",
+    "visual": "Clean blue/white template with legible typography and consistent icon styling. However, slide 3 has a raw placeholder, slide 12 has a broken image, and slides 2/4/5/7/9/10 repeat near-identical card/icon-grid layouts. Zero data visualizations exist anywhere.",
+    "ai_slop": "Pervasive pitch-deck boilerplate: 'The Bloomberg for Startup Revenue,' 'The LinkedIn of Financial Transparency,' 'trust is priceless,' 'making trust measurable.' Generic SWOT with no data backing. Six slides use identical card-grid layouts with decorative icons and no analytical content."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 1→0.5 and framing/accuracy from 1→0.5 each. The preliminary scores already reflected the fundamental mismatch, but even a score of 1 implies some minimal engagement with the dataset or analytical task. This deck contains literally zero data engagement—no single number from the dataset appears anywhere. The visual score of 3 is retained because the template is clean and consistent despite placeholder/broken images.",
+  "total": 13,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 22012,
+    "output_tokens": 751
+  }
+}

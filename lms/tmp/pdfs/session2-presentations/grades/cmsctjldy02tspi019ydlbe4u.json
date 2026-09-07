@@ -1,0 +1,39 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 8.5,
+    "framing": 8,
+    "accuracy": 6.5,
+    "visual": 7,
+    "bonus": 3
+  },
+  "what_worked": "Genuinely opinionated thesis with honest caveats, especially the \"what to check before acting\" column.",
+  "fix_next": "Top-10 revenue share is 49.6% not 61.1%; median AI revenue is $503 not $446; verify all headline numbers against the frozen dataset before presenting.",
+  "verdict": "Sharp strategic storytelling undermined by several material numerical errors.",
+  "flags": [
+    "top10-share-inflated",
+    "median-values-off",
+    "ai-revenue-share-misstated",
+    "b2b-multiplier-unverifiable",
+    "correlation-stated-without-method"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 3: Top-10 revenue share stated as 61.1%, reference is 49.6%. Slide 3: '22.9% held by top 1' — Stan at 22.9% of $334m lifetime is plausible but the dataset measures 30-day revenue not lifetime; mixing lifetime and 30-day denominators throughout. Slide 2/4: AI median stated as $446/month; reference median is $503. Slide 4: Education median stated as $2,142; reference is $2,435. Slide 2: 'AI is 13% of the revenue' — AI total is $2.36M of $15.6M = 15.1%, not 13%. Slide 5: Stripe stated as 87% of revenue; reference is $13.53M/$15.60M = 86.7% which rounds to 87%, acceptable. The B2B/B2C 5.7x claim ($1,036/$181) cannot be verified against reference medians of 2.35x/2.30x multiples — likely using means or different cuts without disclosure.",
+  "evidence": {
+    "insight": "Slide 4's juxtaposition of builder crowding in AI vs. median revenue in 'boring' categories is a genuinely useful insight. Slide 6's five options with explicit counter-arguments show real analytical maturity. The domain-rating revenue ladder on slide 3 is decision-relevant.",
+    "narrative": "Clear four-act structure (what is happening → what to build → what changed → what to do) stated on slide 2 and followed faithfully. Each slide title is an action-oriented claim, not a label. The narrative lands on concrete options.",
+    "framing": "Slide 1 sets audience (builders and investors), scope (1,000 businesses), and data provenance. Slide 6 footer explicitly warns about selection bias and self-reporting. Missing: no discussion of the 274 missing-category rows affecting category analysis, and the 241 missing-country rows are only partially acknowledged (242 stated).",
+    "accuracy": "Multiple headline numbers deviate materially from the frozen reference: top-10 share (61.1% vs 49.6%), AI median ($446 vs $503), Education median ($2,142 vs $2,435), AI revenue share (13% vs 15.1%). The deck conflates lifetime revenue ($334m) with 30-day revenue ($15.6M) without clear separation — slide 3 says 'ten businesses hold 61% of the $334m lifetime revenue' but the concentration chart likely uses 30-day data. The B2B/B2C 5.7x claim doesn't match reference multiples.",
+    "visual": "Clean, restrained design with consistent green/dark palette. Charts are appropriately simple (bar charts, horizontal bars). The paired count-vs-median chart on slide 4 is effective. Slide 5's payment provider table is well-structured. However, slide 3 is dense with two charts plus extensive bullets — hierarchy could be clearer. No decorative graphics or meaningless visuals.",
+    "ai_slop": "none — the writing is specific, opinionated, and dataset-grounded throughout. No generic filler or consulting language. Caveats are genuine, not performative."
+  },
+  "confidence": "high",
+  "total": 80,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 14221,
+    "output_tokens": 1022
+  }
+}

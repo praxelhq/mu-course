@@ -1,0 +1,38 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 5.5,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong thesis—volume ≠ value—carried consistently through categories, providers, and audience types with good narrative discipline.",
+  "fix_next": "B2B/B2C median multiplier is ~2.3x not 5.7x; the $13.5M headline conflates 30-day revenue with MRR; verify core numbers against the dataset.",
+  "verdict": "Coherent and well-designed but several key figures are materially wrong.",
+  "flags": [
+    "revenue-labeled-as-mrr",
+    "b2b-b2c-multiplier-wrong",
+    "stripe-revenue-share-inflated",
+    "histogram-bins-suspiciously-uniform"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 1: $13.5M called 'combined monthly recurring revenue'—dataset total is $15.6M 30-day revenue, not MRR, and rounding to $13.5M is unexplained. Slide 2: AI captures '13.4% of platform-wide MRR'—actual share is ~15.1% ($2.36M/$15.6M); also denominator issue with 274 missing categories. Slide 4: B2B/B2C median multiplier stated as 5.7x ($1,036/$181)—reference shows ~2.35x/2.30x multiples, so both medians appear fabricated. Slide 5: Stripe revenue share stated as 87%—actual is $13.53M/$15.60M ≈ 86.7%, close but RevenueCat listed as 19.1% of listings when it is 189/1000=18.9% (minor); Stripe listed as 64.4% of listings but reference says 636/1000=63.6%. Slide 6: Histogram shows nearly uniform bins (197, 198, 197, 196, 196) which is suspiciously even for a power-law distribution—the visual contradicts the stated power-law claim. The $0 count of 197 doesn't match the 216 zero-revenue figure.",
+  "evidence": {
+    "insight": "Slide 3's efficiency index (revenue-share ÷ listing-share) is a genuinely useful constructed metric; the AI volume-vs-value tension on slide 2 is a real finding; slide 7 synthesizes into actionable recommendations.",
+    "narrative": "Clear arc: landscape → category analysis → profitability → monetization → infrastructure → data quality → recommendations. Each slide builds toward the 'underserved value, not crowded volume' thesis on slide 7.",
+    "framing": "Slide 1 sets scope and source; slide 6 addresses power-law distribution and median-vs-mean; slide 7 includes a survivorship/selection bias caveat. Missing: no explicit statement of the guiding question until the final slide.",
+    "accuracy": "B2B/B2C 5.7x multiplier is materially wrong (reference ~2.3x). Zero-revenue count 197 vs actual 216. Revenue labeled as MRR throughout without justification. Histogram bins are implausibly uniform for a power-law. Stripe listing share off by ~1pp.",
+    "visual": "Consistent color palette (navy/orange/grey), clean bar charts with direct labels, good use of callout boxes on slide 6, appropriate chart types throughout. Slide 3 dual-panel layout is effective. No chartjunk.",
+    "ai_slop": "Minimal slop—no decorative stock imagery, no generic filler paragraphs. The suspiciously uniform histogram bins on slide 6 may indicate AI-generated rather than data-derived visualization."
+  },
+  "confidence": "high",
+  "total": 70,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 14058,
+    "output_tokens": 973
+  }
+}

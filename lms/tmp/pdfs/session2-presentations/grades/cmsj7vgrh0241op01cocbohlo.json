@@ -1,0 +1,40 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 4.5,
+    "narrative": 5.5,
+    "framing": 4,
+    "accuracy": 2.5,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Clear contrarian thesis with a consistent through-line from AI critique to B2B recommendation.",
+  "fix_next": "Nearly every numeric claim (median AI MRR, category averages, 3.4x LTD multiplier, ARPU table, exit multiples) appears fabricated or unverifiable from the dataset.",
+  "verdict": "Bold thesis undermined by pervasive fabricated numbers and no sourced charts.",
+  "flags": [
+    "fabricated-statistics",
+    "no-real-charts",
+    "unverifiable-claims",
+    "exit-multiples-not-in-dataset",
+    "missing-limitations",
+    "typo-programmatic-repeated"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 2: AI median stated as $177; reference data shows $503. Slide 2: '24% of all new listings' — AI is 197/726 categorized = 27.1%, but denominator choice unclear and not disclosed. Slide 3: 'Content Workflows $13,800 Avg MRR' — no such category exists in the dataset; Marketing avg is ~$31,364 (mean) not $2,000; AI avg is ~$11,963 not $1,500; categories appear invented. Slide 4: '3.4x' LTD vs subscription multiplier — no pricing-model field exists in the dataset to compute this. Slide 5: ARPU table ($340, $180, $45, $18) and exit multiples (5.2x, 1.8x ARR) are entirely external/fabricated with no dataset grounding. Slide 6: '4.2x MRR multiplier for DR>40' — domain rating is not a field in the provided dataset. Slide 1: '8x more recurring revenue' claim — B2B median multiple from data is ~2.35x, not 8x.",
+  "evidence": {
+    "insight": "The core thesis (avoid crowded AI, target boring B2B) is a genuine strategic angle, but every supporting number is wrong or invented, so the insight is unearned.",
+    "narrative": "Slides follow a logical arc: problem (AI saturation) → evidence (category benchmarks) → monetization → distribution → action plan. Structure is coherent even if content is hollow.",
+    "framing": "No mention of dataset scope, missingness (274 missing categories, 288 missing audience_type), sample sizes, or limitations. Audience is implied (indie hackers) but never explicitly stated. No methodology slide.",
+    "accuracy": "AI median off by ~3x ($177 vs $503). Category names on slide 3 are invented ('Content Workflows', 'General SaaS'). LTD 3.4x multiplier, DR 4.2x multiplier, ARPU table, and exit multiples have no basis in the dataset. At least 7 material factual errors.",
+    "visual": "Consistent dark theme, clean layout, good use of big-number callouts. However, slide 3's bar chart uses fabricated categories. No real data visualizations with axes/labels. Repetitive two-card layout across slides 2, 4, 5. Typo on slide 5 ('programmatic programmatic').",
+    "ai_slop": "Slide 5 contains a duplicated word ('programmatic programmatic'). Exit multiples and ARPU figures appear to be AI-hallucinated consulting-style numbers with no dataset basis. Slide 6 is generic startup advice template."
+  },
+  "confidence": "high",
+  "total": 43,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 13307,
+    "output_tokens": 911
+  }
+}

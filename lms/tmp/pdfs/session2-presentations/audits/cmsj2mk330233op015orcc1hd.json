@@ -1,0 +1,44 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 6.5,
+    "accuracy": 4.5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "The volume-to-efficiency pivot and 46x sub-niche spread give founders a genuinely actionable decomposition of AI.",
+  "fix_next": "Verify every category total and mean against the actual dataset; several slide-3 and slide-5 figures are off by 2–3x.",
+  "verdict": "Strong narrative arc undermined by multiple wrong revenue figures and missing limitations disclosure.",
+  "flags": [
+    "revenue-totals-wrong-slide3",
+    "mean-per-startup-wrong-slide5",
+    "ai-median-446-vs-503",
+    "unverifiable-domain-rating-correlation",
+    "no-missingness-disclosure",
+    "no-limitations-slide",
+    "sub-niche-counts-unverifiable",
+    "acquisition-multiple-vague"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 3: AI total shown ~$1.81M vs ref $2.36M; Marketing ~$444K vs ref $1.32M; E-comm ~$396K vs ref $1.11M; Education ~$524K matches but SaaS ~$589K vs ref $704K. Slide 5: E-comm mean $20,829 implies ~$396K/19=$20,842 using their own wrong total rather than ref $1.11M/19≈$58,506; AI mean $9,167 vs ref $2,356,676/197≈$11,963. Slide 10: AI median cited as $446 vs ref $503. Slide 9: r=0.50 domain-rating correlation is unverifiable from frozen reference and presented without sample size or p-value. Slide 12: '25.8%' growth figure differs from slide 4's '26%' — minor but inconsistent.",
+  "evidence": {
+    "insight": "Slides 6-8 decompose AI into sub-niches revealing a 46x median-MRR spread; slide 10 power-law comparison adds useful expectation-setting. The graveyard/winners framing is decision-relevant.",
+    "narrative": "Clean four-act arc: volume headline (slide 3) → growth reveal (slide 4) → sub-niche unpack (slides 6-8) → dual-audience recommendations (slides 11-12). The pivot from 'AI wins on volume' to 'AI loses per founder' is well-executed and lands on a memorable closing line.",
+    "framing": "Slide 2 sets the question for builders and investors. However, 274 missing category labels (~27%) and 216 zero-revenue rows are never disclosed, materially affecting denominators and medians. No limitations or methodology slide for a cold reader.",
+    "accuracy": "Category revenue totals on slide 3 are substantially wrong for Marketing (~3x low), E-comm (~2.8x low), and AI (~23% low). Mean-per-startup on slide 5 cascades these errors. AI median $446 vs reference $503. The r=0.50 domain-rating claim on slide 9 is unverifiable and lacks sample size or causal caveat. The ~3.0x acquisition multiple on slide 12 is vague relative to reference medians of 2.35x/2.30x.",
+    "visual": "Consistent dark theme with teal/coral accent coding applied meaningfully (highlight vs. warning). Charts are legible with data labels and appropriate axis labels. Big-number callouts are effective. Slides 7-8 and 11-12 card layouts are slightly repetitive. Decorative circles on slides 1/13 are meaningless but harmless. No chart junk.",
+    "ai_slop": "Recommendation slides 11-12 have a consulting-template feel but contain dataset-specific content. No generic filler paragraphs detected. Language is occasionally punchy ('AI Graveyard') but grounded in numbers."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.0 to 4.5: the category revenue totals on slide 3 are wrong by 2-3x for multiple categories, cascading into slide 5 means; these are core claims, not peripheral. Lowered framing from 7.0 to 6.5: complete absence of missingness/zero-revenue disclosure is a material omission for a dataset with 27% missing categories. Reduced bonus from 2 to 1: the sub-niche decomposition is good but the fabricated-looking correlation and multiple numerical errors prevent a higher bonus.",
+  "total": 68,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 23760,
+    "output_tokens": 1147
+  }
+}

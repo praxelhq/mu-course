@@ -1,0 +1,37 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 6.5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis that verification ≠ vetting, with the anonymity paradox and marketplace forensics slides delivering genuine editorial punch.",
+  "fix_next": "B2B/B2C median figures don't match reference data (2.35x not 4.1x); check denominators and acknowledge 288 missing audience_type rows.",
+  "verdict": "Well-narrated, genuinely insightful deck with a few accuracy stumbles on key claims.",
+  "flags": [
+    "b2b-b2c-median-mismatch",
+    "missing-data-not-disclosed",
+    "growth-split-unverifiable"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 6: B2B median $1,240 and B2C $304 yield 4.1x; reference shows ~2.35x median multiple — the absolute medians and ratio are off, and 288 rows with missing audience_type are not disclosed. Slide 7: Marketing median shown as $2,370 vs reference $2,369.50 (fine rounding), but Education ($2,435 median, n=30) is omitted despite being the highest eligible median — the claim 'Marketing leads' is misleading by omission. Slide 8: Stealth median claimed $8,362; reference gives anonymous revenue share at 26.5% but no direct median confirmation — plausible but unverifiable and the 21x multiplier depends on it. Slide 5: Growth/flat/declining split (344/305/337) is not independently verifiable against reference and the 'flat = exactly 0%' definition likely conflates zero-revenue startups with genuinely stalled ones (216 have zero revenue).",
+  "evidence": {
+    "insight": "Slide 8 (anonymity paradox) and slide 9 (marketplace forensics showing $0-revenue listings asking real money) go well beyond chart description. Slide 3's observation that RevenueCat reveals a hidden mobile-app economy is genuinely useful. Slide 10 synthesizes five actionable takeaways.",
+    "narrative": "Clear arc: context → infrastructure → distribution → momentum → audience → category → anonymity → marketplace integrity → synthesis. Each slide builds toward the thesis that 'verified ≠ vetted.' The landing on slide 10 ties threads together coherently.",
+    "framing": "Slide 2 explains TrustMRR clearly for a cold reader. Dataset size and freeze date are consistently footnoted. However, missingness rates (241–288 rows across key fields) are never disclosed, which matters for slides 6 and 7 where filtered subsets are used.",
+    "accuracy": "Slide 4: top-10 share 49.6% matches reference. Slide 3: provider shares align (Stripe 63.6%, RevenueCat 18.9%). Slide 7: category medians mostly match reference within rounding. Slide 6: B2B/B2C medians and the 4.1x claim diverge from reference (2.35x). Slide 5: growth split plausible but conflates zero-revenue with flat-growth. Slide 7 omits Education as highest median category.",
+    "visual": "Clean, consistent dark/teal palette. Bar charts on slides 3, 4, 7 are well-labeled with sample sizes. Donut chart on slide 5 is readable. Card layouts on slides 8–9 work well. Some visual sameness across slides (same card template repeated). No chart junk, good restraint overall.",
+    "ai_slop": "Minimal. The concentric-circle graphic on slide 1 is decorative but harmless. Language is sharp and editorial rather than generic consulting-speak. No filler slides detected."
+  },
+  "confidence": "high",
+  "total": 75,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19723,
+    "output_tokens": 983
+  }
+}

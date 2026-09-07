@@ -1,0 +1,39 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 6,
+    "framing": 5.5,
+    "accuracy": 4,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Clear thesis that crowded categories underperform niches, with consistent median-over-mean discipline throughout.",
+  "fix_next": "Total revenue is wrong ($133.8M vs. $15.6M actual), B2B/B2C multiple overstated at 6x, and no actual charts appear anywhere in the deck.",
+  "verdict": "Coherent narrative undermined by major revenue errors and zero data visualizations.",
+  "flags": [
+    "total-revenue-inflated-8x",
+    "no-charts-or-graphs",
+    "b2b-b2c-multiple-overstated",
+    "ai-median-mrr-inaccurate",
+    "template-heavy-layout"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 2: Total revenue stated as $133.8M; actual 30-day total is $15.6M (off by ~8.6x, possibly annualized without disclosure). Slide 3: AI median MRR stated as ~$446; reference shows $503 (30-day) — minor but wrong direction. Slide 4: B2B vs B2C median MRR claimed as 6x; reference shows ~2.35x median multiple. Slide 2: Mean-to-median gap stated as 47.8x; plausible only if using MRR not 30-day revenue, but the $13.5K mean MRR × 1000 = $13.5M, inconsistent with the $133.8M total claimed on the same slide.",
+  "evidence": {
+    "insight": "Slide 3 category paradox and slide 4 subscription-correlation claims show analytical thinking, but insights remain surface-level comparisons without deeper segmentation or surprising findings. The 'for sale vs. growing' contrast on slide 5 is interesting but unsupported by visible data.",
+    "narrative": "Slides flow logically: overview → category economics → revenue drivers → growth/exit → geography → takeaways. The thesis (medians matter, niches win) is coherent. However, the deck reads as a list of observations rather than building toward a single synthesized argument.",
+    "framing": "Slide 1 sets context adequately. Dataset quality and missingness are partially acknowledged (slide 2 mentions 76% geography coverage, 13% anonymized). However, category missingness (274/1000) is never disclosed, and the audience for the analysis is never specified.",
+    "accuracy": "Total revenue figure ($133.8M) is dramatically wrong vs. the $15.6M reference — likely annualized without stating so, creating internal inconsistency with the $13.5K mean MRR also on slide 2. B2B/B2C 6x claim overstates the ~2.35x median multiple by nearly 3x. AI median ~$446 is off from $503. The 2,500x domain-authority claim on slide 4 is unverifiable from reference data.",
+    "visual": "Clean, consistent template with good color palette and typography hierarchy. However, the entire 7-slide deck contains zero actual charts, graphs, or data visualizations — only big numbers in cards with icons. This is a data-story presentation with no data visualization, which is a fundamental gap. Icons are decorative, not informative.",
+    "ai_slop": "Template-driven layout with identical card structures repeated across every slide. Icons (chip, target, people, globe, briefcase, pin, credit card) are decorative stock icons adding no analytical value. The uniform three-column card format on slides 2, 4, and 6 feels generated from a single template."
+  },
+  "confidence": "high",
+  "total": 52,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 13840,
+    "output_tokens": 932
+  }
+}

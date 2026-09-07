@@ -1,0 +1,44 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 1,
+    "narrative": 2,
+    "framing": 1.5,
+    "accuracy": 2,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Consistent dark-theme visual identity with clear slide numbering and section labeling throughout the deck.",
+  "fix_next": "Replace every decorative card with actual dataset numbers—counts, medians, revenue shares, charts—so claims become evidence.",
+  "verdict": "A polished but empty template; zero data points from the 1,000-row dataset appear anywhere.",
+  "flags": [
+    "no-data-presented",
+    "no-charts",
+    "ai-slop",
+    "generic-filler",
+    "no-quantitative-claims",
+    "decorative-not-analytical",
+    "no-dataset-description",
+    "no-limitations-stated"
+  ],
+  "factual_error_count": 0,
+  "factual_error_detail": "No numerical claims are made, so none can be verified as wrong; however, unsubstantiated assertions like 'B2C dominant' (slide 4) and 'SaaS is the dominant business model' (slide 3) are presented without evidence and cannot be confirmed or refuted from the slides alone.",
+  "evidence": {
+    "insight": "Zero data-derived findings across all 8 slides. No revenue figures, category counts, medians, provider shares, concentration metrics, or distributions. 'AI is the strongest theme' is asserted without citing n=197 or $2.36M total. Slide 7 lists nine 'investment opportunities' with no justification whatsoever.",
+    "narrative": "Slides follow a logical conceptual arc (landscape→sectors→models→demand→monetization→quality→opportunities→takeaways), but the closing slide merely restates the opening premise. No analytical tension, no surprise, no synthesis from data. The story could describe any SaaS market without modification.",
+    "framing": "No dataset size (1,000 rows), time window, source, missingness rates (~24–29% across key fields), or sample limitations are ever mentioned. A cold reader cannot tell what was analyzed. 'Investor Briefing' framing implies authority but provides no methodological grounding. Downgraded from preliminary 2.0 to 1.5.",
+    "accuracy": "No quantitative claims are made, so there are no verifiable errors, but also no verifiable truths. Asserting 'B2C is dominant' and 'SaaS is the dominant business model' without counts or shares is unsubstantiated opinion, not analysis. The dataset's 216 zero-revenue rows and 274 missing categories are never acknowledged.",
+    "visual": "Polished, consistent dark-cyan design with icon cards, section headers, and numbered slides. However, there are literally zero data visualizations—no bar charts, scatter plots, tables, or any quantitative display. Every slide uses the same decorative card-grid template, producing visual sameness without informational variety.",
+    "ai_slop": "Textbook AI slop. Every slide uses inflated consulting jargon ('Demand Matrix,' 'Quality Framework,' 'Monetization Flow,' 'Opportunity Map') with no underlying data. Slide 6 lists generic SaaS textbook principles (recurring revenue, retention, scalability) with no dataset connection. The entire deck reads as an AI-generated template never populated with actual analysis."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 2.0 to 1.5; the complete absence of dataset description, sample size, or any methodological note is worse than merely weak framing—it is essentially absent. All other scores confirmed as appropriate.",
+  "total": 21,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 15333,
+    "output_tokens": 891
+  }
+}

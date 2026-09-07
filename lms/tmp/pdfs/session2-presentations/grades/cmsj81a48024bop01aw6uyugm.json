@@ -1,0 +1,40 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 4.5,
+    "narrative": 5,
+    "framing": 5.5,
+    "accuracy": 4,
+    "visual": 6,
+    "bonus": 0
+  },
+  "what_worked": "Consistent visual template, clear callout of missingness (241 countries, 274 categories), and outlier acknowledgment for Stan.",
+  "fix_next": "Total revenue is $15.6M not $13.47M; the deck's core denominator is wrong, cascading errors through every percentage and average cited.",
+  "verdict": "Clean template but wrong total revenue undermines most claims.",
+  "flags": [
+    "wrong-total-revenue",
+    "top10-share-understated",
+    "histogram-bins-suspect",
+    "mean-not-median-for-b2b-b2c",
+    "no-original-thesis",
+    "descriptive-not-analytical"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 2: Combined MRR stated as $13.47M; reference is $15,596,344.59 (~$15.6M). Mean of $13,472 also wrong (should be ~$15,596). Slide 3: Top-10 share stated as 48%; reference is 49.6%. Zero-revenue count 197 vs reference 216. Histogram bins suspiciously uniform (197/198/197/196/196) — unlikely given 216 zeros alone should dominate the $0 bin. Slide 5: AI category MRR stated $1.8M; reference is $2.36M. Slide 7: B2B vs B2C comparison uses means (2.6x) but reference median multiples are ~2.35x; the mean ratio from reference would be ~7.97x/8.44x, not 2.6x — the presented numbers don't match either metric cleanly. Slide 8: Stripe revenue stated $11.75M; reference is $13.53M.",
+  "evidence": {
+    "insight": "Deck is almost entirely descriptive: bar charts of counts and totals by category, country, provider. No cross-cutting analysis (e.g., median vs mean by category, TLD effects, anonymous vs named, founded-year correlation). The B2B/B2C comparison and marketplace-for-sale slide are the closest to insight but remain surface-level.",
+    "narrative": "Slides follow a logical tour (overview → distribution → categories → geography → B2B/B2C → payments → growth → marketplace → takeaways) but there is no unifying thesis or argument. The takeaways slide simply restates each section's headline. No synthesis or 'so what' for a decision-maker.",
+    "framing": "Slide 1 sets context (1,000 startups, source). Slide 6 notes 241 missing countries. Slide 5 does not note 274 missing categories. No discussion of selection bias or what TrustMRR's listing criteria mean for generalizability. Audience is implied but never stated.",
+    "accuracy": "The foundational total ($13.47M vs $15.6M) is materially wrong by ~$2.1M, which propagates to every share and average. Zero-revenue count off (197 vs 216). AI revenue off ($1.8M vs $2.36M). Top-10 share off (48% vs 49.6%). Stripe revenue off. The histogram's near-uniform bin counts are implausible given 216 zeros.",
+    "visual": "Consistent navy/gold palette, clean typography, good use of callout boxes. Charts are simple bar charts — appropriate but repetitive. No scatter plots, box plots, or dual-axis charts that might reveal deeper patterns. Slide 3 histogram bins are visually misleading with near-equal heights despite a claimed power law.",
+    "ai_slop": "Template is polished but generic — every slide follows the same layout (bar chart left, callout boxes right). No evidence of fabricated charts per se, but the suspiciously uniform histogram bins on slide 3 suggest possible AI hallucination of bin counts rather than actual computation."
+  },
+  "confidence": "high",
+  "total": 50,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 21007,
+    "output_tokens": 1001
+  }
+}

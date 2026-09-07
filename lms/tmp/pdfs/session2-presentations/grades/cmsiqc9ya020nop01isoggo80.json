@@ -1,0 +1,39 @@
+{
+  "slide_count": 15,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 7,
+    "framing": 6.5,
+    "accuracy": 4.5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong narrative arc from methodology through clusters to prioritized recommendations with honest limitations slide.",
+  "fix_next": "The deck presents individual startup MRR figures without any verifiable connection to the frozen dataset's aggregate statistics—anchor claims to checkable totals.",
+  "verdict": "Well-structured consulting playbook, but dataset analysis is shallow and unverifiable.",
+  "flags": [
+    "unverifiable-startup-figures",
+    "no-aggregate-dataset-analysis",
+    "consulting-language-heavy",
+    "qualitative-matrix-without-basis",
+    "missing-category-data-unaddressed"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 2: Claims 570 startups after category filter, but only 726 rows have categories at all and the listed categories don't sum to 570 cleanly—Fintech is not a dataset category. Slide 2: Filter includes 'Fintech' which does not appear in the frozen dataset's category list. Slide 10: Prioritization matrix is labeled 'qualitative' but positions (e.g., 1Lookup as 'Quick Win' despite -8% growth and US-only fraud API) appear arbitrary with no disclosed scoring.",
+  "evidence": {
+    "insight": "Slides 5-8 provide per-startup MRR and growth figures with India-angle commentary, but never surface dataset-level patterns (category medians, provider splits, revenue concentration, missingness). The 12 picks are interesting curation but the 'insight' is market-fit opinion, not data discovery.",
+    "narrative": "Clear four-act structure: methodology (S2) → context (S3) → 4 clusters (S5-8) → prioritization (S10-11) → playbook (S12-13) → risks (S14). Coherent thesis throughout. The sequence works well for the stated audience.",
+    "framing": "Slide 1 sets audience (market-entry/venture-building), slide 2 explains methodology, slide 3 provides India context with external citations, slide 14 acknowledges limitations including that data is global not Indian. However, 274 missing category values and 241 missing country values are never mentioned despite being material to the filtering funnel.",
+    "accuracy": "Individual startup figures (MRR, growth) cannot be verified against the frozen reference which provides only aggregates. The deck never engages with verifiable dataset-level facts: total revenue ($15.6M), top-10 concentration (49.6%), category totals, provider splits, or missingness rates. 'Fintech' is listed as a filter category but doesn't exist in the dataset. The 570→287 funnel numbers are unverifiable. No charts use actual dataset distributions.",
+    "visual": "Consistent color-coded cluster system (purple/green/blue/orange) across slides 4-11. Clean card layouts for startup profiles. Slide 10's bubble matrix is readable but positions are arbitrary. No actual data visualizations (bar charts, scatter plots, distributions). Template is polished but repetitive—every cluster slide is identical in structure. Legibility is good throughout.",
+    "ai_slop": "Moderate consulting-speak ('Bharat Bets', 'playbook', 'Let's build the next one, from Bengaluru to Bharat'). The 90-day roadmap (slide 13) is generic enough to fit any SaaS localization project. India-angle boxes on slides 5-8 read as plausible but formulaic market commentary. The prioritization matrix (slide 10) has no disclosed methodology, making it decorative rather than analytical."
+  },
+  "confidence": "high",
+  "total": 61,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 29357,
+    "output_tokens": 938
+  }
+}

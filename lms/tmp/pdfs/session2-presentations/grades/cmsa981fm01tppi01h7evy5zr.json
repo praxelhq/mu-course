@@ -1,0 +1,38 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 7.5,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Strong narrative arc from concentration to anonymity, with honest missingness disclosure on slide 9.",
+  "fix_next": "Category revenue figures appear to use MRR not 30-day revenue; verify denominators and reconcile the ~$1.81M AI figure against the reference $2.36M.",
+  "verdict": "Well-framed story with clean design, undermined by several numerical mismatches.",
+  "flags": [
+    "revenue-metric-confusion",
+    "anonymous-count-discrepancy",
+    "b2b-b2c-ratio-inflated",
+    "category-revenue-mismatch"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1/3: '$13.5M combined MRR' — total 30-day revenue is $15.6M; unclear what $13.47M refers to (possibly MRR field, but presented ambiguously against dataset total). Slide 6: AI category revenue listed as $1.81M — reference shows $2.36M total revenue; SaaS $0.59M vs reference $0.70M; likely using a different metric without clarifying. Slide 7: 'B2B earns ~6x more than pure B2C at the median' — $1,036/$181 ≈ 5.7x, but reference median revenue multiples are 2.35x/2.30x for B2B/B2C respectively, suggesting the deck is comparing MRR medians rather than 30-day revenue medians and the 6x claim doesn't match either framing cleanly. Slide 8: 130 anonymous companies claimed vs reference 129; 870 named vs reference 871 — minor but the anonymous share of revenue stated as 17.8% of all-time revenue doesn't match the 26.5% of 30-day revenue in reference (different metric, but not clarified). Slide 8: 2.30x labeled 'median multiple, on-sale B2C' — reference 2.30x is B2C median revenue multiple across all B2C, not specifically on-sale companies.",
+  "evidence": {
+    "insight": "Slide 4's median-vs-mean framing is genuinely useful; slide 8's anonymity observation adds texture. However, most findings describe distributions rather than generating actionable or surprising conclusions beyond 'revenue is skewed.'",
+    "narrative": "Clear chapter structure (concentration → geography → category → audience → marketplace → gaps → takeaway) builds logically. The thesis 'real revenue is rare, concentrated, and unevenly told' lands on slide 10 and ties threads together.",
+    "framing": "Slide 2 explains TrustMRR well for a cold reader; slide 9 transparently addresses missingness. Scope is defined. However, the deck never clarifies whether it's analyzing MRR or 30-day revenue, creating persistent ambiguity.",
+    "accuracy": "Multiple revenue figures don't align with the frozen dataset reference: AI total ($1.81M vs $2.36M), total revenue ($13.47M vs $15.6M 30-day), B2B/B2C ratio overstated. The deck appears to conflate MRR with 30-day revenue without defining which metric is used. Anonymous count off by 1. Category revenue ranking omits Marketing ($1.32M) which would rank #2.",
+    "visual": "Consistent teal palette, clean typography, good hierarchy with callout boxes. Bar charts are appropriately simple. Slide 7's horizontal bars effectively show B2B/B2C gap. Some slides are stat-card heavy (slide 3, slide 8) but not cluttered. No chart junk.",
+    "ai_slop": "Minimal slop. Design is template-consistent but not generic. Language is specific to the dataset. Slight consulting-speak in 'AI Is Eating the Leaderboard' headline but backed by data."
+  },
+  "confidence": "medium",
+  "total": 66,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19108,
+    "output_tokens": 1021
+  }
+}

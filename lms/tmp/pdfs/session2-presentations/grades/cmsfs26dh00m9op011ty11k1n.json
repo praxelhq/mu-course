@@ -1,0 +1,38 @@
+{
+  "slide_count": 5,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 5.5,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Revenue-index metric on slide 2 is a genuinely useful original construct with clear chart design.",
+  "fix_next": "The denominator for category shares uses 1,000 instead of 726 categorized rows, inflating AI to 27% and distorting every index value.",
+  "verdict": "Clean, focused deck undermined by a denominator error that ripples through its headline insight.",
+  "flags": [
+    "denominator-error",
+    "unverifiable-claims-slide3",
+    "missing-limitations-disclosure",
+    "category-missingness-ignored"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: '27% of all 1,000 startups building in AI' — AI has 197 of 726 categorized rows (27.1% of categorized, not of 1,000; 274 rows lack category). Using 1,000 as denominator makes AI share 19.7%, and all index ratios are wrong. E-comm share of 1,000 is 1.9% not 2.6%; the 5.15x index is therefore incorrect (correct index using categorized base ≈ revenue-share/startup-share with 726 denominator differs). Slide 2: E-comm revenue share stated as 13.4% — $1,111,606/$15,596,345 = 7.13%, a large overstatement. Slide 3: On-sale median MRR $1,055 vs $187 and 5.6x multiple, and the revenue-multiple distribution percentages are all unverifiable against the frozen reference and appear fabricated. Slide 4: Correlation values (0.87 MRR, 0.55 subscriptions, 0.27 domain rating) are presented without sourcing and cannot be verified; the one verifiable correlation in the reference (founded-year r=0.025) is not tested here.",
+  "evidence": {
+    "insight": "The revenue-index concept (slide 2) goes beyond simple description and the vanity-metric debunking (slide 4) is decision-useful, but the marketplace insight (slide 3) is largely descriptive with unverifiable numbers.",
+    "narrative": "Three-insight structure with a clear thesis ('where revenue actually lives') and a summary slide that synthesizes into actionable recommendations. Sequence is logical: category → marketplace → predictors → so-what.",
+    "framing": "Dataset size and source noted, but 274 missing category values are never disclosed. No limitations section. Audience framing ('for Sritam') is thin — who is Sritam and what decision does this inform? Scope of '30-day revenue' vs 'all-time revenue' used interchangeably without clarity.",
+    "accuracy": "Slide 2 uses 1,000 as denominator for category shares when only 726 rows have categories, producing wrong percentages and wrong index values. E-comm revenue share overstated (~7.1% actual vs 13.4% claimed). Slide 3 claims are entirely unverifiable. Slide 4 correlations plausible but unverifiable except directionally.",
+    "visual": "Consistent color scheme (teal/orange), clean horizontal bar charts, good use of callout boxes with big numbers. Chart types are appropriate. Legibility is strong. Slight template sameness across slides but not egregious.",
+    "ai_slop": "Mild template uniformity across slides with identical layout patterns. The revenue-multiple distribution on slide 3 has the hallmarks of fabricated round-number percentages (34/27/18/13/8). Overall polish is high but some numbers feel generated rather than computed."
+  },
+  "confidence": "high",
+  "total": 63,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 10538,
+    "output_tokens": 950
+  }
+}

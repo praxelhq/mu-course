@@ -1,0 +1,39 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 5,
+    "accuracy": 3,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Clear composite scoring methodology with transparent weights and a coherent thesis driving toward actionable recommendations.",
+  "fix_next": "The deck claims 8,782 startups and $247M revenue, but the frozen dataset has 1,000 rows and ~$15.6M; this foundational mismatch undermines every downstream number.",
+  "verdict": "Strong narrative structure built on a fabricated dataset scale; accuracy failures are disqualifying.",
+  "flags": [
+    "fabricated-dataset-scale",
+    "inflated-row-count",
+    "inflated-revenue",
+    "unverifiable-composite-score",
+    "categories-not-in-reference-data"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 1: Claims 8,782 startups (actual 1,000) and $247M combined revenue (actual ~$15.6M 30-day). Slide 2: 646,933 active paid subscriptions unverifiable; 1,430 AI startups (actual 197); $25.6M AI revenue (actual ~$2.36M). Slide 3: All category counts inflated (e.g., SaaS 525 vs 66, Marketing 322 vs 42, Education 259 vs 30). Slide 4: Polar shown at 8% share—actual dataset has 36 companies (3.6%); Dodo Payments at 9% vs actual 5%. Slide 5: Composite score uses fabricated inputs; includes categories like 'No-Code', 'Community', 'Sales', 'News & Magazines' not present in reference data. Slide 6: E-comm listed as 101 startups (actual 19). Slide 8: Claims 37% missing category (3,264/8,782) vs actual 274/1,000 = 27.4%.",
+  "evidence": {
+    "insight": "The composite scoring framework on slide 5 with six weighted dimensions is a genuinely useful analytical contribution, and the AI-vs-No-Code contrast (validated but commoditized vs scarce but premium) shows real strategic thinking. However, insights rest on fabricated numbers.",
+    "narrative": "Slides follow a logical arc: landscape → access → scoring → shortlist → recommendation → caveats. The thesis ('build at AI × No-Code intersection') is clearly stated and each slide builds toward it. The narrative is coherent and purposeful.",
+    "framing": "Audience ('Product Strategy') and question ('Where should we build?') are stated on slide 1. However, the deck presents itself as analyzing 8,782 startups when the actual dataset has 1,000 rows—a fundamental framing misrepresentation. No explanation of how the dataset was scaled or transformed.",
+    "accuracy": "Nearly every quantitative claim is wrong relative to the frozen dataset. Row count inflated ~8.8x, revenue inflated ~16x (even accounting for 30-day vs 12-month, 12× would yield ~$187M not $247M). Category counts are all inflated by similar multiples. Categories like 'No-Code', 'Community', 'Fintech', 'Sales', 'News & Magazines', 'Utilities' do not appear in the reference data at all. Provider share percentages are distorted.",
+    "visual": "Consistent navy/gold color scheme, clean typography, good hierarchy with section labels. Bar charts are well-labeled with data callouts. Table on slide 6 is legible and well-structured. Slide 4 has a typo ('beings Sold'). Overall professional but template-driven appearance.",
+    "ai_slop": "The 8.8x inflation of dataset size and invention of categories not in the data (No-Code, Community, Fintech, Sales, News & Magazines, Utilities) strongly suggest AI hallucination or use of a different/fabricated dataset. The consulting-style framing ('CONFIDENTIAL', 'Prepared for Product Strategy') is decorative but not penalized heavily."
+  },
+  "confidence": "high",
+  "total": 56,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 16419,
+    "output_tokens": 1021
+  }
+}

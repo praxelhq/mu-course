@@ -1,0 +1,41 @@
+{
+  "slide_count": 15,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 8.5,
+    "accuracy": 5.5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Dedicated caveats slide with per-field missingness linked back to specific earlier slides is genuinely rigorous.",
+  "fix_next": "Total revenue is $15.6M not $13.47M; multiple category medians are wrong—verify core numbers against the actual dataset before building the deck.",
+  "verdict": "Strong narrative and framing undermined by a wrong total revenue figure and several median errors.",
+  "flags": [
+    "total-revenue-wrong",
+    "category-medians-off",
+    "zero-count-wrong",
+    "ai-median-wrong",
+    "education-median-wrong",
+    "marketing-median-wrong",
+    "top10-share-slightly-off"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 1-3: Total revenue stated as $13.47M; actual is $15,596,344.59 (~$15.6M)—a ~$2.1M undercount, propagated throughout. Slide 3: Top-10 share stated 47-48%; reference is 49.6%. Slide 4: Zero-revenue count 197; reference is 216. Slide 5: AI median $446 vs reference $503; Education median $2,142 vs reference $2,435; Marketing median $1,586 vs reference $2,369.50; Analytics median $1,294 vs reference $419 (Analytics is dramatically wrong, possibly confused with another field). Slide 5 also includes 'Fintech (n=16)' which does not appear in the reference categories. Slide 6: B2B/B2C medians ($1,036/$181) don't match reference multiples well but the reference gives multiples not raw medians so harder to verify directly.",
+  "evidence": {
+    "insight": "Slides 8-10 go beyond chart description: domain-rating vs followers comparison, stealth-as-signal reframing, and growth-noise debunking with small-base median check ($384) are genuinely analytical moves. The 'predictors' framing (slides 6-8) builds a layered argument about what actually correlates with revenue.",
+    "narrative": "Clear thesis stated on slide 1 and reinforced throughout: 'category hype is a poor proxy; durable signals separate real businesses.' Numbered section headers (Context → Concentration → Reality Check → Category → Predictors → Growth → Anonymity → Marketplace → Pricing → So What → Caveats → Conclusion) create a purposeful arc from description to prescription.",
+    "framing": "Slide 2 explicitly states dataset skew, point-in-time limitation, and verification method. Slide 14 is an unusually thorough caveats table mapping each field's missingness to the specific slide it affects. Audience is clearly 'leadership' per the header. 'SO WHAT' callouts on every slide orient a cold reader.",
+    "accuracy": "Total revenue wrong by ~$2.1M ($13.47M vs $15.6M)—this is the deck's anchor number and it's materially wrong. Zero-revenue count off (197 vs 216). Multiple category medians diverge from reference: AI $446 vs $503, Education $2,142 vs $2,435, Marketing $1,586 vs $2,370, Analytics $1,294 vs $419 (Analytics is wildly off). 'Fintech' category appears but is not in the reference. Top-10 share ~48% vs reference 49.6%. The domain-rating and follower correlations (r=0.47, r=0.18) cannot be verified against the reference but the log-transform is disclosed.",
+    "visual": "Consistent dark-navy template with teal/gold/red accent palette. Every chart has labeled axes, n-counts, and source footers. Layout uses a chart-left / callout-right pattern consistently. Bar charts are appropriate for the comparisons shown. Slide 14 caveats table is well-formatted. Minor critique: the visual sameness across slides (every slide is structurally identical chart+sidebar) becomes slightly monotonous; no scatter plots or distributions shown where they might add value (e.g., slide 8 correlation).",
+    "ai_slop": "Mild consulting-speak in 'SO WHAT' labels ('Track the former,' 'Plan accordingly') but generally restrained. The template is polished but repetitive—every slide follows the exact same layout. No decorative-but-meaningless graphics. Content is dataset-specific throughout."
+  },
+  "confidence": "high",
+  "total": 75,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 28971,
+    "output_tokens": 1149
+  }
+}

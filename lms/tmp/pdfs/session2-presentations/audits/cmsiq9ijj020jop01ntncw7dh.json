@@ -1,0 +1,42 @@
+{
+  "slide_count": 16,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 7.5,
+    "framing": 8,
+    "accuracy": 5.5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Slide 6 quality-of-book cut and slide 9 MoR-switcher wedge are genuinely original, decision-useful analyses.",
+  "fix_next": "Reconcile the $133.8m headline with the $15.6M dataset total; disclose any filter or annualization method explicitly on the slide.",
+  "verdict": "Strong framing and honesty about limits, but key revenue figures don't reconcile with the dataset.",
+  "flags": [
+    "top10-share-inflated",
+    "total-revenue-not-reconciled",
+    "stripe-volume-share-off",
+    "pitch-deck-not-data-story",
+    "only-two-charts-in-16-slides",
+    "two-divider-slides-no-content"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 4: top-10 share 50.6% vs reference 49.6% (~1pp off). Slide 3: $133.8m 'verified 12-month card volume' does not reconcile with dataset total $15.6M even annualized ($187M); derivation unstated. Slide 5: Stripe volume share 90.9% vs reference 86.7% ($13.5M/$15.6M).",
+  "evidence": {
+    "insight": "Slide 6 compares % of accounts ≥$10k MRR across processors, surfacing that specialist platforms (Superwall, Whop) convert ~45% vs cohort 21%. Slide 9 identifies 14% MoR switchers carrying only 1.8% volume as a compliance-driven wedge. These are non-obvious, decision-relevant cuts.",
+    "narrative": "Arc moves from data credibility (2) → market shape (3-6) → compliance thesis (7-9) → NRI corridor (10-12) → solution (13-14) → ask (15) → caveats (16). Coherent but the pivot from dataset analysis to NRI pitch (slides 10-13) is abrupt; the dataset barely informs the NRI corridor section, weakening the data-story thread.",
+    "framing": "Slide 2 flags missingness (country 76%, category 73%), marks NRI figures as illustrative, distinguishes dataset from external sources. Slide 16 dedicates a full page to caveats. Audience (seed investors) and scope are clear. Exemplary epistemic hygiene.",
+    "accuracy": "Top-10 share overstated by ~1pp (50.6 vs 49.6). $133.8m headline is unexplained — dataset total is $15.6M, annualized ≈$187M, not $133.8m; no filter or methodology disclosed. Stripe volume share 90.9% vs reference 86.7%. Country/category missingness percentages are correct. Median $3,069 on slide 4 is plausible but unverifiable against reference.",
+    "visual": "Clean dark theme, consistent orange accent, legible tables. Only two actual data charts (slides 4, 6) across 16 slides — the rest is text and big-number callouts. Two section-divider slides (7, 10) carry zero information. Restrained but under-visualized for a data story.",
+    "ai_slop": "None detected. Domain-specific regulatory knowledge (NRE/NRO, SEBI, FATCA/CRS, PIS/LRS) is authentic. No generic filler or inflated language."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 6.5→5.5: the $133.8m headline is the deck's anchor number and cannot be reconciled with the dataset; this is more serious than a rounding issue. Lowered narrative from 8→7.5: the transition from dataset analysis to NRI pitch is abrupt and the dataset barely supports the corridor thesis. Reduced bonus from 3→2: the deck is impressive as a pitch but the data-story component is thinner than the preliminary score implied — only ~6 of 16 slides engage the dataset substantively.",
+  "total": 73,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 26798,
+    "output_tokens": 1057
+  }
+}

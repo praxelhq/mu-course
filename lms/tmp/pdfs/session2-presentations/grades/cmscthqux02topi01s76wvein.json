@@ -1,0 +1,38 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 6.5,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Strong investment-thesis framing with consistent actionable takeaways and appropriate causal discipline throughout.",
+  "fix_next": "Education median is $2,435 not $2,142; AI median is $503 not $446; B2B multiple is ~2.35x not 5.7x—verify core numbers before building a thesis on them.",
+  "verdict": "Coherent investment narrative undermined by several wrong median figures.",
+  "flags": [
+    "median-revenue-errors",
+    "b2b-b2c-ratio-inflated",
+    "unverifiable-derived-metrics",
+    "category-list-includes-nonstandard-categories"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: Education median stated $2,142 vs reference $2,435; AI median stated $446 vs reference $503; '380% premium' calculation wrong on both inputs. Slide 3: B2B vs B2C median ratio stated 5.7x; reference medians give ~2.35x (median revenue multiple), not 5.7x ($1,036/$181 are not the reference figures). Slide 2 chart includes 'Sales' and 'Games' as categories not in the reference category list; 'Productivity' median shown $620 vs reference $79.91. Slide 7: 'Sales' and 'Games' category multiples presented without basis in reference categories.",
+  "evidence": {
+    "insight": "Slide 4 Domain Rating correlation (r=0.53) is a genuinely useful finding with proper scatter plot and causal caveat. Slide 5 revenue-per-visitor metric is an original derived measure. Slide 6 seller-risk null-result interpretation is sophisticated.",
+    "narrative": "Clear thesis on slide 1 ('revenue quality beats category hype'), six numbered analytical sections building toward a synthesized recommendation table on slide 8. Each slide has a consistent 'investment read' callout.",
+    "framing": "Slide 1 sets audience (investor/acquirer) and scope. Footer notes 'statistical results based on available non-null fields.' However, no explicit mention of 274 missing category rows, 288 missing audience_type, or sample sizes per group beyond AI's 197.",
+    "accuracy": "Education median off by ~$293; AI median off by ~$57; B2B/B2C ratio appears substantially inflated vs reference 2.35x median multiple; Productivity median ($620) wildly diverges from reference ($79.91); 'Sales' and 'Games' appear as categories not in the reference list.",
+    "visual": "Consistent color palette (teal/orange), clean bar and box-plot charts, log-scale box plot on slide 3 is appropriate, scatter plot on slide 4 well-annotated. Slide 8 summary table is well-structured. Minor: bottom tag-pills on slide 8 are decorative filler.",
+    "ai_slop": "Slide 8 bottom row of colored tag-pills ('BUY QUALITY', 'DILIGENCE MOAT', etc.) is decorative consulting filler adding no information. Otherwise the deck avoids generic AI template language reasonably well."
+  },
+  "confidence": "high",
+  "total": 67,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15836,
+    "output_tokens": 839
+  }
+}

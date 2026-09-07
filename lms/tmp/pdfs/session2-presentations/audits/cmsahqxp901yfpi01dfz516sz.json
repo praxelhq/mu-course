@@ -1,0 +1,42 @@
+{
+  "slide_count": 15,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 8,
+    "accuracy": 6,
+    "visual": 5.5,
+    "bonus": 1
+  },
+  "what_worked": "Anonymity-as-strength finding and confidence-check slide show genuine analytical maturity beyond surface-level description.",
+  "fix_next": "Fix the broken pie chart labels on slide 9 and correct the Analytics count (25 vs actual 19) and Stripe count (645 vs 636).",
+  "verdict": "Well-structured, insightful deck undermined by a broken chart and several count errors.",
+  "flags": [
+    "pie-chart-labels-broken",
+    "analytics-count-wrong",
+    "stripe-count-wrong",
+    "revenuecat-count-off-by-one",
+    "mrr-vs-revenue-distinction-unclear",
+    "repetitive-chart-types"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 5: Analytics count 25 vs actual 19. Slide 7: Stripe n=645 vs actual 636; RevenueCat n=190 vs actual 189. Slide 9: all three pie-chart segment labels display 0% despite text stating 43%/27%/31%.",
+  "evidence": {
+    "insight": "Slides 6-8 systematically compare predictive power of audience type, distribution channel, and SEO vs social following. Slide 10 anonymity finding is non-obvious and decision-useful. Slide 12 marketplace pricing inefficiency adds genuine value.",
+    "narrative": "Clear winner-take-most thesis (slide 3) built through layered predictors (slides 5-8), complicated by growth reality (slide 9), extended to marketplace dynamics (slides 11-12), synthesized into four actionable takeaways (slide 13), and closed with a one-line thesis (slide 15). Purposeful and coherent throughout.",
+    "framing": "Slide 2 defines dataset, verification method, and biases (US-heavy, AI-heavy). Slide 14 explicitly separates high-confidence from directional findings with specific missingness rates. Audience stated as leadership review. Unusually rigorous for student work.",
+    "accuracy": "Analytics company count wrong by 6 (25 vs 19). Stripe count off by 9 (645 vs 636). RevenueCat off by 1. Deck uses MRR field throughout (total $13.47M) which differs from 30-day revenue ($15.6M) but never clarifies this distinction, creating ambiguity about whether category medians are correct or erroneous. The 19.7% zero-MRR vs 21.6% zero-revenue gap is unexplained.",
+    "visual": "Consistent navy/orange/white palette with clear hierarchy and SO WHAT callouts on every slide. However, slide 9 pie chart is fundamentally broken with all labels showing 0%. Slide 3 x-axis labels are cut off. Chart types are almost exclusively simple bar charts with no variety. Clean but lacks annotation or data-ink sophistication.",
+    "ai_slop": "Minimal. 'Prepared for leadership review' is mildly generic. Template is consistent but every slide follows identical layout pattern. No fabricated graphics or inflated language detected."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Raised accuracy from 5.5 to 6.0 because several flagged median discrepancies may reflect legitimate MRR vs 30-day-revenue field differences rather than errors. Lowered visual from 6.5 to 5.5 because the completely broken pie chart (all 0% labels) is a more serious visualization failure than initially weighted. Reduced bonus from 2 to 1; good work but count errors and broken chart prevent higher recognition.",
+  "total": 71,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 28804,
+    "output_tokens": 2412
+  }
+}

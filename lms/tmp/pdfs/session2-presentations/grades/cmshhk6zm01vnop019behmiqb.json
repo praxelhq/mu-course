@@ -1,0 +1,40 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 1,
+    "narrative": 2,
+    "framing": 2,
+    "accuracy": 2,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Consistent visual design system with clean typography and restrained color palette throughout.",
+  "fix_next": "The deck contains zero data points, no charts, no numbers from the dataset—it reads as a generic SaaS primer, not a data story.",
+  "verdict": "A polished template with no data analysis whatsoever.",
+  "flags": [
+    "no-data-presented",
+    "no-charts",
+    "ai-slop",
+    "generic-filler",
+    "no-quantitative-claims",
+    "decorative-not-analytical"
+  ],
+  "factual_error_count": 0,
+  "factual_error_detail": "No specific numerical claims are made, so there are no verifiable factual errors—but this is because the deck avoids engaging with the dataset entirely.",
+  "evidence": {
+    "insight": "Across all 8 slides there is not a single data-derived insight. No revenue figures, no category comparisons, no provider shares, no medians, no distributions. Claims like 'AI is the strongest theme' and 'SaaS is the dominant business model' are stated without any supporting evidence from the dataset (no counts, no revenue totals). Slide 7 lists nine 'investment opportunities' with zero justification.",
+    "narrative": "The deck follows a logical sequence (landscape → sectors → models → demand → monetization → quality → opportunities → takeaways), but it is a generic SaaS industry overview, not a data story. There is no thesis that emerges from analysis. The closing slide merely restates the opening premise.",
+    "framing": "The deck is framed as an 'Investor Briefing' for 'TrustMRR Ecosystem' but never defines the dataset, its size (1,000 companies), time window, limitations, or missingness. A cold reader would not know what data was analyzed or how large the sample is. No scope or methodology is stated.",
+    "accuracy": "No quantitative claims are made, so accuracy cannot be assessed positively. The absence of any numbers means the deck neither confirms nor contradicts the dataset. However, claiming 'B2C is the dominant segment' (slide 4) and 'SaaS is the dominant business model' (slide 3) without citing counts or revenue shares is unverifiable assertion, not analysis.",
+    "visual": "The visual design is polished and consistent: dark theme, cyan accent color, icon-based cards, clear hierarchy with section labels and slide numbers. However, there are zero data visualizations—no bar charts, scatter plots, tables, or any quantitative display. The icons are decorative, not evidence-led. Every slide uses the same card-grid template, creating visual sameness.",
+    "ai_slop": "This is a textbook case of AI slop. Every slide uses inflated consulting language ('Demand Matrix,' 'Quality Framework,' 'Monetization Flow,' 'Opportunity Map') with no underlying data. The content is entirely generic—it could describe any SaaS ecosystem without modification. Slide 6's 'Characteristics of High-Quality Startups' lists textbook SaaS principles (recurring revenue, retention, scalability) with no connection to the dataset. The deck appears to be an AI-generated template that was never populated with actual analysis."
+  },
+  "confidence": "high",
+  "total": 22,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15273,
+    "output_tokens": 823
+  }
+}

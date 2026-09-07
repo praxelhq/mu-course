@@ -1,0 +1,42 @@
+{
+  "slide_count": 17,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 8,
+    "accuracy": 5.5,
+    "visual": 8,
+    "bonus": 3
+  },
+  "what_worked": "Investment-memo framing turns a dataset into a decision; domain-authority vs. followers comparison is genuinely original.",
+  "fix_next": "Reconcile the $133.8M TTM figure and zero-revenue count (216 not 197) against the actual dataset before presenting.",
+  "verdict": "Exceptional storytelling arc undermined by several verifiable numerical errors in key claims.",
+  "flags": [
+    "revenue-total-mismatch",
+    "zero-revenue-count-wrong",
+    "top10-share-inflated",
+    "internal-inconsistency-price-disclosures",
+    "suspiciously-uniform-distribution",
+    "possible-fabricated-portfolio"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 3: $0 band shows 19.7% (197 companies) but reference has 216 zero-revenue companies (21.6%). Slide 4: top-10 share stated as 51% vs reference 49.6%. Slide 4: $133.8M TTM revenue is irreconcilable with $15.6M reference total. Slides 13 vs 16: internally inconsistent price-disclosure counts (259 vs 261).",
+  "evidence": {
+    "insight": "Slides 7, 11-12 deliver original analysis: domain authority vs follower correlation, implied-vs-quoted multiple gap, U-shaped multiple curve by deal size. Adverse-selection-runs-backwards insight (slide 10) is non-obvious and decision-useful.",
+    "narrative": "Perfect thesis arc: market reality (3-5) → signals (6-8) → framework (9) → screen (10-13) → portfolio (14) → returns (15) → risks (16) → ask (17). Every slide advances the argument with no filler.",
+    "framing": "Slide 1 establishes audience (investment committee), data provenance, and scope. Slide 16 acknowledges missingness and risks. However, the investment-memo conceit occasionally prioritizes persuasion over analytical neutrality.",
+    "accuracy": "Zero-revenue band undercounts by 19 companies (197 vs 216). TTM revenue of $133.8M cannot be reconciled with reference total of $15.6M. Top-10 share rounded up from 49.6% to 51%. Internal inconsistency between 259 and 261 disclosed prices across slides.",
+    "visual": "Strong hierarchy: bold headlines, callout numbers, annotated bar charts, consistent purple/orange/lime palette. Slide 13 funnel and slide 7 side-by-side are effective. Slide 8 scaled axis (÷10) is confusing. No chartjunk.",
+    "ai_slop": "Minimal. Writing is crisp and opinionated. No generic filler, stock imagery, or consulting buzzwords. Color-block cards are slightly templatey but functional."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Reduced accuracy from 6→5.5 due to confirmed zero-revenue miscount and irreconcilable TTM figure. Reduced framing from 8.5→8 for persuasion-over-neutrality tendency. Reduced bonus from 4→3 given accuracy issues undercut the investment-memo conceit's credibility.",
+  "total": 81,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 32143,
+    "output_tokens": 2102
+  }
+}

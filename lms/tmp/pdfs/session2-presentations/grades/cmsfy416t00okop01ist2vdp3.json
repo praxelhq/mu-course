@@ -1,0 +1,40 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 2,
+    "narrative": 3,
+    "framing": 2.5,
+    "accuracy": 1.5,
+    "visual": 4.5,
+    "bonus": 0
+  },
+  "what_worked": "Consistent dark visual template with clear slide hierarchy and readable typography throughout.",
+  "fix_next": "This is a startup pitch deck, not a data-story presentation; almost no actual dataset analysis, charts, or verified findings appear.",
+  "verdict": "Pitch deck cosplaying as data analysis; nearly all dataset insight is missing.",
+  "flags": [
+    "wrong-genre",
+    "fabricated-chart",
+    "inflated-claims",
+    "ai-slop",
+    "missing-analysis",
+    "no-limitations-discussed"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 4: '$31.8M total revenue tracked across the AI cohort' — actual AI category total is $2,356,676; overstated by ~13×. Slide 4: '75.8% average 30-day revenue growth rate' — unverifiable from dataset and presented without methodology. Slide 2: fabricated line chart ('Reported vs. Actual Economic Activity') with invented Q1–Q6 data not from the dataset.",
+  "evidence": {
+    "insight": "Only one slide (4) attempts dataset numbers; the rest are product feature descriptions and use-case personas with zero analytical depth. No category comparisons, provider analysis, missingness discussion, or distribution exploration.",
+    "narrative": "Slides 5–8 are repetitive persona templates (Macro-Economist, Educator, Policymaker, Investor) that describe hypothetical product features rather than building an analytical argument from data. The sequence is problem→solution→personas→vision, a pitch structure, not a data narrative.",
+    "framing": "No dataset description, no mention of missingness (241 country, 274 category, 288 audience_type), no scope or limitations, no research question. A cold reader cannot assess what data was analyzed or why.",
+    "accuracy": "Slide 4 claims $31.8M AI cohort revenue vs. actual $2.36M — a massive fabrication or confusion with total dataset revenue ($15.6M). The 75.8% growth rate is unsubstantiated. The 197 AI count is correct. The fabricated Q1–Q6 chart on slide 2 has no data source.",
+    "visual": "Polished dark-mode template with consistent cyan accent, good typography hierarchy, and clean card layouts. However, the only data chart (slide 2) is entirely fabricated, and slide 3's chaos-to-grid graphic is decorative filler. No real data visualizations anywhere.",
+    "ai_slop": "Heavy AI-generated pitch deck template: identical card layouts on slides 5–8, decorative network-node backgrounds on slides 1/3/9/10, inflated consulting language ('shadow tech GDP,' 'Bloomberg Terminal for the next generation'), and the fabricated line chart on slide 2 is classic AI-generated filler with no underlying data."
+  },
+  "confidence": "high",
+  "total": 27,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18892,
+    "output_tokens": 752
+  }
+}

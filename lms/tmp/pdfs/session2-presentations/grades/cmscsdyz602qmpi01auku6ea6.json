@@ -1,0 +1,40 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 4.5,
+    "framing": 4,
+    "accuracy": 4.5,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Social followers vs. revenue null-finding (r=0.022) is well-presented and genuinely useful.",
+  "fix_next": "Replace decorative stock images with actual data visualizations; multiple median figures contradict the frozen dataset and need verification.",
+  "verdict": "Bullet-heavy EDA report with several accuracy issues and almost no real charts.",
+  "flags": [
+    "decorative-stock-image",
+    "no-real-data-charts",
+    "median-discrepancies",
+    "missing-data-not-discussed",
+    "list-not-narrative",
+    "ai-slop-consulting-language"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 6: AI median MRR shown as $446 vs. reference $503; SaaS median $303 vs. reference $200.50; Marketing median $1,586 vs. reference $2,369.50; Mobile Apps median $223 vs. reference $232.50; Productivity median $42.20 vs. reference $79.91. Slide 7: Education median stated as $2,141 vs. reference $2,435. Slide 6 audience percentages (B2C 40.1%, B2B 25.5%, Both 5.6%) sum to only 71.2%, ignoring 28.8% missing audience_type without acknowledgment.",
+  "evidence": {
+    "insight": "Slide 4 social-follower null finding and M&A valuation premium (r=0.244) is an interesting contrast. Slide 7 category opportunity asymmetry comparing volume vs. median is a useful observation. However, most slides describe distributions without deeper synthesis or decision-useful recommendations.",
+    "narrative": "The deck reads as a topic-by-topic EDA dump: MRR distribution, payment providers, social followers, pricing models, audience/category, then takeaways. There is no unifying thesis or question posed at the start; the sequence is a list of analyses rather than a purposeful argument building to a conclusion.",
+    "framing": "Slide 1 says 'Comprehensive Dataset Deep-Dive' but never defines the audience, the decision context, or the key question. No mention of missingness (274 missing categories, 288 missing audience_type, 241 missing country) which materially affects denominators used throughout. Scope and limitations are absent.",
+    "accuracy": "Multiple category medians on slide 6 diverge materially from reference (AI $446 vs $503, SaaS $303 vs $200.50, Marketing $1,586 vs $2,369.50, Productivity $42.20 vs $79.91). Slide 7 Education median $2,141 vs reference $2,435. Audience split percentages on slide 6 don't account for 288 missing values. Pricing model percentages on slide 5 (~38%, ~65%, ~22%) sum to >100% and are unsourced from the dataset columns.",
+    "visual": "Only one actual data visualization exists (slide 2 horizontal bar chart for MRR percentiles). Slide 3 uses a decorative fintech stock photo that adds no information. Slide 4 displays r=0.022 as a large number but no scatter plot. Slide 5 uses icon cards with no data chart. Slide 6 has a simple table. The deck is visually monotonous with repeated teal-gradient corner decorations and lacks evidence-led design.",
+    "ai_slop": "Slide 3 stock 'FINTECH' image is purely decorative. Consulting-style headers like 'Pricing Model Taxonomy & Feature Mechanics' and 'Infrastructure Usage & Revenue Correlation' are inflated. The three-card layout on slide 5 is a generic template pattern. Repeated teal corner gradient on every slide is template filler."
+  },
+  "confidence": "high",
+  "total": 44,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 14220,
+    "output_tokens": 983
+  }
+}

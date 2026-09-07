@@ -1,0 +1,38 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 4,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Strong investor-framing with a clear thesis, buy/watch/avoid tiers, and honest caveats slide.",
+  "fix_next": "Revenue figures on slide 6 are wildly inflated versus the dataset (~8x too high); verify every number against the frozen source before presenting.",
+  "verdict": "Polished investor narrative undermined by fabricated revenue figures.",
+  "flags": [
+    "inflated-revenue-figures",
+    "unverifiable-growth-claims",
+    "external-stats-mixed-with-dataset",
+    "missing-category-missingness-disclosure"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 6: Claims $133.8M total 12-month revenue and individual sector revenues (AI $18.4M, Marketing $14.6M, etc.) — dataset total 30-day revenue is $15.6M, and AI total is $2.36M; these appear to be fabricated 12-month extrapolations or simply wrong by ~8x. Slide 6: Claims 51.6% of revenue in 12 sectors — actual categorized revenue share is much higher (~47% from top 3 alone in 30-day data). Slide 3: Claims $1.5B+ verified revenue — sourced externally but presented alongside dataset figures without clear separation, creating confusion. Slide 9: Growth figures (Dev Tools 17.2% MoM, Analytics 15.2%, Content Creation −2.6%) and multiples (SaaS 1.20x, Education 3.95x, Dev Tools 1.35x) are unverifiable against the frozen dataset reference and may be fabricated. Slide 6: Sector revenue ordering shows Content Creation ($1.9M) above Mobile Apps ($1.7M) — dataset reference shows Mobile Apps total ($227K) above Content Creation ($173K) in 30-day data, but the annualized figures don't match any consistent multiplier.",
+  "evidence": {
+    "insight": "Slide 9's growth-per-dollar-of-multiple concept and slide 10's tiered buy/watch/avoid framework show genuine analytical thinking beyond chart description. The B2B stickiness proxy on slide 8 adds a useful qualitative lens.",
+    "narrative": "Clear three-act structure: context (slides 1-4), analysis (slides 5-9), verdict (slides 10-13). Each slide builds toward the capital allocation recommendation. The thesis is stated early and landed cleanly.",
+    "framing": "Slide 1 sets investor audience clearly. Slide 2 explains TrustMRR for cold readers. Slide 12 provides four honest caveats (small samples, noisy growth, revenue≠profit, selection bias). However, 274-row category missingness is never disclosed.",
+    "accuracy": "The central revenue figures on slide 6 are approximately 8x the actual 30-day dataset totals with no clear methodology for the inflation. Growth rates and multiples on slide 9 cannot be verified. The deck mixes external platform marketing stats (slide 3) with dataset analysis without clear boundaries.",
+    "visual": "Consistent teal/gold palette, clean typography, good hierarchy. Bubble chart on slide 7 is well-designed with three encoding dimensions. Bar charts are properly labeled. Slide 10's color-coded tiers are effective. Some slides are text-heavy (slide 9 bottom).",
+    "ai_slop": "Slides 2-4 feel like polished marketing copy for TrustMRR rather than analytical content — borderline promotional filler consuming 3 of 13 slides before any dataset analysis begins."
+  },
+  "confidence": "high",
+  "total": 65,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 24574,
+    "output_tokens": 933
+  }
+}

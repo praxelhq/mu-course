@@ -1,0 +1,41 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 2.5,
+    "narrative": 3.5,
+    "framing": 3,
+    "accuracy": 2,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Consistent visual template with clear section labels and readable chart formatting on slides 3 and 5.",
+  "fix_next": "The deck almost entirely ignores the revenue data ($15.6M total, provider splits, category medians) and fabricates categories, percentages, and claims not in the dataset.",
+  "verdict": "Investor pitch cosplay built on fabricated numbers, not dataset analysis.",
+  "flags": [
+    "fabricated-categories",
+    "fabricated-statistics",
+    "no-revenue-analysis",
+    "consulting-language-slop",
+    "unearned-certainty",
+    "missing-limitations",
+    "no-source-citations"
+  ],
+  "factual_error_count": 12,
+  "factual_error_detail": "S1: 'AI-Native Share 34%' — AI category is 197/726 categorized (27.1%) or 197/1000 (19.7%), not 34%. S4: repeats 34% and claims AI is 'single largest category' at 34% of all 1,000 — inflated. S4: '2-3x higher margins' for AI SaaS — not in dataset, fabricated. S3: '3.2x faster product adoption' for 100k+ follower founders — fabricated, no such metric in dataset. S5: geographic percentages (US 42%, UK 12%, India 11%, France 8%) — cannot be verified against 759 non-missing country rows; denominator unclear and 241 rows have missing country. S6: '18% stealth' / '180 startups' — anonymous companies are 129 (12.9%), not 180/18%. S7: entire category taxonomy (AI Tools 18%, Marketing Tech 16%, Creator Economy 14%, etc.) is fabricated — actual dataset categories are AI, Marketing, E-comm, SaaS, Education, etc. with different shares. S7: percentages sum to 100% but 274 rows have missing category, so no category can claim share of 1,000. S3: follower distribution percentages (38%, 32%, 18%, 7%, 5%) presented without verification methodology. S9: '50%+ of startups will reach $100k MRR without institutional capital' — speculative claim presented as data-driven. S8: '$5k-$50k MRR' segment — no MRR breakdown exists in dataset (only 30-day revenue). S4: 'Speed to PMF in weeks not months' — not in dataset.",
+  "evidence": {
+    "insight": "No analysis of actual revenue distribution ($15.6M total, top-10 at 49.6%), payment provider landscape (Stripe 636 companies/$13.5M), category medians, or B2B/B2C splits. Claims are generic VC talking points, not dataset-derived insights.",
+    "narrative": "Slides follow a logical sequence (overview → distribution → AI → geography → stealth → categories → thesis → future → close) but the arc is a sales pitch to investors, not a data story. No tension, no surprise, no analytical progression.",
+    "framing": "Audience is implicitly investors, but the deck never defines its analytical question, acknowledges 241-288 missing values across key fields, or states limitations. 'July 2026' dating is odd. No methodology section.",
+    "accuracy": "Category taxonomy on slide 7 is entirely fabricated (AI Tools 18%, Marketing Tech 16%, etc. do not match actual categories: AI 197, Marketing 42, SaaS 66, etc.). Stealth count wrong (129 not 180). AI share wrong (not 34%). The '3.2x faster adoption' claim is invented. Geographic percentages ignore 241 missing country values without disclosure.",
+    "visual": "Gamma template is clean and consistent. Bar charts on slides 3 and 5 are legible. Donut chart on slide 7 is readable but represents fabricated data. Heavy text density on most slides. No data annotations or source labels on any chart.",
+    "ai_slop": "Pervasive consulting-speak throughout: 'structurally impossible,' 'the signal is unambiguous,' 'Will you lead this wave, or follow it?' Slides 4, 6, 8, 9, 10 are almost entirely generic VC rhetoric with no dataset-specific content. Fabricated statistics (3.2x, 2-3x margins) are hallmarks of AI-generated filler."
+  },
+  "confidence": "high",
+  "total": 30,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19939,
+    "output_tokens": 1121
+  }
+}

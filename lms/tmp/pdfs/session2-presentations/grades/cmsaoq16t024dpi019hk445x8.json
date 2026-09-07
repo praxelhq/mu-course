@@ -1,0 +1,38 @@
+{
+  "slide_count": 5,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 6,
+    "accuracy": 5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong two-tier thesis sustained across all five slides with actionable segmented recommendations.",
+  "fix_next": "Total revenue is ~$15.6M not $18M+; the 83.4% Stripe figure, stealth 5× claim, and B2B 2.4× multiple all need sourcing or correction.",
+  "verdict": "Coherent narrative with real insights, undermined by several inflated or unverifiable numbers.",
+  "flags": [
+    "inflated-total-revenue",
+    "unverified-stripe-share",
+    "missing-data-caveats",
+    "causal-language-on-observational-data"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1: Total 30-day revenue stated as '$18M+' — actual is ~$15.6M. Slide 1: '83.4% verified via Stripe' — reference is 63.6% (636/1000); 83.4% is unverifiable. Slide 1: Lists 'Whop' as a provider — not in reference data (should be e.g. Dodo Payments, Polar, Lemon Squeezy, Superwall). Slide 3: Stealth median revenue $1,395 and 5× gap — reference shows anonymous median not directly given but anonymous share is 12.9%/26.5% revenue; the 5× claim is plausible directionally but the exact $1,395 figure is unverifiable. Slide 3: 'AI pays the least' — AI median $503 is not the lowest (Productivity $79.91, SaaS $200.50, Mobile Apps $232.50 are all lower).",
+  "evidence": {
+    "insight": "Slide 2's zero-subscription paradox and outlier inflation analysis show genuine analytical thinking beyond chart description. Slide 4's for-sale disconnect with specific outlier examples (Abun.com 172×, Based Labs AI $0 revenue/$2.18M ask) adds decision-useful texture. The stealth vs. named comparison on Slide 3 is a genuinely interesting angle.",
+    "narrative": "Clear arc: ecosystem overview → growth stagnation → monetization drivers → for-sale disconnect → strategic imperatives. Each slide builds on the two-tier thesis established in Slide 1. The conclusion ties back to findings. However, the narrative occasionally overreaches (e.g., 'the market needs consolidation' is asserted without sufficient evidence).",
+    "framing": "Slide 1 establishes dataset scope and freeze date. However, massive missingness (241 country, 288 audience_type, 274 category, 286 domain) is never acknowledged. The audience is implicitly investors/acquirers/founders but not explicitly stated until Slide 5. No limitations section despite heavy reliance on fields with 25-29% missing data.",
+    "accuracy": "Total revenue inflated by ~$2.4M ($18M+ vs $15.6M). Stripe share overstated (83.4% vs 63.6%). 'AI pays the least' is false — multiple categories have lower medians. Whop listed as provider but absent from reference. B2B 2.4× multiple aligns with reference (2.35×) — acceptable rounding. Category medians for Marketing ($2,370 vs $2,369.50) and Education ($2,436 vs $2,435) are close enough. The 'median $278' overall revenue figure is not directly verifiable but plausible.",
+    "visual": "Consistent template with green accent color, clear hierarchy (headline → KPI cards → detail panels → source line). Good use of contrast for outlier callouts (red tags on Slide 4). Bar charts on Slide 3 are simple and effective. However, the design is repetitive across all 5 slides — same card layout every time. No actual data visualizations (scatter plots, distributions, histograms) appear anywhere; everything is KPI cards and text. The 'Top Earners Per Visitor' box on Slide 3 feels orphaned with insufficient context.",
+    "ai_slop": "Template repetition across all slides (identical card-based layout) suggests AI generation. Some consulting-speak ('strategic imperatives,' 'unlock hidden value') is present but not egregious. The 'delay branding spend to stay stealth longer' recommendation on Slide 5 conflates correlation with causation in a way typical of AI-generated advice."
+  },
+  "confidence": "high",
+  "total": 63,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 11571,
+    "output_tokens": 1135
+  }
+}

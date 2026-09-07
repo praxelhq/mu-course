@@ -1,0 +1,40 @@
+{
+  "slide_count": 14,
+  "scores": {
+    "insight": 3,
+    "narrative": 5,
+    "framing": 4,
+    "accuracy": 2.5,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Clear thesis structure with a coherent narrative arc from problem to recommendation.",
+  "fix_next": "The deck contains zero charts, zero actual numbers from the dataset, and an invented scoring index with no disclosed methodology—show real data.",
+  "verdict": "Polished pitch deck selling a conclusion, not a data story.",
+  "flags": [
+    "no-charts",
+    "fabricated-index",
+    "unverifiable-claims",
+    "consulting-slop",
+    "no-dataset-numbers",
+    "thesis-before-evidence"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 5: 'Category Strength Index' scores (100, 96, 92, 83, 77) are entirely fabricated with no disclosed methodology or grounding in dataset fields. Slide 6: '#1 in proven trailing revenue' — Marketing has $1.32M total vs AI's $2.36M; Marketing is not #1 by total revenue. '2nd highest typical (median) verified MRR' — Marketing median is $2,369.50, second to Education's $2,435, which is roughly correct, but the claim of '#1 in trailing revenue per company' is misleading ($1.32M/42 = ~$31k vs AI $2.36M/197 = ~$12k — plausible per-company but never shown). Slide 6: '79% of MarTech companies serve B2B' — unverifiable from dataset; presented as dataset fact. Slide 9: '~79% B2B retention' conflates audience_type composition with retention rate — the dataset has no retention/churn data. Slide 5: Analytics ranked #2 but has only 19 companies and $368K total revenue — ranking it above AI ($2.36M, 197 companies) on a 'strength index' without explanation is misleading.",
+  "evidence": {
+    "insight": "No original analytical finding is shown with actual numbers. The 'Category Strength Index' on slide 5 is asserted without any calculation. Claims like 'close to half growing MoM' (slide 7) cite no figure. The deck argues Marketing is best but never shows the median ($2,370) or compares it numerically to Education ($2,435) which actually beats it.",
+    "narrative": "The deck follows a logical arc: problem (slides 2-3), framework (slide 4), verdict (slide 5), evidence (slides 6-7), opportunity (8-10), risks (12), recommendation (14). This is coherent but the sequence is thesis-first, evidence-after, and the 'evidence' slides contain no data visualizations or numbers.",
+    "framing": "Audience is defined (Investment Committee) and scope is stated. However, dataset limitations are never mentioned: 274 missing category values (37.7% of rows), 288 missing audience_type, 241 missing country. The 42-company Marketing sample is never disclosed. No denominators anywhere.",
+    "accuracy": "No actual dataset figures appear on any slide. The 'Category Strength Index' is invented. '79% B2B' is unverifiable and conflated with 'retention.' '#1 in trailing revenue' is ambiguous and potentially wrong depending on interpretation. The dataset contains no retention or churn data, yet retention is a core pillar of the thesis. 'Trust MRR' formula (slide 3) is presented as Verified × Recurring × Growing but is never computed.",
+    "visual": "Consistent color palette (teal, orange, yellow, pink), clean typography, good whitespace, professional layout. But there are zero data visualizations across 14 slides — no bar charts, scatter plots, distributions, or tables. Every slide is text and decorative shapes. The template is polished but repetitive in structure (three-card layouts appear on slides 3, 6, 8, 9, 10).",
+    "ai_slop": "Heavy consulting-language filler throughout: 'the one figure that survives due diligence,' 'optimise for fiction,' 'the buyer worth underwriting.' Decorative blob shapes on slide 1 serve no purpose. The entire 'Category Strength Index' appears fabricated to support a predetermined conclusion. Repetitive three-panel card template used on 5+ slides. Generic growth-driver claims (slide 10) could apply to any SaaS category."
+  },
+  "confidence": "high",
+  "total": 40,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 26158,
+    "output_tokens": 1112
+  }
+}

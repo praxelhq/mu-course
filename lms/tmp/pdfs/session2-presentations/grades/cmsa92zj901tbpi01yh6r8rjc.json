@@ -1,0 +1,38 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 5,
+    "narrative": 6,
+    "framing": 6.5,
+    "accuracy": 7,
+    "visual": 6.5,
+    "bonus": 0
+  },
+  "what_worked": "Accurate core numbers, clean layout, and the Stripe-as-verification-backbone observation adds genuine interpretive value.",
+  "fix_next": "The deck describes distributions without generating non-obvious insights; add concentration analysis, missingness discussion, or median-vs-total contrasts to deepen the story.",
+  "verdict": "Clean, accurate overview that stays at the surface of the data.",
+  "flags": [
+    "descriptive-not-analytical",
+    "missing-limitations-slide",
+    "no-missingness-disclosure",
+    "visual-sameness"
+  ],
+  "factual_error_count": 1,
+  "factual_error_detail": "Slide 7: Claims Stripe is 86.7% of 30-day revenue; actual Stripe share is $13,526,762/$15,596,345 = 86.7% — this checks out. Slide 7 bar chart shows Stripe revenue as $13,527K which rounds correctly. Slide 9: 2.30x median revenue multiple is stated without clarifying B2B vs B2C; the reference shows B2C median is 2.30x and B2B is 2.35x, so this appears to be the B2C figure presented as the overall median — minor conflation but not clearly wrong without knowing the exact overall median. Slide 5: '79% higher' — ($2,357K - $1,317K)/$1,317K = 78.9%, rounds fine. Slide 8: B2B/B2C median MRR ratio claimed as 5.7x; $1,036/$181 = 5.72x, correct. However, slide 5 states '197' AI startups are 'nearly 1 in 5 of the whole dataset' — 197/1000 = 19.7%, which is indeed nearly 1 in 5, but 274 rows have missing categories, so 197/726 categorized = 27.1%. Presenting it as 1-in-5 of the 'whole dataset' is defensible but obscures the missingness issue. Counting 1 material error: no disclosure of substantial missingness (274 missing categories, 241 missing countries, 288 missing audience_type) which affects the denominators and interpretability of every analytical slide.",
+  "evidence": {
+    "insight": "Slides 5-9 each present one descriptive finding (AI leads, US dominates, Stripe dominates, B2B richer, 26% for sale). These are accurate reads of the data but none go beyond what a sorted bar chart shows. No concentration/inequality analysis, no median-vs-mean tension, no anonymity premium, no founded-year exploration.",
+    "narrative": "The deck follows a logical sequence: platform intro → metrics glossary → overview → category → geography → providers → business model → acquisitions → takeaways. This is coherent but reads as a tour of dimensions rather than building toward a thesis. The takeaways slide summarizes but doesn't synthesize.",
+    "framing": "Slide 2 explains TrustMRR well for a cold reader; slide 3 defines metrics. However, there is no limitations slide, no mention of missingness (241-288 rows missing key fields), no discussion of survivorship bias or self-selection. The 'frozen 30 Jul 2026' timestamp is consistently shown.",
+    "accuracy": "Core numbers check out: $15.6M total, $2,357K AI, Stripe $13,527K, category counts match reference. The 86.7% Stripe share, 5.7x B2B/B2C ratio, and category revenues are all verifiable. The omission of missingness context (274 missing categories) is the main accuracy concern — it doesn't invalidate claims but leaves the reader unaware of data quality issues.",
+    "visual": "Consistent dark-teal color scheme with horizontal bar charts and stat cards. Clean and legible. However, every analytical slide uses the identical layout (bar chart left, callout card right), creating visual monotony. No scatter plots, distributions, or annotations that would reveal deeper patterns. Decorative circles on cards add nothing.",
+    "ai_slop": "Mild template repetition — every data slide uses the same bar-chart-plus-callout layout. The decorative circles on stat cards are meaningless. Language is generally restrained and not inflated, though 'center of gravity' and 'verification rails' lean slightly toward consulting-speak."
+  },
+  "confidence": "high",
+  "total": 62,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19048,
+    "output_tokens": 1114
+  }
+}

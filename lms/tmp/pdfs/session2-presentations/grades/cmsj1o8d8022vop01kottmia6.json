@@ -1,0 +1,37 @@
+{
+  "slide_count": 24,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 3.5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis with purposeful narrative arc, good caveats slide, and clean visual hierarchy throughout.",
+  "fix_next": "Median values for most categories are materially wrong versus the reference dataset; recompute all medians and MRR/builder figures from scratch.",
+  "verdict": "Compelling story undermined by systematically incorrect median and per-builder figures.",
+  "flags": [
+    "median-values-wrong",
+    "mrr-per-builder-wrong",
+    "systematic-calculation-error"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 6/21: AI median $446 (ref $503), Marketing $1,586 (ref $2,369.50), Dev Tools $185 (ref $635), Health & Fitness $392 (ref $662.50), Analytics $1,294 (ref $419), Education $2,142 (ref $2,435). Slide 14: AI MRR/builder $9,167 (ref ~$11,963), Marketing MRR/builder $10,583 (ref ~$31,364).",
+  "evidence": {
+    "insight": "Slide 10's B2B vs B2C AI split and slide 11's zero-revenue comparison go beyond chart description to reveal actionable buyer-type insight. Slide 12 grounds the thesis in specific company examples.",
+    "narrative": "Clear three-act structure (crowded→wrong target→real yield) with a punchy thesis on slide 17 and actionable playbook on slide 18. Section dividers maintain rhythm.",
+    "framing": "Slide 2 sets up three questions cleanly. Slide 3 establishes credibility. Slide 19 handles caveats well including small-n warnings and snapshot limitation. Audience (founders) is clear.",
+    "accuracy": "At least 6 category medians on slides 6/21 are materially wrong vs reference (e.g., Analytics $1,294 vs ref $419, Marketing $1,586 vs ref $2,369.50). MRR/builder on slide 14 wrong for AI and Marketing. Systematic calculation error undermines core claims.",
+    "visual": "Consistent navy/gold palette, clean bar charts with direct labels, good use of whitespace. Scatter plot on slide 7 lacks axis values. Section dividers are slightly excessive (4 of 24 slides). Appendix tables are well-formatted.",
+    "ai_slop": "none — deck avoids generic filler, every slide serves the argument"
+  },
+  "confidence": "high",
+  "total": 68,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 42137,
+    "output_tokens": 2097
+  }
+}

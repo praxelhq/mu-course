@@ -1,0 +1,377 @@
+T RU STM R R MA RK ET I N TE LL I G ENCE              · F R OZ EN 3 0 J U L 2 02 6
+
+
+
+
+The State of Bootstrapped SaaS
+An executive analysis of 1,000 revenue-transparent startups
+
+
+This report analyzes the full TrustMRR public dataset — 1,000 independently operated, mostly
+founder-led software businesses that voluntarily disclose live revenue. It is not one company's
+financials; it is a market-wide snapshot of how the indie and micro-SaaS economy is actually
+performing today.
+
+
+
+
+         $15.9M                                          78.4%                                       $134.4M                                           83.8%
+          Total 30-day revenue                         Startups earning revenue                      Trailing 12-month revenue                      Revenue held by top 10%
+
+
+
+
+Scope: 1,000 startups on the TrustMRR directory · Snapshot frozen July 30, 2026 · Revenue figures sourced via connected payment processors (Stripe, RevenueCat, Polar, Paddle, and others)
+
+
+
+                                                                                                                                                                                             01 / 11
+H OW T HI S D AT ASE T W OR K S
+
+
+Reading the TrustMRR dataset as a system
+The workbook is one wide table split into five logical blocks. Each startup is one row; the blocks connect on record_id.
+
+
+     1         Identity & geography                                         record_id, name, website, country, X followers
+
+
+
+     2         Revenue & payments                                           processor, 30d / 3m / 12m / all-time revenue, 30d growth
+
+
+
+     3         Engagement                                                   MRR, MRR growth, active subscriptions, site visitors
+
+
+
+     4         Classification                                               pricing model, audience, category tags, domain authority
+
+
+
+     5         M&A listing                                                  for-sale flag, asking price, revenue multiple
+
+
+
+Data quality — field coverage across all 1,000 rows
+
+100%                                                  95%                                                   72%                                                   37%
+Revenue & payment provider                            Follower count                                        Country                                               Category tag
+
+Limitation: even on a platform built around radical transparency, only 37% of founders have tagged a category and 72% disclose a country — treat category- and geography-level findings as directional, not
+exhaustive.
+
+
+                                                                                                                                                                                                              02 / 11
+R EVE NUE PE RF O R MA NCE
+
+
+Revenue is accelerating — but concentrated
+
+           $15.9M                                      $33.4M                          $134.4M                                         $331.8M
+             Last 30 days                               Last 3 months                    Last 12 months                                All-time (cumulative)
+
+
+
+
+                     Run-rate momentum: 30-day vs trailing averages                  What's driving it
+
+                                                                         $16M
+                                                                                        The market's 30-day run-rate ($15.9M) sits 43% above its trailing 3-month
+                                                                                        monthly average — the ecosystem is growing, not flat.
+
+            $11M                         $11M
+
+                                                                                        That lift isn't one company: excluding the single largest earner, the market is
+                                                                                        still up 17% over its trailing average.
+
+
+
+                                                                                        Among revenue-generating startups, growth is genuinely split — 337 growing,
+                                                                                        302 declining, 133 flat in the last 30 days. This is a bifurcating market, not a
+                                                                                        rising tide.
+       12m trailing avg              3m trailing avg                  Last 30 days
+
+
+
+
+                                                                                                                                                                           03 / 11
+G EO G RA PH I C PE R F OR MA NCE
+
+
+The US anchors the market; value is thin elsewhere
+                             Top countries by 30-day revenue          Business read
+
+
+      India   $0M
+                                                                                      of all revenue comes from the US (246 companies) — the
+                                                                      61%             center of gravity for this market by a wide margin.
+ Singapore    $0M
+
+
+     Brazil   $0M
+                                                                                      average per company in Singapore (n=8) and $26.4K in
+
+ Hong Kong    $0M
+                                                                      $21.5K          Lithuania (n=4) — tiny cohorts monetizing far above the
+                                                                                      norm.
+
+   Canada     $0M
+
+                                                                                      India has the largest non-Western cohort (57 startups)
+       UK      $0M
+                                                                      57 vs $2.5K     but the lowest average revenue per company — a long
+                                                                                      tail of early-stage builders.
+    France       $1M
+
+
+       US                                                      $10M
+                                                                                      of startups don't disclose a country — treat geographic
+                                                                      28.5%           totals as a floor, not a ceiling.
+
+
+
+
+                                                                                                                                                04 / 11
+IND UST R Y & C AT EGOR Y P ER FOR M ANCE
+
+
+Volume leaders aren't the same as value leaders
+                        Top categories by total 30-day revenue           Reframed by revenue PER company
+
+
+    Security              $1M                                               Security                          $91.7K avg            12 companies
+
+
+ Productivity              $1M
+                                                                            Recruiting & HR                   $64.3K avg            9 companies
+
+       Sales                $1M
+
+                                                                            Sales tools                       $47.7K avg            25 companies
+  Marketing                       $2M
+
+
+                                                                            Analytics                         $37.0K avg            70 companies
+   Analytics                                       $3M
+
+
+
+          AI                                                 $3M            AI (for comparison)               $16.1K avg            198 companies
+
+
+
+       SaaS                                                        $4M
+
+                                                                         Security, Recruiting & HR, and Sales-tooling startups are small in number but
+                                                                         monetize far above the crowded SaaS/AI/Mobile-Apps segments, where a long tail of
+                                                                         near-zero earners pulls the average down.
+
+
+
+
+                                                                                                                                                             05 / 11
+D EE P P ER FOR M ANCE AN ALYS IS
+
+
+A handful of startups carry the market
+
+                       38.5%                                                                 48.6%                                                               83.8%
+                         Top 5 startups                                                    Top 1% (10 startups)                                             Top 10% (100 startups)
+                       of all 30-day revenue                                                 of all 30-day revenue                                            of all 30-day revenue
+
+
+
+Top 5 companies by 30-day revenue                                                                             Payment processor as a quality signal
+
+stan                                                $2.84M                 101,590 subs                                          87%
+
+
+brand-on-demand-inc                                 $984.5K                3,631 subs                                   64%
+
+
+stack-influence                                     $868.3K                55 subs
+
+
+stealth-company-17                                  $857.6K                325 subs                                                               19%                             17%
+                                                                                                                                                            8%                            5%
+comp-ai                                             $575.3K                50 subs
+                                                                                                                            Stripe                RevenueCat                          Other
+                                                                                                                                       Share of companies    Share of revenue
+Stripe-backed startups are 64% of the population but 87% of revenue — the strongest single quality signal in the dataset.
+
+
+
+
+                                                                                                                                                                                               06 / 11
+T RE ND S & COM PA RA TI VE A NAL Y SI S
+
+
+Momentum is real, but split down the middle
+       30-day growth status (revenue-generating startups)   What the split means
+
+
+                    133                                        772 revenue-generating startups report a 30-day growth figure; the median is 0.0% — the typical
+                                                               company is neither expanding nor shrinking.
+
+
+
+                                                  337
+                                                               This is a genuinely bifurcating market: 337 companies are actively growing while 302 are actively
+                                                               declining. Aggregate market growth is being delivered by a subset of winners, not broad participation.
+
+
+
+                                                               Follower count shows no reliable relationship to revenue: the single most-followed startup in the dataset
+                                                               (366K followers) reported $0 in 30-day revenue, while several six-figure earners had comparatively small
+              302
+                                                               followings.
+
+
+
+                                                               The all-time-to-30-day ratio ($331.8M all-time vs $15.9M this month) reflects a market with real
+                     Growing   Declining   Flat                accumulated history, not a wave of brand-new entrants.
+
+
+
+
+                                                                                                                                                                           07 / 11
+K EY B USI N ESS I NSI G H TS
+
+
+What the numbers are really saying
+         Winner-take-most, even at the indie level
+  1
+         The top 1% of startups (10 companies) capture 48.6% of market revenue — a power-law distribution typically associated with venture-backed markets, now visible in the
+         bootstrapped world too. Peer benchmarks should use medians, not averages.
+
+
+
+         Payment processor is a stronger signal than category
+  2
+         Stripe-backed startups outperform every category grouping: 64% of the population, 87% of the revenue. Processor choice likely co rrelates with business maturity and
+         seriousness more than any self-reported tag does.
+
+
+
+         Audience ≠ revenue
+  3
+         Social following and monetization are decoupled. Treat follower counts as a marketing-reach metric only — never as a proxy for financial health in diligence or benchmarking.
+
+
+
+         A real acquisition market exists — and it's cheap
+  4
+         262 startups (26.2%) are listed for sale, totaling $86.8M in asking value. The median multiple is just 3.0x revenue — the 9.5x average is dragged up by a handful of outlier
+         listings.
+
+
+
+
+                                                                                                                                                                                         08 / 11
+E XE C U T I V E DA SH BO AR D
+
+
+The market in one minute
+             $15.9M                              784 / 1,000                                  83.8%                            262
+             30-day revenue                       earning revenue                            held by top 10%                 listed for sale
+
+
+
+
+                    Top categories                                         Top countries                       Revenue by processor
+
+                                                                                                                        5%
+    Sales          $1M                              Hong Kong       $0M
+                                                                                                               8%
+
+
+ Marketing            $2M                              Canada       $0M
+
+
+
+
+ Analytics                    $3M                          UK       $0M
+
+
+
+
+        AI                           $3M                France       $1M
+                                                                                                                                     87%
+
+    SaaS                                   $4M             US                              $10M
+
+                                                                                                               Stripe   RevenueCat    Other
+
+
+
+
+                                                                                                                                               09 / 11
+ST R AT EGIC R E COM M END AT IO NS
+
+
+Where to focus next
+           Source acquisitions from Stripe-backed, US-based SaaS / Analytics / Security startups
+    1
+           This slice consistently shows the highest realized revenue per company — the strongest evidence-based filter in the dataset.
+
+
+
+           Anchor deal pricing to the 3.0x median multiple, not the 9.5x average
+    2
+           The average is dragged up by a small number of outlier listings; median is the defensible benchmark for the other 260+ listedstartups.
+
+
+
+           Stop using follower count as a diligence signal
+    3
+           It shows no reliable relationship to revenue. Replace it with MRR, active subscriptions, and payment-processor identity.
+
+
+
+           Push for complete category and country disclosure
+    4
+           37% category and 72% country coverage limits every downstream analysis — closing this gap materially improves market intelligence.
+
+
+
+           Benchmark and support programs on medians, not averages
+    5
+           With the top 1% holding 48.6% of revenue, mean-based benchmarks overstate what a typical founder should expect.
+
+
+
+
+                                                                                                                                                    10 / 11
+FINA L E XE CUT IVE SUM M AR Y
+
+
+
+
+A healthy market with a widening gap
+   $15.9M in 30-day revenue across 1,000 startups, up 43% on the trailing 3-month average — and still up 17% excluding the single largest earner.
+
+
+   Revenue is winner-take-most: the top 10% of startups hold 83.8% of all revenue; the top 1% alone holds 48.6%.
+
+
+   Stripe-backed startups (64% of the market) generate 87% of revenue — the single strongest quality signal available.
+
+
+   Growth is genuinely split — 337 growing, 302 declining — indicating a bifurcating market, not universal momentum.
+
+
+   A $86.8M acquisition market is active, with 26.2% of startups listed for sale at a median 3.0x revenue multiple.
+
+
+
+
+   Bottom line: the indie/bootstrapped SaaS economy is larger and more active than its reputation suggests, but it behaves like a venture market at small scale — a handful
+   of breakout performers concentrate the value. Treat medians, not averages, as the realistic benchmark, and use payment-processor identity — not social proof — as the
+   leading indicator of quality.
+
+
+
+
+                                                                                                                                                                              11 / 11
+

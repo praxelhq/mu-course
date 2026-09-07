@@ -1,0 +1,44 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 5.5,
+    "accuracy": 4.5,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Strong narrative arc from AI premium to growth catch to concentration creates a genuinely useful investor tension.",
+  "fix_next": "Document how the 414/586 AI split was derived and disclose missing-category rates, zero-revenue rows, and survivorship bias.",
+  "verdict": "Compelling story arc undermined by unverifiable core partition and undisclosed data limitations.",
+  "flags": [
+    "fabricated-grouping",
+    "unverifiable-median-claims",
+    "no-limitations-slide",
+    "missing-data-not-disclosed",
+    "decorative-background-overuse",
+    "top1-revenue-share-wrong",
+    "unexplained-conversion-rate",
+    "sparse-scatter-plot"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 7: top-1 share stated as 26.5% but reference top single company (Stripe) is ~86.7% of total via its processor share, not 26.5%; top-10 stated as 48% vs reference 49.6%. Slide 7: '31.18% Total conversion rate' is unexplained and unverifiable. Slide 3: 414 AI-related companies cannot be reconciled with 197 AI-category rows plus 274 missing categories. Slide 4: median MRR values ($423/$222) rest on the unverifiable 414/586 partition.",
+  "evidence": {
+    "insight": "Slide 5's tension between monetization premium and negligible growth gap is genuinely useful; slide 8's 2×2 framework synthesizes findings into an actionable lens. However, depth is limited—no statistical tests, no exploration of confounders, no segment-level drill-down.",
+    "narrative": "Clear arc: investor question (slide 2) → premium (slide 4) → catch (slide 5) → driver (slide 6) → concentration (slide 7) → framework (slide 8) → thesis (slide 9) → summary (slide 10). Landing is coherent and purposeful.",
+    "framing": "Audience and question stated upfront on slide 2. But no limitations disclosed anywhere: 274 missing categories, 216 zero-revenue rows, how 'AI-related' was operationalized beyond vague 'description & category tags,' survivorship bias, or payment-processor composition effects. The 414/586 split is asserted without methodology.",
+    "accuracy": "Core AI/non-AI partition (414/586) is unverifiable against reference data (197 AI-category, 274 missing). All downstream medians ($423/$222, 19/13 subscribers, 28.7%/26.5% growth) inherit this problem. Top-10 share rounds to 48% vs reference 49.6%—close but imprecise. '31.18% conversion rate' on slide 7 is unexplained. 'Structural, not accidental' claim made without statistical testing.",
+    "visual": "Gamma template with repetitive red mesh background on 5/10 slides adds no information. Charts are simple and legible but the scatter plot (slide 6) shows ~4 visible points, undermining the 'clear story' claim. Slide 7 bar chart runs in reverse cumulative order. The 2×2 (slide 8) is conceptual, not data-populated. Consistent color scheme but low chart density overall.",
+    "ai_slop": "Repetitive decorative red mesh on half the slides. Consulting-speak assertions ('structural, not accidental,' 'recurring customers predict everything') without supporting evidence. '31.18% Total conversion rate' appears to be unexplained AI-generated filler."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Removed 1 bonus point: the 2×2 framework is conceptual rather than data-populated and does not rise to bonus-worthy originality. Other scores confirmed after independent review; framing lowered 0.5 for complete absence of limitations disclosure.",
+  "total": 56,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 18366,
+    "output_tokens": 1006
+  }
+}

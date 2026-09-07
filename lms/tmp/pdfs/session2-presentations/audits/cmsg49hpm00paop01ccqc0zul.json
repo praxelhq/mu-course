@@ -1,0 +1,43 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 3.5,
+    "narrative": 5,
+    "framing": 4,
+    "accuracy": 2.5,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Clear audience framing for marketing teams, accessible term definitions, and consistent visual design throughout.",
+  "fix_next": "Use the full 1,000-row dataset with transparent filters, verify revenue totals against source, and add a limitations slide.",
+  "verdict": "Polished visuals on a cherry-picked 74-row subset with multiple unverifiable revenue figures.",
+  "flags": [
+    "cherry-picked-sample",
+    "fabricated-or-unverifiable-revenue-figures",
+    "undisclosed-annualization",
+    "missing-limitations-slide",
+    "generic-unsupported-pricing-slide",
+    "ai-slop-takeaways",
+    "category-counts-mismatch"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 3: '$54M+ combined yearly revenue' is unverifiable and far exceeds the full-dataset total of ~$15.6M (even annualized ~$187M would require different framing); 74 companies reviewed vs 1,000 rows with no selection criteria disclosed. Slide 4: category counts (AI=11, SaaS=7, Marketing=5) drastically undercount the dataset (AI=197, SaaS=66, Marketing=42). Slide 5: Marketing shown as top revenue category at $12.8M — in the full dataset AI leads at $2.36M monthly; these annualized figures are unverifiable from the stated source. Slide 10: '3.2x average asking price' — reference data shows median multiples of ~2.3x and means of ~8x, so 3.2x is plausible only with unstated filtering but presented without denominator or methodology. Slide 9: pricing pattern claims ('by far the most common') are entirely unsupported by any dataset field.",
+  "evidence": {
+    "insight": "The central finding — marketing-category companies punch above their weight — is driven by one outlier (Stack Influence) and is not contextualized with medians, skew, or per-company averages. Takeaways on slides 11-12 are generic marketing advice (trust-building, clear pricing) derivable without any data. No analysis of payment platforms, anonymity, TLD patterns, or founded-year trends.",
+    "narrative": "Logical sequence from intro → landscape → revenue → growth → audience → spotlight → pricing → sale → takeaways. However, the arc is descriptive with no analytical tension, surprise, or counter-argument. The pricing slide (9) breaks the data-driven thread entirely.",
+    "framing": "Audience is clearly stated (marketing teams) and terms are defined accessibly on slide 2. However, the 74-company subsample is buried in a footnote with no selection criteria, no mention of 274 missing category values, no survivorship bias discussion, and no limitations slide. A cold reader would assume this is the full dataset. Downgraded slightly from preliminary for this opacity.",
+    "accuracy": "Revenue figures cannot be reconciled with the frozen reference. The full dataset has $15.6M total monthly revenue across 1,000 rows; the presentation claims $54M+ yearly for just 74 companies. Category counts are internally consistent with the 74-company filter but misleading without disclosure. Annualization of monthly snapshots is done silently. The 3.2x multiple lacks methodology.",
+    "visual": "Consistent navy/coral palette, clean typography, appropriate chart types (horizontal bar, vertical bar, donut, table). Good white space and hierarchy. Donut chart on slide 7 is a weaker choice. Card template reused identically on slides 2 and 9 feels templated. Overall above-average craft.",
+    "ai_slop": "Slide 9 is entirely generic knowledge with no dataset backing. Slide 11 takeaways are standard marketing advice. The four-card template is reused verbatim. The polished-but-hollow consulting tone throughout suggests heavy AI generation with minimal analytical engagement."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 4.5 to 4.0 because the 74-company filter is more misleading than initially weighted — no selection criteria, no denominator disclosure, and the footnote is insufficient for a cold reader. All other scores confirmed after independent review.",
+  "total": 41,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 21988,
+    "output_tokens": 1077
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Genuinely coherent investment thesis with purposeful narrative arc from opportunity through proof to capital deployment.",
+  "fix_next": "Key statistics ($1,036 B2B median, 31% marketing >$10k, \"6x\" claim, 0.5–0.9x multiples) appear fabricated or unverifiable from the dataset—anchor claims to traceable numbers.",
+  "verdict": "Strong storytelling and original framing undermined by unverifiable headline statistics.",
+  "flags": [
+    "unverifiable-statistics",
+    "median-figures-not-matching-reference",
+    "revenue-multiple-claim-unsourced",
+    "causal-language-without-evidence"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 1-2: '$1,036 median monthly revenue for tools sold to businesses' — dataset shows Marketing median $2,369.50, not $1,036; the B2B median multiple from reference is 2.35x not a raw dollar figure that maps to $1,036. Slide 1-2: '$181 median for consumer apps' — no clear derivation; B2C median multiple is 2.30x but raw B2C median is not stated as $181 in reference. Slide 2: '31% of marketing tools clear $10k/mo' — Marketing has 42 companies; 31% = ~13 companies >$10k; plausible but unverifiable and presented without denominator context (42 companies, 274 missing category). Slide 1-2: '6x the revenue per customer' — $1,036/$181 ≈ 5.7x, but both numerator and denominator appear fabricated, making the ratio unreliable.",
+  "evidence": {
+    "insight": "Slide 5 pattern-extraction (narrow job, agency channel, price ladder, small fast movers) goes well beyond chart description. Slide 7 acquisition-multiple table is genuinely decision-useful. Slide 8 capital allocation is concrete and tied to findings.",
+    "narrative": "Clear arc: opportunity (slide 1-2) → field definition (3) → proof via exemplars (4) → pattern (5) → business model (6) → acquisition targets (7) → capital ask (8). Each slide advances the argument. Landing on slide 8 synthesizes everything.",
+    "framing": "Investment memo format with explicit audience (investor deploying ₹10 Cr) is well-chosen. However, dataset scope/limitations never disclosed — no mention of 1,000-company sample, 274 missing categories, or 216 zero-revenue companies. The 'August 2026' date is odd.",
+    "accuracy": "The $1,036 and $181 median figures don't match reference data (Marketing median is $2,369.50; Education $2,435). The 0.5–0.9x revenue multiples on slide 1 and slide 7 appear sourced from asking prices of specific companies, not dataset fields — presented as market-wide fact. The '31% of marketing tools clear $10k' is plausible but denominator (n=42 with heavy missingness) is never disclosed. Slide 7 company-level data appears drawn from the dataset but multiples are computed from external asking prices not in the dataset.",
+    "visual": "Consistent warm palette, strong typographic hierarchy, good use of cards and tables. Slide 4 LocalRank.so card has text overlap/legibility issue. Bar chart on slide 2 is clean and well-labeled. No gratuitous decoration. Slight visual sameness across dark/light alternating slides but purposeful.",
+    "ai_slop": "Slide 3's four-pillar layout ('Budget already there / Results are visible / Tiny teams / AI cut the cost') reads as generic consulting framework not grounded in specific data. Some phrases like 'margin incumbents haven't priced in yet' are assertive without evidence. Overall relatively restrained."
+  },
+  "confidence": "medium",
+  "total": 71,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 16084,
+    "output_tokens": 1012
+  }
+}

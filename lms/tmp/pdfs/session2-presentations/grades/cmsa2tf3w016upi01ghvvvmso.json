@@ -1,0 +1,42 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 6.5,
+    "framing": 5,
+    "accuracy": 3,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Coherent thesis about concentration vs. volume sustained across slides with clear management takeaways.",
+  "fix_next": "Nearly every key number is wrong—total revenue, zero-revenue count, top-10 share, category rankings—verify all claims against the actual dataset before presenting.",
+  "verdict": "Compelling narrative built on fabricated numbers undermines credibility.",
+  "flags": [
+    "fabricated-statistics",
+    "total-revenue-wrong",
+    "zero-revenue-count-wrong",
+    "top10-share-wrong",
+    "category-rankings-wrong",
+    "ai-slop-charts",
+    "no-limitations-disclosed",
+    "unverifiable-segmentation"
+  ],
+  "factual_error_count": 10,
+  "factual_error_detail": "Slide 1: Total revenue stated as '$1.2M MRR'—actual 30-day total is ~$15.6M (off by >12×). '62% unmonetized'—actual zero-revenue is 216/1000=21.6%, not 62%. 'Top 10 capture 38%'—actual top-10 share is 49.6%. Slide 2: 'SaaS Tools leads in MRR (24%)'—AI is the highest-revenue category at $2.36M; SaaS is $703K. AI described as '8% of products, 18% of MRR'—AI has 197/726=27% of categorized products and ~15% of total revenue. Chart shows 'SaaS Tools' as top bar, contradicting dataset. Slide 5: 'Top 10 capture 38%' repeated (actual ~49.6%). 'Top 25 account for 57%'—unverifiable but inconsistent with top-10 already being ~50%. Slide 6: 'Stripe processes 71% of monetized products'—Stripe has 636/1000=63.6% of all products. '78% of total MRR'—actual Stripe share is $13.5M/$15.6M=86.7%. Slide 7: '620 products show zero MRR'—actual is 216. Breakdown of reasons for zero MRR (early-stage 40%, free 29%, etc.) appears entirely fabricated with no dataset field supporting this segmentation. Slide 8: '70% of top-50 use B2B+subscription+Stripe'—unverifiable claim presented as data finding.",
+  "evidence": {
+    "insight": "The thesis that concentration matters more than volume (slides 2, 5, 10) is a reasonable framing, and the B2B vs B2C comparison (slide 3) attempts useful segmentation. The four-archetype framework (slides 4, 8) adds structure. However, insights are undermined by wrong numbers and several claims (e.g., 'AI/ML is highest-value-per-product') that happen to be directionally plausible but are supported by incorrect statistics.",
+    "narrative": "Clear arc: overview → category economics → segments → concentration → monetization → long tail → archetypes → opportunities → conclusion. The thesis ('where customers pay, not how many products exist') is sustained throughout. Sequence is logical and the conclusion lands with three actionable implications.",
+    "framing": "No dataset description, no mention of missingness (241 country, 288 audience_type, 274 category, 286 domain missing), no limitations section, no definitions of 'MRR' vs 30-day revenue. Audience is implied (founders/investors) but never stated. The 'MRR' framing itself may misrepresent the dataset's 30-day revenue field.",
+    "accuracy": "Pervasive errors across nearly every slide. Total revenue off by >12×. Zero-revenue count tripled. Top-10 share understated by ~12 percentage points. Category rankings contradict the dataset. Stripe share numbers wrong. The zero-MRR breakdown on slide 7 appears entirely fabricated—no dataset field supports categorizing reasons for zero revenue. The B2B/B2C statistics on slide 3 cannot be verified against reference data and the framing ('monetization rate') doesn't match known metrics.",
+    "visual": "Consistent Gamma template with clean layout, readable fonts, and good use of whitespace. Charts are simple bar/donut types that are legible. However, the 2×2 matrix (slide 4) and zero-MRR breakdown (slide 7) appear to visualize fabricated data. The donut chart (slide 6) shows categories not in the dataset. No chart annotations, no axis labels beyond basics, no data sources cited.",
+    "ai_slop": "Gamma-generated template with decorative cityscape illustration (slide 1), generic stock-style AI images (slide 9), and consulting-style language ('monetization architecture,' 'repeatable architecture'). The zero-MRR segmentation (slide 7) and archetype frameworks (slides 4, 8) read as AI-generated frameworks imposed on data rather than derived from it. The 2×2 matrices are classic consulting templates filled with plausible-sounding but unverifiable claims."
+  },
+  "confidence": "high",
+  "total": 50,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19139,
+    "output_tokens": 1283
+  }
+}

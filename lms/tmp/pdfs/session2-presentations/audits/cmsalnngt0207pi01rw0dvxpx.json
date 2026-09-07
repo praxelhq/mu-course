@@ -1,0 +1,43 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 6,
+    "narrative": 6.5,
+    "framing": 5.5,
+    "accuracy": 4.5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "AI count-vs-median-MRR contrast and bimodal deal-market pricing are genuinely useful observations from the data.",
+  "fix_next": "Acknowledge missingness (241 countries, 274 categories, 288 audience_type) and rebase denominators; the 26% US and 1-in-5 AI claims are inflated.",
+  "verdict": "Polished tour with real insights undermined by wrong denominators and no missingness disclosure.",
+  "flags": [
+    "wrong-denominator-multiple-slides",
+    "top10-concentration-figure-unverifiable",
+    "ai-median-mrr-off",
+    "no-missingness-disclosure",
+    "no-payment-provider-analysis",
+    "lifetime-revenue-334m-unverifiable",
+    "b2b-b2c-sample-sizes-ignore-missing"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 3: AI median MRR stated $446 vs reference $503. Slide 4: '26% from the US' uses 258/1000 but 241 rows lack country; correct base is 258/759≈34%. Slide 5: '61% of $334M lifetime revenue held by top 10' — reference top-10 share of 30-day revenue is 49.6%, and $334M lifetime figure is unverifiable from frozen reference ($15.6M is 30-day total). Slide 7: B2B/B2C sample sizes (255/401) don't account for 288 missing audience_type values, inflating apparent coverage. Slide 5: '22% report $0' — reference says 216/1000=21.6%, minor but rounds oddly given the precision elsewhere.",
+  "evidence": {
+    "insight": "Slide 3 crowd-vs-earnings contrast and slide 9 bimodal pricing are decision-useful. Slide 6 growth-as-coin-flip is a fair read. But no deeper cross-cuts (payment provider, TLD, anonymity premium) are attempted, keeping analysis at survey depth.",
+    "narrative": "Clear four-section arc (landscape → revenue → economics → deals) with a summary slide. Thesis about power-law dynamics is coherent. However, the takeaway slide restates findings rather than synthesizing a novel recommendation or implication.",
+    "framing": "Slide 2 sets up scope and attributes well. But zero mention of missingness anywhere — 24–29% of rows lack country, category, or audience_type, which materially affects every denominator used. A cold reader would assume complete data. Downgraded from preliminary.",
+    "accuracy": "Multiple denominators are wrong because missingness is ignored. The 61% lifetime concentration figure cannot be verified against the frozen 30-day reference (top-10 share is 49.6% of 30-day revenue). AI median MRR is ~$50 off. The $334M lifetime figure is unverifiable. The 22% zero-revenue is close but slightly off (21.6%).",
+    "visual": "Consistent teal palette, clear hierarchy with section labels, well-labeled bar charts with direct values, effective donut chart. Slide 9 histogram is well-chosen for the bimodal story. Minor sameness across slides but restraint is appropriate. Professional and legible throughout.",
+    "ai_slop": "Some consulting-style flourishes ('brutal power law', 'genuinely globalized') but generally substantive and dataset-specific. No decorative filler charts or generic content detected."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 6.5 to 5.5 because complete absence of missingness disclosure is a material framing failure for a cold reader; other scores confirmed as reasonable.",
+  "total": 60,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 19317,
+    "output_tokens": 968
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 6.5,
+    "accuracy": 5,
+    "visual": 8,
+    "bonus": 1
+  },
+  "what_worked": "Momentum-by-revenue-tier breakdown and follower-threshold analysis surface genuinely non-obvious, decision-useful patterns from the data.",
+  "fix_next": "Fix mean revenue ($15,596 not $133,750), reconcile zero-revenue-for-sale count (title 37 vs body 16), and add a missingness/limitations note.",
+  "verdict": "Strong storytelling and visuals undermined by several material numerical errors needing correction.",
+  "flags": [
+    "mean-revenue-wrong-by-10x",
+    "top10-share-inflated",
+    "title-says-12-body-says-10",
+    "zero-revenue-for-sale-contradicts-itself",
+    "revenue-split-doesnt-sum",
+    "revenuecat-count-wrong",
+    "missing-data-not-acknowledged",
+    "no-limitations-slide",
+    "repetitive-template-boxes"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 3: Mean revenue $133,750 vs correct $15,596 (off ~8.6×). Top-10 share 50.6% vs reference 49.6%. Title '12 startups' contradicts own '10' callout. Revenue split $6.46M+$7.01M=$13.47M ≠ ~$15.6M total. Slide 9: Title says '37' zero-revenue for sale, body says '16'. Slide 8: RevenueCat shown ~120 vs actual 189. Superwall ~15 vs ~17.",
+  "evidence": {
+    "insight": "Slide 5 momentum breakdown by revenue tier and slide 6 follower-to-customer threshold at 1K are non-obvious findings. Slide 8 mobile-vs-web unit economics contrast is original. Slide 9 exit-intent by revenue stage is genuinely interesting. No category-level analysis attempted despite rich category data.",
+    "narrative": "Clear thesis on slide 2 ('every startup wants to scale, very few do') built through seven numbered analytical threads culminating in a power-law synthesis on slide 11. Each slide advances the argument purposefully. Conclusion ties all threads together coherently.",
+    "framing": "Slides 1-2 set context (1,000 startups, TrustMRR, date). Investor audience implicit via 'Investor Takeaway' on every slide. However, no acknowledgment of substantial missingness (241 country, 288 audience_type, 274 category, 286 domain) which directly affects slides 6-8. No limitations or caveats slide. Traffic analysis (slide 7) based on only 178/1000 startups—noted but survivorship bias not discussed.",
+    "accuracy": "Mean revenue is wrong by nearly an order of magnitude ($133,750 vs $15,596). Top-10 share inflated by ~1pp. Title/body contradictions on slides 3 and 9. Revenue split doesn't sum to stated total. RevenueCat count understated by ~36%. These are not rounding issues but substantive errors that undermine credibility.",
+    "visual": "Highly polished, consistent template: blue/white/grey palette, numbered sections, KPI cards, chart-left/insight-right layout, source footers. Chart choices are appropriate (log-scale cumulative, stacked bars, bubble, scatter). Good annotation (outlier labels, threshold lines). Slight monotony from rigid KEY INSIGHT/INVESTOR TAKEAWAY boxes on every slide.",
+    "ai_slop": "Repetitive KEY INSIGHT / INVESTOR TAKEAWAY template boxes on every slide feel formulaic. Some takeaway language is generic enough to fit any dataset ('Focus on traction quality'). Rocket ship stock graphic on slide 1 is decorative. Not severe but contributes to template feel."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.5 to 5.0: mean revenue error is ~8.6× off (not a rounding issue), and the slide 9 title/body contradiction (37 vs 16) is a clear internal inconsistency. Lowered framing from 7.0 to 6.5 for complete absence of missingness/limitations despite ~25-29% missing rates on key fields used in analysis. Reduced bonus from 2 to 1: while polished, the numerical errors and template repetition limit the 'beyond rubric' case.",
+  "total": 71,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 20723,
+    "output_tokens": 1125
+  }
+}

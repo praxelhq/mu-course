@@ -1,0 +1,42 @@
+{
+  "slide_count": 15,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 8.5,
+    "accuracy": 6.5,
+    "visual": 7.5,
+    "bonus": 4
+  },
+  "what_worked": "Investment thesis arc with explicit limitations panel and concrete portfolio allocation is exceptionally well-constructed student work.",
+  "fix_next": "Label category names on both bar charts (slides 4 and 6); numbered axes make key claims unverifiable for a cold reader.",
+  "verdict": "Outstanding narrative and thesis; unlabeled charts and median discrepancies hold accuracy back.",
+  "flags": [
+    "median-mrr-discrepancy",
+    "bar-chart-unlabeled-categories",
+    "non-ai-denominator-unclear",
+    "education-median-ratio-questionable",
+    "64pct-arithmetic-error",
+    "asking-multiple-denominator-ambiguous"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 4 (p5): AI median MRR stated as $446 vs reference $503 (MRR ≈ revenue_30d, so discrepancy is material). Slide 5 (p6): '4.8× more MRR at median Education startup than median AI one' — reference Education median $2,435 / $503 ≈ 4.84× works against reference but not against their own $446 figure (2141.5/446 ≈ 4.8× if top bar is Education, plausible but unverifiable without labels). Slide 4 (p5): non-AI median asking multiple 2.30× matches B2C on-sale median exactly; denominator (all non-AI? on-sale only?) is unclear. Slide 15 (p18): '64% outside AI' — 6 of 9 non-AI holdings = 66.7%, not 64%; by dollars $6.4M/$10M = 64% but that conflates count language with dollar share.",
+  "evidence": {
+    "insight": "Core contrarian thesis — AI has crowd but not crown — is original and decision-useful. 2×2 performance-vs-visibility matrix (slide 11) and hidden-gems arbitrage concept (slide 12) go beyond description. 'What would change my mind' panel (slide 14) shows rare intellectual honesty and epistemic discipline.",
+    "narrative": "Five-act structure (Hype → Myth → Winners → Map → Portfolio) builds a single coherent argument. Transition slide (p7) explicitly sharpens the question. Lands on a concrete $9.1M allocation with a specific committee ask and reserve rationale. Among the strongest narrative arcs in student work.",
+    "framing": "Slide 2 states question, audience (investment committee), dataset scope (1,000 startups), and frozen date. Roadmap is clear. Filter criteria for the 339 investable universe are transparent (slide 8). Five explicit caveats on slide 14 address self-reported labels, asking vs transacted multiples, sample noise, DR limitations, and growth volatility. Missing-category rows handled implicitly (197+529=726 categorized of ~726 with labels).",
+    "accuracy": "AI count 197 and SaaS 66 match reference. ~2.9× ratio correct. But AI median MRR $446 ≠ reference $503; non-AI multiple 2.30× suspiciously matches B2C on-sale median without clarifying denominator; bar charts lack category labels so rank claims are unverifiable; '64% outside AI' conflates dollar share with count share. These are not fabrications but are sloppy enough to dock.",
+    "visual": "Clean dark/light theme, consistent amber highlight for AI throughout. Tables have interpretive 'what it means' columns. 2×2 matrix is effective with honest 'illustrative, not to scale' caveat. However, both horizontal bar charts (slides 4 and 6) use numbered y-axes instead of category names — a significant legibility failure that undermines the deck's two most important comparative charts.",
+    "ai_slop": "Minimal. Prose is specific and earned — each portfolio company has a concrete one-line description. Gold-rush metaphor is the only consulting-speak and it's paid off by the analysis. No generic filler or decorative charts detected."
+  },
+  "confidence": "high",
+  "changed": false,
+  "change_reason": "no-change",
+  "total": 84,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 29796,
+    "output_tokens": 1074
+  }
+}

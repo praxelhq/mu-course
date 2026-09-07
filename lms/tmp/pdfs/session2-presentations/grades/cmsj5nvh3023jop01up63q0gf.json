@@ -1,0 +1,39 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 4,
+    "narrative": 5.5,
+    "framing": 4.5,
+    "accuracy": 3,
+    "visual": 4.5,
+    "bonus": 0
+  },
+  "what_worked": "Clear thesis contrasting traffic vs. subscriptions as revenue predictors, with a coherent narrative arc.",
+  "fix_next": "The r=0.19 and r=0.91 claims are unverifiable from the frozen dataset's known fields; the deck ignores missingness, categories, and revenue concentration entirely.",
+  "verdict": "Narrow thesis built on unverifiable correlations and heavy AI-generated filler imagery.",
+  "flags": [
+    "unverifiable-core-claim",
+    "ai-generated-decorative-imagery",
+    "missing-data-not-addressed",
+    "dataset-underutilized",
+    "near-tautological-finding"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 4: r=0.19 for traffic-MRR correlation is not verifiable from the frozen dataset (the known Pearson r=0.025 is for founded-year/revenue); the dataset's documented fields do not include 'monthly visitors' or 'active subscriptions' as standard columns, making both r=0.19 and r=0.91 suspect or fabricated. Slide 5: r=0.91 subscription-MRR correlation is near-tautological if subscriptions×price≈MRR, yet presented as a discovery. Slide 3: Claims dataset is 'broad, representative' without acknowledging ~27-29% missingness across key fields.",
+  "evidence": {
+    "insight": "The entire deck rests on one comparison (r=0.19 vs r=0.91) repeated across slides 4, 5, and 8. No exploration of categories, providers, revenue concentration, anonymity effects, or any other dataset dimension. The subscription-MRR correlation is near-tautological and not a genuine insight.",
+    "narrative": "Slides follow a logical problem→evidence→implication arc (assumption on slide 2, data on slides 4-5, cases on slide 6, framework on slide 7, conclusion on slide 8). However, the story is thin—one finding repeated rather than developed with additional evidence layers.",
+    "framing": "Slide 2 sets up the investor audience and question clearly. Slide 3 mentions 1,000 startups and a freeze date. However, no mention of missingness, no definitions of MRR vs 30-day revenue, no limitations section, and 'representative' is asserted without justification.",
+    "accuracy": "Core correlation values (r=0.19, r=0.91) cannot be verified against the frozen dataset reference. The dataset documents revenue, category, provider, country, audience_type, domain—not 'monthly visitors' or 'active subscriptions' as standard fields. The one verifiable Pearson r in the dataset (founded-year/revenue = 0.025) is not mentioned. Slide 6 case studies (Stan, DataExpert) cite specific numbers that appear fabricated or unverifiable. No acknowledgment of 216 zero-revenue companies or 274 missing categories.",
+    "visual": "Consistent warm color palette and typography throughout. However, slides 1-3 and 5-6 use AI-generated decorative illustrations that add no analytical value. Slide 5's left panel is a generic fintech dashboard screenshot unrelated to the dataset. Slide 4's scatter plot is the only data visualization and shows very few points for a 1,000-row dataset. Charts on slide 6 are AI-generated mockups, not actual data.",
+    "ai_slop": "Heavy AI-generated illustrations on slides 1, 2, 3, 5, 6, 8 (office scenes, dashboard mockups, coin imagery). Slide 5 left panel is a generic 'Subscription Growth' fintech dashboard clearly not from the dataset. Slide 6 shows AI-generated app screenshots for Stan and DataExpert. Consulting-style language throughout ('acquisition theater,' 'fundamental reframe')."
+  },
+  "confidence": "medium",
+  "total": 43,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 14220,
+    "output_tokens": 998
+  }
+}

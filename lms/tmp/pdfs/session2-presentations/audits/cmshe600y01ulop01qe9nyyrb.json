@@ -1,0 +1,44 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 2,
+    "narrative": 3.5,
+    "framing": 2.5,
+    "accuracy": 2,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Coherent investor-pitch arc with clear pick categories (growth, stability, scale) and consistent visual theme.",
+  "fix_next": "Replace the marketing pitch with actual dataset analysis—distributions, comparisons, missingness disclosure, and charts derived from the 1,000-row data.",
+  "verdict": "A polished sales deck, not a data story; almost no dataset analysis present.",
+  "flags": [
+    "no-dataset-analysis",
+    "ai-slop",
+    "unverifiable-claims",
+    "marketing-deck-not-data-story",
+    "fabricated-statistics",
+    "total-revenue-inflated-100x",
+    "no-real-data-visualizations",
+    "gamma-template-filler"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 3: total revenue stated as '$1.5B+' vs actual ~$15.6M (~100× inflation). Slide 3: '78% of cases revenue outpaced follower growth' is unverifiable/fabricated from this dataset. Slide 3: 'thousands of active listings' when dataset has 1,000 rows. Slide 8: '67.7%' labeled 'Revenue-Positive' but actually represents the $0–1K MRR tier share from slide 3, misapplied (784/1000=78.4% are revenue-positive, not 67.7%).",
+  "evidence": {
+    "insight": "Zero original analysis of the 1,000-row dataset. No distributions, correlations, category breakdowns, provider comparisons, or median analyses. Three picks appear cherry-picked from the TrustMRR website rather than surfaced through systematic data exploration.",
+    "narrative": "Has a logical arc (context → approach → picks → recommendation) but it serves as a TrustMRR acquisition sales pitch, not a data-driven story. Slides 4, 9, 10 are generic consulting frameworks with no data support.",
+    "framing": "States investor audience but ignores the assignment's data-story requirement. No mention of dataset scope (1,000 rows), missingness rates (~24–29% across key fields), sample limitations, or metric definitions. A cold reader cannot assess data quality.",
+    "accuracy": "Total revenue inflated ~100× ($15.6M → $1.5B). The 78% follower-growth claim has no derivable basis in the dataset. 67.7% is reused on slide 8 with a different, incorrect label. MRR tier percentages are plausible but unsourced. Profit margins and growth rates for individual picks are unverifiable from the dataset provided.",
+    "visual": "Consistent dark Gamma template with legible text and decent hierarchy. However, only one donut chart exists (slide 3) with no axis labels or source annotation. Remaining slides are dominated by decorative AI-generated illustrations. Slides 9–10 are pure stock-illustration filler with no data content.",
+    "ai_slop": "Heavy Gamma AI template: decorative illustrations on every slide, numbered consulting frameworks (slides 4, 9, 10), inflated language ('structural tailwinds', 'category dominance', 'highest-density zone'), and slide 10 is entirely generic post-acquisition advice applicable to any company in any industry."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 2.5 to 2.0 (no dataset analysis whatsoever) and framing from 3.0 to 2.5 (no dataset scope, missingness, or limitations disclosed). Other scores confirmed as appropriate.",
+  "total": 28,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 20070,
+    "output_tokens": 923
+  }
+}

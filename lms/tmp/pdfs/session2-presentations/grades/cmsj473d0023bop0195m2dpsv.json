@@ -1,0 +1,39 @@
+{
+  "slide_count": 5,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 5.5,
+    "accuracy": 3.5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Tight thesis with a clear value-vs-volume framework that builds logically across four content slides.",
+  "fix_next": "The ARPU metric shown is fabricated—dataset has revenue, not per-subscriber pricing—and category values don't match the frozen data at all.",
+  "verdict": "Clean narrative built on numbers that don't come from this dataset.",
+  "flags": [
+    "fabricated-metric",
+    "unverifiable-arpu-figures",
+    "missing-sample-sizes",
+    "no-limitations-slide",
+    "narrow-scope"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: 'Sales' is not a category in the dataset; all eight ARPU values are unverifiable since the dataset contains revenue, not per-subscriber revenue. Slide 3: Sales $103 and Health & Fitness $4 ARPU figures cannot be derived from available data. Slide 4: B2B median $48.89 and B2C median $9.34 with 5.2x ratio—reference data shows median revenue multiples of ~2.35x/2.30x, not per-user figures. Slide 4: Claim that 'B2B customer is worth 5.2x a B2C one' is unsupported by dataset fields.",
+  "evidence": {
+    "insight": "The value-play vs. volume-play framing (slide 3) is a genuinely useful strategic lens, but it rests on a single derived metric (ARPU) whose provenance is unclear. The takeaway slide offers actionable advice but doesn't go beyond the one comparison.",
+    "narrative": "Strong arc: title sets up inequality → slide 2 shows the spread → slide 3 contrasts two archetypes → slide 4 explains the driver → slide 5 lands with recommendations. Coherent and purposeful sequence.",
+    "framing": "Audience is implied (founders/operators) but never stated. ARPU is defined in footer but the dataset doesn't contain active subscriptions, so the definition is hollow. No mention of missingness (274 missing categories, 288 missing audience_type). No sample sizes shown on any chart.",
+    "accuracy": "The entire deck pivots on 'median monthly revenue per active subscriber' but the frozen dataset records 30-day revenue, not per-subscriber revenue. 'Sales' does not appear as a category in the reference data. The eight category ARPU values on slide 2 cannot be cross-checked against any known field. The B2B/B2C 5.2x ratio contradicts the reference median multiples (~2.3x). No n-counts are provided for any category.",
+    "visual": "Consistent dark theme with good hierarchy, readable typography, effective use of color to highlight key figures. Horizontal bar chart on slide 2 is well-chosen. Side-by-side comparison cards on slides 3-4 are clean. Restrained and professional. Slight concern: only one actual chart in the entire deck.",
+    "ai_slop": "No obvious generic filler or decorative-but-meaningless graphics. The design is polished and purposeful. However, the fabricated-looking ARPU figures and the invented 'Sales' category suggest AI-generated numbers rather than dataset-derived ones."
+  },
+  "confidence": "high",
+  "total": 59,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 10170,
+    "output_tokens": 847
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 6,
+    "bonus": 1
+  },
+  "what_worked": "Clear thesis with composite scoring methodology, honest limitations, and bull/bear framing for Education recommendation.",
+  "fix_next": "Education median revenue is $2,435 not $2,141; verify all category medians against the dataset before building a scoring model on them.",
+  "verdict": "Coherent investment thesis undermined by unverifiable scoring and sloppy final slide.",
+  "flags": [
+    "garbled-text-slide-7",
+    "fabricated-composite-score",
+    "median-revenue-mismatch",
+    "health-fitness-median-wrong"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 2/5: Education median MRR stated as $2,141 vs reference $2,435. Slide 2: Marketing median MRR $1,586 vs reference $2,369.50. Slide 6: Health & Fitness median MRR shown as $392 vs reference $662.50. Slide 4: '25 viable industries' claimed but dataset has only 12 named categories (726 categorized rows); 25 is unexplained and likely inflated.",
+  "evidence": {
+    "insight": "Slides 2-6 build a composite 'Opportunity Score' weighing market size, economics, growth, competition—goes beyond chart description. The AI caveat (slide 4) and bear case (slide 5) show analytical nuance. However, the scoring weights are arbitrary and the underlying numbers are wrong, weakening the insight's reliability.",
+    "narrative": "Clear arc: framing (slide 1) → recommendation (slide 2) → methodology (slide 3) → ranking (slide 4) → deep dives (slides 5-6) → conclusion with caveats (slide 7). Each slide has a question/takeaway structure that builds logically. The narrative lands with appropriate uncertainty.",
+    "framing": "Slide 1 clearly states the question, data source, filtering approach, and important limitations (revenue proxies, not profit margins). Missing data is explicitly called out. The 'investment decision' audience framing is clear. However, the claim of '25 viable industries' is unexplained given the dataset structure.",
+    "accuracy": "Multiple median revenue figures are materially wrong: Education $2,141 vs $2,435 (12% off), Marketing $1,586 vs $2,369.50 (33% off), Health & Fitness $392 vs $662.50 (41% off). The '25 industries' claim is unsubstantiated—the dataset has ~12 named categories. The composite scores cannot be verified and are built on incorrect inputs. AI total revenue ($2.35M) and company count (197) are correct.",
+    "visual": "Consistent teal/dark color scheme, clear hierarchy with question/takeaway headers on every slide. Bar chart on slide 4 is well-designed with median reference line. Slide 5 comparison bars are effective. However, slide 7 contains garbled/nonsensical text ('scalet of healthcals and altency for suncments', 'drimately completet growth') indicating unreviewed AI generation. The confidence gauge on slide 7 is decorative.",
+    "ai_slop": "Slide 7 contains clearly garbled AI-generated text: 'scalet of healthcals and altency for suncments' and 'drimately completet growth' and 'performance, or healthy margins' as a sentence fragment. This is unreviewed AI output. The confidence gauge graphic is decorative rather than informative. The 'Opportunity Score' methodology, while structured, uses arbitrary weights that give a false sense of precision."
+  },
+  "confidence": "high",
+  "total": 64,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 12274,
+    "output_tokens": 937
+  }
+}

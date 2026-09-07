@@ -1,0 +1,40 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 1,
+    "narrative": 2,
+    "framing": 1,
+    "accuracy": 1,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "Consistent visual template with readable typography and clear slide hierarchy.",
+  "fix_next": "This is a generic AI thought-leadership pitch, not a data-story presentation—use the assigned dataset and show actual analysis.",
+  "verdict": "No dataset analysis whatsoever; this is a consulting pitch deck, not a data story.",
+  "flags": [
+    "no-dataset-usage",
+    "ai-slop",
+    "wrong-assignment",
+    "no-charts-from-data",
+    "consulting-filler",
+    "decorative-ai-images"
+  ],
+  "factual_error_count": 0,
+  "factual_error_detail": "No claims from the assigned dataset are made, so no dataset-specific errors to count, but the entire deck fails to engage the assignment.",
+  "evidence": {
+    "insight": "Zero slides reference the 1,000-row dataset. No original analysis, no findings, no metrics derived from data. Every claim is generic industry commentary (e.g., '$15.7 trillion PwC projection,' '60% of knowledge worker time').",
+    "narrative": "The deck follows a coherent consulting-pitch arc (problem → opportunity → roadmap) but this narrative has nothing to do with a data-story assignment. No thesis grounded in data. Slides 5 and 10 repeat the same 'lead or follow' rhetorical question.",
+    "framing": "No audience, question, or context tied to the assigned dataset. No mention of the dataset's scope (1,000 companies, 30-day revenue, payment providers, categories). A cold reader would not know this was a data-analysis assignment.",
+    "accuracy": "Cannot be assessed against the dataset because no dataset claims are made. External claims (PwC $15.7T, ChatGPT 100M users in 2 months) are plausible but unverifiable here and irrelevant to the assignment.",
+    "visual": "Gamma-generated slides are visually consistent with dark theme, pink/purple accents, and AI-generated decorative images. Slide 6 has garbled text in the AI-generated diagram ('Ruce-Dased,' 'Aol ssaocliiy,' 'Wiirkleces'). Slide 3 has duplicated word 'tasks tasks.' No data visualizations exist.",
+    "ai_slop": "Entire deck is AI-generated consulting boilerplate. Every slide uses inflated language ('autonomous enterprises,' 'competitive differentiator,' 'value realization'). Decorative AI images on every slide add no analytical value. Garbled text in AI-generated diagram on slide 6 confirms unreviewed AI output."
+  },
+  "confidence": "high",
+  "total": 16,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18460,
+    "output_tokens": 694
+  }
+}

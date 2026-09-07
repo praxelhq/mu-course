@@ -1,0 +1,38 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 6.5,
+    "accuracy": 5,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong narrative arc from power-law framing through category/geography analysis to actionable acquisition funnel.",
+  "fix_next": "Multiple median figures are materially wrong (Education $2,141.50 vs $2,435; Marketing $1,586 vs $2,369.50; AI $446 vs $503); verify all numbers against source data.",
+  "verdict": "Compelling story with good design, undermined by several incorrect category medians.",
+  "flags": [
+    "median-errors",
+    "b2b-multiplier-inflated",
+    "missing-data-not-discussed",
+    "education-count-missing"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 3: AI median shown $446 (ref $503); Education median $2,141.50 (ref $2,435); Marketing median $1,586 (ref $2,369.50). Slide 5: B2B median multiplier claimed 5.7x ($1,036/$181) but reference shows ~2.35x median multiple; the absolute medians themselves don't match reference benchmarks. Slide 7: Analytics listed among 'highest medians' but its reference median ($419) is below AI's.",
+  "evidence": {
+    "insight": "Slide 6 acquisition funnel (262→224→6) is genuinely useful original analysis; slide 3 crowded≠profitable thesis is a real insight even if numbers are off; B2B premium observation is directionally correct.",
+    "narrative": "Clear thesis: concentration matters, medians beat means, then category→geography→audience→acquisition pipeline. Each slide builds toward the final recommendations. Landing slide ties back with appropriate caveats.",
+    "framing": "Slide 1 sets scope (1,000 startups, 65 countries, 29 categories). Audience implied as acquirer/investor but never explicitly stated. Missing-data rates (241-288 rows) never acknowledged despite affecting category and geography conclusions. Slide 7 footer adds a useful 'verify before acting' caveat.",
+    "accuracy": "Three category medians are materially wrong on slide 3. B2B 5.7x multiplier on slide 5 is inflated vs reference ~2.35x. Slide 2 median $282 and mean $13,472 are plausible but unverifiable against reference (mean ≈$15,596). Education count omitted on slide 3. The 48x ratio claim on slide 2 checks out against stated numbers ($13,472/$282≈47.8).",
+    "visual": "Consistent color palette (orange/dark grey), strong typographic hierarchy, effective use of proportional circles on slide 4, clean dot-array funnel on slide 6. Slide 2 median-vs-mean bubble comparison is memorable. Chart choices are appropriate throughout. Minor: slide 3 Education bar lacks count label.",
+    "ai_slop": "NotebookLM watermark visible on every slide. Design is polished but not generic template-feeling. Icons on slide 7 are slightly stock-like but not egregious. No meaningless filler text detected."
+  },
+  "confidence": "high",
+  "total": 68,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 12274,
+    "output_tokens": 836
+  }
+}

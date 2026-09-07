@@ -1,0 +1,123 @@
+[
+  {
+    "id": "app-strong-01",
+    "typeSlug": "app",
+    "fields": {
+      "appUrl": "https://forge-eval-lenders.lovable.app",
+      "githubUrl": "https://github.com/praxel-mu/eval-lender-compare",
+      "writeup": "A lending-rate comparison dashboard for SME borrowers: pulls our hand-collected rate sheet of 14 NBFCs, filters by ticket size and tenure, and ranks effective APR including processing fees. Lead form writes to a sheet our anchor company's sales team already uses. Tested the APR math against two published examples and a hand calculation."
+    },
+    "files": [],
+    "expectedBand": { "min": 28, "max": 40 },
+    "note": "strong: real users, verified math, industry-specific"
+  },
+  {
+    "id": "app-strong-02",
+    "typeSlug": "app",
+    "fields": {
+      "appUrl": "https://forge-eval-coldchain.lovable.app",
+      "githubUrl": "https://github.com/praxel-mu/eval-coldchain-audit",
+      "writeup": "Cold-chain audit checklist app for warehouse walkthroughs: 32-point checklist with photo notes, generates a scored PDF report per site. Built for our partner company's ops lead, who ran it on one real site visit and asked for two changes we shipped the same week."
+    },
+    "files": [],
+    "expectedBand": { "min": 28, "max": 40 },
+    "note": "strong: real site visit, iteration evidence"
+  },
+  {
+    "id": "app-mid-03",
+    "typeSlug": "app",
+    "fields": {
+      "appUrl": "https://forge-eval-menu.lovable.app",
+      "githubUrl": "https://github.com/praxel-mu/eval-menu-margin",
+      "writeup": "Menu margin calculator for cafés: enter dish ingredients and costs, get margin per dish and a ranking. Works end to end with sample data; we haven't tested with a real café's numbers yet."
+    },
+    "files": [],
+    "expectedBand": { "min": 16, "max": 30 },
+    "note": "mid: works, sample data only"
+  },
+  {
+    "id": "app-mid-04",
+    "typeSlug": "app",
+    "fields": {
+      "appUrl": "https://forge-eval-fitlead.lovable.app",
+      "githubUrl": "https://github.com/praxel-mu/eval-fitlead",
+      "writeup": "Lead-capture landing page for a connected-fitness studio with a class-schedule browser and a WhatsApp CTA. The schedule is hardcoded for now; form submissions land in a Google Sheet."
+    },
+    "files": [],
+    "expectedBand": { "min": 16, "max": 30 },
+    "note": "mid: functional but shallow, hardcoded data"
+  },
+  {
+    "id": "app-weak-05",
+    "typeSlug": "app",
+    "fields": {
+      "appUrl": "https://forge-eval-blank.lovable.app",
+      "githubUrl": "https://github.com/praxel-mu/eval-blank",
+      "writeup": "An app for my industry. It has a homepage and an about page. More features coming."
+    },
+    "files": [],
+    "expectedBand": { "min": 8, "max": 22 },
+    "note": "weak: static pages, no function"
+  },
+  {
+    "id": "app-mid-06",
+    "typeSlug": "app",
+    "fields": {
+      "appUrl": "https://forge-eval-pharmtrack.lovable.app",
+      "githubUrl": "https://github.com/praxel-mu/eval-pharmtrack",
+      "writeup": "Expiry-date tracker for an e-pharmacy: upload a CSV of batches, see items expiring in 30/60/90 days with a discount suggestion. CSV parsing breaks on one of our three test files (comma in product name), documented in the README."
+    },
+    "files": [],
+    "expectedBand": { "min": 16, "max": 30 },
+    "note": "mid: useful, one honest known bug"
+  },
+  {
+    "id": "app-weak-07",
+    "typeSlug": "app",
+    "fields": {
+      "appUrl": "https://forge-eval-quiz.lovable.app",
+      "githubUrl": "https://github.com/praxel-mu/eval-quiz",
+      "writeup": "A quiz app made from the Lovable template. Changed the colors and the title to match our sector."
+    },
+    "files": [],
+    "expectedBand": { "min": 8, "max": 22 },
+    "note": "weak: template reskin, no industry substance"
+  },
+  {
+    "id": "app-strong-08",
+    "typeSlug": "app",
+    "fields": {
+      "appUrl": "https://forge-eval-solarquote.lovable.app",
+      "githubUrl": "https://github.com/praxel-mu/eval-solarquote",
+      "writeup": "Rooftop solar quote estimator: address + monthly bill in, system size, payback period and subsidy estimate out, using MNRE benchmark costs we cross-checked against two installer quotes. Includes a disclaimer page and an inquiry form wired to the team's shared inbox."
+    },
+    "files": [],
+    "expectedBand": { "min": 28, "max": 40 },
+    "note": "strong: real benchmark data, cross-checked"
+  },
+  {
+    "id": "app-adversarial-neardup-09a",
+    "typeSlug": "app",
+    "fields": {
+      "appUrl": "https://forge-eval-dupsource.lovable.app",
+      "githubUrl": "https://github.com/praxel-mu/eval-dupsource",
+      "writeup": "Price comparison dashboard for our anchor company's category with a lead-capture form wired to a sheet. Compares three competitor sites daily."
+    },
+    "files": [],
+    "expectedBand": { "min": 16, "max": 30 },
+    "note": "ADVERSARIAL near-dup pair (original)"
+  },
+  {
+    "id": "app-adversarial-neardup-09b",
+    "typeSlug": "app",
+    "fields": {
+      "appUrl": "https://forge-eval-dupsource.lovable.app",
+      "githubUrl": "https://github.com/praxel-mu/eval-dupsource",
+      "writeup": "Price comparison dashboard for our anchor company's category with a lead-capture form wired to a sheet. Compares three competitor sites daily."
+    },
+    "files": [],
+    "expectedBand": { "min": 16, "max": 30 },
+    "note": "ADVERSARIAL near-dup pair (identical copy — must gain possible-plagiarism)",
+    "adversarial": "near-dup"
+  }
+]

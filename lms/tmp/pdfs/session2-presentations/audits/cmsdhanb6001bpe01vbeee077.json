@@ -1,0 +1,44 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 3,
+    "narrative": 3,
+    "framing": 2.5,
+    "accuracy": 1.5,
+    "visual": 2,
+    "bonus": 0
+  },
+  "what_worked": "Slide 5's null-result on social-vs-revenue growth is a genuinely useful contrarian finding worth exploring.",
+  "fix_next": "Replace fabricated sample sizes and correlations with actual 1,000-row dataset figures; add real charts instead of placeholder images.",
+  "verdict": "Consulting-flavored template with fabricated statistics, no real charts, and a placeholder image.",
+  "flags": [
+    "fabricated-sample-sizes",
+    "placeholder-image-slide-2",
+    "no-data-visualizations",
+    "wrong-correlation-revenue-vs-time",
+    "inflated-dataset-size-5000",
+    "ai-slop-consulting-jargon",
+    "no-limitations-acknowledged",
+    "anonymous-share-wrong"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1: claims 5,000+ listings, dataset has 1,000. Slide 2: '99.9% MoM revenue scaling' unsupported. Slide 3: anonymous ~20% vs actual 12.9% (129/1000). Slide 4: r=0.43 for DR-revenue with n=5,130 — sample size fabricated, correlation unverifiable. Slide 5: n=233 longitudinal startups fabricated. Slide 6: Revenue vs Time r=0.48 with n=5,567 — reference shows r≈0.025 with n=984; all four sample sizes fabricated. Slide 6: '81% revenue outpaced followers' unverifiable.",
+  "evidence": {
+    "insight": "Slide 5 null-result (r=-0.03 social vs revenue) is interesting if true, and slide 7 translates correlations into actionable investor heuristics. But most claims (CAC, NRR, gross margins) are asserted without dataset grounding.",
+    "narrative": "Loose arc from market overview to correlations to playbook exists, but slides 2-3 are disconnected assertion cards. No synthesis or limitations slide. The jump from unsupported bullet claims to a buyout strategy is not earned by evidence.",
+    "framing": "Slide 1 identifies audience (Micro-PE investors) which is good. But dataset is misidentified as 5,000+ rows and '2026 Telemetry.' No missingness, zero-revenue, or scope limitations are disclosed. A cold reader would be fundamentally misled.",
+    "accuracy": "Nearly every quantitative claim is fabricated or wrong. Revenue vs Time r=0.48 contradicts reference r≈0.025. All sample sizes (5,567, 5,130, 4,410, 233) are invented — dataset has 1,000 rows. Anonymous share stated ~20% vs actual 12.9%. The 99.9% MoM claim is unsupported.",
+    "visual": "Slide 2 has a literal placeholder image ('600 × 400'). Zero actual data visualizations in the entire deck — no scatter plots, bar charts, or distributions. Identical dark card layouts repeated across every slide. Hero r-values are the only quantitative display, and they appear fabricated.",
+    "ai_slop": "Pervasive consulting buzzwords: 'compounding organic distribution,' 'defensive moats,' 'algorithmic due diligence,' 'expansion NRR,' 'near-zero CAC.' Placeholder image left in. Fabricated precise sample sizes suggest AI generation without verification. Template card layouts repeated identically."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered narrative by 0.5 (no synthesis, disconnected middle slides) and visual by 0.5 (placeholder image is more damaging than preliminary credited; zero real charts in entire deck). Other scores confirmed as appropriate.",
+  "total": 24,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 12652,
+    "output_tokens": 971
+  }
+}

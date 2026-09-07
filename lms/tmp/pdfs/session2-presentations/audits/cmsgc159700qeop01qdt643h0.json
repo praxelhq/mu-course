@@ -1,0 +1,44 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 6.5,
+    "accuracy": 4.5,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Power-law concentration thesis is genuinely useful, well-sequenced from distribution through geography to actionable synthesis.",
+  "fix_next": "Reconcile the MRR label with the dataset's 30-day revenue field and re-verify every headline number against the actual totals.",
+  "verdict": "Strong narrative arc undermined by systematic MRR mislabeling and several wrong headline figures.",
+  "flags": [
+    "mrr-vs-30day-revenue-confusion",
+    "fabricated-illustrative-histogram",
+    "total-revenue-mismatch",
+    "b2b-b2c-multiple-overstated",
+    "education-median-off",
+    "ai-total-mrr-off",
+    "top10-share-rounded-down",
+    "unverifiable-correlation-claims"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 2: total stated $13.47M vs reference $15.60M (~$2.1M gap). Slide 3: histogram labeled 'illustrative' — fabricated bins in an 'API-verified' deck. Slide 4: top-10 share stated 48% vs reference 49.6% (close but rounded down and headlined). Slide 5: AI total '$1.8M' vs reference $2.36M (~$500K off); Education median '$2,141' vs reference $2,435 (~$300 off); AI median '$446' vs reference $503. Slide 7: B2B/B2C median multiple stated 5.7x ($1,036/$181) vs reference median multiples 2.35x/2.30x — the headline claim is dramatically wrong. Slide 8: correlation figures (0.02, 0.21) are unverifiable from the frozen reference.",
+  "evidence": {
+    "insight": "Identifying the power-law structure, the India monetization gap, the B2B vs B2C split, and the micro-M&A market sizing show real analytical ambition beyond surface description. The 'so what' slide synthesizes actionable takeaways for the stated audience.",
+    "narrative": "Clear numbered arc: scale → distribution → power law → categories → geography → audience type → contrarian signal → M&A → synthesis. Each slide advances the thesis that bootstrapped startups mirror venture concentration. The landing on slide 10 is effective.",
+    "framing": "Slide 1 sets audience (capital allocators) and provenance (API-verified). Slide 2 caveat on 274 missing categories is responsible. However, the deck never clarifies that the dataset column is '30-day revenue' not MRR, creating a systematic framing error that inflates perceived recurring-revenue quality. Missing-country (241) and missing-audience-type (288) rates are never disclosed.",
+    "accuracy": "Systematic relabeling of 30-day revenue as MRR is the biggest issue — it changes the economic interpretation for the stated investor audience. Total revenue is off by ~$2.1M. The B2B/B2C 5.7x headline (slide 7) is the most consequential error: reference on-sale medians are 2.35x/2.30x, nowhere near 5.7x. AI category total and median, Education median are each off by meaningful amounts. The illustrative histogram contradicts the deck's 'every number is API-verified' branding.",
+    "visual": "Consistent dark theme with gold/cyan accent hierarchy is professional and restrained. Card layouts are clean. Charts are simple and legible. The cumulative-share chart (slide 4) has an unnecessary -15% y-axis start. Slight visual sameness but no chart junk. The horizontal bar chart on slide 6 communicates the India gap effectively.",
+    "ai_slop": "Consulting-register language ('uncomfortable truth,' 'contrarian read,' 'capital allocators') is purposeful for the stated audience rather than generic filler. The 'illustrative' histogram is the main slop concern — a fabricated chart shape in a deck branding itself on verification integrity."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.0 to 4.5: the B2B/B2C 5.7x headline is a major error (reference multiples are ~2.3x), total revenue is off by $2.1M, and the systematic MRR mislabeling misleads the stated investor audience. Lowered framing from 7.0 to 6.5 for failing to disclose the MRR/revenue distinction and additional missingness rates. Other scores confirmed.",
+  "total": 66,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 19378,
+    "output_tokens": 1158
+  }
+}

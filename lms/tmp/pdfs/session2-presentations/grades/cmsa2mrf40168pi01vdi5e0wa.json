@@ -1,0 +1,38 @@
+{
+  "slide_count": 16,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 5,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis about power-law concentration, honest causal hedging, and a purposeful narrative arc throughout.",
+  "fix_next": "Top-10 revenue share is 49.6%, not 61%; B2B multiple is ~2.35x, not 3.8x — verify headline numbers against the actual dataset.",
+  "verdict": "Well-crafted narrative undermined by several material factual errors in headline claims.",
+  "flags": [
+    "top10-revenue-share-inflated",
+    "b2b-multiple-wrong",
+    "total-revenue-inflated",
+    "lorenz-curve-unverifiable"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2/7: Top-10 share claimed as 61%, actual is ~49.6%. Slide 2/15: B2B median premium claimed as 3.8x, actual is ~2.35x. Slide 8: Total revenue stated as $334M; actual is ~$15.6M (appears to confuse lifetime with 30-day or use a different field). Slide 10: AI median revenue $4.9K vs reference median $503 — likely using lifetime not 30-day, but inconsistent with other slides' framing. Slide 10: AI revenue share 17% — actual AI share of categorized revenue is closer to ~31% ($2.36M of ~$7.5M categorized), so the 17% claim is suspect depending on denominator.",
+  "evidence": {
+    "insight": "Slide 10 AI mindshare-vs-wallet gap, slide 14 stealth company analysis, slide 11 correlation hierarchy, and slide 12 domain-rating tiers all go beyond chart description to offer decision-relevant interpretation.",
+    "narrative": "Clear arc: problem (survivorship bias, slide 3) → ecosystem overview (slides 4-6) → concentration (slides 7-9) → drivers (slides 10-12) → hidden patterns (slide 14) → recommendations (slide 15) → landing (slide 16). Thesis is coherent and sustained.",
+    "framing": "Slide 4 explicitly addresses missingness with a completeness chart, notes self-reported fields are directional. Slide 12 flags 28.6% missing domain ratings. Audience is clearly founders/investors/operators (slide 15). Limitations handled better than most decks.",
+    "accuracy": "Multiple headline numbers are materially wrong: 61% top-10 share (actual ~49.6%), 3.8x B2B premium (actual ~2.35x), $334M total revenue (actual ~$15.6M in 30-day). The $334M figure suggests either a different revenue field or fabrication. These errors appear in the executive summary and are repeated throughout, compounding their impact.",
+    "visual": "Consistent dark theme with green/purple/coral accent hierarchy. Charts are legible, appropriately simple (bar charts, Lorenz curve). Good use of big-number callout cards. Slight visual sameness across slides but restrained and functional. Lorenz curve is well-chosen for concentration story.",
+    "ai_slop": "Minimal slop. The deck avoids generic filler and consulting buzzwords. Recommendations on slide 15 are grounded in specific findings. The visual template is consistent but not repetitively decorative. No meaningless graphics detected."
+  },
+  "confidence": "high",
+  "total": 72,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 29445,
+    "output_tokens": 875
+  }
+}

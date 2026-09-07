@@ -1,0 +1,38 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 8,
+    "narrative": 8.5,
+    "framing": 9,
+    "accuracy": 7,
+    "visual": 7,
+    "bonus": 3
+  },
+  "what_worked": "Thesis-driven narrative with exceptional epistemic discipline—verified vs. self-reported distinction, limitations slide, causal restraint throughout.",
+  "fix_next": "Deck analyzes MRR exclusively but the frozen reference uses 30-day revenue; reconcile the metric or justify the substitution explicitly.",
+  "verdict": "Rigorous, thesis-driven analysis with strong framing; metric choice needs reconciliation.",
+  "flags": [
+    "metric-mismatch-mrr-vs-30d-revenue",
+    "anonymous-share-discrepancy",
+    "no-payment-provider-analysis",
+    "no-category-level-analysis"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 4: Claims 'one holds 26.5%' of revenue—reference shows anonymous companies hold 26.525% of revenue but this is 129 companies not one; the slide conflates Stan's MRR share with the anonymous cohort share. Slide 10: States 130 anonymous listings hold 28.1% of MRR—reference says 129 anonymous companies hold 26.525% of revenue. Slide 5: Claims AI appears on 392 of 726 tagged listings (54%)—this uses market tags not the category field; the 54% figure (392/726=54.0%) is internally consistent but the denominator conflates tags with categories used elsewhere in the reference data.",
+  "evidence": {
+    "insight": "Slide 5-6 build a genuinely original argument: AI is never a standalone tag, always layered on another category, so the label is an implementation detail not a business model. Slide 8 connects this to valuation multiples showing price premium compresses returns. Slide 9 offers actionable screening criteria ranked by verified-field correlation. These go well beyond chart description.",
+    "narrative": "Clear thesis on slide 1 ('the label is not the business'), methodically built: data provenance (2), distribution shape (3-4), AI label critique (5-6-7), valuation implication (8), screening framework (9), limitations (10). Each slide title is an argument, not a topic. Strong landing.",
+    "framing": "Slide 2 distinguishes verified from self-reported fields—exceptional for a student deck. Audience (founders evaluating acquisitions) stated on slide 1. Slide 10 dedicates an entire slide to limitations including known data defects, missing data rates, and causal disclaimers. Denominators stated throughout (726 tagged rows, 274 missing).",
+    "accuracy": "The deck consistently uses MRR rather than 30-day revenue, which is a different metric ($13.47M total MRR vs $15.6M 30-day revenue in reference). Slide 10 claims 130 anonymous listings hold 28.1% of MRR—reference says 129 hold 26.525% of revenue. Slide 4's '26.5%' for one company (Stan) is plausible for MRR share but cannot be verified against the 30-day revenue reference. The 392 AI-tagged count and tag overlap analysis appear internally consistent. The 0 duplicates claim in the reference vs. 'three duplicate entities' on slide 10 is a discrepancy.",
+    "visual": "Consistent dark/pink palette, clean typography, good hierarchy with large headline numbers. Charts are simple horizontal bars—appropriate for the data but lack axis labels on slide 3 (quintile chart y-axis unlabeled) and slide 6 (bar labels missing category names). Slide 7's chart is dense but readable. No decorative graphics. Restraint is a strength but some charts border on under-annotated.",
+    "ai_slop": "none"
+  },
+  "confidence": "high",
+  "total": 82,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19417,
+    "output_tokens": 955
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7,
+    "accuracy": 6.5,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "AI headcount-vs-monetization juxtaposition and growth-rate skepticism slide are genuinely decision-useful for investors.",
+  "fix_next": "Clarify whether the core metric is MRR or 30-day revenue — the deck uses both interchangeably, undermining trust.",
+  "verdict": "Strong investor-oriented story with clean visuals; metric ambiguity and minor data errors hold it back.",
+  "flags": [
+    "mrr-vs-revenue-conflation",
+    "anonymous-share-overstated",
+    "anonymous-count-off-by-one",
+    "category-medians-unverifiable"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 9: anonymous revenue share stated as 28.1% vs reference 26.525% (~1.6pp high); anonymous company count 130 vs reference 129.",
+  "evidence": {
+    "insight": "Slide 4 AI crowding insight, slide 7 domain-rating cliff as screening heuristic, slide 8 median-vs-mean growth critique, slide 10 survivorship bias in for-sale listings — four distinct non-obvious observations grounded in data.",
+    "narrative": "Clear arc from concentration (3) → category illusion (4) → geography (5) → business model (6) → credibility (7) → growth skepticism (8) → data quality (9) → deal market (10) → synthesis (11) → actions (12). Conclusion ties threads coherently.",
+    "framing": "Investor audience explicit throughout; slide 2 sets scope; slide 9 addresses missingness; slide 7 adds correlation caveat. However, the deck never resolves whether it analyzes MRR or 30-day revenue — slide 5 says '30-day revenue' while slides 3, 6, 7 say 'MRR,' creating confusion for a cold reader.",
+    "accuracy": "Category counts match reference exactly. B2B median multiple 2.35x matches. Missing-field percentages for country (24.1%) and category (27.4%) match. Anonymous share overstated by ~1.6pp; anonymous count off by 1. Total MRR ($13.47M) vs reference total revenue ($15.6M) may reflect different fields but is never explained.",
+    "visual": "Consistent dark/light palette with restrained color use. Slide 4 side-by-side bar charts effective. Slide 9 missingness chart well-designed. Slide 3 horizontal bars clearly labeled. Slide 7 cliff visualization supports headline. No decorative clutter.",
+    "ai_slop": "Minimal. Slide 12 recommendations are concrete and data-grounded. No generic filler or decorative charts detected. Language is specific to dataset throughout."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Reduced factual error count from 6 to 2 — preliminary incorrectly assumed MRR equals 30-day revenue, making category median comparisons invalid. Lowered bonus from 2 to 1; adjusted framing down 0.5 for unresolved MRR/revenue ambiguity; raised accuracy 0.5 since most verifiable claims check out.",
+  "total": 74,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 22508,
+    "output_tokens": 2420
+  }
+}

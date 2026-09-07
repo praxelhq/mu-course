@@ -1,0 +1,38 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 6,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "Tight thesis-to-action structure with honest small-sample caveats and a genuinely useful segmentation framework.",
+  "fix_next": "B2B median multiple (5.7×) contradicts the reference data (~2.35×); verify monetization-rate denominators and the custom 'monetized' threshold against actual medians.",
+  "verdict": "Well-crafted investor memo with a few numerical claims that don't survive verification.",
+  "flags": [
+    "b2b-median-multiple-inflated",
+    "custom-monetization-threshold-not-dataset-median",
+    "sales-category-not-in-reference",
+    "segmentation-arithmetic-doesnt-sum"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 5: B2B median $1,036 / B2C $181 = 5.7× claimed; reference shows median multiples of ~2.35×/2.30× respectively, so the gap is far smaller than presented. Slide 3: States dataset median MRR is $282; this is plausible but unverifiable against reference and drives the entire 'monetized' segmentation. Slide 6: Segments sum to 500+303+168+29=1000, but 216 rows have zero revenue per reference, yet only 168+29=197 are shown as zero-revenue — the 'early monetization' bucket likely absorbs some true-zero rows inconsistently. Slide 4/10: 'Sales' category referenced as high-converting but does not appear in the 12-category reference list, suggesting either a fabricated or miscoded category.",
+  "evidence": {
+    "insight": "Finding 3 (29 traction-not-monetized listings) and Finding 4 (asking-price vs MRR disconnect) are genuinely original, decision-useful cuts that go beyond chart description. Finding 6 on payment-stack as operator-quality signal is creative. However, the B2B finding overstates the gap.",
+    "narrative": "Clear six-finding arc from crowding → audience type → traction pool → pricing discipline → geography → tooling, culminating in a synthesis quad-chart and sequenced recommendations. Each slide has a consistent finding/evidence/implication structure. The closing slide lands the thesis cleanly.",
+    "framing": "Slide 1 sets audience (Investment Committee), date, and scope. Slide 3 defines methodology, thresholds, and known gaps. Slide 12 appendix covers four limitations. Missing-data rates are disclosed. However, computing shares against 1,000 rather than known-field subsets is a deliberate choice that is disclosed but still deflates category-level rates.",
+    "accuracy": "B2B/B2C 5.7× multiple is materially wrong vs reference (~2.35×). 'Sales' category appears on slides 4 and 10 but is absent from the 12-category reference. Superwall median $5,465 vs reference $237,834.40/17≈$13,990 total revenue — the median claim is plausible but unverifiable. Stripe median $663 is not directly contradicted but differs from what simple total/count would suggest. The 29-listing traction pool and 64/262 for-sale claims are not directly verifiable but are internally consistent.",
+    "visual": "Consistent dark-navy/gold palette, clear hierarchy with section labels, numbered findings, and implication callout boxes. Bubble chart on slide 4 is well-conceived but labels overlap. Lollipop charts on slides 8-9 are clean and appropriately annotated with n-sizes. Slide 6 stacked bar is effective. No decorative clutter. Slight repetition between slides 4 and 10 (same quad-chart concept twice).",
+    "ai_slop": "Minimal slop. The consulting-style 'Now/Next/Later' framework on slide 11 is somewhat templated but substantively filled. No generic filler text, no decorative stock imagery, no meaningless icons. The repeated quad-chart (slides 4 and 10) borders on padding but adds synthesis value."
+  },
+  "confidence": "medium",
+  "total": 75,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 25155,
+    "output_tokens": 1053
+  }
+}

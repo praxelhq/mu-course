@@ -1,0 +1,38 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 8.5,
+    "accuracy": 6.5,
+    "visual": 9,
+    "bonus": 3
+  },
+  "what_worked": "A genuine thesis—verified ≠ representative—sustained across every slide with rhetorical discipline and editorial restraint.",
+  "fix_next": "Several key figures are off (anonymous count 130 vs 129, zero-revenue 22% vs 21.6%, AI median $446 vs $503); tighten data checks before publishing.",
+  "verdict": "Exceptional narrative and design, undermined by a cluster of avoidable numerical inaccuracies.",
+  "flags": [
+    "minor-count-errors",
+    "median-discrepancy",
+    "lifetime-revenue-unverifiable",
+    "zero-revenue-percentage-off"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 1/3: '$400 median monthly revenue' — plausible but unverifiable against 30-day reference without knowing exact median computation; treated as borderline. Slide 3: '22% earn exactly zero' — actual is 216/1000 = 21.6%, rounded up. Slide 4: '130 companies' anonymous — reference says 129. Slide 5: AI median MRR '$446' — reference says $503. Slide 5: '$49 revenue per customer' for B2B and '$9 for B2C' — unclear metric; reference gives median multiples of 2.35x/2.30x, not per-customer revenue. Slide 1: '$334M lifetime revenue' — cannot verify against 30-day snapshot of $15.6M; presented without caveat.",
+  "evidence": {
+    "insight": "Slide 3's Lorenz-curve framing (Gini 0.906, top-10 = ~50%) goes well beyond chart description. Slide 4's anonymous-cohort insight is genuinely original. Slide 6's selection-bias diagram is a sophisticated analytical move. Slide 7 connects marketplace pricing to data illusions.",
+    "narrative": "Clear arc: headline optimism (slide 2) → inequality reality (slide 3) → anonymity paradox (slide 4) → what matters (slide 5) → epistemological caveat (slide 6) → market implications (slide 7) → landing (slide 8). Every slide advances one thesis. The closing line is memorable and earned.",
+    "framing": "Slide 1 sets scope (1,000 companies, API-verified, frozen date). Slide 6 explicitly addresses survivorship/selection bias. Audience segments addressed on slide 8. Missing: no mention of 274 missing category values or 288 missing audience_type, which weakens the category and B2B/B2C claims.",
+    "accuracy": "Top-10 revenue share ~49.6% stated as 'half' — acceptable rounding. AI median $446 vs reference $503 is a material error. Anonymous count 130 vs 129 is minor. 22% zero-revenue vs 21.6% is minor. The $334M lifetime figure and $400 median are not directly checkable against the 30-day reference but the $15.6M monthly figure on slide 3 matches. B2B/B2C per-customer figures ($49/$9) don't correspond to any reference metric.",
+    "visual": "Restrained two-color palette (gold, dark gray) used consistently. Lorenz curve on slide 3 is well-annotated with three callouts. Slide 4's proportional bar chart is effective. Slide 6's dark-background diagram for the selection-bias concept is a strong design choice. No decorative clutter. Typography is elegant and hierarchical throughout. Slide 5's table format is clean and scannable.",
+    "ai_slop": "none"
+  },
+  "confidence": "high",
+  "total": 86,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 14220,
+    "output_tokens": 951
+  }
+}

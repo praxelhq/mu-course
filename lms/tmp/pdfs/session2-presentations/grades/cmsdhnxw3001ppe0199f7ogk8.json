@@ -1,0 +1,38 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7.5,
+    "accuracy": 5.5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong thesis that power-law dynamics and category crowding diverge from monetization, with honest epistemic caveats throughout.",
+  "fix_next": "Use medians instead of means for skewed category comparisons; the 5.7x B2B claim and several category rankings don't match reference medians.",
+  "verdict": "Well-structured narrative undermined by reliance on means over medians in key claims.",
+  "flags": [
+    "mean-vs-median-mismatch",
+    "missing-data-denominators-unclear",
+    "no-stripe-revenue-detail",
+    "pie-chart-for-three-way-split"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2/7: B2B median MRR 5.7x claim uses MRR figures ($1,036/$181) that don't align with reference median revenue multiples (2.35x/2.30x); the 5.7x figure appears to conflate MRR with 30-day revenue or use a non-standard calculation. Slide 3: '$13.5M combined MRR' stated but reference total 30-day revenue is $15.6M — unclear if MRR differs but the gap is large. Slide 4: 19.7% at $0 — reference shows 216 zero-revenue rows (21.6%), not 197. Slide 6: Uses mean MRR per category to rank monetization; with extreme skew acknowledged on slide 4, median is the appropriate measure and would change rankings substantially (e.g., Education median $2,435 vs AI $503). Slide 9: 344+337+305=986, not 1,000 — 14 rows unaccounted for without explanation.",
+  "evidence": {
+    "insight": "Slide 2 executive summary delivers five distinct, non-obvious findings (power-law, category divergence, B2B premium, growth myth, secondary market). The 'volume ≠ monetization' framing on slide 6 is genuinely useful. However, insights stay at the descriptive level — no cross-cutting analysis (e.g., do B2B AI startups outperform B2C AI?).",
+    "narrative": "Clear five-finding arc from distribution → categories → business model → growth → exit market, bookended by exec summary (slide 2) and 'So What' (slide 11). Each slide advances the thesis that surface metrics mislead. The closing slide synthesizes rather than just repeating. Slight redundancy between slides 2 and 11.",
+    "framing": "Slide 3 explicitly flags self-reported data, non-random sample, and directional-only interpretation. Slide 8 notes 24% missing country data. Slide 10 notes anomalous multiples. Good epistemic discipline. However, 274 missing category values (27.4%) are never quantified, which matters for slides 5-6.",
+    "accuracy": "Mean-based category ranking (slide 6) is internally inconsistent with the slide 4 acknowledgment that means are misleading in power-law distributions. The $13.5M MRR figure doesn't match $15.6M reference. Zero-revenue count of 197 doesn't match 216. The growth split sums to 986 not 1,000. B2B 5.7x median claim uses figures that don't correspond to reference multiples.",
+    "visual": "Consistent template with red accent for highlighted bars, numbered callout boxes, and clean typography. Charts are legible and appropriately labeled. The y-axis on slide 4 starts at -30 which is odd for a count histogram. Pie chart on slide 9 is suboptimal for near-equal thirds. Donut chart on slide 8 lacks segment labels/percentages. No chart on slide 11 is fine for a summary.",
+    "ai_slop": "Minimal slop. The deck avoids generic consulting language and decorative graphics. The numbered callout pattern (A/B/C) is repeated across slides but serves a functional purpose. Content is specific to this dataset throughout. The dark placeholder rectangles on slide 1 appear to be broken image placeholders — minor visual issue."
+  },
+  "confidence": "high",
+  "total": 69,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 21321,
+    "output_tokens": 1064
+  }
+}

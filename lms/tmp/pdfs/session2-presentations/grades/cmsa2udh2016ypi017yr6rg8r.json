@@ -1,0 +1,41 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 5,
+    "narrative": 6,
+    "framing": 5.5,
+    "accuracy": 2.5,
+    "visual": 4.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong thesis about concentration; honest missingness slide with stealth-company observation was genuinely thoughtful.",
+  "fix_next": "Total revenue is $15.6M not $334M—this 20x error cascades through every slide and invalidates most claims.",
+  "verdict": "Compelling narrative built on a catastrophically wrong total revenue figure.",
+  "flags": [
+    "total-revenue-fabricated",
+    "top10-share-wrong",
+    "category-revenue-wrong",
+    "stripe-revenue-share-wrong",
+    "zero-revenue-count-wrong",
+    "decorative-ai-art",
+    "b2b-multiple-inflated"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 2: Total revenue stated as $334M; actual is ~$15.6M (off by ~21x). Top-10 share stated as 61%; actual is ~49.6%. Slide 3: All Pareto percentages built on the wrong $334M base; top-10 share of ~50% not 61%. Slide 5: 70% US revenue share unverifiable but plausible direction; $334M base wrong. Slide 6: E-Commerce revenue stated as $54.8M; actual is ~$1.1M. AI is actually the highest total-revenue category ($2.36M), not E-Commerce. Slide 7: Stripe revenue share stated as 96%; actual is ~86.7% ($13.5M/$15.6M). Startup share stated as 64%; actual is 63.6% (close but the revenue claim is materially wrong). Slide 8: Zero-revenue count stated as 20%; actual is 21.6% (216/1000)—close but the '10% never earned' and '$76M Stan' claims are unverifiable/likely wrong given the inflated total. Slide 9: B2B median 4x higher than B2C; actual median multiple is ~2.35x, not 4x.",
+  "evidence": {
+    "insight": "The power-law thesis (slides 2-3) and the missingness-as-signal idea (slide 4) show genuine analytical thinking, but insights are undermined by fabricated numbers. The AI-vs-commerce tension on slide 6 is interesting but factually inverted.",
+    "narrative": "Clear arc from concentration → who wins → data gaps → takeaways. Coherent sequencing with a thesis that carries through. Slide 10 synthesizes well. Loses credit because the narrative rests on wrong numbers.",
+    "framing": "Slide 1 sets context (1,000 startups, frozen date). Slide 4 addresses limitations thoughtfully. However, no mention of 274 missing category values when making category claims, and 241 missing country values when making country claims. Audience is implied but never stated.",
+    "accuracy": "The foundational total revenue figure ($334M vs actual $15.6M) is wrong by a factor of ~21. This cascades: top-10 share (61% vs 49.6%), E-Commerce revenue ($54.8M vs $1.1M), Stripe revenue share (96% vs ~87%), B2B multiple (4x vs ~2.35x). Category ranking is inverted (AI is highest total, not E-Commerce). These are not rounding differences—they are order-of-magnitude errors.",
+    "visual": "Gamma template with consistent dark theme. Decorative AI illustrations (cityscape, anime figure, Japanese map) add no analytical value. Charts are minimal—only two actual data visualizations (slides 3 and 6). Slide 6 chart shows only two bars (E-Commerce vs All Other) which is a poor chart choice. Donut charts on slide 7 are adequate. Heavy text density throughout.",
+    "ai_slop": "Decorative AI-generated illustrations on slides 1, 2, 5 are purely aesthetic with no data connection. The anime figure on slide 2 and Japanese-themed map on slide 5 are thematically random. Consulting-style language ('uncomfortable truths,' 'cold open') is mildly inflated but not egregious."
+  },
+  "confidence": "high",
+  "total": 48,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18965,
+    "output_tokens": 1058
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 7,
+    "accuracy": 4,
+    "visual": 5.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong narrative framing as investment screening report with consistent audience awareness and honest data-quality caveats.",
+  "fix_next": "Multiple core figures are materially wrong—total revenue, medians, category totals, zero-revenue count—verify every number against the actual dataset before presenting.",
+  "verdict": "Well-structured investment narrative undermined by pervasive numerical inaccuracies.",
+  "flags": [
+    "total-revenue-wrong",
+    "median-revenue-wrong",
+    "category-medians-wrong",
+    "category-totals-wrong",
+    "zero-revenue-count-wrong",
+    "b2b-multiplier-wrong",
+    "consulting-language-heavy"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 2: Total MRR stated as $13.47M; actual is $15.60M. Top-10 share stated as 48%; actual is 49.6%. Median stated as $282; not verifiable as correct. Slide 3: AI total revenue $1.81M vs actual $2.36M; AI median $446 vs actual $503; Education median $2,142 vs actual $2,435; Marketing median $1,586 vs actual $2,369.50; Marketing total $444K vs actual $1.32M; SaaS total $589K vs actual $703.5K. Slide 4: B2B median multiplier claimed as 5.7x; reference shows ~2.35x. Slide 9: Zero-revenue count stated as 101; actual is 216.",
+  "evidence": {
+    "insight": "Slide 5 offers genuinely useful insight about low-base growth effects. Slide 3 contrasts count vs unit economics. Slide 6 attempts valuation arbitrage analysis. However, insights are undermined by wrong numbers and rarely go beyond describing the charts with investment jargon.",
+    "narrative": "Clear four-act structure: concentration → category landscape → monetization → data quality → recommendation. Each slide has a section tag and builds toward the funnel recommendation on slide 10. Coherent thesis about screening discipline.",
+    "framing": "Slide 1 sets audience (investment committee), scope (1,000 companies), and purpose (sourcing/diligence). Slide 8 flags 24% missing country data. Slide 9 explicitly warns about data quality limitations. Slide 10 disclaims self-reported data. Good epistemic framing overall.",
+    "accuracy": "At least 8 material errors: total revenue off by ~$2.1M, category totals and medians systematically wrong (AI, Marketing, SaaS, Education), zero-revenue count halved (101 vs 216), B2B multiplier inflated (5.7x vs ~2.35x). The pattern suggests the student worked from a filtered or incorrectly computed subset rather than the full dataset.",
+    "visual": "Gamma template provides consistent dark theme with blue palette. Charts are readable but repetitive (horizontal bars dominate). Slide 1 background image is a generic finance dashboard unrelated to the data—decorative filler. Bubble chart on slide 3 is hard to read. Table on slide 3 has awkward column wrapping. Scatter on slide 5 is sparse and hard to interpret. Funnel diagram on slide 10 shows only 3 labeled stages despite claiming 4 filters.",
+    "ai_slop": "Heavy consulting-speak throughout ('materially limits the informational value,' 'capital preservation perspective,' 'underwriting of payment-stack differentiation as a moat'). Slide 1 background is a generic Nexus Analytics finance dashboard completely unrelated to the dataset. Template repetition across slides (section tag + title + subtitle + chart + callout boxes) is formulaic."
+  },
+  "confidence": "high",
+  "total": 60,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19831,
+    "output_tokens": 978
+  }
+}

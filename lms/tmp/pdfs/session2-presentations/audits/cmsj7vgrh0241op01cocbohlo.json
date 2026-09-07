@@ -1,0 +1,44 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 4.5,
+    "narrative": 5.5,
+    "framing": 3.5,
+    "accuracy": 2.5,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Strong thesis arc from AI saturation problem through B2B alternative to actionable blueprint is coherent.",
+  "fix_next": "Ground every claim in verifiable dataset numbers—AI median is $503 not $177, and category names are invented.",
+  "verdict": "Polished template over fabricated numbers; thesis is interesting but evidence is invented.",
+  "flags": [
+    "fabricated-statistics",
+    "no-real-data-charts",
+    "invented-category-names",
+    "exit-multiples-not-in-dataset",
+    "missing-limitations",
+    "no-sample-sizes",
+    "typo-programmatic-repeated",
+    "ai-hallucinated-figures"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 2: AI median stated $177, actual $503 (off ~3x). Slide 2: '24% of all new listings' — AI is 197/726 valid = 27.1%, not 24%. Slide 3: 'Content Workflows' and 'General SaaS' are not dataset categories; $13,800/$2,000/$1,900/$1,500 avg MRR figures are unverifiable/invented. Slide 4: 3.4x LTD multiplier has no dataset basis. Slide 5: 4.2x DR multiplier, $4,250 vs $980 avg MRR figures are unverifiable. Slide 6: ARPU figures ($340, $180, $45, $18) and exit multiples (5.2x, 4.5x, 3.2x, 1.8x ARR) are not in the dataset. Slide 5: duplicated word 'programmatic programmatic'.",
+  "evidence": {
+    "insight": "Core contrarian thesis (skip AI, build boring B2B) is a genuine strategic angle with real potential, but every supporting datapoint is fabricated so the insight is unearned from this dataset.",
+    "narrative": "Logical five-step arc: AI saturation → category benchmarks → monetization → distribution → action plan. Slides build toward a clear recommendation. Structure is the deck's strongest element.",
+    "framing": "No methodology slide, no mention of 274 missing categories or 288 missing audience_type, no sample sizes on any claim, no limitations disclosed. Audience (indie hackers) implied but never stated. A cold reader cannot assess validity.",
+    "accuracy": "AI median is $503 in the reference data, not $177 — a 3x error on the headline stat. Category names on slide 3 are invented (no 'Content Workflows' or 'General SaaS' in dataset). LTD 3.4x, DR 4.2x, ARPU table, and exit multiples are all unsupported by the dataset. At least 8 material factual errors across slides 2–6.",
+    "visual": "Consistent dark theme with clean typography and effective big-number callouts. However, slide 3's bar chart uses fabricated categories. No real data visualizations with proper axes/labels/n-counts. Repetitive two-card layout on slides 2, 4, 5 becomes monotonous. Typo on slide 5.",
+    "ai_slop": "Duplicated word 'programmatic programmatic' on slide 5 is a classic generation artifact. Exit multiples and ARPU figures on slide 6 read as AI-hallucinated consulting boilerplate with no dataset grounding. Slide 6 table could fit any generic startup advice deck."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 4.0 to 3.5: complete absence of methodology, sample sizes, and limitations is worse than 'weak'—it's nearly absent for a data-story. All other scores confirmed as appropriate.",
+  "total": 42,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 13196,
+    "output_tokens": 984
+  }
+}

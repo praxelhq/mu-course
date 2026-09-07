@@ -1,0 +1,38 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 5,
+    "narrative": 5.5,
+    "framing": 4.5,
+    "accuracy": 4,
+    "visual": 4.5,
+    "bonus": 0
+  },
+  "what_worked": "Concentration analysis (top-10/100/500 revenue shares) is the strongest thread and reasonably well-supported.",
+  "fix_next": "Multiple fabricated or unverifiable numbers (top-10 share, median revenue, category medians, 500K subscriptions) undermine credibility; verify every claim against the dataset.",
+  "verdict": "Consulting-styled deck with a coherent thesis but too many unverified and incorrect figures.",
+  "flags": [
+    "inflated-consulting-language",
+    "fabricated-looking-stats",
+    "missing-data-not-acknowledged",
+    "ai-slop-template"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 2: Top-10 share stated as 48%; reference is 49.6%—material understatement. Slide 1: 'via Stripe' implies all data from Stripe; only 636/1000 use Stripe. Slide 2: '$13.5M Total MRR Recurring' is unexplained and unsupported by dataset. Slide 2: '500K+ Active Subscriptions' is unverifiable/fabricated from this dataset. Slide 4: Median company revenue stated $282; not verifiable as correct and inconsistent with typical dataset medians. Slide 6: Education median listed as $2.1K; reference is $2,435. Marketing median listed as $1.6K; reference is $2,369.50. Analytics median listed as $1.3K; reference is $419. Customer Support and Marketplace medians ($5.2K, $4.3K) are unverifiable and likely fabricated. Slide 3: '29 categories' claimed but only ~12 named categories exist with 274 rows missing category entirely—no acknowledgment of missingness. Slide 9: Geographic counts ignore 241 missing country values; '83% of portfolio' denominator is wrong.",
+  "evidence": {
+    "insight": "Slide 4 concentration cascade (top 1/10/100/500) is the most analytical content; slide 5 bifurcation framing adds some value. But insights remain descriptive—no cross-cutting analysis (e.g., do high-growth companies cluster in certain categories or geographies?).",
+    "narrative": "Deck follows a logical arc: summary → composition → concentration → growth → monetization → infrastructure → M&A → geography → maturity → recommendations → verdict. Coherent but reads as a consulting template rather than a data story with a single surprising thesis.",
+    "framing": "Slide 1 frames as 'Financial Consulting Brief' but never defines the audience, the decision being supported, or the dataset's limitations. 274 missing categories, 241 missing countries, and 288 missing audience types are never mentioned. The 'via Stripe' claim on slide 1 is misleading.",
+    "accuracy": "Top-10 share off by ~1.6pp (48% vs 49.6%). Education median off ($2.1K vs $2,435). Marketing median off ($1.6K vs $2,370). Analytics median wildly off ($1.3K vs $419). '500K+ subscriptions' and '$13.5M MRR' appear fabricated. Domain authority counts (390+278+120+26=814) don't account for the full 1000 or explain the gap.",
+    "visual": "Uniform horizontal bar charts on slides 3, 7, 9, 10 create visual monotony. Slide 4 uses a different color scheme (blue/green/red) which is effective. Slide 5's quadrant layout is clear. Overall: clean but template-driven, no annotations or data callouts on charts, no axis labels on bars.",
+    "ai_slop": "Heavy consulting jargon throughout ('winner-take-most market dynamics,' 'cascading impact,' 'ruthless consolidation,' 'untenable in this market structure'). Slide 11 is a pure text bullet recap that adds nothing new. Template uniformity across slides. '500K+ Active Subscriptions' stat appears fabricated to fill a KPI card."
+  },
+  "confidence": "high",
+  "total": 47,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 23807,
+    "output_tokens": 1048
+  }
+}

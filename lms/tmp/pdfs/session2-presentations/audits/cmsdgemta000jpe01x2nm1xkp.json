@@ -1,0 +1,44 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 6.5,
+    "accuracy": 4,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Mean-vs-median framing on slide 4 and acquisition portfolio sizing on slide 8 are genuinely decision-useful.",
+  "fix_next": "Reconcile category medians and total revenue against source data; Dev Tools and Analytics are off by 3x, invalidating recommendations.",
+  "verdict": "Strong storytelling undermined by pervasive numerical errors across category medians and totals.",
+  "flags": [
+    "total-revenue-mismatch",
+    "category-median-errors-severe",
+    "zero-revenue-count-wrong",
+    "mrr-vs-revenue-conflation",
+    "mean-mrr-wrong",
+    "ai-total-wrong",
+    "pie-chart-unlabeled",
+    "missing-data-undisclosed"
+  ],
+  "factual_error_count": 11,
+  "factual_error_detail": "S2/S3: total revenue $13.5M vs ref $15.6M; top-10 share 48% vs 49.6%. S3: zero-rev 197 vs 216. S2/S5: AI median $446 vs $503; Marketing $1,586 vs $2,370; Education $2,142 vs $2,435; Dev Tools $185 vs $635 (3.4x off); Analytics $1,294 vs $419 (3x off, wrong direction); SaaS $303 vs $201. S2: AI total $1.8M vs $2.36M. S4: mean $13,472 vs $15,596.",
+  "evidence": {
+    "insight": "Slide 4 mean-vs-median (48x overstatement) and slide 8 acquisition portfolio sizing are original. Slide 9 growth skepticism adds depth. Domain authority correlation on slide 7 is useful.",
+    "narrative": "Four-finding thesis on slide 2 flows through concentration→categories→B2B/B2C→acquisition→momentum→recommendations. Timed action items on slide 10 land the argument.",
+    "framing": "Freeze date and source cited consistently. Risk caveat on slide 10. But 274 missing category and 288 missing audience_type rows never disclosed, materially affecting denominators for slides 5-6.",
+    "accuracy": "11 verifiable errors. Category medians for Dev Tools ($185 vs $635) and Analytics ($1,294 vs $419) are off by 3x+ in opposite directions, directly undermining slide 10 recommendations. Total revenue denominator wrong by $2M cascades throughout.",
+    "visual": "Consistent navy/gold palette, clean big-number callouts on slides 3/6/8/9. Slide 7 pie chart lacks value labels. Slide 11 appendix table is well-formatted. No chartjunk.",
+    "ai_slop": "Consulting-style 'session 3' framing is slightly performative but content is substantive throughout, not generic filler."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Increased error count from 8 to 11 after verifying additional category medians and mean MRR. Lowered accuracy from 5→4 due to severity (3x errors in Analytics/Dev Tools that directly feed recommendations). Reduced insight, narrative, visual each by 0.5 and bonus from 2→1 given that analytical conclusions rest on wrong numbers.",
+  "total": 65,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 21201,
+    "output_tokens": 2462
+  }
+}

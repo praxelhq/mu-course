@@ -1,0 +1,39 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 5.5,
+    "accuracy": 5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Strong central thesis (low entry barriers, extreme scaling barriers) sustained coherently across all slides with good narrative arc.",
+  "fix_next": "Slide 2 claims 'hundreds of millions' in aggregate revenue but total 30-day revenue is ~$15.6M; verify and cite actual figures with proper denominators.",
+  "verdict": "Coherent thesis, polished design, but inflated claims and missing data rigor undermine credibility.",
+  "flags": [
+    "inflated-aggregate-claim",
+    "fabricated-looking-scatter-slide6",
+    "missing-limitations-slide",
+    "consulting-language",
+    "no-missingness-disclosure"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 2: 'Hundreds of millions in aggregate all-time revenue' is unverifiable from the dataset which reports 30-day revenue of ~$15.6M; presented as if dataset-derived. Slide 2: 'median revenue across the dataset remains exactly $0' — the median 30-day revenue may be near zero but needs specification; conflating MRR/all-time/30-day throughout. Slide 6: Scatter plot axes ('Maturity / Scale (Median 30-Day Revenue)' as percentages 0-100%) are opaque and likely fabricated; no explanation of how median revenue becomes a percentage. Slide 10: 'High DR directly correlates with durable, non-volatile traffic' stated as causal/direct correlation from two cherry-picked examples, not a demonstrated dataset-wide correlation.",
+  "evidence": {
+    "insight": "The 'low barriers to entry, extreme barriers to scale' thesis (slide 2, 11) is a genuine interpretive claim beyond chart description. The outlier-vs-median comparison (slide 9) and the 'success equation' (slide 10) attempt synthesis. However, the equation is asserted rather than tested against data, and the B2B/B2C comparison (slide 7) lacks the actual median revenue multiples from the dataset (2.35x/2.30x).",
+    "narrative": "Clear three-act structure: macro overview (slides 2-4), sectoral/structural analysis (slides 5-8), micro synthesis and conclusion (slides 9-11). The thesis is stated early and returned to. However, the narrative leans on assertion more than evidence progression — the 'equation' on slide 10 is not earned by prior quantitative demonstration.",
+    "framing": "Slide 1 identifies N=1,000 and the dataset. No limitations slide. No mention of 274 missing category values, 241 missing country values, or 288 missing audience_type values. No definition of revenue window (30-day vs all-time conflated throughout). Audience is implied but never stated. The 'Economist' credential on slide 1 is odd framing for a student assignment.",
+    "accuracy": "Slide 2 'hundreds of millions' is unsubstantiated from the provided dataset. Slide 3 correctly identifies Stan at $2,844,652 (30-day) and $76,627,685 (all-time). Slide 4 Lorenz curve is directionally correct but 'top 1%' claim is vague. Slide 6 scatter plot has unexplained percentage axes that don't correspond to any obvious dataset metric. The deck never mentions the 216 zero-revenue count, the top-10 share of 49.6%, or total 30-day revenue of $15.6M. Category analysis is absent despite being a rich area.",
+    "visual": "Consistent cream/grey palette with restrained red accents. Lorenz curve (slide 4) is well-executed with annotations. Geographic dot map (slide 5) is attractive but hard to read precisely. Slide 6 scatter is visually appealing but axes are unclear. Slide 8 funnel diagram is conceptual rather than data-driven. Overall clean but several charts appear decorative rather than evidence-bearing.",
+    "ai_slop": "Consulting-style language throughout: 'structural synthesis,' 'economic engine,' 'proprietary audience capture,' 'value extraction per visitor.' Slide 8 funnel is a generic conceptual diagram not grounded in dataset metrics. Slide 10 'equation' uses mathematical notation for what is an untested assertion. The scatter on slide 6 has hallmarks of AI-generated visualization with unclear provenance."
+  },
+  "confidence": "high",
+  "total": 62,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18394,
+    "output_tokens": 1113
+  }
+}

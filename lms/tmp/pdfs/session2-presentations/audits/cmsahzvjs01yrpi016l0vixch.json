@@ -1,0 +1,43 @@
+{
+  "slide_count": 1,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 3.5,
+    "framing": 3,
+    "accuracy": 3.5,
+    "visual": 6,
+    "bonus": 0
+  },
+  "what_worked": "B2B whitespace recommendation linking subscriber mix to revenue-per-sub economics is genuinely decision-useful.",
+  "fix_next": "Add framing slides with dataset scope, missingness (288 missing audience_type), and explain how the 12.6x multiplier was derived.",
+  "verdict": "One polished slide with unverifiable claims; no story arc, no framing, no limitations.",
+  "flags": [
+    "single-slide-deck",
+    "unverifiable-multiplier",
+    "missing-framing",
+    "no-limitations-stated",
+    "no-narrative-arc",
+    "no-dataset-description",
+    "missing-axis-labels"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 1: 12.6x 'all-time revenue per B2B subscriber' cannot be reconciled with frozen-reference B2B/B2C median multiples (~2.3x) or mean multiples (~8x); likely uses an undefined 'active subscriptions' denominator not in the dataset. 9.9x trailing-12-month claim is entirely unverifiable against the frozen reference.",
+  "evidence": {
+    "insight": "The double-down vs whitespace segmentation is a useful strategic lens, and the trailing-12-month persistence check (9.9x) shows analytical effort, though the numbers are suspect.",
+    "narrative": "Single slide with no setup, build, or landing. No thesis statement, no synthesis across findings. Reads as one exhibit, not a data story.",
+    "framing": "No audience identified, no research question, no dataset description, no mention of 1,000 rows, no acknowledgment of 288 missing audience_type values or 274 missing categories—both directly relevant to the claims made. A cold reader has no idea what TrustMRR is.",
+    "accuracy": "The 12.6x multiplier references 'all-time revenue per subscriber' using 'active subscriptions' as a denominator—neither is a standard column in the frozen dataset. Known on-sale B2B/B2C median multiples are ~2.35x/2.30x and means ~8.0x/8.4x, making 12.6x hard to reconcile. Sector B2B percentages (82%, 87%, 50%) are stated with false precision given 288 missing audience_type values.",
+    "visual": "Professional layout: large callout stat, clean stacked bar, restrained palette, good hierarchy. Bar chart lacks x-axis scale, preventing absolute magnitude comparison. Single slide limits full visual assessment.",
+    "ai_slop": "none"
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered narrative from 4→3.5 (single slide truly has no arc or sequence) and framing from 3.5→3.0 (complete absence of dataset context, missingness disclosure, and audience identification is more severe than preliminary suggested). Other scores confirmed.",
+  "total": 43,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 3321,
+    "output_tokens": 771
+  }
+}

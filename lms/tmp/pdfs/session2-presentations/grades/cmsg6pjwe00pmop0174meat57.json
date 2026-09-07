@@ -1,0 +1,40 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 6.5,
+    "framing": 5,
+    "accuracy": 3.5,
+    "visual": 6,
+    "bonus": 1
+  },
+  "what_worked": "Clear thesis with balanced positive/negative AI findings and a useful decision framework on slide 8.",
+  "fix_next": "The entire analysis rests on a fabricated AI-enabled vs. non-AI split that doesn't exist in the dataset—show verifiable numbers with sample sizes.",
+  "verdict": "Compelling story built on an unverifiable analytical framework; accuracy undermines it.",
+  "flags": [
+    "fabricated-segmentation",
+    "unverifiable-revenue-lifts",
+    "no-sample-sizes",
+    "missing-data-not-addressed",
+    "causal-language-risk",
+    "ai-slop-visual-template"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 3-4: Claims 803 non-AI startups after removing 197 AI-native; the dataset has 197 companies in the AI *category*, but the deck treats category=AI as 'AI-native' and then separately identifies 27% of the remaining 803 as 'AI-enabled'—this segmentation is fabricated/unverifiable from the known dataset fields. Slide 4: AI adoption percentages by category (69% Content Creation, 52% Mobile Apps, etc.) have no basis in any known dataset column. Slide 5: Revenue lift figures (+285% Education, +219% Content Creation, +228% Health & Fitness, +88% Mobile Apps) are unverifiable and use means rather than medians without acknowledging extreme skew; no sample sizes given. Slide 6: Negative lift figures (-84% Marketing, -77% Dev Tools, -72% SaaS, -64% Analytics, -95% E-commerce) similarly unverifiable. Slide 5 note says 'average 30-day revenue' is used—with tiny subgroups and heavy skew this is misleading without reporting n or medians.",
+  "evidence": {
+    "insight": "Slides 5-6 present a genuinely interesting two-sided finding (AI helps some categories, hurts others) and slide 7 attempts to explain why. The thesis that AI value depends on industry context is decision-useful. However, the insight is undermined by unverifiable numbers and no discussion of confounders or sample sizes.",
+    "narrative": "Strong arc: question (slide 2) → method (slide 3) → positive evidence (slide 5) → negative evidence (slide 6) → explanation (slide 7) → decision framework (slide 8) → summary (slide 9) → closing (slide 10). Coherent sequence with a clear landing. Slightly repetitive between slides 9 and 10.",
+    "framing": "Slide 2 sets up the question well for a founder audience. Slide 3 describes the methodology. However, the deck never addresses 274 missing category values, 288 missing audience_type values, or the 216 zero-revenue companies. No limitations slide. The 'AI-enabled' segmentation method is never explained—how were companies tagged?",
+    "accuracy": "The core analytical framework (AI-enabled vs. non-AI within categories) relies on a segmentation that cannot be verified from known dataset fields. The dataset has no 'AI-enabled' flag; the student appears to have fabricated or inferred this classification without explaining how. Revenue lift percentages are presented with false precision and no confidence intervals or sample sizes. Using means with highly skewed revenue data is misleading. The 803 figure (1000-197) is arithmetically correct but conceptually questionable.",
+    "visual": "Consistent dark theme with teal/gold accent colors throughout. Professional-looking but heavily templated—every slide uses the same icon-in-circle motif. Slide 4 has a proper bar chart. Slides 5-6 use card layouts effectively. However, there are no actual data visualizations beyond the single bar chart on slide 4; the revenue lift numbers are presented as text callouts rather than charts. The decision tree on slide 8 is well-structured. Overall: polished but icon-heavy and chart-light.",
+    "ai_slop": "Heavy reliance on decorative AI-generated imagery (futuristic cityscape slide 1, scale imagery slide 2, particle effects slide 10). Generic consulting-style icons on every slide. The four-pillar layout on slide 7 (Personalization/Automation/Prediction/Recommendation) is textbook filler that could apply to any AI discussion without data support. Rocket ship closing slide is pure decoration."
+  },
+  "confidence": "medium",
+  "total": 54,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 17384,
+    "output_tokens": 1116
+  }
+}

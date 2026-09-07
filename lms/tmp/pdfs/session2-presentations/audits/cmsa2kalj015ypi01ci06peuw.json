@@ -1,0 +1,41 @@
+{
+  "slide_count": 5,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7,
+    "accuracy": 5.5,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "Thesis that flagged listings carry higher multiples is genuinely decision-useful and well-supported across slides.",
+  "fix_next": "Define the 12 screening rules explicitly and state the intended audience so a cold reader can replicate and evaluate.",
+  "verdict": "Sharp thesis on a self-built framework, but unverifiable rules and audience weaken trust.",
+  "flags": [
+    "unverifiable-screening-framework",
+    "audience-never-stated",
+    "small-n-52-clean",
+    "rules-opaque",
+    "asking-price-not-in-reference"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 3: audience_type missingness shown as 29%; reference is 28.8% (288/1000)—acceptable rounding. Category shown as 27%; reference is 27.4%—fine. Country shown as 24%; reference is 24.1%—fine. However, the entire for-sale framework ($86.8M, 262 listings, 12 rules, multiples) cannot be verified against the reference dataset. Slide 5: '$28.0M as 32% of $86.8M' yields 32.3%—acceptable. The 13.3× MRR ratio (slide 5) is internally consistent with slide 2 ($1,808/$136=13.3×)—checks out. No hard factual errors against verifiable reference data, but two concerns: (1) Slide 3 references a '$28.0M figure' in the weighting caveat that only appears later on Slide 5—minor sequencing confusion; (2) the deck's entire analytical superstructure (screening rules, on-sale subset, asking prices, multiples) sits outside the reference dataset's verifiable scope, making accuracy assessment inherently limited.",
+  "evidence": {
+    "insight": "The core finding—that the market does not discount flagged listings despite 3.3× MRR and 3.6× subscriber gaps—is original and actionable. The 'floor not ceiling' framing on slide 3 and pipeline-thinness reality check on slide 4 add genuine analytical depth beyond a single finding.",
+    "narrative": "Five-slide arc (data → thesis → limits → risks → synthesis) is purposeful and tight. Each title advances the argument. The closing line on slide 5 is memorable. Slide 3 as a dedicated limitations slide is structurally mature.",
+    "framing": "Scope is established (1,000 rows, frozen date, flat table). Limitations get a full slide. However, the audience is never stated—buyer? platform operator? investor?—and the 12 screening rules are referenced but never enumerated, making the framework opaque to a cold reader. This is a meaningful gap for reproducibility.",
+    "accuracy": "Missingness percentages align with reference values within rounding tolerance. Internal arithmetic checks out (13+16+8+15=52; $1,808/$136≈13.3×; $28M/$86.8M≈32%). However, the entire for-sale analytical layer (262 listings, $86.8M, multiples, asking prices) cannot be verified against the frozen reference, which tracks 30-day revenue not asking prices. This limits confidence without constituting a proven error.",
+    "visual": "Clean, restrained design. Consistent blue palette with red reserved for warnings. Bar charts on slide 2 are well-annotated. Funnel on slide 5 is effective. Missingness chart on slide 3 is properly ordered. No decorative clutter. Minor: slide 2's four-panel layout could benefit from aligned baselines or gridlines.",
+    "ai_slop": "none"
+  },
+  "confidence": "medium",
+  "changed": true,
+  "change_reason": "Reduced bonus from 2 to 1: the self-built screening framework is interesting but its opacity (rules never listed) limits the 'beyond rubric' claim. Reduced framing from 7.5 to 7.0: no stated audience and opaque rules are meaningful gaps for a cold reader. Other scores confirmed after independent review.",
+  "total": 72,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 10572,
+    "output_tokens": 1036
+  }
+}

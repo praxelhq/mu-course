@@ -1,0 +1,8 @@
+{
+  "fixture_id": "S5-REV-APPROVAL-01",
+  "trace_id": "trc_rev_approval_001",
+  "expected_snapshot": {"snapshot_id":"exp_20260730_e","rows":[{"invoice_id":"inv_test_405","payment_reference":"pay_test_405","amount_minor":599900,"currency":"INR","customer_ref":"cust_test_45","expected_status":"paid","due_at":"2026-07-30T00:00:00Z"}]},
+  "settlement_snapshot": {"snapshot_id":"set_20260730_e","rows":[{"settlement_id":"stl_test_505","line_id":"line_test_505","payment_reference":"pay_test_405","amount_minor":499900,"currency":"INR","type":"charge","occurred_at":"2026-07-30T08:00:00Z"}]},
+  "test_mode": "approval"
+}
+

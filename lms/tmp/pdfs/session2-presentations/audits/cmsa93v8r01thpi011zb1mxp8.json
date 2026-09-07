@@ -1,0 +1,44 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 0.5,
+    "narrative": 2,
+    "framing": 0.5,
+    "accuracy": 1,
+    "visual": 2.5,
+    "bonus": 0
+  },
+  "what_worked": "Consistent visual theme and coherent consulting-pitch arc across all ten slides.",
+  "fix_next": "Use the assigned 1,000-row dataset to produce original analysis, data charts, and evidence-backed findings.",
+  "verdict": "Generic AI consulting pitch with zero dataset analysis; wrong assignment entirely.",
+  "flags": [
+    "no-dataset-usage",
+    "ai-slop",
+    "wrong-assignment",
+    "no-charts-from-data",
+    "consulting-filler",
+    "decorative-ai-images",
+    "garbled-ai-diagram",
+    "duplicated-word"
+  ],
+  "factual_error_count": 0,
+  "factual_error_detail": "",
+  "evidence": {
+    "insight": "Not a single slide references the 1,000-row dataset. Every claim is generic industry commentary (PwC $15.7T, ChatGPT 100M users). Zero original analytical findings.",
+    "narrative": "Coherent consulting-pitch arc (shift → problem → opportunity → roadmap) but entirely disconnected from a data-story assignment. Slides 5 and 10 repeat the same 'lead or follow' rhetorical question verbatim.",
+    "framing": "No mention of the dataset's scope, sample size, categories, payment providers, or any analytical question. A cold reader cannot identify this as a data-analysis presentation.",
+    "accuracy": "No dataset claims to verify. External stats are plausible but irrelevant. Cannot award credit for accuracy when no data analysis exists.",
+    "visual": "Gamma-generated dark theme with pink/purple accents is consistent but purely decorative. Slide 6 contains garbled AI-generated text ('Ruce-Dased,' 'Aol ssaocliiy,' 'Wiirkleces'). Slide 3 has duplicated word 'tasks tasks.' Zero data visualizations.",
+    "ai_slop": "Entire deck is unedited AI-generated boilerplate. Inflated language throughout ('autonomous enterprises,' 'competitive differentiator,' 'value realization'). Garbled diagram text on slide 6 confirms unreviewed AI output. Every image is decorative AI art with no analytical content."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 1→0.5 and framing from 1→0.5 because the deck contains literally zero engagement with the assigned dataset; visual lowered from 3→2.5 due to garbled unreviewed AI diagram text and duplicated words indicating no quality control.",
+  "total": 13,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 18394,
+    "output_tokens": 670
+  }
+}

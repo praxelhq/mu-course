@@ -1,0 +1,43 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 4,
+    "visual": 6,
+    "bonus": 1
+  },
+  "what_worked": "Portfolio-strategy close with data-backed kill rules synthesizes multiple analytical threads into actionable advice.",
+  "fix_next": "Verify hero numbers against the actual dataset — the $334M total revenue figure is wrong by a factor of 21.",
+  "verdict": "Strong analytical voice undermined by a catastrophically wrong headline number and multiple median errors.",
+  "flags": [
+    "hero-number-wrong-by-21x",
+    "mean-revenue-wrong",
+    "ai-median-wrong",
+    "education-median-wrong",
+    "ai-share-denominator-misleading",
+    "unverifiable-derived-cohorts",
+    "gamma-template"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: $334M total revenue should be ~$15.6M (21x overstatement). Slide 2: mean $13,472 should be ~$15,596. Slide 3: AI median $446 vs reference $503. Slide 3: Education median $2,142 vs reference $2,435. Slide 3: '27% of everyone' for AI uses category-present denominator, not full n=1000 (actual 19.7%).",
+  "evidence": {
+    "insight": "Slide 7 portfolio framework with specific kill rules (DR<10 + MRR<$250 by month 9) is original and decision-useful. DR vs social following comparison on Slide 6 is a genuinely interesting angle. Category crowding analysis on Slide 3 is well-constructed.",
+    "narrative": "Clear labeled spine (Hook→Shape→Categories→Money→Time→Predictors→Close) builds cumulatively. Each slide earns the next. Closing quote lands well.",
+    "framing": "Appendix covers survivorship bias, missing data rates, derived field methodology, and correlation method choice. Audience is implicit but clear. However, the wrong hero number on the hook slide undermines the entire framing.",
+    "accuracy": "The $334M hero number is wrong by 21x versus the reference $15.6M total — this is the single most prominent number in the deck. Mean is also wrong ($13,472 vs $15,596). AI and Education medians are each off by 10-12%. The 27% AI share uses a reduced denominator without disclosure.",
+    "visual": "Cumulative revenue curve on Slide 2 is well-annotated with threshold markers. Scatter on Slide 3 is schematic rather than data-plotted. Bar charts are simple and readable. Dark theme with red accents is consistent. Some slides are text-heavy (Slide 7). Gamma template creates visual sameness.",
+    "ai_slop": "Prose is pointed and dataset-specific throughout — not generic filler. The decorative illustration on the title page is stock. Gamma template creates some repetitiveness but content quality is above typical AI output."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Downgraded accuracy from 5.5 to 4 because the $334M hero number is wrong by a factor of 21 — a catastrophic error on the most prominent figure in the deck. Also reduced bonus from 2 to 1 given accuracy problems undermine the otherwise strong analytical framework. Minor adjustments to insight and framing reflect cascading credibility impact.",
+  "total": 67,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 17935,
+    "output_tokens": 2452
+  }
+}

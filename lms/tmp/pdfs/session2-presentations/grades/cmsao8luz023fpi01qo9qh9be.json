@@ -1,0 +1,38 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 4,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis-driven narrative arc with honest limitations slide and a conditional, falsifiable recommendation.",
+  "fix_next": "The $133.8M '12-month revenue' figure is fabricated—dataset total 30-day revenue is $15.6M—and multiple-specific claims (Q3) appear unsupported.",
+  "verdict": "Excellent storytelling discipline undermined by a major revenue fabrication and unverifiable multiples.",
+  "flags": [
+    "fabricated-total-revenue",
+    "unverifiable-multiples-claims",
+    "median-mrr-unverifiable",
+    "revenue-verification-claim-contradicts-dataset"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2/5/6: '$133.8M combined 12-month revenue' — dataset total 30-day revenue is $15,596,344.59; annualizing to ~$187M would not yield $133.8M, and the dataset contains only 30-day figures, so any annualization is an assumption not disclosed. Slide 4: Median MRR stated as $282 and mean as $13,472 — cannot verify against reference but the mean would imply total ~$13.5M which contradicts the $133.8M claim on the same deck. Slide 5: AI median MRR $446 — reference shows AI median 30-day revenue $503, close but not matching. Slide 5: '13.8% of trailing 12-month revenue' ($18.4M of $133.8M) — AI total 30-day revenue is $2.36M (15.1% of $15.6M), so both the percentage and dollar figures are wrong. Slide 7: Category multiples (SaaS 1.2x-1.35x, Education 3.7x-3.95x, AI 3.15x) — reference shows B2B/B2C medians ~2.3x; these category-specific figures appear fabricated or at minimum unverifiable and inconsistent with reference data.",
+  "evidence": {
+    "insight": "Slides 6-7 pose four decision-relevant questions and derive actionable answers (category weighting, entry-level deal profile, anonymity signal). Slide 8 reframes data gaps as product features. Slide 9 offers a falsifiable go/no-go framework. These go well beyond chart description.",
+    "narrative": "Clear setup (slide 2) → problem (slide 3) → evidence (slides 4-5) → interrogation (slides 6-7) → gaps (slide 8) → conditional recommendation (slide 9). Single thesis sustained throughout: is there a deal-sourcing product opportunity? The 'if both hold / if they don't' close is genuinely strong editorial craft.",
+    "framing": "Slide 1 states audience (investor review), source, and date. Slide 2 poses the central question explicitly. Slide 8 acknowledges missingness (category 27%, traffic 82%). However, the deck never discloses that the revenue figure is 30-day not 12-month, nor that 274 rows lack category data when making category claims.",
+    "accuracy": "The $133.8M figure is the most damaging error — it appears roughly 8.6x the actual 30-day total, suggesting an undisclosed and incorrect annualization. AI revenue share, median MRR, and category-level multiples all appear inconsistent with reference data. The category counts (slide 5) do match reference (AI=197, SaaS=66, etc.), and the anonymity insight directionally aligns. The 27% category missingness (274/1000) is correct.",
+    "visual": "Clean, restrained black-and-white palette with strong typographic hierarchy. Bar charts are simple and legible. Slide 8 table is well-structured. No decorative clutter. However, only two charts across 9 slides — the Q&A slides (6-7) would benefit from supporting visuals rather than text-only cards. Slight visual sameness across slides 3, 6, 7 (identical card layouts).",
+    "ai_slop": "Minimal slop. The consulting-style framing ('Market Intelligence Opportunity Brief') is genre-appropriate for the stated investor audience. The four-quadrant card layout on slides 3/6/7 is somewhat templated but functional. No decorative-but-meaningless graphics detected."
+  },
+  "confidence": "high",
+  "total": 69,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 17547,
+    "output_tokens": 1124
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "slide_count": 19,
+  "scores": {
+    "insight": 5,
+    "narrative": 6.5,
+    "framing": 7,
+    "accuracy": 4.5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Accessible plain-language framing, honest caveats slide, and clear long-tail distribution chart with useful annotations.",
+  "fix_next": "The $13.5M MRR figure is wrong (actual 30-day revenue ~$15.6M); several category revenue figures also appear fabricated—verify every number against the dataset.",
+  "verdict": "Well-structured and readable but too many wrong numbers undermine trust.",
+  "flags": [
+    "revenue-total-wrong",
+    "category-revenues-off",
+    "missing-median-vs-total-distinction",
+    "no-deeper-analytical-insight",
+    "ai-slop-advice-slide"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 3: '$13.5M combined MRR' — actual 30-day revenue is $15.6M; conflating MRR with 30-day revenue and getting the number wrong. Slide 5: AI at 31% of category revenue — actual share is ~31% of categorized revenue but the denominator is unclear and the chart axis label is missing units. Slide 6: AI '$1.81M combined monthly revenue' — actual AI total revenue is $2.36M. Slide 7: SaaS $588.7K vs actual $703.5K; Marketing $444.5K vs actual $1.317M; E-commerce $395.7K vs actual $1.112M; Analytics $357.8K vs actual $368.2K — Marketing and E-commerce are dramatically wrong. Slide 12: '$0' bucket shows 197 but dataset has 216 zero-revenue startups; median MRR $282 is unverifiable but plausible only if using a different field. Slide 13: B2B/B2C percentages computed on 712 non-missing rows but presented as if whole dataset — denominator not disclosed.",
+  "evidence": {
+    "insight": "Observations stay at the descriptive level: 'AI is biggest,' 'US leads,' 'long tail.' The Stan spotlight (slide 9) and social-following-vs-revenue point (slide 15) are the closest to genuine insight but remain surface-level. No median-vs-mean analysis, no B2B revenue premium, no anonymity revenue share.",
+    "narrative": "Clear arc: market overview → segments → leaders → distribution → geography → business model → opportunities → advice → caveats. Coherent sequence with a thesis ('winner-take-most indie economy'). Weakened by the generic advice slide (17) and the 'why this market exists' slide (14) which are opinion, not data.",
+    "framing": "Slide 2 sets context well for a lay audience. Slide 19 caveats are honest about missingness and snapshot nature. Scope is clear. However, calling it 'MRR' when the dataset field is 30-day revenue is a framing error that propagates throughout.",
+    "accuracy": "Multiple revenue figures are materially wrong: total revenue off by ~$2M, Marketing revenue off by 3×, E-commerce off by 3×. Zero-revenue count wrong (197 vs 216). The deck never distinguishes MRR from 30-day revenue. The $133.8M and $334M figures (slide 3) cannot be verified from the frozen dataset reference and appear fabricated.",
+    "visual": "Consistent dark/light theme, good use of whitespace, legible typography, appropriate bar charts with annotations. Pie chart on slide 13 is acceptable. Histogram on slide 12 is well-designed. Some visual sameness across card-based layouts. No chart is misleading in design, though underlying numbers are wrong.",
+    "ai_slop": "Slide 14 ('Why this market exists right now') is generic thought-leadership filler not grounded in data. Slide 17 ('Could you build one of these yourself?') is motivational advice unconnected to analysis — classic AI-generated padding. The consulting-style card layouts repeat across many slides."
+  },
+  "confidence": "high",
+  "total": 60,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 34893,
+    "output_tokens": 1021
+  }
+}

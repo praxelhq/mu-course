@@ -85,7 +85,7 @@ Section dashboard (submission/grade matrix: 60 rows × assignments, colour by st
 **Rules that make it trustworthy:**
 - Grader NEVER sees the student's name or section (bias hygiene); worker strips them.
 - `confidence < 0.7`, any flag, or a total in the top/bottom 5% of that assignment → auto-queued for human review. Everything is provisional until an instructor finalises in batch.
-- Same-input determinism target: temperature ≤0.2; store the full prompt+response for every grade (audit + future evals).
+- Same-input determinism target: temperature ≤0.2; persist only allowlisted audit metadata (input/context hashes, model, token usage, citations, and validation flags). Never store prompts, learner evidence, evaluator context, or raw provider responses.
 - Build `pnpm eval:grading`: a fixture set of ~10 sample submissions per type with expected score bands; run after any rubric/prompt change and print drift. Add fixtures as real submissions accumulate.
 - Rate-limit and batch: 480 near-simultaneous submissions on a due-date night must drain calmly (queue concurrency ~5, exponential backoff, dead-letter list surfaced to admin).
 

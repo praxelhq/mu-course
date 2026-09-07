@@ -1,0 +1,44 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 5,
+    "narrative": 5.5,
+    "framing": 4,
+    "accuracy": 3.5,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Tier-escalation cohort on slide 7 and risk/opportunity pairing on slide 5 show genuine analytical structure.",
+  "fix_next": "Ground every metric in the actual dataset field (30-day revenue, not MRR/ARR) and disclose missingness and zero-revenue rows.",
+  "verdict": "Polished template masks fabricated MRR framing and unverifiable numbers throughout.",
+  "flags": [
+    "metric-misidentification",
+    "fabricated-ARR",
+    "no-real-charts",
+    "consulting-slop",
+    "unverifiable-growth-claims",
+    "missing-limitations",
+    "zero-revenue-unacknowledged",
+    "missingness-undisclosed"
+  ],
+  "factual_error_count": 9,
+  "factual_error_detail": "Slide 1: Total revenue called '$13.47M MRR' but reference is $15.6M 30-day revenue; '$161.7M ARR' fabricated by annualizing wrong base; top-10 share stated 48.0% vs reference 49.6%. Slide 2: '$133.8M L12M realized' and '$161.7M forward ARR' have no dataset basis; +64.4% SaaS 30D growth unverifiable. Slide 3: B2B avg $13,150 and B2C avg $5,102 labeled 'Avg MRR' but field is not MRR; segment totals ($3.35M B2B, $2.05M B2C) don't reconcile to portfolio total. Slide 4: AI '$1.81M MRR' vs reference $2.36M total; SaaS '$588.7k' vs reference $703.5k; Marketing '$444.5k' vs reference $1.32M. Slide 5: 26.5% single-asset share unverifiable. Slide 7: tier percentages sum to ~100.1% but individual figures not independently checkable.",
+  "evidence": {
+    "insight": "Mid-tier scaling thesis (slide 7) and concentration risk (slide 5) are analytically sound ideas, but rest on fabricated MRR framing rather than actual 30-day revenue, limiting decision-usefulness.",
+    "narrative": "Logical flow from snapshot through growth, unit economics, drivers, risks, memo, and cohorts. But the throughline is an investment-committee pitch whose entire foundation (MRR/ARR) is unsupported by the dataset.",
+    "framing": "Deck never names the dataset, its source, or its limitations. 274 missing categories, 288 missing audience_type, 216 zero-revenue rows all unmentioned. 'Investment Committee Briefing' framing is clear but scope and definitions are absent for a cold reader.",
+    "accuracy": "Core error: dataset field is 30-day revenue, not MRR. All ARR figures are therefore fabricated. Multiple category totals contradict reference (Marketing $444.5k vs $1.32M). Top-10 share 48.0% vs 49.6%. B2B/B2C means presented without median context or outlier caveat.",
+    "visual": "Clean card-based layout with consistent typography and restrained palette. But only slide 7 has any data visualization (horizontal bars without axis labels). Six slides are text-only cards with heavy whitespace. No scatter plots, distributions, or annotated charts anywhere.",
+    "ai_slop": "Every slide uses identical card-plus-bottom-callout template. Consulting jargon throughout: 'Power-Law Portfolio,' 'Revenue Cohort Architecture,' 'Strategic Balance Sheet,' 'Freemium Conversion Chasm.' Decorative emoji-icons add no analytical value. Framing feels templated, not data-earned."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 4.5 to 4.0: complete absence of dataset provenance, missingness disclosure, and zero-revenue acknowledgment is more severe than preliminary suggested. All other scores confirmed after independent review.",
+  "total": 46,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 12611,
+    "output_tokens": 1039
+  }
+}

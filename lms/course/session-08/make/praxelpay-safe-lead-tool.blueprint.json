@@ -1,0 +1,99 @@
+{
+  "name": "S8 · PraxelPay · Prepare qualified lead draft",
+  "flow": [
+    {
+      "id": 2,
+      "module": "scenario-service:StartSubscenario",
+      "version": 2,
+      "parameters": {},
+      "mapper": {},
+      "metadata": {
+        "designer": {
+          "x": 0,
+          "y": 0
+        },
+        "restore": {},
+        "interface": [
+          {
+            "name": "company_name",
+            "type": "text",
+            "label": "Company name",
+            "required": true,
+            "multiline": false
+          },
+          {
+            "name": "contact_email",
+            "type": "text",
+            "label": "Contact email",
+            "required": true,
+            "multiline": false
+          },
+          {
+            "name": "team_size",
+            "type": "number",
+            "label": "Team size",
+            "required": true
+          },
+          {
+            "name": "requested_plan",
+            "type": "text",
+            "label": "Requested plan: starter, pro, or enterprise",
+            "required": true,
+            "multiline": false
+          },
+          {
+            "name": "consent_recorded",
+            "type": "boolean",
+            "label": "Verified consent is recorded",
+            "required": true
+          },
+          {
+            "name": "risk_flagged",
+            "type": "boolean",
+            "label": "A risk flag is present",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "module": "scenario-service:ReturnData",
+      "version": 2,
+      "parameters": {},
+      "mapper": {
+        "status": "{{if(2.consent_recorded = true; switch(lower(trim(2.requested_plan)); \"starter\"; if(2.risk_flagged = true; \"approval_required\"; if(2.team_size >= 100; \"approval_required\"; \"draft_ready\")); \"pro\"; if(2.risk_flagged = true; \"approval_required\"; if(2.team_size >= 100; \"approval_required\"; \"draft_ready\")); \"enterprise\"; \"approval_required\"; \"invalid_input\"); \"blocked\")}}",
+        "route": "{{if(2.consent_recorded = true; switch(lower(trim(2.requested_plan)); \"starter\"; if(2.risk_flagged = true; \"manual_review\"; if(2.team_size >= 100; \"manual_review\"; if(2.team_size >= 10; \"hot\"; \"warm\"))); \"pro\"; if(2.risk_flagged = true; \"manual_review\"; if(2.team_size >= 100; \"manual_review\"; \"hot\")); \"enterprise\"; \"manual_review\"; \"invalid_plan\"); \"blocked_no_consent\")}}",
+        "reason": "{{if(2.consent_recorded = true; switch(lower(trim(2.requested_plan)); \"starter\"; if(2.risk_flagged = true; \"Risk is flagged; a separate human approval flow is required.\"; if(2.team_size >= 100; \"Teams of 100 or more require a separate human approval flow.\"; \"Draft may be reviewed; nothing is sent automatically.\")); \"pro\"; if(2.risk_flagged = true; \"Risk is flagged; a separate human approval flow is required.\"; if(2.team_size >= 100; \"Teams of 100 or more require a separate human approval flow.\"; \"Draft may be reviewed; nothing is sent automatically.\")); \"enterprise\"; \"Enterprise requests require a separate human approval flow.\"; \"Requested plan must be starter, pro, or enterprise.\"); \"Verified consent is required before preparing a contact draft.\")}}",
+        "company_name": "{{2.company_name}}",
+        "contact_email": "{{2.contact_email}}",
+        "draft_subject": "{{if(2.consent_recorded = true; switch(lower(trim(2.requested_plan)); \"starter\"; \"Your PraxelPay plan enquiry · \"; \"pro\"; \"Your PraxelPay plan enquiry · \"; \"enterprise\"; \"Your PraxelPay plan enquiry · \"; \"\"); \"\")}}{{if(2.consent_recorded = true; switch(lower(trim(2.requested_plan)); \"starter\"; 2.company_name; \"pro\"; 2.company_name; \"enterprise\"; 2.company_name; \"\"); \"\")}}",
+        "draft_body": "{{if(2.consent_recorded = true; switch(lower(trim(2.requested_plan)); \"starter\"; \"Hi \"; \"pro\"; \"Hi \"; \"enterprise\"; \"Hi \"; \"\"); \"\")}}{{if(2.consent_recorded = true; switch(lower(trim(2.requested_plan)); \"starter\"; 2.company_name; \"pro\"; 2.company_name; \"enterprise\"; 2.company_name; \"\"); \"\")}}{{if(2.consent_recorded = true; switch(lower(trim(2.requested_plan)); \"starter\"; \",\\n\\nThanks for your interest in PraxelPay's starter plan. This is a draft for human review; nothing was sent.\\n\\n— PraxelPay\"; \"pro\"; \",\\n\\nThanks for your interest in PraxelPay's pro plan. This is a draft for human review; nothing was sent.\\n\\n— PraxelPay\"; \"enterprise\"; \",\\n\\nThanks for your interest in PraxelPay's enterprise plan. This draft cannot be used until a separate human approval flow completes. Nothing was sent.\\n\\n— PraxelPay\"; \"\"); \"\")}}",
+        "action_taken": "{{if(2.consent_recorded = true; switch(lower(trim(2.requested_plan)); \"starter\"; \"draft_prepared_no_external_send\"; \"pro\"; \"draft_prepared_no_external_send\"; \"enterprise\"; \"draft_prepared_no_external_send\"; \"no_action\"); \"no_action\")}}",
+        "policy_basis": "Verified consent is required. Enterprise, team size 100+, or a risk flag requires a separate human approval flow. Caller-supplied approval cannot clear the gate. This tool never sends or writes externally."
+      },
+      "metadata": {
+        "designer": {
+          "x": 320,
+          "y": 0
+        },
+        "restore": {},
+        "expect": [
+          { "name": "status", "type": "text", "label": "Status" },
+          { "name": "route", "type": "text", "label": "Route" },
+          { "name": "reason", "type": "text", "label": "Reason" },
+          { "name": "company_name", "type": "text", "label": "Company name" },
+          { "name": "contact_email", "type": "text", "label": "Contact email" },
+          { "name": "draft_subject", "type": "text", "label": "Draft subject" },
+          { "name": "draft_body", "type": "text", "label": "Draft body" },
+          { "name": "action_taken", "type": "text", "label": "Action taken" },
+          { "name": "policy_basis", "type": "text", "label": "Policy basis" }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "version": 1,
+    "notes": "Connection-free classroom MCP tool. Import into Make, set scheduling to On demand, and expose it through a Make MCP Toolbox. It prepares a reviewable draft but cannot approve, send, or write to a CRM."
+  }
+}

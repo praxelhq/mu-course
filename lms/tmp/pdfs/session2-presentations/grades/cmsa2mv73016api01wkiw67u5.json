@@ -1,0 +1,39 @@
+{
+  "slide_count": 11,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 6.5,
+    "framing": 6,
+    "accuracy": 3.5,
+    "visual": 5.5,
+    "bonus": 1
+  },
+  "what_worked": "Stealth-company anomaly is a genuine insight, well-foregrounded; caveats slide shows honest self-awareness about data limits.",
+  "fix_next": "The deck analyzes 739 rows instead of the actual 1,000—this wrong denominator cascades through every percentage and undermines all claims.",
+  "verdict": "Interesting thesis undermined by analyzing the wrong row count throughout.",
+  "flags": [
+    "wrong-denominator",
+    "fabricated-row-count",
+    "missing-category-analysis",
+    "missing-provider-analysis",
+    "unverifiable-stealth-stats"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1/3/10: Claims 739 rows when dataset has 1,000 rows—this is not a mismatch in the file, the student dropped 261 rows without justification, corrupting all denominators. Slide 2: 14.6% stealth share—reference is 12.9% (129/1000); 15x median premium unverifiable against reference. Slide 3: Median MRR $1,119 and Mean $17,630 are computed on wrong n=739 base; mean on full dataset is ~$15,596 (total $15,596,344.59/1000). Geography percentages computed on wrong denominator. Slide 3: 'Undisclosed: 36%' — reference shows 241/1000=24.1% missing country. Slide 9: Valuation multiples (2.9×, 8.82×) presented without clear definition of what 'multiple' means in this dataset context—B2B/B2C median multiples per reference are ~2.3×, not 2.9×.",
+  "evidence": {
+    "insight": "Stealth-company finding (slide 2) is the strongest original angle; winners-vs-strugglers comparison (slides 5-6) adds useful segmentation; valuation-multiple decomposition (slide 9) shows analytical thinking beyond chart description.",
+    "narrative": "Clear arc: stealth anomaly → market overview → growth reality → winners/strugglers → sale market → valuation → caveats → strategic questions. Coherent thesis about a 'stabilize-and-exit marketplace.' However, the stealth finding is front-loaded then not deeply revisited.",
+    "framing": "Slide 1 sets audience (internal analysts) and scope (single snapshot). Slide 10 caveats are commendable. However, the deck frames itself around 739 rows and never explains why 261 rows were excluded, which is a fundamental framing failure for a cold reader.",
+    "accuracy": "Core denominator error: 739 vs 1,000 rows. Anonymous share 14.6% vs reference 12.9%. Country undisclosed 36% vs reference 24.1%. Mean MRR $17,630 vs ~$15,596 on full dataset. No category or payment-provider analysis despite these being major dataset dimensions. The 15x median premium and 42.5% top-decile share for stealth companies cannot be verified and may be artifacts of the reduced dataset.",
+    "visual": "Consistent Gamma template with navy/teal palette. Bar charts for mean vs median (slides 3, 8) are effective and well-labeled. Donut chart (slide 4) is adequate. Decorative illustrations (slides 2, 6, 9) add no information. Table on slide 7 is clean. Overall: competent but template-driven with some decorative filler.",
+    "ai_slop": "Decorative illustrations on slides 2, 6, and 9 are generic Gamma stock art adding no analytical value. Some consulting-style language ('compound momentum,' 'revenue engines') but generally restrained."
+  },
+  "confidence": "high",
+  "total": 57,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 20726,
+    "output_tokens": 975
+  }
+}

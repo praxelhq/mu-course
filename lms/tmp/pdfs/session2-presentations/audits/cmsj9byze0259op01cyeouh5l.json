@@ -1,0 +1,44 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 3,
+    "narrative": 4,
+    "framing": 3,
+    "accuracy": 2.5,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Revenue concentration slide (7) attempts a real analytical point with a chart and interpretive callout.",
+  "fix_next": "Replace decorative illustrations with actual data charts; cite specific numbers from the dataset with sample sizes and limitations.",
+  "verdict": "Generic startup advice dressed as data analysis; almost no verifiable dataset findings.",
+  "flags": [
+    "fabricated-statistics",
+    "no-data-charts",
+    "ai-slop",
+    "missing-limitations",
+    "no-source-citations",
+    "unearned-certainty",
+    "decorative-illustrations",
+    "no-missingness-disclosure"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 3: '3-5x Higher Revenue' B2B vs B2C — actual median multiples are ~2.3x, not 3-5x. Slide 7: '17.5% Total conversion rate' appears from nowhere in the dataset. Slide 7: bar chart values (40/35/18/7) are round fabricated numbers not matching actual top-10 share of 49.6%. Slide 8: '2-3x Better Retention' — no retention data exists in the dataset. Slide 8: '40%+ Revenue Predictability' — no such metric in the data.",
+  "evidence": {
+    "insight": "Every major claim (B2B wins, subscriptions beat one-time, geographic arbitrage) is a generic startup truism. No category medians, provider breakdowns (Stripe/RevenueCat/Dodo), TLD analysis, or anonymity revenue share explored. No original finding surfaced from the actual dataset.",
+    "narrative": "Loose arc from opportunity to action, but reads as a listicle of startup platitudes. The 'three paths' conclusion on slide 9 could apply to any startup dataset or none at all. No thesis is built from specific data discoveries.",
+    "framing": "Slide 2 poses a question but never defines scope (30-day revenue snapshots, self-reported data). 241 missing countries, 274 missing categories, 216 zero-revenue rows never acknowledged. Audience implied but dataset constraints completely hidden from reader.",
+    "accuracy": "Multiple invented statistics: 3-5x B2B advantage overstates actual ~2.3x median multiple; 2-3x retention and 40%+ predictability reference metrics absent from the dataset; 17.5% conversion rate is unexplained and unsourced; slide 7 bar chart uses suspiciously round numbers that don't match actual concentration figures (top-10 share is 49.6%).",
+    "visual": "Consistent warm palette and bold typography provide cohesion. However, only one chart across 9 slides (slide 7), and it uses fabricated-looking round numbers. Every slide features decorative clip-art (robot hand, conveyor belt, crowd, rocket, globe) that adds zero analytical value. Repetitive three-column card layout on slides 3, 5, 8, 9 is template-driven.",
+    "ai_slop": "Pervasive: decorative stock illustrations on every slide, inflated consulting language ('brutally concentrated,' 'revenue treadmill,' 'life-changing revenue,' 'the data doesn't lie'), fabricated statistics presented without sourcing, and identical three-column card layouts repeated across multiple slides. Content could describe any startup ecosystem without modification."
+  },
+  "confidence": "high",
+  "changed": false,
+  "change_reason": "no-change",
+  "total": 32,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 16559,
+    "output_tokens": 888
+  }
+}

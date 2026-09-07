@@ -1,0 +1,38 @@
+{
+  "slide_count": 15,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7.5,
+    "framing": 7,
+    "accuracy": 5.5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Strong narrative arc from concentration thesis through actionable checklist, with honest limitations slide.",
+  "fix_next": "Category median values are materially wrong (AI shows $446 vs reference $503; Education $2,142 vs $2,435); verify all medians against the actual dataset.",
+  "verdict": "Well-structured and readable but several median figures are off, weakening trust.",
+  "flags": [
+    "median-values-off",
+    "causal-language-on-observational-data",
+    "missing-data-denominator-unclear-on-some-slides",
+    "anonymous-count-slightly-off"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 4: AI median MRR shown as $446 vs reference $503; Education median $2,142 vs $2,435; Marketing median $1,586 vs $2,369.50; Content Creation median $1,254 vs $1,237.50 (minor). Slide 5: B2B median shown as $1,036 — reference median revenue multiple is 2.35x implying different base; 5.7× claim doesn't match reference multiples (2.35x/2.30x). Slide 12: Anonymous count stated as 130 (13%) vs reference 129 (12.9%) — borderline rounding. Slide 4: Analytics median $1,294 vs reference $419 — significantly wrong.",
+  "evidence": {
+    "insight": "Slide 3's mean-vs-median framing (47.8×) is a genuinely useful insight about power-law distribution. Slide 7's subscribers-vs-followers contrast is sharp. Slide 6's domain-authority gradient adds value. However, most observations describe chart readings rather than synthesizing across dimensions.",
+    "narrative": "Clear thesis introduced on slide 3 (winner-take-most), built through category/B2B/domain/pricing observations, synthesized into a 7-point checklist (slide 13), and closed with a one-sentence summary (slide 15). The limitations slide (14) is well-placed. Sequence is purposeful.",
+    "framing": "Slide 1 sets scope (1,000 listings, frozen date). Slide 2 provides dataset overview. Slide 14 addresses missingness explicitly with three tiers. Audience (micro-SaaS founders considering TrustMRR) is clear. However, the deck doesn't always flag which denominators apply to which observations.",
+    "accuracy": "Multiple category medians are materially wrong: Analytics shown as $1,294 vs reference $419 is a 3× error. AI median $446 vs $503, Education $2,142 vs $2,435, Marketing $1,586 vs $2,369.50 are all off. Slide 6 claims domain authority 'tracks revenue almost perfectly' — causal-adjacent language for observational data. Slide 5's B2B 5.7× claim doesn't align with reference median multiples. The $13.5M MRR figure on slide 2 is unverifiable against the reference but plausible.",
+    "visual": "Consistent dark teal/coral palette throughout. Clean typography with clear hierarchy. Charts are simple bar charts with direct labels — appropriate choices. Slide 6's bar chart effectively shows the DR gradient. Layout is restrained and readable. Some slides are text-heavy stat cards rather than true visualizations (slides 3, 5, 7, 8, 11), which limits visual storytelling variety.",
+    "ai_slop": "Minimal slop. The deck avoids generic filler and consulting buzzwords. The template is consistent but not repetitive in a meaningless way. Each slide carries specific data points. The checklist on slide 13 borders on generic advice but is grounded in cited statistics."
+  },
+  "confidence": "high",
+  "total": 69,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 28014,
+    "output_tokens": 994
+  }
+}

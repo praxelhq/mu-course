@@ -1,0 +1,38 @@
+{
+  "slide_count": 5,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 6,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Original 'Delusion Score' construct creates a genuinely novel, decision-useful lens on the marketplace data.",
+  "fix_next": "The analysis uses only 262 for-sale listings but never reconciles with the full 1,000-row dataset's revenue/category benchmarks, risking denominator confusion.",
+  "verdict": "Creative angle with strong narrative, but narrow scope and unverifiable claims limit rigor.",
+  "flags": [
+    "narrow-subset-analysis",
+    "unverifiable-derived-metric",
+    "missing-data-not-discussed",
+    "category-sample-sizes-tiny"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 1: '262 listed for sale' and '$35K median asking price' are not verifiable from the frozen dataset and may be fabricated or from a different field subset. Slide 2: Correlation of -0.14 between asking price and growth is presented without specifying variables precisely; the frozen dataset's known correlation (founded-year vs revenue r=0.025) is a different measure, but the deck's correlation is for a self-constructed metric on a subset and cannot be checked. Slide 3: Category leaderboard uses very small n (e.g., Education n=10, E-comm n=6) without adequate caveat about instability; the deck implies these are robust rankings. Slide 4: 'AI in the pitch doesn't raise the price' claim (median 1.8× vs 2.4×) is plausible but unverifiable from frozen data and presented with unearned certainty given n=82 and n=180 on a text-mining exercise.",
+  "evidence": {
+    "insight": "The 'Delusion Score = Ask Percentile − Growth Percentile' is a genuinely original derived metric (slide 2). The 2×2 quadrant framework with named examples adds texture. The 'all-in-one' vs 'AI' pitch keyword finding (slide 4) is a surprising, non-obvious nugget.",
+    "narrative": "Strong thesis on slide 1 ('Who's charging tomorrow's price for yesterday's growth?'), methodology on slide 2, category ranking on slide 3, case studies on slide 4, takeaways on slide 5. Clean arc from provocation → method → evidence → examples → action.",
+    "framing": "The deck never explains what TrustMRR is to a cold reader beyond 'marketplace.' It doesn't mention the 274 missing categories, 216 zero-revenue rows, or how the 262 for-sale subset was identified. No limitations slide. Audience (buyer? seller? investor?) is implied but never stated.",
+    "accuracy": "The deck operates on a self-selected 262-row subset with derived metrics (asking multiples, growth percentiles) that cannot be verified against the frozen dataset. Category sample sizes are tiny (n=6, n=10) yet presented as definitive rankings. The correlation of -0.14 is for a different variable pair than the frozen dataset's known r=0.025. The 326.8× multiple and $81 revenue for Rolely are specific enough to be plausible but unverifiable.",
+    "visual": "Clean dark/light contrast, effective use of red/blue for deluded/honest dichotomy (slides 2-4). The horizontal bar chart on slide 3 is well-labeled with diverging color. Slide 4's side-by-side comparison cards are effective. Slide 5 is text-heavy but readable. No chart junk. Consistent typography.",
+    "ai_slop": "Minimal slop. The tagline 'zero mercy' and 'Certified Genius'/'Just Vibing' labels are slightly performative but serve the narrative. No generic filler or decorative graphics."
+  },
+  "confidence": "medium",
+  "total": 69,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 10660,
+    "output_tokens": 967
+  }
+}

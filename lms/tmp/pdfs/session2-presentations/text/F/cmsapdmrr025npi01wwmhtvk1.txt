@@ -1,0 +1,379 @@
+TRUSTMRR MARKET SCAN
+
+
+
+Where Capital Should — and Shouldn’t —
+Go
+Six data-backed findings from 1,000 TrustMRR listings, and what each one means for sourcing, screening, and
+pricing decisions.
+
+
+
+
+Prepared for the Investment Committee | Dataset frozen 30 Jul 2026 | Prepared 1 Aug 2026
+EXECUTIVE SUMMARY
+
+
+
+AI absorbs the volume; five quieter signals absorb the returns
+Across 1,000 listings, the clearest capital-allocation edge isn’t in the category everyone is chasing — it’s in where monetization, distribution, and pricing diverge from
+the hype.
+   FINDING        GO V E R N I N G I N S I G H T                   EVIDENCE                                                              AC T I O N
+
+
+                                                                   55% of AI listings monetize — behind Sales, Education, Content
+   01             AI is crowded, not superior
+                                                                   Creation & Marketing
+                                                                                                                                         Screen AI deals harder than the category label suggests
+
+
+
+
+   02             B2B out-earns B2C 5.7×                           Median MRR: B2B $1,036 vs. B2C $181, on fewer listings                Bias sourcing toward B2B even though B2C is louder
+
+
+
+
+   03             A buyable pool has traction, not revenue         29 listings carry real subscribers/followers with $0 MRR              Build a monetize-and-flip sourcing list from this pool
+
+
+
+                  A quarter of “for sale” listings are priced on
+   04             story
+                                                                   64 of 262 ask real money for <$50/mo MRR — up to $1.5M                Underwrite every deal on MRR × multiple, not the ask
+
+
+
+                                                                   3rd-largest source of listings, but median MRR is $6 vs. $1,262 in the
+   05             India is a volume trap
+                                                                   US
+                                                                                                                                          Verify pricing power before following listing volume
+
+
+
+                                                                                                                                         Add payment-stack sophistication to the scouting
+   06             Tooling choice signals operator quality          Superwall users: $5,465 median MRR vs. $663 for plain Stripe
+                                                                                                                                         checklist
+
+
+
+Source: TrustMRR 1,000-row dataset, frozen 30 Jul 2026                                                                                                                                             2
+APPROACH
+
+
+
+How we read the dataset
+
+
+     Scope                                               Monetization threshold                      Segmentation logic                      Known gaps
+
+
+
+
+                                                                                                                                             Category, country, pricing model and
+     All 1,000 TrustMRR listings, frozen 30              A listing is “monetized” if its MRR is at   Listings are split into four
+                                                                                                                                             audience type are self-reported and
+     Jul 2026. Core revenue fields (MRR,                 or above the dataset median of              monetization stages using MRR, active
+                                                                                                                                             missing for 24–36% of rows — shares
+     12-mo revenue, subscriptions) are                   $282/month — the natural midpoint           subscriptions, and X-follower counts
+                                                                                                                                             below are of the full 1,000, not of
+     complete for 100% of rows.                          of a long-tail distribution.                as a distribution proxy.
+                                                                                                                                             known-field subsets.
+
+
+
+
+Source: TrustMRR 1,000-row dataset, frozen 30 Jul 2026                                                                                                                              3
+              FINDING 1 OF 6
+
+
+
+              AI has 3× the listings of any other category — and only middling odds of paying off
+
+
+                                    NICHE, HIGH-CONVERTING                                                                          SCALED WINNERS   IMPLICATION FOR THE FIRM
+
+
+                                                                       Content Creation
+                                                                                                                                                     AI is the biggest haystack, not the best
+                                                    Education                                                                                        odds. A random AI listing is less likely
+
+
+
+
+Share of listings that monetize →
+                                                           Marketing
+
+                                                                                                                                               AI    to be monetized than a random listing
+                                                                         SaaS                                                                        in Sales, Education, Content Creation,
+                                                                Mobile Apps
+                                                                    Health & Fitness                                                                 or Marketing.
+                                                                 E-comm Dev Tools
+
+
+                                                                                                                                                     Don’t fund “AI” as a category thesis —
+                                                                                                                                                     raise the underwriting bar for AI
+                                                                                                                                                     deals specifically, and treat the
+                                    LONG TAIL                 Productivity                                                 CROWDED, UNDERMONETIZED
+                                                                                                                                                     category label as noise, not signal.
+
+              Bubble size = median MRR of category                           Number of listings in category (crowding) →
+
+
+     Source: TrustMRR 1,000-row dataset — top 10 categories by listing count; category unspecified for 274 listings                                                                             4
+FINDING 2 OF 6
+
+
+
+B2B businesses are outnumbered 1.6-to-1, yet earn 5.7× more per business
+
+
+                        Median MRR ($/mo)                                                % of listings monetized    IMPLICATION FOR THE FIRM
+
+
+                                              $1,036                                                        60%     B2C dominates the deal flow you’ll see
+                                                                                                                    by volume — but B2B businesses
+                                                                                     45%                            convert visitors into payers more
+                                                                                                                    often, and charge more per customer
+                                                                                                                    once they do.
+
+
+                                                                                                                    Weight sourcing and diligence time
+                  $181
+                                                                                                                    toward B2B, even when B2B deals are
+                                                                                                                    the minority in a given batch. A B2C
+                    B2C                           B2B                                  B2C                    B2B   listing needs a materially bigger user
+                                                                                                                    base to match a B2B listing’s revenue.
+                                             401 B2C listings · 255 B2B listings · 56 serve both
+
+
+
+
+Source: TrustMRR 1,000-row dataset, grouped by audience_type                                                                                                 5
+FINDING 3 OF 6
+
+
+
+Half the dataset monetizes. A 29-listing sliver has traction it hasn’t cashed in yet
+
+
+
+                                                    500                                                                303                                      168
+                                                    50.0%                                                              30.3%                                     16.8%
+
+
+
+       Monetized (≥ median MRR)                                Early monetization (>$0, < median)   No revenue, no clear traction                 Users, not monetized
+
+
+
+
+      Who are the 29?                                                                                                               IMPLICATION
+                                                                                                                                    This is a ready-made, cheap acquisition
+                                                                                                                                    thesis: buy the distribution, install
+      Listings with active subscribers or 500+ X followers but $0 recorded MRR — they’ve already solved
+                                                                                                                                    monetization — don’t pay a premium
+      the hard part of a startup (getting an audience) and simply haven’t built a paywall around it.
+                                                                                                                                    for revenue that already exists
+                                                                                                                                    elsewhere.
+
+Source: TrustMRR 1,000-row dataset — segmentation by mrr_usd, active_subscriptions, x_followers                                                                               6
+FINDING 4 OF 6
+
+
+
+A quarter of “for sale” listings ask a real price for a business earning almost nothing
+
+Asking price for listings earning < $50/month in MRR
+                                                                                                                      IMPLICATION FOR THE FIRM
+
+Hypeflare (AI)                                                                                         $1500K
+                                                                                                                      64 of 262 for-sale listings price on a
+                                                                                                                      story instead of cash flow — revenue
+Stealth Company                                                                   $1000K                              multiples across the pool run from
+                                                                                                                      0.0x to 26x current MRR.
+Eloking (E-comm)                                                $300K
+
+                                                                                                                      Make MRR-vs-asking-price the first
+Scrivibe (AI)                                       $49K                                                              underwriting check, not a footnote.
+                                                                                                                      Reject or heavily haircut any offer
+NEURAL DRAFT (SaaS)                                $30K                                                               where the multiple can’t be explained
+                                                                                                                      by growth, IP, or audience value you
+                                                                                                                      can independently verify.
+Every listing above earns $0–$34/month — the asking price reflects brand, audience, or domain value, not cash flow.
+
+
+
+
+Source: TrustMRR 1,000-row dataset, on_sale = true, mrr_usd < $50                                                                                              7
+FINDING 5 OF 6
+
+
+
+India supplies the 3rd-most listings — and by far the weakest monetization
+
+% of listings monetized, by country (top 5 by listing count)
+                                                                                                                                  IMPLICATION FOR THE FIRM
+
+
+US                                                                                                     64%                        India listings are as numerous as the
+                                                                                                       median $1,262/mo · n=258
+                                                                                                                                  UK’s but monetize at a third of the
+France                                                                                         57%                                rate, with a median MRR near zero.
+                                                                                               median $435/mo · n=79
+
+
+                                                                                                                                  That cuts two ways: it may be a
+Canada                                                                                               62%
+                                                                                                     median $919/mo · n=29        market with weak willingness-to-pay
+                                                                                                                                  (avoid), or an underpriced market
+UK                                                                                  48%
+                                                                                                                                  nobody has monetized well yet (move
+                                                                                    median $153/mo · n=50
+                                                                                                                                  early and cheap). Don’t treat it as
+India                                                         22%                                                                 neutral — flag it for a targeted follow-
+                                                              median $6/mo · n=59
+                                                                                                                                  up before sourcing there at volume.
+
+
+
+Source: TrustMRR 1,000-row dataset — country known for 759 of 1,000 listings                                                                                                 8
+FINDING 6 OF 6
+
+
+
+Founders who invest in paywall tooling earn far more than those on default Stripe
+
+Median MRR by payment / billing provider
+                                                                                              IMPLICATION FOR THE FIRM
+
+Superwall                                                               $5,465
+                                                                                              Superwall (paywall A/B-testing
+                                                                        n=17 — small sample   tooling) users post 8× the median
+Whop                                               $910
+                                                                                              MRR of plain Stripe users. Sample
+                                                   n=7 — small sample                         sizes are small, but the pattern lines
+
+Stripe                                          $663
+                                                                                              up with intuition: founders who
+                                                n=636                                         invest in monetization tooling tend to
+                                                                                              be more revenue-serious operators.
+RevenueCat                              $237
+                                        n=189
+
+                                                                                              Add payment-stack sophistication to
+Paddle                                 $146
+                                       n=16                                                   the scouting checklist as a cheap, fast
+                                                                                              signal — not a standalone decision
+Lemon Squeezy                         $76
+                                      n=25                                                    rule.
+
+
+Source: TrustMRR 1,000-row dataset, grouped by payment_provider                                                                         9
+SYNTHESIS
+
+
+
+Where each category sits on volume vs. monetization — and what to do about it
+  ↑ % monetized
+
+
+      SCREEN HARDER                                                                               DOUBLE DOWN
+                                                                                                                  READING THE MAP
+           Sales
+
+                                                                                                                  AI sits alone in the upper-left —
+                                                                                                                  unmatched volume, mid-pack
+                         Content Creation                                                                         odds. The real “sweet spot”
+                                                                                                                  cluster (Sales, Content Creation,
+                     EducationMarketing                                                                           Education) is smaller but
+             Analytics
+                                                                                                                  converts far better.
+                                                                                                        AI
+
+
+                                                     SaaS
+                                                                                                                  A sourcing strategy weighted
+                                       Mobile Apps
+                                                                                                                  only by deal volume over-indexes
+                                                                                                                  on the wrong quadrant.
+      LOW PRIORITY                                                                             NICHE SWEET SPOT
+
+                                                                       Volume (# listings) →
+
+
+Source: TrustMRR 1,000-row dataset — top categories by listing count                                                                                  10
+R E C O M M E N D AT I O N
+
+
+Three moves, sequenced
+
+                           NOW                                                NEXT                                                   LATER
+
+
+
+    Re-weight the screen                                Build the two watchlists                                Test the India hypothesis
+
+
+
+
+    Rebuild the deal-scoring rubric so category
+                                                        Stand up a sourcing list of the 29 traction-not-        Commission a fast, targeted look at 5–10 India-
+    volume no longer proxies for quality. Score
+                                                        monetized listings for an acquire-and-monetize          based listings to determine whether the low
+    Sales, Education, Content Creation, Marketing
+                                                        play, and a red-flag list of for-sale listings priced   monetization is a pricing-power problem or an
+    and Analytics deals on equal footing with AI, not
+                                                        above 10x MRR for extra diligence.                      inefficient, still-open market.
+    below it by default.
+
+
+
+
+                                                                                                                                                                  11
+APPENDIX
+
+
+
+Read the findings with these limits in mind
+
+
+     Self-reported revenue                                                             Uneven field completeness
+
+
+                                                                                       Category (73%), country (76%), pricing model (66%) and audience type are all
+     MRR and revenue figures come from founders’ connected Stripe/RevenueCat
+                                                                                       partially missing. Category- and country-level shares are computed against the full
+     accounts via TrustMRR and were not independently verified for this analysis.
+                                                                                       1,000-row base.
+
+
+
+
+     Small samples in some cuts                                                        Snapshot, not a trend line
+
+
+
+     Superwall (n=17) and Whop (n=7) medians are directionally useful but not          This is a single frozen snapshot (30 Jul 2026). It shows where listings stand today,
+     statistically robust — treat as a signal to investigate, not a standalone rule.   not their trajectory — 30-day growth data is noisy and mostly flat at the median.
+
+
+
+
+Source: TrustMRR 1,000-row dataset, frozen 30 Jul 2026 — prepared 1 Aug 2026                                                                                                  12
+T H E TA K E A W AY
+
+
+
+
+Chase monetization, not category labels.
+AI will keep generating the most listings. It won’t keep generating the best odds — those sit in quieter categories, in
+the traction-not-cash pool, and in a disciplined read of asking price against MRR.
+
+
+
+
+Thank you — questions welcome
+
+                                                                                                                          13
+

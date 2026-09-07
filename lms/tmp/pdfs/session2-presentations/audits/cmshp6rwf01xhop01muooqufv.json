@@ -1,0 +1,42 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 6.5,
+    "accuracy": 5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Slide 5 pattern extraction and slide 7 acquisition table turn data into a genuinely actionable investment thesis.",
+  "fix_next": "Disclose the 1,000-row sample, ~27% category missingness, and n=42 marketing denominator so the 31% claim is auditable.",
+  "verdict": "Sharp investment narrative undermined by unverifiable headline stats and undisclosed sample limitations.",
+  "flags": [
+    "unverifiable-statistics",
+    "median-figures-not-matching-reference",
+    "denominator-undisclosed",
+    "no-dataset-scope-disclosure",
+    "causal-language-without-evidence",
+    "slide4-text-overlap"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 1-2: '$1,036 median monthly revenue for tools sold to businesses' — reference Marketing median is $2,369.50, not $1,036; the figure may conflate categories or use a non-standard filter but is unverifiable. Slide 1-2: '$181 median for consumer apps' — no reference category yields this median; Mobile Apps median is $232.50. Slide 1: '0.5–0.9x revenue multiples available to buy' presented as a market-wide fact, but slide 7 shows only 3 of 5 listed companies fall in that range (Backlinker AI is 1.1x, Marky 1.7x), making the headline cherry-picked.",
+  "evidence": {
+    "insight": "Slide 5 distills four repeatable patterns (narrow job, agency channel, price ladder, small fast movers) from specific company examples — genuine analytical depth. Slide 7 acquisition table with computed multiples is decision-useful. Slide 8 capital allocation is concrete.",
+    "narrative": "Clean eight-slide arc: opportunity → field → proof → pattern → model → acquisitions → ask. Each slide advances the argument without backtracking. The closing one-line case on slide 8 synthesizes the thesis effectively.",
+    "framing": "Investment memo format with explicit audience (₹10 Cr deployer) is well-chosen. However, dataset scope is never disclosed: no mention of 1,000-row sample, 274 missing categories, 216 zero-revenue rows, or n=42 marketing tools. A cold reader cannot assess whether '31%' is from 42 or 4,200 companies. Lowered 0.5 from preliminary for this omission.",
+    "accuracy": "Three verifiable mismatches: the $1,036 and $181 medians don't correspond to any reference category median; the 0.5–0.9x range is cherry-picked from a table where 2 of 5 entries exceed it. The 31% marketing-tools-above-$10k claim uses an undisclosed denominator of ~42 (with 274 missing categories). Slide 7 multiples use asking prices not in the dataset, presented without sourcing.",
+    "visual": "Consistent warm palette with strong typographic hierarchy. Cards, tables, and bar chart on slide 2 are clean and purposeful. Slide 4 LocalRank.so card has visible text overlap reducing legibility. Dark/light alternation is intentional. No gratuitous decoration.",
+    "ai_slop": "Slide 3 four-pillar layout ('Budget already there / Results are visible / Tiny teams / AI cut the cost') reads as a generic consulting framework not grounded in specific dataset evidence. 'Margin incumbents haven't priced in yet' is assertive without support. Otherwise relatively restrained."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 7.0 to 6.5: the complete absence of dataset scope, sample size, and missingness disclosure is a material omission for an investment memo aimed at a cold reader. All other scores confirmed after independent review.",
+  "total": 70,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 16104,
+    "output_tokens": 1000
+  }
+}

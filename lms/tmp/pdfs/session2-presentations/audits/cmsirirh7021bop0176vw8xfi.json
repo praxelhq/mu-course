@@ -1,0 +1,44 @@
+{
+  "slide_count": 15,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 4.5,
+    "framing": 5.5,
+    "accuracy": 4,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "Power-law concentration thesis is genuinely useful; data caveats slide shows honest analytical discipline.",
+  "fix_next": "Replace every decorative AI illustration with actual data charts; fix misstated category medians and disordered section numbering.",
+  "verdict": "Reasonable thesis buried under decorative filler, zero real charts, and several wrong numbers.",
+  "flags": [
+    "no-actual-data-charts",
+    "decorative-ai-images",
+    "misstated-category-medians",
+    "section-numbering-disorder",
+    "heavy-repetition",
+    "total-revenue-understated",
+    "gamma-template-filler",
+    "text-over-busy-background"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 3: total MRR $13.47M vs reference $15.60M (~$2.1M off). Slide 3: 19.7% zero-revenue vs reference 21.6% (216/1000). Slide 3: top-10 share stated 48% vs reference 49.6% (minor but rounded down). Slide 8: AI median $446 vs reference $503; Education median $2,142 vs reference $2,435; Marketing median $1,586 vs reference $2,369.50; Analytics median $1,294 vs reference $419 (3x overstatement). Slide 4: Stan $3.57M stated as 26.5% share implies total ~$13.47M, but reference total is $15.60M, making Stan's share closer to 22.9% if $3.57M is correct, or the $3.57M figure is wrong.",
+  "evidence": {
+    "insight": "Concentration/power-law framing (slides 3-4, 14) is the strongest original angle. AI overcrowding vs monetization contrast (slides 8, 13) is useful. B2B value gap is decision-relevant. But the same five points repeat across 4+ slides without deepening analysis.",
+    "narrative": "Section numbering is disordered (01, 02, 03, 07, 05, 03 again, 10, 09) revealing unedited auto-generation. Same takeaways appear on slides 3, 4, 6, 8, 14, and 15 with near-identical wording. No progressive build or synthesis—just repetition.",
+    "framing": "Title slide and exec summary clearly set audience (investment committee) and scope. Data caveats slide (11) is a genuine strength acknowledging missingness. However, MRR vs 30-day revenue is never clarified, and the deck conflates them throughout.",
+    "accuracy": "Analytics median overstated 3x ($1,294 vs $419). Total revenue understated by ~$2.1M. Zero-revenue percentage off (19.7% vs 21.6%). Education and Marketing medians materially wrong. Stan's share internally inconsistent with stated total. Anonymous count 129 matches reference.",
+    "visual": "Zero actual data visualizations in entire 15-slide deck. Every slide uses AI-generated decorative illustrations adding no analytical value. Slide 4 promises 'one chart' but shows none. Slide 10 donut rings misrepresent proportions. Slide 15 text overlaid on busy background is barely legible.",
+    "ai_slop": "Pervasive AI-generated stock illustrations on nearly every slide. Gamma template with identical card layouts repeated. Consulting filler language ('moves the needle', 'wide-open opportunity'). Disordered section numbering reveals unedited auto-generation."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 4.5 to 4.0: Analytics median is 3x overstated ($1,294 vs $419), total revenue understated by $2.1M, and Stan share is internally inconsistent—these are material errors beyond rounding. Lowered narrative from 5.0 to 4.5: disordered section numbering and verbatim repetition across 4+ slides indicate unedited auto-generated structure. Other scores confirmed as appropriate.",
+  "total": 45,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 27439,
+    "output_tokens": 1062
+  }
+}

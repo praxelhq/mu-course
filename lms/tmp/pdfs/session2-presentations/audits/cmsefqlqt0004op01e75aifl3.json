@@ -1,0 +1,42 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 5.5,
+    "accuracy": 5,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "Growth-vs-revenue paradox on slide 3 is a genuinely counterintuitive, decision-useful finding well presented.",
+  "fix_next": "Add a limitations slide addressing missingness (274 categories, 288 audience types, 216 zero-revenue rows) and stop conflating revenue with profitability.",
+  "verdict": "Strong visual storytelling undermined by unverifiable stats and absent limitations disclosure.",
+  "flags": [
+    "unverifiable-statistics",
+    "causal-language-without-warrant",
+    "missing-limitations-slide",
+    "fabricated-looking-numbers",
+    "revenue-profitability-conflation",
+    "speculative-roadmap-not-data-derived"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 1/4: 0.906 subscriber-MRR correlation unverifiable from known dataset fields. Slide 4: conversion rates (11.72%, 0.5%) have no dataset basis. Slide 5: AI avg MRR ~$11,963 not $9,167; SaaS avg ~$10,659 not $8,920; Content Creation count is 36, shown as '—'. Slide 3: title says 'profitability' but data shows revenue only. Slide 8: '+40-60% MRR uplift' from adding sales team is unsupported.",
+  "evidence": {
+    "insight": "Slide 3's high-growth-earns-less finding ($9.7K vs $14.8K) is genuinely useful and counterintuitive. Slide 4's domain authority tiers show real analytical depth. Slide 5 attempts category momentum combining growth and count. However, the 0.906 correlation and conversion percentages are unverifiable, weakening the foundation of two key claims.",
+    "narrative": "Clear thesis on slide 1, five numbered insights building logically (pricing → growth → SEO → category → audience), synthesis on slide 7, and audience-segmented close-out on slide 8. The sequence is purposeful and the landing with three personas is effective.",
+    "framing": "No limitations or missingness discussion despite 274 missing categories, 288 missing audience types, 241 missing countries, and 216 zero-revenue rows. Audience implied but never stated. 'MRR' vs '30-day revenue' distinction not clarified. No sample-size caveats for small-n categories like Recruiting & HR (n=6) or Security (n=8).",
+    "accuracy": "AI avg MRR should be ~$11,963 not $9,167 (slide 5). SaaS avg should be ~$10,659 not $8,920. Content Creation count is 36, shown as dash. 0.906 correlation and conversion percentages (11.72%, 0.5%) are unverifiable. Revenue and profitability conflated on slide 3. The 31x multiplier ($74,017/$2,362≈31.3x) checks arithmetically but uses outlier-driven means without caveat. The 24-month roadmap and +40-60% uplift claim are speculative.",
+    "visual": "Consistent dark theme with teal accent palette. Good hierarchy with large headlines and numbered insight labels. Slide 2 bar chart is clean and labeled. Slide 4 horizontal bar is effective. Slide 3 three-column comparison is well-structured. Slide 5 table is legible. Minor: Freemium bar uses different color without legend explanation.",
+    "ai_slop": "Consulting-style framing ('The Hard Truth', 'The Conversion Paradox', 'The Winning Recipe') borders on inflated language. The 24-month roadmap on slide 7 is entirely speculative. The '+40-60% MRR uplift' on slide 8 is unsupported filler. These are decorative rather than data-derived."
+  },
+  "confidence": "high",
+  "changed": false,
+  "change_reason": "Preliminary scores are well-calibrated. The category average MRR errors, unverifiable statistics, and absent limitations justify accuracy at 5.0. Insight, narrative, and visual scores appropriately reflect genuine analytical depth and polished design offset by fabricated-looking numbers. Framing at 5.5 reflects missing limitations and scope. Bonus 1 warranted for the growth-vs-revenue paradox insight. No change needed.",
+  "total": 66,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 16424,
+    "output_tokens": 1117
+  }
+}

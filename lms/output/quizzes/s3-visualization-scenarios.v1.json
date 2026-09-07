@@ -1,0 +1,519 @@
+{
+  "import_schema_version": "mu-lms-assessment-import/1.0",
+  "audience": "learner",
+  "assessment": {
+    "assessment_id": "assess_s3_visuals_v1",
+    "assessment_version_id": "assess_s3_visuals_v1",
+    "session_no": 3,
+    "title": "Session 3 visualization scenario check",
+    "assessment_class": "formative_mixed_scenario",
+    "activation_rule": "opens at 01:39 and closes at 01:54 per section",
+    "time_limit_seconds": 900,
+    "attempt_policy": "one attempt plus one retry after delayed feedback",
+    "course_weight": 0,
+    "mastery_rule": "14/18 with at least four correct selections",
+    "answer_release_rule": "attempt receipt only until the last participating section using this assessment version closes",
+    "scoring_identity": "stable option ID; never display letter or array index",
+    "manifest_registration": {
+      "registered": true,
+      "source_id": "lms.course.session-03.lms-manifest",
+      "source_version_id": "assess_s3_visuals_v1",
+      "source_path": "lms/course/session-03/lms-manifest.md",
+      "source_content_sha256": "a53005827a20f7cd8416501339595a3f45cebf21ba5d29b966b488384cbf0d99"
+    },
+    "accessible_artifact_source": {
+      "source_id": "lms.course.session-03.visualization-quiz-accessible-artifacts",
+      "source_version_id": "S3-VIZ-A11Y-v1",
+      "source_path": "lms/course/session-03/visualization-quiz-accessible-artifacts.md",
+      "source_content_sha256": "a1973bccff10d63c33607cf7003fcee8fb093b7cb39958a487d27568479dfcdf"
+    },
+    "source_id": "lms.course.session-03.visualization-quiz",
+    "source_version_id": "assess_s3_visuals_v1",
+    "source_path": "lms/course/session-03/visualization-quiz.md",
+    "source_content_sha256": "e71b502edc4ab7d4490915985557a1c835982a67e739f3ea705596cf27f24fdd"
+  },
+  "items": [
+    {
+      "item_id": "S3-VIZ-01",
+      "item_version_id": "S3-VIZ-01@1",
+      "item_order": 1,
+      "title": "Rank many startups",
+      "outcome_ids": [
+        "S3-O5"
+      ],
+      "difficulty": "moderate",
+      "item_time_seconds": 120,
+      "prompt": "A founder wants to compare `revenue_30d_usd` for 20 shortlisted startups and identify the top five quickly.",
+      "response": {
+        "type": "single_choice_plus_rationale",
+        "selected_option_field": "selectedOptionId",
+        "rationale_required": true,
+        "rationale_min_words": 40,
+        "rationale_max_words": 80
+      },
+      "shuffle_options": true,
+      "volatile": true,
+      "stale_check_rule": "stale if the scenario/data-shape contract changes",
+      "accessible_artifact": {
+        "artifact_id": "S3-VIZ-01-A11Y@1",
+        "artifact_set_version": "S3-VIZ-A11Y-v1",
+        "title": "ranked startup comparison",
+        "text_alternative": "Twenty named startups each have one snapshot revenue value in USD. Values range from $600 to $29,800; several names are long, and the reader must locate the five largest values. There is no date sequence. Country is present but is not the requested comparison",
+        "table": {
+          "headers": [
+            "Example startup",
+            "Revenue, last 30 days (USD)"
+          ],
+          "rows": [
+            [
+              "Atlas Forms",
+              "29,800"
+            ],
+            [
+              "BriefPilot",
+              "21,400"
+            ],
+            [
+              "CartSignal",
+              "18,900"
+            ],
+            [
+              "DeskMint",
+              "11,250"
+            ],
+            [
+              "EchoKit",
+              "8,700"
+            ]
+          ]
+        }
+      },
+      "options": [
+        {
+          "option_id": "S3-VIZ-01-PIE20",
+          "canonical_order": 1,
+          "text": "Pie chart with 20 slices"
+        },
+        {
+          "option_id": "S3-VIZ-01-SORTED-BAR",
+          "canonical_order": 2,
+          "text": "Sorted horizontal bar chart"
+        },
+        {
+          "option_id": "S3-VIZ-01-ROW-LINE",
+          "canonical_order": 3,
+          "text": "Line chart in current row order"
+        },
+        {
+          "option_id": "S3-VIZ-01-COUNTRY-MAP",
+          "canonical_order": 4,
+          "text": "Choropleth map by country"
+        }
+      ]
+    },
+    {
+      "item_id": "S3-VIZ-02",
+      "item_version_id": "S3-VIZ-02@1",
+      "item_order": 2,
+      "title": "Examine traffic and revenue",
+      "outcome_ids": [
+        "S3-O5"
+      ],
+      "difficulty": "moderate",
+      "item_time_seconds": 120,
+      "prompt": "An analyst wants to see whether `visitors_30d` and `revenue_30d_usd` move together among records where both values are present.",
+      "response": {
+        "type": "single_choice_plus_rationale",
+        "selected_option_field": "selectedOptionId",
+        "rationale_required": true,
+        "rationale_min_words": 40,
+        "rationale_max_words": 80
+      },
+      "shuffle_options": true,
+      "volatile": true,
+      "stale_check_rule": "stale if field coverage/semantics change",
+      "accessible_artifact": {
+        "artifact_id": "S3-VIZ-02-A11Y@1",
+        "artifact_set_version": "S3-VIZ-A11Y-v1",
+        "title": "traffic and revenue relationship",
+        "text_alternative": "Each complete record contributes two quantitative values: visitors in the last 30 days and revenue in the same 30 days. The sample includes a dense low-value cluster, two high-visitor records with modest revenue, and one high-revenue outlier. Some source records are missing one of the two fields",
+        "table": {
+          "headers": [
+            "Illustrative record",
+            "Visitors, 30d",
+            "Revenue, 30d (USD)"
+          ],
+          "rows": [
+            [
+              "R1",
+              "1,200",
+              "900"
+            ],
+            [
+              "R2",
+              "4,800",
+              "3,600"
+            ],
+            [
+              "R3",
+              "9,500",
+              "4,100"
+            ],
+            [
+              "R4",
+              "11,000",
+              "17,500"
+            ],
+            [
+              "R5",
+              "24,000",
+              "6,300"
+            ]
+          ]
+        }
+      },
+      "options": [
+        {
+          "option_id": "S3-VIZ-02-SCATTER",
+          "canonical_order": 1,
+          "text": "Scatter plot, one mark per complete record"
+        },
+        {
+          "option_id": "S3-VIZ-02-PROVIDER-STACK",
+          "canonical_order": 2,
+          "text": "100% stacked bar by payment provider"
+        },
+        {
+          "option_id": "S3-VIZ-02-VISITOR-DONUT",
+          "canonical_order": 3,
+          "text": "Donut chart of visitor totals"
+        },
+        {
+          "option_id": "S3-VIZ-02-CORRELATION-KPI",
+          "canonical_order": 4,
+          "text": "Single KPI card showing correlation"
+        }
+      ]
+    },
+    {
+      "item_id": "S3-VIZ-03",
+      "item_version_id": "S3-VIZ-03@1",
+      "item_order": 3,
+      "title": "Show a skewed MRR distribution",
+      "outcome_ids": [
+        "S3-O5"
+      ],
+      "difficulty": "moderate",
+      "item_time_seconds": 120,
+      "prompt": "A classmate asks what the distribution of `mrr_usd` looks like, including zeros and extreme values.",
+      "response": {
+        "type": "single_choice_plus_rationale",
+        "selected_option_field": "selectedOptionId",
+        "rationale_required": true,
+        "rationale_min_words": 40,
+        "rationale_max_words": 80
+      },
+      "shuffle_options": true,
+      "volatile": true,
+      "stale_check_rule": "stale if MRR/zero semantics change",
+      "accessible_artifact": {
+        "artifact_id": "S3-VIZ-03-A11Y@1",
+        "artifact_set_version": "S3-VIZ-A11Y-v1",
+        "title": "skewed MRR distribution",
+        "text_alternative": "MRR is quantitative and strongly right-skewed. Many records are zero or below $1,000, fewer sit between $1,000 and $10,000, and a small tail is above $50,000. Zero is a valid observed value in this scenario, not missing data",
+        "table": {
+          "headers": [
+            "MRR range (USD)",
+            "Illustrative count"
+          ],
+          "rows": [
+            [
+              "Exactly 0",
+              "31"
+            ],
+            [
+              "1–999",
+              "42"
+            ],
+            [
+              "1,000–9,999",
+              "19"
+            ],
+            [
+              "10,000–49,999",
+              "6"
+            ],
+            [
+              "50,000+",
+              "2"
+            ]
+          ]
+        }
+      },
+      "options": [
+        {
+          "option_id": "S3-VIZ-03-HISTOGRAM",
+          "canonical_order": 1,
+          "text": "Histogram with an explicit zero bin and a stated scale choice"
+        },
+        {
+          "option_id": "S3-VIZ-03-VALUE-PIE",
+          "canonical_order": 2,
+          "text": "Pie chart of every distinct MRR value"
+        },
+        {
+          "option_id": "S3-VIZ-03-NAME-LINE",
+          "canonical_order": 3,
+          "text": "Line chart sorted by `startup_name`"
+        },
+        {
+          "option_id": "S3-VIZ-03-MEAN-KPI",
+          "canonical_order": 4,
+          "text": "One mean-value card"
+        }
+      ]
+    },
+    {
+      "item_id": "S3-VIZ-04",
+      "item_version_id": "S3-VIZ-04@1",
+      "item_order": 4,
+      "title": "Compare positive and negative growth by category",
+      "outcome_ids": [
+        "S3-O5"
+      ],
+      "difficulty": "moderate",
+      "item_time_seconds": 120,
+      "prompt": "A product researcher wants to compare median `revenue_growth_30d_pct` across categories, including contraction and growth, from this one snapshot.",
+      "response": {
+        "type": "single_choice_plus_rationale",
+        "selected_option_field": "selectedOptionId",
+        "rationale_required": true,
+        "rationale_min_words": 40,
+        "rationale_max_words": 80
+      },
+      "shuffle_options": true,
+      "volatile": true,
+      "stale_check_rule": "stale if the growth field becomes longitudinal rather than snapshot-based",
+      "accessible_artifact": {
+        "artifact_id": "S3-VIZ-04-A11Y@1",
+        "artifact_set_version": "S3-VIZ-A11Y-v1",
+        "title": "growth around zero",
+        "text_alternative": "Each category has one median 30-day revenue-growth percentage from a snapshot. Values can be below or above zero; the comparison needs direction and magnitude. These are not dated observations of a time series",
+        "table": {
+          "headers": [
+            "Category",
+            "Median revenue growth, 30d"
+          ],
+          "rows": [
+            [
+              "Analytics",
+              "+18%"
+            ],
+            [
+              "Commerce",
+              "+6%"
+            ],
+            [
+              "Developer tools",
+              "0%"
+            ],
+            [
+              "Productivity",
+              "−7%"
+            ],
+            [
+              "Marketing",
+              "−14%"
+            ]
+          ]
+        }
+      },
+      "options": [
+        {
+          "option_id": "S3-VIZ-04-DIVERGING-BAR",
+          "canonical_order": 1,
+          "text": "Diverging horizontal bar chart centred on 0%"
+        },
+        {
+          "option_id": "S3-VIZ-04-TIME-LINES",
+          "canonical_order": 2,
+          "text": "Multi-line time-series chart"
+        },
+        {
+          "option_id": "S3-VIZ-04-PERCENT-TREEMAP",
+          "canonical_order": 3,
+          "text": "Treemap sized by median percentage"
+        },
+        {
+          "option_id": "S3-VIZ-04-CATEGORY-GAUGES",
+          "canonical_order": 4,
+          "text": "Gauge chart for each category"
+        }
+      ]
+    },
+    {
+      "item_id": "S3-VIZ-05",
+      "item_version_id": "S3-VIZ-05@1",
+      "item_order": 5,
+      "title": "Payment-provider composition",
+      "outcome_ids": [
+        "S3-O5"
+      ],
+      "difficulty": "moderate",
+      "item_time_seconds": 120,
+      "prompt": "An operations analyst wants to compare how many records use each `payment_provider`. There are many provider labels, including a few combined labels.",
+      "response": {
+        "type": "single_choice_plus_rationale",
+        "selected_option_field": "selectedOptionId",
+        "rationale_required": true,
+        "rationale_min_words": 40,
+        "rationale_max_words": 80
+      },
+      "shuffle_options": true,
+      "volatile": true,
+      "stale_check_rule": "stale if combined-label semantics change",
+      "accessible_artifact": {
+        "artifact_id": "S3-VIZ-05-A11Y@1",
+        "artifact_set_version": "S3-VIZ-A11Y-v1",
+        "title": "provider frequency",
+        "text_alternative": "The field is categorical and the task is to compare record counts. Labels include individual providers, combined strings and missing values. A combined label such as “Stripe + Paddle” has not been split into two records in this table",
+        "table": {
+          "headers": [
+            "Payment-provider label",
+            "Illustrative record count"
+          ],
+          "rows": [
+            [
+              "Stripe",
+              "58"
+            ],
+            [
+              "Lemon Squeezy",
+              "21"
+            ],
+            [
+              "Paddle",
+              "14"
+            ],
+            [
+              "Stripe + Paddle",
+              "7"
+            ],
+            [
+              "Other named labels",
+              "16"
+            ],
+            [
+              "Missing",
+              "4"
+            ]
+          ]
+        }
+      },
+      "options": [
+        {
+          "option_id": "S3-VIZ-05-PROVIDER-BAR",
+          "canonical_order": 1,
+          "text": "Sorted bar chart with explicit treatment of combined labels"
+        },
+        {
+          "option_id": "S3-VIZ-05-PIE-3D",
+          "canonical_order": 2,
+          "text": "3D pie chart"
+        },
+        {
+          "option_id": "S3-VIZ-05-RANDOM-BUBBLE",
+          "canonical_order": 3,
+          "text": "Bubble chart with random x/y positions"
+        },
+        {
+          "option_id": "S3-VIZ-05-ROW-LINE",
+          "canonical_order": 4,
+          "text": "Line chart by source row number"
+        }
+      ]
+    },
+    {
+      "item_id": "S3-VIZ-06",
+      "item_version_id": "S3-VIZ-06@1",
+      "item_order": 6,
+      "title": "Compare MRR across audience types",
+      "outcome_ids": [
+        "S3-O5"
+      ],
+      "difficulty": "hard",
+      "item_time_seconds": 120,
+      "prompt": "A founder wants to compare the distribution of `mrr_usd` for B2B, B2C and Both, while keeping outliers and sample sizes visible.",
+      "response": {
+        "type": "single_choice_plus_rationale",
+        "selected_option_field": "selectedOptionId",
+        "rationale_required": true,
+        "rationale_min_words": 40,
+        "rationale_max_words": 80
+      },
+      "shuffle_options": true,
+      "volatile": true,
+      "stale_check_rule": "stale if audience categories or MRR semantics change",
+      "accessible_artifact": {
+        "artifact_id": "S3-VIZ-06-A11Y@1",
+        "artifact_set_version": "S3-VIZ-A11Y-v1",
+        "title": "MRR distributions by audience",
+        "text_alternative": "Three audience groups contain unequal numbers of MRR observations. Every group is right-skewed and contains outliers. The task is to compare centre, spread and unusual values while keeping group size visible",
+        "table": {
+          "headers": [
+            "Audience",
+            "Complete n",
+            "Median MRR (USD)",
+            "Middle 50% (USD)",
+            "Largest observed (USD)"
+          ],
+          "rows": [
+            [
+              "B2B",
+              "84",
+              "2,400",
+              "700–8,900",
+              "94,000"
+            ],
+            [
+              "B2C",
+              "39",
+              "900",
+              "150–3,200",
+              "31,000"
+            ],
+            [
+              "Both",
+              "27",
+              "1,700",
+              "400–6,100",
+              "57,000"
+            ]
+          ]
+        }
+      },
+      "options": [
+        {
+          "option_id": "S3-VIZ-06-MEAN-BARS",
+          "canonical_order": 1,
+          "text": "One bar per audience showing only the mean"
+        },
+        {
+          "option_id": "S3-VIZ-06-BOX-POINTS",
+          "canonical_order": 2,
+          "text": "Side-by-side box plots with jittered points or sample-size labels"
+        },
+        {
+          "option_id": "S3-VIZ-06-THREE-PIES",
+          "canonical_order": 3,
+          "text": "Three unrelated pie charts"
+        },
+        {
+          "option_id": "S3-VIZ-06-STACKED-AREA",
+          "canonical_order": 4,
+          "text": "Stacked area chart"
+        }
+      ]
+    }
+  ]
+}

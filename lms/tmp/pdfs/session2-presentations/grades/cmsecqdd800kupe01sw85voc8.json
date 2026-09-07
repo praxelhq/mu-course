@@ -1,0 +1,38 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 8.5,
+    "accuracy": 7,
+    "visual": 8,
+    "bonus": 4
+  },
+  "what_worked": "Genuinely decision-oriented structure with actionable takeaways, honest caveats, and disciplined use of medians over means.",
+  "fix_next": "Total revenue is $15.6M (30-day), not $133.8M; the headline stat and all downstream ratios built on it are wrong—verify your denominator.",
+  "verdict": "Outstanding narrative craft undermined by a major revenue figure error on the title slide.",
+  "flags": [
+    "headline-revenue-wrong",
+    "top10-share-slightly-off",
+    "revenue-timeframe-mismatch",
+    "b2b-median-ratio-differs-from-reference"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 1/3: Total revenue stated as $133.8M (last 12 months) but dataset 30-day total is $15.6M; even annualized that's ~$187M, not $133.8M—unclear provenance. Slide 3: Top-10 share stated 50.6% vs reference 49.6%—minor but wrong direction. Slide 3: Mean MRR stated $13,472; 30-day total/1000 = $15,596, not $13,472 (possibly using a different revenue field but inconsistent with their own $133.8M). Slide 5: B2B/B2C median revenue multiple stated as 5.7x ($1,036/$181); reference median multiples are 2.35x/2.30x respectively, suggesting different computation or field—the claim 'B2B premium is 5.7x' doesn't match reference benchmarks.",
+  "evidence": {
+    "insight": "Slide 7's reach-vs-price decomposition (32.6x customers vs 3.0x price) is a genuinely original and decision-useful finding. Slide 9's domain-rating vs follower comparison with specific odds is excellent. Slide 6's two-roads framework (90 vs 2,348 customers) synthesizes beyond chart description.",
+    "narrative": "Perfect six-decision spine announced on slide 4, each decision gets one slide with a 'DO THIS' box, bookended by context (slides 2-3) and caveats (slide 12), closed with a Monday-action summary (slide 13). Every slide advances the argument.",
+    "framing": "Slide 1 sets audience (founders), slide 12 dedicates an entire page to missingness and survivorship bias, slide 3 warns about mean vs median. The 'before you act' caveat slide is unusually rigorous for student work.",
+    "accuracy": "The $133.8M headline cannot be reconciled with the $15.6M 30-day total in the reference dataset—this is the deck's anchor number and it's wrong. Top-10 share is 50.6% vs 49.6%. The B2B/B2C median ratio of 5.7x doesn't match reference multiples of ~2.3x. Category counts and the $282 median appear correct.",
+    "visual": "Consistent dark/light palette, restrained chart choices (horizontal bars, stepped bar, donut), good annotation with values on every bar. Slight template repetition (every slide has identical DO THIS footer) but it serves function. No chartjunk. Hierarchy is clear with section labels, bold headlines, and supporting text.",
+    "ai_slop": "none—the voice is distinctive, opinionated, and specific to this dataset. No generic filler or consulting language detected."
+  },
+  "confidence": "high",
+  "total": 86,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 25611,
+    "output_tokens": 931
+  }
+}

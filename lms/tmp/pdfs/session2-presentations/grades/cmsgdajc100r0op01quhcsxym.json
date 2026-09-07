@@ -1,0 +1,37 @@
+{
+  "slide_count": 15,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7.5,
+    "accuracy": 5.5,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis-driven arc from concentration through whitespace to prioritization matrix with honest risk acknowledgment.",
+  "fix_next": "Median MRR figures on slides 8, 10, 13 diverge materially from reference data—verify every category median against raw calculations before presenting.",
+  "verdict": "Well-structured strategic deck undermined by several wrong category medians.",
+  "flags": [
+    "median-mrr-discrepancies",
+    "total-revenue-understated",
+    "top10-share-rounded-down"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 3/4: Total MRR stated as $13.5M/$13.47M vs reference $15.60M—significant undercount. Slide 3/6: Top-10 share stated as 48% vs reference 49.6%. Slide 8/10: Education median $2,142 vs reference $2,435; Marketing median $1,586 vs reference $2,369.50; Analytics median $1,294 vs reference $419 (directionally wrong—Analytics is not 'strong monetization'); AI median $446 vs reference $503. Dev Tools median $185 vs reference $635.",
+  "evidence": {
+    "insight": "Slide 11 whitespace scatter (count vs median MRR) and slide 13 prioritization matrix synthesize multiple dimensions into an actionable framework; the 'crowded category isn't the best-paying one' thesis is genuinely useful, though undermined by wrong medians.",
+    "narrative": "Clear arc: scale (s4) → growth (s5) → concentration (s6) → segments (s7) → monetization (s8) → effort (s9) → synthesis (s10-11) → risks (s12) → prioritization (s13) → recommendations (s14). Coherent and purposeful.",
+    "framing": "Slide 2 sets scope, audience, and data caveats well. Slide 12 dedicates a full page to six specific risks including missingness, self-reporting, and proxy limitations. Audience ('senior management') is explicit.",
+    "accuracy": "Total revenue is ~$2.1M low ($13.47M vs $15.60M). Multiple category medians are materially wrong: Education off by ~$293, Marketing off by ~$784, Analytics off by ~$875 (and in the wrong direction—presented as high-monetization when it's actually mid-tier), Dev Tools off by ~$450. Top-10 share 48% vs 49.6%. Stripe share 63.6% vs 636/1000=63.6% is correct. The Analytics error is particularly damaging because it drives a wrong strategic recommendation.",
+    "visual": "Consistent navy/gold palette, clear hierarchy with section labels, well-annotated bar charts, effective use of callout boxes. Scatter plots on slides 11 and 13 are well-designed with quadrant labels. Donut chart on slide 5 is appropriate. No chartjunk. Slide density is well-managed.",
+    "ai_slop": "Mild consulting-speak ('Strategic Intelligence Briefing') on title slide, but content is substantive throughout. No decorative-but-meaningless graphics. Template is polished but not generic filler."
+  },
+  "confidence": "high",
+  "total": 72,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 27806,
+    "output_tokens": 856
+  }
+}

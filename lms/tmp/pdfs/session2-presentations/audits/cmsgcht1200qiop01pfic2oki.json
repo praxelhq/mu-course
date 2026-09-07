@@ -1,0 +1,46 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 3,
+    "narrative": 4,
+    "framing": 2.5,
+    "accuracy": 2,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Coherent strategic arc from sector ranking through risk analysis to actionable roadmap shows purposeful sequencing.",
+  "fix_next": "Verify every number against the actual dataset; most revenue figures appear fabricated or inflated by 2–8× versus reference totals.",
+  "verdict": "Polished template over fabricated numbers; consulting language masks absent analytical depth.",
+  "flags": [
+    "fabricated-numbers",
+    "no-missingness-disclosure",
+    "no-median-analysis",
+    "ai-slop",
+    "decorative-venn-diagram",
+    "broken-chart-slide6",
+    "phantom-categories",
+    "stock-cover-image",
+    "no-sample-size",
+    "generic-roadmap-template"
+  ],
+  "factual_error_count": 9,
+  "factual_error_detail": "Slide 2: SaaS $5.74M vs reference $703K (8× inflated). Slide 2: AI $3.85M vs reference $2.36M (~1.6× inflated). Slide 3: Content Creation $3.15M vs reference $173K (18× inflated). Slide 3: Marketing $2.80M vs reference $1.32M (2× inflated). Slide 3: Analytics $2.15M vs reference $368K (6× inflated). Slide 3: E-comm $2.11M vs reference $1.11M (2× inflated). Slide 3/7: 'Sales', 'Green Tech', 'News & Mag' are not categories in the reference dataset. Slide 6: chart y-axis has repeated tick labels (2.13, 2.15 appear multiple times), rendering it broken/unreadable. Slide 10: SaaS+AI combined $9.58M is inconsistent with even the deck's own earlier figures ($5.74M+$3.85M=$9.59M, minor, but both base figures are wrong).",
+  "evidence": {
+    "insight": "Analysis stays at aggregate revenue ranking by category; no per-company distributions, medians, payment-provider splits, anonymity effects, TLD patterns, or audience-type analysis. Venn diagram (slide 8) and roadmap (slide 9) are strategy assertions, not data findings.",
+    "narrative": "Clear arc: executive summary → top sectors → secondary opportunities → risk → sweet spot → roadmap → summary. Structure is the deck's strongest element, but every step rests on unreliable numbers, undermining the story's credibility.",
+    "framing": "No mention of dataset size (1,000 rows), source, time window specifics, missingness (~24–29% across key fields), zero-revenue rows (216), or payment-provider composition. A cold reader cannot evaluate any claim. The 90-day $1M roadmap (slide 9) is aspirational consulting advice, not data framing.",
+    "accuracy": "At least 9 material errors: most category revenue figures are inflated multiples of reference values; three categories cited (Sales, Green Tech, News & Mag) do not exist in the reference category list; slide 6 chart is visually broken with duplicate y-axis labels.",
+    "visual": "Consistent green palette and clean typography throughout. However, slide 6 bar chart is broken (repeated axis ticks, nearly invisible bars). Slide 8 Venn is decorative with no data mapping. Slide 1 uses a stock photo with an unrelated 'Q3 Revenue Growth' chart. Slide 9 circular roadmap is a generic consulting template.",
+    "ai_slop": "Pervasive: 'dual engines of growth', 'Market Sweet Spot', 'synergy potential', 'massive capital influx into generative intelligence', decorative Venn diagram, generic 90-day roadmap, stock cover image—all hallmarks of template-driven AI output with no dataset-specific grounding."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 3 to 2.5; the complete absence of dataset metadata, missingness disclosure, and sample size is more severe than preliminary score reflected. All other scores confirmed after independent review.",
+  "total": 30,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 17346,
+    "output_tokens": 1047
+  }
+}

@@ -1,0 +1,325 @@
+STARTUP DATA DIVE · TRUSTMRR
+
+
+
+
+The Fields Nobody Reads
+Three signals the TrustMRR 1,000 rows gives away in columns nobody asked about
+
+
+
+
+  1,000                                 $133.8M                                  29
+  startups, payment-API verified        combined trailing 12-month revenue       columns per record
+EXECUTIVE SUMMARY
+
+
+The metadata is more honest than the metrics
+Summary around payment rail, domain authority, and the marketplace's own pricing math
+
+
+
+
+    01                                                   02                                            03
+
+
+   6.2×                                                 0.49 vs 0.17                                   24%
+   The payment rail is a free classifier                Earned authority beats vanity reach            Multiples lie below $200 MRR
+
+
+                                                                                                       The marketplace's stated revenue multiple
+   Stripe subscribers pay 6.2× more per month           Domain rating predicts MRR (ρ=0.49) far
+                                                                                                       looks disconnected from asking price
+   than RevenueCat subscribers and the gap              better than X followers (ρ=0.17). Revenue
+                                                                                                       (r=0.06) until the bottom quartile of micro-
+   survives even for the 288 listings with no           climbs in a straight line with SEO authority
+                                                                                                       revenue listings is removed, and it jumps to
+   audience_type label at all                           but it does not climb with social following
+                                                                                                       ρ=0.80
+
+
+
+
+                                                                                                                                                      02
+ 0          THE SHAPE OF THE MARKET
+
+
+
+The average startup here describes nobody
+
+     $16,777                                                          $1,036                                  82.2%
+     Mean monthly recurring revenue                                   Median monthly recurring revenue        of startups earn less than the mean
+
+
+
+
+      Mean sits 16.2× above median. A handful of outsized winners are doing all the work of pulling the “average” away from where
+      most of the market actually lives
+
+
+      49.1%                   earn under $1,000 a month               26.4%          clear $10,000 a month   48.0%          of all MRR sits with 10 firms
+
+
+
+
+Cohort: 803 startups reporting MRR above zero. Combined MRR $13.47M                                                                                         3
+   0           THE SHAPE OF THE MARKET
+
+
+
+  Seventeen firms hold more revenue than the other 786
+  Cumulative share of $132.9M trailing 12-month revenue, firms ranked largest first (n=803)
+
+100%
+                                                                                                                                57.7%
+90%
+                                                                                                                                of revenue held by the 17 firms earning above $1M a
+80%
+                                                                                                                                year
+
+70%
+
+60%
+                                                                                                                                85.1%
+50%
+                                                                                                                                held by the top 100 firms (just 12.5% of the cohort)
+40%
+
+30%
+
+20%                                                                                                                             0.05%
+10%
+                                                                                                                                held by the 222 firms earning under $1,000 a year
+ 0%
+         Top 1       Top 5      Top 10      Top 25      Top 50     Top 100    Top 150   Top 200   Top 300   Top 400   All 803
+
+
+
+  Cohort: 803 startups with MRR above zero. Ranked by trailing 12-month revenue                                                                                                        4
+    1           THE PAYMENT RAIL IS A FREE CLASSIFIER
+
+
+  Businesses can leave audience_type blank. They can't hide who
+  processes their payments
+
+  audience_type is missing for 288 of 1,000 listings accounting for 28.8% of the directory
+                                                                                                           $30.78
+  payment_provider is missing for none of them. And the rail a founder wires up turns                      Stripe’s median $ / subscriber / mo
+  out to encode the same B2B/B2C economics the audience label was meant to capture
+  completely, for every single row                                                                         $5.00
+                                                                                                           RevenueCat: median $ / subscriber / mo
+
+
+
+
+  P.S: 677 listings with active, paying subscribers used for the per-row price comparison (Stripe n=517,
+           RevenueCat n=160)
+
+
+
+
+Cohort: startups with mrr_usd > 0 and active_subscriptions > 0                                                                                      5
+     1                      EVIDENCE
+
+
+  The 6.2× gap holds even when the label is missing
+                                          Median $ / subscriber / month, by payment rail
+                       60                                                                                            Why this works as a proxy
+
+                                                      $51.03                                                            RevenueCat exists to bill in-app mobile
+                       50
+                                                                                                                        subscriptions, stating 96% of RevenueCat listings
+                                                                                                                        with a disclosed audience are B2C
+                       40
+
+
+
+
+    $ per subscriber
+                                 $30.78
+                                                                                                                        Stripe is general-purpose and spans both segments,
+                       30
+                                                                                                                        but it's still where the higher-priced, lower-volume
+                                                                                                                        businesses sit
+                       20
+                                                                                                            $15.88
+
+
+                       10
+                                                                                                                        Among the 183 mrr-positive listings with no
+                                                                                       $5.00                            audience_type at all, the same gap reappears:
+                                                                                                                        $51.03 (Stripe) vs $15.88 (RevenueCat), a 3.2×
+                        0                                                                                               spread, recovered from a field that is never blank
+                                           Stripe                                              RevenueCat
+                                           Full cohort (n=677)     No audience_type label (n=150)
+
+
+
+
+$/subscriber computed per row as mrr_usd ÷ active_subscriptions, then medianed within group                                                                                    04
+    2           EARNED AUTHORITY BEATS VANITY REACH
+
+
+
+
+  Domain rating tracks revenue. X followers mostly don't.
+
+  Two columns claim to measure the same thing. How much of an audience a startup has                    ρ = 0.49
+  built. Ranked against MRR, they diverge sharply: domain_rating (a proxy for
+                                                                                                        domain_rating vs. mrr_usd (n=714)
+  accumulated SEO/backlink authority) correlates with revenue nearly three times as
+  strongly as x_followers does                                                                          ρ = 0.17
+                                                                                                        x_followers vs. mrr_usd (n=984)
+
+
+
+
+  Both hold up when split by segment
+
+  Domain rating's edge over followers isn't a B2B or B2C artifact. The same gap shows up inside both:
+  B2B ρ=0.50, B2C ρ=0.39, both well clear of what followers manage anywhere
+
+
+
+
+Spearman rank correlation, chosen over Pearson given the heavy right skew in both revenue and reach                                         05
+    2            EVIDENCE
+
+
+  One climbs in a straight line. The other doesn't climb at all
+
+  By domain rating quintile                                                                               By X-follower quintile
+
+
+
+                                                                                                $9,904                                                                                        $2,494
+
+                                                                                                               $2,199
+
+
+
+
+                                                                                                                                                                           $240
+                                                                           $590                                                                        $144
+         $14                   $100                  $208                                                                            $5
+
+          Q1                    Q2                    Q3                    Q4                     Q5            Q1                  Q2                 Q3                  Q4                  Q5
+        low DR                                                                                  high DR        low foll.                                                                     high foll.
+
+
+  A clean staircase. Each quintile of accumulated SEO authority out-earns the last, top vs. bottom        No order at all. The highest-follower quintile barely edges the lowest, and Q2 collapses to near
+  a 730× spread                                                                                           zero
+
+Quintiles by rank, ties broken by row order (pandas qcut). Cohorts: DR n=714, followers n=984                                                                                                                06
+    3           THE MARKETPLACE'S OWN PRICING MATH
+
+
+
+  The listed revenue multiple looks fake until you remove the businesses
+  too small to have one
+
+  262 listings (26.2%) are marked on_sale, each carrying a self-reported                              r = 0.06
+  revenue_multiple alongside an asking_price_usd that, divided by annualised MRR,                     stated multiple vs. implied multiple, raw (n=224)
+  should reproduce roughly the same number. Raw correlation between the two says
+  they don't agree at all                                                                             ρ = 0.80
+                                                                                                      after excluding listings under $200 MRR (n=170)
+
+
+
+
+  The multiple isn't fabricated. It's unstable at the tail. A $20 swing in monthly revenue moves an
+  already-tiny denominator enough to send the implied multiple from 2× to 700×
+
+
+
+
+implied_multiple = asking_price_usd ÷ (mrr_usd × 12). stated multiple parsed from revenue_multiple                                                        07
+    3          EVIDENCE
+
+
+  Below $200 MRR, the ratio breaks, not the marketplace
+
+                         Stated vs. implied multiple agreement                                       Where it breaks worst
+
+                                                                                                     Listing                        MRR             Asking            Stated           Implied
+
+                                                                       0.80                          MyBite                         $1.20           $10,000           0.0x             694.4x
+
+                                                                                                     Rolely                         $16.67          $4,000            326.8x           20.0x
+                      0.63
+                                                                                                     Stealth Company                $54.07          $7,000            172.6x           10.8x
+
+                                                                                                     Abun.com                       $274.00         $50,000           172.0x           15.2x
+
+
+                                                                                                     Every extreme mismatch sits under $300 in monthly revenue. The arithmetic, not the honesty, is
+                                                                                                     what fails there
+
+
+
+                                                                                                         Practical read: ignore a listed multiple below ~$200 MRR. Recompute it from
+                                                                                                         asking_price and MRR instead and above that line, the two numbers agree closely
+                                                                                                         enough to trust
+                     All 224                                   Excluding <$200
+                     listings                                   MRR (n=170)
+
+
+
+
+Extreme-mismatch examples ranked by |implied − stated| among listings with asking_price_usd > $500                                                                                                    08
+SO WHAT
+
+
+The self-reported fields aren't the reliable ones
+Across all three signals, the field a founder fills in by hand is the weaker one. The field generated by their own infrastructure or arithmetic is the
+stronger one
+
+
+
+
+                                                                                                                     For a founder reading their own
+    For a buyer diligencing a listing                       For TrustMRR as a platform
+                                                                                                                     metrics
+
+    Don't take audience_type or                             Payment rail and computed multiple are                   A large X following is not evidence of
+    revenue_multiple at face value. Cross-                  more trustworthy than the free-text                      monetizable reach and domain authority
+    check payment_provider for segment,                     fields sitting next to them. A confidence                is a far better predictor of what your
+    and recompute the multiple yourself                     flag on low-MRR multiples, and a rail-                   traffic is actually worth. Multiples quoted
+    once MRR clears roughly $200 while                      derived audience tag, would close two                    on near-zero MRR (yours or a comp)
+    below that, treat the stated number as                  credibility gaps without asking founders                 aren't meaningful until revenue scales
+    noise                                                   for more data                                            past micro
+
+
+
+
+                                                                                                                                                                   09
+METHODOLOGY & CAVEATS
+
+
+How these three signals were built, and where to be careful
+
+  Derived, not disclosed fields
+
+  price_per_subscriber, implied_multiple and all quintile buckets are computed from raw columns for this analysis, but none exist in the source file
+
+
+  Spearman over Pearson
+  Revenue, followers and asking price are all heavily right-skewed; rank correlation is reported wherever a handful of outliers would otherwise dominate a linear
+  correlation
+
+  Coverage varies by insight
+  Insight 1 draws on 677–984 rows depending on the cut; Insight 2 on 714 (domain_rating) and 984 (x_followers) rows; Insight 3 on the 224 on_sale listings with both a
+  stated and computable multiple
+
+  Multiples use MRR × 12, not trailing 12-month revenue
+
+  The two diverge for volatile businesses; a revenue_12m-based multiple was checked and shows the same low-MRR breakdown
+
+
+  No causal claims
+
+  Payment rail, domain rating and listing price are all associated with revenue, not shown here to cause it. Selection into each rail or ranking is itself likely revenue-linked
+
+
+                                                                                                                                                                                   10
+

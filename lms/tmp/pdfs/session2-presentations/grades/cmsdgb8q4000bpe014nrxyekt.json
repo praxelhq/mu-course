@@ -1,0 +1,41 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 1,
+    "narrative": 2,
+    "framing": 1,
+    "accuracy": 1,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "Clean, consistent visual template with readable typography and logical slide hierarchy.",
+  "fix_next": "This is a startup pitch deck, not a data-story presentation; it contains zero charts, zero dataset analysis, and zero quantitative findings.",
+  "verdict": "A pitch deck for a fictional product, not a data-story presentation.",
+  "flags": [
+    "wrong-assignment-type",
+    "no-data-analysis",
+    "no-charts",
+    "no-dataset-engagement",
+    "placeholder-image-600x400",
+    "broken-image-slide12",
+    "ai-slop-consulting-language"
+  ],
+  "factual_error_count": 0,
+  "factual_error_detail": "No dataset claims are made, so no factual errors against the reference data—but this is because the dataset is never used at all.",
+  "evidence": {
+    "insight": "Zero slides contain analytical findings, statistical claims, or data-derived insights. Every slide describes a hypothetical product (TrustMRR) with no reference to the provided dataset's 1,000 rows, revenue figures, categories, or providers.",
+    "narrative": "The deck follows a coherent pitch-deck arc (problem → solution → features → business model → SWOT → vision), but this is the wrong narrative genre entirely. No data story is told.",
+    "framing": "No audience, research question, dataset description, scope, limitations, or analytical framing is provided. A cold reader would not know what dataset exists or what question is being answered.",
+    "accuracy": "The dataset is never referenced. No charts, no statistics, no calculations. Slide 3 contains a placeholder image ('600 × 400'). Slide 12 has a broken image alt-text. No claims can be verified because none are made.",
+    "visual": "Consistent blue/white template, legible fonts, icon-based layouts. However, slide 3 has an unfinished placeholder image, slide 12 has a broken image, and slides 2/4 are nearly identical icon-timeline layouts. No data visualizations exist.",
+    "ai_slop": "Heavy consulting/pitch language throughout: 'The Bloomberg for Startup Revenue,' 'The LinkedIn of Financial Transparency,' 'trust is priceless,' 'making trust measurable.' Generic SWOT with no data backing. Six identical card-grid layouts across slides 5, 7, 9, 10. Decorative icons with no analytical content."
+  },
+  "confidence": "high",
+  "total": 16,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 22130,
+    "output_tokens": 642
+  }
+}

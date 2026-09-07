@@ -1,0 +1,40 @@
+{
+  "slide_count": 2,
+  "scores": {
+    "insight": 4,
+    "narrative": 3.5,
+    "framing": 2.5,
+    "accuracy": 3,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Side-by-side company comparison format with custom KPIs is a genuinely useful layout for decision-making.",
+  "fix_next": "Two slides profiling four cherry-picked companies is not a data story—where is the dataset-level analysis, framing, methodology, or thesis?",
+  "verdict": "Polished company cards but no dataset story, framing, or analytical depth.",
+  "flags": [
+    "missing-framing",
+    "no-dataset-level-analysis",
+    "cherry-picked-examples",
+    "unverifiable-claims",
+    "no-methodology",
+    "no-limitations"
+  ],
+  "factual_error_count": 2,
+  "factual_error_detail": "Slide 1: Cometly 'Recurring rev. share 107%' is mathematically impossible as a share and unexplained. Slide 2: Pattrn labeled '0%' growth but went from $0 to $2.7K—0% is misleading (undefined, not zero). Six-month revenue trajectories are presented as modeled but no model or source is disclosed, making all trend figures unverifiable against the dataset.",
+  "evidence": {
+    "insight": "Slides show four individual company profiles with custom metrics (ARPU, AUD, VEL, MIX) which add some analytical texture, but no broader patterns, distributions, or dataset-level findings are offered. The 'picks' are unexplained selections with no criteria disclosed.",
+    "narrative": "There is no thesis, no introduction, no conclusion, no connection to the broader dataset. Two slides of paired comparisons do not form a coherent story arc—just a listicle of company snapshots.",
+    "framing": "No audience is stated, no research question is posed, no scope or dataset description is given. A cold reader has no idea what dataset this draws from, what 'safety pick' or 'growth pick' means operationally, or why these four companies were chosen from 1,000.",
+    "accuracy": "107% recurring revenue share is nonsensical without explanation. 0% growth for Pattrn ($0→$2.7K) is misleading. The six-month revenue bars are described as 'modeled from each company's reported totals' but no methodology is given, making all figures unverifiable. Metrics like 'Rev. velocity (lifetime)' are undefined.",
+    "visual": "Consistent card-based layout with clear hierarchy, color-coded KPI badges, and readable bar charts. The template is well-executed and visually clean. However, the two slides are nearly identical in structure, and the decorative blob adds nothing.",
+    "ai_slop": "Template repetition across both slides is notable—identical layout with only color swaps (purple vs. gold). The format feels like a polished AI-generated card template applied twice without variation."
+  },
+  "confidence": "high",
+  "total": 37,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 5345,
+    "output_tokens": 734
+  }
+}

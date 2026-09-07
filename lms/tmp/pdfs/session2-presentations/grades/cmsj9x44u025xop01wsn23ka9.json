@@ -1,0 +1,41 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 3.5,
+    "narrative": 4,
+    "framing": 2.5,
+    "accuracy": 3,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "The followers-vs-revenue contrast is a genuinely interesting angle grounded in real data points.",
+  "fix_next": "Cherry-picked anecdotes replace systematic analysis; show the actual correlation across all 1,000 companies, not just four extreme cases per side.",
+  "verdict": "Entertaining blog post, not a rigorous data story.",
+  "flags": [
+    "cherry-picked-examples",
+    "no-charts",
+    "no-systematic-analysis",
+    "causal-overclaiming",
+    "ai-slop-visuals",
+    "missing-framing",
+    "missing-limitations"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 3: '1 in 6 Tech Influencers Make $0' — 216/1000 is ~1 in 5, and these are not all 'influencers.' Slide 4: 'Followers are irrelevant to revenue. Full stop.' stated as causal/absolute conclusion from anecdotes without computing actual correlation. Slide 2: Implies the 360K/$0 vs 0/$97K comparison represents systematic groups rather than two individual cherry-picked extremes.",
+  "evidence": {
+    "insight": "The core observation (followers ≠ revenue) is valid but never quantified beyond four hand-picked examples on each side. No correlation coefficient, no distribution, no category or provider analysis. The 'niche search intent' lesson on slide 5 is speculation not supported by data.",
+    "narrative": "There is a coherent thesis (clout doesn't equal cash) with a beginning, middle, and takeaway. However, the arc is repetitive — slides 2, 3, and 4 all make the same point with different anecdotes. No deepening of analysis occurs.",
+    "framing": "No dataset description, no sample size, no mention of missingness, no definition of 'followers' source, no scope statement, no limitations. A cold reader has no idea where this data comes from or what it covers.",
+    "accuracy": "The '1 in 6' claim is wrong (216/1000 ≈ 1 in 4.6, closer to 1 in 5). The deck treats these as 'tech influencers' when the dataset is broader. Absolute causal claims ('Followers are irrelevant to revenue. Full stop.') from cherry-picked extremes is analytically irresponsible. The $102K combined figure on slide 5 is unverifiable and the addition of two products is presented without justification.",
+    "visual": "Gamma template with decorative AI-generated 3D illustrations (toy figures, trophy, vault of coins) that add no analytical value. No actual data visualizations — no scatter plots, histograms, or bar charts. Every slide uses stock imagery instead of evidence. Color palette is pastel and playful but inconsistent with analytical credibility.",
+    "ai_slop": "Heavy AI slop: decorative 3D toy figures on slide 2, generic trophy image on slide 6, vault-of-coins stock image on slide 4. Buzzworthy headings ('Hall of Shame,' 'Golden Takeaway') substitute for analysis. Emoji-heavy formatting. The entire deck reads like AI-generated LinkedIn content."
+  },
+  "confidence": "high",
+  "total": 32,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 11579,
+    "output_tokens": 841
+  }
+}

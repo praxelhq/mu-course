@@ -1,0 +1,36 @@
+{
+  "slide_count": 9,
+  "scores": {
+    "insight": 7,
+    "narrative": 7.5,
+    "framing": 7.5,
+    "accuracy": 5.5,
+    "visual": 8,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis that volume ≠ quality, carried consistently with well-chosen median-vs-total contrasts and honest caveats.",
+  "fix_next": "Several key numbers are materially wrong (AI total revenue, AI median, Education median, B2B/B2C median ratio); verify every figure against the frozen dataset.",
+  "verdict": "Compelling narrative and polished design undermined by multiple inaccurate figures.",
+  "flags": [
+    "factual-errors-multiple",
+    "causal-language-on-observational-data"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 5: AI total revenue shown as $1.81M; actual is $2.36M. AI median shown as $446; actual is $503. Education median shown as $2,142; actual is $2,435. Customer Support median $5,163 not verifiable from reference categories. B2B median $1,036 and B2C median $181 yield 5.7× ratio; reference shows ~2.35×/2.30× median multiples (not the same metric but the claimed medians appear fabricated). Slide 7 title 'SEO authority drives revenue' implies causation from observational cross-sectional data.",
+  "evidence": {
+    "insight": "Slides 4-6 build the volume≠quality argument across category counts, median MRR, and revenue-per-visitor—a genuinely useful layered insight. The traffic conversion analysis (slide 6) adds an original angle. However, the 'two predictors' claim on slide 9 overstates what cross-sectional observational data can support.",
+    "narrative": "Clear numbered progression (01-08) with a single thesis ('popularity ≠ quality') introduced on slide 4 and landed on slide 9. Each section builds on the prior. The bottom-line statement is crisp. Slight weakness: slides 2-3 are setup-heavy before the story begins.",
+    "framing": "Slide 2 explains the data source, verification model, and limitations. Slide 3 shows missingness rates with a ~30% caveat. Slide 6 flags ~18% visitor coverage. Slide 9 explicitly calls out self-selection bias. Audience is implicitly indie founders/acquirers. Strong overall framing.",
+    "accuracy": "Multiple figures deviate materially from the frozen reference: AI total ($1.81M vs $2.36M), AI median ($446 vs $503), Education median ($2,142 vs $2,435). The B2B/B2C medians ($1,036/$181) don't match reference multiples (2.35×/2.30×). 'Customer Support' as highest median category is unverifiable. Anonymous count 130 is close to 129 (acceptable rounding). Category missing 27.4% matches 274/1000. The 'drives' language on slide 7 is causal overreach.",
+    "visual": "Consistent dark theme with restrained green/orange/yellow palette. Good hierarchy: large headline numbers, supporting annotations, source lines on every slide. Bar charts are clean and labeled. Donut chart on slide 8 is appropriate. The left bar chart on slide 6 lacks y-axis labels. Overall high craft with purposeful color coding (orange for warnings/AI underperformance).",
+    "ai_slop": "none — the deck avoids generic filler, each slide has specific data points and interpretive annotations rather than boilerplate"
+  },
+  "confidence": "high",
+  "total": 73,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15802,
+    "output_tokens": 908
+  }
+}

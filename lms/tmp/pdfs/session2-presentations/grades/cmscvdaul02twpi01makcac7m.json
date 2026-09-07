@@ -1,0 +1,40 @@
+{
+  "slide_count": 15,
+  "scores": {
+    "insight": 1,
+    "narrative": 2,
+    "framing": 1,
+    "accuracy": 0.5,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Consistent visual identity and polished graphic design throughout the deck.",
+  "fix_next": "This is a meta-presentation about how to present data, not a data story from the assigned dataset—it contains zero analysis of the dataset.",
+  "verdict": "Wrong assignment: a design philosophy lecture with no dataset analysis whatsoever.",
+  "flags": [
+    "wrong-assignment",
+    "no-dataset-analysis",
+    "zero-data-charts",
+    "ai-slop",
+    "consulting-language",
+    "decorative-graphics"
+  ],
+  "factual_error_count": 0,
+  "factual_error_detail": "No dataset claims are made, so no factual errors against the dataset—but the entire deck fails to engage with the required data.",
+  "evidence": {
+    "insight": "All 15 slides discuss presentation philosophy (visual metaphors, cognitive load, action titles). Zero insights derived from the 1,000-row dataset. No revenue, category, provider, or any other dataset finding appears anywhere.",
+    "narrative": "The deck has internal coherence as a design-principles lecture (pillars → techniques → protocol → closing), but this narrative is entirely off-topic for the assignment. No thesis about the dataset exists.",
+    "framing": "Slide 1 frames this as 'Transforming raw data into strategic visual narratives for the C-Suite'—a generic meta-topic. No mention of the actual dataset, its scope, its questions, or any analytical context. A cold reader would not know what data was assigned.",
+    "accuracy": "No dataset figures are cited anywhere across 15 slides. The '60,000x faster' claim on slide 3 is a widely debunked marketing statistic presented without citation. Slide 8's comparison table uses fabricated dot-ratings with no empirical basis. No calculations, no denominators, no sample sizes.",
+    "visual": "Slides are visually polished with consistent blueprint/orange theme, good typography hierarchy, and varied layouts (pillars, funnel, Venn, heatmap, matrix). However, every graphic is decorative/conceptual rather than evidence-led. No actual data chart appears in the entire deck.",
+    "ai_slop": "Heavy AI slop throughout: inflated consulting language ('cognitive resonance,' 'narrative architecture,' 'engineering the visual consumption'), decorative 3D renders on slides 1/15, generic frameworks (pillars, flywheels, Venn diagrams) with no dataset-specific content, and the entire deck reads as a generic AI-generated presentation-design tutorial that could apply to any context."
+  },
+  "confidence": "high",
+  "total": 17,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 24514,
+    "output_tokens": 670
+  }
+}

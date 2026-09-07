@@ -1,0 +1,38 @@
+{
+  "slide_count": 15,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 6,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis-driven narrative arc from noise-vs-signal through a concrete four-criteria screening framework with candidate examples.",
+  "fix_next": "Slide 7's chart axis is unlabeled (median MRR? mean?), slide 8 claims $400 median which needs verification, and the revenue-per-visitor metric (slide 10) lacks denominator/methodology disclosure.",
+  "verdict": "Coherent acquisition-thesis deck with good narrative but several unverifiable or questionable numbers.",
+  "flags": [
+    "unverifiable-derived-metric",
+    "median-revenue-possibly-wrong",
+    "chart-axis-unlabeled",
+    "missing-data-not-quantified"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 5: '34% of country-tagged listings' — 258/759=34.0% is correct. Slide 7: Chart shows median MRR by pricing model but axis label says nothing about what statistic is shown; 'Sales-led' at 1616 is plausible but unverifiable without methodology. Slide 8: Claims median 30-day revenue is $400; the dataset overall median (including zeros) would be lower, and excluding zeros would shift it — this figure is not clearly correct. Slide 11: Median multiple stated as 2.3x; reference shows B2B 2.35x and B2C 2.30x, so a blended ~2.3x is plausible but imprecise. Slide 6: B2B median $1,036 — cannot be directly verified against reference (reference gives median revenue multiples, not median MRR by audience type with 288 missing audience_type values). The 34% country figure is fine. Counting material errors: (1) Slide 8 median $400 is questionable, (2) Slide 7 chart statistic unclear and unverifiable, (3) Slide 6 B2C median $181 and B2B $1,036 presented without acknowledging 288 missing audience_type values affecting denominators.",
+  "evidence": {
+    "insight": "Slides 9-10 introduce revenue-per-visitor as a derived efficiency metric beyond raw revenue; slide 4 explicitly warns popularity ≠ profitability; slide 12 synthesizes four criteria into a screening framework. Goes beyond chart description but the derived metrics lack methodological transparency.",
+    "narrative": "Clear five-act structure: landscape (slides 4-5) → monetisation quality (slides 6-7) → distribution shape (slide 8) → efficiency (slides 9-10) → valuation (slide 11) → synthesis (slides 12-15). Thesis stated on slide 2 and paid off on slide 15. Strong coherence.",
+    "framing": "Slide 1 sets audience (acquirer/board), slide 2 defines the question clearly, slide 3 provides a conceptual framework. Slide 14 acknowledges data risks including selection bias and missing fields. However, specific missingness rates (e.g., 274 missing category, 288 missing audience_type) are never quantified.",
+    "accuracy": "Category counts on slide 4 match reference exactly. Country counts on slide 5 are plausible. Slide 8's $400 median is questionable against reference data. Slide 6 B2B/B2C medians are presented without noting 288 missing audience_type rows. Slide 7 chart lacks clear statistic label. Slide 10 revenue-per-visitor is a derived metric with no disclosed methodology. Slide 11's 2.3x median multiple is approximately consistent with reference.",
+    "visual": "Consistent beige/green/dark palette throughout. Good use of annotation callouts (slides 4, 8, 11). Charts are clean with direct labels. Some decorative clip-art (slide 6 money pile, slide 7 icons, slide 11 scales) adds visual interest without misleading. Slide 15's rotated text sidebar is awkward to read. Overall restrained and legible.",
+    "ai_slop": "NotebookLM watermark visible on every slide. Some decorative icons (slide 6 scatter-plot thumbnails, slide 7 metaphor icons) are generic AI-generated clip art. The four-quadrant frameworks (slides 3, 12) feel template-ish but are substantively filled. Minor consulting-speak ('green lights', 'board thesis') but grounded in data. Moderate AI-tool reliance but not empty."
+  },
+  "confidence": "medium",
+  "total": 73,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 24514,
+    "output_tokens": 1144
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 4.5,
+    "narrative": 5,
+    "framing": 4,
+    "accuracy": 3.5,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Clear thesis that popularity ≠ revenue, with a coherent narrative arc across slides.",
+  "fix_next": "Average MRR figures appear fabricated—verify against actual dataset totals and medians, and acknowledge 274 missing category rows.",
+  "verdict": "Coherent story undermined by unverifiable revenue figures and shallow analysis.",
+  "flags": [
+    "fabricated-looking-averages",
+    "no-missingness-disclosure",
+    "mean-without-median-caveat",
+    "categories-not-in-dataset-reference",
+    "limited-scope"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 3: Average MRR values are suspect—E-comm total revenue is $1,111,606 across 19 companies giving mean ~$58,506, not $20,800; AI total $2,356,676/197 = ~$11,963, not $9,200; Education $523,524/30 = ~$17,451, not $17,400 (close but others are far off). Categories 'Community', 'Entertainment', 'Customer Support' do not appear in the reference dataset categories. Slide 2: SaaS shown as 65 companies but reference says 66. Slide 3: Uses mean without noting extreme skew or the 274 missing category rows, making averages misleading. Slide 5: Claims 'Revenue Strongly Influences Valuation' but no correlation coefficient or R² is provided; the dataset's actual r for founded-year is near zero—no evidence the MRR-price relationship is 'strong' without quantification.",
+  "evidence": {
+    "insight": "Slide 3's popularity≠revenue point is the strongest insight but remains surface-level; no median analysis, no discussion of concentration ratio, no provider or audience-type analysis. Recommendations on slide 6 are generic consulting advice.",
+    "narrative": "Slides flow logically: landscape → revenue quality → concentration → valuation → implications → summary. However the arc is predictable and the summary slide (7) merely restates without synthesis.",
+    "framing": "No mention of dataset limitations, missing data (274 categories, 241 countries, 288 audience_type), or the 216 zero-revenue companies. Audience is implied (founders/investors) but never explicitly stated. No scope or methodology slide.",
+    "accuracy": "Slide 3 average MRR figures do not reconcile with reference totals divided by counts. E-comm mean should be ~$58.5K not $20.8K. 'Community', 'Entertainment', 'Customer Support' categories appear fabricated or from a different dataset. SaaS count off by 1. Slide 4 histogram bins don't clearly account for 216 zero-revenue firms. Slide 5 scatter plot claims strong relationship without quantification.",
+    "visual": "Consistent color scheme (navy/gold), clean bar charts with data labels, readable fonts. Scatter plot on slide 5 is functional but lacks trend line or R². Histogram on slide 4 labels y-axis as 'log-scale pattern' but uses linear scale. Template is polished but repetitive.",
+    "ai_slop": "Consulting-style language throughout ('Market Intelligence Brief', 'Managerial Implications'). Bullet points are generic enough to fit many datasets. Categories like 'Community' and 'Entertainment' suggest AI hallucination of categories not in the actual data."
+  },
+  "confidence": "high",
+  "total": 45,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 14088,
+    "output_tokens": 888
+  }
+}

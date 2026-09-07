@@ -1,0 +1,39 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 6.5,
+    "bonus": 2
+  },
+  "what_worked": "Data quality slide (7) showing self-critical rigor on small samples and contradictions is genuinely impressive editorial discipline.",
+  "fix_next": "Total revenue is $15.6M not $13.47M; the B2B median multiple is ~2.35x not 5.7x—verify core numbers against the actual dataset before building a thesis on them.",
+  "verdict": "Strong narrative discipline undermined by wrong headline numbers.",
+  "flags": [
+    "total-revenue-wrong",
+    "b2b-multiplier-inflated",
+    "stealth-revenue-share-slightly-off",
+    "limited-chart-variety",
+    "consulting-tone"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 1: Total MRR stated as $13.47M; actual 30-day revenue is $15,596,344.59 (~$15.6M). Slide 2/4: B2B revenue premium claimed as 5.7x (median $1,036 vs $181); reference shows median multiples of ~2.35x/$2.30x, and the stated B2C median $181 doesn't match reference. Slide 5: Anonymous revenue share stated as 28.1% ($3.78M); reference shows 26.525% (~$4.13M of $15.6M). Slide 7: '36 listings show $0 MRR' — reference shows 216 zero-revenue rows, not 36.",
+  "evidence": {
+    "insight": "Three findings (B2B premium, stealth revenue, social-following irrelevance) are decision-oriented and go beyond chart description. The data quality slide adds genuine analytical value by flagging contradictions. However, the deck misses major dataset features (category analysis, payment provider dominance, top-10 concentration) that would deepen the story.",
+    "narrative": "Clear thesis on slide 2 ('verified revenue, not narrative'), three supporting insights, a data-quality caveat, and a recommendation slide create a coherent arc. The deprioritize/prioritize table on slide 8 synthesizes well. Sequence is purposeful, not a list.",
+    "framing": "Slide 3 sets up problem/mandate clearly. Audience (executive committee/investment team) is explicit. Appendix notes confidence levels and exclusions. However, missingness in the dataset (241-288 missing values across key fields) is never acknowledged, which matters for the B2B/B2C and category claims.",
+    "accuracy": "Total revenue wrong by ~$2.1M (slide 1). B2B multiplier of 5.7x appears inflated vs. reference ~2.35x median multiple. Anonymous share slightly off (28.1% vs 26.5%). Zero-revenue count of 36 contradicts 216 in reference. The social correlation of 0.18 is plausible but unverifiable against the specific reference (which gives founded-year r=0.025, not follower correlation). These are not rounding differences—they are material errors in headline claims.",
+    "visual": "Clean, consistent template with good hierarchy and restrained color palette. Donut chart on slide 5 and bar chart on slide 4 are appropriate. However, only 2 actual data visualizations across 10 slides is thin—most slides are text-heavy cards. The consulting-deck aesthetic is polished but borders on template sameness.",
+    "ai_slop": "Moderate consulting-speak ('Core Strategic Directives,' 'capital-allocation framework,' 'Executive Committee Review') inflates the tone beyond what the analysis warrants. The visual template is uniform to the point of sameness. Not egregious but noticeable."
+  },
+  "confidence": "high",
+  "total": 65,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19336,
+    "output_tokens": 960
+  }
+}

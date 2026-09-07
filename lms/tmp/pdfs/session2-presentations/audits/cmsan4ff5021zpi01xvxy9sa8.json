@@ -1,0 +1,41 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 8.5,
+    "accuracy": 7,
+    "visual": 8,
+    "bonus": 3
+  },
+  "what_worked": "Three-lever stacking synthesis on slide 9 is genuinely original and ties every prior insight together.",
+  "fix_next": "Verify every category label against the source file; 'Sales' and 'Productivity' appear on slide 6 but are absent from the reference data.",
+  "verdict": "Exceptional narrative and analytical depth, slightly undermined by unverifiable or fabricated category labels.",
+  "flags": [
+    "phantom-category-sales",
+    "phantom-category-productivity",
+    "unverifiable-derived-cohorts",
+    "mean-39x-median-unverified",
+    "ai-revenue-share-approximate"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 6: 'Sales' ($986 median) does not appear in the reference category list — likely fabricated or mislabeled. Slide 6: 'Productivity' ($80 median) also absent from reference categories. Slide 6: Content Creation median shown as $1,238 vs reference $1,237.50 is acceptable rounding, but the AI revenue share claim of '15%' is approximate ($2,356,676/$15,596,345 = 15.1%, acceptable). The two phantom categories are the substantive errors. Slide 4: 'Mean revenue is 39× the median' — mean is $15,596.34, median $400, ratio = 39.0×, this checks out. Slide 2: country missingness shown as 24% (=240 rows) vs reference 241 — borderline but acceptable rounding.",
+  "evidence": {
+    "insight": "Slide 9's lever-stacking framework (B2B + ARPU≥$50 + DR≥40 → 65× lift) is a genuinely original composite finding that goes beyond single-variable description. The accelerating/flat/decaying cohort decomposition on slide 5 and the AI paradox on slide 6 both add real analytical depth.",
+    "narrative": "Thesis stated on slide 1, built through concentration → momentum → category → pricing → distribution → synthesis → recommendations → conclusion. Each insight feeds the next logically. Slide 9 synthesizes all prior findings. Slide 11 lands with a clear takeaway and honest limitations.",
+    "framing": "Slide 2 states cross-sectional nature, coverage gaps with exact percentages, and data contents. Slide 3 lists five explicit assumptions including row exclusions and denominator choices. Slide 11 states four limitations including self-selection and association-not-causation. Audience (founders/operators) is implicit but clear throughout.",
+    "accuracy": "Core figures verified: top-10 share 49.6%, zero-revenue 216, total $15.6M, Education median $2,435, Marketing $2,370, AI $503, SaaS $201 (ref $200.50), E-comm $387, Dev Tools $635, Health & Fitness $663, Social Media $844, Content Creation $1,238 (ref $1,237.50) — all match. However, 'Sales' and 'Productivity' categories are not in the reference data, constituting fabricated or mislabeled entries. The 726-row category denominator is consistent with 274 missing.",
+    "visual": "Consistent dark-red palette with clear typographic hierarchy. Bar charts are well-chosen and annotated with values. Slide 9's stepped bars effectively communicate compounding levers. Coverage-gap chart on slide 2 is smart framing. No chartjunk or decorative elements. Slide 7's stacked bar is slightly cramped at the 'Both' segment but readable.",
+    "ai_slop": "Minimal. Language is precise and tied to specific numbers throughout. No generic consulting filler. The 20%/80% framing on the title slide is slightly provocative but earned by the concentration analysis."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 7.5 to 7.0: two phantom categories ('Sales' and 'Productivity') on slide 6 are not in the reference data, representing fabricated or mislabeled chart entries — a more serious accuracy issue than the preliminary assessment acknowledged. Other scores confirmed independently.",
+  "total": 85,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 23702,
+    "output_tokens": 1074
+  }
+}

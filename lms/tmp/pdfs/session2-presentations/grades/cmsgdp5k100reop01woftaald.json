@@ -1,0 +1,39 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 7,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 5.5,
+    "visual": 6.5,
+    "bonus": 2
+  },
+  "what_worked": "Strong investor-oriented thesis with a coherent funnel from dataset overview to executable shortlist with caveats.",
+  "fix_next": "Slide 4 chart has no category labels and several median values don't match the reference data; slide 6 correlations appear fabricated.",
+  "verdict": "Compelling narrative arc undermined by unverifiable and likely fabricated correlation claims.",
+  "flags": [
+    "fabricated-looking-chart",
+    "unlabeled-axes",
+    "missing-category-labels",
+    "median-discrepancies",
+    "unverifiable-correlations"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 4: Bar chart shows 8 categories with only numeric labels (1-8), no category names; values shown ($2142, $1586, $1294, etc.) don't cleanly match reference medians (Education $2435, Marketing $2370, Content Creation $1238). Productivity median shown as $42 vs reference $79.91. Slide 5: Mean MRR stated as $13,472; reference total $15,596,345/1000 = $15,596, a ~14% discrepancy (though denominator choice for non-zero could explain partially). Slide 6: Entire correlation chart (r=0.91, 0.87, 0.85, 0.81 for subscribers/recent revenue) appears fabricated—these specific correlations are not verifiable from the frozen dataset reference and 'Metric 5/6/7' placeholders suggest generated content. Slide 11: States '129 rows (13%) hide the website category entirely'—reference says 129 anonymous companies (12.9%), but the claim conflates anonymity with hiding category; category missingness is 274 rows.",
+  "evidence": {
+    "insight": "Slide 7 (scale vs. momentum decoupling) and slide 9 (4-filter framework) show genuine analytical thinking beyond chart description. The power-law observation on slide 5 with the practical implication to avoid benchmarking against averages is decision-useful.",
+    "narrative": "Clear arc: brief (s2) → data quality (s3) → market map (s4) → distribution (s5) → predictors (s6) → momentum (s7) → deal pipeline (s8) → framework (s9) → shortlist (s10) → risks (s11) → next steps (s12). Each slide builds toward the executable shortlist.",
+    "framing": "Slide 1-2 establish investor audience and dataset scope clearly. Slide 11 handles limitations well (geographic bias, frozen snapshots, self-reported data). Missing: no mention of 274-row category missingness or 216 zero-revenue companies as scope constraints.",
+    "accuracy": "Slide 4 chart lacks category labels making verification difficult; visible values don't match reference medians. Slide 6 correlation values appear fabricated with placeholder labels. Slide 5 mean is off. Slide 11 conflates anonymous companies with category missingness. Slide 8 box-plot and median $35K asking price are plausible but unverifiable against reference.",
+    "visual": "Consistent black/white/green palette with monospace typography creates distinctive identity. Slide 5 power-law illustration is effective. However, slide 4 omits category labels entirely (just numbers 1-8), slide 6 uses 'Metric 5/6/7' placeholders, and the NotebookLM watermark on every slide suggests AI-generated output with minimal post-editing.",
+    "ai_slop": "Slide 6 contains 'Metric 5', 'Metric 6', 'Metric 7' placeholder labels—clear sign of AI-generated content not properly edited. NotebookLM watermark on every slide. Slide 4 uses numeric indices instead of category names, suggesting auto-generated chart not reviewed."
+  },
+  "confidence": "medium",
+  "total": 71,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19924,
+    "output_tokens": 1000
+  }
+}

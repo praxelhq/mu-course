@@ -1,0 +1,42 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 5.5,
+    "visual": 7.5,
+    "bonus": 1
+  },
+  "what_worked": "Six-finding arc with consistent finding/evidence/implication structure delivers genuinely decision-useful, non-obvious cuts throughout.",
+  "fix_next": "Verify B2B/B2C median multiple against actual data; 5.7× contradicts reference (~2.3×), and confirm 'Sales' category exists in dataset.",
+  "verdict": "Strong narrative and visual craft undermined by several verifiable factual errors in key claims.",
+  "flags": [
+    "b2b-median-multiple-inflated",
+    "sales-category-not-in-reference",
+    "segmentation-arithmetic-doesnt-sum",
+    "custom-monetization-threshold-not-dataset-median",
+    "quad-chart-repeated-slides-4-and-10",
+    "superwall-multiple-claim-unverifiable"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 2/5: B2B median $1,036 vs B2C $181 = 5.7× claimed; reference on-sale medians give ~2.3× multiple, so 5.7× is likely inflated or uses a non-standard denominator. Slide 3: 'monetized' threshold set at $282 median, but reference dataset median MRR is not confirmed at that value and the custom definition conflates 'above median' with 'monetized.' Slides 4/10: 'Sales' category appears prominently but is absent from the 12-category reference list. Slide 6: segments 500+303+168+29=1000 checks out arithmetically, but 500 listings ≥ median MRR implies median splits the dataset exactly in half, which is only true if the threshold is defined as the median — circular by construction, not a finding.",
+  "evidence": {
+    "insight": "Finding 3 (29 traction-not-monetized listings as acquisition targets) and Finding 4 (asking-price vs MRR disconnect with named examples) are original, decision-useful cuts. Finding 6 on payment-stack as operator-quality proxy is creative. The AI-crowding thesis is well-supported. Deducted slightly because the B2B finding overstates the gap.",
+    "narrative": "Clear six-finding arc: crowding → audience type → traction pool → pricing discipline → geography → tooling, with synthesis quad-chart and sequenced Now/Next/Later recommendations. Each slide follows a consistent structure. Closing slide lands the thesis cleanly. Minor redundancy between slides 4 and 10.",
+    "framing": "Slide 1 sets audience (Investment Committee), date, scope. Slide 3 defines methodology and known gaps. Slide 12 appendix covers four limitations including small samples and snapshot nature. Missing-data rates disclosed. Computing shares against 1,000 rather than known-field subsets is disclosed but still deflates category-level rates.",
+    "accuracy": "B2B/B2C 5.7× multiple is materially inflated vs reference (~2.3×). 'Sales' category appears on slides 4 and 10 but is absent from the frozen reference categories. The 500/303/168/29 segmentation sums correctly but the 50% 'monetized' figure is tautological given the median-based threshold. Stripe n=636 and RevenueCat n=189 match reference. Superwall $5,465 median is plausible but unverifiable. India median $6 and US median $1,262 are plausible but not directly in reference.",
+    "visual": "Consistent dark-navy/gold palette with clear hierarchy. Bubble chart on slide 4 is well-conceived but has label overlap. Lollipop charts on slides 8-9 are clean with n-size annotations. Slide 6 stacked bar is effective. No decorative clutter. Slight redundancy with two quad-charts (slides 4 and 10) covering similar ground.",
+    "ai_slop": "Minimal slop. Now/Next/Later framework on slide 11 is somewhat templated but substantively filled. No generic filler, no decorative stock imagery. The repeated quad-chart borders on padding but adds synthesis value."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 6.0 to 5.5: the B2B 5.7× claim is materially wrong against reference multiples, 'Sales' category is fabricated or miscoded, and the 50% monetization finding is tautological. Reduced bonus from 2 to 1: strong work but factual errors in headline claims prevent top-tier bonus. Other dimensions confirmed as appropriate.",
+  "total": 73,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 25253,
+    "output_tokens": 1168
+  }
+}

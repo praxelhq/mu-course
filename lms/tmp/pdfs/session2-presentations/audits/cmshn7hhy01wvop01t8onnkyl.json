@@ -1,0 +1,41 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7,
+    "accuracy": 6,
+    "visual": 7,
+    "bonus": 1
+  },
+  "what_worked": "Valuation comp table with the 0.63x-near-distressed-comps observation is genuinely sharp investor reasoning.",
+  "fix_next": "Ground the analysis in the provided 1,000-row dataset—benchmark Speel against AI-category medians, Stripe revenue distributions, and on-sale multiples.",
+  "verdict": "Polished acquisition memo but largely bypasses the course dataset it should analyze.",
+  "flags": [
+    "limited-dataset-use",
+    "illustrative-chart-not-actual-data",
+    "external-sources-over-provided-data",
+    "single-chart-in-ten-slides",
+    "mrr-trajectory-math-inconsistent"
+  ],
+  "factual_error_count": 1,
+  "factual_error_detail": "Slide 3: illustrative MRR trajectory shows ~77% and ~99% step increases between points, not a consistent 253% MoM; back-calculating from $65,843 at 253% MoM gives prior months of ~$18,652, ~$5,284, ~$1,497—close for the last two but the first point ($5,300) and second ($9,400) don't fit 253% compounding.",
+  "evidence": {
+    "insight": "Slide 5 ARPU derivation ($59 vs tier prices) and slide 6 multiple-vs-distressed-comp observation are genuine micro-insights. Slide 3 caveat about small-base growth is mature. But no dataset-level benchmarking (e.g., AI category median $503, Stripe platform dominance) limits comparative depth.",
+    "narrative": "Clean arc: snapshot → growth interrogation → market → business model → valuation comps → diligence flags → bull/bear → conditional recommendation with four concrete steps. Each slide advances the acquisition question purposefully.",
+    "framing": "Slide 1 sets audience and question clearly; slide 10 sources every claim. However, the deck never defines its relationship to the 1,000-row dataset or explains why broader marketplace patterns were omitted—a cold reader wouldn't know a rich dataset existed.",
+    "accuracy": "Company-specific numbers are internally consistent ($790K = $65,843×12; 0.63x = $500K/$790K). Comparable multiples are from external listings, unverifiable against frozen data. The slide 3 illustrative trajectory doesn't actually follow 253% MoM compounding. No claims contradict the frozen reference, but almost none engage it either.",
+    "visual": "Clean template, good hierarchy with section labels and card layouts. Slide 6 comp table is well-structured. Green/red color coding for bull/bear is effective. Only one chart across 10 slides; heavy reliance on text cards rather than data visualization limits visual storytelling.",
+    "ai_slop": "Minimal—language is precise and domain-appropriate, no inflated superlatives, no decorative meaningless graphics. Template uniformity is noticeable but functional."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Reduced bonus from 2 to 1: the deck is a competent acquisition memo but does not demonstrate rare beyond-rubric work given it largely sidesteps the provided dataset. Reduced framing by 0.5 because the deck never acknowledges the 1,000-row dataset context a cold reader would expect for a data-story assignment.",
+  "total": 72,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 19641,
+    "output_tokens": 868
+  }
+}

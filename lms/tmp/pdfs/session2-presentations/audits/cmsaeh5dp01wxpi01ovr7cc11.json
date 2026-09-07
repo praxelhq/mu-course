@@ -1,0 +1,42 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 6.5,
+    "accuracy": 5,
+    "visual": 8,
+    "bonus": 2
+  },
+  "what_worked": "Crowd-vs-money framing on slide 4 and the buy/avoid cards on slide 8 are genuinely decision-useful.",
+  "fix_next": "Reconcile total revenue ($13.5M claimed vs $15.6M actual), zero-revenue count, and category medians against the dataset before presenting.",
+  "verdict": "Strong storytelling and design undercut by multiple factual errors in core numbers.",
+  "flags": [
+    "total-revenue-mislabeled",
+    "zero-revenue-count-wrong",
+    "median-category-errors",
+    "missing-data-not-acknowledged",
+    "denominator-claim-unsupported",
+    "no-limitations-slide"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1-2: '$13.5M monthly recurring revenue' — total is $15,596,345, not $13.5M (likely confused with Stripe-only $13.5M but presented as total). Slide 6: 197 at $0 — reference says 216 zero-revenue rows; the 803/197 split is wrong. Slide 6: '~650 live businesses' denominator claim is unsupported (1000-216=784, not ~650). Slide 4: Education median shown as $2,142 vs reference $2,435; Marketing $1,586 vs $2,369.50; AI $446 vs $503; Content Creation $1,254 vs $1,237.50 (close but others are materially off). Slide 4: E-comm median $155 vs reference $387 — off by 2.5×. Slide 6: '1 in 3 startups is already dead' — 197/1000 is ~1 in 5, or 216/1000 is ~1 in 5; neither is 1 in 3. Slide 3: 'top 1 = 26% of all revenue' — plausible but unverifiable; top-10 share is 49.6% per reference, and 82% for top 100 is a different claim that cannot be cross-checked.",
+  "evidence": {
+    "insight": "Slide 4's popular-vs-profitable tension is original and actionable. Slide 7's arbitrage thesis (domain authority uncorrelated with multiple) adds analytical depth. Slide 5's correlation ladder is decision-relevant for due diligence. Slide 8 names real assets with specific multiples — moves beyond description to recommendation.",
+    "narrative": "Five-beat arc (what → shape → drivers → pricing → thesis) is purposeful and well-sequenced. Executive summary on slide 9 recaps without redundancy. The '$100k to invest' closer on slide 10 lands the story with a concrete frame. No wasted slides.",
+    "framing": "Zillow analogy on slides 1-2 orients a cold reader effectively. Audience (potential acquirer/investor) is implicit but clear. However, 274 missing category values (27%) are never disclosed, materially undermining the category analysis on slide 4. No limitations or data-quality slide. The ~650 denominator claim on slide 6 is asserted without derivation.",
+    "accuracy": "Total revenue wrong by ~$2M. Zero-revenue count off (197 vs 216). '1 in 3 dead' overstates the fraction by ~60%. Multiple category medians are materially wrong (Education off by $293, Marketing off by $784, E-comm off by $232). The 2.3× B2C median aligns with reference 2.30×. Correlation figures on slide 5 are plausible but not verifiable against reference data.",
+    "visual": "Clean, consistent design system with strong hierarchy. Lorenz curve on slide 3 is well-annotated. Horizontal bar chart on slide 4 uses color coding effectively. Buy/avoid cards on slide 8 are immediately scannable. No chart junk. Good restraint throughout. Slight inconsistency: slide 10 switches to dark background but it works as a deliberate closer.",
+    "ai_slop": "Minimal. 'Dyno-verified revenue, not brochure horsepower' is slightly forced but isolated. Writing is generally sharp, specific, and dataset-grounded rather than generic filler."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 5.5 to 5.0: the '1 in 3 dead' headline claim is a significant misstatement (actual ~1 in 5), and E-comm median is off by 2.5×, adding to already-noted errors. Lowered framing from 7.0 to 6.5: missing-data non-disclosure is more consequential given that category analysis is a centerpiece slide. Other scores confirmed.",
+  "total": 72,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 19184,
+    "output_tokens": 1222
+  }
+}

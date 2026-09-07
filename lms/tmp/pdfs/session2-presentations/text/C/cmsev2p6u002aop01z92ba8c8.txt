@@ -1,0 +1,269 @@
+                                                                                                                    01
+
+
+
+
+The label is not the business.
+
+Where revenue actually concentrates in 1,000 verified indie software companies — and why “AI” does not predict it
+
+
+
+
+Prepared for founders evaluating acquisitions · Session 3, AI for Business: The Operating Stack
+Every figure recomputed from the source file · n = 1,000 listings × 29 fields
+TrustMRR verifies the money columns and nothing else.                                                                                                             02
+
+
+
+
+Founders connect a payment-provider API key, so revenue and subscription figures cannot be self-reported. Everything used to describe the business still
+is. 1,000 listings, 29 fields.
+
+
+
+
+      Verified through the payment API                                                                                Declared by the founder or scraped
+
+
+
+      30-day, 3-month, 12-month and all-time revenue                                                                  Company name — 130 listings publish none
+
+      Monthly recurring revenue                                                                                       Country, category, market tags
+
+      Active subscriptions                                                                                            Audience type, pricing model, persona
+
+      30-day revenue and MRR growth                                                                                   Asking price and sale status
+
+      Payment provider                                                                                                X followers, domain rating, site visitors
+
+
+
+
+Every claim in this deck rests on the left column. The right column is used only to slice it, and its gaps are stated wherever they matter.
+
+
+Source: AI_In_Business_S3_Trust_MRR.xlsx, sheet “Data”, 1,000 rows × 29 columns. No external data used anywhere in this deck.
+Read every figure here as a median. The mean describes eleven                                                                                                                                       03
+
+
+companies.
+Mean MRR is $13,472; median MRR is $282 — a 48x gap produced by a handful of outliers at the top.
+
+
+
+
+       $282                                                                                                                 $13,472
+       Median MRR · median 12-month revenue $3,069 · median 16
+                                                                                                                            Mean MRR · the top 100 listings hold 81.8% of all revenue in the file
+       subscriptions
+
+
+
+
+Source: mrr_usd, all 1,000 rows. Fifths cut on mrr_usd rank. The bottom fifth's median is exactly $0 — 197 listings report zero MRR and zero active subscriptions.
+91 of these 1,000 companies hold 80% of the revenue. One holds                                                                                   04
+
+
+26.5%.
+Total verified MRR is $13,471,682. The largest single listing, Stan, reports $3,569,654 MRR and 101,590 subscriptions on its own.
+
+
+
+
+                                                                                                            91
+                                                                                                            listings account for 80% of all
+                                                                                                            verified MRR in the file
+
+
+
+
+                                                                                                            $25,073
+                                                                                                            is the combined monthly revenue
+                                                                                                            of the bottom 500 listings — 0.19%
+
+
+
+
+Source: mrr_usd, all 1,000 rows, no filter. Cohorts ranked descending on mrr_usd.
+Half of this market calls itself AI. Under a third of the top 100 is.                                                                                                                                  05
+
+
+
+
+AI appears on 392 of the 726 listings that carry any market tag. It appears on 30 of the 100 highest-revenue listings and accounts for 25.4% of total MRR.
+
+
+
+
+                                                                                                                                                  54% → 30%
+                                                                                                                                                  AI is over-represented in the population and
+                                                                                                                                                  under-represented at the top. If the label carried
+                                                                                                                                                  an advantage, the second figure would exceed
+                                                                                                                                                  the first.
+
+
+                                                                                                                                                  It does not follow that AI companies earn less —
+                                                                                                                                                  median AI MRR is $430 against $268 for tagged
+                                                                                                                                                  non-AI listings. The label tracks slightly better
+                                                                                                                                                  revenue, not the concentration of it.
+
+
+
+
+Source: markets_json, 726 tagged rows (274 carry no tags), and mrr_usd, all 1,000 rows. Shares of tagged listings are % of the 726 tagged rows.
+Not one of the 392 AI listings is only an AI company.                                                                                                                                  06
+
+
+
+
+Every listing tagged AI carries at least one other market tag. AI rows average 3.94 tags against 3.25 for tagged non-AI rows.
+
+
+
+
+                                                                                                                                  0
+                                                                                                                                  listings out of 392 carry the AI tag alone.
+
+
+                                                                                                                                  AI is applied on top of an existing product
+                                                                                                                                  category — most often SaaS, which 59.4% of AI
+                                                                                                                                  listings also claim.
+
+
+                                                                                                                                  For diligence this means the AI label describes an
+                                                                                                                                  implementation detail. The category underneath
+                                                                                                                                  it is what you are actually buying.
+
+
+
+
+Source: markets_json, the 392 rows containing the AI tag. Tags are self-applied and overlapping, so percentages sum above 100%.
+The labels founders use most are the labels attached to the least                                                                                                                                                            07
+
+
+revenue.
+Median MRR by market tag, tags applied to at least 15 listings. The whole-file median is $282.
+
+
+
+
+                                                                                                                                                                  Highlighted: the five most-applied tags
+
+
+
+
+                                                                                                                                                                  SaaS is applied 437 times and pays a median $438.
+                                                                                                                                                                  AI is applied 392 times and pays $430. Productivity
+                                                                                                                                                                  (275) and Mobile Apps (195) sit at $197 and $227
+                                                                                                                                                                  — below the $282 whole-file median.
+
+
+                                                                                                                                                                  Sales and Customer Support are applied 42 times
+                                                                                                                                                                  each and pay $2,152 and $1,519.
+
+
+                                                                                                                                                                  Do not use means here. Marketplace's mean MRR
+                                                                                                                                                                  is $14,913 against a median of $326, on 17 listings.
+
+
+
+
+Source: markets_json, 726 tagged rows, 31 distinct tags. Tags applied to fewer than 15 listings excluded: IoT & Hardware (2), News & Magazines (2), Crypto & Web3 (3), Green Tech (3), Legal (5), Recruiting & HR (11), Travel
+(11), Community (14).
+Sellers ask 88% more for an AI listing, on a lower multiple.                                                                                                                                             08
+
+
+
+
+Among listings for sale: median asking price $47,000 for AI-tagged against $25,000 for tagged non-AI, on median multiples of 2.3x and 2.8x.
+
+
+
+
+                                                                                                                                           What a buyer is paying for
+
+                                                                                                                                           AI listings do carry more revenue — median MRR $430
+                                                                                                                                           against $268 — but the asking price rises faster than
+                                                                                                                                           the revenue does, which is what compresses the
+                                                                                                                                           multiple.
+
+
+                                                                                                                                           Combined with slide 06, the premium attaches to a tag
+                                                                                                                                           that every one of these companies shares with at least
+                                                                                                                                           one other category.
+2.3x                                                                  30.6%                                                                The practical test: strip the AI label from the listing and
+median multiple on AI listings,                                       of AI listings are for sale,                                         ask what you would pay for what remains.
+against 2.8x for tagged non-AI                                        against 26.6% of non-AI
+
+
+
+
+Source: on_sale, asking_price_usd, revenue_multiple, markets_json, mrr_usd. 262 listings for sale, 261 with a price. Medians throughout.
+Screen on the verified columns. Ignore the positioning.                                                                                                                                                09
+
+
+
+
+Each test below maps to a field that cannot be self-reported.
+
+
+
+
+     Active subscriptions                                      Correlates with MRR at 0.90. The single best available proxy for whether a business has customers rather than a launch.
+
+
+
+
+     30-day vs 12-month revenue                                Equal in 641 of 1,000 listings, meaning no history beyond a year. Underwrite on the 12-month figure.
+
+
+
+
+     MRR growth over 30 days                                   Flat at exactly 0.0% for 381 of the 893 listings that report it. Treat zero as a red flag, not as stability.
+
+
+
+
+     Market tags and category                                  Self-applied, overlapping, blank on 274 listings, and uncorrelated with concentration. Use for search, never for valuation.
+
+
+
+
+     X followers                                               Correlates with MRR at 0.17. Audience size tells you almost nothing about revenue.
+
+
+
+
+Source: active_subscriptions, revenue_30d_usd, revenue_12m_usd, revenue_all_time_usd, mrr_growth_30d_pct, markets_json, category, x_followers. Correlations are Spearman on pairwise complete cases.
+                                                                                                                                                                               10
+
+
+
+
+What this data cannot tell you.
+
+274                                       of 1,000 listings carry no category or market tag, so every share in this deck is a share of labelled listings, not of the market.
+
+
+
+
+130                                       listings publish no company name, and they hold 28.1% of all MRR — the richest cohort is the least described.
+
+
+
+
+Self-applied                              tags are chosen by founders, overlap freely at 3.62 per listing, and are not audited by the platform.
+
+
+
+
+One snapshot                              with no dates. Correlations describe a single moment and support no causal claim about what produced the revenue.
+
+
+
+                                          carried forward: country stores the boolean False for two Norwegian listings, and three duplicate entities inflate total MRR by
+Known defects                             roughly 0.3%.
+
+All figures recomputed from AI_In_Business_S3_Trust_MRR.xlsx, sheet “Data”, 1,000 rows × 29 columns. No external data used.
+

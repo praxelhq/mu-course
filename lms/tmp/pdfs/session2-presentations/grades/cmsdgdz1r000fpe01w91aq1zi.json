@@ -1,0 +1,37 @@
+{
+  "slide_count": 12,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 8.5,
+    "framing": 8,
+    "accuracy": 6.5,
+    "visual": 7,
+    "bonus": 3
+  },
+  "what_worked": "Original thesis that infrastructure-generated fields outperform self-reported ones, supported by three well-structured signal analyses.",
+  "fix_next": "The $133.8M headline revenue figure is ~8.6× the actual $15.6M total; verify all top-line numbers against the dataset before publishing.",
+  "verdict": "Sharp analytical thesis undermined by a major revenue figure error on the title slide.",
+  "flags": [
+    "inflated-total-revenue",
+    "cohort-denominator-unclear",
+    "top10-share-discrepancy"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 1: '$133.8M combined trailing 12-month revenue' — actual total 30-day revenue is $15.6M; even annualized (~$187M) doesn't match $133.8M, and the dataset reports 30-day not 12-month revenue directly. Slide 3: 'Combined MRR $13.47M' for 803 startups — total 30-day revenue for all 1,000 is $15.6M; excluding 197 zero-revenue rows (not 216) leaves unclear math. Slide 4: '48.0% of all MRR sits with 10 firms' — reference shows top-10 revenue share is 49.6%, a non-trivial discrepancy suggesting different denominator. Slide 4: '$132.9M trailing 12-month revenue' repeats the inflated total from slide 1.",
+  "evidence": {
+    "insight": "Three genuinely non-obvious signals: payment rail as audience proxy (slide 5-6), domain rating vs. X followers (slide 7-8), and revenue multiple instability below $200 MRR (slide 9-10). Each goes beyond chart description to actionable interpretation. The quintile staircase comparison is particularly effective.",
+    "narrative": "Strong unifying thesis ('metadata is more honest than metrics') introduced on slide 2, carried through three numbered signals, and landed with audience-specific recommendations on slide 11. The 'fields nobody reads' framing gives coherence. Sequence is purposeful: context → signal 1 → evidence → signal 2 → evidence → signal 3 → evidence → so-what → methodology.",
+    "framing": "Slide 1 sets dataset scope; slide 2 provides executive summary; slide 12 offers methodology and caveats including no-causal-claims disclaimer and Spearman justification. Audience is implicitly buyers/platform operators/founders (made explicit on slide 11). Cohort definitions noted at slide bottoms. However, the 'trailing 12-month revenue' framing on slide 1 is never reconciled with the 30-day MRR data structure.",
+    "accuracy": "The $133.8M headline figure is materially wrong — the dataset contains $15.6M in 30-day revenue. The 803 non-zero cohort count doesn't match 1000-216=784. The 6.2× payment rail claim and correlation figures (ρ=0.49, ρ=0.17) are plausible but unverifiable against reference data. The Spearman choice is well-justified. The multiple analysis methodology is sound in concept. Cohort sizes (677, 714, 984, 224) are documented.",
+    "visual": "Clean, consistent dark/light theme with orange accent. Good hierarchy: section numbers, bold headlines, supporting stats. Slide 8's side-by-side quintile bars effectively contrast the two signals. Slide 6's grouped bar chart is clear. Slide 4's cumulative curve is well-annotated. Some slides (5, 7, 9) are text-heavy with minimal visualization. No chart junk or decorative graphics. Table on slide 10 is functional.",
+    "ai_slop": "none — the deck has a distinctive editorial voice, specific dataset references, computed derived fields, and no generic filler or consulting boilerplate"
+  },
+  "confidence": "high",
+  "total": 80,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 23341,
+    "output_tokens": 1032
+  }
+}

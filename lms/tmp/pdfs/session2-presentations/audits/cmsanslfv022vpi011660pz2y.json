@@ -1,0 +1,43 @@
+{
+  "slide_count": 48,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 8.5,
+    "framing": 9,
+    "accuracy": 6,
+    "visual": 7.5,
+    "bonus": 3
+  },
+  "what_worked": "Growth-is-free arbitrage finding and three-variable underwriting model are genuinely decision-useful original analysis.",
+  "fix_next": "Reconcile the $334m 'all-time revenue' figure against the dataset's $15.6m total; the mismatch cascades into concentration and category claims.",
+  "verdict": "Exceptional analytical ambition undermined by a core revenue denominator error that propagates widely.",
+  "flags": [
+    "revenue-denominator-mismatch",
+    "top10-share-inflated-vs-benchmark",
+    "category-revenue-totals-off",
+    "stripe-count-644-vs-636",
+    "concentration-91pct-vs-49pct",
+    "27-insight-listicle-padding",
+    "performative-confidential-framing"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 1/6/9: Total revenue $334m vs benchmark $15.6m — likely conflates all-time with 30-day or uses a different field; top-10 share 61% (slide 9) vs benchmark 49.6%. Slide 20: Stripe 644 firms vs benchmark 636. Slide 22: Category revenue totals (e.g. E-comm $54.8m, AI $31.9m) far exceed benchmark 30-day totals ($1.1m, $2.4m respectively), suggesting all-time figures presented as if comparable to 30-day metrics elsewhere. Slide 9: 91% concentration claim for top 10% cannot be verified against benchmark's 49.6% top-10 share. Slide 20: RevenueCat 191 vs benchmark 189. Slide 6: Mean-to-median ratio 92x implies mean revenue $334k which is consistent with $334m/1000 but the $334m base is unverified.",
+  "evidence": {
+    "insight": "Slides 33-34: Growth-not-priced-in finding (r=-0.01) with actionable sub-1x listing table; slide 39: three-conclusion synthesis (customers not clicks, growth orthogonal, monetisation is a choice) is original and earned by the correlation matrix.",
+    "narrative": "Seven-section arc from data prep through executive summary, performance, segments, M&A, correlations to investment memo. Every content slide carries a 'SO WHAT' callout that synthesizes. Final thesis on slide 44 is logically earned.",
+    "framing": "Slides 3-4: Explicit coverage table with missingness counts and investment-read column. Traffic caveat (17.8%) repeated on slides 16, 39, 48. Appendix restates methodology. Audience (investment committee) is clear throughout.",
+    "accuracy": "Core $334m revenue figure is ~21x the benchmark total ($15.6m); this propagates into concentration percentages, category totals, and provider revenue shares. Stripe count 644 vs 636, RevenueCat 191 vs 189 are minor. Category median MRRs are in plausible range but not directly verifiable against benchmark medians for revenue (which are given, not MRR).",
+    "visual": "Consistent navy-gold template. Strong chart variety: Pareto curve (slide 9), log-log scatters (slides 12, 16-18), waterfall (slide 10), Sankey (slide 36), bubble chart (slide 24), heatmap (slide 38). All charts labelled. Slides 40-42 are dense 9-card grids that strain readability.",
+    "ai_slop": "27-insight listicle (slides 40-42) repeats earlier points and inflates count; 'CONFIDENTIAL' banner is performative. Otherwise content is substantive and dataset-specific."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 6.5 to 6.0: the $334m total revenue figure is unverifiable against the benchmark's $15.6m and cascades into at least 5 downstream claims (concentration, category totals, provider shares). The deck never clarifies whether this is all-time vs 30-day, creating a fundamental denominator ambiguity.",
+  "total": 82,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 90353,
+    "output_tokens": 1065
+  }
+}

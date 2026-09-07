@@ -1,0 +1,442 @@
+manifest_version: "0.1.0"
+session:
+  number: 5
+  slug: "revenue-systems-with-make"
+  title: "Revenue systems with Make"
+  duration_minutes: 120
+  lifecycle: "authored"
+  directed_on: "2026-07-30"
+  grade_components:
+    - "artifact-quality"
+    - "workflow-usefulness"
+    - "portfolio-evidence"
+
+ownership_contract:
+  prototype: "one individually owned workflow per student, associated with the team/product context"
+  company_rollup: "team-level company process and sign-off; individual ownership remains separately evidenced"
+  final_component_rollup:
+    - "the team may nominate exactly one existing finalised individual workflow submission version"
+    - "the instructor alone creates the audited TeamWorkflowSelection and must target exactly one existing finalised submission version; an integrated package is not a valid target"
+    - "usefulness and execution are team-scored from that instructor-selected version"
+    - "verified company sign-off is team-level"
+    - "ownership remains student-specific and is cross-checked in the AI interview"
+    - "Session 5 prototype scores are never silently averaged into a team score"
+  implementation_contract: >-
+    Forge stores each workflow as a per-student immutable submission version linked to
+    teamId. The instructor may later create one audited TeamWorkflowSelection targeting
+    an existing finalised member-owned version. Team usefulness/sign-off and individual
+    ownership remain separate projections; ownership is never inferred from the teammate
+    who clicked submit.
+
+assignment_types:
+  - id: "atype_workflow_design_review"
+    slug: "workflow-design-review"
+    title: "Workflow design review"
+    team_based: false
+    gallery_eligible: false
+    ai_graded: true
+    grading_mode_delta: "formative_ai_no_grade_record"
+    submission_schema:
+      fields:
+        - { key: "workflowPack", label: "Workflow pack", kind: "singleChoice", required: true, options: [{ value: "S5-WP-GTM-01", label: "GTM lead routing" }, { value: "S5-WP-OPS-02", label: "Operations exception handling" }, { value: "S5-WP-REV-03", label: "Revenue reconciliation" }] }
+        - { key: "problemFrame", label: "Problem, result, owner and non-goal", kind: "writeup", required: true }
+        - { key: "initialFlowchartFile", label: "Initial flowchart (PDF or PNG)", kind: "file", required: false }
+        - { key: "flowchartTextEquivalent", label: "Text/state-table equivalent", kind: "writeup", required: false }
+        - { key: "riskyActions", label: "Externally visible or irreversible actions", kind: "writeup", required: true }
+        - { key: "dataSafetyAttestation", label: "Synthetic-data and scheduling-off attestation", kind: "text", required: true }
+    validation_rules_delta:
+      any_of:
+        - ["initialFlowchartFile", "flowchartTextEquivalent"]
+
+  - id: "atype_workflow_revised_design"
+    slug: "workflow-revised-design"
+    title: "Revised workflow design"
+    team_based: false
+    gallery_eligible: false
+    ai_graded: false
+    publication_mode_delta: "ordinary milestone; ai_graded=false must not auto-publish to gallery"
+    submission_schema:
+      fields:
+        - { key: "workflowPack", label: "Workflow pack", kind: "singleChoice", required: true, options: [{ value: "S5-WP-GTM-01", label: "GTM lead routing" }, { value: "S5-WP-OPS-02", label: "Operations exception handling" }, { value: "S5-WP-REV-03", label: "Revenue reconciliation" }] }
+        - { key: "revisedFlowchartFile", label: "Revised flowchart (PDF or PNG)", kind: "file", required: false }
+        - { key: "revisedFlowchartText", label: "Text/state-table equivalent", kind: "writeup", required: false }
+        - { key: "feedbackDisposition", label: "Accepted, adapted and rejected feedback with reasons", kind: "writeup", required: true }
+        - { key: "controlAssertions", label: "Idempotency, validation, retry, approval, loop and observability assertions", kind: "writeup", required: true }
+        - { key: "buildPlan", label: "Flowchart-node to Make-module mapping", kind: "writeup", required: true }
+    validation_rules_delta:
+      any_of:
+        - ["revisedFlowchartFile", "revisedFlowchartText"]
+
+  - id: "atype_workflow_prototype"
+    slug: "workflow"
+    title: "Revenue-supporting Make workflow"
+    team_based: false
+    linked_team_context_required: true
+    component_rollup_delta: "add an instructor-audited team designation/link before final workflow-component scoring"
+    gallery_eligible: true
+    ai_graded: true
+    grading_mode_delta: "composite_workflow_v1"
+    rubric:
+      scale: 10
+      dimensions:
+        - { key: "functionality", label: "Functionality" }
+        - { key: "craft", label: "Craft" }
+        - { key: "relevance", label: "Relevance" }
+        - { key: "verification-evidence", label: "Verification evidence" }
+    submission_schema:
+      fields:
+        - { key: "workflowPack", label: "Workflow pack", kind: "singleChoice", required: true, options: [{ value: "S5-WP-GTM-01", label: "GTM lead routing" }, { value: "S5-WP-OPS-02", label: "Operations exception handling" }, { value: "S5-WP-REV-03", label: "Revenue reconciliation" }] }
+        - { key: "workflowTitle", label: "Workflow title", kind: "text", required: true }
+        - { key: "revisedFlowchartFile", label: "Revised flowchart", kind: "file", required: false }
+        - { key: "revisedFlowchartText", label: "Revised flowchart text/state-table equivalent", kind: "writeup", required: false }
+        - { key: "blueprintFile", label: "Make blueprint JSON (below 2 MB)", kind: "file", required: true }
+        - { key: "runLogFile", label: "Redacted five-fixture run log", kind: "file", required: true }
+        - { key: "sampleOutputFile", label: "Redacted sample output", kind: "file", required: true }
+        - { key: "workflowPngFile", label: "Gallery workflow PNG", kind: "file", required: true }
+        - { key: "scenarioShareUrl", label: "Safe public Make scenario URL (optional)", kind: "link", required: false }
+        - { key: "gallerySummary", label: "One-sentence result for the gallery", kind: "text", required: true }
+        - { key: "usefulness", label: "Current process, frequency, owner and credible value case", kind: "writeup", required: true }
+        - { key: "verificationNote", label: "Expected vs actual results and what you repaired", kind: "writeup", required: true }
+        - { key: "limitationChange", label: "Known limitation and next production change", kind: "writeup", required: true }
+        - { key: "ownershipEvidence", label: "Your design/build decision and evidence", kind: "writeup", required: true }
+        - { key: "accessibilityDescription", label: "Text description of the workflow PNG", kind: "writeup", required: true }
+        - { key: "privacyAttestation", label: "Privacy and safe-action attestation", kind: "text", required: true }
+    validation_rules_delta:
+      any_of:
+        - ["revisedFlowchartFile", "revisedFlowchartText"]
+
+assignments:
+  - id: "asg_s5_flowchart"
+    type: "workflow-design-review"
+    title: "S5 · First workflow design"
+    brief: "Submit the problem frame and first flowchart before opening Make. AI feedback is formative."
+    opens: "session_start"
+    due: "minute_42"
+    weight_bucket: null
+
+  - id: "asg_s5_revised_flowchart"
+    type: "workflow-revised-design"
+    title: "S5 · Revised workflow design"
+    brief: "Disposition the feedback and submit the repaired flowchart/control assertions."
+    opens: "feedback_record_exists_or_instructor_bypass"
+    due: "minute_62"
+    weight_bucket: null
+
+  - id: "asg_s5_workflow"
+    type: "workflow"
+    title: "S5 · Revenue-supporting Make workflow"
+    brief: "Submit the private blueprint, five-case evidence, PNG and value case; add an official Make public-scenario URL only when it passes review."
+    opens: "revised_flowchart_submitted"
+    due: "end_of_session_plus_24h"
+    weight_bucket: "artifact-quality"
+    component_feeds_delta:
+      individual_artifact_quality: "four-dimension Grade from this prototype"
+      team_workflow_usefulness: "only one instructor-selected existing finalised submission version feeds usefulness/execution/sign-off; the team may nominate and ownership remains individual"
+
+assessments:
+  - id: "quiz_s5_workflow-control"
+    version: "S5-SQ-v1"
+    title: "S5 · Workflow control"
+    kind: "single-answer-mcq"
+    student_source: "assessment/surprise-quiz-student.md"
+    evaluator_key: "assessment/surprise-quiz-key.md"
+    evaluator_key_visibility: ["instructor", "evaluator"]
+    student_visible_before_arming: false
+    item_versions: ["S5-Q01@1", "S5-Q02@1", "S5-Q03@1", "S5-Q04@1", "S5-Q05@1", "S5-Q06@1", "S5-Q07@1", "S5-Q08@1"]
+    option_ids_by_item_version:
+      "S5-Q01@1": ["S5-Q01-ROUTER-FIRST", "S5-Q01-DELAY", "S5-Q01-IDEMPOTENCY", "S5-Q01-RETRY-SUCCESS"]
+      "S5-Q02@1": ["S5-Q02-INVENT-EMAIL", "S5-Q02-RETRY-INVALID", "S5-Q02-QUARANTINE", "S5-Q02-BYPASS"]
+      "S5-Q03@1": ["S5-Q03-SKIP-SUCCESS", "S5-Q03-BOUNDED-RECOVERY", "S5-Q03-DELETE-SOURCE", "S5-Q03-UNBOUNDED-LOOP"]
+      "S5-Q04@1": ["S5-Q04-SEND-THEN-NOTIFY", "S5-Q04-NOTIFY-AS-APPROVAL", "S5-Q04-RECORDED-TRANSITION", "S5-Q04-WAIT-ASSUME"]
+      "S5-Q05@1": ["S5-Q05-REVERSED-UPDATE", "S5-Q05-SNAPSHOT-DYNAMIC", "S5-Q05-LINK-HAS-CONNECTIONS", "S5-Q05-BLUEPRINT-ONLY-PUBLIC"]
+      "S5-Q06@1": ["S5-Q06-NO-SETUP", "S5-Q06-RECONNECT-TEST", "S5-Q06-RENAME-MODULES", "S5-Q06-CONVERT-PNG"]
+      "S5-Q07@1": ["S5-Q07-PROCESS-IN-ORDER", "S5-Q07-PUBLIC-PAGE", "S5-Q07-THUMBNAIL", "S5-Q07-CONFIDENTIAL-LOGS"]
+      "S5-Q08@1": ["S5-Q08-RAW-PAYLOAD", "S5-Q08-SAFE-PACKAGE", "S5-Q08-PUBLIC-WEBHOOK", "S5-Q08-GRADE-DATA"]
+    response_type: "single-answer MCQ"
+    scoring_identity: "stable option ID; never display letter or array index"
+    display_order: "shuffle per attempt while retaining stable option IDs"
+    activation:
+      default_state: "dormant"
+      authority: "instructor"
+      classification_before_arm: "counted surprise quiz or non-counted retention check"
+      diagnostic_reuse_forbidden: true
+    timing:
+      time_limit_minutes: 7
+      insertion: "00–07 alternate replaces retrieval and compresses the hook to 07–12; no assessed build, revision, failure-test or packaging minute is removed"
+      attempt_policy_when_counted: "one attempt"
+    scoring:
+      points_per_match: 1
+      points_available: 8
+      percentage_formula: "correctOptionId matches / 8 * 100"
+      displayed_percentage_decimals: 1
+      mastery_correct: 6
+      gradebook_when_counted: "surprise-quiz best-three percentages; contributes within the existing 5% course component"
+      gradebook_when_retention: null
+    feedback_release:
+      before_close: "attempt receipt only; no score, correct option, rationale or distractor feedback"
+      after_close: "release score, correct options, rationales and item feedback"
+      delivery_window: "after the last scheduled participating section using S5-SQ-v1 closes; section-local only for a distinct non-reused quiz version"
+    stale_check:
+      item_versions: ["S5-Q05@1", "S5-Q06@1", "S5-Q07@1"]
+      timing: "T-7 against official Make documentation"
+
+gates:
+  - id: "S5.1"
+    from: "available"
+    to: "design_submitted"
+    condition: "initial flowchart fields validate"
+  - id: "S5.2"
+    from: "design_submitted"
+    to: "revision_open"
+    condition: "formative feedback complete OR audited instructor outage bypass"
+  - id: "S5.3"
+    from: "revision_open"
+    to: "build_open"
+    condition: "revised design submitted"
+  - id: "S5.4"
+    from: "provisionally_graded"
+    to: "gallery_eligible"
+    condition: "latest version finalised AND owner consent active AND instructor curation active AND privacy cleared AND PNG + redacted output available; an official Make public-scenario link is optional and otherwise the clone action is withheld"
+
+formative_ai:
+  rubric: "assessment/ai-flowchart-feedback-rubric.md"
+  execution: "pg-boss worker through lib/ai only"
+  grade_created: false
+  feedback_visible_to: ["student", "instructor"]
+  prompt_log_visible_to: ["instructor_audit_only"]
+  review_if:
+    - "confidence < 0.65"
+    - "prompt_injection"
+    - "unreadable_artifact"
+    - "unsafe_external_action"
+    - "sensitive_data"
+  capacity_gate:
+    section_burst: 60
+    target_feedback_or_bypass_minutes: 7
+    provider_calls_in_request_handlers: 0
+
+final_grading:
+  rubric: "assessment/final-grading-rubric-anchors.md"
+  status: "provisional_until_instructor_finalisation"
+  handler_delta:
+    worker_job: "worker/jobs/grade-submission.ts"
+    deterministic_module: "lib/assessments/workflow-fixture-evaluation.ts"
+    ai_module: "lib/ai/assessment-grading.ts"
+    request_handler_provider_calls: 0
+  response_and_persistence_delta:
+    grade:
+      purpose: "individual artifact-quality contribution"
+      rubric_scores: ["functionality", "craft", "relevance", "verification-evidence"]
+      total: "server recomputed, 0-40"
+      provisional: true
+    workflow_evaluation:
+      purpose: "version-bound workflow evidence before team rollup"
+      persistence_equivalent: "the one-to-one AssessmentResult.structuredFeedback.workflowEvaluation receipt; separate from Grade and independently queryable by exact submission/version/attempt"
+      fields: ["evaluationId", "stage", "submission", "assessmentSha256", "evaluatorSha256", "packId", "suiteId", "ruleVersion", "evaluatorBundleSha256", "expectedResultsSha256", "runLogEvidenceId", "runLogS3VersionId", "runLogSha256", "runLogByteCount", "cases", "usefulness0to30", "execution0to20", "ownership0to10", "evidenceCitations", "confidence", "flags", "provisional", "receiptSha256"]
+      immutable_contract: "bind the exact AssessmentResult/submission/version/attempt/content hash, evaluator release, content-addressed suite, expected-results hash and immutable run-log evidence receipt; terminal AssessmentResult payload/hash fields cannot be rewritten"
+    team_rollup:
+      nomination: "team may nominate exactly one existing finalised workflow submission version"
+      selection: "instructor alone creates the audited TeamWorkflowSelection targeting exactly one existing finalised submission version; integrated packages and synthetic merged targets are rejected"
+      usefulness_and_execution: "from the WorkflowEvaluation bound to that selected submission version"
+      company_signoff: "from human-verified SignOff only"
+      ownership: "student-specific WorkflowEvaluation plus later AI-interview cross-check"
+  deterministic_post_policy:
+    - "accept only one declared workflowPack ID: S5-WP-GTM-01, S5-WP-OPS-02 or S5-WP-REV-03"
+    - "select the matching evaluator-only content-addressed suite and verify bundle, expected-results and run-log receipt hashes before comparison"
+    - "compare exactly normal, duplicate, malformed, timeout and approval in authored order; each passed case supplies 2/10 artifact functionality and 4/20 execution"
+    - "map provider-cited relevance evidence to usefulness 0-30 and provider-cited verification-evidence to ownership 0-10; execution remains deterministic"
+    - "the model cannot alter objective fixture states, counts, blueprint validity or company sign-off"
+    - "parse strict model output; clamp dimensions; recompute all totals server-side"
+    - "persist evidence citations and review flags; duplicate job retries upsert by submission/config version"
+  deterministic_checks:
+    - "fixture IDs present: normal, duplicate, malformed, timeout, approval"
+    - "GTM: duplicate safe_output_count == 0; malformed/approval external_action_count == 0"
+    - "operations: duplicate new_incident_count == 0; malformed does not retry; notice remains draft/approval-gated"
+    - "revenue: duplicate line contributes no second matched value; malformed row is quarantined; external_money_or_ledger_actions == 0"
+    - "timeout has bounded attempt/manual state"
+    - "approval final_state == pending_approval and pack-specific risky action count == 0"
+    - "blueprint parses and byte_size < 2000000"
+  expected_contracts:
+    S5-WP-GTM-01: "fixtures/expected-results.json"
+    S5-WP-OPS-02: "fixtures/operations/expected-results.json"
+    S5-WP-REV-03: "fixtures/revenue/expected-results.json"
+    evaluator_bundle: "fixtures/evaluator-bundle.v1.json"
+  human_only:
+    - "company sign-off verification"
+    - "final grade finalisation/override"
+    - "low-confidence, outlier, appeal and safety review"
+  image_evidence:
+    - "revisedFlowchartFile when PDF/PNG"
+    - "workflowPngFile as actual image input, not an attachment-note placeholder"
+
+file_contracts:
+  blueprintFile:
+    mime: ["application/json", "text/json"]
+    max_bytes_exclusive: 2000000
+  runLogFile:
+    mime: ["application/json", "application/x-ndjson", "text/plain", "text/csv"]
+    max_bytes: 2000000
+  sampleOutputFile:
+    mime: ["application/json", "application/x-ndjson", "text/plain", "text/csv"]
+    max_bytes: 2000000
+  workflowPngFile:
+    mime: ["image/png"]
+    recommended_dimensions: "1600x900"
+    max_bytes: 10000000
+  flowchart:
+    mime: ["application/pdf", "image/png"]
+    max_bytes: 10000000
+    pdf_contract: "must contain selectable text; use PNG for image-only flowcharts"
+
+resubmission:
+  preserve_every_version: true
+  design: "initial and revised are separate linked milestones"
+  workflow: "one repair version within 24 hours of provisional feedback"
+  gallery: "always points to latest finalised privacy-cleared version"
+  company_signoff: "separate later evidence; never fabricated at Session 5"
+
+gallery:
+  wall: "workflow"
+  thumbnail_field: "workflowPngFile"
+  accessibility_field: "accessibilityDescription"
+  actions:
+    - when: "safe scenarioShareUrl exists"
+      label: "Clone in Make"
+      target: "scenarioShareUrl"
+    - when: "scenarioShareUrl absent or withheld"
+      label: "Clone unavailable"
+      target: null
+    - always: true
+      label: "View sample output"
+      target: "roster-gated sampleOutputFile"
+  forbidden_payload:
+    - "grades or rubric scores"
+    - "confidence or flags"
+    - "prompt logs or raw feedback"
+    - "credentials or connection metadata"
+    - "private webhook URLs"
+    - "PII or private company data"
+    - "TrustMRR row-level data"
+  public_link_policy:
+    preferred: "instructor-controlled connectionless gallery copy"
+    student_owned_dynamic_link:
+      requires: ["logged-out privacy review", "review timestamp", "no-post-review-save attestation"]
+      after_any_saved_change: "withdraw link until re-reviewed"
+
+notifications:
+  - trigger: "formative feedback ready"
+    copy: "Your workflow-design feedback is ready. Review the cited nodes and submit a revised version before building."
+  - trigger: "repair requested"
+    copy: "Repair the cited control, rerun the named fixture, and submit one new version within 24 hours."
+  - trigger: "privacy withheld"
+    copy: "Your artifact is graded, but the gallery copy/link is withheld until the flagged privacy issue is repaired."
+
+materials:
+  student_at_session_start:
+    - "student-build-brief.md"
+    - "workflow-packs/01-gtm-lead-routing.md"
+    - "workflow-packs/02-operations-exception-handling.md"
+    - "workflow-packs/03-revenue-reconciliation.md"
+    - "templates/initial-flowchart-template.md"
+    - "make-blueprint-and-sharing-checklist.md"
+    - "safety-checklist.md"
+    - "assessment/ai-flowchart-feedback-rubric.md"
+    - "assessment/final-grading-rubric-anchors.md"
+    - "fixtures/inputs/normal.json when workflowPack == S5-WP-GTM-01"
+    - "fixtures/operations/inputs/normal.json when workflowPack == S5-WP-OPS-02"
+    - "fixtures/revenue/inputs/normal.json when workflowPack == S5-WP-REV-03"
+  student_after_formative_feedback:
+    - "templates/revised-flowchart-template.md"
+  student_at_failure_gauntlet:
+    - "fixtures/inputs/duplicate.json when workflowPack == S5-WP-GTM-01"
+    - "fixtures/inputs/malformed.json when workflowPack == S5-WP-GTM-01"
+    - "fixtures/inputs/timeout.json when workflowPack == S5-WP-GTM-01"
+    - "fixtures/inputs/approval.json when workflowPack == S5-WP-GTM-01"
+    - "fixtures/operations/inputs/duplicate.json when workflowPack == S5-WP-OPS-02"
+    - "fixtures/operations/inputs/malformed.json when workflowPack == S5-WP-OPS-02"
+    - "fixtures/operations/inputs/timeout.json when workflowPack == S5-WP-OPS-02"
+    - "fixtures/operations/inputs/approval.json when workflowPack == S5-WP-OPS-02"
+    - "fixtures/revenue/inputs/duplicate.json when workflowPack == S5-WP-REV-03"
+    - "fixtures/revenue/inputs/malformed.json when workflowPack == S5-WP-REV-03"
+    - "fixtures/revenue/inputs/timeout.json when workflowPack == S5-WP-REV-03"
+    - "fixtures/revenue/inputs/approval.json when workflowPack == S5-WP-REV-03"
+  student_after_predictions:
+    - "samples/redacted-run-log.jsonl"
+    - "samples/redacted-sample-output.json"
+  instructor_or_evaluator_only:
+    - "instructor-guide.md"
+    - "deck-script.md"
+    - "workflow-packs/preferred-instructor-build.md"
+    - "assessment/surprise-quiz-key.md"
+    - "fixtures/expected-results.json"
+    - "fixtures/operations/expected-results.json"
+    - "fixtures/revenue/expected-results.json"
+    - "fixtures/evaluator-bundle.v1.json"
+    - "source-ledger.md"
+
+implementation_invariants:
+  - "Use generic data-defined submission forms; add field kinds only if unavoidable."
+  - "Do not use aiGraded=false as a proxy for formative: current code auto-publishes ungraded gallery artifacts."
+  - "All AI calls stay behind lib/ai and workers, never request handlers."
+  - "All user URLs use lib/net/safe-fetch."
+  - "All files use private direct S3 presigned flows."
+  - "All availability resolves through lib/gates."
+  - "Gallery projection never selects Grade/promptLog relations."
+  - "PNG/PDF flowchart and workflow-image evidence reaches the grader as image/document content; attachment notes alone are insufficient."
+  - "Setup/load is idempotent and cannot be re-locked by Session 2 setup."
+  - "Restore controlled versioned resubmission before loading this manifest."
+  - "Extend Artifact-quality assembly to include the individual workflow prototype while keeping team workflow usefulness/sign-off and individual ownership as separate scopes."
+
+implemented_forge_contracts:
+  - "generic any-of validation accepts a flowchart file or its text/state-table equivalent"
+  - "formative AI persists feedback-only AssessmentResult evidence and creates no weighted Grade"
+  - "field-specific MIME and byte caps are enforced before upload commit"
+  - "approved PNG/PDF evidence is passed to the grader through authorised evidence references"
+  - "controlled repair versions use explicit, expiring instructor grants"
+  - "gallery projection renders approved workflow PNG, sample-output and clone actions without grade or prompt-log leakage"
+  - "artifact-quality, team usefulness/sign-off and individual ownership remain separately scoped"
+
+remaining_release_evidence:
+  - "live Make Free import and five-fixture execution receipt"
+  - "formative and final grader calibration with instructors"
+  - "eight-section load, outage, accessibility and facilitation rehearsal"
+
+acceptance_tests:
+  setup_and_gates:
+    - "running the S3-S5 loader twice creates no duplicate rows and preserves instructor gate state"
+    - "rerunning Session 2 setup cannot relock or overwrite Session 5"
+    - "revised-design gate stays closed before feedback and opens after feedback or audited bypass"
+    - "feedback-only evaluation creates no weighted grade and never reaches a gallery"
+  evidence_and_grading:
+    - "PNG/PDF flowchart content reaches the formative evaluator as visual/document evidence"
+    - "prompt injection inside a flowchart is ignored and flagged"
+    - "objective fixture checks cannot be changed by model output"
+    - "blueprint JSON rejects invalid JSON, wrong field MIME, and byte size >= 2000000"
+    - "duplicate/malformed/timeout/approval action-state invariants match expected-results.json"
+    - "final AI grade remains provisional and low-confidence/flagged/outlier/appealed work cannot batch-finalise"
+    - "company sign-off remains pending until human-verified"
+    - "one workflow submission creates an individual artifact-quality Grade and a separate exact-bound workflow-evaluation receipt in its one-to-one AssessmentResult; the receipt, not model output, supplies execution"
+    - "the team may nominate, but only an instructor-created audited selection of exactly one existing finalised submission version feeds team usefulness/execution; sign-off and ownership keep their distinct scopes"
+  versions_and_ownership:
+    - "one repair version is allowed in-window; a third version is rejected"
+    - "old and new versions retain their bound schema/rubric/evidence contract"
+    - "latest finalised version is graded/displayed according to one shared version policy"
+    - "individual prototype ownership and the later instructor-selected workflow score do not overwrite each other"
+    - "two learners starting from one scaffold submit distinct scenario/blueprint/log hashes and separately evidenced control decisions"
+  gallery_and_privacy:
+    - "workflow PNG renders as thumbnail with text equivalent"
+    - "safe controlled Make share URL produces Clone in Make; absent/withheld link produces no clone action"
+    - "student-owned dynamic link is withdrawn after a post-review save until a new privacy review"
+    - "View sample output opens only the redacted sample artifact"
+    - "raw run log, arbitrary fields, grades, confidence, flags, prompt logs, TrustMRR data and credentials never enter gallery payload"
+    - "gallery selects the latest finalised privacy-cleared version only"
+    - "unsafe or non-Make clone URLs are withheld"
+  capacity_and_fallback:
+    - "60 simultaneous first-flowchart submissions meet the seven-minute feedback-or-bypass target"
+    - "model/Make outage routes preserve revision and five-case evidence requirements"
+    - "text-only initial/revised flowchart evidence satisfies the any-of validation and reaches the evaluator"
+  quiz:
+    - "student quiz payload is built only from assessment/surprise-quiz-student.md; evaluator key is absent from student materials, previews, search and exports"
+    - "scoring resolves stable option IDs after shuffle and never depends on a display position"
+    - "submit returns only an attempt receipt; score and answer feedback remain hidden until the configured delivery window closes"
+    - "when counted, the percentage joins the existing surprise-quiz best-three calculation; when used as retention, it creates no gradebook contribution"

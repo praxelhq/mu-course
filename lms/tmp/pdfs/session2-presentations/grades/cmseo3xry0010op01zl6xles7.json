@@ -1,0 +1,39 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 6.5,
+    "accuracy": 4.5,
+    "visual": 5.5,
+    "bonus": 1
+  },
+  "what_worked": "Clear acquisition-thesis narrative with actionable target shortlist, honest limitations slide, and coherent board-level framing throughout.",
+  "fix_next": "The deck treats the dataset as an acquisition marketplace with asking prices and multiples, but the frozen reference has no such fields—verify your data interpretation.",
+  "verdict": "Strong narrative frame built on questionable data interpretation; accuracy gaps hold it back.",
+  "flags": [
+    "possible-fabricated-fields",
+    "unverifiable-multiples",
+    "chart-legend-illegible",
+    "PROSP-revenue-arithmetic-mismatch",
+    "missing-data-not-addressed"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 4: PROSP listed as $128,005 MRR with $507K trailing 12-month revenue; $128,005×12=$1,536,060, not $507K—internally inconsistent. Slide 2: $86.78M combined asking price and $20.47M trailing revenue are unverifiable against the frozen dataset which records 30-day revenue of $15.6M total, not trailing-12-month. Slide 5: SaaS described as 22 listings with $18,365 avg MRR and 1.2x median multiple—the dataset has 66 SaaS companies total; the 'for sale' filter and 'asking price'/'multiple' fields are not in the reference dataset. Slide 3: Country counts (US 258, France 79, India 59) are plausible but cannot be verified given 241 missing country values; presented without acknowledging missingness. Slide 3: Category bar chart legend shows raw float values (e.g., 8.02069455172414) as legend labels—nonsensical presentation of average multiples.",
+  "evidence": {
+    "insight": "Slides 7-8 go beyond description to rank targets by revenue-to-ask ratio and propose a concrete shortlist with rationale. The 'motivated seller vs. weak business' distinction on slide 9 shows analytical maturity. However, the core insight depends on 'asking price' and 'multiple' fields whose provenance is unclear.",
+    "narrative": "Clean arc: market overview (slide 2-3) → sector deep-dives (4-5) → target identification (6-7) → ROI ranking (8) → risks (9) → recommendation (10). Each slide builds toward the final ask. The thesis ('pricing gaps create acquisition opportunity') is stated early and sustained.",
+    "framing": "Audience (CEO/Board), question (where to deploy capital), and scope (262 for-sale startups) are explicit on slide 1-2. Limitations slide (9) is genuinely useful. However, the deck never explains where 'asking price' data comes from or acknowledges the 274 missing category values and 241 missing country values in the underlying dataset.",
+    "accuracy": "PROSP MRR-to-annual arithmetic is wrong ($128K×12≠$507K). The entire analytical framework rests on 'asking price' and 'revenue multiple' fields not present in the frozen reference dataset—the reference tracks 30-day revenue, not trailing-12-month, and has no asking price field. Country counts are presented without noting 24% missingness. The category chart legend on slide 3 displays unformatted floats, suggesting raw output pasted without review.",
+    "visual": "Consistent muted color palette and typography throughout. Slide 6 scatter plot is functional but the legend has too many categories to be readable at presentation scale. Slide 3 bar chart legend is completely illegible (raw decimal numbers). Card-based KPI layout is clean but repetitive across slides 2, 4, 5, 10. No annotations on the scatter plot to label the key targets discussed in text.",
+    "ai_slop": "The category chart legend on slide 3 showing unformatted floats (e.g., '8.02069455172414') is a clear sign of unreviewed AI/tool output. The repetitive card-based KPI template across slides 2, 4, 5, and 10 suggests template reuse without variation. Language like 'genuine buyer's market' and 'highest-leverage acquisition candidates' leans toward consulting filler but is not egregious."
+  },
+  "confidence": "medium",
+  "total": 61,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19630,
+    "output_tokens": 1103
+  }
+}

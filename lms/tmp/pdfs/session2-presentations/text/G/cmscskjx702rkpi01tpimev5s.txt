@@ -1,0 +1,298 @@
+SESSION 3 · DATA REPORT
+
+
+
+
+Reading TrustMRR
+What 1,000 tracked startups tell us about real-world revenue, growth, and category
+economics
+
+
+
+1,000                        65                    29                       $13.5M
+STARTUPS                     COUNTRIES             CATEGORIES               TRACKED MRR
+
+
+
+
+Dataset frozen 30 Jul 2026
+ About the dataset
+ What TrustMRR tracks, and how we treated it
+
+
+
+        Source                                                                          Read this with care
+
+        TrustMRR is a public leaderboard where founders self-report live revenue
+        via connected payment providers (Stripe, RevenueCat, Paddle, and others).
+        This snapshot captures 1,000 listed startups as they stood on 30 Jul 2026.      •   Self-reported. Founders opt in and connect their own payment API
+                                                                                            — figures are not independently audited.
+
+        Fields we drew on                                                               •   Positioning fields are sparse. Value proposition, problem solved,
+                                                                                            and pricing model are 28–36% blank.
+        •       Financials — revenue_30d / 3m / 12m / all-time, mrr_usd,
+                                                                                        •   274 rows carry no category tag — 114 of those are explicitly listed
+                mrr_growth_30d_pct
+                                                                                            as “Stealth Company,” i.e. deliberately anonymized, not missing
+        •       Firmographics — category, country, audience_type (B2B / B2C),               data.
+                payment_provider
+                                                                                        •   Revenue is heavily right-skewed. A handful of startups carry a large
+        •       Positioning — value_proposition, problem_solved, pricing_model,
+                target_persona                                                              share of total MRR — medians, not means, drive our category
+                                                                                            comparisons.
+        •       Signals — active_subscriptions, domain_rating, x_followers, on_sale /
+                asking_price
+
+
+
+
+TrustMRR dataset · 1,000 startups · frozen 30 Jul 2026                                                                                                             02
+ Executive summary
+ The headline read on 1,000 tracked startups
+
+
+
+
+      $13.47M                                            $133.75M                                $282
+      total tracked MRR                                  total 12-month revenue                  median MRR per startup
+
+
+
+
+      25.5%                                              197                                     74%
+      of startups are B2B—yet earn 62% of                startups tagged AI—the single largest
+                                                                                                 of tracked MRR sits in US-based startups
+      B2B+B2C MRR                                        category
+
+
+
+
+TrustMRR dataset · 1,000 startups · frozen 30 Jul 2026                                                                                      03
+ Category landscape: volume vs. revenue diverge
+ AI leads on startup count, but Education and Marketing earn more per company
+
+ Startups by category (count)                                                       Total MRR by category (USD)
+
+
+          E-comm                19                                                 Health & Fitness         $171K
+
+
+        Education                    30                                            Content Creation         $200K
+
+
+Health & Fitness                      34                                               Mobile Apps           $203K
+
+
+Content Creation                      36                                              Social Media              $304K
+
+
+        Dev Tools                      37                                                 Analytics                  $358K
+
+
+        Marketing                          42                                              E-comm                     $396K
+
+
+      Productivity                          49                                           Marketing                     $444K
+
+
+     Mobile Apps                                52                                       Education                           $524K
+
+
+              SaaS                                   66                                      SaaS                              $589K
+
+
+                  AI                                                   197                      AI                                                         $1,806K
+
+
+                       0                  50              100   150   200    250                      $0K            $500K             $1,000K   $1,500K    $2,000K
+
+
+TrustMRR dataset · 1,000 startups · frozen 30 Jul 2026                                                                                                               04
+ Revenue is geographically concentrated
+ The US holds 26% of startups but roughly 74% of all tracked MRR
+
+ $8M
+               $8M
+                                                                                        Reading the gap
+ $7M
+
+
+ $6M
+                                                                                        •   France is the clear #2 by startup count
+                                                                                            (79) but its total MRR ($894K) is a
+ $5M
+                                                                                            fraction of the US figure.
+
+ $4M                                                                                    •   Revenue per startup swings by market:
+                                                                                            Singapore’s 9 startups post a $2,126
+ $3M                                                                                        median MRR, while India’s 59 sit near $6
+                                                                                            — mostly pre-traction.
+ $2M
+                                                                                        •   65 countries appear in total, but the top 4
+                                 $1M                                                        alone (US, FR, CA, GB) account for over
+ $1M
+                                                                                            90% of tracked MRR.
+                                                    $0M   $0M
+                                                                $0M   $0M   $0M   $0M
+ $0M
+               US                 FR                CA    GB    HK    IN    SG    AU
+
+
+
+
+TrustMRR dataset · 1,000 startups · frozen 30 Jul 2026                                                                                    05
+ B2B is rarer, but monetizes far harder
+ 255 B2B startups out-earn 401 B2C startups in total MRR, with 5.7x the median
+
+
+                                                Startup count                                    Median MRR (USD)
+ 450                                                                         $1,200
+                                                         401
+ 400                                                                                    $1,036
+                                                                             $1,000
+ 350
+
+ 300                                                                             $800
+                       255
+ 250
+                                                                                 $600
+ 200
+
+ 150                                                                             $400                               $352
+
+ 100
+                                                                                                         $181
+                                                                56               $200
+   50
+
+    0                                                                              $0
+                       B2B                               B2C    Both                     B2B             B2C        Both
+
+
+
+
+TrustMRR dataset · 1,000 startups · frozen 30 Jul 2026                                                                     06
+ Who’s fastest to revenue: the top earners
+ Ranked by 12-month revenue, tracked against the last 30 days and 3 months
+
+
+     #                                   Startup                                     Category                       Country                   Rev. 30d       Rev. 3m        Rev. 12m
+
+
+     1       Stan                                                         Creator tools*                      US                                    $2.84M             $0      $25.02M
+
+
+     2       Brand On Demand, Inc.                                        E-comm                              US                                    $0.98M        $2.99M       $10.64M
+
+
+     3       Stack Influence                                              Marketing                           US                                    $0.87M        $2.37M       $10.52M
+
+
+     4       Stealth Company (anonymized)                                 —                                   —                                     $0.86M        $1.10M        $4.92M
+
+
+     5       Comp AI                                                      AI                                  US                                    $0.58M        $1.65M        $3.94M
+
+
+
+
+ *value_proposition / problem_solved not populated for this record. “Stealth Company” is a real, anonymized listing (114 rows share this label).
+
+
+
+         Takeaway: the same three named startups (Stan, Brand On Demand, Stack Influence) top every revenue window — US-based, and none are pure “AI” category.
+
+TrustMRR dataset · 1,000 startups · frozen 30 Jul 2026                                                                                                                                   07
+ Fastest-growing MRR in the last 30 days
+ Named startups with MRR above $1,000, ranked by mrr_growth_30d_pct
+
+
+
+            BillionVerify
+                                                                294%
+          (Marketing, HK)
+
+
+
+      Kickly – Pronos IA
+                                                                        385%
+         (Games, FR)
+
+
+
+         Hong Xuan Kow
+                                                                               459%
+            (AI, US)
+
+
+
+              HotelHero.ai
+                                                                                                                                                            1227%
+                (AI, US)
+
+
+
+     Hidden Jobs
+                                                                                                                                                                         1357%
+ (Recruiting & HR, US)
+
+
+                                0%                       200%          400%            600%                800%                 1000%               1200%                1400%   1600%
+
+
+
+ One unnamed “Stealth Company” record shows +12,983% growth off a low base and is excluded here to keep the chart legible — flagged separately as a data outlier, not a trend.
+
+
+TrustMRR dataset · 1,000 startups · frozen 30 Jul 2026                                                                                                                                   08
+ How these startups position and price themselves
+ Based on the ~65% of records with stated pricing and positioning text
+
+
+
+
+            52.7%                                                    44.9%                                                        12.5%
+
+       mention a free tier or free trial                          bill on a monthly or yearly cycle                           offer one-time / lifetime pricing
+
+
+
+
+       Recurring language in value propositions                                                   Who they say they’re built for
+
+
+
+       “AI-powered,” “real-time,” “transform,” “instantly,” and “generate”                        Target personas cluster around creators, teams, agencies, developers,
+       dominate — most pitches are automation and content/video                                   and founders — B2B-flavored language even in nominally B2C listings,
+       generation stories, not new-category creation.                                             reinforcing the B2B revenue premium seen earlier.
+
+
+
+
+TrustMRR dataset · 1,000 startups · frozen 30 Jul 2026                                                                                                                    09
+Key takeaways
+ 1         Revenue is winner-take-most: a handful of named startups (Stan, Brand On Demand, Stack Influence) anchor the top of every revenue window,
+           30-day through 12-month.
+
+
+ 2
+           Category size and category earnings are different stories — AI has the most startups (197) but Education and Marketing carry higher median MRR.
+
+
+ 3
+           Geography is lopsided: the US alone holds roughly three-quarters of all tracked MRR despite being a quarter of the listings.
+
+
+ 4
+           B2B is the smaller but stronger segment — fewer startups (255 vs. 401 B2C), yet a 5.7x higher median MRR.
+
+
+ 5         Freemium is the default motion (53% of stated pricing models), and positioning language is dominated by AI-powered automation and content-
+           generation framing.
+
+
+ 6         Treat this as a self-reported, partially-populated leaderboard, not a census — roughly a third of positioning fields are blank, and 274 rows are
+           unclassified or intentionally anonymized.
+
+TrustMRR dataset · 1,000 startups · frozen 30 Jul 2026
+

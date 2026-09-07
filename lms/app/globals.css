@@ -1,0 +1,72 @@
+/* The Forge · Praxel — brand foundation (see docs/BRAND.md) */
+
+:root {
+  /* Brand colors */
+  --parchment: #fbf8f3; /* default background, never pure white */
+  --ink: #1f1a14; /* default text */
+  --pine: #1e3a35; /* primary action color */
+  --ochre: #c4581a; /* single accent, one emphasis per view */
+  --beacon: #f0d478; /* sparing highlight */
+  --sand: #ede5d8; /* 1px borders and dividers */
+  --charcoal: #5c5046; /* secondary text */
+  --clay: #9c8e82; /* tertiary text, labels */
+  --cream: #f5f0e8; /* text on Pine backgrounds */
+
+  /* Font variables --font-fraunces, --font-geist-sans, --font-geist-mono
+     are set on <html> by next/font in app/layout.tsx */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  /* Brand rule: no rounded corners, anywhere. */
+  border-radius: 0 !important;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--parchment);
+  color: var(--ink);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+code,
+pre,
+kbd {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+a {
+  color: var(--pine);
+  text-decoration-color: var(--sand);
+  text-underline-offset: 3px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ochre);
+  outline-offset: 2px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--sand);
+}

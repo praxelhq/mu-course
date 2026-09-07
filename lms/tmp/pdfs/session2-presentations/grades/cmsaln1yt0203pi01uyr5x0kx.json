@@ -1,0 +1,39 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 5,
+    "narrative": 5,
+    "framing": 4.5,
+    "accuracy": 3,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Volume-vs-median category contrast on slide 6 is a genuinely useful analytical move.",
+  "fix_next": "Stripe (636 companies, $13.5M) is the dominant provider—omitting it and calling Superwall the leader is a critical framing error.",
+  "verdict": "Several material errors undermine an otherwise competent but unremarkable readout.",
+  "flags": [
+    "major-provider-omission",
+    "fabricated-median-values",
+    "anonymous-count-wrong",
+    "causal-language-on-correlation",
+    "dashboard-chart-labels-wrong"
+  ],
+  "factual_error_count": 9,
+  "factual_error_detail": "Slide 4: Anonymous listed as 130 (should be 129) and named as 870 (should be 871)—minor. Anonymous revenue $4,191,784 implies 26.9% which is close but the dollar figure doesn't match reference ($4,134,957 implied by 26.525% of $15.6M). Slide 5: Stripe/RevenueCat/Lemon Squeezy/Dodo/Polar all omitted; presenting Superwall as dominant payment provider is fundamentally misleading—Stripe processes $13.5M across 636 companies. Slide 6: Education median shown as $2,142 (reference $2,435); Marketing median $1,586 (reference $2,369.50); Analytics median $1,294 (reference $419); AI median $446 (reference $503). Customer Support and Marketplace medians unverifiable but likely from very small n without disclosure. Slide 6 left chart: SaaS shown as #2 by total revenue but reference shows Marketing #2 ($1.317M vs SaaS $703K). Slide 7: E-comm median shown as $155 (reference $387). Slide 9 dashboard: Median MRR chart shows AI $150, SaaS $150, Education $150, Marketing $150, E-comm $150—all identical and clearly wrong placeholder values. Slide 8: Calling subscriptions a 'highly reliable leading indicator' implies causation from correlation.",
+  "evidence": {
+    "insight": "Slide 6 volume-vs-median contrast is the strongest analytical contribution; slide 10 'AI Valuation Trap' attempts synthesis but rests on wrong median figures. No discussion of missingness impact, top-10 concentration, or founded-year non-correlation.",
+    "narrative": "Deck follows a logical sequence (overview → geography → identity → providers → categories → predictors → conclusions) but reads as a topic-by-topic report rather than building toward a single thesis. No clear question is posed or answered.",
+    "framing": "Slide 1 title 'Strategic Financial Readout' is vague; no audience question, scope statement, or limitations slide. Missing-data discussion limited to domain rating on slide 2; category missingness (274 rows) never mentioned despite heavy category analysis.",
+    "accuracy": "At least 9 material errors: Stripe entirely omitted from provider analysis, multiple median values wrong by large margins (Marketing off by ~50%, Analytics off by ~3x, E-comm off by ~60%), SaaS misranked as #2 total revenue, slide 9 dashboard shows identical $150 placeholder medians for 5 categories. Education median off by ~12%.",
+    "visual": "Clean, consistent serif typography and muted palette. Charts are legible and appropriately chosen (bar, pie, scatter). Slide 9 dashboard is ambitious but the median MRR chart has clearly broken/placeholder data. No excessive decoration. Layout is professional if template-driven.",
+    "ai_slop": "Slide 9 dashboard median MRR chart shows identical $150 values for AI, SaaS, Education, Marketing, E-comm—strong indicator of AI-generated placeholder data never corrected. Consulting-style language ('Strategic Financial Readout', 'gold standard') throughout."
+  },
+  "confidence": "high",
+  "total": 46,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 17384,
+    "output_tokens": 1011
+  }
+}

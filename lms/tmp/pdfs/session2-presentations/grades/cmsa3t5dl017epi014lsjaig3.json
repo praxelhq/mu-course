@@ -1,0 +1,40 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 2,
+    "narrative": 3,
+    "framing": 2.5,
+    "accuracy": 2,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "The 2×2 visibility-vs-revenue quadrant on slide 7 is a reasonable conceptual framework.",
+  "fix_next": "Almost no actual data from the dataset appears anywhere—replace generic consulting assertions with specific numbers, charts, and verifiable findings.",
+  "verdict": "Polished template with virtually no data analysis behind it.",
+  "flags": [
+    "ai-slop",
+    "no-dataset-numbers",
+    "fabricated-chart-percentages",
+    "decorative-stock-image",
+    "consulting-filler",
+    "unearned-certainty"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 3: Claims 'top 20% generate 80% of revenue'—actual top-10 (1%) share is ~49.6%, and no 80/20 figure is verified. Slide 4: Category percentages (42% AI, 24% Dev Tools, 18% Productivity, 16% Creator) appear fabricated—dataset categories don't match these labels or proportions (AI is 197/726≈27%, not 42%). Slide 8: 'Winning Success Patterns' table presents claims about iteration speed, pricing models, and churn as data findings but none are in the dataset.",
+  "evidence": {
+    "insight": "No slide cites a single specific number from the dataset (total revenue, median, provider share, sample size). Slides 5 and 8 offer generic startup advice unconnected to any analysis.",
+    "narrative": "Loose sequence from 'global ecosystem' to 'revenue concentration' to 'AI trends' to 'growth drivers' to 'recommendations,' but no thesis ties them together and no analytical thread builds.",
+    "framing": "No dataset description (1,000 rows, missingness, time window), no audience stated, no limitations acknowledged. Slide 2 uses a stock 'Revenue Operating System' logo map unrelated to the dataset.",
+    "accuracy": "Slide 3 Pareto curve is illustrative, not computed. Slide 4 percentages are invented categories. Slide 6 scatter plot has ~12 unlabeled dots with no axes scales. Slide 8 table is opinion, not data. No verifiable number from the frozen dataset appears anywhere.",
+    "visual": "Consistent dark theme, clean typography, good use of cards and color accents. However, slide 2 uses an irrelevant stock infographic, and charts on slides 3 and 6 are decorative sketches rather than real data visualizations.",
+    "ai_slop": "Pervasive: inflated consulting language ('definitive intelligence platform,' 'organic flywheel adoption,' 'long-tail optionality for ecosystem intelligence'), generic 5-step frameworks (slide 5), decorative non-data charts, stock image on slide 2, and content that could describe any SaaS dataset."
+  },
+  "confidence": "high",
+  "total": 27,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18380,
+    "output_tokens": 757
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 6,
+    "narrative": 6.5,
+    "framing": 5,
+    "accuracy": 4,
+    "visual": 5.5,
+    "bonus": 0
+  },
+  "what_worked": "Bubble chart contrasting category volume against median MRR is the deck's strongest analytical contribution.",
+  "fix_next": "Fix the multiple wrong category medians, disclose missingness rates, and strip the fake consulting-firm chrome entirely.",
+  "verdict": "Coherent arc with real ideas, undermined by numerous factual errors and heavy AI-template theater.",
+  "flags": [
+    "inflated-consulting-language",
+    "multiple-factual-errors",
+    "ai-slop-template-chrome",
+    "missing-limitations-discussion",
+    "pearson-r-variable-mismatch",
+    "fabricated-org-branding",
+    "no-missingness-disclosure",
+    "y-axis-scale-mismatch"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 2: total MRR pool stated as $13.47M, actual $15.60M. Slide 2: average MRR $13,472 inconsistent with $15.6M/1000=$15,596. Slide 3: AI median $446 vs ref $503; Marketing median $1,586 vs ref $2,369.50; Education median $2,142 vs ref $2,435; SaaS median $303 vs ref $200.50; E-commerce median $155 vs ref $387. Slide 5: B2B multiple 2.35x presented as clearly superior to B2C but ref shows B2C median 2.30x—negligible gap misrepresented. Slide 5: anonymous count 130 vs ref 129. Slide 7: Pearson r=0.024 attributed to Twitter/X followers vs revenue, but reference value 0.024763 is for founded-year vs revenue—variable mismatch.",
+  "evidence": {
+    "insight": "Slide 3 category bubble chart and slide 9 diagnostic matrix show genuine analytical thinking; the median-vs-total tension in categories is decision-useful. However, the B2B valuation 'advantage' on slide 5 is a non-finding dressed up as insight (2.35x vs 2.30x).",
+    "narrative": "Clear arc from concentration → categories → geography → audience → infrastructure → vanity metrics → valuation → synthesis → recommendations. Each slide builds toward the final matrix. Weakened by formulaic 'STRATEGIC TAKEAWAY' bars that repeat rather than deepen.",
+    "framing": "Slide 1 poses clear questions. But no limitations slide, no disclosure of 24-29% missingness across key fields, no mention of 216 zero-revenue rows, no denominator transparency. Fake 'Telemetry Intelligence Group // Confidential Briefing // Q3 Data Set' branding misleads about provenance.",
+    "accuracy": "At least 5 category medians are materially wrong. Total revenue pool understated by ~$2.1M. Pearson r attributed to wrong variable pair. B2B superiority overstated. Anonymous business count off by 1. These compound into a pattern of unreliable numbers.",
+    "visual": "Bold headlines, consistent template, effective chart choices (histogram, bubble, bar). But meaningless template chrome (DATA.1EB DATE, DATE 5.187 P8M), fake dates, fake org branding are pure decoration. Slide 3 y-axis scaled to 200K for 'Median MRR' values that max at ~$2,142—scale is nonsensical.",
+    "ai_slop": "Pervasive: 'Gravitational Well,' 'Architectural Blueprint,' 'Strategic Mandates,' 'Tactical Deployment Checklist,' 'Telemetry Intelligence Group // Confidential Briefing.' Every slide uses identical STRATEGIC TAKEAWAY footer. Fake organizational branding, fake dates, meaningless template metadata strings. Could fit any dataset with minor word swaps."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 4.5 to 4.0 due to confirming 8 factual errors including total revenue understatement, multiple wrong medians, and variable mismatch on Pearson r. Lowered framing from 5.5 to 5.0 for zero missingness disclosure despite 24-29% missing rates. Removed bonus point: the consulting-theater template and AI slop disqualify bonus-level distinction.",
+  "total": 54,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 17536,
+    "output_tokens": 1109
+  }
+}

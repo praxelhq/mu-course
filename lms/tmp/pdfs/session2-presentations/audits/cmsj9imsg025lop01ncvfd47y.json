@@ -1,0 +1,44 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 3.5,
+    "narrative": 4.5,
+    "framing": 3.5,
+    "accuracy": 2.5,
+    "visual": 4.5,
+    "bonus": 0
+  },
+  "what_worked": "Clear thesis that B2B workflow embedding matters more than AI label, supported by a logical slide sequence.",
+  "fix_next": "Verify every number against the actual dataset; Customer Support and Marketplace medians appear fabricated, and B2B/B2C values are wrong.",
+  "verdict": "Polished template with a reasonable thesis undermined by fabricated numbers and unsupported claims.",
+  "flags": [
+    "fabricated-category-medians",
+    "wrong-b2b-b2c-medians",
+    "unsupported-correlation-claims",
+    "no-sample-sizes",
+    "missing-data-not-acknowledged",
+    "ai-slop-consulting-language",
+    "no-limitations-slide",
+    "gamma-template-repetitive"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 6: Customer Support $5,163 and Marketplace $4,322 medians — these categories do not appear in the reference top-category list and are likely fabricated or miscalculated. Education median shown as $2,140 vs reference $2,435; Marketing $1,590 vs reference $2,369.50; Analytics $1,290 vs reference $419. Slide 4: B2B median $1,036 and B2C median $181 do not match reference on-sale medians. Slide 5: 'Strong correlation' for active subscriptions and 'weak correlation' for traffic/followers stated without any correlation coefficients or evidence from the dataset.",
+  "evidence": {
+    "insight": "Core thesis (B2B > AI) is a defensible read of the data but is asserted rather than demonstrated with rigorous analysis. No original quantitative discovery beyond two bar charts with questionable numbers. Slide 5 makes correlation claims with zero quantitative backing.",
+    "narrative": "Logical flow: overview → thesis → B2B evidence → drivers → categories → recommendation. But only 6 content slides, and two (slides 5, 7) are pure text assertion without any data visualization or dataset-grounded numbers, making the arc feel thin.",
+    "framing": "Audience implied as investors (slides 5, 7) but never explicitly stated. No mention of 274 missing categories, 288 missing audience_type, or 216 zero-revenue rows. No limitations or caveats slide. Scope ('what drives SaaS revenue') is broad for a cross-sectional snapshot dataset. Downgraded 0.5 from preliminary for complete absence of data-quality acknowledgment.",
+    "accuracy": "At least 5 specific numerical claims are wrong or unverifiable: two fabricated category names (Customer Support, Marketplace), three wrong category medians (Education, Marketing, Analytics), and B2B/B2C medians that don't match reference. Correlation claims on slide 5 are wholly unsupported assertions.",
+    "visual": "Consistent dark theme with cyan/green accents; bar charts on slides 4 and 6 are clean and legible. However, heavy Gamma template reliance with repetitive three-column card layouts (slides 5, 7). Two data-claim slides have no charts at all. Donut chart on slide 2 is redundant given the text already states the same numbers.",
+    "ai_slop": "Pervasive consulting-speak: 'The data is unambiguous,' 'Capital deployed against workflow dependency wins,' 'structurally limited,' 'investable SaaS business.' Slide 7 reads like a generic VC pitch template. Repetitive card layouts and inflated language throughout suggest heavy AI generation with minimal editing."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing by 0.5 from preliminary (4→3.5) because the complete absence of any data-quality acknowledgment (274 missing categories, 216 zero-revenue rows, cross-sectional snapshot limitations) is a more serious framing failure than the preliminary score reflected. All other scores confirmed after independent review.",
+  "total": 37,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 15449,
+    "output_tokens": 1009
+  }
+}

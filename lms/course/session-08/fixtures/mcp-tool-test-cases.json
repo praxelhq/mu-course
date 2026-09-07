@@ -1,0 +1,37 @@
+[
+  {
+    "case": "No verified consent means no action",
+    "input": { "company_name": "Quiet Labs", "contact_email": "founder@quiet.example", "team_size": 6, "requested_plan": "starter", "consent_recorded": false, "risk_flagged": false },
+    "expected": { "status": "blocked", "route": "blocked_no_consent", "action_taken": "no_action", "draft_subject": "", "draft_body": "" }
+  },
+  {
+    "case": "Small starter lead is warm",
+    "input": { "company_name": "Tiny Tiger", "contact_email": "hello@tinytiger.example", "team_size": 5, "requested_plan": "starter", "consent_recorded": true, "risk_flagged": false },
+    "expected": { "status": "draft_ready", "route": "warm", "action_taken": "draft_prepared_no_external_send", "draft_subject": "Your PraxelPay plan enquiry · Tiny Tiger" }
+  },
+  {
+    "case": "Pro lead is hot",
+    "input": { "company_name": "Orbit Works", "contact_email": "ops@orbitworks.example", "team_size": 24, "requested_plan": " pro ", "consent_recorded": true, "risk_flagged": false },
+    "expected": { "status": "draft_ready", "route": "hot", "action_taken": "draft_prepared_no_external_send", "draft_subject": "Your PraxelPay plan enquiry · Orbit Works" }
+  },
+  {
+    "case": "Enterprise always waits for separate human approval",
+    "input": { "company_name": "Northstar Labs", "contact_email": "founder@northstar.example", "team_size": 24, "requested_plan": "Enterprise", "consent_recorded": true, "risk_flagged": false },
+    "expected": { "status": "approval_required", "route": "manual_review", "action_taken": "draft_prepared_no_external_send", "draft_subject": "Your PraxelPay plan enquiry · Northstar Labs" }
+  },
+  {
+    "case": "Risk flag forces manual review",
+    "input": { "company_name": "Flagged Fox", "contact_email": "ops@flaggedfox.example", "team_size": 8, "requested_plan": "starter", "consent_recorded": true, "risk_flagged": true },
+    "expected": { "status": "approval_required", "route": "manual_review", "action_taken": "draft_prepared_no_external_send", "draft_subject": "Your PraxelPay plan enquiry · Flagged Fox" }
+  },
+  {
+    "case": "Team size boundary forces manual review",
+    "input": { "company_name": "Century Systems", "contact_email": "ops@century.example", "team_size": 100, "requested_plan": "pro", "consent_recorded": true, "risk_flagged": false },
+    "expected": { "status": "approval_required", "route": "manual_review", "action_taken": "draft_prepared_no_external_send", "draft_subject": "Your PraxelPay plan enquiry · Century Systems" }
+  },
+  {
+    "case": "Unknown plan fails closed",
+    "input": { "company_name": "Mystery Co", "contact_email": "hello@mystery.example", "team_size": 12, "requested_plan": "premium", "consent_recorded": true, "risk_flagged": false },
+    "expected": { "status": "invalid_input", "route": "invalid_plan", "action_taken": "no_action", "draft_subject": "", "draft_body": "" }
+  }
+]

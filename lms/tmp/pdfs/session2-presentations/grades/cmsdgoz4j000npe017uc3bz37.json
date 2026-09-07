@@ -1,0 +1,40 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 3.5,
+    "narrative": 4.5,
+    "framing": 4,
+    "accuracy": 2.5,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "The traffic-vs-revenue quadrant framework on slide 9 is a genuinely useful conceptual synthesis.",
+  "fix_next": "Multiple charts failed to render (slides 7, 8), category names don't match the dataset, and key claims like '3× RPV' lack verifiable evidence.",
+  "verdict": "Consulting-style narrative built on broken charts, fabricated categories, and unsupported claims.",
+  "flags": [
+    "missing-charts",
+    "fabricated-categories",
+    "unsupported-statistics",
+    "ai-slop",
+    "decorative-graphics",
+    "unearned-certainty"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 3: Categories 'Developer Tools,' 'Finance,' 'Creator Economy' do not exist in the dataset (dataset has Dev Tools, no Finance or Creator Economy as listed). Slide 3: Claims 'Developer Tools and marketing dominate by volume' — AI has 197 companies, the largest by far, not Dev Tools. Slide 3: Claims 'fastest year-over-year growth' for AI and finance — no temporal growth data exists in the dataset. Slide 5: Claims 'Finance and Creator Economy generate the highest revenue per startup' — these categories don't match dataset; Education has highest eligible median ($2,435). Slide 5: Chart x-axis appears to show counts but labels don't match known category sizes (e.g., AI shows ~90 not 197). Slide 8: Claims '3× Higher RPV' for niche audiences — no evidence or calculation shown; B2B/B2C median multiples are ~2.3x not 3x. Slide 3: US share stated as 42% — dataset shows 258 US companies out of 759 with country data = 34%, not 42%.",
+  "evidence": {
+    "insight": "Slide 9 quadrant is the only original framework. Most other slides restate conventional SaaS wisdom (subscription > one-time, niche > broad) without dataset-specific evidence. Slides 6 and 10 are pure platitudes.",
+    "narrative": "There is a coherent thesis (specificity wins) threaded through slides, but slides 6 and 10 are repetitive summaries of the same points. The arc is more listicle than argument.",
+    "framing": "Slide 2 shows data completeness transparently, which is good. But the 'marketing anatomy' framing promises more than delivered — no actual marketing channel analysis. Audience and scope are vaguely defined.",
+    "accuracy": "Slides 7 and 8 have empty/broken chart areas with only axis labels visible. Category names are fabricated or renamed from the dataset. The '3× RPV' claim is unverifiable. US share is wrong. YoY growth claims have no temporal data support. The chart on slide 5 doesn't match known category counts.",
+    "visual": "Slides 7 and 8 have broken/empty charts — major rendering failures. Decorative illustrations on slides 6 and 10 add no information. Slide 4 scatter plot has very few points and unclear axes. Consistent Gamma template but repetitive layout. Color palette is monotone navy with no meaningful encoding.",
+    "ai_slop": "Heavy consulting language throughout ('competitive moat,' 'flywheel of predictable revenue,' 'out-position'). Slides 6 and 10 are nearly identical advice lists with decorative clip art. Trophy and compass illustrations are purely decorative. Claims presented with unearned certainty. Template repetition across slides."
+  },
+  "confidence": "high",
+  "total": 35,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19020,
+    "output_tokens": 919
+  }
+}

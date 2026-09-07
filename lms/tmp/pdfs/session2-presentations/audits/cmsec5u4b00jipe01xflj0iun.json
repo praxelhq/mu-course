@@ -1,0 +1,44 @@
+{
+  "slide_count": 6,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7.5,
+    "framing": 5,
+    "accuracy": 4,
+    "visual": 5.5,
+    "bonus": 1
+  },
+  "what_worked": "Buy/build/acquire framework synthesizes multiple analyses into a coherent, decision-oriented portfolio thesis across slides.",
+  "fix_next": "Disclose sample sizes, category missingness (274/1000), and source of MRR/growth/subscriber metrics not in the frozen dataset.",
+  "verdict": "Strong thesis arc undermined by unverifiable metrics and absent data-quality disclosure.",
+  "flags": [
+    "unverifiable-growth-metric",
+    "unverifiable-mrr-multiples",
+    "unverifiable-active-subscribers",
+    "missing-data-caveats",
+    "no-sample-size-disclosure",
+    "phantom-category-fintech",
+    "no-limitations-slide",
+    "gamma-template"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 2: 'market median of 2.4x' — the frozen reference gives on-sale B2B/B2C median multiples of 2.35x/2.30x, not 2.4x; MRR figures for PROSP/PolyPick and the multiple calculation are unverifiable from the dataset. Slide 3: 'Fintech' category does not appear in the reference category list; 30-day growth rates are not derivable from the frozen dataset. Slide 3: claim 'all other categories are flat or negative' contradicted by the chart itself showing Mobile Apps, Marketing, Education with small negative bars — not flat — but the underlying metric is unverifiable. Slide 4-5: 'revenue per active subscriber' and 'median followers/active audience' metrics are not in the frozen dataset fields.",
+  "evidence": {
+    "insight": "Slides 4-5 juxtapose audience size against revenue-per-user to surface a monetization gap — a genuinely useful analytical move. The 13x category gap headline is attention-grabbing and decision-relevant. However, the underlying metrics cannot be verified against the frozen dataset.",
+    "narrative": "Clean three-act arc: slide 1 thesis, slides 2-5 each support one strategic leg (buy, build, acquire), slide 6 synthesizes into a 2x2 action matrix. Each slide ends with a boxed recommendation. Sequence is purposeful and builds logically.",
+    "framing": "No dataset description, no row count context beyond title, no missingness disclosure (274 missing categories, 288 missing audience_type), no limitations. Audience implied as investor/operator but never stated. A cold reader cannot assess data reliability or scope. Worse than preliminary — the absence of any caveats on derived metrics is a significant framing gap.",
+    "accuracy": "Multiple core metrics appear fabricated or derived from fields absent in the frozen dataset: MRR multiples (slide 2), 30-day growth rates (slide 3), active subscriber counts and revenue-per-subscriber (slides 4-5). 'Fintech' is not a reference category. The 2.4x median multiple does not match either B2B (2.35x) or B2C (2.30x) reference medians. Category-level claims ignore 27.4% category missingness. Downgraded from preliminary 4.5 to 4.0 given the Fintech phantom category and the 2.4x mismatch.",
+    "visual": "Consistent dark theme, muted olive palette, simple bar charts. Slide 4 dual-chart layout is effective. No sample-size annotations on any chart. Dashed borders are Gamma template artifacts. No chart type variety. Legible but unremarkable.",
+    "ai_slop": "Gamma watermark on every slide. Recommendation boxes are formulaic but contain substantive content. Template-driven styling with minimal customization. Not egregious filler but clearly AI-assisted template output."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 4.5 to 4.0: the 2.4x median multiple is verifiably wrong against both B2B and B2C reference medians, and 'Fintech' is a phantom category. Lowered framing from 5.5 to 5.0: complete absence of data-quality caveats is more serious given that most slide claims rely on unverifiable derived metrics. Other scores unchanged.",
+  "total": 58,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 11708,
+    "output_tokens": 1082
+  }
+}

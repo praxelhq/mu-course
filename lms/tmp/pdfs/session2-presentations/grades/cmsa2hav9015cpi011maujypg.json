@@ -1,0 +1,38 @@
+{
+  "slide_count": 16,
+  "scores": {
+    "insight": 6.5,
+    "narrative": 7,
+    "framing": 7,
+    "accuracy": 5,
+    "visual": 6,
+    "bonus": 1
+  },
+  "what_worked": "Clear thesis that volume ≠ profitability, well-structured narrative arc with actionable closing recommendations.",
+  "fix_next": "Multiple median MRR figures deviate materially from reference data; verify every category median against the frozen dataset before presenting.",
+  "verdict": "Coherent story with good structure, undermined by several inaccurate category medians.",
+  "flags": [
+    "median-discrepancies",
+    "correlation-chart-labels-truncated",
+    "revenue-field-confusion",
+    "b2b-b2c-ratio-off"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 3: claims 31 attributes and 65 countries—dataset has 29 usable attributes per rubric context, and country has 241 missing so 65 is unverifiable but plausible. Slide 6: '$13.5M Combined MRR' conflates MRR with 30-day revenue ($15.6M reference); '$282 median MRR' doesn't match reference context; '20% earn $0' should be 21.6% (216/1000). Slide 7: tier counts (197/198/197/196/196/16) sum to 1000 but the $0 bucket at 197 contradicts the 20% (200) claim on slide 6 and the reference 216. Slide 8: multiple category medians wrong—Education shown $2,142 vs reference $2,435; Marketing $1,586 vs $2,369.50; AI $446 vs $503; SaaS $303 vs $200.50; Content Creation $1,254 vs $1,237.50; E-comm $155 vs $387; Productivity $42 vs $79.91. Slide 11: B2B/B2C median ratio claimed 5.7x; reference medians give ~2.35x/2.30x multiples, not the absolute medians shown ($1,036/$181). Slide 11: Stripe revenue '$11.8M' vs reference $13.5M. Slide 12: correlation bar chart axis labels all show '0' or '1'—actual decimal values only in text, chart is misleading/broken.",
+  "evidence": {
+    "insight": "Slide 9 delivers the volume-vs-profitability contrast for AI; slide 12 ranks Spearman correlations and correctly notes social followers are weak predictors; slide 16 segments recommendations by audience. Insights are sound but not deeply original.",
+    "narrative": "Slides 2-16 follow a logical arc: dataset → cleaning → snapshot → distribution → categories → monetization → correlations → geography → recap → recommendations. The 'so what' slide lands well.",
+    "framing": "Slide 4 states the problem clearly with guiding questions; slide 5 transparently addresses missingness with a bar chart and interpretation. Audience is defined on slide 16. Scope and limitations handled reasonably.",
+    "accuracy": "Category medians on slide 8 are systematically off from reference values. The $13.5M figure on slide 6 appears to confuse MRR with 30-day revenue (reference: $15.6M). B2B/B2C 5.7x ratio doesn't match reference median multiples (~2.3x). Stripe revenue understated. Zero-revenue count inconsistent across slides.",
+    "visual": "Clean, consistent dark/light theme with good hierarchy. Slide 12 correlation chart is broken—axis labels truncated to integers (0, 1) making the chart unreadable without the text panel. Pie chart on slide 10 is acceptable but not ideal. Category comparison on slide 8 uses paired horizontal bars effectively.",
+    "ai_slop": "Minimal slop. Template is polished but not generic filler. Language is specific to the dataset. Some consulting-style phrasing ('micro-acquisition economy') but grounded in data."
+  },
+  "confidence": "high",
+  "total": 64,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 30747,
+    "output_tokens": 1013
+  }
+}

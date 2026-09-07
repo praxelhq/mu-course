@@ -1,0 +1,504 @@
+TRUSTMRR DATASET
+
+
+
+What 1,000 Startups Datasheet
+Says About the AI Long Tail
+
+- Kohinoor Mukherjee, Section B
+
+15 insights across 5 themes · $133.75M aggregate TTM revenue · 4 rated high-confidence
+
+
+
+
+Analyst brief for investment review · Data frozen 30 July 2026 · Read slide 3 first
+ORIENTATION
+
+
+The dataset in five numbers
+
+1,000                                            $133.7M $3,068                                                               50.6%                                43.8%
+startups, 29 fields                              aggregate trailing-12-month         median TTM revenue                       of all revenue held                  of revenue sits in
+self-listed on TrustMRR                          revenue across all listings         half are near pre-revenue                by just 10 startups                  uncategorised rows
+
+
+
+
+      READ THIS FIRST
+
+      This is a self-listed, Stripe-skewed sample. Founders opt in to display revenue, which selects for indie hackers proud of their numbers. Treat every finding as a
+      read on the micro-SaaS long tail — not on the AI market. Venture-scale AI companies do not list here at all.
+
+
+
+
+FIVE THEMES, FIFTEEN INSIGHTS
+
+        The AI label has stopped                         Monetisation design beats       Distribution assets track with          Momentum is negative, worse        The dataset will mislead you
+  1                                               2                                  3                                    4                                    5
+        carrying information                             category                        revenue                                 inside AI                          first
+
+
+
+
+Median used throughout, never mean — the revenue distribution is a power law.
+
+
+TrustMRR dataset · n=1,000 self-listed startups · data frozen 30 Jul 2026                                                                                                                      2
+ORIENTATION
+
+
+How to read this deck
+EVERY INSIGHT CARD HAS FOUR PARTS                                                                          EACH CARD ALSO CARRIES A CONFIDENCE RATING
+
+
+     The bold headline                             The finding, with its number stated inside it.
+                                                                                                                    HIGH        Direct count or verified arithmetic. n > 200. Act on it.
+
+     THE EVIDENCE                                  Which fields, which filter, and the sample size.
+
+                                                                                                                   MEDIUM       Sound sample, but causality or coverage unresolved.
+     THIS COULD BE WRONG IF                        The most plausible way the finding is an artifact.
+
+
+                                                                                                                    LOW         n < 60, or a plausible data artifact. Verify before use.
+     WHAT WOULD CONFIRM IT                         The specific data that would settle the question.
+
+
+
+
+METHOD AND DEFINITIONS
+
+
+     TTM                            Trailing twelve months. Field: revenue_12m_usd.                        Spearman                 Rank correlation, 0 to 1. Measures whether two things move together, not
+                                                                                                                                    by how much.
+
+
+     ARPU                           Median monthly revenue per paying subscription (mrr_usd ÷              Published multiple       TrustMRR computes asking_price ÷ (revenue_30d × 12). Verified to 0.027
+                                    active_subscriptions).                                                                          median deviation, n=217. This deck recomputes on TTM revenue instead.
+
+
+     Median / p75                   50th and 75th percentile. Means are never used — the distribution is   Nulls                    Blank revenue treated as zero. 90 rows report revenue_3m = 0 alongside
+                                    a power law.                                                                                    positive TTM; these are excluded from growth analysis.
+
+
+
+
+TrustMRR dataset · n=1,000 self-listed startups · data frozen 30 Jul 2026                                                                                                                                      3
+ORIENTATION
+
+
+Revenue is a brutal power law
+                                    100%
+
+
+                                                                                               84.7%                  Why it matters
+
+                                                                                  72.9%
+                                                                                                                      •   The bottom 500 startups together hold 0.21%
+                                    75%
+                                                                                                                          of revenue.
+
+
+
+
+   Share of total TTM revenue (%)
+                                                                                                                      •   Stan alone accounts for 18.7% — one
+                                                                                                                          company, one fifth of the market.
+                                                                  50.6%
+                                    50%
+                                                                                                                      •   Any category average is really describing two
+                                                   41.1%
+                                                                                                                          or three companies.
+
+                                                                                                                      •   Report medians and name the concentration
+                                    25%                                                                                   every time.
+                                           18.7%
+
+
+
+                                                                                                           0.2%
+                                     0%
+                                           Top 1   Top 5         Top 10           Top 50       Top 100   Bottom 500
+                                                              Startups ranked by TTM revenue
+
+
+
+
+TrustMRR dataset · n=1,000 self-listed startups · data frozen 30 Jul 2026                                                                                                 4
+THEME 1 OF 5              ·   THE AI LABEL HAS STOPPED CARRYING INFORMATION
+
+
+“AI” is now the default tag, not a category
+
+                   AI tag covers 54% of labelled startups (392 of 726) —                                     AI median TTM revenue $3,812 vs non-AI $3,174 — a
+         1                                                                                      2
+                   commoditised, not differentiating.                                                        $638 premium.
+       HIGH                                                                                   LOW
+
+
+
+
+      THE EVIDENCE                                                                          T H E E V I DE N C E
+
+      Direct count of “AI” in the markets_json field, n=726 labelled rows                   Median revenue_12m_usd, AI n=392 vs non-AI n=334
+
+
+      THIS COULD BE WRONG IF                                                                THIS COULD BE WRONG IF
+
+      Tags are self-reported; the scraper may over-assign AI liberally                      Both medians sit near zero; a $638 gap is economically meaningless
+
+
+      WHAT WOULD CONFIRM IT                                                                 WHAT WOULD CONFIRM IT
+
+      Founding dates, to test whether tagging is a recency artifact                         Company age and funding stage, to control for cohort maturity
+
+
+
+
+Takeaway: the AI label no longer separates winners from the field — it describes the field. Underwrite something else.
+
+
+
+
+TrustMRR dataset · n=1,000 self-listed startups · data frozen 30 Jul 2026                                                                                        5
+THEME 1 OF 5              ·   THE AI LABEL HAS STOPPED CARRYING INFORMATION
+
+
+And the market is already pricing that in
+
+                   AI holds just 15 of the top 50 revenue earners, despite                                  Acquirers pay 3.3x TTM revenue for AI vs 3.8x for non-
+         3                                                                                     4
+                   being 54% of the population.                                                             AI — a discount.
+      MEDIUM                                                                                 LOW
+
+
+
+
+      THE EVIDENCE                                                                         T H E E V I DE N C E
+
+      Top 50 ranked by revenue_12m_usd; 15 carry the AI tag                                Median asking_price ÷ TTM revenue; AI n=57, non-AI n=63, TTM ≥ $10k
+
+
+      THIS COULD BE WRONG IF                                                               THIS COULD BE WRONG IF
+
+      274 uncategorised rows carry no tags at all and are excluded                         These are seller-set asking prices, not prices anything actually cleared at
+
+
+      WHAT WOULD CONFIRM IT                                                                WHAT WOULD CONFIRM IT
+
+      Category inferred from website scrape for the stealth listings                       Closed-transaction data from Acquire.com or Flippa
+
+
+
+
+Takeaway: at this end of the market AI carries a valuation discount, not a premium — but on small samples of asking prices.
+
+
+
+
+TrustMRR dataset · n=1,000 self-listed startups · data frozen 30 Jul 2026                                                                                                6
+THEME 1 OF 5
+
+
+Half the population, a quarter of the revenue
+                         60%
+                                    54%
+                                                                                                          The gap
+                                                                                                          AI-tagged companies are 54% of the labelled
+                                                                                                          population but capture only 24% of the revenue.
+                         40%
+
+
+
+
+   AI-tagged share (%)
+                                                                                                          If the AI label conferred real commercial
+                                                                            30%                           advantage, those two bars would be level.
+
+                                                                                             24%
+                                                                                                          They are not close.
+                         20%
+
+
+
+
+                         0%
+                               Share of labelled                       Share of top-50   Share of total
+                                   startups                           revenue earners    TTM revenue
+
+
+
+
+TrustMRR dataset · n=1,000 self-listed startups · data frozen 30 Jul 2026                                                                                   7
+THEME 2 OF 5              ·   MONETISATION DESIGN PREDICTS REVENUE BETTER THAN CATEGORY
+
+
+How you charge beats what you build
+
+                   Sales-led pricing earns $10,980 median TTM — 3.7x                                          AI startups with a free tier earn $1,576 median TTM
+         5                                                                                       6
+                   subscription pricing's $2,989.                                                             vs $7,191 for paid-only.
+        LOW                                                                                 MEDIUM
+
+
+
+
+      THE EVIDENCE                                                                           T H E E V I DE N C E
+
+      Median TTM by pricing pattern; sales-led n=20, subscription n=433                      Within AI-tagged rows, free/trial vs paid-only pricing_model strings
+
+
+      THIS COULD BE WRONG IF                                                                 THIS COULD BE WRONG IF
+
+      n=20 is tiny, and failed enterprise attempts never get listed at all                   A free tier may signal an earlier-stage company, not a worse strategy
+
+
+      WHAT WOULD CONFIRM IT                                                                  WHAT WOULD CONFIRM IT
+
+      Whether traction precedes sales-led pricing, or follows from it                        Free-to-paid conversion rates and company age per startup
+
+
+
+
+Takeaway: pricing structure separates outcomes 3-4x more cleanly than vertical does. Diligence the pricing page first.
+
+
+
+
+TrustMRR dataset · n=1,000 self-listed startups · data frozen 30 Jul 2026                                                                                            8
+THEME 2 OF 5              ·   MONETISATION DESIGN PREDICTS REVENUE BETTER THAN CATEGORY
+
+
+Audience and structure set the ceiling
+
+                   B2B earns $49 per subscriber per month vs B2C's                                           One-time pricing caps upside: 75th-percentile TTM
+         7                                                                                      8
+                   $9.34 — a 5.2x gap.                                                                       $4,778 vs subscription's $26,978.
+       HIGH                                                                                MEDIUM
+
+
+
+
+      THE EVIDENCE                                                                          T H E E V I DE N C E
+
+      Median monthly revenue per active subscription; B2B n=228, B2C n=330                  p75 of TTM revenue; one-time n=85, subscription n=433
+
+
+      THIS COULD BE WRONG IF                                                                THIS COULD BE WRONG IF
+
+      B2C may compensate through volume — check totals, not just per-seat                   One-time pricing suits low-frequency tools by design, not by failure
+
+
+      WHAT WOULD CONFIRM IT                                                                 WHAT WOULD CONFIRM IT
+
+      Churn rates and contract length, to test whether the gap is durable                   Whether lifetime-deal revenue predates the 12-month window
+
+
+
+
+Takeaway: B2B wins on revenue per startup despite being outnumbered 255 to 401. Recurring pricing raises the ceiling, not just retention.
+
+
+
+
+TrustMRR dataset · n=1,000 self-listed startups · data frozen 30 Jul 2026                                                                                          9
+THEME 3 OF 5              ·   DISTRIBUTION ASSETS, NOT MODEL QUALITY, TRACK WITH REVENUE
+
+
+Owned distribution is the real moat
+
+                   Domain authority correlates                                               Startups selling to sales teams                     India: 59 startups at $98 median
+         9                                                                    10                                                  11
+                   0.57 with revenue; X followers                                            earn $20,194 median — 5x                            TTM, against $12,292 for the
+      MEDIUM
+                   only 0.21.                                                 LOW
+                                                                                             those selling to creators.           LOW
+                                                                                                                                                 US.
+
+
+
+      THE EVIDENCE                                                          T H E E V I DE N C E                                T H E E V I DE N C E
+
+      Rank correlation of domain_rating and x_followers                     Sales/outbound persona n=16 vs                      Country-level medians; US n=258, India n=59
+      against TTM revenue                                                   creators/influencers n=106
+
+      THIS COULD BE WRONG IF                                                THIS COULD BE WRONG IF                              THIS COULD BE WRONG IF
+
+      Causality may run backwards — revenue funds                           At n=16, one outlier moves the median               Indian founders likely use Razorpay, which this
+      SEO investment                                                        substantially                                       dataset does not scrape
+
+      WHAT WOULD CONFIRM IT                                                 WHAT WOULD CONFIRM IT                               WHAT WOULD CONFIRM IT
+
+      Traffic-source split, to separate organic search                      Whether the high revenue is software or disguised   Payment-provider coverage mapped by country
+      from paid                                                             services                                            before concluding anything
+
+
+Active subscriptions correlate 0.81 with revenue — but that is near-tautological. Domain authority at 0.57 is the finding worth acting on.
+
+
+
+
+TrustMRR dataset · n=1,000 self-listed startups · data frozen 30 Jul 2026                                                                                                           10
+THEME 4 OF 5              ·   MOMENTUM IS NEGATIVE, AND WORSE INSIDE AI
+
+
+The cohort is shrinking, not compounding
+
+                   Half of revenue-generating AI startups shrank last                                        Startups listed for sale shrink more: 40% negative
+        12                                                                                    13
+                   month, against 40% of non-AI.                                                             growth vs 32% of unlisted.
+      MEDIUM                                                                                MEDIUM
+
+
+
+
+      THE EVIDENCE                                                                          T H E E V I DE N C E
+
+      Negative 30-day revenue growth among startups above $10k TTM, n=387                   on_sale = true, n=262, against n=738 not listed
+
+
+      THIS COULD BE WRONG IF                                                                THIS COULD BE WRONG IF
+
+      One month is a snapshot; seasonality is entirely unmeasured here                      Founders may deliberately list on strength, timing an exit at peak
+
+
+      WHAT WOULD CONFIRM IT                                                                 WHAT WOULD CONFIRM IT
+
+      A 6 to 12 month revenue series per company, not a single delta                        Tracking listings to resolution — sold, delisted, or left stale
+
+
+
+
+Takeaway: assets offered for sale are decelerating faster than those that are not. Assume adverse selection until shown otherwise.
+
+
+
+
+TrustMRR dataset · n=1,000 self-listed startups · data frozen 30 Jul 2026                                                                                         11
+THEME 5 OF 5              ·   THE DATASET WILL MISLEAD YOU BEFORE IT INFORMS YOU
+
+
+Two fields that will break your model
+
+                   The published multiple annualises 30-day revenue; it                                        274 uncategorised startups hold 43.8% of all revenue
+        14                                                                                      15
+                   ranks listings at only 0.59 vs TTM.                                                         — $58.5M of $133.75M.
+       HIGH                                                                                     HIGH
+
+
+
+
+      THE EVIDENCE                                                                            T H E E V I DE N C E
+
+      Rank correlation 0.585, n=215. 47 listings display a false 0.0x multiple                Rows with a blank category field; 115 are named Stealth or Hidden
+
+
+      THIS COULD BE WRONG IF                                                                  THIS COULD BE WRONG IF
+
+      TTM is also imperfect for genuinely fast-growing young companies                        Nothing — but note these opt out deliberately, so cleaning will not fix it
+
+
+      WHAT WOULD CONFIRM IT                                                                   WHAT WOULD CONFIRM IT
+
+      Monthly revenue series, to pick a defensible denominator                                A benchmark against Stripe Atlas or Acquire.com for comparison
+
+
+
+
+Takeaway: two fields — the published multiple and the category label — will silently corrupt any model built straight off this export.
+
+
+
+
+TrustMRR dataset · n=1,000 self-listed startups · data frozen 30 Jul 2026                                                                                                  12
+THEME 5 OF 5
+
+
+Recomputed on TTM revenue, the real market rate is 3.2x
+                                       6.0x
+
+
+                                                                                                                      The published column understates
+                                                4.75x
+
+
+
+
+   Median asking price ÷ TTM revenue
+                                                                                                                      •   Published data shows 28 listings above 10x.
+                                       4.0x                                                                               Recomputed on TTM, 69 are.
+                                                               3.52x
+                                                                                            3.38x
+                                                                                                          3.20x       •   Annualising 30 days assumes a startup's best
+                                                                                                                          month repeats twelve times.
+
+                                                                                                                      •   Worst case: one listing earned its entire $9.98
+                                                                                                                          lifetime revenue last month — published 5.8x,
+                                       2.0x
+                                                                                                                          actual 70x.
+
+
+
+
+                                       0.0x
+                                              All listings   TTM ≥ $10k                 TTM ≥ $50k      TTM ≥ $100k
+                                                             Listings filtered by minimum TTM revenue
+
+
+
+
+TrustMRR dataset · n=1,000 self-listed startups · data frozen 30 Jul 2026                                                                                                   13
+PRIORITISATION
+
+
+Only 4 of 15 findings are ready to act on
+
+             HIGH           4 of 15                                             MEDIUM       6 of 15                             LOW         5 of 15
+
+     Act on these now                                                       Directionally sound, causality open            Verify before citing
+
+
+     1 — AI tag covers 54% of the field                                     3 — AI is 15 of top-50 earners                 2 — AI revenue premium is $638
+     7 — B2B ARPU is 5.2x B2C                                               6 — Free tier vs paid-only gap                 4 — AI trades at a discount
+     14 — Published multiple is broken                                      8 — One-time pricing caps upside               5 — Sales-led pricing earns 3.7x
+     15 — 43.8% of revenue uncategorised                                    9 — Domain authority correlates 0.57           10 — Sales-team persona earns 5x
+                                                                            12 — Half of AI startups shrank                11 — India median is $98
+                                                                            13 — Listed startups shrink more
+
+
+
+
+Eleven of fifteen findings rest on samples under 60, unresolved causality, or a suspected coverage gap. That is normal for a scraped self-listed dataset — what is not normal is
+presenting them as if they were equal.
+
+
+
+TrustMRR dataset · n=1,000 self-listed startups · data frozen 30 Jul 2026                                                                                                     14
+WHAT TO DO WITH THIS
+
+
+Three conclusions, one caveat
+
+ 1        Stop underwriting the AI label
+          It describes 54% of the field and captures 24% of the revenue. It predicts nothing.
+
+
+
+ 2        Underwrite pricing structure instead
+          B2B per-subscriber revenue runs 5.2x B2C — the largest and best-evidenced gap in the dataset.
+
+
+
+ 3        Recompute every published multiple
+          The listed figure ranks deals at 0.59 against TTM. Never compare two listings on it.
+
+
+
+
+     THE CAVEAT
+
+
+     Self-listed, Stripe-skewed sample. This reads the micro-SaaS long tail, not the AI market. Venture-scale companies do not list here.
+

@@ -1,0 +1,40 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 4,
+    "narrative": 5.5,
+    "framing": 4.5,
+    "accuracy": 3.5,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Myth-busting \"reality check\" structure gives the deck a coherent throughline and founder-relevant framing.",
+  "fix_next": "Most slides lack actual data evidence—show real charts from the dataset with correct numbers instead of generic illustrations and unsupported claims.",
+  "verdict": "Engaging narrative frame, but thin on real data and riddled with inaccuracies.",
+  "flags": [
+    "ai-slop-visuals",
+    "fabricated-looking-charts",
+    "inaccurate-medians",
+    "missing-data-acknowledgment",
+    "unearned-certainty",
+    "decorative-graphics"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 2: AI median MRR stated as $446, reference is $503; Education median stated as $2,141, reference is $2,435; Marketing median stated as $1,586, reference is $2,369.50; Productivity median stated as $42, reference is $79.91. Slide 7: Bar chart shows B2B average order value $1,036 and B2C $181—these figures are not verifiable from the dataset and the chart title says 'Average Order Value' which is not a dataset field; the actual B2B/B2C median revenue multiples from the reference are ~2.35x/2.30x, not the pattern shown.",
+  "evidence": {
+    "insight": "Slide 2 makes the strongest data-backed point (crowded AI vs. higher-median Education/Marketing), but the insight is undermined by wrong numbers. Slides 3-5 and 7-8 make claims ('subscribers are strongest predictors,' '$76/month per subscriber,' 'clear positive relationship') without showing supporting analysis or correlation coefficients. Slide 9 is a generic KPI list with no dataset connection.",
+    "narrative": "The seven 'reality checks' provide a clear sequential structure with a consistent assumption→data→takeaway format, culminating in a synthesis slide. However, the checks become increasingly generic and repetitive (slides 7-8 largely restate slide 2's point). The narrative arc works conceptually but doesn't deepen.",
+    "framing": "Slide 1 sets up the audience (founders) and question well. However, dataset scope (1,000 digital businesses from what source?), limitations, missingness (274 missing categories, 216 zero-revenue), and definitions are never mentioned. A cold reader doesn't know what 'the dataset' actually is.",
+    "accuracy": "Four median values on slide 2 are materially wrong (all off by 15-50%). Slide 4's scatter plot shows only ~5 points and claims a 'clear positive relationship' which is unverifiable and likely misleading given the sparse data shown. Slide 7's 'Average Order Value' chart uses a metric not in the dataset. Slide 3 claims subscribers are 'one of the strongest predictors' without showing any correlation analysis. No acknowledgment of missing data or sample sizes.",
+    "visual": "Heavy reliance on AI-generated decorative illustrations (iceberg, mountain path, tech landscape collage, office window) that don't encode data. The scatter plot on slide 5 is nearly unreadable with ~5 points. The 2x2 matrix on slide 8 appears hand-placed without axis scales. Slide 7's bar chart looks externally sourced, not generated from the dataset. Consistent template but visually samey across slides.",
+    "ai_slop": "Pervasive AI-generated illustrations (slides 1, 3, 5, 6, 7, 10) that are decorative rather than informative. Generic consulting-style takeaways ('Don't chase trends. Chase underserved customer problems.'). The 'Founder Dashboard' slide 9 is entirely generic advice with no dataset connection. Growth flywheel graphic on slide 10 is stock infographic material. Made with Gamma watermark on every slide."
+  },
+  "confidence": "high",
+  "total": 43,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18407,
+    "output_tokens": 1003
+  }
+}

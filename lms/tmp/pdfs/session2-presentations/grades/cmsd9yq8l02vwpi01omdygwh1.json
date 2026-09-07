@@ -1,0 +1,38 @@
+{
+  "slide_count": 4,
+  "scores": {
+    "insight": 5.5,
+    "narrative": 6,
+    "framing": 5,
+    "accuracy": 5.5,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Clear thesis that infrastructure choice isn't a differentiator, supported by Stripe dominance and low median ARPU.",
+  "fix_next": "Slide 3 is missing its scatter plot, the $19.88 median revenue-per-subscription is unverifiable from reference data, and the deck is too thin at four slides.",
+  "verdict": "Coherent but shallow four-slide deck with a missing chart and narrow scope.",
+  "flags": [
+    "missing-chart-slide-3",
+    "thin-deck",
+    "unverifiable-metric",
+    "narrow-scope"
+  ],
+  "factual_error_count": 1,
+  "factual_error_detail": "Slide 2: '364 startups run on a non-Stripe or alternative rail' — provider counts sum to 953 (636+189+50+36+25+17=953), leaving only ~364 if providers are mutually exclusive, but the reference total across listed providers sums to 973 with some companies possibly on multiple rails; the 63.6% figure is correct (636/1000). The $19.88 median revenue per active subscription (slides 2–3) cannot be verified against reference data and may be fabricated or computed from unstated fields.",
+  "evidence": {
+    "insight": "Slide 3 offers a useful Spearman ≈ 0.82 correlation between subscriptions and revenue, and the mean-vs-median skew observation is analytically sound. Slide 4 draws three actionable implications. However, the deck never explores categories, anonymity, geography, or concentration—limiting depth.",
+    "narrative": "Four slides follow a logical arc: title → Stripe dominance → subscription-revenue relationship → so-what. The sequence is purposeful and lands on a thesis. But the story is narrow—only two data angles (provider share, subscription-revenue correlation) support the conclusion.",
+    "framing": "Slide 1 states dataset size and freeze date. However, no mention of missingness (274 missing categories, 241 missing countries), no audience definition, and no scope limitations are disclosed. A cold reader doesn't know what questions are excluded or why.",
+    "accuracy": "Stripe 636 and 63.6% are correct. Provider counts match reference. The $19.88 median revenue per subscription is a derived metric not directly verifiable from reference benchmarks; it could be plausible but is presented without showing the calculation or denominator. The Spearman ≈ 0.82 is plausible for subscriptions vs. revenue but unverifiable. No material errors in provider counts.",
+    "visual": "Slide 2 bar chart is clean and well-labeled. Slide 3 appears to have a missing or invisible scatter plot on the left half—only the text panel renders. Slide 4 uses a generic three-card layout with decorative purple squares that add nothing. Overall design is restrained but sparse, and the missing chart is a significant gap.",
+    "ai_slop": "Slide 4's three-card layout with identical decorative purple squares is template-like filler. The phrasing 'table stakes' and 'volume game' leans toward consulting cliché but is not egregious."
+  },
+  "confidence": "high",
+  "total": 54,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 7856,
+    "output_tokens": 826
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 1.5,
+    "narrative": 2.5,
+    "framing": 2,
+    "accuracy": 1.5,
+    "visual": 4,
+    "bonus": 0
+  },
+  "what_worked": "Consistent dark-theme visual design with clean card layouts and readable typography throughout the deck.",
+  "fix_next": "Replace every slide with actual dataset numbers: totals, medians, provider shares, sample sizes, and real computed charts.",
+  "verdict": "Polished consulting template with zero dataset evidence; pure AI-generated filler throughout.",
+  "flags": [
+    "ai-slop",
+    "no-dataset-numbers",
+    "fabricated-chart-percentages",
+    "decorative-stock-image",
+    "consulting-filler",
+    "unearned-certainty",
+    "no-limitations-stated",
+    "generic-frameworks"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 4: category percentages (42%, 24%, 18%, 16%) are fabricated—categories don't match dataset and numbers are invented. Slide 3: Pareto curve claims top 20% generate 80% revenue with no computation (actual top-10 share is ~49.6%). Slide 6: scatter plot is decorative with no real data points or axis values. Slide 8: table claims about top vs average performers are opinion presented as data-derived findings.",
+  "evidence": {
+    "insight": "Zero specific numbers from the 1,000-row dataset appear anywhere. No revenue totals, medians, provider splits, category breakdowns, or correlation values cited. Slides 5 and 8 are generic startup advice completely disconnected from any analysis.",
+    "narrative": "Slides move from ecosystem → concentration → AI → growth drivers → recommendations but no analytical thread connects them. No thesis is stated or built upon. The sequence could apply to any SaaS directory without modification.",
+    "framing": "No dataset description (1,000 rows, missingness rates, time window), no audience identified, no scope or limitations acknowledged. Slide 2 uses an unrelated 'Revenue Operating System' stock infographic. A cold reader cannot assess what data underlies any claim.",
+    "accuracy": "Not a single verifiable number from the frozen dataset appears. Slide 4 invents category names and percentages. Slide 3 asserts 80/20 without computation. Slide 6 scatter has ~12 unlabeled dots with no scales. Slide 8 table is subjective opinion framed as empirical finding.",
+    "visual": "Professional dark theme, consistent color palette, clean card-based layouts. However, slide 2 stock image is irrelevant, and charts on slides 3, 4, and 6 are decorative illustrations rather than data visualizations. Good typography hierarchy.",
+    "ai_slop": "Pervasive throughout: 'organic flywheel adoption,' 'long-tail optionality for ecosystem intelligence,' 'definitive intelligence platform,' 'durable MRR,' generic 5-step framework (slide 5), comparison table (slide 8) with no data backing. Every slide reads as AI-generated consulting boilerplate."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered insight from 2→1.5, narrative from 3→2.5, framing from 2.5→2, accuracy from 2→1.5. The deck contains literally zero dataset-derived numbers, all charts are fabricated or decorative, and factual errors are more numerous than preliminary count. This is a consulting pitch template, not a data-story presentation.",
+  "total": 23,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 18262,
+    "output_tokens": 864
+  }
+}

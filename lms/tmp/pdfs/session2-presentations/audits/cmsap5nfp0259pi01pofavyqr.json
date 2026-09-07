@@ -1,0 +1,44 @@
+{
+  "slide_count": 13,
+  "scores": {
+    "insight": 6,
+    "narrative": 7,
+    "framing": 5,
+    "accuracy": 1.5,
+    "visual": 7.5,
+    "bonus": 0
+  },
+  "what_worked": "Power-law concentration thesis and B2B monetization gap are genuinely decision-useful analytical angles.",
+  "fix_next": "Rebuild every absolute count and derivative statistic from the actual 1,000-row frozen dataset, not a larger platform export.",
+  "verdict": "Strong storytelling and design, but nearly every number is wrong for the assigned dataset.",
+  "flags": [
+    "wrong-dataset-size",
+    "fabricated-or-mismatched-n",
+    "pervasive-count-errors",
+    "zero-revenue-pct-wrong",
+    "anonymous-count-wrong",
+    "category-counts-inflated",
+    "stealth-share-unverifiable",
+    "wrong-total-revenue"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 1/2/3/4: claims 8,782 rows vs frozen 1,000. Slide 4: $15.4M MRR and $247M trailing revenue vs frozen total revenue $15.6M. Slide 4: 57% zero-MRR (5,025 startups) vs actual 216/1000=21.6%. Slide 3/12: 555 stealth companies vs actual 129 anonymous. Slide 6: AI=1,430 vs actual 197; SaaS=525 vs 66; Marketing=322 vs 42; all category counts ~8-9x inflated. Slide 7: US 1,657 startups vs actual 258 with country; India 807 vs actual ~59. Slide 10: 1,952 on-sale listings vs a fraction of 1,000 rows.",
+  "evidence": {
+    "insight": "Power-law framing (slide 4), B2B vs B2C efficiency comparison (slide 8), myth-busting on followers vs revenue (slide 11), and acquisition-market rationality (slide 10) show real analytical thinking beyond surface description.",
+    "narrative": "Clear arc from market structure through distribution, category, geography, business model, growth, acquisitions, limitations, to takeaways. Slide 13 synthesizes prior findings into actionable recommendations. Coherent and purposeful.",
+    "framing": "Slide 3 provides data context and three caveats; slide 12 adds four limitations. However, the entire scope statement (8,782 rows, 29 fields) is wrong for the assigned 1,000-row frozen dataset, undermining the framing for any cold reader who checks.",
+    "accuracy": "Pervasive mismatch: every absolute count is inflated ~8.8x (8,782 vs 1,000). Zero-revenue share 57% vs actual ~21.6%. Anonymous count 555 vs 129. Total revenue $247M trailing vs $15.6M total. Category counts all wrong. Some proportional relationships (AI as top category, anonymous revenue share ~27%, B2B outperforming B2C) loosely hold, suggesting the student may have used a larger platform export rather than the assigned frozen dataset.",
+    "visual": "Clean, consistent dark-navy-and-gold template with good hierarchy. KPI cards, annotated bar charts, and section labels are well-executed. Pie chart on slide 5 is readable. Slight visual sameness but functional and restrained.",
+    "ai_slop": "Template is polished and consulting-styled but content is substantive and dataset-specific. No generic filler or decorative fabricated charts. Language like 'rational market' and 'reference tier' is slightly inflated but grounded in claims."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 2.0 to 1.5: the error count is higher than preliminary assessed (8 vs 6) — virtually every absolute figure is wrong, including the foundational n, total revenue, zero-revenue share, anonymous count, and all category/geography counts. Removed bonus point: while the deck is well-crafted, using the wrong dataset throughout disqualifies it from exceeding rubric expectations. Lowered framing by 0.5: the scope statement being fundamentally wrong (8,782 vs 1,000) means a cold reader is misled from the first slide.",
+  "total": 54,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 25814,
+    "output_tokens": 1069
+  }
+}

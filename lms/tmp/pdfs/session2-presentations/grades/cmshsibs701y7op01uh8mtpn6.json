@@ -1,0 +1,40 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 4,
+    "narrative": 4,
+    "framing": 4,
+    "accuracy": 3,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Mean vs. median skew point is valid and clearly communicated on slide 3.",
+  "fix_next": "Remove the irrelevant fishbone diagram, verify all numeric claims against the dataset, and add actual data visualizations instead of text cards.",
+  "verdict": "Text-heavy card deck with fabricated numbers, no real charts, and a stock diagram.",
+  "flags": [
+    "fabricated-numbers",
+    "no-data-visualizations",
+    "irrelevant-stock-graphic",
+    "ai-slop",
+    "unverifiable-country-MRR",
+    "missing-limitations"
+  ],
+  "factual_error_count": 7,
+  "factual_error_detail": "Slide 2: 19.7% pre-revenue — actual is 21.6% (216/1000). Slide 3: Mean $13,472 — actual ~$15,596 (total $15,596,344.59/1000); median $282 is plausible but unverified against 30-day revenue median. Slide 4: AI '3× more companies than any other segment' — AI has 197 vs. SaaS 66, which is ~3× but E-Commerce/Analytics called 'high yield' in unit revenue is misleading; Analytics median ($419) is far below Education ($2,435) and Marketing ($2,370). Slide 5: Country mean MRR figures ($18,400 US, $11,200 UK, etc.) appear entirely fabricated — no basis in dataset; India count 38+ but reference shows 59 rows with country data. Slide 6: B2B median $1,036 and B2C median $181 — reference shows B2B/B2C median revenue multiples of 2.35x/2.30x, and the '6× higher' claim is unsubstantiated. Slide 8: r≈0.02 is presented for followers-revenue but the reference r=0.025 is for founded-year/revenue, not followers.",
+  "evidence": {
+    "insight": "Slides 4 and 6 attempt headcount-vs-yield and B2B-vs-B2C comparisons, but claims are vague and unsupported by charts or correct numbers. No original synthesis beyond surface observations.",
+    "narrative": "Deck follows a logical sequence (overview → skew → categories → geography → audience → marketplace → takeaways) but reads as a list of disconnected factoid cards rather than building toward a thesis.",
+    "framing": "Slide 1 mentions 'exit multiples' and 'verified bootstrap SaaS ventures' but never defines scope, limitations, or the 24–29% missingness across key fields. No audience is specified.",
+    "accuracy": "Multiple fabricated-looking figures: country-level mean MRR values on slide 5 have no dataset basis; B2B/B2C medians on slide 6 contradict reference; pre-revenue percentage is wrong; correlation coefficient is misattributed.",
+    "visual": "Every content slide uses the same pastel card grid layout with no actual data charts, bar graphs, or scatter plots. Slide 3 includes a completely irrelevant 'Production Downtime Analysis' fishbone diagram that is clearly a stock/template graphic.",
+    "ai_slop": "Fishbone diagram on slide 3 is an unrelated stock template ('Production Downtime Analysis' with MAN/MACHINE/METHOD categories). Consulting-style language throughout ('strategic ecosystem insight,' 'revenue density,' 'micro-PE'). Identical card-grid layout on every slide. Country MRR figures appear hallucinated."
+  },
+  "confidence": "high",
+  "total": 37,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 15442,
+    "output_tokens": 929
+  }
+}

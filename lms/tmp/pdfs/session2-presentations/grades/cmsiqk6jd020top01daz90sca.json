@@ -1,0 +1,40 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 8.5,
+    "narrative": 9,
+    "framing": 8,
+    "accuracy": 5.5,
+    "visual": 8,
+    "bonus": 3
+  },
+  "what_worked": "Exceptional narrative arc from market structure through mispricing to a concrete acquisition screen with deployable numbers.",
+  "fix_next": "The $134M annualized figure is ~8.6× the actual $15.6M 30-day total; reconcile revenue base before building an investment thesis on it.",
+  "verdict": "Brilliant storytelling on a badly inflated revenue base undermines the whole thesis.",
+  "flags": [
+    "revenue-inflated-8x",
+    "zero-revenue-count-wrong",
+    "top-concentration-claim-unverified",
+    "annualization-without-caveat",
+    "b2b-median-multiplier-overstated",
+    "ai-revenue-per-company-suspect"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 1/3: '$134M verified annual revenue' implies ~$11.2M/month, but 30-day total is $15.6M → annualized ~$187M or the monthly is only $1.3M; either way $134M doesn't reconcile cleanly and the deck treats it as settled fact. Slide 3: '109 have never processed a single dollar' — dataset shows 216 zero-revenue rows, not 109. Slide 3: 'Thirteen companies produce more than the other 987 combined' — top-10 share is 49.6%, so top-13 exceeding 50% is plausible but the 54% bar and the precise claim need verification; the 3%+12%+31%+54% = 100% partition is internally consistent but the groupings are unverifiable. Slide 4: 3.8× median B2B/B2C ratio — reference shows median multiples of 2.35×/2.30× (monthly), so the annualized medians would be roughly $8,362 vs $2,213 only if computed differently; the reference B2B/B2C median revenue multiple is ~1.02×, not 3.8×. Slide 5: AI revenue per company '$94k' — actual is $2,356,676/197 ≈ $11,964 (30-day) or ~$143k annualized, not $94k; Marketing '$349k' — actual $1,317,303/42 ≈ $31,364 monthly or ~$376k annualized, close but the AI figure is off. Slide 7: Revenue shares stated as percentages of '$134M' but the base revenue figure itself is problematic.",
+  "evidence": {
+    "insight": "Slide 3's power-law framing, slide 6's domain-authority-as-moat argument, slide 8's inverse-multiple finding, and slide 9's funnel screen are all genuinely original analytical moves that go well beyond chart description.",
+    "narrative": "Perfect arc: market definition (slide 2) → structure (3) → demand (4) → supply (5) → moat (6) → geography (7) → mispricing (8) → screen (9) → recommendations (10). Each slide ends with a bolded implication that feeds the next. The thesis 'scale, not category' is sustained throughout.",
+    "framing": "Slide 2 sets context clearly for a cold reader; base notes on every slide state sample sizes and filters; audience (acquirer/investor) is implicit but unmistakable. Missing: no explicit limitations slide acknowledging 30-day snapshot, survivorship bias, or the massive missing-data rates (24-29% across key fields).",
+    "accuracy": "Core revenue figure ($134M) cannot be reconciled with the frozen dataset ($15.6M 30-day). Zero-revenue count (109 vs 216) is materially wrong. B2B/B2C median ratio (3.8×) conflicts with reference (≈1.02× on median multiples). These are not rounding issues — they are structural errors that undermine the investment thesis built atop them.",
+    "visual": "Consistent dark-navy palette, strong typographic hierarchy with section labels, bold headlines, and italic footnotes. Charts are simple and appropriate (horizontal bars, grouped bars, funnel). Annotation is excellent — every chart has a takeaway callout. Minor: slide 5's stacked bar is slightly confusing with the 54%/46% labeling. No chartjunk.",
+    "ai_slop": "The consulting-voice framing ('Strategy & Capital Deployment Review,' 'the deployable set') borders on performative but is purposeful given the chosen audience persona. No decorative-but-meaningless graphics. Template consistency is high but earned by content density. Verdict: minimal slop."
+  },
+  "confidence": "high",
+  "total": 81,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 19558,
+    "output_tokens": 1191
+  }
+}

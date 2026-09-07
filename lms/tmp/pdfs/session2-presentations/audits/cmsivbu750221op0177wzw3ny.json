@@ -1,0 +1,46 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 5,
+    "narrative": 5.5,
+    "framing": 4,
+    "accuracy": 3,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Revenue concentration analysis on Slide 2 and category yield-per-product on Slide 4 show genuine analytical reframing.",
+  "fix_next": "Stop conflating 30-day revenue with MRR; disclose 24-29% missingness rates and verify every number against the actual dataset.",
+  "verdict": "Polished template masking systematic accuracy failures and undisclosed data gaps.",
+  "flags": [
+    "mrr-vs-revenue-conflation",
+    "fabricated-tier-counts-slide5",
+    "external-chart-not-from-dataset",
+    "inflated-consulting-language",
+    "missing-data-never-disclosed",
+    "ai-slop-detected",
+    "top10-share-wrong",
+    "stripe-revenue-understated",
+    "b2b-b2c-median-multiple-overstated",
+    "zero-revenue-count-wrong"
+  ],
+  "factual_error_count": 10,
+  "factual_error_detail": "Slide 1: Total revenue labeled '$15.60M 30-day revenue' is close ($15.60M vs $15.596M) but systematically called 'MRR' elsewhere—the dataset field is revenue, not MRR. Slide 1: '$13.47M Total Ecosystem MRR' is fabricated or unexplained derivation; total revenue is $15.60M. Slide 1: '80.3% Active Monetization' implies 803 non-zero, but reference shows 784 non-zero (216 zero-revenue). Slide 2: Top-10 share stated as 48.0% vs reference 49.6%. Slide 5: Four tiers each at exactly 197 startups is almost certainly fabricated; real bin counts would not be uniform. Slide 6: Stripe revenue stated $11.75M vs reference $13.53M—understated by ~$1.8M. Slide 6: RevenueCat stated $1.15M vs reference $1.31M. Slide 3: B2B/B2C median multiple claimed 5.7x; reference on-sale medians are ~2.35x, and even if computed differently the 5.7x figure is unsubstantiated. Slide 3: Product counts (255+401+56=712) vs 1000 minus 288 missing = 712—plausible but missingness never disclosed. Slide 8: ChartMogul chart is external, not from dataset, presented without attribution as if it supports dataset findings.",
+  "evidence": {
+    "insight": "Slide 2 power-law framing and Slide 4 per-product yield are genuinely useful reframings. Slide 7 opportunity matrix attempts strategic synthesis but quadrants are qualitative assertions not plotted from data. No novel cross-cuts (e.g., TLD analysis, anonymity revenue share, founded-year correlation).",
+    "narrative": "Logical sequence from overview through segments to recommendations. However, it reads as a dashboard tour—no tension, no surprising finding driving the arc. Recommendations on Slide 10 are generic consulting advice that could apply to any SaaS dataset.",
+    "framing": "No stated audience, research question, or scope. Missing-data rates (24-29% for country, audience_type, category, domain) are never disclosed despite materially affecting denominators. Slide 1 subtitle implies comprehensive coverage. No limitations or caveats anywhere.",
+    "accuracy": "Pervasive MRR/revenue conflation is the core problem—the dataset contains 30-day revenue, not verified MRR. The mysterious $13.47M 'ecosystem MRR' figure appears nowhere in reference data. Slide 5 tier counts are almost certainly fabricated (four bins at exactly 197). Stripe revenue understated by ~$1.8M. Top-10 share off by 1.6pp. B2B/B2C median multiple inflated. Active monetization rate wrong (80.3% vs 78.4%).",
+    "visual": "Clean, consistent green/white card-based layout with good hierarchy and readable tables. Spreadsheet-tab labels are decorative but harmless. No scatter plots or histograms despite power-law claims. Slide 6 donut chart is appropriate. Slide 5's identical counts are visually suspicious. Overall restrained but repetitive template.",
+    "ai_slop": "Heavy: 'Key Executive Takeaway,' 'Executive Conclusion,' 'Strategic Market Opportunity Matrix' with generic consulting phrasing. Slide 8 pastes an external ChartMogul graphic unrelated to the dataset. Slide 5's suspiciously uniform tier counts suggest AI-generated numbers. Every slide follows identical card template with emoji-style icons."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered accuracy from 3.5 to 3.0 due to additional verified errors (fabricated $13.47M MRR figure, wrong active monetization rate, understated Stripe revenue by $1.8M). Lowered framing from 4.5 to 4.0 for complete absence of missingness disclosure despite 24-29% missing rates materially affecting every analysis. Other scores confirmed as appropriate.",
+  "total": 45,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 18965,
+    "output_tokens": 1297
+  }
+}

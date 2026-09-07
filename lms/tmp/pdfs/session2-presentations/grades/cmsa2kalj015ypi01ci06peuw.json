@@ -1,0 +1,38 @@
+{
+  "slide_count": 5,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7.5,
+    "accuracy": 5.5,
+    "visual": 7.5,
+    "bonus": 2
+  },
+  "what_worked": "A genuine thesis with a clear decision frame, honest limitations slide, and disciplined use of medians throughout.",
+  "fix_next": "The entire analysis rests on a self-constructed screening framework applied to listing data not in the frozen reference dataset; verify core figures against the actual columns.",
+  "verdict": "Original thesis, strong narrative arc, but accuracy is unverifiable against the reference dataset.",
+  "flags": [
+    "unverifiable-screening-framework",
+    "dataset-scope-mismatch",
+    "small-n-claims",
+    "missing-category-missingness-note"
+  ],
+  "factual_error_count": 3,
+  "factual_error_detail": "Slide 3: audience_type missingness shown as 29% but reference says 28.8% (288/1000)—minor. Category missingness shown as 27% but reference is 27.4% (274/1000)—minor. Country shown as 24% but reference is 24.1% (241/1000)—acceptable rounding. More materially: Slide 5 claims $28.0M is 32% of $86.8M, but 28.0/86.8 = 32.3%—acceptable. The core problem is that the 262 for-sale listings, 52 clean listings, 12-rule screen, $86.8M total asking value, and all derived metrics (median $37k vs $35k, 3.3× MRR, 13.3× MRR ratio, 1.75× multiple) cannot be verified against the frozen reference dataset, which tracks 30-day revenue not listing prices. The deck treats the dataset as a marketplace listing dataset with asking prices and multiples, but the reference dataset's total 30-day revenue is $15.6M not $86.8M—suggesting either a different interpretation of columns or fabricated figures. Slide 1 claims 29 fields; reference doesn't confirm this. Counting 3 material issues: (1) $86.8M total asking value unverifiable, (2) 262 for-sale / 52 clean pipeline unverifiable, (3) all median comparisons (price, MRR, subscribers, domain rating, multiples) unverifiable.",
+  "evidence": {
+    "insight": "Slide 2 delivers a genuinely interesting thesis: flagged listings carry higher multiples than clean ones, meaning buyers overpay per dollar of revenue for weaker assets. The 'defect rate is a floor not a ceiling' observation on Slide 3 is sharp. The pipeline thinness argument on Slide 4 adds practical nuance.",
+    "narrative": "Five slides follow a tight arc: data → thesis → limitations → deal risks → synthesis. Each slide title advances the argument. The closing line ('the edge is not picking winners, it is refusing to buy') lands well as a memorable takeaway.",
+    "framing": "Slide 1 clearly establishes scope (1,000 businesses, flat table, frozen date). Slide 3 dedicates an entire slide to limitations—unusual and commendable. However, the audience (a buyer? a platform operator?) is never explicitly stated, and the screening rules are referenced but never fully defined.",
+    "accuracy": "The missingness percentages for audience_type (29%), category (27%), and country (24%) are close to reference values. However, the entire analytical framework—262 for-sale listings, 12-rule screen, $86.8M asking value, median asking prices, multiples—cannot be cross-checked against the reference dataset. The reference dataset's key metric is 30-day revenue ($15.6M total), not asking prices. The deck may be interpreting columns differently, but this creates a significant verification gap. The 13+16+8+15=52 bar chart on Slide 4 checks out internally.",
+    "visual": "Clean, restrained design with consistent blue palette. Bar charts on Slide 2 are well-annotated with values. The funnel on Slide 5 (1000→262→52) is effective. Hierarchy is clear with slide labels, bold titles, and supporting text. No decorative clutter. The missingness chart on Slide 3 is well-ordered. Minor issue: Slide 2's four-panel comparison could use gridlines for easier reading.",
+    "ai_slop": "none"
+  },
+  "confidence": "medium",
+  "total": 74,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 10585,
+    "output_tokens": 1083
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "slide_count": 8,
+  "scores": {
+    "insight": 2.5,
+    "narrative": 3.5,
+    "framing": 2.5,
+    "accuracy": 1.5,
+    "visual": 3.5,
+    "bonus": 0
+  },
+  "what_worked": "Consistent visual theme and each slide attempts a clear conclusion box with a takeaway.",
+  "fix_next": "Verify every category name, count, and metric against the actual dataset before building any chart or claim.",
+  "verdict": "Fabricated categories, wrong counts, and hallucinated fields undermine the entire deck.",
+  "flags": [
+    "fabricated-categories",
+    "fabricated-metrics",
+    "fabricated-exit-signal-field",
+    "ai-slop",
+    "no-limitations-discussed",
+    "decorative-stock-imagery",
+    "no-source-citations",
+    "wrong-revenue-leader",
+    "wrong-ai-count"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 3: 'AI/ML 280 startups' — actual AI count is 197; categories Fintech and Healthtech do not exist in dataset (slides 3, 6). Slide 5: SaaS claimed as highest-revenue category — AI ($2.36M) leads, not SaaS ($703K). Slide 6: 'Fintech exits at 9× revenue' — Fintech is not a dataset category and revenue multiples by these categories are fabricated. Slide 7: 'exit signals' field (12%/88% split) does not exist in the dataset — entirely fabricated. Slide 4: '72% below $50K MRR' — dataset uses 30-day revenue, not MRR, and the claim is unverifiable from known data. Slide 3: '28% of dataset' — 280/1000=28% but correct AI count 197 gives ~19.7% (or ~27% of non-missing).",
+  "evidence": {
+    "insight": "Every finding is a shallow chart read (biggest category, most are small, exit is rare). No exploration of provider landscape (Stripe/RevenueCat/Dodo), anonymity premium, TLD patterns, missingness impact, or median revenue by category — all richer angles ignored.",
+    "narrative": "Loose sequence from category → revenue → growth → exits → summary, but no unifying thesis. 'The One Takeaway' slide lists three separate takeaways, contradicting its own title. No synthesis connecting observations.",
+    "framing": "No audience specified, no methodology, no mention of 274 missing categories or 216 zero-revenue rows. Subtitle promises 'clear conclusions, not open questions' but provides no methodological grounding for a cold reader to evaluate claims. Downgraded 0.5 from preliminary for complete absence of scope/limitations.",
+    "accuracy": "At least 8 material errors: (1-2) Fintech and Healthtech are not dataset categories, (3) AI count 280 vs actual 197, (4) AI share 28% wrong, (5) SaaS claimed as revenue leader over AI, (6) Fintech 9× multiple fabricated, (7) exit-signal field fabricated, (8) MRR terminology misapplied to 30-day revenue. No acknowledgment of missingness.",
+    "visual": "Consistent dark-purple Gamma template is legible. Charts are appropriate types (bar, donut) but represent fabricated data. Decorative neon dashboard imagery (slides 1-2), abstract light-burst stock art (slides 5, 8) add zero information. Generic consulting-style conclusion boxes throughout.",
+    "ai_slop": "Heavy AI-generated template: decorative neon dashboard screenshots (slides 1-2), abstract stock imagery (slides 5, 8), categories that appear hallucinated rather than drawn from dataset, generic consulting conclusion boxes on every slide, inflated language ('and it's not close')."
+  },
+  "confidence": "high",
+  "changed": true,
+  "change_reason": "Lowered framing from 3.0 to 2.5: complete absence of limitations, scope, or methodology is worse than 'adequate' — no cold reader can assess validity. All other scores confirmed as appropriate given pervasive fabrication.",
+  "total": 27,
+  "model": "claude-opus-4-6",
+  "prompt_version": "final-audit-v1",
+  "usage": {
+    "input_tokens": 14828,
+    "output_tokens": 1017
+  }
+}

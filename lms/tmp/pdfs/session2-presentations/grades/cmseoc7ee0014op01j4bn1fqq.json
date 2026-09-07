@@ -1,0 +1,39 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 3,
+    "narrative": 4.5,
+    "framing": 4,
+    "accuracy": 2,
+    "visual": 5,
+    "bonus": 0
+  },
+  "what_worked": "Clear narrative arc from revenue concentration through churn to acquisition opportunity, with accessible language.",
+  "fix_next": "Slides 4–5 present churn rates and customer-size revenue splits that appear fabricated—no such fields exist in the dataset; ground every claim in actual columns.",
+  "verdict": "Readable but largely fabricated; most quantitative claims lack dataset support.",
+  "flags": [
+    "fabricated-data",
+    "unverifiable-claims",
+    "missing-limitations",
+    "no-category-analysis",
+    "no-missingness-disclosure"
+  ],
+  "factual_error_count": 6,
+  "factual_error_detail": "Slide 3: Total revenue stated as $13.4M/month; actual 30-day total is ~$15.6M. Slide 4: Customer-size revenue breakdown (55%/30%/15%) and '70% small users / 8% enterprise' figures have no basis in the dataset's fields. Slide 5: Monthly cancellation rates (8.5%, 4.2%, 1.1%) by customer segment are entirely fabricated—no churn-rate field exists. Slide 6: '26% for sale' is unverifiable against the reference data. Slide 3: Median stated as $282; reference median is not explicitly given but the dataset's overall median would differ from this given 216 zero-revenue companies.",
+  "evidence": {
+    "insight": "The revenue-concentration point (slide 3) is valid in direction but the deck never explores categories, providers, anonymity, TLD, or B2B/B2C—all richer veins in the actual data. Recommendations are generic startup advice, not data-driven.",
+    "narrative": "There is a coherent four-part arc (gap → customer size → churn → sell), and the conclusion ties back. However, three of the four analytical sections rely on invented data, so the narrative is built on sand.",
+    "framing": "Slide 2 introduces the dataset and platform reasonably well. However, no mention of missingness (241 country, 288 audience_type, 274 category, 286 domain missing), no limitations, no definitions of the segments used.",
+    "accuracy": "Slides 4 and 5 present detailed percentage breakdowns for customer segments and churn rates that do not correspond to any field in the dataset. Total revenue is off by ~$2.2M. The 26% for-sale figure is unverified. These are not rounding issues but wholesale fabrication of findings.",
+    "visual": "Clean, consistent template with good hierarchy, readable fonts, and appropriate donut/bar charts. However, the charts visualize fabricated data, limiting their value. Donut charts on slides 4 and 6 are acceptable chart choices for part-to-whole.",
+    "ai_slop": "Heavy AI-generated consulting tone ('Startup Success, Decoded', 'The Playbook'). The churn and customer-segment data appear to be AI hallucinations presented as findings. Template is uniform across all slides with identical layout structure."
+  },
+  "confidence": "high",
+  "total": 37,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 13626,
+    "output_tokens": 792
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "slide_count": 1,
+  "scores": {
+    "insight": 0,
+    "narrative": 0,
+    "framing": 0,
+    "accuracy": 0,
+    "visual": 0,
+    "bonus": 0
+  },
+  "what_worked": "Nothing; this is a luggage advertisement, not a data-story presentation.",
+  "fix_next": "Submit the actual data-story deck analyzing the assigned dataset instead of an unrelated commercial image.",
+  "verdict": "Wrong file submitted—this is a luggage ad, not a data presentation.",
+  "flags": [
+    "wrong-file",
+    "no-data-content",
+    "zero-slides-relevant"
+  ],
+  "factual_error_count": 0,
+  "factual_error_detail": "",
+  "evidence": {
+    "insight": "No data analysis or insight present on any slide.",
+    "narrative": "Single page is a product advertisement with no narrative related to the dataset.",
+    "framing": "No audience, research question, or dataset context provided.",
+    "accuracy": "No data claims to evaluate; the dataset is entirely absent.",
+    "visual": "Polished commercial photography but completely irrelevant to the assignment.",
+    "ai_slop": "Not applicable—content is an unrelated ad, not AI-generated deck filler."
+  },
+  "confidence": "high",
+  "total": 0,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 3137,
+    "output_tokens": 320
+  }
+}

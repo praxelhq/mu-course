@@ -1,0 +1,41 @@
+{
+  "slide_count": 10,
+  "scores": {
+    "insight": 1.5,
+    "narrative": 2,
+    "framing": 1,
+    "accuracy": 1.5,
+    "visual": 3,
+    "bonus": 0
+  },
+  "what_worked": "Clean, consistent slide template with readable typography and clear visual hierarchy throughout.",
+  "fix_next": "This is a startup pitch deck, not a data-story presentation; it barely references the assigned dataset and fabricates most claims.",
+  "verdict": "A pitch deck masquerading as a data story; almost no dataset analysis present.",
+  "flags": [
+    "wrong-assignment-type",
+    "dataset-barely-used",
+    "fabricated-claims",
+    "ai-slop",
+    "no-real-charts",
+    "consulting-language",
+    "unearned-certainty"
+  ],
+  "factual_error_count": 5,
+  "factual_error_detail": "Slide 3: '2.4x revenue premium' claimed but dataset B2B median multiple is ~2.35x and the chart shows fabricated 'Mean MRR' figures ($14,998/$6,148/$3,779) with invented subcategories ('B2B AI Workflow', 'B2C AI Utilities', 'Template Builders') not in the dataset. Slide 3: labels revenue as 'Mean MRR' when dataset reports 30-day revenue, not MRR. Slide 8: '$1.5M+ ARR within 12-18 months' claimed as 'validated analogs in our ecosystem dataset' with no supporting evidence. Slide 8: 'sub-1% monthly churn' stated as fact without data support. Slide 10: growth projections and '$45M SOM' presented without derivation from dataset.",
+  "evidence": {
+    "insight": "Deck contains essentially zero original analytical insight from the dataset. Slide 3 is the only slide referencing the 1,000-startup dataset, but uses fabricated subcategories and unsupported figures. No exploration of payment providers, categories, missingness, revenue distribution, or any other dataset dimension.",
+    "narrative": "The deck follows a coherent pitch-deck arc (problem → solution → pricing → moat → growth), but this is the wrong assignment. It tells a startup investment story, not a data story. The dataset is a prop mentioned once, not the subject.",
+    "framing": "No framing of the analytical question, dataset scope, limitations, missingness (274 missing categories, 241 missing countries), or methodology. A cold reader would not understand what dataset was analyzed or why. The audience appears to be investors, not the course.",
+    "accuracy": "Slide 3 invents subcategories not in the dataset. The 2.4x figure is close to the actual B2B median multiple (~2.35x) but is presented with fabricated dollar figures and wrong labels. Revenue is called 'Mean MRR' without justification. Claims on slides 8 and 10 are entirely unsupported by data. The QuickBooks dashboard screenshot on slide 5 is a stock image unrelated to the dataset.",
+    "visual": "Template is clean and professional with consistent navy/white palette, good typography hierarchy, and appropriate use of whitespace. However, slide 5 uses an irrelevant stock QuickBooks screenshot, slide 8 uses a decorative lock image, and slide 1 uses a generic network graphic. The single bar chart on slide 3 shows fabricated data. The growth curve on slide 10 is a smooth aspirational line with no data backing.",
+    "ai_slop": "Pervasive consulting buzzwords throughout: 'hyper-personalized intent-driven interactions', 'autonomous revenue engine', 'self-optimizing feedback loops', 'defensible moat', 'exceptional unit economics'. Stock imagery (network graphic, lock icon, QuickBooks dashboard). The entire deck reads as AI-generated startup pitch boilerplate with minimal human editorial judgment applied to the actual assignment."
+  },
+  "confidence": "high",
+  "total": 18,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 18824,
+    "output_tokens": 939
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "slide_count": 7,
+  "scores": {
+    "insight": 6,
+    "narrative": 5.5,
+    "framing": 5,
+    "accuracy": 4.5,
+    "visual": 6.5,
+    "bonus": 1
+  },
+  "what_worked": "Recommendation slide is well-argued with multiple supporting data points and a clear runner-up comparison.",
+  "fix_next": "Category revenue figures appear to use all-time revenue not 30-day revenue, conflating metrics and mismatching the dataset's core revenue field.",
+  "verdict": "Competent deal-screening deck with notable accuracy gaps in category figures.",
+  "flags": [
+    "metric-conflation",
+    "missing-portfolio-level-stats",
+    "no-limitations-slide",
+    "narrow-scope"
+  ],
+  "factual_error_count": 4,
+  "factual_error_detail": "Slide 5: Category revenue figures use all-time revenue (E-comm $54.8M, Marketing $33.8M, AI $31.9M) which do not match the frozen dataset's 30-day category totals (AI $2.36M, Marketing $1.32M, E-comm $1.11M); the slide labels them 'Total All-Time Revenue' which may be a different field but the ranking order contradicts the reference data for 30-day revenue and the all-time totals are unverifiable against the frozen reference. Slide 5: AI company count (197) is correct but the claim that AI's revenue is 'more distributed' is unsupported given AI has the lowest median ($503) among top categories. Slide 7: States AI median MRR is $0.7K and median revenue is $9.2K for 54 for-sale AI startups — these figures are not verifiable against the frozen reference and the denominator (54 for-sale AI) is unconfirmed. Slide 6: MRR chart shows stan.store at $4M and others at $0M with no readable differentiation among positions 2-5, making the chart misleading.",
+  "evidence": {
+    "insight": "Slide 7 provides a genuinely useful acquisition recommendation with five supporting arguments (category momentum, outlier MRR, low multiple, diversified base, growth trajectory). Slide 4 flags the data gap on visitors and uses subscriptions as proxy. However, insights mostly describe rankings rather than uncovering non-obvious patterns.",
+    "narrative": "The deck follows a logical sequence: for-sale candidates → watchlist → deep-dive → categories → domains → recommendation. But there is no opening thesis or framing question — the title slide says 'Executive Summary' yet provides none. The narrative reads as a series of ranked lists leading to a recommendation rather than a coherent argument.",
+    "framing": "No audience definition, no research question stated, no scope/limitations slide. The title says 'Portfolio Review' but never defines what portfolio or for whom. Missing data (274 categories, 241 countries) is noted in footnotes but not discussed as a limitation. No mention of the 216 zero-revenue companies or overall dataset shape.",
+    "accuracy": "Slide 5 category figures appear to use a different revenue field (all-time) than the frozen 30-day reference, and the ranking (E-comm > Marketing > AI) contradicts the 30-day reference (AI > Marketing > E-comm). The deck never reports the total 30-day revenue ($15.6M) or top-10 concentration (49.6%). Company counts for categories are correct where stated (197 AI, 19 E-comm). Slide 4 honestly flags Stan's $0 3-month figure as a likely artifact. Slide 7's median comparisons use a filtered subset (for-sale AI) that cannot be verified.",
+    "visual": "Consistent navy/gold color scheme throughout. Bar charts are clean with direct labels. Slide 6 MRR chart is poorly scaled — stan.store dominates and positions 2-5 all display as '$0M' which is uninformative. Slide 4 line chart is readable. Slide 7 recommendation layout is effective with KPI cards and comparison table. No chart junk but also no annotations or callouts on charts themselves.",
+    "ai_slop": "Template is polished and consistent but the repeated dual-bar-chart layout across slides 2, 3, 5, and 6 creates visual sameness. Section headers use spaced-out uppercase formatting typical of AI presentation tools. Content is substantive enough to avoid pure filler."
+  },
+  "confidence": "medium",
+  "total": 56,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 14531,
+    "output_tokens": 1082
+  }
+}

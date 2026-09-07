@@ -1,0 +1,41 @@
+{
+  "slide_count": 14,
+  "scores": {
+    "insight": 7.5,
+    "narrative": 8,
+    "framing": 7,
+    "accuracy": 5.5,
+    "visual": 7,
+    "bonus": 2
+  },
+  "what_worked": "Strong thesis-driven arc from concentration evidence through B2B/US wedge to actionable phased roadmap.",
+  "fix_next": "Multiple revenue figures are materially wrong—verify total revenue, top-10 share, AI median, B2B multiplier, and provider shares against the actual dataset.",
+  "verdict": "Compelling narrative structure undermined by numerous factual inaccuracies in core claims.",
+  "flags": [
+    "revenue-total-wrong",
+    "top10-share-wrong",
+    "b2b-multiplier-inflated",
+    "ai-median-wrong",
+    "provider-shares-wrong",
+    "missing-data-not-disclosed",
+    "categories-count-wrong"
+  ],
+  "factual_error_count": 8,
+  "factual_error_detail": "Slide 2: Reports total MRR as $13.47M; dataset total 30-day revenue is $15,596,344.59 (not MRR—period undefined, and value is wrong either way). Slide 3: Top 1% (10 cos) shown as 48.0%; reference is 49.6%—close but consistently rounded down. Slide 4: AI median stated as $446; reference is $503. Claims 29 categories on slide 1 but reference shows 12 named categories with 274 missing. Slide 6: B2B vs B2C multiplier stated as 5.7x; reference median multiples are 2.35x/2.30x, not 5.7x—this is a major error, likely confusing MRR values with the multiplier metric or using wrong figures. Slide 10: Stripe share shown as 64.4%; reference is 636/1000=63.6%. RevenueCat shown as 19.1%; reference is 189/1000=18.9%. Dodo Payments shown as 5.0%; reference is 50/1000=5.0% (correct). Slide 2: Mean stated as $13,472; $15,596,344.59/1000=$15,596.34, not $13,472. Slide 7: US captures 71.3% of revenue—cannot verify but denominator unclear given 241 missing country values, not disclosed.",
+  "evidence": {
+    "insight": "Slide 4's crowding-vs-monetization tension is genuinely useful; slide 5's quadrant framework adds analytical value; slide 6's within-AI B2B breakdown shows layered thinking; slide 11's marketplace layer is an original angle.",
+    "narrative": "Clear arc: market context (slide 2) → concentration (3) → category structure (4-5) → customer profile (6) → geography (7-9) → data moat (10) → marketplace (11) → synthesis (12) → roadmap (13) → close (14). Each slide builds on prior evidence toward a single strategic recommendation.",
+    "framing": "Slide 1 sets investor-briefing context clearly. Slide 14 includes key risks (single snapshot, TAM unknowable, self-selected for-sale subset). However, 241 missing country values and 288 missing audience_type values are never disclosed, which materially affects the B2B/geographic claims.",
+    "accuracy": "Total revenue wrong by ~$2.1M. AI median off by ~$57. B2B/B2C multiplier of 5.7x is dramatically wrong vs reference 2.35x median multiple. Mean revenue wrong ($13,472 vs $15,596). Provider shares slightly off. Missing data not acknowledged for audience_type (288 missing) or category (274 missing), which undermines the denominator integrity of key claims.",
+    "visual": "Consistent navy/gold palette throughout. Charts are clean and labeled. Slide 5 bubble chart is hard to read without direct labels on bubbles. Slide 7 scatter plot axes go to 1.2 but US point isn't visible (likely off-chart), making the key claim unverifiable visually. Slide 11 has layout/text-wrapping issues with 'Median Asking Multiple' text breaking awkwardly.",
+    "ai_slop": "Mild consulting-speak ('category-defining platform,' 'data moat,' 'deal room') but generally substantive rather than filler. The phased roadmap on slide 13 is somewhat generic strategy-deck template material. Overall restrained."
+  },
+  "confidence": "high",
+  "total": 72,
+  "model": "claude-opus-4-6",
+  "prompt_version": "independent-v2",
+  "usage": {
+    "input_tokens": 26516,
+    "output_tokens": 1108
+  }
+}
