@@ -19,8 +19,8 @@ failed posts are buffered locally and re-flushed before shutdown — a turn is
 never lost. When Egress env is present (S3 creds + bucket), a room-composite
 VIDEO Egress records the whole conversation to
 ``interviews/{interviewId}/room-{reservation}.mp4`` and the key is reported on
-completion — including on the degraded path, where the student has flipped to
-the turn-based loop and this worker is shutting down.
+completion. A disconnected student reconnects to the same LiveKit room; the
+agent never hands an attempt to a manual-recording transport.
 
 Run: python main.py start   (subcommands come from the livekit-agents CLI)
 """
@@ -114,6 +114,9 @@ EGRESS_AUDIO_ONLY = os.environ.get("INTERVIEW_EGRESS_AUDIO_ONLY", "1") not in ("
 # be pulled back without a deploy if throughput becomes the binding constraint
 # (each concurrent slot is held for the full budget).
 MAX_INTERVIEW_SECONDS = int(os.environ.get("INTERVIEW_MAX_SECONDS", 20 * 60))
+# A dropped browser gets a real opportunity to rejoin, but a permanently empty
+# room must not run into the normal budget-completion path and grade a fragment.
+REJOIN_GRACE_SECONDS = max(1, int(os.environ.get("INTERVIEW_REJOIN_GRACE_SECONDS", 120)))
 QUESTION_BUDGET = 20  # hard ceiling across the five segments (runaway guard)
 # The model may not end the interview before this many of its own turns. The
 # five-segment arc cannot be covered in fewer, and the final segment — the
@@ -727,7 +730,19 @@ def _sarvam_pair():
 def _legacy_pair():
     from livekit.plugins import deepgram, elevenlabs
 
-    return deepgram.STT(model="nova-3"), elevenlabs.TTS()
+    # The LiveKit plugin looks for ELEVEN_API_KEY, while this service's
+    # documented Railway contract uses ELEVENLABS_API_KEY. Pass the latter
+    # explicitly so the configured emergency leg is actually constructible.
+    return deepgram.STT(model="nova-3"), elevenlabs.TTS(api_key=os.environ["ELEVENLABS_API_KEY"])
+
+
+def conversation_item_turn(item) -> tuple[str, str] | None:
+    """Map a finalized LiveKit message to an LMS turn, ignoring control items."""
+    text = (getattr(item, "text_content", "") or "").strip()
+    role = getattr(item, "role", None)
+    if not text or role not in ("user", "assistant"):
+        return None
+    return ("student" if role == "user" else "agent", text)
 
 
 _VOICE_BUILDERS = {VOICE_SARVAM: _sarvam_pair, VOICE_LEGACY: _legacy_pair}
@@ -855,6 +870,16 @@ async def entrypoint(ctx) -> None:
     )
     egress = Egress(room_name, video_key)
     await egress.start()
+    turn_tasks: set[asyncio.Task[None]] = set()
+
+    async def flush_finalized_turns() -> None:
+        # conversation_item_added is synchronous, so it launches persistence
+        # work in the background. Finish that work before changing the
+        # interview status; otherwise a last turn can arrive after completion
+        # and be rejected from the grading transcript.
+        if turn_tasks:
+            await asyncio.gather(*tuple(turn_tasks), return_exceptions=True)
+        await lms.flush()
 
     async def stop_and_report_recording(finished: bool = False) -> None:
         """Stop Egress and report the key exactly once.
@@ -872,6 +897,7 @@ async def entrypoint(ctx) -> None:
         if getattr(stop_and_report_recording, "_done", False):
             return
         stop_and_report_recording._done = True  # type: ignore[attr-defined]
+        await flush_finalized_turns()
         key = await egress.stop()
         await lms.post_complete(
             interview_id,
@@ -881,7 +907,6 @@ async def entrypoint(ctx) -> None:
             video_reservation_id=video_reservation_id if key else None,
             finished=finished,
         )
-        await lms.flush()
 
     async def report_recording_only() -> None:
         # Shutdown of any kind: keep the recording, leave the interview alone.
@@ -891,6 +916,7 @@ async def entrypoint(ctx) -> None:
 
     started_at = time.monotonic()
     finished = asyncio.Event()
+    aborted = False
     question_count = 0
     agent_utterances: list[str] = []
 
@@ -1003,21 +1029,64 @@ async def entrypoint(ctx) -> None:
     )
 
     def on_item_added(ev) -> None:
-        text = (ev.item.text_content or "").strip()
-        if not text or ev.item.role not in ("user", "assistant"):
+        # conversation_item_added also delivers AgentHandoff, which is not a
+        # text message. Treat it as an ignorable control event rather than
+        # raising inside LiveKit's event emitter.
+        turn = conversation_item_turn(ev.item)
+        if turn is None:
             return
+        speaker, text = turn
         nonlocal question_count
-        speaker = "student" if ev.item.role == "user" else "agent"
         if speaker == "agent":
             question_count += 1
             agent_utterances.append(text)
         # Persist-before-anything-else is the LMS's job; ours is never to drop
         # a finalized utterance (retry + buffer inside post_turn).
-        asyncio.create_task(lms.post_turn(interview_id, speaker, text))
+        task = asyncio.create_task(lms.post_turn(interview_id, speaker, text))
+        turn_tasks.add(task)
+        task.add_done_callback(turn_tasks.discard)
 
     session.on("conversation_item_added", on_item_added)
 
-    await session.start(agent=Interviewer(), room=ctx.room, room_input_options=RoomInputOptions())
+    # A browser reconnect is normal on student networks. The default closes
+    # the AgentSession on that event, abandoning the room before the browser
+    # can rejoin it.
+    await session.start(
+        agent=Interviewer(),
+        room=ctx.room,
+        room_input_options=RoomInputOptions(close_on_disconnect=False),
+    )
+
+    rejoin_task: asyncio.Task[None] | None = None
+
+    async def abort_if_student_does_not_rejoin() -> None:
+        nonlocal aborted
+        await asyncio.sleep(REJOIN_GRACE_SECONDS)
+        if finished.is_set() or ctx.room.remote_participants:
+            return
+        aborted = True
+        logger.warning(
+            "interview %s: no student rejoined within %ss — recording only",
+            interview_id,
+            REJOIN_GRACE_SECONDS,
+        )
+        finished.set()
+
+    def on_participant_disconnected(_participant) -> None:
+        nonlocal rejoin_task
+        if finished.is_set() or ctx.room.remote_participants:
+            return
+        if rejoin_task is None or rejoin_task.done():
+            rejoin_task = asyncio.create_task(abort_if_student_does_not_rejoin())
+
+    def on_participant_connected(_participant) -> None:
+        nonlocal rejoin_task
+        if rejoin_task is not None and not rejoin_task.done():
+            rejoin_task.cancel()
+        rejoin_task = None
+
+    ctx.room.on("participant_disconnected", on_participant_disconnected)
+    ctx.room.on("participant_connected", on_participant_connected)
 
     async def budget_watch() -> None:
         while not finished.is_set():
@@ -1033,8 +1102,6 @@ async def entrypoint(ctx) -> None:
     # If every LLM leg fails, AgentSession closes ITSELF. Nothing used to
     # notice: `finished` stayed unset, the student got dead air until the
     # 20-minute budget expired, and the fragment was then completed and graded.
-    aborted = False
-
     def on_session_close(_ev=None) -> None:
         nonlocal aborted
         if not finished.is_set():
@@ -1054,12 +1121,15 @@ async def entrypoint(ctx) -> None:
     watcher = asyncio.create_task(budget_watch())
     await finished.wait()
     watcher.cancel()
+    if rejoin_task is not None:
+        rejoin_task.cancel()
 
     # Wind down: closing line, stop the recording, mark the interview done.
-    try:
-        await session.say(CLOSING_LINE, allow_interruptions=False)
-    except Exception as err:  # noqa: BLE001 — closing audio is a nicety
-        logger.warning("closing line failed for %s: %s", interview_id, err)
+    if not aborted:
+        try:
+            await session.say(CLOSING_LINE, allow_interruptions=False)
+        except Exception as err:  # noqa: BLE001 — closing audio is a nicety
+            logger.warning("closing line failed for %s: %s", interview_id, err)
     try:
         await session.drain()
     except Exception:  # noqa: BLE001

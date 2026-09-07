@@ -1,14 +1,15 @@
 import { createHash, timingSafeEqual } from "node:crypto";
 import type { PrismaClient } from "@prisma/client";
 import { prisma as defaultPrisma } from "@/lib/db";
+import { loadRuntimeIdentity } from "@/lib/operations/runtime-identity";
+import { listServiceHeartbeats } from "@/lib/operations/service-heartbeats";
 
 // Realtime (LiveKit) transport glue: room-token minting, the ~30-room
 // concurrency guard with heartbeats, and the constant-time agent token check.
 //
 // Everything here is optional-by-env: with no LIVEKIT_* keys locally,
-// livekitConfigured() is false and the token route answers
-// 503 {realtimeUnavailable:true} — the client then runs the U12 turn-based
-// loop, so the degradation path is fully testable with zero keys.
+// livekitConfigured() is false and the token route answers 503 without
+// creating an interview. Students only use the real-time transport.
 
 export const TRANSPORT_REALTIME = "realtime";
 
@@ -17,7 +18,7 @@ export const TRANSPORT_REALTIME = "realtime";
  * MAX_INTERVIEW_SECONDS (15 min): the room outlives the token, so a student who
  * drops near the end of a full-length interview needs a token that is still
  * valid to rejoin. At parity with the interview budget a late reconnect fails on
- * the clock rather than the network and degrades to turn-based for no reason.
+ * the clock rather than the network and strands an otherwise recoverable room.
  */
 export const ROOM_TOKEN_TTL_SECONDS = 25 * 60;
 
@@ -35,6 +36,53 @@ export function livekitConfigured(): boolean {
   return Boolean(
     process.env.LIVEKIT_URL && process.env.LIVEKIT_API_KEY && process.env.LIVEKIT_API_SECRET,
   );
+}
+
+type AgentHeartbeat = {
+  sourceSha: string;
+  intervalSeconds: number;
+  errorCount: number;
+  lastSeenAt: Date;
+};
+
+/**
+ * A token is an admission to a graded realtime interview, not a connectivity
+ * probe. Admit students only when every currently fresh agent replica proves
+ * the web build it will call back into and reports no startup errors.
+ */
+export function hasCurrentRealtimeAgentHeartbeat(
+  heartbeats: AgentHeartbeat[],
+  sourceSha: string,
+  now: Date = new Date(),
+): boolean {
+  const fresh = heartbeats.filter((heartbeat) => {
+    const ageMs = now.getTime() - heartbeat.lastSeenAt.getTime();
+    return (
+      Number.isInteger(heartbeat.intervalSeconds) &&
+      heartbeat.intervalSeconds >= 10 &&
+      heartbeat.intervalSeconds <= 300 &&
+      ageMs >= 0 &&
+      ageMs <= heartbeat.intervalSeconds * 2 * 1_000
+    );
+  });
+  return (
+    fresh.length > 0 &&
+    fresh.every(
+      (heartbeat) => heartbeat.sourceSha === sourceSha && heartbeat.errorCount === 0,
+    )
+  );
+}
+
+export async function realtimeAgentAvailable(
+  client: PrismaClient = defaultPrisma,
+  now: Date = new Date(),
+): Promise<boolean> {
+  const identity = loadRuntimeIdentity();
+  if (!identity.verified) return false;
+  const heartbeats = await listServiceHeartbeats(["agent"], {
+    findMany: (args) => client.serviceHeartbeat.findMany(args),
+  });
+  return hasCurrentRealtimeAgentHeartbeat(heartbeats, identity.sourceSha, now);
 }
 
 export function roomNameFor(interviewId: string): string {

@@ -4,10 +4,16 @@ import { loadDotEnv } from "./helpers/env";
 loadDotEnv();
 
 import { main as runSeed } from "../prisma/seed";
+import { realtimeAgentAvailable } from "@/lib/interview/realtime";
+
+vi.mock("@/lib/interview/realtime", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@/lib/interview/realtime")>();
+  return { ...actual, realtimeAgentAvailable: vi.fn() };
+});
 
 // U13 — realtime interview transport: token endpoint (guards, concurrency,
 // LiveKit token mint), the X-Agent-Token-guarded internal agent endpoints,
-// the in-place turnbased-fallback flip, and the heartbeat. Live DB, seeded
+// the reconnect-only policy, and the heartbeat. Live DB, seeded
 // world; the LiveKit "server" is just env + local JWT signing — no network.
 
 async function dbReachable(): Promise<boolean> {
@@ -34,6 +40,7 @@ const AGENT_FLOW_USER = "user_s023";
 const FALLBACK_USER = "user_s024";
 const OTHER_USER = "user_s025";
 const COMPLETE_USER = "user_s026";
+const AGENT_RESTART_USER = "user_s029";
 const ROOM_FILLER_USER = "user_s030"; // owns the 30 fake occupied rooms
 
 const AGENT_TOKEN = "test-agent-secret";
@@ -112,6 +119,7 @@ describe.skipIf(!live)("U13 realtime interview transport (live DB, seeded)", () 
     vi.stubEnv("ENABLE_TEST_LOGIN", "1");
     vi.stubEnv("AGENT_INTERNAL_TOKEN", AGENT_TOKEN);
     vi.stubEnv("INTERVIEW_MAX_ROOMS", "30");
+    vi.mocked(realtimeAgentAvailable).mockResolvedValue(true);
     await runSeed();
     const { PrismaClient } = await import("@prisma/client");
     prisma = new PrismaClient();
@@ -142,6 +150,36 @@ describe.skipIf(!live)("U13 realtime interview transport (live DB, seeded)", () 
     expect(body.realtimeUnavailable).toBe(true);
     // Nothing half-created — the attempt is untouched.
     expect(await prisma.interview.count({ where: { userId: TOKEN_USER } })).toBe(0);
+  });
+
+  it("token: an unhealthy agent refuses a new attempt without creating one", async () => {
+    stubLivekit();
+    vi.mocked(realtimeAgentAvailable).mockResolvedValue(false);
+    try {
+      const { POST } = await import("../app/api/interview/token/route");
+      const res = await POST(cookieReq("http://t/api/interview/token", AGENT_RESTART_USER, {}));
+      expect(res.status).toBe(503);
+      expect(await prisma.interview.count({ where: { userId: AGENT_RESTART_USER } })).toBe(0);
+    } finally {
+      vi.mocked(realtimeAgentAvailable).mockResolvedValue(true);
+    }
+  });
+
+  it("token: an existing realtime attempt can remint a reconnect token during an agent restart", async () => {
+    stubLivekit();
+    const id = await startRealtime(prisma, AGENT_RESTART_USER);
+    vi.mocked(realtimeAgentAvailable).mockResolvedValue(false);
+    try {
+      const { POST } = await import("../app/api/interview/token/route");
+      const res = await POST(cookieReq("http://t/api/interview/token", AGENT_RESTART_USER, {}));
+      expect(res.status).toBe(200);
+      expect((await res.json()) as { interviewId: string; resumed: boolean }).toMatchObject({
+        interviewId: id,
+        resumed: true,
+      });
+    } finally {
+      vi.mocked(realtimeAgentAvailable).mockResolvedValue(true);
+    }
   });
 
   it("token: closed window → 409 (U12 guards inherited)", async () => {
@@ -302,10 +340,10 @@ describe.skipIf(!live)("U13 realtime interview transport (live DB, seeded)", () 
   });
 
   // -------------------------------------------------------------------------
-  // fallback flip
+  // reconnect-only transport policy
   // -------------------------------------------------------------------------
 
-  it("fallback: owner flips to turnbased-fallback (audited); turns before+after stay one ordered transcript", async () => {
+  it("fallback: never downgrades a graded realtime interview to manual recording", async () => {
     const id = await startRealtime(prisma, FALLBACK_USER);
     const agentTurn = await import("../app/api/interview/agent-turn/route");
     for (const [speaker, text] of [
@@ -322,12 +360,13 @@ describe.skipIf(!live)("U13 realtime interview transport (live DB, seeded)", () 
       expect(res.status).toBe(200);
     }
 
-    // Another student cannot flip it — owner-or-404.
+    // The endpoint refuses every downgrade without exposing another student's
+    // interview or changing the owner's realtime transport.
     const { POST } = await import("../app/api/interview/fallback/route");
     const notMine = await POST(
       cookieReq("http://t/api/interview/fallback", OTHER_USER, { interviewId: id }),
     );
-    expect(notMine.status).toBe(404);
+    expect(notMine.status).toBe(409);
 
     const flip = await POST(
       cookieReq("http://t/api/interview/fallback", FALLBACK_USER, {
@@ -335,40 +374,23 @@ describe.skipIf(!live)("U13 realtime interview transport (live DB, seeded)", () 
         reason: "poor-connection",
       }),
     );
-    expect(flip.status).toBe(200);
+    expect(flip.status).toBe(409);
     const iv = await prisma.interview.findUniqueOrThrow({ where: { id } });
-    expect(iv.transport).toBe("turnbased-fallback");
+    expect(iv.transport).toBe("realtime");
     const audit = await prisma.auditLog.findFirst({
       where: { action: "interview.fallback", targetType: "interview", targetId: id },
     });
-    expect(audit?.actorId).toBe(FALLBACK_USER);
-    expect((audit?.after as { reason?: string })?.reason).toBe("poor-connection");
+    expect(audit).toBeNull();
 
-    // Idempotent repeat; straggler agent posts are refused.
-    const again = await POST(
-      cookieReq("http://t/api/interview/fallback", FALLBACK_USER, { interviewId: id }),
-    );
-    expect(again.status).toBe(200);
-    const straggler = await agentTurn.POST(
+    // The agent continues to own the transcript after a reconnect.
+    const resumed = await agentTurn.POST(
       agentReq("http://t/api/interview/agent-turn", AGENT_TOKEN, {
         interviewId: id,
         speaker: "agent",
-        text: "late",
+        text: "Welcome back — please continue your answer.",
       }),
     );
-    expect(straggler.status).toBe(409);
-
-    // Same interview continues over the U12 loop — one ordered transcript.
-    const { nextQuestion, submitAnswer, getInterviewState } = await import(
-      "../lib/interview/session"
-    );
-    const q = await nextQuestion(id, { gemini: fakeGemini(), tts: null });
-    expect(q.done).toBe(false);
-    await submitAnswer({ interviewId: id, userId: FALLBACK_USER, text: "post-flip answer" });
-    const state = await getInterviewState(id, FALLBACK_USER);
-    const nos = state.turns.map((t) => t.turnNo);
-    expect(nos).toEqual([1, 2, 3, 4]);
-    expect(state.turns.map((t) => t.speaker)).toEqual(["agent", "student", "agent", "student"]);
+    expect(resumed.status).toBe(200);
   });
 
   // -------------------------------------------------------------------------

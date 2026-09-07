@@ -33,8 +33,8 @@ export async function POST(req: Request): Promise<Response> {
     });
     if (!interview) return Response.json({ error: "Interview not found." }, { status: 404 });
     if (interview.transport !== TRANSPORT_REALTIME) {
-      // After a fallback flip the turn-based loop owns the transcript — a
-      // straggling agent post must not interleave with it.
+      // Only the realtime interview transport admits first-party agent turns.
+      // A legacy row must never receive an interleaved LiveKit transcript.
       return Response.json(
         { error: `Interview transport is '${interview.transport}' — agent turns rejected.` },
         { status: 409 },

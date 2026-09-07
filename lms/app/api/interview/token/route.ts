@@ -7,18 +7,17 @@ import {
   livekitConfigured,
   maxRealtimeRooms,
   mintRoomToken,
+  realtimeAgentAvailable,
 } from "@/lib/interview/realtime";
 import { startInterview } from "@/lib/interview/session";
 
 // POST /api/interview/token: the realtime entry point. The server
-// decides the transport; the client just tries this first:
-//   503 {realtimeUnavailable:true}  → no LIVEKIT env — client runs turn-based
+// decides realtime admission; the client just tries this first:
+//   503 {realtimeUnavailable:true}  → worker unavailable; no attempt begins
 //   429 {waiting:true, activeRooms} → all rooms busy — client shows the
 //                                     waiting room and retries
-//   200 {turnbased:true}            → a live turnbased interview already
-//                                     exists (e.g. after a fallback flip)
 //   200 {token,url,roomName,...}    → join the LiveKit room
-// Guards (window/attempt/retake) are startInterview's own — identical to U12.
+// Guards (window/attempt/retake) are startInterview's own.
 
 export const dynamic = "force-dynamic";
 
@@ -34,17 +33,51 @@ export const POST = withAuth(async (req, { user }) => {
       select: { id: true, transport: true },
     });
     if (existing && existing.transport !== TRANSPORT_REALTIME) {
-      // Mid-session fallback (or a turn-based start) — continue turn-based.
-      return Response.json({ turnbased: true, interviewId: existing.id });
+      return Response.json(
+        {
+          realtimeUnavailable: true,
+          error:
+            "This interrupted interview needs an instructor-reviewed retake. Recording answers here is disabled.",
+        },
+        { status: 409 },
+      );
     }
 
     if (!livekitConfigured()) {
-      return Response.json({ realtimeUnavailable: true }, { status: 503 });
+      return Response.json(
+        {
+          realtimeUnavailable: true,
+          error: existing
+            ? "Your live interview is paused while its connection is restored. Your recorded progress is safe."
+            : "The real-time interviewer is unavailable. Your attempt has not started — please try again shortly.",
+        },
+        { status: 503 },
+      );
     }
 
-    // Concurrency guard: ~30 rooms with a fresh heartbeat. A student resuming
-    // their own live room is already counted, so resumes never queue.
+    // The global health check is an admission gate for NEW attempts. A live
+    // room already has its own identity and may still have an agent session
+    // waiting through a brief browser disconnect; do not turn that recovery
+    // into a second outage merely because the reporter is restarting.
     if (!existing) {
+      let agentReady = false;
+      try {
+        agentReady = await realtimeAgentAvailable(prisma, now);
+      } catch {
+        agentReady = false;
+      }
+      if (!agentReady) {
+        return Response.json(
+          {
+            realtimeUnavailable: true,
+            error: "The real-time interviewer is reconnecting. Your attempt has not started — please try again shortly.",
+          },
+          { status: 503 },
+        );
+      }
+
+      // Concurrency guard: ~30 rooms with a fresh heartbeat. A student
+      // resuming their own live room is already counted, so resumes never queue.
       const activeRooms = await countActiveRealtimeRooms(prisma, now);
       if (activeRooms >= maxRealtimeRooms()) {
         return Response.json({ waiting: true, activeRooms }, { status: 429 });

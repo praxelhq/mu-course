@@ -391,168 +391,46 @@ describe.skipIf(!live)("lib/interview/session (live DB, seeded)", () => {
     vi.stubEnv("INTERVIEW_DEV_SCRIPTED", "");
   });
 
-  it("answer-url route: enforces ownership and audio content types", async () => {
+  it("answer-url route: rejects stale manual recording clients", async () => {
     vi.stubEnv("ENABLE_TEST_LOGIN", "1");
-    const { __setS3TestOverrides } = await import("../lib/s3");
-    __setS3TestOverrides({ configured: true, sign: (d) => `https://fake.s3/${d.key}` });
-    try {
-      const { POST } = await import("../app/api/interview/answer-url/route");
-      const iv = await prisma.interview.findFirstOrThrow({
-        where: { userId: STUDENT_A2, status: "live" },
-      });
-      const call = (user: string, body: unknown) =>
-        POST(
-          new Request("http://test/api/interview/answer-url", {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-              cookie: `forge_test_user=${user}`,
-            },
-            body: JSON.stringify(body),
-          }),
-        );
-      // Wrong owner → 404.
-      const notMine = await call(STUDENT_A, {
-        interviewId: iv.id,
-        contentType: "audio/webm",
-        sizeBytes: 1000,
-      });
-      expect(notMine.status).toBe(404);
-      // Bad content type → 415.
-      const badType = await call(STUDENT_A2, {
-        interviewId: iv.id,
-        contentType: "application/pdf",
-        sizeBytes: 1000,
-      });
-      expect(badType.status).toBe(415);
-      // Too large → 413.
-      const tooBig = await call(STUDENT_A2, {
-        interviewId: iv.id,
-        contentType: "audio/webm",
-        sizeBytes: 26 * 1024 * 1024,
-      });
-      expect(tooBig.status).toBe(413);
-      // Happy path → presigned PUT under the interview's namespace.
-      const ok = await call(STUDENT_A2, {
-        interviewId: iv.id,
-        contentType: "audio/webm",
-        sizeBytes: 1000,
-      });
-      expect(ok.status).toBe(200);
-      const json = (await ok.json()) as {
-        key: string;
-        url: string;
-        headers: Record<string, string>;
-        reservationId: string;
-      };
-      expect(json.key).toMatch(
-        new RegExp(`^interviews/${iv.id}/a\\d+-[A-Za-z0-9_-]+\\.webm$`),
-      );
-      expect(json.headers["If-None-Match"]).toBe("*");
-      const reservation = await prisma.generatedObjectReservation.findUniqueOrThrow({
-        where: { id: json.reservationId },
-      });
-      expect(reservation.interviewId).toBe(iv.id);
-      expect(reservation.s3Key).toBe(json.key);
-      expect(reservation.s3VersionId).toBeNull();
-      expect(reservation.consumedAt).toBeNull();
-    } finally {
-      __setS3TestOverrides(null);
-    }
+    const { POST } = await import("../app/api/interview/answer-url/route");
+    const res = await POST(
+      new Request("http://test/api/interview/answer-url", {
+        method: "POST",
+        headers: { cookie: `forge_test_user=${STUDENT_A2}` },
+      }),
+    );
+    expect(res.status).toBe(410);
   });
 
-  it("answer route: typed-answer guard rejects text-only bodies only in production without a flag (#6)", async () => {
-    const { textAnswersAllowed } = await import("../app/api/interview/answer/route");
-    // Dev/test: typed answers always allowed.
-    vi.stubEnv("NODE_ENV", "test");
-    vi.stubEnv("NEXT_PUBLIC_INTERVIEW_TEXT_MODE", "");
-    vi.stubEnv("INTERVIEW_DEV_SCRIPTED", "");
-    expect(textAnswersAllowed()).toBe(true);
-
-    // Production without any flag: rejected (the graded viva must be spoken).
-    vi.stubEnv("NODE_ENV", "production");
-    expect(textAnswersAllowed()).toBe(false);
-    // Production WITH the UI text-mode flag: allowed.
-    vi.stubEnv("NEXT_PUBLIC_INTERVIEW_TEXT_MODE", "1");
-    expect(textAnswersAllowed()).toBe(true);
-    vi.stubEnv("NEXT_PUBLIC_INTERVIEW_TEXT_MODE", "");
-    // Production WITH the scripted dev env: allowed.
-    vi.stubEnv("INTERVIEW_DEV_SCRIPTED", "1");
-    expect(textAnswersAllowed()).toBe(true);
-    // restore
-    vi.stubEnv("NODE_ENV", "test");
-    vi.stubEnv("INTERVIEW_DEV_SCRIPTED", "");
-  });
-
-  it("answer route: accepts a typed answer through the HTTP handler in the dev/text fallback (#6)", async () => {
+  it("answer route: rejects a stale manual recorder request", async () => {
     vi.stubEnv("ENABLE_TEST_LOGIN", "1");
     vi.stubEnv("NODE_ENV", "test");
-    vi.stubEnv("GEMINI_API_KEY", "");
-    vi.stubEnv("INTERVIEW_DEV_SCRIPTED", "1"); // scripted so nextQuestion resolves
-    const { nextQuestion } = await import("../lib/interview/session");
-    const iv = await prisma.interview.findFirstOrThrow({
-      where: { userId: STUDENT_A2, status: "live" },
-    });
-    // Guarantee a pending agent question to answer.
-    const last = await prisma.interviewTurn.findFirst({
-      where: { interviewId: iv.id, turnNo: { gt: 0 } },
-      orderBy: { turnNo: "desc" },
-    });
-    if (!last || last.speaker !== "agent") await nextQuestion(iv.id);
-
     const { POST } = await import("../app/api/interview/answer/route");
     const res = await POST(
       new Request("http://test/api/interview/answer", {
         method: "POST",
         headers: { "content-type": "application/json", cookie: `forge_test_user=${STUDENT_A2}` },
-        body: JSON.stringify({ interviewId: iv.id, text: "my typed answer" }),
+        body: JSON.stringify({ interviewId: "legacy", text: "my typed answer" }),
       }),
     );
-    expect(res.status).toBe(200);
-    const json = (await res.json()) as { answer: { transcript: string } };
-    expect(json.answer.transcript).toBe("my typed answer");
-    vi.stubEnv("INTERVIEW_DEV_SCRIPTED", "");
+    expect(res.status).toBe(410);
   });
 
-  it("start route: resume regenerates the question when a crash left the last turn a student turn (#7)", async () => {
+  it("start route: rejects the retired turn-based transport", async () => {
     vi.stubEnv("ENABLE_TEST_LOGIN", "1");
     vi.stubEnv("NODE_ENV", "test");
-    vi.stubEnv("GEMINI_API_KEY", "");
-    vi.stubEnv("INTERVIEW_DEV_SCRIPTED", "1");
-    const STU = "user_s050"; // section A, no prior interview
-    const { startInterview, nextQuestion, submitAnswer, getInterviewState } = await import(
-      "../lib/interview/session"
-    );
-    const iv = await startInterview(STU);
-    await nextQuestion(iv.id); // agent q1
-    await submitAnswer({ interviewId: iv.id, userId: STU, text: "answer to q1" });
-
-    // Simulate the crash window: student turn persisted, agent's next question
-    // never landed — no pending question, transcript ends on a student turn.
-    const mid = await getInterviewState(iv.id, STU);
-    expect(mid.pendingQuestion).toBeNull();
-    expect(mid.turns[mid.turns.length - 1].speaker).toBe("student");
-
-    // Resume via the start route: it must regenerate a question, not deadlock.
     const { POST } = await import("../app/api/interview/start/route");
     const res = await POST(
       new Request("http://test/api/interview/start", {
         method: "POST",
-        headers: { cookie: `forge_test_user=${STU}` },
+        headers: { cookie: "forge_test_user=user_s050" },
       }),
     );
-    expect(res.status).toBe(200);
-    const json = (await res.json()) as {
-      resumed: boolean;
-      state: { pendingQuestion: { text: string } | null };
-    };
-    expect(json.resumed).toBe(true);
-    expect(json.state.pendingQuestion).not.toBeNull();
-    expect(json.state.pendingQuestion!.text.length).toBeGreaterThan(0);
-    vi.stubEnv("INTERVIEW_DEV_SCRIPTED", "");
+    expect(res.status).toBe(410);
   });
 
-  it("start route: no dialog provider configured → 503 with a friendly message", async () => {
+  it("start route: never creates a manual interview", async () => {
     vi.stubEnv("ENABLE_TEST_LOGIN", "1");
     vi.stubEnv("GEMINI_API_KEY", "");
     vi.stubEnv("INTERVIEW_DEV_SCRIPTED", "");
@@ -563,7 +441,7 @@ describe.skipIf(!live)("lib/interview/session (live DB, seeded)", () => {
         headers: { cookie: "forge_test_user=user_s006" },
       }),
     );
-    expect(res.status).toBe(503);
+    expect(res.status).toBe(410);
     const json = (await res.json()) as { error: string };
     expect(json.error.toLowerCase()).toContain("interview");
     // Nothing half-created: the student can start cleanly once configured.

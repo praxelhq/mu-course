@@ -36,9 +36,7 @@ export default async function InterviewLivePage() {
 
   return (
     <main className={styles.page}>
-      <InterviewLiveLoader
-        textMode={process.env.NEXT_PUBLIC_INTERVIEW_TEXT_MODE === "1"}
-      />
+      <InterviewLiveLoader />
       <noscript>
         <div style={{ padding: "2rem" }}>
           The interview needs JavaScript. <Link href="/interview">Go back</Link>.

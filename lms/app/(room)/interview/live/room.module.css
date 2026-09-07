@@ -29,18 +29,6 @@
   width: 100%;
 }
 
-/* The turn-based fallback keeps the page scrollable — it is a form, not a call. */
-.turnBased {
-  flex: 1 1 auto;
-  overflow-y: auto;
-  padding: 2rem 1.5rem;
-}
-
-.turnBased > * {
-  max-width: 44rem;
-  margin: 0 auto;
-}
-
 .header {
   flex: 0 0 auto;
   display: flex;

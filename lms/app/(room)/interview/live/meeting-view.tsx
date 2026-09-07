@@ -54,12 +54,12 @@ function IdleBars({ active }: { active: boolean }) {
 export function MeetingView({
   interviewId,
   budgetMinutes,
-  onFallback,
+  onReconnect,
   onCompleted,
 }: {
   interviewId: string;
   budgetMinutes: number;
-  onFallback: (reason: string) => void;
+  onReconnect: (reason: string) => void;
   onCompleted: () => void;
 }) {
   const room = useRoomContext();
@@ -85,7 +85,7 @@ export function MeetingView({
   const isConnected = connectionState === ConnectionState.Connected;
 
   // How long a connected room may sit with no interviewer in it before we give
-  // up on the realtime path. Joining normally produces a greeting within a few
+  // remint a token for the realtime path. Joining normally produces a greeting within a few
   // seconds; a much longer silence means no agent job was ever dispatched —
   // which happens if the worker was restarting when the student joined.
   const NO_AGENT_GRACE_MS = 30_000;
@@ -135,13 +135,13 @@ export function MeetingView({
     const onDisconnected = () => {
       if (endedRef.current) return;
       endedRef.current = true;
-      onFallback("disconnected");
+      onReconnect("disconnected");
     };
     room.on(RoomEvent.Disconnected, onDisconnected);
     return () => {
       room.off(RoomEvent.Disconnected, onDisconnected);
     };
-  }, [room, onFallback]);
+  }, [room, onReconnect]);
 
   // Transcript poll doubles as the server-side room heartbeat.
   useEffect(() => {
@@ -175,8 +175,8 @@ export function MeetingView({
   // covers the opposite and nastier case — the room is fine, the student is
   // live on camera, and no agent job was ever dispatched. Without this they
   // sit watching themselves until the budget expires, and the budget is
-  // enforced by the agent that is not there. Degrade to the turn-based loop,
-  // which keeps the same interview and the same attempt.
+  // enforced by the agent that is not there. Reconnect to the same room and
+  // preserve the same interview attempt.
   //
   // Two things were wrong with this. It counted a SUBSCRIBED AUDIO TRACK as
   // having heard from the interviewer, so an agent that joined and published
@@ -200,10 +200,10 @@ export function MeetingView({
       const studentSpokeLast = turns.length > 0 && turns[turns.length - 1].speaker === "student";
       if (agentTurns.length > 0 && !studentSpokeLast) return;
       endedRef.current = true;
-      onFallback(agentTurns.length === 0 ? "no-interviewer" : "interviewer-stopped");
+      onReconnect(agentTurns.length === 0 ? "no-interviewer" : "interviewer-stopped");
     }, 5_000);
     return () => clearInterval(interval);
-  }, [connectedAt, onFallback]);
+  }, [connectedAt, onReconnect]);
 
   const cameraTrack = useTracks([Track.Source.Camera], { onlySubscribed: false }).find(
     (t) => t.participant.identity === localParticipant?.identity,

@@ -1,7 +1,10 @@
 import os
+import sys
 import tempfile
+import types
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
 from unittest.mock import patch
 
 import main
@@ -70,6 +73,32 @@ class RuntimeHeartbeatTests(unittest.TestCase):
         )
         self.assertEqual(calls[0][2], {"X-Agent-Token": "secret-token"})
         self.assertNotIn("secret-token", str(calls[0][1]))
+
+
+class ProductionInterviewSafetyTests(unittest.TestCase):
+    def test_legacy_elevenlabs_client_receives_the_configured_key_explicitly(self):
+        calls = []
+        plugins = types.ModuleType("livekit.plugins")
+        plugins.deepgram = SimpleNamespace(STT=lambda **kwargs: ("stt", kwargs))
+        plugins.elevenlabs = SimpleNamespace(TTS=lambda **kwargs: calls.append(kwargs) or ("tts", kwargs))
+        with patch.dict(sys.modules, {"livekit.plugins": plugins}):
+            with patch.dict(os.environ, {"ELEVENLABS_API_KEY": "configured-key"}, clear=False):
+                _, tts = main._legacy_pair()
+        self.assertEqual(tts, ("tts", {"api_key": "configured-key"}))
+        self.assertEqual(calls, [{"api_key": "configured-key"}])
+
+    def test_agent_session_stays_alive_when_a_student_reconnects(self):
+        src = Path("main.py").read_text(encoding="utf-8")
+        body = src[src.index("async def entrypoint("):src.index("async def request_fnc(")]
+        self.assertIn("RoomInputOptions(close_on_disconnect=False)", body)
+
+    def test_non_message_agent_events_do_not_break_turn_persistence(self):
+        self.assertIsNone(main.conversation_item_turn(SimpleNamespace()))
+        self.assertIsNone(main.conversation_item_turn(SimpleNamespace(role="handoff")))
+        self.assertEqual(
+            main.conversation_item_turn(SimpleNamespace(role="assistant", text_content="  Next question?  ")),
+            ("agent", "Next question?"),
+        )
 
 
 class VoiceProviderSelectionTests(unittest.TestCase):
@@ -260,7 +289,6 @@ class TestVoiceFailover:
             "SARVAM_API_KEY",
             *main.LEGACY_VOICE_ENV,
         ]
-
 
 class TestDialogOrder:
     def test_default_leads_with_gemini(self):

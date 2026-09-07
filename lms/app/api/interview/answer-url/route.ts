@@ -1,73 +1,18 @@
-import { z } from "zod";
 import { withAuth } from "@/lib/auth";
-import { prisma } from "@/lib/db";
-import { interviewErrorResponse, rateLimited, takeInterviewToken } from "@/lib/interview/http";
-import { reserveInterviewAnswerUpload } from "@/lib/interview/audio-storage";
-import { InterviewNotFoundError, InterviewNotLiveError } from "@/lib/interview/session";
-import {
-  INTERVIEW_AUDIO_EXTENSIONS,
-  MAX_INTERVIEW_AUDIO_BYTES,
-} from "@/lib/s3";
+import { rateLimited, takeInterviewToken } from "@/lib/interview/http";
 
-// POST /api/interview/answer-url: presigned PUT for one answer clip.
-// audio/webm | audio/mpeg | audio/mp4 only, <=25MB, key
-// interviews/{interviewId}/a{turnNo}.{ext}. Owner-only; interview must be live.
-
+// Do not issue fresh presigned URLs to an obsolete manual-recording client.
+// The realtime worker records and persists the interview through its internal
+// agent endpoints instead.
 export const dynamic = "force-dynamic";
 
-const bodySchema = z.object({
-  interviewId: z.string().min(1),
-  contentType: z.string().min(1),
-  sizeBytes: z.number().int().positive(),
-});
-
-export const POST = withAuth(async (req, { user }) => {
+export const POST = withAuth(async (_req, { user }) => {
   if (!takeInterviewToken(user.userId)) return rateLimited();
-  const parsed = bodySchema.safeParse(await req.json().catch(() => null));
-  if (!parsed.success) return Response.json({ error: "Invalid body" }, { status: 400 });
-  const { interviewId, contentType, sizeBytes } = parsed.data;
-
-  try {
-    const interview = await prisma.interview.findUnique({
-      where: { id: interviewId },
-      select: { userId: true, status: true },
-    });
-    if (!interview || interview.userId !== user.userId) throw new InterviewNotFoundError();
-    if (interview.status !== "live") throw new InterviewNotLiveError(interview.status);
-
-    const ext = INTERVIEW_AUDIO_EXTENSIONS[contentType.toLowerCase()];
-    if (!ext) {
-      return Response.json(
-        { error: `Audio type not allowed: ${contentType} (use webm, mp3 or m4a)` },
-        { status: 415 },
-      );
-    }
-    if (sizeBytes > MAX_INTERVIEW_AUDIO_BYTES) {
-      return Response.json({ error: "Answer clip too large (max 25MB)" }, { status: 413 });
-    }
-
-    // The answer will become turn max+1 — name the clip after it.
-    const maxTurn = await prisma.interviewTurn.aggregate({
-      where: { interviewId },
-      _max: { turnNo: true },
-    });
-    const turnNo = (maxTurn._max.turnNo ?? 0) + 1;
-    const reserved = await reserveInterviewAnswerUpload({
-      interviewId,
-      turnNo,
-      contentType,
-      sizeBytes,
-      extension: ext,
-    });
-    return Response.json({
-      url: reserved.upload.url,
-      key: reserved.upload.key,
-      headers: reserved.upload.headers,
-      reservationId: reserved.reservation.id,
-    });
-  } catch (err) {
-    const mapped = interviewErrorResponse(err);
-    if (mapped) return mapped;
-    throw err;
-  }
+  return Response.json(
+    {
+      error:
+        "Manual answer uploads are disabled for this live interview. Please reconnect to the real-time room.",
+    },
+    { status: 410 },
+  );
 });

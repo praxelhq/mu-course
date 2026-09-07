@@ -15,6 +15,6 @@ const InterviewClient = dynamic(
   },
 );
 
-export function InterviewLiveLoader({ textMode }: { textMode: boolean }) {
-  return <InterviewClient textMode={textMode} />;
+export function InterviewLiveLoader() {
+  return <InterviewClient />;
 }

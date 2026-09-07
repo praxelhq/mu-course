@@ -15,11 +15,10 @@ import styles from "./room.module.css";
 //
 // This component no longer worries about layout: it lives on /interview/live,
 // which is already a full screen with no app shell around it. Its remaining
-// jobs are the camera gate and the degradation path.
+// jobs are the camera gate and the reconnect path.
 //
-// A connect timeout (~8s), a disconnect, or sustained poor quality flips the
-// interview to the turn-based loop in place. The same interview continues and
-// the single attempt is never burned.
+// A connect timeout (~8s), a disconnect, or sustained poor quality remints a
+// token for the same LiveKit interview. The single attempt is never replaced.
 
 const CONNECT_TIMEOUT_MS = 8_000;
 const BUDGET_MINUTES = 15;
@@ -30,13 +29,13 @@ export function RealtimeRoom({
   url,
   token,
   interviewId,
-  onFallback,
+  onReconnect,
   onCompleted,
 }: {
   url: string;
   token: string;
   interviewId: string;
-  onFallback: (reason: string) => void;
+  onReconnect: (reason: string) => void;
   onCompleted: () => void;
 }) {
   const [phase, setPhase] = useState<Phase>("checking");
@@ -44,12 +43,12 @@ export function RealtimeRoom({
   /** Bumped by "Try again" to re-run the camera check. */
   const [attempt, setAttempt] = useState(0);
   const endedRef = useRef(false);
-  const fallbackRef = useRef(onFallback);
+  const reconnectRef = useRef(onReconnect);
   const completedRef = useRef(onCompleted);
   useEffect(() => {
-    fallbackRef.current = onFallback;
+    reconnectRef.current = onReconnect;
     completedRef.current = onCompleted;
-  }, [onFallback, onCompleted]);
+  }, [onReconnect, onCompleted]);
 
   // Camera gate. The lobby already ran a device check, but permission can be
   // revoked between screens, so this is re-proved before joining. State
@@ -81,7 +80,7 @@ export function RealtimeRoom({
     const timer = setTimeout(() => {
       if (endedRef.current) return;
       endedRef.current = true;
-      fallbackRef.current("connect-failed");
+      reconnectRef.current("connect-failed");
     }, CONNECT_TIMEOUT_MS);
     return () => clearTimeout(timer);
   }, [phase]);
@@ -148,22 +147,22 @@ export function RealtimeRoom({
       onDisconnected={() => {
         if (endedRef.current) return;
         endedRef.current = true;
-        fallbackRef.current("disconnected");
+        reconnectRef.current("disconnected");
       }}
       onError={() => {
         if (endedRef.current) return;
         endedRef.current = true;
-        fallbackRef.current("connect-failed");
+        reconnectRef.current("connect-failed");
       }}
       style={{ display: "contents" }}
     >
       <MeetingView
         interviewId={interviewId}
         budgetMinutes={BUDGET_MINUTES}
-        onFallback={(reason) => {
+        onReconnect={(reason) => {
           if (endedRef.current) return;
           endedRef.current = true;
-          fallbackRef.current(reason);
+          reconnectRef.current(reason);
         }}
         onCompleted={() => {
           if (endedRef.current) return;
