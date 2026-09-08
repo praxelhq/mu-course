@@ -1,0 +1,14 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight, Gauge, Layers3 } from "lucide-react";
+import { BlueprintExplorer } from "@/components/blueprint-explorer";
+import { NewsletterForm } from "@/components/newsletter-form";
+import { PublicFooter, PublicHeader } from "@/components/public-shell";
+import { blueprints, blueprintCategories } from "@/lib/blueprints";
+
+export const metadata: Metadata = { title: "Clone Blueprints", description: "Explore evidence-led product clone blueprints, realistic build scope, niche angles, and a useful base-prompt preview.", alternates: { canonical: "/blueprints" }, openGraph: { title: "What can you realistically vibe-code?", description: "Curated product blueprints that separate the buildable core from the moat.", url: "/blueprints" } };
+
+export default function BlueprintsPage(): React.ReactNode {
+  const schema = { "@context": "https://schema.org", "@type": "CollectionPage", name: "VibesClone product blueprints", description: metadata.description, mainEntity: { "@type": "ItemList", itemListElement: blueprints.map((item, index) => ({ "@type": "ListItem", position: index + 1, url: `https://vibesclone.com/blueprints/${item.slug}`, name: item.name })) } };
+  return <main><PublicHeader /><section className="blueprint-hero"><span>CURATED · BUILDABLE · NICHE-READY</span><h1>Don’t clone the surface.<br />Find the buildable core.</h1><p>Search a known product or paste any public URL. We’ll show what is worth rebuilding, what to cut, and where a niche version can win.</p><BlueprintExplorer /></section><section className="library-section"><div className="library-head"><div><span>THE LAUNCH LIBRARY</span><h2>{blueprints.length} products. No thin pages.</h2></div><p>Each blueprint is written to be useful on its own—not mass-generated to chase a keyword.</p></div><div className="category-chips">{blueprintCategories.map((category) => <span key={category}>{category}</span>)}</div><div className="blueprint-grid">{blueprints.map((item) => <Link href={`/blueprints/${item.slug}`} className="blueprint-card" key={item.slug}><div><span>{item.category}</span><b>{item.verdict}</b></div><h2>{item.name}</h2><p>{item.tagline}</p><dl><div><dt><Gauge size={14} /> Cloneability</dt><dd>{item.cloneabilityScore}/100</dd></div><div><dt><Layers3 size={14} /> Focused build</dt><dd>{item.buildTime}</dd></div></dl><strong>Open blueprint <ArrowRight size={16} /></strong></Link>)}</div></section><section className="digest-band"><div><span>THE BUILDABLE PRODUCT DIGEST</span><h2>One teardown worth opening.</h2><p>A weekly blueprint, three niche angles, and a builder lesson. We’ll only send when the material earns it.</p></div><NewsletterForm source="blueprints" /></section><PublicFooter /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} /></main>;
+}

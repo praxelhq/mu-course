@@ -1,6 +1,6 @@
 # VibesClone
 
-VibesClone turns a public product URL into an editable, evidence-linked Build Understanding and then into one base prompt plus ordered follow-up prompts for Lovable, Replit, Base44, or Claude Code.
+VibesClone turns a public product URL into an editable, evidence-linked Build Understanding and then into one base prompt plus ordered follow-up prompts for Lovable, Replit, Base44, or Claude Code. Its public blueprint library previews the buildable core of proven products and lets visitors remix a blueprint into a private project.
 
 ## Local development
 
@@ -40,9 +40,15 @@ Never paste or print secrets in CI logs. Use Railway variables or reference vari
 
 ## Clarity funnel
 
-Create a Clarity funnel with these custom events:
+Create the private build funnel with these custom events:
 
 `landing_view -> project_started -> analysis_completed -> understanding_approved -> checkout_started / entitlement_verified -> prompt_set_generated -> prompt_copied`
+
+Create the public growth funnel with:
+
+`blueprint_view -> blueprint_remix -> project_started`
+
+Track `blueprint_shared`, `public_report_view`, `public_report_shared`, `public_report_published`, and `newsletter_signup` as supporting actions. First-party database counters use the same allowlisted vocabulary and store no prompt text, free-form input, IP address, or email.
 
 No URL, email, prompt, understanding text, or payment field is sent as an event property.
 
