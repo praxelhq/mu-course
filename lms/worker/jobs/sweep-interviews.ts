@@ -130,7 +130,15 @@ export async function sweepInterviews(deps: SweepDeps = {}): Promise<{
   let autoRetakes = 0;
   for (const row of stale) {
     const agentTurns = row.turns.filter((t) => t.speaker === "agent").length;
-    const platformFailure = agentTurns <= PLATFORM_FAILURE_MAX_AGENT_TURNS;
+    const studentTurns = row.turns.filter((t) => t.speaker === "student").length;
+    // Zero answers is the other unambiguous shape of "not the student's fault",
+    // and it is NOT covered by the agent-turn threshold: a student who dropped
+    // during startup leaves the interviewer questioning an empty room for the
+    // full budget, which can be fifteen agent turns with nobody there. The
+    // agent refuses to complete that transcript, so it lands here — and without
+    // this it would have looked like a long, deliberate walk-out.
+    const platformFailure =
+      agentTurns <= PLATFORM_FAILURE_MAX_AGENT_TURNS || studentTurns === 0;
 
     // Bound to `live` so a student who reconnects in the same moment wins.
     const updated = await db.interview.updateMany({

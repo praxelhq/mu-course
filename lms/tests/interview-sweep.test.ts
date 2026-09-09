@@ -176,3 +176,19 @@ describe("interviews that ended before they began", () => {
     expect(PLATFORM_FAILURE_MAX_AGENT_TURNS).toBe(2);
   });
 });
+
+describe("an interview the student was never in", () => {
+  // A drop during startup leaves the interviewer questioning an empty room for
+  // the full budget: many agent turns, no answers. The agent refuses to
+  // complete that, so it arrives here looking like a long walk-out.
+  it("is a platform failure however many questions were asked", async () => {
+    const monologue = Array.from({ length: 15 }, () => ({ speaker: "agent" }));
+    const { client, grants, updates } = fakeDb([], [{ id: "iv_empty", turns: monologue }]);
+    const out = await sweepInterviews({ prisma: client, enqueue: async () => null });
+    expect(out.autoRetakes).toBe(1);
+    expect(grants).toHaveLength(1);
+    expect((updates[0].data as { escalationReason: string }).escalationReason).toMatch(
+      /platform failure/i,
+    );
+  });
+});
