@@ -53,6 +53,10 @@ const isPublicRoute = createRouteMatcher([
   "/api/interview/agent-context",
   "/api/interview/agent-turn",
   "/api/interview/agent-complete",
+  // Guards itself with INTERVIEW_EXPORT_TOKEN (constant-time), and is 503
+  // unless that is set. Public here only because the caller is a spreadsheet
+  // on a timer, which cannot hold a Clerk session.
+  "/api/exports/interviews/feed",
   "/api/webhooks/clerk(.*)",
   "/api/test-login", // guards itself (404 outside dev/test)
 ]);
