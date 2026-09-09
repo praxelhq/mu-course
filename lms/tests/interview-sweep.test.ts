@@ -26,7 +26,11 @@ function conducted(): { speaker: string }[] {
 function fakeDb(
   ungraded: { id: string }[],
   stale: StaleRow[],
-  opts: { heldGrant?: boolean } = {},
+  opts: {
+    heldGrant?: boolean;
+    unattached?: { id: string }[];
+    reservation?: { s3Key: string; consumedAt: Date | null; expiresAt: Date } | null;
+  } = {},
 ) {
   const calls: Record<string, unknown>[] = [];
   const updates: Record<string, unknown>[] = [];
@@ -42,7 +46,9 @@ function fakeDb(
       interview: {
         findMany: vi.fn(async (args: Record<string, unknown>) => {
           calls.push(args);
-          if (call++ === 0) return ungraded;
+          const n = call++;
+          if (n === 0) return ungraded;
+          if (n === 2) return opts.unattached ?? [];
           return stale.map((row) => ({
             userId: "u_1",
             turns: conducted(),
@@ -60,6 +66,17 @@ function fakeDb(
           grants.push(args);
           return { id: "rtk_new" };
         }),
+      },
+      generatedObjectReservation: {
+        findUnique: vi.fn(async () =>
+          opts.reservation === null
+            ? null
+            : (opts.reservation ?? {
+                s3Key: "interviews/iv/room-1.mp4",
+                consumedAt: null,
+                expiresAt: new Date(Date.now() + 60_000),
+              }),
+        ),
       },
       auditLog: {
         create: vi.fn(async (args: Record<string, unknown>) => {
@@ -208,5 +225,57 @@ describe("concurrent sweeps", () => {
     // The escalation itself still happened.
     expect(out.reaped).toBe(1);
     expect(updates[0].data).toMatchObject({ status: "escalated" });
+  });
+});
+
+describe("recordings that never got attached", () => {
+  // The key was written by one route and read by nothing, so nine recordings
+  // sat in S3 unreferenced. The agent now waits for the upload before
+  // reporting the key; this is the backstop for when it cannot — a restart or
+  // a deploy between "the interview is over" and "here is the file".
+  it("commits a recording whose reservation is still live", async () => {
+    const attached: unknown[] = [];
+    const { client } = fakeDb([], [], { unattached: [{ id: "iv_done" }] });
+    const out = await sweepInterviews({
+      prisma: client,
+      enqueue: async () => null,
+      attachRecording: async (a) => {
+        attached.push(a);
+        return {};
+      },
+    });
+    expect(out.recordingsAttached).toBe(1);
+    expect(attached[0]).toMatchObject({
+      interviewId: "iv_done",
+      reservationId: "interview-video:iv_done",
+    });
+  });
+
+  it("stays quiet while the upload is still in flight", async () => {
+    const { client } = fakeDb([], [], { unattached: [{ id: "iv_done" }] });
+    const out = await sweepInterviews({
+      prisma: client,
+      enqueue: async () => null,
+      attachRecording: async () => {
+        throw new Error("NotFound");
+      },
+    });
+    // Next tick retries; a recording that is not there yet is not an incident.
+    expect(out.recordingsAttached).toBe(0);
+  });
+
+  it("skips an interview that never recorded at all", async () => {
+    const { client } = fakeDb([], [], { unattached: [{ id: "iv_done" }], reservation: null });
+    const attached: unknown[] = [];
+    const out = await sweepInterviews({
+      prisma: client,
+      enqueue: async () => null,
+      attachRecording: async (a) => {
+        attached.push(a);
+        return {};
+      },
+    });
+    expect(out.recordingsAttached).toBe(0);
+    expect(attached).toHaveLength(0);
   });
 });

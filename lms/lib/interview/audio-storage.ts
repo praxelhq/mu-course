@@ -233,6 +233,9 @@ export async function commitInterviewRecording(
 // ---------------------------------------------------------------------------
 
 /** Idempotently reserve the room video before LiveKit Egress can start. */
+/** See the note on expiresAt below: this must outlive the longest interview. */
+export const INTERVIEW_VIDEO_RESERVATION_TTL_MS = 3 * 60 * 60_000;
+
 export async function reserveInterviewVideo(
   interviewId: string,
   deps: GeneratedObjectReservationDeps = {},
@@ -246,6 +249,14 @@ export async function reserveInterviewVideo(
         interviewId,
         targetId: interviewId,
         s3Key: keyForInterviewVideo(interviewId, reservationId),
+        // The 30-minute default is shorter than the thing being recorded. It
+        // is reserved when the interview STARTS, and an interview can run 20
+        // minutes on its own clock and an hour across reconnects — so the
+        // reservation could expire while the student was still talking, and
+        // every later attempt to attach the recording got "no longer active".
+        // Long enough to cover the interview, the upload, and the sweep's
+        // retries; unconsumed reservations are reaped by retention anyway.
+        expiresAt: new Date(Date.now() + INTERVIEW_VIDEO_RESERVATION_TTL_MS),
       },
       deps,
     );

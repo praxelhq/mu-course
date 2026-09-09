@@ -1,6 +1,18 @@
 import { Prisma, type PrismaClient, type Role } from "@prisma/client";
 
-const MAX_WINDOW_MS = 30 * 60 * 1000;
+/**
+ * Hard ceiling on how far ahead the enrollment deadline may be set.
+ *
+ * Was 30 minutes, which made this an emergency hatch: someone stood beside the
+ * env var and reset it. That is the right shape for one student locked out
+ * mid-class, and the wrong shape for a cohort — 55 students are on the roster
+ * under a personal address and hit "Not on the roster" the moment they sign in
+ * with their institutional one, across an interview window six days long.
+ *
+ * Still a ceiling, not a switch: a deadline further out than this is ignored,
+ * so the hatch cannot be left open by forgetting about it.
+ */
+const MAX_WINDOW_MS = 7 * 24 * 60 * 60 * 1000;
 
 type EnrollmentEnv = {
   TEMPORARY_SECTION_ENROLLMENT_CODE?: string;

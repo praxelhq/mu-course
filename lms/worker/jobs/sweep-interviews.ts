@@ -2,6 +2,7 @@ import type { PrismaClient } from "@prisma/client";
 import { InterviewStatus, Prisma } from "@prisma/client";
 import { prisma as defaultPrisma } from "@/lib/db";
 import { enqueueGradeInterview } from "@/lib/queue";
+import { commitInterviewVideo } from "@/lib/interview/audio-storage";
 
 // Repairs interviews that fall through the cracks. Every mode below has bitten
 // a real student, and each one is SILENT: the interview simply never reaches a
@@ -46,7 +47,16 @@ export interface SweepDeps {
   prisma?: PrismaClient;
   enqueue?: (interviewId: string) => Promise<string | null>;
   now?: () => Date;
+  /** Seam for the recording backstop; defaults to the real commit. */
+  attachRecording?: (args: {
+    interviewId: string;
+    reservationId: string;
+    s3Key: string;
+  }) => Promise<unknown>;
 }
+
+/** Reservation id prefix written by reserveInterviewVideo. */
+const VIDEO_RESERVATION_PREFIX = "interview-video:";
 
 /**
  * Grant one retake unless the student already holds an unused one. Returns
@@ -95,10 +105,18 @@ async function grantRetakeIfNone(
 /** Actor recorded on sweep-granted retakes, so they are distinguishable. */
 export const SWEEP_ACTOR = "system:interview-sweep";
 
+/**
+ * How far back the recording backstop looks. Bounded so the sweep does not
+ * re-HEAD S3 for every interview the course ever ran; comfortably longer than
+ * the reservation TTL, which is the real limit on when an attach can succeed.
+ */
+export const RECORDING_ATTACH_WINDOW_MS = 6 * 60 * 60_000;
+
 export async function sweepInterviews(deps: SweepDeps = {}): Promise<{
   requeued: number;
   reaped: number;
   autoRetakes: number;
+  recordingsAttached: number;
 }> {
   const db = deps.prisma ?? defaultPrisma;
   const enqueue = deps.enqueue ?? enqueueGradeInterview;
@@ -168,5 +186,44 @@ export async function sweepInterviews(deps: SweepDeps = {}): Promise<{
     if (await grantRetakeIfNone(db, row.userId, row.id)) autoRetakes += 1;
   }
 
-  return { requeued: ungraded.length, reaped: stale.length, autoRetakes };
+  // 3. Finished, but its recording never got attached.
+  //
+  // The agent waits for the upload before reporting the key, so this is the
+  // backstop for the case where it could not: a worker restart or a deploy
+  // between "the interview is over" and "here is the file". Without it the
+  // recording exists in S3 and nothing points at it — which is the state nine
+  // interviews were already in, since the key was written by one route and
+  // read by nothing at all.
+  const unattached = await db.interview.findMany({
+    where: {
+      status: { in: [InterviewStatus.completed, InterviewStatus.graded, InterviewStatus.escalated] },
+      videoS3Key: null,
+      transport: "realtime",
+      createdAt: { gt: new Date(now.getTime() - RECORDING_ATTACH_WINDOW_MS) },
+    },
+    select: { id: true },
+    take: 50,
+  });
+  let recordingsAttached = 0;
+  const attach = deps.attachRecording ?? commitInterviewVideo;
+  for (const row of unattached) {
+    const reservationId = `${VIDEO_RESERVATION_PREFIX}${row.id}`;
+    const reservation = await db.generatedObjectReservation.findUnique({
+      where: { id: reservationId },
+      select: { s3Key: true, consumedAt: true, expiresAt: true },
+    });
+    // No reservation means egress never ran for this interview — nothing to
+    // attach, and nothing wrong.
+    if (!reservation || reservation.consumedAt || reservation.expiresAt <= now) continue;
+    try {
+      await attach({ interviewId: row.id, reservationId, s3Key: reservation.s3Key });
+      recordingsAttached += 1;
+      console.warn(`[interview-sweep] ${row.id} recording attached on retry`);
+    } catch {
+      // Still uploading, or genuinely absent. Either way the next tick retries
+      // until the reservation expires; a missing recording must never be loud.
+    }
+  }
+
+  return { requeued: ungraded.length, reaped: stale.length, autoRetakes, recordingsAttached };
 }

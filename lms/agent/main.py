@@ -126,6 +126,11 @@ QUESTION_BUDGET = 20  # hard ceiling across the five segments (runaway guard)
 # but "the SDK does not currently do that" is not a guarantee worth a student's
 # interview, so the items carry a marker and the handler drops them.
 RESTORED_ITEM_ID_PREFIX = "lms-restored-"
+# How long to wait for a stopped egress to finish uploading before giving up and
+# leaving the attach to the LMS sweep. Audio-only MP4s land in seconds; this is
+# sized for a bad day, and it never delays the student — the interview is
+# completed before this wait begins.
+EGRESS_UPLOAD_TIMEOUT_SECONDS = int(os.environ.get("INTERVIEW_EGRESS_UPLOAD_TIMEOUT", 90))
 # A resumed interview restarts the per-session budget, so the per-session clock
 # alone cannot bound a student who reconnects repeatedly. This is the wall-clock
 # ceiling measured from the interview's own createdAt, and it is the only clock
@@ -778,18 +783,65 @@ class Egress:
             logger.error("egress start failed for %s: %s", self.room_name, err)
             self.egress_id = None
 
+    async def _await_upload(self, egress_id: str) -> bool:
+        """Wait for the file to actually reach S3. Returns whether it landed.
+
+        stop_egress RETURNS WHILE THE MP4 IS STILL UPLOADING — the request only
+        moves the egress into ENDING. Reporting the key at that moment made the
+        LMS HEAD an object S3 did not have yet, and the commit failed on every
+        single interview: nine recordings exist, and the newest one does not,
+        because the race is not even close. So watch the egress to COMPLETE
+        before claiming the key.
+        """
+        from livekit import api
+
+        deadline = time.monotonic() + EGRESS_UPLOAD_TIMEOUT_SECONDS
+        while time.monotonic() < deadline:
+            try:
+                res = await self._lkapi.egress.list_egress(
+                    api.ListEgressRequest(egress_id=egress_id)
+                )
+            except Exception as err:  # noqa: BLE001 — transient API blip; retry
+                logger.warning("egress status check failed (%s): %s", egress_id, err)
+                await asyncio.sleep(2)
+                continue
+            info = next(iter(res.items), None)
+            if info is None:
+                logger.warning("egress %s vanished before completing", egress_id)
+                return False
+            status = info.status
+            if status == api.EgressStatus.EGRESS_COMPLETE:
+                return True
+            if status in (api.EgressStatus.EGRESS_FAILED, api.EgressStatus.EGRESS_ABORTED):
+                logger.error("egress %s ended as %s: %s", egress_id, status, info.error)
+                return False
+            await asyncio.sleep(2)
+        logger.warning(
+            "egress %s still uploading after %ss — leaving it to the LMS sweep",
+            egress_id,
+            EGRESS_UPLOAD_TIMEOUT_SECONDS,
+        )
+        return False
+
     async def stop(self) -> str | None:
-        """Stop the recording; returns the S3 key when a recording ran."""
+        """Stop the recording and wait for it to upload.
+
+        Returns the S3 key only once the object is actually there, so the
+        caller never reports a key the LMS cannot commit.
+        """
         if not self._lkapi:
             return None
-        key = self.s3_key if self.egress_id else None
+        egress_id = self.egress_id
+        key: str | None = None
         try:
-            if self.egress_id:
+            if egress_id:
                 from livekit import api
 
-                await self._lkapi.egress.stop_egress(api.StopEgressRequest(egress_id=self.egress_id))
+                await self._lkapi.egress.stop_egress(api.StopEgressRequest(egress_id=egress_id))
+                if await self._await_upload(egress_id):
+                    key = self.s3_key
         except Exception as err:  # noqa: BLE001
-            logger.error("egress stop failed (%s): %s", self.egress_id, err)
+            logger.error("egress stop failed (%s): %s", egress_id, err)
         finally:
             try:
                 await self._lkapi.aclose()
@@ -1019,15 +1071,26 @@ async def entrypoint(ctx) -> None:
             return
         stop_and_report_recording._done = True  # type: ignore[attr-defined]
         await flush_finalized_turns()
+
+        # Completion first, and on its own. Waiting for the upload before
+        # saying "this interview is over" would put an S3 write on the critical
+        # path of a student's grade; the recording is an attachment to the
+        # interview, never a precondition for it.
+        await lms.post_complete(interview_id, None, None, finished=finished)
+
+        # Then the recording, once it has actually landed. A second post: the
+        # route treats a keyed post with finished=False as recording-only and
+        # commits it without touching the status it already set.
         key = await egress.stop()
-        await lms.post_complete(
-            interview_id,
-            None,
-            None,
-            video_s3_key=key,
-            video_reservation_id=video_reservation_id if key else None,
-            finished=finished,
-        )
+        if key and video_reservation_id:
+            await lms.post_complete(
+                interview_id,
+                None,
+                None,
+                video_s3_key=key,
+                video_reservation_id=video_reservation_id,
+                finished=False,
+            )
 
     async def report_recording_only() -> None:
         # Shutdown of any kind: keep the recording, leave the interview alone.

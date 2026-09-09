@@ -66,18 +66,37 @@ describe("temporary Section F enrollment window", () => {
         now,
       ),
     ).toBe(false);
+    // One millisecond past the ceiling (now + 7 days).
     expect(
       isTemporarySectionFEnrollmentOpen(
-        { TEMPORARY_SECTION_F_ENROLLMENT_UNTIL: "2026-07-30T07:30:00.001Z" },
+        { TEMPORARY_SECTION_F_ENROLLMENT_UNTIL: "2026-08-06T07:00:00.001Z" },
         now,
       ),
     ).toBe(false);
+    // Beyond the ceiling. The ceiling moved from 30 minutes to 7 days when 55
+    // students turned out to be locked out across a six-day interview window,
+    // but it is still a ceiling: a deadline further out than this is ignored,
+    // so the hatch cannot be left open by forgetting about it.
     expect(
       isTemporarySectionFEnrollmentOpen(
-        { TEMPORARY_SECTION_F_ENROLLMENT_UNTIL: "2026-07-30T09:00:00.000Z" },
+        { TEMPORARY_SECTION_F_ENROLLMENT_UNTIL: "2026-08-30T09:00:00.000Z" },
         now,
       ),
     ).toBe(false);
+  });
+
+  it("stays open across a multi-day interview window", () => {
+    // The case it exists for now: a cohort signing in with an address the
+    // roster does not carry, for as long as the window is open.
+    expect(
+      isTemporarySectionFEnrollmentOpen(
+        {
+          TEMPORARY_SECTION_ENROLLMENT_CODE: "F",
+          TEMPORARY_SECTION_ENROLLMENT_UNTIL: "2026-08-04T07:30:00.000Z",
+        },
+        now,
+      ),
+    ).toBe(true);
   });
 
   it("derives a usable temporary display name from the authenticated email", () => {

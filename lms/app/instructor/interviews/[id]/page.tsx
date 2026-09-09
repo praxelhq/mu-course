@@ -10,8 +10,13 @@ import {
 } from "@/lib/ai/interview-grading";
 import { InterviewActions, RegenerateInterview } from "./actions";
 
-// One interview: transcript with per-turn audio (presigned, short TTL),
-// rubric + escalation reason, and the resolution actions (audited).
+// One interview: the room recording, the transcript (with per-turn audio where
+// the turn-based transport left any), rubric + escalation reason, and the
+// resolution actions (audited).
+//
+// The room recording was written to Interview.videoS3Key by agent-complete and
+// read by NOTHING — nine interviews had one sitting in S3 that no instructor
+// could reach. A recording nobody can play is not a recording.
 
 export const dynamic = "force-dynamic";
 
@@ -86,6 +91,30 @@ export default async function InterviewDetailPage({
     where: { userId: interview.user.id, usedByInterviewId: null },
   });
 
+  // The room recording. Audio-only by default (EGRESS_AUDIO_ONLY), in an MP4
+  // container, so an <audio> element plays it.
+  let recordingUrl: string | null = null;
+  if (s3Configured() && interview.videoS3Key) {
+    try {
+      recordingUrl = await presignGet(interview.videoS3Key, {
+        versionId: interview.videoS3VersionId ?? undefined,
+      });
+    } catch {
+      // Signing hiccup or a deleted object — the transcript still stands.
+    }
+  }
+
+  // A plain-text transcript, for reading away from this page and for attaching
+  // to anything an escalation turns into.
+  const transcriptText = [
+    `Interview ${interview.id}`,
+    `${interview.user.name} <${interview.user.email}>`,
+    `Started ${fmt.format(interview.createdAt)}`,
+    "",
+    ...turns.map((t) => `[${t.speaker.toUpperCase()}] ${t.text}`),
+  ].join("\n");
+  const transcriptHref = `data:text/plain;charset=utf-8,${encodeURIComponent(transcriptText)}`;
+
   return (
     <main style={{ maxWidth: "56rem", margin: "0 auto", padding: "2.5rem 2rem" }}>
       <Eyebrow muted>Interview · {interview.status}</Eyebrow>
@@ -98,6 +127,26 @@ export default async function InterviewDetailPage({
         {interview.attemptNumber} · started {fmt.format(interview.createdAt)}
         {interview.completedAt ? ` · completed ${fmt.format(interview.completedAt)}` : ""}
       </p>
+
+      <Card style={{ marginBottom: "1.5rem" }}>
+        <p style={{ ...mono, fontSize: "0.75rem", margin: "0 0 0.75rem" }}>Recording</p>
+        {recordingUrl ? (
+          <audio controls preload="none" src={recordingUrl} style={{ width: "100%" }} />
+        ) : (
+          <p style={{ margin: 0, color: "var(--charcoal)" }}>
+            {interview.videoS3Key
+              ? "The recording could not be signed just now. Reload to try again."
+              : interview.status === "live"
+                ? "This interview is still in progress."
+                : "No recording was attached. If the interview only just finished, the sweep attaches it within a minute."}
+          </p>
+        )}
+        <p style={{ margin: "0.75rem 0 0" }}>
+          <a href={transcriptHref} download={`interview-${interview.id}.txt`}>
+            Download transcript ({turns.length} turns)
+          </a>
+        </p>
+      </Card>
 
       {prereqs.length > 0 && (
         <Card style={{ marginBottom: "1.5rem" }}>
