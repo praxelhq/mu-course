@@ -518,13 +518,19 @@ const INTERVIEW_START_LOCK_NAMESPACE = 9723;
  * any isolation level short of SERIALIZABLE. This makes it safe without a
  * schema change. A client that cannot run raw SQL (the injected test double)
  * simply runs unlocked, which is the behaviour those tests already assume.
+ *
+ * The `::int` is load-bearing. Prisma binds a JS number as int8, and Postgres
+ * ships pg_advisory_xact_lock(int8) and pg_advisory_xact_lock(int4, int4) but
+ * NOT (int8, int4) — so without the cast every call raises 42883 and, because
+ * the token route cannot map P2010, every interview start 500s. It shipped
+ * that way and took the whole cohort's interviews down with it.
  */
-async function lockStudentStarts(tx: unknown, userId: string): Promise<void> {
+export async function lockStudentStarts(tx: unknown, userId: string): Promise<void> {
   const raw = (tx as { $executeRaw?: (...args: unknown[]) => Promise<unknown> }).$executeRaw;
   if (typeof raw !== "function") return;
   await (tx as {
     $executeRaw: (strings: TemplateStringsArray, ...values: unknown[]) => Promise<unknown>;
-  }).$executeRaw`SELECT pg_advisory_xact_lock(${INTERVIEW_START_LOCK_NAMESPACE}, hashtext(${userId}))`;
+  }).$executeRaw`SELECT pg_advisory_xact_lock(${INTERVIEW_START_LOCK_NAMESPACE}::int, hashtext(${userId}))`;
 }
 
 /**
