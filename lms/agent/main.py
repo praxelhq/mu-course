@@ -118,6 +118,15 @@ MAX_INTERVIEW_SECONDS = int(os.environ.get("INTERVIEW_MAX_SECONDS", 20 * 60))
 # room must not run into the normal budget-completion path and grade a fragment.
 REJOIN_GRACE_SECONDS = max(1, int(os.environ.get("INTERVIEW_REJOIN_GRACE_SECONDS", 120)))
 QUESTION_BUDGET = 20  # hard ceiling across the five segments (runaway guard)
+# A resumed interview restarts the per-session budget, so the per-session clock
+# alone cannot bound a student who reconnects repeatedly. This is the wall-clock
+# ceiling measured from the interview's own createdAt, and it is the only clock
+# a reconnect cannot rewind. Generous on purpose: it exists to stop a runaway,
+# not to punish a student whose network dropped. Below the 30-minute
+# abandonment sweep would make a rejoin pointless, so keep it above.
+MAX_WALLCLOCK_SECONDS = int(
+    os.environ.get("INTERVIEW_MAX_WALLCLOCK_SECONDS", MAX_INTERVIEW_SECONDS * 3)
+)
 # The model may not end the interview before this many of its own turns. The
 # five-segment arc cannot be covered in fewer, and the final segment — the
 # student's own workflow and sector map — is the one that gets skipped when an
@@ -186,6 +195,84 @@ def own_work_covered(agent_utterances: "list[str]") -> bool:
     named = any(marker in haystack for marker in OWN_WORK_IDENTITY_MARKERS)
     probed = any(marker in haystack for marker in OWN_WORK_SUBSTANCE_MARKERS)
     return named and probed
+
+
+def restore_session_state(transcript: "list[dict]"):
+    """Rebuild an in-progress interview from the turns the LMS already holds.
+
+    A job is not an interview. The room name is deterministic, so a job that
+    ends — a browser that stays away past the rejoin grace, a worker restart, a
+    deploy — is followed by a NEW job for the SAME interview. That job used to
+    construct an empty AgentSession, which meant it greeted the student and
+    began at segment one again. One student was restarted four times and lost
+    his interview; his transcript carries four greetings.
+
+    agent-context has always returned the transcript. Nothing read it. This
+    turns that payload back into the three pieces of state a resumed job needs:
+
+      chat_ctx          - so the model knows what it already asked
+      question_count    - so the budget and end-guard are not rewound
+      agent_utterances  - so own_work_covered() does not forget that the
+                          student's own build was already interrogated, which
+                          would otherwise trap them in a refusal loop
+
+    Returns (chat_ctx, question_count, agent_utterances). chat_ctx is None when
+    there is nothing to resume, which is the ordinary first-join case.
+    """
+    from livekit.agents.llm import ChatContext
+
+    agent_utterances: list[str] = []
+    question_count = 0
+    messages: list[tuple[str, str]] = []
+    for turn in transcript:
+        if not isinstance(turn, Mapping):
+            continue
+        # Turn 0 is the system prompt; it reaches the Agent as instructions.
+        if turn.get("turnNo") == 0:
+            continue
+        text = (turn.get("text") or "").strip()
+        speaker = turn.get("speaker")
+        if not text or speaker not in ("agent", "student"):
+            continue
+        if speaker == "agent":
+            question_count += 1
+            agent_utterances.append(text)
+            messages.append(("assistant", text))
+        else:
+            messages.append(("user", text))
+
+    if not messages:
+        return None, 0, []
+
+    chat_ctx = ChatContext.empty()
+    for role, text in messages:
+        chat_ctx.add_message(role=role, content=text)
+    return chat_ctx, question_count, agent_utterances
+
+
+def interview_deadline(created_at: "str | None", budget_seconds: int) -> "float | None":
+    """monotonic() value past which this interview must stop, whatever the job.
+
+    Derived from the interview's createdAt so that reconnecting cannot buy more
+    time. Returns None when createdAt is unusable — the per-session budget and
+    the question budget still apply, so a missing timestamp degrades to the old
+    behaviour rather than ending an interview early.
+    """
+    if not created_at:
+        return None
+    from datetime import datetime, timezone
+
+    try:
+        started = datetime.fromisoformat(str(created_at).replace("Z", "+00:00"))
+    except ValueError:
+        logger.warning("unparseable interview createdAt %r — no wall-clock cap", created_at)
+        return None
+    if started.tzinfo is None:
+        started = started.replace(tzinfo=timezone.utc)
+    already = (datetime.now(timezone.utc) - started).total_seconds()
+    return time.monotonic() + max(0.0, budget_seconds - already)
+
+
 # Dialog runs through LiveKit Inference, which is included in LiveKit Cloud —
 # no extra provider key, and it is zero-data-retention by default, which matters
 # because this prompt carries the student's own resume.
@@ -917,12 +1004,39 @@ async def entrypoint(ctx) -> None:
     started_at = time.monotonic()
     finished = asyncio.Event()
     aborted = False
-    question_count = 0
-    agent_utterances: list[str] = []
+
+    # Resume, don't restart. See restore_session_state.
+    prior_ctx, question_count, agent_utterances = restore_session_state(
+        context.get("transcript") or []
+    )
+    resuming = prior_ctx is not None
+    # Answers on the record, across every job this interview has had. An
+    # interview with none of these is not an interview and must never be
+    # completed: doing so grades silence and burns the student's one attempt.
+    student_turns = sum(
+        1
+        for turn in (context.get("transcript") or [])
+        if isinstance(turn, Mapping) and turn.get("speaker") == "student"
+    )
+    if resuming:
+        logger.info(
+            "interview %s: resuming with %s prior questions already asked",
+            interview_id,
+            question_count,
+        )
+
+    # The one clock a reconnect cannot rewind. createdAt is the interview's own
+    # start; a job that begins 12 minutes into it inherits those 12 minutes.
+    wallclock_deadline = interview_deadline(
+        context.get("createdAt"), MAX_WALLCLOCK_SECONDS
+    )
 
     class Interviewer(Agent):
         def __init__(self) -> None:
-            super().__init__(instructions=realtime_instructions(context.get("systemPrompt", "")))
+            super().__init__(
+                instructions=realtime_instructions(context.get("systemPrompt", "")),
+                chat_ctx=prior_ctx,
+            )
 
         @function_tool
         async def end_interview(self, ctx_: RunContext) -> str:
@@ -980,8 +1094,21 @@ async def entrypoint(ctx) -> None:
             # guard released before the own-work segment was reachable.
             nonlocal started_at
             started_at = time.monotonic()
+            # A resumed interview must not be re-introduced. The student has
+            # already been greeted — possibly several times — and re-asking
+            # segment one is how an interview gets destroyed rather than
+            # recovered. The prior turns are in the chat context; carry on.
             self.session.generate_reply(
                 instructions=(
+                    "You have just reconnected to an interview already in "
+                    "progress. Do NOT greet the student, introduce yourself, or "
+                    "repeat a question you have already asked — the conversation "
+                    "so far is in your context. In one short sentence, tell them "
+                    "you are back, then continue with the NEXT question in the "
+                    "sequence."
+                )
+                if resuming
+                else (
                     "Greet the student warmly in one or two sentences, then ask "
                     "your first interview question."
                 )
@@ -1036,10 +1163,12 @@ async def entrypoint(ctx) -> None:
         if turn is None:
             return
         speaker, text = turn
-        nonlocal question_count
+        nonlocal question_count, student_turns
         if speaker == "agent":
             question_count += 1
             agent_utterances.append(text)
+        else:
+            student_turns += 1
         # Persist-before-anything-else is the LMS's job; ours is never to drop
         # a finalized utterance (retry + buffer inside post_turn).
         task = asyncio.create_task(lms.post_turn(interview_id, speaker, text))
@@ -1088,13 +1217,41 @@ async def entrypoint(ctx) -> None:
     ctx.room.on("participant_disconnected", on_participant_disconnected)
     ctx.room.on("participant_connected", on_participant_connected)
 
+    def abort_rather_than_grade_silence(reason: str) -> None:
+        """Expiring the clock is not the same as having conducted an interview.
+
+        A student who dropped during startup — before the participant handlers
+        were even registered — used to have the agent greet an empty room, ask
+        into it for twenty minutes, and then complete a transcript with zero
+        answers in it. That grades silence and spends the student's one attempt.
+        """
+        nonlocal aborted
+        if student_turns == 0:
+            aborted = True
+            logger.error(
+                "interview %s: %s with no student turns — NOT completing",
+                interview_id,
+                reason,
+            )
+
     async def budget_watch() -> None:
         while not finished.is_set():
             if time.monotonic() - started_at > MAX_INTERVIEW_SECONDS:
                 logger.info("interview %s hit the %ss budget", interview_id, MAX_INTERVIEW_SECONDS)
+                abort_rather_than_grade_silence("budget expired")
+                finished.set()
+                return
+            if wallclock_deadline is not None and time.monotonic() > wallclock_deadline:
+                logger.info(
+                    "interview %s hit the %ss wall-clock ceiling across reconnects",
+                    interview_id,
+                    MAX_WALLCLOCK_SECONDS,
+                )
+                abort_rather_than_grade_silence("wall-clock ceiling reached")
                 finished.set()
                 return
             if question_count >= QUESTION_BUDGET * 2:  # runaway guard
+                abort_rather_than_grade_silence("question runaway guard tripped")
                 finished.set()
                 return
             await asyncio.sleep(5)
@@ -1142,6 +1299,28 @@ async def entrypoint(ctx) -> None:
         await session.aclose()
     except Exception:  # noqa: BLE001
         pass
+
+    # Leaving an aborted interview's room standing is what stranded students.
+    # Dispatch is automatic, which means it fires once — when the room is
+    # created. A room this job abandons will never be given another agent, and
+    # the student's browser will happily reconnect to it forever, watching
+    # itself, while the transcript poll keeps the heartbeat fresh enough that
+    # the abandonment sweep cannot see them either.
+    #
+    # Deleting it makes their next join create a new room, which does dispatch —
+    # and that job now resumes from the transcript rather than starting over.
+    # Only on the aborted path: deleting the room on a normal finish would race
+    # the student's own poll and bounce them out before they see their result.
+    if aborted:
+        try:
+            await asyncio.wait_for(ctx.delete_room(), timeout=10)
+            logger.info(
+                "interview %s: deleted the room so a rejoin gets a fresh agent",
+                interview_id,
+            )
+        except Exception as err:  # noqa: BLE001 — the LMS also recovers this
+            logger.warning("could not delete room for %s: %s", interview_id, err)
+
     ctx.shutdown(reason="interview complete")
 
 

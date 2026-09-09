@@ -1,6 +1,7 @@
 import os
 import sys
 import tempfile
+import time
 import types
 import unittest
 from pathlib import Path
@@ -374,3 +375,104 @@ class TestDialogAttemptTimeout:
         src = open("main.py", encoding="utf-8").read()
         body = src[src.index("def build_dialog_llm("):src.index("def realtime_instructions(")]
         assert "attempt_timeout=DIALOG_ATTEMPT_TIMEOUT_SECONDS" in body
+
+
+class InterviewResumeTests(unittest.TestCase):
+    """A new job for the same room must resume the interview, not restart it.
+
+    Four greetings in one student's transcript are what these guard against.
+    """
+
+    def test_empty_transcript_is_a_first_join(self):
+        ctx, count, utterances = main.restore_session_state([])
+        self.assertIsNone(ctx)
+        self.assertEqual(count, 0)
+        self.assertEqual(utterances, [])
+
+    def test_prior_turns_rebuild_context_counters_and_coverage(self):
+        transcript = [
+            {"turnNo": 0, "speaker": "system", "text": "SYSTEM PROMPT"},
+            {"turnNo": 1, "speaker": "agent", "text": "Tell me about yourself."},
+            {"turnNo": 2, "speaker": "student", "text": "I am an engineer."},
+            {"turnNo": 3, "speaker": "agent", "text": "What would you automate?"},
+        ]
+        ctx, count, utterances = main.restore_session_state(transcript)
+        self.assertIsNotNone(ctx)
+        # Only the agent's own turns advance the question budget.
+        self.assertEqual(count, 2)
+        self.assertEqual(len(utterances), 2)
+        roles = [getattr(item, "role", None) for item in ctx.items]
+        self.assertEqual(roles, ["assistant", "user", "assistant"])
+        # The system prompt reaches the Agent as instructions, never as history.
+        joined = " ".join(
+            t for item in ctx.items for t in [getattr(item, "text_content", "") or ""]
+        )
+        self.assertNotIn("SYSTEM PROMPT", joined)
+
+    def test_own_work_coverage_survives_a_restart(self):
+        # Without this the end-guard forgets the segment was covered and traps
+        # the student in a refusal loop for the rest of the interview.
+        probing = (
+            "Walk me through the sector map you uploaded, and what error handling "
+            "you put in when a module times out."
+        )
+        _, _, utterances = main.restore_session_state(
+            [{"turnNo": 1, "speaker": "agent", "text": probing}]
+        )
+        self.assertTrue(main.own_work_covered(utterances))
+
+    def test_blank_and_unknown_speakers_are_ignored(self):
+        ctx, count, _ = main.restore_session_state(
+            [
+                {"turnNo": 1, "speaker": "agent", "text": "   "},
+                {"turnNo": 2, "speaker": "narrator", "text": "ignored"},
+                {"turnNo": 3, "speaker": "student", "text": "kept"},
+                "not-a-mapping",
+            ]
+        )
+        self.assertEqual(count, 0)
+        self.assertEqual(len(ctx.items), 1)
+
+
+class WallClockCeilingTests(unittest.TestCase):
+    """The per-session budget restarts on every rejoin; this one cannot."""
+
+    def test_missing_created_at_disables_the_cap_rather_than_ending_early(self):
+        self.assertIsNone(main.interview_deadline(None, 600))
+        self.assertIsNone(main.interview_deadline("not-a-date", 600))
+
+    def test_time_already_spent_is_deducted(self):
+        from datetime import datetime, timedelta, timezone
+
+        started = datetime.now(timezone.utc) - timedelta(seconds=300)
+        deadline = main.interview_deadline(started.isoformat(), 600)
+        remaining = deadline - time.monotonic()
+        self.assertTrue(240 < remaining < 360, remaining)
+
+    def test_an_exhausted_interview_gets_no_further_time(self):
+        from datetime import datetime, timedelta, timezone
+
+        started = datetime.now(timezone.utc) - timedelta(seconds=9000)
+        deadline = main.interview_deadline(started.isoformat(), 600)
+        self.assertLessEqual(deadline - time.monotonic(), 0.5)
+
+
+class ResumeWiringTests(unittest.TestCase):
+    """The helper existing is not the fix; the entrypoint using it is.
+
+    agent-context has returned the transcript since it was written. The agent
+    simply never read it, and no test noticed for four production interviews.
+    """
+
+    SOURCE = Path(__file__).with_name("main.py").read_text()
+
+    def test_prior_context_is_handed_to_the_agent(self):
+        self.assertIn("chat_ctx=prior_ctx", self.SOURCE)
+        self.assertIn('restore_session_state(\n        context.get("transcript") or []', self.SOURCE)
+
+    def test_a_resumed_interview_is_not_greeted_again(self):
+        self.assertIn("if resuming", self.SOURCE)
+        self.assertIn("Do NOT greet the student", self.SOURCE)
+
+    def test_the_wall_clock_ceiling_is_enforced_in_the_budget_watch(self):
+        self.assertIn("wallclock_deadline is not None and time.monotonic() > wallclock_deadline", self.SOURCE)

@@ -46,22 +46,57 @@ export async function POST(req: Request): Promise<Response> {
     });
     if (!interview) return Response.json({ error: "Interview not found." }, { status: 404 });
 
-    if (audioS3Key && audioReservationId) {
-      // The recording must live in this interview's own namespace.
-      if (!audioS3Key.startsWith(`interviews/${interviewId}/`)) {
-        return Response.json({ error: "audioS3Key outside interview namespace" }, { status: 400 });
-      }
-      await commitInterviewRecording({ interviewId, reservationId: audioReservationId, s3Key: audioS3Key });
+    // The recording must live in this interview's own namespace.
+    if (audioS3Key && !audioS3Key.startsWith(`interviews/${interviewId}/`)) {
+      return Response.json({ error: "audioS3Key outside interview namespace" }, { status: 400 });
+    }
+    if (videoS3Key && !videoS3Key.startsWith(`interviews/${interviewId}/`)) {
+      return Response.json({ error: "videoS3Key outside interview namespace" }, { status: 400 });
     }
 
-    if (videoS3Key && videoReservationId) {
-      if (!videoS3Key.startsWith(`interviews/${interviewId}/`)) {
-        return Response.json({ error: "videoS3Key outside interview namespace" }, { status: 400 });
+    // The interview is the product; the recording is an attachment to it.
+    //
+    // These used to run the other way round, and it cost interviews. The agent
+    // calls Egress stop and posts the key immediately, but stop() returns while
+    // the MP4 is still uploading — so committing the key does a HEAD on an
+    // object S3 does not have yet, throws, and the completion underneath it
+    // never ran. The student had already heard "your interview is complete"
+    // while their row sat `live` forever: never graded, never swept (the open
+    // tab keeps the heartbeat fresh), and costUsd stuck at 0 because grading is
+    // the only thing that writes it.
+    //
+    // So: complete first, attach the recording best-effort. A lost recording is
+    // a lost recording. A lost completion is a lost interview.
+    const commitRecording = async () => {
+      const failures: string[] = [];
+      if (audioS3Key && audioReservationId) {
+        try {
+          await commitInterviewRecording({
+            interviewId,
+            reservationId: audioReservationId,
+            s3Key: audioS3Key,
+          });
+        } catch (err) {
+          failures.push("audio");
+          console.error(`[agent-complete] audio commit failed for ${interviewId}:`, err);
+        }
       }
-      await commitInterviewVideo({ interviewId, reservationId: videoReservationId, s3Key: videoS3Key });
-    }
+      if (videoS3Key && videoReservationId) {
+        try {
+          await commitInterviewVideo({
+            interviewId,
+            reservationId: videoReservationId,
+            s3Key: videoS3Key,
+          });
+        } catch (err) {
+          failures.push("video");
+          console.error(`[agent-complete] video commit failed for ${interviewId}:`, err);
+        }
+      }
+      return failures;
+    };
 
-    // The recording is always committed above; completion is not automatic.
+    // Completion is not automatic.
     //
     // Two ways this route used to end an interview it had no business ending:
     // the agent posts here from its SHUTDOWN callback, so a worker restart, a
@@ -70,14 +105,27 @@ export async function POST(req: Request): Promise<Response> {
     // loop the agent was no longer the thing conducting their interview, yet
     // its shutdown still finished it underneath them.
     if (!finished) {
-      return Response.json({ ok: true, completed: false, reason: "recording-only" });
+      const recordingFailures = await commitRecording();
+      return Response.json({
+        ok: true,
+        completed: false,
+        reason: "recording-only",
+        recordingFailures,
+      });
     }
     if (interview.transport && interview.transport !== "realtime") {
-      return Response.json({ ok: true, completed: false, reason: "not-realtime" });
+      const recordingFailures = await commitRecording();
+      return Response.json({
+        ok: true,
+        completed: false,
+        reason: "not-realtime",
+        recordingFailures,
+      });
     }
 
     await completeInterview(interviewId, interview.userId);
-    return Response.json({ ok: true, completed: true });
+    const recordingFailures = await commitRecording();
+    return Response.json({ ok: true, completed: true, recordingFailures });
   } catch (err) {
     const mapped = interviewErrorResponse(err);
     if (mapped) return mapped;

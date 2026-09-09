@@ -21,7 +21,10 @@ import styles from "./room.module.css";
 // token for the same LiveKit interview. The single attempt is never replaced.
 
 const CONNECT_TIMEOUT_MS = 8_000;
-const BUDGET_MINUTES = 15;
+// Must track the agent's INTERVIEW_MAX_SECONDS (default 20 min). At 15 the
+// clock turned red five minutes into every normal interview, telling students
+// they were out of time while the interviewer carried on asking questions.
+const BUDGET_MINUTES = 20;
 
 type Phase = "checking" | "blocked" | "connecting" | "live";
 
@@ -29,12 +32,15 @@ export function RealtimeRoom({
   url,
   token,
   interviewId,
+  startedAt,
   onReconnect,
   onCompleted,
 }: {
   url: string;
   token: string;
   interviewId: string;
+  /** The interview's createdAt — the clock a reconnect must not rewind. */
+  startedAt: string | null;
   onReconnect: (reason: string) => void;
   onCompleted: () => void;
 }) {
@@ -158,6 +164,7 @@ export function RealtimeRoom({
     >
       <MeetingView
         interviewId={interviewId}
+        startedAt={startedAt}
         budgetMinutes={BUDGET_MINUTES}
         onReconnect={(reason) => {
           if (endedRef.current) return;

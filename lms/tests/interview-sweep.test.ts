@@ -1,25 +1,70 @@
 import { describe, expect, it, vi } from "vitest";
-import { REGRADE_AFTER_MS, STALE_LIVE_AFTER_MS, sweepInterviews } from "../worker/jobs/sweep-interviews";
+import {
+  PLATFORM_FAILURE_MAX_AGENT_TURNS,
+  REGRADE_AFTER_MS,
+  STALE_LIVE_AFTER_MS,
+  SWEEP_ACTOR,
+  sweepInterviews,
+} from "../worker/jobs/sweep-interviews";
 
 // Every mode this repairs is SILENT: the interview never reaches a grade and
 // nobody is told. Six students were reset by hand before this existed.
 
-function fakeDb(ungraded: { id: string }[], stale: { id: string }[]) {
+type StaleRow = { id: string; userId?: string; turns?: { speaker: string }[] };
+
+/** An interview the student actually sat through: greeting + several questions. */
+function conducted(): { speaker: string }[] {
+  return [
+    { speaker: "agent" },
+    { speaker: "student" },
+    { speaker: "agent" },
+    { speaker: "student" },
+    { speaker: "agent" },
+  ];
+}
+
+function fakeDb(
+  ungraded: { id: string }[],
+  stale: StaleRow[],
+  opts: { heldGrant?: boolean } = {},
+) {
   const calls: Record<string, unknown>[] = [];
   const updates: Record<string, unknown>[] = [];
+  const grants: Record<string, unknown>[] = [];
+  const audits: Record<string, unknown>[] = [];
   let call = 0;
   return {
     calls,
     updates,
+    grants,
+    audits,
     client: {
       interview: {
         findMany: vi.fn(async (args: Record<string, unknown>) => {
           calls.push(args);
-          return call++ === 0 ? ungraded : stale;
+          if (call++ === 0) return ungraded;
+          return stale.map((row) => ({
+            userId: "u_1",
+            turns: conducted(),
+            ...row,
+          }));
         }),
         updateMany: vi.fn(async (args: Record<string, unknown>) => {
           updates.push(args);
           return { count: 1 };
+        }),
+      },
+      interviewRetake: {
+        findFirst: vi.fn(async () => (opts.heldGrant ? { id: "rtk_held" } : null)),
+        create: vi.fn(async (args: Record<string, unknown>) => {
+          grants.push(args);
+          return { id: "rtk_new" };
+        }),
+      },
+      auditLog: {
+        create: vi.fn(async (args: Record<string, unknown>) => {
+          audits.push(args);
+          return { id: "aud_1" };
         }),
       },
     } as never,
@@ -71,5 +116,63 @@ describe("abandoned live interviews", () => {
 
   it("waits half an hour before presuming abandonment", () => {
     expect(STALE_LIVE_AFTER_MS).toBe(30 * 60 * 1000);
+  });
+
+  it("leaves a genuine walk-off with the instructor, and grants nothing", async () => {
+    const { client, grants, updates } = fakeDb([], [{ id: "iv_9" }]);
+    const out = await sweepInterviews({ prisma: client, enqueue: async () => null });
+    expect(out.autoRetakes).toBe(0);
+    expect(grants).toHaveLength(0);
+    expect((updates[0].data as { escalationReason: string }).escalationReason).toMatch(
+      /Abandoned mid-interview/,
+    );
+  });
+});
+
+describe("interviews that ended before they began", () => {
+  // Four students lost their interviews to a dialog outage inside the first two
+  // turns, and every one of them needed a retake granted by hand two days
+  // later. That is the repeat this closes.
+  const barelyStarted: { speaker: string }[] = [{ speaker: "agent" }, { speaker: "student" }];
+
+  it("grants the attempt back automatically", async () => {
+    const { client, grants, audits, updates } = fakeDb(
+      [],
+      [{ id: "iv_dead", userId: "u_shab", turns: barelyStarted }],
+    );
+    const out = await sweepInterviews({ prisma: client, enqueue: async () => null });
+    expect(out.autoRetakes).toBe(1);
+    expect(grants[0]).toMatchObject({ data: { userId: "u_shab", grantedBy: SWEEP_ACTOR } });
+    expect(audits[0]).toMatchObject({ data: { action: "interview.grant-retake" } });
+    expect((updates[0].data as { escalationReason: string }).escalationReason).toMatch(
+      /platform failure/i,
+    );
+  });
+
+  it("does not stack a second grant on a student who already holds one", async () => {
+    const { client, grants } = fakeDb(
+      [],
+      [{ id: "iv_dead", turns: barelyStarted }],
+      { heldGrant: true },
+    );
+    const out = await sweepInterviews({ prisma: client, enqueue: async () => null });
+    expect(out.autoRetakes).toBe(0);
+    expect(grants).toHaveLength(0);
+  });
+
+  it("still escalates when the grant itself fails", async () => {
+    const { client, updates } = fakeDb([], [{ id: "iv_dead", turns: barelyStarted }]);
+    (client as unknown as { interviewRetake: { findFirst: () => Promise<never> } })
+      .interviewRetake.findFirst = async () => {
+      throw new Error("db down");
+    };
+    const out = await sweepInterviews({ prisma: client, enqueue: async () => null });
+    expect(out.reaped).toBe(1);
+    expect(out.autoRetakes).toBe(0);
+    expect(updates[0].data).toMatchObject({ status: "escalated" });
+  });
+
+  it("draws the line at a greeting plus one question", () => {
+    expect(PLATFORM_FAILURE_MAX_AGENT_TURNS).toBe(2);
   });
 });

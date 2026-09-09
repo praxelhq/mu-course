@@ -12,6 +12,7 @@ type TokenResponse = {
   token?: string;
   url?: string;
   interviewId?: string;
+  startedAt?: string;
   waiting?: boolean;
   error?: string;
 };
@@ -25,7 +26,12 @@ export function InterviewRoom() {
   const router = useRouter();
   const [mode, setMode] = useState<Mode>("requesting");
   const [message, setMessage] = useState<string | null>(null);
-  const [rt, setRt] = useState<{ url: string; token: string; interviewId: string } | null>(null);
+  const [rt, setRt] = useState<{
+    url: string;
+    token: string;
+    interviewId: string;
+    startedAt: string | null;
+  } | null>(null);
   const tokenRequestRef = useRef(0);
   const hasStartedRef = useRef(false);
 
@@ -41,7 +47,12 @@ export function InterviewRoom() {
       if (requestId !== tokenRequestRef.current) return;
       if (res.ok && body.token && body.url && body.interviewId) {
         hasStartedRef.current = true;
-        setRt({ url: body.url, token: body.token, interviewId: body.interviewId });
+        setRt({
+          url: body.url,
+          token: body.token,
+          interviewId: body.interviewId,
+          startedAt: body.startedAt ?? null,
+        });
         setMessage(null);
         setMode("realtime");
         return;
@@ -106,6 +117,7 @@ export function InterviewRoom() {
         url={rt.url}
         token={rt.token}
         interviewId={rt.interviewId}
+        startedAt={rt.startedAt}
         onReconnect={reconnect}
         onCompleted={() => setMode("done")}
       />

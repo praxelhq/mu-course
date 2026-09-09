@@ -1,25 +1,25 @@
-import { z } from "zod";
 import { withAuth } from "@/lib/auth";
-import { interviewErrorResponse, rateLimited, takeInterviewToken } from "@/lib/interview/http";
-import { completeInterview } from "@/lib/interview/session";
+import { rateLimited, takeInterviewToken } from "@/lib/interview/http";
 
-// POST /api/interview/complete: student ends the interview early (or
-// the client confirms a budget-forced end). Enqueues grade.interview.
+// POST /api/interview/complete — retired, like /start, /answer and /fallback.
+//
+// It let any student end and grade their own interview at any moment. No client
+// calls it and the live room has no such control, but it was owner-scoped and
+// reachable: a fragment could be sent to grading mid-conversation, the agent's
+// subsequent turns would 409 and be dropped, and "my interview cut off" became
+// a self-service claim. The agent completes an interview through
+// /agent-complete, which is the only path that knows whether one actually
+// happened.
 
 export const dynamic = "force-dynamic";
 
-const bodySchema = z.object({ interviewId: z.string().min(1) });
-
-export const POST = withAuth(async (req, { user }) => {
+export const POST = withAuth(async (_req, { user }) => {
   if (!takeInterviewToken(user.userId)) return rateLimited();
-  const parsed = bodySchema.safeParse(await req.json().catch(() => null));
-  if (!parsed.success) return Response.json({ error: "Invalid body" }, { status: 400 });
-  try {
-    await completeInterview(parsed.data.interviewId, user.userId);
-    return Response.json({ done: true });
-  } catch (err) {
-    const mapped = interviewErrorResponse(err);
-    if (mapped) return mapped;
-    throw err;
-  }
+  return Response.json(
+    {
+      error:
+        "A live interview ends on its own. If yours was cut off, ask your instructor for a retake.",
+    },
+    { status: 410 },
+  );
 });

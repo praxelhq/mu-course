@@ -53,11 +53,14 @@ function IdleBars({ active }: { active: boolean }) {
 
 export function MeetingView({
   interviewId,
+  startedAt,
   budgetMinutes,
   onReconnect,
   onCompleted,
 }: {
   interviewId: string;
+  /** The interview's createdAt — the clock a reconnect must not rewind. */
+  startedAt: string | null;
   budgetMinutes: number;
   onReconnect: (reason: string) => void;
   onCompleted: () => void;
@@ -72,6 +75,16 @@ export function MeetingView({
     room?.state === ConnectionState.Connected ? Date.now() : null,
   );
   const [now, setNow] = useState(() => Date.now());
+
+  // Measured from the interview's own start, NOT from room-connect. A student
+  // whose browser dropped four times watched this reset to 00:00 four times and
+  // reasonably concluded his interview had restarted. connectedAt remains the
+  // fallback for when the server did not hand us a start time.
+  const interviewStartedAt = useMemo(() => {
+    if (!startedAt) return null;
+    const parsed = Date.parse(startedAt);
+    return Number.isFinite(parsed) ? parsed : null;
+  }, [startedAt]);
   const [micEnabled, setMicEnabled] = useState(true);
   const [videoLost, setVideoLost] = useState(false);
   const [turns, setTurns] = useState<Turn[]>([]);
@@ -80,6 +93,9 @@ export function MeetingView({
   const agentPresentRef = useRef(false);
   // When the interviewer last actually SPOKE — a published track is not speech.
   const lastAgentAtRef = useRef(0);
+  // When the interviewer was last actually IN the room. Seeded on the first
+  // watchdog tick rather than at render, which must stay pure.
+  const agentLastSeenRef = useRef(0);
   const turnsRef = useRef<Turn[]>([]);
 
   const isConnected = connectionState === ConnectionState.Connected;
@@ -88,7 +104,15 @@ export function MeetingView({
   // remint a token for the realtime path. Joining normally produces a greeting within a few
   // seconds; a much longer silence means no agent job was ever dispatched —
   // which happens if the worker was restarting when the student joined.
-  const NO_AGENT_GRACE_MS = 30_000;
+  // Raised from 30s. The cold path is dispatch -> connect -> agent-context
+  // (with its S3 reservations) -> egress -> prompt cache (up to 20s) -> VAD ->
+  // session -> first token, and under a burst of admissions 30s was routinely
+  // short. A spurious reconnect is not free: the agent greets the empty room,
+  // that greeting is persisted, and the student rejoins to silence with an
+  // unheard question already on the record.
+  const NO_AGENT_GRACE_MS = 75_000;
+  /** An interviewer that has left the room is not coming back — see below. */
+  const AGENT_GONE_GRACE_MS = 20_000;
 
   useEffect(() => {
     if (!room) return;
@@ -99,15 +123,17 @@ export function MeetingView({
     };
   }, [room]);
 
+  const elapsedFrom = interviewStartedAt ?? connectedAt;
+
   useEffect(() => {
-    if (connectedAt === null) return;
+    if (elapsedFrom === null) return;
     const id = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(id);
-  }, [connectedAt]);
+  }, [elapsedFrom]);
 
   const elapsed = useMemo(
-    () => (connectedAt === null ? 0 : Math.max(0, Math.floor((now - connectedAt) / 1000))),
-    [connectedAt, now],
+    () => (elapsedFrom === null ? 0 : Math.max(0, Math.floor((now - elapsedFrom) / 1000))),
+    [elapsedFrom, now],
   );
 
   // Losing the camera mid-interview is NOT terminal: the conversation carries
@@ -192,6 +218,31 @@ export function MeetingView({
       if (endedRef.current) return;
       const turns = turnsRef.current;
       const agentTurns = turns.filter((t) => t.speaker === "agent");
+
+      // Presence first, because the turn-based checks below cannot see the
+      // case that actually stranded a student. An interview room holds exactly
+      // two participants, so any remote participant IS the interviewer. When it
+      // leaves, no agent will ever rejoin that room — dispatch is automatic and
+      // fires once, at room creation. The old logic returned early whenever the
+      // last turn was the agent's, which is precisely the state a dead
+      // interviewer leaves behind (its question is the last thing persisted,
+      // and no student turn can follow because the STT died with it), so it
+      // never fired at all. Reconnecting re-mints a token, which clears the
+      // stranded room and gets a fresh agent that resumes the transcript.
+      const agentPresent = (room?.remoteParticipants?.size ?? 0) > 0;
+      if (agentPresent || agentLastSeenRef.current === 0) {
+        agentLastSeenRef.current = Date.now();
+      }
+      if (
+        !agentPresent &&
+        agentTurns.length > 0 &&
+        Date.now() - agentLastSeenRef.current > AGENT_GONE_GRACE_MS
+      ) {
+        endedRef.current = true;
+        onReconnect("interviewer-left");
+        return;
+      }
+
       const lastAgentAt = agentTurns.length && lastAgentAtRef.current ? lastAgentAtRef.current : connectedAt;
       const waitedTooLong = Date.now() - lastAgentAt > NO_AGENT_GRACE_MS;
       if (!waitedTooLong) return;
@@ -203,7 +254,7 @@ export function MeetingView({
       onReconnect(agentTurns.length === 0 ? "no-interviewer" : "interviewer-stopped");
     }, 5_000);
     return () => clearInterval(interval);
-  }, [connectedAt, onReconnect]);
+  }, [connectedAt, room, onReconnect]);
 
   const cameraTrack = useTracks([Track.Source.Camera], { onlySubscribed: false }).find(
     (t) => t.participant.identity === localParticipant?.identity,

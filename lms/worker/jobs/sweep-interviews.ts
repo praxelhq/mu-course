@@ -24,6 +24,23 @@ import { enqueueGradeInterview } from "@/lib/queue";
 export const REGRADE_AFTER_MS = 10 * 60 * 1000;
 /** Silence after which a live interview is presumed abandoned. */
 export const STALE_LIVE_AFTER_MS = 30 * 60 * 1000;
+/**
+ * At or below this many interviewer turns, an abandoned interview is the
+ * platform's fault, not the student's.
+ *
+ * A greeting plus at most one question means the student never got an
+ * interview to walk out of. Every one of the four students lost to the dialog
+ * outage sits here (0, 1, 2 and 2 agent turns), and each needed a retake
+ * granted by hand — which is the thing this exists to stop. Above the
+ * threshold, a silent room is a judgement call and stays with the instructor.
+ */
+export const PLATFORM_FAILURE_MAX_AGENT_TURNS = 2;
+
+export const ABANDONED_REASON =
+  "Abandoned mid-interview: no activity for 30 minutes. The student may need a retake.";
+export const PLATFORM_FAILURE_REASON =
+  "Interview ended before it began: the interviewer stopped within the first two turns. " +
+  "This is a platform failure, not the student's — a retake has been granted automatically.";
 
 export interface SweepDeps {
   prisma?: PrismaClient;
@@ -31,9 +48,51 @@ export interface SweepDeps {
   now?: () => Date;
 }
 
+/**
+ * Grant one retake unless the student already holds an unused one. Returns
+ * whether a grant was created, and never throws into the sweep: failing to
+ * hand back an attempt must not stop the rest of the repairs from running.
+ */
+async function grantRetakeIfNone(
+  db: PrismaClient,
+  userId: string,
+  interviewId: string,
+): Promise<boolean> {
+  try {
+    const existing = await db.interviewRetake.findFirst({
+      where: { userId, usedByInterviewId: null },
+      select: { id: true },
+    });
+    if (existing) return false;
+    const grant = await db.interviewRetake.create({
+      data: { userId, grantedBy: SWEEP_ACTOR },
+    });
+    await db.auditLog.create({
+      data: {
+        actorId: null,
+        action: "interview.grant-retake",
+        targetType: "user",
+        targetId: userId,
+        after: { grantedBy: SWEEP_ACTOR, grantId: grant.id, interviewId, reason: "platform-failure" },
+      },
+    });
+    console.warn(
+      `[interview-sweep] ${interviewId} was a platform failure — granted ${userId} a retake`,
+    );
+    return true;
+  } catch (err) {
+    console.error(`[interview-sweep] could not auto-grant a retake for ${userId}:`, err);
+    return false;
+  }
+}
+
+/** Actor recorded on sweep-granted retakes, so they are distinguishable. */
+export const SWEEP_ACTOR = "system:interview-sweep";
+
 export async function sweepInterviews(deps: SweepDeps = {}): Promise<{
   requeued: number;
   reaped: number;
+  autoRetakes: number;
 }> {
   const db = deps.prisma ?? defaultPrisma;
   const enqueue = deps.enqueue ?? enqueueGradeInterview;
@@ -65,23 +124,35 @@ export async function sweepInterviews(deps: SweepDeps = {}): Promise<{
       status: InterviewStatus.live,
       OR: [{ lastSeenAt: { lt: staleBefore } }, { lastSeenAt: null, createdAt: { lt: staleBefore } }],
     },
-    select: { id: true },
+    select: { id: true, userId: true, turns: { select: { speaker: true } } },
     take: 100,
   });
+  let autoRetakes = 0;
   for (const row of stale) {
+    const agentTurns = row.turns.filter((t) => t.speaker === "agent").length;
+    const platformFailure = agentTurns <= PLATFORM_FAILURE_MAX_AGENT_TURNS;
+
     // Bound to `live` so a student who reconnects in the same moment wins.
     const updated = await db.interview.updateMany({
       where: { id: row.id, status: InterviewStatus.live },
       data: {
         status: InterviewStatus.escalated,
-        escalationReason:
-          "Abandoned mid-interview: no activity for 30 minutes. The student may need a retake.",
+        escalationReason: platformFailure ? PLATFORM_FAILURE_REASON : ABANDONED_REASON,
       },
     });
-    if (updated.count > 0) {
+    if (updated.count === 0) continue;
+
+    if (!platformFailure) {
       console.warn(`[interview-sweep] ${row.id} stale live — escalated for instructor review`);
+      continue;
     }
+
+    // Give the attempt back without waiting for someone to notice. The grant is
+    // what startInterview consumes; without one the student is simply locked
+    // out, and the only reason five students were locked out for two days is
+    // that this ran by hand.
+    if (await grantRetakeIfNone(db, row.userId, row.id)) autoRetakes += 1;
   }
 
-  return { requeued: ungraded.length, reaped: stale.length };
+  return { requeued: ungraded.length, reaped: stale.length, autoRetakes };
 }

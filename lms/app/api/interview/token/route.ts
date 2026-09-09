@@ -8,6 +8,8 @@ import {
   maxRealtimeRooms,
   mintRoomToken,
   realtimeAgentAvailable,
+  recoverStrandedRoom,
+  roomNameFor,
 } from "@/lib/interview/realtime";
 import { startInterview } from "@/lib/interview/session";
 
@@ -30,7 +32,7 @@ export const POST = withAuth(async (req, { user }) => {
     const existing = await prisma.interview.findFirst({
       where: { userId: user.userId, status: "live" },
       orderBy: { createdAt: "desc" },
-      select: { id: true, transport: true },
+      select: { id: true, transport: true, createdAt: true },
     });
     if (existing && existing.transport !== TRANSPORT_REALTIME) {
       return Response.json(
@@ -85,8 +87,14 @@ export const POST = withAuth(async (req, { user }) => {
     }
 
     let interviewId: string;
+    // The interview's own start, so the student's timer survives a reconnect.
+    // Deriving it from room-connect time restarted the clock at 00:00 on every
+    // blip, which read as "the interview began again" to a student who had
+    // already answered four questions.
+    let startedAt: Date;
     if (existing) {
       interviewId = existing.id;
+      startedAt = existing.createdAt;
     } else {
       const interview = await startInterview(user.userId); // window/attempt guards
       await prisma.interview.update({
@@ -94,17 +102,33 @@ export const POST = withAuth(async (req, { user }) => {
         data: { transport: TRANSPORT_REALTIME, lastSeenAt: now },
       });
       interviewId = interview.id;
+      startedAt = interview.createdAt;
     }
     await prisma.interview.updateMany({
       where: { id: interviewId, status: "live" },
       data: { lastSeenAt: now },
     });
 
+    // A resumed interview may be rejoining a room its interviewer already left.
+    // Automatic dispatch fires once, when the room is created, so that room
+    // will never get another agent — the student sits in it watching
+    // themselves while the transcript poll keeps the heartbeat fresh enough
+    // that the abandonment sweep cannot see them either. Clearing the room here
+    // makes the join below create a fresh one, which does dispatch.
+    if (existing) await recoverStrandedRoom(roomNameFor(interviewId), now);
+
     const { token, roomName, url } = await mintRoomToken({
       interviewId,
       identity: user.userId,
     });
-    return Response.json({ interviewId, token, roomName, url, resumed: Boolean(existing) });
+    return Response.json({
+      interviewId,
+      token,
+      roomName,
+      url,
+      startedAt: startedAt.toISOString(),
+      resumed: Boolean(existing),
+    });
   } catch (err) {
     const mapped = interviewErrorResponse(err);
     if (mapped) return mapped;

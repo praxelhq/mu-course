@@ -507,6 +507,26 @@ export type InterviewSummary = {
   createdAt: Date;
 };
 
+/** Advisory-lock namespace, so this never collides with another lock holder. */
+const INTERVIEW_START_LOCK_NAMESPACE = 9723;
+
+/**
+ * Hold a per-student advisory lock until the surrounding transaction ends.
+ *
+ * Postgres reads at READ COMMITTED cannot see an uncommitted sibling's insert,
+ * so "check for a live interview, then create one" is not safe on its own at
+ * any isolation level short of SERIALIZABLE. This makes it safe without a
+ * schema change. A client that cannot run raw SQL (the injected test double)
+ * simply runs unlocked, which is the behaviour those tests already assume.
+ */
+async function lockStudentStarts(tx: unknown, userId: string): Promise<void> {
+  const raw = (tx as { $executeRaw?: (...args: unknown[]) => Promise<unknown> }).$executeRaw;
+  if (typeof raw !== "function") return;
+  await (tx as {
+    $executeRaw: (strings: TemplateStringsArray, ...values: unknown[]) => Promise<unknown>;
+  }).$executeRaw`SELECT pg_advisory_xact_lock(${INTERVIEW_START_LOCK_NAMESPACE}, hashtext(${userId}))`;
+}
+
 /**
  * Guards: the student's section window must be open now; a prior interview
  * (any status) exhausts the single attempt unless an unused InterviewRetake
@@ -539,6 +559,32 @@ export async function startInterview(
   const systemPrompt = await buildSystemPrompt(userId, deps);
 
   return client.$transaction(async (tx) => {
+    // Serialize starts per student for the life of this transaction.
+    //
+    // The live-interview check in the token route is a read, and two of its
+    // POSTs can race: the client's 10s retry poll firing while a manual "Try
+    // again" is in flight, or simply two tabs. Both read "no live interview"
+    // and both create one — two rows, two rooms, two agents, two of the thirty
+    // slots — and the orphan is escalated by the sweep 30 minutes later and can
+    // then outrank the real interview in the lobby and on the result page.
+    await lockStudentStarts(tx, userId);
+
+    // Under the lock this is authoritative: if the request we raced already
+    // created the interview, that IS this student's interview. Hand it back
+    // rather than opening a second one.
+    const live = await tx.interview.findFirst({
+      where: { userId, status: "live" },
+      orderBy: { createdAt: "desc" },
+      select: {
+        id: true,
+        status: true,
+        transport: true,
+        attemptNumber: true,
+        createdAt: true,
+      },
+    });
+    if (live) return live;
+
     const prior = await tx.interview.findMany({
       where: { userId },
       select: { id: true, attemptNumber: true },

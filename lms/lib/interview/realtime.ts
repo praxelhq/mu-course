@@ -182,3 +182,74 @@ export function agentAuthResponse(req: Request): Response | null {
   }
   return null;
 }
+
+// ---------------------------------------------------------------------------
+// Stranded-room recovery
+// ---------------------------------------------------------------------------
+
+/** The identity the Python worker accepts jobs under (agent/main.py). */
+export const AGENT_IDENTITY = "forge-interviewer";
+
+/**
+ * How old a room must be before an absent interviewer counts as absent rather
+ * than as still starting. The cold path is dispatch -> connect -> agent-context
+ * (+ S3 reservations) -> egress -> prompt cache (up to 20s) -> VAD -> session,
+ * and under a burst of admissions that is not quick.
+ */
+export const AGENT_COLD_START_MS = 60_000;
+
+/**
+ * Delete a room whose interviewer has gone, so the student's next join creates
+ * a fresh one and LiveKit dispatches a new job for it.
+ *
+ * The worker registers with automatic dispatch, which fires exactly once — when
+ * the room is created. Every way an agent job can end while the interview stays
+ * live (rejoin grace expiry, an AgentSession that closes itself when every LLM
+ * leg fails, a deploy, a worker restart) therefore leaves a room that is up,
+ * that the student is happily connected to, and that no agent will ever join
+ * again. The student sits watching themselves; the transcript poll keeps the
+ * heartbeat fresh, so the abandonment sweep cannot see them either. One student
+ * lost his interview to exactly this.
+ *
+ * Deleting the room is the recovery: the next join re-creates it, dispatch
+ * fires, and the new job resumes from the persisted transcript rather than
+ * greeting the student again (see restore_session_state in agent/main.py).
+ *
+ * Safe to call on every token mint: a room with its interviewer present, or one
+ * too young to judge, is left alone.
+ */
+export async function recoverStrandedRoom(
+  roomName: string,
+  now: Date = new Date(),
+): Promise<boolean> {
+  if (!livekitConfigured()) return false;
+  try {
+    const { RoomServiceClient } = await import("livekit-server-sdk");
+    const svc = new RoomServiceClient(
+      process.env.LIVEKIT_URL!.replace(/^ws/, "http"),
+      process.env.LIVEKIT_API_KEY!,
+      process.env.LIVEKIT_API_SECRET!,
+    );
+    const rooms = await svc.listRooms([roomName]);
+    const room = rooms[0];
+    // No room yet: joining will create one and dispatch will fire normally.
+    if (!room) return false;
+    const ageMs = now.getTime() - Number(room.creationTime) * 1000;
+    if (!Number.isFinite(ageMs) || ageMs < AGENT_COLD_START_MS) return false;
+
+    const participants = await svc.listParticipants(roomName);
+    if (participants.some((p) => p.identity === AGENT_IDENTITY)) return false;
+
+    console.warn(
+      `[interview] ${roomName} has no interviewer after ${Math.round(ageMs / 1000)}s — ` +
+        "deleting the room so a fresh agent job is dispatched",
+    );
+    await svc.deleteRoom(roomName);
+    return true;
+  } catch (err) {
+    // Recovery is best-effort. Failing it must never cost a student their
+    // token: without the delete they are no worse off than before.
+    console.error(`[interview] stranded-room recovery failed for ${roomName}:`, err);
+    return false;
+  }
+}

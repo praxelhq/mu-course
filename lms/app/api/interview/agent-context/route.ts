@@ -67,6 +67,9 @@ export async function GET(req: Request): Promise<Response> {
     interviewId,
     status: interview.status,
     transport: interview.transport,
+    // The interview's own start, not this job's. A re-dispatched agent inherits
+    // the time already spent so reconnecting cannot buy an unbounded interview.
+    createdAt: interview.createdAt.toISOString(),
     systemPrompt,
     transcript,
     recordingReservation: recordingReservation
