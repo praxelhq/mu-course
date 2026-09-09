@@ -113,6 +113,14 @@ export function MeetingView({
   const NO_AGENT_GRACE_MS = 75_000;
   /** An interviewer that has left the room is not coming back — see below. */
   const AGENT_GONE_GRACE_MS = 20_000;
+  // An interviewer that is PRESENT can still be dead: a quota outage or a
+  // wedged STT leaves it in the room publishing silence. The turn checks below
+  // cannot see that — they wait for a student turn to follow the agent's
+  // question, and if the STT is the thing that died no student turn will ever
+  // be persisted. Deliberately generous: a student thinking hard about a hard
+  // question must never trip it, and the cost of firing is only a reconnect,
+  // which now resumes rather than restarts.
+  const NO_PROGRESS_MS = 4 * 60_000;
 
   useEffect(() => {
     if (!room) return;
@@ -244,6 +252,14 @@ export function MeetingView({
       }
 
       const lastAgentAt = agentTurns.length && lastAgentAtRef.current ? lastAgentAtRef.current : connectedAt;
+
+      // Present, but nothing has come out of it for minutes.
+      if (agentPresent && agentTurns.length > 0 && Date.now() - lastAgentAt > NO_PROGRESS_MS) {
+        endedRef.current = true;
+        onReconnect("interviewer-silent");
+        return;
+      }
+
       const waitedTooLong = Date.now() - lastAgentAt > NO_AGENT_GRACE_MS;
       if (!waitedTooLong) return;
       // Before the first question, silence alone is enough. After it, only

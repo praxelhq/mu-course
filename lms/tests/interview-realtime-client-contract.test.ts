@@ -35,3 +35,23 @@ describe("interview timer", () => {
     expect(source).toContain("startedAt={rt.startedAt}");
   });
 });
+
+describe("no-interviewer watchdog", () => {
+  // Three ways an interview dies with the student still sitting there, and the
+  // old check could see only one of them.
+  it("watches presence, not just whose turn it was", () => {
+    expect(meetingView).toContain("room?.remoteParticipants?.size");
+    expect(meetingView).toContain('onReconnect("interviewer-left")');
+  });
+
+  it("catches an interviewer that is present but has gone silent", () => {
+    // A quota outage or a wedged STT leaves the agent in the room publishing
+    // silence; no student turn can follow, so the turn checks never fire.
+    expect(meetingView).toContain('onReconnect("interviewer-silent")');
+    expect(meetingView).toContain("NO_PROGRESS_MS");
+  });
+
+  it("gives a cold-starting agent longer than it used to", () => {
+    expect(meetingView).toMatch(/NO_AGENT_GRACE_MS = 75_000/);
+  });
+});
