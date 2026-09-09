@@ -51,6 +51,28 @@ function IdleBars({ active }: { active: boolean }) {
   );
 }
 
+// How long a connected room may sit with no interviewer in it before the
+// client remints a token and rejoins. Joining normally produces a greeting
+// within a few seconds; a much longer silence means no agent job was ever
+// dispatched — which happens if the worker was restarting when the student
+// joined. Raised from 30s. The cold path is dispatch -> connect -> agent-context
+// (with its S3 reservations) -> egress -> prompt cache (up to 20s) -> VAD ->
+// session -> first token, and under a burst of admissions 30s was routinely
+// short. A spurious reconnect is not free: the agent greets the empty room,
+// that greeting is persisted, and the student rejoins to silence with an
+// unheard question already on the record.
+const NO_AGENT_GRACE_MS = 75_000;
+/** An interviewer that has left the room is not coming back — see below. */
+const AGENT_GONE_GRACE_MS = 20_000;
+// An interviewer that is PRESENT can still be dead: a quota outage or a
+// wedged STT leaves it in the room publishing silence. The turn checks below
+// cannot see that — they wait for a student turn to follow the agent's
+// question, and if the STT is the thing that died no student turn will ever
+// be persisted. Deliberately generous: a student thinking hard about a hard
+// question must never trip it, and the cost of firing is only a reconnect,
+// which now resumes rather than restarts.
+const NO_PROGRESS_MS = 4 * 60_000;
+
 export function MeetingView({
   interviewId,
   startedAt,
@@ -100,27 +122,6 @@ export function MeetingView({
 
   const isConnected = connectionState === ConnectionState.Connected;
 
-  // How long a connected room may sit with no interviewer in it before we give
-  // remint a token for the realtime path. Joining normally produces a greeting within a few
-  // seconds; a much longer silence means no agent job was ever dispatched —
-  // which happens if the worker was restarting when the student joined.
-  // Raised from 30s. The cold path is dispatch -> connect -> agent-context
-  // (with its S3 reservations) -> egress -> prompt cache (up to 20s) -> VAD ->
-  // session -> first token, and under a burst of admissions 30s was routinely
-  // short. A spurious reconnect is not free: the agent greets the empty room,
-  // that greeting is persisted, and the student rejoins to silence with an
-  // unheard question already on the record.
-  const NO_AGENT_GRACE_MS = 75_000;
-  /** An interviewer that has left the room is not coming back — see below. */
-  const AGENT_GONE_GRACE_MS = 20_000;
-  // An interviewer that is PRESENT can still be dead: a quota outage or a
-  // wedged STT leaves it in the room publishing silence. The turn checks below
-  // cannot see that — they wait for a student turn to follow the agent's
-  // question, and if the STT is the thing that died no student turn will ever
-  // be persisted. Deliberately generous: a student thinking hard about a hard
-  // question must never trip it, and the cost of firing is only a reconnect,
-  // which now resumes rather than restarts.
-  const NO_PROGRESS_MS = 4 * 60_000;
 
   useEffect(() => {
     if (!room) return;
