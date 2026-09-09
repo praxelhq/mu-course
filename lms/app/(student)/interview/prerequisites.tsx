@@ -59,8 +59,17 @@ const label: Record<Kind, string> = {
 
 export function InterviewPrerequisites({
   onCompleteChange,
+  startBlockedReason,
 }: {
   onCompleteChange?: (complete: boolean) => void;
+  /**
+   * Why the start control is absent, when it is. Without this the card
+   * cheerfully said "you can begin your interview below" to a student whose
+   * section window had closed the previous night — and there was nothing
+   * below. A student who has done everything asked of them is owed the reason,
+   * not an empty space.
+   */
+  startBlockedReason?: string | null;
 }) {
   const [uploaded, setUploaded] = useState<Uploaded[]>([]);
   const [missing, setMissing] = useState<Kind[]>([]);
@@ -264,8 +273,13 @@ export function InterviewPrerequisites({
       </div>
 
       {loaded && missing.length === 0 && (
-        <p style={{ margin: "1.25rem 0 0", color: "var(--pine)" }}>
-          All three are in. You can begin your interview below.
+        <p
+          style={{
+            margin: "1.25rem 0 0",
+            color: startBlockedReason ? "var(--ochre)" : "var(--pine)",
+          }}
+        >
+          {startBlockedReason ?? "All three are in. You can begin your interview below."}
         </p>
       )}
     </Card>

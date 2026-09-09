@@ -54,6 +54,20 @@ export const POST = withAuth(
     } as unknown as Prisma.InputJsonValue;
 
     if (body.action === "mark-graded") {
+      // A swept-abandoned interview carries no rubricScores, and "mark graded"
+      // is the obvious-looking button next to it. Flipping a scoreless row to
+      // `graded` strands the student on "your score appears here in a minute"
+      // forever while the scoring assembler counts it as a completed component
+      // worth nothing. The interview needs regrading or a retake, not a status.
+      if (interview.rubricScores === null || interview.rubricScores === undefined) {
+        return Response.json(
+          {
+            error:
+              "This interview has no scores, so marking it graded would leave the student with none. Regenerate a grade, or grant a retake.",
+          },
+          { status: 409 },
+        );
+      }
       await prisma.$transaction([
         prisma.interview.update({
           where: { id: interview.id },

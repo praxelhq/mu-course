@@ -476,3 +476,26 @@ class ResumeWiringTests(unittest.TestCase):
 
     def test_the_wall_clock_ceiling_is_enforced_in_the_budget_watch(self):
         self.assertIn("wallclock_deadline is not None and time.monotonic() > wallclock_deadline", self.SOURCE)
+
+
+class ResumeSideEffectTests(unittest.TestCase):
+    """What a resumed job must NOT do a second time."""
+
+    SOURCE = Path(__file__).with_name("main.py").read_text()
+
+    def test_a_resumed_job_does_not_start_a_second_recording(self):
+        # The video reservation is idempotent per interview, so a second egress
+        # is handed the same S3 key and writes over the first job's file.
+        self.assertIn("already_conversing", self.SOURCE)
+        self.assertIn("not starting a second", self.SOURCE)
+
+    def test_the_http_client_is_closed_after_the_posts_that_need_it(self):
+        # Shutdown callbacks are gathered concurrently; closing the client in
+        # its own callback raced the completion post and dropped it.
+        self.assertNotIn("ctx.add_shutdown_callback(lms.aclose)", self.SOURCE)
+        self.assertIn("await lms.aclose()", self.SOURCE)
+
+    def test_session_close_is_watched_before_the_session_starts(self):
+        close_at = self.SOURCE.index('session.on("close", on_session_close)')
+        start_at = self.SOURCE.index("await session.start(")
+        self.assertLess(close_at, start_at)

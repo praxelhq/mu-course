@@ -918,7 +918,10 @@ async def entrypoint(ctx) -> None:
     interview_id = room_name[len(ROOM_PREFIX):]
 
     lms = LmsClient()
-    ctx.add_shutdown_callback(lms.aclose)
+    # NOT registered as its own callback: shutdown callbacks are gathered
+    # CONCURRENTLY, so closing the HTTP client raced the callback that still
+    # needed it to post the completion and flush buffered turns. The recording
+    # callback closes it last instead — see report_recording_only.
 
     try:
         context = await lms.get_context(
@@ -956,7 +959,28 @@ async def entrypoint(ctx) -> None:
         else None
     )
     egress = Egress(room_name, video_key)
-    await egress.start()
+    # A resumed job must NOT start a second recording. The video reservation is
+    # idempotent per interview, so a re-dispatched job is handed the same S3 key
+    # and a second egress would write straight over the first one's file (or
+    # orphan a version of it). Now that a re-dispatch resumes rather than
+    # restarts, this path is ordinary rather than exotic. The transcript, which
+    # is what grading actually reads, is complete either way.
+    already_conversing = any(
+        isinstance(t, Mapping) and t.get("speaker") in ("agent", "student")
+        for t in (context.get("transcript") or [])
+    )
+    if already_conversing:
+        logger.info(
+            "interview %s resumed — keeping the first job's recording, not starting a second",
+            interview_id,
+        )
+    else:
+        try:
+            # Unbounded, and it sits between the student joining and the session
+            # starting: a slow Egress API call is dead air with a student in the room.
+            await asyncio.wait_for(egress.start(), timeout=20)
+        except asyncio.TimeoutError:
+            logger.warning("egress start timed out for %s — continuing unrecorded", interview_id)
     turn_tasks: set[asyncio.Task[None]] = set()
 
     async def flush_finalized_turns() -> None:
@@ -998,6 +1022,9 @@ async def entrypoint(ctx) -> None:
     async def report_recording_only() -> None:
         # Shutdown of any kind: keep the recording, leave the interview alone.
         await stop_and_report_recording(finished=False)
+        # Last writer wins the client: everything above needs it, nothing after
+        # does. Closing it anywhere else races these posts and drops them.
+        await lms.aclose()
 
     ctx.add_shutdown_callback(report_recording_only)
 
@@ -1177,6 +1204,30 @@ async def entrypoint(ctx) -> None:
 
     session.on("conversation_item_added", on_item_added)
 
+    # If every LLM leg fails, AgentSession closes ITSELF. Nothing used to
+    # notice: `finished` stayed unset, the student got dead air until the
+    # 20-minute budget expired, and the fragment was then completed and graded.
+    #
+    # Registered BEFORE start(): both LLM legs can fail on the very first
+    # request — generating the greeting — and a close emitted before this
+    # listener existed left `finished` unset until the budget, which is the
+    # dead-air-then-grade-a-fragment path all over again.
+    def on_session_close(_ev=None) -> None:
+        nonlocal aborted
+        if not finished.is_set():
+            aborted = True
+            logger.error(
+                "interview %s: session closed on its own after %s questions — "
+                "NOT completing, leaving it live so the student can rejoin",
+                interview_id, question_count,
+            )
+            finished.set()
+
+    try:
+        session.on("close", on_session_close)
+    except Exception as err:  # noqa: BLE001 — never fail startup over a listener
+        logger.warning("could not watch session close for %s: %s", interview_id, err)
+
     # A browser reconnect is normal on student networks. The default closes
     # the AgentSession on that event, abandoning the room before the browser
     # can rejoin it.
@@ -1256,25 +1307,6 @@ async def entrypoint(ctx) -> None:
                 return
             await asyncio.sleep(5)
 
-    # If every LLM leg fails, AgentSession closes ITSELF. Nothing used to
-    # notice: `finished` stayed unset, the student got dead air until the
-    # 20-minute budget expired, and the fragment was then completed and graded.
-    def on_session_close(_ev=None) -> None:
-        nonlocal aborted
-        if not finished.is_set():
-            aborted = True
-            logger.error(
-                "interview %s: session closed on its own after %s questions — "
-                "NOT completing, leaving it live so the student can rejoin",
-                interview_id, question_count,
-            )
-            finished.set()
-
-    try:
-        session.on("close", on_session_close)
-    except Exception as err:  # noqa: BLE001 — never fail startup over a listener
-        logger.warning("could not watch session close for %s: %s", interview_id, err)
-
     watcher = asyncio.create_task(budget_watch())
     await finished.wait()
     watcher.cancel()
@@ -1284,12 +1316,16 @@ async def entrypoint(ctx) -> None:
     # Wind down: closing line, stop the recording, mark the interview done.
     if not aborted:
         try:
-            await session.say(CLOSING_LINE, allow_interruptions=False)
+            await asyncio.wait_for(
+                session.say(CLOSING_LINE, allow_interruptions=False), timeout=30
+            )
         except Exception as err:  # noqa: BLE001 — closing audio is a nicety
             logger.warning("closing line failed for %s: %s", interview_id, err)
     try:
-        await session.drain()
-    except Exception:  # noqa: BLE001
+        # Unbounded, and it runs while Railway's shutdown clock is already
+        # ticking on a deploy — the completion post is queued behind it.
+        await asyncio.wait_for(session.drain(), timeout=30)
+    except Exception:  # noqa: BLE001 — including the timeout; keep winding down
         pass
 
     # An aborted session reports its recording and stops there. Completing it

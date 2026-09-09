@@ -399,6 +399,11 @@ model Interview {
   generatedObjectReservations GeneratedObjectReservation[]
 
   @@index([userId])
+  // The abandonment sweep and the ~30-room concurrency count both filter on
+  // status and lastSeenAt, and the concurrency count runs on every /token poll
+  // from every queued student. Sequential scans are cheap at a thousand rows
+  // and not at a cohort's worth of polling.
+  @@index([status, lastSeenAt])
 }
 
 model InterviewTurn {
@@ -436,9 +441,9 @@ model InterviewRetake {
 // become a graded artifact or reach a gallery. Unique on (userId, kind) so a
 // re-upload replaces in place rather than accumulating copies.
 model InterviewPrerequisite {
-  id            String   @id @default(cuid())
+  id            String    @id @default(cuid())
   userId        String
-  user          User     @relation(fields: [userId], references: [id])
+  user          User      @relation(fields: [userId], references: [id])
   kind          String
   s3Key         String
   s3VersionId   String?
@@ -453,8 +458,8 @@ model InterviewPrerequisite {
   // kind is not digested), and the prompt falls back to extractedText.
   digest        String?
   digestedAt    DateTime?
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 
   @@unique([userId, kind])
   @@index([userId])

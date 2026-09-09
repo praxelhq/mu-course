@@ -69,6 +69,27 @@ export default async function InterviewPage() {
   const canStart =
     isOpen && windowOpen && (!latest || Boolean(retake)) && prerequisitesComplete;
 
+  // Why there is no start control, in the student's own terms. A student whose
+  // section window had closed the night before was shown "All three are in.
+  // You can begin your interview below" with nothing below it — everything
+  // asked of them done, and no way to tell whether they were early, late,
+  // locked out, or looking at a broken page.
+  const startBlockedReason = !prerequisitesComplete
+    ? null // the card already lists what is missing
+    : canStart || canResume
+      ? null
+      : !isOpen
+        ? "The interview is not open yet. Your uploads are saved — come back when your instructor opens it."
+        : !window
+          ? "No interview window is scheduled for your section yet. Your uploads are saved."
+          : window.opensAt > now
+            ? `Your uploads are saved. Your section's window opens ${fmt.format(window.opensAt)}.`
+            : window.closesAt < now
+              ? `Your section's interview window closed on ${fmt.format(window.closesAt)}. Your uploads are saved — ask your instructor if you still need to sit the interview.`
+              : latest && !retake
+                ? "You have already taken your interview. Ask your instructor for a retake if you need another attempt."
+                : "Your interview cannot be started right now. Please tell your instructor what this page shows.";
+
   return (
     <main style={{ maxWidth: "44rem", margin: "0 auto", padding: "2.5rem 2rem" }}>
       <Eyebrow muted>AI Interview</Eyebrow>
@@ -145,7 +166,9 @@ export default async function InterviewPage() {
         </Card>
       ) : (
         <>
-          {!canResume && !interviewFinished && <InterviewPrerequisites />}
+          {!canResume && !interviewFinished && (
+            <InterviewPrerequisites startBlockedReason={startBlockedReason} />
+          )}
 
           {canStart || canResume ? <InterviewStart canResume={canResume} /> : null}
         </>
