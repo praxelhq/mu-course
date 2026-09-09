@@ -1,0 +1,62 @@
+- complementary:
+  - img "Family avatar"
+  - generic: Our Home
+  - generic: The Miller Family
+  - navigation:
+    - link "Family Tree":
+      - /url: /
+      - generic: family_history
+      - generic: Family Tree
+    - link "Shared Album":
+      - /url: /
+      - generic: photo_library
+      - generic: Shared Album
+    - link "Scrapbook":
+      - /url: /
+      - generic: auto_stories
+      - generic: Scrapbook
+    - link "Games":
+      - /url: /games
+      - generic: extension
+      - generic: Games
+    - link "Wake Up":
+      - /url: /wake-up
+      - generic: wb_twilight
+      - generic: Wake Up
+    - link "Settings":
+      - /url: /
+      - generic: settings
+      - generic: Settings
+- banner:
+  - heading "FamCircle" [level=1]
+  - img "Your profile"
+- main:
+  - heading "Daily Wordle" [level=2]
+  - paragraph: Guess the family word of the day in 6 tries.
+  - generic: S
+  - generic: M
+  - generic: I
+  - generic: L
+  - generic: E
+  - generic: Use your keyboard to play
+  - generic: emoji_events
+  - heading "Family Leaderboard" [level=3]
+  - list:
+    - generic: "1"
+    - img "Sarah"
+    - generic: Sarah
+    - generic: 3 tries
+    - generic: "2"
+    - img "Dad"
+    - generic: Dad
+    - generic: 4 tries
+    - generic: "3"
+    - img "You"
+    - generic: You
+    - generic: In progress...
+  - button "Share Progress"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_5cjz41mzp480gtdbn8ray378yx?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

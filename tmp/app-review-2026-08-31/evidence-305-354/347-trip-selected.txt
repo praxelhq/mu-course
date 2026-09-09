@@ -1,0 +1,40 @@
+- link "Home":
+  - /url: /
+  - text: 🚛
+- generic: मेरी यात्राएँ
+- combobox "Language":
+  - option "हिन्दी" [selected]
+  - option "ਪੰਜਾਬੀ"
+  - option "मराठी"
+  - option "தமிழ்"
+  - option "తెలుగు"
+  - option "ಕನ್ನಡ"
+  - option "ગુજરાતી"
+  - option "বাংলা"
+  - option "ଓଡ଼ିଆ"
+  - option "English"
+- button "🏙 जयपुर → दिल्ली 280 km ▶️":
+  - generic: 🏙
+  - generic: जयपुर → दिल्ली
+  - generic: 280 km
+  - generic: ▶️
+- button "🛣 दिल्ली → लखनऊ 555 km ▶️" [active]:
+  - generic: 🛣
+  - generic: दिल्ली → लखनऊ
+  - generic: 555 km
+  - generic: ▶️
+- button "🌾 लुधियाना → अमृतसर 140 km ▶️":
+  - generic: 🌾
+  - generic: लुधियाना → अमृतसर
+  - generic: 140 km
+  - generic: ▶️
+- button "🏞 मुम्बई → पुणे 150 km ▶️":
+  - generic: 🏞
+  - generic: मुम्बई → पुणे
+  - generic: 150 km
+  - generic: ▶️
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7txx0z43js9wwtfwq356h8a80x?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

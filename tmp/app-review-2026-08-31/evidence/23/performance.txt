@@ -1,0 +1,162 @@
+- region "Notifications (F8)":
+  - list
+- region "Notifications alt+T"
+- complementary:
+  - generic: InfluencerOS
+  - navigation:
+    - link "Dashboard":
+      - /url: /
+      - generic: Dashboard
+    - link "Campaigns":
+      - /url: /campaigns
+      - generic: Campaigns
+    - link "AI Campaign Planner":
+      - /url: /ai-planner
+      - generic: AI Campaign Planner
+    - link "Creators":
+      - /url: /creators
+      - generic: Creators
+    - link "Content Approval":
+      - /url: /content-approval
+      - generic: Content Approval
+    - link "Performance & ROI" [active]:
+      - /url: /performance
+      - generic: Performance & ROI
+    - link "Payments & Ledger":
+      - /url: /payments
+      - generic: Payments & Ledger
+    - link "Assets & Logistics":
+      - /url: /assets
+      - generic: Assets & Logistics
+    - link "Settings":
+      - /url: /settings
+      - generic: Settings
+  - button "Collapse":
+    - generic: Collapse
+- banner:
+  - textbox "Search campaigns, creators, content..."
+  - button "3":
+    - generic: "3"
+  - button "M MamaEarth":
+    - generic: M
+    - generic: MamaEarth
+  - button "Arun Kumar Marketing Manager":
+    - paragraph: Arun Kumar
+    - paragraph: Marketing Manager
+- main:
+  - heading "Performance & ROI" [level=1]
+  - paragraph: Track campaign performance and influencer ROI
+  - generic: Total Spend
+  - paragraph: ₹15.8L
+  - generic: Total Revenue
+  - paragraph: ₹52.4L
+  - generic: Avg CPM
+  - paragraph: ₹58
+  - generic: Avg CPA
+  - paragraph: ₹245
+  - heading "Campaign Spend vs Revenue" [level=3]
+  - list:
+    - text: Spend
+    - text: Revenue
+  - heading "Platform Distribution" [level=3]
+  - heading "Influencer-wise Performance" [level=3]
+  - paragraph: ROI score and re-hire recommendations
+  - table:
+    - rowgroup:
+      - row "Creator Platform Engagement Performance Score Risk AI Recommendation":
+        - columnheader "Creator"
+        - columnheader "Platform"
+        - columnheader "Engagement"
+        - columnheader "Performance Score"
+        - columnheader "Risk"
+        - columnheader "AI Recommendation"
+    - rowgroup:
+      - row "Priya Sharma @priyasharma_beauty Instagram 4.8% 92 Low Re-hire":
+        - cell "Priya Sharma @priyasharma_beauty":
+          - paragraph: Priya Sharma
+          - paragraph: "@priyasharma_beauty"
+        - cell "Instagram":
+          - generic: Instagram
+        - cell "4.8%":
+          - generic: 4.8%
+        - cell "92":
+          - generic: "92"
+        - cell "Low":
+          - generic: Low
+        - cell "Re-hire":
+          - generic: Re-hire
+      - row "Rahul Verma @rahulverma_tech YouTube 3.2% 88 Low Evaluate":
+        - cell "Rahul Verma @rahulverma_tech":
+          - paragraph: Rahul Verma
+          - paragraph: "@rahulverma_tech"
+        - cell "YouTube":
+          - generic: YouTube
+        - cell "3.2%":
+          - generic: 3.2%
+        - cell "88":
+          - generic: "88"
+        - cell "Low":
+          - generic: Low
+        - cell "Evaluate"
+      - row "Neha Kapoor @nehafitness Instagram 5.6% 85 Medium Re-hire":
+        - cell "Neha Kapoor @nehafitness":
+          - paragraph: Neha Kapoor
+          - paragraph: "@nehafitness"
+        - cell "Instagram":
+          - generic: Instagram
+        - cell "5.6%":
+          - generic: 5.6%
+        - cell "85":
+          - generic: "85"
+        - cell "Medium":
+          - generic: Medium
+        - cell "Re-hire":
+          - generic: Re-hire
+      - row "Amit Patel @amitcooks YouTube 4.1% 90 Low Re-hire":
+        - cell "Amit Patel @amitcooks":
+          - paragraph: Amit Patel
+          - paragraph: "@amitcooks"
+        - cell "YouTube":
+          - generic: YouTube
+        - cell "4.1%":
+          - generic: 4.1%
+        - cell "90":
+          - generic: "90"
+        - cell "Low":
+          - generic: Low
+        - cell "Re-hire":
+          - generic: Re-hire
+      - row "Sneha Reddy @sneha_momlife Instagram 6.2% 94 Low Re-hire":
+        - cell "Sneha Reddy @sneha_momlife":
+          - paragraph: Sneha Reddy
+          - paragraph: "@sneha_momlife"
+        - cell "Instagram":
+          - generic: Instagram
+        - cell "6.2%":
+          - generic: 6.2%
+        - cell "94":
+          - generic: "94"
+        - cell "Low":
+          - generic: Low
+        - cell "Re-hire":
+          - generic: Re-hire
+      - row "Dr. Kavita Singh @drkavita_skin Instagram 7.8% 96 Low Re-hire":
+        - cell "Dr. Kavita Singh @drkavita_skin":
+          - paragraph: Dr. Kavita Singh
+          - paragraph: "@drkavita_skin"
+        - cell "Instagram":
+          - generic: Instagram
+        - cell "7.8%":
+          - generic: 7.8%
+        - cell "96":
+          - generic: "96"
+        - cell "Low":
+          - generic: Low
+        - cell "Re-hire":
+          - generic: Re-hire
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_05t71mwv1r9qb9tdwk5a0m9t2d?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: ₹0

@@ -1,0 +1,69 @@
+- main:
+  - iframe [active]:
+    - complementary:
+      - link "V VAULTPLAYCRYPTO GAMING":
+        - /url: "#casino"
+        - generic: V
+        - generic: VAULTPLAYCRYPTO GAMING
+      - navigation "Primary navigation":
+        - button "01 Casino":
+          - generic: "01"
+          - text: Casino
+        - button "02 Crash" [active]:
+          - generic: "02"
+          - text: Crash
+        - button "03 Dice":
+          - generic: "03"
+          - text: Dice
+        - button "04 Coin Flip":
+          - generic: "04"
+          - text: Coin Flip
+        - button "05 Transactions":
+          - generic: "05"
+          - text: Transactions
+        - button "06 Fairness":
+          - generic: "06"
+          - text: Fairness
+        - button "07 Account":
+          - generic: "07"
+          - text: Account
+      - generic: Demo mode
+      - generic: Simulated environment
+    - main:
+      - generic: Demo Network
+      - generic: 2,450.00 USDC
+      - button "Connect Wallet"
+      - generic: Instrument 01 / Crash
+      - heading "Timing is the edge." [level=1]
+      - generic: 1.21x
+      - generic: 3.84x
+      - generic: 1.04x
+      - generic: 8.27x
+      - generic: 2.14x
+      - generic: 1.62x
+      - generic: 1.00x
+      - generic: ROUND OPEN
+      - generic: SIMULATED CURVE
+      - generic: "ROUND #VP-1042"
+      - complementary:
+        - generic: Position
+        - generic: Bet amount
+        - generic: USDC
+        - spinbutton
+        - generic: USDC
+        - button "0.1"
+        - button "1"
+        - button "5"
+        - button "10"
+        - button "25"
+        - button "MAX"
+        - generic: Auto cashout
+        - button "Toggle auto cashout"
+        - generic: Target
+        - generic: Multiplier
+        - spinbutton
+        - generic: x
+        - button "PLACE BET"
+        - paragraph: Demo bets use simulated USDC. No funds or blockchain transactions are involved.
+    - status
+- alert

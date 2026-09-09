@@ -1,0 +1,54 @@
+- banner:
+  - img "SuppWise — track. supplement. improve."
+  - generic: AI Advisor
+  - link "Profile":
+    - /url: /profile
+    - generic: person
+- main:
+  - generic: psychology
+  - heading "What are you struggling with today?" [level=1]
+  - paragraph: I can analyze your symptoms and suggest scientific protocols.
+  - button "“I feel tired all the time”":
+    - generic: “I feel tired all the time”
+    - generic: arrow_forward
+  - button "“I'm not recovering after workouts”":
+    - generic: “I'm not recovering after workouts”
+    - generic: arrow_forward
+  - button "“I can't lose fat”":
+    - generic: “I can't lose fat”
+    - generic: arrow_forward
+  - button "“I'm sleeping badly”":
+    - generic: “I'm sleeping badly”
+    - generic: arrow_forward
+  - button "Attach a blood report":
+    - generic: add_circle
+  - textbox "Describe your symptoms..." [active]
+  - button "Send":
+    - generic: arrow_upward
+  - generic: "Medical disclaimer: AI suggestions are for informational purposes only."
+- navigation:
+  - link "Home":
+    - /url: /
+    - generic: home
+    - generic: Home
+  - link "AI Advisor":
+    - /url: /advisor
+    - generic: psychology
+    - generic: AI Advisor
+  - link "My Stack":
+    - /url: /stack
+    - generic: medication
+    - generic: My Stack
+  - link "Progress":
+    - /url: /progress
+    - generic: monitoring
+    - generic: Progress
+  - link "Profile":
+    - /url: /profile
+    - generic: account_circle
+    - generic: Profile
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_40j7p3ch2a80fvd93kgd1pgqer?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

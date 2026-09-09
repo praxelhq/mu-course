@@ -1,0 +1,71 @@
+- banner:
+  - img "A smiling young Indian person with a clean, modern aesthetic, warm lighting, soft background, representing a Gen Z user profile photo."
+  - heading "Kharcha" [level=1]
+  - button:
+    - generic: search
+  - button:
+    - generic: filter_list
+- main:
+  - 'button "Date: All"':
+    - generic: "Date: All"
+    - generic: expand_more
+  - 'button "Category: All"':
+    - generic: "Category: All"
+    - generic: expand_more
+  - 'button "Method: All"':
+    - generic: "Method: All"
+    - generic: expand_more
+  - heading "Today" [level=2]
+  - link "Swiggy 1:45 PM Food - ₹450":
+    - /url: /transactions/txn-1001
+    - generic: restaurant
+    - generic: Swiggy
+    - generic: 1:45 PM
+    - generic: Food
+    - generic: "- ₹450"
+    - generic: smart_toy
+  - link "Uber 9:30 AM Transport - ₹320":
+    - /url: /transactions/txn-1002
+    - generic: directions_car
+    - generic: Uber
+    - generic: 9:30 AM
+    - generic: Transport
+    - generic: "- ₹320"
+  - heading "Yesterday" [level=2]
+  - link "Blinkit 8:15 PM Groceries - ₹890":
+    - /url: /transactions/txn-1003
+    - generic: shopping_cart
+    - generic: Blinkit
+    - generic: 8:15 PM
+    - generic: Groceries
+    - generic: "- ₹890"
+    - generic: smart_toy
+- link:
+  - /url: /add
+  - generic: add
+- navigation:
+  - link "Home":
+    - /url: /home
+    - generic: home
+    - generic: Home
+  - link "History":
+    - /url: /transactions
+    - generic: receipt_long
+    - generic: History
+  - link "Stats":
+    - /url: /analytics
+    - generic: leaderboard
+    - generic: Stats
+  - link "Ask AI":
+    - /url: /ask
+    - generic: smart_toy
+    - generic: Ask AI
+  - link "Profile":
+    - /url: /profile
+    - generic: person
+    - generic: Profile
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_4t4wzn9vrt87st3fmw6wp1tyzs?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

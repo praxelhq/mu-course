@@ -1,0 +1,65 @@
+- banner:
+  - heading "You" [level=1]
+  - paragraph: Shape Adhera around your days
+  - link "Progress":
+    - /url: /progress
+    - text: 🏅
+- heading "Your name" [level=2]
+- textbox: Reviewer
+- heading "Active modules" [level=2]
+- generic: 🫧
+- paragraph: Stress Management
+- paragraph: Soothing sounds and guided breathing
+- switch [checked]
+- generic: 🍋
+- paragraph: Weight Management
+- paragraph: Body basics, food log and daily balance
+- switch
+- generic: 🔔
+- paragraph: Reminders
+- paragraph: Medicine, water, meals, movement
+- switch [checked]
+- heading "Reminders" [level=2]
+- paragraph: No reminders set yet.
+- link "Manage reminders":
+  - /url: /reminders
+- heading "Need support right now?" [level=2]
+- paragraph: Free 24/7 helplines and a grounding breath, any time.
+- link "Open SOS":
+  - /url: /sos
+- paragraph: Adhera Premium
+- heading "Everything, gently unlocked" [level=2]
+- list:
+  - text: All three modules, always unlocked
+  - text: Caregiver mode — share progress with someone you trust
+  - text: Advanced reports and export
+  - text: A larger library of guided meditation sessions
+- button "Explore Premium"
+- heading "Start over" [level=2]
+- paragraph: Clears this demo's data and returns you to the welcome screen.
+- button "Reset demo"
+- link "SOS — talk to someone now":
+  - /url: /sos
+  - generic: SOS
+- navigation:
+  - link "Today":
+    - /url: /
+    - text: Today
+  - link "Calm":
+    - /url: /stress
+    - text: Calm
+  - link "Weight":
+    - /url: /weight
+    - text: Weight
+  - link "Reminders":
+    - /url: /reminders
+    - text: Reminders
+  - link "You":
+    - /url: /settings
+    - text: You
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_4mf9qxwwfq922r3nx6m46jkrvt?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

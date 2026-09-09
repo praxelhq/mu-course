@@ -1,0 +1,56 @@
+- banner:
+  - link "Leaderboard":
+    - /url: /leaderboard
+    - generic: leaderboard
+  - link "PEAKPROF.COM":
+    - /url: /
+  - link "Admin":
+    - /url: /admin
+    - generic: settings
+- main:
+  - link "arrow_back Dashboard":
+    - /url: /leaderboard
+    - generic: arrow_back
+    - text: Dashboard
+  - generic: GC
+  - heading "Prof. Garima Chaklader" [level=1]
+  - paragraph: Economics · 1247 crowns
+  - generic: reviews
+  - generic: — avg · 0 reviews
+  - heading "Leave an anonymous review" [level=2]
+  - button "1 star":
+    - generic: star
+  - button "2 stars":
+    - generic: star
+  - button "3 stars":
+    - generic: star
+  - button "4 stars":
+    - generic: star
+  - button "5 stars":
+    - generic: star
+  - textbox "What's it like in their class? No names, no logins — fully anonymous."
+  - button "Post Review"
+  - paragraph: No reviews yet. Be the first — it stays anonymous.
+- navigation:
+  - link "ads_click Vote":
+    - /url: /
+    - generic: ads_click
+    - generic: Vote
+  - link "military_tech Ranking":
+    - /url: /leaderboard
+    - generic: military_tech
+    - generic: Ranking
+  - link "corporate_fare Business":
+    - /url: /business
+    - generic: corporate_fare
+    - generic: Business
+  - link "person Admin":
+    - /url: /admin
+    - generic: person
+    - generic: Admin
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_40t3pwey5287g8vb6j1qfrvm81?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

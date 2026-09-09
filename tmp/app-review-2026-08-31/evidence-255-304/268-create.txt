@@ -1,0 +1,70 @@
+- banner:
+  - link "Gatherly":
+    - /url: /explore
+  - link "Notifications":
+    - /url: /notifications
+  - link "Profile":
+    - /url: /profile/maya
+    - generic "Maya Okonkwo": MO
+- main:
+  - paragraph: New activity
+  - heading "What are you planning?" [level=1]
+  - generic: Title
+  - textbox "Title":
+    - /placeholder: Sunset hike at Bear Mountain
+  - generic: Description
+  - textbox "Description":
+    - /placeholder: What's the vibe? What should people bring?
+  - generic: Date & time
+  - textbox "Date & time"
+  - generic: Capacity
+  - spinbutton "Capacity": "6"
+  - generic: Location
+  - textbox "Location":
+    - /placeholder: The Velvet Note, Brooklyn
+  - generic: Category
+  - button "Category Creative Dining Music Movies Travel Fitness Gaming Books Entrepreneurship Nightlife Study Networking Outdoors": Sports
+  - button "Creative"
+  - button "Dining"
+  - button "Music"
+  - button "Movies"
+  - button "Travel"
+  - button "Fitness"
+  - button "Gaming"
+  - button "Books"
+  - button "Entrepreneurship"
+  - button "Nightlife"
+  - button "Study"
+  - button "Networking"
+  - button "Outdoors"
+  - generic: Tags (comma separated)
+  - textbox "Tags (comma separated)":
+    - /placeholder: beginner-friendly, BYOB
+  - generic: Who can join
+  - button "Who can join Community Invite":
+    - generic: Public
+  - button "Community":
+    - generic: Community
+  - button "Invite":
+    - generic: Invite
+  - button "Publish activity"
+- navigation:
+  - link "Feed":
+    - /url: /explore
+    - generic: Feed
+  - link "Groups":
+    - /url: /communities
+    - generic: Groups
+  - button "Create activity" [active]:
+  - link "Chats":
+    - /url: /messages
+    - generic: Chats
+  - link "Me":
+    - /url: /connections
+    - generic: Me
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_708chb7hqx9tfa8zt1gfr6nt0d?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

@@ -1,0 +1,24 @@
+- main:
+  - paragraph: Tonight's cut
+  - heading "MAIN CHARACTER" [level=1]
+  - button "Rom-com"
+  - button "Thriller"
+  - button "Coming-of-age"
+  - button "Sports movie"
+  - generic: What almost went wrong today?
+  - textbox "What almost went wrong today?":
+    - /placeholder: type it out...
+  - generic: Who said something that stuck with you?
+  - textbox "Who said something that stuck with you?":
+    - /placeholder: type it out...
+  - generic: One thing you're proud of today?
+  - textbox "One thing you're proud of today?":
+    - /placeholder: type it out...
+  - paragraph: Pull in a few photos from today (optional)
+  - button "+ Add photos"
+  - button "Cut tonight's trailer"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_02ajqznh339statnj2vc43tkdg?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

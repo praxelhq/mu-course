@@ -1,0 +1,238 @@
+- complementary:
+  - generic: NetworkPro
+  - generic: Your networking copilot
+  - button:
+    - generic: "2"
+  - button:
+    - text: Capture
+  - navigation:
+    - link:
+      - /url: /
+      - text: Dashboard
+    - link:
+      - /url: /network
+      - text: My Network
+    - link:
+      - /url: /follow-ups
+      - text: Follow-Ups
+    - link:
+      - /url: /interviews
+      - text: Interviews
+    - link:
+      - /url: /assistant
+      - text: AI Assistant
+    - link:
+      - /url: /settings
+      - text: Settings
+  - generic: "N"
+  - generic: Nupur
+  - generic: nupur@university.edu
+- main:
+  - heading [level=1]: Good morning, Nupur 👋
+  - paragraph: Stay on top of your professional relationships.
+  - button:
+    - text: Log New Interaction
+  - link:
+    - /url: /network
+    - text: View Network
+  - region:
+    - paragraph: Total Connections
+    - paragraph: "6"
+    - paragraph: +5 this month
+    - paragraph: Pending Follow-Ups
+    - paragraph: "4"
+    - paragraph: 1 due today
+    - paragraph: Interviews Tracked
+    - paragraph: "5"
+    - paragraph: 3 upcoming
+    - paragraph: Response Rate
+    - paragraph: 75%
+    - paragraph: 3 of 4 follow-ups answered
+  - region:
+    - heading [level=2]:
+      - text: 3-day streak
+    - paragraph: Complete one follow-up today to keep your streak alive.
+    - paragraph: This week
+    - paragraph: "1"
+    - paragraph: Longest
+    - paragraph:
+      - text: "3"
+    - generic: Last 15 weeks
+    - text: Less
+    - text: More
+    - paragraph:
+      - text: 4 more days to hit your
+      - generic: 7-day
+      - text: badge.
+    - list:
+      - generic: ★
+      - generic: First Follow-Up
+      - generic: Complete your first follow-up
+      - generic: ★
+      - generic: Warming Up
+      - generic: 3-day streak
+      - generic: ☆
+      - generic: Week Warrior
+      - generic: 7-day streak
+      - generic: ☆
+      - generic: Unstoppable
+      - generic: 30-day streak
+      - generic: ☆
+      - generic: Super Connector
+      - generic: 25 connections captured
+      - generic: ☆
+      - generic: Closer
+      - generic: 25 follow-ups completed
+  - region:
+    - heading [level=2]: Needs Your Attention
+    - article:
+      - generic: PS
+      - heading [level=3]: Priya Shah
+      - paragraph: Amazon · Product Manager
+      - generic: Overdue
+      - paragraph: Reconnect and share updated portfolio.
+      - button:
+        - text: Generate Message
+      - button:
+      - link:
+        - /url: /network/c5
+        - text: View
+      - button: Done
+    - article:
+      - generic: SC
+      - heading [level=3]: Sarah Chen
+      - paragraph: Google · University Recruiter
+      - generic: Due Today
+      - paragraph: Send resume and ask about relevant openings.
+      - button:
+        - text: Generate Message
+      - button:
+      - link:
+        - /url: /network/c1
+        - text: View
+      - button: Done
+    - article:
+      - generic: AK
+      - heading [level=3]: Arjun Kapoor
+      - paragraph: BCG · Associate
+      - generic: Due Tomorrow
+      - paragraph: Ask about consulting career path.
+      - button:
+        - text: Generate Message
+      - button:
+      - link:
+        - /url: /network/c4
+        - text: View
+      - button: Done
+  - region:
+    - heading [level=2]: Upcoming Follow-Ups
+    - table:
+      - rowgroup:
+        - row:
+          - columnheader: Contact
+          - columnheader: Company
+          - columnheader: Action
+          - columnheader: Due
+          - columnheader: Status
+          - columnheader
+      - rowgroup:
+        - row:
+          - cell: Priya Shah
+          - cell: Amazon
+          - cell: Reconnect and share updated portfolio
+          - cell: 19 Aug
+          - cell:
+            - generic: Cold
+          - cell:
+            - button:
+              - text: Message
+        - row:
+          - cell: Sarah Chen
+          - cell: Google
+          - cell: Send resume and ask about relevant openings
+          - cell: 31 Aug
+          - cell:
+            - generic: To Follow Up
+          - cell:
+            - button:
+              - text: Message
+        - row:
+          - cell: Arjun Kapoor
+          - cell: BCG
+          - cell: Ask about consulting career path
+          - cell: 1 Sept
+          - cell:
+            - generic: To Follow Up
+          - cell:
+            - button:
+              - text: Message
+        - row:
+          - cell: Rahul Mehta
+          - cell: Deloitte
+          - cell: Ask about consulting recruitment process
+          - cell: 2 Sept
+          - cell:
+            - generic: Scheduled
+          - cell:
+            - button:
+              - text: Message
+        - row:
+          - cell: Vikram Nair
+          - cell: Accenture
+          - cell: Follow up regarding application status
+          - cell: 4 Sept
+          - cell:
+            - generic: Scheduled
+          - cell:
+            - button:
+              - text: Message
+  - region:
+    - heading [level=2]: Recent Captures
+    - list:
+      - link:
+        - /url: /network/c4
+        - generic: AK
+        - generic: Arjun Kapoor
+        - generic: BCG · Associate
+        - text: Camera
+        - generic: · 2 days ago
+      - link:
+        - /url: /network/c1
+        - generic: SC
+        - generic: Sarah Chen
+        - generic: Google · University Recruiter
+        - text: Voice Note
+        - generic: · 3 days ago
+      - link:
+        - /url: /network/c3
+        - generic: AR
+        - generic: Ananya Rao
+        - generic: Microsoft · Campus Recruiter
+        - text: Screenshot
+        - generic: · 4 days ago
+      - link:
+        - /url: /network/c6
+        - generic: VN
+        - generic: Vikram Nair
+        - generic: Accenture · HR Manager
+        - text: Manual Text
+        - generic: · 5 days ago
+- region "Notifications alt+T"
+- complementary:
+  - link:
+    - /url: https://lovable.dev/projects/lovp_7maa21ymw89jarb98axyt3x7za?utm_source=lovable-badge
+    - generic: Edit with
+  - button:
+- dialog "Capture a new connection" [active]:
+  - heading "Capture a new connection" [level=2]
+  - banner:
+    - button "Back":
+    - heading "Capture a New Connection" [level=2]
+    - paragraph: NetworkPro will organize this into a structured connection.
+  - text: What happened?
+  - textbox "What happened?":
+    - /placeholder: Met Sarah from Google HR at the campus career fair. We discussed data analyst roles and she asked me to send my resume next Tuesday.
+  - button "AI Organize":
+    - text: AI Organize
+  - button "Close":
+    - generic: Close

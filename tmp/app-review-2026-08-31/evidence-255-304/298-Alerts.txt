@@ -1,0 +1,43 @@
+- banner:
+  - heading "Alerts" [level=1]
+  - paragraph: Commute & price-drop signals
+  - generic: Demo data
+- main:
+  - paragraph: SahiRasta watches your regular routes and pings you only when acting on it saves money or time. These are demo alerts — no notifications are sent.
+  - list:
+    - heading "Price drop · Home → Office" [level=2]
+    - paragraph: Cab fares on this route usually fall ₹80–₹120 after 7:30 PM. We'll nudge you when the drop starts.
+    - paragraph: Weekdays · 6:30–8:30 PM
+    - switch "Toggle Price drop · Home → Office" [checked]
+    - heading "Surge watch · Cyber Hub" [level=2]
+    - paragraph: Get alerted when surge multipliers cross 1.3x near your pickup points.
+    - paragraph: Always on
+    - switch "Toggle Surge watch · Cyber Hub" [checked]
+    - heading "Morning commute weather" [level=2]
+    - paragraph: Heavy rain expected tomorrow 8–10 AM. If it holds, we'll suggest metro-first routes tonight.
+    - paragraph: Tomorrow · 6:45 AM
+    - switch "Toggle Morning commute weather"
+    - heading "DMRC service advisories" [level=2]
+    - paragraph: Delays and line closures on Yellow & Blue lines affecting your saved routes.
+    - paragraph: As issued
+    - switch "Toggle DMRC service advisories"
+  - button "New route alert (coming with live APIs)":
+    - text: New route alert (coming with live APIs)
+- navigation:
+  - link "Home":
+    - /url: /
+    - text: Home
+  - link "Best Ride":
+    - /url: /recommendation
+    - text: Best Ride
+  - link "Alerts" [active]:
+    - /url: /alerts
+    - text: Alerts
+  - link "Prefs":
+    - /url: /preferences
+    - text: Prefs
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_60a5x7h3en9v7th2e2nvb4z01r?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

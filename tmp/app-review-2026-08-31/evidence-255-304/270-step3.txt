@@ -1,0 +1,37 @@
+- button "Previous question":
+  - generic: arrow_back
+- generic: 3/6
+- banner:
+  - paragraph: Check-in
+  - heading "Which word comes closest?" [level=1]
+  - paragraph: Pick the one that fits best right now.
+- button "Anxiety"
+- button "Fear"
+- button "Anger"
+- button "Sadness"
+- button "Loneliness"
+- button "Stress"
+- button "Confusion"
+- button "Continue":
+  - text: Continue
+  - generic: arrow_forward
+- button "Skip this one"
+- button "Leave this check-in"
+- navigation:
+  - list:
+    - link "Home":
+      - /url: /
+      - generic: home
+      - text: Home
+    - link "Activities":
+      - /url: /activities
+      - generic: spa
+      - text: Activities
+    - link "History":
+      - /url: /history
+      - generic: insights
+      - text: History
+    - link "You":
+      - /url: /account
+      - generic: person
+      - text: You

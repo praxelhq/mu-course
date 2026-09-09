@@ -1,0 +1,81 @@
+- banner:
+  - button "Go back":
+  - heading "Profile" [level=1]
+  - paragraph: FIN-8842-01197
+- img "Jai Khatri profile photo"
+- paragraph: Jai Khatri
+- paragraph: +91 98204 41207
+- paragraph: jai.khatri@finora.in
+- button "Edit profile":
+- generic: Customer ID
+- generic: FIN-8842-01197
+- generic: Address
+- generic: B-1204, Lodha Amara, Kolshet Road, Thane West, Maharashtra 400607
+- heading "Account Status" [level=2]
+- paragraph: Savings Account
+- generic: Active
+- paragraph: Available balance
+- paragraph: ₹2,48,750.50
+- generic: Account number
+- generic: XXXX XXXX 2291
+- generic: IFSC
+- generic: HDFC0004821
+- generic: Branch
+- generic: HDFC Bank — Thane West Branch
+- heading "Cards" [level=2]
+- link "Credit cards 3 cards · manage limits and dues":
+  - /url: /cards
+  - generic: Credit cards
+  - generic: 3 cards · manage limits and dues
+- heading "Security" [level=2]
+- button "Change PIN Last updated 12 Jun 2026":
+  - generic: Change PIN
+  - generic: Last updated 12 Jun 2026
+- button "Biometric login Enabled on this device":
+  - generic: Biometric login
+  - generic: Enabled on this device
+  - switch [checked]
+- button "Manage devices 2 trusted devices":
+  - generic: Manage devices
+  - generic: 2 trusted devices
+- button "Login activity Last login today, 8:41 AM · Thane":
+  - generic: Login activity
+  - generic: Last login today, 8:41 AM · Thane
+- heading "Customer Support" [level=2]
+- link "Chat with support Average wait under 1 min":
+  - /url: /support
+  - generic: Chat with support
+  - generic: Average wait under 1 min
+- button "Call customer care 1800 209 4321 · toll free":
+  - generic: Call customer care
+  - generic: 1800 209 4321 · toll free
+- button "Email support care@finora.in":
+  - generic: Email support
+  - generic: care@finora.in
+- button "FAQ":
+  - generic: FAQ
+- button "Raise a complaint Response within 48 hours":
+  - generic: Raise a complaint
+  - generic: Response within 48 hours
+- navigation:
+  - link "Home":
+    - /url: /
+    - generic: Home
+  - link "Activity":
+    - /url: /transactions
+    - generic: Activity
+  - link "AI":
+    - /url: /recommendations
+    - generic: AI
+  - link "Invest":
+    - /url: /investments
+    - generic: Invest
+  - link "Profile" [active]:
+    - /url: /profile
+    - generic: Profile
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7hs9qkr19892mvzmkrhn1dmb7v?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

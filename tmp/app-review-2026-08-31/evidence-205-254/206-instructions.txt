@@ -1,0 +1,41 @@
+- banner:
+  - generic: SPEED
+  - generic: 200 KM/H
+  - generic: CHASSIS
+  - text: LAP
+  - generic: "0"
+  - generic: Scuderia Corsa
+  - generic: REACTION
+  - generic: "-- MS"
+  - button "Mute Audio":
+  - button "Telemetry Records":
+  - button "Team Garage & Settings":
+- main:
+  - generic: "1"
+  - generic: "2"
+  - generic: "3"
+  - generic: "4"
+  - generic: BOOST TIMING ZONE
+  - generic: HIT HERE
+  - generic "Drag left/right to steer car safely":
+  - 'heading "F1: LIGHTS OUT" [level=1]'
+  - button "START SEQUENCE": START SEQUENCE
+  - button "How to Play & Controls" [active]:
+    - text: How to Play & Controls
+  - button:
+  - heading "Race Instructions" [level=3]:
+    - text: Race Instructions
+  - list:
+    - generic: "1."
+    - strong: "Steer Anywhere:"
+    - text: Drag car, tap any lane, or use Arrow Keys / A/D to steer safely across lanes.
+    - generic: "2."
+    - strong: "Hit Boost Zones:"
+    - text: When a glowing yellow tile hits the timing zone, tap that lane or press Space for turbo boosts!
+    - generic: "3."
+    - strong: "Chassis Shields:"
+    - text: You have 3 Chassis Shields. Colliding with opponent cars consumes a shield instead of instant loss!
+    - generic: "4."
+    - strong: "Controls:"
+    - text: Mobile touch/drag or desktop Arrow Keys / A/D / 1-4 / Space / P (Pause).
+  - button "Got It, Let's Race"

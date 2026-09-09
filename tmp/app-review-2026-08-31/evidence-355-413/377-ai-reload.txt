@@ -1,0 +1,41 @@
+- banner:
+  - link "Open your profile":
+    - /url: /profile
+    - img "Arjun Mehta's profile"
+  - link "NEST AI":
+    - /url: /home
+  - navigation "Primary":
+    - link "Home":
+      - /url: /home
+    - link "Journey":
+      - /url: /journey
+    - link "NEST AI":
+      - /url: /ai
+    - link "Explore":
+      - /url: /explore
+    - link "Community":
+      - /url: /community
+  - link "Your documents and notifications":
+    - /url: /documents
+    - generic: notifications
+- main:
+  - generic: bolt
+  - heading "NEST AI Copilot" [level=1]
+  - paragraph: Ask me anything about your move — I'll show you where each part of the answer comes from.
+  - generic: 0% journey complete
+  - generic: Arrival not set
+  - generic: 0 open steps
+  - button "What do I need before signing a lease?"
+  - button "How do people usually open a bank account here?"
+  - button "Which neighbourhood fits my budget?"
+  - button "What surprises newcomers in my first month?"
+  - textbox "Ask NEST AI":
+    - /placeholder: Ask about visas, housing, money, culture…
+  - button "Send message":
+    - generic: send
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3h107x2by691z9kgbmwkjagf85?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

@@ -1,0 +1,30 @@
+- navigation:
+  - link "GAME HUB":
+    - /url: ../index.html
+  - link "Home":
+    - /url: ../index.html
+  - link "Tic Tac Toe":
+    - /url: tic-tac-toe.html
+  - link "Pen Fight":
+    - /url: pen-fight.html
+- main:
+  - heading "✊ Rock Paper Scissors" [level=1]
+  - paragraph: Pick your move against the bot.
+  - generic: YOU
+  - generic: "0"
+  - generic: VS
+  - generic: BOT
+  - generic: "0"
+  - generic: ❔
+  - generic: ❔
+  - button "🪨"
+  - button "📄"
+  - button "✂️"
+  - button "Reset Score"
+  - heading "Rules" [level=3]
+  - list:
+    - listitem: Rock beats Scissors, Scissors beats Paper, Paper beats Rock.
+    - listitem: Pick a move and the bot reveals its choice instantly.
+    - listitem: Play as many rounds as you like — your score keeps a running tally.
+- contentinfo:
+  - paragraph: © 2026 Game Hub Online.

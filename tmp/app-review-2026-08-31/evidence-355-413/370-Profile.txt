@@ -1,0 +1,50 @@
+- heading "Wavelength" [level=2]
+- paragraph: match on taste, not just faces
+- button "Messages":
+- heading "Your profile" [level=1]
+- paragraph: How you show up before anyone swipes.
+- generic: 83% complete
+- button "Upload profile photo":
+  - img "Demo Reviewer’s portrait"
+- generic: Name
+- textbox "Your name": Demo Reviewer
+- generic: Bio
+- textbox "One line about your taste, not your job title.": Enjoys jazz and museums
+- generic: Age
+- spinbutton: "24"
+- paragraph: How you show up
+- generic: The Old Soul
+- paragraph: Non-negotiable
+- generic: Shows up early, stays curious
+- paragraph: Your fingerprint
+- paragraph: Energy
+- generic "quiet → electric":
+  - generic: Energy
+  - generic: 50%
+- generic "solitary → social":
+  - generic: Social
+  - generic: 50%
+- paragraph: Sound
+- generic: Jai Paul
+- paragraph: Vision
+- generic: Bauhaus
+- paragraph: Vibe
+- generic: The Old Soul
+- paragraph: Non-negotiable
+- generic: Shows up early, stays curious
+- paragraph: What we match you on — grouped by signal, not by looks.
+- button "edit fingerprint":
+  - text: edit fingerprint
+- button "Save profile"
+- button "Home":
+  - text: Home
+- button "Discover":
+  - text: Discover
+- button "Likes — 4 new":
+  - generic: "4"
+  - text: Likes
+- button "Profile" [active]:
+  - text: Profile
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

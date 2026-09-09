@@ -1,0 +1,128 @@
+- banner:
+  - button "Set your location":
+  - link "MindSaathi Your Mind Matters":
+    - /url: /
+    - generic: MindSaathi
+    - generic: Your Mind Matters
+  - 'link "Language: English. Change language"':
+    - /url: /language
+    - generic: English
+  - link "SOS":
+    - /url: /sos
+    - text: SOS
+- main:
+  - heading "Choose your language" [level=1]
+  - paragraph: Support feels closer in the words you think in. All 22 scheduled languages.
+  - switch "Voice-first mode Read key screens aloud":
+    - generic: Voice-first mode
+    - generic: Read key screens aloud
+  - button "English English" [pressed]:
+    - generic: English
+    - generic: English
+  - button "हिन्दी Hindi":
+    - generic: हिन्दी
+    - generic: Hindi
+  - button "অসমীয়া Assamese":
+    - generic: অসমীয়া
+    - generic: Assamese
+  - button "बर' Bodo":
+    - generic: बर'
+    - generic: Bodo
+  - button "डोगरी Dogri":
+    - generic: डोगरी
+    - generic: Dogri
+  - button "বাংলা Bengali":
+    - generic: বাংলা
+    - generic: Bengali
+  - button "ગુજરાતી Gujarati":
+    - generic: ગુજરાતી
+    - generic: Gujarati
+  - button "ಕನ್ನಡ Kannada":
+    - generic: ಕನ್ನಡ
+    - generic: Kannada
+  - button "کٲشُر Kashmiri":
+    - generic: کٲشُر
+    - generic: Kashmiri
+  - button "कोंकणी Konkani":
+    - generic: कोंकणी
+    - generic: Konkani
+  - button "मैथिली Maithili":
+    - generic: मैथिली
+    - generic: Maithili
+  - button "മലയാളം Malayalam":
+    - generic: മലയാളം
+    - generic: Malayalam
+  - button "ꯃꯤꯇꯩꯂꯣꯟ Manipuri":
+    - generic: ꯃꯤꯇꯩꯂꯣꯟ
+    - generic: Manipuri
+  - button "मराठी Marathi":
+    - generic: मराठी
+    - generic: Marathi
+  - button "नेपाली Nepali":
+    - generic: नेपाली
+    - generic: Nepali
+  - button "ଓଡ଼ିଆ Odia":
+    - generic: ଓଡ଼ିଆ
+    - generic: Odia
+  - button "ਪੰਜਾਬੀ Punjabi":
+    - generic: ਪੰਜਾਬੀ
+    - generic: Punjabi
+  - button "संस्कृतम् Sanskrit":
+    - generic: संस्कृतम्
+    - generic: Sanskrit
+  - button "ᱥᱟᱱᱛᱟᱲᱤ Santali":
+    - generic: ᱥᱟᱱᱛᱟᱲᱤ
+    - generic: Santali
+  - button "سنڌي Sindhi":
+    - generic: سنڌي
+    - generic: Sindhi
+  - button "தமிழ் Tamil":
+    - generic: தமிழ்
+    - generic: Tamil
+  - button "తెలుగు Telugu":
+    - generic: తెలుగు
+    - generic: Telugu
+  - button "اردو Urdu":
+    - generic: اردو
+    - generic: Urdu
+  - paragraph: Your choice is remembered on this device.
+  - link "Continue":
+    - /url: /
+    - generic: Continue
+- contentinfo:
+  - link "How your data is used":
+    - /url: /privacy
+- button "Open Saathi, your guide":
+  - img "Saathi, your friendly guide"
+- navigation "Screen navigation":
+  - button "Previous screen" [disabled]:
+  - link "Language" [active]:
+    - /url: /language
+    - text: Language
+  - link "Settings":
+    - /url: /settings
+    - text: Settings
+  - link "Check-in":
+    - /url: /tracker
+    - text: Check-in
+  - button "Next screen":
+  - link "Today":
+    - /url: /
+    - generic: Today
+  - link "Counsellors":
+    - /url: /counsellors
+    - generic: Counsellors
+  - link "Tracker":
+    - /url: /tracker
+    - generic: Tracker
+  - link "AI Support":
+    - /url: /ai-support
+    - generic: AI Support
+  - link "SOS":
+    - /url: /sos
+    - generic: SOS
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6c2nccmn5q8vsre70jn9smn197?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

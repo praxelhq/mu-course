@@ -1,0 +1,41 @@
+- banner:
+  - button "Back to Lobby":
+  - generic: CHAOS SURVIVORS
+  - generic: / MISSION 1
+  - button "SYNCING" [disabled]:
+    - generic: SYNCING
+  - 'button "ROOM #XJ82"':
+    - generic: ROOM
+    - generic: "#XJ82"
+  - button "View notifications":
+    - generic: "2"
+- main:
+  - generic: SCENARIO ACTIVE // STAGE 01
+  - generic: ROUND IN PROGRESS
+  - 'heading "MISSION 1: THE MEATBALL MAZE" [level=1]'
+  - paragraph: "Sector: World's Largest IKEA • Navigation Breakdown"
+  - generic: 🤖
+  - paragraph: "\"Surviving means moving fast. Swedish meatballs won’t save you.\""
+  - 'img "MISSION 1: THE MEATBALL MAZE"'
+  - generic: You entered for a bookcase, but the exits have vanished. The shelves are moving. Is that a ghost in a blue vest?
+  - generic: TACTICAL DECISION // SELECT MOVE
+  - generic: 44s REMAINING
+  - button "Follow the arrows 2 votes" [disabled]:
+    - generic: Follow the arrows
+    - generic: 2 votes
+  - button "Build a fort from pillows" [disabled]:
+    - generic: Build a fort from pillows
+  - button "Eat meatballs until help arrives 1 votes" [disabled]:
+    - generic: Eat meatballs until help arrives
+    - generic: 1 votes
+  - generic: Choice Locked In • Synchronizing consensus...
+  - button "EMERGENCY LIFELINE (1)":
+    - generic: EMERGENCY LIFELINE (1)
+  - button "SQUAD COMMS":
+    - generic: SQUAD COMMS
+  - button "SQUAD ROSTER":
+    - generic: SQUAD ROSTER
+- contentinfo:
+  - generic: ENGINE v2.4.1
+  - generic: Telemetry Normal
+  - generic: "CHAOS SURVIVORS • HIGH DENSITY INTERFACE • ROOM #XJ82"

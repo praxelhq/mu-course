@@ -1,0 +1,23 @@
+- main:
+  - button "Back":
+  - progressbar
+  - heading "What usually gets in your way?" [level=1]
+  - paragraph: Tell Naggy. She'll make the rules.
+  - button "I sleep too late":
+    - generic: I sleep too late
+  - button "I can't stop scrolling":
+    - generic: I can't stop scrolling
+  - button "I get distracted":
+    - generic: I get distracted
+  - button "I procrastinate":
+    - generic: I procrastinate
+  - button "I forget things":
+    - generic: I forget things
+  - button "Continue" [active]:
+    - text: Continue
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1y077zn9zp920rn02hgwhd1kn0?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

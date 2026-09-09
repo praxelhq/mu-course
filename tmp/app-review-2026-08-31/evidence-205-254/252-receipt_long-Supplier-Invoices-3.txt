@@ -1,0 +1,182 @@
+- navigation:
+  - generic: inventory_2
+  - heading "StockFlow" [level=1]
+  - generic: ERP
+  - paragraph: Sports Retail Operations
+  - paragraph: OVERVIEW
+  - list:
+    - button "dashboard Dashboard 5":
+      - generic: dashboard
+      - generic: Dashboard
+      - generic: "5"
+    - button "inventory_2 Products":
+      - generic: inventory_2
+      - generic: Products
+    - button "swap_horiz Inventory Master":
+      - generic: swap_horiz
+      - generic: Inventory Master
+  - paragraph: INTELLIGENCE
+  - list:
+    - button "auto_awesome AI Demand Forecast AI":
+      - generic: auto_awesome
+      - generic: AI Demand Forecast
+      - generic: AI
+    - button "analytics Reports & Analytics":
+      - generic: analytics
+      - generic: Reports & Analytics
+  - paragraph: OPERATIONS
+  - list:
+    - button "qr_code_2 Serial Numbers":
+      - generic: qr_code_2
+      - generic: Serial Numbers
+    - button "category Categories":
+      - generic: category
+      - generic: Categories
+    - button "local_shipping Suppliers":
+      - generic: local_shipping
+      - generic: Suppliers
+  - paragraph: PROCUREMENT & PAYABLES
+  - list:
+    - button "post_add Purchase Orders 2":
+      - generic: post_add
+      - generic: Purchase Orders
+      - generic: "2"
+    - button "receipt_long Supplier Invoices 3" [active]:
+      - generic: receipt_long
+      - generic: Supplier Invoices
+      - generic: "3"
+    - button "payments Payment Ledger":
+      - generic: payments
+      - generic: Payment Ledger
+  - paragraph: SYSTEM
+  - list:
+    - button "manage_accounts User Management":
+      - generic: manage_accounts
+      - generic: User Management
+    - button "history Audit Trail Logs":
+      - generic: history
+      - generic: Audit Trail Logs
+  - button "settings Settings":
+    - generic: settings
+    - generic: Settings
+  - button "logout Sign Out":
+    - generic: logout
+    - generic: Sign Out
+- banner:
+  - generic: search
+  - textbox "Search products, SKUs, suppliers, orders..."
+  - generic: ⌘K
+  - generic: ₹ INR
+  - text: "Role:"
+  - strong: Admin
+  - button "notifications":
+    - generic: notifications
+  - button "help_outline":
+    - generic: help_outline
+  - button "Yadeshwar Admin expand_more":
+    - generic: Yadeshwar
+    - generic: Admin
+    - generic: expand_more
+- main:
+  - heading "Supplier Invoices & Accounts Payable" [level=2]
+  - paragraph: Vendor billing schedules, payment terms, and automated balance reconciliations
+  - paragraph: Total Invoices
+  - paragraph: "4"
+  - generic: receipt_long
+  - paragraph: Outstanding Payables
+  - paragraph: ₹29,550.40
+  - generic: account_balance
+  - paragraph: Overdue Invoices
+  - paragraph: "3"
+  - generic: warning
+  - paragraph: Fully Settled
+  - paragraph: "1"
+  - generic: check_circle
+  - generic: search
+  - 'textbox "Search invoice #, PO #, or supplier..."'
+  - generic: "Status:"
+  - combobox:
+    - option "All Statuses" [selected]
+    - option "Unpaid / Outstanding"
+    - option "Partially Paid"
+    - option "Fully Paid"
+    - option "Overdue"
+  - generic: "Supplier:"
+  - combobox:
+    - option "All Suppliers" [selected]
+    - option "Sanspareils Greenlands (SG) Pvt. Ltd."
+    - option "Adidas India Marketing Pvt. Ltd."
+    - option "Nike India Pvt. Ltd."
+    - option "Sunrise Sports India (Yonex Distributor)"
+    - option "Wilson Sports India Distribution"
+    - option "Decathlon Sports India Pvt. Ltd."
+  - table:
+    - rowgroup:
+      - 'row "Invoice # Supplier Name PO Ref Invoice Date Due Date Total Paid Remaining Due Status Action"':
+        - 'columnheader "Invoice #"'
+        - columnheader "Supplier Name"
+        - columnheader "PO Ref"
+        - columnheader "Invoice Date"
+        - columnheader "Due Date"
+        - columnheader "Total"
+        - columnheader "Paid"
+        - columnheader "Remaining Due"
+        - columnheader "Status"
+        - columnheader "Action"
+    - rowgroup:
+      - row "INV-SUP-2026-001 Sanspareils Greenlands (SG) Pvt. Ltd. PO-2026-0001 2026-08-04 2026-09-03 ₹10,266.00 ₹10,266.00 ₹0.00 Paid check_circle Settled":
+        - cell "INV-SUP-2026-001"
+        - cell "Sanspareils Greenlands (SG) Pvt. Ltd."
+        - cell "PO-2026-0001"
+        - cell "2026-08-04"
+        - cell "2026-09-03"
+        - cell "₹10,266.00"
+        - cell "₹10,266.00"
+        - cell "₹0.00"
+        - cell "Paid"
+        - cell "check_circle Settled":
+          - generic: check_circle
+          - text: Settled
+      - row "INV-SUP-2026-002 Adidas India Marketing Pvt. Ltd. PO-2026-0002 2026-08-06 2026-08-25 ₹11,564.00 ₹5,000.00 ₹6,564.00 Overdue payment Disburse":
+        - cell "INV-SUP-2026-002"
+        - cell "Adidas India Marketing Pvt. Ltd."
+        - cell "PO-2026-0002"
+        - cell "2026-08-06"
+        - cell "2026-08-25"
+        - cell "₹11,564.00"
+        - cell "₹5,000.00"
+        - cell "₹6,564.00"
+        - cell "Overdue"
+        - cell "payment Disburse":
+          - button "payment Disburse":
+            - generic: payment
+            - text: Disburse
+      - row "INV-SUP-2026-003 Sunrise Sports India (Yonex Distributor) PO-2026-0003 2026-08-05 2026-08-20 ₹12,791.20 ₹0.00 ₹12,791.20 Overdue payment Disburse":
+        - cell "INV-SUP-2026-003"
+        - cell "Sunrise Sports India (Yonex Distributor)"
+        - cell "PO-2026-0003"
+        - cell "2026-08-05"
+        - cell "2026-08-20"
+        - cell "₹12,791.20"
+        - cell "₹0.00"
+        - cell "₹12,791.20"
+        - cell "Overdue"
+        - cell "payment Disburse":
+          - button "payment Disburse":
+            - generic: payment
+            - text: Disburse
+      - row "INV-SUP-2026-004 Decathlon Sports India Pvt. Ltd. PO-2026-0005 2026-07-27 2026-08-05 ₹10,195.20 ₹0.00 ₹10,195.20 Overdue payment Disburse":
+        - cell "INV-SUP-2026-004"
+        - cell "Decathlon Sports India Pvt. Ltd."
+        - cell "PO-2026-0005"
+        - cell "2026-07-27"
+        - cell "2026-08-05"
+        - cell "₹10,195.20"
+        - cell "₹0.00"
+        - cell "₹10,195.20"
+        - cell "Overdue"
+        - cell "payment Disburse":
+          - button "payment Disburse":
+            - generic: payment
+            - text: Disburse
+- generic: "0"

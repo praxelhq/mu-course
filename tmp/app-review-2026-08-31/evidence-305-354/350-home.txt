@@ -1,0 +1,32 @@
+- main:
+  - generic: 🏏
+  - heading "CRICKET FEVER" [level=1]:
+    - text: CRICKET
+    - text: FEVER
+  - paragraph: Time your shot. Score as many runs as possible!
+  - generic: "HIGH SCORE: 0"
+  - paragraph: Difficulty
+  - group "Difficulty":
+    - button "EASY"
+    - button "MEDIUM" [pressed]
+    - button "HARD"
+  - paragraph: Classic arcade pace
+  - button "Sound ON" [pressed]:
+    - generic: 🔊
+    - generic: Sound
+    - generic: "ON"
+  - button "Haptics ON" [pressed]:
+    - generic: 📳
+    - generic: Haptics
+    - generic: "ON"
+  - button "Less motion OFF":
+    - generic: ⚡
+    - generic: Less motion
+    - generic: "OFF"
+  - button "PLAY NOW"
+  - paragraph: 6 balls · 3 wickets · tap to bat
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6jskehb79z95vt7apdtvepgv1b?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

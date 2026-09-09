@@ -1,0 +1,49 @@
+- main:
+  - heading "TaskAlarm" [level=1]
+  - paragraph: Loud alarms for things you forget
+  - paragraph: 01:29:01
+  - paragraph: IST now
+  - paragraph:
+    - text: Upcoming
+  - paragraph: "0"
+  - paragraph:
+    - text: Repeating
+  - paragraph: "0"
+  - paragraph:
+    - text: Done
+  - paragraph: "1"
+  - heading "New task" [level=2]
+  - text: Task message
+  - textbox "Task message":
+    - /placeholder: Call the electrician
+  - text: Date
+  - textbox "Date": 2026-08-31
+  - text: Time (IST)
+  - textbox "Time (IST)"
+  - text: Repeat
+  - button "Once"
+  - button "Every day"
+  - button "Every week"
+  - button "in 5m":
+    - text: in 5m
+  - button "in 15m":
+    - text: in 15m
+  - button "in 1h":
+    - text: in 1h
+  - button "Add task":
+    - text: Add task
+  - heading "Upcoming (0)" [level=2]
+  - list:
+    - listitem: No upcoming tasks. Add one above.
+  - heading "Past / triggered (1)" [level=2]
+  - button "Clear all"
+  - list:
+    - paragraph: Instructor review test
+    - paragraph: Mon, 31 Aug, 01:28 am
+    - button "Reschedule Instructor review test":
+    - button "Delete Instructor review test":
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_693hw5c4a49j8rytfj3b62386y?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

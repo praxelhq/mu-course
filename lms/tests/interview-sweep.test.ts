@@ -192,3 +192,21 @@ describe("an interview the student was never in", () => {
     );
   });
 });
+
+describe("concurrent sweeps", () => {
+  // Two sweep runs can both read "this student holds no unused grant" before
+  // either inserts. The database refuses the second; the sweep must treat that
+  // as "no grant issued by me" rather than as a failure to escalate.
+  it("reports no grant when the database refuses a duplicate", async () => {
+    const { client, updates } = fakeDb([], [{ id: "iv_dead", turns: [{ speaker: "agent" }] }]);
+    (client as unknown as { interviewRetake: { create: () => Promise<never> } })
+      .interviewRetake.create = async () => {
+      throw Object.assign(new Error("Unique constraint failed"), { code: "P2002" });
+    };
+    const out = await sweepInterviews({ prisma: client, enqueue: async () => null });
+    expect(out.autoRetakes).toBe(0);
+    // The escalation itself still happened.
+    expect(out.reaped).toBe(1);
+    expect(updates[0].data).toMatchObject({ status: "escalated" });
+  });
+});

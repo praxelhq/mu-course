@@ -1,0 +1,192 @@
+- navigation:
+  - button "card_giftcard Gift Genius Buddy":
+    - generic: card_giftcard
+    - generic: Gift Genius
+    - generic: Buddy
+  - button "home Home":
+    - generic: home
+    - generic: Home
+  - button "checklist_rtl Gift Lists 4":
+    - generic: checklist_rtl
+    - generic: Gift Lists
+    - generic: "4"
+  - button "group People & Occasions" [active]:
+    - generic: group
+    - generic: People & Occasions
+  - button "bookmark Wishlist":
+    - generic: bookmark
+    - generic: Wishlist
+  - button "person Profile":
+    - generic: person
+    - generic: Profile
+  - button "search":
+    - generic: search
+  - button "chat":
+    - generic: chat
+  - button "notifications":
+    - generic: notifications
+  - button "auto_awesome Find Gifts":
+    - generic: auto_awesome
+    - generic: Find Gifts
+  - button "G Guest expand_more":
+    - generic: G
+    - generic: Guest
+    - generic: expand_more
+- main:
+  - heading "People & Occasions" [level=1]
+  - paragraph: Manage recipient profiles, passions, and upcoming milestones. All recommendations update dynamically.
+  - button "person_add Add Person":
+    - generic: person_add
+    - generic: Add Person
+  - generic: group
+  - generic: People Tracked
+  - generic: 5 Profiles
+  - generic: event_upcoming
+  - generic: Next Milestone
+  - generic: Demo Friend (6d)
+  - generic: local_shipping
+  - generic: Delivery Lead
+  - text: 4-Day Buffer Active
+  - generic: checklist
+  - generic: Gift List Items
+  - generic: 4 Items
+  - generic: search
+  - textbox "Search by name, occasion, city, or interest..."
+  - button "All"
+  - button "Family"
+  - button "Partner"
+  - button "Friends"
+  - button "Work"
+  - combobox:
+    - 'option "Sort: Closest Date" [selected]'
+    - 'option "Sort: Name (A-Z)"'
+    - 'option "Sort: Highest Budget"'
+  - generic: D
+  - heading "Demo Friend" [level=2]
+  - generic: friend
+  - generic: location_on
+  - generic: Mumbai
+  - button "edit":
+    - generic: edit
+  - button "delete":
+    - generic: delete
+  - generic: celebration
+  - generic: Demo Friend's Celebration
+  - paragraph: 6 September 2026
+  - generic: 6 days left
+  - generic: "#Coffee"
+  - generic: checklist_rtl
+  - generic: 1 item in gift list
+  - button "View List"
+  - generic: Target Budget
+  - generic: ₹500 – ₹1,000
+  - button "tune Wizard":
+    - generic: tune
+    - generic: Wizard
+  - button "Find Gifts arrow_forward":
+    - generic: Find Gifts
+    - generic: arrow_forward
+  - generic: R
+  - heading "Rahul" [level=2]
+  - generic: sibling
+  - generic: location_on
+  - generic: Bangalore
+  - button "edit":
+    - generic: edit
+  - button "delete":
+    - generic: delete
+  - generic: celebration
+  - generic: Rahul's Birthday
+  - paragraph: 4 September, 2026
+  - generic: 13 days left
+  - generic: "#Technology"
+  - generic: "#Coffee"
+  - generic: "#Gaming"
+  - generic: checklist_rtl
+  - generic: 1 item in gift list
+  - button "View List"
+  - generic: Target Budget
+  - generic: ₹5,000 – ₹15,000
+  - button "tune Wizard":
+    - generic: tune
+    - generic: Wizard
+  - button "Find Gifts arrow_forward":
+    - generic: Find Gifts
+    - generic: arrow_forward
+  - generic: A
+  - heading "Aarav" [level=2]
+  - generic: colleague
+  - generic: location_on
+  - generic: Delhi
+  - button "edit":
+    - generic: edit
+  - button "delete":
+    - generic: delete
+  - generic: celebration
+  - generic: Work Promotion
+  - paragraph: 28 September, 2026
+  - generic: 37 days left
+  - generic: "#Technology"
+  - generic: "#Coffee"
+  - generic: "#Books"
+  - generic: Target Budget
+  - generic: ₹1,000 – ₹2,500
+  - button "tune Wizard":
+    - generic: tune
+    - generic: Wizard
+  - button "Find Gifts arrow_forward":
+    - generic: Find Gifts
+    - generic: arrow_forward
+  - generic: S
+  - heading "Sarah" [level=2]
+  - generic: partner
+  - generic: location_on
+  - generic: Mumbai
+  - button "edit":
+    - generic: edit
+  - button "delete":
+    - generic: delete
+  - generic: celebration
+  - generic: Sarah's 30th Birthday
+  - paragraph: 14 November, 2026
+  - generic: 84 days left
+  - generic: "#Books"
+  - generic: "#Art"
+  - generic: "#Fashion"
+  - generic: "#Travel"
+  - generic: Target Budget
+  - generic: ₹2,500 – ₹5,000
+  - button "tune Wizard":
+    - generic: tune
+    - generic: Wizard
+  - button "Find Gifts arrow_forward":
+    - generic: Find Gifts
+    - generic: arrow_forward
+  - generic: M
+  - heading "Mom" [level=2]
+  - generic: parent
+  - generic: location_on
+  - generic: Mumbai
+  - button "edit":
+    - generic: edit
+  - button "delete":
+    - generic: delete
+  - generic: celebration
+  - generic: Mom's Birthday
+  - paragraph: 18 November, 2026
+  - generic: 88 days left
+  - generic: "#Home & Garden"
+  - generic: "#Art"
+  - generic: "#Coffee"
+  - generic: "#Food"
+  - generic: checklist_rtl
+  - generic: 2 items in gift list
+  - button "View List"
+  - generic: Target Budget
+  - generic: ₹2,500 – ₹5,000
+  - button "tune Wizard":
+    - generic: tune
+    - generic: Wizard
+  - button "Find Gifts arrow_forward":
+    - generic: Find Gifts
+    - generic: arrow_forward

@@ -1,0 +1,3 @@
+# S06 Postwork — Release v1.1 and Prepare Attempts v1.0
+
+**45–60 minutes; before S07.** Resolve observed issue or justify no-change; add second normal and safe-failure case; rerun; freeze v1.1. Complete accessibility, disclosure, provenance, secret/PII, URL/replay checklist. Record 90-second operator walkthrough. Submit three role-card input packs for S07 (expected, edge, boundary); LMS may mutate. Complete delayed quiz Form A (`S06-R-01/02/03`), Form B only after feedback. Retention: from memory write Form Follows Work decision rule and three tests, then correct. External users are optional, consented, labelled, and never grade advantage.

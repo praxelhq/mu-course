@@ -1,0 +1,71 @@
+- banner:
+  - textbox "Search active negotiations..."
+  - button "Series B Partnership - Vertex Ventures":
+    - generic: Series B Partnership - Vertex Ventures
+  - button "View History"
+  - button "New Negotiation":
+    - generic: New Negotiation
+  - button "Alex Mercer Alex Mercer":
+    - img "Alex Mercer"
+    - generic: Alex Mercer
+- complementary:
+  - generic: "N"
+  - generic: Negotia AI
+  - paragraph: COPILOT NAVIGATION
+  - navigation:
+    - button "Dashboard":
+      - generic: Dashboard
+    - button "Active Deals":
+      - generic: Active Deals
+    - button "AI Intelligence AI":
+      - generic: AI Intelligence
+      - generic: AI
+    - button "Counter Simulator":
+      - generic: Counter Simulator
+    - button "Reply Generator":
+      - generic: Reply Generator
+    - button "Executive Reports":
+      - generic: Executive Reports
+    - button "Settings":
+      - generic: Settings
+  - text: Active Leverage
+  - generic: 72/100
+  - paragraph: Series B Partnership - Vertex Ventures
+  - paragraph: Vs Vertex Ventures
+  - generic: AM
+  - paragraph: Alex Mercer
+  - paragraph: Aura SaaS Tech
+- main:
+  - heading "AI Counteroffer Simulator" [level=1]
+  - paragraph: Model scenario offers, payment term trade-offs, and predict opponent acceptance probability.
+  - generic: Select Deal Context
+  - combobox:
+    - option "Series B Partnership - Vertex Ventures (Vertex Ventures)" [selected]
+    - option "CloudScale Infra - 15% Price Increase (CloudScale Infrastructure Inc.)"
+    - option "Senior Engineer Salary Hike - ₹12 LPA to ₹15 LPA (AcroTech Solutions Pvt Ltd)"
+    - option "Senior Web Dev Retainer - Fintech App (Nexus Pay Inc.)"
+  - heading "Simulation Parameters" [level=2]
+  - generic: Proposed Counter Offer Amount / Valuation
+  - textbox "e.g. $160,000 / yr or $25M at 25% equity": $25M for 25% equity ($100M post-money valuation) + Board Observer seat
+  - generic: Proposed Payment Terms
+  - button "NET 15"
+  - button "NET 30"
+  - button "NET 60"
+  - button "NET 90"
+  - button "Immediate"
+  - generic: Proposed Non-Monetary Concessions
+  - textbox "Add concession e.g. Net 60 terms, extra support..."
+  - button:
+  - generic: Offer 2-year contract price lock
+  - button:
+  - generic: Add priority SLA response support
+  - button:
+  - button "Simulating Opponent Response..." [disabled]:
+    - generic: Simulating Opponent Response...
+  - heading "Run Counteroffer Scenario" [level=3]
+  - paragraph: Configure your proposed offer amount, payment terms, and concessions on the left to simulate opponent reactions.
+- contentinfo:
+  - generic: "N"
+  - generic: Negotia AI Copilot
+  - generic: © 2026 Negotia AI Inc. All rights reserved.
+  - text: Enterprise Encryption & Privacy Safeguards

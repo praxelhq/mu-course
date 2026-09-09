@@ -1,0 +1,191 @@
+- generic: "> INIT SYS..."
+- generic: "> LOADING KERNEL..."
+- generic: "> MOUNT VFS..."
+- generic: "> CHK TRACK DATA: SPA-FRANCORCHAMPS..."
+- generic: "> 19 CORNERS INDEXED..."
+- generic: "> READY."
+- heading "Track Translator" [level=1]
+- paragraph: "> SAME TRACK. YOUR EXCUSES CHANGED."
+- paragraph: Corner-by-corner driving intelligence — live from your inputs.
+- button "[ ENTER ]"
+- paragraph: TRACK // SPA-FRANCORCHAMPS LENGTH // 7.004 KM CORNERS // 19
+- banner:
+  - generic: ">_"
+  - heading "Track Translator" [level=1]
+  - navigation:
+    - button "Setup"
+    - button "HUD"
+    - button "Map"
+    - button "Corner Guide"
+    - button "Debrief"
+  - generic: TELEMETRY LINK OK
+- main:
+  - generic: LAP DEBRIEF
+  - heading "Lap 1 Debrief — Spa-Francorchamps" [level=2]
+  - generic: Lap Time
+  - text: 2:45.415
+  - generic: Sector 1
+  - text: 1:36.358
+  - generic: Sector 2
+  - text: 0:06.888
+  - generic: Sector 3
+  - text: 1:02.169
+  - generic: Net Delta
+  - text: "+29.405"
+  - generic: Tire Wear At Finish
+  - text: 89%
+  - generic: Damage Summary
+  - text: FRONT WING (MINOR)
+  - heading "> Corner-By-Corner Log" [level=3]
+  - table:
+    - rowgroup:
+      - row "# Corner Target Apex Your Speed Delta Verdict":
+        - columnheader "#"
+        - columnheader "Corner"
+        - columnheader "Target Apex"
+        - columnheader "Your Speed"
+        - columnheader "Delta"
+        - columnheader "Verdict"
+    - rowgroup:
+      - row "1 T1 LA SOURCE 58 KM/H 60 KM/H +2 KM/H GOOD":
+        - cell "1"
+        - cell "T1 LA SOURCE"
+        - cell "58 KM/H"
+        - cell "60 KM/H"
+        - cell "+2 KM/H"
+        - cell "GOOD"
+      - row "2 T2 EAU ROUGE 220 KM/H 60 KM/H -160 KM/H TOO CAUTIOUS":
+        - cell "2"
+        - cell "T2 EAU ROUGE"
+        - cell "220 KM/H"
+        - cell "60 KM/H"
+        - cell "-160 KM/H"
+        - cell "TOO CAUTIOUS"
+      - row "3 T3 RAIDILLON 228 KM/H 60 KM/H -168 KM/H TOO CAUTIOUS":
+        - cell "3"
+        - cell "T3 RAIDILLON"
+        - cell "228 KM/H"
+        - cell "60 KM/H"
+        - cell "-168 KM/H"
+        - cell "TOO CAUTIOUS"
+      - row "4 T4 RAIDILLON EXIT 242 KM/H 60 KM/H -182 KM/H TOO CAUTIOUS":
+        - cell "4"
+        - cell "T4 RAIDILLON EXIT"
+        - cell "242 KM/H"
+        - cell "60 KM/H"
+        - cell "-182 KM/H"
+        - cell "TOO CAUTIOUS"
+      - row "5 T5 LES COMBES 138 KM/H 60 KM/H -78 KM/H TOO CAUTIOUS":
+        - cell "5"
+        - cell "T5 LES COMBES"
+        - cell "138 KM/H"
+        - cell "60 KM/H"
+        - cell "-78 KM/H"
+        - cell "TOO CAUTIOUS"
+      - row "6 T6 LES COMBES (MID) 145 KM/H 60 KM/H -85 KM/H TOO CAUTIOUS":
+        - cell "6"
+        - cell "T6 LES COMBES (MID)"
+        - cell "145 KM/H"
+        - cell "60 KM/H"
+        - cell "-85 KM/H"
+        - cell "TOO CAUTIOUS"
+      - row "7 T7 MALMEDY 118 KM/H 60 KM/H -58 KM/H TOO CAUTIOUS":
+        - cell "7"
+        - cell "T7 MALMEDY"
+        - cell "118 KM/H"
+        - cell "60 KM/H"
+        - cell "-58 KM/H"
+        - cell "TOO CAUTIOUS"
+      - row "8 T8 BRUXELLES 92 KM/H 60 KM/H -32 KM/H TOO CAUTIOUS":
+        - cell "8"
+        - cell "T8 BRUXELLES"
+        - cell "92 KM/H"
+        - cell "60 KM/H"
+        - cell "-32 KM/H"
+        - cell "TOO CAUTIOUS"
+      - row "9 T9 JACKY ICKX 171 KM/H 60 KM/H -111 KM/H TOO CAUTIOUS":
+        - cell "9"
+        - cell "T9 JACKY ICKX"
+        - cell "171 KM/H"
+        - cell "60 KM/H"
+        - cell "-111 KM/H"
+        - cell "TOO CAUTIOUS"
+      - row "10 T10 POUHON (ENTRY) 197 KM/H 60 KM/H -137 KM/H TOO CAUTIOUS":
+        - cell "10"
+        - cell "T10 POUHON (ENTRY)"
+        - cell "197 KM/H"
+        - cell "60 KM/H"
+        - cell "-137 KM/H"
+        - cell "TOO CAUTIOUS"
+      - row "11 T11 POUHON (EXIT) 200 KM/H 60 KM/H -140 KM/H TOO CAUTIOUS":
+        - cell "11"
+        - cell "T11 POUHON (EXIT)"
+        - cell "200 KM/H"
+        - cell "60 KM/H"
+        - cell "-140 KM/H"
+        - cell "TOO CAUTIOUS"
+      - row "12 T12 FAGNES (ENTRY) 161 KM/H 60 KM/H -101 KM/H TOO CAUTIOUS":
+        - cell "12"
+        - cell "T12 FAGNES (ENTRY)"
+        - cell "161 KM/H"
+        - cell "60 KM/H"
+        - cell "-101 KM/H"
+        - cell "TOO CAUTIOUS"
+      - row "13 T13 FAGNES (EXIT) 167 KM/H 60 KM/H -107 KM/H TOO CAUTIOUS":
+        - cell "13"
+        - cell "T13 FAGNES (EXIT)"
+        - cell "167 KM/H"
+        - cell "60 KM/H"
+        - cell "-107 KM/H"
+        - cell "TOO CAUTIOUS"
+      - row "14 T14 CAMPUS 131 KM/H 60 KM/H -71 KM/H TOO CAUTIOUS":
+        - cell "14"
+        - cell "T14 CAMPUS"
+        - cell "131 KM/H"
+        - cell "60 KM/H"
+        - cell "-71 KM/H"
+        - cell "TOO CAUTIOUS"
+      - row "15 T15 PAUL FRERE 190 KM/H 60 KM/H -130 KM/H TOO CAUTIOUS":
+        - cell "15"
+        - cell "T15 PAUL FRERE"
+        - cell "190 KM/H"
+        - cell "60 KM/H"
+        - cell "-130 KM/H"
+        - cell "TOO CAUTIOUS"
+      - row "16 T16 BLANCHIMONT (ENTRY) 275 KM/H 60 KM/H -215 KM/H TOO CAUTIOUS":
+        - cell "16"
+        - cell "T16 BLANCHIMONT (ENTRY)"
+        - cell "275 KM/H"
+        - cell "60 KM/H"
+        - cell "-215 KM/H"
+        - cell "TOO CAUTIOUS"
+      - row "17 T17 BLANCHIMONT (EXIT) 284 KM/H 60 KM/H -224 KM/H TOO CAUTIOUS":
+        - cell "17"
+        - cell "T17 BLANCHIMONT (EXIT)"
+        - cell "284 KM/H"
+        - cell "60 KM/H"
+        - cell "-224 KM/H"
+        - cell "TOO CAUTIOUS"
+      - row "18 T18 BUS STOP (ENTRY) 81 KM/H 60 KM/H -21 KM/H TOO CAUTIOUS":
+        - cell "18"
+        - cell "T18 BUS STOP (ENTRY)"
+        - cell "81 KM/H"
+        - cell "60 KM/H"
+        - cell "-21 KM/H"
+        - cell "TOO CAUTIOUS"
+      - row "19 T19 BUS STOP (EXIT) 111 KM/H 60 KM/H -51 KM/H TOO CAUTIOUS":
+        - cell "19"
+        - cell "T19 BUS STOP (EXIT)"
+        - cell "111 KM/H"
+        - cell "60 KM/H"
+        - cell "-51 KM/H"
+        - cell "TOO CAUTIOUS"
+  - button "[ RUN ANOTHER LAP ]"
+  - button "[ RESTART SESSION ]"
+- contentinfo:
+  - generic: TRACK // SPA-FRANCORCHAMPS
+  - generic: LENGTH // 7.004 KM
+  - generic: SESSION // LAP COMPLETE
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

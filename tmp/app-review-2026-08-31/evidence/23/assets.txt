@@ -1,0 +1,114 @@
+- region "Notifications (F8)":
+  - list
+- region "Notifications alt+T"
+- complementary:
+  - generic: InfluencerOS
+  - navigation:
+    - link "Dashboard":
+      - /url: /
+      - generic: Dashboard
+    - link "Campaigns":
+      - /url: /campaigns
+      - generic: Campaigns
+    - link "AI Campaign Planner":
+      - /url: /ai-planner
+      - generic: AI Campaign Planner
+    - link "Creators":
+      - /url: /creators
+      - generic: Creators
+    - link "Content Approval":
+      - /url: /content-approval
+      - generic: Content Approval
+    - link "Performance & ROI":
+      - /url: /performance
+      - generic: Performance & ROI
+    - link "Payments & Ledger":
+      - /url: /payments
+      - generic: Payments & Ledger
+    - link "Assets & Logistics" [active]:
+      - /url: /assets
+      - generic: Assets & Logistics
+    - link "Settings":
+      - /url: /settings
+      - generic: Settings
+  - button "Collapse":
+    - generic: Collapse
+- banner:
+  - textbox "Search campaigns, creators, content..."
+  - button "3":
+    - generic: "3"
+  - button "M MamaEarth":
+    - generic: M
+    - generic: MamaEarth
+  - button "Arun Kumar Marketing Manager":
+    - paragraph: Arun Kumar
+    - paragraph: Marketing Manager
+- main:
+  - heading "Assets & Logistics" [level=1]
+  - paragraph: Track products, tickets, and permissions sent to creators
+  - button "Add Asset":
+    - text: Add Asset
+  - generic: Products Sent
+  - paragraph: "24"
+  - generic: Delivered
+  - paragraph: "18"
+  - generic: Event Tickets
+  - paragraph: "5"
+  - generic: In Transit
+  - paragraph: "6"
+  - textbox "Search assets..."
+  - combobox:
+    - generic: All Types
+  - combobox:
+    - generic: All Status
+  - table:
+    - rowgroup:
+      - row "Type Description Creator Campaign Status Sent Date Tracking":
+        - columnheader "Type"
+        - columnheader "Description"
+        - columnheader "Creator"
+        - columnheader "Campaign"
+        - columnheader "Status"
+        - columnheader "Sent Date"
+        - columnheader "Tracking"
+    - rowgroup:
+      - row "Product Summer Skincare Kit (5 products) Priya Sharma Summer Skincare Launch Delivered 2024-01-10 DTDC123456...":
+        - cell "Product":
+          - generic: Product
+        - cell "Summer Skincare Kit (5 products)"
+        - cell "Priya Sharma"
+        - cell "Summer Skincare Launch"
+        - cell "Delivered":
+          - generic: Delivered
+        - cell "2024-01-10"
+        - cell "DTDC123456...":
+          - button "DTDC123456...":
+            - text: DTDC123456...
+      - row "Product Vitamin C Serum + Moisturizer Dr. Kavita Singh Vitamin C Serum Push Sent 2024-01-20 BLUEDART98...":
+        - cell "Product":
+          - generic: Product
+        - cell "Vitamin C Serum + Moisturizer"
+        - cell "Dr. Kavita Singh"
+        - cell "Vitamin C Serum Push"
+        - cell "Sent":
+          - generic: Sent
+        - cell "2024-01-20"
+        - cell "BLUEDART98...":
+          - button "BLUEDART98...":
+            - text: BLUEDART98...
+      - row "Event Ticket Brand Launch Event - Mumbai Sneha Reddy Summer Skincare Launch Pending 2024-01-25 —":
+        - cell "Event Ticket":
+          - generic: Event Ticket
+        - cell "Brand Launch Event - Mumbai"
+        - cell "Sneha Reddy"
+        - cell "Summer Skincare Launch"
+        - cell "Pending":
+          - generic: Pending
+        - cell "2024-01-25"
+        - cell "—"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_05t71mwv1r9qb9tdwk5a0m9t2d?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: ₹0

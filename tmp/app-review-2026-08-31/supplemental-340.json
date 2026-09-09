@@ -1,0 +1,13 @@
+{
+  "sourceRow": 340,
+  "name": "Bhagyam Maheshwary",
+  "url": "https://fridge-flow-app.lovable.app",
+  "appName": "FridgeFlow",
+  "visual": 7.5,
+  "functionality": 8,
+  "overall": 7.5,
+  "status": "Reviewed",
+  "feedback": "The urgency ordering and compact summary make the food-waste problem easy to act on, and adding and consuming an item updates the correct totals across reloads. Add a visible consumption history and an undo option so accidental taps can be corrected and users can review what they saved.",
+  "tested": "Second pass resolved native expiry entry with keyboard input. Added QA Demo Milk expiring1Sep2026: items8→9 and expiringsoon2→3; reload retained item. Marked only that synthetic item consumed: totals returned8/2 and consumedthisweek0→1, retained after reload.",
+  "limitations": "Earlier date issue was browser tooling, not an app defect. Existing foods untouched; notifications, across-week aggregation and deletion recovery not verified. No consumption history/undo visible in reviewed single-dashboard flow."
+}

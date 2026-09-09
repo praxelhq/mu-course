@@ -1,0 +1,44 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6rjbkh0ryp9yrbp1exkex5ff1p?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- complementary:
+  - link "L LeakLens Find where your business is leaking money.":
+    - /url: /
+    - generic: L
+    - generic: LeakLens
+    - paragraph: Find where your business is leaking money.
+  - navigation:
+    - link "Overview":
+      - /url: /dashboard
+      - text: Overview
+    - link "Leak Map":
+      - /url: /leak-map
+      - text: Leak Map
+    - link "Customers":
+      - /url: /customers
+      - text: Customers
+    - link "Recovery Queue":
+      - /url: /recovery-queue
+      - text: Recovery Queue
+    - link "What-If Simulator":
+      - /url: /simulator
+      - text: What-If Simulator
+    - link "Connect Data":
+      - /url: /connect
+      - text: Connect Data
+  - paragraph: Current Data
+  - paragraph: IronCore Fitness Demo
+  - link "Switch Data":
+    - /url: /connect
+- main:
+  - button "Back":
+    - text: Back
+  - heading "Paste Spreadsheet Data" [level=1]
+  - paragraph: Copy rows directly from Excel or Google Sheets and paste them here.
+  - paragraph: Example
+  - generic: Customer Name | Lead Stage | Potential Value | Last Contact Date Aarav Sharma | Quote Sent | 18000 | 2026-08-18
+  - textbox "Paste spreadsheet rows here..."
+  - button "Continue" [disabled]:
+    - text: Continue

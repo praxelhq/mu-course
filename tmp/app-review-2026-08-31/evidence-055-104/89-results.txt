@@ -1,0 +1,50 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3epfnctk5e8rtbn995rzct9avj?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- navigation:
+  - link "FindTune":
+    - /url: /
+  - link "Home":
+    - /url: /
+  - link "Search":
+    - /url: /search
+  - link "History":
+    - /url: /history
+  - link "Integrations":
+    - /url: /integrations
+  - link "Settings":
+    - /url: /settings
+  - generic: search
+  - textbox "Search YouTube Music":
+    - /placeholder: Search...
+  - button "Notifications":
+    - generic: notifications
+  - button "Account":
+    - generic: account_circle
+- main:
+  - heading "Search YouTube Music" [level=1]
+  - paragraph: Live results pulled straight from YouTube Music.
+  - generic: search
+  - textbox "Search query":
+    - /placeholder: Search a song, artist or album...
+    - text: Yellow Coldplay
+  - combobox "Content type":
+    - option "songs" [selected]
+    - option "videos"
+    - option "albums"
+    - option "artists"
+    - option "playlists"
+    - option "podcasts"
+    - option "profiles"
+  - button "Searching..." [disabled]
+  - paragraph: Listening to YouTube Music for “Yellow Coldplay” — this can take up to a minute.
+- contentinfo:
+  - generic: © 2024 FindTune. Midnight Discovery.
+  - link "Privacy Policy":
+    - /url: "#"
+  - link "Terms of Service":
+    - /url: "#"
+  - link "Help Center":
+    - /url: "#"

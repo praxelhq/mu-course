@@ -1,0 +1,70 @@
+- banner:
+  - button "Back to Lobby":
+  - generic: CHAOS SURVIVORS
+  - generic: / ANALYTICS
+  - button "SYNC ACTIVE":
+    - generic: SYNC ACTIVE
+  - 'button "ROOM #XJ82"':
+    - generic: ROOM
+    - generic: "#XJ82"
+  - button "View notifications":
+    - generic: "6"
+- main:
+  - generic: TELEMETRY // REAL-TIME ANALYTICS
+  - generic: LIVE
+  - heading "SURVIVOR PERFORMANCE METRICS" [level=1]
+  - paragraph: "Profile: Mansa B. • CHAOS VETERAN II"
+  - button "SYNC CLOUD":
+    - generic: SYNC CLOUD
+  - button "METRICS OVERVIEW"
+  - button "ARCHETYPE RADAR"
+  - button "MATCH TELEMETRY LOG"
+  - generic: SURVIVAL RATE
+  - generic: 82.8%
+  - generic: ↑ +4.2% this week
+  - generic: GAMES PLAYED
+  - generic: "28"
+  - generic: 24 Escaped (86%)
+  - generic: REACTION SPEED
+  - generic: 4.8s
+  - generic: Top 10% reaction percentile
+  - generic: PROGRESSION
+  - generic: LVL 14
+  - generic: 4300 / 5000 XP
+  - heading "TEAM SYNERGY & XP PERFORMANCE" [level=3]
+  - paragraph: Rolling 7-match timeline
+  - generic: TELEMETRY
+  - application:
+    - generic: R1
+    - generic: R2
+    - generic: R3
+    - generic: R4
+    - generic: R5
+    - generic: R6
+    - generic: R7
+    - generic: "0"
+    - generic: "25"
+    - generic: "50"
+    - generic: "75"
+    - generic: "100"
+  - heading "DECISION ARCHETYPES" [level=3]
+  - paragraph: Distribution across all scenarios
+  - application:
+    - generic: "0"
+    - generic: "3"
+    - generic: "6"
+    - generic: "9"
+    - generic: "12"
+    - generic: Prankster
+    - generic: Chaos
+    - generic: Runner
+    - generic: Saint
+    - generic: Parent
+  - generic: Cloud Persistence Engine
+  - generic: "Last real-time backup: 01:44:22"
+  - button "BACKUP NOW"
+- contentinfo:
+  - generic: ENGINE v2.4.1
+  - generic: Telemetry Normal
+  - generic: "CHAOS SURVIVORS • HIGH DENSITY INTERFACE • ROOM #XJ82"
+- generic: Prankster

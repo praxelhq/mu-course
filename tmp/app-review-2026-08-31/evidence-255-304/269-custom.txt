@@ -1,0 +1,18 @@
+- main:
+  - button "← All courses"
+  - heading "Create Your Own Quiz" [level=1]
+  - paragraph: Paste your notes, a chapter or an article — we'll turn it into 10 mixed-difficulty questions.
+  - text: Subject name
+  - textbox "Subject name":
+    - /placeholder: e.g. Operations Management — Lean Basics
+  - generic: Source material
+  - textbox "Source material":
+    - /placeholder: Paste your notes or article text here (at least a few paragraphs)…
+  - paragraph: 0 characters
+  - button "Generate Quiz" [disabled]:
+    - text: Generate Quiz
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3emy74pebk9c4scxsw6xmv6sy6?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

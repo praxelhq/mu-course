@@ -1,0 +1,141 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_34n3kgmmww81av83m7d6s7rbge?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- complementary:
+  - link "HireLens":
+    - /url: /
+    - generic: HireLens
+  - navigation:
+    - link "Job Setup":
+      - /url: /
+      - text: Job Setup
+    - link "Candidates":
+      - /url: /candidates
+      - text: Candidates
+    - link "Shortlist":
+      - /url: /shortlist
+      - text: Shortlist
+  - paragraph: AI hiring intelligence. Signals are advisory — always review candidates yourself.
+- main:
+  - heading "Candidates" [level=1]
+  - paragraph: Scoring against Senior Backend Engineer — 8 must-haves, 6 good-to-haves.
+  - heading "Add Candidate" [level=2]
+  - text: Name
+  - textbox "Name": Synthetic Reviewer
+  - text: Email
+  - textbox "Email"
+  - text: Resume text
+  - textbox "Resume text":
+    - /placeholder: Paste the candidate's resume text here…
+    - text: Fictional review test. Backend engineer with seven years of Go and PostgreSQL experience. Built Kafka event pipelines, deployed services on Kubernetes, mentored two engineers and maintained production monitoring. No payments industry experience.
+  - button "Analysing resume…" [disabled]:
+    - text: Analysing resume…
+  - article:
+    - generic: "91"
+    - generic: overall
+    - heading "Priya Raghavan" [level=3]
+    - generic: High Match
+    - paragraph: priya.raghavan@example.com
+    - button "Remove Priya Raghavan":
+    - generic: Relevance
+    - generic: "94"
+    - paragraph: Direct match on Go, PostgreSQL, Kafka and Kubernetes with payments-scale ownership across the highest weighted requirements.
+    - generic: Recency
+    - generic: "92"
+    - paragraph: Current role uses the full stack required; no stale skill claims.
+    - generic: Truth
+    - generic: "88"
+    - paragraph: Dates are sequential and scope claims are supported by concrete throughput and team details.
+    - generic: Consistency
+    - generic: "90"
+    - paragraph: Clear progression from senior to staff within the same domain.
+    - heading "Matched requirements" [level=4]
+    - list:
+      - text: 6+ years backend engineering
+      - text: Go or Java expertise
+      - text: PostgreSQL at scale
+      - text: Kafka / event-driven design
+      - text: Kubernetes in production
+      - text: Mentoring engineers
+      - text: Fintech or payments domain
+      - text: Terraform / IaC
+    - heading "Missing requirements" [level=4]
+    - list:
+      - text: Open-source contributions
+      - text: Postgraduate study
+    - heading "Flags" [level=4]:
+      - text: Flags
+    - list:
+      - listitem: • Throughput figures self-reported and unverified.
+  - article:
+    - generic: "68"
+    - generic: overall
+    - heading "Daniel Okafor" [level=3]
+    - generic: Worth Reviewing
+    - paragraph: daniel.okafor@example.com
+    - button "Remove Daniel Okafor":
+    - generic: Relevance
+    - generic: "70"
+    - paragraph: Strong Java foundation but limited distributed systems and Kafka depth against heavy weights.
+    - generic: Recency
+    - generic: "78"
+    - paragraph: Skills are current, though Kubernetes work is peripheral rather than production ownership.
+    - generic: Truth
+    - generic: "72"
+    - paragraph: Claims are modest and proportional to the described work; no inflation detected.
+    - generic: Consistency
+    - generic: "66"
+    - paragraph: Two short stints interrupt an otherwise coherent backend track.
+    - heading "Matched requirements" [level=4]
+    - list:
+      - text: Go or Java expertise
+      - text: Docker
+      - text: CI/CD ownership
+      - text: Code review culture
+    - heading "Missing requirements" [level=4]
+    - list:
+      - text: 6+ years backend engineering
+      - text: Kafka / event-driven design
+      - text: PostgreSQL at scale
+      - text: Mentoring engineers
+    - heading "Flags" [level=4]:
+      - text: Flags
+    - list:
+      - listitem: • Kubernetes described as 'exposure' without production ownership.
+  - article:
+    - generic: "44"
+    - generic: overall
+    - heading "Marcus Feld" [level=3]
+    - generic: Weak Fit
+    - paragraph: marcus.feld@example.com
+    - button "Remove Marcus Feld":
+    - generic: Relevance
+    - generic: "52"
+    - paragraph: Broad tool list but little evidence of hands-on backend delivery at the required depth.
+    - generic: Recency
+    - generic: "58"
+    - paragraph: Recent work is management-oriented rather than production engineering.
+    - generic: Truth
+    - generic: "32"
+    - paragraph: Jump from junior developer to Head of Engineering in under a year, plus overlapping employment dates and skills with no supporting projects.
+    - generic: Consistency
+    - generic: "38"
+    - paragraph: Narrative shifts abruptly between IC, consulting and leadership without connective detail.
+    - heading "Matched requirements" [level=4]
+    - list:
+      - text: Kubernetes in production
+      - text: Terraform / IaC
+    - heading "Missing requirements" [level=4]
+    - list:
+      - text: 6+ years backend engineering
+      - text: PostgreSQL at scale
+      - text: Distributed systems design
+      - text: Production observability ownership
+    - heading "Flags" [level=4]:
+      - text: Flags
+    - list:
+      - listitem: • Overlapping employment dates across two full-time roles.
+      - listitem: • Title escalation inconsistent with described responsibilities.
+      - listitem: • Long skill list with no supporting project evidence.

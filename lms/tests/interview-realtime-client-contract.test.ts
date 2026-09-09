@@ -40,7 +40,8 @@ describe("no-interviewer watchdog", () => {
   // Three ways an interview dies with the student still sitting there, and the
   // old check could see only one of them.
   it("watches presence, not just whose turn it was", () => {
-    expect(meetingView).toContain("room?.remoteParticipants?.size");
+    // Matched on the interviewer's identity, not "any remote participant".
+    expect(meetingView).toContain("p.identity === AGENT_IDENTITY");
     expect(meetingView).toContain('onReconnect("interviewer-left")');
   });
 

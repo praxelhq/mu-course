@@ -1,0 +1,46 @@
+- banner:
+  - button "Go back":
+    - generic: arrow_back
+  - generic: Step 3 of 6
+- main:
+  - heading "When do you usually smoke?" [level=1]
+  - paragraph: Select everything that applies. This shapes your coaching.
+  - button "😰 Stress":
+    - generic: 😰
+    - generic: Stress
+  - button "🍺 Alcohol":
+    - generic: 🍺
+    - generic: Alcohol
+  - button "🍽️ After food":
+    - generic: 🍽️
+    - generic: After food
+  - button "👥 Friends smoking":
+    - generic: 👥
+    - generic: Friends smoking
+  - button "😴 Boredom":
+    - generic: 😴
+    - generic: Boredom
+  - button "🔁 Habit":
+    - generic: 🔁
+    - generic: Habit
+  - button "💼 Work":
+    - generic: 💼
+    - generic: Work
+  - button "🌅 Morning":
+    - generic: 🌅
+    - generic: Morning
+  - button "🚗 Driving":
+    - generic: 🚗
+    - generic: Driving
+  - button "🌙 Before sleeping":
+    - generic: 🌙
+    - generic: Before sleeping
+- button "Continue" [disabled]:
+  - text: Continue
+  - generic: arrow_forward
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_19mhcg6jxz8s9s6ch802n4v9n3?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

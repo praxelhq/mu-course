@@ -1,0 +1,34 @@
+- link "Claude":
+  - /url: https://claude.ai
+  - img "Claude"
+- generic: Content is user-generated and unverified.
+- radiogroup "Artifact view":
+  - radio "Preview" [checked]:
+    - generic: 
+  - radio [checked]
+  - radio "Code":
+    - generic: 
+  - radio
+- button "Copy link":
+  - generic: 
+- button "Report":
+  - generic: 
+- button "Copy":
+  - text: Copy
+- link "Learn about artifacts":
+  - /url: https://support.claude.com/en/articles/9487310-what-are-artifacts-and-how-do-i-use-them
+- iframe
+- heading "Cookie settings" [level=3]
+- paragraph:
+  - text: We use cookies to deliver and improve our services, analyze site usage, and if you agree, to customize or personalize your experience and market our services to you. You can read our Cookie Policy
+  - link "here":
+    - /url: https://www.anthropic.com/legal/cookies
+  - text: .
+- button "Customize Cookie Settings":
+  - generic: Customize Cookie Settings
+- button "Reject All Cookies":
+  - generic: Reject All Cookies
+- button "Accept All Cookies":
+  - generic: Accept All Cookies
+- status
+- region "Notifications"

@@ -118,6 +118,14 @@ MAX_INTERVIEW_SECONDS = int(os.environ.get("INTERVIEW_MAX_SECONDS", 20 * 60))
 # room must not run into the normal budget-completion path and grade a fragment.
 REJOIN_GRACE_SECONDS = max(1, int(os.environ.get("INTERVIEW_REJOIN_GRACE_SECONDS", 120)))
 QUESTION_BUDGET = 20  # hard ceiling across the five segments (runaway guard)
+# Marks a chat item that came from the LMS transcript rather than from this
+# session's microphone. Restored items are already persisted; re-posting them
+# would duplicate the transcript, inflate question_count and trip the runaway
+# guard. livekit-agents 1.7.1 only emits conversation_item_added from live
+# speech and generation paths, never for a chat_ctx supplied at construction —
+# but "the SDK does not currently do that" is not a guarantee worth a student's
+# interview, so the items carry a marker and the handler drops them.
+RESTORED_ITEM_ID_PREFIX = "lms-restored-"
 # A resumed interview restarts the per-session budget, so the per-session clock
 # alone cannot bound a student who reconnects repeatedly. This is the wall-clock
 # ceiling measured from the interview's own createdAt, and it is the only clock
@@ -245,8 +253,10 @@ def restore_session_state(transcript: "list[dict]"):
         return None, 0, []
 
     chat_ctx = ChatContext.empty()
-    for role, text in messages:
-        chat_ctx.add_message(role=role, content=text)
+    for index, (role, text) in enumerate(messages):
+        chat_ctx.add_message(
+            role=role, content=text, id=f"{RESTORED_ITEM_ID_PREFIX}{index}"
+        )
     return chat_ctx, question_count, agent_utterances
 
 
@@ -1183,6 +1193,10 @@ async def entrypoint(ctx) -> None:
     )
 
     def on_item_added(ev) -> None:
+        # A restored turn is already in the LMS; posting it again would
+        # duplicate the graded transcript and rewind nothing in our favour.
+        if str(getattr(ev.item, "id", "") or "").startswith(RESTORED_ITEM_ID_PREFIX):
+            return
         # conversation_item_added also delivers AgentHandoff, which is not a
         # text message. Treat it as an ignorable control event rather than
         # raising inside LiveKit's event emitter.

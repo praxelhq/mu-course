@@ -1,0 +1,60 @@
+- banner:
+  - link "Your profile":
+    - /url: /profile
+    - img "Your profile"
+  - heading "True or Toxic" [level=1]
+  - link "Weekly challenge":
+    - /url: /challenge
+    - generic: bolt
+- main:
+  - generic: 40 scenarios left
+  - generic: swipe
+  - text: swipe to skip
+  - article:
+    - img "They still have photos of their ex on Instagram."
+    - generic: favorite
+    - text: Dating
+    - generic: SKIP →
+    - generic: ← SKIP
+    - generic: 📱
+    - heading "They still have photos of their ex on Instagram." [level=2]
+    - paragraph: What's the verdict?
+    - button "🟢 Green Flag":
+      - generic: 🟢
+      - generic: Green Flag
+    - button "🔴 Red Flag":
+      - generic: 🔴
+      - generic: Red Flag
+    - button "🤷 Depends":
+      - generic: 🤷
+      - generic: Depends
+- link "Submit a scenario":
+  - /url: /submit
+  - generic: add
+- navigation:
+  - link "Home":
+    - /url: /
+    - generic: home
+    - generic: Home
+  - link "Trending":
+    - /url: /trending
+    - generic: trending_up
+    - generic: Trending
+  - link "Community":
+    - /url: /community
+    - generic: diversity_3
+    - generic: Community
+  - link "Submit":
+    - /url: /submit
+    - generic: add_circle
+    - generic: Submit
+  - link "Profile":
+    - /url: /profile
+    - generic: person
+    - generic: Profile
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_06ze2qmdde81evf54px9n0taq6?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

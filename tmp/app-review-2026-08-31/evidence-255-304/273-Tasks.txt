@@ -1,0 +1,257 @@
+- complementary "Main navigation":
+  - generic: StudyFlow
+  - navigation "Site sections":
+    - link "Dashboard":
+      - /url: "#/dashboard"
+      - text: Dashboard
+    - link "Tasks" [active]:
+      - /url: "#/tasks"
+      - text: Tasks
+    - link "Calendar":
+      - /url: "#/calendar"
+      - text: Calendar
+    - link "Progress":
+      - /url: "#/progress"
+      - text: Progress
+    - link "Subjects":
+      - /url: "#/subjects"
+      - text: Subjects
+    - link "Settings":
+      - /url: "#/settings"
+      - text: Settings
+  - button "New task":
+    - text: New task
+  - paragraph: Studying as
+  - paragraph: Ali
+- banner:
+  - heading "Tasks" [level=1]
+  - paragraph: Monday, 31 August 2026
+  - button "Switch to dark theme":
+  - button "New task":
+    - generic: New task
+- main:
+  - heading "Tasks" [level=1]
+  - paragraph: 18 of 18 shown
+  - link "New task":
+    - /url: "#/tasks/new"
+    - text: New task
+  - textbox "Search tasks":
+    - /placeholder: Search titles and notes
+  - generic: Subject
+  - combobox "Subject":
+    - option "All subjects" [selected]
+    - option "Data Structures"
+    - option "Microeconomics"
+    - option "Organic Chemistry"
+    - option "Business Communication"
+    - option "Linear Algebra"
+    - option "Database Systems"
+  - generic: Type
+  - combobox "Type":
+    - option "All types" [selected]
+    - option "Assignment"
+    - option "Exam"
+    - option "Study Session"
+    - option "Project"
+    - option "Reading"
+    - option "Quiz"
+  - generic: Priority
+  - combobox "Priority":
+    - option "Any priority" [selected]
+    - option "High"
+    - option "Medium"
+    - option "Low"
+  - generic: Status
+  - combobox "Status":
+    - option "All statuses" [selected]
+    - option "Pending"
+    - option "Completed"
+    - option "Overdue"
+  - generic: Sort by
+  - combobox "Sort by":
+    - option "Due date" [selected]
+    - option "Priority"
+    - option "Subject"
+    - option "Recently added"
+  - 'button "Complete Lab report: recrystallisation"':
+  - paragraph: "Lab report: recrystallisation"
+  - generic: Organic Chemistry
+  - generic: Assignment
+  - generic: 2 days overdue
+  - text: 3h
+  - paragraph: Needs the yield calculation and a melting point table.
+  - generic: High
+  - 'button "Edit Lab report: recrystallisation"':
+  - 'button "Delete Lab report: recrystallisation"':
+  - button "Complete Graph traversal problem set":
+  - paragraph: Graph traversal problem set
+  - generic: Data Structures
+  - generic: Assignment
+  - generic: Due today
+  - text: 3h
+  - paragraph: BFS and DFS on weighted graphs. Show the queue state at each step.
+  - generic: High
+  - button "Edit Graph traversal problem set":
+  - button "Delete Graph traversal problem set":
+  - button "Complete Revise market structures":
+  - paragraph: Revise market structures
+  - generic: Microeconomics
+  - generic: Study Session
+  - generic: Due today
+  - text: 2h
+  - paragraph: Perfect competition vs monopoly — draw the cost curves from memory.
+  - generic: Medium
+  - button "Edit Revise market structures":
+  - button "Delete Revise market structures":
+  - button "Complete Draft the internship cover letter":
+  - paragraph: Draft the internship cover letter
+  - generic: Business Communication
+  - generic: Assignment
+  - generic: Due today
+  - text: 1h
+  - paragraph: One page, addressed to the hiring manager.
+  - generic: Low
+  - button "Edit Draft the internship cover letter":
+  - button "Delete Draft the internship cover letter":
+  - button "Complete Midterm — chapters 4 to 7":
+  - paragraph: Midterm — chapters 4 to 7
+  - generic: Linear Algebra
+  - generic: Exam
+  - generic: In 2 days
+  - text: 8h
+  - paragraph: Vector spaces, basis, rank-nullity. Closed book, calculator allowed.
+  - generic: High
+  - button "Edit Midterm — chapters 4 to 7":
+  - button "Delete Midterm — chapters 4 to 7":
+  - button "Complete SQL joins practice lab":
+  - paragraph: SQL joins practice lab
+  - generic: Database Systems
+  - generic: Study Session
+  - generic: In 3 days
+  - text: 2.5h
+  - paragraph: Inner, left, right and self joins on the sample airline schema.
+  - generic: Medium
+  - button "Edit SQL joins practice lab":
+  - button "Delete SQL joins practice lab":
+  - button "Complete Reaction mechanisms flashcards":
+  - paragraph: Reaction mechanisms flashcards
+  - generic: Organic Chemistry
+  - generic: Reading
+  - generic: In 4 days
+  - text: 2h
+  - generic: Medium
+  - button "Edit Reaction mechanisms flashcards":
+  - button "Delete Reaction mechanisms flashcards":
+  - button "Complete Hash table implementation project":
+  - paragraph: Hash table implementation project
+  - generic: Data Structures
+  - generic: Project
+  - generic: Next week
+  - text: 10h
+  - paragraph: Open addressing with linear probing. Include a load-factor benchmark.
+  - generic: High
+  - button "Edit Hash table implementation project":
+  - button "Delete Hash table implementation project":
+  - 'button "Complete Case study: pricing in oligopolies"':
+  - paragraph: "Case study: pricing in oligopolies"
+  - generic: Microeconomics
+  - generic: Project
+  - generic: Next week
+  - text: 6h
+  - paragraph: Pick an Indian telecom example and model the payoff matrix.
+  - generic: Medium
+  - 'button "Edit Case study: pricing in oligopolies"':
+  - 'button "Delete Case study: pricing in oligopolies"':
+  - button "Complete Team presentation — final delivery":
+  - paragraph: Team presentation — final delivery
+  - generic: Business Communication
+  - generic: Project
+  - generic: Next week
+  - text: 5h
+  - paragraph: 12 minutes plus Q&A. Slides due the night before.
+  - generic: High
+  - button "Edit Team presentation — final delivery":
+  - button "Delete Team presentation — final delivery":
+  - button "Complete Spectroscopy quiz":
+  - paragraph: Spectroscopy quiz
+  - generic: Organic Chemistry
+  - generic: Quiz
+  - generic: Tue, 15 Sep
+  - text: 3h
+  - paragraph: IR and NMR interpretation.
+  - generic: Medium
+  - button "Edit Spectroscopy quiz":
+  - button "Delete Spectroscopy quiz":
+  - button "Complete End-semester exam — Database Systems":
+  - paragraph: End-semester exam — Database Systems
+  - generic: Database Systems
+  - generic: Exam
+  - generic: Sat, 19 Sep
+  - text: 12h
+  - paragraph: Full syllabus. Transactions and indexing carry the most weight.
+  - generic: High
+  - button "Edit End-semester exam — Database Systems":
+  - button "Delete End-semester exam — Database Systems":
+  - button "Mark Binary search tree assignment as pending":
+  - paragraph: Binary search tree assignment
+  - generic: Data Structures
+  - generic: Assignment
+  - generic: Completed
+  - text: 4h
+  - paragraph: Insertion, deletion and in-order traversal. Submitted on the portal.
+  - generic: High
+  - button "Edit Binary search tree assignment":
+  - button "Delete Binary search tree assignment":
+  - button "Mark Elasticity of demand — problem set 3 as pending":
+  - paragraph: Elasticity of demand — problem set 3
+  - generic: Microeconomics
+  - generic: Assignment
+  - generic: Completed
+  - text: 2.5h
+  - paragraph: Questions 1–14 from the workbook.
+  - generic: Medium
+  - button "Edit Elasticity of demand — problem set 3":
+  - button "Delete Elasticity of demand — problem set 3":
+  - 'button "Mark Read chapter 6: alkenes and alkynes as pending"':
+  - paragraph: "Read chapter 6: alkenes and alkynes"
+  - generic: Organic Chemistry
+  - generic: Reading
+  - generic: Completed
+  - text: 2h
+  - generic: Low
+  - 'button "Edit Read chapter 6: alkenes and alkynes"':
+  - 'button "Delete Read chapter 6: alkenes and alkynes"':
+  - button "Mark Group presentation rehearsal as pending":
+  - paragraph: Group presentation rehearsal
+  - generic: Business Communication
+  - generic: Study Session
+  - generic: Completed
+  - text: 1.5h
+  - paragraph: Ran through slides twice with the team.
+  - generic: Medium
+  - button "Edit Group presentation rehearsal":
+  - button "Delete Group presentation rehearsal":
+  - button "Mark Eigenvalues practice set as pending":
+  - paragraph: Eigenvalues practice set
+  - generic: Linear Algebra
+  - generic: Study Session
+  - generic: Completed
+  - text: 3h
+  - paragraph: Focused on 3x3 matrices.
+  - generic: Medium
+  - button "Edit Eigenvalues practice set":
+  - button "Delete Eigenvalues practice set":
+  - button "Mark Normalisation quiz prep as pending":
+  - paragraph: Normalisation quiz prep
+  - generic: Database Systems
+  - generic: Quiz
+  - generic: Completed
+  - text: 2h
+  - paragraph: 1NF through BCNF with examples.
+  - generic: High
+  - button "Edit Normalisation quiz prep":
+  - button "Delete Normalisation quiz prep":
+- status
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

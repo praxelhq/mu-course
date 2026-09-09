@@ -1,0 +1,97 @@
+- navigation:
+  - generic: payments
+  - heading "RecovrAI" [level=1]
+  - paragraph: Receivables Recovery
+  - link "Add Invoice":
+    - /url: /invoices/new
+    - generic: add
+    - text: Add Invoice
+  - link "Dashboard":
+    - /url: /
+    - generic: dashboard
+    - generic: Dashboard
+  - link "Add Invoice":
+    - /url: /invoices/new
+    - generic: receipt_long
+    - generic: Add Invoice
+  - link "Debtor Details":
+    - /url: /invoices/details
+    - generic: group
+    - generic: Debtor Details
+  - link "Recovery Center":
+    - /url: /recovery
+    - generic: bolt
+    - generic: Recovery Center
+  - link "Escalation":
+    - /url: /escalation
+    - generic: gavel
+    - generic: Escalation
+  - link "Plans & Reports":
+    - /url: /pricing
+    - generic: analytics
+    - generic: Plans & Reports
+  - link "Help Center":
+    - /url: "#"
+    - generic: help
+    - generic: Help Center
+  - link "Sign Out":
+    - /url: /signin
+    - generic: logout
+    - generic: Sign Out
+- main:
+  - generic: search
+  - textbox "Search invoices, clients..."
+  - button:
+    - generic: notifications
+  - button:
+    - generic: help
+  - generic: MK
+  - heading "Choose the Right Plan for Your Business" [level=1]
+  - paragraph: Scale your recovery efforts with advanced AI automation and professional legal support.
+  - generic: Current Plan
+  - heading "Starter" [level=2]
+  - paragraph: For small businesses starting out.
+  - generic: ₹0
+  - generic: /month
+  - list:
+    - generic: check_circle
+    - generic: Up to 10 active invoices
+    - generic: check_circle
+    - generic: Basic email reminders
+    - generic: check_circle
+    - generic: Standard dashboard
+  - button "Current Plan" [disabled]
+  - generic: Most Popular
+  - heading "Growth" [level=2]
+  - paragraph: Active recovery for growing teams.
+  - generic: ₹99
+  - generic: /month
+  - list:
+    - generic: check_circle
+    - generic: Unlimited AI Notices
+    - generic: check_circle
+    - generic: Automated SMS Reminders
+    - generic: check_circle
+    - generic: Advanced Analytics
+    - generic: check_circle
+    - generic: Priority Support
+  - button "Upgrade to Growth"
+  - heading "Enterprise" [level=2]
+  - paragraph: Full-service legal concierge.
+  - generic: ₹199
+  - generic: /month
+  - list:
+    - generic: check_circle
+    - generic: Everything in Growth
+    - generic: check_circle
+    - generic: Legal Review on Demands
+    - generic: check_circle
+    - generic: Dedicated Account Manager
+    - generic: check_circle
+    - generic: Custom Integration API
+  - button "Select Enterprise"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6rvdjrhspw8mdbbh83qeqde5e9?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

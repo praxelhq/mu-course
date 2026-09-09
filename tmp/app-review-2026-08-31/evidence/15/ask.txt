@@ -1,0 +1,49 @@
+- banner:
+  - link "Dastaan":
+    - /url: /
+  - navigation:
+    - link "Home":
+      - /url: /
+      - text: Home
+    - link "Story":
+      - /url: /timeline
+      - text: Story
+    - link "Ask" [active]:
+      - /url: /ask
+      - text: Ask
+- main:
+  - heading "Ask a question" [level=1]
+  - paragraph: Your question goes out with Dad's next Sunday call. Voice notes feel the warmest.
+  - button:
+  - paragraph: Record a voice note
+  - paragraph: He'll hear it in your own voice
+  - heading "Or type it instead" [level=2]
+  - textbox "Papa, what was your favourite thing about your first home?"
+  - button "Send question":
+    - text: Send question
+  - heading "Family questions" [level=2]
+  - article:
+    - paragraph: Papa, what song always reminds you of Dadi?
+    - generic: Sent
+    - paragraph: From Meera · Sent 2 days ago
+  - article:
+    - paragraph: Tell us about the scooter you had before I was born.
+    - generic: Answered
+    - paragraph: From Arjun · Answered 1 week ago
+  - article:
+    - paragraph: What was your first impression of Pune when you moved?
+    - generic: Answered
+    - paragraph: From Meera · Answered 3 weeks ago
+  - article:
+    - paragraph: Which of your friends do you miss the most, and why?
+    - generic: Waiting to be asked
+    - paragraph: From Nikhil · Queued for next Sunday
+  - article:
+    - paragraph: What advice would you give me at 30 that you wish someone gave you?
+    - generic: Waiting to be asked
+    - paragraph: From Arjun · Queued for 6 Sept
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_59e643cg1k8nq85e487nf1z8wk?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

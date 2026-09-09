@@ -1,0 +1,41 @@
+- banner:
+  - link "Recess brand logo Recess":
+    - /url: /
+    - img "Recess brand logo"
+    - generic: Recess
+  - navigation:
+    - link "Games":
+      - /url: /games
+    - link "Play with Friends":
+      - /url: /games
+  - generic: search
+  - textbox "Find a game":
+    - /placeholder: Find a game...
+- complementary:
+  - heading "Active Friends" [level=3]
+  - paragraph: GamerGal99
+  - paragraph: Playing Tag
+  - paragraph: PixelWizard
+  - paragraph: In Lobby
+  - heading "Quick Play" [level=3]
+  - paragraph: Pop Balloons
+  - paragraph: 30 seconds • solo or pass-and-play
+  - link "PLAY NOW":
+    - /url: /play/pop-balloons
+- main:
+  - generic: sports_cricket
+  - heading "Book Cricket" [level=1]
+  - paragraph: Flip pages, score runs
+  - heading "Who's playing?" [level=2]
+  - paragraph: Everyone plays on this device — pass it along when it's the next person's turn.
+  - generic: P1
+  - textbox "Player 1 name": Test Player
+  - button "group_add Add a player":
+    - generic: group_add
+    - text: Add a player
+  - button "Play solo"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_5fea1r1atm83ds4grq4jsj3n8k?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

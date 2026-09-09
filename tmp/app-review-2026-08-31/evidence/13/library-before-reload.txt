@@ -1,0 +1,57 @@
+- banner:
+  - button "StreamVibe home":
+    - generic: StreamVibe
+  - navigation "Primary":
+    - button "Home":
+      - generic: Home
+    - button "Discover":
+      - generic: Discover
+    - button "My Library 1" [active]:
+      - generic: My Library
+      - generic: "1"
+  - button "Search":
+  - generic: SV
+- main:
+  - paragraph: Personal collection
+  - heading "My Library" [level=1]
+  - paragraph: 1 saved item — movies, shows and playlists.
+  - button "Clear library":
+    - text: Clear library
+  - region "Your taste":
+    - heading "Your taste" [level=2]
+    - paragraph: "Based on what you've saved, you seem to enjoy:"
+    - generic: Comedy
+    - generic: Family
+    - generic: Adventure
+  - generic: Search your saved library
+  - textbox "Search your saved library":
+    - /placeholder: Search your saved library...
+  - tablist "Filter library":
+    - tab "All" [selected]
+    - tab "Movies":
+      - text: Movies
+    - tab "TV Shows":
+      - text: TV Shows
+    - tab "Playlists":
+      - text: Playlists
+  - article:
+    - text: Movie
+    - heading "Paddington 2" [level=3]
+    - button "Remove Paddington 2 from library":
+    - paragraph: Paddington picks up a series of odd jobs to buy a special pop-up book for his Aunt Lucy's 100th birthday, only to be framed when the book is stolen.
+    - link "Netflix":
+      - /url: https://www.netflix.com/search?q=Paddington%202
+      - text: Netflix
+    - link "Prime":
+      - /url: https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Paddington%202
+      - text: Prime
+    - link "Hotstar":
+      - /url: https://www.hotstar.com/in/search?q=Paddington%202
+      - text: Hotstar
+    - button "Watch trailer":
+      - text: Watch trailer
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7cmjn513my9f2tfgz1e0c0v50v?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

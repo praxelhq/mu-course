@@ -1,0 +1,180 @@
+- img "Google AI Studio logo"
+- heading "Welcome to AI Studio" [level=1]
+- paragraph: Google AI Studio and the Gemini API enable developers to build with the latest Google AI models like Gemini, Veo, Lyria, and more.
+- paragraph:
+  - text: The
+  - link "Gemini API Additional Terms of Service":
+    - /url: /docs/terms
+  - text: ","
+  - link "Starter Tier Additional Terms of Service":
+    - /url: https://cloud.google.com/terms/starter-tier-additional-terms
+  - text: and the
+  - link "Google Privacy Policy":
+    - /url: https://policies.google.com/privacy?hl=en
+  - text: apply. Prompts and responses may be reviewed and used to train Google AI, so don’t submit sensitive or personal information. Learn more about
+  - link "data use":
+    - /url: /docs/terms#data-use-paid
+  - text: . Google AI models can make mistakes, so double-check responses before relying on, publishing, or otherwise using generated content.
+- text: Agreements
+- checkbox "I consent to the Google APIs Terms of Service and the Gemini API Additional Terms of Service and acknowledge that I have read the Google Privacy Policy"
+- superscript: "*"
+- text: I acknowledge that I am a developer building with Google AI Studio and Gemini API for professional or business purposes, and I consent to the terms and acknowledge the privacy policy linked above.
+- checkbox "Opt in to receive news, offers, promotions, and updates about Google AI."
+- generic: I'd like to receive emails for model updates, offers, useful tips, invitations to participate in research studies, and news about Google AI.
+- button "Accept terms of service" [disabled]: Continue
+- button: Skip to main content
+- main:
+  - link:
+    - /url: /apps
+    - generic: arrow_back
+    - text: Back to start
+  - heading [level=1]: VYBE
+  - button:
+    - generic: arrow_split
+    - text: Remix
+  - button: Share
+  - generic: spark
+  - heading [level=1]: Gemini
+  - generic: Remix to make this app your own
+  - generic: Here are some ideas to try
+  - button:
+    - generic: bolt
+    - generic: Add low-latency responses
+    - paragraph: Add lightning-fast, real-time responses to your app using Flash-Lite. Perfect for instant auto-completes, or conversational agents that feel alive.
+    - button: View more
+  - button:
+    - generic: Google Tasks
+    - paragraph: Manage Google Tasks within your app. Allow users to create task lists, add and update tasks, set due dates, and track their progress.
+  - button:
+    - generic: video_spark
+    - generic: Generate video from text
+    - paragraph: Add video generation to your creative app. Let users turn their blog posts, scripts, or product descriptions into short video clips.
+  - button:
+    - generic: arrow_forward
+  - textbox:
+    - /placeholder: Make changes, add new features, ask for anything
+  - button:
+    - generic: mic
+  - button:
+    - generic: add_circle
+  - button [disabled]:
+    - generic: arrow_split
+    - text: Remix
+  - button: Preview
+  - button: Code
+  - button:
+    - generic: devices
+  - textbox: /
+  - button:
+    - generic: sync
+  - button:
+    - generic: fullscreen
+  - button [disabled]:
+    - generic: draw
+  - iframe:
+    - complementary:
+      - generic: V
+      - generic: VYBE
+      - generic: PRO
+      - paragraph: Your routine. Your way.
+      - button "Add Activity Block":
+        - generic: Add Activity Block
+      - navigation:
+        - button "Dashboard":
+          - generic: Dashboard
+        - button "My Routine":
+          - generic: My Routine
+        - button "Week":
+          - generic: Week
+        - button "Progress":
+          - generic: Progress
+        - button "Profile":
+          - generic: Profile
+        - button "Templates":
+          - generic: Templates
+      - generic: Active Canvas
+      - generic: 7 blocks
+      - paragraph: Alex's Weekly Flow
+      - generic: Fully unlocked & editable
+      - generic: A
+      - paragraph: Alex
+      - paragraph: alex@vybe.app
+      - button "Sign out":
+    - main:
+      - generic: Monday
+      - generic: ·
+      - generic: Monday, Aug 31
+      - generic: TODAY
+      - heading "Good morning, Alex 👋" [level=1]
+      - paragraph: Here's your VYBE for today. Flexible, personal, and your way.
+      - button "Previous Day":
+      - button "Today"
+      - button "Next Day":
+      - generic: Today's Progress
+      - generic: 2 / 5 completed
+      - generic: 40%
+      - paragraph: Showing up your way
+      - generic: Tracked Wellness Categories
+      - generic: Workout
+      - generic: ○ Pending
+      - generic: Steps / Walk
+      - generic: ○ Pending
+      - generic: Hydration
+      - generic: ✓ Done
+      - generic: Sleep & Wind Down
+      - generic: ○ Pending
+      - generic: Cardio
+      - heading "Your routine doesn't have to look like anyone else's." [level=3]
+      - paragraph: No pressure or aggressive notifications. If today needs more rest or a shifted schedule, simply move or adjust your blocks.
+      - button "Customize Canvas":
+        - generic: Customize Canvas
+      - heading "Today's Timeline" [level=3]
+      - paragraph: Chronological schedule for Monday. Mark completed or edit directly.
+      - button "Add Block":
+        - generic: Add Block
+      - button "Mark as incomplete":
+      - generic: Steps / Walk
+      - generic: 7:30 AM
+      - generic: ·
+      - generic: 20 min
+      - heading "Morning Steps & Sunlight Walk" [level=4]
+      - paragraph: Brisk 20-min morning walk to get fresh air and kickstart metabolism.
+      - button "Activity options":
+      - button "Mark as incomplete":
+      - generic: Hydration
+      - generic: 9:00 AM
+      - generic: ·
+      - generic: 5 min
+      - heading "Hydration Target (500ml)" [level=4]
+      - paragraph: Electrolytes and cold water at start of workday.
+      - button "Activity options":
+      - button "Mark as complete"
+      - generic: Workout
+      - generic: 6:00 PM
+      - generic: ·
+      - generic: 45 min
+      - heading "Strength Workout (Upper Body)" [level=4]
+      - paragraph: Dumbbell bench press, pull-ups, overhead press, dumbbell rows.
+      - button "Activity options":
+      - button "Mark as complete"
+      - generic: Steps / Walk
+      - generic: 8:00 PM
+      - generic: ·
+      - generic: 25 min
+      - heading "Evening Sunset Walk" [level=4]
+      - paragraph: Easy pace neighbourhood stroll to digest dinner and relax.
+      - button "Activity options":
+      - button "Mark as complete"
+      - generic: Sleep & Wind Down
+      - generic: 10:30 PM
+      - generic: ·
+      - generic: 30 min
+      - heading "Nightly Wind Down & Sleep" [level=4]
+      - paragraph: Screens off, dim room lighting, prepare for 8 hours restful sleep.
+      - button "Activity options":
+  - text: This app was developed by another user. It may be inaccurate or unsafe.
+  - link:
+    - /url: https://support.google.com/legal/troubleshooter/1114905
+    - text: Report legal issue
+- alert
+- alert

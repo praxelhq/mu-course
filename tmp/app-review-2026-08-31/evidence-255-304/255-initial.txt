@@ -1,0 +1,84 @@
+- banner:
+  - button "Arjun":
+    - img "Arjun"
+  - generic: GharOS
+  - button "Notifications":
+- main:
+  - heading "HOUSEHOLD PULSE" [level=2]
+  - paragraph: ₹79,149
+  - paragraph: total outstanding this month
+  - button "Bills (₹28,749)":
+    - generic: Bills (₹28,749)
+  - button "Staff (₹50,400)":
+    - generic: Staff (₹50,400)
+  - button "Monthly Report":
+    - generic: Monthly Report
+  - heading "Action Required" [level=3]
+  - paragraph: Electricity Bill
+  - paragraph: ₹2,400 • 2 days overdue
+  - button "Pay"
+  - paragraph: Gas Cylinder
+  - paragraph: 2 days left
+  - button "Order"
+  - heading "Today's Chores" [level=3]
+  - button "VIEW ALL":
+    - generic: VIEW ALL
+  - checkbox "Watering Plants Arjun"
+  - paragraph: Watering Plants
+  - paragraph: Arjun
+  - checkbox "Loading Dishwasher Priya"
+  - paragraph: Loading Dishwasher
+  - paragraph: Priya
+  - checkbox "Garbage Segregation (Dry & Wet) Arjun" [checked]
+  - paragraph: Garbage Segregation (Dry & Wet)
+  - paragraph: Arjun
+  - heading "Supply Alerts" [level=3]
+  - paragraph: Gas Cylinder
+  - paragraph: 2 days left
+  - button "Pay"
+  - button "Quick Add 1 Unit":
+  - paragraph: Drinking Water
+  - paragraph: 3 days left
+  - button "Pay"
+  - button "Quick Add 1 Unit":
+  - paragraph: Dishwasher Pods & Salt
+  - paragraph: 8 days left
+  - button "Pay"
+  - button "Quick Add 1 Unit":
+  - heading "Expected Today" [level=3]
+  - button "Manage Staff"
+  - img "Kamla Di"
+  - paragraph: Kamla Di
+  - generic: ₹16,800
+  - paragraph: Cook • Tap for Statement
+  - button "Present"
+  - button "Absent"
+  - generic: R
+  - paragraph: Raju
+  - generic: ₹22,000
+  - paragraph: Driver • Tap for Statement
+  - button "Present"
+  - button "Absent"
+  - generic: L
+  - paragraph: Lakshmi
+  - generic: ₹11,600
+  - paragraph: Maid • Tap for Statement
+  - button "Present"
+  - button "Absent"
+- navigation:
+  - button "Home":
+    - generic: Home
+  - button "1 Bills":
+    - generic: "1"
+    - generic: Bills
+  - button "Staff":
+    - generic: Staff
+  - button "Spends":
+    - generic: Spends
+  - button "Chores":
+    - generic: Chores
+  - button "Directory":
+    - generic: Directory
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

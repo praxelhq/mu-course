@@ -1,0 +1,26 @@
+- main:
+  - generic: Inbox Radar
+  - heading "The dates buried in your email, already on your calendar." [level=1]
+  - paragraph: Inbox Radar reads your whole inbox with AI, keeps only what has a real action and a real date, and mirrors it to a calendar you already check every morning.
+  - list:
+    - paragraph: Read your Gmail
+    - paragraph: We read your email to find actionable items. We never send, reply to, or delete email as you. Full email bodies are never stored — only an AI-written snippet and a link back to the original.
+    - paragraph: Manage one calendar
+    - paragraph: We create and maintain a separate “Inbox Radar” calendar for what we find. Your existing calendars are never touched.
+    - paragraph: Yours only
+    - paragraph: Access tokens stay on the server and are never exposed to the browser. You can disconnect and delete everything from Settings at any time.
+  - button [disabled]:
+  - link "View demo — no sign-in needed":
+    - /url: /demo
+  - paragraph: You'll see exactly which permissions you're granting on Google's own consent screen before anything is connected. The demo is sample data only — nothing is connected.
+  - link "Privacy Policy":
+    - /url: /privacy
+  - generic: ·
+  - link "Terms of Service":
+    - /url: /terms
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_0bxrsdw5jp8k7bb7y2j7603zda?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

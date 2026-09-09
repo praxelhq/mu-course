@@ -1,0 +1,35 @@
+{
+  "reviewer": "project-standards",
+  "findings": [
+    {
+      "title": "Document the retired fallback contract",
+      "severity": "P2",
+      "file": "lms/app/api/interview/fallback/route.ts",
+      "line": 4,
+      "why_it_matters": "This changes the operational contract from an in-place turn-based fallback to refusal and real-time reconnect. Without an append-only decision entry, later work can restore the old manual path or misread a 409 as an accidental regression, recreating the student-facing failure this repair addresses.",
+      "autofix_class": "gated_auto",
+      "owner": "downstream-resolver",
+      "requires_verification": false,
+      "suggested_fix": "Append one dated entry to lms/docs/DECISIONS.md that supersedes its 2026-07-28 turn-based-degradation decisions: graded interviews admit only when the current agent heartbeat is healthy, reconnect through LiveKit, and retire manual recording endpoints; include the rejected manual-fallback alternative.",
+      "confidence": 100,
+      "first_evidence": "lms/CLAUDE.md:42 -- - Every non-obvious choice gets a line in docs/DECISIONS.md.",
+      "evidence": [
+        "lms/CLAUDE.md:42 -- - Every non-obvious choice gets a line in docs/DECISIONS.md.",
+        "lms/app/api/interview/fallback/route.ts:4 -- // Kept as an explicit refusal for stale browser bundles. A graded interview is",
+        "lms/app/api/interview/token/route.ts:33 -- // Never create or resume a graded attempt into a room with no proven",
+        "lms/docs/DECISIONS.md:57 -- - 2026-07-28 · In-place degradation: the client POSTs /api/interview/fallback ... to flip transport realtime → turnbased-fallback ...",
+        "The scoped diff has no lms/docs/DECISIONS.md change, so it neither records this supersession nor preserves the rationale required by the governing rule."
+      ],
+      "pre_existing": false
+    }
+  ],
+  "residual_risks": [
+    "The reviewed diff does not prove production LiveKit Egress quota availability; agent recording remains best-effort and provider-account capacity must be checked separately before claiming recordings work.",
+    "The fail-closed heartbeat check intentionally treats every fresh agent replica with a mismatched SHA or nonzero error count as unavailable. This safety posture is not covered here against a rolling-deploy multi-replica sequence."
+  ],
+  "testing_gaps": [
+    "The new heartbeat tests exercise only the pure predicate. They do not exercise POST /api/interview/token with verified, stale, mismatched, and errored ServiceHeartbeat rows.",
+    "The client contract test is source-text based; it does not run a LiveKit disconnect/rejoin lifecycle or prove that stale manual endpoint calls cannot mutate an interview in a deployed browser.",
+    "No scoped automated test constructs the installed ElevenLabs plugin with ELEVENLABS_API_KEY, so plugin API compatibility is still a runtime verification item."
+  ]
+}

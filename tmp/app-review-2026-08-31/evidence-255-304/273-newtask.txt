@@ -1,0 +1,84 @@
+- complementary "Main navigation":
+  - generic: StudyFlow
+  - navigation "Site sections":
+    - link "Dashboard":
+      - /url: "#/dashboard"
+      - text: Dashboard
+    - link "Tasks":
+      - /url: "#/tasks"
+      - text: Tasks
+    - link "Calendar":
+      - /url: "#/calendar"
+      - text: Calendar
+    - link "Progress":
+      - /url: "#/progress"
+      - text: Progress
+    - link "Subjects":
+      - /url: "#/subjects"
+      - text: Subjects
+    - link "Settings":
+      - /url: "#/settings"
+      - text: Settings
+  - button "New task":
+    - text: New task
+  - paragraph: Studying as
+  - paragraph: Ali
+- banner:
+  - heading "StudyFlow" [level=1]
+  - paragraph: Monday, 31 August 2026
+  - button "Switch to dark theme":
+  - button "New task":
+    - generic: New task
+- main:
+  - link "Back to tasks":
+    - /url: "#/tasks"
+    - text: Back to tasks
+  - heading "New task" [level=1]
+  - form "New task form":
+    - generic: Title *
+    - textbox "Title" [active]:
+      - /placeholder: e.g. Graph traversal problem set
+    - generic: "200"
+    - generic: Subject *
+    - combobox "Subject":
+      - option "Select a subject"
+      - option "Data Structures (CS 201)" [selected]
+      - option "Microeconomics (ECO 110)"
+      - option "Organic Chemistry (CHM 205)"
+      - option "Business Communication (MGT 104)"
+      - option "Linear Algebra (MTH 202)"
+      - option "Database Systems (CS 240)"
+    - generic: Type
+    - combobox "Type":
+      - option "Assignment" [selected]
+      - option "Exam"
+      - option "Study Session"
+      - option "Project"
+      - option "Reading"
+      - option "Quiz"
+    - generic: Due date *
+    - textbox "Due date": 2026-08-31
+    - generic: Estimated hours
+    - spinbutton "Estimated hours": "2"
+    - paragraph: Your estimate — not a timer
+    - group "Priority":
+      - generic: Priority
+      - radiogroup:
+        - radio "Low"
+        - text: Low
+        - radio "Medium" [checked]
+        - text: Medium
+        - radio "High"
+        - text: High
+    - generic: Notes
+    - textbox "Notes":
+      - /placeholder: Chapters to cover, submission format, anything you want to remember.
+    - paragraph: 2000 remaining
+    - button "Cancel"
+    - button "Add task":
+      - text: Add task
+- status
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify
+- generic: "0"

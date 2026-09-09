@@ -1,0 +1,603 @@
+- banner:
+  - generic: GL
+  - generic: GigLens
+  - generic: India
+  - button "Demo Mode":
+    - generic: Demo Mode
+  - button "Open Settings":
+    - generic: R
+    - generic: Review Rider
+- complementary:
+  - generic: R
+  - paragraph: Review Rider
+  - generic: Demo
+  - paragraph: India
+  - navigation:
+    - button "Home":
+      - generic: Home
+    - button "Add Shift":
+      - generic: Add Shift
+    - button "History 18":
+      - generic: History
+      - generic: "18"
+    - button "Compare":
+      - generic: Compare
+    - button "Insights":
+      - generic: Insights
+  - button "Settings & Fuel Prices":
+    - generic: Settings & Fuel Prices
+  - generic: 🛡️ Stored on device • Gemini AI analyzed
+- main:
+  - heading "Shift History" [level=1]
+  - generic: 18 of 18
+  - paragraph: Audit, filter, edit and export all logged work sessions
+  - button "Import CSV":
+    - generic: Import CSV
+  - button "Export CSV":
+    - generic: Export CSV
+  - button "Add Shift":
+    - generic: Add Shift
+  - textbox "Search platform, notes..."
+  - combobox:
+    - option "All Platforms" [selected]
+    - option "Zomato"
+    - option "Swiggy"
+    - option "Swiggy Instamart"
+    - option "Blinkit"
+    - option "Zepto"
+    - option "Uber"
+    - option "Rapido"
+    - option "Ola"
+    - option "Other Platform"
+  - combobox:
+    - option "All Time Slots" [selected]
+    - option "🌅 Breakfast (6 AM – 11 AM)"
+    - option "☀️ Lunch (11 AM – 3 PM)"
+    - option "🌤️ Afternoon (3 PM – 6 PM)"
+    - option "🌆 Evening (6 PM – 8 PM)"
+    - option "🌙 Dinner (8 PM – 12 AM)"
+    - option "🌌 Late Night (12 AM – 6 AM)"
+  - combobox:
+    - option "All Profit Levels" [selected]
+    - option "Strong Shifts (Top 25%)"
+    - option "Average Shifts"
+    - option "Low-Profit Shifts"
+    - option "Loss-Making Shifts (< ₹0)"
+  - generic: "Quick Filters:"
+  - button "All Dates"
+  - button "Last 7 Days"
+  - button "Last 30 Days"
+  - text: Showing
+  - strong: "18"
+  - text: shifts
+  - generic: ZM
+  - generic: Zomato
+  - generic: Strong Shift
+  - generic: Fri, 21 Aug
+  - generic: •
+  - generic: 🌙 Dinner (19:30 – 23:45)
+  - generic: Net Take-Home
+  - generic: ₹1,084
+  - generic: ₹255/hr
+  - generic: Gross / Exp
+  - text: ₹1,240
+  - generic: (-₹156)
+  - generic: Distance & Trips
+  - generic: 38 km • 14 trips
+  - generic: Net / KM
+  - generic: ₹28.53/km
+  - generic: Unpaid Waiting
+  - generic: 35m (13.7%)
+  - paragraph: "\"Koramangala 5th Block rain surge\""
+  - button "View":
+    - generic: View
+  - button "Duplicate":
+    - generic: Duplicate
+  - button "Edit":
+    - generic: Edit
+  - button "Delete Shift Entry":
+  - generic: BL
+  - generic: Blinkit
+  - generic: Strong Shift
+  - generic: Fri, 21 Aug
+  - generic: •
+  - generic: 🌅 Breakfast (07:00 – 12:00)
+  - generic: Net Take-Home
+  - generic: ₹852
+  - generic: ₹170/hr
+  - generic: Gross / Exp
+  - text: ₹960
+  - generic: (-₹108)
+  - generic: Distance & Trips
+  - generic: 24 km • 16 trips
+  - generic: Net / KM
+  - generic: ₹35.50/km
+  - generic: Unpaid Waiting
+  - generic: 1h 30m (30%)
+  - paragraph: "\"Dark store warehouse congestion around 9am\""
+  - button "View":
+    - generic: View
+  - button "Duplicate":
+    - generic: Duplicate
+  - button "Edit":
+    - generic: Edit
+  - button "Delete Shift Entry":
+  - generic: RP
+  - generic: Rapido
+  - generic: Average Shift
+  - generic: Thu, 20 Aug
+  - generic: •
+  - generic: 🌅 Breakfast (08:00 – 12:30)
+  - generic: Net Take-Home
+  - generic: ₹593
+  - generic: ₹132/hr
+  - generic: Gross / Exp
+  - text: ₹800
+  - generic: (-₹207)
+  - generic: Distance & Trips
+  - generic: 58 km • 11 trips
+  - generic: Net / KM
+  - generic: ₹10.22/km
+  - generic: Unpaid Waiting
+  - generic: 30m (11.1%)
+  - paragraph: "\"Tech park commuter rides to Bellandur\""
+  - button "View":
+    - generic: View
+  - button "Duplicate":
+    - generic: Duplicate
+  - button "Edit":
+    - generic: Edit
+  - button "Delete Shift Entry":
+  - generic: SW
+  - generic: Swiggy
+  - generic: Average Shift
+  - generic: Thu, 20 Aug
+  - generic: •
+  - generic: ☀️ Lunch (12:00 – 16:00)
+  - generic: Net Take-Home
+  - generic: ₹583
+  - generic: ₹146/hr
+  - generic: Gross / Exp
+  - text: ₹740
+  - generic: (-₹157)
+  - generic: Distance & Trips
+  - generic: 32 km • 10 trips
+  - generic: Net / KM
+  - generic: ₹18.22/km
+  - generic: Unpaid Waiting
+  - generic: 1h (25%)
+  - paragraph: "\"Lunch peak target achieved\""
+  - button "View":
+    - generic: View
+  - button "Duplicate":
+    - generic: Duplicate
+  - button "Edit":
+    - generic: Edit
+  - button "Delete Shift Entry":
+  - generic: UB
+  - generic: Uber
+  - generic: Average Shift
+  - generic: Wed, 19 Aug
+  - generic: •
+  - generic: 🌤️ Afternoon (14:00 – 19:30)
+  - generic: Net Take-Home
+  - generic: ₹985
+  - generic: ₹179/hr
+  - generic: Gross / Exp
+  - text: ₹1,380
+  - generic: (-₹395)
+  - generic: Distance & Trips
+  - generic: 82 km • 6 trips
+  - generic: Net / KM
+  - generic: ₹12.01/km
+  - generic: Unpaid Waiting
+  - generic: 1h (18.2%)
+  - paragraph: "\"Long distance trips to Indiranagar & Airport road\""
+  - button "View":
+    - generic: View
+  - button "Duplicate":
+    - generic: Duplicate
+  - button "Edit":
+    - generic: Edit
+  - button "Delete Shift Entry":
+  - generic: ZM
+  - generic: Zomato
+  - generic: Strong Shift
+  - generic: Wed, 19 Aug
+  - generic: •
+  - generic: 🌙 Dinner (20:00 – 00:30)
+  - generic: Net Take-Home
+  - generic: ₹910
+  - generic: ₹202/hr
+  - generic: Gross / Exp
+  - text: ₹1,060
+  - generic: (-₹150)
+  - generic: Distance & Trips
+  - generic: 36 km • 13 trips
+  - generic: Net / KM
+  - generic: ₹25.28/km
+  - generic: Unpaid Waiting
+  - generic: 40m (14.8%)
+  - paragraph: "\"Late evening food court pickup went smooth\""
+  - button "View":
+    - generic: View
+  - button "Duplicate":
+    - generic: Duplicate
+  - button "Edit":
+    - generic: Edit
+  - button "Delete Shift Entry":
+  - generic: BL
+  - generic: Blinkit
+  - generic: Low-Profit Shift
+  - generic: Tue, 18 Aug
+  - generic: •
+  - generic: 🌤️ Afternoon (14:00 – 18:00)
+  - generic: Net Take-Home
+  - generic: ₹262
+  - generic: ₹66/hr
+  - generic: Gross / Exp
+  - text: ₹350
+  - generic: (-₹88)
+  - generic: Distance & Trips
+  - generic: 19 km • 7 trips
+  - generic: Net / KM
+  - generic: ₹13.79/km
+  - generic: Unpaid Waiting
+  - generic: 2h (50%)
+  - paragraph: "\"Very slow slot, heavy idle waiting at dark store\""
+  - button "View":
+    - generic: View
+  - button "Duplicate":
+    - generic: Duplicate
+  - button "Edit":
+    - generic: Edit
+  - button "Delete Shift Entry":
+  - generic: RP
+  - generic: Rapido
+  - generic: Average Shift
+  - generic: Tue, 18 Aug
+  - generic: •
+  - generic: 🌆 Evening (17:30 – 21:30)
+  - generic: Net Take-Home
+  - generic: ₹719
+  - generic: ₹180/hr
+  - generic: Gross / Exp
+  - text: ₹890
+  - generic: (-₹171)
+  - generic: Distance & Trips
+  - generic: 48 km • 12 trips
+  - generic: Net / KM
+  - generic: ₹14.98/km
+  - generic: Unpaid Waiting
+  - generic: 20m (8.3%)
+  - paragraph: "\"HSR Layout to Silk Board gridlock, but steady ride demands\""
+  - button "View":
+    - generic: View
+  - button "Duplicate":
+    - generic: Duplicate
+  - button "Edit":
+    - generic: Edit
+  - button "Delete Shift Entry":
+  - generic: SW
+  - generic: Swiggy
+  - generic: Average Shift
+  - generic: Mon, 17 Aug
+  - generic: •
+  - generic: 🌙 Dinner (19:00 – 23:30)
+  - generic: Net Take-Home
+  - generic: ₹763
+  - generic: ₹170/hr
+  - generic: Gross / Exp
+  - text: ₹930
+  - generic: (-₹167)
+  - generic: Distance & Trips
+  - generic: 40 km • 12 trips
+  - generic: Net / KM
+  - generic: ₹19.07/km
+  - generic: Unpaid Waiting
+  - generic: 55m (20.4%)
+  - paragraph: "\"Good incentive completion\""
+  - button "View":
+    - generic: View
+  - button "Duplicate":
+    - generic: Duplicate
+  - button "Edit":
+    - generic: Edit
+  - button "Delete Shift Entry":
+  - generic: ZM
+  - generic: Zomato
+  - generic: Strong Shift
+  - generic: Sun, 16 Aug
+  - generic: •
+  - generic: 🌌 Late Night (23:00 – 03:30)
+  - generic: Net Take-Home
+  - generic: ₹1,002
+  - generic: ₹223/hr
+  - generic: Gross / Exp
+  - text: ₹1,180
+  - generic: (-₹178)
+  - generic: Distance & Trips
+  - generic: 42 km • 11 trips
+  - generic: Net / KM
+  - generic: ₹23.86/km
+  - generic: Unpaid Waiting
+  - generic: 30m (11.1%)
+  - paragraph: "\"Empty roads, excellent night surge multiplier\""
+  - button "View":
+    - generic: View
+  - button "Duplicate":
+    - generic: Duplicate
+  - button "Edit":
+    - generic: Edit
+  - button "Delete Shift Entry":
+  - generic: BL
+  - generic: Blinkit
+  - generic: Average Shift
+  - generic: Sun, 16 Aug
+  - generic: •
+  - generic: 🌆 Evening (16:00 – 21:00)
+  - generic: Net Take-Home
+  - generic: ₹985
+  - generic: ₹197/hr
+  - generic: Gross / Exp
+  - text: ₹1,120
+  - generic: (-₹135)
+  - generic: Distance & Trips
+  - generic: 31 km • 18 trips
+  - generic: Net / KM
+  - generic: ₹31.77/km
+  - generic: Unpaid Waiting
+  - generic: 1h 5m (21.7%)
+  - paragraph: "\"Fast grocery deliveries in BTM Layout\""
+  - button "View":
+    - generic: View
+  - button "Duplicate":
+    - generic: Duplicate
+  - button "Edit":
+    - generic: Edit
+  - button "Delete Shift Entry":
+  - generic: RP
+  - generic: Rapido
+  - generic: Average Shift
+  - generic: Sat, 15 Aug
+  - generic: •
+  - generic: 🌅 Breakfast (07:30 – 13:00)
+  - generic: Net Take-Home
+  - generic: ₹841
+  - generic: ₹153/hr
+  - generic: Gross / Exp
+  - text: ₹1,120
+  - generic: (-₹279)
+  - generic: Distance & Trips
+  - generic: 72 km • 15 trips
+  - generic: Net / KM
+  - generic: ₹11.68/km
+  - generic: Unpaid Waiting
+  - generic: 30m (9.1%)
+  - paragraph: "\"Independence day metro station shuttles\""
+  - button "View":
+    - generic: View
+  - button "Duplicate":
+    - generic: Duplicate
+  - button "Edit":
+    - generic: Edit
+  - button "Delete Shift Entry":
+  - generic: SW
+  - generic: Swiggy
+  - generic: Low-Profit Shift
+  - generic: Fri, 14 Aug
+  - generic: •
+  - generic: ☀️ Lunch (12:30 – 15:45)
+  - generic: Net Take-Home
+  - generic: ₹425
+  - generic: ₹131/hr
+  - generic: Gross / Exp
+  - text: ₹540
+  - generic: (-₹115)
+  - generic: Distance & Trips
+  - generic: 26 km • 8 trips
+  - generic: Net / KM
+  - generic: ₹16.35/km
+  - generic: Unpaid Waiting
+  - generic: 45m (23.1%)
+  - paragraph: "\"Regular lunch routine\""
+  - button "View":
+    - generic: View
+  - button "Duplicate":
+    - generic: Duplicate
+  - button "Edit":
+    - generic: Edit
+  - button "Delete Shift Entry":
+  - generic: UB
+  - generic: Uber
+  - generic: Average Shift
+  - generic: Thu, 13 Aug
+  - generic: •
+  - generic: 🌆 Evening (17:00 – 22:00)
+  - generic: Net Take-Home
+  - generic: ₹797
+  - generic: ₹159/hr
+  - generic: Gross / Exp
+  - text: ₹1,080
+  - generic: (-₹283)
+  - generic: Distance & Trips
+  - generic: 65 km • 7 trips
+  - generic: Net / KM
+  - generic: ₹12.26/km
+  - generic: Unpaid Waiting
+  - generic: 1h 5m (21.7%)
+  - paragraph: "\"Heavy rain & bumper-to-bumper on Outer Ring Road\""
+  - button "View":
+    - generic: View
+  - button "Duplicate":
+    - generic: Duplicate
+  - button "Edit":
+    - generic: Edit
+  - button "Delete Shift Entry":
+  - generic: ZM
+  - generic: Zomato
+  - generic: Strong Shift
+  - generic: Wed, 12 Aug
+  - generic: •
+  - generic: 🌙 Dinner (19:30 – 23:30)
+  - generic: Net Take-Home
+  - generic: ₹842
+  - generic: ₹211/hr
+  - generic: Gross / Exp
+  - text: ₹980
+  - generic: (-₹138)
+  - generic: Distance & Trips
+  - generic: 34 km • 12 trips
+  - generic: Net / KM
+  - generic: ₹24.76/km
+  - generic: Unpaid Waiting
+  - generic: 35m (14.6%)
+  - paragraph: "\"Solid mid-week shift\""
+  - button "View":
+    - generic: View
+  - button "Duplicate":
+    - generic: Duplicate
+  - button "Edit":
+    - generic: Edit
+  - button "Delete Shift Entry":
+  - generic: BL
+  - generic: Blinkit
+  - generic: Average Shift
+  - generic: Tue, 11 Aug
+  - generic: •
+  - generic: 🌅 Breakfast (06:30 – 10:30)
+  - generic: Net Take-Home
+  - generic: ₹678
+  - generic: ₹170/hr
+  - generic: Gross / Exp
+  - text: ₹770
+  - generic: (-₹92)
+  - generic: Distance & Trips
+  - generic: 22 km • 14 trips
+  - generic: Net / KM
+  - generic: ₹30.82/km
+  - generic: Unpaid Waiting
+  - generic: 1h 10m (29.2%)
+  - paragraph: "\"Milk & breakfast deliveries\""
+  - button "View":
+    - generic: View
+  - button "Duplicate":
+    - generic: Duplicate
+  - button "Edit":
+    - generic: Edit
+  - button "Delete Shift Entry":
+  - generic: RP
+  - generic: Rapido
+  - generic: Low-Profit Shift
+  - generic: Mon, 10 Aug
+  - generic: •
+  - generic: 🌅 Breakfast (08:30 – 12:00)
+  - generic: Net Take-Home
+  - generic: ₹466
+  - generic: ₹133/hr
+  - generic: Gross / Exp
+  - text: ₹630
+  - generic: (-₹164)
+  - generic: Distance & Trips
+  - generic: 44 km • 9 trips
+  - generic: Net / KM
+  - generic: ₹10.59/km
+  - generic: Unpaid Waiting
+  - generic: 25m (11.9%)
+  - paragraph: "\"Steady corporate rides\""
+  - button "View":
+    - generic: View
+  - button "Duplicate":
+    - generic: Duplicate
+  - button "Edit":
+    - generic: Edit
+  - button "Delete Shift Entry":
+  - generic: SW
+  - generic: Swiggy
+  - generic: Strong Shift
+  - generic: Sun, 9 Aug
+  - generic: •
+  - generic: 🌌 Late Night (22:30 – 02:30)
+  - generic: Net Take-Home
+  - generic: ₹813
+  - generic: ₹203/hr
+  - generic: Gross / Exp
+  - text: ₹960
+  - generic: (-₹147)
+  - generic: Distance & Trips
+  - generic: 35 km • 10 trips
+  - generic: Net / KM
+  - generic: ₹23.23/km
+  - generic: Unpaid Waiting
+  - generic: 35m (14.6%)
+  - paragraph: "\"Late night cloud kitchens\""
+  - button "View":
+    - generic: View
+  - button "Duplicate":
+    - generic: Duplicate
+  - button "Edit":
+    - generic: Edit
+  - button "Delete Shift Entry":
+- heading "Settings & Preferences" [level=2]
+- paragraph: Vehicle costs, safety limits & data controls
+- button:
+- generic: Active Data Mode
+- text: Sample Demo Mode (Isolated)
+- button "Demo Data"
+- button "My Data"
+- generic: Profile, Operating Rates & Safety Preferences saved!
+- heading "Rider & Vehicle Rates" [level=3]
+- text: Name
+- textbox "Name": Review Rider
+- text: City / Operating Zone
+- textbox "City / Operating Zone"
+- text: Vehicle
+- combobox "Vehicle":
+  - option "2-Wheeler (Petrol Scooter / Bike)" [selected]
+  - option "Electric 2-Wheeler (EV)"
+  - option "Bicycle (Pedal)"
+  - option "Electric Bicycle"
+  - option "Auto-Rickshaw (CNG / Petrol / EV)"
+  - option "Car / Taxi"
+- text: Fuel Type
+- combobox "Fuel Type":
+  - option "Petrol" [selected]
+  - option "Diesel"
+  - option "CNG"
+  - option "Electric (per full battery charge)"
+  - option "None (Bicycle)"
+- text: Mileage (km/L or charge)
+- spinbutton "Mileage (km/L or charge)": "45"
+- text: Fuel / Charge Price (₹)
+- spinbutton "Fuel / Charge Price (₹)": "102.5"
+- text: Maintenance Rate (₹/km)
+- spinbutton "Maintenance Rate (₹/km)": "0.6"
+- heading "Work Preferences & Safety Limits" [level=3]
+- generic: Max Daily Hours (10h)
+- slider: "10"
+- text: Warns if shift exceeds safe threshold
+- generic: Max Weekly Target (54h)
+- slider: "54"
+- text: Used for AI weekly capacity estimates
+- text: Rest Days Per Week
+- combobox:
+  - option "0 Days (Continuous)"
+  - option "1 Day per week (Recommended)" [selected]
+  - option "2 Days per week (Balanced)"
+- checkbox "Avoid late-night shifts for safety"
+- generic: Avoid late-night shifts for safety
+- button "Save All Preferences" [active]
+- heading "Data Management & Backup" [level=3]
+- button "Export Backup (JSON)":
+  - generic: Export Backup (JSON)
+- button "Restore Backup (JSON)":
+  - generic: Restore Backup (JSON)
+- button "Reload Demo Data (18 Shifts)":
+  - generic: Reload Demo Data (18 Shifts)
+- button "Replay Onboarding Guide":
+  - generic: Replay Onboarding Guide
+- button "Clear Demo Recorded Shifts":
+  - generic: Clear Demo Recorded Shifts
+- generic: Device Storage & AI Privacy
+- paragraph: Your shift entries and financial records are stored securely in your browser's local storage. When you request AI Insights, an aggregated mathematical summary (hourly rates, fuel expenses, waiting ratios) is processed by Google's Gemini AI model to synthesize recommendations. No personal IDs or platform passwords are required or transmitted.
+- generic: ₹500

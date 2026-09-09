@@ -1,0 +1,53 @@
+- alert
+- banner:
+  - link "VOYRA":
+    - /url: /
+  - generic "Step 1 of 2"
+- main:
+  - paragraph: Step 1 of 2
+  - heading "Let's start with the basics." [level=1]
+  - paragraph: A few essentials so we know what kind of trip we're building.
+  - generic: Where are you going?
+  - generic: 🇯🇵
+  - combobox "Where are you going?": Japan
+  - generic: Where are you travelling from?
+  - generic: 🇮🇳
+  - combobox "Where are you travelling from?": India
+  - paragraph: Used to estimate average round-trip flight costs.
+  - generic: When are you going?
+  - generic: Departure
+  - textbox [active]
+  - generic: Return
+  - textbox
+  - generic: Who are you travelling with?
+  - button "Solo"
+  - button "Partner"
+  - button "Friends"
+  - button "Family"
+  - button "Group"
+  - button "Business"
+  - generic: Number of travellers
+  - button "Decrease travellers": −
+  - generic: "2"
+  - button "Increase travellers": +
+  - generic: What's your budget?
+  - button "INR"
+  - button "USD"
+  - button "Budget Smart choices, maximum experiences ₹50,000 – ₹1,00,000 per trip":
+    - generic: Budget
+    - generic: Smart choices, maximum experiences
+    - generic: ₹50,000 – ₹1,00,000 per trip
+  - button "Comfortable A balance of comfort and value ₹1,00,000 – ₹2,00,000 per trip":
+    - generic: Comfortable
+    - generic: A balance of comfort and value
+    - generic: ₹1,00,000 – ₹2,00,000 per trip
+  - button "Premium Elevated stays and experiences ₹2,00,000 – ₹4,00,000 per trip":
+    - generic: Premium
+    - generic: Elevated stays and experiences
+    - generic: ₹2,00,000 – ₹4,00,000 per trip
+  - button "Luxury The very best, without compromise ₹4,00,000+ per trip":
+    - generic: Luxury
+    - generic: The very best, without compromise
+    - generic: ₹4,00,000+ per trip
+  - paragraph: Approximate total trip cost — actual spend can vary significantly by destination, duration and group size.
+  - button "Continue" [disabled]

@@ -1,0 +1,54 @@
+[
+  {
+    "reviewer": "reliability",
+    "findings": [
+      {"title":"Allow live-session reconnects during health outages","severity":"P1","file":"lms/app/api/interview/token/route.ts","line":54,"confidence":75,"autofix_class":"gated_auto","owner":"downstream-resolver","requires_verification":true,"pre_existing":false,"suggested_fix":"Apply the realtimeAgentAvailable admission check only before creating a new interview; keep an existing realtime interview's token-remint path available and use resume-specific copy.","first_evidence":"lms/app/api/interview/token/route.ts:54 -- agentReady = await realtimeAgentAvailable(prisma, now);"}
+    ],
+    "residual_risks": [], "testing_gaps": []
+  },
+  {
+    "reviewer": "julik-frontend-races",
+    "findings": [
+      {"title":"Ignore out-of-order token responses","severity":"P1","file":"lms/app/(room)/interview/live/interview-client.tsx","line":38,"confidence":75,"autofix_class":"gated_auto","owner":"downstream-resolver","requires_verification":true,"pre_existing":false,"suggested_fix":"Sequence token requests and ignore stale responses; test an older poll failure after a newer success.","first_evidence":"lms/app/(room)/interview/live/interview-client.tsx:38 -- if (res.ok && body.token && body.url && body.interviewId) {"},
+      {"title":"Distinguish paused sessions from new attempts","severity":"P2","file":"lms/app/api/interview/token/route.ts","line":59,"confidence":75,"autofix_class":"gated_auto","owner":"downstream-resolver","requires_verification":true,"pre_existing":false,"suggested_fix":"Use existing-interview-specific unavailable copy and test both paths.","first_evidence":"lms/app/api/interview/token/route.ts:59 -- error: \"The real-time interviewer is reconnecting. Your attempt has not started — please try again shortly.\","}
+    ], "residual_risks": [], "testing_gaps": []
+  },
+  {
+    "reviewer": "api-contract",
+    "findings": [
+      {"title":"Update obsolete interview simulation","severity":"P1","file":"lms/scripts/interview-simulate.ts","line":254,"confidence":100,"autofix_class":"gated_auto","owner":"downstream-resolver","requires_verification":true,"pre_existing":false,"suggested_fix":"Replace the retired manual fallback scenario with a realtime reconnect and agent-complete/grading scenario.","first_evidence":"lms/scripts/interview-simulate.ts:254 -- check(flip.status === 200, `fallback flip → 200 (got ${flip.status})`);"},
+      {"title":"Cover token admission at route level","severity":"P1","file":"lms/app/api/interview/token/route.ts","line":54,"confidence":75,"autofix_class":"gated_auto","owner":"downstream-resolver","requires_verification":true,"pre_existing":false,"suggested_fix":"Mock runtime identity and agent heartbeats in the token-route tests, including healthy, stale, mismatched, and error cases.","first_evidence":"lms/app/api/interview/token/route.ts:54 -- agentReady = await realtimeAgentAvailable(prisma, now);"}
+    ], "residual_risks": [], "testing_gaps": []
+  },
+  {
+    "reviewer": "testing",
+    "findings": [
+      {"title":"Agent regression tests inspect source strings","severity":"P1","file":"lms/agent/test_main.py","line":77,"confidence":75,"autofix_class":"gated_auto","owner":"downstream-resolver","requires_verification":true,"pre_existing":false,"suggested_fix":"Exercise the event and session behavior with fakes rather than only checking source text.","first_evidence":"lms/agent/test_main.py:77 -- src = open(\"main.py\", encoding=\"utf-8\").read()"}
+    ], "residual_risks": [], "testing_gaps": []
+  },
+  {
+    "reviewer": "maintainability",
+    "findings": [
+      {"title":"Delete dead text-answer compatibility shim","severity":"P2","file":"lms/app/api/interview/answer/route.ts","line":8,"confidence":100,"autofix_class":"gated_auto","owner":"downstream-resolver","requires_verification":true,"pre_existing":false,"suggested_fix":"Delete textAnswersAllowed and its environment-matrix assertion; retain the endpoint-level 410 test.","first_evidence":"lms/app/api/interview/answer/route.ts:8 -- /** Retained for callers/tests; manual text answers are never accepted now. */"},
+      {"title":"Remove stale fallback terminology","severity":"P3","file":"lms/app/(room)/interview/live/realtime-room.tsx","line":20,"confidence":100,"autofix_class":"gated_auto","owner":"downstream-resolver","requires_verification":true,"pre_existing":false,"suggested_fix":"Rename fallback callbacks to reconnect and update comments describing the retired turn-based path.","first_evidence":"lms/app/(room)/interview/live/realtime-room.tsx:20 -- // A connect timeout (~8s), a disconnect, or sustained poor quality flips the"}
+    ], "residual_risks": [], "testing_gaps": []
+  },
+  {
+    "reviewer": "adversarial",
+    "findings": [
+      {"title":"Abort prolonged participant-less sessions","severity":"P1","file":"lms/agent/main.py","line":1033,"confidence":75,"autofix_class":"gated_auto","owner":"downstream-resolver","requires_verification":true,"pre_existing":false,"suggested_fix":"Use participant leave/join events with a bounded rejoin grace; on expiry report recording only with finished=false and never grade the partial transcript.","first_evidence":"lms/agent/main.py:1033 -- room_input_options=RoomInputOptions(close_on_disconnect=False),"}
+    ], "residual_risks": [], "testing_gaps": []
+  },
+  {
+    "reviewer": "security",
+    "findings": [
+      {"title":"Heartbeat does not prove LiveKit worker readiness","severity":"P1","file":"lms/lib/interview/realtime.ts","line":71,"confidence":75,"autofix_class":"manual","owner":"release","requires_verification":true,"pre_existing":false,"suggested_fix":"Add a deployment canary that proves a ready agent accepts a real LiveKit room before cohort admission.","first_evidence":"lms/lib/interview/realtime.ts:71 -- return hasCurrentRealtimeAgentHeartbeat(heartbeats, identity.sourceSha, now);"}
+    ], "residual_risks": [], "testing_gaps": []
+  },
+  {
+    "reviewer": "project-standards",
+    "findings": [
+      {"title":"Document the retired fallback contract","severity":"P2","file":"lms/docs/DECISIONS.md","line":58,"confidence":100,"autofix_class":"gated_auto","owner":"downstream-resolver","requires_verification":true,"pre_existing":false,"suggested_fix":"Add a decision entry that supersedes manual fallback with real-time-only reconnect and records its admission/recovery boundary.","first_evidence":"lms/CLAUDE.md:42 -- - Every non-obvious choice gets a line in docs/DECISIONS.md."}
+    ], "residual_risks": [], "testing_gaps": []
+  }
+]

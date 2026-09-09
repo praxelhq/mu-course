@@ -1,0 +1,61 @@
+- banner:
+  - link "Warehouse Ops":
+    - /url: /
+  - navigation:
+    - link "Dashboard":
+      - /url: /
+      - text: Dashboard
+    - link "Warehouses" [active]:
+      - /url: /warehouses
+      - text: Warehouses
+    - link "SKUs":
+      - /url: /skus
+      - text: SKUs
+    - link "Receive":
+      - /url: /inventory/receive
+      - text: Receive
+    - link "Issue":
+      - /url: /inventory/issue
+      - text: Issue
+    - link "Transfer":
+      - /url: /inventory/transfer
+      - text: Transfer
+    - link "Ledger":
+      - /url: /ledger
+      - text: Ledger
+    - link "Import":
+      - /url: /import
+      - text: Import
+- heading "Warehouses" [level=1]
+- heading "New Warehouse" [level=2]
+- generic: Code
+- textbox "MAIN"
+- generic: Name
+- textbox "Main Distribution Center"
+- generic: Address
+- textbox "Optional"
+- button "Add":
+  - text: Add
+- table:
+  - rowgroup:
+    - row "Code Name Address":
+      - columnheader "Code"
+      - columnheader "Name"
+      - columnheader "Address"
+      - columnheader
+  - rowgroup:
+    - row "MAIN Main Distribution Center 100 Warehouse Way":
+      - cell "MAIN"
+      - cell "Main Distribution Center"
+      - cell "100 Warehouse Way"
+      - cell:
+        - button:
+    - row "ST2045 Bajpai Dhaba Sultanpur":
+      - cell "ST2045"
+      - cell "Bajpai Dhaba"
+      - cell "Sultanpur"
+      - cell:
+        - button:
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

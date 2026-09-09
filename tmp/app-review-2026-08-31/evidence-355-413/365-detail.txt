@@ -1,0 +1,128 @@
+- generic: Demo — sample data, not connected to your account.
+- link "Exit demo":
+  - /url: /
+  - text: Exit demo
+- banner:
+  - heading "Inbox Radar" [level=1]
+  - generic: Demo
+  - link "Back to home":
+    - /url: /
+  - button "Day" [pressed]
+  - button "Week"
+  - button "Month"
+  - button "Previous":
+  - button "Today · Aug 31"
+  - button "Next":
+- main:
+  - textbox "Search items":
+    - /placeholder: Search titles and context…
+  - button "Upcoming" [pressed]
+  - button "Done"
+  - button "All"
+  - button "Work": Work
+  - button "Finance": Finance
+  - button "Travel": Travel
+  - button "Personal": Personal
+  - region "Overdue":
+    - text: Overdue
+    - generic: "2"
+    - article:
+      - button "Finance Overdue Pay the Q2 advance tax instalment 5:00 PM" [expanded] [active]:
+        - generic: Finance
+        - generic: Overdue
+        - heading "Pay the Q2 advance tax instalment" [level=3]
+        - paragraph:
+          - text: 5:00 PM
+      - paragraph: Reminder from the accountant — the portal closes at 5pm on the due date.
+      - link "Open in Gmail":
+        - /url: https://mail.google.com/mail/u/0/#all/demo-thread-tax
+        - text: Open in Gmail
+      - button "Done":
+        - text: Done
+      - button:
+      - button "Snooze":
+        - text: Snooze
+      - button "Delete":
+    - article:
+      - button "Personal Overdue Low confidence Reply to the landlord about the lease renewal 12:00 PM":
+        - generic: Personal
+        - generic: Overdue
+        - generic "The AI was less sure about this one — worth a glance.":
+          - text: Low confidence
+        - heading "Reply to the landlord about the lease renewal" [level=3]
+        - paragraph:
+          - text: 12:00 PM
+      - button "Done":
+        - text: Done
+      - button:
+      - button "Snooze":
+        - text: Snooze
+      - button "Delete":
+  - region "Scheduled":
+    - region "Events":
+      - text: Events
+      - generic: "1"
+      - article:
+        - button "Work Quarterly roadmap review with the platform team 3:00 AM – 4:00 AM Willow Room, 4th floor":
+          - generic: Work
+          - heading "Quarterly roadmap review with the platform team" [level=3]
+          - paragraph:
+            - text: 3:00 AM – 4:00 AM
+            - generic: Willow Room, 4th floor
+        - button "Done":
+          - text: Done
+        - button:
+        - button "Snooze":
+          - text: Snooze
+        - button "Delete":
+    - region "Tasks":
+      - text: Tasks
+      - generic: "1"
+      - article:
+        - button "Finance Submit expense report for the Berlin trip 5:00 AM":
+          - generic: Finance
+          - heading "Submit expense report for the Berlin trip" [level=3]
+          - paragraph:
+            - text: 5:00 AM
+        - button "Done":
+          - text: Done
+        - button:
+        - button "Snooze":
+          - text: Snooze
+        - button "Delete":
+  - region "Undated tasks":
+    - text: No date yet
+    - generic: "2"
+    - paragraph: Things worth doing that never named a time. Snooze one to give it a slot.
+    - article:
+      - button "Work Send Priya the onboarding checklist she asked for No date":
+        - generic: Work
+        - heading "Send Priya the onboarding checklist she asked for" [level=3]
+        - paragraph:
+          - text: No date
+      - button "Done":
+        - text: Done
+      - button:
+      - button "Snooze":
+        - text: Snooze
+      - button "Delete":
+    - article:
+      - button "Personal Low confidence Book a slot for the car service No date":
+        - generic: Personal
+        - generic "The AI was less sure about this one — worth a glance.":
+          - text: Low confidence
+        - heading "Book a slot for the car service" [level=3]
+        - paragraph:
+          - text: No date
+      - button "Done":
+        - text: Done
+      - button:
+      - button "Snooze":
+        - text: Snooze
+      - button "Delete":
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_0bxrsdw5jp8k7bb7y2j7603zda?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

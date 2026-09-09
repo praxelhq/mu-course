@@ -1,0 +1,64 @@
+- navigation:
+  - link "FoodLens":
+    - /url: /
+    - generic: FoodLens
+  - link "Home":
+    - /url: /
+  - link "Scan":
+    - /url: /scan
+    - text: Scan
+  - link "Browse Recipes":
+    - /url: /browse
+  - link "Recent Scans" [active]:
+    - /url: /scans
+    - text: Recent Scans
+  - link "Saved recipes":
+    - /url: /saved
+- main:
+  - paragraph: Recent scans
+  - heading "Everything you've looked at." [level=1]
+  - paragraph: Revisit a dish and explore its recipe, calories, nutrition or ingredients again.
+  - link "Greek Salad Today Greek Salad View Again":
+    - /url: /recipe/greek-salad
+    - img "Greek Salad"
+    - generic: Today
+    - heading "Greek Salad" [level=2]
+    - text: View Again
+  - link "Greek Salad Today Greek Salad View Again":
+    - /url: /recipe/greek-salad
+    - img "Greek Salad"
+    - generic: Today
+    - heading "Greek Salad" [level=2]
+    - text: View Again
+  - link "Ramen Yesterday Ramen View Again":
+    - /url: /recipe/ramen
+    - img "Ramen"
+    - generic: Yesterday
+    - heading "Ramen" [level=2]
+    - text: View Again
+  - link "Chicken Tacos 2 days ago Chicken Tacos View Again":
+    - /url: /recipe/chicken-tacos
+    - img "Chicken Tacos"
+    - generic: 2 days ago
+    - heading "Chicken Tacos" [level=2]
+    - text: View Again
+  - link "Scan Another Food":
+    - /url: /scan
+    - text: Scan Another Food
+- contentinfo:
+  - generic: FoodLens
+  - paragraph: See your food differently. One picture. A whole new way to discover what's on your plate.
+  - link "Scan":
+    - /url: /scan
+  - link "Browse Recipes":
+    - /url: /browse
+  - link "Recent Scans":
+    - /url: /scans
+  - link "Saved":
+    - /url: /saved
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7hb7j64b2b9z2txfp26xt2vf0q?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

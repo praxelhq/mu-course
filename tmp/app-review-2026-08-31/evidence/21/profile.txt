@@ -1,0 +1,44 @@
+- banner:
+  - button "Go back":
+  - button "S SipMatch The Alchemist's Palette":
+    - generic: S
+    - generic: SipMatch
+    - generic: The Alchemist's Palette
+  - button "User profile":
+    - img "User avatar"
+- main:
+  - img "User profile"
+  - heading "Nikhil Lall" [level=2]
+  - paragraph:
+    - text: Connoisseur Level
+  - text: Member since August 2026
+  - heading "Your Flavor DNA" [level=3]:
+    - text: Your Flavor DNA
+  - button "Update DNA":
+    - text: Update DNA
+  - generic: Bold & Coffee Notes
+  - generic: 92%
+  - generic: Smoky & Wood Cask
+  - generic: 84%
+  - generic: Crisp Citrus & Effervescence
+  - generic: 76%
+  - generic: "3"
+  - text: Saved Cocktails
+  - generic: "4"
+  - text: Nearby Lounges
+  - heading "Refine Your Sip Profile" [level=3]
+  - paragraph: Mood changed? Take the 10-question quiz anytime to generate fresh matches.
+  - button "Retake 10-Question Quiz"
+- navigation:
+  - button "Home":
+    - generic: Home
+  - button "Discover":
+    - generic: Discover
+  - button "3 Saved":
+    - generic: "3"
+    - generic: Saved
+  - button "Profile" [active]:
+    - generic: Profile
+- link "Made in Bolt":
+  - /url: https://bolt.new
+  - generic: Made in Bolt

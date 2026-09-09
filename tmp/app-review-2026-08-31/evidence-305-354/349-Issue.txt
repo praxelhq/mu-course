@@ -1,0 +1,47 @@
+- banner:
+  - link "Warehouse Ops":
+    - /url: /
+  - navigation:
+    - link "Dashboard":
+      - /url: /
+      - text: Dashboard
+    - link "Warehouses":
+      - /url: /warehouses
+      - text: Warehouses
+    - link "SKUs":
+      - /url: /skus
+      - text: SKUs
+    - link "Receive":
+      - /url: /inventory/receive
+      - text: Receive
+    - link "Issue" [active]:
+      - /url: /inventory/issue
+      - text: Issue
+    - link "Transfer":
+      - /url: /inventory/transfer
+      - text: Transfer
+    - link "Ledger":
+      - /url: /ledger
+      - text: Ledger
+    - link "Import":
+      - /url: /import
+      - text: Import
+- heading "Issue Stock (FIFO)" [level=1]
+- generic: Warehouse
+- combobox:
+  - option "Select warehouse…" [selected]
+  - option "MAIN — Main Distribution Center"
+  - option "ST2045 — Bajpai Dhaba"
+- generic: SKU
+- combobox:
+  - option "Select SKU…" [selected]
+  - option "SKU-0001 — Honey Chill Potato"
+  - option "SKU-001 — Widget - Small"
+- generic: Qty to Issue
+- spinbutton
+- generic: Reference ID (optional)
+- 'textbox "e.g. order #1234"'
+- button "Issue Stock"
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

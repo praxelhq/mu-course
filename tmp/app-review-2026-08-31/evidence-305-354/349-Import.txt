@@ -1,0 +1,32 @@
+- banner:
+  - link "Warehouse Ops":
+    - /url: /
+  - navigation:
+    - link "Dashboard":
+      - /url: /
+      - text: Dashboard
+    - link "Warehouses":
+      - /url: /warehouses
+      - text: Warehouses
+    - link "SKUs":
+      - /url: /skus
+      - text: SKUs
+    - link "Receive":
+      - /url: /inventory/receive
+      - text: Receive
+    - link "Issue":
+      - /url: /inventory/issue
+      - text: Issue
+    - link "Transfer":
+      - /url: /inventory/transfer
+      - text: Transfer
+    - link "Ledger":
+      - /url: /ledger
+      - text: Ledger
+    - link "Import" [active]:
+      - /url: /import
+      - text: Import
+- paragraph: Not Found
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

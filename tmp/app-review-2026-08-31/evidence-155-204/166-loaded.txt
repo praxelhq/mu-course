@@ -1,0 +1,21 @@
+- heading "OmniSpend" [level=1]
+- paragraph: Sign in to your money command center
+- button "Continue with Google":
+  - text: Continue with Google
+- generic: or
+- text: Email
+- textbox "Email":
+  - /placeholder: you@example.com
+- text: Password
+- textbox "Password":
+  - /placeholder: ••••••••
+- button "Sign in"
+- paragraph:
+  - text: New to OmniSpend?
+  - button "Create one"
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1d40s2apnf8xwafpssvzcfnk3j?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

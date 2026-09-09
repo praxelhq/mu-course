@@ -1,0 +1,18 @@
+- main:
+  - generic: Alarm triggered
+  - heading "HEIST FAILED" [level=1]
+  - paragraph: The vault held. The combination was HEIST.
+  - paragraph: Loot
+  - paragraph: $0
+  - paragraph: Vaults
+  - paragraph: 0/4
+  - paragraph: Guesses
+  - paragraph: "6"
+  - button "RUN IT AGAIN":
+    - text: RUN IT AGAIN
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6hjpvn52pr8649sm23g3qmz1bk?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

@@ -1,0 +1,105 @@
+- banner:
+  - generic: SB
+  - generic: STUDYBUDDY
+  - generic: Adaptive AI Coach
+  - navigation:
+    - button "Dashboard"
+    - button "Knowledge Map"
+    - button "Study Sessions"
+    - button "Flashcards"
+    - button "Mistakes Bank" [active]
+    - button "Analytics & Readiness"
+    - button "Study Materials"
+  - textbox "Ask coach or search topic..."
+  - button "What to study?":
+    - generic: What to study?
+  - button "20 min":
+    - generic: 20 min
+  - button "Start Study":
+    - generic: Start Study
+  - button "AA":
+    - generic: AA
+  - generic: EXAM READINESS
+  - generic: 78.4%
+  - generic: +2.4% proj
+  - generic: ACTIVE STREAK
+  - generic: 6 Days
+  - generic: On Track
+  - generic: DECAY ALERT
+  - generic: Entropy & 2nd Law
+  - generic: 54% Mastery
+  - generic: UNRESOLVED MISTAKES
+  - generic: 4 Items
+  - button "Drill Now"
+  - generic: SPACED FLASHCARDS
+  - generic: 12 Cards
+  - generic: Due Today
+  - generic: "Target: CBSE Board Exam • 45d remaining"
+- main:
+  - heading "My Mistakes Bank" [level=1]
+  - paragraph: Every question you struggled with, preserved for targeted remediation and re-testing.
+  - button "Practice My Mistakes (3)":
+    - generic: Practice My Mistakes (3)
+  - generic: Total Recorded
+  - generic: 3 items
+  - generic: Needs Practice
+  - generic: 3 items
+  - generic: Resolved
+  - generic: 0 cleared
+  - generic: Remediation Rate
+  - generic: 0%
+  - button "Needs Practice (3)"
+  - button "Resolved (0)"
+  - button "All (3)"
+  - textbox "Search mistakes by keyword or concept..."
+  - generic: Entropy & Second Law of Thermodynamics
+  - generic: Level 4/5
+  - text: "Practiced:"
+  - strong: 2x
+  - generic: Needs Practice
+  - heading "An ideal gas undergoes an irreversible free expansion into an insulated vacuum, doubling its volume. If initial temperature is T, what is the entropy change of the gas (ΔS_gas)?" [level=3]
+  - generic: Thermodynamics Presentation.pdf (Slide 14)
+  - generic: "Your Submitted Answer:"
+  - paragraph: ΔS_gas = 0 (because the container is insulated and Q = 0)
+  - generic: "Correct Academic Answer:"
+  - paragraph: ΔS_gas = nR ln(2)
+  - generic: "Why this happens (Concept Derivation):"
+  - paragraph: Entropy is a state function! Although the actual irreversible expansion has Q = 0, ΔS must be evaluated along a reversible path connecting the same initial and final states (isothermal reversible expansion where ΔT = 0, V₂ = 2V₁). Therefore, ΔS = nR ln(V₂/V₁) = nR ln(2).
+  - button "Review Concept Lesson":
+    - generic: Review Concept Lesson
+  - button "Re-test This Question":
+    - generic: Re-test This Question
+  - generic: Carnot Engine & Efficiency
+  - generic: Level 4/5
+  - text: "Practiced:"
+  - strong: 1x
+  - generic: Needs Practice
+  - heading "A Carnot engine operates between source temperature 327°C and sink temperature 27°C. If it absorbs 1200 J of heat from the source in each cycle, calculate the work output per cycle." [level=3]
+  - generic: Class Worksheet.pdf (Problem 4)
+  - generic: "Your Submitted Answer:"
+  - paragraph: 1100 J
+  - generic: "Correct Academic Answer:"
+  - paragraph: 600 J
+  - generic: "Why this happens (Concept Derivation):"
+  - paragraph: "Always convert Celsius to Kelvin first! T_source = 327 + 273 = 600 K. T_sink = 27 + 273 = 300 K. Efficiency η = 1 - (T_sink / T_source) = 1 - (300 / 600) = 0.5 (50%). Work output W = η × Q_in = 0.5 × 1200 J = 600 J. (Common error: using 27/327 yields false 91.7% efficiency)."
+  - button "Review Concept Lesson":
+    - generic: Review Concept Lesson
+  - button "Re-test This Question":
+    - generic: Re-test This Question
+  - generic: Hybridisation (sp, sp², sp³, sp³d, sp³d²)
+  - generic: Level 4/5
+  - text: "Practiced:"
+  - strong: 2x
+  - generic: Needs Practice
+  - heading "What is the hybridisation of the central sulfur atom and the molecular shape of SF₄?" [level=3]
+  - generic: Revision Notes.pdf
+  - generic: "Your Submitted Answer:"
+  - paragraph: sp³d hybridisation with Trigonal Bipyramidal shape
+  - generic: "Correct Academic Answer:"
+  - paragraph: sp³d hybridisation with See-Saw shape
+  - generic: "Why this happens (Concept Derivation):"
+  - paragraph: Sulfur has 6 valence electrons. In SF₄, 4 electrons form 4 σ-bonds with Fluorine, leaving 1 lone pair. Steric Number = 4 (bonds) + 1 (lone pair) = 5 → sp³d hybridisation. Electron geometry is trigonal bipyramidal, but because the lone pair occupies an equatorial position to minimize 90° repulsions, the molecular shape is See-Saw.
+  - button "Review Concept Lesson":
+    - generic: Review Concept Lesson
+  - button "Re-test This Question":
+    - generic: Re-test This Question

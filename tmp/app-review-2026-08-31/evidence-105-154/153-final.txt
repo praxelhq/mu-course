@@ -1,0 +1,191 @@
+- complementary:
+  - generic: Ledger Insights
+  - generic: Campaign Intelligence
+  - navigation:
+    - link "Overview":
+      - /url: /
+      - text: Overview
+    - link "Campaigns":
+      - /url: /campaigns
+      - text: Campaigns
+    - link "Lead Intake":
+      - /url: /leads
+      - text: Lead Intake
+    - link "BTL & Events":
+      - /url: /events
+      - text: BTL & Events
+    - link "CRM Sync":
+      - /url: /crm
+      - text: CRM Sync
+  - generic: CBS & CRM connectors running in stub mode
+  - button "Dark mode":
+    - text: Dark mode
+- banner:
+  - heading "CRM Sync" [level=1]
+  - paragraph: Push qualified leads downstream — suppressed records are never transmitted
+  - text: CRM connector running in stub mode
+  - button "Toggle theme":
+    - text: Dark
+- main:
+  - generic: Qualified for CRM
+  - generic: 6,194
+  - generic: Already pushed
+  - generic: 4,493
+  - generic: 72.5%
+  - generic: Pending batch
+  - generic: 1,701
+  - generic: Blocked (suppressed)
+  - generic: "996"
+  - generic: ETB on acquisition drives
+  - heading "Campaign push queue" [level=2]
+  - paragraph: Each push sends campaign ID, audience tag, demographic and psychographic attributes with the lead record
+  - table:
+    - rowgroup:
+      - row "Campaign Objective Qualified Pushed Pending Blocked Value uplift":
+        - columnheader "Campaign"
+        - columnheader "Objective"
+        - columnheader "Qualified"
+        - columnheader "Pushed"
+        - columnheader "Pending"
+        - columnheader "Blocked"
+        - columnheader "Value uplift"
+        - columnheader
+    - rowgroup:
+      - row "Monsoon Salary Account Drive CMP-1001 · Digital NTB Acquisition 962 696 266 349 ₹11.54 Cr Push 266":
+        - cell "Monsoon Salary Account Drive CMP-1001 · Digital":
+          - generic: Monsoon Salary Account Drive
+          - generic: CMP-1001 · Digital
+        - cell "NTB Acquisition"
+        - cell "962"
+        - cell "696"
+        - cell "266"
+        - cell "349"
+        - cell "₹11.54 Cr"
+        - cell "Push 266":
+          - button "Push 266":
+            - text: Push 266
+      - row "Platinum Card Upgrade Sprint CMP-1002 · Digital Cross-Sell 1,288 923 365 0 ₹27.77 Cr Push 365":
+        - cell "Platinum Card Upgrade Sprint CMP-1002 · Digital":
+          - generic: Platinum Card Upgrade Sprint
+          - generic: CMP-1002 · Digital
+        - cell "Cross-Sell"
+        - cell "1,288"
+        - cell "923"
+        - cell "365"
+        - cell "0"
+        - cell "₹27.77 Cr"
+        - cell "Push 365":
+          - button "Push 365":
+            - text: Push 365
+      - row "Home Loan Festive Mela CMP-1003 · BTL NTB Acquisition 246 184 62 100 ₹4.31 Cr Push 62":
+        - cell "Home Loan Festive Mela CMP-1003 · BTL":
+          - generic: Home Loan Festive Mela
+          - generic: CMP-1003 · BTL
+        - cell "NTB Acquisition"
+        - cell "246"
+        - cell "184"
+        - cell "62"
+        - cell "100"
+        - cell "₹4.31 Cr"
+        - cell "Push 62":
+          - button "Push 62":
+            - text: Push 62
+      - row "Priority Banking Wealth Meet CMP-1004 · BTL ETB Engagement 446 327 119 0 ₹9.63 Cr Push 119":
+        - cell "Priority Banking Wealth Meet CMP-1004 · BTL":
+          - generic: Priority Banking Wealth Meet
+          - generic: CMP-1004 · BTL
+        - cell "ETB Engagement"
+        - cell "446"
+        - cell "327"
+        - cell "119"
+        - cell "0"
+        - cell "₹9.63 Cr"
+        - cell "Push 119":
+          - button "Push 119":
+            - text: Push 119
+      - row "Young Earners Digital Push CMP-1005 · Digital NTB Acquisition 932 693 239 362 ₹12.49 Cr Push 239":
+        - cell "Young Earners Digital Push CMP-1005 · Digital":
+          - generic: Young Earners Digital Push
+          - generic: CMP-1005 · Digital
+        - cell "NTB Acquisition"
+        - cell "932"
+        - cell "693"
+        - cell "239"
+        - cell "362"
+        - cell "₹12.49 Cr"
+        - cell "Push 239":
+          - button "Push 239":
+            - text: Push 239
+      - row "SME Current Account Roadshow CMP-1006 · BTL NTB Acquisition 425 301 124 185 ₹6.26 Cr Push 124":
+        - cell "SME Current Account Roadshow CMP-1006 · BTL":
+          - generic: SME Current Account Roadshow
+          - generic: CMP-1006 · BTL
+        - cell "NTB Acquisition"
+        - cell "425"
+        - cell "301"
+        - cell "124"
+        - cell "185"
+        - cell "₹6.26 Cr"
+        - cell "Push 124":
+          - button "Push 124":
+            - text: Push 124
+      - row "Auto Loan Dealer Activation CMP-1007 · BTL Cross-Sell 376 270 106 0 ₹7.79 Cr Push 106":
+        - cell "Auto Loan Dealer Activation CMP-1007 · BTL":
+          - generic: Auto Loan Dealer Activation
+          - generic: CMP-1007 · BTL
+        - cell "Cross-Sell"
+        - cell "376"
+        - cell "270"
+        - cell "106"
+        - cell "0"
+        - cell "₹7.79 Cr"
+        - cell "Push 106":
+          - button "Push 106":
+            - text: Push 106
+      - row "FD Rate Awareness Blast CMP-1008 · Digital ETB Engagement 1,519 1,099 420 0 ₹33.85 Cr Push 420":
+        - cell "FD Rate Awareness Blast CMP-1008 · Digital":
+          - generic: FD Rate Awareness Blast
+          - generic: CMP-1008 · Digital
+        - cell "ETB Engagement"
+        - cell "1,519"
+        - cell "1,099"
+        - cell "420"
+        - cell "0"
+        - cell "₹33.85 Cr"
+        - cell "Push 420":
+          - button "Push 420":
+            - text: Push 420
+  - heading "Field mapping" [level=2]
+  - paragraph: Payload contract used when the live CRM connector is wired
+  - code: mobile
+  - generic: Primary key — CBS match basis
+  - code: audience_tag
+  - generic: NTB / ETB
+  - code: campaign_id
+  - generic: Source campaign
+  - code: channel
+  - generic: Digital channel or BTL venue
+  - code: age / age_band
+  - generic: Demographic
+  - code: sex
+  - generic: Demographic
+  - code: city
+  - generic: Demographic
+  - code: lifestyle_segment
+  - generic: Psychographic
+  - code: risk_appetite
+  - generic: Psychographic
+  - code: digital_savviness
+  - generic: Psychographic
+  - code: spend_behaviour
+  - generic: Psychographic
+  - code: pre_conversion_value
+  - generic: Existing relationship value
+  - code: post_conversion_value
+  - generic: Value after conversion
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_73e350hzj38zsvhtdjet7mphyk?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

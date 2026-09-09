@@ -1,0 +1,30 @@
+- navigation:
+  - link "GAME HUB":
+    - /url: ../index.html
+  - link "Home":
+    - /url: ../index.html
+  - link "Pen Fight":
+    - /url: pen-fight.html
+  - link "Air Hockey":
+    - /url: air-hockey.html
+- main:
+  - heading "🔴 Carrom Flick" [level=1]
+  - paragraph: Flick any of your coins slingshot-style. Knock out all 3 opponent coins to win.
+  - button "BOT"
+  - button "PVP"
+  - generic: YOUR COINS
+  - generic: "3"
+  - generic: VS
+  - generic: BOT COINS
+  - generic: "3"
+  - heading "You Win!" [level=2]
+  - button "Play Again"
+  - button "Reset Match"
+  - heading "How to play" [level=3]
+  - list:
+    - listitem: You each start with 3 gold / silver coins on the board.
+    - listitem: On your turn, drag any one of your own coins backward and release to flick it.
+    - listitem: If a coin fully crosses the black border, it's knocked out permanently.
+    - listitem: First player to knock out all 3 of their opponent's coins wins the match.
+- contentinfo:
+  - paragraph: © 2026 Game Hub Online.

@@ -1,0 +1,135 @@
+- generic: ख्याति
+- generic: Khyati
+- generic: Crisis Response Infrastructure
+- generic: DEMO — SIMULATED
+- navigation "Surface":
+  - button "Consumer app"
+  - button "Responder console"
+  - button "Operations"
+  - button "Audit"
+- main:
+  - heading "Queue & my incidents" [level=2]
+  - generic: "6"
+  - strong: Aarti Menon
+  - text: · R-01 · shift ends 22:00
+  - button "AVAILABLE"
+  - button "BUSY"
+  - button "BREAK"
+  - button "OFFLINE"
+  - button "immediate INC-2404 — ⟶ Offered to you OFFERED · unsafe · HI · SIM":
+    - generic: immediate
+    - generic: INC-2404
+    - generic: —
+    - generic: ⟶ Offered to you
+    - generic: OFFERED · unsafe · HI · SIM
+  - button "immediate INC-2405 — ⟶ Offered to you OFFERED · help now · EN · SIM":
+    - generic: immediate
+    - generic: INC-2405
+    - generic: —
+    - generic: ⟶ Offered to you
+    - generic: OFFERED · help now · EN · SIM
+  - button "high INC-2403 — ⟶ Offered to you OFFERED · sos · EN · SIM":
+    - generic: high
+    - generic: INC-2403
+    - generic: —
+    - generic: ⟶ Offered to you
+    - generic: OFFERED · sos · EN · SIM
+  - button "moderate INC-2406 — ⟶ Offered to you OFFERED · talk · HI · SIM":
+    - generic: moderate
+    - generic: INC-2406
+    - generic: —
+    - generic: ⟶ Offered to you
+    - generic: OFFERED · talk · HI · SIM
+  - button "support INC-2401 — ⟶ Offered to you OFFERED · help now · EN · SIM":
+    - generic: support
+    - generic: INC-2401
+    - generic: —
+    - generic: ⟶ Offered to you
+    - generic: OFFERED · help now · EN · SIM
+  - button "support INC-2402 — ⟶ Offered to you OFFERED · talk · HI · SIM":
+    - generic: support
+    - generic: INC-2402
+    - generic: —
+    - generic: ⟶ Offered to you
+    - generic: OFFERED · talk · HI · SIM
+  - heading "Incident" [level=2]
+  - generic: INC-2404
+  - group "Incident state tracks":
+    - generic: Life
+    - generic "TRIAGE"
+    - generic: Responder
+    - generic "OFFERED"
+    - generic: Trusted
+    - generic "NONE"
+    - generic: Location
+    - generic "NOT_REQUESTED": NOT REQUESTED
+    - generic: Clinical
+    - generic "NONE"
+    - generic: Emergency
+    - generic "NONE"
+    - generic: Follow-up
+    - generic "NOT_SCHEDULED": NOT SCHEDULED
+  - heading "INC-2404" [level=1]
+  - generic: immediate
+  - generic: opened 01:23 · 04:58 ago
+  - heading "Who is helping this person" [level=3]
+  - term: Owner
+  - definition: Unassigned — no one owns this yet
+  - term: Supervisor
+  - definition: Not involved
+  - term: Person
+  - definition: Anonymous caller HI
+  - term: Entry point
+  - definition: unsafe
+  - term: Next action
+  - definition: Accept or decline this offer
+  - heading "What the person told us" [level=3]
+  - text: Triage skipped by the person. Not a red flag on its own.
+  - paragraph: Simulated floor traffic.
+  - heading "Consent & disclosure" [level=3]
+  - term: Location
+  - definition: Not shared — do not ask twice without reason
+  - term: Trusted contact
+  - definition: None approved
+  - term: Clinical
+  - definition: No referral
+  - heading "Timeline — every state change, who caused it" [level=3]
+  - list:
+    - generic: 01:27
+    - strong: Responder
+    - text: QUEUED → OFFERED
+    - emphasis: · Offered to Aarti Menon (R-01)
+    - emphasis: · dispatch
+    - generic: 01:27
+    - strong: Responder
+    - text: UNASSIGNED → QUEUED
+    - emphasis: · Entered responder queue
+    - emphasis: · system
+    - generic: 01:27
+    - strong: Life
+    - text: — → TRIAGE
+    - emphasis: · Incident created
+    - emphasis: · u_48k0pfa
+  - heading "Actions" [level=2]
+  - button "Accept incident owns it":
+    - text: Accept incident
+    - generic: owns it
+  - heading "What you may see" [level=3]
+  - paragraph:
+    - text: Role
+    - strong: RESPONDER
+    - text: . Incidents assigned to you or in open queue. First name only until consent. Location only while sharing is ACTIVE and you own the incident. Clinical notes summary only. Audit shows your own actions.
+- generic: Demo controls
+- button "Take all responders offline"
+- button "Trusted contact replies"
+- button "Fast-forward 2h"
+- button "Fast-forward 24h"
+- generic: Scenario
+- button "Run full end-to-end"
+- 'button "Surge: +5 incidents"'
+- button "Reset"
+- generic: Console user
+- generic: Aarti Menon · AVAILABLE
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

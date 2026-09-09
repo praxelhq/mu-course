@@ -1,0 +1,50 @@
+- banner:
+  - link "TravelTailor AI":
+    - /url: /
+    - generic: travel_explore
+    - generic: TravelTailor AI
+  - button "Toggle dark mode":
+    - generic: dark_mode
+  - link "Exit planning":
+    - /url: /
+    - generic: close
+    - generic: Exit planning
+- main:
+  - generic: Step 4 of 5
+  - generic: Destination
+  - generic: Dates
+  - generic: Travellers
+  - generic: Budget
+  - generic: Interests
+  - heading "What's the budget?" [level=2]
+  - paragraph: We keep every recommendation inside this envelope and flag when it drifts.
+  - generic: Amount
+  - generic: $
+  - textbox "Amount": 8,500
+  - generic: Currency
+  - combobox "Currency":
+    - option "USD $" [selected]
+    - option "EUR €"
+    - option "GBP £"
+    - option "JPY ¥"
+    - option "INR ₹"
+  - button "Total trip"
+  - button "Per traveller"
+  - button "Per day"
+  - generic: Comfort level
+  - button "Budget"
+  - button "Moderate"
+  - button "Premium"
+  - button "Luxury"
+  - button "Back":
+    - generic: arrow_back
+    - text: Back
+  - button "Continue" [active]:
+    - text: Continue
+    - generic: arrow_forward
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_4zxp32hwhk8nerwh4551kt6jsj?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

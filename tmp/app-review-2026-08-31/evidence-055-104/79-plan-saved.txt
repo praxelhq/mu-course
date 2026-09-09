@@ -1,0 +1,287 @@
+- navigation:
+  - button "card_giftcard Gift Genius Buddy":
+    - generic: card_giftcard
+    - generic: Gift Genius
+    - generic: Buddy
+  - button "home Home":
+    - generic: home
+    - generic: Home
+  - button "checklist_rtl Gift Lists 3":
+    - generic: checklist_rtl
+    - generic: Gift Lists
+    - generic: "3"
+  - button "group People & Occasions":
+    - generic: group
+    - generic: People & Occasions
+  - button "bookmark Wishlist":
+    - generic: bookmark
+    - generic: Wishlist
+  - button "person Profile":
+    - generic: person
+    - generic: Profile
+  - button "search":
+    - generic: search
+  - button "chat":
+    - generic: chat
+  - button "notifications":
+    - generic: notifications
+  - button "auto_awesome Find Gifts":
+    - generic: auto_awesome
+    - generic: Find Gifts
+  - button "G Guest expand_more":
+    - generic: G
+    - generic: Guest
+    - generic: expand_more
+- main:
+  - generic: smart_toy
+  - generic: Intelligent Gift Advisory & Curated Guides
+  - heading "Curated Gift Suggestions for Demo Friend" [level=1]
+  - paragraph: Personalized gift blueprints tailored to Demo Friend’s tastes, complete with buying tips, presentation ideas, and greeting card messages.
+  - button "checklist View Demo Friend’s Gift Plan":
+    - generic: checklist
+    - generic: View Demo Friend’s Gift Plan
+  - button "tune Adjust Criteria":
+    - generic: tune
+    - generic: Adjust Criteria
+  - generic: D
+  - heading "Demo Friend" [level=2]
+  - generic: friend
+  - generic: ✨ foodie epicurean
+  - paragraph:
+    - generic: Demo Friend's Celebration
+    - generic: •
+    - generic: 6 September 2026
+    - generic: •
+    - generic: location_on
+    - text: Mumbai
+    - generic: •
+    - generic: "Surprise: balanced"
+  - generic: "#Coffee"
+  - generic: • practical
+  - generic: • sentimental
+  - generic: • combination
+  - generic: Active Budget Bracket
+  - generic: ₹500 – ₹1,000
+  - generic: 10 curated concepts & 3 hampers matched
+  - button "recommend Curated Gift Ideas (10)":
+    - generic: recommend
+    - generic: Curated Gift Ideas (10)
+  - button "auto_awesome_motion Curated Gift Hampers & Bundles (3)":
+    - generic: auto_awesome_motion
+    - generic: Curated Gift Hampers & Bundles (3)
+  - generic: "Sort by:"
+  - combobox:
+    - option "Highest Match Score" [selected]
+    - 'option "Price: Low to High"'
+    - 'option "Price: High to Low"'
+  - generic: "Gift Style:"
+  - button "All Styles"
+  - button "build Something practical"
+  - button "favorite Something sentimental"
+  - button "confirmation_number An experience"
+  - button "diamond Something they would never buy themselves"
+  - button "mood Something funny"
+  - button "star Something premium"
+  - button "magic_button Something surprising"
+  - button "all_inclusive A combination"
+  - article:
+    - img "Subko Specialty Coffee Roasters Single-Estate Discovery Box"
+    - generic: Top Pick for Demo Friend
+    - generic: 83% Match Score
+    - generic: Coffee
+    - button "notifications_none":
+      - generic: notifications_none
+    - heading "Subko Specialty Coffee Roasters Single-Estate Discovery Box" [level=3]
+    - generic: Approx. ₹1,650 – ₹2,200
+    - generic: MRP ₹2,200
+    - generic: Curated Blueprint
+    - generic: info
+    - generic: Approximate market range. Live store prices fluctuate with active bank offers & flash sales.
+    - generic: psychology
+    - generic: Why Your Buddy Recommends This for Demo Friend
+    - paragraph: A thoughtful, high-utility gesture for any coffee devotee. Freshly roasted with distinct fruity and chocolate notes. Includes guaranteed priority fulfillment to Mumbai.
+    - generic: menu_book
+    - generic: Includes Buying Guide & Card Message
+    - button "View Full Guide arrow_forward":
+      - generic: View Full Guide
+      - generic: arrow_forward
+    - button "bookmark_add Add to Demo Friend’s Plan":
+      - generic: bookmark_add
+      - generic: Add to Demo Friend’s Plan
+  - article:
+    - img "Blue Tokai Easy Pour Specialty Drip Coffee Bags (Pack of 10)"
+    - generic: 82% Match
+    - generic: Best Deal
+    - text: Coffee
+    - heading "Blue Tokai Easy Pour Specialty Drip Coffee Bags (Pack of 10)" [level=3]
+    - generic: Approx. ₹500 – ₹650
+    - generic: MRP ₹650
+    - generic: Estimated market pricing
+    - paragraph: Single-serve nitro-flushed pour-over drip bags featuring specialty Indian Arabica roasts from Attikan and Silver Oak estates.
+    - button "View Guide arrow_forward":
+      - generic: View Guide
+      - generic: arrow_forward
+    - button "add Add to Plan" [active]:
+      - generic: add
+      - generic: Add to Plan
+  - heading "All Curated Suggestions for Demo Friend" [level=2]
+  - paragraph: Explore complete gift blueprints with buying checklists, unboxing tips, and card messages.
+  - generic: 8 suggestions
+  - article:
+    - img "Traditional Handmade Golden Bamboo Chasen Matcha Whisk & Scoop Set (100 Prongs)"
+    - generic: 82% Match
+    - generic: Best Deal
+    - generic: Coffee
+    - generic: Curated Idea
+    - heading "Traditional Handmade Golden Bamboo Chasen Matcha Whisk & Scoop Set (100 Prongs)" [level=3]
+    - generic: Approx. ₹650 – ₹1,000
+    - generic: MRP ₹999
+    - generic: Estimated market range
+    - paragraph: Handcrafted from a single piece of seasoned natural bamboo, engineered to froth ceremonial grade matcha green tea into creamy micro-foam.
+    - button "bookmark_add Add to Plan":
+      - generic: bookmark_add
+      - generic: Add to Plan
+    - button "notifications_none":
+      - generic: notifications_none
+  - article:
+    - img "AeroPress Clear Shatterproof Coffee Maker & Custom Tote"
+    - generic: 66% Match
+    - generic: Staff Favorite
+    - generic: Coffee
+    - generic: Curated Idea
+    - heading "AeroPress Clear Shatterproof Coffee Maker & Custom Tote" [level=3]
+    - generic: Approx. ₹3,850 – ₹4,850
+    - generic: Estimated market range
+    - paragraph: Crystal-clear Tritan coffee press that brews smooth, grit-free espresso-style coffee in 60 seconds at home or on the road.
+    - button "bookmark_add Add to Plan":
+      - generic: bookmark_add
+      - generic: Add to Plan
+    - button "notifications_none":
+      - generic: notifications_none
+  - article:
+    - img "Traditional Kyoto Ceremonial Matcha & Handcrafted Chasen Whisk Set"
+    - generic: 56% Match
+    - generic: Staff Favorite
+    - generic: Coffee
+    - generic: Curated Idea
+    - heading "Traditional Kyoto Ceremonial Matcha & Handcrafted Chasen Whisk Set" [level=3]
+    - generic: Approx. ₹2,650 – ₹3,350
+    - generic: Estimated market range
+    - paragraph: Ceremonial first-harvest organic Uji matcha (30g), hand-carved golden bamboo whisk, handmade ceramic chawan bowl, and bamboo scoop.
+    - button "bookmark_add Add to Plan":
+      - generic: bookmark_add
+      - generic: Add to Plan
+    - button "notifications_none":
+      - generic: notifications_none
+  - article:
+    - img "De'Longhi Dedica Pump 15-Bar Stainless Steel Espresso Coffee Maker (Slim 15cm Body)"
+    - generic: 55% Match
+    - generic: Best Overall
+    - generic: Coffee
+    - generic: Curated Idea
+    - heading "De'Longhi Dedica Pump 15-Bar Stainless Steel Espresso Coffee Maker (Slim 15cm Body)" [level=3]
+    - generic: Approx. ₹20,900 – ₹27,000
+    - generic: MRP ₹26,990
+    - generic: Estimated market range
+    - paragraph: Thermoblock heating system, 15-bar professional pump, adjustable manual cappuccino steam frothing wand, and dual cup filter baskets.
+    - button "bookmark_add Add to Plan":
+      - generic: bookmark_add
+      - generic: Add to Plan
+    - button "notifications_none":
+      - generic: notifications_none
+  - article:
+    - img "Fellow Stagg EKG Electric Gooseneck Kettle (Matte Black)"
+    - generic: 54% Match
+    - generic: Best Overall
+    - generic: Coffee
+    - generic: Curated Idea
+    - heading "Fellow Stagg EKG Electric Gooseneck Kettle (Matte Black)" [level=3]
+    - generic: Approx. ₹13,350 – ₹16,700
+    - generic: Estimated market range
+    - paragraph: Precision variable temperature pour-over kettle with PID controller, LCD screen, and counterbalanced precision spout.
+    - button "bookmark_add Add to Plan":
+      - generic: bookmark_add
+      - generic: Add to Plan
+    - button "notifications_none":
+      - generic: notifications_none
+  - article:
+    - img "Imperial Darjeeling First Flush Wooden Gift Chest (3 Single Estates)"
+    - generic: 54% Match
+    - generic: Best Deal
+    - generic: Coffee
+    - generic: Curated Idea
+    - heading "Imperial Darjeeling First Flush Wooden Gift Chest (3 Single Estates)" [level=3]
+    - generic: Approx. ₹2,850 – ₹3,550
+    - generic: Estimated market range
+    - paragraph: Handcrafted polished teakwood chest with brass latch, holding whole-leaf muscatel teas from legendary Makaibari and Castleton gardens.
+    - button "bookmark_add Add to Plan":
+      - generic: bookmark_add
+      - generic: Add to Plan
+    - button "notifications_none":
+      - generic: notifications_none
+  - article:
+    - img "Ember Smart Temperature-Control Ceramic Mug 2 (295ml)"
+    - generic: 35% Match
+    - generic: Best Overall
+    - generic: Technology
+    - generic: Curated Idea
+    - heading "Ember Smart Temperature-Control Ceramic Mug 2 (295ml)" [level=3]
+    - generic: Approx. ₹11,900 – ₹14,000
+    - generic: MRP ₹14,000
+    - generic: Estimated market range
+    - paragraph: Precision temperature-controlled smart mug with 1.5 hr battery life, charging coaster, and smartphone companion app.
+    - button "bookmark_add Add to Plan":
+      - generic: bookmark_add
+      - generic: Add to Plan
+    - button "notifications_none":
+      - generic: notifications_none
+  - article:
+    - img "Grade A++ Pampore Kashmiri Mogra Saffron in Brass-Latched Teak Box (5g)"
+    - generic: 35% Match
+    - generic: Staff Favorite
+    - generic: Food
+    - generic: Curated Idea
+    - heading "Grade A++ Pampore Kashmiri Mogra Saffron in Brass-Latched Teak Box (5g)" [level=3]
+    - generic: Approx. ₹2,500 – ₹3,200
+    - generic: MRP ₹3,200
+    - generic: Estimated market range
+    - paragraph: Certified 100% pure organic Mongra saffron threads harvested from Kashmir valley in a velvet-lined heritage teakwood case with testing seal.
+    - button "bookmark_add Add to Plan":
+      - generic: bookmark_add
+      - generic: Add to Plan
+    - button "notifications_none":
+      - generic: notifications_none
+- generic: Gift Plan & Dossier
+- heading "Add Gift to Recipient Dossier" [level=2]
+- button "close":
+  - generic: close
+- img "Blue Tokai Easy Pour Specialty Drip Coffee Bags (Pack of 10)"
+- heading "Blue Tokai Easy Pour Specialty Drip Coffee Bags (Pack of 10)" [level=3]
+- generic: Approx. ₹500 – ₹650
+- generic: • Coffee
+- generic: Select Recipient List
+- combobox:
+  - option "Demo Friend’s Gift Dossier (Demo Friend's Celebration • 6 Sept)" [selected]
+  - option "Rahul’s Gift Dossier (Rahul's Birthday • 4 Sep)"
+  - option "Aarav’s Gift Dossier (Work Promotion • 28 Sep)"
+  - option "Sarah’s Gift Dossier (Sarah's 30th Birthday • 14 Nov)"
+  - option "Mom’s Gift Dossier (Mom's Birthday • 18 Nov)"
+- generic: Gift Idea Status
+- button "star Top Contender":
+  - generic: star
+  - generic: Top Contender
+- button "lightbulb Idea / Maybe":
+  - generic: lightbulb
+  - generic: Idea / Maybe
+- button "card_giftcard Decided to Buy":
+  - generic: card_giftcard
+  - generic: Decided to Buy
+- button "check_circle Purchased":
+  - generic: check_circle
+  - generic: Purchased
+- generic: Personal Planning Notes & Specifications
+- textbox "e.g. Size M • Prefers warm terracotta tone • Order 2 weeks prior"
+- button "Cancel"
+- button "bookmark_add Save to Demo Friend’s Plan":
+  - generic: bookmark_add
+  - generic: Save to Demo Friend’s Plan

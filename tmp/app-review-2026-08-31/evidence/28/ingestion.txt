@@ -1,0 +1,67 @@
+- complementary:
+  - generic: S
+  - heading "SIGNAL" [level=1]
+  - paragraph: Precision Intelligence
+  - navigation:
+    - button "Dashboard":
+      - generic: Dashboard
+    - button "Customer Voice":
+      - generic: Customer Voice
+    - button "Emerging Issues":
+      - generic: Emerging Issues
+    - button "Opportunities":
+      - generic: Opportunities
+    - button "Action Center":
+      - generic: Action Center
+    - button "Data Ingestion" [active]:
+      - generic: Data Ingestion
+  - button "New Action":
+    - generic: New Action
+  - button "Settings":
+    - generic: Settings
+  - img "Alex Morgan"
+  - generic: Alex Morgan
+- banner:
+  - heading "Acme Beauty Customer Intelligence" [level=2]
+  - generic: Acme Beauty Q3
+  - navigation:
+    - button "Overview"
+    - button "Reports"
+    - button "History"
+  - textbox "Search signals, issues..."
+  - button "Notifications":
+  - button "Help and documentation":
+  - button "Invite Team":
+    - generic: Invite Team
+- main:
+  - heading "Bring in your customer voice" [level=1]
+  - paragraph: Connect a source or upload feedback to start analysing your customers.
+  - generic: AMAZON
+  - generic: Direct review sync
+  - heading "Amazon Product Reviews" [level=3]
+  - paragraph: Enter an Amazon product ASIN or listing URL to ingest and analyze customer reviews.
+  - generic: Product ASIN or URL
+  - textbox "e.g. B08N5WRWNW or https://..."
+  - generic: Direct ASIN sync will evaluate the latest customer review batches.
+  - button "Analyse Product":
+    - generic: Analyse Product
+  - generic: CSV UPLOAD
+  - generic: Batch processing
+  - heading "Upload Feedback File" [level=3]
+  - paragraph: Upload your customer feedback, survey responses, or support tickets.
+  - generic: Drag and drop your CSV file here
+  - generic: or click to browse files
+  - button "Download Sample CSV Template":
+    - generic: Download Sample CSV Template
+  - generic: SAMPLE DATASET
+  - generic: Instant explore
+  - heading "Explore with Pre-Loaded Data" [level=3]
+  - paragraph: Explore SIGNAL with calibrated real-world e-commerce datasets.
+  - generic: Acme Beauty Q3
+  - generic: 100 reviews
+  - paragraph: Skincare & Cosmetics customer reviews and support tickets across all sales channels
+  - generic: NovaTech Gadgets Q3
+  - generic: 50 reviews
+  - paragraph: Consumer Electronics customer reviews & hardware feedback
+  - button "Use Sample Dataset":
+    - generic: Use Sample Dataset

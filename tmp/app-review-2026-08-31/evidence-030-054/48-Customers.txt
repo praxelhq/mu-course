@@ -1,0 +1,192 @@
+- complementary:
+  - generic: F
+  - heading "FounderOS" [level=1]
+  - generic: NovaCraft Labs
+  - navigation:
+    - button "Dashboard":
+      - generic: Dashboard
+    - button "Products":
+      - generic: Products
+    - button "Marketing":
+      - generic: Marketing
+    - button "Finance":
+      - generic: Finance
+    - button "Customers" [active]:
+      - generic: Customers
+    - button "Goals & Tasks 6":
+      - generic: Goals & Tasks
+      - generic: "6"
+    - generic: Intelligence
+    - button "Founder Copilot AI":
+      - generic: Founder Copilot
+      - generic: AI
+    - button "Settings":
+      - generic: Settings
+  - generic: AJ
+  - generic: Alex Johnson
+  - generic: Pro Founder Plan
+  - button "Switch Workspace / Sign Out":
+- banner:
+  - generic: NovaCraft Labs
+  - generic: Customer Intelligence
+  - button "Quick Search... ⌘K":
+    - generic: Quick Search...
+    - generic: ⌘K
+  - generic: August 2026 (Q3)
+  - button "Executive Report":
+    - generic: Executive Report
+  - button "Copilot":
+    - generic: Copilot
+  - button "Alerts":
+- main:
+  - heading "Customer Intelligence & Cohorts" [level=1]
+  - paragraph: Segmented user directory, lifetime value, and cohort engagement metrics.
+  - button "Add Customer":
+    - generic: Add Customer
+  - paragraph: Total Customer Base
+  - paragraph: 1,248
+  - text: +9.8% growth vs July
+  - paragraph: Average Order Value
+  - paragraph: ₹2,420
+  - text: Blended basket size
+  - paragraph: Repeat Purchase Rate
+  - paragraph: 34.6%
+  - text: +4.2% MoM uplift
+  - paragraph: Net Promoter Score (NPS)
+  - paragraph: 68 / 100
+  - text: World-class satisfaction
+  - heading "VIP Customers" [level=3]
+  - generic: 2 profiles
+  - paragraph:
+    - text: Top 8% of customers generating
+    - strong: 38% of total revenue
+    - text: . High brand loyalty and prime candidates for early product access.
+  - generic: "Strategy: White-glove concierge & bundles"
+  - heading "Repeat Buyers" [level=3]
+  - generic: 2 profiles
+  - paragraph: 2 to 4 repeat purchases. Predictable lifetime value and highest referral generation rate.
+  - generic: "Strategy: Loyalty rewards & accessories cross-sell"
+  - heading "New Customers" [level=3]
+  - generic: 2 profiles
+  - paragraph: First-time buyers acquired over the last 30 days. Currently undergoing the initial onboarding experience.
+  - generic: "Strategy: Automated day 7-14 review follow-up"
+  - heading "At Risk" [level=3]
+  - generic: 2 profiles
+  - paragraph: Previously active buyers with no orders in 90+ days. Risk of churn without reactivation nudges.
+  - generic: "Strategy: 15% winback promo & feedback check"
+  - textbox "Search customer name, email, city..."
+  - generic: "Cohort Segment:"
+  - combobox:
+    - option "All Segments (8)" [selected]
+    - option "VIP Customers (2)"
+    - option "Repeat Buyers (2)"
+    - option "New Customers (2)"
+    - option "At Risk (2)"
+  - table:
+    - rowgroup:
+      - row "Customer Name & Profile Email Total Orders Lifetime Value (LTV) Last Purchase Segment Top Product":
+        - columnheader "Customer Name & Profile"
+        - columnheader "Email"
+        - columnheader "Total Orders"
+        - columnheader "Lifetime Value (LTV)"
+        - columnheader "Last Purchase"
+        - columnheader "Segment"
+        - columnheader "Top Product"
+    - rowgroup:
+      - row "PS Priya Sharma Bengaluru priya.sharma@example.com 8 orders ₹18,400 2026-08-22 VIP Customers Wireless Earbuds":
+        - cell "PS Priya Sharma Bengaluru":
+          - generic: PS
+          - paragraph: Priya Sharma
+          - paragraph: Bengaluru
+        - cell "priya.sharma@example.com"
+        - cell "8 orders"
+        - cell "₹18,400"
+        - cell "2026-08-22"
+        - cell "VIP Customers":
+          - generic: VIP Customers
+        - cell "Wireless Earbuds"
+      - row "RM Rohan Mehta Mumbai rohan.m@technovate.io 5 orders ₹12,450 2026-08-20 VIP Customers Travel Backpack":
+        - cell "RM Rohan Mehta Mumbai":
+          - generic: RM
+          - paragraph: Rohan Mehta
+          - paragraph: Mumbai
+        - cell "rohan.m@technovate.io"
+        - cell "5 orders"
+        - cell "₹12,450"
+        - cell "2026-08-20"
+        - cell "VIP Customers":
+          - generic: VIP Customers
+        - cell "Travel Backpack"
+      - row "AI Ananya Iyer Hyderabad ananya.iyer92@gmail.com 3 orders ₹6,397 2026-08-19 Repeat Buyers Mini Printer":
+        - cell "AI Ananya Iyer Hyderabad":
+          - generic: AI
+          - paragraph: Ananya Iyer
+          - paragraph: Hyderabad
+        - cell "ananya.iyer92@gmail.com"
+        - cell "3 orders"
+        - cell "₹6,397"
+        - cell "2026-08-19"
+        - cell "Repeat Buyers":
+          - generic: Repeat Buyers
+        - cell "Mini Printer"
+      - row "KD Kavita Das Delhi NCR kavita.das@venturepulse.in 4 orders ₹8,990 2026-08-15 Repeat Buyers Smart Bottle":
+        - cell "KD Kavita Das Delhi NCR":
+          - generic: KD
+          - paragraph: Kavita Das
+          - paragraph: Delhi NCR
+        - cell "kavita.das@venturepulse.in"
+        - cell "4 orders"
+        - cell "₹8,990"
+        - cell "2026-08-15"
+        - cell "Repeat Buyers":
+          - generic: Repeat Buyers
+        - cell "Smart Bottle"
+      - row "VS Vikram Sengupta Pune vikram.s@outlook.com 1 orders ₹2,499 2026-08-23 New Customers Mini Printer":
+        - cell "VS Vikram Sengupta Pune":
+          - generic: VS
+          - paragraph: Vikram Sengupta
+          - paragraph: Pune
+        - cell "vikram.s@outlook.com"
+        - cell "1 orders"
+        - cell "₹2,499"
+        - cell "2026-08-23"
+        - cell "New Customers":
+          - generic: New Customers
+        - cell "Mini Printer"
+      - row "SP Sneha Patel Ahmedabad sneha.patel@designstudio.org 1 orders ₹1,999 2026-08-21 New Customers Wireless Earbuds":
+        - cell "SP Sneha Patel Ahmedabad":
+          - generic: SP
+          - paragraph: Sneha Patel
+          - paragraph: Ahmedabad
+        - cell "sneha.patel@designstudio.org"
+        - cell "1 orders"
+        - cell "₹1,999"
+        - cell "2026-08-21"
+        - cell "New Customers":
+          - generic: New Customers
+        - cell "Wireless Earbuds"
+      - row "AV Arjun Verma Chennai arjun.v88@gmail.com 2 orders ₹3,898 2026-05-12 At Risk Smart Bottle":
+        - cell "AV Arjun Verma Chennai":
+          - generic: AV
+          - paragraph: Arjun Verma
+          - paragraph: Chennai
+        - cell "arjun.v88@gmail.com"
+        - cell "2 orders"
+        - cell "₹3,898"
+        - cell "2026-05-12"
+        - cell "At Risk":
+          - generic: At Risk
+        - cell "Smart Bottle"
+      - row "DN Divya Nair Kochi divya.nair@craftworks.co 3 orders ₹5,497 2026-04-28 At Risk Travel Backpack":
+        - cell "DN Divya Nair Kochi":
+          - generic: DN
+          - paragraph: Divya Nair
+          - paragraph: Kochi
+        - cell "divya.nair@craftworks.co"
+        - cell "3 orders"
+        - cell "₹5,497"
+        - cell "2026-04-28"
+        - cell "At Risk":
+          - generic: At Risk
+        - cell "Travel Backpack"
+- generic: ₹0.0L

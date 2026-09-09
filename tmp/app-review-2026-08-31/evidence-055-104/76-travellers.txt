@@ -1,0 +1,72 @@
+- banner:
+  - link "TravelTailor AI":
+    - /url: /
+    - generic: travel_explore
+    - generic: TravelTailor AI
+  - button "Toggle dark mode":
+    - generic: dark_mode
+  - link "Exit planning":
+    - /url: /
+    - generic: close
+    - generic: Exit planning
+- main:
+  - generic: Step 3 of 5
+  - generic: Destination
+  - generic: Dates
+  - generic: Travellers
+  - generic: Budget
+  - generic: Interests
+  - heading "Who's coming along?" [level=2]
+  - paragraph: Ages and pace shape the daily rhythm, walking distances and activity choices.
+  - button "Solo":
+    - generic: person
+    - text: Solo
+  - button "Couple":
+    - generic: favorite
+    - text: Couple
+  - button "Family":
+    - generic: family_restroom
+    - text: Family
+  - button "Friends":
+    - generic: groups
+    - text: Friends
+  - button "Multi-gen":
+    - generic: diversity_3
+    - text: Multi-gen
+  - textbox "Traveller 1 name": You
+  - textbox "Traveller age":
+    - /placeholder: Age
+    - text: "34"
+  - button "Remove traveller":
+    - generic: close
+  - textbox "Traveller 2 name"
+  - textbox "Traveller age":
+    - /placeholder: Age
+    - text: "32"
+  - button "Remove traveller":
+    - generic: close
+  - button "Add traveller":
+    - generic: add
+    - text: Add traveller
+  - generic: Preferred pace
+  - button "Relaxed Short walks, plenty of downtime":
+    - generic: Relaxed
+    - generic: Short walks, plenty of downtime
+  - button "Balanced A mix of activity and rest":
+    - generic: Balanced
+    - generic: A mix of activity and rest
+  - button "Active Long days, hikes, early starts":
+    - generic: Active
+    - generic: Long days, hikes, early starts
+  - button "Back":
+    - generic: arrow_back
+    - text: Back
+  - button "Continue" [active]:
+    - text: Continue
+    - generic: arrow_forward
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_4zxp32hwhk8nerwh4551kt6jsj?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

@@ -1,0 +1,53 @@
+- banner:
+  - button "Open menu":
+  - generic: NetworkPro
+  - button "Reminders (2 due)":
+    - generic: "2"
+  - button "Capture":
+    - text: Capture
+- main:
+  - heading "Settings" [level=1]
+  - paragraph: Your profile, preferences and data.
+  - heading "Profile" [level=2]
+  - text: Name
+  - textbox "Name": Nupur
+  - text: Email
+  - textbox "Email"
+  - text: University
+  - textbox "University": Symbiosis Institute of Business Management
+  - text: Graduation year
+  - textbox "Graduation year": "2027"
+  - heading "Preferences" [level=2]
+  - generic: Follow-up reminders
+  - switch "Follow-up reminders" [checked]
+  - text: Default follow-up duration (days)
+  - spinbutton "Default follow-up duration (days)": "5"
+  - paragraph: Desktop notifications
+  - paragraph: Blocked. Allow notifications for this site in your browser settings.
+  - heading "Calendar" [level=2]
+  - paragraph: Export every pending follow-up and upcoming interview as a calendar file with 30-minute alerts. Import it into Google Calendar, Apple Calendar or Outlook — or add single events from any follow-up card.
+  - button "Export calendar (.ics)":
+    - text: Export calendar (.ics)
+  - heading "Data" [level=2]
+  - paragraph: NetworkPro stores your data locally in this browser so it survives refreshes. Uploaded screenshots and photos are never stored.
+  - button "Export Data":
+    - text: Export Data
+  - button "Reset Demo Data":
+    - text: Reset Demo Data
+- navigation "Bottom":
+  - link "Dashboard":
+    - /url: /
+    - text: Dashboard
+  - link "Network":
+    - /url: /network
+    - text: Network
+  - link "Follow-Ups":
+    - /url: /follow-ups
+    - text: Follow-Ups
+  - link "Interviews":
+    - /url: /interviews
+    - text: Interviews
+  - link "AI Assistant":
+    - /url: /assistant
+    - text: AI Assistant
+- region "Notifications alt+T"

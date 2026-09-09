@@ -1,0 +1,117 @@
+- complementary:
+  - link "Q QuoteFlow":
+    - /url: /
+    - generic: Q
+    - generic: QuoteFlow
+  - navigation:
+    - link "Dashboard":
+      - /url: /
+      - text: Dashboard
+    - link "Create Quotation":
+      - /url: /create-quotation
+      - text: Create Quotation
+    - link "Quotations":
+      - /url: /quotations
+      - text: Quotations
+    - link "Customers":
+      - /url: /customers
+      - text: Customers
+    - link "Products":
+      - /url: /products
+      - text: Products
+  - link "Settings":
+    - /url: /settings
+    - text: Settings
+  - generic: PS
+  - generic: Priya Sharma
+  - generic: Studio Lead
+  - link "Sign out":
+    - /url: /login
+- main:
+  - heading "Dashboard Overview" [level=2]
+  - link "New Quotation":
+    - /url: /create-quotation
+    - text: New Quotation
+  - heading "QuoteFlow dashboard" [level=1]
+  - paragraph: Total Quoted Value
+  - heading "₹11.68 L" [level=3]
+  - generic: 7 quotations • avg. ₹1.67 L
+  - paragraph: Accepted Revenue
+  - heading "₹5.43 L" [level=3]
+  - generic: 2 accepted quotations
+  - paragraph: Pending Value
+  - heading "₹3.03 L" [level=3]
+  - generic: 3 awaiting decision
+  - paragraph: Conversion Rate
+  - heading "50%" [level=3]
+  - generic: 2 won of 4 closed
+  - heading "Recent Quotations" [level=3]
+  - link "View All History":
+    - /url: /quotations
+  - 'link "RT Thakur Villa Renovation Client: Rohan Thakur • 2 hours ago ₹3,53,297.00 Accepted"':
+    - /url: /quotations/q2041
+    - generic: RT
+    - paragraph: Thakur Villa Renovation
+    - paragraph: "Client: Rohan Thakur • 2 hours ago"
+    - generic: ₹3,53,297.00
+    - generic: Accepted
+  - 'link "SI Dining Set Custom Order Client: Sneha Iyer • 5 hours ago ₹92,748.00 Sent"':
+    - /url: /quotations/q2040
+    - generic: SI
+    - paragraph: Dining Set Custom Order
+    - paragraph: "Client: Sneha Iyer • 5 hours ago"
+    - generic: ₹92,748.00
+    - generic: Sent
+  - 'link "DK Kitchen Design Consult Client: Devansh Kapoor • Yesterday ₹20,000.00 Draft"':
+    - /url: /quotations/q2039
+    - generic: DK
+    - paragraph: Kitchen Design Consult
+    - paragraph: "Client: Devansh Kapoor • Yesterday"
+    - generic: ₹20,000.00
+    - generic: Draft
+  - 'link "AD Boardroom Refit — Level 4 Client: Ananya Deshmukh • 3 days ago ₹1,89,595.60 Accepted"':
+    - /url: /quotations/q2038
+    - generic: AD
+    - paragraph: Boardroom Refit — Level 4
+    - paragraph: "Client: Ananya Deshmukh • 3 days ago"
+    - generic: ₹1,89,595.60
+    - generic: Accepted
+  - heading "Quotation Status Overview" [level=3]
+  - generic: Draft
+  - generic: 1 • 15%
+  - generic: Sent
+  - generic: 1 • 14%
+  - generic: Viewed
+  - generic: 1 • 14%
+  - generic: Accepted
+  - generic: 2 • 29%
+  - generic: Rejected
+  - generic: 1 • 14%
+  - generic: Expired
+  - generic: 1 • 14%
+  - heading "Top Customers" [level=3]
+  - generic: AD
+  - paragraph: Ananya Deshmukh
+  - paragraph: AD Interior Studio
+  - generic: ₹4.57 L
+  - generic: RT
+  - paragraph: Rohan Thakur
+  - paragraph: Thakur Villa, Juhu
+  - generic: ₹3.53 L
+  - generic: MN
+  - paragraph: Meera Nair
+  - paragraph: Boutique Living, Bandra
+  - generic: ₹1.90 L
+  - generic: SI
+  - paragraph: Sneha Iyer
+  - paragraph: Iyer Residence, Powai
+  - generic: ₹92.7K
+  - generic: VM
+  - paragraph: Vikram Menon
+  - paragraph: Menon Builders Pvt Ltd
+  - generic: ₹54.8K
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3r10cqfckt86ab3mkpab585xgk?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

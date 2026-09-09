@@ -1,0 +1,55 @@
+- banner:
+  - link "Claude home":
+    - /url: /
+    - generic: 
+  - button "GharOS":
+    - generic: GharOS
+    - generic: 
+  - generic: Content is user-generated and unverified.
+  - button "Share, shared with anyone who has the link":
+    - generic: Share
+  - status
+  - alert
+  - link "Sign in":
+    - /url: /login?returnTo=%2Fcode%2Fartifact%2F66f06408-2363-41b3-b2bc-43b42c82d12b%3Fopen_in_browser%3D1%26via%3Duser_open%26org%3Da0f81c5b-82b4-40de-b1ce-8b89c2e4ccd9
+    - generic: Sign in
+  - alert
+  - status
+- main:
+  - iframe [active] [id="frame-content"]:
+    - banner:
+      - heading "My profile" [level=1]
+      - generic: Sunita Devi
+    - main:
+      - generic: SD
+      - generic: Sunita Devi
+      - generic: ★★★★★
+      - generic: "4.8"
+      - generic: · 23 reviews
+      - generic: ✓ Aadhaar
+      - generic: ✓ PAN
+      - generic: Maid
+      - generic: Where I work
+      - generic: 🏠
+      - generic: B-1204, Ireo Victory Valley
+      - generic: Sector 67, Gurugram · since Jun 2026
+      - generic: Agreed salary
+      - generic: ₹11,500/month
+      - generic: Paid leaves
+      - generic: 4/month
+      - generic: My proof of work
+      - generic: 25 days recorded
+      - text: Your attendance history stays with you. It's the record no notebook can give you.
+      - button "Back to the employer's side"
+    - navigation:
+      - button "Today":
+        - generic: Today
+      - button "Calendar":
+        - generic: Calendar
+      - button "Earnings":
+        - generic: Earnings
+      - button "Me":
+        - generic: Me
+- status
+- status
+- status

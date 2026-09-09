@@ -1,0 +1,145 @@
+- alert
+- complementary:
+  - paragraph: MailClean AI
+  - paragraph: High Mountain Property
+  - button "NA nancy (Owner) nancy@highmountainproperty.com":
+    - generic: NA
+    - paragraph: nancy (Owner)
+    - paragraph: nancy@highmountainproperty.com
+  - navigation:
+    - link "Dashboard":
+      - /url: /dashboard
+      - text: Dashboard
+    - link "Analytics":
+      - /url: /dashboard/analytics
+      - text: Analytics
+    - link "Categories" [active]:
+      - /url: /dashboard/categories
+      - text: Categories
+    - link "Email Explorer":
+      - /url: /dashboard/explorer
+      - text: Email Explorer
+    - link "Cleanup Center":
+      - /url: /dashboard/cleanup
+      - text: Cleanup Center
+    - link "Rules & Automation":
+      - /url: /dashboard/rules
+      - text: Rules & Automation
+    - link "Activity Log":
+      - /url: /dashboard/activity
+      - text: Activity Log
+    - link "Reports":
+      - /url: /dashboard/reports
+      - text: Reports
+    - link "Accounts":
+      - /url: /dashboard/accounts
+      - text: Accounts
+    - link "Settings":
+      - /url: /dashboard/settings
+      - text: Settings
+  - generic: na
+  - paragraph: nancy
+  - paragraph: nancy@highmountainproperty.com
+- banner:
+  - textbox "Search emails, senders, rules…"
+  - button "Notifications":
+    - generic: Notifications
+- main:
+  - heading "Email Categories" [level=1]
+  - paragraph: Every email is automatically classified. Inspect any group before acting.
+  - generic: 3.9 GB
+  - heading "Business" [level=2]
+  - paragraph: 18,421
+  - paragraph: Client conversations, brokers, contracts and deal threads.
+  - generic: Buyer enquiries
+  - generic: Broker network
+  - generic: Legal & contracts
+  - generic: Developer partners
+  - link "View Emails":
+    - /url: /dashboard/explorer
+    - text: View Emails
+  - link "Clean":
+    - /url: /dashboard/cleanup
+  - generic: 1.4 GB
+  - heading "Personal" [level=2]
+  - paragraph: 7,241
+  - paragraph: One-to-one messages from known contacts.
+  - generic: Team members
+  - generic: Personal contacts
+  - link "View Emails":
+    - /url: /dashboard/explorer
+    - text: View Emails
+  - link "Clean":
+    - /url: /dashboard/cleanup
+  - generic: 6.1 GB
+  - heading "Promotions" [level=2]
+  - paragraph: 28,421
+  - paragraph: Marketing offers from portals, retailers and travel sites.
+  - generic: 99acres
+  - generic: MagicBricks
+  - generic: Housing.com
+  - generic: Amazon
+  - link "View Emails":
+    - /url: /dashboard/explorer
+    - text: View Emails
+  - link "Clean":
+    - /url: /dashboard/cleanup
+  - generic: 3.2 GB
+  - heading "Newsletters" [level=2]
+  - paragraph: 15,238
+  - paragraph: Recurring digests and market reports.
+  - generic: Property market weekly
+  - generic: LinkedIn digest
+  - generic: Industry news
+  - link "View Emails":
+    - /url: /dashboard/explorer
+    - text: View Emails
+  - link "Clean":
+    - /url: /dashboard/cleanup
+  - generic: 2.6 GB
+  - heading "Notifications" [level=2]
+  - paragraph: 12,421
+  - paragraph: Automated alerts from apps and services.
+  - generic: GitHub
+  - generic: Google
+  - generic: Portal alerts
+  - generic: Calendar
+  - link "View Emails":
+    - /url: /dashboard/explorer
+    - text: View Emails
+  - link "Clean":
+    - /url: /dashboard/cleanup
+  - generic: 1.1 GB
+  - heading "Social" [level=2]
+  - paragraph: 5,842
+  - paragraph: Social network activity and connection requests.
+  - generic: LinkedIn
+  - generic: Facebook
+  - generic: Instagram
+  - link "View Emails":
+    - /url: /dashboard/explorer
+    - text: View Emails
+  - link "Clean":
+    - /url: /dashboard/cleanup
+  - generic: 0.9 GB
+  - heading "Spam" [level=2]
+  - paragraph: 4,231
+  - paragraph: Detected junk and suspicious mail.
+  - generic: Unknown senders
+  - generic: Flagged domains
+  - link "View Emails":
+    - /url: /dashboard/explorer
+    - text: View Emails
+  - link "Clean":
+    - /url: /dashboard/cleanup
+  - generic: 5.6 GB
+  - heading "Other" [level=2]
+  - paragraph: 8,186
+  - paragraph: Uncategorized and mixed content.
+  - generic: Various
+  - link "View Emails":
+    - /url: /dashboard/explorer
+    - text: View Emails
+  - link "Clean":
+    - /url: /dashboard/cleanup
+- generic: "24.2"

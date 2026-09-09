@@ -3,6 +3,7 @@ import type { PrismaClient } from "@prisma/client";
 import { prisma as defaultPrisma } from "@/lib/db";
 import { loadRuntimeIdentity } from "@/lib/operations/runtime-identity";
 import { listServiceHeartbeats } from "@/lib/operations/service-heartbeats";
+import { AGENT_IDENTITY } from "./identity";
 
 // Realtime (LiveKit) transport glue: room-token minting, the ~30-room
 // concurrency guard with heartbeats, and the constant-time agent token check.
@@ -187,16 +188,20 @@ export function agentAuthResponse(req: Request): Response | null {
 // Stranded-room recovery
 // ---------------------------------------------------------------------------
 
-/** The identity the Python worker accepts jobs under (agent/main.py). */
-export const AGENT_IDENTITY = "forge-interviewer";
+export { AGENT_IDENTITY } from "./identity";
 
 /**
  * How old a room must be before an absent interviewer counts as absent rather
  * than as still starting. The cold path is dispatch -> connect -> agent-context
  * (+ S3 reservations) -> egress -> prompt cache (up to 20s) -> VAD -> session,
  * and under a burst of admissions that is not quick.
+ *
+ * Kept ABOVE the client's own NO_AGENT_GRACE_MS (75s), so a student's reconnect
+ * cannot arrive while the server still considers the room too young to judge —
+ * a deletion in that window is harmless but throws away an agent that was about
+ * to join, and does it again on the next attempt.
  */
-export const AGENT_COLD_START_MS = 60_000;
+export const AGENT_COLD_START_MS = 90_000;
 
 /**
  * Delete a room whose interviewer has gone, so the student's next join creates

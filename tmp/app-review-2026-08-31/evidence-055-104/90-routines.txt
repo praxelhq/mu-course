@@ -1,0 +1,71 @@
+- main:
+  - link "Back":
+    - /url: /
+  - heading "Routines" [level=1]
+  - paragraph: One step at a time. No thinking required.
+  - article:
+    - heading "🌅 Morning routine" [level=2]
+    - paragraph: 6:15 AM · 5 steps · 62 min
+    - button "Start":
+      - text: Start
+    - list:
+      - generic: "1"
+      - generic: Get out of bed
+      - generic: 5m
+      - generic: "2"
+      - generic: Drink water
+      - generic: 2m
+      - generic: "3"
+      - generic: Exercise
+      - generic: 30m · optional
+      - generic: "4"
+      - generic: Shower
+      - generic: 10m
+      - generic: "5"
+      - generic: Breakfast
+      - generic: 15m · optional
+    - paragraph: Last completed 2026-08-29
+  - article:
+    - heading "🌙 Shutdown routine" [level=2]
+    - paragraph: 10:30 PM · 4 steps · 37 min
+    - button "Start":
+      - text: Start
+    - list:
+      - generic: "1"
+      - generic: Tidy desk
+      - generic: 5m · optional
+      - generic: "2"
+      - generic: Plan tomorrow
+      - generic: 10m
+      - generic: "3"
+      - generic: Phone on charger (outside room)
+      - generic: 2m
+      - generic: "4"
+      - generic: Read
+      - generic: 20m · optional
+    - paragraph: Last completed 2026-08-30
+  - img "Naggy mascot"
+  - paragraph: Routines work best when the first step is embarrassingly small. "Get out of bed" counts.
+- navigation:
+  - link "Today":
+    - /url: /
+    - text: Today
+  - link "Habits":
+    - /url: /habits
+    - text: Habits
+  - link "Focus":
+    - /url: /focus
+    - text: Focus
+  - link "Progress":
+    - /url: /progress
+    - text: Progress
+  - link "Naggy":
+    - /url: /naggy
+    - text: Naggy
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1y077zn9zp920rn02hgwhd1kn0?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: M

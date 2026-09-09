@@ -1,0 +1,180 @@
+- navigation:
+  - generic: inventory_2
+  - heading "StockFlow" [level=1]
+  - generic: ERP
+  - paragraph: Sports Retail Operations
+  - paragraph: OVERVIEW
+  - list:
+    - button "dashboard Dashboard 5":
+      - generic: dashboard
+      - generic: Dashboard
+      - generic: "5"
+    - button "inventory_2 Products":
+      - generic: inventory_2
+      - generic: Products
+    - button "swap_horiz Inventory Master":
+      - generic: swap_horiz
+      - generic: Inventory Master
+  - paragraph: INTELLIGENCE
+  - list:
+    - button "auto_awesome AI Demand Forecast AI":
+      - generic: auto_awesome
+      - generic: AI Demand Forecast
+      - generic: AI
+    - button "analytics Reports & Analytics":
+      - generic: analytics
+      - generic: Reports & Analytics
+  - paragraph: OPERATIONS
+  - list:
+    - button "qr_code_2 Serial Numbers":
+      - generic: qr_code_2
+      - generic: Serial Numbers
+    - button "category Categories":
+      - generic: category
+      - generic: Categories
+    - button "local_shipping Suppliers" [active]:
+      - generic: local_shipping
+      - generic: Suppliers
+  - paragraph: PROCUREMENT & PAYABLES
+  - list:
+    - button "post_add Purchase Orders 2":
+      - generic: post_add
+      - generic: Purchase Orders
+      - generic: "2"
+    - button "receipt_long Supplier Invoices 3":
+      - generic: receipt_long
+      - generic: Supplier Invoices
+      - generic: "3"
+    - button "payments Payment Ledger":
+      - generic: payments
+      - generic: Payment Ledger
+  - paragraph: SYSTEM
+  - list:
+    - button "manage_accounts User Management":
+      - generic: manage_accounts
+      - generic: User Management
+    - button "history Audit Trail Logs":
+      - generic: history
+      - generic: Audit Trail Logs
+  - button "settings Settings":
+    - generic: settings
+    - generic: Settings
+  - button "logout Sign Out":
+    - generic: logout
+    - generic: Sign Out
+- banner:
+  - generic: search
+  - textbox "Search products, SKUs, suppliers, orders..."
+  - generic: ⌘K
+  - generic: ₹ INR
+  - text: "Role:"
+  - strong: Admin
+  - button "notifications":
+    - generic: notifications
+  - button "help_outline":
+    - generic: help_outline
+  - button "Yadeshwar Admin expand_more":
+    - generic: Yadeshwar
+    - generic: Admin
+    - generic: expand_more
+- main:
+  - heading "Suppliers & Procurement Directory" [level=2]
+  - paragraph: Manage sports equipment manufacturers, verified vendors, and lead-time performance
+  - button "add Add Supplier":
+    - generic: add
+    - text: Add Supplier
+  - button "contacts Suppliers Directory (6)":
+    - generic: contacts
+    - text: Suppliers Directory (6)
+  - button "query_stats Performance & Scorecards":
+    - generic: query_stats
+    - text: Performance & Scorecards
+  - generic: search
+  - textbox "Search suppliers by name, contact, email, phone..."
+  - generic: Showing 6 active suppliers
+  - heading "Sanspareils Greenlands (SG) Pvt. Ltd." [level=3]
+  - paragraph: "Contact: Anand Gupta"
+  - generic: Active
+  - generic: mail
+  - generic: b2b@teamsg.in
+  - generic: phone
+  - generic: +91 121 240 2222
+  - generic: location_on
+  - generic: Partapur Industrial Area, Meerut, Uttar Pradesh
+  - generic: Cricket
+  - button "edit":
+    - generic: edit
+  - button "delete":
+    - generic: delete
+  - heading "Adidas India Marketing Pvt. Ltd." [level=3]
+  - paragraph: "Contact: Vikram Sethi"
+  - generic: Active
+  - generic: mail
+  - generic: b2b-sports@adidas.co.in
+  - generic: phone
+  - generic: +91 124 456 9100
+  - generic: location_on
+  - generic: DLF Cyber City, Tower B, Gurugram, Haryana
+  - generic: Football
+  - generic: Sports Accessories
+  - button "edit":
+    - generic: edit
+  - button "delete":
+    - generic: delete
+  - heading "Nike India Pvt. Ltd." [level=3]
+  - paragraph: "Contact: Deepika Rao"
+  - generic: Active
+  - generic: mail
+  - generic: orders@nike.in
+  - generic: phone
+  - generic: +91 80 4018 7000
+  - generic: location_on
+  - generic: Embassy Golf Links Business Park, Bengaluru, Karnataka
+  - generic: Football
+  - button "edit":
+    - generic: edit
+  - button "delete":
+    - generic: delete
+  - heading "Sunrise Sports India (Yonex Distributor)" [level=3]
+  - paragraph: "Contact: Rajesh Malhotra"
+  - generic: Active
+  - generic: mail
+  - generic: distribution@sunrisesports.in
+  - generic: phone
+  - generic: +91 11 4151 8800
+  - generic: location_on
+  - generic: Barakhamba Road, Connaught Place, New Delhi
+  - generic: Badminton
+  - button "edit":
+    - generic: edit
+  - button "delete":
+    - generic: delete
+  - heading "Wilson Sports India Distribution" [level=3]
+  - paragraph: "Contact: Sunil Kulkarni"
+  - generic: Active
+  - generic: mail
+  - generic: sales@wilsonsports.co.in
+  - generic: phone
+  - generic: +91 22 6678 3400
+  - generic: location_on
+  - generic: Andheri East Industrial Hub, Mumbai, Maharashtra
+  - generic: Tennis
+  - button "edit":
+    - generic: edit
+  - button "delete":
+    - generic: delete
+  - heading "Decathlon Sports India Pvt. Ltd." [level=3]
+  - paragraph: "Contact: Sandeep Menon"
+  - generic: Active
+  - generic: mail
+  - generic: b2b.supply@decathlon.in
+  - generic: phone
+  - generic: +91 80 6813 4000
+  - generic: location_on
+  - generic: Sarjapur Main Road, Bengaluru, Karnataka
+  - generic: Fitness
+  - button "edit":
+    - generic: edit
+  - button "delete":
+    - generic: delete
+- generic: "0"

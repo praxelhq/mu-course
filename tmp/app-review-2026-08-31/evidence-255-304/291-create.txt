@@ -1,0 +1,91 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3r10cqfckt86ab3mkpab585xgk?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- complementary:
+  - link "Q QuoteFlow":
+    - /url: /
+    - generic: Q
+    - generic: QuoteFlow
+  - navigation:
+    - link "Dashboard":
+      - /url: /
+      - text: Dashboard
+    - link "Create Quotation":
+      - /url: /create-quotation
+      - text: Create Quotation
+    - link "Quotations":
+      - /url: /quotations
+      - text: Quotations
+    - link "Customers":
+      - /url: /customers
+      - text: Customers
+    - link "Products":
+      - /url: /products
+      - text: Products
+  - link "Settings":
+    - /url: /settings
+    - text: Settings
+  - generic: PS
+  - generic: Priya Sharma
+  - generic: Studio Lead
+  - link "Sign out":
+    - /url: /login
+- main:
+  - heading "Create Quotation" [level=2]
+  - heading "New Quotation" [level=1]
+  - paragraph: Fill in the client requirements to generate a professional proposal.
+  - heading "Client Details" [level=2]
+  - generic: Select Customer
+  - combobox "Select Customer":
+    - option "Select existing..." [selected]
+    - option "Ananya Deshmukh — AD Interior Studio"
+    - option "Rohan Thakur — Thakur Villa, Juhu"
+    - option "Meera Nair — Boutique Living, Bandra"
+    - option "Sneha Iyer — Iyer Residence, Powai"
+    - option "Vikram Menon — Menon Builders Pvt Ltd"
+    - option "Devansh Kapoor — Kapoor & Associates Design"
+  - generic: Customer Name
+  - textbox "Customer Name":
+    - /placeholder: Rahul Sharma
+  - generic: Phone Number
+  - textbox "Phone Number":
+    - /placeholder: +91 98765 43210
+  - generic: Email Address
+  - textbox "Email Address":
+    - /placeholder: rahul@example.in
+  - heading "Scope & AI Generation" [level=2]
+  - generic: Customer requirements
+  - textbox "Customer requirements":
+    - /placeholder: Describe the customer's requirements here... e.g. 'Client needs a full kitchen redesign including marble countertops, custom cabinets, and professional lighting installation for a 200sqft area.'
+  - button "Generate with AI":
+    - text: Generate with AI
+  - table:
+    - rowgroup:
+      - row "Description Qty Unit Price Disc % GST % Subtotal":
+        - columnheader "Description"
+        - columnheader "Qty"
+        - columnheader "Unit Price"
+        - columnheader "Disc %"
+        - columnheader "GST %"
+        - columnheader "Subtotal"
+        - columnheader
+    - rowgroup:
+      - row "No line items yet — generate suggestions from the brief above or add a line item manually.":
+        - cell "No line items yet — generate suggestions from the brief above or add a line item manually."
+  - button "Add line item":
+    - text: Add line item
+  - generic: 0 items
+  - generic: Gross
+  - generic: ₹0.00
+  - generic: Discount
+  - generic: −₹0.00
+  - generic: Subtotal
+  - generic: ₹0.00
+  - generic: GST
+  - generic: ₹0.00
+  - generic: Grand Total
+  - generic: ₹0.00
+  - button "Save Draft"
+  - button "Preview & Send"

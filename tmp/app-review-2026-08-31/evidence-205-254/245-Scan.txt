@@ -1,0 +1,38 @@
+- banner:
+  - button "Go back":
+  - heading "Scan a meal" [level=1]
+  - paragraph: Camera or gallery — both work
+- main:
+  - paragraph: Frame your whole plate
+  - paragraph: Good light and a top-down angle give the most accurate estimate.
+  - button "Gallery":
+    - text: Gallery
+  - button "Camera":
+    - text: Camera
+  - button "Analyze a sample meal":
+    - text: Analyze a sample meal
+  - paragraph: Works with Indian food
+  - paragraph: Mess thalis, dosa plates, chai-samosa combos and tiffin boxes are all recognised. You can always correct the portion after scanning.
+- navigation:
+  - list:
+    - link "Home":
+      - /url: /home
+      - generic: Home
+    - link "Log":
+      - /url: /log
+      - generic: Log
+    - link "Scan":
+      - /url: /scan
+      - generic: Scan
+    - link "Coach":
+      - /url: /recommendations
+      - generic: Coach
+    - link "Profile":
+      - /url: /profile
+      - generic: Profile
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_25aah1gfmf84ysf426ybmhv3p7?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

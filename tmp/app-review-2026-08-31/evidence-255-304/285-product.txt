@@ -1,0 +1,23 @@
+- banner:
+  - link "Claude home":
+    - /url: /
+    - generic: 
+  - button "Jhola Product":
+    - generic: Jhola Product
+    - generic: 
+  - generic: Content is user-generated and unverified.
+  - button "Share, shared with anyone who has the link":
+    - generic: Share
+  - status
+  - alert
+  - link "Sign in":
+    - /url: /login?returnTo=%2Fcode%2Fartifact%2Faf0ef08c-b862-4240-8dd8-047a8ab2e278%3Fid%3Dp01
+    - generic: Sign in
+  - alert
+  - status
+- main:
+  - status "Loading"
+  - iframe [id="frame-content"]
+- status
+- status
+- status

@@ -1,0 +1,39 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1mk9h1tjyv9ek9gf4w77qaqq4n?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- main:
+  - link "Back":
+    - /url: /
+    - generic: arrow_back
+    - generic: Back
+  - generic: MindAge
+  - img "Mindful journey illustration"
+  - heading "Tell us a bit about you" [level=1]
+  - generic: Current Age
+  - spinbutton "Current Age": "25"
+  - generic: Gender
+  - combobox "Gender":
+    - option "Female"
+    - option "Male"
+    - option "Non-binary"
+    - option "Prefer not to say" [selected]
+  - generic: expand_more
+  - generic: Nationality
+  - combobox "Nationality":
+    - option "United States"
+    - option "United Kingdom"
+    - option "Canada"
+    - option "Australia"
+    - option "Other"
+  - generic: expand_more
+  - generic: Current Life Stage
+  - combobox "Current Life Stage":
+    - option "Student"
+    - option "Professional"
+    - option "Parent"
+    - option "Retired"
+  - generic: expand_more
+  - alert: Please complete all four fields so we can calibrate your result.
+  - button "Continue" [active]

@@ -1,0 +1,69 @@
+- navigation:
+  - button "card_giftcard Gift Genius Buddy":
+    - generic: card_giftcard
+    - generic: Gift Genius
+    - generic: Buddy
+  - button "home Home":
+    - generic: home
+    - generic: Home
+  - button "checklist_rtl Gift Lists 3":
+    - generic: checklist_rtl
+    - generic: Gift Lists
+    - generic: "3"
+  - button "group People & Occasions":
+    - generic: group
+    - generic: People & Occasions
+  - button "bookmark Wishlist":
+    - generic: bookmark
+    - generic: Wishlist
+  - button "person Profile":
+    - generic: person
+    - generic: Profile
+  - button "search":
+    - generic: search
+  - button "chat":
+    - generic: chat
+  - button "notifications":
+    - generic: notifications
+  - button "auto_awesome Find Gifts":
+    - generic: auto_awesome
+    - generic: Find Gifts
+  - button "G Guest expand_more":
+    - generic: G
+    - generic: Guest
+    - generic: expand_more
+- main:
+  - generic: Step 1 of 4
+  - generic: Recipient & Relationship
+  - heading "Who are you shopping for?" [level=1]
+  - paragraph: Select your relationship and enter their name so we can tailor the sentiment, tone, and gift recommendations.
+  - button "favorite Partner":
+    - generic: favorite
+    - generic: Partner
+  - button "family_restroom Parent":
+    - generic: family_restroom
+    - generic: Parent
+  - button "diversity_1 Sibling":
+    - generic: diversity_1
+    - generic: Sibling
+  - button "group Friend":
+    - generic: group
+    - generic: Friend
+  - button "work Colleague":
+    - generic: work
+    - generic: Colleague
+  - button "child_care Child":
+    - generic: child_care
+    - generic: Child
+  - generic: Recipient's Name or Nickname *
+  - generic: Required to continue
+  - generic: person
+  - textbox "Recipient's Name or Nickname *" [active]:
+    - /placeholder: e.g. Rahul, Mom, Priya, Ananya, Dr. Roy...
+  - paragraph: Enter a name or nickname (e.g. Rahul, Mom, Priya, Dr. Roy) to personalize all gift recommendations.
+  - button "arrow_back Back":
+    - generic: arrow_back
+    - generic: Back
+  - button "Continue arrow_forward" [disabled]:
+    - generic: Continue
+    - generic: arrow_forward

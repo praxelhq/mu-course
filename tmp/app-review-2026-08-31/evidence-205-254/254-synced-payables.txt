@@ -1,0 +1,65 @@
+- complementary:
+  - generic: LeakWatch
+  - generic: Workspace
+  - navigation:
+    - button "Dashboard":
+      - generic: Dashboard
+    - button "Contracts":
+      - generic: Contracts
+    - button "Payables 6" [active]:
+      - generic: Payables
+      - generic: "6"
+  - generic: Configure
+  - navigation:
+    - button "Integrations":
+      - generic: Integrations
+    - button "Settings":
+      - generic: Settings
+  - generic: D
+  - generic: Demo
+  - generic: demo@example.com
+  - button "Exit"
+- banner:
+  - generic: Approval queue
+  - heading "Payables" [level=2]
+  - generic: Demo data
+  - button "Sync invoices"
+  - button "+ New contract"
+- generic: In your queue
+- generic: ₹12,20,500
+- generic: 6 awaiting a decision
+- generic: Approved to release
+- generic: ₹81,000
+- generic: 2 cleared
+- generic: Paid to date
+- generic: ₹7,64,900
+- generic: 3 settled
+- button "Awaiting approval (6)"
+- button "Approved"
+- button "On hold"
+- button "Upcoming"
+- button "Paid"
+- button "All"
+- generic: Payable
+- generic: Vendor
+- generic: Due
+- generic: Amount
+- generic: Action
+- generic: Sharma & Co. — Q2 retainer
+- generic: approved by Priya Nair
+- generic: Sharma & Co. CA
+- text: 19 Sept
+- generic: 19d
+- generic: ₹45,000
+- button "Mark paid"
+- generic: Nayara Facilities — Sep upkeep
+- generic: approved by Priya Nair
+- generic: Nayara Facilities
+- text: 28 Sept
+- generic: 28d
+- generic: ₹36,000
+- button "Mark paid"
+- text: ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✓
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

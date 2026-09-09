@@ -1,0 +1,30 @@
+- navigation:
+  - link "GAME HUB":
+    - /url: ../index.html
+  - link "Home":
+    - /url: ../index.html
+  - link "Carrom Flick":
+    - /url: carrom-flick.html
+  - link "Air Hockey":
+    - /url: air-hockey.html
+- main:
+  - heading "✏️ Pen Fight" [level=1]
+  - paragraph: Pull back and release to flick your pen. Knock your opponent off the table.
+  - button "BOT"
+  - button "PVP"
+  - generic: YOU
+  - generic: "0"
+  - generic: VS
+  - generic: BOT
+  - generic: "0"
+  - heading "You Win!" [level=2]
+  - button "Play Again"
+  - button "Reset Match"
+  - heading "How to play" [level=3]
+  - list:
+    - listitem: Touch or click your pen, drag away from your target (slingshot style), then release.
+    - listitem: The further you pull back, the harder your pen flicks.
+    - listitem: If your pen crosses the black border, it's "out" and your opponent scores a point.
+    - listitem: First to 5 points wins the match. Hitting an opponent off-center makes their pen spin and slide further — use it to your advantage.
+- contentinfo:
+  - paragraph: © 2026 Game Hub Online.

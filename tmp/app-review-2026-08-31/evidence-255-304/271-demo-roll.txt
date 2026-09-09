@@ -1,0 +1,70 @@
+- main:
+  - iframe [active]:
+    - complementary:
+      - link "V VAULTPLAYCRYPTO GAMING":
+        - /url: "#casino"
+        - generic: V
+        - generic: VAULTPLAYCRYPTO GAMING
+      - navigation "Primary navigation":
+        - button "01 Casino":
+          - generic: "01"
+          - text: Casino
+        - button "02 Crash":
+          - generic: "02"
+          - text: Crash
+        - button "03 Dice":
+          - generic: "03"
+          - text: Dice
+        - button "04 Coin Flip":
+          - generic: "04"
+          - text: Coin Flip
+        - button "05 Transactions":
+          - generic: "05"
+          - text: Transactions
+        - button "06 Fairness":
+          - generic: "06"
+          - text: Fairness
+        - button "07 Account":
+          - generic: "07"
+          - text: Account
+      - generic: Demo mode
+      - generic: Simulated environment
+    - main:
+      - generic: Demo Network
+      - generic: 2,450.00 USDC
+      - button "Connect Wallet"
+      - generic: Instrument 02 / Dice
+      - heading "Probability, controlled." [level=1]
+      - generic: "20.92"
+      - generic: AWAITING ROLL
+      - text: WIN CHANCE
+      - strong: 47.50%
+      - text: MULTIPLIER
+      - strong: 2.00x
+      - generic: "0"
+      - generic: "25"
+      - generic: "50"
+      - generic: "75"
+      - generic: "100"
+      - complementary:
+        - generic: Parameters
+        - generic: Probability
+        - generic: 47.50%
+        - slider
+        - generic: Target
+        - generic: Roll under
+        - spinbutton
+        - generic: Bet amount
+        - generic: USDC
+        - spinbutton
+        - generic: USDC
+        - button "1"
+        - button "5"
+        - button "10"
+        - button "25"
+        - button "50"
+        - button "MAX"
+        - button "ROLL" [disabled]
+        - paragraph: Outcome generated locally for demonstration. Each roll updates your demo ledger.
+    - status
+- alert

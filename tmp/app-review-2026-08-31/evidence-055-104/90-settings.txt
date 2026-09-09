@@ -1,0 +1,66 @@
+- main:
+  - link "Back":
+    - /url: /
+  - heading "Settings" [level=1]
+  - img "Naggy mascot"
+  - paragraph: Demo
+  - paragraph: Study
+  - text: Name
+  - textbox "Name": Demo
+  - text: Wake
+  - textbox "Wake": 07:00
+  - text: Sleep
+  - textbox "Sleep": 23:00
+  - text: Naggy's strictness
+  - button "gentle"
+  - button "firm"
+  - button "strict"
+  - heading "Notification voice" [level=2]:
+    - text: Notification voice
+  - paragraph: Previews of what Naggy will send once push notifications ship with the mobile app.
+  - list:
+    - paragraph: Upcoming commitment
+    - paragraph: Your workout starts in 10 minutes. I have receipts. 👀
+    - paragraph: Alarm
+    - paragraph: That's your second snooze. Just saying.
+    - paragraph: Habit reminder
+    - paragraph: Reading time. 20 pages, then you're free.
+    - paragraph: Missed commitment
+    - paragraph: Your 9 AM commitment is still waiting. Awkward.
+    - paragraph: Streak milestone
+    - paragraph: 6 days in a row. Okay, I'm officially impressed.
+    - paragraph: Weekly review
+    - paragraph: Sunday reckoning is ready. It's mostly good news.
+  - heading "Coming with the mobile app" [level=2]:
+    - text: Coming with the mobile app
+  - list:
+    - listitem: · Reliable background alarms and native alarm sounds
+    - listitem: · Push notifications and lock-screen actions
+    - listitem: · App and website blocking during focus
+    - listitem: · Device-level focus enforcement and background timers
+    - listitem: "· Strict completion actions: QR scan, math challenge, shake, walk-to-location"
+  - button "Redo onboarding"
+  - button "Reset all data"
+- navigation:
+  - link "Today":
+    - /url: /
+    - text: Today
+  - link "Habits":
+    - /url: /habits
+    - text: Habits
+  - link "Focus":
+    - /url: /focus
+    - text: Focus
+  - link "Progress":
+    - /url: /progress
+    - text: Progress
+  - link "Naggy":
+    - /url: /naggy
+    - text: Naggy
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1y077zn9zp920rn02hgwhd1kn0?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: M

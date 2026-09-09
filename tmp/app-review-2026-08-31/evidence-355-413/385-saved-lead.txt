@@ -1,0 +1,74 @@
+- complementary:
+  - generic: K
+  - paragraph: Kaelor DealOS
+  - paragraph: Capital Advisory
+  - paragraph: From inbound opportunity to transaction closure.
+  - navigation:
+    - link "Executive Dashboard":
+      - /url: /
+      - generic: Executive Dashboard
+    - link "AI Unified Inbox 6":
+      - /url: /inbox
+      - generic: AI Unified Inbox
+      - generic: "6"
+    - link "Leads":
+      - /url: /leads
+      - generic: Leads
+    - link "Deal Pipeline":
+      - /url: /deals
+      - generic: Deal Pipeline
+    - link "Tasks":
+      - /url: /tasks
+      - generic: Tasks
+    - link "Calendar & Meetings":
+      - /url: /calendar
+      - generic: Calendar & Meetings
+    - link "Revenue":
+      - /url: /revenue
+      - generic: Revenue
+    - link "AI Deal Copilot":
+      - /url: /copilot
+      - generic: AI Deal Copilot
+    - link "Audit & Access":
+      - /url: /admin
+      - generic: Audit & Access
+  - generic: "Integrations: mock mode"
+- banner:
+  - textbox "Search deals, leads, companies…"
+  - button "Notifications":
+  - button "AK Aditya Kaelor Founder/Admin":
+    - generic: AK
+    - generic: Aditya Kaelor
+    - generic: Founder/Admin
+- main:
+  - heading "Lead Management" [level=1]
+  - paragraph: 30 leads in origination · 4 critical
+  - button "Add lead":
+    - text: Add lead
+  - textbox "Search lead, company, sector…" [active]: Synthetic Demo
+  - combobox:
+    - generic: All statuses
+  - combobox:
+    - generic: All sources
+  - combobox:
+    - generic: All owners
+  - table:
+    - rowgroup:
+      - row "Lead Source Category Value AI score Status Owner Partner Last / next":
+        - columnheader "Lead"
+        - columnheader "Source"
+        - columnheader "Category"
+        - columnheader "Value"
+        - columnheader "AI score"
+        - columnheader "Status"
+        - columnheader "Owner"
+        - columnheader "Partner"
+        - columnheader "Last / next"
+        - columnheader
+    - rowgroup
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_2rys2382jg8jbt5zk4hh9sx3ms?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

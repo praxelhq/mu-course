@@ -1,0 +1,28 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7v0xev0vz799g96q1p2jz1dwg0?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- main:
+  - heading "WakeUp" [level=1]
+  - paragraph: No snooze. Solve to silence.
+  - paragraph: 01:31
+  - list:
+    - paragraph: 6:30 AM
+    - paragraph: PRESET · DAILY
+    - switch "Toggle alarm 6:30 AM"
+    - paragraph: 7:00 AM
+    - paragraph: PRESET · DAILY
+    - switch "Toggle alarm 7:00 AM"
+    - paragraph: 7:30 AM
+    - paragraph: PRESET · DAILY
+    - switch "Toggle alarm 7:30 AM"
+    - paragraph: 8:00 AM
+    - paragraph: CUSTOM · DAILY
+    - button "Delete alarm 8:00 AM": DEL
+    - switch "Toggle alarm 8:00 AM"
+    - paragraph: 8:00 AM
+    - paragraph: CUSTOM · DAILY
+    - button "Delete alarm 8:00 AM": DEL
+    - switch "Toggle alarm 8:00 AM" [checked]
+  - button "+ ADD ALARM"

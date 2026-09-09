@@ -1,0 +1,82 @@
+- main:
+  - heading "Monopoly Tracker" [level=1]
+  - paragraph: The banker for your table — cash, deeds and trades, synced live.
+  - generic: Game Controls
+  - textbox "Game name": BIT@ Gang
+  - button "Start New Game"
+  - button "Save Game"
+  - paragraph: Saved Games
+  - button "BIT@ Gang" [active]
+  - button "Sec Test"
+  - button "Table 1"
+  - button "Table 1"
+  - generic: Add Player
+  - textbox "Player name"
+  - button "Add Player"
+  - generic: Trade
+  - combobox:
+    - option "From Player…" [selected]
+  - combobox:
+    - option "To Player…" [selected]
+  - spinbutton
+  - combobox:
+    - option "No property" [selected]
+  - button "Execute Trade"
+  - generic: Market Properties
+  - list:
+    - generic: Mediterranean Avenue
+    - generic: ₹60
+    - generic: Baltic Avenue
+    - generic: ₹60
+    - generic: Oriental Avenue
+    - generic: ₹100
+    - generic: Vermont Avenue
+    - generic: ₹100
+    - generic: Connecticut Avenue
+    - generic: ₹120
+    - generic: St. Charles Place
+    - generic: ₹140
+    - generic: States Avenue
+    - generic: ₹140
+    - generic: Virginia Avenue
+    - generic: ₹160
+    - generic: St. James Place
+    - generic: ₹180
+    - generic: Tennessee Avenue
+    - generic: ₹180
+    - generic: New York Avenue
+    - generic: ₹200
+    - generic: Kentucky Avenue
+    - generic: ₹220
+    - generic: Indiana Avenue
+    - generic: ₹220
+    - generic: Illinois Avenue
+    - generic: ₹240
+    - generic: Atlantic Avenue
+    - generic: ₹260
+    - generic: Ventnor Avenue
+    - generic: ₹260
+    - generic: Marvin Gardens
+    - generic: ₹280
+    - generic: Pacific Avenue
+    - generic: ₹300
+    - generic: North Carolina Avenue
+    - generic: ₹300
+    - generic: Pennsylvania Avenue
+    - generic: ₹320
+    - generic: Park Place
+    - generic: ₹350
+    - generic: Boardwalk
+    - generic: ₹400
+  - heading "Players" [level=2]
+  - paragraph: No players yet.
+  - generic: Leaderboard
+  - paragraph: Add players to see standings.
+  - generic: Transaction History
+  - paragraph: Nothing has happened yet.
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_44v3x2wn3m9gfay52rhe6hdbd8?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

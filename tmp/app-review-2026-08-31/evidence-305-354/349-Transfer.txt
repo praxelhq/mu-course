@@ -1,0 +1,50 @@
+- banner:
+  - link "Warehouse Ops":
+    - /url: /
+  - navigation:
+    - link "Dashboard":
+      - /url: /
+      - text: Dashboard
+    - link "Warehouses":
+      - /url: /warehouses
+      - text: Warehouses
+    - link "SKUs":
+      - /url: /skus
+      - text: SKUs
+    - link "Receive":
+      - /url: /inventory/receive
+      - text: Receive
+    - link "Issue":
+      - /url: /inventory/issue
+      - text: Issue
+    - link "Transfer" [active]:
+      - /url: /inventory/transfer
+      - text: Transfer
+    - link "Ledger":
+      - /url: /ledger
+      - text: Ledger
+    - link "Import":
+      - /url: /import
+      - text: Import
+- heading "Transfer Stock" [level=1]
+- generic: SKU
+- combobox:
+  - option "Select SKU…" [selected]
+  - option "SKU-0001 — Honey Chill Potato"
+  - option "SKU-001 — Widget - Small"
+- generic: From Warehouse
+- combobox:
+  - option "Select…" [selected]
+  - option "MAIN — Main Distribution Center"
+  - option "ST2045 — Bajpai Dhaba"
+- generic: To Warehouse
+- combobox:
+  - option "Select…" [selected]
+  - option "MAIN — Main Distribution Center"
+  - option "ST2045 — Bajpai Dhaba"
+- generic: Qty to Transfer
+- spinbutton
+- button "Transfer Stock"
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

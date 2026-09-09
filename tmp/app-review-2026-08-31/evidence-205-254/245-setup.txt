@@ -1,0 +1,23 @@
+- heading "Create your account" [level=1]
+- paragraph: Two minutes of setup, then we do the thinking.
+- button "Sign up"
+- button "Log in"
+- text: Full name
+- textbox "Full name":
+  - /placeholder: Riya Garg
+  - text: Demo Learner
+- text: College email
+- textbox "College email":
+  - /placeholder: you@campus.edu
+- text: Password
+- textbox "Password":
+  - /placeholder: ••••••••
+- button "Create account" [disabled]:
+  - text: Create account
+- paragraph: Demo build — no real account is created and nothing leaves your device.
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_25aah1gfmf84ysf426ybmhv3p7?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

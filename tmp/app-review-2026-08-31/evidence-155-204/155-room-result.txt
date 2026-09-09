@@ -1,0 +1,47 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3t58da8er88bf9fktxvsby80ep?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- banner:
+  - link "hub WORD DASH":
+    - /url: /
+    - generic: hub
+    - generic: WORD DASH
+  - generic: Room
+  - generic: "#VYVA"
+  - button "Share room":
+    - generic: share
+- main:
+  - heading "Waiting room" [level=1]
+  - button "Copy invite link"
+  - list:
+    - generic: 😎
+    - generic: Review Player (you)
+    - generic: Host
+  - button "Fixed rounds"
+  - button "Race to score"
+  - text: "Rounds: 5"
+  - 'slider "Rounds: 5"': "5"
+  - button "Start game"
+  - heading "Leaderboard" [level=2]
+  - list:
+    - generic: "1"
+    - generic: 😎
+    - generic: Review Player
+    - generic: "0"
+  - region "Room chat":
+    - generic: forum
+    - heading "Trash Talk" [level=2]
+    - paragraph: Nobody's talking yet. Roast someone's answer.
+    - button "Send 😂": 😂
+    - button "Send 💀": 💀
+    - button "Send 🧢": 🧢
+    - button "Send 🔥": 🔥
+    - button "Send 🤨": 🤨
+    - button "Send 👏": 👏
+    - generic: Message
+    - textbox "Message":
+      - /placeholder: Say something…
+    - button "Send message" [disabled]:
+      - generic: send

@@ -1,0 +1,89 @@
+- banner:
+  - link "Mirror home":
+    - /url: /dashboard
+    - generic: Mirror
+  - navigation "Main":
+    - link "Dashboard":
+      - /url: /dashboard
+      - generic: Dashboard
+    - link "Reflect":
+      - /url: /reflect
+      - generic: Reflect
+    - link "Weekly":
+      - /url: /report
+      - generic: Weekly
+    - link "Timeline":
+      - /url: /timeline
+      - generic: Timeline
+    - link "Settings":
+      - /url: /settings
+      - generic: Settings
+  - link "Reflect now":
+    - /url: /reflect
+- main:
+  - generic: Today's reflection
+  - generic: 33% · under 2 minutes
+  - paragraph: Daily reflection
+  - heading "How did today actually go?" [level=1]
+  - paragraph: Write as if no one will read it — because no one will. Mirror only looks for patterns.
+  - generic: "01"
+  - text: What gave you energy today?
+  - paragraph: A moment, a person, a task — anything that lifted you.
+  - textbox "What gave you energy today?":
+    - /placeholder: Write freely…
+    - text: "Fictional demo: organized a library shelf and completed a reading plan."
+  - generic: "02"
+  - text: What drained your energy?
+  - paragraph: Be specific. Vagueness hides the pattern.
+  - textbox "What drained your energy?":
+    - /placeholder: Write freely…
+  - generic: "03"
+  - text: What are you proud of today?
+  - paragraph: However small. Especially if it was small.
+  - textbox "What are you proud of today?":
+    - /placeholder: Write freely…
+  - generic: "04"
+  - text: What did you avoid today?
+  - paragraph: The honest answer here is the most useful one.
+  - textbox "What did you avoid today?":
+    - /placeholder: Write freely…
+  - generic: "05"
+  - text: What surprised you today?
+  - paragraph: Surprises are where beliefs get updated.
+  - textbox "What surprised you today?":
+    - /placeholder: Write freely…
+  - group "How did today feel?":
+    - generic: How did today feel?
+    - button "Bright" [pressed]:
+      - generic: 😊
+      - generic: Bright
+    - button "Even":
+      - generic: 😐
+      - generic: Even
+    - button "Low":
+      - generic: 😔
+      - generic: Low
+    - button "Tense":
+      - generic: 😡
+      - generic: Tense
+    - button "Depleted":
+      - generic: 😴
+      - generic: Depleted
+  - generic: Energy
+  - generic: 7 / 10
+  - generic "Energy score":
+    - slider
+  - generic: Focus
+  - generic: 6 / 10
+  - generic "Focus score":
+    - slider
+  - button "Reading your day…" [disabled]:
+    - text: Reading your day…
+  - text: Looking across your past entries
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1rwdm306328pqt08z6e5ma3pz4?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: "3"

@@ -1,0 +1,19 @@
+- button "Back":
+- paragraph: Step 2 of 4
+- heading "Body stats" [level=1]
+- text: Height (cm)
+- textbox "Height (cm)": "165"
+- text: Weight (kg)
+- textbox "Weight (kg)": "58"
+- text: How active is your day?
+- button "Mostly sitting"
+- button "Lightly active"
+- button "Active"
+- button "Very active"
+- button "Continue" [active]
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_25aah1gfmf84ysf426ybmhv3p7?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

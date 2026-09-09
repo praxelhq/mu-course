@@ -1,0 +1,111 @@
+- banner:
+  - button "Arjun":
+    - img "Arjun"
+  - generic: GharOS
+  - button "Notifications":
+- main:
+  - heading "Household Directory" [level=1]
+  - paragraph: Trusted emergency, services & vendors
+  - button "Add Contact":
+    - generic: Add Contact
+  - textbox "Search plumber, electrician, doctor, milkman..."
+  - button "All"
+  - button "Emergency"
+  - button "Maintenance"
+  - button "Daily Needs"
+  - button "Society"
+  - heading "Ramesh Plumber" [level=3]:
+    - generic: Ramesh Plumber
+  - paragraph: Society Trusted Plumber
+  - generic: Maintenance
+  - paragraph:
+    - generic: Block B Service Staff Quarters
+  - link "Call":
+    - /url: tel:+91 98450 11223
+    - generic: Call
+  - link "WhatsApp":
+    - /url: https://wa.me/919845011223?text=Hello%20Ramesh%20Plumber,%20reaching%20out%20from%20Apartment%20402.
+    - generic: WhatsApp
+  - button "UPI":
+    - generic: UPI
+  - heading "Sunil Electrician" [level=3]:
+    - generic: Sunil Electrician
+  - paragraph: BESCOM Licensed Wireman
+  - generic: Maintenance
+  - paragraph:
+    - generic: Varthur Main Road
+  - link "Call":
+    - /url: tel:+91 97410 55667
+    - generic: Call
+  - link "WhatsApp":
+    - /url: https://wa.me/919741055667?text=Hello%20Sunil%20Electrician,%20reaching%20out%20from%20Apartment%20402.
+    - generic: WhatsApp
+  - button "UPI":
+    - generic: UPI
+  - heading "Society Security Gate" [level=3]:
+    - generic: Society Security Gate
+  - paragraph: Main Entrance Intercom
+  - generic: Emergency
+  - paragraph:
+    - generic: Gate 1 & Gate 2 Security Booth
+  - link "Call":
+    - /url: tel:+91 80 4123 4567
+    - generic: Call
+  - link "WhatsApp":
+    - /url: https://wa.me/918041234567?text=Hello%20Society%20Security%20Gate,%20reaching%20out%20from%20Apartment%20402.
+    - generic: WhatsApp
+  - heading "Suresh Milk Delivery" [level=3]:
+    - generic: Suresh Milk Delivery
+  - paragraph: Daily Morning Milk & Curd
+  - generic: Daily Needs
+  - paragraph:
+    - generic: Bellandur Dairy Hub
+  - link "Call":
+    - /url: tel:+91 94480 33445
+    - generic: Call
+  - link "WhatsApp":
+    - /url: https://wa.me/919448033445?text=Hello%20Suresh%20Milk%20Delivery,%20reaching%20out%20from%20Apartment%20402.
+    - generic: WhatsApp
+  - button "UPI":
+    - generic: UPI
+  - heading "Dr. Vivek Sharma" [level=3]:
+    - generic: Dr. Vivek Sharma
+  - paragraph: Family Physician & Pediatrician
+  - generic: Emergency
+  - paragraph:
+    - generic: Manipal Clinic, 2nd Floor
+  - link "Call":
+    - /url: tel:+91 98800 77889
+    - generic: Call
+  - link "WhatsApp":
+    - /url: https://wa.me/919880077889?text=Hello%20Dr.%20Vivek%20Sharma,%20reaching%20out%20from%20Apartment%20402.
+    - generic: WhatsApp
+  - heading "Indane Gas Booking Line" [level=3]:
+    - generic: Indane Gas Booking Line
+  - paragraph: LPG Refill IVRS
+  - generic: Daily Needs
+  - paragraph:
+    - generic: "Customer Consumer No: 409921"
+  - link "Call":
+    - /url: tel:+91 77189 55555
+    - generic: Call
+  - link "WhatsApp":
+    - /url: https://wa.me/917718955555?text=Hello%20Indane%20Gas%20Booking%20Line,%20reaching%20out%20from%20Apartment%20402.
+    - generic: WhatsApp
+- navigation:
+  - button "Home":
+    - generic: Home
+  - button "1 Bills":
+    - generic: "1"
+    - generic: Bills
+  - button "Staff":
+    - generic: Staff
+  - button "Spends":
+    - generic: Spends
+  - button "Chores":
+    - generic: Chores
+  - button "Directory" [active]:
+    - generic: Directory
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

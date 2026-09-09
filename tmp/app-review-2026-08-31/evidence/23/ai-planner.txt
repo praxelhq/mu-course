@@ -1,0 +1,86 @@
+- region "Notifications (F8)":
+  - list
+- region "Notifications alt+T"
+- complementary:
+  - generic: InfluencerOS
+  - navigation:
+    - link "Dashboard":
+      - /url: /
+      - generic: Dashboard
+    - link "Campaigns":
+      - /url: /campaigns
+      - generic: Campaigns
+    - link "AI Campaign Planner" [active]:
+      - /url: /ai-planner
+      - generic: AI Campaign Planner
+    - link "Creators":
+      - /url: /creators
+      - generic: Creators
+    - link "Content Approval":
+      - /url: /content-approval
+      - generic: Content Approval
+    - link "Performance & ROI":
+      - /url: /performance
+      - generic: Performance & ROI
+    - link "Payments & Ledger":
+      - /url: /payments
+      - generic: Payments & Ledger
+    - link "Assets & Logistics":
+      - /url: /assets
+      - generic: Assets & Logistics
+    - link "Settings":
+      - /url: /settings
+      - generic: Settings
+  - button "Collapse":
+    - generic: Collapse
+- banner:
+  - textbox "Search campaigns, creators, content..."
+  - button "3":
+    - generic: "3"
+  - button "M MamaEarth":
+    - generic: M
+    - generic: MamaEarth
+  - button "Arun Kumar Marketing Manager":
+    - paragraph: Arun Kumar
+    - paragraph: Marketing Manager
+- main:
+  - heading "AI Campaign Planner" [level=1]
+  - paragraph: Let AI design your influencer campaign strategy
+  - text: Product / Feature Name
+  - textbox "Product / Feature Name":
+    - /placeholder: e.g., Vitamin C Serum, Onion Hair Oil
+  - text: Campaign Objective
+  - combobox:
+    - generic: Select objective
+  - text: Target Age Range
+  - combobox:
+    - generic: Select age
+  - text: Target Cities
+  - textbox "Target Cities":
+    - /placeholder: e.g., Mumbai, Delhi, Bangalore
+  - text: Target Interests
+  - textbox "Target Interests":
+    - /placeholder: e.g., Skincare, Natural products, Organic beauty, Parenting
+  - generic: Platform Preference
+  - checkbox "Instagram"
+  - generic: Instagram
+  - checkbox "YouTube"
+  - generic: YouTube
+  - checkbox "LinkedIn"
+  - generic: LinkedIn
+  - text: Budget Min (₹)
+  - spinbutton "Budget Min (₹)"
+  - text: Budget Max (₹)
+  - spinbutton "Budget Max (₹)"
+  - text: Campaign Duration (days)
+  - spinbutton "Campaign Duration (days)"
+  - button "Generate AI Campaign Plan":
+    - text: Generate AI Campaign Plan
+  - heading "AI-Powered Campaign Planning" [level=3]
+  - paragraph: Fill in your campaign details and let AI suggest the best strategy, content formats, and creator mix for maximum ROI.
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_05t71mwv1r9qb9tdwk5a0m9t2d?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: ₹0.0L

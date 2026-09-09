@@ -1,0 +1,115 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3r10cqfckt86ab3mkpab585xgk?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- complementary:
+  - link "Q QuoteFlow":
+    - /url: /
+    - generic: Q
+    - generic: QuoteFlow
+  - navigation:
+    - link "Dashboard":
+      - /url: /
+      - text: Dashboard
+    - link "Create Quotation":
+      - /url: /create-quotation
+      - text: Create Quotation
+    - link "Quotations":
+      - /url: /quotations
+      - text: Quotations
+    - link "Customers":
+      - /url: /customers
+      - text: Customers
+    - link "Products":
+      - /url: /products
+      - text: Products
+  - link "Settings":
+    - /url: /settings
+    - text: Settings
+  - generic: PS
+  - generic: Priya Sharma
+  - generic: Studio Lead
+  - link "Sign out":
+    - /url: /login
+- main:
+  - heading "Create Quotation" [level=2]
+  - heading "New Quotation" [level=1]
+  - paragraph: Fill in the client requirements to generate a professional proposal.
+  - heading "Client Details" [level=2]
+  - generic: Select Customer
+  - combobox "Select Customer":
+    - option "Select existing..." [selected]
+    - option "Ananya Deshmukh — AD Interior Studio"
+    - option "Rohan Thakur — Thakur Villa, Juhu"
+    - option "Meera Nair — Boutique Living, Bandra"
+    - option "Sneha Iyer — Iyer Residence, Powai"
+    - option "Vikram Menon — Menon Builders Pvt Ltd"
+    - option "Devansh Kapoor — Kapoor & Associates Design"
+  - generic: Customer Name
+  - textbox "Customer Name":
+    - /placeholder: Rahul Sharma
+    - text: Reviewer Synthetic Customer
+  - generic: Phone Number
+  - textbox "Phone Number":
+    - /placeholder: +91 98765 43210
+  - generic: Email Address
+  - textbox "Email Address":
+    - /placeholder: rahul@example.in
+  - heading "Scope & AI Generation" [level=2]
+  - generic: Customer requirements
+  - textbox "Customer requirements":
+    - /placeholder: Describe the customer's requirements here... e.g. 'Client needs a full kitchen redesign including marble countertops, custom cabinets, and professional lighting installation for a 200sqft area.'
+    - text: "Fictional review test: two modular kitchen cabinets."
+  - button "Generate with AI":
+    - text: Generate with AI
+  - heading "AI Understanding" [level=3]
+  - term: Products / Services
+  - definition: Modular Kitchen Cabinetry × 2
+  - term: Material
+  - definition: Not specified
+  - term: Style / Finish
+  - definition: Not specified
+  - term: Dimensions
+  - definition: Not specified
+  - term: Budget
+  - definition: Not specified
+  - term: Additional Requirements
+  - definition: None detected
+  - heading "Recommended catalogue items" [level=4]
+  - button "Add all to quotation"
+  - list:
+    - paragraph: Modular Kitchen Cabinetry
+    - paragraph: Matched "kitchen" in the brief · catalogue price per running ft • GST 18%
+    - generic: 2 × ₹12,500.00
+    - button "Add":
+      - text: Add
+  - paragraph: Review and adjust the suggestions below — nothing is finalized until you send the quotation.
+  - table:
+    - rowgroup:
+      - row "Description Qty Unit Price Disc % GST % Subtotal":
+        - columnheader "Description"
+        - columnheader "Qty"
+        - columnheader "Unit Price"
+        - columnheader "Disc %"
+        - columnheader "GST %"
+        - columnheader "Subtotal"
+        - columnheader
+    - rowgroup:
+      - row "No line items yet — generate suggestions from the brief above or add a line item manually.":
+        - cell "No line items yet — generate suggestions from the brief above or add a line item manually."
+  - button "Add line item":
+    - text: Add line item
+  - generic: 0 items
+  - generic: Gross
+  - generic: ₹0.00
+  - generic: Discount
+  - generic: −₹0.00
+  - generic: Subtotal
+  - generic: ₹0.00
+  - generic: GST
+  - generic: ₹0.00
+  - generic: Grand Total
+  - generic: ₹0.00
+  - button "Save Draft"
+  - button "Preview & Send"

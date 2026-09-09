@@ -1,0 +1,57 @@
+- complementary:
+  - generic: LeakWatch
+  - generic: Workspace
+  - navigation:
+    - button "Dashboard":
+      - generic: Dashboard
+    - button "Contracts":
+      - generic: Contracts
+    - button "Payables 5":
+      - generic: Payables
+      - generic: "5"
+  - generic: Configure
+  - navigation:
+    - button "Integrations":
+      - generic: Integrations
+    - button "Settings" [active]:
+      - generic: Settings
+  - generic: D
+  - generic: Demo
+  - generic: demo@example.com
+  - button "Exit"
+- banner:
+  - generic: Workspace
+  - heading "Settings" [level=2]
+  - generic: Demo data
+  - button "Sync invoices"
+  - button "+ New contract"
+- button "Profile"
+- button "Organisation"
+- button "Plan & billing"
+- button "Approval rules"
+- heading "Your details" [level=4]
+- paragraph: Shown on every approval you sign off.
+- generic: Full name
+- textbox: Demo
+- generic: Work email
+- textbox
+- generic: Role
+- textbox [disabled]: Admin · Approver
+- button "Save changes"
+- heading "Notifications" [level=4]
+- paragraph: Preview only — notification delivery is not wired up in this demo.
+- checkbox "An invoice lands in my approval queue" [checked]
+- text: An invoice lands in my approval queue
+- checkbox "A contract enters its 30-day renewal window" [checked]
+- text: A contract enters its 30-day renewal window
+- checkbox "A gateway sync fails" [checked]
+- text: A gateway sync fails
+- checkbox "Weekly outflow digest, Monday 9am"
+- text: Weekly outflow digest, Monday 9am
+- heading "Demo data" [level=4]
+- paragraph: Restore the workspace to its original seeded state.
+- button "Reset demo data"
+- paragraph: Clears everything saved in this browser and reloads with the original contracts.
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

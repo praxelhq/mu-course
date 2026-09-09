@@ -1,0 +1,171 @@
+- complementary:
+  - link "HireLens":
+    - /url: /
+    - generic: HireLens
+  - navigation:
+    - link "Job Setup":
+      - /url: /
+      - text: Job Setup
+    - link "Candidates":
+      - /url: /candidates
+      - text: Candidates
+    - link "Shortlist":
+      - /url: /shortlist
+      - text: Shortlist
+  - paragraph: AI hiring intelligence. Signals are advisory — always review candidates yourself.
+- main:
+  - heading "Job Setup" [level=1]
+  - paragraph: Extract weighted requirements from a job description with AI.
+  - text: Job title
+  - textbox "Job title": Senior Backend Engineer
+  - text: Department
+  - textbox "Department": Engineering
+  - text: Job description
+  - textbox "Job description":
+    - /placeholder: Paste the full job description here…
+    - text: "We are hiring a Senior Backend Engineer to design and scale distributed services powering our payments platform. You will own services end to end, from schema design to production observability, and mentor mid-level engineers. Requirements: 6+ years backend engineering, deep Go or Java, PostgreSQL, Kubernetes, event-driven architecture with Kafka, and strong system design skills. Nice to have: fintech or payments background, Terraform, gRPC, and experience leading migrations."
+  - button "Extract requirements":
+    - text: Extract requirements
+  - generic: Weights default to 8 for must-haves and 4 for good-to-haves.
+  - paragraph: 8 must-haves, 6 good-to-haves, 12 parameters
+  - heading "Must-haves" [level=2]
+  - generic: "8"
+  - textbox: 6+ years backend engineering
+  - button "Delete 6+ years backend engineering":
+  - generic: Experience
+  - generic: weight 8
+  - slider
+  - textbox: Go or Java expertise
+  - button "Delete Go or Java expertise":
+  - generic: Skills
+  - generic: weight 8
+  - slider
+  - textbox: PostgreSQL at scale
+  - button "Delete PostgreSQL at scale":
+  - generic: Skills
+  - generic: weight 8
+  - slider
+  - textbox: Distributed systems design
+  - button "Delete Distributed systems design":
+  - generic: Skills
+  - generic: weight 8
+  - slider
+  - textbox: Kubernetes in production
+  - button "Delete Kubernetes in production":
+  - generic: Tools
+  - generic: weight 8
+  - slider
+  - textbox: Kafka / event-driven design
+  - button "Delete Kafka / event-driven design":
+  - generic: Tools
+  - generic: weight 8
+  - slider
+  - textbox: Production observability ownership
+  - button "Delete Production observability ownership":
+  - generic: Experience
+  - generic: weight 8
+  - slider
+  - textbox: Mentoring engineers
+  - button "Delete Mentoring engineers":
+  - generic: Experience
+  - generic: weight 8
+  - slider
+  - heading "Good-to-haves" [level=2]
+  - generic: "6"
+  - textbox: Fintech or payments domain
+  - button "Delete Fintech or payments domain":
+  - generic: Experience
+  - generic: weight 4
+  - slider
+  - textbox: Terraform / IaC
+  - button "Delete Terraform / IaC":
+  - generic: Tools
+  - generic: weight 4
+  - slider
+  - textbox: gRPC APIs
+  - button "Delete gRPC APIs":
+  - generic: Skills
+  - generic: weight 4
+  - slider
+  - textbox: Led platform migration
+  - button "Delete Led platform migration":
+  - generic: Experience
+  - generic: weight 4
+  - slider
+  - textbox: CS degree
+  - button "Delete CS degree":
+  - generic: Education
+  - generic: weight 4
+  - slider
+  - textbox: Open-source contributions
+  - button "Delete Open-source contributions":
+  - generic: Skills
+  - generic: weight 4
+  - slider
+  - heading "Other parameters" [level=2]
+  - generic: "12"
+  - textbox: Written communication
+  - button "Delete Written communication":
+  - generic: Skills
+  - generic: weight 5
+  - slider
+  - textbox: Time-zone overlap
+  - button "Delete Time-zone overlap":
+  - generic: Experience
+  - generic: weight 5
+  - slider
+  - textbox: Startup environment
+  - button "Delete Startup environment":
+  - generic: Experience
+  - generic: weight 5
+  - slider
+  - textbox: Code review culture
+  - button "Delete Code review culture":
+  - generic: Experience
+  - generic: weight 5
+  - slider
+  - textbox: On-call readiness
+  - button "Delete On-call readiness":
+  - generic: Experience
+  - generic: weight 5
+  - slider
+  - textbox: Cost-aware engineering
+  - button "Delete Cost-aware engineering":
+  - generic: Skills
+  - generic: weight 5
+  - slider
+  - textbox: Security fundamentals
+  - button "Delete Security fundamentals":
+  - generic: Skills
+  - generic: weight 5
+  - slider
+  - textbox: SQL query tuning
+  - button "Delete SQL query tuning":
+  - generic: Skills
+  - generic: weight 5
+  - slider
+  - textbox: CI/CD ownership
+  - button "Delete CI/CD ownership":
+  - generic: Tools
+  - generic: weight 5
+  - slider
+  - textbox: Docker
+  - button "Delete Docker":
+  - generic: Tools
+  - generic: weight 5
+  - slider
+  - textbox: Technical writing
+  - button "Delete Technical writing":
+  - generic: Skills
+  - generic: weight 5
+  - slider
+  - textbox: Postgraduate study
+  - button "Delete Postgraduate study":
+  - generic: Education
+  - generic: weight 3
+  - slider
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_34n3kgmmww81av83m7d6s7rbge?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

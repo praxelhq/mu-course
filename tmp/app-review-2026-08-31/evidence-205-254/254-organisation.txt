@@ -1,0 +1,55 @@
+- complementary:
+  - generic: LeakWatch
+  - generic: Workspace
+  - navigation:
+    - button "Dashboard":
+      - generic: Dashboard
+    - button "Contracts":
+      - generic: Contracts
+    - button "Payables 5":
+      - generic: Payables
+      - generic: "5"
+  - generic: Configure
+  - navigation:
+    - button "Integrations":
+      - generic: Integrations
+    - button "Settings":
+      - generic: Settings
+  - generic: D
+  - generic: Demo
+  - generic: demo@example.com
+  - button "Exit"
+- banner:
+  - generic: Workspace
+  - heading "Settings" [level=2]
+  - generic: Demo data
+  - button "Sync invoices"
+  - button "+ New contract"
+- button "Profile"
+- button "Organisation"
+- button "Plan & billing"
+- button "Approval rules"
+- heading "Company" [level=4]
+- paragraph: Appears on exports and audit trails.
+- generic: Registered name
+- textbox: Meridian Textiles Pvt Ltd
+- generic: GSTIN
+- textbox: 27AAKCM4291R1ZQ
+- generic: PAN
+- textbox: AAKCM4291R
+- generic: Registered address
+- textbox: Unit 4, Kamala Mills, Lower Parel, Mumbai 400013
+- button "Save organisation"
+- heading "Financial year" [level=4]
+- paragraph: Preview only — reporting periods are fixed in this demo.
+- generic: FY start
+- combobox:
+  - option "1 April" [selected]
+  - option "1 January"
+- generic: Reporting currency
+- combobox:
+  - option "INR — ₹" [selected]
+  - option "USD — $"
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

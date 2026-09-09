@@ -1,0 +1,56 @@
+- main:
+  - button "Facility Apollo Hospital — Block B":
+    - generic: Facility
+    - generic: Apollo Hospital — Block B
+  - paragraph: CPCB authorised channel
+  - heading "Book Bulk E-Waste Pickup" [level=2]
+  - paragraph: Certified trucks, on-site weighing, same-day payout.
+  - term: Total tons recycled
+  - definition: 142.6 T
+  - term: Carbon offset
+  - definition:
+    - text: 88.4 T
+  - heading "Select asset categories" [level=3]
+  - button "Medical Electronics MRI, monitors":
+    - generic: Medical Electronics
+    - generic: MRI, monitors
+  - button "IT & Servers Racks, laptops" [pressed]:
+    - generic: IT & Servers
+    - generic: Racks, laptops
+  - button "Industrial Cable Copper, harness":
+    - generic: Industrial Cable
+    - generic: Copper, harness
+  - button "Batteries / UPS Li-ion, SMF":
+    - generic: Batteries / UPS
+    - generic: Li-ion, SMF
+  - heading "Estimated load" [level=3]:
+    - text: Estimated load
+  - button "100–500 kg"
+  - button "500 kg–2 Tons" [pressed]
+  - button "5 Tons+"
+  - paragraph: Pickups above 2 Tons are auto-assigned to a Form 6 manifest lane.
+- link "Start Request":
+  - /url: /assets
+  - text: Start Request
+- navigation:
+  - list:
+    - link "Book":
+      - /url: /
+      - generic: Book
+    - link "Assets":
+      - /url: /assets
+      - generic: Assets
+    - link "Track":
+      - /url: /tracking
+      - generic: Track
+    - link "Weigh":
+      - /url: /weighing
+      - generic: Weigh
+    - link "Vault":
+      - /url: /vault
+      - generic: Vault
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_4nvrb3pqd18wc9xeepsca1team?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

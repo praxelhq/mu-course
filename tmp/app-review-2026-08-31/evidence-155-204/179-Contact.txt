@@ -1,0 +1,76 @@
+- banner:
+  - button "User Profile":
+    - img "Alex"
+  - button "Life Admin":
+    - heading "Life Admin" [level=1]
+  - navigation "Main Navigation":
+    - button "Home"
+    - button "About"
+    - button "Contact" [active]
+    - button "Tasks & Domains"
+    - button "Calendar"
+    - button "Settings"
+  - button "add New Task":
+    - generic: add
+    - generic: New Task
+  - button "Notifications":
+    - generic: notifications
+- main:
+  - generic: Concierge & Inquiries
+  - heading "Executive Contact" [level=2]
+  - paragraph: Reach our administrative concierge specialists for custom workflows, regulatory inquiries, or enterprise integration.
+  - generic: Your Name
+  - textbox "e.g. Eleanor Vance"
+  - generic: Email Address
+  - textbox "e.g. eleanor@vance-holdings.com"
+  - generic: Inquiry Type
+  - combobox:
+    - option "Compliance Consultation" [selected]
+    - option "Technical Support"
+    - option "Feature Request & NLP Tuning"
+    - option "Family Office & Multi-User"
+  - generic: Administrative Notes / Message
+  - textbox "Detail your requirements or questions regarding life administrative management..."
+  - button "Submit Dispatch send":
+    - generic: Submit Dispatch
+    - generic: send
+  - heading "Concierge Desk" [level=3]
+  - paragraph: Our specialists assist in tailoring domain taxonomies and coordinating document retention policies.
+  - generic: mail
+  - paragraph: Direct Email
+  - paragraph: concierge@lifeadmin.executive
+  - generic: schedule
+  - paragraph: Operating Hours
+  - paragraph: "Mon – Fri: 08:00 – 20:00 IST"
+  - generic: security
+  - paragraph: Security Hotline
+  - paragraph: security@lifeadmin.executive
+- contentinfo:
+  - heading "Life Admin" [level=2]
+  - paragraph: Autonomous personal logistics, compliance monitoring, and administrative governance for discerning individuals.
+  - link "X / Twitter":
+    - /url: https://x.com
+    - generic: flutter_dash
+  - link "LinkedIn":
+    - /url: https://linkedin.com
+    - generic: work
+  - link "GitHub":
+    - /url: https://github.com
+    - generic: code
+  - link "Discord Community":
+    - /url: https://discord.com
+    - generic: forum
+  - heading "Navigation" [level=3]
+  - list:
+    - button "Executive Dashboard"
+    - button "About Platform"
+    - button "Contact Concierge"
+    - button "Domains & Categories"
+    - button "Timeline & Calendar"
+  - heading "Privacy & Trust" [level=3]
+  - paragraph: Zero-knowledge document storage, client-side encryption, and strict GDPR & Indian DPDP Act compliance.
+  - button "Privacy Policy"
+  - button "Terms of Governance"
+  - button "Security Inquiries"
+  - paragraph: © 2026 Life Admin Executive. All rights reserved.
+  - generic: Core Systems Operational

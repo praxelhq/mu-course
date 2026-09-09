@@ -1,0 +1,90 @@
+- banner:
+  - generic: Statecraft Intelligence
+  - generic: Electoral Data & Demographic Engine
+  - button "Constituency Hub":
+    - generic: Constituency Hub
+  - button "Maharashtra / Ahilyanagar / Karjat Jamkhed":
+    - generic: Maharashtra
+    - generic: /
+    - generic: Ahilyanagar
+    - generic: /
+    - generic: Karjat Jamkhed
+  - textbox "Search booths, candidates, communities..."
+  - generic: ECI Form 20 Audited
+  - button "Export Report":
+    - generic: Export Report
+  - button "Refresh Data":
+  - button "RK Rajeshwar Kulkarni (IAS) MH-CEO-2024":
+    - generic: RK
+    - generic: Rajeshwar Kulkarni (IAS)
+    - generic: MH-CEO-2024
+- complementary:
+  - generic: ACTIVE CONSTITUENCY
+  - generic: "AC #227"
+  - heading "Karjat Jamkhed" [level=2]
+  - paragraph: Ahilyanagar, Maharashtra
+  - button "Constituency Selection Hub":
+    - generic: Constituency Selection Hub
+  - button "Quick Modal (288 ACs)":
+    - generic: Quick Modal (288 ACs)
+  - navigation:
+    - generic: Analytics Navigation
+    - button "Constituency Dashboard Snapshot":
+      - generic: Constituency Dashboard
+      - generic: Snapshot
+    - button "Demographics & Caste Chanakya PR":
+      - generic: Demographics & Caste
+      - generic: Chanakya PR
+    - button "Form 20 Booth Explorer 356 Booths":
+      - generic: Form 20 Booth Explorer
+      - generic: 356 Booths
+    - button "Historical Trends 2014-2024":
+      - generic: Historical Trends
+      - generic: 2014-2024
+    - button "Swing Scenario Simulator Interactive":
+      - generic: Swing Scenario Simulator
+      - generic: Interactive
+    - button "Sources & Provenance Audit Log" [active]:
+      - generic: Sources & Provenance
+      - generic: Audit Log
+  - generic: MH-CEO-2024
+  - generic: Rajeshwar Kulkarni (IAS)
+  - generic "Connected"
+  - text: ECI Form 20 Sync
+  - generic: VERIFIED
+  - paragraph: Booth electors & votes mapped from official Form 20 counts. Demographic estimates powered by Chanakya PR.
+- main:
+  - generic: Data Architecture & Governance
+  - heading "Data Sources & Schema Specifications" [level=1]
+  - paragraph: Source-agnostic data engine details, ECI Form 20 specification & Chanakya PR methodology
+  - button "Export Schema Specification":
+    - generic: Export Schema Specification
+  - heading "Election Commission of India (ECI) Form 20" [level=2]
+  - paragraph: Final Result Sheet Data Standard
+  - paragraph: Form 20 is the official tabular result sheet published by Returning Officers under Rule 56(7) of the Conduct of Elections Rules, 1961. It provides official booth-wise accounting of valid votes polled per candidate.
+  - list:
+    - generic: Booth Registered Electors & Total Polled Votes
+    - generic: Candidate/Party-wise Exact Vote Counts
+    - generic: Tendered Votes & Rejected Votes Accounting
+    - generic: Booth-level Turnout & Winning Margin Percentages
+  - generic: "Status in Statecraft Intelligence:"
+  - text: Full 2024, 2019, and 2014 Form 20 datasets ingested for active assembly constituencies.
+  - heading "Chanakya Political Research (Demographics)" [level=2]
+  - paragraph: Source-Agnostic Demographic Framework
+  - paragraph: Constituency-level caste and community estimates are currently populated using Chanakya Political Research survey projections. The platform is designed to seamlessly integrate official Census / Caste Census data when published.
+  - list:
+    - generic: Source-Agnostic Schema (Supports Multiple Sources)
+    - generic: Confidence Ratings per Community Estimate
+    - generic: Category Standardizations (OBC, SC, ST, MINORITY, GEN)
+    - generic: Trend Notes & Local Influencer Density
+  - generic: "Census Ingestion Pipeline Ready:"
+  - text: Will replace sample estimates upon official Registrar General of India release.
+  - heading "Form 20 Custom Data Validation Scratchpad" [level=3]:
+    - text: Form 20 Custom Data Validation Scratchpad
+  - paragraph: Test & validate custom Form 20 JSON data payloads against the Statecraft schema
+  - button "Validate Schema":
+    - generic: Validate Schema
+  - 'textbox "Paste JSON Form 20 Booth Payload: { \"boothNumber\": 101, \"name\": \"Z.P. Primary School\", \"registeredElectors\": 1250, \"votesPolled\": 890 }"':
+    - /placeholder: "Paste JSON Form 20 Booth Payload:\n{\n  \"boothNumber\": 101,\n  \"name\": \"Z.P. Primary School\",\n  \"registeredElectors\": 1250,\n  \"votesPolled\": 890\n}"
+  - heading "Data Ethics & Privacy Compliance Statement" [level=4]
+  - paragraph: Statecraft Intelligence focuses strictly on aggregate electoral statistics, Form 20 result sheets, and demographic estimates. The system does not track individual voters, create individual voter profiling dossiers, or attempt to monitor personal political affiliations. All data operations strictly adhere to public election data standards.

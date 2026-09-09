@@ -1,0 +1,41 @@
+- banner:
+  - link "Back to conversations":
+    - /url: /assistant
+  - paragraph: Which bills are due this week?
+  - paragraph: LifeVault Assistant
+- main:
+  - generic: Which bills are due this week?
+  - paragraph:
+    - strong: 4 bills
+    - text: "need attention in the next 7 days, totalling ₹5,038:"
+  - paragraph
+  - paragraph: • Electricity — MSEDCL — ₹2,480, due 5 Aug
+  - paragraph: • Water Board — ₹610, due 7 Aug
+  - paragraph: • Airtel Fiber 300 Mbps — ₹1,199, due 9 Aug
+  - paragraph: • Jio Postpaid — ₹749, due 2 Aug (overdue)
+  - paragraph
+  - paragraph: Jio Postpaid is already overdue — clear it today to avoid a late fee.
+- textbox "Ask about bills, policies, documents…" [active]
+- button "Send message" [disabled]:
+- navigation:
+  - link "Home":
+    - /url: /
+    - generic: Home
+  - link "Vault":
+    - /url: /vault
+    - generic: Vault
+  - link "Assistant":
+    - /url: /assistant
+    - generic: Assistant
+  - link "Payments":
+    - /url: /payments
+    - generic: Payments
+  - link "Profile":
+    - /url: /profile
+    - generic: Profile
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_5gysj6r1138rbr8qr4gf9yvfym?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

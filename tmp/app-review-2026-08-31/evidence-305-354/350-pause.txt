@@ -1,0 +1,22 @@
+- main:
+  - generic: EASY
+  - button "Resume game" [active]: ▶ RESUME
+  - generic: RUNS
+  - generic: "0"
+  - generic: WICKETS
+  - generic: 2/3
+  - generic: BALLS
+  - generic: 2/6
+  - generic: 🏃
+  - generic: 🧑
+  - heading "PAUSED" [level=2]
+  - paragraph: Delivery frozen — resume picks up exactly where the ball stopped
+  - button "RESUME"
+  - button "QUIT"
+  - paragraph: Paused
+  - button "Hit the ball" [disabled]: HIT
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6jskehb79z95vt7apdtvepgv1b?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

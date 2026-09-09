@@ -1,0 +1,96 @@
+- banner:
+  - button "SQI SERVICE QUALITY INTELLIGENCE":
+    - generic: SQI
+    - generic: SERVICE QUALITY INTELLIGENCE
+  - navigation:
+    - button "Restaurants"
+    - button "Hotels"
+    - button "Rankings"
+    - button "Compare"
+    - button "Methodology"
+  - button "Search Mumbai... /":
+    - generic: Search Mumbai...
+    - generic: /
+  - button "LIGHT (BEIGE)":
+    - generic: LIGHT (BEIGE)
+  - button "SQI Admin & Model Verification":
+- main:
+  - generic: MUMBAI RESTAURANT REGISTRY · RESTAURANT_V1.0
+  - heading "Mumbai Restaurants" [level=1]
+  - paragraph: Service quality scores calibrated across culinary craftsmanship (22%), hospitality experience (18%), operational reliability (15%), consistency (14%), and 4 other audited dimensions.
+  - textbox "Filter by name, cuisine, neighborhood, or specialty..." [active]: Indian Accent
+  - button "Clear"
+  - generic: "Sort:"
+  - combobox:
+    - option "SQI Quality (High to Low)" [selected]
+    - option "Confidence Index"
+    - option "Evidence Volume"
+  - generic: "Neighborhood:"
+  - combobox:
+    - option "All Neighborhoods" [selected]
+    - option "Andheri East"
+    - option "BKC"
+    - option "Bandra West"
+    - option "Colaba"
+    - option "Dadar West"
+    - option "Fort"
+    - option "Juhu"
+    - option "Lower Parel"
+    - option "Mahalaxmi"
+    - option "Malad West"
+    - option "Marol"
+    - option "Parel"
+    - option "Powai"
+    - option "Sakinaka"
+    - option "Vile Parle"
+  - combobox:
+    - option "All Statuses" [selected]
+    - option "Rank Eligible Only"
+    - option "Emerging Watchlist Only"
+  - combobox:
+    - option "All Price Segments" [selected]
+    - option "₹₹ (Moderate)"
+    - option "₹₹₹ (Upscale)"
+    - option "₹₹₹₹ (Fine Dining)"
+    - option "₹₹₹₹₹ (Ultra-Luxury)"
+  - text: Showing
+  - strong: "1"
+  - text: of 25 restaurants
+  - generic: BKC
+  - generic: ₹₹₹₹₹
+  - heading "Indian Accent" [level=3]
+  - paragraph: Inventive Progressive Indian Tasting Room · Chef Manish Mehrotra’s globally lauded progressive Indian institution reimagining nostalgia and heritage flavours with unmatched finesse.
+  - generic: Best Overall
+  - generic: Best Food
+  - generic: Best Experience
+  - generic: Most Reliable
+  - generic: Most Consistent
+  - generic: Platform Rating
+  - generic: 5.0 ★
+  - generic: 2,850 reviews
+  - generic: SQI Quality Score
+  - generic: "96"
+  - generic: /100
+  - generic: A+
+  - generic: "Conf: 96 · Cov: 95%"
+- contentinfo:
+  - button "SQI SERVICE QUALITY INTELLIGENCE":
+    - generic: SQI
+    - generic: SERVICE QUALITY INTELLIGENCE
+  - paragraph: “A rating tells you what people said. SQI helps you understand what the evidence says about service quality.”
+  - paragraph: SQI is an evidence-based measurement and benchmarking engine that disaggregates subjective star ratings into verifiable operational parameters, uncertainty intervals, and confidence distributions.
+  - heading "Registry Index" [level=4]
+  - list:
+    - button "Mumbai Restaurants (25 Calibrated)"
+    - button "Mumbai Hotels (25 Calibrated)"
+    - button "City Rankings & Tier Index"
+    - button "Multi-Property Matrix Compare"
+  - heading "Methodology & Models" [level=4]
+  - list:
+    - button "RESTAURANT_V1.0 (8 Dimensions)"
+    - button "HOTEL_V1.0 (8 Dimensions)"
+    - button "Missing Data Redistribution Rule"
+    - button "Model Verification & Admin Portal"
+  - paragraph: "© 2026 SQI Service Quality Intelligence. Initial Product: Mumbai, India."
+  - generic: ● EVIDENCE > HYPE
+  - generic: "MODEL: SQI_V1.0_SEED"

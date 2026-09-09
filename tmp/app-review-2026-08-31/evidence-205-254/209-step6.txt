@@ -1,0 +1,46 @@
+- region "Notifications (F8)":
+  - list
+- region "Notifications alt+T"
+- main:
+  - generic: Step 6 of 6
+  - generic: 100% complete
+  - generic: Basic Info
+  - generic: Vitals
+  - generic: Physical
+  - generic: Performance
+  - generic: Cognitive
+  - generic: Psychological
+  - heading "Psychological" [level=2]
+  - generic: Enjoyment & Motivation
+  - generic: 5/10
+  - paragraph: Internal drive and love for sports
+  - slider
+  - generic: Coachability
+  - generic: 5/10
+  - paragraph: Receptiveness to instruction and feedback
+  - slider
+  - generic: Response to Mistakes
+  - generic: 5/10
+  - paragraph: Resilience and learning from errors
+  - slider
+  - generic: Emotional Regulation
+  - generic: 5/10
+  - paragraph: Managing emotions during competition
+  - slider
+  - generic: Game Awareness
+  - generic: 5/10
+  - paragraph: Understanding of game situations and tactics
+  - slider
+  - generic: Competitive Curiosity
+  - generic: 5/10
+  - paragraph: Desire to compete and improve
+  - slider
+  - button "Previous":
+    - text: Previous
+  - button "Get Results" [active]:
+    - text: Get Results
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_4evn1nffn78kfshkdrmcjvbrzc?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

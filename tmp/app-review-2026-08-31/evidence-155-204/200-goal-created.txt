@@ -1,0 +1,32 @@
+- navigation:
+  - generic: DEADLINE
+  - button "Home"
+  - button "Explore"
+  - button "Create Goal"
+  - button "My Goals"
+  - button "Leaderboard"
+  - button "Profile"
+  - generic: ⚡
+  - generic: 2,350
+  - button "Y":
+    - generic: "Y"
+- main:
+  - generic: "Y"
+  - text: You · 📚 Academic
+  - heading "Review practice puzzle" [level=1]
+  - generic: "100"
+  - generic: XP at stake
+  - generic: "Deadline: 3 days left"
+  - generic: 2d 09h 59m
+  - generic: "Progress: 0%"
+  - button "+10% Progress"
+  - button "Mark as Completed"
+  - generic: I missed this deadline
+  - heading "The Challenge" [level=3]
+  - paragraph: Synthetic private review goal.
+  - heading "Accountability" [level=3]
+  - paragraph: 0 people are backing this goal
+  - generic: No backers yet.
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

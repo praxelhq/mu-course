@@ -1,0 +1,79 @@
+- banner:
+  - button "Set your location":
+  - link "MindSaathi Your Mind Matters":
+    - /url: /
+    - generic: MindSaathi
+    - generic: Your Mind Matters
+  - 'link "Language: English. Change language"':
+    - /url: /language
+    - generic: English
+  - link "SOS":
+    - /url: /sos
+    - text: SOS
+- main:
+  - button "Log Mood Today"
+  - button "View Trends (2)"
+  - heading "How's your mind today?" [level=2]
+  - paragraph: Take a moment to check in with yourself.
+  - button "😭 Very Low":
+    - generic: 😭
+    - generic: Very Low
+  - button "🙁 Low":
+    - generic: 🙁
+    - generic: Low
+  - button "😐 Okay":
+    - generic: 😐
+    - generic: Okay
+  - button "🙂 Good":
+    - generic: 🙂
+    - generic: Good
+  - button "😄 Great":
+    - generic: 😄
+    - generic: Great
+  - heading "What's affecting your mood?" [level=3]
+  - button "Work"
+  - button "Family"
+  - button "Health"
+  - button "Sleep"
+  - button "Social"
+  - button "Finances"
+  - button "Exams/Studies"
+  - textbox "A note to yourself… today felt…"
+  - button "Save today's check-in"
+- contentinfo:
+  - link "How your data is used":
+    - /url: /privacy
+- button "Open Saathi, your guide":
+  - img "Saathi, your friendly guide"
+- navigation "Screen navigation":
+  - button "Previous screen":
+  - link "Language":
+    - /url: /language
+    - text: Language
+  - link "Settings":
+    - /url: /settings
+    - text: Settings
+  - link "Check-in":
+    - /url: /tracker
+    - text: Check-in
+  - button "Next screen":
+  - link "Today":
+    - /url: /
+    - generic: Today
+  - link "Counsellors":
+    - /url: /counsellors
+    - generic: Counsellors
+  - link "Tracker" [active]:
+    - /url: /tracker
+    - generic: Tracker
+  - link "AI Support":
+    - /url: /ai-support
+    - generic: AI Support
+  - link "SOS":
+    - /url: /sos
+    - generic: SOS
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6c2nccmn5q8vsre70jn9smn197?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

@@ -1,0 +1,37 @@
+- banner:
+  - link "GlowMatch":
+    - /url: /
+    - generic: GlowMatch
+  - navigation:
+    - link "My routine":
+      - /url: /dashboard
+    - link "Personalise":
+      - /url: /personalize
+    - link "Ingredients":
+      - /url: /ingredients
+- main:
+  - paragraph: Personalisation & AI depth
+  - heading "Your skin, your season, your questions" [level=1]
+  - paragraph: Go beyond the basics — match product shades to your skin tone, let your routine shift with India's seasons, and ask anything about your skincare in plain language.
+  - tablist:
+    - tab "Skin Tone"
+    - tab "Seasonal" [active] [selected]
+    - tab "Ask GlowMatch"
+  - tabpanel "Seasonal":
+    - heading "Seasonal routine switcher" [level=2]
+    - paragraph: Indian weather shifts fast. As we move from monsoon to winter to summer, your textures, SPF and emphasis should shift too. We'll suggest what to adjust.
+    - generic: 🌧️
+    - paragraph: Current season
+    - paragraph: Monsoon (Jun–Sep)
+    - paragraph: Checking what works best this season…
+    - paragraph: Seasonal adjustments shift textures, SPF levels and emphasis as Indian weather changes through monsoon, winter, and summer.
+- contentinfo:
+  - paragraph: GlowMatch
+  - paragraph: Gentle, personalised routine building for Indian skin, budgets and weather.
+  - paragraph: GlowMatch offers general skincare guidance and is not a substitute for dermatologist advice.
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1354v31zk7938apwbx8trekyb6?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

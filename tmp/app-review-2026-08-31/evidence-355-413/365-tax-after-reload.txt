@@ -1,0 +1,144 @@
+- generic: Demo — sample data, not connected to your account.
+- link "Exit demo":
+  - /url: /
+  - text: Exit demo
+- banner:
+  - heading "Inbox Radar" [level=1]
+  - generic: Demo
+  - link "Back to home":
+    - /url: /
+  - button "Day"
+  - button "Week"
+  - button "Month" [pressed]
+  - button "Previous":
+  - button "August 2026"
+  - button "Next":
+- main:
+  - textbox "Search items":
+    - /placeholder: Search titles and context…
+    - text: tax
+  - button "Clear search":
+  - button "Upcoming"
+  - button "Done"
+  - button "All" [pressed]
+  - button "Work": Work
+  - button "Finance": Finance
+  - button "Travel": Travel
+  - button "Personal": Personal
+  - button "Reset"
+  - generic: S
+  - generic: M
+  - generic: T
+  - generic: W
+  - generic: T
+  - generic: F
+  - generic: S
+  - button "Sunday, Jul 26, 0 items":
+    - generic: "26"
+  - button "Monday, Jul 27, 0 items":
+    - generic: "27"
+  - button "Tuesday, Jul 28, 0 items":
+    - generic: "28"
+  - button "Wednesday, Jul 29, 0 items":
+    - generic: "29"
+  - button "Thursday, Jul 30, 0 items":
+    - generic: "30"
+  - button "Friday, Jul 31, 0 items":
+    - generic: "31"
+  - button "Saturday, Aug 1, 0 items":
+    - generic: "1"
+  - button "Sunday, Aug 2, 0 items":
+    - generic: "2"
+  - button "Monday, Aug 3, 0 items":
+    - generic: "3"
+  - button "Tuesday, Aug 4, 0 items":
+    - generic: "4"
+  - button "Wednesday, Aug 5, 0 items":
+    - generic: "5"
+  - button "Thursday, Aug 6, 0 items":
+    - generic: "6"
+  - button "Friday, Aug 7, 0 items":
+    - generic: "7"
+  - button "Saturday, Aug 8, 0 items":
+    - generic: "8"
+  - button "Sunday, Aug 9, 0 items":
+    - generic: "9"
+  - button "Monday, Aug 10, 0 items":
+    - generic: "10"
+  - button "Tuesday, Aug 11, 0 items":
+    - generic: "11"
+  - button "Wednesday, Aug 12, 0 items":
+    - generic: "12"
+  - button "Thursday, Aug 13, 0 items":
+    - generic: "13"
+  - button "Friday, Aug 14, 0 items":
+    - generic: "14"
+  - button "Saturday, Aug 15, 0 items":
+    - generic: "15"
+  - button "Sunday, Aug 16, 0 items":
+    - generic: "16"
+  - button "Monday, Aug 17, 0 items":
+    - generic: "17"
+  - button "Tuesday, Aug 18, 0 items":
+    - generic: "18"
+  - button "Wednesday, Aug 19, 0 items":
+    - generic: "19"
+  - button "Thursday, Aug 20, 0 items":
+    - generic: "20"
+  - button "Friday, Aug 21, 0 items":
+    - generic: "21"
+  - button "Saturday, Aug 22, 0 items":
+    - generic: "22"
+  - button "Sunday, Aug 23, 0 items":
+    - generic: "23"
+  - button "Monday, Aug 24, 0 items":
+    - generic: "24"
+  - button "Tuesday, Aug 25, 0 items":
+    - generic: "25"
+  - button "Wednesday, Aug 26, 0 items":
+    - generic: "26"
+  - button "Thursday, Aug 27, 0 items":
+    - generic: "27"
+  - button "Friday, Aug 28, 0 items":
+    - generic: "28"
+  - button "Saturday, Aug 29, 1 items" [active] [pressed]:
+    - generic: "29"
+  - button "Yesterday · Aug 30, 0 items":
+    - generic: "30"
+  - button "Today · Aug 31, 0 items":
+    - generic: "31"
+  - button "Tomorrow · Sep 1, 0 items":
+    - generic: "1"
+  - button "Wednesday, Sep 2, 0 items":
+    - generic: "2"
+  - button "Thursday, Sep 3, 0 items":
+    - generic: "3"
+  - button "Friday, Sep 4, 0 items":
+    - generic: "4"
+  - button "Saturday, Sep 5, 0 items":
+    - generic: "5"
+  - region "Selected day":
+    - generic: Saturday, Aug 29
+    - generic: "1"
+    - region "Tasks":
+      - text: Tasks
+      - generic: "1"
+      - article:
+        - button "Finance Overdue Pay the Q2 advance tax instalment 5:00 PM":
+          - generic: Finance
+          - generic: Overdue
+          - heading "Pay the Q2 advance tax instalment" [level=3]
+          - paragraph:
+            - text: 5:00 PM
+        - button "Done":
+          - text: Done
+        - button:
+        - button "Snooze":
+          - text: Snooze
+        - button "Delete":
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_0bxrsdw5jp8k7bb7y2j7603zda?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

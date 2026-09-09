@@ -1,0 +1,42 @@
+- main:
+  - heading "Hindsight — Equity Research Terminal" [level=1]
+  - iframe [active]:
+    - complementary:
+      - generic: ◆Hindsight
+      - generic: Self-Hosted Research Terminal
+      - navigation:
+        - button "Company"
+        - button "Sector"
+        - button "Pulse"
+        - button "Compare"
+        - button "Watchlist"
+      - generic: NO KEY — OPEN SETUP
+      - button "🇺🇸 US"
+      - button "⚙ Keys"
+      - button "◎ Walkthrough"
+    - main:
+      - text: Finnhub API key — free, powers live data ·
+      - link "get one ↗":
+        - /url: https://finnhub.io/register
+      - textbox "Finnhub key"
+      - text: Gemini key(s) — free tier. Paste several comma-separated for higher limits ·
+      - link "get one ↗":
+        - /url: https://aistudio.google.com/apikey
+      - textbox "key1, key2, key3 …"
+      - button "Save keys"
+      - button "Clear AI cache"
+      - generic: Keys are stored in this browser only — they are never sent anywhere except directly to Finnhub and Google. No keys ship with this file, so you need your own; both are free.
+      - textbox "Optional focus (or blank for whole market)"
+      - button "Scan"
+      - button "Whole market"
+      - button "Tech"
+      - button "Energy"
+      - button "Healthcare"
+      - button "Small caps"
+      - generic: Hit Scan for the market tone, hot names, flows, themes and live headlines.
+      - generic: Live data from Finnhub (free). AI analysis runs on your own Google Gemini free-tier key. Runs entirely in your browser — no Claude usage. Scores, segments & AI text are directional estimates, not precise data or financial advice. Verify at the source.
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_0t668cg5t38958qt5wmvm3ctg5?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

@@ -1,0 +1,54 @@
+- main:
+  - heading "Focus" [level=1]
+  - paragraph: 45m focused today
+  - text: What are you working on?
+  - textbox "What are you working on?":
+    - /placeholder: Study Physics
+  - paragraph: Duration
+  - button "15 min"
+  - button "25 min"
+  - button "45 min"
+  - button "60 min"
+  - button "90 min"
+  - paragraph: Strictness
+  - button "gentle"
+  - button "firm"
+  - button "strict"
+  - button "Start focus":
+    - text: Start focus
+  - paragraph: App & website blocking is enforced on the native app — the web version keeps you honest, not locked in.
+  - heading "Recent sessions" [level=3]
+  - paragraph: Product spec
+  - paragraph: Aug 31 · 90/90 min · 1 interruptions
+  - generic: Completed
+  - paragraph: Physics problem set
+  - paragraph: Aug 30 · 45/45 min · 0 interruptions
+  - generic: Completed
+  - paragraph: Inbox zero
+  - paragraph: Aug 29 · 11/25 min · 3 interruptions
+  - generic: Abandoned
+  - paragraph: Reading
+  - paragraph: Aug 28 · 30/30 min · 0 interruptions
+  - generic: Completed
+- navigation:
+  - link "Today":
+    - /url: /
+    - text: Today
+  - link "Habits":
+    - /url: /habits
+    - text: Habits
+  - link "Focus":
+    - /url: /focus
+    - text: Focus
+  - link "Progress":
+    - /url: /progress
+    - text: Progress
+  - link "Naggy":
+    - /url: /naggy
+    - text: Naggy
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1y077zn9zp920rn02hgwhd1kn0?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

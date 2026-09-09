@@ -1,0 +1,17 @@
+- main:
+  - button "Back":
+  - progressbar
+  - heading "When does your day run?" [level=1]
+  - paragraph: Be honest, not aspirational. I'll notice either way.
+  - text: Wake up
+  - textbox "Wake up": 07:00
+  - text: Sleep
+  - textbox "Sleep": 23:00
+  - button "Continue" [active]:
+    - text: Continue
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1y077zn9zp920rn02hgwhd1kn0?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

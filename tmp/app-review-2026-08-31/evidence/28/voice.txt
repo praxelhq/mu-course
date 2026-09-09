@@ -1,0 +1,618 @@
+- complementary:
+  - generic: S
+  - heading "SIGNAL" [level=1]
+  - paragraph: Precision Intelligence
+  - navigation:
+    - button "Dashboard":
+      - generic: Dashboard
+    - button "Customer Voice" [active]:
+      - generic: Customer Voice
+    - button "Emerging Issues":
+      - generic: Emerging Issues
+    - button "Opportunities":
+      - generic: Opportunities
+    - button "Action Center":
+      - generic: Action Center
+    - button "Data Ingestion":
+      - generic: Data Ingestion
+  - button "New Action":
+    - generic: New Action
+  - button "Settings":
+    - generic: Settings
+  - img "Alex Morgan"
+  - generic: Alex Morgan
+- banner:
+  - heading "Acme Beauty Customer Intelligence" [level=2]
+  - generic: Acme Beauty Q3
+  - navigation:
+    - button "Overview"
+    - button "Reports"
+    - button "History"
+  - textbox "Search signals, issues..."
+  - button "Notifications":
+  - button "Help and documentation":
+  - button "Invite Team":
+    - generic: Invite Team
+- main:
+  - heading "Customer Voice" [level=1]
+  - paragraph: Understand what your customers are saying — and why it matters.
+  - button "Export Voice Report":
+    - generic: Export Voice Report
+  - heading "Sentiment Distribution" [level=3]
+  - paragraph: Overall customer sentiment ratio
+  - 'generic "Positive: 54%"'
+  - 'generic "Neutral: 17%"'
+  - 'generic "Negative: 29%"'
+  - generic: Positive
+  - generic: 54%
+  - generic: Neutral
+  - generic: 17%
+  - generic: Negative
+  - generic: 29%
+  - generic: Based on 100 verified customer interactions.
+  - heading "What Customers Are Talking About" [level=3]
+  - paragraph: Ranked conversation themes
+  - generic: Product Quality
+  - generic: "39"
+  - generic: Packaging
+  - generic: "28"
+  - generic: Delivery
+  - generic: "13"
+  - generic: Customer Support
+  - generic: "11"
+  - generic: Sizing
+  - generic: "9"
+  - generic: Clear topic filter
+  - heading "What Customers Want" [level=3]:
+    - generic: What Customers Want
+  - generic: AI Extracted
+  - paragraph: Top requested SKU & feature variations
+  - generic: "1"
+  - generic: Travel Size
+  - generic: "9"
+  - generic: reqs
+  - generic: "2"
+  - generic: Fragrance-Free
+  - generic: "6"
+  - generic: reqs
+  - generic: "3"
+  - generic: Subscription
+  - generic: "5"
+  - generic: reqs
+  - generic: "4"
+  - generic: Gift Packaging
+  - generic: "5"
+  - generic: reqs
+  - button "Explore all product opportunities":
+    - text: Explore all product opportunities
+  - heading "Customer Evidence (100)" [level=3]
+  - paragraph: Raw customer statements categorized with sentiment & urgency tags
+  - button "All"
+  - button "Positive"
+  - button "Negative"
+  - button "Requests Only"
+  - generic: negative
+  - paragraph: "\"The new glass bottles look nice but three of them arrived completely shattered. It was a mess all over the counter.\""
+  - generic: Sarah M. • 2023-10-24
+  - generic: "#Packaging"
+  - generic: "#Damage"
+  - generic: positive
+  - paragraph: "\"Absolutely love the new serum formulation! It feels so much lighter on my skin than the previous version and leaves a dewy finish.\""
+  - generic: Elena R. • 2023-10-24
+  - generic: "#Product Quality"
+  - generic: "#Serum"
+  - generic: negative
+  - paragraph: "\"My expedited shipping took 5 days instead of 2. I needed this for an event and it did not arrive in time.\""
+  - generic: David K. • 2023-10-24
+  - generic: "#Delivery"
+  - generic: "#Shipping"
+  - generic: positive
+  - paragraph: "\"The packaging aesthetic is gorgeous and feels so luxurious. Arrived in pristine condition without plastic wrap waste. Huge step up!\""
+  - generic: Claire T. • 2023-10-24
+  - generic: "#Packaging"
+  - generic: "#Sustainability"
+  - generic: negative
+  - paragraph: "\"The bottle cap was loose and leaked liquid serum all over the invoice and outer box during transit.\""
+  - generic: Michael B. • 2023-10-23
+  - generic: "#Packaging"
+  - generic: "#Leakage"
+  - generic: positive
+  - generic: Request
+  - paragraph: "\"Please make a travel size of the night repair cream! I travel for work constantly and decanting jars is a mess. I would buy several!\""
+  - generic: Rachel L. • 2023-10-23
+  - generic: "#Feature Request"
+  - generic: "#Travel Size"
+  - generic: negative
+  - paragraph: "\"Outer cardboard carton was crushed flat. Luckily the plastic cleanser bottle survived, but the box looked terrible.\""
+  - generic: Jessica H. • 2023-10-23
+  - generic: "#Packaging"
+  - generic: "#Crushed Box"
+  - generic: positive
+  - paragraph: "\"Gentlest cleanser I have ever used. Cleanses deeply without stripping moisture from my dry cheeks.\""
+  - generic: Hannah G. • 2023-10-23
+  - generic: "#Product Quality"
+  - generic: "#Cleanser"
+  - generic: neutral
+  - generic: Request
+  - paragraph: "\"Would really appreciate an unscented / fragrance-free option for those of us with sensitive rosacea skin.\""
+  - generic: Monica W. • 2023-10-22
+  - generic: "#Feature Request"
+  - generic: "#Fragrance-Free"
+  - generic: negative
+  - paragraph: "\"The glass dropper arrived cracked at the neck. I had to throw it out because I was afraid of glass shards.\""
+  - generic: Amanda C. • 2023-10-22
+  - generic: "#Packaging"
+  - generic: "#Damage"
+  - generic: positive
+  - paragraph: "\"Delivery was on time and packed securely. The toner balances my skin pH perfectly after washing.\""
+  - generic: Ashley S. • 2023-10-22
+  - generic: "#Product Quality"
+  - generic: "#Toner"
+  - generic: positive
+  - generic: Request
+  - paragraph: "\"Can we get an auto-ship subscription option with 10% off? I purchase this moisturizer every 6 weeks without fail.\""
+  - generic: Taylor B. • 2023-10-21
+  - generic: "#Feature Request"
+  - generic: "#Subscription"
+  - generic: negative
+  - paragraph: "\"Customer support chat agent was unresponsive for 35 minutes when I had an inquiry about my tracking number.\""
+  - generic: Jordan K. • 2023-10-21
+  - generic: "#Customer Support"
+  - generic: "#Wait Time"
+  - generic: negative
+  - paragraph: "\"The box was dented on the corners and the bottle had broken loose inside the shipping sleeve.\""
+  - generic: Brandon P. • 2023-10-21
+  - generic: "#Packaging"
+  - generic: "#Transit"
+  - generic: positive
+  - paragraph: "\"Best vitamin C serum on the market. Faded my post-acne marks in 3 weeks without tingling.\""
+  - generic: Chloe M. • 2023-10-21
+  - generic: "#Product Quality"
+  - generic: "#Vitamin C"
+  - generic: neutral
+  - paragraph: "\"Standard shipping took 6 business days to reach Chicago. Slower than expected.\""
+  - generic: Kevin T. • 2023-10-20
+  - generic: "#Delivery"
+  - generic: "#Shipping"
+  - generic: positive
+  - generic: Request
+  - paragraph: "\"Need festive gift packaging options for holiday shopping! I wanted to send this set straight to my sister.\""
+  - generic: Hannah B. • 2023-10-20
+  - generic: "#Feature Request"
+  - generic: "#Gift Packaging"
+  - generic: negative
+  - paragraph: "\"The pump dispenser jammed after 4 days. I had to unscrew the top to get any product out.\""
+  - generic: Megan W. • 2023-10-20
+  - generic: "#Product Quality"
+  - generic: "#Hardware"
+  - generic: positive
+  - paragraph: "\"Mineral sunscreen with zero white cast! Sits beautifully under makeup without pilling.\""
+  - generic: Valerie S. • 2023-10-20
+  - generic: "#Product Quality"
+  - generic: "#SPF"
+  - generic: negative
+  - paragraph: "\"Shattered dropper inside the sealed box. Oil leaked everywhere inside the bubble mailer.\""
+  - generic: Eric F. • 2023-10-19
+  - generic: "#Packaging"
+  - generic: "#Damage"
+  - generic: neutral
+  - generic: Request
+  - paragraph: "\"I love the eye cream formula, but 15ml is too small for the price. Please offer a larger 30ml value size.\""
+  - generic: Samantha J. • 2023-10-19
+  - generic: "#Sizing"
+  - generic: "#Eye Cream"
+  - generic: positive
+  - paragraph: "\"My skin looks plump and hydrated every morning. Incredible consistency and luxurious feel.\""
+  - generic: Liam N. • 2023-10-19
+  - generic: "#Product Quality"
+  - generic: "#Skincare"
+  - generic: positive
+  - paragraph: "\"Great customer support! When my order had a typo in the address, the agent updated it in 5 minutes.\""
+  - generic: Danielle P. • 2023-10-18
+  - generic: "#Customer Support"
+  - generic: "#Helpful"
+  - generic: negative
+  - paragraph: "\"The box was torn open at the bottom. Bubble wrap wasn't taped properly.\""
+  - generic: Marcus V. • 2023-10-18
+  - generic: "#Packaging"
+  - generic: "#Transit"
+  - generic: positive
+  - paragraph: "\"Gentle chemical exfoliation. My skin texture is smooth and glowing after just two uses.\""
+  - generic: Patricia O. • 2023-10-18
+  - generic: "#Product Quality"
+  - generic: "#Glow"
+  - generic: positive
+  - generic: Request
+  - paragraph: "\"I travel weekly for consulting and need a TSA-friendly 1oz mini size of the cleanser and serum!\""
+  - generic: Robert H. • 2023-10-17
+  - generic: "#Feature Request"
+  - generic: "#Travel Size"
+  - generic: negative
+  - paragraph: "\"Serum had a strange cloudiness in the bottom of the bottle. Not sure if it oxidized.\""
+  - generic: Sophie G. • 2023-10-17
+  - generic: "#Product Quality"
+  - generic: "#Formulation"
+  - generic: positive
+  - paragraph: "\"Package arrived in 2 days as promised. Excellent eco-friendly cardboard packaging.\""
+  - generic: Nathan D. • 2023-10-17
+  - generic: "#Delivery"
+  - generic: "#Speed"
+  - generic: neutral
+  - generic: Request
+  - paragraph: "\"The floral scent is a bit strong for my taste. Wish there was an unscented version.\""
+  - generic: Kelly M. • 2023-10-16
+  - generic: "#Feature Request"
+  - generic: "#Fragrance-Free"
+  - generic: negative
+  - paragraph: "\"Leaked around the screw collar during transit. Lost about 20% of the toner.\""
+  - generic: Brian K. • 2023-10-16
+  - generic: "#Packaging"
+  - generic: "#Leakage"
+  - generic: positive
+  - paragraph: "\"Holy grail eye cream! Dramatically reduced morning puffiness and dark circles.\""
+  - generic: Zoe K. • 2023-10-16
+  - generic: "#Product Quality"
+  - generic: "#Eye Cream"
+  - generic: negative
+  - paragraph: "\"Delivery driver left the package in the rain without plastic wrapping.\""
+  - generic: Lucas E. • 2023-10-15
+  - generic: "#Delivery"
+  - generic: "#Carrier"
+  - generic: positive
+  - generic: Request
+  - paragraph: "\"Will you offer subscription refill pouches to reduce plastic bottle reorders?\""
+  - generic: Emma R. • 2023-10-15
+  - generic: "#Feature Request"
+  - generic: "#Subscription"
+  - generic: positive
+  - paragraph: "\"Product arrived safely and performs exactly as advertised. Very soothing on irritated skin.\""
+  - generic: Dylan S. • 2023-10-15
+  - generic: "#Product Quality"
+  - generic: "#Soothing"
+  - generic: negative
+  - paragraph: "\"The glass bottle broke inside the package. The box had zero bubble cushioning.\""
+  - generic: Jennifer A. • 2023-10-14
+  - generic: "#Packaging"
+  - generic: "#Damage"
+  - generic: positive
+  - generic: Request
+  - paragraph: "\"I bought this as a gift for my mom. A pre-wrapped gift box option would be wonderful.\""
+  - generic: Olivia F. • 2023-10-14
+  - generic: "#Feature Request"
+  - generic: "#Gift Packaging"
+  - generic: neutral
+  - paragraph: "\"Tracking number stayed stuck on \"Label Created\" for 4 days before moving.\""
+  - generic: Christopher N. • 2023-10-14
+  - generic: "#Delivery"
+  - generic: "#Tracking"
+  - generic: positive
+  - paragraph: "\"Non-greasy SPF that does not sting the eyes during workouts. Five stars!\""
+  - generic: Victoria J. • 2023-10-13
+  - generic: "#Product Quality"
+  - generic: "#Sunscreen"
+  - generic: neutral
+  - paragraph: "\"Decent cleanser, does the job. Nothing extraordinary but works well for the price.\""
+  - generic: George H. • 2023-10-13
+  - generic: "#Product Quality"
+  - generic: "#Neutral"
+  - generic: neutral
+  - paragraph: "\"The box was crushed in the mail. Luckily the tube was intact, but packaging needs improvement.\""
+  - generic: Maya Z. • 2023-10-13
+  - generic: "#Packaging"
+  - generic: "#Crushed"
+  - generic: positive
+  - paragraph: "\"My skin barrier is completely healed thanks to this night repair cream.\""
+  - generic: Abigail L. • 2023-10-12
+  - generic: "#Product Quality"
+  - generic: "#Skin Barrier"
+  - generic: positive
+  - generic: Request
+  - paragraph: "\"I carry this everywhere, but the bottle takes up half my makeup bag. Need a mini size!\""
+  - generic: Amber G. • 2023-10-12
+  - generic: "#Feature Request"
+  - generic: "#Travel Size"
+  - generic: positive
+  - paragraph: "\"Support helped me replace a lost package within 24 hours. Excellent service.\""
+  - generic: Timothy C. • 2023-10-12
+  - generic: "#Customer Support"
+  - generic: "#Quick Resolution"
+  - generic: negative
+  - paragraph: "\"The scrub is too abrasive for sensitive skin. Left red patches on my forehead.\""
+  - generic: Courtney W. • 2023-10-11
+  - generic: "#Product Quality"
+  - generic: "#Irritation"
+  - generic: positive
+  - paragraph: "\"Super fast delivery, ordered Tuesday afternoon and received Thursday morning.\""
+  - generic: Zachary D. • 2023-10-11
+  - generic: "#Delivery"
+  - generic: "#Fast Shipping"
+  - generic: neutral
+  - generic: Request
+  - paragraph: "\"An unscented formula for the eye cream would be a dream for allergy sufferers.\""
+  - generic: Laura K. • 2023-10-11
+  - generic: "#Feature Request"
+  - generic: "#Fragrance-Free"
+  - generic: positive
+  - paragraph: "\"Box arrived intact and looks beautiful sitting on my vanity. Product smells fresh and calming.\""
+  - generic: Brooke T. • 2023-10-10
+  - generic: "#Packaging"
+  - generic: "#Aesthetic"
+  - generic: neutral
+  - paragraph: "\"Delayed 4 days by the local carrier hub. CS was helpful when I reached out.\""
+  - generic: Sam E. • 2023-10-10
+  - generic: "#Delivery"
+  - generic: "#Support"
+  - generic: negative
+  - paragraph: "\"The glass bottle chipped around the rim when I twisted off the cap.\""
+  - generic: Fiona M. • 2023-10-10
+  - generic: "#Packaging"
+  - generic: "#Defect"
+  - generic: positive
+  - paragraph: "\"High quality ingredients at a reasonable price point. Leaves my skin glowing.\""
+  - generic: Justin P. • 2023-10-09
+  - generic: "#Product Quality"
+  - generic: "#Value"
+  - generic: positive
+  - generic: Request
+  - paragraph: "\"Please set up recurring subscription delivery so I do not have to reorder manually every month.\""
+  - generic: Caitlin H. • 2023-10-09
+  - generic: "#Feature Request"
+  - generic: "#Subscription"
+  - generic: neutral
+  - paragraph: "\"Great moisturizer, but wish it came with a mini spatula for hygienic application.\""
+  - generic: Hannah M. • 2023-10-09
+  - generic: "#Product Quality"
+  - generic: "#Packaging"
+  - generic: positive
+  - generic: Request
+  - paragraph: "\"I travel constantly between NYC and London. A 30ml travel trio kit would be amazing.\""
+  - generic: Alexander G. • 2023-10-08
+  - generic: "#Feature Request"
+  - generic: "#Travel Size"
+  - generic: negative
+  - paragraph: "\"Cap was not fully tightened and soaked through the packing slip.\""
+  - generic: Grace K. • 2023-10-08
+  - generic: "#Packaging"
+  - generic: "#Leakage"
+  - generic: positive
+  - paragraph: "\"My pores look noticeably smaller and cleaner after using the foaming cleanser for 2 weeks.\""
+  - generic: Sydney L. • 2023-10-08
+  - generic: "#Product Quality"
+  - generic: "#Results"
+  - generic: neutral
+  - paragraph: "\"Delivery was delayed due to weather, but tracking notifications kept me informed.\""
+  - generic: Tyler W. • 2023-10-07
+  - generic: "#Delivery"
+  - generic: "#Tracking"
+  - generic: positive
+  - generic: Request
+  - paragraph: "\"Best gift ever! Would love to see custom gift packaging with ribbon and greeting card.\""
+  - generic: Natalie B. • 2023-10-07
+  - generic: "#Feature Request"
+  - generic: "#Gift Packaging"
+  - generic: negative
+  - paragraph: "\"The serum pump spits product erratically instead of dispensing smoothly.\""
+  - generic: Owen R. • 2023-10-07
+  - generic: "#Product Quality"
+  - generic: "#Hardware"
+  - generic: positive
+  - paragraph: "\"Lightweight, hydrating, and does not trigger my fungal acne. Perfect everyday serum.\""
+  - generic: Haley S. • 2023-10-06
+  - generic: "#Product Quality"
+  - generic: "#Acne Safe"
+  - generic: negative
+  - paragraph: "\"The outer box was smashed and one bottle was cracked at the base.\""
+  - generic: Kyle T. • 2023-10-06
+  - generic: "#Packaging"
+  - generic: "#Damage"
+  - generic: positive
+  - paragraph: "\"Super gentle on sensitive skin. Love that it has no artificial dyes or harsh sulfates.\""
+  - generic: Morgan C. • 2023-10-06
+  - generic: "#Product Quality"
+  - generic: "#Clean Beauty"
+  - generic: neutral
+  - generic: Request
+  - paragraph: "\"Can we get fragrance-free formulation options for all serums in the line?\""
+  - generic: Savannah R. • 2023-10-05
+  - generic: "#Feature Request"
+  - generic: "#Fragrance-Free"
+  - generic: negative
+  - paragraph: "\"Ordered expedited 2-day delivery and took 4 days. Shipping refund requested.\""
+  - generic: Ethan K. • 2023-10-05
+  - generic: "#Delivery"
+  - generic: "#Refund"
+  - generic: positive
+  - paragraph: "\"Fabulous nighttime moisturizer. Wake up with plump, bouncy skin.\""
+  - generic: Paige D. • 2023-10-05
+  - generic: "#Product Quality"
+  - generic: "#Results"
+  - generic: positive
+  - generic: Request
+  - paragraph: "\"I need a small gym-bag mini size of the cleanser! Big 200ml bottle is inconvenient to carry.\""
+  - generic: Colton M. • 2023-10-04
+  - generic: "#Feature Request"
+  - generic: "#Travel Size"
+  - generic: negative
+  - paragraph: "\"The box was torn open and items were loose inside the courier bag.\""
+  - generic: Sierra P. • 2023-10-04
+  - generic: "#Packaging"
+  - generic: "#Transit"
+  - generic: positive
+  - paragraph: "\"Clean formulation, high performance, and lovely eco-friendly packaging.\""
+  - generic: Luke B. • 2023-10-04
+  - generic: "#Packaging"
+  - generic: "#Eco"
+  - generic: positive
+  - paragraph: "\"Customer support responded in 2 minutes and resolved my billing discount code issue immediately.\""
+  - generic: Jasmine H. • 2023-10-03
+  - generic: "#Customer Support"
+  - generic: "#Fast Help"
+  - generic: neutral
+  - paragraph: "\"The eye cream feels nice, but wish it was a bit more hydrating for mature skin.\""
+  - generic: Kaitlyn S. • 2023-10-03
+  - generic: "#Product Quality"
+  - generic: "#Neutral"
+  - generic: negative
+  - paragraph: "\"Glass dropper shattered into pieces in the shipping carton.\""
+  - generic: Aaron W. • 2023-10-03
+  - generic: "#Packaging"
+  - generic: "#Damage"
+  - generic: positive
+  - paragraph: "\"Glow from within! My makeup glides over this serum effortlessly without flaking.\""
+  - generic: Alyssa V. • 2023-10-02
+  - generic: "#Product Quality"
+  - generic: "#Glow"
+  - generic: positive
+  - generic: Request
+  - paragraph: "\"Would love holiday gift wrapping options. Sent to my daughter and had to wrap it myself.\""
+  - generic: Teresa L. • 2023-10-02
+  - generic: "#Feature Request"
+  - generic: "#Gift Packaging"
+  - generic: positive
+  - paragraph: "\"Shipping arrived on time in 3 days. Well packaged.\""
+  - generic: Devin K. • 2023-10-02
+  - generic: "#Delivery"
+  - generic: "#On Time"
+  - generic: negative
+  - paragraph: "\"The scrub separated and had clear oil pooling at the top of the jar.\""
+  - generic: Brittany M. • 2023-10-01
+  - generic: "#Product Quality"
+  - generic: "#Separation"
+  - generic: positive
+  - paragraph: "\"Hydrating and brightening without feeling greasy in warm humidity.\""
+  - generic: Trevor G. • 2023-10-01
+  - generic: "#Product Quality"
+  - generic: "#Texture"
+  - generic: positive
+  - generic: Request
+  - paragraph: "\"Can we get travel size bottles? The 100ml serum is slightly too big for European carry-on rules.\""
+  - generic: Gabriella N. • 2023-10-01
+  - generic: "#Feature Request"
+  - generic: "#Travel Size"
+  - generic: negative
+  - paragraph: "\"Customer support chat was down over the weekend when I needed help.\""
+  - generic: Mason B. • 2023-09-30
+  - generic: "#Customer Support"
+  - generic: "#Offline"
+  - generic: positive
+  - paragraph: "\"Noticeable reduction in fine lines around my eyes after 4 weeks of consistent use.\""
+  - generic: Vanessa C. • 2023-09-30
+  - generic: "#Product Quality"
+  - generic: "#Anti-Aging"
+  - generic: neutral
+  - paragraph: "\"Packaging arrived without internal padding, causing scratches on the glass finish.\""
+  - generic: Ian R. • 2023-09-30
+  - generic: "#Packaging"
+  - generic: "#Transit"
+  - generic: positive
+  - generic: Request
+  - paragraph: "\"A subscription model with automated monthly refills would save me so much time!\""
+  - generic: Danielle M. • 2023-09-29
+  - generic: "#Feature Request"
+  - generic: "#Subscription"
+  - generic: positive
+  - paragraph: "\"My skin loves the rosewater toner. Very refreshing and soothing mid-day.\""
+  - generic: Cody W. • 2023-09-29
+  - generic: "#Product Quality"
+  - generic: "#Refreshing"
+  - generic: positive
+  - paragraph: "\"Delivered in 3 days. Box was in good shape.\""
+  - generic: Hayden P. • 2023-09-28
+  - generic: "#Delivery"
+  - generic: "#Standard"
+  - generic: neutral
+  - generic: Request
+  - paragraph: "\"Essential for eczema flare-ups. Need a fragrance-free option for the cream too please!\""
+  - generic: Lindsey B. • 2023-09-28
+  - generic: "#Feature Request"
+  - generic: "#Fragrance-Free"
+  - generic: negative
+  - paragraph: "\"The bottle cap leaked inside my gym tote. Needs a tighter travel lock seal.\""
+  - generic: Garrett T. • 2023-09-27
+  - generic: "#Packaging"
+  - generic: "#Seal"
+  - generic: positive
+  - paragraph: "\"Leaves my skin with a silky satin finish. Love the clean ingredients list.\""
+  - generic: Meredith K. • 2023-09-27
+  - generic: "#Product Quality"
+  - generic: "#Clean"
+  - generic: positive
+  - generic: Request
+  - paragraph: "\"Would love a mini travel kit containing serum, toner, and cleanser for vacations.\""
+  - generic: Jenna L. • 2023-10-24
+  - generic: "#Feature Request"
+  - generic: "#Travel Size"
+  - generic: positive
+  - paragraph: "\"Customer support promptly issued a replacement for my broken bottle. Great recovery.\""
+  - generic: Derek S. • 2023-10-23
+  - generic: "#Customer Support"
+  - generic: "#Resolution"
+  - generic: negative
+  - paragraph: "\"The delivery driver threw the box onto the concrete porch. The glass serum cracked.\""
+  - generic: Kendra W. • 2023-10-22
+  - generic: "#Packaging"
+  - generic: "#Damage"
+  - generic: positive
+  - paragraph: "\"Gentle on acne-prone skin. It cleared my clogged pores in under two weeks.\""
+  - generic: Blake F. • 2023-10-21
+  - generic: "#Product Quality"
+  - generic: "#Acne Care"
+  - generic: positive
+  - generic: Request
+  - paragraph: "\"Need a travel-sized sunscreen to keep in my purse and car glove compartment!\""
+  - generic: Skylar N. • 2023-10-20
+  - generic: "#Feature Request"
+  - generic: "#Travel Size"
+  - generic: neutral
+  - paragraph: "\"Great moisturizer, but shipping took over a week without tracking updates.\""
+  - generic: Ross P. • 2023-10-19
+  - generic: "#Delivery"
+  - generic: "#Tracking"
+  - generic: negative
+  - paragraph: "\"The pump failed on day 3. I have to unscrew the cap to use it every morning.\""
+  - generic: Tanya G. • 2023-10-18
+  - generic: "#Product Quality"
+  - generic: "#Hardware"
+  - generic: negative
+  - paragraph: "\"The bottle arrived shattered inside the bubble mailer. Serum leaked through the cardboard.\""
+  - generic: Gillian T. • 2023-10-24
+  - generic: "#Packaging"
+  - generic: "#Damage"
+  - generic: positive
+  - paragraph: "\"My skin has never looked healthier. The brightening oil is a staple in my routine.\""
+  - generic: Chelsea R. • 2023-10-17
+  - generic: "#Product Quality"
+  - generic: "#Brightening"
+  - generic: positive
+  - generic: Request
+  - paragraph: "\"Wish you offered gift boxes for birthday and holiday presents!\""
+  - generic: Monica S. • 2023-10-16
+  - generic: "#Feature Request"
+  - generic: "#Gift Packaging"
+  - generic: neutral
+  - generic: Request
+  - paragraph: "\"A fragrance-free option for the night cream would be perfect for eczema skin.\""
+  - generic: Bradley K. • 2023-10-15
+  - generic: "#Feature Request"
+  - generic: "#Fragrance-Free"
+  - generic: positive
+  - paragraph: "\"The night repair cream makes my skin feel like silk. Absolute staple.\""
+  - generic: Evelyn P. • 2023-10-14
+  - generic: "#Product Quality"
+  - generic: "#Moisturizer"
+  - generic: positive
+  - generic: Request
+  - paragraph: "\"Please offer an automated subscription checkout so I never run out of toner.\""
+  - generic: Wade M. • 2023-10-13
+  - generic: "#Feature Request"
+  - generic: "#Subscription"
+  - generic: positive
+  - paragraph: "\"Delivery was rapid, arriving 2 days before the estimated arrival window.\""
+  - generic: Felicity H. • 2023-10-12
+  - generic: "#Delivery"
+  - generic: "#Fast"
+  - generic: negative
+  - paragraph: "\"Packaging was crushed and the bottle cap was loose. Needs more bubble protection.\""
+  - generic: Dean R. • 2023-10-23
+  - generic: "#Packaging"
+  - generic: "#Damage"

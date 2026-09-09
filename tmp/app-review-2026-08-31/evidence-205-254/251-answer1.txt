@@ -1,0 +1,26 @@
+- button "Mute Sound Effects":
+- main:
+  - generic: ROUND 1
+  - generic: CHEAP VS EXPENSIVE
+  - generic: "Best:"
+  - generic: "0"
+  - generic: 0 pts
+  - generic: 19.4s
+  - heading "Which is Expensive?" [level=2]
+  - paragraph:
+    - text: "Timer limit: 30s"
+  - 'button "Synthetic Work Boots Footwear CHEAP: $45 ToughTread Synthetic Work Boots $45" [disabled]':
+    - img "Synthetic Work Boots"
+    - generic: Footwear
+    - generic: "CHEAP: $45"
+    - text: ToughTread
+    - heading "Synthetic Work Boots" [level=3]
+    - generic: $45
+  - button "Hand-Welted Shell Cordovan Boots Footwear EXPENSIVE! ($1,350) Craftsman Guild Hand-Welted Shell Cordovan Boots $1,350" [disabled]:
+    - img "Hand-Welted Shell Cordovan Boots"
+    - generic: Footwear
+    - text: EXPENSIVE! ($1,350)
+    - text: Craftsman Guild
+    - heading "Hand-Welted Shell Cordovan Boots" [level=3]
+    - generic: $1,350
+  - generic: Shell cordovan takes 6 months of vegetable tanning and never creases like standard leather.

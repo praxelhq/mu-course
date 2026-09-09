@@ -1,0 +1,58 @@
+- banner:
+  - link "TravelTailor AI":
+    - /url: /
+    - generic: travel_explore
+    - generic: TravelTailor AI
+  - navigation:
+    - link "Home":
+      - /url: /
+    - link "Planner":
+      - /url: /plan
+    - link "My Trips":
+      - /url: /trips
+    - link "Concierge":
+      - /url: /concierge
+  - button "Toggle dark mode":
+    - generic: dark_mode
+  - link "Start Planning":
+    - /url: /plan
+- main:
+  - generic: Library
+  - heading "My trips" [level=2]
+  - article:
+    - img "Kyoto, Japan"
+    - generic: auto_awesome
+    - generic: 27% Match
+    - heading "Kyoto" [level=3]
+    - paragraph: 7 days · $8,120
+    - paragraph: Saved 31/08/2026
+    - button "Open":
+      - text: Open
+      - generic: arrow_forward
+    - button "Delete trip":
+      - generic: delete
+- contentinfo:
+  - generic: travel_explore
+  - generic: TravelTailor AI
+  - paragraph: Travel planning that starts with the traveller, not the destination.
+  - heading "Product" [level=4]
+  - link "Planner":
+    - /url: /plan
+  - link "Saved trips":
+    - /url: /trips
+  - link "AI concierge":
+    - /url: /concierge
+  - heading "Company" [level=4]
+  - generic: Travel guides
+  - generic: Partner program
+  - generic: Support centre
+  - heading "Legal" [level=4]
+  - generic: Privacy policy
+  - generic: Terms of service
+  - paragraph: © 2026 TravelTailor AI. Personalised travel, designed by intelligence.
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_4zxp32hwhk8nerwh4551kt6jsj?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

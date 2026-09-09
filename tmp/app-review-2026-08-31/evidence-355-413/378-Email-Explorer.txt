@@ -1,0 +1,117 @@
+- alert
+- complementary:
+  - paragraph: MailClean AI
+  - paragraph: High Mountain Property
+  - button "NA nancy (Owner) nancy@highmountainproperty.com":
+    - generic: NA
+    - paragraph: nancy (Owner)
+    - paragraph: nancy@highmountainproperty.com
+  - navigation:
+    - link "Dashboard":
+      - /url: /dashboard
+      - text: Dashboard
+    - link "Analytics":
+      - /url: /dashboard/analytics
+      - text: Analytics
+    - link "Categories":
+      - /url: /dashboard/categories
+      - text: Categories
+    - link "Email Explorer" [active]:
+      - /url: /dashboard/explorer
+      - text: Email Explorer
+    - link "Cleanup Center":
+      - /url: /dashboard/cleanup
+      - text: Cleanup Center
+    - link "Rules & Automation":
+      - /url: /dashboard/rules
+      - text: Rules & Automation
+    - link "Activity Log":
+      - /url: /dashboard/activity
+      - text: Activity Log
+    - link "Reports":
+      - /url: /dashboard/reports
+      - text: Reports
+    - link "Accounts":
+      - /url: /dashboard/accounts
+      - text: Accounts
+    - link "Settings":
+      - /url: /dashboard/settings
+      - text: Settings
+  - generic: na
+  - paragraph: nancy
+  - paragraph: nancy@highmountainproperty.com
+- banner:
+  - textbox "Search emails, senders, rules…"
+  - button "Notifications":
+    - generic: Notifications
+- main:
+  - heading "Email Explorer" [level=1]
+  - paragraph: Browse your mailbox exactly as it appears, with AI analysis on every message.
+  - navigation:
+    - button "Inbox 10":
+      - generic: Inbox
+      - generic: "10"
+    - button "Important 2":
+      - generic: Important
+      - generic: "2"
+    - button "Promotions 2":
+      - generic: Promotions
+      - generic: "2"
+    - button "Newsletters 2":
+      - generic: Newsletters
+      - generic: "2"
+    - button "Notifications 3":
+      - generic: Notifications
+      - generic: "3"
+    - button "Business 3":
+      - generic: Business
+      - generic: "3"
+    - button "Spam":
+      - generic: Spam
+    - button "Trash":
+      - generic: Trash
+  - heading "Inbox" [level=2]
+  - list:
+    - checkbox "Select email from LinkedIn"
+    - generic: LinkedIn
+    - paragraph: New people you may know in real estate
+    - generic: Aug 16, 2026
+    - checkbox "Select email from 99acres"
+    - generic: 99acres
+    - paragraph: 32 new properties matching your saved search
+    - generic: Aug 16, 2026
+    - checkbox "Select email from Sunrise Developers"
+    - generic: Sunrise Developers
+    - generic: Important
+    - paragraph: Exclusive launch invitation — Hillcrest Residences
+    - generic: Aug 15, 2026
+    - checkbox "Select email from GitHub"
+    - generic: GitHub
+    - paragraph: New login detected on your account
+    - generic: Aug 15, 2026
+    - checkbox "Select email from Property Market Weekly"
+    - generic: Property Market Weekly
+    - paragraph: Weekly market updates and price trends
+    - generic: Aug 14, 2026
+    - checkbox "Select email from MagicBricks"
+    - generic: MagicBricks
+    - paragraph: 12 new properties in your preferred area
+    - generic: Aug 14, 2026
+    - checkbox "Select email from Chase Bank"
+    - generic: Chase Bank
+    - paragraph: Your monthly statement is available
+    - generic: Aug 13, 2026
+    - checkbox "Select email from Housing.com"
+    - generic: Housing.com
+    - paragraph: Weekly property recommendations
+    - generic: Aug 12, 2026
+    - checkbox "Select email from Anita Sharma"
+    - generic: Anita Sharma
+    - generic: Important
+    - paragraph: Site visit confirmation for Saturday
+    - generic: Aug 12, 2026
+    - checkbox "Select email from Google"
+    - generic: Google
+    - paragraph: Security alert for your linked account
+    - generic: Aug 11, 2026
+- generic: "24.2"

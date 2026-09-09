@@ -1,0 +1,85 @@
+- region "Notifications (F8)":
+  - list
+- region "Notifications alt+T"
+- complementary:
+  - generic: InfluencerOS
+  - navigation:
+    - link "Dashboard":
+      - /url: /
+      - generic: Dashboard
+    - link "Campaigns":
+      - /url: /campaigns
+      - generic: Campaigns
+    - link "AI Campaign Planner":
+      - /url: /ai-planner
+      - generic: AI Campaign Planner
+    - link "Creators":
+      - /url: /creators
+      - generic: Creators
+    - link "Content Approval" [active]:
+      - /url: /content-approval
+      - generic: Content Approval
+    - link "Performance & ROI":
+      - /url: /performance
+      - generic: Performance & ROI
+    - link "Payments & Ledger":
+      - /url: /payments
+      - generic: Payments & Ledger
+    - link "Assets & Logistics":
+      - /url: /assets
+      - generic: Assets & Logistics
+    - link "Settings":
+      - /url: /settings
+      - generic: Settings
+  - button "Collapse":
+    - generic: Collapse
+- banner:
+  - textbox "Search campaigns, creators, content..."
+  - button "3":
+    - generic: "3"
+  - button "M MamaEarth":
+    - generic: M
+    - generic: MamaEarth
+  - button "Arun Kumar Marketing Manager":
+    - paragraph: Arun Kumar
+    - paragraph: Marketing Manager
+- main:
+  - heading "Content Approval" [level=1]
+  - paragraph: Review and approve influencer content before posting
+  - combobox:
+    - generic: All Campaigns
+  - heading "Draft Submitted" [level=3]
+  - generic: "1"
+  - img "Content preview"
+  - generic: Reel
+  - generic: Sneha Reddy
+  - paragraph: Safe for baby, safe for me! Loving this gentle range 💚
+  - generic: Instagram
+  - text: No disclosure
+  - heading "Needs Changes" [level=3]
+  - generic: "1"
+  - img "Content preview"
+  - generic: Post
+  - generic: Dr. Kavita Singh
+  - paragraph: As a dermatologist, I recommend Vitamin C for...
+  - generic: Instagram
+  - heading "Approved" [level=3]
+  - generic: "1"
+  - img "Content preview"
+  - generic: Reel
+  - generic: Priya Sharma
+  - paragraph: "My morning skincare routine with @mamaearth 🌿 #ad #skincare"
+  - generic: Instagram
+  - heading "Posted" [level=3]
+  - generic: "1"
+  - img "Content preview"
+  - generic: Video
+  - generic: Rahul Verma
+  - paragraph: Testing MamaEarth products for 30 days...
+  - generic: YouTube
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_05t71mwv1r9qb9tdwk5a0m9t2d?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: ₹0.0L

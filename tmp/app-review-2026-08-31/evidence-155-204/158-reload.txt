@@ -1,0 +1,88 @@
+- dialog "This is a prototype. No one is on the other end of it.":
+  - generic: Demonstration build — not a working service
+  - heading "This is a prototype. No one is on the other end of it." [level=1]
+  - paragraph:
+    - text: Khyati is a design and engineering demonstration of how a crisis-response platform could work.
+    - strong: There are no real responders here.
+    - text: Nothing you type reaches a human. No call is placed, no message is sent, no ambulance or emergency service is contacted. The responders, incidents and providers you will see are simulated data.
+  - paragraph:
+    - strong: If you need help right now, please use one of these instead.
+    - text: They are real, and they are staffed.
+  - heading "Real help in India" [level=2]
+  - generic: "14416"
+  - generic: Tele-MANAS — national mental health helpline, 24/7, free
+  - generic: "112"
+  - generic: Emergency — police, fire, ambulance
+  - generic: "108"
+  - generic: Ambulance
+  - generic: "181"
+  - generic: Women's helpline
+  - generic: "1098"
+  - generic: Childline — for anyone under 18
+  - paragraph:
+    - text: Outside India, the International Association for Suicide Prevention keeps a directory of crisis centres by country at
+    - strong: iasp.info/crisis-centres-helplines
+    - text: .
+  - button "I understand this is a demonstration — continue" [active]
+  - paragraph: Numbers listed above are published national services and are not connected to this prototype.
+- generic: ख्याति
+- generic: Khyati
+- generic: Crisis Response Infrastructure
+- generic: DEMO — SIMULATED
+- navigation "Surface":
+  - button "Consumer app"
+  - button "Responder console"
+  - button "Operations"
+  - button "Audit"
+- main:
+  - generic: KHYATI · +91 •••• ••4417
+  - group "Language":
+    - button "EN" [pressed]
+    - button "हिं"
+  - heading "Who can help you right now?" [level=1]:
+    - text: Who can help you
+    - text: right now?
+  - paragraph: Khyati connects you to a trained human. You choose what happens next — every step.
+  - button "I need help now Connect me with a trained crisis responder":
+    - generic: I need help now
+    - generic: Connect me with a trained crisis responder
+  - button "SOS. Press and hold for one and a half seconds to send an emergency request.":
+    - generic: SOS
+    - generic: Hold to send
+  - paragraph: Holding sends an urgent request to a responder. It does not call an ambulance by itself.
+  - generic: Other ways in
+  - button "I need someone to talk toNot urgent — I just need to be heard":
+    - generic: I need someone to talk toNot urgent — I just need to be heard
+    - generic: →
+  - button "I'm worried about someoneGuidance for helping another person":
+    - generic: I'm worried about someoneGuidance for helping another person
+    - generic: →
+  - button "I'm not safeAbuse, threats, stalking or an unsafe home":
+    - generic: I'm not safeAbuse, threats, stalking or an unsafe home
+    - generic: →
+  - button "I need professional supportCounsellors and psychiatrists":
+    - generic: I need professional supportCounsellors and psychiatrists
+    - generic: →
+  - button "I want to prepareBuild a safety plan for later":
+    - generic: I want to prepareBuild a safety plan for later
+    - generic: →
+  - button "My safety network 2 people":
+    - text: My safety network
+    - text: 2 people
+  - button "My safety plan"
+  - button "Resources"
+  - paragraph: This is a demonstration build. No real responder, phone line, hospital or emergency service is connected to it.
+- generic: Demo controls
+- button "Take all responders offline"
+- button "Trusted contact replies"
+- button "Fast-forward 2h"
+- button "Fast-forward 24h"
+- generic: Scenario
+- button "Run full end-to-end"
+- 'button "Surge: +5 incidents"'
+- button "Reset"
+- generic: Console user
+- generic: Aarti Menon · AVAILABLE
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

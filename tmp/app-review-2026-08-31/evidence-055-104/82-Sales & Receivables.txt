@@ -1,0 +1,562 @@
+- complementary:
+  - link "FactoryFlow AI Shreeji Precision Works":
+    - /url: /
+    - paragraph: FactoryFlow AI
+    - paragraph: Shreeji Precision Works
+  - navigation:
+    - paragraph: Shop floor
+    - link "Dashboard":
+      - /url: /
+      - text: Dashboard
+    - link "Production":
+      - /url: /production
+      - text: Production
+    - link "Customer Schedule":
+      - /url: /schedule
+      - text: Customer Schedule
+    - link "Machines":
+      - /url: /machines
+      - text: Machines
+    - link "Downtime":
+      - /url: /downtime
+      - text: Downtime
+    - link "Maintenance":
+      - /url: /maintenance
+      - text: Maintenance
+    - link "Quality":
+      - /url: /quality
+      - text: Quality
+    - link "Job Work":
+      - /url: /job-work
+      - text: Job Work
+    - link "Inventory":
+      - /url: /inventory
+      - text: Inventory
+    - paragraph: Money
+    - link "Sales & Receivables" [active]:
+      - /url: /sales
+      - text: Sales & Receivables
+    - link "Purchase & Payables":
+      - /url: /purchase
+      - text: Purchase & Payables
+    - link "Cash View":
+      - /url: /cash
+      - text: Cash View
+    - link "Compliance":
+      - /url: /compliance
+      - text: Compliance
+    - paragraph: Run the business
+    - link "Tasks":
+      - /url: /tasks
+      - text: Tasks
+    - link "Analytics":
+      - /url: /analytics
+      - text: Analytics
+    - link "Reports":
+      - /url: /reports
+      - text: Reports
+    - link "AI Assistant":
+      - /url: /assistant
+      - text: AI Assistant
+    - link "Integrations":
+      - /url: /integrations
+      - text: Integrations
+    - link "Settings":
+      - /url: /settings
+      - text: Settings
+  - link "RK Rajesh Kulkarni Works Manager":
+    - /url: /profile
+    - generic: RK
+    - generic: Rajesh Kulkarni
+    - generic: Works Manager
+  - link "Pricing & product page →":
+    - /url: /welcome
+- banner:
+  - textbox "Search part, challan, invoice, heat number…"
+  - button "English"
+  - button "हिंदी"
+  - button "मराठी"
+  - generic "All entries synced":
+    - text: Online
+  - button "Toggle dark mode":
+  - link "Notifications":
+    - /url: /notifications
+    - generic: "4"
+  - link "Ask AI":
+    - /url: /assistant
+    - generic: Ask AI
+- main:
+  - navigation:
+    - link "FactoryFlow":
+      - /url: /
+    - generic: Sales & Receivables
+  - heading "Sales & Receivables" [level=1]
+  - paragraph: Customer POs, invoices and collection risk under Section 43B(h).
+  - button "Export CSV":
+    - text: Export CSV
+  - paragraph: Total Receivable
+  - paragraph: ₹74.39 L
+  - paragraph: 11 open invoices
+  - paragraph: Overdue
+  - paragraph: ₹54.58 L
+  - paragraph: 8 invoices past due
+  - paragraph: MSME 45-day risk
+  - paragraph: "9"
+  - paragraph: ≤10 days left under 43B(h)
+  - paragraph: Customers
+  - paragraph: "5"
+  - paragraph: Tier-1 accounts
+  - heading "Ageing buckets" [level=2]
+  - heading "Customer master" [level=2]
+  - table:
+    - rowgroup:
+      - row "Customer Credit MSME":
+        - columnheader "Customer"
+        - columnheader "Credit"
+        - columnheader "MSME"
+    - rowgroup:
+      - row "Bharat Forge Ltd 60 d Not MSME":
+        - cell "Bharat Forge Ltd"
+        - cell "60 d"
+        - cell "Not MSME":
+          - generic: Not MSME
+      - row "Endurance Technologies 45 d Not MSME":
+        - cell "Endurance Technologies"
+        - cell "45 d"
+        - cell "Not MSME":
+          - generic: Not MSME
+      - row "Varroc Engineering 45 d Not MSME":
+        - cell "Varroc Engineering"
+        - cell "45 d"
+        - cell "Not MSME":
+          - generic: Not MSME
+      - row "Sundram Fasteners 60 d Not MSME":
+        - cell "Sundram Fasteners"
+        - cell "60 d"
+        - cell "Not MSME":
+          - generic: Not MSME
+      - row "Kalyani Auto Components 45 d Udyam registered":
+        - cell "Kalyani Auto Components"
+        - cell "45 d"
+        - cell "Udyam registered":
+          - generic: Udyam registered
+  - textbox "Search invoice, PO or customer…"
+  - combobox "Customer":
+    - 'option "Customer: All" [selected]'
+    - option "Bharat Forge Ltd"
+    - option "Endurance Technologies"
+    - option "Varroc Engineering"
+    - option "Sundram Fasteners"
+    - option "Kalyani Auto Components"
+  - combobox "Status":
+    - 'option "Status: All" [selected]'
+    - option "Open"
+    - option "Part paid"
+    - option "Paid"
+  - heading "Invoices (26)" [level=2]
+  - table:
+    - rowgroup:
+      - row "Invoice Customer PO Date Due Amount Balance Age 43B(h) IRN":
+        - columnheader "Invoice"
+        - columnheader "Customer"
+        - columnheader "PO"
+        - columnheader "Date"
+        - columnheader "Due"
+        - columnheader "Amount"
+        - columnheader "Balance"
+        - columnheader "Age"
+        - columnheader "43B(h)"
+        - columnheader "IRN"
+        - columnheader
+    - rowgroup:
+      - row "SPW/26-27/1122 Varroc Engineering PO-VARROC-5222 23-08-2026 07-10-2026 ₹2,94,000 ₹2,94,000 0 d Good 44d left Completed Remind":
+        - cell "SPW/26-27/1122"
+        - cell "Varroc Engineering"
+        - cell "PO-VARROC-5222"
+        - cell "23-08-2026"
+        - cell "07-10-2026"
+        - cell "₹2,94,000"
+        - cell "₹2,94,000"
+        - cell "0 d"
+        - cell "Good 44d left":
+          - generic: Good
+          - text: 44d left
+        - cell "Completed":
+          - generic: Completed
+        - cell "Remind":
+          - button "Remind":
+            - text: Remind
+      - row "SPW/26-27/1113 Sundram Fasteners PO-SUNDRAM-5213 15-08-2026 14-10-2026 ₹10,89,000 — — — Completed":
+        - cell "SPW/26-27/1113"
+        - cell "Sundram Fasteners"
+        - cell "PO-SUNDRAM-5213"
+        - cell "15-08-2026"
+        - cell "14-10-2026"
+        - cell "₹10,89,000"
+        - cell "—"
+        - cell "—"
+        - cell "—"
+        - cell "Completed":
+          - generic: Completed
+        - cell
+      - row "SPW/26-27/1115 Bharat Forge Ltd PO-BHARAT-5215 03-08-2026 02-10-2026 ₹4,34,000 — — — Completed":
+        - cell "SPW/26-27/1115"
+        - cell "Bharat Forge Ltd"
+        - cell "PO-BHARAT-5215"
+        - cell "03-08-2026"
+        - cell "02-10-2026"
+        - cell "₹4,34,000"
+        - cell "—"
+        - cell "—"
+        - cell "—"
+        - cell "Completed":
+          - generic: Completed
+        - cell
+      - row "SPW/26-27/1100 Bharat Forge Ltd PO-BHARAT-5200 02-08-2026 01-10-2026 ₹9,45,000 ₹4,72,500 0 d Good 23d left Completed Remind":
+        - cell "SPW/26-27/1100"
+        - cell "Bharat Forge Ltd"
+        - cell "PO-BHARAT-5200"
+        - cell "02-08-2026"
+        - cell "01-10-2026"
+        - cell "₹9,45,000"
+        - cell "₹4,72,500"
+        - cell "0 d"
+        - cell "Good 23d left":
+          - generic: Good
+          - text: 23d left
+        - cell "Completed":
+          - generic: Completed
+        - cell "Remind":
+          - button "Remind":
+            - text: Remind
+      - row "SPW/26-27/1124 Kalyani Auto Components PO-KALYANI-5224 02-08-2026 16-09-2026 ₹11,50,000 — — — Completed":
+        - cell "SPW/26-27/1124"
+        - cell "Kalyani Auto Components"
+        - cell "PO-KALYANI-5224"
+        - cell "02-08-2026"
+        - cell "16-09-2026"
+        - cell "₹11,50,000"
+        - cell "—"
+        - cell "—"
+        - cell "—"
+        - cell "Completed":
+          - generic: Completed
+        - cell
+      - row "SPW/26-27/1104 Kalyani Auto Components PO-KALYANI-5204 29-07-2026 12-09-2026 ₹8,77,000 — — — Completed":
+        - cell "SPW/26-27/1104"
+        - cell "Kalyani Auto Components"
+        - cell "PO-KALYANI-5204"
+        - cell "29-07-2026"
+        - cell "12-09-2026"
+        - cell "₹8,77,000"
+        - cell "—"
+        - cell "—"
+        - cell "—"
+        - cell "Completed":
+          - generic: Completed
+        - cell
+      - row "SPW/26-27/1123 Sundram Fasteners PO-SUNDRAM-5223 28-07-2026 26-09-2026 ₹13,61,000 — — — Completed":
+        - cell "SPW/26-27/1123"
+        - cell "Sundram Fasteners"
+        - cell "PO-SUNDRAM-5223"
+        - cell "28-07-2026"
+        - cell "26-09-2026"
+        - cell "₹13,61,000"
+        - cell "—"
+        - cell "—"
+        - cell "—"
+        - cell "Completed":
+          - generic: Completed
+        - cell
+      - row "SPW/26-27/1120 Bharat Forge Ltd PO-BHARAT-5220 25-07-2026 23-09-2026 ₹14,37,000 — — — Completed":
+        - cell "SPW/26-27/1120"
+        - cell "Bharat Forge Ltd"
+        - cell "PO-BHARAT-5220"
+        - cell "25-07-2026"
+        - cell "23-09-2026"
+        - cell "₹14,37,000"
+        - cell "—"
+        - cell "—"
+        - cell "—"
+        - cell "Completed":
+          - generic: Completed
+        - cell
+      - row "SPW/26-27/1109 Kalyani Auto Components PO-KALYANI-5209 24-07-2026 07-09-2026 ₹6,58,000 — — — Completed":
+        - cell "SPW/26-27/1109"
+        - cell "Kalyani Auto Components"
+        - cell "PO-KALYANI-5209"
+        - cell "24-07-2026"
+        - cell "07-09-2026"
+        - cell "₹6,58,000"
+        - cell "—"
+        - cell "—"
+        - cell "—"
+        - cell "Completed":
+          - generic: Completed
+        - cell
+      - row "SPW/26-27/1119 Kalyani Auto Components PO-KALYANI-5219 17-07-2026 31-08-2026 ₹11,65,000 — — — Completed":
+        - cell "SPW/26-27/1119"
+        - cell "Kalyani Auto Components"
+        - cell "PO-KALYANI-5219"
+        - cell "17-07-2026"
+        - cell "31-08-2026"
+        - cell "₹11,65,000"
+        - cell "—"
+        - cell "—"
+        - cell "—"
+        - cell "Completed":
+          - generic: Completed
+        - cell
+      - row "SPW/26-27/1105 Bharat Forge Ltd PO-BHARAT-5205 12-07-2026 10-09-2026 ₹12,31,000 — — — Completed":
+        - cell "SPW/26-27/1105"
+        - cell "Bharat Forge Ltd"
+        - cell "PO-BHARAT-5205"
+        - cell "12-07-2026"
+        - cell "10-09-2026"
+        - cell "₹12,31,000"
+        - cell "—"
+        - cell "—"
+        - cell "—"
+        - cell "Completed":
+          - generic: Completed
+        - cell
+      - row "SPW/26-27/1106 Endurance Technologies PO-ENDURANCE-5206 08-07-2026 22-08-2026 ₹11,62,000 ₹11,62,000 2 d Overdue 2d over Completed Remind":
+        - cell "SPW/26-27/1106"
+        - cell "Endurance Technologies"
+        - cell "PO-ENDURANCE-5206"
+        - cell "08-07-2026"
+        - cell "22-08-2026"
+        - cell "₹11,62,000"
+        - cell "₹11,62,000"
+        - cell "2 d"
+        - cell "Overdue 2d over":
+          - generic: Overdue
+          - text: 2d over
+        - cell "Completed":
+          - generic: Completed
+        - cell "Remind":
+          - button "Remind":
+            - text: Remind
+      - row "SPW/26-27/1107 Varroc Engineering PO-VARROC-5207 08-07-2026 22-08-2026 ₹9,97,000 — — — Completed":
+        - cell "SPW/26-27/1107"
+        - cell "Varroc Engineering"
+        - cell "PO-VARROC-5207"
+        - cell "08-07-2026"
+        - cell "22-08-2026"
+        - cell "₹9,97,000"
+        - cell "—"
+        - cell "—"
+        - cell "—"
+        - cell "Completed":
+          - generic: Completed
+        - cell
+      - row "SPW/26-27/1102 Varroc Engineering PO-VARROC-5202 30-06-2026 14-08-2026 ₹8,32,000 ₹4,16,000 10 d Overdue 10d over Completed Remind":
+        - cell "SPW/26-27/1102"
+        - cell "Varroc Engineering"
+        - cell "PO-VARROC-5202"
+        - cell "30-06-2026"
+        - cell "14-08-2026"
+        - cell "₹8,32,000"
+        - cell "₹4,16,000"
+        - cell "10 d"
+        - cell "Overdue 10d over":
+          - generic: Overdue
+          - text: 10d over
+        - cell "Completed":
+          - generic: Completed
+        - cell "Remind":
+          - button "Remind":
+            - text: Remind
+      - row "SPW/26-27/1117 Varroc Engineering PO-VARROC-5217 25-06-2026 09-08-2026 ₹3,40,000 — — — Completed":
+        - cell "SPW/26-27/1117"
+        - cell "Varroc Engineering"
+        - cell "PO-VARROC-5217"
+        - cell "25-06-2026"
+        - cell "09-08-2026"
+        - cell "₹3,40,000"
+        - cell "—"
+        - cell "—"
+        - cell "—"
+        - cell "Completed":
+          - generic: Completed
+        - cell
+      - row "SPW/26-27/1118 Sundram Fasteners PO-SUNDRAM-5218 25-06-2026 24-08-2026 ₹12,14,000 ₹12,14,000 0 d Overdue 15d over Completed Remind":
+        - cell "SPW/26-27/1118"
+        - cell "Sundram Fasteners"
+        - cell "PO-SUNDRAM-5218"
+        - cell "25-06-2026"
+        - cell "24-08-2026"
+        - cell "₹12,14,000"
+        - cell "₹12,14,000"
+        - cell "0 d"
+        - cell "Overdue 15d over":
+          - generic: Overdue
+          - text: 15d over
+        - cell "Completed":
+          - generic: Completed
+        - cell "Remind":
+          - button "Remind":
+            - text: Remind
+      - row "SPW/26-27/1125 Bharat Forge Ltd PO-BHARAT-5225 23-06-2026 22-08-2026 ₹13,02,000 ₹13,02,000 2 d Overdue 17d over Completed Remind":
+        - cell "SPW/26-27/1125"
+        - cell "Bharat Forge Ltd"
+        - cell "PO-BHARAT-5225"
+        - cell "23-06-2026"
+        - cell "22-08-2026"
+        - cell "₹13,02,000"
+        - cell "₹13,02,000"
+        - cell "2 d"
+        - cell "Overdue 17d over":
+          - generic: Overdue
+          - text: 17d over
+        - cell "Completed":
+          - generic: Completed
+        - cell "Remind":
+          - button "Remind":
+            - text: Remind
+      - row "SPW/26-27/1110 Bharat Forge Ltd PO-BHARAT-5210 21-06-2026 20-08-2026 ₹7,04,000 — — — Completed":
+        - cell "SPW/26-27/1110"
+        - cell "Bharat Forge Ltd"
+        - cell "PO-BHARAT-5210"
+        - cell "21-06-2026"
+        - cell "20-08-2026"
+        - cell "₹7,04,000"
+        - cell "—"
+        - cell "—"
+        - cell "—"
+        - cell "Completed":
+          - generic: Completed
+        - cell
+      - row "SPW/26-27/1111 Endurance Technologies PO-ENDURANCE-5211 19-06-2026 03-08-2026 ₹1,38,000 — — — Pending":
+        - cell "SPW/26-27/1111"
+        - cell "Endurance Technologies"
+        - cell "PO-ENDURANCE-5211"
+        - cell "19-06-2026"
+        - cell "03-08-2026"
+        - cell "₹1,38,000"
+        - cell "—"
+        - cell "—"
+        - cell "—"
+        - cell "Pending":
+          - generic: Pending
+        - cell
+      - row "SPW/26-27/1114 Kalyani Auto Components PO-KALYANI-5214 09-06-2026 24-07-2026 ₹4,32,000 ₹2,16,000 31 d Overdue 31d over Completed Remind":
+        - cell "SPW/26-27/1114"
+        - cell "Kalyani Auto Components"
+        - cell "PO-KALYANI-5214"
+        - cell "09-06-2026"
+        - cell "24-07-2026"
+        - cell "₹4,32,000"
+        - cell "₹2,16,000"
+        - cell "31 d"
+        - cell "Overdue 31d over":
+          - generic: Overdue
+          - text: 31d over
+        - cell "Completed":
+          - generic: Completed
+        - cell "Remind":
+          - button "Remind":
+            - text: Remind
+      - row "SPW/26-27/1101 Endurance Technologies PO-ENDURANCE-5201 07-06-2026 22-07-2026 ₹7,98,000 ₹7,98,000 33 d Overdue 33d over Completed Remind":
+        - cell "SPW/26-27/1101"
+        - cell "Endurance Technologies"
+        - cell "PO-ENDURANCE-5201"
+        - cell "07-06-2026"
+        - cell "22-07-2026"
+        - cell "₹7,98,000"
+        - cell "₹7,98,000"
+        - cell "33 d"
+        - cell "Overdue 33d over":
+          - generic: Overdue
+          - text: 33d over
+        - cell "Completed":
+          - generic: Completed
+        - cell "Remind":
+          - button "Remind":
+            - text: Remind
+      - row "SPW/26-27/1121 Endurance Technologies PO-ENDURANCE-5221 06-06-2026 21-07-2026 ₹6,08,000 ₹6,08,000 34 d Overdue 34d over Completed Remind":
+        - cell "SPW/26-27/1121"
+        - cell "Endurance Technologies"
+        - cell "PO-ENDURANCE-5221"
+        - cell "06-06-2026"
+        - cell "21-07-2026"
+        - cell "₹6,08,000"
+        - cell "₹6,08,000"
+        - cell "34 d"
+        - cell "Overdue 34d over":
+          - generic: Overdue
+          - text: 34d over
+        - cell "Completed":
+          - generic: Completed
+        - cell "Remind":
+          - button "Remind":
+            - text: Remind
+      - row "SPW/26-27/1108 Sundram Fasteners PO-SUNDRAM-5208 03-06-2026 02-08-2026 ₹3,14,000 — — — Completed":
+        - cell "SPW/26-27/1108"
+        - cell "Sundram Fasteners"
+        - cell "PO-SUNDRAM-5208"
+        - cell "03-06-2026"
+        - cell "02-08-2026"
+        - cell "₹3,14,000"
+        - cell "—"
+        - cell "—"
+        - cell "—"
+        - cell "Completed":
+          - generic: Completed
+        - cell
+      - row "SPW/26-27/1103 Sundram Fasteners PO-SUNDRAM-5203 01-06-2026 31-07-2026 ₹11,92,000 — — — Completed":
+        - cell "SPW/26-27/1103"
+        - cell "Sundram Fasteners"
+        - cell "PO-SUNDRAM-5203"
+        - cell "01-06-2026"
+        - cell "31-07-2026"
+        - cell "₹11,92,000"
+        - cell "—"
+        - cell "—"
+        - cell "—"
+        - cell "Completed":
+          - generic: Completed
+        - cell
+      - row "SPW/26-27/1116 Endurance Technologies PO-ENDURANCE-5216 26-05-2026 10-07-2026 ₹7,34,000 ₹7,34,000 45 d Overdue 45d over Completed Remind":
+        - cell "SPW/26-27/1116"
+        - cell "Endurance Technologies"
+        - cell "PO-ENDURANCE-5216"
+        - cell "26-05-2026"
+        - cell "10-07-2026"
+        - cell "₹7,34,000"
+        - cell "₹7,34,000"
+        - cell "45 d"
+        - cell "Overdue 45d over":
+          - generic: Overdue
+          - text: 45d over
+        - cell "Completed":
+          - generic: Completed
+        - cell "Remind":
+          - button "Remind":
+            - text: Remind
+      - row "SPW/26-27/1112 Varroc Engineering PO-VARROC-5212 25-05-2026 09-07-2026 ₹4,44,000 ₹2,22,000 46 d Overdue 46d over Completed Remind":
+        - cell "SPW/26-27/1112"
+        - cell "Varroc Engineering"
+        - cell "PO-VARROC-5212"
+        - cell "25-05-2026"
+        - cell "09-07-2026"
+        - cell "₹4,44,000"
+        - cell "₹2,22,000"
+        - cell "46 d"
+        - cell "Overdue 46d over":
+          - generic: Overdue
+          - text: 46d over
+        - cell "Completed":
+          - generic: Completed
+        - cell "Remind":
+          - button "Remind":
+            - text: Remind
+- button "Quick Log":
+  - text: Quick Log
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_10hdg7xyw99tpa64t0nz744v7b?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: ₹0

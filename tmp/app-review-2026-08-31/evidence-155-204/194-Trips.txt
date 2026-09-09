@@ -1,0 +1,19 @@
+- main:
+  - heading "My Trips" [level=1]
+  - paragraph: All your bundled reservations
+  - generic: 2 Total
+  - button "Upcoming (0)"
+  - button "Past History (2)"
+  - heading "No upcoming reservations" [level=3]
+  - paragraph: Explore concerts, locked dining tables, or let AI plan your weekend escape.
+  - button "Explore Experiences"
+- button "Open Concierge":
+- navigation:
+  - button "Home":
+    - generic: Home
+  - button "Plan":
+    - generic: Plan
+  - button "Trips" [active]:
+    - generic: Trips
+  - button "Profile":
+    - generic: Profile

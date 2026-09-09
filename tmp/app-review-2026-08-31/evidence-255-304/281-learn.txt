@@ -1,0 +1,42 @@
+- banner:
+  - generic: menu
+  - generic: ColdConnect
+  - navigation:
+    - link "home Home":
+      - /url: /
+      - generic: home
+      - text: Home
+    - link "hub Network":
+      - /url: /person
+      - generic: hub
+      - text: Network
+    - link "calendar_today Upcoming":
+      - /url: /pitch-prep
+      - generic: calendar_today
+      - text: Upcoming
+    - link "person Profile":
+      - /url: /profile
+      - generic: person
+      - text: Profile
+  - img "User profile photo"
+- main:
+  - heading "Tell us about yourself." [level=1]
+  - paragraph: Add your details once. ColdConnect will use them across every conversation.
+  - link "work Import from LinkedIn Bring in your professional background, experience, education and skills. Import Profile arrow_forward Review everything before saving.":
+    - /url: /import-linkedin
+    - generic: work
+    - heading "Import from LinkedIn" [level=3]
+    - paragraph: Bring in your professional background, experience, education and skills.
+    - text: Import Profile
+    - generic: arrow_forward
+    - paragraph: Review everything before saving.
+  - link "person Build manually Create your ColdConnect profile in a few minutes. Start from scratch arrow_forward":
+    - /url: /build-profile
+    - generic: person
+    - heading "Build manually" [level=3]
+    - paragraph: Create your ColdConnect profile in a few minutes.
+    - text: Start from scratch
+    - generic: arrow_forward
+  - generic: Step 1 of 4
+  - link "Sign in or create an account":
+    - /url: /auth

@@ -11,6 +11,7 @@ import {
   useTracks,
 } from "@livekit/components-react";
 import { ConnectionState, RoomEvent, Track } from "livekit-client";
+import { AGENT_IDENTITY } from "@/lib/interview/identity";
 import { VIDEO_LOST_NOTICE } from "@/lib/interview/video";
 import styles from "./room.module.css";
 
@@ -229,16 +230,22 @@ export function MeetingView({
       const agentTurns = turns.filter((t) => t.speaker === "agent");
 
       // Presence first, because the turn-based checks below cannot see the
-      // case that actually stranded a student. An interview room holds exactly
-      // two participants, so any remote participant IS the interviewer. When it
-      // leaves, no agent will ever rejoin that room — dispatch is automatic and
+      // case that actually stranded a student. Matched on the interviewer's own
+      // identity rather than "any remote participant": the two happen to be the
+      // same thing today, and a stranded student is too expensive to spend on
+      // that assumption holding. When the interviewer leaves, no agent will
+      // ever rejoin that room — dispatch is automatic and
       // fires once, at room creation. The old logic returned early whenever the
       // last turn was the agent's, which is precisely the state a dead
       // interviewer leaves behind (its question is the last thing persisted,
       // and no student turn can follow because the STT died with it), so it
       // never fired at all. Reconnecting re-mints a token, which clears the
       // stranded room and gets a fresh agent that resumes the transcript.
-      const agentPresent = (room?.remoteParticipants?.size ?? 0) > 0;
+      const agentPresent = room
+        ? Array.from(room.remoteParticipants.values()).some(
+            (p) => p.identity === AGENT_IDENTITY,
+          )
+        : false;
       if (agentPresent || agentLastSeenRef.current === 0) {
         agentLastSeenRef.current = Date.now();
       }

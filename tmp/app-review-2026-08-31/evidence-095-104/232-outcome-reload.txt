@@ -1,0 +1,92 @@
+- main:
+  - heading "Decision Log" [level=1]
+  - paragraph: Record what you decided, why, and how it turned out.
+  - button "+ Log a decision"
+  - generic: Title
+  - textbox "Title":
+    - /placeholder: What are you deciding?
+  - generic: Reasoning
+  - textbox "Reasoning":
+    - /placeholder: Why this call, and what you expect to happen.
+  - generic: Confidence · 3/5
+  - slider "Confidence · 3/5": "3"
+  - generic: Revisit date
+  - textbox "Revisit date"
+  - generic: Categories
+  - button "Finance"
+  - button "Career"
+  - button "Product"
+  - button "Health"
+  - button "Relationships"
+  - button "Travel"
+  - button "Investing"
+  - button "Learning"
+  - button "Creative"
+  - button "Tech"
+  - textbox "Custom category…"
+  - button "Add" [disabled]
+  - button "Save" [disabled]
+  - region "Decision metrics":
+    - generic: Logged
+    - generic: "8"
+    - generic: 7 resolved
+    - generic: Hit rate
+    - generic: 43%
+    - generic: mixed counts as half
+    - generic: Avg confidence
+    - generic: "3.9"
+    - generic: out of 5
+    - 'generic "Correct: 2"'
+    - 'generic "Mixed: 2"'
+    - 'generic "Wrong: 3"'
+    - 'generic "Pending: 1"'
+    - button "All · 8" [pressed]
+    - button "Pending · 1"
+    - button "Right · 2"
+    - button "Wrong · 3"
+    - button "Mixed · 2"
+    - button "Overdue · 0"
+    - paragraph: Filter by category
+    - button "Career"
+    - button "Finance"
+    - button "Learning"
+    - paragraph: Calibration — hit rate by confidence
+    - button "1/5 0 logged":
+      - generic: 1/5
+      - generic: 0 logged
+    - button "2/5 0 logged":
+      - generic: 2/5
+      - generic: 0 logged
+    - button "3/5 50% · 2":
+      - generic: 3/5
+      - generic: 50% · 2
+    - button "4/5 25% · 4":
+      - generic: 4/5
+      - generic: 25% · 4
+    - button "5/5 100% · 1":
+      - generic: 5/5
+      - generic: 100% · 1
+    - paragraph: Hit rate by category
+    - button "Career 1 logged":
+      - generic: Career
+      - generic: 1 logged
+    - button "Finance 1 logged":
+      - generic: Finance
+      - generic: 1 logged
+    - button "Learning 1 logged":
+      - generic: Learning
+      - generic: 1 logged
+  - textbox "Search decisions…": QA Demo
+  - button "Clear"
+  - article:
+    - 'button "QA Demo: Try a 20-minute study block Mixed Revisit 1 Sept 2026" [expanded] [active]':
+      - 'heading "QA Demo: Try a 20-minute study block" [level=2]'
+      - generic: Mixed
+      - generic: Revisit 1 Sept 2026
+    - paragraph: "Synthetic evaluator record: expect one short focused session to make revision easier."
+    - paragraph: "Synthetic review: a short session helped focus, but another revision pass is still needed."
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1vz46e27gd8k7t4qcnk19cspen?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

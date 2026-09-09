@@ -1,0 +1,27 @@
+- main:
+  - button "Back":
+  - progressbar
+  - heading "Which habits matter most?" [level=1]
+  - paragraph: I'll track streaks for these.
+  - button "Read":
+    - generic: Read
+  - button "Workout":
+    - generic: Workout
+  - button "Water":
+    - generic: Water
+  - button "Meditate":
+    - generic: Meditate
+  - button "Journal":
+    - generic: Journal
+  - button "Walk":
+    - generic: Walk
+  - button "Sleep by 11":
+    - generic: Sleep by 11
+  - button "Continue" [active]:
+    - text: Continue
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1y077zn9zp920rn02hgwhd1kn0?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

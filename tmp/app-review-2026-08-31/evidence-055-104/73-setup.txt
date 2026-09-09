@@ -1,0 +1,30 @@
+- main:
+  - heading "Choose a mode" [level=1]
+  - button "Pass and play One device around the table. Everyone takes turns.":
+    - heading "Pass and play" [level=2]
+    - paragraph: One device around the table. Everyone takes turns.
+  - button "Online room Host a room and share a code. Turns still resolve on the host device for now.":
+    - heading "Online room" [level=2]
+    - paragraph: Host a room and share a code. Turns still resolve on the host device for now.
+- navigation:
+  - list:
+    - link "Home":
+      - /url: /
+      - text: Home
+    - link "Play":
+      - /url: /play
+      - text: Play
+    - link "Scores":
+      - /url: /scoreboard
+      - text: Scores
+    - link "Rules":
+      - /url: /how-to-play
+      - text: Rules
+    - link "Settings":
+      - /url: /settings
+      - text: Settings
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7zpptsf0w782c9v2fqtd9yt2mv?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

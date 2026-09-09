@@ -1,0 +1,306 @@
+- complementary:
+  - link "FactoryFlow AI Shreeji Precision Works":
+    - /url: /
+    - paragraph: FactoryFlow AI
+    - paragraph: Shreeji Precision Works
+  - navigation:
+    - paragraph: Shop floor
+    - link "Dashboard":
+      - /url: /
+      - text: Dashboard
+    - link "Production":
+      - /url: /production
+      - text: Production
+    - link "Customer Schedule":
+      - /url: /schedule
+      - text: Customer Schedule
+    - link "Machines":
+      - /url: /machines
+      - text: Machines
+    - link "Downtime":
+      - /url: /downtime
+      - text: Downtime
+    - link "Maintenance":
+      - /url: /maintenance
+      - text: Maintenance
+    - link "Quality":
+      - /url: /quality
+      - text: Quality
+    - link "Job Work":
+      - /url: /job-work
+      - text: Job Work
+    - link "Inventory" [active]:
+      - /url: /inventory
+      - text: Inventory
+    - paragraph: Money
+    - link "Sales & Receivables":
+      - /url: /sales
+      - text: Sales & Receivables
+    - link "Purchase & Payables":
+      - /url: /purchase
+      - text: Purchase & Payables
+    - link "Cash View":
+      - /url: /cash
+      - text: Cash View
+    - link "Compliance":
+      - /url: /compliance
+      - text: Compliance
+    - paragraph: Run the business
+    - link "Tasks":
+      - /url: /tasks
+      - text: Tasks
+    - link "Analytics":
+      - /url: /analytics
+      - text: Analytics
+    - link "Reports":
+      - /url: /reports
+      - text: Reports
+    - link "AI Assistant":
+      - /url: /assistant
+      - text: AI Assistant
+    - link "Integrations":
+      - /url: /integrations
+      - text: Integrations
+    - link "Settings":
+      - /url: /settings
+      - text: Settings
+  - link "RK Rajesh Kulkarni Works Manager":
+    - /url: /profile
+    - generic: RK
+    - generic: Rajesh Kulkarni
+    - generic: Works Manager
+  - link "Pricing & product page →":
+    - /url: /welcome
+- banner:
+  - textbox "Search part, challan, invoice, heat number…"
+  - button "English"
+  - button "हिंदी"
+  - button "मराठी"
+  - generic "All entries synced":
+    - text: Online
+  - button "Toggle dark mode":
+  - link "Notifications":
+    - /url: /notifications
+    - generic: "4"
+  - link "Ask AI":
+    - /url: /assistant
+    - generic: Ask AI
+- main:
+  - navigation:
+    - link "FactoryFlow":
+      - /url: /
+    - generic: Inventory
+  - heading "Inventory" [level=1]
+  - paragraph: 18 SKUs tracked · 3 below reorder level
+  - button "Export CSV":
+    - text: Export CSV
+  - paragraph: 3 materials are at or below reorder level
+  - paragraph: EN8 Bright Bar Ø40, EN19 Round Bar Ø55, Bearing 6304-ZZ
+  - textbox "Search material, part number, location…"
+  - combobox "Supplier":
+    - 'option "Supplier: All" [selected]'
+    - option "Shree Ganesh Steels"
+    - option "Krishna Alloys"
+    - option "Bharat Fasteners"
+    - option "Maharashtra Lubricants"
+  - table:
+    - rowgroup:
+      - row "Material Part no. Supplier Location Stock Min / Max Reorder Level":
+        - columnheader "Material"
+        - columnheader "Part no."
+        - columnheader "Supplier"
+        - columnheader "Location"
+        - columnheader "Stock"
+        - columnheader "Min / Max"
+        - columnheader "Reorder"
+        - columnheader "Level"
+    - rowgroup:
+      - row "EN8 Bright Bar Ø40 RM-4000 Shree Ganesh Steels C-12-3 96 kg 260 / 1300 325 7%":
+        - cell "EN8 Bright Bar Ø40"
+        - cell "RM-4000"
+        - cell "Shree Ganesh Steels"
+        - cell "C-12-3"
+        - cell "96 kg"
+        - cell "260 / 1300"
+        - cell "325"
+        - cell "7%":
+          - generic: 7%
+      - row "EN19 Round Bar Ø55 RM-4007 Krishna Alloys B-2-4 430 kg 636 / 2544 795 17%":
+        - cell "EN19 Round Bar Ø55"
+        - cell "RM-4007"
+        - cell "Krishna Alloys"
+        - cell "B-2-4"
+        - cell "430 kg"
+        - cell "636 / 2544"
+        - cell "795"
+        - cell "17%":
+          - generic: 17%
+      - row "HR Coil 3.0mm RM-4014 Shree Ganesh Steels B-15-4 1,569 kg 633 / 3798 791 41%":
+        - cell "HR Coil 3.0mm"
+        - cell "RM-4014"
+        - cell "Shree Ganesh Steels"
+        - cell "B-15-4"
+        - cell "1,569 kg"
+        - cell "633 / 3798"
+        - cell "791"
+        - cell "41%":
+          - generic: 41%
+      - row "SAE 1045 Billet RM-4021 Krishna Alloys A-13-2 2,274 kg 388 / 3104 485 73%":
+        - cell "SAE 1045 Billet"
+        - cell "RM-4021"
+        - cell "Krishna Alloys"
+        - cell "A-13-2"
+        - cell "2,274 kg"
+        - cell "388 / 3104"
+        - cell "485"
+        - cell "73%":
+          - generic: 73%
+      - row "M8x25 Hex Bolt 8.8 RM-4028 Bharat Fasteners A-13-2 1,167 pcs 523 / 2092 654 56%":
+        - cell "M8x25 Hex Bolt 8.8"
+        - cell "RM-4028"
+        - cell "Bharat Fasteners"
+        - cell "A-13-2"
+        - cell "1,167 pcs"
+        - cell "523 / 2092"
+        - cell "654"
+        - cell "56%":
+          - generic: 56%
+      - row "M10 Nyloc Nut RM-4035 Bharat Fasteners B-8-1 1,018 pcs 355 / 2485 444 41%":
+        - cell "M10 Nyloc Nut"
+        - cell "RM-4035"
+        - cell "Bharat Fasteners"
+        - cell "B-8-1"
+        - cell "1,018 pcs"
+        - cell "355 / 2485"
+        - cell "444"
+        - cell "41%":
+          - generic: 41%
+      - row "Bearing 6204-2RS RM-4042 Bharat Fasteners A-4-4 1,873 pcs 294 / 2352 368 80%":
+        - cell "Bearing 6204-2RS"
+        - cell "RM-4042"
+        - cell "Bharat Fasteners"
+        - cell "A-4-4"
+        - cell "1,873 pcs"
+        - cell "294 / 2352"
+        - cell "368"
+        - cell "80%":
+          - generic: 80%
+      - row "Bearing 6304-ZZ RM-4049 Bharat Fasteners A-9-6 155 pcs 158 / 1264 198 12%":
+        - cell "Bearing 6304-ZZ"
+        - cell "RM-4049"
+        - cell "Bharat Fasteners"
+        - cell "A-9-6"
+        - cell "155 pcs"
+        - cell "158 / 1264"
+        - cell "198"
+        - cell "12%":
+          - generic: 12%
+      - row "Nitrile Gasket 62mm RM-4056 Bharat Fasteners A-18-2 2,494 pcs 406 / 2842 508 88%":
+        - cell "Nitrile Gasket 62mm"
+        - cell "RM-4056"
+        - cell "Bharat Fasteners"
+        - cell "A-18-2"
+        - cell "2,494 pcs"
+        - cell "406 / 2842"
+        - cell "508"
+        - cell "88%":
+          - generic: 88%
+      - row "Oil Seal 35x52x7 RM-4063 Bharat Fasteners B-14-4 2,070 pcs 835 / 5845 1044 35%":
+        - cell "Oil Seal 35x52x7"
+        - cell "RM-4063"
+        - cell "Bharat Fasteners"
+        - cell "B-14-4"
+        - cell "2,070 pcs"
+        - cell "835 / 5845"
+        - cell "1044"
+        - cell "35%":
+          - generic: 35%
+      - row "Hydraulic Oil ISO VG 46 RM-4070 Maharashtra Lubricants B-7-6 525 litres 139 / 695 174 76%":
+        - cell "Hydraulic Oil ISO VG 46"
+        - cell "RM-4070"
+        - cell "Maharashtra Lubricants"
+        - cell "B-7-6"
+        - cell "525 litres"
+        - cell "139 / 695"
+        - cell "174"
+        - cell "76%":
+          - generic: 76%
+      - row "Neat Cutting Oil RM-4077 Maharashtra Lubricants A-14-5 798 litres 199 / 995 249 80%":
+        - cell "Neat Cutting Oil"
+        - cell "RM-4077"
+        - cell "Maharashtra Lubricants"
+        - cell "A-14-5"
+        - cell "798 litres"
+        - cell "199 / 995"
+        - cell "249"
+        - cell "80%":
+          - generic: 80%
+      - row "Quenching Oil RM-4084 Maharashtra Lubricants A-14-3 404 litres 85 / 595 106 68%":
+        - cell "Quenching Oil"
+        - cell "RM-4084"
+        - cell "Maharashtra Lubricants"
+        - cell "A-14-3"
+        - cell "404 litres"
+        - cell "85 / 595"
+        - cell "106"
+        - cell "68%":
+          - generic: 68%
+      - row "MIG Wire ER70S-6 1.2mm RM-4091 Krishna Alloys A-18-2 1,213 kg 726 / 3630 908 33%":
+        - cell "MIG Wire ER70S-6 1.2mm"
+        - cell "RM-4091"
+        - cell "Krishna Alloys"
+        - cell "A-18-2"
+        - cell "1,213 kg"
+        - cell "726 / 3630"
+        - cell "908"
+        - cell "33%":
+          - generic: 33%
+      - row "TIG Filler Rod ER308L RM-4098 Krishna Alloys B-12-4 1,185 kg 778 / 3112 973 38%":
+        - cell "TIG Filler Rod ER308L"
+        - cell "RM-4098"
+        - cell "Krishna Alloys"
+        - cell "B-12-4"
+        - cell "1,185 kg"
+        - cell "778 / 3112"
+        - cell "973"
+        - cell "38%":
+          - generic: 38%
+      - row "Carbide Insert CNMG 120408 RM-4105 Bharat Fasteners A-11-6 2,970 pcs 517 / 3102 646 96%":
+        - cell "Carbide Insert CNMG 120408"
+        - cell "RM-4105"
+        - cell "Bharat Fasteners"
+        - cell "A-11-6"
+        - cell "2,970 pcs"
+        - cell "517 / 3102"
+        - cell "646"
+        - cell "96%":
+          - generic: 96%
+      - row "Grinding Wheel 200x20 RM-4112 Bharat Fasteners C-18-5 631 pcs 443 / 3544 554 18%":
+        - cell "Grinding Wheel 200x20"
+        - cell "RM-4112"
+        - cell "Bharat Fasteners"
+        - cell "C-18-5"
+        - cell "631 pcs"
+        - cell "443 / 3544"
+        - cell "554"
+        - cell "18%":
+          - generic: 18%
+      - row "Steel Shot S-330 RM-4119 Krishna Alloys A-8-3 1,820 pcs 735 / 5145 919 35%":
+        - cell "Steel Shot S-330"
+        - cell "RM-4119"
+        - cell "Krishna Alloys"
+        - cell "A-8-3"
+        - cell "1,820 pcs"
+        - cell "735 / 5145"
+        - cell "919"
+        - cell "35%":
+          - generic: 35%
+- button "Quick Log":
+  - text: Quick Log
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_10hdg7xyw99tpa64t0nz744v7b?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: Dent / Handling Damage

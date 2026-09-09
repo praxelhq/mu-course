@@ -1,0 +1,75 @@
+- complementary:
+  - img "Ideaforge Logo"
+  - heading "Ideaforge Lab" [level=1]:
+    - text: Ideaforge
+    - generic: Lab
+  - paragraph: Startup Validation Suite
+  - button "New Validation":
+    - generic: New Validation
+  - navigation:
+    - button "Dashboard":
+      - generic: Dashboard
+    - button "Validations":
+      - generic: Validations
+    - button "Competitors":
+      - generic: Competitors
+    - button "Settings":
+      - generic: Settings
+  - generic "Open Account Settings":
+    - img "Review Test"
+    - paragraph: Review Test
+    - generic: Free Plan
+- main:
+  - generic: New Startup Experiment
+  - generic: Autosave active (every 30s)
+  - heading "Define Your Vision" [level=1]
+  - paragraph: Enter your startup concept details to trigger AI market intelligence, competitor discovery, and structured financial scoring.
+  - text: "Quick Test Examples:"
+  - button "AI-Powered CRM for Landscapers"
+  - button "Autonomous AI Cold Outreach Agent"
+  - button "AI Medical Bill Advocate"
+  - generic: Startup Name *
+  - textbox "e.g. AI-Powered CRM for Landscapers"
+  - generic: Industry Category
+  - combobox:
+    - option "SaaS / Software" [selected]
+    - option "AI / Machine Learning"
+    - option "Consumer Tech / Mobile App"
+    - option "HealthTech / Digital Health"
+    - option "FinTech / Payments"
+    - option "E-commerce / Marketplace"
+    - option "CleanTech / Sustainability"
+    - option "EdTech / Education"
+    - option "Developer Tools"
+  - generic: Problem Statement & Core Value Proposition *
+  - textbox "Describe the exact pain point customers face, how severe it is, and how your product addresses it..."
+  - generic: Target Audience / Ideal Customer Profile
+  - textbox "e.g. Owner-Operator Landscapers managing 2-5 crews"
+  - generic: Primary Target Country / Region
+  - textbox "e.g. United States, Global, European Union": United States
+  - generic: Current Stage
+  - combobox:
+    - option "Just an Idea"
+    - option "Early Concept" [selected]
+    - option "Prototype / Figma"
+    - option "MVP Built"
+    - option "In Market with Early Users"
+  - generic: Estimated Initial Budget
+  - combobox:
+    - option "Under $5,000"
+    - option "$5,000 - $10,000"
+    - option "$10,000 - $25,000" [selected]
+    - option "$25,000 - $50,000"
+    - option "$50,000+"
+  - generic: Website / Deck Link (Optional)
+  - textbox "https://..."
+  - paragraph:
+    - text: When you click
+    - strong: Validate Idea
+    - text: ", our 8-step AI pipeline will synthesize real-time market search, competitor pricing, TAM calculations, SWOT analysis, and financial scoring into a comprehensive report."
+  - button "Save as Draft" [disabled]:
+    - generic: Save as Draft
+  - button "Validate Idea" [disabled]:
+    - generic: Validate Idea
+- paragraph: Signing in Review Test...
+- button:

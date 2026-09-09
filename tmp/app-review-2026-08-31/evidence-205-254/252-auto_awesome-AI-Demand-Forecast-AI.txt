@@ -1,0 +1,409 @@
+- navigation:
+  - generic: inventory_2
+  - heading "StockFlow" [level=1]
+  - generic: ERP
+  - paragraph: Sports Retail Operations
+  - paragraph: OVERVIEW
+  - list:
+    - button "dashboard Dashboard 5":
+      - generic: dashboard
+      - generic: Dashboard
+      - generic: "5"
+    - button "inventory_2 Products":
+      - generic: inventory_2
+      - generic: Products
+    - button "swap_horiz Inventory Master":
+      - generic: swap_horiz
+      - generic: Inventory Master
+  - paragraph: INTELLIGENCE
+  - list:
+    - button "auto_awesome AI Demand Forecast" [active]:
+      - generic: auto_awesome
+      - generic: AI Demand Forecast
+    - button "analytics Reports & Analytics":
+      - generic: analytics
+      - generic: Reports & Analytics
+  - paragraph: OPERATIONS
+  - list:
+    - button "qr_code_2 Serial Numbers":
+      - generic: qr_code_2
+      - generic: Serial Numbers
+    - button "category Categories":
+      - generic: category
+      - generic: Categories
+    - button "local_shipping Suppliers":
+      - generic: local_shipping
+      - generic: Suppliers
+  - paragraph: PROCUREMENT & PAYABLES
+  - list:
+    - button "post_add Purchase Orders 2":
+      - generic: post_add
+      - generic: Purchase Orders
+      - generic: "2"
+    - button "receipt_long Supplier Invoices 3":
+      - generic: receipt_long
+      - generic: Supplier Invoices
+      - generic: "3"
+    - button "payments Payment Ledger":
+      - generic: payments
+      - generic: Payment Ledger
+  - paragraph: SYSTEM
+  - list:
+    - button "manage_accounts User Management":
+      - generic: manage_accounts
+      - generic: User Management
+    - button "history Audit Trail Logs":
+      - generic: history
+      - generic: Audit Trail Logs
+  - button "settings Settings":
+    - generic: settings
+    - generic: Settings
+  - button "logout Sign Out":
+    - generic: logout
+    - generic: Sign Out
+- banner:
+  - generic: search
+  - textbox "Search products, SKUs, suppliers, orders..."
+  - generic: ⌘K
+  - generic: ₹ INR
+  - text: "Role:"
+  - strong: Admin
+  - button "notifications":
+    - generic: notifications
+  - button "help_outline":
+    - generic: help_outline
+  - button "Yadeshwar Admin expand_more":
+    - generic: Yadeshwar
+    - generic: Admin
+    - generic: expand_more
+- main:
+  - generic: auto_awesome
+  - text: AI Demand Forecasting Engine
+  - generic: Grounded Model
+  - heading "Predictive Demand & Inventory Optimization" [level=2]
+  - paragraph: Uses historical stock depletion run-rates to predict future item demand, eliminate stockouts, and formulate exact purchasing recommendations.
+  - button "7 Days"
+  - button "30 Days"
+  - button "60 Days"
+  - button "90 Days"
+  - button "download Export CSV":
+    - generic: download
+    - text: Export CSV
+  - generic: Requiring Reorder
+  - generic: shopping_cart_checkout
+  - paragraph: "11"
+  - paragraph: +43 units recommended
+  - generic: High & Critical Risk
+  - generic: warning
+  - paragraph: "4"
+  - paragraph: 1 critical risk items
+  - generic: Est. Reorder Cost
+  - generic: payments
+  - paragraph: ₹71,779
+  - paragraph: At unit purchase cost
+  - generic: Forecasted Demand
+  - generic: trending_up
+  - paragraph: "35"
+  - paragraph: Units projected for Next 30 Days
+  - generic: Low Demand SKUs
+  - generic: inventory_2
+  - paragraph: "1"
+  - paragraph: Avoid excess capital tie-up
+  - generic: search
+  - textbox "Search by product name, SKU, category, or supplier..."
+  - combobox:
+    - option "All Categories" [selected]
+    - option "Cricket"
+    - option "Football"
+    - option "Badminton"
+    - option "Tennis"
+    - option "Fitness"
+    - option "Sports Accessories"
+  - combobox:
+    - option "All Suppliers" [selected]
+    - option "Sanspareils Greenlands (SG) Pvt. Ltd."
+    - option "Adidas India Marketing Pvt. Ltd."
+    - option "Nike India Pvt. Ltd."
+    - option "Sunrise Sports India (Yonex Distributor)"
+    - option "Wilson Sports India Distribution"
+    - option "Decathlon Sports India Pvt. Ltd."
+  - combobox:
+    - option "All Risk Levels" [selected]
+    - option "Critical Risk"
+    - option "High Risk"
+    - option "Medium Risk"
+    - option "Low Risk"
+  - combobox:
+    - option "All Recommendations" [selected]
+    - option "Reorder Recommended"
+    - option "No Purchase Required"
+    - option "Low Demand"
+    - option "Insufficient Historical Data"
+  - heading "psychology AI Demand Forecast & Procurement Recommendations (Next 30 Days)" [level=3]:
+    - generic: psychology
+    - text: AI Demand Forecast & Procurement Recommendations (Next 30 Days)
+  - paragraph: Showing 15 product forecasts computed from historical stock movement
+  - table:
+    - rowgroup:
+      - row "Product Details Current Stock Min Level Avg Demand Forecast (Next 30 Days) Risk Level AI Recommendation & Insight Recommended Order Est. Cost Actions":
+        - columnheader "Product Details"
+        - columnheader "Current Stock"
+        - columnheader "Min Level"
+        - columnheader "Avg Demand"
+        - columnheader "Forecast (Next 30 Days)"
+        - columnheader "Risk Level"
+        - columnheader "AI Recommendation & Insight"
+        - columnheader "Recommended Order"
+        - columnheader "Est. Cost"
+        - columnheader "Actions"
+    - rowgroup:
+      - 'row "SG Scorer Classic Kashmir Willow Cricket Bat SG-SCB-001 Cricket Supplier: Sanspareils Greenlands (SG) Pvt. Ltd. 6 units 3 4 units/mo 4 units MEDIUM Reorder recommended Current inventory (6 units) covers immediate demand (4 units), but safety buffer will drop below minimum threshold (3 units). Consider ordering 1 units. +1 units ₹1,440.00 @₹1,440.00 post_add Create PO"':
+        - 'cell "SG Scorer Classic Kashmir Willow Cricket Bat SG-SCB-001 Cricket Supplier: Sanspareils Greenlands (SG) Pvt. Ltd."':
+          - 'button "SG Scorer Classic Kashmir Willow Cricket Bat SG-SCB-001 Cricket Supplier: Sanspareils Greenlands (SG) Pvt. Ltd."':
+            - paragraph: SG Scorer Classic Kashmir Willow Cricket Bat
+            - generic: SG-SCB-001
+            - generic: Cricket
+            - paragraph: "Supplier: Sanspareils Greenlands (SG) Pvt. Ltd."
+        - cell "6 units":
+          - text: "6"
+          - generic: units
+        - cell "3"
+        - cell "4 units/mo":
+          - text: "4"
+          - generic: units/mo
+        - cell "4 units":
+          - text: "4"
+          - generic: units
+        - cell "MEDIUM":
+          - generic: MEDIUM
+        - cell "Reorder recommended Current inventory (6 units) covers immediate demand (4 units), but safety buffer will drop below minimum threshold (3 units). Consider ordering 1 units.":
+          - generic: Reorder recommended
+          - paragraph: Current inventory (6 units) covers immediate demand (4 units), but safety buffer will drop below minimum threshold (3 units). Consider ordering 1 units.
+        - cell "+1 units":
+          - text: "+1"
+          - generic: units
+        - cell "₹1,440.00 @₹1,440.00":
+          - text: ₹1,440.00
+          - generic: "@₹1,440.00"
+        - cell "post_add Create PO":
+          - button "post_add Create PO":
+            - generic: post_add
+            - generic: Create PO
+      - 'row "SG Test Cricket Leather Ball SG-TCB-002 Cricket Supplier: Sanspareils Greenlands (SG) Pvt. Ltd. 8 units 4 6 units/mo 6 units MEDIUM Reorder recommended Current inventory (8 units) covers immediate demand (6 units), but safety buffer will drop below minimum threshold (4 units). Consider ordering 2 units. +2 units ₹4,600.00 @₹2,300.00 post_add Create PO"':
+        - 'cell "SG Test Cricket Leather Ball SG-TCB-002 Cricket Supplier: Sanspareils Greenlands (SG) Pvt. Ltd."':
+          - 'button "SG Test Cricket Leather Ball SG-TCB-002 Cricket Supplier: Sanspareils Greenlands (SG) Pvt. Ltd."':
+            - paragraph: SG Test Cricket Leather Ball
+            - generic: SG-TCB-002
+            - generic: Cricket
+            - paragraph: "Supplier: Sanspareils Greenlands (SG) Pvt. Ltd."
+        - cell "8 units":
+          - text: "8"
+          - generic: units
+        - cell "4"
+        - cell "6 units/mo":
+          - text: "6"
+          - generic: units/mo
+        - cell "6 units":
+          - text: "6"
+          - generic: units
+        - cell "MEDIUM":
+          - generic: MEDIUM
+        - cell "Reorder recommended Current inventory (8 units) covers immediate demand (6 units), but safety buffer will drop below minimum threshold (4 units). Consider ordering 2 units.":
+          - generic: Reorder recommended
+          - paragraph: Current inventory (8 units) covers immediate demand (6 units), but safety buffer will drop below minimum threshold (4 units). Consider ordering 2 units.
+        - cell "+2 units":
+          - text: "+2"
+          - generic: units
+        - cell "₹4,600.00 @₹2,300.00":
+          - text: ₹4,600.00
+          - generic: "@₹2,300.00"
+        - cell "post_add Create PO":
+          - button "post_add Create PO":
+            - generic: post_add
+            - generic: Create PO
+      - 'row "SG Player Edition Batting Gloves SG-PEG-003 Cricket Supplier: Sanspareils Greenlands (SG) Pvt. Ltd. 2 units 4 3 units/mo 3 units HIGH Reorder recommended Demand is active (3 units expected). Current stock of 2 units is insufficient to cover the Next 30 Days. Recommend placing a PO for 5 units to avoid stockouts. +5 units ₹11,150.00 @₹2,230.00 post_add Create PO"':
+        - 'cell "SG Player Edition Batting Gloves SG-PEG-003 Cricket Supplier: Sanspareils Greenlands (SG) Pvt. Ltd."':
+          - 'button "SG Player Edition Batting Gloves SG-PEG-003 Cricket Supplier: Sanspareils Greenlands (SG) Pvt. Ltd."':
+            - paragraph: SG Player Edition Batting Gloves
+            - generic: SG-PEG-003
+            - generic: Cricket
+            - paragraph: "Supplier: Sanspareils Greenlands (SG) Pvt. Ltd."
+        - cell "2 units":
+          - text: "2"
+          - generic: units
+        - cell "4"
+        - cell "3 units/mo":
+          - text: "3"
+          - generic: units/mo
+        - cell "3 units":
+          - text: "3"
+          - generic: units
+        - cell "HIGH":
+          - generic: HIGH
+        - cell "Reorder recommended Demand is active (3 units expected). Current stock of 2 units is insufficient to cover the Next 30 Days. Recommend placing a PO for 5 units to avoid stockouts.":
+          - generic: Reorder recommended
+          - paragraph: Demand is active (3 units expected). Current stock of 2 units is insufficient to cover the Next 30 Days. Recommend placing a PO for 5 units to avoid stockouts.
+        - cell "+5 units":
+          - text: "+5"
+          - generic: units
+        - cell "₹11,150.00 @₹2,230.00":
+          - text: ₹11,150.00
+          - generic: "@₹2,230.00"
+        - cell "post_add Create PO":
+          - button "post_add Create PO":
+            - generic: post_add
+            - generic: Create PO
+      - 'row "SG Super 50 Cricket Ball SG-S50-004 Cricket Supplier: Sanspareils Greenlands (SG) Pvt. Ltd. 18 units 8 Insufficient Data Baseline LOW Insufficient historical data Insufficient historical stock-out transactions recorded for this product. Current inventory (18 units) meets safety threshold (8 units). No immediate replenishment needed. 0 units ₹0.00 @₹440.00 Details"':
+        - 'cell "SG Super 50 Cricket Ball SG-S50-004 Cricket Supplier: Sanspareils Greenlands (SG) Pvt. Ltd."':
+          - 'button "SG Super 50 Cricket Ball SG-S50-004 Cricket Supplier: Sanspareils Greenlands (SG) Pvt. Ltd."':
+            - paragraph: SG Super 50 Cricket Ball
+            - generic: SG-S50-004
+            - generic: Cricket
+            - paragraph: "Supplier: Sanspareils Greenlands (SG) Pvt. Ltd."
+        - cell "18 units":
+          - text: "18"
+          - generic: units
+        - cell "8"
+        - cell "Insufficient Data":
+          - generic: Insufficient Data
+        - cell "Baseline"
+        - cell "LOW":
+          - generic: LOW
+        - cell "Insufficient historical data Insufficient historical stock-out transactions recorded for this product. Current inventory (18 units) meets safety threshold (8 units). No immediate replenishment needed.":
+          - generic: Insufficient historical data
+          - paragraph: Insufficient historical stock-out transactions recorded for this product. Current inventory (18 units) meets safety threshold (8 units). No immediate replenishment needed.
+        - cell "0 units":
+          - text: "0"
+          - generic: units
+        - cell "₹0.00 @₹440.00":
+          - text: ₹0.00
+          - generic: "@₹440.00"
+        - cell "Details":
+          - button "Details"
+      - 'row "SG Shield 20 Leather Ball SG-S20-005 Cricket Supplier: Sanspareils Greenlands (SG) Pvt. Ltd. 15 units 6 Insufficient Data Baseline LOW Insufficient historical data Insufficient historical stock-out transactions recorded for this product. Current inventory (15 units) meets safety threshold (6 units). No immediate replenishment needed. 0 units ₹0.00 @₹430.00 Details"':
+        - 'cell "SG Shield 20 Leather Ball SG-S20-005 Cricket Supplier: Sanspareils Greenlands (SG) Pvt. Ltd."':
+          - 'button "SG Shield 20 Leather Ball SG-S20-005 Cricket Supplier: Sanspareils Greenlands (SG) Pvt. Ltd."':
+            - paragraph: SG Shield 20 Leather Ball
+            - generic: SG-S20-005
+            - generic: Cricket
+            - paragraph: "Supplier: Sanspareils Greenlands (SG) Pvt. Ltd."
+        - cell "15 units":
+          - text: "15"
+          - generic: units
+        - cell "6"
+        - cell "Insufficient Data":
+          - generic: Insufficient Data
+        - cell "Baseline"
+        - cell "LOW":
+          - generic: LOW
+        - cell "Insufficient historical data Insufficient historical stock-out transactions recorded for this product. Current inventory (15 units) meets safety threshold (6 units). No immediate replenishment needed.":
+          - generic: Insufficient historical data
+          - paragraph: Insufficient historical stock-out transactions recorded for this product. Current inventory (15 units) meets safety threshold (6 units). No immediate replenishment needed.
+        - cell "0 units":
+          - text: "0"
+          - generic: units
+        - cell "₹0.00 @₹430.00":
+          - text: ₹0.00
+          - generic: "@₹430.00"
+        - cell "Details":
+          - button "Details"
+      - 'row "SG Tournament Cricket Ball SG-TCB-006 Cricket Supplier: Sanspareils Greenlands (SG) Pvt. Ltd. 0 units 3 6 units/mo 6 units CRITICAL Reorder recommended Stock is currently depleted (0 units) while forecasted demand is 6 units for the Next 30 Days. Critical stockout risk — prioritize ordering 9 units immediately from Sanspareils Greenlands (SG) Pvt. Ltd.. +9 units ₹12,960.00 @₹1,440.00 post_add Create PO"':
+        - 'cell "SG Tournament Cricket Ball SG-TCB-006 Cricket Supplier: Sanspareils Greenlands (SG) Pvt. Ltd."':
+          - 'button "SG Tournament Cricket Ball SG-TCB-006 Cricket Supplier: Sanspareils Greenlands (SG) Pvt. Ltd."':
+            - paragraph: SG Tournament Cricket Ball
+            - generic: SG-TCB-006
+            - generic: Cricket
+            - paragraph: "Supplier: Sanspareils Greenlands (SG) Pvt. Ltd."
+        - cell "0 units":
+          - text: "0"
+          - generic: units
+        - cell "3"
+        - cell "6 units/mo":
+          - text: "6"
+          - generic: units/mo
+        - cell "6 units":
+          - text: "6"
+          - generic: units
+        - cell "CRITICAL":
+          - generic: CRITICAL
+        - cell "Reorder recommended Stock is currently depleted (0 units) while forecasted demand is 6 units for the Next 30 Days. Critical stockout risk — prioritize ordering 9 units immediately from Sanspareils Greenlands (SG) Pvt. Ltd..":
+          - generic: Reorder recommended
+          - paragraph: Stock is currently depleted (0 units) while forecasted demand is 6 units for the Next 30 Days. Critical stockout risk — prioritize ordering 9 units immediately from Sanspareils Greenlands (SG) Pvt. Ltd..
+        - cell "+9 units":
+          - text: "+9"
+          - generic: units
+        - cell "₹12,960.00 @₹1,440.00":
+          - text: ₹12,960.00
+          - generic: "@₹1,440.00"
+        - cell "post_add Create PO":
+          - button "post_add Create PO":
+            - generic: post_add
+            - generic: Create PO
+      - 'row "Adidas Al Rihla League Football AD-ALR-007 Football Supplier: Adidas India Marketing Pvt. Ltd. 6 units 4 Insufficient Data Baseline LOW Insufficient historical data Insufficient historical stock-out transactions recorded for this product. Current inventory (6 units) meets safety threshold (4 units). No immediate replenishment needed. 0 units ₹0.00 @₹2,450.00 Details"':
+        - 'cell "Adidas Al Rihla League Football AD-ALR-007 Football Supplier: Adidas India Marketing Pvt. Ltd."':
+          - 'button "Adidas Al Rihla League Football AD-ALR-007 Football Supplier: Adidas India Marketing Pvt. Ltd."':
+            - paragraph: Adidas Al Rihla League Football
+            - generic: AD-ALR-007
+            - generic: Football
+            - paragraph: "Supplier: Adidas India Marketing Pvt. Ltd."
+        - cell "6 units":
+          - text: "6"
+          - generic: units
+        - cell "4"
+        - cell "Insufficient Data":
+          - generic: Insufficient Data
+        - cell "Baseline"
+        - cell "LOW":
+          - generic: LOW
+        - cell "Insufficient historical data Insufficient historical stock-out transactions recorded for this product. Current inventory (6 units) meets safety threshold (4 units). No immediate replenishment needed.":
+          - generic: Insufficient historical data
+          - paragraph: Insufficient historical stock-out transactions recorded for this product. Current inventory (6 units) meets safety threshold (4 units). No immediate replenishment needed.
+        - cell "0 units":
+          - text: "0"
+          - generic: units
+        - cell "₹0.00 @₹2,450.00":
+          - text: ₹0.00
+          - generic: "@₹2,450.00"
+        - cell "Details":
+          - button "Details"
+      - 'row "Nike Mercurial Vapor 17 Club Football Boots NK-MV17-008 Football Supplier: Nike India Pvt. Ltd. 4 units 3 2 units/mo 2 units MEDIUM Reorder recommended Current inventory (4 units) covers immediate demand (2 units), but safety buffer will drop below minimum threshold (3 units). Consider ordering 1 units. +1 units ₹4,395.00 @₹4,395.00 post_add Create PO"':
+        - 'cell "Nike Mercurial Vapor 17 Club Football Boots NK-MV17-008 Football Supplier: Nike India Pvt. Ltd."':
+          - 'button "Nike Mercurial Vapor 17 Club Football Boots NK-MV17-008 Football Supplier: Nike India Pvt. Ltd."':
+            - paragraph: Nike Mercurial Vapor 17 Club Football Boots
+            - generic: NK-MV17-008
+            - generic: Football
+            - paragraph: "Supplier: Nike India Pvt. Ltd."
+        - cell "4 units":
+          - text: "4"
+          - generic: units
+        - cell "3"
+        - cell "2 units/mo":
+          - text: "2"
+          - generic: units/mo
+        - cell "2 units":
+          - text: "2"
+          - generic: units
+        - cell "MEDIUM":
+          - generic: MEDIUM
+        - cell "Reorder recommended Current inventory (4 units) covers immediate demand (2 units), but safety buffer will drop below minimum threshold (3 units). Consider ordering 1 units.":
+          - generic: Reorder recommended
+          - paragraph: Current inventory (4 units) covers immediate demand (2 units), but safety buffer will drop below minimum threshold (3 units). Consider ordering 1 units.
+        - cell "+1 units":
+          - text: "+1"
+          - generic: units
+        - cell "₹4,395.00 @₹4,395.00":
+          - text: ₹4,395.00
+          - generic: "@₹4,395.00"
+        - cell "post_add Create PO":
+          - button "post_add Create PO":
+            - generic: post_add
+            - generic: Create PO
+  - text: Showing Page
+  - strong: "1"
+  - text: of
+  - strong: "2"
+  - text: (15 total products)
+  - button "Previous" [disabled]
+  - generic: "1"
+  - button "Next"
+- generic: "0"

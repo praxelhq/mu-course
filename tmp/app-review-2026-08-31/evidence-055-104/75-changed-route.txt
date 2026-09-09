@@ -1,0 +1,285 @@
+- banner:
+  - generic: CP
+  - heading "CommutePulse" [level=1]
+  - generic: LIVE
+  - paragraph:
+    - generic: Uber • Rapido • Ola Unified
+  - combobox:
+    - option "Delhi NCR" [selected]
+    - option "Bengaluru"
+    - option "Mumbai"
+    - option "Hyderabad"
+    - option "Pune"
+    - option "Chennai"
+  - 'button "Sync: 9s"':
+    - generic: "Sync: 9s"
+  - button "Late?":
+    - generic: Late?
+  - button "Login / Link Apps":
+    - generic: Login / Link Apps
+- main:
+  - button "Compare Rides 11":
+    - generic: Compare Rides
+    - generic: "11"
+  - button "Live Corridor Map":
+    - generic: Live Corridor Map
+  - button "Surge Radar 1x":
+    - generic: Surge Radar
+    - generic: 1x
+  - button "Saved Routes 15":
+    - generic: Saved Routes
+    - generic: "15"
+  - button "Linked Accounts 0/3":
+    - generic: Linked Accounts
+    - generic: 0/3
+  - button "Refresh Fares":
+    - generic: Refresh Fares
+  - generic: Pickup Location
+  - button "Pickup Location":
+    - generic: Use Live GPS
+  - textbox "Search or enter pickup location...": Hauz Khas Metro Interchange
+  - button "Clear pickup":
+  - button "Swap Pickup and Drop-off":
+  - generic: Drop-off Destination
+  - generic: ~11.2 km • 25m
+  - textbox "Search or enter drop-off destination...": Connaught Place (CP) Inner Circle, Delhi
+  - button "Clear destination":
+  - generic: "Quick Hubs:"
+  - button "Kempegowda Int. Airport"
+  - button "Indiranagar 100ft Road / 12th Main"
+  - button "Embassy TechVillage"
+  - button "MG Road Metro Station / Brigade Rd"
+  - button "DLF Cyber City"
+  - button "BKC G-Block"
+  - button "Search Rides & Compare Live Fares Hauz Khas Metro Interchange ➔ Connaught Place (CP) Inner Circle ~11.2 km":
+    - generic: Search Rides & Compare Live Fares
+    - generic: Hauz Khas Metro Interchange ➔ Connaught Place (CP) Inner Circle
+    - generic: ~11.2 km
+  - generic: "Live Starting Fares:"
+  - text: "Bike:"
+  - strong: ₹125
+  - text: "Auto:"
+  - strong: ₹205
+  - text: "Cab:"
+  - strong: ₹270
+  - heading "Unified Ride Comparison Matrix" [level=3]
+  - paragraph: Real-time lowest fares and fastest pickups across Uber, Ola & Rapido
+  - generic: 11 options live
+  - button "All Rides (11)":
+    - generic: All Rides (11)
+  - button "Bike / Moto":
+    - generic: Bike / Moto
+  - button "🛺 Auto (3)":
+    - generic: 🛺
+    - generic: Auto
+    - generic: (3)
+  - button "Cabs":
+    - generic: Cabs
+  - button "All"
+  - button "Uber"
+  - button "Rapido"
+  - button "Ola"
+  - combobox:
+    - 'option "Sort: Best Match 🌟" [selected]'
+    - 'option "Sort: Fastest Pickup ⚡"'
+    - 'option "Sort: Lowest Fare 💰"'
+    - 'option "Sort: Earliest Arrival ⏱️"'
+  - generic: RAPIDO
+  - heading "Rapido Auto" [level=3]
+  - generic: Best Value 💰
+  - paragraph:
+    - generic: 3m away
+    - generic: •
+    - generic: 16 nearby
+    - generic: •
+    - generic: Direct Meter Auto (No Bargain)
+  - generic: ₹205
+  - generic: Standard
+  - text: ~23m transit
+  - text: 3 seats
+  - button "Fare Breakdown":
+    - text: Fare Breakdown
+  - generic: Direct mobile app launch
+  - button "Open in Rapido App":
+    - generic: Open in Rapido App
+  - generic: RAPIDO
+  - heading "Rapido Bike" [level=3]
+  - generic: Fastest Pickup ⚡
+  - paragraph:
+    - generic: 2m away
+    - generic: •
+    - generic: 14 nearby
+    - generic: •
+    - generic: Two-Wheeler (Helmet provided)
+  - generic: ₹125
+  - generic: Fastest Pickup ⚡
+  - text: ~20m transit
+  - text: 1 seats
+  - button "Fare Breakdown":
+    - text: Fare Breakdown
+  - generic: Direct mobile app launch
+  - button "Open in Rapido App":
+    - generic: Open in Rapido App
+  - generic: UBER
+  - heading "Uber Moto" [level=3]
+  - generic: Surge Free 🟢
+  - paragraph:
+    - generic: 3m away
+    - generic: •
+    - generic: 10 nearby
+    - generic: •
+    - generic: Verified Bike Partner
+  - generic: ₹140
+  - generic: Standard
+  - text: ~20m transit
+  - text: 1 seats
+  - button "Fare Breakdown":
+    - text: Fare Breakdown
+  - generic: Direct mobile app launch
+  - button "Open in Uber App":
+    - generic: Open in Uber App
+  - generic: OLA
+  - heading "Ola Bike" [level=3]
+  - paragraph:
+    - generic: 4m away
+    - generic: •
+    - generic: 8 nearby
+    - generic: •
+    - generic: Ola Two-Wheeler
+  - generic: ₹135
+  - generic: Standard
+  - text: ~21m transit
+  - text: 1 seats
+  - button "Fare Breakdown":
+    - text: Fare Breakdown
+  - generic: Direct mobile app launch
+  - button "Open in Ola App":
+    - generic: Open in Ola App
+  - generic: UBER
+  - heading "Uber Auto" [level=3]
+  - paragraph:
+    - generic: 4m away
+    - generic: •
+    - generic: 19 nearby
+    - generic: •
+    - generic: Three-Wheeler Auto
+  - generic: ₹220
+  - generic: Standard
+  - text: ~23m transit
+  - text: 3 seats
+  - button "Fare Breakdown":
+    - text: Fare Breakdown
+  - generic: Direct mobile app launch
+  - button "Open in Uber App":
+    - generic: Open in Uber App
+  - generic: OLA
+  - heading "Ola Auto" [level=3]
+  - paragraph:
+    - generic: 5m away
+    - generic: •
+    - generic: 12 nearby
+    - generic: •
+    - generic: Ola Standard Auto
+  - generic: ₹215
+  - generic: Standard
+  - text: ~24m transit
+  - text: 3 seats
+  - button "Fare Breakdown":
+    - text: Fare Breakdown
+  - generic: Direct mobile app launch
+  - button "Open in Ola App":
+    - generic: Open in Ola App
+  - generic: RAPIDO
+  - heading "Rapido Cab Eco" [level=3]
+  - generic: Cheapest Cab 🚖
+  - paragraph:
+    - generic: 5m away
+    - generic: •
+    - generic: 9 nearby
+    - generic: •
+    - generic: Hatchback AC
+  - generic: ₹270
+  - generic: Standard
+  - text: ~25m transit
+  - text: 4 seats
+  - button "Fare Breakdown":
+    - text: Fare Breakdown
+  - generic: Direct mobile app launch
+  - button "Open in Rapido App":
+    - generic: Open in Rapido App
+  - generic: UBER
+  - heading "Uber Go (Cab)" [level=3]
+  - paragraph:
+    - generic: 4m away
+    - generic: •
+    - generic: 18 nearby
+    - generic: •
+    - generic: Compact Hatchback (AC)
+  - generic: ₹295
+  - generic: Standard
+  - text: ~25m transit
+  - text: 4 seats
+  - button "Fare Breakdown":
+    - text: Fare Breakdown
+  - generic: Direct mobile app launch
+  - button "Open in Uber App":
+    - generic: Open in Uber App
+  - generic: OLA
+  - heading "Ola Mini (Cab)" [level=3]
+  - paragraph:
+    - generic: 7m away
+    - generic: •
+    - generic: 14 nearby
+    - generic: •
+    - generic: Hatchback AC
+  - generic: ₹310
+  - generic: Standard
+  - text: ~26m transit
+  - text: 4 seats
+  - button "Fare Breakdown":
+    - text: Fare Breakdown
+  - generic: Direct mobile app launch
+  - button "Open in Ola App":
+    - generic: Open in Ola App
+  - generic: UBER
+  - heading "Uber Premier" [level=3]
+  - paragraph:
+    - generic: 6m away
+    - generic: •
+    - generic: 7 nearby
+    - generic: •
+    - generic: Premium Sedan (Top Drivers)
+  - generic: ₹420
+  - generic: Standard
+  - text: ~25m transit
+  - text: 4 seats
+  - button "Fare Breakdown":
+    - text: Fare Breakdown
+  - generic: Direct mobile app launch
+  - button "Open in Uber App":
+    - generic: Open in Uber App
+  - generic: OLA
+  - heading "Ola Prime Sedan" [level=3]
+  - paragraph:
+    - generic: 8m away
+    - generic: •
+    - generic: 6 nearby
+    - generic: •
+    - generic: Spacious Sedan with In-Cab Wifi
+  - generic: ₹410
+  - generic: Standard
+  - text: ~26m transit
+  - text: 4 seats
+  - button "Fare Breakdown":
+    - text: Fare Breakdown
+  - generic: Direct mobile app launch
+  - button "Open in Ola App":
+    - generic: Open in Ola App
+- contentinfo:
+  - generic: CommutePulse
+  - generic: • Intelligent Multi-Platform Transit Optimization
+  - generic: Uber API
+  - generic: •
+  - generic: Rapido Fleet
+  - generic: •
+  - generic: Ola Mobility

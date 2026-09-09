@@ -1,0 +1,59 @@
+- main:
+  - button "← Change mode"
+  - heading "Lobby" [level=1]
+  - textbox "Player 1": Demo A
+  - button "Remove player 1" [disabled]:
+  - textbox "Player 2": Demo B
+  - button "Remove player 2" [disabled]:
+  - textbox "Player 3" [active]: Demo C
+  - button "Remove player 3" [disabled]:
+  - button "Add player":
+    - text: Add player
+  - heading "Game rules" [level=2]
+  - generic: Target score
+  - button "15"
+  - button "21"
+  - button "30"
+  - generic: Hints per player
+  - button "1"
+  - button "2"
+  - button "3"
+  - button "5"
+  - generic: Turn timer
+  - button "Off"
+  - button "30s"
+  - button "60s"
+  - generic: Deck difficulty
+  - button "easy"
+  - button "medium"
+  - button "hard"
+  - button "mixed"
+  - generic: Sound effects
+  - button "On"
+  - button "Off"
+  - generic: Dark mode
+  - button "Light"
+  - button "Dark"
+  - button "Start game to 21"
+- navigation:
+  - list:
+    - link "Home":
+      - /url: /
+      - text: Home
+    - link "Play":
+      - /url: /play
+      - text: Play
+    - link "Scores":
+      - /url: /scoreboard
+      - text: Scores
+    - link "Rules":
+      - /url: /how-to-play
+      - text: Rules
+    - link "Settings":
+      - /url: /settings
+      - text: Settings
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7zpptsf0w782c9v2fqtd9yt2mv?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

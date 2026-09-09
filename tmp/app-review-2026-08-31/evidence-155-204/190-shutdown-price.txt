@@ -1,0 +1,277 @@
+- complementary:
+  - generic: Business Inputs
+  - heading "Fixed costs — monthly" [level=3]
+  - text: Rent / lease
+  - generic: $
+  - spinbutton: "6000"
+  - text: Permanent salaries
+  - generic: $
+  - spinbutton: "9000"
+  - text: Insurance
+  - generic: $
+  - spinbutton: "800"
+  - text: Licenses & permits
+  - generic: $
+  - spinbutton: "250"
+  - text: Equipment depreciation
+  - generic: $
+  - spinbutton: "950"
+  - generic: Total fixed costs
+  - generic: $17,000
+  - heading "Variable costs — per cover" [level=3]
+  - text: Ingredients / COGS
+  - generic: $
+  - spinbutton: "6.5"
+  - text: Hourly labor
+  - generic: $
+  - spinbutton: "3.2"
+  - text: Packaging
+  - generic: $
+  - spinbutton: "0.8"
+  - text: Utilities
+  - generic: $
+  - spinbutton: "0.6"
+  - text: Delivery platform fee
+  - generic: $
+  - spinbutton: "1.4"
+  - generic: Base variable cost / unit
+  - generic: $12.50
+  - heading "Production & pricing" [level=3]
+  - text: Current output (covers/month)
+  - generic: "#"
+  - spinbutton: "3000"
+  - text: Average price per unit
+  - generic: $
+  - spinbutton [active]: "10"
+  - heading "Capacity & efficiency" [level=3]
+  - paragraph: Bulk buying lowers per-unit cost up to an efficient point; beyond it, overtime and congestion push costs back up.
+  - text: Efficient capacity point (lowest AVC)
+  - generic: "#"
+  - spinbutton: "3000"
+  - generic: Max efficiency gain at capacity
+  - generic: 12%
+  - slider
+- main:
+  - heading "F&B Short-Run Cost & Profit Optimization" [level=1]
+  - paragraph: Live microeconomic engine for restaurants, QSR, cafés and delivery kitchens — adjust the inputs to recalculate cost curves, break-even points and optimal output instantly.
+  - generic: "CRITICAL — Shutdown warning: price ($10.00) is below average variable cost ($11.00) at current output. Revenue does not cover variable costs."
+  - generic: DIMINISHING RETURNS — Output is above the profit-maximizing level of 1 units/month; marginal cost exceeds marginal revenue beyond that point.
+  - generic: Current profit
+  - generic: $-20,000
+  - generic: at Q = 3,000 units/mo
+  - generic: Maximum possible profit
+  - generic: $-17,001
+  - generic: at optimal Q = 1 units/mo
+  - generic: Optimal output (MC = MR)
+  - generic: "1"
+  - generic: vs current 3,000 units/mo
+  - generic: Cost-minimizing output
+  - generic: 5,018
+  - generic: min ATC = $15.07/unit
+  - tablist:
+    - tab "Cost curves"
+    - tab "Revenue vs cost"
+    - tab "Data schedule" [selected]
+  - tabpanel "Data schedule":
+    - generic: Production schedule, 0–200% of current output
+    - button "CSV":
+      - text: CSV
+    - table:
+      - rowgroup:
+        - row "Q TC AFC AVC ATC MC TR Profit":
+          - columnheader "Q"
+          - columnheader "TC"
+          - columnheader "AFC"
+          - columnheader "AVC"
+          - columnheader "ATC"
+          - columnheader "MC"
+          - columnheader "TR"
+          - columnheader "Profit"
+      - rowgroup:
+        - row "1 $17,007 $28,333.33 $12.50 $28,345.83 $12.50 $6 $-17,001":
+          - cell "1"
+          - cell "$17,007"
+          - cell "$28,333.33"
+          - cell "$12.50"
+          - cell "$28,345.83"
+          - cell "$12.50"
+          - cell "$6"
+          - cell "$-17,001"
+        - row "301 $20,677 $56.47 $12.21 $68.68 $11.94 $3,011 $-17,667":
+          - cell "301"
+          - cell "$20,677"
+          - cell "$56.47"
+          - cell "$12.21"
+          - cell "$68.68"
+          - cell "$11.94"
+          - cell "$3,011"
+          - cell "$-17,667"
+        - row "602 $24,194 $28.26 $11.96 $40.22 $11.48 $6,015 $-18,178":
+          - cell "602"
+          - cell "$24,194"
+          - cell "$28.26"
+          - cell "$11.96"
+          - cell "$40.22"
+          - cell "$11.48"
+          - cell "$6,015"
+          - cell "$-18,178"
+        - row "902 $27,584 $18.85 $11.73 $30.58 $11.10 $9,020 $-18,564":
+          - cell "902"
+          - cell "$27,584"
+          - cell "$18.85"
+          - cell "$11.73"
+          - cell "$30.58"
+          - cell "$11.10"
+          - cell "$9,020"
+          - cell "$-18,564"
+        - row "1,202 $30,875 $14.14 $11.54 $25.68 $10.82 $12,025 $-18,850":
+          - cell "1,202"
+          - cell "$30,875"
+          - cell "$14.14"
+          - cell "$11.54"
+          - cell "$25.68"
+          - cell "$10.82"
+          - cell "$12,025"
+          - cell "$-18,850"
+        - row "1,503 $34,094 $11.31 $11.37 $22.68 $10.62 $15,030 $-19,064":
+          - cell "1,503"
+          - cell "$34,094"
+          - cell "$11.31"
+          - cell "$11.37"
+          - cell "$22.68"
+          - cell "$10.62"
+          - cell "$15,030"
+          - cell "$-19,064"
+        - row "1,803 $37,268 $9.43 $11.24 $20.67 $10.52 $18,034 $-19,234":
+          - cell "1,803"
+          - cell "$37,268"
+          - cell "$9.43"
+          - cell "$11.24"
+          - cell "$20.67"
+          - cell "$10.52"
+          - cell "$18,034"
+          - cell "$-19,234"
+        - row "2,104 $40,424 $8.08 $11.13 $19.21 $10.51 $21,039 $-19,385":
+          - cell "2,104"
+          - cell "$40,424"
+          - cell "$8.08"
+          - cell "$11.13"
+          - cell "$19.21"
+          - cell "$10.51"
+          - cell "$21,039"
+          - cell "$-19,385"
+        - row "2,404 $43,590 $7.07 $11.06 $18.13 $10.58 $24,044 $-19,547":
+          - cell "2,404"
+          - cell "$43,590"
+          - cell "$7.07"
+          - cell "$11.06"
+          - cell "$18.13"
+          - cell "$10.58"
+          - cell "$24,044"
+          - cell "$-19,547"
+        - row "2,705 $46,793 $6.29 $11.01 $17.30 $10.75 $27,048 $-19,744":
+          - cell "2,705"
+          - cell "$46,793"
+          - cell "$6.29"
+          - cell "$11.01"
+          - cell "$17.30"
+          - cell "$10.75"
+          - cell "$27,048"
+          - cell "$-19,744"
+        - row "3,005 $50,058 $5.66 $11.00 $16.66 $11.01 $30,053 $-20,005":
+          - cell "3,005"
+          - cell "$50,058"
+          - cell "$5.66"
+          - cell "$11.00"
+          - cell "$16.66"
+          - cell "$11.01"
+          - cell "$30,053"
+          - cell "$-20,005"
+        - row "3,306 $53,415 $5.14 $11.02 $16.16 $11.35 $33,058 $-20,357":
+          - cell "3,306"
+          - cell "$53,415"
+          - cell "$5.14"
+          - cell "$11.02"
+          - cell "$16.16"
+          - cell "$11.35"
+          - cell "$33,058"
+          - cell "$-20,357"
+        - row "3,606 $56,890 $4.71 $11.06 $15.78 $11.79 $36,063 $-20,827":
+          - cell "3,606"
+          - cell "$56,890"
+          - cell "$4.71"
+          - cell "$11.06"
+          - cell "$15.78"
+          - cell "$11.79"
+          - cell "$36,063"
+          - cell "$-20,827"
+        - row "3,907 $60,509 $4.35 $11.14 $15.49 $12.32 $39,067 $-21,442":
+          - cell "3,907"
+          - cell "$60,509"
+          - cell "$4.35"
+          - cell "$11.14"
+          - cell "$15.49"
+          - cell "$12.32"
+          - cell "$39,067"
+          - cell "$-21,442"
+        - row "4,207 $64,301 $4.04 $11.24 $15.28 $12.94 $42,072 $-22,229":
+          - cell "4,207"
+          - cell "$64,301"
+          - cell "$4.04"
+          - cell "$11.24"
+          - cell "$15.28"
+          - cell "$12.94"
+          - cell "$42,072"
+          - cell "$-22,229"
+        - row "4,508 $68,292 $3.77 $11.38 $15.15 $13.64 $45,077 $-23,215":
+          - cell "4,508"
+          - cell "$68,292"
+          - cell "$3.77"
+          - cell "$11.38"
+          - cell "$15.15"
+          - cell "$13.64"
+          - cell "$45,077"
+          - cell "$-23,215"
+        - row "4,808 $72,509 $3.54 $11.54 $15.08 $14.44 $48,081 $-24,428":
+          - cell "4,808"
+          - cell "$72,509"
+          - cell "$3.54"
+          - cell "$11.54"
+          - cell "$15.08"
+          - cell "$14.44"
+          - cell "$48,081"
+          - cell "$-24,428"
+        - row "5,109 $76,980 $3.33 $11.74 $15.07 $15.33 $51,086 $-25,894":
+          - cell "5,109"
+          - cell "$76,980"
+          - cell "$3.33"
+          - cell "$11.74"
+          - cell "$15.07"
+          - cell "$15.33"
+          - cell "$51,086"
+          - cell "$-25,894"
+        - row "5,409 $81,732 $3.14 $11.97 $15.11 $16.31 $54,091 $-27,641":
+          - cell "5,409"
+          - cell "$81,732"
+          - cell "$3.14"
+          - cell "$11.97"
+          - cell "$15.11"
+          - cell "$16.31"
+          - cell "$54,091"
+          - cell "$-27,641"
+        - row "5,710 $86,791 $2.98 $12.22 $15.20 $17.38 $57,095 $-29,696":
+          - cell "5,710"
+          - cell "$86,791"
+          - cell "$2.98"
+          - cell "$12.22"
+          - cell "$15.20"
+          - cell "$17.38"
+          - cell "$57,095"
+          - cell "$-29,696"
+  - paragraph: "Model assumptions: price-taker (MR = price, competitive local F&B market); AVC follows a parabolic capacity-strain curve calibrated to your efficient capacity point and max efficiency gain."
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_0hdxy41hh79csr6jvt54k8sz8e?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: $-40k

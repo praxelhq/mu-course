@@ -1,0 +1,473 @@
+- complementary:
+  - link "Pin You've been meaning to go":
+    - /url: /map
+    - generic: Pin
+    - generic: You've been meaning to go
+  - navigation "Primary":
+    - link "Map":
+      - /url: /map
+      - text: Map
+    - link "Nearby":
+      - /url: /nearby
+      - text: Nearby
+    - link "Collections":
+      - /url: /collections
+      - text: Collections
+    - link "Friends" [active]:
+      - /url: /friends
+      - text: Friends
+    - link "Plans":
+      - /url: /plans
+      - text: Plans
+    - link "Visited":
+      - /url: /visited
+      - text: Visited
+  - link "P Prisha Your map":
+    - /url: /profile
+    - generic: P
+    - generic: Prisha
+    - generic: Your map
+- main:
+  - heading "Friends" [level=1]
+  - paragraph: The best recommendations come from people who know you.
+  - button "Invite a friend":
+    - text: Invite a friend
+  - generic: AD
+  - paragraph: Aditi
+  - paragraph: 16 saved for you
+  - generic: RI
+  - paragraph: Riya
+  - paragraph: 16 saved for you
+  - generic: AN
+  - paragraph: Ananya
+  - paragraph: 10 saved for you
+  - generic: KA
+  - paragraph: Kabir
+  - paragraph: 13 saved for you
+  - heading "Shared maps" [level=2]
+  - paragraph: Collections you build together.
+  - link "Girls' Night 🍸 Girls' Night 4 places · with Aditi, Riya, Ananya AD RI AN":
+    - /url: /collections/girls-night
+    - img "Girls' Night"
+    - heading "🍸 Girls' Night" [level=3]
+    - paragraph: 4 places · with Aditi, Riya, Ananya
+    - generic: AD
+    - generic: RI
+    - generic: AN
+  - link "Friday Night Plans 🎉 Friday Night Plans 6 places · with Aditi, Riya, Ananya AD RI AN":
+    - /url: /collections/friday
+    - img "Friday Night Plans"
+    - heading "🎉 Friday Night Plans" [level=3]
+    - paragraph: 6 places · with Aditi, Riya, Ananya
+    - generic: AD
+    - generic: RI
+    - generic: AN
+  - link "Worth the Drive 🚗 Worth the Drive 5 places · with Kabir KA":
+    - /url: /collections/drive
+    - img "Worth the Drive"
+    - heading "🚗 Worth the Drive" [level=3]
+    - paragraph: 5 places · with Kabir
+    - generic: KA
+  - generic: AD
+  - heading "From Aditi's map" [level=2]
+  - paragraph: 16 places on your map because of Aditi
+  - 'link "The Wine Company The Wine Company Cheese boards and a 30-label wine list. Kabir: \"Go on a Wednesday, half the crowd.\" 5 min away"':
+    - /url: /place/winecompany
+    - img "The Wine Company"
+    - heading "The Wine Company" [level=3]
+    - paragraph: "Cheese boards and a 30-label wine list. Kabir: \"Go on a Wednesday, half the crowd.\""
+    - paragraph:
+      - text: 5 min away
+  - link "Yum Yum Cha Yum Yum Cha Origami-folded sushi boat on the reel. The rock shrimp tempura looked unreal. 6 min away":
+    - /url: /place/yumyumcha
+    - img "Yum Yum Cha"
+    - heading "Yum Yum Cha" [level=3]
+    - paragraph: Origami-folded sushi boat on the reel. The rock shrimp tempura looked unreal.
+    - paragraph:
+      - text: 6 min away
+  - 'link "Greenr Café Greenr Café Riya: \"Plant-based but actually delicious. The shiitake ramen, order it.\" 15 min away"':
+    - /url: /place/greenr
+    - img "Greenr Café"
+    - heading "Greenr Café" [level=3]
+    - paragraph: "Riya: \"Plant-based but actually delicious. The shiitake ramen, order it.\""
+    - paragraph:
+      - text: 15 min away
+  - link "House of Celeste House of Celeste Chef-led modern Indian tasting menus — saved for an anniversary. 16 min away":
+    - /url: /place/celeste
+    - img "House of Celeste"
+    - heading "House of Celeste" [level=3]
+    - paragraph: Chef-led modern Indian tasting menus — saved for an anniversary.
+    - paragraph:
+      - text: 16 min away
+  - link "After Stories After Stories Three floors and a microbrewery in a glass pyramid. Sunset seats on level 3. 19 min away":
+    - /url: /place/afterstories
+    - img "After Stories"
+    - heading "After Stories" [level=3]
+    - paragraph: Three floors and a microbrewery in a glass pyramid. Sunset seats on level 3.
+    - paragraph:
+      - text: 19 min away
+  - link "Roots – Café in the Park Roots – Café in the Park Open-air café inside Leisure Valley — winter morning legendary. 21 min away":
+    - /url: /place/roots
+    - img "Roots – Café in the Park"
+    - heading "Roots – Café in the Park" [level=3]
+    - paragraph: Open-air café inside Leisure Valley — winter morning legendary.
+    - paragraph:
+      - text: 21 min away
+  - link "Caffe Tonino Caffe Tonino Wood-fired pizza in the One Horizon plaza — saved for a date night. 16 min away":
+    - /url: /place/tonino
+    - img "Caffe Tonino"
+    - heading "Caffe Tonino" [level=3]
+    - paragraph: Wood-fired pizza in the One Horizon plaza — saved for a date night.
+    - paragraph:
+      - text: 16 min away
+  - link "Comorin Comorin Regional Indian, elevated — the puchka shots and that sous-vide paneer. 17 min away":
+    - /url: /place/comorin
+    - img "Comorin"
+    - heading "Comorin" [level=3]
+    - paragraph: Regional Indian, elevated — the puchka shots and that sous-vide paneer.
+    - paragraph:
+      - text: 17 min away
+  - link "Café Amaretto Café Amaretto The tiramisu screenshot Aditi sent at midnight. Still thinking about it. 18 min away":
+    - /url: /place/amaretto
+    - img "Café Amaretto"
+    - heading "Café Amaretto" [level=3]
+    - paragraph: The tiramisu screenshot Aditi sent at midnight. Still thinking about it.
+    - paragraph:
+      - text: 18 min away
+  - link "Indian Grill Room Indian Grill Room Aditi's family-dinner pick — the buffet grill on the table. 18 min away":
+    - /url: /place/indiangrill
+    - img "Indian Grill Room"
+    - heading "Indian Grill Room" [level=3]
+    - paragraph: Aditi's family-dinner pick — the buffet grill on the table.
+    - paragraph:
+      - text: 18 min away
+  - link "Another Fine Day Another Fine Day The reading-room café reel — pancakes, paperbacks, no rush. 16 min away":
+    - /url: /place/afd
+    - img "Another Fine Day"
+    - heading "Another Fine Day" [level=3]
+    - paragraph: The reading-room café reel — pancakes, paperbacks, no rush.
+    - paragraph:
+      - text: 16 min away
+  - 'link "Di Ghent Café Di Ghent Café Aditi: \"Level 2, Cross Point. The Philippe pancakes changed me.\" 17 min away"':
+    - /url: /place/dighent
+    - img "Di Ghent Café"
+    - heading "Di Ghent Café" [level=3]
+    - paragraph: "Aditi: \"Level 2, Cross Point. The Philippe pancakes changed me.\""
+    - paragraph:
+      - text: 17 min away
+  - link "Museo Camera Museo Camera A camera museum in a leafy Chakkarpur lane — 2,000 vintage cameras. 17 min away":
+    - /url: /place/museo
+    - img "Museo Camera"
+    - heading "Museo Camera" [level=3]
+    - paragraph: A camera museum in a leafy Chakkarpur lane — 2,000 vintage cameras.
+    - paragraph:
+      - text: 17 min away
+  - 'link "Om Sweets & Snacks Om Sweets & Snacks Aditi: \"The Sector 14 legend. Chole bhature, then rasmalai. No arguments.\" 14 min away"':
+    - /url: /place/omsweets
+    - img "Om Sweets & Snacks"
+    - heading "Om Sweets & Snacks" [level=3]
+    - paragraph: "Aditi: \"The Sector 14 legend. Chole bhature, then rasmalai. No arguments.\""
+    - paragraph:
+      - text: 14 min away
+  - link "Sultanpur National Park Sultanpur National Park Winter birding — painted storks, and flamingos if you're lucky. 30 min away":
+    - /url: /place/sultanpur
+    - img "Sultanpur National Park"
+    - heading "Sultanpur National Park" [level=3]
+    - paragraph: Winter birding — painted storks, and flamingos if you're lucky.
+    - paragraph:
+      - text: 30 min away
+  - 'link "Jaipur Weekend Jaipur Weekend Riya''s itinerary: Amber Fort at sunrise, Anokhi brunch, Johari Bazaar. 240 min away"':
+    - /url: /place/jaipur
+    - img "Jaipur Weekend"
+    - heading "Jaipur Weekend" [level=3]
+    - paragraph: "Riya's itinerary: Amber Fort at sunrise, Anokhi brunch, Johari Bazaar."
+    - paragraph:
+      - text: 240 min away
+  - generic: RI
+  - heading "From Riya's map" [level=2]
+  - paragraph: 16 places on your map because of Riya
+  - link "Cyber Hub Social Cyber Hub Social The all-day breakfast reel — that LIIT tower at a work canteen. 4 min away":
+    - /url: /place/social
+    - img "Cyber Hub Social"
+    - heading "Cyber Hub Social" [level=3]
+    - paragraph: The all-day breakfast reel — that LIIT tower at a work canteen.
+    - paragraph:
+      - text: 4 min away
+  - link "The Drunken Botanist The Drunken Botanist Greenhouse bar with botanical cocktails — the smoke-bubble one from that TikTok. 6 min away":
+    - /url: /place/botanist
+    - img "The Drunken Botanist"
+    - heading "The Drunken Botanist" [level=3]
+    - paragraph: Greenhouse bar with botanical cocktails — the smoke-bubble one from that TikTok.
+    - paragraph:
+      - text: 6 min away
+  - link "iSKATE iSKATE Rooftop ice-skating inside a mall. Ananya already picked the playlist. 8 min away":
+    - /url: /place/iskate
+    - img "iSKATE"
+    - heading "iSKATE" [level=3]
+    - paragraph: Rooftop ice-skating inside a mall. Ananya already picked the playlist.
+    - paragraph:
+      - text: 8 min away
+  - link "Aravalli Biodiversity Park Aravalli Biodiversity Park Native forest inside the city — sunrise loop with peacocks for company. 12 min away":
+    - /url: /place/aravalli
+    - img "Aravalli Biodiversity Park"
+    - heading "Aravalli Biodiversity Park" [level=3]
+    - paragraph: Native forest inside the city — sunrise loop with peacocks for company.
+    - paragraph:
+      - text: 12 min away
+  - 'link "Greenr Café Greenr Café Riya: \"Plant-based but actually delicious. The shiitake ramen, order it.\" 15 min away"':
+    - /url: /place/greenr
+    - img "Greenr Café"
+    - heading "Greenr Café" [level=3]
+    - paragraph: "Riya: \"Plant-based but actually delicious. The shiitake ramen, order it.\""
+    - paragraph:
+      - text: 15 min away
+  - link "After Stories After Stories Three floors and a microbrewery in a glass pyramid. Sunset seats on level 3. 19 min away":
+    - /url: /place/afterstories
+    - img "After Stories"
+    - heading "After Stories" [level=3]
+    - paragraph: Three floors and a microbrewery in a glass pyramid. Sunset seats on level 3.
+    - paragraph:
+      - text: 19 min away
+  - link "Gung The Palace Gung The Palace Ananya's Korean barbecue pick — private booth grills, proper banchan. 18 min away":
+    - /url: /place/gung
+    - img "Gung The Palace"
+    - heading "Gung The Palace" [level=3]
+    - paragraph: Ananya's Korean barbecue pick — private booth grills, proper banchan.
+    - paragraph:
+      - text: 18 min away
+  - link "Roots – Café in the Park Roots – Café in the Park Open-air café inside Leisure Valley — winter morning legendary. 21 min away":
+    - /url: /place/roots
+    - img "Roots – Café in the Park"
+    - heading "Roots – Café in the Park" [level=3]
+    - paragraph: Open-air café inside Leisure Valley — winter morning legendary.
+    - paragraph:
+      - text: 21 min away
+  - link "Café Stay Woke Café Stay Woke Sunlit corner café with a proper brew bar — the lavender latte reel. 17 min away":
+    - /url: /place/staywoke
+    - img "Café Stay Woke"
+    - heading "Café Stay Woke" [level=3]
+    - paragraph: Sunlit corner café with a proper brew bar — the lavender latte reel.
+    - paragraph:
+      - text: 17 min away
+  - link "Indian Grill Room Indian Grill Room Aditi's family-dinner pick — the buffet grill on the table. 18 min away":
+    - /url: /place/indiangrill
+    - img "Indian Grill Room"
+    - heading "Indian Grill Room" [level=3]
+    - paragraph: Aditi's family-dinner pick — the buffet grill on the table.
+    - paragraph:
+      - text: 18 min away
+  - link "Another Fine Day Another Fine Day The reading-room café reel — pancakes, paperbacks, no rush. 16 min away":
+    - /url: /place/afd
+    - img "Another Fine Day"
+    - heading "Another Fine Day" [level=3]
+    - paragraph: The reading-room café reel — pancakes, paperbacks, no rush.
+    - paragraph:
+      - text: 16 min away
+  - link "Galleria Market Evening Stroll Galleria Market Evening Stroll Open-air market loop — bookshops, momos, fairy lights. 15 min away":
+    - /url: /place/galleriastroll
+    - img "Galleria Market Evening Stroll"
+    - heading "Galleria Market Evening Stroll" [level=3]
+    - paragraph: Open-air market loop — bookshops, momos, fairy lights.
+    - paragraph:
+      - text: 15 min away
+  - link "Good Earth City Centre Good Earth City Centre Riya's home-decor crawl — Nicobar, FabIndia, and the Good Earth flagship. 21 min away":
+    - /url: /place/goodearth
+    - img "Good Earth City Centre"
+    - heading "Good Earth City Centre" [level=3]
+    - paragraph: Riya's home-decor crawl — Nicobar, FabIndia, and the Good Earth flagship.
+    - paragraph:
+      - text: 21 min away
+  - link "Sibang Bakery Sibang Bakery Korean-style bakery — the cream cheese garlic bun screenshot. 22 min away":
+    - /url: /place/sibang
+    - img "Sibang Bakery"
+    - heading "Sibang Bakery" [level=3]
+    - paragraph: Korean-style bakery — the cream cheese garlic bun screenshot.
+    - paragraph:
+      - text: 22 min away
+  - link "Damdama Lake Damdama Lake Kayaking day trip — Kabir found a 9am slot for the group. 45 min away":
+    - /url: /place/damdama
+    - img "Damdama Lake"
+    - heading "Damdama Lake" [level=3]
+    - paragraph: Kayaking day trip — Kabir found a 9am slot for the group.
+    - paragraph:
+      - text: 45 min away
+  - 'link "Jaipur Weekend Jaipur Weekend Riya''s itinerary: Amber Fort at sunrise, Anokhi brunch, Johari Bazaar. 240 min away"':
+    - /url: /place/jaipur
+    - img "Jaipur Weekend"
+    - heading "Jaipur Weekend" [level=3]
+    - paragraph: "Riya's itinerary: Amber Fort at sunrise, Anokhi brunch, Johari Bazaar."
+    - paragraph:
+      - text: 240 min away
+  - generic: AN
+  - heading "From Ananya's map" [level=2]
+  - paragraph: 10 places on your map because of Ananya
+  - link "Soi 7 Pub & Brewery Soi 7 Pub & Brewery Kabir's pick for Thursday trivia — house wheat beer and a boxing ring bar. 5 min away":
+    - /url: /place/soi7
+    - img "Soi 7 Pub & Brewery"
+    - heading "Soi 7 Pub & Brewery" [level=3]
+    - paragraph: Kabir's pick for Thursday trivia — house wheat beer and a boxing ring bar.
+    - paragraph:
+      - text: 5 min away
+  - link "The Drunken Botanist The Drunken Botanist Greenhouse bar with botanical cocktails — the smoke-bubble one from that TikTok. 6 min away":
+    - /url: /place/botanist
+    - img "The Drunken Botanist"
+    - heading "The Drunken Botanist" [level=3]
+    - paragraph: Greenhouse bar with botanical cocktails — the smoke-bubble one from that TikTok.
+    - paragraph:
+      - text: 6 min away
+  - link "Burma Burma Burma Burma All-vegetarian Burmese — saved for the tea-leaf salad alone. 6 min away":
+    - /url: /place/burmaburma
+    - img "Burma Burma"
+    - heading "Burma Burma" [level=3]
+    - paragraph: All-vegetarian Burmese — saved for the tea-leaf salad alone.
+    - paragraph:
+      - text: 6 min away
+  - link "iSKATE iSKATE Rooftop ice-skating inside a mall. Ananya already picked the playlist. 8 min away":
+    - /url: /place/iskate
+    - img "iSKATE"
+    - heading "iSKATE" [level=3]
+    - paragraph: Rooftop ice-skating inside a mall. Ananya already picked the playlist.
+    - paragraph:
+      - text: 8 min away
+  - link "Prankster Prankster College-canteen themed microbrewery. Kabir rates the amber ale. 18 min away":
+    - /url: /place/prankster
+    - img "Prankster"
+    - heading "Prankster" [level=3]
+    - paragraph: College-canteen themed microbrewery. Kabir rates the amber ale.
+    - paragraph:
+      - text: 18 min away
+  - link "Gung The Palace Gung The Palace Ananya's Korean barbecue pick — private booth grills, proper banchan. 18 min away":
+    - /url: /place/gung
+    - img "Gung The Palace"
+    - heading "Gung The Palace" [level=3]
+    - paragraph: Ananya's Korean barbecue pick — private booth grills, proper banchan.
+    - paragraph:
+      - text: 18 min away
+  - link "Leisure Valley Park Leisure Valley Park The long green spine of Sector 29 — evening walks, food trucks on weekends. 20 min away":
+    - /url: /place/leisurevalley
+    - img "Leisure Valley Park"
+    - heading "Leisure Valley Park" [level=3]
+    - paragraph: The long green spine of Sector 29 — evening walks, food trucks on weekends.
+    - paragraph:
+      - text: 20 min away
+  - link "Mystery Rooms Mystery Rooms Escape rooms for the group chat that never decides. Kabir wants the heist one. 18 min away":
+    - /url: /place/mysteryrooms
+    - img "Mystery Rooms"
+    - heading "Mystery Rooms" [level=3]
+    - paragraph: Escape rooms for the group chat that never decides. Kabir wants the heist one.
+    - paragraph:
+      - text: 18 min away
+  - link "Kingdom of Dreams Kingdom of Dreams Culture Gully at night — the whole country in one glowing bazaar. 22 min away":
+    - /url: /place/kingdom
+    - img "Kingdom of Dreams"
+    - heading "Kingdom of Dreams" [level=3]
+    - paragraph: Culture Gully at night — the whole country in one glowing bazaar.
+    - paragraph:
+      - text: 22 min away
+  - link "SkyJumper Trampoline Park SkyJumper Trampoline Park Ananya dared the group to a dodgeball match here. Challenge accepted. 23 min away":
+    - /url: /place/skyjumper
+    - img "SkyJumper Trampoline Park"
+    - heading "SkyJumper Trampoline Park" [level=3]
+    - paragraph: Ananya dared the group to a dodgeball match here. Challenge accepted.
+    - paragraph:
+      - text: 23 min away
+  - generic: KA
+  - heading "From Kabir's map" [level=2]
+  - paragraph: 13 places on your map because of Kabir
+  - link "Soi 7 Pub & Brewery Soi 7 Pub & Brewery Kabir's pick for Thursday trivia — house wheat beer and a boxing ring bar. 5 min away":
+    - /url: /place/soi7
+    - img "Soi 7 Pub & Brewery"
+    - heading "Soi 7 Pub & Brewery" [level=3]
+    - paragraph: Kabir's pick for Thursday trivia — house wheat beer and a boxing ring bar.
+    - paragraph:
+      - text: 5 min away
+  - 'link "The Wine Company The Wine Company Cheese boards and a 30-label wine list. Kabir: \"Go on a Wednesday, half the crowd.\" 5 min away"':
+    - /url: /place/winecompany
+    - img "The Wine Company"
+    - heading "The Wine Company" [level=3]
+    - paragraph: "Cheese boards and a 30-label wine list. Kabir: \"Go on a Wednesday, half the crowd.\""
+    - paragraph:
+      - text: 5 min away
+  - link "Farzi Café Farzi Café Modern Indian theatrics — the mishti doi sphere and dal chawal arancini. 5 min away":
+    - /url: /place/farzi
+    - img "Farzi Café"
+    - heading "Farzi Café" [level=3]
+    - paragraph: Modern Indian theatrics — the mishti doi sphere and dal chawal arancini.
+    - paragraph:
+      - text: 5 min away
+  - link "Smaaash Smaaash Bowling, VR cricket and arcade nights — Kabir's team-outing pick. 7 min away":
+    - /url: /place/smaaash
+    - img "Smaaash"
+    - heading "Smaaash" [level=3]
+    - paragraph: Bowling, VR cricket and arcade nights — Kabir's team-outing pick.
+    - paragraph:
+      - text: 7 min away
+  - link "The Piano Man Gurugram The Piano Man Gurugram Live jazz under the fairy lights at 32nd Avenue. Book the mezzanine. 15 min away":
+    - /url: /place/pianoman
+    - img "The Piano Man Gurugram"
+    - heading "The Piano Man Gurugram" [level=3]
+    - paragraph: Live jazz under the fairy lights at 32nd Avenue. Book the mezzanine.
+    - paragraph:
+      - text: 15 min away
+  - link "Prankster Prankster College-canteen themed microbrewery. Kabir rates the amber ale. 18 min away":
+    - /url: /place/prankster
+    - img "Prankster"
+    - heading "Prankster" [level=3]
+    - paragraph: College-canteen themed microbrewery. Kabir rates the amber ale.
+    - paragraph:
+      - text: 18 min away
+  - link "Mystery Rooms Mystery Rooms Escape rooms for the group chat that never decides. Kabir wants the heist one. 18 min away":
+    - /url: /place/mysteryrooms
+    - img "Mystery Rooms"
+    - heading "Mystery Rooms" [level=3]
+    - paragraph: Escape rooms for the group chat that never decides. Kabir wants the heist one.
+    - paragraph:
+      - text: 18 min away
+  - link "Whisky Samba Whisky Samba 140 whiskies and a Friday jazz night. The cigar-room vibes reel. 18 min away":
+    - /url: /place/whiskysamba
+    - img "Whisky Samba"
+    - heading "Whisky Samba" [level=3]
+    - paragraph: 140 whiskies and a Friday jazz night. The cigar-room vibes reel.
+    - paragraph:
+      - text: 18 min away
+  - link "The Pasta Bowl Company The Pasta Bowl Company Handmade pasta, tiny room, huge reputation. The pesto Genovese. 17 min away":
+    - /url: /place/pastabowl
+    - img "The Pasta Bowl Company"
+    - heading "The Pasta Bowl Company" [level=3]
+    - paragraph: Handmade pasta, tiny room, huge reputation. The pesto Genovese.
+    - paragraph:
+      - text: 17 min away
+  - link "SkyJumper Trampoline Park SkyJumper Trampoline Park Ananya dared the group to a dodgeball match here. Challenge accepted. 23 min away":
+    - /url: /place/skyjumper
+    - img "SkyJumper Trampoline Park"
+    - heading "SkyJumper Trampoline Park" [level=3]
+    - paragraph: Ananya dared the group to a dodgeball match here. Challenge accepted.
+    - paragraph:
+      - text: 23 min away
+  - 'link "Hamoni: Café by the Greens Hamoni: Café by the Greens A café on a golf driving range — swing a club between sips. 25 min away"':
+    - /url: /place/hamoni
+    - 'img "Hamoni: Café by the Greens"'
+    - 'heading "Hamoni: Café by the Greens" [level=3]'
+    - paragraph: A café on a golf driving range — swing a club between sips.
+    - paragraph:
+      - text: 25 min away
+  - link "Damdama Lake Damdama Lake Kayaking day trip — Kabir found a 9am slot for the group. 45 min away":
+    - /url: /place/damdama
+    - img "Damdama Lake"
+    - heading "Damdama Lake" [level=3]
+    - paragraph: Kayaking day trip — Kabir found a 9am slot for the group.
+    - paragraph:
+      - text: 45 min away
+  - link "Neemrana Fort Day Trip Neemrana Fort Day Trip Zipline over a 15th-century fort. NH-48 the whole way. 120 min away":
+    - /url: /place/neemrana
+    - img "Neemrana Fort Day Trip"
+    - heading "Neemrana Fort Day Trip" [level=3]
+    - paragraph: Zipline over a 15th-century fort. NH-48 the whole way.
+    - paragraph:
+      - text: 120 min away
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_0hbgfhy9zy8jkvmpn3tsp8bgm1?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

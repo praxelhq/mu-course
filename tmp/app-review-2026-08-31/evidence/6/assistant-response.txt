@@ -1,0 +1,46 @@
+- banner:
+  - button "Open menu":
+  - generic: NetworkPro
+  - button "Reminders (2 due)":
+    - generic: "2"
+  - button "Capture":
+    - text: Capture
+- main:
+  - heading "Turn networking into your next opportunity." [level=1]
+  - paragraph: Ask NetworkPro what to do next.
+  - paragraph: Hi! I'm your networking copilot. Ask me who to follow up with, what to say, or which relationships need attention.
+  - paragraph: Who should I follow up with today?
+  - paragraph: "You have 2 high-priority follow-ups. Priya Shah at Amazon is the most urgent because reconnect and share updated portfolio is overdue. Then: Sarah Chen (Google)."
+  - button "Generate message"
+  - button "View connection"
+  - button "Mark complete"
+  - textbox "Ask NetworkPro":
+    - /placeholder: Who should I follow up with today?
+  - button "Send":
+  - heading "Suggested prompts" [level=2]:
+    - text: Suggested prompts
+  - list:
+    - button "Who should I follow up with today?" [active]
+    - button "Draft a message for my latest interview."
+    - button "Which connections have gone cold?"
+    - button "Who should I ask for a referral?"
+    - button "Summarize my networking activity this month."
+    - button "Which connection is most important right now?"
+    - button "What should I do with my latest LinkedIn connection?"
+- navigation "Bottom":
+  - link "Dashboard":
+    - /url: /
+    - text: Dashboard
+  - link "Network":
+    - /url: /network
+    - text: Network
+  - link "Follow-Ups":
+    - /url: /follow-ups
+    - text: Follow-Ups
+  - link "Interviews":
+    - /url: /interviews
+    - text: Interviews
+  - link "AI Assistant":
+    - /url: /assistant
+    - text: AI Assistant
+- region "Notifications alt+T"

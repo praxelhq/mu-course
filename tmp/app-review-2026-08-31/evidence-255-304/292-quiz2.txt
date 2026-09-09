@@ -1,0 +1,41 @@
+- banner:
+  - link "GlowMatch":
+    - /url: /
+    - generic: GlowMatch
+  - navigation:
+    - link "My routine":
+      - /url: /dashboard
+    - link "Personalise":
+      - /url: /personalize
+    - link "Ingredients":
+      - /url: /ingredients
+- main:
+  - generic: Step 2 of 5
+  - generic: 40%
+  - progressbar
+  - heading "What would you most like to work on?" [level=1]
+  - paragraph: Pick the one that's on your mind most — you can change this later.
+  - button "Acne & breakouts":
+    - generic: Acne & breakouts
+  - button "Pigmentation & dark spots":
+    - generic: Pigmentation & dark spots
+  - button "Dryness & dullness":
+    - generic: Dryness & dullness
+  - button "Fine lines & ageing":
+    - generic: Fine lines & ageing
+  - button "Sensitivity & redness":
+    - generic: Sensitivity & redness
+  - button "Back":
+    - text: Back
+  - button "Next" [active]:
+    - text: Next
+- contentinfo:
+  - paragraph: GlowMatch
+  - paragraph: Gentle, personalised routine building for Indian skin, budgets and weather.
+  - paragraph: GlowMatch offers general skincare guidance and is not a substitute for dermatologist advice.
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1354v31zk7938apwbx8trekyb6?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

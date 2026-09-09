@@ -1,0 +1,62 @@
+- banner:
+  - link "Open your profile":
+    - /url: /profile
+    - img "Arjun Mehta's profile"
+  - link "Journey":
+    - /url: /home
+  - navigation "Primary":
+    - link "Home":
+      - /url: /home
+    - link "Journey":
+      - /url: /journey
+    - link "NEST AI":
+      - /url: /ai
+    - link "Explore":
+      - /url: /explore
+    - link "Community":
+      - /url: /community
+  - link "Your documents and notifications":
+    - /url: /documents
+    - generic: notifications
+- main:
+  - link "Back to journey":
+    - /url: /journey
+    - generic: arrow_back
+    - text: Back to journey
+  - generic: before_you_leave
+  - heading "Confirm accommodation" [level=1]
+  - paragraph: You have not added a confirmed address yet. Most first-week tasks need one.
+  - paragraph: Based on
+  - generic: account_balance
+  - text: Official · Inland Revenue Authority of Singapore
+  - generic: group
+  - text: Community · Community reports
+  - generic: psychology
+  - text: NEST analysis · Sequenced against your arrival date
+  - link "Tenancy agreements and stamp duty":
+    - /url: https://www.iras.gov.sg/taxes/stamp-duty/for-property/renting-a-property
+    - text: Tenancy agreements and stamp duty
+    - generic: open_in_new
+  - 'link "Related area: Tiong Bahru"':
+    - /url: /explore/tiong-bahru
+    - generic: location_on
+    - generic: "Related area: Tiong Bahru"
+    - generic: chevron_right
+  - heading "Update this step" [level=2]
+  - button "Not started"
+  - button "In progress"
+  - button "Completed"
+  - link "Ask NEST AI about this":
+    - /url: /ai
+    - generic: bolt
+    - text: Ask NEST AI about this
+  - link "Ask the community":
+    - /url: /community/ask
+    - generic: group
+    - text: Ask the community
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3h107x2by691z9kgbmwkjagf85?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

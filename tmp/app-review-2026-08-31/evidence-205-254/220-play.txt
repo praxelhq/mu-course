@@ -1,0 +1,37 @@
+- main:
+  - heading "Pick Your Pen" [level=2]
+  - paragraph: Each pen flicks, slides and hits differently.
+  - 'button "Ball Pen Balanced all-rounder Speed Speed: 3 of 5 Weight Weight: 3 of 5 Control Control: 4 of 5 ✓" [pressed]':
+    - generic: Ball Pen
+    - generic: Balanced all-rounder
+    - generic: Speed
+    - 'generic "Speed: 3 of 5"'
+    - generic: Weight
+    - 'generic "Weight: 3 of 5"'
+    - generic: Control
+    - 'generic "Control: 4 of 5"'
+    - generic: ✓
+  - 'button "Gel Pen Light and slippery Speed Speed: 5 of 5 Weight Weight: 2 of 5 Control Control: 3 of 5"':
+    - generic: Gel Pen
+    - generic: Light and slippery
+    - generic: Speed
+    - 'generic "Speed: 5 of 5"'
+    - generic: Weight
+    - 'generic "Weight: 2 of 5"'
+    - generic: Control
+    - 'generic "Control: 3 of 5"'
+  - 'button "Marker Heavy hitter Speed Speed: 2 of 5 Weight Weight: 5 of 5 Control Control: 4 of 5"':
+    - generic: Marker
+    - generic: Heavy hitter
+    - generic: Speed
+    - 'generic "Speed: 2 of 5"'
+    - generic: Weight
+    - 'generic "Weight: 5 of 5"'
+    - generic: Control
+    - 'generic "Control: 4 of 5"'
+  - button "Choose Pen"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_197xhvb3ce9jnr7gwb6zfz9491?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

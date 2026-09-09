@@ -1,0 +1,36 @@
+- banner:
+  - generic: My Garage
+  - button "Vehicle Document Vault":
+  - button "Tata":
+    - text: Tata
+- main:
+  - paragraph: Cost of Ownership
+  - heading "Expenses & Analytics" [level=1]
+  - generic: Total Expenditure
+  - heading "₹1,000" [level=2]
+  - paragraph: Aggregated from 1 fuel fills and 0 service records
+  - generic: "Fuel: ₹1,000 (100%)"
+  - generic: "Service: ₹0 (0%)"
+  - generic: Fuel Spend
+  - generic: ₹1,000
+  - paragraph: 1 refill recorded
+  - generic: Maintenance Spend
+  - generic: ₹0
+  - paragraph: 0 services recorded
+  - paragraph: Expense Activity (1)
+  - heading "Petrol Refill" [level=4]
+  - generic: Edit
+  - paragraph: 2026-08-31 • 10.0 L pumped
+  - generic: ₹1,000
+  - generic: fuel
+- navigation:
+  - button "Garage":
+    - generic: Garage
+  - button "Fuel":
+    - generic: Fuel
+  - button "Service":
+    - generic: Service
+  - button "Expenses" [active]:
+    - generic: Expenses
+  - button "Docs":
+    - generic: Docs

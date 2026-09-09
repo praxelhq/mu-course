@@ -1,0 +1,138 @@
+- banner:
+  - button "Open menu":
+  - generic: NetworkPro
+  - button "Reminders (2 due)":
+    - generic: "2"
+  - button "Capture":
+    - text: Capture
+- main:
+  - heading "Interview Tracker" [level=1]
+  - paragraph: 5 processes tracked.
+  - button "Add Interview":
+    - text: Add Interview
+  - region "Interview pipeline":
+    - paragraph: Applied · 1
+    - paragraph: Accenture
+    - paragraph: Technology Analyst
+    - paragraph: Recruiter Screen · 1
+    - paragraph: Google
+    - paragraph: Data Analyst Intern
+    - paragraph: HR Interview · 0
+    - paragraph: —
+    - paragraph: Technical Interview · 0
+    - paragraph: —
+    - paragraph: Case / Assessment · 1
+    - paragraph: Deloitte
+    - paragraph: Business Analyst
+    - paragraph: Final Round · 1
+    - paragraph: Microsoft
+    - paragraph: Marketing Intern
+    - paragraph: Offer · 0
+    - paragraph: —
+  - article:
+    - heading "Microsoft" [level=2]
+    - paragraph: Marketing Intern
+    - generic: Final Round
+    - term: Interview date
+    - definition: 1 Sept 2026
+    - term: Interviewer
+    - definition: Ananya Rao
+    - term: Follow-up
+    - definition: 2 Sept 2026
+    - term: Status
+    - definition: upcoming
+    - paragraph: Final round with the marketing lead. Prepare campaign case study.
+    - combobox "Stage for Microsoft":
+      - generic: Final Round
+    - button "Add to calendar":
+    - button "Delete Microsoft interview":
+  - article:
+    - heading "Google" [level=2]
+    - paragraph: Data Analyst Intern
+    - generic: Recruiter Screen
+    - term: Interview date
+    - definition: 29 Aug 2026
+    - term: Interviewer
+    - definition: Sarah Chen
+    - term: Follow-up
+    - definition: 31 Aug 2026
+    - term: Status
+    - definition: upcoming
+    - paragraph: Screening call went well; SQL round expected next.
+    - combobox "Stage for Google":
+      - generic: Recruiter Screen
+    - button "Add to calendar":
+    - button "Delete Google interview":
+  - article:
+    - heading "Deloitte" [level=2]
+    - paragraph: Business Analyst
+    - generic: Case / Assessment
+    - term: Interview date
+    - definition: 3 Sept 2026
+    - term: Interviewer
+    - definition: Rahul Mehta
+    - term: Follow-up
+    - definition: 5 Sept 2026
+    - term: Status
+    - definition: upcoming
+    - paragraph: Case interview — practice market sizing and profitability frameworks.
+    - combobox "Stage for Deloitte":
+      - generic: Case / Assessment
+    - button "Add to calendar":
+    - button "Delete Deloitte interview":
+  - article:
+    - heading "Accenture" [level=2]
+    - paragraph: Technology Analyst
+    - generic: Applied
+    - term: Interview date
+    - definition: 7 Sept 2026
+    - term: Interviewer
+    - definition: Vikram Nair
+    - term: Follow-up
+    - definition: 8 Sept 2026
+    - term: Status
+    - definition: upcoming
+    - paragraph: Application submitted through campus portal.
+    - combobox "Stage for Accenture":
+      - generic: Applied
+    - button "Add to calendar":
+    - button "Delete Accenture interview":
+  - article:
+    - heading "Amazon" [level=2]
+    - paragraph: Product Management Intern
+    - generic: Rejected
+    - term: Interview date
+    - definition: 11 Aug 2026
+    - term: Interviewer
+    - definition: Priya Shah
+    - term: Follow-up
+    - definition: 16 Aug 2026
+    - term: Status
+    - definition: closed
+    - paragraph: Did not clear the final loop. Asked for feedback.
+    - combobox "Stage for Amazon":
+      - generic: Rejected
+    - button "Add to calendar":
+    - button "Delete Amazon interview":
+- navigation "Bottom":
+  - link "Dashboard":
+    - /url: /
+    - text: Dashboard
+  - link "Network":
+    - /url: /network
+    - text: Network
+  - link "Follow-Ups":
+    - /url: /follow-ups
+    - text: Follow-Ups
+  - link "Interviews" [active]:
+    - /url: /interviews
+    - text: Interviews
+  - link "AI Assistant":
+    - /url: /assistant
+    - text: AI Assistant
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7maa21ymw89jarb98axyt3x7za?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

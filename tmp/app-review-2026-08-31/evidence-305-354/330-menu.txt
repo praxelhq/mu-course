@@ -1,0 +1,51 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_0e0qyttfcv9zm99rrq7ntss74j?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- banner:
+  - button "Menu" [active]:
+    - generic: menu
+  - generic: Ink & Page
+  - button "History":
+    - generic: history_edu
+- dialog "Journal index":
+  - button "Close menu"
+  - navigation:
+    - heading "Journal Index" [level=2]
+    - button "Close":
+      - generic: close
+    - list:
+      - link "auto_stories Cover":
+        - /url: /
+        - generic: auto_stories
+        - generic: Cover
+      - link "book Today's Page":
+        - /url: /journal
+        - generic: book
+        - generic: Today's Page
+      - link "timer Focus Timer":
+        - /url: /timer
+        - generic: timer
+        - generic: Focus Timer
+      - link "book_2 Monthly Spread":
+        - /url: /month
+        - generic: book_2
+        - generic: Monthly Spread
+      - link "query_stats Progress":
+        - /url: /progress
+        - generic: query_stats
+        - generic: Progress
+- main:
+  - heading "Wednesday, August 14" [level=2]:
+    - text: Wednesday,
+    - text: August 14
+  - checkbox "Read 00:00"
+  - generic: Read
+  - generic: 00:00
+  - checkbox "Workout 00:00"
+  - generic: Workout
+  - generic: 00:00
+  - checkbox "Journal 00:00"
+  - generic: Journal
+  - generic: 00:00

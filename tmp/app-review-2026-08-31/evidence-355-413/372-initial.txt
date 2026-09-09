@@ -1,0 +1,67 @@
+- banner:
+  - link "MindSprint Train your memory. Climb the ranks.":
+    - /url: /
+    - generic: MindSprint
+    - generic: Train your memory. Climb the ranks.
+  - navigation:
+    - link "Home":
+      - /url: /
+      - text: Home
+    - link "Play":
+      - /url: /play
+      - text: Play
+    - link "Leagues":
+      - /url: /leagues
+      - text: Leagues
+    - link "Progress":
+      - /url: /progress
+      - text: Progress
+- main:
+  - paragraph: Level 1
+  - heading "Welcome back, You" [level=1]
+  - paragraph: Play your first sprint to start earning Brain XP.
+  - generic: "1"
+  - progressbar
+  - paragraph: 0 XP · 120 XP to level 2
+  - paragraph:
+    - text: Brain XP
+  - paragraph: "0"
+  - paragraph: 0 XP this week
+  - paragraph:
+    - text: Current streak
+  - paragraph: 0 days
+  - paragraph:
+    - text: Weekly rank
+  - paragraph: —
+  - paragraph: Join a league to rank
+  - paragraph:
+    - text: Daily Challenge
+  - heading "Pattern Memory" [level=2]
+  - paragraph: Finish today's sprint for a +40 XP bonus and keep your streak alive.
+  - link "Start challenge":
+    - /url: /play/pattern
+  - heading "Memory games" [level=2]
+  - link "View all":
+    - /url: /play
+  - heading "Sequence Recall" [level=3]
+  - paragraph: Repeat the light pattern
+  - paragraph: Best 0 · ~2 min
+  - link "Play":
+    - /url: /play/sequence
+  - heading "Pattern Memory" [level=3]
+  - paragraph: Rebuild the grid
+  - paragraph: Best 0 · ~2 min
+  - link "Play":
+    - /url: /play/pattern
+  - heading "Number Recall" [level=3]
+  - paragraph: Hold the digits
+  - paragraph: Best 0 · ~1 min
+  - link "Play":
+    - /url: /play/numbers
+- contentinfo:
+  - paragraph: MindSprint is for cognitive practice and entertainment only. It is not a medical diagnostic or treatment tool and does not provide medical advice.
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_5zq6esrnmg80n8dv6rt2615xz0?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

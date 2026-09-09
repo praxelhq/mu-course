@@ -1,0 +1,51 @@
+- banner:
+  - generic: C
+  - generic: CraveAI
+  - button "psychology Find Cravings":
+    - generic: psychology
+    - generic: Find Cravings
+  - button "Notifications":
+    - generic: notifications
+- complementary:
+  - generic: C
+  - heading "CraveAI" [level=1]
+  - paragraph: Culinary Concierge
+  - button "add New Request":
+    - generic: add
+    - generic: New Request
+  - generic: Navigation
+  - navigation:
+    - button "home Home":
+      - generic: home
+      - generic: Home
+    - button "smart_toy AI Assistant":
+      - generic: smart_toy
+      - generic: AI Assistant
+    - button "favorite Saved 4":
+      - generic: favorite
+      - generic: Saved
+      - generic: "4"
+    - button "bar_chart History" [active]:
+      - generic: bar_chart
+      - generic: History
+  - generic: psychology
+  - generic: AI Engine Online
+  - paragraph: Real-time biometric & craving alignment powered by Gemini.
+- main:
+  - heading "Craving History" [level=1]
+  - paragraph: Track your past meal choices and mood correlations over time
+  - button "Clear History"
+  - img "Miso Glazed Salmon Bowl"
+  - generic: FOCUSED
+  - generic: Today, 1:15 PM
+  - heading "Miso Glazed Salmon Bowl" [level=3]
+  - paragraph: 450 kcal • 38g protein • 15 min
+  - generic: View Details
+  - generic: arrow_forward
+  - img "Mango Salmon Poke"
+  - generic: HAPPY
+  - generic: Yesterday, 7:30 PM
+  - heading "Mango Salmon Poke" [level=3]
+  - paragraph: 450 kcal • 34g protein • 15 min
+  - generic: View Details
+  - generic: arrow_forward

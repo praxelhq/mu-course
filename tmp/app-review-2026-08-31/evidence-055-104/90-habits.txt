@@ -1,0 +1,98 @@
+- main:
+  - heading "Habits" [level=1]
+  - paragraph: Consistency beats intensity. Sorry.
+  - button:
+  - article:
+    - generic: 📚
+    - heading "Read" [level=2]
+    - paragraph: 30 minutes · 5×/week · 9:30 PM
+    - button "Mark Read done":
+    - generic: 🔥 3 day streak
+    - generic: 1/5 this week
+    - progressbar
+    - generic: Su
+    - generic: Mo
+    - generic: Tu
+    - generic: We
+    - generic: Th
+    - generic: Fr
+    - generic: Sa
+    - paragraph: Hmm. That's a slow week for Read. Want to lower the target or try again tomorrow? No shame either way.
+    - button "Delete habit":
+      - text: Delete habit
+  - article:
+    - generic: 🏋️
+    - heading "Workout" [level=2]
+    - paragraph: 45 minutes · 4×/week · 5:30 PM
+    - button "Mark Workout done":
+    - generic: 🔥 0 day streak
+    - generic: 0/4 this week
+    - progressbar
+    - generic: Su
+    - generic: Mo
+    - generic: Tu
+    - generic: We
+    - generic: Th
+    - generic: Fr
+    - generic: Sa
+    - paragraph: Hmm. That's a slow week for Workout. Want to lower the target or try again tomorrow? No shame either way.
+    - button "Delete habit":
+      - text: Delete habit
+  - article:
+    - generic: 😴
+    - heading "Sleep by 11" [level=2]
+    - paragraph: Lights out · 7×/week · 11:00 PM
+    - button "Mark Sleep by 11 done":
+    - generic: 🔥 4 day streak
+    - generic: 1/7 this week
+    - progressbar
+    - generic: Su
+    - generic: Mo
+    - generic: Tu
+    - generic: We
+    - generic: Th
+    - generic: Fr
+    - generic: Sa
+    - paragraph: Hmm. That's a slow week for Sleep by 11. Want to lower the target or try again tomorrow? No shame either way.
+    - button "Delete habit":
+      - text: Delete habit
+  - article:
+    - generic: 💧
+    - heading "Water" [level=2]
+    - paragraph: 2 litres · 7×/week · 7:10 AM
+    - button "Mark Water done":
+    - generic: 🔥 9 day streak
+    - generic: 2/7 this week
+    - progressbar
+    - generic: Su
+    - generic: Mo
+    - generic: Tu
+    - generic: We
+    - generic: Th
+    - generic: Fr
+    - generic: Sa
+    - paragraph: Hmm. That's a slow week for Water. Want to lower the target or try again tomorrow? No shame either way.
+    - button "Delete habit":
+      - text: Delete habit
+- navigation:
+  - link "Today":
+    - /url: /
+    - text: Today
+  - link "Habits":
+    - /url: /habits
+    - text: Habits
+  - link "Focus":
+    - /url: /focus
+    - text: Focus
+  - link "Progress":
+    - /url: /progress
+    - text: Progress
+  - link "Naggy":
+    - /url: /naggy
+    - text: Naggy
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1y077zn9zp920rn02hgwhd1kn0?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

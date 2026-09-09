@@ -1,0 +1,107 @@
+- complementary:
+  - img "Family avatar"
+  - generic: Our Home
+  - generic: The Miller Family
+  - navigation:
+    - link "Family Tree":
+      - /url: /
+      - generic: family_history
+      - generic: Family Tree
+    - link "Shared Album":
+      - /url: /
+      - generic: photo_library
+      - generic: Shared Album
+    - link "Scrapbook":
+      - /url: /
+      - generic: auto_stories
+      - generic: Scrapbook
+    - link "Games":
+      - /url: /games
+      - generic: extension
+      - generic: Games
+    - link "Wake Up":
+      - /url: /wake-up
+      - generic: wb_twilight
+      - generic: Wake Up
+    - link "Settings" [active]:
+      - /url: /
+      - generic: settings
+      - generic: Settings
+- banner:
+  - heading "FamCircle" [level=1]
+  - img "Your profile"
+- main:
+  - generic: light_mode
+  - heading "Good morning, Alex!" [level=2]
+  - generic: local_fire_department
+  - paragraph: Family Streak
+  - paragraph: 7 Days 🔥
+  - generic: wb_twilight
+  - heading "Morning Status" [level=3]
+  - paragraph: 3 of 4 family members are up
+  - img "Mom"
+  - img "Dad"
+  - img "Sarah"
+  - img "Mom"
+  - generic: Mom
+  - generic: ☀️ Up and about
+  - button "Good morning!":
+    - generic: waving_hand
+    - text: Good morning!
+  - img "Dad"
+  - generic: Dad
+  - generic: ☕ Coffee time
+  - button "Good morning!":
+    - generic: waving_hand
+    - text: Good morning!
+  - img "David"
+  - generic: David
+  - generic: 😴 Still snoozing
+  - img "Sarah"
+  - generic: Sarah
+  - generic: ☀️ Up and about
+  - button "Good morning!":
+    - generic: waving_hand
+    - text: Good morning!
+  - article:
+    - img "Mom on her morning walk around the lake"
+    - generic: M
+    - paragraph: Mom • 2 hours ago
+    - heading "Morning Walk" [level=3]
+    - paragraph: Mom shared a photo from her walk around the lake. The weather looks beautiful today!
+    - button "Love":
+      - generic: favorite
+      - text: Love
+    - button "Comment":
+      - generic: chat_bubble
+      - text: Comment
+  - article:
+    - generic: D
+    - paragraph: David • 4 hours ago
+    - heading "Daily Puzzle Solved!" [level=3]
+    - paragraph: David just solved the "Autumn Leaves" daily puzzle in record time.
+    - generic: 🏆
+    - link "View Time":
+      - /url: /games
+  - article:
+    - generic: auto_stories
+    - heading "Add to Scrapbook" [level=3]
+    - paragraph: You have 3 new memories to organize.
+    - button "Open Scrapbook"
+  - complementary:
+    - heading "Active Now" [level=3]
+    - img "Mom"
+    - generic: Mom
+    - generic: D
+    - generic: David
+    - generic: add
+    - generic: Invite
+    - link "Invite someone to the living room":
+      - /url: /welcome
+      - generic: door_open
+      - paragraph: Invite someone to the living room
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_5cjz41mzp480gtdbn8ray378yx?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

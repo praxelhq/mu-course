@@ -1,0 +1,57 @@
+- link:
+  - /url: https://claude.ai
+- generic: Content is user-generated and unverified.
+- radiogroup:
+  - radio [checked]:
+    - generic: 
+  - radio [checked]
+  - radio:
+    - generic: 
+  - radio
+- generic: "3"
+- button:
+  - generic: 
+- button:
+  - generic: 
+- button:
+  - text: Copy
+- link:
+  - /url: https://support.claude.com/en/articles/9487310-what-are-artifacts-and-how-do-i-use-them
+  - text: Learn about artifacts
+- iframe:
+  - alert
+  - iframe:
+    - banner:
+      - heading "REEL BREAKDOWN" [level=1]
+      - generic: shot list & storyboard generator
+    - main:
+      - generic: INT. LIBRARY - DAY. A student opens a book, notices a note, and quietly smiles.
+      - heading "Classic Coverage" [level=3]
+      - button "↻ Regenerate"
+      - generic: Wide, medium, close-up, OTS — the reliable dialogue-scene backbone.
+      - generic: Couldn't generate this one. Try Regenerate.
+      - heading "Minimalist" [level=3]
+      - button "↻ Regenerate"
+      - generic: Two or three shots only. Trusts the actors and the cut.
+      - generic: Couldn't generate this one. Try Regenerate.
+      - heading "Dynamic" [level=3]
+      - button "↻ Regenerate"
+      - generic: More inserts, movement, and unconventional angles.
+      - generic: Couldn't generate this one. Try Regenerate.
+      - heading "Working Board" [level=3]
+      - text: Browse each coverage style shot by shot above, then hit
+      - strong: + Add
+      - text: on whichever shot works best — mix and match across all three. Reorder your board by dragging within the strip below. Click a shot on the board to sketch and edit it.
+      - generic: Drag shots here to start building your board.
+      - button "← Start over with a new scene"
+      - button "Export Board as PDF"
+- dialog "You need a Claude account to use this artifact":
+  - heading "You need a Claude account to use this artifact" [level=2]
+  - paragraph: Log in to Claude to use or customize this artifact. No account? You can create one for free.
+  - button "Close" [active]:
+    - generic: 
+  - link "Log in":
+    - /url: https://claude.ai/login?returnTo=%2Fpublic%2Fartifacts%2Fbcbee26e-55c9-4780-9236-1c14b31d19b2
+    - generic: Log in
+- status
+- region "Notifications"

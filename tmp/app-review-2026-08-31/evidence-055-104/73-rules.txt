@@ -1,0 +1,46 @@
+- main:
+  - heading "How to play" [level=1]
+  - heading "Setup" [level=2]
+  - list:
+    - listitem: • 3 or more players, each with a name. Turn order is fixed and rotates.
+    - listitem: • Pick a difficulty deck (easy, medium, hard or mixed), an optional turn timer and your target score.
+  - heading "On your turn" [level=2]
+  - list:
+    - listitem: • Draw a word card. It shows a structure clue such as “starts with E” or “has a double S”.
+    - listitem: • Roll the die. It lands on purple, pink or yellow.
+    - listitem: • Purple asks a meaning question, pink asks a usage question with a blank, yellow asks a sound or spelling question.
+    - listitem: • Type your guess. Spelling is forgiving — casing and punctuation are ignored.
+  - heading "Hints" [level=2]
+  - list:
+    - listitem: • Each player gets 3 hints for the entire game (adjustable in Settings).
+    - listitem: "• Each hint reveals one more clue: word length, then the first letter, then the first three letters."
+    - listitem: • At 0 hints remaining, that player plays unaided for the rest of the game.
+  - heading "Scoring" [level=2]
+  - list:
+    - listitem: • Correct guess = 3 points, minus 1 for each hint used that turn, with a minimum of 1 point.
+    - listitem: • Incorrect guess = 0 points and the turn passes.
+    - listitem: • The instant any player reaches the target score (21 by default), the game ends and they win.
+  - link "Start a game":
+    - /url: /play
+- navigation:
+  - list:
+    - link "Home":
+      - /url: /
+      - text: Home
+    - link "Play":
+      - /url: /play
+      - text: Play
+    - link "Scores":
+      - /url: /scoreboard
+      - text: Scores
+    - link "Rules" [active]:
+      - /url: /how-to-play
+      - text: Rules
+    - link "Settings":
+      - /url: /settings
+      - text: Settings
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7zpptsf0w782c9v2fqtd9yt2mv?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

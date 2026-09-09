@@ -1,0 +1,55 @@
+- main:
+  - link "Back":
+    - /url: /
+  - heading "Reviews" [level=1]
+  - tablist:
+    - tab "Today" [selected]
+    - tab "This week"
+  - tabpanel "Today":
+    - heading "Today's report" [level=2]
+    - paragraph: Completed
+    - paragraph: "1"
+    - paragraph: Missed
+    - paragraph: "1"
+    - paragraph: Focus
+    - paragraph: 1h 30m
+    - paragraph: Habit consistency
+    - paragraph: 25%
+    - paragraph: "Best moment: 90 min on Product spec"
+    - paragraph: "Needs attention: Morning workout"
+    - img "Naggy mascot"
+    - paragraph: How did today go?
+    - textbox "Short answer. Nobody's grading you… much."
+    - button "Save review" [active]
+    - heading "Past reviews" [level=3]
+    - list:
+      - paragraph: 2026-08-31 · 1 done · 1 missed · 1h 30m
+      - paragraph: "Demo review: completed a short reading check."
+      - paragraph: 2026-08-30 · 5 done · 2 missed · 1h 15m
+      - paragraph: Decent day, evening got away from me.
+- navigation:
+  - link "Today":
+    - /url: /
+    - text: Today
+  - link "Habits":
+    - /url: /habits
+    - text: Habits
+  - link "Focus":
+    - /url: /focus
+    - text: Focus
+  - link "Progress":
+    - /url: /progress
+    - text: Progress
+  - link "Naggy":
+    - /url: /naggy
+    - text: Naggy
+- region "Notifications alt+T":
+  - list:
+    - generic: Saved.
+    - generic: "Tomorrow: move the missed thing earlier in the day, before life happens."
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1y077zn9zp920rn02hgwhd1kn0?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: M

@@ -1,0 +1,172 @@
+- banner:
+  - button "StreamVibe home":
+    - generic: StreamVibe
+  - navigation "Primary":
+    - button "Home":
+      - generic: Home
+    - button "Discover":
+      - generic: Discover
+    - button "My Library":
+      - generic: My Library
+  - button "Search":
+  - generic: SV
+- main:
+  - region "What are you in the mood for tonight?":
+    - paragraph: AI entertainment companion
+    - heading "What are you in the mood for tonight?" [level=1]
+    - paragraph: Tell us your vibe. We'll find something you'll love.
+    - generic: Describe what you want to watch or listen to
+    - textbox "Describe what you want to watch or listen to":
+      - /placeholder: Describe your perfect movie, show or playlist...
+      - text: A funny, light-hearted family movie under two hours
+    - button "Surprise Me":
+      - generic: Surprise Me
+    - button "Find My Vibe":
+      - generic: Find My Vibe
+    - group "Mood filters":
+      - button "Dark": 🌙Dark
+      - button "Mind-bending": 🧠Mind-bending
+      - button "Feel-good": 😂Feel-good
+      - button "Romantic": ❤️Romantic
+      - button "Intense": 🔥Intense
+      - button "Cozy": 🌧Cozy
+      - button "Sci-Fi": 🚀Sci-Fi
+      - button "Emotional": 🎭Emotional
+  - radiogroup "Content type":
+    - radio "Movies" [checked]:
+      - generic: Movies
+    - radio "TV Shows":
+      - generic: TV Shows
+    - radio "Playlists":
+      - generic: Playlists
+  - radiogroup "Recommendation basis":
+    - radio "By Mood Tell us how you’re feeling" [checked]:
+      - generic: By Mood
+      - generic: Tell us how you’re feeling
+    - radio "By Title Find something similar":
+      - generic: By Title
+      - generic: Find something similar
+    - radio "Based on Liked Build on your taste" [disabled]:
+      - generic: Based on Liked
+      - generic: Build on your taste
+  - paragraph: Curated for you
+  - heading "These feel very you." [level=2]
+  - article:
+    - generic: 98% Match
+    - button "Add Paddington 2 to library":
+    - button "Share Paddington 2":
+    - heading "Paddington 2" [level=3]
+    - paragraph: ⭐ PG · 2017 · 1h 43m · Movie
+    - generic: Comedy
+    - generic: Family
+    - generic: Adventure
+    - paragraph: Paddington picks up a series of odd jobs to buy a special pop-up book for his Aunt Lucy's 100th birthday, only to be framed when the book is stolen.
+    - paragraph:
+      - text: Why you'll like this
+    - paragraph: An utterly delightful and witty comedy bursting with charm, visual humor, and warmth suitable for all ages.
+    - button "Show cast & crew":
+      - text: Show cast & crew
+    - button "Watch Trailer":
+      - text: Watch Trailer
+    - button "Similar"
+    - paragraph: Where to watch
+    - link "Netflix":
+      - /url: https://www.netflix.com/search?q=Paddington%202
+      - generic: Netflix
+    - link "Prime":
+      - /url: https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Paddington%202
+      - generic: Prime
+    - link "Hotstar":
+      - /url: https://www.hotstar.com/in/search?q=Paddington%202
+      - generic: Hotstar
+  - article:
+    - generic: 95% Match
+    - button "Add The Lego Movie to library":
+    - button "Share The Lego Movie":
+    - heading "The Lego Movie" [level=3]
+    - paragraph: ⭐ PG · 2014 · 1h 40m · Movie
+    - generic: Animation
+    - generic: Comedy
+    - generic: Family
+    - generic: Action
+    - paragraph: An ordinary LEGO construction mini-figure mistakenly identified as the prophesied 'Special' joins a quest to stop an evil tyrant from gluing the universe together.
+    - paragraph:
+      - text: Why you'll like this
+    - paragraph: Fast-paced, joke-a-minute humor and an imaginative, heartwarming story provide endless entertainment in well under two hours.
+    - button "Show cast & crew":
+      - text: Show cast & crew
+    - button "Watch Trailer":
+      - text: Watch Trailer
+    - button "Similar"
+    - paragraph: Where to watch
+    - link "Netflix":
+      - /url: https://www.netflix.com/search?q=The%20Lego%20Movie
+      - generic: Netflix
+    - link "Prime":
+      - /url: https://www.primevideo.com/search/ref=atv_nb_sr?phrase=The%20Lego%20Movie
+      - generic: Prime
+    - link "Hotstar":
+      - /url: https://www.hotstar.com/in/search?q=The%20Lego%20Movie
+      - generic: Hotstar
+  - article:
+    - generic: 93% Match
+    - button "Add Monsters, Inc. to library":
+    - button "Share Monsters, Inc.":
+    - heading "Monsters, Inc." [level=3]
+    - paragraph: ⭐ G · 2001 · 1h 32m · Movie
+    - generic: Animation
+    - generic: Comedy
+    - generic: Family
+    - generic: Fantasy
+    - paragraph: Two top monster scarers must secretly return a tiny, fearless human girl after she accidentally crosses over into the monster world.
+    - paragraph:
+      - text: Why you'll like this
+    - paragraph: A brisk, breezy classic with unmatched buddy-comedy chemistry and plenty of laugh-out-loud physical comedy for the whole family.
+    - button "Show cast & crew":
+      - text: Show cast & crew
+    - button "Watch Trailer":
+      - text: Watch Trailer
+    - button "Similar"
+    - paragraph: Where to watch
+    - link "Netflix":
+      - /url: https://www.netflix.com/search?q=Monsters%2C%20Inc.
+      - generic: Netflix
+    - link "Prime":
+      - /url: https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Monsters%2C%20Inc.
+      - generic: Prime
+    - link "Hotstar":
+      - /url: https://www.hotstar.com/in/search?q=Monsters%2C%20Inc.
+      - generic: Hotstar
+  - article:
+    - generic: 89% Match
+    - button "Add Despicable Me to library":
+    - button "Share Despicable Me":
+    - heading "Despicable Me" [level=3]
+    - paragraph: ⭐ PG · 2010 · 1h 35m · Movie
+    - generic: Animation
+    - generic: Comedy
+    - generic: Family
+    - paragraph: A supervillain adopts three orphan girls as part of a plot to steal the Moon, but their growing bond unexpectedly changes his life.
+    - paragraph:
+      - text: Why you'll like this
+    - paragraph: A hilarious and sweet story packed with slapstick energy and heartwarming moments that easily fits a relaxing family night.
+    - button "Show cast & crew":
+      - text: Show cast & crew
+    - button "Watch Trailer":
+      - text: Watch Trailer
+    - button "Similar"
+    - paragraph: Where to watch
+    - link "Netflix":
+      - /url: https://www.netflix.com/search?q=Despicable%20Me
+      - generic: Netflix
+    - link "Prime":
+      - /url: https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Despicable%20Me
+      - generic: Prime
+    - link "Hotstar":
+      - /url: https://www.hotstar.com/in/search?q=Despicable%20Me
+      - generic: Hotstar
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7cmjn513my9f2tfgz1e0c0v50v?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

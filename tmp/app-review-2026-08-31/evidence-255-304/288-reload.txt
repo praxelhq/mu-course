@@ -1,0 +1,76 @@
+- complementary:
+  - link "HireLens":
+    - /url: /
+    - generic: HireLens
+  - navigation:
+    - link "Job Setup":
+      - /url: /
+      - text: Job Setup
+    - link "Candidates":
+      - /url: /candidates
+      - text: Candidates
+    - link "Shortlist":
+      - /url: /shortlist
+      - text: Shortlist
+  - paragraph: AI hiring intelligence. Signals are advisory — always review candidates yourself.
+- main:
+  - heading "Shortlist" [level=1]
+  - paragraph: Ranked by overall score. Expand a row for full signal detail.
+  - button "Print":
+    - text: Print
+  - button "All"
+  - button "High Match"
+  - button "Worth Reviewing"
+  - button "Weak Fit"
+  - table:
+    - rowgroup:
+      - row "Rank Candidate Overall Relevance Truth Verdict":
+        - columnheader "Rank"
+        - columnheader "Candidate"
+        - columnheader "Overall"
+        - columnheader "Relevance"
+        - columnheader "Truth"
+        - columnheader "Verdict"
+        - columnheader
+    - rowgroup:
+      - row "1 Priya Raghavan priya.raghavan@example.com 91 94 88 High Match":
+        - cell "1"
+        - cell "Priya Raghavan priya.raghavan@example.com":
+          - generic: Priya Raghavan
+          - generic: priya.raghavan@example.com
+        - cell "91":
+          - generic: "91"
+        - cell "94"
+        - cell "88"
+        - cell "High Match":
+          - generic: High Match
+        - cell:
+      - row "2 Daniel Okafor daniel.okafor@example.com 68 70 72 Worth Reviewing":
+        - cell "2"
+        - cell "Daniel Okafor daniel.okafor@example.com":
+          - generic: Daniel Okafor
+          - generic: daniel.okafor@example.com
+        - cell "68":
+          - generic: "68"
+        - cell "70"
+        - cell "72"
+        - cell "Worth Reviewing":
+          - generic: Worth Reviewing
+        - cell:
+      - row "3 Marcus Feld marcus.feld@example.com 44 52 32 Weak Fit":
+        - cell "3"
+        - cell "Marcus Feld marcus.feld@example.com":
+          - generic: Marcus Feld
+          - generic: marcus.feld@example.com
+        - cell "44":
+          - generic: "44"
+        - cell "52"
+        - cell "32"
+        - cell "Weak Fit":
+          - generic: Weak Fit
+        - cell:
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_34n3kgmmww81av83m7d6s7rbge?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

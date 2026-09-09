@@ -1,0 +1,55 @@
+- banner:
+  - link "restaurant_menu CampusCravings":
+    - /url: /
+    - generic: restaurant_menu
+    - generic: CampusCravings
+  - navigation:
+    - link "Home":
+      - /url: /
+    - link "Cravings":
+      - /url: /cravings
+    - link "Sell":
+      - /url: /sell
+    - link "My Food":
+      - /url: /my-food
+    - link "Me":
+      - /url: /me
+  - link "notifications":
+    - /url: /notifications
+    - generic: notifications
+  - link "Sign in":
+    - /url: /auth
+- generic: ramen_dining
+- generic: icecream
+- generic: bakery_dining
+- heading "Homemade food, sold by students, right on campus." [level=1]
+- paragraph: Reserve a fresh meal in under a minute — or start selling your own cooking today.
+- link "Get started":
+  - /url: /auth
+- link "I already have an account":
+  - /url: /auth?mode=signin
+- main:
+  - generic: search
+  - textbox "search":
+    - /placeholder: Search biryani, brownies, sellers…
+  - button "All"
+  - button "Healthy"
+  - button "High Protein"
+  - button "Meals"
+  - button "Snacks"
+  - button "Desserts"
+  - button "Drinks"
+  - button "Homemade"
+  - button "Vegetarian"
+  - combobox:
+    - option "Recently posted" [selected]
+    - option "Highest rated"
+    - 'option "Price: low to high"'
+    - 'option "Price: high to low"'
+  - paragraph: Loading today's menu…
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3pxymq6ahv966rbbv5nvzkzp3k?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

@@ -1,0 +1,33 @@
+- banner:
+  - link "Open your profile":
+    - /url: /profile
+    - img "Arjun Mehta's profile"
+  - link "Documents":
+    - /url: /home
+  - navigation "Primary":
+    - link "Home":
+      - /url: /home
+    - link "Journey":
+      - /url: /journey
+    - link "NEST AI":
+      - /url: /ai
+    - link "Explore":
+      - /url: /explore
+    - link "Community":
+      - /url: /community
+  - link "Your documents and notifications":
+    - /url: /documents
+    - generic: notifications
+- main:
+  - heading "Your documents" [level=1]
+  - paragraph: Private to you. Nothing here is shared with the community.
+  - paragraph:
+    - link "Create an account":
+      - /url: /signup
+    - text: to store visas, contracts and arrival paperwork securely.
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3h107x2by691z9kgbmwkjagf85?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

@@ -1,0 +1,72 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_12yd8rqm8c8env1a89pyjgss4d?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- banner:
+  - button "Go back to previous page":
+    - generic: arrow_back
+    - generic: Back
+  - link "Corporate Chaos":
+    - /url: /
+  - button "SFX ON" [pressed]:
+    - generic: volume_up
+    - generic: SFX ON
+  - button "Report to HR":
+    - generic: campaign
+    - generic: Report to HR
+  - button "Panic!":
+    - generic: warning
+    - generic: Panic!
+  - button "View your employee profile":
+    - img "Employee badge photo"
+    - text: Employee
+    - generic: visibility
+    - generic: Level 1 Intern
+- main:
+  - generic: "Step 1: Employee Onboarding"
+  - heading "Ready to survive corporate life?" [level=1]
+  - paragraph: Before entering Chaos Corp, register your official Corporate Badge ID below.
+  - text: Employee Full Name
+  - textbox "Employee Full Name":
+    - /placeholder: Enter your name...
+  - generic: Corporate Designation (Choose one that describes you the best)
+  - combobox "Corporate Designation (Choose one that describes you the best)":
+    - option "Level 1 Intern" [selected]
+    - option "Chief Coffee Officer"
+    - option "Senior Slide Deck Artisan"
+    - option "Synergy Architect"
+    - option "Unpaid Overtime Champion"
+    - option "Spreadsheet Ninja"
+    - option "Director of Quick Syncs"
+  - generic: expand_more
+  - paragraph: Select Badge Photo (6 options)
+  - button "Burnout Veteran Burnout Veteran" [pressed]:
+    - img "Burnout Veteran"
+    - generic: Burnout Veteran
+  - button "Server Room Sentinel Server Room Sentinel":
+    - img "Server Room Sentinel"
+    - generic: Server Room Sentinel
+  - button "Night Shift Coder Night Shift Coder":
+    - img "Night Shift Coder"
+    - generic: Night Shift Coder
+  - button "Coffee-Fueled Associate Coffee-Fueled Associate":
+    - img "Coffee-Fueled Associate"
+    - generic: Coffee-Fueled Associate
+  - button "Deadline Survivor Deadline Survivor":
+    - img "Deadline Survivor"
+    - generic: Deadline Survivor
+  - button "Jungle Cubicle Chimp Jungle Cubicle Chimp":
+    - img "Jungle Cubicle Chimp"
+    - generic: Jungle Cubicle Chimp
+  - generic: Live Preview
+  - img "Selected badge photo"
+  - heading "Employee" [level=2]
+  - paragraph: Level 1 Intern
+  - generic: "Security Clearance:"
+  - generic: Level 1 Intern
+  - generic: "Survival Kit:"
+  - generic: Essentials Ready
+  - button "Welcome to Chaos Corp":
+    - text: Welcome to Chaos Corp
+    - generic: arrow_forward

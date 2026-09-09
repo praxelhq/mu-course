@@ -1,0 +1,76 @@
+- alert
+- complementary:
+  - paragraph: MailClean AI
+  - paragraph: High Mountain Property
+  - button "NA nancy (Owner) nancy@highmountainproperty.com":
+    - generic: NA
+    - paragraph: nancy (Owner)
+    - paragraph: nancy@highmountainproperty.com
+  - navigation:
+    - link "Dashboard":
+      - /url: /dashboard
+      - text: Dashboard
+    - link "Analytics":
+      - /url: /dashboard/analytics
+      - text: Analytics
+    - link "Categories":
+      - /url: /dashboard/categories
+      - text: Categories
+    - link "Email Explorer":
+      - /url: /dashboard/explorer
+      - text: Email Explorer
+    - link "Cleanup Center":
+      - /url: /dashboard/cleanup
+      - text: Cleanup Center
+    - link "Rules & Automation":
+      - /url: /dashboard/rules
+      - text: Rules & Automation
+    - link "Activity Log" [active]:
+      - /url: /dashboard/activity
+      - text: Activity Log
+    - link "Reports":
+      - /url: /dashboard/reports
+      - text: Reports
+    - link "Accounts":
+      - /url: /dashboard/accounts
+      - text: Accounts
+    - link "Settings":
+      - /url: /dashboard/settings
+      - text: Settings
+  - generic: na
+  - paragraph: nancy
+  - paragraph: nancy@highmountainproperty.com
+- banner:
+  - textbox "Search emails, senders, rules…"
+  - button "Notifications":
+    - generic: Notifications
+- main:
+  - heading "Activity Log" [level=1]
+  - paragraph: A complete audit trail of everything MailClean AI has done.
+  - heading "Recent activity" [level=2]
+  - list:
+    - paragraph: Cleanup completed
+    - generic: cleanup
+    - generic: 01:42 AM
+    - paragraph: 18,421 emails affected
+    - paragraph: Rule executed
+    - generic: rule
+    - generic: 01:40 AM
+    - paragraph: "\"Promotional emails > 1 year\""
+    - paragraph: AI classification completed
+    - generic: ai
+    - generic: 01:21 AM
+    - paragraph: 12,421 emails classified
+    - paragraph: Newsletter archive rule ran
+    - generic: rule
+    - generic: Yesterday
+    - paragraph: 2,180 emails archived
+    - paragraph: Account connected
+    - generic: account
+    - generic: Yesterday
+    - paragraph: admin@highmountainproperty.com
+    - paragraph: Inbox analysis completed
+    - generic: ai
+    - generic: 2 days ago
+    - paragraph: 100,000 emails analyzed
+- generic: "24.2"

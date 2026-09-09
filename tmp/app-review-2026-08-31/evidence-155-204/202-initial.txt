@@ -1,0 +1,22 @@
+- main:
+  - heading "Welcome back" [level=1]
+  - paragraph: Log in to continue to Nurture.
+  - button "email"
+  - button "phone" [disabled]
+  - generic: mail
+  - textbox "Email":
+    - /placeholder: " "
+  - generic: Email
+  - generic: lock
+  - textbox "Password":
+    - /placeholder: " "
+  - generic: Password
+  - button "Log in"
+  - generic: or
+  - button "account_circle Google sign-in coming soon" [disabled]:
+    - generic: account_circle
+    - text: Google sign-in coming soon
+  - paragraph:
+    - text: New to Nurture?
+    - link "Create an account":
+      - /url: /signup

@@ -1,0 +1,339 @@
+- banner:
+  - generic: A
+  - generic: AgencyOS
+  - button "Founder":
+    - generic: Founder
+  - button "Search clients, tasks, files... ⌘K":
+    - generic: Search clients, tasks, files...
+    - generic: ⌘K
+  - button "2":
+    - generic: "2"
+  - generic: F
+- generic: Agency Workflow
+- button "1 Lead":
+  - generic: "1"
+  - generic: Lead
+- button "2 Proposal":
+  - generic: "2"
+  - generic: Proposal
+- button "3 Client Onboarding":
+  - generic: "3"
+  - generic: Client Onboarding
+- button "4 Brand Details":
+  - generic: "4"
+  - generic: Brand Details
+- button "5 Brand Brief":
+  - generic: "5"
+  - generic: Brand Brief
+- button "6 Upload Brand Assets":
+  - generic: "6"
+  - generic: Upload Brand Assets
+- button "7 Generate Monthly Content Calendar":
+  - generic: "7"
+  - generic: Generate Monthly Content Calendar
+- button "8 Assign Tasks":
+  - generic: "8"
+  - generic: Assign Tasks
+- button "9 Plan Shoot":
+  - generic: "9"
+  - generic: Plan Shoot
+- button "10 Conduct Shoot":
+  - generic: "10"
+  - generic: Conduct Shoot
+- button "11 Upload Raw Files":
+  - generic: "11"
+  - generic: Upload Raw Files
+- button "12 Video Editing":
+  - generic: "12"
+  - generic: Video Editing
+- button "13 Graphic Design":
+  - generic: "13"
+  - generic: Graphic Design
+- button "14 Internal Review":
+  - generic: "14"
+  - generic: Internal Review
+- button "15 Client Approval":
+  - generic: "15"
+  - generic: Client Approval
+- button "16 Revision":
+  - generic: "16"
+  - generic: Revision
+- button "17 Schedule Content":
+  - generic: "17"
+  - generic: Schedule Content
+- button "18 Publish":
+  - generic: "18"
+  - generic: Publish
+- button "19 View Analytics":
+  - generic: "19"
+  - generic: View Analytics
+- button "20 Generate Monthly Report":
+  - generic: "20"
+  - generic: Generate Monthly Report
+- button "21 Send Invoice":
+  - generic: "21"
+  - generic: Send Invoice
+- button "22 Renew Contract":
+  - generic: "22"
+  - generic: Renew Contract
+- complementary:
+  - generic: Agency Modules
+  - navigation:
+    - button "Dashboard":
+      - generic: Dashboard
+    - button "CRM":
+      - generic: CRM
+    - button "Clients":
+      - generic: Clients
+    - button "Workflow" [active]:
+      - generic: Workflow
+    - button "Calendar":
+      - generic: Calendar
+    - button "Shoots":
+      - generic: Shoots
+    - button "Tasks":
+      - generic: Tasks
+    - button "Team":
+      - generic: Team
+    - button "Google Suite":
+      - generic: Google Suite
+    - button "Reports":
+      - generic: Reports
+    - button "Finance":
+      - generic: Finance
+    - button "Files":
+      - generic: Files
+    - button "AI Studio Pro":
+      - generic: AI Studio
+      - generic: Pro
+    - button "Alerts":
+      - generic: Alerts
+    - button "Settings":
+      - generic: Settings
+- main:
+  - heading "Content Production Pipeline" [level=1]:
+    - text: Content Production Pipeline
+  - paragraph: Track video short & creative deliverables through all 14 production workflow stages
+  - button "Kanban":
+    - text: Kanban
+  - button "Monthly Calendar":
+    - text: Monthly Calendar
+  - button "New Deliverable":
+    - text: New Deliverable
+  - textbox "Search deliverables, clients, or creative team..."
+  - combobox:
+    - option "All Client Workspaces" [selected]
+    - option "Aura Fitness"
+    - option "NeoFin App"
+    - option "Horizon Homes"
+  - generic: Idea
+  - generic: "0"
+  - generic: No deliverables
+  - generic: Research
+  - generic: "1"
+  - generic: Ad Campaign
+  - generic: Due 2026-11-05
+  - heading "Why Traditional Banks Are Losing Gen Z" [level=4]
+  - text: Video Editor Drive
+  - link "Open":
+    - /url: https://drive.google.com/drive/folders/1NeoFin-GenZ-AdCampaign-Inspiration
+    - text: Open
+  - generic: NeoFin App
+  - generic: Alex Rivera
+  - combobox:
+    - 'option "Move to: Idea"'
+    - 'option "Move to: Research" [selected]'
+    - 'option "Move to: Script"'
+    - 'option "Move to: Shoot Scheduled"'
+    - 'option "Move to: Shoot Completed"'
+    - 'option "Move to: Editing"'
+    - 'option "Move to: Graphics"'
+    - 'option "Move to: Internal Review"'
+    - 'option "Move to: Client Review"'
+    - 'option "Move to: Revision"'
+    - 'option "Move to: Approved"'
+    - 'option "Move to: Scheduled"'
+    - 'option "Move to: Published"'
+    - 'option "Move to: Analytics"'
+  - generic: Script
+  - generic: "1"
+  - generic: Instagram Reel
+  - generic: Due 2026-10-28
+  - heading "5 Warm-up Mistakes Ruining Your Squat Depth" [level=4]
+  - paragraph: "\"Stop squatting like this if you care about your knees!\""
+  - text: Video Editor Drive
+  - link "Open":
+    - /url: https://drive.google.com/drive/folders/1AuraFitness-RawFootage-SquatWarmup
+    - text: Open
+  - paragraph: "Note: Cut on beat at 120BPM. Use high contrast color grade and pop sound effects on key text callouts."
+  - generic: Aura Fitness
+  - generic: Alex Rivera
+  - combobox:
+    - 'option "Move to: Idea"'
+    - 'option "Move to: Research"'
+    - 'option "Move to: Script" [selected]'
+    - 'option "Move to: Shoot Scheduled"'
+    - 'option "Move to: Shoot Completed"'
+    - 'option "Move to: Editing"'
+    - 'option "Move to: Graphics"'
+    - 'option "Move to: Internal Review"'
+    - 'option "Move to: Client Review"'
+    - 'option "Move to: Revision"'
+    - 'option "Move to: Approved"'
+    - 'option "Move to: Scheduled"'
+    - 'option "Move to: Published"'
+    - 'option "Move to: Analytics"'
+  - generic: Shoot Scheduled
+  - generic: "1"
+  - generic: Instagram Reel
+  - generic: Due 2026-11-01
+  - 'heading "HIIT vs Strength: What Burns More Calories?" [level=4]'
+  - text: Video Editor Drive
+  - link "Open":
+    - /url: https://drive.google.com/drive/folders/1AuraFitness-HIITvsStrength-ShootAssets
+    - text: Open
+  - paragraph: "Note: Raw footage will be uploaded directly after Nov 1 shoot."
+  - generic: Aura Fitness
+  - generic: Jake Miller
+  - combobox:
+    - 'option "Move to: Idea"'
+    - 'option "Move to: Research"'
+    - 'option "Move to: Script"'
+    - 'option "Move to: Shoot Scheduled" [selected]'
+    - 'option "Move to: Shoot Completed"'
+    - 'option "Move to: Editing"'
+    - 'option "Move to: Graphics"'
+    - 'option "Move to: Internal Review"'
+    - 'option "Move to: Client Review"'
+    - 'option "Move to: Revision"'
+    - 'option "Move to: Approved"'
+    - 'option "Move to: Scheduled"'
+    - 'option "Move to: Published"'
+    - 'option "Move to: Analytics"'
+  - generic: Shoot Completed
+  - generic: "0"
+  - generic: No deliverables
+  - generic: Editing
+  - generic: "1"
+  - generic: Instagram Reel
+  - generic: Due 2026-10-29
+  - heading "Member Transformation - 90 Days Case Study" [level=4]
+  - paragraph: "\"Meet Sarah: How she dropped 12% body fat while gaining strength.\""
+  - text: Video Editor Drive
+  - link "Open":
+    - /url: https://drive.google.com/drive/folders/1AuraFitness-MemberTransformation-Sarah90Days
+    - text: Open
+  - paragraph: "Note: Raw interviews are in subfolder /Interviews. B-roll clips in /GymBRoll. Add emotional background track."
+  - generic: Aura Fitness
+  - generic: David Chen
+  - combobox:
+    - 'option "Move to: Idea"'
+    - 'option "Move to: Research"'
+    - 'option "Move to: Script"'
+    - 'option "Move to: Shoot Scheduled"'
+    - 'option "Move to: Shoot Completed"'
+    - 'option "Move to: Editing" [selected]'
+    - 'option "Move to: Graphics"'
+    - 'option "Move to: Internal Review"'
+    - 'option "Move to: Client Review"'
+    - 'option "Move to: Revision"'
+    - 'option "Move to: Approved"'
+    - 'option "Move to: Scheduled"'
+    - 'option "Move to: Published"'
+    - 'option "Move to: Analytics"'
+  - generic: Graphics
+  - generic: "0"
+  - generic: No deliverables
+  - generic: Internal Review
+  - generic: "0"
+  - generic: No deliverables
+  - generic: Client Review
+  - generic: "1"
+  - generic: TikTok
+  - generic: Due 2026-10-26
+  - heading "Automated Portfolio Rebalancing in 30 Secs" [level=4]
+  - paragraph: "\"How top 1% investors manage risk automatically.\""
+  - text: Video Editor Drive
+  - link "Open":
+    - /url: https://drive.google.com/drive/folders/1NeoFin-TikTok-PortfolioRebalance-Drafts
+    - text: Open
+  - paragraph: "Note: Highlight screen recording of the app at 0:12. Blur user account balance number for privacy."
+  - generic: NeoFin App
+  - generic: Sarah Jenkins
+  - combobox:
+    - 'option "Move to: Idea"'
+    - 'option "Move to: Research"'
+    - 'option "Move to: Script"'
+    - 'option "Move to: Shoot Scheduled"'
+    - 'option "Move to: Shoot Completed"'
+    - 'option "Move to: Editing"'
+    - 'option "Move to: Graphics"'
+    - 'option "Move to: Internal Review"'
+    - 'option "Move to: Client Review" [selected]'
+    - 'option "Move to: Revision"'
+    - 'option "Move to: Approved"'
+    - 'option "Move to: Scheduled"'
+    - 'option "Move to: Published"'
+    - 'option "Move to: Analytics"'
+  - generic: Revision
+  - generic: "0"
+  - generic: No deliverables
+  - generic: Approved
+  - generic: "1"
+  - generic: LinkedIn Carousel
+  - generic: Due 2026-10-30
+  - heading "5 Micro-Habits for Financial Freedom in 2026" [level=4]
+  - text: Video Editor Drive
+  - link "Open":
+    - /url: https://drive.google.com/drive/folders/1NeoFin-LinkedIn-Carousel-FinancialFreedom
+    - text: Open
+  - paragraph: "Note: Export high-res PDF for LinkedIn and PNG slides for IG carousel post."
+  - generic: NeoFin App
+  - generic: Elena Rostova
+  - combobox:
+    - 'option "Move to: Idea"'
+    - 'option "Move to: Research"'
+    - 'option "Move to: Script"'
+    - 'option "Move to: Shoot Scheduled"'
+    - 'option "Move to: Shoot Completed"'
+    - 'option "Move to: Editing"'
+    - 'option "Move to: Graphics"'
+    - 'option "Move to: Internal Review"'
+    - 'option "Move to: Client Review"'
+    - 'option "Move to: Revision"'
+    - 'option "Move to: Approved" [selected]'
+    - 'option "Move to: Scheduled"'
+    - 'option "Move to: Published"'
+    - 'option "Move to: Analytics"'
+  - generic: Scheduled
+  - generic: "0"
+  - generic: No deliverables
+  - generic: Published
+  - generic: "1"
+  - generic: YouTube Shorts
+  - generic: Due 2026-10-20
+  - heading "High Protein Post-Workout Smoothie Recipe" [level=4]
+  - text: Video Editor Drive
+  - link "Open":
+    - /url: https://drive.google.com/drive/folders/1AuraFitness-SmoothieRecipe-FinalVideo
+    - text: Open
+  - generic: Aura Fitness
+  - generic: Marcus Vance
+  - combobox:
+    - 'option "Move to: Idea"'
+    - 'option "Move to: Research"'
+    - 'option "Move to: Script"'
+    - 'option "Move to: Shoot Scheduled"'
+    - 'option "Move to: Shoot Completed"'
+    - 'option "Move to: Editing"'
+    - 'option "Move to: Graphics"'
+    - 'option "Move to: Internal Review"'
+    - 'option "Move to: Client Review"'
+    - 'option "Move to: Revision"'
+    - 'option "Move to: Approved"'
+    - 'option "Move to: Scheduled"'
+    - 'option "Move to: Published" [selected]'
+    - 'option "Move to: Analytics"'
+  - generic: Analytics
+  - generic: "0"
+  - generic: No deliverables

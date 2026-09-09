@@ -1,0 +1,248 @@
+- navigation:
+  - generic: inventory_2
+  - heading "StockFlow" [level=1]
+  - generic: ERP
+  - paragraph: Sports Retail Operations
+  - paragraph: OVERVIEW
+  - list:
+    - button "dashboard Dashboard 6":
+      - generic: dashboard
+      - generic: Dashboard
+      - generic: "6"
+    - button "inventory_2 Products":
+      - generic: inventory_2
+      - generic: Products
+    - button "swap_horiz Inventory Master":
+      - generic: swap_horiz
+      - generic: Inventory Master
+  - paragraph: INTELLIGENCE
+  - list:
+    - button "auto_awesome AI Demand Forecast AI":
+      - generic: auto_awesome
+      - generic: AI Demand Forecast
+      - generic: AI
+    - button "analytics Reports & Analytics":
+      - generic: analytics
+      - generic: Reports & Analytics
+  - paragraph: OPERATIONS
+  - list:
+    - button "qr_code_2 Serial Numbers":
+      - generic: qr_code_2
+      - generic: Serial Numbers
+    - button "category Categories":
+      - generic: category
+      - generic: Categories
+    - button "local_shipping Suppliers":
+      - generic: local_shipping
+      - generic: Suppliers
+  - paragraph: PROCUREMENT & PAYABLES
+  - list:
+    - button "post_add Purchase Orders 2":
+      - generic: post_add
+      - generic: Purchase Orders
+      - generic: "2"
+    - button "receipt_long Supplier Invoices 3":
+      - generic: receipt_long
+      - generic: Supplier Invoices
+      - generic: "3"
+    - button "payments Payment Ledger":
+      - generic: payments
+      - generic: Payment Ledger
+  - paragraph: SYSTEM
+  - list:
+    - button "manage_accounts User Management":
+      - generic: manage_accounts
+      - generic: User Management
+    - button "history Audit Trail Logs":
+      - generic: history
+      - generic: Audit Trail Logs
+  - button "settings Settings":
+    - generic: settings
+    - generic: Settings
+  - button "logout Sign Out":
+    - generic: logout
+    - generic: Sign Out
+- banner:
+  - generic: search
+  - textbox "Search products, SKUs, suppliers, orders..."
+  - generic: ⌘K
+  - generic: ₹ INR
+  - text: "Role:"
+  - strong: Admin
+  - button "notifications":
+    - generic: notifications
+  - button "help_outline":
+    - generic: help_outline
+  - button "Yadeshwar Admin expand_more":
+    - generic: Yadeshwar
+    - generic: Admin
+    - generic: expand_more
+- main:
+  - heading "Products Catalog" [level=2]
+  - paragraph: Manage sports inventory SKUs, wholesale costs, retail pricing, and supplier associations.
+  - button "add Add Product":
+    - generic: add
+    - text: Add Product
+  - generic: search
+  - textbox "Search products by SKU, name, supplier..."
+  - combobox:
+    - option "All Categories" [selected]
+    - option "Cricket"
+    - option "Football"
+    - option "Badminton"
+    - option "Tennis"
+    - option "Fitness"
+    - option "Sports Accessories"
+  - combobox:
+    - option "All Statuses" [selected]
+    - option "In Stock"
+    - option "Low Stock"
+    - option "Out of Stock"
+    - option "Reorder"
+  - generic: Showing 16 SKUs
+  - table:
+    - rowgroup:
+      - row "ID Image Product Name Category SKU Selling Price Stock Level Actions":
+        - columnheader "ID"
+        - columnheader "Image"
+        - columnheader "Product Name"
+        - columnheader "Category"
+        - columnheader "SKU"
+        - columnheader "Selling Price"
+        - columnheader "Stock Level"
+        - columnheader "Actions"
+    - rowgroup:
+      - row "#10065 Review Demo Training Ball Review Demo Training Ball Sanspareils Greenlands (SG) Pvt. Ltd. Cricket REVIEW-DEMO-0831 ₹12.00 Low Stock (2) Transfer Edit Delete":
+        - cell "#10065"
+        - cell "Review Demo Training Ball":
+          - img "Review Demo Training Ball"
+        - cell "Review Demo Training Ball Sanspareils Greenlands (SG) Pvt. Ltd.":
+          - generic: Review Demo Training Ball
+          - generic: Sanspareils Greenlands (SG) Pvt. Ltd.
+        - cell "Cricket"
+        - cell "REVIEW-DEMO-0831"
+        - cell "₹12.00"
+        - cell "Low Stock (2)":
+          - generic: Low Stock (2)
+        - cell "Transfer Edit Delete":
+          - button "Transfer"
+          - button "Edit"
+          - button "Delete"
+      - row "#10001 SG Scorer Classic Kashmir Willow Cricket Bat SG Scorer Classic Kashmir Willow Cricket Bat Sanspareils Greenlands (SG) Pvt. Ltd. Cricket SG-SCB-001 ₹1,799.00 In Stock (6) Transfer Edit Delete":
+        - cell "#10001"
+        - cell "SG Scorer Classic Kashmir Willow Cricket Bat":
+          - img "SG Scorer Classic Kashmir Willow Cricket Bat"
+        - cell "SG Scorer Classic Kashmir Willow Cricket Bat Sanspareils Greenlands (SG) Pvt. Ltd.":
+          - generic: SG Scorer Classic Kashmir Willow Cricket Bat
+          - generic: Sanspareils Greenlands (SG) Pvt. Ltd.
+        - cell "Cricket"
+        - cell "SG-SCB-001"
+        - cell "₹1,799.00"
+        - cell "In Stock (6)":
+          - generic: In Stock (6)
+        - cell "Transfer Edit Delete":
+          - button "Transfer"
+          - button "Edit"
+          - button "Delete"
+      - row "#10002 SG Test Cricket Leather Ball SG Test Cricket Leather Ball Sanspareils Greenlands (SG) Pvt. Ltd. Cricket SG-TCB-002 ₹2,879.00 In Stock (8) Transfer Edit Delete":
+        - cell "#10002"
+        - cell "SG Test Cricket Leather Ball":
+          - img "SG Test Cricket Leather Ball"
+        - cell "SG Test Cricket Leather Ball Sanspareils Greenlands (SG) Pvt. Ltd.":
+          - generic: SG Test Cricket Leather Ball
+          - generic: Sanspareils Greenlands (SG) Pvt. Ltd.
+        - cell "Cricket"
+        - cell "SG-TCB-002"
+        - cell "₹2,879.00"
+        - cell "In Stock (8)":
+          - generic: In Stock (8)
+        - cell "Transfer Edit Delete":
+          - button "Transfer"
+          - button "Edit"
+          - button "Delete"
+      - row "#10003 SG Player Edition Batting Gloves SG Player Edition Batting Gloves Sanspareils Greenlands (SG) Pvt. Ltd. Cricket SG-PEG-003 ₹2,789.00 Low Stock (2) Transfer Edit Delete":
+        - cell "#10003"
+        - cell "SG Player Edition Batting Gloves":
+          - img "SG Player Edition Batting Gloves"
+        - cell "SG Player Edition Batting Gloves Sanspareils Greenlands (SG) Pvt. Ltd.":
+          - generic: SG Player Edition Batting Gloves
+          - generic: Sanspareils Greenlands (SG) Pvt. Ltd.
+        - cell "Cricket"
+        - cell "SG-PEG-003"
+        - cell "₹2,789.00"
+        - cell "Low Stock (2)":
+          - generic: Low Stock (2)
+        - cell "Transfer Edit Delete":
+          - button "Transfer"
+          - button "Edit"
+          - button "Delete"
+      - row "#10004 SG Super 50 Cricket Ball SG Super 50 Cricket Ball Sanspareils Greenlands (SG) Pvt. Ltd. Cricket SG-S50-004 ₹549.00 In Stock (18) Transfer Edit Delete":
+        - cell "#10004"
+        - cell "SG Super 50 Cricket Ball":
+          - img "SG Super 50 Cricket Ball"
+        - cell "SG Super 50 Cricket Ball Sanspareils Greenlands (SG) Pvt. Ltd.":
+          - generic: SG Super 50 Cricket Ball
+          - generic: Sanspareils Greenlands (SG) Pvt. Ltd.
+        - cell "Cricket"
+        - cell "SG-S50-004"
+        - cell "₹549.00"
+        - cell "In Stock (18)":
+          - generic: In Stock (18)
+        - cell "Transfer Edit Delete":
+          - button "Transfer"
+          - button "Edit"
+          - button "Delete"
+      - row "#10005 SG Shield 20 Leather Ball SG Shield 20 Leather Ball Sanspareils Greenlands (SG) Pvt. Ltd. Cricket SG-S20-005 ₹539.00 In Stock (15) Transfer Edit Delete":
+        - cell "#10005"
+        - cell "SG Shield 20 Leather Ball":
+          - img "SG Shield 20 Leather Ball"
+        - cell "SG Shield 20 Leather Ball Sanspareils Greenlands (SG) Pvt. Ltd.":
+          - generic: SG Shield 20 Leather Ball
+          - generic: Sanspareils Greenlands (SG) Pvt. Ltd.
+        - cell "Cricket"
+        - cell "SG-S20-005"
+        - cell "₹539.00"
+        - cell "In Stock (15)":
+          - generic: In Stock (15)
+        - cell "Transfer Edit Delete":
+          - button "Transfer"
+          - button "Edit"
+          - button "Delete"
+      - row "#10006 SG Tournament Cricket Ball SG Tournament Cricket Ball Sanspareils Greenlands (SG) Pvt. Ltd. Cricket SG-TCB-006 ₹1,799.00 Out of Stock (0) Transfer Edit Delete":
+        - cell "#10006"
+        - cell "SG Tournament Cricket Ball":
+          - img "SG Tournament Cricket Ball"
+        - cell "SG Tournament Cricket Ball Sanspareils Greenlands (SG) Pvt. Ltd.":
+          - generic: SG Tournament Cricket Ball
+          - generic: Sanspareils Greenlands (SG) Pvt. Ltd.
+        - cell "Cricket"
+        - cell "SG-TCB-006"
+        - cell "₹1,799.00"
+        - cell "Out of Stock (0)":
+          - generic: Out of Stock (0)
+        - cell "Transfer Edit Delete":
+          - button "Transfer"
+          - button "Edit"
+          - button "Delete"
+      - row "#10007 Adidas Al Rihla League Football Adidas Al Rihla League Football Adidas India Marketing Pvt. Ltd. Football AD-ALR-007 ₹3,059.00 In Stock (6) Transfer Edit Delete":
+        - cell "#10007"
+        - cell "Adidas Al Rihla League Football":
+          - img "Adidas Al Rihla League Football"
+        - cell "Adidas Al Rihla League Football Adidas India Marketing Pvt. Ltd.":
+          - generic: Adidas Al Rihla League Football
+          - generic: Adidas India Marketing Pvt. Ltd.
+        - cell "Football"
+        - cell "AD-ALR-007"
+        - cell "₹3,059.00"
+        - cell "In Stock (6)":
+          - generic: In Stock (6)
+        - cell "Transfer Edit Delete":
+          - button "Transfer"
+          - button "Edit"
+          - button "Delete"
+  - generic: Showing 1 to 8 of 16 SKUs
+  - button "Prev" [disabled]
+  - button "1"
+  - button "2"
+  - button "Next"
+- generic: "0"

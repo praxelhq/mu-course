@@ -1,0 +1,66 @@
+- banner:
+  - button "agriculture Kissan Yukt B2B Agri Network Ramesh Kumar • farmer":
+    - generic: agriculture
+    - text: Kissan Yukt
+    - generic: B2B Agri Network
+    - generic: Ramesh Kumar
+    - generic: •
+    - generic: farmer
+  - generic: badge
+  - generic: "ID:"
+  - generic: AG-9921-X
+  - button "🌾 Farmer"
+  - button "🏬 Dealer"
+  - button "🏢 Enterprise"
+  - button "verified KYC Verified":
+    - generic: verified
+    - generic: KYC Verified
+  - button "lock":
+    - generic: lock
+- main:
+  - generic: MARKET MATRIX / LIVE MANDI STREAM
+  - generic: Live Escrow Stream
+  - button "Buy Commodities"
+  - button "Sell Produce"
+  - generic: search
+  - textbox "Search crop or variety..."
+  - combobox:
+    - 'option "Grade: All" [selected]'
+    - 'option "Grade: A+"'
+    - 'option "Grade: A"'
+    - 'option "Grade: B+"'
+  - combobox:
+    - 'option "Moisture: < 15%" [selected]'
+    - 'option "Moisture: < 12%"'
+    - 'option "Moisture: < 10%"'
+  - button "All"
+  - button "Wheat" [active]
+  - button "Rice"
+  - button "Sugarcane"
+  - button "Cotton"
+  - button "Soybean"
+  - article:
+    - generic: Verified Dealer
+    - heading "Sharbati Wheat" [level=3]
+    - generic: 150 Qtl
+    - paragraph:
+      - generic: location_on
+      - text: "Indore Mandi, MP • Grade: A+ • Moisture: 10.5%"
+    - paragraph: ₹2,378 / Quintal
+    - button "Place Bid"
+- navigation:
+  - button "home Overview":
+    - generic: home
+    - generic: Overview
+  - button "storefront Mandi":
+    - generic: storefront
+    - generic: Mandi
+  - button "local_shipping Logistics":
+    - generic: local_shipping
+    - generic: Logistics
+  - button "handshake Sahayata":
+    - generic: handshake
+    - generic: Sahayata
+  - button "business Corporate":
+    - generic: business
+    - generic: Corporate

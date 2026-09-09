@@ -1,0 +1,869 @@
+- complementary:
+  - link "FactoryFlow AI Shreeji Precision Works":
+    - /url: /
+    - paragraph: FactoryFlow AI
+    - paragraph: Shreeji Precision Works
+  - navigation:
+    - paragraph: Shop floor
+    - link "Dashboard":
+      - /url: /
+      - text: Dashboard
+    - link "Production":
+      - /url: /production
+      - text: Production
+    - link "Customer Schedule":
+      - /url: /schedule
+      - text: Customer Schedule
+    - link "Machines":
+      - /url: /machines
+      - text: Machines
+    - link "Downtime" [active]:
+      - /url: /downtime
+      - text: Downtime
+    - link "Maintenance":
+      - /url: /maintenance
+      - text: Maintenance
+    - link "Quality":
+      - /url: /quality
+      - text: Quality
+    - link "Job Work":
+      - /url: /job-work
+      - text: Job Work
+    - link "Inventory":
+      - /url: /inventory
+      - text: Inventory
+    - paragraph: Money
+    - link "Sales & Receivables":
+      - /url: /sales
+      - text: Sales & Receivables
+    - link "Purchase & Payables":
+      - /url: /purchase
+      - text: Purchase & Payables
+    - link "Cash View":
+      - /url: /cash
+      - text: Cash View
+    - link "Compliance":
+      - /url: /compliance
+      - text: Compliance
+    - paragraph: Run the business
+    - link "Tasks":
+      - /url: /tasks
+      - text: Tasks
+    - link "Analytics":
+      - /url: /analytics
+      - text: Analytics
+    - link "Reports":
+      - /url: /reports
+      - text: Reports
+    - link "AI Assistant":
+      - /url: /assistant
+      - text: AI Assistant
+    - link "Integrations":
+      - /url: /integrations
+      - text: Integrations
+    - link "Settings":
+      - /url: /settings
+      - text: Settings
+  - link "RK Rajesh Kulkarni Works Manager":
+    - /url: /profile
+    - generic: RK
+    - generic: Rajesh Kulkarni
+    - generic: Works Manager
+  - link "Pricing & product page →":
+    - /url: /welcome
+- banner:
+  - textbox "Search part, challan, invoice, heat number…"
+  - button "English"
+  - button "हिंदी"
+  - button "मराठी"
+  - generic "All entries synced":
+    - text: Online
+  - button "Toggle dark mode":
+  - link "Notifications":
+    - /url: /notifications
+    - generic: "4"
+  - link "Ask AI":
+    - /url: /assistant
+    - generic: Ask AI
+- main:
+  - navigation:
+    - link "FactoryFlow":
+      - /url: /
+    - generic: Downtime
+  - heading "Downtime" [level=1]
+  - paragraph: 60 events · 7,666 minutes lost in the last 30 days
+  - button "Export CSV":
+    - text: Export CSV
+  - button "Log downtime":
+    - text: Log downtime
+  - heading "Downtime Pareto by cause" [level=2]
+  - heading "Loss contribution" [level=2]
+  - list:
+    - generic: Job Work Material Awaited
+    - generic: 1505 min · 20%
+    - generic: Tool Change
+    - generic: 1486 min · 19%
+    - generic: Setup / Changeover
+    - generic: 1269 min · 17%
+    - generic: Breakdown
+    - generic: 1113 min · 15%
+    - generic: Power Cut / DG Changeover
+    - generic: 742 min · 10%
+    - generic: No Material
+    - generic: 670 min · 9%
+    - generic: No Operator
+    - generic: 444 min · 6%
+    - generic: No Work Order
+    - generic: 437 min · 6%
+  - textbox "Search reason, root cause, engineer…"
+  - combobox "Category":
+    - 'option "Category: All" [selected]'
+    - option "Power Cut / DG Changeover"
+    - option "No Material"
+    - option "Tool Change"
+    - option "Breakdown"
+    - option "No Operator"
+    - option "Setup / Changeover"
+    - option "No Work Order"
+    - option "Job Work Material Awaited"
+  - table:
+    - rowgroup:
+      - row "Date Machine Window Duration Category Reason / root cause Engineer Status":
+        - columnheader "Date"
+        - columnheader "Machine"
+        - columnheader "Window"
+        - columnheader "Duration"
+        - columnheader "Category"
+        - columnheader "Reason / root cause"
+        - columnheader "Engineer"
+        - columnheader "Status"
+    - rowgroup:
+      - row "24-08-2026 Conventional Lathe L-1 (HMT) 13:15–16:20 128m Tool Change Insert life reached on VMC Higher tool wear on EN8 lot Santosh More Resolved":
+        - cell "24-08-2026"
+        - cell "Conventional Lathe L-1 (HMT)"
+        - cell "13:15–16:20"
+        - cell "128m"
+        - cell "Tool Change"
+        - cell "Insert life reached on VMC Higher tool wear on EN8 lot":
+          - paragraph: Insert life reached on VMC
+          - paragraph: Higher tool wear on EN8 lot
+        - cell "Santosh More"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "24-08-2026 LPG Heat-Treat Furnace HT-1 16:30–20:40 192m Job Work Material Awaited Parts pending at Deccan Heat Treaters Vendor furnace queue Santosh More In Progress":
+        - cell "24-08-2026"
+        - cell "LPG Heat-Treat Furnace HT-1"
+        - cell "16:30–20:40"
+        - cell "192m"
+        - cell "Job Work Material Awaited"
+        - cell "Parts pending at Deccan Heat Treaters Vendor furnace queue":
+          - paragraph: Parts pending at Deccan Heat Treaters
+          - paragraph: Vendor furnace queue
+        - cell "Santosh More"
+        - cell "In Progress":
+          - generic: In Progress
+      - row "23-08-2026 Surface Grinder SG-1 12:30–16:05 204m Setup / Changeover Die change for Endurance part SMED not standardised Rajesh Kulkarni Resolved":
+        - cell "23-08-2026"
+        - cell "Surface Grinder SG-1"
+        - cell "12:30–16:05"
+        - cell "204m"
+        - cell "Setup / Changeover"
+        - cell "Die change for Endurance part SMED not standardised":
+          - paragraph: Die change for Endurance part
+          - paragraph: SMED not standardised
+        - cell "Rajesh Kulkarni"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "23-08-2026 Conventional Lathe L-1 (HMT) 03:45–05:20 95m Setup / Changeover Die change for Endurance part SMED not standardised Meena Patil In Progress":
+        - cell "23-08-2026"
+        - cell "Conventional Lathe L-1 (HMT)"
+        - cell "03:45–05:20"
+        - cell "95m"
+        - cell "Setup / Changeover"
+        - cell "Die change for Endurance part SMED not standardised":
+          - paragraph: Die change for Endurance part
+          - paragraph: SMED not standardised
+        - cell "Meena Patil"
+        - cell "In Progress":
+          - generic: In Progress
+      - row "23-08-2026 CNC VMC-2 (Ace Micromatic) 15:45–17:05 67m Setup / Changeover Die change for Endurance part SMED not standardised Santosh More Open":
+        - cell "23-08-2026"
+        - cell "CNC VMC-2 (Ace Micromatic)"
+        - cell "15:45–17:05"
+        - cell "67m"
+        - cell "Setup / Changeover"
+        - cell "Die change for Endurance part SMED not standardised":
+          - paragraph: Die change for Endurance part
+          - paragraph: SMED not standardised
+        - cell "Santosh More"
+        - cell "Open":
+          - generic: Open
+      - row "22-08-2026 TIG Welding Station W-1 14:45–17:40 167m Setup / Changeover Die change for Endurance part SMED not standardised Vaishali Jadhav Open":
+        - cell "22-08-2026"
+        - cell "TIG Welding Station W-1"
+        - cell "14:45–17:40"
+        - cell "167m"
+        - cell "Setup / Changeover"
+        - cell "Die change for Endurance part SMED not standardised":
+          - paragraph: Die change for Endurance part
+          - paragraph: SMED not standardised
+        - cell "Vaishali Jadhav"
+        - cell "Open":
+          - generic: Open
+      - row "22-08-2026 TIG Welding Station W-1 07:30–11:20 236m No Material Bar stock not issued from stores Shree Ganesh Steels delivery late Sunita Deshmukh Resolved":
+        - cell "22-08-2026"
+        - cell "TIG Welding Station W-1"
+        - cell "07:30–11:20"
+        - cell "236m"
+        - cell "No Material"
+        - cell "Bar stock not issued from stores Shree Ganesh Steels delivery late":
+          - paragraph: Bar stock not issued from stores
+          - paragraph: Shree Ganesh Steels delivery late
+        - cell "Sunita Deshmukh"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "22-08-2026 Conventional Lathe L-2 (Kirloskar) 06:15–07:20 33m Job Work Material Awaited Parts pending at Deccan Heat Treaters Vendor furnace queue Santosh More Open":
+        - cell "22-08-2026"
+        - cell "Conventional Lathe L-2 (Kirloskar)"
+        - cell "06:15–07:20"
+        - cell "33m"
+        - cell "Job Work Material Awaited"
+        - cell "Parts pending at Deccan Heat Treaters Vendor furnace queue":
+          - paragraph: Parts pending at Deccan Heat Treaters
+          - paragraph: Vendor furnace queue
+        - cell "Santosh More"
+        - cell "Open":
+          - generic: Open
+      - row "22-08-2026 Power Press 60T (Rajesh Machines) 08:15–09:05 35m No Operator Operator absent, no relief Shift overlap gap Rajesh Kulkarni Open":
+        - cell "22-08-2026"
+        - cell "Power Press 60T (Rajesh Machines)"
+        - cell "08:15–09:05"
+        - cell "35m"
+        - cell "No Operator"
+        - cell "Operator absent, no relief Shift overlap gap":
+          - paragraph: Operator absent, no relief
+          - paragraph: Shift overlap gap
+        - cell "Rajesh Kulkarni"
+        - cell "Open":
+          - generic: Open
+      - row "21-08-2026 Conventional Lathe L-1 (HMT) 10:00–14:55 202m Tool Change Insert life reached on VMC Higher tool wear on EN8 lot Ganesh Pawar Open":
+        - cell "21-08-2026"
+        - cell "Conventional Lathe L-1 (HMT)"
+        - cell "10:00–14:55"
+        - cell "202m"
+        - cell "Tool Change"
+        - cell "Insert life reached on VMC Higher tool wear on EN8 lot":
+          - paragraph: Insert life reached on VMC
+          - paragraph: Higher tool wear on EN8 lot
+        - cell "Ganesh Pawar"
+        - cell "Open":
+          - generic: Open
+      - row "21-08-2026 Power Press 100T (Isgec) 09:00–13:40 188m Breakdown Hydraulic leak in press ram Seal replacement overdue Vaishali Jadhav Resolved":
+        - cell "21-08-2026"
+        - cell "Power Press 100T (Isgec)"
+        - cell "09:00–13:40"
+        - cell "188m"
+        - cell "Breakdown"
+        - cell "Hydraulic leak in press ram Seal replacement overdue":
+          - paragraph: Hydraulic leak in press ram
+          - paragraph: Seal replacement overdue
+        - cell "Vaishali Jadhav"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "21-08-2026 CNC Turning Centre TC-1 (Jyoti) 07:00–10:05 151m Job Work Material Awaited Parts pending at Deccan Heat Treaters Vendor furnace queue Sunita Deshmukh Resolved":
+        - cell "21-08-2026"
+        - cell "CNC Turning Centre TC-1 (Jyoti)"
+        - cell "07:00–10:05"
+        - cell "151m"
+        - cell "Job Work Material Awaited"
+        - cell "Parts pending at Deccan Heat Treaters Vendor furnace queue":
+          - paragraph: Parts pending at Deccan Heat Treaters
+          - paragraph: Vendor furnace queue
+        - cell "Sunita Deshmukh"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "20-08-2026 Conventional Lathe L-1 (HMT) 14:15–15:05 59m Tool Change Insert life reached on VMC Higher tool wear on EN8 lot Ganesh Pawar Resolved":
+        - cell "20-08-2026"
+        - cell "Conventional Lathe L-1 (HMT)"
+        - cell "14:15–15:05"
+        - cell "59m"
+        - cell "Tool Change"
+        - cell "Insert life reached on VMC Higher tool wear on EN8 lot":
+          - paragraph: Insert life reached on VMC
+          - paragraph: Higher tool wear on EN8 lot
+        - cell "Ganesh Pawar"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "20-08-2026 Shot Blasting Cabinet SB-1 12:15–16:55 203m Tool Change Insert life reached on VMC Higher tool wear on EN8 lot Sunita Deshmukh Resolved":
+        - cell "20-08-2026"
+        - cell "Shot Blasting Cabinet SB-1"
+        - cell "12:15–16:55"
+        - cell "203m"
+        - cell "Tool Change"
+        - cell "Insert life reached on VMC Higher tool wear on EN8 lot":
+          - paragraph: Insert life reached on VMC
+          - paragraph: Higher tool wear on EN8 lot
+        - cell "Sunita Deshmukh"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "20-08-2026 TIG Welding Station W-1 17:45–19:55 107m No Operator Operator absent, no relief Shift overlap gap Santosh More Resolved":
+        - cell "20-08-2026"
+        - cell "TIG Welding Station W-1"
+        - cell "17:45–19:55"
+        - cell "107m"
+        - cell "No Operator"
+        - cell "Operator absent, no relief Shift overlap gap":
+          - paragraph: Operator absent, no relief
+          - paragraph: Shift overlap gap
+        - cell "Santosh More"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "20-08-2026 CNC VMC-2 (Ace Micromatic) 12:45–14:40 110m Setup / Changeover Die change for Endurance part SMED not standardised Sunita Deshmukh Resolved":
+        - cell "20-08-2026"
+        - cell "CNC VMC-2 (Ace Micromatic)"
+        - cell "12:45–14:40"
+        - cell "110m"
+        - cell "Setup / Changeover"
+        - cell "Die change for Endurance part SMED not standardised":
+          - paragraph: Die change for Endurance part
+          - paragraph: SMED not standardised
+        - cell "Sunita Deshmukh"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "20-08-2026 Radial Drill RD-1 18:15–20:55 103m Power Cut / DG Changeover MSEDCL feeder trip, DG started Grid instability in MIDC phase-2 Rajesh Kulkarni Resolved":
+        - cell "20-08-2026"
+        - cell "Radial Drill RD-1"
+        - cell "18:15–20:55"
+        - cell "103m"
+        - cell "Power Cut / DG Changeover"
+        - cell "MSEDCL feeder trip, DG started Grid instability in MIDC phase-2":
+          - paragraph: MSEDCL feeder trip, DG started
+          - paragraph: Grid instability in MIDC phase-2
+        - cell "Rajesh Kulkarni"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "19-08-2026 Radial Drill RD-1 00:30–02:20 74m Job Work Material Awaited Parts pending at Deccan Heat Treaters Vendor furnace queue Rajesh Kulkarni In Progress":
+        - cell "19-08-2026"
+        - cell "Radial Drill RD-1"
+        - cell "00:30–02:20"
+        - cell "74m"
+        - cell "Job Work Material Awaited"
+        - cell "Parts pending at Deccan Heat Treaters Vendor furnace queue":
+          - paragraph: Parts pending at Deccan Heat Treaters
+          - paragraph: Vendor furnace queue
+        - cell "Rajesh Kulkarni"
+        - cell "In Progress":
+          - generic: In Progress
+      - row "19-08-2026 Power Press 60T (Rajesh Machines) 15:15–18:05 163m No Work Order Schedule not released by planning Customer pull revised Prakash Bhosale In Progress":
+        - cell "19-08-2026"
+        - cell "Power Press 60T (Rajesh Machines)"
+        - cell "15:15–18:05"
+        - cell "163m"
+        - cell "No Work Order"
+        - cell "Schedule not released by planning Customer pull revised":
+          - paragraph: Schedule not released by planning
+          - paragraph: Customer pull revised
+        - cell "Prakash Bhosale"
+        - cell "In Progress":
+          - generic: In Progress
+      - row "19-08-2026 Power Press 60T (Rajesh Machines) 09:00–12:55 159m Setup / Changeover Die change for Endurance part SMED not standardised Ganesh Pawar Resolved":
+        - cell "19-08-2026"
+        - cell "Power Press 60T (Rajesh Machines)"
+        - cell "09:00–12:55"
+        - cell "159m"
+        - cell "Setup / Changeover"
+        - cell "Die change for Endurance part SMED not standardised":
+          - paragraph: Die change for Endurance part
+          - paragraph: SMED not standardised
+        - cell "Ganesh Pawar"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "18-08-2026 LPG Heat-Treat Furnace HT-1 11:15–13:05 107m Job Work Material Awaited Parts pending at Deccan Heat Treaters Vendor furnace queue Santosh More Resolved":
+        - cell "18-08-2026"
+        - cell "LPG Heat-Treat Furnace HT-1"
+        - cell "11:15–13:05"
+        - cell "107m"
+        - cell "Job Work Material Awaited"
+        - cell "Parts pending at Deccan Heat Treaters Vendor furnace queue":
+          - paragraph: Parts pending at Deccan Heat Treaters
+          - paragraph: Vendor furnace queue
+        - cell "Santosh More"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "18-08-2026 TIG Welding Station W-1 07:30–11:20 199m Job Work Material Awaited Parts pending at Deccan Heat Treaters Vendor furnace queue Vaishali Jadhav Open":
+        - cell "18-08-2026"
+        - cell "TIG Welding Station W-1"
+        - cell "07:30–11:20"
+        - cell "199m"
+        - cell "Job Work Material Awaited"
+        - cell "Parts pending at Deccan Heat Treaters Vendor furnace queue":
+          - paragraph: Parts pending at Deccan Heat Treaters
+          - paragraph: Vendor furnace queue
+        - cell "Vaishali Jadhav"
+        - cell "Open":
+          - generic: Open
+      - row "17-08-2026 Conventional Lathe L-1 (HMT) 05:45–08:40 166m No Operator Operator absent, no relief Shift overlap gap Rajesh Kulkarni Open":
+        - cell "17-08-2026"
+        - cell "Conventional Lathe L-1 (HMT)"
+        - cell "05:45–08:40"
+        - cell "166m"
+        - cell "No Operator"
+        - cell "Operator absent, no relief Shift overlap gap":
+          - paragraph: Operator absent, no relief
+          - paragraph: Shift overlap gap
+        - cell "Rajesh Kulkarni"
+        - cell "Open":
+          - generic: Open
+      - row "17-08-2026 Shot Blasting Cabinet SB-1 09:45–10:40 38m Power Cut / DG Changeover MSEDCL feeder trip, DG started Grid instability in MIDC phase-2 Prakash Bhosale Resolved":
+        - cell "17-08-2026"
+        - cell "Shot Blasting Cabinet SB-1"
+        - cell "09:45–10:40"
+        - cell "38m"
+        - cell "Power Cut / DG Changeover"
+        - cell "MSEDCL feeder trip, DG started Grid instability in MIDC phase-2":
+          - paragraph: MSEDCL feeder trip, DG started
+          - paragraph: Grid instability in MIDC phase-2
+        - cell "Prakash Bhosale"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "15-08-2026 TIG Welding Station W-1 19:45–21:55 106m Breakdown Hydraulic leak in press ram Seal replacement overdue Meena Patil Resolved":
+        - cell "15-08-2026"
+        - cell "TIG Welding Station W-1"
+        - cell "19:45–21:55"
+        - cell "106m"
+        - cell "Breakdown"
+        - cell "Hydraulic leak in press ram Seal replacement overdue":
+          - paragraph: Hydraulic leak in press ram
+          - paragraph: Seal replacement overdue
+        - cell "Meena Patil"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "15-08-2026 CNC VMC-2 (Ace Micromatic) 00:15–02:20 97m No Operator Operator absent, no relief Shift overlap gap Meena Patil Resolved":
+        - cell "15-08-2026"
+        - cell "CNC VMC-2 (Ace Micromatic)"
+        - cell "00:15–02:20"
+        - cell "97m"
+        - cell "No Operator"
+        - cell "Operator absent, no relief Shift overlap gap":
+          - paragraph: Operator absent, no relief
+          - paragraph: Shift overlap gap
+        - cell "Meena Patil"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "14-08-2026 TIG Welding Station W-1 14:15–15:05 35m Setup / Changeover Die change for Endurance part SMED not standardised Vaishali Jadhav Resolved":
+        - cell "14-08-2026"
+        - cell "TIG Welding Station W-1"
+        - cell "14:15–15:05"
+        - cell "35m"
+        - cell "Setup / Changeover"
+        - cell "Die change for Endurance part SMED not standardised":
+          - paragraph: Die change for Endurance part
+          - paragraph: SMED not standardised
+        - cell "Vaishali Jadhav"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "14-08-2026 Shot Blasting Cabinet SB-1 05:45–08:20 154m Job Work Material Awaited Parts pending at Deccan Heat Treaters Vendor furnace queue Imran Shaikh In Progress":
+        - cell "14-08-2026"
+        - cell "Shot Blasting Cabinet SB-1"
+        - cell "05:45–08:20"
+        - cell "154m"
+        - cell "Job Work Material Awaited"
+        - cell "Parts pending at Deccan Heat Treaters Vendor furnace queue":
+          - paragraph: Parts pending at Deccan Heat Treaters
+          - paragraph: Vendor furnace queue
+        - cell "Imran Shaikh"
+        - cell "In Progress":
+          - generic: In Progress
+      - row "13-08-2026 Conventional Lathe L-2 (Kirloskar) 02:30–04:05 77m No Material Bar stock not issued from stores Shree Ganesh Steels delivery late Meena Patil In Progress":
+        - cell "13-08-2026"
+        - cell "Conventional Lathe L-2 (Kirloskar)"
+        - cell "02:30–04:05"
+        - cell "77m"
+        - cell "No Material"
+        - cell "Bar stock not issued from stores Shree Ganesh Steels delivery late":
+          - paragraph: Bar stock not issued from stores
+          - paragraph: Shree Ganesh Steels delivery late
+        - cell "Meena Patil"
+        - cell "In Progress":
+          - generic: In Progress
+      - row "13-08-2026 Conventional Lathe L-1 (HMT) 11:30–12:55 33m Tool Change Insert life reached on VMC Higher tool wear on EN8 lot Vaishali Jadhav Resolved":
+        - cell "13-08-2026"
+        - cell "Conventional Lathe L-1 (HMT)"
+        - cell "11:30–12:55"
+        - cell "33m"
+        - cell "Tool Change"
+        - cell "Insert life reached on VMC Higher tool wear on EN8 lot":
+          - paragraph: Insert life reached on VMC
+          - paragraph: Higher tool wear on EN8 lot
+        - cell "Vaishali Jadhav"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "12-08-2026 TIG Welding Station W-1 19:30–23:40 221m Breakdown Hydraulic leak in press ram Seal replacement overdue Prakash Bhosale Open":
+        - cell "12-08-2026"
+        - cell "TIG Welding Station W-1"
+        - cell "19:30–23:40"
+        - cell "221m"
+        - cell "Breakdown"
+        - cell "Hydraulic leak in press ram Seal replacement overdue":
+          - paragraph: Hydraulic leak in press ram
+          - paragraph: Seal replacement overdue
+        - cell "Prakash Bhosale"
+        - cell "Open":
+          - generic: Open
+      - row "10-08-2026 Shot Blasting Cabinet SB-1 09:00–10:40 28m Breakdown Hydraulic leak in press ram Seal replacement overdue Ganesh Pawar Resolved":
+        - cell "10-08-2026"
+        - cell "Shot Blasting Cabinet SB-1"
+        - cell "09:00–10:40"
+        - cell "28m"
+        - cell "Breakdown"
+        - cell "Hydraulic leak in press ram Seal replacement overdue":
+          - paragraph: Hydraulic leak in press ram
+          - paragraph: Seal replacement overdue
+        - cell "Ganesh Pawar"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "10-08-2026 Power Press 60T (Rajesh Machines) 06:15–10:05 215m No Work Order Schedule not released by planning Customer pull revised Santosh More In Progress":
+        - cell "10-08-2026"
+        - cell "Power Press 60T (Rajesh Machines)"
+        - cell "06:15–10:05"
+        - cell "215m"
+        - cell "No Work Order"
+        - cell "Schedule not released by planning Customer pull revised":
+          - paragraph: Schedule not released by planning
+          - paragraph: Customer pull revised
+        - cell "Santosh More"
+        - cell "In Progress":
+          - generic: In Progress
+      - row "10-08-2026 CNC VMC-2 (Ace Micromatic) 10:00–12:05 86m Job Work Material Awaited Parts pending at Deccan Heat Treaters Vendor furnace queue Rajesh Kulkarni Resolved":
+        - cell "10-08-2026"
+        - cell "CNC VMC-2 (Ace Micromatic)"
+        - cell "10:00–12:05"
+        - cell "86m"
+        - cell "Job Work Material Awaited"
+        - cell "Parts pending at Deccan Heat Treaters Vendor furnace queue":
+          - paragraph: Parts pending at Deccan Heat Treaters
+          - paragraph: Vendor furnace queue
+        - cell "Rajesh Kulkarni"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "09-08-2026 Power Press 60T (Rajesh Machines) 02:00–06:40 194m Breakdown Hydraulic leak in press ram Seal replacement overdue Ganesh Pawar Resolved":
+        - cell "09-08-2026"
+        - cell "Power Press 60T (Rajesh Machines)"
+        - cell "02:00–06:40"
+        - cell "194m"
+        - cell "Breakdown"
+        - cell "Hydraulic leak in press ram Seal replacement overdue":
+          - paragraph: Hydraulic leak in press ram
+          - paragraph: Seal replacement overdue
+        - cell "Ganesh Pawar"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "09-08-2026 CNC VMC-1 (Ace Micromatic) 04:00–05:55 47m Breakdown Hydraulic leak in press ram Seal replacement overdue Imran Shaikh Open":
+        - cell "09-08-2026"
+        - cell "CNC VMC-1 (Ace Micromatic)"
+        - cell "04:00–05:55"
+        - cell "47m"
+        - cell "Breakdown"
+        - cell "Hydraulic leak in press ram Seal replacement overdue":
+          - paragraph: Hydraulic leak in press ram
+          - paragraph: Seal replacement overdue
+        - cell "Imran Shaikh"
+        - cell "Open":
+          - generic: Open
+      - row "09-08-2026 Radial Drill RD-1 14:30–15:55 16m Job Work Material Awaited Parts pending at Deccan Heat Treaters Vendor furnace queue Vaishali Jadhav Resolved":
+        - cell "09-08-2026"
+        - cell "Radial Drill RD-1"
+        - cell "14:30–15:55"
+        - cell "16m"
+        - cell "Job Work Material Awaited"
+        - cell "Parts pending at Deccan Heat Treaters Vendor furnace queue":
+          - paragraph: Parts pending at Deccan Heat Treaters
+          - paragraph: Vendor furnace queue
+        - cell "Vaishali Jadhav"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "08-08-2026 TIG Welding Station W-1 08:45–09:40 59m No Work Order Schedule not released by planning Customer pull revised Vaishali Jadhav Open":
+        - cell "08-08-2026"
+        - cell "TIG Welding Station W-1"
+        - cell "08:45–09:40"
+        - cell "59m"
+        - cell "No Work Order"
+        - cell "Schedule not released by planning Customer pull revised":
+          - paragraph: Schedule not released by planning
+          - paragraph: Customer pull revised
+        - cell "Vaishali Jadhav"
+        - cell "Open":
+          - generic: Open
+      - row "08-08-2026 CNC Turning Centre TC-1 (Jyoti) 03:15–06:05 142m No Material Bar stock not issued from stores Shree Ganesh Steels delivery late Vaishali Jadhav In Progress":
+        - cell "08-08-2026"
+        - cell "CNC Turning Centre TC-1 (Jyoti)"
+        - cell "03:15–06:05"
+        - cell "142m"
+        - cell "No Material"
+        - cell "Bar stock not issued from stores Shree Ganesh Steels delivery late":
+          - paragraph: Bar stock not issued from stores
+          - paragraph: Shree Ganesh Steels delivery late
+        - cell "Vaishali Jadhav"
+        - cell "In Progress":
+          - generic: In Progress
+      - row "06-08-2026 Conventional Lathe L-2 (Kirloskar) 07:30–11:05 204m Tool Change Insert life reached on VMC Higher tool wear on EN8 lot Imran Shaikh Open":
+        - cell "06-08-2026"
+        - cell "Conventional Lathe L-2 (Kirloskar)"
+        - cell "07:30–11:05"
+        - cell "204m"
+        - cell "Tool Change"
+        - cell "Insert life reached on VMC Higher tool wear on EN8 lot":
+          - paragraph: Insert life reached on VMC
+          - paragraph: Higher tool wear on EN8 lot
+        - cell "Imran Shaikh"
+        - cell "Open":
+          - generic: Open
+      - row "05-08-2026 Conventional Lathe L-2 (Kirloskar) 19:45–23:55 239m Power Cut / DG Changeover MSEDCL feeder trip, DG started Grid instability in MIDC phase-2 Sunita Deshmukh Open":
+        - cell "05-08-2026"
+        - cell "Conventional Lathe L-2 (Kirloskar)"
+        - cell "19:45–23:55"
+        - cell "239m"
+        - cell "Power Cut / DG Changeover"
+        - cell "MSEDCL feeder trip, DG started Grid instability in MIDC phase-2":
+          - paragraph: MSEDCL feeder trip, DG started
+          - paragraph: Grid instability in MIDC phase-2
+        - cell "Sunita Deshmukh"
+        - cell "Open":
+          - generic: Open
+      - row "04-08-2026 Shot Blasting Cabinet SB-1 08:15–09:20 34m Setup / Changeover Die change for Endurance part SMED not standardised Santosh More Resolved":
+        - cell "04-08-2026"
+        - cell "Shot Blasting Cabinet SB-1"
+        - cell "08:15–09:20"
+        - cell "34m"
+        - cell "Setup / Changeover"
+        - cell "Die change for Endurance part SMED not standardised":
+          - paragraph: Die change for Endurance part
+          - paragraph: SMED not standardised
+        - cell "Santosh More"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "03-08-2026 CNC VMC-1 (Ace Micromatic) 16:00–20:40 190m Setup / Changeover Die change for Endurance part SMED not standardised Imran Shaikh Resolved":
+        - cell "03-08-2026"
+        - cell "CNC VMC-1 (Ace Micromatic)"
+        - cell "16:00–20:40"
+        - cell "190m"
+        - cell "Setup / Changeover"
+        - cell "Die change for Endurance part SMED not standardised":
+          - paragraph: Die change for Endurance part
+          - paragraph: SMED not standardised
+        - cell "Imran Shaikh"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "02-08-2026 Conventional Lathe L-2 (Kirloskar) 08:45–12:55 208m Setup / Changeover Die change for Endurance part SMED not standardised Ganesh Pawar Resolved":
+        - cell "02-08-2026"
+        - cell "Conventional Lathe L-2 (Kirloskar)"
+        - cell "08:45–12:55"
+        - cell "208m"
+        - cell "Setup / Changeover"
+        - cell "Die change for Endurance part SMED not standardised":
+          - paragraph: Die change for Endurance part
+          - paragraph: SMED not standardised
+        - cell "Ganesh Pawar"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "02-08-2026 Conventional Lathe L-2 (Kirloskar) 17:15–21:55 215m No Material Bar stock not issued from stores Shree Ganesh Steels delivery late Vaishali Jadhav In Progress":
+        - cell "02-08-2026"
+        - cell "Conventional Lathe L-2 (Kirloskar)"
+        - cell "17:15–21:55"
+        - cell "215m"
+        - cell "No Material"
+        - cell "Bar stock not issued from stores Shree Ganesh Steels delivery late":
+          - paragraph: Bar stock not issued from stores
+          - paragraph: Shree Ganesh Steels delivery late
+        - cell "Vaishali Jadhav"
+        - cell "In Progress":
+          - generic: In Progress
+      - row "02-08-2026 CNC VMC-1 (Ace Micromatic) 12:15–14:05 93m Power Cut / DG Changeover MSEDCL feeder trip, DG started Grid instability in MIDC phase-2 Meena Patil Resolved":
+        - cell "02-08-2026"
+        - cell "CNC VMC-1 (Ace Micromatic)"
+        - cell "12:15–14:05"
+        - cell "93m"
+        - cell "Power Cut / DG Changeover"
+        - cell "MSEDCL feeder trip, DG started Grid instability in MIDC phase-2":
+          - paragraph: MSEDCL feeder trip, DG started
+          - paragraph: Grid instability in MIDC phase-2
+        - cell "Meena Patil"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "02-08-2026 Power Press 60T (Rajesh Machines) 13:00–17:05 227m Job Work Material Awaited Parts pending at Deccan Heat Treaters Vendor furnace queue Santosh More Resolved":
+        - cell "02-08-2026"
+        - cell "Power Press 60T (Rajesh Machines)"
+        - cell "13:00–17:05"
+        - cell "227m"
+        - cell "Job Work Material Awaited"
+        - cell "Parts pending at Deccan Heat Treaters Vendor furnace queue":
+          - paragraph: Parts pending at Deccan Heat Treaters
+          - paragraph: Vendor furnace queue
+        - cell "Santosh More"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "01-08-2026 Conventional Lathe L-1 (HMT) 16:00–20:05 196m Tool Change Insert life reached on VMC Higher tool wear on EN8 lot Ganesh Pawar Open":
+        - cell "01-08-2026"
+        - cell "Conventional Lathe L-1 (HMT)"
+        - cell "16:00–20:05"
+        - cell "196m"
+        - cell "Tool Change"
+        - cell "Insert life reached on VMC Higher tool wear on EN8 lot":
+          - paragraph: Insert life reached on VMC
+          - paragraph: Higher tool wear on EN8 lot
+        - cell "Ganesh Pawar"
+        - cell "Open":
+          - generic: Open
+      - row "31-07-2026 CNC Turning Centre TC-1 (Jyoti) 07:15–11:40 218m Tool Change Insert life reached on VMC Higher tool wear on EN8 lot Sunita Deshmukh Resolved":
+        - cell "31-07-2026"
+        - cell "CNC Turning Centre TC-1 (Jyoti)"
+        - cell "07:15–11:40"
+        - cell "218m"
+        - cell "Tool Change"
+        - cell "Insert life reached on VMC Higher tool wear on EN8 lot":
+          - paragraph: Insert life reached on VMC
+          - paragraph: Higher tool wear on EN8 lot
+        - cell "Sunita Deshmukh"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "30-07-2026 LPG Heat-Treat Furnace HT-1 19:00–22:55 159m Breakdown Hydraulic leak in press ram Seal replacement overdue Sunita Deshmukh Resolved":
+        - cell "30-07-2026"
+        - cell "LPG Heat-Treat Furnace HT-1"
+        - cell "19:00–22:55"
+        - cell "159m"
+        - cell "Breakdown"
+        - cell "Hydraulic leak in press ram Seal replacement overdue":
+          - paragraph: Hydraulic leak in press ram
+          - paragraph: Seal replacement overdue
+        - cell "Sunita Deshmukh"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "30-07-2026 TIG Welding Station W-1 12:15–13:55 34m Power Cut / DG Changeover MSEDCL feeder trip, DG started Grid instability in MIDC phase-2 Santosh More Resolved":
+        - cell "30-07-2026"
+        - cell "TIG Welding Station W-1"
+        - cell "12:15–13:55"
+        - cell "34m"
+        - cell "Power Cut / DG Changeover"
+        - cell "MSEDCL feeder trip, DG started Grid instability in MIDC phase-2":
+          - paragraph: MSEDCL feeder trip, DG started
+          - paragraph: Grid instability in MIDC phase-2
+        - cell "Santosh More"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "29-07-2026 CNC Turning Centre TC-1 (Jyoti) 18:15–21:40 170m Breakdown Hydraulic leak in press ram Seal replacement overdue Rajesh Kulkarni In Progress":
+        - cell "29-07-2026"
+        - cell "CNC Turning Centre TC-1 (Jyoti)"
+        - cell "18:15–21:40"
+        - cell "170m"
+        - cell "Breakdown"
+        - cell "Hydraulic leak in press ram Seal replacement overdue":
+          - paragraph: Hydraulic leak in press ram
+          - paragraph: Seal replacement overdue
+        - cell "Rajesh Kulkarni"
+        - cell "In Progress":
+          - generic: In Progress
+      - row "29-07-2026 Shot Blasting Cabinet SB-1 04:45–07:05 161m Tool Change Insert life reached on VMC Higher tool wear on EN8 lot Imran Shaikh Resolved":
+        - cell "29-07-2026"
+        - cell "Shot Blasting Cabinet SB-1"
+        - cell "04:45–07:05"
+        - cell "161m"
+        - cell "Tool Change"
+        - cell "Insert life reached on VMC Higher tool wear on EN8 lot":
+          - paragraph: Insert life reached on VMC
+          - paragraph: Higher tool wear on EN8 lot
+        - cell "Imran Shaikh"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "27-07-2026 CNC VMC-1 (Ace Micromatic) 07:45–10:05 143m Job Work Material Awaited Parts pending at Deccan Heat Treaters Vendor furnace queue Prakash Bhosale In Progress":
+        - cell "27-07-2026"
+        - cell "CNC VMC-1 (Ace Micromatic)"
+        - cell "07:45–10:05"
+        - cell "143m"
+        - cell "Job Work Material Awaited"
+        - cell "Parts pending at Deccan Heat Treaters Vendor furnace queue":
+          - paragraph: Parts pending at Deccan Heat Treaters
+          - paragraph: Vendor furnace queue
+        - cell "Prakash Bhosale"
+        - cell "In Progress":
+          - generic: In Progress
+      - row "27-07-2026 TIG Welding Station W-1 04:15–05:55 15m Power Cut / DG Changeover MSEDCL feeder trip, DG started Grid instability in MIDC phase-2 Rajesh Kulkarni Resolved":
+        - cell "27-07-2026"
+        - cell "TIG Welding Station W-1"
+        - cell "04:15–05:55"
+        - cell "15m"
+        - cell "Power Cut / DG Changeover"
+        - cell "MSEDCL feeder trip, DG started Grid instability in MIDC phase-2":
+          - paragraph: MSEDCL feeder trip, DG started
+          - paragraph: Grid instability in MIDC phase-2
+        - cell "Rajesh Kulkarni"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "27-07-2026 Power Press 60T (Rajesh Machines) 06:00–08:20 82m Tool Change Insert life reached on VMC Higher tool wear on EN8 lot Sunita Deshmukh Resolved":
+        - cell "27-07-2026"
+        - cell "Power Press 60T (Rajesh Machines)"
+        - cell "06:00–08:20"
+        - cell "82m"
+        - cell "Tool Change"
+        - cell "Insert life reached on VMC Higher tool wear on EN8 lot":
+          - paragraph: Insert life reached on VMC
+          - paragraph: Higher tool wear on EN8 lot
+        - cell "Sunita Deshmukh"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "27-07-2026 Radial Drill RD-1 11:00–15:05 220m Power Cut / DG Changeover MSEDCL feeder trip, DG started Grid instability in MIDC phase-2 Rajesh Kulkarni Open":
+        - cell "27-07-2026"
+        - cell "Radial Drill RD-1"
+        - cell "11:00–15:05"
+        - cell "220m"
+        - cell "Power Cut / DG Changeover"
+        - cell "MSEDCL feeder trip, DG started Grid instability in MIDC phase-2":
+          - paragraph: MSEDCL feeder trip, DG started
+          - paragraph: Grid instability in MIDC phase-2
+        - cell "Rajesh Kulkarni"
+        - cell "Open":
+          - generic: Open
+      - row "27-07-2026 Radial Drill RD-1 06:30–07:05 39m No Operator Operator absent, no relief Shift overlap gap Sunita Deshmukh Resolved":
+        - cell "27-07-2026"
+        - cell "Radial Drill RD-1"
+        - cell "06:30–07:05"
+        - cell "39m"
+        - cell "No Operator"
+        - cell "Operator absent, no relief Shift overlap gap":
+          - paragraph: Operator absent, no relief
+          - paragraph: Shift overlap gap
+        - cell "Sunita Deshmukh"
+        - cell "Resolved":
+          - generic: Resolved
+      - row "27-07-2026 Power Press 100T (Isgec) 09:45–11:05 70m Job Work Material Awaited Parts pending at Deccan Heat Treaters Vendor furnace queue Ganesh Pawar In Progress":
+        - cell "27-07-2026"
+        - cell "Power Press 100T (Isgec)"
+        - cell "09:45–11:05"
+        - cell "70m"
+        - cell "Job Work Material Awaited"
+        - cell "Parts pending at Deccan Heat Treaters Vendor furnace queue":
+          - paragraph: Parts pending at Deccan Heat Treaters
+          - paragraph: Vendor furnace queue
+        - cell "Ganesh Pawar"
+        - cell "In Progress":
+          - generic: In Progress
+      - row "27-07-2026 Power Press 100T (Isgec) 12:00–13:40 53m Job Work Material Awaited Parts pending at Deccan Heat Treaters Vendor furnace queue Ganesh Pawar Open":
+        - cell "27-07-2026"
+        - cell "Power Press 100T (Isgec)"
+        - cell "12:00–13:40"
+        - cell "53m"
+        - cell "Job Work Material Awaited"
+        - cell "Parts pending at Deccan Heat Treaters Vendor furnace queue":
+          - paragraph: Parts pending at Deccan Heat Treaters
+          - paragraph: Vendor furnace queue
+        - cell "Ganesh Pawar"
+        - cell "Open":
+          - generic: Open
+- button "Quick Log":
+  - text: Quick Log
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_10hdg7xyw99tpa64t0nz744v7b?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: "6000"

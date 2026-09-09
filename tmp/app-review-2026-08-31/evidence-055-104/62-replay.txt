@@ -1,0 +1,56 @@
+- main:
+  - heading "Word Heist" [level=2]
+  - paragraph: Vault 1 / 4 — Lobby Deposit Box · 6 tries
+  - generic: SECURITY
+  - text: 02:30
+  - generic: "0"
+  - button "10 X-Ray Scan one letter for presence" [disabled]:
+    - text: "10"
+    - generic: X-Ray
+    - generic: Scan one letter for presence
+  - button "25 Reveal Uncover one correct letter" [disabled]:
+    - text: "25"
+    - generic: Reveal
+    - generic: Uncover one correct letter
+  - button "20 +15s Add 15 seconds to the alarm" [disabled]:
+    - text: "20"
+    - generic: +15s
+    - generic: Add 15 seconds to the alarm
+  - button "40 Intel A cryptic hint about the word" [disabled]:
+    - text: "40"
+    - generic: Intel
+    - generic: A cryptic hint about the word
+  - button "Q"
+  - button "W"
+  - button "E"
+  - button "R"
+  - button "T"
+  - button "Y"
+  - button "U"
+  - button "I"
+  - button "O"
+  - button "P"
+  - button "A"
+  - button "S"
+  - button "D"
+  - button "F"
+  - button "G"
+  - button "H"
+  - button "J"
+  - button "K"
+  - button "L"
+  - button "ENTER"
+  - button "Z"
+  - button "X"
+  - button "C"
+  - button "V"
+  - button "B"
+  - button "N"
+  - button "M"
+  - button "DEL"
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6hjpvn52pr8649sm23g3qmz1bk?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

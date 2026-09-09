@@ -1,0 +1,66 @@
+- banner:
+  - button "Set your location":
+  - link "MindSaathi Your Mind Matters":
+    - /url: /
+    - generic: MindSaathi
+    - generic: Your Mind Matters
+  - 'link "Language: English. Change language"':
+    - /url: /language
+    - generic: English
+  - link "SOS":
+    - /url: /sos
+    - text: SOS
+- main:
+  - heading "Settings" [level=1]
+  - paragraph: Voice-first mode
+  - paragraph: Adds a speaker button on key screens that reads text aloud in English.
+  - switch "Voice-first mode"
+  - paragraph: Low-data mode
+  - paragraph: Turns off animations and heavy imagery for slow connections.
+  - switch "Low-data mode" [checked]
+  - button "Location Not set — tap to choose your city":
+    - generic: Location
+    - generic: Not set — tap to choose your city
+  - link "Language English · English":
+    - /url: /language
+    - generic: Language
+    - generic: English · English
+  - link "How your data is used":
+    - /url: /privacy
+- contentinfo:
+  - link "How your data is used":
+    - /url: /privacy
+- button "Open Saathi, your guide":
+  - img "Saathi, your friendly guide"
+- navigation "Screen navigation":
+  - button "Previous screen" [disabled]:
+  - link "Language":
+    - /url: /language
+    - text: Language
+  - link "Settings":
+    - /url: /settings
+    - text: Settings
+  - link "Check-in":
+    - /url: /tracker
+    - text: Check-in
+  - button "Next screen":
+  - link "Today":
+    - /url: /
+    - generic: Today
+  - link "Counsellors":
+    - /url: /counsellors
+    - generic: Counsellors
+  - link "Tracker":
+    - /url: /tracker
+    - generic: Tracker
+  - link "AI Support":
+    - /url: /ai-support
+    - generic: AI Support
+  - link "SOS":
+    - /url: /sos
+    - generic: SOS
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6c2nccmn5q8vsre70jn9smn197?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

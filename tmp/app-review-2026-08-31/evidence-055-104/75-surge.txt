@@ -1,0 +1,57 @@
+- banner:
+  - generic: CP
+  - heading "CommutePulse" [level=1]
+  - generic: LIVE
+  - paragraph:
+    - generic: Uber • Rapido • Ola Unified
+  - combobox:
+    - option "Delhi NCR" [selected]
+    - option "Bengaluru"
+    - option "Mumbai"
+    - option "Hyderabad"
+    - option "Pune"
+    - option "Chennai"
+  - 'button "Sync: 20s"':
+    - generic: "Sync: 20s"
+  - button "Late?":
+    - generic: Late?
+  - button "Login / Link Apps":
+    - generic: Login / Link Apps
+- main:
+  - button "Compare Rides 8":
+    - generic: Compare Rides
+    - generic: "8"
+  - button "Live Corridor Map":
+    - generic: Live Corridor Map
+  - button "Surge Radar 1x" [active]:
+    - generic: Surge Radar
+    - generic: 1x
+  - button "Saved Routes 15":
+    - generic: Saved Routes
+    - generic: "15"
+  - button "Linked Accounts 0/3":
+    - generic: Linked Accounts
+    - generic: 0/3
+  - button "Refresh Fares":
+    - generic: Refresh Fares
+  - heading "Surge Radar & Commute Weather Forecast" [level=3]
+  - paragraph: Hourly pricing multiplier predictions and congestion windows for Delhi NCR
+  - button "Back to Rides"
+  - heading "Surge Radar" [level=2]
+  - generic: Cyber
+  - generic: +1x Active
+  - generic: Uber
+  - generic: 1x
+  - generic: Rapido
+  - generic: 1x
+  - generic: Ola
+  - generic: 1x
+  - paragraph: Normal traffic flow. Great time to book without surge premiums.
+- contentinfo:
+  - generic: CommutePulse
+  - generic: • Intelligent Multi-Platform Transit Optimization
+  - generic: Uber API
+  - generic: •
+  - generic: Rapido Fleet
+  - generic: •
+  - generic: Ola Mobility

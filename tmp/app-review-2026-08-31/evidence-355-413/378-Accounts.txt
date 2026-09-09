@@ -1,0 +1,87 @@
+- alert
+- complementary:
+  - paragraph: MailClean AI
+  - paragraph: High Mountain Property
+  - button "NA nancy (Owner) nancy@highmountainproperty.com":
+    - generic: NA
+    - paragraph: nancy (Owner)
+    - paragraph: nancy@highmountainproperty.com
+  - navigation:
+    - link "Dashboard":
+      - /url: /dashboard
+      - text: Dashboard
+    - link "Analytics":
+      - /url: /dashboard/analytics
+      - text: Analytics
+    - link "Categories":
+      - /url: /dashboard/categories
+      - text: Categories
+    - link "Email Explorer":
+      - /url: /dashboard/explorer
+      - text: Email Explorer
+    - link "Cleanup Center":
+      - /url: /dashboard/cleanup
+      - text: Cleanup Center
+    - link "Rules & Automation":
+      - /url: /dashboard/rules
+      - text: Rules & Automation
+    - link "Activity Log":
+      - /url: /dashboard/activity
+      - text: Activity Log
+    - link "Reports":
+      - /url: /dashboard/reports
+      - text: Reports
+    - link "Accounts" [active]:
+      - /url: /dashboard/accounts
+      - text: Accounts
+    - link "Settings":
+      - /url: /dashboard/settings
+      - text: Settings
+  - generic: na
+  - paragraph: nancy
+  - paragraph: nancy@highmountainproperty.com
+- banner:
+  - textbox "Search emails, senders, rules…"
+  - button "Notifications":
+    - generic: Notifications
+- main:
+  - heading "Email Accounts" [level=1]
+  - paragraph: All mailboxes connected to this workspace. Switch to view any inbox.
+  - link "Connect account":
+    - /url: /connect
+    - text: Connect account
+  - button "All Accounts Aggregate view of 5 mailboxes":
+    - paragraph: All Accounts
+    - paragraph: Aggregate view of 5 mailboxes
+  - button "NA nancy (Owner) Primary nancy@highmountainproperty.com 38,210 emails 6,421 unread":
+    - generic: NA
+    - paragraph: nancy (Owner)
+    - generic: Primary
+    - paragraph: nancy@highmountainproperty.com
+    - generic: 38,210 emails
+    - generic: 6,421 unread
+  - button "GE General Enquiries info@highmountainproperty.com 24,880 emails 5,120 unread":
+    - generic: GE
+    - paragraph: General Enquiries
+    - paragraph: info@highmountainproperty.com
+    - generic: 24,880 emails
+    - generic: 5,120 unread
+  - button "SA Sales sales@highmountainproperty.com 18,940 emails 3,980 unread":
+    - generic: SA
+    - paragraph: Sales
+    - paragraph: sales@highmountainproperty.com
+    - generic: 18,940 emails
+    - generic: 3,980 unread
+  - button "SU Support support@highmountainproperty.com 11,220 emails 1,890 unread":
+    - generic: SU
+    - paragraph: Support
+    - paragraph: support@highmountainproperty.com
+    - generic: 11,220 emails
+    - generic: 1,890 unread
+  - button "AD Admin & Accounts admin@highmountainproperty.com 6,750 emails 1,010 unread":
+    - generic: AD
+    - paragraph: Admin & Accounts
+    - paragraph: admin@highmountainproperty.com
+    - generic: 6,750 emails
+    - generic: 1,010 unread
+- generic: "24.2"

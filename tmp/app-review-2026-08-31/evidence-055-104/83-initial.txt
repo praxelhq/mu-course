@@ -1,0 +1,49 @@
+- banner:
+  - button "Open menu":
+    - generic: menu
+  - heading "FREDWHO?" [level=1]
+  - button "Your profile":
+    - img "Your profile"
+- main:
+  - heading "PICK TWO SONGS" [level=2]
+  - paragraph: We'll handle the hard part.
+  - img "Neon Alibi cover art"
+  - button "SONG 1 Neon Alibi VELVET STATIC TAP TO ANALYZE":
+    - generic: SONG 1
+    - generic: Neon Alibi
+    - generic: VELVET STATIC
+    - generic: TAP TO ANALYZE
+  - button "Change SONG 1":
+    - generic: swap_horiz
+  - generic: add
+  - img "Concrete Bloom cover art"
+  - button "SONG 2 Concrete Bloom HALF LIGHT CLUB TAP TO ANALYZE":
+    - generic: SONG 2
+    - generic: Concrete Bloom
+    - generic: HALF LIGHT CLUB
+    - generic: TAP TO ANALYZE
+  - button "Change SONG 2":
+    - generic: swap_horiz
+  - button "MIX IT"
+- navigation:
+  - link "home_max HOME":
+    - /url: /
+    - generic: home_max
+    - generic: HOME
+  - link "auto_awesome MIX":
+    - /url: /mix
+    - generic: auto_awesome
+    - generic: MIX
+  - link "library_music LIBRARY":
+    - /url: /library
+    - generic: library_music
+    - generic: LIBRARY
+  - link "settings SETTINGS":
+    - /url: /settings
+    - generic: settings
+    - generic: SETTINGS
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_29v1m4ress91sba1hqg73sx9vq?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

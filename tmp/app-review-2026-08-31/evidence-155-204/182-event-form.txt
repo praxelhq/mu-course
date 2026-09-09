@@ -1,0 +1,64 @@
+- banner:
+  - img "Your profile"
+  - generic: LifeOps
+  - button "Notifications":
+    - generic: notifications
+- main:
+  - heading "Good morning, Adi" [level=1]
+  - paragraph: Here’s what needs your attention today. You have 5 pending items.
+  - article:
+    - generic: home_work
+    - heading "Rent Due" [level=3]
+    - generic: High
+    - paragraph: Your monthly apartment payment is scheduled for processing.
+    - generic: timer
+    - text: Due Tomorrow
+  - article:
+    - generic: bolt
+    - heading "Electricity Bill" [level=3]
+    - generic: Alert
+    - paragraph: "\"Unusual amount detected\" — 24% higher than last month."
+    - generic: analytics
+    - text: Analyze Usage
+  - article:
+    - generic: dentistry
+    - heading "Dentist Appointment" [level=3]
+    - generic: Scheduled
+    - paragraph: Routine cleaning with Dr. Aris.
+    - generic: event
+    - text: Today at 4 PM
+  - article:
+    - generic: directions_car
+    - heading "Car Insurance" [level=3]
+    - paragraph: Your policy with Premium Guard is nearing its end date.
+    - generic: calendar_today
+    - text: Expiring in 18 days
+  - article:
+    - generic: downloading
+    - heading "Passport" [level=3]
+    - paragraph: Travel document renewal is approaching.
+    - generic: history
+    - text: Expiring in 5 months
+- button "Add life event" [active]:
+  - generic: add
+- navigation:
+  - link "Home":
+    - /url: /
+    - generic: home
+  - link "Tasks":
+    - /url: /dashboard
+    - generic: dashboard
+  - link "Vault":
+    - /url: /vault
+    - generic: auto_awesome_motion
+  - link "Activity":
+    - /url: /renewals
+    - generic: history
+  - link "Circle":
+    - /url: /family
+    - generic: group
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_0xvzwaqrss84ttx0mb1de1zyyv?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

@@ -1,0 +1,66 @@
+- banner:
+  - heading "Reminders" [level=1]
+  - paragraph: Small nudges, exactly when you need them
+  - link "Progress":
+    - /url: /progress
+    - text: 🏅
+  - paragraph: "1"
+  - paragraph: day streak
+  - paragraph: "10"
+  - paragraph: Lvl 1
+  - generic: 🧊
+  - paragraph: "1"
+  - paragraph: freeze
+- generic: 🔔
+- paragraph: Allow notifications & sound
+- paragraph: Your browser needs permission before we can alert you with sound.
+- button "Enable notifications"
+- heading "New reminder" [level=2]
+- generic: Category
+- button "💊 Medicine"
+- button "💧 Water"
+- button "🥗 Food & Meals"
+- button "🏃 Exercise"
+- button "🧘 Meditation"
+- generic: Name (optional)
+- textbox "e.g. Medicine"
+- generic: Time(s)
+- textbox: 09:00
+- button "Add another time"
+- generic: Days
+- button "S"
+- button "M"
+- button "T"
+- button "W"
+- button "T"
+- button "F"
+- button "S"
+- button "Save reminder"
+- button "Cancel"
+- paragraph: No reminders yet — add your first one whenever you're ready.
+- link "SOS — talk to someone now":
+  - /url: /sos
+  - generic: SOS
+- navigation:
+  - link "Today":
+    - /url: /
+    - text: Today
+  - link "Calm":
+    - /url: /stress
+    - text: Calm
+  - link "Weight":
+    - /url: /weight
+    - text: Weight
+  - link "Reminders":
+    - /url: /reminders
+    - text: Reminders
+  - link "You":
+    - /url: /settings
+    - text: You
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_4mf9qxwwfq922r3nx6m46jkrvt?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: Tue

@@ -1,0 +1,45 @@
+- banner:
+  - link "Who's That Pokémon?":
+    - /url: /
+  - navigation:
+    - link "How to Play":
+      - /url: /how-to-play
+- main:
+  - heading "Who's That Pokémon?" [level=1]
+  - generic: 1 guess
+  - textbox "Search a Pokémon":
+    - /placeholder: Search a Pokémon…
+    - text: Pikachu
+  - button "Guess" [disabled]:
+    - text: Guess
+  - button "Give Up":
+    - text: Give Up
+  - heading "Logic Log" [level=2]
+  - generic: "#"
+  - generic: Pokémon
+  - generic: Type 1
+  - generic: Type 2
+  - generic: Stage
+  - generic: Height
+  - generic: Weight
+  - generic: BST
+  - text: "#0025"
+  - img "answer is higher"
+  - generic: Pikachu
+  - generic: Electric
+  - img "no match"
+  - generic: None
+  - img "no match"
+  - text: Stage 2
+  - text: 0.4 m
+  - img "answer is higher"
+  - text: 6.0 kg
+  - img "answer is higher"
+  - text: "300"
+  - img "answer is higher"
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_59tfn1avss8838j0sc7zgrd0e7?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

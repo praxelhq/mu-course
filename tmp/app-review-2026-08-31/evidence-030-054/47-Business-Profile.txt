@@ -1,0 +1,92 @@
+- complementary:
+  - link "GrowthOS":
+    - /url: /
+    - generic: GrowthOS
+  - navigation:
+    - link "Dashboard":
+      - /url: /dashboard
+      - text: Dashboard
+    - link "Business Profile":
+      - /url: /profile
+      - text: Business Profile
+    - link "Opportunities":
+      - /url: /opportunities
+      - text: Opportunities
+    - link "Action Plan":
+      - /url: /action-plan
+      - text: Action Plan
+    - link "Ask GrowthOS":
+      - /url: /ask
+      - text: Ask GrowthOS
+  - paragraph: Demo Business
+  - paragraph: FALAM Café
+  - paragraph: Café / Restaurant
+- main:
+  - heading "Tell us about your business" [level=1]
+  - paragraph: GrowthOS uses these numbers to score your business and build your plan. Nothing leaves your browser except questions you ask the assistant.
+  - heading "Basics" [level=2]
+  - text: Business Name
+  - textbox "Business Name":
+    - /placeholder: FALAM Café
+    - text: FALAM Café
+  - text: Business Type
+  - combobox "Business Type":
+    - option "Café / Restaurant" [selected]
+    - option "D2C Brand"
+    - option "Retail"
+    - option "Salon / Beauty"
+    - option "Fitness"
+    - option "Professional Services"
+    - option "Other"
+  - heading "Numbers" [level=2]
+  - text: Monthly Revenue (₹)
+  - textbox "Monthly Revenue (₹)":
+    - /placeholder: "600000"
+    - text: "600000"
+  - text: Average Order Value (₹)
+  - textbox "Average Order Value (₹)":
+    - /placeholder: "450"
+    - text: "450"
+  - text: Monthly Customers
+  - textbox "Monthly Customers":
+    - /placeholder: "1330"
+    - text: "1330"
+  - text: Repeat Customer %
+  - textbox "Repeat Customer %":
+    - /placeholder: "28"
+    - text: "28"
+  - heading "Products" [level=2]
+  - text: Top 3 Products / Services
+  - textbox "Top 3 Products / Services":
+    - /placeholder: Smoothies, Healthy Bowls, Fresh Juices
+    - text: Smoothies, Healthy Bowls, Fresh Juices
+  - text: Lowest Performing Product / Service
+  - textbox "Lowest Performing Product / Service":
+    - /placeholder: Vegan Desserts
+    - text: Vegan Desserts
+  - heading "Marketing & Challenge" [level=2]
+  - paragraph: Current Marketing Channels
+  - button "Instagram"
+  - button "WhatsApp"
+  - button "Google"
+  - button "Paid Ads"
+  - button "Referrals"
+  - button "Offline"
+  - button "Other"
+  - text: Biggest Current Challenge
+  - combobox "Biggest Current Challenge":
+    - option "Increase revenue" [selected]
+    - option "Get more customers"
+    - option "Increase repeat purchases"
+    - option "Increase average order value"
+    - option "Reduce costs"
+    - option "Improve marketing"
+  - button "Save & Regenerate Analysis"
+  - button "Load demo business":
+    - text: Load demo business
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_34p8mrfkpd870bngg5bpcnk7wv?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

@@ -1,0 +1,58 @@
+- banner:
+  - link "TravelTailor AI":
+    - /url: /
+    - generic: travel_explore
+    - generic: TravelTailor AI
+  - button "Toggle dark mode":
+    - generic: dark_mode
+  - link "Exit planning":
+    - /url: /
+    - generic: close
+    - generic: Exit planning
+- main:
+  - generic: Step 2 of 5
+  - generic: Destination
+  - generic: Dates
+  - generic: Travellers
+  - generic: Budget
+  - generic: Interests
+  - heading "When are you travelling?" [level=2]
+  - paragraph: Pick your dates on the calendar — we show the typical weather and adjust pricing for the season.
+  - generic: 1. Departure date
+  - button "1. Departure date":
+    - generic: flight_takeoff
+    - generic: Wed, Oct 14, 2026
+    - generic: Day you fly out
+    - generic: expand_more
+  - generic: 2. Return date
+  - button "2. Return date":
+    - generic: flight_land
+    - generic: Wed, Oct 21, 2026
+    - generic: 7 days in destination
+    - generic: expand_more
+  - generic: Trip length
+  - generic: 7 days
+  - slider: "7"
+  - generic: partly_cloudy_day
+  - paragraph: October weather in Kyoto
+  - paragraph: Mild and mostly sunny · 23°C / 14°C (74°F / 58°F) · 20% chance of rain
+  - paragraph: Crisp autumn air, 65–75°F, minimal rain. Ideal for walking.
+  - generic: Shoulder season
+  - paragraph: October is shoulder season in Kyoto — average pricing with thinner crowds.
+  - paragraph:
+    - text: Est. $8,120
+    - generic: baseline for these dates
+  - checkbox "My dates are flexible by a few days" [checked]
+  - text: My dates are flexible by a few days
+  - button "Back":
+    - generic: arrow_back
+    - text: Back
+  - button "Continue" [active]:
+    - text: Continue
+    - generic: arrow_forward
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_4zxp32hwhk8nerwh4551kt6jsj?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

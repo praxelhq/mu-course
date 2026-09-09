@@ -1,0 +1,105 @@
+- main:
+  - heading [level=1]: Dashboard.ai
+  - paragraph: Spreadsheets in, dashboards out
+  - generic: "6"
+  - generic: rows
+  - generic: "4"
+  - generic: columns
+  - generic: "2"
+  - generic: numeric
+  - button:
+    - text: Regenerate
+  - complementary:
+    - button:
+      - paragraph: Drop a spreadsheet here
+      - paragraph: .xlsx, .xls or .csv — or click to browse
+    - generic: 91-demo.csv
+    - generic: Date
+    - generic: Region
+    - generic: Sales
+    - generic: Units
+    - heading [level=2]: Build a chart
+    - button:
+      - text: Bar
+    - button:
+      - text: Line
+    - button:
+      - text: Pie
+    - button:
+      - text: Heatmap
+    - text: Category
+    - combobox [expanded]:
+      - generic: None
+    - text: Value (numeric)
+    - combobox:
+      - generic: Row count
+    - text: Title (optional)
+    - textbox:
+      - /placeholder: Auto
+    - button:
+      - text: Add to dashboard
+  - heading [level=2]: 4 charts
+  - button:
+    - text: Clear all
+  - heading [level=3]: Region breakdown
+  - paragraph: pie · Region · Sales
+  - button:
+  - application
+  - heading [level=3]: Sales over Date
+  - paragraph: line · Date · Sales
+  - button:
+  - application:
+    - generic: 2026-01-01
+    - generic: 2026-01-02
+    - generic: 2026-01-03
+    - generic: 2026-01-04
+    - generic: 2026-01-05
+    - generic: 2026-01-06
+    - generic: "0"
+    - generic: "75"
+    - generic: "150"
+    - generic: "225"
+    - generic: "300"
+  - heading [level=3]: Sales by Region
+  - paragraph: bar · Region · Sales
+  - button:
+  - application:
+    - generic: South
+    - generic: West
+    - generic: North
+    - generic: "0"
+    - generic: "150"
+    - generic: "300"
+    - generic: "450"
+    - generic: "600"
+  - heading [level=3]: Numeric correlation
+  - paragraph: heatmap
+  - button:
+  - table:
+    - rowgroup:
+      - row:
+        - columnheader
+        - columnheader: Sales
+        - columnheader: Units
+    - rowgroup:
+      - row:
+        - rowheader: Sales
+        - cell: "1"
+        - cell: "1"
+      - row:
+        - rowheader: Units
+        - cell: "1"
+        - cell: "1"
+- complementary:
+  - link:
+    - /url: https://lovable.dev/projects/lovp_1gf1p0vvf2809azmdrntp7wvpq?utm_source=lovable-badge
+    - generic: Edit with
+  - button:
+- generic: "450"
+- listbox:
+  - option "None" [active] [selected]:
+    - generic: None
+  - option "Date":
+    - generic: Date
+  - option "Region":
+    - generic: Region

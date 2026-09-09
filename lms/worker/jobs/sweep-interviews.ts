@@ -52,6 +52,12 @@ export interface SweepDeps {
  * Grant one retake unless the student already holds an unused one. Returns
  * whether a grant was created, and never throws into the sweep: failing to
  * hand back an attempt must not stop the rest of the repairs from running.
+ *
+ * The read-then-create below is check-then-act, so two concurrent sweeps could
+ * both see "none" and both insert, handing a student two extra attempts at a
+ * graded assessment. The partial unique index
+ * `InterviewRetake_one_unused_per_user` makes that impossible; the loser of the
+ * race lands in the catch and reports no grant, which is the truth.
  */
 async function grantRetakeIfNone(
   db: PrismaClient,

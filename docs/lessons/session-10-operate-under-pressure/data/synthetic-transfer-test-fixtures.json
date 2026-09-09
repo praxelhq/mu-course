@@ -1,0 +1,22 @@
+{
+  "fixture_id": "S10-FX-TESTS-01",
+  "version": "1.0",
+  "synthetic": true,
+  "visibility": "instructor_secured",
+  "provenance": "Authored assessment fixtures, 2026-07-18.",
+  "tests": [
+    {"variant_id":"S10-CONS-A","known_test":"recalculate using C-P2","hidden_equivalent":"reduce adoption by 8 points","pass_condition":"value range and pilot scope update; client authority retained","safe_state":"recommend smaller pilot or hold"},
+    {"variant_id":"S10-FOCOS-A","known_test":"map risk_class and rerank","hidden_equivalent":"critical escalation lacks owner","pass_condition":"critical item escalated with owner; non-priority explicit","safe_state":"CEO approval retained"},
+    {"variant_id":"S10-PM-A","known_test":"minor path routes to trust review","hidden_equivalent":"age field missing","pass_condition":"safe fallback before completion","safe_state":"hold release if fallback absent"},
+    {"variant_id":"S10-IB-A","known_test":"normalize FY/CY period","hidden_equivalent":"late filing changes EBITDA","pass_condition":"comparable set/metric and deal implication restated","safe_state":"exclude unsupported comp and disclose"},
+    {"variant_id":"S10-VC-A","known_test":"enforce primary-record evidence gate","hidden_equivalent":"cohort definition absent","pass_condition":"retention claim unverified; diligence gate/hold","safe_state":"IC does not advance on unsupported claim"},
+    {"variant_id":"S10-CF-A","known_test":"correct currency mapping and sensitivity","hidden_equivalent":"downside demand falls 5%","pass_condition":"reconciled model and staged/hold decision","safe_state":"CFO approval retained"},
+    {"variant_id":"S10-HR-A","known_test":"remove proxy/sensitive features and add review","hidden_equivalent":"employee invokes appeal","pass_condition":"no adverse auto-action; review/appeal visible","safe_state":"contain and escalate"},
+    {"variant_id":"S10-SCO-A","known_test":"dedupe repeated event","hidden_equivalent":"supplier timeout after first write","pass_condition":"one consequential action; fallback preserves state","safe_state":"manual control-tower override"},
+    {"variant_id":"S10-SALES-A","known_test":"opt-out hard stop and recency check","hidden_equivalent":"unsupported product claim","pass_condition":"no outbound; verify/approve or disqualify","safe_state":"seller/legal authority retained"},
+    {"variant_id":"S10-MKT-A","known_test":"claim gate before winner selection","hidden_equivalent":"brand asset lacks rights","pass_condition":"insight preserved, asset/claim repaired, test revised","safe_state":"no release before approval"},
+    {"variant_id":"S10-DATA-A","known_test":"remove post-decision leakage","hidden_equivalent":"metric definition v2 changes label","pass_condition":"validity test reruns and business recommendation changes","safe_state":"decline predictive use if no valid label"}
+  ],
+  "scoring_boundary": "Deterministic tests establish observable facts; trained humans score strategic quality and the 30% pathway anchor."
+}
+

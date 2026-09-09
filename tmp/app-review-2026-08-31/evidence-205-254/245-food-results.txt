@@ -1,0 +1,61 @@
+- banner:
+  - button "Go back":
+  - heading "What should I eat?" [level=1]
+  - paragraph: Decide in 10 seconds
+- main:
+  - paragraph: How hungry are you?
+  - button "Light"
+  - button "Normal"
+  - button "Very hungry"
+  - paragraph: Where from?
+  - button "Mess"
+  - button "Canteen"
+  - button "Delivery"
+  - button "Anything"
+  - button "Ask again":
+    - text: Ask again
+  - generic: 🥗
+  - paragraph: Curd rice bowl + sprout salad
+  - paragraph: Hostel mess · Included · 430 kcal · 18 g protein
+  - paragraph: Light, gut-friendly and fits your remaining calories.
+  - generic: 94%
+  - generic: 🍳
+  - paragraph: Egg bhurji + 2 multigrain rotis
+  - paragraph: Campus canteen · ₹70 · 480 kcal · 26 g protein
+  - paragraph: Closes your protein gap without going over budget.
+  - generic: 91%
+  - generic: 🌯
+  - paragraph: Paneer tikka wrap
+  - paragraph: Green Bowl, 1.2 km · ₹149 · 520 kcal · 24 g protein
+  - paragraph: Vegetarian, high protein, moderate oil.
+  - generic: 84%
+  - generic: 🍉
+  - paragraph: Fruit bowl + peanut chikki
+  - paragraph: Hostel tuck shop · ₹45 · 260 kcal · 7 g protein
+  - paragraph: Good if you just need a light evening fix.
+  - generic: 78%
+  - link "Browse delivery options":
+    - /url: /order
+- navigation:
+  - list:
+    - link "Home":
+      - /url: /home
+      - generic: Home
+    - link "Log":
+      - /url: /log
+      - generic: Log
+    - link "Scan":
+      - /url: /scan
+      - generic: Scan
+    - link "Coach":
+      - /url: /recommendations
+      - generic: Coach
+    - link "Profile":
+      - /url: /profile
+      - generic: Profile
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_25aah1gfmf84ysf426ybmhv3p7?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

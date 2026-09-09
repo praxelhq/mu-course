@@ -1,0 +1,42 @@
+- main:
+  - button "Go back":
+    - generic: arrow_back
+  - generic: Step 3 of 4
+  - button "Skip"
+  - heading "What are you in the mood for?" [level=1]
+  - button "Cheat Meal"
+  - button "Healthy"
+  - button "Snacks"
+  - button "Fast Food"
+  - button "Comfort Food"
+  - button "Quick Bite"
+  - button "High Protein"
+  - button "Low Calorie"
+  - button "Full Meal"
+  - button "Something Sweet"
+  - button "Spicy"
+  - button "Light Meal"
+  - heading "Anything we should avoid?" [level=2]
+  - button "spa Vegetarian":
+    - generic: spa
+    - generic: Vegetarian
+  - button "cruelty_free Vegan":
+    - generic: cruelty_free
+    - generic: Vegan
+  - button "egg_alt Eggless":
+    - generic: egg_alt
+    - generic: Eggless
+  - button "grain Gluten-Free":
+    - generic: grain
+    - generic: Gluten-Free
+  - button "water_drop Dairy-Free":
+    - generic: water_drop
+    - generic: Dairy-Free
+  - button "set_meal Shellfish-Free":
+    - generic: set_meal
+    - generic: Shellfish-Free
+  - generic: warning
+  - textbox "List specific allergies (e.g., Peanuts, Soy, Shellfish)"
+  - button "Find My Food auto_awesome":
+    - generic: Find My Food
+    - generic: auto_awesome

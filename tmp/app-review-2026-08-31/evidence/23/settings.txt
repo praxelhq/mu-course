@@ -1,0 +1,83 @@
+- region "Notifications (F8)":
+  - list
+- region "Notifications alt+T"
+- complementary:
+  - generic: InfluencerOS
+  - navigation:
+    - link "Dashboard":
+      - /url: /
+      - generic: Dashboard
+    - link "Campaigns":
+      - /url: /campaigns
+      - generic: Campaigns
+    - link "AI Campaign Planner":
+      - /url: /ai-planner
+      - generic: AI Campaign Planner
+    - link "Creators":
+      - /url: /creators
+      - generic: Creators
+    - link "Content Approval":
+      - /url: /content-approval
+      - generic: Content Approval
+    - link "Performance & ROI":
+      - /url: /performance
+      - generic: Performance & ROI
+    - link "Payments & Ledger":
+      - /url: /payments
+      - generic: Payments & Ledger
+    - link "Assets & Logistics":
+      - /url: /assets
+      - generic: Assets & Logistics
+    - link "Settings" [active]:
+      - /url: /settings
+      - generic: Settings
+  - button "Collapse":
+    - generic: Collapse
+- banner:
+  - textbox "Search campaigns, creators, content..."
+  - button "3":
+    - generic: "3"
+  - button "M MamaEarth":
+    - generic: M
+    - generic: MamaEarth
+  - button "Arun Kumar Marketing Manager":
+    - paragraph: Arun Kumar
+    - paragraph: Marketing Manager
+- main:
+  - heading "Settings" [level=1]
+  - paragraph: Manage your account and preferences
+  - tablist:
+    - tab "Team" [selected]:
+      - text: Team
+    - tab "Brand KYC":
+      - text: Brand KYC
+    - tab "Payments":
+      - text: Payments
+    - tab "Integrations":
+      - text: Integrations
+  - tabpanel "Team":
+    - heading "Team Members" [level=3]
+    - paragraph: Arun Kumar
+    - paragraph: arun@mamaearth.com
+    - generic: Admin
+    - paragraph: Priya Mehta
+    - paragraph: priya@mamaearth.com
+    - generic: Editor
+    - paragraph: Rahul Singh
+    - paragraph: rahul@mamaearth.com
+    - generic: Viewer
+    - button "Invite Team Member":
+      - text: Invite Team Member
+    - heading "Role Permissions" [level=3]
+    - paragraph: Admin
+    - paragraph: Full access to all features
+    - paragraph: Editor
+    - paragraph: Can create and edit campaigns, manage creators
+    - paragraph: Viewer
+    - paragraph: Read-only access to dashboards and reports
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_05t71mwv1r9qb9tdwk5a0m9t2d?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: ₹0

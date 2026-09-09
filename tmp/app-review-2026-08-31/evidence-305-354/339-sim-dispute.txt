@@ -1,0 +1,48 @@
+- banner:
+  - generic: RentCred
+  - generic: Bento Grid
+  - paragraph: Portable Tenancy Score System
+  - button "Landing":
+    - generic: Landing
+  - button "Tenant Portal":
+    - generic: Tenant Portal
+  - button "Landlord View":
+    - generic: Landlord View
+  - button "Consent & Tasks":
+    - generic: Consent & Tasks
+  - button "Simulator":
+    - generic: Simulator
+- generic: Interactive Score Simulator
+- heading "RentCred Score Simulator" [level=1]
+- paragraph: Model how rental habits and lease tenure impact your portable score.
+- button "Return To Dashboard":
+  - text: Return To Dashboard
+- heading "Adjust Rental Metrics" [level=3]
+- generic: On-Time Payment Rate
+- generic: 95%
+- slider: "95"
+- paragraph: Percentage of rental payments completed on or before the due date.
+- generic: Verified Lease Tenure
+- generic: 3 Years
+- slider: "3"
+- paragraph: Total consecutive months or years of documented rental history.
+- generic: Monthly Income-to-Rent Ratio
+- generic: 3.5x
+- slider: "3.5"
+- paragraph: Your monthly gross income divided by your monthly rent.
+- paragraph: Connect Utility & Wi-Fi Data
+- paragraph: Adds utility, power, and internet bill consistency (+30 pts)
+- checkbox [checked]
+- paragraph: Unresolved Dispute Flag
+- paragraph: Active unverified claim or unpaid damage claim (-60 pts)
+- checkbox [checked] [active]
+- generic: PROJECTED METRIC
+- generic: High-Trust Profile
+- generic: "774"
+- generic: Prime Status
+- paragraph: "Projection Breakdown:"
+- list:
+  - listitem: • On-time rent payment log contributes ~35% of total score calculation.
+  - listitem: • Maintaining a tenure over 2 years unlocks deposit-waiver programs.
+  - listitem: • Resolving active disputes restores +60 points to your score profile!
+- button "Save Projection & Exit"

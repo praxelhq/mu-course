@@ -1,0 +1,24 @@
+- main:
+  - button "Go back":
+  - generic: 4/5
+  - heading "⏰ How much time do you have?" [level=2]
+  - paragraph: Be honest about the curfew.
+  - button "Under 1 hour In and out":
+    - generic: Under 1 hour
+    - generic: In and out
+  - button "1–2 hours Just enough":
+    - generic: 1–2 hours
+    - generic: Just enough
+  - button "2–4 hours Proper hangout":
+    - generic: 2–4 hours
+    - generic: Proper hangout
+  - button "All evening No plans after":
+    - generic: All evening
+    - generic: No plans after
+  - button "Continue" [disabled]:
+    - text: Continue
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7kh9wqajyf8xxsm9vc3sqtdh9t?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

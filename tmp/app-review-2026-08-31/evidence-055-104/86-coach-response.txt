@@ -1,0 +1,36 @@
+- banner:
+  - paragraph: Quit Coach
+  - paragraph: Always here, never judging.
+- main:
+  - generic: Give me a reason to keep going
+  - generic: One day down is a massive hurdle, and that ₹158 saved is already proof of your progress, Alex. You’re teaching your brain how to handle boredom without a cigarette, which is a skill that gets easier every time you practice it. Try a "change of scenery" right now—simply moving to a different room or stepping outside for fresh air can break the mental loop.
+  - textbox "Tell your coach what's going on…"
+  - button "Send message" [disabled]:
+    - generic: send
+- navigation:
+  - link "Home":
+    - /url: /home
+    - generic: home
+    - generic: Home
+  - link "Progress":
+    - /url: /progress
+    - generic: insights
+    - generic: Progress
+  - link "Coach":
+    - /url: /coach
+    - generic: psychology
+    - generic: Coach
+  - link "Insights":
+    - /url: /insights
+    - generic: leaderboard
+    - generic: Insights
+  - link "Profile":
+    - /url: /profile
+    - generic: person
+    - generic: Profile
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_19mhcg6jxz8s9s6ch802n4v9n3?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

@@ -1,0 +1,45 @@
+{
+  "reviewer": "api-contract",
+  "verdict": "changes-required",
+  "findings": [
+    {
+      "id": "P1-token-route-integration-suite-has-no-agent-readiness-fixture",
+      "severity": "P1",
+      "file": "lms/app/api/interview/token/route.ts",
+      "lines": "50-68",
+      "title": "The new admission prerequisite makes the existing token-route integration contract fail",
+      "evidence": "`agentReady = await realtimeAgentAvailable(prisma, now);` now gates every configured-LiveKit request, and `realtimeAgentAvailable` returns false when `loadRuntimeIdentity()` is unverified. The existing integration tests only stub LiveKit before expecting 409/429/200 (lms/tests/interview-realtime.test.ts:147-191); no test fixture provides BUILD_SOURCE_SHA plus a matching fresh agent heartbeat.",
+      "impact": "On the normal test checkout, no BUILD_SOURCE_SHA exists, so all configured-LiveKit token cases short-circuit to 503 instead of exercising their documented 409/429/200 contracts. CI cannot prove the changed admission path, and the existing suite will fail once its database is available.",
+      "recommendation": "Inject or mock runtime identity and service-heartbeat lookup in token-route tests, then add route-level cases for fresh matching, stale, mismatched, and error-count heartbeats. Keep the pure helper tests, but they do not cover the route contract."
+    },
+    {
+      "id": "P1-e2e-simulation-still-exercises-the-retired-fallback-contract",
+      "severity": "P1",
+      "file": "lms/scripts/interview-simulate.ts",
+      "lines": "246-301",
+      "title": "The repository's interview simulation is now a guaranteed false failure",
+      "evidence": "The simulator asserts `fallback flip → 200` and `transport is now turnbased-fallback`, but the replacement fallback endpoint always returns `409` (lms/app/api/interview/fallback/route.ts:10-18) and never updates transport.",
+      "impact": "The requested end-to-end/release proof cannot pass against this diff; it validates a deliberately removed manual-recording path rather than LiveKit reconnect, agent completion, and grading.",
+      "recommendation": "Replace the degradation scenario with a realtime reconnect scenario: create a ready heartbeat, mint/rejoin the same LiveKit interview, append agent turns after reconnect, call agent-complete, and wait for grading. Remove manual `nextQuestion`/`submitAnswer` assertions from that path."
+    },
+    {
+      "id": "P2-existing-session-503-claims-the-attempt-never-started",
+      "severity": "P2",
+      "file": "lms/app/api/interview/token/route.ts",
+      "lines": "29-68",
+      "title": "Resume and new-attempt failures share a false user-facing contract",
+      "evidence": "The route discovers a `status: \"live\"` realtime interview at lines 29-34, then returns `\"Your attempt has not started\"` when the agent is unavailable at lines 61-68. The client renders that server error unchanged (lms/app/(room)/interview/live/interview-client.tsx:48-52).",
+      "impact": "A student whose interview already contains turns is told the opposite of the stored state during a worker restart, which is especially harmful after the cut-off incident this patch addresses.",
+      "recommendation": "Return an explicit `resumed: true` (or a resume-specific error/message) on the readiness failure for an existing realtime interview, and render it as a paused live session that will resume rather than an unstarted attempt."
+    }
+  ],
+  "residual_risks": [
+    "Retiring the public manual endpoints is aligned with the stated product intent, but external/stale clients now receive 409/410 JSON contracts and need a communicated migration path.",
+    "The 10-second client retry treats a rate-limit 429 without `waiting:true` as generic unavailability; this is safe but obscures the rate-limit reason."
+  ],
+  "testing_gaps": [
+    "No route-level test proves a fresh matching agent heartbeat yields a token while a stale/mismatched/error heartbeat yields 503 without creating an interview.",
+    "No browser or LiveKit integration test proves a disconnect remounts with a new token and preserves the same interview ID.",
+    "The full simulation script has not been migrated from retired fallback semantics, so it cannot serve as the requested LLM-student end-to-end evidence."
+  ]
+}

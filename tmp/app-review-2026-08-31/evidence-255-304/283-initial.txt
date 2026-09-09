@@ -1,0 +1,49 @@
+- navigation:
+  - link "JobLens //":
+    - /url: /
+  - link "Matches":
+    - /url: /matches
+  - link "Companies":
+    - /url: /companies
+  - link "Network":
+    - /url: /network
+  - link "Sign in":
+    - /url: /auth
+- main:
+  - generic: India-first · Freshers and professionals scored separately
+  - heading "Matches with the maths attached." [level=1]
+  - paragraph: JobLens scores every listing against your actual profile across four vectors, shows you the breakdown, and hides everything under your threshold. Company ratings come from verified accounts. Referrals come from employees who opted in.
+  - link "Build your profile":
+    - /url: /auth
+  - link "Browse company reviews":
+    - /url: /companies
+  - generic: EX
+  - heading "How a match reads" [level=3]
+  - paragraph: Example breakdown · Bengaluru · Hybrid
+  - generic: 91%
+  - generic: Match score
+  - generic: Skills
+  - generic: "0.94"
+  - generic: Experience
+  - generic: "0.86"
+  - generic: Logistics
+  - generic: "1.00"
+  - generic: Role level
+  - generic: "0.88"
+  - complementary:
+    - heading "Why the scores differ" [level=2]
+    - paragraph: Freshers are weighted on skills, projects, coursework and certifications. Professionals are weighted on trajectory, scope of ownership and outcomes. The same listing scores differently for each.
+    - heading "What is checkable" [level=2]
+    - list:
+      - listitem: Every sub-score is shown with the evidence behind it.
+      - listitem: Reviews need a verified account, even when posted anonymously.
+      - listitem: Flagged reviews leave the public page until reviewed.
+      - listitem: Referrers set their own teams, seniority range and criteria.
+    - heading "Listings source" [level=3]
+    - paragraph: Listings currently come from a seeded India-first dataset. The jobs table is source-agnostic (source + external_id), so an external aggregation API can be wired in without changing the matching engine.
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7jq76qzcdh8sfan2n6536tvfcr?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

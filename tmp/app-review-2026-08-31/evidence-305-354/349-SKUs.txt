@@ -1,0 +1,66 @@
+- banner:
+  - link "Warehouse Ops":
+    - /url: /
+  - navigation:
+    - link "Dashboard":
+      - /url: /
+      - text: Dashboard
+    - link "Warehouses":
+      - /url: /warehouses
+      - text: Warehouses
+    - link "SKUs" [active]:
+      - /url: /skus
+      - text: SKUs
+    - link "Receive":
+      - /url: /inventory/receive
+      - text: Receive
+    - link "Issue":
+      - /url: /inventory/issue
+      - text: Issue
+    - link "Transfer":
+      - /url: /inventory/transfer
+      - text: Transfer
+    - link "Ledger":
+      - /url: /ledger
+      - text: Ledger
+    - link "Import":
+      - /url: /import
+      - text: Import
+- heading "SKUs" [level=1]
+- heading "New SKU" [level=2]
+- generic: SKU Code
+- textbox "SKU-001"
+- generic: Name
+- textbox "Widget"
+- generic: Unit of Measure
+- textbox: EA
+- generic: Unit Volume (m³)
+- spinbutton: "0"
+- button "Add":
+  - text: Add
+- table:
+  - rowgroup:
+    - row "SKU Code Name UoM Unit Volume (m³)":
+      - columnheader "SKU Code"
+      - columnheader "Name"
+      - columnheader "UoM"
+      - columnheader "Unit Volume (m³)"
+      - columnheader
+  - rowgroup:
+    - row "SKU-0001 Honey Chill Potato No. 1.000000":
+      - cell "SKU-0001"
+      - cell "Honey Chill Potato"
+      - cell "No."
+      - cell "1.000000"
+      - cell:
+        - button:
+    - row "SKU-001 Widget - Small EA 0.010000":
+      - cell "SKU-001"
+      - cell "Widget - Small"
+      - cell "EA"
+      - cell "0.010000"
+      - cell:
+        - button:
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

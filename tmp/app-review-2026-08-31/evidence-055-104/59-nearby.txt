@@ -1,0 +1,330 @@
+- complementary:
+  - link "Pin You've been meaning to go":
+    - /url: /map
+    - generic: Pin
+    - generic: You've been meaning to go
+  - navigation "Primary":
+    - link "Map":
+      - /url: /map
+      - text: Map
+    - link "Nearby" [active]:
+      - /url: /nearby
+      - text: Nearby
+    - link "Collections":
+      - /url: /collections
+      - text: Collections
+    - link "Friends":
+      - /url: /friends
+      - text: Friends
+    - link "Plans":
+      - /url: /plans
+      - text: Plans
+    - link "Visited":
+      - /url: /visited
+      - text: Visited
+  - link "P Prisha Your map":
+    - /url: /profile
+    - generic: P
+    - generic: Prisha
+    - generic: Your map
+- main:
+  - heading "Nearby" [level=1]
+  - paragraph: Things you've saved, sorted by how close they are right now.
+  - application "Your saved places map":
+    - button "Cyber Hub Social, Food":
+    - button "Soi 7 Pub & Brewery, Bars":
+    - button "The Wine Company, Bars":
+      - generic: K
+    - button "Farzi Café, Food":
+    - button "The Drunken Botanist, Bars":
+    - button "Burma Burma, Food":
+    - button "Yum Yum Cha, Food":
+    - button "Smaaash, Activities":
+    - button "iSKATE, Activities":
+    - button "Aravalli Biodiversity Park, Activities":
+    - button "The Piano Man Gurugram, Bars":
+    - button "Greenr Café, Coffee":
+      - generic: R
+    - button "Pintxo, Food":
+    - button "House of Celeste, Food":
+    - button "Prankster, Bars":
+      - generic: K
+    - button "7 Degrees Brauhaus, Bars":
+    - button "After Stories, Bars":
+    - button "Gung The Palace, Food":
+      - generic: A
+    - button "Leisure Valley Park, Activities":
+    - button "Mystery Rooms, Activities":
+    - button "Kingdom of Dreams, Activities":
+    - button "Caffe Tonino, Food":
+    - button "Comorin, Food":
+    - button "Whisky Samba, Bars":
+    - button "Café Stay Woke, Coffee":
+    - button "Café Amaretto, Coffee":
+    - button "Indian Grill Room, Food":
+      - generic: A
+    - button "Another Fine Day, Coffee":
+    - button "The Pasta Bowl Company, Food":
+    - button "Museo Camera, Activities":
+    - button "Good Earth City Centre, Shopping":
+    - button "Sibang Bakery, Coffee":
+    - button "SkyJumper Trampoline Park, Activities":
+    - 'button "Hamoni: Café by the Greens, Coffee"':
+    - button "Om Sweets & Snacks, Food":
+    - button "Sultanpur National Park, Activities":
+    - button "Damdama Lake, Travel":
+    - button "NeverEnuf Garden Railway, Activities":
+    - button "Jaipur Weekend, Travel":
+    - button "Neemrana Fort Day Trip, Travel":
+  - heading "5 minutes away" [level=2]
+  - paragraph: Basically outside your door
+  - link "Cyber Hub Social 4 minutes away Cyber Hub Social the restaurant you saved 3 weeks ago":
+    - /url: /place/social
+    - img "Cyber Hub Social"
+    - paragraph: 4 minutes away
+    - heading "Cyber Hub Social" [level=3]
+    - paragraph: the restaurant you saved 3 weeks ago
+  - link "Soi 7 Pub & Brewery 5 minutes away Soi 7 Pub & Brewery the bar you saved 1 month ago":
+    - /url: /place/soi7
+    - img "Soi 7 Pub & Brewery"
+    - paragraph: 5 minutes away
+    - heading "Soi 7 Pub & Brewery" [level=3]
+    - paragraph: the bar you saved 1 month ago
+  - link "The Wine Company 5 minutes away The Wine Company the bar you saved 2 months ago":
+    - /url: /place/winecompany
+    - img "The Wine Company"
+    - paragraph: 5 minutes away
+    - heading "The Wine Company" [level=3]
+    - paragraph: the bar you saved 2 months ago
+  - link "Farzi Café 5 minutes away Farzi Café the restaurant you saved 2 months ago":
+    - /url: /place/farzi
+    - img "Farzi Café"
+    - paragraph: 5 minutes away
+    - heading "Farzi Café" [level=3]
+    - paragraph: the restaurant you saved 2 months ago
+  - link "The Drunken Botanist 6 minutes away The Drunken Botanist the bar you saved 1 month ago":
+    - /url: /place/botanist
+    - img "The Drunken Botanist"
+    - paragraph: 6 minutes away
+    - heading "The Drunken Botanist" [level=3]
+    - paragraph: the bar you saved 1 month ago
+  - link "Burma Burma 6 minutes away Burma Burma the restaurant you saved 4 months ago":
+    - /url: /place/burmaburma
+    - img "Burma Burma"
+    - paragraph: 6 minutes away
+    - heading "Burma Burma" [level=3]
+    - paragraph: the restaurant you saved 4 months ago
+  - link "Yum Yum Cha 6 minutes away Yum Yum Cha the restaurant you saved 6 weeks ago":
+    - /url: /place/yumyumcha
+    - img "Yum Yum Cha"
+    - paragraph: 6 minutes away
+    - heading "Yum Yum Cha" [level=3]
+    - paragraph: the restaurant you saved 6 weeks ago
+  - link "Smaaash 7 minutes away Smaaash the spot you saved 5 weeks ago":
+    - /url: /place/smaaash
+    - img "Smaaash"
+    - paragraph: 7 minutes away
+    - heading "Smaaash" [level=3]
+    - paragraph: the spot you saved 5 weeks ago
+  - heading "15 minutes away" [level=2]
+  - paragraph: A short walk or quick ride
+  - link "iSKATE 8 minutes away iSKATE the spot you saved 3 months ago":
+    - /url: /place/iskate
+    - img "iSKATE"
+    - paragraph: 8 minutes away
+    - heading "iSKATE" [level=3]
+    - paragraph: the spot you saved 3 months ago
+  - link "Aravalli Biodiversity Park 12 minutes away Aravalli Biodiversity Park the spot you saved 6 months ago":
+    - /url: /place/aravalli
+    - img "Aravalli Biodiversity Park"
+    - paragraph: 12 minutes away
+    - heading "Aravalli Biodiversity Park" [level=3]
+    - paragraph: the spot you saved 6 months ago
+  - link "The Piano Man Gurugram 15 minutes away The Piano Man Gurugram the bar you saved 5 weeks ago":
+    - /url: /place/pianoman
+    - img "The Piano Man Gurugram"
+    - paragraph: 15 minutes away
+    - heading "The Piano Man Gurugram" [level=3]
+    - paragraph: the bar you saved 5 weeks ago
+  - link "Greenr Café 15 minutes away Greenr Café the café you saved 2 months ago":
+    - /url: /place/greenr
+    - img "Greenr Café"
+    - paragraph: 15 minutes away
+    - heading "Greenr Café" [level=3]
+    - paragraph: the café you saved 2 months ago
+  - link "Pintxo 16 minutes away Pintxo the restaurant you saved 2 months ago":
+    - /url: /place/pintxo
+    - img "Pintxo"
+    - paragraph: 16 minutes away
+    - heading "Pintxo" [level=3]
+    - paragraph: the restaurant you saved 2 months ago
+  - link "House of Celeste 16 minutes away House of Celeste the restaurant you saved 3 months ago":
+    - /url: /place/celeste
+    - img "House of Celeste"
+    - paragraph: 16 minutes away
+    - heading "House of Celeste" [level=3]
+    - paragraph: the restaurant you saved 3 months ago
+  - link "Caffe Tonino 16 minutes away Caffe Tonino the restaurant you saved 4 months ago":
+    - /url: /place/tonino
+    - img "Caffe Tonino"
+    - paragraph: 16 minutes away
+    - heading "Caffe Tonino" [level=3]
+    - paragraph: the restaurant you saved 4 months ago
+  - link "Another Fine Day 16 minutes away Another Fine Day the café you saved 3 weeks ago":
+    - /url: /place/afd
+    - img "Another Fine Day"
+    - paragraph: 16 minutes away
+    - heading "Another Fine Day" [level=3]
+    - paragraph: the café you saved 3 weeks ago
+  - link "Om Sweets & Snacks 14 minutes away Om Sweets & Snacks the restaurant you saved 3 months ago":
+    - /url: /place/omsweets
+    - img "Om Sweets & Snacks"
+    - paragraph: 14 minutes away
+    - heading "Om Sweets & Snacks" [level=3]
+    - paragraph: the restaurant you saved 3 months ago
+  - heading "Worth travelling for" [level=2]
+  - paragraph: Save these for a day out
+  - link "Prankster 18 minutes away Prankster the bar you saved 3 weeks ago":
+    - /url: /place/prankster
+    - img "Prankster"
+    - paragraph: 18 minutes away
+    - heading "Prankster" [level=3]
+    - paragraph: the bar you saved 3 weeks ago
+  - link "7 Degrees Brauhaus 19 minutes away 7 Degrees Brauhaus the bar you saved 1 month ago":
+    - /url: /place/brauhaus
+    - img "7 Degrees Brauhaus"
+    - paragraph: 19 minutes away
+    - heading "7 Degrees Brauhaus" [level=3]
+    - paragraph: the bar you saved 1 month ago
+  - link "After Stories 19 minutes away After Stories the bar you saved 1 month ago":
+    - /url: /place/afterstories
+    - img "After Stories"
+    - paragraph: 19 minutes away
+    - heading "After Stories" [level=3]
+    - paragraph: the bar you saved 1 month ago
+  - link "Gung The Palace 18 minutes away Gung The Palace the restaurant you saved 2 months ago":
+    - /url: /place/gung
+    - img "Gung The Palace"
+    - paragraph: 18 minutes away
+    - heading "Gung The Palace" [level=3]
+    - paragraph: the restaurant you saved 2 months ago
+  - link "Leisure Valley Park 20 minutes away Leisure Valley Park the spot you saved 4 months ago":
+    - /url: /place/leisurevalley
+    - img "Leisure Valley Park"
+    - paragraph: 20 minutes away
+    - heading "Leisure Valley Park" [level=3]
+    - paragraph: the spot you saved 4 months ago
+  - link "Mystery Rooms 18 minutes away Mystery Rooms the spot you saved 6 weeks ago":
+    - /url: /place/mysteryrooms
+    - img "Mystery Rooms"
+    - paragraph: 18 minutes away
+    - heading "Mystery Rooms" [level=3]
+    - paragraph: the spot you saved 6 weeks ago
+  - link "Kingdom of Dreams 22 minutes away Kingdom of Dreams the spot you saved 8 months ago":
+    - /url: /place/kingdom
+    - img "Kingdom of Dreams"
+    - paragraph: 22 minutes away
+    - heading "Kingdom of Dreams" [level=3]
+    - paragraph: the spot you saved 8 months ago
+  - link "Comorin 17 minutes away Comorin the restaurant you saved 6 months ago":
+    - /url: /place/comorin
+    - img "Comorin"
+    - paragraph: 17 minutes away
+    - heading "Comorin" [level=3]
+    - paragraph: the restaurant you saved 6 months ago
+  - link "Whisky Samba 18 minutes away Whisky Samba the bar you saved 2 months ago":
+    - /url: /place/whiskysamba
+    - img "Whisky Samba"
+    - paragraph: 18 minutes away
+    - heading "Whisky Samba" [level=3]
+    - paragraph: the bar you saved 2 months ago
+  - link "Café Stay Woke 17 minutes away Café Stay Woke the café you saved 2 weeks ago":
+    - /url: /place/staywoke
+    - img "Café Stay Woke"
+    - paragraph: 17 minutes away
+    - heading "Café Stay Woke" [level=3]
+    - paragraph: the café you saved 2 weeks ago
+  - link "Café Amaretto 18 minutes away Café Amaretto the café you saved 1 month ago":
+    - /url: /place/amaretto
+    - img "Café Amaretto"
+    - paragraph: 18 minutes away
+    - heading "Café Amaretto" [level=3]
+    - paragraph: the café you saved 1 month ago
+  - link "Indian Grill Room 18 minutes away Indian Grill Room the restaurant you saved 3 months ago":
+    - /url: /place/indiangrill
+    - img "Indian Grill Room"
+    - paragraph: 18 minutes away
+    - heading "Indian Grill Room" [level=3]
+    - paragraph: the restaurant you saved 3 months ago
+  - link "The Pasta Bowl Company 17 minutes away The Pasta Bowl Company the restaurant you saved 5 months ago":
+    - /url: /place/pastabowl
+    - img "The Pasta Bowl Company"
+    - paragraph: 17 minutes away
+    - heading "The Pasta Bowl Company" [level=3]
+    - paragraph: the restaurant you saved 5 months ago
+  - link "Museo Camera 17 minutes away Museo Camera the spot you saved 8 months ago":
+    - /url: /place/museo
+    - img "Museo Camera"
+    - paragraph: 17 minutes away
+    - heading "Museo Camera" [level=3]
+    - paragraph: the spot you saved 8 months ago
+  - link "Good Earth City Centre 21 minutes away Good Earth City Centre the store you saved 2 months ago":
+    - /url: /place/goodearth
+    - img "Good Earth City Centre"
+    - paragraph: 21 minutes away
+    - heading "Good Earth City Centre" [level=3]
+    - paragraph: the store you saved 2 months ago
+  - link "Sibang Bakery 22 minutes away Sibang Bakery the café you saved 6 weeks ago":
+    - /url: /place/sibang
+    - img "Sibang Bakery"
+    - paragraph: 22 minutes away
+    - heading "Sibang Bakery" [level=3]
+    - paragraph: the café you saved 6 weeks ago
+  - link "SkyJumper Trampoline Park 23 minutes away SkyJumper Trampoline Park the spot you saved 1 month ago":
+    - /url: /place/skyjumper
+    - img "SkyJumper Trampoline Park"
+    - paragraph: 23 minutes away
+    - heading "SkyJumper Trampoline Park" [level=3]
+    - paragraph: the spot you saved 1 month ago
+  - 'link "Hamoni: Café by the Greens 25 minutes away Hamoni: Café by the Greens the café you saved 4 months ago"':
+    - /url: /place/hamoni
+    - 'img "Hamoni: Café by the Greens"'
+    - paragraph: 25 minutes away
+    - 'heading "Hamoni: Café by the Greens" [level=3]'
+    - paragraph: the café you saved 4 months ago
+  - link "Sultanpur National Park 30 minutes away Sultanpur National Park the spot you saved 1 year ago":
+    - /url: /place/sultanpur
+    - img "Sultanpur National Park"
+    - paragraph: 30 minutes away
+    - heading "Sultanpur National Park" [level=3]
+    - paragraph: the spot you saved 1 year ago
+  - link "Damdama Lake 45 minutes away Damdama Lake the trip you saved 3 weeks ago":
+    - /url: /place/damdama
+    - img "Damdama Lake"
+    - paragraph: 45 minutes away
+    - heading "Damdama Lake" [level=3]
+    - paragraph: the trip you saved 3 weeks ago
+  - link "NeverEnuf Garden Railway 35 minutes away NeverEnuf Garden Railway the spot you saved 9 months ago":
+    - /url: /place/neverbenuf
+    - img "NeverEnuf Garden Railway"
+    - paragraph: 35 minutes away
+    - heading "NeverEnuf Garden Railway" [level=3]
+    - paragraph: the spot you saved 9 months ago
+  - link "Jaipur Weekend 240 minutes away Jaipur Weekend the trip you saved 3 weeks ago":
+    - /url: /place/jaipur
+    - img "Jaipur Weekend"
+    - paragraph: 240 minutes away
+    - heading "Jaipur Weekend" [level=3]
+    - paragraph: the trip you saved 3 weeks ago
+  - link "Neemrana Fort Day Trip 120 minutes away Neemrana Fort Day Trip the trip you saved 2 months ago":
+    - /url: /place/neemrana
+    - img "Neemrana Fort Day Trip"
+    - paragraph: 120 minutes away
+    - heading "Neemrana Fort Day Trip" [level=3]
+    - paragraph: the trip you saved 2 months ago
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_0hbgfhy9zy8jkvmpn3tsp8bgm1?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

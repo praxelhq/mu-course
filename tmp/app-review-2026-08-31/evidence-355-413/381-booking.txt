@@ -1,0 +1,79 @@
+- banner:
+  - link "PawPal":
+    - /url: /
+    - generic: PawPal
+  - link "Cart":
+    - /url: /cart
+- main:
+  - heading "Services" [level=1]
+  - paragraph: Trusted care for every wag and whisker.
+  - link "Full Grooming Haircut, nails & spa 90 min ₹799 Book" [active]:
+    - /url: /book/grooming
+    - paragraph: Full Grooming
+    - paragraph: Haircut, nails & spa
+    - paragraph:
+      - text: 90 min
+    - generic: ₹799
+    - text: Book
+  - link "Bath & Blow-dry Fresh & fluffy 45 min ₹499 Book":
+    - /url: /book/bath
+    - paragraph: Bath & Blow-dry
+    - paragraph: Fresh & fluffy
+    - paragraph:
+      - text: 45 min
+    - generic: ₹499
+    - text: Book
+  - link "Dog Walking Daily adventures 30 min ₹199 Book":
+    - /url: /book/walking
+    - paragraph: Dog Walking
+    - paragraph: Daily adventures
+    - paragraph:
+      - text: 30 min
+    - generic: ₹199
+    - text: Book
+  - link "Training Session Good manners, fast 60 min ₹999 Book":
+    - /url: /book/training
+    - paragraph: Training Session
+    - paragraph: Good manners, fast
+    - paragraph:
+      - text: 60 min
+    - generic: ₹999
+    - text: Book
+  - link "Overnight Boarding A home away from home per night ₹699 Book":
+    - /url: /book/boarding
+    - paragraph: Overnight Boarding
+    - paragraph: A home away from home
+    - paragraph:
+      - text: per night
+    - generic: ₹699
+    - text: Book
+  - link "Pet Sitting Care at your home per day ₹349 Book":
+    - /url: /book/sitting
+    - paragraph: Pet Sitting
+    - paragraph: Care at your home
+    - paragraph:
+      - text: per day
+    - generic: ₹349
+    - text: Book
+- navigation:
+  - link "Home":
+    - /url: /
+    - text: Home
+  - link "Services":
+    - /url: /services
+    - text: Services
+  - link "Shop":
+    - /url: /shop
+    - text: Shop
+  - link "Orders":
+    - /url: /orders
+    - text: Orders
+  - link "Profile":
+    - /url: /profile
+    - text: Profile
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6fkgz2ay9y83aavyc97wx7bbpk?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

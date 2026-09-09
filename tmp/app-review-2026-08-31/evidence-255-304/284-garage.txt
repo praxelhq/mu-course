@@ -1,0 +1,60 @@
+- generic: Added Tata Nexon to Garage
+- banner:
+  - generic: My Garage
+  - button "Vehicle Document Vault":
+  - button "Tata":
+    - text: Tata
+- main:
+  - paragraph: Digital Garage
+  - heading "My Garage" [level=1]
+  - button "Vehicle Specs":
+    - generic: Vehicle Specs
+  - generic: Tata
+  - heading "Nexon" [level=2]
+  - generic: No Plate Added
+  - generic: Petrol
+  - generic: Automatic
+  - text: Current Odometer
+  - generic: 10,000 km
+  - text: Real Mileage
+  - generic: Not calculated
+  - paragraph: Log 2 fills to calculate
+  - button "+ Add Fuel Log refill":
+    - generic: + Add Fuel
+    - generic: Log refill
+  - button "+ Add Service Record job":
+    - generic: + Add Service
+    - generic: Record job
+  - button "+ Add Doc RC / Insurance":
+    - generic: + Add Doc
+    - generic: RC / Insurance
+  - paragraph: Document Expiry Status
+  - button "View Locker":
+    - generic: View Locker
+  - heading "Registration Certificate (RC)" [level=4]
+  - paragraph: No document added
+  - generic: + Upload RC
+  - heading "Insurance Policy" [level=4]
+  - paragraph: No document added
+  - generic: + Upload Insurance
+  - heading "Pollution Certificate (PUC)" [level=4]
+  - paragraph: No document added
+  - generic: + Upload PUC
+  - heading "Maintenance Overview" [level=3]
+  - button "Service History":
+    - generic: Service History
+  - generic: Last Service
+  - generic: No service records yet
+  - generic: Next Service
+  - generic: No service scheduled
+- navigation:
+  - button "Garage":
+    - generic: Garage
+  - button "Fuel":
+    - generic: Fuel
+  - button "Service":
+    - generic: Service
+  - button "Expenses":
+    - generic: Expenses
+  - button "Docs":
+    - generic: Docs

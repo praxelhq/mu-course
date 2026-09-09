@@ -1,0 +1,37 @@
+- banner:
+  - button "Go back":
+  - button "S SipMatch The Alchemist's Palette":
+    - generic: S
+    - generic: SipMatch
+    - generic: The Alchemist's Palette
+  - button "User profile":
+    - img "User avatar"
+- main:
+  - button "Previous":
+    - text: Previous
+  - generic: Question 3 of 10
+  - generic: 30%
+  - heading "Sweet & Fruity or Spirit-Forward & Bold?" [level=1]
+  - paragraph: How do you like the core character of your pour?
+  - button "Option A Sweet & Fruity Juicy berries, stone fruit, or velvet nectar." [active]:
+    - generic: Option A
+    - heading "Sweet & Fruity" [level=2]
+    - paragraph: Juicy berries, stone fruit, or velvet nectar.
+  - button "Option B Spirit-Forward & Bold Unapologetic, rich, aged in oak wood casks.":
+    - generic: Option B
+    - heading "Spirit-Forward & Bold" [level=2]
+    - paragraph: Unapologetic, rich, aged in oak wood casks.
+  - generic: VS
+- navigation:
+  - button "Home":
+    - generic: Home
+  - button "Discover":
+    - generic: Discover
+  - button "2 Saved":
+    - generic: "2"
+    - generic: Saved
+  - button "Profile":
+    - generic: Profile
+- link "Made in Bolt":
+  - /url: https://bolt.new
+  - generic: Made in Bolt

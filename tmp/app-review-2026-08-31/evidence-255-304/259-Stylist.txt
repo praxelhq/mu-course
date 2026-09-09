@@ -1,0 +1,33 @@
+- banner:
+  - link "StyleRoom":
+    - /url: /
+  - navigation:
+    - link "Browse":
+      - /url: /browse
+    - link "Fitting room":
+      - /url: /fitting-room
+    - link "Stylist":
+      - /url: /stylist
+    - link "Compare":
+      - /url: /compare
+  - link "Sign in":
+    - /url: /auth
+- main:
+  - heading "Welcome back" [level=1]
+  - paragraph: Your photos, try-ons and saved looks stay private to your account.
+  - text: Email
+  - textbox "Email"
+  - text: Password
+  - textbox "Password"
+  - button "Sign in"
+  - button "Continue with Google"
+  - button "New here? Create an account"
+- contentinfo:
+  - generic: StyleRoom
+  - paragraph: Discover, try on, compare — then buy with confidence.
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_32s057dpcv9tctmn94zpajmvgk?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

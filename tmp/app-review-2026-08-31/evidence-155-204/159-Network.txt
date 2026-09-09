@@ -1,0 +1,80 @@
+- region "Notifications alt+T"
+- main:
+  - heading "Your network" [level=1]
+  - button "Add contact":
+    - text: Add contact
+  - heading "EMERGENCY CONTACTS" [level=2]
+  - generic: PB
+  - paragraph: Priya Bagaria
+  - paragraph: Spouse
+  - paragraph: +91 9810011223
+  - generic: Notify
+  - switch [checked]
+  - link "Call":
+    - /url: tel:9810011223
+    - text: Call
+  - link "Message":
+    - /url: sms:+919810011223
+    - text: Message
+  - generic: AB
+  - paragraph: Anil Bagaria
+  - paragraph: Father
+  - paragraph: +91 9873144556
+  - generic: Notify
+  - switch [checked]
+  - link "Call":
+    - /url: tel:9873144556
+    - text: Call
+  - link "Message":
+    - /url: sms:+919873144556
+    - text: Message
+  - generic: RM
+  - paragraph: Rohit Mehra
+  - paragraph: Brother-in-law
+  - paragraph: +91 9899988776
+  - generic: Notify
+  - switch [checked]
+  - link "Call":
+    - /url: tel:9899988776
+    - text: Call
+  - link "Message":
+    - /url: sms:+919899988776
+    - text: Message
+  - heading "MY DOCTORS" [level=2]
+  - paragraph: Dr. Sanjay Kalra
+  - paragraph: General Physician · Kalra Family Clinic, Pitampura
+  - paragraph: "Last visit: 12 Jul 2026"
+  - link "Call Dr. Sanjay Kalra":
+    - /url: tel:9811022334
+  - paragraph: Dr. Meera Iyer
+  - paragraph: Cardiologist · Max Super Speciality, Shalimar Bagh
+  - paragraph: "Last visit: 03 May 2026"
+  - link "Call Dr. Meera Iyer":
+    - /url: tel:9910055667
+  - heading "PREFERRED HOSPITAL" [level=2]
+  - button "Change":
+    - text: Change
+  - paragraph: Fortis Hospital, Shalimar Bagh
+  - paragraph: 2.4 km · ~8 min · ER 01148757171
+  - paragraph: Your medical ID is pre-shared here on arrival.
+  - heading "INSURANCE" [level=2]
+  - paragraph: Star Health Insurance
+  - paragraph: Policy •••• 4821
+  - paragraph: Cashless at 12,000+ hospitals nationwide
+  - link "24×7 claims helpline · 1800 425 2255":
+    - /url: tel:18004252255
+    - text: 24×7 claims helpline · 1800 425 2255
+  - paragraph: Contacts and preferences stay on this device.
+- navigation:
+  - button "Help":
+    - generic: Help
+  - button "Network" [active]:
+    - generic: Network
+  - button "Me":
+    - generic: Me
+  - button "SOS":
+    - generic: SOS
+- link "Build with Enter":
+  - /url: https://enter.converge.ai
+  - generic: Build with
+  - img "Enter"

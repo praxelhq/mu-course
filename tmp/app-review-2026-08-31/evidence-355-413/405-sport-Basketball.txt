@@ -1,0 +1,117 @@
+- complementary:
+  - link "AllPlay Bets logo AllPlay Bets":
+    - /url: /
+    - img "AllPlay Bets logo"
+    - generic: AllPlay Bets
+  - navigation:
+    - link "Home":
+      - /url: /
+      - generic: Home
+    - paragraph: Sports
+    - link "Football":
+      - /url: /sport/football
+      - generic: Football
+    - link "Cricket":
+      - /url: /sport/cricket
+      - generic: Cricket
+    - link "Basketball" [active]:
+      - /url: /sport/basketball
+      - generic: Basketball
+    - link "Hockey":
+      - /url: /sport/hockey
+      - generic: Hockey
+    - link "Formula 1":
+      - /url: /sport/f1
+      - generic: Formula 1
+    - link "MMA / UFC":
+      - /url: /sport/mma
+      - generic: MMA / UFC
+    - link "Baseball":
+      - /url: /sport/baseball
+      - generic: Baseball
+    - link "Rugby":
+      - /url: /sport/rugby
+      - generic: Rugby
+    - paragraph: Account
+    - link "Wallet":
+      - /url: /wallet
+      - generic: Wallet
+    - link "My Bets":
+      - /url: /my-bets
+      - generic: My Bets
+    - link "Profile":
+      - /url: /profile
+      - generic: Profile
+- banner:
+  - paragraph: Virtual credits only — no real money is involved.
+  - link "CR 10,160":
+    - /url: /wallet
+  - button "Bet Slip":
+    - generic: Bet Slip
+- main:
+  - heading "Basketball" [level=1]
+  - paragraph: NBA
+  - heading "NBA" [level=2]
+  - article:
+    - generic: NBA
+    - generic: Live
+    - link "Boston CelticsvDenver Nuggets TD Garden 88 - 82 Q3 04:12":
+      - /url: /match/bk-1
+      - heading "Boston CelticsvDenver Nuggets" [level=3]
+      - paragraph: TD Garden
+      - generic: 88 - 82
+      - generic: Q3 04:12
+    - button "Boston Celtics 1.65":
+      - generic: Boston Celtics
+      - generic: "1.65"
+    - button "Denver Nuggets 2.30":
+      - generic: Denver Nuggets
+      - generic: "2.30"
+  - article:
+    - generic: NBA
+    - generic: Tomorrow · 03:00
+    - link "Golden State WarriorsvLA Lakers Chase Center":
+      - /url: /match/bk-2
+      - heading "Golden State WarriorsvLA Lakers" [level=3]
+      - paragraph: Chase Center
+    - button "Golden State Warriors 1.78":
+      - generic: Golden State Warriors
+      - generic: "1.78"
+    - button "LA Lakers 2.05":
+      - generic: LA Lakers
+      - generic: "2.05"
+  - article:
+    - generic: NBA
+    - generic: Fri · 02:00
+    - link "Miami HeatvNew York Knicks Kaseya Center":
+      - /url: /match/bk-3
+      - heading "Miami HeatvNew York Knicks" [level=3]
+      - paragraph: Kaseya Center
+    - button "Miami Heat 2.20":
+      - generic: Miami Heat
+      - generic: "2.20"
+    - button "New York Knicks 1.68":
+      - generic: New York Knicks
+      - generic: "1.68"
+- complementary "Bet slip":
+  - heading "Bet Slip" [level=2]
+  - button "Close bet slip":
+  - paragraph: No selections yet. Tap any odds to add them here.
+  - generic: Stake per selection (credits)
+  - spinbutton "Stake per selection (credits)": "100"
+  - button "50"
+  - button "100"
+  - button "500"
+  - button "1000"
+  - generic: Total stake
+  - generic: "0"
+  - generic: Potential payout
+  - generic: "0"
+  - button "Clear" [disabled]
+  - button "Place Bet" [disabled]
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6det33f3d587qvrxac3mg2hbp6?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

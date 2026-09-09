@@ -1,0 +1,60 @@
+- banner:
+  - link "Home":
+    - /url: /
+    - generic: home
+  - link "How to play":
+    - /url: /how-to-play
+    - generic: help_outline
+  - link "SongMatch logo SongMatch":
+    - /url: /play
+    - img "SongMatch logo"
+    - generic: SongMatch
+  - link "Your stats":
+    - /url: /stats
+    - generic: leaderboard
+- main:
+  - heading "Your Stats" [level=1]
+  - link "Close stats":
+    - /url: /play
+    - generic: close
+  - generic: "1"
+  - generic: Played
+  - generic: 100%
+  - generic: Win %
+  - generic: "1"
+  - generic: Current streak
+  - generic: "1"
+  - generic: Max streak
+  - heading "Guess Distribution" [level=2]
+  - generic: "1"
+  - generic: "0"
+  - generic: "2"
+  - generic: "1"
+  - generic: "3"
+  - generic: "0"
+  - generic: "4"
+  - generic: "0"
+  - generic: "5"
+  - generic: "0"
+  - generic: "6"
+  - generic: "0"
+  - link "Back to today's song":
+    - /url: /play
+- navigation:
+  - link "Home":
+    - /url: /
+    - generic: home
+  - link "Play":
+    - /url: /play
+    - generic: play_circle
+  - link "History":
+    - /url: /history
+    - generic: history
+  - link "Profile":
+    - /url: /stats
+    - generic: person
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_07aw136ky79bv9pcxava6m7ete?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

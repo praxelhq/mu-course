@@ -1,0 +1,48 @@
+- banner:
+  - link "Your profile":
+    - /url: /profile
+    - img "Your profile"
+  - heading "True or Toxic" [level=1]
+  - link "Weekly challenge":
+    - /url: /challenge
+    - generic: bolt
+- main:
+  - generic: bolt
+  - text: Daily challenge
+  - heading "Can you read the room?" [level=2]
+  - paragraph: Guess how the majority voted.
+  - text: 💬
+  - heading "Your friend leaves you on read for three days, then sends a meme." [level=3]
+  - button "🟢 Green Flag":
+    - generic: 🟢 Green Flag
+  - button "🔴 Red Flag":
+    - generic: 🔴 Red Flag
+  - button "🤷 Depends":
+    - generic: 🤷 Depends
+- navigation:
+  - link "Home":
+    - /url: /
+    - generic: home
+    - generic: Home
+  - link "Trending":
+    - /url: /trending
+    - generic: trending_up
+    - generic: Trending
+  - link "Community":
+    - /url: /community
+    - generic: diversity_3
+    - generic: Community
+  - link "Submit":
+    - /url: /submit
+    - generic: add_circle
+    - generic: Submit
+  - link "Profile":
+    - /url: /profile
+    - generic: person
+    - generic: Profile
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_06ze2qmdde81evf54px9n0taq6?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

@@ -1,0 +1,144 @@
+- banner:
+  - generic: GL
+  - generic: GigLens
+  - generic: India
+  - button "Demo Mode":
+    - generic: Demo Mode
+  - button "Open Settings":
+    - generic: R
+    - generic: Review Rider
+- complementary:
+  - generic: R
+  - paragraph: Review Rider
+  - generic: Demo
+  - paragraph: India
+  - navigation:
+    - button "Home":
+      - generic: Home
+    - button "Add Shift":
+      - generic: Add Shift
+    - button "History 18":
+      - generic: History
+      - generic: "18"
+    - button "Compare":
+      - generic: Compare
+    - button "Insights":
+      - generic: Insights
+  - button "Settings & Fuel Prices":
+    - generic: Settings & Fuel Prices
+  - generic: 🛡️ Stored on device • Gemini AI analyzed
+- main:
+  - button "Cancel":
+    - generic: Cancel
+  - heading "Record Shift Entry" [level=1]
+  - generic: Live Net Take-Home
+  - generic: Strong Shift
+  - generic: ₹500
+  - generic: Take-Home/Hr
+  - generic: ₹5,000/hr
+  - generic: Net/KM
+  - generic: ₹0.00/km
+  - text: "Gross:"
+  - strong: ₹500
+  - text: "Expenses:"
+  - strong: "- ₹0"
+  - text: "Shift Time:"
+  - strong: 6m
+  - text: "Waiting:"
+  - strong: 0m (0%)
+  - heading "Shift Details" [level=2]
+  - text: Shift Date
+  - textbox "Shift Date": 2026-08-30
+  - text: Platform
+  - combobox "Platform":
+    - option "Zomato (Food)" [selected]
+    - option "Swiggy (Food)"
+    - option "Swiggy Instamart (Quick Commerce)"
+    - option "Blinkit (Quick Commerce)"
+    - option "Zepto (Quick Commerce)"
+    - option "Uber (Rides)"
+    - option "Rapido (Rides)"
+    - option "Ola (Rides)"
+    - option "Other Platform (Other)"
+  - text: Start Time
+  - textbox "Start Time" [active]
+  - paragraph: Start time is required.
+  - generic: End Time
+  - checkbox "Overnight (Next Day)"
+  - generic: Overnight (Next Day)
+  - textbox "End Time"
+  - paragraph: End time is required.
+  - text: Time Slot
+  - button "🌅 Breakfast":
+    - generic: 🌅
+    - generic: Breakfast
+  - button "☀️ Lunch":
+    - generic: ☀️
+    - generic: Lunch
+  - button "🌤️ Afternoon":
+    - generic: 🌤️
+    - generic: Afternoon
+  - button "🌆 Evening":
+    - generic: 🌆
+    - generic: Evening
+  - button "🌙 Dinner":
+    - generic: 🌙
+    - generic: Dinner
+  - button "🌌 Late Night":
+    - generic: 🌌
+    - generic: Late Night
+  - generic: Total Distance Travelled (km)
+  - spinbutton "Total Distance Travelled (km)"
+  - generic: Orders / Trips Completed
+  - spinbutton "Orders / Trips Completed"
+  - heading "Earnings Breakdown" [level=2]
+  - generic: "Gross: ₹500"
+  - text: Base Payout (₹)
+  - generic: ₹
+  - spinbutton "Base Payout (₹)": "500"
+  - generic: Incentives / Peak Surge (₹)
+  - generic: ₹
+  - spinbutton "Incentives / Peak Surge (₹)"
+  - text: Customer Tips (₹)
+  - generic: ₹
+  - spinbutton "Customer Tips (₹)"
+  - text: Other Earnings / Adjustments (₹)
+  - generic: ₹
+  - spinbutton "Other Earnings / Adjustments (₹)"
+  - heading "Expenses & Operating Costs" [level=2]
+  - generic: "Total: - ₹0"
+  - generic: Fuel / Battery Charge (₹)
+  - button "Auto-calc":
+    - text: Auto-calc
+  - generic: ₹
+  - spinbutton "Fuel / Battery Charge (₹)"
+  - generic: Maintenance & Tyre Wear (₹)
+  - button "Auto-calc":
+    - text: Auto-calc
+  - generic: ₹
+  - spinbutton "Maintenance & Tyre Wear (₹)"
+  - text: Tea, Water & On-Shift Food (₹)
+  - generic: ₹
+  - spinbutton "Tea, Water & On-Shift Food (₹)"
+  - text: Tolls & Parking Charges (₹)
+  - generic: ₹
+  - spinbutton "Tolls & Parking Charges (₹)"
+  - text: Other Expenses (Mobile Data, Puncture, Fines) (₹)
+  - generic: ₹
+  - spinbutton "Other Expenses (Mobile Data, Puncture, Fines) (₹)"
+  - heading "Unpaid Waiting Time" [level=2]
+  - generic: "Total: 0m (0%)"
+  - text: Store / Pickup Wait (mins)
+  - spinbutton "Store / Pickup Wait (mins)"
+  - text: Dispatch Allocation (mins)
+  - spinbutton "Dispatch Allocation (mins)"
+  - text: Other Idle Mins
+  - spinbutton "Other Idle Mins"
+  - text: Shift Notes (Optional)
+  - textbox "Shift Notes (Optional)":
+    - /placeholder: e.g. Heavy rain surge near Koramangala, long waiting at dark store...
+    - text: Synthetic review shift
+  - button "Cancel"
+  - button "Record & Calculate Shift":
+    - generic: Record & Calculate Shift
+- generic: ₹500

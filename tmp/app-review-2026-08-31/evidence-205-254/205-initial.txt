@@ -1,0 +1,64 @@
+- generic: error
+- generic: Unable to check your Google AI Subscription
+- button "Dismiss":
+  - generic: close
+- button "Skip to main content"
+- button "Toggle navigation menu":
+  - generic: menu_open
+- link "Google AI Studio logo":
+  - /url: /prompts/new_chat
+  - img "Google AI Studio logo"
+- button "View related products":
+  - generic: expand_more
+- navigation:
+  - generic: Explore
+  - link "Playground":
+    - /url: /prompts/new_chat
+    - generic: chat_spark
+    - generic: Playground
+  - link "History":
+    - /url: /library
+    - generic: history
+    - generic: History
+  - generic: Build
+  - link "New app":
+    - /url: /apps
+    - generic: add
+    - generic: New app
+  - link "My apps":
+    - /url: /apps?source=user
+    - generic: widgets
+    - generic: My apps
+  - link "Gallery":
+    - /url: /apps?source=showcase
+    - generic: gallery_thumbnail
+    - generic: Gallery
+  - generic: Manage
+  - link "Dashboard":
+    - /url: /api-keys
+    - generic: speed
+    - generic: Dashboard
+    - generic: chevron_right
+  - link "Documentation":
+    - /url: /docs
+    - generic: developer_guide
+    - generic: Documentation
+    - generic: chevron_right
+  - button "What's new":
+    - generic: notifications
+  - button "Settings":
+    - generic: settings
+  - button "Search":
+    - generic: search
+  - button "Get API key":
+    - generic: key
+  - button "venkata.menta@mastersunion.org":
+    - generic: venkata.menta@mastersunion.org
+  - 'button "Google Account: Venkata Pushpak Teja Menta (venkata.menta@mastersunion.org)"':
+    - img "Venkata Pushpak Teja Menta"
+- main:
+  - heading "An unknown error occurred" [level=2]
+  - paragraph: If this happens again, report it by sending feedback
+  - button "Send feedback":
+    - generic: flag
+    - text: Send feedback

@@ -1,0 +1,72 @@
+- complementary:
+  - generic: LeakWatch
+  - generic: Workspace
+  - navigation:
+    - button "Dashboard":
+      - generic: Dashboard
+    - button "Contracts":
+      - generic: Contracts
+    - button "Payables 5":
+      - generic: Payables
+      - generic: "5"
+  - generic: Configure
+  - navigation:
+    - button "Integrations" [active]:
+      - generic: Integrations
+    - button "Settings":
+      - generic: Settings
+  - generic: D
+  - generic: Demo
+  - generic: demo@example.com
+  - button "Exit"
+- banner:
+  - generic: Connected apps
+  - heading "Integrations" [level=2]
+  - generic: Demo data
+  - button "Sync invoices"
+  - button "+ New contract"
+- generic: Connected gateways push vendor invoices straight into your approval queue. Nothing auto-pays — every synced line still waits for a decision.
+- generic: R
+- heading "Razorpay" [level=4]
+- generic: Connected
+- paragraph: Vendor payouts and invoice sync
+- paragraph: Last sync 4 minutes ago · 5 invoices pulled
+- button "Sync now"
+- button "Disconnect"
+- generic: C
+- heading "Cashfree" [level=4]
+- generic: Connected
+- paragraph: Payout rails and settlement reports
+- paragraph: Last sync 2 hours ago · 2 invoices pulled
+- button "Sync now"
+- button "Disconnect"
+- generic: T
+- heading "Tally Prime" [level=4]
+- generic: Not connected
+- paragraph: Push approved payables to your books
+- button "Connect Tally Prime"
+- generic: G
+- heading "GSTN Portal" [level=4]
+- generic: Not connected
+- paragraph: Match invoices against GSTR-2B
+- button "Connect GSTN Portal"
+- heading "Gateway invoices" [level=3]
+- paragraph: Invoices imported from connected payment gateways.
+- generic: Zoho One — Aug seats
+- generic: razorpay
+- text: Zoho One · due 3 Sept 2026
+- generic: ₹14,400
+- generic: Paid
+- generic: AWS Mumbai — Aug usage invoice
+- generic: razorpay
+- text: AWS Mumbai · due 4 Sept 2026
+- generic: ₹82,000
+- generic: Awaiting
+- generic: Freshworks CRM — annual renewal
+- generic: razorpay
+- text: Freshworks CRM · due 6 Sept 2026
+- generic: ₹96,000
+- generic: Awaiting
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

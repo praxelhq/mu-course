@@ -1,0 +1,67 @@
+- banner:
+  - button "● Circle MBA CRM Private Network & Follow-up Tracker":
+    - generic: ●
+    - generic: Circle
+    - generic: MBA CRM
+    - paragraph: Private Network & Follow-up Tracker
+  - navigation:
+    - button "Dashboard":
+      - generic: Dashboard
+    - button "All Contacts (0)":
+      - generic: All Contacts
+      - generic: (0)
+    - button "+ Add Contact" [active]:
+      - generic: + Add Contact
+  - generic: mba.candidate@stanford.edu
+  - text: Private Vault
+  - button "Sign out":
+- main:
+  - button "Go back":
+  - heading "Add New MBA Connection" [level=1]
+  - paragraph: Only name and relationship tag are required. You can enrich the profile anytime.
+  - heading "Core Details" [level=2]
+  - generic: Full Name *
+  - textbox "e.g. Alex Morgan"
+  - generic: Relationship Tag *
+  - button "Batchmate":
+    - generic: Batchmate
+  - button "Faculty":
+    - generic: Faculty
+  - button "Founder":
+    - generic: Founder
+  - button "Investor":
+    - generic: Investor
+  - button "Alumni":
+    - generic: Alumni
+  - button "Industry Contact":
+    - generic: Industry Contact
+  - button "Other":
+    - generic: Other
+  - heading "Role & Meeting Context" [level=2]
+  - generic: Company / Organization
+  - textbox "e.g. Goldman Sachs, Sequoia, McKinsey"
+  - generic: Current Role / Title
+  - textbox "e.g. Investment Associate, VP of Product"
+  - generic: Where Met / Context
+  - textbox "e.g. Wharton Fintech Summit, MGMT 610, Introduced by Sarah"
+  - generic: Phone Number
+  - textbox "e.g. +1 (415) 555-0199"
+  - generic: LinkedIn Profile
+  - textbox "e.g. linkedin.com/in/alexmorgan or alexmorgan"
+  - paragraph: Paste profile URL or username (e.g. in/username)
+  - heading "Cadence & Discussion Notes" [level=2]
+  - generic: Follow-up Cadence (Days)
+  - spinbutton: "30"
+  - button "Every 2 Weeks (14d)"
+  - button "Monthly (30d)"
+  - button "Bi-Monthly (60d)"
+  - button "Quarterly (90d)"
+  - generic: Last Contacted Date
+  - textbox: 2026-08-31
+  - paragraph: Defaults to today. Resets automatically when you log follow-ups.
+  - generic: Initial Notes & Context (Optional)
+  - textbox "What was discussed? Any favors given/received, mutual connections, or commitments made..."
+  - paragraph: This will automatically become the first entry in their chronological follow-up timeline.
+  - button "Cancel"
+  - button "Save Contact":
+    - generic: Save Contact

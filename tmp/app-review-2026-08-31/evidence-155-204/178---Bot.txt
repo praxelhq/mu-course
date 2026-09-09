@@ -1,0 +1,63 @@
+- banner:
+  - button "Open Navigation":
+  - generic: CHAOS SURVIVORS
+  - generic: / LOBBY
+  - button "SYNC ACTIVE":
+    - generic: SYNC ACTIVE
+  - 'button "ROOM #XJ82"':
+    - generic: ROOM
+    - generic: "#XJ82"
+  - button "View notifications":
+    - generic: "2"
+- main:
+  - generic: M.O.N.I.C.A. v3.8
+  - generic: ACTIVE MONITOR
+  - paragraph: "\"Lobby initialized for squad #XJ82. Verify survivor readiness before scenario execution.\""
+  - generic: PING
+  - generic: 18ms
+  - generic: ACCESS // QR INGRESS
+  - generic: "ROOM #XJ82"
+  - generic: CHAOS.ENGINE/XJ82
+  - button "Share Link":
+    - generic: Share Link
+  - button "+ Bot" [active]:
+    - generic: + Bot
+  - generic: SESSION CONFIGURATION
+  - generic: CLUSTER US-EAST-1
+  - generic: DURATION
+  - generic: 30 Mins
+  - generic: 3 Scenarios
+  - generic: SECTOR
+  - generic: Urban Jungle
+  - generic: Zone 04
+  - generic: ROSTER
+  - generic: 3 / 8
+  - generic: "Min: 3"
+  - generic: "DISCOVERY QUIZ: ENABLED"
+  - generic: "LIFELINES: 1/1"
+  - generic: SURVIVOR ROSTER (3/8)
+  - generic: Click status pill to toggle ready state
+  - img "You (Host)"
+  - generic "Party Leader": 👑
+  - generic: You (Host)
+  - generic: Leader
+  - button "READY"
+  - img "SlowPoke99"
+  - generic: SlowPoke99
+  - generic: Survivor
+  - button "NOT READY"
+  - button "✕"
+  - img "GlitchMaster"
+  - generic: GlitchMaster
+  - generic: SimBot
+  - button "READY"
+  - button "✕"
+  - button "+ Add AI Squad Member (3/8)":
+    - generic: + Add AI Squad Member (3/8)
+  - button "INITIALIZE SURVIVOR ROUND" [disabled]:
+    - generic: INITIALIZE SURVIVOR ROUND
+  - paragraph: "* All survivors must report READY state before round execution."
+- contentinfo:
+  - generic: ENGINE v2.4.1
+  - generic: Telemetry Normal
+  - generic: "CHAOS SURVIVORS • HIGH DENSITY INTERFACE • ROOM #XJ82"

@@ -1,0 +1,30 @@
+- region "Notifications (F8)":
+  - list
+- region "Notifications alt+T"
+- main:
+  - generic: Step 1 of 6
+  - generic: 17% complete
+  - generic: Basic Info
+  - generic: Vitals
+  - generic: Physical
+  - generic: Performance
+  - generic: Cognitive
+  - generic: Psychological
+  - heading "Basic Info" [level=2]
+  - text: Child's Name
+  - textbox "Child's Name":
+    - /placeholder: Enter name
+  - text: Age (years)
+  - spinbutton "Age (years)": "10"
+  - text: Gender
+  - button "Male"
+  - button "Female"
+  - button "Back":
+    - text: Back
+  - button "Next":
+    - text: Next
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_4evn1nffn78kfshkdrmcjvbrzc?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

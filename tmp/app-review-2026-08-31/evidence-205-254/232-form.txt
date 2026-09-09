@@ -1,0 +1,144 @@
+- main:
+  - heading "Decision Log" [level=1]
+  - paragraph: Record what you decided, why, and how it turned out.
+  - button "Cancel"
+  - generic: Title
+  - textbox "Title":
+    - /placeholder: What are you deciding?
+    - text: "Review Demo: Morning study"
+  - generic: Reasoning
+  - textbox "Reasoning":
+    - /placeholder: Why this call, and what you expect to happen.
+    - text: A quiet hour may help concentration.
+  - generic: Confidence · 3/5
+  - slider "Confidence · 3/5": "3"
+  - generic: Revisit date
+  - textbox "Revisit date" [active]: 2026-09-07
+  - generic: Categories
+  - button "Finance"
+  - button "Career"
+  - button "Product"
+  - button "Health"
+  - button "Relationships"
+  - button "Travel"
+  - button "Investing"
+  - button "Learning"
+  - button "Creative"
+  - button "Tech"
+  - textbox "Custom category…"
+  - button "Add" [disabled]
+  - text: Learning
+  - button "Remove Learning": ×
+  - button "Save" [disabled]
+  - region "Decision metrics":
+    - generic: Logged
+    - generic: "7"
+    - generic: 6 resolved
+    - generic: Hit rate
+    - generic: 42%
+    - generic: mixed counts as half
+    - generic: Avg confidence
+    - generic: "4.0"
+    - generic: out of 5
+    - 'generic "Correct: 2"'
+    - 'generic "Mixed: 1"'
+    - 'generic "Wrong: 3"'
+    - 'generic "Pending: 1"'
+    - button "All · 7" [pressed]
+    - button "Pending · 1"
+    - button "Right · 2"
+    - button "Wrong · 3"
+    - button "Mixed · 1"
+    - button "Overdue · 0"
+    - paragraph: Filter by category
+    - button "Career"
+    - button "Finance"
+    - button "Learning"
+    - paragraph: Calibration — hit rate by confidence
+    - button "1/5 0 logged":
+      - generic: 1/5
+      - generic: 0 logged
+    - button "2/5 0 logged":
+      - generic: 2/5
+      - generic: 0 logged
+    - button "3/5 50% · 1":
+      - generic: 3/5
+      - generic: 50% · 1
+    - button "4/5 25% · 4":
+      - generic: 4/5
+      - generic: 25% · 4
+    - button "5/5 100% · 1":
+      - generic: 5/5
+      - generic: 100% · 1
+    - paragraph: Hit rate by category
+    - button "Career 1 logged":
+      - generic: Career
+      - generic: 1 logged
+    - button "Finance 1 logged":
+      - generic: Finance
+      - generic: 1 logged
+    - button "Learning 1 logged":
+      - generic: Learning
+      - generic: 1 logged
+  - textbox "Search decisions…"
+  - article:
+    - button "Upskill the ops team Pending Career Finance Learning Revisit 30 Aug 2026":
+      - heading "Upskill the ops team" [level=2]
+      - generic: Pending
+      - generic: Career
+      - generic: Finance
+      - generic: Learning
+      - generic: Revisit 30 Aug 2026
+    - paragraph: Cross skilling for best bandwidth utilization of resources
+    - button "Right"
+    - button "Wrong"
+    - button "Mixed"
+    - textbox "Reflection (optional)"
+    - button "Save outcome" [disabled]
+  - article:
+    - button "Pivoting the brand story Wrong Revisit 4 Sept 2026":
+      - heading "Pivoting the brand story" [level=2]
+      - generic: Wrong
+      - generic: Revisit 4 Sept 2026
+    - paragraph: To increase the revenue from other customer segments
+    - paragraph: Customers pushed back as they did not like the change in the brand story
+  - article:
+    - button "Adding 3 more machinery Correct Revisit 27 Aug 2026":
+      - heading "Adding 3 more machinery" [level=2]
+      - generic: Correct
+      - generic: Revisit 27 Aug 2026
+    - paragraph: To support operations and supply chain department
+    - paragraph: Utilization has increased - leading to an increase in revenue.
+  - article:
+    - button "Planning for an organizational restructuring Wrong Revisit 11 Sept 2026":
+      - heading "Planning for an organizational restructuring" [level=2]
+      - generic: Wrong
+      - generic: Revisit 11 Sept 2026
+    - paragraph: For better workflows within the organizations
+    - paragraph: Hierarchical structures caused a lot of bottlenecks for critical approvals which caused timelines to be impacted and various cascading delays across projects.
+  - article:
+    - button "Hire a new member for the board Correct Revisit 28 Aug 2026":
+      - heading "Hire a new member for the board" [level=2]
+      - generic: Correct
+      - generic: Revisit 28 Aug 2026
+    - paragraph: Need external perspective towards the organization
+    - paragraph: New member has joined the board and is clearly able to identify the gaps in the process and we are able to optimize for better efficiency. At this rate, we will be able to cover a larger ground in the next 2 quarters.
+  - article:
+    - button "Planning to raise debt Mixed Revisit 30 Sept 2026":
+      - heading "Planning to raise debt" [level=2]
+      - generic: Mixed
+      - generic: Revisit 30 Sept 2026
+    - paragraph: Want to expand into 3 new cities.
+    - paragraph: Only 1 out of the 3 cities are showing a clear sign of potential for expansion. Expansion plan needs to be revisited.
+  - article:
+    - button "Decided to reduce the team size by 2 for the operations department Wrong Revisit 29 Aug 2026":
+      - heading "Decided to reduce the team size by 2 for the operations department" [level=2]
+      - generic: Wrong
+      - generic: Revisit 29 Aug 2026
+    - paragraph: Funding round is delayed. Automation will be able to cover for the 2 employees who will have to be let go.
+    - paragraph: Automation costs did bleed way more than the initial plan. Letting go of dedicated team members was not the appropriate choice.
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1vz46e27gd8k7t4qcnk19cspen?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

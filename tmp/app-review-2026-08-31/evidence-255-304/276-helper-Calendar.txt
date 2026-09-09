@@ -1,0 +1,88 @@
+- banner:
+  - link "Claude home":
+    - /url: /
+    - generic: 
+  - button "GharOS":
+    - generic: GharOS
+    - generic: 
+  - generic: Content is user-generated and unverified.
+  - button "Share, shared with anyone who has the link":
+    - generic: Share
+  - status
+  - alert
+  - link "Sign in":
+    - /url: /login?returnTo=%2Fcode%2Fartifact%2F66f06408-2363-41b3-b2bc-43b42c82d12b%3Fopen_in_browser%3D1%26via%3Duser_open%26org%3Da0f81c5b-82b4-40de-b1ce-8b89c2e4ccd9
+    - generic: Sign in
+  - alert
+  - status
+- main:
+  - iframe [active] [id="frame-content"]:
+    - banner:
+      - heading "My calendar" [level=1]
+      - generic: Sunita Devi
+    - main:
+      - generic: "23"
+      - generic: Worked
+      - generic: "1"
+      - generic: Missed
+      - generic: "1"
+      - generic: Leave
+      - button "Previous month": ‹
+      - generic: August 2026
+      - button "Next month": ›
+      - generic: S
+      - generic: M
+      - generic: T
+      - generic: W
+      - generic: T
+      - generic: F
+      - generic: S
+      - button "1 August 2026": "1"
+      - button "2 August 2026": "2"
+      - button "3 August 2026": "3"
+      - button "4 August 2026": "4"
+      - button "5 August 2026": "5"
+      - button "6 August 2026": "6"
+      - button "7 August 2026": "7"
+      - button "8 August 2026": "8"
+      - button "9 August 2026": "9"
+      - button "10 August 2026": "10"
+      - button "11 August 2026": "11"
+      - button "12 August 2026": "12"
+      - button "13 August 2026": "13"
+      - button "14 August 2026": "14"
+      - button "15 August 2026": "15"
+      - button "16 August 2026": "16"
+      - button "17 August 2026": "17"
+      - button "18 August 2026": "18"
+      - button "19 August 2026": "19"
+      - button "20 August 2026": "20"
+      - button "21 August 2026": "21"
+      - button "22 August 2026": "22"
+      - button "23 August 2026": "23"
+      - button "24 August 2026": "24"
+      - button "25 August 2026": "25"
+      - button "26 August 2026": "26"
+      - button "27 August 2026": "27"
+      - button "28 August 2026": "28"
+      - button "29 August 2026": "29"
+      - button "30 August 2026": "30"
+      - button "31 August 2026": "31"
+      - generic: Present
+      - generic: Absent
+      - generic: Leave
+      - generic: Not marked
+      - generic: This is your record
+      - text: Every scan is logged here. It builds proof of the work you've done and the income you earn.
+    - navigation:
+      - button "Today":
+        - generic: Today
+      - button "Calendar":
+        - generic: Calendar
+      - button "Earnings":
+        - generic: Earnings
+      - button "Me":
+        - generic: Me
+- status
+- status
+- status

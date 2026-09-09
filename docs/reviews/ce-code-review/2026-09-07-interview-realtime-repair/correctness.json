@@ -1,0 +1,72 @@
+{
+  "reviewer": "correctness",
+  "findings": [
+    {
+      "title": "Make LiveKit reconnect admission single-flight",
+      "severity": "P1",
+      "file": "lms/app/(room)/interview/live/interview-client.tsx",
+      "line": 78,
+      "confidence": 95,
+      "autofix_class": "safe_auto",
+      "owner": "downstream-resolver",
+      "requires_verification": true,
+      "pre_existing": false,
+      "why_it_matters": "A single RoomEvent.Disconnected is observed by both the LiveKitRoom prop and MeetingView's room listener. Each reaches this newly changed reconnect callback, which starts its own token request and updates the parent state. Concurrent responses can mount one new room then immediately tear it down for the second response; that teardown can itself produce another disconnect. This makes the repair race precisely in the disruption path it is intended to protect, risking repeated reconnects, a fresh token loop, and another student-visible cut-off.",
+      "suggested_fix": "Guard reconnect with a ref that is set before the first request and cleared only after the request resolves into a stable live/unavailable/waiting state; alternatively make exactly one component own RoomEvent.Disconnected. Add a component-level test that emits the duplicate disconnect notifications and asserts one token request and one replacement room.",
+      "first_evidence": "lms/app/(room)/interview/live/interview-client.tsx:87 -- \"void requestRealtime(true);\"",
+      "evidence": [
+        "lms/app/(room)/interview/live/realtime-room.tsx:150-154 -- LiveKitRoom's onDisconnected invokes fallbackRef.current(\"disconnected\").",
+        "lms/app/(room)/interview/live/meeting-view.tsx:126-132 -- MeetingView separately listens for RoomEvent.Disconnected and invokes onFallback(\"disconnected\").",
+        "lms/app/(room)/interview/live/interview-client.tsx:78-88 -- reconnect clears the active room, changes state, and immediately starts a token request without a single-flight guard."
+      ]
+    },
+    {
+      "title": "Update token-route integration tests for the new agent admission precondition",
+      "severity": "P1",
+      "file": "lms/tests/interview-realtime.test.ts",
+      "line": 111,
+      "confidence": 100,
+      "autofix_class": "safe_auto",
+      "owner": "downstream-resolver",
+      "requires_verification": true,
+      "pre_existing": false,
+      "why_it_matters": "The changed token route now refuses every request unless a verified web artifact and a fresh, matching agent ServiceHeartbeat exist. The database-backed suite provisions neither, but still expects 429 and 200 token responses. On any correctly migrated CI database those tests therefore fail at the new 503 admission branch, and the suite does not exercise the new health gate through its real Prisma path. The local schema drift only hides this regression by skipping the suite.",
+      "suggested_fix": "In the token-route test setup, stub loadRuntimeIdentity to a verified SHA and create a current agent ServiceHeartbeat with that SHA, valid metadata, and a recent timestamp. Add explicit 503 cases for missing, stale, mismatched, and errored rows; preserve the capacity and minting assertions behind the healthy row.",
+      "first_evidence": "lms/app/api/interview/token/route.ts:61 -- \"if (!agentReady) {\"",
+      "evidence": [
+        "lms/app/api/interview/token/route.ts:52-68 -- token issuance calls realtimeAgentAvailable and returns 503 before capacity checks or startInterview when it is false.",
+        "lms/lib/interview/realtime.ts:81-86 -- realtimeAgentAvailable requires a verified runtime identity and at least one current ServiceHeartbeat.",
+        "lms/tests/interview-realtime.test.ts:111-124 -- beforeAll stubs login, agent token, and room capacity only; it creates no runtime identity or ServiceHeartbeat.",
+        "lms/tests/interview-realtime.test.ts:168 -- \"expect(busy.status).toBe(429);\" and lms/tests/interview-realtime.test.ts:180 -- \"expect(freed.status).toBe(200);\"."
+      ]
+    },
+    {
+      "title": "Do not tell a reconnecting student that their existing attempt never started",
+      "severity": "P2",
+      "file": "lms/app/api/interview/token/route.ts",
+      "line": 65,
+      "confidence": 100,
+      "autofix_class": "safe_auto",
+      "owner": "downstream-resolver",
+      "requires_verification": true,
+      "pre_existing": false,
+      "why_it_matters": "The route looks up an existing live interview before health admission. When a student has already spoken, a transient agent-heartbeat failure produces the same response as pre-admission. The client renders the returned text verbatim, so the student is told their attempt has not started even though it is live and contains evidence. That is materially misleading in a graded recovery flow and can cause the student to abandon a recoverable interview.",
+      "suggested_fix": "Branch the 503 copy on existing: for an existing realtime interview say that the interview is paused/reconnecting and existing answers are retained; reserve 'has not started' for the no-existing-attempt path. Add a route test for both response variants.",
+      "first_evidence": "lms/app/api/interview/token/route.ts:65 -- \"Your attempt has not started — please try again shortly.\"",
+      "evidence": [
+        "lms/app/api/interview/token/route.ts:29-34 -- existing live interviews are loaded before the availability check.",
+        "lms/app/api/interview/token/route.ts:61-68 -- the same unavailable response is returned for both new and existing attempts.",
+        "lms/app/(room)/interview/live/interview-client.tsx:48-55 and 128-136 -- the client stores body.error and renders it in the unavailable card."
+      ]
+    }
+  ],
+  "residual_risks": [
+    "The repair correctly leaves an aborted interview live, but there is no tested expiry/escalation path for a room whose agent cannot be recovered; an instructor workflow must remain able to issue a reviewed retake without consuming the original attempt.",
+    "LiveKit Egress quota exhaustion is external to this code path. The patch does not establish that room recording is available even if live dialogue and grading succeed."
+  ],
+  "testing_gaps": [
+    "The new client-contract test only searches source text; it does not mount LiveKitRoom/MeetingView, emit a disconnect, or assert that exactly one reconnect request occurs.",
+    "The pure heartbeat predicate tests do not cover the token endpoint's verified runtime identity plus ServiceHeartbeat database contract.",
+    "No scoped test demonstrates a normal agent completion reaches automatic grading after a browser disconnect and rejoin."
+  ]
+}

@@ -1,0 +1,134 @@
+- complementary:
+  - generic: F
+  - heading "FounderOS" [level=1]
+  - generic: NovaCraft Labs
+  - navigation:
+    - button "Dashboard":
+      - generic: Dashboard
+    - button "Products":
+      - generic: Products
+    - button "Marketing" [active]:
+      - generic: Marketing
+    - button "Finance":
+      - generic: Finance
+    - button "Customers":
+      - generic: Customers
+    - button "Goals & Tasks 6":
+      - generic: Goals & Tasks
+      - generic: "6"
+    - generic: Intelligence
+    - button "Founder Copilot AI":
+      - generic: Founder Copilot
+      - generic: AI
+    - button "Settings":
+      - generic: Settings
+  - generic: AJ
+  - generic: Alex Johnson
+  - generic: Pro Founder Plan
+  - button "Switch Workspace / Sign Out":
+- banner:
+  - generic: NovaCraft Labs
+  - generic: Marketing & Growth
+  - button "Quick Search... ⌘K":
+    - generic: Quick Search...
+    - generic: ⌘K
+  - generic: August 2026 (Q3)
+  - button "Executive Report":
+    - generic: Executive Report
+  - button "Copilot":
+    - generic: Copilot
+  - button "Alerts":
+- main:
+  - heading "Marketing & Growth" [level=1]
+  - paragraph: Track multi-channel paid acquisition, CAC efficiency, and ROAS return metrics.
+  - button "Launch Campaign":
+    - generic: Launch Campaign
+  - text: Total Ad Spend
+  - paragraph: ₹82,400
+  - generic: +11.3%
+  - generic: scaling this month
+  - text: Total Conversions
+  - paragraph: 1,036
+  - generic: +14.2%
+  - generic: checkout conversions
+  - text: Average CAC
+  - paragraph: ₹79.54
+  - generic: "Target: ₹70.00"
+  - generic: (+13% over ideal)
+  - text: Blended ROAS
+  - paragraph: 4.4x
+  - generic: Top tier return efficiency
+  - 'heading "AI Growth Advisory: Inefficiency Detected" [level=3]'
+  - generic: Actionable
+  - paragraph:
+    - strong: Retargeting Campaign B (Meta)
+    - text: is generating a high CAC of
+    - strong: ₹101.62
+    - text: (23% above your ₹70.00 target) and delivering only
+    - strong: 2.8x ROAS
+    - text: . We recommend reducing its daily budget by 15% and redirecting funds to your high-performing Instagram Summer Sale campaign (5.4x ROAS).
+  - button "Reduce Campaign B Budget (15%)":
+    - generic: Reduce Campaign B Budget (15%)
+  - heading "Campaign Performance Breakdown" [level=2]
+  - paragraph: Live telemetry from connected Meta and Google Ads accounts
+  - generic: "Channel:"
+  - combobox:
+    - option "All Channels" [selected]
+    - option "Instagram"
+    - option "Google Search"
+    - option "Meta Retargeting"
+  - table:
+    - rowgroup:
+      - row "Campaign Name Platform Ad Spend Conversions CAC Revenue Generated ROAS Status":
+        - columnheader "Campaign Name"
+        - columnheader "Platform"
+        - columnheader "Ad Spend"
+        - columnheader "Conversions"
+        - columnheader "CAC"
+        - columnheader "Revenue Generated"
+        - columnheader "ROAS"
+        - columnheader "Status"
+    - rowgroup:
+      - row "Instagram Summer Sale 142,000 impressions • 3.8% CTR Instagram ₹30,000 410 orders ₹73.17 ₹1,62,000 5.4x Active":
+        - cell "Instagram Summer Sale 142,000 impressions • 3.8% CTR":
+          - paragraph: Instagram Summer Sale
+          - paragraph: 142,000 impressions • 3.8% CTR
+        - cell "Instagram"
+        - cell "₹30,000"
+        - cell "410 orders"
+        - cell "₹73.17":
+          - generic: ₹73.17
+        - cell "₹1,62,000"
+        - cell "5.4x":
+          - generic: 5.4x
+        - cell "Active":
+          - text: Active
+      - row "Google Search Campaign 89,500 impressions • 4.6% CTR Google Search ₹27,400 380 orders ₹72.1 ₹1,34,260 4.9x Active":
+        - cell "Google Search Campaign 89,500 impressions • 4.6% CTR":
+          - paragraph: Google Search Campaign
+          - paragraph: 89,500 impressions • 4.6% CTR
+        - cell "Google Search"
+        - cell "₹27,400"
+        - cell "380 orders"
+        - cell "₹72.1":
+          - generic: ₹72.1
+        - cell "₹1,34,260"
+        - cell "4.9x":
+          - generic: 4.9x
+        - cell "Active":
+          - text: Active
+      - row "Retargeting Campaign B 64,200 impressions • 1.9% CTR Meta Retargeting ₹25,000 246 orders ₹101.62 ₹70,000 2.8x Needs Attention":
+        - cell "Retargeting Campaign B 64,200 impressions • 1.9% CTR":
+          - paragraph: Retargeting Campaign B
+          - paragraph: 64,200 impressions • 1.9% CTR
+        - cell "Meta Retargeting"
+        - cell "₹25,000"
+        - cell "246 orders"
+        - cell "₹101.62":
+          - generic: ₹101.62
+        - cell "₹70,000"
+        - cell "2.8x":
+          - generic: 2.8x
+        - cell "Needs Attention":
+          - text: Needs Attention
+- generic: ₹0k

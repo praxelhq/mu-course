@@ -1,0 +1,45 @@
+- banner:
+  - button "RETRO Snake EDITION.01":
+    - generic: RETRO Snake
+    - generic: EDITION.01
+  - navigation:
+    - button "SCORES"
+    - button "RULES"
+    - button "SETTINGS" [active]
+  - button "RESTART"
+  - button "PLAY NOW"
+- main:
+  - img "Retro fruit"
+  - generic: "SESSION TERMINATED / REPORT #802"
+  - heading "Game Over" [level=1]:
+    - text: Game
+    - text: Over
+  - paragraph: Final Score Achieved
+  - paragraph: "0"
+  - paragraph: Reached Speed Level 1
+  - button "PLAY AGAIN":
+    - text: PLAY AGAIN
+  - button "SHARE SCORE":
+    - text: SHARE SCORE
+  - button "RETURN TO HOME":
+    - text: RETURN TO HOME
+- contentinfo:
+  - generic: NEO ARCHIVE STUDIO / RETRO SNAKE
+  - navigation:
+    - button "SETTINGS"
+    - button "HIGH SCORES"
+    - button "RULES"
+- heading "STUDIO Settings" [level=2]
+- button:
+- generic: Arcade Sound FX
+- generic: 8-bit audio bleeps & sound effects
+- button "ENABLED"
+- text: Game Mode
+- button "CLASSIC"
+- button "BAUHAUS OBSTACLES"
+- button "LUDICROUS"
+- text: Speed Multiplier
+- button "1.0x NORMAL"
+- button "1.25x FAST"
+- button "1.5x LUDICROUS"
+- button "SAVE & CLOSE"

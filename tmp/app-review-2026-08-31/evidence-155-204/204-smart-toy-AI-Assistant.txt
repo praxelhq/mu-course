@@ -1,0 +1,46 @@
+- banner:
+  - generic: C
+  - generic: CraveAI
+  - button "psychology Find Cravings":
+    - generic: psychology
+    - generic: Find Cravings
+  - button "Notifications":
+    - generic: notifications
+- complementary:
+  - generic: C
+  - heading "CraveAI" [level=1]
+  - paragraph: Culinary Concierge
+  - button "add New Request":
+    - generic: add
+    - generic: New Request
+  - generic: Navigation
+  - navigation:
+    - button "home Home":
+      - generic: home
+      - generic: Home
+    - button "smart_toy AI Assistant" [active]:
+      - generic: smart_toy
+      - generic: AI Assistant
+    - button "favorite Saved 4":
+      - generic: favorite
+      - generic: Saved
+      - generic: "4"
+    - button "bar_chart History":
+      - generic: bar_chart
+      - generic: History
+  - generic: psychology
+  - generic: AI Engine Online
+  - paragraph: Real-time biometric & craving alignment powered by Gemini.
+- main:
+  - generic: smart_toy
+  - heading "AI Culinary Concierge" [level=2]
+  - paragraph: Live Gemini AI Powered
+  - paragraph: Hello! I'm your CraveAI Culinary Concierge. Tell me how you're feeling, what ingredients you have on hand, or any specific craving you want to satisfy.
+  - generic: 02:02
+  - button "I had a long stressful day and need comforting clean food."
+  - button "High-protein 15-min dinner with salmon or avocado."
+  - button "Sweet craving but want low glycemic carbs."
+  - button "I'm feeling drained and need brain power for late work."
+  - textbox "Ask CraveAI (e.g. 'I want something spicy with under 500 kcal')..."
+  - button "send" [disabled]:
+    - generic: send

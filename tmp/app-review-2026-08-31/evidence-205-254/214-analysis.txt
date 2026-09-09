@@ -1,0 +1,48 @@
+- banner:
+  - link "IdeaCheck":
+    - /url: /
+    - generic: IdeaCheck
+  - navigation "Main":
+    - link "Home":
+      - /url: /
+    - link "How It Works":
+      - /url: /how-it-works
+    - link "Test an Idea":
+      - /url: /test
+- main:
+  - heading "Describe your idea" [level=1]
+  - paragraph: The more specific you are, the more useful the assessment. Fields marked with * are required.
+  - text: Business Idea *
+  - textbox "A healthy meal subscription service for college students in Mumbai." [disabled]: A campus textbook lending service where students rent used course books for a semester
+  - paragraph: "Example: A healthy meal subscription service for college students in Mumbai."
+  - text: Target Customer *
+  - textbox "Target Customer *" [disabled]:
+    - /placeholder: College students aged 18 to 24.
+    - text: College students aged 18-24
+  - text: Location / Market *
+  - textbox "Location / Market *" [disabled]:
+    - /placeholder: Mumbai, India.
+    - text: Gurugram, India
+  - text: Expected Price *
+  - textbox "Expected Price *" [disabled]:
+    - /placeholder: ₹150 per meal.
+    - text: Rs 500 per semester per book
+  - text: Customer Problem *
+  - textbox "Customer Problem *" [disabled]:
+    - /placeholder: Students want affordable and healthy food but do not have convenient options near campus.
+    - text: New textbooks are costly and needed for only one semester. Buying used copies takes time.
+  - paragraph: What pain are you solving, and why do current options fall short?
+  - text: Known Competitors
+  - textbox "Known Competitors" [disabled]:
+    - /placeholder: Local messes, Swiggy, Zomato.
+  - paragraph: Optional.
+  - button "Analysing your idea…" [disabled]:
+    - text: Analysing your idea…
+  - paragraph: This usually takes 10–20 seconds.
+- contentinfo:
+  - paragraph: IdeaCheck provides an initial assessment only — not a prediction of business success.
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1cp0k2xg018t6rmxtexvv86m7z?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

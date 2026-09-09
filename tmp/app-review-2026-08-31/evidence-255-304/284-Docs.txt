@@ -1,0 +1,45 @@
+- banner:
+  - generic: My Garage
+  - button "Vehicle Document Vault":
+  - button "Tata":
+    - text: Tata
+- main:
+  - paragraph: Digital Locker
+  - heading "Vehicle Documents" [level=1]
+  - button "Upload Doc":
+    - generic: Upload Doc
+  - paragraph: Mandatory Documents
+  - generic: 0 stored in vault
+  - heading "Registration Certificate (RC)" [level=3]:
+    - generic: Registration Certificate (RC)
+  - paragraph: No document added
+  - generic: Expiry not set
+  - button "Upload RC":
+    - generic: Upload RC
+  - heading "Insurance Policy" [level=3]:
+    - generic: Insurance Policy
+  - paragraph: No document added
+  - generic: Expiry not set
+  - button "Upload Insurance":
+    - generic: Upload Insurance
+  - heading "Pollution Certificate (PUC)" [level=3]:
+    - generic: Pollution Certificate (PUC)
+  - paragraph: No document added
+  - generic: Expiry not set
+  - button "Upload PUC":
+    - generic: Upload PUC
+  - paragraph: Other Documents (0)
+  - button "Add Custom Doc":
+    - generic: Add Custom Doc
+  - paragraph: No additional documents stored. You can upload extended warranties, Fastag receipts, or road tax invoices.
+- navigation:
+  - button "Garage":
+    - generic: Garage
+  - button "Fuel":
+    - generic: Fuel
+  - button "Service":
+    - generic: Service
+  - button "Expenses":
+    - generic: Expenses
+  - button "Docs" [active]:
+    - generic: Docs

@@ -1,0 +1,29 @@
+- link:
+  - /url: "#chatinput"
+  - text: Skip to chat input
+- main:
+  - navigation:
+    - button:
+    - generic: /
+    - button:
+    - button:
+    - button:
+      - generic: /
+      - generic: Homepage
+    - button [disabled]:
+    - button:
+    - button [disabled]:
+      - generic: Publish
+  - region "Preview":
+    - status
+- region
+- dialog "You don't have access":
+  - heading "You don't have access" [level=2]
+  - paragraph: This project is private. To view it, contact the owner or switch accounts.
+  - button "Start building" [active]:
+    - generic: Start building
+  - button "Request access":
+    - generic: Request access
+  - text: You are logged in as gathersubs@gmail.com.
+  - button "Not you?"
+  - button "Close":

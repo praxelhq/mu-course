@@ -1,0 +1,198 @@
+- complementary:
+  - link "FactoryFlow AI Shreeji Precision Works":
+    - /url: /
+    - paragraph: FactoryFlow AI
+    - paragraph: Shreeji Precision Works
+  - navigation:
+    - paragraph: Shop floor
+    - link "Dashboard":
+      - /url: /
+      - text: Dashboard
+    - link "Production":
+      - /url: /production
+      - text: Production
+    - link "Customer Schedule":
+      - /url: /schedule
+      - text: Customer Schedule
+    - link "Machines":
+      - /url: /machines
+      - text: Machines
+    - link "Downtime":
+      - /url: /downtime
+      - text: Downtime
+    - link "Maintenance":
+      - /url: /maintenance
+      - text: Maintenance
+    - link "Quality":
+      - /url: /quality
+      - text: Quality
+    - link "Job Work":
+      - /url: /job-work
+      - text: Job Work
+    - link "Inventory":
+      - /url: /inventory
+      - text: Inventory
+    - paragraph: Money
+    - link "Sales & Receivables":
+      - /url: /sales
+      - text: Sales & Receivables
+    - link "Purchase & Payables":
+      - /url: /purchase
+      - text: Purchase & Payables
+    - link "Cash View":
+      - /url: /cash
+      - text: Cash View
+    - link "Compliance":
+      - /url: /compliance
+      - text: Compliance
+    - paragraph: Run the business
+    - link "Tasks":
+      - /url: /tasks
+      - text: Tasks
+    - link "Analytics":
+      - /url: /analytics
+      - text: Analytics
+    - link "Reports":
+      - /url: /reports
+      - text: Reports
+    - link "AI Assistant":
+      - /url: /assistant
+      - text: AI Assistant
+    - link "Integrations" [active]:
+      - /url: /integrations
+      - text: Integrations
+    - link "Settings":
+      - /url: /settings
+      - text: Settings
+  - link "RK Rajesh Kulkarni Works Manager":
+    - /url: /profile
+    - generic: RK
+    - generic: Rajesh Kulkarni
+    - generic: Works Manager
+  - link "Pricing & product page →":
+    - /url: /welcome
+- banner:
+  - textbox "Search part, challan, invoice, heat number…"
+  - button "English"
+  - button "हिंदी"
+  - button "मराठी"
+  - generic "All entries synced":
+    - text: Online
+  - button "Toggle dark mode":
+  - link "Notifications":
+    - /url: /notifications
+    - generic: "4"
+  - link "Ask AI":
+    - /url: /assistant
+    - generic: Ask AI
+- main:
+  - navigation:
+    - link "FactoryFlow":
+      - /url: /
+    - generic: Settings
+    - generic: Integrations
+  - heading "Integrations" [level=1]
+  - paragraph: FactoryFlow sits on top of Tally — your CA keeps working exactly as before.
+  - button "Sync Tally now":
+    - text: Sync Tally now
+  - heading "Tally Prime — primary integration" [level=2]
+  - paragraph: Primary integration — FactoryFlow sits on top of Tally, it does not replace it.
+  - paragraph: Two-way sync of ledgers, stock items, sales & purchase vouchers over Tally ODBC / XML on port 9000.
+  - generic: Connected
+  - paragraph: Last sync Today 06:45
+  - table:
+    - rowgroup:
+      - row "Entity Direction Records Last sync":
+        - columnheader "Entity"
+        - columnheader "Direction"
+        - columnheader "Records"
+        - columnheader "Last sync"
+        - columnheader
+    - rowgroup:
+      - row "Ledgers (customers & vendors) Tally → FactoryFlow 148 Today 06:45":
+        - cell "Ledgers (customers & vendors)"
+        - cell "Tally → FactoryFlow"
+        - cell "148"
+        - cell "Today 06:45"
+        - cell:
+      - row "Stock items & UOM Tally → FactoryFlow 312 Today 06:45":
+        - cell "Stock items & UOM"
+        - cell "Tally → FactoryFlow"
+        - cell "312"
+        - cell "Today 06:45"
+        - cell:
+      - row "Sales vouchers / e-invoices FactoryFlow → Tally 26 Today 06:46":
+        - cell "Sales vouchers / e-invoices"
+        - cell "FactoryFlow → Tally"
+        - cell "26"
+        - cell "Today 06:46"
+        - cell:
+      - row "Purchase vouchers & GRN FactoryFlow → Tally 22 Today 06:46":
+        - cell "Purchase vouchers & GRN"
+        - cell "FactoryFlow → Tally"
+        - cell "22"
+        - cell "Today 06:46"
+        - cell:
+      - row "Job work delivery challans FactoryFlow → Tally 18 Today 06:47":
+        - cell "Job work delivery challans"
+        - cell "FactoryFlow → Tally"
+        - cell "18"
+        - cell "Today 06:47"
+        - cell:
+      - row "Receipts & payments Tally → FactoryFlow 63 Today 06:47":
+        - cell "Receipts & payments"
+        - cell "Tally → FactoryFlow"
+        - cell "63"
+        - cell "Today 06:47"
+        - cell:
+  - paragraph: "Connection: Tally Prime 4.x on shop LAN · ODBC port 9000 · company \"Shreeji Precision Works FY 2026-27\"."
+  - paragraph: GSTN Portal
+  - generic: Connected
+  - paragraph: GSTR-1, 3B and 2B pull
+  - paragraph: Fetches filing status and 2B reconciliation via GSP.
+  - paragraph: Last sync Today 05:10
+  - paragraph: NIC e-Invoice IRP
+  - generic: Connected
+  - paragraph: IRN + signed QR on every B2B invoice
+  - paragraph: Auto-generates IRN at invoice save; AATO ₹8.42 cr so e-invoicing is mandatory.
+  - paragraph: Last sync Today 08:02
+  - paragraph: E-Way Bill Portal
+  - generic: Connected
+  - paragraph: Auto EWB with vehicle number and validity clock
+  - paragraph: Generates and extends e-way bills against dispatch invoices.
+  - paragraph: Last sync Today 07:58
+  - paragraph: WhatsApp Business API
+  - generic: Connected
+  - paragraph: Shop-floor logging and payment reminders
+  - paragraph: Supervisors send a voice note or photo; bot posts production, downtime or rejection entries.
+  - paragraph: Last sync Today 09:12
+  - paragraph: Barcode / QR Scanner
+  - generic: Not connected
+  - paragraph: Challan and bin scanning
+  - paragraph: Any Android scanner or phone camera scans job-work challans and stores bins.
+  - paragraph: Last sync —
+  - heading "WhatsApp Bot" [level=2]
+  - paragraph:
+    - text: Bot number
+    - strong: +91 90000 41200
+    - text: · 34 operators enrolled · works in English, हिंदी and मराठी.
+  - paragraph: उत्पादन 250
+  - paragraph: Log 250 pcs produced on the operator's assigned machine
+  - paragraph: बंद पडले — पॉवर कट 30
+  - paragraph: Log 30 minutes of downtime, reason power cut
+  - paragraph: रिजेक्शन 12 पोरोसिटी
+  - paragraph: Log 12 rejected pieces against porosity
+  - paragraph: PAYMENT Varroc
+  - paragraph: Send outstanding statement to the customer on WhatsApp
+  - paragraph: STATUS
+  - paragraph: Reply with today's production, OEE and top downtime reason
+  - button "Send test message"
+- button "Quick Log":
+  - text: Quick Log
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_10hdg7xyw99tpa64t0nz744v7b?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: "6000"

@@ -1,0 +1,27 @@
+- main:
+  - button "Go back":
+  - generic: 1/5
+  - heading "💸 What's the budget?" [level=2]
+  - paragraph: Per person, roughly.
+  - button "₹0–500 Cheap and cheerful":
+    - generic: ₹0–500
+    - generic: Cheap and cheerful
+  - button "₹500–1,000 Comfortable":
+    - generic: ₹500–1,000
+    - generic: Comfortable
+  - button "₹1,000–2,000 Treat night":
+    - generic: ₹1,000–2,000
+    - generic: Treat night
+  - button "₹2,000+ Going all out":
+    - generic: ₹2,000+
+    - generic: Going all out
+  - button "Flexible Surprise us ✨":
+    - generic: Flexible
+    - generic: Surprise us ✨
+  - button "Continue" [disabled]:
+    - text: Continue
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7kh9wqajyf8xxsm9vc3sqtdh9t?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

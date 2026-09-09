@@ -1,0 +1,51 @@
+- banner:
+  - button "GreenCare":
+    - generic: GreenCare
+  - button "Koramangala, Bengaluru":
+    - generic: Koramangala, Bengaluru
+  - button "View notifications":
+  - button "User Profile":
+    - generic: AS
+- main:
+  - generic: A
+  - heading "Ananya Sharma" [level=2]
+  - generic: Gold Member
+  - paragraph: +91 98450 12847
+  - paragraph: ananya.sharma@example.com
+  - text: GreenCare Club Points
+  - generic: 140 Points
+  - button "Redeem"
+  - button "Manage Saved Addresses 3 addresses configured":
+    - generic: Manage Saved Addresses
+    - generic: 3 addresses configured
+  - button "Service History & Receipts View ongoing sessions & tax invoices":
+    - generic: Service History & Receipts
+    - text: View ongoing sessions & tax invoices
+  - button "Annual Maintenance Contracts Weekly recurring garden care plans":
+    - generic: Annual Maintenance Contracts
+    - text: Weekly recurring garden care plans
+  - heading "Gardening Safety Preferences" [level=3]
+  - generic: 100% Organic Inputs Only
+  - text: Strictly forbid chemical fertilizers & pesticides
+  - button
+  - generic: Pet & Child Safe Sprays
+  - text: Use cold-pressed neem & bio-shield solutions
+  - button
+  - text: Emergency Plant ICU Hotline
+  - heading "+91 80 4092 8811" [level=4]
+  - text: Direct line to Senior Horticulturists
+  - link "Call Now":
+    - /url: tel:18001234567
+  - button "Sign Out / Switch Profile":
+    - generic: Sign Out / Switch Profile
+- navigation:
+  - button "Home":
+    - generic: Home
+  - button "1 Bookings":
+    - generic: "1"
+    - generic: Bookings
+  - button "AMC Plans":
+    - generic: AMC
+    - generic: Plans
+  - button "Profile" [active]:
+    - generic: Profile

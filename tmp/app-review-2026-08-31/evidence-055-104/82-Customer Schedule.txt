@@ -1,0 +1,195 @@
+- complementary:
+  - link "FactoryFlow AI Shreeji Precision Works":
+    - /url: /
+    - paragraph: FactoryFlow AI
+    - paragraph: Shreeji Precision Works
+  - navigation:
+    - paragraph: Shop floor
+    - link "Dashboard":
+      - /url: /
+      - text: Dashboard
+    - link "Production":
+      - /url: /production
+      - text: Production
+    - link "Customer Schedule" [active]:
+      - /url: /schedule
+      - text: Customer Schedule
+    - link "Machines":
+      - /url: /machines
+      - text: Machines
+    - link "Downtime":
+      - /url: /downtime
+      - text: Downtime
+    - link "Maintenance":
+      - /url: /maintenance
+      - text: Maintenance
+    - link "Quality":
+      - /url: /quality
+      - text: Quality
+    - link "Job Work":
+      - /url: /job-work
+      - text: Job Work
+    - link "Inventory":
+      - /url: /inventory
+      - text: Inventory
+    - paragraph: Money
+    - link "Sales & Receivables":
+      - /url: /sales
+      - text: Sales & Receivables
+    - link "Purchase & Payables":
+      - /url: /purchase
+      - text: Purchase & Payables
+    - link "Cash View":
+      - /url: /cash
+      - text: Cash View
+    - link "Compliance":
+      - /url: /compliance
+      - text: Compliance
+    - paragraph: Run the business
+    - link "Tasks":
+      - /url: /tasks
+      - text: Tasks
+    - link "Analytics":
+      - /url: /analytics
+      - text: Analytics
+    - link "Reports":
+      - /url: /reports
+      - text: Reports
+    - link "AI Assistant":
+      - /url: /assistant
+      - text: AI Assistant
+    - link "Integrations":
+      - /url: /integrations
+      - text: Integrations
+    - link "Settings":
+      - /url: /settings
+      - text: Settings
+  - link "RK Rajesh Kulkarni Works Manager":
+    - /url: /profile
+    - generic: RK
+    - generic: Rajesh Kulkarni
+    - generic: Works Manager
+  - link "Pricing & product page →":
+    - /url: /welcome
+- banner:
+  - textbox "Search part, challan, invoice, heat number…"
+  - button "English"
+  - button "हिंदी"
+  - button "मराठी"
+  - generic "All entries synced":
+    - text: Online
+  - button "Toggle dark mode":
+  - link "Notifications":
+    - /url: /notifications
+    - generic: "4"
+  - link "Ask AI":
+    - /url: /assistant
+    - generic: Ask AI
+- main:
+  - navigation:
+    - link "FactoryFlow":
+      - /url: /
+    - generic: Customer Schedule
+  - heading "Customer Schedule" [level=1]
+  - paragraph: Adherence is measured against the latest customer revision, not the original release.
+  - paragraph: Schedule adherence
+  - paragraph: 97.3%
+  - paragraph: vs latest revision
+  - paragraph: Active schedules
+  - paragraph: "4"
+  - paragraph: Tier-1 customers
+  - paragraph: Revisions this month
+  - paragraph: "4"
+  - paragraph: Net qty change
+  - paragraph: "+700"
+  - paragraph: Pieces added by revisions
+  - button "Bharat Forge Ltd Flange Yoke FY-108":
+    - generic: Bharat Forge Ltd
+    - generic: Flange Yoke FY-108
+  - button "Endurance Technologies Brake Bracket BB-22":
+    - generic: Endurance Technologies
+    - generic: Brake Bracket BB-22
+  - button "Varroc Engineering Pivot Pin PP-15":
+    - generic: Varroc Engineering
+    - generic: Pivot Pin PP-15
+  - button "Sundram Fasteners Gear Blank GB-40":
+    - generic: Sundram Fasteners
+    - generic: Gear Blank GB-40
+  - heading "Bharat Forge Ltd — Flange Yoke FY-108" [level=2]
+  - list:
+    - text: Required (latest rev)
+    - text: Dispatched
+  - heading "Revision history" [level=2]
+  - paragraph: Current week adherence
+  - paragraph: 95%
+  - paragraph: 2,280 dispatched of 2,400 required
+  - paragraph: Rev 0
+  - paragraph: Original release 2,400/wk
+  - paragraph: Received 27-07-2026
+  - paragraph:
+    - text: Rev 1
+    - generic: (+600 pcs)
+  - paragraph: Pull-in for export order
+  - paragraph: Received 12-08-2026
+  - paragraph:
+    - text: Rev 2
+    - generic: (+200 pcs)
+  - paragraph: W-36 onward increased
+  - paragraph: Received 21-08-2026
+  - heading "All schedules" [level=2]
+  - table:
+    - rowgroup:
+      - row "Customer Part Latest rev This week req. Dispatched Adherence Status":
+        - columnheader "Customer"
+        - columnheader "Part"
+        - columnheader "Latest rev"
+        - columnheader "This week req."
+        - columnheader "Dispatched"
+        - columnheader "Adherence"
+        - columnheader "Status"
+    - rowgroup:
+      - row "Bharat Forge Ltd Flange Yoke FY-108 Rev 2 2,400 2,280 95% On Track":
+        - cell "Bharat Forge Ltd"
+        - cell "Flange Yoke FY-108"
+        - cell "Rev 2"
+        - cell "2,400"
+        - cell "2,280"
+        - cell "95%"
+        - cell "On Track":
+          - generic: On Track
+      - row "Endurance Technologies Brake Bracket BB-22 Rev 1 1,800 1,810 100.6% Completed":
+        - cell "Endurance Technologies"
+        - cell "Brake Bracket BB-22"
+        - cell "Rev 1"
+        - cell "1,800"
+        - cell "1,810"
+        - cell "100.6%"
+        - cell "Completed":
+          - generic: Completed
+      - row "Varroc Engineering Pivot Pin PP-15 Rev 1 5,000 4,400 88% Behind":
+        - cell "Varroc Engineering"
+        - cell "Pivot Pin PP-15"
+        - cell "Rev 1"
+        - cell "5,000"
+        - cell "4,400"
+        - cell "88%"
+        - cell "Behind":
+          - generic: Behind
+      - row "Sundram Fasteners Gear Blank GB-40 Rev 0 900 950 105.6% Completed":
+        - cell "Sundram Fasteners"
+        - cell "Gear Blank GB-40"
+        - cell "Rev 0"
+        - cell "900"
+        - cell "950"
+        - cell "105.6%"
+        - cell "Completed":
+          - generic: Completed
+- button "Quick Log":
+  - text: Quick Log
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_10hdg7xyw99tpa64t0nz744v7b?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: "800"

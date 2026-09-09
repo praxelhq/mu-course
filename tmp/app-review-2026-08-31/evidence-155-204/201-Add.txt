@@ -1,0 +1,25 @@
+- main:
+  - text: Trip money, sorted
+  - heading "SplitStay" [level=1]
+  - paragraph: Split trip costs. Settle up in seconds.
+  - text: Trip name
+  - textbox "Trip name":
+    - /placeholder: Goa 2026
+    - text: Review Demo Trip
+  - generic: Members
+  - textbox "Members":
+    - /placeholder: Add a name
+  - button "Add" [disabled]:
+    - text: Add
+  - text: Test Alex
+  - button "Remove Test Alex":
+  - text: Test Blake
+  - button "Remove Test Blake":
+  - paragraph: 2 travellers on this trip.
+  - button "Create trip":
+    - text: Create trip
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_2c3cqz90h29nqvr5qbj4ym2v9k?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

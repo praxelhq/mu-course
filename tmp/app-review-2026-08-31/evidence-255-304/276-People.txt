@@ -1,0 +1,62 @@
+- banner:
+  - link "Claude home":
+    - /url: /
+    - generic: 
+  - button "GharOS":
+    - generic: GharOS
+    - generic: 
+  - generic: Content is user-generated and unverified.
+  - button "Share, shared with anyone who has the link":
+    - generic: Share
+  - status
+  - alert
+  - link "Sign in":
+    - /url: /login?returnTo=%2Fcode%2Fartifact%2F66f06408-2363-41b3-b2bc-43b42c82d12b%3Fopen_in_browser%3D1%26via%3Duser_open%26org%3Da0f81c5b-82b4-40de-b1ce-8b89c2e4ccd9
+    - generic: Sign in
+  - alert
+  - status
+- main:
+  - iframe [active] [id="frame-content"]:
+    - banner:
+      - heading "People" [level=1]
+      - generic: 3 in your home
+      - button "+ Add"
+    - main:
+      - button "1 pending request Tap to approve or decline.":
+        - generic: 1 pending request
+        - text: Tap to approve or decline.
+      - button "SD Sunita Devi Maid · ₹11,500/mo ₹11,129 Unpaid ›":
+        - generic: SD
+        - generic: Sunita Devi
+        - generic: Maid · ₹11,500/mo
+        - generic: ₹11,129
+        - generic: Unpaid
+        - generic: ›
+      - button "LB Lakshmi Bai Cook · ₹6,000/mo ₹6,000 Unpaid ›":
+        - generic: LB
+        - generic: Lakshmi Bai
+        - generic: Cook · ₹6,000/mo
+        - generic: ₹6,000
+        - generic: Unpaid
+        - generic: ›
+      - button "RY Rajesh Yadav Driver · ₹9,000/mo ₹8,710 Unpaid ›":
+        - generic: RY
+        - generic: Rajesh Yadav
+        - generic: Driver · ₹9,000/mo
+        - generic: ₹8,710
+        - generic: Unpaid
+        - generic: ›
+      - button "Add another person"
+    - navigation:
+      - button "Home":
+        - generic: Home
+      - button "People 1":
+        - generic: People
+        - generic: "1"
+      - button "Salary":
+        - generic: Salary
+      - button "Me":
+        - generic: Me
+- status
+- status
+- status

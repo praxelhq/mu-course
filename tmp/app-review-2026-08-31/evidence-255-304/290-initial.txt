@@ -1,0 +1,237 @@
+- link "Skip to content":
+  - /url: "#view"
+- banner:
+  - link "SportPath home":
+    - /url: "#/"
+    - generic: SportPath
+  - navigation "Primary":
+    - link "Home":
+      - /url: "#/"
+      - generic: Home
+    - link "Sports":
+      - /url: "#/browse"
+      - generic: Sports
+    - link "Videos":
+      - /url: "#/videos"
+      - generic: Videos
+    - link "Coaches":
+      - /url: "#/experts"
+      - generic: Coaches
+    - link "Play near me":
+      - /url: "#/near"
+      - generic: Play near me
+    - link "My progress":
+      - /url: "#/progress"
+      - generic: My progress
+  - button "Log in":
+    - text: Log in
+- main:
+  - text: Start · Understand · Practise · Improve
+  - heading "Find your path in any sport." [level=1]
+  - paragraph: Pick a sport and your level — SportPath builds a structured learning journey with techniques, drills, curated videos, experts and places to play near you.
+  - search:
+    - searchbox "Search sports"
+    - button "Search"
+  - link "Football":
+    - /url: "#/sport/football"
+    - generic: ⚽
+    - text: Football
+  - link "Tennis":
+    - /url: "#/sport/tennis"
+    - generic: 🎾
+    - text: Tennis
+  - link "Cricket":
+    - /url: "#/sport/cricket"
+    - generic: 🏏
+    - text: Cricket
+  - link "Basketball":
+    - /url: "#/sport/basketball"
+    - generic: 🏀
+    - text: Basketball
+  - link "Swimming":
+    - /url: "#/sport/swimming"
+    - generic: 🏊
+    - text: Swimming
+  - link "Badminton":
+    - /url: "#/sport/badminton"
+    - generic: 🏸
+    - text: Badminton
+  - heading "Choose your level" [level=2]:
+    - text: Choose your level
+  - paragraph: Every path adapts to where you are today.
+  - generic: 🌱
+  - heading "Beginner" [level=3]
+  - paragraph: Never played, or just starting out
+  - paragraph: "Build the fundamentals: core techniques, simple drills, essential kit and the confidence to play your first game."
+  - list:
+    - text: Fundamental techniques
+    - text: Step-by-step basics
+    - text: Common mistakes to avoid
+    - text: Essential equipment
+  - link "Browse beginner paths":
+    - /url: "#/browse?level=beginner"
+    - text: Browse beginner paths
+  - generic: 🚀
+  - heading "Intermediate" [level=3]
+  - paragraph: Comfortable with the basics, ready to level up
+  - paragraph: Sharpen technique, add tactical awareness and train with more demanding, game-realistic drills.
+  - list:
+    - text: Refined technique
+    - text: Tactical concepts
+    - text: Game-realistic drills
+    - text: Progression guidance
+  - link "Browse intermediate paths":
+    - /url: "#/browse?level=intermediate"
+    - text: Browse intermediate paths
+  - generic: 🏆
+  - heading "Advanced" [level=3]
+  - paragraph: Experienced, chasing mastery and edge
+  - paragraph: Master advanced skills, high-level strategy and expert-designed training to compete at a higher standard.
+  - list:
+    - text: Advanced techniques
+    - text: High-level strategy
+    - text: Expert drills & load
+    - text: Performance edge
+  - link "Browse advanced paths":
+    - /url: "#/browse?level=advanced"
+    - text: Browse advanced paths
+  - heading "Popular sports" [level=2]:
+    - text: Popular sports
+  - paragraph: Fully seeded with techniques, drills and videos.
+  - link "Browse all":
+    - /url: "#/browse"
+    - text: Browse all
+  - link "Team Add to favourites Football The beautiful game 11 v 11 Explore":
+    - /url: "#/sport/football"
+    - generic: ⚽
+    - generic: Team
+    - button "Add to favourites":
+    - heading "Football" [level=3]
+    - paragraph: The beautiful game
+    - generic: 11 v 11
+    - text: Explore
+  - link "Racket Add to favourites Tennis Precision, power and patience 1 v 1 / 2 v 2 Explore":
+    - /url: "#/sport/tennis"
+    - generic: 🎾
+    - generic: Racket
+    - button "Add to favourites":
+    - heading "Tennis" [level=3]
+    - paragraph: Precision, power and patience
+    - generic: 1 v 1 / 2 v 2
+    - text: Explore
+  - link "Bat & Ball Add to favourites Cricket Bat, ball and boundless strategy 11 v 11 Explore":
+    - /url: "#/sport/cricket"
+    - generic: 🏏
+    - generic: Bat & Ball
+    - button "Add to favourites":
+    - heading "Cricket" [level=3]
+    - paragraph: Bat, ball and boundless strategy
+    - generic: 11 v 11
+    - text: Explore
+  - link "Team Add to favourites Basketball Fast breaks and high flyers 5 v 5 Explore":
+    - /url: "#/sport/basketball"
+    - generic: 🏀
+    - generic: Team
+    - button "Add to favourites":
+    - heading "Basketball" [level=3]
+    - paragraph: Fast breaks and high flyers
+    - generic: 5 v 5
+    - text: Explore
+  - link "Individual Add to favourites Swimming Glide, breathe, repeat Solo Explore":
+    - /url: "#/sport/swimming"
+    - generic: 🏊
+    - generic: Individual
+    - button "Add to favourites":
+    - heading "Swimming" [level=3]
+    - paragraph: Glide, breathe, repeat
+    - generic: Solo
+    - text: Explore
+  - link "Racket Add to favourites Badminton The fastest racket sport 1 v 1 / 2 v 2 Explore":
+    - /url: "#/sport/badminton"
+    - generic: 🏸
+    - generic: Racket
+    - button "Add to favourites":
+    - heading "Badminton" [level=3]
+    - paragraph: The fastest racket sport
+    - generic: 1 v 1 / 2 v 2
+    - text: Explore
+  - link "Racket Add to favourites Pickleball The fastest-growing sport around 1 v 1 / 2 v 2 Explore":
+    - /url: "#/sport/pickleball"
+    - generic: 🏓
+    - generic: Racket
+    - button "Add to favourites":
+    - heading "Pickleball" [level=3]
+    - paragraph: The fastest-growing sport around
+    - generic: 1 v 1 / 2 v 2
+    - text: Explore
+  - link "Individual Add to favourites Skating Roll, glide and flow Solo Explore":
+    - /url: "#/sport/skating"
+    - generic: 🛼
+    - generic: Individual
+    - button "Add to favourites":
+    - heading "Skating" [level=3]
+    - paragraph: Roll, glide and flow
+    - generic: Solo
+    - text: Explore
+  - link "Racket Add to favourites Padel Racket sport in a glass box 2 v 2 Explore":
+    - /url: "#/sport/padel"
+    - generic: 🎾
+    - generic: Racket
+    - button "Add to favourites":
+    - heading "Padel" [level=3]
+    - paragraph: Racket sport in a glass box
+    - generic: 2 v 2
+    - text: Explore
+  - link "Racket Add to favourites Table Tennis Lightning reflexes on a tabletop 1 v 1 / 2 v 2 Explore":
+    - /url: "#/sport/table-tennis"
+    - generic: 🏓
+    - generic: Racket
+    - button "Add to favourites":
+    - heading "Table Tennis" [level=3]
+    - paragraph: Lightning reflexes on a tabletop
+    - generic: 1 v 1 / 2 v 2
+    - text: Explore
+  - link "Individual Add to favourites Cycling Go further on two wheels Solo / group Explore":
+    - /url: "#/sport/cycling"
+    - generic: 🚴
+    - generic: Individual
+    - button "Add to favourites":
+    - heading "Cycling" [level=3]
+    - paragraph: Go further on two wheels
+    - generic: Solo / group
+    - text: Explore
+  - heading "Sport overviews" [level=4]
+  - paragraph: Rules, terminology, equipment and how to get started — the essentials in one place.
+  - heading "Curated videos" [level=4]
+  - paragraph: Hand-picked instructional videos from public sources, organised by technique and level.
+  - heading "Experts & references" [level=4]
+  - paragraph: Coaches, athletes and governing bodies to learn from and follow.
+  - heading "Play near me" [level=4]
+  - paragraph: Find clubs, courts and academies close to you and get playing.
+- contentinfo:
+  - link "SportPath":
+    - /url: "#/"
+    - generic: SportPath
+  - paragraph: Start, understand, practise and improve at any sport.
+  - heading "Explore" [level=4]
+  - link "All sports":
+    - /url: "#/browse"
+  - link "Video library":
+    - /url: "#/videos"
+  - link "Coaches":
+    - /url: "#/experts"
+  - link "Play near me":
+    - /url: "#/near"
+  - heading "Company" [level=4]
+  - link "About us":
+    - /url: "#/about"
+  - link "Contact us":
+    - /url: "#/contact"
+  - button "Settings"
+  - heading "Legal" [level=4]
+  - link "Terms & Conditions":
+    - /url: "#/terms"
+  - link "Privacy Policy":
+    - /url: "#/privacy"
+  - paragraph: © 2026 SportPath · An independent MVP · Educational content only — not professional coaching or medical advice · No third-party video is hosted or redistributed.
+- iframe [id="nl-badge-frame"]

@@ -1,0 +1,117 @@
+- banner:
+  - link "All artifacts":
+    - /url: /code/artifacts
+    - generic: 
+  - button "PlateBook":
+    - generic: PlateBook
+    - generic: 
+  - generic: Content is user-generated and unverified.
+  - button "You":
+    - group "You":
+      - img "Praxy": P
+  - button "Share":
+    - generic: Share
+  - status
+  - alert
+  - alert
+  - status
+- main:
+  - iframe [active] [id="frame-content"]:
+    - banner:
+      - generic: Recipes & weekly meal planning
+      - heading "PlateBook" [level=1]
+      - generic: Daily target
+      - spinbutton "Daily target": "300"
+      - generic: kcal
+    - heading "Browse the thali" [level=2]
+    - generic: Home-style Indian recipes, tagged by region, diet and calories. Tap a day dot to drop a dish straight into this week's tiffin.
+    - textbox "Search dishes or ingredients…": Masala Dosa
+    - button "All"
+    - button "Veg"
+    - button "Vegan"
+    - button "Non-Veg"
+    - button "All"
+    - button "Breakfast"
+    - button "Lunch"
+    - button "Dinner"
+    - button "Snack"
+    - button "Dessert"
+    - button "Side"
+    - button "All"
+    - button "North Indian"
+    - button "South Indian"
+    - button "West Indian"
+    - button "Hyderabadi"
+    - button "Pan-India"
+    - img "Masala Dosa"
+    - heading "Masala Dosa" [level=3]
+    - generic: Veg
+    - generic: South Indian
+    - generic: Breakfast
+    - generic: 25 min · serves 1
+    - generic: 350 kcal
+    - button "View recipe"
+    - button "Add to Mon": M
+    - button "Add to Tue": T
+    - button "Add to Wed": W
+    - button "Add to Thu": T
+    - button "Add to Fri": F
+    - button "Add to Sat": S
+    - button "Add to Sun": S
+    - heading "This week's tiffin" [level=2]
+    - generic: Each tin fills as you add meals — it turns terracotta-red if a day runs past your target.
+    - generic: Mon
+    - generic: 350/300
+    - generic: Masala Dosa
+    - button "Remove Masala Dosa from Mon": ×
+    - generic: Tue
+    - generic: 350/300
+    - generic: Masala Dosa
+    - button "Remove Masala Dosa from Tue": ×
+    - generic: Wed
+    - generic: 0/300
+    - generic: empty tin
+    - generic: Thu
+    - generic: 0/300
+    - generic: empty tin
+    - generic: Fri
+    - generic: 0/300
+    - generic: empty tin
+    - generic: Sat
+    - generic: 0/300
+    - generic: empty tin
+    - generic: Sun
+    - generic: 0/300
+    - generic: empty tin
+    - heading "Grocery list" [level=2]
+    - generic: Auto-built from everything sitting in this week's tiffin.
+    - generic: Grocery List · 7-day tiffin
+    - heading "Masala Dosa ×2" [level=4]:
+      - text: Masala Dosa
+      - generic: ×2
+    - checkbox "Fermented dosa batter (rice & urad dal) – 2 cups"
+    - generic: Fermented dosa batter (rice & urad dal) – 2 cups
+    - checkbox "Potatoes – 3, boiled & mashed" [checked]
+    - generic: Potatoes – 3, boiled & mashed
+    - checkbox "Onion – 1, thinly sliced"
+    - generic: Onion – 1, thinly sliced
+    - checkbox "Mustard seeds – 1 tsp"
+    - generic: Mustard seeds – 1 tsp
+    - checkbox "Curry leaves – 8–10"
+    - generic: Curry leaves – 8–10
+    - checkbox "Turmeric – 1/2 tsp"
+    - generic: Turmeric – 1/2 tsp
+    - checkbox "Oil or ghee – 2 tbsp"
+    - generic: Oil or ghee – 2 tbsp
+    - checkbox "Coconut chutney & sambar – to serve"
+    - generic: Coconut chutney & sambar – to serve
+    - generic: Planned week total
+    - generic: 700 kcal
+    - button "Clear checked items"
+    - button "Empty the whole week"
+    - generic: Ingredient lines are grouped by recipe. If a dish is planned more than once, the multiplier shows how many times to shop for it.
+    - generic "Photo credits"
+    - generic: PlateBook · an independent recipe & planning tool, not affiliated with any other meal-planning service.
+- status
+- status
+- status

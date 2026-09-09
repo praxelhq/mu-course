@@ -1,0 +1,142 @@
+- complementary:
+  - link "Q QuoteFlow":
+    - /url: /
+    - generic: Q
+    - generic: QuoteFlow
+  - navigation:
+    - link "Dashboard":
+      - /url: /
+      - text: Dashboard
+    - link "Create Quotation":
+      - /url: /create-quotation
+      - text: Create Quotation
+    - link "Quotations":
+      - /url: /quotations
+      - text: Quotations
+    - link "Customers":
+      - /url: /customers
+      - text: Customers
+    - link "Products":
+      - /url: /products
+      - text: Products
+  - link "Settings":
+    - /url: /settings
+    - text: Settings
+  - generic: PS
+  - generic: Priya Sharma
+  - generic: Studio Lead
+  - link "Sign out":
+    - /url: /login
+- main:
+  - heading "Quotations History" [level=2]
+  - link "New Quotation":
+    - /url: /create-quotation
+    - text: New Quotation
+  - heading "All Quotations" [level=1]
+  - paragraph: 7 of 7 quotations
+  - textbox "Search quotations"
+  - button "All"
+  - button "Draft"
+  - button "Sent"
+  - button "Viewed"
+  - button "Accepted"
+  - button "Rejected"
+  - button "Expired"
+  - table:
+    - rowgroup:
+      - row "Quotation Customer Date Status Total":
+        - columnheader "Quotation"
+        - columnheader "Customer"
+        - columnheader "Date"
+        - columnheader "Status"
+        - columnheader "Total"
+    - rowgroup:
+      - row "Thakur Villa Renovation QF-2041 Rohan Thakur Thakur Villa, Juhu 12 Aug 2026 Accepted ₹3,53,297.00":
+        - cell "Thakur Villa Renovation QF-2041":
+          - link "Thakur Villa Renovation":
+            - /url: /quotations/q2041
+          - paragraph: QF-2041
+        - cell "Rohan Thakur Thakur Villa, Juhu":
+          - paragraph: Rohan Thakur
+          - paragraph: Thakur Villa, Juhu
+        - cell "12 Aug 2026"
+        - cell "Accepted":
+          - generic: Accepted
+        - cell "₹3,53,297.00"
+      - row "Dining Set Custom Order QF-2040 Sneha Iyer Iyer Residence, Powai 12 Aug 2026 Sent ₹92,748.00":
+        - cell "Dining Set Custom Order QF-2040":
+          - link "Dining Set Custom Order":
+            - /url: /quotations/q2040
+          - paragraph: QF-2040
+        - cell "Sneha Iyer Iyer Residence, Powai":
+          - paragraph: Sneha Iyer
+          - paragraph: Iyer Residence, Powai
+        - cell "12 Aug 2026"
+        - cell "Sent":
+          - generic: Sent
+        - cell "₹92,748.00"
+      - row "Kitchen Design Consult QF-2039 Devansh Kapoor Kapoor & Associates Design 11 Aug 2026 Draft ₹20,000.00":
+        - cell "Kitchen Design Consult QF-2039":
+          - link "Kitchen Design Consult":
+            - /url: /quotations/q2039
+          - paragraph: QF-2039
+        - cell "Devansh Kapoor Kapoor & Associates Design":
+          - paragraph: Devansh Kapoor
+          - paragraph: Kapoor & Associates Design
+        - cell "11 Aug 2026"
+        - cell "Draft":
+          - generic: Draft
+        - cell "₹20,000.00"
+      - row "Boardroom Refit — Level 4 QF-2038 Ananya Deshmukh AD Interior Studio 09 Aug 2026 Accepted ₹1,89,595.60":
+        - cell "Boardroom Refit — Level 4 QF-2038":
+          - link "Boardroom Refit — Level 4":
+            - /url: /quotations/q2038
+          - paragraph: QF-2038
+        - cell "Ananya Deshmukh AD Interior Studio":
+          - paragraph: Ananya Deshmukh
+          - paragraph: AD Interior Studio
+        - cell "09 Aug 2026"
+        - cell "Accepted":
+          - generic: Accepted
+        - cell "₹1,89,595.60"
+      - row "Showroom Lighting Upgrade QF-2037 Vikram Menon Menon Builders Pvt Ltd 06 Aug 2026 Rejected ₹54,752.00":
+        - cell "Showroom Lighting Upgrade QF-2037":
+          - link "Showroom Lighting Upgrade":
+            - /url: /quotations/q2037
+          - paragraph: QF-2037
+        - cell "Vikram Menon Menon Builders Pvt Ltd":
+          - paragraph: Vikram Menon
+          - paragraph: Menon Builders Pvt Ltd
+        - cell "06 Aug 2026"
+        - cell "Rejected":
+          - generic: Rejected
+        - cell "₹54,752.00"
+      - row "Boutique Fit-out Phase 1 QF-2036 Meera Nair Boutique Living, Bandra 04 Aug 2026 Viewed ₹1,89,921.00":
+        - cell "Boutique Fit-out Phase 1 QF-2036":
+          - link "Boutique Fit-out Phase 1":
+            - /url: /quotations/q2036
+          - paragraph: QF-2036
+        - cell "Meera Nair Boutique Living, Bandra":
+          - paragraph: Meera Nair
+          - paragraph: Boutique Living, Bandra
+        - cell "04 Aug 2026"
+        - cell "Viewed":
+          - generic: Viewed
+        - cell "₹1,89,921.00"
+      - row "Wardrobe & Panelling — Duplex QF-2035 Ananya Deshmukh AD Interior Studio 18 Jul 2026 Expired ₹2,67,270.00":
+        - cell "Wardrobe & Panelling — Duplex QF-2035":
+          - link "Wardrobe & Panelling — Duplex":
+            - /url: /quotations/q2035
+          - paragraph: QF-2035
+        - cell "Ananya Deshmukh AD Interior Studio":
+          - paragraph: Ananya Deshmukh
+          - paragraph: AD Interior Studio
+        - cell "18 Jul 2026"
+        - cell "Expired":
+          - generic: Expired
+        - cell "₹2,67,270.00"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3r10cqfckt86ab3mkpab585xgk?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

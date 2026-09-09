@@ -1,0 +1,73 @@
+- banner:
+  - button "Arjun":
+    - img "Arjun"
+  - generic: GharOS
+  - button "Notifications":
+- main:
+  - heading "TOTAL MONTHLY PAYROLL" [level=2]
+  - paragraph: ₹52,000
+  - generic: 3 Active Staff
+  - button "Add New Staff":
+    - generic: Add New Staff
+  - img "Kamla Di"
+  - heading "Kamla Di" [level=3]:
+    - generic: Kamla Di
+  - paragraph: Cook • ₹18,000/mo
+  - button:
+  - paragraph: Payable This Month
+  - paragraph: ₹16,800
+  - paragraph: Leaves Used
+  - paragraph:
+    - generic: 3 / 2
+  - generic: 22 Days Worked
+  - generic: ₹1,200 Deducted
+  - button "Record Advance":
+    - generic: Record Advance
+  - button "Add Festival Bonus / Tip":
+  - generic: R
+  - heading "Raju" [level=3]:
+    - generic: Raju
+  - paragraph: Driver • ₹22,000/mo
+  - button:
+  - paragraph: Payable This Month
+  - paragraph: ₹22,000
+  - paragraph: Leaves Used
+  - paragraph:
+    - generic: 1 / 4
+  - generic: 24 Days Worked
+  - generic: ₹0 Deducted
+  - button "Record Advance":
+    - generic: Record Advance
+  - button "Add Festival Bonus / Tip":
+  - generic: L
+  - heading "Lakshmi" [level=3]:
+    - generic: Lakshmi
+  - paragraph: Maid • ₹12,000/mo
+  - button:
+  - paragraph: Payable This Month
+  - paragraph: ₹11,600
+  - paragraph: Leaves Used
+  - paragraph:
+    - generic: 2 / 1
+  - generic: 23 Days Worked
+  - generic: ₹400 Deducted
+  - button "Record Advance":
+    - generic: Record Advance
+  - button "Add Festival Bonus / Tip":
+- navigation:
+  - button "Home":
+    - generic: Home
+  - button "1 Bills":
+    - generic: "1"
+    - generic: Bills
+  - button "Staff" [active]:
+    - generic: Staff
+  - button "Spends":
+    - generic: Spends
+  - button "Chores":
+    - generic: Chores
+  - button "Directory":
+    - generic: Directory
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

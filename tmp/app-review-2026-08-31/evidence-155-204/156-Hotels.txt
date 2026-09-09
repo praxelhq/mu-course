@@ -1,0 +1,427 @@
+- banner:
+  - button "SQI SERVICE QUALITY INTELLIGENCE":
+    - generic: SQI
+    - generic: SERVICE QUALITY INTELLIGENCE
+  - navigation:
+    - button "Restaurants"
+    - button "Hotels" [active]
+    - button "Rankings"
+    - button "Compare"
+    - button "Methodology"
+  - button "Search Mumbai... /":
+    - generic: Search Mumbai...
+    - generic: /
+  - button "LIGHT (BEIGE)":
+    - generic: LIGHT (BEIGE)
+  - button "SQI Admin & Model Verification":
+- main:
+  - generic: MUMBAI HOTEL REGISTRY · HOTEL_V1.0
+  - heading "Mumbai Hotels" [level=1]
+  - paragraph: Standardized service metrics evaluating operational reliability (18%), guest experience (18%), stay consistency (16%), staff responsiveness (13%), value (12%), and trust (10%).
+  - textbox "Filter by hotel name, neighborhood, transit proximity..."
+  - generic: "Sort:"
+  - combobox:
+    - option "SQI Quality (High to Low)" [selected]
+    - option "Confidence Index"
+    - option "Evidence Volume"
+  - generic: "Neighborhood:"
+  - combobox:
+    - option "All Neighborhoods" [selected]
+    - option "Andheri East"
+    - option "Bandra West"
+    - option "Colaba"
+    - option "Dadar East"
+    - option "Fort"
+    - option "Goregaon East"
+    - option "Juhu"
+    - option "Lower Parel"
+    - option "Marine Drive"
+    - option "Nariman Point"
+    - option "Powai"
+    - option "Sahar"
+    - option "Sakinaka"
+    - option "Santacruz East"
+    - option "Vikhroli"
+    - option "Vile Parle"
+    - option "Worli"
+  - combobox:
+    - option "All Statuses" [selected]
+    - option "Rank Eligible Only"
+    - option "Emerging Watchlist Only"
+  - combobox:
+    - option "All Price Segments" [selected]
+    - option "₹₹ (Smart Value)"
+    - option "₹₹₹ (Upscale)"
+    - option "₹₹₹₹ (Luxury)"
+    - option "₹₹₹₹₹ (Flagship Grand Luxe)"
+  - text: Showing
+  - strong: "25"
+  - text: of 25 hotels
+  - generic: Nariman Point
+  - generic: ₹₹₹₹₹
+  - heading "The Oberoi Mumbai" [level=3]
+  - paragraph: Ultra-Luxury Waterfront Landmark · Pinnacle of bespoke Indian luxury overlooking Marine Drive with 24-hour butler service, tranquil soundproofed guestrooms, and Michelin-caliber culinary curation.
+  - generic: Best Overall
+  - generic: Most Reliable
+  - generic: Most Consistent
+  - generic: Best Experience
+  - generic: Platform Rating
+  - generic: 5.0 ★
+  - generic: 4,890 reviews
+  - generic: SQI Quality Score
+  - generic: "96"
+  - generic: /100
+  - generic: A+
+  - generic: "Conf: 98 · Cov: 97%"
+  - generic: Colaba
+  - generic: ₹₹₹₹₹
+  - heading "The Taj Mahal Palace, Mumbai" [level=3]
+  - paragraph: Historic Living Monument of Luxury (Est. 1903) · Legendary 1903 flagship opposite the Gateway of India with royal palace suites, personalized butler choreography, and priceless art collections.
+  - generic: Best Overall
+  - generic: Best Experience
+  - generic: Most Reliable
+  - generic: Most Consistent
+  - generic: Platform Rating
+  - generic: 4.9 ★
+  - generic: 8,200 reviews
+  - generic: SQI Quality Score
+  - generic: "95"
+  - generic: /100
+  - generic: A+
+  - generic: "Conf: 99 · Cov: 98%"
+  - generic: Nariman Point
+  - generic: ₹₹₹₹
+  - heading "Trident Nariman Point, Mumbai" [level=3]
+  - paragraph: Waterfront Executive Business Hotel · Premier executive hotel offering panoramic Arabian Sea vistas from Marine Drive, acclaimed Indian dining, and seamless financial district connectivity.
+  - generic: Most Reliable
+  - generic: Most Consistent
+  - generic: Best Overall
+  - generic: Platform Rating
+  - generic: 4.5 ★
+  - generic: 5,120 reviews
+  - generic: SQI Quality Score
+  - generic: "94"
+  - generic: /100
+  - generic: A
+  - generic: "Conf: 97 · Cov: 96%"
+  - generic: Vikhroli
+  - generic: ₹₹₹₹₹
+  - generic: EMERGING
+  - heading "Taj The Trees, Mumbai" [level=3]
+  - paragraph: Eco-Luxury Urban Resort & Green Sanctuary · IGBC Platinum certified eco-luxury property harmonizing modern design with mangrove parklands and sustainable luxury dining.
+  - generic: Best Experience
+  - generic: Best Overall
+  - generic: Platform Rating
+  - generic: 4.9 ★
+  - generic: 320 reviews
+  - generic: SQI Quality Score
+  - generic: "92"
+  - generic: /100
+  - generic: A
+  - generic: "Conf: 64 · Cov: 68%"
+  - generic: Fort
+  - generic: ₹₹₹
+  - heading "Hotel Residency Fort" [level=3]
+  - paragraph: Heritage Business Boutique · Exemplary boutique business sanctuary in South Mumbai’s financial heart known for immaculate cleanliness, personalized desk support, and seamless check-in.
+  - generic: Most Reliable
+  - generic: Most Consistent
+  - generic: Best Value
+  - generic: Platform Rating
+  - generic: 4.3 ★
+  - generic: 2,450 reviews
+  - generic: SQI Quality Score
+  - generic: "91"
+  - generic: /100
+  - generic: A
+  - generic: "Conf: 96 · Cov: 94%"
+  - generic: Bandra West
+  - generic: ₹₹₹₹₹
+  - heading "Taj Lands End, Mumbai" [level=3]
+  - paragraph: Bandra Seaside Luxury & Sea Link Vistas · Perched on Bandstand with sweeping vistas of the Arabian Sea and Bandra-Worli Sea Link, featuring Jiva Spa and flagship dining.
+  - generic: Best Experience
+  - generic: Most Reliable
+  - generic: Platform Rating
+  - generic: 4.8 ★
+  - generic: 5,300 reviews
+  - generic: SQI Quality Score
+  - generic: "91"
+  - generic: /100
+  - generic: A
+  - generic: "Conf: 96 · Cov: 95%"
+  - generic: Santacruz East
+  - generic: ₹₹₹₹₹
+  - heading "Taj Santacruz" [level=3]
+  - paragraph: Runway Luxury & Domestic Airport Hub · Palatial airport hotel adjacent to Terminal 1 featuring floor-to-ceiling runway views, layered Indian architecture, and soundproofed suites.
+  - generic: Most Reliable
+  - generic: Best Experience
+  - generic: Platform Rating
+  - generic: 4.8 ★
+  - generic: 3,800 reviews
+  - generic: SQI Quality Score
+  - generic: "91"
+  - generic: /100
+  - generic: A
+  - generic: "Conf: 95 · Cov: 94%"
+  - generic: Powai
+  - generic: ₹₹₹₹
+  - heading "The Westin Mumbai Powai Lake" [level=3]
+  - paragraph: Lakeside Wellness & Luxury Retreat · Expansive 15-acre lakeside urban sanctuary featuring Westin Heavenly beds, Heavenly Spa, and serene outdoor pools amid Powai’s tech hub.
+  - generic: Best Experience
+  - generic: Most Reliable
+  - generic: Platform Rating
+  - generic: 4.3 ★
+  - generic: 4,200 reviews
+  - generic: SQI Quality Score
+  - generic: "90"
+  - generic: /100
+  - generic: A
+  - generic: "Conf: 94 · Cov: 92%"
+  - generic: Worli
+  - generic: ₹₹₹₹₹
+  - heading "Four Seasons Hotel Mumbai" [level=3]
+  - paragraph: Contemporary Urban Tower & Rooftop AER · Sleek luxury tower in Worli commercial district featuring the iconic AER rooftop lounge, holistic Ayurvedic spa, and personalized concierge.
+  - generic: Best Experience
+  - generic: Most Reliable
+  - generic: Platform Rating
+  - generic: 4.4 ★
+  - generic: 3,450 reviews
+  - generic: SQI Quality Score
+  - generic: "90"
+  - generic: /100
+  - generic: A
+  - generic: "Conf: 94 · Cov: 92%"
+  - generic: Sakinaka
+  - generic: ₹₹₹
+  - generic: EMERGING
+  - heading "Holiday Inn Mumbai International Airport" [level=3]
+  - paragraph: Airport Corridor Hub & Rooftop Pool Retreat · Premier transit hub directly connected to Sakinaka Metro Station, offering rooftop infinity pool and 24-hour fitness.
+  - generic: Most Reliable
+  - generic: Platform Rating
+  - generic: 4.8 ★
+  - generic: 380 reviews
+  - generic: SQI Quality Score
+  - generic: "90"
+  - generic: /100
+  - generic: A
+  - generic: "Conf: 68 · Cov: 71%"
+  - generic: Colaba
+  - generic: ₹₹₹₹
+  - heading "Taj Mahal Tower, Mumbai" [level=3]
+  - paragraph: Modern Waterfront Tower (Est. 1973) · Contemporary wing adjoining the historic palace with arched balconies overlooking Mumbai harbour, full access to Taj luxury amenities.
+  - generic: Best Experience
+  - generic: Most Reliable
+  - generic: Platform Rating
+  - generic: 4.6 ★
+  - generic: 4,800 reviews
+  - generic: SQI Quality Score
+  - generic: "89"
+  - generic: /100
+  - generic: A-
+  - generic: "Conf: 96 · Cov: 94%"
+  - generic: Goregaon East
+  - generic: ₹₹₹
+  - generic: EMERGING
+  - heading "The Fern Mumbai, Goregaon" [level=3]
+  - paragraph: Environmentally Sensitive Ecotel Business Hotel · Leading environmentally sensitive hotel offering sustainable luxury, energy conservation, and efficient NESCO convention access.
+  - generic: Best Value
+  - generic: Platform Rating
+  - generic: 4.8 ★
+  - generic: 290 reviews
+  - generic: SQI Quality Score
+  - generic: "89"
+  - generic: /100
+  - generic: A-
+  - generic: "Conf: 66 · Cov: 70%"
+  - generic: Andheri East
+  - generic: ₹₹
+  - heading "Ginger Mumbai, Andheri (MIDC)" [level=3]
+  - paragraph: Smart Lean-Luxe Business Hotel · Next-generation IHCL lean-luxe hotel delivering ergonomic workspaces, high-speed digital connectivity, and zero-fuss business hospitality.
+  - generic: Most Reliable
+  - generic: Best Value
+  - generic: Most Consistent
+  - generic: Platform Rating
+  - generic: 4.1 ★
+  - generic: 3,100 reviews
+  - generic: SQI Quality Score
+  - generic: "88"
+  - generic: /100
+  - generic: A-
+  - generic: "Conf: 95 · Cov: 93%"
+  - generic: Andheri East
+  - generic: ₹₹₹₹
+  - heading "The Lalit Mumbai" [level=3]
+  - paragraph: Grand Atrium Luxury & Convention Landmark · Sprawling 7-story atrium hotel near the international airport boasting 389 rooms, extensive exhibition galleries, Rejuve spa, and global dining.
+  - generic: Most Consistent
+  - generic: Best Value
+  - generic: Platform Rating
+  - generic: 4.2 ★
+  - generic: 3,600 reviews
+  - generic: SQI Quality Score
+  - generic: "87"
+  - generic: /100
+  - generic: A-
+  - generic: "Conf: 93 · Cov: 91%"
+  - generic: Marine Drive
+  - generic: ₹₹₹₹₹
+  - heading "InterContinental Marine Drive-Mumbai by IHG" [level=3]
+  - paragraph: Boutique Promenade Luxury & Rooftop Dome · Intimate boutique hotel directly facing Queen’s Necklace with skyline rooftop pool, luxury suites, and prime South Mumbai access.
+  - generic: Best Experience
+  - generic: Platform Rating
+  - generic: 4.4 ★
+  - generic: 2,150 reviews
+  - generic: SQI Quality Score
+  - generic: "86"
+  - generic: /100
+  - generic: A-
+  - generic: "Conf: 94 · Cov: 92%"
+  - generic: Colaba
+  - generic: ₹₹₹
+  - heading "Fariyas Hotel Mumbai" [level=3]
+  - paragraph: Colaba Heritage Business Hotel · Longstanding boutique property in South Mumbai with rooftop pool, multi-cuisine dining, and immediate access to Colaba Causeway.
+  - generic: Best Value
+  - generic: Platform Rating
+  - generic: 4.0 ★
+  - generic: 2,200 reviews
+  - generic: SQI Quality Score
+  - generic: "83"
+  - generic: /100
+  - generic: B+
+  - generic: "Conf: 92 · Cov: 90%"
+  - generic: Marine Drive
+  - generic: ₹₹₹₹
+  - heading "Hotel Marine Plaza" [level=3]
+  - paragraph: Marine Drive Waterfront Hotel & Rooftop Pool · Fashionable sea-facing boutique hotel with glazed rooftop pool, The Bayview 24hr dining, and classic maritime English pub.
+  - generic: Best Experience
+  - generic: Platform Rating
+  - generic: 4.0 ★
+  - generic: 2,400 reviews
+  - generic: SQI Quality Score
+  - generic: "80"
+  - generic: /100
+  - generic: B
+  - generic: "Conf: 94 · Cov: 91%"
+  - generic: Lower Parel
+  - generic: ₹₹₹₹₹
+  - heading "The St. Regis Mumbai" [level=3]
+  - paragraph: Skyline Luxury Flagship & Lifestyle Hub · India’s tallest hotel tower offering iconic St. Regis Butler service, 10 acclaimed dining destinations, and direct Palladium luxury mall access.
+  - generic: Best Experience
+  - generic: Platform Rating
+  - generic: 4.7 ★
+  - generic: 5,600 reviews
+  - generic: SQI Quality Score
+  - generic: "79"
+  - generic: /100
+  - generic: B
+  - generic: "Conf: 96 · Cov: 94%"
+  - generic: Andheri East
+  - generic: ₹₹₹₹₹
+  - heading "The Leela Mumbai" [level=3]
+  - paragraph: Resort Oasis & Luxury Airport Sanctuary · Set amidst 11 acres of lush tropical gardens and cascading waterfalls near the international airport, offering regal Indian hospitality.
+  - generic: Best Experience
+  - generic: Platform Rating
+  - generic: 4.7 ★
+  - generic: 4,200 reviews
+  - generic: SQI Quality Score
+  - generic: "78"
+  - generic: /100
+  - generic: B
+  - generic: "Conf: 95 · Cov: 93%"
+  - generic: Sahar
+  - generic: ₹₹₹₹₹
+  - heading "Fairmont Mumbai" [level=3]
+  - paragraph: Luxury Grandeur & Convention Resort · Grand luxury oasis boasting royal palace-inspired ballrooms, expansive spa sanctuaries, and curated international dining.
+  - generic: Best Experience
+  - generic: Platform Rating
+  - generic: 4.8 ★
+  - generic: 2,900 reviews
+  - generic: SQI Quality Score
+  - generic: "78"
+  - generic: /100
+  - generic: B
+  - generic: "Conf: 89 · Cov: 86%"
+  - generic: Juhu
+  - generic: ₹₹₹₹₹
+  - heading "JW Marriott Mumbai Juhu" [level=3]
+  - paragraph: Iconic Oceanfront Luxury Resort · Glamorous beachfront landmark overlooking the Arabian Sea, revered for salt-water pools, Quan Spa, and celebrity culinary destinations.
+  - generic: Best Experience
+  - generic: Platform Rating
+  - generic: 4.6 ★
+  - generic: 6,200 reviews
+  - generic: SQI Quality Score
+  - generic: "77"
+  - generic: /100
+  - generic: B
+  - generic: "Conf: 95 · Cov: 93%"
+  - generic: Andheri East
+  - generic: ₹₹₹₹
+  - heading "Novotel Mumbai International Airport" [level=3]
+  - paragraph: Contemporary Airport Transit & Business Hub · High-volume international airport hotel featuring rooftop infinity pool, multi-cuisine dining, and rapid terminal metro access.
+  - generic: Location & Accessibility
+  - generic: Platform Rating
+  - generic: 4.9 ★
+  - generic: 3,200 reviews
+  - generic: SQI Quality Score
+  - generic: "76"
+  - generic: /100
+  - generic: B
+  - generic: "Conf: 91 · Cov: 88%"
+  - generic: Juhu
+  - generic: ₹₹₹
+  - heading "Hotel Bawa Continental" [level=3]
+  - paragraph: Juhu Beach Business & Transit Hotel · Longstanding Juhu beach boutique hotel catering to film production crews, business visitors, and weekend coastal tourists.
+  - generic: Best Value
+  - generic: Platform Rating
+  - generic: 3.9 ★
+  - generic: 2,100 reviews
+  - generic: SQI Quality Score
+  - generic: "76"
+  - generic: /100
+  - generic: B
+  - generic: "Conf: 91 · Cov: 88%"
+  - generic: Vile Parle
+  - generic: ₹₹₹₹
+  - heading "Hotel Sahara Star" [level=3]
+  - paragraph: Lagoon Atrium & Airport Convention Landmark · Architectural spectacle featuring the world’s largest pillarless clear-to-sky dome, tropical indoor lagoon, and expansive banquet suites.
+  - generic: Best Experience
+  - generic: Platform Rating
+  - generic: 4.8 ★
+  - generic: 5,120 reviews
+  - generic: SQI Quality Score
+  - generic: "76"
+  - generic: /100
+  - generic: B
+  - generic: "Conf: 90 · Cov: 87%"
+  - generic: Dadar East
+  - generic: ₹₹₹
+  - heading "Ramee Guestline Dadar Hotel" [level=3]
+  - paragraph: Central Transit Business Hotel · Central suburban business hotel near Dadar railway hub featuring rooftop swimming pool, conference rooms, and Punjab grill dining.
+  - generic: Most Reliable
+  - generic: Platform Rating
+  - generic: 3.8 ★
+  - generic: 1,800 reviews
+  - generic: SQI Quality Score
+  - generic: "74"
+  - generic: /100
+  - generic: B-
+  - generic: "Conf: 92 · Cov: 89%"
+- contentinfo:
+  - button "SQI SERVICE QUALITY INTELLIGENCE":
+    - generic: SQI
+    - generic: SERVICE QUALITY INTELLIGENCE
+  - paragraph: “A rating tells you what people said. SQI helps you understand what the evidence says about service quality.”
+  - paragraph: SQI is an evidence-based measurement and benchmarking engine that disaggregates subjective star ratings into verifiable operational parameters, uncertainty intervals, and confidence distributions.
+  - heading "Registry Index" [level=4]
+  - list:
+    - button "Mumbai Restaurants (25 Calibrated)"
+    - button "Mumbai Hotels (25 Calibrated)"
+    - button "City Rankings & Tier Index"
+    - button "Multi-Property Matrix Compare"
+  - heading "Methodology & Models" [level=4]
+  - list:
+    - button "RESTAURANT_V1.0 (8 Dimensions)"
+    - button "HOTEL_V1.0 (8 Dimensions)"
+    - button "Missing Data Redistribution Rule"
+    - button "Model Verification & Admin Portal"
+  - paragraph: "© 2026 SQI Service Quality Intelligence. Initial Product: Mumbai, India."
+  - generic: ● EVIDENCE > HYPE
+  - generic: "MODEL: SQI_V1.0_SEED"

@@ -1,0 +1,50 @@
+- region "Notifications (F8)":
+  - list
+- region "Notifications alt+T"
+- main:
+  - generic: Step 4 of 6
+  - generic: 67% complete
+  - generic: Basic Info
+  - generic: Vitals
+  - generic: Physical
+  - generic: Performance
+  - generic: Cognitive
+  - generic: Psychological
+  - heading "Performance" [level=2]
+  - generic: Passing Accuracy
+  - generic: 5/10
+  - paragraph: Precision in passing a ball to targets
+  - slider
+  - generic: Ball Handling
+  - generic: 5/10
+  - paragraph: Control and manipulation of ball with hands
+  - slider
+  - generic: Dribbling
+  - generic: 5/10
+  - paragraph: Controlling ball while moving (feet or hands)
+  - slider
+  - generic: Ball Control Mid-Air
+  - generic: 5/10
+  - paragraph: Catching, trapping, or controlling airborne balls
+  - slider
+  - generic: Shooting Accuracy
+  - generic: 5/10
+  - paragraph: Precision in aiming at targets
+  - slider
+  - generic: Shot Speed
+  - generic: 5/10
+  - paragraph: Speed of throwing, kicking, or hitting
+  - slider
+  - generic: Skill Index
+  - generic: 5/10
+  - paragraph: Overall technical skill level
+  - slider
+  - button "Previous":
+    - text: Previous
+  - button "Next" [active]:
+    - text: Next
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_4evn1nffn78kfshkdrmcjvbrzc?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

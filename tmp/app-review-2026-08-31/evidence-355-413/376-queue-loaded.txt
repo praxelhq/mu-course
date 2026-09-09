@@ -1,0 +1,35 @@
+- banner:
+  - link "Brick Spaze Laundry Live machine status":
+    - /url: /
+    - paragraph: Brick Spaze Laundry
+    - paragraph: Live machine status
+  - button "Room DEMO"
+- main:
+  - heading "Waiting queue" [level=1]
+  - region "Washers":
+    - heading "Washers" [level=2]
+    - generic: 3 free now
+    - button "Notify me when a washer is free"
+    - list:
+      - listitem: Nobody waiting.
+  - region "Dryers":
+    - heading "Dryers" [level=2]
+    - generic: 2 free now
+    - button "Notify me when a dryer is free"
+    - list:
+      - listitem: Nobody waiting.
+- navigation:
+  - link "Room":
+    - /url: /
+  - link "Queue":
+    - /url: /queue
+  - link "My loads":
+    - /url: /my-laundry
+  - link "Admin":
+    - /url: /admin
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_4bv4f1ez1586taskdeswjg54hq?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

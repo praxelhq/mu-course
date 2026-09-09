@@ -1,0 +1,101 @@
+- complementary:
+  - generic: V
+  - heading "Vow" [level=1]
+  - generic: Vendor OS
+  - generic: Run the business
+  - navigation:
+    - button "Dashboard"
+    - button "Leads 5":
+      - text: Leads
+      - generic: "5"
+    - button "Quotations"
+    - button "Bookings 5":
+      - text: Bookings
+      - generic: "5"
+    - button "Payments"
+    - button "Calendar"
+    - button "Tasks 8":
+      - text: Tasks
+      - generic: "8"
+    - button "Clients"
+    - button "Analytics"
+    - button "Settings"
+    - button "Client portal ↗"
+  - generic: Studio Vermillion
+  - text: Professional plan
+  - button "Manage"
+- banner:
+  - heading "Settings" [level=2]
+  - paragraph: Studio profile, reminders and your Vow plan
+  - button "+ Add lead"
+  - button "New quotation"
+- generic: Studio profile
+- heading "Studio Vermillion" [level=3]
+- generic: Business name
+- textbox: Studio Vermillion
+- generic: Vendor category
+- combobox:
+  - option "Wedding photography & films" [selected]
+  - option "Wedding planning"
+  - option "Décor"
+  - option "Makeup artistry"
+  - option "Catering"
+  - option "Mehendi"
+  - option "DJ & entertainment"
+- generic: GSTIN
+- textbox: 08AABCV1234K1Z9
+- generic: Cities served
+- textbox: Jaipur, New Delhi, Udaipur
+- generic: Reminders
+- text: WhatsApp payment reminders
+- generic: Sent 7 and 2 days before each instalment
+- button [pressed]
+- text: Email receipts
+- generic: Auto-sent when a payment is marked received
+- button [pressed]
+- text: Follow-up nudges
+- generic: Alerts you when a lead goes quiet for 48 hours
+- button [pressed]
+- button "Save changes"
+- generic: Billing
+- heading "Your plan" [level=3]
+- generic: Current plan
+- generic: Professional
+- generic: Renews on
+- generic: 1 September 2026
+- generic: Leads used this month
+- generic: 11 of unlimited
+- generic: Team seats
+- generic: 3 of 3
+- paragraph: Business unlocks extra seats — useful once the December crew grows past three shooters.
+- generic: Built for wedding vendors, not couples
+- heading "Plans" [level=3]
+- heading "Starter" [level=4]
+- generic: ₹999 /month
+- list:
+  - listitem: Lead CRM with pipeline
+  - listitem: Up to 50 leads a month
+  - listitem: Wedding calendar
+  - listitem: Quotations & PDF export
+  - listitem: Payment tracking
+- button "Switch to Starter"
+- generic: Current plan
+- heading "Professional" [level=4]
+- generic: ₹2,499 /month
+- list:
+  - listitem: Unlimited leads
+  - listitem: WhatsApp payment reminders
+  - listitem: Team & crew management
+  - listitem: Analytics dashboard
+  - listitem: Client portal
+- button "Your plan" [disabled]
+- heading "Business" [level=4]
+- generic: ₹4,999 /month
+- list:
+  - listitem: Multiple studio users
+  - listitem: Advanced analytics & exports
+  - listitem: Custom branding on documents
+  - listitem: Priority support on WhatsApp
+  - listitem: Dedicated onboarding
+- button "Switch to Business"
+- paragraph: Billed annually with two months free. GST applicable. Cancel any time — your data stays exportable for 90 days.

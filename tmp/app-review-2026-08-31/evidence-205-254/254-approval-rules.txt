@@ -1,0 +1,51 @@
+- complementary:
+  - generic: LeakWatch
+  - generic: Workspace
+  - navigation:
+    - button "Dashboard":
+      - generic: Dashboard
+    - button "Contracts":
+      - generic: Contracts
+    - button "Payables 5":
+      - generic: Payables
+      - generic: "5"
+  - generic: Configure
+  - navigation:
+    - button "Integrations":
+      - generic: Integrations
+    - button "Settings":
+      - generic: Settings
+  - generic: D
+  - generic: Demo
+  - generic: demo@example.com
+  - button "Exit"
+- banner:
+  - generic: Workspace
+  - heading "Settings" [level=2]
+  - generic: Demo data
+  - button "Sync invoices"
+  - button "+ New contract"
+- button "Profile"
+- button "Organisation"
+- button "Plan & billing"
+- button "Approval rules"
+- heading "Approval threshold" [level=4]
+- paragraph: Preview only — the threshold below is not enforced in this demo.
+- generic: Auto-flag above (₹)
+- textbox: "100000"
+- paragraph: 7 current payables sit above this line.
+- heading "Who approves" [level=4]
+- paragraph: This workspace runs single-approver. Everything routes to you.
+- generic: D
+- generic: Demo
+- generic: Admin · Approver · sole approver
+- paragraph: Multi-approver routing arrives on the Scale plan.
+- heading "Auto-pay" [level=4]
+- paragraph: Off by default. LeakWatch never moves money without a decision. Preview only in this demo.
+- checkbox "Release approved payables automatically on their due date"
+- text: Release approved payables automatically on their due date
+- checkbox "Block payment when a vendor invoice has no matching contract" [checked]
+- text: Block payment when a vendor invoice has no matching contract
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

@@ -1,0 +1,382 @@
+- complementary:
+  - link "FactoryFlow AI Shreeji Precision Works":
+    - /url: /
+    - paragraph: FactoryFlow AI
+    - paragraph: Shreeji Precision Works
+  - navigation:
+    - paragraph: Shop floor
+    - link "Dashboard":
+      - /url: /
+      - text: Dashboard
+    - link "Production":
+      - /url: /production
+      - text: Production
+    - link "Customer Schedule":
+      - /url: /schedule
+      - text: Customer Schedule
+    - link "Machines":
+      - /url: /machines
+      - text: Machines
+    - link "Downtime":
+      - /url: /downtime
+      - text: Downtime
+    - link "Maintenance" [active]:
+      - /url: /maintenance
+      - text: Maintenance
+    - link "Quality":
+      - /url: /quality
+      - text: Quality
+    - link "Job Work":
+      - /url: /job-work
+      - text: Job Work
+    - link "Inventory":
+      - /url: /inventory
+      - text: Inventory
+    - paragraph: Money
+    - link "Sales & Receivables":
+      - /url: /sales
+      - text: Sales & Receivables
+    - link "Purchase & Payables":
+      - /url: /purchase
+      - text: Purchase & Payables
+    - link "Cash View":
+      - /url: /cash
+      - text: Cash View
+    - link "Compliance":
+      - /url: /compliance
+      - text: Compliance
+    - paragraph: Run the business
+    - link "Tasks":
+      - /url: /tasks
+      - text: Tasks
+    - link "Analytics":
+      - /url: /analytics
+      - text: Analytics
+    - link "Reports":
+      - /url: /reports
+      - text: Reports
+    - link "AI Assistant":
+      - /url: /assistant
+      - text: AI Assistant
+    - link "Integrations":
+      - /url: /integrations
+      - text: Integrations
+    - link "Settings":
+      - /url: /settings
+      - text: Settings
+  - link "RK Rajesh Kulkarni Works Manager":
+    - /url: /profile
+    - generic: RK
+    - generic: Rajesh Kulkarni
+    - generic: Works Manager
+  - link "Pricing & product page →":
+    - /url: /welcome
+- banner:
+  - textbox "Search part, challan, invoice, heat number…"
+  - button "English"
+  - button "हिंदी"
+  - button "मराठी"
+  - generic "All entries synced":
+    - text: Online
+  - button "Toggle dark mode":
+  - link "Notifications":
+    - /url: /notifications
+    - generic: "4"
+  - link "Ask AI":
+    - /url: /assistant
+    - generic: Ask AI
+- main:
+  - navigation:
+    - link "FactoryFlow":
+      - /url: /
+    - generic: Maintenance
+  - heading "Maintenance" [level=1]
+  - paragraph: 18 upcoming · 11 overdue · 19 completed
+  - button "Export CSV":
+    - text: Export CSV
+  - button "Schedule":
+    - text: Schedule
+  - heading "3-week calendar" [level=2]
+  - paragraph: 21-08-2026
+  - paragraph: 22-08-2026
+  - paragraph: 23-08-2026
+  - paragraph: TIG Welding Station W-1
+  - paragraph: Shot Blasting Cabinet SB-1
+  - paragraph: 24-08-2026
+  - paragraph: 25-08-2026
+  - paragraph: Surface Grinder SG-1
+  - paragraph: 26-08-2026
+  - paragraph: LPG Heat-Treat Furnace HT-1
+  - paragraph: 27-08-2026
+  - paragraph: 28-08-2026
+  - paragraph: Surface Grinder SG-1
+  - paragraph: CNC VMC-2 (Ace Micromatic)
+  - paragraph: 29-08-2026
+  - paragraph: CNC VMC-2 (Ace Micromatic)
+  - paragraph: 30-08-2026
+  - paragraph: 31-08-2026
+  - paragraph: Power Press 60T (Rajesh Machines)
+  - paragraph: 01-09-2026
+  - paragraph: 02-09-2026
+  - paragraph: 03-09-2026
+  - paragraph: Power Press 60T (Rajesh Machines)
+  - paragraph: 04-09-2026
+  - paragraph: 05-09-2026
+  - paragraph: 06-09-2026
+  - paragraph: 07-09-2026
+  - paragraph: Radial Drill RD-1
+  - paragraph: Power Press 100T (Isgec)
+  - paragraph: 08-09-2026
+  - paragraph: Shot Blasting Cabinet SB-1
+  - paragraph: 09-09-2026
+  - paragraph: Shot Blasting Cabinet SB-1
+  - paragraph: 10-09-2026
+  - paragraph: CNC Turning Centre TC-1 (Jyoti)
+  - button "Upcoming (18)"
+  - button "Overdue (11)"
+  - button "Completed (19)"
+  - button "All (48)"
+  - textbox "Search machine or engineer…"
+  - combobox "Priority":
+    - 'option "Priority: All" [selected]'
+    - option "Low"
+    - option "Medium"
+    - option "High"
+    - option "Critical"
+  - table:
+    - rowgroup:
+      - row "Scheduled Machine Type Engineer Priority Checklist Status":
+        - columnheader "Scheduled"
+        - columnheader "Machine"
+        - columnheader "Type"
+        - columnheader "Engineer"
+        - columnheader "Priority"
+        - columnheader "Checklist"
+        - columnheader "Status"
+        - columnheader
+    - rowgroup:
+      - row "23-08-2026 TIG Welding Station W-1 Calibration Sunita Deshmukh Critical Vibration check on spindle · Verify chuck / fixture clamping · Verify chuck / fixture clamping In Progress Complete":
+        - cell "23-08-2026"
+        - cell "TIG Welding Station W-1"
+        - cell "Calibration"
+        - cell "Sunita Deshmukh"
+        - cell "Critical":
+          - generic: Critical
+        - cell "Vibration check on spindle · Verify chuck / fixture clamping · Verify chuck / fixture clamping"
+        - cell "In Progress":
+          - generic: In Progress
+        - cell "Complete":
+          - button "Complete"
+      - row "23-08-2026 Shot Blasting Cabinet SB-1 Corrective Vaishali Jadhav High Check V-belt tension · Verify chuck / fixture clamping · Check DG auto-changeover panel In Progress Complete":
+        - cell "23-08-2026"
+        - cell "Shot Blasting Cabinet SB-1"
+        - cell "Corrective"
+        - cell "Vaishali Jadhav"
+        - cell "High":
+          - generic: High
+        - cell "Check V-belt tension · Verify chuck / fixture clamping · Check DG auto-changeover panel"
+        - cell "In Progress":
+          - generic: In Progress
+        - cell "Complete":
+          - button "Complete"
+      - row "25-08-2026 Surface Grinder SG-1 Calibration Rajesh Kulkarni Low Check way lubrication · Thermal scan of drive motor · Verify chuck / fixture clamping Scheduled Complete":
+        - cell "25-08-2026"
+        - cell "Surface Grinder SG-1"
+        - cell "Calibration"
+        - cell "Rajesh Kulkarni"
+        - cell "Low":
+          - generic: Low
+        - cell "Check way lubrication · Thermal scan of drive motor · Verify chuck / fixture clamping"
+        - cell "Scheduled":
+          - generic: Scheduled
+        - cell "Complete":
+          - button "Complete"
+      - row "26-08-2026 LPG Heat-Treat Furnace HT-1 Corrective Imran Shaikh Critical Check V-belt tension · Verify chuck / fixture clamping · Verify chuck / fixture clamping Scheduled Complete":
+        - cell "26-08-2026"
+        - cell "LPG Heat-Treat Furnace HT-1"
+        - cell "Corrective"
+        - cell "Imran Shaikh"
+        - cell "Critical":
+          - generic: Critical
+        - cell "Check V-belt tension · Verify chuck / fixture clamping · Verify chuck / fixture clamping"
+        - cell "Scheduled":
+          - generic: Scheduled
+        - cell "Complete":
+          - button "Complete"
+      - row "28-08-2026 Surface Grinder SG-1 Predictive Sunita Deshmukh Critical Thermal scan of drive motor · Thermal scan of drive motor · Thermal scan of drive motor Scheduled Complete":
+        - cell "28-08-2026"
+        - cell "Surface Grinder SG-1"
+        - cell "Predictive"
+        - cell "Sunita Deshmukh"
+        - cell "Critical":
+          - generic: Critical
+        - cell "Thermal scan of drive motor · Thermal scan of drive motor · Thermal scan of drive motor"
+        - cell "Scheduled":
+          - generic: Scheduled
+        - cell "Complete":
+          - button "Complete"
+      - row "28-08-2026 CNC VMC-2 (Ace Micromatic) Preventive Meena Patil Low Vibration check on spindle · Vibration check on spindle · Check V-belt tension Scheduled Complete":
+        - cell "28-08-2026"
+        - cell "CNC VMC-2 (Ace Micromatic)"
+        - cell "Preventive"
+        - cell "Meena Patil"
+        - cell "Low":
+          - generic: Low
+        - cell "Vibration check on spindle · Vibration check on spindle · Check V-belt tension"
+        - cell "Scheduled":
+          - generic: Scheduled
+        - cell "Complete":
+          - button "Complete"
+      - row "29-08-2026 CNC VMC-2 (Ace Micromatic) Corrective Imran Shaikh Medium Vibration check on spindle · Check way lubrication · Check V-belt tension Scheduled Complete":
+        - cell "29-08-2026"
+        - cell "CNC VMC-2 (Ace Micromatic)"
+        - cell "Corrective"
+        - cell "Imran Shaikh"
+        - cell "Medium":
+          - generic: Medium
+        - cell "Vibration check on spindle · Check way lubrication · Check V-belt tension"
+        - cell "Scheduled":
+          - generic: Scheduled
+        - cell "Complete":
+          - button "Complete"
+      - row "31-08-2026 Power Press 60T (Rajesh Machines) Corrective Meena Patil Low Vibration check on spindle · Check DG auto-changeover panel · Check V-belt tension Scheduled Complete":
+        - cell "31-08-2026"
+        - cell "Power Press 60T (Rajesh Machines)"
+        - cell "Corrective"
+        - cell "Meena Patil"
+        - cell "Low":
+          - generic: Low
+        - cell "Vibration check on spindle · Check DG auto-changeover panel · Check V-belt tension"
+        - cell "Scheduled":
+          - generic: Scheduled
+        - cell "Complete":
+          - button "Complete"
+      - row "03-09-2026 Power Press 60T (Rajesh Machines) Corrective Santosh More High Check way lubrication · Check way lubrication · Thermal scan of drive motor Scheduled Complete":
+        - cell "03-09-2026"
+        - cell "Power Press 60T (Rajesh Machines)"
+        - cell "Corrective"
+        - cell "Santosh More"
+        - cell "High":
+          - generic: High
+        - cell "Check way lubrication · Check way lubrication · Thermal scan of drive motor"
+        - cell "Scheduled":
+          - generic: Scheduled
+        - cell "Complete":
+          - button "Complete"
+      - row "07-09-2026 Radial Drill RD-1 Predictive Vaishali Jadhav Low Verify chuck / fixture clamping · Vibration check on spindle · Check DG auto-changeover panel Scheduled Complete":
+        - cell "07-09-2026"
+        - cell "Radial Drill RD-1"
+        - cell "Predictive"
+        - cell "Vaishali Jadhav"
+        - cell "Low":
+          - generic: Low
+        - cell "Verify chuck / fixture clamping · Vibration check on spindle · Check DG auto-changeover panel"
+        - cell "Scheduled":
+          - generic: Scheduled
+        - cell "Complete":
+          - button "Complete"
+      - row "07-09-2026 Power Press 100T (Isgec) Predictive Santosh More Medium Check way lubrication · Check V-belt tension · Thermal scan of drive motor Scheduled Complete":
+        - cell "07-09-2026"
+        - cell "Power Press 100T (Isgec)"
+        - cell "Predictive"
+        - cell "Santosh More"
+        - cell "Medium":
+          - generic: Medium
+        - cell "Check way lubrication · Check V-belt tension · Thermal scan of drive motor"
+        - cell "Scheduled":
+          - generic: Scheduled
+        - cell "Complete":
+          - button "Complete"
+      - row "08-09-2026 Shot Blasting Cabinet SB-1 Calibration Sunita Deshmukh Critical Verify chuck / fixture clamping · Replace coolant and clean tank · Replace coolant and clean tank Scheduled Complete":
+        - cell "08-09-2026"
+        - cell "Shot Blasting Cabinet SB-1"
+        - cell "Calibration"
+        - cell "Sunita Deshmukh"
+        - cell "Critical":
+          - generic: Critical
+        - cell "Verify chuck / fixture clamping · Replace coolant and clean tank · Replace coolant and clean tank"
+        - cell "Scheduled":
+          - generic: Scheduled
+        - cell "Complete":
+          - button "Complete"
+      - row "09-09-2026 Shot Blasting Cabinet SB-1 Predictive Prakash Bhosale Medium Replace coolant and clean tank · Replace coolant and clean tank · Thermal scan of drive motor Scheduled Complete":
+        - cell "09-09-2026"
+        - cell "Shot Blasting Cabinet SB-1"
+        - cell "Predictive"
+        - cell "Prakash Bhosale"
+        - cell "Medium":
+          - generic: Medium
+        - cell "Replace coolant and clean tank · Replace coolant and clean tank · Thermal scan of drive motor"
+        - cell "Scheduled":
+          - generic: Scheduled
+        - cell "Complete":
+          - button "Complete"
+      - row "10-09-2026 CNC Turning Centre TC-1 (Jyoti) Predictive Prakash Bhosale Medium Check way lubrication · Replace coolant and clean tank · Check way lubrication Scheduled Complete":
+        - cell "10-09-2026"
+        - cell "CNC Turning Centre TC-1 (Jyoti)"
+        - cell "Predictive"
+        - cell "Prakash Bhosale"
+        - cell "Medium":
+          - generic: Medium
+        - cell "Check way lubrication · Replace coolant and clean tank · Check way lubrication"
+        - cell "Scheduled":
+          - generic: Scheduled
+        - cell "Complete":
+          - button "Complete"
+      - row "12-09-2026 CNC Turning Centre TC-1 (Jyoti) Calibration Prakash Bhosale Low Vibration check on spindle · Thermal scan of drive motor · Check V-belt tension Scheduled Complete":
+        - cell "12-09-2026"
+        - cell "CNC Turning Centre TC-1 (Jyoti)"
+        - cell "Calibration"
+        - cell "Prakash Bhosale"
+        - cell "Low":
+          - generic: Low
+        - cell "Vibration check on spindle · Thermal scan of drive motor · Check V-belt tension"
+        - cell "Scheduled":
+          - generic: Scheduled
+        - cell "Complete":
+          - button "Complete"
+      - row "12-09-2026 LPG Heat-Treat Furnace HT-1 Corrective Prakash Bhosale High Vibration check on spindle · Check DG auto-changeover panel · Vibration check on spindle Scheduled Complete":
+        - cell "12-09-2026"
+        - cell "LPG Heat-Treat Furnace HT-1"
+        - cell "Corrective"
+        - cell "Prakash Bhosale"
+        - cell "High":
+          - generic: High
+        - cell "Vibration check on spindle · Check DG auto-changeover panel · Vibration check on spindle"
+        - cell "Scheduled":
+          - generic: Scheduled
+        - cell "Complete":
+          - button "Complete"
+      - row "13-09-2026 Power Press 100T (Isgec) Preventive Santosh More Low Vibration check on spindle · Thermal scan of drive motor · Replace coolant and clean tank Scheduled Complete":
+        - cell "13-09-2026"
+        - cell "Power Press 100T (Isgec)"
+        - cell "Preventive"
+        - cell "Santosh More"
+        - cell "Low":
+          - generic: Low
+        - cell "Vibration check on spindle · Thermal scan of drive motor · Replace coolant and clean tank"
+        - cell "Scheduled":
+          - generic: Scheduled
+        - cell "Complete":
+          - button "Complete"
+      - row "13-09-2026 CNC Turning Centre TC-1 (Jyoti) Calibration Imran Shaikh Critical Verify chuck / fixture clamping · Check DG auto-changeover panel · Check V-belt tension Scheduled Complete":
+        - cell "13-09-2026"
+        - cell "CNC Turning Centre TC-1 (Jyoti)"
+        - cell "Calibration"
+        - cell "Imran Shaikh"
+        - cell "Critical":
+          - generic: Critical
+        - cell "Verify chuck / fixture clamping · Check DG auto-changeover panel · Check V-belt tension"
+        - cell "Scheduled":
+          - generic: Scheduled
+        - cell "Complete":
+          - button "Complete"
+- button "Quick Log":
+  - text: Quick Log
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_10hdg7xyw99tpa64t0nz744v7b?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: "400"

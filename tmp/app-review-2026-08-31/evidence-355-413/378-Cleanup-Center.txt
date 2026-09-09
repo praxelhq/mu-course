@@ -1,0 +1,88 @@
+- alert
+- complementary:
+  - paragraph: MailClean AI
+  - paragraph: High Mountain Property
+  - button "NA nancy (Owner) nancy@highmountainproperty.com":
+    - generic: NA
+    - paragraph: nancy (Owner)
+    - paragraph: nancy@highmountainproperty.com
+  - navigation:
+    - link "Dashboard":
+      - /url: /dashboard
+      - text: Dashboard
+    - link "Analytics":
+      - /url: /dashboard/analytics
+      - text: Analytics
+    - link "Categories":
+      - /url: /dashboard/categories
+      - text: Categories
+    - link "Email Explorer":
+      - /url: /dashboard/explorer
+      - text: Email Explorer
+    - link "Cleanup Center" [active]:
+      - /url: /dashboard/cleanup
+      - text: Cleanup Center
+    - link "Rules & Automation":
+      - /url: /dashboard/rules
+      - text: Rules & Automation
+    - link "Activity Log":
+      - /url: /dashboard/activity
+      - text: Activity Log
+    - link "Reports":
+      - /url: /dashboard/reports
+      - text: Reports
+    - link "Accounts":
+      - /url: /dashboard/accounts
+      - text: Accounts
+    - link "Settings":
+      - /url: /dashboard/settings
+      - text: Settings
+  - generic: na
+  - paragraph: nancy
+  - paragraph: nancy@highmountainproperty.com
+- banner:
+  - textbox "Search emails, senders, rules…"
+  - button "Notifications":
+    - generic: Notifications
+- main:
+  - heading "Cleanup Center" [level=1]
+  - paragraph: Review and safely remove clutter. Nothing is deleted without your approval.
+  - heading "Your inbox can be cleaner" [level=2]
+  - paragraph: 37,842 emails can potentially be cleaned, recovering about 8.9 GB.
+  - text: 8.9 GB recoverable
+  - heading "Promotional emails older than 1 year" [level=3]
+  - paragraph: Marketing and listing alerts from portals and retailers.
+  - generic: 18,421 emails
+  - generic: ~4.2 GB
+  - generic: 1,241 unread
+  - button "Review"
+  - button "Clean"
+  - heading "Old newsletters" [level=3]
+  - paragraph: Digests and market reports older than 6 months.
+  - generic: 8,231 emails
+  - generic: ~2.1 GB
+  - generic: 640 unread
+  - button "Review"
+  - button "Clean"
+  - heading "App notifications" [level=3]
+  - paragraph: Automated alerts older than 90 days.
+  - generic: 6,421 emails
+  - generic: ~1.3 GB
+  - generic: 380 unread
+  - button "Review"
+  - button "Clean"
+  - heading "Detected spam" [level=3]
+  - paragraph: Flagged junk and suspicious mail.
+  - generic: 3,421 emails
+  - generic: ~0.9 GB
+  - generic: 3,200 unread
+  - button "Review"
+  - button "Clean"
+  - heading "Duplicate messages" [level=3]
+  - paragraph: Exact and near-duplicate copies.
+  - generic: 1,348 emails
+  - generic: ~0.4 GB
+  - generic: 90 unread
+  - button "Review"
+  - button "Clean"
+- generic: "24.2"

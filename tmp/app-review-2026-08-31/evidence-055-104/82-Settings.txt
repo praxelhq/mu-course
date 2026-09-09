@@ -1,0 +1,242 @@
+- complementary:
+  - link "FactoryFlow AI Shreeji Precision Works":
+    - /url: /
+    - paragraph: FactoryFlow AI
+    - paragraph: Shreeji Precision Works
+  - navigation:
+    - paragraph: Shop floor
+    - link "Dashboard":
+      - /url: /
+      - text: Dashboard
+    - link "Production":
+      - /url: /production
+      - text: Production
+    - link "Customer Schedule":
+      - /url: /schedule
+      - text: Customer Schedule
+    - link "Machines":
+      - /url: /machines
+      - text: Machines
+    - link "Downtime":
+      - /url: /downtime
+      - text: Downtime
+    - link "Maintenance":
+      - /url: /maintenance
+      - text: Maintenance
+    - link "Quality":
+      - /url: /quality
+      - text: Quality
+    - link "Job Work":
+      - /url: /job-work
+      - text: Job Work
+    - link "Inventory":
+      - /url: /inventory
+      - text: Inventory
+    - paragraph: Money
+    - link "Sales & Receivables":
+      - /url: /sales
+      - text: Sales & Receivables
+    - link "Purchase & Payables":
+      - /url: /purchase
+      - text: Purchase & Payables
+    - link "Cash View":
+      - /url: /cash
+      - text: Cash View
+    - link "Compliance":
+      - /url: /compliance
+      - text: Compliance
+    - paragraph: Run the business
+    - link "Tasks":
+      - /url: /tasks
+      - text: Tasks
+    - link "Analytics":
+      - /url: /analytics
+      - text: Analytics
+    - link "Reports":
+      - /url: /reports
+      - text: Reports
+    - link "AI Assistant":
+      - /url: /assistant
+      - text: AI Assistant
+    - link "Integrations":
+      - /url: /integrations
+      - text: Integrations
+    - link "Settings" [active]:
+      - /url: /settings
+      - text: Settings
+  - link "RK Rajesh Kulkarni Works Manager":
+    - /url: /profile
+    - generic: RK
+    - generic: Rajesh Kulkarni
+    - generic: Works Manager
+  - link "Pricing & product page →":
+    - /url: /welcome
+- banner:
+  - textbox "Search part, challan, invoice, heat number…"
+  - button "English"
+  - button "हिंदी"
+  - button "मराठी"
+  - generic "All entries synced":
+    - text: Online
+  - button "Toggle dark mode":
+  - link "Notifications":
+    - /url: /notifications
+    - generic: "4"
+  - link "Ask AI":
+    - /url: /assistant
+    - generic: Ask AI
+- main:
+  - navigation:
+    - link "FactoryFlow":
+      - /url: /
+    - generic: Settings
+  - heading "Settings" [level=1]
+  - paragraph: Plant, statutory identity, roles, shop-floor language and WhatsApp bot.
+  - heading "Organisation & statutory" [level=2]
+  - term: Legal name
+  - definition: Shreeji Precision Works Pvt. Ltd.
+  - term: GSTIN
+  - definition: 27AAGCS4821K1ZP
+  - term: Udyam registration
+  - definition: UDYAM-MH-26-0091847 (Small)
+  - term: PAN
+  - definition: AAGCS4821K
+  - term: Factory licence
+  - definition: MH/PUN/FL/2019/4471 — valid till 31-12-2026
+  - term: Financial year
+  - definition: 2026–27 (Apr–Mar)
+  - term: Signed in as
+  - definition: Rajesh Kulkarni · Works Manager
+  - term: Team members
+  - definition: 8 on app · 34 on WhatsApp
+  - heading "Alert thresholds" [level=2]
+  - paragraph: Schedule adherence below 90%
+  - paragraph: Alert owner when dispatch slips against the latest customer revision.
+  - button [pressed]
+  - paragraph: Rejection cost above ₹25,000 / week
+  - paragraph: Escalate to QA head with reason-wise Pareto.
+  - button [pressed]
+  - paragraph: Customer payment crossing 45 days
+  - paragraph: MSME Section 43B(h) risk — notify accounts and owner.
+  - button [pressed]
+  - paragraph: Job-work material outstanding beyond 240 days
+  - paragraph: Early warning before the 300-day ITC reversal limit.
+  - button [pressed]
+  - paragraph: Stock below reorder level
+  - paragraph: WhatsApp the stores team with the shortfall list.
+  - button
+  - heading "Shop-floor language & data capture" [level=2]
+  - paragraph: Default language for operators on tablets and the WhatsApp bot.
+  - button "English"
+  - button "हिंदी"
+  - button "मराठी"
+  - paragraph: Offline-first capture
+  - paragraph: Queue entries on the tablet during power cuts and sync when the link is back.
+  - button [pressed]
+  - paragraph: Quick Log floating button
+  - paragraph: One-tap icon grid for downtime, production and rejection entries.
+  - button [pressed]
+  - paragraph: Voice note downtime reason
+  - paragraph: Operators can record a 10-second note instead of typing.
+  - button
+  - heading "WhatsApp Bot" [level=2]
+  - generic: Connected
+  - generic: +91 88888 40021 · WhatsApp Business API (Meta)
+  - table:
+    - rowgroup:
+      - row "PROD 120 FY-108 Log 120 nos of Flange Yoke against today's shift":
+        - cell "PROD 120 FY-108"
+        - cell "Log 120 nos of Flange Yoke against today's shift"
+      - row "DOWN VMC-01 POWER 30 Log 30 min power-cut downtime on VMC-01":
+        - cell "DOWN VMC-01 POWER 30"
+        - cell "Log 30 min power-cut downtime on VMC-01"
+      - row "REJ 6 BURR Log 6 rejections with reason Burr":
+        - cell "REJ 6 BURR"
+        - cell "Log 6 rejections with reason Burr"
+      - row "CASH Reply with bank balance, receivables and payables due this week":
+        - cell "CASH"
+        - cell "Reply with bank balance, receivables and payables due this week"
+      - row "PENDING Overdue customer payments with 45-day MSME countdown":
+        - cell "PENDING"
+        - cell "Overdue customer payments with 45-day MSME countdown"
+      - row "मदत / मदद Command list in Marathi / Hindi":
+        - cell "मदत / मदद"
+        - cell "Command list in Marathi / Hindi"
+  - paragraph: Daily 08:00 morning brief to owner
+  - paragraph: Yesterday's output, losses in ₹ and payments to chase.
+  - button [pressed]
+  - paragraph: Payment reminders to customers
+  - paragraph: Polite reminder at 30, 40 and 45 days with invoice PDF.
+  - button [pressed]
+  - link "Manage Tally, GSTN, IRP and e-way bill integrations →":
+    - /url: /integrations
+  - heading "Roles & permissions" [level=2]
+  - table:
+    - rowgroup:
+      - row "Role Access Members":
+        - columnheader "Role"
+        - columnheader "Access"
+        - columnheader "Members"
+    - rowgroup:
+      - row "Owner / Director Everything including cash, receivables and pricing 2":
+        - cell "Owner / Director":
+          - generic: Owner / Director
+        - cell "Everything including cash, receivables and pricing"
+        - cell "2"
+      - row "Works Manager Production, schedule, machines, quality, job work 1":
+        - cell "Works Manager":
+          - generic: Works Manager
+        - cell "Production, schedule, machines, quality, job work"
+        - cell "1"
+      - row "Shift Incharge Log production, downtime, tasks for own shift 3":
+        - cell "Shift Incharge":
+          - generic: Shift Incharge
+        - cell "Log production, downtime, tasks for own shift"
+        - cell "3"
+      - row "QA Head Quality, 8D, traceability, document vault 1":
+        - cell "QA Head":
+          - generic: QA Head
+        - cell "Quality, 8D, traceability, document vault"
+        - cell "1"
+      - row "Stores & Purchase Inventory, GRN, vendor POs, job-work challans 2":
+        - cell "Stores & Purchase":
+          - generic: Stores & Purchase
+        - cell "Inventory, GRN, vendor POs, job-work challans"
+        - cell "2"
+      - row "Accounts Sales, purchase, cash, GST & compliance filings 1":
+        - cell "Accounts":
+          - generic: Accounts
+        - cell "Sales, purchase, cash, GST & compliance filings"
+        - cell "1"
+      - row "Operator (WhatsApp only) Quick Log entries via WhatsApp bot 34":
+        - cell "Operator (WhatsApp only)":
+          - generic: Operator (WhatsApp only)
+        - cell "Quick Log entries via WhatsApp bot"
+        - cell "34"
+  - heading "Plant" [level=2]
+  - paragraph:
+    - text: Shreeji Precision Works
+    - generic: (SPW)
+  - paragraph: Chakan MIDC, Pune, India · Asia/Kolkata
+  - paragraph: Lines
+  - list:
+    - listitem: Line 1 — Machining
+    - listitem: Line 2 — Press Shop
+    - listitem: Line 3 — Weld & Finish
+  - paragraph: Departments
+  - paragraph: Machining · Press Shop · Welding · Heat Treat · Quality · Stores
+  - heading "Subscription" [level=2]
+  - paragraph: Growth plan — ₹8,000 / month
+  - paragraph: 1 plant · unlimited WhatsApp users · Tally two-way sync · GST & e-invoice · renews 01-04-2027
+  - link "Compare plans":
+    - /url: /welcome
+  - button "Save changes"
+- button "Quick Log":
+  - text: Quick Log
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_10hdg7xyw99tpa64t0nz744v7b?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: "6000"

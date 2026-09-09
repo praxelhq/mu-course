@@ -1,0 +1,117 @@
+- complementary:
+  - link "ShelfLife AI":
+    - /url: /dashboard
+    - generic: ShelfLife AI
+  - navigation:
+    - link "Dashboard":
+      - /url: /dashboard
+      - text: Dashboard
+    - link "Inventory":
+      - /url: /inventory
+      - text: Inventory
+    - link "Recipes":
+      - /url: /recipes
+      - text: Recipes
+    - link "Meal Planner":
+      - /url: /meal-planner
+      - text: Meal Planner
+    - link "Community":
+      - /url: /community
+      - text: Community
+    - link "Analytics":
+      - /url: /analytics
+      - text: Analytics
+    - link "Settings":
+      - /url: /settings
+      - text: Settings
+  - link "Admin":
+    - /url: /admin
+    - text: Admin
+  - link "Premium Unlimited AI recipes, meal plans & family sharing.":
+    - /url: /premium
+    - text: Premium
+    - paragraph: Unlimited AI recipes, meal plans & family sharing.
+- banner:
+  - heading "What can I cook?" [level=1]
+  - paragraph: Recipes ranked by the waste they prevent
+  - button "Toggle theme":
+    - generic: Toggle theme
+  - link:
+    - /url: /notifications
+    - button:
+  - link "Add groceries":
+    - /url: /import
+    - button "Add groceries":
+      - text: Add groceries
+- main:
+  - heading "11 meals possible right now" [level=2]
+  - paragraph: Using spinach, tomatoes and paneer first saves ₹247 of food.
+  - button "Generate recipes" [active]:
+    - text: Generate recipes
+  - heading "Suggested for your kitchen" [level=2]
+  - button "Generate another":
+    - text: Generate another
+  - article:
+    - generic: 🥬
+    - heading "Palak Paneer Bowl" [level=3]
+    - generic: Saves ₹155 of food
+    - text: 25 min
+    - text: Easy
+    - generic: 420 kcal · 22 g protein
+    - text: Baby Spinach
+    - text: Paneer
+    - text: Tomatoes
+    - text: Coriander
+    - text: Cream
+    - button "Cook now"
+    - button "Save":
+      - text: Save
+  - article:
+    - generic: 🍌
+    - heading "Banana Walnut Bread" [level=3]
+    - generic: Saves ₹60 of food
+    - text: 55 min
+    - text: Medium
+    - generic: 310 kcal · 7 g protein
+    - text: Bananas
+    - text: Eggs (Free Range)
+    - text: Brown Bread
+    - text: Walnuts
+    - text: Baking soda
+    - button "Cook now"
+    - button "Save":
+      - text: Save
+  - article:
+    - generic: 🥑
+    - heading "Avocado Toast, Chilli Oil" [level=3]
+    - generic: Saves ₹180 of food
+    - text: 10 min
+    - text: Easy
+    - generic: 280 kcal · 9 g protein
+    - text: Avocados
+    - text: Brown Bread
+    - text: Tomatoes
+    - button "Cook now"
+    - button "Save":
+      - text: Save
+  - article:
+    - generic: 🍅
+    - heading "Tomato Basil Rice" [level=3]
+    - generic: Saves ₹52 of food
+    - text: 30 min
+    - text: Easy
+    - generic: 390 kcal · 8 g protein
+    - text: Tomatoes
+    - text: Basmati Rice
+    - text: Bell Peppers
+    - text: Basil
+    - button "Cook now"
+    - button "Save":
+      - text: Save
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_2kqf2pkevm9rwrwvx13wfan347?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: "150"

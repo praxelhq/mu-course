@@ -1,0 +1,90 @@
+- banner:
+  - link "SplitWise Lite":
+    - /url: "#top"
+    - generic: SplitWise Lite
+  - link "Open calculator":
+    - /url: "#calculator"
+- main:
+  - text: No signup. No math. Just answers.
+  - heading "Split bills fairly in seconds." [level=1]:
+    - text: Split bills fairly
+    - text: in seconds.
+  - paragraph: When dinner gets complicated, SplitWise Lite keeps it simple. Assign custom amounts or percentages and share a clean summary in one tap.
+  - link "Start splitting":
+    - /url: "#calculator"
+    - text: Start splitting
+  - link "How it works":
+    - /url: "#how"
+  - paragraph: How it works
+  - heading "Three steps. Zero arguments." [level=2]
+  - generic: Step 1
+  - heading "Enter the total" [level=3]
+  - paragraph: Type the bill amount once. Every change recalculates instantly.
+  - generic: Step 2
+  - heading "Assign per person" [level=3]
+  - paragraph: Mix fixed amounts and percentages. Add notes for context.
+  - generic: Step 3
+  - heading "Copy & share" [level=3]
+  - paragraph: Tap once to copy a clean summary to your group chat.
+  - paragraph: Calculator
+  - heading "Enter the bill. We'll do the math." [level=2]
+  - text: Total bill
+  - generic: $
+  - spinbutton: "200"
+  - generic: Balanced
+  - paragraph: "Allocated: $200.00"
+  - textbox "Name": Alex
+  - button "$"
+  - button "%"
+  - spinbutton: "75"
+  - button "Remove participant":
+  - textbox "Optional note (e.g. Had extra drinks)": Had extra drinks
+  - textbox "Name": Sam
+  - button "$"
+  - button "%"
+  - spinbutton: "65"
+  - button "Remove participant":
+  - textbox "Optional note (e.g. Had extra drinks)"
+  - textbox "Name": Jordan
+  - button "$"
+  - button "%"
+  - spinbutton: "30"
+  - button "Remove participant":
+  - textbox "Optional note (e.g. Had extra drinks)": Ordered dessert
+  - textbox "Name" [active]: Demo Reviewer
+  - button "$"
+  - button "%"
+  - spinbutton: "0"
+  - button "Remove participant":
+  - textbox "Optional note (e.g. Had extra drinks)"
+  - button "Add participant":
+    - text: Add participant
+  - heading "Breakdown" [level=3]
+  - paragraph: Alex
+  - generic: 37.5%
+  - paragraph: $75.00
+  - paragraph: “Had extra drinks”
+  - paragraph: Sam
+  - generic: 32.5%
+  - paragraph: $65.00
+  - paragraph: Jordan
+  - generic: 30.0%
+  - paragraph: $60.00
+  - paragraph: “Ordered dessert”
+  - paragraph: Demo Reviewer
+  - generic: 0.0%
+  - paragraph: $0.00
+  - heading "Summary" [level=3]
+  - paragraph: Share this with the group in one tap.
+  - button "Copy summary":
+    - text: Copy summary
+  - generic: "SplitWise Lite — Bill summary Total: $200.00 • Alex — $75.00 (37.5%) — Had extra drinks • Sam — $65.00 (32.5%) • Jordan — $60.00 (30.0%) — Ordered dessert • Demo Reviewer — $0.00 (0.0%) Status: Balanced ✓"
+- contentinfo:
+  - paragraph: © 2026 SplitWise Lite. Math, made friendly.
+  - paragraph: Built for groups who'd rather enjoy dinner.
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_56tjr2dcfg93n8zwjd3mddwth4?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

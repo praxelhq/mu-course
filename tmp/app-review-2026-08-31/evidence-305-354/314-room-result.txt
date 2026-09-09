@@ -1,0 +1,23 @@
+- main:
+  - link "← Leave":
+    - /url: /
+  - heading "Room AJ3RD" [level=1]
+  - button "Copy code"
+  - paragraph: Lobby
+  - generic: Demo · host
+  - generic: "0"
+  - generic: Waiting for a player…
+  - generic: Waiting for a player…
+  - generic: Waiting for a player…
+  - button "Need 3 more" [disabled]
+  - button "Leave room"
+  - paragraph: Leaderboard
+  - generic: "1"
+  - generic: Demo (you)
+  - generic: "0"
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7e8kb56h1e8qqr2x79kq68tw73?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

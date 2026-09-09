@@ -1,0 +1,132 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6rjbkh0ryp9yrbp1exkex5ff1p?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- complementary:
+  - link "L LeakLens Find where your business is leaking money.":
+    - /url: /
+    - generic: L
+    - generic: LeakLens
+    - paragraph: Find where your business is leaking money.
+  - navigation:
+    - link "Overview":
+      - /url: /dashboard
+      - text: Overview
+    - link "Leak Map":
+      - /url: /leak-map
+      - text: Leak Map
+    - link "Customers":
+      - /url: /customers
+      - text: Customers
+    - link "Recovery Queue":
+      - /url: /recovery-queue
+      - text: Recovery Queue
+    - link "What-If Simulator":
+      - /url: /simulator
+      - text: What-If Simulator
+    - link "Connect Data":
+      - /url: /connect
+      - text: Connect Data
+  - paragraph: Current Data
+  - paragraph: IronCore Fitness Demo
+  - link "Switch Data":
+    - /url: /connect
+- main:
+  - button "Back":
+    - text: Back
+  - heading "Map Your Columns" [level=1]
+  - paragraph: Tell LeakLens what each column represents.
+  - paragraph: Customer Name
+  - paragraph: Required
+  - combobox:
+    - option "— Not mapped —"
+    - option "Customer Name" [selected]
+    - option "Lead Stage"
+    - option "Potential Value"
+    - option "Last Contact Date"
+  - paragraph: Lead Stage
+  - paragraph: Required
+  - combobox:
+    - option "— Not mapped —"
+    - option "Customer Name"
+    - option "Lead Stage" [selected]
+    - option "Potential Value"
+    - option "Last Contact Date"
+  - paragraph: Potential Value
+  - paragraph: Required
+  - combobox:
+    - option "— Not mapped —"
+    - option "Customer Name"
+    - option "Lead Stage"
+    - option "Potential Value" [selected]
+    - option "Last Contact Date"
+  - paragraph: Last Contact Date
+  - paragraph: Required
+  - combobox:
+    - option "— Not mapped —"
+    - option "Customer Name"
+    - option "Lead Stage"
+    - option "Potential Value"
+    - option "Last Contact Date" [selected]
+  - paragraph: Last Message
+  - paragraph: Optional
+  - combobox:
+    - option "— Not mapped —" [selected]
+    - option "Customer Name"
+    - option "Lead Stage"
+    - option "Potential Value"
+    - option "Last Contact Date"
+  - paragraph: Lead Source
+  - paragraph: Optional
+  - combobox:
+    - option "— Not mapped —" [selected]
+    - option "Customer Name"
+    - option "Lead Stage"
+    - option "Potential Value"
+    - option "Last Contact Date"
+  - paragraph: Payment Status
+  - paragraph: Optional
+  - combobox:
+    - option "— Not mapped —" [selected]
+    - option "Customer Name"
+    - option "Lead Stage"
+    - option "Potential Value"
+    - option "Last Contact Date"
+  - paragraph: Previous Customer
+  - paragraph: Optional
+  - combobox:
+    - option "— Not mapped —" [selected]
+    - option "Customer Name"
+    - option "Lead Stage"
+    - option "Potential Value"
+    - option "Last Contact Date"
+  - paragraph: Status
+  - paragraph: Optional
+  - combobox:
+    - option "— Not mapped —" [selected]
+    - option "Customer Name"
+    - option "Lead Stage"
+    - option "Potential Value"
+    - option "Last Contact Date"
+  - button "Continue":
+    - text: Continue
+  - paragraph: Detected columns · first 5 rows
+  - table:
+    - rowgroup:
+      - row "Customer Name Lead Stage Potential Value Last Contact Date":
+        - columnheader "Customer Name"
+        - columnheader "Lead Stage"
+        - columnheader "Potential Value"
+        - columnheader "Last Contact Date"
+    - rowgroup:
+      - row "Review Alpha Quote Sent 1000 2026-08-18":
+        - cell "Review Alpha"
+        - cell "Quote Sent"
+        - cell "1000"
+        - cell "2026-08-18"
+      - row "Review Beta New Lead 2000 2026-08-20":
+        - cell "Review Beta"
+        - cell "New Lead"
+        - cell "2000"
+        - cell "2026-08-20"

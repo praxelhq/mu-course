@@ -1,0 +1,51 @@
+- banner:
+  - generic: RUNAWAY
+  - generic: Haute Couture OS • AI Atelier
+  - generic: Paris
+  - generic: •
+  - generic: 18°C
+  - button "RUNAWAY CLUB":
+    - generic: RUNAWAY CLUB
+  - button "athena_vaughn":
+    - img "athena_vaughn"
+- navigation:
+  - button "AI Wardrobe AI":
+    - generic: AI Wardrobe
+    - generic: AI
+  - button "The Vault StockX":
+    - generic: The Vault
+    - generic: StockX
+  - button "Editorial & Ratings Michelin":
+    - generic: Editorial & Ratings
+    - generic: Michelin
+  - button "Social Runway":
+    - generic: Social Runway
+  - button "Moodboards":
+    - generic: Moodboards
+  - button "DB & API Blueprint Dev" [active]:
+    - generic: DB & API Blueprint
+    - generic: Dev
+- main:
+  - heading "SYSTEM BLUEPRINT" [level=1]
+  - generic: Production Specs
+  - paragraph: PostgreSQL Relational Schemas, Python AI Microservices, and REST API Gateway Explorer
+  - button "PostgreSQL DB Schema":
+    - generic: PostgreSQL DB Schema
+  - button "Python Vision Microservice":
+    - generic: Python Vision Microservice
+  - button "API Gateway Tester":
+    - generic: API Gateway Tester
+  - generic: /db/schema.sql (PostgreSQL 16)
+  - button "Copy SQL":
+    - generic: Copy SQL
+  - generic: "-- RUNAWAY Core Relational Database Schema (PostgreSQL) CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\"; -- 1. Users Table CREATE TABLE users ( id UUID PRIMARY KEY DEFAULT gen_random_uuid(), username VARCHAR(50) UNIQUE NOT NULL, email VARCHAR(255) UNIQUE NOT NULL, is_club_member BOOLEAN DEFAULT FALSE, avatar_url TEXT, bio TEXT, created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() ); -- 2. Wardrobe Items Table CREATE TABLE wardrobe_items ( id UUID PRIMARY KEY DEFAULT gen_random_uuid(), user_id UUID REFERENCES users(id) ON DELETE CASCADE, category VARCHAR(50) NOT NULL, -- Outerwear, Tops, Bottoms, Footwear, Accessories brand VARCHAR(100) NOT NULL, title VARCHAR(255) NOT NULL, color_palette TEXT[], original_product_url TEXT, image_url TEXT NOT NULL, image_no_bg_url TEXT NOT NULL, metadata JSONB, -- fabric, warmth_index, seasonality, purchase_price created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() ); -- 3. Vault Marketplace Listings CREATE TABLE vault_listings ( id UUID PRIMARY KEY DEFAULT gen_random_uuid(), seller_id UUID REFERENCES users(id) ON DELETE CASCADE, title VARCHAR(255) NOT NULL, brand VARCHAR(100) NOT NULL, category VARCHAR(50) NOT NULL, item_size VARCHAR(30) NOT NULL, condition_status VARCHAR(50) NOT NULL, -- Deadstock, Near Mint, Archival Vintage authenticity_status VARCHAR(50) DEFAULT 'PENDING_HUB', -- PENDING_HUB, AUTHENTICATED_HUB current_highest_bid DECIMAL(10, 2) DEFAULT 0.00, lowest_ask DECIMAL(10, 2) DEFAULT 0.00, last_sale_price DECIMAL(10, 2) DEFAULT 0.00, image_url TEXT NOT NULL, drop_countdown TIMESTAMP WITH TIME ZONE, is_rare_drop BOOLEAN DEFAULT FALSE, created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() ); -- 4. Vault Bids & Asks Order Book CREATE TABLE vault_orders ( id UUID PRIMARY KEY DEFAULT gen_random_uuid(), listing_id UUID REFERENCES vault_listings(id) ON DELETE CASCADE, user_id UUID REFERENCES users(id) ON DELETE CASCADE, order_type VARCHAR(10) NOT NULL, -- 'BID' or 'ASK' amount DECIMAL(10, 2) NOT NULL, status VARCHAR(30) DEFAULT 'OPEN', -- OPEN, MATCHED, ESCROW_PENDING, COMPLETED created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() ); -- 5. Social OOTD Posts & Garment Hotspots CREATE TABLE ootd_posts ( id UUID PRIMARY KEY DEFAULT gen_random_uuid(), author_id UUID REFERENCES users(id) ON DELETE CASCADE, image_url TEXT NOT NULL, caption TEXT, likes_count INT DEFAULT 0, comments_count INT DEFAULT 0, aesthetic_tag VARCHAR(50), created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() ); CREATE TABLE garment_hotspots ( id UUID PRIMARY KEY DEFAULT gen_random_uuid(), ootd_post_id UUID REFERENCES ootd_posts(id) ON DELETE CASCADE, editorial_article_id UUID, x_percent DECIMAL(5,2) NOT NULL, y_percent DECIMAL(5,2) NOT NULL, garment_name VARCHAR(255) NOT NULL, brand VARCHAR(100) NOT NULL, price DECIMAL(10,2), vault_listing_id UUID REFERENCES vault_listings(id) ON DELETE SET NULL, category VARCHAR(50) NOT NULL ); -- 6. Editorial Magazine & Michelin Ratings CREATE TABLE editorial_articles ( id UUID PRIMARY KEY DEFAULT gen_random_uuid(), title VARCHAR(255) NOT NULL, subtitle VARCHAR(255), issue_number VARCHAR(50) NOT NULL, cover_image_url TEXT NOT NULL, author VARCHAR(100) NOT NULL, michelin_star_rating INT CHECK (michelin_star_rating BETWEEN 1 AND 3), rating_rationale TEXT, published_date TIMESTAMP WITH TIME ZONE DEFAULT NOW() ); CREATE TABLE brand_ratings ( id UUID PRIMARY KEY DEFAULT gen_random_uuid(), brand_name VARCHAR(100) UNIQUE NOT NULL, country VARCHAR(100), established INT, michelin_stars INT CHECK (michelin_stars BETWEEN 1 AND 3), craftsmanship_score INT CHECK (craftsmanship_score BETWEEN 0 AND 100), archival_valuation INT CHECK (archival_valuation BETWEEN 0 AND 100), sustainability_score INT CHECK (sustainability_score BETWEEN 0 AND 100), verdict TEXT );"
+  - generic: Interactive SQL Query Simulator
+  - paragraph: Simulate queries against RUNAWAY relational entity models.
+  - text: "Target Entity Table:"
+  - combobox:
+    - option "wardrobe_items" [selected]
+    - option "vault_listings"
+    - option "users"
+  - generic: SELECT * FROM wardrobe_items WHERE user_id = 'usr_runaway_99' LIMIT 1;
+  - button "Run Query":
+    - generic: Run Query

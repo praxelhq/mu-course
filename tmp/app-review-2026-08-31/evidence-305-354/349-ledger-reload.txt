@@ -1,0 +1,97 @@
+- banner:
+  - link "Warehouse Ops":
+    - /url: /
+  - navigation:
+    - link "Dashboard":
+      - /url: /
+      - text: Dashboard
+    - link "Warehouses":
+      - /url: /warehouses
+      - text: Warehouses
+    - link "SKUs":
+      - /url: /skus
+      - text: SKUs
+    - link "Receive":
+      - /url: /inventory/receive
+      - text: Receive
+    - link "Issue":
+      - /url: /inventory/issue
+      - text: Issue
+    - link "Transfer":
+      - /url: /inventory/transfer
+      - text: Transfer
+    - link "Ledger":
+      - /url: /ledger
+      - text: Ledger
+    - link "Import":
+      - /url: /import
+      - text: Import
+- heading "Stock Ledger" [level=1]
+- generic: Warehouse
+- combobox:
+  - option "All" [selected]
+  - option "MAIN"
+  - option "ST2045"
+- generic: SKU
+- combobox:
+  - option "All" [selected]
+  - option "SKU-0001"
+  - option "SKU-001"
+- generic: From
+- textbox
+- generic: To
+- textbox
+- button "Apply Filters"
+- table:
+  - rowgroup:
+    - row "Time Type Warehouse SKU Lot Qty Unit Cost Total Cost Reference":
+      - columnheader "Time"
+      - columnheader "Type"
+      - columnheader "Warehouse"
+      - columnheader "SKU"
+      - columnheader "Lot"
+      - columnheader "Qty"
+      - columnheader "Unit Cost"
+      - columnheader "Total Cost"
+      - columnheader "Reference"
+  - rowgroup:
+    - row "25/08/2026, 21:10:05 TRANSFER_OUT ST2045 SKU-0001 1 -1.000000 210.000000 -210.000000 —":
+      - cell "25/08/2026, 21:10:05"
+      - cell "TRANSFER_OUT"
+      - cell "ST2045"
+      - cell "SKU-0001"
+      - cell "1"
+      - cell "-1.000000"
+      - cell "210.000000"
+      - cell "-210.000000"
+      - cell "—"
+    - row "25/08/2026, 21:10:05 TRANSFER_IN MAIN SKU-0001 2 1.000000 210.000000 210.000000 —":
+      - cell "25/08/2026, 21:10:05"
+      - cell "TRANSFER_IN"
+      - cell "MAIN"
+      - cell "SKU-0001"
+      - cell "2"
+      - cell "1.000000"
+      - cell "210.000000"
+      - cell "210.000000"
+      - cell "—"
+    - row "25/08/2026, 21:09:52 ISSUE ST2045 SKU-0001 1 -4.000000 210.000000 -840.000000 —":
+      - cell "25/08/2026, 21:09:52"
+      - cell "ISSUE"
+      - cell "ST2045"
+      - cell "SKU-0001"
+      - cell "1"
+      - cell "-4.000000"
+      - cell "210.000000"
+      - cell "-840.000000"
+      - cell "—"
+    - row "25/08/2026, 05:30:00 RECEIPT ST2045 SKU-0001 1 5.000000 210.000000 1050.000000 —":
+      - cell "25/08/2026, 05:30:00"
+      - cell "RECEIPT"
+      - cell "ST2045"
+      - cell "SKU-0001"
+      - cell "1"
+      - cell "5.000000"
+      - cell "210.000000"
+      - cell "1050.000000"
+      - cell "—"

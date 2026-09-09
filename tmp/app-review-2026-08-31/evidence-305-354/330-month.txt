@@ -1,0 +1,61 @@
+- banner:
+  - button "Menu":
+    - generic: menu
+  - generic: Ink & Page
+  - button "History":
+    - generic: history_edu
+- navigation:
+  - heading "Journal Index" [level=2]
+  - list:
+    - link "auto_stories Cover":
+      - /url: /
+      - generic: auto_stories
+      - generic: Cover
+    - link "book Today's Page":
+      - /url: /journal
+      - generic: book
+      - generic: Today's Page
+    - link "timer Focus Timer":
+      - /url: /timer
+      - generic: timer
+      - generic: Focus Timer
+    - link "book_2 Monthly Spread":
+      - /url: /month
+      - generic: book_2
+      - generic: Monthly Spread
+    - link "query_stats Progress":
+      - /url: /progress
+      - generic: query_stats
+      - generic: Progress
+- main:
+  - heading "August" [level=1]
+  - paragraph: Monthly Habit Spread
+  - generic: Day
+  - generic: Read
+  - generic: Write
+  - generic: Walk
+  - generic: "01"
+  - button "Read day 1"
+  - button "Write day 1"
+  - button "Walk day 1"
+  - generic: "02"
+  - button "Read day 2"
+  - button "Write day 2"
+  - button "Walk day 2"
+  - generic: "03"
+  - button "Read day 3"
+  - button "Write day 3"
+  - button "Walk day 3"
+  - generic: "04"
+  - button "Read day 4"
+  - button "Write day 4"
+  - button "Walk day 4"
+  - generic: "05"
+  - button "Read day 5"
+  - button "Write day 5"
+  - button "Walk day 5"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_0e0qyttfcv9zm99rrq7ntss74j?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

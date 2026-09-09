@@ -1,0 +1,86 @@
+- complementary:
+  - generic: LeakWatch
+  - generic: Workspace
+  - navigation:
+    - button "Dashboard":
+      - generic: Dashboard
+    - button "Contracts":
+      - generic: Contracts
+    - button "Payables 4":
+      - generic: Payables
+      - generic: "4"
+  - generic: Configure
+  - navigation:
+    - button "Integrations":
+      - generic: Integrations
+    - button "Settings":
+      - generic: Settings
+  - generic: D
+  - generic: Demo
+  - generic: demo@example.com
+  - button "Exit"
+- banner:
+  - generic: Approval queue
+  - heading "Payables" [level=2]
+  - generic: Demo data
+  - button "Sync invoices"
+  - button "+ New contract"
+- generic: In your queue
+- generic: ₹12,06,000
+- generic: 4 awaiting a decision
+- generic: Approved to release
+- generic: ₹95,400
+- generic: 3 cleared
+- generic: Paid to date
+- generic: ₹7,50,500
+- generic: 2 settled
+- button "Awaiting approval (4)"
+- button "Approved"
+- button "On hold"
+- button "Upcoming"
+- button "Paid"
+- button "All"
+- button "Approve all 4"
+- generic: Payable
+- generic: Vendor
+- generic: Due
+- generic: Amount
+- generic: Action
+- generic: AWS Mumbai — Aug usage invoice
+- generic: razorpay
+- text: no approval on record
+- generic: AWS Mumbai
+- text: 4 Sept
+- generic: 4d
+- generic: ₹82,000
+- button "Approve"
+- button "Hold"
+- generic: Freshworks CRM — annual renewal
+- generic: razorpay
+- text: no approval on record
+- generic: Freshworks CRM
+- text: 6 Sept
+- generic: 6d
+- generic: ₹96,000
+- button "Approve"
+- button "Hold"
+- generic: Phase 2 — Data cleansing
+- generic: no approval on record
+- generic: Cognisys Tech
+- text: 9 Sept
+- generic: 9d
+- generic: ₹2,88,000
+- button "Approve"
+- button "Hold"
+- generic: Milestone 2 — Structure erected
+- generic: no approval on record
+- generic: Arka Interiors
+- text: 12 Sept
+- generic: 12d
+- generic: ₹7,40,000
+- button "Approve"
+- button "Hold"
+- generic: Approved ₹14,400 — Zoho One — Aug seats
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

@@ -1,0 +1,40 @@
+- main:
+  - paragraph: Starting point
+  - heading "Which of these reads as you?" [level=1]
+  - paragraph: No questions, no personality types. Point at the board that looks like your mornings and we will take it from there.
+  - button "Quiet Minimal Quiet Minimal Ivory, stone, and a firm no to prints.":
+    - img "Quiet Minimal"
+    - heading "Quiet Minimal" [level=2]
+    - paragraph: Ivory, stone, and a firm no to prints.
+  - button "Considered Color Considered Color Olive, ochre, one loud scarf.":
+    - img "Considered Color"
+    - heading "Considered Color" [level=2]
+    - paragraph: Olive, ochre, one loud scarf.
+  - button "Sharp Tailoring Sharp Tailoring A shoulder with opinions.":
+    - img "Sharp Tailoring"
+    - heading "Sharp Tailoring" [level=2]
+    - paragraph: A shoulder with opinions.
+  - button "Fluid & Layered Fluid & Layered Everything moves when you do.":
+    - img "Fluid & Layered"
+    - heading "Fluid & Layered" [level=2]
+    - paragraph: Everything moves when you do.
+  - button "Set my starting point" [disabled]
+- navigation:
+  - list:
+    - link "Quiz" [active]:
+      - /url: /quiz
+      - generic: Quiz
+    - link "Closet":
+      - /url: /closet
+      - generic: Closet
+    - link "Today":
+      - /url: /
+      - generic: Today
+    - link "Lookbook":
+      - /url: /lookbook
+      - generic: Lookbook
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_27qwyvtp1h9tvr60j73h0259jf?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

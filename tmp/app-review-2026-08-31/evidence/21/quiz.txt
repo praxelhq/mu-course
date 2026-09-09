@@ -1,0 +1,37 @@
+- banner:
+  - button "Go back":
+  - button "S SipMatch The Alchemist's Palette":
+    - generic: S
+    - generic: SipMatch
+    - generic: The Alchemist's Palette
+  - button "User profile":
+    - img "User avatar"
+- main:
+  - button "Previous" [disabled]:
+    - text: Previous
+  - generic: Question 1 of 10
+  - generic: 10%
+  - heading "Beach Vacation or Mountain Escape?" [level=1]
+  - paragraph: Choose your ideal sanctuary getaway setting.
+  - button "Option A Beach Vacation Bright, refreshing, sun-kissed, tropical.":
+    - generic: Option A
+    - heading "Beach Vacation" [level=2]
+    - paragraph: Bright, refreshing, sun-kissed, tropical.
+  - button "Option B Mountain Escape Earthy, complex, contemplative, cozy.":
+    - generic: Option B
+    - heading "Mountain Escape" [level=2]
+    - paragraph: Earthy, complex, contemplative, cozy.
+  - generic: VS
+- navigation:
+  - button "Home":
+    - generic: Home
+  - button "Discover":
+    - generic: Discover
+  - button "2 Saved":
+    - generic: "2"
+    - generic: Saved
+  - button "Profile":
+    - generic: Profile
+- link "Made in Bolt":
+  - /url: https://bolt.new
+  - generic: Made in Bolt

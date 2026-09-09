@@ -1,0 +1,86 @@
+- complementary:
+  - generic: Business Inputs
+  - heading "Fixed costs — monthly" [level=3]
+  - text: Rent / lease
+  - generic: $
+  - spinbutton: "6000"
+  - text: Permanent salaries
+  - generic: $
+  - spinbutton: "9000"
+  - text: Insurance
+  - generic: $
+  - spinbutton: "800"
+  - text: Licenses & permits
+  - generic: $
+  - spinbutton: "250"
+  - text: Equipment depreciation
+  - generic: $
+  - spinbutton: "950"
+  - generic: Total fixed costs
+  - generic: $17,000
+  - heading "Variable costs — per cover" [level=3]
+  - text: Ingredients / COGS
+  - generic: $
+  - spinbutton: "6.5"
+  - text: Hourly labor
+  - generic: $
+  - spinbutton: "3.2"
+  - text: Packaging
+  - generic: $
+  - spinbutton: "0.8"
+  - text: Utilities
+  - generic: $
+  - spinbutton: "0.6"
+  - text: Delivery platform fee
+  - generic: $
+  - spinbutton: "1.4"
+  - generic: Base variable cost / unit
+  - generic: $12.50
+  - heading "Production & pricing" [level=3]
+  - text: Current output (covers/month)
+  - generic: "#"
+  - spinbutton: "3000"
+  - text: Average price per unit
+  - generic: $
+  - spinbutton: "20"
+  - heading "Capacity & efficiency" [level=3]
+  - paragraph: Bulk buying lowers per-unit cost up to an efficient point; beyond it, overtime and congestion push costs back up.
+  - text: Efficient capacity point (lowest AVC)
+  - generic: "#"
+  - spinbutton: "3000"
+  - generic: Max efficiency gain at capacity
+  - generic: 12%
+  - slider
+- main:
+  - heading "F&B Short-Run Cost & Profit Optimization" [level=1]
+  - paragraph: Live microeconomic engine for restaurants, QSR, cafés and delivery kitchens — adjust the inputs to recalculate cost curves, break-even points and optimal output instantly.
+  - generic: HEALTHY — Price ($20.00) exceeds average total cost ($16.67); current operations are profitable per unit.
+  - generic: Current profit
+  - generic: $10,000
+  - generic: at Q = 3,000 units/mo
+  - generic: Maximum possible profit
+  - generic: $28,000
+  - generic: at optimal Q = 6,000 units/mo
+  - generic: Optimal output (MC = MR)
+  - generic: 6,000
+  - generic: vs current 3,000 units/mo
+  - generic: Cost-minimizing output
+  - generic: 5,018
+  - generic: min ATC = $15.07/unit
+  - tablist:
+    - tab "Cost curves"
+    - tab "Revenue vs cost" [active] [selected]
+    - tab "Data schedule"
+  - tabpanel "Revenue vs cost":
+    - list:
+      - text: Total revenue
+      - text: Total cost
+      - text: Profit
+    - paragraph: "Break-even output: 1,930 units/month"
+  - paragraph: "Model assumptions: price-taker (MR = price, competitive local F&B market); AVC follows a parabolic capacity-strain curve calibrated to your efficient capacity point and max efficiency gain."
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_0hdxy41hh79csr6jvt54k8sz8e?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: $-40k

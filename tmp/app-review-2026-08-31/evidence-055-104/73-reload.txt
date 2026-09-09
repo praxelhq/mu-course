@@ -1,0 +1,50 @@
+- main:
+  - paragraph: Now playing
+  - heading "Demo B" [level=1]
+  - text: "3"
+  - button "End game now"
+  - button "Restart"
+  - button "Quit to lobby"
+  - button "Tap to draw a card"
+  - heading "Scoreboard" [level=2]
+  - list:
+    - generic: D
+    - paragraph: Demo A
+    - paragraph:
+      - text: 2 hints left
+    - text: "2"
+    - generic: /21
+    - generic: D
+    - paragraph: Demo B
+    - paragraph:
+      - text: 3 hints left
+    - text: "0"
+    - generic: /21
+    - generic: D
+    - paragraph: Demo C
+    - paragraph:
+      - text: 3 hints left
+    - text: "0"
+    - generic: /21
+- navigation:
+  - list:
+    - link "Home":
+      - /url: /
+      - text: Home
+    - link "Play":
+      - /url: /play
+      - text: Play
+    - link "Scores":
+      - /url: /scoreboard
+      - text: Scores
+    - link "Rules":
+      - /url: /how-to-play
+      - text: Rules
+    - link "Settings":
+      - /url: /settings
+      - text: Settings
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7zpptsf0w782c9v2fqtd9yt2mv?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

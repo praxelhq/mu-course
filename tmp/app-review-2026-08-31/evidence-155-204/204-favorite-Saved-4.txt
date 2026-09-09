@@ -1,0 +1,88 @@
+- banner:
+  - generic: C
+  - generic: CraveAI
+  - button "psychology Find Cravings":
+    - generic: psychology
+    - generic: Find Cravings
+  - button "Notifications":
+    - generic: notifications
+- complementary:
+  - generic: C
+  - heading "CraveAI" [level=1]
+  - paragraph: Culinary Concierge
+  - button "add New Request":
+    - generic: add
+    - generic: New Request
+  - generic: Navigation
+  - navigation:
+    - button "home Home":
+      - generic: home
+      - generic: Home
+    - button "smart_toy AI Assistant":
+      - generic: smart_toy
+      - generic: AI Assistant
+    - button "favorite Saved 4" [active]:
+      - generic: favorite
+      - generic: Saved
+      - generic: "4"
+    - button "bar_chart History":
+      - generic: bar_chart
+      - generic: History
+  - generic: psychology
+  - generic: AI Engine Online
+  - paragraph: Real-time biometric & craving alignment powered by Gemini.
+- main:
+  - heading "Saved Foods" [level=1]
+  - paragraph: Your personalized collection of mood-matched recipes and favorites
+  - generic: search
+  - textbox "Search saved cravings..."
+  - button "All Saved"
+  - button "Breakfast"
+  - button "Lunch"
+  - button "Dinner"
+  - button "Healthy"
+  - button "High Protein"
+  - article:
+    - img "Miso Glazed Salmon Bowl"
+    - button "Remove from saved":
+      - generic: favorite
+    - generic: 96% Match
+    - heading "Miso Glazed Salmon Bowl" [level=3]
+    - paragraph: Fresh Atlantic salmon glazed with sweet savory miso glaze, served over tender quinoa, steamed broccoli, edamame, and pickled ginger.
+    - generic: local_fire_department
+    - generic: 450 kcal
+    - generic: schedule
+    - generic: 15 min
+  - article:
+    - img "Mango Salmon Poke"
+    - button "Remove from saved":
+      - generic: favorite
+    - generic: 98% Match
+    - heading "Mango Salmon Poke" [level=3]
+    - paragraph: Fresh Atlantic sushi-grade salmon, sweet diced mango, crisp edamame, shaved radishes, and house ponzu glaze over sushi rice.
+    - generic: local_fire_department
+    - generic: 450 kcal
+    - generic: schedule
+    - generic: 15 min
+  - article:
+    - img "Artisan Avo Toast"
+    - button "Remove from saved":
+      - generic: favorite
+    - generic: 92% Match
+    - heading "Artisan Avo Toast" [level=3]
+    - paragraph: Rustic sourdough base with smashed Hass avocado, free-range poached egg, shaved radish, microgreens, and chili flakes.
+    - generic: local_fire_department
+    - generic: 320 kcal
+    - generic: schedule
+    - generic: 10 min
+  - article:
+    - img "Roasted Tomato Soup"
+    - button "Remove from saved":
+      - generic: favorite
+    - generic: 89% Match
+    - heading "Roasted Tomato Soup" [level=3]
+    - paragraph: Comforting slow-roasted vine tomato and sweet basil soup with a swirl of rich cream and herb crostini.
+    - generic: local_fire_department
+    - generic: 280 kcal
+    - generic: schedule
+    - generic: 30 min

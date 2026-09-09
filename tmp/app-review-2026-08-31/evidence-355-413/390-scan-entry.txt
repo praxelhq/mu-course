@@ -1,0 +1,32 @@
+- banner:
+  - button "Menu":
+    - generic: menu
+  - button "NOOR"
+  - button "Account Profile":
+    - generic: account_circle
+- banner:
+  - button "Close guidance":
+    - generic: close
+  - generic: Step 1 of 3
+- main:
+  - heading "Capture guidance" [level=1]
+  - paragraph: To ensure an accurate read of your skin's topography and tone, please set the stage.
+  - img "Example of correct lighting"
+  - generic: check_circle
+  - generic: Soft, even light
+  - img "Example of incorrect lighting"
+  - generic: cancel
+  - generic: Harsh shadows
+  - list:
+    - generic: light_mode
+    - heading "Face a window or natural light" [level=3]
+    - paragraph: Avoid strong overhead lamps and harsh flash.
+    - generic: face
+    - heading "Remove heavy makeup if possible" [level=3]
+    - paragraph: Allows direct pigment calibration with your natural undertone.
+    - generic: bloodtype
+    - heading "Prepare inner wrist veins" [level=3]
+    - paragraph: Clear watches or jewelry to let optical sensors read subcutaneous vessel hues.
+- button "I'm ready arrow_forward":
+  - generic: I'm ready
+  - generic: arrow_forward

@@ -1,0 +1,257 @@
+- banner:
+  - link "Open your profile":
+    - /url: /profile
+    - img "Arjun Mehta's profile"
+  - link "Journey":
+    - /url: /home
+  - navigation "Primary":
+    - link "Home":
+      - /url: /home
+    - link "Journey":
+      - /url: /journey
+    - link "NEST AI":
+      - /url: /ai
+    - link "Explore":
+      - /url: /explore
+    - link "Community":
+      - /url: /community
+  - link "Your documents and notifications":
+    - /url: /documents
+    - generic: notifications
+- main:
+  - paragraph:
+    - strong: Demo journey.
+    - text: You are exploring Arjun's seeded India → Singapore journey.
+    - link "Create an account":
+      - /url: /signup
+    - text: to start your own.
+  - heading "Your Singapore journey" [level=1]
+  - paragraph: 27 of 40 steps complete · 3 days until you land
+  - button "All phases"
+  - button "BEFORE YOU LEAVE"
+  - button "ARRIVAL"
+  - button "SETTLE IN"
+  - button "BUILD YOUR LIFE"
+  - generic: flight_takeoff
+  - heading "BEFORE YOU LEAVE" [level=2]
+  - generic: 8/12
+  - list:
+    - link "Visa and passport verification":
+      - /url: /journey/c58f3bb8-30d9-4407-a3c3-eea53e338e85
+      - generic: check
+      - generic: Visa and passport verification
+      - generic: chevron_right
+    - link "Book your flight":
+      - /url: /journey/00b5fc32-1182-4d7e-9d8a-5cd0b6084dbb
+      - generic: check
+      - generic: Book your flight
+      - generic: chevron_right
+    - link "Confirm accommodation Urgent":
+      - /url: /journey/86aeb94c-b600-4b0a-a733-d00dca4fd1a3
+      - generic: radio_button_unchecked
+      - generic: Confirm accommodation
+      - generic: Urgent
+      - generic: chevron_right
+    - link "Secure temporary accommodation":
+      - /url: /journey/ef6eb9d8-137e-435c-b6b8-789c5cb874c5
+      - generic: radio_button_unchecked
+      - generic: Secure temporary accommodation
+      - generic: chevron_right
+    - link "Order a local SIM card":
+      - /url: /journey/19fbf93b-78da-4307-87a7-f20b4532ac94
+      - generic: check
+      - generic: Order a local SIM card
+      - generic: chevron_right
+    - link "Prepare arrival documents":
+      - /url: /journey/303a005e-60fd-48d0-b894-4ac066d81324
+      - generic: radio_button_unchecked
+      - generic: Prepare arrival documents
+      - generic: chevron_right
+    - link "Health insurance setup":
+      - /url: /journey/ece5389a-6e69-4f37-b86f-db5d6a787063
+      - generic: radio_button_unchecked
+      - generic: Health insurance setup
+      - generic: chevron_right
+    - link "Notify your bank at home":
+      - /url: /journey/3f6f756c-0cf8-4845-951d-19b38c056954
+      - generic: check
+      - generic: Notify your bank at home
+      - generic: chevron_right
+    - link "Arrange shipping or excess baggage":
+      - /url: /journey/ee565268-af9c-4ba4-b5ce-32b4070bf4d6
+      - generic: check
+      - generic: Arrange shipping or excess baggage
+      - generic: chevron_right
+    - link "Collect academic and work records":
+      - /url: /journey/c99c70b4-c116-4360-b108-dbf212d1e028
+      - generic: check
+      - generic: Collect academic and work records
+      - generic: chevron_right
+    - link "Close or transfer local subscriptions":
+      - /url: /journey/b62009e5-8096-4ae1-867d-dde22b802294
+      - generic: check
+      - generic: Close or transfer local subscriptions
+      - generic: chevron_right
+    - link "Set a first-month budget":
+      - /url: /journey/5e99b76b-f810-44e9-abe6-306fe7762d57
+      - generic: check
+      - generic: Set a first-month budget
+      - generic: chevron_right
+  - generic: flight_land
+  - heading "ARRIVAL" [level=2]
+  - generic: 6/8
+  - list:
+    - link "Clear immigration and collect your pass":
+      - /url: /journey/f01fdb32-ee0a-4603-9b6a-3662e92e92e3
+      - generic: check
+      - generic: Clear immigration and collect your pass
+      - generic: chevron_right
+    - link "Airport to accommodation transport":
+      - /url: /journey/12e1eedf-480e-4107-b8da-d946f7e34681
+      - generic: check
+      - generic: Airport to accommodation transport
+      - generic: chevron_right
+    - link "Activate your SIM and data":
+      - /url: /journey/7fb440c2-9fff-4478-8e2c-77a5a643493b
+      - generic: check
+      - generic: Activate your SIM and data
+      - generic: chevron_right
+    - link "Get a transit card":
+      - /url: /journey/6c1fad47-ef37-435a-af5b-960e9e2749ea
+      - generic: check
+      - generic: Get a transit card
+      - generic: chevron_right
+    - link "Complete pass registration":
+      - /url: /journey/c0e90e47-cf74-40b9-8a6d-ba4cfb0d1fdb
+      - generic: check
+      - generic: Complete pass registration
+      - generic: chevron_right
+    - link "Register your residential address":
+      - /url: /journey/b7836ec9-840e-4bad-a34e-753482c07f4a
+      - generic: check
+      - generic: Register your residential address
+      - generic: chevron_right
+    - link "Buy first-week essentials":
+      - /url: /journey/0e2e3cb2-3ada-48ac-8f1d-17bfab13888e
+      - generic: radio_button_unchecked
+      - generic: Buy first-week essentials
+      - generic: chevron_right
+    - link "Find your nearest clinic and pharmacy":
+      - /url: /journey/831b7c8f-bf8d-4ca0-b2dd-730283513064
+      - generic: radio_button_unchecked
+      - generic: Find your nearest clinic and pharmacy
+      - generic: chevron_right
+  - generic: home_work
+  - heading "SETTLE IN" [level=2]
+  - generic: 9/12
+  - list:
+    - link "Open a local bank account":
+      - /url: /journey/bb2a09e3-d7b9-4907-94d2-5825c66c90f6
+      - generic: check
+      - generic: Open a local bank account
+      - generic: chevron_right
+    - link "Set up salary and payroll details":
+      - /url: /journey/14d6451e-dd80-4141-9659-b21dc1a01b97
+      - generic: check
+      - generic: Set up salary and payroll details
+      - generic: chevron_right
+    - link "Sign a long-term lease":
+      - /url: /journey/7d8f3346-6928-4d8f-a5a0-0c793cbc39ce
+      - generic: check
+      - generic: Sign a long-term lease
+      - generic: chevron_right
+    - link "Stamp your tenancy agreement":
+      - /url: /journey/e2ff1bc7-375b-4689-831f-034ddfd3ff6f
+      - generic: check
+      - generic: Stamp your tenancy agreement
+      - generic: chevron_right
+    - link "Set up utilities and internet":
+      - /url: /journey/19402716-4f45-44eb-a314-383b20dbc0cb
+      - generic: check
+      - generic: Set up utilities and internet
+      - generic: chevron_right
+    - link "Register with a doctor":
+      - /url: /journey/6c022729-6da1-4a0a-8e7a-673b12d3363e
+      - generic: check
+      - generic: Register with a doctor
+      - generic: chevron_right
+    - link "Understand local tax obligations":
+      - /url: /journey/c73c89d8-5150-4c23-b31d-08ca1de7e7d3
+      - generic: check
+      - generic: Understand local tax obligations
+      - generic: chevron_right
+    - link "Set up remittances":
+      - /url: /journey/6bdc66f4-5276-4eb1-a7ca-4eebb93d6fbb
+      - generic: check
+      - generic: Set up remittances
+      - generic: chevron_right
+    - link "Furnish your home":
+      - /url: /journey/2651a31c-3bff-49b8-9981-881c0d7c187d
+      - generic: check
+      - generic: Furnish your home
+      - generic: chevron_right
+    - link "Learn your commute":
+      - /url: /journey/577f3690-0a3e-4cde-ae7f-42e0b6e24580
+      - generic: radio_button_unchecked
+      - generic: Learn your commute
+      - generic: chevron_right
+    - link "Find your grocery routine":
+      - /url: /journey/dec9bff3-14c5-4ec5-bb6c-c82a7bb8406a
+      - generic: radio_button_unchecked
+      - generic: Find your grocery routine
+      - generic: chevron_right
+    - link "Build an emergency fund locally":
+      - /url: /journey/591f9df4-5108-4baa-888e-0f03c54ce758
+      - generic: radio_button_unchecked
+      - generic: Build an emergency fund locally
+      - generic: chevron_right
+  - generic: diversity_3
+  - heading "BUILD YOUR LIFE" [level=2]
+  - generic: 4/8
+  - list:
+    - link "Meet people from your community":
+      - /url: /journey/8df7b309-f418-4c9f-bb7b-9a3e3929d8ef
+      - generic: check
+      - generic: Meet people from your community
+      - generic: chevron_right
+    - link "Join a local interest group":
+      - /url: /journey/7ea3ffbd-41ed-4e34-85f3-33071ee5e7de
+      - generic: check
+      - generic: Join a local interest group
+      - generic: chevron_right
+    - link "Explore your neighbourhood properly":
+      - /url: /journey/e0178e41-4a1c-4211-b4b6-00a4efe47c3d
+      - generic: check
+      - generic: Explore your neighbourhood properly
+      - generic: chevron_right
+    - link "Learn everyday local phrases":
+      - /url: /journey/5e35c13d-f55a-4692-a826-8daf48509d00
+      - generic: check
+      - generic: Learn everyday local phrases
+      - generic: chevron_right
+    - link "Plan your first trip home":
+      - /url: /journey/f4c54453-5479-4438-aa4e-8910c3d84098
+      - generic: radio_button_unchecked
+      - generic: Plan your first trip home
+      - generic: chevron_right
+    - link "Review your long-term visa path":
+      - /url: /journey/79da9d08-5dde-46e6-823f-78d150f082f9
+      - generic: radio_button_unchecked
+      - generic: Review your long-term visa path
+      - generic: chevron_right
+    - link "Set up long-term savings or investments":
+      - /url: /journey/af2f618f-4382-4fa1-b688-323652e2e96b
+      - generic: radio_button_unchecked
+      - generic: Set up long-term savings or investments
+      - generic: chevron_right
+    - link "Contribute back to the community":
+      - /url: /journey/b037cf51-f27b-482e-aa16-e00622412b34
+      - generic: radio_button_unchecked
+      - generic: Contribute back to the community
+      - generic: chevron_right
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3h107x2by691z9kgbmwkjagf85?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

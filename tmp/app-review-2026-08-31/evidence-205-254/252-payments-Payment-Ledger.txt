@@ -1,0 +1,152 @@
+- navigation:
+  - generic: inventory_2
+  - heading "StockFlow" [level=1]
+  - generic: ERP
+  - paragraph: Sports Retail Operations
+  - paragraph: OVERVIEW
+  - list:
+    - button "dashboard Dashboard 5":
+      - generic: dashboard
+      - generic: Dashboard
+      - generic: "5"
+    - button "inventory_2 Products":
+      - generic: inventory_2
+      - generic: Products
+    - button "swap_horiz Inventory Master":
+      - generic: swap_horiz
+      - generic: Inventory Master
+  - paragraph: INTELLIGENCE
+  - list:
+    - button "auto_awesome AI Demand Forecast AI":
+      - generic: auto_awesome
+      - generic: AI Demand Forecast
+      - generic: AI
+    - button "analytics Reports & Analytics":
+      - generic: analytics
+      - generic: Reports & Analytics
+  - paragraph: OPERATIONS
+  - list:
+    - button "qr_code_2 Serial Numbers":
+      - generic: qr_code_2
+      - generic: Serial Numbers
+    - button "category Categories":
+      - generic: category
+      - generic: Categories
+    - button "local_shipping Suppliers":
+      - generic: local_shipping
+      - generic: Suppliers
+  - paragraph: PROCUREMENT & PAYABLES
+  - list:
+    - button "post_add Purchase Orders 2":
+      - generic: post_add
+      - generic: Purchase Orders
+      - generic: "2"
+    - button "receipt_long Supplier Invoices 3":
+      - generic: receipt_long
+      - generic: Supplier Invoices
+      - generic: "3"
+    - button "payments Payment Ledger" [active]:
+      - generic: payments
+      - generic: Payment Ledger
+  - paragraph: SYSTEM
+  - list:
+    - button "manage_accounts User Management":
+      - generic: manage_accounts
+      - generic: User Management
+    - button "history Audit Trail Logs":
+      - generic: history
+      - generic: Audit Trail Logs
+  - button "settings Settings":
+    - generic: settings
+    - generic: Settings
+  - button "logout Sign Out":
+    - generic: logout
+    - generic: Sign Out
+- banner:
+  - generic: search
+  - textbox "Search products, SKUs, suppliers, orders..."
+  - generic: ⌘K
+  - generic: ₹ INR
+  - text: "Role:"
+  - strong: Admin
+  - button "notifications":
+    - generic: notifications
+  - button "help_outline":
+    - generic: help_outline
+  - button "Yadeshwar Admin expand_more":
+    - generic: Yadeshwar
+    - generic: Admin
+    - generic: expand_more
+- main:
+  - heading "Supplier Disbursements & Payment History" [level=2]
+  - paragraph: Auditable ledger of supplier disbursements, Razorpay transactions, and payment vouchers
+  - paragraph: Total Disbursed
+  - paragraph: ₹15,266.00
+  - generic: payments
+  - paragraph: Completed Transactions
+  - paragraph: "2"
+  - generic: receipt
+  - paragraph: UPI Disbursements
+  - paragraph: "1"
+  - generic: qr_code_2
+  - generic: search
+  - 'textbox "Search payment ID, Razorpay ID, invoice #..."'
+  - generic: "Method:"
+  - combobox:
+    - option "All Methods" [selected]
+    - option "UPI"
+    - option "Credit Card"
+    - option "Debit Card"
+    - option "Net Banking"
+    - option "Bank Transfer"
+    - option "Cash"
+  - generic: "Supplier:"
+  - combobox:
+    - option "All Suppliers" [selected]
+    - option "Sanspareils Greenlands (SG) Pvt. Ltd."
+    - option "Adidas India Marketing Pvt. Ltd."
+    - option "Nike India Pvt. Ltd."
+    - option "Sunrise Sports India (Yonex Distributor)"
+    - option "Wilson Sports India Distribution"
+    - option "Decathlon Sports India Pvt. Ltd."
+  - table:
+    - rowgroup:
+      - row "Payment ID / Ref Supplier Invoice / PO Ref Method Date & Time Amount Paid Status Receipt":
+        - columnheader "Payment ID / Ref"
+        - columnheader "Supplier"
+        - columnheader "Invoice / PO Ref"
+        - columnheader "Method"
+        - columnheader "Date & Time"
+        - columnheader "Amount Paid"
+        - columnheader "Status"
+        - columnheader "Receipt"
+    - rowgroup:
+      - 'row "pay_RAZOR_1001 RP: pay_P1001SGNetBank Sanspareils Greenlands (SG) Pvt. Ltd. INV-SUP-2026-001(PO-2026-0001) Net Banking Aug 5, 2026, 03:45 PM ₹10,266.00 Success Voucher"':
+        - 'cell "pay_RAZOR_1001 RP: pay_P1001SGNetBank"':
+          - text: pay_RAZOR_1001
+          - paragraph: "RP: pay_P1001SGNetBank"
+        - cell "Sanspareils Greenlands (SG) Pvt. Ltd."
+        - cell "INV-SUP-2026-001(PO-2026-0001)":
+          - text: INV-SUP-2026-001
+          - generic: (PO-2026-0001)
+        - cell "Net Banking"
+        - cell "Aug 5, 2026, 03:45 PM"
+        - cell "₹10,266.00"
+        - cell "Success"
+        - cell "Voucher":
+          - button "Voucher"
+      - 'row "pay_RAZOR_1002 RP: pay_P1002AdidasUPI Adidas India Marketing Pvt. Ltd. INV-SUP-2026-002(PO-2026-0002) UPI Aug 6, 2026, 09:50 PM ₹5,000.00 Success Voucher"':
+        - 'cell "pay_RAZOR_1002 RP: pay_P1002AdidasUPI"':
+          - text: pay_RAZOR_1002
+          - paragraph: "RP: pay_P1002AdidasUPI"
+        - cell "Adidas India Marketing Pvt. Ltd."
+        - cell "INV-SUP-2026-002(PO-2026-0002)":
+          - text: INV-SUP-2026-002
+          - generic: (PO-2026-0002)
+        - cell "UPI"
+        - cell "Aug 6, 2026, 09:50 PM"
+        - cell "₹5,000.00"
+        - cell "Success"
+        - cell "Voucher":
+          - button "Voucher"
+- generic: "0"

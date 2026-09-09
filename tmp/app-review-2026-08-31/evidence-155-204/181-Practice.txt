@@ -1,0 +1,19 @@
+- generic: Practice Room
+- heading "No Pressure" [level=1]
+- button "New":
+  - text: New
+- generic: Cueing a random track…
+- navigation:
+  - link "Case":
+    - /url: /
+    - generic: Case
+  - link "Case File":
+    - /url: /archive
+    - generic: Case File
+  - link "Record":
+    - /url: /stats
+    - generic: Record
+  - link "Practice" [active]:
+    - /url: /practice
+    - generic: Practice
+- region "Notifications alt+T"

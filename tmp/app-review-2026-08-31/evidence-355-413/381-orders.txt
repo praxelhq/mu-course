@@ -1,0 +1,44 @@
+- banner:
+  - link "PawPal":
+    - /url: /
+    - generic: PawPal
+  - link "Cart":
+    - /url: /cart
+    - generic: "1"
+- main:
+  - heading "Your orders" [level=1]
+  - paragraph: "Order #ORDER-WE"
+  - paragraph: 26 Aug 2026, 1:43 AM
+  - generic: Delivered
+  - img "Grain-free Chicken Kibble"
+  - generic: Grain-free Chicken Kibble
+  - generic: ×1
+  - generic: ₹899
+  - img "Baked Bone Treats Jar"
+  - generic: Baked Bone Treats Jar
+  - generic: ×2
+  - generic: ₹698
+  - generic: Free delivery
+  - generic: Total ₹1,597
+- navigation:
+  - link "Home":
+    - /url: /
+    - text: Home
+  - link "Services":
+    - /url: /services
+    - text: Services
+  - link "Shop":
+    - /url: /shop
+    - text: Shop
+  - link "Orders" [active]:
+    - /url: /orders
+    - text: Orders
+  - link "Profile":
+    - /url: /profile
+    - text: Profile
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6fkgz2ay9y83aavyc97wx7bbpk?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

@@ -1,0 +1,308 @@
+- banner:
+  - generic: EcoSync
+  - generic: Navigator
+  - paragraph: Carbon Market Intelligence & Profitability
+  - button "Live Order Book":
+    - generic: Live Order Book
+  - generic: "|"
+  - generic: 10 Registries Verified
+  - button "Compare Project":
+    - generic: Compare Project
+  - button "Notifications":
+  - generic "Carbon Asset Manager Profile":
+    - img "User Profile"
+- button "Overview":
+  - generic: Overview
+- button "Dashboard":
+  - generic: Dashboard
+- button "Compare Projects":
+  - generic: Compare Projects
+- button "Opportunity Analyzer":
+  - generic: Opportunity Analyzer
+- button "Market Intelligence":
+  - generic: Market Intelligence
+- button "Platforms Directory":
+  - generic: Platforms Directory
+- button "Workspace":
+  - generic: Workspace
+- button "Admin Panel":
+  - generic: Admin Panel
+- main:
+  - generic: Project Comparison Engine
+  - heading "Carbon Project Profitability Comparison" [level=2]
+  - paragraph: Calculate gross revenue, amortized fixed fees, variable issuance & trading deductions, and rank venues by net return.
+  - button "Save to Workspace":
+    - generic: Save to Workspace
+  - button "Export Report":
+    - generic: Export Report
+  - heading "Project Parameters & Asset Characteristics" [level=3]:
+    - generic: Project Parameters & Asset Characteristics
+  - generic: Project Name
+  - textbox "e.g. Borneo Peatland ARR": My Carbon Project
+  - generic: Credit Category
+  - combobox:
+    - option "Nature-based (ARR/REDD+)" [selected]
+    - option "Improved Forest Management (IFM)"
+    - option "Biochar & Enhanced Rock"
+    - option "Cookstoves & Household Devices"
+    - option "Blue Carbon & Mangroves"
+    - option "Tech-based CDR (DACCS/BECCS)"
+    - option "Methane Abatement & Landfill"
+    - option "Renewable Energy"
+  - generic: Geography / Country
+  - combobox:
+    - option "Southeast Asia (Indonesia, Malaysia, Vietnam)" [selected]
+    - option "Latin America (Brazil, Peru, Colombia)"
+    - option "Sub-Saharan Africa (Kenya, Uganda, Ghana)"
+    - option "North America (USA, Canada)"
+    - option "Northern Europe (Finland, Sweden, UK)"
+    - option "Global / Multi-Jurisdictional"
+  - generic: Vintage Year
+  - combobox:
+    - option "2025 (Forward Issuance)"
+    - option "2024 (Current Year)"
+    - option "2023 (Active Spot)" [selected]
+    - option "2022 (Seasoned)"
+    - option "2021 (Legacy)"
+  - generic: Annual Volume (tCO2e)
+  - spinbutton: "50000"
+  - generic: tonnes
+  - slider: "51000"
+  - generic: 1,000 t
+  - generic: 100,000 t
+  - generic: 200,000 t
+  - generic: 300,000 t
+  - generic: Base Market Spot Price ($/t)
+  - generic: $
+  - spinbutton: "8.41"
+  - generic: /ton
+  - slider: "8.5"
+  - generic: "Benchmark: $8.41/t"
+  - generic: "Category Spread: ±1.8%"
+  - checkbox "Include Fixed Onboarding & Annual Membership Fees" [checked]
+  - generic: Include Fixed Onboarding & Annual Membership Fees
+  - button "Ask AI Market Advisor For Strategy":
+    - generic: Ask AI Market Advisor For Strategy
+  - generic: Profitability Optimization Delta
+  - heading "Listing on Puro.earth (Nasdaq) yields +$64.9k more net cash than lowest venue." [level=4]:
+    - text: Listing on Puro.earth (Nasdaq) yields
+    - generic: +$64.9k
+    - text: more net cash than lowest venue.
+  - paragraph: Based on 50,000 tCO2e volume with +18.5% pricing premium and low fee friction.
+  - generic: Top Realized Price
+  - generic: $9.21 / ton net
+  - generic: 92.3% profit margin
+  - button "Ranked Opportunity Cards"
+  - button "Itemized Fee Schedule Table"
+  - button "Scenario Modeling Engine (Bull/Bear)"
+  - generic: "#1 Highest Net Return"
+  - generic: "Rank #1"
+  - generic: Exchange
+  - generic: "NCCVI: 93/100"
+  - heading "Puro.earth (Nasdaq)" [level=4]
+  - paragraph: The world’s first B2B marketplace and registry for durable carbon dioxide removal (CDR) certified by Nasdaq, specializing in Biochar, Geochem, and DAC.
+  - paragraph: Gross
+  - paragraph: $498.5k
+  - paragraph: Total Fees
+  - paragraph: "-$38.2k"
+  - paragraph: Net Payout
+  - paragraph: $460.3k
+  - generic: "Issuance & Registry Levies:"
+  - generic: $15.5k
+  - generic: "Trading & Brokerage Commission (3.5%):"
+  - generic: $17.4k
+  - generic: "Settlement & Custody:"
+  - generic: $1.3k
+  - generic: Realized / Ton
+  - generic: $9.21
+  - button "Run Scenarios":
+    - generic: Run Scenarios
+  - generic: "Rank #2"
+  - generic: Registry
+  - generic: "NCCVI: 92/100"
+  - heading "Gold Standard for the Global Goals" [level=4]
+  - paragraph: High-impact certification standard co-founded by WWF. Maximizes SDG co-benefits, commanding premium pricing for cookstoves, water, and community energy.
+  - paragraph: Gross
+  - paragraph: $471.0k
+  - paragraph: Total Fees
+  - paragraph: "-$26.6k"
+  - paragraph: Net Payout
+  - paragraph: $444.4k
+  - generic: "Issuance & Registry Levies:"
+  - generic: $7.8k
+  - generic: "Trading & Brokerage Commission (3.3%):"
+  - generic: $15.5k
+  - generic: "Settlement & Custody:"
+  - generic: $810
+  - generic: Realized / Ton
+  - generic: $8.89
+  - button "Run Scenarios":
+    - generic: Run Scenarios
+  - generic: "Rank #3"
+  - generic: Exchange
+  - generic: "NCCVI: 98/100"
+  - heading "European Energy Exchange (EEX)" [level=4]
+  - paragraph: Europe’s leading energy exchange. Premier marketplace for EU ETS compliance allowances (EUA) and voluntary carbon futures.
+  - paragraph: Gross
+  - paragraph: $454.0k
+  - paragraph: Total Fees
+  - paragraph: "-$16.6k"
+  - paragraph: Net Payout
+  - paragraph: $437.4k
+  - generic: "Issuance & Registry Levies:"
+  - generic: $500
+  - generic: "Trading & Brokerage Commission (1.3%):"
+  - generic: $5.9k
+  - generic: "Settlement & Custody:"
+  - generic: $4.7k
+  - generic: Realized / Ton
+  - generic: $8.75
+  - button "Run Scenarios":
+    - generic: Run Scenarios
+  - generic: "Rank #4"
+  - generic: Exchange
+  - generic: "NCCVI: 94/100"
+  - heading "Climate Impact X (CIX)" [level=4]
+  - paragraph: Backed by DBS, SGX, Standard Chartered, and Temasek. Premier global exchange for high-integrity nature-based solutions and blue carbon.
+  - paragraph: Gross
+  - paragraph: $449.0k
+  - paragraph: Total Fees
+  - paragraph: "-$17.8k"
+  - paragraph: Net Payout
+  - paragraph: $431.2k
+  - generic: "Issuance & Registry Levies:"
+  - generic: $1.3k
+  - generic: "Trading & Brokerage Commission (2.5%):"
+  - generic: $11.2k
+  - generic: "Settlement & Custody:"
+  - generic: $2.4k
+  - generic: Realized / Ton
+  - generic: $8.62
+  - button "Run Scenarios":
+    - generic: Run Scenarios
+  - generic: "Rank #5"
+  - generic: Exchange
+  - generic: "NCCVI: 97/100"
+  - heading "CBL Markets (Xpansiv)" [level=4]
+  - paragraph: The world’s largest spot commodity exchange for carbon offsets (GEO, N-GEO, C-GEO contracts). Highly liquid institutional order books.
+  - paragraph: Gross
+  - paragraph: $439.5k
+  - paragraph: Total Fees
+  - paragraph: "-$14.9k"
+  - paragraph: Net Payout
+  - paragraph: $424.6k
+  - generic: "Issuance & Registry Levies:"
+  - generic: $1.0k
+  - generic: "Trading & Brokerage Commission (2%):"
+  - generic: $8.8k
+  - generic: "Settlement & Custody:"
+  - generic: $1.8k
+  - generic: Realized / Ton
+  - generic: $8.49
+  - button "Run Scenarios":
+    - generic: Run Scenarios
+  - generic: "Rank #6"
+  - generic: Exchange
+  - generic: "NCCVI: 94/100"
+  - heading "ACX (AirCarbon Exchange)" [level=4]
+  - paragraph: Securitized digital carbon exchange with automated low-cost settlement architecture, architecture built for CORSIA & voluntary offsets.
+  - paragraph: Gross
+  - paragraph: $430.0k
+  - paragraph: Total Fees
+  - paragraph: "-$10.4k"
+  - paragraph: Net Payout
+  - paragraph: $419.6k
+  - generic: "Issuance & Registry Levies:"
+  - generic: $750
+  - generic: "Trading & Brokerage Commission (1.6%):"
+  - generic: $6.9k
+  - generic: "Settlement & Custody:"
+  - generic: $950
+  - generic: Realized / Ton
+  - generic: $8.39
+  - button "Run Scenarios":
+    - generic: Run Scenarios
+  - generic: "Rank #7"
+  - generic: Registry
+  - generic: "NCCVI: 90/100"
+  - heading "American Carbon Registry (ACR)" [level=4]
+  - paragraph: First private voluntary greenhouse gas registry in the US. Authoritative standards for US forestry IFM, ozone depleting substances, and compliance offsets.
+  - paragraph: Gross
+  - paragraph: $433.0k
+  - paragraph: Total Fees
+  - paragraph: "-$20.1k"
+  - paragraph: Net Payout
+  - paragraph: $412.9k
+  - generic: "Issuance & Registry Levies:"
+  - generic: $6.0k
+  - generic: "Trading & Brokerage Commission (2.7%):"
+  - generic: $11.7k
+  - generic: "Settlement & Custody:"
+  - generic: $700
+  - generic: Realized / Ton
+  - generic: $8.26
+  - button "Run Scenarios":
+    - generic: Run Scenarios
+  - generic: "Rank #8"
+  - generic: Exchange
+  - generic: "NCCVI: 88/100"
+  - heading "Carbon Trade Exchange (CTX)" [level=4]
+  - paragraph: Pioneer spot exchange integrated directly with Verra, Gold Standard, and UNFCCC CDM registries for instant global clearance.
+  - paragraph: Gross
+  - paragraph: $418.5k
+  - paragraph: Total Fees
+  - paragraph: "-$16.0k"
+  - paragraph: Net Payout
+  - paragraph: $402.5k
+  - generic: "Issuance & Registry Levies:"
+  - generic: $1.0k
+  - generic: "Trading & Brokerage Commission (3%):"
+  - generic: $12.6k
+  - generic: "Settlement & Custody:"
+  - generic: $870
+  - generic: Realized / Ton
+  - generic: $8.05
+  - button "Run Scenarios":
+    - generic: Run Scenarios
+  - generic: "Rank #9"
+  - generic: Decentralized
+  - generic: "NCCVI: 86/100"
+  - heading "Toucan Protocol (Web3 Registry)" [level=4]
+  - paragraph: On-chain climate finance infrastructure bridging voluntary carbon registries with decentralized liquidity pools (BCT, NCT).
+  - paragraph: Gross
+  - paragraph: $406.0k
+  - paragraph: Total Fees
+  - paragraph: "-$3.9k"
+  - paragraph: Net Payout
+  - paragraph: $402.1k
+  - generic: "Issuance & Registry Levies:"
+  - generic: $2.5k
+  - generic: "Trading & Brokerage Commission (0.3%):"
+  - generic: $1.2k
+  - generic: "Settlement & Custody:"
+  - generic: $10
+  - generic: Realized / Ton
+  - generic: $8.04
+  - button "Run Scenarios":
+    - generic: Run Scenarios
+  - generic: "Rank #10"
+  - generic: Registry
+  - generic: "NCCVI: 93/100"
+  - heading "Verra Registry (VCS Direct Listing)" [level=4]
+  - paragraph: The world’s most widely used voluntary greenhouse gas crediting program, issuing over 1 billion carbon credits worldwide.
+  - paragraph: Gross
+  - paragraph: $424.5k
+  - paragraph: Total Fees
+  - paragraph: "-$29.2k"
+  - paragraph: Net Payout
+  - paragraph: $395.3k
+  - generic: "Issuance & Registry Levies:"
+  - generic: $7.5k
+  - generic: "Trading & Brokerage Commission (4.2%):"
+  - generic: $17.8k
+  - generic: "Settlement & Custody:"
+  - generic: $700
+  - generic: Realized / Ton
+  - generic: $7.91
+  - button "Run Scenarios":
+    - generic: Run Scenarios

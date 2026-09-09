@@ -1,0 +1,44 @@
+- navigation:
+  - link "FoodLens":
+    - /url: /
+    - generic: FoodLens
+  - link "Home":
+    - /url: /
+  - link "Scan":
+    - /url: /scan
+  - link "Browse Recipes":
+    - /url: /browse
+  - link "Recent Scans":
+    - /url: /scans
+  - link "Saved recipes" [active]:
+    - /url: /saved
+- main:
+  - paragraph: Your favourites
+  - heading "Saved for later." [level=1]
+  - paragraph: 1 recipe bookmarked and waiting.
+  - article:
+    - link "Creamy Garlic Pasta Creamy Garlic Pasta 25 min · Easy View Recipe 25 min":
+      - /url: /recipe/creamy-garlic-pasta
+      - img "Creamy Garlic Pasta"
+      - heading "Creamy Garlic Pasta" [level=3]
+      - text: 25 min · Easy
+      - text: View Recipe
+      - generic: 25 min
+    - button "Remove from favourites":
+- contentinfo:
+  - generic: FoodLens
+  - paragraph: See your food differently. One picture. A whole new way to discover what's on your plate.
+  - link "Scan":
+    - /url: /scan
+  - link "Browse Recipes":
+    - /url: /browse
+  - link "Recent Scans":
+    - /url: /scans
+  - link "Saved":
+    - /url: /saved
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7hb7j64b2b9z2txfp26xt2vf0q?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

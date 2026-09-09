@@ -1,0 +1,67 @@
+- generic: "> INIT SYS..."
+- generic: "> LOADING KERNEL..."
+- generic: "> MOUNT VFS..."
+- generic: "> CHK TRACK DATA: SPA-FRANCORCHAMPS..."
+- generic: "> 19 CORNERS INDEXED..."
+- generic: "> READY."
+- heading "Track Translator" [level=1]
+- paragraph: "> SAME TRACK. YOUR EXCUSES CHANGED."
+- paragraph: Corner-by-corner driving intelligence — live from your inputs.
+- button "[ ENTER ]" [active]
+- paragraph: TRACK // SPA-FRANCORCHAMPS LENGTH // 7.004 KM CORNERS // 19
+- banner:
+  - generic: ">_"
+  - heading "Track Translator" [level=1]
+  - navigation:
+    - button "Setup"
+    - button "HUD" [disabled]
+    - button "Map" [disabled]
+    - button "Corner Guide"
+    - button "Debrief" [disabled]
+  - generic: LINK IDLE
+- main:
+  - generic: 06 SESSION SETUP
+  - heading "Build Your Session" [level=2]
+  - paragraph: "> One track, full functionality: Spa-Francorchamps, 19 corners. Set your starting car state below — this stands in for the live feed a real telemetry API or in-game plugin would provide."
+  - heading "01 // Platform & Car (cosmetic)" [level=3]
+  - text: "> Sim Platform"
+  - combobox:
+    - option "PC" [selected]
+    - option "PlayStation"
+    - option "Xbox"
+    - option "Wheel + Pedals Rig"
+  - text: "> Car Class"
+  - combobox:
+    - option "GT3" [selected]
+    - option "Le Mans Prototype"
+    - option "Open-Wheel"
+    - option "Road / Track Day"
+  - paragraph: "Demo scope: Spa-Francorchamps only, single reference car model. Additional tracks / cars are the natural next build."
+  - heading "02 // Starting Car State" [level=3]
+  - generic: Tire Wear (Grip Remaining)
+  - generic: 100%
+  - slider: "100"
+  - generic: Brake Bias (Front %)
+  - generic: 54%
+  - slider: "54"
+  - generic: "Damage State (click to cycle: NONE / MINOR / MAJOR / CRITICAL)"
+  - button "FRONT WING NONE":
+    - text: FRONT WING
+    - generic: NONE
+  - button "REAR WING NONE":
+    - text: REAR WING
+    - generic: NONE
+  - button "SUSPENSION NONE":
+    - text: SUSPENSION
+    - generic: NONE
+  - button "GEARBOX NONE":
+    - text: GEARBOX
+    - generic: NONE
+  - button "[ START SESSION ]"
+- contentinfo:
+  - generic: TRACK // SPA-FRANCORCHAMPS
+  - generic: LENGTH // 7.004 KM
+  - generic: SESSION // NOT STARTED
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

@@ -1,0 +1,94 @@
+- complementary:
+  - link "Pin You've been meaning to go":
+    - /url: /map
+    - generic: Pin
+    - generic: You've been meaning to go
+  - navigation "Primary":
+    - link "Map":
+      - /url: /map
+      - text: Map
+    - link "Nearby":
+      - /url: /nearby
+      - text: Nearby
+    - link "Collections":
+      - /url: /collections
+      - text: Collections
+    - link "Friends":
+      - /url: /friends
+      - text: Friends
+    - link "Plans" [active]:
+      - /url: /plans
+      - text: Plans
+    - link "Visited":
+      - /url: /visited
+      - text: Visited
+  - link "P Prisha Your map":
+    - /url: /profile
+    - generic: P
+    - generic: Prisha
+    - generic: Your map
+- main:
+  - heading "Plans & Reminders" [level=1]
+  - paragraph: Pin remembers, so you don't have to.
+  - heading "Coming up" [level=2]
+  - article:
+    - paragraph: This Saturday · from 11:00 AM
+    - heading "Saturday in Bandra West" [level=3]
+    - paragraph: 4 saved spots within 10 minutes of your plans
+  - article:
+    - paragraph: Friday · 8:00 PM
+    - heading "Girls' Night" [level=3]
+    - paragraph: Aditi and Meera are in — Zoya hasn't replied
+    - generic: AD
+  - article:
+    - paragraph: Oct 10 – 12
+    - heading "Alibaug Long Weekend" [level=3]
+    - paragraph: Rohan's beach house — 3 more saved stops along the way
+    - generic: AD
+  - heading "Nudges" [level=2]
+  - article:
+    - heading "You're near a café you saved 3 weeks ago" [level=3]
+    - generic: Just now
+    - paragraph: Another Fine Day is 16 minutes from Cyber City — the reading-room café from that reel.
+    - button "View place"
+  - article:
+    - heading "You have 8 places saved near Cyber Hub" [level=3]
+    - generic: 2h ago
+    - paragraph: Cyber Hub Social, Yum Yum Cha and 6 more are within 10 minutes of where you usually are.
+    - button "See them on the map"
+  - article:
+    - heading "You haven't opened Date Ideas recently" [level=3]
+    - generic: 1d ago
+    - paragraph: Caffe Tonino and Comorin are still waiting for a Saturday. Both take reservations.
+    - button "Open Date Ideas"
+  - article:
+    - heading "A place you saved with Riya is now part of Friday Night Plans" [level=3]
+    - generic: 2d ago
+    - paragraph: After Stories got its third save from the group — it's basically decided.
+    - button "See the plan"
+  - article:
+    - heading "How was Di Ghent Café?" [level=3]
+    - generic: 3w ago
+    - paragraph: You visited last month. Rate it to teach Pin what you love.
+    - button "Rate your visit"
+  - article:
+    - heading "Your August map is ready" [level=3]
+    - generic: 1w ago
+    - paragraph: 6 places saved, 2 visited, 1 new neighbourhood explored.
+    - button "View recap"
+  - heading "Reminders" [level=2]
+  - paragraph: When I'm near a saved place
+  - paragraph: A quiet nudge, never more than once a day
+  - switch "When I'm near a saved place" [checked]
+  - paragraph: Sunday-evening week preview
+  - paragraph: Your week, matched with places you've saved
+  - switch "Sunday-evening week preview" [checked]
+  - paragraph: Monthly map recap
+  - paragraph: What you saved, visited and loved
+  - switch "Monthly map recap"
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_0hbgfhy9zy8jkvmpn3tsp8bgm1?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

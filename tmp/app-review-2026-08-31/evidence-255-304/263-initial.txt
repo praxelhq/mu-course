@@ -1,0 +1,22 @@
+- heading "EasyBill" [level=1]
+- paragraph: Smart GST Invoicing & Business Management
+- button "Sign In"
+- button "+ Register New Business"
+- heading "Merchant Mobile & Password Login" [level=2]
+- paragraph: Enter your registered mobile number and password to access your dashboard.
+- generic: Registered Mobile Number
+- generic: "+91"
+- generic: "|"
+- textbox "Registered Mobile Number":
+  - /placeholder: 98XXXXXXXX
+- generic: Password
+- textbox "Password":
+  - /placeholder: Enter your password
+- button:
+- checkbox "Remember on this device" [checked]
+- generic: Remember on this device
+- button "Sign In to Dashboard" [disabled]:
+  - generic: Sign In to Dashboard
+- paragraph:
+  - text: Don't have a registered account?
+  - button "Register New Business"

@@ -1,0 +1,56 @@
+- banner:
+  - button "Open menu":
+    - generic: menu
+  - heading "FREDWHO?" [level=1]
+  - button "Your profile":
+    - img "Your profile"
+- main:
+  - heading "🔥 YOUR MIX IS READY" [level=2]
+  - paragraph: Sonic Alchemy Complete.
+  - button "Play mix":
+    - generic: play_arrow
+  - generic: 0:00
+  - generic: Neon Alibi — SONG 1 (VOCALS)
+  - generic: 1:30
+  - heading "MIX STYLE" [level=3]
+  - button "waves SEAMLESS":
+    - generic: waves
+    - generic: SEAMLESS
+  - button "nightlife CLUB":
+    - generic: nightlife
+    - generic: CLUB
+  - button "mic_external_on VOCAL SWAP":
+    - generic: mic_external_on
+    - generic: VOCAL SWAP
+  - button "auto_awesome SURPRISE ME":
+    - generic: auto_awesome
+    - generic: SURPRISE ME
+  - button "VOCALS" [pressed]:
+    - generic: VOCALS
+  - button "BEAT" [pressed]:
+    - generic: BEAT
+  - generic: TRANSITION SMOOTHNESS
+  - generic: 85%
+  - slider "Transition smoothness": "85"
+- navigation:
+  - link "home_max HOME":
+    - /url: /
+    - generic: home_max
+    - generic: HOME
+  - link "auto_awesome MIX":
+    - /url: /mix
+    - generic: auto_awesome
+    - generic: MIX
+  - link "library_music LIBRARY":
+    - /url: /library
+    - generic: library_music
+    - generic: LIBRARY
+  - link "settings SETTINGS":
+    - /url: /settings
+    - generic: settings
+    - generic: SETTINGS
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_29v1m4ress91sba1hqg73sx9vq?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

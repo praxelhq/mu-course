@@ -1,0 +1,455 @@
+- banner:
+  - link "All artifacts":
+    - /url: /code/artifacts
+    - generic: 
+  - button "PlateBook":
+    - generic: PlateBook
+    - generic: 
+  - generic: Content is user-generated and unverified.
+  - button "You":
+    - group "You":
+      - img "Praxy": P
+  - button "Share":
+    - generic: Share
+  - status
+  - alert
+  - alert
+  - status
+- main:
+  - iframe [active] [id="frame-content"]:
+    - banner:
+      - generic: Recipes & weekly meal planning
+      - heading "PlateBook" [level=1]
+      - generic: Daily target
+      - spinbutton "Daily target": "2000"
+      - generic: kcal
+    - heading "Browse the thali" [level=2]
+    - generic: Home-style Indian recipes, tagged by region, diet and calories. Tap a day dot to drop a dish straight into this week's tiffin.
+    - textbox "Search dishes or ingredients…"
+    - button "All"
+    - button "Veg"
+    - button "Vegan"
+    - button "Non-Veg"
+    - button "All"
+    - button "Breakfast"
+    - button "Lunch"
+    - button "Dinner"
+    - button "Snack"
+    - button "Dessert"
+    - button "Side"
+    - button "All"
+    - button "North Indian"
+    - button "South Indian"
+    - button "West Indian"
+    - button "Hyderabadi"
+    - button "Pan-India"
+    - img "Masala Dosa"
+    - heading "Masala Dosa" [level=3]
+    - generic: Veg
+    - generic: South Indian
+    - generic: Breakfast
+    - generic: 25 min · serves 1
+    - generic: 350 kcal
+    - button "View recipe"
+    - button "Add to Mon": M
+    - button "Add to Tue": T
+    - button "Add to Wed": W
+    - button "Add to Thu": T
+    - button "Add to Fri": F
+    - button "Add to Sat": S
+    - button "Add to Sun": S
+    - img "Idli Sambar"
+    - heading "Idli Sambar" [level=3]
+    - generic: Veg
+    - generic: South Indian
+    - generic: Breakfast
+    - generic: 20 min · serves 2
+    - generic: 280 kcal
+    - button "View recipe"
+    - button "Add to Mon": M
+    - button "Add to Tue": T
+    - button "Add to Wed": W
+    - button "Add to Thu": T
+    - button "Add to Fri": F
+    - button "Add to Sat": S
+    - button "Add to Sun": S
+    - img "Poha"
+    - heading "Poha" [level=3]
+    - generic: Vegan
+    - generic: West Indian
+    - generic: Breakfast
+    - generic: 15 min · serves 2
+    - generic: 250 kcal
+    - button "View recipe"
+    - button "Add to Mon": M
+    - button "Add to Tue": T
+    - button "Add to Wed": W
+    - button "Add to Thu": T
+    - button "Add to Fri": F
+    - button "Add to Sat": S
+    - button "Add to Sun": S
+    - img "Upma"
+    - heading "Upma" [level=3]
+    - generic: Vegan
+    - generic: South Indian
+    - generic: Breakfast
+    - generic: 15 min · serves 2
+    - generic: 230 kcal
+    - button "View recipe"
+    - button "Add to Mon": M
+    - button "Add to Tue": T
+    - button "Add to Wed": W
+    - button "Add to Thu": T
+    - button "Add to Fri": F
+    - button "Add to Sat": S
+    - button "Add to Sun": S
+    - img "Aloo Paratha"
+    - heading "Aloo Paratha" [level=3]
+    - generic: Veg
+    - generic: North Indian
+    - generic: Breakfast
+    - generic: 30 min · serves 1
+    - generic: 400 kcal
+    - button "View recipe"
+    - button "Add to Mon": M
+    - button "Add to Tue": T
+    - button "Add to Wed": W
+    - button "Add to Thu": T
+    - button "Add to Fri": F
+    - button "Add to Sat": S
+    - button "Add to Sun": S
+    - img "Chole Bhature"
+    - heading "Chole Bhature" [level=3]
+    - generic: Veg
+    - generic: North Indian
+    - generic: Lunch
+    - generic: 45 min · serves 2
+    - generic: 650 kcal
+    - button "View recipe"
+    - button "Add to Mon": M
+    - button "Add to Tue": T
+    - button "Add to Wed": W
+    - button "Add to Thu": T
+    - button "Add to Fri": F
+    - button "Add to Sat": S
+    - button "Add to Sun": S
+    - img "Rajma Chawal"
+    - heading "Rajma Chawal" [level=3]
+    - generic: Veg
+    - generic: North Indian
+    - generic: Lunch
+    - generic: 50 min · serves 2
+    - generic: 550 kcal
+    - button "View recipe"
+    - button "Add to Mon": M
+    - button "Add to Tue": T
+    - button "Add to Wed": W
+    - button "Add to Thu": T
+    - button "Add to Fri": F
+    - button "Add to Sat": S
+    - button "Add to Sun": S
+    - img "Dal Makhani"
+    - heading "Dal Makhani" [level=3]
+    - generic: Veg
+    - generic: North Indian
+    - generic: Dinner
+    - generic: 60 min (plus soaking) · serves 3
+    - generic: 420 kcal
+    - button "View recipe"
+    - button "Add to Mon": M
+    - button "Add to Tue": T
+    - button "Add to Wed": W
+    - button "Add to Thu": T
+    - button "Add to Fri": F
+    - button "Add to Sat": S
+    - button "Add to Sun": S
+    - img "Paneer Butter Masala"
+    - heading "Paneer Butter Masala" [level=3]
+    - generic: Veg
+    - generic: North Indian
+    - generic: Dinner
+    - generic: 35 min · serves 3
+    - generic: 480 kcal
+    - button "View recipe"
+    - button "Add to Mon": M
+    - button "Add to Tue": T
+    - button "Add to Wed": W
+    - button "Add to Thu": T
+    - button "Add to Fri": F
+    - button "Add to Sat": S
+    - button "Add to Sun": S
+    - img "Palak Paneer"
+    - heading "Palak Paneer" [level=3]
+    - generic: Veg
+    - generic: North Indian
+    - generic: Dinner
+    - generic: 30 min · serves 3
+    - generic: 380 kcal
+    - button "View recipe"
+    - button "Add to Mon": M
+    - button "Add to Tue": T
+    - button "Add to Wed": W
+    - button "Add to Thu": T
+    - button "Add to Fri": F
+    - button "Add to Sat": S
+    - button "Add to Sun": S
+    - img "Butter Chicken"
+    - heading "Butter Chicken" [level=3]
+    - generic: Non-Veg
+    - generic: North Indian
+    - generic: Dinner
+    - generic: 50 min (plus marinating) · serves 3
+    - generic: 490 kcal
+    - button "View recipe"
+    - button "Add to Mon": M
+    - button "Add to Tue": T
+    - button "Add to Wed": W
+    - button "Add to Thu": T
+    - button "Add to Fri": F
+    - button "Add to Sat": S
+    - button "Add to Sun": S
+    - img "Chicken Biryani"
+    - heading "Chicken Biryani" [level=3]
+    - generic: Non-Veg
+    - generic: Hyderabadi
+    - generic: Lunch
+    - generic: 60 min · serves 2
+    - generic: 600 kcal
+    - button "View recipe"
+    - button "Add to Mon": M
+    - button "Add to Tue": T
+    - button "Add to Wed": W
+    - button "Add to Thu": T
+    - button "Add to Fri": F
+    - button "Add to Sat": S
+    - button "Add to Sun": S
+    - img "Kerala Fish Curry"
+    - heading "Kerala Fish Curry" [level=3]
+    - generic: Non-Veg
+    - generic: South Indian
+    - generic: Dinner
+    - generic: 35 min · serves 2
+    - generic: 350 kcal
+    - button "View recipe"
+    - button "Add to Mon": M
+    - button "Add to Tue": T
+    - button "Add to Wed": W
+    - button "Add to Thu": T
+    - button "Add to Fri": F
+    - button "Add to Sat": S
+    - button "Add to Sun": S
+    - img "Egg Curry"
+    - heading "Egg Curry" [level=3]
+    - generic: Non-Veg
+    - generic: North Indian
+    - generic: Dinner
+    - generic: 30 min · serves 2
+    - generic: 320 kcal
+    - button "View recipe"
+    - button "Add to Mon": M
+    - button "Add to Tue": T
+    - button "Add to Wed": W
+    - button "Add to Thu": T
+    - button "Add to Fri": F
+    - button "Add to Sat": S
+    - button "Add to Sun": S
+    - img "Chana Masala"
+    - heading "Chana Masala" [level=3]
+    - generic: Vegan
+    - generic: North Indian
+    - generic: Lunch
+    - generic: 35 min · serves 2
+    - generic: 340 kcal
+    - button "View recipe"
+    - button "Add to Mon": M
+    - button "Add to Tue": T
+    - button "Add to Wed": W
+    - button "Add to Thu": T
+    - button "Add to Fri": F
+    - button "Add to Sat": S
+    - button "Add to Sun": S
+    - img "Baingan Bharta"
+    - heading "Baingan Bharta" [level=3]
+    - generic: Vegan
+    - generic: North Indian
+    - generic: Dinner
+    - generic: 35 min · serves 2
+    - generic: 220 kcal
+    - button "View recipe"
+    - button "Add to Mon": M
+    - button "Add to Tue": T
+    - button "Add to Wed": W
+    - button "Add to Thu": T
+    - button "Add to Fri": F
+    - button "Add to Sat": S
+    - button "Add to Sun": S
+    - img "Vegetable Biryani"
+    - heading "Vegetable Biryani" [level=3]
+    - generic: Vegan
+    - generic: Hyderabadi
+    - generic: Lunch
+    - generic: 50 min · serves 2
+    - generic: 480 kcal
+    - button "View recipe"
+    - button "Add to Mon": M
+    - button "Add to Tue": T
+    - button "Add to Wed": W
+    - button "Add to Thu": T
+    - button "Add to Fri": F
+    - button "Add to Sat": S
+    - button "Add to Sun": S
+    - img "Jeera Rice"
+    - heading "Jeera Rice" [level=3]
+    - generic: Vegan
+    - generic: North Indian
+    - generic: Side
+    - generic: 20 min · serves 2
+    - generic: 210 kcal
+    - button "View recipe"
+    - button "Add to Mon": M
+    - button "Add to Tue": T
+    - button "Add to Wed": W
+    - button "Add to Thu": T
+    - button "Add to Fri": F
+    - button "Add to Sat": S
+    - button "Add to Sun": S
+    - img "Tandoori Roti"
+    - heading "Tandoori Roti" [level=3]
+    - generic: Vegan
+    - generic: North Indian
+    - generic: Side
+    - generic: 15 min (plus resting) · serves 1
+    - generic: 90 kcal
+    - button "View recipe"
+    - button "Add to Mon": M
+    - button "Add to Tue": T
+    - button "Add to Wed": W
+    - button "Add to Thu": T
+    - button "Add to Fri": F
+    - button "Add to Sat": S
+    - button "Add to Sun": S
+    - img "Masala Chai"
+    - heading "Masala Chai" [level=3]
+    - generic: Veg
+    - generic: Pan-India
+    - generic: Snack
+    - generic: 10 min · serves 1
+    - generic: 90 kcal
+    - button "View recipe"
+    - button "Add to Mon": M
+    - button "Add to Tue": T
+    - button "Add to Wed": W
+    - button "Add to Thu": T
+    - button "Add to Fri": F
+    - button "Add to Sat": S
+    - button "Add to Sun": S
+    - img "Samosa"
+    - heading "Samosa" [level=3]
+    - generic: Veg
+    - generic: North Indian
+    - generic: Snack
+    - generic: 45 min · serves 1
+    - generic: 260 kcal
+    - button "View recipe"
+    - button "Add to Mon": M
+    - button "Add to Tue": T
+    - button "Add to Wed": W
+    - button "Add to Thu": T
+    - button "Add to Fri": F
+    - button "Add to Sat": S
+    - button "Add to Sun": S
+    - img "Dhokla"
+    - heading "Dhokla" [level=3]
+    - generic: Vegan
+    - generic: West Indian
+    - generic: Snack
+    - generic: 25 min (plus fermenting) · serves 2
+    - generic: 160 kcal
+    - button "View recipe"
+    - button "Add to Mon": M
+    - button "Add to Tue": T
+    - button "Add to Wed": W
+    - button "Add to Thu": T
+    - button "Add to Fri": F
+    - button "Add to Sat": S
+    - button "Add to Sun": S
+    - img "Gulab Jamun"
+    - heading "Gulab Jamun" [level=3]
+    - generic: Veg
+    - generic: Pan-India
+    - generic: Dessert
+    - generic: 30 min · serves 1
+    - generic: 300 kcal
+    - button "View recipe"
+    - button "Add to Mon": M
+    - button "Add to Tue": T
+    - button "Add to Wed": W
+    - button "Add to Thu": T
+    - button "Add to Fri": F
+    - button "Add to Sat": S
+    - button "Add to Sun": S
+    - img "Kheer"
+    - heading "Kheer" [level=3]
+    - generic: Veg
+    - generic: Pan-India
+    - generic: Dessert
+    - generic: 40 min · serves 2
+    - generic: 250 kcal
+    - button "View recipe"
+    - button "Add to Mon": M
+    - button "Add to Tue": T
+    - button "Add to Wed": W
+    - button "Add to Thu": T
+    - button "Add to Fri": F
+    - button "Add to Sat": S
+    - button "Add to Sun": S
+    - img "Cucumber Raita"
+    - heading "Cucumber Raita" [level=3]
+    - generic: Veg
+    - generic: Pan-India
+    - generic: Side
+    - generic: 10 min · serves 2
+    - generic: 80 kcal
+    - button "View recipe"
+    - button "Add to Mon": M
+    - button "Add to Tue": T
+    - button "Add to Wed": W
+    - button "Add to Thu": T
+    - button "Add to Fri": F
+    - button "Add to Sat": S
+    - button "Add to Sun": S
+    - heading "This week's tiffin" [level=2]
+    - generic: Each tin fills as you add meals — it turns terracotta-red if a day runs past your target.
+    - generic: Mon
+    - generic: 0/2000
+    - generic: empty tin
+    - generic: Tue
+    - generic: 0/2000
+    - generic: empty tin
+    - generic: Wed
+    - generic: 0/2000
+    - generic: empty tin
+    - generic: Thu
+    - generic: 0/2000
+    - generic: empty tin
+    - generic: Fri
+    - generic: 0/2000
+    - generic: empty tin
+    - generic: Sat
+    - generic: 0/2000
+    - generic: empty tin
+    - generic: Sun
+    - generic: 0/2000
+    - generic: empty tin
+    - heading "Grocery list" [level=2]
+    - generic: Auto-built from everything sitting in this week's tiffin.
+    - generic: Grocery List
+    - generic: Add a few dishes to your tiffin and the shopping list builds itself.
+    - button "Clear checked items"
+    - button "Empty the whole week"
+    - generic: Ingredient lines are grouped by recipe. If a dish is planned more than once, the multiplier shows how many times to shop for it.
+    - generic "Photo credits"
+    - generic: PlateBook · an independent recipe & planning tool, not affiliated with any other meal-planning service.
+- status
+- status
+- status

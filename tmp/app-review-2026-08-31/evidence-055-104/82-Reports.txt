@@ -1,0 +1,189 @@
+- complementary:
+  - link "FactoryFlow AI Shreeji Precision Works":
+    - /url: /
+    - paragraph: FactoryFlow AI
+    - paragraph: Shreeji Precision Works
+  - navigation:
+    - paragraph: Shop floor
+    - link "Dashboard":
+      - /url: /
+      - text: Dashboard
+    - link "Production":
+      - /url: /production
+      - text: Production
+    - link "Customer Schedule":
+      - /url: /schedule
+      - text: Customer Schedule
+    - link "Machines":
+      - /url: /machines
+      - text: Machines
+    - link "Downtime":
+      - /url: /downtime
+      - text: Downtime
+    - link "Maintenance":
+      - /url: /maintenance
+      - text: Maintenance
+    - link "Quality":
+      - /url: /quality
+      - text: Quality
+    - link "Job Work":
+      - /url: /job-work
+      - text: Job Work
+    - link "Inventory":
+      - /url: /inventory
+      - text: Inventory
+    - paragraph: Money
+    - link "Sales & Receivables":
+      - /url: /sales
+      - text: Sales & Receivables
+    - link "Purchase & Payables":
+      - /url: /purchase
+      - text: Purchase & Payables
+    - link "Cash View":
+      - /url: /cash
+      - text: Cash View
+    - link "Compliance":
+      - /url: /compliance
+      - text: Compliance
+    - paragraph: Run the business
+    - link "Tasks":
+      - /url: /tasks
+      - text: Tasks
+    - link "Analytics":
+      - /url: /analytics
+      - text: Analytics
+    - link "Reports" [active]:
+      - /url: /reports
+      - text: Reports
+    - link "AI Assistant":
+      - /url: /assistant
+      - text: AI Assistant
+    - link "Integrations":
+      - /url: /integrations
+      - text: Integrations
+    - link "Settings":
+      - /url: /settings
+      - text: Settings
+  - link "RK Rajesh Kulkarni Works Manager":
+    - /url: /profile
+    - generic: RK
+    - generic: Rajesh Kulkarni
+    - generic: Works Manager
+  - link "Pricing & product page →":
+    - /url: /welcome
+- banner:
+  - textbox "Search part, challan, invoice, heat number…"
+  - button "English"
+  - button "हिंदी"
+  - button "मराठी"
+  - generic "All entries synced":
+    - text: Online
+  - button "Toggle dark mode":
+  - link "Notifications":
+    - /url: /notifications
+    - generic: "4"
+  - link "Ask AI":
+    - /url: /assistant
+    - generic: Ask AI
+- main:
+  - navigation:
+    - link "FactoryFlow":
+      - /url: /
+    - generic: Reports
+  - heading "Reports" [level=1]
+  - paragraph: Export operating data between 25-07-2026 and 24-08-2026.
+  - heading "Report period" [level=2]
+  - text: From
+  - textbox "From": 2026-07-25
+  - text: To
+  - textbox "To": 2026-08-24
+  - paragraph: OEE
+  - paragraph: 72.8%
+  - paragraph: Attainment
+  - paragraph: 83.6%
+  - paragraph: Downtime
+  - paragraph: 320m
+  - paragraph: Defect rate
+  - paragraph: 0.61%
+  - article:
+    - heading "Production performance" [level=3]
+    - paragraph: Output vs target, attainment and scrap by line and shift.
+    - paragraph: 120 records available
+    - button "CSV":
+      - text: CSV
+    - button "Print":
+      - text: Print
+  - article:
+    - heading "Downtime & losses" [level=3]
+    - paragraph: Every downtime event with category, duration and root cause.
+    - paragraph: 60 records available
+    - button "CSV":
+      - text: CSV
+    - button "Print":
+      - text: Print
+  - article:
+    - heading "Quality inspections" [level=3]
+    - paragraph: Inspection results, defect types and disposition.
+    - paragraph: 90 records available
+    - button "CSV":
+      - text: CSV
+    - button "Print":
+      - text: Print
+  - article:
+    - heading "Maintenance work orders" [level=3]
+    - paragraph: Planned, completed and overdue work orders with technician.
+    - paragraph: 48 records available
+    - button "CSV":
+      - text: CSV
+    - button "Print":
+      - text: Print
+  - article:
+    - heading "Inventory position" [level=3]
+    - paragraph: Stock on hand, reorder levels and supplier coverage.
+    - paragraph: 18 records available
+    - button "CSV":
+      - text: CSV
+    - button "Print":
+      - text: Print
+  - heading "Scheduled distributions" [level=2]
+  - table:
+    - rowgroup:
+      - row "Report Cadence Recipient group Status":
+        - columnheader "Report"
+        - columnheader "Cadence"
+        - columnheader "Recipient group"
+        - columnheader "Status"
+    - rowgroup:
+      - row "Daily shift summary Daily · 06:15 Operations Active":
+        - cell "Daily shift summary"
+        - cell "Daily · 06:15"
+        - cell "Operations"
+        - cell "Active":
+          - generic: Active
+      - row "Weekly OEE review pack Mon · 07:00 Plant leadership Active":
+        - cell "Weekly OEE review pack"
+        - cell "Mon · 07:00"
+        - cell "Plant leadership"
+        - cell "Active":
+          - generic: Active
+      - row "Monthly quality scorecard 1st · 08:00 Quality Active":
+        - cell "Monthly quality scorecard"
+        - cell "1st · 08:00"
+        - cell "Quality"
+        - cell "Active":
+          - generic: Active
+      - row "Maintenance compliance audit Fri · 16:00 Reliability Paused":
+        - cell "Maintenance compliance audit"
+        - cell "Fri · 16:00"
+        - cell "Reliability"
+        - cell "Paused":
+          - generic: Paused
+- button "Quick Log":
+  - text: Quick Log
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_10hdg7xyw99tpa64t0nz744v7b?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: "6000"

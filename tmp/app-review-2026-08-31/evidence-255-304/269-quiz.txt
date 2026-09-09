@@ -1,0 +1,18 @@
+- main:
+  - button "← All courses"
+  - heading "Managerial Economics" [level=1]
+  - paragraph: Difficulty
+  - button "easy": easy
+  - button "medium": medium
+  - button "hard": hard
+  - paragraph: Number of questions
+  - button "5"
+  - button "10"
+  - button "20"
+  - paragraph: Pick a difficulty to see the pool size.
+  - button "Start Quiz" [disabled]
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3emy74pebk9c4scxsw6xmv6sy6?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

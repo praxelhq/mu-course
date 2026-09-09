@@ -1,0 +1,194 @@
+- banner:
+  - generic: A
+  - generic: AgencyOS
+  - button "Founder":
+    - generic: Founder
+  - button "Search clients, tasks, files... ⌘K":
+    - generic: Search clients, tasks, files...
+    - generic: ⌘K
+  - button "2":
+    - generic: "2"
+  - generic: F
+- generic: Agency Workflow
+- button "1 Lead":
+  - generic: "1"
+  - generic: Lead
+- button "2 Proposal":
+  - generic: "2"
+  - generic: Proposal
+- button "3 Client Onboarding":
+  - generic: "3"
+  - generic: Client Onboarding
+- button "4 Brand Details":
+  - generic: "4"
+  - generic: Brand Details
+- button "5 Brand Brief":
+  - generic: "5"
+  - generic: Brand Brief
+- button "6 Upload Brand Assets":
+  - generic: "6"
+  - generic: Upload Brand Assets
+- button "7 Generate Monthly Content Calendar":
+  - generic: "7"
+  - generic: Generate Monthly Content Calendar
+- button "8 Assign Tasks":
+  - generic: "8"
+  - generic: Assign Tasks
+- button "9 Plan Shoot":
+  - generic: "9"
+  - generic: Plan Shoot
+- button "10 Conduct Shoot":
+  - generic: "10"
+  - generic: Conduct Shoot
+- button "11 Upload Raw Files":
+  - generic: "11"
+  - generic: Upload Raw Files
+- button "12 Video Editing":
+  - generic: "12"
+  - generic: Video Editing
+- button "13 Graphic Design":
+  - generic: "13"
+  - generic: Graphic Design
+- button "14 Internal Review":
+  - generic: "14"
+  - generic: Internal Review
+- button "15 Client Approval":
+  - generic: "15"
+  - generic: Client Approval
+- button "16 Revision":
+  - generic: "16"
+  - generic: Revision
+- button "17 Schedule Content":
+  - generic: "17"
+  - generic: Schedule Content
+- button "18 Publish":
+  - generic: "18"
+  - generic: Publish
+- button "19 View Analytics":
+  - generic: "19"
+  - generic: View Analytics
+- button "20 Generate Monthly Report":
+  - generic: "20"
+  - generic: Generate Monthly Report
+- button "21 Send Invoice":
+  - generic: "21"
+  - generic: Send Invoice
+- button "22 Renew Contract":
+  - generic: "22"
+  - generic: Renew Contract
+- complementary:
+  - generic: Agency Modules
+  - navigation:
+    - button "Dashboard":
+      - generic: Dashboard
+    - button "CRM":
+      - generic: CRM
+    - button "Clients":
+      - generic: Clients
+    - button "Workflow":
+      - generic: Workflow
+    - button "Calendar":
+      - generic: Calendar
+    - button "Shoots":
+      - generic: Shoots
+    - button "Tasks":
+      - generic: Tasks
+    - button "Team":
+      - generic: Team
+    - button "Google Suite" [active]:
+      - generic: Google Suite
+    - button "Reports":
+      - generic: Reports
+    - button "Finance":
+      - generic: Finance
+    - button "Files":
+      - generic: Files
+    - button "AI Studio Pro":
+      - generic: AI Studio
+      - generic: Pro
+    - button "Alerts":
+      - generic: Alerts
+    - button "Settings":
+      - generic: Settings
+- main:
+  - heading "Google Workspace Suite" [level=1]:
+    - text: Google Workspace Suite
+  - paragraph: Seamless Google Sheets, Drive, Gmail, Calendar, and Google Meet integration for your content agency
+  - button "Sign in with Google":
+    - generic: Sign in with Google
+  - button "Google Sheets":
+    - text: Google Sheets
+  - button "Google Drive":
+    - text: Google Drive
+  - button "Gmail":
+    - text: Gmail
+  - button "Calendar":
+    - text: Calendar
+  - button "Google Meet":
+    - text: Google Meet
+  - heading "Agency Spreadsheet Sync & Exporter" [level=2]:
+    - text: Agency Spreadsheet Sync & Exporter
+  - paragraph: Automatically export client deliverables, shoot schedules, and CRM data into Google Sheets
+  - button "Create New Google Sheet" [disabled]:
+    - text: Create New Google Sheet
+  - paragraph: Please sign in with Google above to export client data directly to Google Sheets with your permission.
+  - heading "Active Deliverables Ready for Spreadsheet Export (7 items)" [level=3]
+  - table:
+    - rowgroup:
+      - row "Client Deliverable Title Platform Stage Assignee Due Date":
+        - columnheader "Client"
+        - columnheader "Deliverable Title"
+        - columnheader "Platform"
+        - columnheader "Stage"
+        - columnheader "Assignee"
+        - columnheader "Due Date"
+    - rowgroup:
+      - row "Aura Fitness 5 Warm-up Mistakes Ruining Your Squat Depth Instagram Reel Script Alex Rivera 2026-10-28":
+        - cell "Aura Fitness"
+        - cell "5 Warm-up Mistakes Ruining Your Squat Depth"
+        - cell "Instagram Reel"
+        - cell "Script"
+        - cell "Alex Rivera"
+        - cell "2026-10-28"
+      - row "Aura Fitness Member Transformation - 90 Days Case Study Instagram Reel Editing David Chen 2026-10-29":
+        - cell "Aura Fitness"
+        - cell "Member Transformation - 90 Days Case Study"
+        - cell "Instagram Reel"
+        - cell "Editing"
+        - cell "David Chen"
+        - cell "2026-10-29"
+      - row "NeoFin App Automated Portfolio Rebalancing in 30 Secs TikTok Client Review Sarah Jenkins 2026-10-26":
+        - cell "NeoFin App"
+        - cell "Automated Portfolio Rebalancing in 30 Secs"
+        - cell "TikTok"
+        - cell "Client Review"
+        - cell "Sarah Jenkins"
+        - cell "2026-10-26"
+      - row "NeoFin App 5 Micro-Habits for Financial Freedom in 2026 LinkedIn Carousel Approved Elena Rostova 2026-10-30":
+        - cell "NeoFin App"
+        - cell "5 Micro-Habits for Financial Freedom in 2026"
+        - cell "LinkedIn Carousel"
+        - cell "Approved"
+        - cell "Elena Rostova"
+        - cell "2026-10-30"
+      - row "Aura Fitness High Protein Post-Workout Smoothie Recipe YouTube Shorts Published Marcus Vance 2026-10-20":
+        - cell "Aura Fitness"
+        - cell "High Protein Post-Workout Smoothie Recipe"
+        - cell "YouTube Shorts"
+        - cell "Published"
+        - cell "Marcus Vance"
+        - cell "2026-10-20"
+      - 'row "Aura Fitness HIIT vs Strength: What Burns More Calories? Instagram Reel Shoot Scheduled Jake Miller 2026-11-01"':
+        - cell "Aura Fitness"
+        - 'cell "HIIT vs Strength: What Burns More Calories?"'
+        - cell "Instagram Reel"
+        - cell "Shoot Scheduled"
+        - cell "Jake Miller"
+        - cell "2026-11-01"
+      - row "NeoFin App Why Traditional Banks Are Losing Gen Z Ad Campaign Research Alex Rivera 2026-11-05":
+        - cell "NeoFin App"
+        - cell "Why Traditional Banks Are Losing Gen Z"
+        - cell "Ad Campaign"
+        - cell "Research"
+        - cell "Alex Rivera"
+        - cell "2026-11-05"

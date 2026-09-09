@@ -1,0 +1,115 @@
+- region "Notifications (F8)":
+  - list
+- region "Notifications alt+T"
+- complementary:
+  - generic: InfluencerOS
+  - navigation:
+    - link "Dashboard":
+      - /url: /
+      - generic: Dashboard
+    - link "Campaigns":
+      - /url: /campaigns
+      - generic: Campaigns
+    - link "AI Campaign Planner":
+      - /url: /ai-planner
+      - generic: AI Campaign Planner
+    - link "Creators":
+      - /url: /creators
+      - generic: Creators
+    - link "Content Approval":
+      - /url: /content-approval
+      - generic: Content Approval
+    - link "Performance & ROI":
+      - /url: /performance
+      - generic: Performance & ROI
+    - link "Payments & Ledger":
+      - /url: /payments
+      - generic: Payments & Ledger
+    - link "Assets & Logistics":
+      - /url: /assets
+      - generic: Assets & Logistics
+    - link "Settings":
+      - /url: /settings
+      - generic: Settings
+  - button "Collapse":
+    - generic: Collapse
+- banner:
+  - textbox "Search campaigns, creators, content..."
+  - button "3":
+    - generic: "3"
+  - button "M MamaEarth":
+    - generic: M
+    - generic: MamaEarth
+  - button "Arun Kumar Marketing Manager":
+    - paragraph: Arun Kumar
+    - paragraph: Marketing Manager
+- main:
+  - heading "AI Campaign Planner" [level=1]
+  - paragraph: Let AI design your influencer campaign strategy
+  - text: Product / Feature Name
+  - textbox "Product / Feature Name":
+    - /placeholder: e.g., Vitamin C Serum, Onion Hair Oil
+    - text: Campus study planner
+  - text: Campaign Objective
+  - combobox:
+    - generic: Select objective
+  - text: Target Age Range
+  - combobox:
+    - generic: Select age
+  - text: Target Cities
+  - textbox "Target Cities":
+    - /placeholder: e.g., Mumbai, Delhi, Bangalore
+    - text: Delhi
+  - text: Target Interests
+  - textbox "Target Interests":
+    - /placeholder: e.g., Skincare, Natural products, Organic beauty, Parenting
+    - text: Study routines, university productivity
+  - generic: Platform Preference
+  - checkbox "Instagram"
+  - generic: Instagram
+  - checkbox "YouTube"
+  - generic: YouTube
+  - checkbox "LinkedIn"
+  - generic: LinkedIn
+  - text: Budget Min (₹)
+  - spinbutton "Budget Min (₹)": "1000"
+  - text: Budget Max (₹)
+  - spinbutton "Budget Max (₹)": "2000"
+  - text: Campaign Duration (days)
+  - spinbutton "Campaign Duration (days)"
+  - button "Generate AI Campaign Plan":
+    - text: Generate AI Campaign Plan
+  - heading "Campaign Theme Ideas" [level=3]
+  - generic: Summer Glow Routine
+  - generic: Natural Beauty Challenge
+  - generic: "#CleanBeautyIndia Movement"
+  - generic: Morning to Night Skincare Journey
+  - heading "Suggested Content Formats" [level=3]
+  - list:
+    - text: Instagram Reels (60s tutorials)
+    - text: YouTube Shorts (Before/After reveals)
+    - text: Instagram Stories (Daily usage updates)
+    - text: Carousel Posts (Product benefits breakdown)
+  - paragraph: "Posting frequency: 3 posts per week per creator, staggered across 4 weeks"
+  - heading "Ideal Creator Categories" [level=3]
+  - generic: Mom Bloggers & Parenting Influencers
+  - generic: Dermatologists & Skin Experts
+  - generic: Beauty & Skincare Enthusiasts
+  - generic: Lifestyle & Wellness Creators
+  - paragraph: "15"
+  - paragraph: Micro Creators
+  - paragraph: "5"
+  - paragraph: Macro Creators
+  - heading "Estimated Performance" [level=3]
+  - paragraph: Estimated Reach
+  - paragraph: 8.5M - 12M impressions
+  - paragraph: Estimated CPM
+  - paragraph: ₹45 - ₹65
+  - button "Create Campaign"
+  - button "View Suggested Creators"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_05t71mwv1r9qb9tdwk5a0m9t2d?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: ₹0.0L

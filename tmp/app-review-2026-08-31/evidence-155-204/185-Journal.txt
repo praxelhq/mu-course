@@ -1,0 +1,48 @@
+- banner:
+  - link "🫧 Unmute Your campus safe space":
+    - /url: /
+    - generic: 🫧
+    - generic: Unmute
+    - generic: Your campus safe space
+  - navigation:
+    - link "Home":
+      - /url: /
+    - link "Check-In":
+      - /url: /check-in
+    - link "Circles":
+      - /url: /circles
+    - link "Journal" [active]:
+      - /url: /journal
+    - link "My Week":
+      - /url: /my-week
+  - link "Support":
+    - /url: /support
+  - button "Settings":
+- main:
+  - button "Back":
+    - text: Back
+  - heading "📓Mind Dump" [level=1]
+  - paragraph: One prompt, a few honest lines. That's the whole ritual.
+  - text: Private to this device
+  - paragraph: Today's prompt
+  - button "What took up most of your mental space today?"
+  - button "What would you tell a friend feeling the way you do?"
+  - button "What's one thing that went okay today, even slightly?"
+  - button "What are you carrying that isn't actually yours?"
+  - button "What would make tomorrow 5% lighter?"
+  - paragraph: What took up most of your mental space today?
+  - textbox "Start anywhere…"
+  - button "Save entry" [disabled]
+  - paragraph: Write something to save.
+  - heading "Your entries" [level=2]
+  - article:
+    - paragraph: 31 Aug, 01:49
+    - paragraph: What took up most of your mental space today?
+    - button "Delete entry":
+    - paragraph: "Synthetic review entry: a fictional student finished a practice puzzle."
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_20xxzq25ry9jr81pbw93zjh93j?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

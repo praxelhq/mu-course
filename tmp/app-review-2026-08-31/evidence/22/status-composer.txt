@@ -1,0 +1,107 @@
+- region "Notifications alt+T"
+- banner:
+  - generic: 🏘️
+  - generic: Tinytown
+  - button:
+    - generic: You
+- button:
+  - text: What are you up to?
+- main:
+  - generic: Gurgaon · Sector 32
+  - generic: press & hold anywhere to walk
+  - button:
+    - generic: Arjun
+  - button:
+    - generic: 🏸
+    - generic: Gym
+  - generic: You
+  - button:
+    - generic: 🎶
+    - generic: On The Go
+  - button:
+    - generic: Pradyun
+  - button:
+    - generic: ☕
+    - generic: Blue Tokai
+  - button:
+    - generic: Mira
+  - button:
+    - generic: 🍜
+    - generic: Bademiya
+  - button:
+    - generic: Zara
+  - button:
+    - generic: Lulu
+  - button:
+    - generic: Theo
+- button:
+  - text: Drop a status
+- complementary:
+  - link:
+    - /url: https://lovable.dev/projects/lovp_0jezrjxvfb9c49h2haxy055axv?utm_source=lovable-badge
+    - generic: Edit with
+  - button:
+- dialog "What are you up to?":
+  - button "Close" [active]:
+    - generic: Close
+  - heading "What are you up to?" [level=2]
+  - paragraph: Auto-detect from location
+  - paragraph: Coming soon · privacy-first, off by default
+  - switch [disabled]
+  - paragraph:
+    - text: What you're doing
+  - button "☕ At a café":
+    - generic: ☕
+    - generic: At a café
+  - button "🎬 Watching a movie":
+    - generic: 🎬
+    - generic: Watching a movie
+  - button "💪 At the gym":
+    - generic: 💪
+    - generic: At the gym
+  - button "🏸 Playing badminton":
+    - generic: 🏸
+    - generic: Playing badminton
+  - button "🏖️ At the beach":
+    - generic: 🏖️
+    - generic: At the beach
+  - button "🌳 Out for a walk":
+    - generic: 🌳
+    - generic: Out for a walk
+  - button "🏠 Chilling at home":
+    - generic: 🏠
+    - generic: Chilling at home
+  - button "🍜 Grabbing food":
+    - generic: 🍜
+    - generic: Grabbing food
+  - button "🎶 At a gig":
+    - generic: 🎶
+    - generic: At a gig
+  - paragraph:
+    - text: Where on the map
+  - button "CDS":
+    - generic: CDS
+  - button "Cyber Park":
+    - generic: Cyber Park
+  - button "Momos":
+    - generic: Momos
+  - button "Flock":
+    - generic: Flock
+  - button "Brickspace":
+    - generic: Brickspace
+  - button "Blue Tokai":
+    - generic: Blue Tokai
+  - button "Ambience Mall":
+    - generic: Ambience Mall
+  - button "Shiprocket":
+    - generic: Shiprocket
+  - textbox "…or type somewhere else"
+  - paragraph:
+    - text: With (optional)
+  - button "Mira"
+  - button "Pradyun"
+  - button "Zara"
+  - button "Theo"
+  - button "Lulu"
+  - button "Arjun"
+  - button "Drop pin"

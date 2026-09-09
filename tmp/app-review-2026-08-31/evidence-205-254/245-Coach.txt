@@ -1,0 +1,56 @@
+- banner:
+  - heading "Your AI coach" [level=1]
+  - paragraph: Updated a few minutes ago
+  - link "Notifications":
+    - /url: /notifications
+- main:
+  - paragraph: Today's read
+  - paragraph: Vegetarian · Stay healthy · ₹150/day
+  - paragraph: You've had 1170 kcal and 39 g protein so far, with a nutrition score of 56. Your protein and fiber are the two levers worth pulling before bed. We're skipping anything with peanuts.
+  - button "Refresh":
+    - text: Refresh
+  - link "Eat now":
+    - /url: /what-to-eat
+    - text: Eat now
+  - heading "Recommendations" [level=2]
+  - generic: 🥛
+  - text: Protein gap
+  - paragraph: You're 38 g short on protein today
+  - paragraph: Add 200 g curd with your dinner and a boiled-egg or soya-chunk side. That's ~28 g protein for under ₹60.
+  - generic: 💸
+  - text: Budget smart
+  - paragraph: Cheapest protein in your mess this week
+  - paragraph: Rajma, chana and sprouts are on the Wed/Fri menu — take a double serving instead of extra rice.
+  - generic: 💧
+  - text: Hydration
+  - paragraph: Water intake dipped 3 days in a row
+  - paragraph: Keep a 1 L bottle on your study desk and refill twice. We'll nudge you at 11:00 and 16:00.
+  - generic: 🌙
+  - text: Late-night fix
+  - paragraph: Swap 11 pm maggi for this
+  - paragraph: Oats upma with veggies takes 6 minutes on a kettle and cuts 190 kcal of refined carbs.
+  - paragraph: How this works
+  - paragraph: This demo generates advice from predefined scenarios matched to your profile. Real AI coaching can be plugged in later without changing these screens.
+- navigation:
+  - list:
+    - link "Home":
+      - /url: /home
+      - generic: Home
+    - link "Log":
+      - /url: /log
+      - generic: Log
+    - link "Scan":
+      - /url: /scan
+      - generic: Scan
+    - link "Coach":
+      - /url: /recommendations
+      - generic: Coach
+    - link "Profile":
+      - /url: /profile
+      - generic: Profile
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_25aah1gfmf84ysf426ybmhv3p7?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

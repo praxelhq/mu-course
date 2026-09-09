@@ -1,0 +1,93 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_2508pma1408fprpsgtjtp8pqee?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- banner:
+  - link "SolarCare":
+    - /url: /
+  - link "Back to plans":
+    - /url: /
+    - generic: arrow_back
+    - text: Back to plans
+- main:
+  - heading "Secure Auto-Pay Checkout" [level=1]
+  - paragraph: Confirm your details and activate your Monthly protection plan.
+  - heading "Customer details" [level=2]
+  - generic: Full Name
+  - textbox "Full Name":
+    - /placeholder: Rahul Sharma
+  - generic: Email Address
+  - textbox "Email Address":
+    - /placeholder: rahul@gmail.com
+  - generic: Phone Number
+  - textbox "Phone Number":
+    - /placeholder: +91 98765 43210
+  - generic: System Size (Panels)
+  - combobox "System Size (Panels)":
+    - option "1-10 Panels" [selected]
+    - option "11-25 Panels"
+    - option "26-50 Panels"
+    - option "50+ Panels / Commercial"
+  - heading "Service address" [level=2]
+  - generic: Address
+  - textbox "Address":
+    - /placeholder: Flat 402, Green Residency, MG Road
+  - generic: City
+  - textbox "City":
+    - /placeholder: Bengaluru
+  - generic: State
+  - textbox "State":
+    - /placeholder: Karnataka
+  - generic: PIN Code
+  - textbox "PIN Code":
+    - /placeholder: "560001"
+  - generic: Preferred Start Date
+  - textbox "Preferred Start Date"
+  - heading "Auto-pay method" [level=2]
+  - button "UPI AutoPay":
+    - generic: account_balance_wallet
+    - text: UPI AutoPay
+  - button "Card" [active]:
+    - generic: credit_card
+    - text: Card
+  - button "Net Banking e-Mandate":
+    - generic: account_balance
+    - text: Net Banking e-Mandate
+  - generic: Card Number
+  - textbox "Card Number":
+    - /placeholder: 4242 4242 4242 4242
+  - generic: Expiry
+  - textbox "Expiry":
+    - /placeholder: MM/YY
+  - generic: CVV
+  - textbox "CVV":
+    - /placeholder: "123"
+  - generic: Name on Card
+  - textbox "Name on Card":
+    - /placeholder: Rahul Sharma
+  - checkbox "I authorise SolarCare to auto-debit ₹8,148 every year until I cancel."
+  - generic: I authorise SolarCare to auto-debit ₹8,148 every year until I cancel.
+  - button "Pay ₹8,148 & Activate Auto-Pay"
+  - paragraph: Cancel anytime. Secure 256-bit encrypted mandate.
+  - complementary:
+    - heading "Order summary" [level=2]
+    - generic: Monthly Plan
+    - generic: Billed yearly
+    - list:
+      - generic: check_circle
+      - text: 12 Cleans / Year
+      - generic: check_circle
+      - text: Annual Tech Inspection
+      - generic: check_circle
+      - text: Standard Reporting
+    - generic: Plan price
+    - generic: ₹799/mo
+    - generic: 15% launch discount (first 100)
+    - generic: "-₹120/mo"
+    - generic: Due today
+    - generic: ₹8,148
+    - paragraph: Then ₹8,148 yearly on auto-pay.
+    - link "Not sure? Build a custom plan":
+      - /url: /#book
+- region "Notifications alt+T"

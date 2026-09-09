@@ -1,0 +1,31 @@
+- banner:
+  - link "Who's That Pokémon?":
+    - /url: /
+  - navigation:
+    - link "How to Play":
+      - /url: /how-to-play
+- main:
+  - heading "How to Play" [level=1]
+  - heading "Search & guess" [level=2]
+  - paragraph: A random Pokémon is hiding. Search for any Pokémon by name and submit it as your guess — there is no guess limit.
+  - heading "Green means exact" [level=2]
+  - paragraph: A green cell with a check means that attribute matches the hidden Pokémon exactly.
+  - heading "Red means no" [level=2]
+  - paragraph: A red cell with a cross means that attribute does not match.
+  - heading "↑ aim higher" [level=2]
+  - paragraph: "For numbers (Pokédex #, Stage, Height, Weight, BST), an up arrow means the answer is higher than your guess."
+  - heading "↓ aim lower" [level=2]
+  - paragraph: A down arrow means the answer is lower than your guess.
+  - heading "Types are positional" [level=2]
+  - paragraph: Type 1 is only compared with Type 1, and Type 2 with Type 2. A Fire/Flying guess against a Flying/Fire answer scores red on both — order matters! Single-type Pokémon show None as Type 2.
+  - heading "Keep going" [level=2]
+  - paragraph: Keep guessing until you solve it — or hit Give Up to reveal the answer. Every round draws from a shuffled bag of all 1025 Pokémon, so you'll see them all before any repeats.
+  - link "Play":
+    - /url: /play
+    - text: Play
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_59tfn1avss8838j0sc7zgrd0e7?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

@@ -1,0 +1,23 @@
+- main:
+  - button:
+  - generic: Question 1 of 4
+  - heading "When are you planning to travel?" [level=2]
+  - paragraph: "Destination: Manali"
+  - button "This weekend" [active]:
+    - generic: This weekend
+  - button "Next weekend":
+    - generic: Next weekend
+  - button "Custom dates":
+    - generic: Custom dates
+  - button "Continue":
+    - generic: Continue
+- button "Open Concierge":
+- navigation:
+  - button "Home":
+    - generic: Home
+  - button "Plan":
+    - generic: Plan
+  - button "Trips":
+    - generic: Trips
+  - button "Profile":
+    - generic: Profile

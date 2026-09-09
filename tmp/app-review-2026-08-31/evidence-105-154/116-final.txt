@@ -1,0 +1,62 @@
+- banner:
+  - img "Atomic logo"
+  - generic: Today
+  - generic: person
+- main:
+  - img "AI coach avatar"
+  - paragraph: "\"I'm your Architect. Let's start with your identity.\""
+  - heading "Who do you want to become?" [level=1]
+  - paragraph: Select the identities you want to build habits for.
+  - button "directions_run Athlete":
+    - generic: directions_run
+    - generic: Athlete
+  - button "school Student":
+    - generic: school
+    - generic: Student
+  - button "palette Creator":
+    - generic: palette
+    - generic: Creator
+  - button "lightbulb Entrepreneur":
+    - generic: lightbulb
+    - generic: Entrepreneur
+  - button "favorite Healthy Person":
+    - generic: favorite
+    - generic: Healthy Person
+  - button "music_note Musician":
+    - generic: music_note
+    - generic: Musician
+  - button "work Professional":
+    - generic: work
+    - generic: Professional
+  - textbox "Or type a custom identity..."
+  - button "Add custom identity":
+    - generic: add
+  - button "Continue arrow_forward":
+    - generic: Continue
+    - generic: arrow_forward
+- navigation:
+  - link "home Today":
+    - /url: /identity
+    - generic: home
+    - generic: Today
+  - link "terrain Journey":
+    - /url: /identity
+    - generic: terrain
+    - generic: Journey
+  - link "repeat Habits":
+    - /url: /identity
+    - generic: repeat
+    - generic: Habits
+  - link "auto_awesome Insights":
+    - /url: /identity
+    - generic: auto_awesome
+    - generic: Insights
+  - link "account_circle You":
+    - /url: /you
+    - generic: account_circle
+    - generic: You
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1pz9837hsz8fqvj356sgb0xc2y?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

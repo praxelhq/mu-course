@@ -1,0 +1,295 @@
+- banner:
+  - link "Aadi Expenses home":
+    - /url: /
+    - generic: Aadi Expenses
+  - navigation "Guide navigation":
+    - link "Android app":
+      - /url: /#sms-demo
+    - link "Online version":
+      - /url: /#tracker
+    - link "Download Word guide":
+      - /url: /downloads/Aadi_Expenses_Product_and_Technical_Guide.docx
+    - link "Use online":
+      - /url: /#tracker
+- main:
+  - generic: Product & technical guide · v1.0.0
+  - heading "How Aadi Expenses turns payments into reminders." [level=1]:
+    - text: How Aadi Expenses
+    - emphasis: turns payments into reminders.
+  - paragraph: A plain-language explanation of the Android capture workflow, Google Sheets integration, online cloud tracker, custom-coded logic, privacy boundaries and software used.
+  - link "Download Word guide ↓":
+    - /url: /downloads/Aadi_Expenses_Product_and_Technical_Guide.docx
+    - text: Download Word guide
+    - generic: ↓
+  - link "Download Android app ↓":
+    - /url: /downloads/Aadi_Expenses_v1.0.0.apk
+    - text: Download Android app
+    - generic: ↓
+  - link "Open online tracker →":
+    - /url: /#tracker
+    - text: Open online tracker
+    - generic: →
+  - generic: Android automatic alert capture
+  - generic: Online secure cloud ledger
+  - generic: Spreadsheet optional two-way sync
+  - complementary "On this page":
+    - generic: On this page
+    - link "Purpose":
+      - /url: "#purpose"
+    - link "Android workflow":
+      - /url: "#android"
+    - link "Reliability":
+      - /url: "#reliability"
+    - link "Google Sheets & Excel":
+      - /url: "#sheets"
+    - link "Online version":
+      - /url: "#online"
+    - link "Software used":
+      - /url: "#software"
+    - link "Custom coding":
+      - /url: "#custom"
+    - link "Privacy":
+      - /url: "#privacy"
+    - link "Compare versions":
+      - /url: "#comparison"
+    - link "Limitations":
+      - /url: "#limits"
+  - article:
+    - generic: The idea
+    - heading "Track the expense when the payment is still fresh." [level=2]
+    - paragraph: "Most expense trackers depend on memory: pay now, remember the merchant and purpose later, then type everything manually. Aadi Expenses changes the timing. When a supported payment alert arrives on Android, the app creates a draft and reminds the user to review it."
+    - strong: Product promise
+    - paragraph: Reduce forgotten expenses without asking for a bank login, UPI PIN or card details. Automation captures the facts; the user stays responsible for the final meaning and category.
+    - generic: Android execution
+    - heading "From alert to reviewed transaction." [level=2]
+    - generic: "01"
+    - paragraph:
+      - strong: Listen
+      - generic: A new bank SMS or allowed GPay, Axis Mobile or qualifying Axis Gmail notification arrives.
+    - generic: "02"
+    - paragraph:
+      - strong: Filter
+      - generic: Unsupported apps and non-financial content are ignored.
+    - generic: "03"
+    - paragraph:
+      - strong: Parse
+      - generic: Custom Kotlin logic extracts direction, amount, channel, reference and account hint.
+    - generic: "04"
+    - paragraph:
+      - strong: Deduplicate
+      - generic: Hashes, references, amount, timing and narration identity are compared.
+    - generic: "05"
+    - paragraph:
+      - strong: Remind
+      - generic: A high-priority notification asks the user to complete the payment record.
+    - generic: "06"
+    - paragraph:
+      - strong: Review
+      - generic: The name, category, description and Expense/Income direction can be corrected.
+    - generic: "07"
+    - paragraph:
+      - strong: Store & sync
+      - generic: Room stores the record locally; optional WorkManager jobs sync the reviewed ledger.
+    - heading "Capture sources" [level=3]
+    - generic: Bank SMS
+    - generic: GPay notifications
+    - generic: Axis Mobile
+    - generic: Axis Gmail alerts
+    - generic: Axis statement CSV
+    - generic: Manual fallback
+    - paragraph: The app reads new alerts after installation; it does not silently scan old messages. Cash transactions and unusual missed alerts can always be entered manually.
+    - generic: Data quality
+    - heading "Designed to avoid duplicates and unsafe guesses." [level=2]
+    - table:
+      - rowgroup:
+        - row "Control What it checks Benefit":
+          - columnheader "Control"
+          - columnheader "What it checks"
+          - columnheader "Benefit"
+      - rowgroup:
+        - row "Source hash Sender, normalised alert and event time Stops the same source from being imported twice.":
+          - cell "Source hash"
+          - cell "Sender, normalised alert and event time"
+          - cell "Stops the same source from being imported twice."
+        - row "Reference match Reference, amount and direction Recognises one payment arriving through different sources.":
+          - cell "Reference match"
+          - cell "Reference, amount and direction"
+          - cell "Recognises one payment arriving through different sources."
+        - row "Time windows Same-amount events close together Reconciles SMS and app notifications.":
+          - cell "Time windows"
+          - cell "Same-amount events close together"
+          - cell "Reconciles SMS and app notifications."
+        - row "Narration identity Meaningful merchant and narration tokens Reduces incorrect merging of unrelated payments.":
+          - cell "Narration identity"
+          - cell "Meaningful merchant and narration tokens"
+          - cell "Reduces incorrect merging of unrelated payments."
+        - row "Direction repair Stronger debit/credit evidence Can correct an opposite-direction duplicate while preserving reviewed details.":
+          - cell "Direction repair"
+          - cell "Stronger debit/credit evidence"
+          - cell "Can correct an opposite-direction duplicate while preserving reviewed details."
+        - row "Human review Name, purpose, category and direction Keeps final meaning under user control.":
+          - cell "Human review"
+          - cell "Name, purpose, category and direction"
+          - cell "Keeps final meaning under user control."
+    - strong: No invented accuracy percentage.
+    - text: Bank and payment wording can change. The current build has multiple recovery and duplicate controls, but missed alerts should be tested with privacy-safe fixtures before publishing a numeric accuracy claim.
+    - generic: Spreadsheet integration
+    - heading "Android ↔ Google Sheets, using an Excel-format ledger." [level=2]
+    - paragraph:
+      - text: The supplied
+      - code: Aadi_Expense_Ledger.xlsx
+      - text: is opened or uploaded in Google Sheets. A custom Google Apps Script becomes the user's private sync endpoint. Reviewed phone records can then move into a familiar spreadsheet and approved sheet changes can return to the phone.
+    - generic "Spreadsheet sync sequence":
+      - generic: Room database
+      - generic: →
+      - generic: WorkManager
+      - generic: →
+      - generic: Apps Script
+      - generic: →
+      - generic: Google Sheet
+      - generic: ↔
+      - generic: Phone
+    - list:
+      - listitem: Immediate push and pull after saves, edits or deletions when automatic sync is enabled.
+      - listitem: Periodic connected-network push and reconciliation approximately every 15 minutes.
+      - listitem: Two-way descriptions, custom categories and deletion handling.
+      - listitem: Hidden modification timestamps support last-write-wins conflict handling.
+      - listitem: The Apps Script URL and token are private and must not be shared.
+    - generic: Browser experience
+    - heading "A secure manual tracker with cloud sync." [level=2]
+    - paragraph: The website does not read real phone SMS or notifications. It provides manual income and expense entry, editing, search, categories, date filters and Excel-compatible CSV import/export. The alert demo explains the parsing concept without claiming browser access to Android notifications.
+    - generic: "01"
+    - paragraph:
+      - strong: Open
+      - generic: Use guest mode immediately or create a profile.
+    - generic: "02"
+    - paragraph:
+      - strong: Authenticate
+      - generic: Clerk manages email/password, verification, sessions and password reset.
+    - generic: "03"
+    - paragraph:
+      - strong: Work locally
+      - generic: The browser keeps a ledger copy so guest work remains available.
+    - generic: "04"
+    - paragraph:
+      - strong: Sync securely
+      - generic: The browser sends a Clerk session token to the protected Vercel API.
+    - generic: "05"
+    - paragraph:
+      - strong: Store
+      - generic: Neon Postgres stores the ledger under the authenticated Clerk user ID.
+    - generic: "06"
+    - paragraph:
+      - strong: Reopen anywhere
+      - generic: Log in on another browser to retrieve the signed-in cloud ledger.
+    - generic: Integrations & stack
+    - heading "Software used and what each part does." [level=2]
+    - article:
+      - text: Android
+      - heading "Kotlin + Jetpack Compose" [level=3]
+      - paragraph: Custom parsing, review screens, dashboard, filters and transaction management.
+    - article:
+      - text: Local data
+      - heading "Room / SQLite" [level=3]
+      - paragraph: Private Android transaction database and reactive ledger views.
+    - article:
+      - text: Background work
+      - heading "WorkManager + OkHttp" [level=3]
+      - paragraph: Connected-network spreadsheet pushes, pulls and HTTPS requests.
+    - article:
+      - text: Spreadsheet
+      - heading "Google Sheets + Apps Script" [level=3]
+      - paragraph: Optional private two-way ledger sync based on the Excel template.
+    - article:
+      - text: Authentication
+      - heading "Clerk" [level=3]
+      - paragraph: Email/password profiles, sessions, verification and reset email.
+    - article:
+      - text: Cloud database
+      - heading "Neon Postgres" [level=3]
+      - paragraph: Signed-in online ledgers keyed to each Clerk user.
+    - article:
+      - text: Hosting & APIs
+      - heading "Vercel" [level=3]
+      - paragraph: Website delivery, serverless APIs, environment configuration and rollback.
+    - article:
+      - text: Online frontend
+      - heading "Custom HTML, CSS & JavaScript" [level=3]
+      - paragraph: Responsive tracker, local-first behaviour, CSV and animated explanations.
+    - generic: Manually coded core
+    - heading "The services support the product; they do not define it." [level=2]
+    - paragraph: "Aadi Expenses is not a no-code expense template. Clerk, Neon, Vercel, Android libraries and Google services provide infrastructure. The project-specific behaviour was written for this product:"
+    - list:
+      - listitem: ✓ Financial-language parsing and amount/reference extraction
+      - listitem: ✓ Cross-source duplicate prevention and direction repair
+      - listitem: ✓ Payment-time reminder and human-review workflow
+      - listitem: ✓ Room data model, dashboard calculations, filters and editing
+      - listitem: ✓ Axis statement reconciliation and manual fallbacks
+      - listitem: ✓ Two-way sheet protocol, categories, deletions and conflict handling
+      - listitem: ✓ Browser tracker, local/cloud merge, CSV and ledger validation
+      - listitem: ✓ Authenticated Vercel API and allowed-origin protection
+    - generic: Privacy boundaries
+    - heading "What the system does—and does not—request." [level=2]
+    - article:
+      - strong: No bank credentials
+      - paragraph: No bank password, Axis MPIN, UPI PIN or card details are requested.
+    - article:
+      - strong: Local Android storage
+      - paragraph: Room data stays in the private app sandbox and Android backups are disabled.
+    - article:
+      - strong: Filtered notifications
+      - paragraph: Only configured payment apps are considered; Gmail content must identify Axis.
+    - article:
+      - strong: Authenticated online ledger
+      - paragraph: Clerk identifies the user; Neon data is accessed through a private, no-store API.
+    - generic: Choose the right version
+    - heading "Android automation or browser convenience." [level=2]
+    - table:
+      - rowgroup:
+        - row "Capability Android app Online version":
+          - columnheader "Capability"
+          - columnheader "Android app"
+          - columnheader "Online version"
+      - rowgroup:
+        - row "Payment reminder Automatic for supported new alerts Manual entry; interactive demo only":
+          - cell "Payment reminder"
+          - cell "Automatic for supported new alerts"
+          - cell "Manual entry; interactive demo only"
+        - row "Primary storage Local Room database Browser copy + Neon when signed in":
+          - cell "Primary storage"
+          - cell "Local Room database"
+          - cell "Browser copy + Neon when signed in"
+        - row "Spreadsheet Optional two-way Google Sheets sync Excel-compatible CSV import/export":
+          - cell "Spreadsheet"
+          - cell "Optional two-way Google Sheets sync"
+          - cell "Excel-compatible CSV import/export"
+        - row "Account required No No for guest; yes for cloud sync":
+          - cell "Account required"
+          - cell "No"
+          - cell "No for guest; yes for cloud sync"
+        - row "Best strength Captures the payment moment Accessible manual management anywhere":
+          - cell "Best strength"
+          - cell "Captures the payment moment"
+          - cell "Accessible manual management anywhere"
+    - generic: Current beta boundaries
+    - heading "Known limitations and sensible next steps." [level=2]
+    - list:
+      - listitem: Bank wording can change, so parser rules need privacy-safe regression fixtures.
+      - listitem: The APK is a beta-signed sideload build, not a Google Play release.
+      - listitem: The Android spreadsheet token should move from app-private preferences to Android Keystore encryption for production hardening.
+      - listitem: A normal website cannot listen to Android payment notifications; automatic capture remains an Android-app responsibility.
+      - listitem: The online API currently supports up to 5,000 transactions in one per-user JSON ledger.
+    - text: Keep the complete reference
+    - heading "Download the full Word guide." [level=3]
+    - paragraph: Includes detailed setup flows, technical architecture, privacy boundaries and the current release identity.
+    - link "Download .docx ↓":
+      - /url: /downloads/Aadi_Expenses_Product_and_Technical_Guide.docx
+      - text: Download .docx
+      - generic: ↓
+- contentinfo:
+  - link "Aadi Expenses home":
+    - /url: /
+    - generic: Aadi Expenses
+  - paragraph: Product & technical guide · v1.0.0
+  - link "Use online version":
+    - /url: /#tracker

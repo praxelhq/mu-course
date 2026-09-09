@@ -1,0 +1,51 @@
+- banner:
+  - heading "Weight Management" [level=1]
+  - paragraph: A few basics to personalise your numbers
+  - link "Progress":
+    - /url: /progress
+    - text: 🏅
+  - paragraph: "0"
+  - paragraph: day streak
+  - paragraph: "0"
+  - paragraph: Lvl 1
+  - generic: 🧊
+  - paragraph: "1"
+  - paragraph: freeze
+- heading "One-time setup" [level=2]
+- paragraph: We'll use this to estimate BMI, body composition and your daily calorie needs.
+- text: Weight (kg)
+- textbox
+- text: Height (cm)
+- textbox
+- text: Age
+- textbox
+- text: Gender
+- button "female"
+- button "male"
+- button "other"
+- button "Save & see my numbers" [disabled]
+- link "SOS — talk to someone now":
+  - /url: /sos
+  - generic: SOS
+- navigation:
+  - link "Today":
+    - /url: /
+    - text: Today
+  - link "Calm":
+    - /url: /stress
+    - text: Calm
+  - link "Weight":
+    - /url: /weight
+    - text: Weight
+  - link "Reminders":
+    - /url: /reminders
+    - text: Reminders
+  - link "You":
+    - /url: /settings
+    - text: You
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_4mf9qxwwfq922r3nx6m46jkrvt?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

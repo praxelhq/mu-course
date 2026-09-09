@@ -1,0 +1,82 @@
+- banner:
+  - button "CampusPlay Home":
+    - generic: CampusPlay
+    - generic: Sports Network
+    - generic: •
+    - generic: Hub
+  - navigation:
+    - button "Home":
+      - generic: Home
+    - button "Explore Events":
+      - generic: Explore Events
+    - button "My Registrations":
+      - generic: My Registrations
+    - button "Organize Event" [active]:
+      - generic: Organize Event
+  - button "Live Campus Matches":
+    - generic: Live Campus Matches
+- main:
+  - generic: Host A Game
+  - heading "Organize a Campus Sports Event" [level=2]
+  - paragraph: Set up friendly matches, training sessions, or competitive tournaments for fellow students.
+  - generic: Event Name *
+  - textbox "Event Name *":
+    - /placeholder: e.g. Freshman Football Scrimmage
+  - generic: Sport Category *
+  - combobox "Sport Category *":
+    - option "Football" [selected]
+    - option "Badminton"
+    - option "Cricket"
+    - option "Basketball"
+    - option "Table Tennis"
+    - option "Running"
+    - option "Volleyball"
+    - option "Tennis"
+    - option "Squash"
+    - option "Swimming"
+    - option "Ultimate Frisbee"
+    - option "Other"
+  - generic: Skill Level *
+  - combobox "Skill Level *":
+    - option "All Levels" [selected]
+    - option "Beginner"
+    - option "Intermediate"
+    - option "Advanced"
+  - generic: Event Date *
+  - textbox "Event Date *": 2026-09-10
+  - generic: Time *
+  - textbox "Time *":
+    - /placeholder: e.g. 5:30 PM
+    - text: 4:00 PM
+  - generic: Campus Venue / Court *
+  - textbox "Campus Venue / Court *":
+    - /placeholder: e.g. North Campus Field 2
+  - generic: Available Spots *
+  - spinbutton "Available Spots *": "12"
+  - generic: Host / Society Name (Optional)
+  - textbox "Host / Society Name (Optional)":
+    - /placeholder: e.g. College Athletic Guild or Jordan (Sports Rep)
+  - generic: Description & Guidelines *
+  - textbox "Description & Guidelines *":
+    - /placeholder: Provide match format, equipment required, check-in instructions, and any special guidelines...
+  - button "Clear"
+  - button "Publish Campus Event":
+    - generic: Publish Campus Event
+- contentinfo:
+  - generic: CampusPlay
+  - paragraph: CampusPlay is your centralized university athletic network. Discover upcoming matches, reserve passes instantly, and organize intra-collegiate tournaments.
+  - generic: Campus Verified • Student Run Platform
+  - heading "Quick Navigation" [level=4]
+  - list:
+    - button "Home"
+    - button "Explore Events"
+    - button "My Registrations"
+    - button "Organize an Event"
+  - heading "Campus Sports Facilities" [level=4]
+  - generic: College Football Stadium & Track
+  - generic: Indoor Sports Complex & Badminton Arena
+  - generic: Main Cricket Ground & Practice Nets
+  - generic: Student Activity Centre & Table Tennis Hall
+  - paragraph: CampusPlay — Connecting college students through active sport & competition.
+  - button "Back to top":
+    - generic: Back to top

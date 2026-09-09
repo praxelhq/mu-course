@@ -1,0 +1,23 @@
+- banner:
+  - button "Go back":
+  - link "Go to home":
+    - /url: /home
+  - link "GullyCric":
+    - /url: /home
+    - img "GullyCric"
+  - button "New Match":
+    - text: New Match
+- main:
+  - heading "Let's Play" [level=1]
+  - button "Start New Match":
+    - text: Start New Match
+  - heading "Recent Matches" [level=2]
+  - paragraph: No matches yet
+  - paragraph: Finished matches show up here with full batting and bowling cards.
+- contentinfo: Works offline · no signup · everything saved on this device
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3pba2bt5px9kvsbw617dbrrtz1?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

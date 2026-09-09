@@ -1,0 +1,53 @@
+- generic: Practice Room
+- heading "No Pressure" [level=1]
+- button "New":
+  - text: New
+- generic: Language
+- button "English"
+- button "Hindi"
+- generic: Decade
+- button "1970s"
+- button "1980s"
+- button "1990s"
+- button "2000s"
+- button "2010s"
+- button "2020s"
+- paragraph: A random track from the archive. Guess freely — nothing counts toward your record.
+- button "Play":
+- generic: 0:01 of tape unlocked
+- generic: The Suspects — pick one
+- button "Heeriye Jasleen Royal, Arijit Singh":
+  - generic: Heeriye
+  - generic: Jasleen Royal, Arijit Singh
+- button "Chaiyya Chaiyya Sukhwinder Singh, Sapna Awasthi":
+  - generic: Chaiyya Chaiyya
+  - generic: Sukhwinder Singh, Sapna Awasthi
+- button "Bheegi Bheegi James":
+  - generic: Bheegi Bheegi
+  - generic: James
+- button "Pehla Nasha Udit Narayan, Sadhana Sargam":
+  - generic: Pehla Nasha
+  - generic: Udit Narayan, Sadhana Sargam
+- button "Kuch Kuch Hota Hai Udit Narayan, Alka Yagnik":
+  - generic: Kuch Kuch Hota Hai
+  - generic: Udit Narayan, Alka Yagnik
+- button "Tujhe Dekha To Lata Mangeshkar, Kumar Sanu":
+  - generic: Tujhe Dekha To
+  - generic: Lata Mangeshkar, Kumar Sanu
+- button "Accuse This Track" [disabled]
+- button "Skip — unlock 2s":
+  - text: Skip — unlock 2s
+- navigation:
+  - link "Case":
+    - /url: /
+    - generic: Case
+  - link "Case File":
+    - /url: /archive
+    - generic: Case File
+  - link "Record":
+    - /url: /stats
+    - generic: Record
+  - link "Practice" [active]:
+    - /url: /practice
+    - generic: Practice
+- region "Notifications alt+T"

@@ -1,0 +1,33 @@
+- banner:
+  - generic: My Garage
+  - button "Vehicle Document Vault":
+  - button "Tata":
+    - text: Tata
+- main:
+  - paragraph: Maintenance Hub
+  - heading "Service & Repairs" [level=1]
+  - button "Add Service":
+    - generic: Add Service
+  - generic: Maintenance Schedule
+  - heading "No service scheduled" [level=3]
+  - paragraph: Set your next service milestone when logging a service record
+  - text: Total Service Spent
+  - generic: ₹0
+  - text: Recorded Jobs
+  - generic: 0 Records
+  - paragraph: Service History
+  - heading "No service records yet" [level=3]
+  - paragraph: Keep a permanent digital record of periodic maintenance, repairs, oil changes, and parts replaced.
+  - button "+ Add First Service Record":
+    - generic: + Add First Service Record
+- navigation:
+  - button "Garage":
+    - generic: Garage
+  - button "Fuel":
+    - generic: Fuel
+  - button "Service" [active]:
+    - generic: Service
+  - button "Expenses":
+    - generic: Expenses
+  - button "Docs":
+    - generic: Docs

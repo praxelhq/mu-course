@@ -1,0 +1,77 @@
+- banner:
+  - heading "Weight Management" [level=1]
+  - paragraph: Kind, useful numbers — no judgement
+  - link "Progress":
+    - /url: /progress
+    - text: 🏅
+  - paragraph: "1"
+  - paragraph: day streak
+  - paragraph: "10"
+  - paragraph: Lvl 1
+  - generic: 🧊
+  - paragraph: "1"
+  - paragraph: freeze
+- heading "Your body basics" [level=2]
+- button "Edit"
+- paragraph: BMI
+- paragraph: "20.8"
+- paragraph: Healthy range
+- paragraph: Muscle mass (est.)
+- paragraph: 24.7 kg
+- paragraph: Skeletal estimate
+- paragraph: Lean mass
+- paragraph: 44.8 kg
+- paragraph: 25.3% fat est.
+- paragraph: Maintenance
+- paragraph: 1893 kcal
+- paragraph: Lightly active day
+- paragraph: Estimates from standard formulas (BMI, Deurenberg, Mifflin-St Jeor) — helpful as direction, not diagnosis.
+- tablist:
+  - tab "Today" [selected]
+  - tab "This month"
+- tabpanel "Today":
+  - heading "Food log" [level=2]
+  - textbox "What did you eat?"
+  - textbox "kcal"
+  - button "Add" [disabled]
+  - list:
+    - generic: Reviewer synthetic meal
+    - generic: 400 kcal
+    - button:
+  - heading "Today's balance" [level=2]
+  - paragraph: "400"
+  - paragraph: of ~1893 kcal
+  - progressbar
+  - paragraph: You're about 1493 kcal below maintenance today. You're in a good spot.
+  - paragraph: Keep things moving
+  - paragraph: A 20-min easy walk or light stretch would round the day off nicely.
+  - heading "Today's check-in" [level=2]
+  - textbox "Weight today (kg)"
+  - textbox "Water (glasses)"
+  - textbox "Steps"
+  - button "Save check-in"
+- link "SOS — talk to someone now":
+  - /url: /sos
+  - generic: SOS
+- navigation:
+  - link "Today":
+    - /url: /
+    - text: Today
+  - link "Calm":
+    - /url: /stress
+    - text: Calm
+  - link "Weight":
+    - /url: /weight
+    - text: Weight
+  - link "Reminders":
+    - /url: /reminders
+    - text: Reminders
+  - link "You":
+    - /url: /settings
+    - text: You
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_4mf9qxwwfq922r3nx6m46jkrvt?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

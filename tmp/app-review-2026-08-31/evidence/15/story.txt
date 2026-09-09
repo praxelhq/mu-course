@@ -1,0 +1,62 @@
+- banner:
+  - link "Dastaan":
+    - /url: /
+  - navigation:
+    - link "Home":
+      - /url: /
+      - text: Home
+    - link "Story" [active]:
+      - /url: /timeline
+      - text: Story
+    - link "Ask":
+      - /url: /ask
+      - text: Ask
+- main:
+  - paragraph: Good morning, Meera
+  - heading "Rajesh Mehra's Story" [level=1]
+  - paragraph: Dad has been recording every Sunday since March. Here's how far his story has come.
+  - generic: 68%
+  - generic: captured
+  - heading "68% of their story captured" [level=2]
+  - paragraph: 14 of ~20 life chapters covered
+  - generic: "This week: a new memory arrived about childhood — 8:42 of voice."
+  - heading "Life chapters" [level=2]
+  - link "View story":
+    - /url: /timeline
+  - article:
+    - heading "Childhood" [level=3]
+    - paragraph: 4 of 4 memories captured
+  - article:
+    - heading "School Years" [level=3]
+    - paragraph: 3 of 3 memories captured
+  - article:
+    - heading "College & First Job" [level=3]
+    - paragraph: 2 of 3 memories captured
+  - article:
+    - heading "Career" [level=3]
+    - paragraph: 3 of 4 memories captured
+  - article:
+    - heading "Marriage" [level=3]
+    - paragraph: 2 of 2 memories captured
+  - article:
+    - heading "Family Life" [level=3]
+    - paragraph: Started last week
+  - article:
+    - heading "Friendships" [level=3]
+    - paragraph: Not yet started
+  - article:
+    - heading "Travel & Adventures" [level=3]
+    - paragraph: Not yet started
+  - article:
+    - heading "Lessons & Beliefs" [level=3]
+    - paragraph: Not yet started
+  - heading "Is there something you'd love to ask?" [level=2]
+  - paragraph: Send Dad a question and it'll reach him with next Sunday's call.
+  - link "Ask a question":
+    - /url: /ask
+    - text: Ask a question
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_59e643cg1k8nq85e487nf1z8wk?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

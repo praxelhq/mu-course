@@ -1,0 +1,341 @@
+- complementary:
+  - link "FactoryFlow AI Shreeji Precision Works":
+    - /url: /
+    - paragraph: FactoryFlow AI
+    - paragraph: Shreeji Precision Works
+  - navigation:
+    - paragraph: Shop floor
+    - link "Dashboard":
+      - /url: /
+      - text: Dashboard
+    - link "Production":
+      - /url: /production
+      - text: Production
+    - link "Customer Schedule":
+      - /url: /schedule
+      - text: Customer Schedule
+    - link "Machines":
+      - /url: /machines
+      - text: Machines
+    - link "Downtime" [active]:
+      - /url: /downtime
+      - text: Downtime
+    - link "Maintenance":
+      - /url: /maintenance
+      - text: Maintenance
+    - link "Quality":
+      - /url: /quality
+      - text: Quality
+    - link "Job Work":
+      - /url: /job-work
+      - text: Job Work
+    - link "Inventory":
+      - /url: /inventory
+      - text: Inventory
+    - paragraph: Money
+    - link "Sales & Receivables":
+      - /url: /sales
+      - text: Sales & Receivables
+    - link "Purchase & Payables":
+      - /url: /purchase
+      - text: Purchase & Payables
+    - link "Cash View":
+      - /url: /cash
+      - text: Cash View
+    - link "Compliance":
+      - /url: /compliance
+      - text: Compliance
+    - paragraph: Run the business
+    - link "Tasks":
+      - /url: /tasks
+      - text: Tasks
+    - link "Analytics":
+      - /url: /analytics
+      - text: Analytics
+    - link "Reports":
+      - /url: /reports
+      - text: Reports
+    - link "AI Assistant":
+      - /url: /assistant
+      - text: AI Assistant
+    - link "Integrations":
+      - /url: /integrations
+      - text: Integrations
+    - link "Settings":
+      - /url: /settings
+      - text: Settings
+  - link "RK Rajesh Kulkarni Works Manager":
+    - /url: /profile
+    - generic: RK
+    - generic: Rajesh Kulkarni
+    - generic: Works Manager
+  - link "Pricing & product page →":
+    - /url: /welcome
+- banner:
+  - textbox "Search part, challan, invoice, heat number…"
+  - button "English"
+  - button "हिंदी"
+  - button "मराठी"
+  - generic "All entries synced":
+    - text: Online
+  - button "Toggle dark mode":
+  - link "Notifications":
+    - /url: /notifications
+    - generic: "4"
+  - link "Ask AI":
+    - /url: /assistant
+    - generic: Ask AI
+- main:
+  - navigation:
+    - link "FactoryFlow":
+      - /url: /
+    - generic: Machines
+  - heading "Machines" [level=1]
+  - paragraph: Asset intelligence hub — condition, utilization and health for every registered asset.
+  - button "Export CSV":
+    - text: Export CSV
+  - paragraph: Running
+  - paragraph: "8"
+  - paragraph: Idle
+  - paragraph: "2"
+  - paragraph: Down
+  - paragraph: "1"
+  - paragraph: Maintenance
+  - paragraph: "1"
+  - textbox "Search machine, code, manufacturer…"
+  - combobox "Plant":
+    - 'option "Plant: All" [selected]'
+    - option "Shreeji Precision Works"
+  - combobox "Status":
+    - 'option "Status: All" [selected]'
+    - option "Running"
+    - option "Idle"
+    - option "Down"
+    - option "Maintenance"
+  - table:
+    - rowgroup:
+      - row "Machine Code Plant Department / Line Manufacturer Installed Status Health Utilization":
+        - columnheader "Machine"
+        - columnheader "Code"
+        - columnheader "Plant"
+        - columnheader "Department / Line"
+        - columnheader "Manufacturer"
+        - columnheader "Installed"
+        - columnheader "Status"
+        - columnheader "Health"
+        - columnheader "Utilization"
+        - columnheader
+    - rowgroup:
+      - row "CNC VMC-1 (Ace Micromatic) MC-101 Shreeji Precision Works Machining Line 1 — Machining Ace Micromatic 15-02-2022 Running 77% 53% Details":
+        - cell "CNC VMC-1 (Ace Micromatic)"
+        - cell "MC-101"
+        - cell "Shreeji Precision Works"
+        - cell "Machining Line 1 — Machining":
+          - paragraph: Machining
+          - paragraph: Line 1 — Machining
+        - cell "Ace Micromatic"
+        - cell "15-02-2022"
+        - cell "Running":
+          - generic: Running
+        - cell "77%":
+          - generic: 77%
+        - cell "53%"
+        - cell "Details":
+          - link "Details":
+            - /url: /machines/m1
+      - row "CNC VMC-2 (Ace Micromatic) MC-102 Shreeji Precision Works Machining Line 1 — Machining Ace Micromatic 22-09-2024 Running 88% 54% Details":
+        - cell "CNC VMC-2 (Ace Micromatic)"
+        - cell "MC-102"
+        - cell "Shreeji Precision Works"
+        - cell "Machining Line 1 — Machining":
+          - paragraph: Machining
+          - paragraph: Line 1 — Machining
+        - cell "Ace Micromatic"
+        - cell "22-09-2024"
+        - cell "Running":
+          - generic: Running
+        - cell "88%":
+          - generic: 88%
+        - cell "54%"
+        - cell "Details":
+          - link "Details":
+            - /url: /machines/m2
+      - row "CNC Turning Centre TC-1 (Jyoti) MC-103 Shreeji Precision Works Machining Line 1 — Machining Jyoti CNC 26-02-2022 Running 82% 88% Details":
+        - cell "CNC Turning Centre TC-1 (Jyoti)"
+        - cell "MC-103"
+        - cell "Shreeji Precision Works"
+        - cell "Machining Line 1 — Machining":
+          - paragraph: Machining
+          - paragraph: Line 1 — Machining
+        - cell "Jyoti CNC"
+        - cell "26-02-2022"
+        - cell "Running":
+          - generic: Running
+        - cell "82%":
+          - generic: 82%
+        - cell "88%"
+        - cell "Details":
+          - link "Details":
+            - /url: /machines/m3
+      - row "Conventional Lathe L-1 (HMT) MC-104 Shreeji Precision Works Machining Line 1 — Machining HMT 15-06-2024 Idle 78% 69% Details":
+        - cell "Conventional Lathe L-1 (HMT)"
+        - cell "MC-104"
+        - cell "Shreeji Precision Works"
+        - cell "Machining Line 1 — Machining":
+          - paragraph: Machining
+          - paragraph: Line 1 — Machining
+        - cell "HMT"
+        - cell "15-06-2024"
+        - cell "Idle":
+          - generic: Idle
+        - cell "78%":
+          - generic: 78%
+        - cell "69%"
+        - cell "Details":
+          - link "Details":
+            - /url: /machines/m4
+      - row "Conventional Lathe L-2 (Kirloskar) MC-105 Shreeji Precision Works Machining Line 1 — Machining Kirloskar 24-09-2020 Running 78% 76% Details":
+        - cell "Conventional Lathe L-2 (Kirloskar)"
+        - cell "MC-105"
+        - cell "Shreeji Precision Works"
+        - cell "Machining Line 1 — Machining":
+          - paragraph: Machining
+          - paragraph: Line 1 — Machining
+        - cell "Kirloskar"
+        - cell "24-09-2020"
+        - cell "Running":
+          - generic: Running
+        - cell "78%":
+          - generic: 78%
+        - cell "76%"
+        - cell "Details":
+          - link "Details":
+            - /url: /machines/m5
+      - row "Radial Drill RD-1 MC-106 Shreeji Precision Works Machining Line 1 — Machining Batliboi 31-10-2018 Running 95% 58% Details":
+        - cell "Radial Drill RD-1"
+        - cell "MC-106"
+        - cell "Shreeji Precision Works"
+        - cell "Machining Line 1 — Machining":
+          - paragraph: Machining
+          - paragraph: Line 1 — Machining
+        - cell "Batliboi"
+        - cell "31-10-2018"
+        - cell "Running":
+          - generic: Running
+        - cell "95%":
+          - generic: 95%
+        - cell "58%"
+        - cell "Details":
+          - link "Details":
+            - /url: /machines/m6
+      - row "Power Press 100T (Isgec) MC-107 Shreeji Precision Works Press Shop Line 2 — Press Shop Isgec 31-03-2024 Running 82% 64% Details":
+        - cell "Power Press 100T (Isgec)"
+        - cell "MC-107"
+        - cell "Shreeji Precision Works"
+        - cell "Press Shop Line 2 — Press Shop":
+          - paragraph: Press Shop
+          - paragraph: Line 2 — Press Shop
+        - cell "Isgec"
+        - cell "31-03-2024"
+        - cell "Running":
+          - generic: Running
+        - cell "82%":
+          - generic: 82%
+        - cell "64%"
+        - cell "Details":
+          - link "Details":
+            - /url: /machines/m7
+      - row "Power Press 60T (Rajesh Machines) MC-108 Shreeji Precision Works Press Shop Line 2 — Press Shop Rajesh Machines 09-11-2023 Down 87% 57% Details":
+        - cell "Power Press 60T (Rajesh Machines)"
+        - cell "MC-108"
+        - cell "Shreeji Precision Works"
+        - cell "Press Shop Line 2 — Press Shop":
+          - paragraph: Press Shop
+          - paragraph: Line 2 — Press Shop
+        - cell "Rajesh Machines"
+        - cell "09-11-2023"
+        - cell "Down":
+          - generic: Down
+        - cell "87%":
+          - generic: 87%
+        - cell "57%"
+        - cell "Details":
+          - link "Details":
+            - /url: /machines/m8
+      - row "TIG Welding Station W-1 MC-109 Shreeji Precision Works Welding Line 3 — Weld & Finish Ador Welding 19-01-2025 Running 85% 89% Details":
+        - cell "TIG Welding Station W-1"
+        - cell "MC-109"
+        - cell "Shreeji Precision Works"
+        - cell "Welding Line 3 — Weld & Finish":
+          - paragraph: Welding
+          - paragraph: Line 3 — Weld & Finish
+        - cell "Ador Welding"
+        - cell "19-01-2025"
+        - cell "Running":
+          - generic: Running
+        - cell "85%":
+          - generic: 85%
+        - cell "89%"
+        - cell "Details":
+          - link "Details":
+            - /url: /machines/m9
+      - row "Surface Grinder SG-1 MC-110 Shreeji Precision Works Machining Line 1 — Machining Bhagwansons 31-08-2018 Maintenance 95% 92% Details":
+        - cell "Surface Grinder SG-1"
+        - cell "MC-110"
+        - cell "Shreeji Precision Works"
+        - cell "Machining Line 1 — Machining":
+          - paragraph: Machining
+          - paragraph: Line 1 — Machining
+        - cell "Bhagwansons"
+        - cell "31-08-2018"
+        - cell "Maintenance":
+          - generic: Maintenance
+        - cell "95%":
+          - generic: 95%
+        - cell "92%"
+        - cell "Details":
+          - link "Details":
+            - /url: /machines/m10
+      - row "Shot Blasting Cabinet SB-1 MC-111 Shreeji Precision Works Heat Treat Line 3 — Weld & Finish Sinto Bharat 22-01-2019 Running 96% 53% Details":
+        - cell "Shot Blasting Cabinet SB-1"
+        - cell "MC-111"
+        - cell "Shreeji Precision Works"
+        - cell "Heat Treat Line 3 — Weld & Finish":
+          - paragraph: Heat Treat
+          - paragraph: Line 3 — Weld & Finish
+        - cell "Sinto Bharat"
+        - cell "22-01-2019"
+        - cell "Running":
+          - generic: Running
+        - cell "96%":
+          - generic: 96%
+        - cell "53%"
+        - cell "Details":
+          - link "Details":
+            - /url: /machines/m11
+      - row "LPG Heat-Treat Furnace HT-1 MC-112 Shreeji Precision Works Heat Treat Line 3 — Weld & Finish Therelek 04-01-2024 Idle 83% 66% Details":
+        - cell "LPG Heat-Treat Furnace HT-1"
+        - cell "MC-112"
+        - cell "Shreeji Precision Works"
+        - cell "Heat Treat Line 3 — Weld & Finish":
+          - paragraph: Heat Treat
+          - paragraph: Line 3 — Weld & Finish
+        - cell "Therelek"
+        - cell "04-01-2024"
+        - cell "Idle":
+          - generic: Idle
+        - cell "83%":
+          - generic: 83%
+        - cell "66%"
+        - cell "Details":
+          - link "Details":
+            - /url: /machines/m12
+- button "Quick Log":
+  - text: Quick Log
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_10hdg7xyw99tpa64t0nz744v7b?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: "800"

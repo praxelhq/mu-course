@@ -1,0 +1,91 @@
+- banner:
+  - button "Go back":
+  - heading "AI Advisor" [level=1]
+  - paragraph: Personalised for Jai
+- paragraph: "82"
+- paragraph: / 100
+- paragraph: Financial Health
+- paragraph: Strong
+- paragraph: Savings and credit are pulling your score up; discretionary spending is holding it back.
+- button "Savings 86":
+  - paragraph: Savings
+  - paragraph: "86"
+  - progressbar
+- button "Investments 79":
+  - paragraph: Investments
+  - paragraph: "79"
+  - progressbar
+- button "Spending Discipline 74":
+  - paragraph: Spending Discipline
+  - paragraph: "74"
+  - progressbar
+- button "Credit Health 88":
+  - paragraph: Credit Health
+  - paragraph: "88"
+  - progressbar
+- heading "Smart Insights" [level=2]
+- link "Smart Savings Food delivery spending is up 18% You spent 18% more on food delivery this month. Reducing spending by ₹2,000 could increase your monthly savings. Open insight":
+  - /url: /recommendations/smart-savings
+  - generic: Smart Savings
+  - paragraph: Food delivery spending is up 18%
+  - paragraph: You spent 18% more on food delivery this month. Reducing spending by ₹2,000 could increase your monthly savings.
+  - text: Open insight
+- link "Investment Consider diversifying beyond equity Based on your available savings, consider allocating a portion towards diversified long-term investment options. Open insight":
+  - /url: /recommendations/investment-diversification
+  - generic: Investment
+  - paragraph: Consider diversifying beyond equity
+  - paragraph: Based on your available savings, consider allocating a portion towards diversified long-term investment options.
+  - text: Open insight
+- link "Credit Health Small habit changes could lift your score Your credit utilisation touched 36% this cycle. Keeping it under 30% is generally viewed positively. Open insight":
+  - /url: /recommendations/credit-health
+  - generic: Credit Health
+  - paragraph: Small habit changes could lift your score
+  - paragraph: Your credit utilisation touched 36% this cycle. Keeping it under 30% is generally viewed positively.
+  - text: Open insight
+- link "Cashflow Three bills cluster around the 8th Tata Power, Airtel and your SIP all debit within four days, creating a short cashflow dip each month. Open insight":
+  - /url: /recommendations/bill-automation
+  - generic: Cashflow
+  - paragraph: Three bills cluster around the 8th
+  - paragraph: Tata Power, Airtel and your SIP all debit within four days, creating a short cashflow dip each month.
+  - text: Open insight
+- heading "Credit Score" [level=2]
+- paragraph: Current
+- paragraph: "742"
+- paragraph: Potential
+- paragraph: "760"
+- progressbar
+- paragraph: Habit improvement simulator
+- slider
+- paragraph: Adopting 2 of the habits below could move your score toward 760.
+- list:
+  - generic: "1"
+  - text: Pay your credit card bill before the due date
+  - generic: "2"
+  - text: Maintain a lower credit utilisation ratio
+  - generic: "3"
+  - text: Avoid multiple loan applications together
+  - generic: "4"
+  - text: Keep old credit accounts active
+- paragraph: AI-generated insights are for informational purposes only and do not constitute financial advice.
+- navigation:
+  - link "Home":
+    - /url: /
+    - generic: Home
+  - link "Activity":
+    - /url: /transactions
+    - generic: Activity
+  - link "AI" [active]:
+    - /url: /recommendations
+    - generic: AI
+  - link "Invest":
+    - /url: /investments
+    - generic: Invest
+  - link "Profile":
+    - /url: /profile
+    - generic: Profile
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7hs9qkr19892mvzmkrhn1dmb7v?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

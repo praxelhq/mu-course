@@ -1,0 +1,44 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_5n1wtj7xzf93rarj64ygfsnnvn?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- complementary:
+  - link "RETRO ARCADE":
+    - /url: /dashboard
+    - heading "RETRO ARCADE" [level=1]
+  - paragraph: GUEST · 620 COINS
+  - navigation:
+    - link "Library":
+      - /url: /library
+      - generic: grid_view
+      - text: Library
+    - link "Stats":
+      - /url: /stats
+      - generic: leaderboard
+      - text: Stats
+    - link "Profile":
+      - /url: /profile
+      - generic: person
+      - text: Profile
+    - link "Settings":
+      - /url: /settings
+      - generic: settings
+      - text: Settings
+  - link "PLAY NOW":
+    - /url: /library
+  - button "Logout":
+    - generic: logout
+    - text: Logout
+- main:
+  - heading "SETTINGS" [level=1]
+  - paragraph: SESSION
+  - paragraph: Signed in as GUEST (guest — progress stays on this device).
+  - button "RESET PROGRESS & SIGN OUT":
+    - generic: delete
+    - text: RESET PROGRESS & SIGN OUT
+  - heading "RETRO ARCADE" [level=2]
+  - paragraph: © 1995 RETRO ARCADE INDUSTRIES
+  - generic: Privacy
+  - generic: Terms
+  - generic: Support

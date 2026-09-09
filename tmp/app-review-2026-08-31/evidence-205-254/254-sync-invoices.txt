@@ -1,0 +1,66 @@
+- complementary:
+  - generic: LeakWatch
+  - generic: Workspace
+  - navigation:
+    - button "Dashboard":
+      - generic: Dashboard
+    - button "Contracts":
+      - generic: Contracts
+    - button "Payables 6":
+      - generic: Payables
+      - generic: "6"
+  - generic: Configure
+  - navigation:
+    - button "Integrations":
+      - generic: Integrations
+    - button "Settings":
+      - generic: Settings
+  - generic: D
+  - generic: Demo
+  - generic: demo@example.com
+  - button "Exit"
+- banner:
+  - generic: Workspace
+  - heading "Settings" [level=2]
+  - generic: Demo data
+  - button "Sync invoices"
+  - button "+ New contract"
+- button "Profile"
+- button "Organisation"
+- button "Plan & billing"
+- button "Approval rules"
+- heading "Growth plan · billed annually" [level=4]
+- paragraph: Renews 1 April 2027 · ₹28,000 / year
+- button "Manage billing"
+- generic: Contracts tracked
+- generic: 11 of 100
+- generic: Gateway connections
+- generic: 2 of 4
+- generic: Starter
+- generic: ₹9,000
+- generic: per year
+- list:
+  - listitem: ✓ 25 contracts
+  - listitem: ✓ 1 gateway
+  - listitem: ✓ Email reminders
+- button "Switch to Starter"
+- generic: Growth · current
+- generic: ₹28,000
+- generic: per year
+- list:
+  - listitem: ✓ 100 contracts
+  - listitem: ✓ 4 gateways
+  - listitem: ✓ Approval trail & exports
+  - listitem: ✓ Milestone tracking
+- button "Current plan" [disabled]
+- generic: Scale
+- generic: ₹64,000
+- generic: per year
+- list:
+  - listitem: ✓ Unlimited contracts
+  - listitem: ✓ All integrations
+  - listitem: ✓ Tally & GSTN sync
+  - listitem: ✓ Priority support
+- button "Switch to Scale"
+- generic: 1 new invoice from razorpay · ₹14,400 awaiting approval
+- iframe [id="nl-badge-frame"]

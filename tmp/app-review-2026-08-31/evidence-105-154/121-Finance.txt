@@ -1,0 +1,183 @@
+- complementary:
+  - link "C Clario":
+    - /url: /dashboard
+    - generic: C
+    - generic: Clario
+  - generic: AR
+  - strong: Apex Realty
+  - generic: 12 active projects
+  - navigation:
+    - generic: Monitor
+    - link "Portfolio":
+      - /url: /dashboard
+      - generic: Portfolio
+    - link "Risk Radar":
+      - /url: /risk-radar
+      - generic: Risk Radar
+    - link "Calendar":
+      - /url: /calendar
+      - generic: Calendar
+    - generic: Intelligence
+    - link "Documents":
+      - /url: /documents
+      - generic: Documents
+    - link "Finance" [active]:
+      - /url: /finance
+      - generic: Finance
+    - link "Progress":
+      - /url: /progress
+      - generic: Progress
+    - generic: Work
+    - link "Tasks 14":
+      - /url: /tasks
+      - generic: Tasks
+      - emphasis: "14"
+  - generic: Internal indicator
+  - paragraph: The Clario Health Score is not an official RERA score.
+  - generic: AM
+  - strong: Ananya Mehta
+  - generic: Compliance Head
+- generic: Prototype workspace
+- text: Fictional project data for product demonstration
+- banner:
+  - button "Search projects, risks or ask Clario… ⌘ K":
+    - generic: Search projects, risks or ask Clario…
+    - generic: ⌘ K
+  - strong: Tuesday
+  - generic: 25 Aug 2026
+  - button "Notifications":
+- main:
+  - generic: Financial reconciliation
+  - heading "See the gap clearly." [level=1]
+  - paragraph: Surface discrepancies early and route them to a human reviewer with the right project context.
+  - button "Ask about variances":
+    - text: Ask about variances
+  - text: Collections
+  - strong: ₹54.3Cr
+  - generic: across monitored projects
+  - text: Expenditure
+  - strong: ₹34.9Cr
+  - generic: reported expenditure
+  - text: Unreconciled
+  - strong: ₹27.4L
+  - generic: flagged for review
+  - text: Exceptions
+  - strong: "2"
+  - generic: open variance signals
+  - heading "Project reconciliation" [level=2]
+  - paragraph: Expected versus reported expenditure in the latest reporting cycle.
+  - table:
+    - rowgroup:
+      - row "Project Collections Expected Reported Variance Status":
+        - columnheader "Project"
+        - columnheader "Collections"
+        - columnheader "Expected"
+        - columnheader "Reported"
+        - columnheader "Variance"
+        - columnheader "Status"
+        - columnheader
+    - rowgroup:
+      - row "Skyline Towers Mumbai ₹12.5Cr ₹8.3Cr ₹8.2Cr ₹18.0L High Review":
+        - cell "Skyline Towers Mumbai":
+          - strong: Skyline Towers
+          - generic: Mumbai
+        - cell "₹12.5Cr"
+        - cell "₹8.3Cr"
+        - cell "₹8.2Cr"
+        - cell "₹18.0L":
+          - strong: ₹18.0L
+        - cell "High":
+          - generic: High
+        - cell "Review":
+          - link "Review":
+            - /url: /projects/skyline-towers
+            - text: Review
+      - row "Riverfront Residences Ahmedabad ₹9.5Cr ₹6.0Cr ₹5.9Cr ₹9.4L Medium Review":
+        - cell "Riverfront Residences Ahmedabad":
+          - strong: Riverfront Residences
+          - generic: Ahmedabad
+        - cell "₹9.5Cr"
+        - cell "₹6.0Cr"
+        - cell "₹5.9Cr"
+        - cell "₹9.4L":
+          - strong: ₹9.4L
+        - cell "Medium":
+          - generic: Medium
+        - cell "Review":
+          - link "Review":
+            - /url: /projects/riverfront-residences
+            - text: Review
+      - row "Sunrise Heights Mumbai ₹7.8Cr ₹4.4Cr ₹4.4Cr — Verified Review":
+        - cell "Sunrise Heights Mumbai":
+          - strong: Sunrise Heights
+          - generic: Mumbai
+        - cell "₹7.8Cr"
+        - cell "₹4.4Cr"
+        - cell "₹4.4Cr"
+        - cell "—":
+          - strong: —
+        - cell "Verified":
+          - generic: Verified
+        - cell "Review":
+          - link "Review":
+            - /url: /projects/sunrise-heights
+            - text: Review
+      - row "Greenview Residency Pune ₹13.8Cr ₹9.3Cr ₹9.3Cr — Verified Review":
+        - cell "Greenview Residency Pune":
+          - strong: Greenview Residency
+          - generic: Pune
+        - cell "₹13.8Cr"
+        - cell "₹9.3Cr"
+        - cell "₹9.3Cr"
+        - cell "—":
+          - strong: —
+        - cell "Verified":
+          - generic: Verified
+        - cell "Review":
+          - link "Review":
+            - /url: /projects/greenview-residency
+            - text: Review
+      - row "Urban Vista Hyderabad ₹10.7Cr ₹7.1Cr ₹7.1Cr — Verified Review":
+        - cell "Urban Vista Hyderabad":
+          - strong: Urban Vista
+          - generic: Hyderabad
+        - cell "₹10.7Cr"
+        - cell "₹7.1Cr"
+        - cell "₹7.1Cr"
+        - cell "—":
+          - strong: —
+        - cell "Verified":
+          - generic: Verified
+        - cell "Review":
+          - link "Review":
+            - /url: /projects/urban-vista
+            - text: Review
+  - strong: Human review required
+  - paragraph: Clario flags accounting discrepancies based on demo records. It does not access live bank accounts, execute transactions, or determine legal compliance.
+- button "Open Ask Clario":
+  - generic: Ask Clario
+- complementary:
+  - strong: Ask Clario
+  - generic: Risk & compliance copilot
+  - button:
+  - generic: Answers use this demo workspace only. Clario does not provide legal advice.
+  - button:
+    - text: What needs my attention today?
+  - button:
+    - text: Why is Skyline Towers high risk?
+  - button:
+    - text: Show variances above ₹10 lakh
+  - button:
+    - text: Which certificates expire soon?
+  - generic: What needs my attention today?
+  - generic: This week’s priority
+  - heading [level=3]: Start with Skyline Towers, then Sunrise Heights.
+  - paragraph: Skyline combines a 5-day filing deadline, incomplete certification, an ₹18 lakh variance, and progress slippage. Sunrise Heights follows because its Form 4 renewal window closes in 3 days.
+  - link:
+    - /url: /projects/skyline-towers
+    - text: View project
+  - button: Create action plan
+  - textbox:
+    - /placeholder: Ask about projects, risks or deadlines…
+  - button:
+- alert: Clario — RERA Risk Control Tower

@@ -1,0 +1,92 @@
+- banner:
+  - button "Arjun":
+    - img "Arjun"
+  - generic: GharOS
+  - button "Notifications":
+- main:
+  - button:
+  - generic: Oct 23 - Oct 29
+  - button:
+  - heading "PRODUCTIVITY" [level=2]
+  - paragraph: Chores Completed
+  - generic: "24"
+  - generic: +4 from last week
+  - 'generic "M: 3 chores completed"'
+  - generic: M
+  - 'generic "T: 5 chores completed"'
+  - generic: T
+  - 'generic "W: 2 chores completed"'
+  - generic: W
+  - 'generic "T: 7 chores completed"'
+  - generic: T
+  - 'generic "F: 4 chores completed"'
+  - generic: F
+  - 'generic "S: 8 chores completed"'
+  - generic: S
+  - 'generic "S: 2 chores completed"'
+  - generic: S
+  - img "Arjun"
+  - paragraph: TOP CONTRIBUTOR
+  - heading "Arjun" [level=3]
+  - paragraph: Completed 12 chores this week.
+  - heading "FINANCES" [level=2]
+  - paragraph: Total Outflow
+  - paragraph: ₹12,201
+  - generic: Bills Paid
+  - generic: ₹5,750
+  - generic: Staff Payments
+  - generic: ₹6,451
+  - paragraph: Upcoming Next Week
+  - paragraph: "Staff Salaries: ₹46,500 due in 3 days"
+  - paragraph: EFFICIENCY SCORE
+  - heading "23 Chores Completed" [level=4]
+  - paragraph: House running at optimal efficiency.
+  - heading "Manage Daily & Weekly Chores" [level=3]
+  - button "Add Chore":
+    - generic: Add Chore
+  - button "All"
+  - button "Arjun"
+  - button "Priya"
+  - button "Kamla Di"
+  - button "Raju"
+  - checkbox "Watering Plants Arjun morning"
+  - paragraph: Watering Plants
+  - generic: Arjun
+  - generic: morning
+  - checkbox "Loading Dishwasher Priya evening"
+  - paragraph: Loading Dishwasher
+  - generic: Priya
+  - generic: evening
+  - checkbox "Garbage Segregation (Dry & Wet) Arjun morning" [checked]
+  - paragraph: Garbage Segregation (Dry & Wet)
+  - generic: Arjun
+  - generic: morning
+  - checkbox "Grocery Restock (Dals & Spices) Priya afternoon" [checked]
+  - paragraph: Grocery Restock (Dals & Spices)
+  - generic: Priya
+  - generic: afternoon
+  - checkbox "RO Water Filter Membrane Check Arjun anytime"
+  - paragraph: RO Water Filter Membrane Check
+  - generic: Arjun
+  - generic: anytime
+  - checkbox "Kitchen Deep Clean & Chimney Sweep Kamla Di afternoon" [checked]
+  - paragraph: Kitchen Deep Clean & Chimney Sweep
+  - generic: Kamla Di
+  - generic: afternoon
+- navigation:
+  - button "Home":
+    - generic: Home
+  - button "1 Bills":
+    - generic: "1"
+    - generic: Bills
+  - button "Staff":
+    - generic: Staff
+  - button "Spends":
+    - generic: Spends
+  - button "Chores" [active]:
+    - generic: Chores
+  - button "Directory":
+    - generic: Directory
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

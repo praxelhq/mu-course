@@ -1,0 +1,131 @@
+- navigation:
+  - generic "Chief of Staff": CS
+  - heading "Founder's Office" [level=1]
+  - paragraph: Executive Control
+  - button "add New Request":
+    - generic: add
+    - text: New Request
+  - link "dashboard Dashboard B":
+    - /url: /brief
+    - generic: dashboard
+    - text: Dashboard
+    - generic: B
+  - link "bolt Triage T":
+    - /url: /
+    - generic: bolt
+    - text: Triage
+    - generic: T
+  - link "group Team A":
+    - /url: /archives
+    - generic: group
+    - text: Team
+    - generic: A
+  - link "psychology Intelligence I":
+    - /url: /intelligence
+    - generic: psychology
+    - text: Intelligence
+    - generic: I
+  - link "help Help":
+    - /url: "#"
+    - generic: help
+    - text: Help
+  - link "logout Logout":
+    - /url: "#"
+    - generic: logout
+    - text: Logout
+- banner:
+  - navigation:
+    - link "Daily Input":
+      - /url: /
+    - link "Daily Brief":
+      - /url: /brief
+    - link "Archives":
+      - /url: /archives
+  - generic: System Ready
+  - button "Notifications":
+    - generic: notifications
+  - button "Settings":
+    - generic: settings
+  - button "auto_awesome Generate Brief":
+    - generic: auto_awesome
+    - text: Generate Brief
+- main:
+  - heading "Signal Intake" [level=2]
+  - paragraph: Paste unformatted data, transcripts, or notes. The system will categorize, extract action items, and prepare them for the Daily Brief.
+  - generic: group
+  - text: "Active Team Roster: 6 Members"
+  - button "format_align_left Raw Text":
+    - generic: format_align_left
+    - text: Raw Text
+  - button "link URL Scraper":
+    - generic: link
+    - text: URL Scraper
+  - button "attach_file File Drop":
+    - generic: attach_file
+    - text: File Drop
+  - generic: Auto-saving...
+  - generic: "Sample Data:"
+  - button "forum + Slack Thread":
+    - generic: forum
+    - text: + Slack Thread
+  - button "mark_email_unread + Email Escalation":
+    - generic: mark_email_unread
+    - text: + Email Escalation
+  - button "graphic_eq + Voice Note":
+    - generic: graphic_eq
+    - text: + Voice Note
+  - 'textbox "Paste Slack threads, emails, meeting transcripts, or unstructured notes here... Examples: - Slack thread from Product Team re: Q3 Roadmap delays - Forwarded email from CFO outlining revised budget constraints - Quick voice memo transcription: ''Need to follow up with Sarah on hiring timeline for Lead Engineer''"':
+    - /placeholder: "Paste Slack threads, emails, meeting transcripts, or unstructured notes here...\n\nExamples:\n- Slack thread from Product Team re: Q3 Roadmap delays\n- Forwarded email from CFO outlining revised budget constraints\n- Quick voice memo transcription: 'Need to follow up with Sarah on hiring timeline for Lead Engineer'"
+    - text: Synthetic review only. Founder must approve the demo launch plan by Friday. The design team can update the sample icon next week. FYI the fictional practice workshop is complete.
+  - generic: sell
+  - text: Urgent
+  - generic: sell
+  - text: For Review
+  - button "auto_awesome Triaging..." [disabled]:
+    - generic: auto_awesome
+    - text: Triaging...
+  - heading "Pending Extraction" [level=3]
+  - generic: 10:42 AM
+  - paragraph: "Transcript: Weekly Sync with Engineering Leads regarding infrastructure scale..."
+  - generic: 09:15 AM
+  - paragraph: "Fwd: Q2 Board Deck - V3 Draft (Review required before Friday)"
+  - generic: 08:51 AM
+  - paragraph: "Slack: #gtm-launch — pricing page copy needs founder sign-off"
+  - button "View all pending (4)"
+  - heading "info Intake Guidelines" [level=3]:
+    - generic: info
+    - text: Intake Guidelines
+  - list:
+    - listitem: The AI will automatically identify entities, action items, and sentiment.
+    - text: For extreme urgency, prefix your paste with
+    - code: "URGENT:"
+    - listitem: Multiple distinct threads can be pasted sequentially; separate them with line breaks.
+  - heading "Recent Intake Submissions" [level=3]
+  - paragraph: Last 7 days of triaged signals and their outcomes
+  - button "filter_list Filter":
+    - generic: filter_list
+    - text: Filter
+  - generic: Urgent
+  - generic: Today
+  - 'heading "Slack: #product-roadmap" [level=4]'
+  - paragraph: 14 messages · Roadmap decision scheduled
+  - generic: Delegate
+  - generic: Today
+  - 'heading "Email: Acme Corp MSA" [level=4]'
+  - paragraph: 3 redlines · Forwarded to Legal
+  - generic: FYI
+  - generic: Yesterday
+  - 'heading "Voice: Hiring & Burn" [level=4]'
+  - paragraph: 2 action items · Added to Brief
+  - generic: FYI
+  - generic: Yesterday
+  - 'heading "URL: Competitor Pricing" [level=4]'
+  - paragraph: 1,284 words · GTM review requested
+- region "Notifications alt+T":
+  - list:
+    - generic: Triaging signal with AI...
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3t65c2nqp591faxrcsh38ry1gp?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

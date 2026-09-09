@@ -1,0 +1,37 @@
+- banner:
+  - link "PriceCheck":
+    - /url: /
+    - generic: shopping_basket
+    - text: PriceCheck
+  - navigation:
+    - link "Home":
+      - /url: /
+    - link "How it works":
+      - /url: /how-it-works
+  - generic: location_on
+  - text: Gurgaon, India
+- main:
+  - heading "Are you paying too much for your groceries?" [level=1]
+  - paragraph: Enter a product name and compare live prices across India's top quick-commerce apps.
+  - generic: search
+  - generic: Product name
+  - textbox "Product name":
+    - /placeholder: e.g. Aashirvaad Atta 5 kg, Amul Milk, Maggi noodles...
+  - button "Compare Prices":
+    - generic: search
+    - text: Compare Prices
+  - button "Aashirvaad Atta 5 kg"
+  - button "Amul Milk"
+  - button "Tata Salt"
+  - paragraph: COMPARE ACROSS SUPPORTED APPS
+  - generic: Z
+  - generic: Zepto
+  - generic: B
+  - generic: Blinkit
+  - generic: I
+  - generic: Instamart
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6wnfg55ywa9psrx8gg06f6zhak?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

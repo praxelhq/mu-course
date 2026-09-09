@@ -1,0 +1,51 @@
+- banner:
+  - button "BrainBreak 2 Min Your 2-minute escape.":
+    - generic: BrainBreak
+    - generic: 2 Min
+    - paragraph: Your 2-minute escape.
+  - navigation:
+    - button "Home":
+      - generic: Home
+    - button "Categories":
+      - generic: Categories
+  - 'generic "Current Daily Streak: 0 days"':
+    - text: "0"
+    - generic: days
+  - 'generic "Total XP: 0 XP (Level 1: Mind Wanderer)"':
+    - generic: 0 XP
+  - button "Mute sound effects":
+  - button "🐱 Demo Learner L1":
+    - generic: 🐱
+    - generic: Demo Learner
+    - generic: L1
+- main:
+  - generic: Quick Mental Break
+  - generic: Question 5 of 5
+  - generic: 1:53
+  - button "Leave Quiz":
+  - generic: Question 5
+  - heading "Which country is home to the ancient ruins of Machu Picchu?" [level=2]
+  - button "A Ecuador" [disabled]:
+    - generic: A
+    - generic: Ecuador
+  - button "B Peru" [disabled]:
+    - generic: B
+    - generic: Peru
+  - button "C Chile" [disabled]:
+    - generic: C
+    - generic: Chile
+  - button "D Colombia" [disabled]:
+    - generic: D
+    - generic: Colombia
+  - paragraph: Correct! +10 XP
+  - paragraph: Machu Picchu is a 15th-century Inca citadel located in the Eastern Cordillera of southern Peru.
+  - paragraph: "💡 Mini Mind Fact: The stones fit together so tightly without mortar that even a credit card cannot slide between them."
+  - button "Finish Quiz & See Results":
+    - generic: Finish Quiz & See Results
+- contentinfo:
+  - paragraph: © 2026 BrainBreak • Quick 2-Minute Student Mental Refresh
+  - generic: Non-Stressful Quiz System
+  - generic: •
+  - generic: Zero Data Collection
+  - generic: •
+  - generic: Offline Ready

@@ -1,0 +1,499 @@
+- complementary:
+  - link "FactoryFlow AI Shreeji Precision Works":
+    - /url: /
+    - paragraph: FactoryFlow AI
+    - paragraph: Shreeji Precision Works
+  - navigation:
+    - paragraph: Shop floor
+    - link "Dashboard":
+      - /url: /
+      - text: Dashboard
+    - link "Production":
+      - /url: /production
+      - text: Production
+    - link "Customer Schedule":
+      - /url: /schedule
+      - text: Customer Schedule
+    - link "Machines":
+      - /url: /machines
+      - text: Machines
+    - link "Downtime":
+      - /url: /downtime
+      - text: Downtime
+    - link "Maintenance":
+      - /url: /maintenance
+      - text: Maintenance
+    - link "Quality":
+      - /url: /quality
+      - text: Quality
+    - link "Job Work":
+      - /url: /job-work
+      - text: Job Work
+    - link "Inventory":
+      - /url: /inventory
+      - text: Inventory
+    - paragraph: Money
+    - link "Sales & Receivables":
+      - /url: /sales
+      - text: Sales & Receivables
+    - link "Purchase & Payables":
+      - /url: /purchase
+      - text: Purchase & Payables
+    - link "Cash View":
+      - /url: /cash
+      - text: Cash View
+    - link "Compliance":
+      - /url: /compliance
+      - text: Compliance
+    - paragraph: Run the business
+    - link "Tasks":
+      - /url: /tasks
+      - text: Tasks
+    - link "Analytics":
+      - /url: /analytics
+      - text: Analytics
+    - link "Reports":
+      - /url: /reports
+      - text: Reports
+    - link "AI Assistant":
+      - /url: /assistant
+      - text: AI Assistant
+    - link "Integrations":
+      - /url: /integrations
+      - text: Integrations
+    - link "Settings":
+      - /url: /settings
+      - text: Settings
+  - link "RK Rajesh Kulkarni Works Manager":
+    - /url: /profile
+    - generic: RK
+    - generic: Rajesh Kulkarni
+    - generic: Works Manager
+  - link "Pricing & product page →":
+    - /url: /welcome
+- banner:
+  - textbox "Search part, challan, invoice, heat number…"
+  - button "English"
+  - button "हिंदी"
+  - button "मराठी"
+  - generic "All entries synced":
+    - text: Online
+  - button "Toggle dark mode":
+  - link "Notifications":
+    - /url: /notifications
+    - generic: "4"
+  - link "Ask AI":
+    - /url: /assistant
+    - generic: Ask AI
+- main:
+  - navigation:
+    - link "FactoryFlow":
+      - /url: /
+    - generic: Production
+  - heading "Production" [level=1]
+  - paragraph: 23 records · rolling 30 days
+  - button "Export CSV":
+    - text: Export CSV
+  - button "New entry":
+    - text: New entry
+  - textbox "Search product, operator, machine…" [active]: Flange
+  - combobox "Plant":
+    - 'option "Plant: All" [selected]'
+    - option "Shreeji Precision Works"
+  - combobox "Shift":
+    - 'option "Shift: All" [selected]'
+    - option "Shift A (07:00–15:30)"
+    - option "Shift B (15:30–00:00)"
+    - option "Shift C (00:00–07:00)"
+  - table:
+    - rowgroup:
+      - row "Date Plant / Line Machine Product Shift Operator Target Actual Rejected Hrs":
+        - columnheader "Date"
+        - columnheader "Plant / Line"
+        - columnheader "Machine"
+        - columnheader "Product"
+        - columnheader "Shift"
+        - columnheader "Operator"
+        - columnheader "Target"
+        - columnheader "Actual"
+        - columnheader "Rejected"
+        - columnheader "Hrs"
+        - columnheader
+    - rowgroup:
+      - row "22-08-2026 Shreeji Precision Works Line 1 — Machining CNC Turning Centre TC-1 (Jyoti) Flange Yoke FY-108 C Meena Patil 842 660 8 7 Edit Delete record":
+        - cell "22-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "CNC Turning Centre TC-1 (Jyoti)"
+        - cell "Flange Yoke FY-108"
+        - cell "C"
+        - cell "Meena Patil"
+        - cell "842"
+        - cell "660"
+        - cell "8"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "19-08-2026 Shreeji Precision Works Line 1 — Machining CNC Turning Centre TC-1 (Jyoti) Flange Yoke FY-108 C Santosh More 371 393 7 8 Edit Delete record":
+        - cell "19-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "CNC Turning Centre TC-1 (Jyoti)"
+        - cell "Flange Yoke FY-108"
+        - cell "C"
+        - cell "Santosh More"
+        - cell "371"
+        - cell "393"
+        - cell "7"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "15-08-2026 Shreeji Precision Works Line 3 — Weld & Finish LPG Heat-Treat Furnace HT-1 Flange Yoke FY-108 C Vaishali Jadhav 559 580 6 8 Edit Delete record":
+        - cell "15-08-2026"
+        - cell "Shreeji Precision Works Line 3 — Weld & Finish":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 3 — Weld & Finish
+        - cell "LPG Heat-Treat Furnace HT-1"
+        - cell "Flange Yoke FY-108"
+        - cell "C"
+        - cell "Vaishali Jadhav"
+        - cell "559"
+        - cell "580"
+        - cell "6"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "14-08-2026 Shreeji Precision Works Line 2 — Press Shop Power Press 60T (Rajesh Machines) Flange Yoke FY-108 B Sunita Deshmukh 326 267 0 8 Edit Delete record":
+        - cell "14-08-2026"
+        - cell "Shreeji Precision Works Line 2 — Press Shop":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 2 — Press Shop
+        - cell "Power Press 60T (Rajesh Machines)"
+        - cell "Flange Yoke FY-108"
+        - cell "B"
+        - cell "Sunita Deshmukh"
+        - cell "326"
+        - cell "267"
+        - cell "0"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "13-08-2026 Shreeji Precision Works Line 3 — Weld & Finish LPG Heat-Treat Furnace HT-1 Flange Yoke FY-108 B Meena Patil 656 575 10 6 Edit Delete record":
+        - cell "13-08-2026"
+        - cell "Shreeji Precision Works Line 3 — Weld & Finish":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 3 — Weld & Finish
+        - cell "LPG Heat-Treat Furnace HT-1"
+        - cell "Flange Yoke FY-108"
+        - cell "B"
+        - cell "Meena Patil"
+        - cell "656"
+        - cell "575"
+        - cell "10"
+        - cell "6"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "12-08-2026 Shreeji Precision Works Line 2 — Press Shop Power Press 100T (Isgec) Flange Yoke FY-108 A Rajesh Kulkarni 849 711 5 6 Edit Delete record":
+        - cell "12-08-2026"
+        - cell "Shreeji Precision Works Line 2 — Press Shop":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 2 — Press Shop
+        - cell "Power Press 100T (Isgec)"
+        - cell "Flange Yoke FY-108"
+        - cell "A"
+        - cell "Rajesh Kulkarni"
+        - cell "849"
+        - cell "711"
+        - cell "5"
+        - cell "6"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "09-08-2026 Shreeji Precision Works Line 1 — Machining Conventional Lathe L-2 (Kirloskar) Flange Yoke FY-108 A Vaishali Jadhav 822 720 5 7 Edit Delete record":
+        - cell "09-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Conventional Lathe L-2 (Kirloskar)"
+        - cell "Flange Yoke FY-108"
+        - cell "A"
+        - cell "Vaishali Jadhav"
+        - cell "822"
+        - cell "720"
+        - cell "5"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "08-08-2026 Shreeji Precision Works Line 1 — Machining Conventional Lathe L-2 (Kirloskar) Flange Yoke FY-108 B Vaishali Jadhav 183 153 5 7 Edit Delete record":
+        - cell "08-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Conventional Lathe L-2 (Kirloskar)"
+        - cell "Flange Yoke FY-108"
+        - cell "B"
+        - cell "Vaishali Jadhav"
+        - cell "183"
+        - cell "153"
+        - cell "5"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "08-08-2026 Shreeji Precision Works Line 3 — Weld & Finish LPG Heat-Treat Furnace HT-1 Flange Yoke FY-108 A Sunita Deshmukh 777 780 18 8 Edit Delete record":
+        - cell "08-08-2026"
+        - cell "Shreeji Precision Works Line 3 — Weld & Finish":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 3 — Weld & Finish
+        - cell "LPG Heat-Treat Furnace HT-1"
+        - cell "Flange Yoke FY-108"
+        - cell "A"
+        - cell "Sunita Deshmukh"
+        - cell "777"
+        - cell "780"
+        - cell "18"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "07-08-2026 Shreeji Precision Works Line 1 — Machining Radial Drill RD-1 Flange Yoke FY-108 B Imran Shaikh 375 393 0 7 Edit Delete record":
+        - cell "07-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Radial Drill RD-1"
+        - cell "Flange Yoke FY-108"
+        - cell "B"
+        - cell "Imran Shaikh"
+        - cell "375"
+        - cell "393"
+        - cell "0"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "07-08-2026 Shreeji Precision Works Line 2 — Press Shop Power Press 60T (Rajesh Machines) Flange Yoke FY-108 A Santosh More 292 307 0 7 Edit Delete record":
+        - cell "07-08-2026"
+        - cell "Shreeji Precision Works Line 2 — Press Shop":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 2 — Press Shop
+        - cell "Power Press 60T (Rajesh Machines)"
+        - cell "Flange Yoke FY-108"
+        - cell "A"
+        - cell "Santosh More"
+        - cell "292"
+        - cell "307"
+        - cell "0"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "06-08-2026 Shreeji Precision Works Line 3 — Weld & Finish Shot Blasting Cabinet SB-1 Flange Yoke FY-108 B Prakash Bhosale 318 330 0 8 Edit Delete record":
+        - cell "06-08-2026"
+        - cell "Shreeji Precision Works Line 3 — Weld & Finish":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 3 — Weld & Finish
+        - cell "Shot Blasting Cabinet SB-1"
+        - cell "Flange Yoke FY-108"
+        - cell "B"
+        - cell "Prakash Bhosale"
+        - cell "318"
+        - cell "330"
+        - cell "0"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "06-08-2026 Shreeji Precision Works Line 1 — Machining Conventional Lathe L-1 (HMT) Flange Yoke FY-108 C Prakash Bhosale 730 757 18 8 Edit Delete record":
+        - cell "06-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Conventional Lathe L-1 (HMT)"
+        - cell "Flange Yoke FY-108"
+        - cell "C"
+        - cell "Prakash Bhosale"
+        - cell "730"
+        - cell "757"
+        - cell "18"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "05-08-2026 Shreeji Precision Works Line 1 — Machining Conventional Lathe L-1 (HMT) Flange Yoke FY-108 A Imran Shaikh 680 612 9 6 Edit Delete record":
+        - cell "05-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Conventional Lathe L-1 (HMT)"
+        - cell "Flange Yoke FY-108"
+        - cell "A"
+        - cell "Imran Shaikh"
+        - cell "680"
+        - cell "612"
+        - cell "9"
+        - cell "6"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "04-08-2026 Shreeji Precision Works Line 1 — Machining Conventional Lathe L-1 (HMT) Flange Yoke FY-108 B Sunita Deshmukh 676 639 6 8 Edit Delete record":
+        - cell "04-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Conventional Lathe L-1 (HMT)"
+        - cell "Flange Yoke FY-108"
+        - cell "B"
+        - cell "Sunita Deshmukh"
+        - cell "676"
+        - cell "639"
+        - cell "6"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "03-08-2026 Shreeji Precision Works Line 1 — Machining CNC VMC-1 (Ace Micromatic) Flange Yoke FY-108 B Sunita Deshmukh 573 483 16 8 Edit Delete record":
+        - cell "03-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "CNC VMC-1 (Ace Micromatic)"
+        - cell "Flange Yoke FY-108"
+        - cell "B"
+        - cell "Sunita Deshmukh"
+        - cell "573"
+        - cell "483"
+        - cell "16"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "02-08-2026 Shreeji Precision Works Line 1 — Machining CNC VMC-1 (Ace Micromatic) Flange Yoke FY-108 A Meena Patil 820 718 7 7 Edit Delete record":
+        - cell "02-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "CNC VMC-1 (Ace Micromatic)"
+        - cell "Flange Yoke FY-108"
+        - cell "A"
+        - cell "Meena Patil"
+        - cell "820"
+        - cell "718"
+        - cell "7"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "02-08-2026 Shreeji Precision Works Line 1 — Machining Radial Drill RD-1 Flange Yoke FY-108 C Santosh More 318 319 4 7 Edit Delete record":
+        - cell "02-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Radial Drill RD-1"
+        - cell "Flange Yoke FY-108"
+        - cell "C"
+        - cell "Santosh More"
+        - cell "318"
+        - cell "319"
+        - cell "4"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "30-07-2026 Shreeji Precision Works Line 1 — Machining CNC VMC-2 (Ace Micromatic) Flange Yoke FY-108 B Ganesh Pawar 230 236 8 7 Edit Delete record":
+        - cell "30-07-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "CNC VMC-2 (Ace Micromatic)"
+        - cell "Flange Yoke FY-108"
+        - cell "B"
+        - cell "Ganesh Pawar"
+        - cell "230"
+        - cell "236"
+        - cell "8"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "28-07-2026 Shreeji Precision Works Line 1 — Machining CNC Turning Centre TC-1 (Jyoti) Flange Yoke FY-108 A Rajesh Kulkarni 849 711 17 6 Edit Delete record":
+        - cell "28-07-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "CNC Turning Centre TC-1 (Jyoti)"
+        - cell "Flange Yoke FY-108"
+        - cell "A"
+        - cell "Rajesh Kulkarni"
+        - cell "849"
+        - cell "711"
+        - cell "17"
+        - cell "6"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "28-07-2026 Shreeji Precision Works Line 3 — Weld & Finish LPG Heat-Treat Furnace HT-1 Flange Yoke FY-108 A Vaishali Jadhav 763 719 17 8 Edit Delete record":
+        - cell "28-07-2026"
+        - cell "Shreeji Precision Works Line 3 — Weld & Finish":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 3 — Weld & Finish
+        - cell "LPG Heat-Treat Furnace HT-1"
+        - cell "Flange Yoke FY-108"
+        - cell "A"
+        - cell "Vaishali Jadhav"
+        - cell "763"
+        - cell "719"
+        - cell "17"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "27-07-2026 Shreeji Precision Works Line 1 — Machining Conventional Lathe L-2 (Kirloskar) Flange Yoke FY-108 B Imran Shaikh 495 463 3 6 Edit Delete record":
+        - cell "27-07-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Conventional Lathe L-2 (Kirloskar)"
+        - cell "Flange Yoke FY-108"
+        - cell "B"
+        - cell "Imran Shaikh"
+        - cell "495"
+        - cell "463"
+        - cell "3"
+        - cell "6"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "26-07-2026 Shreeji Precision Works Line 2 — Press Shop Power Press 60T (Rajesh Machines) Flange Yoke FY-108 A Meena Patil 839 866 0 8 Edit Delete record":
+        - cell "26-07-2026"
+        - cell "Shreeji Precision Works Line 2 — Press Shop":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 2 — Press Shop
+        - cell "Power Press 60T (Rajesh Machines)"
+        - cell "Flange Yoke FY-108"
+        - cell "A"
+        - cell "Meena Patil"
+        - cell "839"
+        - cell "866"
+        - cell "0"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+- button "Quick Log":
+  - text: Quick Log
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_10hdg7xyw99tpa64t0nz744v7b?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: "6000"

@@ -1,0 +1,305 @@
+- complementary:
+  - link "C Clario":
+    - /url: /dashboard
+    - generic: C
+    - generic: Clario
+  - generic: AR
+  - strong: Apex Realty
+  - generic: 12 active projects
+  - navigation:
+    - generic: Monitor
+    - link "Portfolio":
+      - /url: /dashboard
+      - generic: Portfolio
+    - link "Risk Radar" [active]:
+      - /url: /risk-radar
+      - generic: Risk Radar
+    - link "Calendar":
+      - /url: /calendar
+      - generic: Calendar
+    - generic: Intelligence
+    - link "Documents":
+      - /url: /documents
+      - generic: Documents
+    - link "Finance":
+      - /url: /finance
+      - generic: Finance
+    - link "Progress":
+      - /url: /progress
+      - generic: Progress
+    - generic: Work
+    - link "Tasks 14":
+      - /url: /tasks
+      - generic: Tasks
+      - emphasis: "14"
+  - generic: Internal indicator
+  - paragraph: The Clario Health Score is not an official RERA score.
+  - generic: AM
+  - strong: Ananya Mehta
+  - generic: Compliance Head
+- generic: Prototype workspace
+- text: Fictional project data for product demonstration
+- banner:
+  - button "Search projects, risks or ask Clario… ⌘ K":
+    - generic: Search projects, risks or ask Clario…
+    - generic: ⌘ K
+  - strong: Tuesday
+  - generic: 25 Aug 2026
+  - button "Notifications":
+- main:
+  - generic: Action management
+  - heading "Turn risk into work." [level=1]
+  - paragraph: Assign the next action, set a deadline and close the loop back to project health.
+  - button "Create task":
+    - text: Create task
+  - text: Open
+  - strong: "12"
+  - generic: tasks
+  - text: In progress
+  - strong: "2"
+  - generic: tasks
+  - text: High priority
+  - strong: "3"
+  - generic: tasks
+  - text: Completed
+  - strong: "0"
+  - generic: tasks
+  - textbox "Search task, project or owner…"
+  - combobox:
+    - option "All projects" [selected]
+    - option "Skyline Towers"
+    - option "Sunrise Heights"
+    - option "Greenview Residency"
+    - option "Riverfront Residences"
+    - option "Urban Vista"
+    - option "Lakeview Heights"
+    - option "Palm Grove"
+    - option "Emerald Enclave"
+    - option "Cedar Square"
+    - option "The Arc"
+    - option "Bluebell Estate"
+    - option "Meridian Heights"
+  - button "All"
+  - button "Open"
+  - button "In Progress"
+  - button "Completed"
+  - table:
+    - rowgroup:
+      - row "Task Project Owner Priority Due Status":
+        - columnheader "Task"
+        - columnheader "Project"
+        - columnheader "Owner"
+        - columnheader "Priority"
+        - columnheader "Due"
+        - columnheader "Status"
+        - columnheader
+    - rowgroup:
+      - row "Escalate Form 4 renewal pack Approval window closes this week. Sunrise Heights Legal Team High 26 Aug In Progress Complete task":
+        - cell "Escalate Form 4 renewal pack Approval window closes this week.":
+          - strong: Escalate Form 4 renewal pack
+          - generic: Approval window closes this week.
+        - cell "Sunrise Heights"
+        - cell "Legal Team"
+        - cell "High":
+          - generic: High
+        - cell "26 Aug"
+        - cell "In Progress":
+          - generic: In Progress
+        - cell "Complete task":
+          - button "Complete task":
+      - row "Collect architect certificate Required for the current progress filing. Sunrise Heights Project Team High 28 Aug Open Complete task":
+        - cell "Collect architect certificate Required for the current progress filing.":
+          - strong: Collect architect certificate
+          - generic: Required for the current progress filing.
+        - cell "Sunrise Heights"
+        - cell "Project Team"
+        - cell "High":
+          - generic: High
+        - cell "28 Aug"
+        - cell "Open":
+          - generic: Open
+        - cell "Complete task":
+          - button "Complete task":
+      - row "Request renewed engineer certificate Certificate expires before the next filing. Greenview Residency Project Team High 29 Aug Open Complete task":
+        - cell "Request renewed engineer certificate Certificate expires before the next filing.":
+          - strong: Request renewed engineer certificate
+          - generic: Certificate expires before the next filing.
+        - cell "Greenview Residency"
+        - cell "Project Team"
+        - cell "High":
+          - generic: High
+        - cell "29 Aug"
+        - cell "Open":
+          - generic: Open
+        - cell "Complete task":
+          - button "Complete task":
+      - row "Match unmatched expenditure entries ₹9.4L remains unreconciled. Riverfront Residences Finance Team Medium 1 Sept In Progress Complete task":
+        - cell "Match unmatched expenditure entries ₹9.4L remains unreconciled.":
+          - strong: Match unmatched expenditure entries
+          - generic: ₹9.4L remains unreconciled.
+        - cell "Riverfront Residences"
+        - cell "Finance Team"
+        - cell "Medium":
+          - generic: Medium
+        - cell "1 Sept"
+        - cell "In Progress":
+          - generic: In Progress
+        - cell "Complete task":
+          - button "Complete task":
+      - row "Confirm finishing recovery dates Progress is 3% behind plan. Urban Vista Project Team Medium 4 Sept Open Complete task":
+        - cell "Confirm finishing recovery dates Progress is 3% behind plan.":
+          - strong: Confirm finishing recovery dates
+          - generic: Progress is 3% behind plan.
+        - cell "Urban Vista"
+        - cell "Project Team"
+        - cell "Medium":
+          - generic: Medium
+        - cell "4 Sept"
+        - cell "Open":
+          - generic: Open
+        - cell "Complete task":
+          - button "Complete task":
+      - row "Validate architect certificate date Date field requires confirmation. Palm Grove Compliance Team Low 10 Sept Open Complete task":
+        - cell "Validate architect certificate date Date field requires confirmation.":
+          - strong: Validate architect certificate date
+          - generic: Date field requires confirmation.
+        - cell "Palm Grove"
+        - cell "Compliance Team"
+        - cell "Low":
+          - generic: Low
+        - cell "10 Sept"
+        - cell "Open":
+          - generic: Open
+        - cell "Complete task":
+          - button "Complete task":
+      - row "Complete quarterly audit sign-off Audit pack is waiting for final review. Cedar Square Compliance Team Low 15 Sept Open Complete task":
+        - cell "Complete quarterly audit sign-off Audit pack is waiting for final review.":
+          - strong: Complete quarterly audit sign-off
+          - generic: Audit pack is waiting for final review.
+        - cell "Cedar Square"
+        - cell "Compliance Team"
+        - cell "Low":
+          - generic: Low
+        - cell "15 Sept"
+        - cell "Open":
+          - generic: Open
+        - cell "Complete task":
+          - button "Complete task":
+      - row "Send revised amenity note One approval observation remains open. Meridian Heights Legal Team Low 18 Sept Open Complete task":
+        - cell "Send revised amenity note One approval observation remains open.":
+          - strong: Send revised amenity note
+          - generic: One approval observation remains open.
+        - cell "Meridian Heights"
+        - cell "Legal Team"
+        - cell "Low":
+          - generic: Low
+        - cell "18 Sept"
+        - cell "Open":
+          - generic: Open
+        - cell "Complete task":
+          - button "Complete task":
+      - row "Review Lakeview QPR checklist Prepare the upcoming QPR in advance. Lakeview Heights Compliance Team Low 8 Sept Open Complete task":
+        - cell "Review Lakeview QPR checklist Prepare the upcoming QPR in advance.":
+          - strong: Review Lakeview QPR checklist
+          - generic: Prepare the upcoming QPR in advance.
+        - cell "Lakeview Heights"
+        - cell "Compliance Team"
+        - cell "Low":
+          - generic: Low
+        - cell "8 Sept"
+        - cell "Open":
+          - generic: Open
+        - cell "Complete task":
+          - button "Complete task":
+      - row "Archive August bank statement Maintain the monthly evidence pack. Emerald Enclave Finance Team Low 3 Sept Open Complete task":
+        - cell "Archive August bank statement Maintain the monthly evidence pack.":
+          - strong: Archive August bank statement
+          - generic: Maintain the monthly evidence pack.
+        - cell "Emerald Enclave"
+        - cell "Finance Team"
+        - cell "Low":
+          - generic: Low
+        - cell "3 Sept"
+        - cell "Open":
+          - generic: Open
+        - cell "Complete task":
+          - button "Complete task":
+      - row "Verify handover milestone evidence Keep final milestone records current. The Arc Project Team Medium 6 Sept Open Complete task":
+        - cell "Verify handover milestone evidence Keep final milestone records current.":
+          - strong: Verify handover milestone evidence
+          - generic: Keep final milestone records current.
+        - cell "The Arc"
+        - cell "Project Team"
+        - cell "Medium":
+          - generic: Medium
+        - cell "6 Sept"
+        - cell "Open":
+          - generic: Open
+        - cell "Complete task":
+          - button "Complete task":
+      - row "Review monthly project update Internal quality check before submission. Bluebell Estate Compliance Team Low 12 Sept Open Complete task":
+        - cell "Review monthly project update Internal quality check before submission.":
+          - strong: Review monthly project update
+          - generic: Internal quality check before submission.
+        - cell "Bluebell Estate"
+        - cell "Compliance Team"
+        - cell "Low":
+          - generic: Low
+        - cell "12 Sept"
+        - cell "Open":
+          - generic: Open
+        - cell "Complete task":
+          - button "Complete task":
+      - row "Confirm insurance renewal date Renewal window begins next month. Greenview Residency Legal Team Medium 7 Sept Open Complete task":
+        - cell "Confirm insurance renewal date Renewal window begins next month.":
+          - strong: Confirm insurance renewal date
+          - generic: Renewal window begins next month.
+        - cell "Greenview Residency"
+        - cell "Legal Team"
+        - cell "Medium":
+          - generic: Medium
+        - cell "7 Sept"
+        - cell "Open":
+          - generic: Open
+        - cell "Complete task":
+          - button "Complete task":
+      - row "Approve July reconciliation note Close the prior month reconciliation cycle. Riverfront Residences Finance Head Medium 31 Aug Open Complete task":
+        - cell "Approve July reconciliation note Close the prior month reconciliation cycle.":
+          - strong: Approve July reconciliation note
+          - generic: Close the prior month reconciliation cycle.
+        - cell "Riverfront Residences"
+        - cell "Finance Head"
+        - cell "Medium":
+          - generic: Medium
+        - cell "31 Aug"
+        - cell "Open":
+          - generic: Open
+        - cell "Complete task":
+          - button "Complete task":
+- button "Open Ask Clario":
+  - generic: Ask Clario
+- complementary:
+  - strong: Ask Clario
+  - generic: Risk & compliance copilot
+  - button:
+  - generic: Answers use this demo workspace only. Clario does not provide legal advice.
+  - button:
+    - text: What needs my attention today?
+  - button:
+    - text: Why is Skyline Towers high risk?
+  - button:
+    - text: Show variances above ₹10 lakh
+  - button:
+    - text: Which certificates expire soon?
+  - generic: What needs my attention today?
+  - generic: This week’s priority
+  - heading [level=3]: Start with Skyline Towers, then Sunrise Heights.
+  - paragraph: Skyline combines a 5-day filing deadline, incomplete certification, an ₹18 lakh variance, and progress slippage. Sunrise Heights follows because its Form 4 renewal window closes in 3 days.
+  - link:
+    - /url: /projects/skyline-towers
+    - text: View project
+  - button: Create action plan
+  - textbox:
+    - /placeholder: Ask about projects, risks or deadlines…
+  - button:
+- alert

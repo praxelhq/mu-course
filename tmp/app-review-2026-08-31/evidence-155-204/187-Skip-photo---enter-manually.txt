@@ -1,0 +1,71 @@
+- banner:
+  - button:
+    - generic: menu
+  - link:
+    - /url: /
+    - text: SnapCal
+  - navigation:
+    - link:
+      - /url: /
+      - generic: Dashboard
+    - link:
+      - /url: /log
+      - generic: Log
+    - link:
+      - /url: /progress
+      - generic: Progress
+    - link:
+      - /url: /settings
+      - generic: Settings
+  - button:
+- main:
+  - heading [level=1]: Food Log
+  - paragraph: Today · 860 kcal logged
+  - button:
+    - generic: add_a_photo
+    - text: Snap meal
+  - generic: Protein
+  - generic: 65/120g
+  - generic: Carbs
+  - generic: 97/210g
+  - generic: Fat
+  - generic: 24/70g
+  - article:
+    - heading [level=2]: Avocado Toast
+    - generic: 340 kcal
+    - paragraph: Breakfast · 8:15 AM
+    - generic: Estimated by photo
+    - button: Edit
+  - article:
+    - heading [level=2]: Chicken Salad
+    - generic: 520 kcal
+    - paragraph: Lunch · 1:05 PM
+    - generic: Estimated by photo
+    - button: Edit
+  - button:
+    - generic: add_a_photo
+    - generic: Add dinner
+- button:
+  - generic: photo_camera
+- region "Notifications alt+T"
+- complementary:
+  - link:
+    - /url: https://lovable.dev/projects/lovp_57yqbmn5z8889ba7daz1ktkfwq?utm_source=lovable-badge
+    - generic: Edit with
+  - button:
+- dialog "Confirm meal":
+  - heading "Confirm meal" [level=2]
+  - paragraph: We estimated this from your photo — tweak anything that looks off.
+  - generic: Meal
+  - textbox "Meal" [active]: Veggie stir fry
+  - generic: Calories
+  - spinbutton "Calories": "430"
+  - generic: Slot
+  - button "Breakfast"
+  - button "Lunch"
+  - button "Snack"
+  - button "Dinner"
+  - button "Cancel"
+  - button "Log meal"
+  - button "Close":
+    - generic: Close

@@ -1,0 +1,54 @@
+- banner:
+  - link "2C Second Customer":
+    - /url: /
+    - generic: 2C
+    - generic: Second Customer
+  - navigation:
+    - link "New analysis":
+      - /url: /analyze
+    - link "Discover":
+      - /url: /analyze
+- main:
+  - generic: Step 1 — Business input
+  - heading "Tell us about your product" [level=1]
+  - paragraph: The more context you give, the sharper the decision chain. Nothing is stored.
+  - paragraph: Try a sample business
+  - button "Children's Educational Toy"
+  - button "B2B SaaS"
+  - button "Luxury Handbag"
+  - button "Online MBA Program"
+  - button "Wedding Photography"
+  - text: Product / service name
+  - textbox "Product / service name":
+    - /placeholder: BrickLab STEM Building Kits
+    - text: BrickLab STEM Building Kits
+  - text: What does it do?
+  - textbox "What does it do?":
+    - /placeholder: Describe the product and the job it does for people.
+    - text: Modular building kits that teach children aged 5-10 basic engineering and problem solving through guided builds and open play.
+  - text: Who do you think your customer is?
+  - textbox "Who do you think your customer is?":
+    - /placeholder: Parents of primary school children
+    - text: Parents of primary school children
+  - text: Who usually pays?
+  - textbox "Who usually pays?":
+    - /placeholder: Parents, sometimes grandparents
+    - text: Parents, and sometimes grandparents as gifts
+  - text: Industry
+  - textbox "Industry":
+    - /placeholder: Consumer toys / education
+    - text: Consumer toys / education
+  - text: Business model
+  - button "B2C"
+  - button "B2B"
+  - button "B2B2C"
+  - generic: Customer reviews, survey responses or research (optional)
+  - textbox "Customer reviews, survey responses or research (optional)":
+    - /placeholder: Paste review quotes, survey answers or interview notes.
+  - button "Find My Customer Chain →"
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_22dj3c8eqm9dm9j7494bh4rzdx?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

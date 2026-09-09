@@ -1,0 +1,30 @@
+- main:
+  - button "Go back":
+  - generic: 3/5
+  - heading "✨ What's the vibe?" [level=2]
+  - paragraph: Pick up to 2.
+  - button "🍜 Foodie":
+    - text: 🍜
+    - generic: Foodie
+  - button "🫶 Chill":
+    - text: 🫶
+    - generic: Chill
+  - button "🔥 Adventure":
+    - text: 🔥
+    - generic: Adventure
+  - button "🪩 Party":
+    - text: 🪩
+    - generic: Party
+  - button "🎨 Creative":
+    - text: 🎨
+    - generic: Creative
+  - button "🎬 Entertainment":
+    - text: 🎬
+    - generic: Entertainment
+  - button "Continue" [disabled]:
+    - text: Continue
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7kh9wqajyf8xxsm9vc3sqtdh9t?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

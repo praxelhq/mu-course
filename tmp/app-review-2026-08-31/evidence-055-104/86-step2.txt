@@ -1,0 +1,23 @@
+- banner:
+  - button "Go back":
+    - generic: arrow_back
+  - generic: Step 2 of 6
+- main:
+  - heading "How much does your cigarette pack cost?" [level=1]
+  - paragraph: This powers your money-saved tracker.
+  - generic: ₹
+  - spinbutton: "350"
+  - generic: per pack
+  - paragraph:
+    - text: A pack of 20 — about
+    - strong: ₹18
+    - text: per cigarette.
+- button "Continue" [active]:
+  - text: Continue
+  - generic: arrow_forward
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_19mhcg6jxz8s9s6ch802n4v9n3?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

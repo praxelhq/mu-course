@@ -1,0 +1,46 @@
+- main:
+  - link "Back":
+    - /url: /
+  - heading "Reviews" [level=1]
+  - tablist:
+    - tab "Today"
+    - tab "This week" [active] [selected]
+  - tabpanel "This week":
+    - heading "Week in review" [level=2]
+    - paragraph: Completion rate
+    - paragraph: 9%
+    - paragraph: Focus hours
+    - paragraph: 2h 15m
+    - paragraph: Alarm success
+    - paragraph: 50%
+    - paragraph: Missed
+    - paragraph: "1"
+    - paragraph: "Best streak: Water — 9 days"
+    - paragraph: "Most problematic: Workout"
+    - img "Naggy mascot"
+    - heading "Naggy's recommendations" [level=2]
+    - list:
+      - listitem: You keep missing commitments scheduled before 8 AM. Move them to late afternoon next week.
+      - listitem: 2 snoozes this week. Turn snooze off on your wake alarm.
+- navigation:
+  - link "Today":
+    - /url: /
+    - text: Today
+  - link "Habits":
+    - /url: /habits
+    - text: Habits
+  - link "Focus":
+    - /url: /focus
+    - text: Focus
+  - link "Progress":
+    - /url: /progress
+    - text: Progress
+  - link "Naggy":
+    - /url: /naggy
+    - text: Naggy
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1y077zn9zp920rn02hgwhd1kn0?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

@@ -1,0 +1,104 @@
+- banner:
+  - generic: GL
+  - generic: GigLens
+  - generic: India
+  - button "Demo Mode":
+    - generic: Demo Mode
+  - button "Open Settings":
+    - generic: R
+    - generic: Rahul Sharma
+- complementary:
+  - generic: R
+  - paragraph: Rahul Sharma
+  - generic: Demo
+  - paragraph: Bengaluru (Koramangala & HSR)
+  - navigation:
+    - button "Home":
+      - generic: Home
+    - button "Add Shift":
+      - generic: Add Shift
+    - button "History 18":
+      - generic: History
+      - generic: "18"
+    - button "Compare":
+      - generic: Compare
+    - button "Insights":
+      - generic: Insights
+  - button "Settings & Fuel Prices" [active]:
+    - generic: Settings & Fuel Prices
+  - generic: 🛡️ Stored on device • Gemini AI analyzed
+- main:
+  - heading "Weekly Intelligence" [level=1]
+  - text: Calculated Engine
+  - paragraph: Strictly grounded in your recorded shifts. No contradictory focus slots or unsupported math.
+  - button "How AI Works":
+    - generic: How AI Works
+  - button "Analyzing..." [disabled]:
+    - generic: Analyzing...
+  - heading "Analyzing Shift Metrics with Gemini..." [level=3]
+  - paragraph: Validating net take-home formulas and matching optimal shift windows
+  - generic: 1. Aggregating shift expenses & net rates
+  - generic: 2. Auditing dark store waiting & fuel leakage
+  - generic: 3. Synthesizing weekly strategy & safety rules
+- heading "Settings & Preferences" [level=2]
+- paragraph: Vehicle costs, safety limits & data controls
+- button:
+- generic: Active Data Mode
+- text: Sample Demo Mode (Isolated)
+- button "Demo Data"
+- button "My Data"
+- heading "Rider & Vehicle Rates" [level=3]
+- text: Name
+- textbox "Name": Rahul Sharma
+- text: City / Operating Zone
+- textbox "City / Operating Zone": Bengaluru (Koramangala & HSR)
+- text: Vehicle
+- combobox "Vehicle":
+  - option "2-Wheeler (Petrol Scooter / Bike)" [selected]
+  - option "Electric 2-Wheeler (EV)"
+  - option "Bicycle (Pedal)"
+  - option "Electric Bicycle"
+  - option "Auto-Rickshaw (CNG / Petrol / EV)"
+  - option "Car / Taxi"
+- text: Fuel Type
+- combobox "Fuel Type":
+  - option "Petrol" [selected]
+  - option "Diesel"
+  - option "CNG"
+  - option "Electric (per full battery charge)"
+  - option "None (Bicycle)"
+- text: Mileage (km/L or charge)
+- spinbutton "Mileage (km/L or charge)": "42"
+- text: Fuel / Charge Price (₹)
+- spinbutton "Fuel / Charge Price (₹)": "102.8"
+- text: Maintenance Rate (₹/km)
+- spinbutton "Maintenance Rate (₹/km)": "0.6"
+- heading "Work Preferences & Safety Limits" [level=3]
+- generic: Max Daily Hours (10h)
+- slider: "10"
+- text: Warns if shift exceeds safe threshold
+- generic: Max Weekly Target (54h)
+- slider: "54"
+- text: Used for AI weekly capacity estimates
+- text: Rest Days Per Week
+- combobox:
+  - option "0 Days (Continuous)"
+  - option "1 Day per week (Recommended)" [selected]
+  - option "2 Days per week (Balanced)"
+- checkbox "Avoid late-night shifts for safety"
+- generic: Avoid late-night shifts for safety
+- button "Save All Preferences"
+- heading "Data Management & Backup" [level=3]
+- button "Export Backup (JSON)":
+  - generic: Export Backup (JSON)
+- button "Restore Backup (JSON)":
+  - generic: Restore Backup (JSON)
+- button "Reload Demo Data (18 Shifts)":
+  - generic: Reload Demo Data (18 Shifts)
+- button "Replay Onboarding Guide":
+  - generic: Replay Onboarding Guide
+- button "Clear Demo Recorded Shifts":
+  - generic: Clear Demo Recorded Shifts
+- generic: Device Storage & AI Privacy
+- paragraph: Your shift entries and financial records are stored securely in your browser's local storage. When you request AI Insights, an aggregated mathematical summary (hourly rates, fuel expenses, waiting ratios) is processed by Google's Gemini AI model to synthesize recommendations. No personal IDs or platform passwords are required or transmitted.
+- generic: ₹500

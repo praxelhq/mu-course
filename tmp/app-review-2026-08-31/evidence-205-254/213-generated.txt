@@ -1,0 +1,69 @@
+- complementary:
+  - generic: Ballpark
+  - generic: Pro
+  - generic: Consulting Career Intelligence
+  - navigation:
+    - button "Resources Guide":
+      - generic: Resources
+      - generic: Guide
+    - button "Solve Live":
+      - generic: Solve
+      - generic: Live
+    - button "Past Performance":
+      - generic: Past Performance
+  - button "Start Case":
+    - generic: Start Case
+  - generic: S
+  - generic: Student
+  - generic: McKinsey & Company
+  - button "Settings":
+    - generic: Settings
+  - button "Support & Guidelines":
+    - generic: Support & Guidelines
+- banner:
+  - heading "Practice Setup & Workspace" [level=1]
+  - generic: 7 Day Streak
+  - button "McKinsey & Company":
+    - generic: McKinsey & Company
+  - button "Notifications":
+  - button "New Session":
+    - generic: New Session
+- main:
+  - heading "Practice Setup" [level=2]
+  - paragraph: Configure a targeted session or choose from our curated MBB case library.
+  - button "Custom Practice Setup"
+  - button "Curated Case Library (4)"
+  - heading "What do you want to practice?" [level=3]
+  - paragraph: Select a core consulting framework or case type to focus your session.
+  - heading "Revenue/Profit Estimation" [level=4]
+  - paragraph: Focus on drivers of profitability, cost reduction, and pricing strategies.
+  - heading "Mathematical" [level=4]
+  - paragraph: Data interpretation, rapid mental math, and chart analysis.
+  - heading "Market Sizing" [level=4]
+  - paragraph: Guesstimation techniques, demographic proxies, and top-down vs bottom-up logic.
+  - heading "Unconventional" [level=4]
+  - paragraph: Abstract problem solving, brainteasers, and creative structuring.
+  - separator
+  - heading "Difficulty Level" [level=3]
+  - paragraph: Calibrate the complexity of the scenario and data granularity.
+  - button "easy"
+  - button "medium"
+  - button "challenging"
+  - generic: Target Region / Geography
+  - combobox:
+    - option "UK / Greater London" [selected]
+    - option "US / New York & North America"
+    - option "Europe / EU Markets"
+    - option "India & Emerging Asia"
+    - option "Global / Multi-Region"
+  - generic: Target Industry Sector
+  - combobox:
+    - option "Sports & Retail Goods" [selected]
+    - option "Hospitality, Dining & Food"
+    - option "Transit, Automotive & Energy"
+    - option "Consumer Tech & Electronics"
+    - option "Healthcare & Enterprise SaaS"
+    - option "Aviation, Logistics & Travel"
+  - generic: Powered by Gemini AI consulting case generation engine
+  - button "Generating Question..." [disabled]:
+    - generic: Generating Question...

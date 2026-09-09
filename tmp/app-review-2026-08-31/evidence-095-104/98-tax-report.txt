@@ -1,0 +1,134 @@
+- banner:
+  - button "ReceiptWise":
+    - generic: ReceiptWise
+  - navigation:
+    - button "Dashboard"
+    - button "Archive"
+    - button "Tax Reports" [active]
+    - button "Preferences"
+  - button "Manual Entry":
+    - text: Manual Entry
+  - button "Scan Receipt":
+    - text: Scan Receipt
+  - button "Notifications":
+  - button "Alex Profile":
+    - img "Alex Profile"
+- main:
+  - generic: Fiscal Intelligence
+  - heading "Financial & Tax Reports" [level=1]
+  - paragraph: Automated expense classification, month-over-month trend analytics, and Income Tax Act schedule readiness.
+  - combobox:
+    - option "August 2026" [selected]
+    - option "Q3 2026"
+    - option "Full Year 2026"
+  - button "Print Report":
+  - button "Export Tax Summary":
+    - text: Export Tax Summary
+  - text: Income Tax Act Optimization Active
+  - heading "₹19,364.00 Total Identified Deductions" [level=2]
+  - paragraph: Itemized across 5 IT Act & GST qualified corporate expenses for Aeicorp Private Limited.
+  - paragraph: Estimated Corporate Tax Savings
+  - paragraph: ~₹6,196.48
+  - paragraph: Based on 25.17% (Sec 115BAA) effective rate
+  - text: Historical Expenditure Velocity
+  - heading "Month-Over-Month Spending Trend Line" [level=3]
+  - paragraph: Trajectory of corporate cash outflow vs. qualified tax deductions across the 2026 fiscal cycle.
+  - generic: Latest MoM Shift
+  - generic: +7.9%
+  - generic: vs Jul
+  - generic: 8-Mo Benchmark
+  - generic: ₹18,214/mo
+  - button "Deductions"
+  - button "Avg Line"
+  - application:
+    - generic: Jan
+    - generic: Feb
+    - generic: Mar
+    - generic: Apr
+    - generic: May
+    - generic: Jun
+    - generic: Jul
+    - generic: Aug
+    - generic: ₹0k
+    - generic: ₹7k
+    - generic: ₹14k
+    - generic: ₹21k
+    - generic: ₹27k
+    - generic: Avg ₹18,214
+  - generic: Total Monthly Spend
+  - generic: Tax Deductible Outflow
+  - generic: 8-Month Average
+  - text: "Peak:"
+  - strong: June 2026
+  - text: (₹22,800.00)
+  - heading "Expenditures by Category" [level=3]:
+    - text: Expenditures by Category
+  - generic: ₹19,364.00 Total
+  - generic: Travel
+  - generic: ₹8,420.00 (43%)
+  - generic: Utilities
+  - generic: ₹4,120.00 (21%)
+  - generic: Office
+  - generic: ₹3,299.00 (17%)
+  - generic: Dining
+  - generic: ₹1,850.00 (10%)
+  - generic: Software
+  - generic: ₹1,675.00 (9%)
+  - heading "Income Tax Act Deductions" [level=3]:
+    - text: Income Tax Act Deductions
+  - generic: ₹19,364.00 Deductible
+  - generic: Sec 37(1) Travel & Conveyance (100%)
+  - generic: ₹8,420.00
+  - generic: Sec 30/31 Utilities & Maintenance (100%)
+  - generic: ₹4,120.00
+  - generic: Sec 37(1) Office & Operations (100%)
+  - generic: ₹3,299.00
+  - generic: Sec 37(1) Client Meetings & Hospitality (100%)
+  - generic: ₹1,850.00
+  - generic: Sec 37(1) Software & Cloud IT (100%)
+  - generic: ₹1,675.00
+  - heading "Top Merchants by Volume" [level=3]
+  - table:
+    - rowgroup:
+      - row "Merchant Name Receipts Total Amount % of Volume":
+        - columnheader "Merchant Name"
+        - columnheader "Receipts"
+        - columnheader "Total Amount"
+        - columnheader "% of Volume"
+    - rowgroup:
+      - row "1 IndiGo Airlines 1 ₹8,420.00 43.5%":
+        - cell "1 IndiGo Airlines":
+          - generic: "1"
+          - text: IndiGo Airlines
+        - cell "1"
+        - cell "₹8,420.00"
+        - cell "43.5%"
+      - row "2 Tata Power (office) 1 ₹4,120.00 21.3%":
+        - cell "2 Tata Power (office)":
+          - generic: "2"
+          - text: Tata Power (office)
+        - cell "1"
+        - cell "₹4,120.00"
+        - cell "21.3%"
+      - row "3 Reliance Digital 1 ₹3,299.00 17.0%":
+        - cell "3 Reliance Digital":
+          - generic: "3"
+          - text: Reliance Digital
+        - cell "1"
+        - cell "₹3,299.00"
+        - cell "17.0%"
+      - row "4 Cafe Coffee Day 1 ₹1,850.00 9.6%":
+        - cell "4 Cafe Coffee Day":
+          - generic: "4"
+          - text: Cafe Coffee Day
+        - cell "1"
+        - cell "₹1,850.00"
+        - cell "9.6%"
+      - row "5 Adobe Creative Cloud 1 ₹1,675.00 8.7%":
+        - cell "5 Adobe Creative Cloud":
+          - generic: "5"
+          - text: Adobe Creative Cloud
+        - cell "1"
+        - cell "₹1,675.00"
+        - cell "8.7%"
+- generic: ₹0k

@@ -1,0 +1,193 @@
+- banner:
+  - link "FirstStep Legal AI":
+    - /url: /
+    - generic: gavel
+    - generic: FirstStep Legal AI
+  - button "en":
+    - generic: translate
+    - generic: en
+  - button "Account menu":
+    - generic: person_outline
+- main:
+  - paragraph: Get help
+  - heading "Get help" [level=1]
+  - paragraph: FirstStep Legal AI provides legal information, not legal advice. Not reviewed by a lawyer.
+  - region "Check eligibility":
+    - heading "Check eligibility" [level=2]
+    - paragraph: Based on Section 12, Legal Services Authorities Act, 1987. Tick everything that applies. Nothing you tick here is sent anywhere.
+    - list:
+      - checkbox "I am a woman or a child (under 18)"
+      - generic: I am a woman or a child (under 18)
+      - checkbox "I belong to a Scheduled Caste or Scheduled Tribe"
+      - generic: I belong to a Scheduled Caste or Scheduled Tribe
+      - checkbox "I am a person with a disability"
+      - generic: I am a person with a disability
+      - checkbox "I am a victim of trafficking or beggar (forced labour)"
+      - generic: I am a victim of trafficking or beggar (forced labour)
+      - checkbox "I am an industrial workman"
+      - generic: I am an industrial workman
+      - checkbox "I am in custody, a protective home, a juvenile home or a psychiatric facility"
+      - generic: I am in custody, a protective home, a juvenile home or a psychiatric facility
+      - checkbox "I am affected by a mass disaster, caste violence, flood, drought, earthquake or industrial disaster"
+      - generic: I am affected by a mass disaster, caste violence, flood, drought, earthquake or industrial disaster
+      - checkbox "My annual income is below my state's legal-aid income limit"
+      - generic: My annual income is below my state's legal-aid income limit
+    - text: Your state (used only to show the right authority)
+    - combobox "Your state (used only to show the right authority)":
+      - option "Select a state or union territory" [selected]
+      - option "Andhra Pradesh"
+      - option "Arunachal Pradesh"
+      - option "Assam"
+      - option "Bihar"
+      - option "Chhattisgarh"
+      - option "Delhi (NCT)"
+      - option "Goa"
+      - option "Gujarat"
+      - option "Haryana"
+      - option "Himachal Pradesh"
+      - option "Jammu & Kashmir"
+      - option "Jharkhand"
+      - option "Karnataka"
+      - option "Kerala"
+      - option "Madhya Pradesh"
+      - option "Maharashtra"
+      - option "Manipur"
+      - option "Meghalaya"
+      - option "Mizoram"
+      - option "Nagaland"
+      - option "Odisha"
+      - option "Punjab"
+      - option "Rajasthan"
+      - option "Sikkim"
+      - option "Tamil Nadu"
+      - option "Telangana"
+      - option "Tripura"
+      - option "Uttar Pradesh"
+      - option "Uttarakhand"
+      - option "West Bengal"
+      - option "Other / Union Territory"
+    - button "Check my options"
+  - region:
+    - heading "eCourts Case Status & CNR Tracker" [level=3]:
+      - generic: search_insights
+      - text: eCourts Case Status & CNR Tracker
+    - paragraph: Track District, High Court & Supreme Court hearing dates via National Judicial Data Grid (NJDG).
+    - generic: eCourts Phase III
+    - generic: Enter 16-Character CNR Number (Case Record Number)
+    - generic: 0/16 characters
+    - textbox "Enter 16-Character CNR Number (Case Record Number) 0/16 characters":
+      - /placeholder: e.g. MHPUN01234562024
+    - button "Lookup on Official eCourts Portal":
+      - generic: open_in_new
+      - generic: Lookup on Official eCourts Portal
+    - link "NJDG Grid":
+      - /url: https://njdg.ecourts.gov.in/
+      - generic: grid_view
+      - generic: NJDG Grid
+    - link "Supreme Court":
+      - /url: https://main.sci.gov.in/case-status
+      - generic: balance
+      - generic: Supreme Court
+    - paragraph:
+      - generic: info
+      - text: "Where to find your 16-character CNR Number:"
+    - list:
+      - listitem: Top-left or barcode header of any official Court Summons / Notice.
+      - listitem: First page of Certified Copies of previous Court Orders or Charge Sheets.
+      - listitem: SMS notification received from eCourts Services upon filing registration.
+      - listitem: If you do not have a CNR, search by Party Name or case number on the eCourts portal.
+  - region "Helplines":
+    - heading "Helplines" [level=2]
+    - list:
+      - link "15100 NALSA legal services helpline":
+        - /url: tel:15100
+        - generic: call
+        - generic: "15100"
+        - generic: NALSA legal services helpline
+      - link "112 National emergency":
+        - /url: tel:112
+        - generic: call
+        - generic: "112"
+        - generic: National emergency
+      - link "1091 Women's helpline":
+        - /url: tel:1091
+        - generic: call
+        - generic: "1091"
+        - generic: Women's helpline
+      - link "1098 Childline":
+        - /url: tel:1098
+        - generic: call
+        - generic: "1098"
+        - generic: Childline
+      - link "14567 Senior citizens helpline":
+        - /url: tel:14567
+        - generic: call
+        - generic: "14567"
+        - generic: Senior citizens helpline
+      - link "1930 Cyber financial fraud":
+        - /url: tel:1930
+        - generic: call
+        - generic: "1930"
+        - generic: Cyber financial fraud
+  - region "Official Sources":
+    - heading "Official Sources" [level=2]
+    - list:
+      - link "India Code (all central Acts) Full text of central Acts and sections, maintained by the Government of India.":
+        - /url: https://www.indiacode.nic.in/
+        - generic: verified
+        - text: India Code (all central Acts)
+        - generic: open_in_new
+        - generic: Full text of central Acts and sections, maintained by the Government of India.
+      - link "NALSA — free legal aid Eligibility, online application and state legal services authorities.":
+        - /url: https://nalsa.gov.in/
+        - generic: verified
+        - text: NALSA — free legal aid
+        - generic: open_in_new
+        - generic: Eligibility, online application and state legal services authorities.
+      - link "eCourts case status Check case status, orders and cause lists in district and high courts.":
+        - /url: https://services.ecourts.gov.in/
+        - generic: verified
+        - text: eCourts case status
+        - generic: open_in_new
+        - generic: Check case status, orders and cause lists in district and high courts.
+      - link "National Judicial Data Grid Official pendency and disposal dashboards.":
+        - /url: https://njdg.ecourts.gov.in/
+        - generic: verified
+        - text: National Judicial Data Grid
+        - generic: open_in_new
+        - generic: Official pendency and disposal dashboards.
+      - link "National Consumer Helpline Register consumer complaints against sellers and service providers.":
+        - /url: https://consumerhelpline.gov.in/
+        - generic: verified
+        - text: National Consumer Helpline
+        - generic: open_in_new
+        - generic: Register consumer complaints against sellers and service providers.
+      - link "Cyber Crime Reporting Portal Report online fraud, financial cyber crime and offences against women/children.":
+        - /url: https://cybercrime.gov.in/
+        - generic: verified
+        - text: Cyber Crime Reporting Portal
+        - generic: open_in_new
+        - generic: Report online fraud, financial cyber crime and offences against women/children.
+- navigation "Primary":
+  - link "Home":
+    - /url: /
+    - generic: home
+    - generic: Home
+  - link "Create":
+    - /url: /intake
+    - generic: add_circle
+    - generic: Create
+  - link "Documents":
+    - /url: /vault
+    - generic: folder
+    - generic: Documents
+  - link "Get help":
+    - /url: /legal-aid
+    - generic: support_agent
+    - generic: Get help
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_674ajzjqsx8qmatab3ya9rp8m1?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

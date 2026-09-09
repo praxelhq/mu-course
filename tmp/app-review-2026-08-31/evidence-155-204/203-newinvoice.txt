@@ -1,0 +1,78 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6rvdjrhspw8mdbbh83qeqde5e9?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- navigation:
+  - generic: payments
+  - heading "RecovrAI" [level=1]
+  - paragraph: Receivables Recovery
+  - link "Add Invoice":
+    - /url: /invoices/new
+    - generic: add
+    - text: Add Invoice
+  - link "Dashboard":
+    - /url: /
+    - generic: dashboard
+    - generic: Dashboard
+  - link "Add Invoice":
+    - /url: /invoices/new
+    - generic: receipt_long
+    - generic: Add Invoice
+  - link "Debtor Details":
+    - /url: /invoices/details
+    - generic: group
+    - generic: Debtor Details
+  - link "Recovery Center":
+    - /url: /recovery
+    - generic: bolt
+    - generic: Recovery Center
+  - link "Escalation":
+    - /url: /escalation
+    - generic: gavel
+    - generic: Escalation
+  - link "Plans & Reports":
+    - /url: /pricing
+    - generic: analytics
+    - generic: Plans & Reports
+  - link "Help Center":
+    - /url: "#"
+    - generic: help
+    - generic: Help Center
+  - link "Sign Out":
+    - /url: /signin
+    - generic: logout
+    - generic: Sign Out
+- main:
+  - heading "Add Invoice" [level=1]
+  - paragraph: Upload your document or manually enter details below.
+  - generic: "1"
+  - generic: Upload
+  - generic: "2"
+  - generic: Details
+  - generic: "3"
+  - generic: Recovery
+  - generic: cloud_upload
+  - heading "Drag & Drop Invoice" [level=2]
+  - paragraph: Supports PDF, XLSX, CSV formats. Maximum file size 10MB.
+  - link "Browse Files":
+    - /url: /invoices/details
+    - generic: folder_open
+    - text: Browse Files
+  - generic: lock
+  - generic: Secure upload & encrypted storage
+  - heading "Manual Entry" [level=2]
+  - generic: edit_document
+  - generic: Invoice Number *
+  - textbox "Invoice Number *":
+    - /placeholder: e.g. INV-2023-001
+  - generic: Amount *
+  - generic: ₹
+  - spinbutton "Amount *"
+  - generic: Issue Date *
+  - textbox "Issue Date *"
+  - generic: Due Date *
+  - textbox "Due Date *"
+  - button "Continue to Debtor Details":
+    - text: Continue to Debtor Details
+    - generic: arrow_forward

@@ -1,0 +1,142 @@
+- navigation:
+  - generic "Chief of Staff": CS
+  - heading "Founder's Office" [level=1]
+  - paragraph: Executive Control
+  - button "add New Request":
+    - generic: add
+    - text: New Request
+  - link "dashboard Dashboard B":
+    - /url: /brief
+    - generic: dashboard
+    - text: Dashboard
+    - generic: B
+  - link "bolt Triage T":
+    - /url: /
+    - generic: bolt
+    - text: Triage
+    - generic: T
+  - link "group Team A":
+    - /url: /archives
+    - generic: group
+    - text: Team
+    - generic: A
+  - link "psychology Intelligence I":
+    - /url: /intelligence
+    - generic: psychology
+    - text: Intelligence
+    - generic: I
+  - link "help Help":
+    - /url: "#"
+    - generic: help
+    - text: Help
+  - link "logout Logout":
+    - /url: "#"
+    - generic: logout
+    - text: Logout
+- banner:
+  - navigation:
+    - link "Daily Input":
+      - /url: /
+    - link "Daily Brief":
+      - /url: /brief
+    - link "Archives":
+      - /url: /archives
+  - generic: System Ready
+  - button "Notifications":
+    - generic: notifications
+  - button "Settings":
+    - generic: settings
+  - button "auto_awesome Generate Brief":
+    - generic: auto_awesome
+    - text: Generate Brief
+- main:
+  - heading "Daily Brief" [level=2]
+  - paragraph: AI Classification Results — sample brief
+  - generic: warning
+  - text: 1 Urgent
+  - generic: assignment_ind
+  - text: 1 Delegate
+  - generic: info
+  - text: 1 FYI
+  - button "content_copy Copy Full Brief":
+    - generic: content_copy
+    - text: Copy Full Brief
+  - heading "warning Urgent (Founder Only)" [level=3]:
+    - generic: warning
+    - text: Urgent (Founder Only)
+  - generic: "1"
+  - article:
+    - generic: High Priority
+    - heading "Board Deck Revisions Needed" [level=4]
+    - paragraph: Lead investor requested clarification on Q3 burn rate projections before tomorrow's meeting.
+    - paragraph: Suggested Response
+    - paragraph: "\"I will review the Q3 numbers and send an updated slide by 5 PM EST today.\""
+    - button "content_copy Copy":
+      - generic: content_copy
+      - text: Copy
+  - heading "assignment_ind Delegate" [level=3]:
+    - generic: assignment_ind
+    - text: Delegate
+  - generic: "1"
+  - article:
+    - generic: Sarah (VP Eng)
+    - heading "AWS Enterprise Agreement" [level=4]
+    - paragraph: Renewal contract requires technical review of the new instance pricing tier.
+    - paragraph: Delegation Note
+    - paragraph: "\"Sarah, please review the instance pricing and confirm if this aligns with our H2 capacity plan.\""
+    - button "content_copy Copy":
+      - generic: content_copy
+      - text: Copy
+  - heading "info FYI" [level=3]:
+    - generic: info
+    - text: FYI
+  - generic: "1"
+  - article:
+    - generic: mark_email_read
+    - heading "Q2 Marketing Report Published" [level=4]
+    - paragraph: The final Q2 performance report has been uploaded to the shared drive. No action required.
+    - paragraph: Suggested Response
+    - paragraph: "\"Noted — no action required.\""
+    - button "content_copy Copy":
+      - generic: content_copy
+      - text: Copy
+  - heading "Recently Resolved" [level=3]
+  - paragraph: Items cleared from the brief in the last 7 days
+  - link "history View Archive":
+    - /url: /archives
+    - generic: history
+    - text: View Archive
+  - article:
+    - generic: Yesterday
+    - generic: check_circle
+    - text: Done
+    - heading "Board meeting calendar conflicts" [level=4]
+    - paragraph: Rescheduled to Thu 2:30 PM
+    - generic: Resolved by Operations
+  - article:
+    - generic: Yesterday
+    - generic: check_circle
+    - text: Done
+    - heading "Q2 marketing spend approval" [level=4]
+    - paragraph: Approved within existing budget
+    - generic: Resolved by Finance
+  - article:
+    - generic: 2 days ago
+    - generic: check_circle
+    - text: Done
+    - 'heading "Customer escalation: Acme Corp SLA" [level=4]'
+    - paragraph: Escalation closed, renewal confirmed
+    - generic: Resolved by Customer Success
+  - article:
+    - generic: 3 days ago
+    - generic: check_circle
+    - text: Done
+    - heading "Headcount planning for Q4" [level=4]
+    - paragraph: Hiring plan finalized
+    - generic: Resolved by People
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3t65c2nqp591faxrcsh38ry1gp?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

@@ -1,0 +1,96 @@
+- banner:
+  - paragraph:
+    - text: AI Recommendation
+  - heading "To Cyber Hub" [level=1]
+  - paragraph: From Khan Market, New Delhi · 10.9 km · 7:15 PM
+  - generic: Demo data
+  - group "Decision goal":
+    - button "Save":
+      - text: Save
+    - button "Fastest":
+      - text: Fastest
+    - button "Balanced":
+      - text: Balanced
+    - button "Comfort" [pressed]:
+      - text: Comfort
+    - button "Eco":
+      - text: Eco
+- main:
+  - generic: SahiRasta Recommendation
+  - text: Book now
+  - heading "Auto" [level=2]
+  - paragraph: Book on Ola Auto
+  - generic: High availability
+  - paragraph: ₹170–₹197
+  - generic: Confidence
+  - generic: 84%
+  - paragraph: ETA
+  - paragraph: 37 min
+  - paragraph: door-to-door
+  - paragraph: Pickup
+  - paragraph: 4 min
+  - paragraph: from now
+  - paragraph: Weather
+  - paragraph: Clear
+  - paragraph: 29°C
+  - paragraph: Auto is the best trade-off — ~₹106 cheaper than a cab and only ~2 min slower than the fastest option.
+  - heading "Book now vs wait" [level=3]
+  - generic: surge model · 55% confidence
+  - text: Book Now
+  - generic: Best
+  - generic: ₹170–₹197
+  - generic: depart 7:15 PM · ride 37 min
+  - generic: fastest arrival
+  - generic: Wait 10 min
+  - generic: ₹156–₹181
+  - generic: depart 7:25 PM · ride 35 min
+  - generic: saves ₹17
+  - generic: Wait 20 min
+  - generic: ₹142–₹164
+  - generic: depart 7:35 PM · ride 34 min
+  - generic: saves ₹31
+  - heading "Why this recommendation?" [level=3]
+  - list:
+    - generic: Traffic is moving well for this hour — no major bottlenecks
+    - generic: No surge on Ola Auto — matches your surge-averse preference (cabs at 1.4x)
+    - generic: No meaningful fare drop expected in the next 20 minutes
+    - generic: Clear, 29°C — good riding conditions
+    - generic: Fits your ₹300 budget with room to spare
+  - heading "Closest alternatives" [level=3]
+  - list:
+    - paragraph: DMRC + Auto · Delhi Metro
+    - paragraph: ~₹109 cheaper · ~8 min slower
+    - paragraph: ₹52–₹97
+    - paragraph: Uber · Uber Go
+    - paragraph: ~₹106 pricier · ~2 min faster
+    - paragraph: ₹265–₹313
+  - button "Continue to Ola Auto":
+    - text: Continue to Ola Auto
+  - paragraph: Booking happens in the provider's app — SahiRasta only tells you the right ride and the right time. Handoff uses the official provider link.
+  - link "Compare all":
+    - /url: /compare
+    - text: Compare all
+  - link "Wait vs Book":
+    - /url: /wait
+    - text: Wait vs Book
+  - link "Journey":
+    - /url: /journey
+    - text: Journey
+- navigation:
+  - link "Home":
+    - /url: /
+    - text: Home
+  - link "Best Ride":
+    - /url: /recommendation
+    - text: Best Ride
+  - link "Alerts":
+    - /url: /alerts
+    - text: Alerts
+  - link "Prefs":
+    - /url: /preferences
+    - text: Prefs
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_60a5x7h3en9v7th2e2nvb4z01r?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

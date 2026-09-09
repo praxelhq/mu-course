@@ -1,0 +1,80 @@
+- banner:
+  - link "Your profile":
+    - /url: /profile
+    - img "Your profile"
+  - heading "True or Toxic" [level=1]
+  - link "Weekly challenge":
+    - /url: /challenge
+    - generic: bolt
+- main:
+  - heading "Spill the tea." [level=2]
+  - paragraph: Describe the moment. The community decides the verdict.
+  - generic: Category
+  - button "Dating":
+    - generic: favorite
+    - text: Dating
+  - button "Friendship":
+    - generic: group
+    - text: Friendship
+  - button "Workplace":
+    - generic: work
+    - text: Workplace
+  - button "College":
+    - generic: school
+    - text: College
+  - button "Family":
+    - generic: home
+    - text: Family
+  - button "Social Media":
+    - generic: smartphone
+    - text: Social Media
+  - generic: Scenario
+  - textbox "Scenario":
+    - /placeholder: They text back in 3 days and open with 'sorry, been so busy'...
+  - paragraph: 0/200
+  - generic: Extra context (optional)
+  - textbox "Extra context (optional)":
+    - /placeholder: For the people who always say 'it depends'...
+  - paragraph: Post anonymously
+  - paragraph: Your handle stays hidden.
+  - switch [checked]
+  - button "Submit scenario" [disabled]
+  - heading "Community guidelines" [level=3]:
+    - generic: shield
+    - text: Community guidelines
+  - list:
+    - generic: check_circle
+    - generic: No real names, handles or identifying details.
+    - generic: check_circle
+    - generic: Keep it a scenario, not a personal attack.
+    - generic: check_circle
+    - generic: Nothing hateful, graphic or targeting minors.
+    - generic: check_circle
+    - generic: Funny beats mean. Every single time.
+- navigation:
+  - link "Home":
+    - /url: /
+    - generic: home
+    - generic: Home
+  - link "Trending":
+    - /url: /trending
+    - generic: trending_up
+    - generic: Trending
+  - link "Community":
+    - /url: /community
+    - generic: diversity_3
+    - generic: Community
+  - link "Submit":
+    - /url: /submit
+    - generic: add_circle
+    - generic: Submit
+  - link "Profile":
+    - /url: /profile
+    - generic: person
+    - generic: Profile
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_06ze2qmdde81evf54px9n0taq6?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

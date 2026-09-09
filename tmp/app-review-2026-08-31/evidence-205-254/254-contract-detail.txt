@@ -1,0 +1,60 @@
+- complementary:
+  - generic: LeakWatch
+  - generic: Workspace
+  - navigation:
+    - button "Dashboard":
+      - generic: Dashboard
+    - button "Contracts" [active]:
+      - generic: Contracts
+    - button "Payables 6":
+      - generic: Payables
+      - generic: "6"
+  - generic: Configure
+  - navigation:
+    - button "Integrations":
+      - generic: Integrations
+    - button "Settings":
+      - generic: Settings
+  - generic: D
+  - generic: Demo
+  - generic: demo@example.com
+  - button "Exit"
+- banner:
+  - generic: Contracts
+  - heading "Contract detail" [level=2]
+  - generic: Demo data
+  - button "Sync invoices"
+  - button "+ New contract"
+- button "← Back to contracts"
+- heading "Review Demo Subscription" [level=3]
+- paragraph: Software · owned by Operations
+- generic: 30d to next event
+- generic: ₹1,200
+- generic: Monthly charge of ₹100 · annualised
+- term: Next charge
+- definition: 30 Sept 2026
+- term: Contract type
+- definition: Recurring · Monthly
+- term: Annual exposure
+- definition: ₹1,200
+- term: Owning team
+- definition: Operations
+- term: Approval route
+- definition: Demo · Admin
+- heading "Payment schedule" [level=3]
+- paragraph: Every line needs your approval before release.
+- generic: Review Demo Subscription — next monthly charge
+- generic: Awaiting your approval · due 30 Sept 2026
+- generic: ₹100
+- button "Approve"
+- heading "Decision" [level=3]
+- paragraph: Left alone, this proceeds on 30 Sept 2026.
+- button "Mark as cancelling"
+- button "Remove record"
+- generic: Enters your 30-day exposure window on 31 Aug 2026.
+- generic: Renewal notes
+- textbox "Why keep or drop this? Future-you will want the reason."
+- button "Save note"
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

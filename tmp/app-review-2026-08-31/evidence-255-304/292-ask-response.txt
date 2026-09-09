@@ -1,0 +1,38 @@
+- banner:
+  - link "GlowMatch":
+    - /url: /
+    - generic: GlowMatch
+  - navigation:
+    - link "My routine":
+      - /url: /dashboard
+    - link "Personalise":
+      - /url: /personalize
+    - link "Ingredients":
+      - /url: /ingredients
+- main:
+  - paragraph: Personalisation & AI depth
+  - heading "Your skin, your season, your questions" [level=1]
+  - paragraph: Go beyond the basics — match product shades to your skin tone, let your routine shift with India's seasons, and ask anything about your skincare in plain language.
+  - tablist:
+    - tab "Skin Tone"
+    - tab "Seasonal"
+    - tab "Ask GlowMatch" [selected]
+  - tabpanel "Ask GlowMatch":
+    - heading "Ask GlowMatch" [level=2]
+    - paragraph: Freeform Q&A about your routine, grounded in your saved skin profile, quiz answers, and weekly log. Ask about ingredients, product order, or what to swap.
+    - generic: What's the best order for my morning routine?
+    - generic: "Here is the ideal step-by-step order for your morning routine, going from the lightest texture to the richest to lock in hydration and tackle dullness: 1. **Cleanse:** **Dot & Key Hydrating Cream Cleanser** – Gently washes away overnight buildup without stripping your skin's natural oils. *(Tip: If your skin feels particularly dry when you wake up, a gentle splash of plain water is also completely fine!)* 2. **Treat:** **Dot & Key Niacinamide 10% + Zinc Serum** – Apply 2–3 drops and pat it gently into your skin. This helps brighten dullness and support your barrier. 3. **Moisturize:** **Dot & Key Barrier Repair Cream** – A nourishing layer of ceramides seals in the hydration from your serum and keeps dry patches away. 4. **Protect:** **Dot & Key Watermelon Cooling Sunscreen SPF 50** – Always your final morning step! Apply about two finger-lengths generously over your face and neck to shield against UV rays. Just give each product about 30 to 60 seconds to settle in before moving to the next—especially before your sunscreen—so everything absorbs smoothly without pilling!"
+    - textbox "Ask about your routine, ingredients, or seasonal changes…"
+    - button [disabled]:
+    - paragraph: AI-powered guidance based on your saved data
+    - button "Clear chat"
+- contentinfo:
+  - paragraph: GlowMatch
+  - paragraph: Gentle, personalised routine building for Indian skin, budgets and weather.
+  - paragraph: GlowMatch offers general skincare guidance and is not a substitute for dermatologist advice.
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1354v31zk7938apwbx8trekyb6?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

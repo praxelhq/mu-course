@@ -1,0 +1,433 @@
+- banner:
+  - button "SQI SERVICE QUALITY INTELLIGENCE":
+    - generic: SQI
+    - generic: SERVICE QUALITY INTELLIGENCE
+  - navigation:
+    - button "Restaurants" [active]
+    - button "Hotels"
+    - button "Rankings"
+    - button "Compare"
+    - button "Methodology"
+  - button "Search Mumbai... /":
+    - generic: Search Mumbai...
+    - generic: /
+  - button "LIGHT (BEIGE)":
+    - generic: LIGHT (BEIGE)
+  - button "SQI Admin & Model Verification":
+- main:
+  - generic: MUMBAI RESTAURANT REGISTRY · RESTAURANT_V1.0
+  - heading "Mumbai Restaurants" [level=1]
+  - paragraph: Service quality scores calibrated across culinary craftsmanship (22%), hospitality experience (18%), operational reliability (15%), consistency (14%), and 4 other audited dimensions.
+  - textbox "Filter by name, cuisine, neighborhood, or specialty..."
+  - generic: "Sort:"
+  - combobox:
+    - option "SQI Quality (High to Low)" [selected]
+    - option "Confidence Index"
+    - option "Evidence Volume"
+  - generic: "Neighborhood:"
+  - combobox:
+    - option "All Neighborhoods" [selected]
+    - option "Andheri East"
+    - option "BKC"
+    - option "Bandra West"
+    - option "Colaba"
+    - option "Dadar West"
+    - option "Fort"
+    - option "Juhu"
+    - option "Lower Parel"
+    - option "Mahalaxmi"
+    - option "Malad West"
+    - option "Marol"
+    - option "Parel"
+    - option "Powai"
+    - option "Sakinaka"
+    - option "Vile Parle"
+  - combobox:
+    - option "All Statuses" [selected]
+    - option "Rank Eligible Only"
+    - option "Emerging Watchlist Only"
+  - combobox:
+    - option "All Price Segments" [selected]
+    - option "₹₹ (Moderate)"
+    - option "₹₹₹ (Upscale)"
+    - option "₹₹₹₹ (Fine Dining)"
+    - option "₹₹₹₹₹ (Ultra-Luxury)"
+  - text: Showing
+  - strong: "25"
+  - text: of 25 restaurants
+  - generic: BKC
+  - generic: ₹₹₹₹₹
+  - heading "Indian Accent" [level=3]
+  - paragraph: Inventive Progressive Indian Tasting Room · Chef Manish Mehrotra’s globally lauded progressive Indian institution reimagining nostalgia and heritage flavours with unmatched finesse.
+  - generic: Best Overall
+  - generic: Best Food
+  - generic: Best Experience
+  - generic: Most Reliable
+  - generic: Most Consistent
+  - generic: Platform Rating
+  - generic: 5.0 ★
+  - generic: 2,850 reviews
+  - generic: SQI Quality Score
+  - generic: "96"
+  - generic: /100
+  - generic: A+
+  - generic: "Conf: 96 · Cov: 95%"
+  - generic: Juhu
+  - generic: ₹₹₹₹
+  - heading "Fiona" [level=3]
+  - paragraph: Contemporary Asian & Global Fine Dining · All-day artisanal dining delivering refined international curation, signature wood-fired specials, and meticulous service pacing.
+  - generic: Best Overall
+  - generic: Best Experience
+  - generic: Most Reliable
+  - generic: Platform Rating
+  - generic: 4.9 ★
+  - generic: 2,516 reviews
+  - generic: SQI Quality Score
+  - generic: "95"
+  - generic: /100
+  - generic: A+
+  - generic: "Conf: 96 · Cov: 94%"
+  - generic: Mahalaxmi
+  - generic: ₹₹₹₹₹
+  - heading "Masque" [level=3]
+  - paragraph: Botanical & Foraged Ingredient-Driven Fine Dining · Acclaimed 10-course tasting menu exploring Himalayan and regional Indian micro-botanicals, fermentation, and modern gastronomy.
+  - generic: Best Overall
+  - generic: Best Food
+  - generic: Best Experience
+  - generic: Platform Rating
+  - generic: 4.5 ★
+  - generic: 2,200 reviews
+  - generic: SQI Quality Score
+  - generic: "95"
+  - generic: /100
+  - generic: A+
+  - generic: "Conf: 95 · Cov: 93%"
+  - generic: Andheri East
+  - generic: ₹₹₹₹
+  - generic: EMERGING
+  - heading "Yi Jing" [level=3]
+  - paragraph: Artisanal Sichuan & Dim Sum Gastronomy · Masterfully crafted contemporary Chinese cuisine highlighting Sichuan spice traditions, handmade dim sum, and duck artistry.
+  - generic: Best Food
+  - generic: Best Experience
+  - generic: Platform Rating
+  - generic: 5.0 ★
+  - generic: 310 reviews
+  - generic: SQI Quality Score
+  - generic: "94"
+  - generic: /100
+  - generic: A
+  - generic: "Conf: 68 · Cov: 72%"
+  - generic: Lower Parel
+  - generic: ₹₹₹₹₹
+  - heading "By the Mekong" [level=3]
+  - paragraph: Pan-Asian Haute Cuisine (Level 37) · Level 37 rooftop pan-Asian sanctuary offering Vietnamese, Chinese, and Thai tasting menus with dramatic Mumbai skyline vistas.
+  - generic: Best Overall
+  - generic: Best Experience
+  - generic: Best Food
+  - generic: Platform Rating
+  - generic: 4.9 ★
+  - generic: 1,850 reviews
+  - generic: SQI Quality Score
+  - generic: "93"
+  - generic: /100
+  - generic: A
+  - generic: "Conf: 95 · Cov: 94%"
+  - generic: Andheri East
+  - generic: ₹₹₹₹
+  - heading "Peshawri" [level=3]
+  - paragraph: North-West Frontier Heritage Cuisine · Renowned rustic Frontier dining highlighting slow-simmered Dal Bukhara, Sikandari Raan, and open charcoal tandoor mastery.
+  - generic: Best Food
+  - generic: Most Consistent
+  - generic: Most Reliable
+  - generic: Platform Rating
+  - generic: 4.8 ★
+  - generic: 3,200 reviews
+  - generic: SQI Quality Score
+  - generic: "92"
+  - generic: /100
+  - generic: A
+  - generic: "Conf: 96 · Cov: 94%"
+  - generic: Fort
+  - generic: ₹₹₹
+  - heading "Trishna" [level=3]
+  - paragraph: Coastal Mangalorean & Seafood Institution · Iconic heritage seafood temple globally recognized for butter garlic crab, Hyderabadi fish, and unmatched seafood freshness.
+  - generic: Best Food
+  - generic: Most Reliable
+  - generic: Most Consistent
+  - generic: Platform Rating
+  - generic: 4.3 ★
+  - generic: 5,820 reviews
+  - generic: SQI Quality Score
+  - generic: "92"
+  - generic: /100
+  - generic: A
+  - generic: "Conf: 95 · Cov: 94%"
+  - generic: Vile Parle
+  - generic: ₹₹₹₹
+  - heading "Mabruk" [level=3]
+  - paragraph: Mediterranean & Lebanese Courtyard Dining · Set over the Sahara Star lagoon, delivering authentic mezze, shawarmas, tagines, and traditional Middle Eastern hospitality.
+  - generic: Best Experience
+  - generic: Best Food
+  - generic: Platform Rating
+  - generic: 4.8 ★
+  - generic: 2,450 reviews
+  - generic: SQI Quality Score
+  - generic: "92"
+  - generic: /100
+  - generic: A
+  - generic: "Conf: 94 · Cov: 93%"
+  - generic: Lower Parel
+  - generic: ₹₹₹
+  - heading "The Bombay Canteen" [level=3]
+  - paragraph: Modern Regional Indian Cuisine & Bar · Pioneering dining room celebrating regional Indian recipes with contemporary verve, artisanal cocktails, and seasonal seasonal menus.
+  - generic: Best Overall
+  - generic: Best Food
+  - generic: Most Consistent
+  - generic: Platform Rating
+  - generic: 4.4 ★
+  - generic: 4,920 reviews
+  - generic: SQI Quality Score
+  - generic: "91"
+  - generic: /100
+  - generic: A
+  - generic: "Conf: 96 · Cov: 95%"
+  - generic: Lower Parel
+  - generic: ₹₹₹₹
+  - heading "Sahib Room & Kipling Bar" [level=3]
+  - paragraph: Colonial Awadhi & Colonial Cocktail Lounge · Refined colonial-era atmosphere serving Awadhi royal gravies and vintage cocktail concoctions inspired by Rudyard Kipling.
+  - generic: Best Experience
+  - generic: Best Food
+  - generic: Platform Rating
+  - generic: 4.8 ★
+  - generic: 2,100 reviews
+  - generic: SQI Quality Score
+  - generic: "91"
+  - generic: /100
+  - generic: A
+  - generic: "Conf: 95 · Cov: 93%"
+  - generic: Andheri East
+  - generic: ₹₹₹
+  - generic: EMERGING
+  - heading "Banjara The Restaurant" [level=3]
+  - paragraph: North Indian & Coastal Fine Dining · Renowned for succulent coastal tandoori preparations, Dal Banjara, and warm hospitality in the MIDC commercial precinct.
+  - generic: Best Food
+  - generic: Platform Rating
+  - generic: 4.9 ★
+  - generic: 180 reviews
+  - generic: SQI Quality Score
+  - generic: "91"
+  - generic: /100
+  - generic: A
+  - generic: "Conf: 54 · Cov: 58%"
+  - generic: Parel
+  - generic: ₹₹₹₹
+  - heading "Kebabs & Kurries" [level=3]
+  - paragraph: Royal Indian Heritage Awadhi Dining · Showcasing the historic culinary traditions of Awadhi, Mughlai, and Frontier nawabs prepared in ancestral tandoors and angithis.
+  - generic: Best Food
+  - generic: Most Consistent
+  - generic: Platform Rating
+  - generic: 4.4 ★
+  - generic: 2,420 reviews
+  - generic: SQI Quality Score
+  - generic: "90"
+  - generic: /100
+  - generic: A
+  - generic: "Conf: 92 · Cov: 90%"
+  - generic: Fort
+  - generic: ₹₹₹
+  - heading "Mahesh Lunch Home" [level=3]
+  - paragraph: Mangalorean Seafood Specialist · Pioneering Mangalorean seafood stalwart revered since 1977 for fiery Gassi gravies, surmai fry, and consistent seafood freshness.
+  - generic: Best Food
+  - generic: Most Reliable
+  - generic: Best Value
+  - generic: Platform Rating
+  - generic: 4.2 ★
+  - generic: 6,100 reviews
+  - generic: SQI Quality Score
+  - generic: "89"
+  - generic: /100
+  - generic: A-
+  - generic: "Conf: 97 · Cov: 94%"
+  - generic: Juhu
+  - generic: ₹₹₹₹
+  - heading "Lotus Cafe" [level=3]
+  - paragraph: All-Day Dining & Luxury Sunday Brunch · Iconic beachside all-day dining celebrated for lavish Sunday brunches, expansive dessert studio, and celebrity clientele.
+  - generic: Best Experience
+  - generic: Best Food
+  - generic: Platform Rating
+  - generic: 4.3 ★
+  - generic: 3,650 reviews
+  - generic: SQI Quality Score
+  - generic: "89"
+  - generic: /100
+  - generic: A-
+  - generic: "Conf: 93 · Cov: 91%"
+  - generic: Marol
+  - generic: ₹₹
+  - generic: EMERGING
+  - heading "Bombay to Barcelona Library Café" [level=3]
+  - paragraph: Social Enterprise Café & European Bakery · Beloved community cafe and bakery founded by street-youth mentor Amin Sheikh, serving Spanish tapas and heartfelt coffee.
+  - generic: Best Value
+  - generic: Best Experience
+  - generic: Platform Rating
+  - generic: 4.8 ★
+  - generic: 240 reviews
+  - generic: SQI Quality Score
+  - generic: "89"
+  - generic: /100
+  - generic: A-
+  - generic: "Conf: 62 · Cov: 65%"
+  - generic: Powai
+  - generic: ₹₹₹₹
+  - heading "Lake View Cafe" [level=3]
+  - paragraph: Global All-Day Dining & Lakefront Terrace · Serene lakeside dining featuring expansive breakfast and dinner buffets, artisanal stone-baked pizzas, and tranquil panoramic views.
+  - generic: Best Experience
+  - generic: Most Reliable
+  - generic: Platform Rating
+  - generic: 4.7 ★
+  - generic: 3,120 reviews
+  - generic: SQI Quality Score
+  - generic: "88"
+  - generic: /100
+  - generic: A-
+  - generic: "Conf: 94 · Cov: 92%"
+  - generic: Sakinaka
+  - generic: ₹₹₹
+  - heading "Saptami" [level=3]
+  - paragraph: Multi-Cuisine Buffet & Live Theatres · Expansive global buffet destination with seven live interactive kitchen stations, popular with airport transits and family brunches.
+  - generic: Best Value
+  - generic: Most Reliable
+  - generic: Platform Rating
+  - generic: 4.1 ★
+  - generic: 2,780 reviews
+  - generic: SQI Quality Score
+  - generic: "88"
+  - generic: /100
+  - generic: A-
+  - generic: "Conf: 91 · Cov: 89%"
+  - generic: Juhu
+  - generic: ₹₹₹₹
+  - heading "Mezzo Mezzo" [level=3]
+  - paragraph: Classic Italian & Mediterranean Fine Dining · Polished oceanfront Italian venue with an extensive international cellar, wood-fired oven, and handmade ravioli.
+  - generic: Best Experience
+  - generic: Platform Rating
+  - generic: 4.7 ★
+  - generic: 2,100 reviews
+  - generic: SQI Quality Score
+  - generic: "80"
+  - generic: /100
+  - generic: B+
+  - generic: "Conf: 92 · Cov: 89%"
+  - generic: Colaba
+  - generic: ₹₹₹₹
+  - heading "Sea Lounge" [level=3]
+  - paragraph: Heritage Afternoon High Tea & Colonial Confectionery · Storied salon overlooking the Gateway of India, world-famed for traditional English high tea, local street delights, and live piano.
+  - generic: Best Experience
+  - generic: Platform Rating
+  - generic: 4.0 ★
+  - generic: 4,200 reviews
+  - generic: SQI Quality Score
+  - generic: "79"
+  - generic: /100
+  - generic: B
+  - generic: "Conf: 93 · Cov: 91%"
+  - generic: Andheri East
+  - generic: ₹₹₹₹
+  - heading "Romano's" [level=3]
+  - paragraph: Rustic Italian & Wine Cellar · Rustic multi-level Italian dining room showcasing authentic homestyle Southern Italian recipes and an organic wine bar.
+  - generic: Best Experience
+  - generic: Platform Rating
+  - generic: 4.5 ★
+  - generic: 1,750 reviews
+  - generic: SQI Quality Score
+  - generic: "78"
+  - generic: /100
+  - generic: B
+  - generic: "Conf: 91 · Cov: 88%"
+  - generic: Dadar West
+  - generic: ₹₹₹
+  - heading "Tanatan Shivaji Park" [level=3]
+  - paragraph: Progressive Indian & Nightlife Dining · High-energy progressive Indian dining celebrated for dramatic presentations, Bollywood live music, and celebratory gatherings.
+  - generic: Best Experience
+  - generic: Platform Rating
+  - generic: 4.8 ★
+  - generic: 1,890 reviews
+  - generic: SQI Quality Score
+  - generic: "78"
+  - generic: /100
+  - generic: B
+  - generic: "Conf: 90 · Cov: 88%"
+  - generic: Powai
+  - generic: ₹₹₹₹
+  - heading "Nawab Saheb" [level=3]
+  - paragraph: Royal Awadhi & Mughlai Specialties · Opulent Awadhi dining known for slow-cooked gravies, galouti kebabs, and live ghazal music in Powai.
+  - generic: Best Experience
+  - generic: Platform Rating
+  - generic: 4.6 ★
+  - generic: 1,950 reviews
+  - generic: SQI Quality Score
+  - generic: "77"
+  - generic: /100
+  - generic: B
+  - generic: "Conf: 91 · Cov: 88%"
+  - generic: Bandra West
+  - generic: ₹₹₹₹
+  - heading "Fi'lia" [level=3]
+  - paragraph: Modern Italian Trattoria · High-energy Italian hotspot acclaimed for handmade pastas, artisanal cocktails, and vibrant sea-breeze terrace dining.
+  - generic: Best Experience
+  - generic: Best Food
+  - generic: Platform Rating
+  - generic: 4.9 ★
+  - generic: 1,420 reviews
+  - generic: SQI Quality Score
+  - generic: "76"
+  - generic: /100
+  - generic: B
+  - generic: "Conf: 88 · Cov: 86%"
+  - generic: Malad West
+  - generic: ₹₹₹
+  - heading "Rasoi Kitchen & Bar" [level=3]
+  - paragraph: North Indian & Lounge · Vibrant suburban cocktail lounge and North Indian eatery known for generous platters and late-night social dining.
+  - generic: Best Experience
+  - generic: Platform Rating
+  - generic: 4.7 ★
+  - generic: 1,650 reviews
+  - generic: SQI Quality Score
+  - generic: "74"
+  - generic: /100
+  - generic: B-
+  - generic: "Conf: 86 · Cov: 84%"
+  - generic: Andheri East
+  - generic: ₹₹₹
+  - heading "Peshwa Pavilion" [level=3]
+  - paragraph: 24-Hour Grand Atrium Pavilion · Majestic glass-ceilinged atrium restaurant offering 24-hour multi-cuisine à la carte and expansive lunch buffets.
+  - generic: Most Reliable
+  - generic: Platform Rating
+  - generic: 3.8 ★
+  - generic: 3,100 reviews
+  - generic: SQI Quality Score
+  - generic: "72"
+  - generic: /100
+  - generic: B-
+  - generic: "Conf: 92 · Cov: 90%"
+- contentinfo:
+  - button "SQI SERVICE QUALITY INTELLIGENCE":
+    - generic: SQI
+    - generic: SERVICE QUALITY INTELLIGENCE
+  - paragraph: “A rating tells you what people said. SQI helps you understand what the evidence says about service quality.”
+  - paragraph: SQI is an evidence-based measurement and benchmarking engine that disaggregates subjective star ratings into verifiable operational parameters, uncertainty intervals, and confidence distributions.
+  - heading "Registry Index" [level=4]
+  - list:
+    - button "Mumbai Restaurants (25 Calibrated)"
+    - button "Mumbai Hotels (25 Calibrated)"
+    - button "City Rankings & Tier Index"
+    - button "Multi-Property Matrix Compare"
+  - heading "Methodology & Models" [level=4]
+  - list:
+    - button "RESTAURANT_V1.0 (8 Dimensions)"
+    - button "HOTEL_V1.0 (8 Dimensions)"
+    - button "Missing Data Redistribution Rule"
+    - button "Model Verification & Admin Portal"
+  - paragraph: "© 2026 SQI Service Quality Intelligence. Initial Product: Mumbai, India."
+  - generic: ● EVIDENCE > HYPE
+  - generic: "MODEL: SQI_V1.0_SEED"

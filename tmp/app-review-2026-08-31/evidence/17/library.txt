@@ -1,0 +1,82 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_5n1wtj7xzf93rarj64ygfsnnvn?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- complementary:
+  - link "RETRO ARCADE":
+    - /url: /dashboard
+    - heading "RETRO ARCADE" [level=1]
+  - paragraph: GUEST · 250 COINS
+  - navigation:
+    - link "Library":
+      - /url: /library
+      - generic: grid_view
+      - text: Library
+    - link "Stats":
+      - /url: /stats
+      - generic: leaderboard
+      - text: Stats
+    - link "Profile":
+      - /url: /profile
+      - generic: person
+      - text: Profile
+    - link "Settings":
+      - /url: /settings
+      - generic: settings
+      - text: Settings
+  - link "PLAY NOW":
+    - /url: /library
+  - button "Logout":
+    - generic: logout
+    - text: Logout
+- main:
+  - heading "ARCADE LIBRARY" [level=1]
+  - paragraph: Select your game. Insert coin. Press start. The digital time machine awaits your command.
+  - button "ALL"
+  - button "ACTION"
+  - button "CASUAL"
+  - button "STRATEGY"
+  - article:
+    - img "Neon Marbles cabinet art"
+    - generic: CASUAL
+    - heading "Neon Marbles" [level=3]
+    - paragraph: Physics-based puzzle madness. Clear the neon arena before the grid collapses.
+    - paragraph: HIGH SCORE 0
+    - link "INSERT COIN":
+      - /url: /play/neon-marbles
+      - generic: play_arrow
+      - text: INSERT COIN
+  - article:
+    - img "Cyber Cricket cabinet art"
+    - generic: STRATEGY
+    - heading "Cyber Cricket" [level=3]
+    - paragraph: Outsmart the AI in this fast-paced numerical duel. Predict, strike, survive.
+    - paragraph: HIGH SCORE 0
+    - link "INSERT COIN":
+      - /url: /play/hand-cricket
+      - generic: play_arrow
+      - text: INSERT COIN
+  - article:
+    - img "Grid Collapse cabinet art"
+    - generic: ACTION
+    - heading "Grid Collapse" [level=3]
+    - paragraph: Relentless block stacking action. Manage the cascade before the screen fills.
+    - paragraph: HIGH SCORE 0
+    - button "UNLOCK · 500 COINS" [disabled]:
+      - generic: lock
+      - text: UNLOCK · 500 COINS
+  - article:
+    - img "Viper Grid cabinet art"
+    - generic: ACTION
+    - heading "Viper Grid" [level=3]
+    - paragraph: The classic reimagined. Navigate the deadly neon matrix, consume data packets, and avoid your own glowing tail in this endless survival trial.
+    - paragraph: HIGH SCORE 0
+    - button "UNLOCK · 1000 COINS" [disabled]:
+      - generic: lock
+      - text: UNLOCK · 1000 COINS
+  - heading "RETRO ARCADE" [level=2]
+  - paragraph: © 1995 RETRO ARCADE INDUSTRIES
+  - generic: Privacy
+  - generic: Terms
+  - generic: Support

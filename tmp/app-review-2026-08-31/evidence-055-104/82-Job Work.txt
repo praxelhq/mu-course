@@ -1,0 +1,500 @@
+- complementary:
+  - link "FactoryFlow AI Shreeji Precision Works":
+    - /url: /
+    - paragraph: FactoryFlow AI
+    - paragraph: Shreeji Precision Works
+  - navigation:
+    - paragraph: Shop floor
+    - link "Dashboard":
+      - /url: /
+      - text: Dashboard
+    - link "Production":
+      - /url: /production
+      - text: Production
+    - link "Customer Schedule":
+      - /url: /schedule
+      - text: Customer Schedule
+    - link "Machines":
+      - /url: /machines
+      - text: Machines
+    - link "Downtime":
+      - /url: /downtime
+      - text: Downtime
+    - link "Maintenance":
+      - /url: /maintenance
+      - text: Maintenance
+    - link "Quality":
+      - /url: /quality
+      - text: Quality
+    - link "Job Work" [active]:
+      - /url: /job-work
+      - text: Job Work
+    - link "Inventory":
+      - /url: /inventory
+      - text: Inventory
+    - paragraph: Money
+    - link "Sales & Receivables":
+      - /url: /sales
+      - text: Sales & Receivables
+    - link "Purchase & Payables":
+      - /url: /purchase
+      - text: Purchase & Payables
+    - link "Cash View":
+      - /url: /cash
+      - text: Cash View
+    - link "Compliance":
+      - /url: /compliance
+      - text: Compliance
+    - paragraph: Run the business
+    - link "Tasks":
+      - /url: /tasks
+      - text: Tasks
+    - link "Analytics":
+      - /url: /analytics
+      - text: Analytics
+    - link "Reports":
+      - /url: /reports
+      - text: Reports
+    - link "AI Assistant":
+      - /url: /assistant
+      - text: AI Assistant
+    - link "Integrations":
+      - /url: /integrations
+      - text: Integrations
+    - link "Settings":
+      - /url: /settings
+      - text: Settings
+  - link "RK Rajesh Kulkarni Works Manager":
+    - /url: /profile
+    - generic: RK
+    - generic: Rajesh Kulkarni
+    - generic: Works Manager
+  - link "Pricing & product page →":
+    - /url: /welcome
+- banner:
+  - textbox "Search part, challan, invoice, heat number…"
+  - button "English"
+  - button "हिंदी"
+  - button "मराठी"
+  - generic "All entries synced":
+    - text: Online
+  - button "Toggle dark mode":
+  - link "Notifications":
+    - /url: /notifications
+    - generic: "4"
+  - link "Ask AI":
+    - /url: /assistant
+    - generic: Ask AI
+- main:
+  - navigation:
+    - link "FactoryFlow":
+      - /url: /
+    - generic: Job Work
+  - heading "Job Work" [level=1]
+  - paragraph: Outward challan register for heat treatment, plating, grinding, EDM and powder coating.
+  - button "Print Rule 55 challan":
+    - text: Print Rule 55 challan
+  - button "Generate ITC-04 export":
+    - text: Generate ITC-04 export
+  - paragraph: Open challans
+  - paragraph: "21"
+  - paragraph: 24 total this year
+  - paragraph: Material at vendors
+  - paragraph: ₹16.94 L
+  - paragraph: Value not on your shop floor
+  - paragraph: GST limit alerts
+  - paragraph: "3"
+  - paragraph: Beyond 300 days / 33 months
+  - paragraph: Rejected at vendor
+  - paragraph: "196"
+  - paragraph: Pieces scrapped outside
+  - heading "GST return-limit alerts" [level=2]
+  - paragraph:
+    - text: Inputs must return within 1 year and capital goods within 3 years, else ITC is reversed with interest. These challans crossed the internal warning line (300 days for inputs, 33 months for capital goods).
+  - generic: JW/26-27/142
+  - generic: Chakan Grinding Works
+  - generic: Inputs · Cylindrical Grinding
+  - generic: 411 days outstanding
+  - generic: ₹6,936 at risk
+  - generic: JW/26-27/141
+  - generic: Sai Zinc Platers
+  - generic: Inputs · Zinc Plating
+  - generic: 386 days outstanding
+  - generic: ₹1,53,900 at risk
+  - generic: JW/26-27/140
+  - generic: Deccan Heat Treaters
+  - generic: Inputs · Heat Treatment
+  - generic: 329 days outstanding
+  - generic: ₹78,624 at risk
+  - textbox "Search challan, vendor or part…"
+  - combobox "Process":
+    - 'option "Process: All" [selected]'
+    - option "Heat Treatment"
+    - option "Zinc Plating"
+    - option "Cylindrical Grinding"
+    - option "EDM"
+    - option "Powder Coating"
+  - checkbox "Only outstanding"
+  - text: Only outstanding
+  - heading "Outward challan register (24)" [level=2]
+  - table:
+    - rowgroup:
+      - row "Challan Date Vendor Process Part Type Sent Returned Rejected Outstanding Expected Ageing":
+        - columnheader "Challan"
+        - columnheader "Date"
+        - columnheader "Vendor"
+        - columnheader "Process"
+        - columnheader "Part"
+        - columnheader "Type"
+        - columnheader "Sent"
+        - columnheader "Returned"
+        - columnheader "Rejected"
+        - columnheader "Outstanding"
+        - columnheader "Expected"
+        - columnheader "Ageing"
+    - rowgroup:
+      - row "JW/26-27/142 09-07-2025 Chakan Grinding Works Cylindrical Grinding Gear Blank GB-40 Inputs 378 352 9 17 18-07-2025 411 d":
+        - cell "JW/26-27/142"
+        - cell "09-07-2025"
+        - cell "Chakan Grinding Works"
+        - cell "Cylindrical Grinding"
+        - cell "Gear Blank GB-40"
+        - cell "Inputs"
+        - cell "378"
+        - cell "352"
+        - cell "9"
+        - cell "17"
+        - cell "18-07-2025"
+        - cell "411 d":
+          - generic: 411 d
+      - row "JW/26-27/141 03-08-2025 Sai Zinc Platers Zinc Plating Brake Bracket BB-22 Inputs 512 25 12 475 12-08-2025 386 d":
+        - cell "JW/26-27/141"
+        - cell "03-08-2025"
+        - cell "Sai Zinc Platers"
+        - cell "Zinc Plating"
+        - cell "Brake Bracket BB-22"
+        - cell "Inputs"
+        - cell "512"
+        - cell "25"
+        - cell "12"
+        - cell "475"
+        - cell "12-08-2025"
+        - cell "386 d":
+          - generic: 386 d
+      - row "JW/26-27/140 29-09-2025 Deccan Heat Treaters Heat Treatment Flange Yoke FY-108 Inputs 189 16 5 168 17-10-2025 329 d":
+        - cell "JW/26-27/140"
+        - cell "29-09-2025"
+        - cell "Deccan Heat Treaters"
+        - cell "Heat Treatment"
+        - cell "Flange Yoke FY-108"
+        - cell "Inputs"
+        - cell "189"
+        - cell "16"
+        - cell "5"
+        - cell "168"
+        - cell "17-10-2025"
+        - cell "329 d":
+          - generic: 329 d
+      - row "JW/26-27/144 26-12-2025 Nashik Powder Coaters Powder Coating Clutch Housing CH-77 Inputs 80 33 — 47 08-01-2026 241 d":
+        - cell "JW/26-27/144"
+        - cell "26-12-2025"
+        - cell "Nashik Powder Coaters"
+        - cell "Powder Coating"
+        - cell "Clutch Housing CH-77"
+        - cell "Inputs"
+        - cell "80"
+        - cell "33"
+        - cell "—"
+        - cell "47"
+        - cell "08-01-2026"
+        - cell "241 d":
+          - generic: 241 d
+      - row "JW/26-27/143 05-02-2026 Pune EDM Services EDM Pivot Pin PP-15 Capital goods 762 359 2 401 15-02-2026 200 d":
+        - cell "JW/26-27/143"
+        - cell "05-02-2026"
+        - cell "Pune EDM Services"
+        - cell "EDM"
+        - cell "Pivot Pin PP-15"
+        - cell "Capital goods"
+        - cell "762"
+        - cell "359"
+        - cell "2"
+        - cell "401"
+        - cell "15-02-2026"
+        - cell "200 d":
+          - generic: 200 d
+      - row "JW/26-27/151 27-05-2026 Sai Zinc Platers Zinc Plating Shifter Fork SF-31 Inputs 289 274 11 4 15-06-2026 89 d":
+        - cell "JW/26-27/151"
+        - cell "27-05-2026"
+        - cell "Sai Zinc Platers"
+        - cell "Zinc Plating"
+        - cell "Shifter Fork SF-31"
+        - cell "Inputs"
+        - cell "289"
+        - cell "274"
+        - cell "11"
+        - cell "4"
+        - cell "15-06-2026"
+        - cell "89 d":
+          - generic: 89 d
+      - row "JW/26-27/153 03-06-2026 Pune EDM Services EDM Brake Bracket BB-22 Inputs 438 427 11 — 14-06-2026 Completed":
+        - cell "JW/26-27/153"
+        - cell "03-06-2026"
+        - cell "Pune EDM Services"
+        - cell "EDM"
+        - cell "Brake Bracket BB-22"
+        - cell "Inputs"
+        - cell "438"
+        - cell "427"
+        - cell "11"
+        - cell "—"
+        - cell "14-06-2026"
+        - cell "Completed":
+          - generic: Completed
+      - row "JW/26-27/152 05-06-2026 Chakan Grinding Works Cylindrical Grinding Flange Yoke FY-108 Inputs 509 68 11 430 13-06-2026 80 d":
+        - cell "JW/26-27/152"
+        - cell "05-06-2026"
+        - cell "Chakan Grinding Works"
+        - cell "Cylindrical Grinding"
+        - cell "Flange Yoke FY-108"
+        - cell "Inputs"
+        - cell "509"
+        - cell "68"
+        - cell "11"
+        - cell "430"
+        - cell "13-06-2026"
+        - cell "80 d":
+          - generic: 80 d
+      - row "JW/26-27/158 07-06-2026 Pune EDM Services EDM Flange Yoke FY-108 Inputs 625 604 7 14 20-06-2026 78 d":
+        - cell "JW/26-27/158"
+        - cell "07-06-2026"
+        - cell "Pune EDM Services"
+        - cell "EDM"
+        - cell "Flange Yoke FY-108"
+        - cell "Inputs"
+        - cell "625"
+        - cell "604"
+        - cell "7"
+        - cell "14"
+        - cell "20-06-2026"
+        - cell "78 d":
+          - generic: 78 d
+      - row "JW/26-27/154 16-06-2026 Nashik Powder Coaters Powder Coating Gear Blank GB-40 Inputs 1019 1013 6 — 05-07-2026 Completed":
+        - cell "JW/26-27/154"
+        - cell "16-06-2026"
+        - cell "Nashik Powder Coaters"
+        - cell "Powder Coating"
+        - cell "Gear Blank GB-40"
+        - cell "Inputs"
+        - cell "1019"
+        - cell "1013"
+        - cell "6"
+        - cell "—"
+        - cell "05-07-2026"
+        - cell "Completed":
+          - generic: Completed
+      - row "JW/26-27/150 27-06-2026 Deccan Heat Treaters Heat Treatment Clutch Housing CH-77 Inputs 435 430 5 — 07-07-2026 Completed":
+        - cell "JW/26-27/150"
+        - cell "27-06-2026"
+        - cell "Deccan Heat Treaters"
+        - cell "Heat Treatment"
+        - cell "Clutch Housing CH-77"
+        - cell "Inputs"
+        - cell "435"
+        - cell "430"
+        - cell "5"
+        - cell "—"
+        - cell "07-07-2026"
+        - cell "Completed":
+          - generic: Completed
+      - row "JW/26-27/147 30-06-2026 Chakan Grinding Works Cylindrical Grinding Brake Bracket BB-22 Inputs 219 106 2 111 15-07-2026 55 d":
+        - cell "JW/26-27/147"
+        - cell "30-06-2026"
+        - cell "Chakan Grinding Works"
+        - cell "Cylindrical Grinding"
+        - cell "Brake Bracket BB-22"
+        - cell "Inputs"
+        - cell "219"
+        - cell "106"
+        - cell "2"
+        - cell "111"
+        - cell "15-07-2026"
+        - cell "55 d":
+          - generic: 55 d
+      - row "JW/26-27/161 03-07-2026 Sai Zinc Platers Zinc Plating Pivot Pin PP-15 Inputs 615 594 13 8 12-07-2026 52 d":
+        - cell "JW/26-27/161"
+        - cell "03-07-2026"
+        - cell "Sai Zinc Platers"
+        - cell "Zinc Plating"
+        - cell "Pivot Pin PP-15"
+        - cell "Inputs"
+        - cell "615"
+        - cell "594"
+        - cell "13"
+        - cell "8"
+        - cell "12-07-2026"
+        - cell "52 d":
+          - generic: 52 d
+      - row "JW/26-27/145 04-07-2026 Deccan Heat Treaters Heat Treatment Shifter Fork SF-31 Inputs 593 563 10 20 20-07-2026 51 d":
+        - cell "JW/26-27/145"
+        - cell "04-07-2026"
+        - cell "Deccan Heat Treaters"
+        - cell "Heat Treatment"
+        - cell "Shifter Fork SF-31"
+        - cell "Inputs"
+        - cell "593"
+        - cell "563"
+        - cell "10"
+        - cell "20"
+        - cell "20-07-2026"
+        - cell "51 d":
+          - generic: 51 d
+      - row "JW/26-27/160 12-07-2026 Deccan Heat Treaters Heat Treatment Gear Blank GB-40 Inputs 1194 1106 — 88 25-07-2026 43 d":
+        - cell "JW/26-27/160"
+        - cell "12-07-2026"
+        - cell "Deccan Heat Treaters"
+        - cell "Heat Treatment"
+        - cell "Gear Blank GB-40"
+        - cell "Inputs"
+        - cell "1194"
+        - cell "1106"
+        - cell "—"
+        - cell "88"
+        - cell "25-07-2026"
+        - cell "43 d":
+          - generic: 43 d
+      - row "JW/26-27/163 20-07-2026 Pune EDM Services EDM Shifter Fork SF-31 Inputs 209 197 3 9 02-08-2026 35 d":
+        - cell "JW/26-27/163"
+        - cell "20-07-2026"
+        - cell "Pune EDM Services"
+        - cell "EDM"
+        - cell "Shifter Fork SF-31"
+        - cell "Inputs"
+        - cell "209"
+        - cell "197"
+        - cell "3"
+        - cell "9"
+        - cell "02-08-2026"
+        - cell "35 d":
+          - generic: 35 d
+      - row "JW/26-27/149 23-07-2026 Nashik Powder Coaters Powder Coating Pivot Pin PP-15 Inputs 344 313 12 19 31-07-2026 32 d":
+        - cell "JW/26-27/149"
+        - cell "23-07-2026"
+        - cell "Nashik Powder Coaters"
+        - cell "Powder Coating"
+        - cell "Pivot Pin PP-15"
+        - cell "Inputs"
+        - cell "344"
+        - cell "313"
+        - cell "12"
+        - cell "19"
+        - cell "31-07-2026"
+        - cell "32 d":
+          - generic: 32 d
+      - row "JW/26-27/155 23-07-2026 Deccan Heat Treaters Heat Treatment Pivot Pin PP-15 Inputs 1091 50 7 1034 30-07-2026 32 d":
+        - cell "JW/26-27/155"
+        - cell "23-07-2026"
+        - cell "Deccan Heat Treaters"
+        - cell "Heat Treatment"
+        - cell "Pivot Pin PP-15"
+        - cell "Inputs"
+        - cell "1091"
+        - cell "50"
+        - cell "7"
+        - cell "1034"
+        - cell "30-07-2026"
+        - cell "32 d":
+          - generic: 32 d
+      - row "JW/26-27/146 25-07-2026 Sai Zinc Platers Zinc Plating Flange Yoke FY-108 Inputs 87 42 2 43 11-08-2026 30 d":
+        - cell "JW/26-27/146"
+        - cell "25-07-2026"
+        - cell "Sai Zinc Platers"
+        - cell "Zinc Plating"
+        - cell "Flange Yoke FY-108"
+        - cell "Inputs"
+        - cell "87"
+        - cell "42"
+        - cell "2"
+        - cell "43"
+        - cell "11-08-2026"
+        - cell "30 d":
+          - generic: 30 d
+      - row "JW/26-27/159 25-07-2026 Nashik Powder Coaters Powder Coating Brake Bracket BB-22 Inputs 895 351 14 530 05-08-2026 30 d":
+        - cell "JW/26-27/159"
+        - cell "25-07-2026"
+        - cell "Nashik Powder Coaters"
+        - cell "Powder Coating"
+        - cell "Brake Bracket BB-22"
+        - cell "Inputs"
+        - cell "895"
+        - cell "351"
+        - cell "14"
+        - cell "530"
+        - cell "05-08-2026"
+        - cell "30 d":
+          - generic: 30 d
+      - row "JW/26-27/148 26-07-2026 Pune EDM Services EDM Gear Blank GB-40 Inputs 575 129 17 429 13-08-2026 29 d":
+        - cell "JW/26-27/148"
+        - cell "26-07-2026"
+        - cell "Pune EDM Services"
+        - cell "EDM"
+        - cell "Gear Blank GB-40"
+        - cell "Inputs"
+        - cell "575"
+        - cell "129"
+        - cell "17"
+        - cell "429"
+        - cell "13-08-2026"
+        - cell "29 d":
+          - generic: 29 d
+      - row "JW/26-27/162 05-08-2026 Chakan Grinding Works Cylindrical Grinding Clutch Housing CH-77 Inputs 391 3 4 384 24-08-2026 19 d":
+        - cell "JW/26-27/162"
+        - cell "05-08-2026"
+        - cell "Chakan Grinding Works"
+        - cell "Cylindrical Grinding"
+        - cell "Clutch Housing CH-77"
+        - cell "Inputs"
+        - cell "391"
+        - cell "3"
+        - cell "4"
+        - cell "384"
+        - cell "24-08-2026"
+        - cell "19 d":
+          - generic: 19 d
+      - row "JW/26-27/156 10-08-2026 Sai Zinc Platers Zinc Plating Clutch Housing CH-77 Inputs 111 103 3 5 26-08-2026 14 d":
+        - cell "JW/26-27/156"
+        - cell "10-08-2026"
+        - cell "Sai Zinc Platers"
+        - cell "Zinc Plating"
+        - cell "Clutch Housing CH-77"
+        - cell "Inputs"
+        - cell "111"
+        - cell "103"
+        - cell "3"
+        - cell "5"
+        - cell "26-08-2026"
+        - cell "14 d":
+          - generic: 14 d
+      - row "JW/26-27/157 16-08-2026 Chakan Grinding Works Cylindrical Grinding Shifter Fork SF-31 Inputs 1134 171 30 933 31-08-2026 8 d":
+        - cell "JW/26-27/157"
+        - cell "16-08-2026"
+        - cell "Chakan Grinding Works"
+        - cell "Cylindrical Grinding"
+        - cell "Shifter Fork SF-31"
+        - cell "Inputs"
+        - cell "1134"
+        - cell "171"
+        - cell "30"
+        - cell "933"
+        - cell "31-08-2026"
+        - cell "8 d":
+          - generic: 8 d
+- button "Quick Log":
+  - text: Quick Log
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_10hdg7xyw99tpa64t0nz744v7b?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: Dent / Handling Damage

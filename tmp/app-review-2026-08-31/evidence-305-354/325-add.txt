@@ -1,0 +1,52 @@
+- banner:
+  - link:
+    - /url: /home
+    - generic: arrow_back
+  - heading "Add expense" [level=1]
+- main:
+  - generic: ₹
+  - spinbutton [active]
+  - generic: Merchant
+  - generic: storefront
+  - textbox "Where did you spend?"
+  - generic: Category
+  - button "Food":
+    - generic: restaurant
+    - generic: Food
+  - button "Groceries":
+    - generic: shopping_cart
+    - generic: Groceries
+  - button "Travel":
+    - generic: commute
+    - generic: Travel
+  - button "Shopping":
+    - generic: local_mall
+    - generic: Shopping
+  - button "Bills":
+    - generic: receipt_long
+    - generic: Bills
+  - button "Other":
+    - generic: more_horiz
+    - generic: Other
+  - generic: Date
+  - generic: calendar_today
+  - textbox
+  - generic: Today
+  - generic: Payment method
+  - generic: account_balance_wallet
+  - combobox:
+    - option "Google Pay" [selected]
+    - option "Credit Card"
+    - option "Cash"
+  - generic: Google Pay
+  - generic: arrow_drop_down
+  - generic: Notes
+  - textbox "Add a note (optional)"
+- button "Add expense":
+  - generic: add
+  - text: Add expense
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_4t4wzn9vrt87st3fmw6wp1tyzs?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

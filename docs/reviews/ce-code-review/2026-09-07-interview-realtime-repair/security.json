@@ -1,0 +1,23 @@
+{
+  "reviewer": "security",
+  "verdict": "changes-requested",
+  "findings": [
+    {
+      "severity": "P1",
+      "title": "HTTP heartbeat is not proof that the LiveKit worker can accept an interview",
+      "file": "lms/lib/interview/realtime.ts",
+      "line": 71,
+      "evidence": "The new admission check accepts any fresh agent heartbeat with matching sourceSha and errorCount 0 (lines 54-86), then /api/interview/token creates the live attempt (token route lines 50-89). The agent starts that HTTP reporter before cli.run_app starts the LiveKit worker (agent/main.py lines 1111-1137), and the ingress writes errorCount: 0 on every accepted HTTP post (internal/service-heartbeat route lines 109-122). A container that can reach the LMS but cannot register with or accept jobs from LiveKit therefore admits a student and consumes/strands a live attempt, despite the new fail-closed claim.",
+      "recommendation": "Make readiness attest to successful LiveKit worker registration/job acceptance, not merely HTTP reachability and artifact identity. Keep token creation behind that attestation and add a regression that simulates a successful heartbeat while LiveKit worker startup/registration fails; it must return 503 without calling startInterview."
+    }
+  ],
+  "residual_risks": [
+    "The LiveKit browser JWT remains a bearer credential with publish, subscribe, and data grants. This is pre-existing and is scoped to the authenticated user's derived interview room; protect it from client-side leakage and retain its short TTL.",
+    "The internal agent token remains a high-impact shared secret: an actor holding it can use the agent endpoints for any interview ID. The patch neither broadens those endpoints nor adds per-job binding, but rotation and service isolation remain important."
+  ],
+  "testing_gaps": [
+    "No changed test exercises the admission boundary end-to-end: heartbeat accepted while the LiveKit worker is unable to register or accept a job must leave no new live interview row.",
+    "The new legacy-route tests should assert that a stale authenticated request with an arbitrary interviewId produces no interview, turn, reservation, or audit-log mutation; current source-contract tests cannot prove this at the database boundary.",
+    "Run the production canary with a real authenticated student-equivalent identity and verify that only its room token is minted, reconnect retains the same interview ID, and a completed interview alone reaches grading."
+  ]
+}

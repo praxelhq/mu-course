@@ -1,0 +1,60 @@
+- main:
+  - link "Back":
+    - /url: /
+  - heading "Alarms" [level=1]
+  - button:
+  - paragraph: Background alarms, lock-screen actions and native sounds arrive with the Naggy mobile app. On the web you can plan, log and review them — the browser can't reliably wake you up, and I won't pretend otherwise.
+  - article:
+    - paragraph: 6:15 AM
+    - paragraph: Wake up · weekdays · Klaxon
+    - switch [checked]
+    - generic: strict
+    - generic: No snooze
+    - generic: 2 snoozes this week 👀
+    - button "Log completed"
+    - button "Log snooze"
+    - button "Delete":
+      - text: Delete
+  - article:
+    - paragraph: 5:15 PM
+    - paragraph: Gym time · weekdays · Chime
+    - switch [checked]
+    - generic: firm
+    - generic: Snooze on
+    - button "Log completed"
+    - button "Log snooze"
+    - button "Delete":
+      - text: Delete
+  - article:
+    - paragraph: 10:30 PM
+    - paragraph: Wind down · daily · Soft bells
+    - switch [checked]
+    - generic: gentle
+    - generic: Snooze on
+    - button "Log completed"
+    - button "Log snooze"
+    - button "Delete":
+      - text: Delete
+- navigation:
+  - link "Today":
+    - /url: /
+    - text: Today
+  - link "Habits":
+    - /url: /habits
+    - text: Habits
+  - link "Focus":
+    - /url: /focus
+    - text: Focus
+  - link "Progress":
+    - /url: /progress
+    - text: Progress
+  - link "Naggy":
+    - /url: /naggy
+    - text: Naggy
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1y077zn9zp920rn02hgwhd1kn0?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: M

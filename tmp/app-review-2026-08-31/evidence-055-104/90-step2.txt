@@ -1,0 +1,27 @@
+- main:
+  - button "Back":
+  - progressbar
+  - heading "What do you want to improve?" [level=1]
+  - paragraph: Pick as many as you'll actually work on.
+  - button "Wake up earlier":
+    - generic: Wake up earlier
+  - button "Focus deeply":
+    - generic: Focus deeply
+  - button "Exercise":
+    - generic: Exercise
+  - button "Study":
+    - generic: Study
+  - button "Sleep on time":
+    - generic: Sleep on time
+  - button "Read more":
+    - generic: Read more
+  - button "Less phone":
+    - generic: Less phone
+  - button "Continue" [active]:
+    - text: Continue
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1y077zn9zp920rn02hgwhd1kn0?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

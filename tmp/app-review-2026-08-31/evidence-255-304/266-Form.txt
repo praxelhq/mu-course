@@ -1,0 +1,306 @@
+- banner:
+  - generic: Statecraft Intelligence
+  - generic: Electoral Data & Demographic Engine
+  - button "Constituency Hub":
+    - generic: Constituency Hub
+  - button "Maharashtra / Ahilyanagar / Karjat Jamkhed":
+    - generic: Maharashtra
+    - generic: /
+    - generic: Ahilyanagar
+    - generic: /
+    - generic: Karjat Jamkhed
+  - textbox "Search booths, candidates, communities..."
+  - generic: ECI Form 20 Audited
+  - button "Export Report":
+    - generic: Export Report
+  - button "Refresh Data":
+  - button "RK Rajeshwar Kulkarni (IAS) MH-CEO-2024":
+    - generic: RK
+    - generic: Rajeshwar Kulkarni (IAS)
+    - generic: MH-CEO-2024
+- complementary:
+  - generic: ACTIVE CONSTITUENCY
+  - generic: "AC #227"
+  - heading "Karjat Jamkhed" [level=2]
+  - paragraph: Ahilyanagar, Maharashtra
+  - button "Constituency Selection Hub":
+    - generic: Constituency Selection Hub
+  - button "Quick Modal (288 ACs)":
+    - generic: Quick Modal (288 ACs)
+  - navigation:
+    - generic: Analytics Navigation
+    - button "Constituency Dashboard Snapshot":
+      - generic: Constituency Dashboard
+      - generic: Snapshot
+    - button "Demographics & Caste Chanakya PR":
+      - generic: Demographics & Caste
+      - generic: Chanakya PR
+    - button "Form 20 Booth Explorer 356 Booths" [active]:
+      - generic: Form 20 Booth Explorer
+      - generic: 356 Booths
+    - button "Historical Trends 2014-2024":
+      - generic: Historical Trends
+      - generic: 2014-2024
+    - button "Swing Scenario Simulator Interactive":
+      - generic: Swing Scenario Simulator
+      - generic: Interactive
+    - button "Sources & Provenance Audit Log":
+      - generic: Sources & Provenance
+      - generic: Audit Log
+  - generic: MH-CEO-2024
+  - generic: Rajeshwar Kulkarni (IAS)
+  - generic "Connected"
+  - text: ECI Form 20 Sync
+  - generic: VERIFIED
+  - paragraph: Booth electors & votes mapped from official Form 20 counts. Demographic estimates powered by Chanakya PR.
+- main:
+  - generic: Analysis > Form 20 Electoral Data
+  - heading "Form 20 Booth Explorer" [level=1]
+  - paragraph: Polling booth level electors, votes polled, candidate leads, and margins (356 Booths Total)
+  - button "Export Form 20 CSV":
+    - generic: Export Form 20 CSV
+  - textbox "Search booth name, school, location, or ID (e.g. 042)..."
+  - combobox:
+    - 'option "Turnout: All Ranges" [selected]'
+    - option "Turnout < 50%"
+    - option "Turnout 50% - 65%"
+    - option "Turnout 65% - 80%"
+    - option "Turnout > 80%"
+  - combobox:
+    - 'option "Winning Party: All" [selected]'
+    - 'option "Lead: BJP"'
+    - 'option "Lead: INC"'
+    - 'option "Lead: NCP-SP"'
+    - 'option "Lead: NCP"'
+    - 'option "Lead: SS(UBT)"'
+    - 'option "Lead: SHS"'
+    - 'option "Lead: SP"'
+    - 'option "Lead: CPI(M)"'
+    - 'option "Lead: AIMIM"'
+    - 'option "Lead: RYSP"'
+    - 'option "Lead: PWPI"'
+    - 'option "Lead: JSS"'
+    - 'option "Lead: RSVA"'
+    - 'option "Lead: RSPS"'
+    - 'option "Lead: AAP"'
+    - 'option "Lead: JD(S)"'
+    - 'option "Lead: IND/OTH"'
+  - combobox:
+    - 'option "Margin: All" [selected]'
+    - option "Margin < 5% (Close Contest)"
+    - option "Margin 5% - 10%"
+    - option "Margin > 10% (Stronghold)"
+  - button "Reset"
+  - generic: Showing 356 of 356 Form 20 Polling Stations
+  - table:
+    - rowgroup:
+      - row "Compare Booth ID Name / Location Electors Turnout % Winning Party Margin":
+        - columnheader "Compare"
+        - columnheader "Booth ID":
+          - generic: Booth ID
+        - columnheader "Name / Location"
+        - columnheader "Electors":
+          - generic: Electors
+        - columnheader "Turnout %":
+          - generic: Turnout %
+        - columnheader "Winning Party"
+        - columnheader "Margin":
+          - generic: Margin
+    - rowgroup:
+      - row "#BOOTH_001 Polling Station 1 - Karjat Town Ward 1, ZP School Room 2, Karjat Town Ward 1, ZP School 1,163 75.5% NCP-SP +178":
+        - cell:
+          - button:
+        - cell "#BOOTH_001"
+        - cell "Polling Station 1 - Karjat Town Ward 1, ZP School Room 2, Karjat Town Ward 1, ZP School":
+          - generic: Polling Station 1 - Karjat Town Ward 1, ZP School
+          - generic: Room 2, Karjat Town Ward 1, ZP School
+        - cell "1,163"
+        - cell "75.5%":
+          - generic: 75.5%
+        - cell "NCP-SP":
+          - generic: NCP-SP
+        - cell "+178":
+          - generic: "+178"
+      - row "#BOOTH_002 Polling Station 2 - Karjat Town Ward 2, Municipal High School Room 3, Karjat Town Ward 2, Municipal High School 771 75.5% NCP-SP +170":
+        - cell:
+          - button:
+        - cell "#BOOTH_002"
+        - cell "Polling Station 2 - Karjat Town Ward 2, Municipal High School Room 3, Karjat Town Ward 2, Municipal High School":
+          - generic: Polling Station 2 - Karjat Town Ward 2, Municipal High School
+          - generic: Room 3, Karjat Town Ward 2, Municipal High School
+        - cell "771"
+        - cell "75.5%":
+          - generic: 75.5%
+        - cell "NCP-SP":
+          - generic: NCP-SP
+        - cell "+170":
+          - generic: "+170"
+      - row "#BOOTH_003 Polling Station 3 - Karjat Town Ward 3, Gandhi Chowk Room 4, Karjat Town Ward 3, Gandhi Chowk 1,028 75.5% NCP-SP +150":
+        - cell:
+          - button:
+        - cell "#BOOTH_003"
+        - cell "Polling Station 3 - Karjat Town Ward 3, Gandhi Chowk Room 4, Karjat Town Ward 3, Gandhi Chowk":
+          - generic: Polling Station 3 - Karjat Town Ward 3, Gandhi Chowk
+          - generic: Room 4, Karjat Town Ward 3, Gandhi Chowk
+        - cell "1,028"
+        - cell "75.5%":
+          - generic: 75.5%
+        - cell "NCP-SP":
+          - generic: NCP-SP
+        - cell "+150":
+          - generic: "+150"
+      - row "#BOOTH_004 Polling Station 4 - Jamkhed Town Ward 1, ZP Primary School Room 1, Jamkhed Town Ward 1, ZP Primary School 1,101 75.5% NCP-SP +90":
+        - cell:
+          - button:
+        - cell "#BOOTH_004"
+        - cell "Polling Station 4 - Jamkhed Town Ward 1, ZP Primary School Room 1, Jamkhed Town Ward 1, ZP Primary School":
+          - generic: Polling Station 4 - Jamkhed Town Ward 1, ZP Primary School
+          - generic: Room 1, Jamkhed Town Ward 1, ZP Primary School
+        - cell "1,101"
+        - cell "75.5%":
+          - generic: 75.5%
+        - cell "NCP-SP":
+          - generic: NCP-SP
+        - cell "+90":
+          - generic: "+90"
+      - row "#BOOTH_005 Polling Station 5 - Jamkhed Town Ward 2, Court Road Hall Room 2, Jamkhed Town Ward 2, Court Road Hall 1,283 75.5% BJP +129":
+        - cell:
+          - button:
+        - cell "#BOOTH_005"
+        - cell "Polling Station 5 - Jamkhed Town Ward 2, Court Road Hall Room 2, Jamkhed Town Ward 2, Court Road Hall":
+          - generic: Polling Station 5 - Jamkhed Town Ward 2, Court Road Hall
+          - generic: Room 2, Jamkhed Town Ward 2, Court Road Hall
+        - cell "1,283"
+        - cell "75.5%":
+          - generic: 75.5%
+        - cell "BJP":
+          - generic: BJP
+        - cell "+129":
+          - generic: "+129"
+      - row "#BOOTH_006 Polling Station 6 - Jamkhed Town Ward 3, Bus Stand Complex Room 3, Jamkhed Town Ward 3, Bus Stand Complex 731 75.5% NCP-SP +36":
+        - cell:
+          - button:
+        - cell "#BOOTH_006"
+        - cell "Polling Station 6 - Jamkhed Town Ward 3, Bus Stand Complex Room 3, Jamkhed Town Ward 3, Bus Stand Complex":
+          - generic: Polling Station 6 - Jamkhed Town Ward 3, Bus Stand Complex
+          - generic: Room 3, Jamkhed Town Ward 3, Bus Stand Complex
+        - cell "731"
+        - cell "75.5%":
+          - generic: 75.5%
+        - cell "NCP-SP":
+          - generic: NCP-SP
+        - cell "+36":
+          - generic: "+36"
+      - row "#BOOTH_007 Polling Station 7 - Rashin Primary School, North Wing Room 4, Rashin Primary School, North Wing 874 75.5% NCP-SP +120":
+        - cell:
+          - button:
+        - cell "#BOOTH_007"
+        - cell "Polling Station 7 - Rashin Primary School, North Wing Room 4, Rashin Primary School, North Wing":
+          - generic: Polling Station 7 - Rashin Primary School, North Wing
+          - generic: Room 4, Rashin Primary School, North Wing
+        - cell "874"
+        - cell "75.5%":
+          - generic: 75.5%
+        - cell "NCP-SP":
+          - generic: NCP-SP
+        - cell "+120":
+          - generic: "+120"
+      - row "#BOOTH_008 Polling Station 8 - Rashin High School, South Hall Room 1, Rashin High School, South Hall 1,429 75.5% BJP +112":
+        - cell:
+          - button:
+        - cell "#BOOTH_008"
+        - cell "Polling Station 8 - Rashin High School, South Hall Room 1, Rashin High School, South Hall":
+          - generic: Polling Station 8 - Rashin High School, South Hall
+          - generic: Room 1, Rashin High School, South Hall
+        - cell "1,429"
+        - cell "75.5%":
+          - generic: 75.5%
+        - cell "BJP":
+          - generic: BJP
+        - cell "+112":
+          - generic: "+112"
+      - row "#BOOTH_009 Polling Station 9 - Mirajgaon Gram Panchayat Hall Room 2, Mirajgaon Gram Panchayat Hall 1,297 75.5% BJP +170":
+        - cell:
+          - button:
+        - cell "#BOOTH_009"
+        - cell "Polling Station 9 - Mirajgaon Gram Panchayat Hall Room 2, Mirajgaon Gram Panchayat Hall":
+          - generic: Polling Station 9 - Mirajgaon Gram Panchayat Hall
+          - generic: Room 2, Mirajgaon Gram Panchayat Hall
+        - cell "1,297"
+        - cell "75.5%":
+          - generic: 75.5%
+        - cell "BJP":
+          - generic: BJP
+        - cell "+170":
+          - generic: "+170"
+      - row "#BOOTH_010 Polling Station 10 - Mirajgaon ZP School Room 3, Mirajgaon ZP School 1,180 75.5% NCP-SP +36":
+        - cell:
+          - button:
+        - cell "#BOOTH_010"
+        - cell "Polling Station 10 - Mirajgaon ZP School Room 3, Mirajgaon ZP School":
+          - generic: Polling Station 10 - Mirajgaon ZP School
+          - generic: Room 3, Mirajgaon ZP School
+        - cell "1,180"
+        - cell "75.5%":
+          - generic: 75.5%
+        - cell "NCP-SP":
+          - generic: NCP-SP
+        - cell "+36":
+          - generic: "+36"
+  - generic: Page 1 of 36
+  - button [disabled]:
+  - button:
+  - generic: "Form 20 Booth #BOOTH_001"
+  - heading "Polling Station 1 - Karjat Town Ward 1, ZP School" [level=3]
+  - paragraph: Room 2, Karjat Town Ward 1, ZP School
+  - text: ELECTORS
+  - generic: 1,163
+  - text: POLLED VOTES
+  - generic: "878"
+  - text: TURNOUT
+  - generic: 75.5%
+  - text: LEAD MARGIN
+  - generic: +178 votes
+  - heading "Candidate Vote Breakdown (Form 20 Count)" [level=4]
+  - generic: cand_rohit_pawar 🏆
+  - generic: 490 votes
+  - generic: (56%)
+  - generic: cand_ram_shinde
+  - generic: 312 votes
+  - generic: (35.7%)
+  - generic: cand_rohit_c_pawar
+  - generic: 32 votes
+  - generic: (3.7%)
+  - generic: cand_somnath_bhailume
+  - generic: 8 votes
+  - generic: (0.9%)
+  - generic: cand_karan_chavan
+  - generic: 4 votes
+  - generic: (0.5%)
+  - generic: cand_satish_kokare
+  - generic: 8 votes
+  - generic: (0.9%)
+  - generic: cand_shahaji_ubale
+  - generic: 4 votes
+  - generic: (0.5%)
+  - generic: cand_dattatray_sonwane
+  - generic: 10 votes
+  - generic: (1.1%)
+  - generic: cand_hanumant_nigude
+  - generic: 2 votes
+  - generic: (0.2%)
+  - generic: cand_ram_narayan_shinde
+  - generic: 2 votes
+  - generic: (0.2%)
+  - generic: cand_ram_prabhu_shinde
+  - generic: 3 votes
+  - generic: (0.3%)
+  - heading "Historical Booth Turnout Trend" [level=4]
+  - generic: "2014"
+  - generic: 71.3%
+  - generic: "2019"
+  - generic: 73%
+  - generic: "2024"
+  - generic: 75.5%
+  - generic: "Dominant Local Community:"
+  - paragraph: SC (Mahar/Matang) (High voter concentration & local influencer network)

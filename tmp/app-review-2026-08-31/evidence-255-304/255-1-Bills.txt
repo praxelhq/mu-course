@@ -1,0 +1,132 @@
+- banner:
+  - button "Arjun":
+    - img "Arjun"
+  - generic: GharOS
+  - button "Notifications":
+- main:
+  - heading "Household Bills" [level=1]
+  - paragraph: ₹28,749 pending outflow across 4 active bills
+  - button "Add New Bill":
+    - generic: Add New Bill
+  - heading "Add Bill by Type" [level=2]
+  - paragraph: Select a recurring household bill type (Maintenance, Power, Water, Internet, Subscriptions)
+  - button "Open Quick Builder":
+    - generic: Open Quick Builder
+  - button "₹4.5k Society Maintenance Monthly • Prestige":
+    - generic: ₹4.5k
+    - heading "Society Maintenance" [level=4]
+    - paragraph: Monthly • Prestige
+  - button "₹2.4k Electricity & Power Monthly • BESCOM":
+    - generic: ₹2.4k
+    - heading "Electricity & Power" [level=4]
+    - paragraph: Monthly • BESCOM
+  - button "₹1.2k Water Tanker & Supply Monthly • BWSSB":
+    - generic: ₹1.2k
+    - heading "Water Tanker & Supply" [level=4]
+    - paragraph: Monthly • BWSSB
+  - button "₹1.2k Broadband & Fiber WiFi Monthly • Airtel":
+    - generic: ₹1.2k
+    - heading "Broadband & Fiber WiFi" [level=4]
+    - paragraph: Monthly • Airtel
+  - button "₹950 Piped Gas / LPG Cylinder Monthly • Indane":
+    - generic: ₹950
+    - heading "Piped Gas / LPG Cylinder" [level=4]
+    - paragraph: Monthly • Indane
+  - button "₹32.0k House Rent / EMI Monthly • Property":
+    - generic: ₹32.0k
+    - heading "House Rent / EMI" [level=4]
+    - paragraph: Monthly • Property
+  - button "₹450 DTH / Cable TV / OTT Monthly • Tata":
+    - generic: ₹450
+    - heading "DTH / Cable TV / OTT" [level=4]
+    - paragraph: Monthly • Tata
+  - button "₹1.8k Appliance AMC & Servicing Quarterly • Urban":
+    - generic: ₹1.8k
+    - heading "Appliance AMC & Servicing" [level=4]
+    - paragraph: Quarterly • Urban
+  - paragraph: 1 Action Required
+  - paragraph: Electricity / utility bill is pending verification.
+  - text: "Filter:"
+  - button "All Bills (7)"
+  - button "Maintenance & Society"
+  - button "Utilities & Power"
+  - button "Broadband & DTH"
+  - button "Daily Delivery"
+  - heading "OVERDUE & VARIABLE 1 PENDING" [level=2]:
+    - generic: OVERDUE & VARIABLE
+    - generic: 1 PENDING
+  - heading "Electricity" [level=3]
+  - generic: Monthly
+  - paragraph: BESCOM • Overdue by 2 days
+  - generic: Enter this month's amount
+  - generic: ₹
+  - spinbutton: "2400"
+  - button "Aug ₹1,240":
+    - paragraph: Aug
+    - paragraph: ₹1,240
+  - button "Sep ₹1,450":
+    - paragraph: Sep
+    - paragraph: ₹1,450
+  - button "Oct ₹1,100":
+    - paragraph: Oct
+    - paragraph: ₹1,100
+  - button "Mark Paid"
+  - button "Pay ₹2,400 via UPI":
+    - generic: Pay ₹2,400 via UPI
+  - heading "UPCOMING & SCHEDULED 3 BILLS" [level=2]:
+    - generic: UPCOMING & SCHEDULED
+    - generic: 3 BILLS
+  - heading "Rent" [level=3]
+  - generic: Monthly
+  - paragraph: Due 30th Nov • Prestige Apartments 402
+  - paragraph: ₹25,000
+  - button "Mark Paid"
+  - button "Pay UPI":
+    - generic: Pay UPI
+  - heading "WiFi" [level=3]
+  - generic: Monthly
+  - paragraph:
+    - text: Auto-debits in 7 days • Airtel Broadband
+  - paragraph: ₹999
+  - button "Confirm Amount & Auto-Pay"
+  - heading "Water" [level=3]
+  - generic: Monthly
+  - paragraph: Due 5th Dec • BWSSB
+  - paragraph: ₹350
+  - button "Delete Bill":
+  - button "Mark Paid"
+  - button "Pay UPI":
+    - generic: Pay UPI
+  - heading "ALREADY PAID & SETTLED" [level=2]
+  - heading "Milk" [level=3]
+  - paragraph:
+    - text: Paid on 5th Nov • Nandini Dairy Delivery
+  - paragraph: ₹1,800
+  - text: Settled
+  - heading "Newspaper" [level=3]
+  - paragraph:
+    - text: Paid on 2nd Nov • The Hindu & Mint
+  - paragraph: ₹450
+  - text: Settled
+  - heading "Society Maintenance" [level=3]
+  - paragraph:
+    - text: Paid on 1st Nov • Prestige Ozone RWA
+  - paragraph: ₹3,500
+  - text: Settled
+  - button "Add New Bill":
+- navigation:
+  - button "Home":
+    - generic: Home
+  - button "Bills" [active]:
+    - generic: Bills
+  - button "Staff":
+    - generic: Staff
+  - button "Spends":
+    - generic: Spends
+  - button "Chores":
+    - generic: Chores
+  - button "Directory":
+    - generic: Directory
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

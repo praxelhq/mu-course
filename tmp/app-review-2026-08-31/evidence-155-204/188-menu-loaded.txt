@@ -1,0 +1,169 @@
+- banner:
+  - link "restaurant_menu CampusCravings":
+    - /url: /
+    - generic: restaurant_menu
+    - generic: CampusCravings
+  - navigation:
+    - link "Home":
+      - /url: /
+    - link "Cravings":
+      - /url: /cravings
+    - link "Sell":
+      - /url: /sell
+    - link "My Food":
+      - /url: /my-food
+    - link "Me":
+      - /url: /me
+  - link "notifications":
+    - /url: /notifications
+    - generic: notifications
+  - link "Sign in":
+    - /url: /auth
+- generic: ramen_dining
+- generic: icecream
+- generic: bakery_dining
+- heading "Homemade food, sold by students, right on campus." [level=1]
+- paragraph: Reserve a fresh meal in under a minute — or start selling your own cooking today.
+- link "Get started":
+  - /url: /auth
+- link "I already have an account":
+  - /url: /auth?mode=signin
+- main:
+  - generic: search
+  - textbox "search":
+    - /placeholder: Search biryani, brownies, sellers…
+  - button "All"
+  - button "Healthy"
+  - button "High Protein"
+  - button "Meals"
+  - button "Snacks"
+  - button "Desserts"
+  - button "Drinks"
+  - button "Homemade"
+  - button "Vegetarian"
+  - combobox:
+    - option "Recently posted" [selected]
+    - option "Highest rated"
+    - 'option "Price: low to high"'
+    - 'option "Price: high to low"'
+  - heading "Trending on Campus" [level=2]
+  - generic: Top rated right now
+  - link "🔥 HOT Save to cravings Chocolate Brownie star 4.9 Chocolate Brownie ₹40 8 left • Library West Meera by Meera I want this 😋":
+    - /url: /food/ccd0638d-5e0e-4010-9019-46ff32fd7d6d
+    - generic: 🔥 HOT
+    - button "Save to cravings":
+      - generic: favorite_border
+    - img "Chocolate Brownie"
+    - generic: star
+    - generic: "4.9"
+    - heading "Chocolate Brownie" [level=3]
+    - generic: ₹40
+    - paragraph: 8 left • Library West
+    - img "Meera"
+    - generic: by Meera
+    - generic: I want this 😋
+  - link "🔥 HOT Save to cravings Mango Smoothie star 4.8 Mango Smoothie ₹70 10 left • Student Union Sara by Sara I want this 😋":
+    - /url: /food/e2a7631a-cd79-45b6-a4c3-43eed69ecd15
+    - generic: 🔥 HOT
+    - button "Save to cravings":
+      - generic: favorite_border
+    - img "Mango Smoothie"
+    - generic: star
+    - generic: "4.8"
+    - heading "Mango Smoothie" [level=3]
+    - generic: ₹70
+    - paragraph: 10 left • Student Union
+    - img "Sara"
+    - generic: by Sara
+    - generic: I want this 😋
+  - link "🔥 HOT Save to cravings Paneer Protein Wrap star 4.8 Paneer Protein Wrap ₹60 5 left • Block A Ananya by Ananya I want this 😋":
+    - /url: /food/7279c6b8-029e-4065-a46f-a308a4892e70
+    - generic: 🔥 HOT
+    - button "Save to cravings":
+      - generic: favorite_border
+    - img "Paneer Protein Wrap"
+    - generic: star
+    - generic: "4.8"
+    - heading "Paneer Protein Wrap" [level=3]
+    - generic: ₹60
+    - paragraph: 5 left • Block A
+    - img "Ananya"
+    - generic: by Ananya
+    - generic: I want this 😋
+  - link "🔥 HOT Save to cravings Protein Laddoo star 4.7 Protein Laddoo ₹30 15 left • Sports Complex Ananya by Ananya I want this 😋":
+    - /url: /food/daa43b1d-3675-4d84-85eb-72d72a160006
+    - generic: 🔥 HOT
+    - button "Save to cravings":
+      - generic: favorite_border
+    - img "Protein Laddoo"
+    - generic: star
+    - generic: "4.7"
+    - heading "Protein Laddoo" [level=3]
+    - generic: ₹30
+    - paragraph: 15 left • Sports Complex
+    - img "Ananya"
+    - generic: by Ananya
+    - generic: I want this 😋
+  - heading "Freshly Posted" [level=2]
+  - link "Chicken Sandwich Chicken Sandwich ₹80 5 available • Hostel B Gate schedule Posted 23d ago by Rohan":
+    - /url: /food/6de9e5ff-de2d-43e7-b2a9-c7f3e10ea589
+    - img "Chicken Sandwich"
+    - heading "Chicken Sandwich" [level=4]
+    - generic: ₹80
+    - paragraph: 5 available • Hostel B Gate
+    - generic: schedule
+    - generic: Posted 23d ago by Rohan
+  - link "Homemade Paratha Homemade Paratha ₹40 7 available • North Hall Mess schedule Posted 23d ago by Kabir":
+    - /url: /food/3c04e350-845d-4375-b03b-aaa1dbc1c536
+    - img "Homemade Paratha"
+    - heading "Homemade Paratha" [level=4]
+    - generic: ₹40
+    - paragraph: 7 available • North Hall Mess
+    - generic: schedule
+    - generic: Posted 23d ago by Kabir
+  - link "Mango Smoothie Mango Smoothie ₹70 10 available • Student Union schedule Posted 23d ago by Sara":
+    - /url: /food/e2a7631a-cd79-45b6-a4c3-43eed69ecd15
+    - img "Mango Smoothie"
+    - heading "Mango Smoothie" [level=4]
+    - generic: ₹70
+    - paragraph: 10 available • Student Union
+    - generic: schedule
+    - generic: Posted 23d ago by Sara
+  - link "Veg Momos Veg Momos ₹50 11 available • South Campus Lawn schedule Posted 23d ago by Dev":
+    - /url: /food/2dbc2c1a-8bd9-4652-9e13-ed9dbd6307b4
+    - img "Veg Momos"
+    - heading "Veg Momos" [level=4]
+    - generic: ₹50
+    - paragraph: 11 available • South Campus Lawn
+    - generic: schedule
+    - generic: Posted 23d ago by Dev
+  - link "Protein Laddoo Protein Laddoo ₹30 15 available • Sports Complex schedule Posted 23d ago by Ananya":
+    - /url: /food/daa43b1d-3675-4d84-85eb-72d72a160006
+    - img "Protein Laddoo"
+    - heading "Protein Laddoo" [level=4]
+    - generic: ₹30
+    - paragraph: 15 available • Sports Complex
+    - generic: schedule
+    - generic: Posted 23d ago by Ananya
+  - link "Chocolate Brownie Chocolate Brownie ₹40 8 available • Library West schedule Posted 23d ago by Meera":
+    - /url: /food/ccd0638d-5e0e-4010-9019-46ff32fd7d6d
+    - img "Chocolate Brownie"
+    - heading "Chocolate Brownie" [level=4]
+    - generic: ₹40
+    - paragraph: 8 available • Library West
+    - generic: schedule
+    - generic: Posted 23d ago by Meera
+  - link "Paneer Protein Wrap Paneer Protein Wrap ₹60 5 available • Block A schedule Posted 23d ago by Ananya":
+    - /url: /food/7279c6b8-029e-4065-a46f-a308a4892e70
+    - img "Paneer Protein Wrap"
+    - heading "Paneer Protein Wrap" [level=4]
+    - generic: ₹60
+    - paragraph: 5 available • Block A
+    - generic: schedule
+    - generic: Posted 23d ago by Ananya
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3pxymq6ahv966rbbv5nvzkzp3k?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

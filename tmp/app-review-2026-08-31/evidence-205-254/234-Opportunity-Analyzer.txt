@@ -1,0 +1,88 @@
+- banner:
+  - generic: EcoSync
+  - generic: Navigator
+  - paragraph: Carbon Market Intelligence & Profitability
+  - button "Live Order Book":
+    - generic: Live Order Book
+  - generic: "|"
+  - generic: 10 Registries Verified
+  - button "Compare Project":
+    - generic: Compare Project
+  - button "Notifications":
+  - generic "Carbon Asset Manager Profile":
+    - img "User Profile"
+- button "Overview":
+  - generic: Overview
+- button "Dashboard":
+  - generic: Dashboard
+- button "Compare Projects":
+  - generic: Compare Projects
+- button "Opportunity Analyzer" [active]:
+  - generic: Opportunity Analyzer
+- button "Market Intelligence":
+  - generic: Market Intelligence
+- button "Platforms Directory":
+  - generic: Platforms Directory
+- button "Workspace":
+  - generic: Workspace
+- button "Admin Panel":
+  - generic: Admin Panel
+- main:
+  - generic: Intelligence & Opportunity Optimization
+  - heading "Market Opportunity Analyzer & AI Advisor" [level=2]
+  - paragraph: Perform dynamic sensitivity analysis on spot prices and credit volumes, and generate AI-tailored registry execution strategies.
+  - heading "AI Carbon Market Strategic Advisor" [level=3]
+  - paragraph: Heuristic & LLM optimization tailored to project volume, methodology, and timing
+  - button "Generate Strategy":
+    - generic: Generate Strategy
+  - generic: Project Name
+  - textbox: Tropical Reforestation Project
+  - generic: Primary Objective / Urgency
+  - combobox:
+    - option "Maximum Price Realization (Patience)" [selected]
+    - option "Immediate Cash Flow (Speed / T+0)"
+    - option "Lowest Operational Overhead"
+  - generic: Target Geography
+  - textbox: Southeast Asia
+  - text: Interactive Stress Testing
+  - heading "Sensitivity Analysis & Revenue Simulation" [level=3]
+  - paragraph: Test how shifts in carbon spot price, annual volume, and negotiated commission tiers impact venue rankings.
+  - generic: Price Shift
+  - generic: +0% ($8.32/t)
+  - slider: "0"
+  - generic: "-50% Bear"
+  - generic: 0% Spot
+  - generic: +100% Surge
+  - generic: Volume Shift
+  - generic: +0% (50,000 t)
+  - slider: "0"
+  - generic: "-50% Drought"
+  - generic: Base 50,000
+  - generic: +100% Expansion
+  - generic: Commission Tier Discount
+  - generic: 0% discount
+  - slider: "0"
+  - generic: Standard (0%)
+  - generic: 30% Tier 2
+  - generic: 60% Institutional
+  - heading "Sensitivity-Adjusted Net Realization Ranking" [level=4]
+  - generic: "#1"
+  - heading "Puro.earth (Nasdaq)" [level=5]
+  - generic: "NCCVI: 93/100 • Realized $9.1/t"
+  - generic: Net Revenue
+  - text: $455.0k
+  - generic: "#2"
+  - heading "Gold Standard for the Global Goals" [level=5]
+  - generic: "NCCVI: 92/100 • Realized $8.79/t"
+  - generic: Net Revenue
+  - text: $439.6k
+  - generic: "#3"
+  - heading "European Energy Exchange (EEX)" [level=5]
+  - generic: "NCCVI: 98/100 • Realized $8.66/t"
+  - generic: Net Revenue
+  - text: $433.0k
+  - generic: "#4"
+  - heading "Climate Impact X (CIX)" [level=5]
+  - generic: "NCCVI: 94/100 • Realized $8.54/t"
+  - generic: Net Revenue
+  - text: $426.8k

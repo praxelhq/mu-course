@@ -1,0 +1,37 @@
+- generic: Demo — sample data, not connected to your account.
+- link "Exit demo":
+  - /url: /
+  - text: Exit demo
+- banner:
+  - heading "Inbox Radar" [level=1]
+  - generic: Demo
+  - link "Back to home":
+    - /url: /
+  - button "Day" [pressed]
+  - button "Week"
+  - button "Month"
+  - button "Previous":
+  - button "Today · Aug 31"
+  - button "Next":
+- main:
+  - textbox "Search items":
+    - /placeholder: Search titles and context…
+  - button "Upcoming"
+  - button "Done" [active] [pressed]
+  - button "All"
+  - button "Work": Work
+  - button "Finance": Finance
+  - button "Travel": Travel
+  - button "Personal": Personal
+  - button "Reset"
+  - region "Scheduled":
+    - paragraph: Nothing on the books
+    - paragraph: No items land on this day. Refresh to scan your inbox for anything new.
+- region "Notifications alt+T":
+  - list:
+    - generic: Marked done
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_0bxrsdw5jp8k7bb7y2j7603zda?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

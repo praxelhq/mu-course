@@ -1,0 +1,81 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_5fddg23g198r2vfj6fcpef3a15?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- banner:
+  - link "LoadLynk home":
+    - /url: /
+    - generic: LoadLynk
+  - navigation:
+    - link "Home":
+      - /url: /
+    - link "Book a Truck":
+      - /url: /book
+    - link "Fleet Dashboard":
+      - /url: /dashboard
+  - link "Log in":
+    - /url: /auth?role=shipper
+  - link "Book a Truck":
+    - /url: /book
+- main:
+  - link "Back to home":
+    - /url: /
+    - text: Back to home
+  - heading "Book a truck" [level=1]
+  - paragraph: Tell us about the load — the fare estimate updates live.
+  - generic: Shipment details
+  - text: Pickup location
+  - textbox "e.g. Delhi": Delhi
+  - text: Drop location
+  - textbox "e.g. Jaipur": Jaipur
+  - text: Material type
+  - combobox:
+    - generic: Select material
+  - text: Approx. weight (tons)
+  - spinbutton: "1"
+  - generic: Truck type
+  - button "Mini Truck (Tata Ace) Up to 1.2 tons Local shifting, small parcels Base ₹900 + ₹18/km" [active]:
+    - text: Mini Truck (Tata Ace)
+    - paragraph: Up to 1.2 tons
+    - paragraph: Local shifting, small parcels
+    - paragraph: Base ₹900 + ₹18/km
+  - button "14 ft Open Body 3 - 4 tons FMCG, retail loads Base ₹2,200 + ₹28/km":
+    - text: 14 ft Open Body
+    - paragraph: 3 - 4 tons
+    - paragraph: FMCG, retail loads
+    - paragraph: Base ₹2,200 + ₹28/km
+  - button "20 ft Open Body 7 - 9 tons Machinery, bulk cargo Base ₹3,600 + ₹36/km":
+    - text: 20 ft Open Body
+    - paragraph: 7 - 9 tons
+    - paragraph: Machinery, bulk cargo
+    - paragraph: Base ₹3,600 + ₹36/km
+  - button "32 ft Container 14 - 18 tons Covered, weather-safe goods Base ₹6,200 + ₹48/km":
+    - text: 32 ft Container
+    - paragraph: 14 - 18 tons
+    - paragraph: Covered, weather-safe goods
+    - paragraph: Base ₹6,200 + ₹48/km
+  - button "Trailer / Flatbed 20 - 30 tons Heavy equipment, steel, ODC Base ₹9,800 + ₹62/km":
+    - text: Trailer / Flatbed
+    - paragraph: 20 - 30 tons
+    - paragraph: Heavy equipment, steel, ODC
+    - paragraph: Base ₹9,800 + ₹62/km
+  - generic: Fare estimate
+  - generic: Distance (est.)
+  - generic: 1023 km
+  - generic: Base fare
+  - generic: ₹900
+  - generic: Distance charge
+  - generic: ₹18,414
+  - generic: Load surcharge
+  - generic: ₹1,841
+  - generic: Toll & fuel
+  - generic: ₹6,650
+  - generic: GST (5%)
+  - generic: ₹1,390
+  - generic: Total payable
+  - generic: ₹29,195
+  - paragraph:
+    - text: Estimated delivery in 24 hours
+  - button "Confirm booking" [disabled]
+  - paragraph: No payment now. Pay 20% advance after truck assignment.

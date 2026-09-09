@@ -1,0 +1,65 @@
+- banner:
+  - generic: My Garage
+  - button "Vehicle Document Vault":
+  - button "Add Car":
+    - generic: Add Car
+- main:
+  - paragraph: Digital Garage Setup
+  - heading "Select Your Vehicle" [level=2]
+  - paragraph: Choose your brand, model, and variant to start tracking fuel economy, maintenance, and documents.
+  - generic: 1. Select Brand / Manufacturer *
+  - combobox:
+    - option "-- Choose Brand --"
+    - option "Maruti Suzuki"
+    - option "Hyundai"
+    - option "Tata" [selected]
+    - option "Mahindra"
+    - option "Toyota"
+    - option "Kia"
+    - option "Honda"
+    - option "Volkswagen"
+    - option "Skoda"
+    - option "BMW"
+    - option "Mercedes-Benz"
+    - option "Audi"
+    - option "MG"
+    - option "Renault"
+    - option "Nissan"
+    - option "Ford"
+    - option "Jeep"
+    - option "Volvo"
+    - option "Porsche"
+    - option "Land Rover"
+    - option "Tesla"
+    - option "BYD"
+    - option "➕ Other (Fill manually)"
+  - generic: 2. Select Model *
+  - combobox:
+    - option "-- Choose Model --" [selected]
+    - option "Nexon"
+    - option "Punch"
+    - option "Harrier"
+    - option "Safari"
+    - option "Curvv"
+    - option "Altroz"
+    - option "Tiago"
+    - option "Tigor"
+    - option "➕ Other (Fill manually)"
+  - generic: 3. Select Variant / Trim
+  - textbox "e.g. 330i M Sport, SX(O), Topline, AWD (Optional)"
+  - generic: Current Odometer Reading (km)
+  - spinbutton
+  - button "Add Vehicle & Enter Garage" [disabled]:
+    - generic: Add Vehicle & Enter Garage
+  - button "Need more details? Open full car setup modal →"
+- navigation:
+  - button "Garage":
+    - generic: Garage
+  - button "Fuel":
+    - generic: Fuel
+  - button "Service":
+    - generic: Service
+  - button "Expenses":
+    - generic: Expenses
+  - button "Docs":
+    - generic: Docs

@@ -1,0 +1,65 @@
+- banner:
+  - generic: CP
+  - heading "CommutePulse" [level=1]
+  - generic: LIVE
+  - paragraph:
+    - generic: Uber • Rapido • Ola Unified
+  - combobox:
+    - option "Delhi NCR" [selected]
+    - option "Bengaluru"
+    - option "Mumbai"
+    - option "Hyderabad"
+    - option "Pune"
+    - option "Chennai"
+  - 'button "Sync: 10s"':
+    - generic: "Sync: 10s"
+  - button "Late?":
+    - generic: Late?
+  - button "Login / Link Apps":
+    - generic: Login / Link Apps
+- main:
+  - button "Compare Rides 8":
+    - generic: Compare Rides
+    - generic: "8"
+  - button "Live Corridor Map" [active]:
+    - generic: Live Corridor Map
+  - button "Surge Radar 1x":
+    - generic: Surge Radar
+    - generic: 1x
+  - button "Saved Routes 15":
+    - generic: Saved Routes
+    - generic: "15"
+  - button "Linked Accounts 0/3":
+    - generic: Linked Accounts
+    - generic: 0/3
+  - button "Refresh Fares":
+    - generic: Refresh Fares
+  - heading "Google Maps Transit Corridor Telemetry" [level=3]
+  - paragraph: Live route geometry from DLF Cyber City to Connaught Place (CP) Inner Circle (~24.5 km)
+  - button "Back to Rides"
+  - heading "Google Maps Corridor Intelligence" [level=4]
+  - generic: Live GPS
+  - generic: DLF Cyber City ➔ Connaught Place (CP) Inner Circle (~24.5 km)
+  - button "Vector"
+  - button "Satellite"
+  - button "Terrain"
+  - button "API Key Active":
+    - generic: API Key Active
+  - button:
+  - generic: Sorry! Something went wrong.
+  - generic: This page didn't load Google Maps correctly. See the JavaScript console for technical details.
+  - generic: 24.5 km routing
+  - generic: "|"
+  - text: "Flow:"
+  - strong: Active
+  - generic: Uber (1.10x)
+  - generic: Rapido (1.10x)
+  - generic: Ola
+- contentinfo:
+  - generic: CommutePulse
+  - generic: • Intelligent Multi-Platform Transit Optimization
+  - generic: Uber API
+  - generic: •
+  - generic: Rapido Fleet
+  - generic: •
+  - generic: Ola Mobility

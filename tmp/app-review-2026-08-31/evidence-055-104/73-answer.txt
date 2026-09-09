@@ -1,0 +1,60 @@
+- main:
+  - paragraph: Now playing
+  - heading "Demo A" [level=1]
+  - text: "2"
+  - button "End game now"
+  - button "Restart"
+  - button "Quit to lobby"
+  - article:
+    - paragraph: Structure clue
+    - paragraph: Starts with W · 6 letters
+    - paragraph: easy card
+    - generic: Yellow · Sound & Spelling
+    - paragraph: Ends with the same sound as “snow”, starts like “wind”. What is it?
+    - list:
+      - listitem: "💡 Meaning clue: What glass opening lets light into a room?"
+  - paragraph: Correct! 🎉
+  - paragraph: The word was “window” · +2 points
+  - button "Pass to Demo B"
+  - heading "Scoreboard" [level=2]
+  - list:
+    - generic: D
+    - paragraph: Demo A
+    - paragraph:
+      - text: 2 hints left
+    - text: "2"
+    - generic: /21
+    - generic: D
+    - paragraph: Demo B
+    - paragraph:
+      - text: 3 hints left
+    - text: "0"
+    - generic: /21
+    - generic: D
+    - paragraph: Demo C
+    - paragraph:
+      - text: 3 hints left
+    - text: "0"
+    - generic: /21
+- navigation:
+  - list:
+    - link "Home":
+      - /url: /
+      - text: Home
+    - link "Play":
+      - /url: /play
+      - text: Play
+    - link "Scores":
+      - /url: /scoreboard
+      - text: Scores
+    - link "Rules":
+      - /url: /how-to-play
+      - text: Rules
+    - link "Settings":
+      - /url: /settings
+      - text: Settings
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7zpptsf0w782c9v2fqtd9yt2mv?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

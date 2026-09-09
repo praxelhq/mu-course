@@ -1,0 +1,56 @@
+- banner:
+  - link "Back to rankings":
+    - /url: /?view=hall&role=spotters&cohort=all&fraternity=all
+    - text: ←
+  - heading "Kohinoor Mukherjee" [level=1]
+  - paragraph: TBM C7 · Google
+- main:
+  - heading "Caught Sleeping" [level=2]
+  - paragraph: Never caught napping. Suspicious.
+  - heading "Spotted Others" [level=2]
+  - paragraph:
+    - generic: "1"
+    - generic: Points
+    - generic: "Tied #64"
+  - paragraph:
+    - generic: "Month Tied #46 · 1"
+    - generic: Week — · 0
+  - link "Congratulate Kohinoor Mukherjee on WhatsApp":
+    - /url: /api/public/wa?p=1e20873a-5b34-4c4a-84e0-949f8d15062f&period=all&role=spotters
+    - generic: WhatsApp
+  - button "This is me":
+    - text: This is me
+  - group "Story card role":
+    - button "Sleeper card"
+    - button "Spotter card" [pressed]
+  - button "Copy link":
+    - text: Copy link
+  - button "Building…" [disabled]:
+    - text: Building…
+  - paragraph
+  - heading "SleepQuest Archive" [level=2]
+  - paragraph: No photos in the archive yet.
+  - heading "Sightings Credited" [level=2]
+  - link "View Ashima Tyagi's SleepQuest profile":
+    - /url: /player/ashima-tyagi?view=hall&role=spotters&cohort=all&fraternity=all
+    - img "Ashima Tyagi caught sleeping on 26 AUG"
+    - generic: Ashima Tyagi
+    - generic: 26 AUG
+  - link "Contact me for issues":
+    - /url: /api/public/contact?from=%2Fplayer%2F1e20873a-5b34-4c4a-84e0-949f8d15062f
+  - link "Admin login":
+    - /url: /auth
+- navigation "SleepQuest sections":
+  - list:
+    - link "All-Time":
+      - /url: /?view=hall&role=spotters&cohort=all&fraternity=all
+      - generic: All-Time
+    - link "Month":
+      - /url: /?view=month&role=spotters&cohort=all&fraternity=all
+      - generic: Month
+    - link "Week":
+      - /url: /?view=week&role=spotters&cohort=all&fraternity=all
+      - generic: Week
+    - link "Feed":
+      - /url: /feed
+      - generic: Feed

@@ -1,0 +1,75 @@
+- navigation:
+  - link "CI CASE INTERVIEWER":
+    - /url: /
+    - generic: CI
+    - text: CASE
+    - text: INTERVIEWER
+  - link "Case library":
+    - /url: /library
+  - link "Your progress":
+    - /url: /progress
+  - button "Sign in":
+    - text: Sign in
+- main:
+  - paragraph: THE CASE LIBRARY · 101 CASES
+  - heading "Pick your next rep." [level=1]:
+    - text: Pick your
+    - emphasis: next rep.
+  - paragraph: FMS CaseBook practice, structured for live interview reps. Bookmark the ones you want to revisit.
+  - textbox "Search by title, type, or tag…": margin
+  - tablist:
+    - tab "All cases 101" [selected]:
+      - text: All cases
+      - generic: "101"
+    - tab "Bookmarked 0":
+      - text: Bookmarked
+      - generic: "0"
+  - text: Difficulty
+  - combobox "Difficulty":
+    - option "All" [selected]
+    - option "Easy"
+    - option "Medium"
+    - option "Hard"
+  - text: Section
+  - combobox "Section":
+    - option "All" [selected]
+    - option "Cost Reduction"
+    - option "Customer Satisfaction"
+    - option "Due Diligence"
+    - option "Due diligence"
+    - option "Go-to-market"
+    - option "Growth"
+    - option "Guesstimate"
+    - option "M&A"
+    - option "Market Entry"
+    - option "Market entry"
+    - option "Pricing"
+    - option "Profitability"
+    - option "Revenues"
+    - option "Unconventional"
+  - generic: 1 shown
+  - article:
+    - generic: CS·001
+    - generic: Medium
+    - button "Save case":
+    - paragraph: Profitability
+    - heading "The margin squeeze" [level=2]
+    - paragraph: Your client is a regional coffee chain. Over the last 12 months, profits have fallen by 20% despite revenue growing by 8%. The CEO wants to understand why and what to do next.
+    - generic: Profit tree
+    - generic: Revenue
+    - generic: Costs
+    - button "Start case":
+      - text: Start case
+- button "Close":
+- paragraph: MEMBER ACCESS
+- heading "Welcome back" [level=2]
+- paragraph: Your cases, scorecards, and momentum — kept in one place.
+- text: Email
+- textbox "Email" [active]:
+  - /placeholder: you@school.edu
+- text: Password
+- textbox "Password":
+  - /placeholder: At least 8 characters
+- button "Sign in":
+  - text: Sign in
+- button "New here? Create an account"

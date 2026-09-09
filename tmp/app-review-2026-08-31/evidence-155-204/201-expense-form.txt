@@ -1,0 +1,44 @@
+- complementary:
+  - link:
+    - /url: https://lovable.dev/projects/lovp_2c3cqz90h29nqvr5qbj4ym2v9k?utm_source=lovable-badge
+    - generic: Edit with
+  - button:
+- banner:
+  - paragraph: SplitStay
+  - heading [level=1]: Review Demo Trip
+  - generic: TA
+  - generic: TB
+- paragraph: Total group spend
+- paragraph: ₹0
+- paragraph: Expenses
+- paragraph: "0"
+- heading [level=3]: No expenses yet
+- paragraph: Tap the + button to log your first shared cost.
+- button:
+- navigation:
+  - button:
+    - text: Expenses
+  - button:
+    - text: Settle Up
+- dialog "Add expense":
+  - button "Close":
+    - generic: Close
+  - heading "Add expense" [level=2]
+  - text: Description
+  - textbox "Description":
+    - /placeholder: Beach shack dinner
+    - text: Review shared lunch
+  - text: Amount
+  - generic: ₹
+  - textbox "Amount" [active]:
+    - /placeholder: "0"
+    - text: "100"
+  - paragraph: Paid by
+  - button "Test Alex"
+  - button "Test Blake"
+  - paragraph: Split between
+  - button "Clear all"
+  - button "Test Alex"
+  - button "Test Blake"
+  - paragraph: Split ₹100 between 2 people = ₹50 each
+  - button "Save expense" [disabled]

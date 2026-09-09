@@ -1,0 +1,25 @@
+- main:
+  - heading "What's your collab rate?" [level=1]
+  - paragraph: Enter your follower count to find your tier and a fair rate range.
+  - generic: Follower count
+  - spinbutton "Follower count": "10000"
+  - generic: Platform
+  - combobox "Platform":
+    - option "Instagram" [selected]
+    - option "YouTube"
+    - option "TikTok"
+  - generic: Content type
+  - button "Sponsored Post"
+  - button "Sponsored Story"
+  - button "Short-form Post"
+  - button "Calculate" [active]
+  - generic: Micro tier
+  - paragraph: 10K–50K followers
+  - paragraph: ₹200–₹1,000
+  - paragraph: suggested sponsored post range
+  - paragraph: Rates vary by niche and engagement — use this as a starting point.
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_5ctjxrk3q59set4eaaqh651k8p?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

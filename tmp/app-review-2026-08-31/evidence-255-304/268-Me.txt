@@ -1,0 +1,54 @@
+- banner:
+  - link "Gatherly":
+    - /url: /explore
+  - link "Notifications":
+    - /url: /notifications
+  - link "Profile":
+    - /url: /profile/maya
+    - generic "Maya Okonkwo": MO
+- main:
+  - heading "Connections" [level=1]
+  - button "friends"
+  - button "requests 2"
+  - button "suggested"
+  - list:
+    - link "Leo Tanaka Leo Tanaka Jazz bassist. Hosts cocktail nights. Dog person.":
+      - /url: /profile/leo
+      - generic "Leo Tanaka": LT
+      - paragraph: Leo Tanaka
+      - paragraph: Jazz bassist. Hosts cocktail nights. Dog person.
+    - link "Noor Hassan Noor Hassan Backend engineer who'd rather be hiking.":
+      - /url: /profile/noor
+      - generic "Noor Hassan": NH
+      - paragraph: Noor Hassan
+      - paragraph: Backend engineer who'd rather be hiking.
+    - link "Iris Bloom Iris Bloom Ceramicist. Coffee-first.":
+      - /url: /profile/iris
+      - generic "Iris Bloom": IB
+      - paragraph: Iris Bloom
+      - paragraph: Ceramicist. Coffee-first.
+    - link "Ana Lima Ana Lima Founder-in-progress. Loves a good demo night.":
+      - /url: /profile/ana
+      - generic "Ana Lima": AL
+      - paragraph: Ana Lima
+      - paragraph: Founder-in-progress. Loves a good demo night.
+- navigation:
+  - link "Feed":
+    - /url: /explore
+    - generic: Feed
+  - link "Groups":
+    - /url: /communities
+    - generic: Groups
+  - button "Create activity":
+  - link "Chats":
+    - /url: /messages
+    - generic: Chats
+  - link "Me":
+    - /url: /connections
+    - generic: Me
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_708chb7hqx9tfa8zt1gfr6nt0d?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

@@ -1,0 +1,34 @@
+- banner:
+  - generic: My Garage
+  - button "Vehicle Document Vault":
+  - button "Tata":
+    - text: Tata
+- main:
+  - paragraph: Fuel Intelligence
+  - heading "Fuel & Mileage Tracker" [level=1]
+  - button "Add Fuel":
+    - generic: Add Fuel
+  - generic: Calculated Mileage
+  - generic: —
+  - paragraph: No fuel entries recorded
+  - generic: Total Fuel Cost
+  - generic: ₹0
+  - paragraph: 0 L pumped
+  - generic: Automatic Mileage Calculation
+  - generic: Mileage is automatically computed by calculating the distance traveled between consecutive fuel fills divided by the litres pumped.
+  - paragraph: Fuel Refill History (0)
+  - heading "No fuel entries yet" [level=3]
+  - paragraph: Track your fuel fills to automatically calculate your car's true mileage and running costs.
+  - button "+ Add First Fuel Entry":
+    - generic: + Add First Fuel Entry
+- navigation:
+  - button "Garage":
+    - generic: Garage
+  - button "Fuel" [active]:
+    - generic: Fuel
+  - button "Service":
+    - generic: Service
+  - button "Expenses":
+    - generic: Expenses
+  - button "Docs":
+    - generic: Docs

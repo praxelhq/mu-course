@@ -1,0 +1,20 @@
+- main:
+  - heading "What's your collab rate?" [level=1]
+  - paragraph: Enter your follower count to find your tier and a fair rate range.
+  - generic: Follower count
+  - spinbutton "Follower count"
+  - generic: Platform
+  - combobox "Platform":
+    - option "Instagram" [selected]
+    - option "YouTube"
+    - option "TikTok"
+  - generic: Content type
+  - button "Sponsored Post"
+  - button "Sponsored Story"
+  - button "Short-form Post"
+  - button "Calculate" [disabled]
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_5ctjxrk3q59set4eaaqh651k8p?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

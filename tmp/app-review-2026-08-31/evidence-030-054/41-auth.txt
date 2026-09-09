@@ -1,0 +1,24 @@
+- link "PLNR":
+  - /url: /
+  - generic: PLNR
+- text: Welcome back
+- heading "Sign in" [level=1]
+- generic: Email
+- textbox "Email":
+  - /placeholder: you@example.com
+- generic: Password
+- textbox "Password":
+  - /placeholder: ••••••••
+- button "Sign in"
+- generic: OR
+- button "Continue with Google":
+  - text: Continue with Google
+- paragraph:
+  - text: New here?
+  - button "Create one"
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_59kjd8zdx989p8kk45cczxzwx4?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

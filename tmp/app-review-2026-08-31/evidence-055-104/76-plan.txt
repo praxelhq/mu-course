@@ -1,0 +1,37 @@
+- banner:
+  - link "TravelTailor AI":
+    - /url: /
+    - generic: travel_explore
+    - generic: TravelTailor AI
+  - button "Toggle dark mode":
+    - generic: dark_mode
+  - link "Exit planning":
+    - /url: /
+    - generic: close
+    - generic: Exit planning
+- main:
+  - generic: Step 1 of 5
+  - heading "How would you like to start?" [level=2]
+  - paragraph: Both paths end with a personalised, editable itinerary and a live budget dashboard.
+  - link "I know where I want to go I know where I want to go Give us the destination and dates. We'll build the itinerary, budget and daily flow around your group. Plan my destination":
+    - /url: /plan/known
+    - img "I know where I want to go"
+    - generic: flight_takeoff
+    - heading "I know where I want to go" [level=3]
+    - paragraph: Give us the destination and dates. We'll build the itinerary, budget and daily flow around your group.
+    - text: Plan my destination
+    - generic: arrow_forward
+  - link "Help me choose a destination Help me choose a destination Tell us about the travellers and constraints. We'll rank destinations with an explainable match score. Find my match":
+    - /url: /plan/discover
+    - img "Help me choose a destination"
+    - generic: travel_explore
+    - heading "Help me choose a destination" [level=3]
+    - paragraph: Tell us about the travellers and constraints. We'll rank destinations with an explainable match score.
+    - text: Find my match
+    - generic: arrow_forward
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_4zxp32hwhk8nerwh4551kt6jsj?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

@@ -1,0 +1,69 @@
+- banner:
+  - button "Set your location":
+  - link "MindSaathi Your Mind Matters":
+    - /url: /
+    - generic: MindSaathi
+    - generic: Your Mind Matters
+  - 'link "Language: English. Change language"':
+    - /url: /language
+    - generic: English
+  - link "SOS":
+    - /url: /sos
+    - text: SOS
+- main:
+  - paragraph:
+    - text: This chat stays on your device for this session only. Nothing is saved unless you sign in and opt in later.
+  - paragraph: Namaste. I'm Saathi, your 24/7 empathetic listener in English. What is on your mind today? You can share freely and safely.
+  - paragraph: 01:36
+  - paragraph: "Synthetic review: suggest a short calming breathing exercise."
+  - paragraph: 01:37
+  - paragraph: "Try this: sit comfortably, relax your shoulders, and breathe in gently for 4 counts, then out slowly for 6 counts. Repeat for five breaths without forcing it, simply noticing the air moving in and out. How do you feel after trying it?"
+  - paragraph: 01:37
+  - paragraph:
+    - text: Saathi listens, but isn't a therapist.
+    - link "Book a verified counsellor":
+      - /url: /counsellors
+    - text: for ongoing support.
+  - generic: "Try:"
+  - button "I feel overwhelmed with work stress, how can I cope?"
+  - button "I can't sleep at night."
+  - button "Exams are making me anxious."
+  - textbox "Type your message or thought… (English)" [active]
+  - button "Send message":
+- contentinfo:
+  - link "How your data is used":
+    - /url: /privacy
+- button "Open Saathi, your guide":
+  - img "Saathi, your friendly guide"
+- navigation "Screen navigation":
+  - button "Previous screen":
+  - link "Language":
+    - /url: /language
+    - text: Language
+  - link "Settings":
+    - /url: /settings
+    - text: Settings
+  - link "Check-in":
+    - /url: /tracker
+    - text: Check-in
+  - button "Next screen":
+  - link "Today":
+    - /url: /
+    - generic: Today
+  - link "Counsellors":
+    - /url: /counsellors
+    - generic: Counsellors
+  - link "Tracker":
+    - /url: /tracker
+    - generic: Tracker
+  - link "AI Support":
+    - /url: /ai-support
+    - generic: AI Support
+  - link "SOS":
+    - /url: /sos
+    - generic: SOS
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6c2nccmn5q8vsre70jn9smn197?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

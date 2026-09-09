@@ -1,0 +1,326 @@
+- complementary:
+  - link "C Clario":
+    - /url: /dashboard
+    - generic: C
+    - generic: Clario
+  - generic: AR
+  - strong: Apex Realty
+  - generic: 12 active projects
+  - navigation:
+    - generic: Monitor
+    - link "Portfolio":
+      - /url: /dashboard
+      - generic: Portfolio
+    - link "Risk Radar" [active]:
+      - /url: /risk-radar
+      - generic: Risk Radar
+    - link "Calendar":
+      - /url: /calendar
+      - generic: Calendar
+    - generic: Intelligence
+    - link "Documents":
+      - /url: /documents
+      - generic: Documents
+    - link "Finance":
+      - /url: /finance
+      - generic: Finance
+    - link "Progress":
+      - /url: /progress
+      - generic: Progress
+    - generic: Work
+    - link "Tasks 14":
+      - /url: /tasks
+      - generic: Tasks
+      - emphasis: "14"
+  - generic: Internal indicator
+  - paragraph: The Clario Health Score is not an official RERA score.
+  - generic: AM
+  - strong: Ananya Mehta
+  - generic: Compliance Head
+- generic: Prototype workspace
+- text: Fictional project data for product demonstration
+- banner:
+  - button "Search projects, risks or ask Clario… ⌘ K":
+    - generic: Search projects, risks or ask Clario…
+    - generic: ⌘ K
+  - strong: Tuesday
+  - generic: 25 Aug 2026
+  - button "Notifications":
+- main:
+  - generic: Monitor → detect → act
+  - heading "Risk Radar" [level=1]
+  - paragraph: Every signal is connected to a reason, an owner and a recommended next action.
+  - button "Prioritise with Clario":
+    - text: Prioritise with Clario
+  - text: Critical
+  - strong: "2"
+  - generic: portfolio risks
+  - text: High
+  - strong: "4"
+  - generic: portfolio risks
+  - text: Medium
+  - strong: "3"
+  - generic: portfolio risks
+  - text: Resolved
+  - strong: "0"
+  - generic: portfolio risks
+  - textbox "Search risk, reason or project…"
+  - combobox:
+    - option "All projects" [selected]
+    - option "Skyline Towers"
+    - option "Sunrise Heights"
+    - option "Greenview Residency"
+    - option "Riverfront Residences"
+    - option "Urban Vista"
+    - option "Lakeview Heights"
+    - option "Palm Grove"
+    - option "Emerald Enclave"
+    - option "Cedar Square"
+    - option "The Arc"
+    - option "Bluebell Estate"
+    - option "Meridian Heights"
+  - combobox:
+    - option "All categories" [selected]
+    - option "Compliance"
+    - option "Documentation"
+    - option "Finance"
+    - option "Progress"
+    - option "Approvals"
+  - combobox:
+    - option "All severity" [selected]
+    - option "Critical"
+    - option "High"
+    - option "Medium"
+    - option "Low"
+  - text: 12 signals matched
+  - article:
+    - generic: Critical
+    - heading "QPR deadline approaching" [level=2]
+    - generic: Compliance
+    - text: Project & reason
+    - link "Skyline Towers":
+      - /url: /projects/skyline-towers
+      - text: Skyline Towers
+    - paragraph: Quarterly progress report is due while the supporting CA certificate is incomplete.
+    - text: Deadline
+    - strong: 30 Aug 2026
+    - generic: 5 days remaining
+    - text: Recommended action
+    - paragraph: Prepare the QPR pack and obtain the updated CA certification within 48 hours.
+    - generic: "Owner: Compliance Team"
+    - button "Create plan":
+      - text: Create plan
+  - article:
+    - generic: High
+    - heading "Form 5 certification incomplete" [level=2]
+    - generic: Documentation
+    - text: Project & reason
+    - link "Skyline Towers":
+      - /url: /projects/skyline-towers
+      - text: Skyline Towers
+    - paragraph: The latest certificate is missing the authorised signatory and UDIN confirmation.
+    - text: Deadline
+    - strong: 27 Aug 2026
+    - generic: Due in 2 days
+    - text: Recommended action
+    - paragraph: Request a signed Form 5 with UDIN confirmation from the CA team.
+    - generic: "Owner: CA Coordination"
+    - button "Create plan":
+      - text: Create plan
+  - article:
+    - generic: High
+    - heading "₹18L reconciliation variance" [level=2]
+    - generic: Finance
+    - text: Project & reason
+    - link "Skyline Towers":
+      - /url: /projects/skyline-towers
+      - text: Skyline Towers
+    - paragraph: Reported project expenditure is ₹18 lakh below the expected ledger position.
+    - text: Deadline
+    - strong: 29 Aug 2026
+    - generic: Due in 4 days
+    - text: Recommended action
+    - paragraph: Match bank entries against the project ledger and document the variance for human review.
+    - generic: "Owner: Finance Team"
+    - button "Create plan":
+      - text: Create plan
+  - article:
+    - generic: Medium
+    - heading "Construction progress behind plan" [level=2]
+    - generic: Progress
+    - text: Project & reason
+    - link "Skyline Towers":
+      - /url: /projects/skyline-towers
+      - text: Skyline Towers
+    - paragraph: Actual project progress is 62% against a planned 68%, driven by MEP slippage.
+    - text: Deadline
+    - strong: 1 Sept 2026
+    - generic: Review in 7 days
+    - text: Recommended action
+    - paragraph: Validate the latest site progress and confirm the MEP recovery timeline.
+    - generic: "Owner: Project Team"
+    - button "Create plan":
+      - text: Create plan
+  - article:
+    - generic: Critical
+    - heading "Form 4 renewal pending" [level=2]
+    - generic: Approvals
+    - text: Project & reason
+    - link "Sunrise Heights":
+      - /url: /projects/sunrise-heights
+      - text: Sunrise Heights
+    - paragraph: Renewal review is not yet initiated and the current approval window closes this week.
+    - text: Deadline
+    - strong: 28 Aug 2026
+    - generic: 3 days remaining
+    - text: Recommended action
+    - paragraph: Escalate the renewal pack to the legal team and confirm submission readiness today.
+    - generic: "Owner: Legal Team"
+    - button "Create plan":
+      - text: Create plan
+  - article:
+    - generic: High
+    - heading "Architect certificate missing" [level=2]
+    - generic: Documentation
+    - text: Project & reason
+    - link "Sunrise Heights":
+      - /url: /projects/sunrise-heights
+      - text: Sunrise Heights
+    - paragraph: The current progress filing has no supporting architect certificate.
+    - text: Deadline
+    - strong: 29 Aug 2026
+    - generic: 4 days remaining
+    - text: Recommended action
+    - paragraph: Collect the signed architect certificate and attach it to the filing pack.
+    - generic: "Owner: Project Team"
+    - button "Create plan":
+      - text: Create plan
+  - article:
+    - generic: High
+    - heading "Engineer certificate expiring" [level=2]
+    - generic: Documentation
+    - text: Project & reason
+    - link "Greenview Residency":
+      - /url: /projects/greenview-residency
+      - text: Greenview Residency
+    - paragraph: The structural engineer certificate expires before the next scheduled filing.
+    - text: Deadline
+    - strong: 2 Sept 2026
+    - generic: 8 days remaining
+    - text: Recommended action
+    - paragraph: Request a renewed certificate before the filing pack is finalised.
+    - generic: "Owner: Project Team"
+    - button "Create plan":
+      - text: Create plan
+  - article:
+    - generic: Medium
+    - heading "₹9.4L reconciliation variance" [level=2]
+    - generic: Finance
+    - text: Project & reason
+    - link "Riverfront Residences":
+      - /url: /projects/riverfront-residences
+      - text: Riverfront Residences
+    - paragraph: Three expenditure entries do not match the latest certified statement.
+    - text: Deadline
+    - strong: 5 Sept 2026
+    - generic: 11 days remaining
+    - text: Recommended action
+    - paragraph: Reconcile the three unmatched entries and attach supporting invoices.
+    - generic: "Owner: Finance Team"
+    - button "Create plan":
+      - text: Create plan
+  - article:
+    - generic: Medium
+    - heading "Progress deviation detected" [level=2]
+    - generic: Progress
+    - text: Project & reason
+    - link "Urban Vista":
+      - /url: /projects/urban-vista
+      - text: Urban Vista
+    - paragraph: Finishing work is 3% behind the approved monthly plan.
+    - text: Deadline
+    - strong: 9 Sept 2026
+    - generic: 15 days remaining
+    - text: Recommended action
+    - paragraph: Validate revised milestone dates with the site lead.
+    - generic: "Owner: Project Team"
+    - button "Create plan":
+      - text: Create plan
+  - article:
+    - generic: Low
+    - heading "Architect certificate in review" [level=2]
+    - generic: Documentation
+    - text: Project & reason
+    - link "Palm Grove":
+      - /url: /projects/palm-grove
+      - text: Palm Grove
+    - paragraph: One non-critical date field requires confirmation.
+    - text: Deadline
+    - strong: 18 Sept 2026
+    - generic: 24 days remaining
+    - text: Recommended action
+    - paragraph: Confirm the certificate date before the next submission cycle.
+    - generic: "Owner: Compliance Team"
+    - button "Create plan":
+      - text: Create plan
+  - article:
+    - generic: Low
+    - heading "Audit pack awaiting review" [level=2]
+    - generic: Compliance
+    - text: Project & reason
+    - link "Cedar Square":
+      - /url: /projects/cedar-square
+      - text: Cedar Square
+    - paragraph: The quarterly audit pack is complete but has not received final internal sign-off.
+    - text: Deadline
+    - strong: 24 Sept 2026
+    - generic: 30 days remaining
+    - text: Recommended action
+    - paragraph: Schedule the final compliance review before 15 September.
+    - generic: "Owner: Compliance Team"
+    - button "Create plan":
+      - text: Create plan
+  - article:
+    - generic: Low
+    - heading "Approval observation open" [level=2]
+    - generic: Approvals
+    - text: Project & reason
+    - link "Meridian Heights":
+      - /url: /projects/meridian-heights
+      - text: Meridian Heights
+    - paragraph: A non-material clarification on the amenity plan remains open.
+    - text: Deadline
+    - strong: 6 Oct 2026
+    - generic: 42 days remaining
+    - text: Recommended action
+    - paragraph: Send the revised amenity note to the consultant for closure.
+    - generic: "Owner: Legal Team"
+    - button "Create plan":
+      - text: Create plan
+- button "Open Ask Clario":
+  - generic: Ask Clario
+- complementary:
+  - strong: Ask Clario
+  - generic: Risk & compliance copilot
+  - button:
+  - generic: Answers use this demo workspace only. Clario does not provide legal advice.
+  - button:
+    - text: What needs my attention today?
+  - button:
+    - text: Why is Skyline Towers high risk?
+  - button:
+    - text: Show variances above ₹10 lakh
+  - button:
+    - text: Which certificates expire soon?
+  - generic: What needs my attention today?
+  - generic: This week’s priority
+  - heading [level=3]: Start with Skyline Towers, then Sunrise Heights.
+  - paragraph: Skyline combines a 5-day filing deadline, incomplete certification, an ₹18 lakh variance, and progress slippage. Sunrise Heights follows because its Form 4 renewal window closes in 3 days.
+  - link:
+    - /url: /projects/skyline-towers
+    - text: View project
+  - button: Create action plan
+  - textbox:
+    - /placeholder: Ask about projects, risks or deadlines…
+  - button:
+- alert

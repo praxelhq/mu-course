@@ -1,0 +1,74 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7dwkdw8j6f87rbghkda444epwz?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- main:
+  - heading "How to Play" [level=1]
+  - paragraph: Mafia Night is played in person with one shared device. Pass the phone or laptop around when prompted.
+  - heading "Roles" [level=2]
+  - list:
+    - paragraph: Mafia
+    - paragraph: Each night, choose someone to eliminate. Stay hidden by day.
+    - paragraph: Doctor
+    - paragraph: Each night, choose one player to protect from the Mafia.
+    - paragraph: Detective
+    - paragraph: Each night, investigate one player to learn if they are Mafia.
+    - paragraph: Civilian
+    - paragraph: You have no night action. Use discussion and votes to find the Mafia.
+  - heading "Each round" [level=2]
+  - list:
+    - listitem: "Night: Mafia pick a target, the Doctor protects, the Detective investigates."
+    - listitem: "Morning: the result is announced — the target dies unless the Doctor saved them."
+    - listitem: "Day: everyone discusses out loud with a timer."
+    - listitem: "Voting: every living player votes for someone else. A tie means nobody dies."
+  - heading "Winning" [level=2]
+  - paragraph: The Town wins when every Mafia member is eliminated. The Mafia win when they equal or outnumber the remaining players.
+  - heading "Role counts" [level=2]
+  - table:
+    - rowgroup:
+      - row "Players Mafia Doctor Detective Civilians":
+        - columnheader "Players"
+        - columnheader "Mafia"
+        - columnheader "Doctor"
+        - columnheader "Detective"
+        - columnheader "Civilians"
+    - rowgroup:
+      - row "5 1 1 1 2":
+        - cell "5"
+        - cell "1"
+        - cell "1"
+        - cell "1"
+        - cell "2"
+      - row "6 1 1 1 3":
+        - cell "6"
+        - cell "1"
+        - cell "1"
+        - cell "1"
+        - cell "3"
+      - row "7 2 1 1 3":
+        - cell "7"
+        - cell "2"
+        - cell "1"
+        - cell "1"
+        - cell "3"
+      - row "8 2 1 1 4":
+        - cell "8"
+        - cell "2"
+        - cell "1"
+        - cell "1"
+        - cell "4"
+      - row "9 2 1 1 5":
+        - cell "9"
+        - cell "2"
+        - cell "1"
+        - cell "1"
+        - cell "5"
+      - row "10 3 1 1 5":
+        - cell "10"
+        - cell "3"
+        - cell "1"
+        - cell "1"
+        - cell "5"
+  - link "Back to start":
+    - /url: /

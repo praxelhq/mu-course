@@ -1,0 +1,181 @@
+- navigation:
+  - button "card_giftcard Gift Genius Buddy":
+    - generic: card_giftcard
+    - generic: Gift Genius
+    - generic: Buddy
+  - button "home Home":
+    - generic: home
+    - generic: Home
+  - button "checklist_rtl Gift Lists 4":
+    - generic: checklist_rtl
+    - generic: Gift Lists
+    - generic: "4"
+  - button "group People & Occasions":
+    - generic: group
+    - generic: People & Occasions
+  - button "bookmark Wishlist":
+    - generic: bookmark
+    - generic: Wishlist
+  - button "person Profile" [active]:
+    - generic: person
+    - generic: Profile
+  - button "search":
+    - generic: search
+  - button "chat":
+    - generic: chat
+  - button "notifications":
+    - generic: notifications
+  - button "auto_awesome Find Gifts":
+    - generic: auto_awesome
+    - generic: Find Gifts
+  - button "G Guest expand_more":
+    - generic: G
+    - generic: Guest
+    - generic: expand_more
+- main:
+  - generic: Account Active • guest@giftgenius.app
+  - heading "Account & Basic Preferences" [level=1]
+  - paragraph: Configure your default budget boundaries, gifting styles, delivery hub, and session access.
+  - button "switch_account Switch Profile":
+    - generic: switch_account
+    - generic: Switch Profile
+  - button "logout Sign Out":
+    - generic: logout
+    - generic: Sign Out
+  - generic: G
+  - generic "Verified Member"
+  - heading "Guest Explorer" [level=2]
+  - paragraph: guest@giftgenius.app
+  - generic: "📍 Primary Hub: Mumbai"
+  - generic: Saved Gifts
+  - text: "3"
+  - generic: People Saved
+  - text: "4"
+  - button "tune Basic Gifting Preferences chevron_right":
+    - generic: tune
+    - generic: Basic Gifting Preferences
+    - generic: chevron_right
+  - button "person Account Details chevron_right":
+    - generic: person
+    - generic: Account Details
+    - generic: chevron_right
+  - button "manage_accounts Session & Sign Out chevron_right":
+    - generic: manage_accounts
+    - generic: Session & Sign Out
+    - generic: chevron_right
+  - generic: chat
+  - generic: WhatsApp Buddy Alerts
+  - generic: Active
+  - paragraph: Connected to +91 9876543210. Receiving occasion alerts & restock notices.
+  - button "Manage WhatsApp Settings"
+  - heading "Default Basic Preferences" [level=2]
+  - paragraph: These baseline preferences pre-populate your gift finder wizard and calculate your baseline recommendation scores.
+  - generic: Default Target Budget Bracket
+  - generic: "Currency: INR (₹)"
+  - 'button "Under ₹1,000 Cap: ₹1,000"':
+    - generic: Under ₹1,000
+    - generic: "Cap: ₹1,000"
+  - button "₹1,000 – ₹2,500 ★ Most Popular Choice":
+    - generic: ₹1,000 – ₹2,500
+    - generic: ★ Most Popular Choice
+  - 'button "₹2,500 – ₹5,000 Cap: ₹5,000"':
+    - generic: ₹2,500 – ₹5,000
+    - generic: "Cap: ₹5,000"
+  - 'button "₹5,000 – ₹10,000 Cap: ₹10,000"':
+    - generic: ₹5,000 – ₹10,000
+    - generic: "Cap: ₹10,000"
+  - 'button "₹10,000+ Cap: ₹50,000"':
+    - generic: ₹10,000+
+    - generic: "Cap: ₹50,000"
+  - generic: Default Surprise Appetite
+  - button "verified Safe & Practical Guaranteed daily utility":
+    - generic: verified
+    - generic: Safe & Practical
+    - generic: Guaranteed daily utility
+  - button "balance Balanced & Thoughtful Elevated surprises":
+    - generic: balance
+    - generic: Balanced & Thoughtful
+    - generic: Elevated surprises
+  - button "auto_awesome Adventurous Wildcard Unforgettable novelty":
+    - generic: auto_awesome
+    - generic: Adventurous Wildcard
+    - generic: Unforgettable novelty
+  - generic: Preferred Gift Types & Vibes (Select Multiple)
+  - generic: 3 selected
+  - button "build practical":
+    - generic: build
+    - generic: practical
+  - button "favorite sentimental":
+    - generic: favorite
+    - generic: sentimental
+  - button "confirmation_number experience":
+    - generic: confirmation_number
+    - generic: experience
+  - button "diamond they would never buy themselves":
+    - generic: diamond
+    - generic: they would never buy themselves
+  - button "mood funny":
+    - generic: mood
+    - generic: funny
+  - button "star premium":
+    - generic: star
+    - generic: premium
+  - button "magic_button surprising":
+    - generic: magic_button
+    - generic: surprising
+  - button "all_inclusive A combination":
+    - generic: all_inclusive
+    - generic: A combination
+  - generic: Favorite Discovery Categories
+  - generic: 5 categories
+  - button "devices Technology & Smart Gadgets":
+    - generic: devices
+    - generic: Technology & Smart Gadgets
+  - button "coffee Specialty Coffee & Teas":
+    - generic: coffee
+    - generic: Specialty Coffee & Teas
+  - button "restaurant Gourmet Food & Chocolates":
+    - generic: restaurant
+    - generic: Gourmet Food & Chocolates
+  - button "menu_book Books, Journals & Fine Pens":
+    - generic: menu_book
+    - generic: Books, Journals & Fine Pens
+  - button "palette Art, Pottery & Studio Decor":
+    - generic: palette
+    - generic: Art, Pottery & Studio Decor
+  - button "yard Home Living & Indoor Plants":
+    - generic: yard
+    - generic: Home Living & Indoor Plants
+  - button "spa Skincare, Spa & Fragrance":
+    - generic: spa
+    - generic: Skincare, Spa & Fragrance
+  - button "fitness_center Fitness & Athletic Gear":
+    - generic: fitness_center
+    - generic: Fitness & Athletic Gear
+  - button "flight_takeoff Travel & Luggage":
+    - generic: flight_takeoff
+    - generic: Travel & Luggage
+  - button "confirmation_number Workshops & Live Experiences":
+    - generic: confirmation_number
+    - generic: Workshops & Live Experiences
+  - generic: Default Delivery City / Metro Hub
+  - combobox:
+    - option "Mumbai" [selected]
+    - option "Bangalore"
+    - option "Delhi NCR"
+    - option "Hyderabad"
+    - option "Pune"
+    - option "Chennai"
+    - option "Kolkata"
+    - option "Ahmedabad"
+    - option "Goa"
+    - option "Jaipur"
+  - generic: Milestone Advance Notice Lead Time
+  - combobox:
+    - option "7 Days in advance (Urgent)"
+    - option "14 Days in advance (Standard)" [selected]
+    - option "30 Days in advance (Relaxed Planning)"
+  - generic: Auto-Apply Merchant Promotional Coupons
+  - text: Automatically finds and calculates maximum multi-store savings on bundle recommendations.
+  - checkbox "Auto-Apply Merchant Promotional Coupons Automatically finds and calculates maximum multi-store savings on bundle recommendations." [checked]
+  - button "Save Basic Preferences"

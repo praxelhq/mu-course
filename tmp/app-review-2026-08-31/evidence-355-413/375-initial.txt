@@ -1,0 +1,73 @@
+- banner:
+  - generic: Forkway
+  - generic: Step 1 of 3
+- main:
+  - heading "Where are you headed?" [level=1]
+  - paragraph: Embark on a leisurely culinary exploration. Tell us your destination, and we’ll craft an authentic journey for your palate.
+  - generic: location_on
+  - textbox "Destination":
+    - /placeholder: Enter city, region, or country...
+  - heading "Popular Starting Points" [level=2]
+  - link "VIEW ALL DESTINATIONS":
+    - /url: /journeys
+  - button "Sun-drenched Mediterranean coastal town with terracotta buildings and bougainvillea TRENDING Amalfi Coast, Italy Coastal flavors & hidden lemon groves":
+    - img "Sun-drenched Mediterranean coastal town with terracotta buildings and bougainvillea"
+    - generic: TRENDING
+    - heading "Amalfi Coast, Italy" [level=3]
+    - paragraph: Coastal flavors & hidden lemon groves
+  - button "Golden hour view of a cobblestone street in Rome with outdoor trattoria tables Rome, Italy CARBONARA & COBBLESTONES":
+    - img "Golden hour view of a cobblestone street in Rome with outdoor trattoria tables"
+    - heading "Rome, Italy" [level=3]
+    - paragraph: CARBONARA & COBBLESTONES
+  - button "Aerial view of Barcelona's Gothic Quarter with mosaic rooftops and palm trees Barcelona, Spain TAPAS & SEA BREEZE":
+    - img "Aerial view of Barcelona's Gothic Quarter with mosaic rooftops and palm trees"
+    - heading "Barcelona, Spain" [level=3]
+    - paragraph: TAPAS & SEA BREEZE
+  - button "Elegant Parisian bistro at dusk with marble tables on the sidewalk Paris, France PASTRY & WINE":
+    - img "Elegant Parisian bistro at dusk with marble tables on the sidewalk"
+    - heading "Paris, France" [level=3]
+    - paragraph: PASTRY & WINE
+  - button "Santorini at sunset with white-washed buildings and blue domes overlooking the caldera Santorini, Greece AEGEAN SUNSETS & SEAFOOD":
+    - img "Santorini at sunset with white-washed buildings and blue domes overlooking the caldera"
+    - heading "Santorini, Greece" [level=3]
+    - paragraph: AEGEAN SUNSETS & SEAFOOD
+  - button "Colorful tiled buildings on a steep Lisbon hill with a vintage yellow tram Lisbon, Portugal PASTÉIS DE NATA & FADO":
+    - img "Colorful tiled buildings on a steep Lisbon hill with a vintage yellow tram"
+    - heading "Lisbon, Portugal" [level=3]
+    - paragraph: PASTÉIS DE NATA & FADO
+  - button "Rolling hills of Tuscany with cypress trees, vineyards and a rustic stone villa Tuscany, Italy VINEYARDS & RUSTIC KITCHENS":
+    - img "Rolling hills of Tuscany with cypress trees, vineyards and a rustic stone villa"
+    - heading "Tuscany, Italy" [level=3]
+    - paragraph: VINEYARDS & RUSTIC KITCHENS
+  - button "New York City Manhattan skyline at dusk with Brooklyn Bridge and glowing skyscrapers New York City, USA BAGELS & BROOKLYN BITES":
+    - img "New York City Manhattan skyline at dusk with Brooklyn Bridge and glowing skyscrapers"
+    - heading "New York City, USA" [level=3]
+    - paragraph: BAGELS & BROOKLYN BITES
+  - button "New Orleans French Quarter with wrought iron balconies and warm evening light New Orleans, USA GUMBO & JAZZ":
+    - img "New Orleans French Quarter with wrought iron balconies and warm evening light"
+    - heading "New Orleans, USA" [level=3]
+    - paragraph: GUMBO & JAZZ
+  - button "San Francisco with Golden Gate Bridge, colorful Victorian houses and bay views San Francisco, USA SOURDOUGH & FARM-TO-TABLE":
+    - img "San Francisco with Golden Gate Bridge, colorful Victorian houses and bay views"
+    - heading "San Francisco, USA" [level=3]
+    - paragraph: SOURDOUGH & FARM-TO-TABLE
+  - button "Napa Valley vineyard rows at sunset with rolling hills and a winery estate Napa Valley, USA WINE COUNTRY & HARVEST":
+    - img "Napa Valley vineyard rows at sunset with rolling hills and a winery estate"
+    - heading "Napa Valley, USA" [level=3]
+    - paragraph: WINE COUNTRY & HARVEST
+  - button "Minimalist Kyoto garden with a traditional wooden teahouse and moss Kyoto, Japan ZEN & TRADITION":
+    - img "Minimalist Kyoto garden with a traditional wooden teahouse and moss"
+    - heading "Kyoto, Japan" [level=3]
+    - paragraph: ZEN & TRADITION
+  - button "Next"
+  - link "Restaurant recos":
+    - /url: /dining?destination=
+- contentinfo:
+  - paragraph:
+    - text: Need inspiration?
+    - button "Surprise Me"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_60wz3rfesb8kbsx1101kxksqt3?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

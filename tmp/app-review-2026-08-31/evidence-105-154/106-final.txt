@@ -1,0 +1,13 @@
+- main:
+  - textbox "Search campus peers..." [active]: nobodytest123
+  - button:
+  - button "Cancel"
+  - generic: No campus students found matching "nobodytest123"
+- navigation:
+  - button "Home":
+  - button "Search":
+  - button "Create AMA":
+    - generic: +
+  - button "Community":
+  - button "My Profile":
+    - img "Shiv"

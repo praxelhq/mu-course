@@ -1,0 +1,41 @@
+- main:
+  - paragraph: Fold. Shuffle. Pick.
+  - heading "Raja Mantri Chor Sipahi" [level=1]:
+    - text: Raja Mantri
+    - text: Chor Sipahi
+  - paragraph: The paper-chit party game, without the paper. Four players, four secret roles, one guess.
+  - generic: 👑
+  - generic: Raja
+  - generic: 1000 pts
+  - generic: 🪶
+  - generic: Mantri
+  - generic: 800 pts
+  - generic: 🕵️
+  - generic: Chor
+  - generic: 0 / 500 pts
+  - generic: 🛡️
+  - generic: Sipahi
+  - generic: 500 / 0 pts
+  - text: Your name
+  - textbox "Your name":
+    - /placeholder: e.g. Aarav
+    - text: Demo
+  - button "Create a room" [disabled]
+  - generic: or join
+  - textbox "CODE"
+  - button "Join" [disabled]
+  - list:
+    - generic: "1."
+    - generic: Four players join one room with the code.
+    - generic: "2."
+    - generic: "Everyone gets a secret chit: Raja, Mantri, Chor or Sipahi."
+    - generic: "3."
+    - generic: Raja reveals, then Mantri. The Sipahi names the Chor.
+    - generic: "4."
+    - generic: Points land automatically. Shuffle and play again.
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7e8kb56h1e8qqr2x79kq68tw73?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

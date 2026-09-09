@@ -1,0 +1,36 @@
+- navigation:
+  - generic: DEADLINE
+  - button "Home"
+  - button "Explore"
+  - button "Create Goal"
+  - button "My Goals" [active]
+  - button "Leaderboard"
+  - button "Profile"
+  - generic: ⚡
+  - generic: 2,450
+  - button "Y":
+    - generic: "Y"
+- main:
+  - heading "My Goals" [level=2]
+  - button "Active (2)"
+  - button "Completed (2)"
+  - button "Failed (1)"
+  - generic: 📚 Academic
+  - generic: 🟡 Active
+  - generic: Finish Marketing Presentation
+  - generic: ⏰ Today, 07:00
+  - generic: 👥 3 backing
+  - generic: "Progress: 70%"
+  - generic: "500"
+  - generic: XP stake
+  - generic: 💼 Career
+  - generic: 🟡 Active
+  - generic: Complete 5 Internship Applications
+  - generic: ⏰ Tomorrow, 08:00
+  - generic: 👥 7 backing
+  - generic: "Progress: 20%"
+  - generic: "300"
+  - generic: XP stake
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

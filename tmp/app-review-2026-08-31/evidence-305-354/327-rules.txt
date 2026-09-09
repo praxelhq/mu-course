@@ -1,0 +1,50 @@
+- banner:
+  - link "Fight Jar":
+    - /url: /
+    - generic: coffee
+    - generic: Fight Jar
+  - navigation:
+    - link "Jar":
+      - /url: /
+      - generic: restaurant
+      - text: Jar
+    - link "Chandler":
+      - /url: /chandler
+      - generic: lunch_dining
+      - text: Chandler
+    - link "Monica":
+      - /url: /monica
+      - generic: cooking
+      - text: Monica
+    - link "Rules":
+      - /url: /rules
+      - generic: description
+      - text: Rules
+- main:
+  - heading "The Rules of Engagement" [level=1]
+  - paragraph: Because Monica likes things organized.
+  - heading "Official Ledger" [level=2]
+  - generic: gavel
+  - generic: "1"
+  - heading "The Trigger" [level=3]
+  - paragraph: A 'Fought' button press immediately triggers a fine. No take-backs.
+  - generic: "2"
+  - heading "Standard Brawl" [level=3]
+  - paragraph: Mutual combat results in a fine of ₹500 per combatant.
+  - generic: "3"
+  - heading "The Initiator Tax" [level=3]
+  - paragraph: If clearly started by one party, the Instigator pays ₹800. The other party pays ₹500 (for engaging).
+  - generic: "4"
+  - heading "\"I Know!\" Protocol" [level=3]
+  - paragraph: Once the jar has spoken, there is no arguing about who started it. The Jar's ruling is final.
+  - generic: "5"
+  - heading "The Lobster Fund" [level=3]
+  - paragraph: All collected funds go strictly towards a 'Lobster' vacation or dinner at Alessandro's.
+  - button "Sign Agreement":
+    - generic: edit_document
+    - text: Sign Agreement
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_4vcn8dnj87990bk7jj5rr06ew4?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

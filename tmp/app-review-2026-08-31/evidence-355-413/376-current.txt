@@ -1,0 +1,70 @@
+- banner:
+  - link:
+    - /url: /
+    - paragraph: Brick Spaze Laundry
+    - paragraph: Live machine status
+  - button: Room DEMO
+- main:
+  - heading [level=1]: Brick Spaze Laundry room status
+  - paragraph:
+    - generic: 5 free
+    - text: ·
+    - generic: 0 running
+    - text: ·
+    - generic: 0 needs collecting
+  - button:
+    - heading [level=2]: Washer 1
+    - paragraph: Haier · front load
+    - generic: Free
+    - paragraph: Tap to start a load
+  - button:
+    - heading [level=2]: Washer 2
+    - paragraph: Croma · front load
+    - generic: Free
+    - paragraph: Tap to start a load
+  - button:
+    - heading [level=2]: Washer 3
+    - paragraph: Croma · front load
+    - generic: Free
+    - paragraph: Tap to start a load
+  - button:
+    - heading [level=2]: Washer 4
+    - paragraph: · top load
+    - generic: Out of order
+    - paragraph: Out of order
+  - button:
+    - heading [level=2]: Dryer 1
+    - paragraph: Croma
+    - generic: Free
+    - paragraph: Tap to start a load
+  - button:
+    - heading [level=2]: Dryer 2
+    - paragraph: Croma
+    - generic: Free
+    - paragraph: Tap to start a load
+- navigation:
+  - link:
+    - /url: /
+    - text: Room
+  - link:
+    - /url: /queue
+    - text: Queue
+  - link:
+    - /url: /my-laundry
+    - text: My loads
+  - link:
+    - /url: /admin
+    - text: Admin
+- region "Notifications alt+T"
+- complementary:
+  - link:
+    - /url: https://lovable.dev/projects/lovp_4bv4f1ez1586taskdeswjg54hq?utm_source=lovable-badge
+    - generic: Edit with
+  - button:
+- dialog "Washer 1":
+  - heading "Washer 1" [level=2]
+  - paragraph:
+    - text: Starting as
+    - generic: Room DEMO
+  - button "Close" [active]:
+    - generic: Close

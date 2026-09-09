@@ -1,0 +1,192 @@
+- banner:
+  - button "Set your location":
+  - link "MindSaathi Your Mind Matters":
+    - /url: /
+    - generic: MindSaathi
+    - generic: Your Mind Matters
+  - 'link "Language: English. Change language"':
+    - /url: /language
+    - generic: English
+  - link "SOS":
+    - /url: /sos
+    - text: SOS
+- main:
+  - paragraph: Set your location to find counsellors near you
+  - button "Set location":
+    - text: Set location
+  - heading "Find a Certified Counsellor" [level=1]
+  - paragraph: RCI-registered professionals offering sliding-scale, confidential therapy in your language.
+  - generic: Search counsellors
+  - textbox "Search counsellors":
+    - /placeholder: Search by name, anxiety, relationships…
+  - generic: Distance
+  - combobox "Distance":
+    - option "All locations" [selected]
+    - option "Near me"
+    - option "Online only"
+  - generic: Language
+  - combobox "Language":
+    - option "All Languages" [selected]
+    - option "English"
+    - option "हिन्दी"
+    - option "বাংলা"
+    - option "मराठी"
+    - option "മലയാളം"
+  - generic: Price
+  - combobox "Price":
+    - option "All Prices" [selected]
+    - option "₹200–500"
+    - option "₹500–1000"
+    - option "₹1000+"
+  - generic: Specialization
+  - combobox "Specialization":
+    - option "All Specializations" [selected]
+    - option "Anxiety"
+    - option "Relationships"
+    - option "Grief"
+    - option "Exam stress"
+    - option "Depression"
+    - option "Trauma"
+  - generic: Gender
+  - combobox "Gender":
+    - option "All Genders" [selected]
+    - option "Female"
+    - option "Male"
+    - option "Non-binary"
+  - article:
+    - img "Portrait of Meera Nair"
+    - generic "Verified counsellor":
+      - img "Verified"
+    - heading "Meera Nair" [level=2]
+    - paragraph: Depression · Burnout
+    - paragraph:
+      - text: "4.9"
+    - button "Save this counsellor":
+    - generic "RCI registration means this counsellor is licensed by the Rehabilitation Council of India and verified by our team.":
+      - text: RCI A-51102 · Verified
+    - generic: Online only
+    - paragraph:
+      - text: "Next available: Today, 5:00 PM"
+    - generic: English, മലയാളം
+    - generic: ₹500 / session
+    - link "Book a session":
+      - /url: /book/meera-nair
+    - paragraph:
+      - text: Your sessions are private and confidential
+  - article:
+    - img "Portrait of Dr. Ananya Rao"
+    - generic "Verified counsellor":
+      - img "Verified"
+    - heading "Dr. Ananya Rao" [level=2]
+    - paragraph: Anxiety · Exam stress
+    - paragraph:
+      - text: "4.9"
+    - button "Save this counsellor":
+    - generic "RCI registration means this counsellor is licensed by the Rehabilitation Council of India and verified by our team.":
+      - text: RCI A-45219 · Verified
+    - generic: In-person available in Pune
+    - paragraph:
+      - text: "Next available: Today, 6:00 PM"
+    - generic: English, हिन्दी
+    - generic: ₹400 / session
+    - link "Book a session":
+      - /url: /book/ananya-rao
+    - paragraph:
+      - text: Your sessions are private and confidential
+  - article:
+    - img "Portrait of Imran Sheikh"
+    - generic "Verified counsellor":
+      - img "Verified"
+    - heading "Imran Sheikh" [level=2]
+    - paragraph: Relationships · Grief
+    - paragraph:
+      - text: "4.8"
+    - button "Save this counsellor":
+    - generic "RCI registration means this counsellor is licensed by the Rehabilitation Council of India and verified by our team.":
+      - text: RCI A-38874 · Verified
+    - generic: In-person available in Mumbai
+    - paragraph:
+      - text: "Next available: Today, 7:00 PM"
+    - generic: English, मराठी
+    - generic: ₹350 / session
+    - link "Book a session":
+      - /url: /book/imran-sheikh
+    - paragraph:
+      - text: Your sessions are private and confidential
+  - article:
+    - img "Portrait of Riya Deshmukh"
+    - generic "Verified counsellor":
+      - img "Verified"
+    - heading "Riya Deshmukh" [level=2]
+    - paragraph: Anxiety · Family conflict
+    - paragraph:
+      - text: "4.8"
+    - button "Save this counsellor":
+    - generic "RCI registration means this counsellor is licensed by the Rehabilitation Council of India and verified by our team.":
+      - text: RCI A-60277 · Verified
+    - generic: In-person available in Pune
+    - paragraph:
+      - text: "Next available: Today, 6:00 PM"
+    - generic: हिन्दी, मराठी
+    - generic: ₹300 / session
+    - link "Book a session":
+      - /url: /book/riya-deshmukh
+    - paragraph:
+      - text: Your sessions are private and confidential
+  - article:
+    - img "Portrait of Dr. Kabir Sen"
+    - generic "Verified counsellor":
+      - img "Verified"
+    - heading "Dr. Kabir Sen" [level=2]
+    - paragraph: Trauma · Sleep
+    - paragraph:
+      - text: "4.7"
+    - button "Save this counsellor":
+    - generic "RCI registration means this counsellor is licensed by the Rehabilitation Council of India and verified by our team.":
+      - text: RCI A-29431 · Verified
+    - generic: In-person available in Kolkata
+    - paragraph:
+      - text: "Next available: Today, 6:30 PM"
+    - generic: English, বাংলা
+    - generic: ₹1200 / session
+    - link "Book a session":
+      - /url: /book/kabir-sen
+    - paragraph:
+      - text: Your sessions are private and confidential
+- contentinfo:
+  - link "How your data is used":
+    - /url: /privacy
+- button "Open Saathi, your guide":
+  - img "Saathi, your friendly guide"
+- navigation "Screen navigation":
+  - button "Previous screen":
+  - link "Language":
+    - /url: /language
+    - text: Language
+  - link "Settings":
+    - /url: /settings
+    - text: Settings
+  - link "Check-in":
+    - /url: /tracker
+    - text: Check-in
+  - button "Next screen":
+  - link "Today":
+    - /url: /
+    - generic: Today
+  - link "Counsellors" [active]:
+    - /url: /counsellors
+    - generic: Counsellors
+  - link "Tracker":
+    - /url: /tracker
+    - generic: Tracker
+  - link "AI Support":
+    - /url: /ai-support
+    - generic: AI Support
+  - link "SOS":
+    - /url: /sos
+    - generic: SOS
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6c2nccmn5q8vsre70jn9smn197?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

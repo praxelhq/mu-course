@@ -1,0 +1,40 @@
+- banner:
+  - link "Soundtrack":
+    - /url: /
+    - generic: waves
+    - generic: Soundtrack
+  - link "Home":
+    - /url: /
+  - link "Curate":
+    - /url: /picks
+  - link "Explore":
+    - /url: /explore
+- main:
+  - heading "What moment needs a soundtrack?" [level=1]
+  - textbox "Describe a feeling, place, or upload a photo...": late night studying
+  - button "Upload a photo":
+    - generic: image
+  - button "Generate"
+  - button "secretly liking someone":
+    - generic: favorite
+    - text: secretly liking someone
+  - button "Goa photo dump":
+    - generic: beach_access
+    - text: Goa photo dump
+  - button "late night studying" [active]:
+    - generic: local_cafe
+    - text: late night studying
+  - button "morning run motivation":
+    - generic: directions_run
+    - text: morning run motivation
+  - button "main-character monsoon walk":
+    - generic: movie
+    - text: main-character monsoon walk
+  - button "sangeet night with cousins":
+    - generic: celebration
+    - text: sangeet night with cousins
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_44c3znjpqe89avwdvpqhspmd8q?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

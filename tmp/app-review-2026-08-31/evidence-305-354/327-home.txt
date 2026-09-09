@@ -1,0 +1,60 @@
+- banner:
+  - link "Fight Jar":
+    - /url: /
+    - generic: coffee
+    - generic: Fight Jar
+  - navigation:
+    - link "Jar":
+      - /url: /
+      - generic: restaurant
+      - text: Jar
+    - link "Chandler":
+      - /url: /chandler
+      - generic: lunch_dining
+      - text: Chandler
+    - link "Monica":
+      - /url: /monica
+      - generic: cooking
+      - text: Monica
+    - link "Rules":
+      - /url: /rules
+      - generic: description
+      - text: Rules
+- main:
+  - img "Fight Jar logo"
+  - heading "The Fight Jar" [level=1]
+  - paragraph: Every argument has a price. The jar keeps score so you don't have to.
+  - generic: restaurant
+  - heading "In the Jar" [level=2]
+  - generic: ₹
+  - text: "0"
+  - paragraph: 0 incidents • Lobster dinner is close
+  - heading "Did it happen again?" [level=3]
+  - paragraph: Press the button, name the instigator, and let the jar rule. No take-backs.
+  - button "We Fought":
+    - generic: gavel
+    - text: We Fought
+  - link "Monica ₹0 paid in":
+    - /url: /monica
+    - heading "Monica" [level=3]
+    - paragraph: ₹0 paid in
+    - generic: cooking
+  - link "Chandler ₹0 paid in":
+    - /url: /chandler
+    - heading "Chandler" [level=3]
+    - paragraph: ₹0 paid in
+    - generic: lunch_dining
+  - heading "Latest Rulings" [level=3]
+  - link "Read the Rules":
+    - /url: /rules
+    - generic: description
+    - text: Read the Rules
+  - link "Payment Setup":
+    - /url: /setup
+    - generic: account_balance_wallet
+    - text: Payment Setup
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_4vcn8dnj87990bk7jj5rr06ew4?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

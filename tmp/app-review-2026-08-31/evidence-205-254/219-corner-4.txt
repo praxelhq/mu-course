@@ -1,0 +1,136 @@
+- generic: "> INIT SYS..."
+- generic: "> LOADING KERNEL..."
+- generic: "> MOUNT VFS..."
+- generic: "> CHK TRACK DATA: SPA-FRANCORCHAMPS..."
+- generic: "> 19 CORNERS INDEXED..."
+- generic: "> READY."
+- heading "Track Translator" [level=1]
+- paragraph: "> SAME TRACK. YOUR EXCUSES CHANGED."
+- paragraph: Corner-by-corner driving intelligence — live from your inputs.
+- button "[ ENTER ]"
+- paragraph: TRACK // SPA-FRANCORCHAMPS LENGTH // 7.004 KM CORNERS // 19
+- banner:
+  - generic: ">_"
+  - heading "Track Translator" [level=1]
+  - navigation:
+    - button "Setup"
+    - button "HUD"
+    - button "Map"
+    - button "Corner Guide"
+    - button "Debrief" [disabled]
+  - generic: TELEMETRY LINK OK
+- main:
+  - generic: SYS.STAT
+  - generic: "0x0044"
+  - generic: Corner
+  - text: 4 / 19
+  - generic: Sector
+  - text: S1
+  - generic: Lap Time
+  - text: 1:34.365
+  - generic: Delta
+  - text: "+4.700"
+  - generic: STAY FLAT
+  - generic: FLAT zone in 240 m
+  - generic: TGT.ACQ
+  - generic: T4
+  - heading "> T4 RAIDILLON EXIT_" [level=2]
+  - list:
+    - generic: "00"
+    - generic: Location
+    - generic: RAIDILLON EXIT
+    - generic: "01"
+    - generic: Instruction
+    - generic: GET IT STRAIGHT.
+    - generic: "02"
+    - generic: Brake Point
+    - generic: FLAT
+    - generic: "03"
+    - generic: Target Entry
+    - generic: 237 KM/H (base 245)
+    - generic: "04"
+    - generic: Target Apex
+    - generic: 242 KM/H (base 255)
+    - generic: "05"
+    - generic: Gear
+    - generic: GEAR 8
+    - generic: "06"
+    - generic: Priority
+    - generic: EXIT SPEED
+    - generic: "07"
+    - generic: Corner Status
+    - generic: TRANSFER
+  - text: "> Watch Items"
+  - list:
+    - generic: "00"
+    - generic: Don't compromise acceleration.
+    - generic: "01"
+    - generic: FRONT WING DAMAGE — reduced high-speed grip, lift early.
+  - generic: VIS.RNDR
+  - generic: "NEXT: T5 LES COMBES"
+  - heading "> LAP PROGRESS_" [level=3]
+  - generic "T1 LA SOURCE"
+  - generic "T2 EAU ROUGE"
+  - generic "T3 RAIDILLON"
+  - generic "T4 RAIDILLON EXIT"
+  - generic "T5 LES COMBES"
+  - generic "T6 LES COMBES (MID)"
+  - generic "T7 MALMEDY"
+  - generic "T8 BRUXELLES"
+  - generic "T9 JACKY ICKX"
+  - generic "T10 POUHON (ENTRY)"
+  - generic "T11 POUHON (EXIT)"
+  - generic "T12 FAGNES (ENTRY)"
+  - generic "T13 FAGNES (EXIT)"
+  - generic "T14 CAMPUS"
+  - generic "T15 PAUL FRERE"
+  - generic "T16 BLANCHIMONT (ENTRY)"
+  - generic "T17 BLANCHIMONT (EXIT)"
+  - generic "T18 BUS STOP (ENTRY)"
+  - generic "T19 BUS STOP (EXIT)"
+  - complementary:
+    - generic: SIM.CTRL
+    - heading "> Input Override (Telemetry Feed)" [level=3]
+    - generic: Current Speed
+    - generic: 60 KM/H
+    - slider
+    - generic: Distance to Corner
+    - generic: 280 M
+    - slider
+    - generic: Brake Bias (Front %)
+    - generic: 54%
+    - slider
+    - generic: Tire Wear (Grip Remaining)
+    - generic: 98%
+    - slider
+    - generic: Damage State
+    - button "FRONT WING MINOR":
+      - text: FRONT WING
+      - generic: MINOR
+    - button "REAR WING NONE":
+      - text: REAR WING
+      - generic: NONE
+    - button "SUSPENSION NONE":
+      - text: SUSPENSION
+      - generic: NONE
+    - button "GEARBOX NONE":
+      - text: GEARBOX
+      - generic: NONE
+    - 'button "[ AUTO-DRIVE: OFF ]"'
+    - button "[ PREV ]"
+    - button "[ LOG + NEXT > ]" [active]
+    - generic: TERM.OUT
+    - paragraph: "[20:03:26] > INITIALIZING SIM ENV..."
+    - paragraph: "[20:03:26] > LOADING SPA-FRANCORCHAMPS TRACK DATA... OK"
+    - paragraph: "[20:03:26] > SESSION START — TIRE WEAR 100% / BRAKE BIAS 54%F"
+    - paragraph: "[20:03:26] > AWAITING DRIVER INPUT..."
+    - paragraph: "[20:03:40] > T1 LA SOURCE: LOGGED @ 60 km/h (target 58) — GOOD"
+    - paragraph: "[20:04:59] > T2 EAU ROUGE: LOGGED @ 60 km/h (target 220) — TOO CAUTIOUS"
+    - paragraph: "[20:05:00] > T3 RAIDILLON: LOGGED @ 60 km/h (target 228) — TOO CAUTIOUS"
+- contentinfo:
+  - generic: TRACK // SPA-FRANCORCHAMPS
+  - generic: LENGTH // 7.004 KM
+  - generic: SESSION // ACTIVE
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

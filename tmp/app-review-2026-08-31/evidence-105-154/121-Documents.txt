@@ -1,0 +1,197 @@
+- complementary:
+  - link "C Clario":
+    - /url: /dashboard
+    - generic: C
+    - generic: Clario
+  - generic: AR
+  - strong: Apex Realty
+  - generic: 12 active projects
+  - navigation:
+    - generic: Monitor
+    - link "Portfolio":
+      - /url: /dashboard
+      - generic: Portfolio
+    - link "Risk Radar":
+      - /url: /risk-radar
+      - generic: Risk Radar
+    - link "Calendar":
+      - /url: /calendar
+      - generic: Calendar
+    - generic: Intelligence
+    - link "Documents" [active]:
+      - /url: /documents
+      - generic: Documents
+    - link "Finance":
+      - /url: /finance
+      - generic: Finance
+    - link "Progress":
+      - /url: /progress
+      - generic: Progress
+    - generic: Work
+    - link "Tasks 14":
+      - /url: /tasks
+      - generic: Tasks
+      - emphasis: "14"
+  - generic: Internal indicator
+  - paragraph: The Clario Health Score is not an official RERA score.
+  - generic: AM
+  - strong: Ananya Mehta
+  - generic: Compliance Head
+- generic: Prototype workspace
+- text: Fictional project data for product demonstration
+- banner:
+  - button "Search projects, risks or ask Clario… ⌘ K":
+    - generic: Search projects, risks or ask Clario…
+    - generic: ⌘ K
+  - strong: Tuesday
+  - generic: 25 Aug 2026
+  - button "Notifications":
+- main:
+  - generic: Document intelligence
+  - heading "Evidence, understood." [level=1]
+  - paragraph: Find missing, incomplete and expiring evidence before it becomes a filing risk.
+  - combobox:
+    - option "Skyline Towers" [selected]
+    - option "Sunrise Heights"
+    - option "Greenview Residency"
+    - option "Riverfront Residences"
+    - option "Urban Vista"
+    - option "Lakeview Heights"
+    - option "Palm Grove"
+    - option "Emerald Enclave"
+    - option "Cedar Square"
+    - option "The Arc"
+    - option "Bluebell Estate"
+    - option "Meridian Heights"
+  - button "Upload document":
+    - text: Upload document
+  - text: Documents
+  - strong: "6"
+  - generic: in this workspace
+  - text: Verified
+  - strong: "2"
+  - generic: ready for review pack
+  - text: Needs review
+  - strong: "2"
+  - generic: AI findings open
+  - text: Missing / expiring
+  - strong: "2"
+  - generic: create action soon
+  - textbox "Search documents, project or type…"
+  - combobox:
+    - option "All projects" [selected]
+    - option "Skyline Towers"
+    - option "Sunrise Heights"
+    - option "Greenview Residency"
+    - option "Riverfront Residences"
+    - option "Urban Vista"
+    - option "Lakeview Heights"
+    - option "Palm Grove"
+    - option "Emerald Enclave"
+    - option "Cedar Square"
+    - option "The Arc"
+    - option "Bluebell Estate"
+    - option "Meridian Heights"
+  - combobox:
+    - option "All status" [selected]
+    - option "Verified"
+    - option "Needs review"
+    - option "Expiring"
+    - option "Missing"
+  - table:
+    - rowgroup:
+      - row "Document Project Uploaded Status":
+        - columnheader "Document"
+        - columnheader "Project"
+        - columnheader "Uploaded"
+        - columnheader "Status"
+    - rowgroup:
+      - row "Form 5 — CA Certificate CA certificate Skyline Towers 24 Aug Needs review":
+        - cell "Form 5 — CA Certificate CA certificate":
+          - strong: Form 5 — CA Certificate
+          - generic: CA certificate
+        - cell "Skyline Towers"
+        - cell "24 Aug"
+        - cell "Needs review":
+          - generic: Needs review
+      - row "Q2 Bank Statement Bank statement Skyline Towers 22 Aug Verified":
+        - cell "Q2 Bank Statement Bank statement":
+          - strong: Q2 Bank Statement
+          - generic: Bank statement
+        - cell "Skyline Towers"
+        - cell "22 Aug"
+        - cell "Verified":
+          - generic: Verified
+      - row "Architect Certificate Architect certificate Sunrise Heights Not uploaded Missing":
+        - cell "Architect Certificate Architect certificate":
+          - strong: Architect Certificate
+          - generic: Architect certificate
+        - cell "Sunrise Heights"
+        - cell "Not uploaded"
+        - cell "Missing":
+          - generic: Missing
+      - row "Structural Engineer Certificate Engineer certificate Greenview Residency 2 Jun Expiring":
+        - cell "Structural Engineer Certificate Engineer certificate":
+          - strong: Structural Engineer Certificate
+          - generic: Engineer certificate
+        - cell "Greenview Residency"
+        - cell "2 Jun"
+        - cell "Expiring":
+          - generic: Expiring
+      - row "July Reconciliation Note Financial record Riverfront Residences 19 Aug Needs review":
+        - cell "July Reconciliation Note Financial record":
+          - strong: July Reconciliation Note
+          - generic: Financial record
+        - cell "Riverfront Residences"
+        - cell "19 Aug"
+        - cell "Needs review":
+          - generic: Needs review
+      - row "Q2 Progress Report Progress report Lakeview Heights 16 Aug Verified":
+        - cell "Q2 Progress Report Progress report":
+          - strong: Q2 Progress Report
+          - generic: Progress report
+        - cell "Lakeview Heights"
+        - cell "16 Aug"
+        - cell "Verified":
+          - generic: Verified
+  - complementary:
+    - button:
+    - generic: AI document analysis
+    - heading "Form 5 — CA Certificate" [level=2]
+    - paragraph: Skyline Towers · CA certificate
+    - generic: Analysis status
+    - generic: Needs review
+    - generic: Project name detected
+    - generic: RERA number matched
+    - generic: Authorised signature missing
+    - generic: UDIN confirmation missing
+    - strong: Risk signal created
+    - paragraph: Review the flagged evidence and connect the issue to an owner before the next filing.
+    - paragraph: Simulated analysis for prototype use. A qualified human should verify extracted details.
+- button "Open Ask Clario":
+  - generic: Ask Clario
+- complementary:
+  - strong: Ask Clario
+  - generic: Risk & compliance copilot
+  - button:
+  - generic: Answers use this demo workspace only. Clario does not provide legal advice.
+  - button:
+    - text: What needs my attention today?
+  - button:
+    - text: Why is Skyline Towers high risk?
+  - button:
+    - text: Show variances above ₹10 lakh
+  - button:
+    - text: Which certificates expire soon?
+  - generic: What needs my attention today?
+  - generic: This week’s priority
+  - heading [level=3]: Start with Skyline Towers, then Sunrise Heights.
+  - paragraph: Skyline combines a 5-day filing deadline, incomplete certification, an ₹18 lakh variance, and progress slippage. Sunrise Heights follows because its Form 4 renewal window closes in 3 days.
+  - link:
+    - /url: /projects/skyline-towers
+    - text: View project
+  - button: Create action plan
+  - textbox:
+    - /placeholder: Ask about projects, risks or deadlines…
+  - button:
+- alert

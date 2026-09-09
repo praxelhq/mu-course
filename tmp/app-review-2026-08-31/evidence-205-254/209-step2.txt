@@ -1,0 +1,32 @@
+- region "Notifications (F8)":
+  - list
+- region "Notifications alt+T"
+- main:
+  - generic: Step 2 of 6
+  - generic: 33% complete
+  - generic: Basic Info
+  - generic: Vitals
+  - generic: Physical
+  - generic: Performance
+  - generic: Cognitive
+  - generic: Psychological
+  - heading "Vitals" [level=2]
+  - text: Height (cm)
+  - spinbutton "Height (cm)": "140"
+  - text: Weight (kg)
+  - spinbutton "Weight (kg)": "35"
+  - text: Pulse Rate (optional)
+  - spinbutton "Pulse Rate (optional)"
+  - text: SpO2 % (optional)
+  - spinbutton "SpO2 % (optional)"
+  - text: Body Fat % (optional)
+  - spinbutton "Body Fat % (optional)"
+  - button "Previous":
+    - text: Previous
+  - button "Next" [active]:
+    - text: Next
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_4evn1nffn78kfshkdrmcjvbrzc?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

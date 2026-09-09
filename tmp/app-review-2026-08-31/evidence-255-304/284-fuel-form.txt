@@ -1,0 +1,66 @@
+- banner:
+  - generic: My Garage
+  - button "Vehicle Document Vault":
+  - button "Tata":
+    - text: Tata
+- main:
+  - paragraph: Fuel Intelligence
+  - heading "Fuel & Mileage Tracker" [level=1]
+  - button "Add Fuel" [active]:
+    - generic: Add Fuel
+  - generic: Calculated Mileage
+  - generic: —
+  - paragraph: No fuel entries recorded
+  - generic: Total Fuel Cost
+  - generic: ₹0
+  - paragraph: 0 L pumped
+  - generic: Automatic Mileage Calculation
+  - generic: Mileage is automatically computed by calculating the distance traveled between consecutive fuel fills divided by the litres pumped.
+  - paragraph: Fuel Refill History (0)
+  - heading "No fuel entries yet" [level=3]
+  - paragraph: Track your fuel fills to automatically calculate your car's true mileage and running costs.
+  - button "+ Add First Fuel Entry":
+    - generic: + Add First Fuel Entry
+- navigation:
+  - button "Garage":
+    - generic: Garage
+  - button "Fuel":
+    - generic: Fuel
+  - button "Service":
+    - generic: Service
+  - button "Expenses":
+    - generic: Expenses
+  - button "Docs":
+    - generic: Docs
+- paragraph: Fuel Management
+- heading "Add Fuel Refill" [level=3]
+- button:
+- text: Total Refill Cost
+- generic: ₹0
+- generic: Volume
+- text: 0.00 L
+- generic: Fuel Type
+- button "Petrol"
+- button "Diesel"
+- button "CNG"
+- button "EV"
+- generic: Litres Filled *
+- spinbutton
+- generic: L
+- generic: Amount Paid (₹) *
+- spinbutton
+- generic: ₹
+- generic: Price per Litre (₹/L)
+- spinbutton
+- generic: ₹/L
+- generic: Current Odometer
+- spinbutton: "10000"
+- generic: km
+- generic: Date
+- textbox: 2026-08-31
+- generic: Fuel Station (Optional)
+- textbox "e.g. Shell, IndianOil"
+- generic: Notes (Optional)
+- textbox "e.g. Full tank refill before highway trip"
+- button "Cancel"
+- button "Save Fuel Entry"

@@ -1,0 +1,53 @@
+# Agent-native review
+
+## Finding: Preserve an already-dispatched agent session during global readiness loss (P1)
+
+`POST /api/interview/token` loads an existing live realtime interview, then
+requires a fresh global agent heartbeat before minting its replacement token.
+That treats a student reconnect as a new admission even when the room already
+has a dispatched agent, a transcript, and potentially a recording. The browser
+therefore cannot rejoin the agent session that the patch deliberately keeps
+alive with `close_on_disconnect=False`.
+
+This breaks agent-native parity: the system has authoritative agent/session
+state for the in-progress interview, but does not make that state usable by the
+student after an ordinary browser/network disconnect. A brief DB heartbeat
+write outage, deploy overlap, or agent-service health hiccup converts a
+recoverable conversation into an unavailable card; the student can neither
+resume the existing agent nor see that their recorded progress is retained.
+
+Evidence:
+
+- `lms/agent/main.py:1027-1033` explicitly keeps the agent session alive for a
+  participant reconnect.
+- `lms/app/(room)/interview/live/interview-client.tsx:78-87` asks `/token`
+  immediately to perform that reconnect.
+- `lms/app/api/interview/token/route.ts:29-34` finds the existing realtime
+  interview, but lines 54-68 reject it before token minting if the global
+  readiness check is false.
+
+Move the agent-readiness admission gate into the `!existing` path. Existing
+realtime sessions should receive a new same-room token; the room-level
+no-interviewer watchdog remains the safeguard if that specific agent is truly
+gone. Add a route test that an existing realtime interview can remint a token
+when the global readiness lookup is false, while a new interview still returns
+503 without creating an attempt.
+
+## Finding: Recovery state must distinguish paused from never-started (P2)
+
+The same branch returns “Your attempt has not started” for an existing live
+interview. The client renders this server text unchanged. It conflicts with
+the persisted transcript/recording and can induce an unnecessary retake
+request precisely when the correct action is to wait or reconnect.
+
+If an existing session must be unavailable, return an explicit paused/recovery
+state with the existing interview id and a statement that prior turns are
+retained. Reserve “has not started” for the pre-admission path only.
+
+## Result
+
+The provider-key, non-text-event, and manual-fallback removals move the system
+toward the required real-time-only contract. Do not merge until the existing
+agent-session reconnect path is corrected and behaviorally tested; source-text
+tests alone do not demonstrate that a surviving LiveKit agent accepts the
+replacement participant/token.

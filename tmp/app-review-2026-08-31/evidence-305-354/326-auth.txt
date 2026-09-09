@@ -1,0 +1,21 @@
+- generic: eco
+- heading "Welcome back" [level=1]
+- paragraph: One small step at a time.
+- generic: Email
+- textbox "Email":
+  - /placeholder: you@example.com
+- generic: Password
+- textbox "Password":
+  - /placeholder: ••••••••
+- button "Sign in"
+- generic: or
+- button "Continue with Google"
+- paragraph:
+  - text: New here?
+  - button "Create an account"
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_5chqtz1kew90ftv0pc2445es05?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

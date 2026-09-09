@@ -1,0 +1,76 @@
+- generic: 🥐
+- generic: 🍥
+- generic: ☕
+- main:
+  - heading "Plans" [level=1]
+  - paragraph: 3 upcoming · 12 meals shared this year
+  - heading "📅Upcoming" [level=2]
+  - generic: 🍜
+  - heading "Ramen night at Naru" [level=3]
+  - paragraph: with Ananya
+  - paragraph:
+    - text: Today · 7:30 PM
+  - generic: Confirmed
+  - button "Directions":
+    - text: Directions
+  - button "Reschedule"
+  - generic: ☕
+  - heading "Morning filter coffee run" [level=3]
+  - paragraph: with Rohan
+  - paragraph:
+    - text: Tomorrow · 9:00 AM
+  - generic: Voting on venue
+  - button "Directions":
+    - text: Directions
+  - button "Reschedule"
+  - generic: 🍰
+  - heading "Dessert crawl, 3 stops" [level=3]
+  - paragraph: with Meher + 2
+  - paragraph:
+    - text: Sat · 5:00 PM
+  - generic: Pending
+  - button "Directions":
+    - text: Directions
+  - button "Reschedule"
+  - paragraph:
+    - text: AI meetup planner
+  - paragraph: You and Meher both free Saturday 5 PM. Three dessert stops within 900 m in Indiranagar — want the itinerary?
+  - button "Build my dessert crawl"
+  - heading "🗳Venue voting" [level=2]
+  - img "Naru Noodle Bar"
+  - paragraph: Naru Noodle Bar
+  - paragraph: Basavanagudi · 3.2 km
+  - button "Vote for this"
+  - img "Bloom & Brew"
+  - paragraph: Bloom & Brew
+  - paragraph: Indiranagar · 1.1 km
+  - button "Vote for this"
+  - heading "⭐Review your last meetup" [level=2]
+  - paragraph: Coffee with Rohan · Bloom & Brew
+  - generic: Friendliness
+  - generic: Conversation
+  - generic: Punctuality
+  - generic: Food compatibility
+  - button "Submit review"
+- navigation:
+  - link "Home":
+    - /url: /home
+    - text: Home
+  - link "Explore":
+    - /url: /explore
+    - text: Explore
+  - link "Chats":
+    - /url: /chats
+    - text: Chats
+  - link "Plans":
+    - /url: /plans
+    - text: Plans
+  - link "Profile":
+    - /url: /profile
+    - text: Profile
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_2v711cjpkr83f8pqt3m2x809kv?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

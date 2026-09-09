@@ -1,0 +1,73 @@
+- banner:
+  - button "ReceiptWise":
+    - generic: ReceiptWise
+  - navigation:
+    - button "Dashboard"
+    - button "Archive"
+    - button "Tax Reports"
+    - button "Preferences"
+  - button "Manual Entry":
+    - text: Manual Entry
+  - button "Scan Receipt":
+    - text: Scan Receipt
+  - button "Notifications":
+  - button "Alex Profile":
+    - img "Alex Profile"
+- main:
+  - generic: Portfolio Overview
+  - heading "Welcome, Deevij Patel" [level=1]
+  - paragraph: Automated intelligence summary for the current fiscal cycle.
+  - button "Scan Receipt":
+    - text: Scan Receipt
+  - button "Quick Entry":
+    - text: Quick Entry
+  - heading "Total Expenditure" [level=2]
+  - generic: ₹19,364.00
+  - generic: "-12.4% vs previous period"
+  - heading "Audited Documents" [level=2]
+  - generic: "5"
+  - generic: 100% OCR verified & categorized
+  - heading "Tax Deductions Identified" [level=2]
+  - generic: ₹19,364.00
+  - generic: Optimized for IRS deduction schedule
+  - generic: Analytics
+  - heading "Spending Distribution" [level=2]
+  - combobox "Spending Trends timeframe":
+    - option "Last 30 Days" [selected]
+    - option "Last Quarter"
+    - option "Year to Date"
+  - generic: ₹1,675
+  - generic: ₹8,420
+  - generic: ₹4,120
+  - generic: ₹1,850
+  - generic: ₹3,299
+  - generic: ₹0
+  - generic: 01 Aug
+  - generic: 05 Aug
+  - generic: 10 Aug
+  - generic: 12 Aug
+  - generic: 15 Aug
+  - generic: 20 Aug
+  - generic: Ledger
+  - heading "Recent Transactions" [level=2]
+  - button "View Complete Archive →"
+  - heading "Reliance Digital" [level=3]
+  - paragraph: 15 Aug 2026 • Office
+  - generic: Completed
+  - generic: ₹3,299.00
+  - heading "Cafe Coffee Day" [level=3]
+  - paragraph: 12 Aug 2026 • Dining
+  - generic: Completed
+  - generic: ₹1,850.00
+  - heading "Tata Power (office)" [level=3]
+  - paragraph: 10 Aug 2026 • Utilities
+  - generic: Completed
+  - generic: ₹4,120.00
+  - heading "IndiGo Airlines" [level=3]
+  - paragraph: 05 Aug 2026 • Travel
+  - generic: Completed
+  - generic: ₹8,420.00
+  - heading "Adobe Creative Cloud" [level=3]
+  - paragraph: 01 Aug 2026 • Software
+  - generic: Completed
+  - generic: ₹1,675.00

@@ -1,0 +1,45 @@
+- main:
+  - paragraph: Party word game · 3+ players
+  - heading "WordRoll" [level=1]
+  - paragraph: Draw a hidden word, roll a colour, answer the clue. First player to 21 points takes the crown.
+  - link "Play now":
+    - /url: /play
+  - link "How to play":
+    - /url: /how-to-play
+  - article:
+    - heading "Purple" [level=2]
+    - paragraph: Meaning clue — what the word means.
+  - article:
+    - heading "Pink" [level=2]
+    - paragraph: Usage clue — the word in a sentence.
+  - article:
+    - heading "Yellow" [level=2]
+    - paragraph: Sound clue — rhymes and spelling.
+  - heading "Every turn in ten seconds" [level=2]
+  - list:
+    - listitem: 1. Draw a card with a hidden word and a structure clue.
+    - listitem: 2. Roll the die — purple, pink or yellow picks your question.
+    - listitem: 3. Guess. Correct is 3 points, minus 1 for each hint used (never below 1).
+    - listitem: 4. Only 3 hints per player for the whole game. Spend them wisely.
+- navigation:
+  - list:
+    - link "Home":
+      - /url: /
+      - text: Home
+    - link "Play":
+      - /url: /play
+      - text: Play
+    - link "Scores":
+      - /url: /scoreboard
+      - text: Scores
+    - link "Rules":
+      - /url: /how-to-play
+      - text: Rules
+    - link "Settings":
+      - /url: /settings
+      - text: Settings
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7zpptsf0w782c9v2fqtd9yt2mv?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

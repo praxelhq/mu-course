@@ -1,0 +1,86 @@
+- banner:
+  - button "Back":
+    - generic: arrow_back
+  - button "Life Admin":
+    - heading "Life Admin" [level=1]
+  - navigation "Main Navigation":
+    - button "Home"
+    - button "About"
+    - button "Contact"
+    - button "Tasks & Domains"
+    - button "Calendar"
+    - button "Settings"
+  - button "add New Task":
+    - generic: add
+    - generic: New Task
+  - button "Notifications":
+    - generic: notifications
+- main:
+  - generic: Administration
+  - heading "Initiate New Task" [level=2]
+  - paragraph: Describe the administrative commitment and let AI orchestrate steps and requirements.
+  - textbox "e.g., Renew passport in 3 months before international trip...": "Review practice: organize a fictional book shelf next week."
+  - button "Renew my passport in 3 months..."
+  - button "Pay electricity bill..."
+  - button "File GST quarterly return..."
+  - button "Book dentist appointment..."
+  - button "mic":
+    - generic: mic
+  - button "auto_awesome" [active]:
+    - generic: auto_awesome
+  - generic: magic_button
+  - generic: Extracted Attributes
+  - generic: Title
+  - textbox: "Review practice: organize a fictional book shelf n"
+  - generic: Category
+  - generic: home
+  - combobox:
+    - option "Personal / Documents"
+    - option "Finance / Taxes"
+    - option "Household" [selected]
+    - option "Health"
+    - option "Vehicle"
+    - option "Utilities"
+  - generic: Deadline
+  - generic: calendar_today
+  - textbox "e.g. In 3 months (Oct 15)": Next week
+  - generic: Priority
+  - button "Low"
+  - button "High"
+  - generic: Suggested Action Steps
+  - generic: "Gather relevant documents for Review practice: organize a fictional book shelf n"
+  - generic: Verify requirements and submission guidelines
+  - generic: Complete online application / appointment
+  - button "Cancel"
+  - button "Confirm & Create check_circle":
+    - text: Confirm & Create
+    - generic: check_circle
+- contentinfo:
+  - heading "Life Admin" [level=2]
+  - paragraph: Autonomous personal logistics, compliance monitoring, and administrative governance for discerning individuals.
+  - link "X / Twitter":
+    - /url: https://x.com
+    - generic: flutter_dash
+  - link "LinkedIn":
+    - /url: https://linkedin.com
+    - generic: work
+  - link "GitHub":
+    - /url: https://github.com
+    - generic: code
+  - link "Discord Community":
+    - /url: https://discord.com
+    - generic: forum
+  - heading "Navigation" [level=3]
+  - list:
+    - button "Executive Dashboard"
+    - button "About Platform"
+    - button "Contact Concierge"
+    - button "Domains & Categories"
+    - button "Timeline & Calendar"
+  - heading "Privacy & Trust" [level=3]
+  - paragraph: Zero-knowledge document storage, client-side encryption, and strict GDPR & Indian DPDP Act compliance.
+  - button "Privacy Policy"
+  - button "Terms of Governance"
+  - button "Security Inquiries"
+  - paragraph: © 2026 Life Admin Executive. All rights reserved.
+  - generic: Core Systems Operational

@@ -1,0 +1,168 @@
+- complementary "Main navigation":
+  - generic: StudyFlow
+  - navigation "Site sections":
+    - link "Dashboard":
+      - /url: "#/dashboard"
+      - text: Dashboard
+    - link "Tasks":
+      - /url: "#/tasks"
+      - text: Tasks
+    - link "Calendar" [active]:
+      - /url: "#/calendar"
+      - text: Calendar
+    - link "Progress":
+      - /url: "#/progress"
+      - text: Progress
+    - link "Subjects":
+      - /url: "#/subjects"
+      - text: Subjects
+    - link "Settings":
+      - /url: "#/settings"
+      - text: Settings
+  - button "New task":
+    - text: New task
+  - paragraph: Studying as
+  - paragraph: Ali
+- banner:
+  - heading "Calendar" [level=1]
+  - paragraph: Monday, 31 August 2026
+  - button "Switch to dark theme":
+  - button "New task":
+    - generic: New task
+- main:
+  - heading "Calendar" [level=1]
+  - paragraph: 10 tasks in August 2026
+  - link "New task":
+    - /url: "#/tasks/new"
+    - text: New task
+  - heading "August 2026" [level=2]
+  - button "Today"
+  - button "Previous month":
+  - button "Next month":
+  - generic: Mon
+  - generic: Tue
+  - generic: Wed
+  - generic: Thu
+  - generic: Fri
+  - generic: Sat
+  - generic: Sun
+  - button "Monday, 27 July 2026, 0 tasks":
+    - generic: "27"
+  - button "Tuesday, 28 July 2026, 0 tasks":
+    - generic: "28"
+  - button "Wednesday, 29 July 2026, 0 tasks":
+    - generic: "29"
+  - button "Thursday, 30 July 2026, 0 tasks":
+    - generic: "30"
+  - button "Friday, 31 July 2026, 0 tasks":
+    - generic: "31"
+  - button "Saturday, 1 August 2026, 0 tasks":
+    - generic: "1"
+  - button "Sunday, 2 August 2026, 0 tasks":
+    - generic: "2"
+  - button "Monday, 3 August 2026, 0 tasks":
+    - generic: "3"
+  - button "Tuesday, 4 August 2026, 0 tasks":
+    - generic: "4"
+  - button "Wednesday, 5 August 2026, 0 tasks":
+    - generic: "5"
+  - button "Thursday, 6 August 2026, 0 tasks":
+    - generic: "6"
+  - button "Friday, 7 August 2026, 0 tasks":
+    - generic: "7"
+  - button "Saturday, 8 August 2026, 0 tasks":
+    - generic: "8"
+  - button "Sunday, 9 August 2026, 0 tasks":
+    - generic: "9"
+  - button "Monday, 10 August 2026, 0 tasks":
+    - generic: "10"
+  - button "Tuesday, 11 August 2026, 0 tasks":
+    - generic: "11"
+  - button "Wednesday, 12 August 2026, 0 tasks":
+    - generic: "12"
+  - button "Thursday, 13 August 2026, 0 tasks":
+    - generic: "13"
+  - button "Friday, 14 August 2026, 0 tasks":
+    - generic: "14"
+  - button "Saturday, 15 August 2026, 0 tasks":
+    - generic: "15"
+  - button "Sunday, 16 August 2026, 0 tasks":
+    - generic: "16"
+  - button "Monday, 17 August 2026, 0 tasks":
+    - generic: "17"
+  - button "Tuesday, 18 August 2026, 0 tasks":
+    - generic: "18"
+  - button "Wednesday, 19 August 2026, 0 tasks":
+    - generic: "19"
+  - button "Thursday, 20 August 2026, 0 tasks":
+    - generic: "20"
+  - button "Friday, 21 August 2026, 0 tasks":
+    - generic: "21"
+  - button "Saturday, 22 August 2026, 0 tasks":
+    - generic: "22"
+  - button "Sunday, 23 August 2026, 0 tasks":
+    - generic: "23"
+  - button "Monday, 24 August 2026, 0 tasks":
+    - generic: "24"
+  - button "Tuesday, 25 August 2026, 1 tasks":
+    - generic: "25"
+  - button "Wednesday, 26 August 2026, 1 tasks":
+    - generic: "26"
+  - button "Thursday, 27 August 2026, 1 tasks":
+    - generic: "27"
+  - button "Friday, 28 August 2026, 1 tasks":
+    - generic: "28"
+  - button "Saturday, 29 August 2026, 2 tasks":
+    - generic: "29"
+    - generic: 1 pending
+  - button "Sunday, 30 August 2026, 1 tasks":
+    - generic: "30"
+  - button "Monday, 31 August 2026, 3 tasks" [pressed]:
+    - generic: "31"
+    - generic: 3 pending
+  - button "Tuesday, 1 September 2026, 0 tasks":
+    - generic: "1"
+  - button "Wednesday, 2 September 2026, 1 tasks":
+    - generic: "2"
+    - generic: 1 pending
+  - button "Thursday, 3 September 2026, 1 tasks":
+    - generic: "3"
+    - generic: 1 pending
+  - button "Friday, 4 September 2026, 1 tasks":
+    - generic: "4"
+    - generic: 1 pending
+  - button "Saturday, 5 September 2026, 0 tasks":
+    - generic: "5"
+  - button "Sunday, 6 September 2026, 0 tasks":
+    - generic: "6"
+  - generic: Pending
+  - generic: Completed
+  - generic: Dot colour follows the subject
+  - paragraph: Selected day
+  - heading "Monday, 31 August 2026" [level=2]
+  - paragraph: 3 tasks · 3 pending
+  - button "Complete Graph traversal problem set":
+  - paragraph: Graph traversal problem set
+  - generic: Data Structures
+  - generic: Assignment
+  - generic: Due today
+  - generic: High
+  - button "Edit Graph traversal problem set":
+  - button "Complete Revise market structures":
+  - paragraph: Revise market structures
+  - generic: Microeconomics
+  - generic: Study Session
+  - generic: Due today
+  - generic: Medium
+  - button "Edit Revise market structures":
+  - button "Complete Draft the internship cover letter":
+  - paragraph: Draft the internship cover letter
+  - generic: Business Communication
+  - generic: Assignment
+  - generic: Due today
+  - generic: Low
+  - button "Edit Draft the internship cover letter":
+- status
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

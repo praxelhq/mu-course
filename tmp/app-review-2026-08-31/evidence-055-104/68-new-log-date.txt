@@ -1,0 +1,106 @@
+- banner:
+  - heading [level=1]: Log
+  - paragraph: Everything stays on this device.
+- generic: "Today's pill status: Taken"
+- button:
+  - generic: Period
+  - generic: Flow and start days
+- button:
+  - generic: Birth control
+  - generic: Taken, missed or skipped
+- button:
+  - generic: Sex
+  - generic: Date and protection used
+- button:
+  - generic: Check-in
+  - generic: Mood, energy, sleep, symptoms
+- heading [level=2]: Recent entries
+- generic: Check-in · mood 4/10 · energy 3/10 · bloating
+- generic: Aug 31
+- generic: Birth control · taken
+- generic: Aug 31
+- generic: Check-in · mood 7/10 · energy 8/10 · cramps, fatigue
+- generic: Aug 30
+- generic: Birth control · taken
+- generic: Aug 30
+- generic: Check-in · mood 5/10 · energy 7/10 · bloating, cravings
+- generic: Aug 29
+- generic: Birth control · taken
+- generic: Aug 29
+- generic: Check-in · mood 8/10 · energy 6/10
+- generic: Aug 28
+- generic: Birth control · taken
+- generic: Aug 28
+- generic: Check-in · mood 6/10 · energy 5/10 · headache
+- generic: Aug 27
+- generic: Birth control · missed
+- generic: Aug 27
+- generic: Check-in · mood 4/10 · energy 4/10 · bloating
+- generic: Aug 26
+- generic: Birth control · taken
+- generic: Aug 26
+- paragraph: LUNA offers wellness insights based on your cycle and check-ins. It is not medical advice, and it doesn't diagnose conditions or estimate pregnancy risk.
+- navigation:
+  - link:
+    - /url: /
+    - text: Today
+  - link:
+    - /url: /cycle
+    - text: Cycle
+  - link:
+    - /url: /log
+    - text: Log
+  - link:
+    - /url: /insights
+    - text: Insights
+- region "Notifications alt+T"
+- complementary:
+  - link:
+    - /url: https://lovable.dev/projects/lovp_6y58f0n5678h6s5xpy0jgxhm0q?utm_source=lovable-badge
+    - generic: Edit with
+  - button:
+- dialog "Log something":
+  - button "Close":
+    - generic: Close
+  - heading "Log something" [level=2]
+  - paragraph: Private to you. Nothing here leaves your device.
+  - button "Period":
+    - generic: Period
+  - button "Birth control":
+    - generic: Birth control
+  - button "Sex":
+    - generic: Sex
+  - button "Check-in":
+    - generic: Check-in
+  - text: Date
+  - textbox "Date" [active]: 2026-09-01
+  - generic: Mood
+  - generic: 6/10
+  - slider
+  - generic: Energy
+  - generic: 6/10
+  - slider
+  - generic: Focus
+  - generic: 6/10
+  - slider
+  - generic: Libido
+  - generic: 5/10
+  - slider
+  - generic: Sleep
+  - generic: 7/10
+  - slider
+  - paragraph: Roughly how rested you feel.
+  - text: Symptoms
+  - button "Cramps"
+  - button "Bloating"
+  - button "Headache"
+  - button "Fatigue"
+  - button "Breast tenderness"
+  - button "Cravings"
+  - button "Acne"
+  - button "Nausea"
+  - button "Back ache"
+  - button "Trouble sleeping"
+  - button "Irritability"
+  - button "Anxious feelings"
+  - button "Save Aug 31 entry"

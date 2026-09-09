@@ -1,0 +1,21 @@
+{
+  "run_id": "2026-09-07-interview-realtime-repair",
+  "base": "0cac9e6645b51595ee1fac06b29828753aabe9e9",
+  "head": "a214602753605519e86d03007d0ee1d618fc7c42",
+  "mode": "markdown local-apply",
+  "verdict": "Ready with fixes",
+  "merged_pr": 9,
+  "findings_validated": 11,
+  "findings_applied_or_verified": 11,
+  "deployment_canaries": [
+    "fresh agent heartbeat with matching source SHA",
+    "real LiveKit job dispatch to the deployed worker",
+    "Gemini interviewer with Anthropic synthetic student",
+    "agent-complete to queue to worker terminal grade"
+  ],
+  "known_limits": [
+    "local test database schema is stale",
+    "unrelated transformation-policy typecheck failures",
+    "LiveKit Egress minute quota remains exhausted"
+  ]
+}

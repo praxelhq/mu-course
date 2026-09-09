@@ -1,0 +1,265 @@
+- complementary:
+  - button "✓ Personal Workspace Local Mode • Click to Sync":
+    - generic: ✓
+    - heading "Personal Workspace" [level=1]
+    - paragraph: Local Mode • Click to Sync
+  - button "31 Today":
+    - generic: "31"
+    - generic: Today
+  - button "Upcoming & Week 2":
+    - generic: Upcoming & Week
+    - generic: "2"
+  - button "Calendar View":
+    - generic: Calendar View
+  - button "All Tasks 2":
+    - generic: All Tasks
+    - generic: "2"
+  - button "Completed":
+    - generic: Completed
+  - generic: My Projects & Lists
+  - button "Add Project":
+  - button "Collapse sublists":
+  - generic: Personal
+  - button "Add sub-project":
+  - generic: "1"
+  - generic: Health & Habits
+  - button "Collapse sublists":
+  - generic: Work & Projects
+  - button "Add sub-project":
+  - generic: Sprint Backlog
+  - generic: "1"
+  - button "Tags":
+    - generic: Tags
+  - button "All Tags (4)"
+  - button "All Tags 4":
+    - generic: All Tags
+    - generic: "4"
+  - button "getting-started 1":
+    - generic: getting-started
+    - generic: "1"
+  - button "planning 1":
+    - generic: planning
+    - generic: "1"
+  - button "welcome 1":
+    - generic: welcome
+    - generic: "1"
+  - button "work 1":
+    - generic: work
+    - generic: "1"
+  - button "Settings ⌘,":
+    - generic: Settings
+    - generic: ⌘,
+  - button "Offline":
+    - generic: Offline
+- banner:
+  - button "Toggle sidebar":
+  - heading "Today" [level=1]
+  - button "Search tasks, projects, tags... ⌘K":
+    - generic: Search tasks, projects, tags...
+    - generic: ⌘K
+  - button "Add Task":
+    - generic: Add Task
+  - button "Toggle Planner":
+    - generic: Planner
+  - button "Settings":
+- main:
+  - text: Today
+  - heading "Monday, August 31" [level=1]
+  - generic: 0%
+  - paragraph: 0/2 done
+  - paragraph: 2 remaining
+  - textbox "Task name" [active]
+  - button "Speak task name":
+  - textbox "Description / notes"
+  - button "Today":
+    - text: Today
+  - button "Tomorrow":
+    - text: Tomorrow
+  - textbox: 2026-08-31
+  - combobox:
+    - option "Priority 4 (None)" [selected]
+    - option "Priority 3 (Blue)"
+    - option "Priority 2 (Orange)"
+    - option "Priority 1 (Red)"
+  - combobox:
+    - option "# Inbox"
+    - option "# Personal" [selected]
+    - option "↳ Health & Habits"
+    - option "# Work & Projects"
+    - option "↳ Sprint Backlog"
+  - button "Enable push reminder":
+  - button "Add tags":
+  - button "Voice Mode":
+    - text: Voice Mode
+  - button "Cancel"
+  - button "Add task" [disabled]
+  - heading "Today's Tasks (2)" [level=2]
+  - text: Drag to prioritize
+  - generic "Drag handle to reorder":
+  - button "Mark as complete (D)":
+  - heading "Welcome to your minimal To-Do & Nested Lists! 🚀" [level=3]
+  - button "Toggle priority (P)":
+  - button "Move task down":
+  - button "Edit task (E)":
+  - button "Delete task":
+  - paragraph: Organize tasks with parent lists, sublists, priorities, calendar planning, push reminders, and cloud sync.
+  - generic: 2026-08-31 at 10:00
+  - generic "Push reminder active":
+  - text: P1
+  - button "#welcome":
+    - generic: "#welcome"
+  - button "#getting-started":
+    - generic: "#getting-started"
+  - button "0/3":
+    - generic: 0/3
+  - generic: Personal
+  - generic "Drag handle to reorder":
+  - button "Mark as complete (D)":
+  - heading "Review weekly project milestones" [level=3]
+  - button "Toggle priority (P)":
+  - button "Move task up":
+  - button "Edit task (E)":
+  - button "Delete task":
+  - paragraph: Check deadlines and align deliverables with the team.
+  - generic: 2026-08-31
+  - text: P2
+  - button "#work":
+    - generic: "#work"
+  - button "#planning":
+    - generic: "#planning"
+  - generic: Sprint Backlog
+- complementary:
+  - heading "Calendar & Upcoming" [level=3]
+  - button "Split"
+  - button "Month"
+  - button "7-Day"
+  - button "Close planner panel":
+  - generic: August 2026
+  - button "Today"
+  - button "Previous month":
+  - button "Next month":
+  - generic: M
+  - generic: T
+  - generic: W
+  - generic: T
+  - generic: F
+  - generic: S
+  - generic: S
+  - button "27":
+    - generic: "27"
+  - button "28":
+    - generic: "28"
+  - button "29":
+    - generic: "29"
+  - button "30":
+    - generic: "30"
+  - button "31":
+    - generic: "31"
+  - button "1":
+    - generic: "1"
+  - button "2":
+    - generic: "2"
+  - button "3":
+    - generic: "3"
+  - button "4":
+    - generic: "4"
+  - button "5":
+    - generic: "5"
+  - button "6":
+    - generic: "6"
+  - button "7":
+    - generic: "7"
+  - button "8":
+    - generic: "8"
+  - button "9":
+    - generic: "9"
+  - button "10":
+    - generic: "10"
+  - button "11":
+    - generic: "11"
+  - button "12":
+    - generic: "12"
+  - button "13":
+    - generic: "13"
+  - button "14":
+    - generic: "14"
+  - button "15":
+    - generic: "15"
+  - button "16":
+    - generic: "16"
+  - button "17":
+    - generic: "17"
+  - button "18":
+    - generic: "18"
+  - button "19":
+    - generic: "19"
+  - button "20":
+    - generic: "20"
+  - button "21":
+    - generic: "21"
+  - button "22":
+    - generic: "22"
+  - button "23":
+    - generic: "23"
+  - button "24":
+    - generic: "24"
+  - button "25":
+    - generic: "25"
+  - button "26":
+    - generic: "26"
+  - button "27":
+    - generic: "27"
+  - button "28":
+    - generic: "28"
+  - button "29":
+    - generic: "29"
+  - button "30":
+    - generic: "30"
+  - button "31":
+    - generic: "31"
+  - button "1":
+    - generic: "1"
+  - button "2":
+    - generic: "2"
+  - button "3":
+    - generic: "3"
+  - button "4":
+    - generic: "4"
+  - button "5":
+    - generic: "5"
+  - button "6":
+    - generic: "6"
+  - generic: Mon, Aug 31
+  - generic: (Today)
+  - generic: 2 pending
+  - textbox "Add task for Mon, Aug 31..."
+  - button "Add task" [disabled]:
+  - button "Toggle task"
+  - generic: Welcome to your minimal To-Do & Nested Lists! 🚀
+  - text: 10:00
+  - button "Toggle task"
+  - generic: Review weekly project milestones
+  - generic: Next 7 Days Schedule
+  - generic: Mon 31
+  - generic: (Today)
+  - generic: 2 tasks
+  - generic: Welcome to your minimal To-Do & Nested Lists! 🚀
+  - generic: Review weekly project milestones
+  - generic: Tue 1
+  - generic: 0 tasks
+  - paragraph: No tasks
+  - generic: Wed 2
+  - generic: 0 tasks
+  - paragraph: No tasks
+  - generic: Thu 3
+  - generic: 0 tasks
+  - paragraph: No tasks
+  - generic: Fri 4
+  - generic: 0 tasks
+  - paragraph: No tasks
+  - generic: Sat 5
+  - generic: 0 tasks
+  - paragraph: No tasks
+  - generic: Sun 6
+  - generic: 0 tasks
+  - paragraph: No tasks

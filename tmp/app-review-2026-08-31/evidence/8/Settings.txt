@@ -1,0 +1,44 @@
+- complementary:
+  - img "Ideaforge Logo"
+  - heading "Ideaforge Lab" [level=1]:
+    - text: Ideaforge
+    - generic: Lab
+  - paragraph: Startup Validation Suite
+  - button "New Validation":
+    - generic: New Validation
+  - navigation:
+    - button "Dashboard":
+      - generic: Dashboard
+    - button "Validations":
+      - generic: Validations
+    - button "Competitors":
+      - generic: Competitors
+    - button "Settings" [active]:
+      - generic: Settings
+  - generic "Open Account Settings":
+    - img "Review Test"
+    - paragraph: Review Test
+    - generic: Free Plan
+- main:
+  - generic: Platform Settings
+  - heading "Account & AI Configurations" [level=1]
+  - paragraph: Manage your founder profile, active plan tier, backend AI credentials, and active session.
+  - heading "Founder Profile" [level=3]
+  - generic: Display Name
+  - strong: Review Test
+  - generic: Email Address
+  - strong: reviewtest@ideaforge.io
+  - generic: Subscription Plan
+  - strong: Free Plan (Unlimited Validations)
+  - generic: Total Validations Generated
+  - strong: 1 experiments
+  - heading "AI Engine Status" [level=3]
+  - paragraph:
+    - strong: "Gemini API Active:"
+    - text: Server-side AI orchestration pipeline initialized with model
+    - code: gemini-3.6-flash
+    - text: . All keys are securely managed by Google AI Studio.
+  - heading "Session & Account Security" [level=3]
+  - paragraph: Sign out of your Ideaforge workspace on this device. Your saved reports and validation drafts will remain securely stored.
+  - button "Sign Out of Ideaforge":
+    - generic: Sign Out of Ideaforge

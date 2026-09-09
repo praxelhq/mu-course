@@ -1,0 +1,97 @@
+- complementary:
+  - generic: F
+  - heading "FounderOS" [level=1]
+  - generic: NovaCraft Labs
+  - navigation:
+    - button "Dashboard":
+      - generic: Dashboard
+    - button "Products":
+      - generic: Products
+    - button "Marketing":
+      - generic: Marketing
+    - button "Finance":
+      - generic: Finance
+    - button "Customers":
+      - generic: Customers
+    - button "Goals & Tasks 6":
+      - generic: Goals & Tasks
+      - generic: "6"
+    - generic: Intelligence
+    - button "Founder Copilot AI":
+      - generic: Founder Copilot
+      - generic: AI
+    - button "Settings" [active]:
+      - generic: Settings
+  - generic: AJ
+  - generic: Alex Johnson
+  - generic: Pro Founder Plan
+  - button "Switch Workspace / Sign Out":
+- banner:
+  - generic: NovaCraft Labs
+  - generic: Startup Settings
+  - button "Quick Search... ⌘K":
+    - generic: Quick Search...
+    - generic: ⌘K
+  - generic: August 2026 (Q3)
+  - button "Executive Report":
+    - generic: Executive Report
+  - button "Copilot":
+    - generic: Copilot
+  - button "Alerts":
+- main:
+  - heading "Startup Settings & Workspace" [level=1]
+  - paragraph: Manage your organization profile, founder credentials, alert ceilings, and system telemetry.
+  - button "Switch Account / Sign Out":
+    - generic: Switch Account / Sign Out
+  - heading "Startup & Founder Profile" [level=2]
+  - generic: Organization Name
+  - textbox: NovaCraft Labs
+  - generic: Founder / Operator Name
+  - textbox: Alex Johnson
+  - generic: Work Email
+  - textbox
+  - generic: Funding / Stage
+  - combobox:
+    - option "Seed Stage ($1.2M Raised)" [selected]
+    - option "Bootstrapped / Pre-Seed"
+    - option "Angel Backed ($500k)"
+    - option "Series A ($5M+)"
+  - generic: Primary Currency
+  - combobox:
+    - option "₹ INR (Indian Rupee)" [selected]
+    - option "$ USD (US Dollar)"
+    - option "€ EUR (Euro)"
+    - option "£ GBP (British Pound)"
+  - generic: Current Plan
+  - generic: Pro Founder Plan
+  - generic: Active
+  - heading "AI Alerting Thresholds" [level=2]
+  - generic: Low Stock Trigger Limit (Units)
+  - spinbutton: "15"
+  - paragraph: Triggers critical alert when SKU stock is below this number.
+  - generic: Target CAC Ceiling (₹)
+  - spinbutton: "70"
+  - paragraph: Flags ad campaigns that exceed target acquisition costs.
+  - heading "Founding Team Access" [level=2]
+  - generic: 3 of 5 seats used
+  - generic: AJ
+  - paragraph: Alex Johnson (You)
+  - paragraph: alex@novacraftlabs.com • Super Admin
+  - generic: Active Owner
+  - generic: MC
+  - paragraph: Maya Chen
+  - paragraph: maya@novacraft.io • Head of Growth
+  - generic: Editor
+  - generic: DP
+  - paragraph: Dev Patel
+  - paragraph: dev@novacraft.io • Operations Lead
+  - generic: Editor
+  - heading "Demo Data & Workspace Controls" [level=2]
+  - paragraph: Reset Initial Demo Seed
+  - paragraph: Restore initial metrics, campaigns, catalog, and tasks.
+  - button "Export Snapshot":
+    - generic: Export Snapshot
+  - button "Reset to Default":
+    - generic: Reset to Default
+  - button "Save Preferences"
+- generic: ₹0.0L

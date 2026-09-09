@@ -1,0 +1,36 @@
+- generic: ख्याति
+- generic: Khyati
+- generic: Crisis Response Infrastructure
+- generic: DEMO — SIMULATED
+- navigation "Surface":
+  - button "Consumer app"
+  - button "Responder console"
+  - button "Operations"
+  - button "Audit"
+- main:
+  - generic: KHYATI · +91 •••• ••4417
+  - group "Language":
+    - button "EN" [pressed]
+    - button "हिं"
+  - button "← Back"
+  - generic: Step 1 of about 3
+  - heading "Are you in immediate danger right now?" [level=1]
+  - paragraph: There are no wrong answers. You can skip this and go straight to a responder.
+  - button "Yes"
+  - button "No"
+  - button "I’m not sure"
+  - button "Skip the questions — connect me now"
+- generic: Demo controls
+- button "Take all responders offline"
+- button "Trusted contact replies"
+- button "Fast-forward 2h"
+- button "Fast-forward 24h"
+- generic: Scenario
+- button "Run full end-to-end"
+- 'button "Surge: +5 incidents"'
+- button "Reset"
+- generic: Console user
+- generic: Aarti Menon · AVAILABLE
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

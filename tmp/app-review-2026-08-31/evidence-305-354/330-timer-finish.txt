@@ -1,0 +1,25 @@
+- banner:
+  - button "Menu":
+    - generic: menu
+  - generic: Ink & Page
+  - button "History":
+    - generic: history_edu
+- main:
+  - heading "Reading" [level=1]
+  - paragraph: Focus Session
+  - generic: menu_book
+  - generic: 00:00:00
+  - button "pause Pause":
+    - generic: pause
+    - generic: Pause
+  - button "play_arrow Start":
+    - generic: play_arrow
+    - generic: Start
+  - button "stop Finish" [active]:
+    - generic: stop
+    - generic: Finish
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_0e0qyttfcv9zm99rrq7ntss74j?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

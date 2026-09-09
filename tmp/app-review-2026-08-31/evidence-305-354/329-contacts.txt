@@ -1,0 +1,54 @@
+- banner:
+  - button "● Circle MBA CRM Private Network & Follow-up Tracker":
+    - generic: ●
+    - generic: Circle
+    - generic: MBA CRM
+    - paragraph: Private Network & Follow-up Tracker
+  - navigation:
+    - button "Dashboard":
+      - generic: Dashboard
+    - button "All Contacts (1)" [active]:
+      - generic: All Contacts
+      - generic: (1)
+    - button "+ Add Contact":
+      - generic: + Add Contact
+  - generic: mba.candidate@stanford.edu
+  - text: Private Vault
+  - button "Sign out":
+- main:
+  - heading "All Contacts" [level=1]
+  - paragraph: Directory of 1 MBA connections with follow-up histories.
+  - button "+ Add Contact":
+    - text: + Add Contact
+  - textbox "Search by name, company, role, location met, or notes..."
+  - combobox:
+    - option "Most Overdue" [selected]
+    - option "Recently Contacted"
+    - option "Name (A–Z)"
+    - option "Company (A–Z)"
+  - button "Table List View":
+  - button "Grid Card View":
+  - generic: "Tag:"
+  - button "All"
+  - button "Batchmate"
+  - button "Faculty"
+  - button "Founder"
+  - button "Investor"
+  - button "Alumni"
+  - button "Industry Contact"
+  - button "Other"
+  - generic: "Status:"
+  - button "All Statuses"
+  - button "Overdue Only"
+  - button "Due Soon"
+  - button "Up to Date"
+  - text: Showing
+  - strong: "1"
+  - text: of 1 contacts
+  - generic: DL
+  - generic: Demo Library Partner
+  - generic: Batchmate
+  - generic: Aug 31, 2026
+  - generic: Due in 30d
+  - button "Log":
+    - generic: Log

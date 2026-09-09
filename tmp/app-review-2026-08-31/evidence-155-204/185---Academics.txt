@@ -1,0 +1,59 @@
+- banner:
+  - link "🫧 Unmute Your campus safe space":
+    - /url: /
+    - generic: 🫧
+    - generic: Unmute
+    - generic: Your campus safe space
+  - navigation:
+    - link "Home":
+      - /url: /
+    - link "Check-In":
+      - /url: /check-in
+    - link "Circles":
+      - /url: /circles
+    - link "Journal":
+      - /url: /journal
+    - link "My Week":
+      - /url: /my-week
+  - link "Support":
+    - /url: /support
+  - button "Settings":
+- main:
+  - button "Back":
+    - text: Back
+  - heading "How are you really feeling today?" [level=1]
+  - paragraph: No right answer. Pick whatever is closest — you can always change it.
+  - button "🌞 Good":
+    - generic: 🌞
+    - generic: Good
+  - button "🙂 Okay" [pressed]:
+    - generic: 🙂
+    - generic: Okay
+  - button "😰 Anxious":
+    - generic: 😰
+    - generic: Anxious
+  - button "🌧️ Low":
+    - generic: 🌧️
+    - generic: Low
+  - button "😤 Frustrated":
+    - generic: 😤
+    - generic: Frustrated
+  - button "🌀 Overwhelmed":
+    - generic: 🌀
+    - generic: Overwhelmed
+  - heading "What's taking up the most space in your head?" [level=2]
+  - button "📚Academics" [active] [pressed]
+  - button "💞Relationships"
+  - button "🧭Career"
+  - button "🌙Loneliness"
+  - button "🏠Family"
+  - button "🪞Body Image"
+  - button "🫶Friendships"
+  - button "🤍I'm not sure"
+  - button "Continue"
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_20xxzq25ry9jr81pbw93zjh93j?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

@@ -1,0 +1,89 @@
+{
+  "reviewer": "maintainability",
+  "findings": [
+    {
+      "title": "Retire obsolete two-transport simulator",
+      "severity": "P1",
+      "file": "lms/scripts/interview-simulate.ts",
+      "line": 254,
+      "why_it_matters": "The declared interview simulation now asserts a 200 fallback flip and then submits typed answers through the retired transport. The changed route always returns 409, so the release/E2E harness fails before it can validate the real-time reconnect and grading path the patch is meant to protect.",
+      "autofix_class": "gated_auto",
+      "owner": "downstream-resolver",
+      "requires_verification": true,
+      "suggested_fix": "Replace simulateRealtimeDegradation with a realtime-only reconnect scenario: assert /fallback refuses the stale request, retain the realtime transport, append resumed agent/student turns through the agent endpoints, call agent-complete with finished:true, and run the grading assertion. Delete the post-fallback nextQuestion/submitAnswer loop and update the script header/docs to describe one transport.",
+      "confidence": 100,
+      "evidence": [
+        "lms/scripts/interview-simulate.ts:254: check(flip.status === 200, `fallback flip -> 200 (got ${flip.status})`);",
+        "lms/app/api/interview/fallback/route.ts:17: { status: 409 },",
+        "lms/scripts/interview-simulate.ts:271: // 5. Same interview continues turn-based (scripted questions, typed answers)."
+      ],
+      "pre_existing": false
+    },
+    {
+      "title": "Remove duplicated source-inspection tests",
+      "severity": "P2",
+      "file": "lms/agent/test_main.py",
+      "line": 75,
+      "why_it_matters": "The same production conditions are asserted twice in separate test styles, multiplying the maintenance surface without covering another behavior. The source-file reads also produced ResourceWarnings in the targeted unittest run, so this duplicate test surface is both noisy and brittle.",
+      "autofix_class": "gated_auto",
+      "owner": "downstream-resolver",
+      "requires_verification": true,
+      "suggested_fix": "Keep ProductionInterviewSafetyTests as the single regression location, replace its open(...).read() calls with Path('main.py').read_text(encoding='utf-8'), and delete the duplicate TestVoiceFailover and TestReconnectSafety methods.",
+      "confidence": 100,
+      "evidence": [
+        "lms/agent/test_main.py:79: self.assertIn('elevenlabs.TTS(api_key=os.environ[\"ELEVENLABS_API_KEY\"])', body)",
+        "lms/agent/test_main.py:287: assert \"elevenlabs.TTS(api_key=os.environ[\\\"ELEVENLABS_API_KEY\\\"])\" in body",
+        "lms/agent/test_main.py:84: self.assertIn(\"RoomInputOptions(close_on_disconnect=False)\", body)",
+        "lms/agent/test_main.py:380: assert \"RoomInputOptions(close_on_disconnect=False)\" in body"
+      ],
+      "pre_existing": false
+    },
+    {
+      "title": "Delete dead text-answer compatibility shim",
+      "severity": "P2",
+      "file": "lms/app/api/interview/answer/route.ts",
+      "line": 8,
+      "why_it_matters": "The route explicitly retains a false-valued export only for callers/tests, but the repository has no application caller. Keeping a named permission function after removing the capability makes the retired manual path look supported and invites future code to branch on an API that can never enable behavior.",
+      "autofix_class": "gated_auto",
+      "owner": "downstream-resolver",
+      "requires_verification": true,
+      "suggested_fix": "Delete textAnswersAllowed and its environment-matrix assertion in interview-session.test.ts. Keep the endpoint-level 410 test, which directly protects the real contract for stale manual clients.",
+      "confidence": 100,
+      "evidence": [
+        "lms/app/api/interview/answer/route.ts:8: /** Retained for callers/tests; manual text answers are never accepted now. */",
+        "lms/app/api/interview/answer/route.ts:9: export function textAnswersAllowed(): boolean {",
+        "lms/tests/interview-session.test.ts:407: const { textAnswersAllowed } = await import(\"../app/api/interview/answer/route\");"
+      ],
+      "pre_existing": false
+    },
+    {
+      "title": "Remove stale fallback terminology",
+      "severity": "P3",
+      "file": "lms/app/(room)/interview/live/realtime-room.tsx",
+      "line": 20,
+      "why_it_matters": "The changed parent now reconnects to the LiveKit room, but child component comments and the callback name still describe flipping to the deleted turn-based transport. This is comment and sibling-path drift: a later maintainer can reasonably restore or test the wrong failure policy from these local contracts.",
+      "autofix_class": "gated_auto",
+      "owner": "downstream-resolver",
+      "requires_verification": true,
+      "suggested_fix": "Rename onFallback and fallbackRef to onReconnect/reconnectRef through RealtimeRoom and MeetingView, then replace stale turn-based fallback comments in those files and realtime.ts with the real-time reconnect policy. Update only related build documentation that still declares two student transports.",
+      "confidence": 100,
+      "evidence": [
+        "lms/app/(room)/interview/live/realtime-room.tsx:20: // A connect timeout (~8s), a disconnect, or sustained poor quality flips the",
+        "lms/app/(room)/interview/live/realtime-room.tsx:21: // interview to the turn-based loop in place. The same interview continues and",
+        "lms/app/(room)/interview/live/interview-client.tsx:76: const reconnect = useCallback(",
+        "lms/lib/interview/realtime.ts:12: // 503 {realtimeUnavailable:true} - the client then runs the U12 turn-based"
+      ],
+      "pre_existing": false
+    }
+  ],
+  "residual_risks": [
+    "The real-time admission health check proves an agent heartbeat and source SHA, not that a worker can accept and speak in a newly minted LiveKit room; only a live canary can establish that end-to-end property.",
+    "The agent now stays alive after participant disconnect, but this review did not execute the LiveKit SDK lifecycle to confirm a reconnect preserves the expected audio subscriptions and agent state.",
+    "Egress quota exhaustion remains an external recording dependency; the scoped diff does not make a successful graded completion contingent on a usable recording artifact."
+  ],
+  "testing_gaps": [
+    "No executable browser test drives LiveKitRoom disconnect -> token remint -> RealtimeRoom remount and asserts the same interviewId, live transport, and continued turn persistence.",
+    "The new Python regression tests inspect source strings rather than invoking an AgentSession with an AgentHandoff event or a participant disconnect, so SDK API compatibility is not exercised.",
+    "No current suite validates a real LLM-student transcript through the deployed agent, agent-complete, queued worker grading, and the result page; the existing package simulation instead targets the removed fallback path."
+  ]
+}

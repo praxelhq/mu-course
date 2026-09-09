@@ -1,0 +1,17 @@
+- heading "Wavelength" [level=2]
+- paragraph: match on taste, not just faces
+- heading "Build your profile" [level=1]
+- paragraph: How you show up, before anyone sees your taste.
+- button "Upload profile photo":
+  - img "You’s portrait"
+- generic: Name
+- textbox "Your name"
+- generic: Bio
+- textbox "One line about your taste, not your job title."
+- generic: Age
+- spinbutton
+- button "Continue" [disabled]:
+  - text: Continue
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

@@ -1,0 +1,81 @@
+- banner:
+  - heading "Food log" [level=1]
+  - paragraph: Today
+  - link "Notifications":
+    - /url: /notifications
+- main:
+  - paragraph: Running totals
+  - paragraph:
+    - text: "1170"
+    - generic: / 2200 kcal
+  - generic: Protein
+  - text: "39"
+  - generic: /95g
+  - progressbar
+  - generic: Carbs
+  - text: "180"
+  - generic: /260g
+  - progressbar
+  - generic: Fats
+  - text: "27"
+  - generic: /65g
+  - progressbar
+  - generic: Fiber
+  - text: "19"
+  - generic: /30g
+  - progressbar
+  - heading "Breakfast" [level=2]
+  - button "+ Add"
+  - generic: 🍛
+  - paragraph: Poha with peanuts + chai
+  - paragraph: Breakfast · 08:20 · P 9g · C 52g · F 10g
+  - paragraph: "340"
+  - paragraph: kcal
+  - button "Remove"
+  - heading "Lunch" [level=2]
+  - button "+ Add"
+  - generic: 🍽️
+  - paragraph: Hostel mess thali (dal, rice, roti, sabzi)
+  - paragraph: Lunch · 13:10 · P 22g · C 94g · F 14g
+  - paragraph: "620"
+  - paragraph: kcal
+  - button "Remove"
+  - heading "Snack" [level=2]
+  - button "+ Add"
+  - generic: 🍌
+  - paragraph: Banana + roasted chana
+  - paragraph: Snack · 17:35 · P 8g · C 34g · F 3g
+  - paragraph: "210"
+  - paragraph: kcal
+  - button "Remove"
+  - heading "Dinner" [level=2]
+  - button "+ Add"
+  - generic: 🌙
+  - paragraph: No dinner logged
+  - paragraph: Scan it or use quick add — takes 5 seconds.
+  - link "Scan a meal instead":
+    - /url: /scan
+    - text: Scan a meal instead
+- navigation:
+  - list:
+    - link "Home":
+      - /url: /home
+      - generic: Home
+    - link "Log":
+      - /url: /log
+      - generic: Log
+    - link "Scan":
+      - /url: /scan
+      - generic: Scan
+    - link "Coach":
+      - /url: /recommendations
+      - generic: Coach
+    - link "Profile":
+      - /url: /profile
+      - generic: Profile
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_25aah1gfmf84ysf426ybmhv3p7?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

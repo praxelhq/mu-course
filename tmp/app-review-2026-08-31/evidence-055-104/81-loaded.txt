@@ -1,0 +1,33 @@
+- img "Surveyor measuring an apartment wall with a laser distance meter"
+- generic: HR
+- generic: HandoverReady
+- paragraph: "[ verification required ]"
+- heading "Trust, but verify every millimeter." [level=1]:
+  - text: Trust, but verify
+  - text: every millimeter.
+- paragraph: Developer handovers are legally binding. Our surveyors document the defects you can't see, before you sign the possession papers.
+- paragraph: Insight
+- paragraph: "\"84% of premium handovers we audit carry at least one critical plumbing or waterproofing defect hidden behind finished tiling.\""
+- paragraph: Account access
+- heading "Log in to continue" [level=2]
+- paragraph: No account yet? We'll move you to sign up automatically.
+- button "Log in"
+- button "Sign up"
+- tablist:
+  - tab "Phone OTP" [selected]
+  - tab "Email"
+- tabpanel "Phone OTP":
+  - text: Mobile number
+  - generic: "+91"
+  - textbox "Mobile number":
+    - /placeholder: 98450 11220
+  - button "Send OTP":
+    - text: Send OTP
+- paragraph:
+  - text: Your property details are used only to scope the inspection. We never share them with builders without your consent.
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1j1vtgtz9z9m6bfjjps0t29nbr?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

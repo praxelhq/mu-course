@@ -1,0 +1,72 @@
+- banner:
+  - link "VOIID":
+    - /url: /
+    - heading "VOIID" [level=1]
+  - generic: location_on
+  - combobox:
+    - option "Mumbai" [selected]
+    - option "Delhi"
+    - option "Bengaluru"
+    - option "All Cities"
+  - navigation:
+    - link "Discover":
+      - /url: /
+    - link "Manage":
+      - /url: /manage
+    - link "Groups":
+      - /url: /groups
+  - button "Vibes":
+    - generic: tune
+    - generic: Vibes
+  - link "Priya Nair":
+    - /url: /profile
+    - img "Priya Nair"
+- main:
+  - paragraph: Happening in Mumbai
+  - heading "Go do something real." [level=2]
+  - button "Feed":
+    - generic: grid_view
+    - text: Feed
+  - button "Live Map":
+    - generic: map
+    - text: Live Map
+  - generic: search
+  - textbox "Search by neighborhood (Bandra, Chanakyapuri, Indiranagar) or vibe..."
+  - button "All"
+  - button "Running"
+  - button "Food" [active]
+  - button "Art"
+  - button "Photo"
+  - button "Music"
+  - button "Bouldering"
+  - 'link "Fusion Supper Club: Coastal Flavors Featured Drop Mumbai • Khar Fusion Supper Club: Coastal Flavors Saturday, 8:00 PM 150 min 3 spots left ₹3,200 Buy Pass →"':
+    - /url: /event?id=evt-food-mumbai-3
+    - 'img "Fusion Supper Club: Coastal Flavors"'
+    - generic: Featured Drop
+    - generic: Mumbai • Khar
+    - 'heading "Fusion Supper Club: Coastal Flavors" [level=3]'
+    - generic: calendar_today
+    - text: Saturday, 8:00 PM
+    - generic: timer
+    - text: 150 min
+    - generic: 3 spots left
+    - generic: ₹3,200
+    - generic: Buy Pass →
+  - heading "Fresh Drops (1)" [level=3]
+  - paragraph: Small-scale, curated offline experiences.
+  - 'link "Fusion Supper Club: Coastal Flavors 3 Spots Left ₹3,200 Mumbai • Saturday, 8:00 PM Fusion Supper Club: Coastal Flavors 📍 The Loft on 14th Arjun Mehta Arjun Mehta Buy Pass →"':
+    - /url: /event?id=evt-food-mumbai-3
+    - 'img "Fusion Supper Club: Coastal Flavors"'
+    - generic: 3 Spots Left
+    - generic: ₹3,200
+    - paragraph: Mumbai • Saturday, 8:00 PM
+    - 'heading "Fusion Supper Club: Coastal Flavors" [level=4]'
+    - paragraph: 📍 The Loft on 14th
+    - img "Arjun Mehta"
+    - generic: Arjun Mehta
+    - generic: Buy Pass →
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_170dk9p81w84car830efqq2rqz?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

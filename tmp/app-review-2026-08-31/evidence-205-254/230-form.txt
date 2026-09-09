@@ -1,0 +1,32 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6hryasqw009y18czk18jmfw5f5?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- link "bubble_chart ContentFlow":
+  - /url: /
+  - generic: bubble_chart
+  - generic: ContentFlow
+- heading "Customize Your Calendar" [level=1]
+- paragraph: Set your preferences to generate a tailored content flow.
+- generic: Content Niche
+- combobox "Content Niche":
+  - option "Select your niche" [disabled] [selected]
+  - option "Fashion"
+  - option "Food"
+  - option "Fitness"
+  - option "Travel"
+  - option "Dance/Lifestyle"
+  - option "Other"
+- generic: Primary Platform
+- combobox "Primary Platform":
+  - option "Select a platform" [disabled] [selected]
+  - option "Instagram"
+  - option "YouTube"
+- generic: Posting Frequency
+- button "3 days/week"
+- button "5 days/week"
+- button "7 days/week"
+- button "auto_awesome Generate Calendar":
+  - generic: auto_awesome
+  - text: Generate Calendar

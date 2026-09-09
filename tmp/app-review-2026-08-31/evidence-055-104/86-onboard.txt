@@ -1,0 +1,29 @@
+- banner:
+  - button "Go back":
+    - generic: arrow_back
+  - generic: Step 1 of 6
+- main:
+  - heading "How many cigarettes do you smoke per day?" [level=1]
+  - paragraph: Roughly is fine — we just need a baseline.
+  - button "1–5":
+    - generic: smoking_rooms
+    - generic: 1–5
+  - button "6–10":
+    - generic: smoking_rooms
+    - generic: 6–10
+    - generic: check
+  - button "11–20":
+    - generic: smoking_rooms
+    - generic: 11–20
+  - button "20+":
+    - generic: warning
+    - generic: 20+
+- button "Continue":
+  - text: Continue
+  - generic: arrow_forward
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_19mhcg6jxz8s9s6ch802n4v9n3?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

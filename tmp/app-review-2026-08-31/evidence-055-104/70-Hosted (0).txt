@@ -1,0 +1,31 @@
+- banner:
+  - generic: Matchday+
+  - generic: Campus Arena
+  - button "Post Game":
+    - generic: Post Game
+  - button "Notifications":
+  - button "R ReviewDemo 4 favs":
+    - generic: R
+    - paragraph: ReviewDemo
+    - paragraph: 4 favs
+  - button "Switch Demo Student":
+  - button "Log out to Login screen":
+- main:
+  - heading "My Campus Matches" [level=1]
+  - paragraph: Games you've joined, hosted, or played on campus
+  - button "← Back to Campus Feed"
+  - button "Joined (0)":
+    - generic: Joined (0)
+  - button "Hosted (0)" [active]:
+    - generic: Hosted (0)
+  - button "History (0)":
+    - generic: History (0)
+  - heading "You haven’t hosted any games yet" [level=3]
+  - paragraph: Explore the campus feed or host your own match to invite other students!
+  - button "Host a Game Now"
+- button "Discover":
+  - generic: Discover
+- button "+ Post Game":
+  - generic: + Post Game
+- button "My Games":
+  - generic: My Games

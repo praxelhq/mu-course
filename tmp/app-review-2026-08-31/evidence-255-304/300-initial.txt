@@ -1,0 +1,142 @@
+- navigation:
+  - link "FoodLens":
+    - /url: /
+    - generic: FoodLens
+  - link "Home":
+    - /url: /
+    - text: Home
+  - link "Scan":
+    - /url: /scan
+  - link "Browse Recipes":
+    - /url: /browse
+  - link "Recent Scans":
+    - /url: /scans
+  - link "Saved recipes":
+    - /url: /saved
+- main:
+  - text: AI food discovery
+  - heading "See your food differently." [level=1]:
+    - generic: See
+    - generic: your
+    - generic: food
+    - generic: differently.
+  - paragraph: One picture. A whole new way to discover what's on your plate.
+  - link "Scan Your Food":
+    - /url: /scan
+    - text: Scan Your Food
+  - link "Explore how it works":
+    - /url: "#how-it-works"
+    - text: Explore how it works
+  - img "A fresh Greek salad in a ceramic bowl"
+  - generic: FoodLens is looking…
+  - text: Greek Salad
+  - generic: "0"
+  - text: kcal
+  - text: 9g protein
+  - generic: Creamy Garlic Pasta
+  - generic: 25 min
+  - generic: Shakshuka
+  - generic: 20 min
+  - generic: Chicken Tacos
+  - generic: 30 min
+  - generic: Paneer Tikka Bowl
+  - generic: 25 min
+  - generic: Pesto Pasta
+  - generic: 20 min
+  - generic: Ramen
+  - generic: 35 min
+  - generic: Greek Salad
+  - generic: 15 min
+  - generic: Chocolate Lava Cake
+  - generic: 30 min
+  - generic: Creamy Garlic Pasta
+  - generic: 25 min
+  - generic: Shakshuka
+  - generic: 20 min
+  - generic: Chicken Tacos
+  - generic: 30 min
+  - generic: Paneer Tikka Bowl
+  - generic: 25 min
+  - generic: Pesto Pasta
+  - generic: 20 min
+  - generic: Ramen
+  - generic: 35 min
+  - generic: Greek Salad
+  - generic: 15 min
+  - generic: Chocolate Lava Cake
+  - generic: 30 min
+  - paragraph: How it works
+  - heading "From picture to plate in seconds." [level=2]
+  - generic: "01"
+  - img "Snap"
+  - generic: 01 — SNAP
+  - heading "Snap" [level=3]
+  - paragraph: Take a photo or upload your food.
+  - generic: "02"
+  - img "Identify"
+  - generic: 02 — IDENTIFY
+  - heading "Identify" [level=3]
+  - paragraph: FoodLens takes a closer look and identifies the dish.
+  - generic: "03"
+  - img "Discover"
+  - generic: 03 — DISCOVER
+  - heading "Discover" [level=3]
+  - paragraph: Explore the recipe, calories, nutrition and ingredients.
+  - paragraph: Discover what's on your plate
+  - heading "One picture. So much to discover." [level=2]
+  - link "Greek salad recipe Recipe Learn how to make it. Ingredient chips, numbered steps and cooking progress — the whole dish, laid out. Open the recipe":
+    - /url: /recipe/greek-salad
+    - img "Greek salad recipe"
+    - text: Recipe
+    - heading "Learn how to make it." [level=3]
+    - paragraph: Ingredient chips, numbered steps and cooking progress — the whole dish, laid out.
+    - text: Open the recipe
+  - link "Calories See estimated calories per serving. Tap to explore 320 kcal · range 280–360":
+    - /url: /scan
+    - text: Calories
+    - heading "See estimated calories per serving." [level=3]
+    - generic: Tap to explore
+    - generic: 320 kcal · range 280–360
+  - link "Nutrition Explore what's inside. Tap to explore 9g protein · 14g carbs · 25g fat":
+    - /url: /scan
+    - text: Nutrition
+    - heading "Explore what's inside." [level=3]
+    - generic: Tap to explore
+    - generic: 9g protein · 14g carbs · 25g fat
+  - link "Ingredients See what it's made of. Tap to explore Cucumber · tomato · feta · olives":
+    - /url: /scan
+    - text: Ingredients
+    - heading "See what it's made of." [level=3]
+    - generic: Tap to explore
+    - generic: Cucumber · tomato · feta · olives
+  - paragraph: Recipe discovery
+  - heading "Looking for something to make?" [level=2]
+  - paragraph: Explore recipes, discover new dishes and find your next favourite meal.
+  - link "Browse Recipes":
+    - /url: /browse
+    - text: Browse Recipes
+  - img "Shakshuka"
+  - img "Ramen"
+  - img "Chocolate lava cake"
+  - heading "What's on your plate right now?" [level=2]
+  - paragraph: Point, snap, and let FoodLens take a closer look.
+  - link "Scan Your Food":
+    - /url: /scan
+    - text: Scan Your Food
+- contentinfo:
+  - generic: FoodLens
+  - paragraph: See your food differently. One picture. A whole new way to discover what's on your plate.
+  - link "Scan":
+    - /url: /scan
+  - link "Browse Recipes":
+    - /url: /browse
+  - link "Recent Scans":
+    - /url: /scans
+  - link "Saved":
+    - /url: /saved
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7hb7j64b2b9z2txfp26xt2vf0q?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

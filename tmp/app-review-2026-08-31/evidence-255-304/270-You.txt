@@ -1,0 +1,30 @@
+- banner:
+  - paragraph: You
+  - heading "Your account" [level=1]
+- paragraph: You're using Serene Companion without an account. Sign in to save your check-ins.
+- link "Sign in":
+  - /url: /auth
+  - text: Sign in
+  - generic: arrow_forward
+- heading "How this works" [level=2]
+- paragraph: You share what's happening. The companion asks a few gentle questions, reads the emotion underneath your words, and suggests a short activity matched to it. Afterwards you rate how you feel and get a reflection you can look back on.
+- heading "If things feel unsafe" [level=2]
+- paragraph: Serene Companion is not a crisis service. If you're thinking about harming yourself, please contact a local helpline or emergency services — findahelpline.com lists services worldwide.
+- navigation:
+  - list:
+    - link "Home":
+      - /url: /
+      - generic: home
+      - text: Home
+    - link "Activities":
+      - /url: /activities
+      - generic: spa
+      - text: Activities
+    - link "History":
+      - /url: /history
+      - generic: insights
+      - text: History
+    - link "You":
+      - /url: /account
+      - generic: person
+      - text: You

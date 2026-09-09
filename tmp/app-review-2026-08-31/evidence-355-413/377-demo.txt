@@ -1,0 +1,60 @@
+- banner:
+  - link "Open your profile":
+    - /url: /profile
+    - img "Arjun Mehta's profile"
+  - link "NEST":
+    - /url: /home
+  - navigation "Primary":
+    - link "Home":
+      - /url: /home
+    - link "Journey":
+      - /url: /journey
+    - link "NEST AI":
+      - /url: /ai
+    - link "Explore":
+      - /url: /explore
+    - link "Community":
+      - /url: /community
+  - link "Your documents and notifications":
+    - /url: /documents
+    - generic: notifications
+- main:
+  - paragraph:
+    - strong: Demo journey.
+    - text: You are exploring Arjun's seeded India → Singapore journey.
+    - link "Create an account":
+      - /url: /signup
+    - text: to start your own.
+  - paragraph: Good morning
+  - heading "Arjun, you're closer than you think." [level=1]
+  - paragraph: 🇮🇳 India → 🇸🇬 Singapore · arriving in 3 days
+  - paragraph: Journey progress
+  - paragraph: 0%
+  - paragraph: Loading…
+  - link "Open the full journey":
+    - /url: /journey
+    - text: Open the full journey
+    - generic: arrow_forward
+  - heading "Next actions" [level=2]
+  - generic: bolt
+  - heading "NEST AI noticed something" [level=2]
+  - paragraph: Ask me anything about your move — visas, neighbourhoods, costs or culture.
+  - link "Open NEST AI":
+    - /url: /ai
+    - text: Open NEST AI
+    - generic: arrow_forward
+  - heading "Community activity" [level=2]
+  - link "See all":
+    - /url: /community
+  - link "0 people are travelling your route soon":
+    - /url: /community/travel
+    - generic: flight_takeoff
+    - paragraph:
+      - strong: 0 people
+      - text: are travelling your route soon
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3h107x2by691z9kgbmwkjagf85?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

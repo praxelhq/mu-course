@@ -1,0 +1,227 @@
+- banner:
+  - link "PawsHome India":
+    - /url: /
+    - generic: PawsHome India
+  - navigation:
+    - link "Browse Pets" [active]:
+      - /url: /pets
+    - link "NGO Directory":
+      - /url: /ngos
+    - link "How It Works":
+      - /url: /about
+  - link "Sign in":
+    - /url: /auth
+  - link "List an Animal":
+    - /url: /auth?mode=signup
+- main:
+  - heading "Browse pets" [level=1]
+  - paragraph: 16 animals waiting for a home
+  - complementary:
+    - paragraph:
+      - text: Filters
+    - text: City
+    - combobox "Any city"
+    - text: State
+    - combobox:
+      - generic: Any state
+    - text: Type
+    - combobox:
+      - generic: Dogs & cats
+    - text: Breed
+    - textbox "e.g. Indie, Labrador"
+    - text: Age
+    - combobox:
+      - generic: Any age
+    - text: Gender
+    - combobox:
+      - generic: Any gender
+    - text: Size
+    - combobox:
+      - generic: Any size
+    - text: Availability
+    - combobox:
+      - generic: Adoption or foster
+  - link "Laddoo, a Indian Native (Indie) dog available in Mumbai dog Foster Laddoo male Indian Native (Indie) · 8 months Mumbai, Maharashtra":
+    - /url: /pets/0be180d9-e239-4428-abdd-769d0d429e2b
+    - img "Laddoo, a Indian Native (Indie) dog available in Mumbai"
+    - generic: dog
+    - text: Foster
+    - heading "Laddoo" [level=3]
+    - generic: male
+    - paragraph: Indian Native (Indie) · 8 months
+    - paragraph:
+      - text: Mumbai, Maharashtra
+  - link "Mia, a Indian Domestic Shorthair cat available in Mumbai cat Mia female Indian Domestic Shorthair · 1 yr 2 mo Mumbai, Maharashtra":
+    - /url: /pets/fb0f3479-3a0d-44c4-8a2b-09ac9328adce
+    - img "Mia, a Indian Domestic Shorthair cat available in Mumbai"
+    - generic: cat
+    - heading "Mia" [level=3]
+    - generic: female
+    - paragraph: Indian Domestic Shorthair · 1 yr 2 mo
+    - paragraph:
+      - text: Mumbai, Maharashtra
+  - link "Bruno, a Labrador Mix dog available in New Delhi dog Bruno male Labrador Mix · 3 years New Delhi, Delhi":
+    - /url: /pets/02142514-b017-4e67-8e4f-065ccdbc124f
+    - img "Bruno, a Labrador Mix dog available in New Delhi"
+    - generic: dog
+    - heading "Bruno" [level=3]
+    - generic: male
+    - paragraph: Labrador Mix · 3 years
+    - paragraph:
+      - text: New Delhi, Delhi
+  - link "Pari, a Indian Native (Indie) dog available in New Delhi dog Foster Pari female Indian Native (Indie) · 4 months New Delhi, Delhi":
+    - /url: /pets/b831af49-17d0-4ec5-96bc-872ab056e641
+    - img "Pari, a Indian Native (Indie) dog available in New Delhi"
+    - generic: dog
+    - text: Foster
+    - heading "Pari" [level=3]
+    - generic: female
+    - paragraph: Indian Native (Indie) · 4 months
+    - paragraph:
+      - text: New Delhi, Delhi
+  - link "Kaju, a Indian Domestic Shorthair cat available in Bengaluru cat Foster Kaju male Indian Domestic Shorthair · 6 months Bengaluru, Karnataka":
+    - /url: /pets/4dd0f443-a145-40c6-81b2-6c577c6e7a11
+    - img "Kaju, a Indian Domestic Shorthair cat available in Bengaluru"
+    - generic: cat
+    - text: Foster
+    - heading "Kaju" [level=3]
+    - generic: male
+    - paragraph: Indian Domestic Shorthair · 6 months
+    - paragraph:
+      - text: Bengaluru, Karnataka
+  - link "Simba, a Indian Native (Indie) dog available in Bengaluru dog Simba male Indian Native (Indie) · 2 years Bengaluru, Karnataka":
+    - /url: /pets/3fb9f557-62c2-4e8e-90e5-b91ddc1f3732
+    - img "Simba, a Indian Native (Indie) dog available in Bengaluru"
+    - generic: dog
+    - heading "Simba" [level=3]
+    - generic: male
+    - paragraph: Indian Native (Indie) · 2 years
+    - paragraph:
+      - text: Bengaluru, Karnataka
+  - link "Noor, a Persian Mix cat available in Hyderabad cat Foster Noor female Persian Mix · 2 yr 6 mo Hyderabad, Telangana":
+    - /url: /pets/bcd1bcd1-6923-4ded-a98f-0c5972154507
+    - img "Noor, a Persian Mix cat available in Hyderabad"
+    - generic: cat
+    - text: Foster
+    - heading "Noor" [level=3]
+    - generic: female
+    - paragraph: Persian Mix · 2 yr 6 mo
+    - paragraph:
+      - text: Hyderabad, Telangana
+  - link "Rocky, a Indian Native (Indie) dog available in Hyderabad dog Rocky male Indian Native (Indie) · 1 yr 6 mo Hyderabad, Telangana":
+    - /url: /pets/abc92836-9285-4dee-97d0-d185172d4a4e
+    - img "Rocky, a Indian Native (Indie) dog available in Hyderabad"
+    - generic: dog
+    - heading "Rocky" [level=3]
+    - generic: male
+    - paragraph: Indian Native (Indie) · 1 yr 6 mo
+    - paragraph:
+      - text: Hyderabad, Telangana
+  - link "Meera, a Indian Native (Indie) dog available in Chennai dog Foster Meera female Indian Native (Indie) · 5 years Chennai, Tamil Nadu":
+    - /url: /pets/08915902-a2fa-4085-8252-a7d5184ce310
+    - img "Meera, a Indian Native (Indie) dog available in Chennai"
+    - generic: dog
+    - text: Foster
+    - heading "Meera" [level=3]
+    - generic: female
+    - paragraph: Indian Native (Indie) · 5 years
+    - paragraph:
+      - text: Chennai, Tamil Nadu
+  - link "Pepper, a Indian Domestic Shorthair cat available in Chennai cat Foster Pepper female Indian Domestic Shorthair · 3 months Chennai, Tamil Nadu":
+    - /url: /pets/83384b48-ed67-43f6-8016-a34c19619fd7
+    - img "Pepper, a Indian Domestic Shorthair cat available in Chennai"
+    - generic: cat
+    - text: Foster
+    - heading "Pepper" [level=3]
+    - generic: female
+    - paragraph: Indian Domestic Shorthair · 3 months
+    - paragraph:
+      - text: Chennai, Tamil Nadu
+  - link "Toffee, a Beagle Mix dog available in Pune dog Toffee female Beagle Mix · 1 year Pune, Maharashtra":
+    - /url: /pets/256d6b05-9a4f-4d58-97d2-989515856ffb
+    - img "Toffee, a Beagle Mix dog available in Pune"
+    - generic: dog
+    - heading "Toffee" [level=3]
+    - generic: female
+    - paragraph: Beagle Mix · 1 year
+    - paragraph:
+      - text: Pune, Maharashtra
+  - link "Shadow, a Indian Domestic Shorthair cat available in Pune cat Foster Shadow male Indian Domestic Shorthair · 1 yr 8 mo Pune, Maharashtra":
+    - /url: /pets/0e9796e0-7b51-494c-8bcb-68aba43a1c44
+    - img "Shadow, a Indian Domestic Shorthair cat available in Pune"
+    - generic: cat
+    - text: Foster
+    - heading "Shadow" [level=3]
+    - generic: male
+    - paragraph: Indian Domestic Shorthair · 1 yr 8 mo
+    - paragraph:
+      - text: Pune, Maharashtra
+  - link "Gudiya, a Indian Native (Indie) dog available in Kolkata dog Foster Gudiya female Indian Native (Indie) · 5 months Kolkata, West Bengal":
+    - /url: /pets/92828ce4-8fe3-459a-8eaa-a9a09bfe9992
+    - img "Gudiya, a Indian Native (Indie) dog available in Kolkata"
+    - generic: dog
+    - text: Foster
+    - heading "Gudiya" [level=3]
+    - generic: female
+    - paragraph: Indian Native (Indie) · 5 months
+    - paragraph:
+      - text: Kolkata, West Bengal
+  - link "Bagha, a Indian Domestic Shorthair cat available in Kolkata cat Bagha male Indian Domestic Shorthair · 9 months Kolkata, West Bengal":
+    - /url: /pets/1298446b-05b8-46ab-81f9-301317c10d96
+    - img "Bagha, a Indian Domestic Shorthair cat available in Kolkata"
+    - generic: cat
+    - heading "Bagha" [level=3]
+    - generic: male
+    - paragraph: Indian Domestic Shorthair · 9 months
+    - paragraph:
+      - text: Kolkata, West Bengal
+  - link "Raja, a Indian Native (Indie) dog available in Jaipur dog Raja male Indian Native (Indie) · 2 yr 6 mo Jaipur, Rajasthan":
+    - /url: /pets/de2e7193-888c-4f78-9d30-c2663f07c8fd
+    - img "Raja, a Indian Native (Indie) dog available in Jaipur"
+    - generic: dog
+    - heading "Raja" [level=3]
+    - generic: male
+    - paragraph: Indian Native (Indie) · 2 yr 6 mo
+    - paragraph:
+      - text: Jaipur, Rajasthan
+  - link "Mishti, a Indian Domestic Shorthair cat available in Jaipur cat Foster Mishti female Indian Domestic Shorthair · 11 months Jaipur, Rajasthan":
+    - /url: /pets/b6f804c7-494f-48f4-9f8b-112bec20b84f
+    - img "Mishti, a Indian Domestic Shorthair cat available in Jaipur"
+    - generic: cat
+    - text: Foster
+    - heading "Mishti" [level=3]
+    - generic: female
+    - paragraph: Indian Domestic Shorthair · 11 months
+    - paragraph:
+      - text: Jaipur, Rajasthan
+- contentinfo:
+  - generic: PawsHome India
+  - paragraph: Connecting verified animal NGOs, shelters and foster families with loving homes across India.
+  - heading "Adopt" [level=3]
+  - list:
+    - link "Dogs for adoption":
+      - /url: /pets?species=dog
+    - link "Cats for adoption":
+      - /url: /pets?species=cat
+    - link "Foster a pet":
+      - /url: /pets?availability=foster
+  - heading "Organisations" [level=3]
+  - list:
+    - link "NGO directory":
+      - /url: /ngos
+    - link "NGO dashboard":
+      - /url: /dashboard
+    - link "List an animal":
+      - /url: /auth?mode=signup
+  - heading "Learn" [level=3]
+  - list:
+    - link "How adoption works":
+      - /url: /about
+    - listitem: Adoption is always free of cost on PawsHome. Beware of anyone asking for payment.
+  - paragraph: © 2026 PawsHome India · Made with care for India's street animals.
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_0g2nxap4588sxrgyd0n49rxz3b?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

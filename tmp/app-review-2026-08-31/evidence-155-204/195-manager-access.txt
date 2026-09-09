@@ -1,0 +1,19 @@
+- heading "Property Manager Login" [level=1]
+- paragraph: Manage properties, rooms, rent and maintenance.
+- text: Email
+- textbox "Email"
+- text: Password
+- textbox "Password"
+- button "Sign in":
+  - text: Sign in
+- button "New here? Create an account"
+- button "Forgot password?"
+- paragraph:
+  - link "I'm a tenant instead →":
+    - /url: /login/tenant
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_046315we9599jtyx2kjvfm8t6x?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

@@ -1,0 +1,50 @@
+- banner:
+  - button "Menu":
+    - generic: menu
+  - button "NOOR"
+  - button "Account Profile":
+    - generic: account_circle
+- main:
+  - img "Elena Rostova Profile"
+  - heading "Elena Rostova" [level=2]
+  - paragraph: Curating a personalized approach to skin health through continuous intelligence.
+  - generic: water_drop
+  - text: Balanced / Oily
+  - generic: flare
+  - text: warm olive undertone
+  - button "refresh Recalibrate":
+    - generic: refresh
+    - text: Recalibrate
+  - heading "Personal Details" [level=3]
+  - generic: arrow_forward
+  - paragraph: Manage your secure identity, contact preferences, and foundational demographic data utilized for personalized intelligence.
+  - generic: person
+  - generic: mail
+  - generic: badge
+  - heading "Skin History" [level=3]
+  - generic: arrow_forward
+  - paragraph: Review archival diagnostic imagery and past formulations.
+  - generic: notifications
+  - heading "Notification Protocol" [level=3]
+  - paragraph: Configure intelligence alerts and delivery rhythms.
+  - generic: arrow_forward
+  - generic: eco
+  - heading "Sustainability Impact" [level=3]
+  - paragraph: Manage packaging return protocols and carbon offsets.
+  - generic: arrow_forward
+  - button "logout Sign Out Protocol":
+    - generic: logout
+    - generic: Sign Out Protocol
+- navigation:
+  - button "analytics Intelligence":
+    - generic: analytics
+    - generic: Intelligence
+  - button "menu_book Editorial":
+    - generic: menu_book
+    - generic: Editorial
+  - button "palette Swatches":
+    - generic: palette
+    - generic: Swatches
+  - button "person Profile" [active]:
+    - generic: person
+    - generic: Profile

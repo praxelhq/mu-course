@@ -1,0 +1,106 @@
+- banner:
+  - generic: EcoSync
+  - generic: Navigator
+  - paragraph: Carbon Market Intelligence & Profitability
+  - button "Live Order Book":
+    - generic: Live Order Book
+  - generic: "|"
+  - generic: 10 Registries Verified
+  - button "Compare Project":
+    - generic: Compare Project
+  - button "Notifications":
+  - generic "Carbon Asset Manager Profile":
+    - img "User Profile"
+- button "Overview":
+  - generic: Overview
+- button "Dashboard":
+  - generic: Dashboard
+- button "Compare Projects":
+  - generic: Compare Projects
+- button "Opportunity Analyzer":
+  - generic: Opportunity Analyzer
+- button "Market Intelligence":
+  - generic: Market Intelligence
+- button "Platforms Directory":
+  - generic: Platforms Directory
+- button "Workspace":
+  - generic: Workspace
+- button "Admin Panel" [active]:
+  - generic: Admin Panel
+- main:
+  - generic: System Administration & Market Controls
+  - heading "Exchange Tariffs & Data Feeds" [level=2]
+  - paragraph: Configure fee schedules, adjust registry spot prices, and simulate market volatility events.
+  - button "Reset All Defaults":
+    - generic: Reset All Defaults
+  - heading "Live Market Feed Simulation" [level=3]
+  - paragraph: Inject simulated price movements across all categories to test dynamic recalculations
+  - button "Simulate +5% Green Price Surge":
+    - generic: Simulate +5% Green Price Surge
+  - button "Simulate -4% Supply Influx Dip":
+    - generic: Simulate -4% Supply Influx Dip
+  - button "Simulate Random Volatility Tick":
+    - generic: Simulate Random Volatility Tick
+  - heading "Real-Time Category Spot Price Overrides" [level=3]:
+    - generic: Real-Time Category Spot Price Overrides
+  - generic: Nature-based (ARR/REDD+)
+  - generic: $
+  - spinbutton: "8.32"
+  - generic: /t
+  - generic: Improved Forest Management (IFM)
+  - generic: $
+  - spinbutton: "15.09"
+  - generic: /t
+  - generic: Biochar & Enhanced Rock
+  - generic: $
+  - spinbutton: "139.69"
+  - generic: /t
+  - generic: Cookstoves & Household Devices
+  - generic: $
+  - spinbutton: "11.3"
+  - generic: /t
+  - generic: Blue Carbon & Mangroves
+  - generic: $
+  - spinbutton: "24.44"
+  - generic: /t
+  - generic: Tech-based CDR (DACCS/BECCS)
+  - generic: $
+  - spinbutton: "490.41"
+  - generic: /t
+  - generic: Methane Abatement & Landfill
+  - generic: $
+  - spinbutton: "6.7"
+  - generic: /t
+  - generic: Renewable Energy
+  - generic: $
+  - spinbutton: "3.43"
+  - generic: /t
+  - heading "Platform Fee Schedule Manager" [level=3]
+  - paragraph: Modify fixed and variable fee rates for any supported exchange or registry.
+  - generic: "Select Venue:"
+  - combobox:
+    - option "CBL Markets (Xpansiv) (CBL)" [selected]
+    - option "ACX (AirCarbon Exchange) (ACX)"
+    - option "Climate Impact X (CIX) (CIX)"
+    - option "Verra Registry (VCS Direct Listing) (VCS)"
+    - option "Gold Standard for the Global Goals (GS)"
+    - option "Puro.earth (Nasdaq) (PURO)"
+    - option "American Carbon Registry (ACR) (ACR)"
+    - option "Carbon Trade Exchange (CTX) (CTX)"
+    - option "European Energy Exchange (EEX) (EEX)"
+    - option "Toucan Protocol (Web3 Registry) (TOUCAN)"
+  - generic: Account Opening Fee ($)
+  - spinbutton: "1500"
+  - generic: Annual Maintenance Fee ($)
+  - spinbutton: "2400"
+  - generic: Project Registration Fee ($)
+  - spinbutton: "0"
+  - generic: Issuance Fee ($ per tCO2e)
+  - spinbutton: "0.02"
+  - generic: Trading Fee (%)
+  - spinbutton: "1.25"
+  - generic: Brokerage Fee (%)
+  - spinbutton: "0.75"
+  - button "Save Fee Schedule Changes":
+    - generic: Save Fee Schedule Changes
+- generic: "0"

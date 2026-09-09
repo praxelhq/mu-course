@@ -1,0 +1,92 @@
+- navigation:
+  - button "card_giftcard Gift Genius Buddy":
+    - generic: card_giftcard
+    - generic: Gift Genius
+    - generic: Buddy
+  - button "home Home":
+    - generic: home
+    - generic: Home
+  - button "checklist_rtl Gift Lists 3":
+    - generic: checklist_rtl
+    - generic: Gift Lists
+    - generic: "3"
+  - button "group People & Occasions":
+    - generic: group
+    - generic: People & Occasions
+  - button "bookmark Wishlist":
+    - generic: bookmark
+    - generic: Wishlist
+  - button "person Profile":
+    - generic: person
+    - generic: Profile
+  - button "search":
+    - generic: search
+  - button "chat":
+    - generic: chat
+  - button "notifications":
+    - generic: notifications
+  - button "auto_awesome Find Gifts":
+    - generic: auto_awesome
+    - generic: Find Gifts
+  - button "G Guest expand_more":
+    - generic: G
+    - generic: Guest
+    - generic: expand_more
+- main:
+  - generic: Step 4 of 4
+  - generic: Timeline, Location & Budget
+  - heading "Delivery Timeline & Calibration" [level=1]
+  - paragraph: Set the occasion date, delivery destination, and budget bracket for Demo Friend.
+  - generic: calendar_today
+  - generic: Occasion Date
+  - generic: Standardized Calendar
+  - textbox
+  - generic: event_available
+  - generic: Select a date or choose a timeline below
+  - generic: Quick Shortcuts
+  - button "In 3 Days"
+  - button "In 1 Week"
+  - button "In 2 Weeks"
+  - button "In 1 Month"
+  - generic: location_on
+  - generic: Delivery City / Pincode
+  - generic: Optional
+  - textbox "e.g. Bangalore, Delhi, Pune (or leave empty for All-India)": Mumbai
+  - generic: "Common Hubs:"
+  - button "Bangalore"
+  - button "Delhi NCR"
+  - button "Mumbai"
+  - button "Hyderabad"
+  - button "Pune"
+  - button "Chennai"
+  - button "Kolkata"
+  - button "Clear"
+  - paragraph: Helps your buddy scan local merchant hubs with same-day & 1-day express delivery.
+  - generic: psychology
+  - generic: Surprise Factor
+  - generic: balanced
+  - slider: "2"
+  - generic: Safe & Classic
+  - generic: Balanced
+  - generic: Wildcard Surprise
+  - generic: payments
+  - generic: Target Budget Bracket
+  - button "Under ₹1,000":
+    - generic: Under ₹1,000
+  - button "₹1,000 – ₹2,500 Popular":
+    - generic: ₹1,000 – ₹2,500
+    - generic: Popular
+  - button "₹2,500 – ₹5,000":
+    - generic: ₹2,500 – ₹5,000
+  - button "₹5,000 – ₹10,000":
+    - generic: ₹5,000 – ₹10,000
+  - button "₹10,000+":
+    - generic: ₹10,000+
+  - generic: travel_explore
+  - generic: Your buddy will scan 8+ stores for best prices & multi-store bundles
+  - button "arrow_back Back":
+    - generic: arrow_back
+    - generic: Back
+  - button "auto_awesome Scan Stores & Recommend":
+    - generic: auto_awesome
+    - generic: Scan Stores & Recommend

@@ -1,0 +1,44 @@
+- banner:
+  - link "Open your profile":
+    - /url: /profile
+    - img "Arjun Mehta's profile"
+  - link "NEST AI":
+    - /url: /home
+  - navigation "Primary":
+    - link "Home":
+      - /url: /home
+    - link "Journey":
+      - /url: /journey
+    - link "NEST AI":
+      - /url: /ai
+    - link "Explore":
+      - /url: /explore
+    - link "Community":
+      - /url: /community
+  - link "Your documents and notifications":
+    - /url: /documents
+    - generic: notifications
+- main:
+  - generic: bolt
+  - heading "NEST AI Copilot" [level=1]
+  - paragraph: “Confirm accommodation” is still unresolved and you arrive in 3 days. That's usually the step people leave too late.
+  - generic: 68% journey complete
+  - generic: 3 days to arrival
+  - generic: 13 open steps
+  - button "Walk me through it":
+    - text: Walk me through it
+    - generic: arrow_forward
+  - button "What do I need before signing a lease?"
+  - button "How do people usually open a bank account here?"
+  - button "Which neighbourhood fits my budget?"
+  - button "What surprises newcomers in my first month?"
+  - textbox "Ask NEST AI":
+    - /placeholder: Ask about visas, housing, money, culture…
+  - button "Send message":
+    - generic: send
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3h107x2by691z9kgbmwkjagf85?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

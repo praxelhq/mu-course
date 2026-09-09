@@ -1,0 +1,73 @@
+- complementary "Main navigation":
+  - generic: StudyFlow
+  - navigation "Site sections":
+    - link "Dashboard":
+      - /url: "#/dashboard"
+      - text: Dashboard
+    - link "Tasks":
+      - /url: "#/tasks"
+      - text: Tasks
+    - link "Calendar":
+      - /url: "#/calendar"
+      - text: Calendar
+    - link "Progress":
+      - /url: "#/progress"
+      - text: Progress
+    - link "Subjects":
+      - /url: "#/subjects"
+      - text: Subjects
+    - link "Settings" [active]:
+      - /url: "#/settings"
+      - text: Settings
+  - button "New task":
+    - text: New task
+  - paragraph: Studying as
+  - paragraph: Ali
+- banner:
+  - heading "Settings" [level=1]
+  - paragraph: Monday, 31 August 2026
+  - button "Switch to dark theme":
+  - button "New task":
+    - generic: New task
+- main:
+  - heading "Settings" [level=1]
+  - paragraph: These preferences apply across the dashboard, planner and progress pages.
+  - heading "Your details" [level=2]
+  - paragraph: Used for the dashboard greeting and your daily target
+  - generic: Display name
+  - textbox "Display name":
+    - /placeholder: Your first name
+    - text: Ali
+  - generic: Daily target hours
+  - spinbutton "Daily target hours": "4"
+  - button "Save changes":
+    - text: Save changes
+  - heading "Appearance" [level=2]
+  - paragraph: Switch between light and dark
+  - button "light" [pressed]:
+    - generic: light
+  - button "dark":
+    - generic: dark
+  - heading "Task defaults" [level=2]
+  - paragraph: Pre-selected when you open the new task form
+  - generic: Default priority
+  - button "Low": Low
+  - button "Medium" [pressed]: Medium
+  - button "High": High
+  - heading "Your data" [level=2]
+  - paragraph: Saved in this browser — nothing leaves your device
+  - paragraph: "18"
+  - paragraph: Tasks
+  - paragraph: "6"
+  - paragraph: Subjects
+  - paragraph: "6"
+  - paragraph: Completed
+  - paragraph: Reset to demo data
+  - paragraph: Replaces everything with the sample semester
+  - button "Reset data":
+    - text: Reset data
+- status
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify
+- generic: "0"

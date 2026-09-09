@@ -1,0 +1,52 @@
+- banner:
+  - link "🫧 Unmute Your campus safe space":
+    - /url: /
+    - generic: 🫧
+    - generic: Unmute
+    - generic: Your campus safe space
+  - navigation:
+    - link "Home":
+      - /url: /
+    - link "Check-In":
+      - /url: /check-in
+    - link "Circles":
+      - /url: /circles
+    - link "Journal":
+      - /url: /journal
+    - link "My Week":
+      - /url: /my-week
+  - link "Support":
+    - /url: /support
+  - button "Settings":
+- main:
+  - button "Back":
+    - text: Back
+  - heading "💭Reflection Buddy" [level=1]
+  - paragraph: A space to organise your thoughts — not therapy, not an AI counsellor. Just good questions.
+  - generic: Hey 🫧 I'm not a therapist or an AI oracle — I'm just a set of questions to help you organise what's in your head.
+  - generic: What's on your mind today? Type it, or pick a prompt below.
+  - button "Vent 😮‍💨"
+  - button "Reflect 🪞"
+  - button "Make a Plan 🗺️"
+  - button "I can't focus on anything today"
+  - button "I feel behind everyone else"
+  - button "I had a fight with someone close"
+  - button "I don't know what I'm feeling"
+  - textbox "Type a thought…"
+  - button "Send" [disabled]:
+  - button "Save summary"
+  - button "Start over":
+    - text: Start over
+  - link "Try a calming exercise":
+    - /url: /calm
+  - paragraph:
+    - text: For urgent or professional support, visit
+    - link "Support":
+      - /url: /support
+    - text: .
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_20xxzq25ry9jr81pbw93zjh93j?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

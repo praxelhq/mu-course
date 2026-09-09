@@ -1,0 +1,110 @@
+- alert
+- complementary:
+  - paragraph: MailClean AI
+  - paragraph: High Mountain Property
+  - button "NA nancy (Owner) nancy@highmountainproperty.com":
+    - generic: NA
+    - paragraph: nancy (Owner)
+    - paragraph: nancy@highmountainproperty.com
+  - navigation:
+    - link "Dashboard":
+      - /url: /dashboard
+      - text: Dashboard
+    - link "Analytics" [active]:
+      - /url: /dashboard/analytics
+      - text: Analytics
+    - link "Categories":
+      - /url: /dashboard/categories
+      - text: Categories
+    - link "Email Explorer":
+      - /url: /dashboard/explorer
+      - text: Email Explorer
+    - link "Cleanup Center":
+      - /url: /dashboard/cleanup
+      - text: Cleanup Center
+    - link "Rules & Automation":
+      - /url: /dashboard/rules
+      - text: Rules & Automation
+    - link "Activity Log":
+      - /url: /dashboard/activity
+      - text: Activity Log
+    - link "Reports":
+      - /url: /dashboard/reports
+      - text: Reports
+    - link "Accounts":
+      - /url: /dashboard/accounts
+      - text: Accounts
+    - link "Settings":
+      - /url: /dashboard/settings
+      - text: Settings
+  - generic: na
+  - paragraph: nancy
+  - paragraph: nancy@highmountainproperty.com
+- banner:
+  - textbox "Search emails, senders, rules…"
+  - button "Notifications":
+    - generic: Notifications
+- main:
+  - heading "Analytics" [level=1]
+  - paragraph: Trends across volume, senders, categories and storage.
+  - heading "Email Activity" [level=2]
+  - list:
+    - img "Cleaned legend icon"
+    - text: Cleaned
+    - img "Received legend icon"
+    - text: Received
+  - application:
+    - generic: Jan
+    - generic: Feb
+    - generic: Mar
+    - generic: Apr
+    - generic: May
+    - generic: Jun
+    - generic: Jul
+    - generic: Aug
+    - generic: "0"
+    - generic: "3000"
+    - generic: "6000"
+    - generic: "9000"
+    - generic: "12000"
+  - heading "Category Distribution" [level=2]
+  - application
+  - list:
+    - generic: Business
+    - generic: Personal
+    - generic: Promotions
+    - generic: Newsletters
+    - generic: Notifications
+    - generic: Social
+    - generic: Spam
+    - generic: Other
+  - heading "Top Senders" [level=2]
+  - application:
+    - generic: "0"
+    - generic: "2500"
+    - generic: "5000"
+    - generic: "7500"
+    - generic: "10000"
+    - generic: LinkedIn
+    - generic: 99acres
+    - generic: MagicBricks
+    - generic: Google
+    - generic: Amazon
+    - generic: Housing.com
+    - generic: GitHub
+    - generic: Chase Bank
+  - heading "Storage Usage (GB)" [level=2]
+  - application:
+    - generic: Mar
+    - generic: Apr
+    - generic: May
+    - generic: Jun
+    - generic: Jul
+    - generic: Aug
+    - generic: "24.2"
+    - generic: "25.3"
+    - generic: "26.4"
+    - generic: "27.5"
+    - generic: "28.6"
+  - paragraph: Storage is trending down as automated cleanup rules run.
+- generic: "24.2"

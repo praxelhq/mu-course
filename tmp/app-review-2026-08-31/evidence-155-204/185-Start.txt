@@ -1,0 +1,46 @@
+- banner:
+  - link "🫧 Unmute Your campus safe space":
+    - /url: /
+    - generic: 🫧
+    - generic: Unmute
+    - generic: Your campus safe space
+  - navigation:
+    - link "Home":
+      - /url: /
+    - link "Check-In":
+      - /url: /check-in
+    - link "Circles":
+      - /url: /circles
+    - link "Journal":
+      - /url: /journal
+    - link "My Week":
+      - /url: /my-week
+  - link "Support":
+    - /url: /support
+  - button "Settings":
+- main:
+  - button "Back":
+    - text: Back
+  - heading "🌊You only need to get through this moment." [level=1]
+  - paragraph: Not the week. Not the semester. Just the next few minutes.
+  - tablist:
+    - tab "Breathing" [selected]
+    - tab "5-4-3-2-1"
+    - tab "Brain Dump"
+  - tabpanel "Breathing":
+    - paragraph: Breathe in
+    - paragraph: "4"
+    - paragraph: In for 4, hold for 4, out for 6. Follow the circle.
+    - paragraph: 0s of 60s
+    - button "Pause" [active]:
+      - text: Pause
+    - button "Reset":
+      - text: Reset
+  - link "Need more support?":
+    - /url: /support
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_20xxzq25ry9jr81pbw93zjh93j?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

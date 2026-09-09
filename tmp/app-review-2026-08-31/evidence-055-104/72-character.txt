@@ -1,0 +1,45 @@
+- main:
+  - heading "Founder's Quest — a 16-bit AI startup RPG" [level=1]
+  - heading "Forge Your Founder" [level=2]
+  - button "← Back"
+  - generic: 🪶
+  - heading "Identity" [level=3]
+  - generic: Founder Name
+  - textbox "Aria of Ashvale"
+  - generic: Company Name
+  - textbox "Emberforge Labs"
+  - generic: ⚔
+  - heading "Choose Your Class" [level=3]
+  - button "⚔ Visionary Bends the market to a dream nobody else can see yet.":
+    - generic: ⚔
+    - generic: Visionary
+    - paragraph: Bends the market to a dream nobody else can see yet.
+  - button "📈 Strategist Wins wars on the map before the first sword is drawn.":
+    - generic: 📈
+    - generic: Strategist
+    - paragraph: Wins wars on the map before the first sword is drawn.
+  - button "⚙ Builder Forges products in the deep workshops of the mountain.":
+    - generic: ⚙
+    - generic: Builder
+    - paragraph: Forges products in the deep workshops of the mountain.
+  - button "💰 Hustler Can sell torches to a dragon and coin to a king.":
+    - generic: 💰
+    - generic: Hustler
+    - paragraph: Can sell torches to a dragon and coin to a king.
+  - button "🧙 Innovator Channels arcane research into impossible features.":
+    - generic: 🧙
+    - generic: Innovator
+    - paragraph: Channels arcane research into impossible features.
+  - paragraph: Starting Boons
+  - text: ✨ Innovation
+  - generic: "+18"
+  - text: 🛡 Kingdom Rep
+  - generic: "+10"
+  - generic: 🔥 Magic Energy -5
+  - generic: 🎒 Prophecy Scroll
+  - button "Begin the Quest ▶" [disabled]
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1y9pc38vyq9sgs55hc5r5vxdmq?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

@@ -1,0 +1,33 @@
+- button "Previous question":
+  - generic: arrow_back
+- generic: 6/6
+- banner:
+  - paragraph: Check-in
+  - heading "Have you felt this way before?" [level=1]
+  - paragraph: Patterns help us understand the feeling.
+- button "Yes"
+- button "Sometimes"
+- button "No"
+- button "See what this means":
+  - text: See what this means
+  - generic: arrow_forward
+- button "Skip this one"
+- button "Leave this check-in"
+- navigation:
+  - list:
+    - link "Home":
+      - /url: /
+      - generic: home
+      - text: Home
+    - link "Activities":
+      - /url: /activities
+      - generic: spa
+      - text: Activities
+    - link "History":
+      - /url: /history
+      - generic: insights
+      - text: History
+    - link "You":
+      - /url: /account
+      - generic: person
+      - text: You

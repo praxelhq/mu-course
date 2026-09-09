@@ -1,0 +1,56 @@
+- banner:
+  - button "Back":
+    - generic: arrow_back
+  - button "Life Admin":
+    - heading "Life Admin" [level=1]
+  - navigation "Main Navigation":
+    - button "Home"
+    - button "About"
+    - button "Contact"
+    - button "Tasks & Domains"
+    - button "Calendar"
+    - button "Settings"
+  - button "add New Task":
+    - generic: add
+    - generic: New Task
+  - button "Notifications":
+    - generic: notifications
+- main:
+  - generic: Low Priority
+  - generic: Household
+  - 'heading "Review practice: organize a fictional book shelf n" [level=2]'
+  - paragraph: "Admin domain: Household"
+  - generic: "7"
+  - paragraph: days remaining until deadline
+  - generic: schedule
+  - heading "task_alt Action Steps" [level=3]:
+    - generic: task_alt
+    - text: Action Steps
+  - button "add Add Step":
+    - generic: add
+    - text: Add Step
+  - button "Mark as completed"
+  - generic: "Gather relevant documents for Review practice: organize a fictional book shelf n"
+  - button "Mark as completed"
+  - generic: Verify requirements and submission guidelines
+  - button "Mark as completed"
+  - generic: Complete online application / appointment
+  - heading "folder Required Documents" [level=3]:
+    - generic: folder
+    - text: Required Documents
+  - generic: file_upload
+  - paragraph: Government Issued Photo ID
+  - paragraph: Pending upload
+  - generic "Upload / Replace Document":
+    - generic: upload
+  - generic: file_upload
+  - paragraph: Proof of Address / Relevant Certificate
+  - paragraph: Pending upload
+  - generic "Upload / Replace Document":
+    - generic: upload
+  - button "delete Remove task from dashboard":
+    - generic: delete
+    - text: Remove task from dashboard
+  - 'button "rocket_launch Complete Review practice: organize a fictional book shelf n"':
+    - generic: rocket_launch
+    - text: "Complete Review practice: organize a fictional book shelf n"

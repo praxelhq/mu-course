@@ -1,0 +1,153 @@
+- banner:
+  - generic: 🪐
+  - generic: Orbit
+  - generic: RADAR
+  - generic: Campus Hangout Grid • 4 Drops Live
+  - navigation:
+    - button "Map Radar":
+      - generic: Map Radar
+    - button "Campus Feed":
+      - generic: Campus Feed
+    - button "Whispers":
+      - generic: Whispers
+    - button "Vibe Profile":
+      - generic: Vibe Profile
+  - button "👻 Ghost Mode":
+    - generic: 👻
+    - generic: Ghost Mode
+  - button "☕ Spicy iced chai & 3D model sketching ✨ 52m left":
+    - generic: ☕
+    - generic: Spicy iced chai & 3D model sketching ✨
+    - generic: 52m left
+  - button "Search activities or friends":
+  - button "Radar alerts":
+  - button "Drop a Plan" [active]:
+    - generic: Drop a Plan
+  - button "Kenji":
+    - img "Kenji"
+- main:
+  - button "Campus Grounds":
+    - generic: Campus Grounds
+  - button "Google Maps Live":
+    - generic: Google Maps Live
+  - button "⚡ All Drops"
+  - button "📚 Study"
+  - button "☕ Chai"
+  - button "🎾 Sports"
+  - button "🍃 Chill"
+  - button "Directions":
+    - generic: Directions
+  - button "Radar":
+    - generic: Radar
+  - generic: "Map View:"
+  - button "roadmap"
+  - button "satellite"
+  - button "hybrid"
+  - button "terrain"
+  - button "Walk Directions":
+    - generic: Walk Directions
+  - button "Add Maps Key / Demo":
+    - generic: Add Maps Key / Demo
+  - region "Map"
+  - img "Your Live Pin":
+    - img "Kenji"
+    - generic: ☕
+    - generic: You (Spicy iced cha...)
+  - button "Main Library & Silent Stacks (4th Fl)":
+    - generic: menu_book
+    - generic: "1"
+    - generic: The Silent Stacks
+  - button "Old Chai & Kissa Terrace Cafe":
+    - generic: local_cafe
+    - generic: "1"
+    - generic: The Chai Den
+  - button "North Cage Courts & Rec Lawn":
+    - generic: sports_tennis
+    - generic: "1"
+    - generic: Tennis & Spikeball Zone
+  - button "Student Union Plaza & Gaming Deck":
+    - generic: sports_esports
+    - generic: The Underground Deck
+  - button "Memorial Oval & Cherry Quad":
+    - generic: park
+    - generic: "1"
+    - generic: The Hammock Trees
+  - button "Engineering Quad & 3D Maker Lab":
+    - generic: precision_manufacturing
+    - generic: The Build Lab
+  - button "Campus Lake & Sunset Hill":
+    - generic: water
+    - generic: The Sunset Steps
+  - button "Hana":
+    - img "Hana"
+    - generic: 🎨
+    - generic: Hana
+  - button "Mei":
+    - img "Mei"
+    - generic: ☕
+    - generic: Mei
+  - button "Benji":
+    - img "Benji"
+    - generic: 🎾
+    - generic: Benji
+  - button "Leo T.":
+    - img "Leo T."
+    - generic: 🎸
+    - generic: Leo T.
+  - button "Sarah M.":
+    - img "Sarah M."
+    - generic: 💻
+    - generic: Sarah M.
+  - button "Alex K.":
+    - img "Alex K."
+    - generic: 📐
+    - generic: Alex K.
+  - button "Devon P.":
+    - img "Devon P."
+    - generic: 🔬
+    - generic: Devon P.
+- banner:
+  - heading "Drop a Campus Plan" [level=1]
+  - generic: +50 PTS
+  - paragraph: Host a quick meetup, invite nearby classmates, and fill spots!
+  - button:
+- generic: Select Vibe Category
+- button "Study 📚"
+- button "Chai ☕"
+- button "Sports 🎾"
+- button "Chill 🍃"
+- text: Need a quick vibe prompt?
+- button "⚡ Auto-Fill Idea"
+- generic: Plan Title
+- textbox "e.g. Midnight Calc Review & Chai"
+- generic: Campus Spot
+- combobox:
+  - option "Main Library & Silent Stacks (4th Fl)" [selected]
+  - option "Old Chai & Kissa Terrace Cafe"
+  - option "North Cage Courts & Rec Lawn"
+  - option "Student Union Plaza & Gaming Deck"
+  - option "Memorial Oval & Cherry Quad"
+  - option "Engineering Quad & 3D Maker Lab"
+  - option "Campus Lake & Sunset Hill"
+- textbox "Exact table / spot details (e.g. 2nd floor corner booth)": Main Library & Silent Stacks (4th Fl)
+- generic: Total Spots (Including You)
+- combobox:
+  - option "2 People"
+  - option "3 People"
+  - option "4 People" [selected]
+  - option "5 People"
+  - option "6 People"
+  - option "8 People"
+  - option "10 People"
+- generic: Expires In
+- combobox:
+  - option "30 Minutes"
+  - option "45 Minutes"
+  - option "1 Hour" [selected]
+  - option "1.5 Hours"
+  - option "2 Hours"
+- generic: Plan Description / Notes
+- textbox "What are we doing? What should people bring or look out for?"
+- button "Cancel"
+- button "Drop Plan on Radar":
+  - generic: Drop Plan on Radar

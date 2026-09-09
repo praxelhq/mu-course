@@ -499,3 +499,26 @@ class ResumeSideEffectTests(unittest.TestCase):
         close_at = self.SOURCE.index('session.on("close", on_session_close)')
         start_at = self.SOURCE.index("await session.start(")
         self.assertLess(close_at, start_at)
+
+
+class ResumeReplayTests(unittest.TestCase):
+    """A restored turn must never be posted to the LMS a second time."""
+
+    def test_restored_items_are_marked(self):
+        ctx, _, _ = main.restore_session_state(
+            [
+                {"turnNo": 1, "speaker": "agent", "text": "Q1"},
+                {"turnNo": 2, "speaker": "student", "text": "A1"},
+            ]
+        )
+        ids = [getattr(item, "id", "") for item in ctx.items]
+        self.assertTrue(all(i.startswith(main.RESTORED_ITEM_ID_PREFIX) for i in ids), ids)
+
+    def test_the_marker_is_distinguishable_from_a_live_item(self):
+        # livekit generates its own ids for live items; ours must not collide.
+        from livekit.agents.llm import ChatContext
+
+        live = ChatContext.empty()
+        live.add_message(role="assistant", content="spoken just now")
+        live_id = getattr(live.items[0], "id", "")
+        self.assertFalse(live_id.startswith(main.RESTORED_ITEM_ID_PREFIX), live_id)

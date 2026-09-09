@@ -1,0 +1,45 @@
+- main:
+  - heading "Quiz Complete!" [level=1]
+  - paragraph: Final Score
+  - paragraph: 1,250 pts
+  - paragraph: Personal Best!
+  - paragraph: Accuracy
+  - paragraph: 90%
+  - paragraph: Time
+  - paragraph: 2m 15s
+  - paragraph: XP Earned
+  - paragraph: "+156"
+  - heading "Level 25" [level=3]
+  - generic: Level Up!
+  - paragraph: 306 / 1000 XP
+  - paragraph: New Achievement Unlocked
+  - heading "General Guru" [level=4]
+  - paragraph: Best streak of 10 correct answers in a row.
+  - link "Play Again":
+    - /url: /quiz?category=General
+  - link "Home":
+    - /url: /
+    - text: Home
+  - link "Leaderboard":
+    - /url: /leaderboard
+    - text: Leaderboard
+  - button "Share Score":
+    - text: Share Score
+- navigation:
+  - link "Home":
+    - /url: /
+    - text: Home
+  - link "Play":
+    - /url: /quiz
+    - text: Play
+  - link "Ranks":
+    - /url: /leaderboard
+    - text: Ranks
+  - link "You":
+    - /url: /results
+    - text: You
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_5nzedzz8qq8a6s34j3t6eb1b8y?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

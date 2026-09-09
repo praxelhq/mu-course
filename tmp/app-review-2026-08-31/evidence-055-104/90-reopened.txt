@@ -1,0 +1,126 @@
+- main:
+  - paragraph: Monday, Aug 31
+  - heading "Morning, Demo" [level=1]
+  - text: "9"
+  - link:
+    - /url: /new
+    - button:
+  - img "Naggy mascot"
+  - paragraph: You skipped "Morning workout". Still time to be a person of your word today — "Study Physics" is next.
+  - link "Talk to Naggy":
+    - /url: /naggy
+    - text: Talk to Naggy
+  - generic: Next up
+  - heading "Wake up" [level=2]
+  - paragraph:
+    - text: 7:00 AM · 30 min · starts in 4h 51m
+  - button "Start":
+    - text: Start
+  - button:
+  - generic: Today's progress
+  - generic: 1/11 done
+  - progressbar
+  - paragraph: "You missed: Morning workout"
+  - paragraph: 6:30 AM · no judgement, just a plan
+  - button "Try now"
+  - button "Reschedule"
+  - button "Skip today"
+  - button "Tell Naggy why"
+  - heading "Today's plan" [level=3]
+  - generic: 6:30AM
+  - paragraph: Morning workout
+  - paragraph: 45 min · firm
+  - button "Toggle complete":
+  - generic: 7:00AM
+  - paragraph: Wake up
+  - paragraph: 30 min · gentle
+  - button "Toggle complete":
+  - generic: 7:10AM
+  - paragraph: Drink water
+  - paragraph: 30 min · gentle
+  - button "Toggle complete":
+  - generic: 7:20AM
+  - paragraph: Exercise
+  - paragraph: 30 min · gentle
+  - button "Toggle complete":
+  - generic: 8:00AM
+  - paragraph: Shower
+  - paragraph: 30 min · gentle
+  - button "Toggle complete":
+  - generic: 9:00AM
+  - paragraph: "Deep work: product spec"
+  - paragraph: 90 min · strict
+  - button "Toggle complete":
+  - generic: 9:00AM
+  - paragraph: Deep work
+  - paragraph: 30 min · gentle
+  - button "Toggle complete":
+  - generic: 5:30PM
+  - paragraph: Study Physics
+  - paragraph: 60 min · strict
+  - button "Toggle complete":
+  - generic: 9:30PM
+  - paragraph: Read 20 pages
+  - paragraph: 30 min · gentle
+  - button "Toggle complete":
+  - generic: 11:00PM
+  - paragraph: Sleep by 11 PM
+  - paragraph: 5 min · firm
+  - button "Toggle complete":
+  - generic: 11:00PM
+  - paragraph: Sleep on time
+  - paragraph: 30 min · gentle
+  - button "Toggle complete":
+  - heading "Habits" [level=3]
+  - link "All habits":
+    - /url: /habits
+  - button "📚 Read 3 day streak":
+    - generic: 📚
+    - generic: Read
+    - generic: 3 day streak
+  - button "🏋️ Workout 0 day streak":
+    - generic: 🏋️
+    - generic: Workout
+    - generic: 0 day streak
+  - button "😴 Sleep by 11 4 day streak":
+    - generic: 😴
+    - generic: Sleep by 11
+    - generic: 4 day streak
+  - button "💧 Water 9 day streak":
+    - generic: 💧
+    - generic: Water
+    - generic: 9 day streak
+  - link "Alarms":
+    - /url: /alarms
+    - text: Alarms
+  - link "Routines":
+    - /url: /routines
+    - text: Routines
+  - link "Reviews":
+    - /url: /review
+    - text: Reviews
+  - link "Settings":
+    - /url: /settings
+    - text: Settings
+- navigation:
+  - link "Today":
+    - /url: /
+    - text: Today
+  - link "Habits":
+    - /url: /habits
+    - text: Habits
+  - link "Focus":
+    - /url: /focus
+    - text: Focus
+  - link "Progress":
+    - /url: /progress
+    - text: Progress
+  - link "Naggy":
+    - /url: /naggy
+    - text: Naggy
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1y077zn9zp920rn02hgwhd1kn0?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

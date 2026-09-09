@@ -1,0 +1,43 @@
+- banner:
+  - button "CampusPlay Home":
+    - generic: CampusPlay
+    - generic: Sports Network
+    - generic: •
+    - generic: Hub
+  - navigation:
+    - button "Home":
+      - generic: Home
+    - button "Explore Events":
+      - generic: Explore Events
+    - button "My Registrations" [active]:
+      - generic: My Registrations
+    - button "Organize Event":
+      - generic: Organize Event
+  - button "Live Campus Matches":
+    - generic: Live Campus Matches
+- main:
+  - generic: Student Passes
+  - heading "My Registrations" [level=2]
+  - paragraph: View and manage your upcoming sports event registrations and check-in passes.
+  - heading "No active registrations yet" [level=3]
+  - paragraph: You haven't signed up for any sports events yet. Browse our campus games, pick a sport, and register with one click!
+  - button "Explore Available Sports":
+    - generic: Explore Available Sports
+- contentinfo:
+  - generic: CampusPlay
+  - paragraph: CampusPlay is your centralized university athletic network. Discover upcoming matches, reserve passes instantly, and organize intra-collegiate tournaments.
+  - generic: Campus Verified • Student Run Platform
+  - heading "Quick Navigation" [level=4]
+  - list:
+    - button "Home"
+    - button "Explore Events"
+    - button "My Registrations"
+    - button "Organize an Event"
+  - heading "Campus Sports Facilities" [level=4]
+  - generic: College Football Stadium & Track
+  - generic: Indoor Sports Complex & Badminton Arena
+  - generic: Main Cricket Ground & Practice Nets
+  - generic: Student Activity Centre & Table Tennis Hall
+  - paragraph: CampusPlay — Connecting college students through active sport & competition.
+  - button "Back to top":
+    - generic: Back to top

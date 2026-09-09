@@ -1,0 +1,78 @@
+- main:
+  - generic: SLOT 04 LOADED.
+  - heading "POSE.EXE" [level=1]
+  - paragraph: boot up. pose. print.
+  - generic: live preview
+  - generic: "memory buffer: 4/4"
+  - generic "Photo strip preview"
+  - heading "INSERT YOUR PHOTOS" [level=2]
+  - paragraph: 4 photos. 1 memory.
+  - button "Photo 1 replace":
+    - img "Photo 1"
+    - generic: replace
+  - button "Photo 2 replace":
+    - img "Photo 2"
+    - generic: replace
+  - button "Photo 3 replace":
+    - img "Photo 3"
+    - generic: replace
+  - button "Photo 4 replace":
+    - img "Photo 4"
+    - generic: replace
+  - generic: "memory buffer: 4/4"
+  - button "configure memory →" [active]
+  - heading "SELECT YOUR REALITY" [level=2]
+  - button "ORIGINAL"
+  - button "FILM"
+  - button "Y2K"
+  - button "DISPOSABLE"
+  - button "B&W"
+  - button "WARM"
+  - heading "CHANGE THE WORLD BEHIND IT" [level=2]
+  - paragraph: solid
+  - button "Cream": Cream
+  - button "White": White
+  - button "Black": Black
+  - button "Pink": Pink
+  - button "Lavender": Lavender
+  - button "Blue": Blue
+  - paragraph: gradient
+  - button "Sunset": Sunset
+  - button "Bubblegum": Bubblegum
+  - button "Ocean": Ocean
+  - button "Matcha": Matcha
+  - button "custom"
+  - textbox "Gradient start colour": "#ffd1ec"
+  - textbox "Gradient end colour": "#c3e0ff"
+  - heading "WHAT DO YOU WANT TO REMEMBER?" [level=2]
+  - textbox "best night ever ♡"
+  - button "BEST NIGHT EVER"
+  - button "JUST BECAUSE"
+  - button "MEMORIES ♡"
+  - button "WE WERE HERE"
+  - button "NO CONTEXT"
+  - paragraph: font
+  - button "TYPEWRITER"
+  - button "HANDWRITTEN"
+  - button "BOLD"
+  - text: text size — 34
+  - slider "text size — 34": "34"
+  - paragraph: position
+  - button "TOP"
+  - button "BOTTOM"
+  - paragraph: alignment
+  - button "LEFT"
+  - button "CENTER"
+  - button "RIGHT"
+  - heading "DATE STAMP" [level=2]
+  - button "on"
+  - button "off"
+  - button "print / download"
+  - button "reset.exe"
+  - button "start over"
+  - generic: pose.exe — everything runs in your browser
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_4bawte0s1e8xnsc5xf8grv6ef7?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

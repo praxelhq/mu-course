@@ -1,0 +1,63 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_203ff61mmk8ypsmsf7m9am6x34?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- banner:
+  - generic: PantryChef
+  - navigation:
+    - link "home Home":
+      - /url: /
+      - generic: home
+      - text: Home
+    - link "kitchen Pantry":
+      - /url: /pantry
+      - generic: kitchen
+      - text: Pantry
+    - link "receipt_long Recipes":
+      - /url: /recipes
+      - generic: receipt_long
+      - text: Recipes
+    - link "insights Tracker":
+      - /url: /tracker
+      - generic: insights
+      - text: Tracker
+    - link "person Profile":
+      - /url: /profile
+      - generic: person
+      - text: Profile
+- main:
+  - heading "What are you craving?" [level=1]
+  - generic: search
+  - textbox "Search recipes, ingredients, cuisines..." [active]: tomato
+  - button "check Ready to Cook":
+    - generic: check
+    - text: Ready to Cook
+  - button "Almost There"
+  - button "Mexican"
+  - button "Italian"
+  - button "Thai"
+  - button "Quick Meals"
+  - link "check_circle 10/10 ingredients schedule 25 min Mexican Vibrant Fiesta Chicken Bowl A quick, colorful bowl packed with protein, fresh veggies, and a zesty lime-cilantro dressing. Perfect for a busy weeknight. Chicken Black Beans arrow_forward":
+    - /url: /recipes/vibrant-fiesta-chicken-bowl
+    - generic: check_circle
+    - text: 10/10 ingredients
+    - generic: schedule
+    - text: 25 min
+    - text: Mexican
+    - heading "Vibrant Fiesta Chicken Bowl" [level=3]
+    - paragraph: A quick, colorful bowl packed with protein, fresh veggies, and a zesty lime-cilantro dressing. Perfect for a busy weeknight.
+    - generic: Chicken
+    - generic: Black Beans
+    - generic: arrow_forward
+  - article:
+    - generic: check_circle
+    - text: 100% Match
+    - generic: schedule
+    - text: 20 min
+    - text: Italian
+    - heading "Creamy Tomato Basil Soup" [level=3]
+    - generic: local_fire_department
+    - text: 290 kcal
+    - link "Cook Now":
+      - /url: /recipes/creamy-tomato-basil-soup

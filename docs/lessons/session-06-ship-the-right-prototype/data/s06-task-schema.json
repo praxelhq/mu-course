@@ -1,0 +1,9 @@
+{
+  "notice":"SYNTHETIC COURSE DATA — Praxel/MU S06 v1.1 — 2026-07-18 — no real users or companies",
+  "condition_values":["normal","boundary","changed","unsafe","changed_duplicate"],
+  "task_required":["task_id","pack_id","condition","role_card","input","acceptance","prohibited_action"],
+  "attempt_required":["attempt_id","prototype_version","task_version","tester_pseudonym","started_at","ended_at","task_state","safety_state","event_refs","observation_ref"],
+  "task_states":["success","partial","safe_failure","unsafe_failure","unavailable"],
+  "release_states":["ship_bounded_v1","hold","replay_only","quarantined"],
+  "provenance":"Course-authored synthetic role-card tasks; no market-validation claim."
+}

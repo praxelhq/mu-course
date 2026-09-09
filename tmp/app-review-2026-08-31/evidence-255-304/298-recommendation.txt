@@ -1,0 +1,96 @@
+- banner:
+  - paragraph:
+    - text: AI Recommendation
+  - heading "To Cyber Hub" [level=1]
+  - paragraph: From Khan Market, New Delhi · 10.9 km · 7:15 PM
+  - generic: Demo data
+  - group "Decision goal":
+    - button "Save":
+      - text: Save
+    - button "Fastest":
+      - text: Fastest
+    - button "Balanced" [pressed]:
+      - text: Balanced
+    - button "Comfort":
+      - text: Comfort
+    - button "Eco":
+      - text: Eco
+- main:
+  - generic: SahiRasta Recommendation
+  - text: Book now
+  - heading "Bike" [level=2]
+  - paragraph: Book on Rapido
+  - generic: High availability
+  - paragraph: ₹119–₹143
+  - generic: Confidence
+  - generic: 96%
+  - paragraph: ETA
+  - paragraph: 27 min
+  - paragraph: door-to-door
+  - paragraph: Pickup
+  - paragraph: 3 min
+  - paragraph: from now
+  - paragraph: Weather
+  - paragraph: Clear
+  - paragraph: 29°C
+  - paragraph: Bike is currently ~11 min faster than Auto and avoids the congestion on your route.
+  - heading "Book now vs wait" [level=3]
+  - generic: surge model · 55% confidence
+  - text: Book Now
+  - generic: Best
+  - generic: ₹119–₹143
+  - generic: depart 7:15 PM · ride 27 min
+  - generic: fastest arrival
+  - generic: Wait 10 min
+  - generic: ₹108–₹129
+  - generic: depart 7:25 PM · ride 25 min
+  - generic: saves ₹14
+  - generic: Wait 20 min
+  - generic: ₹97–₹115
+  - generic: depart 7:35 PM · ride 24 min
+  - generic: saves ₹25
+  - heading "Why this recommendation?" [level=3]
+  - list:
+    - generic: Traffic is moving well for this hour — no major bottlenecks
+    - generic: No surge on Rapido — matches your surge-averse preference (cabs at 1.4x)
+    - generic: No meaningful fare drop expected in the next 20 minutes
+    - generic: Clear, 29°C — good riding conditions
+    - generic: Fits your ₹300 budget with room to spare
+  - heading "Closest alternatives" [level=3]
+  - list:
+    - paragraph: Ola Auto · Ola Auto
+    - paragraph: ~₹53 pricier · ~11 min slower
+    - paragraph: ₹170–₹197
+    - paragraph: DMRC + Auto · Delhi Metro
+    - paragraph: ~₹56 cheaper · ~19 min slower
+    - paragraph: ₹52–₹97
+  - button "Continue to Rapido":
+    - text: Continue to Rapido
+  - paragraph: Booking happens in the provider's app — SahiRasta only tells you the right ride and the right time. Handoff uses the official provider link.
+  - link "Compare all":
+    - /url: /compare
+    - text: Compare all
+  - link "Wait vs Book":
+    - /url: /wait
+    - text: Wait vs Book
+  - link "Journey":
+    - /url: /journey
+    - text: Journey
+- navigation:
+  - link "Home":
+    - /url: /
+    - text: Home
+  - link "Best Ride":
+    - /url: /recommendation
+    - text: Best Ride
+  - link "Alerts":
+    - /url: /alerts
+    - text: Alerts
+  - link "Prefs":
+    - /url: /preferences
+    - text: Prefs
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_60a5x7h3en9v7th2e2nvb4z01r?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

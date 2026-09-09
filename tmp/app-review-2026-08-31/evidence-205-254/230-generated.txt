@@ -1,0 +1,51 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6hryasqw009y18czk18jmfw5f5?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- banner:
+  - link "bubble_chart ContentFlow":
+    - /url: /
+    - generic: bubble_chart
+    - generic: ContentFlow
+  - link "Edit Preferences":
+    - /url: /create
+- main:
+  - heading "Content Calendar" [level=1]
+  - paragraph: Food · Instagram · 3 days/week
+  - link "date_range Week":
+    - /url: /calendar?niche=food&platform=instagram&frequency=3&view=week
+    - generic: date_range
+    - text: Week
+  - link "calendar_month Month":
+    - /url: /calendar?niche=food&platform=instagram&frequency=3&view=month
+    - generic: calendar_month
+    - text: Month
+  - paragraph: Aug 31 - Sep 6
+  - button "auto_awesome Regenerate Week":
+    - generic: auto_awesome
+    - text: Regenerate Week
+  - article:
+    - text: Monday
+    - heading "Comfort Food, Lighter" [level=2]
+    - button "Regenerate Monday":
+      - generic: refresh
+    - generic: Static Post
+    - generic: Healthy
+    - paragraph: "\"All the comfort, half the heaviness.\""
+  - article:
+    - text: Wednesday
+    - 'heading "Taste Test: Store-Bought vs Homemade" [level=2]'
+    - button "Regenerate Wednesday":
+      - generic: refresh
+    - generic: Carousel
+    - generic: Comparison
+    - paragraph: "\"I made it from scratch so you don't have to.\""
+  - article:
+    - text: Friday
+    - heading "One-Pan Everything" [level=2]
+    - button "Regenerate Friday":
+      - generic: refresh
+    - generic: Reel
+    - generic: Quick Recipe
+    - paragraph: "\"One pan. No washing up. Chef's kiss.\""

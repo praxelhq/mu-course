@@ -1,0 +1,44 @@
+- banner:
+  - generic: GL
+  - generic: GigLens
+  - generic: India
+  - button "Demo Mode":
+    - generic: Demo Mode
+  - button "Open Settings":
+    - generic: Profile
+- complementary:
+  - generic: G
+  - paragraph: Gig Worker
+  - generic: Demo
+  - paragraph: India
+  - navigation:
+    - button "Home":
+      - generic: Home
+    - button "Add Shift":
+      - generic: Add Shift
+    - button "History 18":
+      - generic: History
+      - generic: "18"
+    - button "Compare":
+      - generic: Compare
+    - button "Insights" [active]:
+      - generic: Insights
+  - button "Settings & Fuel Prices":
+    - generic: Settings & Fuel Prices
+  - generic: 🛡️ Stored on device • Gemini AI analyzed
+- main:
+  - heading "Weekly Intelligence" [level=1]
+  - text: Calculated Engine
+  - paragraph: Strictly grounded in your recorded shifts. No contradictory focus slots or unsupported math.
+  - button "How AI Works":
+    - generic: How AI Works
+  - button "Analyzing..." [disabled]:
+    - generic: Analyzing...
+  - generic: "Work preferences active: Max 10h/day • 1 rest day/wk"
+  - generic: Applied to Focus Plan
+  - heading "Analyzing Shift Metrics with Gemini..." [level=3]
+  - paragraph: Validating net take-home formulas and matching optimal shift windows
+  - generic: 1. Aggregating shift expenses & net rates
+  - generic: 2. Auditing dark store waiting & fuel leakage
+  - generic: 3. Synthesizing weekly strategy & safety rules
+- generic: ₹500

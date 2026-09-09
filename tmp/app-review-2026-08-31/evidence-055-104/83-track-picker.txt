@@ -1,0 +1,85 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_29v1m4ress91sba1hqg73sx9vq?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- banner:
+  - button "Open menu":
+    - generic: menu
+  - heading "FREDWHO?" [level=1]
+  - button "Your profile":
+    - img "Your profile"
+- main:
+  - heading "PICK TWO SONGS" [level=2]
+  - paragraph: We'll handle the hard part.
+  - img "Neon Alibi cover art"
+  - button "SONG 1 Neon Alibi VELVET STATIC TAP TO ANALYZE":
+    - generic: SONG 1
+    - generic: Neon Alibi
+    - generic: VELVET STATIC
+    - generic: TAP TO ANALYZE
+  - button "Change SONG 1":
+    - generic: swap_horiz
+  - generic: add
+  - img "Concrete Bloom cover art"
+  - button "SONG 2 Concrete Bloom HALF LIGHT CLUB TAP TO ANALYZE":
+    - generic: SONG 2
+    - generic: Concrete Bloom
+    - generic: HALF LIGHT CLUB
+    - generic: TAP TO ANALYZE
+  - button "Change SONG 2":
+    - generic: swap_horiz
+  - dialog "Choose SONG 1":
+    - paragraph: CHOOSE SONG 1
+    - button "Close":
+      - generic: close
+    - textbox "Search songs or artists" [active]
+    - button "Neon Alibi cover art Neon Alibi VELVET STATIC":
+      - img "Neon Alibi cover art"
+      - generic: Neon Alibi
+      - generic: VELVET STATIC
+    - button "Concrete Bloom cover art Concrete Bloom HALF LIGHT CLUB":
+      - img "Concrete Bloom cover art"
+      - generic: Concrete Bloom
+      - generic: HALF LIGHT CLUB
+    - button "Paper Sirens cover art Paper Sirens MIDNIGHT TAXI":
+      - img "Paper Sirens cover art"
+      - generic: Paper Sirens
+      - generic: MIDNIGHT TAXI
+    - button "Glass Hour cover art Glass Hour SOFT MACHINE CO.":
+      - img "Glass Hour cover art"
+      - generic: Glass Hour
+      - generic: SOFT MACHINE CO.
+    - button "Static Bloom cover art Static Bloom KID VERTIGO":
+      - img "Static Bloom cover art"
+      - generic: Static Bloom
+      - generic: KID VERTIGO
+    - button "Cheap Gold cover art Cheap Gold THE LATE SHIFT":
+      - img "Cheap Gold cover art"
+      - generic: Cheap Gold
+      - generic: THE LATE SHIFT
+    - paragraph: ADD YOUR OWN
+    - textbox "Song title"
+    - textbox "Artist"
+    - button "Use this song"
+    - button "upload Upload file":
+      - generic: upload
+      - text: Upload file
+  - button "MIX IT"
+- navigation:
+  - link "home_max HOME":
+    - /url: /
+    - generic: home_max
+    - generic: HOME
+  - link "auto_awesome MIX":
+    - /url: /mix
+    - generic: auto_awesome
+    - generic: MIX
+  - link "library_music LIBRARY":
+    - /url: /library
+    - generic: library_music
+    - generic: LIBRARY
+  - link "settings SETTINGS":
+    - /url: /settings
+    - generic: settings
+    - generic: SETTINGS

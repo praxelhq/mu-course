@@ -1,0 +1,22 @@
+- main:
+  - generic: AI Plan Builder
+  - heading "Where do you want to go?" [level=1]
+  - paragraph: Tell Gemini your destination. We'll craft bespoke stays, tables, and roadmaps.
+  - textbox "e.g. Manali, Goa, Rishikesh, Jaipur...": Manali
+  - text: Popular Escapes
+  - button "Manali this weekend"
+  - button "Goa for 3 days"
+  - button "Somewhere quiet near Delhi"
+  - button "Rishikesh with friends"
+  - 'button "Next: Customize Trip"':
+    - generic: "Next: Customize Trip"
+- button "Open Concierge":
+- navigation:
+  - button "Home":
+    - generic: Home
+  - button "Plan" [active]:
+    - generic: Plan
+  - button "Trips":
+    - generic: Trips
+  - button "Profile":
+    - generic: Profile

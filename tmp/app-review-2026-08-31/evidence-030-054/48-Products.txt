@@ -1,0 +1,149 @@
+- complementary:
+  - generic: F
+  - heading "FounderOS" [level=1]
+  - generic: NovaCraft Labs
+  - navigation:
+    - button "Dashboard":
+      - generic: Dashboard
+    - button "Products" [active]:
+      - generic: Products
+    - button "Marketing":
+      - generic: Marketing
+    - button "Finance":
+      - generic: Finance
+    - button "Customers":
+      - generic: Customers
+    - button "Goals & Tasks 6":
+      - generic: Goals & Tasks
+      - generic: "6"
+    - generic: Intelligence
+    - button "Founder Copilot AI":
+      - generic: Founder Copilot
+      - generic: AI
+    - button "Settings":
+      - generic: Settings
+  - generic: AJ
+  - generic: Alex Johnson
+  - generic: Pro Founder Plan
+  - button "Switch Workspace / Sign Out":
+- banner:
+  - generic: NovaCraft Labs
+  - generic: Products & Inventory
+  - button "Quick Search... ⌘K":
+    - generic: Quick Search...
+    - generic: ⌘K
+  - generic: August 2026 (Q3)
+  - button "Executive Report":
+    - generic: Executive Report
+  - button "Copilot":
+    - generic: Copilot
+  - button "Alerts":
+- main:
+  - heading "Products & Inventory" [level=1]
+  - paragraph: Manage your hardware, merchandise, catalog pricing, and inventory health.
+  - button "Add Product":
+    - generic: Add Product
+  - paragraph: Catalog SKUs
+  - paragraph: 4 Active
+  - text: 4 Core Categories
+  - paragraph: Total Units Sold
+  - paragraph: "675"
+  - text: +18% MoM Velocity
+  - paragraph: Gross Product Sales
+  - paragraph: ₹13,43,925
+  - text: All-time tracked
+  - paragraph: Inventory Alert
+  - paragraph: 2 Low Stock
+  - text: "Action needed: Restock"
+  - textbox "Search product name, SKU..."
+  - combobox:
+    - option "All Categories" [selected]
+    - option "Electronics"
+    - option "Audio"
+    - option "Lifestyle"
+    - option "Luggage"
+    - option "Apparel"
+  - combobox:
+    - option "All Statuses" [selected]
+    - option "Healthy Stock"
+    - option "Low Stock (< 15)"
+  - button "Table View":
+  - button "Grid View":
+  - table:
+    - rowgroup:
+      - row "Product Details SKU Category Unit Price Units Sold Revenue Stock Level Status Quick Restock":
+        - columnheader "Product Details"
+        - columnheader "SKU"
+        - columnheader "Category"
+        - columnheader "Unit Price"
+        - columnheader "Units Sold"
+        - columnheader "Revenue"
+        - columnheader "Stock Level"
+        - columnheader "Status"
+        - columnheader "Quick Restock"
+    - rowgroup:
+      - row "Mini Printer Pocket thermal printer for on-the-go labels & notes PRN-MINI-01 Electronics ₹2,499 182 units ₹4,54,818 12 units Low Stock +25 Units":
+        - cell "Mini Printer Pocket thermal printer for on-the-go labels & notes":
+          - paragraph: Mini Printer
+          - paragraph: Pocket thermal printer for on-the-go labels & notes
+        - cell "PRN-MINI-01"
+        - cell "Electronics"
+        - cell "₹2,499"
+        - cell "182 units"
+        - cell "₹4,54,818"
+        - cell "12 units":
+          - generic: "12"
+          - generic: units
+        - cell "Low Stock":
+          - text: Low Stock
+        - cell "+25 Units":
+          - button "+25 Units"
+      - row "Wireless Earbuds Active noise cancellation earbuds with 36h battery AUD-EAR-PRO Audio ₹1,999 243 units ₹4,85,757 58 units Healthy +25 Units":
+        - cell "Wireless Earbuds Active noise cancellation earbuds with 36h battery":
+          - paragraph: Wireless Earbuds
+          - paragraph: Active noise cancellation earbuds with 36h battery
+        - cell "AUD-EAR-PRO"
+        - cell "Audio"
+        - cell "₹1,999"
+        - cell "243 units"
+        - cell "₹4,85,757"
+        - cell "58 units":
+          - generic: "58"
+          - generic: units
+        - cell "Healthy":
+          - text: Healthy
+        - cell "+25 Units":
+          - button "+25 Units"
+      - row "Smart Bottle Self-cleaning UV-C insulated hydration flask HYD-BOT-600 Lifestyle ₹899 156 units ₹1,40,244 31 units Healthy +25 Units":
+        - cell "Smart Bottle Self-cleaning UV-C insulated hydration flask":
+          - paragraph: Smart Bottle
+          - paragraph: Self-cleaning UV-C insulated hydration flask
+        - cell "HYD-BOT-600"
+        - cell "Lifestyle"
+        - cell "₹899"
+        - cell "156 units"
+        - cell "₹1,40,244"
+        - cell "31 units":
+          - generic: "31"
+          - generic: units
+        - cell "Healthy":
+          - text: Healthy
+        - cell "+25 Units":
+          - button "+25 Units"
+      - row "Travel Backpack Waterproof 35L modular tech commuter pack BAG-TRV-35L Luggage ₹2,799 94 units ₹2,63,106 8 units Low Stock +25 Units":
+        - cell "Travel Backpack Waterproof 35L modular tech commuter pack":
+          - paragraph: Travel Backpack
+          - paragraph: Waterproof 35L modular tech commuter pack
+        - cell "BAG-TRV-35L"
+        - cell "Luggage"
+        - cell "₹2,799"
+        - cell "94 units"
+        - cell "₹2,63,106"
+        - cell "8 units":
+          - generic: "8"
+          - generic: units
+        - cell "Low Stock":
+          - text: Low Stock
+        - cell "+25 Units":
+          - button "+25 Units"
+- generic: ₹0k

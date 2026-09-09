@@ -1,0 +1,58 @@
+- main:
+  - iframe [active]:
+    - complementary:
+      - link "V VAULTPLAYCRYPTO GAMING":
+        - /url: "#casino"
+        - generic: V
+        - generic: VAULTPLAYCRYPTO GAMING
+      - navigation "Primary navigation":
+        - button "01 Casino":
+          - generic: "01"
+          - text: Casino
+        - button "02 Crash":
+          - generic: "02"
+          - text: Crash
+        - button "03 Dice":
+          - generic: "03"
+          - text: Dice
+        - button "04 Coin Flip" [active]:
+          - generic: "04"
+          - text: Coin Flip
+        - button "05 Transactions":
+          - generic: "05"
+          - text: Transactions
+        - button "06 Fairness":
+          - generic: "06"
+          - text: Fairness
+        - button "07 Account":
+          - generic: "07"
+          - text: Account
+      - generic: Demo mode
+      - generic: Simulated environment
+    - main:
+      - generic: Demo Network
+      - generic: 2,460.00 USDC
+      - button "Connect Wallet"
+      - generic: Instrument 03 / Coin Flip
+      - heading "Nothing unnecessary." [level=1]
+      - generic: V
+      - strong: READY
+      - generic: Choose a side to begin
+      - complementary:
+        - generic: Selection
+        - button "HEADS"
+        - button "TAILS"
+        - generic: Bet amount
+        - generic: USDC
+        - spinbutton
+        - generic: USDC
+        - button "1"
+        - button "5"
+        - button "10"
+        - button "25"
+        - button "50"
+        - button "MAX"
+        - button "FLIP"
+        - paragraph: Heads or tails. A local 50/50 simulation with a 1.96x demo payout.
+    - status
+- alert

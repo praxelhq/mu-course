@@ -1,0 +1,258 @@
+- banner:
+  - generic: P
+  - generic: PlannMyVenue
+- heading "Plan Your Event. Know Your Budget." [level=1]
+- paragraph: Enter your budget and guest count to see what your event could look like.
+- text: Total Budget (INR)
+- spinbutton "Total Budget (INR)": "2000000"
+- paragraph: Minimum ₹10,00,000
+- text: Number of Attendees
+- spinbutton "Number of Attendees": "200"
+- paragraph: Expected guest count
+- generic: Event Type (optional)
+- combobox "Event Type (optional)":
+  - option "Wedding" [selected]
+  - option "Birthday"
+  - option "Corporate"
+  - option "College Event"
+  - option "Private Party"
+- text: Location
+- text: Delhi NCR
+- generic: All venues shown are in Delhi NCR
+- button "Update My Event Plan" [active]
+- generic: "Budget: ₹20,00,000"
+- generic: 200 attendees
+- generic: Wedding · Delhi NCR
+- paragraph: 01 · Venue
+- heading "Middle Tier venues (₹20L–₹40L)" [level=2]
+- paragraph: Venues matched to your budget tier. Select one venue for your event.
+- heading "Taj Palace" [level=3]
+- paragraph: New Delhi, Delhi NCR
+- paragraph: Estimated Event Cost
+- paragraph: ₹28,00,000
+- button "Select Venue"
+- heading "The Leela Ambience Convention Hotel" [level=3]
+- paragraph: Shahdara, Delhi NCR
+- paragraph: Estimated Event Cost
+- paragraph: ₹30,00,000
+- button "Select Venue"
+- heading "Andaz Delhi" [level=3]
+- paragraph: Aerocity, Delhi NCR
+- paragraph: Estimated Event Cost
+- paragraph: ₹26,00,000
+- button "Select Venue"
+- heading "The Grand New Delhi" [level=3]
+- paragraph: Vasant Kunj, Delhi NCR
+- paragraph: Estimated Event Cost
+- paragraph: ₹24,00,000
+- button "Select Venue"
+- paragraph: Prices are illustrative estimates only — not official or live prices.
+- paragraph: 02 · Food
+- heading "Choose your dishes" [level=2]
+- paragraph: Select as many dishes as you like. Prices are per person.
+- heading "North Indian" [level=3]
+- button "✓ Paneer Tikka ₹120/person":
+  - generic: ✓
+  - generic: Paneer Tikka
+  - generic: ₹120/person
+- button "✓ Butter Chicken ₹180/person":
+  - generic: ✓
+  - generic: Butter Chicken
+  - generic: ₹180/person
+- button "✓ Dal Makhani ₹100/person":
+  - generic: ✓
+  - generic: Dal Makhani
+  - generic: ₹100/person
+- button "✓ Butter Naan ₹60/person":
+  - generic: ✓
+  - generic: Butter Naan
+  - generic: ₹60/person
+- button "✓ Biryani ₹150/person":
+  - generic: ✓
+  - generic: Biryani
+  - generic: ₹150/person
+- heading "Chinese" [level=3]
+- button "✓ Veg Spring Rolls ₹80/person":
+  - generic: ✓
+  - generic: Veg Spring Rolls
+  - generic: ₹80/person
+- button "✓ Hakka Noodles ₹100/person":
+  - generic: ✓
+  - generic: Hakka Noodles
+  - generic: ₹100/person
+- button "✓ Veg Manchurian ₹100/person":
+  - generic: ✓
+  - generic: Veg Manchurian
+  - generic: ₹100/person
+- button "✓ Chilli Chicken ₹160/person":
+  - generic: ✓
+  - generic: Chilli Chicken
+  - generic: ₹160/person
+- button "✓ Fried Rice ₹100/person":
+  - generic: ✓
+  - generic: Fried Rice
+  - generic: ₹100/person
+- heading "South Indian" [level=3]
+- button "✓ Dosa ₹80/person":
+  - generic: ✓
+  - generic: Dosa
+  - generic: ₹80/person
+- button "✓ Idli Sambar ₹60/person":
+  - generic: ✓
+  - generic: Idli Sambar
+  - generic: ₹60/person
+- button "✓ Medu Vada ₹70/person":
+  - generic: ✓
+  - generic: Medu Vada
+  - generic: ₹70/person
+- button "✓ Mini Uttapam ₹80/person":
+  - generic: ✓
+  - generic: Mini Uttapam
+  - generic: ₹80/person
+- button "✓ South Indian Thali ₹180/person":
+  - generic: ✓
+  - generic: South Indian Thali
+  - generic: ₹180/person
+- paragraph: 0 dishes selected · ₹0/person × 200 attendees
+- paragraph: "Food Cost: ₹0"
+- paragraph: 03 · Decoration
+- heading "Pick a decoration package" [level=2]
+- paragraph: Select one package.
+- button "Basic ✓ ₹1,50,000 Basic stage Balloon decoration Basic table setup":
+  - heading "Basic" [level=3]
+  - generic: ✓
+  - paragraph: ₹1,50,000
+  - list:
+    - listitem: Basic stage
+    - listitem: Balloon decoration
+    - listitem: Basic table setup
+- button "Premium ✓ ₹3,00,000 Floral stage Entrance decoration Table centrepieces Lighting":
+  - heading "Premium" [level=3]
+  - generic: ✓
+  - paragraph: ₹3,00,000
+  - list:
+    - listitem: Floral stage
+    - listitem: Entrance decoration
+    - listitem: Table centrepieces
+    - listitem: Lighting
+- button "Luxury ✓ ₹6,00,000 Premium floral setup Custom stage Entrance installation Premium lighting Photo booth":
+  - heading "Luxury" [level=3]
+  - generic: ✓
+  - paragraph: ₹6,00,000
+  - list:
+    - listitem: Premium floral setup
+    - listitem: Custom stage
+    - listitem: Entrance installation
+    - listitem: Premium lighting
+    - listitem: Photo booth
+- paragraph: 04 · Marketing
+- heading "Pick a marketing package" [level=2]
+- paragraph: Select one package.
+- button "Basic ✓ ₹50,000 Social media creatives Digital invitations Basic promotion":
+  - heading "Basic" [level=3]
+  - generic: ✓
+  - paragraph: ₹50,000
+  - list:
+    - listitem: Social media creatives
+    - listitem: Digital invitations
+    - listitem: Basic promotion
+- button "Standard ✓ ₹1,00,000 Social media campaign Influencer promotion Paid advertising":
+  - heading "Standard" [level=3]
+  - generic: ✓
+  - paragraph: ₹1,00,000
+  - list:
+    - listitem: Social media campaign
+    - listitem: Influencer promotion
+    - listitem: Paid advertising
+- button "Premium ✓ ₹2,00,000 Influencers Paid social media Event branding Content production":
+  - heading "Premium" [level=3]
+  - generic: ✓
+  - paragraph: ₹2,00,000
+  - list:
+    - listitem: Influencers
+    - listitem: Paid social media
+    - listitem: Event branding
+    - listitem: Content production
+- paragraph: 05 · DJ & Entertainment
+- heading "Pick your entertainment" [level=2]
+- paragraph: Select one option.
+- button "Basic DJ ✓ ₹50,000 DJ + basic sound":
+  - heading "Basic DJ" [level=3]
+  - generic: ✓
+  - paragraph: ₹50,000
+  - list:
+    - listitem: DJ + basic sound
+- button "Premium DJ ✓ ₹1,00,000 DJ + sound + lighting":
+  - heading "Premium DJ" [level=3]
+  - generic: ✓
+  - paragraph: ₹1,00,000
+  - list:
+    - listitem: DJ + sound + lighting
+- button "Live Entertainment ✓ ₹2,50,000 DJ + live performer + premium sound":
+  - heading "Live Entertainment" [level=3]
+  - generic: ✓
+  - paragraph: ₹2,50,000
+  - list:
+    - listitem: DJ + live performer + premium sound
+- paragraph: 06 · Miscellaneous
+- heading "Miscellaneous & contingency" [level=2]
+- paragraph: Calculated automatically as 5% of your total budget — no per-item pricing.
+- generic: Transportation
+- generic: Security
+- generic: Staff
+- generic: Photography
+- generic: Invitations
+- generic: Contingency
+- paragraph: "Miscellaneous Cost: ₹1,00,000"
+- paragraph: Your Event Plan
+- heading "Where is my money going?" [level=2]
+- paragraph: ✓ Within Budget — you have ₹19,00,000 remaining.
+- term: Total Budget
+- definition: ₹20,00,000
+- term: Venue Cost
+- definition: ₹0
+- term: Food Cost
+- definition: ₹0
+- term: Decoration Cost
+- definition: ₹0
+- term: Marketing Cost
+- definition: ₹0
+- term: DJ & Entertainment Cost
+- definition: ₹0
+- term: Miscellaneous Cost
+- definition: ₹1,00,000
+- term: Total Estimated Spending
+- definition: ₹1,00,000
+- term: Remaining Budget
+- definition: ₹19,00,000
+- term: Estimated Cost Per Attendee
+- definition: ₹500
+- generic: Total spending
+- generic: ₹1,00,000
+- list:
+  - generic: Venue
+  - generic: ₹0
+  - generic: 0.0%
+  - generic: Food
+  - generic: ₹0
+  - generic: 0.0%
+  - generic: Decoration
+  - generic: ₹0
+  - generic: 0.0%
+  - generic: Marketing
+  - generic: ₹0
+  - generic: 0.0%
+  - generic: DJ & Entertainment
+  - generic: ₹0
+  - generic: 0.0%
+  - generic: Miscellaneous
+  - generic: ₹1,00,000
+  - generic: 100.0%
+- paragraph: All prices shown are illustrative estimates for planning purposes only — not official or live prices.
+- contentinfo:
+  - generic: PlannMyVenue · Illustrative estimates for Delhi NCR events
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_07mf6dz9n28xjar4q4q28kaqz1?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

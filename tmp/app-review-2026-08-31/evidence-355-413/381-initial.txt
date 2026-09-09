@@ -1,0 +1,105 @@
+- banner:
+  - link "PawPal":
+    - /url: /
+    - generic: PawPal
+  - link "Cart":
+    - /url: /cart
+- main:
+  - paragraph: Hello, Stuti
+  - heading "Let's care for your furry friends" [level=1]
+  - img "Happy golden retriever with its owner"
+  - heading "Everything your pet needs" [level=2]
+  - paragraph: Grooming, walks, training & more
+  - link "Book a service":
+    - /url: /services
+    - text: Book a service
+  - heading "Services" [level=2]
+  - link "See all":
+    - /url: /services
+  - link "Full Grooming ₹799":
+    - /url: /book/grooming
+    - generic: Full Grooming
+    - generic: ₹799
+  - link "Bath & Blow-dry ₹499":
+    - /url: /book/bath
+    - generic: Bath & Blow-dry
+    - generic: ₹499
+  - link "Dog Walking ₹199":
+    - /url: /book/walking
+    - generic: Dog Walking
+    - generic: ₹199
+  - link "Training Session ₹999":
+    - /url: /book/training
+    - generic: Training Session
+    - generic: ₹999
+  - link "Overnight Boarding ₹699":
+    - /url: /book/boarding
+    - generic: Overnight Boarding
+    - generic: ₹699
+  - link "Pet Sitting ₹349":
+    - /url: /book/sitting
+    - generic: Pet Sitting
+    - generic: ₹349
+  - heading "Upcoming appointments" [level=2]
+  - paragraph: Full Grooming
+  - paragraph: for Bruno
+  - text: Fri, 2 Jan
+  - text: 10:00
+  - generic: ₹799
+  - button "Cancel booking"
+  - heading "My pets" [level=2]
+  - link "Manage":
+    - /url: /pets
+  - link "B Bruno Golden Retriever":
+    - /url: /pets
+    - generic: B
+    - generic: Bruno
+    - generic: Golden Retriever
+  - link "Add pet":
+    - /url: /pets
+    - generic: Add pet
+  - heading "Shop essentials" [level=2]
+  - link "Visit shop":
+    - /url: /shop
+  - img "Grain-free Chicken Kibble"
+  - paragraph: Grain-free Chicken Kibble
+  - text: "4.8"
+  - generic: ₹899
+  - button "Add"
+  - img "Baked Bone Treats Jar"
+  - paragraph: Baked Bone Treats Jar
+  - text: "4.9"
+  - generic: ₹349
+  - button "Add"
+  - img "Rainbow Rope Tug Toy"
+  - paragraph: Rainbow Rope Tug Toy
+  - text: "4.6"
+  - generic: ₹249
+  - button "Add"
+  - img "Heritage Leather Leash"
+  - paragraph: Heritage Leather Leash
+  - text: "4.7"
+  - generic: ₹549
+  - button "Add"
+- navigation:
+  - link "Home":
+    - /url: /
+    - text: Home
+  - link "Services":
+    - /url: /services
+    - text: Services
+  - link "Shop":
+    - /url: /shop
+    - text: Shop
+  - link "Orders":
+    - /url: /orders
+    - text: Orders
+  - link "Profile":
+    - /url: /profile
+    - text: Profile
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6fkgz2ay9y83aavyc97wx7bbpk?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

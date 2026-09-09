@@ -1,0 +1,19 @@
+- banner:
+  - link "Vantage.":
+    - /url: "#/"
+  - navigation:
+    - link "Company Intelligence":
+      - /url: "#/company"
+    - link "News Feed":
+      - /url: "#/news"
+- main:
+  - generic: For the Indian market
+  - heading "See the market. See the company. See what's next." [level=1]
+  - paragraph: Vantage merges live business news from India's top financial press with instant, structured company dossiers — built for interview prep, research, and staying ahead.
+  - button "Enter Vantage →"
+  - heading "Unified News Feed" [level=3]
+  - paragraph: Markets, economy, and company news from Economic Times, LiveMint, and Business Standard — merged into one live feed.
+  - heading "Company Intelligence" [level=3]
+  - paragraph: Search any tracked company for an overview, recent news, competitors, and likely interview questions.
+- contentinfo:
+  - paragraph: Vantage is a demo static site. News is fetched live client-side via a public RSS-to-JSON service; company overviews via Wikipedia's public API. No data is stored server-side — bookmarks and tracked companies live only in this browser's localStorage.

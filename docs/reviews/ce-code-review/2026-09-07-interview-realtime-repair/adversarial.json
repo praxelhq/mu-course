@@ -1,0 +1,36 @@
+{
+  "reviewer": "adversarial",
+  "verdict": "changes-requested",
+  "findings": [
+    {
+      "severity": "P1",
+      "title": "A prolonged student disconnect is converted into a graded partial interview",
+      "file": "lms/agent/main.py",
+      "line": 1033,
+      "confidence": 95,
+      "autofix_class": "gated_auto",
+      "owner": "downstream-resolver",
+      "requires_verification": true,
+      "pre_existing": false,
+      "why_it_matters": "The change deliberately prevents AgentSession from closing when the only participant leaves, but adds no participant-absence watchdog or paused state. If the student cannot rejoin, the agent stays alive until budget_watch sets finished; aborted remains false and the normal exit reports finished=true. That reaches agent-complete and completeInterview, so the LMS grades whatever partial transcript exists and consumes the attempt. This violates the recovery invariant precisely for the cut-off case the patch is meant to repair.",
+      "suggested_fix": "Keep close_on_disconnect disabled for a short rejoin grace period, but observe participant leave/join events. Cancel the grace timer on a valid rejoin; when it expires, set an explicit aborted/not-completable state and report recording only (finished=false), never the normal budget completion. Alternatively pause the interview clock while no student is present, with a bounded expiry that requires instructor-reviewed recovery. Add an integration test that drops the only participant past the grace period and proves no grading enqueue/status=completed occurs.",
+      "first_evidence": "lms/agent/main.py:1033 -- \"room_input_options=RoomInputOptions(close_on_disconnect=False),\"",
+      "evidence": [
+        "lms/agent/main.py:1036-1044 -- budget_watch sets finished when the fixed interview budget elapses, with no check that a participant is present.",
+        "lms/agent/main.py:1052-1061 -- aborted is set only when AgentSession emits close before finished; the new close_on_disconnect=False prevents the disconnect from taking this route.",
+        "lms/agent/main.py:1084 -- the normal budget exit calls stop_and_report_recording(finished=not aborted), which is true after a participant-less budget expiry.",
+        "lms/app/api/interview/agent-complete/route.ts:72-80 -- finished=true calls completeInterview, which marks the interview completed and enqueues grading."
+      ]
+    }
+  ],
+  "residual_risks": [
+    "Finalized conversation items are persisted through untracked asyncio.create_task calls (lms/agent/main.py:1023), while normal completion is posted after session.drain (lines 1072-1084). session.drain does not establish that those HTTP writes finished, so a slow final student or agent turn can be rejected after status becomes completed and omitted from grading.",
+    "The new global heartbeat check establishes artifact identity and HTTP reachability, not successful LiveKit worker registration or room-specific job attachment. A healthy-looking reporter can therefore still admit a room with no interviewer.",
+    "LiveKit Egress quota exhaustion remains best-effort. Live dialogue may complete and grade without the promised room recording until the account quota is restored."
+  ],
+  "testing_gaps": [
+    "No test keeps close_on_disconnect=False, removes the sole participant, advances the interview clock, and verifies the partial interview stays live/ungraded after the rejoin grace period.",
+    "No test proves all asynchronous agent-turn posts settle before agent-complete changes interview status, including a deliberately delayed final turn.",
+    "No end-to-end canary exercises the full sequence: healthy worker admission, spoken simulated student turns, brief disconnect/rejoin with the same interview ID, normal completion, and exactly one worker grading job."
+  ]
+}

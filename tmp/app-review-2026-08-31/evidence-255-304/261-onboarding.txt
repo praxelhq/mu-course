@@ -1,0 +1,39 @@
+- banner:
+  - navigation:
+    - link "NOURISH.":
+      - /url: /
+    - link "Home":
+      - /url: /
+    - link "Build my plan" [active]:
+      - /url: /onboarding
+    - link "My day":
+      - /url: /dashboard
+    - link "Recipes":
+      - /url: /recipes
+    - link "Ask NIA":
+      - /url: /nia
+    - link "Let's eat →":
+      - /url: /onboarding
+- main:
+  - heading "What's your plate looking like?" [level=1]
+  - paragraph: This one's a big deal.
+  - button "VEG meals 🌱 VEG Plant-powered Dal · Jowar roti · Paneer · Tofu · Vegetables · Salads I'm veg →":
+    - img "VEG meals"
+    - generic: 🌱
+    - heading "VEG" [level=3]
+    - paragraph: Plant-powered
+    - paragraph: Dal · Jowar roti · Paneer · Tofu · Vegetables · Salads
+    - generic: I'm veg →
+  - button "NON-VEG meals 🍗 NON-VEG Protein-powered Chicken · Eggs · Fish · Lean meat · Grilled bowls I'm non-veg →":
+    - img "NON-VEG meals"
+    - generic: 🍗
+    - heading "NON-VEG" [level=3]
+    - paragraph: Protein-powered
+    - paragraph: Chicken · Eggs · Fish · Lean meat · Grilled bowls
+    - generic: I'm non-veg →
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_2aqw7edwqq9eg8w87wz9dq27tt?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

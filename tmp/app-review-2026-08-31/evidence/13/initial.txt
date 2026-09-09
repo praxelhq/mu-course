@@ -1,0 +1,76 @@
+- banner:
+  - button "StreamVibe home":
+    - generic: StreamVibe
+  - navigation "Primary":
+    - button "Home":
+      - generic: Home
+    - button "Discover":
+      - generic: Discover
+    - button "My Library":
+      - generic: My Library
+  - button "Search":
+  - generic: SV
+- main:
+  - region "What are you in the mood for tonight?":
+    - paragraph: AI entertainment companion
+    - heading "What are you in the mood for tonight?" [level=1]
+    - paragraph: Tell us your vibe. We'll find something you'll love.
+    - generic: Describe what you want to watch or listen to
+    - textbox "Describe what you want to watch or listen to":
+      - /placeholder: Describe your perfect movie, show or playlist...
+    - button "Surprise Me":
+      - generic: Surprise Me
+    - button "Find My Vibe" [disabled]:
+      - generic: Find My Vibe
+    - group "Mood filters":
+      - button "Dark": 🌙Dark
+      - button "Mind-bending": 🧠Mind-bending
+      - button "Feel-good": 😂Feel-good
+      - button "Romantic": ❤️Romantic
+      - button "Intense": 🔥Intense
+      - button "Cozy": 🌧Cozy
+      - button "Sci-Fi": 🚀Sci-Fi
+      - button "Emotional": 🎭Emotional
+  - radiogroup "Content type":
+    - radio "Movies" [checked]:
+      - generic: Movies
+    - radio "TV Shows":
+      - generic: TV Shows
+    - radio "Playlists":
+      - generic: Playlists
+  - radiogroup "Recommendation basis":
+    - radio "By Mood Tell us how you’re feeling" [checked]:
+      - generic: By Mood
+      - generic: Tell us how you’re feeling
+    - radio "By Title Find something similar":
+      - generic: By Title
+      - generic: Find something similar
+    - radio "Based on Liked Build on your taste" [disabled]:
+      - generic: Based on Liked
+      - generic: Build on your taste
+  - region "Trending Vibes":
+    - heading "Trending Vibes" [level=2]
+    - paragraph: Not sure what you want? Start from one of these.
+    - button "Something mind-bending Twists you will think about for days":
+      - generic: Something mind-bending
+      - generic: Twists you will think about for days
+    - button "Perfect movie for tonight One great pick, no scrolling":
+      - generic: Perfect movie for tonight
+      - generic: One great pick, no scrolling
+    - button "Something like Stranger Things Nostalgic, eerie, ensemble cast":
+      - generic: Something like Stranger Things
+      - generic: Nostalgic, eerie, ensemble cast
+    - button "Feel-good weekend watch Warm, funny, easy company":
+      - generic: Feel-good weekend watch
+      - generic: Warm, funny, easy company
+    - button "Dark psychological thrillers Slow dread, unreliable minds":
+      - generic: Dark psychological thrillers
+      - generic: Slow dread, unreliable minds
+    - button "Best shows to binge Clear a whole weekend":
+      - generic: Best shows to binge
+      - generic: Clear a whole weekend
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7cmjn513my9f2tfgz1e0c0v50v?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

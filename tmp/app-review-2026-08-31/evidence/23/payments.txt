@@ -1,0 +1,130 @@
+- region "Notifications (F8)":
+  - list
+- region "Notifications alt+T"
+- complementary:
+  - generic: InfluencerOS
+  - navigation:
+    - link "Dashboard":
+      - /url: /
+      - generic: Dashboard
+    - link "Campaigns":
+      - /url: /campaigns
+      - generic: Campaigns
+    - link "AI Campaign Planner":
+      - /url: /ai-planner
+      - generic: AI Campaign Planner
+    - link "Creators":
+      - /url: /creators
+      - generic: Creators
+    - link "Content Approval":
+      - /url: /content-approval
+      - generic: Content Approval
+    - link "Performance & ROI":
+      - /url: /performance
+      - generic: Performance & ROI
+    - link "Payments & Ledger" [active]:
+      - /url: /payments
+      - generic: Payments & Ledger
+    - link "Assets & Logistics":
+      - /url: /assets
+      - generic: Assets & Logistics
+    - link "Settings":
+      - /url: /settings
+      - generic: Settings
+  - button "Collapse":
+    - generic: Collapse
+- banner:
+  - textbox "Search campaigns, creators, content..."
+  - button "3":
+    - generic: "3"
+  - button "M MamaEarth":
+    - generic: M
+    - generic: MamaEarth
+  - button "Arun Kumar Marketing Manager":
+    - paragraph: Arun Kumar
+    - paragraph: Marketing Manager
+- main:
+  - heading "Payments & Ledger" [level=1]
+  - paragraph: Track payments and manage invoices
+  - button "Export to CSV":
+    - text: Export to CSV
+  - text: Total Due
+  - paragraph: ₹4,30,000
+  - text: Total Paid
+  - paragraph: ₹75,000
+  - text: Platform Fees
+  - paragraph: ₹50,500
+  - textbox "Search payments..."
+  - combobox:
+    - generic: All Status
+  - button:
+  - table:
+    - rowgroup:
+      - row "Creator Campaign Amount Platform Fee Status Due Date GST Invoice Actions":
+        - columnheader "Creator"
+        - columnheader "Campaign"
+        - columnheader "Amount"
+        - columnheader "Platform Fee"
+        - columnheader "Status"
+        - columnheader "Due Date"
+        - columnheader "GST Invoice"
+        - columnheader "Actions"
+    - rowgroup:
+      - row "Priya Sharma Summer Skincare Launch ₹75,000 ₹7,500 Paid 2024-01-30 Received Invoice":
+        - cell "Priya Sharma"
+        - cell "Summer Skincare Launch"
+        - cell "₹75,000"
+        - cell "₹7,500"
+        - cell "Paid":
+          - generic: Paid
+        - cell "2024-01-30"
+        - cell "Received":
+          - generic: Received
+        - cell "Invoice":
+          - button "Invoice":
+            - text: Invoice
+      - row "Sneha Reddy Summer Skincare Launch ₹85,000 ₹8,500 Pending 2024-02-05 Pending Invoice":
+        - cell "Sneha Reddy"
+        - cell "Summer Skincare Launch"
+        - cell "₹85,000"
+        - cell "₹8,500"
+        - cell "Pending":
+          - generic: Pending
+        - cell "2024-02-05"
+        - cell "Pending":
+          - generic: Pending
+        - cell "Invoice":
+          - button "Invoice":
+            - text: Invoice
+      - row "Rahul Verma Summer Skincare Launch ₹2,50,000 ₹25,000 Processing 2024-02-01 Received Invoice":
+        - cell "Rahul Verma"
+        - cell "Summer Skincare Launch"
+        - cell "₹2,50,000"
+        - cell "₹25,000"
+        - cell "Processing":
+          - generic: Processing
+        - cell "2024-02-01"
+        - cell "Received":
+          - generic: Received
+        - cell "Invoice":
+          - button "Invoice":
+            - text: Invoice
+      - row "Dr. Kavita Singh Vitamin C Serum Push ₹95,000 ₹9,500 Pending 2024-02-10 Pending Invoice":
+        - cell "Dr. Kavita Singh"
+        - cell "Vitamin C Serum Push"
+        - cell "₹95,000"
+        - cell "₹9,500"
+        - cell "Pending":
+          - generic: Pending
+        - cell "2024-02-10"
+        - cell "Pending":
+          - generic: Pending
+        - cell "Invoice":
+          - button "Invoice":
+            - text: Invoice
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_05t71mwv1r9qb9tdwk5a0m9t2d?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: ₹0

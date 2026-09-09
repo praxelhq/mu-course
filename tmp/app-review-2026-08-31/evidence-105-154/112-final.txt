@@ -1,0 +1,24 @@
+- main:
+  - img "WealthQuest — plan, invest, grow"
+  - heading "WealthQuest" [level=1]
+  - paragraph: Your money goals, gamified. See exactly what it takes to hit financial freedom — and how to get there.
+  - tablist:
+    - tab "Email" [selected]
+    - tab "Google"
+  - tabpanel "Email":
+    - generic: Email
+    - textbox "you@example.com"
+    - generic: Password
+    - textbox "••••••••"
+    - button "Sign in"
+    - button "New here? Create an account"
+  - generic: Gold
+  - generic: Mutual funds
+  - generic: Fixed deposits
+  - generic: Insurance
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1mb903y2y48eeaj5pm3nn1yfr5?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

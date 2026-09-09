@@ -1,0 +1,89 @@
+- banner:
+  - paragraph: Profile
+  - paragraph: Your plan, your terms.
+- main:
+  - generic: A
+  - textbox "Your name": Alex
+  - paragraph: Day 1 · ₹158 saved
+  - heading "Your plan" [level=2]
+  - paragraph: Mode
+  - paragraph: Quitting completely
+  - button "Switch"
+  - paragraph: Pack cost
+  - paragraph: 20 cigarettes per pack
+  - generic: ₹
+  - spinbutton "Pack cost": "350"
+  - paragraph: Cigarettes per day (before)
+  - paragraph: Used to calculate savings
+  - spinbutton "Cigarettes per day": "8"
+  - heading "Your triggers" [level=2]
+  - generic: 😴 Boredom
+  - heading "Craving reminders" [level=2]
+  - paragraph: Notify me before risky times
+  - paragraph: A nudge to start a rescue just before the hours you usually crave.
+  - button "Turn on"
+  - generic: notifications_active
+  - text: 2am
+  - paragraph: Nudge me this early
+  - button "5 min"
+  - button "15 min"
+  - button "30 min"
+  - paragraph: Reminders per day
+  - generic: "3"
+  - slider "Reminders per day": "3"
+  - paragraph: Reminders are generated on this device while Quitly is open in a tab or on your home screen — nothing about your cravings leaves your phone.
+  - heading "Savings goals" [level=2]
+  - generic: ✈️
+  - paragraph: Goa Trip
+  - paragraph: ₹35,000
+  - button "Remove Goa Trip":
+    - generic: delete
+  - paragraph: Add a goal
+  - button "🏖️"
+  - button "🎧"
+  - button "🚲"
+  - button "📱"
+  - button "🎸"
+  - button "✈️"
+  - button "🏋️"
+  - button "🎁"
+  - textbox "Weekend in Goa"
+  - spinbutton
+  - button "Add goal"
+  - button "Redo my quit setup":
+    - text: Redo my quit setup
+    - generic: chevron_right
+  - button "Load demo data":
+    - text: Load demo data
+    - generic: refresh
+  - button "Reset all my data":
+    - text: Reset all my data
+    - generic: delete_forever
+  - paragraph: Quitly provides behavioural support only and is not a substitute for medical advice. Everything is stored on this device.
+- navigation:
+  - link "Home":
+    - /url: /home
+    - generic: home
+    - generic: Home
+  - link "Progress":
+    - /url: /progress
+    - generic: insights
+    - generic: Progress
+  - link "Coach":
+    - /url: /coach
+    - generic: psychology
+    - generic: Coach
+  - link "Insights":
+    - /url: /insights
+    - generic: leaderboard
+    - generic: Insights
+  - link "Profile":
+    - /url: /profile
+    - generic: person
+    - generic: Profile
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_19mhcg6jxz8s9s6ch802n4v9n3?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

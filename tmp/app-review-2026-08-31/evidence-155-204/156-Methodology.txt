@@ -1,0 +1,133 @@
+- banner:
+  - button "SQI SERVICE QUALITY INTELLIGENCE":
+    - generic: SQI
+    - generic: SERVICE QUALITY INTELLIGENCE
+  - navigation:
+    - button "Restaurants"
+    - button "Hotels"
+    - button "Rankings"
+    - button "Compare"
+    - button "Methodology" [active]
+  - button "Search Mumbai... /":
+    - generic: Search Mumbai...
+    - generic: /
+  - button "LIGHT (BEIGE)":
+    - generic: LIGHT (BEIGE)
+  - button "SQI Admin & Model Verification":
+- main:
+  - generic: STANDARDIZED MEASUREMENT SPECIFICATION · V1.0
+  - heading "SQI Methodology & Mathematical Rules" [level=1]
+  - paragraph: Service Quality Intelligence (SQI) replaces opaque user-generated star ratings with an open, mathematically deterministic scoring framework grounded in operational parameters and evidence quality weights.
+  - text: 01 · FOUNDATIONAL PREMISE
+  - heading "The Structural Failure of Star Ratings" [level=2]
+  - paragraph: "Consumer review platforms aggregate subjective 1-to-5 star ratings into raw arithmetic means. This produces critical distortion:"
+  - heading "Volume Conflation" [level=4]
+  - paragraph: Platforms treat a 4.8★ with 30 reviews identically to a 4.8★ with 30,000 reviews, hiding statistical uncertainty.
+  - heading "Dimensional Invisibility" [level=4]
+  - paragraph: A single rating merges food quality, wait times, hygiene, and value into one number, hiding operational failure points.
+  - heading "Recency Blindness" [level=4]
+  - paragraph: Management or chef departures 3 months ago are washed out by 5 years of historical review momentum.
+  - text: 02 · MATHEMATICAL FORMULATION
+  - heading "Deterministic Calculation Architecture" [level=2]
+  - generic: SQI = Σ ( DimensionScore_i × DimensionWeight_i ) / Σ ( ActiveDimensionWeights )
+  - generic: "Where each DimensionScore is computed from its measured parameter evidence:"
+  - generic: DimensionScore = Σ ( ParamScore_j × EQ_j × Indep_j × Temp_j × ParamWeight_j ) / Σ ( EQ_j × Indep_j × Temp_j × ParamWeight_j )
+  - strong: Evidence Quality (EQ)
+  - text: Score between 0–100 evaluating excerpt directness, verified stay corroboration, and descriptive depth.
+  - strong: Independence Factor (Indep)
+  - text: Discounting multiplier applied to promotional, influencer, or internal brand marketing claims.
+  - strong: Temporal Relevance (Temp)
+  - text: Time decay weighting prioritizing recent operating quarters over stale multi-year archives.
+  - text: CRITICAL GOVERNANCE MANDATE
+  - heading "The Missing Data Rule" [level=2]
+  - paragraph: "If a parameter or dimension lacks sufficient evidence:"
+  - list:
+    - listitem: DO NOT assign zero.
+    - listitem: DO NOT assign an arbitrary penalty score.
+    - listitem: DO NOT artificially suppress the venue’s observed quality.
+    - text: Mark status as
+    - code: INSUFFICIENT_EVIDENCE
+    - text: and proportionally redistribute available weight across measured parameters.
+  - paragraph: Missing evidence reduces coverage and confidence, NOT quality.
+  - text: 04 · ORTHOGONAL MEASUREMENT AXES
+  - heading "Confidence Is Not Quality" [level=2]
+  - paragraph: SQI strictly separates quality (how good the service is) from confidence (how certain we are of the measurement).
+  - text: SQI Quality Score (0–100)
+  - paragraph: Represents the expected caliber of service delivered during a standard visit. A new venue can have an SQI of 95 if every verified diner experiences exceptional craft.
+  - text: Confidence Index (0–100)
+  - paragraph: Function of evidence volume, source diversity, temporal consistency, and cross-source agreement. A high-quality venue with 50 reviews will have high SQI (94) but moderate confidence (72).
+  - text: 05 · CALIBRATED INDUSTRY MODELS
+  - heading "Active Dimensional Models" [level=2]
+  - generic: RESTAURANT_V1.0 (8 Dimensions · 100% Weight)
+  - generic: Mumbai Calibration
+  - text: Food & Product Quality
+  - generic: (22% wt)
+  - generic: Culinary craftsmanship, taste fidelity, ingredients freshness, temperature, presentation, and menu fidelity.
+  - text: Experience & Service
+  - generic: (18% wt)
+  - generic: Hospitality demeanor, attentiveness, pacing, dining ambience, staff domain knowledge, and guest personalization.
+  - text: Operational Reliability
+  - generic: (15% wt)
+  - generic: Reservation fidelity, wait time predictability, table readiness, order accuracy, and menu availability.
+  - text: Service Consistency
+  - generic: (14% wt)
+  - generic: Variance across peak/off-peak shifts, repeatable dish execution across visits, and low outcome dispersion.
+  - text: Perceived Value
+  - generic: (12% wt)
+  - generic: Price-to-quality equilibrium relative to fine dining peers, portion fairness, and billing transparency.
+  - text: Trust & Hygiene
+  - generic: (9% wt)
+  - generic: Sanitation rigor, kitchen transparency, allergen handling, public certifications, and ethical practices.
+  - text: Physical & Digital Accessibility
+  - generic: (5% wt)
+  - generic: Booking friction, parking/valet access, physical inclusivity, dietary clarity, and payment versatility.
+  - text: Service Recovery
+  - generic: (5% wt)
+  - generic: Speed and grace of incident de-escalation, replacement proactiveness, and root-cause mitigation.
+  - generic: HOTEL_V1.0 (8 Dimensions · 100% Weight)
+  - generic: Mumbai Calibration
+  - text: Operational Reliability
+  - generic: (18% wt)
+  - generic: Reservation fidelity, room category guarantee, seamless check-in/out, and billing precision.
+  - text: Guest Experience & Comfort
+  - generic: (18% wt)
+  - generic: Acoustic isolation, bed ergonomics, bathroom excellence, climate control, and tranquil public spaces.
+  - text: Stay Consistency
+  - generic: (16% wt)
+  - generic: Repeatable housekeeping standards, room condition uniformity, and reliability across seasons/shifts.
+  - text: Service Responsiveness
+  - generic: (13% wt)
+  - generic: Front desk promptness, concierge agility, room service turnaround, and proactive housekeeping assistance.
+  - text: Value & Inclusions
+  - generic: (12% wt)
+  - generic: Rate justification relative to tier amenities, breakfast quality, transparent fees, and club lounge parity.
+  - text: Trust & Assurance
+  - generic: (10% wt)
+  - generic: Security protocols, asset integrity, transparent pricing disclosures, and guest privacy protection.
+  - text: Location & Accessibility
+  - generic: (6% wt)
+  - generic: Airport/transit transit convenience, luggage handling, universal physical access, and digital key services.
+  - text: Service Recovery
+  - generic: (7% wt)
+  - generic: Duty manager responsiveness, escalation handling, compensation fairness, and preventing recurrence.
+- contentinfo:
+  - button "SQI SERVICE QUALITY INTELLIGENCE":
+    - generic: SQI
+    - generic: SERVICE QUALITY INTELLIGENCE
+  - paragraph: “A rating tells you what people said. SQI helps you understand what the evidence says about service quality.”
+  - paragraph: SQI is an evidence-based measurement and benchmarking engine that disaggregates subjective star ratings into verifiable operational parameters, uncertainty intervals, and confidence distributions.
+  - heading "Registry Index" [level=4]
+  - list:
+    - button "Mumbai Restaurants (25 Calibrated)"
+    - button "Mumbai Hotels (25 Calibrated)"
+    - button "City Rankings & Tier Index"
+    - button "Multi-Property Matrix Compare"
+  - heading "Methodology & Models" [level=4]
+  - list:
+    - button "RESTAURANT_V1.0 (8 Dimensions)"
+    - button "HOTEL_V1.0 (8 Dimensions)"
+    - button "Missing Data Redistribution Rule"
+    - button "Model Verification & Admin Portal"
+  - paragraph: "© 2026 SQI Service Quality Intelligence. Initial Product: Mumbai, India."
+  - generic: ● EVIDENCE > HYPE
+  - generic: "MODEL: SQI_V1.0_SEED"

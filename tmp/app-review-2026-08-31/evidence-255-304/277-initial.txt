@@ -1,0 +1,94 @@
+- banner:
+  - link "STRIDE home":
+    - /url: /
+    - generic: STRIDE
+  - navigation:
+    - link "How it works":
+      - /url: "#how"
+    - link "The engine":
+      - /url: "#engine"
+    - link "FAQ":
+      - /url: "#faq"
+  - button "Switch to dark mode":
+  - link "Sign in":
+    - /url: /auth
+  - link "Start free":
+    - /url: /auth
+- text: Adaptive training, powered by your own data
+- heading "The running coach that learns from every run." [level=1]
+- paragraph: STRIDE reads your Strava history, builds a periodized race plan, compares what you planned against what you actually ran, and rewrites the weeks ahead — then tells you exactly why it changed.
+- link "Build my plan":
+  - /url: /auth
+  - text: Build my plan
+- link "See how it adapts":
+  - /url: "#how"
+- list:
+  - text: Works with a live Strava app or demo mode
+  - text: 5K to marathon, any target time
+  - text: Recovery weeks and taper built in
+  - text: Every plan change is explained
+- img "Runner crossing a city bridge at dawn"
+- text: Plan adapted
+- paragraph: “You ran Thursday's tempo 9s/km faster than target. Your load ramp is already at 1.28, so Saturday's long run stays at 18 km instead of stepping up.”
+- paragraph: How it works
+- heading "A closed loop, not a static PDF" [level=2]
+- paragraph: Most plans are written once and ignored by reality. STRIDE runs the loop again every time a new activity lands.
+- generic: "01"
+- heading "Connect Strava" [level=3]
+- paragraph: One tap of OAuth. STRIDE imports twelve weeks of running history to learn your real base, not your intentions.
+- generic: "02"
+- heading "Set a race goal" [level=3]
+- paragraph: Pick the distance, the date and the finish time you actually want. STRIDE checks the goal against your history.
+- generic: "03"
+- heading "Get a periodized plan" [level=3]
+- paragraph: Build blocks, recovery weeks and a two-week taper — every session with its own target distance and pace.
+- generic: "04"
+- heading "Run. It adapts." [level=3]
+- paragraph: New Strava activity lands, planned vs actual is compared, fitness is recomputed and future weeks are rewritten.
+- paragraph: The engine
+- heading "Decisions from rules. Explanations from AI." [level=2]
+- paragraph: The training engine is deterministic. It looks at your seven-day and twenty-eight-day load, the ratio between them, how many sessions you actually completed, how far off target your paces were, and how hard the last block felt. Then it maintains, progresses, eases intensity, shortens the long run, or inserts recovery.
+- paragraph: Only after the decision is made does the AI coach get involved — to put it in plain language. It sees the decision as a fact it must explain, and it has no ability to edit your plan.
+- link "Try it with demo data":
+  - /url: /auth
+  - text: Try it with demo data
+- heading "Rule-based training engine" [level=3]
+- paragraph: Acute:chronic load ratio, adherence, pace deltas and your own difficulty ratings drive every decision. Deterministic, auditable, repeatable.
+- heading "An AI coach that explains, never guesses" [level=3]
+- paragraph: The engine decides; the coach narrates. AI text can never silently change a single kilometre of your plan.
+- heading "Fitness, fatigue and form" [level=3]
+- paragraph: Rolling load charts show where you are in the build, when you're digging a hole, and when you're sharp.
+- heading "Tokens stay server-side" [level=3]
+- paragraph: Your Strava client secret, access and refresh tokens never touch the browser. Demo mode runs the same architecture without credentials.
+- heading "Questions runners ask" [level=2]
+- heading "Do I need a Strava account?" [level=3]:
+  - button "Do I need a Strava account?":
+    - text: Do I need a Strava account?
+- heading "Can the AI change my plan on its own?" [level=3]:
+  - button "Can the AI change my plan on its own?":
+    - text: Can the AI change my plan on its own?
+- heading "What happens when I miss a run?" [level=3]:
+  - button "What happens when I miss a run?":
+    - text: What happens when I miss a run?
+- heading "Is my Strava data safe?" [level=3]:
+  - button "Is my Strava data safe?":
+    - text: Is my Strava data safe?
+- heading "Which race distances are supported?" [level=3]:
+  - button "Which race distances are supported?":
+    - text: Which race distances are supported?
+- heading "Your next race deserves a plan that pays attention." [level=2]
+- paragraph: Set a goal, connect your running history, and let the engine keep the plan honest week after week.
+- link "Start training with STRIDE":
+  - /url: /auth
+  - text: Start training with STRIDE
+- contentinfo:
+  - link "STRIDE home":
+    - /url: /
+    - generic: STRIDE
+  - paragraph: © 2026 STRIDE. Built for runners who look at the data.
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_16f7zqtbkq92msrtd3qa4ayrf5?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

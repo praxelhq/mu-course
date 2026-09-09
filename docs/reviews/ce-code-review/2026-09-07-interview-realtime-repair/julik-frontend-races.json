@@ -1,0 +1,51 @@
+{
+  "reviewer": "julik-frontend-races",
+  "findings": [
+    {
+      "title": "Out-of-order token responses reset live room",
+      "severity": "P1",
+      "file": "lms/app/(room)/interview/live/interview-client.tsx",
+      "line": 38,
+      "why_it_matters": "The unavailable/waiting poll and the Try again button can issue concurrent token requests. A newer request can mount a working LiveKit room, then an older delayed failure can set unavailable or waiting and unmount that room. This makes normal recovery timing cut off a live interview again.",
+      "autofix_class": "gated_auto",
+      "owner": "downstream-resolver",
+      "requires_verification": true,
+      "suggested_fix": "Give each requestRealtime call a monotonically increasing request id (and optionally AbortController). After every awaited fetch/body parse and in catch, return unless its id is still current; invalidate outstanding requests on unmount and before terminal done. Add a deferred-fetch test where an old failed poll resolves after a newer successful Try again.",
+      "confidence": 75,
+      "evidence": [
+        "lms/app/(room)/interview/live/interview-client.tsx:38 -- if (res.ok && body.token && body.url && body.interviewId) {",
+        "lms/app/(room)/interview/live/interview-client.tsx:70 -- const timer = setInterval(() => void requestRealtime(true), 10_000);",
+        "lms/app/(room)/interview/live/interview-client.tsx:136 -- <Button onClick={() => void requestRealtime()}>Try again</Button>",
+        "No request sequence, abort signal, or current-request check protects the state writes at lines 39-55."
+      ],
+      "pre_existing": false
+    },
+    {
+      "title": "Availability copy misstates resumed interviews",
+      "severity": "P2",
+      "file": "lms/app/api/interview/token/route.ts",
+      "line": 59,
+      "why_it_matters": "The route looks up a live interview before health admission, so this response can be returned while a student has already answered questions. It tells that student their attempt has not started, which is false precisely during the reconnect path introduced by this change and can prompt an unnecessary retake request.",
+      "autofix_class": "gated_auto",
+      "owner": "downstream-resolver",
+      "requires_verification": true,
+      "suggested_fix": "Branch the 503 message on existing: for a live realtime interview say that the existing attempt is safe and will resume when the interviewer reconnects; retain no-attempt language only when no interview exists. Cover both response bodies in the token-route test.",
+      "confidence": 75,
+      "evidence": [
+        "lms/app/api/interview/token/route.ts:59 -- error: \"The real-time interviewer is reconnecting. Your attempt has not started — please try again shortly.\"",
+        "lms/app/api/interview/token/route.ts:30 -- const existing = await prisma.interview.findFirst({",
+        "The agent-readiness check at lines 48-56 runs after existing has been found but before the response at line 59."
+      ],
+      "pre_existing": false
+    }
+  ],
+  "residual_risks": [
+    "RealtimeRoom relies on React unmount cleanup to disconnect the previous LiveKit client before the token refresh creates another same-identity join. Verify the old client releases tracks and the room does not transiently host two clients during a reconnect.",
+    "A fresh process heartbeat proves the agent service is running, not that an agent job is attached to this particular already-created room. The 30-second MeetingView watchdog retries the same room, so a controlled worker-crash/rejoin test is needed to prove a new agent is dispatched or the existing agent survives."
+  ],
+  "testing_gaps": [
+    "No component test uses deferred token fetches plus fake timers to prove an older poll failure cannot overwrite a newer success.",
+    "No lifecycle test proves a terminal state poll disconnect reaches done without triggering a reconnect/token mint through the LiveKit callbacks.",
+    "No browser-level LiveKit disconnect/rejoin test verifies a single attempt, preserved transcript, one agent session, and no manual-recording UI."
+  ]
+}

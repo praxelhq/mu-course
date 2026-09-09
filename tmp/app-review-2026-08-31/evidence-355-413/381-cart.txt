@@ -1,0 +1,55 @@
+- banner:
+  - link "PawPal":
+    - /url: /
+    - generic: PawPal
+  - link "Cart" [active]:
+    - /url: /cart
+    - generic: "1"
+- main:
+  - generic: SC
+  - heading "Stuti Chaudhary" [level=1]
+  - paragraph: stuti@example.com
+  - link "1 Pets":
+    - /url: /pets
+    - generic: "1"
+    - generic: Pets
+  - link "1 Bookings":
+    - /url: /
+    - generic: "1"
+    - generic: Bookings
+  - link "1 Orders":
+    - /url: /orders
+    - generic: "1"
+    - generic: Orders
+  - heading "Profile details" [level=2]
+  - text: Full name
+  - textbox "Full name": Stuti Chaudhary
+  - text: Email
+  - textbox "Email"
+  - text: Phone
+  - textbox "Phone"
+  - text: Delivery address
+  - textbox "Delivery address": 42 Lake Gardens, Kolkata 700045
+  - button "Save changes" [disabled]
+- navigation:
+  - link "Home":
+    - /url: /
+    - text: Home
+  - link "Services":
+    - /url: /services
+    - text: Services
+  - link "Shop":
+    - /url: /shop
+    - text: Shop
+  - link "Orders":
+    - /url: /orders
+    - text: Orders
+  - link "Profile":
+    - /url: /profile
+    - text: Profile
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6fkgz2ay9y83aavyc97wx7bbpk?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

@@ -1,0 +1,42 @@
+- navigation:
+  - link "FoodLens":
+    - /url: /
+    - generic: FoodLens
+  - link "Home":
+    - /url: /
+  - link "Scan":
+    - /url: /scan
+    - text: Scan
+  - link "Browse Recipes":
+    - /url: /browse
+  - link "Recent Scans":
+    - /url: /scans
+  - link "Saved recipes":
+    - /url: /saved
+- main:
+  - paragraph: Snap · Identify · Explore
+  - heading "What's on your plate?" [level=1]
+  - paragraph: Take a photo or upload one and let FoodLens take a closer look.
+  - img "Your food"
+  - text: Image ready
+  - button "Analyse My Food":
+    - text: Analyse My Food
+  - button "Choose another":
+    - text: Choose another
+- contentinfo:
+  - generic: FoodLens
+  - paragraph: See your food differently. One picture. A whole new way to discover what's on your plate.
+  - link "Scan":
+    - /url: /scan
+  - link "Browse Recipes":
+    - /url: /browse
+  - link "Recent Scans":
+    - /url: /scans
+  - link "Saved":
+    - /url: /saved
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7hb7j64b2b9z2txfp26xt2vf0q?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

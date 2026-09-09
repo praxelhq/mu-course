@@ -1,0 +1,107 @@
+- banner:
+  - generic: Ff
+  - paragraph: FridgeFlow
+  - paragraph: Know what's expiring. Waste less.
+  - button:
+    - text: Add Food
+- main:
+  - heading [level=1]: Your fridge at a glance
+  - paragraph: Keep track of what's fresh and know what to use first.
+  - region:
+    - paragraph: "8"
+    - paragraph: Total Items
+    - paragraph: "2"
+    - paragraph: Expiring Soon
+    - paragraph: "0"
+    - paragraph: Consumed This Week
+  - region:
+    - heading [level=2]: Eat These First
+    - paragraph: These items are closest to expiring.
+    - list:
+      - paragraph: Spinach
+      - generic: Expiring Soon
+      - paragraph: Vegetables · Expires tomorrow
+      - button: Mark Consumed
+      - button:
+      - paragraph: Milk
+      - generic: Expiring Soon
+      - paragraph: Dairy · Expires in 2 days
+      - button: Mark Consumed
+      - button:
+      - paragraph: Bread
+      - generic: Use Soon
+      - paragraph: Bakery · Expires in 3 days
+      - button: Mark Consumed
+      - button:
+      - paragraph: Yogurt
+      - generic: Use Soon
+      - paragraph: Dairy · Expires in 4 days
+      - button: Mark Consumed
+      - button:
+  - region:
+    - heading [level=2]: My Fridge
+    - paragraph: All active food items, ordered by expiry urgency.
+    - list:
+      - paragraph: Spinach
+      - generic: Expiring Soon
+      - paragraph: Vegetables · Expires tomorrow
+      - button: Mark Consumed
+      - button:
+      - paragraph: Milk
+      - generic: Expiring Soon
+      - paragraph: Dairy · Expires in 2 days
+      - button: Mark Consumed
+      - button:
+      - paragraph: Bread
+      - generic: Use Soon
+      - paragraph: Bakery · Expires in 3 days
+      - button: Mark Consumed
+      - button:
+      - paragraph: Yogurt
+      - generic: Use Soon
+      - paragraph: Dairy · Expires in 4 days
+      - button: Mark Consumed
+      - button:
+      - paragraph: Tomatoes
+      - generic: Use Soon
+      - paragraph: Vegetables · Expires in 5 days
+      - button: Mark Consumed
+      - button:
+      - paragraph: Eggs
+      - generic: Normal
+      - paragraph: Dairy · Expires in 6 days
+      - button: Mark Consumed
+      - button:
+      - paragraph: Apples
+      - generic: Normal
+      - paragraph: Fruits · Expires in 10 days
+      - button: Mark Consumed
+      - button:
+      - paragraph: Cheese
+      - generic: Normal
+      - paragraph: Dairy · Expires in 12 days
+      - button: Mark Consumed
+      - button:
+- region "Notifications alt+T"
+- complementary:
+  - link:
+    - /url: https://lovable.dev/projects/lovp_0hxdsk3v948hkrpmk9hfxh0rf3?utm_source=lovable-badge
+    - generic: Edit with
+  - button:
+- dialog "Add food":
+  - heading "Add food" [level=2]
+  - paragraph: Track a new item and we'll watch its expiry for you.
+  - text: Food name
+  - textbox "Food name" [active]:
+    - /placeholder: e.g. Milk
+    - text: Demo Review Yogurt
+  - text: Category
+  - combobox "Category":
+    - generic: Dairy
+  - combobox
+  - text: Expiry date
+  - textbox "Expiry date": 2026-09-01
+  - button "Cancel"
+  - button "Add Food"
+  - button "Close":
+    - generic: Close

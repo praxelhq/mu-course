@@ -1,0 +1,49 @@
+- banner:
+  - link "hub WORD DASH":
+    - /url: /
+    - generic: hub
+    - generic: WORD DASH
+  - generic: Room
+  - generic: "#VYVA"
+  - button "Share room":
+    - generic: share
+- main:
+  - heading "Round 1" [level=1]
+  - generic: Normal Round
+  - paragraph: Answers are in — react, or call someone out as sus before the AI judge lands.
+  - generic: 😎
+  - generic: Review Player
+  - generic: Name
+  - generic: —
+  - generic: Place
+  - generic: —
+  - generic: Animal
+  - generic: —
+  - generic: Thing
+  - generic: —
+  - heading "Leaderboard" [level=2]
+  - list:
+    - generic: "1"
+    - generic: 😎
+    - generic: Review Player
+    - generic: "0"
+  - region "Room chat":
+    - generic: forum
+    - heading "Trash Talk" [level=2]
+    - paragraph: Nobody's talking yet. Roast someone's answer.
+    - button "Send 😂": 😂
+    - button "Send 💀": 💀
+    - button "Send 🧢": 🧢
+    - button "Send 🔥": 🔥
+    - button "Send 🤨": 🤨
+    - button "Send 👏": 👏
+    - generic: Message
+    - textbox "Message":
+      - /placeholder: Say something…
+    - button "Send message" [disabled]:
+      - generic: send
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3t58da8er88bf9fktxvsby80ep?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

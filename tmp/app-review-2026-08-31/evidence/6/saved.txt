@@ -1,0 +1,80 @@
+- banner:
+  - button "Open menu":
+  - generic: NetworkPro
+  - button "Reminders (2 due)":
+    - generic: "2"
+  - button "Capture":
+    - text: Capture
+- main:
+  - link "My Network":
+    - /url: /network
+    - text: My Network
+  - heading "Alex Example" [level=1]
+  - paragraph: · Example Company
+  - button "Generate Follow-Up":
+    - text: Generate Follow-Up
+  - button "Add to calendar":
+    - text: Add to calendar
+  - button "Edit":
+    - text: Edit
+  - button "Delete":
+    - text: Delete
+  - generic: AE
+  - generic: To Follow Up
+  - generic: Scheduled
+  - text: Manual Text
+  - heading "Key information" [level=2]
+  - term: Company
+  - definition: Example Company
+  - term: Role
+  - definition
+  - term: Event
+  - definition: Other
+  - term: Last interaction
+  - definition: 31 Aug 2026
+  - term: Next follow-up
+  - definition: 8 Sept 2026
+  - term: Capture method
+  - definition: text
+  - heading "Conversation notes" [level=3]
+  - textbox "Conversation notes": Discussed product internships.
+  - paragraph: Notes save automatically as you type.
+  - heading "AI actions" [level=2]
+  - button "Generate Follow-Up":
+    - text: Generate Follow-Up
+  - button "Summarize Relationship":
+    - text: Summarize Relationship
+  - button "Suggest Next Action":
+    - text: Suggest Next Action
+  - button "Mark as Completed":
+    - text: Mark as Completed
+  - heading "Interaction timeline" [level=2]
+  - button "Add Interaction":
+    - text: Add Interaction
+  - list:
+    - paragraph: 31 Aug 2026 · Other
+    - paragraph: Discussed product internships.
+- navigation "Bottom":
+  - link "Dashboard":
+    - /url: /
+    - text: Dashboard
+  - link "Network":
+    - /url: /network
+    - text: Network
+  - link "Follow-Ups":
+    - /url: /follow-ups
+    - text: Follow-Ups
+  - link "Interviews":
+    - /url: /interviews
+    - text: Interviews
+  - link "AI Assistant":
+    - /url: /assistant
+    - text: AI Assistant
+- region "Notifications alt+T":
+  - list:
+    - generic: Connection saved successfully.
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7maa21ymw89jarb98axyt3x7za?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

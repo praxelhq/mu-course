@@ -1,0 +1,62 @@
+- main:
+  - iframe [active]:
+    - complementary:
+      - link "V VAULTPLAYCRYPTO GAMING":
+        - /url: "#casino"
+        - generic: V
+        - generic: VAULTPLAYCRYPTO GAMING
+      - navigation "Primary navigation":
+        - button "01 Casino":
+          - generic: "01"
+          - text: Casino
+        - button "02 Crash":
+          - generic: "02"
+          - text: Crash
+        - button "03 Dice":
+          - generic: "03"
+          - text: Dice
+        - button "04 Coin Flip":
+          - generic: "04"
+          - text: Coin Flip
+        - button "05 Transactions":
+          - generic: "05"
+          - text: Transactions
+        - button "06 Fairness" [active]:
+          - generic: "06"
+          - text: Fairness
+        - button "07 Account":
+          - generic: "07"
+          - text: Account
+      - generic: Demo mode
+      - generic: Simulated environment
+    - main:
+      - generic: Demo Network
+      - generic: 2,460.00 USDC
+      - button "Connect Wallet"
+      - generic: Trust / Verification
+      - heading "Transparency by design." [level=1]
+      - paragraph: This prototype uses simulated local randomness and placeholder verification data. No result is generated on-chain, and no value is transferred. A production system would pair secure backend game logic with cryptographic commitments and independent verification.
+      - heading "Demo verification record" [level=2]
+      - generic: Placeholder
+      - generic: Client seed
+      - code: vaultplay-demo-client-7A3F
+      - generic: Server seed hash
+      - code: 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b
+      - generic: Nonce
+      - code: "000024"
+      - generic: Verification result
+      - code: LOCAL SIMULATION VERIFIED
+      - text: "01"
+      - heading "Cryptographic commitments" [level=3]
+      - paragraph: Lock outcomes before any game action is resolved.
+      - text: "02"
+      - heading "Verifiable seeds" [level=3]
+      - paragraph: Expose inputs needed to reproduce and audit every result.
+      - text: "03"
+      - heading "Independent verification" [level=3]
+      - paragraph: Let players validate outcomes outside the platform.
+      - text: "04"
+      - heading "Secure game logic" [level=3]
+      - paragraph: Isolate production logic in a monitored backend environment.
+    - status
+- alert

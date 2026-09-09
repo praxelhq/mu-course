@@ -1,0 +1,42 @@
+- region "Notifications (F8)":
+  - list
+- region "Notifications alt+T"
+- main:
+  - generic: Step 5 of 6
+  - generic: 83% complete
+  - generic: Basic Info
+  - generic: Vitals
+  - generic: Physical
+  - generic: Performance
+  - generic: Cognitive
+  - generic: Psychological
+  - heading "Cognitive" [level=2]
+  - generic: Decision Making
+  - generic: 5/10
+  - paragraph: Quick and effective choices during play
+  - slider
+  - generic: Reaction Time
+  - generic: 5/10
+  - paragraph: Speed of response to visual/audio cues
+  - slider
+  - generic: Attention Control
+  - generic: 5/10
+  - paragraph: Filtering distractions and staying focused
+  - slider
+  - generic: Perceptual Awareness
+  - generic: 5/10
+  - paragraph: Reading the game and anticipating actions
+  - slider
+  - generic: Focus
+  - generic: 5/10
+  - paragraph: Sustained concentration during activity
+  - slider
+  - button "Previous":
+    - text: Previous
+  - button "Next" [active]:
+    - text: Next
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_4evn1nffn78kfshkdrmcjvbrzc?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

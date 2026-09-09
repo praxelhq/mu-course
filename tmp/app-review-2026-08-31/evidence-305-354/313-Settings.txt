@@ -1,0 +1,65 @@
+- banner:
+  - link "Mirror home":
+    - /url: /dashboard
+    - generic: Mirror
+  - navigation "Main":
+    - link "Dashboard":
+      - /url: /dashboard
+      - generic: Dashboard
+    - link "Reflect":
+      - /url: /reflect
+      - generic: Reflect
+    - link "Weekly":
+      - /url: /report
+      - generic: Weekly
+    - link "Timeline":
+      - /url: /timeline
+      - generic: Timeline
+    - link "Settings":
+      - /url: /settings
+      - generic: Settings
+  - link "Reflect now":
+    - /url: /reflect
+- main:
+  - paragraph: Settings
+  - heading "Your Mirror" [level=1]
+  - paragraph: Small controls, kept out of the way.
+  - heading "Profile" [level=2]:
+    - text: Profile
+  - text: Name
+  - textbox "Name": Demo Reviewer
+  - text: Email
+  - textbox "Email"
+  - button "Save profile"
+  - heading "Appearance & notifications" [level=2]:
+    - text: Appearance & notifications
+  - text: Dark mode
+  - paragraph: A quieter surface for evening reflections.
+  - switch "Dark mode"
+  - text: Daily reminder
+  - paragraph: One gentle nudge each evening.
+  - switch "Daily reminder" [checked]
+  - text: Weekly report ready
+  - paragraph: Told when your identity report is written.
+  - switch "Weekly report ready" [checked]
+  - text: Streak & milestones
+  - paragraph: 7-day streaks and 30-day milestones only.
+  - switch "Streak & milestones" [checked]
+  - heading "Your data" [level=2]:
+    - text: Your data
+  - paragraph: 14 reflections stored, including 14 days of demo data.
+  - button "Export data"
+  - button "Clear demo data"
+  - heading "Delete account" [level=2]:
+    - text: Delete account
+  - paragraph: This removes your profile and every reflection from this device. It cannot be undone.
+  - button "Delete account"
+  - button "Sign out":
+    - text: Sign out
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1rwdm306328pqt08z6e5ma3pz4?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: "3"

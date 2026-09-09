@@ -1,0 +1,27 @@
+- main:
+  - button "Go back":
+  - generic: 5/5
+  - heading "🙅 Anything you're NOT feeling?" [level=2]
+  - paragraph: No judgement. Pick up to 2.
+  - button "😵‍💫 Crowds":
+    - text: 😵‍💫
+    - generic: Crowds
+  - button "🚱 Alcohol":
+    - text: 🚱
+    - generic: Alcohol
+  - button "🌧 Outdoor":
+    - text: 🌧
+    - generic: Outdoor
+  - button "🦵 Too much walking":
+    - text: 🦵
+    - generic: Too much walking
+  - button "😌 Nothing specific":
+    - text: 😌
+    - generic: Nothing specific
+  - button "Lock it in" [disabled]:
+    - text: Lock it in
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7kh9wqajyf8xxsm9vc3sqtdh9t?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

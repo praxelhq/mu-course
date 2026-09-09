@@ -1,0 +1,35 @@
+- main:
+  - link "F Fidgit Fidget brain bursts":
+    - /url: /
+    - generic: F
+    - heading "Fidgit" [level=1]
+    - paragraph: Fidget brain bursts
+  - navigation:
+    - link "Play":
+      - /url: /
+    - link "Leaders":
+      - /url: /leaderboard
+    - link "Profile":
+      - /url: /profile
+  - heading "Profile" [level=2]
+  - paragraph: Your name appears on the leaderboard. Stored locally on this device.
+  - textbox "Your name": Review Player
+  - button "Save"
+  - paragraph: Saved as Review Player
+  - heading "Your stats" [level=3]
+  - generic: Games
+  - generic: "0"
+  - generic: Best score
+  - generic: "0"
+  - generic: Answered
+  - generic: "0"
+  - generic: Best streak
+  - generic: "0"
+  - link "Play your first session →":
+    - /url: /
+  - generic: Hard cap. No pause. Walk away when it ends.
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_0b8f4be12p9mra9tcsrafrqqy5?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

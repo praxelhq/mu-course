@@ -1,0 +1,61 @@
+- banner:
+  - button "Open menu":
+    - generic: menu
+  - link "SnapCal":
+    - /url: /
+  - navigation:
+    - link "Dashboard":
+      - /url: /
+      - generic: Dashboard
+    - link "Log":
+      - /url: /log
+      - generic: Log
+    - link "Progress":
+      - /url: /progress
+      - generic: Progress
+    - link "Settings":
+      - /url: /settings
+      - generic: Settings
+  - button "Your profile":
+    - img "User profile picture"
+- main:
+  - heading "Settings" [level=1]
+  - paragraph: Tune SnapCal to your routine
+  - button "Daily calorie goal 2,100 kcal":
+    - generic: local_fire_department
+    - generic: Daily calorie goal
+    - generic: 2,100 kcal
+    - generic: chevron_right
+  - button "Activity level Moderately active":
+    - generic: directions_run
+    - generic: Activity level
+    - generic: Moderately active
+    - generic: chevron_right
+  - button "Target weight 72 kg":
+    - generic: flag
+    - generic: Target weight
+    - generic: 72 kg
+    - generic: chevron_right
+  - button "Units Metric (kg, cm)":
+    - generic: straighten
+    - generic: Units
+    - generic: Metric (kg, cm)
+    - generic: chevron_right
+  - generic: Meal reminders
+  - generic: Nudge me if I haven't logged by 9pm
+  - switch "Meal reminders" [checked]
+  - generic: Weekly summary email
+  - generic: Every Sunday evening
+  - switch "Weekly summary email" [checked]
+  - generic: Photo auto-estimate
+  - generic: Estimate calories right after a snap
+  - switch "Photo auto-estimate"
+  - button "Sign out"
+- button "Snap a meal photo":
+  - generic: photo_camera
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_57yqbmn5z8889ba7daz1ktkfwq?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

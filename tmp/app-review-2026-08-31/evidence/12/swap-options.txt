@@ -1,0 +1,119 @@
+- banner:
+  - link:
+    - /url: /
+    - generic: GlowMatch
+  - navigation:
+    - link:
+      - /url: /dashboard
+      - text: My routine
+    - link:
+      - /url: /personalize
+      - text: Personalise
+    - link:
+      - /url: /ingredients
+      - text: Ingredients
+- main:
+  - paragraph: Made for you
+  - heading [level=1]: Here's a routine that suits normal skin in a moderate climate
+  - paragraph: Start with these, give it four to six weeks, and swap anything that doesn't feel right. Everything below adds up to about ₹3,514.
+  - heading [level=2]:
+    - text: Morning Routine
+  - article:
+    - paragraph: Cleanser
+    - heading [level=3]: Plum Green Tea Gentle Foam Cleanser
+    - generic: ₹390
+    - paragraph: "Why this: light foam with green tea to calm and refresh"
+    - checkbox
+    - text: I already own this
+    - button [expanded]:
+      - text: Swap
+  - article:
+    - paragraph: Treatment / Serum
+    - heading [level=3]: Dot & Key Niacinamide 10% + Zinc Serum
+    - generic: ₹495
+    - paragraph: "Why this: evens tone and helps balance shine through the day"
+    - checkbox
+    - text: I already own this
+    - button:
+      - text: Swap
+  - article:
+    - paragraph: Moisturiser
+    - heading [level=3]: Plum 2% Niacinamide Gel Cream
+    - generic: ₹480
+    - paragraph: "Why this: oil-free comfort with a soft matte finish"
+    - checkbox
+    - text: I already own this
+    - button:
+      - text: Swap
+  - article:
+    - paragraph: Sunscreen
+    - heading [level=3]: Minimalist Sunscreen SPF 50 PA++++
+    - generic: ₹449
+    - paragraph: "Why this: fluid texture that disappears on oily skin"
+    - checkbox
+    - text: I already own this
+    - button:
+      - text: Swap
+  - heading [level=2]:
+    - text: Night Routine
+  - article:
+    - paragraph: Cleanser
+    - heading [level=3]: Plum Chamomile & White Tea Cleansing Balm
+    - generic: ₹575
+    - paragraph: "Why this: melts away sunscreen and makeup in one pass"
+    - checkbox
+    - text: I already own this
+    - button:
+      - text: Swap
+  - article:
+    - paragraph: Treatment
+    - heading [level=3]: Dot & Key Bakuchiol Night Serum
+    - generic: ₹645
+    - paragraph: "Why this: a gentler alternative to retinol for sensitive skin"
+    - checkbox
+    - text: I already own this
+    - button:
+      - text: Swap
+  - article:
+    - paragraph: Moisturiser
+    - heading [level=3]: Plum 2% Niacinamide Gel Cream
+    - generic: ₹480
+    - paragraph: "Why this: oil-free comfort with a soft matte finish"
+    - checkbox
+    - text: I already own this
+    - button:
+      - text: Swap
+  - button: Save Routine
+  - link:
+    - /url: /quiz
+    - text: Change my answers
+- contentinfo:
+  - paragraph: GlowMatch
+  - paragraph: Gentle, personalised routine building for Indian skin, budgets and weather.
+  - paragraph: GlowMatch offers general skincare guidance and is not a substitute for dermatologist advice.
+- region "Notifications alt+T"
+- complementary:
+  - link:
+    - /url: https://lovable.dev/projects/lovp_1354v31zk7938apwbx8trekyb6?utm_source=lovable-badge
+    - generic: Edit with
+  - button:
+- dialog "Other Cleanser options":
+  - heading "Other Cleanser options" [level=2]
+  - paragraph: All of these fit your answers — pick whichever suits you best.
+  - button "Minimalist Salicylic Acid 02% Face Wash ₹349 gentle gel wash that keeps oil in check without stripping" [active]:
+    - paragraph: Minimalist Salicylic Acid 02% Face Wash
+    - generic: ₹349
+    - paragraph: gentle gel wash that keeps oil in check without stripping
+  - button "Re'equil Oil-Free Face Wash ₹445 soap-free and fragrance-free, kind to reactive skin":
+    - paragraph: Re'equil Oil-Free Face Wash
+    - generic: ₹445
+    - paragraph: soap-free and fragrance-free, kind to reactive skin
+  - button "Dot & Key Hydrating Cream Cleanser ₹395 creamy milk cleanser that leaves skin comfortable, never tight":
+    - paragraph: Dot & Key Hydrating Cream Cleanser
+    - generic: ₹395
+    - paragraph: creamy milk cleanser that leaves skin comfortable, never tight
+  - paragraph: Considering something else? Check it first.
+  - textbox "Paste a product name or its ingredient list — e.g. Minimalist Retinol 0.3% Face Serum"
+  - button "Check Compatibility" [disabled]
+  - button "Close":
+    - generic: Close

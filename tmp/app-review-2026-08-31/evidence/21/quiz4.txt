@@ -1,0 +1,37 @@
+- banner:
+  - button "Go back":
+  - button "S SipMatch The Alchemist's Palette":
+    - generic: S
+    - generic: SipMatch
+    - generic: The Alchemist's Palette
+  - button "User profile":
+    - img "User avatar"
+- main:
+  - button "Previous":
+    - text: Previous
+  - generic: Question 4 of 10
+  - generic: 40%
+  - heading "Crisp Citrus Burst or Smooth & Velvet Crema?" [level=1]
+  - paragraph: What texture tantalizes your palate first?
+  - button "Option A Crisp Citrus Burst Tart lime, pink grapefruit, energetic zing." [active]:
+    - generic: Option A
+    - heading "Crisp Citrus Burst" [level=2]
+    - paragraph: Tart lime, pink grapefruit, energetic zing.
+  - button "Option B Smooth & Velvet Crema Silky egg white foam, espresso crema, richness.":
+    - generic: Option B
+    - heading "Smooth & Velvet Crema" [level=2]
+    - paragraph: Silky egg white foam, espresso crema, richness.
+  - generic: VS
+- navigation:
+  - button "Home":
+    - generic: Home
+  - button "Discover":
+    - generic: Discover
+  - button "2 Saved":
+    - generic: "2"
+    - generic: Saved
+  - button "Profile":
+    - generic: Profile
+- link "Made in Bolt":
+  - /url: https://bolt.new
+  - generic: Made in Bolt

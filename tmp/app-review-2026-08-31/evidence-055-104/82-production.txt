@@ -1,0 +1,1091 @@
+- complementary:
+  - link "FactoryFlow AI Shreeji Precision Works":
+    - /url: /
+    - paragraph: FactoryFlow AI
+    - paragraph: Shreeji Precision Works
+  - navigation:
+    - paragraph: Shop floor
+    - link "Dashboard":
+      - /url: /
+      - text: Dashboard
+    - link "Production" [active]:
+      - /url: /production
+      - text: Production
+    - link "Customer Schedule":
+      - /url: /schedule
+      - text: Customer Schedule
+    - link "Machines":
+      - /url: /machines
+      - text: Machines
+    - link "Downtime":
+      - /url: /downtime
+      - text: Downtime
+    - link "Maintenance":
+      - /url: /maintenance
+      - text: Maintenance
+    - link "Quality":
+      - /url: /quality
+      - text: Quality
+    - link "Job Work":
+      - /url: /job-work
+      - text: Job Work
+    - link "Inventory":
+      - /url: /inventory
+      - text: Inventory
+    - paragraph: Money
+    - link "Sales & Receivables":
+      - /url: /sales
+      - text: Sales & Receivables
+    - link "Purchase & Payables":
+      - /url: /purchase
+      - text: Purchase & Payables
+    - link "Cash View":
+      - /url: /cash
+      - text: Cash View
+    - link "Compliance":
+      - /url: /compliance
+      - text: Compliance
+    - paragraph: Run the business
+    - link "Tasks":
+      - /url: /tasks
+      - text: Tasks
+    - link "Analytics":
+      - /url: /analytics
+      - text: Analytics
+    - link "Reports":
+      - /url: /reports
+      - text: Reports
+    - link "AI Assistant":
+      - /url: /assistant
+      - text: AI Assistant
+    - link "Integrations":
+      - /url: /integrations
+      - text: Integrations
+    - link "Settings":
+      - /url: /settings
+      - text: Settings
+  - link "RK Rajesh Kulkarni Works Manager":
+    - /url: /profile
+    - generic: RK
+    - generic: Rajesh Kulkarni
+    - generic: Works Manager
+  - link "Pricing & product page →":
+    - /url: /welcome
+- banner:
+  - textbox "Search part, challan, invoice, heat number…"
+  - button "English"
+  - button "हिंदी"
+  - button "मराठी"
+  - generic "All entries synced":
+    - text: Online
+  - button "Toggle dark mode":
+  - link "Notifications":
+    - /url: /notifications
+    - generic: "4"
+  - link "Ask AI":
+    - /url: /assistant
+    - generic: Ask AI
+- main:
+  - navigation:
+    - link "FactoryFlow":
+      - /url: /
+    - generic: Production
+  - heading "Production" [level=1]
+  - paragraph: 120 records · rolling 30 days
+  - button "Export CSV":
+    - text: Export CSV
+  - button "New entry":
+    - text: New entry
+  - textbox "Search product, operator, machine…"
+  - combobox "Plant":
+    - 'option "Plant: All" [selected]'
+    - option "Shreeji Precision Works"
+  - combobox "Shift":
+    - 'option "Shift: All" [selected]'
+    - option "Shift A (07:00–15:30)"
+    - option "Shift B (15:30–00:00)"
+    - option "Shift C (00:00–07:00)"
+  - table:
+    - rowgroup:
+      - row "Date Plant / Line Machine Product Shift Operator Target Actual Rejected Hrs":
+        - columnheader "Date"
+        - columnheader "Plant / Line"
+        - columnheader "Machine"
+        - columnheader "Product"
+        - columnheader "Shift"
+        - columnheader "Operator"
+        - columnheader "Target"
+        - columnheader "Actual"
+        - columnheader "Rejected"
+        - columnheader "Hrs"
+        - columnheader
+    - rowgroup:
+      - row "24-08-2026 Shreeji Precision Works Line 3 — Weld & Finish TIG Welding Station W-1 Brake Bracket BB-22 A Ganesh Pawar 477 440 1 6 Edit Delete record":
+        - cell "24-08-2026"
+        - cell "Shreeji Precision Works Line 3 — Weld & Finish":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 3 — Weld & Finish
+        - cell "TIG Welding Station W-1"
+        - cell "Brake Bracket BB-22"
+        - cell "A"
+        - cell "Ganesh Pawar"
+        - cell "477"
+        - cell "440"
+        - cell "1"
+        - cell "6"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "24-08-2026 Shreeji Precision Works Line 1 — Machining Radial Drill RD-1 Shifter Fork SF-31 C Santosh More 360 336 4 6 Edit Delete record":
+        - cell "24-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Radial Drill RD-1"
+        - cell "Shifter Fork SF-31"
+        - cell "C"
+        - cell "Santosh More"
+        - cell "360"
+        - cell "336"
+        - cell "4"
+        - cell "6"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "24-08-2026 Shreeji Precision Works Line 3 — Weld & Finish TIG Welding Station W-1 Pivot Pin PP-15 C Santosh More 759 580 3 8 Edit Delete record":
+        - cell "24-08-2026"
+        - cell "Shreeji Precision Works Line 3 — Weld & Finish":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 3 — Weld & Finish
+        - cell "TIG Welding Station W-1"
+        - cell "Pivot Pin PP-15"
+        - cell "C"
+        - cell "Santosh More"
+        - cell "759"
+        - cell "580"
+        - cell "3"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "24-08-2026 Shreeji Precision Works Line 1 — Machining Conventional Lathe L-2 (Kirloskar) Brake Bracket BB-22 A Vaishali Jadhav 360 279 2 7 Edit Delete record":
+        - cell "24-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Conventional Lathe L-2 (Kirloskar)"
+        - cell "Brake Bracket BB-22"
+        - cell "A"
+        - cell "Vaishali Jadhav"
+        - cell "360"
+        - cell "279"
+        - cell "2"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "23-08-2026 Shreeji Precision Works Line 1 — Machining CNC Turning Centre TC-1 (Jyoti) Gear Blank GB-40 C Santosh More 766 739 4 8 Edit Delete record":
+        - cell "23-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "CNC Turning Centre TC-1 (Jyoti)"
+        - cell "Gear Blank GB-40"
+        - cell "C"
+        - cell "Santosh More"
+        - cell "766"
+        - cell "739"
+        - cell "4"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "23-08-2026 Shreeji Precision Works Line 1 — Machining Surface Grinder SG-1 Clutch Housing CH-77 A Meena Patil 253 252 4 6 Edit Delete record":
+        - cell "23-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Surface Grinder SG-1"
+        - cell "Clutch Housing CH-77"
+        - cell "A"
+        - cell "Meena Patil"
+        - cell "253"
+        - cell "252"
+        - cell "4"
+        - cell "6"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "22-08-2026 Shreeji Precision Works Line 1 — Machining Radial Drill RD-1 Shifter Fork SF-31 C Ganesh Pawar 819 815 0 7 Edit Delete record":
+        - cell "22-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Radial Drill RD-1"
+        - cell "Shifter Fork SF-31"
+        - cell "C"
+        - cell "Ganesh Pawar"
+        - cell "819"
+        - cell "815"
+        - cell "0"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "22-08-2026 Shreeji Precision Works Line 1 — Machining CNC Turning Centre TC-1 (Jyoti) Flange Yoke FY-108 C Meena Patil 842 660 8 7 Edit Delete record":
+        - cell "22-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "CNC Turning Centre TC-1 (Jyoti)"
+        - cell "Flange Yoke FY-108"
+        - cell "C"
+        - cell "Meena Patil"
+        - cell "842"
+        - cell "660"
+        - cell "8"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "22-08-2026 Shreeji Precision Works Line 3 — Weld & Finish Shot Blasting Cabinet SB-1 Clutch Housing CH-77 C Vaishali Jadhav 328 252 6 6 Edit Delete record":
+        - cell "22-08-2026"
+        - cell "Shreeji Precision Works Line 3 — Weld & Finish":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 3 — Weld & Finish
+        - cell "Shot Blasting Cabinet SB-1"
+        - cell "Clutch Housing CH-77"
+        - cell "C"
+        - cell "Vaishali Jadhav"
+        - cell "328"
+        - cell "252"
+        - cell "6"
+        - cell "6"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "22-08-2026 Shreeji Precision Works Line 1 — Machining CNC VMC-2 (Ace Micromatic) Shifter Fork SF-31 B Santosh More 718 651 14 8 Edit Delete record":
+        - cell "22-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "CNC VMC-2 (Ace Micromatic)"
+        - cell "Shifter Fork SF-31"
+        - cell "B"
+        - cell "Santosh More"
+        - cell "718"
+        - cell "651"
+        - cell "14"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "22-08-2026 Shreeji Precision Works Line 1 — Machining Conventional Lathe L-1 (HMT) Gear Blank GB-40 A Sunita Deshmukh 195 197 5 8 Edit Delete record":
+        - cell "22-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Conventional Lathe L-1 (HMT)"
+        - cell "Gear Blank GB-40"
+        - cell "A"
+        - cell "Sunita Deshmukh"
+        - cell "195"
+        - cell "197"
+        - cell "5"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "22-08-2026 Shreeji Precision Works Line 1 — Machining Surface Grinder SG-1 Clutch Housing CH-77 C Rajesh Kulkarni 759 659 5 8 Edit Delete record":
+        - cell "22-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Surface Grinder SG-1"
+        - cell "Clutch Housing CH-77"
+        - cell "C"
+        - cell "Rajesh Kulkarni"
+        - cell "759"
+        - cell "659"
+        - cell "5"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "21-08-2026 Shreeji Precision Works Line 1 — Machining CNC Turning Centre TC-1 (Jyoti) Clutch Housing CH-77 A Vaishali Jadhav 288 295 0 8 Edit Delete record":
+        - cell "21-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "CNC Turning Centre TC-1 (Jyoti)"
+        - cell "Clutch Housing CH-77"
+        - cell "A"
+        - cell "Vaishali Jadhav"
+        - cell "288"
+        - cell "295"
+        - cell "0"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "21-08-2026 Shreeji Precision Works Line 1 — Machining Surface Grinder SG-1 Clutch Housing CH-77 C Prakash Bhosale 533 412 8 7 Edit Delete record":
+        - cell "21-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Surface Grinder SG-1"
+        - cell "Clutch Housing CH-77"
+        - cell "C"
+        - cell "Prakash Bhosale"
+        - cell "533"
+        - cell "412"
+        - cell "8"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "21-08-2026 Shreeji Precision Works Line 1 — Machining Conventional Lathe L-2 (Kirloskar) Brake Bracket BB-22 B Santosh More 750 702 25 6 Edit Delete record":
+        - cell "21-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Conventional Lathe L-2 (Kirloskar)"
+        - cell "Brake Bracket BB-22"
+        - cell "B"
+        - cell "Santosh More"
+        - cell "750"
+        - cell "702"
+        - cell "25"
+        - cell "6"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "21-08-2026 Shreeji Precision Works Line 2 — Press Shop Power Press 100T (Isgec) Pivot Pin PP-15 A Sunita Deshmukh 303 308 3 8 Edit Delete record":
+        - cell "21-08-2026"
+        - cell "Shreeji Precision Works Line 2 — Press Shop":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 2 — Press Shop
+        - cell "Power Press 100T (Isgec)"
+        - cell "Pivot Pin PP-15"
+        - cell "A"
+        - cell "Sunita Deshmukh"
+        - cell "303"
+        - cell "308"
+        - cell "3"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "20-08-2026 Shreeji Precision Works Line 1 — Machining CNC VMC-2 (Ace Micromatic) Pivot Pin PP-15 B Santosh More 734 744 21 6 Edit Delete record":
+        - cell "20-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "CNC VMC-2 (Ace Micromatic)"
+        - cell "Pivot Pin PP-15"
+        - cell "B"
+        - cell "Santosh More"
+        - cell "734"
+        - cell "744"
+        - cell "21"
+        - cell "6"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "20-08-2026 Shreeji Precision Works Line 1 — Machining CNC VMC-2 (Ace Micromatic) Shifter Fork SF-31 B Vaishali Jadhav 324 291 1 7 Edit Delete record":
+        - cell "20-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "CNC VMC-2 (Ace Micromatic)"
+        - cell "Shifter Fork SF-31"
+        - cell "B"
+        - cell "Vaishali Jadhav"
+        - cell "324"
+        - cell "291"
+        - cell "1"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "19-08-2026 Shreeji Precision Works Line 1 — Machining Conventional Lathe L-2 (Kirloskar) Pivot Pin PP-15 A Ganesh Pawar 358 312 2 8 Edit Delete record":
+        - cell "19-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Conventional Lathe L-2 (Kirloskar)"
+        - cell "Pivot Pin PP-15"
+        - cell "A"
+        - cell "Ganesh Pawar"
+        - cell "358"
+        - cell "312"
+        - cell "2"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "19-08-2026 Shreeji Precision Works Line 1 — Machining CNC VMC-2 (Ace Micromatic) Brake Bracket BB-22 A Santosh More 411 359 9 7 Edit Delete record":
+        - cell "19-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "CNC VMC-2 (Ace Micromatic)"
+        - cell "Brake Bracket BB-22"
+        - cell "A"
+        - cell "Santosh More"
+        - cell "411"
+        - cell "359"
+        - cell "9"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "19-08-2026 Shreeji Precision Works Line 1 — Machining CNC Turning Centre TC-1 (Jyoti) Flange Yoke FY-108 C Santosh More 371 393 7 8 Edit Delete record":
+        - cell "19-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "CNC Turning Centre TC-1 (Jyoti)"
+        - cell "Flange Yoke FY-108"
+        - cell "C"
+        - cell "Santosh More"
+        - cell "371"
+        - cell "393"
+        - cell "7"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "19-08-2026 Shreeji Precision Works Line 1 — Machining Surface Grinder SG-1 Brake Bracket BB-22 B Meena Patil 794 748 9 7 Edit Delete record":
+        - cell "19-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Surface Grinder SG-1"
+        - cell "Brake Bracket BB-22"
+        - cell "B"
+        - cell "Meena Patil"
+        - cell "794"
+        - cell "748"
+        - cell "9"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "18-08-2026 Shreeji Precision Works Line 3 — Weld & Finish TIG Welding Station W-1 Clutch Housing CH-77 B Ganesh Pawar 268 253 1 6 Edit Delete record":
+        - cell "18-08-2026"
+        - cell "Shreeji Precision Works Line 3 — Weld & Finish":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 3 — Weld & Finish
+        - cell "TIG Welding Station W-1"
+        - cell "Clutch Housing CH-77"
+        - cell "B"
+        - cell "Ganesh Pawar"
+        - cell "268"
+        - cell "253"
+        - cell "1"
+        - cell "6"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "18-08-2026 Shreeji Precision Works Line 2 — Press Shop Power Press 60T (Rajesh Machines) Shifter Fork SF-31 B Imran Shaikh 812 722 14 7 Edit Delete record":
+        - cell "18-08-2026"
+        - cell "Shreeji Precision Works Line 2 — Press Shop":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 2 — Press Shop
+        - cell "Power Press 60T (Rajesh Machines)"
+        - cell "Shifter Fork SF-31"
+        - cell "B"
+        - cell "Imran Shaikh"
+        - cell "812"
+        - cell "722"
+        - cell "14"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "17-08-2026 Shreeji Precision Works Line 1 — Machining Conventional Lathe L-2 (Kirloskar) Shifter Fork SF-31 B Sunita Deshmukh 771 684 13 6 Edit Delete record":
+        - cell "17-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Conventional Lathe L-2 (Kirloskar)"
+        - cell "Shifter Fork SF-31"
+        - cell "B"
+        - cell "Sunita Deshmukh"
+        - cell "771"
+        - cell "684"
+        - cell "13"
+        - cell "6"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "17-08-2026 Shreeji Precision Works Line 1 — Machining Surface Grinder SG-1 Gear Blank GB-40 C Vaishali Jadhav 875 846 13 7 Edit Delete record":
+        - cell "17-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Surface Grinder SG-1"
+        - cell "Gear Blank GB-40"
+        - cell "C"
+        - cell "Vaishali Jadhav"
+        - cell "875"
+        - cell "846"
+        - cell "13"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "17-08-2026 Shreeji Precision Works Line 1 — Machining CNC VMC-1 (Ace Micromatic) Clutch Housing CH-77 B Imran Shaikh 659 660 11 8 Edit Delete record":
+        - cell "17-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "CNC VMC-1 (Ace Micromatic)"
+        - cell "Clutch Housing CH-77"
+        - cell "B"
+        - cell "Imran Shaikh"
+        - cell "659"
+        - cell "660"
+        - cell "11"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "16-08-2026 Shreeji Precision Works Line 2 — Press Shop Power Press 60T (Rajesh Machines) Brake Bracket BB-22 C Rajesh Kulkarni 485 420 11 7 Edit Delete record":
+        - cell "16-08-2026"
+        - cell "Shreeji Precision Works Line 2 — Press Shop":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 2 — Press Shop
+        - cell "Power Press 60T (Rajesh Machines)"
+        - cell "Brake Bracket BB-22"
+        - cell "C"
+        - cell "Rajesh Kulkarni"
+        - cell "485"
+        - cell "420"
+        - cell "11"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "16-08-2026 Shreeji Precision Works Line 1 — Machining Conventional Lathe L-2 (Kirloskar) Shifter Fork SF-31 B Prakash Bhosale 321 279 2 8 Edit Delete record":
+        - cell "16-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Conventional Lathe L-2 (Kirloskar)"
+        - cell "Shifter Fork SF-31"
+        - cell "B"
+        - cell "Prakash Bhosale"
+        - cell "321"
+        - cell "279"
+        - cell "2"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "16-08-2026 Shreeji Precision Works Line 1 — Machining Radial Drill RD-1 Gear Blank GB-40 A Santosh More 531 539 9 7 Edit Delete record":
+        - cell "16-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Radial Drill RD-1"
+        - cell "Gear Blank GB-40"
+        - cell "A"
+        - cell "Santosh More"
+        - cell "531"
+        - cell "539"
+        - cell "9"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "16-08-2026 Shreeji Precision Works Line 1 — Machining CNC Turning Centre TC-1 (Jyoti) Brake Bracket BB-22 A Vaishali Jadhav 248 231 3 7 Edit Delete record":
+        - cell "16-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "CNC Turning Centre TC-1 (Jyoti)"
+        - cell "Brake Bracket BB-22"
+        - cell "A"
+        - cell "Vaishali Jadhav"
+        - cell "248"
+        - cell "231"
+        - cell "3"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "15-08-2026 Shreeji Precision Works Line 3 — Weld & Finish LPG Heat-Treat Furnace HT-1 Brake Bracket BB-22 B Imran Shaikh 558 588 16 6 Edit Delete record":
+        - cell "15-08-2026"
+        - cell "Shreeji Precision Works Line 3 — Weld & Finish":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 3 — Weld & Finish
+        - cell "LPG Heat-Treat Furnace HT-1"
+        - cell "Brake Bracket BB-22"
+        - cell "B"
+        - cell "Imran Shaikh"
+        - cell "558"
+        - cell "588"
+        - cell "16"
+        - cell "6"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "15-08-2026 Shreeji Precision Works Line 1 — Machining Radial Drill RD-1 Brake Bracket BB-22 C Sunita Deshmukh 842 751 11 7 Edit Delete record":
+        - cell "15-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Radial Drill RD-1"
+        - cell "Brake Bracket BB-22"
+        - cell "C"
+        - cell "Sunita Deshmukh"
+        - cell "842"
+        - cell "751"
+        - cell "11"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "15-08-2026 Shreeji Precision Works Line 1 — Machining CNC Turning Centre TC-1 (Jyoti) Pivot Pin PP-15 A Ganesh Pawar 386 386 0 6 Edit Delete record":
+        - cell "15-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "CNC Turning Centre TC-1 (Jyoti)"
+        - cell "Pivot Pin PP-15"
+        - cell "A"
+        - cell "Ganesh Pawar"
+        - cell "386"
+        - cell "386"
+        - cell "0"
+        - cell "6"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "15-08-2026 Shreeji Precision Works Line 3 — Weld & Finish LPG Heat-Treat Furnace HT-1 Pivot Pin PP-15 A Rajesh Kulkarni 418 411 3 6 Edit Delete record":
+        - cell "15-08-2026"
+        - cell "Shreeji Precision Works Line 3 — Weld & Finish":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 3 — Weld & Finish
+        - cell "LPG Heat-Treat Furnace HT-1"
+        - cell "Pivot Pin PP-15"
+        - cell "A"
+        - cell "Rajesh Kulkarni"
+        - cell "418"
+        - cell "411"
+        - cell "3"
+        - cell "6"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "15-08-2026 Shreeji Precision Works Line 3 — Weld & Finish Shot Blasting Cabinet SB-1 Shifter Fork SF-31 B Ganesh Pawar 343 292 4 8 Edit Delete record":
+        - cell "15-08-2026"
+        - cell "Shreeji Precision Works Line 3 — Weld & Finish":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 3 — Weld & Finish
+        - cell "Shot Blasting Cabinet SB-1"
+        - cell "Shifter Fork SF-31"
+        - cell "B"
+        - cell "Ganesh Pawar"
+        - cell "343"
+        - cell "292"
+        - cell "4"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "15-08-2026 Shreeji Precision Works Line 3 — Weld & Finish LPG Heat-Treat Furnace HT-1 Flange Yoke FY-108 C Vaishali Jadhav 559 580 6 8 Edit Delete record":
+        - cell "15-08-2026"
+        - cell "Shreeji Precision Works Line 3 — Weld & Finish":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 3 — Weld & Finish
+        - cell "LPG Heat-Treat Furnace HT-1"
+        - cell "Flange Yoke FY-108"
+        - cell "C"
+        - cell "Vaishali Jadhav"
+        - cell "559"
+        - cell "580"
+        - cell "6"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "14-08-2026 Shreeji Precision Works Line 1 — Machining Conventional Lathe L-2 (Kirloskar) Gear Blank GB-40 B Prakash Bhosale 688 551 10 7 Edit Delete record":
+        - cell "14-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Conventional Lathe L-2 (Kirloskar)"
+        - cell "Gear Blank GB-40"
+        - cell "B"
+        - cell "Prakash Bhosale"
+        - cell "688"
+        - cell "551"
+        - cell "10"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "14-08-2026 Shreeji Precision Works Line 1 — Machining CNC VMC-2 (Ace Micromatic) Brake Bracket BB-22 C Vaishali Jadhav 672 551 11 7 Edit Delete record":
+        - cell "14-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "CNC VMC-2 (Ace Micromatic)"
+        - cell "Brake Bracket BB-22"
+        - cell "C"
+        - cell "Vaishali Jadhav"
+        - cell "672"
+        - cell "551"
+        - cell "11"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "14-08-2026 Shreeji Precision Works Line 1 — Machining Radial Drill RD-1 Gear Blank GB-40 B Rajesh Kulkarni 364 351 8 6 Edit Delete record":
+        - cell "14-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Radial Drill RD-1"
+        - cell "Gear Blank GB-40"
+        - cell "B"
+        - cell "Rajesh Kulkarni"
+        - cell "364"
+        - cell "351"
+        - cell "8"
+        - cell "6"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "14-08-2026 Shreeji Precision Works Line 2 — Press Shop Power Press 60T (Rajesh Machines) Flange Yoke FY-108 B Sunita Deshmukh 326 267 0 8 Edit Delete record":
+        - cell "14-08-2026"
+        - cell "Shreeji Precision Works Line 2 — Press Shop":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 2 — Press Shop
+        - cell "Power Press 60T (Rajesh Machines)"
+        - cell "Flange Yoke FY-108"
+        - cell "B"
+        - cell "Sunita Deshmukh"
+        - cell "326"
+        - cell "267"
+        - cell "0"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "14-08-2026 Shreeji Precision Works Line 1 — Machining Conventional Lathe L-1 (HMT) Gear Blank GB-40 B Imran Shaikh 271 220 6 8 Edit Delete record":
+        - cell "14-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Conventional Lathe L-1 (HMT)"
+        - cell "Gear Blank GB-40"
+        - cell "B"
+        - cell "Imran Shaikh"
+        - cell "271"
+        - cell "220"
+        - cell "6"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "13-08-2026 Shreeji Precision Works Line 1 — Machining Surface Grinder SG-1 Shifter Fork SF-31 A Prakash Bhosale 312 309 10 8 Edit Delete record":
+        - cell "13-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Surface Grinder SG-1"
+        - cell "Shifter Fork SF-31"
+        - cell "A"
+        - cell "Prakash Bhosale"
+        - cell "312"
+        - cell "309"
+        - cell "10"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "13-08-2026 Shreeji Precision Works Line 2 — Press Shop Power Press 60T (Rajesh Machines) Pivot Pin PP-15 C Ganesh Pawar 516 489 16 8 Edit Delete record":
+        - cell "13-08-2026"
+        - cell "Shreeji Precision Works Line 2 — Press Shop":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 2 — Press Shop
+        - cell "Power Press 60T (Rajesh Machines)"
+        - cell "Pivot Pin PP-15"
+        - cell "C"
+        - cell "Ganesh Pawar"
+        - cell "516"
+        - cell "489"
+        - cell "16"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "13-08-2026 Shreeji Precision Works Line 3 — Weld & Finish LPG Heat-Treat Furnace HT-1 Flange Yoke FY-108 B Meena Patil 656 575 10 6 Edit Delete record":
+        - cell "13-08-2026"
+        - cell "Shreeji Precision Works Line 3 — Weld & Finish":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 3 — Weld & Finish
+        - cell "LPG Heat-Treat Furnace HT-1"
+        - cell "Flange Yoke FY-108"
+        - cell "B"
+        - cell "Meena Patil"
+        - cell "656"
+        - cell "575"
+        - cell "10"
+        - cell "6"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "12-08-2026 Shreeji Precision Works Line 1 — Machining Surface Grinder SG-1 Pivot Pin PP-15 C Vaishali Jadhav 495 459 14 7 Edit Delete record":
+        - cell "12-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Surface Grinder SG-1"
+        - cell "Pivot Pin PP-15"
+        - cell "C"
+        - cell "Vaishali Jadhav"
+        - cell "495"
+        - cell "459"
+        - cell "14"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "12-08-2026 Shreeji Precision Works Line 1 — Machining Conventional Lathe L-1 (HMT) Shifter Fork SF-31 C Rajesh Kulkarni 186 189 1 8 Edit Delete record":
+        - cell "12-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Conventional Lathe L-1 (HMT)"
+        - cell "Shifter Fork SF-31"
+        - cell "C"
+        - cell "Rajesh Kulkarni"
+        - cell "186"
+        - cell "189"
+        - cell "1"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "12-08-2026 Shreeji Precision Works Line 3 — Weld & Finish Shot Blasting Cabinet SB-1 Clutch Housing CH-77 B Vaishali Jadhav 230 194 2 7 Edit Delete record":
+        - cell "12-08-2026"
+        - cell "Shreeji Precision Works Line 3 — Weld & Finish":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 3 — Weld & Finish
+        - cell "Shot Blasting Cabinet SB-1"
+        - cell "Clutch Housing CH-77"
+        - cell "B"
+        - cell "Vaishali Jadhav"
+        - cell "230"
+        - cell "194"
+        - cell "2"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "12-08-2026 Shreeji Precision Works Line 2 — Press Shop Power Press 100T (Isgec) Brake Bracket BB-22 B Santosh More 598 489 17 6 Edit Delete record":
+        - cell "12-08-2026"
+        - cell "Shreeji Precision Works Line 2 — Press Shop":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 2 — Press Shop
+        - cell "Power Press 100T (Isgec)"
+        - cell "Brake Bracket BB-22"
+        - cell "B"
+        - cell "Santosh More"
+        - cell "598"
+        - cell "489"
+        - cell "17"
+        - cell "6"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "12-08-2026 Shreeji Precision Works Line 2 — Press Shop Power Press 100T (Isgec) Flange Yoke FY-108 A Rajesh Kulkarni 849 711 5 6 Edit Delete record":
+        - cell "12-08-2026"
+        - cell "Shreeji Precision Works Line 2 — Press Shop":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 2 — Press Shop
+        - cell "Power Press 100T (Isgec)"
+        - cell "Flange Yoke FY-108"
+        - cell "A"
+        - cell "Rajesh Kulkarni"
+        - cell "849"
+        - cell "711"
+        - cell "5"
+        - cell "6"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "11-08-2026 Shreeji Precision Works Line 2 — Press Shop Power Press 100T (Isgec) Gear Blank GB-40 A Santosh More 900 805 1 8 Edit Delete record":
+        - cell "11-08-2026"
+        - cell "Shreeji Precision Works Line 2 — Press Shop":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 2 — Press Shop
+        - cell "Power Press 100T (Isgec)"
+        - cell "Gear Blank GB-40"
+        - cell "A"
+        - cell "Santosh More"
+        - cell "900"
+        - cell "805"
+        - cell "1"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "10-08-2026 Shreeji Precision Works Line 2 — Press Shop Power Press 100T (Isgec) Clutch Housing CH-77 B Imran Shaikh 753 694 2 8 Edit Delete record":
+        - cell "10-08-2026"
+        - cell "Shreeji Precision Works Line 2 — Press Shop":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 2 — Press Shop
+        - cell "Power Press 100T (Isgec)"
+        - cell "Clutch Housing CH-77"
+        - cell "B"
+        - cell "Imran Shaikh"
+        - cell "753"
+        - cell "694"
+        - cell "2"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "10-08-2026 Shreeji Precision Works Line 1 — Machining Surface Grinder SG-1 Brake Bracket BB-22 C Santosh More 496 455 1 7 Edit Delete record":
+        - cell "10-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Surface Grinder SG-1"
+        - cell "Brake Bracket BB-22"
+        - cell "C"
+        - cell "Santosh More"
+        - cell "496"
+        - cell "455"
+        - cell "1"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "10-08-2026 Shreeji Precision Works Line 1 — Machining Conventional Lathe L-2 (Kirloskar) Clutch Housing CH-77 B Sunita Deshmukh 895 692 7 6 Edit Delete record":
+        - cell "10-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Conventional Lathe L-2 (Kirloskar)"
+        - cell "Clutch Housing CH-77"
+        - cell "B"
+        - cell "Sunita Deshmukh"
+        - cell "895"
+        - cell "692"
+        - cell "7"
+        - cell "6"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "09-08-2026 Shreeji Precision Works Line 2 — Press Shop Power Press 100T (Isgec) Shifter Fork SF-31 B Santosh More 556 501 0 7 Edit Delete record":
+        - cell "09-08-2026"
+        - cell "Shreeji Precision Works Line 2 — Press Shop":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 2 — Press Shop
+        - cell "Power Press 100T (Isgec)"
+        - cell "Shifter Fork SF-31"
+        - cell "B"
+        - cell "Santosh More"
+        - cell "556"
+        - cell "501"
+        - cell "0"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "09-08-2026 Shreeji Precision Works Line 3 — Weld & Finish TIG Welding Station W-1 Gear Blank GB-40 C Santosh More 223 228 8 6 Edit Delete record":
+        - cell "09-08-2026"
+        - cell "Shreeji Precision Works Line 3 — Weld & Finish":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 3 — Weld & Finish
+        - cell "TIG Welding Station W-1"
+        - cell "Gear Blank GB-40"
+        - cell "C"
+        - cell "Santosh More"
+        - cell "223"
+        - cell "228"
+        - cell "8"
+        - cell "6"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "09-08-2026 Shreeji Precision Works Line 1 — Machining Conventional Lathe L-2 (Kirloskar) Flange Yoke FY-108 A Vaishali Jadhav 822 720 5 7 Edit Delete record":
+        - cell "09-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Conventional Lathe L-2 (Kirloskar)"
+        - cell "Flange Yoke FY-108"
+        - cell "A"
+        - cell "Vaishali Jadhav"
+        - cell "822"
+        - cell "720"
+        - cell "5"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "09-08-2026 Shreeji Precision Works Line 3 — Weld & Finish Shot Blasting Cabinet SB-1 Clutch Housing CH-77 C Santosh More 798 692 5 6 Edit Delete record":
+        - cell "09-08-2026"
+        - cell "Shreeji Precision Works Line 3 — Weld & Finish":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 3 — Weld & Finish
+        - cell "Shot Blasting Cabinet SB-1"
+        - cell "Clutch Housing CH-77"
+        - cell "C"
+        - cell "Santosh More"
+        - cell "798"
+        - cell "692"
+        - cell "5"
+        - cell "6"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "09-08-2026 Shreeji Precision Works Line 2 — Press Shop Power Press 100T (Isgec) Brake Bracket BB-22 A Ganesh Pawar 692 731 11 8 Edit Delete record":
+        - cell "09-08-2026"
+        - cell "Shreeji Precision Works Line 2 — Press Shop":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 2 — Press Shop
+        - cell "Power Press 100T (Isgec)"
+        - cell "Brake Bracket BB-22"
+        - cell "A"
+        - cell "Ganesh Pawar"
+        - cell "692"
+        - cell "731"
+        - cell "11"
+        - cell "8"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+      - row "09-08-2026 Shreeji Precision Works Line 1 — Machining Conventional Lathe L-2 (Kirloskar) Pivot Pin PP-15 A Ganesh Pawar 530 404 14 7 Edit Delete record":
+        - cell "09-08-2026"
+        - cell "Shreeji Precision Works Line 1 — Machining":
+          - paragraph: Shreeji Precision Works
+          - paragraph: Line 1 — Machining
+        - cell "Conventional Lathe L-2 (Kirloskar)"
+        - cell "Pivot Pin PP-15"
+        - cell "A"
+        - cell "Ganesh Pawar"
+        - cell "530"
+        - cell "404"
+        - cell "14"
+        - cell "7"
+        - cell "Edit Delete record":
+          - button "Edit"
+          - button "Delete record":
+- button "Quick Log":
+  - text: Quick Log
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_10hdg7xyw99tpa64t0nz744v7b?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: "6500"

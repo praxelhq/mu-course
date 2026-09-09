@@ -1,0 +1,122 @@
+- alert
+- complementary:
+  - paragraph: MailClean AI
+  - paragraph: High Mountain Property
+  - button "NA nancy (Owner) nancy@highmountainproperty.com":
+    - generic: NA
+    - paragraph: nancy (Owner)
+    - paragraph: nancy@highmountainproperty.com
+  - navigation:
+    - link "Dashboard":
+      - /url: /dashboard
+      - text: Dashboard
+    - link "Analytics":
+      - /url: /dashboard/analytics
+      - text: Analytics
+    - link "Categories":
+      - /url: /dashboard/categories
+      - text: Categories
+    - link "Email Explorer":
+      - /url: /dashboard/explorer
+      - text: Email Explorer
+    - link "Cleanup Center":
+      - /url: /dashboard/cleanup
+      - text: Cleanup Center
+    - link "Rules & Automation":
+      - /url: /dashboard/rules
+      - text: Rules & Automation
+    - link "Activity Log":
+      - /url: /dashboard/activity
+      - text: Activity Log
+    - link "Reports" [active]:
+      - /url: /dashboard/reports
+      - text: Reports
+    - link "Accounts":
+      - /url: /dashboard/accounts
+      - text: Accounts
+    - link "Settings":
+      - /url: /dashboard/settings
+      - text: Settings
+  - generic: na
+  - paragraph: nancy
+  - paragraph: nancy@highmountainproperty.com
+- banner:
+  - textbox "Search emails, senders, rules…"
+  - button "Notifications":
+    - generic: Notifications
+- main:
+  - heading "Email Intelligence Report" [level=1]
+  - paragraph: Summary for High Mountain Property across all connected mailboxes.
+  - button "Export PDF":
+    - text: Export PDF
+  - paragraph: Storage recovered
+  - paragraph: 5.8 GB
+  - paragraph: Emails cleaned
+  - paragraph: 37,842
+  - heading "Summary" [level=2]
+  - term: Total emails analyzed
+  - definition: 100,000
+  - term: Emails cleaned
+  - definition: 37,842
+  - term: Spam detected
+  - definition: 4,231
+  - term: Important emails
+  - definition: 18,421
+  - term: Unread emails
+  - definition: 18,421
+  - heading "Monthly Volume & Cleanup" [level=2]
+  - application:
+    - generic: Jan
+    - generic: Feb
+    - generic: Mar
+    - generic: Apr
+    - generic: May
+    - generic: Jun
+    - generic: Jul
+    - generic: Aug
+    - generic: "0"
+    - generic: "3000"
+    - generic: "6000"
+    - generic: "9000"
+    - generic: "12000"
+  - heading "Top Senders" [level=2]
+  - table:
+    - rowgroup:
+      - row "Sender Category Emails":
+        - columnheader "Sender"
+        - columnheader "Category"
+        - columnheader "Emails"
+    - rowgroup:
+      - row "LinkedIn Social 8,421":
+        - cell "LinkedIn"
+        - cell "Social"
+        - cell "8,421"
+      - row "99acres Promotions 5,231":
+        - cell "99acres"
+        - cell "Promotions"
+        - cell "5,231"
+      - row "MagicBricks Promotions 4,821":
+        - cell "MagicBricks"
+        - cell "Promotions"
+        - cell "4,821"
+      - row "Google Notifications 4,122":
+        - cell "Google"
+        - cell "Notifications"
+        - cell "4,122"
+      - row "Amazon Promotions 3,821":
+        - cell "Amazon"
+        - cell "Promotions"
+        - cell "3,821"
+      - row "Housing.com Newsletters 3,210":
+        - cell "Housing.com"
+        - cell "Newsletters"
+        - cell "3,210"
+      - row "GitHub Notifications 2,921":
+        - cell "GitHub"
+        - cell "Notifications"
+        - cell "2,921"
+      - row "Chase Bank Business 2,140":
+        - cell "Chase Bank"
+        - cell "Business"
+        - cell "2,140"
+- generic: "24.2"

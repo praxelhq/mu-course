@@ -1,0 +1,132 @@
+- navigation:
+  - link "FoodLens":
+    - /url: /
+    - generic: FoodLens
+  - link "Home":
+    - /url: /
+  - link "Scan":
+    - /url: /scan
+  - link "Browse Recipes" [active]:
+    - /url: /browse
+    - text: Browse Recipes
+  - link "Recent Scans":
+    - /url: /scans
+  - link "Saved recipes":
+    - /url: /saved
+- main:
+  - paragraph: Browse recipes
+  - heading "Find something delicious." [level=1]
+  - paragraph: Search, explore and discover recipes for every mood and craving.
+  - textbox "What are you in the mood for?"
+  - button "Something quick"
+  - button "High protein"
+  - button "Vegetarian"
+  - button "Italian"
+  - button "Healthy"
+  - button "Comfort food"
+  - link "Creamy Garlic Pasta Featured recipe Creamy Garlic Pasta 25 min · Easy View Recipe":
+    - /url: /recipe/creamy-garlic-pasta
+    - img "Creamy Garlic Pasta"
+    - text: Featured recipe
+    - heading "Creamy Garlic Pasta" [level=2]
+    - paragraph: 25 min · Easy
+    - text: View Recipe
+  - button "All": All
+  - button "Quick & Easy"
+  - button "Vegetarian"
+  - button "High Protein"
+  - button "Healthy"
+  - button "Comfort Food"
+  - button "Italian"
+  - button "Indian"
+  - button "Desserts"
+  - paragraph: 8 recipes
+  - article:
+    - link "Creamy Garlic Pasta Creamy Garlic Pasta 25 min · Easy View Recipe 25 min":
+      - /url: /recipe/creamy-garlic-pasta
+      - img "Creamy Garlic Pasta"
+      - heading "Creamy Garlic Pasta" [level=3]
+      - text: 25 min · Easy
+      - text: View Recipe
+      - generic: 25 min
+    - button "Save recipe":
+  - article:
+    - link "Shakshuka Shakshuka 20 min · Vegetarian View Recipe 20 min":
+      - /url: /recipe/shakshuka
+      - img "Shakshuka"
+      - heading "Shakshuka" [level=3]
+      - text: 20 min · Vegetarian
+      - text: View Recipe
+      - generic: 20 min
+    - button "Save recipe":
+  - article:
+    - link "Chicken Tacos Chicken Tacos 30 min · High Protein View Recipe 30 min":
+      - /url: /recipe/chicken-tacos
+      - img "Chicken Tacos"
+      - heading "Chicken Tacos" [level=3]
+      - text: 30 min · High Protein
+      - text: View Recipe
+      - generic: 30 min
+    - button "Save recipe":
+  - article:
+    - link "Paneer Tikka Bowl Paneer Tikka Bowl 25 min · High Protein View Recipe 25 min":
+      - /url: /recipe/paneer-tikka-bowl
+      - img "Paneer Tikka Bowl"
+      - heading "Paneer Tikka Bowl" [level=3]
+      - text: 25 min · High Protein
+      - text: View Recipe
+      - generic: 25 min
+    - button "Save recipe":
+  - article:
+    - link "Pesto Pasta Pesto Pasta 20 min · Quick & Easy View Recipe 20 min":
+      - /url: /recipe/pesto-pasta
+      - img "Pesto Pasta"
+      - heading "Pesto Pasta" [level=3]
+      - text: 20 min · Quick & Easy
+      - text: View Recipe
+      - generic: 20 min
+    - button "Save recipe":
+  - article:
+    - link "Ramen Ramen 35 min · Comfort Food View Recipe 35 min":
+      - /url: /recipe/ramen
+      - img "Ramen"
+      - heading "Ramen" [level=3]
+      - text: 35 min · Comfort Food
+      - text: View Recipe
+      - generic: 35 min
+    - button "Save recipe":
+  - article:
+    - link "Greek Salad Greek Salad 15 min · Healthy View Recipe 15 min":
+      - /url: /recipe/greek-salad
+      - img "Greek Salad"
+      - heading "Greek Salad" [level=3]
+      - text: 15 min · Healthy
+      - text: View Recipe
+      - generic: 15 min
+    - button "Save recipe":
+  - article:
+    - link "Chocolate Lava Cake Chocolate Lava Cake 30 min · Dessert View Recipe 30 min":
+      - /url: /recipe/chocolate-lava-cake
+      - img "Chocolate Lava Cake"
+      - heading "Chocolate Lava Cake" [level=3]
+      - text: 30 min · Dessert
+      - text: View Recipe
+      - generic: 30 min
+    - button "Save recipe":
+- contentinfo:
+  - generic: FoodLens
+  - paragraph: See your food differently. One picture. A whole new way to discover what's on your plate.
+  - link "Scan":
+    - /url: /scan
+  - link "Browse Recipes":
+    - /url: /browse
+  - link "Recent Scans":
+    - /url: /scans
+  - link "Saved":
+    - /url: /saved
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7hb7j64b2b9z2txfp26xt2vf0q?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

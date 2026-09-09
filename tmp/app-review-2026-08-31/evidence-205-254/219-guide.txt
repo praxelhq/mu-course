@@ -1,0 +1,184 @@
+- generic: "> INIT SYS..."
+- generic: "> LOADING KERNEL..."
+- generic: "> MOUNT VFS..."
+- generic: "> CHK TRACK DATA: SPA-FRANCORCHAMPS..."
+- generic: "> 19 CORNERS INDEXED..."
+- generic: "> READY."
+- heading "Track Translator" [level=1]
+- paragraph: "> SAME TRACK. YOUR EXCUSES CHANGED."
+- paragraph: Corner-by-corner driving intelligence — live from your inputs.
+- button "[ ENTER ]"
+- paragraph: TRACK // SPA-FRANCORCHAMPS LENGTH // 7.004 KM CORNERS // 19
+- banner:
+  - generic: ">_"
+  - heading "Track Translator" [level=1]
+  - navigation:
+    - button "Setup"
+    - button "HUD"
+    - button "Map"
+    - button "Corner Guide" [active]
+    - button "Debrief" [disabled]
+  - generic: TELEMETRY LINK OK
+- main:
+  - generic: CORNER GUIDE
+  - heading "Full Corner Reference — Spa-Francorchamps" [level=2]
+  - paragraph: "> Base target data for all 19 corners. Live adjustments (tire wear, damage, brake bias) apply on top of these during a session. Click a corner to jump the HUD there."
+  - generic: T1
+  - generic: LA SOURCE
+  - generic: BRAKE LATE. ROTATE EARLY.
+  - generic: ENTRY 76
+  - generic: APEX 58
+  - generic: GEAR 2
+  - generic: BRAKE 100M
+  - generic: ADJUST
+  - generic: T2
+  - generic: EAU ROUGE
+  - generic: SET THE CAR.
+  - generic: ENTRY 245
+  - generic: APEX 232
+  - generic: GEAR 7
+  - generic: BRAKE LIFT ONLY
+  - generic: TRANSFER
+  - generic: T3
+  - generic: RAIDILLON
+  - generic: COMMIT.
+  - generic: ENTRY 235
+  - generic: APEX 240
+  - generic: GEAR 7
+  - generic: BRAKE FLAT
+  - generic: RELEARN
+  - generic: T4
+  - generic: RAIDILLON EXIT
+  - generic: GET IT STRAIGHT.
+  - generic: ENTRY 245
+  - generic: APEX 255
+  - generic: GEAR 8
+  - generic: BRAKE FLAT
+  - generic: TRANSFER
+  - generic: T5
+  - generic: LES COMBES
+  - generic: BRAKE. ROTATE.
+  - generic: ENTRY 152
+  - generic: APEX 138
+  - generic: GEAR 4
+  - generic: BRAKE 110M
+  - generic: ADJUST
+  - generic: T6
+  - generic: LES COMBES (MID)
+  - generic: RELEASE.
+  - generic: ENTRY 140
+  - generic: APEX 145
+  - generic: GEAR 4
+  - generic: BRAKE TRAIL
+  - generic: TRANSFER
+  - generic: T7
+  - generic: MALMEDY
+  - generic: SET UP THE NEXT.
+  - generic: ENTRY 125
+  - generic: APEX 118
+  - generic: GEAR 3
+  - generic: BRAKE 50M
+  - generic: ADJUST
+  - generic: T8
+  - generic: BRUXELLES
+  - generic: ROTATE.
+  - generic: ENTRY 105
+  - generic: APEX 92
+  - generic: GEAR 3
+  - generic: BRAKE 80M
+  - generic: RELEARN
+  - generic: T9
+  - generic: JACKY ICKX
+  - generic: KEEP MOMENTUM.
+  - generic: ENTRY 165
+  - generic: APEX 172
+  - generic: GEAR 5
+  - generic: BRAKE LIFT
+  - generic: TRANSFER
+  - generic: T10
+  - generic: POUHON (ENTRY)
+  - generic: COMMIT.
+  - generic: ENTRY 215
+  - generic: APEX 198
+  - generic: GEAR 6
+  - generic: BRAKE 70M
+  - generic: ADJUST
+  - generic: T11
+  - generic: POUHON (EXIT)
+  - generic: CARRY IT OUT.
+  - generic: ENTRY 205
+  - generic: APEX 212
+  - generic: GEAR 6
+  - generic: BRAKE GAS
+  - generic: TRANSFER
+  - generic: T12
+  - generic: FAGNES (ENTRY)
+  - generic: CHANGE DIRECTION.
+  - generic: ENTRY 175
+  - generic: APEX 162
+  - generic: GEAR 5
+  - generic: BRAKE 60M
+  - generic: ADJUST
+  - generic: T13
+  - generic: FAGNES (EXIT)
+  - generic: SET THE EXIT.
+  - generic: ENTRY 160
+  - generic: APEX 168
+  - generic: GEAR 5
+  - generic: BRAKE GAS
+  - generic: TRANSFER
+  - generic: T14
+  - generic: CAMPUS
+  - generic: ROTATE CLEANLY.
+  - generic: ENTRY 145
+  - generic: APEX 132
+  - generic: GEAR 4
+  - generic: BRAKE 50M
+  - generic: ADJUST
+  - generic: T15
+  - generic: PAUL FRERE
+  - generic: BUILD SPEED.
+  - generic: ENTRY 185
+  - generic: APEX 192
+  - generic: GEAR 6
+  - generic: BRAKE LIFT
+  - generic: TRANSFER
+  - generic: T16
+  - generic: BLANCHIMONT (ENTRY)
+  - generic: COMMIT.
+  - generic: ENTRY 285
+  - generic: APEX 292
+  - generic: GEAR 8
+  - generic: BRAKE FLAT
+  - generic: TRANSFER
+  - generic: T17
+  - generic: BLANCHIMONT (EXIT)
+  - generic: STAY IN IT.
+  - generic: ENTRY 295
+  - generic: APEX 302
+  - generic: GEAR 8
+  - generic: BRAKE FLAT
+  - generic: TRANSFER
+  - generic: T18
+  - generic: BUS STOP (ENTRY)
+  - generic: BRAKE HARD.
+  - generic: ENTRY 115
+  - generic: APEX 82
+  - generic: GEAR 2
+  - generic: BRAKE 105M
+  - generic: RELEARN
+  - generic: T19
+  - generic: BUS STOP (EXIT)
+  - generic: GET OUT.
+  - generic: ENTRY 95
+  - generic: APEX 112
+  - generic: GEAR 2
+  - generic: BRAKE GAS
+  - generic: TRANSFER
+- contentinfo:
+  - generic: TRACK // SPA-FRANCORCHAMPS
+  - generic: LENGTH // 7.004 KM
+  - generic: SESSION // ACTIVE
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

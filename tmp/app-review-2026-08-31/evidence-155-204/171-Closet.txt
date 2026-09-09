@@ -1,0 +1,72 @@
+- main:
+  - paragraph: 8 pieces
+  - heading "Closet" [level=1]
+  - paragraph: Photograph a piece and it tags itself — category, colour, formality — then waits patiently for its turn.
+  - button "all"
+  - button "top"
+  - button "bottom"
+  - button "outerwear"
+  - button "shoes"
+  - button "accessory"
+  - button "Add item one photo, that is all":
+    - generic: Add item
+    - generic: one photo, that is all
+  - article:
+    - img "Cream silk shirt"
+    - heading "Cream silk shirt" [level=2]
+    - paragraph: top · Cream · Considered
+    - paragraph: Resting 19 days
+  - article:
+    - img "Ribbed stone knit"
+    - heading "Ribbed stone knit" [level=2]
+    - paragraph: top · Stone grey · Everyday
+    - paragraph: Resting 4 days
+  - article:
+    - img "Olive wool trouser"
+    - heading "Olive wool trouser" [level=2]
+    - paragraph: bottom · Deep olive · Considered
+    - paragraph: Gathering dust · 26 days
+  - article:
+    - img "Ecru linen trouser"
+    - heading "Ecru linen trouser" [level=2]
+    - paragraph: bottom · Ecru · Relaxed
+    - paragraph: Resting 8 days
+  - article:
+    - img "Camel wool coat"
+    - heading "Camel wool coat" [level=2]
+    - paragraph: outerwear · Camel · Formal
+    - paragraph: Resting 12 days
+  - article:
+    - img "Black leather loafer"
+    - heading "Black leather loafer" [level=2]
+    - paragraph: shoes · Black · Considered
+    - paragraph: Gathering dust · 31 days
+  - article:
+    - img "White leather sneaker"
+    - heading "White leather sneaker" [level=2]
+    - paragraph: shoes · Off-white · Relaxed
+    - paragraph: Resting 2 days
+  - article:
+    - img "Fine gold chain"
+    - heading "Fine gold chain" [level=2]
+    - paragraph: accessory · Gold · Everyday
+    - paragraph: Resting 6 days
+- navigation:
+  - list:
+    - link "Quiz":
+      - /url: /quiz
+      - generic: Quiz
+    - link "Closet" [active]:
+      - /url: /closet
+      - generic: Closet
+    - link "Today":
+      - /url: /
+      - generic: Today
+    - link "Lookbook":
+      - /url: /lookbook
+      - generic: Lookbook
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_27qwyvtp1h9tvr60j73h0259jf?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

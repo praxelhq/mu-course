@@ -1,0 +1,66 @@
+- main:
+  - iframe [active]:
+    - complementary:
+      - link "V VAULTPLAYCRYPTO GAMING":
+        - /url: "#casino"
+        - generic: V
+        - generic: VAULTPLAYCRYPTO GAMING
+      - navigation "Primary navigation":
+        - button "01 Casino":
+          - generic: "01"
+          - text: Casino
+        - button "02 Crash":
+          - generic: "02"
+          - text: Crash
+        - button "03 Dice":
+          - generic: "03"
+          - text: Dice
+        - button "04 Coin Flip":
+          - generic: "04"
+          - text: Coin Flip
+        - button "05 Transactions":
+          - generic: "05"
+          - text: Transactions
+        - button "06 Fairness":
+          - generic: "06"
+          - text: Fairness
+        - button "07 Account" [active]:
+          - generic: "07"
+          - text: Account
+      - generic: Demo mode
+      - generic: Simulated environment
+    - main:
+      - generic: Demo Network
+      - generic: 2,460.00 USDC
+      - button "Connect Wallet"
+      - generic: Private Membership
+      - heading "Your account." [level=1]
+      - heading "Profile & wallet" [level=2]
+      - generic: Not connected
+      - generic: Connect a mock wallet to begin
+      - generic: 2,460.00 USDC
+      - button "Connect Wallet"
+      - button "Copy address"
+      - button "Disconnect"
+      - text: Total wagered
+      - strong: $196.00
+      - text: Total won
+      - strong: $248.00
+      - text: Net P&L
+      - strong: +$52.00
+      - text: Games played
+      - strong: "24"
+      - text: Win rate
+      - strong: 63%
+      - text: Best multiplier
+      - strong: 8.27x
+      - text: Biggest win
+      - strong: $64.20
+      - generic: Vault / Level 02
+      - generic: Private membership.
+      - paragraph: Next level unlocks enhanced rewards.
+      - generic: 1,260 / 2,500 XP
+      - generic: 50%
+      - button "Reset demo environment →"
+    - status
+- alert

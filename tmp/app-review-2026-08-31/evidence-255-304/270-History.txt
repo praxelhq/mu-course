@@ -1,0 +1,27 @@
+- banner:
+  - paragraph: Over time
+  - heading "Your patterns" [level=1]
+  - paragraph: Private to you. Nothing here is shared.
+- paragraph: Sign in to keep a private history of your check-ins and see how your mood shifts.
+- link "Sign in":
+  - /url: /auth
+  - text: Sign in
+  - generic: arrow_forward
+- navigation:
+  - list:
+    - link "Home":
+      - /url: /
+      - generic: home
+      - text: Home
+    - link "Activities":
+      - /url: /activities
+      - generic: spa
+      - text: Activities
+    - link "History":
+      - /url: /history
+      - generic: insights
+      - text: History
+    - link "You":
+      - /url: /account
+      - generic: person
+      - text: You

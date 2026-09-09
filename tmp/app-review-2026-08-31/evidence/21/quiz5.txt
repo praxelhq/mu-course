@@ -1,0 +1,38 @@
+- banner:
+  - button "Go back":
+  - button "S SipMatch The Alchemist's Palette":
+    - generic: S
+    - generic: SipMatch
+    - generic: The Alchemist's Palette
+  - button "User profile":
+    - img "User avatar"
+- main:
+  - button "Previous":
+    - text: Previous
+  - generic: Question 5 of 10
+  - generic: 50%
+  - heading "Fresh Garden Herbs or Warm Dark Spices?" [level=1]
+  - paragraph: Which botanical aroma captures your imagination?
+  - button "Option A Fresh Garden Herbs Muddled basil, mint sprigs, thyme & cucumber." [active]:
+    - generic: Option A
+    - heading "Fresh Garden Herbs" [level=2]
+    - paragraph: Muddled basil, mint sprigs, thyme & cucumber.
+  - button "Option B Warm Dark Spices Aromatic cinnamon, ginger nectar & peated smoke.":
+    - generic: Option B
+    - heading "Warm Dark Spices" [level=2]
+    - paragraph: Aromatic cinnamon, ginger nectar & peated smoke.
+  - generic: VS
+  - button "Calculate results with answers selected so far"
+- navigation:
+  - button "Home":
+    - generic: Home
+  - button "Discover":
+    - generic: Discover
+  - button "2 Saved":
+    - generic: "2"
+    - generic: Saved
+  - button "Profile":
+    - generic: Profile
+- link "Made in Bolt":
+  - /url: https://bolt.new
+  - generic: Made in Bolt

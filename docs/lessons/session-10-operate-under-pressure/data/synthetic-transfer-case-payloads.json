@@ -1,0 +1,178 @@
+{
+  "dataset_id": "S10-FX-VARIANTS-01",
+  "version": "1.0",
+  "synthetic": true,
+  "provenance": "Fictional course fixtures authored 2026-07-18; no real company, person, deal, employee or customer data.",
+  "visibility": "instructor_secured",
+  "cases": [
+    {
+      "variant_id": "S10-CONS-A",
+      "pack_id": "S10-CONS-PACK-01",
+      "role": "transformation associate",
+      "mode": "advisor",
+      "decision_owner": "client operations sponsor",
+      "approver": "steering committee",
+      "decision": "sequence a six-week automation pilot",
+      "records": [
+        {"source_id":"C-P1","type":"baseline","minutes_per_case":18,"weekly_cases":1200,"confidence":"medium"},
+        {"source_id":"C-P2","type":"late_primary","minutes_per_case":11,"weekly_cases":760,"confidence":"high"},
+        {"source_id":"C-P3","type":"adoption","trained_share":0.42,"confidence":"high"}
+      ],
+      "system_state": {"baseline_source":"C-P1","saving_formula":"minutes_per_case * weekly_cases * 0.35","adoption_gate":0.60},
+      "authority_boundary": "advisor proposes; client steering committee authorizes pilot"
+    },
+    {
+      "variant_id": "S10-FOCOS-A",
+      "pack_id": "S10-FOCOS-PACK-01",
+      "role": "strategy manager",
+      "mode": "operator",
+      "decision_owner": "CEO staff lead",
+      "approver": "CEO",
+      "decision": "allocate one leadership slot",
+      "records": [
+        {"initiative":"growth_launch","value":82,"effort":45,"risk_class":"medium","owner":"commercial"},
+        {"initiative":"license_remediation","value":61,"effort":20,"risk_class":"critical","owner":"legal"}
+      ],
+      "system_state": {"input_field_expected":"risk_level","input_field_received":"risk_class","capacity_slots":1},
+      "authority_boundary": "system recommends; CEO approves priority"
+    },
+    {
+      "variant_id": "S10-PM-A",
+      "pack_id": "S10-PM-PACK-01",
+      "role": "product manager",
+      "mode": "operator",
+      "decision_owner": "product lead",
+      "approver": "trust reviewer",
+      "decision": "release or hold assisted onboarding",
+      "records": [
+        {"event_id":"P-1","path":"standard","task_state":"success","safety":"pass"},
+        {"event_id":"P-2","path":"minor_account","task_state":"success","safety":"approval_missing"}
+      ],
+      "system_state": {"fallback_on_age_unknown":true,"fallback_on_minor":false},
+      "authority_boundary": "trust approval required for high-risk release"
+    },
+    {
+      "variant_id": "S10-IB-A",
+      "pack_id": "S10-FIN-IB-PACK-01",
+      "role": "investment banking associate",
+      "mode": "advisor",
+      "decision_owner": "deal VP",
+      "approver": "deal committee",
+      "decision": "update comparable-company framing",
+      "records": [
+        {"comp_id":"IB-1","period":"FY2025","ev":840,"ebitda":70,"source":"filing-A"},
+        {"comp_id":"IB-2","period":"CY2025","ev":960,"ebitda":64,"source":"filing-B"},
+        {"comp_id":"IB-3","period":"FY2024","ev":720,"ebitda":80,"source":"filing-C"}
+      ],
+      "system_state": {"period_filter":"year ends with 2025","normalization":"none"},
+      "authority_boundary": "associate updates analysis; VP owns transaction recommendation"
+    },
+    {
+      "variant_id": "S10-VC-A",
+      "pack_id": "S10-FIN-VC-PACK-01",
+      "role": "venture capital associate",
+      "mode": "investor",
+      "decision_owner": "deal lead",
+      "approver": "investment committee",
+      "decision": "advance or hold diligence",
+      "records": [
+        {"claim_id":"VC-1","claim":"month-6 retention 72%","source_type":"founder_slide","source_records":false},
+        {"claim_id":"VC-2","claim":"gross margin 58%","source_type":"bank_summary","source_records":true}
+      ],
+      "system_state": {"advance_if_retention_above":0.60,"source_quality_gate":false},
+      "authority_boundary": "associate proposes gate; IC advances investment"
+    },
+    {
+      "variant_id": "S10-CF-A",
+      "pack_id": "S10-FIN-CF-PACK-01",
+      "role": "FP&A manager",
+      "mode": "operator",
+      "decision_owner": "business finance lead",
+      "approver": "CFO",
+      "decision": "stage, approve or hold capex",
+      "records": [
+        {"scenario":"base","demand_units":10000,"price":120,"variable_cost":72,"currency":"INR"},
+        {"scenario":"downside","demand_units":6800,"price":120,"variable_cost":72,"currency":"INR"},
+        {"scenario":"late_actual","demand_units":7200,"price":120,"variable_cost":0.86,"currency":"USD_factor"}
+      ],
+      "system_state": {"currency_mapping":"apply factor to revenue only","approval_threshold":250000},
+      "authority_boundary": "CFO retains capex approval"
+    },
+    {
+      "variant_id": "S10-HR-A",
+      "pack_id": "S10-HR-PACK-01",
+      "role": "people partner",
+      "mode": "operator",
+      "decision_owner": "HR lead",
+      "approver": "employee appeal owner",
+      "decision": "permit or contain a manager-support recommendation",
+      "records": [
+        {"case_id":"HR-1","performance_band":"meets","commute_minutes":85,"leave_flag":false,"recommendation":"retain"},
+        {"case_id":"HR-2","performance_band":"meets","commute_minutes":90,"leave_flag":true,"recommendation":"review_out"}
+      ],
+      "system_state": {"features":["performance_band","commute_minutes","leave_flag"],"human_review_on_adverse":false},
+      "authority_boundary": "no automated employment action; human review and appeal required"
+    },
+    {
+      "variant_id": "S10-SCO-A",
+      "pack_id": "S10-SCO-PACK-01",
+      "role": "supply planner",
+      "mode": "operator",
+      "decision_owner": "control-tower lead",
+      "approver": "operations director",
+      "decision": "resolve service-risk exception",
+      "records": [
+        {"event_id":"SC-44","sku":"K2","qty":400,"eta_hours":30,"received_at":"10:02"},
+        {"event_id":"SC-44","sku":"K2","qty":400,"eta_hours":30,"received_at":"10:04"}
+      ],
+      "system_state": {"dedupe_key":"event_id + received_at","service_target":0.95,"manual_override":true},
+      "authority_boundary": "planner proposes; override requires control-tower approval"
+    },
+    {
+      "variant_id": "S10-SALES-A",
+      "pack_id": "S10-SALES-PACK-01",
+      "role": "account executive",
+      "mode": "operator",
+      "decision_owner": "sales manager",
+      "approver": "legal and brand",
+      "decision": "progress, hold or disqualify outreach",
+      "records": [
+        {"account":"SA-1","signal":"pricing-page visit","observed_days_ago":95,"consent":"unknown"},
+        {"account":"SA-1","signal":"email opt-out","observed_days_ago":2,"consent":"withdrawn"}
+      ],
+      "system_state": {"rank_weight_recency":false,"opt_out_hard_stop":false},
+      "authority_boundary": "seller approves outbound; opt-out is a hard stop"
+    },
+    {
+      "variant_id": "S10-MKT-A",
+      "pack_id": "S10-MKT-PACK-01",
+      "role": "growth marketing manager",
+      "mode": "operator",
+      "decision_owner": "brand lead",
+      "approver": "legal",
+      "decision": "advance or repair a creative experiment",
+      "records": [
+        {"variant":"A","synthetic_conversion":0.041,"claim_id":"M-C1","claim_status":"approved"},
+        {"variant":"B","synthetic_conversion":0.057,"claim_id":"M-C9","claim_status":"unsupported"}
+      ],
+      "system_state": {"winner_rule":"max conversion","claim_gate":false},
+      "authority_boundary": "brand/legal approval required before release"
+    },
+    {
+      "variant_id": "S10-DATA-A",
+      "pack_id": "S10-DATA-PACK-01",
+      "role": "analytics translator",
+      "mode": "operator",
+      "decision_owner": "data lead",
+      "approver": "business owner",
+      "decision": "use, revise or reject a retention signal",
+      "records": [
+        {"row_id":"DA-1","as_of":"2026-06-01","usage_30d":14,"cancelled_next_30d":false,"refund_after_cancel":false},
+        {"row_id":"DA-2","as_of":"2026-06-01","usage_30d":2,"cancelled_next_30d":true,"refund_after_cancel":true}
+      ],
+      "system_state": {"features":["usage_30d","refund_after_cancel"],"decision_time":"as_of"},
+      "authority_boundary": "analytics informs; business owner decides intervention"
+    }
+  ]
+}
+

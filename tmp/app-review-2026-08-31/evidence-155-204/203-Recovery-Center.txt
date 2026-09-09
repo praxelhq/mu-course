@@ -1,0 +1,101 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6rvdjrhspw8mdbbh83qeqde5e9?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- navigation:
+  - generic: payments
+  - heading "RecovrAI" [level=1]
+  - paragraph: Receivables Recovery
+  - link "Add Invoice":
+    - /url: /invoices/new
+    - generic: add
+    - text: Add Invoice
+  - link "Dashboard":
+    - /url: /
+    - generic: dashboard
+    - generic: Dashboard
+  - link "Add Invoice":
+    - /url: /invoices/new
+    - generic: receipt_long
+    - generic: Add Invoice
+  - link "Debtor Details":
+    - /url: /invoices/details
+    - generic: group
+    - generic: Debtor Details
+  - link "Recovery Center":
+    - /url: /recovery
+    - generic: bolt
+    - generic: Recovery Center
+  - link "Escalation":
+    - /url: /escalation
+    - generic: gavel
+    - generic: Escalation
+  - link "Plans & Reports":
+    - /url: /pricing
+    - generic: analytics
+    - generic: Plans & Reports
+  - link "Help Center":
+    - /url: "#"
+    - generic: help
+    - generic: Help Center
+  - link "Sign Out":
+    - /url: /signin
+    - generic: logout
+    - generic: Sign Out
+- main:
+  - generic: search
+  - textbox "Search invoices, clients..."
+  - button:
+    - generic: notifications
+  - button:
+    - generic: help
+  - generic: MK
+  - generic: "Invoice #INV-8902"
+  - generic: Acme Technologies Ltd.
+  - heading "AI Recovery Recommendation" [level=1]:
+    - generic: psychiatry
+    - text: AI Recovery Recommendation
+  - paragraph: Based on debtor behavior and historical payment patterns, our AI engine suggests the following next step to maximize recovery likelihood.
+  - link "View Timeline":
+    - /url: /invoices/INV-2023-0891
+    - generic: history
+    - text: View Timeline
+  - generic: auto_awesome
+  - generic: Smart Recommendation
+  - 'heading "Level 2: Formal Payment Demand" [level=2]'
+  - paragraph: Send a formalized, strongly-worded demand letter via registered email and postal mail. This escalates the tone from previous friendly reminders while maintaining a professional boundary before legal action.
+  - link "Accept Recommendation":
+    - /url: /escalation
+    - generic: check_circle
+    - text: Accept Recommendation
+  - button "Choose Different Step":
+    - generic: tune
+    - text: Choose Different Step
+  - heading "Recovery Probability" [level=2]
+  - generic: 87%
+  - generic: Success Rate
+  - paragraph:
+    - text: Taking this step increases recovery odds by
+    - strong: +14%
+    - text: compared to waiting.
+  - generic: analytics
+  - heading "Why this recommendation?" [level=2]
+  - generic: calendar_clock
+  - heading "Age of Debt" [level=3]
+  - paragraph:
+    - text: Invoice is currently
+    - strong: 15 days past due
+    - text: . Standard soft reminders typically lose efficacy after day 10 for this industry segment.
+  - generic: mark_email_read
+  - heading "Communication History" [level=3]
+  - paragraph:
+    - text: Debtor has received 2 automated emails and 1 SMS with
+    - strong: zero responses
+    - text: . A change in communication medium and tone is required.
+  - generic: model_training
+  - heading "Debtor Risk Profile" [level=3]
+  - paragraph:
+    - text: Similar MSME profiles in the
+    - emphasis: Manufacturing
+    - text: sector respond positively to formal demands at this stage in 82% of historical cases.

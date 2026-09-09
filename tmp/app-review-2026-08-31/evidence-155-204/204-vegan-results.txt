@@ -1,0 +1,89 @@
+- banner:
+  - generic: C
+  - generic: CraveAI
+  - button "psychology Find Cravings":
+    - generic: psychology
+    - generic: Find Cravings
+  - button "Notifications":
+    - generic: notifications
+- complementary:
+  - generic: C
+  - heading "CraveAI" [level=1]
+  - paragraph: Culinary Concierge
+  - button "add New Request":
+    - generic: add
+    - generic: New Request
+  - generic: Navigation
+  - navigation:
+    - button "home Home":
+      - generic: home
+      - generic: Home
+    - button "smart_toy AI Assistant":
+      - generic: smart_toy
+      - generic: AI Assistant
+    - button "favorite Saved 4":
+      - generic: favorite
+      - generic: Saved
+      - generic: "4"
+    - button "bar_chart History":
+      - generic: bar_chart
+      - generic: History
+  - generic: psychology
+  - generic: AI Engine Online
+  - paragraph: Real-time biometric & craving alignment powered by Gemini.
+- main:
+  - generic: psychology
+  - generic: Biometric Match Complete
+  - heading "We found something for you." [level=1]
+  - paragraph: Based on your mood, hunger, and calibrated flavor preferences.
+  - article:
+    - img "Golden Turmeric & Edamame Power Bowl"
+    - generic: stars
+    - generic: 99%
+    - button "Save for later":
+      - generic: favorite
+    - heading "Golden Turmeric & Edamame Power Bowl" [level=2]
+    - generic: Clean Sustained Energy
+    - generic: ~490 kcal
+    - generic: ~24g protein
+    - generic: schedule
+    - generic: 18 min prep
+    - generic: •
+    - generic: California Clean
+    - button "I'm Craving This"
+    - button "See Details"
+  - article:
+    - img "Miso Glazed Salmon Bowl"
+    - generic: stars
+    - generic: 84%
+    - button "Save for later":
+      - generic: favorite
+    - heading "Miso Glazed Salmon Bowl" [level=2]
+    - generic: Perfect for your high-protein craving
+    - generic: ~450 kcal
+    - generic: ~38g protein
+    - generic: schedule
+    - generic: 15 min prep
+    - generic: •
+    - generic: Japanese
+    - button "I'm Craving This"
+    - button "See Details"
+  - article:
+    - img "Spicy Salmon Quinoa Bowl"
+    - generic: stars
+    - generic: 84%
+    - button "Save for later":
+      - generic: favorite
+    - heading "Spicy Salmon Quinoa Bowl" [level=2]
+    - generic: Perfect for your spicy craving
+    - generic: ~620 kcal
+    - generic: ~38g protein
+    - generic: schedule
+    - generic: 20 min prep
+    - generic: •
+    - generic: Fusion
+    - button "I'm Craving This"
+    - button "See Details"
+  - button "refresh Not feeling it? Try again":
+    - generic: refresh
+    - generic: Not feeling it? Try again

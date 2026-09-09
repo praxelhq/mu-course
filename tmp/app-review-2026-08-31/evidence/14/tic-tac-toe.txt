@@ -1,0 +1,38 @@
+- navigation:
+  - link "GAME HUB":
+    - /url: ../index.html
+  - link "Home":
+    - /url: ../index.html
+  - link "Pen Fight":
+    - /url: pen-fight.html
+  - link "Rock Paper Scissors":
+    - /url: rock-paper-scissors.html
+- main:
+  - heading "⭕ Tic Tac Toe" [level=1]
+  - paragraph: Get 3 in a row to win.
+  - button "BOT"
+  - button "PVP"
+  - generic: X
+  - generic: "0"
+  - generic: VS
+  - generic: BOT (O)
+  - generic: "0"
+  - button
+  - button
+  - button
+  - button
+  - button
+  - button
+  - button
+  - button
+  - button
+  - heading "You Win!" [level=2]
+  - button "Play Again"
+  - button "Reset Scores"
+  - heading "How to play" [level=3]
+  - list:
+    - listitem: Players take turns placing X and O on the grid.
+    - listitem: First to get 3 marks in a row (horizontally, vertically, or diagonally) wins the round.
+    - listitem: In BOT mode, the bot plays a perfect (unbeatable) strategy — the best you can do is draw.
+- contentinfo:
+  - paragraph: © 2026 Game Hub Online.

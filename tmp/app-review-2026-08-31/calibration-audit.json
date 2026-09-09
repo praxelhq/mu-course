@@ -1,0 +1,430 @@
+[
+  {
+    "sourceRow": 27,
+    "secondPass": "supplemental-027.json",
+    "before": {
+      "sourceRow": 27,
+      "name": "Shabareesh Parlakota",
+      "url": "https://project-voyra.vercel.app/",
+      "appName": "Voyra",
+      "visual": 8.5,
+      "functionality": null,
+      "overall": null,
+      "feedback": "The travel positioning and visual presentation are considered, and the preference form is clear. I could not complete native date entry reliably in this review environment, so I am leaving execution unscored rather than calling the app broken. A sample generated itinerary would make the core experience easier to assess.",
+      "status": "Partial review",
+      "tested": "Landing, destination autocomplete Japan, India origin, traveller type/count and budget controls. Date fills changed DOM values but did not reliably update the form; Continue remained disabled.",
+      "limitations": "Native date control/tooling limitation prevented reaching itinerary generation. No booking or payment attempted."
+    },
+    "after": {
+      "sourceRow": 27,
+      "name": "Shabareesh Parlakota",
+      "url": "https://project-voyra.vercel.app/",
+      "appName": "Voyra",
+      "visual": 8.5,
+      "functionality": 7.5,
+      "overall": 8,
+      "status": "Reviewed",
+      "feedback": "The considered visual design carries through to a tailored five-day itinerary, and activity alternatives and saved changes work. Tighten budget enforcement and recalculation: a ₹2 lakh ceiling produced a ₹2.15 lakh estimate, and swapping a ₹7,500-per-person transfer for a ₹3,500 alternative left the total unchanged.",
+      "tested": "Chrome second pass resolved native dates with textbox.pressSequentially, using01–05Oct2026, India→Japan,2friends, Comfortable budget, slow pace/quiet nightlife, vegetarian/no-alcohol notes and INR200000 ceiling. Generated tailored Tokyo+Fuji five-day itinerary with airport transport. Swapped first transfer to Narita Express ₹3500/person and verified replacement survived reload. Initial estimated total₹215000 stayed unchanged after cheaper swap.",
+      "limitations": "Earlier date-entry failure was browser tooling, not an app defect. Live prices, travel times, venue availability, vegetarian-menu accuracy and entry requirements not independently verified. Regenerate-day and new-trip reset not exercised; no booking/payment. Evidence stored under evidence-095-104/027-*.",
+      "section": "Section B",
+      "email": "shabareesh.parlakota2027@mastersunion.org",
+      "brief": "https://drive.google.com/open?id=1AomiANBy1HnWRyl8Z9QlmQlpFZtXS0zd"
+    }
+  },
+  {
+    "sourceRow": 232,
+    "secondPass": "supplemental-232.json",
+    "before": {
+      "sourceRow": 232,
+      "name": "Ashray",
+      "url": "https://decision-flow-glass.lovable.app",
+      "appName": "Decision Log",
+      "visual": 7.5,
+      "functionality": null,
+      "overall": null,
+      "status": "Partial review",
+      "tested": [
+        "Inspected seven existing decisions and confidence/calibration metrics",
+        "Filtered wrong outcomes",
+        "Filled synthetic title, reasoning, category and revisit date; Save remained disabled",
+        "Retried date entry and blur; new entry was not created; reload returned existing seven logs"
+      ],
+      "limitations": [
+        "Date control did not commit a usable value during browser testing; cannot separate app validation from browser automation limitation",
+        "Existing decisions/outcomes were not changed; new-entry persistence unverified"
+      ],
+      "feedback": "The decision, reflection and calibration model is thoughtful, and outcome filters make the existing history useful. I could not verify creation because the native date input did not commit during automated testing; functionality and overall scores are withheld rather than treating this as an app defect."
+    },
+    "after": {
+      "sourceRow": 232,
+      "name": "Ashray",
+      "url": "https://decision-flow-glass.lovable.app",
+      "appName": "Decision Log",
+      "visual": 7.5,
+      "functionality": 8,
+      "overall": 8,
+      "status": "Reviewed",
+      "tested": [
+        "Second pass resolved native date entry using visible Chrome keyboard actions, with synthetic revisit date 2026-09-01.",
+        "Created QA Demo: Try a 20-minute study block with reasoning and confidence 3; total increased from 7 to 8 and new record persisted after reload.",
+        "Recorded Mixed outcome and a synthetic reflection on only the new test record; metrics became 8 logged, 7 resolved, 2 correct, 2 mixed, 3 wrong, 1 pending and 43% hit rate.",
+        "Reload preserved the outcome and reflection; search for QA Demo isolated the new record.",
+        "Inspected single-page metrics, category/calibration controls and expanded resolved record visually."
+      ],
+      "limitations": [
+        "Earlier native date block was browser tooling; no deduction for that limitation.",
+        "Existing seeded records were not modified.",
+        "No edit, reopen or undo control was visible on the resolved test record; reminders and long-term calibration were not verified."
+      ],
+      "feedback": "The decision-to-reflection loop works end to end, and both the saved outcome and calibration totals survive reload. Add a clear correction flow for entered decisions or outcomes and explain how small sample sizes affect the calibration percentages.",
+      "section": "Section F",
+      "email": "ashray2027@mastersunion.org",
+      "brief": "https://drive.google.com/open?id=13aYYDfsFFIku3AUJwhhkPWHZOxU4a9A3"
+    }
+  },
+  {
+    "sourceRow": 308,
+    "secondPass": "supplemental-308.json",
+    "before": {
+      "sourceRow": 308,
+      "name": "Uttiya Biswas",
+      "url": "https://lucent-truffle-412b1f.netlify.app/",
+      "appName": "SheStrong",
+      "visual": 7,
+      "functionality": null,
+      "overall": null,
+      "feedback": "The wellness onboarding has a calm visual hierarchy and an explicit demo entry. Native cycle-date entry could not be completed through the review tool, so the tracking features remain unverified; provide a skip path or preconfigured demo for assessment.",
+      "status": "Partial review",
+      "tested": "Demo credentials entry, sign in, fictional first-name onboarding, date step and reload.",
+      "limitations": "Review-tool limitation at native date input; core wellness screens inaccessible beyond onboarding. No real health data used."
+    },
+    "after": {
+      "sourceRow": 308,
+      "name": "Uttiya Biswas",
+      "url": "https://lucent-truffle-412b1f.netlify.app/",
+      "appName": "SheStrong",
+      "visual": 7,
+      "functionality": 3,
+      "overall": 4.5,
+      "status": "Reviewed",
+      "tested": [
+        "Second pass used the offered demo login and synthetic onboarding name QA Demo, last period 2026-08-15, default 28-day cycle; visible keyboard entry resolved native date tooling.",
+        "Onboarding completed and home dashboard showed personalized cycle phase and expected next period; identity and cycle setup survived reloads.",
+        "LOG YOUR SYMPTOMS crashed to a blank screen; browser error ReferenceError: moodRating is not defined.",
+        "After separate reloads, Calendar, Learn and Relief each crashed to blank screens. Browser errors named periodDates, readingSessions and triedMethods respectively.",
+        "Profile rendered name, cycle values, settings/help affordances and a medical disclaimer. Its fixed Tracking since Jan 2024 text did not correspond to new synthetic onboarding.",
+        "Inspected dashboard and failure screenshots; all main navigation destinations were attempted."
+      ],
+      "limitations": [
+        "Earlier native date block was a tooling limitation and is not penalized.",
+        "Only synthetic demo data used; no real medical data, notifications or device permissions were entered or granted.",
+        "Clinical correctness, security claims and real account persistence were not assessed.",
+        "Symptom tracking and three main sections could not be used due confirmed runtime crashes; deeper profile settings were not exercised."
+      ],
+      "feedback": "The onboarding and home dashboard provide a clear, visually consistent starting point, and the cycle setup survives reload. Fix the runtime crashes in symptom logging, Calendar, Learn and Relief before adding more features, then verify that a saved symptom can be revisited across sessions.",
+      "section": "Section G",
+      "email": "uttiya.biswas2027@mastersunion.org",
+      "brief": "https://drive.google.com/open?id=1dZ6AfGiNidIQ2y_A_09fBqdxSvP5Pq7Z"
+    }
+  },
+  {
+    "sourceRow": 340,
+    "secondPass": "supplemental-340.json",
+    "before": {
+      "sourceRow": 340,
+      "name": "Bhagyam Maheshwary",
+      "url": "https://fridge-flow-app.lovable.app",
+      "visual": 7.5,
+      "functionality": null,
+      "overall": null,
+      "feedback": "The urgency ordering and compact summary make the food-waste problem easy to understand. Native date entry could not be completed through the review tool, so adding food, consumption and saved totals remain unverified; a sample-item demo would allow the full workflow to be assessed.",
+      "status": "Partial review",
+      "tested": "Dashboard, Add Food synthetic name/date, retry with blur, validation response and reload.",
+      "limitations": "Review-tool limitation: native date fill changed the visible value without the application accepting it. Existing foods untouched; core save/consume/persistence unobservable.",
+      "appName": "FridgeFlow"
+    },
+    "after": {
+      "sourceRow": 340,
+      "name": "Bhagyam Maheshwary",
+      "url": "https://fridge-flow-app.lovable.app",
+      "appName": "FridgeFlow",
+      "visual": 7.5,
+      "functionality": 8,
+      "overall": 7.5,
+      "status": "Reviewed",
+      "feedback": "The urgency ordering and compact summary make the food-waste problem easy to act on, and adding and consuming an item updates the correct totals across reloads. Add a visible consumption history and an undo option so accidental taps can be corrected and users can review what they saved.",
+      "tested": "Second pass resolved native expiry entry with keyboard input. Added QA Demo Milk expiring1Sep2026: items8→9 and expiringsoon2→3; reload retained item. Marked only that synthetic item consumed: totals returned8/2 and consumedthisweek0→1, retained after reload.",
+      "limitations": "Earlier date issue was browser tooling, not an app defect. Existing foods untouched; notifications, across-week aggregation and deletion recovery not verified. No consumption history/undo visible in reviewed single-dashboard flow.",
+      "section": "Section A",
+      "email": "bhagyam.maheshwary2028@mastersunion.org",
+      "brief": "https://drive.google.com/open?id=1Lqjf8uRMlCb2eHZwun196teDJmDtOGqG"
+    }
+  },
+  {
+    "sourceRow": 39,
+    "before": {
+      "feedback": "The sample-room flow reaches a comparison screen with furniture hotspots, but the hero text is almost white on white and the saved render disappeared on reload. Improve contrast and persistence, then replace generic retailer-homepage links and preset imagery with verifiable room-specific results and product destinations."
+    },
+    "after": {
+      "feedback": "The sample-room flow reaches a comparison screen with furniture hotspots, but the hero text is almost white on white and the saved render disappeared on reload. Improve contrast and persistence, replace generic retailer-homepage links with actual product destinations, and demonstrate room-specific generation from a fresh uploaded image."
+    }
+  },
+  {
+    "sourceRow": 12,
+    "before": {
+      "functionality": 7,
+      "overall": 6.5,
+      "feedback": "The five-step quiz, product swaps and saved routine are clear and work. But the core budget promise fails: selecting under ₹1,000 produced a ₹3,514 routine, with no explanation of monthly cost versus purchase cost. I expected the recommendations to respect the answers, not just repeat them in the heading."
+    },
+    "after": {
+      "functionality": 6.5,
+      "overall": 6.5,
+      "feedback": "The quiz, product swaps, saved routine and context-aware chat form a coherent experience, and the routine survives reload. But selecting under ₹1,000 returned routines costing over ₹3,500, with the moisturiser counted twice. I expected the recommendations to respect the budget and explain upfront cost versus monthly replenishment."
+    }
+  },
+  {
+    "sourceRow": 162,
+    "before": {
+      "visual": 8,
+      "functionality": 6,
+      "overall": 7,
+      "status": "Reviewed",
+      "feedback": "The take-home earnings model is well chosen, with useful cost, waiting-time, platform comparison, and history views; the saved rider preference survived reload. Improve incomplete-input handling—the form displayed ₹5,000/hour before valid times existed—and make the AI analysis resolve reliably instead of leaving the user in an analyzing state."
+    },
+    "after": {
+      "visual": 7.5,
+      "functionality": 6,
+      "overall": 7,
+      "status": "Partial review",
+      "feedback": "The gig-worker focus is well developed: fuel, maintenance and waiting time feed clear take-home calculations, and preferences survive reload. Avoid displaying thousands of rupees per hour before required times are entered, and make the AI analysis resolve or show a useful fallback. A complete saved-shift flow remains unverified."
+    }
+  },
+  {
+    "sourceRow": 218,
+    "before": {
+      "visual": 7.5,
+      "functionality": 6,
+      "overall": 6.5,
+      "status": "Partial review",
+      "feedback": "The accommodation filters and detailed listing views work, and the resident hub gives the concept breadth. Strengthen trust and reliability: every initial listing showed the same 92% match despite budget differences, one image was missing, and the sample agreement audit returned to its ready state without an analysis."
+    },
+    "after": {
+      "visual": 7,
+      "functionality": 5,
+      "overall": 5.5,
+      "status": "Partial review",
+      "feedback": "The city filter and detailed property views work, and agreement review and resident services give the concept breadth. But every initial property showed the same 92% fit, the under-₹15,000 action left expensive listings visible, and the sample agreement audit produced no observed result. Make matching and the core audit dependable before claiming verified fit."
+    }
+  },
+  {
+    "duplicateSourceRows": [
+      7,
+      208
+    ],
+    "canonicalEvidenceRow": 7,
+    "url": "alarm-whistle.lovable.app",
+    "scores": [
+      8,
+      7,
+      7
+    ]
+  },
+  {
+    "duplicateSourceRows": [
+      12,
+      292
+    ],
+    "canonicalEvidenceRow": 12,
+    "url": "glow-match-your-skin.lovable.app",
+    "scores": [
+      8,
+      6.5,
+      6.5
+    ]
+  },
+  {
+    "duplicateSourceRows": [
+      38,
+      55
+    ],
+    "canonicalEvidenceRow": 38,
+    "url": "carelist.lovable.app",
+    "scores": [
+      8,
+      7,
+      7.5
+    ]
+  },
+  {
+    "duplicateSourceRows": [
+      47,
+      49
+    ],
+    "canonicalEvidenceRow": 47,
+    "url": "boostboard-ai.lovable.app",
+    "scores": [
+      7.5,
+      7,
+      7
+    ]
+  },
+  {
+    "duplicateSourceRows": [
+      80,
+      139
+    ],
+    "canonicalEvidenceRow": 80,
+    "url": "food-flex-coach.lovable.app",
+    "scores": [
+      null,
+      null,
+      null
+    ]
+  },
+  {
+    "duplicateSourceRows": [
+      101,
+      362
+    ],
+    "canonicalEvidenceRow": 101,
+    "url": "yousnoozeyoulose.lovable.app",
+    "scores": [
+      6,
+      5,
+      5
+    ]
+  },
+  {
+    "duplicateSourceRows": [
+      104,
+      280
+    ],
+    "canonicalEvidenceRow": 104,
+    "url": "pitch-chemistry.lovable.app",
+    "scores": [
+      7.5,
+      5.5,
+      6
+    ]
+  },
+  {
+    "duplicateSourceRows": [
+      144,
+      405
+    ],
+    "canonicalEvidenceRow": 144,
+    "url": "play-all-odds.lovable.app",
+    "scores": [
+      7.5,
+      8,
+      7.5
+    ]
+  },
+  {
+    "duplicateSourceRows": [
+      162,
+      393
+    ],
+    "canonicalEvidenceRow": 162,
+    "url": "giglens.ai.studio",
+    "scores": [
+      7.5,
+      6,
+      7
+    ]
+  },
+  {
+    "duplicateSourceRows": [
+      218,
+      410
+    ],
+    "canonicalEvidenceRow": 218,
+    "url": "havenai.ai.studio",
+    "scores": [
+      7,
+      5,
+      5.5
+    ]
+  },
+  {
+    "duplicateSourceRows": [
+      273,
+      275
+    ],
+    "canonicalEvidenceRow": 273,
+    "url": "studyflow-ali.netlify.app",
+    "scores": [
+      8,
+      8,
+      8
+    ]
+  },
+  {
+    "duplicateSourceRows": [
+      331,
+      334,
+      387,
+      388
+    ],
+    "canonicalEvidenceRow": 387,
+    "url": "hisaab-kitab.ai.studio",
+    "scores": [
+      7,
+      6,
+      7
+    ]
+  },
+  {
+    "duplicateSourceRows": [
+      332,
+      336
+    ],
+    "canonicalEvidenceRow": 332,
+    "url": "mu-network.lovable.app",
+    "scores": [
+      8,
+      6.5,
+      7
+    ]
+  },
+  {
+    "duplicateSourceRows": [
+      333,
+      335
+    ],
+    "canonicalEvidenceRow": 333,
+    "url": "airshades.lovable.app",
+    "scores": [
+      8.5,
+      6,
+      7
+    ]
+  },
+  {
+    "duplicateSourceRows": [
+      397,
+      409
+    ],
+    "canonicalEvidenceRow": 397,
+    "url": "bmloveandloyalty.lovable.app",
+    "scores": [
+      7,
+      null,
+      null
+    ]
+  },
+  {
+    "duplicateSourceRows": [
+      400,
+      413
+    ],
+    "canonicalEvidenceRow": 400,
+    "url": "tribe-hub-sneha-ganesh.vercel.app",
+    "scores": [
+      7,
+      null,
+      null
+    ]
+  }
+]

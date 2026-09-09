@@ -1,0 +1,236 @@
+- banner:
+  - link "Aadi Expenses home":
+    - /url: "#top"
+    - generic: Aadi Expenses
+  - navigation "Main navigation":
+    - link "Android + Excel":
+      - /url: "#sms-demo"
+    - link "Online version":
+      - /url: "#tracker"
+    - link "Product guide":
+      - /url: /guide.html
+    - button "Toggle colour theme": Dark
+    - link "Use online":
+      - /url: "#tracker"
+- main:
+  - generic: Android capture · Excel-ready · Online beta
+  - heading "From bank alert to Excel row." [level=1]:
+    - text: From bank alert
+    - emphasis: to Excel row.
+  - paragraph: The Android app detects supported payment alerts, extracts the details and asks you to review before saving or syncing to your Google Sheet. Prefer the browser? The online version works today for cloud-based manual tracking and Excel-compatible CSV export.
+  - link "Use the online version ↘":
+    - /url: "#tracker"
+    - text: Use the online version
+    - generic: ↘
+  - link "Download Android app ↓":
+    - /url: /downloads/Aadi_Expenses_v1.0.0.apk
+    - text: Download Android app
+    - generic: ↓
+  - generic: No bank login
+  - generic: Review before saving
+  - generic: Cloud sync for signed-in users
+  - img "Animated demonstration of an Android payment alert being reviewed and added as a row in an Excel expense sheet":
+    - generic: 9:41
+    - generic: 5G ▰
+    - generic: A
+    - paragraph:
+      - strong: Aadi Expenses
+      - generic: Listening on device
+    - text: AXIS · now
+    - paragraph: ₹1,169 debited via UPI to BLINKIT
+    - generic: ✓
+    - paragraph:
+      - generic: Ready to review
+      - strong: Blinkit · Food
+    - generic: ₹1,169
+    - generic: reviewed
+    - generic: X
+    - paragraph:
+      - strong: Expenses.xlsx
+      - generic: Personal ledger
+    - generic: Saved
+    - generic: A
+    - generic: B
+    - generic: C
+    - generic: D
+    - generic: Date
+    - generic: Merchant
+    - generic: Category
+    - generic: Amount
+    - generic: 23 Aug
+    - generic: Uber
+    - generic: Travel
+    - generic: ₹284
+    - generic: 24 Aug
+    - generic: Zomato
+    - generic: Food
+    - generic: ₹450
+    - generic: 24 Aug
+    - generic: Blinkit
+    - generic: Food
+    - generic: ₹1,169
+    - generic: ✓
+    - paragraph:
+      - generic: Android → Excel
+      - strong: New row added
+  - generic: "01"
+  - strong: Android alert arrives
+  - generic: Supported bank, UPI or SMS alert
+  - generic: "02"
+  - strong: Details are extracted
+  - generic: Amount, merchant, type & reference
+  - generic: "03"
+  - strong: You review the record
+  - generic: Confirm it before anything is saved
+  - generic: "04"
+  - strong: Your sheet stays usable
+  - generic: Export an Excel-compatible CSV
+  - generic: Android → review → Excel-ready
+  - heading "See an alert become a clean spreadsheet row." [level=2]
+  - paragraph: The Android beta uses permission-based notification and SMS listeners on your device. It extracts a draft, you approve it, and the app can optionally sync reviewed records with your own Google Sheet. The animation demonstrates this workflow.
+  - generic: Bank SMS
+  - generic: GPay
+  - generic: Axis Mobile
+  - generic: Google Sheets sync
+  - button "Run the demo →":
+    - text: Run the demo
+    - generic: →
+  - link "Download Android app ↓":
+    - /url: /downloads/Aadi_Expenses_v1.0.0.apk
+    - text: Download Android app
+    - generic: ↓
+  - generic: Android 10+ · Aadi Expenses v1.0.0 (build 22) · 26.2 MB · beta-signed build
+  - link "See Android app setup & permissions ↓":
+    - /url: /android-setup.html
+  - link "Read the complete product & technical guide →":
+    - /url: /guide.html
+  - generic: 9:41
+  - generic: ◒ 5G ▰
+  - strong: Payment alerts
+  - generic: Listening securely on device
+  - generic: AXIS
+  - generic: now
+  - paragraph: INR 1,169.00 debited from A/c XX4412 via UPI to BLINKIT. Ref 623184901128.
+  - strong: Waiting for an alert…
+  - text: Direction
+  - strong: —
+  - text: Amount
+  - strong: —
+  - text: Merchant
+  - strong: —
+  - text: Reference
+  - strong: —
+  - generic: Ready for review
+  - strong: ₹1,169 · Blinkit
+  - generic: Food
+  - button "Add transaction"
+  - generic "Excel-ready expense row preview":
+    - generic: X
+    - paragraph:
+      - strong: Expenses.xlsx
+      - generic: Export preview
+    - generic: Date
+    - generic: Merchant
+    - generic: Category
+    - generic: Amount
+    - generic: 24 Aug
+    - generic: Blinkit
+    - generic: Food
+    - generic: ₹1,169
+  - generic: ●
+  - paragraph:
+    - strong: On-device first.
+    - text: The Android flow reads only supported financial alerts and keeps bank credentials out of the app.
+  - generic: Online version · Available now
+  - heading "Use the online tracker today." [level=2]
+  - paragraph: Create a secure account or log in with email and password, then add income and expenses, search your activity, and export an Excel-compatible CSV. Signed-in ledgers now sync through the cloud across devices; guests can still use a browser-only ledger.
+  - complementary:
+    - strong: Expenses
+    - navigation:
+      - button "⌂ Overview":
+        - generic: ⌂
+        - text: Overview
+      - button "↔ Transactions":
+        - generic: ↔
+        - text: Transactions
+      - button "⌁ Alert demo":
+        - generic: ⌁
+        - text: Alert demo
+    - button "↓ Export CSV":
+      - generic: ↓
+      - text: Export CSV
+    - generic: ↑
+    - text: Import CSV
+    - button "Open profile menu":
+      - generic: G
+      - paragraph:
+        - strong: Guest profile
+        - generic: Saved on this browser
+      - generic: •••
+  - text: Monday, 31 August
+  - heading "Overview" [level=3]
+  - status "Guest · saved locally": Guest · saved locally
+  - generic: ⌕
+  - searchbox "⌕"
+  - button "Toggle dark mode": ◐
+  - button "+ Add transaction"
+  - group "Date range":
+    - button "All time"
+    - button "Today"
+    - button "This month"
+  - combobox "Filter category":
+    - option "All categories" [selected]
+    - option "Food"
+    - option "Transport"
+    - option "Shopping"
+    - option "Education"
+    - option "Bills"
+    - option "Entertainment"
+    - option "Health"
+    - option "Family Funding"
+    - option "Refund"
+    - option "Transfer"
+    - option "Uncategorised"
+  - article:
+    - generic: Net cash flow
+    - strong: ₹0.00
+    - generic: Income − spent
+  - article:
+    - generic: Total income
+    - strong: ₹0.00
+    - generic: ↗ Money in
+  - article:
+    - generic: Total spent
+    - strong: ₹0.00
+    - generic: ↘ Money out
+  - article:
+    - text: Spending breakdown
+    - heading "Where your money went" [level=4]
+    - generic: 0 expenses
+    - generic: No expense data in this range.
+  - article:
+    - text: Recent activity
+    - heading "Latest transactions" [level=4]
+    - button "See all"
+    - generic: No transactions found.
+  - paragraph: "Choose the version that fits today: track online now, or try automatic Android capture."
+  - link "Use online version →":
+    - /url: "#tracker"
+    - text: Use online version
+    - generic: →
+  - link "Download Android app ↓":
+    - /url: /downloads/Aadi_Expenses_v1.0.0.apk
+    - text: Download Android app
+    - generic: ↓
+  - link "Read product guide ↗":
+    - /url: /guide.html
+    - text: Read product guide
+    - generic: ↗
+- contentinfo:
+  - link "Aadi Expenses home":
+    - /url: "#top"
+    - generic: Aadi Expenses
+  - paragraph: Public beta · Made by Aadi Jain
+  - link "Product & technical guide":
+    - /url: /guide.html
+- status

@@ -1,0 +1,102 @@
+- banner:
+  - link "Flaglore":
+    - /url: /
+  - navigation:
+    - link "Home":
+      - /url: /
+    - button "About":
+      - text: About
+    - link "Explore":
+      - /url: /explore
+    - link "Daily":
+      - /url: /daily
+    - link "Quiz":
+      - /url: /quiz
+    - link "Record Attempt":
+      - /url: /record-attempt
+    - link "Facts" [active]:
+      - /url: /facts
+  - button "Sign in with Google":
+    - text: Sign in with Google
+- main:
+  - heading "Facts" [level=1]
+  - paragraph: "Two different kinds of fact, kept apart on purpose: numbers computed live from the Flaglore catalogue, and trivia written by hand."
+  - text: Computed live
+  - heading "By the Numbers" [level=2]
+  - paragraph: Every figure below is queried from this app's own catalogue at page load. It describes what Flaglore currently has on record, not flags in general, and not any complete census of the world's flags.
+  - generic: "255"
+  - generic: Total entries
+  - paragraph: 74 of 255 entries have detailed facts on record.
+  - generic: White
+  - generic: Most common recorded colour
+  - paragraph: Appears in 39 of 104 entries that have recorded colour data (out of 255 entries total). Entries without colour data are not counted.
+  - generic: "#ffff00"
+  - generic: Least common recorded colour
+  - paragraph: Appears in just 1 of 104 entries with recorded colour data, rarity here reflects our records, not global flag usage.
+  - heading "Category breakdown" [level=3]
+  - paragraph: Entries per category, live count.
+  - generic: Countries
+  - generic: "195"
+  - generic: Armies
+  - generic: "20"
+  - generic: Cults
+  - generic: "20"
+  - generic: Organizations
+  - generic: "20"
+  - heading "Regions with the most entries" [level=3]
+  - paragraph: Grouped by the region field; entries without a region are excluded.
+  - list:
+    - generic: "1"
+    - text: Eastern Africa
+    - generic: "16"
+    - generic: "2"
+    - text: Western Africa
+    - generic: "15"
+    - generic: "3"
+    - text: Western Asia
+    - generic: "15"
+  - text: Curated & written
+  - heading "Vexillology Trivia" [level=2]
+  - paragraph: Hand-written background, not generated from the database. Where a card mentions a specific flag, you can open its full entry.
+  - article:
+    - heading "Why red dominates" [level=3]
+    - paragraph: "Red is the most common colour in national flags, and that is not an accident. It stays legible at a distance and under poor light, and red dyes were among the cheapest and most durable available historically. Across very different cultures it also carries the same weight: sacrifice, revolution and courage."
+    - button "See China →"
+  - article:
+    - heading "Blue, white and the sea" [level=3]
+    - paragraph: Maritime nations lean heavily on blue and white, the colours read cleanly against sky and water at signalling distance. The same pair also carries religious weight in Europe and the Middle East, from Marian blue to the white of purity, which is why coastal and devout states so often converge on the same palette.
+    - button "See Greece →"
+  - article:
+    - 'heading "The missing colour: purple" [level=3]'
+    - paragraph: Almost no national flag uses purple. Tyrian purple was extracted from sea snails in tiny quantities, making it the most expensive dye in the ancient world and impossible to mass-produce for bunting. By the time synthetic mauve arrived in 1856, most flag traditions were already fixed.
+    - button "See Dominica →"
+  - article:
+    - heading "Five principles, briefly" [level=3]
+    - paragraph: "NAVA's popular rules: keep it simple, use meaningful symbolism, limit yourself to two or three basic colours, avoid lettering or seals, and be distinctive. Japan passes all five with a single disc; flags that stack a full state seal onto a blue bedsheet fail most of them."
+    - button "See Japan →"
+  - article:
+    - heading "The one that isn't a rectangle" [level=3]
+    - paragraph: Nepal's flag is the only non-quadrilateral national flag in use, two stacked pennants whose exact geometry is written into the country's constitution. The shape descends from separate Hindu pennants once flown by rival royal houses and later joined into one banner.
+    - button "See Nepal →"
+  - article:
+    - heading "Standards before symbols" [level=3]
+    - paragraph: Military standards were working equipment long before they were sentiment. A raised colour told a soldier where his unit was through smoke, dust and noise, and losing it meant losing the formation's anchor point. Only once radio replaced line-of-sight command did regimental colours become purely ceremonial.
+    - button "See Continental Army →"
+  - article:
+    - heading "Emblems outside the nation-state" [level=3]
+    - paragraph: "Orders, movements and secret societies adopted flags for the same reason armies did: fast recognition of who belongs. The Knights Templar's black-and-white beauséant and the Red Cross emblem both work as identity markers with no state behind them at all."
+    - button "See Knights Templar →"
+  - article:
+    - heading "Neutral by design" [level=3]
+    - paragraph: Some flags are engineered to belong to nobody. The Olympic rings and the UN's world map in pale blue both deliberately avoid national colours and heraldry so that no member reads them as a rival's banner, a modern design brief the old heralds never had.
+    - button "See United Nations →"
+- contentinfo:
+  - paragraph: Made with ❤️ and mild obsession, by Saksham
+  - paragraph: Flaglore is a work in progress, country flags are complete, and army, cult, and organization entries are still being added and verified over time.
+  - link "Sources":
+    - /url: /sources
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_4q2drk1f6a930v9hhhth8jejn5?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

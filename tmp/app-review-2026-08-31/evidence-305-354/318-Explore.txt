@@ -1,0 +1,101 @@
+- generic: 🥐
+- generic: 🍥
+- generic: ☕
+- main:
+  - heading "Explore" [level=1]
+  - generic: Cafés, cuisines, neighbourhoods…
+  - generic: 🇰🇷 Korean
+  - generic: 🇯🇵 Japanese
+  - generic: 🥡 Chinese
+  - generic: 🍝 Italian
+  - generic: 🫓 North Indian
+  - generic: 🥥 South Indian
+  - generic: 🌱 Vegan
+  - generic: 🥐 Bakery
+  - tablist:
+    - tab "Places" [selected]
+    - tab "People"
+    - tab "Clubs"
+  - tabpanel "Places":
+    - paragraph:
+      - text: AI comparison
+    - paragraph: Naru wins on food (4.8), Bloom & Brew wins on ambience and is 2 km closer. Both open past 10 PM.
+    - button "Vote with your match":
+      - text: Vote with your match
+    - article:
+      - img "Naru Noodle Bar — Japanese · Ramen"
+      - generic: AI Pick
+      - text: "4.8"
+      - heading "Naru Noodle Bar" [level=3]
+      - paragraph: Japanese · Ramen · ₹₹
+      - paragraph: Basavanagudi · 3.2 km · Open till 10 PM
+      - paragraph:
+        - text: 18 people want to go here
+    - article:
+      - img "Bloom & Brew — Cafe · Specialty Coffee"
+      - generic: Hidden Gem
+      - text: "4.6"
+      - heading "Bloom & Brew" [level=3]
+      - paragraph: Cafe · Specialty Coffee · ₹₹
+      - paragraph: Indiranagar · 1.1 km · Open till 11 PM
+      - paragraph:
+        - text: 26 people want to go here
+    - article:
+      - img "Sugar Theory — Desserts · Bakery"
+      - generic: Trending
+      - text: "4.7"
+      - heading "Sugar Theory" [level=3]
+      - paragraph: Desserts · Bakery · ₹
+      - paragraph: HSR Layout · 4.4 km · Open till 9 PM
+      - paragraph:
+        - text: 12 people want to go here
+  - heading "💎Hidden gems this week" [level=2]
+  - article:
+    - img "Naru Noodle Bar — Japanese · Ramen"
+    - generic: AI Pick
+    - text: "4.8"
+    - heading "Naru Noodle Bar" [level=3]
+    - paragraph: Japanese · Ramen · ₹₹
+    - paragraph: Basavanagudi · 3.2 km · Open till 10 PM
+    - paragraph:
+      - text: 18 people want to go here
+  - article:
+    - img "Bloom & Brew — Cafe · Specialty Coffee"
+    - generic: Hidden Gem
+    - text: "4.6"
+    - heading "Bloom & Brew" [level=3]
+    - paragraph: Cafe · Specialty Coffee · ₹₹
+    - paragraph: Indiranagar · 1.1 km · Open till 11 PM
+    - paragraph:
+      - text: 26 people want to go here
+  - article:
+    - img "Sugar Theory — Desserts · Bakery"
+    - generic: Trending
+    - text: "4.7"
+    - heading "Sugar Theory" [level=3]
+    - paragraph: Desserts · Bakery · ₹
+    - paragraph: HSR Layout · 4.4 km · Open till 9 PM
+    - paragraph:
+      - text: 12 people want to go here
+- navigation:
+  - link "Home":
+    - /url: /home
+    - text: Home
+  - link "Explore":
+    - /url: /explore
+    - text: Explore
+  - link "Chats":
+    - /url: /chats
+    - text: Chats
+  - link "Plans":
+    - /url: /plans
+    - text: Plans
+  - link "Profile":
+    - /url: /profile
+    - text: Profile
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_2v711cjpkr83f8pqt3m2x809kv?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

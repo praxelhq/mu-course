@@ -1,0 +1,122 @@
+- banner:
+  - link "Your profile":
+    - /url: /profile
+    - img "Your profile"
+  - link "TravelOS":
+    - /url: /
+  - button "Toggle dark mode":
+    - generic: dark_mode
+  - button "Notifications":
+    - generic: notifications
+- main:
+  - img "Traveller"
+  - heading "Traveller" [level=1]
+  - paragraph: you@travelos.app · Explorer tier
+  - button "Edit profile"
+  - generic: public
+  - paragraph: "3"
+  - paragraph: Countries
+  - generic: luggage
+  - paragraph: "3"
+  - paragraph: Trips
+  - generic: flight
+  - paragraph: "3"
+  - paragraph: Upcoming
+  - generic: bookmark
+  - paragraph: "1"
+  - paragraph: Saved places
+  - heading "Travel preferences" [level=2]
+  - button "Nationality United Kingdom":
+    - generic: flag
+    - paragraph: Nationality
+    - paragraph: United Kingdom
+    - generic: chevron_right
+  - button "Home airport London Heathrow (LHR)":
+    - generic: flight_takeoff
+    - paragraph: Home airport
+    - paragraph: London Heathrow (LHR)
+    - generic: chevron_right
+  - button "Preferred currency USD ($)":
+    - generic: payments
+    - paragraph: Preferred currency
+    - paragraph: USD ($)
+    - generic: chevron_right
+  - button "Travel style Luxury · Adventure":
+    - generic: interests
+    - paragraph: Travel style
+    - paragraph: Luxury · Adventure
+    - generic: chevron_right
+  - heading "Emergency hub" [level=2]
+  - generic: offline_bolt
+  - text: Offline
+  - link "Local emergency 112":
+    - /url: tel:112
+    - generic: emergency
+    - paragraph: Local emergency
+    - paragraph: "112"
+    - generic: call
+  - link "Nearest hospital Santorini Health Centre":
+    - /url: tel:+302286022237
+    - generic: local_hospital
+    - paragraph: Nearest hospital
+    - paragraph: Santorini Health Centre
+    - generic: call
+  - link "Police +30 2286 022649":
+    - /url: tel:+302286022649
+    - generic: local_police
+    - paragraph: Police
+    - paragraph: +30 2286 022649
+    - generic: call
+  - link "UK Embassy, Athens +30 210 727 2600":
+    - /url: tel:+302107272600
+    - generic: account_balance
+    - paragraph: UK Embassy, Athens
+    - paragraph: +30 210 727 2600
+    - generic: call
+  - link "Insurance hotline +44 20 7946 0300":
+    - /url: tel:+442079460300
+    - generic: health_and_safety
+    - paragraph: Insurance hotline
+    - paragraph: +44 20 7946 0300
+    - generic: call
+  - button "SOS — share my location"
+  - heading "Notifications" [level=2]
+  - text: Passport & visa expiry
+  - checkbox "Passport & visa expiry" [checked]
+  - text: Flight reminders
+  - checkbox "Flight reminders" [checked]
+  - text: Hotel check-in
+  - checkbox "Hotel check-in" [checked]
+  - text: Packing reminder
+  - checkbox "Packing reminder" [checked]
+  - text: Budget alerts
+  - checkbox "Budget alerts" [checked]
+  - text: Weather alerts
+  - checkbox "Weather alerts" [checked]
+  - link "Replay onboarding":
+    - /url: /onboarding
+  - button "Sign out"
+- button "Open AI assistant":
+  - generic: auto_awesome
+- navigation:
+  - link "Home":
+    - /url: /
+    - generic: home
+  - link "Discover":
+    - /url: /discover
+    - generic: explore
+  - link "Trips":
+    - /url: /trips
+    - generic: luggage
+  - link "Wallet":
+    - /url: /wallet
+    - generic: account_balance_wallet
+  - link "Profile":
+    - /url: /profile
+    - generic: person
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_0g70ky4d8z8wpbz4efa9f1zcmg?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

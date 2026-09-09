@@ -1,0 +1,64 @@
+- banner:
+  - button "User Profile":
+    - img "Alex"
+  - button "Life Admin":
+    - heading "Life Admin" [level=1]
+  - navigation "Main Navigation":
+    - button "Home"
+    - button "About"
+    - button "Contact"
+    - button "Tasks & Domains"
+    - button "Calendar"
+    - button "Settings" [active]
+  - button "add New Task":
+    - generic: add
+    - generic: New Task
+  - button "Notifications":
+    - generic: notifications
+- main:
+  - generic: Preferences
+  - heading "Executive Settings" [level=2]
+  - paragraph: Manage identity parameters and executive alert configurations.
+  - img "Alex"
+  - heading "Alex" [level=3]
+  - paragraph: alex.morrison@example.com
+  - generic: Full Name
+  - textbox: Alex
+  - generic: Email Address
+  - textbox
+  - paragraph: Deadline Dispatches
+  - paragraph: Receive proactive notices for upcoming compliance cycles
+  - button
+  - button "Save Parameters"
+  - heading "Data Repository Management" [level=4]
+  - paragraph: Restore administrative datasets, tasks, document catalogs, and calendar schedules back to their baseline template.
+  - button "Reset Demo Data"
+- contentinfo:
+  - heading "Life Admin" [level=2]
+  - paragraph: Autonomous personal logistics, compliance monitoring, and administrative governance for discerning individuals.
+  - link "X / Twitter":
+    - /url: https://x.com
+    - generic: flutter_dash
+  - link "LinkedIn":
+    - /url: https://linkedin.com
+    - generic: work
+  - link "GitHub":
+    - /url: https://github.com
+    - generic: code
+  - link "Discord Community":
+    - /url: https://discord.com
+    - generic: forum
+  - heading "Navigation" [level=3]
+  - list:
+    - button "Executive Dashboard"
+    - button "About Platform"
+    - button "Contact Concierge"
+    - button "Domains & Categories"
+    - button "Timeline & Calendar"
+  - heading "Privacy & Trust" [level=3]
+  - paragraph: Zero-knowledge document storage, client-side encryption, and strict GDPR & Indian DPDP Act compliance.
+  - button "Privacy Policy"
+  - button "Terms of Governance"
+  - button "Security Inquiries"
+  - paragraph: © 2026 Life Admin Executive. All rights reserved.
+  - generic: Core Systems Operational

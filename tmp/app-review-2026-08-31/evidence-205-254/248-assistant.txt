@@ -1,0 +1,47 @@
+- banner:
+  - heading "AI Assistant" [level=1]
+  - paragraph: Knows everything in your vault
+  - link "Search":
+    - /url: /vault
+  - button "Notifications":
+  - button "Toggle dark mode":
+- main:
+  - paragraph: Ask about anything you've saved
+  - paragraph: Due dates, policy numbers, warranty cover, spending patterns — in plain language.
+  - button "New chat":
+    - text: New chat
+  - heading "Try asking" [level=2]
+  - button "When is my car insurance due?":
+    - generic: When is my car insurance due?
+  - button "Show all subscriptions.":
+    - generic: Show all subscriptions.
+  - button "Which bills are due this week?":
+    - generic: Which bills are due this week?
+  - button "What documents expire this month?":
+    - generic: What documents expire this month?
+  - button "Show my warranties.":
+    - generic: Show my warranties.
+  - heading "Your conversations" [level=2]
+  - generic: No conversations yet — start one above.
+- navigation:
+  - link "Home":
+    - /url: /
+    - generic: Home
+  - link "Vault":
+    - /url: /vault
+    - generic: Vault
+  - link "Assistant":
+    - /url: /assistant
+    - generic: Assistant
+  - link "Payments":
+    - /url: /payments
+    - generic: Payments
+  - link "Profile":
+    - /url: /profile
+    - generic: Profile
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_5gysj6r1138rbr8qr4gf9yvfym?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

@@ -1,0 +1,6 @@
+synthetic_notice,contradiction_id,class,target_record,reveal,expected_safe_response
+COURSE-SYNTHETIC,S02-CONTRA-DATE-01,date,REC-002,A later correction reports 24 rather than 25 resolved cases,retain both versions; use latest if authority is valid; recalculate
+COURSE-SYNTHETIC,S02-CONTRA-DEF-01,definition,REC-004,Pilot success uses 3-day completion while baseline uses 7-day completion,do not compare until normalized; hold claim
+COURSE-SYNTHETIC,S02-CONTRA-SCOPE-01,scope,REC-006,Pilot excludes dormant accounts that baseline includes,redefine common eligible population or narrow claim
+COURSE-SYNTHETIC,S02-CONTRA-PROV-01,provenance,REC-005,The value came from an unverified summary rather than the approved extract,downgrade/remove as authority; request primary evidence
+COURSE-SYNTHETIC,S02-CONTRA-ARITH-01,arithmetic,REC-001,A duplicate import repeats REC-001,deduplicate by stable ID; rerun calculation and log change

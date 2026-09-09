@@ -1,0 +1,195 @@
+- navigation:
+  - generic: inventory_2
+  - heading "StockFlow" [level=1]
+  - generic: ERP
+  - paragraph: Sports Retail Operations
+  - paragraph: OVERVIEW
+  - list:
+    - button "dashboard Dashboard 5":
+      - generic: dashboard
+      - generic: Dashboard
+      - generic: "5"
+    - button "inventory_2 Products":
+      - generic: inventory_2
+      - generic: Products
+    - button "swap_horiz Inventory Master":
+      - generic: swap_horiz
+      - generic: Inventory Master
+  - paragraph: INTELLIGENCE
+  - list:
+    - button "auto_awesome AI Demand Forecast AI":
+      - generic: auto_awesome
+      - generic: AI Demand Forecast
+      - generic: AI
+    - button "analytics Reports & Analytics":
+      - generic: analytics
+      - generic: Reports & Analytics
+  - paragraph: OPERATIONS
+  - list:
+    - button "qr_code_2 Serial Numbers":
+      - generic: qr_code_2
+      - generic: Serial Numbers
+    - button "category Categories":
+      - generic: category
+      - generic: Categories
+    - button "local_shipping Suppliers":
+      - generic: local_shipping
+      - generic: Suppliers
+  - paragraph: PROCUREMENT & PAYABLES
+  - list:
+    - button "post_add Purchase Orders 2":
+      - generic: post_add
+      - generic: Purchase Orders
+      - generic: "2"
+    - button "receipt_long Supplier Invoices 3":
+      - generic: receipt_long
+      - generic: Supplier Invoices
+      - generic: "3"
+    - button "payments Payment Ledger":
+      - generic: payments
+      - generic: Payment Ledger
+  - paragraph: SYSTEM
+  - list:
+    - button "manage_accounts User Management":
+      - generic: manage_accounts
+      - generic: User Management
+    - button "history Audit Trail Logs" [active]:
+      - generic: history
+      - generic: Audit Trail Logs
+  - button "settings Settings":
+    - generic: settings
+    - generic: Settings
+  - button "logout Sign Out":
+    - generic: logout
+    - generic: Sign Out
+- banner:
+  - generic: search
+  - textbox "Search products, SKUs, suppliers, orders..."
+  - generic: ⌘K
+  - generic: ₹ INR
+  - text: "Role:"
+  - strong: Admin
+  - button "notifications":
+    - generic: notifications
+  - button "help_outline":
+    - generic: help_outline
+  - button "Yadeshwar Admin expand_more":
+    - generic: Yadeshwar
+    - generic: Admin
+    - generic: expand_more
+- main:
+  - heading "Activity Audit Trail & Security Logs" [level=2]
+  - paragraph: Immutable, append-only security logs of all system transactions, user authentications, and stock adjustments
+  - generic: 6 Total Append-Only Logs
+  - generic: search
+  - textbox "Search activity description, user, action..."
+  - combobox:
+    - option "All Users" [selected]
+    - option "Yadeshwar"
+    - option "Pushpak"
+    - option "Ashwin"
+  - combobox:
+    - option "All Roles" [selected]
+    - option "Admin"
+    - option "Manager"
+    - option "Staff"
+  - combobox:
+    - option "All Modules" [selected]
+    - option "Auth"
+    - option "Products"
+    - option "Inventory"
+    - option "Purchase Orders"
+    - option "Invoices"
+    - option "Payments"
+    - option "Settings"
+    - option "Users"
+    - option "Serial Numbers"
+    - option "Categories"
+    - option "Suppliers"
+  - button "arrow_downward Newest First":
+    - generic: arrow_downward
+    - generic: Newest First
+  - table:
+    - rowgroup:
+      - row "Log ID & Timestamp User / Initiator Module Action Description & Linked Ref":
+        - columnheader "Log ID & Timestamp"
+        - columnheader "User / Initiator"
+        - columnheader "Module"
+        - columnheader "Action"
+        - columnheader "Description & Linked Ref"
+    - rowgroup:
+      - row "LOG-1001 11/8/2026, 4:00:00 pm Yadeshwar Admin Auth Login Yadeshwar (Admin) logged in successfully.":
+        - cell "LOG-1001 11/8/2026, 4:00:00 pm":
+          - generic: LOG-1001
+          - text: 11/8/2026, 4:00:00 pm
+        - cell "Yadeshwar Admin":
+          - generic: Yadeshwar
+          - text: Admin
+        - cell "Auth":
+          - generic: Auth
+        - cell "Login"
+        - cell "Yadeshwar (Admin) logged in successfully."
+      - 'row "LOG-1002 11/8/2026, 3:15:00 pm Pushpak Admin Inventory Stock Out Pushpak (Admin) dispatched 1 unit of Adidas Al Rihla League Football. Ref: p-7"':
+        - cell "LOG-1002 11/8/2026, 3:15:00 pm":
+          - generic: LOG-1002
+          - text: 11/8/2026, 3:15:00 pm
+        - cell "Pushpak Admin":
+          - generic: Pushpak
+          - text: Admin
+        - cell "Inventory":
+          - generic: Inventory
+        - cell "Stock Out"
+        - 'cell "Pushpak (Admin) dispatched 1 unit of Adidas Al Rihla League Football. Ref: p-7"':
+          - text: Pushpak (Admin) dispatched 1 unit of Adidas Al Rihla League Football.
+          - generic: "Ref: p-7"
+      - 'row "LOG-1003 10/8/2026, 9:50:00 pm Ashwin Admin Purchase Orders Goods Received Ashwin (Admin) received 10 units SG Super 50 & 10 units SG Shield 20 against PO-2026-0001. Ref: po-101"':
+        - cell "LOG-1003 10/8/2026, 9:50:00 pm":
+          - generic: LOG-1003
+          - text: 10/8/2026, 9:50:00 pm
+        - cell "Ashwin Admin":
+          - generic: Ashwin
+          - text: Admin
+        - cell "Purchase Orders":
+          - generic: Purchase Orders
+        - cell "Goods Received"
+        - 'cell "Ashwin (Admin) received 10 units SG Super 50 & 10 units SG Shield 20 against PO-2026-0001. Ref: po-101"':
+          - text: Ashwin (Admin) received 10 units SG Super 50 & 10 units SG Shield 20 against PO-2026-0001.
+          - generic: "Ref: po-101"
+      - row "LOG-1004 10/8/2026, 7:45:00 pm Yadeshwar Admin Settings Currency Changed Yadeshwar (Admin) configured application base display currency as INR (₹).":
+        - cell "LOG-1004 10/8/2026, 7:45:00 pm":
+          - generic: LOG-1004
+          - text: 10/8/2026, 7:45:00 pm
+        - cell "Yadeshwar Admin":
+          - generic: Yadeshwar
+          - text: Admin
+        - cell "Settings":
+          - generic: Settings
+        - cell "Currency Changed"
+        - cell "Yadeshwar (Admin) configured application base display currency as INR (₹)."
+      - 'row "LOG-1005 9/8/2026, 4:30:00 pm Yadeshwar Admin Purchase Orders Purchase Order Approved Yadeshwar (Admin) approved Purchase Order PO-2026-0001 for Sanspareils Greenlands (SG) Pvt. Ltd. Ref: po-101"':
+        - cell "LOG-1005 9/8/2026, 4:30:00 pm":
+          - generic: LOG-1005
+          - text: 9/8/2026, 4:30:00 pm
+        - cell "Yadeshwar Admin":
+          - generic: Yadeshwar
+          - text: Admin
+        - cell "Purchase Orders":
+          - generic: Purchase Orders
+        - cell "Purchase Order Approved"
+        - 'cell "Yadeshwar (Admin) approved Purchase Order PO-2026-0001 for Sanspareils Greenlands (SG) Pvt. Ltd. Ref: po-101"':
+          - text: Yadeshwar (Admin) approved Purchase Order PO-2026-0001 for Sanspareils Greenlands (SG) Pvt. Ltd.
+          - generic: "Ref: po-101"
+      - 'row "LOG-1006 8/8/2026, 9:00:00 pm Pushpak Admin Payments Supplier Payment Completed Pushpak (Admin) completed supplier payment of ₹10,266.00 via Net Banking for Invoice INV-SUP-2026-001. Ref: inv-101"':
+        - cell "LOG-1006 8/8/2026, 9:00:00 pm":
+          - generic: LOG-1006
+          - text: 8/8/2026, 9:00:00 pm
+        - cell "Pushpak Admin":
+          - generic: Pushpak
+          - text: Admin
+        - cell "Payments":
+          - generic: Payments
+        - cell "Supplier Payment Completed"
+        - 'cell "Pushpak (Admin) completed supplier payment of ₹10,266.00 via Net Banking for Invoice INV-SUP-2026-001. Ref: inv-101"':
+          - text: Pushpak (Admin) completed supplier payment of ₹10,266.00 via Net Banking for Invoice INV-SUP-2026-001.
+          - generic: "Ref: inv-101"
+- generic: "0"

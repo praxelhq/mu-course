@@ -1,0 +1,88 @@
+- banner:
+  - button "User Profile":
+    - img "Alex"
+  - button "Life Admin":
+    - heading "Life Admin" [level=1]
+  - navigation "Main Navigation":
+    - button "Home"
+    - button "About" [active]
+    - button "Contact"
+    - button "Tasks & Domains"
+    - button "Calendar"
+    - button "Settings"
+  - button "add New Task":
+    - generic: add
+    - generic: New Task
+  - button "Notifications":
+    - generic: notifications
+- main:
+  - generic: Philosophy & System
+  - heading "About Life Admin Executive" [level=2]
+  - paragraph: A dedicated suite engineered to liberate high-performing individuals from administrative drag, compliance friction, and bureaucratic oversight.
+  - text: Executive Mission
+  - heading "Personal administration transformed into an effortless background routine." [level=3]
+  - paragraph: From renewing passports and tracking ITR filings to scheduling HVAC maintenance and vehicle insurance, Life Admin provides structured orchestration with tactile elegance.
+  - button "Initiate New Task"
+  - button "View Schedule"
+  - heading "Core Architectural Capabilities" [level=3]
+  - generic: Three Pillars of Precision
+  - img "Natural Language Task Parsing"
+  - generic: AI Architecture
+  - heading "Natural Language Task Parsing" [level=3]
+  - paragraph: Dictate or type unstructured life administrative obligations. Our intelligent NLP engine extracts deadlines, generates required document checklists, and prioritizes workflow steps seamlessly.
+  - generic: Semantic Extraction
+  - generic: Action Checklists
+  - generic: Date Inference
+  - button "Try NLP Task Creation arrow_forward":
+    - text: Try NLP Task Creation
+    - generic: arrow_forward
+  - img "Pillar-Based Domain Organization"
+  - generic: 6 Life Domains
+  - heading "Pillar-Based Domain Organization" [level=3]
+  - paragraph: Organize paperwork across Finance, Healthcare, Household, Vehicle, Utilities, and Personal documents. Maintain proactive clarity with scheduled timelines and zero missed regulatory penalties.
+  - generic: Finance
+  - generic: Healthcare
+  - generic: Vehicles
+  - generic: Compliance
+  - button "Explore Domains arrow_forward":
+    - text: Explore Domains
+    - generic: arrow_forward
+  - img "Encrypted Document Vault"
+  - generic: Zero-Knowledge
+  - heading "Encrypted Document Vault" [level=3]
+  - paragraph: Store ID proofs, RC books, tax slips, and lease agreements with end-to-end client-side sovereignty. No unencrypted cloud indexing; all sensitive data remains strictly under your authority.
+  - generic: AES-256 GCM
+  - generic: Local Storage
+  - generic: Private Vault
+  - button "View Dashboard arrow_forward":
+    - text: View Dashboard
+    - generic: arrow_forward
+- contentinfo:
+  - heading "Life Admin" [level=2]
+  - paragraph: Autonomous personal logistics, compliance monitoring, and administrative governance for discerning individuals.
+  - link "X / Twitter":
+    - /url: https://x.com
+    - generic: flutter_dash
+  - link "LinkedIn":
+    - /url: https://linkedin.com
+    - generic: work
+  - link "GitHub":
+    - /url: https://github.com
+    - generic: code
+  - link "Discord Community":
+    - /url: https://discord.com
+    - generic: forum
+  - heading "Navigation" [level=3]
+  - list:
+    - button "Executive Dashboard"
+    - button "About Platform"
+    - button "Contact Concierge"
+    - button "Domains & Categories"
+    - button "Timeline & Calendar"
+  - heading "Privacy & Trust" [level=3]
+  - paragraph: Zero-knowledge document storage, client-side encryption, and strict GDPR & Indian DPDP Act compliance.
+  - button "Privacy Policy"
+  - button "Terms of Governance"
+  - button "Security Inquiries"
+  - paragraph: © 2026 Life Admin Executive. All rights reserved.
+  - generic: Core Systems Operational

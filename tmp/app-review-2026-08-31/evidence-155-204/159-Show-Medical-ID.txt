@@ -1,0 +1,69 @@
+- region "Notifications alt+T"
+- main:
+  - heading "Medical profile" [level=1]
+  - paragraph: Lives on this device. Shared with responders only during an SOS.
+  - generic: B+
+  - generic: BLOOD
+  - paragraph: Archit Bagaria
+  - paragraph: 34 years old
+  - generic: Organ donor
+  - paragraph: 175 cm
+  - paragraph: Height
+  - paragraph: 78 kg
+  - paragraph: Weight
+  - heading "ALLERGIES" [level=2]
+  - generic: Penicillin
+  - generic: Peanuts
+  - heading "CURRENT MEDICATIONS" [level=2]
+  - paragraph: Salbutamol Inhaler
+  - paragraph: 100 mcg · As needed
+  - paragraph: Montelukast
+  - paragraph: 10 mg · Once at night
+  - heading "CONDITIONS" [level=2]
+  - generic: Asthma
+  - heading "EMERGENCY NOTES" [level=2]
+  - paragraph: “Inhaler in the left pocket of my bag. Allergic to penicillin.”
+  - button "Show Medical ID" [active]
+  - paragraph: Full-screen card designed to be handed to a paramedic
+  - paragraph: AEGIS · MEDICAL ID
+  - paragraph: Show to the responder
+  - button "Close medical ID":
+  - generic: B+
+  - generic: BLOOD
+  - paragraph: Archit Bagaria
+  - paragraph: 34 yrs · 175 cm · 78 kg
+  - paragraph: Organ donor
+  - paragraph: ALLERGIES
+  - generic: Penicillin
+  - generic: Peanuts
+  - paragraph: CONDITIONS
+  - generic: Asthma
+  - paragraph: CURRENT MEDICATIONS
+  - list:
+    - paragraph: Salbutamol Inhaler
+    - paragraph: 100 mcg · As needed
+    - paragraph: Montelukast
+    - paragraph: 10 mg · Once at night
+  - paragraph: EMERGENCY NOTES
+  - paragraph: “Inhaler in the left pocket of my bag. Allergic to penicillin.”
+  - paragraph: ICE — IN CASE OF EMERGENCY
+  - paragraph: Priya Bagaria
+  - paragraph: Spouse
+  - link "9810011223":
+    - /url: tel:9810011223
+    - text: "9810011223"
+  - paragraph: SCAN TO VERIFY · AEG-2026-4821
+  - paragraph: Aegis Medical ID · generated 31/8/2026
+- navigation:
+  - button "Help":
+    - generic: Help
+  - button "Network":
+    - generic: Network
+  - button "Me":
+    - generic: Me
+  - button "SOS":
+    - generic: SOS
+- link "Build with Enter":
+  - /url: https://enter.converge.ai
+  - generic: Build with
+  - img "Enter"

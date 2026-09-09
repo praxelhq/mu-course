@@ -1,0 +1,43 @@
+- banner:
+  - link "GarageConnect":
+    - /url: /
+    - generic: GarageConnect
+  - navigation:
+    - link "Home":
+      - /url: /
+    - link "Garages":
+      - /url: /garages
+  - link "Sign in":
+    - /url: /auth
+  - link "Get started":
+    - /url: /auth?mode=signup
+- main:
+  - heading "Garages near you" [level=1]
+  - paragraph: 1 workshop available
+  - textbox "Search by garage or city" [active]: Chennai
+  - combobox "City":
+    - generic: All locations
+  - combobox "Service type":
+    - generic: All services
+  - article:
+    - heading "SpeedFix Garage" [level=2]
+    - generic: 2.4 km
+    - generic "4.5 out of 5":
+    - text: 4.5 · 89 reviews
+    - paragraph: 48 Anna Salai, T Nagar, Chennai
+    - generic: Standard Service
+    - generic: Engine Diagnostics
+    - generic: Tyre Replacement (per tyre)
+    - generic: Battery Replacement
+    - paragraph: ₹450 – ₹9,000
+    - link "Details":
+      - /url: /garages/22222222-2222-2222-2222-222222222222
+    - link "Book Now":
+      - /url: /book/22222222-2222-2222-2222-222222222222
+- contentinfo: © 2026 GarageConnect — service booking & job management.
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_35qkbh24jx8h18p2yrwygstq9y?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

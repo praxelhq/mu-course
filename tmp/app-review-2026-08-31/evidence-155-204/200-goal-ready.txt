@@ -1,0 +1,48 @@
+- navigation:
+  - generic: DEADLINE
+  - button "Home"
+  - button "Explore"
+  - button "Create Goal"
+  - button "My Goals"
+  - button "Leaderboard"
+  - button "Profile"
+  - generic: ⚡
+  - generic: 2,450
+  - button "Y":
+    - generic: "Y"
+- main:
+  - heading "What are you avoiding?" [level=2]
+  - paragraph: Put it into words, put a number behind it.
+  - generic: Goal Title
+  - textbox "Finish my marketing presentation": Review practice puzzle
+  - generic: Description
+  - textbox "Need to finish 30 slides before tomorrow's class.": Synthetic private review goal.
+  - generic: Category
+  - combobox:
+    - option "Academic" [selected]
+    - option "Career"
+    - option "Fitness"
+    - option "Personal"
+    - option "Creative"
+    - option "Other"
+  - generic: Visibility
+  - radio "Public"
+  - text: Public
+  - radio "Private" [checked]
+  - text: Private
+  - generic: Deadline date
+  - textbox: 2026-09-02
+  - generic: Deadline time
+  - textbox: 12:00
+  - generic: XP at Stake
+  - button "100 XP"
+  - button "250 XP"
+  - button "500 XP"
+  - button "1,000 XP"
+  - spinbutton [active]: "100"
+  - text: "Your current XP:"
+  - strong: 2,450
+  - button "PUT IT ON THE LINE 🔥"
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

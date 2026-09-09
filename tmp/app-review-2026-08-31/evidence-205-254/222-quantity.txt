@@ -1,0 +1,89 @@
+- banner:
+  - button "Previous day":
+  - paragraph: Mon, 31 Aug
+  - button "Next day" [disabled]:
+- main:
+  - link "S Sunita Househelp":
+    - /url: /vendor/v-sunita
+    - generic: S
+    - paragraph: Sunita
+    - paragraph: Househelp
+  - button "P"
+  - button "½"
+  - button "PL"
+  - button "A"
+  - link "R Ramesh Milk":
+    - /url: /vendor/v-ramesh
+    - generic: R
+    - paragraph: Ramesh
+    - paragraph: Milk
+  - paragraph: Milk
+  - paragraph: ₹66 / litre
+  - button "Decrease":
+  - generic: "2"
+  - button "Increase" [active]:
+  - button "+ Add item"
+  - generic: Day total ₹132
+  - link "T Tapri Chai Sutta":
+    - /url: /vendor/v-tapri
+    - generic: T
+    - paragraph: Tapri
+    - paragraph: Chai Sutta
+  - paragraph: Chai
+  - paragraph: ₹15 / cup
+  - button "Decrease":
+  - generic: "6"
+  - button "Increase":
+  - paragraph: Cigarette
+  - paragraph: ₹20 / piece
+  - button "Decrease":
+  - generic: "3"
+  - button "Increase":
+  - paragraph: Samosa
+  - paragraph: ₹20 / piece
+  - button "Decrease" [disabled]:
+  - generic: "0"
+  - button "Increase":
+  - paragraph: Bun maska
+  - paragraph: ₹25 / piece
+  - button "Decrease" [disabled]:
+  - generic: "0"
+  - button "Increase":
+  - generic: Today ₹150
+  - generic: Tab ₹1,160
+  - link "V Vikas Newspaper":
+    - /url: /vendor/v-vikas
+    - generic: V
+    - paragraph: Vikas
+    - paragraph: Newspaper
+  - paragraph: Hindustan Times
+  - paragraph: ₹6 / copy
+  - button "Decrease":
+  - generic: "1"
+  - button "Increase":
+  - button "+ Add item"
+  - generic: Day total ₹6
+  - link "R Ravi Iron":
+    - /url: /vendor/v-ravi
+    - generic: R
+    - paragraph: Ravi
+    - paragraph: Iron
+  - generic: No batch today
+  - button "+ Log"
+- link "Add vendor":
+  - /url: /add
+- navigation:
+  - link "Today":
+    - /url: /
+    - text: Today
+  - link "Settle":
+    - /url: /settle
+    - text: Settle
+  - link "More":
+    - /url: /more
+    - text: More
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_2w27ne543h9v2tvjdew8nt0jjh?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

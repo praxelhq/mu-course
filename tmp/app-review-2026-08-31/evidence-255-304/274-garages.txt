@@ -1,0 +1,102 @@
+- banner:
+  - link "GarageConnect":
+    - /url: /
+    - generic: GarageConnect
+  - navigation:
+    - link "Home":
+      - /url: /
+    - link "Garages" [active]:
+      - /url: /garages
+  - link "Sign in":
+    - /url: /auth
+  - link "Get started":
+    - /url: /auth?mode=signup
+- main:
+  - heading "Garages near you" [level=1]
+  - paragraph: 5 workshops available
+  - textbox "Search by garage or city"
+  - combobox "City":
+    - generic: All locations
+  - combobox "Service type":
+    - generic: All services
+  - article:
+    - heading "Precision Motors Service" [level=2]
+    - generic: 4.6 km
+    - generic "4.9 out of 5":
+    - text: 4.9 · 201 reviews
+    - paragraph: 221 Sector 18, Noida
+    - generic: Luxury Full Service
+    - generic: Computerised Diagnostics
+    - generic: Synthetic Oil Change
+    - generic: Clutch Overhaul
+    - paragraph: ₹1,200 – ₹25,000
+    - link "Details":
+      - /url: /garages/44444444-4444-4444-4444-444444444444
+    - link "Book Now":
+      - /url: /book/44444444-4444-4444-4444-444444444444
+  - article:
+    - heading "AutoCare Pro Workshop" [level=2]
+    - generic: 1.2 km
+    - generic "4.8 out of 5":
+    - text: 4.8 · 132 reviews
+    - paragraph: 12 MG Road, Indiranagar, Bengaluru
+    - generic: Comprehensive Service
+    - generic: Engine Oil Change
+    - generic: Brake Pad Replacement
+    - generic: AC Service
+    - paragraph: ₹600 – ₹12,000
+    - link "Details":
+      - /url: /garages/11111111-1111-1111-1111-111111111111
+    - link "Book Now":
+      - /url: /book/11111111-1111-1111-1111-111111111111
+  - article:
+    - heading "SpeedFix Garage" [level=2]
+    - generic: 2.4 km
+    - generic "4.5 out of 5":
+    - text: 4.5 · 89 reviews
+    - paragraph: 48 Anna Salai, T Nagar, Chennai
+    - generic: Standard Service
+    - generic: Engine Diagnostics
+    - generic: Tyre Replacement (per tyre)
+    - generic: Battery Replacement
+    - paragraph: ₹450 – ₹9,000
+    - link "Details":
+      - /url: /garages/22222222-2222-2222-2222-222222222222
+    - link "Book Now":
+      - /url: /book/22222222-2222-2222-2222-222222222222
+  - article:
+    - heading "TyreHub & Service Point" [level=2]
+    - generic: 3.1 km
+    - generic "4.3 out of 5":
+    - text: 4.3 · 64 reviews
+    - paragraph: 7 Link Road, Andheri West, Mumbai
+    - generic: Wheel Alignment
+    - generic: Wheel Balancing
+    - generic: Suspension Repair
+    - generic: Tyre Rotation
+    - paragraph: ₹400 – ₹7,500
+    - link "Details":
+      - /url: /garages/33333333-3333-3333-3333-333333333333
+    - link "Book Now":
+      - /url: /book/33333333-3333-3333-3333-333333333333
+  - article:
+    - heading "QuickLube Express" [level=2]
+    - generic: 0.8 km
+    - generic "4.2 out of 5":
+    - text: 4.2 · 47 reviews
+    - paragraph: 90 SG Highway, Bodakdev, Ahmedabad
+    - generic: Express Oil Change
+    - generic: Air & Cabin Filter
+    - generic: Periodic Maintenance
+    - paragraph: ₹300 – ₹4,500
+    - link "Details":
+      - /url: /garages/55555555-5555-5555-5555-555555555555
+    - link "Book Now":
+      - /url: /book/55555555-5555-5555-5555-555555555555
+- contentinfo: © 2026 GarageConnect — service booking & job management.
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_35qkbh24jx8h18p2yrwygstq9y?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

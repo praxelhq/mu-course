@@ -1,0 +1,898 @@
+[
+  {
+    "sourceRow": 205,
+    "name": "Radhika Tiwary",
+    "url": "https://ai.studio/apps/5d01f448-c011-4bee-932a-9740a1d70820",
+    "appName": null,
+    "visual": null,
+    "functionality": null,
+    "overall": null,
+    "status": "Access blocked",
+    "feedback": "The supplied AI Studio link opens an unknown-error screen, so the app itself could not be reviewed. Please submit a working published link with reviewer access; the error is not evidence that your app logic is broken.",
+    "tested": [
+      "Opened supplied link; AI Studio unknown error and subscription-check warning"
+    ],
+    "limitations": [
+      "No app screens or user flow observable"
+    ]
+  },
+  {
+    "sourceRow": 206,
+    "name": "Poornima Medasani ",
+    "url": "https://f1-lights-out.ai.studio",
+    "appName": "F1: Lights Out",
+    "visual": 7.5,
+    "functionality": 6.5,
+    "overall": 7,
+    "status": "Reviewed",
+    "feedback": "The racing theme is coherent, with working start, pause, telemetry and garage screens. The selected McLaren livery reverted to Scuderia Corsa after reload; preserve preferences and make the first lap and reaction-scoring feedback easier to verify.",
+    "tested": [
+      "Instructions; start sequence; keyboard steer and pause; telemetry; garage livery change; reload"
+    ],
+    "limitations": [
+      "Did not complete a full race; race-record persistence unverified"
+    ]
+  },
+  {
+    "sourceRow": 207,
+    "name": "Harshit Mittal",
+    "url": "https://lecturebingo.lovable.app",
+    "appName": "Lecture Bingo",
+    "visual": 8,
+    "functionality": 7.5,
+    "overall": 8,
+    "status": "Reviewed",
+    "feedback": "The host-to-board-to-Bingo journey works and the finished room survives reload, with strong hierarchy and useful host review controls. Reconcile the landing-page line-win rule with the full-blackout rule, and fix the result summary showing 0/9 after reload while the roster still shows 9/9.",
+    "tested": [
+      "Host created KT3CB; selected eight terms; started; marked all squares; Bingo confirmation and leaderboard; reload; Join screen"
+    ],
+    "limitations": [
+      "Second-device multiplayer not tested; timer displayed 42m15s on a much shorter test"
+    ]
+  },
+  {
+    "sourceRow": 209,
+    "name": "Kruiti Rai",
+    "url": "https://little-athletes-compass.lovable.app/",
+    "appName": "Little Athletes Compass",
+    "visual": 7,
+    "functionality": 7,
+    "overall": 7,
+    "status": "Reviewed",
+    "feedback": "The six-step assessment leads to clearly explained sport matches and development plans, and the changed speed value was reflected in the results. Preserve completed assessments across reloads and explain the evidence behind match percentages so parents can judge the recommendations responsibly.",
+    "tested": [
+      "All six steps with synthetic child and default values; speed adjusted to 6; results generated; reload returned to landing"
+    ],
+    "limitations": [
+      "Scientific validity not assessed; report download and sharing not executed"
+    ]
+  },
+  {
+    "sourceRow": 210,
+    "name": "Muchalapuri Sai Teja",
+    "url": "https://brainbreak.ai.studio",
+    "appName": "BrainBreak",
+    "visual": 8,
+    "functionality": 8.5,
+    "overall": 8,
+    "status": "Reviewed",
+    "feedback": "The five-question break works end to end, with explanations, a transparent XP breakdown, badges and history that survive reload. Tighten the progress details: badge dates and the session date differ by a day, and the category explorer should explain why a mixed quick quiz does not count toward category coverage.",
+    "tested": [
+      "Nickname onboarding; five-answer quiz; scored 5/5 and 100XP; level2; profile badges/history; categories; reload retained progress"
+    ],
+    "limitations": [
+      "Mind-reset breathing and offline behavior not tested"
+    ]
+  },
+  {
+    "sourceRow": 211,
+    "name": "Krishna Thakkar",
+    "url": "https://runaway01.ai.studio/",
+    "appName": "Runaway",
+    "visual": 8,
+    "functionality": 5,
+    "overall": 6,
+    "status": "Reviewed",
+    "feedback": "The fashion art direction is distinctive, and the wardrobe, resale, editorial and moodboard screens form a rich prototype. A created board disappeared after reload and outfit generation stayed in its loading state during the test; prioritize a reliable saved wardrobe-to-outfit flow before adding more marketplace features.",
+    "tested": [
+      "All six main nav screens; outfit generation request; moodboard creation; reload removed new board"
+    ],
+    "limitations": [
+      "No camera/receipt upload, social publishing, bidding or purchase; AI outcome not observed before reload"
+    ]
+  },
+  {
+    "sourceRow": 212,
+    "name": "Utkarsh Agarwal",
+    "url": "https://boardflow-shared.lovable.app/",
+    "appName": "Event Task Board",
+    "visual": 7.5,
+    "functionality": 6.5,
+    "overall": 7,
+    "status": "Reviewed",
+    "feedback": "The event-specific board has a clear four-stage layout, and a new task with an assignee persisted after reload. Strengthen the shared-board controls with an obvious edit/status action and a recoverable deletion path; keyboard attempts did not move the test task between stages.",
+    "tested": [
+      "All four board columns and countdown; added Review Demo Task assigned Demo Reviewer; reload preserved it; attempted keyboard stage move"
+    ],
+    "limitations": [
+      "Actual multi-user synchronization and pointer drag unverified; synthetic review task remains on shared board; existing tasks untouched"
+    ]
+  },
+  {
+    "sourceRow": 213,
+    "name": "Samarth Kalra",
+    "url": "https://ballpark.ai.studio/",
+    "appName": "Ballpark",
+    "visual": 8,
+    "functionality": 7,
+    "overall": 7,
+    "status": "Reviewed",
+    "feedback": "The generated case and rubric feedback respond to the submitted assumptions and calculations, giving the practice flow useful depth. The completed case vanished from history after reload, leaving seeded future-dated examples; make attempts durable and label demo history before presenting readiness ratings.",
+    "tested": [
+      "Resources; custom case generation; 61-word synthetic answer; evaluation9.3 with assumption-specific feedback; history; reload/history check"
+    ],
+    "limitations": [
+      "Model scoring validity not independently calibrated; auxiliary support and settings not tested"
+    ]
+  },
+  {
+    "sourceRow": 214,
+    "name": "Aashray Mittal",
+    "url": "https://creative-idea-check.lovable.app",
+    "appName": "IdeaCheck",
+    "visual": 7.5,
+    "functionality": 8,
+    "overall": 7.5,
+    "status": "Reviewed",
+    "feedback": "The form produced a specific textbook-rental assessment with weighted factors, realistic risks and concrete validation steps, and the result persisted on reload. Improve the evidence layer by separating sourced market facts from model assumptions and supporting comparison between saved iterations.",
+    "tested": [
+      "Complete synthetic idea form; analysis scored56 with seven factors; reload preserved result; How It Works weights"
+    ],
+    "limitations": [
+      "Market claims not independently verified; multiple saved idea history not observed"
+    ]
+  },
+  {
+    "sourceRow": 215,
+    "name": "Sudarshan Arora",
+    "url": "https://strategy-suite-site.lovable.app",
+    "appName": "Northbridge Advisory",
+    "visual": 7.5,
+    "functionality": 3.5,
+    "overall": 5,
+    "status": "Partial review",
+    "feedback": "The advisory site is visually consistent and the service, approach and case-study sections are easy to follow. It remains a brochure-style submission: the booking call-to-action loops to the contact section and social links use placeholders, so build a demonstrable enquiry or scheduling outcome and substantiate the client claims.",
+    "tested": [
+      "Viewed all page sections; navigated Services, Approach, Case Studies, About, Contact; booking CTA remains contact anchor"
+    ],
+    "limitations": [
+      "No contact message sent or call booked; business metrics and testimonials unverified"
+    ]
+  },
+  {
+    "sourceRow": 216,
+    "name": "Surya Vamshi",
+    "url": "https://choose-smartly-ai.lovable.app/",
+    "appName": "Decide",
+    "visual": 7.5,
+    "functionality": 6.5,
+    "overall": 7,
+    "status": "Partial review",
+    "feedback": "The brief-to-questions flow eventually produced a sourced product shortlist, including explicit unverified-price labels. The wait for products lacked useful progress feedback and reload restarted interpretation; preserve the decision journey and make long-running research recoverable.",
+    "tested": [
+      "Coffee machine preset; interpreted need; answered four preferences; received six-product sourced shortlist after long wait; reload restarted interpretation"
+    ],
+    "limitations": [
+      "Shortlist evaluation and final decision not tested; retailer claims not independently verified"
+    ]
+  },
+  {
+    "sourceRow": 217,
+    "name": "Akhil Surabattula",
+    "url": "https://myth-fact-quizzer.lovable.app",
+    "appName": null,
+    "visual": null,
+    "functionality": null,
+    "overall": null,
+    "status": "Access blocked",
+    "feedback": "The submitted address displays the Lovable placeholder rather than the quiz app. Publish the intended application and verify the public link so its questions, scoring and visual design can be assessed.",
+    "tested": [
+      "Opened supplied address; only Your app will live here placeholder"
+    ],
+    "limitations": [
+      "No student app UI or flow observable"
+    ]
+  },
+  {
+    "sourceRow": 218,
+    "name": "Navya Juneja",
+    "url": "https://havenai.ai.studio/",
+    "appName": "Haven.ai",
+    "visual": 7.5,
+    "functionality": 6,
+    "overall": 6.5,
+    "status": "Partial review",
+    "feedback": "The accommodation filters and detailed listing views work, and the resident hub gives the concept breadth. Strengthen trust and reliability: every initial listing showed the same 92% match despite budget differences, one image was missing, and the sample agreement audit returned to its ready state without an analysis.",
+    "tested": [
+      "Bangalore filter16→5; listing detail; sample risky agreement audit; Resident Hub; reload resets filters"
+    ],
+    "limitations": [
+      "No booking, maintenance ticket, upload or payment; agreement outcome not observed; listing authenticity unverified"
+    ]
+  },
+  {
+    "sourceRow": 219,
+    "name": "Agam Kaushik",
+    "url": "https://tracktranslator.netlify.app/",
+    "appName": "Track Translator",
+    "visual": 8,
+    "functionality": 8,
+    "overall": 8,
+    "status": "Reviewed",
+    "feedback": "The focused Spa simulator connects damage settings to adjusted corner guidance and produces a complete 19-corner debrief with logged speeds. Preserve sessions across refresh and distinguish click-paced demo lap times from real telemetry so the otherwise strong simulation remains interpretable.",
+    "tested": [
+      "Setup minor front-wing damage; HUD adjustments; Map; Corner Guide; logged all19corners; debrief; reload"
+    ],
+    "limitations": [
+      "No real telemetry integration; platform/car selections explicitly cosmetic"
+    ]
+  },
+  {
+    "sourceRow": 220,
+    "name": "Bhavya Jain",
+    "url": "https://lastpenstanding.lovable.app",
+    "appName": "Pen Fight: Last Pen Standing",
+    "visual": 8,
+    "functionality": 5,
+    "overall": 6,
+    "status": "Partial review",
+    "feedback": "The notebook-and-desk theme is well matched to the idea, with pen choices, lives, levels and a readable drag-to-flick instruction. The test reached the desk and triggered a flick, but full scoring progression was not verified; add a clearer aiming preview and keyboard controls to make the central mechanic easier to learn and test.",
+    "tested": [
+      "How to Play; tournament; three pen options; chose Ball Pen; drag flick changed status; reload returns landing"
+    ],
+    "limitations": [
+      "No level completed; high-score persistence unverified"
+    ]
+  },
+  {
+    "sourceRow": 221,
+    "name": "Himanshu Mataray",
+    "url": "https://bond-968340508411.asia-southeast1.run.app",
+    "appName": "BOND",
+    "visual": 7.5,
+    "functionality": 5,
+    "overall": 6,
+    "status": "Partial review",
+    "feedback": "The events, people and pass screens communicate a clear social-discovery concept, and the creator form covers useful planning details. The AI activity request left the title and description empty, and seeded New York profiles use rupee pricing; improve the draft-generation recovery and label the demo context consistently.",
+    "tested": [
+      "Login entered demo-like populated app; events; people; profile/pass wallet; Create form; AI request returned without filled draft"
+    ],
+    "limitations": [
+      "No people contacted, plans published, bookings or payments; persistence of completed social actions untested"
+    ]
+  },
+  {
+    "sourceRow": 222,
+    "name": "Ankit Singhal",
+    "url": "https://hisaab-ghar.lovable.app/",
+    "appName": "Hisaab",
+    "visual": 8,
+    "functionality": 8,
+    "overall": 8,
+    "status": "Reviewed",
+    "feedback": "The compact daily ledger fits its household use case well: changing milk quantity recalculates the day total and survives reload, with settlements and device-local storage made explicit. Add clearer explanations for shorthand attendance states and make backup/recovery prominent because the ledger currently depends on one device.",
+    "tested": [
+      "Today quantity1→2 changed66→132; reload retained change; Settle totals; More language/export/reminder controls"
+    ],
+    "limitations": [
+      "No payment or notification permission; export and full month settlement not executed"
+    ]
+  },
+  {
+    "sourceRow": 223,
+    "name": "mohit yadav",
+    "url": "https://beaming-web-builder.lovable.app/",
+    "appName": "CompareStyle",
+    "visual": 8,
+    "functionality": 3,
+    "overall": 4.5,
+    "status": "Reviewed",
+    "feedback": "The black-and-gold comparison layout is clear and the footer honestly identifies sample pricing. The prominent Deals and Wishlist links both lead to 404 pages; complete the main navigation and connect search to distinct product results before extending image matching or alerts.",
+    "tested": [
+      "Search sneakers produced Air Jordan comparison; Deals404; Wishlist404; Profile inspected"
+    ],
+    "limitations": [
+      "No image upload or purchase; live price feeds explicitly coming soon"
+    ]
+  },
+  {
+    "sourceRow": 224,
+    "name": "Anushka Nath",
+    "url": "https://homebodyindia.lovable.app",
+    "appName": "HomeBody",
+    "visual": 7.5,
+    "functionality": null,
+    "overall": null,
+    "status": "Access blocked",
+    "feedback": "The warm, restrained entry design clearly separates student and host-family journeys and explains the room-for-help exchange. The actual matching flow sits behind sign-in, so provide reviewer credentials or a safe demo to assess listings, agreements and trial stays.",
+    "tested": [
+      "Landing; student sign-in; role controls and email/Google authentication shown"
+    ],
+    "limitations": [
+      "No account created; post-login app and persistence unobservable"
+    ]
+  },
+  {
+    "sourceRow": 225,
+    "name": "Raaina Nagpal",
+    "url": "https://carepulsee.lovable.app",
+    "appName": "CarePulse",
+    "visual": 6.5,
+    "functionality": null,
+    "overall": null,
+    "status": "Access blocked",
+    "feedback": "The sign-in screen is clean and makes the private health-record purpose clear. Vitals, meals, medication and care-circle workflows were not accessible without an account; provide a synthetic reviewer demo so those important flows can be assessed safely.",
+    "tested": [
+      "Landing sign-in gate; opened account form"
+    ],
+    "limitations": [
+      "No account created; no health data entered; dashboard unobservable"
+    ]
+  },
+  {
+    "sourceRow": 226,
+    "name": "Khush Saini",
+    "url": "https://sparkle-plan-budget.lovable.app/",
+    "appName": "PlannMyVenue",
+    "visual": 7,
+    "functionality": 6.5,
+    "overall": 6.5,
+    "status": "Reviewed",
+    "feedback": "The planner calculates food costs and budget overruns correctly and clearly labels its prices as illustrative. For a ₹20 lakh budget it offered only venues already above that total, so improve affordability matching and retain the selected plan on refresh.",
+    "tested": [
+      "Built20L/200guest plan; selected28L venue and120/person dish; food24000, total2924000,overbudget924000; reload"
+    ],
+    "limitations": [
+      "No live venue availability or booking; only Delhi NCR supported"
+    ]
+  },
+  {
+    "sourceRow": 227,
+    "name": "Sri Krishna",
+    "url": "https://linked-care-plan.lovable.app",
+    "appName": "SAATHI",
+    "visual": 8,
+    "functionality": null,
+    "overall": null,
+    "status": "Access blocked",
+    "feedback": "The landing page explains a specific family coordination problem and sets sensible boundaries around medical advice and AI-extracted data. The actual family workspace requires sign-in, so provide a demo with synthetic reports to demonstrate upload, confirmation, timelines and permissions.",
+    "tested": [
+      "Landing features and safety statements; sign-in form"
+    ],
+    "limitations": [
+      "No authenticated flow or persistence observable; security claims not verified"
+    ]
+  },
+  {
+    "sourceRow": 228,
+    "name": "Sibi Selvam",
+    "url": "https://boardroom365.ai.studio/",
+    "appName": "Boardroom 365",
+    "visual": 7.5,
+    "functionality": 6,
+    "overall": 6.5,
+    "status": "Partial review",
+    "tested": [
+      "Changed CTO; equity, burn and risk metrics responded",
+      "Completed governance/team-crisis choice and entered boardroom",
+      "Asked CFO runway question; received generic response",
+      "Locked Series A decision, signed simulated resolution, executed; metrics changed but advancing state remained during test",
+      "Tried reference controls; reload reset to founding stage"
+    ],
+    "limitations": [
+      "Full 365-day outcome and alternate timeline not observed",
+      "No real corporate or financial action; all interactions within explicit simulator"
+    ],
+    "feedback": "The founder-hiring and governance choices make this an ambitious interactive teaching concept. Reconcile the conflicting cash/runway figures between the header and scenario text, make stakeholder answers address the actual question, and ensure the simulation finishes and resumes after reload before adding further stages."
+  },
+  {
+    "sourceRow": 229,
+    "name": "Nihant Madipalli",
+    "url": "https://gl0wroll.lovable.app",
+    "appName": "gl0wroll",
+    "visual": 8.5,
+    "functionality": 4,
+    "overall": 5.5,
+    "status": "Reviewed",
+    "tested": [
+      "Inspected retro camera landing and seven styles",
+      "Uploaded synthetic 320x240 PNG; received low-resolution warning and live previews",
+      "Selected 90s Film and developed; app error screen appeared",
+      "Retried upload/develop and saw same error; no output or film-roll item survived"
+    ],
+    "limitations": [
+      "AI repaint and export were not reachable after the development error",
+      "Used only a synthetic image; no personal image uploaded"
+    ],
+    "feedback": "The camera metaphor, style previews and grain controls give gl0wroll a distinctive identity. Developing the synthetic photo repeatedly ended in “This page didn’t load” and discarded the work; make one complete upload-to-export path reliable before extending the style collection."
+  },
+  {
+    "sourceRow": 230,
+    "name": "Mouktika Malhotra",
+    "url": "https://creatiview-calendar.lovable.app",
+    "appName": "ContentFlow",
+    "visual": 6.5,
+    "functionality": 6.5,
+    "overall": 6.5,
+    "status": "Reviewed",
+    "tested": [
+      "Food / Instagram / three-day schedule generation",
+      "Regenerated Monday individually",
+      "Switched week/month calendar",
+      "Reloaded month: the same dates received different ideas",
+      "Rechecked loaded landing and calendar screenshots; icons recovered but the landing paragraph remained a narrow column"
+    ],
+    "limitations": [
+      "Publishing integrations not offered/tested"
+    ],
+    "feedback": "The niche-to-calendar flow produces a usable starting schedule, and regenerating one day is a sensible control. Fix the home-page paragraph that wraps into a very narrow vertical column, and persist chosen ideas: reloading changed the plan instead of preserving the work."
+  },
+  {
+    "sourceRow": 231,
+    "name": "Shrey Bansal",
+    "url": "https://moodscape-explorer-56.lovable.app",
+    "appName": "Aura",
+    "visual": 8.5,
+    "functionality": 6.5,
+    "overall": 7,
+    "status": "Reviewed",
+    "tested": [
+      "Calm check-in and recommendation feed",
+      "Saved Long Shore Drone and confirmed saved state after reload",
+      "Visited Explore, People, Saved and Me"
+    ],
+    "limitations": [
+      "Did not post, join communities or send messages",
+      "Match percentages, live counts and personal-history claims not independently verified"
+    ],
+    "feedback": "Aura has a coherent mood-led visual language, and the check-in plus saved-item flow works across reloads. The profile invents an established mood history for a first-time visitor, while recommendation cards stop short of a usable listening or booking action; label demo content and finish one real recommendation journey."
+  },
+  {
+    "sourceRow": 232,
+    "name": "Ashray",
+    "url": "https://decision-flow-glass.lovable.app",
+    "appName": "Decision Log",
+    "visual": 7.5,
+    "functionality": null,
+    "overall": null,
+    "status": "Partial review",
+    "tested": [
+      "Inspected seven existing decisions and confidence/calibration metrics",
+      "Filtered wrong outcomes",
+      "Filled synthetic title, reasoning, category and revisit date; Save remained disabled",
+      "Retried date entry and blur; new entry was not created; reload returned existing seven logs"
+    ],
+    "limitations": [
+      "Date control did not commit a usable value during browser testing; cannot separate app validation from browser automation limitation",
+      "Existing decisions/outcomes were not changed; new-entry persistence unverified"
+    ],
+    "feedback": "The decision, reflection and calibration model is thoughtful, and outcome filters make the existing history useful. I could not verify creation because the native date input did not commit during automated testing; functionality and overall scores are withheld rather than treating this as an app defect."
+  },
+  {
+    "sourceRow": 233,
+    "name": "Priya Ramesh Dolas",
+    "url": "https://vataplate.lovable.app",
+    "appName": "Forkcast",
+    "visual": 7,
+    "functionality": null,
+    "overall": null,
+    "status": "Access blocked",
+    "tested": [
+      "Inspected recipe landing",
+      "Generate recipe leads to Google/email login"
+    ],
+    "limitations": [
+      "No authenticated/demo access; recipe, allergy handling and saving unobservable"
+    ],
+    "feedback": "Forkcast presents a clear recipe-to-shopping-list concept with a calm, readable landing page. Provide a guest sample or reviewer account so recipe generation can be assessed, and avoid an absolute allergy-safety promise without a visible verification process."
+  },
+  {
+    "sourceRow": 234,
+    "name": "Anany Dixit",
+    "url": "https://eco-sync.ai.studio",
+    "appName": "EcoSync Navigator",
+    "visual": 8,
+    "functionality": 7,
+    "overall": 6.5,
+    "status": "Reviewed",
+    "tested": [
+      "Changed project volume from 50000 to 10000; fee/net rankings recalculated",
+      "Saved Review Demo Carbon Project and verified workspace persistence on reload",
+      "Visited Dashboard, Opportunity Analyzer, Market Intelligence, Platforms Directory, Workspace and Admin Panel"
+    ],
+    "limitations": [
+      "No actual trading, alerts or administrative changes",
+      "Live price/registry claims not independently verified; admin explicitly offers market simulation"
+    ],
+    "feedback": "The comparator exposes useful fee arithmetic and successfully preserved the test scenario. Tighten the product focus: carbon-market screens unexpectedly contain HVAC, dishwasher and water-usage data, while “live” market claims coexist with simulated controls; clearly label assumptions and validate venue eligibility before presenting a best-return recommendation."
+  },
+  {
+    "sourceRow": 235,
+    "name": "Kanishk Rustagi",
+    "url": "https://netdex-gather-connect.lovable.app",
+    "appName": "ConnectDex",
+    "visual": 7.5,
+    "functionality": null,
+    "overall": null,
+    "status": "Access blocked",
+    "tested": [
+      "Inspected cohort networking landing and login screen"
+    ],
+    "limitations": [
+      "QR validation, personal dex and memory game require authentication; not tested"
+    ],
+    "feedback": "The QR-to-connection-to-name-game loop is a specific and relevant idea for a new MBA cohort. The supplied link exposes only the landing and authentication screens; provide a demo route with synthetic classmates so the connection and recall mechanics can be reviewed."
+  },
+  {
+    "sourceRow": 236,
+    "name": "Vidushi Aggrawal",
+    "url": "https://vybedating.ai.studio/",
+    "appName": "VYBE",
+    "visual": 8,
+    "functionality": 6.5,
+    "overall": 6.5,
+    "status": "Partial review",
+    "tested": [
+      "Visited Discover, Matches, Games, Gifts, Groups, Chats and Profile",
+      "Answered a chemistry-game question; advanced to question two",
+      "Reload returned game to question one"
+    ],
+    "limitations": [
+      "No likes, messages, gifts, bookings or membership purchases sent",
+      "Profile and social activity appear prepopulated; real multiuser delivery unverified"
+    ],
+    "feedback": "VYBE has a strong visual identity and substantial coverage of the dating journey, including usable game interactions. Resolve basic trust inconsistencies before adding more breadth: Meera shows 96% compatibility in Discover but 67% in Matches, and Chats displays a negative Normal count; label the preloaded account and preserve game progress."
+  },
+  {
+    "sourceRow": 237,
+    "name": "Adarsh Raj",
+    "url": "https://cosmic-buddy.ai.studio",
+    "appName": "Cosmic Blueprint",
+    "visual": 8,
+    "functionality": 6.5,
+    "overall": 6,
+    "status": "Reviewed",
+    "tested": [
+      "Synthetic Demo Learner / 2000-01-01 / Delhi / unknown time setup",
+      "Visited all five main navigation views",
+      "Saved one reflection; history replaced two preloaded examples with own entry",
+      "Reload returned to empty identity setup"
+    ],
+    "limitations": [
+      "Astrological accuracy and predictive validity not assessed",
+      "Reflection durability after re-entering identity unverified"
+    ],
+    "feedback": "The onboarding, journal and guidance screens are coherent, and saving a reflection visibly updates the record. The growth summary still names “Aria” and claims a semester of development after one short entry; remove template-personalization leakage, ground summaries in actual entries and preserve the user session."
+  },
+  {
+    "sourceRow": 238,
+    "name": "Swatantra Kumar Soni",
+    "url": "https://deadline-os-psi.vercel.app/",
+    "appName": "Deadline OS",
+    "visual": 7.5,
+    "functionality": null,
+    "overall": null,
+    "status": "Access blocked",
+    "tested": [
+      "Inspected institutional login and privacy/testing disclosures"
+    ],
+    "limitations": [
+      "Requires mastersunion.org account; deadline extraction, completion and persistence unobservable"
+    ],
+    "feedback": "Deadline OS identifies a real cohort problem and explains the distinction between shared announcements and private inbox access clearly. Provide a reviewer demo with sample announcements and editable deadlines so extraction accuracy, due-date handling and completion persistence can be evaluated."
+  },
+  {
+    "sourceRow": 239,
+    "name": "Parth Goel",
+    "url": "https://delightful-html-display.lovable.app",
+    "appName": "MindAge",
+    "visual": 8,
+    "functionality": 8,
+    "overall": 7.5,
+    "status": "Reviewed",
+    "tested": [
+      "Validated required onboarding fields",
+      "Completed all 20 questions with synthetic neutral answers",
+      "Result: mental age21 vs physical25 and five60% dimensions",
+      "Opened detailed report; result and report persisted on reload"
+    ],
+    "limitations": [
+      "PDF download and account creation not tested",
+      "Psychometric validity of mental-age scoring not assessed"
+    ],
+    "feedback": "MindAge delivers a complete, readable assessment-to-report journey and preserves the result after reload. Handle tied scores properly—the same dimension is described as both strongest and weakest—and explain the limits of converting responses into a precise mental age; the landing also alternates between five and twenty dimensions."
+  },
+  {
+    "sourceRow": 240,
+    "name": "Palak Singh",
+    "url": "https://greencare.ai.studio/",
+    "appName": "GreenCare",
+    "visual": 8,
+    "functionality": 7,
+    "overall": 7,
+    "status": "Partial review",
+    "tested": [
+      "Selected Repotting tier and added Rs249 compost; total changed Rs299 to Rs548",
+      "Reached saved-address stage without placing booking",
+      "Visited Bookings, AMC Plans and Profile",
+      "Reload returned home; draft not resumed"
+    ],
+    "limitations": [
+      "No booking, payment, device permission, message or call",
+      "Diagnosis and live service availability unverified"
+    ],
+    "feedback": "The service tiers and add-ons form a clear booking journey, and the total responds correctly to selections. Clean up trust details before launch: the same price is labelled both excluding and including taxes, “Today” is fixed to 25 Aug, and the hotline label differs from its call link; retain the in-progress booking draft."
+  },
+  {
+    "sourceRow": 241,
+    "name": "Zainab Asif",
+    "url": "https://lovable.dev/projects/3ec8fdc6-4f6e-4a89-8cab-b0ca3dfabdfa?change_type=upgrade&plan_type=monthly",
+    "appName": null,
+    "visual": null,
+    "functionality": null,
+    "overall": null,
+    "status": "Access blocked",
+    "tested": [
+      "Opened supplied Lovable editor project URL",
+      "Private-project access denied dialog appeared"
+    ],
+    "limitations": [
+      "No published app or accessible preview; no access request sent"
+    ],
+    "feedback": "The submitted URL is a private Lovable editor project, so the app itself could not be inspected. Share the published public app URL or an accessible reviewer preview; visual design and functionality cannot fairly be scored from the access-denied screen."
+  },
+  {
+    "sourceRow": 242,
+    "name": "Shraddha Parashar",
+    "url": "https://scrapify-buddy.lovable.app/",
+    "appName": "Scrapify",
+    "visual": 8,
+    "functionality": 5.5,
+    "overall": 6,
+    "status": "Partial review",
+    "tested": [
+      "Visited Book, Assets, Track, Weigh and Vault",
+      "Changed load to 5 Tons+; reload reset the default selection",
+      "Inspected quoted values, itemized receipt and certificate view"
+    ],
+    "limitations": [
+      "No pickup requested, signature supplied, driver called or auditor emailed",
+      "CPCB authorization, certificates, live GPS and paired-scale claims not independently verified"
+    ],
+    "feedback": "Scrapify maps a specific institutional e-waste workflow with unusually clear asset and compliance screens. The live valuation total does not equal its displayed item amounts, and a generated certificate is visible before any review action; label the demo state and enforce correct arithmetic and completion gates before treating these screens as operational."
+  },
+  {
+    "sourceRow": 243,
+    "name": "Prakriti Sharda",
+    "url": "https://matlo-cosmic-sanctuary.lovable.app/",
+    "appName": "MATLO",
+    "visual": 8.5,
+    "functionality": null,
+    "overall": null,
+    "status": "Access blocked",
+    "tested": [
+      "Inspected atmospheric landing and five feature entry links",
+      "Make your sky leads to email/Google sign-in"
+    ],
+    "limitations": [
+      "No guest access to mood, city, reflection or focus workflows"
+    ],
+    "feedback": "MATLO has a distinctive rainy-city atmosphere and a thoughtful, quiet product premise. Every feature routes to authentication, so provide a sample sky or guest focus room to demonstrate the experience; the core mechanics and persistence could not be evaluated from this link."
+  },
+  {
+    "sourceRow": 244,
+    "name": "Kushan Mehta",
+    "url": "https://campusplay.ai.studio",
+    "appName": "CampusPlay",
+    "visual": 7.5,
+    "functionality": 6.5,
+    "overall": 7,
+    "status": "Partial review",
+    "tested": [
+      "Filtered eight events to one badminton event and opened details",
+      "Visited registrations empty state and organize-event form",
+      "Reload restored default home/filter state"
+    ],
+    "limitations": [
+      "Did not register for a real event or publish an event",
+      "Event capacity, multiuser registration and creation persistence not verified"
+    ],
+    "feedback": "CampusPlay provides a clear sport-filter-to-event-detail journey and a well-specified organizer form. Make current availability trustworthy: the page advertises 20+ active events while listing eight and retains an old “Today” match; add a clearly marked demo registration path so capacity updates and saved passes can be tested safely."
+  },
+  {
+    "sourceRow": 245,
+    "name": "Riya Garg",
+    "url": "https://nutri-mate-mvp.lovable.app",
+    "appName": "NutriMate",
+    "visual": 7.5,
+    "functionality": 4.5,
+    "overall": 5.5,
+    "status": "Reviewed",
+    "tested": [
+      "Explicit local-demo signup with synthetic identity",
+      "Onboarded Vegetarian + Peanuts allergy + Rs150 budget",
+      "Added water; six-glass state persisted after reload",
+      "Requested Normal hunger / Mess suggestions",
+      "Visited Log, Scan, Coach, Profile; Profile404"
+    ],
+    "limitations": [
+      "No real health data or images uploaded; camera not used",
+      "Advice explicitly uses predefined demo scenarios"
+    ],
+    "feedback": "NutriMate is well targeted to student budgets and has a usable onboarding and hydration flow. The meal suggestions still include peanut chikki after a peanut allergy is selected, despite the coach promising to skip peanuts; enforce dietary exclusions across every recommendation and fix the Profile 404 before presenting this as a dependable nutrition tool."
+  },
+  {
+    "sourceRow": 246,
+    "name": "Radha Taori",
+    "url": "https://charming-codify.lovable.app",
+    "appName": "Mitthu",
+    "visual": 8,
+    "functionality": 6.5,
+    "overall": 7,
+    "status": "Reviewed",
+    "tested": [
+      "Completed four Marathi greetings questions correctly",
+      "Received100% and +40XP completion screen",
+      "Visited Practice, Progress, Profile",
+      "Returned and reloaded: XP450, goal30/50, Unit2Lesson3/5 unchanged"
+    ],
+    "limitations": [
+      "Voice/microphone and additional languages not tested"
+    ],
+    "feedback": "Mitthu has an appealing mascot, readable bilingual questions and a complete short lesson flow. Connect completion to the learning record: the +40 XP reward did not change the displayed XP, daily goal or unit progress, even after returning home; distinguish seeded streaks and mastery from progress the learner actually earns."
+  },
+  {
+    "sourceRow": 247,
+    "name": "Aekansh Panhotra",
+    "url": "https://caseprep-elite-strategy-case-interview-platform.ai.studio",
+    "appName": "CasePrep",
+    "visual": 8,
+    "functionality": 6,
+    "overall": 6.5,
+    "status": "Reviewed",
+    "tested": [
+      "Started daily diagnostic, submitted structured answer, received model solution and +25LogicPoints",
+      "Visited Case Library, Framework Academy, Analytics and Interviews",
+      "Reload dashboard retained seeded48cases and did not show new diagnostic activity"
+    ],
+    "limitations": [
+      "Full live-case interview and peer scheduling not tested",
+      "Benchmark and source authenticity unverified"
+    ],
+    "feedback": "The case library and framework content provide a solid consulting-prep structure. The advertised Singapore FinTech ten-minute session opens a five-minute London grocery case, and completing it leaves the dashboard unchanged; align the selected case, give answer-specific evaluation and update the learner record instead of relying on preloaded performance claims."
+  },
+  {
+    "sourceRow": 248,
+    "name": "Shashank Raj",
+    "url": "https://life-vaultai.lovable.app/",
+    "appName": "LifeVault",
+    "visual": 8,
+    "functionality": 6.5,
+    "overall": 6.5,
+    "status": "Partial review",
+    "tested": [
+      "Visited Home, Vault, Assistant, Payments and Profile",
+      "Asked preset bills-due question; received itemized answer",
+      "Conversation persisted after reload"
+    ],
+    "limitations": [
+      "No payments, document uploads, family invitations or security changes",
+      "Encryption/biometric/emergency-access claims unverified"
+    ],
+    "feedback": "LifeVault organizes a broad household-admin problem clearly, and the assistant conversation survives reload. Its answer calls 2–9 Aug bills due in the next seven days during an end-of-August review; calculate urgency from actual dates and visibly separate sample financial/identity data and security promises from verified capabilities."
+  },
+  {
+    "sourceRow": 249,
+    "name": "Arihant jain",
+    "url": "https://bill-divide-joy.lovable.app",
+    "appName": "SplitWise Lite",
+    "visual": 7.5,
+    "functionality": 7.5,
+    "overall": 7,
+    "status": "Reviewed",
+    "tested": [
+      "Changed bill100 to200; correct unallocated70 warning for mixed fixed/percentage shares",
+      "Auto-balance produced75+65+60=200",
+      "Added synthetic fourth participant; summary updated",
+      "Reload reset bill and removed added participant"
+    ],
+    "limitations": [
+      "Clipboard delivery not tested; no external sharing"
+    ],
+    "feedback": "The mixed fixed-amount/percentage split and auto-balance logic work clearly, with a useful transparent breakdown. Preserve the draft across reloads and explain that auto-balance changes fixed contributions; the current reset loses participant names and agreed amounts."
+  },
+  {
+    "sourceRow": 250,
+    "name": "Kiran Kumar G",
+    "url": "https://locolens-safesteps.lovable.app",
+    "appName": "LocoLens: SafeSteps",
+    "visual": 7.5,
+    "functionality": 6.5,
+    "overall": 6,
+    "status": "Reviewed",
+    "tested": [
+      "Hauz Khas preset returned location-specific safety dashboard, places, map links and helplines",
+      "Reviewed generated time windows and source listing",
+      "Reload reset the query and results"
+    ],
+    "limitations": [
+      "No calls, location permissions or real-world route testing",
+      "Safety claims and helpline details not independently verified; app labels advice AI-generated"
+    ],
+    "feedback": "SafeSteps turns a simple location lookup into a readable dashboard with useful map and contact links. The confident safe/unsafe time windows lack visible evidence, and emergency listings mix questionable venue types and helpline descriptions; verify these high-stakes fields, show freshness and uncertainty prominently, and preserve the lookup for quick return."
+  },
+  {
+    "sourceRow": 251,
+    "name": "Harsh Nowlakha",
+    "url": "https://cheapvsexpensive.ai.studio",
+    "appName": "Cheap vs Expensive",
+    "visual": 7.5,
+    "functionality": 8,
+    "overall": 7.5,
+    "status": "Reviewed",
+    "tested": [
+      "Started game; chose expensive boots correctly; prices and explanation revealed",
+      "Advanced to round2 with28-second limit and2935points",
+      "Timeout produced game-over screen with one survived round",
+      "Reload/newgame retained best1"
+    ],
+    "limitations": [
+      "Product prices not independently verified; no social share sent"
+    ],
+    "feedback": "The timed comparison loop works end to end, including price reveals, escalating pace, game over and a persistent best record. Improve the content fidelity—the “Synthetic Work Boots” card shows a running shoe—and label price examples or sources so success depends on informed comparison rather than mismatched imagery."
+  },
+  {
+    "sourceRow": 252,
+    "name": "S.Gnana yadeswar ",
+    "url": "https://stockflow-inventory-gfw0.onrender.com/",
+    "visual": 8,
+    "functionality": 7.5,
+    "overall": 7.5,
+    "feedback": "StockFlow has a clear, extensive ERP interface: creating a demo product and recording a stock-out updated quantities and valuation, and both survived reload. The audit trail still showed only six old entries after those actions; connect real product and stock changes to the promised audit history, and distinguish simulated roles and forecasting from production controls.",
+    "status": "Reviewed",
+    "tested": "Opened Dashboard, Products, Inventory Master, AI Demand Forecast, Reports, Serial Numbers, Categories, Suppliers, Purchase Orders, Supplier Invoices, Payment Ledger, User Management, Audit Trail and Settings. In the explicitly identified demo, added Review Demo Training Ball (SKU REVIEW-DEMO-0831), initial stock 3, cost 10, price 12; recorded one Stock Out, verified stock 2 and total 99 units after reload. Audit history remained six seeded entries before/after reload.",
+    "limitations": "No real purchase orders, supplier payments, user changes or deletions. Demo synthetic product remains present. Role enforcement, forecast accuracy and backend security were not verified. Initial icon font loading recovered; final screenshot shows normal icons.",
+    "appName": "StockFlow"
+  },
+  {
+    "sourceRow": 253,
+    "name": "Aswin D G",
+    "url": "https://co-found.tech/",
+    "appName": "CO-Found",
+    "visual": 8,
+    "functionality": null,
+    "overall": null,
+    "status": "Access blocked",
+    "tested": [
+      "Inspected campus-founder onboarding",
+      "Skip leads to institutional email/Google sign-in"
+    ],
+    "limitations": [
+      "Requires mastersunion.org account; startup discovery, matching and persistence unobservable"
+    ],
+    "feedback": "CO-Found introduces a relevant campus-founder network with a restrained, readable onboarding design. The supplied site requires an institutional account before the actual network appears; offer a demo with synthetic ideas and members so discovery, matching and follow-through can be assessed."
+  },
+  {
+    "sourceRow": 254,
+    "name": "Lavender",
+    "url": "https://leak-watch.netlify.app/",
+    "visual": 8.5,
+    "functionality": 8.5,
+    "overall": 8.5,
+    "feedback": "LeakWatch presents a coherent finance workflow: demo approvals, paid status, invoice sync and a new recurring contract updated the totals and survived reload. Renewal notes and cancellation also worked; the next step is to enforce the clearly labelled preview approval rules and explain what happens to an already queued payable when its contract is marked cancelling.",
+    "status": "Reviewed",
+    "tested": "Visited landing, demo sign-in, Dashboard, Contracts/detail, Payables including Approved/Paid, Integrations and all four Settings tabs. In the explicitly simulated academic demo, approved and marked the Zoho sample payable paid; created Review Demo Subscription at INR100 monthly, confirmed generated dated payable and INR1200 annual exposure, synced one simulated gateway invoice, reloaded and reentered to verify totals and contract persisted. Saved a renewal note and marked only the synthetic contract cancelling.",
+    "limitations": "Payment rails and gateways explicitly simulated; no real payment, third-party connection, signup, plan purchase or external communication. Approval thresholds and notification delivery explicitly preview-only. Demo session required reentry after reload but records persisted. Synthetic contract remains marked cancelling; no records deleted.",
+    "appName": "LeakWatch"
+  }
+]

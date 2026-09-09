@@ -1,0 +1,15 @@
+- banner:
+  - heading "ColdConnect" [level=1]
+- main:
+  - heading "Welcome back." [level=2]
+  - paragraph: Make every introduction count.
+  - button "Continue with Google":
+    - text: Continue with Google
+  - generic: or
+  - textbox "Email"
+  - textbox "Password"
+  - button "Sign in"
+  - button "Forgot password?"
+  - button "New here? Create an account"
+  - link "Learn what ColdConnect does":
+    - /url: /onboarding

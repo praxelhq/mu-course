@@ -1,0 +1,108 @@
+- region "Notifications (F8)":
+  - list
+- region "Notifications alt+T"
+- complementary:
+  - generic: InfluencerOS
+  - navigation:
+    - link "Dashboard":
+      - /url: /
+      - generic: Dashboard
+    - link "Campaigns" [active]:
+      - /url: /campaigns
+      - generic: Campaigns
+    - link "AI Campaign Planner":
+      - /url: /ai-planner
+      - generic: AI Campaign Planner
+    - link "Creators":
+      - /url: /creators
+      - generic: Creators
+    - link "Content Approval":
+      - /url: /content-approval
+      - generic: Content Approval
+    - link "Performance & ROI":
+      - /url: /performance
+      - generic: Performance & ROI
+    - link "Payments & Ledger":
+      - /url: /payments
+      - generic: Payments & Ledger
+    - link "Assets & Logistics":
+      - /url: /assets
+      - generic: Assets & Logistics
+    - link "Settings":
+      - /url: /settings
+      - generic: Settings
+  - button "Collapse":
+    - generic: Collapse
+- banner:
+  - textbox "Search campaigns, creators, content..."
+  - button "3":
+    - generic: "3"
+  - button "M MamaEarth":
+    - generic: M
+    - generic: MamaEarth
+  - button "Arun Kumar Marketing Manager":
+    - paragraph: Arun Kumar
+    - paragraph: Marketing Manager
+- main:
+  - heading "Campaigns" [level=1]
+  - paragraph: Manage your influencer marketing campaigns
+  - button "Create Campaign":
+    - text: Create Campaign
+  - heading "Summer Skincare Launch" [level=3]
+  - generic: Active
+  - button:
+  - generic: Budget Used
+  - generic: ₹5.2L / ₹8.0L
+  - progressbar
+  - paragraph: "12"
+  - paragraph: Influencers
+  - paragraph: 4.5M
+  - paragraph: Reach
+  - paragraph: 3.2x
+  - paragraph: ROI
+  - generic: 2024-01-15 - 2024-02-28
+  - heading "Vitamin C Serum Push" [level=3]
+  - generic: Active
+  - button:
+  - generic: Budget Used
+  - generic: ₹3.8L / ₹5.0L
+  - progressbar
+  - paragraph: "8"
+  - paragraph: Influencers
+  - paragraph: 2.8M
+  - paragraph: Reach
+  - paragraph: 2.8x
+  - paragraph: ROI
+  - generic: 2024-01-20 - 2024-02-15
+  - heading "Mom's Day Special" [level=3]
+  - generic: Draft
+  - button:
+  - generic: Budget Used
+  - generic: ₹0 / ₹12.0L
+  - progressbar
+  - paragraph: "0"
+  - paragraph: Influencers
+  - paragraph: "0"
+  - paragraph: Reach
+  - paragraph: 0x
+  - paragraph: ROI
+  - generic: 2024-05-01 - 2024-05-15
+  - heading "Monsoon Hair Care" [level=3]
+  - generic: Completed
+  - button:
+  - generic: Budget Used
+  - generic: ₹5.8L / ₹6.0L
+  - progressbar
+  - paragraph: "15"
+  - paragraph: Influencers
+  - paragraph: 6.2M
+  - paragraph: Reach
+  - paragraph: 4.1x
+  - paragraph: ROI
+  - generic: 2023-07-01 - 2023-08-31
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_05t71mwv1r9qb9tdwk5a0m9t2d?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: ₹0.0L

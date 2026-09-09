@@ -1,0 +1,154 @@
+- navigation:
+  - generic: inventory_2
+  - heading "StockFlow" [level=1]
+  - generic: ERP
+  - paragraph: Sports Retail Operations
+  - paragraph: OVERVIEW
+  - list:
+    - button "dashboard Dashboard 5":
+      - generic: dashboard
+      - generic: Dashboard
+      - generic: "5"
+    - button "inventory_2 Products":
+      - generic: inventory_2
+      - generic: Products
+    - button "swap_horiz Inventory Master":
+      - generic: swap_horiz
+      - generic: Inventory Master
+  - paragraph: INTELLIGENCE
+  - list:
+    - button "auto_awesome AI Demand Forecast AI":
+      - generic: auto_awesome
+      - generic: AI Demand Forecast
+      - generic: AI
+    - button "analytics Reports & Analytics" [active]:
+      - generic: analytics
+      - generic: Reports & Analytics
+  - paragraph: OPERATIONS
+  - list:
+    - button "qr_code_2 Serial Numbers":
+      - generic: qr_code_2
+      - generic: Serial Numbers
+    - button "category Categories":
+      - generic: category
+      - generic: Categories
+    - button "local_shipping Suppliers":
+      - generic: local_shipping
+      - generic: Suppliers
+  - paragraph: PROCUREMENT & PAYABLES
+  - list:
+    - button "post_add Purchase Orders 2":
+      - generic: post_add
+      - generic: Purchase Orders
+      - generic: "2"
+    - button "receipt_long Supplier Invoices 3":
+      - generic: receipt_long
+      - generic: Supplier Invoices
+      - generic: "3"
+    - button "payments Payment Ledger":
+      - generic: payments
+      - generic: Payment Ledger
+  - paragraph: SYSTEM
+  - list:
+    - button "manage_accounts User Management":
+      - generic: manage_accounts
+      - generic: User Management
+    - button "history Audit Trail Logs":
+      - generic: history
+      - generic: Audit Trail Logs
+  - button "settings Settings":
+    - generic: settings
+    - generic: Settings
+  - button "logout Sign Out":
+    - generic: logout
+    - generic: Sign Out
+- banner:
+  - generic: search
+  - textbox "Search products, SKUs, suppliers, orders..."
+  - generic: ⌘K
+  - generic: ₹ INR
+  - text: "Role:"
+  - strong: Admin
+  - button "notifications":
+    - generic: notifications
+  - button "help_outline":
+    - generic: help_outline
+  - button "Yadeshwar Admin expand_more":
+    - generic: Yadeshwar
+    - generic: Admin
+    - generic: expand_more
+- main:
+  - heading "Reports & Analytics" [level=2]
+  - paragraph: Operational analytics covering AI demand forecasting, inventory turnover velocity, supplier scoring, and financial valuation
+  - button "auto_awesome AI Forecast":
+    - generic: auto_awesome
+    - text: AI Forecast
+  - button "hourglass_bottom Slow-Moving":
+    - generic: hourglass_bottom
+    - text: Slow-Moving
+  - button "query_stats Supplier Scorecards":
+    - generic: query_stats
+    - text: Supplier Scorecards
+  - button "tune Adjustments Log":
+    - generic: tune
+    - text: Adjustments Log
+  - button "pie_chart Valuation":
+    - generic: pie_chart
+    - text: Valuation
+  - button "download Export CSV":
+    - generic: download
+    - text: Export CSV
+  - button "picture_as_pdf Print Report":
+    - generic: picture_as_pdf
+    - text: Print Report
+  - generic: auto_awesome
+  - generic: AI Demand Forecasting Intelligence
+  - heading "Predictive Procurement Breakdown (Next 30 Days)" [level=3]
+  - paragraph: Synthesized from historical Stock Out consumption patterns to recommend precise purchase order quantities without over-allocating capital.
+  - button "7D"
+  - button "30D"
+  - button "60D"
+  - button "90D"
+  - text: Forecasted Demand
+  - paragraph: 35 units
+  - generic: Expected across all 15 SKUs
+  - text: Reorders Recommended
+  - paragraph: +43 units
+  - generic: Across 11 low/critical products
+  - text: Est. Purchase Cost
+  - paragraph: ₹71,779
+  - generic: Directly at supplier cost
+  - text: Critical / High Stock Risk
+  - paragraph: 4 SKUs
+  - generic: 1 currently at 0 units
+  - heading "Highest Demand Products & Reorder Needs" [level=4]
+  - paragraph: Comparing current stock vs projected demand (Next 30 Days)
+  - list:
+    - img "Current Stock legend icon"
+    - text: Current Stock
+    - img "Forecasted Demand legend icon"
+    - text: Forecasted Demand
+    - img "Recommended Order legend icon"
+    - text: Recommended Order
+  - application:
+    - generic: SG Tournament Cr...
+    - generic: SG Scorer Classi...
+    - generic: SG Player Editio...
+    - generic: Yonex Astrox 88 ...
+    - generic: "0"
+    - generic: "3"
+    - generic: "6"
+    - generic: "9"
+    - generic: "12"
+  - heading "Stock Risk Distribution" [level=4]
+  - paragraph: Risk classification based on velocity
+  - application
+  - generic: Critical Risk
+  - generic: 1 SKUs
+  - generic: High Risk
+  - generic: 3 SKUs
+  - generic: Medium Risk
+  - generic: 7 SKUs
+  - generic: Low Risk
+  - generic: 4 SKUs
+- generic: "0"

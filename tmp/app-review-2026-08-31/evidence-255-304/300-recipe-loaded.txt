@@ -1,0 +1,83 @@
+- navigation:
+  - link "FoodLens":
+    - /url: /
+    - generic: FoodLens
+  - link "Home":
+    - /url: /
+  - link "Scan":
+    - /url: /scan
+  - link "Browse Recipes":
+    - /url: /browse
+  - link "Recent Scans":
+    - /url: /scans
+  - link "Saved recipes":
+    - /url: /saved
+- main:
+  - img "Creamy Garlic Pasta"
+  - link "Back to recipes":
+    - /url: /browse
+    - text: Back to recipes
+  - heading "Creamy Garlic Pasta" [level=1]
+  - paragraph: Silky garlic cream clinging to ribbons of pasta, finished with parmesan and cracked pepper.
+  - text: 25 min
+  - text: Easy
+  - text: Serves 2
+  - button "Remove from favourites":
+    - generic: Saved
+  - paragraph: Ingredients
+  - heading "What you'll need" [level=2]
+  - paragraph: 0 of 8 collected
+  - button "Fettuccine":
+    - generic: Fettuccine
+  - button "Garlic":
+    - generic: Garlic
+  - button "Butter":
+    - generic: Butter
+  - button "Double cream":
+    - generic: Double cream
+  - button "Parmesan":
+    - generic: Parmesan
+  - button "Parsley":
+    - generic: Parsley
+  - button "Black pepper":
+    - generic: Black pepper
+  - button "Salt":
+    - generic: Salt
+  - paragraph: How to make it
+  - heading "Step 1 of 5" [level=2]
+  - button "01 Boil the pasta in well-salted water until al dente.":
+    - generic: "01"
+    - generic: Boil the pasta in well-salted water until al dente.
+  - button "02 Soften the sliced garlic gently in butter until fragrant.":
+    - generic: "02"
+    - generic: Soften the sliced garlic gently in butter until fragrant.
+  - button "03 Pour in the cream and simmer until it thickens slightly.":
+    - generic: "03"
+    - generic: Pour in the cream and simmer until it thickens slightly.
+  - button "04 Toss the pasta through the sauce with parmesan and a splash of pasta water.":
+    - generic: "04"
+    - generic: Toss the pasta through the sauce with parmesan and a splash of pasta water.
+  - button "05 Finish with parsley, pepper and extra parmesan.":
+    - generic: "05"
+    - generic: Finish with parsley, pepper and extra parmesan.
+  - link "Find another recipe":
+    - /url: /browse
+  - link "Scan a dish instead":
+    - /url: /scan
+- contentinfo:
+  - generic: FoodLens
+  - paragraph: See your food differently. One picture. A whole new way to discover what's on your plate.
+  - link "Scan":
+    - /url: /scan
+  - link "Browse Recipes":
+    - /url: /browse
+  - link "Recent Scans":
+    - /url: /scans
+  - link "Saved":
+    - /url: /saved
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7hb7j64b2b9z2txfp26xt2vf0q?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

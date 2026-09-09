@@ -1,0 +1,35 @@
+- banner:
+  - link "文 LinguaFlow":
+    - /url: /
+    - generic: 文
+    - generic: LinguaFlow
+  - navigation:
+    - link "Home":
+      - /url: /
+    - link "Translate":
+      - /url: /translate
+    - link "Conversation":
+      - /url: /conversation
+    - link "Learn":
+      - /url: /learn
+    - link "About":
+      - /url: /about
+- main:
+  - heading "About LinguaFlow" [level=2]
+  - paragraph: "LinguaFlow has two pillars: multilingual communication and playful language learning."
+  - generic: 💬
+  - heading "1. Communicate" [level=3]
+  - paragraph: Translate text and run a two-person turn-based conversation using typing, speech recognition and speech playback.
+  - generic: 🎮
+  - heading "2. Learn" [level=3]
+  - paragraph: Practise through local games, daily challenges, XP, badges and a conversational tutor. Progress stays in localStorage.
+  - generic: Speech recognition and playback use browser-native APIs. Translation and Lingua Buddy run on Lovable AI with a low-cost model, and are only called when you press Translate or Send. Progress and transcripts stay in this browser.
+- contentinfo:
+  - generic: LinguaFlow — Speak it. Learn it. Live it.
+  - generic: Progress and transcripts stay in this browser.
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1j7p61xz978myttk5xc6jt23wr?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

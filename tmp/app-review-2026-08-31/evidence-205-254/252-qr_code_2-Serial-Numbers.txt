@@ -1,0 +1,395 @@
+- navigation:
+  - generic: inventory_2
+  - heading "StockFlow" [level=1]
+  - generic: ERP
+  - paragraph: Sports Retail Operations
+  - paragraph: OVERVIEW
+  - list:
+    - button "dashboard Dashboard 5":
+      - generic: dashboard
+      - generic: Dashboard
+      - generic: "5"
+    - button "inventory_2 Products":
+      - generic: inventory_2
+      - generic: Products
+    - button "swap_horiz Inventory Master":
+      - generic: swap_horiz
+      - generic: Inventory Master
+  - paragraph: INTELLIGENCE
+  - list:
+    - button "auto_awesome AI Demand Forecast AI":
+      - generic: auto_awesome
+      - generic: AI Demand Forecast
+      - generic: AI
+    - button "analytics Reports & Analytics":
+      - generic: analytics
+      - generic: Reports & Analytics
+  - paragraph: OPERATIONS
+  - list:
+    - button "qr_code_2 Serial Numbers" [active]:
+      - generic: qr_code_2
+      - generic: Serial Numbers
+    - button "category Categories":
+      - generic: category
+      - generic: Categories
+    - button "local_shipping Suppliers":
+      - generic: local_shipping
+      - generic: Suppliers
+  - paragraph: PROCUREMENT & PAYABLES
+  - list:
+    - button "post_add Purchase Orders 2":
+      - generic: post_add
+      - generic: Purchase Orders
+      - generic: "2"
+    - button "receipt_long Supplier Invoices 3":
+      - generic: receipt_long
+      - generic: Supplier Invoices
+      - generic: "3"
+    - button "payments Payment Ledger":
+      - generic: payments
+      - generic: Payment Ledger
+  - paragraph: SYSTEM
+  - list:
+    - button "manage_accounts User Management":
+      - generic: manage_accounts
+      - generic: User Management
+    - button "history Audit Trail Logs":
+      - generic: history
+      - generic: Audit Trail Logs
+  - button "settings Settings":
+    - generic: settings
+    - generic: Settings
+  - button "logout Sign Out":
+    - generic: logout
+    - generic: Sign Out
+- banner:
+  - generic: search
+  - textbox "Search products, SKUs, suppliers, orders..."
+  - generic: ⌘K
+  - generic: ₹ INR
+  - text: "Role:"
+  - strong: Admin
+  - button "notifications":
+    - generic: notifications
+  - button "help_outline":
+    - generic: help_outline
+  - button "Yadeshwar Admin expand_more":
+    - generic: Yadeshwar
+    - generic: Admin
+    - generic: expand_more
+- main:
+  - heading "Serial Number Tracking" [level=2]
+  - paragraph: Manage unit-level serial numbers, warranty logs, stock statuses, and audit trail
+  - button "add_circle Register Serial Numbers":
+    - generic: add_circle
+    - text: Register Serial Numbers
+  - generic: Total Units
+  - generic: qr_code_2
+  - paragraph: "15"
+  - generic: In Stock
+  - generic: check_circle
+  - paragraph: "11"
+  - generic: Sold
+  - generic: shopping_cart
+  - paragraph: "4"
+  - generic: Returned
+  - generic: undo
+  - paragraph: "0"
+  - generic: Damaged
+  - generic: warning
+  - paragraph: "0"
+  - generic: search
+  - textbox "Search serial number, product name, SKU, PO or recipient..."
+  - combobox:
+    - option "All Products (15)" [selected]
+    - option "SG Scorer Classic Kashmir Willow Cricket Bat (SG-SCB-001)"
+    - option "SG Test Cricket Leather Ball (SG-TCB-002)"
+    - option "SG Player Edition Batting Gloves (SG-PEG-003)"
+    - option "SG Super 50 Cricket Ball (SG-S50-004)"
+    - option "SG Shield 20 Leather Ball (SG-S20-005)"
+    - option "SG Tournament Cricket Ball (SG-TCB-006)"
+    - option "Adidas Al Rihla League Football (AD-ALR-007)"
+    - option "Nike Mercurial Vapor 17 Club Football Boots (NK-MV17-008)"
+    - option "Yonex Astrox 88 Play Badminton Racket (YX-A88P-009)"
+    - option "Wilson Pro Staff 97UL V14 Tennis Racket (WL-PS97-010)"
+    - option "Decathlon 10 kg Dumbbell Kit (DC-DK10-011)"
+    - option "Decathlon Weight Training Bands 10 kg (DC-WTB10-012)"
+    - option "Decathlon Yoga / Fitness Mat (DC-YM-013)"
+    - option "Adidas Training Defender Duffle Bag (AD-TDB-014)"
+    - option "SG Tournament Inner Gloves (SG-TIG-015)"
+  - generic: "Status:"
+  - button "All Statuses"
+  - button "In Stock"
+  - button "Sold"
+  - button "Returned"
+  - button "Damaged"
+  - table:
+    - rowgroup:
+      - row "Serial Number Product Name & SKU Status Reference / Recipient Last Updated Actions":
+        - columnheader "Serial Number"
+        - columnheader "Product Name & SKU"
+        - columnheader "Status"
+        - columnheader "Reference / Recipient"
+        - columnheader "Last Updated"
+        - columnheader "Actions"
+    - rowgroup:
+      - row "pin SG-S50-001 SG Super 50 Cricket Ball SG-S50-004 In Stock PO-2026-0001 Verified regulation weight (156g) and pristine seam. Aug 4, 2026 Change Status delete":
+        - cell "pin SG-S50-001":
+          - button "pin SG-S50-001":
+            - generic: pin
+            - text: SG-S50-001
+        - cell "SG Super 50 Cricket Ball SG-S50-004":
+          - generic: SG Super 50 Cricket Ball
+          - generic: SG-S50-004
+        - cell "In Stock":
+          - generic: In Stock
+        - cell "PO-2026-0001 Verified regulation weight (156g) and pristine seam.":
+          - generic: PO-2026-0001
+          - generic "Verified regulation weight (156g) and pristine seam."
+        - cell "Aug 4, 2026"
+        - cell "Change Status delete":
+          - button "Change Status"
+          - button "delete":
+            - generic: delete
+      - row "pin SG-S50-002 SG Super 50 Cricket Ball SG-S50-004 In Stock PO-2026-0001 Aug 4, 2026 Change Status delete":
+        - cell "pin SG-S50-002":
+          - button "pin SG-S50-002":
+            - generic: pin
+            - text: SG-S50-002
+        - cell "SG Super 50 Cricket Ball SG-S50-004":
+          - generic: SG Super 50 Cricket Ball
+          - generic: SG-S50-004
+        - cell "In Stock":
+          - generic: In Stock
+        - cell "PO-2026-0001":
+          - generic: PO-2026-0001
+        - cell "Aug 4, 2026"
+        - cell "Change Status delete":
+          - button "Change Status"
+          - button "delete":
+            - generic: delete
+      - row "pin SG-SCB-001 SG Scorer Classic Kashmir Willow Cricket Bat SG-SCB-001 In Stock PO-2026-0001 Natural grain finish with factory knocked blade. Jul 25, 2026 Change Status delete":
+        - cell "pin SG-SCB-001":
+          - button "pin SG-SCB-001":
+            - generic: pin
+            - text: SG-SCB-001
+        - cell "SG Scorer Classic Kashmir Willow Cricket Bat SG-SCB-001":
+          - generic: SG Scorer Classic Kashmir Willow Cricket Bat
+          - generic: SG-SCB-001
+        - cell "In Stock":
+          - generic: In Stock
+        - cell "PO-2026-0001 Natural grain finish with factory knocked blade.":
+          - generic: PO-2026-0001
+          - generic "Natural grain finish with factory knocked blade."
+        - cell "Jul 25, 2026"
+        - cell "Change Status delete":
+          - button "Change Status"
+          - button "delete":
+            - generic: delete
+      - 'row "pin SG-SCB-002 SG Scorer Classic Kashmir Willow Cricket Bat SG-SCB-001 Sold Delhi Sports Academy Order #4920 Factory knocked-in with protective scuff sheet applied. Aug 6, 2026 Change Status delete"':
+        - cell "pin SG-SCB-002":
+          - button "pin SG-SCB-002":
+            - generic: pin
+            - text: SG-SCB-002
+        - cell "SG Scorer Classic Kashmir Willow Cricket Bat SG-SCB-001":
+          - generic: SG Scorer Classic Kashmir Willow Cricket Bat
+          - generic: SG-SCB-001
+        - cell "Sold":
+          - generic: Sold
+        - 'cell "Delhi Sports Academy Order #4920 Factory knocked-in with protective scuff sheet applied."':
+          - generic: "Delhi Sports Academy Order #4920"
+          - generic "Factory knocked-in with protective scuff sheet applied."
+        - cell "Aug 6, 2026"
+        - cell "Change Status delete":
+          - button "Change Status"
+          - button "delete":
+            - generic: delete
+      - row "pin AD-ALR-001 Adidas Al Rihla League Football AD-ALR-007 In Stock PO-2026-0002 FIFA Quality certified ball with butyl bladder. Aug 6, 2026 Change Status delete":
+        - cell "pin AD-ALR-001":
+          - button "pin AD-ALR-001":
+            - generic: pin
+            - text: AD-ALR-001
+        - cell "Adidas Al Rihla League Football AD-ALR-007":
+          - generic: Adidas Al Rihla League Football
+          - generic: AD-ALR-007
+        - cell "In Stock":
+          - generic: In Stock
+        - cell "PO-2026-0002 FIFA Quality certified ball with butyl bladder.":
+          - generic: PO-2026-0002
+          - generic "FIFA Quality certified ball with butyl bladder."
+        - cell "Aug 6, 2026"
+        - cell "Change Status delete":
+          - button "Change Status"
+          - button "delete":
+            - generic: delete
+      - row "pin AD-ALR-002 Adidas Al Rihla League Football AD-ALR-007 In Stock PO-2026-0002 Aug 6, 2026 Change Status delete":
+        - cell "pin AD-ALR-002":
+          - button "pin AD-ALR-002":
+            - generic: pin
+            - text: AD-ALR-002
+        - cell "Adidas Al Rihla League Football AD-ALR-007":
+          - generic: Adidas Al Rihla League Football
+          - generic: AD-ALR-007
+        - cell "In Stock":
+          - generic: In Stock
+        - cell "PO-2026-0002":
+          - generic: PO-2026-0002
+        - cell "Aug 6, 2026"
+        - cell "Change Status delete":
+          - button "Change Status"
+          - button "delete":
+            - generic: delete
+      - row "pin NK-MV17-001 Nike Mercurial Vapor 17 Club Football Boots NK-MV17-008 In Stock PO-2026-0004 Jul 28, 2026 Change Status delete":
+        - cell "pin NK-MV17-001":
+          - button "pin NK-MV17-001":
+            - generic: pin
+            - text: NK-MV17-001
+        - cell "Nike Mercurial Vapor 17 Club Football Boots NK-MV17-008":
+          - generic: Nike Mercurial Vapor 17 Club Football Boots
+          - generic: NK-MV17-008
+        - cell "In Stock":
+          - generic: In Stock
+        - cell "PO-2026-0004":
+          - generic: PO-2026-0004
+        - cell "Jul 28, 2026"
+        - cell "Change Status delete":
+          - button "Change Status"
+          - button "delete":
+            - generic: delete
+      - row "pin NK-MV17-002 Nike Mercurial Vapor 17 Club Football Boots NK-MV17-008 Sold Youth Football League Store Aug 2, 2026 Change Status delete":
+        - cell "pin NK-MV17-002":
+          - button "pin NK-MV17-002":
+            - generic: pin
+            - text: NK-MV17-002
+        - cell "Nike Mercurial Vapor 17 Club Football Boots NK-MV17-008":
+          - generic: Nike Mercurial Vapor 17 Club Football Boots
+          - generic: NK-MV17-008
+        - cell "Sold":
+          - generic: Sold
+        - cell "Youth Football League Store":
+          - generic: Youth Football League Store
+        - cell "Aug 2, 2026"
+        - cell "Change Status delete":
+          - button "Change Status"
+          - button "delete":
+            - generic: delete
+      - row "pin YX-A88P-001 Yonex Astrox 88 Play Badminton Racket YX-A88P-009 In Stock PO-2026-0003 Jul 20, 2026 Change Status delete":
+        - cell "pin YX-A88P-001":
+          - button "pin YX-A88P-001":
+            - generic: pin
+            - text: YX-A88P-001
+        - cell "Yonex Astrox 88 Play Badminton Racket YX-A88P-009":
+          - generic: Yonex Astrox 88 Play Badminton Racket
+          - generic: YX-A88P-009
+        - cell "In Stock":
+          - generic: In Stock
+        - cell "PO-2026-0003":
+          - generic: PO-2026-0003
+        - cell "Jul 20, 2026"
+        - cell "Change Status delete":
+          - button "Change Status"
+          - button "delete":
+            - generic: delete
+      - row "pin YX-A88P-002 Yonex Astrox 88 Play Badminton Racket YX-A88P-009 Sold Smash Academy Bengaluru Aug 1, 2026 Change Status delete":
+        - cell "pin YX-A88P-002":
+          - button "pin YX-A88P-002":
+            - generic: pin
+            - text: YX-A88P-002
+        - cell "Yonex Astrox 88 Play Badminton Racket YX-A88P-009":
+          - generic: Yonex Astrox 88 Play Badminton Racket
+          - generic: YX-A88P-009
+        - cell "Sold":
+          - generic: Sold
+        - cell "Smash Academy Bengaluru":
+          - generic: Smash Academy Bengaluru
+        - cell "Aug 1, 2026"
+        - cell "Change Status delete":
+          - button "Change Status"
+          - button "delete":
+            - generic: delete
+      - row "pin WL-PS97-001 Wilson Pro Staff 97UL V14 Tennis Racket WL-PS97-010 In Stock Central Inventory Inspected 16x19 string pattern with braided graphite. Jul 15, 2026 Change Status delete":
+        - cell "pin WL-PS97-001":
+          - button "pin WL-PS97-001":
+            - generic: pin
+            - text: WL-PS97-001
+        - cell "Wilson Pro Staff 97UL V14 Tennis Racket WL-PS97-010":
+          - generic: Wilson Pro Staff 97UL V14 Tennis Racket
+          - generic: WL-PS97-010
+        - cell "In Stock":
+          - generic: In Stock
+        - cell "Central Inventory Inspected 16x19 string pattern with braided graphite.":
+          - text: Central Inventory
+          - generic "Inspected 16x19 string pattern with braided graphite."
+        - cell "Jul 15, 2026"
+        - cell "Change Status delete":
+          - button "Change Status"
+          - button "delete":
+            - generic: delete
+      - row "pin WL-PS97-002 Wilson Pro Staff 97UL V14 Tennis Racket WL-PS97-010 In Stock Central Inventory Jul 15, 2026 Change Status delete":
+        - cell "pin WL-PS97-002":
+          - button "pin WL-PS97-002":
+            - generic: pin
+            - text: WL-PS97-002
+        - cell "Wilson Pro Staff 97UL V14 Tennis Racket WL-PS97-010":
+          - generic: Wilson Pro Staff 97UL V14 Tennis Racket
+          - generic: WL-PS97-010
+        - cell "In Stock":
+          - generic: In Stock
+        - cell "Central Inventory"
+        - cell "Jul 15, 2026"
+        - cell "Change Status delete":
+          - button "Change Status"
+          - button "delete":
+            - generic: delete
+      - 'row "pin WL-PS97-003 Wilson Pro Staff 97UL V14 Tennis Racket WL-PS97-010 Sold Pro Player Custom Order #104 Jul 31, 2026 Change Status delete"':
+        - cell "pin WL-PS97-003":
+          - button "pin WL-PS97-003":
+            - generic: pin
+            - text: WL-PS97-003
+        - cell "Wilson Pro Staff 97UL V14 Tennis Racket WL-PS97-010":
+          - generic: Wilson Pro Staff 97UL V14 Tennis Racket
+          - generic: WL-PS97-010
+        - cell "Sold":
+          - generic: Sold
+        - 'cell "Pro Player Custom Order #104"':
+          - generic: "Pro Player Custom Order #104"
+        - cell "Jul 31, 2026"
+        - cell "Change Status delete":
+          - button "Change Status"
+          - button "delete":
+            - generic: delete
+      - row "pin DC-WTB-001 Decathlon Weight Training Bands 10 kg DC-WTB10-012 In Stock PO-2026-0005 Jul 27, 2026 Change Status delete":
+        - cell "pin DC-WTB-001":
+          - button "pin DC-WTB-001":
+            - generic: pin
+            - text: DC-WTB-001
+        - cell "Decathlon Weight Training Bands 10 kg DC-WTB10-012":
+          - generic: Decathlon Weight Training Bands 10 kg
+          - generic: DC-WTB10-012
+        - cell "In Stock":
+          - generic: In Stock
+        - cell "PO-2026-0005":
+          - generic: PO-2026-0005
+        - cell "Jul 27, 2026"
+        - cell "Change Status delete":
+          - button "Change Status"
+          - button "delete":
+            - generic: delete
+      - row "pin DC-YM-001 Decathlon Yoga / Fitness Mat DC-YM-013 In Stock PO-2026-0005 Jul 27, 2026 Change Status delete":
+        - cell "pin DC-YM-001":
+          - button "pin DC-YM-001":
+            - generic: pin
+            - text: DC-YM-001
+        - cell "Decathlon Yoga / Fitness Mat DC-YM-013":
+          - generic: Decathlon Yoga / Fitness Mat
+          - generic: DC-YM-013
+        - cell "In Stock":
+          - generic: In Stock
+        - cell "PO-2026-0005":
+          - generic: PO-2026-0005
+        - cell "Jul 27, 2026"
+        - cell "Change Status delete":
+          - button "Change Status"
+          - button "delete":
+            - generic: delete
+- generic: "0"

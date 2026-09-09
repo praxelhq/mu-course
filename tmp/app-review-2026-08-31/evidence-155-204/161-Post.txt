@@ -1,0 +1,34 @@
+- main:
+  - paragraph: Add to the deck
+  - heading "Post an idea" [level=1]
+  - paragraph: Put the thing you'd actually build in front of other founders.
+  - generic: Idea name
+  - textbox "Idea name":
+    - /placeholder: Gridwise
+  - generic: One-line hook
+  - textbox "One-line hook":
+    - /placeholder: A trading desk for home batteries that pays people to balance the grid.
+  - generic: Category
+  - button "Category Dev tools Health Fintech AI Consumer": Climate
+  - button "Dev tools"
+  - button "Health"
+  - button "Fintech"
+  - button "AI" [pressed]
+  - button "Consumer"
+  - generic: Tags — comma separated
+  - textbox "Tags — comma separated":
+    - /placeholder: energy, marketplace, hardware
+  - generic: The problem — optional
+  - textbox "The problem — optional":
+    - /placeholder: What's broken today, and who feels it?
+  - button "Post to the deck" [disabled]
+- navigation "Primary":
+  - button "Deck":
+    - generic: Deck
+  - button "Matches":
+    - generic: "1"
+    - generic: Matches
+  - button "Post" [active]:
+    - generic: Post
+  - button "Profile":
+    - generic: Profile

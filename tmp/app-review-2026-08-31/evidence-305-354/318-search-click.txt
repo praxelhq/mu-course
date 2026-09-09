@@ -1,0 +1,99 @@
+- generic: 🥐
+- generic: 🍥
+- generic: ☕
+- main:
+  - heading "Explore" [level=1]
+  - generic: Cafés, cuisines, neighbourhoods…
+  - generic: 🇰🇷 Korean
+  - generic: 🇯🇵 Japanese
+  - generic: 🥡 Chinese
+  - generic: 🍝 Italian
+  - generic: 🫓 North Indian
+  - generic: 🥥 South Indian
+  - generic: 🌱 Vegan
+  - generic: 🥐 Bakery
+  - tablist:
+    - tab "Places"
+    - tab "People"
+    - tab "Clubs" [active] [selected]
+  - tabpanel "Clubs":
+    - text: ☕
+    - heading "Coffee Club" [level=3]
+    - paragraph: Weekly brew crawls
+    - paragraph:
+      - text: 4.2k members
+    - text: 🍮
+    - heading "Dessert Lovers" [level=3]
+    - paragraph: Sugar first, talk later
+    - paragraph:
+      - text: 3.1k members
+    - text: 🎒
+    - heading "Solo Explorers" [level=3]
+    - paragraph: Table for one? Never.
+    - paragraph:
+      - text: 2.7k members
+    - text: 🕵️
+    - heading "Hidden Gem Hunters" [level=3]
+    - paragraph: Undiscovered kitchens
+    - paragraph:
+      - text: 1.9k members
+    - text: 🌶
+    - heading "Street Food Society" [level=3]
+    - paragraph: Chaat crawl Sundays
+    - paragraph:
+      - text: 5.4k members
+    - text: 🐕
+    - heading "Pet Café Lovers" [level=3]
+    - paragraph: Bring the good boy
+    - paragraph:
+      - text: 980 members
+  - heading "💎Hidden gems this week" [level=2]
+  - article:
+    - img "Naru Noodle Bar — Japanese · Ramen"
+    - generic: AI Pick
+    - text: "4.8"
+    - heading "Naru Noodle Bar" [level=3]
+    - paragraph: Japanese · Ramen · ₹₹
+    - paragraph: Basavanagudi · 3.2 km · Open till 10 PM
+    - paragraph:
+      - text: 18 people want to go here
+  - article:
+    - img "Bloom & Brew — Cafe · Specialty Coffee"
+    - generic: Hidden Gem
+    - text: "4.6"
+    - heading "Bloom & Brew" [level=3]
+    - paragraph: Cafe · Specialty Coffee · ₹₹
+    - paragraph: Indiranagar · 1.1 km · Open till 11 PM
+    - paragraph:
+      - text: 26 people want to go here
+  - article:
+    - img "Sugar Theory — Desserts · Bakery"
+    - generic: Trending
+    - text: "4.7"
+    - heading "Sugar Theory" [level=3]
+    - paragraph: Desserts · Bakery · ₹
+    - paragraph: HSR Layout · 4.4 km · Open till 9 PM
+    - paragraph:
+      - text: 12 people want to go here
+- navigation:
+  - link "Home":
+    - /url: /home
+    - text: Home
+  - link "Explore":
+    - /url: /explore
+    - text: Explore
+  - link "Chats":
+    - /url: /chats
+    - text: Chats
+  - link "Plans":
+    - /url: /plans
+    - text: Plans
+  - link "Profile":
+    - /url: /profile
+    - text: Profile
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_2v711cjpkr83f8pqt3m2x809kv?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

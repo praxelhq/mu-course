@@ -1,0 +1,60 @@
+- banner:
+  - button "Open menu":
+    - generic: menu
+  - link "SnapCal":
+    - /url: /
+  - navigation:
+    - link "Dashboard":
+      - /url: /
+      - generic: Dashboard
+    - link "Log":
+      - /url: /log
+      - generic: Log
+    - link "Progress":
+      - /url: /progress
+      - generic: Progress
+    - link "Settings" [active]:
+      - /url: /settings
+      - generic: Settings
+  - button "Your profile":
+    - img "User profile picture"
+- main:
+  - heading "Progress" [level=1]
+  - paragraph: This week
+  - button "This week"
+  - button "Last week"
+  - paragraph: Daily average
+  - paragraph: 1,923 kcal
+  - paragraph: Under budget
+  - paragraph: 5 days
+  - paragraph: Weight change
+  - paragraph: −0.8 kg
+  - paragraph: Streak
+  - paragraph: 5 days
+  - heading "Calories vs goal" [level=2]
+  - generic "1980 kcal"
+  - generic: Mon
+  - generic "2140 kcal"
+  - generic: Tue
+  - generic "1760 kcal"
+  - generic: Wed
+  - generic "2050 kcal"
+  - generic: Thu
+  - generic "2260 kcal"
+  - generic: Fri
+  - generic "1890 kcal"
+  - generic: Sat
+  - generic "1380 kcal"
+  - generic: Sun
+  - paragraph: Goal 2,100 kcal · bars in orange went over budget
+  - generic: trending_up
+  - heading "On track to reach your goal by Oct 12!" [level=3]
+  - paragraph: Keep averaging under 2,100 kcal and you'll hit target weight two days early.
+- button "Snap a meal photo":
+  - generic: photo_camera
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_57yqbmn5z8889ba7daz1ktkfwq?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

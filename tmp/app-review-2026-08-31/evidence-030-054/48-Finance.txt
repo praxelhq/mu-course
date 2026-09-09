@@ -1,0 +1,181 @@
+- complementary:
+  - generic: F
+  - heading "FounderOS" [level=1]
+  - generic: NovaCraft Labs
+  - navigation:
+    - button "Dashboard":
+      - generic: Dashboard
+    - button "Products":
+      - generic: Products
+    - button "Marketing":
+      - generic: Marketing
+    - button "Finance" [active]:
+      - generic: Finance
+    - button "Customers":
+      - generic: Customers
+    - button "Goals & Tasks 6":
+      - generic: Goals & Tasks
+      - generic: "6"
+    - generic: Intelligence
+    - button "Founder Copilot AI":
+      - generic: Founder Copilot
+      - generic: AI
+    - button "Settings":
+      - generic: Settings
+  - generic: AJ
+  - generic: Alex Johnson
+  - generic: Pro Founder Plan
+  - button "Switch Workspace / Sign Out":
+- banner:
+  - generic: NovaCraft Labs
+  - generic: Financial Health
+  - button "Quick Search... ⌘K":
+    - generic: Quick Search...
+    - generic: ⌘K
+  - generic: August 2026 (Q3)
+  - button "Executive Report":
+    - generic: Executive Report
+  - button "Copilot":
+    - generic: Copilot
+  - button "Alerts":
+- main:
+  - heading "Financial Health & Cash Flow" [level=1]
+  - paragraph: Real-time ledger, expense tracking, runway forecast, and cash positioning.
+  - button "Add Expense":
+    - generic: Add Expense
+  - text: Total Revenue
+  - paragraph: ₹13,43,925
+  - generic: +18.4% vs last month
+  - text: Total Expenses
+  - paragraph: ₹4,29,400
+  - generic: "Burn rate: ₹3.40L / mo"
+  - text: Net Profit
+  - paragraph: ₹9,14,525
+  - generic: 29.5% Net Margin
+  - text: Cash Balance
+  - paragraph: ₹27,79,525
+  - generic: 5.5 Months Runway
+  - heading "Revenue vs. Expenses" [level=2]
+  - paragraph: Monthly comparison (Mar - Aug 2026)
+  - generic: 6 Months
+  - list:
+    - img "Expenses legend icon"
+    - text: Expenses
+    - img "Revenue legend icon"
+    - text: Revenue
+  - application:
+    - generic: Mar
+    - generic: Apr
+    - generic: May
+    - generic: Jun
+    - generic: Jul
+    - generic: Aug (Current)
+    - generic: ₹0k
+    - generic: ₹150k
+    - generic: ₹300k
+    - generic: ₹450k
+    - generic: ₹600k
+  - heading "Monthly Cash-Flow & Balance" [level=2]
+  - paragraph: Weekly inflows, outflows, and net reserve
+  - generic: Positive Cash Flow
+  - list:
+    - img "Bank Reserve legend icon"
+    - text: Bank Reserve
+  - application:
+    - generic: Week 1
+    - generic: Week 2
+    - generic: Week 3
+    - generic: Week 4
+    - generic: ₹0.0L
+    - generic: ₹5.0L
+    - generic: ₹10.0L
+    - generic: ₹15.0L
+    - generic: ₹20.0L
+  - heading "Recent Transactions" [level=2]
+  - paragraph: Live feed of verified business expenses and payouts
+  - combobox:
+    - option "All Categories" [selected]
+    - option "Marketing"
+    - option "Inventory"
+    - option "Salaries"
+    - option "Software"
+    - option "Operations"
+    - option "Sales"
+  - combobox:
+    - option "All Types" [selected]
+    - option "Expenses Only"
+    - option "Income / Sales Only"
+  - table:
+    - rowgroup:
+      - row "Date Description Category Reference Status Amount":
+        - columnheader "Date"
+        - columnheader "Description"
+        - columnheader "Category"
+        - columnheader "Reference"
+        - columnheader "Status"
+        - columnheader "Amount"
+    - rowgroup:
+      - row "2026-08-23 Meta Ads Manager - Campaign Retargeting & IG Marketing INV-META-8921 Completed -₹55,000":
+        - cell "2026-08-23"
+        - cell "Meta Ads Manager - Campaign Retargeting & IG":
+          - generic: Meta Ads Manager - Campaign Retargeting & IG
+        - cell "Marketing"
+        - cell "INV-META-8921"
+        - cell "Completed":
+          - text: Completed
+        - cell "-₹55,000"
+      - 'row "2026-08-22 Supplier Batch Re-order: Wireless Earbuds batch #4 Inventory PO-SUP-3301 Completed -₹98,000"':
+        - cell "2026-08-22"
+        - 'cell "Supplier Batch Re-order: Wireless Earbuds batch #4"':
+          - generic: "Supplier Batch Re-order: Wireless Earbuds batch #4"
+        - cell "Inventory"
+        - cell "PO-SUP-3301"
+        - cell "Completed":
+          - text: Completed
+        - cell "-₹98,000"
+      - row "2026-08-21 Core Engineering & Design Team Monthly Payroll Salaries PAY-AUG-2026 Completed -₹1,40,000":
+        - cell "2026-08-21"
+        - cell "Core Engineering & Design Team Monthly Payroll":
+          - generic: Core Engineering & Design Team Monthly Payroll
+        - cell "Salaries"
+        - cell "PAY-AUG-2026"
+        - cell "Completed":
+          - text: Completed
+        - cell "-₹1,40,000"
+      - row "2026-08-19 AWS Cloud & Supabase Pro Tier Hosting Software SUB-AWS-4412 Completed -₹18,200":
+        - cell "2026-08-19"
+        - cell "AWS Cloud & Supabase Pro Tier Hosting":
+          - generic: AWS Cloud & Supabase Pro Tier Hosting
+        - cell "Software"
+        - cell "SUB-AWS-4412"
+        - cell "Completed":
+          - text: Completed
+        - cell "-₹18,200"
+      - row "2026-08-18 Fulfillment & Warehouse Packaging Logistics Operations OPS-LOG-9011 Completed -₹29,000":
+        - cell "2026-08-18"
+        - cell "Fulfillment & Warehouse Packaging Logistics":
+          - generic: Fulfillment & Warehouse Packaging Logistics
+        - cell "Operations"
+        - cell "OPS-LOG-9011"
+        - cell "Completed":
+          - text: Completed
+        - cell "-₹29,000"
+      - row "2026-08-17 Stripe & Razorpay Net Customer Settlements (D2C) Sales PAYOUT-STR-551 Completed +₹2,48,000":
+        - cell "2026-08-17"
+        - cell "Stripe & Razorpay Net Customer Settlements (D2C)":
+          - generic: Stripe & Razorpay Net Customer Settlements (D2C)
+        - cell "Sales"
+        - cell "PAYOUT-STR-551"
+        - cell "Completed":
+          - text: Completed
+        - cell "+₹2,48,000"
+      - row "2026-08-15 Google Cloud & Workspace Business Standard Software SUB-GGL-1092 Completed -₹6,800":
+        - cell "2026-08-15"
+        - cell "Google Cloud & Workspace Business Standard":
+          - generic: Google Cloud & Workspace Business Standard
+        - cell "Software"
+        - cell "SUB-GGL-1092"
+        - cell "Completed":
+          - text: Completed
+        - cell "-₹6,800"
+- generic: ₹0.0L

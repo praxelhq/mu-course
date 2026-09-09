@@ -1,0 +1,162 @@
+- region "Notifications (F8)":
+  - list
+- region "Notifications alt+T"
+- complementary:
+  - generic: InfluencerOS
+  - navigation:
+    - link "Dashboard":
+      - /url: /
+      - generic: Dashboard
+    - link "Campaigns":
+      - /url: /campaigns
+      - generic: Campaigns
+    - link "AI Campaign Planner":
+      - /url: /ai-planner
+      - generic: AI Campaign Planner
+    - link "Creators":
+      - /url: /creators
+      - generic: Creators
+    - link "Content Approval":
+      - /url: /content-approval
+      - generic: Content Approval
+    - link "Performance & ROI":
+      - /url: /performance
+      - generic: Performance & ROI
+    - link "Payments & Ledger":
+      - /url: /payments
+      - generic: Payments & Ledger
+    - link "Assets & Logistics":
+      - /url: /assets
+      - generic: Assets & Logistics
+    - link "Settings":
+      - /url: /settings
+      - generic: Settings
+  - button "Collapse":
+    - generic: Collapse
+- banner:
+  - textbox "Search campaigns, creators, content..."
+  - button "3":
+    - generic: "3"
+  - button "M MamaEarth":
+    - generic: M
+    - generic: MamaEarth
+  - button "Arun Kumar Marketing Manager":
+    - paragraph: Arun Kumar
+    - paragraph: Marketing Manager
+- main:
+  - heading "Dashboard" [level=1]
+  - paragraph: Welcome back! Here's your influencer marketing overview.
+  - generic: Total Spend This Month
+  - generic: ₹15.8 L
+  - text: 12%
+  - generic: Active Influencers
+  - generic: "24"
+  - text: 8%
+  - generic: Pending Approvals
+  - generic: "8"
+  - generic: Payments Due
+  - generic: ₹4.3 L
+  - paragraph: Best Performing Creator
+  - paragraph: Sneha Reddy
+  - paragraph: "@sneha_momlife"
+  - text: 6.2% Engagement
+  - heading "Campaign Performance" [level=3]
+  - paragraph: Spend vs Revenue over time
+  - list:
+    - text: Spend
+    - text: Revenue
+  - heading "Campaign-wise ROI" [level=3]
+  - paragraph: Active and recent campaigns
+  - paragraph: Summer Skincare Launch
+  - generic: Active
+  - generic: ₹5.2L spent
+  - generic: 3.2x
+  - paragraph: ROI
+  - paragraph: Vitamin C Serum Push
+  - generic: Active
+  - generic: ₹3.8L spent
+  - generic: 2.8x
+  - paragraph: ROI
+  - paragraph: Monsoon Hair Care
+  - generic: Completed
+  - generic: ₹5.8L spent
+  - generic: 4.1x
+  - paragraph: ROI
+  - heading "Top 5 Influencers This Month" [level=3]
+  - paragraph: Ranked by performance score
+  - table:
+    - rowgroup:
+      - row "Creator Platform Cost Reach Engagement ROI Score":
+        - columnheader "Creator"
+        - columnheader "Platform"
+        - columnheader "Cost"
+        - columnheader "Reach"
+        - columnheader "Engagement"
+        - columnheader "ROI Score"
+    - rowgroup:
+      - row "Priya Sharma @priyasharma_beauty Instagram ₹75K 245K 4.8% 92":
+        - cell "Priya Sharma @priyasharma_beauty":
+          - paragraph: Priya Sharma
+          - paragraph: "@priyasharma_beauty"
+        - cell "Instagram":
+          - generic: Instagram
+        - cell "₹75K"
+        - cell "245K"
+        - cell "4.8%":
+          - generic: 4.8%
+        - cell "92":
+          - generic: "92"
+      - row "Rahul Verma @rahulverma_tech YouTube ₹250K 890K 3.2% 88":
+        - cell "Rahul Verma @rahulverma_tech":
+          - paragraph: Rahul Verma
+          - paragraph: "@rahulverma_tech"
+        - cell "YouTube":
+          - generic: YouTube
+        - cell "₹250K"
+        - cell "890K"
+        - cell "3.2%":
+          - generic: 3.2%
+        - cell "88":
+          - generic: "88"
+      - row "Neha Kapoor @nehafitness Instagram ₹45K 156K 5.6% 85":
+        - cell "Neha Kapoor @nehafitness":
+          - paragraph: Neha Kapoor
+          - paragraph: "@nehafitness"
+        - cell "Instagram":
+          - generic: Instagram
+        - cell "₹45K"
+        - cell "156K"
+        - cell "5.6%":
+          - generic: 5.6%
+        - cell "85":
+          - generic: "85"
+      - row "Amit Patel @amitcooks YouTube ₹120K 420K 4.1% 90":
+        - cell "Amit Patel @amitcooks":
+          - paragraph: Amit Patel
+          - paragraph: "@amitcooks"
+        - cell "YouTube":
+          - generic: YouTube
+        - cell "₹120K"
+        - cell "420K"
+        - cell "4.1%":
+          - generic: 4.1%
+        - cell "90":
+          - generic: "90"
+      - row "Sneha Reddy @sneha_momlife Instagram ₹85K 312K 6.2% 94":
+        - cell "Sneha Reddy @sneha_momlife":
+          - paragraph: Sneha Reddy
+          - paragraph: "@sneha_momlife"
+        - cell "Instagram":
+          - generic: Instagram
+        - cell "₹85K"
+        - cell "312K"
+        - cell "6.2%":
+          - generic: 6.2%
+        - cell "94":
+          - generic: "94"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_05t71mwv1r9qb9tdwk5a0m9t2d?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: ₹0.0L

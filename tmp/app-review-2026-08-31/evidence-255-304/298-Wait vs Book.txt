@@ -1,0 +1,72 @@
+- banner:
+  - link "Back":
+    - /url: /recommendation
+  - heading "Wait vs Book" [level=1]
+  - paragraph: Rapido · to Cyber Hub
+  - generic: Demo data
+- main:
+  - paragraph:
+    - text: Our fare model expects Rapido prices on this route to fall
+    - generic: ₹50–₹100
+    - text: once the evening surge cools around 7:15 PM.
+  - article:
+    - heading "Book Now" [level=2]
+    - generic: Recommended
+    - paragraph: Fastest door-to-door — your time matters most
+    - paragraph: ₹119–₹143
+    - paragraph: depart 7:15 PM
+    - paragraph:
+      - text: Savings
+    - paragraph: —
+    - paragraph:
+      - text: Arrive
+    - paragraph: On time
+    - paragraph: Ride ETA
+    - paragraph: 27 min
+  - article:
+    - heading "Wait 10 min" [level=2]
+    - paragraph: Surge starts cooling, partial savings
+    - paragraph: ₹108–₹129
+    - paragraph: depart 7:25 PM
+    - paragraph:
+      - text: Savings
+    - paragraph: ₹14
+    - paragraph:
+      - text: Arrive
+    - paragraph: +8 min
+    - paragraph: Ride ETA
+    - paragraph: 25 min
+  - article:
+    - heading "Wait 20 min" [level=2]
+    - paragraph: Cheaper, but the predicted drop isn't worth the delay
+    - paragraph: ₹97–₹115
+    - paragraph: depart 7:35 PM
+    - paragraph:
+      - text: Savings
+    - paragraph: ₹25
+    - paragraph:
+      - text: Arrive
+    - paragraph: +17 min
+    - paragraph: Ride ETA
+    - paragraph: 24 min
+  - paragraph:
+    - text: Surge-decay model · 55% confidence · future-departure routes from Google
+    - text: precision improves as ride outcomes accumulate
+- navigation:
+  - link "Home":
+    - /url: /
+    - text: Home
+  - link "Best Ride":
+    - /url: /recommendation
+    - text: Best Ride
+  - link "Alerts":
+    - /url: /alerts
+    - text: Alerts
+  - link "Prefs":
+    - /url: /preferences
+    - text: Prefs
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_60a5x7h3en9v7th2e2nvb4z01r?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

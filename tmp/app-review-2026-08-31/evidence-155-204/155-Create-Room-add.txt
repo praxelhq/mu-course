@@ -1,0 +1,41 @@
+- main:
+  - heading "WORD DASH" [level=1]
+  - paragraph: Name, Place, Animal, Thing — with an AI judge, chaos rounds and a chat full of roasts.
+  - generic: Your player name
+  - textbox "Your player name":
+    - /placeholder: e.g. Speedy
+    - text: Review Player
+  - button "Pick avatar 😎": 😎
+  - button "Pick avatar 🤖": 🤖
+  - button "Pick avatar 👻": 👻
+  - button "Pick avatar 🐸": 🐸
+  - button "Pick avatar 🦊": 🦊
+  - button "Pick avatar 🐙": 🐙
+  - button "Pick avatar 🦄": 🦄
+  - button "Pick avatar 🐉": 🐉
+  - button "Pick avatar 🍕": 🍕
+  - button "Pick avatar 👽": 👽
+  - button "Pick avatar 🐼": 🐼
+  - button "Pick avatar 🔥": 🔥
+  - generic: sports_esports
+  - heading "Jump Right In" [level=2]
+  - paragraph: Match instantly with players worldwide.
+  - button "Join Public Lobby arrow_forward" [disabled]:
+    - text: Join Public Lobby
+    - generic: arrow_forward
+  - generic: vpn_key
+  - heading "Private Match" [level=2]
+  - paragraph: Host a game for your crew.
+  - button "Creating… add" [disabled]:
+    - text: Creating…
+    - generic: add
+  - generic: login
+  - generic: Room Code
+  - textbox "Room Code":
+    - /placeholder: ENTER 4-LETTER CODE
+  - button "Enter" [disabled]
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3t58da8er88bf9fktxvsby80ep?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

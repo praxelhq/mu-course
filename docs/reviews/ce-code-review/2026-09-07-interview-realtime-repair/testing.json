@@ -1,0 +1,68 @@
+{
+  "reviewer": "testing",
+  "findings": [
+    {
+      "title": "Token health gate lacks route coverage",
+      "severity": "P1",
+      "file": "lms/app/api/interview/token/route.ts",
+      "line": 54,
+      "why_it_matters": "A healthy LiveKit configuration now still rejects every admission when runtime identity is unverified, a heartbeat lookup fails, or every agent heartbeat is stale. The new pure-helper tests do not execute this route boundary, while the existing success and capacity tests stub only LiveKit and still expect 200/429. Add route-level tests that control the agent-readiness dependency for healthy, false, and throwing outcomes, asserting false/throw return 503 without creating an attempt and healthy admission still mints/resumes a token.",
+      "autofix_class": "gated_auto",
+      "owner": "downstream-resolver",
+      "requires_verification": true,
+      "suggested_fix": "Make realtimeAgentAvailable mockable at the token-route boundary (or provide an explicit test dependency), then extend interview-realtime.test.ts with healthy, false, and rejection cases; seed the healthy path explicitly rather than relying only on LIVEKIT_* env stubs.",
+      "confidence": 75,
+      "evidence": [
+        "lms/app/api/interview/token/route.ts:54 -- agentReady = await realtimeAgentAvailable(prisma, now);",
+        "lms/tests/interview-realtime.test.ts:63-67 -- function stubLivekit only stubs LIVEKIT_URL, LIVEKIT_API_KEY, and LIVEKIT_API_SECRET.",
+        "lms/tests/interview-realtime-agent-ready.test.ts:2 -- import { hasCurrentRealtimeAgentHeartbeat } from \"../lib/interview/realtime\";"
+      ],
+      "pre_existing": false
+    },
+    {
+      "title": "Agent fixes are tested as strings",
+      "severity": "P1",
+      "file": "lms/agent/test_main.py",
+      "line": 77,
+      "why_it_matters": "The tests for the exact production failures pass whenever the target strings occur in main.py, even if the provider construction, event callback, or session startup no longer behaves correctly. That leaves the ElevenLabs-key mismatch, AgentHandoff exception, disconnect survival, and the requirement that an interrupted interview not complete or grade without executable regression coverage. Exercise these boundaries with fake plugin/session objects and assert their observable calls and no completion call after a disconnect.",
+      "autofix_class": "gated_auto",
+      "owner": "downstream-resolver",
+      "requires_verification": true,
+      "suggested_fix": "Extract or dependency-inject the legacy pair and conversation-item handler so tests can instantiate fake ElevenLabs, event, and AgentSession objects; assert the configured key is passed, AgentHandoff schedules no turn, close_on_disconnect is false at session.start, and a simulated disconnect does not invoke agent-complete/grading.",
+      "confidence": 75,
+      "evidence": [
+        "lms/agent/test_main.py:77 -- src = open(\"main.py\", encoding=\"utf-8\").read()",
+        "lms/agent/test_main.py:79 -- self.assertIn('elevenlabs.TTS(api_key=os.environ[\"ELEVENLABS_API_KEY\"])', body)",
+        "lms/agent/main.py:1023 -- asyncio.create_task(lms.post_turn(interview_id, speaker, text))"
+      ],
+      "pre_existing": false
+    },
+    {
+      "title": "Reconnect lifecycle has no behavioral test",
+      "severity": "P1",
+      "file": "lms/tests/interview-realtime-client-contract.test.ts",
+      "line": 11,
+      "why_it_matters": "The browser change replaces the failing manual-recorder path, but its only new client test checks source substrings. It does not prove that a disconnected room requests a new token, remounts with it, avoids /fallback, keeps retrying after an unavailable response, or reaches the result only after completion. A regression in the student-visible reconnect flow can therefore pass all focused tests and recreate the reported cut-off behavior.",
+      "autofix_class": "gated_auto",
+      "owner": "downstream-resolver",
+      "requires_verification": true,
+      "suggested_fix": "Add a component test that mocks RealtimeRoom and fetch: return an initial token, invoke onFallback, assert a second /api/interview/token request and a RealtimeRoom remount with the new token, assert no /fallback request, and separately cover unavailable polling plus onCompleted navigation.",
+      "confidence": 75,
+      "evidence": [
+        "lms/tests/interview-realtime-client-contract.test.ts:11 -- expect(source).toContain('setMode(\"reconnecting\")');",
+        "lms/app/(room)/interview/live/interview-client.tsx:87 -- void requestRealtime(true);",
+        "lms/app/(room)/interview/live/interview-client.tsx:95 -- key={rt.token}"
+      ],
+      "pre_existing": false
+    }
+  ],
+  "residual_risks": [
+    "Focused Vitest checks passed (3 tests), but they do not connect a LiveKit disconnect, agent resume, and agent-complete/worker grading in one executable path.",
+    "The database-backed interview suites could not be used as current behavioral evidence in this checkout because their local Prisma seed environment is schema-drifted; production-like route coverage needs a healthy isolated test database or explicit dependency mocks."
+  ],
+  "testing_gaps": [
+    "No test covers realtimeAgentAvailable returning false or throwing through POST /api/interview/token, including the no-attempt-created invariant.",
+    "No executable agent test proves AgentHandoff is ignored, a disconnect preserves the agent session, or interruption suppresses completion/grading.",
+    "No rendered client test proves reconnect token renewal, retry behavior, absence of the retired fallback request, and completion navigation."
+  ]
+}

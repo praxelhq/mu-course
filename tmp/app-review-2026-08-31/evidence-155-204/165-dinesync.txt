@@ -1,0 +1,43 @@
+- banner:
+  - link "Savor home":
+    - /url: /discover
+    - generic: savor
+  - link "Your profile":
+    - /url: /profile
+- banner:
+  - heading "DineSync" [level=1]
+  - paragraph: Find something everyone actually wants.
+- heading "Start a room" [level=2]
+- paragraph: Share a code, everyone swipes on their own phone, and we'll shout when you all match.
+- button "Start a DineSync":
+  - text: Start a DineSync
+- heading "Join a room" [level=2]
+- button "Enter Code"
+- heading "Recent syncs" [level=2]
+- list:
+  - paragraph: Friday with Aarav & Riya
+  - paragraph: Matched on Salted Espresso Martini
+  - paragraph: Office lunch
+  - paragraph: Matched on Copper Handi Butter Chicken
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_151symq9188hztw3zxdf02z6v4?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- navigation:
+  - list:
+    - link "Discover":
+      - /url: /discover
+      - generic: Discover
+    - link "DineSync" [active]:
+      - /url: /dinesync
+      - generic: DineSync
+    - link "Saved":
+      - /url: /saved
+      - generic: Saved
+    - link "Explore":
+      - /url: /explore
+      - generic: Explore
+    - link "Profile":
+      - /url: /profile
+      - generic: Profile

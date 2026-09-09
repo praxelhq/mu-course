@@ -1,0 +1,158 @@
+- navigation:
+  - generic "Chief of Staff": CS
+  - heading "Founder's Office" [level=1]
+  - paragraph: Executive Control
+  - button "add New Request":
+    - generic: add
+    - text: New Request
+  - link "dashboard Dashboard B":
+    - /url: /brief
+    - generic: dashboard
+    - text: Dashboard
+    - generic: B
+  - link "bolt Triage T":
+    - /url: /
+    - generic: bolt
+    - text: Triage
+    - generic: T
+  - link "group Team A":
+    - /url: /archives
+    - generic: group
+    - text: Team
+    - generic: A
+  - link "psychology Intelligence I":
+    - /url: /intelligence
+    - generic: psychology
+    - text: Intelligence
+    - generic: I
+  - link "help Help":
+    - /url: "#"
+    - generic: help
+    - text: Help
+  - link "logout Logout":
+    - /url: "#"
+    - generic: logout
+    - text: Logout
+- banner:
+  - navigation:
+    - link "Daily Input":
+      - /url: /
+    - link "Daily Brief":
+      - /url: /brief
+    - link "Archives":
+      - /url: /archives
+  - generic: System Ready
+  - button "Notifications":
+    - generic: notifications
+  - button "Settings":
+    - generic: settings
+  - button "auto_awesome Generate Brief":
+    - generic: auto_awesome
+    - text: Generate Brief
+- heading "Intelligence" [level=2]
+- paragraph: Systemic overview of request patterns, bottlenecks, and organizational throughput. Data reflects the trailing 30 days.
+- button "download Export Report":
+  - generic: download
+  - text: Export Report
+- button "Last 30 Days arrow_drop_down":
+  - text: Last 30 Days
+  - generic: arrow_drop_down
+- paragraph: Total Volume
+- generic: 1,432
+- generic: arrow_upward
+- text: 12%
+- paragraph: Avg Resolution
+- generic: 4.2h
+- generic: arrow_downward
+- text: 0.5h
+- paragraph: Delegation Rate
+- generic: 68%
+- generic: "-"
+- paragraph: Critical Backlog
+- generic: "14"
+- generic: arrow_upward
+- text: "3"
+- heading "Inflow Velocity" [level=3]
+- generic: monitoring
+- generic: "100"
+- generic: "75"
+- generic: "50"
+- generic: "25"
+- generic: "0"
+- generic: Mon
+- generic: Tue
+- generic: Wed
+- generic: Thu
+- generic: Fri
+- generic: Sat
+- generic: Sun
+- heading "Action Matrix" [level=3]
+- generic: donut_large
+- generic: Urgent
+- generic: 15%
+- generic: Delegate
+- generic: 68%
+- generic: FYI
+- generic: 17%
+- paragraph: "\"Delegation rate is stable.\""
+- heading "Top Requestors" [level=3]
+- generic: account_tree
+- generic: EN
+- paragraph: Engineering Dept
+- paragraph: Product & Tech
+- paragraph: "342"
+- paragraph: ↑ 12%
+- generic: SL
+- paragraph: Sales & Rev
+- paragraph: Go To Market
+- paragraph: "289"
+- paragraph: ↓ 4%
+- generic: LG
+- paragraph: Legal Counsel
+- paragraph: Operations
+- paragraph: "156"
+- paragraph: "-"
+- button "View All Departments"
+- heading "Resolution Bottlenecks" [level=3]
+- generic: hourglass_empty
+- paragraph: Time to Resolve
+- generic: Contract Approvals
+- generic: 72h
+- generic: Hiring Requests
+- generic: 24h
+- generic: Budget Revisions
+- generic: 18h
+- generic: insights
+- heading "Systemic Insight" [level=4]
+- paragraph: Contract approvals are causing a severe backlog. Recommend delegating tier-3 approvals.
+- button "Draft Policy Change"
+- heading "Recent Activity" [level=3]
+- button "history View Full Log":
+  - generic: history
+  - text: View Full Log
+- generic: bolt
+- paragraph: "Escalated: Acme Corp contract redlines"
+- paragraph: Legal flagged indemnity clause — routed to founder queue.
+- generic: 12m ago
+- generic: assignment_ind
+- paragraph: "Delegated: VP Eng final-round scheduling"
+- paragraph: Assigned to Chief of Staff with a 24h SLA.
+- generic: 48m ago
+- generic: auto_awesome
+- paragraph: Brief generated from 14 signals
+- paragraph: 3 urgent, 5 delegate, 6 FYI classified.
+- generic: 2h ago
+- generic: task_alt
+- paragraph: "Resolved: Q4 marketing spend approval"
+- paragraph: Closed in 3.1h — below the 4.2h average.
+- generic: 5h ago
+- generic: insights
+- paragraph: "Bottleneck detected: contract approvals"
+- paragraph: Median time to resolve rose to 72h across 6 requests.
+- generic: Yesterday
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3t65c2nqp591faxrcsh38ry1gp?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

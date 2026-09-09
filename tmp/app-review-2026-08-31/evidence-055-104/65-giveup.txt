@@ -1,0 +1,45 @@
+- banner:
+  - link:
+    - /url: /
+    - text: Who's That Pokémon?
+  - navigation:
+    - link:
+      - /url: /how-to-play
+      - text: How to Play
+- main:
+  - heading [level=1]: Who's That Pokémon?
+  - generic: 1 guess
+  - textbox:
+    - /placeholder: Search a Pokémon…
+  - button [disabled]:
+    - text: Guess
+  - button [expanded]:
+    - text: Give Up
+  - heading [level=2]: Logic Log
+  - generic: "#"
+  - generic: Pokémon
+  - generic: Type 1
+  - generic: Type 2
+  - generic: Stage
+  - generic: Height
+  - generic: Weight
+  - generic: BST
+  - text: "#0025"
+  - generic: Pikachu
+  - generic: Electric
+  - generic: None
+  - text: Stage 2
+  - text: 0.4 m
+  - text: 6.0 kg
+  - text: "300"
+- region "Notifications alt+T"
+- complementary:
+  - link:
+    - /url: https://lovable.dev/projects/lovp_59tfn1avss8838j0sc7zgrd0e7?utm_source=lovable-badge
+    - generic: Edit with
+  - button:
+- alertdialog "Give up this round?":
+  - heading "Give up this round?" [level=2]
+  - paragraph: The hidden Pokémon will be revealed and this round will end. Your guesses stay visible.
+  - button "Keep guessing" [active]
+  - button "Give up"

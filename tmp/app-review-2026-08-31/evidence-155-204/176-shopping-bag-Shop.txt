@@ -1,0 +1,100 @@
+- banner:
+  - button "Go back":
+    - generic: arrow_back
+  - button "AEROKAZE"
+  - button "Search":
+    - generic: search
+- main:
+  - generic: search
+  - textbox "Search fragrances..."
+  - button "ALL"
+  - button "FRESH"
+  - button "WOODY"
+  - button "MUSK"
+  - button "CITRUS"
+  - button "SPORT"
+  - img "A sleek, minimalist matte black car fragrance diffuser sitting on a smooth dark grey slate surface. Dramatic, moody lighting highlights its sharp geometric edges."
+  - generic: fresh
+  - heading "Alpine Mist" [level=3]
+  - paragraph: Crisp mountain air & pine.
+  - generic: ₹3,500
+  - button "Add Alpine Mist to cart":
+    - generic: add
+  - img "A minimalist cylindrical car fragrance dispenser in brushed silver aluminum sitting on a reflective black glass surface."
+  - generic: citrus
+  - heading "Monza Orange" [level=3]
+  - paragraph: Zesty bergamot & neroli.
+  - generic: ₹3,850
+  - button "Add Monza Orange to cart":
+    - generic: add
+  - img "A frosted glass reservoir car diffuser with matte black cap on dark wet stone."
+  - generic: fresh
+  - heading "Oceanic Night" [level=3]
+  - paragraph: Sea salt & dark cedar.
+  - generic: ₹4,200
+  - button "Add Oceanic Night to cart":
+    - generic: add
+  - img "An elegant softly rounded car fragrance pod in soft-touch matte charcoal grey on dark coarse automotive fabric."
+  - generic: musk
+  - heading "Velvet Drift" [level=3]
+  - paragraph: Warm musk & vanilla bean.
+  - generic: ₹4,650
+  - button "Add Velvet Drift to cart":
+    - generic: add
+  - img "Handcrafted dark wooden luxury car diffuser with refined brass accents."
+  - generic: woody
+  - heading "Kyoto Cypress" [level=3]
+  - paragraph: Hinoki wood & smoked green tea.
+  - generic: ₹5,100
+  - button "Add Kyoto Cypress to cart":
+    - generic: add
+  - img "A sleek aerodynamic car fragrance module made of forged carbon fiber resting on metallic mesh."
+  - generic: sport
+  - heading "Apex Edge" [level=3]
+  - paragraph: Cool mint & black pepper.
+  - generic: ₹5,600
+  - button "Add Apex Edge to cart":
+    - generic: add
+  - img "Brushed gold automotive vent diffuser gleaming in golden dusk light."
+  - generic: citrus
+  - heading "Solarium Neroli" [level=3]
+  - paragraph: Riviera neroli & golden amber.
+  - generic: ₹5,950
+  - button "Add Solarium Neroli to cart":
+    - generic: add
+  - img "A premium car fragrance vent clip featuring rich dark walnut wood accents and brushed gunmetal hardware on dark textured leather."
+  - generic: woody
+  - heading "Midnight Leather" [level=3]
+  - paragraph: Aged leather & dark amber.
+  - generic: ₹6,400
+  - button "Add Midnight Leather to cart":
+    - generic: add
+  - img "Deep black polished obsidian and gunmetal car fragrance diffuser."
+  - generic: musk
+  - heading "Black Oud Noir" [level=3]
+  - paragraph: Royal agarwood & damask rose.
+  - generic: ₹6,750
+  - button "Add Black Oud Noir to cart":
+    - generic: add
+  - img "Aerospace-grade titanium car vent fragrance diffuser with precision air vents."
+  - generic: sport
+  - heading "Grand Prix Titanium" [level=3]
+  - paragraph: Smoked cedar & racing cardamom.
+  - generic: ₹6,950
+  - button "Add Grand Prix Titanium to cart":
+    - generic: add
+  - button "LOAD MORE"
+- navigation:
+  - button "home Home":
+    - generic: home
+    - generic: Home
+  - button "shopping_bag Shop" [active]:
+    - generic: shopping_bag
+    - generic: Shop
+  - button "auto_awesome Quiz":
+    - generic: auto_awesome
+    - generic: Quiz
+  - button "shopping_cart 1 Cart":
+    - generic: shopping_cart
+    - generic: "1"
+    - generic: Cart

@@ -1,0 +1,34 @@
+- img "Google AI Studio logo"
+- heading "Welcome to AI Studio" [level=1]
+- paragraph: Google AI Studio and the Gemini API enable developers to build with the latest Google AI models like Gemini, Veo, Lyria, and more.
+- paragraph:
+  - text: The
+  - link "Gemini API Additional Terms of Service":
+    - /url: /docs/terms
+  - text: ","
+  - link "Starter Tier Additional Terms of Service":
+    - /url: https://cloud.google.com/terms/starter-tier-additional-terms
+  - text: and the
+  - link "Google Privacy Policy":
+    - /url: https://policies.google.com/privacy?hl=en
+  - text: apply. Prompts and responses may be reviewed and used to train Google AI, so don’t submit sensitive or personal information. Learn more about
+  - link "data use":
+    - /url: /docs/terms#data-use-paid
+  - text: . Google AI models can make mistakes, so double-check responses before relying on, publishing, or otherwise using generated content.
+- text: Agreements
+- checkbox "I consent to the Google APIs Terms of Service and the Gemini API Additional Terms of Service and acknowledge that I have read the Google Privacy Policy"
+- superscript: "*"
+- text: I acknowledge that I am a developer building with Google AI Studio and Gemini API for professional or business purposes, and I consent to the terms and acknowledge the privacy policy linked above.
+- checkbox "Opt in to receive news, offers, promotions, and updates about Google AI."
+- generic: I'd like to receive emails for model updates, offers, useful tips, invitations to participate in research studies, and news about Google AI.
+- button "Accept terms of service" [disabled]: Continue
+- generic "This app is from another developer":
+  - heading "This app is from another developer" [level=2]:
+    - generic: info
+    - text: This app is from another developer
+  - generic: This app was developed by another user. Be cautious and only continue with apps you trust. Don't share personal or sensitive information, such as passwords or payment details. Anyone with this public link can access and edit shared data.
+  - link "Report legal issue":
+    - /url: https://support.google.com/legal/troubleshooter/1114905
+  - button "Continue to the app" [active]
+- button: Skip to main content
+- main:

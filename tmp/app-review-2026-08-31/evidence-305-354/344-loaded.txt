@@ -1,0 +1,43 @@
+- link "Skip to main content":
+  - /url: "#main-content"
+- generic: Preview deployment
+- generic: "- Use this page to preview your project and collaborate on feedback."
+- button "Dismiss preview notice":
+- main:
+  - iframe:
+    - main:
+      - generic: StockIQ Analyst
+      - navigation:
+        - link "Sign in":
+          - /url: /login
+        - link "Launch app":
+          - /url: /analyze
+      - generic: India equities · v1
+      - heading "Institutional research, on every ticker." [level=1]
+      - paragraph: Enter a ticker. We classify the business, run the right checklist, compare against peers, extract management commitments from concalls, score credibility against past promises, and issue a verdict — all traced back to source.
+      - link "Analyze a stock":
+        - /url: /analyze
+      - link "View reports":
+        - /url: /history
+      - heading "Right framework, every time" [level=3]
+      - paragraph: Secular, cyclical, or financial — we pick the right checklist for the business model.
+      - heading "Credibility scoring" [level=3]
+      - paragraph: We track every quarterly commitment management makes and score what they actually deliver.
+      - heading "Source-traceable" [level=3]
+      - paragraph: Every metric carries a source URL and scrape timestamp. No black boxes.
+      - generic: Research output is for informational use only and is not investment advice.
+    - complementary "Edit with Lovable":
+      - link "Edit with Lovable":
+        - /url: https://lovable.dev/projects/lovp_2ayzmbvsqb8tjvrpg7h40vg5r2?utm_source=lovable-badge
+        - generic: Edit with
+      - button "Dismiss":
+  - button "Browse" [pressed]:
+    - generic: Browse
+  - button "Comment":
+    - generic: Comment
+- complementary:
+  - button "Collapse comments":
+  - heading "Comments" [level=1]
+  - paragraph: No comments, yet
+  - paragraph: Select “Comment” in the toolbar and then click anywhere on the preview to leave a comment
+- region

@@ -1,0 +1,27 @@
+Sessions 03-05 presentation collateral — final QA
+Date: 2026-07-30
+
+Deliverables
+- Session 03: 26 slides / 26 PDF pages / 120 minutes
+- Session 04: 21 slides / 21 PDF pages / 120 minutes
+- Session 05: 27 slides / 27 PDF pages / 120 minutes
+- Total: 74 editable PPTX slides and 74 matching PDF pages
+
+Automated checks
+- build_sessions_3_5_decks.mjs passes `node --check`
+- slides_test.py passes all three PPTX files: no overflow detected
+- Custom artifact layout diagnostics: 0 text overlaps and 0 out-of-bounds text boxes in every deck
+- Speaker notes: 74/74 slides present; 74/74 contain a [Sources] block
+- PDF page geometry: 960.009 x 540 pt (16:9) for every deck
+- PDF fonts embedded: Fraunces 9pt, Geist, and Geist Mono (regular/bold as used)
+- Final output directory contains exactly three PPTX/PDF pairs
+
+Visual checks
+- All 74 final PDF pages were rasterized and inspected at full size
+- Contact sheets and full-size page batches are stored in each deck's QA directory
+- Reviewed contract clarifications render cleanly on Session 04 slide 20 and Session 05 slides 22, 23, 25, and 26
+
+Reviewed contracts
+- Session 04: V2 is auto-granted at V1 receipt; ten-calendar-day revision clock; extensions/additional repair require instructor approval; volatile claim dated 30 Jul 2026 with T-7 recheck
+- Session 05: raw Make blueprint remains private; public cloning uses only a privacy-cleared official Make scenario-sharing link, otherwise cloning is withheld
+- Session 05 final scoring: instructor selects exactly one existing finalised version; no merged or integrated package

@@ -1,0 +1,202 @@
+- complementary "Main navigation":
+  - generic: StudyFlow
+  - navigation "Site sections":
+    - link "Dashboard":
+      - /url: "#/dashboard"
+      - text: Dashboard
+    - link "Tasks":
+      - /url: "#/tasks"
+      - text: Tasks
+    - link "Calendar":
+      - /url: "#/calendar"
+      - text: Calendar
+    - link "Progress":
+      - /url: "#/progress"
+      - text: Progress
+    - link "Subjects":
+      - /url: "#/subjects"
+      - text: Subjects
+    - link "Settings":
+      - /url: "#/settings"
+      - text: Settings
+  - button "New task":
+    - text: New task
+  - paragraph: Studying as
+  - paragraph: Ali
+- banner:
+  - heading "Dashboard" [level=1]
+  - paragraph: Monday, 31 August 2026
+  - button "Switch to dark theme":
+  - button "New task":
+    - generic: New task
+- main:
+  - heading "Good morning, Ali." [level=1]
+  - paragraph: 3 tasks are due today and 1 is overdue.
+  - text: 6-day streak
+  - paragraph: "3"
+  - paragraph: Due today
+  - paragraph: Clear these first
+  - paragraph: "1"
+  - paragraph: Overdue
+  - paragraph: Needs attention now
+  - paragraph: "0"
+  - paragraph: Done this week
+  - paragraph: 6 of 18 all semester
+  - paragraph: 15h
+  - paragraph: Est. hours (completed)
+  - paragraph: 72.5h est. total
+  - paragraph: Next 14 days
+  - heading "Deadline runway" [level=2]
+  - link "Open calendar":
+    - /url: "#/calendar"
+    - text: Open calendar
+  - button "3 Now":
+    - generic: "3"
+    - generic: Now
+  - button "1":
+    - generic: "1"
+  - button "1 2":
+    - generic: "1"
+    - generic: "2"
+  - button "1 3":
+    - generic: "1"
+    - generic: "3"
+  - button "1 4":
+    - generic: "1"
+    - generic: "4"
+  - button "5":
+    - generic: "5"
+  - button "6":
+    - generic: "6"
+  - button "7":
+    - generic: "7"
+  - button "1 8":
+    - generic: "1"
+    - generic: "8"
+  - button "9":
+    - generic: "9"
+  - button "1 10":
+    - generic: "1"
+    - generic: "10"
+  - button "11":
+    - generic: "11"
+  - button "1 12":
+    - generic: "1"
+    - generic: "12"
+  - button "13":
+    - generic: "13"
+  - generic: Due today
+  - generic: Within 3 days
+  - generic: Later
+  - paragraph: Today
+  - heading "Today's tasks" [level=2]
+  - button "Add":
+    - text: Add
+  - button "Complete Graph traversal problem set":
+  - paragraph: Graph traversal problem set
+  - generic: Data Structures
+  - generic: Assignment
+  - generic: Due today
+  - text: 3h
+  - paragraph: BFS and DFS on weighted graphs. Show the queue state at each step.
+  - generic: High
+  - button "Edit Graph traversal problem set":
+  - button "Complete Revise market structures":
+  - paragraph: Revise market structures
+  - generic: Microeconomics
+  - generic: Study Session
+  - generic: Due today
+  - text: 2h
+  - paragraph: Perfect competition vs monopoly — draw the cost curves from memory.
+  - generic: Medium
+  - button "Edit Revise market structures":
+  - button "Complete Draft the internship cover letter":
+  - paragraph: Draft the internship cover letter
+  - generic: Business Communication
+  - generic: Assignment
+  - generic: Due today
+  - text: 1h
+  - paragraph: One page, addressed to the hiring manager.
+  - generic: Low
+  - button "Edit Draft the internship cover letter":
+  - paragraph: Semester
+  - heading "Overall progress" [level=2]
+  - generic: 33%
+  - generic: completed
+  - generic: Today's target
+  - generic: 0h / 4h
+  - generic: Still pending
+  - generic: "12"
+  - paragraph: Next 7 days
+  - heading "Upcoming deadlines" [level=2]
+  - link "Graph traversal problem set Data Structures · Assignment Due today":
+    - /url: "#/tasks/task-8/edit"
+    - paragraph: Graph traversal problem set
+    - paragraph: Data Structures · Assignment
+    - generic: Due today
+  - link "Revise market structures Microeconomics · Study Session Due today":
+    - /url: "#/tasks/task-9/edit"
+    - paragraph: Revise market structures
+    - paragraph: Microeconomics · Study Session
+    - generic: Due today
+  - link "Draft the internship cover letter Business Communication · Assignment Due today":
+    - /url: "#/tasks/task-10/edit"
+    - paragraph: Draft the internship cover letter
+    - paragraph: Business Communication · Assignment
+    - generic: Due today
+  - link "Midterm — chapters 4 to 7 Linear Algebra · Exam In 2 days":
+    - /url: "#/tasks/task-11/edit"
+    - paragraph: Midterm — chapters 4 to 7
+    - paragraph: Linear Algebra · Exam
+    - generic: In 2 days
+  - link "SQL joins practice lab Database Systems · Study Session In 3 days":
+    - /url: "#/tasks/task-12/edit"
+    - paragraph: SQL joins practice lab
+    - paragraph: Database Systems · Study Session
+    - generic: In 3 days
+  - link "Reaction mechanisms flashcards Organic Chemistry · Reading In 4 days":
+    - /url: "#/tasks/task-13/edit"
+    - paragraph: Reaction mechanisms flashcards
+    - paragraph: Organic Chemistry · Reading
+    - generic: In 4 days
+  - paragraph: Highest stakes
+  - heading "High priority" [level=2]
+  - 'button "Complete Lab report: recrystallisation"':
+  - paragraph: "Lab report: recrystallisation"
+  - generic: Organic Chemistry
+  - generic: Assignment
+  - generic: 2 days overdue
+  - generic: High
+  - 'button "Edit Lab report: recrystallisation"':
+  - button "Complete Graph traversal problem set":
+  - paragraph: Graph traversal problem set
+  - generic: Data Structures
+  - generic: Assignment
+  - generic: Due today
+  - generic: High
+  - button "Edit Graph traversal problem set":
+  - button "Complete Midterm — chapters 4 to 7":
+  - paragraph: Midterm — chapters 4 to 7
+  - generic: Linear Algebra
+  - generic: Exam
+  - generic: In 2 days
+  - generic: High
+  - button "Edit Midterm — chapters 4 to 7":
+  - button "Complete Hash table implementation project":
+  - paragraph: Hash table implementation project
+  - generic: Data Structures
+  - generic: Project
+  - generic: Next week
+  - generic: High
+  - button "Edit Hash table implementation project":
+  - button "Complete Team presentation — final delivery":
+  - paragraph: Team presentation — final delivery
+  - generic: Business Communication
+  - generic: Project
+  - generic: Next week
+  - generic: High
+  - button "Edit Team presentation — final delivery":
+- status
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

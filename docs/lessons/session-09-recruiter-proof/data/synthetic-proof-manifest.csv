@@ -1,0 +1,15 @@
+item_id,pathway_pack_id,artifact_type,evidence_class,public_state,source_or_run_id,planted_risk,required_action,access_test
+D-1,S09-FIN-CF-PACK-01,case_page,synthetic,public,run-fpna-1,none,trace formula,clean_open_pass
+D-2,S09-FIN-CF-PACK-01,config,synthetic,public,repo-demo-2,api_key_string,quarantine_rotate_document,blocked
+D-3,S09-FIN-CF-PACK-01,brand_asset,adapted,public,asset-demo-3,false_endorsement,remove_add_non_affiliation,blocked
+H-IB-1,S09-FIN-IB-PACK-01,model,synthetic,private,src-ib-4,stale_period,repair_and_restate,authorized_only
+H-HR-1,S09-HR-PACK-01,attempt_log,synthetic,public,run-hr-6,reidentification_risk,aggregate_or_exclude,blocked
+H-MKT-1,S09-MKT-PACK-01,generated_asset,synthetic,public,asset-mkt-2,missing_rights_disclosure,quarantine_until_resolved,blocked
+H-DATA-1,S09-DATA-PACK-01,dataset,synthetic,private,data-7,metric_version_missing,version_and_limit,authorized_only
+H-CONS-1,S09-CONS-PACK-01,calculation,synthetic,private,calc-cons-8,unsupported_saving_range,repair_source_and_range,authorized_only
+H-FOCOS-1,S09-FOCOS-PACK-01,decision_log,synthetic,public,log-focos-2,identity_like_names,redact_and_label_synthetic,blocked
+H-PM-1,S09-PM-PACK-01,run_receipt,synthetic,public,run-pm-5,guardrail_link_broken,repair_static_replay,clean_open_fail
+H-VC-1,S09-FIN-VC-PACK-01,claim_ledger,synthetic,public,src-vc-3,founder_claim_unverified,label_and_move_proof_private,blocked
+H-CF-1,S09-FIN-CF-PACK-01,model,synthetic,private,model-cf-4,formula_setup_missing,add_replay_and_version,authorized_only
+H-SCO-1,S09-SCO-PACK-01,event_log,synthetic,public,run-sco-6,supplier_identity_like,replace_with_synthetic_id,blocked
+H-SALES-1,S09-SALES-PACK-01,account_plan,synthetic,public,src-sales-5,consent_state_exposed,redact_and_keep_private,blocked

@@ -1,0 +1,24 @@
+- banner:
+  - link "Vantage.":
+    - /url: "#/"
+  - navigation:
+    - link "Company Intelligence":
+      - /url: "#/company"
+    - link "News Feed":
+      - /url: "#/news"
+- link "← Back to search":
+  - /url: "#/company"
+- heading "Infosys" [level=1]
+- paragraph: IT Services · INFY
+- button "★ Tracking"
+- navigation:
+  - button "Overview"
+  - button "Leadership"
+  - button "Recent News"
+  - button "Financials"
+  - button "Competitors"
+  - button "Interview Prep"
+- strong: "Leadership & ownership: Data not available."
+- paragraph: No reliable free live leadership-data source is fetchable client-side in v1. Rather than guess, this is intentionally left blank.
+- contentinfo:
+  - paragraph: Vantage is a demo static site. News is fetched live client-side via a public RSS-to-JSON service; company overviews via Wikipedia's public API. No data is stored server-side — bookmarks and tracked companies live only in this browser's localStorage.

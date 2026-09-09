@@ -1,0 +1,249 @@
+- banner:
+  - button "B BookMyCut Atelier & Wellness":
+    - generic: B
+    - generic: BookMyCut
+    - generic: Atelier & Wellness
+  - button "Gurugram":
+    - generic: Gurugram
+  - navigation:
+    - button "Discovery"
+    - button "My Appointments 1":
+      - generic: My Appointments
+      - generic: "1"
+    - button "AI Style Advisor":
+      - generic: AI Style Advisor
+  - button "Customer" [active]
+  - button "Partner Portal":
+    - generic: Partner Portal
+  - button "AS"
+- main:
+  - img "Luxury Atelier Salon Interior"
+  - generic: Tier-1 & Tier-2 Quiet Luxury Marketplace
+  - heading "Curated Experiences near Gurugram" [level=1]:
+    - text: Curated Experiences
+    - generic: near Gurugram
+  - paragraph: Handpicked premium venues & master stylists for the discerning urban professional.
+  - textbox "Search salons, balayage, facial, massage, or stylist..."
+  - generic: Gurugram
+  - button "Discover"
+  - button "Need personalized recommendations? Try Gemini AI Style Advisor":
+    - text: Need personalized recommendations?
+    - strong: Try Gemini AI Style Advisor
+  - generic: Bespoke Categories
+  - heading "Browse by Signature Service" [level=2]
+  - paragraph: Select a service ritual to instantly filter verified ateliers near Gurugram.
+  - button "All Services":
+    - generic: All Services
+  - button "Haircut Haircuts":
+    - img "Haircut"
+    - generic: Haircuts
+  - button "Beard Grooming Beard Grooming":
+    - img "Beard Grooming"
+    - generic: Beard Grooming
+  - button "Hair Spa Hair Spa":
+    - img "Hair Spa"
+    - generic: Hair Spa
+  - button "Hair Colour Hair Colour":
+    - img "Hair Colour"
+    - generic: Hair Colour
+  - button "Facial Facials":
+    - img "Facial"
+    - generic: Facials
+  - button "Spa Spa & Wellness":
+    - img "Spa"
+    - generic: Spa & Wellness
+  - generic: Gurugram Atelier Roster
+  - heading "Curated Venues in Gurugram" [level=2]:
+    - text: Curated Venues
+    - generic: in Gurugram
+  - text: Showing
+  - strong: "10"
+  - text: verified venues
+  - generic: Service / Category
+  - combobox:
+    - option "All Services" [selected]
+    - option "Men's Haircut"
+    - option "Women's Haircut"
+    - option "Beard Grooming"
+    - option "Hair Spa"
+    - option "Facial"
+    - option "Hair Colour"
+  - generic: Price Range
+  - combobox:
+    - option "Any Price" [selected]
+    - option "Under ₹500"
+    - option "₹500 – ₹999"
+    - option "₹1,000 – ₹1,499"
+    - option "₹1,500+"
+  - generic: Rating
+  - combobox:
+    - option "Any Rating" [selected]
+    - option "4.0+ ★"
+    - option "4.5+ ★"
+    - option "4.8+ Top Tier ★"
+  - generic: Neighborhood / Area
+  - combobox:
+    - option "All Gurugram Areas" [selected]
+    - option "Sector 11"
+    - option "Sector 15"
+    - option "Sector 26"
+    - option "Sector 28"
+    - option "Sector 46"
+    - option "Sector 50"
+    - option "Sector 56"
+    - option "Sector 83"
+  - generic: Sort Results
+  - combobox:
+    - option "Highest Rated" [selected]
+    - option "Most Reviewed"
+    - 'option "Price: Low to High"'
+    - 'option "Price: High to Low"'
+  - button "Flagship Ateliers Only":
+    - generic: Flagship Ateliers Only
+  - button "Available Today":
+    - generic: Available Today
+  - img "Good Style Unisex Salon"
+  - generic: Bespoke Studio
+  - generic: GST Registered
+  - paragraph:
+    - generic: Sector 11, Gurugram
+  - heading "Good Style Unisex Salon" [level=3]
+  - paragraph: Top-rated neighborhood favorite in Sector 11 Gurugram delivering immaculate haircuts, gentle beard trims, deeply relaxing hair spas, and glowing facials with unmatched warmth and value.
+  - generic: Starting from ₹250 (Incl. 18% GST)
+  - generic: 09:00 AM - 09:00 PM
+  - generic: "4.9"
+  - generic: 380 Reviews
+  - button "View Salon":
+    - generic: View Salon
+  - img "The Royal Salon"
+  - generic: Prive
+  - paragraph: Sector 50
+  - heading "The Royal Salon" [level=4]
+  - generic: From ₹300
+  - generic: "4.9"
+  - img "Hello Gorgeous"
+  - generic: Bespoke Studio
+  - paragraph: Sector 56
+  - heading "Hello Gorgeous" [level=4]
+  - generic: From ₹300
+  - generic: "4.8"
+  - img "Looks Salon"
+  - generic: Flagship
+  - generic: "4.7"
+  - generic: (312)
+  - paragraph:
+    - generic: Sector 15, Gurugram
+  - generic: 10:00 AM - 09:00 PM
+  - heading "Looks Salon" [level=3]
+  - paragraph: One of Gurugram’s most acclaimed unisex destinations, Looks Salon Sector 15 offers elite grooming, trendsetting cuts, deeply nourishing hair spa therapies, and expert hair color services in a spacious, premium ambiance.
+  - generic: Men's Haircut
+  - generic: Women's Haircut
+  - generic: Beard Styling
+  - generic: Starting At
+  - text: ₹350
+  - button "View Salon":
+    - generic: View Salon
+  - img "Headmasters"
+  - generic: Flagship
+  - generic: "4.7"
+  - generic: (220)
+  - paragraph:
+    - generic: Sector 26, Gurugram
+  - generic: 09:30 AM - 09:00 PM
+  - heading "Headmasters" [level=3]
+  - paragraph: Nestled along the prestigious Golf Course Road DLF Phase 1 corridor, Headmasters is a premier luxury salon renowned for transformative hair rituals, therapeutic facials, and bespoke grooming.
+  - generic: Men's Haircut
+  - generic: Women's Haircut
+  - generic: Beard Styling
+  - generic: Starting At
+  - text: ₹400
+  - button "View Salon":
+    - generic: View Salon
+  - img "Hair Candy Luxury Salon"
+  - generic: Bespoke Studio
+  - generic: "4.7"
+  - generic: (165)
+  - paragraph:
+    - generic: Sector 46, Gurugram
+  - generic: 10:00 AM - 09:00 PM
+  - heading "Hair Candy Luxury Salon" [level=3]
+  - paragraph: Trendy unisex salon at Sector 46 HUDA Market known for creative hair coloration, stylish trims, and deep conditioning hair spa therapies in a chic modern ambience.
+  - generic: Men's Haircut
+  - generic: Women's Haircut
+  - generic: Beard Styling
+  - generic: Starting At
+  - text: ₹300
+  - button "View Salon":
+    - generic: View Salon
+  - img "Toni & Guy"
+  - generic: Flagship
+  - generic: "4.5"
+  - generic: (184)
+  - paragraph:
+    - generic: Sector 50, Gurugram
+  - generic: 10:00 AM - 09:00 PM
+  - heading "Toni & Guy" [level=3]
+  - paragraph: Located at Good Earth City Centre, Toni & Guy Gurugram delivers premier British precision hairdressing, tailored color glaze techniques, and relaxing hair spa treatments in an ultra-modern salon atmosphere with internationally trained creative stylists.
+  - generic: Men's Haircut
+  - generic: Women's Haircut
+  - generic: Beard Styling
+  - generic: Starting At
+  - text: ₹350
+  - button "View Salon":
+    - generic: View Salon
+  - img "Geetanjali Salon"
+  - generic: Prive
+  - generic: "4.5"
+  - generic: (268)
+  - paragraph:
+    - generic: Sector 28, Gurugram
+  - generic: 10:00 AM - 09:00 PM
+  - heading "Geetanjali Salon" [level=3]
+  - paragraph: An iconic luxury hair and beauty salon at DLF Galleria Market Sector 28. Geetanjali is acclaimed for bespoke hair makeovers, organic clarifying hair spas, and dermatologically approved radiant facials.
+  - generic: Men's Haircut
+  - generic: Women's Haircut
+  - generic: Beard Styling
+  - generic: Starting At
+  - text: ₹350
+  - button "View Salon":
+    - generic: View Salon
+  - img "Hair Masters Luxury Salon"
+  - generic: Prive
+  - generic: "4.4"
+  - generic: (195)
+  - paragraph:
+    - generic: Sector 28, Gurugram
+  - generic: 10:00 AM - 09:00 PM
+  - heading "Hair Masters Luxury Salon" [level=3]
+  - paragraph: An elite luxury grooming sanctuary situated in DLF Galleria Sector 28. Hair Masters delivers world-class haircuts, advanced hair color balayage, organic hair spas, and gentleman’s beard grooming.
+  - generic: Men's Haircut
+  - generic: Women's Haircut
+  - generic: Beard Grooming
+  - generic: Starting At
+  - text: ₹400
+  - button "View Salon":
+    - generic: View Salon
+  - img "Cut & Style Salon"
+  - generic: Bespoke Studio
+  - generic: "4.1"
+  - generic: (140)
+  - paragraph:
+    - generic: Sector 83, Gurugram
+  - generic: 10:00 AM - 08:30 PM
+  - heading "Cut & Style Salon" [level=3]
+  - paragraph: A vibrant, modern unisex salon in Sapphire 83 offering quick and stylish haircutting, revitalizing hair spas, and affordable grooming for residents across New Gurugram.
+  - generic: Men's Haircut
+  - generic: Women's Haircut
+  - generic: Beard Trim
+  - generic: Starting At
+  - text: ₹300
+  - button "View Salon":
+    - generic: View Salon
+- contentinfo:
+  - generic: B
+  - generic: BookMyCut
+  - generic: Curated Luxury Salon & Wellness Marketplace • Tier-1 & Tier-2 India
+  - button "Explore"
+  - button "My Appointments"
+  - button "Partner Portal"
+  - paragraph: Prototype/demo pricing for BookMyCut university project. Not official branch pricing. © 2026 BookMyCut Atelier. All pricing inclusive of 18% GST.

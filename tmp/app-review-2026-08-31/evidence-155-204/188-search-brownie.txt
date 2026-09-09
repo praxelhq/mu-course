@@ -1,0 +1,80 @@
+- banner:
+  - link "restaurant_menu CampusCravings":
+    - /url: /
+    - generic: restaurant_menu
+    - generic: CampusCravings
+  - navigation:
+    - link "Home":
+      - /url: /
+    - link "Cravings":
+      - /url: /cravings
+    - link "Sell":
+      - /url: /sell
+    - link "My Food":
+      - /url: /my-food
+    - link "Me":
+      - /url: /me
+  - link "notifications":
+    - /url: /notifications
+    - generic: notifications
+  - link "Sign in":
+    - /url: /auth
+- generic: ramen_dining
+- generic: icecream
+- generic: bakery_dining
+- heading "Homemade food, sold by students, right on campus." [level=1]
+- paragraph: Reserve a fresh meal in under a minute — or start selling your own cooking today.
+- link "Get started":
+  - /url: /auth
+- link "I already have an account":
+  - /url: /auth?mode=signin
+- main:
+  - generic: search
+  - textbox "search" [active]:
+    - /placeholder: Search biryani, brownies, sellers…
+    - text: brownie
+  - button "All"
+  - button "Healthy"
+  - button "High Protein"
+  - button "Meals"
+  - button "Snacks"
+  - button "Desserts"
+  - button "Drinks"
+  - button "Homemade"
+  - button "Vegetarian"
+  - combobox:
+    - option "Recently posted" [selected]
+    - option "Highest rated"
+    - 'option "Price: low to high"'
+    - 'option "Price: high to low"'
+  - heading "Trending on Campus" [level=2]
+  - generic: Top rated right now
+  - link "🔥 HOT Save to cravings Chocolate Brownie star 4.9 Chocolate Brownie ₹40 8 left • Library West Meera by Meera I want this 😋":
+    - /url: /food/ccd0638d-5e0e-4010-9019-46ff32fd7d6d
+    - generic: 🔥 HOT
+    - button "Save to cravings":
+      - generic: favorite_border
+    - img "Chocolate Brownie"
+    - generic: star
+    - generic: "4.9"
+    - heading "Chocolate Brownie" [level=3]
+    - generic: ₹40
+    - paragraph: 8 left • Library West
+    - img "Meera"
+    - generic: by Meera
+    - generic: I want this 😋
+  - heading "Freshly Posted" [level=2]
+  - link "Chocolate Brownie Chocolate Brownie ₹40 8 available • Library West schedule Posted 23d ago by Meera":
+    - /url: /food/ccd0638d-5e0e-4010-9019-46ff32fd7d6d
+    - img "Chocolate Brownie"
+    - heading "Chocolate Brownie" [level=4]
+    - generic: ₹40
+    - paragraph: 8 available • Library West
+    - generic: schedule
+    - generic: Posted 23d ago by Meera
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3pxymq6ahv966rbbv5nvzkzp3k?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

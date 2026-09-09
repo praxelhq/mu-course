@@ -1,0 +1,89 @@
+- complementary:
+  - link "Pin You've been meaning to go":
+    - /url: /map
+    - generic: Pin
+    - generic: You've been meaning to go
+  - navigation "Primary":
+    - link "Map":
+      - /url: /map
+      - text: Map
+    - link "Nearby":
+      - /url: /nearby
+      - text: Nearby
+    - link "Collections":
+      - /url: /collections
+      - text: Collections
+    - link "Friends":
+      - /url: /friends
+      - text: Friends
+    - link "Plans":
+      - /url: /plans
+      - text: Plans
+    - link "Visited":
+      - /url: /visited
+      - text: Visited
+  - link "P Prisha Your map":
+    - /url: /profile
+    - generic: P
+    - generic: Prisha
+    - generic: Your map
+- main:
+  - img "Chaayos Cyber City"
+  - button "Back to map":
+  - generic: Been there
+  - heading "Chaayos Cyber City" [level=1]
+  - paragraph: Coffee · ₹ · 7 min away · DLF Cyber City
+  - paragraph:
+    - text: Saved from a screenshot · in June
+  - paragraph:
+    - text: Desi chai experiments between meetings.
+  - button "Directions":
+    - text: Directions
+  - button "Share":
+    - text: Share
+  - button "Collect":
+    - text: Collect
+  - button "Visited":
+    - text: Visited
+  - paragraph:
+    - text: Visited 3 weeks ago
+  - paragraph: “Good kulhad chai, always packed at 6pm.”
+  - heading "Your notes" [level=2]:
+    - text: Your notes
+  - textbox "Personal notes":
+    - /placeholder: What do you want to remember? Order this, ask for that table…
+  - button "Save note"
+  - heading "Similar places you've saved" [level=2]
+  - link "Cyber Hub Social Cyber Hub Social 4 min away":
+    - /url: /place/social
+    - img "Cyber Hub Social"
+    - paragraph: Cyber Hub Social
+    - paragraph: 4 min away
+  - link "Soi 7 Pub & Brewery Soi 7 Pub & Brewery 5 min away":
+    - /url: /place/soi7
+    - img "Soi 7 Pub & Brewery"
+    - paragraph: Soi 7 Pub & Brewery
+    - paragraph: 5 min away
+  - link "The Wine Company The Wine Company 5 min away":
+    - /url: /place/winecompany
+    - img "The Wine Company"
+    - paragraph: The Wine Company
+    - paragraph: 5 min away
+  - link "Farzi Café Farzi Café 5 min away":
+    - /url: /place/farzi
+    - img "Farzi Café"
+    - paragraph: Farzi Café
+    - paragraph: 5 min away
+  - link "The Drunken Botanist The Drunken Botanist 6 min away":
+    - /url: /place/botanist
+    - img "The Drunken Botanist"
+    - paragraph: The Drunken Botanist
+    - paragraph: 6 min away
+  - button "Remove from your map":
+    - text: Remove from your map
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_0hbgfhy9zy8jkvmpn3tsp8bgm1?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

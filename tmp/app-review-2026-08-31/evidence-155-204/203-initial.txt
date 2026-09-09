@@ -1,0 +1,158 @@
+- navigation:
+  - generic: payments
+  - heading "RecovrAI" [level=1]
+  - paragraph: Receivables Recovery
+  - link "Add Invoice":
+    - /url: /invoices/new
+    - generic: add
+    - text: Add Invoice
+  - link "Dashboard":
+    - /url: /
+    - generic: dashboard
+    - generic: Dashboard
+  - link "Add Invoice":
+    - /url: /invoices/new
+    - generic: receipt_long
+    - generic: Add Invoice
+  - link "Debtor Details":
+    - /url: /invoices/details
+    - generic: group
+    - generic: Debtor Details
+  - link "Recovery Center":
+    - /url: /recovery
+    - generic: bolt
+    - generic: Recovery Center
+  - link "Escalation":
+    - /url: /escalation
+    - generic: gavel
+    - generic: Escalation
+  - link "Plans & Reports":
+    - /url: /pricing
+    - generic: analytics
+    - generic: Plans & Reports
+  - link "Help Center":
+    - /url: "#"
+    - generic: help
+    - generic: Help Center
+  - link "Sign Out":
+    - /url: /signin
+    - generic: logout
+    - generic: Sign Out
+- main:
+  - generic: search
+  - textbox "Search invoices, clients..."
+  - button:
+    - generic: notifications
+  - button:
+    - generic: help
+  - generic: MK
+  - heading "Dashboard Overview" [level=1]
+  - paragraph: Track and manage your outstanding receivables.
+  - generic: Total Outstanding
+  - generic: account_balance_wallet
+  - paragraph: ₹124,500
+  - generic: trending_up
+  - generic: +5.2% vs last month
+  - generic: Overdue Amount
+  - generic: warning
+  - paragraph: ₹32,150
+  - generic: Requires immediate action
+  - generic: Recently Recovered
+  - generic: task_alt
+  - paragraph: ₹18,200
+  - generic: Last 7 days
+  - generic: DSO (Days Sales Outstanding)
+  - generic: calendar_clock
+  - paragraph: 42days
+  - generic: trending_down
+  - generic: "-2 days vs avg"
+  - heading "Aging of Receivables" [level=2]
+  - link "View Full Report":
+    - /url: /pricing
+  - generic: Current
+  - generic: 1-30 Days
+  - generic: 31-60 Days
+  - generic: 61-90 Days
+  - generic: 90+ Days
+  - heading "Recommended Actions" [level=2]
+  - link "Send 3rd Reminder TechCorp Inc. - ₹12,500 (62 days overdue)":
+    - /url: /recovery
+    - generic: campaign
+    - heading "Send 3rd Reminder" [level=3]
+    - paragraph: TechCorp Inc. - ₹12,500 (62 days overdue)
+  - link "Follow up on Promise Global Logistics - ₹4,200 (due tomorrow)":
+    - /url: /recovery
+    - generic: mail
+    - heading "Follow up on Promise" [level=3]
+    - paragraph: Global Logistics - ₹4,200 (due tomorrow)
+  - link "Review for Escalation Apex Widgets - ₹8,900 (95 days overdue)":
+    - /url: /recovery
+    - generic: gavel
+    - heading "Review for Escalation" [level=3]
+    - paragraph: Apex Widgets - ₹8,900 (95 days overdue)
+  - link "View All Actions":
+    - /url: /recovery
+  - heading "Upcoming & Overdue Payments" [level=2]
+  - button:
+    - generic: filter_list
+  - button:
+    - generic: more_vert
+  - table:
+    - rowgroup:
+      - row "Invoice ID Client Due Date Amount Status Actions":
+        - columnheader "Invoice ID"
+        - columnheader "Client"
+        - columnheader "Due Date"
+        - columnheader "Amount"
+        - columnheader "Status"
+        - columnheader "Actions"
+    - rowgroup:
+      - row "#INV-2023-041 TechCorp Inc. Oct 12, 2023 ₹12,500.00 Overdue (62 Days) Remind":
+        - cell "#INV-2023-041"
+        - cell "TechCorp Inc."
+        - cell "Oct 12, 2023"
+        - cell "₹12,500.00"
+        - cell "Overdue (62 Days)":
+          - generic: Overdue (62 Days)
+        - cell "Remind":
+          - link "Remind":
+            - /url: /invoices/INV-2023-041
+      - row "#INV-2023-089 Apex Widgets Sep 05, 2023 ₹8,900.00 Escalated View Details":
+        - cell "#INV-2023-089"
+        - cell "Apex Widgets"
+        - cell "Sep 05, 2023"
+        - cell "₹8,900.00"
+        - cell "Escalated":
+          - generic: Escalated
+        - cell "View Details":
+          - link "View Details":
+            - /url: /invoices/INV-2023-089
+      - row "#INV-2023-112 Global Logistics Dec 15, 2023 ₹4,200.00 Pending Edit":
+        - cell "#INV-2023-112"
+        - cell "Global Logistics"
+        - cell "Dec 15, 2023"
+        - cell "₹4,200.00"
+        - cell "Pending":
+          - generic: Pending
+        - cell "Edit":
+          - link "Edit":
+            - /url: /invoices/INV-2023-112
+      - row "#INV-2023-115 Smith & Co. Design Dec 22, 2023 ₹1,850.00 Draft Send":
+        - cell "#INV-2023-115"
+        - cell "Smith & Co. Design"
+        - cell "Dec 22, 2023"
+        - cell "₹1,850.00"
+        - cell "Draft":
+          - generic: Draft
+        - cell "Send":
+          - link "Send":
+            - /url: /invoices/INV-2023-115
+  - link "View All Invoices":
+    - /url: /invoices/INV-2023-0891
+    - text: View All Invoices
+    - generic: arrow_forward
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6rvdjrhspw8mdbbh83qeqde5e9?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

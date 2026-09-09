@@ -1,0 +1,58 @@
+- main:
+  - paragraph: Welcome back
+  - heading "QuizVerse" [level=1]
+  - text: 7 day streak
+  - img "Neon question marks representing today's general knowledge challenge"
+  - text: Daily Challenge
+  - heading "General Knowledge" [level=2]
+  - paragraph: Test your mastery across all domains today.
+  - link "Play Now":
+    - /url: /quiz?category=General
+  - heading "Explore Categories" [level=3]
+  - link "75% Movies":
+    - /url: /quiz?category=Movies
+    - generic: 75%
+    - paragraph: Movies
+  - link "43% Sports":
+    - /url: /quiz?category=Sports
+    - generic: 43%
+    - paragraph: Sports
+  - link "88% Geography":
+    - /url: /quiz?category=Geography
+    - generic: 88%
+    - paragraph: Geography
+  - link "20% History":
+    - /url: /quiz?category=History
+    - generic: 20%
+    - paragraph: History
+  - heading "Continue Playing" [level=3]
+  - link "Music · Pop & Classics Level 5 • 6/10 Qs":
+    - /url: /quiz?category=Music
+    - paragraph:
+      - generic: Music ·
+      - text: Pop & Classics
+    - paragraph: Level 5 • 6/10 Qs
+  - link "Science · Space & Elements Level 2 • 3/10 Qs":
+    - /url: /quiz?category=Science
+    - paragraph:
+      - generic: Science ·
+      - text: Space & Elements
+    - paragraph: Level 2 • 3/10 Qs
+- navigation:
+  - link "Home":
+    - /url: /
+    - text: Home
+  - link "Play":
+    - /url: /quiz
+    - text: Play
+  - link "Ranks":
+    - /url: /leaderboard
+    - text: Ranks
+  - link "You":
+    - /url: /results
+    - text: You
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_5nzedzz8qq8a6s34j3t6eb1b8y?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

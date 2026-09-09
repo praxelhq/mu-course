@@ -1,0 +1,68 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_2cq1p22w9f97ft6a3z3j339vmr?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- region "Notifications alt+T"
+- banner:
+  - link "CaseCraft AI":
+    - /url: /
+  - link "Home":
+    - /url: /
+- main:
+  - paragraph: Feedback
+  - heading "Your Case Performance" [level=1]
+  - paragraph: Guesstimates · Beginner
+  - paragraph: Overall Score
+  - paragraph: 5.8/10
+  - paragraph: You provided a concise and mathematically sound estimate that arrives at both unit and euro totals quickly. However, the breakdown is overly compressed and misses key structural drivers such as mandatory age cohorts, car ownership penetration, and price segmentation across seat categories.
+  - heading "Problem Structuring" [level=2]
+  - generic: 5.5/10
+  - paragraph: You captured new births and replacements, but compressed multi-year child development into an arbitrary '1.5 seats' multiplier rather than modeling distinct seat stages or age cohorts.
+  - heading "Assumptions" [level=2]
+  - generic: 5.5/10
+  - paragraph: The assumption of 700,000 annual births is realistic for Germany, but assuming 1.5 lifetime seats per child is low under EU regulation (ages 0-12), and you omitted a car ownership filter.
+  - heading "Quantitative Reasoning" [level=2]
+  - generic: 7/10
+  - paragraph: Calculations were clean, consistent, and easy to follow from 1.05M to 1.2M units and €240M total value.
+  - heading "Business Judgement" [level=2]
+  - generic: 6/10
+  - paragraph: You showed good business instinct by noting that second-hand reuse, regulations, and retailer pricing need validation before investment.
+  - heading "Communication" [level=2]
+  - generic: 5/10
+  - paragraph: The response was written in extreme shorthand rather than presenting a structured, professional narrative walkthrough.
+  - heading "What You Did Well" [level=2]
+  - list:
+    - generic: —
+    - generic: Delivered a complete top-line estimate covering both total volume (1.2 million units) and total market value (€240 million).
+    - generic: —
+    - generic: Used a credible baseline for German annual births (700,000) and performed error-free arithmetic throughout.
+    - generic: —
+    - generic: Proactively highlighted critical market dynamics at the end, specifically calling out 'second-hand reuse' and 'regulation'.
+  - heading "What Could Be Improved" [level=2]
+  - list:
+    - generic: —
+    - generic: "Decompose the seat categories across age stages: in Germany/EU, safety laws mandate seats from birth up to age 12 (typically Group 0+ infant, Group 1/2 toddler, Group 2/3 booster), which makes '1.5 seats per child' conceptually unclear."
+    - generic: —
+    - generic: "Factor in car ownership: not all German families own a car, while multi-car families may buy multiple seats per child; adding a car penetration filter makes the logic robust."
+    - generic: —
+    - generic: "Differentiate ASP across tiers: a flat '200 euro blended selling price' ignores the difference between basic boosters (€50) and premium infant systems (€300-€500), which is vital for a premium Scandinavian brand."
+  - heading "A Stronger Approach" [level=2]
+  - list:
+    - generic: "01"
+    - generic: "Establish the target demographic: Germany has ~84M population, ~750k births/year, and car seat mandates spanning ages 0 to 12."
+    - generic: "02"
+    - generic: "Segment demand by seat stages: split into Stage 1 (Infant, 0-15 months), Stage 2 (Toddler, 1-4 years), and Stage 3 (Booster, 4-12 years), each bought once per child entering that cohort."
+    - generic: "03"
+    - generic: "Apply household and vehicle adoption rates: filter births by German car ownership (~75-80% of families with children) and add a factor for two-car households (~1.2-1.3 seats per car-owning family)."
+    - generic: "04"
+    - generic: "Adjust for cannibalization/second-hand: discount new purchases by ~20-30% for hand-me-downs and pre-owned sales, while adding ~5-10% for replacements due to accidents or wear."
+    - generic: "05"
+    - generic: "Apply tiered average selling prices (ASP): €250-€350 for infant carriers, €200-€300 for toddler seats, and €80-€150 for boosters to calculate total market value."
+    - generic: "06"
+    - generic: "Synthesize and tie back to client strategy: evaluate what portion of this market represents the 'premium' addressable segment for the Scandinavian entrant."
+  - heading "Consultant's Take" [level=2]
+  - paragraph: The German child car seat market represents approximately 1.2 to 1.5 million new units annually, generating an overall market size of roughly €250M to €300M. For our Scandinavian client, the primary focus should be the premium sub-segment (Stage 1 and Stage 2 seats with i-Size / ISOFIX compliance), which commands ASPs above €300 and accounts for roughly 40% of market value. Given the strength of incumbent German brands like Cybex and Britax Römer, our next step should be assessing retail distribution channel margins and consumer willingness to pay for Scandinavian safety design.
+  - button "Try Another Case →"
+- contentinfo:
+  - generic: CaseCraft AI — practice tool for consulting interview preparation.

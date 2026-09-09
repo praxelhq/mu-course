@@ -1,0 +1,176 @@
+- banner:
+  - link "TravelTailor AI":
+    - /url: /
+    - generic: travel_explore
+    - generic: TravelTailor AI
+  - navigation:
+    - link "Home":
+      - /url: /
+    - link "Planner":
+      - /url: /plan
+    - link "My Trips":
+      - /url: /trips
+    - link "Concierge":
+      - /url: /concierge
+  - button "Toggle dark mode":
+    - generic: dark_mode
+  - link "Start Planning":
+    - /url: /plan
+- main:
+  - generic: auto_awesome
+  - generic: AI-powered journey design
+  - heading "Plan the perfect holiday— before you even know where to go." [level=1]:
+    - text: Plan the perfect holiday—
+    - text: before you even know where to go.
+  - paragraph: Discover destinations that match your travellers, budget, interests and travel style. Then receive a personalised day-by-day itinerary created for your group.
+  - link "Start planning":
+    - /url: /plan
+    - generic: Start planning
+    - generic: arrow_forward
+  - link "Explore sample trips":
+    - /url: /trips
+    - generic: explore
+    - generic: Explore sample trips
+  - term: 8 factors
+  - definition: in every match score
+  - term: 0–100
+  - definition: explainable scoring
+  - term: 3 slots
+  - definition: per planned day
+  - img "Coastal town at golden hour with cliffside architecture above azure water"
+  - generic: psychology
+  - heading "AI Concierge" [level=3]
+  - paragraph: Analysing preferences…
+  - generic: Matching interests
+  - generic: 75% complete
+  - generic: Featured
+  - heading "Places our engine keeps recommending" [level=2]
+  - paragraph: Each one scores highly for a different traveller profile — the engine decides which is yours.
+  - link "Amalfi Coast, Italy Italy Amalfi Coast Cliffside villages, lemon groves and one of Europe's great culinary coastlines.":
+    - /url: /plan/known?destination=amalfi-coast
+    - img "Amalfi Coast, Italy"
+    - text: Italy
+    - heading "Amalfi Coast" [level=3]
+    - paragraph: Cliffside villages, lemon groves and one of Europe's great culinary coastlines.
+  - link "Kyoto, Japan Japan Kyoto Thousand-year-old temples, machiya lanes and precise, seasonal cuisine.":
+    - /url: /plan/known?destination=kyoto
+    - img "Kyoto, Japan"
+    - text: Japan
+    - heading "Kyoto" [level=3]
+    - paragraph: Thousand-year-old temples, machiya lanes and precise, seasonal cuisine.
+  - link "Florence, Italy Italy Florence The most walkable Renaissance city in the world, with a serious food scene.":
+    - /url: /plan/known?destination=florence
+    - img "Florence, Italy"
+    - text: Italy
+    - heading "Florence" [level=3]
+    - paragraph: The most walkable Renaissance city in the world, with a serious food scene.
+  - link "Maui, Hawaii, USA Hawaii, USA Maui Volcanic coastline, reef snorkelling and effortless family logistics.":
+    - /url: /plan/known?destination=maui
+    - img "Maui, Hawaii, USA"
+    - text: Hawaii, USA
+    - heading "Maui" [level=3]
+    - paragraph: Volcanic coastline, reef snorkelling and effortless family logistics.
+  - 'link "Lisbon, Portugal Portugal Lisbon Europe''s best value city break: tiles, tram hills, seafood and surf."':
+    - /url: /plan/known?destination=lisbon
+    - img "Lisbon, Portugal"
+    - text: Portugal
+    - heading "Lisbon" [level=3]
+    - paragraph: "Europe's best value city break: tiles, tram hills, seafood and surf."
+  - link "Reykjavík & the South Coast, Iceland Iceland Reykjavík & the South Coast Waterfalls, glaciers and geothermal spas within a short flight.":
+    - /url: /plan/known?destination=reykjavik
+    - img "Reykjavík & the South Coast, Iceland"
+    - text: Iceland
+    - heading "Reykjavík & the South Coast" [level=3]
+    - paragraph: Waterfalls, glaciers and geothermal spas within a short flight.
+  - generic: How it works
+  - heading "Three steps, one very specific plan" [level=2]
+  - generic: person_search
+  - generic: "01"
+  - heading "Tell us about the travellers" [level=3]
+  - paragraph: Ages, group type, pace, accessibility needs and how far you're willing to fly.
+  - generic: auto_awesome
+  - generic: "02"
+  - heading "Get matched destinations" [level=3]
+  - paragraph: An explainable 0–100 match score ranks places against your real constraints.
+  - generic: map
+  - generic: "03"
+  - heading "Receive your itinerary" [level=3]
+  - paragraph: A day-by-day plan with costs, walking distances and transport, fully editable.
+  - generic: Intelligence
+  - heading "An AI concierge, not a search box" [level=2]
+  - paragraph: The planning model reasons about ages, budget, seasonality, accessibility and pace — and shows its work.
+  - generic: psychology
+  - heading "Explainable match scores" [level=3]
+  - paragraph: Every recommendation shows the eight weighted factors behind its score — no black box.
+  - generic: payments
+  - heading "Budget-aware planning" [level=3]
+  - paragraph: Costs are modelled per traveller, per day and per category before you commit.
+  - generic: accessible
+  - heading "Accessibility first" [level=3]
+  - paragraph: Mobility, stroller and pace requirements filter both destinations and activities.
+  - generic: tune
+  - heading "Editable by design" [level=3]
+  - paragraph: Swap activities, regenerate a day, add rest periods or shift a day's cost tier.
+  - generic: Travellers
+  - heading "What people say" [level=2]
+  - figure "Marta & Owen Family of five · Amalfi Coast":
+    - generic: format_quote
+    - blockquote: We had two kids, one grandparent and a fixed budget. It found a place none of us had considered — and it worked perfectly.
+    - paragraph: Marta & Owen
+    - paragraph: Family of five · Amalfi Coast
+  - figure "Priya N. Solo traveller · Kyoto":
+    - generic: format_quote
+    - blockquote: The match score explanation is the part I trust. It told me the drawbacks before I booked.
+    - paragraph: Priya N.
+    - paragraph: Solo traveller · Kyoto
+  - figure "The Okoye Group Friends trip · Lisbon":
+    - generic: format_quote
+    - blockquote: Ten days planned in an afternoon, and the budget dashboard kept us honest the whole trip.
+    - paragraph: The Okoye Group
+    - paragraph: Friends trip · Lisbon
+  - generic: FAQ
+  - heading "Questions, answered" [level=2]
+  - heading "Do I need to know where I want to go?" [level=3]:
+    - button "Do I need to know where I want to go?":
+      - text: Do I need to know where I want to go?
+  - heading "How is the match score calculated?" [level=3]:
+    - button "How is the match score calculated?":
+      - text: How is the match score calculated?
+  - heading "Can I edit the generated itinerary?" [level=3]:
+    - button "Can I edit the generated itinerary?":
+      - text: Can I edit the generated itinerary?
+  - heading "Is pricing real-time?" [level=3]:
+    - button "Is pricing real-time?":
+      - text: Is pricing real-time?
+  - generic: auto_awesome
+  - text: Free to plan
+  - heading "Start with your travellers. We'll handle the destination." [level=2]
+  - link "Start planning":
+    - /url: /plan
+    - text: Start planning
+    - generic: arrow_forward
+- contentinfo:
+  - generic: travel_explore
+  - generic: TravelTailor AI
+  - paragraph: Travel planning that starts with the traveller, not the destination.
+  - heading "Product" [level=4]
+  - link "Planner":
+    - /url: /plan
+  - link "Saved trips":
+    - /url: /trips
+  - link "AI concierge":
+    - /url: /concierge
+  - heading "Company" [level=4]
+  - generic: Travel guides
+  - generic: Partner program
+  - generic: Support centre
+  - heading "Legal" [level=4]
+  - generic: Privacy policy
+  - generic: Terms of service
+  - paragraph: © 2026 TravelTailor AI. Personalised travel, designed by intelligence.
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_4zxp32hwhk8nerwh4551kt6jsj?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

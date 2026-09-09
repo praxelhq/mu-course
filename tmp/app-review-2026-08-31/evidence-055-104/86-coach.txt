@@ -1,0 +1,49 @@
+- banner:
+  - paragraph: Quit Coach
+  - paragraph: Always here, never judging.
+- main:
+  - generic: psychology
+  - heading "Hi Alex, how are you doing?" [level=1]
+  - paragraph: Day 1 smoke-free with 1 cravings beaten. Tell me what's going on — cravings, a slip, or just a rough day.
+  - button "I'm craving right now":
+    - text: I'm craving right now
+    - generic: arrow_forward
+  - button "I slipped and feel awful":
+    - text: I slipped and feel awful
+    - generic: arrow_forward
+  - button "Why do I feel so irritable?":
+    - text: Why do I feel so irritable?
+    - generic: arrow_forward
+  - button "Give me a reason to keep going":
+    - text: Give me a reason to keep going
+    - generic: arrow_forward
+  - textbox "Tell your coach what's going on…"
+  - button "Send message" [disabled]:
+    - generic: send
+- navigation:
+  - link "Home":
+    - /url: /home
+    - generic: home
+    - generic: Home
+  - link "Progress":
+    - /url: /progress
+    - generic: insights
+    - generic: Progress
+  - link "Coach":
+    - /url: /coach
+    - generic: psychology
+    - generic: Coach
+  - link "Insights":
+    - /url: /insights
+    - generic: leaderboard
+    - generic: Insights
+  - link "Profile":
+    - /url: /profile
+    - generic: person
+    - generic: Profile
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_19mhcg6jxz8s9s6ch802n4v9n3?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

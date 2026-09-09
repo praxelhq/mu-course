@@ -1,0 +1,311 @@
+- navigation:
+  - generic: inventory_2
+  - heading "StockFlow" [level=1]
+  - generic: ERP
+  - paragraph: Sports Retail Operations
+  - paragraph: OVERVIEW
+  - list:
+    - button "dashboard Dashboard 6":
+      - generic: dashboard
+      - generic: Dashboard
+      - generic: "6"
+    - button "inventory_2 Products":
+      - generic: inventory_2
+      - generic: Products
+    - button "swap_horiz Inventory Master":
+      - generic: swap_horiz
+      - generic: Inventory Master
+  - paragraph: INTELLIGENCE
+  - list:
+    - button "auto_awesome AI Demand Forecast AI":
+      - generic: auto_awesome
+      - generic: AI Demand Forecast
+      - generic: AI
+    - button "analytics Reports & Analytics":
+      - generic: analytics
+      - generic: Reports & Analytics
+  - paragraph: OPERATIONS
+  - list:
+    - button "qr_code_2 Serial Numbers":
+      - generic: qr_code_2
+      - generic: Serial Numbers
+    - button "category Categories":
+      - generic: category
+      - generic: Categories
+    - button "local_shipping Suppliers":
+      - generic: local_shipping
+      - generic: Suppliers
+  - paragraph: PROCUREMENT & PAYABLES
+  - list:
+    - button "post_add Purchase Orders 2":
+      - generic: post_add
+      - generic: Purchase Orders
+      - generic: "2"
+    - button "receipt_long Supplier Invoices 3":
+      - generic: receipt_long
+      - generic: Supplier Invoices
+      - generic: "3"
+    - button "payments Payment Ledger":
+      - generic: payments
+      - generic: Payment Ledger
+  - paragraph: SYSTEM
+  - list:
+    - button "manage_accounts User Management":
+      - generic: manage_accounts
+      - generic: User Management
+    - button "history Audit Trail Logs":
+      - generic: history
+      - generic: Audit Trail Logs
+  - button "settings Settings":
+    - generic: settings
+    - generic: Settings
+  - button "logout Sign Out":
+    - generic: logout
+    - generic: Sign Out
+- banner:
+  - generic: search
+  - textbox "Search products, SKUs, suppliers, orders..."
+  - generic: ⌘K
+  - generic: ₹ INR
+  - text: "Role:"
+  - strong: Admin
+  - button "notifications":
+    - generic: notifications
+  - button "help_outline":
+    - generic: help_outline
+  - button "Yadeshwar Admin expand_more":
+    - generic: Yadeshwar
+    - generic: Admin
+    - generic: expand_more
+- main:
+  - heading "Executive Dashboard" [level=2]
+  - generic: Live Operations
+  - paragraph: Real-time sports inventory valuation, stockout alerts, and procurement intelligence.
+  - button "download Export CSV":
+    - generic: download
+    - text: Export CSV
+  - button "swap_horiz Stock In / Out":
+    - generic: swap_horiz
+    - text: Stock In / Out
+  - button "add New Product":
+    - generic: add
+    - text: New Product
+  - generic: Inventory Value (Cost)
+  - generic: Cost Basis
+  - heading "₹1,49,951.00" [level=3]
+  - paragraph:
+    - text: "Retail:"
+    - strong: ₹1,87,437.00
+    - generic: +25% Margin
+  - generic: Total Catalog SKUs
+  - generic: 6 Categories
+  - heading "16" [level=3]
+  - generic: 99 total units
+  - paragraph: Cricket, Badminton, Football, Tennis
+  - generic: Low Stock Items
+  - generic: Requires Action
+  - heading "6" [level=3]
+  - button "Review Items →"
+  - paragraph: Items at or below reorder threshold
+  - generic: Out of Stock
+  - generic: Critical
+  - heading "1" [level=3]
+  - generic: 74 units moved
+  - paragraph: Direct replenishment required
+  - text: Procurement & Financial Operations
+  - heading "Supplier Payables & Purchase Pipeline" [level=3]
+  - button "Purchase Orders (2)"
+  - button "Invoices & Payables"
+  - paragraph: Total Accounts Payable
+  - heading "₹29,550.40" [level=4]
+  - paragraph: 3 outstanding invoices
+  - paragraph: Settled This Month
+  - heading "₹15,266.00" [level=4]
+  - paragraph: Razorpay & direct settlements
+  - paragraph: Overdue Invoices
+  - heading "3" [level=4]
+  - paragraph: Past due date
+  - paragraph: Pending PO Approvals
+  - heading "2" [level=4]
+  - paragraph: Awaiting manager signoff
+  - heading "AI Demand Forecast & Smart Replenishment" [level=3]
+  - generic: 30-Day Run Rate
+  - paragraph: Historical sales velocity analysis modeling replenishment lead times and stockout risks.
+  - button "Open Forecast Console arrow_forward":
+    - generic: Open Forecast Console
+    - generic: arrow_forward
+  - text: Products At Risk
+  - generic: "4"
+  - generic: (1 critical)
+  - generic: Stockout projected
+  - text: Forecasted Demand
+  - generic: "36"
+  - generic: units / 30D
+  - generic: Sales velocity model
+  - text: Recommended Orders
+  - generic: "+52"
+  - generic: units
+  - generic: 12 items to reorder
+  - text: Est. Reorder Cost
+  - generic: ₹71,869
+  - generic: Wholesale purchase prices
+  - text: Urgent Purchasing Priorities
+  - generic: REVIEW-DEMO-0831
+  - generic: MEDIUM
+  - paragraph: Review Demo Training Ball
+  - paragraph: Current inventory (2 units) covers immediate demand (1 units), but safety buffer will drop below minimum threshold (10 units). Consider ordering 9 units.
+  - generic: Order +9 units
+  - button "Create PO"
+  - generic: SG-SCB-001
+  - generic: MEDIUM
+  - paragraph: SG Scorer Classic Kashmir Willow Cricket Bat
+  - paragraph: Current inventory (6 units) covers immediate demand (4 units), but safety buffer will drop below minimum threshold (3 units). Consider ordering 1 units.
+  - generic: Order +1 units
+  - button "Create PO"
+  - generic: SG-TCB-002
+  - generic: MEDIUM
+  - paragraph: SG Test Cricket Leather Ball
+  - paragraph: Current inventory (8 units) covers immediate demand (6 units), but safety buffer will drop below minimum threshold (4 units). Consider ordering 2 units.
+  - generic: Order +2 units
+  - button "Create PO"
+  - heading "Stock Movement Trends" [level=3]
+  - paragraph: Inbound replenishment vs Outbound fulfillment units
+  - combobox:
+    - option "Last 7 Days" [selected]
+    - option "Last 30 Days"
+  - list:
+    - img "Inbound legend icon"
+    - text: Inbound
+    - img "Outbound legend icon"
+    - text: Outbound
+  - application:
+    - generic: Mon
+    - generic: Tue
+    - generic: Wed
+    - generic: Thu
+    - generic: Fri
+    - generic: Sat
+    - generic: Sun
+    - generic: "0"
+    - generic: "80"
+    - generic: "160"
+    - generic: "240"
+    - generic: "320"
+  - heading "Low Stock & Replenishment Queue" [level=3]
+  - paragraph: Products requiring procurement action
+  - button "Inventory Master →"
+  - table:
+    - rowgroup:
+      - row "Product & SKU Current Stock Min Level Suggested PO Est. Cost Supplier Action":
+        - columnheader "Product & SKU"
+        - columnheader "Current Stock"
+        - columnheader "Min Level"
+        - columnheader "Suggested PO"
+        - columnheader "Est. Cost"
+        - columnheader "Supplier"
+        - columnheader "Action"
+    - rowgroup:
+      - row "SG Tournament Cricket Ball SG-TCB-006 0 3 +12 ₹17,280.00 Sanspareils Greenlands (SG) Pvt. Ltd. + In PO":
+        - cell "SG Tournament Cricket Ball SG-TCB-006":
+          - generic: SG Tournament Cricket Ball
+          - text: SG-TCB-006
+        - cell "0"
+        - cell "3"
+        - cell "+12":
+          - generic: "+12"
+        - cell "₹17,280.00"
+        - cell "Sanspareils Greenlands (SG) Pvt. Ltd."
+        - cell "+ In PO":
+          - button "+ In"
+          - button "PO"
+      - row "SG Player Edition Batting Gloves SG-PEG-003 2 4 +7 ₹15,610.00 Sanspareils Greenlands (SG) Pvt. Ltd. + In PO":
+        - cell "SG Player Edition Batting Gloves SG-PEG-003":
+          - generic: SG Player Edition Batting Gloves
+          - text: SG-PEG-003
+        - cell "2"
+        - cell "4"
+        - cell "+7":
+          - generic: "+7"
+        - cell "₹15,610.00"
+        - cell "Sanspareils Greenlands (SG) Pvt. Ltd."
+        - cell "+ In PO":
+          - button "+ In"
+          - button "PO"
+      - row "Decathlon Yoga / Fitness Mat DC-YM-013 2 5 +8 ₹10,880.00 Decathlon Sports India Pvt. Ltd. + In PO":
+        - cell "Decathlon Yoga / Fitness Mat DC-YM-013":
+          - generic: Decathlon Yoga / Fitness Mat
+          - text: DC-YM-013
+        - cell "2"
+        - cell "5"
+        - cell "+8":
+          - generic: "+8"
+        - cell "₹10,880.00"
+        - cell "Decathlon Sports India Pvt. Ltd."
+        - cell "+ In PO":
+          - button "+ In"
+          - button "PO"
+      - row "SG Tournament Inner Gloves SG-TIG-015 3 10 +17 ₹4,029.00 Sanspareils Greenlands (SG) Pvt. Ltd. + In PO":
+        - cell "SG Tournament Inner Gloves SG-TIG-015":
+          - generic: SG Tournament Inner Gloves
+          - text: SG-TIG-015
+        - cell "3"
+        - cell "10"
+        - cell "+17":
+          - generic: "+17"
+        - cell "₹4,029.00"
+        - cell "Sanspareils Greenlands (SG) Pvt. Ltd."
+        - cell "+ In PO":
+          - button "+ In"
+          - button "PO"
+      - row "Review Demo Training Ball REVIEW-DEMO-0831 2 10 +18 ₹180.00 Sanspareils Greenlands (SG) Pvt. Ltd. + In PO":
+        - cell "Review Demo Training Ball REVIEW-DEMO-0831":
+          - generic: Review Demo Training Ball
+          - text: REVIEW-DEMO-0831
+        - cell "2"
+        - cell "10"
+        - cell "+18":
+          - generic: "+18"
+        - cell "₹180.00"
+        - cell "Sanspareils Greenlands (SG) Pvt. Ltd."
+        - cell "+ In PO":
+          - button "+ In"
+          - button "PO"
+  - heading "Supplier Reliability" [level=4]
+  - paragraph: On-time fulfillment metrics
+  - generic: 100% On-Time
+  - generic: "Active Vendors:"
+  - strong: 6 Suppliers
+  - generic: "Avg Inbound Lead Time:"
+  - strong: 4.3 days
+  - generic: "Top Spend Vendor:"
+  - strong: Sanspareils Greenlands (SG) Pvt. Ltd.
+  - button "View Vendor Directory →"
+  - heading "Aging Inventory Velocity" [level=4]
+  - paragraph: Capital tied in slow SKUs
+  - generic: 15 Aging SKUs
+  - generic: "Capital Tied Up:"
+  - strong: ₹1,49,951.00
+  - generic: "No Movement (30D+):"
+  - strong: 15 products
+  - generic: "Fast Moving SKUs:"
+  - strong: 0 products
+  - button "Review Slow-Moving SKUs →"
+  - heading "Recent Transactions" [level=3]
+  - button "Full Log"
+  - list:
+    - strong: Review Demo Training Ball
+    - paragraph: Aug 31, 02:04 AM • Yadeshwar
+    - generic: "-1"
+    - strong: SG Super 50 Cricket Ball
+    - paragraph: Aug 04, 02:20 PM • Yadeshwar
+    - generic: "+10"
+    - strong: SG Shield 20 Leather Ball
+    - paragraph: Aug 04, 02:20 PM • Yadeshwar
+    - generic: "+10"
+    - strong: SG Scorer Classic Kashmir Willow Cricket Bat
+    - paragraph: Aug 06, 03:15 PM • Pushpak
+    - generic: "-4"
+    - strong: SG Test Cricket Leather Ball
+    - paragraph: Aug 05, 11:45 AM • Ashwin
+    - generic: "-6"
+- generic: "0"

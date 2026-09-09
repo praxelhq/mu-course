@@ -1,0 +1,34 @@
+- banner:
+  - button "Go back":
+    - generic: arrow_back
+  - generic: Step 6 of 6
+- main:
+  - heading "Choose your path" [level=1]
+  - paragraph: You can always adjust this later.
+  - button "Quit Completely Stop now and start your smoke-free streak today. Immediate health benefits Start tracking money saved":
+    - generic: spa
+    - heading "Quit Completely" [level=2]
+    - paragraph: Stop now and start your smoke-free streak today.
+    - list:
+      - generic: check_circle
+      - text: Immediate health benefits
+      - generic: check_circle
+      - text: Start tracking money saved
+  - button "Gradually Reduce Bring your daily count down step by step. Set daily limits Paced withdrawal":
+    - generic: trending_down
+    - heading "Gradually Reduce" [level=2]
+    - paragraph: Bring your daily count down step by step.
+    - list:
+      - generic: check_circle
+      - text: Set daily limits
+      - generic: check_circle
+      - text: Paced withdrawal
+- button "Start my journey" [disabled]:
+  - text: Start my journey
+  - generic: arrow_forward
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_19mhcg6jxz8s9s6ch802n4v9n3?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

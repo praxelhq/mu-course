@@ -1,0 +1,137 @@
+- complementary:
+  - generic: LeakWatch
+  - generic: Workspace
+  - navigation:
+    - button "Dashboard":
+      - generic: Dashboard
+    - button "Contracts":
+      - generic: Contracts
+    - button "Payables 4":
+      - generic: Payables
+      - generic: "4"
+  - generic: Configure
+  - navigation:
+    - button "Integrations":
+      - generic: Integrations
+    - button "Settings":
+      - generic: Settings
+  - generic: D
+  - generic: Demo
+  - generic: demo@example.com
+  - button "Exit"
+- banner:
+  - generic: All records
+  - heading "Contracts" [level=2]
+  - generic: Demo data
+  - button "Sync invoices"
+  - button "+ New contract"
+- searchbox "Search vendor, category or team…"
+- button "All"
+- button "Renewing soon"
+- button "Projects"
+- button "Cancelling"
+- generic: Vendor
+- generic: Type
+- generic: Next event
+- generic: Value
+- generic: Status
+- generic: Zoho One
+- generic: IT · Software
+- generic: Monthly
+- generic: 3 Sept 2026
+- generic: ₹14,400
+- generic: 3d
+- generic: Freshworks CRM
+- generic: Marketing · Software · via razorpay
+- generic: Annual
+- generic: 6 Sept 2026
+- generic: ₹96,000
+- generic: 6d
+- generic: Cognisys Tech
+- generic: IT · Vendor service
+- generic: Project
+- generic: 9 Sept 2026
+- generic: ₹9,60,000
+- generic: 9d
+- generic: Arka Interiors
+- generic: Operations · Capex
+- generic: Project
+- generic: 12 Sept 2026
+- generic: ₹18,50,000
+- generic: 12d
+- generic: Sharma & Co. CA
+- generic: Finance · Compliance
+- generic: Quarterly
+- generic: 19 Sept 2026
+- generic: ₹45,000
+- generic: 19d
+- generic: AWS Mumbai
+- generic: IT · Software · via razorpay
+- generic: Monthly
+- generic: 24 Sept 2026
+- generic: ₹82,000
+- generic: 24d
+- generic: Nayara Facilities
+- generic: Operations · Facilities
+- generic: Monthly
+- generic: 28 Sept 2026
+- generic: ₹36,000
+- generic: 28d
+- generic: Adobe Creative Cloud
+- generic: Marketing · Software · via razorpay
+- generic: Annual
+- generic: 11 Oct 2026
+- generic: ₹71,400
+- generic: Cancelling
+- generic: BlueDart Courier
+- generic: Operations · Vendor service
+- generic: Quarterly
+- generic: 28 Oct 2026
+- generic: ₹52,000
+- generic: 58d
+- generic: Keka HRMS
+- generic: HR · Software · via razorpay
+- generic: Annual
+- generic: 15 Nov 2026
+- generic: ₹64,800
+- generic: 76d
+- dialog:
+  - heading "New contract" [level=3]
+  - paragraph: Log the agreement once. Milestones and renewals bill from here.
+  - generic: Vendor / counterparty
+  - textbox "Vendor / counterparty" [active]:
+    - /placeholder: Tally Solutions
+  - generic: Contract type
+  - combobox "Contract type":
+    - option "Recurring / subscription" [selected]
+    - option "Project with milestones"
+  - generic: Category
+  - combobox "Category":
+    - option "Software" [selected]
+    - option "Vendor service"
+    - option "Compliance"
+    - option "Facilities"
+    - option "Marketing"
+    - option "Capex"
+  - generic: Charge per cycle (₹)
+  - spinbutton "Charge per cycle (₹)"
+  - generic: Billing cycle
+  - combobox "Billing cycle":
+    - option "Monthly"
+    - option "Quarterly"
+    - option "Annual" [selected]
+  - generic: Next charge date
+  - textbox "Next charge date": 2026-09-30
+  - generic: Owning team
+  - combobox "Owning team":
+    - option "Operations" [selected]
+    - option "Finance"
+    - option "IT"
+    - option "HR"
+    - option "Procurement"
+    - option "Marketing"
+  - button "Cancel"
+  - button "Create contract"
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

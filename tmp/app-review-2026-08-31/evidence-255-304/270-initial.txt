@@ -1,0 +1,64 @@
+- banner:
+  - paragraph: Good evening
+  - heading "How are you, really?" [level=1]
+  - link "Your account":
+    - /url: /account
+    - generic: person
+- generic: Tell me what's on your mind
+- textbox "Tell me what's on your mind":
+  - /placeholder: I've been feeling restless since this morning...
+- button "Start a check-in":
+  - text: Start a check-in
+  - generic: arrow_forward
+- paragraph: Or tap what fits
+- button "Anxious":
+  - generic: 😟
+  - text: Anxious
+- button "Overthinking":
+  - generic: 🤯
+  - text: Overthinking
+- button "Feeling Low":
+  - generic: 😔
+  - text: Feeling Low
+- button "Stressed":
+  - generic: 😰
+  - text: Stressed
+- button "Confused":
+  - generic: 😕
+  - text: Confused
+- button "Tired":
+  - generic: 😴
+  - text: Tired
+- button "Lonely":
+  - generic: 😞
+  - text: Lonely
+- heading "Jump straight in" [level=2]
+- link "Activity library Breathing, journaling and more":
+  - /url: /activities
+  - generic: spa
+  - paragraph: Activity library
+  - paragraph: Breathing, journaling and more
+- link "Your patterns See how feelings shift over time":
+  - /url: /history
+  - generic: insights
+  - paragraph: Your patterns
+  - paragraph: See how feelings shift over time
+- paragraph: Serene Companion offers supportive reflection, not medical advice or crisis care. If you're in danger, please contact local emergency services.
+- navigation:
+  - list:
+    - link "Home":
+      - /url: /
+      - generic: home
+      - text: Home
+    - link "Activities":
+      - /url: /activities
+      - generic: spa
+      - text: Activities
+    - link "History":
+      - /url: /history
+      - generic: insights
+      - text: History
+    - link "You":
+      - /url: /account
+      - generic: person
+      - text: You

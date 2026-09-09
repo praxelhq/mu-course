@@ -1,0 +1,43 @@
+- main:
+  - button "Go back":
+    - generic: arrow_back
+  - generic: C
+  - generic: CraveAI
+  - button "Skip"
+  - generic: Step 1 of 4
+  - generic: Mood Alignment
+  - heading "How are you feeling right now?" [level=1]
+  - paragraph: We'll calibrate your culinary suggestions to match your current vibe.
+  - button "😊 Happy":
+    - generic: 😊
+    - generic: Happy
+  - button "😌 Relaxed":
+    - generic: 😌
+    - generic: Relaxed
+  - button "😔 Sad":
+    - generic: 😔
+    - generic: Sad
+  - button "😫 Stressed":
+    - generic: 😫
+    - generic: Stressed
+  - button "😴 Tired":
+    - generic: 😴
+    - generic: Tired
+  - button "😐 Bored":
+    - generic: 😐
+    - generic: Bored
+  - button "🤩 Excited":
+    - generic: 🤩
+    - generic: Excited
+  - button "😤 Frustrated":
+    - generic: 😤
+    - generic: Frustrated
+  - button "🥳 Social":
+    - generic: 🥳
+    - generic: Social
+  - button "🤔 Need to Focus":
+    - generic: 🤔
+    - generic: Need to Focus
+  - button "Continue arrow_forward":
+    - generic: Continue
+    - generic: arrow_forward

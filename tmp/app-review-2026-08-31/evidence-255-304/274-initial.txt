@@ -1,0 +1,82 @@
+- banner:
+  - link "GarageConnect":
+    - /url: /
+    - generic: GarageConnect
+  - navigation:
+    - link "Home":
+      - /url: /
+    - link "Garages":
+      - /url: /garages
+  - link "Sign in":
+    - /url: /auth
+  - link "Get started":
+    - /url: /auth?mode=signup
+- main:
+  - img "Car raised on a lift inside a modern auto repair workshop"
+  - generic: Two-sided service platform
+  - heading "Book trusted garages. Track every repair in real time." [level=1]
+  - paragraph: GarageConnect brings vehicle owners and workshops onto one job card. Book a slot in minutes, watch the status move from diagnosis to ready, and get a digital invoice.
+  - combobox "Location":
+    - generic: All locations
+  - combobox "Service type":
+    - generic: All services
+  - button "Search":
+    - text: Search
+  - heading "Compare garages" [level=3]
+  - paragraph: Ratings, real service menus and transparent price ranges near you.
+  - heading "Book in minutes" [level=3]
+  - paragraph: Pick a service, add your vehicle details and choose a slot.
+  - heading "Track & pay" [level=3]
+  - paragraph: Follow the job card live and receive an itemised digital invoice.
+  - heading "Featured garages" [level=2]
+  - paragraph: Top rated workshops on the platform.
+  - link "View all":
+    - /url: /garages?city=all&category=all
+  - article:
+    - heading "Precision Motors Service" [level=3]
+    - generic: 4.6 km
+    - generic "4.9 out of 5":
+    - text: 4.9 · 201 reviews
+    - paragraph: 221 Sector 18, Noida
+    - generic: General Service
+    - generic: Repair
+    - generic: Oil Change
+    - paragraph: ₹1,200 – ₹25,000
+    - link "Book Now":
+      - /url: /garages/44444444-4444-4444-4444-444444444444
+  - article:
+    - heading "AutoCare Pro Workshop" [level=3]
+    - generic: 1.2 km
+    - generic "4.8 out of 5":
+    - text: 4.8 · 132 reviews
+    - paragraph: 12 MG Road, Indiranagar, Bengaluru
+    - generic: General Service
+    - generic: Oil Change
+    - generic: Repair
+    - paragraph: ₹600 – ₹12,000
+    - link "Book Now":
+      - /url: /garages/11111111-1111-1111-1111-111111111111
+  - article:
+    - heading "SpeedFix Garage" [level=3]
+    - generic: 2.4 km
+    - generic "4.5 out of 5":
+    - text: 4.5 · 89 reviews
+    - paragraph: 48 Anna Salai, T Nagar, Chennai
+    - generic: General Service
+    - generic: Repair
+    - generic: Tyre
+    - paragraph: ₹450 – ₹9,000
+    - link "Book Now":
+      - /url: /garages/22222222-2222-2222-2222-222222222222
+  - heading "Run a garage?" [level=2]
+  - paragraph: Manage job cards, assign mechanics, update repair status and issue invoices from one dashboard — walk-in customers included.
+  - link "Open garage dashboard":
+    - /url: /auth?mode=signup
+    - text: Open garage dashboard
+- contentinfo: © 2026 GarageConnect — service booking & job management.
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_35qkbh24jx8h18p2yrwygstq9y?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

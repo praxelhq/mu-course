@@ -1,0 +1,16 @@
+- main:
+  - heading "Got a Startup Idea? Let's See If It Survives." [level=1]:
+    - text: Got a Startup Idea?
+    - text: Let's See If It Survives.
+  - paragraph: Paste your one-line pitch. Our AI VC will roast it — and maybe even help you fix it.
+  - textbox "e.g. Uber for dog walking, but with blockchain"
+  - generic: Roast Intensity
+  - button "Gentle 😇"
+  - button "Brutal 😈" [pressed]
+  - button "Roast My Idea 🔥" [disabled]
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1fkw3nxz8y8awvmjs39h4k3h26?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

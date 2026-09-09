@@ -1,0 +1,52 @@
+- banner:
+  - link "PawsHome India":
+    - /url: /
+    - generic: PawsHome India
+  - navigation:
+    - link "Browse Pets":
+      - /url: /pets
+    - link "NGO Directory":
+      - /url: /ngos
+    - link "How It Works" [active]:
+      - /url: /about
+  - link "Sign in":
+    - /url: /auth
+  - link "List an Animal":
+    - /url: /auth?mode=signup
+- main:
+  - heading "404" [level=1]
+  - heading "Page not found" [level=2]
+  - paragraph: The page you're looking for doesn't exist or has been moved.
+  - link "Go home":
+    - /url: /
+- contentinfo:
+  - generic: PawsHome India
+  - paragraph: Connecting verified animal NGOs, shelters and foster families with loving homes across India.
+  - heading "Adopt" [level=3]
+  - list:
+    - link "Dogs for adoption":
+      - /url: /pets?species=dog
+    - link "Cats for adoption":
+      - /url: /pets?species=cat
+    - link "Foster a pet":
+      - /url: /pets?availability=foster
+  - heading "Organisations" [level=3]
+  - list:
+    - link "NGO directory":
+      - /url: /ngos
+    - link "NGO dashboard":
+      - /url: /dashboard
+    - link "List an animal":
+      - /url: /auth?mode=signup
+  - heading "Learn" [level=3]
+  - list:
+    - link "How adoption works":
+      - /url: /about
+    - listitem: Adoption is always free of cost on PawsHome. Beware of anyone asking for payment.
+  - paragraph: © 2026 PawsHome India · Made with care for India's street animals.
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_0g2nxap4588sxrgyd0n49rxz3b?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

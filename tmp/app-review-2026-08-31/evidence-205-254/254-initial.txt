@@ -1,0 +1,115 @@
+- navigation:
+  - generic: LeakWatch
+  - link "Why LeakWatch":
+    - /url: "#problem"
+  - link "How it works":
+    - /url: "#how"
+  - link "Features":
+    - /url: "#features"
+  - link "Integrations":
+    - /url: "#integrations"
+  - button "Sign in"
+  - button "Open the demo"
+- generic: Built for Indian SMB finance teams
+- heading "Money leaves your business by default. LeakWatch makes it ask first." [level=1]:
+  - text: Money leaves your business
+  - emphasis: by default
+  - text: . LeakWatch makes it ask first.
+- paragraph: Contracts, milestones, vendor invoices and silent auto-renewals in one ledger. Every rupee waits for a decision before it moves — and nothing renews just because nobody noticed.
+- button "Open the live demo →"
+- button "See how it works"
+- paragraph: No signup required · Demo credentials prefilled · Loaded with sample data
+- generic: Academic demo build. Gateway connections and payment rails are simulated — no real money moves and no live vendor APIs are called.
+- generic: leakwatch.app/dashboard
+- generic: Awaiting approval
+- generic: ₹12,20,400
+- generic: Renewing in 30 days
+- generic: ₹2,73,400
+- generic: AWS Mumbai — Aug usage
+- generic: razorpay · due in 4 days
+- generic: ₹82,000
+- generic: Freshworks CRM — renewal
+- generic: razorpay · due in 6 days
+- generic: ₹96,000
+- generic: Milestone 2 — Structure erected
+- generic: Arka Interiors · due in 12 days
+- generic: ₹7,40,000
+- generic: Adobe Creative Cloud
+- generic: stopped before billing
+- generic: −₹71,400
+- generic: ₹3.96L
+- generic: Stopped before billing, per year
+- generic: "18"
+- generic: Contracts under watch
+- generic: 90 days
+- generic: Forward visibility on renewals
+- generic: "0"
+- generic: Payments released without approval
+- generic: The problem
+- heading "Small businesses don't overspend. They under-notice." [level=2]
+- paragraph: The average SMB runs dozens of vendor contracts and software subscriptions across teams that never talk to each other. Nobody decided to keep paying for the CRM nobody uses — the renewal date simply arrived.
+- heading "Renewals bill in silence" [level=3]
+- paragraph: Auto-renew is the default on almost every SaaS and service contract. The charge lands, the card clears, and the review that should have happened never does.
+- heading "Milestones slip past finance" [level=3]
+- paragraph: Project payments get approved over WhatsApp and email, then reconciled weeks later. Nobody can say what percentage of a contract has actually been released.
+- heading "The ledger lives in five places" [level=3]
+- paragraph: Gateway dashboards, a spreadsheet, the accountant's inbox, and someone's memory. There is no single view of what the business is committed to next month.
+- generic: How it works
+- heading "One path from signed contract to cleared payment." [level=2]
+- paragraph: LeakWatch models the way an SMB actually pays vendors — the accountant, procurement lead or business head sits at the single approval gate.
+- generic: STEP 01
+- heading "Log the contract" [level=4]
+- paragraph: Record the agreement once — recurring subscription or a project with milestones.
+- generic: STEP 02
+- heading "Schedule falls out" [level=4]
+- paragraph: Milestones and renewal charges generate themselves as dated payables.
+- generic: STEP 03
+- heading "You approve or hold" [level=4]
+- paragraph: Every line waits in your queue. Approve, hold, or stop the contract entirely.
+- generic: STEP 04
+- heading "Released and logged" [level=4]
+- paragraph: Approved payments clear with your name on them, leaving a clean audit trail.
+- generic: The renewal runway
+- heading "See the next 90 days of charges before they happen." [level=2]
+- paragraph: Not a table you have to read — a timeline where every contract sits at the day it bills, colour-coded by how close it is. You spot the ₹96,000 renewal six days out because it is physically in front of you.
+- list:
+  - generic: ✓
+  - generic: Exposure at a glance. A live figure for everything charging in the next 30 days.
+  - generic: ✓
+  - generic: Decision, not deletion. Mark a contract cancelling and watch it leave your exposure and enter your savings.
+  - generic: ✓
+  - generic: Notes that survive. Record why you kept or dropped something, so next year's review starts informed.
+- heading "Approval pipeline" [level=3]
+- paragraph: Every rupee sits in exactly one state — synced, awaiting, approved, or paid — and you can see the totals for each.
+- generic: Synced
+- generic: Awaiting
+- generic: Approved
+- generic: Paid
+- heading "Milestone tracking" [level=3]
+- paragraph: Project contracts show a completion meter — how much of the total value has actually been released, and what is still gated behind your approval.
+- generic: Integrations
+- heading "Your gateways feed the queue. They never bypass it." [level=2]
+- paragraph: Connected payment gateways push vendor invoices straight into LeakWatch. Nothing auto-pays — a synced invoice is still an invoice waiting for your decision.
+- generic: R
+- generic: Razorpay
+- generic: Payouts & invoice sync
+- generic: C
+- generic: Cashfree
+- generic: Payout rails
+- generic: T
+- generic: Tally Prime
+- generic: Push to your books
+- generic: G
+- generic: GSTN Portal
+- generic: Match against GSTR-2B
+- paragraph: “We weren't overspending. We were renewing things nobody had looked at in two years — and finding out only when the bank statement arrived.”
+- generic: The problem LeakWatch was built to solve
+- heading "Open the demo and approve something." [level=2]
+- paragraph: Fully loaded with sample contracts, milestones and pending invoices. Credentials are already filled in — you just click.
+- button "Open the live demo →"
+- button "Read more first"
+- generic: LeakWatch
+- paragraph: Academic project build · Simulated payment integrations · Sample data only
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

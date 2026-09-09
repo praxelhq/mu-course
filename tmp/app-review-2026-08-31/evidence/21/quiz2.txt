@@ -1,0 +1,37 @@
+- banner:
+  - button "Go back":
+  - button "S SipMatch The Alchemist's Palette":
+    - generic: S
+    - generic: SipMatch
+    - generic: The Alchemist's Palette
+  - button "User profile":
+    - img "User avatar"
+- main:
+  - button "Previous":
+    - text: Previous
+  - generic: Question 2 of 10
+  - generic: 20%
+  - heading "Sunlit Rooftop or Dimly Lit Lounge?" [level=1]
+  - paragraph: Select your preferred atmosphere for sipping.
+  - button "Option A Sunlit Rooftop Sparkling, breezy, energetic afternoon vibes." [active]:
+    - generic: Option A
+    - heading "Sunlit Rooftop" [level=2]
+    - paragraph: Sparkling, breezy, energetic afternoon vibes.
+  - button "Option B Dimly Lit Lounge Intimate, sultry, jazz beats & velvet leather.":
+    - generic: Option B
+    - heading "Dimly Lit Lounge" [level=2]
+    - paragraph: Intimate, sultry, jazz beats & velvet leather.
+  - generic: VS
+- navigation:
+  - button "Home":
+    - generic: Home
+  - button "Discover":
+    - generic: Discover
+  - button "2 Saved":
+    - generic: "2"
+    - generic: Saved
+  - button "Profile":
+    - generic: Profile
+- link "Made in Bolt":
+  - /url: https://bolt.new
+  - generic: Made in Bolt

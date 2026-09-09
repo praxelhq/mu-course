@@ -1,0 +1,23 @@
+{
+  "sourceRow": 232,
+  "name": "Ashray",
+  "url": "https://decision-flow-glass.lovable.app",
+  "appName": "Decision Log",
+  "visual": 7.5,
+  "functionality": 8,
+  "overall": 8,
+  "status": "Reviewed",
+  "tested": [
+    "Second pass resolved native date entry using visible Chrome keyboard actions, with synthetic revisit date 2026-09-01.",
+    "Created QA Demo: Try a 20-minute study block with reasoning and confidence 3; total increased from 7 to 8 and new record persisted after reload.",
+    "Recorded Mixed outcome and a synthetic reflection on only the new test record; metrics became 8 logged, 7 resolved, 2 correct, 2 mixed, 3 wrong, 1 pending and 43% hit rate.",
+    "Reload preserved the outcome and reflection; search for QA Demo isolated the new record.",
+    "Inspected single-page metrics, category/calibration controls and expanded resolved record visually."
+  ],
+  "limitations": [
+    "Earlier native date block was browser tooling; no deduction for that limitation.",
+    "Existing seeded records were not modified.",
+    "No edit, reopen or undo control was visible on the resolved test record; reminders and long-term calibration were not verified."
+  ],
+  "feedback": "The decision-to-reflection loop works end to end, and both the saved outcome and calibration totals survive reload. Add a clear correction flow for entered decisions or outcomes and explain how small sample sizes affect the calibration percentages."
+}

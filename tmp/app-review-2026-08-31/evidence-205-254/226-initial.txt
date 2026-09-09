@@ -1,0 +1,29 @@
+- banner:
+  - generic: P
+  - generic: PlannMyVenue
+- heading "Plan Your Event. Know Your Budget." [level=1]
+- paragraph: Enter your budget and guest count to see what your event could look like.
+- text: Total Budget (INR)
+- spinbutton "Total Budget (INR)": "2000000"
+- paragraph: Minimum ₹10,00,000
+- text: Number of Attendees
+- spinbutton "Number of Attendees": "200"
+- paragraph: Expected guest count
+- generic: Event Type (optional)
+- combobox "Event Type (optional)":
+  - option "Wedding" [selected]
+  - option "Birthday"
+  - option "Corporate"
+  - option "College Event"
+  - option "Private Party"
+- text: Location
+- text: Delhi NCR
+- generic: All venues shown are in Delhi NCR
+- button "Build My Event Plan"
+- contentinfo:
+  - generic: PlannMyVenue · Illustrative estimates for Delhi NCR events
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_07mf6dz9n28xjar4q4q28kaqz1?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

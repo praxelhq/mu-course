@@ -1,0 +1,147 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6rvdjrhspw8mdbbh83qeqde5e9?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- navigation:
+  - generic: payments
+  - heading "RecovrAI" [level=1]
+  - paragraph: Receivables Recovery
+  - link "Add Invoice":
+    - /url: /invoices/new
+    - generic: add
+    - text: Add Invoice
+  - link "Dashboard":
+    - /url: /
+    - generic: dashboard
+    - generic: Dashboard
+  - link "Add Invoice":
+    - /url: /invoices/new
+    - generic: receipt_long
+    - generic: Add Invoice
+  - link "Debtor Details":
+    - /url: /invoices/details
+    - generic: group
+    - generic: Debtor Details
+  - link "Recovery Center":
+    - /url: /recovery
+    - generic: bolt
+    - generic: Recovery Center
+  - link "Escalation":
+    - /url: /escalation
+    - generic: gavel
+    - generic: Escalation
+  - link "Plans & Reports":
+    - /url: /pricing
+    - generic: analytics
+    - generic: Plans & Reports
+  - link "Help Center":
+    - /url: "#"
+    - generic: help
+    - generic: Help Center
+  - link "Sign Out":
+    - /url: /signin
+    - generic: logout
+    - generic: Sign Out
+- main:
+  - button:
+    - generic: arrow_back
+  - heading "Add New Invoice" [level=1]
+  - paragraph: "Step 2: Debtor & Payment Information"
+  - generic: check
+  - generic: Upload
+  - generic: "2"
+  - generic: Details
+  - generic: "3"
+  - generic: Strategy
+  - generic: info
+  - heading "AI Pre-fill Active" [level=2]
+  - paragraph: We've extracted information from your uploaded invoice. Please review and complete any missing details to generate the best recovery strategy.
+  - heading "Debtor Information" [level=2]:
+    - generic: person
+    - text: Debtor Information
+  - generic: Company / Debtor Name *
+  - generic: domain
+  - textbox: Acme Corp Logistics
+  - generic: Contact Person *
+  - generic: badge
+  - textbox: Sarah Jenkins
+  - generic: Email Address *
+  - generic: mail
+  - textbox
+  - generic: Phone Number
+  - generic: call
+  - textbox
+  - generic: Reference Number (Optional)
+  - generic: tag
+  - textbox: PO-99281A
+  - heading "Past Payment Behavior" [level=2]:
+    - generic: history
+    - text: Past Payment Behavior
+  - paragraph: This helps the AI tailor the communication tone and frequency.
+  - radio "Good (Reliable) Usually pays on time. Occasional slight delays."
+  - generic: thumb_up
+  - heading "Good (Reliable)" [level=3]
+  - paragraph: Usually pays on time. Occasional slight delays.
+  - radio "Average (Inconsistent) Frequently 15-30 days late, but eventually pays." [checked]
+  - generic: pending_actions
+  - heading "Average (Inconsistent)" [level=3]
+  - paragraph: Frequently 15-30 days late, but eventually pays.
+  - radio "Poor (High Risk) Consistently ignores terms, requires heavy chasing."
+  - generic: warning
+  - heading "Poor (High Risk)" [level=3]
+  - paragraph: Consistently ignores terms, requires heavy chasing.
+  - heading "Invoice Details" [level=2]:
+    - generic: request_quote
+    - text: Invoice Details
+  - paragraph: Invoice No.
+  - paragraph: INV-2023-089
+  - paragraph: Issue Date
+  - paragraph: Oct 12, 2023
+  - paragraph: Due Date
+  - paragraph: Nov 11, 2023
+  - paragraph: Total Amount
+  - paragraph: ₹4,250.00
+  - generic: visibility
+  - heading "Invoice Preview" [level=2]
+  - button:
+    - generic: zoom_out
+  - button:
+    - generic: zoom_in
+  - button:
+    - generic: open_in_new
+  - generic: INVOICE
+  - generic: "Bill To:"
+  - generic: Acme Corp Logistics
+  - generic: Sarah Jenkins
+  - generic: s.jenkins@acmelogistics.com
+  - generic: +1 (555) 019-8372
+  - generic: "Details:"
+  - generic: "Inv #:"
+  - generic: INV-2023-089
+  - generic: "Date:"
+  - generic: Oct 12, 2023
+  - generic: "Due:"
+  - generic: Nov 11, 2023
+  - generic: Description
+  - generic: Qty
+  - generic: Amount
+  - generic: Software Licensing Q3
+  - generic: "1"
+  - generic: ₹2,500.00
+  - generic: Implementation Services
+  - generic: 10h
+  - generic: ₹1,500.00
+  - generic: Maintenance Fee
+  - generic: "1"
+  - generic: ₹250.00
+  - generic: "Subtotal:"
+  - generic: ₹4,250.00
+  - generic: "Tax (0%):"
+  - generic: ₹0.00
+  - generic: "Total:"
+  - generic: ₹4,250.00
+  - paragraph: Review the extracted details carefully. The AI will use this to generate a personalized recovery timeline.
+  - button "Generate Recovery Strategy":
+    - generic: psychology
+    - text: Generate Recovery Strategy

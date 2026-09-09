@@ -1,0 +1,22 @@
+- region "Notifications (F8)":
+  - list
+- region "Notifications alt+T"
+- heading "Reserve Your S400" [level=1]
+- paragraph: Fill in your details below
+- text: Name
+- textbox "Name":
+  - /placeholder: Your full name
+- text: Contact Number
+- textbox "Contact Number":
+  - /placeholder: Your phone number
+- text: City
+- textbox "City":
+  - /placeholder: Your city
+- text: State
+- textbox "State":
+  - /placeholder: Your state
+- text: Interested In
+- combobox:
+  - generic: Select an option
+- combobox
+- button "Submit Reservation"

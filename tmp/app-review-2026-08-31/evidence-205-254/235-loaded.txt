@@ -1,0 +1,34 @@
+- banner:
+  - img "ConnectDex"
+  - generic: ConnectDex
+  - link "Sign in":
+    - /url: /auth
+    - button "Sign in"
+  - link "Get started":
+    - /url: /auth?mode=signup
+    - button "Get started"
+- main:
+  - generic: Built for Masters' Union
+  - heading "ConnectDex — MBA networking and name learning for Masters' Union classmates" [level=1]:
+    - generic: ConnectDex — MBA networking and name learning for Masters' Union classmates
+    - generic: Catch every classmate. Remember every name.
+  - paragraph: ConnectDex turns MBA networking into a game. Scan a QR to add a validated connection, then train your memory with a Pokédex-style name game.
+  - link "Start your ConnectDex":
+    - /url: /auth?mode=signup
+    - button "Start your ConnectDex"
+  - link "I already have an account":
+    - /url: /auth
+    - button "I already have an account"
+  - generic: One scan to connect
+  - generic: Show your QR. They scan it. You confirm. Done.
+  - generic: Your living ConnectDex
+  - generic: Every validated relationship becomes a card in your dex.
+  - generic: Name-Game training
+  - generic: 10 options, one right answer. Retention that sticks.
+- contentinfo: ConnectDex · A better first-meet for MBA cohorts
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_30c0d8waqz9229gehd6kwvpeb6?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

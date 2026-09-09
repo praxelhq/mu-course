@@ -1,0 +1,99 @@
+- banner:
+  - link "PawsHome India":
+    - /url: /
+    - generic: PawsHome India
+  - navigation:
+    - link "Browse Pets":
+      - /url: /pets
+    - link "NGO Directory":
+      - /url: /ngos
+    - link "How It Works":
+      - /url: /about
+  - link "Sign in":
+    - /url: /auth
+  - link "List an Animal":
+    - /url: /auth?mode=signup
+- main:
+  - text: India's adoption network
+  - heading "Every indie deserves a doorstep of their own." [level=1]
+  - paragraph: PawsHome connects verified animal NGOs, shelters and foster families with people across India who are ready to open their homes to a dog or a cat.
+  - text: Find pets near you
+  - textbox "Find pets near you":
+    - /placeholder: Enter your city, e.g. Pune
+  - button "Search":
+    - text: Search
+  - button "Mumbai"
+  - button "New Delhi"
+  - button "Bengaluru"
+  - button "Hyderabad"
+  - button "Chennai"
+  - button "Pune"
+  - img "An Indian family sitting together with their adopted indie dog and cat"
+  - paragraph:
+    - text: Verified NGOs only
+  - paragraph: Adoption is always free of cost.
+  - link "Adopt a Pet Browse dogs and cats waiting for a forever family near you. Get started →":
+    - /url: /pets
+    - heading "Adopt a Pet" [level=3]
+    - paragraph: Browse dogs and cats waiting for a forever family near you.
+    - generic: Get started →
+  - link "Foster a Pet Give a rescued animal a temporary home while they find one. Get started →":
+    - /url: /pets?availability=foster
+    - heading "Foster a Pet" [level=3]
+    - paragraph: Give a rescued animal a temporary home while they find one.
+    - generic: Get started →
+  - link "List an Animal Are you an NGO or shelter? Create a profile and list your rescues. Get started →":
+    - /url: /auth?mode=signup
+    - heading "List an Animal" [level=3]
+    - paragraph: Are you an NGO or shelter? Create a profile and list your rescues.
+    - generic: Get started →
+  - heading "Meet pets looking for homes" [level=2]
+  - paragraph: Freshly listed by verified shelters across India
+  - link "View all pets →":
+    - /url: /pets
+  - heading "Organisations you can trust" [level=2]
+  - paragraph: Shelters and rescue groups working on the ground
+  - link "All NGOs →":
+    - /url: /ngos
+  - heading "Adoption on PawsHome is simple, free and always through a verified organisation." [level=2]
+  - paragraph: 1. Discover
+  - paragraph: Search by city, species, age and whether you want to adopt or foster.
+  - paragraph: 2. Enquire
+  - paragraph: Send a short enquiry. The NGO reviews it and gets in touch with you.
+  - paragraph: 3. Welcome home
+  - paragraph: Meet the animal, complete a home check, and bring them home.
+  - link "Start browsing":
+    - /url: /pets
+  - link "How it works":
+    - /url: /about
+- contentinfo:
+  - generic: PawsHome India
+  - paragraph: Connecting verified animal NGOs, shelters and foster families with loving homes across India.
+  - heading "Adopt" [level=3]
+  - list:
+    - link "Dogs for adoption":
+      - /url: /pets?species=dog
+    - link "Cats for adoption":
+      - /url: /pets?species=cat
+    - link "Foster a pet":
+      - /url: /pets?availability=foster
+  - heading "Organisations" [level=3]
+  - list:
+    - link "NGO directory":
+      - /url: /ngos
+    - link "NGO dashboard":
+      - /url: /dashboard
+    - link "List an animal":
+      - /url: /auth?mode=signup
+  - heading "Learn" [level=3]
+  - list:
+    - link "How adoption works":
+      - /url: /about
+    - listitem: Adoption is always free of cost on PawsHome. Beware of anyone asking for payment.
+  - paragraph: © 2026 PawsHome India · Made with care for India's street animals.
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_0g2nxap4588sxrgyd0n49rxz3b?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

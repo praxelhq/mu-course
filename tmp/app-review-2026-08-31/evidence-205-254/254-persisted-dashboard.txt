@@ -1,0 +1,107 @@
+- complementary:
+  - generic: LeakWatch
+  - generic: Workspace
+  - navigation:
+    - button "Dashboard":
+      - generic: Dashboard
+    - button "Contracts":
+      - generic: Contracts
+    - button "Payables 6":
+      - generic: Payables
+      - generic: "6"
+  - generic: Configure
+  - navigation:
+    - button "Integrations":
+      - generic: Integrations
+    - button "Settings":
+      - generic: Settings
+  - generic: D
+  - generic: Demo
+  - generic: demo@example.com
+  - button "Exit"
+- banner:
+  - generic: Overview
+  - heading "Dashboard" [level=2]
+  - generic: Demo data
+  - button "Sync invoices"
+  - button "+ New contract"
+- generic: "Try the demo: approve a payable → create a contract → sync an invoice."
+- generic: Awaiting your approval
+- generic: ₹12,20,500
+- generic: 6 invoices in the queue
+- generic: Approved, not yet paid
+- generic: ₹81,000
+- generic: Cleared for release
+- generic: Auto-renewing in 30 days
+- generic: ₹2,73,500
+- generic: 6 contracts charge unless stopped
+- generic: Committed per year
+- generic: ₹49,48,800
+- generic: Across 10 active contracts
+- heading "Cash outflow" [level=3]
+- paragraph: Illustrative historical and projected monthly outflow.
+- generic: Actual
+- generic: Projected
+- heading "Spend mix" [level=3]
+- paragraph: Annualised commitment by category.
+- generic: Capex
+- generic: ₹18.5L
+- generic: 37%
+- generic: Software
+- generic: ₹13.2L
+- generic: 27%
+- generic: Vendor service
+- generic: ₹11.7L
+- generic: 24%
+- generic: Facilities
+- generic: ₹4.3L
+- generic: 9%
+- generic: Compliance
+- generic: ₹1.8L
+- generic: 4%
+- heading "Payables by month" [level=3]
+- paragraph: Scheduled outflow, split by approval state.
+- generic: Awaiting
+- generic: Approved
+- heading "Approval pipeline" [level=3]
+- paragraph: Where every rupee currently sits.
+- generic: "4"
+- generic: Synced from gateway · ₹2,06,800
+- generic: "6"
+- generic: Awaiting approval · ₹12,20,500
+- generic: "2"
+- generic: Approved to pay · ₹81,000
+- generic: "3"
+- generic: Paid · ₹7,64,900
+- heading "Renewal runway" [level=3]
+- paragraph: Every recurring contract placed by the day it charges. Next 90 days.
+- generic: ≤7d
+- generic: ≤30d
+- generic: Later
+- heading "Needs your approval" [level=3]
+- paragraph: Nothing here is paid until you release it.
+- button "Open payables"
+- generic: AWS Mumbai — Aug usage invoice
+- generic: AWS Mumbai · due 4 Sept 2026 · synced from razorpay
+- generic: ₹82,000
+- generic: 4d
+- generic: Freshworks CRM — annual renewal
+- generic: Freshworks CRM · due 6 Sept 2026 · synced from razorpay
+- generic: ₹96,000
+- generic: 6d
+- generic: Phase 2 — Data cleansing
+- generic: Cognisys Tech · due 9 Sept 2026
+- generic: ₹2,88,000
+- generic: 9d
+- generic: Milestone 2 — Structure erected
+- generic: Arka Interiors · due 12 Sept 2026
+- generic: ₹7,40,000
+- generic: 12d
+- generic: Review Demo Subscription — next monthly charge
+- generic: Review Demo Subscription · due 30 Sept 2026
+- generic: ₹100
+- generic: 30d
+- generic: Signed in as demo@example.com
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

@@ -1,0 +1,105 @@
+- banner:
+  - link "Claude home":
+    - /url: /
+    - generic: 
+  - button "GharOS":
+    - generic: GharOS
+    - generic: 
+  - generic: Content is user-generated and unverified.
+  - button "Share, shared with anyone who has the link":
+    - generic: Share
+  - status
+  - alert
+  - link "Sign in":
+    - /url: /login?returnTo=%2Fcode%2Fartifact%2F66f06408-2363-41b3-b2bc-43b42c82d12b%3Fopen_in_browser%3D1%26via%3Duser_open%26org%3Da0f81c5b-82b4-40de-b1ce-8b89c2e4ccd9
+    - generic: Sign in
+  - alert
+  - status
+- main:
+  - iframe [active] [id="frame-content"]:
+    - banner:
+      - heading "Me" [level=1]
+      - generic: Kohinoor Mukherjee
+      - button "Edit"
+    - main:
+      - generic: KM
+      - generic: B-1204, Ireo Victory Valley
+      - generic: Sector 67, Gurugram
+      - generic: +91 98104 22671
+      - generic: "3"
+      - generic: Helpers
+      - generic: 67%
+      - generic: Paid on time
+      - generic: "3"
+      - generic: Months paid
+      - generic: Visible to helpers
+      - generic: 🏠
+      - generic: Locality
+      - generic: Sector 67, Gurugram · flat number hidden until you contract
+      - generic: ⭐
+      - generic: Your payment record
+      - generic: 67% on time across 3 payments
+      - generic: Show my home to nearby helpers
+      - generic: Turn off to stop appearing in search
+      - switch "Show my home to nearby helpers" [checked]
+      - generic: How GharOS behaves
+      - generic: Deduct pay for unmarked absence
+      - generic: Off keeps the record but never changes salary
+      - switch "Deduct pay for unmarked absence" [checked]
+      - generic: Require a QR scan to mark present
+      - generic: Off lets you mark attendance by hand
+      - switch "Require a QR scan to mark present" [checked]
+      - generic: Remind me before salary day
+      - switch "Remind me before salary day" [checked]
+      - generic: Auto-pay on the 1st
+      - generic: You still approve each month
+      - switch "Auto-pay on the 1st"
+      - generic: Notifications
+      - generic: Check-in and no-show alerts
+      - switch "Check-in and no-show alerts" [checked]
+      - generic: Leave and extra-session requests
+      - switch "Leave and extra-session requests" [checked]
+      - generic: Try the other side
+      - button "SD See the app as Sunita Her jobs, her calendar, her earnings ›":
+        - generic: SD
+        - generic: See the app as Sunita
+        - generic: Her jobs, her calendar, her earnings
+        - generic: ›
+      - button "LB See the app as Lakshmi Her jobs, her calendar, her earnings ›":
+        - generic: LB
+        - generic: See the app as Lakshmi
+        - generic: Her jobs, her calendar, her earnings
+        - generic: ›
+      - button "RY See the app as Rajesh Her jobs, her calendar, her earnings ›":
+        - generic: RY
+        - generic: See the app as Rajesh
+        - generic: Her jobs, her calendar, her earnings
+        - generic: ›
+      - generic: Your data
+      - generic: 🔒
+      - generic: Stored on this device only
+      - generic: Nothing is uploaded. Clearing your browser data erases it.
+      - button "📋 Copy my record Take a text copy off this device ›":
+        - generic: 📋
+        - generic: Copy my record
+        - generic: Take a text copy off this device
+        - generic: ›
+      - button "🗑️ Erase everything Start from an empty app ›":
+        - generic: 🗑️
+        - generic: Erase everything
+        - generic: Start from an empty app
+        - generic: ›
+      - paragraph: GharOS · a student project. Not affiliated with any employer or agency.
+    - navigation:
+      - button "Home":
+        - generic: Home
+      - button "People 1":
+        - generic: People
+        - generic: "1"
+      - button "Salary":
+        - generic: Salary
+      - button "Me":
+        - generic: Me
+- status
+- status
+- status

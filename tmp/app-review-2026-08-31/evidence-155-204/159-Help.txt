@@ -1,0 +1,39 @@
+- region "Notifications alt+T"
+- main:
+  - paragraph: MON, 25 AUG 2026
+  - heading "Good evening, Archit" [level=1]
+  - text: Pitampura, Delhi · GPS locked
+  - text: Bed availability is demo data — verify with the hospital before travelling.
+  - button "I NEED HELP Show emergency services near you":
+    - generic: I NEED HELP
+    - generic: Show emergency services near you
+  - button "Chest pain":
+    - generic: Chest pain
+  - button "Accident":
+    - generic: Accident
+  - button "Breathing":
+    - generic: Breathing
+  - button "Bleeding":
+    - generic: Bleeding
+  - paragraph:
+    - text: Nearby hospitals
+    - generic: · 6 shown
+  - button "Nearest":
+    - text: Nearest
+  - button "Fastest ETA":
+    - text: Fastest ETA
+  - button "Beds available":
+    - text: Beds available
+- navigation:
+  - button "Help" [active]:
+    - generic: Help
+  - button "Network":
+    - generic: Network
+  - button "Me":
+    - generic: Me
+  - button "SOS":
+    - generic: SOS
+- link "Build with Enter":
+  - /url: https://enter.converge.ai
+  - generic: Build with
+  - img "Enter"

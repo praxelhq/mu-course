@@ -1,0 +1,70 @@
+- banner:
+  - link "Claude home":
+    - /url: /
+    - generic: 
+  - button "GharOS":
+    - generic: GharOS
+    - generic: 
+  - generic: Content is user-generated and unverified.
+  - button "Share, shared with anyone who has the link":
+    - generic: Share
+  - status
+  - alert
+  - link "Sign in":
+    - /url: /login?returnTo=%2Fcode%2Fartifact%2F66f06408-2363-41b3-b2bc-43b42c82d12b%3Fopen_in_browser%3D1%26via%3Duser_open%26org%3Da0f81c5b-82b4-40de-b1ce-8b89c2e4ccd9
+    - generic: Sign in
+  - alert
+  - status
+- main:
+  - iframe [active] [id="frame-content"]:
+    - main:
+      - generic: Mon, 31 Aug
+      - generic: B-1204, Ireo Victory Valley
+      - button "Profile": KM
+      - generic: "3"
+      - generic: People
+      - generic: ₹25,839
+      - generic: Due this month
+      - generic: 1 request waiting
+      - text: Sunita Devi — leave on 31 Aug
+      - button "Review"
+      - generic: Today
+      - button "Full schedule ›"
+      - button "SD Sunita Devi Cooking · Dusting & mopping · Washing clothes · Escorting children Not yet ›":
+        - generic: SD
+        - generic: Sunita Devi
+        - generic: Cooking · Dusting & mopping · Washing clothes · Escorting children
+        - generic: Not yet
+        - generic: ›
+      - button "LB Lakshmi Bai Cooking Not yet ›":
+        - generic: LB
+        - generic: Lakshmi Bai
+        - generic: Cooking
+        - generic: Not yet
+        - generic: ›
+      - button "RY Rajesh Yadav Driving Not yet ›":
+        - generic: RY
+        - generic: Rajesh Yadav
+        - generic: Driving
+        - generic: Not yet
+        - generic: ›
+      - button "Show check-in QR"
+      - generic: Money
+      - button "Salary for August 2026 3 of 3 unpaid · due 1 Sep ₹25,839":
+        - generic: Salary for August 2026
+        - generic: 3 of 3 unpaid · due 1 Sep
+        - generic: ₹25,839
+    - navigation:
+      - button "Home":
+        - generic: Home
+      - button "People 1":
+        - generic: People
+        - generic: "1"
+      - button "Salary":
+        - generic: Salary
+      - button "Me":
+        - generic: Me
+    - generic: Sample household loaded
+- status
+- status
+- status

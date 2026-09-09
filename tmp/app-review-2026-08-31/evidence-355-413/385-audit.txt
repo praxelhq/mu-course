@@ -1,0 +1,122 @@
+- complementary:
+  - generic: K
+  - paragraph: Kaelor DealOS
+  - paragraph: Capital Advisory
+  - paragraph: From inbound opportunity to transaction closure.
+  - navigation:
+    - link "Executive Dashboard":
+      - /url: /
+      - generic: Executive Dashboard
+    - link "AI Unified Inbox 6":
+      - /url: /inbox
+      - generic: AI Unified Inbox
+      - generic: "6"
+    - link "Leads":
+      - /url: /leads
+      - generic: Leads
+    - link "Deal Pipeline":
+      - /url: /deals
+      - generic: Deal Pipeline
+    - link "Tasks":
+      - /url: /tasks
+      - generic: Tasks
+    - link "Calendar & Meetings":
+      - /url: /calendar
+      - generic: Calendar & Meetings
+    - link "Revenue":
+      - /url: /revenue
+      - generic: Revenue
+    - link "AI Deal Copilot":
+      - /url: /copilot
+      - generic: AI Deal Copilot
+    - link "Audit & Access" [active]:
+      - /url: /admin
+      - generic: Audit & Access
+  - generic: "Integrations: mock mode"
+- banner:
+  - textbox "Search deals, leads, companies…"
+  - button "Notifications":
+  - button "AK Aditya Kaelor Founder/Admin":
+    - generic: AK
+    - generic: Aditya Kaelor
+    - generic: Founder/Admin
+- main:
+  - heading "Audit & Access" [level=1]
+  - paragraph: Signed in as Aditya Kaelor — role preview only in this build.
+  - button "Export data":
+    - text: Export data
+  - heading "Roles & permissions" [level=2]
+  - list:
+    - paragraph: Founder/Admin
+    - generic: 1 users
+    - paragraph: Full access to all leads, deals, revenue, team data, settings and analytics
+    - paragraph: Investment Banking Partner
+    - generic: 2 users
+    - paragraph: Assigned deals, relevant team information and fee economics
+    - paragraph: Execution Lead
+    - generic: 2 users
+    - paragraph: Assigned deals, tasks, meetings and documents
+    - paragraph: Associate
+    - generic: 1 users
+    - paragraph: Assigned leads and deals; can update tasks, notes, meetings and progress
+    - paragraph: Analyst
+    - generic: 1 users
+    - paragraph: Assigned leads and deals; can update tasks, notes and models
+    - paragraph: Business Development
+    - generic: 1 users
+    - paragraph: Leads and assigned opportunities; limited financial visibility
+    - paragraph: Viewer
+    - generic: 0 users
+    - paragraph: Read-only access
+  - heading "Integration status" [level=2]
+  - list:
+    - generic: Google Calendar
+    - generic: Connector ready
+    - paragraph: Connector scaffolded — OAuth not authorised
+    - generic: Gmail
+    - generic: Connector ready
+    - paragraph: Connector scaffolded — OAuth not authorised
+    - generic: WhatsApp Business API
+    - generic: Mock
+    - paragraph: Mock channel — messages simulated
+    - generic: Instagram Messaging API
+    - generic: Mock
+    - paragraph: Mock channel — messages simulated
+    - generic: Call logging system
+    - generic: Mock
+    - paragraph: Mock channel — call logs simulated
+  - heading "Team directory" [level=2]
+  - list:
+    - paragraph: Aditya Kaelor
+    - paragraph: aditya@kaelor.in
+    - generic: Founder/Admin
+    - paragraph: Rhea Menon
+    - paragraph: rhea@kaelor.in
+    - generic: Investment Banking Partner
+    - paragraph: Vikram Shetty
+    - paragraph: vikram@kaelor.in
+    - generic: Investment Banking Partner
+    - paragraph: Ananya Rao
+    - paragraph: ananya@kaelor.in
+    - generic: Execution Lead
+    - paragraph: Karthik Iyer
+    - paragraph: karthik@kaelor.in
+    - generic: Execution Lead
+    - paragraph: Neha Bansal
+    - paragraph: neha@kaelor.in
+    - generic: Associate
+    - paragraph: Rohan Pillai
+    - paragraph: rohan@kaelor.in
+    - generic: Analyst
+    - paragraph: Sana Qureshi
+    - paragraph: sana@kaelor.in
+    - generic: Business Development
+  - heading "Audit trail (0)" [level=2]
+  - paragraph: No changes recorded in this session yet. Every edit to a lead, deal or task is logged with user, timestamp, previous value and new value.
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_2rys2382jg8jbt5zk4hh9sx3ms?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: "8"

@@ -1,0 +1,97 @@
+- banner:
+  - heading "Hi Demo 👋" [level=1]
+  - paragraph: "Goal: Stay healthy · Budget ₹150/day"
+  - link "Notifications":
+    - /url: /notifications
+- main:
+  - paragraph: "1030"
+  - paragraph: kcal left
+  - paragraph: 1170 of 2200
+  - generic: Protein
+  - generic: 39/95g
+  - generic: Carbs
+  - generic: 180/260g
+  - generic: Fats
+  - generic: 27/65g
+  - generic: Fiber
+  - generic: 19/30g
+  - paragraph: Nutrition score today
+  - paragraph: A protein-rich dinner would help
+  - generic: "56"
+  - generic: Fair
+  - link "Scan meal":
+    - /url: /scan
+    - generic: Scan meal
+  - link "What to eat":
+    - /url: /what-to-eat
+    - generic: What to eat
+  - link "Order food":
+    - /url: /order
+    - generic: Order food
+  - link "Health report":
+    - /url: /report
+    - generic: Health report
+  - paragraph: Water
+  - paragraph: 6 of 8 glasses
+  - button "Remove a glass":
+  - button "Add a glass":
+  - generic: Hydration
+  - text: "6"
+  - generic: /8
+  - progressbar
+  - heading "Today's meals" [level=2]
+  - link "See all":
+    - /url: /log
+  - generic: 🍛
+  - paragraph: Poha with peanuts + chai
+  - paragraph: Breakfast · 08:20 · P 9g · C 52g · F 10g
+  - paragraph: "340"
+  - paragraph: kcal
+  - generic: 🍽️
+  - paragraph: Hostel mess thali (dal, rice, roti, sabzi)
+  - paragraph: Lunch · 13:10 · P 22g · C 94g · F 14g
+  - paragraph: "620"
+  - paragraph: kcal
+  - generic: 🍌
+  - paragraph: Banana + roasted chana
+  - paragraph: Snack · 17:35 · P 8g · C 34g · F 3g
+  - paragraph: "210"
+  - paragraph: kcal
+  - heading "For you today" [level=2]
+  - link "More":
+    - /url: /recommendations
+  - link "🥛 Protein gap You're 38 g short on protein today Add 200 g curd with your dinner and a boiled-egg or soya-chunk side. That's ~28 g protein for under ₹60.":
+    - /url: /recommendations
+    - generic: 🥛
+    - text: Protein gap
+    - paragraph: You're 38 g short on protein today
+    - paragraph: Add 200 g curd with your dinner and a boiled-egg or soya-chunk side. That's ~28 g protein for under ₹60.
+  - link "💸 Budget smart Cheapest protein in your mess this week Rajma, chana and sprouts are on the Wed/Fri menu — take a double serving instead of extra rice.":
+    - /url: /recommendations
+    - generic: 💸
+    - text: Budget smart
+    - paragraph: Cheapest protein in your mess this week
+    - paragraph: Rajma, chana and sprouts are on the Wed/Fri menu — take a double serving instead of extra rice.
+- navigation:
+  - list:
+    - link "Home":
+      - /url: /home
+      - generic: Home
+    - link "Log":
+      - /url: /log
+      - generic: Log
+    - link "Scan":
+      - /url: /scan
+      - generic: Scan
+    - link "Coach":
+      - /url: /recommendations
+      - generic: Coach
+    - link "Profile":
+      - /url: /profile
+      - generic: Profile
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_25aah1gfmf84ysf426ybmhv3p7?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

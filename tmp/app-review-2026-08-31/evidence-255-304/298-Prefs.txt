@@ -1,0 +1,88 @@
+- banner:
+  - heading "Preferences" [level=1]
+  - paragraph: Recommendations adapt instantly
+  - generic: Demo data
+- main:
+  - heading "Decision goal" [level=2]
+  - button "Save Money Lowest fare, okay to wait":
+    - generic: Save Money
+    - generic: Lowest fare, okay to wait
+  - button "Reach Fastest Minimum door-to-door time":
+    - generic: Reach Fastest
+    - generic: Minimum door-to-door time
+  - button "Balanced Best fare-to-time trade-off":
+    - generic: Balanced
+    - generic: Best fare-to-time trade-off
+  - button "Comfort Covered, premium-feel rides" [pressed]:
+    - generic: Comfort
+    - generic: Covered, premium-feel rides
+  - button "Eco Friendly Lowest-emission reliable option":
+    - generic: Eco Friendly
+    - generic: Lowest-emission reliable option
+  - heading "Max comfortable fare" [level=2]:
+    - text: Max comfortable fare
+  - generic: ₹300
+  - slider "Maximum comfortable fare in rupees": "300"
+  - generic: ₹100
+  - generic: ₹800
+  - heading "Mobility modes you'll take" [level=2]
+  - button "Cab" [pressed]:
+    - generic: Cab
+  - button "Auto" [pressed]:
+    - generic: Auto
+  - button "Bike" [pressed]:
+    - generic: Bike
+  - button "Metro" [pressed]:
+    - generic: Metro
+  - heading "What matters more?" [level=2]
+  - paragraph: Higher time sensitivity = we recommend booking now over waiting for drops.
+  - slider "Time versus money sensitivity": "45"
+  - generic: Save money
+  - generic: Save time
+  - heading "Willing to wait for a fare drop" [level=2]
+  - generic: 20 min
+  - slider "Maximum minutes willing to wait": "20"
+  - generic: Never wait
+  - generic: 45 min
+  - heading "Max acceptable travel time" [level=2]
+  - generic: No limit
+  - slider "Maximum acceptable travel time in minutes": "0"
+  - generic: No limit
+  - generic: 90 min
+  - heading "How much should weather matter?" [level=2]
+  - paragraph: Higher = rain strongly pushes the pick toward covered rides.
+  - slider "Weather sensitivity": "50"
+  - generic: Ignore weather
+  - generic: Weather decides
+  - heading "Preferred provider" [level=2]
+  - button "Any" [pressed]
+  - button "Uber"
+  - button "Ola"
+  - button "Rapido"
+  - heading "Commute preferences" [level=2]
+  - switch "Avoid surge pricing Never recommend a ride with active surge" [checked]:
+    - generic: Avoid surge pricing
+    - generic: Never recommend a ride with active surge
+  - switch "Prefer metro when close Boost DMRC + last-mile combos in rankings":
+    - generic: Prefer metro when close
+    - generic: Boost DMRC + last-mile combos in rankings
+  - button "Reset to defaults":
+    - text: Reset to defaults
+- navigation:
+  - link "Home":
+    - /url: /
+    - text: Home
+  - link "Best Ride":
+    - /url: /recommendation
+    - text: Best Ride
+  - link "Alerts":
+    - /url: /alerts
+    - text: Alerts
+  - link "Prefs" [active]:
+    - /url: /preferences
+    - text: Prefs
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_60a5x7h3en9v7th2e2nvb4z01r?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

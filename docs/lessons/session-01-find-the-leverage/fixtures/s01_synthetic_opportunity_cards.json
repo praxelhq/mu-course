@@ -1,0 +1,18 @@
+{
+  "_metadata": {
+    "asset_id": "S01-FIXTURES-v1.0",
+    "synthetic": true,
+    "provenance": "Course-authored fictional records; no company systems or personal data",
+    "purpose": "Demo, hidden constraint and transfer fixtures",
+    "license": "Course use"
+  },
+  "demo_normal": {"case_id":"DEMO-SCO-001","exception":"weather_delay","handle_minutes":18,"rule_id":"SYN-SOP-4","confidence":0.82,"action":"recommend_review","approval":"planner"},
+  "demo_boundary": {"case_id":"DEMO-SCO-002","exception":"conflicting_route_status","handle_minutes":27,"rule_id":null,"confidence":0.54,"action":"safe_stop","approval":"planner"},
+  "constraints": [
+    {"id":"S01-HID-ACCESS-01","class":"access","reveal":"The internal dataset and employee interview you planned are unavailable."},
+    {"id":"S01-HID-AUTH-01","class":"authority","reveal":"The proposed output would directly trigger a high-impact action without approval."},
+    {"id":"S01-HID-TEST-01","class":"testability","reveal":"The target user cannot be recruited and the outcome cannot be observed during the course."},
+    {"id":"S01-HID-METRIC-01","class":"value","reveal":"Your metric rewards output volume even when the decision quality worsens."}
+  ],
+  "transfer": {"id":"S01-XFER-01","industry":"fictional regional hospital procurement","brief":"Build an AI procurement brain that reads all supplier data, automatically selects vendors and saves money.","facts":{"public_data":"supplier catalogues only","decision_owner":"procurement committee","guardrail":"clinical-critical availability","private_access":false}}
+}

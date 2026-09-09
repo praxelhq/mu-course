@@ -1,0 +1,95 @@
+- alert
+- complementary:
+  - paragraph: MailClean AI
+  - paragraph: High Mountain Property
+  - button "NA nancy (Owner) nancy@highmountainproperty.com":
+    - generic: NA
+    - paragraph: nancy (Owner)
+    - paragraph: nancy@highmountainproperty.com
+  - navigation:
+    - link "Dashboard":
+      - /url: /dashboard
+      - text: Dashboard
+    - link "Analytics":
+      - /url: /dashboard/analytics
+      - text: Analytics
+    - link "Categories":
+      - /url: /dashboard/categories
+      - text: Categories
+    - link "Email Explorer":
+      - /url: /dashboard/explorer
+      - text: Email Explorer
+    - link "Cleanup Center":
+      - /url: /dashboard/cleanup
+      - text: Cleanup Center
+    - link "Rules & Automation":
+      - /url: /dashboard/rules
+      - text: Rules & Automation
+    - link "Activity Log":
+      - /url: /dashboard/activity
+      - text: Activity Log
+    - link "Reports":
+      - /url: /dashboard/reports
+      - text: Reports
+    - link "Accounts":
+      - /url: /dashboard/accounts
+      - text: Accounts
+    - link "Settings":
+      - /url: /dashboard/settings
+      - text: Settings
+  - generic: na
+  - paragraph: nancy
+  - paragraph: nancy@highmountainproperty.com
+- banner:
+  - textbox "Search emails, senders, rules…"
+  - button "Notifications":
+    - generic: Notifications
+- main:
+  - heading "Good morning, nancy" [level=1]
+  - paragraph: Here's the health of High Mountain Property's inbox — nancy (Owner).
+  - link "Clean up inbox":
+    - /url: /dashboard/cleanup
+    - text: Clean up inbox
+  - paragraph: 38,210
+  - paragraph: Total Emails
+  - paragraph: 6,421
+  - paragraph: Unread
+  - paragraph: 14,459
+  - paragraph: Cleanup Candidates
+  - paragraph: 9.5 GB
+  - paragraph: Storage Used
+  - heading "Email Distribution" [level=2]
+  - link "View categories":
+    - /url: /dashboard/categories
+    - text: View categories
+  - list:
+    - generic: Business
+    - generic: 7,039
+    - generic: Personal
+    - generic: 2,767
+    - generic: Promotions
+    - generic: 10,860
+    - generic: Newsletters
+    - generic: 5,822
+    - generic: Notifications
+    - generic: 4,746
+    - generic: Social
+    - generic: 2,232
+    - generic: Spam
+    - generic: 1,617
+    - generic: Other
+    - generic: 3,128
+  - heading "Email Health Score" [level=2]
+  - generic: "82"
+  - generic: / 100
+  - paragraph: Your inbox is moderately cluttered.
+  - heading "Email Volume" [level=2]
+  - application:
+    - generic: Feb
+    - generic: Mar
+    - generic: Apr
+    - generic: May
+    - generic: Jun
+    - generic: Jul
+    - generic: Aug
+- generic: Jan

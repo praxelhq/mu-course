@@ -1,0 +1,106 @@
+- alert
+- complementary:
+  - paragraph: MailClean AI
+  - paragraph: High Mountain Property
+  - button "NA nancy (Owner) nancy@highmountainproperty.com":
+    - generic: NA
+    - paragraph: nancy (Owner)
+    - paragraph: nancy@highmountainproperty.com
+  - navigation:
+    - link "Dashboard":
+      - /url: /dashboard
+      - text: Dashboard
+    - link "Analytics":
+      - /url: /dashboard/analytics
+      - text: Analytics
+    - link "Categories":
+      - /url: /dashboard/categories
+      - text: Categories
+    - link "Email Explorer":
+      - /url: /dashboard/explorer
+      - text: Email Explorer
+    - link "Cleanup Center":
+      - /url: /dashboard/cleanup
+      - text: Cleanup Center
+    - link "Rules & Automation":
+      - /url: /dashboard/rules
+      - text: Rules & Automation
+    - link "Activity Log":
+      - /url: /dashboard/activity
+      - text: Activity Log
+    - link "Reports":
+      - /url: /dashboard/reports
+      - text: Reports
+    - link "Accounts":
+      - /url: /dashboard/accounts
+      - text: Accounts
+    - link "Settings":
+      - /url: /dashboard/settings
+      - text: Settings
+  - generic: na
+  - paragraph: nancy
+  - paragraph: nancy@highmountainproperty.com
+- banner:
+  - textbox "Search emails, senders, rules…"
+  - button "Notifications":
+    - generic: Notifications
+- main:
+  - heading "Rules & Automation" [level=1]
+  - paragraph: Automate the boring parts. Client mail is always protected.
+  - button "Create Rule" [active]:
+    - text: Create Rule
+  - heading "Rule Builder" [level=2]
+  - button "Close builder":
+  - text: WHEN
+  - paragraph: Email received
+  - text: WHERE
+  - paragraph: Sender contains "linkedin.com"
+  - text: AND
+  - paragraph: Email is older than 30 days
+  - text: THEN
+  - paragraph: Move to Trash
+  - button "Save Rule"
+  - button "Test Rule":
+    - text: Test Rule
+  - heading "Automation Rules" [level=2]
+  - heading "Promotional cleanup" [level=3]
+  - generic: Move to Trash
+  - paragraph: Promotions older than 90 days
+  - paragraph: Executed 42 times
+  - button "Toggle Promotional cleanup"
+  - heading "Newsletter archive" [level=3]
+  - generic: Archive
+  - paragraph: Newsletters older than 60 days
+  - paragraph: Executed 18 times
+  - button "Toggle Newsletter archive"
+  - heading "Protect clients" [level=3]
+  - generic: Never delete
+  - paragraph: Emails from known client contacts
+  - paragraph: Executed 0 times
+  - button "Toggle Protect clients"
+  - heading "LinkedIn notifications" [level=3]
+  - generic: Archive
+  - paragraph: From linkedin.com older than 30 days
+  - paragraph: Executed 7 times
+  - button "Toggle LinkedIn notifications"
+  - heading "AI Suggested Automations" [level=2]:
+    - text: AI Suggested Automations
+  - paragraph: You receive approximately 450 LinkedIn notification emails every month.
+  - paragraph: Automatically archive LinkedIn notifications older than 30 days.
+  - button "Accept":
+    - text: Accept
+  - button "Ignore":
+    - text: Ignore
+  - paragraph: 99acres and MagicBricks send 300+ listing alerts per month with under 4% open rate.
+  - paragraph: Move portal listing alerts older than 14 days to Trash.
+  - button "Accept":
+    - text: Accept
+  - button "Ignore":
+    - text: Ignore
+  - paragraph: Bank statements and contracts are never opened after 12 months but may be needed for records.
+  - paragraph: Archive financial documents older than 12 months instead of deleting.
+  - button "Accept":
+    - text: Accept
+  - button "Ignore":
+    - text: Ignore
+- generic: "24.2"

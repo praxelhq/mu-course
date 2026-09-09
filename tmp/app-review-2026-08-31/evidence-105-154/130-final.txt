@@ -1,0 +1,26 @@
+- main:
+  - heading "Reaction Royale" [level=1]
+  - paragraph: How fast are your reflexes?
+  - button "Reaction target" [active]:
+    - generic: 67ms
+    - generic: Lightning Fast ⚡
+  - generic: Easy
+  - paragraph: "Best (Easy): 67ms"
+  - paragraph: New personal best!
+  - button "Play Again"
+  - text: Best
+  - generic: Easy
+  - generic: 67ms
+  - text: Last 5 attempts
+  - list:
+    - generic: 67ms
+    - generic "Easy"
+    - generic: Easy
+    - generic: 10316ms
+    - generic "Medium"
+    - generic: Medium
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_10rantmngp8ezvzw4x7m5vkeg8?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

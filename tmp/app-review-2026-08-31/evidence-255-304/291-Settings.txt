@@ -1,0 +1,77 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3r10cqfckt86ab3mkpab585xgk?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- complementary:
+  - link "Q QuoteFlow":
+    - /url: /
+    - generic: Q
+    - generic: QuoteFlow
+  - navigation:
+    - link "Dashboard":
+      - /url: /
+      - text: Dashboard
+    - link "Create Quotation":
+      - /url: /create-quotation
+      - text: Create Quotation
+    - link "Quotations":
+      - /url: /quotations
+      - text: Quotations
+    - link "Customers":
+      - /url: /customers
+      - text: Customers
+    - link "Products":
+      - /url: /products
+      - text: Products
+  - link "Settings":
+    - /url: /settings
+    - text: Settings
+  - generic: PS
+  - generic: Priya Sharma
+  - generic: Studio Lead
+  - link "Sign out":
+    - /url: /login
+- main:
+  - heading "Settings" [level=2]
+  - button "Save Changes"
+  - heading "Workspace Settings" [level=1]
+  - paragraph: Details here appear on every quotation you send.
+  - heading "Company Profile" [level=2]
+  - generic: Company Name
+  - textbox "Company Name": Studio Aurelia Interiors
+  - generic: Billing Email
+  - textbox "Billing Email"
+  - generic: Phone
+  - textbox "Phone"
+  - generic: GSTIN
+  - textbox "GSTIN": 27AABCS1429P1ZV
+  - generic: Address
+  - textbox "Address": 312 Raheja Chambers, Nariman Point, Mumbai, Maharashtra 400021
+  - heading "Quotation Defaults" [level=2]
+  - generic: Currency
+  - combobox "Currency":
+    - option "INR (₹)" [selected]
+    - option "USD ($)"
+    - option "EUR (€)"
+    - option "GBP (£)"
+  - generic: Default GST Rate (%)
+  - combobox "Default GST Rate (%)":
+    - option "0% (exempt / services)"
+    - option "5%"
+    - option "12%"
+    - option "18%" [selected]
+    - option "28%"
+  - generic: Validity (days)
+  - spinbutton "Validity (days)": "30"
+  - generic: Default Terms
+  - textbox "Default Terms": 50% advance on acceptance, balance on delivery. GST extra as applicable. Lead time 6–8 weeks from approval of final drawings.
+  - heading "AI Assistance" [level=2]
+  - paragraph: Controls how “Generate with AI” behaves on the Create Quotation page.
+  - paragraph: Auto-suggest line items
+  - paragraph: Draft catalogue line items from the requirements brief.
+  - switch "Auto-suggest line items" [checked]
+  - paragraph: Match catalogue pricing
+  - paragraph: Always use saved product prices and GST rates instead of estimates.
+  - switch "Match catalogue pricing" [checked]
+  - paragraph: AI will draft line items using saved catalogue prices and GST rates.

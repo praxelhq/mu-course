@@ -1,0 +1,27 @@
+- main:
+  - link "F Fidgit Fidget brain bursts":
+    - /url: /
+    - generic: F
+    - heading "Fidgit" [level=1]
+    - paragraph: Fidget brain bursts
+  - navigation:
+    - link "Play":
+      - /url: /
+    - link "Leaders" [active]:
+      - /url: /leaderboard
+    - link "Profile":
+      - /url: /profile
+  - heading "Leaderboard" [level=2]
+  - paragraph: Top scores on this device.
+  - button "All"
+  - button "5m"
+  - button "10m"
+  - paragraph: No scores yet.
+  - link "Play a session →":
+    - /url: /
+  - generic: Hard cap. No pause. Walk away when it ends.
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_0b8f4be12p9mra9tcsrafrqqy5?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

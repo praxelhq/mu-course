@@ -1,0 +1,12 @@
+- link "Skip to main content":
+  - /url: "#main-content"
+- main:
+  - iframe
+  - button "Browse" [pressed]:
+    - generic: Browse
+  - button "Comment":
+    - generic: Comment
+- complementary:
+  - button "Collapse comments":
+  - heading "Comments" [level=1]
+- region

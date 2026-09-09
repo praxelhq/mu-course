@@ -1,0 +1,70 @@
+- navigation:
+  - link "FindTune":
+    - /url: /
+  - link "Home":
+    - /url: /
+  - link "Search":
+    - /url: /search
+  - link "History":
+    - /url: /history
+  - link "Integrations":
+    - /url: /integrations
+  - link "Settings":
+    - /url: /settings
+  - button "Notifications":
+    - generic: notifications
+  - button "Account":
+    - generic: account_circle
+- main:
+  - complementary:
+    - navigation:
+      - link "person Profile":
+        - /url: "#profile"
+        - generic: person
+        - generic: Profile
+      - link "mic_external_on Ambient Listening":
+        - /url: "#ambient"
+        - generic: mic_external_on
+        - generic: Ambient Listening
+      - link "library_music Streaming Services":
+        - /url: "#streaming"
+        - generic: library_music
+        - generic: Streaming Services
+      - link "notifications_active Notifications":
+        - /url: "#notifications"
+        - generic: notifications_active
+        - generic: Notifications
+  - heading "Profile Settings" [level=2]
+  - img "Profile avatar"
+  - button "Change avatar":
+    - generic: edit
+  - generic: Display Name
+  - textbox "Display Name": AudiophileX
+  - generic: Email Address
+  - textbox "Email Address"
+  - button "Save Changes"
+  - heading "Ambient Listening" [level=2]
+  - switch "Toggle ambient listening" [checked]
+  - paragraph: Continuously listen for music in the background without draining your battery significantly.
+  - generic: Microphone Sensitivity
+  - generic: High
+  - slider "Microphone Sensitivity": "75"
+  - generic: Battery Saver
+  - generic: Highest Accuracy
+  - heading "Streaming Services" [level=2]
+  - paragraph: Matches open in Spotify by default. Manage every connected platform on the Integrations page.
+  - heading "Notifications" [level=2]
+  - paragraph: "Gentle nudges only: one quiet card per match, dismissible with a swipe."
+- contentinfo:
+  - generic: © 2024 FindTune. Midnight Discovery.
+  - link "Privacy Policy":
+    - /url: "#"
+  - link "Terms of Service":
+    - /url: "#"
+  - link "Help Center":
+    - /url: "#"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3epfnctk5e8rtbn995rzct9avj?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

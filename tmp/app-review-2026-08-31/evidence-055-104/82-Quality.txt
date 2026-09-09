@@ -1,0 +1,1234 @@
+- complementary:
+  - link "FactoryFlow AI Shreeji Precision Works":
+    - /url: /
+    - paragraph: FactoryFlow AI
+    - paragraph: Shreeji Precision Works
+  - navigation:
+    - paragraph: Shop floor
+    - link "Dashboard":
+      - /url: /
+      - text: Dashboard
+    - link "Production":
+      - /url: /production
+      - text: Production
+    - link "Customer Schedule":
+      - /url: /schedule
+      - text: Customer Schedule
+    - link "Machines":
+      - /url: /machines
+      - text: Machines
+    - link "Downtime":
+      - /url: /downtime
+      - text: Downtime
+    - link "Maintenance":
+      - /url: /maintenance
+      - text: Maintenance
+    - link "Quality" [active]:
+      - /url: /quality
+      - text: Quality
+    - link "Job Work":
+      - /url: /job-work
+      - text: Job Work
+    - link "Inventory":
+      - /url: /inventory
+      - text: Inventory
+    - paragraph: Money
+    - link "Sales & Receivables":
+      - /url: /sales
+      - text: Sales & Receivables
+    - link "Purchase & Payables":
+      - /url: /purchase
+      - text: Purchase & Payables
+    - link "Cash View":
+      - /url: /cash
+      - text: Cash View
+    - link "Compliance":
+      - /url: /compliance
+      - text: Compliance
+    - paragraph: Run the business
+    - link "Tasks":
+      - /url: /tasks
+      - text: Tasks
+    - link "Analytics":
+      - /url: /analytics
+      - text: Analytics
+    - link "Reports":
+      - /url: /reports
+      - text: Reports
+    - link "AI Assistant":
+      - /url: /assistant
+      - text: AI Assistant
+    - link "Integrations":
+      - /url: /integrations
+      - text: Integrations
+    - link "Settings":
+      - /url: /settings
+      - text: Settings
+  - link "RK Rajesh Kulkarni Works Manager":
+    - /url: /profile
+    - generic: RK
+    - generic: Rajesh Kulkarni
+    - generic: Works Manager
+  - link "Pricing & product page →":
+    - /url: /welcome
+- banner:
+  - textbox "Search part, challan, invoice, heat number…"
+  - button "English"
+  - button "हिंदी"
+  - button "मराठी"
+  - generic "All entries synced":
+    - text: Online
+  - button "Toggle dark mode":
+  - link "Notifications":
+    - /url: /notifications
+    - generic: "4"
+  - link "Ask AI":
+    - /url: /assistant
+    - generic: Ask AI
+- main:
+  - navigation:
+    - link "FactoryFlow":
+      - /url: /
+    - generic: Quality
+  - heading "Quality" [level=1]
+  - paragraph: 90 inspections · 1,997 units rejected
+  - button "Export CSV":
+    - text: Export CSV
+  - button "New inspection":
+    - text: New inspection
+  - heading "Top defects (Pareto)" [level=2]
+  - heading "Defect trend" [level=2]
+  - heading "Rejection cost by reason (₹)" [level=2]
+  - table:
+    - rowgroup:
+      - row "Reason Qty Cost Share":
+        - columnheader "Reason"
+        - columnheader "Qty"
+        - columnheader "Cost"
+        - columnheader "Share"
+    - rowgroup:
+      - row "Hardness Out of Spec 307 ₹1,59,640 33%":
+        - cell "Hardness Out of Spec"
+        - cell "307"
+        - cell "₹1,59,640"
+        - cell "33%"
+      - row "Dent / Handling Damage 402 ₹84,420 17%":
+        - cell "Dent / Handling Damage"
+        - cell "402"
+        - cell "₹84,420"
+        - cell "17%"
+      - row "Undersize / Oversize 204 ₹69,360 14%":
+        - cell "Undersize / Oversize"
+        - cell "204"
+        - cell "₹69,360"
+        - cell "14%"
+      - row "Plating Peel-off 302 ₹54,360 11%":
+        - cell "Plating Peel-off"
+        - cell "302"
+        - cell "₹54,360"
+        - cell "11%"
+      - row "Porosity in Weld 113 ₹46,330 10%":
+        - cell "Porosity in Weld"
+        - cell "113"
+        - cell "₹46,330"
+        - cell "10%"
+      - row "Surface Scratch 355 ₹42,600 9%":
+        - cell "Surface Scratch"
+        - cell "355"
+        - cell "₹42,600"
+        - cell "9%"
+      - row "Burr 314 ₹28,260 6%":
+        - cell "Burr"
+        - cell "314"
+        - cell "₹28,260"
+        - cell "6%"
+    - rowgroup:
+      - row "Total 1997 ₹4,84,970":
+        - cell "Total"
+        - cell "1997"
+        - cell "₹4,84,970"
+        - cell
+  - heading "8D customer complaints — 48-hour containment clock" [level=2]
+  - paragraph: 8D-2026-014 · Bharat Forge Ltd
+  - generic: In Progress
+  - paragraph: Flange Yoke FY-108 — Hardness below 42 HRC in lot of 500 nos.
+  - generic: 17 h left for containment
+  - generic: Owner Sunita Deshmukh
+  - generic "D1 Team"
+  - generic "D2 Problem"
+  - generic "D3 Containment"
+  - generic "D4 Root cause"
+  - generic "D5 Corrective action"
+  - generic "D6 Implement"
+  - generic "D7 Prevent"
+  - generic "D8 Congratulate"
+  - paragraph: D5 Corrective action · raised 23-08-2026 09:40
+  - paragraph: 8D-2026-013 · Endurance Technologies
+  - generic: Open
+  - paragraph: Brake Bracket BB-22 — Weld porosity found at customer incoming.
+  - generic: 28 h past 48-hour SLA
+  - generic: Owner Imran Shaikh
+  - generic "D1 Team"
+  - generic "D2 Problem"
+  - generic "D3 Containment"
+  - generic "D4 Root cause"
+  - generic "D5 Corrective action"
+  - generic "D6 Implement"
+  - generic "D7 Prevent"
+  - generic "D8 Congratulate"
+  - paragraph: D7 Prevent · raised 21-08-2026 14:10
+  - paragraph: 8D-2026-012 · Varroc Engineering
+  - generic: Completed
+  - paragraph: Pivot Pin PP-15 — Plating peel-off after salt spray.
+  - generic: Closed within SLA
+  - generic: Owner Sunita Deshmukh
+  - generic "D1 Team"
+  - generic "D2 Problem"
+  - generic "D3 Containment"
+  - generic "D4 Root cause"
+  - generic "D5 Corrective action"
+  - generic "D6 Implement"
+  - generic "D7 Prevent"
+  - generic "D8 Congratulate"
+  - paragraph: D8 Congratulate · raised 12-08-2026 11:25
+  - heading "Heat number traceability" [level=2]
+  - textbox "Search heat no., part, customer or invoice…"
+  - generic: Raw material heat → machine → operator → dispatch invoice → customer
+  - table:
+    - rowgroup:
+      - row "Heat no. Material Supplier GRN Part Machine Operator Qty Invoice Customer Dispatched":
+        - columnheader "Heat no."
+        - columnheader "Material"
+        - columnheader "Supplier"
+        - columnheader "GRN"
+        - columnheader "Part"
+        - columnheader "Machine"
+        - columnheader "Operator"
+        - columnheader "Qty"
+        - columnheader "Invoice"
+        - columnheader "Customer"
+        - columnheader "Dispatched"
+    - rowgroup:
+      - row "HT-24118 HR Coil 3.0mm Shree Ganesh Steels GRN-2026-300 Flange Yoke FY-108 CNC VMC-1 (Ace Micromatic) Imran Shaikh 866 SPW/26-27/1100 Bharat Forge Ltd 05-08-2026":
+        - cell "HT-24118"
+        - cell "HR Coil 3.0mm"
+        - cell "Shree Ganesh Steels"
+        - cell "GRN-2026-300"
+        - cell "Flange Yoke FY-108"
+        - cell "CNC VMC-1 (Ace Micromatic)"
+        - cell "Imran Shaikh"
+        - cell "866"
+        - cell "SPW/26-27/1100"
+        - cell "Bharat Forge Ltd"
+        - cell "05-08-2026"
+      - row "HT-24118 HR Coil 3.0mm Shree Ganesh Steels GRN-2026-301 Brake Bracket BB-22 CNC VMC-2 (Ace Micromatic) Sunita Deshmukh 208 SPW/26-27/1101 Endurance Technologies 20-07-2026":
+        - cell "HT-24118"
+        - cell "HR Coil 3.0mm"
+        - cell "Shree Ganesh Steels"
+        - cell "GRN-2026-301"
+        - cell "Brake Bracket BB-22"
+        - cell "CNC VMC-2 (Ace Micromatic)"
+        - cell "Sunita Deshmukh"
+        - cell "208"
+        - cell "SPW/26-27/1101"
+        - cell "Endurance Technologies"
+        - cell "20-07-2026"
+      - row "HT-24118 HR Coil 3.0mm Shree Ganesh Steels GRN-2026-302 Gear Blank GB-40 CNC Turning Centre TC-1 (Jyoti) Meena Patil 252 SPW/26-27/1102 Varroc Engineering 07-08-2026":
+        - cell "HT-24118"
+        - cell "HR Coil 3.0mm"
+        - cell "Shree Ganesh Steels"
+        - cell "GRN-2026-302"
+        - cell "Gear Blank GB-40"
+        - cell "CNC Turning Centre TC-1 (Jyoti)"
+        - cell "Meena Patil"
+        - cell "252"
+        - cell "SPW/26-27/1102"
+        - cell "Varroc Engineering"
+        - cell "07-08-2026"
+      - row "HT-24119 HR Coil 3.0mm Krishna Alloys GRN-2026-303 Brake Bracket BB-22 Conventional Lathe L-1 (HMT) Meena Patil 821 SPW/26-27/1103 Endurance Technologies 01-08-2026":
+        - cell "HT-24119"
+        - cell "HR Coil 3.0mm"
+        - cell "Krishna Alloys"
+        - cell "GRN-2026-303"
+        - cell "Brake Bracket BB-22"
+        - cell "Conventional Lathe L-1 (HMT)"
+        - cell "Meena Patil"
+        - cell "821"
+        - cell "SPW/26-27/1103"
+        - cell "Endurance Technologies"
+        - cell "01-08-2026"
+      - row "HT-24119 SAE 1045 Billet Shree Ganesh Steels GRN-2026-304 Gear Blank GB-40 Conventional Lathe L-2 (Kirloskar) Imran Shaikh 442 SPW/26-27/1104 Varroc Engineering 08-08-2026":
+        - cell "HT-24119"
+        - cell "SAE 1045 Billet"
+        - cell "Shree Ganesh Steels"
+        - cell "GRN-2026-304"
+        - cell "Gear Blank GB-40"
+        - cell "Conventional Lathe L-2 (Kirloskar)"
+        - cell "Imran Shaikh"
+        - cell "442"
+        - cell "SPW/26-27/1104"
+        - cell "Varroc Engineering"
+        - cell "08-08-2026"
+      - row "HT-24119 HR Coil 3.0mm Krishna Alloys GRN-2026-305 Pivot Pin PP-15 Radial Drill RD-1 Imran Shaikh 429 SPW/26-27/1105 Sundram Fasteners 14-08-2026":
+        - cell "HT-24119"
+        - cell "HR Coil 3.0mm"
+        - cell "Krishna Alloys"
+        - cell "GRN-2026-305"
+        - cell "Pivot Pin PP-15"
+        - cell "Radial Drill RD-1"
+        - cell "Imran Shaikh"
+        - cell "429"
+        - cell "SPW/26-27/1105"
+        - cell "Sundram Fasteners"
+        - cell "14-08-2026"
+      - row "HT-24127 SAE 1045 Billet Krishna Alloys GRN-2026-306 Gear Blank GB-40 Power Press 100T (Isgec) Ganesh Pawar 872 SPW/26-27/1106 Varroc Engineering 16-08-2026":
+        - cell "HT-24127"
+        - cell "SAE 1045 Billet"
+        - cell "Krishna Alloys"
+        - cell "GRN-2026-306"
+        - cell "Gear Blank GB-40"
+        - cell "Power Press 100T (Isgec)"
+        - cell "Ganesh Pawar"
+        - cell "872"
+        - cell "SPW/26-27/1106"
+        - cell "Varroc Engineering"
+        - cell "16-08-2026"
+      - row "HT-24127 EN8 Bright Bar Ø40 Shree Ganesh Steels GRN-2026-307 Pivot Pin PP-15 Power Press 60T (Rajesh Machines) Meena Patil 680 SPW/26-27/1107 Sundram Fasteners 02-08-2026":
+        - cell "HT-24127"
+        - cell "EN8 Bright Bar Ø40"
+        - cell "Shree Ganesh Steels"
+        - cell "GRN-2026-307"
+        - cell "Pivot Pin PP-15"
+        - cell "Power Press 60T (Rajesh Machines)"
+        - cell "Meena Patil"
+        - cell "680"
+        - cell "SPW/26-27/1107"
+        - cell "Sundram Fasteners"
+        - cell "02-08-2026"
+      - row "HT-24127 EN8 Bright Bar Ø40 Krishna Alloys GRN-2026-308 Clutch Housing CH-77 TIG Welding Station W-1 Vaishali Jadhav 753 SPW/26-27/1108 Kalyani Auto Components 08-08-2026":
+        - cell "HT-24127"
+        - cell "EN8 Bright Bar Ø40"
+        - cell "Krishna Alloys"
+        - cell "GRN-2026-308"
+        - cell "Clutch Housing CH-77"
+        - cell "TIG Welding Station W-1"
+        - cell "Vaishali Jadhav"
+        - cell "753"
+        - cell "SPW/26-27/1108"
+        - cell "Kalyani Auto Components"
+        - cell "08-08-2026"
+      - row "HT-24133 EN8 Bright Bar Ø40 Shree Ganesh Steels GRN-2026-309 Pivot Pin PP-15 Surface Grinder SG-1 Ganesh Pawar 805 SPW/26-27/1109 Sundram Fasteners 15-07-2026":
+        - cell "HT-24133"
+        - cell "EN8 Bright Bar Ø40"
+        - cell "Shree Ganesh Steels"
+        - cell "GRN-2026-309"
+        - cell "Pivot Pin PP-15"
+        - cell "Surface Grinder SG-1"
+        - cell "Ganesh Pawar"
+        - cell "805"
+        - cell "SPW/26-27/1109"
+        - cell "Sundram Fasteners"
+        - cell "15-07-2026"
+      - row "HT-24133 HR Coil 3.0mm Shree Ganesh Steels GRN-2026-310 Clutch Housing CH-77 Shot Blasting Cabinet SB-1 Santosh More 363 SPW/26-27/1110 Kalyani Auto Components 21-07-2026":
+        - cell "HT-24133"
+        - cell "HR Coil 3.0mm"
+        - cell "Shree Ganesh Steels"
+        - cell "GRN-2026-310"
+        - cell "Clutch Housing CH-77"
+        - cell "Shot Blasting Cabinet SB-1"
+        - cell "Santosh More"
+        - cell "363"
+        - cell "SPW/26-27/1110"
+        - cell "Kalyani Auto Components"
+        - cell "21-07-2026"
+      - row "HT-24133 EN8 Bright Bar Ø40 Krishna Alloys GRN-2026-311 Shifter Fork SF-31 LPG Heat-Treat Furnace HT-1 Sunita Deshmukh 654 SPW/26-27/1111 Bharat Forge Ltd 18-08-2026":
+        - cell "HT-24133"
+        - cell "EN8 Bright Bar Ø40"
+        - cell "Krishna Alloys"
+        - cell "GRN-2026-311"
+        - cell "Shifter Fork SF-31"
+        - cell "LPG Heat-Treat Furnace HT-1"
+        - cell "Sunita Deshmukh"
+        - cell "654"
+        - cell "SPW/26-27/1111"
+        - cell "Bharat Forge Ltd"
+        - cell "18-08-2026"
+      - row "HT-24140 SAE 1045 Billet Krishna Alloys GRN-2026-312 Clutch Housing CH-77 CNC VMC-1 (Ace Micromatic) Imran Shaikh 260 SPW/26-27/1112 Kalyani Auto Components 20-07-2026":
+        - cell "HT-24140"
+        - cell "SAE 1045 Billet"
+        - cell "Krishna Alloys"
+        - cell "GRN-2026-312"
+        - cell "Clutch Housing CH-77"
+        - cell "CNC VMC-1 (Ace Micromatic)"
+        - cell "Imran Shaikh"
+        - cell "260"
+        - cell "SPW/26-27/1112"
+        - cell "Kalyani Auto Components"
+        - cell "20-07-2026"
+      - row "HT-24140 HR Coil 3.0mm Krishna Alloys GRN-2026-313 Shifter Fork SF-31 CNC VMC-2 (Ace Micromatic) Sunita Deshmukh 742 SPW/26-27/1113 Bharat Forge Ltd 22-08-2026":
+        - cell "HT-24140"
+        - cell "HR Coil 3.0mm"
+        - cell "Krishna Alloys"
+        - cell "GRN-2026-313"
+        - cell "Shifter Fork SF-31"
+        - cell "CNC VMC-2 (Ace Micromatic)"
+        - cell "Sunita Deshmukh"
+        - cell "742"
+        - cell "SPW/26-27/1113"
+        - cell "Bharat Forge Ltd"
+        - cell "22-08-2026"
+      - row "HT-24140 HR Coil 3.0mm Shree Ganesh Steels GRN-2026-314 Flange Yoke FY-108 CNC Turning Centre TC-1 (Jyoti) Imran Shaikh 187 SPW/26-27/1114 Endurance Technologies 14-08-2026":
+        - cell "HT-24140"
+        - cell "HR Coil 3.0mm"
+        - cell "Shree Ganesh Steels"
+        - cell "GRN-2026-314"
+        - cell "Flange Yoke FY-108"
+        - cell "CNC Turning Centre TC-1 (Jyoti)"
+        - cell "Imran Shaikh"
+        - cell "187"
+        - cell "SPW/26-27/1114"
+        - cell "Endurance Technologies"
+        - cell "14-08-2026"
+      - row "HT-24152 EN8 Bright Bar Ø40 Krishna Alloys GRN-2026-315 Shifter Fork SF-31 Conventional Lathe L-1 (HMT) Santosh More 526 SPW/26-27/1115 Bharat Forge Ltd 20-08-2026":
+        - cell "HT-24152"
+        - cell "EN8 Bright Bar Ø40"
+        - cell "Krishna Alloys"
+        - cell "GRN-2026-315"
+        - cell "Shifter Fork SF-31"
+        - cell "Conventional Lathe L-1 (HMT)"
+        - cell "Santosh More"
+        - cell "526"
+        - cell "SPW/26-27/1115"
+        - cell "Bharat Forge Ltd"
+        - cell "20-08-2026"
+      - row "HT-24152 EN8 Bright Bar Ø40 Shree Ganesh Steels GRN-2026-316 Flange Yoke FY-108 Conventional Lathe L-2 (Kirloskar) Santosh More 392 SPW/26-27/1116 Endurance Technologies 04-08-2026":
+        - cell "HT-24152"
+        - cell "EN8 Bright Bar Ø40"
+        - cell "Shree Ganesh Steels"
+        - cell "GRN-2026-316"
+        - cell "Flange Yoke FY-108"
+        - cell "Conventional Lathe L-2 (Kirloskar)"
+        - cell "Santosh More"
+        - cell "392"
+        - cell "SPW/26-27/1116"
+        - cell "Endurance Technologies"
+        - cell "04-08-2026"
+      - row "HT-24152 SAE 1045 Billet Shree Ganesh Steels GRN-2026-317 Brake Bracket BB-22 Radial Drill RD-1 Ganesh Pawar 728 SPW/26-27/1117 Varroc Engineering 31-07-2026":
+        - cell "HT-24152"
+        - cell "SAE 1045 Billet"
+        - cell "Shree Ganesh Steels"
+        - cell "GRN-2026-317"
+        - cell "Brake Bracket BB-22"
+        - cell "Radial Drill RD-1"
+        - cell "Ganesh Pawar"
+        - cell "728"
+        - cell "SPW/26-27/1117"
+        - cell "Varroc Engineering"
+        - cell "31-07-2026"
+  - heading "Document vault" [level=2]
+  - paragraph: Control Plan — Flange Yoke FY-108
+  - paragraph: Control Plan · Rev 4 · Sunita Deshmukh
+  - paragraph: Updated 17-07-2026
+  - paragraph: PPAP Level 3 — Brake Bracket BB-22
+  - paragraph: PPAP · Rev 2 · Sunita Deshmukh
+  - paragraph: Updated 20-05-2026
+  - paragraph: MSA — Bore Gauge GG-04
+  - paragraph: MSA · Rev 1 · Imran Shaikh
+  - paragraph: Updated 10-08-2026
+  - paragraph: PFMEA — Press Shop
+  - paragraph: PFMEA · Rev 6 · Rajesh Kulkarni
+  - paragraph: Updated 24-06-2026
+  - paragraph: Control Plan — Gear Blank GB-40
+  - paragraph: Control Plan · Rev 3 · Sunita Deshmukh
+  - paragraph: Updated 15-08-2026
+  - paragraph: Calibration Master List 2026-27
+  - paragraph: Calibration · Rev 1 · Sunita Deshmukh
+  - paragraph: Updated 26-04-2026
+  - textbox "Search product, inspector, root cause…"
+  - combobox "Defect":
+    - 'option "Defect: All" [selected]'
+    - option "Undersize / Oversize"
+    - option "Surface Scratch"
+    - option "Porosity in Weld"
+    - option "Burr"
+    - option "Hardness Out of Spec"
+    - option "Plating Peel-off"
+    - option "Dent / Handling Damage"
+  - combobox "Severity":
+    - 'option "Severity: All" [selected]'
+    - option "Minor"
+    - option "Major"
+    - option "Critical"
+  - table:
+    - rowgroup:
+      - row "Date Product Heat no. Inspector Defect Severity Rejected Cost Root cause / CAPA Verification":
+        - columnheader "Date"
+        - columnheader "Product"
+        - columnheader "Heat no."
+        - columnheader "Inspector"
+        - columnheader "Defect"
+        - columnheader "Severity"
+        - columnheader "Rejected"
+        - columnheader "Cost"
+        - columnheader "Root cause / CAPA"
+        - columnheader "Verification"
+    - rowgroup:
+      - row "24-08-2026 Clutch Housing CH-77 HT-24127 Imran Shaikh Dent / Handling Damage Minor 23 ₹4,830 Furnace soak time short at vendor Retraining issued to shift crew Pending":
+        - cell "24-08-2026"
+        - cell "Clutch Housing CH-77"
+        - cell "HT-24127"
+        - cell "Imran Shaikh"
+        - cell "Dent / Handling Damage"
+        - cell "Minor":
+          - generic: Minor
+        - cell "23"
+        - cell "₹4,830"
+        - cell "Furnace soak time short at vendor Retraining issued to shift crew":
+          - paragraph: Furnace soak time short at vendor
+          - paragraph: Retraining issued to shift crew
+        - cell "Pending":
+          - generic: Pending
+      - row "24-08-2026 Gear Blank GB-40 HT-24127 Sunita Deshmukh Burr Minor 1 ₹90 Operator method deviation Tool replaced and re-qualified Rejected":
+        - cell "24-08-2026"
+        - cell "Gear Blank GB-40"
+        - cell "HT-24127"
+        - cell "Sunita Deshmukh"
+        - cell "Burr"
+        - cell "Minor":
+          - generic: Minor
+        - cell "1"
+        - cell "₹90"
+        - cell "Operator method deviation Tool replaced and re-qualified":
+          - paragraph: Operator method deviation
+          - paragraph: Tool replaced and re-qualified
+        - cell "Rejected":
+          - generic: Rejected
+      - row "24-08-2026 Clutch Housing CH-77 HT-24118 Imran Shaikh Hardness Out of Spec Minor 34 ₹17,680 Operator method deviation Retraining issued to shift crew Rejected":
+        - cell "24-08-2026"
+        - cell "Clutch Housing CH-77"
+        - cell "HT-24118"
+        - cell "Imran Shaikh"
+        - cell "Hardness Out of Spec"
+        - cell "Minor":
+          - generic: Minor
+        - cell "34"
+        - cell "₹17,680"
+        - cell "Operator method deviation Retraining issued to shift crew":
+          - paragraph: Operator method deviation
+          - paragraph: Retraining issued to shift crew
+        - cell "Rejected":
+          - generic: Rejected
+      - row "23-08-2026 Clutch Housing CH-77 HT-24127 Imran Shaikh Undersize / Oversize Minor 3 ₹1,020 Tool wear beyond limit Tool replaced and re-qualified Verified":
+        - cell "23-08-2026"
+        - cell "Clutch Housing CH-77"
+        - cell "HT-24127"
+        - cell "Imran Shaikh"
+        - cell "Undersize / Oversize"
+        - cell "Minor":
+          - generic: Minor
+        - cell "3"
+        - cell "₹1,020"
+        - cell "Tool wear beyond limit Tool replaced and re-qualified":
+          - paragraph: Tool wear beyond limit
+          - paragraph: Tool replaced and re-qualified
+        - cell "Verified":
+          - generic: Verified
+      - row "23-08-2026 Pivot Pin PP-15 HT-24119 Meena Patil Porosity in Weld Minor 39 ₹15,990 Operator method deviation Heat lot quarantined at stores Verified":
+        - cell "23-08-2026"
+        - cell "Pivot Pin PP-15"
+        - cell "HT-24119"
+        - cell "Meena Patil"
+        - cell "Porosity in Weld"
+        - cell "Minor":
+          - generic: Minor
+        - cell "39"
+        - cell "₹15,990"
+        - cell "Operator method deviation Heat lot quarantined at stores":
+          - paragraph: Operator method deviation
+          - paragraph: Heat lot quarantined at stores
+        - cell "Verified":
+          - generic: Verified
+      - row "23-08-2026 Gear Blank GB-40 HT-24118 Imran Shaikh Hardness Out of Spec Minor 40 ₹20,800 Furnace soak time short at vendor Retraining issued to shift crew Rejected":
+        - cell "23-08-2026"
+        - cell "Gear Blank GB-40"
+        - cell "HT-24118"
+        - cell "Imran Shaikh"
+        - cell "Hardness Out of Spec"
+        - cell "Minor":
+          - generic: Minor
+        - cell "40"
+        - cell "₹20,800"
+        - cell "Furnace soak time short at vendor Retraining issued to shift crew":
+          - paragraph: Furnace soak time short at vendor
+          - paragraph: Retraining issued to shift crew
+        - cell "Rejected":
+          - generic: Rejected
+      - row "22-08-2026 Shifter Fork SF-31 HT-24119 Imran Shaikh Burr Minor 27 ₹2,430 Tool wear beyond limit Vendor process parameters re-frozen Rejected":
+        - cell "22-08-2026"
+        - cell "Shifter Fork SF-31"
+        - cell "HT-24119"
+        - cell "Imran Shaikh"
+        - cell "Burr"
+        - cell "Minor":
+          - generic: Minor
+        - cell "27"
+        - cell "₹2,430"
+        - cell "Tool wear beyond limit Vendor process parameters re-frozen":
+          - paragraph: Tool wear beyond limit
+          - paragraph: Vendor process parameters re-frozen
+        - cell "Rejected":
+          - generic: Rejected
+      - row "21-08-2026 Pivot Pin PP-15 HT-24127 Meena Patil Undersize / Oversize Minor 2 ₹680 Operator method deviation Tool replaced and re-qualified Verified":
+        - cell "21-08-2026"
+        - cell "Pivot Pin PP-15"
+        - cell "HT-24127"
+        - cell "Meena Patil"
+        - cell "Undersize / Oversize"
+        - cell "Minor":
+          - generic: Minor
+        - cell "2"
+        - cell "₹680"
+        - cell "Operator method deviation Tool replaced and re-qualified":
+          - paragraph: Operator method deviation
+          - paragraph: Tool replaced and re-qualified
+        - cell "Verified":
+          - generic: Verified
+      - row "21-08-2026 Clutch Housing CH-77 HT-24140 Meena Patil Hardness Out of Spec Critical 6 ₹3,120 Operator method deviation Fixture re-shimmed, poka-yoke added Verified":
+        - cell "21-08-2026"
+        - cell "Clutch Housing CH-77"
+        - cell "HT-24140"
+        - cell "Meena Patil"
+        - cell "Hardness Out of Spec"
+        - cell "Critical":
+          - generic: Critical
+        - cell "6"
+        - cell "₹3,120"
+        - cell "Operator method deviation Fixture re-shimmed, poka-yoke added":
+          - paragraph: Operator method deviation
+          - paragraph: Fixture re-shimmed, poka-yoke added
+        - cell "Verified":
+          - generic: Verified
+      - row "21-08-2026 Flange Yoke FY-108 HT-24118 Sunita Deshmukh Dent / Handling Damage Major 10 ₹2,100 Operator method deviation Tool replaced and re-qualified Verified":
+        - cell "21-08-2026"
+        - cell "Flange Yoke FY-108"
+        - cell "HT-24118"
+        - cell "Sunita Deshmukh"
+        - cell "Dent / Handling Damage"
+        - cell "Major":
+          - generic: Major
+        - cell "10"
+        - cell "₹2,100"
+        - cell "Operator method deviation Tool replaced and re-qualified":
+          - paragraph: Operator method deviation
+          - paragraph: Tool replaced and re-qualified
+        - cell "Verified":
+          - generic: Verified
+      - row "20-08-2026 Clutch Housing CH-77 HT-24152 Imran Shaikh Plating Peel-off Minor 37 ₹6,660 Raw material heat variance Tool replaced and re-qualified Verified":
+        - cell "20-08-2026"
+        - cell "Clutch Housing CH-77"
+        - cell "HT-24152"
+        - cell "Imran Shaikh"
+        - cell "Plating Peel-off"
+        - cell "Minor":
+          - generic: Minor
+        - cell "37"
+        - cell "₹6,660"
+        - cell "Raw material heat variance Tool replaced and re-qualified":
+          - paragraph: Raw material heat variance
+          - paragraph: Tool replaced and re-qualified
+        - cell "Verified":
+          - generic: Verified
+      - row "20-08-2026 Brake Bracket BB-22 HT-24152 Meena Patil Plating Peel-off Minor 28 ₹5,040 Furnace soak time short at vendor Tool replaced and re-qualified Pending":
+        - cell "20-08-2026"
+        - cell "Brake Bracket BB-22"
+        - cell "HT-24152"
+        - cell "Meena Patil"
+        - cell "Plating Peel-off"
+        - cell "Minor":
+          - generic: Minor
+        - cell "28"
+        - cell "₹5,040"
+        - cell "Furnace soak time short at vendor Tool replaced and re-qualified":
+          - paragraph: Furnace soak time short at vendor
+          - paragraph: Tool replaced and re-qualified
+        - cell "Pending":
+          - generic: Pending
+      - row "20-08-2026 Shifter Fork SF-31 HT-24119 Meena Patil Surface Scratch Critical 14 ₹1,680 Incorrect fixture seating Fixture re-shimmed, poka-yoke added Verified":
+        - cell "20-08-2026"
+        - cell "Shifter Fork SF-31"
+        - cell "HT-24119"
+        - cell "Meena Patil"
+        - cell "Surface Scratch"
+        - cell "Critical":
+          - generic: Critical
+        - cell "14"
+        - cell "₹1,680"
+        - cell "Incorrect fixture seating Fixture re-shimmed, poka-yoke added":
+          - paragraph: Incorrect fixture seating
+          - paragraph: Fixture re-shimmed, poka-yoke added
+        - cell "Verified":
+          - generic: Verified
+      - row "20-08-2026 Pivot Pin PP-15 HT-24119 Imran Shaikh Surface Scratch Minor 36 ₹4,320 Raw material heat variance Vendor process parameters re-frozen Verified":
+        - cell "20-08-2026"
+        - cell "Pivot Pin PP-15"
+        - cell "HT-24119"
+        - cell "Imran Shaikh"
+        - cell "Surface Scratch"
+        - cell "Minor":
+          - generic: Minor
+        - cell "36"
+        - cell "₹4,320"
+        - cell "Raw material heat variance Vendor process parameters re-frozen":
+          - paragraph: Raw material heat variance
+          - paragraph: Vendor process parameters re-frozen
+        - cell "Verified":
+          - generic: Verified
+      - row "20-08-2026 Gear Blank GB-40 HT-24140 Imran Shaikh Burr Critical 5 ₹450 Incorrect fixture seating Tool replaced and re-qualified Verified":
+        - cell "20-08-2026"
+        - cell "Gear Blank GB-40"
+        - cell "HT-24140"
+        - cell "Imran Shaikh"
+        - cell "Burr"
+        - cell "Critical":
+          - generic: Critical
+        - cell "5"
+        - cell "₹450"
+        - cell "Incorrect fixture seating Tool replaced and re-qualified":
+          - paragraph: Incorrect fixture seating
+          - paragraph: Tool replaced and re-qualified
+        - cell "Verified":
+          - generic: Verified
+      - row "19-08-2026 Brake Bracket BB-22 HT-24133 Imran Shaikh Hardness Out of Spec Major 40 ₹20,800 Operator method deviation Tool replaced and re-qualified Rejected":
+        - cell "19-08-2026"
+        - cell "Brake Bracket BB-22"
+        - cell "HT-24133"
+        - cell "Imran Shaikh"
+        - cell "Hardness Out of Spec"
+        - cell "Major":
+          - generic: Major
+        - cell "40"
+        - cell "₹20,800"
+        - cell "Operator method deviation Tool replaced and re-qualified":
+          - paragraph: Operator method deviation
+          - paragraph: Tool replaced and re-qualified
+        - cell "Rejected":
+          - generic: Rejected
+      - row "19-08-2026 Clutch Housing CH-77 HT-24133 Meena Patil Burr Minor 36 ₹3,240 Furnace soak time short at vendor Retraining issued to shift crew Rejected":
+        - cell "19-08-2026"
+        - cell "Clutch Housing CH-77"
+        - cell "HT-24133"
+        - cell "Meena Patil"
+        - cell "Burr"
+        - cell "Minor":
+          - generic: Minor
+        - cell "36"
+        - cell "₹3,240"
+        - cell "Furnace soak time short at vendor Retraining issued to shift crew":
+          - paragraph: Furnace soak time short at vendor
+          - paragraph: Retraining issued to shift crew
+        - cell "Rejected":
+          - generic: Rejected
+      - row "19-08-2026 Clutch Housing CH-77 HT-24127 Meena Patil Burr Minor 12 ₹1,080 Furnace soak time short at vendor Vendor process parameters re-frozen Verified":
+        - cell "19-08-2026"
+        - cell "Clutch Housing CH-77"
+        - cell "HT-24127"
+        - cell "Meena Patil"
+        - cell "Burr"
+        - cell "Minor":
+          - generic: Minor
+        - cell "12"
+        - cell "₹1,080"
+        - cell "Furnace soak time short at vendor Vendor process parameters re-frozen":
+          - paragraph: Furnace soak time short at vendor
+          - paragraph: Vendor process parameters re-frozen
+        - cell "Verified":
+          - generic: Verified
+      - row "19-08-2026 Shifter Fork SF-31 HT-24127 Imran Shaikh Undersize / Oversize Minor 40 ₹13,600 Furnace soak time short at vendor Fixture re-shimmed, poka-yoke added Verified":
+        - cell "19-08-2026"
+        - cell "Shifter Fork SF-31"
+        - cell "HT-24127"
+        - cell "Imran Shaikh"
+        - cell "Undersize / Oversize"
+        - cell "Minor":
+          - generic: Minor
+        - cell "40"
+        - cell "₹13,600"
+        - cell "Furnace soak time short at vendor Fixture re-shimmed, poka-yoke added":
+          - paragraph: Furnace soak time short at vendor
+          - paragraph: Fixture re-shimmed, poka-yoke added
+        - cell "Verified":
+          - generic: Verified
+      - row "19-08-2026 Gear Blank GB-40 HT-24118 Imran Shaikh Hardness Out of Spec Minor 31 ₹16,120 Incorrect fixture seating Fixture re-shimmed, poka-yoke added Verified":
+        - cell "19-08-2026"
+        - cell "Gear Blank GB-40"
+        - cell "HT-24118"
+        - cell "Imran Shaikh"
+        - cell "Hardness Out of Spec"
+        - cell "Minor":
+          - generic: Minor
+        - cell "31"
+        - cell "₹16,120"
+        - cell "Incorrect fixture seating Fixture re-shimmed, poka-yoke added":
+          - paragraph: Incorrect fixture seating
+          - paragraph: Fixture re-shimmed, poka-yoke added
+        - cell "Verified":
+          - generic: Verified
+      - row "19-08-2026 Brake Bracket BB-22 HT-24118 Sunita Deshmukh Plating Peel-off Minor 17 ₹3,060 Tool wear beyond limit Fixture re-shimmed, poka-yoke added Verified":
+        - cell "19-08-2026"
+        - cell "Brake Bracket BB-22"
+        - cell "HT-24118"
+        - cell "Sunita Deshmukh"
+        - cell "Plating Peel-off"
+        - cell "Minor":
+          - generic: Minor
+        - cell "17"
+        - cell "₹3,060"
+        - cell "Tool wear beyond limit Fixture re-shimmed, poka-yoke added":
+          - paragraph: Tool wear beyond limit
+          - paragraph: Fixture re-shimmed, poka-yoke added
+        - cell "Verified":
+          - generic: Verified
+      - row "18-08-2026 Flange Yoke FY-108 HT-24119 Meena Patil Undersize / Oversize Critical 11 ₹3,740 Furnace soak time short at vendor Fixture re-shimmed, poka-yoke added Verified":
+        - cell "18-08-2026"
+        - cell "Flange Yoke FY-108"
+        - cell "HT-24119"
+        - cell "Meena Patil"
+        - cell "Undersize / Oversize"
+        - cell "Critical":
+          - generic: Critical
+        - cell "11"
+        - cell "₹3,740"
+        - cell "Furnace soak time short at vendor Fixture re-shimmed, poka-yoke added":
+          - paragraph: Furnace soak time short at vendor
+          - paragraph: Fixture re-shimmed, poka-yoke added
+        - cell "Verified":
+          - generic: Verified
+      - row "17-08-2026 Shifter Fork SF-31 HT-24133 Meena Patil Dent / Handling Damage Major 35 ₹7,350 Raw material heat variance Fixture re-shimmed, poka-yoke added Verified":
+        - cell "17-08-2026"
+        - cell "Shifter Fork SF-31"
+        - cell "HT-24133"
+        - cell "Meena Patil"
+        - cell "Dent / Handling Damage"
+        - cell "Major":
+          - generic: Major
+        - cell "35"
+        - cell "₹7,350"
+        - cell "Raw material heat variance Fixture re-shimmed, poka-yoke added":
+          - paragraph: Raw material heat variance
+          - paragraph: Fixture re-shimmed, poka-yoke added
+        - cell "Verified":
+          - generic: Verified
+      - row "17-08-2026 Clutch Housing CH-77 HT-24152 Meena Patil Burr Major 7 ₹630 Raw material heat variance Vendor process parameters re-frozen Rejected":
+        - cell "17-08-2026"
+        - cell "Clutch Housing CH-77"
+        - cell "HT-24152"
+        - cell "Meena Patil"
+        - cell "Burr"
+        - cell "Major":
+          - generic: Major
+        - cell "7"
+        - cell "₹630"
+        - cell "Raw material heat variance Vendor process parameters re-frozen":
+          - paragraph: Raw material heat variance
+          - paragraph: Vendor process parameters re-frozen
+        - cell "Rejected":
+          - generic: Rejected
+      - row "16-08-2026 Flange Yoke FY-108 HT-24133 Imran Shaikh Undersize / Oversize Major 18 ₹6,120 Operator method deviation Tool replaced and re-qualified Verified":
+        - cell "16-08-2026"
+        - cell "Flange Yoke FY-108"
+        - cell "HT-24133"
+        - cell "Imran Shaikh"
+        - cell "Undersize / Oversize"
+        - cell "Major":
+          - generic: Major
+        - cell "18"
+        - cell "₹6,120"
+        - cell "Operator method deviation Tool replaced and re-qualified":
+          - paragraph: Operator method deviation
+          - paragraph: Tool replaced and re-qualified
+        - cell "Verified":
+          - generic: Verified
+      - row "16-08-2026 Shifter Fork SF-31 HT-24119 Meena Patil Surface Scratch Major 40 ₹4,800 Raw material heat variance Heat lot quarantined at stores Rejected":
+        - cell "16-08-2026"
+        - cell "Shifter Fork SF-31"
+        - cell "HT-24119"
+        - cell "Meena Patil"
+        - cell "Surface Scratch"
+        - cell "Major":
+          - generic: Major
+        - cell "40"
+        - cell "₹4,800"
+        - cell "Raw material heat variance Heat lot quarantined at stores":
+          - paragraph: Raw material heat variance
+          - paragraph: Heat lot quarantined at stores
+        - cell "Rejected":
+          - generic: Rejected
+      - row "16-08-2026 Clutch Housing CH-77 HT-24119 Sunita Deshmukh Plating Peel-off Minor 9 ₹1,620 Tool wear beyond limit Fixture re-shimmed, poka-yoke added Verified":
+        - cell "16-08-2026"
+        - cell "Clutch Housing CH-77"
+        - cell "HT-24119"
+        - cell "Sunita Deshmukh"
+        - cell "Plating Peel-off"
+        - cell "Minor":
+          - generic: Minor
+        - cell "9"
+        - cell "₹1,620"
+        - cell "Tool wear beyond limit Fixture re-shimmed, poka-yoke added":
+          - paragraph: Tool wear beyond limit
+          - paragraph: Fixture re-shimmed, poka-yoke added
+        - cell "Verified":
+          - generic: Verified
+      - row "16-08-2026 Flange Yoke FY-108 HT-24140 Imran Shaikh Burr Minor 19 ₹1,710 Operator method deviation Vendor process parameters re-frozen Rejected":
+        - cell "16-08-2026"
+        - cell "Flange Yoke FY-108"
+        - cell "HT-24140"
+        - cell "Imran Shaikh"
+        - cell "Burr"
+        - cell "Minor":
+          - generic: Minor
+        - cell "19"
+        - cell "₹1,710"
+        - cell "Operator method deviation Vendor process parameters re-frozen":
+          - paragraph: Operator method deviation
+          - paragraph: Vendor process parameters re-frozen
+        - cell "Rejected":
+          - generic: Rejected
+      - row "16-08-2026 Flange Yoke FY-108 HT-24119 Sunita Deshmukh Dent / Handling Damage Minor 38 ₹7,980 Furnace soak time short at vendor Tool replaced and re-qualified Verified":
+        - cell "16-08-2026"
+        - cell "Flange Yoke FY-108"
+        - cell "HT-24119"
+        - cell "Sunita Deshmukh"
+        - cell "Dent / Handling Damage"
+        - cell "Minor":
+          - generic: Minor
+        - cell "38"
+        - cell "₹7,980"
+        - cell "Furnace soak time short at vendor Tool replaced and re-qualified":
+          - paragraph: Furnace soak time short at vendor
+          - paragraph: Tool replaced and re-qualified
+        - cell "Verified":
+          - generic: Verified
+      - row "15-08-2026 Flange Yoke FY-108 HT-24127 Sunita Deshmukh Plating Peel-off Critical 21 ₹3,780 Operator method deviation Vendor process parameters re-frozen Verified":
+        - cell "15-08-2026"
+        - cell "Flange Yoke FY-108"
+        - cell "HT-24127"
+        - cell "Sunita Deshmukh"
+        - cell "Plating Peel-off"
+        - cell "Critical":
+          - generic: Critical
+        - cell "21"
+        - cell "₹3,780"
+        - cell "Operator method deviation Vendor process parameters re-frozen":
+          - paragraph: Operator method deviation
+          - paragraph: Vendor process parameters re-frozen
+        - cell "Verified":
+          - generic: Verified
+      - row "15-08-2026 Pivot Pin PP-15 HT-24118 Imran Shaikh Dent / Handling Damage Minor 28 ₹5,880 Tool wear beyond limit Vendor process parameters re-frozen Verified":
+        - cell "15-08-2026"
+        - cell "Pivot Pin PP-15"
+        - cell "HT-24118"
+        - cell "Imran Shaikh"
+        - cell "Dent / Handling Damage"
+        - cell "Minor":
+          - generic: Minor
+        - cell "28"
+        - cell "₹5,880"
+        - cell "Tool wear beyond limit Vendor process parameters re-frozen":
+          - paragraph: Tool wear beyond limit
+          - paragraph: Vendor process parameters re-frozen
+        - cell "Verified":
+          - generic: Verified
+      - row "14-08-2026 Pivot Pin PP-15 HT-24127 Meena Patil Surface Scratch Critical 30 ₹3,600 Operator method deviation Heat lot quarantined at stores Verified":
+        - cell "14-08-2026"
+        - cell "Pivot Pin PP-15"
+        - cell "HT-24127"
+        - cell "Meena Patil"
+        - cell "Surface Scratch"
+        - cell "Critical":
+          - generic: Critical
+        - cell "30"
+        - cell "₹3,600"
+        - cell "Operator method deviation Heat lot quarantined at stores":
+          - paragraph: Operator method deviation
+          - paragraph: Heat lot quarantined at stores
+        - cell "Verified":
+          - generic: Verified
+      - row "14-08-2026 Clutch Housing CH-77 HT-24119 Sunita Deshmukh Plating Peel-off Minor 27 ₹4,860 Raw material heat variance Retraining issued to shift crew Pending":
+        - cell "14-08-2026"
+        - cell "Clutch Housing CH-77"
+        - cell "HT-24119"
+        - cell "Sunita Deshmukh"
+        - cell "Plating Peel-off"
+        - cell "Minor":
+          - generic: Minor
+        - cell "27"
+        - cell "₹4,860"
+        - cell "Raw material heat variance Retraining issued to shift crew":
+          - paragraph: Raw material heat variance
+          - paragraph: Retraining issued to shift crew
+        - cell "Pending":
+          - generic: Pending
+      - row "14-08-2026 Shifter Fork SF-31 HT-24140 Imran Shaikh Dent / Handling Damage Major 34 ₹7,140 Raw material heat variance Fixture re-shimmed, poka-yoke added Verified":
+        - cell "14-08-2026"
+        - cell "Shifter Fork SF-31"
+        - cell "HT-24140"
+        - cell "Imran Shaikh"
+        - cell "Dent / Handling Damage"
+        - cell "Major":
+          - generic: Major
+        - cell "34"
+        - cell "₹7,140"
+        - cell "Raw material heat variance Fixture re-shimmed, poka-yoke added":
+          - paragraph: Raw material heat variance
+          - paragraph: Fixture re-shimmed, poka-yoke added
+        - cell "Verified":
+          - generic: Verified
+      - row "13-08-2026 Pivot Pin PP-15 HT-24119 Sunita Deshmukh Burr Critical 23 ₹2,070 Tool wear beyond limit Vendor process parameters re-frozen Verified":
+        - cell "13-08-2026"
+        - cell "Pivot Pin PP-15"
+        - cell "HT-24119"
+        - cell "Sunita Deshmukh"
+        - cell "Burr"
+        - cell "Critical":
+          - generic: Critical
+        - cell "23"
+        - cell "₹2,070"
+        - cell "Tool wear beyond limit Vendor process parameters re-frozen":
+          - paragraph: Tool wear beyond limit
+          - paragraph: Vendor process parameters re-frozen
+        - cell "Verified":
+          - generic: Verified
+      - row "13-08-2026 Pivot Pin PP-15 HT-24127 Meena Patil Dent / Handling Damage Minor 13 ₹2,730 Incorrect fixture seating Fixture re-shimmed, poka-yoke added Pending":
+        - cell "13-08-2026"
+        - cell "Pivot Pin PP-15"
+        - cell "HT-24127"
+        - cell "Meena Patil"
+        - cell "Dent / Handling Damage"
+        - cell "Minor":
+          - generic: Minor
+        - cell "13"
+        - cell "₹2,730"
+        - cell "Incorrect fixture seating Fixture re-shimmed, poka-yoke added":
+          - paragraph: Incorrect fixture seating
+          - paragraph: Fixture re-shimmed, poka-yoke added
+        - cell "Pending":
+          - generic: Pending
+      - row "12-08-2026 Gear Blank GB-40 HT-24152 Sunita Deshmukh Undersize / Oversize Critical 22 ₹7,480 Raw material heat variance Heat lot quarantined at stores Rejected":
+        - cell "12-08-2026"
+        - cell "Gear Blank GB-40"
+        - cell "HT-24152"
+        - cell "Sunita Deshmukh"
+        - cell "Undersize / Oversize"
+        - cell "Critical":
+          - generic: Critical
+        - cell "22"
+        - cell "₹7,480"
+        - cell "Raw material heat variance Heat lot quarantined at stores":
+          - paragraph: Raw material heat variance
+          - paragraph: Heat lot quarantined at stores
+        - cell "Rejected":
+          - generic: Rejected
+      - row "11-08-2026 Flange Yoke FY-108 HT-24133 Meena Patil Dent / Handling Damage Critical 39 ₹8,190 Incorrect fixture seating Retraining issued to shift crew Rejected":
+        - cell "11-08-2026"
+        - cell "Flange Yoke FY-108"
+        - cell "HT-24133"
+        - cell "Meena Patil"
+        - cell "Dent / Handling Damage"
+        - cell "Critical":
+          - generic: Critical
+        - cell "39"
+        - cell "₹8,190"
+        - cell "Incorrect fixture seating Retraining issued to shift crew":
+          - paragraph: Incorrect fixture seating
+          - paragraph: Retraining issued to shift crew
+        - cell "Rejected":
+          - generic: Rejected
+      - row "11-08-2026 Brake Bracket BB-22 HT-24133 Sunita Deshmukh Plating Peel-off Minor 17 ₹3,060 Raw material heat variance Vendor process parameters re-frozen Verified":
+        - cell "11-08-2026"
+        - cell "Brake Bracket BB-22"
+        - cell "HT-24133"
+        - cell "Sunita Deshmukh"
+        - cell "Plating Peel-off"
+        - cell "Minor":
+          - generic: Minor
+        - cell "17"
+        - cell "₹3,060"
+        - cell "Raw material heat variance Vendor process parameters re-frozen":
+          - paragraph: Raw material heat variance
+          - paragraph: Vendor process parameters re-frozen
+        - cell "Verified":
+          - generic: Verified
+      - row "10-08-2026 Flange Yoke FY-108 HT-24118 Sunita Deshmukh Dent / Handling Damage Minor 20 ₹4,200 Raw material heat variance Heat lot quarantined at stores Verified":
+        - cell "10-08-2026"
+        - cell "Flange Yoke FY-108"
+        - cell "HT-24118"
+        - cell "Sunita Deshmukh"
+        - cell "Dent / Handling Damage"
+        - cell "Minor":
+          - generic: Minor
+        - cell "20"
+        - cell "₹4,200"
+        - cell "Raw material heat variance Heat lot quarantined at stores":
+          - paragraph: Raw material heat variance
+          - paragraph: Heat lot quarantined at stores
+        - cell "Verified":
+          - generic: Verified
+      - row "10-08-2026 Pivot Pin PP-15 HT-24152 Sunita Deshmukh Surface Scratch Minor 14 ₹1,680 Operator method deviation Retraining issued to shift crew Verified":
+        - cell "10-08-2026"
+        - cell "Pivot Pin PP-15"
+        - cell "HT-24152"
+        - cell "Sunita Deshmukh"
+        - cell "Surface Scratch"
+        - cell "Minor":
+          - generic: Minor
+        - cell "14"
+        - cell "₹1,680"
+        - cell "Operator method deviation Retraining issued to shift crew":
+          - paragraph: Operator method deviation
+          - paragraph: Retraining issued to shift crew
+        - cell "Verified":
+          - generic: Verified
+      - row "10-08-2026 Clutch Housing CH-77 HT-24119 Imran Shaikh Surface Scratch Minor 34 ₹4,080 Tool wear beyond limit Heat lot quarantined at stores Verified":
+        - cell "10-08-2026"
+        - cell "Clutch Housing CH-77"
+        - cell "HT-24119"
+        - cell "Imran Shaikh"
+        - cell "Surface Scratch"
+        - cell "Minor":
+          - generic: Minor
+        - cell "34"
+        - cell "₹4,080"
+        - cell "Tool wear beyond limit Heat lot quarantined at stores":
+          - paragraph: Tool wear beyond limit
+          - paragraph: Heat lot quarantined at stores
+        - cell "Verified":
+          - generic: Verified
+      - row "10-08-2026 Pivot Pin PP-15 HT-24127 Sunita Deshmukh Hardness Out of Spec Major 5 ₹2,600 Tool wear beyond limit Vendor process parameters re-frozen Verified":
+        - cell "10-08-2026"
+        - cell "Pivot Pin PP-15"
+        - cell "HT-24127"
+        - cell "Sunita Deshmukh"
+        - cell "Hardness Out of Spec"
+        - cell "Major":
+          - generic: Major
+        - cell "5"
+        - cell "₹2,600"
+        - cell "Tool wear beyond limit Vendor process parameters re-frozen":
+          - paragraph: Tool wear beyond limit
+          - paragraph: Vendor process parameters re-frozen
+        - cell "Verified":
+          - generic: Verified
+      - row "10-08-2026 Pivot Pin PP-15 HT-24152 Sunita Deshmukh Surface Scratch Minor 21 ₹2,520 Operator method deviation Retraining issued to shift crew Rejected":
+        - cell "10-08-2026"
+        - cell "Pivot Pin PP-15"
+        - cell "HT-24152"
+        - cell "Sunita Deshmukh"
+        - cell "Surface Scratch"
+        - cell "Minor":
+          - generic: Minor
+        - cell "21"
+        - cell "₹2,520"
+        - cell "Operator method deviation Retraining issued to shift crew":
+          - paragraph: Operator method deviation
+          - paragraph: Retraining issued to shift crew
+        - cell "Rejected":
+          - generic: Rejected
+      - row "10-08-2026 Flange Yoke FY-108 HT-24119 Meena Patil Plating Peel-off Minor 37 ₹6,660 Raw material heat variance Retraining issued to shift crew Verified":
+        - cell "10-08-2026"
+        - cell "Flange Yoke FY-108"
+        - cell "HT-24119"
+        - cell "Meena Patil"
+        - cell "Plating Peel-off"
+        - cell "Minor":
+          - generic: Minor
+        - cell "37"
+        - cell "₹6,660"
+        - cell "Raw material heat variance Retraining issued to shift crew":
+          - paragraph: Raw material heat variance
+          - paragraph: Retraining issued to shift crew
+        - cell "Verified":
+          - generic: Verified
+      - row "09-08-2026 Shifter Fork SF-31 HT-24127 Meena Patil Hardness Out of Spec Critical 36 ₹18,720 Raw material heat variance Vendor process parameters re-frozen Rejected":
+        - cell "09-08-2026"
+        - cell "Shifter Fork SF-31"
+        - cell "HT-24127"
+        - cell "Meena Patil"
+        - cell "Hardness Out of Spec"
+        - cell "Critical":
+          - generic: Critical
+        - cell "36"
+        - cell "₹18,720"
+        - cell "Raw material heat variance Vendor process parameters re-frozen":
+          - paragraph: Raw material heat variance
+          - paragraph: Vendor process parameters re-frozen
+        - cell "Rejected":
+          - generic: Rejected
+      - row "09-08-2026 Shifter Fork SF-31 HT-24118 Imran Shaikh Dent / Handling Damage Critical 39 ₹8,190 Raw material heat variance Fixture re-shimmed, poka-yoke added Rejected":
+        - cell "09-08-2026"
+        - cell "Shifter Fork SF-31"
+        - cell "HT-24118"
+        - cell "Imran Shaikh"
+        - cell "Dent / Handling Damage"
+        - cell "Critical":
+          - generic: Critical
+        - cell "39"
+        - cell "₹8,190"
+        - cell "Raw material heat variance Fixture re-shimmed, poka-yoke added":
+          - paragraph: Raw material heat variance
+          - paragraph: Fixture re-shimmed, poka-yoke added
+        - cell "Rejected":
+          - generic: Rejected
+      - row "09-08-2026 Pivot Pin PP-15 HT-24152 Meena Patil Burr Critical 27 ₹2,430 Tool wear beyond limit Heat lot quarantined at stores Verified":
+        - cell "09-08-2026"
+        - cell "Pivot Pin PP-15"
+        - cell "HT-24152"
+        - cell "Meena Patil"
+        - cell "Burr"
+        - cell "Critical":
+          - generic: Critical
+        - cell "27"
+        - cell "₹2,430"
+        - cell "Tool wear beyond limit Heat lot quarantined at stores":
+          - paragraph: Tool wear beyond limit
+          - paragraph: Heat lot quarantined at stores
+        - cell "Verified":
+          - generic: Verified
+      - row "09-08-2026 Gear Blank GB-40 HT-24118 Sunita Deshmukh Burr Critical 12 ₹1,080 Raw material heat variance Vendor process parameters re-frozen Verified":
+        - cell "09-08-2026"
+        - cell "Gear Blank GB-40"
+        - cell "HT-24118"
+        - cell "Sunita Deshmukh"
+        - cell "Burr"
+        - cell "Critical":
+          - generic: Critical
+        - cell "12"
+        - cell "₹1,080"
+        - cell "Raw material heat variance Vendor process parameters re-frozen":
+          - paragraph: Raw material heat variance
+          - paragraph: Vendor process parameters re-frozen
+        - cell "Verified":
+          - generic: Verified
+      - row "08-08-2026 Shifter Fork SF-31 HT-24133 Imran Shaikh Surface Scratch Minor 34 ₹4,080 Raw material heat variance Vendor process parameters re-frozen Rejected":
+        - cell "08-08-2026"
+        - cell "Shifter Fork SF-31"
+        - cell "HT-24133"
+        - cell "Imran Shaikh"
+        - cell "Surface Scratch"
+        - cell "Minor":
+          - generic: Minor
+        - cell "34"
+        - cell "₹4,080"
+        - cell "Raw material heat variance Vendor process parameters re-frozen":
+          - paragraph: Raw material heat variance
+          - paragraph: Vendor process parameters re-frozen
+        - cell "Rejected":
+          - generic: Rejected
+- button "Quick Log":
+  - text: Quick Log
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_10hdg7xyw99tpa64t0nz744v7b?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: Dent / Handling Damage

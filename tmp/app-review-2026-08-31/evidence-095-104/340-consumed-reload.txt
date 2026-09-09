@@ -1,0 +1,90 @@
+- banner:
+  - generic: Ff
+  - paragraph: FridgeFlow
+  - paragraph: Know what's expiring. Waste less.
+  - button "Add Food":
+    - text: Add Food
+- main:
+  - heading "Your fridge at a glance" [level=1]
+  - paragraph: Keep track of what's fresh and know what to use first.
+  - region "Summary":
+    - paragraph: "8"
+    - paragraph: Total Items
+    - paragraph: "2"
+    - paragraph: Expiring Soon
+    - paragraph: "1"
+    - paragraph: Consumed This Week
+  - region "Eat These First":
+    - heading "Eat These First" [level=2]
+    - paragraph: These items are closest to expiring.
+    - list:
+      - paragraph: Spinach
+      - generic: Expiring Soon
+      - paragraph: Vegetables · Expires tomorrow
+      - button "Mark Consumed"
+      - button "Delete Spinach":
+      - paragraph: Milk
+      - generic: Expiring Soon
+      - paragraph: Dairy · Expires in 2 days
+      - button "Mark Consumed"
+      - button "Delete Milk":
+      - paragraph: Bread
+      - generic: Use Soon
+      - paragraph: Bakery · Expires in 3 days
+      - button "Mark Consumed"
+      - button "Delete Bread":
+      - paragraph: Yogurt
+      - generic: Use Soon
+      - paragraph: Dairy · Expires in 4 days
+      - button "Mark Consumed"
+      - button "Delete Yogurt":
+  - region "My Fridge":
+    - heading "My Fridge" [level=2]
+    - paragraph: All active food items, ordered by expiry urgency.
+    - list:
+      - paragraph: Spinach
+      - generic: Expiring Soon
+      - paragraph: Vegetables · Expires tomorrow
+      - button "Mark Consumed"
+      - button "Delete Spinach":
+      - paragraph: Milk
+      - generic: Expiring Soon
+      - paragraph: Dairy · Expires in 2 days
+      - button "Mark Consumed"
+      - button "Delete Milk":
+      - paragraph: Bread
+      - generic: Use Soon
+      - paragraph: Bakery · Expires in 3 days
+      - button "Mark Consumed"
+      - button "Delete Bread":
+      - paragraph: Yogurt
+      - generic: Use Soon
+      - paragraph: Dairy · Expires in 4 days
+      - button "Mark Consumed"
+      - button "Delete Yogurt":
+      - paragraph: Tomatoes
+      - generic: Use Soon
+      - paragraph: Vegetables · Expires in 5 days
+      - button "Mark Consumed"
+      - button "Delete Tomatoes":
+      - paragraph: Eggs
+      - generic: Normal
+      - paragraph: Dairy · Expires in 6 days
+      - button "Mark Consumed"
+      - button "Delete Eggs":
+      - paragraph: Apples
+      - generic: Normal
+      - paragraph: Fruits · Expires in 10 days
+      - button "Mark Consumed"
+      - button "Delete Apples":
+      - paragraph: Cheese
+      - generic: Normal
+      - paragraph: Dairy · Expires in 12 days
+      - button "Mark Consumed"
+      - button "Delete Cheese":
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_0hxdsk3v948hkrpmk9hfxh0rf3?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

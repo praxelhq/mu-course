@@ -1,0 +1,97 @@
+- navigation:
+  - link "AI Sports IQ logo AI Sports IQ":
+    - /url: /
+    - img "AI Sports IQ logo"
+    - generic: AI Sports IQ
+  - img "Your avatar"
+  - generic: "@SportsGuru"
+  - generic: IQ 60/100
+  - generic: local_fire_department
+  - generic: "Streak: 0 Days"
+  - list:
+    - link "Home Arena":
+      - /url: /
+      - generic: home
+      - generic: Home Arena
+    - link "IQ Matrix":
+      - /url: /stats
+      - generic: analytics
+      - generic: IQ Matrix
+    - link "Leaderboards":
+      - /url: /leaderboards
+      - generic: leaderboard
+      - generic: Leaderboards
+  - list:
+    - link "Friend Duels":
+      - /url: /leaderboards
+      - generic: swords
+      - generic: Friend Duels
+- main:
+  - heading "WHO AM I?" [level=1]
+  - paragraph:
+    - text: "Cricket arena · Reward at stake:"
+    - generic: +30 IQ points
+  - link "Change arena":
+    - /url: /
+    - generic: arrow_back
+    - text: Change arena
+  - generic: sports_cricket
+  - text: Cricket — Pro Tier
+  - generic: favorite
+  - generic: favorite
+  - generic: favorite
+  - generic: person_search
+  - generic: "?"
+  - generic: Clue stage
+  - generic: 1 / 3
+  - generic: Attempts
+  - generic: 0 / 2
+  - generic: check_circle
+  - generic: Clue 1 · worth 30 pts
+  - paragraph: “🏏 My calm technique made me one of the modern era's best batsmen.”
+  - button "Clue 2 Unlock (worth 20 Pts)":
+    - generic: lock
+    - generic: Clue 2
+    - generic: Unlock (worth 20 Pts)
+  - button "Clue 3 Unlock (worth 10 Pts)" [disabled]:
+    - generic: lock
+    - generic: Clue 3
+    - generic: Unlock (worth 10 Pts)
+  - generic: search
+  - textbox "Guess the athlete":
+    - /placeholder: Search athlete name (e.g. Rafael Nadal)...
+  - button "Submit Guess"
+  - button "Pass (0 Pts)"
+  - button "AI fresh card":
+    - generic: auto_awesome
+    - text: AI fresh card
+  - paragraph: "Your Sports IQ: 60/100 · streak 0 days"
+  - complementary:
+    - heading "IQ Matrix" [level=2]
+    - generic: Global Sports IQ
+    - generic: "60"
+    - generic: Climbing the ranks
+    - heading "Category Mastery" [level=3]
+    - generic: sports_cricket
+    - text: Cricket
+    - generic: 62%
+    - generic: sports_soccer
+    - text: Football
+    - generic: 58%
+    - generic: sports_basketball
+    - text: Basketball
+    - generic: 45%
+    - generic: sports_tennis
+    - text: Tennis
+    - generic: 55%
+    - generic: sports_motorsports
+    - text: Motorsport
+    - generic: 40%
+    - heading "Recent Rounds" [level=3]
+    - paragraph: No rounds yet — solve a mystery to fill this in.
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3m71jszv5e8kpbbxyw423tepj1?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

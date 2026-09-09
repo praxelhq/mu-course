@@ -1,0 +1,64 @@
+- link "Skip to content":
+  - /url: "#view"
+- banner:
+  - link "SportPath home":
+    - /url: "#/"
+    - generic: SportPath
+  - navigation "Primary":
+    - link "Home":
+      - /url: "#/"
+      - generic: Home
+    - link "Sports":
+      - /url: "#/browse"
+      - generic: Sports
+    - link "Videos":
+      - /url: "#/videos"
+      - generic: Videos
+    - link "Coaches":
+      - /url: "#/experts"
+      - generic: Coaches
+    - link "Play near me":
+      - /url: "#/near"
+      - generic: Play near me
+    - link "My progress" [active]:
+      - /url: "#/progress"
+      - generic: My progress
+  - button "Log in":
+    - text: Log in
+- main:
+  - heading "My progress" [level=2]:
+    - text: My progress
+  - paragraph: Everything you’ve started, in one place.
+  - heading "No journeys started yet" [level=3]
+  - paragraph: Pick a sport and a level to begin — your progress will show up here.
+  - link "Browse sports":
+    - /url: "#/browse"
+- contentinfo:
+  - link "SportPath":
+    - /url: "#/"
+    - generic: SportPath
+  - paragraph: Start, understand, practise and improve at any sport.
+  - heading "Explore" [level=4]
+  - link "All sports":
+    - /url: "#/browse"
+  - link "Video library":
+    - /url: "#/videos"
+  - link "Coaches":
+    - /url: "#/experts"
+  - link "Play near me":
+    - /url: "#/near"
+  - heading "Company" [level=4]
+  - link "About us":
+    - /url: "#/about"
+  - link "Contact us":
+    - /url: "#/contact"
+  - button "Settings"
+  - heading "Legal" [level=4]
+  - link "Terms & Conditions":
+    - /url: "#/terms"
+  - link "Privacy Policy":
+    - /url: "#/privacy"
+  - paragraph: © 2026 SportPath · An independent MVP · Educational content only — not professional coaching or medical advice · No third-party video is hosted or redistributed.
+- iframe [id="nl-badge-frame"]:
+  - button "Powered by Netlify — build your own site":
+    - generic: Powered by Netlify

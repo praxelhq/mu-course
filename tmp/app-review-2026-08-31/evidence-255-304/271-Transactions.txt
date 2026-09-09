@@ -1,0 +1,125 @@
+- main:
+  - iframe [active]:
+    - complementary:
+      - link "V VAULTPLAYCRYPTO GAMING":
+        - /url: "#casino"
+        - generic: V
+        - generic: VAULTPLAYCRYPTO GAMING
+      - navigation "Primary navigation":
+        - button "01 Casino":
+          - generic: "01"
+          - text: Casino
+        - button "02 Crash":
+          - generic: "02"
+          - text: Crash
+        - button "03 Dice":
+          - generic: "03"
+          - text: Dice
+        - button "04 Coin Flip":
+          - generic: "04"
+          - text: Coin Flip
+        - button "05 Transactions" [active]:
+          - generic: "05"
+          - text: Transactions
+        - button "06 Fairness":
+          - generic: "06"
+          - text: Fairness
+        - button "07 Account":
+          - generic: "07"
+          - text: Account
+      - generic: Demo mode
+      - generic: Simulated environment
+    - main:
+      - generic: Demo Network
+      - generic: 2,460.00 USDC
+      - button "Connect Wallet"
+      - generic: Operations / Local Ledger
+      - heading "Transaction history." [level=1]
+      - textbox "Search transaction ID"
+      - combobox:
+        - option "All games" [selected]
+        - option "Crash"
+        - option "Dice"
+        - option "Coin Flip"
+      - combobox:
+        - option "All results" [selected]
+        - option "WIN"
+        - option "LOSS"
+      - combobox:
+        - option "All dates" [selected]
+        - option "Today"
+      - button "Clear filters"
+      - table:
+        - rowgroup:
+          - row "Date Type Game Amount Result Payout Status Transaction ID":
+            - columnheader "Date"
+            - columnheader "Type"
+            - columnheader "Game"
+            - columnheader "Amount"
+            - columnheader "Result"
+            - columnheader "Payout"
+            - columnheader "Status"
+            - columnheader "Transaction ID"
+        - rowgroup:
+          - row "Aug 31 · 01:35 WIN Dice −$10.00 20.11 +$20.00 Confirmed TX-E8787918":
+            - cell "Aug 31 · 01:35"
+            - cell "WIN"
+            - cell "Dice"
+            - cell "−$10.00"
+            - cell "20.11"
+            - cell "+$20.00"
+            - cell "Confirmed":
+              - generic: Confirmed
+            - cell "TX-E8787918"
+          - row "Aug 25 · 20:14 WIN Crash −$10.00 3.89x +$38.90 Confirmed TX-8F4A91D2":
+            - cell "Aug 25 · 20:14"
+            - cell "WIN"
+            - cell "Crash"
+            - cell "−$10.00"
+            - cell "3.89x"
+            - cell "+$38.90"
+            - cell "Confirmed":
+              - generic: Confirmed
+            - cell "TX-8F4A91D2"
+          - row "Aug 25 · 19:42 LOSS Dice −$12.00 82.14 — Confirmed TX-91B03FC7":
+            - cell "Aug 25 · 19:42"
+            - cell "LOSS"
+            - cell "Dice"
+            - cell "−$12.00"
+            - cell "82.14"
+            - cell "—"
+            - cell "Confirmed":
+              - generic: Confirmed
+            - cell "TX-91B03FC7"
+          - row "Aug 25 · 19:05 WIN Coin Flip −$15.00 HEADS +$29.40 Confirmed TX-44E8A20C":
+            - cell "Aug 25 · 19:05"
+            - cell "WIN"
+            - cell "Coin Flip"
+            - cell "−$15.00"
+            - cell "HEADS"
+            - cell "+$29.40"
+            - cell "Confirmed":
+              - generic: Confirmed
+            - cell "TX-44E8A20C"
+          - row "Aug 25 · 18:31 LOSS Crash −$8.00 1.21x — Confirmed TX-A1207E93":
+            - cell "Aug 25 · 18:31"
+            - cell "LOSS"
+            - cell "Crash"
+            - cell "−$8.00"
+            - cell "1.21x"
+            - cell "—"
+            - cell "Confirmed":
+              - generic: Confirmed
+            - cell "TX-A1207E93"
+          - row "Aug 25 · 17:54 WIN Dice −$20.00 31.07 +$40.00 Confirmed TX-9D113F44":
+            - cell "Aug 25 · 17:54"
+            - cell "WIN"
+            - cell "Dice"
+            - cell "−$20.00"
+            - cell "31.07"
+            - cell "+$40.00"
+            - cell "Confirmed":
+              - generic: Confirmed
+            - cell "TX-9D113F44"
+    - status
+- alert

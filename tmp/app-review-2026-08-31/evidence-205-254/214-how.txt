@@ -1,0 +1,42 @@
+- banner:
+  - link "IdeaCheck":
+    - /url: /
+    - generic: IdeaCheck
+  - navigation "Main":
+    - link "Home":
+      - /url: /
+    - link "How It Works" [active]:
+      - /url: /how-it-works
+    - link "Test an Idea":
+      - /url: /test
+- main:
+  - heading "How it works" [level=1]
+  - paragraph: You describe your idea and a few basics about the customer, market and price. IdeaCheck then runs an AI assessment of what you wrote, scores it across seven factors and points out the assumptions you should test before spending real time or money.
+  - heading "Score weighting" [level=2]
+  - paragraph: Each factor is scored 0–100 and combined using fixed weights.
+  - list:
+    - generic: Customer Need
+    - generic: 20%
+    - generic: Market Opportunity
+    - generic: 20%
+    - generic: Competition
+    - generic: 10%
+    - generic: Business Model
+    - generic: 15%
+    - generic: Pricing
+    - generic: 10%
+    - generic: Differentiation
+    - generic: 15%
+    - generic: Risk / Feasibility
+    - generic: 10%
+  - heading "What this is not" [level=2]
+  - paragraph: IdeaCheck does not predict whether a business will succeed. It works only from the information you provide, so a thin description gives a thin assessment. Treat the output as a starting point for research and customer conversations.
+  - link "Test an Idea":
+    - /url: /test
+- contentinfo:
+  - paragraph: IdeaCheck provides an initial assessment only — not a prediction of business success.
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1cp0k2xg018t6rmxtexvv86m7z?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

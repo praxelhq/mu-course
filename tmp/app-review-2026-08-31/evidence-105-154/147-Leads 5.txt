@@ -1,0 +1,228 @@
+- complementary:
+  - generic: V
+  - heading "Vow" [level=1]
+  - generic: Vendor OS
+  - generic: Run the business
+  - navigation:
+    - button "Dashboard"
+    - button "Leads 5":
+      - text: Leads
+      - generic: "5"
+    - button "Quotations"
+    - button "Bookings 5":
+      - text: Bookings
+      - generic: "5"
+    - button "Payments"
+    - button "Calendar"
+    - button "Tasks 8":
+      - text: Tasks
+      - generic: "8"
+    - button "Clients"
+    - button "Analytics"
+    - button "Settings"
+    - button "Client portal ↗"
+  - generic: Studio Vermillion
+  - text: Professional plan
+  - button "Manage"
+- banner:
+  - heading "Leads" [level=2]
+  - paragraph: Every enquiry, from first message to signed contract
+  - button "+ Add lead"
+  - button "New quotation"
+- button "2 New":
+  - generic: "2"
+  - generic: New
+- button "1 Contacted":
+  - generic: "1"
+  - generic: Contacted
+- button "1 Quotation Sent":
+  - generic: "1"
+  - generic: Quotation Sent
+- button "1 Negotiation":
+  - generic: "1"
+  - generic: Negotiation
+- button "5 Booked":
+  - generic: "5"
+  - generic: Booked
+- button "1 Lost":
+  - generic: "1"
+  - generic: Lost
+- textbox "Search couple, venue or service…"
+- button "All leads (11)"
+- button "+ Add lead"
+- table:
+  - rowgroup:
+    - row "Couple Wedding date Venue Service Budget Source Status":
+      - columnheader "Couple"
+      - columnheader "Wedding date"
+      - columnheader "Venue"
+      - columnheader "Service"
+      - columnheader "Budget"
+      - columnheader "Source"
+      - columnheader "Status"
+  - rowgroup:
+    - row "Akshat & Radhika Radhika Mehra 12 Dec 2026 114 days away The Leela Palace New Delhi Wedding film + candid ₹4,50,000 Instagram Booked":
+      - cell "Akshat & Radhika Radhika Mehra":
+        - generic: Akshat & Radhika
+        - generic: Radhika Mehra
+      - cell "12 Dec 2026 114 days away":
+        - text: 12 Dec 2026
+        - generic: 114 days away
+      - cell "The Leela Palace New Delhi":
+        - text: The Leela Palace
+        - generic: New Delhi
+      - cell "Wedding film + candid"
+      - cell "₹4,50,000"
+      - cell "Instagram"
+      - cell "Booked":
+        - generic: Booked
+    - row "Aarav & Meera Aarav Sethi 21 Nov 2026 93 days away Rambagh Palace Jaipur Full 4-day coverage ₹7,20,000 Referral — Taj weddings desk Booked":
+      - cell "Aarav & Meera Aarav Sethi":
+        - generic: Aarav & Meera
+        - generic: Aarav Sethi
+      - cell "21 Nov 2026 93 days away":
+        - text: 21 Nov 2026
+        - generic: 93 days away
+      - cell "Rambagh Palace Jaipur":
+        - text: Rambagh Palace
+        - generic: Jaipur
+      - cell "Full 4-day coverage"
+      - cell "₹7,20,000"
+      - cell "Referral — Taj weddings desk"
+      - cell "Booked":
+        - generic: Booked
+    - row "Rohan & Ananya Ananya Iyer 8 Feb 2027 172 days away ITC Grand Bharat Gurugram Pre-wedding + wedding ₹3,80,000 WedMeGood Negotiation":
+      - cell "Rohan & Ananya Ananya Iyer":
+        - generic: Rohan & Ananya
+        - generic: Ananya Iyer
+      - cell "8 Feb 2027 172 days away":
+        - text: 8 Feb 2027
+        - generic: 172 days away
+      - cell "ITC Grand Bharat Gurugram":
+        - text: ITC Grand Bharat
+        - generic: Gurugram
+      - cell "Pre-wedding + wedding"
+      - cell "₹3,80,000"
+      - cell "WedMeGood"
+      - cell "Negotiation":
+        - generic: Negotiation
+    - row "Karan & Ishita Ishita Bansal 4 Dec 2026 106 days away Taj Palace New Delhi Candid + traditional ₹5,60,000 Website enquiry Booked":
+      - cell "Karan & Ishita Ishita Bansal":
+        - generic: Karan & Ishita
+        - generic: Ishita Bansal
+      - cell "4 Dec 2026 106 days away":
+        - text: 4 Dec 2026
+        - generic: 106 days away
+      - cell "Taj Palace New Delhi":
+        - text: Taj Palace
+        - generic: New Delhi
+      - cell "Candid + traditional"
+      - cell "₹5,60,000"
+      - cell "Website enquiry"
+      - cell "Booked":
+        - generic: Booked
+    - row "Devansh & Tanya Tanya Kapoor 18 Jan 2027 151 days away The Oberoi Gurgaon Sangeet + wedding film ₹2,50,000 Instagram Booked":
+      - cell "Devansh & Tanya Tanya Kapoor":
+        - generic: Devansh & Tanya
+        - generic: Tanya Kapoor
+      - cell "18 Jan 2027 151 days away":
+        - text: 18 Jan 2027
+        - generic: 151 days away
+      - cell "The Oberoi Gurgaon":
+        - text: The Oberoi
+        - generic: Gurgaon
+      - cell "Sangeet + wedding film"
+      - cell "₹2,50,000"
+      - cell "Instagram"
+      - cell "Booked":
+        - generic: Booked
+    - row "Nikhil & Aisha Aisha Qureshi 14 Feb 2027 178 days away ITC Grand Bharat Gurugram Nikaah + reception ₹3,40,000 WhatsApp enquiry Booked":
+      - cell "Nikhil & Aisha Aisha Qureshi":
+        - generic: Nikhil & Aisha
+        - generic: Aisha Qureshi
+      - cell "14 Feb 2027 178 days away":
+        - text: 14 Feb 2027
+        - generic: 178 days away
+      - cell "ITC Grand Bharat Gurugram":
+        - text: ITC Grand Bharat
+        - generic: Gurugram
+      - cell "Nikaah + reception"
+      - cell "₹3,40,000"
+      - cell "WhatsApp enquiry"
+      - cell "Booked":
+        - generic: Booked
+    - row "Vikram & Sneha Sneha Deshpande 14 Feb 2027 178 days away Taj Palace New Delhi Wedding film ₹4,10,000 Wedding Asia expo Contacted":
+      - cell "Vikram & Sneha Sneha Deshpande":
+        - generic: Vikram & Sneha
+        - generic: Sneha Deshpande
+      - cell "14 Feb 2027 178 days away":
+        - text: 14 Feb 2027
+        - generic: 178 days away
+      - cell "Taj Palace New Delhi":
+        - text: Taj Palace
+        - generic: New Delhi
+      - cell "Wedding film"
+      - cell "₹4,10,000"
+      - cell "Wedding Asia expo"
+      - cell "Contacted":
+        - generic: Contacted
+    - row "Yash & Prisha Prisha Ghosh 2 Mar 2027 194 days away The Oberoi Gurgaon Candid + album ₹2,90,000 Referral — Meera Sethi Quotation Sent":
+      - cell "Yash & Prisha Prisha Ghosh":
+        - generic: Yash & Prisha
+        - generic: Prisha Ghosh
+      - cell "2 Mar 2027 194 days away":
+        - text: 2 Mar 2027
+        - generic: 194 days away
+      - cell "The Oberoi Gurgaon":
+        - text: The Oberoi
+        - generic: Gurgaon
+      - cell "Candid + album"
+      - cell "₹2,90,000"
+      - cell "Referral — Meera Sethi"
+      - cell "Quotation Sent":
+        - generic: Quotation Sent
+    - row "Arjun & Diya Diya Malhotra 25 Jan 2027 158 days away Rambagh Palace Jaipur Full coverage ₹5,20,000 Instagram New":
+      - cell "Arjun & Diya Diya Malhotra":
+        - generic: Arjun & Diya
+        - generic: Diya Malhotra
+      - cell "25 Jan 2027 158 days away":
+        - text: 25 Jan 2027
+        - generic: 158 days away
+      - cell "Rambagh Palace Jaipur":
+        - text: Rambagh Palace
+        - generic: Jaipur
+      - cell "Full coverage"
+      - cell "₹5,20,000"
+      - cell "Instagram"
+      - cell "New":
+        - generic: New
+    - row "Manav & Sara Manav Chopra 29 Nov 2026 101 days away ITC Grand Bharat Gurugram Reception film ₹1,80,000 WedMeGood New":
+      - cell "Manav & Sara Manav Chopra":
+        - generic: Manav & Sara
+        - generic: Manav Chopra
+      - cell "29 Nov 2026 101 days away":
+        - text: 29 Nov 2026
+        - generic: 101 days away
+      - cell "ITC Grand Bharat Gurugram":
+        - text: ITC Grand Bharat
+        - generic: Gurugram
+      - cell "Reception film"
+      - cell "₹1,80,000"
+      - cell "WedMeGood"
+      - cell "New":
+        - generic: New
+    - row "Sahil & Prerna Prerna Nair 8 Nov 2026 80 days away The Leela Palace Udaipur Destination coverage ₹6,10,000 Referral Lost":
+      - cell "Sahil & Prerna Prerna Nair":
+        - generic: Sahil & Prerna
+        - generic: Prerna Nair
+      - cell "8 Nov 2026 80 days away":
+        - text: 8 Nov 2026
+        - generic: 80 days away
+      - cell "The Leela Palace Udaipur":
+        - text: The Leela Palace
+        - generic: Udaipur
+      - cell "Destination coverage"
+      - cell "₹6,10,000"
+      - cell "Referral"
+      - cell "Lost":
+        - generic: Lost

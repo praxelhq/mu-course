@@ -1,0 +1,115 @@
+- banner:
+  - button "Back":
+    - generic: arrow_back
+  - button "Life Admin":
+    - heading "Life Admin" [level=1]
+  - navigation "Main Navigation":
+    - button "Home"
+    - button "About"
+    - button "Contact"
+    - button "Tasks & Domains"
+    - button "Calendar"
+    - button "Settings"
+  - button "add New Task" [active]:
+    - generic: add
+    - generic: New Task
+  - button "Notifications":
+    - generic: notifications
+- main:
+  - generic: Overview & Priorities
+  - heading "Good morning, Alex" [level=2]
+  - paragraph: Here is the current state of your personal administration.
+  - generic: task_alt
+  - generic: Active
+  - generic: "6"
+  - generic: Active Tasks
+  - generic: warning
+  - generic: Alert
+  - generic: "4"
+  - generic: Require Attention
+  - heading "Overdue Filings (1)" [level=3]
+  - heading "Renew Passport" [level=4]
+  - paragraph: Ministry of External Affairs
+  - generic: Expired 2 days ago
+  - generic: flag
+  - generic: High Priority
+  - generic: Personal
+  - paragraph: Next Action
+  - paragraph: Check photo requirements (Indian Passport size)
+  - button "Open Renew Passport":
+    - generic: arrow_forward
+  - heading "Due Soon (2)" [level=3]
+  - heading "GST Filing" [level=4]
+  - paragraph: Central Board of Indirect Taxes and Customs
+  - generic: Due in 5 days
+  - generic: flag
+  - generic: Medium Priority
+  - generic: Finance
+  - paragraph: Next Action
+  - paragraph: Gather invoices for GST portal
+  - button "Open GST Filing":
+    - generic: arrow_forward
+  - heading "Pay Electricity Bill" [level=4]
+  - paragraph: State Electricity Board
+  - generic: Due in 3 days (15 Oct)
+  - generic: flag
+  - generic: High Priority
+  - generic: Utilities
+  - paragraph: Next Action
+  - paragraph: Authorize payment via UPI or Netbanking
+  - button "Open Pay Electricity Bill":
+    - generic: arrow_forward
+  - heading "Upcoming (3)" [level=3]
+  - heading "Dental Checkup" [level=4]
+  - paragraph: Apollo Dental Clinic
+  - generic: Nov 15
+  - paragraph: Next Action
+  - paragraph: Call clinic to confirm time
+  - button "Open Dental Checkup":
+    - generic: arrow_forward
+  - heading "Car Insurance Renewal" [level=4]
+  - paragraph: HDFC ERGO General Insurance
+  - generic: In 2 weeks
+  - paragraph: Next Action
+  - paragraph: Compare comprehensive quote with zero dep add-on
+  - button "Open Car Insurance Renewal":
+    - generic: arrow_forward
+  - heading "Apartment Maintenance & Rent" [level=4]
+  - paragraph: Prestige Lakeview Resident RWA
+  - generic: Oct 31
+  - paragraph: Next Action
+  - paragraph: Transfer monthly rent & society maintenance
+  - button "Open Apartment Maintenance & Rent":
+    - generic: arrow_forward
+  - generic: add
+  - textbox "What needs doing? e.g., Passport renewal..."
+  - button "Add"
+- contentinfo:
+  - heading "Life Admin" [level=2]
+  - paragraph: Autonomous personal logistics, compliance monitoring, and administrative governance for discerning individuals.
+  - link "X / Twitter":
+    - /url: https://x.com
+    - generic: flutter_dash
+  - link "LinkedIn":
+    - /url: https://linkedin.com
+    - generic: work
+  - link "GitHub":
+    - /url: https://github.com
+    - generic: code
+  - link "Discord Community":
+    - /url: https://discord.com
+    - generic: forum
+  - heading "Navigation" [level=3]
+  - list:
+    - button "Executive Dashboard"
+    - button "About Platform"
+    - button "Contact Concierge"
+    - button "Domains & Categories"
+    - button "Timeline & Calendar"
+  - heading "Privacy & Trust" [level=3]
+  - paragraph: Zero-knowledge document storage, client-side encryption, and strict GDPR & Indian DPDP Act compliance.
+  - button "Privacy Policy"
+  - button "Terms of Governance"
+  - button "Security Inquiries"
+  - paragraph: © 2026 Life Admin Executive. All rights reserved.
+  - generic: Core Systems Operational

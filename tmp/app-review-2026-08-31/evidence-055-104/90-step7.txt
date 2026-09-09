@@ -1,0 +1,32 @@
+- main:
+  - button "Back":
+  - progressbar
+  - heading "Your suggested day" [level=1]
+  - paragraph: Edit anything. Then we're live.
+  - textbox "Time for Wake up": 07:00
+  - textbox "Commitment name": Wake up
+  - button "Remove"
+  - textbox "Time for Drink water": 07:10
+  - textbox "Commitment name": Drink water
+  - button "Remove"
+  - textbox "Time for Exercise": 07:20
+  - textbox "Commitment name": Exercise
+  - button "Remove"
+  - textbox "Time for Shower": 08:00
+  - textbox "Commitment name": Shower
+  - button "Remove"
+  - textbox "Time for Deep work": 09:00
+  - textbox "Commitment name": Deep work
+  - button "Remove"
+  - textbox "Time for Sleep on time": 23:00
+  - textbox "Commitment name": Sleep on time
+  - button "Remove"
+  - paragraph: First entry starts at 7:00 AM.
+  - button "Start with Naggy" [active]:
+    - text: Start with Naggy
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1y077zn9zp920rn02hgwhd1kn0?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

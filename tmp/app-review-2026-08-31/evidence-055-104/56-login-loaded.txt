@@ -1,0 +1,40 @@
+- banner:
+  - link "Brainchain":
+    - /url: /
+    - text: Brainchain
+  - navigation:
+    - link "Projects":
+      - /url: /projects
+    - link "About":
+      - /url: /about
+  - link "Log in" [active]:
+    - /url: /login
+  - link "Get started":
+    - /url: /signup
+    - generic: Get started
+- main:
+  - paragraph: Welcome back
+  - heading "Log in." [level=1]
+  - button "Magic link"
+  - button "Password"
+  - generic: Email
+  - textbox "Email":
+    - /placeholder: you@example.com
+  - button "Send magic link":
+    - generic: Send magic link
+  - paragraph:
+    - text: No account?
+    - link "Sign up":
+      - /url: /signup
+- contentinfo:
+  - link "Projects":
+    - /url: /projects
+  - link "About":
+    - /url: /about
+  - link "Log in":
+    - /url: /login
+  - link "Get started":
+    - /url: /signup
+  - paragraph: Brainchain — the project layer that begins where professional networking ends.
+  - paragraph: Prototype data only. No real endorsements or verification claims.
+- alert: Brainchain — Meet people worth building with.

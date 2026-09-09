@@ -1,0 +1,33 @@
+{
+  "reviewer": "reliability",
+  "findings": [
+    {
+      "title": "Allow live-session reconnects during agent-health outages",
+      "severity": "P1",
+      "file": "lms/app/api/interview/token/route.ts",
+      "line": 54,
+      "why_it_matters": "A student who is already in a live realtime interview cannot rejoin after a transient browser or network disconnect whenever the global agent heartbeat is briefly unavailable. The new client immediately requests a fresh token on disconnect, but this route returns 503 before it reaches the existing-session resume path, even though the room's already-running agent can still be healthy. Gate only creation of a new attempt on the global heartbeat; preserve token minting for an existing realtime interview and let the room watchdog retain the no-agent protection.",
+      "autofix_class": "gated_auto",
+      "owner": "downstream-resolver",
+      "requires_verification": true,
+      "suggested_fix": "Move the realtimeAgentAvailable check into the !existing branch, after the existing transport check and before startInterview/concurrency admission. Keep the existing realtime session's token-mint path available, then add route tests for both a rejected new interview and a successful resume when realtimeAgentAvailable is false.",
+      "confidence": 75,
+      "evidence": [
+        "lms/app/api/interview/token/route.ts:54 -- agentReady = await realtimeAgentAvailable(prisma, now);",
+        "lms/app/api/interview/token/route.ts:61-68 -- if (!agentReady) { return Response.json(..., { status: 503 }); }",
+        "lms/app/(room)/interview/live/interview-client.tsx:78-87 -- reconnect sets mode to reconnecting then calls requestRealtime(true), which POSTs this route."
+      ],
+      "pre_existing": false
+    }
+  ],
+  "residual_risks": [
+    "The global heartbeat proves a compatible agent process, not that LiveKit dispatched an agent job for this specific room. The 30-second client watchdog remains the only room-level failure detector, so a newly admitted student can still wait before recovery begins.",
+    "Agent turns are posted in untracked background tasks (lms/agent/main.py:1023) while normal completion is requested at line 1084. A slow final turn POST can race completion and be rejected after the interview becomes completed; this behavior predates the reviewed hunk but is material to transcript/grading completeness.",
+    "LiveKit Egress failures remain explicitly best-effort. The current patch does not turn an exhausted Egress quota into a blocking health condition, so a completed interview can still be graded without a room recording."
+  ],
+  "testing_gaps": [
+    "No route test covers reconnecting an existing realtime interview while realtimeAgentAvailable returns false; this is the failure path introduced by the new admission gate.",
+    "No integration test drops and rejoins a LiveKit participant, verifies the same interview ID/agent job survives, and verifies subsequent agent turns are persisted before automatic grading.",
+    "No provider integration test constructs the Deepgram/ElevenLabs fallback with the deployed plugin versions and exercises a Sarvam failure; the new test only source-asserts the explicit ElevenLabs argument."
+  ]
+}

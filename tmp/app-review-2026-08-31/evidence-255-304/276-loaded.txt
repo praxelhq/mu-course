@@ -1,0 +1,39 @@
+- banner:
+  - link "Claude home":
+    - /url: /
+    - generic: 
+  - button "GharOS":
+    - generic: GharOS
+    - generic: 
+  - generic: Content is user-generated and unverified.
+  - button "Share, shared with anyone who has the link":
+    - generic: Share
+  - status
+  - alert
+  - link "Sign in":
+    - /url: /login?returnTo=%2Fcode%2Fartifact%2F66f06408-2363-41b3-b2bc-43b42c82d12b%3Fopen_in_browser%3D1%26via%3Duser_open%26org%3Da0f81c5b-82b4-40de-b1ce-8b89c2e4ccd9
+    - generic: Sign in
+  - alert
+  - status
+- main:
+  - iframe [active] [id="frame-content"]:
+    - main:
+      - generic: 🏡
+      - heading "GharOS" [level=2]
+      - paragraph: Keep track of who came, who's owed what, and when they're off — without an argument at the end of the month.
+      - generic: 📋
+      - generic: Attendance, not deductions
+      - generic: A record of the days worked. What you pay is still your call.
+      - generic: 📄
+      - generic: Contracts both sides agree to
+      - generic: Work, rate and leaves in writing, changeable any time.
+      - generic: 🔒
+      - generic: Stays on this device
+      - generic: No account, no server. Your data never leaves this browser.
+      - button "Set up my home"
+      - button "Explore a sample household"
+      - paragraph: A student project. Aadhaar and PAN capture is simulated — nothing real is uploaded or stored.
+    - navigation
+- status
+- status
+- status

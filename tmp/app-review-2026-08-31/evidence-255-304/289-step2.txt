@@ -1,0 +1,24 @@
+- main:
+  - button "Go back":
+  - generic: 2/5
+  - heading "📍 How far are you willing to go?" [level=2]
+  - paragraph: From where the group is now.
+  - button "≤ 2 km Walking distance-ish":
+    - generic: ≤ 2 km
+    - generic: Walking distance-ish
+  - button "≤ 5 km Quick ride":
+    - generic: ≤ 5 km
+    - generic: Quick ride
+  - button "≤ 10 km Worth the trip":
+    - generic: ≤ 10 km
+    - generic: Worth the trip
+  - button "Anywhere Road trip energy":
+    - generic: Anywhere
+    - generic: Road trip energy
+  - button "Continue" [disabled]:
+    - text: Continue
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7kh9wqajyf8xxsm9vc3sqtdh9t?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

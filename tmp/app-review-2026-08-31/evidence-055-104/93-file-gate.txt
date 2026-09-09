@@ -1,0 +1,24 @@
+- strong: Sign in to join the hunt
+- text: You can browse everything, but you need your Masters’ Union account to file a case.
+- button "Sign in with Google"
+- navigation:
+  - link "Register":
+    - /url: /
+    - generic: ☰
+    - text: Register
+  - link "Rankings":
+    - /url: /rankings
+    - generic: ▤
+    - text: Rankings
+  - link "File" [active]:
+    - /url: /new
+    - generic: ＋
+    - text: File
+  - link "Roster":
+    - /url: /roster
+    - generic: ⌕
+    - text: Roster
+  - link "Sign in":
+    - /url: /new
+    - generic: →
+    - text: Sign in

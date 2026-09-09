@@ -1,0 +1,22 @@
+- alert
+- main:
+  - paragraph: Zoe
+  - heading "How can we help?" [level=1]
+  - button "Chat": Chat
+  - button "My requests": My requests
+  - paragraph: Hey, I'm Zoe! You're not checked into a property yet — pick one from Home and I can help with requests and local tips.
+  - textbox "Need towels, wifi help, dinner tips…"
+  - button "Send"
+  - navigation:
+    - link "Home":
+      - /url: /
+      - generic: Home
+    - link "My Stay":
+      - /url: /stay
+      - generic: My Stay
+    - link "Concierge":
+      - /url: /chat
+      - generic: Concierge
+    - link "Profile":
+      - /url: /profile
+      - generic: Profile

@@ -1,0 +1,87 @@
+- banner:
+  - button "StreamVibe home":
+    - generic: StreamVibe
+  - navigation "Primary":
+    - button "Home":
+      - generic: Home
+    - button "Discover" [active]:
+      - generic: Discover
+    - button "My Library 1":
+      - generic: My Library
+      - generic: "1"
+  - button "Search":
+  - generic: SV
+- main:
+  - paragraph: Discover
+  - heading "Moods worth exploring" [level=1]
+  - paragraph: Tap any vibe and StreamVibe curates picks for it instantly.
+  - region "Quick mood discovery":
+    - heading "Quick mood discovery" [level=2]
+    - button "Movie Cyberpunk Neon Futuristic • Dark • Atmospheric":
+      - generic: Movie
+      - generic: Cyberpunk Neon
+      - generic: Futuristic • Dark • Atmospheric
+    - button "Playlist Rainy Day Lofi Calm • Melancholic • Cozy":
+      - generic: Playlist
+      - generic: Rainy Day Lofi
+      - generic: Calm • Melancholic • Cozy
+    - button "TV Mind-Bending Mystery Twists • Suspense • Psychological":
+      - generic: TV
+      - generic: Mind-Bending Mystery
+      - generic: Twists • Suspense • Psychological
+    - button "Playlist High Energy Workout Driving • Loud • Relentless":
+      - generic: Playlist
+      - generic: High Energy Workout
+      - generic: Driving • Loud • Relentless
+    - button "Movie Cozy Sunday Romance Warm • Emotional • Feel-good":
+      - generic: Movie
+      - generic: Cozy Sunday Romance
+      - generic: Warm • Emotional • Feel-good
+    - button "TV Epic Fantasy Saga Mythic • Sweeping • Adventurous":
+      - generic: TV
+      - generic: Epic Fantasy Saga
+      - generic: Mythic • Sweeping • Adventurous
+  - region "Popular vibe categories":
+    - heading "Popular vibe categories" [level=2]
+    - button "Sci-Fi Cyberpunk Worlds High-tech, low-life dystopian journeys.":
+      - text: Sci-Fi
+      - heading "Cyberpunk Worlds" [level=3]
+      - paragraph: High-tech, low-life dystopian journeys.
+    - button "Synthwave Night Drive Beats Pulsing electronic rhythms for late hours.":
+      - text: Synthwave
+      - heading "Night Drive Beats" [level=3]
+      - paragraph: Pulsing electronic rhythms for late hours.
+    - button "Suspense Psychological Thrillers Edge-of-your-seat narratives and twists.":
+      - text: Suspense
+      - heading "Psychological Thrillers" [level=3]
+      - paragraph: Edge-of-your-seat narratives and twists.
+    - button "Fantasy Anime Realms Breathtaking hand-drawn animation worlds.":
+      - text: Fantasy
+      - heading "Anime Realms" [level=3]
+      - paragraph: Breathtaking hand-drawn animation worlds.
+  - region "Trending Vibes":
+    - heading "Trending Vibes" [level=2]
+    - paragraph: Not sure what you want? Start from one of these.
+    - button "Something mind-bending Twists you will think about for days":
+      - generic: Something mind-bending
+      - generic: Twists you will think about for days
+    - button "Perfect movie for tonight One great pick, no scrolling":
+      - generic: Perfect movie for tonight
+      - generic: One great pick, no scrolling
+    - button "Something like Stranger Things Nostalgic, eerie, ensemble cast":
+      - generic: Something like Stranger Things
+      - generic: Nostalgic, eerie, ensemble cast
+    - button "Feel-good weekend watch Warm, funny, easy company":
+      - generic: Feel-good weekend watch
+      - generic: Warm, funny, easy company
+    - button "Dark psychological thrillers Slow dread, unreliable minds":
+      - generic: Dark psychological thrillers
+      - generic: Slow dread, unreliable minds
+    - button "Best shows to binge Clear a whole weekend":
+      - generic: Best shows to binge
+      - generic: Clear a whole weekend
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_7cmjn513my9f2tfgz1e0c0v50v?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

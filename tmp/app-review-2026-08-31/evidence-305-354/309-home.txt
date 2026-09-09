@@ -1,0 +1,141 @@
+- banner:
+  - img "SuppWise — track. supplement. improve."
+  - generic: Home
+  - link "Profile":
+    - /url: /profile
+    - generic: person
+- main:
+  - heading "Good morning, Abhinav." [level=1]
+  - paragraph: Here is your daily vitality overview.
+  - heading "Daily Habits" [level=2]
+  - generic: 4/4 Completed
+  - button "Water":
+    - generic: water_drop
+    - generic: Water
+  - button "Sleep":
+    - generic: bedtime
+    - generic: Sleep
+  - button "Supps":
+    - generic: medication
+    - generic: Supps
+  - button "Move":
+    - generic: directions_run
+    - generic: Move
+  - heading "Today's Supplements" [level=2]
+  - generic: 0/3 Taken
+  - button "Creatine Monohydrate 5g daily · Morning":
+    - generic: fitness_center
+    - generic: Creatine Monohydrate
+    - generic: 5g daily · Morning
+    - generic: radio_button_unchecked
+  - button "Vitamin D3 + K2 5000 IU · With breakfast":
+    - generic: wb_sunny
+    - generic: Vitamin D3 + K2
+    - generic: 5000 IU · With breakfast
+    - generic: radio_button_unchecked
+  - button "Iron Bisglycinate 25 mg · Morning, fasted":
+    - generic: medication
+    - generic: Iron Bisglycinate
+    - generic: 25 mg · Morning, fasted
+    - generic: radio_button_unchecked
+  - generic: search
+  - textbox "What can I help you with today?"
+  - button "Ask SuppWise AI":
+    - generic: arrow_forward
+  - heading "Optimization Goals" [level=2]
+  - link "Improve Sleep Deep & REM":
+    - /url: /advisor?q=Which+supplements+help+me+improve+sleep%3F
+    - generic: bed
+    - heading "Improve Sleep" [level=3]
+    - paragraph: Deep & REM
+  - link "Gain Muscle Hypertrophy":
+    - /url: /advisor?q=Which+supplements+help+me+gain+muscle%3F
+    - generic: fitness_center
+    - heading "Gain Muscle" [level=3]
+    - paragraph: Hypertrophy
+  - link "Lose Fat Metabolic Rate":
+    - /url: /advisor?q=Which+supplements+help+me+lose+fat%3F
+    - generic: monitor_weight
+    - heading "Lose Fat" [level=3]
+    - paragraph: Metabolic Rate
+  - link "Increase Energy ATP Production":
+    - /url: /advisor?q=Which+supplements+help+me+increase+energy%3F
+    - generic: bolt
+    - heading "Increase Energy" [level=3]
+    - paragraph: ATP Production
+  - link "Better Recovery Inflammation":
+    - /url: /advisor?q=Which+supplements+help+me+better+recovery%3F
+    - generic: healing
+    - heading "Better Recovery" [level=3]
+    - paragraph: Inflammation
+  - link "Brain Focus Nootropics":
+    - /url: /advisor?q=Which+supplements+help+me+brain+focus%3F
+    - generic: psychology
+    - heading "Brain Focus" [level=3]
+    - paragraph: Nootropics
+  - link "Blood Test Review Biomarker analysis":
+    - /url: /bloodwork
+    - generic: bloodtype
+    - heading "Blood Test Review" [level=3]
+    - paragraph: Biomarker analysis
+    - generic: arrow_forward
+  - link "Current Stack 3 supplements All taken today":
+    - /url: /stack
+    - generic: science
+    - heading "Current Stack" [level=3]
+    - generic: "3"
+    - generic: supplements
+    - paragraph:
+      - generic: check_circle
+      - text: All taken today
+  - link "Energy Levels +12% this week":
+    - /url: /progress
+    - heading "Energy Levels" [level=3]
+    - paragraph:
+      - generic: trending_up
+      - text: +12% this week
+  - generic: alarm
+  - paragraph: Evening reminder
+  - paragraph: Magnesium · 21:30
+  - link "Manage":
+    - /url: /stack
+  - heading "Trending Research" [level=2]
+  - generic: View All
+  - article:
+    - img "New study links Ashwagandha to 15% reduction in baseline cortisol."
+    - generic: menu_book
+    - text: PubMed
+    - generic: "[ 94% CONFIDENCE ]"
+    - heading "New study links Ashwagandha to 15% reduction in baseline cortisol." [level=3]
+  - article:
+    - img "Magnesium Threonate shown to enhance REM sleep latency in adults over 30."
+    - generic: science
+    - text: Clinical Trial
+    - generic: "[ 88% CONFIDENCE ]"
+    - heading "Magnesium Threonate shown to enhance REM sleep latency in adults over 30." [level=3]
+- navigation:
+  - link "Home":
+    - /url: /
+    - generic: home
+    - generic: Home
+  - link "AI Advisor":
+    - /url: /advisor
+    - generic: psychology
+    - generic: AI Advisor
+  - link "My Stack":
+    - /url: /stack
+    - generic: medication
+    - generic: My Stack
+  - link "Progress":
+    - /url: /progress
+    - generic: monitoring
+    - generic: Progress
+  - link "Profile":
+    - /url: /profile
+    - generic: account_circle
+    - generic: Profile
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_40j7p3ch2a80fvd93kgd1pgqer?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

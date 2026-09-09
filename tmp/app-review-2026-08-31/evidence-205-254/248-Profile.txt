@@ -1,0 +1,81 @@
+- banner:
+  - heading "Profile" [level=1]
+  - paragraph: LifeVault Premium
+  - link "Search":
+    - /url: /vault
+  - button "Notifications":
+  - button "Toggle dark mode":
+- main:
+  - generic: AM
+  - paragraph: Aarav Mehta
+  - paragraph: aarav.mehta@gmail.com
+  - paragraph: +91 98200 41122 · member since Mar 2024
+  - paragraph: Emergency Access
+  - paragraph: If you're unreachable for 48 hours, Sunita can unlock Aadhaar, health policy and medical records with an OTP. Nothing else is exposed.
+  - button "Share emergency card"
+  - heading "Family members" [level=2]
+  - button "Invite":
+    - text: Invite
+  - generic: PM
+  - paragraph: Priya Mehta
+  - paragraph: Spouse
+  - generic: Full access
+  - generic: IM
+  - paragraph: Ishaan Mehta
+  - paragraph: Son
+  - generic: View only
+  - generic: SM
+  - paragraph: Sunita Mehta
+  - paragraph: Mother
+  - generic: Emergency only
+  - heading "Notifications" [level=2]
+  - paragraph: Smart bill reminders
+  - paragraph: 3 days before every due date
+  - switch [checked]
+  - paragraph: Renewal & expiry alerts
+  - paragraph: Insurance, warranties, documents
+  - switch [checked]
+  - paragraph: Weekly AI digest
+  - paragraph: Sunday morning summary
+  - switch
+  - heading "Security" [level=2]
+  - paragraph: Biometric unlock
+  - paragraph: Face ID / fingerprint
+  - switch [checked]
+  - paragraph: Two-factor authentication
+  - paragraph: OTP on every new device
+  - switch [checked]
+  - paragraph: Dark mode
+  - paragraph: Easier on the eyes at night
+  - switch
+  - link "Subscription plan LifeVault Premium":
+    - /url: /premium
+    - paragraph: Subscription plan
+    - paragraph: LifeVault Premium
+  - paragraph: Help & support
+  - paragraph: FAQs, chat with us, report an issue
+  - link "Log out":
+    - /url: /auth
+    - text: Log out
+- navigation:
+  - link "Home":
+    - /url: /
+    - generic: Home
+  - link "Vault":
+    - /url: /vault
+    - generic: Vault
+  - link "Assistant":
+    - /url: /assistant
+    - generic: Assistant
+  - link "Payments":
+    - /url: /payments
+    - generic: Payments
+  - link "Profile":
+    - /url: /profile
+    - generic: Profile
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_5gysj6r1138rbr8qr4gf9yvfym?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

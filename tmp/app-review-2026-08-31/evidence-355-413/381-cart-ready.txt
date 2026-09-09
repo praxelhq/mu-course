@@ -1,0 +1,47 @@
+- banner:
+  - link "PawPal":
+    - /url: /
+    - generic: PawPal
+  - link "Cart" [active]:
+    - /url: /cart
+    - generic: "1"
+- main:
+  - heading "Your cart" [level=1]
+  - img "Rainbow Rope Tug Toy"
+  - paragraph: Rainbow Rope Tug Toy
+  - paragraph: ₹249
+  - button "Decrease quantity":
+  - generic: "1"
+  - button "Increase quantity":
+  - button "Remove Rainbow Rope Tug Toy":
+  - text: Add ₹250 more for free delivery
+  - generic: Subtotal
+  - generic: ₹249
+  - generic: Delivery
+  - generic: ₹49
+  - generic: Total
+  - generic: ₹298
+  - paragraph: "Delivering to: 42 Lake Gardens, Kolkata 700045"
+  - button "Place order · ₹298"
+- navigation:
+  - link "Home":
+    - /url: /
+    - text: Home
+  - link "Services":
+    - /url: /services
+    - text: Services
+  - link "Shop":
+    - /url: /shop
+    - text: Shop
+  - link "Orders":
+    - /url: /orders
+    - text: Orders
+  - link "Profile":
+    - /url: /profile
+    - text: Profile
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6fkgz2ay9y83aavyc97wx7bbpk?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

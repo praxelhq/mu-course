@@ -1,0 +1,41 @@
+- banner:
+  - link "GlowMatch":
+    - /url: /
+    - generic: GlowMatch
+  - navigation:
+    - link "My routine":
+      - /url: /dashboard
+    - link "Personalise":
+      - /url: /personalize
+    - link "Ingredients":
+      - /url: /ingredients
+- main:
+  - paragraph: Personalisation & AI depth
+  - heading "Your skin, your season, your questions" [level=1]
+  - paragraph: Go beyond the basics — match product shades to your skin tone, let your routine shift with India's seasons, and ask anything about your skincare in plain language.
+  - tablist:
+    - tab "Skin Tone"
+    - tab "Seasonal"
+    - tab "Ask GlowMatch" [active] [selected]
+  - tabpanel "Ask GlowMatch":
+    - heading "Ask GlowMatch" [level=2]
+    - paragraph: Freeform Q&A about your routine, grounded in your saved skin profile, quiz answers, and weekly log. Ask about ingredients, product order, or what to swap.
+    - paragraph: Ask GlowMatch anything
+    - paragraph: I know your skin type, routine, and seasonal needs — ask me about ingredients, order of application, or what to swap.
+    - button "What's the best order for my morning routine?"
+    - button "Can I use Vitamin C and Niacinamide together?"
+    - button "How should I adjust my routine for the monsoon?"
+    - button "Which of my products should I use first?"
+    - textbox "Ask about your routine, ingredients, or seasonal changes…"
+    - button [disabled]:
+    - paragraph: AI-powered guidance based on your saved data
+- contentinfo:
+  - paragraph: GlowMatch
+  - paragraph: Gentle, personalised routine building for Indian skin, budgets and weather.
+  - paragraph: GlowMatch offers general skincare guidance and is not a substitute for dermatologist advice.
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1354v31zk7938apwbx8trekyb6?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

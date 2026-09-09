@@ -1,0 +1,451 @@
+- complementary:
+  - link "FactoryFlow AI Shreeji Precision Works":
+    - /url: /
+    - paragraph: FactoryFlow AI
+    - paragraph: Shreeji Precision Works
+  - navigation:
+    - paragraph: Shop floor
+    - link "Dashboard":
+      - /url: /
+      - text: Dashboard
+    - link "Production":
+      - /url: /production
+      - text: Production
+    - link "Customer Schedule":
+      - /url: /schedule
+      - text: Customer Schedule
+    - link "Machines":
+      - /url: /machines
+      - text: Machines
+    - link "Downtime":
+      - /url: /downtime
+      - text: Downtime
+    - link "Maintenance":
+      - /url: /maintenance
+      - text: Maintenance
+    - link "Quality":
+      - /url: /quality
+      - text: Quality
+    - link "Job Work":
+      - /url: /job-work
+      - text: Job Work
+    - link "Inventory":
+      - /url: /inventory
+      - text: Inventory
+    - paragraph: Money
+    - link "Sales & Receivables":
+      - /url: /sales
+      - text: Sales & Receivables
+    - link "Purchase & Payables" [active]:
+      - /url: /purchase
+      - text: Purchase & Payables
+    - link "Cash View":
+      - /url: /cash
+      - text: Cash View
+    - link "Compliance":
+      - /url: /compliance
+      - text: Compliance
+    - paragraph: Run the business
+    - link "Tasks":
+      - /url: /tasks
+      - text: Tasks
+    - link "Analytics":
+      - /url: /analytics
+      - text: Analytics
+    - link "Reports":
+      - /url: /reports
+      - text: Reports
+    - link "AI Assistant":
+      - /url: /assistant
+      - text: AI Assistant
+    - link "Integrations":
+      - /url: /integrations
+      - text: Integrations
+    - link "Settings":
+      - /url: /settings
+      - text: Settings
+  - link "RK Rajesh Kulkarni Works Manager":
+    - /url: /profile
+    - generic: RK
+    - generic: Rajesh Kulkarni
+    - generic: Works Manager
+  - link "Pricing & product page →":
+    - /url: /welcome
+- banner:
+  - textbox "Search part, challan, invoice, heat number…"
+  - button "English"
+  - button "हिंदी"
+  - button "मराठी"
+  - generic "All entries synced":
+    - text: Online
+  - button "Toggle dark mode":
+  - link "Notifications":
+    - /url: /notifications
+    - generic: "4"
+  - link "Ask AI":
+    - /url: /assistant
+    - generic: Ask AI
+- main:
+  - navigation:
+    - link "FactoryFlow":
+      - /url: /
+    - generic: Purchase & Payables
+  - heading "Purchase & Payables" [level=1]
+  - paragraph: Vendor POs, GRN booking and 3-way match before payment release.
+  - button "Export CSV":
+    - text: Export CSV
+  - paragraph: Total Payable
+  - paragraph: ₹44.68 L
+  - paragraph: 12 open bills
+  - paragraph: Due this week
+  - paragraph: ₹28.48 L
+  - paragraph: MSME vendors due
+  - paragraph: "8"
+  - paragraph: 45-day rule applies
+  - paragraph: Match exceptions
+  - paragraph: "12"
+  - paragraph: Hold payment till cleared
+  - heading "Vendor master" [level=2]
+  - paragraph: Shree Ganesh Steels
+  - paragraph: Credit 45 days
+  - generic: Udyam registered
+  - paragraph: Krishna Alloys
+  - paragraph: Credit 45 days
+  - generic: Udyam registered
+  - paragraph: Bharat Fasteners
+  - paragraph: Credit 30 days
+  - generic: Udyam registered
+  - paragraph: Deccan Heat Treaters
+  - paragraph: Credit 30 days
+  - generic: Udyam registered
+  - paragraph: Sai Zinc Platers
+  - paragraph: Credit 30 days
+  - generic: Udyam registered
+  - paragraph: Maharashtra Lubricants
+  - paragraph: Credit 60 days
+  - generic: Not MSME
+  - textbox "Search bill, PO, vendor or item…"
+  - combobox "Vendor":
+    - 'option "Vendor: All" [selected]'
+    - option "Shree Ganesh Steels"
+    - option "Krishna Alloys"
+    - option "Bharat Fasteners"
+    - option "Deccan Heat Treaters"
+    - option "Sai Zinc Platers"
+    - option "Maharashtra Lubricants"
+  - combobox "Match":
+    - 'option "Match: All" [selected]'
+    - option "3-way matched"
+    - option "GRN pending"
+    - option "Qty mismatch"
+    - option "Rate mismatch"
+  - heading "Vendor bills (22)" [level=2]
+  - table:
+    - rowgroup:
+      - row "Bill PO Vendor Udyam Item GRN 3-way match Due Countdown Amount":
+        - columnheader "Bill"
+        - columnheader "PO"
+        - columnheader "Vendor"
+        - columnheader "Udyam"
+        - columnheader "Item"
+        - columnheader "GRN"
+        - columnheader "3-way match"
+        - columnheader "Due"
+        - columnheader "Countdown"
+        - columnheader "Amount"
+    - rowgroup:
+      - row "BHARAT/908 PO/SPW/2408 Bharat Fasteners Yes Bearing 6204-2RS GRN-2026-308 Pending GRN pending 21-07-2026 Paid ₹4,50,000":
+        - cell "BHARAT/908"
+        - cell "PO/SPW/2408"
+        - cell "Bharat Fasteners"
+        - cell "Yes"
+        - cell "Bearing 6204-2RS"
+        - cell "GRN-2026-308"
+        - cell "Pending GRN pending":
+          - generic: Pending
+          - text: GRN pending
+        - cell "21-07-2026"
+        - cell "Paid"
+        - cell "₹4,50,000"
+      - row "SAI/910 PO/SPW/2410 Sai Zinc Platers Yes Hydraulic Oil ISO VG 46 GRN-2026-310 Pending GRN pending 21-07-2026 34d overdue ₹1,83,000":
+        - cell "SAI/910"
+        - cell "PO/SPW/2410"
+        - cell "Sai Zinc Platers"
+        - cell "Yes"
+        - cell "Hydraulic Oil ISO VG 46"
+        - cell "GRN-2026-310"
+        - cell "Pending GRN pending":
+          - generic: Pending
+          - text: GRN pending
+        - cell "21-07-2026"
+        - cell "34d overdue"
+        - cell "₹1,83,000"
+      - row "SAI/904 PO/SPW/2404 Sai Zinc Platers Yes Hydraulic Oil ISO VG 46 GRN-2026-304 Verified 3-way matched 27-07-2026 28d overdue ₹6,25,000":
+        - cell "SAI/904"
+        - cell "PO/SPW/2404"
+        - cell "Sai Zinc Platers"
+        - cell "Yes"
+        - cell "Hydraulic Oil ISO VG 46"
+        - cell "GRN-2026-304"
+        - cell "Verified 3-way matched":
+          - generic: Verified
+          - text: 3-way matched
+        - cell "27-07-2026"
+        - cell "28d overdue"
+        - cell "₹6,25,000"
+      - row "DECCAN/921 PO/SPW/2421 Deccan Heat Treaters Yes HR Coil 3.0mm GRN-2026-321 Verified 3-way matched 27-07-2026 Paid ₹73,000":
+        - cell "DECCAN/921"
+        - cell "PO/SPW/2421"
+        - cell "Deccan Heat Treaters"
+        - cell "Yes"
+        - cell "HR Coil 3.0mm"
+        - cell "GRN-2026-321"
+        - cell "Verified 3-way matched":
+          - generic: Verified
+          - text: 3-way matched
+        - cell "27-07-2026"
+        - cell "Paid"
+        - cell "₹73,000"
+      - row "DECCAN/903 PO/SPW/2403 Deccan Heat Treaters Yes Hydraulic Oil ISO VG 46 GRN-2026-303 Verified 3-way matched 31-07-2026 24d overdue ₹1,11,000":
+        - cell "DECCAN/903"
+        - cell "PO/SPW/2403"
+        - cell "Deccan Heat Treaters"
+        - cell "Yes"
+        - cell "Hydraulic Oil ISO VG 46"
+        - cell "GRN-2026-303"
+        - cell "Verified 3-way matched":
+          - generic: Verified
+          - text: 3-way matched
+        - cell "31-07-2026"
+        - cell "24d overdue"
+        - cell "₹1,11,000"
+      - row "DECCAN/915 PO/SPW/2415 Deccan Heat Treaters Yes HR Coil 3.0mm GRN-2026-315 Blocked Qty mismatch 31-07-2026 24d overdue ₹6,82,000":
+        - cell "DECCAN/915"
+        - cell "PO/SPW/2415"
+        - cell "Deccan Heat Treaters"
+        - cell "Yes"
+        - cell "HR Coil 3.0mm"
+        - cell "GRN-2026-315"
+        - cell "Blocked Qty mismatch":
+          - generic: Blocked
+          - text: Qty mismatch
+        - cell "31-07-2026"
+        - cell "24d overdue"
+        - cell "₹6,82,000"
+      - row "BHARAT/920 PO/SPW/2420 Bharat Fasteners Yes Bearing 6204-2RS GRN-2026-320 Pending GRN pending 10-08-2026 14d overdue ₹34,000":
+        - cell "BHARAT/920"
+        - cell "PO/SPW/2420"
+        - cell "Bharat Fasteners"
+        - cell "Yes"
+        - cell "Bearing 6204-2RS"
+        - cell "GRN-2026-320"
+        - cell "Pending GRN pending":
+          - generic: Pending
+          - text: GRN pending
+        - cell "10-08-2026"
+        - cell "14d overdue"
+        - cell "₹34,000"
+      - row "KRISHNA/907 PO/SPW/2407 Krishna Alloys Yes HR Coil 3.0mm GRN-2026-307 Pending GRN pending 12-08-2026 12d overdue ₹3,49,000":
+        - cell "KRISHNA/907"
+        - cell "PO/SPW/2407"
+        - cell "Krishna Alloys"
+        - cell "Yes"
+        - cell "HR Coil 3.0mm"
+        - cell "GRN-2026-307"
+        - cell "Pending GRN pending":
+          - generic: Pending
+          - text: GRN pending
+        - cell "12-08-2026"
+        - cell "12d overdue"
+        - cell "₹3,49,000"
+      - row "SHREE/900 PO/SPW/2400 Shree Ganesh Steels Yes HR Coil 3.0mm GRN-2026-300 Verified 3-way matched 16-08-2026 Paid ₹1,08,000":
+        - cell "SHREE/900"
+        - cell "PO/SPW/2400"
+        - cell "Shree Ganesh Steels"
+        - cell "Yes"
+        - cell "HR Coil 3.0mm"
+        - cell "GRN-2026-300"
+        - cell "Verified 3-way matched":
+          - generic: Verified
+          - text: 3-way matched
+        - cell "16-08-2026"
+        - cell "Paid"
+        - cell "₹1,08,000"
+      - row "SHREE/912 PO/SPW/2412 Shree Ganesh Steels Yes EN8 Bright Bar Ø40 GRN-2026-312 Blocked Qty mismatch 23-08-2026 1d overdue ₹5,14,000":
+        - cell "SHREE/912"
+        - cell "PO/SPW/2412"
+        - cell "Shree Ganesh Steels"
+        - cell "Yes"
+        - cell "EN8 Bright Bar Ø40"
+        - cell "GRN-2026-312"
+        - cell "Blocked Qty mismatch":
+          - generic: Blocked
+          - text: Qty mismatch
+        - cell "23-08-2026"
+        - cell "1d overdue"
+        - cell "₹5,14,000"
+      - row "KRISHNA/919 PO/SPW/2419 Krishna Alloys Yes HR Coil 3.0mm GRN-2026-319 Blocked Rate mismatch 23-08-2026 1d overdue ₹3,50,000":
+        - cell "KRISHNA/919"
+        - cell "PO/SPW/2419"
+        - cell "Krishna Alloys"
+        - cell "Yes"
+        - cell "HR Coil 3.0mm"
+        - cell "GRN-2026-319"
+        - cell "Blocked Rate mismatch":
+          - generic: Blocked
+          - text: Rate mismatch
+        - cell "23-08-2026"
+        - cell "1d overdue"
+        - cell "₹3,50,000"
+      - row "BHARAT/902 PO/SPW/2402 Bharat Fasteners Yes EN8 Bright Bar Ø40 GRN-2026-302 Verified 3-way matched 26-08-2026 Paid ₹3,66,000":
+        - cell "BHARAT/902"
+        - cell "PO/SPW/2402"
+        - cell "Bharat Fasteners"
+        - cell "Yes"
+        - cell "EN8 Bright Bar Ø40"
+        - cell "GRN-2026-302"
+        - cell "Verified 3-way matched":
+          - generic: Verified
+          - text: 3-way matched
+        - cell "26-08-2026"
+        - cell "Paid"
+        - cell "₹3,66,000"
+      - row "MAHARASHTRA/917 PO/SPW/2417 Maharashtra Lubricants No Bearing 6204-2RS GRN-2026-317 Pending GRN pending 29-08-2026 Paid ₹46,000":
+        - cell "MAHARASHTRA/917"
+        - cell "PO/SPW/2417"
+        - cell "Maharashtra Lubricants"
+        - cell "No"
+        - cell "Bearing 6204-2RS"
+        - cell "GRN-2026-317"
+        - cell "Pending GRN pending":
+          - generic: Pending
+          - text: GRN pending
+        - cell "29-08-2026"
+        - cell "Paid"
+        - cell "₹46,000"
+      - row "BHARAT/914 PO/SPW/2414 Bharat Fasteners Yes MIG Wire ER70S-6 1.2mm GRN-2026-314 Verified 3-way matched 01-09-2026 8d left ₹6,41,000":
+        - cell "BHARAT/914"
+        - cell "PO/SPW/2414"
+        - cell "Bharat Fasteners"
+        - cell "Yes"
+        - cell "MIG Wire ER70S-6 1.2mm"
+        - cell "GRN-2026-314"
+        - cell "Verified 3-way matched":
+          - generic: Verified
+          - text: 3-way matched
+        - cell "01-09-2026"
+        - cell "8d left"
+        - cell "₹6,41,000"
+      - row "DECCAN/909 PO/SPW/2409 Deccan Heat Treaters Yes EN8 Bright Bar Ø40 GRN-2026-309 Pending GRN pending 05-09-2026 Paid ₹4,32,000":
+        - cell "DECCAN/909"
+        - cell "PO/SPW/2409"
+        - cell "Deccan Heat Treaters"
+        - cell "Yes"
+        - cell "EN8 Bright Bar Ø40"
+        - cell "GRN-2026-309"
+        - cell "Pending GRN pending":
+          - generic: Pending
+          - text: GRN pending
+        - cell "05-09-2026"
+        - cell "Paid"
+        - cell "₹4,32,000"
+      - row "SAI/916 PO/SPW/2416 Sai Zinc Platers Yes HR Coil 3.0mm GRN-2026-316 Verified 3-way matched 06-09-2026 13d left ₹4,79,000":
+        - cell "SAI/916"
+        - cell "PO/SPW/2416"
+        - cell "Sai Zinc Platers"
+        - cell "Yes"
+        - cell "HR Coil 3.0mm"
+        - cell "GRN-2026-316"
+        - cell "Verified 3-way matched":
+          - generic: Verified
+          - text: 3-way matched
+        - cell "06-09-2026"
+        - cell "13d left"
+        - cell "₹4,79,000"
+      - row "SHREE/918 PO/SPW/2418 Shree Ganesh Steels Yes MIG Wire ER70S-6 1.2mm GRN-2026-318 Blocked Qty mismatch 20-09-2026 Paid ₹3,07,000":
+        - cell "SHREE/918"
+        - cell "PO/SPW/2418"
+        - cell "Shree Ganesh Steels"
+        - cell "Yes"
+        - cell "MIG Wire ER70S-6 1.2mm"
+        - cell "GRN-2026-318"
+        - cell "Blocked Qty mismatch":
+          - generic: Blocked
+          - text: Qty mismatch
+        - cell "20-09-2026"
+        - cell "Paid"
+        - cell "₹3,07,000"
+      - row "MAHARASHTRA/905 PO/SPW/2405 Maharashtra Lubricants No HR Coil 3.0mm GRN-2026-305 Verified 3-way matched 22-09-2026 29d left ₹3,33,000":
+        - cell "MAHARASHTRA/905"
+        - cell "PO/SPW/2405"
+        - cell "Maharashtra Lubricants"
+        - cell "No"
+        - cell "HR Coil 3.0mm"
+        - cell "GRN-2026-305"
+        - cell "Verified 3-way matched":
+          - generic: Verified
+          - text: 3-way matched
+        - cell "22-09-2026"
+        - cell "29d left"
+        - cell "₹3,33,000"
+      - row "KRISHNA/913 PO/SPW/2413 Krishna Alloys Yes MIG Wire ER70S-6 1.2mm GRN-2026-313 Blocked Rate mismatch 02-10-2026 Paid ₹1,05,000":
+        - cell "KRISHNA/913"
+        - cell "PO/SPW/2413"
+        - cell "Krishna Alloys"
+        - cell "Yes"
+        - cell "MIG Wire ER70S-6 1.2mm"
+        - cell "GRN-2026-313"
+        - cell "Blocked Rate mismatch":
+          - generic: Blocked
+          - text: Rate mismatch
+        - cell "02-10-2026"
+        - cell "Paid"
+        - cell "₹1,05,000"
+      - row "KRISHNA/901 PO/SPW/2401 Krishna Alloys Yes Hydraulic Oil ISO VG 46 GRN-2026-301 Verified 3-way matched 04-10-2026 Paid ₹5,28,000":
+        - cell "KRISHNA/901"
+        - cell "PO/SPW/2401"
+        - cell "Krishna Alloys"
+        - cell "Yes"
+        - cell "Hydraulic Oil ISO VG 46"
+        - cell "GRN-2026-301"
+        - cell "Verified 3-way matched":
+          - generic: Verified
+          - text: 3-way matched
+        - cell "04-10-2026"
+        - cell "Paid"
+        - cell "₹5,28,000"
+      - row "SHREE/906 PO/SPW/2406 Shree Ganesh Steels Yes Bearing 6204-2RS GRN-2026-306 Verified 3-way matched 04-10-2026 41d left ₹1,67,000":
+        - cell "SHREE/906"
+        - cell "PO/SPW/2406"
+        - cell "Shree Ganesh Steels"
+        - cell "Yes"
+        - cell "Bearing 6204-2RS"
+        - cell "GRN-2026-306"
+        - cell "Verified 3-way matched":
+          - generic: Verified
+          - text: 3-way matched
+        - cell "04-10-2026"
+        - cell "41d left"
+        - cell "₹1,67,000"
+      - row "MAHARASHTRA/911 PO/SPW/2411 Maharashtra Lubricants No HR Coil 3.0mm — Blocked Rate mismatch 08-10-2026 Paid ₹4,28,000":
+        - cell "MAHARASHTRA/911"
+        - cell "PO/SPW/2411"
+        - cell "Maharashtra Lubricants"
+        - cell "No"
+        - cell "HR Coil 3.0mm"
+        - cell "—"
+        - cell "Blocked Rate mismatch":
+          - generic: Blocked
+          - text: Rate mismatch
+        - cell "08-10-2026"
+        - cell "Paid"
+        - cell "₹4,28,000"
+- button "Quick Log":
+  - text: Quick Log
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_10hdg7xyw99tpa64t0nz744v7b?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: ₹0

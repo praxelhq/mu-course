@@ -1,0 +1,134 @@
+- banner:
+  - generic: Statecraft Intelligence
+  - generic: Electoral Data & Demographic Engine
+  - button "Constituency Hub":
+    - generic: Constituency Hub
+  - button "Maharashtra / Ahilyanagar / Karjat Jamkhed":
+    - generic: Maharashtra
+    - generic: /
+    - generic: Ahilyanagar
+    - generic: /
+    - generic: Karjat Jamkhed
+  - textbox "Search booths, candidates, communities..."
+  - generic: ECI Form 20 Audited
+  - button "Export Report":
+    - generic: Export Report
+  - button "Refresh Data":
+  - button "RK Rajeshwar Kulkarni (IAS) MH-CEO-2024":
+    - generic: RK
+    - generic: Rajeshwar Kulkarni (IAS)
+    - generic: MH-CEO-2024
+- complementary:
+  - generic: ACTIVE CONSTITUENCY
+  - generic: "AC #227"
+  - heading "Karjat Jamkhed" [level=2]
+  - paragraph: Ahilyanagar, Maharashtra
+  - button "Constituency Selection Hub":
+    - generic: Constituency Selection Hub
+  - button "Quick Modal (288 ACs)":
+    - generic: Quick Modal (288 ACs)
+  - navigation:
+    - generic: Analytics Navigation
+    - button "Constituency Dashboard Snapshot":
+      - generic: Constituency Dashboard
+      - generic: Snapshot
+    - button "Demographics & Caste Chanakya PR":
+      - generic: Demographics & Caste
+      - generic: Chanakya PR
+    - button "Form 20 Booth Explorer 356 Booths":
+      - generic: Form 20 Booth Explorer
+      - generic: 356 Booths
+    - button "Historical Trends 2014-2024" [active]:
+      - generic: Historical Trends
+      - generic: 2014-2024
+    - button "Swing Scenario Simulator Interactive":
+      - generic: Swing Scenario Simulator
+      - generic: Interactive
+    - button "Sources & Provenance Audit Log":
+      - generic: Sources & Provenance
+      - generic: Audit Log
+  - generic: MH-CEO-2024
+  - generic: Rajeshwar Kulkarni (IAS)
+  - generic "Connected"
+  - text: ECI Form 20 Sync
+  - generic: VERIFIED
+  - paragraph: Booth electors & votes mapped from official Form 20 counts. Demographic estimates powered by Chanakya PR.
+- main:
+  - generic: Analysis / Historical Trends
+  - heading "Multi-Year Comparison (2014 - 2024)" [level=1]
+  - paragraph: Electoral trajectory, vote share swing analysis & competitiveness clustering
+  - button "Export Trends Report":
+    - generic: Export Trends Report
+  - text: OVERALL CONSTITUENCY TURNOUT TRAJECTORY
+  - generic: 75.6%
+  - text: +1.5pp vs 2019
+  - paragraph: Consistent voter turnout discipline over 3 election cycles (Karjat Jamkhed)
+  - button "Open Swing Simulator":
+    - generic: Open Swing Simulator
+  - generic: 2014 ELECTION
+  - generic: 72.2%
+  - generic: 2,01,880 votes polled
+  - generic: 2019 ELECTION
+  - generic: 77.4%
+  - generic: 2,36,442 votes polled
+  - generic: 2024 ELECTION (CURRENT)
+  - generic: 75.6%
+  - generic: 2,63,201 votes polled
+  - heading "Booth Competitiveness Clusters (356 Booths Total)" [level=3]
+  - generic: CLOSE CONTEST BOOTHS (<5% MARGIN)
+  - generic: 14%
+  - generic: 50 Booths
+  - paragraph: Highly sensitive swing booths where small mobilization swings alter leads.
+  - generic: MODERATE MARGIN (5% - 10%)
+  - generic: 13%
+  - generic: 47 Booths
+  - paragraph: Competitive territory requiring targeted voter persuasion campaign.
+  - generic: STRONGHOLD BOOTHS (>10% MARGIN)
+  - generic: 73%
+  - generic: 259 Booths
+  - paragraph: Stable base territory with high vote retention discipline.
+  - heading "Party Swing Analysis (Vote Share Shifts)" [level=3]
+  - paragraph: Net percentage point (pp) vote share gain / loss between 2019 and 2024
+  - table:
+    - rowgroup:
+      - row "Political Party 2014 Share 2019 Share 2024 Share Net Swing (pp)":
+        - columnheader "Political Party"
+        - columnheader "2014 Share"
+        - columnheader "2019 Share"
+        - columnheader "2024 Share"
+        - columnheader "Net Swing (pp)"
+    - rowgroup:
+      - row "Bharatiya Janata Party (BJP) 41.6% 39.1% 48.04% +8.9pp":
+        - cell "Bharatiya Janata Party (BJP)":
+          - generic: Bharatiya Janata Party
+          - generic: (BJP)
+        - cell "41.6%"
+        - cell "39.1%"
+        - cell "48.04%"
+        - cell "+8.9pp"
+      - row "NCP (Sharadchandra Pawar) (NCP-SP) 0% 57.4% 48.51% -8.9pp":
+        - cell "NCP (Sharadchandra Pawar) (NCP-SP)":
+          - generic: NCP (Sharadchandra Pawar)
+          - generic: (NCP-SP)
+        - cell "0%"
+        - cell "57.4%"
+        - cell "48.51%"
+        - cell "-8.9pp"
+      - row "Nationalist Congress Party (NCP) 22.9% 0% 0% 0pp":
+        - cell "Nationalist Congress Party (NCP)":
+          - generic: Nationalist Congress Party
+          - generic: (NCP)
+        - cell "22.9%"
+        - cell "0%"
+        - cell "0%"
+        - cell "0pp"
+      - row "Independents & Others (IND/OTH) 0% 0% 3.17% +3.2pp":
+        - cell "Independents & Others (IND/OTH)":
+          - generic: Independents & Others
+          - generic: (IND/OTH)
+        - cell "0%"
+        - cell "0%"
+        - cell "3.17%"
+        - cell "+3.2pp"
+  - generic: Calculated from ECI Form 20 booth counts across 3 election cycles
+  - button "Simulate Custom Vote Swing Scenarios →"

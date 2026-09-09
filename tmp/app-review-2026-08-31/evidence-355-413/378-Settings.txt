@@ -1,0 +1,91 @@
+- alert
+- complementary:
+  - paragraph: MailClean AI
+  - paragraph: High Mountain Property
+  - button "NA nancy (Owner) nancy@highmountainproperty.com":
+    - generic: NA
+    - paragraph: nancy (Owner)
+    - paragraph: nancy@highmountainproperty.com
+  - navigation:
+    - link "Dashboard":
+      - /url: /dashboard
+      - text: Dashboard
+    - link "Analytics":
+      - /url: /dashboard/analytics
+      - text: Analytics
+    - link "Categories":
+      - /url: /dashboard/categories
+      - text: Categories
+    - link "Email Explorer":
+      - /url: /dashboard/explorer
+      - text: Email Explorer
+    - link "Cleanup Center":
+      - /url: /dashboard/cleanup
+      - text: Cleanup Center
+    - link "Rules & Automation":
+      - /url: /dashboard/rules
+      - text: Rules & Automation
+    - link "Activity Log":
+      - /url: /dashboard/activity
+      - text: Activity Log
+    - link "Reports":
+      - /url: /dashboard/reports
+      - text: Reports
+    - link "Accounts":
+      - /url: /dashboard/accounts
+      - text: Accounts
+    - link "Settings" [active]:
+      - /url: /dashboard/settings
+      - text: Settings
+  - generic: na
+  - paragraph: nancy
+  - paragraph: nancy@highmountainproperty.com
+- banner:
+  - textbox "Search emails, senders, rules…"
+  - button "Notifications":
+    - generic: Notifications
+- main:
+  - heading "Settings" [level=1]
+  - paragraph: Manage High Mountain Property's workspace preferences.
+  - heading "Account" [level=2]
+  - text: Name
+  - generic: High Mountain Property
+  - text: Primary contact
+  - generic: nancy
+  - text: Email
+  - generic: nancy@highmountainproperty.com
+  - text: Domain
+  - generic: highmountainproperty.com
+  - heading "Connected Accounts" [level=2]
+  - list:
+    - paragraph: nancy@highmountainproperty.com
+    - paragraph: nancy (Owner)
+    - generic: Connected
+    - paragraph: info@highmountainproperty.com
+    - paragraph: General Enquiries
+    - generic: Connected
+    - paragraph: sales@highmountainproperty.com
+    - paragraph: Sales
+    - generic: Connected
+    - paragraph: support@highmountainproperty.com
+    - paragraph: Support
+    - generic: Connected
+    - paragraph: admin@highmountainproperty.com
+    - paragraph: Admin & Accounts
+    - generic: Connected
+  - link "+ Connect another account":
+    - /url: /connect
+  - heading "Notifications" [level=2]
+  - list:
+    - text: Cleanup completed
+    - button "Toggle Cleanup completed"
+    - text: Weekly report
+    - button "Toggle Weekly report"
+    - text: AI recommendations
+    - button "Toggle AI recommendations"
+  - heading "Privacy & Security" [level=2]
+  - list:
+    - generic: Read-only access — MailClean AI never sends email on your behalf
+    - generic: Cleanup actions always require your approval
+    - generic: Session management and connected apps controls
+- generic: "24.2"

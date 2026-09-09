@@ -1,0 +1,106 @@
+- banner:
+  - button "Set your location":
+  - link "MindSaathi Your Mind Matters":
+    - /url: /
+    - generic: MindSaathi
+    - generic: Your Mind Matters
+  - 'link "Language: English. Change language"':
+    - /url: /language
+    - generic: English
+  - link "SOS":
+    - /url: /sos
+    - text: SOS
+- main:
+  - paragraph:
+    - text: Safe & confidential (English)
+  - heading "Namaste, Friend." [level=1]
+  - paragraph: How are you feeling today? Your mental health journey is valid and supported in your language.
+  - paragraph: Today's affirmation
+  - paragraph: One small step today counts more than a perfect plan tomorrow.
+  - link "Talk to AI Support A 24×7 empathetic listener. Start talking in seconds, free and private. Start talking":
+    - /url: /ai-support
+    - heading "Talk to AI Support" [level=2]
+    - paragraph: A 24×7 empathetic listener. Start talking in seconds, free and private.
+    - text: Start talking
+  - link "Book a Counsellor RCI-verified professionals on a sliding scale. Filter by language and budget. Explore directory":
+    - /url: /counsellors
+    - heading "Book a Counsellor" [level=2]
+    - paragraph: RCI-verified professionals on a sliding scale. Filter by language and budget.
+    - text: Explore directory
+  - heading "Explore by feeling" [level=2]
+  - link "Anxious":
+    - /url: /ai-support?feeling=I%27m+feeling+anxious+right+now.
+  - link "Low":
+    - /url: /ai-support?feeling=I%27ve+been+feeling+low+lately.
+  - link "Overwhelmed":
+    - /url: /ai-support?feeling=I+feel+completely+overwhelmed.
+  - link "Just want to talk":
+    - /url: /ai-support?feeling=I+just+want+to+talk.
+  - link "Can't sleep":
+    - /url: /ai-support?feeling=I+can%27t+sleep+at+night.
+  - link "Log today's mood Takes less than a minute.":
+    - /url: /tracker
+    - generic: Log today's mood
+    - generic: Takes less than a minute.
+  - heading "How MindSaathi works" [level=2]
+  - list:
+    - generic: 1. Choose your language
+    - generic: 22+ Indian languages, native script.
+    - generic: 2. Talk, track, or book
+    - generic: AI listener, mood tracker, verified counsellors.
+    - generic: 3. Feel supported
+    - generic: Private, affordable, always within reach.
+  - heading "People like you" [level=2]
+  - blockquote: “Booked my first session in Marathi within 5 minutes. — Priya, Pune”
+  - blockquote: “Saathi stayed with me at 2 AM when I couldn't call anyone. — Anon, Delhi”
+  - blockquote: “Finally therapy I could actually afford. — Rahul, Kochi”
+  - paragraph: 10,000+
+  - paragraph: check-ins
+  - paragraph: 500+
+  - paragraph: sessions booked
+  - paragraph: "22"
+  - paragraph: languages supported
+  - paragraph: Placeholder quotes and numbers — to be replaced with verified figures.
+  - paragraph:
+    - text: RCI-verified counsellors
+  - paragraph:
+    - text: Confidential & encrypted
+  - paragraph:
+    - text: Tele-MANAS partner
+- contentinfo:
+  - link "How your data is used":
+    - /url: /privacy
+- button "Open Saathi, your guide":
+  - img "Saathi, your friendly guide"
+- navigation "Screen navigation":
+  - button "Previous screen" [disabled]:
+  - link "Language":
+    - /url: /language
+    - text: Language
+  - link "Settings":
+    - /url: /settings
+    - text: Settings
+  - link "Check-in":
+    - /url: /tracker
+    - text: Check-in
+  - button "Next screen":
+  - link "Today":
+    - /url: /
+    - generic: Today
+  - link "Counsellors":
+    - /url: /counsellors
+    - generic: Counsellors
+  - link "Tracker":
+    - /url: /tracker
+    - generic: Tracker
+  - link "AI Support":
+    - /url: /ai-support
+    - generic: AI Support
+  - link "SOS":
+    - /url: /sos
+    - generic: SOS
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6c2nccmn5q8vsre70jn9smn197?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

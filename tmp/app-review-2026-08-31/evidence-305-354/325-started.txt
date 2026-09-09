@@ -1,0 +1,39 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_4t4wzn9vrt87st3fmw6wp1tyzs?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- banner:
+  - button "Go back":
+    - generic: arrow_back
+  - generic: Kharcha
+  - button: Skip
+- main:
+  - generic: hub
+  - heading "Let Kharcha do the boring part." [level=1]
+  - paragraph: Choose how you want to track your expenses. You can change this later.
+  - generic: sms
+  - heading "Bank SMS" [level=3]
+  - paragraph: Automatically detect transactions from bank payment alerts.
+  - checkbox [checked]
+  - generic: mark_email_read
+  - heading "Email receipts" [level=3]
+  - paragraph: Find purchase and payment confirmations.
+  - checkbox
+  - link "Bank connection Connect supported financial accounts securely.":
+    - /url: /home
+    - generic: account_balance
+    - heading "Bank connection" [level=3]
+    - paragraph: Connect supported financial accounts securely.
+    - generic: arrow_forward_ios
+  - link "Manual tracking Add expenses yourself.":
+    - /url: /home
+    - generic: edit_note
+    - heading "Manual tracking" [level=3]
+    - paragraph: Add expenses yourself.
+    - generic: arrow_forward_ios
+  - generic: lock
+  - paragraph: Your data is private and encrypted.
+- button "Continue Setup":
+  - text: Continue Setup
+  - generic: arrow_right_alt

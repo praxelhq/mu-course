@@ -1,0 +1,87 @@
+- banner:
+  - heading "Payments" [level=1]
+  - paragraph: August 2026 cycle
+  - link "Search":
+    - /url: /vault
+  - button "Notifications":
+  - button "Toggle dark mode":
+- main:
+  - paragraph: Outstanding this month
+  - paragraph: ₹50,803
+  - paragraph: 7 bills pending · autopay on for 1
+  - button "All"
+  - button "Overdue"
+  - button "Due"
+  - button "Upcoming"
+  - button "Paid"
+  - heading "8 bills" [level=2]
+  - paragraph: Electricity
+  - paragraph: Electricity — MSEDCL
+  - generic: due
+  - paragraph: Due 5 Aug
+  - paragraph: ₹2,480
+  - button "Pay now"
+  - paragraph: Water
+  - paragraph: Water Board
+  - generic: upcoming
+  - paragraph: Due 7 Aug
+  - paragraph: ₹610
+  - button "Pay now"
+  - paragraph: Internet
+  - paragraph: Airtel Fiber 300 Mbps
+  - generic: upcoming
+  - paragraph: Due 9 Aug
+  - paragraph: ₹1,199
+  - button "Pay now"
+  - paragraph: Gas
+  - paragraph: Piped Gas — MGL
+  - generic: upcoming
+  - paragraph: Due 12 Aug
+  - paragraph: ₹845
+  - button "Pay now"
+  - paragraph: Mobile
+  - paragraph: Jio Postpaid
+  - generic: overdue
+  - paragraph: Due 2 Aug
+  - paragraph: ₹749
+  - button "Pay now"
+  - paragraph: Credit Cards
+  - paragraph: HDFC Credit Card
+  - generic: upcoming
+  - paragraph: Due 14 Aug
+  - paragraph: ₹18,420
+  - button "Pay now"
+  - paragraph: Rent
+  - paragraph: House Rent — Powai
+  - generic: paid
+  - paragraph: Due 1 Aug
+  - paragraph: ₹42,000
+  - button "Paid" [disabled]
+  - paragraph: School Fees
+  - paragraph: School Fees — Term 2
+  - generic: upcoming
+  - paragraph: Due 20 Aug
+  - paragraph: ₹26,500
+  - button "Pay now"
+- navigation:
+  - link "Home":
+    - /url: /
+    - generic: Home
+  - link "Vault":
+    - /url: /vault
+    - generic: Vault
+  - link "Assistant":
+    - /url: /assistant
+    - generic: Assistant
+  - link "Payments":
+    - /url: /payments
+    - generic: Payments
+  - link "Profile":
+    - /url: /profile
+    - generic: Profile
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_5gysj6r1138rbr8qr4gf9yvfym?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

@@ -1,0 +1,40 @@
+- region "Notifications alt+T"
+- main:
+  - heading "Medical profile" [level=1]
+  - paragraph: Lives on this device. Shared with responders only during an SOS.
+  - generic: B+
+  - generic: BLOOD
+  - paragraph: Archit Bagaria
+  - paragraph: 34 years old
+  - generic: Organ donor
+  - paragraph: 175 cm
+  - paragraph: Height
+  - paragraph: 78 kg
+  - paragraph: Weight
+  - heading "ALLERGIES" [level=2]
+  - generic: Penicillin
+  - generic: Peanuts
+  - heading "CURRENT MEDICATIONS" [level=2]
+  - paragraph: Salbutamol Inhaler
+  - paragraph: 100 mcg · As needed
+  - paragraph: Montelukast
+  - paragraph: 10 mg · Once at night
+  - heading "CONDITIONS" [level=2]
+  - generic: Asthma
+  - heading "EMERGENCY NOTES" [level=2]
+  - paragraph: “Inhaler in the left pocket of my bag. Allergic to penicillin.”
+  - button "Show Medical ID"
+  - paragraph: Full-screen card designed to be handed to a paramedic
+- navigation:
+  - button "Help":
+    - generic: Help
+  - button "Network":
+    - generic: Network
+  - button "Me" [active]:
+    - generic: Me
+  - button "SOS":
+    - generic: SOS
+- link "Build with Enter":
+  - /url: https://enter.converge.ai
+  - generic: Build with
+  - img "Enter"

@@ -1,0 +1,46 @@
+- banner:
+  - button "Go back":
+  - button "S SipMatch The Alchemist's Palette":
+    - generic: S
+    - generic: SipMatch
+    - generic: The Alchemist's Palette
+  - button "User profile":
+    - img "User avatar"
+- main:
+  - text: Personal Selection
+  - heading "Saved Collection" [level=1]
+  - paragraph: Your personal lounge menu & saved cocktail matches (3).
+  - img "Espresso Martini"
+  - heading "Espresso Martini" [level=3]
+  - button:
+  - paragraph: Vodka
+  - generic: Bold
+  - generic: Coffee
+  - generic: Smooth
+  - img "French 75"
+  - heading "French 75" [level=3]
+  - button:
+  - paragraph: Gin & Champagne
+  - generic: Effervescent
+  - generic: Citrus
+  - generic: Botanical
+  - img "Cucumber Basil Smash"
+  - heading "Cucumber Basil Smash" [level=3]
+  - button:
+  - paragraph: Botanical Gin
+  - generic: Herbal
+  - generic: Refreshing
+  - generic: Botanical
+- navigation:
+  - button "Home":
+    - generic: Home
+  - button "Discover":
+    - generic: Discover
+  - button "3 Saved" [active]:
+    - generic: "3"
+    - generic: Saved
+  - button "Profile":
+    - generic: Profile
+- link "Made in Bolt":
+  - /url: https://bolt.new
+  - generic: Made in Bolt

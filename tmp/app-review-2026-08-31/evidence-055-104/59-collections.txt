@@ -1,0 +1,104 @@
+- complementary:
+  - link "Pin You've been meaning to go":
+    - /url: /map
+    - generic: Pin
+    - generic: You've been meaning to go
+  - navigation "Primary":
+    - link "Map":
+      - /url: /map
+      - text: Map
+    - link "Nearby":
+      - /url: /nearby
+      - text: Nearby
+    - link "Collections" [active]:
+      - /url: /collections
+      - text: Collections
+    - link "Friends":
+      - /url: /friends
+      - text: Friends
+    - link "Plans":
+      - /url: /plans
+      - text: Plans
+    - link "Visited":
+      - /url: /visited
+      - text: Visited
+  - link "P Prisha Your map":
+    - /url: /profile
+    - generic: P
+    - generic: Prisha
+    - generic: Your map
+- main:
+  - heading "Collections" [level=1]
+  - paragraph: Your saved places, gathered into little worlds.
+  - button "New collection":
+    - text: New collection
+  - link "Cafés I Need to Try ☕ Cafés I Need to Try 6 places":
+    - /url: /collections/cafes
+    - img "Cafés I Need to Try"
+    - generic: ☕
+    - heading "Cafés I Need to Try" [level=2]
+    - paragraph: 6 places
+  - link "Girls' Night 🍸 Shared Girls' Night 4 places AD RI AN":
+    - /url: /collections/girls-night
+    - img "Girls' Night"
+    - generic: 🍸
+    - text: Shared
+    - heading "Girls' Night" [level=2]
+    - paragraph: 4 places
+    - generic: AD
+    - generic: RI
+    - generic: AN
+  - link "Friday Night Plans 🎉 Shared Friday Night Plans 6 places AD RI AN":
+    - /url: /collections/friday
+    - img "Friday Night Plans"
+    - generic: 🎉
+    - text: Shared
+    - heading "Friday Night Plans" [level=2]
+    - paragraph: 6 places
+    - generic: AD
+    - generic: RI
+    - generic: AN
+  - link "Date Ideas ❤️ Date Ideas 5 places":
+    - /url: /collections/date-ideas
+    - img "Date Ideas"
+    - generic: ❤️
+    - heading "Date Ideas" [level=2]
+    - paragraph: 5 places
+  - link "Brunch in Gurgaon 🥞 Brunch in Gurgaon 5 places":
+    - /url: /collections/brunch
+    - img "Brunch in Gurgaon"
+    - generic: 🥞
+    - heading "Brunch in Gurgaon" [level=2]
+    - paragraph: 5 places
+  - link "Golf Course Road 🛣️ Golf Course Road 6 places":
+    - /url: /collections/gcr
+    - img "Golf Course Road"
+    - generic: 🛣️
+    - heading "Golf Course Road" [level=2]
+    - paragraph: 6 places
+  - link "Cyber Hub Food 🍜 Cyber Hub Food 6 places":
+    - /url: /collections/cyberhub
+    - img "Cyber Hub Food"
+    - generic: 🍜
+    - heading "Cyber Hub Food" [level=2]
+    - paragraph: 6 places
+  - link "Sunday Plans 🌸 Sunday Plans 6 places":
+    - /url: /collections/sunday
+    - img "Sunday Plans"
+    - generic: 🌸
+    - heading "Sunday Plans" [level=2]
+    - paragraph: 6 places
+  - link "Worth the Drive 🚗 Shared Worth the Drive 5 places KA":
+    - /url: /collections/drive
+    - img "Worth the Drive"
+    - generic: 🚗
+    - text: Shared
+    - heading "Worth the Drive" [level=2]
+    - paragraph: 5 places
+    - generic: KA
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_0hbgfhy9zy8jkvmpn3tsp8bgm1?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

@@ -1,0 +1,16 @@
+- main:
+  - heading "Welcome to Loopd" [level=1]
+  - paragraph: Sign in to see today.
+  - generic: Email
+  - textbox "Email"
+  - generic: Password
+  - textbox "Password"
+  - button "Sign in"
+  - button "Continue with Google"
+  - button "New here? Create an account"
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_3bgrk91zhh95prk8qcbs41xhpd?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

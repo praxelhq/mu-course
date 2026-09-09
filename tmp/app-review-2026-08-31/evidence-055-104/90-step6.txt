@@ -1,0 +1,22 @@
+- main:
+  - button "Back":
+  - progressbar
+  - heading "How strict should Naggy be?" [level=1]
+  - paragraph: You can change this any time.
+  - button "Gentle Friendly reminders. No guilt.":
+    - paragraph: Gentle
+    - paragraph: Friendly reminders. No guilt.
+  - button "Firm Persistent reminders and real accountability.":
+    - paragraph: Firm
+    - paragraph: Persistent reminders and real accountability.
+  - button "Strict Hard commitments, hard-to-ignore nudges.":
+    - paragraph: Strict
+    - paragraph: Hard commitments, hard-to-ignore nudges.
+  - button "Continue" [active]:
+    - text: Continue
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1y077zn9zp920rn02hgwhd1kn0?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

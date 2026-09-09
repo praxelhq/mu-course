@@ -1,0 +1,45 @@
+- alert
+- main:
+  - generic: "?"
+  - paragraph: Profile
+  - heading "Hey there" [level=1]
+  - heading "Your preferences" [level=2]
+  - button "Edit"
+  - term: Vibe
+  - definition: Quiet
+  - term: Room
+  - definition: Private
+  - term: Schedule
+  - definition: Early riser
+  - term: Dietary
+  - definition: —
+  - term: Interests
+  - definition: Reading
+  - paragraph: Membership
+  - heading "Zo+" [level=2]
+  - paragraph: ₹399/month — Social Pulse (see who else is around), priority on your requests, and status that carries to every Zostel you stay at.
+  - button "Upgrade to Zo+"
+  - heading "Invite & earn" [level=2]
+  - paragraph: Share your code — when someone checks in for the first time with it, you get ₹100 in Zo Credits.
+  - generic: "254674E2"
+  - button "Copy"
+  - paragraph:
+    - text: "Zo Credits balance:"
+    - generic: ₹0
+  - heading "Stay history" [level=2]
+  - paragraph: No stays yet.
+  - button "Sign out":
+    - text: Sign out
+  - navigation:
+    - link "Home":
+      - /url: /
+      - generic: Home
+    - link "My Stay":
+      - /url: /stay
+      - generic: My Stay
+    - link "Concierge":
+      - /url: /chat
+      - generic: Concierge
+    - link "Profile":
+      - /url: /profile
+      - generic: Profile

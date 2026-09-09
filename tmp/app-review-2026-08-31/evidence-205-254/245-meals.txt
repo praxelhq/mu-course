@@ -1,0 +1,42 @@
+- banner:
+  - button "Go back":
+  - heading "What should I eat?" [level=1]
+  - paragraph: Decide in 10 seconds
+- main:
+  - paragraph: How hungry are you?
+  - button "Light"
+  - button "Normal"
+  - button "Very hungry"
+  - paragraph: Where from?
+  - button "Mess"
+  - button "Canteen"
+  - button "Delivery"
+  - button "Anything"
+  - button "Tell me what to eat":
+    - text: Tell me what to eat
+  - paragraph: 🤔
+  - paragraph: No picks yet
+  - paragraph: Set your hunger and source, then tap the button above.
+- navigation:
+  - list:
+    - link "Home":
+      - /url: /home
+      - generic: Home
+    - link "Log":
+      - /url: /log
+      - generic: Log
+    - link "Scan":
+      - /url: /scan
+      - generic: Scan
+    - link "Coach":
+      - /url: /recommendations
+      - generic: Coach
+    - link "Profile":
+      - /url: /profile
+      - generic: Profile
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_25aah1gfmf84ysf426ybmhv3p7?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

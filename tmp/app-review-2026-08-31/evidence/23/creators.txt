@@ -1,0 +1,184 @@
+- region "Notifications (F8)":
+  - list
+- region "Notifications alt+T"
+- complementary:
+  - generic: InfluencerOS
+  - navigation:
+    - link "Dashboard":
+      - /url: /
+      - generic: Dashboard
+    - link "Campaigns":
+      - /url: /campaigns
+      - generic: Campaigns
+    - link "AI Campaign Planner":
+      - /url: /ai-planner
+      - generic: AI Campaign Planner
+    - link "Creators" [active]:
+      - /url: /creators
+      - generic: Creators
+    - link "Content Approval":
+      - /url: /content-approval
+      - generic: Content Approval
+    - link "Performance & ROI":
+      - /url: /performance
+      - generic: Performance & ROI
+    - link "Payments & Ledger":
+      - /url: /payments
+      - generic: Payments & Ledger
+    - link "Assets & Logistics":
+      - /url: /assets
+      - generic: Assets & Logistics
+    - link "Settings":
+      - /url: /settings
+      - generic: Settings
+  - button "Collapse":
+    - generic: Collapse
+- banner:
+  - textbox "Search campaigns, creators, content..."
+  - button "3":
+    - generic: "3"
+  - button "M MamaEarth":
+    - generic: M
+    - generic: MamaEarth
+  - button "Arun Kumar Marketing Manager":
+    - paragraph: Arun Kumar
+    - paragraph: Marketing Manager
+- main:
+  - heading "Creators" [level=1]
+  - paragraph: Discover and manage influencers for your campaigns
+  - button "Add Creator":
+    - text: Add Creator
+  - textbox "Search creators..."
+  - combobox:
+    - generic: All Platforms
+  - combobox:
+    - generic: All Categories
+  - button:
+  - table:
+    - rowgroup:
+      - row "Creator Platform Category Followers Engagement City Avg Cost Score Risk":
+        - columnheader "Creator"
+        - columnheader "Platform"
+        - columnheader "Category"
+        - columnheader "Followers"
+        - columnheader "Engagement"
+        - columnheader "City"
+        - columnheader "Avg Cost"
+        - columnheader "Score"
+        - columnheader "Risk"
+        - columnheader
+    - rowgroup:
+      - row "Priya Sharma @priyasharma_beauty Instagram Beauty & Skincare 245K 4.8% Mumbai ₹75K 92 Low":
+        - cell "Priya Sharma @priyasharma_beauty":
+          - paragraph: Priya Sharma
+          - paragraph: "@priyasharma_beauty"
+        - cell "Instagram":
+          - generic: Instagram
+        - cell "Beauty & Skincare"
+        - cell "245K"
+        - cell "4.8%":
+          - generic: 4.8%
+        - cell "Mumbai"
+        - cell "₹75K"
+        - cell "92":
+          - generic: "92"
+        - cell "Low":
+          - generic: Low
+        - cell:
+          - button:
+      - row "Rahul Verma @rahulverma_tech YouTube Tech Reviews 890K 3.2% Bangalore ₹250K 88 Low":
+        - cell "Rahul Verma @rahulverma_tech":
+          - paragraph: Rahul Verma
+          - paragraph: "@rahulverma_tech"
+        - cell "YouTube":
+          - generic: YouTube
+        - cell "Tech Reviews"
+        - cell "890K"
+        - cell "3.2%":
+          - generic: 3.2%
+        - cell "Bangalore"
+        - cell "₹250K"
+        - cell "88":
+          - generic: "88"
+        - cell "Low":
+          - generic: Low
+        - cell:
+          - button:
+      - row "Neha Kapoor @nehafitness Instagram Fitness & Wellness 156K 5.6% Delhi ₹45K 85 Medium":
+        - cell "Neha Kapoor @nehafitness":
+          - paragraph: Neha Kapoor
+          - paragraph: "@nehafitness"
+        - cell "Instagram":
+          - generic: Instagram
+        - cell "Fitness & Wellness"
+        - cell "156K"
+        - cell "5.6%":
+          - generic: 5.6%
+        - cell "Delhi"
+        - cell "₹45K"
+        - cell "85":
+          - generic: "85"
+        - cell "Medium":
+          - generic: Medium
+        - cell:
+          - button:
+      - row "Amit Patel @amitcooks YouTube Food & Cooking 420K 4.1% Ahmedabad ₹120K 90 Low":
+        - cell "Amit Patel @amitcooks":
+          - paragraph: Amit Patel
+          - paragraph: "@amitcooks"
+        - cell "YouTube":
+          - generic: YouTube
+        - cell "Food & Cooking"
+        - cell "420K"
+        - cell "4.1%":
+          - generic: 4.1%
+        - cell "Ahmedabad"
+        - cell "₹120K"
+        - cell "90":
+          - generic: "90"
+        - cell "Low":
+          - generic: Low
+        - cell:
+          - button:
+      - row "Sneha Reddy @sneha_momlife Instagram Parenting & Lifestyle 312K 6.2% Hyderabad ₹85K 94 Low":
+        - cell "Sneha Reddy @sneha_momlife":
+          - paragraph: Sneha Reddy
+          - paragraph: "@sneha_momlife"
+        - cell "Instagram":
+          - generic: Instagram
+        - cell "Parenting & Lifestyle"
+        - cell "312K"
+        - cell "6.2%":
+          - generic: 6.2%
+        - cell "Hyderabad"
+        - cell "₹85K"
+        - cell "94":
+          - generic: "94"
+        - cell "Low":
+          - generic: Low
+        - cell:
+          - button:
+      - row "Dr. Kavita Singh @drkavita_skin Instagram Dermatologist 178K 7.8% Chennai ₹95K 96 Low":
+        - cell "Dr. Kavita Singh @drkavita_skin":
+          - paragraph: Dr. Kavita Singh
+          - paragraph: "@drkavita_skin"
+        - cell "Instagram":
+          - generic: Instagram
+        - cell "Dermatologist"
+        - cell "178K"
+        - cell "7.8%":
+          - generic: 7.8%
+        - cell "Chennai"
+        - cell "₹95K"
+        - cell "96":
+          - generic: "96"
+        - cell "Low":
+          - generic: Low
+        - cell:
+          - button:
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_05t71mwv1r9qb9tdwk5a0m9t2d?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: ₹0.0L

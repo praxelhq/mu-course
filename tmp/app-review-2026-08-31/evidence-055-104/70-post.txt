@@ -1,0 +1,75 @@
+- banner:
+  - generic: Matchday+
+  - generic: Campus Arena
+  - button "Post Game":
+    - generic: Post Game
+  - button "Notifications":
+  - button "R ReviewDemo 4 favs":
+    - generic: R
+    - paragraph: ReviewDemo
+    - paragraph: 4 favs
+  - button "Switch Demo Student":
+  - button "Log out to Login screen":
+- main:
+  - heading "My Campus Matches" [level=1]
+  - paragraph: Games you've joined, hosted, or played on campus
+  - button "← Back to Campus Feed"
+  - button "Joined (0)":
+    - generic: Joined (0)
+  - button "Hosted (0)":
+    - generic: Hosted (0)
+  - button "History (0)":
+    - generic: History (0)
+  - heading "You haven’t joined any upcoming games yet" [level=3]
+  - paragraph: Explore the campus feed or host your own match to invite other students!
+  - button "Host a Game Now"
+- button "Discover":
+  - generic: Discover
+- button "+ Post Game" [active]:
+  - generic: + Post Game
+- button "My Games":
+  - generic: My Games
+- heading "Host a Campus Match" [level=2]
+- paragraph: Post for students to discover and join
+- button:
+- generic: 1. Category
+- button "Physical Sports":
+  - generic: Physical Sports
+- button "Esports":
+  - generic: Esports
+- generic: 2. Select Sport
+- button "Cricket":
+  - generic: Cricket
+- button "Football":
+  - generic: Football
+- button "Basketball":
+  - generic: Basketball
+- button "Badminton":
+  - generic: Badminton
+- button "Running":
+  - generic: Running
+- text: 3. Match Start Time
+- generic: Relative status auto-computes
+- button "Now (Live)"
+- button "+15 min"
+- button "+30 min"
+- button "+1 hour"
+- button "+2 hours"
+- textbox "3. Match Start Time": 2026-08-31T02:09
+- text: 4. Campus Venue / Field
+- generic: "*"
+- textbox "4. Campus Venue / Field *":
+  - /placeholder: Main Ground Pitch 1
+- button "📍 Main Ground (Pitch 1)"
+- button "📍 Hostel Quad Pitch"
+- button "📍 Box Cricket Net 2"
+- text: 5. Total Player Spots
+- generic: 12 spots total (including host)
+- button:
+- generic: "12"
+- button:
+- generic: 6. Rules & Notes (Optional)
+- textbox "6. Rules & Notes (Optional)":
+  - /placeholder: e.g. Bring your own gear, casual match, Rank Gold+ only, Discord voice mandatory...
+- button "Post Match to Campus" [disabled]:
+  - generic: Post Match to Campus

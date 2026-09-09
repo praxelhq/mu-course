@@ -1,0 +1,9 @@
+{
+  "notice": "SYNTHETIC COURSE DATA — Praxel/MU S05 v1.1 — 2026-07-18 — no production data",
+  "event_required": ["event_id", "pack_id", "condition", "event_type", "occurred_at", "source", "idempotency_key", "payload", "expected_action"],
+  "condition_values": ["normal", "boundary", "hidden", "hidden_duplicate", "hidden_duplicate_timeout"],
+  "log_required": ["execution_id", "correlation_id", "state", "result", "approval_ref", "action_ref", "action_count", "timestamp", "redacted_error"],
+  "terminal_states": ["completed", "rejected", "safe_stopped", "escalated", "unavailable"],
+  "allocation": ["D", "M", "H", "X"],
+  "provenance": "Course-authored synthetic analogue; never connect to production systems."
+}

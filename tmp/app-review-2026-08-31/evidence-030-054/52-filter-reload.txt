@@ -1,0 +1,51 @@
+- banner:
+  - generic: SleepQuest
+  - generic: Season 2026 · Masters’ Union · Updated 27 AUG 2026
+  - button "How SleepQuest works":
+- generic: Search a person
+- combobox "Search a person"
+- main:
+  - heading "SleepQuest top spotters" [level=1]
+  - tablist "Leaderboard role":
+    - tab "Show Sleeper leaderboard":
+      - generic: Sleepers
+    - tab "Show Spotter leaderboard" [selected]:
+      - generic: Spotters
+  - generic: "Frat: meta"
+  - combobox "Filter by fraternity":
+    - option "All fraternities"
+    - option "AMAZON"
+    - option "GOOGLE"
+    - option "META" [selected]
+    - option "NETFLIX"
+  - generic: "Course: All"
+  - combobox "Filter by course":
+    - option "All courses" [selected]
+    - option "TBM C7"
+    - option "YLC C2"
+    - option "SMG C1"
+    - option "HROS C1"
+  - paragraph: THIS WEEK · 31 AUGUST – 6 SEPTEMBER 2026
+  - generic: meta · — Fraternity · 0 Spotter points
+  - link "Show all":
+    - /url: /?view=week&role=spotters&cohort=all&fraternity=all
+  - paragraph: No sightings yet
+  - paragraph: Nobody has claimed a spotter point here yet.
+  - link "Contact me for issues":
+    - /url: /api/public/contact?from=%2F%3Fview%3Dweek%26role%3Dspotters%26cohort%3Dall%26fraternity%3Dmeta
+  - link "Admin login":
+    - /url: /auth
+- navigation "SleepQuest sections":
+  - list:
+    - link "All-Time":
+      - /url: /?view=hall&role=spotters&cohort=all&fraternity=meta
+      - generic: All-Time
+    - link "Month":
+      - /url: /?view=month&role=spotters&cohort=all&fraternity=meta
+      - generic: Month
+    - link "Week":
+      - /url: /?view=week&role=spotters&cohort=all&fraternity=meta
+      - generic: Week
+    - link "Feed":
+      - /url: /feed
+      - generic: Feed

@@ -1,0 +1,18 @@
+- banner:
+  - button "Go back":
+    - generic: arrow_back
+  - generic: Step 5 of 6
+- main:
+  - heading "Have you tried quitting before?" [level=1]
+  - paragraph: No wrong answer here.
+  - button "Yes"
+  - button "No"
+- button "Continue" [disabled]:
+  - text: Continue
+  - generic: arrow_forward
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_19mhcg6jxz8s9s6ch802n4v9n3?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

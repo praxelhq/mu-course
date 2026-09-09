@@ -1,0 +1,19 @@
+- main:
+  - button "Go back":
+    - generic: arrow_back
+  - generic: Step 2 of 4
+  - heading "How's your energy?" [level=2]
+  - paragraph: Let's find the right fuel for right now.
+  - generic: Normal
+  - slider: "3"
+  - generic: Drained
+  - generic: Full Power
+  - heading "How hungry are you?" [level=2]
+  - paragraph: From a light snack to a hearty feast.
+  - generic: A Meal
+  - slider: "3"
+  - generic: Snack
+  - generic: Feast
+  - button "Next arrow_forward":
+    - generic: Next
+    - generic: arrow_forward

@@ -1,0 +1,109 @@
+- main:
+  - heading "Dashboard.ai" [level=1]
+  - paragraph: Spreadsheets in, dashboards out
+  - generic: "6"
+  - generic: rows
+  - generic: "4"
+  - generic: columns
+  - generic: "2"
+  - generic: numeric
+  - button "Regenerate":
+    - text: Regenerate
+  - complementary:
+    - button "Drop a spreadsheet here .xlsx, .xls or .csv — or click to browse":
+      - paragraph: Drop a spreadsheet here
+      - paragraph: .xlsx, .xls or .csv — or click to browse
+    - generic: 91-demo.csv
+    - generic "date · 6 unique": Date
+    - generic "category · 3 unique": Region
+    - generic "number · 6 unique": Sales
+    - generic "number · 6 unique": Units
+    - heading "Build a chart" [level=2]
+    - button "Bar":
+      - text: Bar
+    - button "Line":
+      - text: Line
+    - button "Pie":
+      - text: Pie
+    - button "Heatmap":
+      - text: Heatmap
+    - text: Category
+    - combobox:
+      - generic: Region
+    - text: Value (numeric)
+    - combobox:
+      - generic: Units
+    - text: Title (optional)
+    - textbox "Auto"
+    - button "Add to dashboard" [active]:
+      - text: Add to dashboard
+  - heading "5 charts" [level=2]
+  - button "Clear all":
+    - text: Clear all
+  - heading "Region breakdown" [level=3]
+  - paragraph: pie · Region · Sales
+  - button:
+  - application
+  - heading "Sales over Date" [level=3]
+  - paragraph: line · Date · Sales
+  - button:
+  - application:
+    - generic: 2026-01-01
+    - generic: 2026-01-02
+    - generic: 2026-01-03
+    - generic: 2026-01-04
+    - generic: 2026-01-05
+    - generic: 2026-01-06
+    - generic: "0"
+    - generic: "75"
+    - generic: "150"
+    - generic: "225"
+    - generic: "300"
+  - heading "Sales by Region" [level=3]
+  - paragraph: bar · Region · Sales
+  - button:
+  - application:
+    - generic: South
+    - generic: West
+    - generic: North
+    - generic: "0"
+    - generic: "150"
+    - generic: "300"
+    - generic: "450"
+    - generic: "600"
+  - heading "Numeric correlation" [level=3]
+  - paragraph: heatmap
+  - button:
+  - table:
+    - rowgroup:
+      - row "Sales Units":
+        - columnheader
+        - columnheader "Sales"
+        - columnheader "Units"
+    - rowgroup:
+      - row "Sales 1 1":
+        - rowheader "Sales"
+        - cell "1"
+        - cell "1"
+      - row "Units 1 1":
+        - rowheader "Units"
+        - cell "1"
+        - cell "1"
+  - heading "Demo Units by Region" [level=3]
+  - paragraph: bar · Region · Units
+  - button:
+  - application:
+    - generic: South
+    - generic: West
+    - generic: North
+    - generic: "0"
+    - generic: "3"
+    - generic: "6"
+    - generic: "9"
+    - generic: "12"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1gf1p0vvf2809azmdrntp7wvpq?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: "3"

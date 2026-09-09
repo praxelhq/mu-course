@@ -1,0 +1,67 @@
+- banner:
+  - link "स SahiRasta":
+    - /url: /
+    - generic: स
+    - generic: SahiRasta
+  - generic: Demo data
+- main:
+  - paragraph: Delhi NCR · 7:15 PM
+  - heading "Don't just book a ride. Book the right ride at the right time." [level=1]
+  - button "Use my current location":
+  - button "Default pickup · tap to change Hauz Khas Village":
+    - paragraph: Default pickup · tap to change
+    - paragraph: Hauz Khas Village
+  - generic: SET
+  - paragraph: Your goal
+  - group "Decision goal":
+    - button "Save":
+      - text: Save
+    - button "Fastest":
+      - text: Fastest
+    - button "Balanced" [pressed]:
+      - text: Balanced
+    - button "Comfort":
+      - text: Comfort
+    - button "Eco":
+      - text: Eco
+  - textbox:
+    - /placeholder: Where to? e.g. Cyber Hub, Gurugram
+  - button "Find Best Ride" [disabled]:
+    - text: Find Best Ride
+  - paragraph: Traffic is moving
+  - paragraph: Our surge model expects fares to ease around 7:15 PM — waiting could save ~₹25.
+  - heading "Recent destinations" [level=2]
+  - list:
+    - button "Connaught Place Central Delhi Last trip":
+      - generic: Connaught Place
+      - generic: Central Delhi
+      - generic: Last trip
+    - button "Cyber Hub Gurugram":
+      - generic: Cyber Hub
+      - generic: Gurugram
+    - button "Noida Sector 62 Noida":
+      - generic: Noida Sector 62
+      - generic: Noida
+    - button "IGI Airport T3 Aerocity":
+      - generic: IGI Airport T3
+      - generic: Aerocity
+  - paragraph:
+    - text: Routes & traffic via Google Maps Platform · fares estimated from provider rate cards
+- navigation:
+  - link "Home":
+    - /url: /
+    - text: Home
+  - link "Best Ride":
+    - /url: /recommendation
+    - text: Best Ride
+  - link "Alerts":
+    - /url: /alerts
+    - text: Alerts
+  - link "Prefs":
+    - /url: /preferences
+    - text: Prefs
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_60a5x7h3en9v7th2e2nvb4z01r?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

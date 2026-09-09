@@ -1,0 +1,30 @@
+- main:
+  - generic: RentTrackr
+  - link "Manager login":
+    - /url: /login/manager
+    - button "Manager login"
+  - paragraph: Manager Edition
+  - heading "Rent, electricity and repairs for your Gurgaon flat — in one place." [level=1]
+  - paragraph: Built for Indian property managers renting rooms per tenant. Track dues in ₹, split the monthly electricity bill fairly, and keep every repair ticket moving.
+  - link "I'm a Property Manager":
+    - /url: /login/manager
+    - button "I'm a Property Manager":
+      - text: I'm a Property Manager
+  - link "I'm a Tenant":
+    - /url: /login/tenant
+    - button "I'm a Tenant":
+      - text: I'm a Tenant
+  - heading "Rent in ₹" [level=3]
+  - paragraph: Monthly invoices combining base rent, electricity and extras.
+  - heading "Utility splitter" [level=3]
+  - paragraph: Equal split or sub-meter based electricity shares per room.
+  - heading "WhatsApp reminders" [level=3]
+  - paragraph: One click to send a pre-filled rent due message.
+  - heading "Maintenance board" [level=3]
+  - paragraph: To-Do, Scheduled and Resolved kanban for repair tickets.
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_046315we9599jtyx2kjvfm8t6x?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

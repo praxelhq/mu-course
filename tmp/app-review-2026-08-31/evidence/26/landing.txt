@@ -1,0 +1,84 @@
+- banner:
+  - generic: PantryChef
+  - link "home Home":
+    - /url: /
+    - generic: home
+    - text: Home
+  - link "kitchen Pantry":
+    - /url: /pantry
+    - generic: kitchen
+    - text: Pantry
+  - link "receipt_long Recipes":
+    - /url: /recipes
+    - generic: receipt_long
+    - text: Recipes
+  - link "insights Tracker":
+    - /url: /tracker
+    - generic: insights
+    - text: Tracker
+  - button "notifications":
+    - generic: notifications
+  - link "Sign in":
+    - /url: /auth
+- main:
+  - heading "Hello, Chef!" [level=1]
+  - paragraph: Ready to cook something delicious today?
+  - heading "Daily Nutrition" [level=2]
+  - generic: "0"
+  - generic: kcal eaten
+  - generic: Protein
+  - generic: 0g
+  - generic: Carbs
+  - generic: 0g
+  - generic: Fat
+  - generic: 0g
+  - link "skillet Cook Now":
+    - /url: /recipes
+    - generic: skillet
+    - generic: Cook Now
+  - link "add_circle Log a Meal":
+    - /url: /check-in
+    - generic: add_circle
+    - generic: Log a Meal
+  - link "kitchen Update Pantry":
+    - /url: /pantry
+    - generic: kitchen
+    - generic: Update Pantry
+  - heading "Ready to Cook" [level=2]
+  - link "View All":
+    - /url: /recipes
+  - link "Lemon Herb Chicken check_circle 100% Match Lemon Herb Chicken schedule 25m local_fire_department 450 kcal":
+    - /url: /recipes/lemon-herb-chicken
+    - img "Lemon Herb Chicken"
+    - generic: check_circle
+    - text: 100% Match
+    - heading "Lemon Herb Chicken" [level=3]
+    - generic: schedule
+    - text: 25m
+    - generic: local_fire_department
+    - text: 450 kcal
+  - link "Quinoa Veggie Bowl warning Missing 1 item Roasted Veggie Quinoa Bowl schedule 35m local_fire_department 380 kcal":
+    - /url: /recipes/roasted-veggie-quinoa-bowl
+    - img "Quinoa Veggie Bowl"
+    - generic: warning
+    - text: Missing 1 item
+    - heading "Roasted Veggie Quinoa Bowl" [level=3]
+    - generic: schedule
+    - text: 35m
+    - generic: local_fire_department
+    - text: 380 kcal
+  - link "Tomato Basil Soup check_circle 100% Match Creamy Tomato Basil Soup schedule 20m local_fire_department 290 kcal":
+    - /url: /recipes/creamy-tomato-basil-soup
+    - img "Tomato Basil Soup"
+    - generic: check_circle
+    - text: 100% Match
+    - heading "Creamy Tomato Basil Soup" [level=3]
+    - generic: schedule
+    - text: 20m
+    - generic: local_fire_department
+    - text: 290 kcal
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_203ff61mmk8ypsmsf7m9am6x34?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

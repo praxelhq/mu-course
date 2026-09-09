@@ -1,0 +1,63 @@
+- banner:
+  - link "TravelTailor AI":
+    - /url: /
+    - generic: travel_explore
+    - generic: TravelTailor AI
+  - button "Toggle dark mode":
+    - generic: dark_mode
+  - link "Exit planning":
+    - /url: /
+    - generic: close
+    - generic: Exit planning
+- main:
+  - generic: Step 1 of 5
+  - generic: Destination
+  - generic: Dates
+  - generic: Travellers
+  - generic: Budget
+  - generic: Interests
+  - heading "Where are you going?" [level=2]
+  - paragraph: Choose your destination and the city you're flying from.
+  - button "Amalfi Coast Italy":
+    - generic: Amalfi Coast
+    - generic: Italy
+  - button "Kyoto Japan":
+    - generic: Kyoto
+    - generic: Japan
+  - button "Florence Italy":
+    - generic: Florence
+    - generic: Italy
+  - button "Maui Hawaii, USA":
+    - generic: Maui
+    - generic: Hawaii, USA
+  - button "Lisbon Portugal":
+    - generic: Lisbon
+    - generic: Portugal
+  - button "Reykjavík & the South Coast Iceland":
+    - generic: Reykjavík & the South Coast
+    - generic: Iceland
+  - button "Bali Indonesia":
+    - generic: Bali
+    - generic: Indonesia
+  - button "Queenstown New Zealand":
+    - generic: Queenstown
+    - generic: New Zealand
+  - generic: Or type any city in the world
+  - combobox "Or type any city in the world"
+  - generic: search
+  - paragraph: Pick your destination city — we'll match its international arrival airport, pull real photos and build the plan around your budget.
+  - generic: Departing from
+  - combobox "Departing from"
+  - generic: search
+  - button "Back":
+    - generic: arrow_back
+    - text: Back
+  - button "Continue":
+    - text: Continue
+    - generic: arrow_forward
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_4zxp32hwhk8nerwh4551kt6jsj?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

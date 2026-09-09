@@ -1,0 +1,158 @@
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6rjbkh0ryp9yrbp1exkex5ff1p?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- complementary:
+  - link "L LeakLens Find where your business is leaking money.":
+    - /url: /
+    - generic: L
+    - generic: LeakLens
+    - paragraph: Find where your business is leaking money.
+  - navigation:
+    - link "Overview":
+      - /url: /dashboard
+      - text: Overview
+    - link "Leak Map":
+      - /url: /leak-map
+      - text: Leak Map
+    - link "Customers":
+      - /url: /customers
+      - text: Customers
+    - link "Recovery Queue":
+      - /url: /recovery-queue
+      - text: Recovery Queue
+    - link "What-If Simulator":
+      - /url: /simulator
+      - text: What-If Simulator
+    - link "Connect Data":
+      - /url: /connect
+      - text: Connect Data
+  - paragraph: Current Data
+  - paragraph: IronCore Fitness Demo
+  - link "Switch Data":
+    - /url: /connect
+- main:
+  - heading "Customers" [level=1]
+  - paragraph: 7 customers · ₹1,03,500 potential revenue in this view
+  - paragraph: "Data Source: IronCore Fitness Demo"
+  - button "Sort by Revenue":
+    - text: Sort by Revenue
+  - button "All"
+  - button "Unfollowed Leads"
+  - button "Cold Quotes"
+  - button "Overdue Payments"
+  - button "Inactive Customers"
+  - table:
+    - rowgroup:
+      - row "Customer Leak Type Potential Value Days Inactive Recovery More information Priority More information Action":
+        - columnheader "Customer"
+        - columnheader "Leak Type"
+        - columnheader "Potential Value"
+        - columnheader "Days Inactive"
+        - columnheader "Recovery More information":
+          - text: Recovery
+          - button "More information":
+        - columnheader "Priority More information":
+          - text: Priority
+          - button "More information":
+        - columnheader "Action"
+    - rowgroup:
+      - row "Riya Mehta At Risk Cold Quote ₹24,000 6 days 82% · Why? High Recover Quote":
+        - cell "Riya Mehta At Risk":
+          - paragraph: Riya Mehta
+          - generic: At Risk
+        - cell "Cold Quote"
+        - cell "₹24,000"
+        - cell "6 days"
+        - cell "82% · Why?":
+          - generic: 82%
+          - button "· Why?"
+        - cell "High"
+        - cell "Recover Quote":
+          - button "Recover Quote":
+            - text: Recover Quote
+      - row "Aarav Sharma At Risk Unfollowed Lead ₹18,000 4 days 89% · Why? Critical Follow Up":
+        - cell "Aarav Sharma At Risk":
+          - paragraph: Aarav Sharma
+          - generic: At Risk
+        - cell "Unfollowed Lead"
+        - cell "₹18,000"
+        - cell "4 days"
+        - cell "89% · Why?":
+          - generic: 89%
+          - button "· Why?"
+        - cell "Critical"
+        - cell "Follow Up":
+          - button "Follow Up":
+            - text: Follow Up
+      - row "Arjun Kapoor At Risk Overdue Payment ₹15,000 19 days 94% · Why? Critical Collect Payment":
+        - cell "Arjun Kapoor At Risk":
+          - paragraph: Arjun Kapoor
+          - generic: At Risk
+        - cell "Overdue Payment"
+        - cell "₹15,000"
+        - cell "19 days"
+        - cell "94% · Why?":
+          - generic: 94%
+          - button "· Why?"
+        - cell "Critical"
+        - cell "Collect Payment":
+          - button "Collect Payment":
+            - text: Collect Payment
+      - row "Nisha Verma At Risk Cold Quote ₹14,500 8 days 65% · Why? Medium Recover Quote":
+        - cell "Nisha Verma At Risk":
+          - paragraph: Nisha Verma
+          - generic: At Risk
+        - cell "Cold Quote"
+        - cell "₹14,500"
+        - cell "8 days"
+        - cell "65% · Why?":
+          - generic: 65%
+          - button "· Why?"
+        - cell "Medium"
+        - cell "Recover Quote":
+          - button "Recover Quote":
+            - text: Recover Quote
+      - row "Kabir Malhotra At Risk Unfollowed Lead ₹12,000 3 days 78% · Why? High Follow Up":
+        - cell "Kabir Malhotra At Risk":
+          - paragraph: Kabir Malhotra
+          - generic: At Risk
+        - cell "Unfollowed Lead"
+        - cell "₹12,000"
+        - cell "3 days"
+        - cell "78% · Why?":
+          - generic: 78%
+          - button "· Why?"
+        - cell "High"
+        - cell "Follow Up":
+          - button "Follow Up":
+            - text: Follow Up
+      - row "Rohit Khanna At Risk Inactive Customer ₹11,000 61 days 58% · Why? Medium Re-engage":
+        - cell "Rohit Khanna At Risk":
+          - paragraph: Rohit Khanna
+          - generic: At Risk
+        - cell "Inactive Customer"
+        - cell "₹11,000"
+        - cell "61 days"
+        - cell "58% · Why?":
+          - generic: 58%
+          - button "· Why?"
+        - cell "Medium"
+        - cell "Re-engage":
+          - button "Re-engage":
+            - text: Re-engage
+      - row "Sneha Rao At Risk Inactive Customer ₹9,000 42 days 71% · Why? Medium Re-engage":
+        - cell "Sneha Rao At Risk":
+          - paragraph: Sneha Rao
+          - generic: At Risk
+        - cell "Inactive Customer"
+        - cell "₹9,000"
+        - cell "42 days"
+        - cell "71% · Why?":
+          - generic: 71%
+          - button "· Why?"
+        - cell "Medium"
+        - cell "Re-engage":
+          - button "Re-engage":
+            - text: Re-engage

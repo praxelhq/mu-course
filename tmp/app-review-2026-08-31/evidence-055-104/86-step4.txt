@@ -1,0 +1,37 @@
+- banner:
+  - button "Go back":
+    - generic: arrow_back
+  - generic: Step 4 of 6
+- main:
+  - heading "Why do you want to quit?" [level=1]
+  - paragraph: Your coach will remind you of this.
+  - button "❤️ Health":
+    - generic: ❤️
+    - generic: Health
+  - button "💰 Save Money":
+    - generic: 💰
+    - generic: Save Money
+  - button "👨‍👩‍👧 Family":
+    - generic: 👨‍👩‍👧
+    - generic: Family
+  - button "💪 Fitness":
+    - generic: 💪
+    - generic: Fitness
+  - button "✨ Appearance":
+    - generic: ✨
+    - generic: Appearance
+  - button "🕊️ Freedom":
+    - generic: 🕊️
+    - generic: Freedom
+  - button "🎯 Other":
+    - generic: 🎯
+    - generic: Other
+- button "Continue" [disabled]:
+  - text: Continue
+  - generic: arrow_forward
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_19mhcg6jxz8s9s6ch802n4v9n3?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

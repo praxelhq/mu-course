@@ -1,0 +1,43 @@
+- alert
+- main:
+  - link "Back":
+    - /url: /
+    - text: Back
+  - heading "Zostel Goa" [level=1]
+  - paragraph: Anjuna, Goa
+  - button
+  - button
+  - button
+  - paragraph: Choose your room
+  - paragraph: Mixed Dorm Bed
+  - text: Fits 1
+  - paragraph: A bed in a mixed dormitory with lockers and a shared washroom.
+  - paragraph: ₹899 /night
+  - button "Select Room"
+  - paragraph: Female Dorm Bed
+  - text: Fits 1
+  - paragraph: A bed in a female-only dormitory with lockers and a shared washroom.
+  - paragraph: ₹899 /night
+  - button "Select Room"
+  - paragraph: Private Room
+  - text: Fits 2
+  - paragraph: An en-suite room with a double bed, AC, and a short walk to the beach.
+  - paragraph: ₹2,899 /night
+  - button "Select Room"
+  - button "Overview": Overview
+  - button "Nearby & activities": Nearby & activities
+  - button "Ratings": Ratings
+  - paragraph: A laid-back beach-town hostel a short walk from Anjuna's flea market and beach shacks — hammocks, a pool, and a common area that gets loud after sunset.
+  - navigation:
+    - link "Home":
+      - /url: /
+      - generic: Home
+    - link "My Stay":
+      - /url: /stay
+      - generic: My Stay
+    - link "Concierge":
+      - /url: /chat
+      - generic: Concierge
+    - link "Profile":
+      - /url: /profile
+      - generic: Profile

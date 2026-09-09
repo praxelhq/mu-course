@@ -1,0 +1,86 @@
+- banner:
+  - generic: RentCred
+  - generic: Bento Grid
+  - paragraph: Portable Tenancy Score System
+  - button "Landing":
+    - generic: Landing
+  - button "Tenant Portal":
+    - generic: Tenant Portal
+  - button "Landlord View":
+    - generic: Landlord View
+  - button "Consent & Tasks" [active]:
+    - generic: Consent & Tasks
+  - button "Simulator":
+    - generic: Simulator
+- complementary:
+  - generic: J
+  - paragraph: VERIFICATION CENTER
+  - paragraph: Jordan Sharma
+  - navigation:
+    - button "Dashboard":
+      - generic: Dashboard
+    - button "Tenancies":
+      - generic: Tenancies
+    - button "Landlord View":
+      - generic: Landlord View
+    - button "Consent & Privacy":
+      - generic: Consent & Privacy
+  - button "Simulator Tool"
+  - button "Help Center":
+    - generic: Help Center
+  - button "Exit Portal":
+    - generic: Exit Portal
+- main:
+  - generic: PRIVACY & PERMISSIONS
+  - heading "Verification & Consent Center" [level=2]
+  - paragraph: Control data permissions and monitor your document status.
+  - heading "Pending Access Requests" [level=3]
+  - generic: Action Required
+  - heading "Sunshine Apartments" [level=4]
+  - paragraph: Requesting full report for tenancy application at 402 Golden Way, Unit 12B.
+  - button "Review & Grant"
+  - button "Decline"
+  - heading "Default Consent Tier" [level=3]
+  - generic: Basic Score
+  - paragraph: Score + Status
+  - generic: Payment Log
+  - paragraph: Score + 12m Rent Data
+  - generic: Full Report
+  - paragraph: Full History & Checks
+  - complementary:
+    - heading "Verification Checklist" [level=3]
+    - generic: PAN Card Verification
+    - generic: Verified
+    - generic: Income Proof Upload
+    - generic: Pending
+    - generic: Past Landlord Link
+    - generic: Sent
+    - paragraph: VERIFICATION PROGRESS
+    - paragraph: 1/3 Complete
+  - heading "Dispute & Accuracy Center" [level=3]
+  - paragraph: Spot an inconsistency in your tenancy record? Flag it for audit.
+  - button "Log New Dispute":
+    - text: Log New Dispute
+  - table:
+    - rowgroup:
+      - row "Property Reported Incident Date Status Action":
+        - columnheader "Property"
+        - columnheader "Reported Incident"
+        - columnheader "Date"
+        - columnheader "Status"
+        - columnheader "Action"
+    - rowgroup:
+      - row "Willow Creek Residencies Late Payment (3 days) Oct 2023 Unflagged Track Issue":
+        - cell "Willow Creek Residencies"
+        - cell "Late Payment (3 days)"
+        - cell "Oct 2023"
+        - cell "Unflagged"
+        - cell "Track Issue":
+          - button "Track Issue"
+      - row "Urban Heights Apt 12B Security Deposit Deducted Jan 2024 Resolved View Details":
+        - cell "Urban Heights Apt 12B"
+        - cell "Security Deposit Deducted"
+        - cell "Jan 2024"
+        - cell "Resolved"
+        - cell "View Details":
+          - button "View Details"

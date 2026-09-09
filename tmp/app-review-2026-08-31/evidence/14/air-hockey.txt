@@ -1,0 +1,30 @@
+- navigation:
+  - link "GAME HUB":
+    - /url: ../index.html
+  - link "Home":
+    - /url: ../index.html
+  - link "Pen Fight":
+    - /url: pen-fight.html
+  - link "Carrom Flick":
+    - /url: carrom-flick.html
+- main:
+  - heading "🏒 Air Hockey" [level=1]
+  - paragraph: Drag your paddle (bottom half) to hit the puck into the top goal.
+  - button "BOT"
+  - button "PVP (Arrow Keys)"
+  - generic: YOU
+  - generic: "0"
+  - generic: VS
+  - generic: BOT
+  - generic: "0"
+  - heading "You Win!" [level=2]
+  - button "Play Again"
+  - button "Reset Match"
+  - heading "How to play" [level=3]
+  - list:
+    - listitem: Drag your paddle (mouse or touch) — it's locked to your half of the table.
+    - listitem: In PVP mode, Player 2 (top) uses the Arrow Keys to move their paddle.
+    - listitem: Score by knocking the puck through the goal gap on your opponent's wall.
+    - listitem: First to 7 goals wins the match.
+- contentinfo:
+  - paragraph: © 2026 Game Hub Online.

@@ -1,0 +1,54 @@
+- region "Notifications (F8)":
+  - list
+- region "Notifications alt+T"
+- main:
+  - generic: Step 3 of 6
+  - generic: 50% complete
+  - generic: Basic Info
+  - generic: Vitals
+  - generic: Physical
+  - generic: Performance
+  - generic: Cognitive
+  - generic: Psychological
+  - heading "Physical" [level=2]
+  - generic: Speed
+  - generic: 5/10
+  - paragraph: How fast can they run in short bursts?
+  - slider
+  - generic: Flexibility
+  - generic: 5/10
+  - paragraph: Range of motion and body flexibility
+  - slider
+  - generic: Coordination
+  - generic: 5/10
+  - paragraph: Ability to move different body parts together smoothly
+  - slider
+  - generic: Agility
+  - generic: 5/10
+  - paragraph: Quick direction changes and nimbleness
+  - slider
+  - generic: Balance
+  - generic: 5/10
+  - paragraph: Maintaining stability during movement
+  - slider
+  - generic: Endurance
+  - generic: 5/10
+  - paragraph: Sustained physical activity without fatigue
+  - slider
+  - generic: Strength
+  - generic: 5/10
+  - paragraph: Muscular strength relative to age
+  - slider
+  - generic: Power
+  - generic: 5/10
+  - paragraph: Explosive strength (jumping, throwing)
+  - slider
+  - button "Previous":
+    - text: Previous
+  - button "Next" [active]:
+    - text: Next
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_4evn1nffn78kfshkdrmcjvbrzc?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

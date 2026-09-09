@@ -1,0 +1,93 @@
+- complementary:
+  - link "AllPlay Bets logo AllPlay Bets":
+    - /url: /
+    - img "AllPlay Bets logo"
+    - generic: AllPlay Bets
+  - navigation:
+    - link "Home":
+      - /url: /
+      - generic: Home
+    - paragraph: Sports
+    - link "Football":
+      - /url: /sport/football
+      - generic: Football
+    - link "Cricket":
+      - /url: /sport/cricket
+      - generic: Cricket
+    - link "Basketball":
+      - /url: /sport/basketball
+      - generic: Basketball
+    - link "Hockey":
+      - /url: /sport/hockey
+      - generic: Hockey
+    - link "Formula 1":
+      - /url: /sport/f1
+      - generic: Formula 1
+    - link "MMA / UFC":
+      - /url: /sport/mma
+      - generic: MMA / UFC
+    - link "Baseball":
+      - /url: /sport/baseball
+      - generic: Baseball
+    - link "Rugby":
+      - /url: /sport/rugby
+      - generic: Rugby
+    - paragraph: Account
+    - link "Wallet" [active]:
+      - /url: /wallet
+      - generic: Wallet
+    - link "My Bets":
+      - /url: /my-bets
+      - generic: My Bets
+    - link "Profile":
+      - /url: /profile
+      - generic: Profile
+- banner:
+  - paragraph: Virtual credits only — no real money is involved.
+  - link "CR 10,160":
+    - /url: /wallet
+  - button "Bet Slip":
+    - generic: Bet Slip
+- main:
+  - heading "Wallet" [level=1]
+  - paragraph: Virtual credits for practice play. No real money, ever.
+  - paragraph: Balance
+  - paragraph: 10,160
+  - paragraph: Staked (pending)
+  - paragraph: "0"
+  - paragraph: Starting credits
+  - paragraph: 10,000
+  - button "Settle pending bets"
+  - button "Reset account"
+  - heading "Transactions" [level=2]
+  - list:
+    - paragraph: Bet won — Arsenal
+    - paragraph: 31/08/2026, 02:01:55
+    - paragraph: "+260"
+    - paragraph: bal 10,160
+    - paragraph: Bet placed — 1 selection
+    - paragraph: 31/08/2026, 02:01:09
+    - paragraph: "-100"
+    - paragraph: bal 9,900
+- complementary "Bet slip":
+  - heading "Bet Slip" [level=2]
+  - button "Close bet slip":
+  - paragraph: No selections yet. Tap any odds to add them here.
+  - generic: Stake per selection (credits)
+  - spinbutton "Stake per selection (credits)": "100"
+  - button "50"
+  - button "100"
+  - button "500"
+  - button "1000"
+  - generic: Total stake
+  - generic: "0"
+  - generic: Potential payout
+  - generic: "0"
+  - button "Clear" [disabled]
+  - button "Place Bet" [disabled]
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_6det33f3d587qvrxac3mg2hbp6?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

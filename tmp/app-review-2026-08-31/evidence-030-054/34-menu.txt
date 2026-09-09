@@ -1,0 +1,158 @@
+- main:
+  - 'heading "{EATeat}" [level=1]'
+  - paragraph: Fresh South Indian Meals
+  - paragraph: Pre-order in under 30 seconds.
+  - generic: Ordering for Today, Mon 31 August
+  - button "All"
+  - button "Veg"
+  - button "Non Veg"
+  - button "All"
+  - button "Biriyani"
+  - button "Parotta"
+  - button "Kothu Parotta"
+  - button "Thali"
+  - button "Protein Bowl"
+  - button "Bucket Biriyani"
+  - button "Variety Rice"
+  - heading "Biriyani" [level=3]
+  - article:
+    - generic "Non-vegetarian"
+    - heading "Ambur Chicken Biriyani Combo" [level=3]
+    - generic: ₹189
+    - generic: ₹289
+    - button "Add":
+      - text: Add
+  - article:
+    - generic "Non-vegetarian"
+    - heading "Ambur Prawn Biriyani Combo" [level=3]
+    - generic: ₹259
+    - generic: ₹289
+    - button "Add":
+      - text: Add
+  - article:
+    - generic "Vegetarian"
+    - heading "Ambur Veg Biriyani Combo" [level=3]
+    - generic: ₹169
+    - generic: ₹259
+    - button "Add":
+      - text: Add
+  - heading "Parotta" [level=3]
+  - article:
+    - generic "Non-vegetarian"
+    - heading "Madurai Parotta (3Pcs), Chettinad Gravy" [level=3]
+    - generic: ₹139
+    - generic: ₹159
+    - button "Add":
+      - text: Add
+  - article:
+    - generic "Vegetarian"
+    - heading "Madurai Parotta (3Pcs), Chettinad Gravy - Veg" [level=3]
+    - generic: ₹129
+    - generic: ₹149
+    - button "Add":
+      - text: Add
+  - heading "Kothu Parotta" [level=3]
+  - article:
+    - generic "Non-vegetarian"
+    - heading "Chicken Kothu Parotta" [level=3]
+    - generic: ₹159
+    - generic: ₹189
+    - button "Add":
+      - text: Add
+  - article:
+    - generic "Non-vegetarian"
+    - heading "Egg Kothu Parotta" [level=3]
+    - generic: ₹149
+    - generic: ₹169
+    - button "Add":
+      - text: Add
+  - article:
+    - generic "Vegetarian"
+    - heading "Veg Kothu Parotta" [level=3]
+    - generic: ₹139
+    - generic: ₹159
+    - button "Add":
+      - text: Add
+  - heading "Thali" [level=3]
+  - article:
+    - generic "Non-vegetarian"
+    - heading "Chicken Curry Thali" [level=3]
+    - generic: ₹159
+    - generic: ₹189
+    - button "Add":
+      - text: Add
+  - article:
+    - generic "Non-vegetarian"
+    - heading "Prawn Curry Thali" [level=3]
+    - generic: ₹189
+    - generic: ₹209
+    - button "Add":
+      - text: Add
+  - article:
+    - generic "Vegetarian"
+    - heading "Paneer Curry Thali" [level=3]
+    - generic: ₹139
+    - generic: ₹159
+    - button "Add":
+      - text: Add
+  - article:
+    - generic "Vegetarian"
+    - heading "Mushroom Curry Thali" [level=3]
+    - generic: ₹139
+    - generic: ₹159
+    - button "Add":
+      - text: Add
+  - heading "Bucket Biriyani" [level=3]
+  - article:
+    - generic "Non-vegetarian"
+    - heading "Ambur Chicken Bucket Biriyani Combo" [level=3]
+    - generic: ₹659
+    - generic: ₹759
+    - button "Add":
+      - text: Add
+  - article:
+    - generic "Vegetarian"
+    - heading "Ambur Veg Bucket Biriyani Combo" [level=3]
+    - generic: ₹559
+    - generic: ₹659
+    - button "Add":
+      - text: Add
+  - heading "Protein Bowl" [level=3]
+  - article:
+    - generic "Non-vegetarian"
+    - heading "Italian Pesto Bowl (Chicken)" [level=3]
+    - generic: ₹189
+    - generic: ₹209
+    - button "Add":
+      - text: Add
+  - article:
+    - generic "Vegetarian"
+    - heading "Italian Pesto Bowl" [level=3]
+    - generic: ₹169
+    - generic: ₹189
+    - button "Add":
+      - text: Add
+  - heading "Max Protein Bowl" [level=3]
+  - article:
+    - generic "Non-vegetarian"
+    - heading "Loaded Chicken Bowl" [level=3]
+    - paragraph: 50g herb rice, 200g grilled chicken
+    - generic: ₹259
+    - generic: ₹299
+    - button "Add":
+      - text: Add
+  - heading "Variety Rice" [level=3]
+  - article:
+    - generic "Vegetarian"
+    - heading "Meal Tray" [level=3]
+    - paragraph: Tomato Rice, Bisi Bele Bath, Curd Rice
+    - generic: ₹129
+    - generic: ₹149
+    - button "Add":
+      - text: Add
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_5113sx88hf8318qn810ch59kzy?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

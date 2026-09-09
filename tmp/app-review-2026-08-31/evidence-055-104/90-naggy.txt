@@ -1,0 +1,36 @@
+- main:
+  - img "Naggy mascot"
+  - heading "Naggy" [level=1]
+  - paragraph: Reads your streaks. Remembers your excuses.
+  - paragraph: Morning. You told me you'd work out at 6:30. It is now not 6:30. I'm not mad, I'm just writing it down. 👀
+  - paragraph: I overslept, I'll do it in the evening
+  - paragraph: "Evening workouts you actually finish: 6 of 7. Morning ones: 2 of 9. Honestly? Move it permanently to 5 PM and stop pretending you're a morning athlete."
+  - button "Why do I keep missing mornings?"
+  - button "I have no motivation today"
+  - button "Plan my afternoon"
+  - button "How's my progress?"
+  - textbox "Tell Naggy what's going on…"
+  - button:
+- navigation:
+  - link "Today":
+    - /url: /
+    - text: Today
+  - link "Habits":
+    - /url: /habits
+    - text: Habits
+  - link "Focus":
+    - /url: /focus
+    - text: Focus
+  - link "Progress":
+    - /url: /progress
+    - text: Progress
+  - link "Naggy":
+    - /url: /naggy
+    - text: Naggy
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_1y077zn9zp920rn02hgwhd1kn0?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":
+- generic: M

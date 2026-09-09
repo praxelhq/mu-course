@@ -1,0 +1,693 @@
+- complementary:
+  - generic: K
+  - paragraph: Kaelor DealOS
+  - paragraph: Capital Advisory
+  - paragraph: From inbound opportunity to transaction closure.
+  - navigation:
+    - link:
+      - /url: /
+      - generic: Executive Dashboard
+    - link:
+      - /url: /inbox
+      - generic: AI Unified Inbox
+      - generic: "6"
+    - link:
+      - /url: /leads
+      - generic: Leads
+    - link:
+      - /url: /deals
+      - generic: Deal Pipeline
+    - link:
+      - /url: /tasks
+      - generic: Tasks
+    - link:
+      - /url: /calendar
+      - generic: Calendar & Meetings
+    - link:
+      - /url: /revenue
+      - generic: Revenue
+    - link:
+      - /url: /copilot
+      - generic: AI Deal Copilot
+    - link:
+      - /url: /admin
+      - generic: Audit & Access
+  - generic: "Integrations: mock mode"
+- banner:
+  - textbox:
+    - /placeholder: Search deals, leads, companies…
+  - button:
+  - button:
+    - generic: AK
+    - generic: Aditya Kaelor
+    - generic: Founder/Admin
+- main:
+  - heading [level=1]: Lead Management
+  - paragraph: 30 leads in origination · 4 critical
+  - button [expanded]:
+    - text: Add lead
+  - textbox:
+    - /placeholder: Search lead, company, sector…
+  - combobox:
+    - generic: All statuses
+  - combobox:
+    - generic: All sources
+  - combobox:
+    - generic: All owners
+  - table:
+    - rowgroup:
+      - row:
+        - columnheader: Lead
+        - columnheader: Source
+        - columnheader: Category
+        - columnheader: Value
+        - columnheader: AI score
+        - columnheader: Status
+        - columnheader: Owner
+        - columnheader: Partner
+        - columnheader: Last / next
+        - columnheader
+    - rowgroup:
+      - row:
+        - cell:
+          - button:
+            - paragraph: Sameer Doshi
+            - paragraph: Arcadia Infra Developers · LD-1001
+        - cell:
+          - generic: WhatsApp
+        - cell: Debt Fundraising
+        - cell: ₹300 cr
+        - cell:
+          - generic: "94"
+          - generic: Critical
+        - cell:
+          - combobox:
+            - generic: New
+        - cell: Karthik Iyer
+        - cell: Rhea Menon
+        - cell: 03 Aug → 04 Aug
+        - cell:
+          - button: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Priya Nandakumar
+            - paragraph: Verdant Agritech · LD-1002
+        - cell:
+          - generic: Instagram
+        - cell: Equity Fundraising
+        - cell: ₹120 cr
+        - cell:
+          - generic: "81"
+          - generic: High
+        - cell:
+          - combobox:
+            - generic: Under Review
+        - cell: Neha Bansal
+        - cell: Vikram Shetty
+        - cell: 02 Aug → 05 Aug
+        - cell:
+          - button: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Rajeev Malhotra
+            - paragraph: Northstar Hospitality · LD-1003
+        - cell:
+          - generic: Referral
+        - cell: Hospitality Acquisition
+        - cell: ₹450 cr
+        - cell:
+          - generic: "90"
+          - generic: Critical
+        - cell:
+          - combobox:
+            - generic: Contacted
+        - cell: Rohan Pillai
+        - cell: Rhea Menon
+        - cell: 01 Aug → 06 Aug
+        - cell:
+          - button: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Devika Sharma
+            - paragraph: Helios Renewables · LD-1004
+        - cell:
+          - generic: Email
+        - cell: Structured Finance
+        - cell: ₹275 cr
+        - cell:
+          - generic: "86"
+          - generic: High
+        - cell:
+          - combobox:
+            - generic: Qualification Call Scheduled
+        - cell: Sana Qureshi
+        - cell: Vikram Shetty
+        - cell: 31 Jul → 07 Aug
+        - cell:
+          - button: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Arun Bhatia
+            - paragraph: Bhatia Logistics Park · LD-1005
+        - cell:
+          - generic: Call
+        - cell: LRD / Refinancing
+        - cell: ₹180 cr
+        - cell:
+          - generic: "78"
+          - generic: High
+        - cell:
+          - combobox:
+            - generic: Qualified
+        - cell: Karthik Iyer
+        - cell: Rhea Menon
+        - cell: 30 Jul → 08 Aug
+        - cell:
+          - button: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Meera Krishnan
+            - paragraph: Lumen Diagnostics · LD-1006
+        - cell:
+          - generic: Website
+        - cell: Private Equity
+        - cell: ₹90 cr
+        - cell:
+          - generic: "72"
+          - generic: High
+        - cell:
+          - combobox:
+            - generic: Nurture
+        - cell: Neha Bansal
+        - cell: Vikram Shetty
+        - cell: 29 Jul → 09 Aug
+        - cell:
+          - button: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Farhan Sheikh
+            - paragraph: Cobalt Steel Works · LD-1007
+        - cell:
+          - generic: WhatsApp
+        - cell: Debt Fundraising
+        - cell: ₹210 cr
+        - cell:
+          - generic: "74"
+          - generic: High
+        - cell:
+          - combobox:
+            - generic: Converted to Deal
+        - cell: Rohan Pillai
+        - cell: Rhea Menon
+        - cell: 28 Jul → 10 Aug
+        - cell:
+          - button [disabled]: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Ishita Verma
+            - paragraph: Trellis Coworking · LD-1008
+        - cell:
+          - generic: Instagram
+        - cell: CRE Acquisition
+        - cell: ₹65 cr
+        - cell:
+          - generic: "58"
+          - generic: Medium
+        - cell:
+          - combobox:
+            - generic: Not Qualified
+        - cell: Sana Qureshi
+        - cell: Vikram Shetty
+        - cell: 27 Jul → 04 Aug
+        - cell:
+          - button: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Gautam Nair
+            - paragraph: Peninsula Land Holdings · LD-1009
+        - cell:
+          - generic: Referral
+        - cell: Land Transaction
+        - cell: ₹520 cr
+        - cell:
+          - generic: "88"
+          - generic: Critical
+        - cell:
+          - combobox:
+            - generic: New
+        - cell: Karthik Iyer
+        - cell: Rhea Menon
+        - cell: 26 Jul → 05 Aug
+        - cell:
+          - button: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Sneha Kulkarni
+            - paragraph: Aeris Pharma · LD-1010
+        - cell:
+          - generic: Email
+        - cell: M&A
+        - cell: ₹340 cr
+        - cell:
+          - generic: "83"
+          - generic: High
+        - cell:
+          - combobox:
+            - generic: Under Review
+        - cell: Neha Bansal
+        - cell: Vikram Shetty
+        - cell: 03 Aug → 06 Aug
+        - cell:
+          - button: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Nikhil Grover
+            - paragraph: Grover Retail Ventures · LD-1011
+        - cell:
+          - generic: Call
+        - cell: Pre-leased Asset
+        - cell: ₹160 cr
+        - cell:
+          - generic: "69"
+          - generic: Medium
+        - cell:
+          - combobox:
+            - generic: Contacted
+        - cell: Rohan Pillai
+        - cell: Rhea Menon
+        - cell: 02 Aug → 07 Aug
+        - cell:
+          - button: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Tanvi Desai
+            - paragraph: Solstice Studios · LD-1012
+        - cell:
+          - generic: Instagram
+        - cell: Equity Fundraising
+        - cell: ₹25 cr
+        - cell:
+          - generic: "41"
+          - generic: Low
+        - cell:
+          - combobox:
+            - generic: Qualification Call Scheduled
+        - cell: Sana Qureshi
+        - cell: Vikram Shetty
+        - cell: 01 Aug → 08 Aug
+        - cell:
+          - button: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Harsh Vardhan
+            - paragraph: Vardhan Cements · LD-1013
+        - cell:
+          - generic: WhatsApp
+        - cell: Debt Fundraising
+        - cell: ₹390 cr
+        - cell:
+          - generic: "87"
+          - generic: High
+        - cell:
+          - combobox:
+            - generic: Qualified
+        - cell: Karthik Iyer
+        - cell: Rhea Menon
+        - cell: 31 Jul → 09 Aug
+        - cell:
+          - button: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Aisha Kapoor
+            - paragraph: Meridian Data Centres · LD-1014
+        - cell:
+          - generic: Email
+        - cell: Private Equity
+        - cell: ₹800 cr
+        - cell:
+          - generic: "96"
+          - generic: Critical
+        - cell:
+          - combobox:
+            - generic: Nurture
+        - cell: Neha Bansal
+        - cell: Vikram Shetty
+        - cell: 30 Jul → 10 Aug
+        - cell:
+          - button: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Suresh Reddy
+            - paragraph: Reddy Textiles · LD-1015
+        - cell:
+          - generic: Call
+        - cell: Strategic Advisory
+        - cell: ₹45 cr
+        - cell:
+          - generic: "37"
+          - generic: Low
+        - cell:
+          - combobox:
+            - generic: Converted to Deal
+        - cell: Rohan Pillai
+        - cell: Rhea Menon
+        - cell: 29 Jul → 04 Aug
+        - cell:
+          - button [disabled]: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Kunal Mehta
+            - paragraph: Highbeam Logistics · LD-1016
+        - cell:
+          - generic: Website
+        - cell: Debt Fundraising
+        - cell: ₹140 cr
+        - cell:
+          - generic: "64"
+          - generic: Medium
+        - cell:
+          - combobox:
+            - generic: Not Qualified
+        - cell: Sana Qureshi
+        - cell: Vikram Shetty
+        - cell: 28 Jul → 05 Aug
+        - cell:
+          - button: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Ritika Sen
+            - paragraph: Orchid Wellness Resorts · LD-1017
+        - cell:
+          - generic: Instagram
+        - cell: Hospitality Acquisition
+        - cell: ₹230 cr
+        - cell:
+          - generic: "76"
+          - generic: High
+        - cell:
+          - combobox:
+            - generic: New
+        - cell: Karthik Iyer
+        - cell: Rhea Menon
+        - cell: 27 Jul → 06 Aug
+        - cell:
+          - button: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Manoj Pandey
+            - paragraph: Pandey Cold Chain · LD-1018
+        - cell:
+          - generic: WhatsApp
+        - cell: Structured Finance
+        - cell: ₹95 cr
+        - cell:
+          - generic: "61"
+          - generic: Medium
+        - cell:
+          - combobox:
+            - generic: Under Review
+        - cell: Neha Bansal
+        - cell: Vikram Shetty
+        - cell: 26 Jul → 07 Aug
+        - cell:
+          - button: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Zoya Rahman
+            - paragraph: Quartz Fintech · LD-1019
+        - cell:
+          - generic: Referral
+        - cell: Equity Fundraising
+        - cell: ₹75 cr
+        - cell:
+          - generic: "68"
+          - generic: Medium
+        - cell:
+          - combobox:
+            - generic: Contacted
+        - cell: Rohan Pillai
+        - cell: Rhea Menon
+        - cell: 03 Aug → 08 Aug
+        - cell:
+          - button: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Vivek Anand
+            - paragraph: Anand Auto Components · LD-1020
+        - cell:
+          - generic: Email
+        - cell: M&A
+        - cell: ₹260 cr
+        - cell:
+          - generic: "79"
+          - generic: High
+        - cell:
+          - combobox:
+            - generic: Qualification Call Scheduled
+        - cell: Sana Qureshi
+        - cell: Vikram Shetty
+        - cell: 02 Aug → 09 Aug
+        - cell:
+          - button: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Pooja Iyengar
+            - paragraph: Sunbeam Solar Parks · LD-1021
+        - cell:
+          - generic: Call
+        - cell: LRD / Refinancing
+        - cell: ₹310 cr
+        - cell:
+          - generic: "82"
+          - generic: High
+        - cell:
+          - combobox:
+            - generic: Qualified
+        - cell: Karthik Iyer
+        - cell: Rhea Menon
+        - cell: 01 Aug → 10 Aug
+        - cell:
+          - button: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Rahul Saxena
+            - paragraph: Saxena Malls · LD-1022
+        - cell:
+          - generic: Referral
+        - cell: Pre-leased Asset
+        - cell: ₹420 cr
+        - cell:
+          - generic: "85"
+          - generic: High
+        - cell:
+          - combobox:
+            - generic: Nurture
+        - cell: Neha Bansal
+        - cell: Vikram Shetty
+        - cell: 31 Jul → 04 Aug
+        - cell:
+          - button: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Divya Nambiar
+            - paragraph: Kestrel Education · LD-1023
+        - cell:
+          - generic: Website
+        - cell: Private Equity
+        - cell: ₹110 cr
+        - cell:
+          - generic: "63"
+          - generic: Medium
+        - cell:
+          - combobox:
+            - generic: Converted to Deal
+        - cell: Rohan Pillai
+        - cell: Rhea Menon
+        - cell: 30 Jul → 05 Aug
+        - cell:
+          - button [disabled]: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Imran Qadri
+            - paragraph: Qadri Warehousing · LD-1024
+        - cell:
+          - generic: WhatsApp
+        - cell: CRE Acquisition
+        - cell: ₹130 cr
+        - cell:
+          - generic: "66"
+          - generic: Medium
+        - cell:
+          - combobox:
+            - generic: Not Qualified
+        - cell: Sana Qureshi
+        - cell: Vikram Shetty
+        - cell: 29 Jul → 06 Aug
+        - cell:
+          - button: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Ankit Jain
+            - paragraph: Jain Speciality Chem · LD-1025
+        - cell:
+          - generic: Email
+        - cell: Debt Fundraising
+        - cell: ₹190 cr
+        - cell:
+          - generic: "71"
+          - generic: Medium
+        - cell:
+          - combobox:
+            - generic: New
+        - cell: Karthik Iyer
+        - cell: Rhea Menon
+        - cell: 28 Jul → 07 Aug
+        - cell:
+          - button: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Lavanya Prasad
+            - paragraph: Cirrus Aviation Services · LD-1026
+        - cell:
+          - generic: Instagram
+        - cell: Strategic Advisory
+        - cell: ₹55 cr
+        - cell:
+          - generic: "49"
+          - generic: Low
+        - cell:
+          - combobox:
+            - generic: Under Review
+        - cell: Neha Bansal
+        - cell: Vikram Shetty
+        - cell: 27 Jul → 08 Aug
+        - cell:
+          - button: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Deepak Chawla
+            - paragraph: Chawla Hotels Group · LD-1027
+        - cell:
+          - generic: Call
+        - cell: Hospitality Acquisition
+        - cell: ₹285 cr
+        - cell:
+          - generic: "80"
+          - generic: High
+        - cell:
+          - combobox:
+            - generic: Contacted
+        - cell: Rohan Pillai
+        - cell: Rhea Menon
+        - cell: 26 Jul → 09 Aug
+        - cell:
+          - button: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Nandini Roy
+            - paragraph: Bluewave Seafoods · LD-1028
+        - cell:
+          - generic: Website
+        - cell: Equity Fundraising
+        - cell: ₹40 cr
+        - cell:
+          - generic: "44"
+          - generic: Low
+        - cell:
+          - combobox:
+            - generic: Qualification Call Scheduled
+        - cell: Sana Qureshi
+        - cell: Vikram Shetty
+        - cell: 03 Aug → 10 Aug
+        - cell:
+          - button: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Siddharth Rane
+            - paragraph: Rane Unlisted Holdings · LD-1029
+        - cell:
+          - generic: Referral
+        - cell: Unlisted Shares
+        - cell: ₹70 cr
+        - cell:
+          - generic: "59"
+          - generic: Medium
+        - cell:
+          - combobox:
+            - generic: Qualified
+        - cell: Karthik Iyer
+        - cell: Rhea Menon
+        - cell: 02 Aug → 04 Aug
+        - cell:
+          - button: Convert
+      - row:
+        - cell:
+          - button:
+            - paragraph: Crypto Growth Desk
+            - paragraph: — · LD-1030
+        - cell:
+          - generic: Instagram
+        - cell: Strategic Advisory
+        - cell: ₹0 L
+        - cell:
+          - generic: "6"
+          - generic: Spam
+        - cell:
+          - combobox:
+            - generic: Not Qualified
+        - cell: Neha Bansal
+        - cell: Vikram Shetty
+        - cell: 01 Aug → 05 Aug
+        - cell:
+          - button: Convert
+- region "Notifications alt+T"
+- complementary:
+  - link:
+    - /url: https://lovable.dev/projects/lovp_2rys2382jg8jbt5zk4hh9sx3ms?utm_source=lovable-badge
+    - generic: Edit with
+  - button:
+- generic: "0"
+- dialog "Add lead manually":
+  - heading "Add lead manually" [level=2]
+  - text: Contact name
+  - textbox [active]
+  - text: Company
+  - textbox
+  - text: Designation
+  - textbox
+  - text: Transaction value (₹ crore)
+  - spinbutton: "50"
+  - text: Deal category
+  - combobox:
+    - generic: Debt Fundraising
+  - button "Create lead"
+  - button "Close":
+    - generic: Close

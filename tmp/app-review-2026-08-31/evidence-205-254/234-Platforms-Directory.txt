@@ -1,0 +1,273 @@
+- banner:
+  - generic: EcoSync
+  - generic: Navigator
+  - paragraph: Carbon Market Intelligence & Profitability
+  - button "Live Order Book":
+    - generic: Live Order Book
+  - generic: "|"
+  - generic: 10 Registries Verified
+  - button "Compare Project":
+    - generic: Compare Project
+  - button "Notifications":
+  - generic "Carbon Asset Manager Profile":
+    - img "User Profile"
+- button "Overview":
+  - generic: Overview
+- button "Dashboard":
+  - generic: Dashboard
+- button "Compare Projects":
+  - generic: Compare Projects
+- button "Opportunity Analyzer":
+  - generic: Opportunity Analyzer
+- button "Market Intelligence":
+  - generic: Market Intelligence
+- button "Platforms Directory" [active]:
+  - generic: Platforms Directory
+- button "Workspace":
+  - generic: Workspace
+- button "Admin Panel":
+  - generic: Admin Panel
+- main:
+  - generic: Marketplace & Registry Directory
+  - heading "Global Carbon Platform Directory" [level=2]
+  - paragraph: Explore fee schedules, verification protocols, liquidity depth, and eligibility requirements for voluntary and compliance trading venues.
+  - textbox "Search venue, methodology, or code..."
+  - button "All Venues"
+  - button "Registry"
+  - button "Exchange"
+  - button "Decentralized"
+  - combobox:
+    - option "All Market Types" [selected]
+    - option "Voluntary Carbon (VCM)"
+    - option "Compliance / ETS"
+    - option "Hybrid (VCM + Compliance)"
+    - option "Decentralized / Web3"
+  - generic: CBL
+  - heading "CBL Markets (Xpansiv)" [level=3]:
+    - generic: CBL Markets (Xpansiv)
+  - generic: Exchange
+  - generic: New York, USA
+  - generic: Liquidity
+  - generic: 96/100
+  - paragraph: The world’s largest spot commodity exchange for carbon offsets (GEO, N-GEO, C-GEO contracts). Highly liquid institutional order books.
+  - paragraph: Trading Fee
+  - paragraph: 1.25%
+  - paragraph: Issuance Fee
+  - paragraph: $0.02/t
+  - paragraph: Settlement
+  - paragraph: T+1 (AAA)
+  - paragraph: Supported Methodologies
+  - generic: VCS VM0007
+  - generic: VCS VM0015
+  - generic: GS TPDDTEC
+  - generic: +3 more
+  - link "Official Registry":
+    - /url: https://xpansiv.com/cbl-markets
+    - generic: Official Registry
+  - button "Inspect Fee Schedule"
+  - generic: ACX
+  - heading "ACX (AirCarbon Exchange)" [level=3]:
+    - generic: ACX (AirCarbon Exchange)
+  - generic: Exchange
+  - generic: Singapore / Abu Dhabi
+  - generic: Liquidity
+  - generic: 89/100
+  - paragraph: Securitized digital carbon exchange with automated low-cost settlement architecture, architecture built for CORSIA & voluntary offsets.
+  - paragraph: Trading Fee
+  - paragraph: 1.1%
+  - paragraph: Issuance Fee
+  - paragraph: $0.015/t
+  - paragraph: Settlement
+  - paragraph: T+0 (AA)
+  - paragraph: Supported Methodologies
+  - generic: VCS VM0007
+  - generic: GS Renewable
+  - generic: GS Cookstoves
+  - generic: +3 more
+  - link "Official Registry":
+    - /url: https://aircarbon.co
+    - generic: Official Registry
+  - button "Inspect Fee Schedule"
+  - generic: CIX
+  - heading "Climate Impact X (CIX)" [level=3]:
+    - generic: Climate Impact X (CIX)
+  - generic: Exchange
+  - generic: Singapore
+  - generic: Liquidity
+  - generic: 86/100
+  - paragraph: Backed by DBS, SGX, Standard Chartered, and Temasek. Premier global exchange for high-integrity nature-based solutions and blue carbon.
+  - paragraph: Trading Fee
+  - paragraph: 1.5%
+  - paragraph: Issuance Fee
+  - paragraph: $0.025/t
+  - paragraph: Settlement
+  - paragraph: T+1 (AAA)
+  - paragraph: Supported Methodologies
+  - generic: VCS VM0007
+  - generic: VCS VM0009
+  - generic: GS TPDDTEC
+  - generic: +2 more
+  - link "Official Registry":
+    - /url: https://climateimpactx.com
+    - generic: Official Registry
+  - button "Inspect Fee Schedule"
+  - generic: VCS
+  - heading "Verra Registry (VCS Direct Listing)" [level=3]:
+    - generic: Verra Registry (VCS Direct Listing)
+  - generic: Registry
+  - generic: Washington D.C., USA
+  - generic: Liquidity
+  - generic: 92/100
+  - paragraph: The world’s most widely used voluntary greenhouse gas crediting program, issuing over 1 billion carbon credits worldwide.
+  - paragraph: Trading Fee
+  - paragraph: 2.2%
+  - paragraph: Issuance Fee
+  - paragraph: $0.1/t
+  - paragraph: Settlement
+  - paragraph: T+2 (AA)
+  - paragraph: Supported Methodologies
+  - generic: VCS VM0007 (REDD+)
+  - generic: VCS VM0015 (ARR)
+  - generic: VCS VM0044 (Biochar)
+  - generic: +2 more
+  - link "Official Registry":
+    - /url: https://verra.org
+    - generic: Official Registry
+  - button "Inspect Fee Schedule"
+  - generic: GS
+  - heading "Gold Standard for the Global Goals" [level=3]:
+    - generic: Gold Standard for the Global Goals
+  - generic: Registry
+  - generic: Geneva, Switzerland
+  - generic: Liquidity
+  - generic: 84/100
+  - paragraph: High-impact certification standard co-founded by WWF. Maximizes SDG co-benefits, commanding premium pricing for cookstoves, water, and community energy.
+  - paragraph: Trading Fee
+  - paragraph: 1.8%
+  - paragraph: Issuance Fee
+  - paragraph: $0.12/t
+  - paragraph: Settlement
+  - paragraph: T+2 (AAA)
+  - paragraph: Supported Methodologies
+  - generic: GS TPDDTEC (Cookstoves)
+  - generic: GS Renewable Energy
+  - generic: GS Afforestation/Reforestation
+  - generic: +2 more
+  - link "Official Registry":
+    - /url: https://goldstandard.org
+    - generic: Official Registry
+  - button "Inspect Fee Schedule"
+  - generic: PURO
+  - heading "Puro.earth (Nasdaq)" [level=3]:
+    - generic: Puro.earth (Nasdaq)
+  - generic: Exchange
+  - generic: Helsinki, Finland
+  - generic: Liquidity
+  - generic: 88/100
+  - paragraph: The world’s first B2B marketplace and registry for durable carbon dioxide removal (CDR) certified by Nasdaq, specializing in Biochar, Geochem, and DAC.
+  - paragraph: Trading Fee
+  - paragraph: 2%
+  - paragraph: Issuance Fee
+  - paragraph: $0.25/t
+  - paragraph: Settlement
+  - paragraph: T+1 (AAA)
+  - paragraph: Supported Methodologies
+  - generic: Puro Biochar Edition 2022
+  - generic: Puro Woody Biomass Burial
+  - generic: Puro Carbonated Materials
+  - generic: +1 more
+  - link "Official Registry":
+    - /url: https://puro.earth
+    - generic: Official Registry
+  - button "Inspect Fee Schedule"
+  - generic: ACR
+  - heading "American Carbon Registry (ACR)" [level=3]:
+    - generic: American Carbon Registry (ACR)
+  - generic: Registry
+  - generic: Arlington, USA
+  - generic: Liquidity
+  - generic: 81/100
+  - paragraph: First private voluntary greenhouse gas registry in the US. Authoritative standards for US forestry IFM, ozone depleting substances, and compliance offsets.
+  - paragraph: Trading Fee
+  - paragraph: 1.5%
+  - paragraph: Issuance Fee
+  - paragraph: $0.08/t
+  - paragraph: Settlement
+  - paragraph: T+2 (AA)
+  - paragraph: Supported Methodologies
+  - generic: ACR IFM on US Timberlands
+  - generic: ACR Destruction of ODS
+  - generic: ACR Methane Capture
+  - generic: +1 more
+  - link "Official Registry":
+    - /url: https://acrcarbon.org
+    - generic: Official Registry
+  - button "Inspect Fee Schedule"
+  - generic: CTX
+  - heading "Carbon Trade Exchange (CTX)" [level=3]:
+    - generic: Carbon Trade Exchange (CTX)
+  - generic: Exchange
+  - generic: London, United Kingdom
+  - generic: Liquidity
+  - generic: 78/100
+  - paragraph: Pioneer spot exchange integrated directly with Verra, Gold Standard, and UNFCCC CDM registries for instant global clearance.
+  - paragraph: Trading Fee
+  - paragraph: 1.75%
+  - paragraph: Issuance Fee
+  - paragraph: $0.02/t
+  - paragraph: Settlement
+  - paragraph: T+0 (A)
+  - paragraph: Supported Methodologies
+  - generic: VCS All
+  - generic: GS All
+  - generic: UNFCCC CDM CERs
+  - generic: +1 more
+  - link "Official Registry":
+    - /url: https://ctxglobal.com
+    - generic: Official Registry
+  - button "Inspect Fee Schedule"
+  - generic: EEX
+  - heading "European Energy Exchange (EEX)" [level=3]:
+    - generic: European Energy Exchange (EEX)
+  - generic: Exchange
+  - generic: Leipzig, Germany
+  - generic: Liquidity
+  - generic: 99/100
+  - paragraph: Europe’s leading energy exchange. Premier marketplace for EU ETS compliance allowances (EUA) and voluntary carbon futures.
+  - paragraph: Trading Fee
+  - paragraph: 0.8%
+  - paragraph: Issuance Fee
+  - paragraph: $0.01/t
+  - paragraph: Settlement
+  - paragraph: T+1 (AAA)
+  - paragraph: Supported Methodologies
+  - generic: EU ETS EUA
+  - generic: EEX Voluntary Standardized Future
+  - generic: VCS Benchmark Index
+  - link "Official Registry":
+    - /url: https://eex.com
+    - generic: Official Registry
+  - button "Inspect Fee Schedule"
+  - generic: TOUCAN
+  - heading "Toucan Protocol (Web3 Registry)" [level=3]:
+    - generic: Toucan Protocol (Web3 Registry)
+  - generic: Decentralized
+  - generic: Decentralized / Switzerland
+  - generic: Liquidity
+  - generic: 74/100
+  - paragraph: On-chain climate finance infrastructure bridging voluntary carbon registries with decentralized liquidity pools (BCT, NCT).
+  - paragraph: Trading Fee
+  - paragraph: 0.3%
+  - paragraph: Issuance Fee
+  - paragraph: $0.05/t
+  - paragraph: Settlement
+  - paragraph: T+0 (BBB)
+  - paragraph: Supported Methodologies
+  - generic: VCS Nature-based
+  - generic: VCS Tech-based
+  - generic: Puro Biochar CDR (bridged)
+  - link "Official Registry":
+    - /url: https://toucan.earth
+    - generic: Official Registry
+  - button "Inspect Fee Schedule"
+- generic: "0"

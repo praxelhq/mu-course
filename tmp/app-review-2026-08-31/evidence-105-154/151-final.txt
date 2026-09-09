@@ -1,0 +1,86 @@
+- complementary:
+  - generic: Momentum
+  - navigation "Main":
+    - link "Today":
+      - /url: /
+      - text: Today
+    - link "Progress":
+      - /url: /progress
+      - text: Progress
+    - link "Settings":
+      - /url: /settings
+      - text: Settings
+  - paragraph: Small actions, repeated consistently.
+- main:
+  - link "Back":
+    - /url: /
+    - text: Back
+  - heading "Test daily reading" [level=1]
+  - paragraph: Read one page for review
+  - paragraph: Every day · starts 31 Aug 2026 · created 31 Aug 2026
+  - button "Edit":
+    - text: Edit
+  - button "Delete":
+    - text: Delete
+  - group "Time range":
+    - button "7 days"
+    - button "30 days" [pressed]
+    - button "All time"
+  - paragraph: Current streak
+  - paragraph: 1d
+  - paragraph: Longest streak
+  - paragraph: 1d
+  - paragraph: Total completions
+  - paragraph: "1"
+  - paragraph: Completion rate
+  - paragraph: 100%
+  - heading "History" [level=2]
+  - button "Previous month":
+  - generic: August 2026
+  - button "Next month" [disabled]:
+  - generic: S
+  - generic: M
+  - generic: T
+  - generic: W
+  - generic: T
+  - generic: F
+  - generic: S
+  - button "1 Aug 2026 — before-start, not toggleable" [disabled]: "1"
+  - button "2 Aug 2026 — before-start, not toggleable" [disabled]: "2"
+  - button "3 Aug 2026 — before-start, not toggleable" [disabled]: "3"
+  - button "4 Aug 2026 — before-start, not toggleable" [disabled]: "4"
+  - button "5 Aug 2026 — before-start, not toggleable" [disabled]: "5"
+  - button "6 Aug 2026 — before-start, not toggleable" [disabled]: "6"
+  - button "7 Aug 2026 — before-start, not toggleable" [disabled]: "7"
+  - button "8 Aug 2026 — before-start, not toggleable" [disabled]: "8"
+  - button "9 Aug 2026 — before-start, not toggleable" [disabled]: "9"
+  - button "10 Aug 2026 — before-start, not toggleable" [disabled]: "10"
+  - button "11 Aug 2026 — before-start, not toggleable" [disabled]: "11"
+  - button "12 Aug 2026 — before-start, not toggleable" [disabled]: "12"
+  - button "13 Aug 2026 — before-start, not toggleable" [disabled]: "13"
+  - button "14 Aug 2026 — before-start, not toggleable" [disabled]: "14"
+  - button "15 Aug 2026 — before-start, not toggleable" [disabled]: "15"
+  - button "16 Aug 2026 — before-start, not toggleable" [disabled]: "16"
+  - button "17 Aug 2026 — before-start, not toggleable" [disabled]: "17"
+  - button "18 Aug 2026 — before-start, not toggleable" [disabled]: "18"
+  - button "19 Aug 2026 — before-start, not toggleable" [disabled]: "19"
+  - button "20 Aug 2026 — before-start, not toggleable" [disabled]: "20"
+  - button "21 Aug 2026 — before-start, not toggleable" [disabled]: "21"
+  - button "22 Aug 2026 — before-start, not toggleable" [disabled]: "22"
+  - button "23 Aug 2026 — before-start, not toggleable" [disabled]: "23"
+  - button "24 Aug 2026 — before-start, not toggleable" [disabled]: "24"
+  - button "25 Aug 2026 — before-start, not toggleable" [disabled]: "25"
+  - button "26 Aug 2026 — before-start, not toggleable" [disabled]: "26"
+  - button "27 Aug 2026 — before-start, not toggleable" [disabled]: "27"
+  - button "28 Aug 2026 — before-start, not toggleable" [disabled]: "28"
+  - button "29 Aug 2026 — before-start, not toggleable" [disabled]: "29"
+  - button "30 Aug 2026 — before-start, not toggleable" [disabled]: "30"
+  - button "31 Aug 2026 — completed, toggle completion": "31"
+  - paragraph: Tap any past or current scheduled day to toggle it. Unscheduled and future days can't be completed and never count as missed.
+  - paragraph: "Last 7 days: 100%"
+- region "Notifications alt+T"
+- complementary "Edit with Lovable":
+  - link "Edit with Lovable":
+    - /url: https://lovable.dev/projects/lovp_0sbkpd5kgk8928ac4e13ch6e7p?utm_source=lovable-badge
+    - generic: Edit with
+  - button "Dismiss":

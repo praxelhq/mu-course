@@ -1,0 +1,47 @@
+- navigation:
+  - generic: MONOPOLY DEAL
+  - button "How to Play" [active]
+  - generic: ONLINE
+- main:
+  - generic: The Fast-Paced Property Card Game
+  - heading "DEAL." [level=1]
+  - paragraph: Steal sets, collect rent, and outsmart rivals in fast real-time rounds.
+  - generic: Player Alias
+  - textbox "Player Alias":
+    - /placeholder: e.g. MonopolyKing, Baron, HighRoller
+    - text: Alex
+  - button "Quick Play with AI Bots":
+    - text: Quick Play with AI Bots
+  - button "Create Multiplayer Room":
+    - text: Create Multiplayer Room
+  - generic: or join existing room
+  - textbox "Code (e.g. K8X2)"
+  - button "Join":
+    - text: Join
+  - text: Smart AI
+  - text: 106-Card Deck
+  - text: 3 Sets to Win
+- heading "Monopoly Deal Official Rules" [level=2]
+- button:
+- button "How to Play"
+- button "Action Cards Guide"
+- button "Property Sets & Rent"
+- heading "Goal of the Game" [level=3]:
+  - text: Goal of the Game
+- paragraph: Be the first player to collect 3 complete Property Sets of different colors to win the game!
+- heading "Your Turn Sequence:" [level=4]
+- generic: 1. Draw (2 Cards)
+- paragraph: You are allowed to draw exactly 2 cards from the deck at the start of your turn (or 5 if your hand is completely empty). You cannot draw again unless you play a Pass Go action card!
+- generic: 2. Play (Up to 3)
+- paragraph: "Play up to 3 cards onto the table: as Properties into your sets, into your Bank Vault as cash, or into the center as Action cards."
+- generic: 3. End Turn
+- paragraph: Discard down to 7 cards if you hold more than 7. Pass turn to the next player.
+- heading "Banking & Paying Rent:" [level=4]
+- list:
+  - listitem: You can put Money or Action cards (using their dollar value) into your Bank Vault.
+  - strong: "Cash-First Rent Rule:"
+  - text: Rent must be paid in cash if you have cash in your Bank Vault. Properties cannot be given if your bank has sufficient cash.
+  - strong: "Insufficient Cash:"
+  - text: If you don't have enough cash in your bank to cover the rent, you must surrender property card(s) on the table equivalent to or exceeding the remaining rent debt.
+  - listitem: No change is given if you overpay. If you have no assets on the table or bank, you are exempt ($0M).
+- button "Got It, Let's Play!"

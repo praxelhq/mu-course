@@ -1,0 +1,66 @@
+- banner:
+  - link:
+    - /url: /
+    - generic: 🫧
+    - generic: Unmute
+    - generic: Your campus safe space
+  - navigation:
+    - link:
+      - /url: /
+      - text: Home
+    - link:
+      - /url: /check-in
+      - text: Check-In
+    - link:
+      - /url: /circles
+      - text: Circles
+    - link:
+      - /url: /journal
+      - text: Journal
+    - link:
+      - /url: /my-week
+      - text: My Week
+  - link:
+    - /url: /support
+  - button:
+- main:
+  - button:
+    - text: Back
+  - heading [level=1]: 🌊You only need to get through this moment.
+  - paragraph: Not the week. Not the semester. Just the next few minutes.
+  - tablist:
+    - tab [selected]: Breathing
+    - tab: 5-4-3-2-1
+    - tab: Brain Dump
+  - tabpanel:
+    - paragraph: Breathe in
+    - paragraph: "3"
+    - paragraph: In for 4, hold for 4, out for 6. Follow the circle.
+    - paragraph: 43s of 60s
+    - button:
+      - text: Pause
+    - button:
+      - text: Reset
+  - link:
+    - /url: /support
+    - text: Need more support?
+- region "Notifications alt+T"
+- complementary:
+  - link:
+    - /url: https://lovable.dev/projects/lovp_20xxzq25ry9jr81pbw93zjh93j?utm_source=lovable-badge
+    - generic: Edit with
+  - button:
+- dialog "Settings":
+  - button "Close" [active]:
+    - generic: Close
+  - heading "Settings" [level=2]
+  - paragraph: Everything here stays on your device.
+  - paragraph: Anonymous mode
+  - paragraph: Your name is never shown in Circles.
+  - switch [checked]
+  - button "About Unmute 💜"
+  - button "Privacy 🔒"
+  - button "Clear local data 🧹"
+  - link "Support":
+    - /url: /support
+    - text: Support
