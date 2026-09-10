@@ -189,6 +189,26 @@ OWN_WORK_SUBSTANCE_MARKERS = (
     "credit",
     "fails",
     "breaks",
+    # The interviewer now asks these in everyday words rather than naming the
+    # concept ("what makes it start" instead of "what trigger criteria"), so the
+    # guard has to recognise the plain phrasing too — otherwise coverage never
+    # registers and a student gets trapped in a segment they already answered.
+    "makes it start",
+    "make it start",
+    "sets it off",
+    "kicks it off",
+    "how often does it run",
+    "when does it run",
+    "why does it run",
+    "costs to run",
+    "cost to run",
+    "how much does it cost",
+    "decided against",
+    "decide against",
+    "chose not to",
+    "goes wrong",
+    "hangs",
+    "takes too long",
 )
 
 # An escape hatch so a model that will not comply cannot trap the student in a
@@ -1163,12 +1183,13 @@ async def entrypoint(ctx) -> None:
                 return (
                     "Not yet — you have not covered the final segment. Do NOT end "
                     "the interview. Ask the student about the workflow and sector "
-                    "map they built and uploaded: how it handles errors and "
-                    "timeouts, what trigger criteria they chose and why those are "
-                    "right for this workflow, what they discussed but decided not "
-                    "to implement, and how they kept credit use down. Ask one "
-                    "question now, and say the words \"sector map\" or "
-                    "\"blueprint\" in it so the segment is on the record."
+                    "map they built and uploaded, in plain language: what happens "
+                    "when a step fails or something takes too long, what makes it "
+                    "start and why that, what they thought about doing and decided "
+                    "against, and what it costs to run. Ask one question now, in "
+                    "everyday words rather than technical ones, and say the words "
+                    "\"sector map\" or \"blueprint\" in it so the segment is on "
+                    "the record."
                 )
             finished.set()
             return "The interview is over. Say a short, warm goodbye."
