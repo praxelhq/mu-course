@@ -185,6 +185,11 @@ MIN_TURNS_BEFORE_END = 10
 # eager student a beat before they can cut in, and buys every student a
 # question they can actually hear to the end.
 MIN_INTERRUPTION_WORDS = int(os.environ.get("INTERVIEW_MIN_INTERRUPTION_WORDS", 3))
+
+# Long enough for the longest interview a draining worker could still be
+# holding, so a deploy never cuts one short. Must stay <= the service's
+# RAILWAY_DEPLOYMENT_DRAINING_SECONDS or Railway kills the worker mid-drain.
+DRAIN_TIMEOUT_SECONDS = float(os.environ.get("INTERVIEW_DRAIN_TIMEOUT_SECONDS", 1500))
 MIN_INTERRUPTION_SECONDS = float(
     os.environ.get("INTERVIEW_MIN_INTERRUPTION_SECONDS", 0.6)
 )
@@ -1569,7 +1574,23 @@ def main() -> None:
     else:
         logger.warning("voice provider: %s with NO failover configured", providers or "none")
     logger.info("env OK — starting LiveKit interview agent worker")
-    cli.run_app(WorkerOptions(entrypoint_fnc=entrypoint, request_fnc=request_fnc))
+    # Railway gives a torn-down deployment ZERO seconds before SIGKILL unless
+    # RAILWAY_DEPLOYMENT_DRAINING_SECONDS says otherwise, which is why a deploy
+    # used to kill every interview in progress: the worker was shot before it
+    # could finish the sessions it was holding. That variable is now set on the
+    # service, and this is the other half — the worker has to actually DRAIN in
+    # the window rather than exit on the signal, so a student mid-answer keeps
+    # their interviewer while the new build takes the next student instead.
+    worker_kwargs: dict[str, object] = {
+        "entrypoint_fnc": entrypoint,
+        "request_fnc": request_fnc,
+    }
+    if "drain_timeout" in inspect.signature(WorkerOptions).parameters:
+        worker_kwargs["drain_timeout"] = DRAIN_TIMEOUT_SECONDS
+    else:
+        logger.warning("WorkerOptions has no drain_timeout — a deploy will cut interviews short")
+
+    cli.run_app(WorkerOptions(**worker_kwargs))
 
 
 if __name__ == "__main__":

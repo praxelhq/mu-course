@@ -188,6 +188,27 @@ class TestRestartsDoNotSpendTheBudget(unittest.TestCase):
         assert not main.is_restart_of("I", "In your sector map, you argue")
 
 
+class TestDeployDoesNotKillInterviews(unittest.TestCase):
+    """Railway gives a torn-down deployment 0 seconds unless told otherwise.
+
+    That is why a deploy used to strand every interview in progress: the
+    worker was SIGKILLed while holding live sessions.
+    """
+
+    def test_the_worker_drains_long_enough_for_a_full_interview(self):
+        assert main.DRAIN_TIMEOUT_SECONDS >= main.MAX_INTERVIEW_SECONDS
+
+    def test_it_is_tunable_without_a_deploy(self):
+        assert "INTERVIEW_DRAIN_TIMEOUT_SECONDS" in open("main.py", encoding="utf-8").read()
+
+    def test_the_worker_is_constructed_with_it(self):
+        source = open("main.py", encoding="utf-8").read()
+        # Signature-guarded, like the interruption settings, so an older wheel
+        # degrades instead of refusing to start.
+        assert "drain_timeout" in source
+        assert "WorkerOptions(**worker_kwargs)" in source
+
+
 class TestBargeIn(unittest.TestCase):
     """A phantom transcription must not cut the interviewer off.
 
