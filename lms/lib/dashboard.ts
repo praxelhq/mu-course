@@ -1,5 +1,6 @@
 import type { InterviewStatus, Prisma, SubmissionStatus } from "@prisma/client";
 import { prisma } from "@/lib/db";
+import { shownDeadline, shownWindowClose } from "@/lib/deadlines";
 import { openTargetIds } from "@/lib/gates";
 import { parseRubricScores } from "@/lib/review-queue";
 
@@ -13,7 +14,8 @@ export type DashboardAssignment = {
   title: string;
   typeTitle: string;
   sessionNo: number | null;
-  dueAt: Date | null;
+  /** The soft date this learner is shown; never the hard cutoff (see lib/deadlines). */
+  displayDueAt: Date | null;
   /** Status of my (or my team's) latest submission; null when none exists. */
   submissionStatus: SubmissionStatus | null;
 };
@@ -33,6 +35,7 @@ export type StudentDashboard = {
   openAssignments: DashboardAssignment[];
   grades: DashboardGrade[];
   interview: {
+    /** closesAt here is the date the learner is SHOWN, never the enforced one. */
     window: { opensAt: Date; closesAt: Date; label: string } | null;
     status: InterviewStatus | null;
   };
@@ -91,6 +94,7 @@ export async function getStudentDashboard(userId: string): Promise<StudentDashbo
           title: true,
           sessionNo: true,
           dueAt: true,
+          displayDueAt: true,
           assignmentType: { select: { title: true } },
         },
         orderBy: [{ dueAt: "asc" }, { sessionNo: "asc" }],
@@ -118,7 +122,7 @@ export async function getStudentDashboard(userId: string): Promise<StudentDashbo
       user.sectionId
         ? prisma.interviewWindow.findFirst({
             where: { sectionId: user.sectionId },
-            select: { opensAt: true, closesAt: true, label: true },
+            select: { opensAt: true, closesAt: true, displayClosesAt: true, label: true },
             orderBy: { opensAt: "asc" },
           })
         : null,
@@ -165,16 +169,40 @@ export async function getStudentDashboard(userId: string): Promise<StudentDashbo
       email: user.email,
       sectionCode: user.section?.code ?? null,
     },
-    openAssignments: assignments.map((a) => ({
-      id: a.id,
-      title: a.title,
-      typeTitle: a.assignmentType.title,
-      sessionNo: a.sessionNo,
-      dueAt: a.dueAt,
-      submissionStatus: latestStatus.get(a.id) ?? null,
-    })),
+    openAssignments: assignments
+      .map((a) => ({
+        id: a.id,
+        title: a.title,
+        typeTitle: a.assignmentType.title,
+        sessionNo: a.sessionNo,
+        displayDueAt: shownDeadline(a),
+        submissionStatus: latestStatus.get(a.id) ?? null,
+      }))
+      // The query ordered by the hard cutoff; the learner reads the soft one,
+      // and two assignments can carry different soft/hard offsets. Re-sort on
+      // the date actually rendered (undated last) so the column climbs.
+      .sort((a, b) => {
+        if (a.displayDueAt && b.displayDueAt) {
+          const byDate = a.displayDueAt.getTime() - b.displayDueAt.getTime();
+          if (byDate !== 0) return byDate;
+        } else if (a.displayDueAt !== b.displayDueAt) {
+          return a.displayDueAt ? -1 : 1;
+        }
+        return (a.sessionNo ?? Number.MAX_SAFE_INTEGER) - (b.sessionNo ?? Number.MAX_SAFE_INTEGER);
+      }),
     grades,
-    interview: { window: ivWindow, status: interview?.status ?? null },
+    interview: {
+      // The dashboard is student-facing, so the close it carries is the SHOWN
+      // one. The enforced date never leaves the server here.
+      window: ivWindow
+        ? {
+            opensAt: ivWindow.opensAt,
+            closesAt: shownWindowClose(ivWindow),
+            label: ivWindow.label,
+          }
+        : null,
+      status: interview?.status ?? null,
+    },
     team: user.team
       ? {
           name: user.team.name,

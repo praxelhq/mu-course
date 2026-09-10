@@ -1,5 +1,6 @@
 import { requireUser } from "@/lib/auth";
 import { prisma } from "@/lib/db";
+import { shownWindowClose } from "@/lib/deadlines";
 import { Card, Eyebrow } from "@/components/ui";
 import { missingPrerequisites } from "@/lib/interview/prerequisites";
 import { interviewOpen } from "@/lib/interview/rollout";
@@ -52,7 +53,10 @@ export default async function InterviewPage() {
   ]);
 
   const now = new Date();
+  // Gating reads closesAt and ONLY closesAt. The date below it is what the
+  // student is told; this is what the course actually enforces.
   const windowOpen = Boolean(window && window.opensAt <= now && window.closesAt >= now);
+  const shownClose = window ? shownWindowClose(window) : null;
   // A live interview can always be resumed; otherwise a fresh start needs an
   // open window and either no prior attempt or an unused retake grant.
   const canResume = latest?.status === "live";
@@ -85,7 +89,7 @@ export default async function InterviewPage() {
           : window.opensAt > now
             ? `Your uploads are saved. Your section's window opens ${fmt.format(window.opensAt)}.`
             : window.closesAt < now
-              ? `Your section's interview window closed on ${fmt.format(window.closesAt)}. Your uploads are saved — ask your instructor if you still need to sit the interview.`
+              ? `Your section's interview window closed on ${fmt.format(shownClose!)}. Your uploads are saved — ask your instructor if you still need to sit the interview.`
               : latest && !retake
                 ? "You have already taken your interview. Ask your instructor for a retake if you need another attempt."
                 : "Your interview cannot be started right now. Please tell your instructor what this page shows.";
@@ -105,7 +109,7 @@ export default async function InterviewPage() {
 
       {window ? (
         <p style={{ color: "var(--charcoal)", margin: "0 0 1.5rem" }}>
-          Window for your section: {fmt.format(window.opensAt)} — {fmt.format(window.closesAt)}
+          Window for your section: {fmt.format(window.opensAt)} — {fmt.format(shownClose!)}
           {windowOpen ? " (open now)" : ""}
         </p>
       ) : (

@@ -15,6 +15,7 @@ import { basename, dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { Prisma, PrismaClient } from "@prisma/client";
 import { parseAssessmentPolicies } from "../lib/assessment-policies";
+import { assertDeadlineOrder } from "../lib/deadlines";
 import {
   S4_APP_INSPECTION_POLICY_V1,
   parseS4AppInspectionPolicy,
@@ -89,6 +90,12 @@ export type AssignmentRelease = {
   sessionNo: 3 | 4 | 5;
   weightBucket: string | null;
   dueAt: Date | null;
+  /**
+   * The soft date learners see. Omit entirely to leave whatever the operator
+   * set in place — an absent key means "this release does not manage the
+   * displayed deadline", which is not the same as `null` ("no soft date").
+   */
+  displayDueAt?: Date | null;
   assessmentVersionId: string;
   legacyTitles?: string[];
 };
@@ -2120,16 +2127,23 @@ async function ensureAssignments(args: {
     const assignmentTypeId = args.typeIds.get(assignment.assignmentTypeSlug);
     if (!assignmentTypeId) throw new Error(`Missing assignment type ${assignment.assignmentTypeSlug}.`);
     const existing = await args.tx.assignment.findUnique({ where: { id: assignment.id } });
+    // An absent key leaves the operator's soft deadline alone; `null` is a
+    // release deliberately saying "no soft date on this assignment".
+    const managesDisplayDueAt = "displayDueAt" in assignment;
     const expected = {
       assignmentTypeId,
       title: assignment.title,
       brief: assignment.brief,
       sessionNo: assignment.sessionNo,
       dueAt: assignment.dueAt,
+      displayDueAt: managesDisplayDueAt
+        ? assignment.displayDueAt ?? null
+        : existing?.displayDueAt ?? null,
       weightBucket: assignment.weightBucket,
       sectionIds: [...args.sectionIds].sort(),
       contractMode: "versioned" as const,
     };
+    assertDeadlineOrder(expected);
     if (!existing) {
       reportCreate(args.report, "Assignment", assignment.id);
       if (!args.dryRun) {
@@ -2145,6 +2159,7 @@ async function ensureAssignments(args: {
       brief: existing.brief,
       sessionNo: existing.sessionNo,
       dueAt: existing.dueAt,
+      displayDueAt: existing.displayDueAt,
       weightBucket: existing.weightBucket,
       sectionIds: [...existing.sectionIds].sort(),
       contractMode: existing.contractMode,
@@ -2157,17 +2172,24 @@ async function ensureAssignments(args: {
     // assessment contract. A release may move a due date on an already
     // versioned assignment without treating the authored assignment body as
     // drift or forcing a new assessment version.
-    const actualContent = { ...actual, dueAt: null };
-    const expectedContent = { ...expected, dueAt: null };
+    const actualContent = { ...actual, dueAt: null, displayDueAt: null };
+    const expectedContent = { ...expected, dueAt: null, displayDueAt: null };
     if (
       existing.contractMode === "versioned" &&
       sameValue(actualContent, expectedContent)
     ) {
       reportUpdate(args.report, "Assignment.dueAt", existing.id);
       if (!args.dryRun) {
+        const deadlines = {
+          dueAt: expected.dueAt,
+          displayDueAt: managesDisplayDueAt ? expected.displayDueAt : existing.displayDueAt,
+        };
+        // Both dates move in one write, and the pair is checked here so a
+        // release fails with a sentence rather than a CHECK violation.
+        assertDeadlineOrder(deadlines);
         await args.tx.assignment.update({
           where: { id: existing.id },
-          data: { dueAt: expected.dueAt },
+          data: managesDisplayDueAt ? deadlines : { dueAt: deadlines.dueAt },
         });
       }
       continue;

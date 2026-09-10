@@ -1,5 +1,6 @@
 import type { Material, SubmissionStatus } from "@prisma/client";
 import { prisma } from "@/lib/db";
+import { graceCutoff, shownDeadline } from "@/lib/deadlines";
 import {
   isAvailable,
   liveExceptionTargets,
@@ -51,7 +52,13 @@ export type HubAssignment = {
   id: string;
   title: string;
   typeTitle: string;
-  dueAt: Date | null;
+  /** The soft date every viewer is shown (see lib/deadlines). */
+  displayDueAt: Date | null;
+  /**
+   * The hard cutoff, present only for staff and only when it differs from the
+   * shown date. A student payload never carries it.
+   */
+  graceCutoffAt: Date | null;
   available: boolean;
   submissionStatus: SubmissionStatus | null;
   /** Votable gallery artifact — the hub links straight to its wall. */
@@ -172,6 +179,7 @@ export async function getSessionHub(
         id: true,
         title: true,
         dueAt: true,
+        displayDueAt: true,
         assignmentType: { select: { title: true, galleryEligible: true } },
       },
     }),
@@ -226,7 +234,8 @@ export async function getSessionHub(
       id: a.id,
       title: a.title,
       typeTitle: a.assignmentType.title,
-      dueAt: a.dueAt,
+      displayDueAt: shownDeadline(a),
+      graceCutoffAt: viewer.role === "student" ? null : graceCutoff(a),
       available: targetAvailable(viewer, snapshot, exceptions, "assignment", a.id, page.id),
       submissionStatus: latestStatus.get(a.id) ?? null,
       galleryEligible: a.assignmentType.galleryEligible,

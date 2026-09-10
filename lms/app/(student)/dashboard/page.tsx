@@ -74,7 +74,7 @@ export default async function StudentDashboardPage() {
                     <Td>{a.title}</Td>
                     <Td style={{ color: "var(--charcoal)" }}>{a.typeTitle}</Td>
                     <Td style={{ fontFamily: "var(--font-geist-mono)", fontSize: "0.8125rem" }}>
-                      {fmtDate(a.dueAt)}
+                      {fmtDate(a.displayDueAt)}
                     </Td>
                     <Td style={{ textAlign: "right" }}>
                       {a.submissionStatus ? (

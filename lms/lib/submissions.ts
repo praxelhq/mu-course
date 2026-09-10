@@ -8,6 +8,7 @@ import type {
 } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { parseRubric } from "@/lib/ai/grading";
+import { shownDeadline } from "@/lib/deadlines";
 import { syncGalleryItem } from "@/lib/galleries";
 import { parentSessionPageIdFor, resolveGate } from "@/lib/gates";
 import { parseRubricScores } from "@/lib/review-queue";
@@ -150,7 +151,8 @@ export type AssignmentForStudent = {
     title: string;
     brief: string;
     sessionNo: number | null;
-    dueAt: Date | null;
+    /** The soft date this learner is shown; never the hard cutoff (see lib/deadlines). */
+    displayDueAt: Date | null;
   };
   type: {
     id: string;
@@ -482,7 +484,7 @@ export async function getAssignmentForStudent(
       title: assignment.title,
       brief: assignment.brief,
       sessionNo: assignment.sessionNo,
-      dueAt: assignment.dueAt,
+      displayDueAt: shownDeadline(assignment),
     },
     type: {
       id: type.id,

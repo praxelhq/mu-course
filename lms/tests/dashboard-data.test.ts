@@ -50,7 +50,7 @@ describe.skipIf(!live)("getStudentDashboard (live DB, seeded)", () => {
     // student001 has a graded v1 and a graded v2 resubmission → latest is graded.
     expect(skill.submissionStatus).toBe("graded");
     expect(skill.typeTitle).toBe("Skill family");
-    expect(skill.dueAt).toBeInstanceOf(Date);
+    expect(skill.displayDueAt).toBeInstanceOf(Date);
 
     const memo = d.openAssignments.find((a) => a.id === "asg_s3_datamemo")!;
     expect(memo.submissionStatus).toBeNull(); // student001 never submitted one

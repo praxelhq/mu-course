@@ -61,7 +61,7 @@ export default async function AssignmentsPage() {
                   <p style={{ margin: 0, fontWeight: 500 }}>{a.title}</p>
                   <p style={{ ...mono, fontSize: "0.625rem", color: "var(--clay)", margin: "0.25rem 0 0" }}>
                     {a.typeTitle}
-                    {a.dueAt && ` · due ${dateFmt.format(a.dueAt)}`}
+                    {a.displayDueAt && ` · due ${dateFmt.format(a.displayDueAt)}`}
                   </p>
                 </div>
                 {a.submissionStatus ? (

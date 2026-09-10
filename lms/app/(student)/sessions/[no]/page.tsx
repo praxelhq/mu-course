@@ -202,7 +202,11 @@ export default async function SessionHubPage({
                     <p style={{ margin: 0, fontWeight: 500 }}>{a.title}</p>
                     <p style={{ ...mono, fontSize: "0.625rem", color: "var(--clay)", margin: "0.25rem 0 0" }}>
                       {a.typeTitle}
-                      {a.dueAt && ` · due ${dateFmt.format(a.dueAt)}`}
+                      {a.displayDueAt && ` · due ${dateFmt.format(a.displayDueAt)}`}
+                      {/* Staff only, and only when the two dates differ: the
+                          app must not tell an instructor "due the 10th" while
+                          refusing to finalise grades until the 15th. */}
+                      {a.graceCutoffAt && ` · accepting until ${dateFmt.format(a.graceCutoffAt)}`}
                     </p>
                   </div>
                   {a.submissionStatus ? (

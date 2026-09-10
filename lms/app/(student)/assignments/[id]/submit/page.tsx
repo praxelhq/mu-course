@@ -86,9 +86,9 @@ export default async function SubmitPage({
       <p style={{ color: "var(--charcoal)", margin: "0 0 0.5rem", lineHeight: 1.6 }}>
         {view.assignment.brief}
       </p>
-      {view.assignment.dueAt && (
+      {view.assignment.displayDueAt && (
         <p style={{ ...mono, fontSize: "0.625rem", color: "var(--clay)", margin: "0 0 2rem" }}>
-          Due {dateFmt.format(view.assignment.dueAt)}
+          Due {dateFmt.format(view.assignment.displayDueAt)}
         </p>
       )}
 

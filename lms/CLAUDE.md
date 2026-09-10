@@ -37,6 +37,7 @@
 - Diagnostic quiz data must never reach student-facing responses. All quiz reads go through the single repository module `lib/quizzes`.
 - Grades and PCI never leave the LMS. The Praxy export carries artifacts + badges only.
 - Gate resolution happens only via `lib/gates` `resolveGate`. No ad-hoc gate queries in routes.
+- An assignment has a hard deadline (`dueAt`, the only one backend rules read) and an optional soft one shown to learners (`displayDueAt`). Both resolve through `lib/deadlines`; `dueAt` never reaches a student-facing payload.
 - The app tier never proxies file bytes. Uploads and downloads use S3 presigned URLs only.
 - Tables are single-course today but designed so a `courseId` column can be added later — no schema decisions that assume exactly one course forever.
 - Every non-obvious choice gets a line in `docs/DECISIONS.md`.

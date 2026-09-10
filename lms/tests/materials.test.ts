@@ -143,6 +143,9 @@ describe.skipIf(!live)("materials (live DB, seeded)", () => {
 
     // Assignment + quiz slots
     expect(hub.assignments.map((a) => a.id)).toContain("asg_s3_datamemo");
+    // The hard cutoff is staff-only: a student payload carries the shown date
+    // and never the grace window behind it.
+    for (const a of hub.assignments) expect(a.graceCutoffAt).toBeNull();
     const quiz = hub.quizzes.find((q) => q.id === "quiz_s3")!;
     expect(quiz.armed).toBe(false); // seeded closed
   });
