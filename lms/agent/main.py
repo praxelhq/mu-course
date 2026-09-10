@@ -127,6 +127,28 @@ QUESTION_BUDGET = 20  # hard ceiling across the five segments (runaway guard)
 # but "the SDK does not currently do that" is not a guarantee worth a student's
 # interview, so the items carry a marker and the handler drops them.
 RESTORED_ITEM_ID_PREFIX = "lms-restored-"
+
+
+def is_restart_of(previous: str, current: str) -> bool:
+    """Is `current` the same question `previous` was cut off in the middle of?
+
+    Barge-in leaves the interviewer restarting a question it never finished:
+    "In", then "In your sector map, you argue that the compute moat is", then
+    the whole thing. Each fragment arrives as its own conversation item, and
+    counting each as a QUESTION is what ended one interview six minutes early —
+    the model believed it had asked twenty-six when it had asked about twelve,
+    and wrapped up before the sector-map segment had been explored.
+
+    A restart is recognised by prefix: one utterance is how far the other got
+    before it was interrupted. Deliberate repetition of a whole question is not
+    a prefix of anything and still counts.
+    """
+    a = " ".join(previous.split()).casefold()
+    b = " ".join(current.split()).casefold()
+    if not a or not b or a == b:
+        return bool(a and a == b)
+    shorter, longer = (a, b) if len(a) < len(b) else (b, a)
+    return len(shorter) >= 2 and longer.startswith(shorter)
 # How long to wait for a stopped egress to finish uploading before giving up and
 # leaving the attach to the LMS sweep. Audio-only MP4s land in seconds; this is
 # sized for a bad day, and it never delays the student — the interview is
@@ -1327,8 +1349,15 @@ async def entrypoint(ctx) -> None:
         speaker, text = turn
         nonlocal question_count, student_turns
         if speaker == "agent":
-            question_count += 1
-            agent_utterances.append(text)
+            # A question the student talked over and the interviewer started
+            # again is ONE question, not two. Counting restarts spends the
+            # budget on nothing and ends the interview early.
+            if agent_utterances and is_restart_of(agent_utterances[-1], text):
+                if len(text) > len(agent_utterances[-1]):
+                    agent_utterances[-1] = text
+            else:
+                question_count += 1
+                agent_utterances.append(text)
         else:
             student_turns += 1
         # Persist-before-anything-else is the LMS's job; ours is never to drop

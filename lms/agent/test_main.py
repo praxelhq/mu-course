@@ -152,6 +152,42 @@ class InterviewBudgetTests(unittest.TestCase):
         assert main.END_GUARD_RELEASE_SECONDS == main.MAX_INTERVIEW_SECONDS - 120
 
 
+class TestRestartsDoNotSpendTheBudget(unittest.TestCase):
+    """Rahul Kotkar's interview ended with six minutes unused.
+
+    Barge-in made the interviewer restart questions, each fragment counted as
+    a question, and the model wrapped up believing it had asked twenty-six.
+    The sector-map segment got one answer before it closed.
+    """
+
+    def test_a_cut_off_question_and_its_retry_are_one_question(self):
+        assert main.is_restart_of("In", "In your sector map, you argue that the compute moat is")
+        assert main.is_restart_of(
+            "In your sector map, you argue that the compute moat is",
+            "In your sector map, you argue that the compute moat is dissolving and that",
+        )
+        assert main.is_restart_of("What is", "What is one task you repeat often enough")
+
+    def test_order_does_not_matter(self):
+        assert main.is_restart_of("What is one task you repeat often", "What is")
+
+    def test_whitespace_and_case_do_not_defeat_it(self):
+        assert main.is_restart_of("  what IS  ", "What is one task you repeat")
+
+    def test_a_genuinely_different_question_still_counts(self):
+        assert not main.is_restart_of(
+            "What is one task you repeat often enough to automate?",
+            "In your sector map, you argue the compute moat is dissolving.",
+        )
+
+    def test_a_repeated_question_asked_again_in_full_is_not_a_restart_of_nothing(self):
+        # Identical text is the same question, not a new one.
+        assert main.is_restart_of("Tell me about your workflow.", "Tell me about your workflow.")
+
+    def test_a_single_character_is_too_little_to_claim_a_prefix(self):
+        assert not main.is_restart_of("I", "In your sector map, you argue")
+
+
 class TestBargeIn(unittest.TestCase):
     """A phantom transcription must not cut the interviewer off.
 
