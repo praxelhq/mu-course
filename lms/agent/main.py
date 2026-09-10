@@ -27,6 +27,7 @@ Run: python main.py start   (subcommands come from the livekit-agents CLI)
 
 import asyncio
 import logging
+import inspect
 import os
 from pathlib import Path
 import re
@@ -145,6 +146,26 @@ MAX_WALLCLOCK_SECONDS = int(
 # student's own workflow and sector map — is the one that gets skipped when an
 # interview ends early. Prompt instructions alone did not hold; this does.
 MIN_TURNS_BEFORE_END = 10
+
+# A stray transcription must not cut the interviewer off mid-question.
+#
+# Sarvam runs with language=auto so the cohort can code-mix, and on silence it
+# invents filler: one student's transcript carries seventeen turns of the
+# single word "I", seven of "I mean,", and a line of Bengali script he never
+# spoke. LiveKit's default lets ONE transcribed word barge in, so every phantom
+# fragment interrupted the question being asked. That interview holds four
+# truncated openings — "When you were", "Would you be", "What is one task",
+# "What is" — the same question restarted until it got through. The student
+# described it as the interviewer freezing and hallucinating while the call sat
+# silent. He was describing our barge-in, exactly.
+#
+# Requiring a few words (and a moment of speech) to interrupt costs a genuinely
+# eager student a beat before they can cut in, and buys every student a
+# question they can actually hear to the end.
+MIN_INTERRUPTION_WORDS = int(os.environ.get("INTERVIEW_MIN_INTERRUPTION_WORDS", 3))
+MIN_INTERRUPTION_SECONDS = float(
+    os.environ.get("INTERVIEW_MIN_INTERRUPTION_SECONDS", 0.6)
+)
 
 # Counting questions was the wrong guard. An interview ended at exactly ten
 # questions having covered the resume, privacy, the regulated-shipping probe,
@@ -1269,11 +1290,27 @@ async def entrypoint(ctx) -> None:
     if prompt_cache:
         ctx.add_shutdown_callback(drop_prompt_cache)
 
+    # Passed by signature check rather than positionally: the plugin floor is
+    # livekit-agents>=1.0 and these landed during that line, so an older wheel
+    # must degrade to the previous behaviour instead of failing to start and
+    # taking every interview down with it.
+    interruption_kwargs: dict[str, object] = {}
+    session_params = inspect.signature(AgentSession.__init__).parameters
+    for name, value in (
+        ("min_interruption_words", MIN_INTERRUPTION_WORDS),
+        ("min_interruption_duration", MIN_INTERRUPTION_SECONDS),
+    ):
+        if name in session_params:
+            interruption_kwargs[name] = value
+        else:
+            logger.warning("AgentSession has no %s — barge-in stays at the default", name)
+
     session = AgentSession(
         stt=stt,
         llm=build_dialog_llm(prompt_cache),
         tts=tts,
         vad=silero.VAD.load(),
+        **interruption_kwargs,
     )
 
     def on_item_added(ev) -> None:

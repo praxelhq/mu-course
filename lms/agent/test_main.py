@@ -152,6 +152,34 @@ class InterviewBudgetTests(unittest.TestCase):
         assert main.END_GUARD_RELEASE_SECONDS == main.MAX_INTERVIEW_SECONDS - 120
 
 
+class TestBargeIn(unittest.TestCase):
+    """A phantom transcription must not cut the interviewer off.
+
+    Sarvam on silence invents filler — one transcript carries seventeen turns
+    of the bare word "I" — and LiveKit's default lets a single word interrupt,
+    so the question being asked died mid-sentence and had to be restarted.
+    """
+
+    def test_one_stray_word_is_not_enough_to_interrupt(self):
+        assert main.MIN_INTERRUPTION_WORDS >= 2
+
+    def test_a_moment_of_speech_is_required_too(self):
+        assert main.MIN_INTERRUPTION_SECONDS > 0
+
+    def test_both_are_tunable_without_a_deploy(self):
+        source = open("main.py", encoding="utf-8").read()
+        assert "INTERVIEW_MIN_INTERRUPTION_WORDS" in source
+        assert "INTERVIEW_MIN_INTERRUPTION_SECONDS" in source
+
+    def test_the_session_is_constructed_with_them(self):
+        source = open("main.py", encoding="utf-8").read()
+        # Passed by signature check so an older wheel degrades instead of
+        # refusing to start.
+        assert "min_interruption_words" in source
+        assert "min_interruption_duration" in source
+        assert "**interruption_kwargs" in source
+
+
 if __name__ == "__main__":
     unittest.main()
 
