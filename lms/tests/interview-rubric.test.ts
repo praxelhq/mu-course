@@ -103,9 +103,18 @@ describe("grader prompt", () => {
     const { system } = context();
     expect(system).toContain("conceptual_understanding");
     expect(system).toContain("work_integrity");
-    expect(system).toMatch(/trigger criteria/i);
-    expect(system).toMatch(/did not implement/i);
-    expect(system).toMatch(/credit burn/i);
+    expect(system).toMatch(/what makes the thing start/i);
+    expect(system).toMatch(/deliberately left out/i);
+    expect(system).toMatch(/what it costs to run/i);
+  });
+
+  it("credits plain business reasoning as highly as technical phrasing", () => {
+    const { system } = context();
+    expect(system).toMatch(/SCORE THE THINKING, NOT THE VOCABULARY/);
+    expect(system).toMatch(/Business reasoning counts in full/i);
+    // Naming a compliance regime may not be the bar for these students.
+    expect(system).toMatch(/NEVER a requirement/);
+    expect(system).toMatch(/do not deduct for its absence/i);
   });
 
   it("forbids scoring communication polish", () => {

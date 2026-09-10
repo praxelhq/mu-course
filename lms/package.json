@@ -20,6 +20,8 @@
     "check:evaluator-boundary:release": "node scripts/check-evaluator-boundary.mjs --require-private",
     "eval:grading": "tsx --env-file-if-exists=.env scripts/eval-grading.ts",
     "interview:simulate": "tsx --env-file-if-exists=.env scripts/interview-simulate.ts",
+    "prereq:backfill": "tsx --env-file-if-exists=.env scripts/backfill-prerequisite-text.ts",
+    "interview:remark": "tsx --env-file-if-exists=.env scripts/remark-interviews.ts",
     "worker:dev": "tsx --env-file-if-exists=.env worker/index.ts",
     "e2e": "playwright test",
     "load:baseline": "k6 run scripts/load/k6-baseline.js",

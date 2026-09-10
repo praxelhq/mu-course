@@ -2,6 +2,15 @@ import type { PrismaClient } from "@prisma/client";
 import { prisma as defaultPrisma } from "@/lib/db";
 import { structuredCall, type StructuredCaller } from "@/lib/ai/client";
 import { extractSubmissionFiles } from "@/lib/ai/extract";
+import {
+  VISION_MAX_BYTES,
+  buildVisionUser,
+  visionArtifactFor,
+  visionModel,
+  visionSystem,
+  visionTranscriptSchema,
+} from "@/lib/ai/prerequisite-vision";
+import { rangedRead } from "@/lib/s3";
 import { PREREQUISITE_TEXT_CAP } from "@/lib/interview/prerequisites";
 import {
   digestSystem,
@@ -20,6 +29,11 @@ import { estimateCostUsd } from "./grade-submission";
 //      next.config.ts), so a sector map arrives with null text. This process
 //      installs the full dependency tree, so it can. Text and JSON already
 //      extract fine at upload and are untouched here.
+//   1b. LOOK — when there is still no text, because the artifact is a picture.
+//      A sector map is a drawing; students export it as PNG or as a scanned
+//      PDF, and no text extractor will ever get a word out of it. The model
+//      reads the image or the PDF directly and writes down what it shows. This
+//      is a transcription, not a summary — the digest below still runs.
 //   2. DIGEST — turn a Make blueprint's raw JSON into prose the interviewer
 //      can actually question the student about.
 //
@@ -32,6 +46,7 @@ export interface PreparePrerequisiteDeps {
   prisma?: PrismaClient;
   model?: StructuredCaller;
   extract?: typeof extractSubmissionFiles;
+  read?: typeof rangedRead;
 }
 
 export async function handlePreparePrerequisite(
@@ -49,6 +64,8 @@ export async function handlePreparePrerequisite(
   let text = row.extractedText;
   let extracted = false;
 
+  const call = deps.model ?? (structuredCall as StructuredCaller);
+
   if (!text) {
     const extract = deps.extract ?? extractSubmissionFiles;
     try {
@@ -58,6 +75,18 @@ export async function handlePreparePrerequisite(
         .join("\n")
         .trim();
       text = joined ? joined.slice(0, PREREQUISITE_TEXT_CAP) : null;
+      if (!text) {
+        // Nothing to read means there may still be something to SEE.
+        text = await transcribeByLooking({
+          kind: data.kind,
+          s3Key: row.s3Key,
+          contentType: row.contentType,
+          call,
+          read: deps.read ?? rangedRead,
+          prerequisiteId: row.id,
+          prisma,
+        });
+      }
       if (!text) {
         return done(`nothing extractable: ${result.failures[0] ?? "no text in the file"}`);
       }
@@ -79,7 +108,6 @@ export async function handlePreparePrerequisite(
 
   if (!shouldDigest(data.kind)) return { extracted, digested: false, reason: "kind not digested" };
 
-  const call = deps.model ?? (structuredCall as StructuredCaller);
   const model = digestModel();
   const result = await call({
     system: digestSystem(data.kind),
@@ -115,4 +143,73 @@ export async function handlePreparePrerequisite(
     });
 
   return { extracted, digested: true };
+}
+
+/**
+ * Read an artifact that has no extractable text by looking at it. Returns the
+ * transcription, or null when the file is not something the model can see
+ * (wrong type, or too large to send) — in which case the caller reports
+ * "nothing extractable" exactly as it did before this path existed.
+ *
+ * Best-effort like everything else here: a provider failure logs and returns
+ * null rather than failing the job, because no prerequisite may block an
+ * interview.
+ */
+async function transcribeByLooking(input: {
+  kind: string;
+  s3Key: string;
+  contentType: string | null;
+  call: StructuredCaller;
+  read: typeof rangedRead;
+  prerequisiteId: string;
+  prisma: PrismaClient;
+}): Promise<string | null> {
+  let artifact: ReturnType<typeof visionArtifactFor>;
+  try {
+    const bytes = await input.read(input.s3Key, VISION_MAX_BYTES);
+    artifact = visionArtifactFor(input.contentType, bytes);
+  } catch (err) {
+    console.error(`[prerequisite] could not read ${input.s3Key} to look at it:`, err);
+    return null;
+  }
+  if (!artifact) return null;
+
+  const model = visionModel();
+  try {
+    const result = await input.call({
+      system: visionSystem(input.kind),
+      user: buildVisionUser(input.kind),
+      schema: visionTranscriptSchema(),
+      maxTokens: 4_000,
+      temperature: 0,
+      model,
+      ...(artifact.kind === "image"
+        ? { images: [{ mediaType: artifact.mediaType, dataBase64: artifact.dataBase64 }] }
+        : { pdfsBase64: [artifact.dataBase64] }),
+    });
+    await input.prisma.costLog
+      .create({
+        data: {
+          feature: "interview_prerequisite_vision",
+          provider: "anthropic",
+          model,
+          tokensIn: result.usage.inputTokens,
+          tokensOut: result.usage.outputTokens,
+          costUsd: estimateCostUsd(model, result.usage),
+          refType: "interview_prerequisite",
+          refId: input.prerequisiteId,
+        },
+      })
+      .catch((err: unknown) => console.error("[prerequisite] vision cost log failed:", err));
+
+    const transcript = result.data.transcript.trim();
+    if (!transcript) return null;
+    console.log(
+      `[prerequisite] read ${transcript.length} chars by looking at ${input.kind} (${artifact.kind})`,
+    );
+    return transcript.slice(0, PREREQUISITE_TEXT_CAP);
+  } catch (err) {
+    console.error(`[prerequisite] could not look at ${input.s3Key}:`, err);
+    return null;
+  }
 }

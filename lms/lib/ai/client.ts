@@ -134,6 +134,48 @@ function realModelClient(): ModelClient {
   };
 }
 
+/**
+ * A model asked for a long string field sometimes puts a REAL newline inside
+ * the JSON string rather than an escaped one, and `JSON.parse` rejects the
+ * whole object for it. Escape control characters that sit inside a string
+ * literal, leaving the structural whitespace between tokens alone.
+ *
+ * Only ever called after a parse has already failed, so the happy path is
+ * untouched and a genuinely malformed response still throws.
+ */
+function escapeControlCharsInStrings(json: string): string {
+  let out = "";
+  let inString = false;
+  let escaped = false;
+  for (const char of json) {
+    if (escaped) {
+      out += char;
+      escaped = false;
+      continue;
+    }
+    if (char === "\\" && inString) {
+      out += char;
+      escaped = true;
+      continue;
+    }
+    if (char === '"') {
+      inString = !inString;
+      out += char;
+      continue;
+    }
+    if (inString && char <= "\u001f") {
+      out +=
+        char === "\n" ? "\\n"
+        : char === "\r" ? "\\r"
+        : char === "\t" ? "\\t"
+        : `\\u${char.charCodeAt(0).toString(16).padStart(4, "0")}`;
+      continue;
+    }
+    out += char;
+  }
+  return out;
+}
+
 /** Extract the first top-level JSON object from a model response. */
 export function extractJsonObject(text: string): unknown {
   const cleaned = text.replace(/```(?:json)?/g, "");
@@ -142,7 +184,16 @@ export function extractJsonObject(text: string): unknown {
   if (start === -1 || end <= start) {
     throw new Error("no JSON object found in model response");
   }
-  return JSON.parse(cleaned.slice(start, end + 1));
+  const candidate = cleaned.slice(start, end + 1);
+  try {
+    return JSON.parse(candidate);
+  } catch (err) {
+    try {
+      return JSON.parse(escapeControlCharsInStrings(candidate));
+    } catch {
+      throw err;
+    }
+  }
 }
 
 const CORRECTIVE_INSTRUCTION =

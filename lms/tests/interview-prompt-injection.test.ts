@@ -222,7 +222,13 @@ describe("the three set probes", () => {
     expect(prompt).toMatch(/healthcare|fintech|hospital|bank|insurance/i);
     expect(prompt).toMatch(/lovable/i);
     expect(prompt).toMatch(/Do not accept a bare yes or a bare no/i);
-    expect(prompt).toMatch(/HIPAA|SOC 2|PCI-DSS/);
+    // The consequences are the question, in plain words. Naming a regulation
+    // is explicitly NOT what is being asked for — these students run
+    // businesses, not compliance functions.
+    expect(prompt).toMatch(/who gets hurt/i);
+    expect(prompt).toMatch(/who carries the blame/i);
+    expect(prompt).toMatch(/Do NOT ask them to name a regulation/);
+    expect(prompt).not.toMatch(/HIPAA|SOC 2|PCI-DSS/);
   });
 
   it("makes them apply every set answer to their own uploaded work", async () => {
@@ -252,16 +258,21 @@ describe("the interview arc", () => {
     expect(await promptWith("x")).toMatch(/deliberately NOT automate/);
   });
 
-  it("probes errors, timeouts, trigger criteria, omissions and credit burn", async () => {
+  it("probes failure, triggers, omissions and cost — without the jargon", async () => {
     const prompt = await promptWith("x");
-    expect(prompt).toMatch(/errors and timeouts/i);
-    expect(prompt).toMatch(/trigger criteria/i);
-    expect(prompt).toMatch(/decide not to implement/i);
-    expect(prompt).toMatch(/burning credits/i);
+    expect(prompt).toMatch(/when a step fails or something takes too long/i);
+    expect(prompt).toMatch(/What makes it start/i);
+    expect(prompt).toMatch(/decided against/i);
+    expect(prompt).toMatch(/what it costs to run/i);
+    // A business answer about the same thing is a complete answer.
+    expect(prompt).toMatch(/Business reasoning is a complete answer/i);
   });
 
-  it("tests concepts rather than tool trivia", async () => {
-    expect(await promptWith("x")).toMatch(/NOT tool trivia/);
+  it("tests the thinking rather than the vocabulary", async () => {
+    const prompt = await promptWith("x");
+    expect(prompt).toMatch(/NOT the vocabulary/);
+    expect(prompt).toMatch(/SPEAK PLAINLY/);
+    expect(prompt).toMatch(/that is YOUR miss, not theirs/);
   });
 
   it("routes a student with no resume text to internships, then a hypothetical", async () => {
