@@ -73,6 +73,13 @@ const AGENT_GONE_GRACE_MS = 20_000;
 // question must never trip it, and the cost of firing is only a reconnect,
 // which now resumes rather than restarts.
 const NO_PROGRESS_MS = 4 * 60_000;
+/**
+ * When the manual "rejoin" offer appears. Well short of NO_PROGRESS_MS: the
+ * automatic recovery stays patient so it never interrupts a thinking student,
+ * while a student who KNOWS the interviewer has died can act in seconds
+ * instead of losing a fifth of their budget waiting to be rescued.
+ */
+const MANUAL_REJOIN_AFTER_MS = 25_000;
 
 export function MeetingView({
   interviewId,
@@ -111,6 +118,8 @@ export function MeetingView({
   const [micEnabled, setMicEnabled] = useState(true);
   const [videoLost, setVideoLost] = useState(false);
   const [turns, setTurns] = useState<Turn[]>([]);
+  /** Interviewer has been quiet long enough to offer a manual rejoin. */
+  const [stalled, setStalled] = useState(false);
   const endedRef = useRef(false);
   const railRef = useRef<HTMLDivElement | null>(null);
   const agentPresentRef = useRef(false);
@@ -261,6 +270,14 @@ export function MeetingView({
 
       const lastAgentAt = agentTurns.length && lastAgentAtRef.current ? lastAgentAtRef.current : connectedAt;
 
+      // The watchdog below is deliberately patient — NO_PROGRESS_MS is four
+      // minutes, because a student thinking hard must never be cut off. But a
+      // student staring at a dead interviewer has no way of knowing which of
+      // the two is happening, and four minutes of a twenty-minute budget is a
+      // fifth of their interview. So once the interviewer has been quiet for
+      // much less than that, offer them the same recovery by hand.
+      setStalled(Date.now() - lastAgentAt > MANUAL_REJOIN_AFTER_MS);
+
       // Present, but nothing has come out of it for minutes.
       if (agentPresent && agentTurns.length > 0 && Date.now() - lastAgentAt > NO_PROGRESS_MS) {
         endedRef.current = true;
@@ -398,10 +415,30 @@ export function MeetingView({
         >
           {micEnabled ? "Mic on" : "Mic off"}
         </button>
+        {/* Recovery the student can reach themselves. Four students in one
+            evening sat in a room whose interviewer had died, not knowing that
+            rejoining resumes the transcript rather than restarting it. */}
+        {stalled && (
+          <button
+            type="button"
+            onClick={() => {
+              if (endedRef.current) return;
+              endedRef.current = true;
+              onReconnect("student-requested");
+            }}
+            className={styles.mic}
+          >
+            Interviewer not responding? Rejoin
+          </button>
+        )}
         {videoLost ? (
           <p className={styles.notice} role="status">
             {VIDEO_LOST_NOTICE}
           </p>
+        ) : stalled ? (
+          <span className={styles.footerHint}>
+            Rejoining keeps your answers and picks up where you stopped.
+          </span>
         ) : (
           <span className={styles.footerHint}>Ends on its own — there is nothing to click.</span>
         )}
