@@ -377,8 +377,10 @@ export async function loadSpine(userId: string, opts: LoadSpineOptions = {}): Pr
         version: latest.version,
         submittedAt: iso(latest.submittedAt),
         nextAllowedResubmitAt: iso(latest.nextAllowedResubmitAt),
+        // A submission waits in the queue from the moment it is submitted, not
+        // only once a worker has picked it up, so both states show a position.
         queuePosition:
-          latest.status === "in_review"
+          latest.status === "in_review" || latest.status === "submitted"
             ? await queuePositionOf(db, latest.id, latest.submittedAt)
             : null,
         review: reviewView,

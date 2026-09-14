@@ -164,7 +164,12 @@ describe.skipIf(!live)("seeded Shipyard (live DB)", () => {
 
   it("records model, provider, tokens and cost on every review", async () => {
     if (!seeded) return;
-    const reviews = await prisma.shipyardReview.findMany({ take: 50 });
+    // Only the seeded rows (`syrev_*`): a walked demo leaves stub or
+    // informational reviews behind that legitimately cost nothing.
+    const reviews = await prisma.shipyardReview.findMany({
+      where: { id: { startsWith: "syrev_" } },
+      take: 50,
+    });
     expect(reviews.length).toBeGreaterThan(0);
     for (const review of reviews) {
       expect(review.modelUsed).toBeTruthy();
@@ -178,7 +183,7 @@ describe.skipIf(!live)("seeded Shipyard (live DB)", () => {
   it("attaches a render artifact to every checkpoint 3 review", async () => {
     if (!seeded) return;
     const working = await prisma.shipyardReview.findMany({
-      where: { submission: { checkpointId: checkpointId("working") } },
+      where: { id: { startsWith: "syrev_" }, submission: { checkpointId: checkpointId("working") } },
       take: 20,
     });
     expect(working.length).toBeGreaterThan(0);
