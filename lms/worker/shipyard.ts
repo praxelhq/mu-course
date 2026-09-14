@@ -5,50 +5,39 @@
 // never competes with Course 1 grading. Playwright renders run here and
 // nowhere else.
 //
-// M0 registers the four queues with the same retry and dead-letter shape as
-// lib/queue.ts and attaches logging no-ops. M2 replaces the handlers with the
-// real reviewer pipeline; the queue config is deliberately in place first so
-// the topology is deployed and observable before any job does work.
+// This file is wiring only: every handler lives in `worker/shipyard-jobs/` and
+// is a plain async function over a submission id, so the whole pipeline is
+// testable without a queue.
+//
+//   shipyard.review          M1 stub reviewer; M2 swaps in the model call
+//   shipyard.review.dead     returns a submission nobody could review
+//   shipyard.gate-sweep      15-minute metric-gate sweep (SPEC §5)
+//   shipyard.tracker-refresh placeholder until M3
 
-import { PgBoss } from "pg-boss";
+import { PgBoss, type JobWithMetadata } from "pg-boss";
 import {
   QUEUE_SHIPYARD_GATE_SWEEP,
   QUEUE_SHIPYARD_REVIEW,
   QUEUE_SHIPYARD_REVIEW_DEAD,
   QUEUE_SHIPYARD_TRACKER_REFRESH,
-  SHIPYARD_REVIEW_RETRY_LIMIT,
   shipyardReviewConcurrency,
 } from "../lib/shipyard/constants";
+import {
+  ensureShipyardQueues,
+  type ShipyardGateSweepJobData,
+  type ShipyardReviewJobData,
+  type ShipyardTrackerRefreshJobData,
+} from "../lib/shipyard/queue";
+import { handleReviewSubmission } from "./shipyard-jobs/review-submission";
+import { handleReviewDeadLetter } from "./shipyard-jobs/review-dead-letter";
+import { GATE_SWEEP_CRON, sweepMetricGates } from "./shipyard-jobs/gate-sweep";
 
-export type ShipyardReviewJobData = { submissionId: string };
-export type ShipyardTrackerRefreshJobData = { productId?: string; all?: boolean };
-export type ShipyardGateSweepJobData = { reason?: string };
-
-/**
- * Create the Shipyard queues (idempotent). Dead-letter queue first, then the
- * work queue pointing at it — mirrors `ensureGradingQueues` in lib/queue.ts.
- */
-export async function ensureShipyardQueues(boss: PgBoss): Promise<void> {
-  await boss.createQueue(QUEUE_SHIPYARD_REVIEW_DEAD);
-  await boss.createQueue(QUEUE_SHIPYARD_REVIEW, {
-    retryLimit: SHIPYARD_REVIEW_RETRY_LIMIT,
-    retryBackoff: true,
-    retryDelay: 15, // seconds; doubles per retry with jitter
-    deadLetter: QUEUE_SHIPYARD_REVIEW_DEAD,
-  });
-  // A failed tracker read is not an incident: the next refresh or the sweep
-  // picks the product up again, so there is no dead letter here.
-  await boss.createQueue(QUEUE_SHIPYARD_TRACKER_REFRESH, {
-    retryLimit: 2,
-    retryBackoff: true,
-    retryDelay: 30,
-  });
-  await boss.createQueue(QUEUE_SHIPYARD_GATE_SWEEP, {
-    retryLimit: 2,
-    retryBackoff: true,
-    retryDelay: 60,
-  });
-}
+export { ensureShipyardQueues };
+export type {
+  ShipyardGateSweepJobData,
+  ShipyardReviewJobData,
+  ShipyardTrackerRefreshJobData,
+};
 
 async function main(): Promise<void> {
   const databaseUrl = process.env.DATABASE_URL;
@@ -70,12 +59,46 @@ async function main(): Promise<void> {
 
   await ensureShipyardQueues(boss);
 
-  await boss.work<ShipyardReviewJobData>(
+  // One job per handler invocation (batchSize 1) with `concurrency` of them in
+  // flight: a review is a single long model call, so a batch would serialise
+  // what the concurrency is meant to parallelise.
+  await boss.work(
     QUEUE_SHIPYARD_REVIEW,
-    { batchSize: concurrency },
+    { batchSize: 1, localConcurrency: concurrency, includeMetadata: true },
+    async (jobs: JobWithMetadata<ShipyardReviewJobData>[]) => {
+      for (const job of jobs) {
+        const outcome = await handleReviewSubmission(job.data.submissionId);
+        if (!outcome.handled) {
+          console.warn(
+            `[shipyard-worker] review ${job.data.submissionId}: skipped (${outcome.reason})`,
+          );
+          continue;
+        }
+        console.log(
+          `[shipyard-worker] review ${job.data.submissionId} → ${outcome.status}` +
+            ` (attempt ${job.retryCount + 1}, checkpoint ${outcome.checkpointOrder})`,
+        );
+      }
+    },
+  );
+
+  // Unlike the Forge's grading dead letter, this one IS consumed — see
+  // worker/shipyard-jobs/review-dead-letter.ts for why.
+  await boss.work<ShipyardReviewJobData>(
+    QUEUE_SHIPYARD_REVIEW_DEAD,
+    { batchSize: 1 },
     async (jobs) => {
       for (const job of jobs) {
-        console.log(`[shipyard-worker] review ${job.data.submissionId}: not implemented yet (M2)`);
+        const submissionId = job.data?.submissionId;
+        if (!submissionId) {
+          console.error("[shipyard-worker] dead-letter job with no submissionId", job.id);
+          continue;
+        }
+        const outcome = await handleReviewDeadLetter(submissionId);
+        console.warn(
+          `[shipyard-worker] dead-letter ${submissionId}: ` +
+            (outcome.handled ? "returned with the stock reason" : `skipped (${outcome.reason})`),
+        );
       }
     },
   );
@@ -97,16 +120,26 @@ async function main(): Promise<void> {
     { batchSize: 1 },
     async (jobs) => {
       for (const job of jobs) {
+        const result = await sweepMetricGates();
         console.log(
-          `[shipyard-worker] gate sweep (${job.data.reason ?? "scheduled"}): not implemented yet (M3)`,
+          `[shipyard-worker] gate sweep (${job.data?.reason ?? "scheduled"}) ` +
+            `examined=${result.examined} changed=${result.changed} failed=${result.failed}`,
         );
       }
     },
   );
 
+  await boss.schedule(
+    QUEUE_SHIPYARD_GATE_SWEEP,
+    GATE_SWEEP_CRON,
+    { reason: "schedule" },
+    { tz: "UTC", key: "gate-sweep-v1" },
+  );
+
   console.log(
-    `[shipyard-worker] up. queues: ${QUEUE_SHIPYARD_REVIEW} (concurrency ${concurrency}), ` +
-      `${QUEUE_SHIPYARD_TRACKER_REFRESH}, ${QUEUE_SHIPYARD_GATE_SWEEP}.`,
+    `[shipyard-worker] up. queues: ${QUEUE_SHIPYARD_REVIEW} (concurrency ${concurrency}, ` +
+      `dead letter → ${QUEUE_SHIPYARD_REVIEW_DEAD}), ${QUEUE_SHIPYARD_TRACKER_REFRESH}, ` +
+      `${QUEUE_SHIPYARD_GATE_SWEEP} (${GATE_SWEEP_CRON}).`,
   );
 
   const stop = async (signal: string) => {
