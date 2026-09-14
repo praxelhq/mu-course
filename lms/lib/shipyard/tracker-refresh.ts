@@ -29,7 +29,7 @@ import {
 import { mergeWorkflowRunsDetailed } from "@/lib/n8n/merge";
 import { createTrackerClient, type TrackerClient } from "@/lib/tracker/client";
 import type { TrackerSignals } from "@/lib/tracker/types";
-import { SHIPYARD_COURSE_ID } from "./constants";
+import { SHIPYARD_COURSE_ID, shipyardWorkflowTag } from "./constants";
 import { recomputeGates, type CheckpointStateRow } from "./gate-state";
 import { ShipyardError } from "./errors";
 import { onGatesRecomputed } from "./grades";
@@ -127,10 +127,7 @@ export type RefreshResult = {
   notes?: string[];
 };
 
-/** The tag a student puts on their n8n workflow so this portal will count it. */
-export function shipyardWorkflowTag(productId: string): string {
-  return `shipyard:${productId}`;
-}
+export { shipyardWorkflowTag };
 
 export type WorkflowRunDecision = { count: true } | { count: false; note: string };
 

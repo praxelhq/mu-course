@@ -1,3 +1,4 @@
+import { shipyardWorkflowTag } from "@/lib/shipyard/constants";
 import type { CheckpointView, SpineView } from "@/lib/shipyard/view-models";
 import { formatTime } from "./format";
 import { ConnectTrackerForm } from "./connect-tracker-form";
@@ -25,6 +26,11 @@ export function SignalStrip({
 
   const connected = product?.trackerProductId ?? null;
   const showConnect = product !== undefined && connected === null;
+  // Checkpoint 5's run count comes from an n8n workflow this portal will only
+  // read once it carries the student's own tag. The strip shows the tag the
+  // refresh asked for, and only when the refresh says that is what is missing.
+  const workflowTag =
+    checkpoint.key === "workflow" && product ? shipyardWorkflowTag(product.id) : null;
 
   return (
     <section className="sy-signals" aria-label="Live signals from Shipped.money">
@@ -44,7 +50,7 @@ export function SignalStrip({
             >
               {connected}
             </a>
-            <RefreshSignals />
+            <RefreshSignals workflowTag={workflowTag} />
           </span>
         )}
       </div>

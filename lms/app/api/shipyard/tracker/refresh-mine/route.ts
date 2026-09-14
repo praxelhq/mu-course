@@ -5,7 +5,7 @@ import { takeToken } from "@/lib/shipyard/rate-limit";
 import { refreshTrackerForProduct } from "@/lib/shipyard/tracker-refresh";
 
 // POST /api/shipyard/tracker/refresh-mine   (any signed-in student)
-//   200 { reachedTracker, signals, states }
+//   200 { reachedTracker, signals, states, notes }
 //   404 you have no product yet
 //   409 your product is not connected to Shipped.money
 //   429 once a minute is plenty
@@ -57,6 +57,10 @@ export const POST = withAuth(async (_req, { user }) => {
     return Response.json({
       reachedTracker: result.signals !== null,
       signals: result.signals,
+      // Why a number did not move, when the refresh knows: an n8n workflow
+      // missing its `shipyard:<productId>` tag is the one a student can fix
+      // themselves, and it is invisible from the signal strip otherwise.
+      notes: result.notes ?? [],
       states: result.states.map((s) => ({
         key: s.key,
         order: s.order,

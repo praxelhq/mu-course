@@ -73,3 +73,14 @@ export function renderTimeoutMs(
 
 /** Below this, a review is queued for a human before the pass counts. */
 export const HUMAN_REVIEW_CONFIDENCE_THRESHOLD = 0.7;
+
+/**
+ * The tag a student puts on their n8n workflow so this portal will count it.
+ *
+ * It lives here rather than beside the refresh because the SIGNAL STRIP shows
+ * it to the student, and a server component must not pull Prisma in to format
+ * one string.
+ */
+export function shipyardWorkflowTag(productId: string): string {
+  return `shipyard:${productId}`;
+}
