@@ -171,7 +171,13 @@ function spine(patch: Partial<SpineView> = {}): SpineView {
     attempts: 0,
   };
   return {
-    product: { id: "p1", name: "Ledger", oneLiner: "one line", liveUrl: null },
+    product: {
+      id: "p1",
+      name: "Ledger",
+      oneLiner: "one line",
+      liveUrl: null,
+      trackerProductId: null,
+    },
     checkpoints: [checkpoint],
     currentOrder: 1,
     grade: null,

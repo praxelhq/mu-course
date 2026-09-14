@@ -79,6 +79,12 @@ a `courseId`-scoped mode of the Forge. Source of truth: `docs/shipyard/SPEC.md`
 - `lib/shipyard/rate-limit.ts` — in-memory per-user bound on the submit route.
 - `lib/shipyard/view-models.ts` — the typed contract the UI renders; the UI
   imports only from here. `spine-mock.ts` fills the same shape for design work.
+- `lib/shipyard/instructor.ts` — the faculty reads: `loadSectionMatrix`,
+  `loadStudentFile`, `loadReviewQueue`, `matrixCsvRows` and the pure
+  `resolveSection` / `matrixVersion` / `summariseSection`. Indexed reads only,
+  and it reads `ShipyardCheckpointState` rather than re-deriving the gate.
+- `lib/shipyard/demo-personas.ts` — the ten seeded accounts the demo picker
+  offers, one per state the Shipyard can be in. Data only.
 - `lib/shipyard/reviewer/` — the AI reviewer core. Pure or dependency-injected;
   no Prisma anywhere in it, so the pipeline calls it with plain data.
   - `schemas.ts` — the model contract: `VerdictOutput`, `PreflightOutput`,
@@ -117,7 +123,16 @@ a `courseId`-scoped mode of the Forge. Source of truth: `docs/shipyard/SPEC.md`
 - `worker/shipyard-jobs/gate-sweep.ts` — the 15-minute metric-gate sweep.
 - `app/api/shipyard/**` — spine (GET, `ifVersion` short poll), submissions,
   uploads/presign, product + product/connect-tracker, files/[...key],
-  admin/fake-tracker, admin/review-stub.
+  admin/fake-tracker, admin/review-stub, instructor/matrix (8s `ifVersion`
+  poll), instructor/open-gate, exports/matrix (CSV).
+- `app/shipyard/**` — the student spine and grade line, `instructor/` (the
+  section matrix, the review queue, `students/[userId]` drill-down),
+  `admin/` (the bench), and `demo/` (the persona picker, test-login only).
+- `components/shipyard/**` — the visual system (`shipyard.css`) and every
+  Shipyard component: the spine's rail, cards, verdict panel, signal strip,
+  submit form (S3 presign + PUT with per-file progress), connect-tracker line,
+  the matrix grid and its 8s poll, the two staff actions, the fake-tracker
+  form, and the demo switcher.
 - `prisma/seed-shipyard.ts` — `seedShipyard(tx, ctx)`, called from `seed.ts`.
 - Prisma models are all `Shipyard*` and carry `courseId` (default `course-2`).
 
