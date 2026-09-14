@@ -1,0 +1,27 @@
+{
+  "id": "money-06-gst-helper-cost-plus-only",
+  "checkpointKey": "money",
+  "expected": "return",
+  "expectedUnmetCriteria": [
+    "price-reasoned"
+  ],
+  "fields": {
+    "pricingNote": "₹499 per month per user, one plan, no tiers.\n\nHow I got to ₹499. I worked backwards from my costs. Each active user makes about 140 OCR calls a month on their bill photos, which on Google Document AI comes to roughly ₹310. The LLM classification on top of that is about ₹70 a month per user at current usage. Supabase and Vercel together are ₹2,400 a month flat, and at the 30 users I am targeting that is ₹80 per user. Razorpay takes 2% plus GST. So my cost per user is a bit over ₹400, and ₹499 leaves me just under ₹100 of margin per user per month, which is the number I need to not lose money while I am in college. If costs come down when I move OCR to a cheaper provider I will keep the price at ₹499 and take the margin, since ₹499 is a round number people are used to paying.\n\nWhat the gig worker gives up by not paying: they keep missing the 11th and the 20th. Late filing on GSTR-3B is ₹50 a day plus interest at 18%, and the two Swiggy riders I spoke to had each paid over ₹3,000 in late fees in the last year without ever understanding what the fee was for. One of them had his GSTIN suspended and could not raise an invoice to the agency he moonlights for until it was restored, which took eleven days.",
+    "checkoutUrl": "https://checkout.dodopayments.com/buy/pdt_gstsaathi_499"
+  },
+  "signals": {
+    "paymentsLive": true,
+    "trackerConnected": false,
+    "workflowTenRuns": false,
+    "hasPayingCustomer": false,
+    "payingCustomers": 0,
+    "grossTotal": 0,
+    "netTotal": 0,
+    "currency": "USD",
+    "workflowRuns": 0,
+    "blockingFlags": [],
+    "fetchedAt": "2026-09-15T09:00:00.000Z",
+    "source": "verified"
+  },
+  "notes": "Return on `price-reasoned`: the entire justification is cost-plus — OCR spend, infra spend, the margin needed — which the threshold fails explicitly, and no buyer value or named alternative's price is ever used to set the number. The rest clears: a number and unit are stated, the checkout is public, and the late-fee and GSTIN-suspension paragraph is a concrete cost of not buying rather than a feature restatement. The false trackerConnected signal plays no part in the verdict."
+}

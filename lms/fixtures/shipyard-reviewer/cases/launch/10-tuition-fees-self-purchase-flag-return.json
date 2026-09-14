@@ -1,0 +1,30 @@
+{
+  "id": "launch-10-tuition-fees-self-purchase-flag-return",
+  "checkpointKey": "launch",
+  "expected": "return",
+  "expectedUnmetCriteria": [
+    "numbers-agree"
+  ],
+  "fields": {
+    "launchWriteup": "FeeLine collects monthly tuition-class fees in Lucknow. The teacher adds a batch, parents get a payment link on the 1st and a reminder on the 5th, and the teacher sees who has paid without opening a register. ₹599 per teacher per month. 1 Sep: Razorpay live, pricing page up, and I tested the whole flow end to end with my own UPI ID and refunded it, which took about four minutes. 2-4 Sep: I visited 11 tuition classes in Aliganj and Indira Nagar between 4 and 7pm when batches change over - 11 teachers, 8 conversations, 4 demos on their own phone. 5 Sep: two teachers said yes and I walked them through the payment on the spot. 6 Sep: posted in a Lucknow home-tutors WhatsApp group (150 members) that one of those teachers added me to; 6 replies, 2 wanted it for free 'for testing'. 8 Sep: I stopped selling for two days because both live teachers hit the same bug - a parent paying twice in the same month - and I fixed that on 9 Sep. What did not work: the group post, which brought only free-trial requests, and my own decision to test with my own UPI ID on 1 Sep, which I now regret because it sits in the payment history and looks exactly like me buying my own product. Also the ₹599 price is per teacher and two teachers asked for a per-batch price, which I do not have. For the next hundred I would demo during the batch changeover only, never during a class, because every demo that worked happened in that 15 minute gap.",
+    "distributionChannels": "Door to door at tuition classes in Aliganj and Indira Nagar, 2-4 Sep, 11 classes: 8 conversations, 4 demos, 2 teachers signed up on 5 Sep. About 25 minutes per class including waiting for the batch to end.\nLucknow home-tutors WhatsApp group, 150 members, 1 post on 6 Sep: 6 replies, 2 asked for it free for testing, 0 paid. Honest answer: nothing.\nReferral from the first teacher: she forwarded it to 2 other teachers in her building on 7 Sep, both opened it, neither has paid yet.\nInstagram: not used at all. Tuition teachers in this area are not on it for work and I would be posting to nobody.\nPamphlets: I priced 500 pamphlets at ₹1,100 and decided against it until I have five paying teachers.\nParents directly: I deliberately did not approach parents, because the teacher has to be the one who brings them in or the whole thing looks like a collection agency.",
+    "firstCustomerStory": "The first teacher to sign up runs two evening batches of class 9 and 10 maths out of the front room of her house in Aliganj, about 34 students. I came at 5:45pm on 3 Sep, in the ten minutes between her batches, which is the only time she is not teaching. Her register is a hardbound notebook with a column per month and pencil ticks, and her actual complaint was not collection - it was that she cannot say no to parents who ask for two weeks' extra time, and by March there are six or seven families she has stopped being able to ask. She said, and I wrote it down, 'mujhe paise maangne mein sharam aati hai' - the tool's job is to ask so she does not have to. Before agreeing she asked whether parents would see her phone number on the message and whether a parent could pay half. On 5 Sep she set up both batches with me sitting there and the ₹599 went through on her own UPI at 6:12pm. Since then 21 of her 34 parents have opened the link, 9 have paid the September fee through it, and she called me on 8 Sep annoyed that one parent had paid twice - that was a real bug and I fixed it the next day."
+  },
+  "signals": {
+    "paymentsLive": true,
+    "trackerConnected": true,
+    "workflowTenRuns": true,
+    "hasPayingCustomer": false,
+    "payingCustomers": 0,
+    "grossTotal": 1445,
+    "netTotal": 1412,
+    "currency": "USD",
+    "workflowRuns": 11,
+    "blockingFlags": [
+      "self_purchase"
+    ],
+    "fetchedAt": "2026-09-15T09:00:00.000Z",
+    "source": "verified"
+  },
+  "notes": "Fails `numbers-agree` on the metric half alone: the tracker has raised a self_purchase blocking flag and reports no verified paying customer, while the write-up describes two teachers paying ₹599 each. The write-up itself is decent - dated visits, per-channel outcomes including honest zeroes, a traceable first customer, a real learning - and the reviewer must NOT quietly pass it over the flag. A blocking flag makes every metric signal false, so this checkpoint cannot clear no matter how the prose reads, and the student's own admission that he tested with his own UPI ID is the likely source."
+}

@@ -1,0 +1,25 @@
+{
+  "id": "money-04-gym-billing-per-member-pass",
+  "checkpointKey": "money",
+  "expected": "pass",
+  "expectedUnmetCriteria": [],
+  "fields": {
+    "pricingNote": "₹4 per active member per month, with a floor of ₹499 a month. So a 150-member gym in Indore pays ₹600, and a 600-member chain pays ₹2,400. Billed monthly on the member count at the start of the month.\n\nWhy per member and why ₹4. Gym owners already think in per-member numbers — that is how they price everything they sell — so a per-member price is the only one they can check against their own P&L in their head, and every one of the five owners I sat with did that arithmetic out loud and then said \"that's fine\". The value is renewals that do not lapse. At the pilot gym, 214 members, the owner was losing roughly 18 renewals a month to nobody reminding anybody; at an average plan of ₹1,800 that is ₹32,400 walking out. ₹856 a month against that is not a software decision, it is a rounding error, and I say exactly that on the pricing page. The ₹499 floor exists because a 90-member gym costs me the same Razorpay webhook and the same support WhatsApp as a 600-member one.\n\nWhat the owner gives up by not paying: the register. Which in practice means the member who stopped coming in March is still notionally a member in June, nobody called her, and she has joined the gym across the road. He does not find out until he counts cash at year end and it is short.",
+    "checkoutUrl": "https://flexbill.netlify.app/checkout"
+  },
+  "signals": {
+    "paymentsLive": true,
+    "trackerConnected": true,
+    "workflowTenRuns": true,
+    "hasPayingCustomer": true,
+    "payingCustomers": 1,
+    "grossTotal": 1028,
+    "netTotal": 967,
+    "currency": "USD",
+    "workflowRuns": 23,
+    "blockingFlags": [],
+    "fetchedAt": "2026-09-13T11:45:00.000Z",
+    "source": "verified"
+  },
+  "notes": "A number, a unit and a floor are all stated; the reasoning is the owner's own lapsed-renewal arithmetic; the cost of not paying is the member who quietly leaves. The tiering is simple enough that nothing in it assumes an unshipped feature."
+}

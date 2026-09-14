@@ -1,0 +1,21 @@
+{
+  "id": "idea-05-parked-waitlist-return",
+  "checkpointKey": "idea",
+  "expected": "return",
+  "expectedUnmetCriteria": ["waitlist-live", "traffic-test"],
+  "fields": {
+    "productName": "BhaadaSplit",
+    "oneLiner": "BhaadaSplit splits the month's rent, electricity and maid bill between four flatmates and sends each one a single UPI request for their share.",
+    "jobStory": "When the electricity bill comes on the 8th and the maid is paid on the 1st and rent goes out on the 5th, the one flatmate whose account everything runs through wants the other three to just pay their share without being chased, so I can stop the monthly Splitwise argument about who paid for the gas cylinder in July.\n\nWho has this job: working professionals aged 22 to 28 sharing 3BHK flats in HSR Layout and Kaggadaspura in Bangalore, usually four to a flat, usually one person's name on the rent agreement and one person's UPI paying everything. I know eleven such flats through my cousin's office group and I visited four of them.\n\nWhat they do instead: Splitwise plus a WhatsApp group. Splitwise is the standard answer and everyone has it, but it only records who owes what, it does not collect, so the person who is owed money still has to ask three times. Two of the four flats I sat with had settled nothing for two months and one had a running imbalance of about 14,000 rupees. One flat keeps a whiteboard in the kitchen instead, which works better than the app because you have to look at it while making chai.",
+    "waitlistUrl": "http://bhaadasplit.in",
+    "signupCount": 12,
+    "trafficTestNotes": "Honestly this part I have done less of than I wanted to. I put the link up and shared it wherever I could over about two weeks, and people kept signing up slowly, which I take to mean the idea has something in it. I did not run any ads because I did not want to spend money before knowing whether anyone wants it, and also my Meta business account is stuck in KYC verification since 29 Aug. Most of the signups came in the first few days and then it went quiet, and then there was another small burst when I shared it a second time. I did not track visits at all, so I only know the signup number from the form itself. I would guess a few hundred people saw it in total but that is genuinely a guess, I do not have a number for it. Next time I will put an analytics script on the page before sharing. About the page: I bought the domain for 199 rupees but the hosting is not connected to it yet, I was going to do that this weekend, so the link I have actually been sharing is the raw Google Form link and that is where the 12 came from.",
+    "signupScreenshot": [
+      "synthetic:Google Forms responses tab showing 12 responses with the email column visible and the date 13 Sep 2026 in the corner"
+    ]
+  },
+  "images": [
+    { "file": "synthetic:Google Forms responses tab showing 12 responses with the email column visible and the date 13 Sep 2026 in the corner" }
+  ],
+  "notes": "Return: the submitted waitlist URL is a bought domain with no hosting attached, so the liveness check lands on a parking page that states no promise and captures nothing, and the traffic write-up names no source, no reach and no spend at all. The one-liner, job story, audience and the dated screenshot matching 12 are all fine."
+}

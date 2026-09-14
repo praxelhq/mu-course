@@ -1,0 +1,28 @@
+{
+  "id": "launch-08-gst-helper-bought-signups-return",
+  "checkpointKey": "launch",
+  "expected": "return",
+  "expectedUnmetCriteria": [
+    "no-spam"
+  ],
+  "fields": {
+    "launchWriteup": "GigGST files quarterly GST for delivery riders and freelancers in Delhi NCR who cross the threshold and do not know it. ₹299 per filing. 29 Aug: Razorpay live. 30 Aug: I bought a database of 4,000 email IDs of 'small business owners and freelancers, Delhi NCR' from a data vendor in Nehru Place for ₹2,500 - a CSV, scraped, and honestly it was the best money I spent all week because it let me reach more people in one afternoon than I could in a month of standing outside warehouses. I sent the whole list a mail-merge on 31 Aug from a new domain so my main one would not get burned, subject line 'Your GST deadline is in 11 days'. 1 Sep: sent the same blast again to everyone who did not open, and a third time on 3 Sep to the ones who opened but did not click. 2 Sep: bought a 5,000-follower pack on Instagram for ₹800 so the profile would not look empty when people checked it, and I think it helped credibility. 4 Sep: first payment. 5 Sep: stood outside two delivery hubs in Okhla at shift change, talked to 19 riders, 2 paid. What did not work: the reels I made, 3 of them, nobody watched. Totals: 5 paying users, ₹1,495, tracker reads $18.01 gross and $17.65 net. For the next hundred I would buy a bigger and fresher list, filter it to riders specifically, and send earlier in the quarter.",
+    "distributionChannels": "Purchased email list, 4,000 IDs from a Nehru Place vendor for ₹2,500, blasted 31 Aug with two follow-up sends on 1 and 3 Sep: 612 opens, 44 clicks, 11 replies (4 of them abusive), 3 paying users. Cheapest customer acquisition I have.\nPurchased Instagram followers, 5,000 for ₹800 on 2 Sep: 0 payments, but the profile looks credible now which I think matters when people check before paying.\nDelivery hub outside Okhla at shift change, 5 Sep: 19 riders spoken to, 7 took the link, 2 paid. Slow but the conversations were the best I had.\nInstagram reels, 3 posted 6-8 Sep: 640 views total, 0 payments. Nothing.\nr/india: 1 post on 2 Sep, removed by mods within an hour, 0 payments.\nRider WhatsApp groups: I am not in any, which is the gap I need to fix.",
+    "firstCustomerStory": "The first payment came on 4 Sep from a man who does part-time delivery on two platforms and also runs a small printing job on the side, which is what pushes him over the GST threshold without him realising. He came in from the email blast - he was one of the 44 clicks and he replied to the mail on 2 Sep with one line, 'kitna penalty lagega agar maine abhi tak file nahi kiya', which is the only question that actually matters to this customer. We spoke on the phone for about nine minutes. Before paying he asked whether I would need his bank statements and whether his platform income and his printing income would get mixed in one filing. He paid ₹299 on 4 Sep by UPI at 2:30pm after I sent him a screenshot of exactly which four fields I would need. After paying he uploaded his platform statements the same evening, then went quiet for three days, then sent 11 photographs of handwritten printing invoices at midnight on 7 Sep. I filed for him on 9 Sep. He has since asked whether I can do it for his brother-in-law, who also drives, and that is my first referral."
+  },
+  "signals": {
+    "paymentsLive": true,
+    "trackerConnected": true,
+    "workflowTenRuns": true,
+    "hasPayingCustomer": true,
+    "payingCustomers": 5,
+    "grossTotal": 1801,
+    "netTotal": 1765,
+    "currency": "USD",
+    "workflowRuns": 19,
+    "blockingFlags": [],
+    "fetchedAt": "2026-09-15T09:00:00.000Z",
+    "source": "verified"
+  },
+  "notes": "Fails `no-spam`: a 4,000-record scraped email list blasted three times and a purchased 5,000-follower pack, stated proudly and with a plan to buy a bigger list next time. That scores zero on distribution honesty and must be ESCALATED TO A HUMAN rather than quietly returned. The other criteria technically hold - dated actions, an outcome on every channel, a traceable first customer from the blast reply, and ₹1,495 across 5 users matching the tracker's $18.01 - which is exactly why this case matters: the spam signal alone has to carry the verdict."
+}

@@ -1,0 +1,26 @@
+{
+  "id": "launch-04-gym-billing-signed-with-contact-pass",
+  "checkpointKey": "launch",
+  "expected": "pass",
+  "expectedUnmetCriteria": [],
+  "fields": {
+    "launchWriteup": "FlexBill is a fee-reminder and receipt tool for single-branch gyms in Indore. ₹1,499 one time for the year, live since 30 Aug. 30 Aug: Razorpay live, price page up, and I removed the 14-day trial after the first two gyms treated the trial as the product. 31 Aug and 1 Sep: I visited 9 gyms between Vijay Nagar and Sudama Nagar at their dead hour (3-5pm), got past the counter in 6, demoed in 4, and 1 paid on 1 Sep. 2 Sep: sent a WhatsApp voice note plus a 20 second screen recording to 14 gym owners whose numbers I had collected in person over the previous three weeks - 11 heard it, 5 replied, 2 paid on 3 and 4 Sep. 5 Sep: a post in a local fitness trainers group (310 members) got 1 payment on 6 Sep from a trainer who runs a 40-member basement gym. 7 Sep: I tried Google Ads on 'gym software indore' with a ₹700 budget, 62 clicks, 0 payments, stopped it on 9 Sep. What did not work: the ads, and the 14-day trial which I should have never shipped. Also my first demo script was about features and I lost two gyms to it before I started opening with 'how many members are late on fees right now' instead - every owner knows that number and it is always bad. Totals as of today: 4 paying gyms, ₹5,996, tracker shows $72.23 gross, $70.53 net. For the next hundred I would go only to gyms with 80-200 members, because both gyms under 50 members said the diary is fine and they were right.\n\n- Aarav Kulshreshtha, aarav.k@flexbill.in",
+    "distributionChannels": "In-person gym visits, 31 Aug and 1 Sep, 9 gyms: 6 conversations, 4 demos, 1 payment. Costs me about 40 minutes per gym including travel.\nWhatsApp voice note + 20s screen recording to 14 owners whose numbers I had collected in person, 2 Sep: 11 played it, 5 replied, 2 paid. Best return per hour of anything I did, and it only worked because I had already met all 14 of them.\nLocal fitness trainers WhatsApp group, 310 members, 1 post on 5 Sep: 9 replies, 1 payment on 6 Sep.\nGoogle Ads, 'gym software indore' and 3 similar keywords, ₹700 over 7-9 Sep: 62 clicks, 4 people reached the pricing page, 0 payments. Dead money, stopped.\nInstagram: 2 posts, 340 and 190 views, 0 payments. Nothing, and I am not going to keep doing it.\nCollege society list: not used. My seniors are not gym owners.\nGym equipment dealer who services 30 gyms in Indore: I asked him on 8 Sep if he would refer, he said send me something in writing and I have not yet. So far this channel has returned zero because I have not finished it.",
+    "firstCustomerStory": "The first gym to pay is a 130-member gym in Sudama Nagar, run by a former powerlifter. I walked in on 31 Aug at 3:40pm, when the floor was empty. His counter had a register with names written in four different pens and a stack of ₹500 notes under a dumbbell plate. Before I demoed anything I asked how many members were late on fees; he said 'chalis-pachaas to hain hi' and then spent ten minutes complaining that chasing them on WhatsApp one by one makes him feel like a recovery agent. What he said before paying, almost exactly: 'receipt bhi isi se chala jayega kya, GST wala?' He paid ₹1,499 by UPI on 1 Sep at 12:05pm, the day after the demo, after calling me once to confirm his data would not be visible to other gyms. Since paying he has entered 118 of his 130 members himself over four evenings, sent 96 reminders through the tool, and told me on 8 Sep that 14 members paid after the first reminder batch. He now calls me instead of messaging, usually while the gym is loud, and the number he calls from is +91 98260 41377, which is also the gym's number on their board. On 10 Sep he asked for a printed receipt format for the ones who pay cash, which I have not built.\n\nWritten by Aarav Kulshreshtha, aarav.k@flexbill.in - happy to put you on a call with him."
+  },
+  "signals": {
+    "paymentsLive": true,
+    "trackerConnected": true,
+    "workflowTenRuns": true,
+    "hasPayingCustomer": true,
+    "payingCustomers": 4,
+    "grossTotal": 7223,
+    "netTotal": 7053,
+    "currency": "USD",
+    "workflowRuns": 40,
+    "blockingFlags": [],
+    "fetchedAt": "2026-09-15T09:00:00.000Z",
+    "source": "verified"
+  },
+  "notes": "A clear pass on all six criteria - dated visits, seven channels each with an outcome or an honest zero, a first customer traceable from the 3:40pm walk-in to the ₹1,499 payment and 96 reminders after it, a named failure and a specific next-hundred change, and ₹5,996 across 4 gyms matching the tracker's $72.23. This is the one case that deliberately carries personal data: a fictional student name and email in the sign-off of both the write-up and the story, plus the customer's phone number in the story, so the anonymiser has something to strip before the text reaches the model."
+}

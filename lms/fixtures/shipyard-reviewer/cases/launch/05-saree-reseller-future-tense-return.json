@@ -1,0 +1,28 @@
+{
+  "id": "launch-05-saree-reseller-future-tense-return",
+  "checkpointKey": "launch",
+  "expected": "return",
+  "expectedUnmetCriteria": [
+    "launch-account"
+  ],
+  "fields": {
+    "launchWriteup": "My launch plan for ThreadBook, an order tracker for saree resellers in Surat who sell on WhatsApp status. The plan is to go live with a proper launch week where I will do one channel per day so I can see what works. First I will fix the pricing page and put Razorpay in live mode, then I will start posting. I am going to make a set of five reels showing how a reseller can move an order from 'booked' to 'dispatched' in two taps, and I will post them on consecutive days so the algorithm picks it up. After that I will go to the textile market and meet resellers face to face, probably around twenty of them, and I will carry a phone with the app open so they can try it themselves. I also plan to message the reseller groups I am in, but I want to have the reels ready first so there is something to show. Once I have some users I will ask each of them to refer two more people and I will give a discount for that. If the reels do not work I will try running a small ad budget, maybe ₹1,000, and see what comes. My target is to get to 20 paying resellers, and I think the market visit is where most of them will come from. I will also set up a proper onboarding video before I push hard, because I do not want people signing up and not understanding it.",
+    "distributionChannels": "Reseller WhatsApp group A (120 members): 3 replies, 1 paid ₹499. This is where my only customer came from.\nReseller WhatsApp group B (64 members): posted once, 0 replies, 0 paid. Nothing at all from it.\nInstagram reels: 2 posted so far, 900 and 420 views, 0 signups, 0 paid.\nTextile market in person: not done yet, so nothing to report from it.\nReferrals: 0, because I have one customer and I have not asked her.\nPaid ads: not tried, ₹0 spent.\nMy own contacts: I sent the link to 6 people I know who resell part time, 2 opened it, 0 paid, and I would not count them as real customers anyway.",
+    "firstCustomerStory": "My one paying customer is a woman who resells cotton sarees from a flat in Katargam and posts 8-10 statuses a day. She found me through the reseller group where I posted the link - she was the third reply on the thread and the only one who asked a question instead of just reacting. Before paying she asked whether it works if she is offline, because her phone is old and the network in her building is bad, and whether she can see how much money is pending from customers who pay half in advance. That second question was the real one - she said she loses track of half payments and has to scroll her own chat history at night to work out who owes what. She paid ₹499 by UPI. After paying she entered 31 orders in the first week and she messages me every second day with something missing, mostly about the half-payment thing. What did not work for me is the reels - I made two, they got views from people who are not resellers at all, and I wasted four evenings editing them. For the next hundred resellers I would change one thing: sell the pending-payment screen instead of the order list, because that is the only thing she talks about and the order list is what I keep leading with."
+  },
+  "signals": {
+    "paymentsLive": true,
+    "trackerConnected": true,
+    "workflowTenRuns": true,
+    "hasPayingCustomer": true,
+    "payingCustomers": 1,
+    "grossTotal": 601,
+    "netTotal": 589,
+    "currency": "USD",
+    "workflowRuns": 12,
+    "blockingFlags": [],
+    "fetchedAt": "2026-09-15T09:00:00.000Z",
+    "source": "verified"
+  },
+  "notes": "Fails `launch-account` only: the launch field is written entirely in the future tense - 'I will', 'the plan is' - with no dates and no action that has actually happened, which is a launch plan and not a launch. The other criteria are met: each channel carries a number or an honest 'not done', the first customer's arrival through the reseller group is traceable, the learning and the failed reels are specific, and ₹499 from one customer matches the tracker's $6.01 and 1 paying customer."
+}

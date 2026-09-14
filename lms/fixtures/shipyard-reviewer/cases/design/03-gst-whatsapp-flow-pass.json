@@ -1,0 +1,22 @@
+{
+  "id": "design-03-gst-whatsapp-flow-pass",
+  "checkpointKey": "design",
+  "expected": "pass",
+  "expectedUnmetCriteria": [],
+  "fields": {
+    "flowNotes": "Seven screens on a whiteboard, photographed in two shots, each numbered in a circle. Five are drawn as WhatsApp chats. Checkpoint 1 job: a driver-partner with a GSTIN gets his nil return filed before the 20th without an agent.\n\n1. Landing page. One line in Hindi and English, the price, and a green 'Start on WhatsApp' button that opens WhatsApp with a pre-filled Hi.\n2. Chat, GSTIN. The bot asks for his GSTIN and shows an example, because half the drivers do not know which number it is. He types it, the bot confirms the business name and asks for a 1.\n3. Chat, month. 'Nothing to report for August 2026?' with two buttons. 'Nothing to report' goes to 4; 'I had earnings' sends a form link, which is off the core path.\n4. Chat, pay. A 49 rupee payment card with the amount visible. Tapping it opens the UPI app and the chat updates by itself.\n5. Chat, OTP. 'Forward the portal OTP here.' He pastes six digits, then a 'Filing now' message.\n6. Chat, done. 'Filed. ARN AA36...' with the ARN copyable and the acknowledgement PDF attached. This carries the product: he is paying for a receipt he can show if a notice comes.\n7. OTP expired. 'That OTP has expired, check your SMS' with 'Send it again'. Beside it a small empty state: an unregistered number gets 'This number is not registered yet' and a link back to 1.",
+    "sketches": [
+      "Whiteboard photo, flat light, screens 1 to 4 in numbered circles: the landing page with a green start button, then three WhatsApp chat mockups with readable bubble text",
+      "Whiteboard photo, screens 5 to 7 numbered: OTP paste chat, the filed confirmation with an ARN and a PDF attachment, and an OTP-expired error bubble with a small not-registered empty state beside it"
+    ]
+  },
+  "images": [
+    {
+      "file": "synthetic:a whiteboard photographed straight on under flat light with four numbered phone screens drawn in black marker, a landing page and three WhatsApp chat mockups, bubble text legible"
+    },
+    {
+      "file": "synthetic:a whiteboard with three numbered screens in black marker, an OTP chat, a filing confirmation showing an ARN and an attached PDF, and an OTP-expired error bubble"
+    }
+  ],
+  "notes": "Pass: the path runs unbroken from the landing page to the acknowledgement PDF, every screen is numbered and has a written line saying what the driver does and what follows, an error state and a small empty state are both drawn, and the carrying screen is named with a reason a driver would recognise."
+}

@@ -1,0 +1,18 @@
+{
+  "id": "working-05-pg-rent-split-empty-shell",
+  "checkpointKey": "working",
+  "expected": "return",
+  "expectedUnmetCriteria": [
+    "loads"
+  ],
+  "fields": {
+    "liveUrl": "https://splitpg.vercel.app",
+    "corePath": "Four flatmates in a PG use it to settle rent and bills at month end. The first person opens the site and makes a room, gets a link, and drops that link in the flat's WhatsApp group. Each flatmate opens the link and puts their name in once. Then through the month anyone adds an expense — rent, electricity, the gas cylinder, Blinkit orders, the maid's salary — and picks who it was for, everyone or just some people. On the last day of the month they press Settle and it works out the smallest number of UPI transfers that makes everyone square, and shows them as a list like \"you pay Flatmate 2 ₹1,340\". Then each person taps their own line and it opens their UPI app with the amount already filled in so they only have to approve it. The whole thing is meant to work without anybody making an account.",
+    "knownGaps": "The UPI deep link only works on Android in my testing, on iPhone it opens a page that says nothing. Splitting is equal-share only, I have not done percentage splits or splits by room size which the bigger PGs asked for. There is no way to delete an expense after adding it, you have to add a negative one. Electricity is a single amount, I have not done the per-meter thing. Currency is rupees, hard coded."
+  },
+  "render": {
+    "domText": "Get started by editing app/page.tsx",
+    "screenshotNote": "Full-page screenshot is the stock Next.js starter: the Next.js wordmark centred on white, the 'Get started by editing app/page.tsx' line, and the Deploy now / Read our docs buttons. None of the described product is present."
+  },
+  "notes": "Return on `loads`: the deployed URL is an untouched Next.js default template, so the headless render found no product at all. Every other criterion is unjudgeable until something renders, so only `loads` is marked unmet and the screenshot goes back with the return."
+}

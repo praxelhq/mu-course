@@ -1,0 +1,21 @@
+{
+  "id": "idea-03-gst-nil-return-pass-signed",
+  "checkpointKey": "idea",
+  "expected": "pass",
+  "expectedUnmetCriteria": [],
+  "fields": {
+    "productName": "NilReturn",
+    "oneLiner": "NilReturn files the monthly nil GST return for an Ola or Uber driver-partner over WhatsApp for 49 rupees a month, so his GSTIN never goes into default.",
+    "jobStory": "When a cab driver-partner who took a GSTIN to drive on Uber has nothing to report for a month, he still has to file a nil GSTR-3B and GSTR-1 before the 20th, so I can stop a 50 rupee a day late fee quietly growing into eight thousand rupees before anyone notices.\n\nWho has this job: Ola and Uber driver-partners in Hyderabad who registered a GSTIN in 2023 or 2024 because an agent or the aggregator told them to, and who do not have a regular CA. I found them at the Uber Greenlight hub in Kukatpally and at the two tea stalls outside it. Of the 16 drivers I spoke to across three afternoons, 11 had a GSTIN, only 6 knew they had to file every single month, and 4 were paying a local agent 300 to 500 rupees per return.\n\nWhat they do instead: an agent in a one-room office near the RTA who charges around 400 rupees a month and takes three days, or nothing at all until a notice lands on SMS. Two drivers showed me late fee balances of 4,000 and 11,200 rupees. The portal itself is free and takes four minutes if you know the clicks, but it needs an OTP on a number the agent often controls and a laptop most of them do not own.",
+    "waitlistUrl": "https://nilreturn.in",
+    "signupCount": 52,
+    "trafficTestNotes": "Three sources, 30 Aug to 12 Sep 2026.\n\n1. Flyers at the Greenlight hub in Kukatpally. 300 printed in Telugu and Hindi with a QR code, handed out over four afternoons, plus 40 stuck at the two tea stalls with permission. Printing cost 620 rupees. 88 QR scans (the short link counts them), 29 signups. This is by far the best source and also the slowest.\n\n2. Facebook group 'Hyderabad Ola Uber Drivers', about 23,000 members. Two posts, 2 and 8 Sep, with a photo of a late fee notice. Group insights: 4,100 and 2,600 reach, 141 clicks, 14 signups. Free.\n\n3. Meta ads, 900 rupees over four days, targeted to men 25-50 within 20km of Hyderabad with a driver-partner interest set. 9,850 impressions, 74 clicks, 9 signups. The ad account kept flagging my creative because it had a screenshot of the GST portal in it.\n\nTotal spend 1,520 rupees, about 303 visits, 52 signups, 17%. That is high and I know why: the flyer traffic had already heard the pitch from me in person before they scanned. The Meta number on its own is 12%, still high, and I think the reason is the offer on the page is very narrow, so anyone who is not a driver with a GSTIN just does not click at all.\n\n- Aarav Bhatnagar, aarav.bhatnagar@example.com, 12 Sep 2026",
+    "signupScreenshot": [
+      "synthetic:a Google Forms responses tab showing 52 responses, a summary chart below, and the system date 12 Sep 2026 visible in the browser chrome"
+    ]
+  },
+  "images": [
+    { "file": "synthetic:a Google Forms responses tab showing 52 responses, a summary chart below, and the system date 12 Sep 2026 visible in the browser chrome" }
+  ],
+  "notes": "A pass: real recurring compliance job, an audience the student can physically stand in front of, three sources with reach, visits and spend, and a dated screenshot matching 52. ANONYMISER CASE - the student has signed the traffic notes with a fictional name and email, which the reviewer should never see."
+}

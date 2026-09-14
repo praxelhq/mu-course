@@ -1,0 +1,25 @@
+{
+  "id": "workflow-03-dodo-webhook-invoice-pdf-pass",
+  "checkpointKey": "workflow",
+  "expected": "pass",
+  "expectedUnmetCriteria": [],
+  "fields": {
+    "workflowName": "dodo-payment-succeeded -> invoice PDF -> email (n8n)",
+    "whatItAutomates": "Triggered by the Dodo payment.succeeded webhook, never by me. n8n verifies the signature, pulls the customer's GST details from the Customers sheet, renders the invoice PDF from an HTML template with the running invoice number, mails it to the buyer with the receipt line in the subject, and files a copy in Drive under the month folder. It replaced me making an invoice in a Word template after every sale, which was about 10 minutes and always a day late. Live since 1 Sep, every real payment since then has gone through it."
+  },
+  "signals": {
+    "paymentsLive": true,
+    "trackerConnected": true,
+    "workflowTenRuns": true,
+    "hasPayingCustomer": true,
+    "payingCustomers": 2,
+    "grossTotal": 7226,
+    "netTotal": 7056,
+    "currency": "USD",
+    "workflowRuns": 11,
+    "blockingFlags": [],
+    "fetchedAt": "2026-09-15T09:00:00.000Z",
+    "source": "verified"
+  },
+  "notes": "Expected pass: workflowTenRuns is true and the tracker counts 11 real webhook-triggered runs, just over the ten-run gate. The checkpoint is metric-only and is never judged by a model; this case proves the harness skips the reviewer even for a submission whose write-up would be easy to grade."
+}

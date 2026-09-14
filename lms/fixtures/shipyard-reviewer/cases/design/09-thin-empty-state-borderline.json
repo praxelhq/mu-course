@@ -1,0 +1,26 @@
+{
+  "id": "design-09-thin-empty-state-borderline",
+  "checkpointKey": "design",
+  "expected": "pass",
+  "expectedUnmetCriteria": [],
+  "fields": {
+    "flowNotes": "Five screens on graph paper, numbered in the margin, plus a variant box called 2b. Checkpoint 1 job: a saree reseller sells the same piece twice because forty DMs arrive overnight for eleven pieces.\n\n1. Add a lot. Back from the Surat market she photographs the pile and adds it: pieces, fabric, what she paid, what she will ask. Save goes to 2.\n2. Today's stock. One row per unsold piece with the thumbnail, the asking price and a big Sold button. This carries the product: the only moment that matters is the two seconds between confirming a sale in a DM and the next person asking for the same piece. Sold goes to 3.\n2b. A second box on the same sheet, labelled 'nothing left': the same screen with no rows, 'All sold. Add your next lot', and a button back to 1. A variant rather than its own sheet because it is the same screen, emptied.\n3. Who bought it. A form over the list: Instagram handle, price agreed, paid or pending. Save returns to 2, piece gone.\n4. Pending payments, from a tab at the bottom. Sold but unpaid, oldest first, with days since. Tapping one opens WhatsApp with the reminder typed.\n5. Day summary. What sold, what came in, what is pending, in three lines, for the night before the next reel.\n\nI have not drawn a failure state. The only thing that can really fail is nothing being left to sell, which is 2b.",
+    "sketches": [
+      "Graph paper photographed flat, screens 1 and 2 numbered in the margin plus a second box labelled 2b showing the same screen with an empty list, labels readable",
+      "Graph paper, screens 3 and 4 numbered, a buyer form over a list and a pending payments tab with days-since counts",
+      "Graph paper held at a slight angle, screen 5, a three-line day summary, still readable but the bottom edge falls away slightly"
+    ]
+  },
+  "images": [
+    {
+      "file": "synthetic:graph paper photographed flat, two hand-drawn numbered screens plus a smaller box labelled 2b showing the same stock screen with an empty list and an 'All sold' message"
+    },
+    {
+      "file": "synthetic:graph paper, hand-drawn screens 3 and 4, a buyer detail form over a list and a pending payments screen with days-since counts"
+    },
+    {
+      "file": "synthetic:graph paper photographed at a slight angle, hand-drawn screen 5 showing a three-line day summary, readable but the bottom edge curves away"
+    }
+  ],
+  "notes": "Borderline and a careful reviewer could return it. The only non-happy state is an empty list drawn as a variant box on the same sheet rather than a screen of its own, and one photo is angled enough that the last line falls away - so unhappy-paths and legibility are the criteria that decide it. We pass because 2b is actually drawn and labelled rather than just mentioned, the angled sheet is still readable, and every other clause is met cleanly."
+}

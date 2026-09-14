@@ -1,0 +1,27 @@
+{
+  "id": "workflow-04-form-to-notion-whatsapp-four-runs-return",
+  "checkpointKey": "workflow",
+  "expected": "return",
+  "expectedUnmetCriteria": [
+    "metric-only"
+  ],
+  "fields": {
+    "workflowName": "Trial booking - Google Form to Notion to WhatsApp (Zapier)",
+    "whatItAutomates": "Triggered when a parent submits the free trial-class form on the site. The Zap creates a row in the Notion Trials database with the student's class and preferred slot, assigns the coach whose slot is free that evening, and sends the parent a WhatsApp confirmation with the ground address and the timing. It saves me from copying form responses into Notion at night and then messaging each parent, which was about 5 minutes a parent. Live since 8 Sep but the form does not get much traffic yet."
+  },
+  "signals": {
+    "paymentsLive": true,
+    "trackerConnected": true,
+    "workflowTenRuns": false,
+    "hasPayingCustomer": true,
+    "payingCustomers": 2,
+    "grossTotal": 1400,
+    "netTotal": 1372,
+    "currency": "USD",
+    "workflowRuns": 4,
+    "blockingFlags": [],
+    "fetchedAt": "2026-09-15T09:00:00.000Z",
+    "source": "verified"
+  },
+  "notes": "Expected return: workflowTenRuns is false at 4 real runs, so the ten-run gate stays shut. This checkpoint is never reviewed by a model - the write-up describes a perfectly good workflow and that is irrelevant - and the case proves the harness returns on the signal alone without calling the reviewer. The count updates on its own, so the gate will open at the tenth run with no resubmission."
+}

@@ -1,0 +1,25 @@
+{
+  "id": "money-03-wedding-crm-per-seat-pass",
+  "checkpointKey": "money",
+  "expected": "pass",
+  "expectedUnmetCriteria": [],
+  "fields": {
+    "pricingNote": "₹999 per month for the first planner, and ₹399 per month for each extra person she adds. Per seat, billed monthly, cancel whenever — wedding planning is seasonal and asking a Jaipur planner to pay through June and July, when nothing happens, would just get me cancelled in March.\n\nWhy ₹999 and why per seat. The planner is not buying software, she is buying the end of the \"where is that quote\" phone call. In one season she runs six to fifteen weddings and each one has fifteen to thirty vendors. The number that convinced me was a ₹40,000 decorator advance that one planner could not prove she had paid, because the confirmation was in a WhatsApp thread that had rolled past. She ate that. ₹999 a month across a seven-month season is ₹7,000 — one sixth of one mistake. The per-seat part is because the value scales with her team, not her weddings: when her coordinator and her on-ground boy both have the board open at the venue, that is when the vendor stops being able to say two different numbers to two different people. I priced the extra seat at ₹399 because that is where her two assistants stop being a cost she thinks about.\n\nWhat she gives up by not paying: the advance ledger stays in forty chat threads, and at the end of the season she quotes the next family off memory instead of off what the last six weddings actually cost.\n\n— Aarav Deshmukh, founder, aarav@shaadidesk.in",
+    "checkoutUrl": "https://buy.stripe.com/aEU5kQ2shaadidesk999"
+  },
+  "signals": {
+    "paymentsLive": true,
+    "trackerConnected": true,
+    "workflowTenRuns": false,
+    "hasPayingCustomer": true,
+    "payingCustomers": 2,
+    "grossTotal": 2398,
+    "netTotal": 2254,
+    "currency": "USD",
+    "workflowRuns": 7,
+    "blockingFlags": [],
+    "fetchedAt": "2026-09-15T06:15:00.000Z",
+    "source": "verified"
+  },
+  "notes": "Price, unit and the seat add-on are all stated; the reasoning is the buyer's ₹40,000 mistake and her team's behaviour, not build cost; the cost of not buying is a concrete unsolved outcome. This is the anonymiser case for `money`: the student has signed the write-up with a name and email, both fictional, which the pipeline should strip before the model sees it."
+}

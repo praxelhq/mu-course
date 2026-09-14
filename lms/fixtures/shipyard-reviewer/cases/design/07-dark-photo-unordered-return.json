@@ -1,0 +1,41 @@
+{
+  "id": "design-07-dark-photo-unordered-return",
+  "checkpointKey": "design",
+  "expected": "return",
+  "expectedUnmetCriteria": [
+    "legibility",
+    "ordering"
+  ],
+  "fields": {
+    "flowNotes": "Six screens on rough sheets. Checkpoint 1 job: four flatmates splitting rent, electricity and the maid, where one pays everything then chases the rest.\n\nSet up the flat comes first: the payer types the flat name, adds three flatmates by number, and enters the three fixed amounts. Done takes him to the month view.\n\nThe month view is where he lands every time after that, and it carries the product. This month's total at the top, one row per flatmate with what they owe and a green tick if they paid, and 'Ask everyone' at the bottom.\n\n'Ask everyone' opens a confirm screen showing the exact UPI request going to each person with the amount. Send fires them and returns to the month view with 'Requested today' under each name.\n\nAdding a one-off bill is its own screen, from the + on the month view: what it was, how much, who it splits between, equally or not. Saving recalculates the month view.\n\nThere is a first-run empty state, 'No bills yet this month', with one button to the add-a-bill screen.\n\nAnd a failure screen, because UPI requests expire: 'This request expired on the 12th' against that flatmate's row with 'Send it again', going back to the confirm screen.\n\nSorry about the photos. I drew them over three nights, the tube light in my PG is behind me so everything came out dark, and I did not number the sheets, so the photo order is not the order above.",
+    "sketches": [
+      "Dark underexposed photo of a rough sheet, a hand-drawn phone screen with the lines barely visible, no number on the sheet",
+      "Dark photo, two hand-drawn screens on one sheet, button text not readable in shadow",
+      "Dark photo at an angle, a drawn list screen with four rows, labels lost in the shadow",
+      "Dark photo, a drawn confirm screen with a large button, text unreadable",
+      "Dark photo, a drawn empty state, only the outline of the phone visible",
+      "Dark photo, a drawn error row with a small button, nothing legible"
+    ]
+  },
+  "images": [
+    {
+      "file": "images/sketch-dark.png"
+    },
+    {
+      "file": "synthetic:an underexposed phone photo of a rough sheet with two hand-drawn screens, button text lost in shadow, no numbering"
+    },
+    {
+      "file": "synthetic:a dark angled photo of a drawn list screen with four rows, the labels not readable"
+    },
+    {
+      "file": "synthetic:a dark photo of a drawn confirm screen with a large unreadable button"
+    },
+    {
+      "file": "synthetic:a dark photo of a drawn empty state, only the phone outline visible"
+    },
+    {
+      "file": "synthetic:a dark photo of a drawn error row with a small button, nothing legible"
+    }
+  ],
+  "notes": "Return: the photos are too dark to read a single button label, which the bar names outright, and nothing carries a number - the student says the photos are not in the same order as his write-up, so the sequence stated in the notes and the sequence in the images cannot be made to agree. The written flow itself is good, the path is complete, an empty state and an expired-request state are both drawn, and the carrying screen is named."
+}

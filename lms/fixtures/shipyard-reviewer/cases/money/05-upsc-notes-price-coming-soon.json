@@ -1,0 +1,27 @@
+{
+  "id": "money-05-upsc-notes-price-coming-soon",
+  "checkpointKey": "money",
+  "expected": "return",
+  "expectedUnmetCriteria": [
+    "price-stated"
+  ],
+  "fields": {
+    "pricingNote": "Pricing coming soon. I have a number in my head but I do not want to put it up until I have done another twenty calls with aspirants in Old Rajinder Nagar, because the two I have done so far gave me answers ₹400 apart and I do not trust either of them yet. It will land somewhere between ₹99 and ₹499 a month.\n\nWhat I am confident about is the value. An aspirant preparing for Mains is maintaining answer-writing notes across roughly fifteen GS topics and revising them on a schedule that nobody enforces. What they buy from me is the revision schedule that fires on its own and puts yesterday's weakest topic in front of them tomorrow morning. The alternative they use now is Anki, which is free, and every single person I have spoken to has downloaded Anki, used it for nine days, and stopped — because building the deck is itself a full day of work and they would rather be writing answers. The other alternative is a test series at ₹12,000 for the season, which gives them evaluation but no revision loop.\n\nWhat they give up by not paying: they walk into Mains having written 300 answers and revised none of them, which is the failure mode every repeater I spoke to described in the same words. That is the thing I am selling against, and it is why I would rather set the price properly than guess this week.",
+    "checkoutUrl": "https://revisionloop.vercel.app/checkout"
+  },
+  "signals": {
+    "paymentsLive": false,
+    "trackerConnected": true,
+    "workflowTenRuns": false,
+    "hasPayingCustomer": false,
+    "payingCustomers": 0,
+    "grossTotal": 0,
+    "netTotal": 0,
+    "currency": "USD",
+    "workflowRuns": 0,
+    "blockingFlags": [],
+    "fetchedAt": "2026-09-15T08:05:00.000Z",
+    "source": "verified"
+  },
+  "notes": "Return on `price-stated` alone: there is no number and no unit, and the ₹99-₹499 range has no anchor, which the threshold calls out explicitly. Everything else clears — the checkout URL is public, the reasoning is genuine buyer value against two named alternatives (Anki, a ₹12,000 test series), the cost of not buying is concrete, and no tier claims anything unshipped. The false paymentsLive signal is not a reason for the return."
+}

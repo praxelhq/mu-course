@@ -1,0 +1,24 @@
+{
+  "id": "design-05-happy-path-only-return",
+  "checkpointKey": "design",
+  "expected": "return",
+  "expectedUnmetCriteria": [
+    "unhappy-paths"
+  ],
+  "fields": {
+    "flowNotes": "Six screens on ruled paper, numbered in circles. Checkpoint 1 job: a tuition teacher's fees get collected over UPI without her standing at the door with envelopes.\n\n1. Add your batches. Batch name, class, monthly fee, days. A + adds another. Done goes to 2.\n2. Add students. A batch picked at the top, then name and parent's number one row at a time with a running count. Finish goes to 3.\n3. The fee board. The screen that carries the product. Six batch cards each showing paid out of total, like 24 of 31. A card opens 4. The button at the bottom, 'Send requests for October', goes to 5.\n4. One batch. The students listed, a green tick and a date against anyone who paid, nothing against the rest. A name opens their history. Back to 3.\n5. Send confirmation. 'Send a 900 rupee request to 11 parents on WhatsApp?' with the message shown, and Send or Cancel. Send returns to 3.\n6. A payment arrives. The notification lands, the card moves from 24 of 31 to 25 of 31, and the row on 4 gets a tick.\n\nScreen 3 carries it because all she wants is to look at one screen on the 5th and know who has not paid.\n\nI have not drawn the error screens. I know what they should be, a parent's UPI failing and an empty batch, but I ran out of time and wanted the main flow in rather than nothing.",
+    "sketches": [
+      "Ruled sheet photographed flat, screens 1 to 3 numbered in circles, batch setup form, student entry rows and a fee board of six batch cards, labels readable",
+      "Ruled sheet, screens 4 to 6 numbered, a batch student list with green ticks, a send confirmation showing the WhatsApp message, and the fee board updating after a payment"
+    ]
+  },
+  "images": [
+    {
+      "file": "synthetic:a ruled notebook sheet under flat light with three hand-drawn numbered phone screens, a batch setup form, a student entry list and a fee board with six batch cards showing paid counts"
+    },
+    {
+      "file": "synthetic:a ruled notebook sheet with three hand-drawn numbered screens, a batch student list with green ticks, a send confirmation bubble and an updated fee board"
+    }
+  ],
+  "notes": "Return on one criterion only: every screen is a happy path and the student says so himself - the failed payment and the empty batch are described in a sentence but not drawn, and the bar is explicit that a mention with no screen does not count. Ordering, legibility, the written flow, completeness of the happy path and the carrying screen all clear."
+}

@@ -1,0 +1,28 @@
+{
+  "id": "design-10-implied-payment-step-borderline-return",
+  "checkpointKey": "design",
+  "expected": "return",
+  "expectedUnmetCriteria": [
+    "flow-complete"
+  ],
+  "fields": {
+    "flowNotes": "Six screens on ruled paper, numbered 1 to 6, photographed in daylight. Checkpoint 1 job: an articled assistant gets back to his PG at 9.40pm and wants tomorrow's plan to have already moved itself.\n\n1. When is your attempt. A month picker, May or November, and 'How many hours on a normal weekday?' with a slider from 0 to 6. Next goes to 2.\n2. Your plan. The next fourteen days as rows, each with a chapter and an hour count, weekends heavier. 'Start today' goes to 3.\n3. Today. The screen that carries the product. One chapter, the hours planned, a Start button that runs a timer, and 'Not today', which goes to 4.\n4. What happened. Three options: audit ran late, personal, too tired. Picking one redraws the plan and returns to 2 with a line saying what moved and where it went.\n5. Empty state, on a day with nothing scheduled: 'Nothing planned today. Your next session is Thursday', with a button to pull a session forward.\n6. Plan is impossible. When the hours left are less than the syllabus needs: 'At 2 hours a day you finish 3 weeks after the exam' with the shortfall in a red box, and two buttons, 'Add weekend hours' and 'Drop a subject'.\n\nScreen 3 carries it because everything else is setup. The product either survives 9.40pm on a bad day or it does not.",
+    "sketches": [
+      "Ruled paper in daylight, screens 1 and 2 numbered, an attempt month picker with an hours slider and a fourteen-day generated plan, labels readable",
+      "Ruled paper, screens 3 and 4 numbered, a single-chapter today screen with Start and 'Not today', and a three-option reason screen",
+      "Ruled paper, screens 5 and 6 numbered, an empty state and an impossible-plan screen with a red shortfall box"
+    ]
+  },
+  "images": [
+    {
+      "file": "synthetic:ruled paper photographed in daylight, two numbered hand-drawn screens, an attempt month picker with an hours slider and a fourteen-day plan list"
+    },
+    {
+      "file": "synthetic:ruled paper, two numbered hand-drawn screens, a single-chapter today screen with Start and 'Not today' buttons, and a three-option reason screen"
+    },
+    {
+      "file": "synthetic:ruled paper, two numbered hand-drawn screens, an empty state reading 'Nothing planned today' and an impossible-plan screen with a red shortfall box"
+    }
+  ],
+  "notes": "Borderline. Between screen 1 and screen 2 the plan simply exists - nowhere does the student say where the subjects, the chapters or his current position in the syllabus come from, and a first-time user cannot get a real plan without that step, so the reviewer has to infer a missing screen. A generous reading is that the whole syllabus is fixed by ICAI and the app can default it, which is why a human could pass this; we return on flow-complete because the bar asks for nothing in the path to be missing. Legibility, numbering, the written flow, both non-happy states and the carrying screen all clear."
+}

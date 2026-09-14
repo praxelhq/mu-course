@@ -1,0 +1,26 @@
+{
+  "id": "design-04-wedding-enquiry-flow-pass",
+  "checkpointKey": "design",
+  "expected": "pass",
+  "expectedUnmetCriteria": [],
+  "fields": {
+    "flowNotes": "Six screens drawn on my tablet, numbered in the corner, exported as three images. Checkpoint 1 job: a photographer's WhatsApp enquiries land in one dated list so nobody waits three weeks.\n\n1. Connect WhatsApp. 'Show us the numbers that message you', a QR code, and 'I have scanned it', which goes to 2. A small line says we only read enquiry messages.\n2. The enquiry list. The screen that carries the product. Rows newest first with the wedding date, city, price quoted, and a red dot if nobody replied in 48 hours. Filters: All, Not replied, This month. A row opens 3, the + opens 4.\n3. One enquiry. The WhatsApp thread on top so he can read what they said, four fields below it: wedding date, city, budget quoted, next follow-up. Save returns to 2 with the red dot cleared.\n4. Add by hand, for enquiries that came by phone. The same four fields plus name and number. Save returns to 2.\n5. Empty state. 'No enquiries yet. We will show them here the moment somebody messages you', with 'Add one by hand' going to 4.\n6. WhatsApp disconnected, which will happen every time he logs out on his phone. A red strip reading 'We stopped receiving your messages on 14 Sep' and 'Scan again' back to 1. The old list stays greyed but readable.\n\nScreen 2 carries it: his problem is not replying, it is seeing who is waiting.",
+    "sketches": [
+      "Tablet sketch exported, screens 1 and 2 numbered, a QR connect screen and an enquiry list with wedding dates and red dots, labels readable",
+      "Tablet sketch, screens 3 and 4 numbered, an enquiry detail split between a chat thread and four fields, and a manual add form",
+      "Tablet sketch, screens 5 and 6 numbered, an empty state and a disconnected state with a red strip over a greyed enquiry list"
+    ]
+  },
+  "images": [
+    {
+      "file": "synthetic:a hand-drawn tablet sketch with two numbered phone screens, a WhatsApp QR connect screen and an enquiry list showing wedding dates, quoted prices and red dots"
+    },
+    {
+      "file": "synthetic:a hand-drawn tablet sketch, screens 3 and 4, an enquiry detail split between a chat thread and four labelled fields, and a manual add form"
+    },
+    {
+      "file": "synthetic:a hand-drawn tablet sketch, screens 5 and 6, an empty state reading 'No enquiries yet' and a disconnected state with a red strip over a greyed list"
+    }
+  ],
+  "notes": "Pass: drawn by hand on a tablet, which the bar explicitly allows, numbered and legible, a complete path from connecting WhatsApp to a follow-up date being set, both an empty state and a disconnected state drawn, and the carrying screen named with a reason that restates the job story."
+}

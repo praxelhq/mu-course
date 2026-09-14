@@ -1,0 +1,22 @@
+{
+  "id": "design-01-tiffin-route-flow-pass",
+  "checkpointKey": "design",
+  "expected": "pass",
+  "expectedUnmetCriteria": [],
+  "fields": {
+    "flowNotes": "Seven screens on two ruled sheets, numbered in the corner of each box. Checkpoint 1 job: a tiffin owner re-plans the morning route before 10:30am and gets the stop list to her riders.\n\n1. Today's route. Opens straight here, no login, because she opens it at 10am with atta on her hands. Date, then today's stops in delivery order with flat, society and a V or N. The + goes to 2, 'Change order' to 3, 'Send to riders' to 5.\n2. Add a customer. Name, phone, flat, society, veg or non-veg, start date. Save returns to 1 with the stop already slotted into the route.\n3. Re-order. The same list with grab handles. Done returns to 1.\n4. Riders. Two rider cards with societies under each. Tap a society to move it across. Back to 1.\n5. Send preview. The exact WhatsApp message each rider gets, drawn as a chat bubble. Send opens WhatsApp.\n6. Empty state, first open. 'No customers yet' and one button, 'Add your first customer', going to 2.\n7. Address not found. A stop whose society does not match the map gets a yellow bar reading 'Could not find this address' and a 'Place it by hand' button that opens a pin drop, then back to 1.\n\nScreen 1 carries the product. The promise is open it, see the morning in order, send it. If 1 is right, 3, 4, 5 and 7 are plumbing.",
+    "sketches": [
+      "Ruled notebook sheet photographed flat, four boxes numbered 1 to 4 in the corners: today's route list, add customer form, re-order with drag handles, riders split by society",
+      "Second ruled sheet, three boxes numbered 5 to 7: WhatsApp send preview as a chat bubble, empty state with an empty dabba drawing, address-not-found state with a hand-drawn yellow bar"
+    ]
+  },
+  "images": [
+    {
+      "file": "images/sketch-flow-legible.png"
+    },
+    {
+      "file": "synthetic:a second ruled notebook sheet under flat light, three hand-drawn phone screens numbered 5, 6 and 7 with readable button labels: a WhatsApp send preview, an empty state, and an address-not-found state"
+    }
+  ],
+  "notes": "Pass: an unbroken path from first open to the stop list going out, numbered in the drawings, a written line per screen naming the action and where it leads, two non-happy states drawn rather than mentioned, and the carrying screen named with a reason that comes straight from the checkpoint 1 job story."
+}

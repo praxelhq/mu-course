@@ -1,0 +1,27 @@
+{
+  "id": "money-10-tuition-fee-borderline-return",
+  "checkpointKey": "money",
+  "expected": "return",
+  "expectedUnmetCriteria": [
+    "cost-of-not-buying"
+  ],
+  "fields": {
+    "pricingNote": "₹199 per month per teacher. One batch free forever, ₹199 the moment she adds a second batch. That is the whole pricing.\n\nWhy ₹199 and why the free first batch. A tuition teacher in Kanpur running one Class 10 batch of eighteen students collects about ₹25,000 a month and does her fee tracking in a two-rupee register that works fine at that size. She does not need me and I would rather she use it free and tell the others. The moment she is running three batches across two boards, the register stops working — she is reconciling ₹70,000 across fifty-odd students and four months of part payments, and that is a genuinely different job. ₹199 against ₹70,000 of collection is under a third of a percent, and it is less than one student's monthly fee, which is the comparison she makes herself. I looked at what else she could buy: the Indian school-ERP products start around ₹8,000 a year and are sold to schools, not to a woman teaching in her drawing room, and none of them will let her start without a demo call.\n\nWhat she gives up by not paying: she stays disorganised and her fee management remains inefficient. The register keeps being a register and she does not get the benefits of the system.",
+    "checkoutUrl": "https://feekhata.vercel.app/upgrade"
+  },
+  "signals": {
+    "paymentsLive": true,
+    "trackerConnected": false,
+    "workflowTenRuns": false,
+    "hasPayingCustomer": false,
+    "payingCustomers": 0,
+    "grossTotal": 0,
+    "netTotal": 0,
+    "currency": "USD",
+    "workflowRuns": 0,
+    "blockingFlags": [],
+    "fetchedAt": "2026-09-15T09:00:00.000Z",
+    "source": "verified"
+  },
+  "notes": "Borderline, committed to return on `cost-of-not-buying`. Price, unit and the free-first-batch line are clear, the reasoning is properly in buyer terms against a named alternative, and the price matches what is shipped. But the final paragraph — 'she stays disorganised', 'her fee management remains inefficient', 'does not get the benefits of the system' — is abstract where every other paragraph is concrete, and the threshold asks for a named unsolved outcome. A lenient reviewer could let it pass on the strength of the ₹70,000 reconciliation picture earlier in the note."
+}

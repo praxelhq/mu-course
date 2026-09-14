@@ -1,0 +1,36 @@
+{
+  "ranAt": "2026-09-14T18:58:01.810Z",
+  "promptVersion": "2026-09-15.1",
+  "fake": true,
+  "models": [
+    "anthropic/claude-haiku-4.5"
+  ],
+  "caseCount": 3,
+  "skippedMetricOnly": [],
+  "thresholds": {
+    "agreementWithExpected": 0.85,
+    "agreementBetweenModels": 0.8
+  },
+  "crossAgreement": null,
+  "models_": {
+    "anthropic/claude-haiku-4.5": {
+      "agreement": 100,
+      "agreedCount": 3,
+      "total": 3,
+      "perCheckpoint": {
+        "working": {
+          "agreed": 3,
+          "total": 3
+        }
+      },
+      "meanConfidence": 0.86,
+      "queuedForHuman": 0,
+      "tokensIn": 8758,
+      "tokensOut": 933,
+      "costUsd": 0.013423,
+      "errors": 0,
+      "disagreements": []
+    }
+  },
+  "gate": "not-applicable-fake-responder"
+}

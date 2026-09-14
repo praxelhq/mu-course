@@ -1,0 +1,28 @@
+{
+  "id": "money-08-saree-tracker-pro-tier-unshipped",
+  "checkpointKey": "money",
+  "expected": "return",
+  "expectedUnmetCriteria": [
+    "price-product-agreement",
+    "cost-of-not-buying"
+  ],
+  "fields": {
+    "pricingNote": "Two plans.\n\nStarter — ₹299 per month. The order book, the five stages, the dispatch message, up to 50 orders a month. This is what everybody starts on.\n\nPro — ₹2,999 per month. For resellers who have grown past doing it alone. Pro gives you team seats so your packing girl and your accounts person can both be inside the book at the same time without sharing your link, full WhatsApp automation so the dispatch and delivery messages actually send to the customer by themselves instead of being copy-paste, and API access so you can connect your Shopify or your Instagram shop and have orders drop into the book without anyone typing them.\n\nWhy ₹2,999. A reseller doing 300 orders a month is already paying a part-time girl ₹6,000 to do data entry and message forwarding, so ₹2,999 for the automation that removes most of that is an easy yes for her, and it is ten times the Starter price which makes Starter look like the obvious first step.\n\nWhat you give up by not upgrading: you do not get team seats, you do not get the WhatsApp automation, and you do not get API access. You stay on 50 orders a month with manual messages.",
+    "checkoutUrl": "https://rzp.io/rzp/sareesaath-pro"
+  },
+  "signals": {
+    "paymentsLive": true,
+    "trackerConnected": true,
+    "workflowTenRuns": false,
+    "hasPayingCustomer": true,
+    "payingCustomers": 4,
+    "grossTotal": 1435,
+    "netTotal": 1349,
+    "currency": "USD",
+    "workflowRuns": 2,
+    "blockingFlags": [],
+    "fetchedAt": "2026-09-15T07:20:00.000Z",
+    "source": "verified"
+  },
+  "notes": "Return on two criteria. `price-product-agreement`: the ₹2,999 Pro tier is built entirely on team seats, sending WhatsApp automation and API access — none of which appeared in the checkpoint 3 render, where the book has no accounts at all and the dispatch message is explicitly copy-and-paste — and none is declared as not yet available. `cost-of-not-buying`: the answer is the feature list read backwards ('you do not get seats, you do not get automation'), which the threshold rejects. Price and unit are stated and the checkout is public, so those clear."
+}

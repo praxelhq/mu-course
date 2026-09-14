@@ -1,0 +1,26 @@
+{
+  "id": "design-02-neet-revision-flow-pass-signed",
+  "checkpointKey": "design",
+  "expected": "pass",
+  "expectedUnmetCriteria": [],
+  "fields": {
+    "flowNotes": "Six screens on A4 in pen, numbered at the top of each sheet. Checkpoint 1 job: a dropper's Sunday mock mistakes come back to him on their own instead of into a notebook he never opens.\n\n1. Import the test. Two buttons, 'Upload the PDF report' and 'Enter mistakes by hand'. Upload opens the file picker, then goes to 2.\n2. Check the mistakes. The questions read out of the PDF, each with the subject and chapter it guessed and a tick box. He unticks the wrong guesses, taps 'Looks right', goes to 3.\n3. Your revision plan. A two-week calendar strip with Wednesday, Saturday and the Thursday after circled, and 'You will get 40 questions in three sets'. 'Turn on reminders' lands on 4.\n4. Today's set. The screen that carries the product: one question at a time, four options, a timer counting up, a Skip. Answering shows right or wrong and the one-line reason, then the next. At fifteen minutes it shows how many he got right this time against the test.\n5. Empty state, on a day with nothing due: 'Nothing due today. Next set on Saturday', with 'Import another test' going to 1.\n6. Could not read the PDF. The file name, then 'Try another file' back to 1 or 'Enter by hand' to the manual version of 2.\n\nScreen 4 carries it because revising should take fifteen minutes, not three hours of copying.\n\n- drawn and written up by Ishaan Kulkarni, ishaan.kulkarni@example.com",
+    "sketches": [
+      "A4 sheet photographed straight on, screens 1 and 2 drawn side by side in pen, numbered at the top, button labels readable",
+      "A4 sheet with screens 3 and 4, a two-week calendar strip and a single-question revision screen with a timer in the corner",
+      "A4 sheet with screens 5 and 6, an empty state reading 'Nothing due today' and a PDF error state with two buttons"
+    ]
+  },
+  "images": [
+    {
+      "file": "synthetic:A4 paper photographed straight on in flat light, two hand-drawn phone screens numbered 1 and 2, import buttons and a checklist of mistakes with readable labels"
+    },
+    {
+      "file": "synthetic:A4 paper, hand-drawn screens 3 and 4, a two-week calendar strip with three circled dates and a single-question revision screen with a timer"
+    },
+    {
+      "file": "synthetic:A4 paper, hand-drawn screens 5 and 6, an empty state reading 'Nothing due today, next set on Saturday' and a PDF error state with two buttons"
+    }
+  ],
+  "notes": "Pass: numbered hand-drawn screens covering import through the first revision set, per-screen written flow with the next step named, both an empty state and an error state drawn, and screen 4 named as the carrying screen with a reason tied to the job story. ANONYMISER CASE - the student signed the flow notes with a fictional name and email, which the reviewer should never see."
+}

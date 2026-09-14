@@ -1,0 +1,19 @@
+{
+  "id": "working-08-gym-billing-google-form",
+  "checkpointKey": "working",
+  "expected": "return",
+  "expectedUnmetCriteria": [
+    "honest-gaps",
+    "serves-the-job"
+  ],
+  "fields": {
+    "liveUrl": "https://flexbill.netlify.app",
+    "corePath": "FlexBill is live and fully working for gym owners. Step 1, the owner logs into the dashboard with his gym's email and password. Step 2, he sees the member table — every member, their plan, their joining date and their next due date, with the expiring-this-week members highlighted at the top. Step 3, he clicks a member and presses Send payment link, which generates a Razorpay payment page for that member's plan amount and sends it to their WhatsApp. Step 4, the member pays on the Razorpay page and FlexBill marks the membership renewed automatically through the webhook and pushes the new due date three months out. Step 5, the owner watches the collection graph on the dashboard update in real time — this month's collection against last month's, and the drop-off count. Step 6, at month end he exports the collection report as a PDF for his accountant. All six steps are working live right now on the URL above with our pilot gym in Indore, which has 214 members on the system.",
+    "knownGaps": "none — everything described above is working end to end, live, today. I went through the whole flow myself this morning with the Indore gym before writing this, so there is nothing I would call a gap. The only thing left on the roadmap is the native mobile app, which we will build after we get to ten gyms, and honestly the dashboard already works fine in a phone browser so I am not in a hurry. Support is me on WhatsApp, which I would not call a gap either at this size."
+  },
+  "render": {
+    "domText": "FlexBill\n\nGym membership renewals, on autopilot.\n\nWe are onboarding gyms in Indore right now. Fill the form below and we will set up your gym within 24 hours. Setup is free.\n\nFlexBill Gym Onboarding\nThis form collects the details we need to set up your gym on FlexBill. We will WhatsApp you once your gym is live.\n* Indicates required question\n\nGym name *\nYour answer\n\nOwner's full name *\nYour answer\n\nOwner's WhatsApp number *\nYour answer\n\nCity *\nYour answer\n\nFull address of the gym *\nYour answer\n\nApproximately how many active members? *\nUnder 100\n100 to 300\n300 to 800\nMore than 800\n\nWhich plans do you sell? Write them with prices. *\nYour answer\n\nHow do you collect fees today? *\nCash at the counter\nUPI to a personal number\nCard machine\nA mix\n\nDo you currently use any software for renewals? *\nNo, we use a register\nNo, we use Excel\nYes, some software\nOther:\n\nDo you have a Razorpay or PayU account already? *\nYes\nNo\nNot sure\n\nUpload your current member list (Excel or photo of the register, optional)\nAdd file\n\nAnything else we should know?\nYour answer\n\nSubmit\nClear form\nNever submit passwords through Google Forms.\nThis content is neither created nor endorsed by Google. Report Abuse - Terms of Service - Privacy Policy\nGoogle Forms\n\nFlexBill 2026   Made in Indore",
+    "screenshotNote": "Full-page screenshot shows a thin FlexBill header and one line of copy above an embedded Google Form iframe filling the rest of the page — question blocks with 'Your answer' underlines, radio groups, a file upload, and the Google Forms footer. No dashboard, no member table, no Razorpay anything."
+  },
+  "notes": "Return on `serves-the-job` and `honest-gaps`. The render flatly contradicts the write-up: what is live is an onboarding Google Form, not the six-step billing dashboard described, so the product as rendered does not do the job. And knownGaps says 'none' on a product whose entire named path is absent from the live site, which is the opposite of the honest list the bar asks for. `core-path-named` passes on its own terms — the sequence is well written — it simply is not the thing that is deployed."
+}

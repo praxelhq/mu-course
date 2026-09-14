@@ -1,0 +1,27 @@
+{
+  "id": "money-07-pg-rent-split-whatsapp-checkout",
+  "checkpointKey": "money",
+  "expected": "return",
+  "expectedUnmetCriteria": [
+    "checkout-reachable"
+  ],
+  "fields": {
+    "pricingNote": "₹49 per room per month, where a room is up to six flatmates. One price, split however they like between themselves — most rooms just add it to the month's shared expenses, which is quietly the funniest thing about this product.\n\nWhy ₹49. The buyer here is a 23-year-old in a Bengaluru PG earning ₹45,000 and the thing they are buying is not the maths, it is not being the person who chases. Every flat has one. She fronts the electricity bill, she fronts the maid, and then she spends three weeks being the one who reminds four people in a group chat. Splitwise does the maths already and does it free, so I cannot charge for the maths — what Splitwise does not do is push the settlement into a UPI intent that the other three can approve in two taps, and in my testing that single change took settlement from \"eleven days after month end\" to \"the same evening\" across four flats. ₹49 for the room is less than one Blinkit delivery fee for the month, and I deliberately priced it per room rather than per head because the person who would pay is already carrying more than her share.\n\nWhat she gives up by not paying: she keeps being the collection agent for her own flat, and in two of the four flats I watched, that is the thing that eventually ends the friendship.",
+    "checkoutUrl": "https://wa.me/919000000000?text=Hi%2C%20I%20want%20to%20pay%20for%20SplitPG"
+  },
+  "signals": {
+    "paymentsLive": false,
+    "trackerConnected": false,
+    "workflowTenRuns": false,
+    "hasPayingCustomer": false,
+    "payingCustomers": 0,
+    "grossTotal": 0,
+    "netTotal": 0,
+    "currency": "USD",
+    "workflowRuns": 0,
+    "blockingFlags": [],
+    "fetchedAt": "2026-09-12T20:40:00.000Z",
+    "source": "verified"
+  },
+  "notes": "Return on `checkout-reachable`: the submitted checkout URL is a wa.me deep link that opens a WhatsApp chat with the founder, not a page a stranger can pay through — the bar's 'a contact form standing in for checkout' case. Price and unit are stated, the reasoning is squarely in buyer terms against a named free alternative, and the cost of not buying is concrete, so those three clear."
+}

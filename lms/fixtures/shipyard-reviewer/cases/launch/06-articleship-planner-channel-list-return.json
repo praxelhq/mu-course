@@ -1,0 +1,28 @@
+{
+  "id": "launch-06-articleship-planner-channel-list-return",
+  "checkpointKey": "launch",
+  "expected": "return",
+  "expectedUnmetCriteria": [
+    "channels"
+  ],
+  "fields": {
+    "launchWriteup": "ArticleDesk is a planner for CA articleship trainees in Chennai - it tracks your attendance days, your leave balance and your study hours against the ICAI limits, so you know in March whether you can afford to take exam leave. ₹349 one time. 25 Aug: I finished the leave-balance calculator and had three friends check it against their own attendance registers; two of the three numbers were wrong and I fixed the rounding on 26 Aug. 28 Aug: Razorpay live mode, price page up. 29 Aug to 2 Sep: I posted about it, one post a day, spreading it across the places trainees actually sit. 3 Sep: first payment. 4 Sep: I sat outside a mid-size audit firm in T Nagar at lunch and talked to 7 trainees; 5 took the link, 1 paid the same evening. 6 Sep: second round of posting. 8 Sep: I stopped posting because I was repeating myself and started building the exam-leave planner instead, which is what people kept asking for. What did not work: the free attendance-calculator page I built first as a lead magnet - 140 people used it, nobody gave an email, and I took it down on 7 Sep. Also my pricing page led with 'built by a CA aspirant' which one trainee told me made it sound like a college project, so I removed that line. Totals: 2 paying trainees, ₹698, which the tracker shows as $8.41 gross and $8.23 net. For the next hundred I would target trainees in their second year specifically, because the two who paid are both second-years and every first-year I spoke to said they will think about leave later.",
+    "distributionChannels": "These are the channels I went with for the launch:\nLinkedIn - my own profile, and the two CA articleship groups I am a member of.\nInstagram - the product page and my personal account, mostly stories.\nWhatsApp groups of CA students - my batch group, the firm trainees group, and a Chennai articleship group.\nReddit - r/CAIndia and r/chennai.\nTelegram study groups for CA Inter and CA Final.\nIn person at audit firms in T Nagar during the lunch break.\nWord of mouth through my own batchmates and the seniors at my firm.\nCollege noticeboard at my B Com college.\nEmail to a few coaching institutes in Chennai that run articleship batches.\nQuora - answered two questions about ICAI leave rules.\nYouTube - a short walkthrough on my channel.\nThat is the full list of places the product went out through during the launch window.",
+    "firstCustomerStory": "The first person to pay is a second-year articleship trainee at a mid-size firm near Panagal Park. He found the product from the post in a CA students WhatsApp group that a batchmate of mine forwarded it into - he told me later he almost scrolled past it and opened it only because the screenshot showed the ICAI leave limit in it, which he said he has never seen in any app. Before paying he messaged me twice. The first message was whether the leave calculation follows the current ICAI rules or the old ones, and the second was whether his firm would be able to see his entries, because he takes unofficial leave and does not want a trail. I told him the data is only his and there is no firm login at all, and he paid ₹349 that evening, 3 Sep, by UPI at 9:47pm. After paying he backfilled his attendance from 14 March onwards in one sitting - 112 days - and found out he has 9 fewer leave days than he thought. He messaged me at 11:30pm that night, slightly panicking, and that message is the best feedback I have got. Since then he opens it about twice a week, and he asked on 9 Sep whether I can add a warning when a planned exam leave would push him past the limit."
+  },
+  "signals": {
+    "paymentsLive": true,
+    "trackerConnected": true,
+    "workflowTenRuns": true,
+    "hasPayingCustomer": true,
+    "payingCustomers": 2,
+    "grossTotal": 841,
+    "netTotal": 823,
+    "currency": "USD",
+    "workflowRuns": 15,
+    "blockingFlags": [],
+    "fetchedAt": "2026-09-15T09:00:00.000Z",
+    "source": "verified"
+  },
+  "notes": "Fails `channels` only: the distribution field is nine channel names with no outcome attached to any of them - no number, no honest 'nothing', and no way to tell which were even used. Everything else clears: the write-up is dated and specific with a named failure and a concrete next-hundred change, the first customer's arrival path through a forwarded group post is traceable, and ₹698 from 2 trainees matches the tracker's $8.41 and 2 paying customers."
+}

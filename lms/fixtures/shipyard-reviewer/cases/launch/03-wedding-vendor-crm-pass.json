@@ -1,0 +1,26 @@
+{
+  "id": "launch-03-wedding-vendor-crm-pass",
+  "checkpointKey": "launch",
+  "expected": "pass",
+  "expectedUnmetCriteria": [],
+  "fields": {
+    "launchWriteup": "ShaadiDesk went live for money on 2 Sep. It is a follow-up tracker for wedding photographers - every enquiry that comes on WhatsApp becomes a card with a date, and it nags you on the day you said you would call back. Price ₹2,999 for the season, one payment, because photographers in Jaipur do not want another monthly thing. 2 Sep: switched Razorpay live, put the season price up. 3-5 Sep: I went to three photography studios in Vaishali Nagar and one in Malviya Nagar in person, unannounced, with my laptop - 4 studios, 3 let me in, 2 asked for the link, 1 paid on the spot on 4 Sep. 6 Sep: posted in a Jaipur wedding vendors WhatsApp group with 240 members that a photographer added me to in July - 4 replies, 1 paid on 8 Sep, 2 asked if it does invoicing (it does not yet, I said so). 7 Sep: put up an Instagram post with a screen recording, 1,600 views from an account with 380 followers, 0 payments. 9 Sep: I called 6 decorators to see if the same thing sells to them, 2 picked up, both said they use a diary, neither paid - so I have stopped building the decorator version for now. Not working: the Instagram post, and my onboarding - both paying studios needed me physically present to import their old enquiries, which means I cannot sell this to a studio in another city today. Tracker: 2 paying customers, ₹5,998 collected, $72.26 gross and $70.56 net. For the next hundred I would build the WhatsApp export importer before selling anything else, because the two hours of manual import per customer is the whole business right now.",
+    "distributionChannels": "Door to door at studios in Vaishali Nagar and Malviya Nagar, 3-5 Sep: 4 studios visited, 3 conversations, 1 payment on 4 Sep. The only channel that has produced money at a predictable rate so far - roughly one paying studio per four doors.\nJaipur wedding vendors WhatsApp group, 240 members, 1 post on 6 Sep: 4 replies, 1 payment on 8 Sep, 2 people asking for invoicing. I posted once and will not post again for a month; it is not my group.\nInstagram, screen recording post on 7 Sep: 1,600 views, 11 saves, 0 payments. Nothing.\nCold calls to 6 decorators on 9 Sep: 2 answered, 0 paid, and it told me the decorator version is not worth building yet. Honest answer is this channel returned information, not money.\nWedding fair stall: I asked about a stall at a Jaipur wedding expo, it is ₹18,000 for two days, I did not take it and will not until I have five paying studios.\nReferral from the first studio: 0 so far. I have not asked, which is my mistake.",
+    "firstCustomerStory": "The first payment came from a two-person studio in Vaishali Nagar on 4 Sep. I walked in on 3 Sep at 4pm with no appointment; the owner was editing and told me to come back the next day, which I did at the same time. His complaint before I said anything about the product was that he had lost a December booking because a bride messaged on a Tuesday, he replied 'I will send you the package by evening', and he never sent it - he found the chat three weeks later when the date was already gone. He said that out loud before I opened the laptop, and I mostly just showed him the follow-up screen after that. What he said before paying was 'ye December tak chalega na?' - he wanted to be sure it would not stop working mid-season, and he asked whether his assistant could also log in. I said one login for now. He paid ₹2,999 on 4 Sep at 6:20pm by UPI while I was sitting there, which is the first real money the product has taken. Afterwards I spent about two hours importing 60 old enquiries from his WhatsApp by hand. Since then he has added 23 new enquiries himself, cleared 19 follow-ups, and on 11 Sep he messaged at midnight asking for a way to mark a date as 'booked' so it stops nagging. That is now the next thing I am building."
+  },
+  "signals": {
+    "paymentsLive": true,
+    "trackerConnected": true,
+    "workflowTenRuns": true,
+    "hasPayingCustomer": true,
+    "payingCustomers": 2,
+    "grossTotal": 7226,
+    "netTotal": 7056,
+    "currency": "USD",
+    "workflowRuns": 16,
+    "blockingFlags": [],
+    "fetchedAt": "2026-09-15T09:00:00.000Z",
+    "source": "verified"
+  },
+  "notes": "Actions are dated and specific down to the door-knock, every channel reports an outcome including two honest zeroes and one channel deliberately not used, the first customer's arrival and post-payment behaviour are traceable, a named failure and a concrete next-hundred change are both present, and ₹5,998 from 2 studios matches the tracker's $72.26 and 2 paying customers."
+}

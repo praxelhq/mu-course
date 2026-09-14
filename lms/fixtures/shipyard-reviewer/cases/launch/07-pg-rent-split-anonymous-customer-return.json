@@ -1,0 +1,29 @@
+{
+  "id": "launch-07-pg-rent-split-anonymous-customer-return",
+  "checkpointKey": "launch",
+  "expected": "return",
+  "expectedUnmetCriteria": [
+    "first-customer",
+    "learning"
+  ],
+  "fields": {
+    "launchWriteup": "SplitGhar is a rent and bill splitter for PG and flatshare groups in Bangalore - you put in the rent, the electricity bill and who stayed how many nights, and it sends one WhatsApp message with who owes what. ₹250 per flat per month. 30 Aug: Razorpay live, pricing page up. 31 Aug: posted in r/bangalore asking how people split the electricity bill when one flatmate runs a geyser - 88 comments, and I put the link in one reply, not in the post. 1 Sep: posted the same question in two flatmate-finder Facebook groups (4,200 and 1,900 members), 21 comments between them. 2 Sep: put up a Google Form in three PG WhatsApp groups asking who currently keeps the bill sheet, got 34 responses, and messaged the 11 who said 'I do' individually. 4 Sep: first payment. 5 Sep: I made a one-page comparison against Splitwise, because everyone kept saying 'Splitwise hai na', and put it on the site. 6-8 Sep: Instagram reels, three of them, 2,100 views total. 9 Sep: stopped and started fixing the electricity-by-usage split, which is the one thing every single respondent mentioned. What did not work: Splitwise comparison page did not change anything I can measure, and my ₹250 price confused people because they thought it was per person - two people told me that and I still have not changed the wording. Tracker shows 1 paying flat, ₹250, $3.01 gross, $2.95 net.",
+    "distributionChannels": "r/bangalore, 31 Aug: 88 comments on the question, 6 clicks I can see on the link in my reply, 0 payments directly from it but 3 of the 11 people I later DMed came from that thread.\nFacebook flatmate groups (4,200 and 1,900 members), 1 Sep: 21 comments, 14 link clicks, 0 payments.\nGoogle Form in 3 PG WhatsApp groups, 2 Sep: 34 responses, 11 said they keep the bill sheet, I DMed all 11, 4 replied, 1 paid. This is the only channel that produced money.\nInstagram reels, 6-8 Sep, 3 posted: 2,100 views total, 0 payments. Nothing.\nCollege seniors in Bangalore: I messaged 5, all 5 replied politely, 0 paid. I am not counting friends as customers.\nPG owners: I asked 2 PG owners whether they would recommend it to their tenants, both said no because the bill sheet is how they keep control. Useful, but zero.",
+    "firstCustomerStory": "Someone found us and paid on 4 Sep. I am not fully sure how they came in - it was in the middle of the week when the Reddit thread, the Facebook posts and the Google Form DMs were all running, so it could be any of them. The payment shows up as ₹250 on Razorpay at around 8pm and the account was created a few minutes before that, so whoever it was did not spend long deciding. They did not message me before paying and they have not messaged me since. From the app I can see the flat has 4 members added and two months of rent entered, and the electricity split was used twice, so at least somebody in that flat is actually using it, which is good. I sent a thank-you message on the WhatsApp number on the account on 5 Sep and got no reply, so I do not know what they were using before or why they switched. I would like to say more about this person but honestly I do not know anything about them. What I would do differently for the next hundred is post more and be consistent - I think if I show up daily the numbers will come. Some things did not click this week but that is part of the process."
+  },
+  "signals": {
+    "paymentsLive": true,
+    "trackerConnected": true,
+    "workflowTenRuns": true,
+    "hasPayingCustomer": true,
+    "payingCustomers": 1,
+    "grossTotal": 301,
+    "netTotal": 295,
+    "currency": "USD",
+    "workflowRuns": 13,
+    "blockingFlags": [],
+    "fetchedAt": "2026-09-15T09:00:00.000Z",
+    "source": "verified"
+  },
+  "notes": "Fails two criteria. `first-customer`: the account is an anonymous 'someone found us and paid' with no traceable arrival path, nothing the customer said, and no contact after - exactly the failure the bar names. `learning`: 'post more and be consistent' plus 'some things did not click' is the vague answer the threshold rejects, and no specific failure is named in that field. The dated write-up, the per-channel numbers and the ₹250 matching the tracker's $3.01 and 1 paying customer all still pass."
+}

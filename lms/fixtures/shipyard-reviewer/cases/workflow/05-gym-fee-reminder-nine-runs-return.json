@@ -1,0 +1,27 @@
+{
+  "id": "workflow-05-gym-fee-reminder-nine-runs-return",
+  "checkpointKey": "workflow",
+  "expected": "return",
+  "expectedUnmetCriteria": [
+    "metric-only"
+  ],
+  "fields": {
+    "workflowName": "Fee due reminder batch (Make, scenario 'FeeLine-reminders')",
+    "whatItAutomates": "Runs on a schedule on the 5th of the month and again on the 12th. The scenario reads the batch roster, finds the parents with no payment recorded against the current month, sends each one a WhatsApp reminder with the teacher's name as the sender and the payment link, and writes the send back to the sheet so nobody gets two. It exists so the teacher never has to ask for money in person. It has been live since 5 Sep and has sent nine reminders so far - the next batch goes out on the 12th of next month."
+  },
+  "signals": {
+    "paymentsLive": true,
+    "trackerConnected": true,
+    "workflowTenRuns": false,
+    "hasPayingCustomer": true,
+    "payingCustomers": 4,
+    "grossTotal": 7223,
+    "netTotal": 7053,
+    "currency": "USD",
+    "workflowRuns": 9,
+    "blockingFlags": [],
+    "fetchedAt": "2026-09-15T09:00:00.000Z",
+    "source": "verified"
+  },
+  "notes": "Expected return: workflowTenRuns is false at 9 runs, one short of the gate - the boundary case. Nothing here is judged by a model; the checkpoint is cleared by the tracker's count alone, and the case exists to prove the harness skips the reviewer and does not round nine up."
+}

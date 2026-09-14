@@ -1,0 +1,28 @@
+{
+  "id": "launch-09-cricket-academy-numbers-contradiction-return",
+  "checkpointKey": "launch",
+  "expected": "return",
+  "expectedUnmetCriteria": [
+    "numbers-agree"
+  ],
+  "fields": {
+    "launchWriteup": "PitchRoll does attendance and monthly fee collection for cricket academies in Nagpur - the coach marks attendance on the ground from his phone, parents get a WhatsApp summary every Sunday, and the fee link goes out on the 1st. ₹700 per month per academy. 27 Aug: Razorpay live mode and the fee link tested with my own card, refunded the same day. 28-30 Aug: I went to five academies at evening practice (5-7pm) - 5 coaches spoken to, 3 let me set up on their ground for a session, 2 said come back after the season. 31 Aug: first academy paid. 1 Sep: a coaching-camp organiser I met at the second ground put me in a Nagpur coaches WhatsApp group with 90 members; I posted once on 2 Sep with a photo of the Sunday parent summary. 3-9 Sep: seven more academies came in from that group and from coach-to-coach referrals. 10 Sep: I stopped selling and spent three days fixing the parent summary because two coaches said parents were getting it twice. What did not work: the printed flyers I got made for ₹900, I handed out 60 at a junior tournament and got exactly zero calls. Also my demo needed network on the ground and half the grounds have none, so I had to build an offline mode in week one. In total we did ₹8,400 from 12 paying customers this launch. For the next hundred I would go through the coaches group first instead of walking grounds, since 7 of my 12 came from that one post.",
+    "distributionChannels": "Ground visits at evening practice, 28-30 Aug, 5 academies: 5 coaches spoken to, 3 live demos on the ground, 2 paid within a week.\nNagpur coaches WhatsApp group, 90 members, 1 post on 2 Sep with a photo of the parent summary: 19 replies, 9 asked for the link, 7 paid over the next week. Far and away the best thing that happened.\nCoach-to-coach referral: 3 academies came from coaches who already pay, with no involvement from me beyond a forwarded link.\nPrinted flyers at a junior tournament, ₹900 for 200, 60 handed out on 6 Sep: 0 calls, 0 payments. Complete waste.\nInstagram: 1 post, 280 views, 0 payments. I did not push this channel.\nSchools: I emailed 3 school sports coordinators on 8 Sep, 0 replies so far.",
+    "firstCustomerStory": "The first academy to pay runs on a matting wicket near Dhantoli, about 40 boys, one head coach and his nephew. I turned up at 5:20pm on 28 Aug during fielding drills and the coach told me to wait until practice ended, so I stood at the boundary for an hour and a half. What he said before paying, more or less: 'attendance to theek hai, par fees yaad dilane ka kaam mujhe nahi karna' - the attendance was never his pain, the chasing was. He said parents pay him when they run into him at the ground and forget for two months when they do not. He also asked, twice, whether the parents would get a message that looked like it came from him or from some company, because he did not want it to look like he had hired an agency. I changed the sender name in the summary that evening so it reads the academy's name. He paid ₹700 on 31 Aug by UPI at 7:58am, which is the first money PitchRoll has taken. Since then he has marked attendance on 14 of 15 practice days himself, the Sunday summary has gone out twice, and he told me on 9 Sep that six parents paid the September fee on the 1st without him asking anyone, which has never happened before."
+  },
+  "signals": {
+    "paymentsLive": true,
+    "trackerConnected": true,
+    "workflowTenRuns": true,
+    "hasPayingCustomer": true,
+    "payingCustomers": 2,
+    "grossTotal": 1400,
+    "netTotal": 1372,
+    "currency": "USD",
+    "workflowRuns": 17,
+    "blockingFlags": [],
+    "fetchedAt": "2026-09-15T09:00:00.000Z",
+    "source": "verified"
+  },
+  "notes": "Fails `numbers-agree`: the write-up claims '₹8,400 from 12 paying customers' and builds its channel breakdown on that figure, while the tracker's verified signals read 2 paying customers and $14.00 gross - roughly ₹1,160 - and the student offers no explanation for the gap. This is a CONTRADICTION, not a rounding difference: the bar requires it to be ESCALATED TO A HUMAN and never passed, however good the rest of the write-up reads. Every other criterion is met."
+}

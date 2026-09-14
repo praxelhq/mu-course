@@ -1,0 +1,27 @@
+{
+  "id": "money-09-cricket-academy-borderline-pass",
+  "checkpointKey": "money",
+  "expected": "pass",
+  "expectedUnmetCriteria": [],
+  "fields": {
+    "pricingNote": "₹399 per month per academy, any number of batches, any number of players. Monthly, and I do not lock anyone in for the season, because the season here is only about eight months long.\n\nHow I landed on ₹399. Honestly it started from my side of the ledger — Postgres, the domain and the WhatsApp costs come to a little over ₹3,000 a month and I wanted eight academies to cover that. But when I took the number to the four coaches, what made two of them say yes on the spot was a different comparison. The cheapest academy software they had been pitched, KheloTrack, quotes ₹1,500 a month and starts by asking you to upload a player database with parent phone numbers, which the head coach in Indiranagar flatly refused to do for something he had not used yet. ₹399, with a batch you can create in ninety seconds, sits on the other side of that decision. It is also roughly one month's fee for one player, which is the unit coaches actually think in — every one of them said some version of \"so one boy pays for it\".\n\nWhat the academy gives up by not paying: the diary. So when a parent rings in October asking why her son is not in the match squad, the coach has an opinion and no record. Two of the four coaches have lost a paying student to exactly that call.",
+    "checkoutUrl": "https://maidaan-attendance.vercel.app/subscribe"
+  },
+  "signals": {
+    "paymentsLive": true,
+    "trackerConnected": true,
+    "workflowTenRuns": true,
+    "hasPayingCustomer": false,
+    "payingCustomers": 0,
+    "grossTotal": 4200,
+    "netTotal": 3948,
+    "currency": "USD",
+    "workflowRuns": 14,
+    "blockingFlags": [
+      "self_purchase"
+    ],
+    "fetchedAt": "2026-09-11T16:10:00.000Z",
+    "source": "verified"
+  },
+  "notes": "Borderline, committed to pass. The write-up opens with cost-plus reasoning, which a strict reviewer could read as failing `price-reasoned`. But it does not stop there: it names a competitor's price (KheloTrack at ₹1,500), names the onboarding friction that price carries, and lands on the coach's own unit of 'one boy's monthly fee' — that is buyer-value reasoning, and the cost of not paying is a concrete lost student. The signals carry a self_purchase blocking flag, which the metric half handles elsewhere and which must not influence this verdict."
+}

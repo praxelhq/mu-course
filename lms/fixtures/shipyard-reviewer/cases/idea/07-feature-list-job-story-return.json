@@ -1,0 +1,21 @@
+{
+  "id": "idea-07-feature-list-job-story-return",
+  "checkpointKey": "idea",
+  "expected": "return",
+  "expectedUnmetCriteria": ["job-story", "audience"],
+  "fields": {
+    "productName": "BillBuddy",
+    "oneLiner": "BillBuddy sends a customer a WhatsApp reminder three days before an invoice is due and again on the due date, until they pay.",
+    "jobStory": "BillBuddy is a smart, AI-powered invoice follow-up platform. Here is what it does:\n\n- Create and send professional GST-compliant invoices in under 30 seconds\n- Automated WhatsApp and email reminders with customisable templates\n- Razorpay and UPI payment links embedded directly in every reminder\n- A real-time dashboard showing paid, pending and overdue with ageing buckets\n- One-click payment reconciliation so your books are always current\n- Multi-user access with role-based permissions for your accountant\n- Tally export so your CA does not have to re-enter anything\n- Recurring invoices for retainer clients\n\nOur target audience is small businesses across India. India has over 6.3 crore MSMEs and studies say 80% of them face delayed payments, with an average delay of 45 to 60 days. That is a huge and underserved market. Anyone who raises an invoice is a potential customer, which includes freelancers, agencies, consultants, traders, manufacturers and service businesses. We will start with small businesses and later expand to mid-market. What they do today is follow up manually, which wastes time and is unprofessional, whereas BillBuddy automates the entire receivables workflow end to end.",
+    "waitlistUrl": "https://billbuddy.co.in",
+    "signupCount": 29,
+    "trafficTestNotes": "Two sources, 1 to 10 September 2026.\n\n1. Meta ads, 3,000 rupees over seven days. Audience was business page admins and people with small business interests, ages 25 to 45, all India, creative was a fifteen second screen recording of a reminder going out on WhatsApp. Ads Manager shows 34,100 impressions, 410 link clicks at 7.3 rupees a click, and 21 signups from that source.\n\n2. A Facebook group called 'MSME Business Owners India', around 44k members. One post on 3 Sep and a comment reply thread under it. Group insights show 3,900 reach, 96 clicks to the page, 8 signups. Free.\n\nTotal spend 3,000 rupees, about 506 visits, 29 signups, 5.7% overall. That is a lot lower than I expected and I think it is because the ad audience is broad, so a lot of the clicks are curious rather than people with an actual receivables problem. Cost per signup works out to 103 rupees. The group post converted at 8.3% against the ads at 5.1%, which supports the same idea.",
+    "signupScreenshot": [
+      "synthetic:a Tally forms dashboard showing 29 responses with the submissions table and the date 10 Sep 2026 in the top right"
+    ]
+  },
+  "images": [
+    { "file": "synthetic:a Tally forms dashboard showing 29 responses with the submissions table and the date 10 Sep 2026 in the top right" }
+  ],
+  "notes": "Return: the job story field is a feature list with a market-size paragraph stapled to it - no situation, no motivation, no outcome - and the audience is 'small businesses across India' plus a crore-count, which is nothing a student could go and find ten of. The one-liner, the live page, the two named traffic sources with spend and the matching dated screenshot all clear."
+}

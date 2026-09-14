@@ -1,0 +1,25 @@
+{
+  "id": "workflow-01-whatsapp-order-to-razorpay-pass",
+  "checkpointKey": "workflow",
+  "expected": "pass",
+  "expectedUnmetCriteria": [],
+  "fields": {
+    "workflowName": "WA Order to Sheet to Razorpay link (n8n, prod)",
+    "whatItAutomates": "Triggered by a message into the business WhatsApp number. n8n parses the order line (item, quantity, society name), appends a row to the Orders sheet with the delivery slot, then creates a Razorpay payment link for the amount and sends it back on the same chat within about eight seconds. Before this I was making links by hand in the dashboard and typing them out, roughly 6-8 minutes per order in the evening rush. It has been running on real customer orders since 29 Aug, no manual triggers."
+  },
+  "signals": {
+    "paymentsLive": true,
+    "trackerConnected": true,
+    "workflowTenRuns": true,
+    "hasPayingCustomer": true,
+    "payingCustomers": 3,
+    "grossTotal": 4337,
+    "netTotal": 4235,
+    "currency": "USD",
+    "workflowRuns": 14,
+    "blockingFlags": [],
+    "fetchedAt": "2026-09-15T09:00:00.000Z",
+    "source": "verified"
+  },
+  "notes": "Expected pass on the tracker's run count alone - workflowTenRuns is true at 14 real runs. This checkpoint is NOT reviewed by a model; the two fields only label the workflow on the spine. The case exists to prove the harness skips the reviewer entirely and reads the signal."
+}

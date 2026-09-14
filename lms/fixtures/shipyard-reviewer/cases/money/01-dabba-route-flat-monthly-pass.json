@@ -1,0 +1,25 @@
+{
+  "id": "money-01-dabba-route-flat-monthly-pass",
+  "checkpointKey": "money",
+  "expected": "pass",
+  "expectedUnmetCriteria": [],
+  "fields": {
+    "pricingNote": "₹299 per month, per kitchen. Flat, not per subscriber. I tried per-subscriber pricing on three kitchens in Wanowrie and all three did the multiplication out loud and stopped talking to me — the kitchens that most need routing are the ones with 90 dabbas, and a per-head price punishes exactly them.\n\nWhy ₹299 and not ₹149 or ₹599. The owner, or more often her husband, spends about 40 minutes every evening writing tomorrow's stop order in a notebook, and another 15 minutes on the phone when the delivery boy cannot find a building. Call it 25 hours a month. Even at ₹60 an hour that is ₹1,500 of somebody's evening. The nearest thing they could buy today is Zoho's route planner, which starts around ₹1,000 per user per month, is built for FMCG vans, and asks for a GST number in signup — two of my kitchens are not registered, so they cannot even sign up. ₹299 sits below the line where a kitchen doing ₹60,000 a month has to think about it, and above the line where I would rather they just didn't bother.\n\nWhat they give up by not paying: the notebook stays, and the new delivery boy keeps calling the kitchen four times a shift asking which building is next. Two of the four kitchens I sat with have stopped taking subscribers outside their own lane for exactly that reason — they are turning down revenue because the round is unmanageable, not because they cannot cook.",
+    "checkoutUrl": "https://checkout.dodopayments.com/buy/pdt_dabbaroute_monthly_299"
+  },
+  "signals": {
+    "paymentsLive": true,
+    "trackerConnected": true,
+    "workflowTenRuns": false,
+    "hasPayingCustomer": true,
+    "payingCustomers": 3,
+    "grossTotal": 1076,
+    "netTotal": 1012,
+    "currency": "USD",
+    "workflowRuns": 4,
+    "blockingFlags": [],
+    "fetchedAt": "2026-09-15T09:00:00.000Z",
+    "source": "verified"
+  },
+  "notes": "Price and unit are both stated, the reasoning is in buyer time and a named competitor's price rather than build cost, the cost of not paying is a concrete lost outcome (turning away subscribers), and nothing in the pricing assumes an unshipped feature."
+}

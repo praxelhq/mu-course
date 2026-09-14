@@ -1,0 +1,25 @@
+{
+  "id": "workflow-02-daily-route-plan-email-pass",
+  "checkpointKey": "workflow",
+  "expected": "pass",
+  "expectedUnmetCriteria": [],
+  "fields": {
+    "workflowName": "6am route plan - Make scenario #2 (Daily Dabba Route)",
+    "whatItAutomates": "Runs on a schedule at 6:00am every delivery day. The Make scenario reads today's active subscriptions from the sheet, drops the paused ones, groups the addresses by society and pin code, orders each group by the slot the customer chose, and emails one route sheet to me and one to the delivery boy, with the count of boxes per society at the top. I used to sit and re-sort the list by hand every morning at 6, which took 20 minutes and I got it wrong twice in the first week. It has run every morning since 16 Aug, including the two days I forgot it existed."
+  },
+  "signals": {
+    "paymentsLive": true,
+    "trackerConnected": true,
+    "workflowTenRuns": true,
+    "hasPayingCustomer": true,
+    "payingCustomers": 4,
+    "grossTotal": 7223,
+    "netTotal": 7053,
+    "currency": "USD",
+    "workflowRuns": 31,
+    "blockingFlags": [],
+    "fetchedAt": "2026-09-15T09:00:00.000Z",
+    "source": "verified"
+  },
+  "notes": "Expected pass: workflowTenRuns is true at 31 daily runs. No model review happens at this checkpoint - the fields are informational for the instructor matrix - so the case is here to confirm the harness clears it from the signal and never calls the reviewer."
+}

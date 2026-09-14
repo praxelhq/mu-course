@@ -47,6 +47,13 @@ export type StructuredCallArgs<T> = {
   schema: ZodType<T>;
   temperature?: number;
   maxTokens?: number;
+  /**
+   * Pin the model list instead of taking it from the routing table. Only the
+   * fixture-agreement harness uses this: `pnpm eval:reviewer` reports agreement
+   * PER MODEL, and a number is meaningless if the routing table's fallback
+   * silently answered half of the calls. Production paths leave it unset.
+   */
+  models?: string[];
 };
 
 export type StructuredCallResult<T> = {
@@ -125,7 +132,7 @@ export async function callStructured<T>(
 ): Promise<StructuredCallResult<T>> {
   const env = deps.env ?? process.env;
   const profile: RoutingProfileName = effectiveProfile(deps.routerState ?? null, env);
-  const { models } = resolveRoute(args.task, profile);
+  const models = args.models ?? resolveRoute(args.task, profile).models;
   const temperature = Math.min(args.temperature ?? 0, MAX_TEMPERATURE);
   const maxTokens = args.maxTokens ?? 2048;
 
