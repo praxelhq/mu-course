@@ -1,10 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { requireUser } from "@/lib/auth";
 import { loadStudentFile } from "@/lib/shipyard/instructor";
 import type { StudentCheckpointView, StudentSubmissionView } from "@/lib/shipyard/instructor";
 import { formatBytes, formatDay, formatDayTime, pad2 } from "@/components/shipyard/format";
 import { OpenGateAction, RecordVerdictAction } from "@/components/shipyard/staff-actions";
 import { RenderShot } from "@/components/shipyard/render-shot";
+import { GradeLine } from "@/components/shipyard/grade-line";
+import { FinaliseGrade } from "@/components/shipyard/finalise-grade";
+import { ReviewActions } from "@/components/shipyard/review-actions";
 import { trackerProjectUrl } from "@/components/shipyard/tracker-url";
 
 export const dynamic = "force-dynamic";
@@ -28,8 +32,9 @@ export default async function ShipyardStudentPage({
   params: Promise<{ userId: string }>;
 }) {
   const { userId } = await params;
-  const file = await loadStudentFile(userId);
+  const [viewer, file] = await Promise.all([requireUser(), loadStudentFile(userId)]);
   if (!file) notFound();
+  const isAdmin = viewer.role === "admin";
 
   const openForVerdict = file.checkpoints
     .flatMap((cp) => cp.submissions.map((s) => ({ cp, s })))
@@ -90,6 +95,19 @@ export default async function ShipyardStudentPage({
 
       <div className="sy-cols">
         <div>
+          {/* The grade line leads: it is the question somebody opens this page
+              with, and SPEC §7 puts the graduation condition above the four
+              components wherever the line is drawn. */}
+          <GradeLine grade={file.grade} standalone />
+          {file.grade && !file.grade.provisional && (
+            <p className="sy-grade__final">
+              Finalised
+              {file.grade.finalisedAt ? ` ${formatDayTime(file.grade.finalisedAt)}` : ""}
+              {file.grade.finalisedBy ? ` by ${file.grade.finalisedBy}` : ""}
+              {file.grade.weightsVersion ? ` · weights ${file.grade.weightsVersion}` : ""}
+            </p>
+          )}
+
           {file.checkpoints.map((cp) => (
             <CheckpointFile key={cp.id} checkpoint={cp} />
           ))}
@@ -114,14 +132,13 @@ export default async function ShipyardStudentPage({
             />
           ))}
 
-          <section className="sy-action">
-            <h3 className="sy-action__head">Grade line</h3>
-            <p className="sy-action__note">
-              Not scored yet. The four weighted components and the graduation
-              condition land with M4; nothing here is a provisional number in the
-              meantime.
-            </p>
-          </section>
+          {isAdmin && (
+            <FinaliseGrade
+              userId={file.user.id}
+              studentName={file.user.name}
+              alreadyFinal={file.grade !== null && !file.grade.provisional}
+            />
+          )}
         </aside>
       </div>
     </main>
@@ -271,6 +288,10 @@ function Attempt({ submission }: { submission: StudentSubmissionView }) {
             )}
 
             {r.screenshotKey && <RenderShot objectKey={r.screenshotKey} />}
+
+            {r.needsHuman && r.humanResolvedAt === null && (
+              <ReviewActions reviewId={r.id} verdict={r.verdict} compact />
+            )}
           </div>
         ))
       )}
