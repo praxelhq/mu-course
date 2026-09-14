@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { isTestLoginEnabled } from "@/lib/auth/test-login";
 import { SignInPanel } from "./sign-in-panel";
 
 // Sign-in via Clerk's prebuilt component. Google-only sign-in is Clerk
@@ -43,6 +45,13 @@ export default function SignInPage() {
         <p style={{ color: "var(--charcoal)", maxWidth: "28rem", textAlign: "center" }}>
           Clerk is not configured in this environment. Local dev uses the
           test-login flow (<code>POST /api/test-login</code>) instead.
+          {isTestLoginEnabled() && (
+            <>
+              {" "}
+              <Link href="/shipyard/demo">Pick a Shipyard demo persona</Link> to sign
+              in with one click.
+            </>
+          )}
         </p>
       )}
     </main>
