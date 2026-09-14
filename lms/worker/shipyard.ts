@@ -12,8 +12,15 @@
 //   shipyard.review          M1 stub reviewer; M2 swaps in the model call
 //   shipyard.review.dead     returns a submission nobody could review
 //   shipyard.gate-sweep      15-minute metric-gate sweep (SPEC §5)
-//   shipyard.tracker-refresh placeholder until M3
+//   shipyard.tracker-refresh every 10 minutes, all connected products
+//
+// It also listens on PORT for a liveness check. The Railway service inherits
+// the web service's healthcheck path (`/api/health`) and a process with no
+// HTTP listener fails it, so every deploy was marked FAILED while the worker
+// was in fact draining the queue happily. A dozen lines of node:http is the
+// whole fix; there is no framework here and no new dependency.
 
+import { createServer, type Server } from "node:http";
 import { PgBoss, type JobWithMetadata } from "pg-boss";
 import {
   QUEUE_SHIPYARD_GATE_SWEEP,
@@ -21,6 +28,7 @@ import {
   QUEUE_SHIPYARD_REVIEW_DEAD,
   QUEUE_SHIPYARD_TRACKER_REFRESH,
   shipyardReviewConcurrency,
+  SHIPYARD_QUEUES,
 } from "../lib/shipyard/constants";
 import {
   ensureShipyardQueues,
@@ -28,9 +36,48 @@ import {
   type ShipyardReviewJobData,
   type ShipyardTrackerRefreshJobData,
 } from "../lib/shipyard/queue";
+import { refreshAllConnected, refreshTrackerForProduct } from "../lib/shipyard/tracker-refresh";
 import { handleReviewSubmission } from "./shipyard-jobs/review-submission";
 import { handleReviewDeadLetter } from "./shipyard-jobs/review-dead-letter";
 import { GATE_SWEEP_CRON, sweepMetricGates } from "./shipyard-jobs/gate-sweep";
+
+/**
+ * Every ten minutes. The gate sweep at fifteen only looks at products sitting
+ * on an open metric gate; this one refreshes every connected product, so a
+ * grade line's "real numbers" component is never more than ten minutes stale
+ * even for a student who has cleared everything.
+ */
+export const TRACKER_REFRESH_CRON = "*/10 * * * *";
+export const TRACKER_REFRESH_LIMIT = 500;
+
+export const HEALTH_PORT_DEFAULT = 8080;
+
+/**
+ * Liveness only, never readiness-by-guess: 503 until pg-boss is up, 200 after.
+ * Every path answers, because the healthcheck path is configured on the web
+ * service and this process must not care which one it inherits.
+ */
+export function startHealthServer(
+  isReady: () => boolean,
+  port: number = Number(process.env.PORT) || HEALTH_PORT_DEFAULT,
+): Server {
+  const server = createServer((req, res) => {
+    const ready = isReady();
+    const body = JSON.stringify({
+      ok: ready,
+      service: "shipyard-worker",
+      queues: [...SHIPYARD_QUEUES],
+    });
+    res.writeHead(ready ? 200 : 503, {
+      "content-type": "application/json",
+      "content-length": Buffer.byteLength(body),
+    });
+    res.end(req.method === "HEAD" ? undefined : body);
+  });
+  server.listen(port);
+  server.on("error", (err) => console.error("[shipyard-worker] health server:", err));
+  return server;
+}
 
 export { ensureShipyardQueues };
 export type {
@@ -47,8 +94,12 @@ async function main(): Promise<void> {
   const boss = new PgBoss(databaseUrl);
   boss.on("error", (err: Error) => console.error("[pg-boss]", err));
 
+  let ready = false;
+  const health = startHealthServer(() => ready);
+
   try {
     await boss.start();
+    ready = true;
   } catch (err) {
     console.error(
       "[shipyard-worker] Could not connect to Postgres at DATABASE_URL — exiting.",
@@ -103,13 +154,28 @@ async function main(): Promise<void> {
     },
   );
 
+  // Tracker refresh. One product when a job names one — a student who has
+  // just connected their tracker should not wait ten minutes to see a number —
+  // and otherwise every connected product, least-recently-refreshed first.
   await boss.work<ShipyardTrackerRefreshJobData>(
     QUEUE_SHIPYARD_TRACKER_REFRESH,
     { batchSize: 1 },
     async (jobs) => {
       for (const job of jobs) {
+        const productId = job.data?.productId;
+        if (productId) {
+          const result = await refreshTrackerForProduct(productId);
+          console.log(
+            `[shipyard-worker] tracker refresh ${productId}: ` +
+              `${result.signals ? "signals read" : "tracker unreachable"}` +
+              `${result.workflowRunsFromN8n ? ", workflow runs from n8n" : ""}`,
+          );
+          continue;
+        }
+        const all = await refreshAllConnected({}, { limit: TRACKER_REFRESH_LIMIT });
         console.log(
-          `[shipyard-worker] tracker refresh ${job.data.productId ?? "(all)"}: not implemented yet (M3)`,
+          `[shipyard-worker] tracker refresh (all): refreshed=${all.refreshed} ` +
+            `unreachable=${all.unreachable} failed=${all.failed}`,
         );
       }
     },
@@ -130,6 +196,13 @@ async function main(): Promise<void> {
   );
 
   await boss.schedule(
+    QUEUE_SHIPYARD_TRACKER_REFRESH,
+    TRACKER_REFRESH_CRON,
+    { all: true },
+    { tz: "UTC", key: "tracker-refresh-v1" },
+  );
+
+  await boss.schedule(
     QUEUE_SHIPYARD_GATE_SWEEP,
     GATE_SWEEP_CRON,
     { reason: "schedule" },
@@ -138,12 +211,16 @@ async function main(): Promise<void> {
 
   console.log(
     `[shipyard-worker] up. queues: ${QUEUE_SHIPYARD_REVIEW} (concurrency ${concurrency}, ` +
-      `dead letter → ${QUEUE_SHIPYARD_REVIEW_DEAD}), ${QUEUE_SHIPYARD_TRACKER_REFRESH}, ` +
-      `${QUEUE_SHIPYARD_GATE_SWEEP} (${GATE_SWEEP_CRON}).`,
+      `dead letter → ${QUEUE_SHIPYARD_REVIEW_DEAD}), ` +
+      `${QUEUE_SHIPYARD_TRACKER_REFRESH} (${TRACKER_REFRESH_CRON}), ` +
+      `${QUEUE_SHIPYARD_GATE_SWEEP} (${GATE_SWEEP_CRON}). ` +
+      `health on :${Number(process.env.PORT) || HEALTH_PORT_DEFAULT}.`,
   );
 
   const stop = async (signal: string) => {
     console.log(`[shipyard-worker] ${signal} — draining.`);
+    ready = false;
+    health.close();
     await boss.stop({ graceful: true });
     process.exit(0);
   };

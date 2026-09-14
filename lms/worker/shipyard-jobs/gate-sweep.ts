@@ -9,12 +9,18 @@
 // a student waiting on a review has nothing a tracker read could change — and
 // it is capped, so one sweep can never turn into 480 tracker calls plus 2,880
 // upserts on a single tick.
+//
+// The per-product body is `refreshTrackerForProduct`, not `recomputeGates`
+// directly: that module folds in this portal's n8n workflow-runs adapter
+// (SPEC §8.5 item 2, for as long as Shipped has no n8n source) and refreshes
+// the provisional grade afterwards, so the sweep and the ten-minute refresh
+// job do exactly the same thing to a product.
 
 import type { PrismaClient } from "@prisma/client";
 import { prisma as defaultPrisma } from "../../lib/db";
 import { createTrackerClient, type TrackerClient } from "../../lib/tracker/client";
 import { SHIPYARD_COURSE_ID } from "../../lib/shipyard/constants";
-import { recomputeGates } from "../../lib/shipyard/gate-state";
+import { refreshTrackerForProduct } from "../../lib/shipyard/tracker-refresh";
 
 /** Every fifteen minutes: often enough to feel live, cheap enough to ignore. */
 export const GATE_SWEEP_CRON = "*/15 * * * *";
@@ -54,8 +60,12 @@ export async function sweepMetricGates(deps: GateSweepDeps = {}): Promise<GateSw
   for (const productId of productIds) {
     try {
       const before = new Map(rows.filter((r) => r.productId === productId).map((r) => [r.checkpointId, r.state]));
-      const after = await recomputeGates(productId, { db, tracker, now: deps.now });
-      if (after.some((s) => before.has(s.checkpointId) && before.get(s.checkpointId) !== s.state)) {
+      const { states } = await refreshTrackerForProduct(productId, {
+        db,
+        tracker,
+        now: deps.now,
+      });
+      if (states.some((s) => before.has(s.checkpointId) && before.get(s.checkpointId) !== s.state)) {
         changed += 1;
       }
     } catch (err) {
