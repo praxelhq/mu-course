@@ -182,6 +182,7 @@ model User {
   appReviewEntries  AppReviewEntry[]
   appReviewsGiven   AppReview[]
   interviewPrereqs  InterviewPrerequisite[]
+  shipyardProduct   ShipyardProduct?
 
   @@index([sectionId])
   @@index([teamId])
@@ -476,18 +477,18 @@ model InterviewPrerequisite {
 }
 
 model InterviewWindow {
-  id        String   @id @default(cuid())
-  sectionId String
-  section   Section  @relation(fields: [sectionId], references: [id])
-  opensAt   DateTime
+  id              String    @id @default(cuid())
+  sectionId       String
+  section         Section   @relation(fields: [sectionId], references: [id])
+  opensAt         DateTime
   // THE HARD CLOSE. The only date that decides whether a student may start an
   // interview. Never show it to a learner — see displayClosesAt.
-  closesAt  DateTime
+  closesAt        DateTime
   // THE CLOSE STUDENTS SEE. Published ahead of the real one so work lands
   // early while the hard close still absorbs stragglers. Null means the two
   // are the same. Invariant: when set, displayClosesAt <= closesAt.
   displayClosesAt DateTime?
-  label     String
+  label           String
 
   @@index([sectionId])
 }
@@ -1272,4 +1273,256 @@ model PortfolioEntry {
 model ConfigKV {
   key   String @id
   value Json
+}
+
+// ===========================================================================
+// Shipyard (Course 2) — the product-shipping portal.
+//
+// Everything below belongs to Course 2 and is namespaced `Shipyard*` because
+// the Forge already owns `Submission`, `Review` and `Grade`. There is no
+// `Course` table yet: every Shipyard row carries `courseId` (default
+// "course-2", the `SHIPYARD_COURSE_ID` constant in lib/shipyard/constants.ts)
+// and is indexed on it, so a real Course table can land later without a
+// restructure. See docs/shipyard/ARCHITECTURE.md.
+// ===========================================================================
+
+enum ShipyardCheckpointKey {
+  idea
+  design
+  working
+  money
+  workflow
+  launch
+}
+
+enum ShipyardGateType {
+  review
+  metric
+  both
+}
+
+enum ShipyardSubmissionStatus {
+  draft
+  submitted
+  in_review
+  returned
+  passed
+}
+
+enum ShipyardVerdict {
+  pass
+  return
+}
+
+enum ShipyardReviewer {
+  ai
+  human
+}
+
+enum ShipyardGateState {
+  locked
+  open
+  passed
+}
+
+enum ShipyardRoutingProfile {
+  flash_verdicts
+  flash_everywhere
+}
+
+/// One product per student, for the whole course.
+model ShipyardProduct {
+  id               String   @id @default(cuid())
+  courseId         String   @default("course-2")
+  userId           String   @unique
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name             String
+  oneLiner         String
+  liveUrl          String?
+  waitlistUrl      String?
+  /// This product's id inside Shipped.money, set when the student connects it.
+  trackerProductId String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  submissions      ShipyardSubmission[]
+  checkpointStates ShipyardCheckpointState[]
+  grade            ShipyardGrade?
+  trackerOverride  ShipyardTrackerOverride?
+
+  @@index([courseId])
+  @@index([trackerProductId])
+}
+
+/// A checkpoint DEFINITION. Bars, rubrics, deadlines and which metric signals
+/// gate a checkpoint are row edits, never code changes.
+model ShipyardCheckpoint {
+  id                      String                @id @default(cuid())
+  courseId                String                @default("course-2")
+  key                     ShipyardCheckpointKey
+  order                   Int
+  title                   String
+  /// The published bar, shown to students verbatim.
+  barMarkdown             String
+  /// Internal grading rubric handed to the reviewer; never shown to students.
+  rubric                  Json
+  gateType                ShipyardGateType
+  acceptsImages           Boolean               @default(false)
+  /// The submit-form field spec (lib/shipyard/fields.ts `FieldSpec[]`).
+  fieldSchema             Json
+  /// Array of tracker signal names that must be true to clear a metric gate.
+  metricSignals           Json
+  deadlineAt              DateTime?
+  resubmitWindowHours     Int                   @default(72)
+  resubmitCooldownMinutes Int                   @default(15)
+  updatedAt               DateTime              @updatedAt
+
+  submissions      ShipyardSubmission[]
+  checkpointStates ShipyardCheckpointState[]
+
+  @@unique([courseId, key])
+  @@index([courseId, order])
+}
+
+model ShipyardSubmission {
+  id                    String                   @id @default(cuid())
+  courseId              String                   @default("course-2")
+  productId             String
+  product               ShipyardProduct          @relation(fields: [productId], references: [id], onDelete: Cascade)
+  checkpointId          String
+  checkpoint            ShipyardCheckpoint       @relation(fields: [checkpointId], references: [id])
+  status                ShipyardSubmissionStatus @default(draft)
+  /// Per-checkpoint answers, keyed by the checkpoint's field schema.
+  fields                Json
+  /// [{ key, name, contentType, bytes }] — S3 keys, images included.
+  files                 Json
+  version               Int                      @default(1)
+  submittedAt           DateTime?
+  /// Cooldown fence: a resubmit before this instant is refused at the form.
+  nextAllowedResubmitAt DateTime?
+  createdAt             DateTime                 @default(now())
+  updatedAt             DateTime                 @updatedAt
+
+  reviews ShipyardReview[]
+
+  @@unique([productId, checkpointId, version])
+  @@index([courseId])
+  @@index([productId, checkpointId])
+}
+
+model ShipyardReview {
+  id                String             @id @default(cuid())
+  courseId          String             @default("course-2")
+  submissionId      String
+  submission        ShipyardSubmission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+  verdict           ShipyardVerdict
+  /// Student-facing, one entry per bar clause that was not met.
+  reasons           Json
+  /// Internal per-criterion scores.
+  rubricScores      Json
+  confidence        Float
+  /// The exact tracker signals read at review time, for audit.
+  metricSignalsSeen Json?
+  /// { screenshotS3Key, domText } for the checkpoint 3 headless render.
+  renderArtifacts   Json?
+  /// Full prompt and response, kept for audit and the fixture set.
+  promptLog         Json?
+  modelUsed         String
+  providerUsed      String
+  tokensIn          Int                @default(0)
+  tokensOut         Int                @default(0)
+  costUsd           Float              @default(0)
+  reviewedBy        ShipyardReviewer   @default(ai)
+  needsHuman        Boolean            @default(false)
+  humanResolvedAt   DateTime?
+  overriddenBy      String?
+  overrideReason    String?
+  createdAt         DateTime           @default(now())
+
+  @@index([submissionId])
+  @@index([needsHuman, createdAt])
+  @@index([courseId])
+}
+
+/// The gate, per student per checkpoint. Written ONLY by
+/// `recomputeGates` (lib/shipyard/gate-state.ts).
+model ShipyardCheckpointState {
+  id               String             @id @default(cuid())
+  courseId         String             @default("course-2")
+  productId        String
+  product          ShipyardProduct    @relation(fields: [productId], references: [id], onDelete: Cascade)
+  checkpointId     String
+  checkpoint       ShipyardCheckpoint @relation(fields: [checkpointId], references: [id])
+  state            ShipyardGateState  @default(locked)
+  openedAt         DateTime?
+  passedAt         DateTime?
+  /// When the review half of a `both` gate cleared.
+  reviewClearedAt  DateTime?
+  /// When the metric half of a `both` gate cleared.
+  metricClearedAt  DateTime?
+  /// Instructor escape hatch: opened by hand, audit-logged.
+  manuallyOpenedBy String?
+  updatedAt        DateTime           @updatedAt
+
+  @@unique([productId, checkpointId])
+  @@index([courseId])
+}
+
+model ShipyardGrade {
+  id                    String          @id @default(cuid())
+  courseId              String          @default("course-2")
+  productId             String          @unique
+  product               ShipyardProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
+  /// The four weighted components with raw score, weight and contribution.
+  components            Json
+  /// The graduation condition — a gate on the grade, not a weight.
+  allCheckpointsCleared Boolean         @default(false)
+  weightsVersion        String
+  total                 Float
+  provisional           Boolean         @default(true)
+  finalisedBy           String?
+  finalisedAt           DateTime?
+  createdAt             DateTime        @default(now())
+  updatedAt             DateTime        @updatedAt
+
+  @@index([courseId])
+}
+
+model ShipyardWeights {
+  id        String   @id @default(cuid())
+  courseId  String   @default("course-2")
+  version   String   @unique
+  weights   Json
+  active    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([courseId])
+}
+
+/// Single row, id "default". The BYOK kill-switch in lib/ai/router.ts.
+model ShipyardRouterState {
+  id                      String                 @id
+  courseId                String                 @default("course-2")
+  anthropicExhausted      Boolean                @default(false)
+  exhaustedAt             DateTime?
+  consecutiveByokFailures Int                    @default(0)
+  activeProfile           ShipyardRoutingProfile @default(flash_verdicts)
+  updatedAt               DateTime               @updatedAt
+
+  @@index([courseId])
+}
+
+/// Fake-tracker signal overrides. Demos and TRACKER_MODE=fake ONLY — writes
+/// are refused when TRACKER_MODE=real, so a real metric gate can never be
+/// cleared from inside this portal.
+model ShipyardTrackerOverride {
+  id        String          @id @default(cuid())
+  courseId  String          @default("course-2")
+  productId String          @unique
+  product   ShipyardProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
+  signals   Json
+  updatedBy String
+  updatedAt DateTime        @updatedAt
+
+  @@index([courseId])
 }
