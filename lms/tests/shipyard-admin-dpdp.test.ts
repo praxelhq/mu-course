@@ -6,6 +6,8 @@ loadDotEnv();
 import type { DpdpErasureCounts } from "@/lib/dpdp-erasure";
 import {
   EMPTY_SHIPYARD_COUNTS,
+  NEAR_DUPLICATE_REDACTION,
+  redactOtherStudentIds,
   reviewArtifactKeys,
   shipyardBadges,
   SHIPYARD_BADGES,
@@ -232,5 +234,61 @@ describe.skipIf(!live)("Shipyard export payloads (live DB)", () => {
     );
     expect(await loadShipyardExport(prisma, "user-who-does-not-exist")).toBeNull();
     expect(await loadShipyardPraxy(prisma, "user-who-does-not-exist")).toBeNull();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// A student's export may not carry a classmate's submission id (SEC-7)
+// ---------------------------------------------------------------------------
+
+describe("redactOtherStudentIds", () => {
+  const promptLog = {
+    promptVersion: "2026-09-15.2",
+    system: "…",
+    preflight: {
+      isBlank: false,
+      isSpam: false,
+      nearDuplicateOf: "sub_someone_else",
+      linkStatuses: [],
+      extractedText: "",
+      notes: [
+        "waitlist reached (200)",
+        "near-duplicate of submission sub_someone_else (similarity 0.94)",
+      ],
+    },
+  };
+
+  it("drops nearDuplicateOf and the note that repeats it", () => {
+    const out = redactOtherStudentIds(promptLog) as typeof promptLog;
+    expect(JSON.stringify(out)).not.toContain("sub_someone_else");
+    expect(out.preflight).not.toHaveProperty("nearDuplicateOf");
+    expect(out.preflight.notes).toContain(NEAR_DUPLICATE_REDACTION);
+  });
+
+  it("keeps the finding itself — the student is told they were flagged", () => {
+    const out = redactOtherStudentIds(promptLog) as typeof promptLog;
+    expect(out.preflight.notes.join(" ")).toMatch(/near-duplicate/i);
+  });
+
+  it("keeps every other note and every other field untouched", () => {
+    const out = redactOtherStudentIds(promptLog) as typeof promptLog;
+    expect(out.preflight.notes).toContain("waitlist reached (200)");
+    expect(out.promptVersion).toBe("2026-09-15.2");
+    expect(out.system).toBe("…");
+  });
+
+  it("redacts a note naming a submission the field never held", () => {
+    const out = redactOtherStudentIds({
+      preflight: { notes: ["near-duplicate of submission sub_zzz (similarity 0.91)"] },
+    }) as { preflight: { notes: string[] } };
+    expect(JSON.stringify(out)).not.toContain("sub_zzz");
+  });
+
+  it("leaves a clean prompt log, a null and a non-object alone", () => {
+    const clean = { preflight: { isBlank: false, notes: ["waitlist reached (200)"] } };
+    expect(redactOtherStudentIds(clean)).toEqual(clean);
+    expect(redactOtherStudentIds(null)).toBeNull();
+    expect(redactOtherStudentIds("not a log")).toBe("not a log");
+    expect(redactOtherStudentIds({ promptVersion: "x" })).toEqual({ promptVersion: "x" });
   });
 });

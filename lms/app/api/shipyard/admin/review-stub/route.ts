@@ -7,7 +7,8 @@ import { completeReview } from "@/lib/shipyard/review-complete";
 import { rubricClauses } from "@/worker/shipyard-jobs/review-submission";
 
 // POST /api/shipyard/admin/review-stub  (instructor or admin)
-//   body { submissionId, verdict: "pass" | "return", reason?, reasons? } → 200
+//   body { submissionId, verdict: "pass" | "return", reason, reasons? } → 200
+//   400 no reason, or a reason under 8 characters
 //   403 not staff
 //   404 no such submission
 //   409 that submission already has a verdict
@@ -29,9 +30,15 @@ const bodySchema = z
   .object({
     submissionId: z.string().min(1),
     verdict: z.enum(["pass", "return"]),
-    /** Why a human decided this. Required by the UI; optional on the wire so
-        the M1 demo script and the worker's own callers stay unchanged. */
-    reason: z.string().trim().min(1).max(500).optional(),
+    /**
+     * Why a human decided this. REQUIRED (SEC-6). It was optional on the wire
+     * so an M1 demo script could stay unchanged, which meant the one route
+     * that lets a human move a student's gate could be called with no
+     * justification at all — and SPEC §4 asks for "one-click override and a
+     * required reason". The 8-character floor is what the staff UI already
+     * enforces, so nothing a person can click changes.
+     */
+    reason: z.string().trim().min(8).max(500),
     reasons: z
       .array(z.object({ criterion: z.string().min(1), met: z.boolean(), note: z.string() }))
       .max(20)
@@ -42,8 +49,16 @@ const bodySchema = z
 export const POST = withAuth(
   async (req, { user }) => {
     const parsed = bodySchema.safeParse(await req.json().catch(() => null));
-    if (!parsed.success) return Response.json({ error: "Invalid body" }, { status: 400 });
-    const { submissionId, verdict } = parsed.data;
+    if (!parsed.success) {
+      return Response.json(
+        {
+          error:
+            "A recorded verdict needs a reason of at least 8 characters, so the audit log says why.",
+        },
+        { status: 400 },
+      );
+    }
+    const { submissionId, verdict, reason } = parsed.data;
 
     const submission = await prisma.shipyardSubmission.findUnique({
       where: { id: submissionId },
@@ -63,8 +78,7 @@ export const POST = withAuth(
         note:
           verdict === "pass" || index !== 0
             ? "Met."
-            : (parsed.data.reason ??
-              `Returned by ${user.role} review. Read the bar again and resubmit.`),
+            : reason,
       }));
 
     try {
@@ -90,7 +104,7 @@ export const POST = withAuth(
             reviewId: result.reviewId,
             status: result.status,
             role: user.role,
-            reason: parsed.data.reason ?? null,
+            reason,
           } as unknown as Prisma.InputJsonValue,
         },
       });

@@ -1,6 +1,6 @@
-import { describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { createHmac } from "node:crypto";
-import { resolveTrackerMode } from "@/lib/tracker/client";
+import { resolveTrackerMode, resetTrackerModeWarning } from "@/lib/tracker/client";
 import {
   checkpointSignalsResponseSchema,
   createRealTrackerClient,
@@ -40,6 +40,55 @@ function stubFetch(status: number, payload: unknown) {
   };
   return { calls, impl };
 }
+
+describe("tracker mode in production (SEC-5)", () => {
+  beforeEach(() => resetTrackerModeWarning());
+
+  const prod = { NODE_ENV: "production" };
+
+  it("is real when the mode is unset, whatever the base URL says", () => {
+    // Falling back to the fake in production would decide every metric gate
+    // from ShipyardTrackerOverride — a table an admin writes.
+    expect(resolveTrackerMode(prod)).toBe("real");
+    expect(resolveTrackerMode({ ...prod, SHIPPED_MONEY_BASE_URL: "" })).toBe("real");
+  });
+
+  it("is real when TRACKER_MODE=fake sits beside a configured base URL", () => {
+    expect(
+      resolveTrackerMode({
+        ...prod,
+        TRACKER_MODE: "fake",
+        SHIPPED_MONEY_BASE_URL: "https://shipped.example.com",
+      }),
+    ).toBe("real");
+  });
+
+  it("is real on a typo'd mode rather than falling back", () => {
+    expect(resolveTrackerMode({ ...prod, TRACKER_MODE: "Fake " })).toBe("fake");
+    expect(resolveTrackerMode({ ...prod, TRACKER_MODE: "faek" })).toBe("real");
+    expect(resolveTrackerMode({ ...prod, TRACKER_MODE: "" })).toBe("real");
+  });
+
+  it("honours an explicit fake with no base URL, and says so loudly once", () => {
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    try {
+      const env = { ...prod, TRACKER_MODE: "fake" };
+      expect(resolveTrackerMode(env)).toBe("fake");
+      expect(resolveTrackerMode(env)).toBe("fake");
+      expect(warn).toHaveBeenCalledTimes(1);
+      expect(String(warn.mock.calls[0][0])).toMatch(/FAKE tracker in production/);
+    } finally {
+      warn.mockRestore();
+    }
+  });
+
+  it("lets a flagged demo instance use the fake without ceremony", () => {
+    expect(resolveTrackerMode({ ...prod, DEMO_MODE: "1" })).toBe("fake");
+    expect(
+      resolveTrackerMode({ ...prod, DEMO_MODE: "1", SHIPPED_MONEY_BASE_URL: "https://x" }),
+    ).toBe("real");
+  });
+});
 
 describe("tracker mode", () => {
   it("defaults to fake unless a base URL is configured", () => {

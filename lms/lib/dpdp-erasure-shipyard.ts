@@ -248,6 +248,52 @@ export type ShipyardExportSection = {
   s3Keys: string[];
 };
 
+// ---------------------------------------------------------------------------
+// One student's export may not carry another student's id
+// ---------------------------------------------------------------------------
+
+/**
+ * `ShipyardReview.promptLog.preflight` records the near-duplicate check, and
+ * the near-duplicate check compares this student's text against OTHER
+ * students' submissions. So `nearDuplicateOf` is a submission id belonging to
+ * somebody else, and the note beside it says so in words (SEC-7).
+ *
+ * A DPDP export is handed to the subject. Theirs is the finding — "this was
+ * flagged as a near-duplicate" — and not the identifier of the classmate it
+ * was matched against. Both stay in the database for staff, who need to be
+ * able to look at both sides of a plagiarism call; only the copy that leaves
+ * is redacted.
+ */
+export function redactOtherStudentIds(promptLog: unknown): unknown {
+  if (!promptLog || typeof promptLog !== "object" || Array.isArray(promptLog)) {
+    return promptLog;
+  }
+  const log = { ...(promptLog as Record<string, unknown>) };
+  const preflight = log.preflight;
+  if (!preflight || typeof preflight !== "object" || Array.isArray(preflight)) return log;
+
+  const clean = { ...(preflight as Record<string, unknown>) };
+  const matched = typeof clean.nearDuplicateOf === "string" ? clean.nearDuplicateOf : null;
+  delete clean.nearDuplicateOf;
+  // The id is repeated in the note the heuristic wrote, and a note that names
+  // ANY other submission goes too — matching on the id we just removed is not
+  // enough, because a note may name a submission this field never held.
+  if (Array.isArray(clean.notes)) {
+    clean.notes = (clean.notes as unknown[]).map((note) => {
+      if (typeof note !== "string") return note;
+      if (matched && note.includes(matched)) return NEAR_DUPLICATE_REDACTION;
+      if (/\bnear-duplicate of submission\b/i.test(note)) return NEAR_DUPLICATE_REDACTION;
+      return note;
+    });
+  }
+  log.preflight = clean;
+  return log;
+}
+
+/** What the subject reads in place of another student's submission id. */
+export const NEAR_DUPLICATE_REDACTION =
+  "this submission was flagged as a near-duplicate of another student's work (the other submission's identifier is not part of your record)";
+
 /** One student's whole Shipyard record, for the admin DPDP bundle. */
 export async function loadShipyardExport(
   db: Db,
@@ -351,7 +397,7 @@ export async function loadShipyardExport(
       confidence: r.confidence,
       metricSignalsSeen: r.metricSignalsSeen,
       renderArtifacts: r.renderArtifacts,
-      promptLog: r.promptLog,
+      promptLog: redactOtherStudentIds(r.promptLog),
       modelUsed: r.modelUsed,
       reviewedBy: r.reviewedBy,
       createdAt: r.createdAt,

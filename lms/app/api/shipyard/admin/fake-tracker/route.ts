@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { Prisma } from "@prisma/client";
 import { withAuth } from "@/lib/auth";
+import { demoModeSet } from "@/lib/auth/test-login";
 import { prisma } from "@/lib/db";
 import { resolveTrackerMode } from "@/lib/tracker/client";
 import { FakeTrackerDisabledError, setFakeSignals } from "@/lib/tracker/fake";
@@ -8,10 +9,16 @@ import { recomputeGates } from "@/lib/shipyard/gate-state";
 
 // POST /api/shipyard/admin/fake-tracker  (admin only)
 //   body { userId, signals: Partial<TrackerSignals> } → 200 { signals, states }
-//   403 not an admin
+//   403 not an admin, or production without DEMO_MODE
 //   404 that student has no product
 //   409 TRACKER_MODE=real — a metric gate an admin could clear by hand would
 //       not be a metric gate (docs/DECISIONS.md, 2026-09-14)
+//
+// NEVER available in production. `resolveTrackerMode` already fails closed
+// there, so this would 409 anyway — but the fence is stated here too, the same
+// way `simulate-byok-failures` states it, because a route that writes gate
+// signals by hand should be unreachable on the service students use rather
+// than merely refused by a mode check it does not own (SEC-5).
 //
 // This is the demo's "flip the tracker" control: set paymentsLive, land the
 // tenth workflow run, raise a self-payment flag, and watch the spine move. Every
@@ -38,6 +45,12 @@ const bodySchema = z.object({ userId: z.string().min(1), signals: signalsSchema 
 
 export const POST = withAuth(
   async (req, { user }) => {
+    if (process.env.NODE_ENV === "production" && !demoModeSet()) {
+      return Response.json(
+        { error: "The fake tracker is not available in production." },
+        { status: 403 },
+      );
+    }
     if (resolveTrackerMode() === "real") {
       return Response.json(
         { error: "The fake tracker is disabled while TRACKER_MODE=real." },
