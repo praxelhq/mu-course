@@ -82,8 +82,10 @@ a `courseId`-scoped mode of the Forge. Source of truth: `docs/shipyard/SPEC.md`
   Praxy payload.
 - `lib/shipyard/products.ts` — `ensureProduct` (get-or-create, plus the six
   checkpoint states), `renameProduct`, `connectTracker`/`parseTrackerSlug`.
-- `lib/shipyard/spine.ts` — `loadSpine(userId)` builds the whole `SpineView`;
-  `spineVersion(view)` is the poll's content hash. The only DB→view mapper.
+- `lib/shipyard/spine.ts` — `loadSpine(userId)` builds the whole `SpineView`,
+  grade line included (`loadGradeLine`); `spineVersion(view)` is the poll's
+  content hash. The only DB→view mapper. It also decides `heldPass`, so the
+  page, the poll and the drill-down agree on what a student is being told.
 - `lib/shipyard/submissions.ts` — `createSubmission`, every refusal a student
   can meet (404/409/400/429) and the only writer of `ShipyardSubmission`.
 - `lib/shipyard/review-complete.ts` — `completeReview`, the one path a verdict
@@ -166,13 +168,25 @@ a `courseId`-scoped mode of the Forge. Source of truth: `docs/shipyard/SPEC.md`
   admin/checkpoints (+ `[key]` PATCH, `reset-to-seed/[key]`),
   admin/grades/{finalise,recompute}.
 - `app/shipyard/**` — the student spine and grade line, `instructor/` (the
-  section matrix, the review queue, `students/[userId]` drill-down),
-  `admin/` (the bench), and `demo/` (the persona picker, test-login only).
+  section matrix, the human review queue, `students/[userId]` drill-down),
+  `admin/` (the bench: five `?tab=` panels — routing & cost, checkpoints,
+  weights, grades, tracker), and `demo/` (the persona picker, test-login only).
 - `components/shipyard/**` — the visual system (`shipyard.css`) and every
-  Shipyard component: the spine's rail, cards, verdict panel, signal strip,
+  Shipyard component: the spine's rail, cards, verdict panel (returned, in
+  review, HELD PASS, passed), signal strip with its `refresh-signals` button,
   submit form (S3 presign + PUT with per-file progress), connect-tracker line,
-  the matrix grid and its 8s poll, the two staff actions, the fake-tracker
-  form, and the demo switcher.
+  `dispute-form` (one appeal per returned verdict), the matrix grid and its 8s
+  poll, the two staff actions, the fake-tracker form, and the demo switcher.
+  - `review-actions.tsx` — resolve → pass / resolve → return (each a reason
+    and a confirm) and the second opinion, shared by the queue and the
+    drill-down so the two screens cannot drift.
+  - `admin-controls.tsx` — the routing profile and kill-switch reset, the BYOK
+    simulator, the weights form (live sum, must be 100), grade recompute and
+    the per-section finalise with `force` behind its own confirm.
+  - `admin-checkpoints.tsx` — the six-row checkpoint editor, with
+    `lib/shipyard/checkpoint-admin.ts`'s rules mirrored client-side as hints.
+  - `cost-chart.tsx` — the 14-day spend line, hand-written inline SVG. No
+    chart library anywhere in the Shipyard.
 - `prisma/seed-shipyard.ts` — `seedShipyard(tx, ctx)`, called from `seed.ts`.
 - Prisma models are all `Shipyard*` and carry `courseId` (default `course-2`).
 
