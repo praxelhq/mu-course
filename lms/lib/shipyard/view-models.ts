@@ -34,6 +34,8 @@ export type SignalView = {
 export type ReasonView = { criterion: string; met: boolean; note: string };
 
 export type ReviewView = {
+  /** The `ShipyardReview` row id — what a dispute is filed against. */
+  id: string;
   verdict: "pass" | "return";
   reasons: ReasonView[];
   /** 0–1. Below 0.7 the review is queued for a human before it counts. */
@@ -51,8 +53,19 @@ export type SubmissionView = {
   submittedAt: string | null;
   /** Cooldown floor. Null once the student may resubmit. */
   nextAllowedResubmitAt: string | null;
-  /** Place in the review queue while `in_review`, else null. */
+  /**
+   * Place in the review queue while `in_review`, else null. Also null on a
+   * HELD PASS: the work is not waiting on the model any more, so a queue
+   * position would be a number that predicts nothing (DECISIONS, 2026-09-15).
+   */
   queuePosition: number | null;
+  /**
+   * The reviewer passed it and the pass is being held for a person
+   * (SPEC §6; DECISIONS, 2026-09-15). The submission is still `in_review` and
+   * the gate is still shut, but the student is not being asked to fix anything
+   * — so the spine says "met the bar", not "in review", and shows no cooldown.
+   */
+  heldPass: boolean;
   review: ReviewView | null;
   fields: Record<string, unknown>;
   files: { key: string; name: string; contentType: string; bytes: number; url?: string }[];
@@ -95,6 +108,11 @@ export type CheckpointView = {
 
 export type GradeLineView = {
   provisional: boolean;
+  /** Set only once faculty have finalised; null while provisional. */
+  finalisedAt?: string | null;
+  finalisedBy?: string | null;
+  /** The `weightsVersion` these numbers were computed under. */
+  weightsVersion?: string | null;
   /** The graduation condition (SPEC §7) — a gate on the grade, not a weight. */
   allCheckpointsCleared: boolean;
   total: number | null;

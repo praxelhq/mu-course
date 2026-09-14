@@ -297,6 +297,9 @@ export type StoredGrade = {
   total: number;
   allCheckpointsCleared: boolean;
   provisional: boolean;
+  weightsVersion?: string;
+  finalisedBy?: string | null;
+  finalisedAt?: Date | null;
 };
 
 function parseComponents(value: unknown): Partial<Record<GradeComponentKey, ComponentEvidence>> {
@@ -315,6 +318,11 @@ export function gradeLineView(grade: StoredGrade | null, weights: GradeWeights):
   const stored = grade ? parseComponents(grade.components) : {};
   return {
     provisional: grade ? grade.provisional : true,
+    // Who signed it off and when — rendered by the faculty drill-down, and by
+    // the student's own line once it stops being provisional.
+    finalisedAt: grade?.finalisedAt ? grade.finalisedAt.toISOString() : null,
+    finalisedBy: grade?.finalisedBy ?? null,
+    weightsVersion: grade?.weightsVersion ?? null,
     allCheckpointsCleared: grade?.allCheckpointsCleared ?? false,
     total: grade ? round2(grade.total) : null,
     components: GRADE_COMPONENT_KEYS.map((key) => {

@@ -23,6 +23,7 @@ import type { TrackerSignals } from "@/lib/tracker/types";
 import { CHECKPOINT_ORDER, SHIPYARD_COURSE_ID } from "./constants";
 import { parseFieldSpecs, type FieldSpec } from "./fields";
 import { metricSignalsMet } from "./gates";
+import { loadGradeLine } from "./grades";
 import type {
   CheckpointView,
   FieldSpecView,
@@ -210,6 +211,7 @@ export function spineVersion(view: SpineView): string {
               submittedAt: c.latestSubmission.submittedAt,
               nextAllowedResubmitAt: c.latestSubmission.nextAllowedResubmitAt,
               queuePosition: c.latestSubmission.queuePosition,
+              heldPass: c.latestSubmission.heldPass,
               review: c.latestSubmission.review
                 ? {
                     verdict: c.latestSubmission.review.verdict,
@@ -321,6 +323,7 @@ export async function loadSpine(userId: string, opts: LoadSpineOptions = {}): Pr
             orderBy: { createdAt: "desc" },
             take: 1,
             select: {
+              id: true,
               verdict: true,
               reasons: true,
               confidence: true,
@@ -354,6 +357,7 @@ export async function loadSpine(userId: string, opts: LoadSpineOptions = {}): Pr
       const review = latest.reviews[0];
       const reviewView: ReviewView | null = review
         ? {
+            id: review.id,
             verdict: review.verdict,
             reasons: reasonViews(review.reasons),
             confidence: review.confidence,
@@ -371,6 +375,16 @@ export async function loadSpine(userId: string, opts: LoadSpineOptions = {}): Pr
         }),
       );
 
+      // A held pass (DECISIONS, 2026-09-15): the reviewer said `pass`, the
+      // trust rules flagged it, so the submission stays `in_review` and the
+      // gate stays shut until a person agrees. It is NOT "in the queue" — the
+      // model is done with it — so it carries no position and no cooldown.
+      const heldPass =
+        latest.status === "in_review" &&
+        reviewView !== null &&
+        reviewView.verdict === "pass" &&
+        reviewView.pendingHuman;
+
       latestSubmission = {
         id: latest.id,
         status: latest.status,
@@ -380,9 +394,10 @@ export async function loadSpine(userId: string, opts: LoadSpineOptions = {}): Pr
         // A submission waits in the queue from the moment it is submitted, not
         // only once a worker has picked it up, so both states show a position.
         queuePosition:
-          latest.status === "in_review" || latest.status === "submitted"
+          !heldPass && (latest.status === "in_review" || latest.status === "submitted")
             ? await queuePositionOf(db, latest.id, latest.submittedAt)
             : null,
+        heldPass,
         review: reviewView,
         fields:
           typeof latest.fields === "object" && latest.fields !== null && !Array.isArray(latest.fields)
@@ -431,9 +446,10 @@ export async function loadSpine(userId: string, opts: LoadSpineOptions = {}): Pr
       : null,
     checkpoints,
     currentOrder: currentOrderFrom(checkpoints),
-    // M4 writes the grade line; until then the spine says nothing rather than
-    // showing a total nobody computed.
-    grade: null,
+    // The real line: four labelled components with their weights even before a
+    // single number exists, because "how this is scored" is course content a
+    // student should be able to read from week one (`gradeLineView`).
+    grade: product ? await loadGradeLine(product.id, { db }) : null,
     queueNote: QUEUE_NOTE,
     now: now.toISOString(),
   };

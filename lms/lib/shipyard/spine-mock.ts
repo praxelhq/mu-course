@@ -24,6 +24,7 @@ export type SpineScenario =
   | "in_review"
   | "mid_course"
   | "metric_blocked"
+  | "held_pass"
   | "complete";
 
 // Everything is relative to the real clock, not a frozen one: a cooldown that
@@ -270,7 +271,9 @@ function passed(key: CheckpointView["key"], passedAtDays: number, model = "gemin
       submittedAt: days(passedAtDays),
       nextAllowedResubmitAt: null,
       queuePosition: null,
+      heldPass: false,
       review: {
+        id: `rev-${key}`,
         verdict: "pass",
         reasons: [],
         confidence: 0.91,
@@ -335,7 +338,9 @@ function returnedSubmission(): SubmissionView {
     submittedAt: iso(-34),
     nextAllowedResubmitAt: iso(12),
     queuePosition: null,
+    heldPass: false,
     review: {
+      id: "rev-idea-2",
       verdict: "return",
       reasons: RETURNED_REASONS,
       confidence: 0.88,
@@ -480,6 +485,7 @@ export function mockSpine(scenario: SpineScenario): SpineView {
               submittedAt: iso(-4),
               nextAllowedResubmitAt: null,
               queuePosition: 4,
+              heldPass: false,
               review: null,
               fields: { flow: "Tailor opens WhatsApp, sends a photo of the bill…" },
               files: [
@@ -538,6 +544,61 @@ export function mockSpine(scenario: SpineScenario): SpineView {
         ],
       };
 
+    // The reviewer said pass and the trust rules held it. The student is not
+    // being asked to fix anything and there is no queue position to give —
+    // the model is finished; a person has to agree (DECISIONS, 2026-09-15).
+    case "held_pass":
+      return {
+        ...base,
+        product: PRODUCTS.mandi,
+        currentOrder: 3,
+        grade: grade([null, null, null, null], false),
+        checkpoints: [
+          passed("idea", -18),
+          passed("design", -9),
+          open("working", 3, {
+            attempts: 2,
+            latestSubmission: {
+              id: "sub-working-2",
+              status: "in_review",
+              version: 2,
+              submittedAt: iso(-52),
+              nextAllowedResubmitAt: null,
+              queuePosition: null,
+              heldPass: true,
+              review: {
+                id: "rev-working-2",
+                verdict: "pass",
+                reasons: [
+                  {
+                    criterion: "A live URL a stranger can open",
+                    met: true,
+                    note: "mandirate.app loads for a signed-out visitor and the rate table renders without a login.",
+                  },
+                  {
+                    criterion: "The core path works end to end",
+                    met: true,
+                    note: "Picked Pune, chose three vegetables, received the 6am WhatsApp preview in the same sitting.",
+                  },
+                ],
+                confidence: 0.64,
+                createdAt: iso(-49),
+                pendingHuman: true,
+                modelUsed: "z-ai/glm-5.3-flash",
+              },
+              fields: {
+                liveUrl: "https://mandirate.app",
+                jobStory: "When I am setting my morning prices, I want today's mandi rate on WhatsApp so I stop calling three traders.",
+              },
+              files: [],
+            },
+          }),
+          checkpoint("money"),
+          checkpoint("workflow"),
+          checkpoint("launch"),
+        ],
+      };
+
     // All six cleared. The grade line is the point of the screen.
     case "complete":
       return {
@@ -564,6 +625,7 @@ export const SPINE_SCENARIOS: SpineScenario[] = [
   "in_review",
   "mid_course",
   "metric_blocked",
+  "held_pass",
   "complete",
 ];
 

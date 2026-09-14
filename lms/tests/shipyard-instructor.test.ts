@@ -255,6 +255,21 @@ describe("the faculty queries, against the seed", () => {
     expect(Object.keys(money.submissions[0].reviews[0])).not.toContain("rubricScores");
   });
 
+  it("carries the same grade line the student sees", async () => {
+    if (!seeded) return;
+    const file = await loadStudentFile("user_s006");
+    // Not null: a student with a product always has the line, even with no
+    // numbers in it yet — the drill-down and the spine read one function.
+    expect(file!.grade).not.toBeNull();
+    expect(file!.grade!.components.map((c) => c.key)).toEqual([
+      "productQuality",
+      "realNumbers",
+      "workflow",
+      "distribution",
+    ]);
+    expect(file!.grade!.components.reduce((s, c) => s + c.weight, 0)).toBe(100);
+  });
+
   it("carries the checkpoint 3 render key so the drill-down can show it", async () => {
     if (!seeded) return;
     const file = await loadStudentFile("user_s006");

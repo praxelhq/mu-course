@@ -202,6 +202,7 @@ describe("spineVersion", () => {
         submittedAt: "2026-09-13T00:00:00.000Z",
         nextAllowedResubmitAt: null,
         queuePosition: null,
+        heldPass: false,
         review: null,
         fields: {},
         files: [{ key: "k", name: "n", contentType: "image/png", bytes: 1, url }],
@@ -228,7 +229,9 @@ describe("spineVersion", () => {
       submittedAt: "2026-09-13T00:00:00.000Z",
       nextAllowedResubmitAt: null,
       queuePosition: null,
+      heldPass: false,
       review: {
+        id: "rev1",
         verdict: "pass",
         reasons: [],
         confidence: 1,
@@ -290,7 +293,14 @@ describe.skipIf(!live)("loadSpine (live DB)", () => {
     expect(view.checkpoints[0].latestSubmission).toBeNull();
     expect(view.checkpoints[0].attempts).toBe(0);
     expect(view.queueNote).toBe(QUEUE_NOTE);
-    expect(view.grade).toBeNull();
+    // A student with nothing scored still gets the LINE: four labelled
+    // components and their weights, no numbers. How the course is scored is
+    // course content, not a reward for finishing (SPEC §7).
+    expect(view.grade).not.toBeNull();
+    expect(view.grade!.total).toBeNull();
+    expect(view.grade!.provisional).toBe(true);
+    expect(view.grade!.components).toHaveLength(4);
+    expect(view.grade!.components.every((c) => c.weight > 0)).toBe(true);
     // The bar is published; the rubric never leaves the database.
     expect(view.checkpoints[0].barMarkdown).toContain("You clear this when");
     expect(JSON.stringify(view)).not.toContain("passThreshold");
@@ -353,6 +363,49 @@ describe.skipIf(!live)("loadSpine (live DB)", () => {
     // A review gate never carries signals.
     expect(view.checkpoints[0].signals).toBeNull();
     expect(view.checkpoints[0].signalsRefreshedAt).toBeNull();
+  });
+
+  it("reads a held pass as met-the-bar, with no queue position", async () => {
+    if (!seeded) return;
+    // Any submission the seed left `in_review` with a held pass; if the cohort
+    // has none, there is nothing to assert and the test says so by skipping.
+    const held = await prisma!.shipyardSubmission.findFirst({
+      where: {
+        status: "in_review",
+        reviews: { some: { verdict: "pass", needsHuman: true, humanResolvedAt: null } },
+      },
+      select: { checkpointId: true, product: { select: { userId: true } } },
+    });
+    if (!held) return;
+
+    const view = await loadSpine(held.product.userId, {
+      db: prisma,
+      presign: async () => undefined,
+    });
+    const cp = view.checkpoints.find((c) => c.id === held.checkpointId)!;
+    const sub = cp.latestSubmission!;
+    expect(sub.heldPass).toBe(true);
+    // The model is finished with it, so a queue position would predict nothing.
+    expect(sub.queuePosition).toBeNull();
+    expect(sub.review!.verdict).toBe("pass");
+    expect(sub.review!.pendingHuman).toBe(true);
+    // And the gate has NOT moved.
+    expect(cp.state).not.toBe("passed");
+  });
+
+  it("carries the review id a dispute is filed against", async () => {
+    if (!seeded) return;
+    const returned = await prisma!.shipyardSubmission.findFirst({
+      where: { status: "returned", reviews: { some: {} } },
+      select: { product: { select: { userId: true } }, checkpointId: true },
+    });
+    if (!returned) return;
+    const view = await loadSpine(returned.product.userId, {
+      db: prisma,
+      presign: async () => undefined,
+    });
+    const cp = view.checkpoints.find((c) => c.id === returned.checkpointId)!;
+    expect(cp.latestSubmission!.review!.id).toMatch(/.+/);
   });
 
   it("hashes to the same version twice in a row", async () => {

@@ -18,7 +18,8 @@ import { createTrackerClient, type TrackerClient } from "@/lib/tracker/client";
 import type { TrackerSignals } from "@/lib/tracker/types";
 import { SHIPYARD_COURSE_ID } from "./constants";
 import { parseStoredFiles, reasonViews, signalViews } from "./spine";
-import type { CheckpointStateView, SignalView } from "./view-models";
+import { loadGradeLine } from "./grades";
+import type { CheckpointStateView, GradeLineView, SignalView } from "./view-models";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -364,8 +365,12 @@ export type StudentFile = {
   } | null;
   checkpoints: StudentCheckpointView[];
   signalsRefreshedAt: string | null;
-  /** M4 writes this. Null means "nobody has scored anything yet". */
-  grade: null;
+  /**
+   * The SAME line the student sees (`loadGradeLine`), so a conversation about
+   * a number cannot turn into a conversation about two screens. Null only when
+   * the student has no product yet.
+   */
+  grade: GradeLineView;
 };
 
 function asRecord(value: unknown): Record<string, unknown> {
@@ -563,7 +568,7 @@ export async function loadStudentFile(
     product,
     checkpoints,
     signalsRefreshedAt: signals?.fetchedAt ?? null,
-    grade: null,
+    grade: product ? await loadGradeLine(product.id, { db }) : null,
   };
 }
 
