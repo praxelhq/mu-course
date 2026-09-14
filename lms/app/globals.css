@@ -20,7 +20,15 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  /* Brand rule: no rounded corners, anywhere. */
+}
+
+/* Brand rule: no rounded corners, anywhere — with one scoped exception. The
+   Shipyard (Course 2, app/shipyard/**) follows the Shipped.money brand, whose
+   controls are 10px and panels 16px, so its subtree opts out. Everything
+   outside `.sy-root` — i.e. the whole Forge — is matched exactly as before. */
+*:not(.sy-root):not(.sy-root *),
+*:not(.sy-root):not(.sy-root *)::before,
+*:not(.sy-root):not(.sy-root *)::after {
   border-radius: 0 !important;
 }
 

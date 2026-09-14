@@ -1,0 +1,1592 @@
+/* ===========================================================================
+   THE SHIPYARD · visual system (Course 2 portal)
+
+   Brand: SHIPPED.MONEY (docs/brand/brandbook.md in the shipped-money repo).
+   White canvas on a #f7f9f8 workspace, forest green for every action, pale
+   mint for supporting structure, and lime as one small accent per view.
+   Instrument Sans carries body, headings and controls; Instrument Serif takes
+   the editorial figures (product name, the count, the open checkpoint, the
+   grade total); IBM Plex Mono is reserved for ids, figures, formulas and
+   source labels — never for general UI text.
+
+   The composition is unchanged and is the point: one hairline spine down the
+   page with six numbered stations on it, exactly one bordered white card (the
+   station you are standing at), verdict above the bar once there is one, and
+   a big honest figure for where you are.
+
+   The Forge root layout paints Parchment on <body> and enforces
+   `border-radius: 0` globally; both are overridden inside `.sy-root` only —
+   see the one scoped exception in app/globals.css.
+
+   Class names are BEM-ish and all prefixed `sy-`.
+   =========================================================================== */
+
+.sy-root {
+  /* --- surfaces ------------------------------------------------------- */
+  --sy-canvas: #ffffff; /* cards, panels, the top bar */
+  --sy-workspace: #f7f9f8; /* the page behind the cards */
+  --sy-surface: #f1f7f3; /* supporting surface: tiles, wells */
+
+  /* --- text ----------------------------------------------------------- */
+  --sy-ink: #152a23;
+  --sy-ink-2: #465a50; /* secondary */
+  --sy-ink-3: #617069; /* supporting: labels, eyebrows */
+  --sy-ink-4: #76857d; /* placeholders, disabled */
+
+  /* --- action --------------------------------------------------------- */
+  --sy-primary: #175b44;
+  --sy-primary-hover: #104632;
+  --sy-on-primary: #ffffff;
+
+  /* --- accent: background only, never a text colour ------------------- */
+  --sy-accent: #d5ef83;
+  --sy-accent-ink: #152a23;
+
+  /* --- lines ---------------------------------------------------------- */
+  --sy-line: #e2eae5; /* default hairline */
+  --sy-line-2: #dfe7e2; /* card and panel borders */
+  --sy-line-3: #e0e8e3; /* tile borders */
+  --sy-line-soft: #e8eee9; /* the top bar rule */
+  --sy-line-input: #cdd8d1; /* control borders, which must be findable */
+
+  /* --- muted, bordered danger (returned / not met) -------------------- */
+  --sy-danger: #b42318;
+  --sy-danger-soft: #fbe9e7;
+  --sy-danger-line: #f0d9d5;
+
+  /* --- radius --------------------------------------------------------- */
+  --sy-r-chip: 6px;
+  --sy-r-control: 10px;
+  --sy-r-tile: 12px;
+  --sy-r-card: 16px;
+
+  /* --- type ----------------------------------------------------------- */
+  --sy-font-sans: var(--font-instrument-sans), ui-sans-serif, system-ui,
+    -apple-system, "Segoe UI", Roboto, sans-serif;
+  --sy-font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
+  --sy-font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, Menlo,
+    Consolas, monospace;
+
+  /* --- metrics -------------------------------------------------------- */
+  --sy-gutter: 20px;
+  --sy-control-h: 44px;
+  --sy-station: 3.25rem;
+
+  --sy-1: 0.25rem;
+  --sy-2: 0.5rem;
+  --sy-3: 0.75rem;
+  --sy-4: 1rem;
+  --sy-5: 1.5rem;
+  --sy-6: 2rem;
+  --sy-7: 3rem;
+  --sy-8: 4.5rem;
+
+  background: var(--sy-workspace);
+  color: var(--sy-ink);
+  font-family: var(--sy-font-sans);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-rendering: optimizeLegibility;
+}
+
+@media (min-width: 40rem) {
+  .sy-root {
+    --sy-gutter: 32px;
+  }
+}
+
+/* --- undo the Forge's global element styling inside this subtree -------- */
+
+.sy-root h1,
+.sy-root h2,
+.sy-root h3,
+.sy-root h4,
+.sy-root h5 {
+  font-family: var(--sy-font-sans);
+  font-weight: 600;
+  color: var(--sy-ink);
+  letter-spacing: -0.01em;
+}
+
+.sy-root a {
+  color: var(--sy-primary);
+  text-decoration-color: currentColor;
+}
+
+.sy-root code,
+.sy-root kbd,
+.sy-root pre {
+  font-family: var(--sy-font-mono) !important;
+}
+
+.sy-root :focus-visible {
+  outline: 2px solid var(--sy-primary);
+  outline-offset: 2px;
+}
+
+.sy-root :where(table, .sy-n, .sy-figure) {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ===========================================================================
+   Shared type roles
+   =========================================================================== */
+
+/* Eyebrows are Instrument Sans, not mono: small, semibold, modest tracking. */
+.sy-eyebrow {
+  font-family: var(--sy-font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sy-ink-3);
+  margin: 0;
+}
+
+/* Mono is reserved: ids, station numbers, formulas, source labels. */
+.sy-mono {
+  font-family: var(--sy-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Editorial serif — the few figures that carry the page. */
+.sy-root .sy-display {
+  font-family: var(--sy-font-serif);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  color: var(--sy-ink);
+  margin: 0;
+}
+
+.sy-root .sy-display em {
+  font-style: italic;
+}
+
+.sy-root .sy-title {
+  font-family: var(--sy-font-sans);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.sy-prose {
+  color: var(--sy-ink-2);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  max-width: 62ch;
+}
+
+/* ===========================================================================
+   Top bar
+   =========================================================================== */
+
+.sy-topbar {
+  background: var(--sy-canvas);
+  border-bottom: 1px solid var(--sy-line-soft);
+}
+
+.sy-topbar__inner {
+  max-width: 82rem;
+  margin: 0 auto;
+  padding: var(--sy-2) var(--sy-gutter);
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  gap: var(--sy-5);
+  flex-wrap: wrap;
+}
+
+.sy-root .sy-wordmark {
+  text-decoration: none;
+  color: var(--sy-ink);
+  display: block;
+  flex: 0 0 auto;
+  padding-block: var(--sy-2);
+}
+
+.sy-wordmark__eyebrow {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sy-ink-3);
+  margin-bottom: 0.0625rem;
+}
+
+.sy-root .sy-wordmark__name {
+  display: block;
+  font-family: var(--sy-font-serif);
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.sy-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--sy-5);
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+.sy-nav__link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--sy-control-h);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--sy-ink-2);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: color 150ms ease-out, border-color 150ms ease-out;
+}
+
+.sy-nav__link:hover {
+  color: var(--sy-primary);
+  border-bottom-color: var(--sy-primary);
+}
+
+.sy-nav__link--current {
+  color: var(--sy-ink);
+  border-bottom-color: var(--sy-primary);
+}
+
+.sy-nav__sep {
+  width: 1px;
+  height: 1.25rem;
+  background: var(--sy-line);
+}
+
+.sy-nav__link--away {
+  color: var(--sy-ink-3);
+}
+
+/* ===========================================================================
+   Page frame
+   =========================================================================== */
+
+.sy-main {
+  flex: 1;
+  width: 100%;
+  max-width: 82rem;
+  margin: 0 auto;
+  padding: var(--sy-6) var(--sy-gutter) var(--sy-8);
+}
+
+@media (min-width: 62rem) {
+  .sy-main {
+    padding-top: var(--sy-7);
+  }
+}
+
+.sy-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sy-7);
+}
+
+@media (min-width: 62rem) {
+  .sy-layout {
+    grid-template-columns: minmax(0, 1fr) 15rem;
+    gap: var(--sy-8);
+    align-items: start;
+  }
+}
+
+.sy-aside {
+  display: none;
+}
+
+@media (min-width: 62rem) {
+  .sy-aside {
+    display: block;
+    position: sticky;
+    top: var(--sy-5);
+  }
+}
+
+/* ===========================================================================
+   Spine header — where am I, in one glance
+   =========================================================================== */
+
+.sy-header {
+  display: grid;
+  gap: var(--sy-5);
+  padding-bottom: var(--sy-6);
+  border-bottom: 1px solid var(--sy-line);
+  margin-bottom: var(--sy-6);
+}
+
+@media (min-width: 48rem) {
+  .sy-header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: var(--sy-6);
+  }
+}
+
+.sy-header__name {
+  font-size: clamp(2.25rem, 6vw, 3.25rem);
+  margin-top: var(--sy-2);
+}
+
+.sy-header__name--unset {
+  color: var(--sy-ink-3);
+}
+
+.sy-header__line {
+  margin: var(--sy-3) 0 0;
+  color: var(--sy-ink-2);
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 46ch;
+}
+
+.sy-header__url {
+  display: inline-flex;
+  align-items: center;
+  margin-top: var(--sy-3);
+  font-family: var(--sy-font-mono);
+  font-size: 0.75rem;
+  color: var(--sy-primary);
+  text-decoration: none;
+  background: var(--sy-surface);
+  border: 1px solid var(--sy-line-3);
+  border-radius: var(--sy-r-chip);
+  padding: 0.25rem 0.5rem;
+}
+
+.sy-header__url:hover {
+  border-color: var(--sy-primary);
+}
+
+/* The big honest figure. */
+.sy-progress {
+  display: grid;
+  gap: var(--sy-3);
+  justify-items: start;
+}
+
+@media (min-width: 48rem) {
+  .sy-progress {
+    justify-items: end;
+    text-align: right;
+  }
+}
+
+.sy-progress__count {
+  display: flex;
+  align-items: baseline;
+  gap: 0.125rem;
+  font-family: var(--sy-font-serif);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.sy-progress__cleared {
+  font-size: 3.5rem;
+  color: var(--sy-primary);
+}
+
+.sy-progress__of {
+  font-size: 1.625rem;
+  color: var(--sy-ink-3);
+}
+
+.sy-progress__ticks {
+  display: flex;
+  gap: 0.3125rem;
+}
+
+.sy-progress__tick {
+  width: 1.375rem;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--sy-line);
+}
+
+.sy-progress__tick--done {
+  background: var(--sy-primary);
+}
+
+.sy-progress__tick--here {
+  background: var(--sy-accent);
+}
+
+.sy-header__due {
+  color: var(--sy-ink-3);
+  letter-spacing: 0.02em;
+}
+
+.sy-header__due b {
+  color: var(--sy-ink);
+  font-weight: 600;
+}
+
+/* ===========================================================================
+   The rail of six
+   =========================================================================== */
+
+.sy-cp {
+  display: grid;
+  grid-template-columns: var(--sy-station) minmax(0, 1fr);
+  position: relative;
+}
+
+/* Marker and station number sit side by side on one baseline, so the hairline
+   that threads the stations together never runs through the numerals. */
+.sy-cp__gutter {
+  align-self: start;
+  padding-top: 0.3125rem;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.sy-cp__thread {
+  position: absolute;
+  left: 0.5rem;
+  top: 1.75rem;
+  bottom: 0;
+  width: 1px;
+  background: var(--sy-line);
+}
+
+.sy-cp:last-child .sy-cp__thread {
+  display: none;
+}
+
+.sy-cp--passed .sy-cp__thread {
+  background: var(--sy-primary);
+  opacity: 0.28;
+}
+
+/* Station markers. */
+.sy-mark {
+  position: relative;
+  display: block;
+  width: 1.0625rem;
+  height: 1.0625rem;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.sy-mark--passed {
+  background: var(--sy-primary);
+  border: 1px solid var(--sy-primary);
+}
+
+/* Check glyph drawn in CSS — no emoji, no icon font. */
+.sy-mark--passed::after {
+  content: "";
+  position: absolute;
+  left: 0.3125rem;
+  top: 0.1875rem;
+  width: 0.25rem;
+  height: 0.4375rem;
+  border-right: 1.5px solid var(--sy-on-primary);
+  border-bottom: 1.5px solid var(--sy-on-primary);
+  transform: rotate(42deg);
+}
+
+/* The one accent: the station you are standing at. */
+.sy-mark--open {
+  background: var(--sy-accent);
+  border: 1px solid #c2e06a;
+}
+
+.sy-mark--locked {
+  border: 1px solid var(--sy-line-input);
+  background: var(--sy-canvas);
+}
+
+.sy-cp__order {
+  display: block;
+  font-family: var(--sy-font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.02em;
+  color: var(--sy-ink-3);
+}
+
+.sy-cp--open .sy-cp__order,
+.sy-cp--passed .sy-cp__order {
+  color: var(--sy-ink-3);
+}
+
+.sy-cp__body {
+  padding-bottom: var(--sy-6);
+  min-width: 0;
+}
+
+/* --- passed / locked: quiet rows on the workspace, no card -------------- */
+
+.sy-cp--passed .sy-cp__body,
+.sy-cp--locked .sy-cp__body {
+  padding-bottom: var(--sy-5);
+}
+
+.sy-cp__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sy-4);
+  flex-wrap: wrap;
+}
+
+@media (max-width: 30rem) {
+  .sy-cp__row {
+    display: block;
+  }
+  .sy-cp__cleared,
+  .sy-cp__locked-tag {
+    display: block;
+    margin-top: var(--sy-1);
+  }
+}
+
+.sy-cp__heading {
+  font-size: 1.0625rem;
+}
+
+.sy-cp--passed .sy-cp__heading {
+  color: var(--sy-ink);
+}
+
+.sy-cp__cleared {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sy-primary);
+  white-space: nowrap;
+}
+
+.sy-cp--locked .sy-cp__heading {
+  color: var(--sy-ink-3);
+}
+
+.sy-cp__locked-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sy-ink-3);
+  white-space: nowrap;
+}
+
+.sy-read {
+  margin-top: var(--sy-3);
+}
+
+.sy-read > summary {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--sy-primary);
+  list-style: none;
+  border-bottom: 1px solid transparent;
+  padding-block: 0.125rem;
+}
+
+.sy-read > summary::-webkit-details-marker {
+  display: none;
+}
+
+.sy-read > summary::before {
+  content: "+";
+  display: inline-block;
+  width: 1em;
+  color: var(--sy-ink-4);
+}
+
+.sy-read[open] > summary::before {
+  content: "–";
+}
+
+.sy-read > summary:hover {
+  border-bottom-color: var(--sy-primary);
+}
+
+.sy-read__body {
+  margin-top: var(--sy-4);
+  padding: var(--sy-4) var(--sy-5);
+  background: var(--sy-canvas);
+  border: 1px solid var(--sy-line-2);
+  border-radius: var(--sy-r-tile);
+  color: var(--sy-ink-2);
+  font-size: 0.875rem;
+}
+
+/* --- open: the only card on the page ----------------------------------- */
+
+.sy-cp--open .sy-cp__body {
+  background: var(--sy-canvas);
+  border: 1px solid var(--sy-line-2);
+  border-radius: var(--sy-r-card);
+  padding: var(--sy-5);
+  margin-bottom: var(--sy-6);
+  animation: sy-station-open 420ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+@media (min-width: 48rem) {
+  .sy-cp--open .sy-cp__body {
+    padding: var(--sy-5) var(--sy-6) var(--sy-6);
+  }
+}
+
+@keyframes sy-station-open {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.sy-cp__eyebrow-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sy-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--sy-3);
+}
+
+/* The "open now" eyebrow carries the accent as a chip, never as text colour. */
+.sy-eyebrow--here {
+  display: inline-flex;
+  align-items: center;
+  background: var(--sy-surface);
+  color: var(--sy-primary);
+  border: 1px solid var(--sy-line-3);
+  border-radius: var(--sy-r-chip);
+  padding: 0.1875rem 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.sy-cp__due {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sy-ink-3);
+}
+
+.sy-cp__due--soon {
+  color: var(--sy-danger);
+  background: var(--sy-danger-soft);
+  border: 1px solid var(--sy-danger-line);
+  border-radius: var(--sy-r-chip);
+  padding: 0.1875rem 0.5rem;
+}
+
+/* The open station is the page's editorial moment. */
+.sy-cp--open .sy-cp__heading {
+  font-family: var(--sy-font-serif);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+}
+
+.sy-bar {
+  margin-top: var(--sy-4);
+  padding-top: var(--sy-4);
+  border-top: 1px solid var(--sy-line);
+  color: var(--sy-ink-2);
+  font-size: 0.9375rem;
+  max-width: 62ch;
+}
+
+.sy-bar strong {
+  color: var(--sy-ink);
+  font-weight: 600;
+}
+
+.sy-bar h3,
+.sy-bar h4,
+.sy-bar h5 {
+  font-size: 0.75rem !important;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sy-ink-3);
+}
+
+/* ===========================================================================
+   Signal strip — what the tracker sees, in its own words
+   =========================================================================== */
+
+.sy-signals {
+  margin-top: var(--sy-5);
+  padding-top: var(--sy-4);
+  border-top: 1px solid var(--sy-line);
+}
+
+.sy-signals__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  gap: var(--sy-3);
+  margin-top: var(--sy-3);
+}
+
+.sy-signal {
+  background: var(--sy-canvas);
+  border: 1px solid var(--sy-line-3);
+  border-radius: var(--sy-r-tile);
+  padding: var(--sy-3) var(--sy-4) var(--sy-4);
+  min-width: 0;
+}
+
+.sy-signal__label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sy-ink-3);
+}
+
+.sy-signal__value {
+  display: flex;
+  align-items: center;
+  gap: var(--sy-2);
+  margin-top: var(--sy-2);
+  font-family: var(--sy-font-sans);
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  color: var(--sy-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.sy-signal--met {
+  background: var(--sy-surface);
+}
+
+.sy-signal--met .sy-signal__value {
+  color: var(--sy-primary);
+}
+
+.sy-signal--unmet {
+  background: var(--sy-danger-soft);
+  border-color: var(--sy-danger-line);
+}
+
+.sy-signal--unmet .sy-signal__value {
+  color: var(--sy-danger);
+}
+
+/* met / not-met marks, drawn, not typed */
+.sy-signal__mark {
+  flex: 0 0 auto;
+  position: relative;
+  width: 0.875rem;
+  height: 0.875rem;
+  border: 1.5px solid currentColor;
+  border-radius: 4px;
+}
+
+.sy-signal--met .sy-signal__mark::after {
+  content: "";
+  position: absolute;
+  left: 0.25rem;
+  top: 0.0625rem;
+  width: 0.1875rem;
+  height: 0.4375rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(42deg);
+}
+
+.sy-signal--unmet .sy-signal__mark::after {
+  content: "";
+  position: absolute;
+  left: 0.1875rem;
+  top: 0.375rem;
+  width: 0.375rem;
+  height: 1.5px;
+  background: currentColor;
+}
+
+.sy-signal--unknown .sy-signal__mark {
+  border-style: dashed;
+  color: var(--sy-ink-4);
+}
+
+/* Source labels are technical information: mono earns its place here. */
+.sy-signals__note {
+  margin: var(--sy-3) 0 0;
+  font-family: var(--sy-font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.01em;
+  color: var(--sy-ink-3);
+}
+
+/* ===========================================================================
+   Verdict
+   =========================================================================== */
+
+.sy-verdict {
+  margin-top: var(--sy-5);
+  padding-top: var(--sy-4);
+  border-top: 1px solid var(--sy-line);
+}
+
+.sy-root .sy-verdict__head {
+  font-family: var(--sy-font-sans);
+  font-weight: 600;
+  font-size: 1.1875rem;
+  letter-spacing: -0.02em;
+  margin: var(--sy-2) 0 0;
+  color: var(--sy-ink);
+}
+
+.sy-verdict--returned > .sy-eyebrow:first-child {
+  display: inline-flex;
+  color: var(--sy-danger);
+  background: var(--sy-danger-soft);
+  border: 1px solid var(--sy-danger-line);
+  border-radius: var(--sy-r-chip);
+  padding: 0.1875rem 0.5rem;
+}
+
+.sy-reasons {
+  list-style: none;
+  margin: var(--sy-5) 0 0;
+  padding: 0;
+}
+
+.sy-reason {
+  padding: 0 0 var(--sy-4);
+  margin-bottom: var(--sy-4);
+  border-bottom: 1px solid var(--sy-line);
+}
+
+.sy-reason:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.sy-reason__criterion {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sy-danger);
+  margin-bottom: var(--sy-2);
+}
+
+.sy-reason__note {
+  margin: 0;
+  color: var(--sy-ink-2);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  max-width: 62ch;
+}
+
+.sy-reasons--met {
+  margin-top: var(--sy-2);
+}
+
+.sy-reasons--met .sy-reason {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: var(--sy-3);
+  display: grid;
+  gap: 0.125rem;
+}
+
+.sy-reasons--met .sy-reason__criterion {
+  color: var(--sy-ink-3);
+  margin-bottom: 0;
+}
+
+.sy-reasons--met .sy-reason__note {
+  color: var(--sy-ink-3);
+  font-size: 0.875rem;
+}
+
+.sy-met-rule {
+  display: flex;
+  align-items: center;
+  gap: var(--sy-3);
+  margin-top: var(--sy-6);
+}
+
+.sy-met-rule::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--sy-line);
+}
+
+.sy-verdict__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sy-2) var(--sy-4);
+  margin-top: var(--sy-5);
+  padding-top: var(--sy-3);
+  border-top: 1px solid var(--sy-line);
+  font-size: 0.8125rem;
+  color: var(--sy-ink-3);
+}
+
+.sy-verdict__meta > * + *::before {
+  content: "·";
+  color: var(--sy-ink-4);
+  margin-left: calc(var(--sy-2) * -1);
+  padding-right: var(--sy-2);
+}
+
+.sy-verdict__meta b {
+  color: var(--sy-ink-2);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* in review */
+
+.sy-queue {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sy-3);
+  margin-top: var(--sy-3);
+}
+
+.sy-queue__pos {
+  font-family: var(--sy-font-sans);
+  font-weight: 600;
+  font-size: 2.5rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--sy-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.sy-queue__label {
+  color: var(--sy-ink-2);
+  font-size: 0.9375rem;
+  max-width: 30ch;
+}
+
+.sy-indeterminate {
+  position: relative;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--sy-line);
+  margin-top: var(--sy-5);
+  overflow: hidden;
+}
+
+.sy-indeterminate::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 28%;
+  border-radius: 2px;
+  background: var(--sy-accent);
+  animation: sy-slide 2.4s ease-in-out infinite;
+}
+
+@keyframes sy-slide {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(360%);
+  }
+}
+
+/* ===========================================================================
+   Submit form
+   =========================================================================== */
+
+.sy-form {
+  margin-top: var(--sy-6);
+  padding-top: var(--sy-4);
+  border-top: 1px solid var(--sy-line);
+  display: grid;
+  gap: var(--sy-5);
+}
+
+.sy-form > .sy-eyebrow {
+  margin-bottom: calc(var(--sy-2) * -1);
+}
+
+.sy-field {
+  display: grid;
+  gap: var(--sy-2);
+  max-width: 38rem;
+}
+
+.sy-field__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--sy-ink);
+  letter-spacing: -0.005em;
+}
+
+.sy-field__req {
+  color: var(--sy-ink-3);
+  font-weight: 400;
+}
+
+.sy-field__help {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--sy-ink-3);
+  line-height: 1.5;
+}
+
+.sy-input,
+.sy-textarea {
+  display: block;
+  width: 100%;
+  min-height: var(--sy-control-h);
+  font-family: var(--sy-font-sans);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  color: var(--sy-ink);
+  background: var(--sy-canvas);
+  border: 1px solid var(--sy-line-input);
+  border-radius: var(--sy-r-control);
+  padding: 0.625rem 0.75rem;
+  transition: border-color 150ms ease-out;
+}
+
+.sy-input::placeholder,
+.sy-textarea::placeholder {
+  color: var(--sy-ink-4);
+}
+
+.sy-input:hover,
+.sy-textarea:hover {
+  border-color: var(--sy-ink-3);
+}
+
+.sy-input:focus,
+.sy-textarea:focus {
+  border-color: var(--sy-primary);
+}
+
+.sy-input[type="url"],
+.sy-input[type="number"] {
+  font-family: var(--sy-font-mono);
+  font-size: 0.875rem;
+}
+
+.sy-input[type="number"] {
+  max-width: 9rem;
+}
+
+.sy-input[type="url"] {
+  max-width: 32rem;
+}
+
+.sy-textarea {
+  min-height: 6rem;
+  resize: vertical;
+}
+
+/* drop zone */
+
+.sy-drop {
+  width: 100%;
+  border: 1px dashed var(--sy-line-input);
+  border-radius: var(--sy-r-control);
+  background: var(--sy-surface);
+  padding: var(--sy-5);
+  display: grid;
+  gap: var(--sy-1);
+  justify-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 150ms ease-out, background 150ms ease-out;
+}
+
+.sy-drop:hover,
+.sy-drop--over {
+  border-color: var(--sy-primary);
+  background: #eaf3ee;
+}
+
+.sy-drop__line {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--sy-ink);
+}
+
+.sy-drop__hint {
+  font-size: 0.8125rem;
+  color: var(--sy-ink-3);
+}
+
+.sy-filelist {
+  list-style: none;
+  margin: var(--sy-3) 0 0;
+  padding: 0;
+}
+
+.sy-verdict .sy-filelist {
+  margin-top: var(--sy-5);
+}
+
+/* File names and sizes are technical detail: mono. */
+.sy-filelist__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sy-3);
+  padding: var(--sy-2) 0;
+  border-bottom: 1px solid var(--sy-line);
+  font-family: var(--sy-font-mono);
+  font-size: 0.75rem;
+  color: var(--sy-ink-2);
+}
+
+.sy-filelist__size {
+  color: var(--sy-ink-3);
+  white-space: nowrap;
+}
+
+.sy-filelist__drop {
+  background: none;
+  border: none;
+  padding: var(--sy-2) 0 var(--sy-2) var(--sy-3);
+  font-family: var(--sy-font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--sy-ink-3);
+  cursor: pointer;
+}
+
+.sy-filelist__drop:hover {
+  color: var(--sy-danger);
+}
+
+/* actions */
+
+.sy-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sy-4);
+  flex-wrap: wrap;
+  padding-top: var(--sy-2);
+}
+
+.sy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--sy-control-h);
+  padding-inline: 1.25rem;
+  font-family: var(--sy-font-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1;
+  border: 1px solid transparent;
+  border-radius: var(--sy-r-control);
+  background: var(--sy-primary);
+  color: var(--sy-on-primary);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 150ms ease-out, border-color 150ms ease-out,
+    color 150ms ease-out;
+}
+
+.sy-btn:hover:not(:disabled) {
+  background: var(--sy-primary-hover);
+}
+
+.sy-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.sy-btn:disabled {
+  background: var(--sy-surface);
+  color: var(--sy-ink-3);
+  border-color: var(--sy-line-3);
+  cursor: not-allowed;
+}
+
+.sy-btn--quiet {
+  background: var(--sy-canvas);
+  color: var(--sy-ink);
+  border-color: var(--sy-line-input);
+}
+
+.sy-btn--quiet:hover:not(:disabled) {
+  background: var(--sy-canvas);
+  border-color: var(--sy-ink-2);
+}
+
+.sy-countdown {
+  font-size: 0.875rem;
+  color: var(--sy-ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ===========================================================================
+   Notice — inline system message: what happened, what to do next
+   =========================================================================== */
+
+.sy-notice {
+  background: var(--sy-canvas);
+  border: 1px solid var(--sy-line-2);
+  border-left: 3px solid var(--sy-line-input);
+  border-radius: var(--sy-r-control);
+  padding: var(--sy-3) var(--sy-4);
+  display: grid;
+  gap: var(--sy-1);
+}
+
+.sy-notice__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sy-ink-3);
+}
+
+.sy-notice__body {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--sy-ink-2);
+}
+
+.sy-notice--problem {
+  background: var(--sy-danger-soft);
+  border-color: var(--sy-danger-line);
+  border-left-color: var(--sy-danger);
+}
+
+.sy-notice--problem .sy-notice__label {
+  color: var(--sy-danger);
+}
+
+.sy-notice--staff {
+  border-left-color: var(--sy-primary);
+  margin-bottom: var(--sy-6);
+}
+
+.sy-notice--staff .sy-notice__label {
+  color: var(--sy-primary);
+}
+
+/* empty states */
+
+.sy-empty {
+  background: var(--sy-canvas);
+  border: 1px solid var(--sy-line-2);
+  border-radius: var(--sy-r-card);
+  padding: var(--sy-6);
+  display: grid;
+  gap: var(--sy-2);
+  justify-items: start;
+}
+
+.sy-root .sy-empty__head {
+  font-family: var(--sy-font-sans);
+  font-weight: 600;
+  font-size: 1.125rem;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.sy-empty__body {
+  margin: 0;
+  color: var(--sy-ink-2);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  max-width: 48ch;
+}
+
+/* ===========================================================================
+   Station index (the aside) — the running map
+   =========================================================================== */
+
+.sy-index__eyebrow {
+  padding-bottom: var(--sy-3);
+  border-bottom: 1px solid var(--sy-line);
+}
+
+.sy-index__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sy-index__item {
+  display: grid;
+  grid-template-columns: 1.5rem minmax(0, 1fr);
+  gap: var(--sy-2);
+  align-items: baseline;
+  padding: var(--sy-3) 0;
+  border-bottom: 1px solid var(--sy-line);
+  font-size: 0.875rem;
+  color: var(--sy-ink-3);
+}
+
+.sy-index__n {
+  font-family: var(--sy-font-mono);
+  font-size: 0.6875rem;
+  color: var(--sy-ink-3);
+}
+
+.sy-index__item--passed {
+  color: var(--sy-ink-2);
+}
+
+.sy-index__item--passed .sy-index__n {
+  color: var(--sy-primary);
+}
+
+.sy-index__item--open {
+  color: var(--sy-ink);
+  font-weight: 600;
+}
+
+.sy-index__item--open .sy-index__n {
+  color: var(--sy-ink);
+}
+
+.sy-index__state {
+  display: block;
+  font-family: var(--sy-font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sy-ink-3);
+  margin-top: 0.125rem;
+}
+
+.sy-index__foot {
+  margin: var(--sy-5) 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--sy-ink-3);
+}
+
+/* ===========================================================================
+   Grade line
+   =========================================================================== */
+
+.sy-grade {
+  margin-top: var(--sy-7);
+  background: var(--sy-canvas);
+  border: 1px solid var(--sy-line-2);
+  border-radius: var(--sy-r-card);
+  padding: var(--sy-5);
+}
+
+@media (min-width: 48rem) {
+  .sy-grade {
+    padding: var(--sy-6);
+  }
+}
+
+.sy-grade--standalone {
+  margin-top: 0;
+}
+
+.sy-grade__graduation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sy-4);
+  flex-wrap: wrap;
+  margin-top: var(--sy-4);
+  padding-bottom: var(--sy-4);
+  border-bottom: 1px solid var(--sy-line);
+}
+
+.sy-root .sy-grade__graduation-q {
+  font-family: var(--sy-font-sans);
+  font-weight: 600;
+  font-size: clamp(1.125rem, 2.6vw, 1.375rem);
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--sy-ink);
+}
+
+.sy-grade__graduation-a {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sy-ink-3);
+  background: var(--sy-surface);
+  border: 1px solid var(--sy-line-3);
+  border-radius: var(--sy-r-chip);
+  padding: 0.3125rem 0.625rem;
+  white-space: nowrap;
+}
+
+/* The single accent moment on a finished spine. */
+.sy-grade__graduation-a--yes {
+  color: var(--sy-accent-ink);
+  background: var(--sy-accent);
+  border-color: #c2e06a;
+}
+
+.sy-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--sy-5);
+}
+
+.sy-table th {
+  text-align: left;
+  font-family: var(--sy-font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sy-ink-3);
+  padding: 0 0 var(--sy-2);
+  border-bottom: 1px solid var(--sy-line);
+}
+
+.sy-table td {
+  padding: var(--sy-3) 0;
+  border-bottom: 1px solid var(--sy-line);
+  vertical-align: baseline;
+  font-size: 0.9375rem;
+}
+
+/* The grade columns are a formula: mono, tabular, right-aligned. */
+.sy-table .sy-n {
+  text-align: right;
+  font-family: var(--sy-font-mono);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  padding-left: var(--sy-4);
+  color: var(--sy-ink);
+}
+
+.sy-table__label {
+  color: var(--sy-ink);
+  font-weight: 500;
+}
+
+/* Source attribution is technical information. */
+.sy-table__source {
+  display: block;
+  font-family: var(--sy-font-mono);
+  font-size: 0.6875rem;
+  color: var(--sy-ink-3);
+  margin-top: 0.1875rem;
+}
+
+.sy-table__pending {
+  color: var(--sy-ink-3);
+  font-family: var(--sy-font-sans);
+  font-weight: 400;
+}
+
+.sy-table tfoot td {
+  border-bottom: none;
+  border-top: 1px solid var(--sy-ink);
+  padding-top: var(--sy-4);
+}
+
+.sy-grade__total {
+  font-family: var(--sy-font-serif);
+  font-weight: 400;
+  font-size: 2.25rem;
+  letter-spacing: -0.03em;
+  color: var(--sy-primary);
+  line-height: 1;
+}
+
+.sy-grade__foot {
+  margin: var(--sy-4) 0 0;
+  font-size: 0.8125rem;
+  color: var(--sy-ink-3);
+}
+
+/* ===========================================================================
+   Route states
+   =========================================================================== */
+
+.sy-route {
+  max-width: 40rem;
+  padding: var(--sy-8) var(--sy-gutter);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.sy-skeleton {
+  display: grid;
+  gap: var(--sy-4);
+  margin-top: var(--sy-6);
+}
+
+.sy-skeleton__bar {
+  background: var(--sy-canvas);
+  border: 1px solid var(--sy-line-2);
+  border-radius: var(--sy-r-tile);
+}
+
+/* ===========================================================================
+   Motion off
+   =========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .sy-cp--open .sy-cp__body,
+  .sy-indeterminate::after {
+    animation: none;
+  }
+  .sy-indeterminate::after {
+    width: 100%;
+  }
+  .sy-drop,
+  .sy-btn,
+  .sy-input,
+  .sy-textarea,
+  .sy-nav__link {
+    transition: none;
+  }
+  .sy-btn:active:not(:disabled) {
+    transform: none;
+  }
+}
+
+.sy-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
