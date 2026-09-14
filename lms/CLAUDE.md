@@ -41,3 +41,58 @@
 - The app tier never proxies file bytes. Uploads and downloads use S3 presigned URLs only.
 - Tables are single-course today but designed so a `courseId` column can be added later — no schema decisions that assume exactly one course forever.
 - Every non-obvious choice gets a line in `docs/DECISIONS.md`.
+
+## Shipyard (Course 2) — "the Forge in Course 2 mode"
+
+The Shipyard is the Course 2 product-shipping portal, built inside this repo as
+a `courseId`-scoped mode of the Forge. Source of truth: `docs/shipyard/SPEC.md`
+(the build prompt) and `docs/shipyard/ARCHITECTURE.md` (how it is fitted in).
+
+### Module map
+
+- `lib/shipyard/constants.ts` — `SHIPYARD_COURSE_ID`, checkpoint order, route
+  paths, queue names, reviewer concurrency.
+- `lib/shipyard/checkpoints.ts` — the six checkpoints as data (bar, rubric,
+  gate type, metric signals, field schema). Seeded once; edited as rows after.
+- `lib/shipyard/fields.ts` — the `FieldSpec` contract and
+  `validateSubmissionFields`. The only interpreter of a checkpoint's form.
+- `lib/shipyard/gates.ts` — `resolveGates`, pure. The gate rule lives here.
+- `lib/shipyard/gate-state.ts` — `recomputeGates(productId, deps)`, the only
+  writer of `ShipyardCheckpointState`.
+- `lib/shipyard/cooldown.ts` — the resubmit cooldown, pure.
+- `lib/shipyard/scoring.ts` — the four weighted components, `computeGrade` and
+  `deriveComponents`, pure.
+- `lib/tracker/` — Shipped.money. `types.ts` (signals + Zod), `client.ts`
+  (`createTrackerClient`, `TRACKER_MODE`), `real.ts` (HTTP), `fake.ts`
+  (ShipyardTrackerOverride, demos only).
+- `lib/ai/router.ts` — the routing table, prices, `computeCostUsd`, the BYOK
+  kill-switch. The only place a model slug appears.
+- `lib/ai/openrouter.ts` — the only module speaking HTTP to OpenRouter.
+- `lib/ai/openrouter-fake.ts` — the deterministic responder used with no key.
+- `worker/shipyard.ts` — the Shipyard queues, its own Railway service.
+- `prisma/seed-shipyard.ts` — `seedShipyard(tx, ctx)`, called from `seed.ts`.
+- Prisma models are all `Shipyard*` and carry `courseId` (default `course-2`).
+
+### Invariants (in addition to the Forge's)
+
+- `resolveGates` in `lib/shipyard/gates.ts` is the only place gate state is
+  decided. Routes and pages read `ShipyardCheckpointState`, which is written
+  only by `recomputeGates(productId)`.
+- A metric gate is cleared by tracker signals alone. No student-typed field
+  ever feeds a metric signal. A blocking flag from the tracker makes every
+  metric signal false. The fake tracker's override table is admin-only and
+  refuses writes when `TRACKER_MODE=real`.
+- The reviewer never sees a student's name, email, or section.
+- Every model call writes model, provider, tokens and USD to the
+  `ShipyardReview` row (verdicts) or `CostLog` (pre-flight, escalation, evals).
+- The Shipyard does NOT use `lib/ai/client.ts` (Course 1's Anthropic SDK).
+  Every Shipyard model call goes through OpenRouter; the boundary is enforced
+  by `tests/shipyard-ai-boundary.test.ts`.
+- Nothing reaches students before `pnpm eval:reviewer` numbers are logged in
+  `docs/DECISIONS.md`.
+
+### Commands
+
+- `pnpm worker:shipyard` — run the Shipyard pg-boss worker
+- `pnpm eval:reviewer` — the fixture-agreement release gate (M2.5)
+- `pnpm vitest run tests/shipyard-*.test.ts` — the Shipyard unit suite

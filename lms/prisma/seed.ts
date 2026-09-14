@@ -14,6 +14,7 @@ import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { Prisma, PrismaClient } from "@prisma/client";
 import { allocatePoints, mulberry32, partitionTeams } from "../lib/seed-utils";
+import { seedShipyard } from "./seed-shipyard";
 
 // ---------------------------------------------------------------------------
 // Fixed inputs
@@ -217,6 +218,9 @@ export const DEMO_SEED_TABLES = [
   "InterviewTurn",
   "InterviewRetake",
   "InterviewWindow",
+  // Missing until 2026-09-14: its FK to User made every `pnpm seed` fail
+  // with "cannot truncate a table referenced in a foreign key constraint".
+  "InterviewPrerequisite",
   "Quiz",
   "QuizAttempt",
   "DataRace",
@@ -257,6 +261,16 @@ export const DEMO_SEED_TABLES = [
   "ServiceHeartbeat",
   "PortfolioEntry",
   "ConfigKV",
+  // Shipyard (Course 2), children before parents.
+  "ShipyardReview",
+  "ShipyardSubmission",
+  "ShipyardCheckpointState",
+  "ShipyardGrade",
+  "ShipyardTrackerOverride",
+  "ShipyardProduct",
+  "ShipyardCheckpoint",
+  "ShipyardWeights",
+  "ShipyardRouterState",
 ] as const;
 
 export function assertDemoSeedResetAllowed(
@@ -624,6 +638,11 @@ export async function main(): Promise<void> {
           return {
             fields: {
               appUrl: `https://forge-${subId}.lovable.app`,
+              // The brief fields the `app` type has required since the session-4
+              // redesign; the seed generator had never been updated to send them.
+              idea: "A price-comparison dashboard for the anchor company's category.",
+              audience: "Category managers at mid-size retailers who price by hand each week.",
+              userFlows: "Pick a category, see competitor prices for the week, export the gaps, and leave an email to get the next refresh.",
               githubUrl: `https://github.com/praxel-mu/${subId}`,
               writeup: "A price-comparison dashboard for our anchor company's category, with a lead-capture form wired to a sheet.",
             },
@@ -636,6 +655,8 @@ export async function main(): Promise<void> {
             fields: {
               blueprintFile: files[0],
               recordingFile: files[1],
+              // Required since the session-5 redesign; the generator lagged.
+              recordingUrl: `https://www.loom.com/share/${subId}`,
               usefulness: "Replaces the ops team's Monday copy-paste of order exceptions into WhatsApp: saves ~40 minutes a week and removes two manual error points.",
             },
             files,
@@ -1111,6 +1132,16 @@ export async function main(): Promise<void> {
         await tx.portfolioEntry.createMany({ data: portfolioEntries });
         await tx.configKV.createMany({ data: configKVs });
         await tx.notification.createMany({ data: notifications });
+
+        // Course 2 ("the Shipyard") rides the same wipe-and-recreate, so one
+        // `pnpm seed` leaves both courses consistent. See prisma/seed-shipyard.ts.
+        await seedShipyard(tx, {
+          students: students.map((st) => ({
+            id: st.id,
+            sectorName: teams.find((t) => t.id === st.teamId)?.sectorName ?? "general business",
+          })),
+          now: T.now,
+        });
       },
       { maxWait: 15_000, timeout: 120_000 },
     );

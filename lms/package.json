@@ -19,6 +19,7 @@
     "check:evaluator-boundary": "node scripts/check-evaluator-boundary.mjs",
     "check:evaluator-boundary:release": "node scripts/check-evaluator-boundary.mjs --require-private",
     "eval:grading": "tsx --env-file-if-exists=.env scripts/eval-grading.ts",
+    "eval:reviewer": "tsx --env-file-if-exists=.env scripts/eval-reviewer.ts",
     "interview:simulate": "tsx --env-file-if-exists=.env scripts/interview-simulate.ts",
     "deadline:set": "tsx --env-file-if-exists=.env scripts/set-assignment-deadline.ts",
     "interview:rescue": "tsx --env-file-if-exists=.env scripts/rescue-stranded-interview.ts",
@@ -26,6 +27,7 @@
     "prereq:backfill": "tsx --env-file-if-exists=.env scripts/backfill-prerequisite-text.ts",
     "interview:remark": "tsx --env-file-if-exists=.env scripts/remark-interviews.ts",
     "worker:dev": "tsx --env-file-if-exists=.env worker/index.ts",
+    "worker:shipyard": "tsx --env-file-if-exists=.env worker/shipyard.ts",
     "e2e": "playwright test",
     "load:baseline": "k6 run scripts/load/k6-baseline.js",
     "load:quiz-burst": "k6 run scripts/load/k6-quiz-burst.js"
