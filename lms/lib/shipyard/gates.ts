@@ -16,6 +16,12 @@
 //   both    gate      : both halves.
 //   A checkpoint that is not reachable is `locked`; reachable and not passed is
 //   `open`.
+//   passed is STICKY   : a checkpoint that has already passed (its stored
+//                       `passedAt` is set) stays passed whatever the tracker
+//                       says today. A refund, a re-connected product or a
+//                       five-second outage is NEW INFORMATION ABOUT TODAY, not
+//                       a retraction of something a student did — and un-passing
+//                       one checkpoint re-locks every checkpoint after it.
 
 import type { ShipyardCheckpointKey, ShipyardGateState, ShipyardGateType } from "@prisma/client";
 import type { MetricSignalName, TrackerSignals } from "@/lib/tracker/types";
@@ -37,20 +43,34 @@ export type GateInput = {
   signals: TrackerSignals | null;
   /** checkpointId -> when an instructor opened it by hand, or null. */
   manualOpens: Record<string, Date | null>;
+  /**
+   * checkpointId -> when this checkpoint FIRST passed, or null: the stored
+   * `ShipyardCheckpointState.passedAt`. A checkpoint listed here is passed, full
+   * stop — no signal read, no blocking flag and no missing tracker can take it
+   * back. Optional so a caller with no history (the seed, a what-if) resolves
+   * from scratch exactly as before.
+   */
+  alreadyPassed?: Record<string, Date | null>;
 };
 
 /**
  * Why a checkpoint is in the state it is in. The reason always explains the
  * STATE, so the student spine can render it directly:
  *   locked -> previous-not-passed
- *   open   -> awaiting-*, or blocked-by-flag when the tracker raised one
+ *   open   -> awaiting-*, tracker-unreachable when we could not read the
+ *             numbers at all, or blocked-by-flag when the tracker raised one
  *   passed -> which half (or halves) cleared it
+ *
+ * `awaiting-metrics` and `tracker-unreachable` are different facts and a
+ * student deserves both: the first says the numbers are in and not there yet,
+ * the second says we have no numbers to show. Neither ever means "you lost it".
  */
 export type GateReason =
   | "previous-not-passed"
   | "awaiting-review"
   | "awaiting-metrics"
   | "awaiting-review-and-metrics"
+  | "tracker-unreachable"
   | "blocked-by-flag"
   | "review-passed"
   | "metric-passed"
@@ -162,6 +182,18 @@ function passedState(
   }
 }
 
+/** The reason a checkpoint that has ALREADY passed is passed. */
+function stickyReason(gateType: ShipyardGateType): GateReason {
+  switch (gateType) {
+    case "review":
+      return "review-passed";
+    case "metric":
+      return "metric-passed";
+    case "both":
+      return "review-and-metric-passed";
+  }
+}
+
 /**
  * Resolve every checkpoint's gate for one student, in one pass.
  * Pure: the same input and the same `now` always give the same answer.
@@ -179,12 +211,22 @@ export function resolveGates(
   let previousPassed: boolean = true;
 
   for (const cp of ordered) {
+    const manualOpen = input.manualOpens[cp.id] != null;
+    const manuallyOpened: boolean = manualOpen && !previousPassed;
+
+    // Stickiness is checked FIRST, ahead of the signals, the blocking flags and
+    // even the sequential chain: a checkpoint that passed cannot un-pass, so a
+    // checkpoint after it can never be re-locked by a number that moved.
+    if (input.alreadyPassed?.[cp.id] != null) {
+      out[cp.id] = { state: "passed", reason: stickyReason(cp.gateType), manuallyOpened };
+      previousPassed = true;
+      continue;
+    }
+
     const reviewCleared = cp.gateType === "metric" ? true : input.reviewPassed[cp.id] != null;
     const metricCleared =
       cp.gateType === "review" ? true : metricHalfCleared(cp.metricSignals, input.signals);
     const verdict = passedState(cp.gateType, reviewCleared, metricCleared);
-    const manualOpen = input.manualOpens[cp.id] != null;
-    const manuallyOpened: boolean = manualOpen && !previousPassed;
     const reachable: boolean = previousPassed || manualOpen;
 
     if (!reachable) {
@@ -193,9 +235,15 @@ export function resolveGates(
       out[cp.id] = { state: "passed", reason: verdict.reason, manuallyOpened };
     } else {
       // Name a blocking flag specifically: "awaiting-metrics" would hide why
-      // every signal suddenly reads false.
-      const reason: GateReason =
-        blocked && cp.gateType !== "review" && !metricCleared ? "blocked-by-flag" : verdict.reason;
+      // every signal suddenly reads false. Say "tracker-unreachable" when we
+      // read nothing at all and the metric half is the only thing outstanding —
+      // "awaiting-metrics" there would report a number we never saw.
+      let reason: GateReason = verdict.reason;
+      if (blocked && cp.gateType !== "review" && !metricCleared) {
+        reason = "blocked-by-flag";
+      } else if (input.signals === null && verdict.reason === "awaiting-metrics") {
+        reason = "tracker-unreachable";
+      }
       out[cp.id] = { state: "open", reason, manuallyOpened };
     }
 

@@ -50,6 +50,11 @@ function asStringArray(value: unknown): string[] {
  * the FIRST time each becomes true and never moved afterwards: they are the
  * record of when a student got there, and a later recompute must not rewrite
  * a student's history because the tracker was briefly unreachable.
+ *
+ * `state` is now write-once in the same direction: the stored `passedAt` goes
+ * back into `resolveGates` as `alreadyPassed`, so a row that reads `passed`
+ * can never be rewritten to `open` or `locked` by a signal that moved after
+ * the fact. Everything else is still re-decided from scratch on every run.
  */
 export async function recomputeGates(
   productId: string,
@@ -97,9 +102,17 @@ export async function recomputeGates(
   const byCheckpoint = new Map(existing.map((s) => [s.checkpointId, s]));
 
   const manualOpens: Record<string, Date | null> = {};
+  // What this product has ALREADY cleared. Feeding it back into the resolver is
+  // what makes `passed` one-way: without it every run re-decides a cleared gate
+  // from today's signals, and a refund or an unreachable tracker un-passes a
+  // checkpoint and re-locks every checkpoint behind it.
+  const alreadyPassed: Record<string, Date | null> = {};
   for (const c of checkpoints) {
     const row = byCheckpoint.get(c.id);
     manualOpens[c.id] = row?.manuallyOpenedBy ? (row.openedAt ?? row.updatedAt) : null;
+    // A row already stamped `passed` counts even if it predates `passedAt`;
+    // its last write is the best date we have, and it is stamped from here on.
+    alreadyPassed[c.id] = row?.passedAt ?? (row?.state === "passed" ? row.updatedAt : null);
   }
 
   const needsSignals = checkpoints.some((c) => c.gateType !== "review");
@@ -109,7 +122,10 @@ export async function recomputeGates(
     signals = await tracker.getCheckpointSignals(product.trackerProductId);
   }
 
-  const resolved = resolveGates({ checkpoints, reviewPassed, signals, manualOpens }, now);
+  const resolved = resolveGates(
+    { checkpoints, reviewPassed, signals, manualOpens, alreadyPassed },
+    now,
+  );
 
   const out: CheckpointStateRow[] = [];
   for (const c of checkpoints) {

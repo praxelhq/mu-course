@@ -233,7 +233,9 @@ describe("resolveGates — both gates", () => {
       NOW,
     );
     expect(reviewOnly.c4.state).toBe("open");
-    expect(reviewOnly.c4.reason).toBe("awaiting-metrics");
+    // The write-up passed and the tracker said nothing at all, so the reason
+    // names the silence rather than claiming we read a number.
+    expect(reviewOnly.c4.reason).toBe("tracker-unreachable");
 
     const metricOnly = resolveGates(
       input({ reviewPassed: passReviews("c1", "c2", "c3"), signals: CONNECTED }),
@@ -308,6 +310,162 @@ describe("resolveGates — blocking flags", () => {
     expect(r.c1.state).toBe("passed");
     expect(r.c2.state).toBe("open");
     expect(r.c2.reason).toBe("awaiting-review");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Stickiness: a gate that passed stays passed, whatever today's numbers say.
+// ---------------------------------------------------------------------------
+
+describe("resolveGates — passed is sticky", () => {
+  const PASSED = new Date("2026-09-12T09:00:00Z");
+
+  /** Everything through `ids` has already passed, per the stored states. */
+  function alreadyPassed(...ids: string[]): Record<string, Date | null> {
+    const out: Record<string, Date | null> = {};
+    for (const c of CHECKPOINTS) out[c.id] = ids.includes(c.id) ? PASSED : null;
+    return out;
+  }
+
+  const THROUGH_MONEY = ["c1", "c2", "c3", "c4"];
+
+  it("keeps a cleared money gate passed when the tracker cannot be reached", () => {
+    const r = resolveGates(
+      input({
+        reviewPassed: passReviews(...THROUGH_MONEY),
+        alreadyPassed: alreadyPassed(...THROUGH_MONEY),
+        signals: null,
+      }),
+      NOW,
+    );
+    expect(r.c4.state).toBe("passed");
+    expect(r.c4.reason).toBe("review-and-metric-passed");
+    // And the checkpoint behind it does not re-lock in front of the student.
+    expect(r.c5.state).toBe("open");
+    expect(r.c5.reason).toBe("tracker-unreachable");
+  });
+
+  it("keeps launch passed when a refund drops the paying-customer count to zero", () => {
+    const refunded = signals({
+      paymentsLive: true,
+      trackerConnected: true,
+      workflowTenRuns: true,
+      workflowRuns: 12,
+      hasPayingCustomer: false,
+      payingCustomers: 0,
+    });
+    const all = [...THROUGH_MONEY, "c5", "c6"];
+    const r = resolveGates(
+      input({
+        reviewPassed: passReviews("c1", "c2", "c3", "c4", "c6"),
+        alreadyPassed: alreadyPassed(...all),
+        signals: refunded,
+      }),
+      NOW,
+    );
+    for (const id of all) expect(r[id].state, id).toBe("passed");
+    expect(r.c6.reason).toBe("review-and-metric-passed");
+  });
+
+  it("keeps a passed gate passed when a blocking flag appears afterwards", () => {
+    const flagged = { ...PAYING, blockingFlags: ["self_payment_suspected"] };
+    const r = resolveGates(
+      input({
+        reviewPassed: passReviews("c1", "c2", "c3", "c4", "c6"),
+        alreadyPassed: alreadyPassed(...THROUGH_MONEY, "c5", "c6"),
+        signals: flagged,
+      }),
+      NOW,
+    );
+    // The flag is real and surfaces on the grade and the instructor queue; it
+    // does not reach back and reopen work a student already cleared.
+    expect(r.c4.state).toBe("passed");
+    expect(r.c5.state).toBe("passed");
+    expect(r.c6.state).toBe("passed");
+  });
+
+  it("a blocking flag still closes a gate that had NOT passed yet", () => {
+    const flagged = { ...PAYING, blockingFlags: ["self_payment_suspected"] };
+    const r = resolveGates(
+      input({
+        reviewPassed: passReviews("c1", "c2", "c3", "c4", "c6"),
+        alreadyPassed: alreadyPassed("c1", "c2", "c3"),
+        signals: flagged,
+      }),
+      NOW,
+    );
+    expect(r.c4.state).toBe("open");
+    expect(r.c4.reason).toBe("blocked-by-flag");
+    expect(r.c5.state).toBe("locked");
+  });
+
+  it("stickiness passes nothing on its own: an unlisted checkpoint still has to earn it", () => {
+    const r = resolveGates(
+      input({ alreadyPassed: alreadyPassed("c1"), signals: PAYING }),
+      NOW,
+    );
+    expect(r.c1.state).toBe("passed");
+    expect(r.c2.state).toBe("open");
+    expect(r.c2.reason).toBe("awaiting-review");
+    expect(r.c3.state).toBe("locked");
+  });
+
+  it("an absent alreadyPassed map resolves exactly as before", () => {
+    const withMap = resolveGates(
+      input({ reviewPassed: passReviews("c1", "c2"), alreadyPassed: alreadyPassed() }),
+      NOW,
+    );
+    const without = resolveGates(input({ reviewPassed: passReviews("c1", "c2") }), NOW);
+    expect(withMap).toEqual(without);
+  });
+});
+
+describe("resolveGates — an unreachable tracker is not a failed signal", () => {
+  const throughFour = () => passReviews("c1", "c2", "c3", "c4");
+
+  it("leaves a not-yet-passed metric gate open, never locked and never passed", () => {
+    const r = resolveGates(
+      input({
+        reviewPassed: throughFour(),
+        alreadyPassed: { c1: EARLIER, c2: EARLIER, c3: EARLIER, c4: EARLIER },
+        signals: null,
+      }),
+      NOW,
+    );
+    expect(r.c5.state).toBe("open");
+    expect(r.c5.reason).toBe("tracker-unreachable");
+    // The one after it is locked because c5 has not passed — not because the
+    // tracker was quiet.
+    expect(r.c6.state).toBe("locked");
+    expect(r.c6.reason).toBe("previous-not-passed");
+  });
+
+  it("distinguishes a silent tracker from one reporting numbers that fall short", () => {
+    const nine = signals({
+      paymentsLive: true,
+      trackerConnected: true,
+      workflowRuns: 9,
+      workflowTenRuns: false,
+    });
+    const answered = resolveGates(
+      input({ reviewPassed: throughFour(), signals: nine }),
+      NOW,
+    );
+    expect(answered.c5.reason).toBe("awaiting-metrics");
+  });
+
+  it("names the flag, not the silence, when the tracker did answer with one", () => {
+    const flagged = { ...PAYING, blockingFlags: ["velocity_anomaly"] };
+    const r = resolveGates(
+      input({
+        reviewPassed: throughFour(),
+        alreadyPassed: { c1: EARLIER, c2: EARLIER, c3: EARLIER, c4: EARLIER },
+        signals: flagged,
+      }),
+      NOW,
+    );
+    expect(r.c5.state).toBe("open");
+    expect(r.c5.reason).toBe("blocked-by-flag");
   });
 });
 

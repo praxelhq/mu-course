@@ -179,3 +179,12 @@ Whenever a bug is fixed or a wrong assumption corrected, append what was learned
   times the thinking — which is most of why it costs 35.7× more for two extra
   points of agreement. Worth knowing before "the better model" wins an argument
   about a bulk tier.
+- **A resolver that recomputes everything cannot be told 'don't regress'.**
+  `resolveGates` was pure and total — signals in, three states out — which is
+  exactly why a missing signal read as a failed one. The fix was not more
+  branches but one more INPUT: what this product has already cleared. Worth
+  remembering that `null` from an integration means "we do not know", and a
+  function with no memory has no way to say so. (Two live suites also mutate
+  seeded products — `tests/shipyard-tracker-refresh.test.ts` pushes `syp_006`'s
+  money gate to passed — and now that a pass is sticky, that residue no longer
+  heals itself on the next recompute: re-seed after running it.)
