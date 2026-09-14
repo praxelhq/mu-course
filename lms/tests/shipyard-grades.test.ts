@@ -366,12 +366,13 @@ describe.skipIf(!live)("computeProductGrade (live DB)", () => {
     const { grade, skipped } = await computeProductGrade(productId);
 
     expect(skipped).toBe(false);
-    expect(grade.provisional).toBe(true);
-    expect(grade.allCheckpointsCleared).toBe(true);
-    expect(grade.weightsVersion).toBe("v1");
-    expect(grade.total).toBeGreaterThan(0);
+    expect(grade).not.toBeNull();
+    expect(grade!.provisional).toBe(true);
+    expect(grade!.allCheckpointsCleared).toBe(true);
+    expect(grade!.weightsVersion).toBe("v1");
+    expect(grade!.total).toBeGreaterThan(0);
 
-    const components = grade.components as Record<string, Record<string, unknown>>;
+    const components = grade!.components as Record<string, Record<string, unknown>>;
     for (const key of ["productQuality", "realNumbers", "workflow", "distribution"]) {
       expect(components[key], key).toBeTruthy();
       expect(typeof components[key].raw).toBe("number");
@@ -400,8 +401,8 @@ describe.skipIf(!live)("computeProductGrade (live DB)", () => {
 
     const after = await computeProductGrade(productId);
     expect(after.skipped).toBe(true);
-    expect(after.grade.total).toBe(42.5);
-    expect(after.grade.provisional).toBe(false);
+    expect(after.grade!.total).toBe(42.5);
+    expect(after.grade!.provisional).toBe(false);
 
     const stored = await prisma.shipyardGrade.findUnique({ where: { productId } });
     expect(stored?.total).toBe(42.5);
@@ -422,4 +423,118 @@ describe.skipIf(!live)("computeProductGrade (live DB)", () => {
     expect(line!.components).toHaveLength(4);
     expect(line!.provisional).toBe(true);
   });
+
+  it("a recompute that started before finalisation cannot overwrite the signed number", async () => {
+    if (!productId) return;
+    const { computeProductGrade, finaliseGrades } = await import("@/lib/shipyard/grades");
+    await computeProductGrade(productId);
+    const product = await prisma.shipyardProduct.findUniqueOrThrow({
+      where: { id: productId },
+      select: { userId: true },
+    });
+
+    // The recompute reads `provisional: true`, then spends a second on the
+    // tracker. Faculty sign the grade inside that second. Checking the flag and
+    // then upserting meant the signed number was quietly replaced by one
+    // computed from older facts (C6).
+    let release: (() => void) | null = null;
+    const held = new Promise<void>((resolve) => {
+      release = resolve;
+    });
+    const slowTracker = {
+      getCheckpointSignals: async () => {
+        await held;
+        return null;
+      },
+    };
+    const racing = computeProductGrade(productId, { tracker: slowTracker });
+
+    await finaliseGrades(
+      { userId: product.userId, reason: "End of term.", actorId: "test:finalise", force: true },
+      { db: prisma },
+    );
+    const signed = await prisma.shipyardGrade.findUniqueOrThrow({ where: { productId } });
+    expect(signed.provisional).toBe(false);
+
+    release!();
+    const result = await racing;
+
+    expect(result.skipped).toBe(true);
+    const stored = await prisma.shipyardGrade.findUniqueOrThrow({ where: { productId } });
+    expect(stored.provisional).toBe(false);
+    expect(stored.finalisedBy).toBe("test:finalise");
+    expect(stored.total).toBe(signed.total);
+
+    // Put it back so a re-run of this file starts where it started.
+    await prisma.shipyardGrade.update({
+      where: { productId },
+      data: { provisional: true, finalisedBy: null, finalisedAt: null },
+    });
+    await prisma.auditLog.deleteMany({ where: { actorId: "test:finalise" } });
+  }, 60_000);
+});
+
+describe.skipIf(!live)("a student with nothing to score (live DB)", () => {
+  const USER_ID = "user_shipyard_empty_grade";
+  let prisma: import("@prisma/client").PrismaClient;
+  let seeded = false;
+
+  beforeAll(async () => {
+    const { PrismaClient } = await import("@prisma/client");
+    prisma = new PrismaClient();
+    seeded = (await prisma.shipyardCheckpoint.count()) === 6;
+    if (!seeded) return;
+    await prisma.shipyardProduct.deleteMany({ where: { userId: USER_ID } });
+    await prisma.user.deleteMany({ where: { id: USER_ID } });
+    await prisma.user.create({
+      data: {
+        id: USER_ID,
+        email: "shipyard-empty-grade@example.invalid",
+        name: "Empty Grade",
+        role: "student",
+      },
+    });
+  }, 60_000);
+
+  afterAll(async () => {
+    if (prisma && seeded) {
+      await prisma.shipyardProduct.deleteMany({ where: { userId: USER_ID } });
+      await prisma.user.deleteMany({ where: { id: USER_ID } });
+    }
+    await prisma?.$disconnect();
+  });
+
+  it("is not scored at all, rather than scored zero", async () => {
+    if (!seeded) return;
+    const { ensureProduct } = await import("@/lib/shipyard/products");
+    const { computeProductGrade, loadGradeLine } = await import("@/lib/shipyard/grades");
+    const product = await ensureProduct(USER_ID, { db: prisma });
+
+    const result = await computeProductGrade(product.id, { db: prisma, signals: null });
+    expect(result.empty).toBe(true);
+    expect(result.grade).toBeNull();
+    // "TOTAL 0.0" after an admin recompute is a claim about work that has not
+    // happened yet. No row is written, so the line renders empty.
+    expect(await prisma.shipyardGrade.count({ where: { productId: product.id } })).toBe(0);
+
+    const line = await loadGradeLine(product.id, { db: prisma });
+    expect(line!.total).toBeNull();
+    expect(line!.components).toHaveLength(4);
+    expect(line!.components.every((c) => c.raw === null)).toBe(true);
+  }, 60_000);
+
+  it("starts scoring as soon as one component has an input", async () => {
+    if (!seeded) return;
+    const { emptySignals } = await import("@/lib/tracker/types");
+    const { computeProductGrade } = await import("@/lib/shipyard/grades");
+    const product = await prisma.shipyardProduct.findUniqueOrThrow({ where: { userId: USER_ID } });
+
+    const result = await computeProductGrade(product.id, {
+      db: prisma,
+      signals: { ...emptySignals(new Date()), workflowRuns: 4, trackerConnected: true },
+    });
+    expect(result.empty).toBeUndefined();
+    expect(result.grade).not.toBeNull();
+    expect(result.grade!.total).toBeGreaterThan(0);
+  }, 60_000);
 });

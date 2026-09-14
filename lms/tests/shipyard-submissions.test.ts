@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import type { PrismaClient } from "@prisma/client";
+import { Prisma, type PrismaClient } from "@prisma/client";
 
 import {
   createSubmission,
@@ -543,6 +543,35 @@ describe("createSubmission happy path", () => {
     );
     expect(result.submissionId).toBe("sub_new");
     expect(rec.created).toHaveLength(1);
+  });
+
+  it("turns a double-submit collision into the refusal the student should read", async () => {
+    // Two submits in flight at once both pass the in-review check and collide
+    // on `@@unique([productId, checkpointId, version])`. A bare P2002 reaching
+    // the route was a 500 for something the student did nothing wrong in (C8).
+    const rec = recorder();
+    const collide = {
+      ...deps({}, rec),
+      db: {
+        ...(fakeDb({}, rec) as unknown as Record<string, unknown>),
+        $transaction: async () => {
+          throw new Prisma.PrismaClientKnownRequestError("Unique constraint failed", {
+            code: "P2002",
+            clientVersion: "6",
+          });
+        },
+      } as unknown as PrismaClient,
+    };
+
+    const err = await refusal(() =>
+      createSubmission(
+        { userId: "u1", checkpointKey: "idea", fields: GOOD_FIELDS, now: NOW },
+        collide,
+      ),
+    );
+    expect(err.status).toBe(409);
+    expect(err.body).toEqual({ error: "That checkpoint is already in review." });
+    expect(rec.enqueued).toEqual([]);
   });
 });
 

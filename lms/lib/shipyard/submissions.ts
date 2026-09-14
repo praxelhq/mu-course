@@ -345,40 +345,54 @@ export async function createSubmission(
   const version = (latest?.version ?? 0) + 1;
   const fence = nextAllowedResubmitAt(now, checkpoint.resubmitCooldownMinutes);
 
-  const created = await db.$transaction(async (tx) => {
-    const submission = await tx.shipyardSubmission.create({
-      data: {
-        courseId: SHIPYARD_COURSE_ID,
-        productId: product.id,
-        checkpointId: checkpoint.id,
-        status: "submitted",
-        fields: values as unknown as Prisma.InputJsonValue,
-        files: files as unknown as Prisma.InputJsonValue,
-        version,
-        submittedAt: now,
-        nextAllowedResubmitAt: fence,
-      },
-      select: { id: true },
+  // Two submits in flight at once — a double-clicked button, or a form posted
+  // twice — both pass the in-review check above and then collide on
+  // `@@unique([productId, checkpointId, version])`. That index is what actually
+  // stops the second one; a bare P2002 reaching the route was a 500 for
+  // something the student did nothing wrong in (C8). It is the same refusal
+  // the in-review check gives, arriving a few milliseconds later.
+  let created: { id: string };
+  try {
+    created = await db.$transaction(async (tx) => {
+      const submission = await tx.shipyardSubmission.create({
+        data: {
+          courseId: SHIPYARD_COURSE_ID,
+          productId: product.id,
+          checkpointId: checkpoint.id,
+          status: "submitted",
+          fields: values as unknown as Prisma.InputJsonValue,
+          files: files as unknown as Prisma.InputJsonValue,
+          version,
+          submittedAt: now,
+          nextAllowedResubmitAt: fence,
+        },
+        select: { id: true },
+      });
+
+      // Earlier attempts are left exactly as they are: a `returned` v1 beside a
+      // `submitted` v2 is the history, and a student re-reads the old reasons
+      // while the new attempt is in the queue.
+      const patch: Prisma.ShipyardProductUpdateInput = {};
+      if (checkpoint.key === "idea") {
+        if (typeof values.productName === "string") patch.name = values.productName;
+        if (typeof values.oneLiner === "string") patch.oneLiner = values.oneLiner;
+        if (typeof values.waitlistUrl === "string") patch.waitlistUrl = values.waitlistUrl;
+      }
+      if (checkpoint.key === "working" && typeof values.liveUrl === "string") {
+        patch.liveUrl = values.liveUrl;
+      }
+      if (Object.keys(patch).length > 0) {
+        await tx.shipyardProduct.update({ where: { id: product.id }, data: patch });
+      }
+
+      return submission;
     });
-
-    // Earlier attempts are left exactly as they are: a `returned` v1 beside a
-    // `submitted` v2 is the history, and a student re-reads the old reasons
-    // while the new attempt is in the queue.
-    const patch: Prisma.ShipyardProductUpdateInput = {};
-    if (checkpoint.key === "idea") {
-      if (typeof values.productName === "string") patch.name = values.productName;
-      if (typeof values.oneLiner === "string") patch.oneLiner = values.oneLiner;
-      if (typeof values.waitlistUrl === "string") patch.waitlistUrl = values.waitlistUrl;
+  } catch (err) {
+    if (err instanceof Prisma.PrismaClientKnownRequestError && err.code === "P2002") {
+      throw new SubmissionError(409, { error: "That checkpoint is already in review." });
     }
-    if (checkpoint.key === "working" && typeof values.liveUrl === "string") {
-      patch.liveUrl = values.liveUrl;
-    }
-    if (Object.keys(patch).length > 0) {
-      await tx.shipyardProduct.update({ where: { id: product.id }, data: patch });
-    }
-
-    return submission;
-  });
+    throw err;
+  }
 
   // Best effort, deliberately outside the transaction: the submission is saved
   // whether or not the queue is up.

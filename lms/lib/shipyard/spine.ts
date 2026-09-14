@@ -179,6 +179,13 @@ export function currentOrderFrom(
  * A stable content hash of everything that changes the picture. `now` and the
  * freshly-signed file URLs are excluded on purpose — both move every call, and
  * a version that always changes turns a 4s poll into a 4s full page refresh.
+ *
+ * `signalsRefreshedAt` is excluded for exactly the same reason, and it is the
+ * less obvious one: Shipped.money's `asOf` is optional, and when it is absent
+ * `lib/tracker/real.ts` stamps the READ TIME instead — so the timestamp moved
+ * on every poll even though not one number had, and the short poll never once
+ * hit its 304 (C11). The signal VALUES are hashed below; when they change, the
+ * version changes with them.
  */
 export function spineVersion(view: SpineView): string {
   const payload = {
@@ -201,7 +208,6 @@ export function spineVersion(view: SpineView): string {
         openedAt: c.openedAt,
         passedAt: c.passedAt,
         attempts: c.attempts,
-        signalsRefreshedAt: c.signalsRefreshedAt,
         signals: c.signals ? c.signals.map((s) => [s.name, s.met, s.value]) : null,
         submission: c.latestSubmission
           ? {
@@ -459,6 +465,13 @@ export async function loadSpine(userId: string, opts: LoadSpineOptions = {}): Pr
  * Place in the review queue, counted COURSE-WIDE rather than per section: the
  * reviewer is one pool of 15 workers draining one queue, so "you are 4th" has
  * to mean 4th in that queue or it is a number that does not predict anything.
+ *
+ * Only submissions with NO review row count. `submitted | in_review` is not by
+ * itself "waiting to be judged": a HELD PASS sits in `in_review` with its
+ * verdict already recorded and waits on a human, not on the queue, and a
+ * submission stranded by a worker that died has nothing draining it either.
+ * Counting both made a fresh submit on the demo read "position 83" while the
+ * queue was in fact empty (C4).
  */
 async function queuePositionOf(
   db: PrismaClient,
@@ -470,6 +483,7 @@ async function queuePositionOf(
     where: {
       courseId: SHIPYARD_COURSE_ID,
       status: { in: ["submitted", "in_review"] },
+      reviews: { none: {} },
       submittedAt: { lt: submittedAt },
       id: { not: submissionId },
     },

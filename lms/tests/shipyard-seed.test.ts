@@ -3,7 +3,7 @@ import { loadDotEnv } from "./helpers/env";
 
 loadDotEnv();
 
-import { assignBuckets } from "../prisma/seed-shipyard";
+import { assignBuckets, QUEUE_DEMO_CAP } from "../prisma/seed-shipyard";
 import { CHECKPOINT_DEFINITIONS, checkpointId } from "@/lib/shipyard/checkpoints";
 import { SHIPYARD_COURSE_ID } from "@/lib/shipyard/constants";
 import { recomputeGates } from "@/lib/shipyard/gate-state";
@@ -146,6 +146,45 @@ describe.skipIf(!live)("seeded Shipyard (live DB)", () => {
     expect(byKey.idea).toBe("open");
     for (const key of ["design", "working", "money", "workflow", "launch"]) {
       expect(byKey[key], key).toBe("locked");
+    }
+  });
+
+  it("leaves a SHORT live queue, so a fresh submit gets an honest position", async () => {
+    if (!seeded) return;
+    // `queuePositionOf` counts unreviewed `submitted | in_review` rows
+    // course-wide. Eighty-two seeded fixtures nothing was going to drain made
+    // a real submission on the demo read "position 83" (C4).
+    const waiting = await prisma.shipyardSubmission.findMany({
+      where: { status: { in: ["submitted", "in_review"] }, reviews: { none: {} } },
+      select: { submittedAt: true },
+    });
+    expect(waiting.length).toBeGreaterThan(0);
+    expect(waiting.length).toBeLessThanOrEqual(QUEUE_DEMO_CAP);
+
+    // And they arrived minutes before the seed's fixed "now", not a week
+    // before it: a queue whose oldest item is six days old is not a queue.
+    const newest = await prisma.shipyardSubmission.findFirst({
+      orderBy: { submittedAt: "desc" },
+      select: { submittedAt: true },
+    });
+    const reference = newest!.submittedAt!.getTime();
+    for (const row of waiting) {
+      expect(row.submittedAt).not.toBeNull();
+      expect(reference - row.submittedAt!.getTime()).toBeLessThanOrEqual(10 * 60_000);
+    }
+  });
+
+  it("records checkpoint 5's write-ups as the informational reviews they are", async () => {
+    if (!seeded) return;
+    const informational = await prisma.shipyardReview.findMany({
+      where: { id: { startsWith: "syinf_" } },
+      take: 5,
+    });
+    expect(informational.length).toBeGreaterThan(0);
+    for (const review of informational) {
+      expect(review.modelUsed).toBe("none");
+      expect(review.costUsd).toBe(0);
+      expect(review.needsHuman).toBe(false);
     }
   });
 

@@ -505,10 +505,40 @@ export type GradeRow = {
 
 export type GradeComputation = {
   productId: string;
-  grade: GradeRow;
-  /** True when a finalised grade was returned untouched. */
+  /**
+   * Null only when there is nothing to score yet and no row was created. A
+   * student at checkpoint 1 with no reviewer score, no tracker numbers and no
+   * workflow runs has not earned a 0.0 — they have not been scored at all, and
+   * `gradeLineView(null, …)` renders exactly that (DECISIONS, 2026-09-15).
+   */
+  grade: GradeRow | null;
+  /** True when a finalised grade was returned untouched, or nothing changed. */
   skipped: boolean;
+  /** True when the product had no scorable input and no row was written. */
+  empty?: boolean;
 };
+
+/**
+ * Is there anything here to score?
+ *
+ * "TOTAL 0.0" and "not yet scored" are different statements, and after an
+ * admin recompute every student at checkpoint 1 was shown the first when the
+ * second was true. A component with no input contributes 0 to the formula,
+ * which is right — but four of them summing to a stored zero is a grade, and a
+ * grade is a claim about work that has not happened yet.
+ */
+export function hasGradeInput(facts: GradeFacts): boolean {
+  if (facts.working !== null || facts.launch !== null) return true;
+  if (facts.allCheckpointsCleared) return true;
+  const signals = facts.signals;
+  if (!signals) return false;
+  return (
+    signals.payingCustomers > 0 ||
+    signals.grossTotal > 0 ||
+    workflowRunsFrom(signals) > 0 ||
+    signals.blockingFlags.length > 0
+  );
+}
 
 const gradeSelect = {
   id: true,
@@ -528,6 +558,14 @@ const gradeSelect = {
  * A finalised grade is returned exactly as stored, with `skipped: true`. That
  * is the whole point of finalising: the number faculty signed does not move
  * because a student's tracker ticked over afterwards.
+ *
+ * The `provisional` check and the write are ONE statement. Reading the flag,
+ * spending a second on the tracker, and then upserting meant a recompute that
+ * started before faculty signed could land after they had — and the signed
+ * number was silently replaced by one computed from older facts (C6). The
+ * write is therefore an `updateMany` fenced on `provisional: true`: if the row
+ * was finalised while we were working it matches nothing, nothing is written,
+ * and the result says it skipped.
  */
 export async function computeProductGrade(
   productId: string,
@@ -544,30 +582,47 @@ export async function computeProductGrade(
   }
 
   const facts = await loadGradeFacts(productId, deps);
+
+  // Nothing to score and nothing stored: leave the line empty rather than
+  // writing a zero a student would read as a mark.
+  if (!existing && !hasGradeInput(facts)) {
+    return { productId, grade: null, skipped: true, empty: true };
+  }
+
   const { version, weights } = await activeWeights(db);
   const computed = buildGrade(facts, weights, version);
+  const data = {
+    components: computed.components as unknown as Prisma.InputJsonValue,
+    total: computed.total,
+    allCheckpointsCleared: computed.allCheckpointsCleared,
+    weightsVersion: computed.weightsVersion,
+  };
 
-  const grade = await db.shipyardGrade.upsert({
-    where: { productId },
-    create: {
-      courseId: SHIPYARD_COURSE_ID,
-      productId,
-      components: computed.components as unknown as Prisma.InputJsonValue,
-      total: computed.total,
-      allCheckpointsCleared: computed.allCheckpointsCleared,
-      weightsVersion: computed.weightsVersion,
-      provisional: true,
-    },
-    update: {
-      components: computed.components as unknown as Prisma.InputJsonValue,
-      total: computed.total,
-      allCheckpointsCleared: computed.allCheckpointsCleared,
-      weightsVersion: computed.weightsVersion,
-    },
-    select: gradeSelect,
-  });
+  if (existing) {
+    const { count } = await db.shipyardGrade.updateMany({
+      where: { productId, provisional: true },
+      data,
+    });
+    const grade = await db.shipyardGrade.findUnique({ where: { productId }, select: gradeSelect });
+    // count === 0 means it was finalised between our read and our write.
+    return { productId, grade, skipped: count === 0 };
+  }
 
-  return { productId, grade, skipped: false };
+  try {
+    const grade = await db.shipyardGrade.create({
+      data: { courseId: SHIPYARD_COURSE_ID, productId, provisional: true, ...data },
+      select: gradeSelect,
+    });
+    return { productId, grade, skipped: false };
+  } catch (err) {
+    // Another worker created the row first. Theirs is at least as fresh as
+    // ours would have been; read it back rather than race it again.
+    if (err instanceof Prisma.PrismaClientKnownRequestError && err.code === "P2002") {
+      const grade = await db.shipyardGrade.findUnique({ where: { productId }, select: gradeSelect });
+      return { productId, grade, skipped: true };
+    }
+    throw err;
+  }
 }
 
 export type RecomputeSummary = {

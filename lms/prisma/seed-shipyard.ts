@@ -38,6 +38,20 @@ type Tx = Prisma.TransactionClient;
 const pad3 = (n: number) => String(n).padStart(3, "0");
 const days = (n: number) => n * 86_400_000;
 const hours = (n: number) => n * 3_600_000;
+const minutes = (n: number) => n * 60_000;
+
+/**
+ * How many submissions the demo leaves genuinely waiting for the reviewer.
+ *
+ * `queuePositionOf` counts unreviewed `submitted | in_review` rows course-wide,
+ * so eighty-two seeded fixtures that nothing was ever going to drain made a
+ * fresh submission on the demo read "position 83" — a number that described
+ * the seed rather than the queue (C4). A dozen, all arrived in the last ten
+ * minutes, reads as a live queue and puts a real submit at the back of a short
+ * one. The rest hold a returned verdict instead, which is a state the demo
+ * needs plenty of anyway.
+ */
+export const QUEUE_DEMO_CAP = 12;
 
 // ---------------------------------------------------------------------------
 // Deterministic product names
@@ -377,6 +391,8 @@ export async function seedShipyard(tx: Tx, ctx: SeedShipyardContext): Promise<vo
   const reviews: Prisma.ShipyardReviewCreateManyInput[] = [];
   const states: Prisma.ShipyardCheckpointStateCreateManyInput[] = [];
   const overrides: Prisma.ShipyardTrackerOverrideCreateManyInput[] = [];
+  /** How many submissions are still genuinely waiting for the reviewer. */
+  let liveQueue = 0;
 
   students.forEach((student, index) => {
     const bucket = buckets[index];
@@ -476,23 +492,31 @@ export async function seedShipyard(tx: Tx, ctx: SeedShipyardContext): Promise<vo
     // unresolved submission.
     if (bucket === "returned" || bucket === "in_review") {
       const cpId = checkpointId("idea");
-      const submittedAt = new Date(enrolledAt.getTime() + days(6) + hours(index % 11));
+      // Deterministic: `assignBuckets` is seeded and this loop runs in index
+      // order, so the same twelve students hold the queue on every seed.
+      const queued = bucket === "in_review" && liveQueue < QUEUE_DEMO_CAP;
+      if (queued) liveQueue += 1;
+      const status = queued ? "in_review" : "returned";
+      const submittedAt = queued
+        ? // Minutes ago, not a week ago: a queue whose oldest item is six days
+          // old is not a queue, it is a pile.
+          new Date(now.getTime() - minutes(1 + ((liveQueue * 7) % 10)))
+        : new Date(enrolledAt.getTime() + days(6) + hours(index % 11));
       submissions.push({
         id: `sysub_${n}_idea`,
         courseId: SHIPYARD_COURSE_ID,
         productId,
         checkpointId: cpId,
-        status: bucket === "returned" ? "returned" : "in_review",
+        status,
         fields: fieldsFor("idea", index, name, oneLiner) as unknown as Prisma.InputJsonValue,
         files: [] as unknown as Prisma.InputJsonValue,
         version: 1,
         submittedAt,
-        nextAllowedResubmitAt:
-          bucket === "returned" ? new Date(submittedAt.getTime() + 15 * 60_000) : null,
+        nextAllowedResubmitAt: queued ? null : new Date(submittedAt.getTime() + 15 * 60_000),
         createdAt: submittedAt,
         updatedAt: submittedAt,
       });
-      if (bucket === "returned") {
+      if (!queued) {
         const { tokensIn, tokensOut } = reviewTokens(rng);
         const lowConfidence = index % 9 === 0;
         reviews.push({
@@ -521,7 +545,7 @@ export async function seedShipyard(tx: Tx, ctx: SeedShipyardContext): Promise<vo
     // Students at a metric-blocked checkpoint have their write-up in already.
     if (bucket === "workflow_partial") {
       const cpId = checkpointId("workflow");
-      const at = new Date(enrolledAt.getTime() + days(26));
+      const at = new Date(now.getTime() - minutes(2 + (index % 8)));
       submissions.push({
         id: `sysub_${n}_workflow`,
         courseId: SHIPYARD_COURSE_ID,
@@ -534,6 +558,30 @@ export async function seedShipyard(tx: Tx, ctx: SeedShipyardContext): Promise<vo
         submittedAt: at,
         createdAt: at,
         updatedAt: at,
+      });
+      // Checkpoint 5 is metric-only: the pipeline RECORDS this write-up at zero
+      // cost and leaves the gate to the run count. Seeding that review is what
+      // the real path does, and it keeps ten write-ups that nobody is going to
+      // judge out of the student's queue position.
+      reviews.push({
+        id: `syinf_${n}_workflow`,
+        courseId: SHIPYARD_COURSE_ID,
+        submissionId: `sysub_${n}_workflow`,
+        verdict: "pass",
+        reasons: [] as unknown as Prisma.InputJsonValue,
+        rubricScores: {} as unknown as Prisma.InputJsonValue,
+        confidence: 1,
+        metricSignalsSeen: signals
+          ? (signals as unknown as Prisma.InputJsonValue)
+          : Prisma.DbNull,
+        modelUsed: "none",
+        providerUsed: "none",
+        tokensIn: 0,
+        tokensOut: 0,
+        costUsd: 0,
+        reviewedBy: "ai",
+        needsHuman: false,
+        createdAt: new Date(at.getTime() + 1_000),
       });
     }
 

@@ -266,6 +266,36 @@ describe("spineVersion", () => {
   it("is stable across calls on the same view", () => {
     expect(spineVersion(spine())).toBe(spineVersion(spine()));
   });
+
+  it("does not move when only the tracker's read TIME moved", () => {
+    // Shipped.money's `asOf` is optional and `lib/tracker/real.ts` stamps the
+    // read time when it is missing, so this field changed on every single poll
+    // while not one number had — and the short poll never once hit its 304
+    // (C11). The signal VALUES are hashed; the timestamp is not.
+    const at = (when: string): SpineView => {
+      const base = spine();
+      base.checkpoints[0].signalsRefreshedAt = when;
+      base.checkpoints[0].signals = [
+        { name: "paymentsLive", label: "Payments live", met: false, value: "not yet" },
+      ];
+      return base;
+    };
+    expect(spineVersion(at("2026-09-14T10:00:00.000Z"))).toBe(
+      spineVersion(at("2026-09-14T10:04:00.000Z")),
+    );
+  });
+
+  it("still moves when a signal itself moves", () => {
+    const withSignal = (met: boolean): SpineView => {
+      const base = spine();
+      base.checkpoints[0].signalsRefreshedAt = "2026-09-14T10:00:00.000Z";
+      base.checkpoints[0].signals = [
+        { name: "paymentsLive", label: "Payments live", met, value: met ? "live" : "not yet" },
+      ];
+      return base;
+    };
+    expect(spineVersion(withSignal(true))).not.toBe(spineVersion(withSignal(false)));
+  });
 });
 
 // ---------------------------------------------------------------------------
@@ -362,6 +392,34 @@ describe.skipIf(!live)("loadSpine (live DB)", () => {
     });
     const pending = view.checkpoints.find((c) => c.latestSubmission?.status === "in_review");
     expect(pending?.latestSubmission?.queuePosition).toBeGreaterThanOrEqual(1);
+  });
+
+  it("counts only submissions nobody has reviewed yet, and the seed keeps that short", async () => {
+    if (!seeded) return;
+    // A held pass sits in `in_review` with its verdict already recorded and
+    // waits on a human, not on the queue; a stranded row has nothing draining
+    // it either. Counting both made a fresh submit read "position 83" on a
+    // demo whose queue was in fact empty (C4).
+    const waiting = await prisma.shipyardSubmission.count({
+      where: { status: { in: ["submitted", "in_review"] }, reviews: { none: {} } },
+    });
+    expect(waiting).toBeLessThanOrEqual(13);
+
+    const reviewed = await prisma.shipyardSubmission.findFirst({
+      where: { status: "in_review", reviews: { some: {} } },
+      select: { id: true, submittedAt: true },
+    });
+    if (reviewed?.submittedAt) {
+      const behind = await prisma.shipyardSubmission.count({
+        where: {
+          status: { in: ["submitted", "in_review"] },
+          reviews: { none: {} },
+          submittedAt: { lt: reviewed.submittedAt },
+        },
+      });
+      // Whatever it is, it is not the whole cohort's backlog.
+      expect(behind).toBeLessThanOrEqual(13);
+    }
   });
 
   it("carries live signals and their refresh time on a metric-blocked student", async () => {
