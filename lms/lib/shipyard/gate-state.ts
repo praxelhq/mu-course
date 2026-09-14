@@ -49,12 +49,25 @@ function asStringArray(value: unknown): string[] {
  * `openedAt`, `passedAt`, `reviewClearedAt` and `metricClearedAt` are stamped
  * the FIRST time each becomes true and never moved afterwards: they are the
  * record of when a student got there, and a later recompute must not rewrite
- * a student's history because the tracker was briefly unreachable.
+ * a student's history because the tracker was briefly unreachable. A column
+ * whose value computes to null is now OMITTED from the update rather than
+ * written, so two recomputes racing can never blank a date the other just set.
  *
- * `state` is now write-once in the same direction: the stored `passedAt` goes
- * back into `resolveGates` as `alreadyPassed`, so a row that reads `passed`
- * can never be rewritten to `open` or `locked` by a signal that moved after
- * the fact. Everything else is still re-decided from scratch on every run.
+ * `state` is write-once in the same direction: the stored `passedAt` goes back
+ * into `resolveGates` as `alreadyPassed`, so a row that reads `passed` can
+ * never be rewritten to `open` or `locked` by a signal that moved after the
+ * fact. `metricClearedAt` goes back the same way (`metricAlreadyCleared`): a
+ * `both` gate whose metric half was once verified-true keeps that half, so a
+ * student whose payments were live in the morning is not told at four o'clock
+ * that the half they already cleared has come undone (DECISIONS, 2026-09-15).
+ *
+ * The read and the write are one serialised unit. Everything up to the write —
+ * including the tracker call, which is a network round trip — happens OUTSIDE
+ * it, and then a transaction takes `pg_advisory_xact_lock` on the product so
+ * the submit path, the refresh callback and the fifteen-minute sweep cannot
+ * interleave a read-then-upsert with each other. A caller that is ALREADY in a
+ * transaction (the tests, the seed) is run inline: its own transaction is the
+ * unit, and nesting one inside it would deadlock.
  */
 export async function recomputeGates(
   productId: string,
@@ -82,6 +95,40 @@ export async function recomputeGates(
     metricSignals: asStringArray(c.metricSignals),
   }));
 
+  // The tracker read is deliberately outside the lock: it is a network call,
+  // and a slow Shipped.money must never hold a write lock on a student's gates
+  // on a deadline night.
+  const needsSignals = checkpoints.some((c) => c.gateType !== "review");
+  let signals: TrackerSignals | null = deps.signals ?? null;
+  if (signals === null && needsSignals && deps.signals === undefined) {
+    const tracker = deps.tracker ?? (await createTrackerClient());
+    signals = await tracker.getCheckpointSignals(product.trackerProductId);
+  }
+
+  const write = (tx: Db) => persistGates(tx, productId, checkpoints, signals, now);
+
+  if (isTransactionClient(db)) return write(db);
+  return (db as PrismaClient).$transaction(async (tx) => write(tx), { timeout: 30_000 });
+}
+
+/** A `Prisma.TransactionClient` has no `$transaction` of its own. */
+function isTransactionClient(db: Db): boolean {
+  return typeof (db as PrismaClient).$transaction !== "function";
+}
+
+/** The serialised half: lock, read what is stored, resolve, write. */
+async function persistGates(
+  db: Db,
+  productId: string,
+  checkpoints: GateCheckpoint[],
+  signals: TrackerSignals | null,
+  now: Date,
+): Promise<CheckpointStateRow[]> {
+  // One writer per product at a time. `hashtext` gives the 32-bit key the
+  // advisory lock wants; a collision between two product ids costs one of them
+  // a short wait and nothing else.
+  await db.$executeRaw`SELECT pg_advisory_xact_lock(hashtext(${productId}))`;
+
   // A checkpoint's review half is cleared by the EARLIEST passing review, so a
   // later resubmission cannot move the date a student cleared it.
   const passedReviews = await db.shipyardReview.findMany({
@@ -96,9 +143,7 @@ export async function recomputeGates(
     if (reviewPassed[cid] == null) reviewPassed[cid] = r.createdAt;
   }
 
-  const existing = await db.shipyardCheckpointState.findMany({
-    where: { productId },
-  });
+  const existing = await db.shipyardCheckpointState.findMany({ where: { productId } });
   const byCheckpoint = new Map(existing.map((s) => [s.checkpointId, s]));
 
   const manualOpens: Record<string, Date | null> = {};
@@ -107,23 +152,18 @@ export async function recomputeGates(
   // from today's signals, and a refund or an unreachable tracker un-passes a
   // checkpoint and re-locks every checkpoint behind it.
   const alreadyPassed: Record<string, Date | null> = {};
+  const metricAlreadyCleared: Record<string, Date | null> = {};
   for (const c of checkpoints) {
     const row = byCheckpoint.get(c.id);
     manualOpens[c.id] = row?.manuallyOpenedBy ? (row.openedAt ?? row.updatedAt) : null;
     // A row already stamped `passed` counts even if it predates `passedAt`;
     // its last write is the best date we have, and it is stamped from here on.
     alreadyPassed[c.id] = row?.passedAt ?? (row?.state === "passed" ? row.updatedAt : null);
-  }
-
-  const needsSignals = checkpoints.some((c) => c.gateType !== "review");
-  let signals: TrackerSignals | null = deps.signals ?? null;
-  if (signals === null && needsSignals && deps.signals === undefined) {
-    const tracker = deps.tracker ?? (await createTrackerClient());
-    signals = await tracker.getCheckpointSignals(product.trackerProductId);
+    metricAlreadyCleared[c.id] = row?.metricClearedAt ?? null;
   }
 
   const resolved = resolveGates(
-    { checkpoints, reviewPassed, signals, manualOpens, alreadyPassed },
+    { checkpoints, reviewPassed, signals, manualOpens, alreadyPassed, metricAlreadyCleared },
     now,
   );
 
@@ -143,6 +183,16 @@ export async function recomputeGates(
       prior?.reviewClearedAt ?? (reviewHalfCleared ? (reviewPassed[c.id] ?? now) : null);
     const metricClearedAt = prior?.metricClearedAt ?? (metricHalfCleared ? now : null);
 
+    // A date we computed as null is a date we do not know yet, NOT a date to
+    // erase. Omitting the column leaves whatever a concurrent writer stamped
+    // between our read and this write (C9).
+    const stamps = {
+      ...(openedAt ? { openedAt } : {}),
+      ...(passedAt ? { passedAt } : {}),
+      ...(reviewClearedAt ? { reviewClearedAt } : {}),
+      ...(metricClearedAt ? { metricClearedAt } : {}),
+    };
+
     await db.shipyardCheckpointState.upsert({
       where: { productId_checkpointId: { productId, checkpointId: c.id } },
       create: {
@@ -155,7 +205,7 @@ export async function recomputeGates(
         reviewClearedAt,
         metricClearedAt,
       },
-      update: { state: r.state, openedAt, passedAt, reviewClearedAt, metricClearedAt },
+      update: { state: r.state, ...stamps },
     });
 
     out.push({

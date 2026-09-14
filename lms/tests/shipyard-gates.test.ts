@@ -257,6 +257,47 @@ describe("resolveGates — both gates", () => {
     expect(r.c4.reason).toBe("awaiting-review-and-metrics");
   });
 
+  it("keeps a metric half that was verified earlier, while the write-up catches up", () => {
+    // `metricClearedAt` is stamped the first time the signals verify the half,
+    // and the row is the record of when a student got there. Re-reading the
+    // signal live meant the row said "cleared at 09:14" while the state said
+    // "awaiting-metrics" (C12). The half stays cleared.
+    const stuck = resolveGates(
+      input({
+        reviewPassed: passReviews("c1", "c2", "c3"),
+        signals: signals({ paymentsLive: false, trackerConnected: true }),
+        metricAlreadyCleared: { c4: EARLIER },
+      }),
+      NOW,
+    );
+    expect(stuck.c4.state).toBe("open");
+    expect(stuck.c4.reason).toBe("awaiting-review");
+
+    const both = resolveGates(
+      input({
+        reviewPassed: passReviews("c1", "c2", "c3", "c4"),
+        signals: signals({ paymentsLive: false, trackerConnected: true }),
+        metricAlreadyCleared: { c4: EARLIER },
+      }),
+      NOW,
+    );
+    expect(both.c4.state).toBe("passed");
+    expect(both.c4.reason).toBe("review-and-metric-passed");
+  });
+
+  it("a half that never cleared is not invented by an absent entry", () => {
+    const r = resolveGates(
+      input({
+        reviewPassed: passReviews("c1", "c2", "c3", "c4"),
+        signals: signals({ paymentsLive: false, trackerConnected: true }),
+        metricAlreadyCleared: { c4: null },
+      }),
+      NOW,
+    );
+    expect(r.c4.state).toBe("open");
+    expect(r.c4.reason).toBe("awaiting-metrics");
+  });
+
   it("launch clears on a paying customer with no flags", () => {
     const r = resolveGates(
       input({

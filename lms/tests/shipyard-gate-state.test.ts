@@ -290,4 +290,122 @@ describe.skipIf(!live)("recomputeGates — passed is one-way (live DB)", () => {
       }
     });
   }, 60_000);
+
+  it("a both gate keeps a metric half that cleared BEFORE the write-up did", async () => {
+    if (!seeded) return;
+    await inRollback(async (tx) => {
+      const productId = await lastProduct(tx);
+      const moneyId = checkpointId("money");
+
+      await tx.shipyardSubmission.deleteMany({ where: { productId } });
+      for (const key of ["idea", "design", "working"] as const) {
+        await tx.shipyardCheckpointState.update({
+          where: { productId_checkpointId: { productId, checkpointId: checkpointId(key) } },
+          data: {
+            state: "passed",
+            openedAt: EARLIER,
+            passedAt: EARLIER,
+            reviewClearedAt: EARLIER,
+            metricClearedAt: null,
+            manuallyOpenedBy: null,
+          },
+        });
+      }
+      for (const key of ["money", "workflow", "launch"] as const) {
+        await tx.shipyardCheckpointState.update({
+          where: { productId_checkpointId: { productId, checkpointId: checkpointId(key) } },
+          data: {
+            state: key === "money" ? "open" : "locked",
+            openedAt: key === "money" ? EARLIER : null,
+            passedAt: null,
+            reviewClearedAt: null,
+            metricClearedAt: null,
+            manuallyOpenedBy: null,
+          },
+        });
+      }
+
+      // 1 · Payments go live before the write-up is even in. The metric half is
+      // verified and the row records WHEN (SPEC §5 "store which cleared when").
+      const one = await recomputeGates(productId, { db: tx, signals: CONNECTED, now: NOW });
+      const moneyOne = one.find((s) => s.key === "money")!;
+      expect(moneyOne.state).toBe("open");
+      expect(moneyOne.reason).toBe("awaiting-review");
+      expect(moneyOne.metricClearedAt).not.toBeNull();
+
+      // 2 · The signal dips while the student is still writing. The half they
+      // already cleared is not taken back — the row said "cleared at" and the
+      // state used to say "awaiting-metrics" in the same breath (C12).
+      const two = await recomputeGates(productId, { db: tx, signals: HALF_CONNECTED, now: NOW });
+      const moneyTwo = two.find((s) => s.key === "money")!;
+      expect(moneyTwo.reason).toBe("awaiting-review");
+      expect(moneyTwo.metricClearedAt).toEqual(moneyOne.metricClearedAt);
+
+      // 3 · The write-up passes, with the signal still down. Both halves have
+      // been met at some point, so the gate opens.
+      const reviewedAt = new Date("2026-09-10T10:00:00Z");
+      const submission = await tx.shipyardSubmission.create({
+        data: {
+          productId,
+          checkpointId: moneyId,
+          status: "passed",
+          fields: {},
+          files: [],
+          version: 901,
+          submittedAt: reviewedAt,
+        },
+        select: { id: true },
+      });
+      await tx.shipyardReview.create({
+        data: {
+          submissionId: submission.id,
+          verdict: "pass",
+          reasons: [],
+          rubricScores: {},
+          confidence: 0.9,
+          modelUsed: "test",
+          providerUsed: "test",
+          needsHuman: false,
+          createdAt: reviewedAt,
+        },
+      });
+
+      const three = await recomputeGates(productId, { db: tx, signals: HALF_CONNECTED, now: NOW });
+      const moneyThree = three.find((s) => s.key === "money")!;
+      expect(moneyThree.state).toBe("passed");
+      expect(moneyThree.reason).toBe("review-and-metric-passed");
+      expect(moneyThree.metricClearedAt).toEqual(moneyOne.metricClearedAt);
+      expect(moneyThree.reviewClearedAt).toEqual(reviewedAt);
+    });
+  }, 60_000);
+
+  it("never writes a null over a date another writer just stamped", async () => {
+    if (!seeded) return;
+    await inRollback(async (tx) => {
+      const productId = await lastProduct(tx);
+      const launchId = checkpointId("launch");
+      // A row that is `locked` today but already carries the dates from a
+      // previous life. A read-then-upsert with no lock used to blank them (C9).
+      await tx.shipyardCheckpointState.update({
+        where: { productId_checkpointId: { productId, checkpointId: launchId } },
+        data: {
+          state: "locked",
+          openedAt: EARLIER,
+          passedAt: EARLIER,
+          reviewClearedAt: EARLIER,
+          metricClearedAt: EARLIER,
+        },
+      });
+
+      await recomputeGates(productId, { db: tx, signals: null, now: NOW });
+
+      const after = await tx.shipyardCheckpointState.findUniqueOrThrow({
+        where: { productId_checkpointId: { productId, checkpointId: launchId } },
+      });
+      expect(after.openedAt).toEqual(EARLIER);
+      expect(after.passedAt).toEqual(EARLIER);
+      expect(after.reviewClearedAt).toEqual(EARLIER);
+      expect(after.metricClearedAt).toEqual(EARLIER);
+    });
+  }, 60_000);
 });

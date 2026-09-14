@@ -22,6 +22,11 @@
 //                       five-second outage is NEW INFORMATION ABOUT TODAY, not
 //                       a retraction of something a student did — and un-passing
 //                       one checkpoint re-locks every checkpoint after it.
+//   so is the METRIC    half of a `both` gate: once the signals verified it,
+//                       `metricClearedAt` is stamped and the half stays cleared
+//                       while the write-up catches up. Without that the row
+//                       said "cleared at 09:14" and the state said
+//                       "awaiting-metrics" in the same breath.
 
 import type { ShipyardCheckpointKey, ShipyardGateState, ShipyardGateType } from "@prisma/client";
 import type { MetricSignalName, TrackerSignals } from "@/lib/tracker/types";
@@ -51,6 +56,17 @@ export type GateInput = {
    * from scratch exactly as before.
    */
   alreadyPassed?: Record<string, Date | null>;
+  /**
+   * checkpointId -> when the METRIC half was first verified true, or null: the
+   * stored `ShipyardCheckpointState.metricClearedAt`. The same rule as
+   * `alreadyPassed`, one level down, and for the same reason: a `both` gate
+   * pairs a write-up with a signal, the row already records "this half cleared
+   * at 09:14", and re-reading the signal live meant the row and the state could
+   * disagree — cleared on the row, `awaiting-metrics` in the reason. A half a
+   * student reached stays reached (SPEC §5 "store which cleared when").
+   * Optional, so a caller with no history resolves from scratch as before.
+   */
+  metricAlreadyCleared?: Record<string, Date | null>;
 };
 
 /**
@@ -225,7 +241,10 @@ export function resolveGates(
 
     const reviewCleared = cp.gateType === "metric" ? true : input.reviewPassed[cp.id] != null;
     const metricCleared =
-      cp.gateType === "review" ? true : metricHalfCleared(cp.metricSignals, input.signals);
+      cp.gateType === "review"
+        ? true
+        : input.metricAlreadyCleared?.[cp.id] != null ||
+          metricHalfCleared(cp.metricSignals, input.signals);
     const verdict = passedState(cp.gateType, reviewCleared, metricCleared);
     const reachable: boolean = previousPassed || manualOpen;
 
