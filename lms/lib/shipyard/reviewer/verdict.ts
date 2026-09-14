@@ -328,7 +328,12 @@ export function decideOutcome(v: VerdictOutput, ctx: OutcomeContext): Outcome {
   if (scores.length > 0 && ctx.attempt <= 1 && scores.every((s) => s >= OUTLIER_HIGH)) {
     reasons.push(`every rubric score is ${OUTLIER_HIGH} or above on the first attempt`);
   }
-  if (scores.length > 0 && scores.every((s) => s <= OUTLIER_LOW)) {
+  // The bottom outlier is a rule about PASSES only. On a `return` it is not an
+  // anomaly at all — it is the expected shape of the verdict, and holding a
+  // confident return for a human because the work scored badly put the whole
+  // returned half of the cohort into the queue behind a judgement nobody
+  // disagreed with (DECISIONS, 2026-09-15).
+  if (v.verdict === "pass" && scores.length > 0 && scores.every((s) => s <= OUTLIER_LOW)) {
     reasons.push(`every rubric score is ${OUTLIER_LOW} or below, which reads as a failed read rather than a submission`);
   }
   if (v.verdict === "pass" && v.reasons.some((r) => !r.met)) {

@@ -10,6 +10,7 @@ import {
   BYOK_FAILURE_THRESHOLD,
   INITIAL_ROUTER_STATE,
   loadRouterState,
+  recordByokOutcome,
   ROUTER_FLIP_AUDIT_ACTION,
   ROUTER_STATE_ID,
   saveRouterState,
@@ -511,6 +512,52 @@ describe.skipIf(!live)("the review pipeline (live DB)", () => {
     expect(JSON.stringify(review.reasons)).toContain(BLANK_SHORT_CIRCUIT_NOTE.slice(0, 40));
   }, 60_000);
 
+  it("does not hold a legitimate pass because a short circuit scored zero first", async () => {
+    if (!seeded) return;
+    // Checkpoint 3 already holds a blank short circuit (every criterion 0,
+    // modelUsed "heuristic"). Carrying those forward as `priorScores` made the
+    // next real attempt look like a 74-point jump into a pass and held it for
+    // a human who had nothing to decide (C10).
+    const zeroed = await prisma.shipyardReview.findFirst({
+      where: { submission: { productId, checkpoint: { key: "working" } }, modelUsed: "heuristic" },
+      orderBy: { createdAt: "desc" },
+    });
+    expect(zeroed).toBeTruthy();
+
+    const submissionId = await submitDirect(
+      "working",
+      {
+        liveUrl: "https://dabbaroute.example.com",
+        corePath: "Add a stop, reorder the route, send it to a rider on WhatsApp.",
+        whatIsRough: "The rider view is still tight on a small phone.",
+      },
+      3,
+    );
+    const criteria = WORKING.rubric.criteria.map((c) => c.id);
+    const outcome = await runReviewPipeline(submissionId, {
+      ...baseDeps(),
+      render: async () => ({
+        ok: true,
+        finalUrl: "https://dabbaroute.example.com/",
+        status: 200,
+        title: "DabbaRoute",
+        domText: "Today's route · 14 stops · Send to rider",
+        screenshotPng: null,
+        consoleErrors: [],
+        blockedRequests: 0,
+        notes: [],
+      }),
+      call: fakeModel([], () => verdictPayload(criteria, { verdict: "pass" })),
+    });
+
+    expect(outcome.handled).toBe(true);
+    if (!outcome.handled) return;
+    expect(outcome.heldForHuman).toBe(false);
+    expect(outcome.status).toBe("passed");
+    const review = await prisma.shipyardReview.findFirstOrThrow({ where: { submissionId } });
+    expect(review.needsHuman).toBe(false);
+  }, 60_000);
+
   it("records a workflow write-up without a model call", async () => {
     if (!seeded) return;
     // Open the workflow checkpoint by hand; this test is about the reviewer,
@@ -533,6 +580,37 @@ describe.skipIf(!live)("the review pipeline (live DB)", () => {
     const review = await prisma.shipyardReview.findFirstOrThrow({ where: { submissionId } });
     expect(review.modelUsed).toBe("none");
     expect(review.costUsd).toBe(0);
+  }, 60_000);
+
+  it("tells checkpoint 5 the run count rather than that anything cleared", async () => {
+    if (!seeded) return;
+    const { emptySignals } = await import("@/lib/tracker/types");
+    const signals = { ...emptySignals(new Date()), workflowRuns: 7, trackerConnected: true };
+    const submissionId = await submitDirect(
+      "workflow",
+      {
+        workflowUrl: "https://n8n.example.com/workflow/12",
+        whatItAutomates: "Every new order creates a stop and messages the rider.",
+      },
+      2,
+    );
+    const outcome = await runReviewPipeline(submissionId, {
+      ...baseDeps(),
+      tracker: { getCheckpointSignals: async () => signals },
+      call: fakeModel([], () => {
+        throw new Error("a metric-only checkpoint must not reach a model");
+      }),
+    });
+    expect(outcome.handled).toBe(true);
+
+    const note = await prisma.notification.findFirstOrThrow({
+      where: { userId: TEST_USER_ID },
+      orderBy: { createdAt: "desc" },
+    });
+    // "Checkpoint 5 cleared" would be a lie: the gate is the tracker's tenth
+    // run, and nothing about this write-up moved it (C3).
+    expect(note.title).toBe("Checkpoint 5 notes saved");
+    expect(note.body).toBe("Runs are counted from your tagged n8n workflow: 7 of 10.");
   }, 60_000);
 
   it("flips the profile and writes the audit row after five BYOK failures", async () => {
@@ -564,6 +642,86 @@ describe.skipIf(!live)("the review pipeline (live DB)", () => {
     await prisma.auditLog.deleteMany({
       where: { action: ROUTER_FLIP_AUDIT_ACTION, targetId: ROUTER_STATE_ID },
     });
+  }, 60_000);
+
+  it("counts five SIMULTANEOUS failures as five, and flips exactly once", async () => {
+    if (!seeded) return;
+    await prisma.auditLog.deleteMany({
+      where: { action: ROUTER_FLIP_AUDIT_ACTION, targetId: ROUTER_STATE_ID },
+    });
+    await saveRouterState(prisma, { ...INITIAL_ROUTER_STATE }, "test:setup");
+
+    // Fifteen reviewer workers share one row. Writing the counter back as an
+    // absolute number from each worker's own snapshot lost every increment but
+    // the last, so the fifth consecutive failure never arrived (C2).
+    const results = await Promise.all(
+      Array.from({ length: BYOK_FAILURE_THRESHOLD }, () =>
+        recordByokOutcome(prisma, "byok-credit-or-auth-error", { actor: "test:concurrent" }),
+      ),
+    );
+
+    const after = await loadRouterState(prisma);
+    expect(after.consecutiveByokFailures).toBe(BYOK_FAILURE_THRESHOLD);
+    expect(after.anthropicExhausted).toBe(true);
+    expect(after.activeProfile).toBe("flash-everywhere");
+    // Every caller is told the truth, and the one that crossed the line says so.
+    expect(results.some((r) => r.anthropicExhausted)).toBe(true);
+
+    const audits = await prisma.auditLog.findMany({
+      where: { action: ROUTER_FLIP_AUDIT_ACTION, targetId: ROUTER_STATE_ID },
+    });
+    expect(audits).toHaveLength(1);
+
+    // A success zeroes it again, atomically, and does not re-audit anything.
+    const reset = await recordByokOutcome(prisma, "ok", { actor: "test:concurrent" });
+    expect(reset.consecutiveByokFailures).toBe(0);
+    expect(
+      await prisma.auditLog.count({
+        where: { action: ROUTER_FLIP_AUDIT_ACTION, targetId: ROUTER_STATE_ID },
+      }),
+    ).toBe(1);
+
+    await saveRouterState(prisma, { ...INITIAL_ROUTER_STATE }, "test:teardown");
+    await prisma.auditLog.deleteMany({
+      where: { action: ROUTER_FLIP_AUDIT_ACTION, targetId: ROUTER_STATE_ID },
+    });
+  }, 60_000);
+
+  it("does not review a submission that already carries a verdict", async () => {
+    if (!seeded) return;
+    // A held pass is `in_review` WITH its review row, so status alone cannot
+    // tell it apart from one waiting to be judged. A post-commit failure used
+    // to send the job back and the whole render-and-model run happened again,
+    // writing a second verdict and charging for it twice (C7).
+    const submissionId = await submitDirect(
+      "design",
+      { flowNotes: "Nine screens, numbered, photographed on the kitchen table.", sketches: [] },
+      3,
+    );
+    const criteria = checkpointDefinition("design").rubric.criteria.map((c) => c.id);
+    const first = await runReviewPipeline(submissionId, {
+      ...baseDeps(),
+      call: fakeModel([], () => verdictPayload(criteria, { verdict: "pass", confidence: 0.4 })),
+    });
+    expect(first.handled).toBe(true);
+    if (!first.handled) return;
+    expect(first.status).toBe("in_review");
+    expect(first.heldForHuman).toBe(true);
+
+    const costsBefore = await prisma.costLog.count({ where: { refId: submissionId } });
+
+    const again = await runReviewPipeline(submissionId, {
+      ...baseDeps(),
+      call: fakeModel([], () => {
+        throw new Error("a submission that already has a verdict must not be reviewed again");
+      }),
+    });
+
+    expect(again.handled).toBe(false);
+    if (again.handled) return;
+    expect(again.reason).toBe("already-final");
+    expect(await prisma.shipyardReview.count({ where: { submissionId } })).toBe(1);
+    expect(await prisma.costLog.count({ where: { refId: submissionId } })).toBe(costsBefore);
   }, 60_000);
 });
 

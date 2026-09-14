@@ -34,8 +34,9 @@ import { callStructured as defaultCallStructured } from "@/lib/ai/openrouter";
 import {
   effectiveProfile,
   loadRouterState,
+  recordByokOutcome,
   resolveRoute,
-  saveRouterState,
+  type ByokOutcome,
   type RouterState,
 } from "@/lib/ai/router";
 import { prisma as defaultPrisma } from "@/lib/db";
@@ -247,6 +248,8 @@ export async function runReviewPipeline(
       files: true,
       productId: true,
       checkpointId: true,
+      // One row is enough to know a verdict already landed on this attempt.
+      reviews: { take: 1, select: { id: true } },
       product: {
         select: {
           id: true,
@@ -278,6 +281,18 @@ export async function runReviewPipeline(
   if (submission.status === "passed" || submission.status === "returned") {
     return { handled: false, reason: "already-final" };
   }
+  // A HELD PASS is `in_review` and already carries its review row, so status
+  // alone cannot tell it apart from a submission waiting to be judged. Without
+  // this, a post-commit failure (the gate recompute, the notification) sent the
+  // job back and the whole render-and-model run happened AGAIN, writing a
+  // second verdict and charging for it twice (C7). A review that exists is the
+  // idempotency marker the status does not provide.
+  if (submission.reviews.length > 0) {
+    console.warn(
+      `[shipyard] submission ${submissionId} already has a review; not reviewing it again`,
+    );
+    return { handled: false, reason: "already-final" };
+  }
   if (submission.status !== "in_review") {
     await db.shipyardSubmission.update({
       where: { id: submissionId },
@@ -304,11 +319,18 @@ export async function runReviewPipeline(
   // `metric` checkpoint reads signals and ignores reviews entirely.
   if (!isModelReviewed(checkpoint.key)) {
     const informational = informationalVerdict(checkpoint.gateType, rubric);
-    const result = await complete(submissionId, informational, {
-      db,
-      tracker: deps.tracker,
-      now,
-    });
+    // The run count is what the student is actually waiting on, so read it
+    // once here: it goes into the notification ("7 of 10") AND straight into
+    // `recomputeGates`, so the gate and the sentence cannot disagree.
+    const seen =
+      checkpoint.gateType === "review"
+        ? null
+        : await readSignals(submission.product.trackerProductId, deps);
+    const result = await complete(
+      submissionId,
+      { ...informational, metricSignalsSeen: seen },
+      { db, tracker: deps.tracker, now, signals: seen },
+    );
     return { handled: true, kind: "informational", ...result };
   }
 
@@ -331,17 +353,10 @@ export async function runReviewPipeline(
 
   // --- 3b · Tracker signals, where the gate has a metric half ---------------
 
-  let signals: TrackerSignals | null = null;
-  if (checkpoint.gateType !== "review") {
-    try {
-      const tracker = deps.tracker ?? (await createTrackerClient());
-      signals = await tracker.getCheckpointSignals(submission.product.trackerProductId);
-    } catch {
-      // An unreachable tracker is not a failed review: the reviewer judges the
-      // write-up, and the metric half of the gate is decided elsewhere anyway.
-      signals = null;
-    }
-  }
+  const signals: TrackerSignals | null =
+    checkpoint.gateType === "review"
+      ? null
+      : await readSignals(submission.product.trackerProductId, deps);
 
   // --- 4 · The context ------------------------------------------------------
 
@@ -539,6 +554,23 @@ export async function runReviewPipeline(
 // The pieces
 // ---------------------------------------------------------------------------
 
+/**
+ * The tracker's numbers for a metric or `both` checkpoint. An unreachable
+ * tracker is not a failed review: the reviewer judges the write-up, and the
+ * metric half of the gate is decided from stored state elsewhere anyway.
+ */
+async function readSignals(
+  trackerProductId: string | null,
+  deps: ReviewPipelineDeps,
+): Promise<TrackerSignals | null> {
+  try {
+    const tracker = deps.tracker ?? (await createTrackerClient());
+    return await tracker.getCheckpointSignals(trackerProductId);
+  } catch {
+    return null;
+  }
+}
+
 /** SPEC §6: `workflow`'s write-up is recorded, never judged. */
 export function informationalVerdict(
   gateType: "review" | "metric" | "both",
@@ -564,6 +596,8 @@ export function informationalVerdict(
     // A mis-configured checkpoint should reach a human; a correctly configured
     // metric-only one should not, or every workflow write-up fills the queue.
     needsHuman: !metricOnly,
+    // "Notes saved", not "cleared": nothing here moved the gate.
+    informational: metricOnly,
   };
 }
 
@@ -655,6 +689,17 @@ async function storeScreenshot(
   }
 }
 
+/**
+ * Reviews whose rubric scores are NOT a judgement of the work.
+ *
+ * A blank/spam/duplicate short circuit writes every criterion as 0 without a
+ * model ever reading the submission, and the informational and stub paths
+ * write no scores at all. Carrying those forward as `priorScores` meant the
+ * next attempt — a real one, judged properly — "jumped 50 points into a pass"
+ * and was held for a human for having been preceded by an empty form (C10).
+ */
+const NON_JUDGING_MODELS = ["heuristic", "heuristic+model", "none", "stub"];
+
 /** The previous attempt's review, for "did they fix it" and the jump rule. */
 async function loadPreviousReview(
   db: PrismaClient,
@@ -662,15 +707,25 @@ async function loadPreviousReview(
   checkpointId: string,
   submissionId: string,
 ): Promise<{ reasons: ReasonView[]; rubricScores: Record<string, number> } | null> {
-  const row = await db.shipyardReview.findFirst({
+  const rows = await db.shipyardReview.findMany({
     where: {
       submission: { productId, checkpointId, id: { not: submissionId } },
+      modelUsed: { notIn: NON_JUDGING_MODELS },
     },
     orderBy: { createdAt: "desc" },
-    select: { reasons: true, rubricScores: true },
+    take: 5,
+    select: { reasons: true, rubricScores: true, promptLog: true },
   });
+  // `shortCircuit` on the promptLog says the same thing from the other side,
+  // and survives a rename of the model label.
+  const row = rows.find((r) => !hasShortCircuit(r.promptLog));
   if (!row) return null;
   return { reasons: asReasons(row.reasons), rubricScores: asScores(row.rubricScores) };
+}
+
+function hasShortCircuit(promptLog: unknown): boolean {
+  if (!promptLog || typeof promptLog !== "object" || Array.isArray(promptLog)) return false;
+  return (promptLog as Record<string, unknown>).shortCircuit != null;
 }
 
 /**
@@ -703,15 +758,18 @@ async function loadPriorSubmissions(
 
 /**
  * The router state, wired so a BYOK credit failure counted inside the gateway
- * is PERSISTED — five in a row flip the profile to flash-everywhere and
- * `saveRouterState` writes the AuditLog row that explains why.
+ * is PERSISTED — five in a row flip the profile to flash-everywhere and the
+ * AuditLog row explains why.
+ *
+ * The write goes through `recordByokOutcome`, which moves the counter in SQL
+ * rather than writing back an absolute number from `state`: this snapshot was
+ * read at the top of the job and fifteen workers share the row.
  */
 function makeRouterDeps(db: PrismaClient, state: RouterState) {
   return {
     routerState: state,
-    onRouterState: async (next: RouterState) => {
-      await saveRouterState(db, next, REVIEWER_ACTOR);
-    },
+    onRouterState: (_next: RouterState, outcome: ByokOutcome) =>
+      recordByokOutcome(db, outcome, { actor: REVIEWER_ACTOR }),
   };
 }
 

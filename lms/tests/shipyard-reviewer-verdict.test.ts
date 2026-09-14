@@ -212,15 +212,34 @@ describe("decideOutcome — SPEC §6 trust rules", () => {
     expect(decideOutcome(perfect, { attempt: 3 }).needsHuman).toBe(false);
   });
 
-  it("queues a wall of near-zero scores on any attempt", () => {
+  it("queues a wall of near-zero scores on a PASS, on any attempt", () => {
     const floor = parseVerdict(
       ideaVerdict({
-        verdict: "return",
+        verdict: "pass",
         rubricScores: Object.fromEntries(IDEA_CRITERIA.map((id) => [id, 2])),
       }),
       { criteria: IDEA_CRITERIA },
     );
-    expect(decideOutcome(floor, { attempt: 4 }).needsHuman).toBe(true);
+    const outcome = decideOutcome(floor, { attempt: 4 });
+    expect(outcome.needsHuman).toBe(true);
+    expect(outcome.needsHumanReasons.join()).toMatch(/or below/);
+  });
+
+  it("leaves a confident return with terrible scores alone — that is the job", () => {
+    const floor = parseVerdict(
+      ideaVerdict({
+        verdict: "return",
+        confidence: 0.95,
+        rubricScores: Object.fromEntries(IDEA_CRITERIA.map((id) => [id, 2])),
+      }),
+      { criteria: IDEA_CRITERIA },
+    );
+    // The bottom-outlier rule exists to catch a model that failed to READ the
+    // submission and passed it anyway. A return that scores the work badly is
+    // the expected shape of a return, not an anomaly (DECISIONS, 2026-09-15).
+    const outcome = decideOutcome(floor, { attempt: 4 });
+    expect(outcome.needsHuman).toBe(false);
+    expect(outcome.needsHumanReasons).toEqual([]);
   });
 
   it("queues a pass that marks a clause unmet, which the pass rule forbids", () => {

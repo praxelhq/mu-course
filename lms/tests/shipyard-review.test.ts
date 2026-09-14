@@ -14,7 +14,7 @@ import {
   DEAD_LETTER_REASON,
   handleReviewDeadLetter,
 } from "@/worker/shipyard-jobs/review-dead-letter";
-import { notificationBody } from "@/lib/shipyard/review-complete";
+import { notificationBody, notificationFor } from "@/lib/shipyard/review-complete";
 import { checkpointDefinition } from "@/lib/shipyard/checkpoints";
 import { createSubmission, SubmissionError } from "@/lib/shipyard/submissions";
 import { ensureProduct } from "@/lib/shipyard/products";
@@ -129,6 +129,80 @@ describe("notificationBody", () => {
 
   it("says so when there is nothing left", () => {
     expect(notificationBody("pass", [], null)).toMatch(/Every checkpoint is cleared/);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// What the student is actually told (C3): the GATE decides, not the verdict
+// ---------------------------------------------------------------------------
+
+describe("notificationFor", () => {
+  const base = {
+    order: 4,
+    verdict: "pass" as const,
+    held: false,
+    nextTitle: "Launch",
+    nextOpened: false,
+    reasons: [],
+    studentSummary: "The pricing is specific and the checkout link opens.",
+  };
+
+  it("says cleared, and names the next checkpoint, only when it really opened", () => {
+    const cleared = notificationFor({
+      ...base,
+      state: { state: "passed", reason: "review-and-metric-passed" },
+      nextOpened: true,
+    });
+    expect(cleared.title).toBe("Checkpoint 4 cleared");
+    expect(cleared.body).toBe("Next: Launch.");
+  });
+
+  it("does not say cleared when only the write-up half of a `both` gate passed", () => {
+    const half = notificationFor({
+      ...base,
+      state: { state: "open", reason: "awaiting-metrics" },
+    });
+    expect(half.title).toBe("Checkpoint 4 write-up accepted");
+    expect(half.body).toBe(
+      "Payments live and tracker connected are still being read from Shipped.money.",
+    );
+  });
+
+  it("names the blocking flag and the unreachable tracker as the different things they are", () => {
+    expect(
+      notificationFor({ ...base, state: { state: "open", reason: "blocked-by-flag" } }).body,
+    ).toMatch(/blocking flag/);
+    expect(
+      notificationFor({ ...base, state: { state: "open", reason: "tracker-unreachable" } }).body,
+    ).toMatch(/could not be read/);
+  });
+
+  it("calls checkpoint 5's write-up what it is: notes, not a verdict", () => {
+    const informational = notificationFor({
+      ...base,
+      order: 5,
+      state: { state: "open", reason: "awaiting-metrics" },
+      informational: true,
+      workflowRuns: 7,
+    });
+    expect(informational.title).toBe("Checkpoint 5 notes saved");
+    expect(informational.body).toBe(
+      "Runs are counted from your tagged n8n workflow: 7 of 10.",
+    );
+  });
+
+  it("still says `with a reviewer` for a held pass, and `returned` for a return", () => {
+    expect(
+      notificationFor({ ...base, held: true, state: { state: "open", reason: "awaiting-review" } })
+        .title,
+    ).toBe("Checkpoint 4 is with a reviewer");
+    expect(
+      notificationFor({
+        ...base,
+        verdict: "return",
+        state: { state: "open", reason: "awaiting-review" },
+      }).title,
+    ).toBe("Checkpoint 4 returned");
   });
 });
 

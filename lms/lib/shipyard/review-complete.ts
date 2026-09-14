@@ -26,14 +26,21 @@
 // submission on a deadline night; if it fails, the gate sweep re-runs it within
 // fifteen minutes and the stored review is already correct.
 
-import { Prisma, type PrismaClient, type ShipyardVerdict } from "@prisma/client";
+import {
+  Prisma,
+  type PrismaClient,
+  type ShipyardGateState,
+  type ShipyardVerdict,
+} from "@prisma/client";
 import { prisma as defaultPrisma } from "@/lib/db";
 import type { TrackerClient } from "@/lib/tracker/client";
 import type { TrackerSignals } from "@/lib/tracker/types";
 import { SHIPYARD_COURSE_ID } from "./constants";
 import { ShipyardError } from "./errors";
 import { recomputeGates, type CheckpointStateRow } from "./gate-state";
-import { onReviewCompleted } from "./grades";
+import type { GateReason } from "./gates";
+import { onReviewCompleted, workflowRunsFrom } from "./grades";
+import { WORKFLOW_TARGETS } from "./scoring";
 import type { ReasonView } from "./view-models";
 
 export type VerdictInput = {
@@ -60,12 +67,24 @@ export type VerdictInput = {
   metricSignalsSeen?: TrackerSignals | null;
   renderArtifacts?: Record<string, unknown> | null;
   promptLog?: Record<string, unknown> | null;
+  /**
+   * Checkpoint 5's write-up: recorded, never judged (SPEC §6). It is a `pass`
+   * because nothing here refuses it, NOT because anything was cleared — the
+   * gate is the tracker's run count — so the student is told "notes saved".
+   */
+  informational?: boolean;
 };
 
 export type CompleteReviewDeps = {
   db?: PrismaClient;
   tracker?: TrackerClient;
   now?: Date;
+  /**
+   * Signals the caller has already read. Passed straight to `recomputeGates`
+   * so the metric half is decided from the same numbers the reviewer saw,
+   * rather than from a second call that could disagree with the first.
+   */
+  signals?: TrackerSignals | null;
 };
 
 export type CompleteReviewStatus = "passed" | "returned" | "in_review";
@@ -118,6 +137,112 @@ export function notificationTitle(
 ): string {
   if (held) return `Checkpoint ${order} is with a reviewer`;
   return `Checkpoint ${order} ${verdict === "pass" ? "cleared" : "returned"}`;
+}
+
+/**
+ * What is still outstanding, in the words of the gate's own reason.
+ *
+ * A `both` gate whose write-up passed has NOT cleared, and telling a student
+ * "Checkpoint 4 cleared" while the gate sits shut waiting on Shipped.money is
+ * the one thing a notification must never do.
+ */
+export const OUTSTANDING_HALF_BODY: Partial<Record<GateReason, string>> = {
+  "awaiting-metrics":
+    "Payments live and tracker connected are still being read from Shipped.money.",
+  "blocked-by-flag": "The tracker reports a blocking flag; ask your instructor.",
+  "tracker-unreachable": "Shipped.money could not be read; it will retry.",
+};
+
+/** The title for a write-up that was accepted without clearing its gate. */
+export function writeUpAcceptedTitle(order: number): string {
+  return `Checkpoint ${order} write-up accepted`;
+}
+
+/** Checkpoint 5's write-up is recorded, never judged: say exactly that. */
+export function informationalTitle(order: number): string {
+  return `Checkpoint ${order} notes saved`;
+}
+
+export function informationalBody(runs: number | null): string {
+  if (runs === null) {
+    return "Runs are counted from your tagged n8n workflow. Shipped.money could not be read just now; it will retry.";
+  }
+  return `Runs are counted from your tagged n8n workflow: ${runs} of ${WORKFLOW_TARGETS.bar}.`;
+}
+
+export type NotificationFacts = {
+  order: number;
+  verdict: ShipyardVerdict;
+  held: boolean;
+  /** This checkpoint's row AFTER the verdict landed, from `recomputeGates`. */
+  state: { state: ShipyardGateState; reason: GateReason } | null;
+  /** The next checkpoint's title, and whether it ACTUALLY opened. */
+  nextTitle: string | null;
+  nextOpened: boolean;
+  reasons: ReasonView[];
+  studentSummary?: string | null;
+  /** Checkpoint 5: recorded, not reviewed. */
+  informational?: boolean;
+  /** Its run count, for the informational body. Null when unread. */
+  workflowRuns?: number | null;
+};
+
+/**
+ * The one place a student's notification is decided, from what the GATE says
+ * rather than from what the verdict said.
+ *
+ * The verdict answers "did the write-up meet the bar". The notification has to
+ * answer "what happened to your checkpoint", and for a `both` gate those are
+ * different questions with different answers (C3).
+ */
+export function notificationFor(facts: NotificationFacts): { title: string; body: string } {
+  if (facts.informational) {
+    return {
+      title: informationalTitle(facts.order),
+      body: informationalBody(facts.workflowRuns ?? null),
+    };
+  }
+
+  if (facts.held) {
+    return {
+      title: notificationTitle(facts.order, facts.verdict, true),
+      body: HELD_PASS_BODY,
+    };
+  }
+
+  if (facts.verdict === "return") {
+    return {
+      title: notificationTitle(facts.order, "return", false),
+      body: notificationBody("return", facts.reasons, null, false, facts.studentSummary),
+    };
+  }
+
+  // A pass. Whether it CLEARED is the recomputed row's answer, not ours.
+  const cleared = facts.state ? facts.state.state === "passed" : true;
+  if (cleared) {
+    return {
+      title: notificationTitle(facts.order, "pass", false),
+      // "Next: X" only when X is genuinely open now; otherwise the student
+      // reads an instruction they cannot act on.
+      body: notificationBody(
+        "pass",
+        facts.reasons,
+        facts.nextOpened ? facts.nextTitle : null,
+        false,
+        // The reviewer's summary is about the write-up; when the next
+        // checkpoint opened, where to go next is the more useful sentence.
+        facts.nextOpened ? null : facts.studentSummary,
+      ),
+    };
+  }
+
+  const outstanding = facts.state ? OUTSTANDING_HALF_BODY[facts.state.reason] : undefined;
+  return {
+    title: writeUpAcceptedTitle(facts.order),
+    body:
+      outstanding ??
+      "Your write-up is in. This checkpoint also waits on the numbers Shipped.money reports.",
+  };
 }
 
 /** Record a verdict, move the gate, and tell the student. */
@@ -193,34 +318,65 @@ export async function completeReview(
     return created;
   });
 
-  // The gate rule is re-run in full rather than patched: `recomputeGates` is
-  // the only writer of ShipyardCheckpointState (architecture §4), and a pass
-  // that flipped the next checkpoint open has to go through it.
-  const states = await recomputeGates(submission.productId, {
-    db,
-    tracker: deps.tracker,
-    now,
-  });
+  // Steps 4 to 6 are best-effort BY CONTRACT, as the header says: the verdict
+  // and the submission's status are committed, and a failure here must not
+  // send the job back for a retry that would write a second review. The
+  // fifteen-minute gate sweep repairs anything left behind.
+  let states: CheckpointStateRow[] = [];
+  try {
+    // The gate rule is re-run in full rather than patched: `recomputeGates` is
+    // the only writer of ShipyardCheckpointState (architecture §4), and a pass
+    // that flipped the next checkpoint open has to go through it.
+    states = await recomputeGates(submission.productId, {
+      db,
+      tracker: deps.tracker,
+      now,
+      ...(deps.signals !== undefined ? { signals: deps.signals } : {}),
+    });
+  } catch (err) {
+    console.error(
+      `[shipyard] recomputeGates failed after review ${review.id}; the sweep will repair it:`,
+      err instanceof Error ? err.message : err,
+    );
+  }
 
-  // A new verdict on checkpoint 3 or launch moves the product-quality
-  // component, and a newly-passed sixth checkpoint moves the graduation
-  // condition. Best-effort by contract: a grade is derived and can always be
-  // recomputed, and it must never cost a student their recorded verdict.
-  await onReviewCompleted(submission.productId, { db, now });
+  try {
+    // A new verdict on checkpoint 3 or launch moves the product-quality
+    // component, and a newly-passed sixth checkpoint moves the graduation
+    // condition. A grade is derived and can always be recomputed, and it must
+    // never cost a student their recorded verdict.
+    await onReviewCompleted(submission.productId, { db, now });
+  } catch (err) {
+    console.error(
+      `[shipyard] grade refresh failed after review ${review.id}:`,
+      err instanceof Error ? err.message : err,
+    );
+  }
+
+  const order = submission.checkpoint.order;
+  const thisState = states.find((s) => s.order === order) ?? null;
+  const nextState = states.find((s) => s.order === order + 1) ?? null;
+  const note = notificationFor({
+    order,
+    verdict: verdict.verdict,
+    held,
+    state: thisState ? { state: thisState.state, reason: thisState.reason } : null,
+    nextTitle: nextCheckpoint?.title ?? null,
+    // `locked` means the student cannot act on it, whatever its title says.
+    nextOpened: nextState ? nextState.state !== "locked" : nextCheckpoint === null,
+    reasons: verdict.reasons,
+    studentSummary: verdict.studentSummary,
+    informational: verdict.informational === true,
+    workflowRuns: deps.signals === undefined ? null : workflowRunsFrom(deps.signals),
+  });
 
   try {
     await db.notification.create({
       data: {
         userId: submission.product.userId,
         kind: "shipyard.review",
-        title: notificationTitle(submission.checkpoint.order, verdict.verdict, held),
-        body: notificationBody(
-          verdict.verdict,
-          verdict.reasons,
-          nextCheckpoint?.title ?? null,
-          held,
-          verdict.studentSummary,
-        ),
+        title: note.title,
+        body: note.body,
       },
     });
   } catch (err) {
