@@ -271,7 +271,20 @@ describe.skipIf(!live)("U16 DPDP export + delete (live DB)", () => {
     const dbSubs = await prisma.submission.count({ where: { userId: "user_s001" } });
     expect(bundle.submissions).toHaveLength(dbSubs);
     expect(dbSubs).toBeGreaterThan(0);
-    expect(deepForbiddenHits(bundle)).toEqual([]);
+
+    // The Course 1 bundle is a SAFE PROJECTION: grading records, rubrics,
+    // evaluator prompts and object-store locators are deliberately not
+    // selected. Course 2's `shipyard` section is deliberately the opposite —
+    // the whole record, promptLog and grade and S3 keys included, because
+    // SPEC §6 requires the Shipyard to KEEP the prompt and response and a
+    // subject-access request asks for what we hold (docs/DECISIONS.md,
+    // 2026-09-15). So the Course 1 contract is asserted over the Course 1
+    // bundle, and the terms that are dangerous ANYWHERE still apply to both.
+    const { shipyard, ...forge } = bundle as Record<string, unknown>;
+    expect(deepForbiddenHits(forge)).toEqual([]);
+    for (const term of ["answerkey", "answer_key", "credential", "secret", "token", "trustmrr"]) {
+      expect(deepForbiddenHits(shipyard ?? null).filter((hit) => hit.includes(term))).toEqual([]);
+    }
     expect("s3Keys" in bundle).toBe(false);
     expect(bundle.submissions.every((submission) => !("grades" in submission))).toBe(true);
   });

@@ -286,13 +286,22 @@ describe.skipIf(!live)("U16 Praxy export stub (live DB)", () => {
       expect(res.status).toBe(200);
       const payload = (await res.json()) as Record<string, unknown>;
       expect(payload.contractVersion).toBe(2);
-      expect(Object.keys(payload).sort()).toEqual([
-        "artifacts",
-        "badges",
-        "contractVersion",
-        "generatedAt",
-        "student",
-      ]);
+      // `shipyard` is present only for a student with a Course 2 product, and
+      // it carries the same kind of thing as the rest of this payload:
+      // artifacts and badges, never numbers (docs/DECISIONS.md, 2026-09-15).
+      // `tests/shipyard-admin-dpdp.test.ts` asserts its shape in detail; the
+      // deep scan below holds it to the same forbidden terms as everything
+      // else here.
+      expect(Object.keys(payload).sort()).toEqual(
+        [
+          "artifacts",
+          "badges",
+          "contractVersion",
+          "generatedAt",
+          ...("shipyard" in payload ? ["shipyard"] : []),
+          "student",
+        ].sort(),
+      );
       expect(deepScan(payload)).toEqual([]);
     }
   });
