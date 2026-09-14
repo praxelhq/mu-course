@@ -12,7 +12,13 @@
 // It is a RELEASE GATE (SPEC §1 rule 8): no bar, rubric, prompt or routing
 // change reaches students until its numbers are recorded in docs/DECISIONS.md.
 //
-// Flags: --model <slug>  --checkpoint <key>  --limit <n>
+// Flags: --model <slug>  --checkpoint <key>  --limit <n>  --concurrency <n>
+//
+// Fifty-five cases against two models is 110 model calls, and serially that is
+// most of an hour of wall clock for a run whose numbers are a release gate. So
+// the cases for one model run with a small concurrency (4 by default) and a
+// 429 is retried with backoff rather than recorded as a disagreement — a rate
+// limit is a fact about the account, not about the model's judgement.
 //
 // Two honest limitations, stated here rather than buried:
 //   1. A fixture image that is a `synthetic:` description rather than a real
@@ -40,6 +46,7 @@ import type { TrackerSignals } from "../lib/tracker/types";
 const FIXTURES = resolve(__dirname, "..", "fixtures", "shipyard-reviewer");
 const CASES_DIR = join(FIXTURES, "cases");
 const LAST_RUN = join(FIXTURES, "last-run.json");
+const LAST_RUN_MD = join(FIXTURES, "last-run.md");
 
 /** SPEC §6.5: the gate. */
 const MIN_AGREEMENT_WITH_EXPECTED = 0.85;
@@ -88,6 +95,10 @@ function arg(name: string): string | undefined {
 const onlyModel = arg("model");
 const onlyCheckpoint = arg("checkpoint");
 const limit = Number(arg("limit") ?? Number.POSITIVE_INFINITY);
+/** Small on purpose: four in flight is fast enough and stays under the
+ *  per-account rate limits on both providers. */
+const DEFAULT_CONCURRENCY = 4;
+const concurrency = Math.max(1, Math.floor(Number(arg("concurrency") ?? DEFAULT_CONCURRENCY)) || DEFAULT_CONCURRENCY);
 
 // ---------------------------------------------------------------------------
 // Loading
@@ -230,10 +241,59 @@ function installFake(): void {
 // The run
 // ---------------------------------------------------------------------------
 
+/** Bounded-parallel map that keeps the results in the input's order. */
+async function mapWithConcurrency<T, R>(
+  items: T[],
+  width: number,
+  fn: (item: T, index: number) => Promise<R>,
+): Promise<R[]> {
+  const out = new Array<R>(items.length);
+  let next = 0;
+  const workers = Array.from({ length: Math.min(width, items.length) }, async () => {
+    for (;;) {
+      const index = next++;
+      if (index >= items.length) return;
+      out[index] = await fn(items[index], index);
+    }
+  });
+  await Promise.all(workers);
+  return out;
+}
+
+const RATE_LIMIT_RETRIES = 3;
+const RATE_LIMIT_BASE_MS = 4_000;
+
+function isRateLimited(err: unknown): boolean {
+  const text = err instanceof Error ? err.message : String(err);
+  return /\b429\b|rate.?limit|too many requests/i.test(text);
+}
+
+/**
+ * One pinned call, retried on a 429 only. Every other failure is a real result
+ * for this fixture and is reported as an error row rather than hidden.
+ */
+async function callWithRateLimitRetry<T>(fn: () => Promise<T>): Promise<T> {
+  let lastError: unknown;
+  for (let attempt = 0; attempt <= RATE_LIMIT_RETRIES; attempt++) {
+    try {
+      return await fn();
+    } catch (err) {
+      lastError = err;
+      if (!isRateLimited(err) || attempt === RATE_LIMIT_RETRIES) break;
+      const waitMs = RATE_LIMIT_BASE_MS * 2 ** attempt + Math.floor(Math.random() * 500);
+      process.stdout.write("r");
+      await new Promise((r) => setTimeout(r, waitMs));
+    }
+  }
+  throw lastError;
+}
+
 async function runModel(model: string, cases: EvalCase[]): Promise<CaseResult[]> {
-  const results: CaseResult[] = [];
-  for (const evalCase of cases) {
-    currentCase = evalCase;
+  // The fake responder reads a module-level `currentCase`, so a fake run stays
+  // serial. A live run is the one that needs the wall clock back.
+  const width = isFakeMode() ? 1 : concurrency;
+  return mapWithConcurrency(cases, width, async (evalCase) => {
+    if (width === 1) currentCase = evalCase;
     const criteria = checkpointDefinition(evalCase.checkpointKey).rubric.criteria.map((c) => c.id);
     const blank: CaseResult = {
       id: evalCase.id,
@@ -254,22 +314,25 @@ async function runModel(model: string, cases: EvalCase[]): Promise<CaseResult[]>
 
     try {
       const prompt = await buildPrompt(evalCase);
-      const call = await callStructured(
-        {
-          task: "eval",
-          // Pinned: no fallback array, so this row is about THIS model.
-          models: [model],
-          system: prompt.system,
-          user: prompt.user,
-          schema: verdictOutputSchema,
-          temperature: 0,
-          maxTokens: 3000,
-        },
-        {},
+      const call = await callWithRateLimitRetry(() =>
+        callStructured(
+          {
+            task: "eval",
+            // Pinned: no fallback array, so this row is about THIS model.
+            models: [model],
+            system: prompt.system,
+            user: prompt.user,
+            schema: verdictOutputSchema,
+            temperature: 0,
+            maxTokens: 8192,
+          },
+          {},
+        ),
       );
       const verdict = parseVerdict(call.raw, { criteria });
       const outcome = decideOutcome(verdict, { attempt: 1 });
-      results.push({
+      process.stdout.write(".");
+      return {
         ...blank,
         got: verdict.verdict,
         agreed: verdict.verdict === evalCase.expected,
@@ -281,14 +344,15 @@ async function runModel(model: string, cases: EvalCase[]): Promise<CaseResult[]>
         tokensIn: call.tokensIn,
         tokensOut: call.tokensOut,
         costUsd: call.costUsd,
-      });
+      } satisfies CaseResult;
     } catch (err) {
-      results.push({ ...blank, error: err instanceof Error ? err.message : String(err) });
+      process.stdout.write("x");
+      return { ...blank, error: err instanceof Error ? err.message : String(err) } satisfies CaseResult;
     }
-    process.stdout.write(".");
-  }
-  process.stdout.write("\n");
-  return results;
+  }).then((results) => {
+    process.stdout.write("\n");
+    return results;
+  });
 }
 
 function pct(n: number, d: number): number {
@@ -303,6 +367,81 @@ function byCheckpoint(results: CaseResult[]): Record<string, { agreed: number; t
     if (r.agreed) out[r.checkpointKey].agreed++;
   }
   return out;
+}
+
+/**
+ * The same run, written for a human. `last-run.json` is what a later script
+ * diffs; this is what a reader opens next to docs/DECISIONS.md.
+ */
+function renderMarkdown(
+  payload: Record<string, unknown>,
+  byModel: Record<string, CaseResult[]>,
+): string {
+  const lines: string[] = [];
+  const summary = payload.models_ as Record<string, Record<string, unknown>>;
+  lines.push("# `pnpm eval:reviewer` — last run");
+  lines.push("");
+  lines.push(`- ran at: ${String(payload.ranAt)}`);
+  lines.push(`- prompt version: ${String(payload.promptVersion)}`);
+  lines.push(`- cases: ${String(payload.caseCount)} model-reviewed`);
+  lines.push(`- responder: ${payload.fake ? "FAKE (no key) — not evidence about a model" : "live OpenRouter"}`);
+  lines.push(`- gate: **${String(payload.gate)}**`);
+  if (payload.crossAgreement !== null) {
+    lines.push(`- inter-model agreement: **${String(payload.crossAgreement)}%**`);
+  }
+  lines.push("");
+  lines.push("| model | agreement | mean confidence | queued for a human | tokens in | tokens out | USD |");
+  lines.push("| --- | --- | --- | --- | --- | --- | --- |");
+  for (const [model, stat] of Object.entries(summary)) {
+    lines.push(
+      `| \`${model}\` | ${stat.agreement}% (${stat.agreedCount}/${stat.total}) | ${stat.meanConfidence} | ` +
+        `${stat.queuedForHuman}/${stat.total} | ${stat.tokensIn} | ${stat.tokensOut} | $${Number(stat.costUsd).toFixed(4)} |`,
+    );
+  }
+  lines.push("");
+  lines.push("## Per checkpoint");
+  lines.push("");
+  const keys = [...new Set(Object.values(byModel).flat().map((r) => r.checkpointKey))].sort();
+  lines.push(`| model | ${keys.join(" | ")} |`);
+  lines.push(`| --- | ${keys.map(() => "---").join(" | ")} |`);
+  for (const [model, stat] of Object.entries(summary)) {
+    const per = stat.perCheckpoint as Record<string, { agreed: number; total: number }>;
+    lines.push(
+      `| \`${model}\` | ` +
+        keys
+          .map((k) => {
+            const cell = per[k];
+            return cell ? `${cell.agreed}/${cell.total}` : "—";
+          })
+          .join(" | ") +
+        " |",
+    );
+  }
+  for (const [model, results] of Object.entries(byModel)) {
+    const disagreements = results.filter((r) => !r.agreed && r.got !== "error");
+    const errors = results.filter((r) => r.got === "error");
+    lines.push("");
+    lines.push(`## \`${model}\` — ${disagreements.length} disagreement${disagreements.length === 1 ? "" : "s"}`);
+    lines.push("");
+    if (disagreements.length === 0) lines.push("None.");
+    for (const d of disagreements) {
+      lines.push(`### ${d.id}`);
+      lines.push("");
+      lines.push(`- expected **${d.expected}**, got **${d.got}** at confidence ${d.confidence}`);
+      lines.push(`- expected unmet: ${d.expectedUnmetCriteria.join(", ") || "(none)"}`);
+      lines.push(`- model unmet: ${d.unmetCriteria.join(", ") || "(none)"}`);
+      lines.push(`- queued for a human: ${d.needsHuman ? d.needsHumanReasons.join("; ") : "no"}`);
+      lines.push(`- to the student: ${d.summaryForStudent}`);
+      lines.push("");
+    }
+    if (errors.length > 0) {
+      lines.push(`### errors (${errors.length})`);
+      lines.push("");
+      for (const e of errors) lines.push(`- \`${e.id}\`: ${e.error}`);
+      lines.push("");
+    }
+  }
+  return `${lines.join("\n")}\n`;
 }
 
 async function main(): Promise<void> {
@@ -325,6 +464,7 @@ async function main(): Promise<void> {
       `${skipped.length} metric-only cases skipped (${[...new Set(skipped.map((c) => c.checkpointKey))].join(", ") || "none"})`,
   );
   console.log(`models: ${models.join(", ")}`);
+  console.log(`concurrency: ${fake ? 1 : concurrency}`);
   if (fake) {
     console.log("");
     console.log("!!! ".repeat(18));
@@ -447,8 +587,9 @@ async function main(): Promise<void> {
     gate: fake ? "not-applicable-fake-responder" : gateFailed ? "failed" : "passed",
   };
   writeFileSync(LAST_RUN, `${JSON.stringify(payload, null, 2)}\n`);
+  writeFileSync(LAST_RUN_MD, renderMarkdown(payload, byModel));
   console.log("");
-  console.log(`wrote ${LAST_RUN}`);
+  console.log(`wrote ${LAST_RUN} and ${LAST_RUN_MD}`);
 
   if (fake) {
     console.log("");

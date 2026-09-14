@@ -1,36 +1,130 @@
 {
-  "ranAt": "2026-09-14T18:58:01.810Z",
+  "ranAt": "2026-09-14T19:42:40.872Z",
   "promptVersion": "2026-09-15.1",
-  "fake": true,
+  "fake": false,
   "models": [
+    "z-ai/glm-5.3-flash",
     "anthropic/claude-haiku-4.5"
   ],
-  "caseCount": 3,
-  "skippedMetricOnly": [],
+  "caseCount": 50,
+  "skippedMetricOnly": [
+    "workflow-01-whatsapp-order-to-razorpay-pass",
+    "workflow-02-daily-route-plan-email-pass",
+    "workflow-03-dodo-webhook-invoice-pdf-pass",
+    "workflow-04-form-to-notion-whatsapp-four-runs-return",
+    "workflow-05-gym-fee-reminder-nine-runs-return"
+  ],
   "thresholds": {
     "agreementWithExpected": 0.85,
     "agreementBetweenModels": 0.8
   },
-  "crossAgreement": null,
+  "crossAgreement": 94,
   "models_": {
-    "anthropic/claude-haiku-4.5": {
-      "agreement": 100,
-      "agreedCount": 3,
-      "total": 3,
+    "z-ai/glm-5.3-flash": {
+      "agreement": 94,
+      "agreedCount": 47,
+      "total": 50,
       "perCheckpoint": {
+        "design": {
+          "agreed": 9,
+          "total": 10
+        },
+        "idea": {
+          "agreed": 9,
+          "total": 10
+        },
+        "launch": {
+          "agreed": 10,
+          "total": 10
+        },
+        "money": {
+          "agreed": 10,
+          "total": 10
+        },
         "working": {
-          "agreed": 3,
-          "total": 3
+          "agreed": 9,
+          "total": 10
         }
       },
-      "meanConfidence": 0.86,
-      "queuedForHuman": 0,
-      "tokensIn": 8758,
-      "tokensOut": 933,
-      "costUsd": 0.013423,
+      "meanConfidence": 0.83,
+      "queuedForHuman": 17,
+      "tokensIn": 129174,
+      "tokensOut": 32979,
+      "costUsd": 0.023135,
       "errors": 0,
-      "disagreements": []
+      "disagreements": [
+        {
+          "id": "design-10-implied-payment-step-borderline-return",
+          "expected": "return",
+          "got": "pass",
+          "confidence": 0.82,
+          "summaryForStudent": "You cleared the design checkpoint: a complete numbered flow, drawn by hand, with a written step-by-step path, two honest failure states, and a named carrying screen with a reason. Next up is building, and screen 3 — the today screen — is the one to make work first."
+        },
+        {
+          "id": "idea-09-tiny-sample-high-conversion-borderline",
+          "expected": "pass",
+          "got": "return",
+          "confidence": 0.6,
+          "summaryForStudent": "The idea, the job story, the audience and your numbers are all in good shape, and the Tally screenshot matches what you reported. What is missing is proof the waitlist page itself is live and collecting emails. Send a screenshot of the loaded page showing the promise and the email field, and this clears."
+        },
+        {
+          "id": "working-10-articleship-planner-borderline",
+          "expected": "return",
+          "got": "pass",
+          "confidence": 0.93,
+          "summaryForStudent": "You cleared the working bar: the live site loads for a stranger, the six-step path from Build my plan to Export my plan as PDF works end to end, and your gap list is honest without touching the core path. Next step is the Course 3 portal."
+        }
+      ]
+    },
+    "anthropic/claude-haiku-4.5": {
+      "agreement": 96,
+      "agreedCount": 48,
+      "total": 50,
+      "perCheckpoint": {
+        "design": {
+          "agreed": 9,
+          "total": 10
+        },
+        "idea": {
+          "agreed": 10,
+          "total": 10
+        },
+        "launch": {
+          "agreed": 10,
+          "total": 10
+        },
+        "money": {
+          "agreed": 9,
+          "total": 10
+        },
+        "working": {
+          "agreed": 10,
+          "total": 10
+        }
+      },
+      "meanConfidence": 0.88,
+      "queuedForHuman": 16,
+      "tokensIn": 138901,
+      "tokensOut": 136941,
+      "costUsd": 0.823606,
+      "errors": 0,
+      "disagreements": [
+        {
+          "id": "design-10-implied-payment-step-borderline-return",
+          "expected": "return",
+          "got": "pass",
+          "confidence": 0.88,
+          "summaryForStudent": "You have cleared design. Six screens, numbered and ordered, flow from arrival through the job with two edge cases drawn. The carrying screen is named and the full path from setup to adjustment is legible. You are ready to move to build."
+        },
+        {
+          "id": "money-08-saree-tracker-pro-tier-unshipped",
+          "expected": "return",
+          "got": "pass",
+          "confidence": 0.85,
+          "summaryForStudent": "You have cleared this checkpoint. Your payments are live, your product is connected to the tracker, and your write-up states a clear price, explains it in terms of buyer value, and names what buyers give up by not paying. You are ready to move forward."
+        }
+      ]
     }
   },
-  "gate": "not-applicable-fake-responder"
+  "gate": "passed"
 }

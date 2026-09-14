@@ -87,7 +87,21 @@ a `courseId`-scoped mode of the Forge. Source of truth: `docs/shipyard/SPEC.md`
 - `lib/shipyard/submissions.ts` — `createSubmission`, every refusal a student
   can meet (404/409/400/429) and the only writer of `ShipyardSubmission`.
 - `lib/shipyard/review-complete.ts` — `completeReview`, the one path a verdict
-  takes: review row + status in a transaction, then recomputeGates + notify.
+  takes: review row + status in a transaction, then recomputeGates, the grade
+  refresh, and the notification. `isHeldPass` is the rule that keeps a flagged
+  pass in `in_review` with the gate shut.
+- `lib/shipyard/review-pipeline.ts` — `runReviewPipeline(submissionId, deps)`,
+  the AI reviewer end to end: load → informational short-cut for `workflow` →
+  render → context → pre-flight → cheap classification → blank/spam/duplicate
+  short circuit → verdict call → parse → trust rules → `completeReview`. Every
+  seam (db, tracker, S3, model, render, probe, clock) is injected.
+- `lib/shipyard/review-escalate.ts` — the human half: `loadReviewQueue`,
+  `escalateReview` (the second opinion, stored on `promptLog.escalation` and
+  never a verdict), `disputeReview` (one per review, student-owned) and
+  `humanResolve`, the only thing that moves a gate a held pass left shut.
+- `lib/shipyard/review-costs.ts` — `loadCostMeter`: CostLog for every model
+  call, ShipyardReview for the per-checkpoint verdict spend, the review counts,
+  the dead-letter list and the kill-switch banner state.
 - `lib/shipyard/uploads.ts` — the Shipyard's own upload allowlist and caps, and
   `keyPrefixForProduct` (the prefix a submitted file key must carry).
 - `lib/shipyard/errors.ts` — `ShipyardError` (`status` + JSON `body`) and
@@ -132,10 +146,14 @@ a `courseId`-scoped mode of the Forge. Source of truth: `docs/shipyard/SPEC.md`
   kill-switch. The only place a model slug appears.
 - `lib/ai/openrouter.ts` — the only module speaking HTTP to OpenRouter.
 - `lib/ai/openrouter-fake.ts` — the deterministic responder used with no key.
-- `worker/shipyard.ts` — wiring only: the Shipyard queues and consumers, its
-  own Railway service.
-- `worker/shipyard-jobs/review-submission.ts` — `handleReviewSubmission` and
-  M1's stub reviewer (`stubVerdict`). M2 replaces the verdict, not the shape.
+- `worker/shipyard.ts` — wiring only: the Shipyard queues and consumers, the
+  10-minute tracker refresh and the 15-minute gate sweep, a `node:http`
+  liveness endpoint on `PORT` so Railway's inherited healthcheck passes, and
+  its own Railway service.
+- `worker/shipyard-jobs/review-submission.ts` — `handleReviewSubmission`, a
+  thin wrapper over `runReviewPipeline`. M1's stub reviewer (`stubVerdict`,
+  `handleWithStub`) is kept behind `SHIPYARD_STUB_REVIEWER=1` for the no-key
+  demo.
 - `worker/shipyard-jobs/review-dead-letter.ts` — returns a submission nobody
   could review, so nothing is stuck in `in_review` forever.
 - `worker/shipyard-jobs/gate-sweep.ts` — the 15-minute metric-gate sweep.
@@ -177,8 +195,16 @@ a `courseId`-scoped mode of the Forge. Source of truth: `docs/shipyard/SPEC.md`
   `docs/DECISIONS.md`.
 - A verdict is recorded ONLY through `completeReview` in
   `lib/shipyard/review-complete.ts` — the stub reviewer, the instructor's
-  review-stub route, the dead-letter backstop and M2's model call all go
+  review-stub route, the dead-letter backstop and the model pipeline all go
   through it, so a pass always moves the gate and always notifies the student.
+- A `pass` with `needsHuman` does NOT clear a gate. `completeReview` leaves the
+  submission `in_review` and only `humanResolve` moves it. Nothing else may
+  write `humanResolvedAt`, `overriddenBy` or `overrideReason`.
+- The escalation second opinion is advice, never a verdict: it lands in
+  `promptLog.escalation` and leaves `needsHuman` true.
+- Every Shipyard model call writes a `CostLog` row as well as its fields on the
+  review, so the meter can total a term including the pre-flight and escalation
+  tiers, which have no review row of their own.
 - A Shipyard upload key is minted only by `keyForShipyardUpload` from the
   session's product, and `createSubmission` verifies every submitted key
   against `keyPrefixForProduct`. No key from a request body is ever trusted.

@@ -122,3 +122,60 @@ Whenever a bug is fixed or a wrong assumption corrected, append what was learned
   a complete counts object by hand, so every new table counted in an erasure is
   three edits, not one. That is the point of the type — it is the list that
   makes a forgotten table a compile error.
+- **A reasoning model's thinking comes out of `max_tokens`, and running out
+  looks exactly like a broken reply.** GLM 5.3 Flash spent all 8,192 tokens
+  reasoning about a checkpoint bar and returned `content: ""` with
+  `finish_reason: "length"` and `reasoning_tokens: 8191`. Downstream that is
+  "no JSON object found in the reply", which sends you off rewriting the
+  prompt. `reasoning: { max_tokens: 2000 }` fixes it; `reasoning: { enabled:
+  false }` does not, because GLM's endpoints answer 400 "Reasoning is mandatory
+  for this endpoint and cannot be disabled." An empty `content` now raises an
+  error that names the finish reason and the reasoning-token count.
+- **OpenRouter reports `cost: 0` for a BYOK call.** It charged nothing; the
+  spend went to the upstream provider's credit and is in
+  `usage.cost_details.upstream_inference_cost` (with `usage.is_byok: true`).
+  Trusting `usage.cost` made the admin meter show every Haiku review as free
+  while $0.04 of the Anthropic credit went out of the door per call. The
+  operator's key turned out to have an Anthropic BYOK attached after all, which
+  is how this was found.
+- **A deterministic fake must answer the REAL contract, not a plausible one.**
+  `openrouter-fake.ts` had been emitting `{criterionId, clause, what, fix}` and
+  `summary` while the reviewer's schema wants `{criterion, met, note}` and
+  `summaryForStudent`. Nothing caught it, because the only tests that exercised
+  the fake used a loose local schema. Every keyless review would have come back
+  with each criterion repaired to "the reviewer did not address this clause",
+  a `needs_human` flag, and therefore a held pass — a demo showing a full review
+  queue instead of a walkthrough. The fake now reads the criterion ids out of
+  the system prompt's "The criterion ids, exactly: …" line and answers one
+  reason and one score per criterion.
+- **A fixture is only as good as the evidence stapled to it.** Two eval cases
+  had write-ups that contradicted their own attached PNGs — a signup screenshot
+  dated 3 September against prose claiming a test that ran to the 10th, and a
+  seven-screen route-planner flow described beside a photograph of a
+  six-screen bill-to-UPI flow. BOTH models returned both cases, correctly, and
+  the fixtures were wrong. Worth remembering when an eval disagrees: read the
+  image before you blame the model.
+- **The `shipyard.review` handler had to stay swappable.** M2 made
+  `handleReviewSubmission` a wrapper over `runReviewPipeline`, which silently
+  broke M1's live tests — they were walking the stub. The stub is kept behind
+  `SHIPYARD_STUB_REVIEWER=1` (and a `stub: true` dep) because the no-key demo
+  still needs a reviewer that passes on command, and the M1 suite now asks for
+  it explicitly.
+- **The reviewer is asked about link liveness and never told the answer.**
+  `runReviewPipeline` assembles the prompt before it runs pre-flight, so
+  `linkStatuses` exist only in `promptLog`. The `waitlist-live` criterion's
+  threshold literally says "the pre-flight liveness check reached it", and the
+  live eval caught a model returning a good submission because it had no way to
+  see that it had. Probe first, then assemble — and remember that changing the
+  prompt means re-running the release gate.
+- **Two models disagreeing with a fixture is evidence about the FIXTURE first.**
+  Of the five live disagreements, two were fixtures whose attached image
+  contradicted their own prose, one was a deliberately borderline case both
+  models read generously (kept, because the expectation is an editorial
+  judgement about where the bar sits), and only two were a single model being
+  wrong. Read the disagreement list before reading the agreement number.
+- **A reasoning model's price is its output tokens.** On identical work Haiku
+  4.5 spent 136,941 completion tokens against GLM 5.3 Flash's 32,979 — four
+  times the thinking — which is most of why it costs 35.7× more for two extra
+  points of agreement. Worth knowing before "the better model" wins an argument
+  about a bulk tier.
