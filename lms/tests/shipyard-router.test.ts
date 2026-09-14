@@ -26,12 +26,20 @@ import {
   FIXTURE_RETURN_HINT,
 } from "@/lib/ai/openrouter-fake";
 
+// The REAL verdict contract (lib/shipyard/reviewer/schemas.ts), restated here
+// rather than imported: these tests are about the gateway, and the gateway must
+// not learn what a Shipyard verdict looks like. Restating it does mean this
+// block has to be kept in step with the schema — which is the point, because
+// the deterministic fake answers in this shape and a drift between the two
+// would only ever be found by a failing seed.
 const verdictSchema = z.object({
   verdict: z.enum(["pass", "return"]),
   confidence: z.number(),
   reasons: z.array(z.object({}).loose()),
   rubricScores: z.record(z.string(), z.number()),
-  summary: z.string(),
+  contradictions: z.array(z.string()),
+  flags: z.array(z.string()),
+  summaryForStudent: z.string(),
 });
 
 afterEach(() => __setOpenRouterFake());
@@ -272,9 +280,11 @@ describe("callStructured with no API key", () => {
       content: JSON.stringify({
         verdict: "return",
         confidence: 0.33,
-        reasons: [{ criterionId: "x" }],
+        reasons: [{ criterion: "x", met: false, note: "n" }],
         rubricScores: { overall: 12 },
-        summary: "swapped",
+        contradictions: [],
+        flags: [],
+        summaryForStudent: "swapped",
       }),
       modelUsed: MODEL_HAIKU,
       providerUsed: "test",
@@ -285,7 +295,7 @@ describe("callStructured with no API key", () => {
       { task: "verdict", system: "bar", user: "anything", schema: verdictSchema },
       { env },
     );
-    expect(result.data.summary).toBe("swapped");
+    expect(result.data.summaryForStudent).toBe("swapped");
     expect(result.providerUsed).toBe("test");
     __setOpenRouterFake();
     const restored = await callStructured(
@@ -334,16 +344,36 @@ describe("callStructured with no API key", () => {
     });
   });
 
-  it("the default handler produces a pre-flight shape for the pre-flight task", () => {
+  it("the default handler answers the pre-flight contract for the pre-flight task", () => {
     const out = defaultFakeHandler({
       task: "preflight",
       system: "s",
       userText: "https://a.example.com",
       models: [MODEL_HAIKU, MODEL_FLASH],
     });
-    const parsed = JSON.parse(out.content) as { linksLive: boolean; spam: boolean };
-    expect(parsed.linksLive).toBe(true);
-    expect(parsed.spam).toBe(false);
+    const parsed = JSON.parse(out.content) as {
+      isBlank: boolean;
+      isSpam: boolean;
+      note: string;
+    };
+    expect(parsed.isBlank).toBe(false);
+    expect(parsed.isSpam).toBe(false);
+    expect(parsed.note).toMatch(/fake/i);
+  });
+
+  it("answers one reason and one score per rubric criterion the system prompt names", () => {
+    const out = defaultFakeHandler({
+      task: "verdict",
+      system: "The criterion ids, exactly: one-liner, job-story",
+      userText: "a submission",
+      models: [MODEL_FLASH, MODEL_HAIKU],
+    });
+    const parsed = JSON.parse(out.content) as {
+      reasons: { criterion: string }[];
+      rubricScores: Record<string, number>;
+    };
+    expect(parsed.reasons.map((r) => r.criterion)).toEqual(["one-liner", "job-story"]);
+    expect(Object.keys(parsed.rubricScores)).toEqual(["one-liner", "job-story"]);
   });
 });
 
@@ -366,7 +396,7 @@ describe("callStructured against a stubbed OpenRouter", () => {
       {
         message: {
           content:
-            '```json\n{"verdict":"pass","confidence":0.9,"reasons":[],"rubricScores":{"overall":80},"summary":"fine"}\n```',
+            '```json\n{"verdict":"pass","confidence":0.9,"reasons":[],"rubricScores":{"overall":80},"contradictions":[],"flags":[],"summaryForStudent":"fine"}\n```',
         },
       },
     ],

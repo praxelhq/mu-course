@@ -134,6 +134,10 @@ describe("notificationBody", () => {
 
 // ---------------------------------------------------------------------------
 // Live DB: submit → review → gate flip → notification
+//
+// These walk M1's STUB reviewer, which is why every call passes `stub: true`.
+// Since M2 `handleReviewSubmission` defaults to the real pipeline; the stub is
+// kept for the keyless demo and is exercised here.
 // ---------------------------------------------------------------------------
 
 async function dbReachable(): Promise<boolean> {
@@ -232,7 +236,7 @@ describe.skipIf(!live)("the review pipeline (live DB)", () => {
     expect(before.checkpoints[1].state).toBe("locked");
     expect(before.product?.name).toBe("TiffinTrail");
 
-    const outcome = await handleReviewSubmission(created.submissionId, { db: prisma });
+    const outcome = await handleReviewSubmission(created.submissionId, { db: prisma, stub: true });
     expect(outcome.handled).toBe(true);
     if (!outcome.handled) return;
     expect(outcome.status).toBe("passed");
@@ -252,7 +256,7 @@ describe.skipIf(!live)("the review pipeline (live DB)", () => {
     expect(notification?.body).toContain("Next:");
 
     // A retry of the same job must not write a second verdict.
-    const replay = await handleReviewSubmission(created.submissionId, { db: prisma });
+    const replay = await handleReviewSubmission(created.submissionId, { db: prisma, stub: true });
     expect(replay.handled).toBe(false);
     expect(await prisma.shipyardReview.count({ where: { submissionId: created.submissionId } })).toBe(1);
   });
@@ -271,7 +275,7 @@ describe.skipIf(!live)("the review pipeline (live DB)", () => {
       submitDeps,
     );
 
-    const outcome = await handleReviewSubmission(created.submissionId, { db: prisma });
+    const outcome = await handleReviewSubmission(created.submissionId, { db: prisma, stub: true });
     expect(outcome.handled).toBe(true);
     if (!outcome.handled) return;
     expect(outcome.status).toBe("returned");
