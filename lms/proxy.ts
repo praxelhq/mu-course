@@ -59,6 +59,13 @@ const isPublicRoute = createRouteMatcher([
   "/api/exports/interviews/feed",
   "/api/webhooks/clerk(.*)",
   "/api/test-login", // guards itself (404 outside dev/test)
+  // Shipped.money's "this project's numbers changed" callback. A server, not a
+  // browser: it has no Clerk cookie, and without this the proxy 307s it to the
+  // sign-in page and a student's money gate never moves until the 15-minute
+  // sweep. It guards itself with the SHIPPED_MONEY_SERVICE_TOKEN bearer plus
+  // the same HMAC scheme this portal signs its own tracker reads with, inside a
+  // ±300s window, and is 503 unless that token is set.
+  "/api/shipyard/tracker/refresh",
 ]);
 
 function notOnRosterRedirect(req: NextRequest): NextResponse {

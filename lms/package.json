@@ -30,7 +30,9 @@
     "worker:shipyard": "tsx --env-file-if-exists=.env worker/shipyard.ts",
     "e2e": "playwright test",
     "load:baseline": "k6 run scripts/load/k6-baseline.js",
-    "load:quiz-burst": "k6 run scripts/load/k6-quiz-burst.js"
+    "load:quiz-burst": "k6 run scripts/load/k6-quiz-burst.js",
+    "load:shipyard-baseline": "k6 run scripts/load/k6-shipyard-baseline.js",
+    "load:shipyard-burst": "k6 run scripts/load/k6-shipyard-deadline-burst.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.115.0",

@@ -592,6 +592,18 @@ run at midnight, the gate opens without you resubmitting anything.`,
       required: true,
       help: "One or two lines. What triggers it, what it does, and what it saves you. This is for your instructor to read, not for the reviewer.",
     },
+    {
+      // A LOOKUP KEY, not evidence. This checkpoint is metric-only: nothing
+      // typed here is reviewed and nothing typed here clears the gate. The id
+      // says WHICH workflow to count while Shipped.money has no n8n source of
+      // its own (SPEC §8.5 item 2); the count still comes from n8n, through
+      // `lib/n8n`, and it is ignored the moment the tracker reports its own.
+      key: "n8nWorkflowId",
+      label: "n8n workflow id",
+      kind: "text",
+      required: false,
+      help: "Optional. The id in your n8n URL (/workflow/<id>). It lets us read your run count directly while the tracker has no n8n source yet.",
+    },
   ],
   resubmitWindowHours: DEFAULT_RESUBMIT_WINDOW_HOURS,
   resubmitCooldownMinutes: DEFAULT_COOLDOWN_MINUTES,

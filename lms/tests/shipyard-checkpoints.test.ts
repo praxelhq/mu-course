@@ -105,7 +105,13 @@ describe("the six checkpoints", () => {
     expect(keysOf("design")).toEqual(["flowNotes", "sketches"]);
     expect(keysOf("working")).toEqual(["liveUrl", "corePath", "knownGaps"]);
     expect(keysOf("money")).toEqual(["pricingNote", "checkoutUrl"]);
-    expect(keysOf("workflow")).toEqual(["workflowName", "whatItAutomates"]);
+    // `n8nWorkflowId` is optional and is a lookup key, not evidence: this
+    // checkpoint is metric-only, so nothing typed on it is ever reviewed.
+    expect(keysOf("workflow")).toEqual([
+      "workflowName",
+      "whatItAutomates",
+      "n8nWorkflowId",
+    ]);
     expect(keysOf("launch")).toEqual([
       "launchWriteup",
       "distributionChannels",
