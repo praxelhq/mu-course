@@ -52,6 +52,10 @@ async function main(): Promise<void> {
   const write = process.argv.includes("--write");
   const limit = Number(flag("limit") ?? 0) || undefined;
   const only = flag("interview");
+  // Resume after a run that stopped part way. Every interview it already put
+  // through the grader must not get another draw: the old mark stands whenever
+  // a re-mark is lower, so each extra pass is another free chance at a higher one.
+  const skip = Number(flag("skip") ?? 0) || undefined;
 
   const interviews = await prisma.interview.findMany({
     where: {
@@ -63,9 +67,11 @@ async function main(): Promise<void> {
       turns: { orderBy: { turnNo: "asc" } },
       user: { select: { id: true, name: true, team: { select: { sectorName: true } } } },
     },
-    orderBy: { completedAt: "asc" },
+    orderBy: [{ completedAt: "asc" }, { id: "asc" }],
+    ...(skip ? { skip } : {}),
     ...(limit ? { take: limit } : {}),
   });
+  let position = skip ?? 0;
 
   let raised = 0;
   let held = 0;
@@ -74,6 +80,7 @@ async function main(): Promise<void> {
   let totalDelta = 0;
 
   for (const interview of interviews) {
+    position += 1;
     const before = readScores(interview.rubricScores);
     if (!before) {
       skipped += 1; // legacy four-axis rubric, or nothing scored
@@ -127,7 +134,7 @@ async function main(): Promise<void> {
         temperature: 0,
       });
     } catch (err) {
-      console.log(`ERR  ${interview.user.name} → ${err instanceof Error ? err.message : String(err)}`);
+      console.log(`ERR  #${position} ${interview.user.name} → ${err instanceof Error ? err.message : String(err)}`);
       continue;
     }
 
@@ -156,6 +163,10 @@ async function main(): Promise<void> {
     if (!write) continue;
 
     const escalationReason = interviewEscalationReason(grade);
+    // A write that fails must not end the run: Prisma's default 2s to open a
+    // transaction is short over the public proxy, and one timeout stopped a
+    // full re-mark at interview 119 of 427. Log it with its position and go on.
+    try {
     await prisma.$transaction(async (tx) => {
       await tx.interview.update({
         where: { id: interview.id },
@@ -190,7 +201,12 @@ async function main(): Promise<void> {
           refId: interview.id,
         },
       });
-    });
+    }, { maxWait: 15_000, timeout: 30_000 });
+    } catch (err) {
+      raised -= 1;
+      totalDelta -= delta;
+      console.log(`ERR  #${position} ${interview.user.name} → write failed, nothing saved: ${err instanceof Error ? err.message : String(err)}`);
+    }
   }
 
   console.log(
