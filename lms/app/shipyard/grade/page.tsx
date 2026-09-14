@@ -1,4 +1,10 @@
+import { redirect } from "next/navigation";
+import { getSessionUser } from "@/lib/auth";
+import { isTestLoginEnabled } from "@/lib/auth/test-login";
+import { ensureProduct } from "@/lib/shipyard/products";
+import { loadSpine } from "@/lib/shipyard/spine";
 import { isSpineScenario, mockSpine } from "@/lib/shipyard/spine-mock";
+import type { SpineView } from "@/lib/shipyard/view-models";
 import { GradeLine } from "@/components/shipyard/grade-line";
 import { pad2 } from "@/components/shipyard/format";
 
@@ -11,9 +17,23 @@ export default async function ShipyardGradePage({
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
+  const user = await getSessionUser();
+  if (!user) redirect(isTestLoginEnabled() ? "/shipyard/demo" : "/sign-in");
+  if (user.role === "instructor" || user.role === "admin") {
+    redirect("/shipyard/instructor");
+  }
+
   const params = await searchParams;
   const raw = Array.isArray(params.scenario) ? params.scenario[0] : params.scenario;
-  const spine = mockSpine(isSpineScenario(raw) ? raw : "fresh");
+  const scenario = isTestLoginEnabled() && isSpineScenario(raw) ? raw : null;
+
+  let spine: SpineView;
+  if (scenario) {
+    spine = mockSpine(scenario);
+  } else {
+    await ensureProduct(user.userId);
+    spine = await loadSpine(user.userId);
+  }
   const cleared = spine.checkpoints.filter((c) => c.state === "passed").length;
 
   return (

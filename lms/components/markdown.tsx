@@ -5,8 +5,9 @@ import type React from "react";
 // HTML-injecting: every node is a real React element, so model- or
 // student-derived text can never introduce markup. Supports exactly what the
 // grader emits — headings, bold, italics, inline code, bullet and numbered
-// lists, and blank-line-separated paragraphs. Anything else renders as plain
-// text rather than showing raw syntax.
+// lists (including hard-wrapped items, whose continuation lines are indented),
+// and blank-line-separated paragraphs. Anything else renders as plain text
+// rather than showing raw syntax.
 
 /** Split one line into bold / italic / code spans. */
 function inline(text: string, keyPrefix: string): React.ReactNode[] {
@@ -107,6 +108,15 @@ export function Markdown({ children }: { children: string }) {
       if (list && list.ordered !== ordered) flushList();
       list ??= { ordered, items: [] };
       list.items.push(item);
+      continue;
+    }
+
+    // An indented line under an open list is that item's continuation, not a
+    // new paragraph. Without this a hard-wrapped numbered list renders as one
+    // <ol> per item — every marker reading "1." with a stray paragraph after
+    // it — which is exactly how the Shipyard's published bars are written.
+    if (list && list.items.length > 0 && /^\s+\S/.test(raw)) {
+      list.items[list.items.length - 1] += ` ${line.trim()}`;
       continue;
     }
 

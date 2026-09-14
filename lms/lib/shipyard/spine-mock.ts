@@ -394,24 +394,28 @@ const PRODUCTS = {
     name: "Tiffin Trail",
     oneLiner: "Weekly tiffin subscriptions from verified home kitchens in Koramangala.",
     liveUrl: "https://tiffintrail.in",
+    trackerProductId: null,
   },
   mandi: {
     id: "prod-mandi",
     name: "Mandi Rate",
     oneLiner: "Today's wholesale vegetable rates for Pune retailers, on WhatsApp, by 6am.",
     liveUrl: "https://mandirate.app",
+    trackerProductId: "mandi-rate",
   },
   stitchline: {
     id: "prod-stitch",
     name: "Stitchline",
     oneLiner: "Order tracking for neighbourhood tailors, in Hindi, over WhatsApp.",
     liveUrl: "https://stitchline.co.in",
+    trackerProductId: null,
   },
   rentbook: {
     id: "prod-rentbook",
     name: "Rentbook",
     oneLiner: "Rent receipts and reminders for landlords with one or two flats.",
     liveUrl: "https://rentbook.in",
+    trackerProductId: "rentbook",
   },
 };
 

@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import type { SessionUser } from "@/lib/auth";
+import { isTestLoginEnabled } from "@/lib/auth/test-login";
 import { hasClerkKeys } from "@/lib/auth/clerk";
 import { ShipyardNav, type NavItem } from "./shipyard-nav";
 
@@ -29,13 +30,17 @@ export function ShipyardShell({
   fontClassName,
   children,
 }: {
-  user: SessionUser;
+  /** Null on the one page under /shipyard that does not need a session. */
+  user: SessionUser | null;
   /** next/font variable classes for Instrument Sans / Serif and Plex Mono. */
   fontClassName: string;
   children: ReactNode;
 }) {
-  const staff = user.role === "instructor" || user.role === "admin";
-  const items = staff ? [...STUDENT_NAV, ...STAFF_NAV] : STUDENT_NAV;
+  // Staff do not get the student spine in their nav: /shipyard redirects them
+  // to the matrix, and a link that bounces is worse than no link. Signed out,
+  // the bar carries the wordmark and the way in, and nothing else.
+  const staff = user?.role === "instructor" || user?.role === "admin";
+  const items = user === null ? [] : staff ? STAFF_NAV : STUDENT_NAV;
 
   return (
     <div className={`sy-root ${fontClassName}`}>
@@ -45,7 +50,12 @@ export function ShipyardShell({
             <span className="sy-wordmark__eyebrow">Praxel · Course 2</span>
             <span className="sy-wordmark__name">Shipyard</span>
           </Link>
-          <ShipyardNav items={items} clerkAvailable={hasClerkKeys()} />
+          <ShipyardNav
+            items={items}
+            clerkAvailable={hasClerkKeys()}
+            demoPersonas={isTestLoginEnabled()}
+            signedIn={user !== null}
+          />
         </div>
       </header>
       {children}

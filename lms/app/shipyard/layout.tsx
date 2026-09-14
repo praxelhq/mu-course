@@ -1,16 +1,22 @@
 import type { ReactNode } from "react";
 import { IBM_Plex_Mono, Instrument_Sans, Instrument_Serif } from "next/font/google";
-import { redirect } from "next/navigation";
-import { AuthError, requireUser, type SessionUser } from "@/lib/auth";
+import { getSessionUser } from "@/lib/auth";
 import { ShipyardShell } from "@/components/shipyard/shipyard-shell";
 import "@/components/shipyard/shipyard.css";
 
 export const dynamic = "force-dynamic";
 
-// Authenticated shell for Course 2. Same session as the Forge (Clerk, roster
-// gated in proxy.ts) — deliberately WITHOUT the Forge's /welcome redirect:
-// that cookie belongs to Course 1's onboarding and a Course 2 student who has
-// never opened the Forge should not be bounced through it.
+// Shell for Course 2. Same session as the Forge (Clerk, roster gated in
+// proxy.ts) — deliberately WITHOUT the Forge's /welcome redirect: that cookie
+// belongs to Course 1's onboarding and a Course 2 student who has never opened
+// the Forge should not be bounced through it.
+//
+// The layout resolves the session but does NOT enforce it. One page under
+// /shipyard is reachable without one — the demo persona picker on a test-login
+// build — and a layout that redirects would make that page redirect to itself.
+// Every page that needs a session says so: the spine and the grade line send a
+// signed-out visitor to sign-in, and everything under /instructor and /admin
+// goes through requireRole.
 //
 // The Shipyard follows the Shipped.money brand, not the Forge's. Its three
 // typefaces are loaded here rather than in the root layout so Course 1 never
@@ -48,13 +54,7 @@ export const metadata = {
 };
 
 export default async function ShipyardLayout({ children }: { children: ReactNode }) {
-  let user: SessionUser;
-  try {
-    user = await requireUser();
-  } catch (e) {
-    if (e instanceof AuthError) redirect("/sign-in");
-    throw e;
-  }
+  const user = await getSessionUser();
 
   return (
     <ShipyardShell user={user} fontClassName={FONT_VARS}>

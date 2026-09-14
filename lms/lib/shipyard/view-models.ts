@@ -109,7 +109,20 @@ export type GradeLineView = {
 } | null;
 
 export type SpineView = {
-  product: { id: string; name: string; oneLiner: string; liveUrl: string | null } | null;
+  product: {
+    id: string;
+    name: string;
+    oneLiner: string;
+    liveUrl: string | null;
+    /**
+     * The Shipped.money project slug, or null while the product is not
+     * connected. The UI needs it to decide whether a metric checkpoint shows
+     * the "paste your project link" form or the connected chip — a decision
+     * the signal strip cannot make from signals alone, because an unconnected
+     * product and an unreachable tracker both read as "not met".
+     */
+    trackerProductId: string | null;
+  } | null;
   checkpoints: CheckpointView[];
   /** Order of the checkpoint the student is standing at (1–6). */
   currentOrder: number;

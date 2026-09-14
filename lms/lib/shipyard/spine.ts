@@ -187,6 +187,7 @@ export function spineVersion(view: SpineView): string {
           name: view.product.name,
           oneLiner: view.product.oneLiner,
           liveUrl: view.product.liveUrl,
+          trackerProductId: view.product.trackerProductId,
         }
       : null,
     currentOrder: view.currentOrder,
@@ -423,6 +424,7 @@ export async function loadSpine(userId: string, opts: LoadSpineOptions = {}): Pr
           name: product.name,
           oneLiner: product.oneLiner,
           liveUrl: product.liveUrl,
+          trackerProductId: product.trackerProductId,
         }
       : null,
     checkpoints,

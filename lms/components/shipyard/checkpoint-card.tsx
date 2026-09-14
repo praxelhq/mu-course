@@ -101,7 +101,7 @@ function Open({ checkpoint, spine }: { checkpoint: CheckpointView; spine: SpineV
       {hasVerdict ? (
         <>
           <VerdictPanel checkpoint={checkpoint} spine={spine} />
-          {metricOnly && <SignalStrip checkpoint={checkpoint} />}
+          {metricOnly && <SignalStrip checkpoint={checkpoint} product={spine.product} />}
           <details className="sy-read">
             <summary>Read the bar again</summary>
             <div className="sy-read__body">
@@ -111,16 +111,18 @@ function Open({ checkpoint, spine }: { checkpoint: CheckpointView; spine: SpineV
         </>
       ) : (
         <>
-          {metricOnly && <SignalStrip checkpoint={checkpoint} />}
+          {metricOnly && <SignalStrip checkpoint={checkpoint} product={spine.product} />}
           {bar}
         </>
       )}
 
-      {!metricOnly && checkpoint.signals && <SignalStrip checkpoint={checkpoint} />}
+      {!metricOnly && checkpoint.signals && (
+        <SignalStrip checkpoint={checkpoint} product={spine.product} />
+      )}
 
       {checkpoint.fields.length > 0 && !pending && (
         <SubmitForm
-          checkpointId={checkpoint.id}
+          checkpointKey={checkpoint.key}
           fields={checkpoint.fields}
           resubmit={checkpoint.attempts > 0}
           cooldownUntil={cooldownMs > 0 ? sub!.nextAllowedResubmitAt : null}
