@@ -225,6 +225,22 @@ a `courseId`-scoped mode of the Forge. Source of truth: `docs/shipyard/SPEC.md`
 - `ShipyardGrade` is written ONLY by `computeProductGrade` in
   `lib/shipyard/grades.ts`, and a FINALISED grade is never recomputed —
   every trigger returns it untouched and reports `skipped`.
+- A metric half that has cleared STAYS cleared: `metricClearedAt` is stamped
+  once and fed back into `resolveGates` as `metricAlreadyCleared`, so a `both`
+  gate's two halves can be met at different times and the row never contradicts
+  the state.
+- `recomputeGates` holds `pg_advisory_xact_lock` on the product for its
+  read-and-write, with the tracker call outside it, and never writes a
+  computed-null over `openedAt`, `passedAt`, `reviewClearedAt` or
+  `metricClearedAt`.
+- A product with NO scorable input gets no `ShipyardGrade` row at all, so the
+  grade line reads "not yet scored" rather than "TOTAL 0.0".
+- The queue position a student sees counts only `submitted | in_review`
+  submissions with no review row. A held pass waits on a human, not the queue.
+- The BYOK kill-switch reads the model that ANSWERED, not the HTTP status: a
+  200 served by Flash on a Haiku-primary route is a BYOK failure. The counter
+  is moved only by `recordByokOutcome` (atomic SQL); `applyByokOutcome` is the
+  pure rule and never the writer.
 - A tracker read that returns null changes nothing. `refreshTrackerForProduct`
   returns the stored states rather than handing `recomputeGates` a null, which
   would read as "every metric signal is false" and un-pass a cleared gate.

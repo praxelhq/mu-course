@@ -219,3 +219,34 @@ Whenever a bug is fixed or a wrong assumption corrected, append what was learned
   that answers "not found" for both "not yours" and "we are down" cannot be
   acted on destructively, which is why connect re-reads unfiltered before
   refusing and refresh never uses the filter at all.
+- **A 200 can hide a failed primary.** OpenRouter's `models: [primary,
+  fallback]` array is a FEATURE we asked for — a failed Haiku call retried on
+  Flash inside the same request, no second round trip, no queue stall. The
+  consequence nobody wrote down is that it converts the failure into a success
+  at the transport layer: the request that proves the Anthropic credit is gone
+  comes back HTTP 200, with a body, with content, with usage. Every piece of
+  error handling in the gateway looked at `res.ok` and agreed nothing was
+  wrong, so the kill-switch's counter was reset by precisely the calls that
+  should have advanced it and five-in-a-row was unreachable. The general
+  shape: when a layer below you retries on your behalf, the status line stops
+  describing what you asked for and starts describing what it managed. The
+  only field that still answers the original question is the one naming WHO
+  served the reply — and if the API does not have one, the fallback cannot be
+  monitored at all. Worth asking of any provider gateway, load balancer or
+  multi-region client: after a transparent retry, what in this response still
+  tells me the thing I actually wanted failed?
+- **A pure reducer is the rule, not the writer.** `applyByokOutcome` was
+  correct, tested from both ends, and quietly useless under concurrency:
+  fifteen workers each read the row at the top of their job, each computed
+  `state.counter + 1` from their own snapshot, and each wrote an absolute
+  number — so five simultaneous failures left the row reading 1. The tell is
+  the SHAPE of the write, not the logic: a function returning a whole new state
+  produces an absolute value, and an absolute value overwrites rather than
+  accumulates. Anything counting events across processes wants the increment to
+  happen where the row lives (`SET n = n + 1 … RETURNING`), with the decision
+  taken on what came back; the pure function stays, as the thing tests and the
+  offline harness reason about. The second half of the lesson is the guard: of
+  however many callers cross a threshold together, exactly one should write the
+  audit row, and the cheapest way to say that is to fence the transition on the
+  state it transitions FROM (`updateMany where anthropicExhausted: false`) and
+  let the database pick the winner.
