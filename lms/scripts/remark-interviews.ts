@@ -64,7 +64,11 @@ async function main(): Promise<void> {
       ...(only ? { id: only } : {}),
     },
     include: {
-      turns: { orderBy: { turnNo: "asc" } },
+      // Turn 0 is the interviewer's system prompt, which carries the student's
+      // uploaded artifacts and is never graded. Loading it for every interview
+      // at once is most of this query's memory, and the machine killed a run
+      // for it.
+      turns: { where: { turnNo: { gt: 0 } }, orderBy: { turnNo: "asc" } },
       user: { select: { id: true, name: true, team: { select: { sectorName: true } } } },
     },
     orderBy: [{ completedAt: "asc" }, { id: "asc" }],
