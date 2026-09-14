@@ -1,6 +1,7 @@
 import type { CheckpointView, SpineView } from "@/lib/shipyard/view-models";
 import { formatTime } from "./format";
 import { ConnectTrackerForm } from "./connect-tracker-form";
+import { RefreshSignals } from "./refresh-signals";
 import { trackerProjectUrl } from "./tracker-url";
 
 // What the tracker sees, in the tracker's own words. Nothing a student types
@@ -34,14 +35,17 @@ export function SignalStrip({
             : "Read live · the other half of this gate"}
         </p>
         {connected && (
-          <a
-            className="sy-chip sy-chip--mono"
-            href={trackerProjectUrl(connected)}
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            {connected}
-          </a>
+          <span className="sy-signals__source">
+            <a
+              className="sy-chip sy-chip--mono"
+              href={trackerProjectUrl(connected)}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              {connected}
+            </a>
+            <RefreshSignals />
+          </span>
         )}
       </div>
 

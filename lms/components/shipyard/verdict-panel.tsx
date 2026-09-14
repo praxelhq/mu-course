@@ -1,12 +1,20 @@
 import type { CheckpointView, SpineView } from "@/lib/shipyard/view-models";
 import { formatBytes, formatDay, formatDayTime } from "./format";
+import { DisputeForm } from "./dispute-form";
 
-// What the reviewer said, and what to do about it. Three shapes:
+// What the reviewer said, and what to do about it. Four shapes:
 //   returned   — the fixes first, the things that already pass kept quiet below
 //   in_review  — the queue position and the honest wait
+//   held pass  — met the bar, waiting on a person, nothing to fix
 //   passed     — one line
 //
 // The copy never apologises and never cheers. It states what happened.
+//
+// The held pass is its own shape rather than a footnote on "in review"
+// (DECISIONS, 2026-09-15): the submission row still says `in_review`, but the
+// model has finished and agreed — telling a student their work is "in review"
+// when it has already met the bar reads as a wait they can shorten, and it
+// cannot be shortened. No queue position, no cooldown, nothing to do.
 
 export function VerdictPanel({
   checkpoint,
@@ -17,6 +25,10 @@ export function VerdictPanel({
 }) {
   const sub = checkpoint.latestSubmission;
   if (!sub) return null;
+
+  if (sub.heldPass) {
+    return <HeldPass checkpoint={checkpoint} />;
+  }
 
   if (sub.status === "in_review" || sub.status === "submitted") {
     return <InReview checkpoint={checkpoint} spine={spine} />;
@@ -38,6 +50,41 @@ export function VerdictPanel({
   }
 
   return <Returned checkpoint={checkpoint} spine={spine} />;
+}
+
+function HeldPass({ checkpoint }: { checkpoint: CheckpointView }) {
+  const sub = checkpoint.latestSubmission!;
+  const review = sub.review!;
+  const met = review.reasons.filter((r) => r.met);
+
+  return (
+    <section className="sy-verdict sy-verdict--held" aria-live="polite">
+      <p className="sy-eyebrow">Attempt {sub.version}</p>
+      <h3 className="sy-verdict__head">Met the bar. With a reviewer for a final check.</h3>
+      <p className="sy-verdict__body">
+        Nothing to fix and nothing to resend. The next checkpoint opens once an
+        instructor agrees with the verdict.
+      </p>
+
+      {met.length > 0 && (
+        <ul className="sy-reasons sy-reasons--met">
+          {met.map((r) => (
+            <li className="sy-reason" key={r.criterion}>
+              <span className="sy-reason__criterion">{r.criterion}</span>
+              <p className="sy-reason__note">{r.note}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <div className="sy-verdict__meta">
+        <span>
+          Reviewed <b>{formatDayTime(review.createdAt)}</b>
+        </span>
+        <span>This page updates itself</span>
+      </div>
+    </section>
+  );
 }
 
 function InReview({ checkpoint, spine }: { checkpoint: CheckpointView; spine: SpineView }) {
@@ -131,6 +178,10 @@ function Returned({ checkpoint, spine }: { checkpoint: CheckpointView; spine: Sp
         {cooldownMs <= 0 && <span>Resubmit open</span>}
         {review.pendingHuman && <span>With a human reviewer</span>}
       </div>
+
+      {/* Already with a person means the appeal has been made — or someone is
+          looking anyway — so the control is not offered twice. */}
+      {!review.pendingHuman && <DisputeForm reviewId={review.id} />}
     </section>
   );
 }

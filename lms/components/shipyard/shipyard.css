@@ -2572,3 +2572,658 @@
   border: 1px dashed var(--sy-line-input);
   border-radius: var(--sy-r-tile);
 }
+
+/* ===========================================================================
+   M4 · the held pass, the dispute, the refresh
+   ---------------------------------------------------------------------------
+   Everything here reuses the surfaces above rather than adding a second look:
+   the held pass is a verdict, the dispute is a `.sy-read` disclosure, and the
+   refresh is a small quiet button inside the strip that raised the question.
+   =========================================================================== */
+
+/* A held pass is good news that is not finished. The card it sits on already
+   spends this page's one accent on the "open now" chip, so the state marker
+   here is the mint surface rather than a second lime chip two lines under the
+   first — the headline is what tells a student where they stand. */
+.sy-verdict--held > .sy-eyebrow:first-child {
+  display: inline-flex;
+  background: var(--sy-surface);
+  color: var(--sy-ink-2);
+  border: 1px solid var(--sy-line-3);
+  border-radius: var(--sy-r-chip);
+  padding: 0.1875rem 0.5rem;
+}
+
+.sy-verdict__body {
+  margin: var(--sy-2) 0 0;
+  color: var(--sy-ink-2);
+  max-width: 44ch;
+}
+
+/* --- dispute ------------------------------------------------------------ */
+
+.sy-dispute {
+  margin-top: var(--sy-5);
+}
+
+.sy-dispute > summary {
+  color: var(--sy-ink-3);
+}
+
+.sy-dispute__note {
+  margin: 0 0 var(--sy-4);
+  color: var(--sy-ink-3);
+  font-size: 0.875rem;
+  max-width: 52ch;
+}
+
+.sy-dispute__count {
+  margin: var(--sy-1) 0 0;
+  font-size: 0.75rem;
+  color: var(--sy-ink-4);
+  text-align: right;
+}
+
+/* --- refresh, inside the signal strip ----------------------------------- */
+
+.sy-signals__source {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sy-3);
+  flex-wrap: wrap;
+}
+
+.sy-refresh {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sy-2);
+}
+
+.sy-refresh__msg {
+  font-size: 0.75rem;
+  font-family: var(--sy-font-mono);
+  color: var(--sy-ink-3);
+}
+
+.sy-refresh__msg--problem {
+  color: var(--sy-danger);
+}
+
+/* ===========================================================================
+   The human queue
+   ---------------------------------------------------------------------------
+   A list of cases, not a table of rows: the four things that decide what to do
+   about a flagged review are paragraphs, and paragraphs do not fit in cells.
+   =========================================================================== */
+
+.sy-queue-list {
+  display: grid;
+  gap: var(--sy-4);
+  margin-top: var(--sy-5);
+}
+
+.sy-case {
+  background: var(--sy-canvas);
+  border: 1px solid var(--sy-line-2);
+  border-radius: var(--sy-r-card);
+  padding: var(--sy-4) var(--sy-5);
+}
+
+/* The one accent in this view: a pass the machine agreed with and the rules
+   held. It is the row somebody can clear in ten seconds. */
+.sy-case--held {
+  border-left: 3px solid var(--sy-accent);
+}
+
+.sy-case__head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sy-4);
+  flex-wrap: wrap;
+}
+
+.sy-case__n {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--sy-2);
+  font-size: 0.75rem;
+  color: var(--sy-ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.sy-case__cp {
+  color: var(--sy-ink-2);
+  font-family: var(--sy-font-sans);
+  letter-spacing: 0;
+}
+
+.sy-root .sy-case__who {
+  margin: 0;
+  flex: 1 1 14rem;
+  font-size: 1rem;
+}
+
+.sy-case__sub {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: var(--sy-ink-3);
+  margin-top: 0.125rem;
+}
+
+.sy-case__marks {
+  display: inline-flex;
+  gap: var(--sy-2);
+  flex-wrap: wrap;
+}
+
+.sy-mark-held {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sy-2);
+  background: var(--sy-accent);
+  color: var(--sy-accent-ink);
+  border: 1px solid #c2e06a;
+  border-radius: var(--sy-r-chip);
+  padding: 0.1875rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sy-mark-held::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--sy-primary);
+}
+
+.sy-case__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sy-4);
+  margin: var(--sy-3) 0 0;
+  font-size: 0.75rem;
+  color: var(--sy-ink-3);
+}
+
+.sy-case__why {
+  margin: var(--sy-3) 0 0;
+  font-size: 0.875rem;
+  color: var(--sy-ink-2);
+}
+
+.sy-case__quote {
+  margin: var(--sy-4) 0 0;
+  padding-left: var(--sy-4);
+  border-left: 2px solid var(--sy-line);
+  color: var(--sy-ink-2);
+  font-size: 0.9375rem;
+  max-width: 64ch;
+}
+
+.sy-case__block {
+  margin-top: var(--sy-4);
+  padding: var(--sy-4);
+  background: var(--sy-surface);
+  border: 1px solid var(--sy-line-3);
+  border-radius: var(--sy-r-tile);
+}
+
+.sy-case__note {
+  margin: var(--sy-2) 0 0;
+  color: var(--sy-ink);
+  font-size: 0.9375rem;
+  max-width: 64ch;
+}
+
+.sy-case__model {
+  margin: var(--sy-2) 0 0;
+  font-size: 0.6875rem;
+  color: var(--sy-ink-4);
+}
+
+/* --- the ruling --------------------------------------------------------- */
+
+/* The three rulings sit right, quietly: in a queue of fourteen the names are
+   what you scan and the buttons are what you reach for once you have stopped. */
+.sy-ruling {
+  margin-top: var(--sy-3);
+  padding-top: var(--sy-3);
+  border-top: 1px solid var(--sy-line);
+}
+
+.sy-case .sy-ruling > .sy-actions {
+  justify-content: flex-end;
+  margin-top: 0;
+}
+
+.sy-ruling--compact {
+  margin-top: var(--sy-3);
+  padding-top: var(--sy-3);
+}
+
+.sy-ruling__form {
+  display: grid;
+  gap: var(--sy-2);
+}
+
+.sy-second {
+  margin-top: var(--sy-4);
+  padding: var(--sy-4);
+  background: var(--sy-surface);
+  border: 1px solid var(--sy-line-3);
+  border-radius: var(--sy-r-tile);
+}
+
+.sy-second__note {
+  margin: var(--sy-2) 0 0;
+  color: var(--sy-ink);
+  max-width: 64ch;
+}
+
+.sy-second__meta {
+  margin: var(--sy-2) 0 0;
+  font-size: 0.6875rem;
+  color: var(--sy-ink-4);
+}
+
+.sy-grade__final {
+  margin: var(--sy-2) 0 var(--sy-6);
+  font-size: 0.8125rem;
+  color: var(--sy-ink-3);
+}
+
+/* ===========================================================================
+   The admin bench, for real
+   =========================================================================== */
+
+.sy-banner {
+  margin-top: var(--sy-5);
+  padding: var(--sy-4) var(--sy-5);
+  background: var(--sy-danger-soft);
+  border: 1px solid var(--sy-danger-line);
+  border-radius: var(--sy-r-tile);
+}
+
+.sy-banner__head {
+  margin: 0;
+  font-weight: 600;
+  color: var(--sy-danger);
+}
+
+.sy-banner__body {
+  margin: var(--sy-2) 0 0;
+  color: var(--sy-ink-2);
+  font-size: 0.875rem;
+  max-width: 68ch;
+}
+
+.sy-section {
+  margin-top: var(--sy-6);
+  min-width: 0;
+}
+
+.sy-section--narrow {
+  max-width: 34rem;
+}
+
+.sy-root .sy-section__head {
+  margin: 0 0 var(--sy-3);
+  font-size: 1.0625rem;
+}
+
+.sy-section__note {
+  margin: 0 0 var(--sy-4);
+  color: var(--sy-ink-3);
+  font-size: 0.875rem;
+  max-width: 68ch;
+}
+
+.sy-section__foot {
+  margin: var(--sy-4) 0 0;
+  color: var(--sy-ink-3);
+  font-size: 0.8125rem;
+}
+
+.sy-cols--even {
+  align-items: start;
+}
+
+@media (min-width: 62rem) {
+  .sy-cols--even {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+/* --- stat tiles ---------------------------------------------------------- */
+
+.sy-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: var(--sy-3);
+}
+
+.sy-stat {
+  background: var(--sy-canvas);
+  border: 1px solid var(--sy-line-3);
+  border-radius: var(--sy-r-tile);
+  padding: var(--sy-4);
+}
+
+/* The one place on the bench a serif figure earns its size. */
+.sy-stat__value {
+  margin: var(--sy-1) 0 0;
+  font-family: var(--sy-font-serif);
+  font-size: 1.75rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--sy-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.sy-bucket {
+  margin-top: var(--sy-5);
+}
+
+.sy-bucket__none {
+  margin: var(--sy-2) 0 0;
+  color: var(--sy-ink-4);
+  font-size: 0.875rem;
+}
+
+.sy-table--flat {
+  margin-top: var(--sy-2);
+}
+
+.sy-table--flat td {
+  padding: var(--sy-2) 0;
+  font-size: 0.875rem;
+}
+
+/* --- a control panel ----------------------------------------------------- */
+
+.sy-panel {
+  background: var(--sy-canvas);
+  border: 1px solid var(--sy-line-2);
+  border-radius: var(--sy-r-card);
+  padding: var(--sy-5);
+  margin-top: var(--sy-4);
+}
+
+.sy-panel--demo {
+  background: var(--sy-surface);
+  border-style: dashed;
+}
+
+.sy-root .sy-panel__head {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.sy-panel__note {
+  margin: var(--sy-2) 0 var(--sy-4);
+  color: var(--sy-ink-3);
+  font-size: 0.8125rem;
+  max-width: 60ch;
+}
+
+.sy-panel__warn {
+  margin-top: var(--sy-3);
+  padding: var(--sy-3) var(--sy-4);
+  background: var(--sy-danger-soft);
+  border: 1px solid var(--sy-danger-line);
+  border-radius: var(--sy-r-tile);
+  font-size: 0.875rem;
+  color: var(--sy-ink-2);
+}
+
+.sy-panel__warn p {
+  margin: 0;
+}
+
+.sy-radios {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: var(--sy-4);
+  flex-wrap: wrap;
+}
+
+.sy-radio--block {
+  align-items: flex-start;
+  flex: 1 1 15rem;
+  border: 1px solid var(--sy-line-3);
+  border-radius: var(--sy-r-tile);
+  padding: var(--sy-3) var(--sy-4);
+  min-height: var(--sy-control-h);
+}
+
+.sy-radio--block:has(input:checked) {
+  border-color: var(--sy-primary);
+  background: var(--sy-surface);
+}
+
+.sy-radio__note {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--sy-ink-3);
+  margin-top: 0.125rem;
+}
+
+/* --- weights ------------------------------------------------------------- */
+
+.sy-weights__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: var(--sy-3);
+}
+
+.sy-weights__sum {
+  margin: var(--sy-3) 0;
+  font-size: 0.875rem;
+  color: var(--sy-danger);
+}
+
+.sy-weights__sum--ok {
+  color: var(--sy-ink-2);
+}
+
+.sy-weights__must {
+  color: var(--sy-danger);
+}
+
+/* --- the checkpoint editor ---------------------------------------------- */
+
+.sy-cplist {
+  display: grid;
+  gap: var(--sy-2);
+}
+
+.sy-cpedit {
+  background: var(--sy-canvas);
+  border: 1px solid var(--sy-line-2);
+  border-radius: var(--sy-r-card);
+}
+
+.sy-cpedit > summary {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sy-4);
+  padding: var(--sy-4) var(--sy-5);
+  min-height: var(--sy-control-h);
+  cursor: pointer;
+  list-style: none;
+  font-weight: 500;
+}
+
+.sy-cpedit > summary::-webkit-details-marker {
+  display: none;
+}
+
+.sy-cpedit > summary:hover {
+  background: var(--sy-surface);
+  border-radius: var(--sy-r-card);
+}
+
+.sy-cpedit__n {
+  color: var(--sy-ink-3);
+  font-size: 0.8125rem;
+}
+
+.sy-cpedit__title {
+  flex: 1 1 auto;
+  color: var(--sy-ink);
+}
+
+.sy-cpedit__gate {
+  font-size: 0.75rem;
+  color: var(--sy-ink-3);
+}
+
+.sy-cpedit__dirty {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  background: var(--sy-accent);
+  color: var(--sy-accent-ink);
+  border-radius: var(--sy-r-chip);
+  padding: 0.125rem 0.375rem;
+}
+
+.sy-cpedit__body {
+  display: grid;
+  gap: var(--sy-4);
+  padding: 0 var(--sy-5) var(--sy-5);
+  border-top: 1px solid var(--sy-line);
+  padding-top: var(--sy-5);
+}
+
+.sy-cpedit__split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sy-4);
+}
+
+@media (min-width: 62rem) {
+  .sy-cpedit__split {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+.sy-cpedit__row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: var(--sy-3);
+}
+
+.sy-cpedit__preview {
+  margin-top: var(--sy-2);
+  max-height: 16rem;
+  overflow-y: auto;
+}
+
+.sy-textarea--tall {
+  min-height: 14rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.sy-fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.sy-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sy-3) var(--sy-5);
+  margin-top: var(--sy-2);
+}
+
+/* ===========================================================================
+   The cost chart
+   ---------------------------------------------------------------------------
+   One series, so no legend: the caption names it. The grid is recessive, the
+   axis labels are Plex Mono like every other figure in this portal, and the
+   line is the only coloured thing on the panel.
+   =========================================================================== */
+
+.sy-chart {
+  margin: var(--sy-5) 0 0;
+  padding: var(--sy-4) var(--sy-5) var(--sy-3);
+  background: var(--sy-canvas);
+  border: 1px solid var(--sy-line-3);
+  border-radius: var(--sy-r-tile);
+}
+
+.sy-chart__cap {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--sy-4);
+  flex-wrap: wrap;
+}
+
+.sy-chart__total {
+  font-size: 0.75rem;
+  color: var(--sy-ink-3);
+}
+
+.sy-chart__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: var(--sy-2);
+  overflow: visible;
+}
+
+.sy-chart__grid {
+  stroke: var(--sy-line);
+  stroke-width: 1;
+}
+
+.sy-chart__ylab,
+.sy-chart__xlab {
+  font-family: var(--sy-font-mono);
+  font-size: 10px;
+  fill: var(--sy-ink-4);
+}
+
+.sy-chart__line {
+  fill: none;
+  stroke: var(--sy-primary);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.sy-chart__area {
+  fill: var(--sy-primary);
+  opacity: 0.06;
+  stroke: none;
+}
+
+.sy-chart__dot {
+  fill: var(--sy-primary);
+  stroke: var(--sy-canvas);
+  stroke-width: 2;
+}
+
+.sy-section__sub {
+  margin: var(--sy-5) 0 0;
+  color: var(--sy-ink-3);
+}
+
+/* A case with nothing but a verdict — no flag prose, no student note, no
+   second opinion — does not need a rule and a gap before its buttons. The
+   adjacency is the test: the ruling only follows the meta line directly when
+   there was nothing in between to read. */
+.sy-case__meta + .sy-ruling {
+  border-top: 0;
+  margin-top: 0;
+  padding-top: 0;
+}
