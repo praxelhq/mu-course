@@ -5,6 +5,11 @@
 // a plausible object shaped like the caller's schema. It is not a model and it
 // never pretends to judge anything — a fixture marked `[fixture:return]` comes
 // back as a return, everything else passes.
+//
+// It answers in the REAL contract (lib/shipyard/reviewer/schemas.ts), including
+// one reason and one score per rubric criterion, because a fake whose shape the
+// parser has to repair would send every keyless review to the human queue and
+// the demo would show a queue instead of a walkthrough.
 
 import type { RouterTask } from "./router";
 import { MODEL_FLASH } from "./router";
@@ -53,38 +58,64 @@ function decide(userText: string): { verdict: "pass" | "return"; confidence: num
   return { verdict: "pass", confidence: 0.88 };
 }
 
+/**
+ * The criterion ids the system prompt names. `buildVerdictSystemPrompt` ends
+ * the rubric block with "The criterion ids, exactly: a, b, c", which is there
+ * for the model and is exactly what the fake needs to answer in the real
+ * contract. Without it the fake would return a verdict the parser has to
+ * repair, every seeded pass would come back flagged for a human, and the
+ * keyless demo would show a review queue full of nothing.
+ */
+export function criterionIdsFrom(system: string): string[] {
+  const match = /The criterion ids, exactly:\s*(.+)/.exec(system);
+  if (!match) return [];
+  return match[1]
+    .split(",")
+    .map((id) => id.trim())
+    .filter((id) => id !== "" && /^[a-z0-9-]+$/i.test(id));
+}
+
 export const defaultFakeHandler: FakeHandler = (ctx) => {
   const { verdict, confidence } = decide(ctx.userText);
-  const payload =
-    ctx.task === "preflight"
-      ? {
-          linksLive: verdict === "pass",
-          blank: verdict === "return" && ctx.userText.trim() === "",
-          spam: false,
-          duplicate: false,
-          extractedText: ctx.userText.slice(0, 280),
-          notes: "fake pre-flight: no network call was made",
-        }
-      : {
-          verdict,
-          confidence,
-          reasons:
-            verdict === "pass"
-              ? []
-              : [
-                  {
-                    criterionId: "unknown",
-                    clause: "The bar this submission did not meet",
-                    what: "This is a fake reviewer response used by the seed and the tests.",
-                    fix: "Set OPENROUTER_API_KEY to run the real reviewer.",
-                  },
-                ],
-          rubricScores: { overall: verdict === "pass" ? 78 : 44 },
-          summary:
-            verdict === "pass"
-              ? "Fake reviewer: this submission would be passed."
-              : "Fake reviewer: this submission would be returned.",
-        };
+  const ids = criterionIdsFrom(ctx.system);
+  const criteria = ids.length > 0 ? ids : ["overall"];
+
+  let payload: unknown;
+  if (ctx.task === "preflight") {
+    payload = {
+      isBlank: ctx.userText.replace(/\s+/g, "") === "",
+      isSpam: false,
+      note: "fake pre-flight: no model was called",
+    };
+  } else {
+    const failing = verdict === "return" ? criteria[0] : null;
+    const base = {
+      verdict,
+      confidence,
+      reasons: criteria.map((id) => ({
+        criterion: id,
+        met: id !== failing,
+        note:
+          id === failing
+            ? "Fake reviewer: this is the clause the deterministic responder marks unmet. Set OPENROUTER_API_KEY to run the real reviewer."
+            : "Fake reviewer: treated as met.",
+      })),
+      rubricScores: Object.fromEntries(
+        criteria.map((id) => [id, id === failing ? 35 : 78]),
+      ),
+      contradictions: [],
+      flags: [],
+      summaryForStudent:
+        verdict === "pass"
+          ? "Fake reviewer: this submission would be passed."
+          : "Fake reviewer: this submission would be returned.",
+    };
+    payload =
+      ctx.task === "escalation"
+        ? { ...base, agreesWithFirstVerdict: true, humanNote: "Fake escalation: no model was called." }
+        : base;
+  }
+
   const content = JSON.stringify(payload);
   return {
     content,

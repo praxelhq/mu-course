@@ -4,12 +4,24 @@
 // backstop all land here, so "a verdict was recorded" always means the same
 // five things happened in the same order:
 //   1. a ShipyardReview row, carrying model, provider, tokens and cost
-//   2. the submission moves to `passed` or `returned`
+//   2. the submission moves to `passed` or `returned` — or, for a HELD pass,
+//      stays `in_review` (see `heldPass` below)
 //   3. (1) and (2) commit together or not at all
 //   4. `recomputeGates` re-decides every gate for this product
-//   5. the student is told
+//   5. the provisional grade is refreshed
+//   6. the student is told
 //
-// Steps 4 and 5 are deliberately OUTSIDE the transaction. recomputeGates calls
+// THE HELD PASS. SPEC §6: a pass whose confidence is low, whose write-up
+// contradicts the evidence, or which is an outlier is "auto-queued for human
+// review BEFORE the pass counts". So `verdict: "pass"` with `needsHuman: true`
+// records the reviewer's judgement honestly — the row says pass — while the
+// SUBMISSION stays `in_review` and the gate stays shut. `recomputeGates` reads
+// only `verdict: pass, needsHuman: false` reviews, so the gate rule needs no
+// special case; the one thing that has to be right here is that the student is
+// not told they cleared anything. Only `humanResolve`
+// (lib/shipyard/review-escalate.ts) moves it afterwards.
+//
+// Steps 4 to 6 are deliberately OUTSIDE the transaction. recomputeGates calls
 // the tracker, and a slow tracker must never hold a write lock on a student's
 // submission on a deadline night; if it fails, the gate sweep re-runs it within
 // fifteen minutes and the stored review is already correct.
@@ -21,6 +33,7 @@ import type { TrackerSignals } from "@/lib/tracker/types";
 import { SHIPYARD_COURSE_ID } from "./constants";
 import { ShipyardError } from "./errors";
 import { recomputeGates, type CheckpointStateRow } from "./gate-state";
+import { onReviewCompleted } from "./grades";
 import type { ReasonView } from "./view-models";
 
 export type VerdictInput = {
@@ -37,6 +50,13 @@ export type VerdictInput = {
   costUsd?: number;
   reviewedBy?: "ai" | "human";
   needsHuman?: boolean;
+  /**
+   * The reviewer's `summaryForStudent`. When present it IS the notification
+   * body: it is written for this purpose (≤ 60 words, warm, says what happens
+   * next), where the first unmet clause's note is written to sit beside its
+   * clause on the spine and reads oddly alone in a notification.
+   */
+  studentSummary?: string | null;
   metricSignalsSeen?: TrackerSignals | null;
   renderArtifacts?: Record<string, unknown> | null;
   promptLog?: Record<string, unknown> | null;
@@ -48,21 +68,39 @@ export type CompleteReviewDeps = {
   now?: Date;
 };
 
+export type CompleteReviewStatus = "passed" | "returned" | "in_review";
+
 export type CompleteReviewResult = {
   reviewId: string;
   submissionId: string;
   productId: string;
-  status: "passed" | "returned";
+  status: CompleteReviewStatus;
+  /** True when a `pass` was recorded but is waiting on a human (SPEC §6). */
+  heldForHuman: boolean;
   checkpointOrder: number;
   states: CheckpointStateRow[];
 };
+
+/** The one line that decides whether a recorded pass moves anything. */
+export function isHeldPass(verdict: VerdictInput): boolean {
+  return verdict.verdict === "pass" && verdict.needsHuman === true;
+}
+
+/** What a held pass says to the student: met the bar, not cleared yet. */
+export const HELD_PASS_BODY =
+  "Your submission met the bar and is with a reviewer for a final check.";
 
 /** The note a student reads in the notification body. */
 export function notificationBody(
   verdict: ShipyardVerdict,
   reasons: ReasonView[],
   nextCheckpointTitle: string | null,
+  held = false,
+  studentSummary?: string | null,
 ): string {
+  if (held) return HELD_PASS_BODY;
+  const summary = studentSummary?.trim();
+  if (summary) return summary;
   if (verdict === "return") {
     const failed = reasons.find((r) => !r.met) ?? reasons[0];
     return failed?.note?.trim() || "Open the checkpoint to read what to fix.";
@@ -70,6 +108,16 @@ export function notificationBody(
   return nextCheckpointTitle
     ? `Next: ${nextCheckpointTitle}.`
     : "Every checkpoint is cleared. Nothing is left to submit.";
+}
+
+/** The title beside it. A held pass is neither "cleared" nor "returned". */
+export function notificationTitle(
+  order: number,
+  verdict: ShipyardVerdict,
+  held: boolean,
+): string {
+  if (held) return `Checkpoint ${order} is with a reviewer`;
+  return `Checkpoint ${order} ${verdict === "pass" ? "cleared" : "returned"}`;
 }
 
 /** Record a verdict, move the gate, and tell the student. */
@@ -96,7 +144,12 @@ export async function completeReview(
     throw new ShipyardError(404, { error: `No submission ${submissionId}.` });
   }
 
-  const status = verdict.verdict === "pass" ? "passed" : "returned";
+  const held = isHeldPass(verdict);
+  const status: CompleteReviewStatus = held
+    ? "in_review"
+    : verdict.verdict === "pass"
+      ? "passed"
+      : "returned";
 
   const nextCheckpoint = await db.shipyardCheckpoint.findFirst({
     where: { courseId: SHIPYARD_COURSE_ID, order: { gt: submission.checkpoint.order } },
@@ -149,15 +202,25 @@ export async function completeReview(
     now,
   });
 
+  // A new verdict on checkpoint 3 or launch moves the product-quality
+  // component, and a newly-passed sixth checkpoint moves the graduation
+  // condition. Best-effort by contract: a grade is derived and can always be
+  // recomputed, and it must never cost a student their recorded verdict.
+  await onReviewCompleted(submission.productId, { db, now });
+
   try {
     await db.notification.create({
       data: {
         userId: submission.product.userId,
         kind: "shipyard.review",
-        title: `Checkpoint ${submission.checkpoint.order} ${
-          verdict.verdict === "pass" ? "cleared" : "returned"
-        }`,
-        body: notificationBody(verdict.verdict, verdict.reasons, nextCheckpoint?.title ?? null),
+        title: notificationTitle(submission.checkpoint.order, verdict.verdict, held),
+        body: notificationBody(
+          verdict.verdict,
+          verdict.reasons,
+          nextCheckpoint?.title ?? null,
+          held,
+          verdict.studentSummary,
+        ),
       },
     });
   } catch (err) {
@@ -174,6 +237,7 @@ export async function completeReview(
     submissionId,
     productId: submission.productId,
     status,
+    heldForHuman: held,
     checkpointOrder: submission.checkpoint.order,
     states,
   };

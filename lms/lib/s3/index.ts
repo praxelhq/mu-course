@@ -247,6 +247,26 @@ export function keyForShipyardUpload(args: {
   ].join("/");
 }
 
+/**
+ * The worker's headless render of a student's live product (SPEC §6). It sits
+ * beside that product's uploads under the same prefix, so retention and the
+ * per-product delete sweep already cover it, and it is named by SUBMISSION so
+ * a resubmission's render never overwrites the evidence a prior review was
+ * decided on.
+ */
+export function keyForShipyardRender(args: {
+  productId: string;
+  checkpointKey: string;
+  submissionId: string;
+}): string {
+  return [
+    "shipyard",
+    sanitizeSegment(args.productId),
+    sanitizeSegment(args.checkpointKey),
+    `render-${sanitizeSegment(args.submissionId)}.png`,
+  ].join("/");
+}
+
 /** Write-once LiveKit room recording key scoped to its durable reservation. */
 export function keyForInterviewRecording(interviewId: string, reservationId: string): string {
   return `interviews/${sanitizeSegment(interviewId)}/room-${sanitizeSegment(reservationId)}.ogg`;
@@ -627,4 +647,26 @@ export async function rangedRead(key: string, bytes: number = PREVIEW_BYTES): Pr
   );
   if (!res.Body) return new Uint8Array(0);
   return res.Body.transformToByteArray();
+}
+
+/** The ceiling on a single whole-object server-side read. */
+export const MAX_OBJECT_READ_BYTES = 25 * MB;
+
+/**
+ * Read one object in full, into memory, in the WORKER only.
+ *
+ * `rangedRead` exists for previews and stops at 256KB; the reviewer needs the
+ * whole of a sketch photograph or a PDF before it can look at it. This is a
+ * ranged GET like that one, capped at MAX_OBJECT_READ_BYTES, which is the
+ * largest upload the Shipyard's own allowlist admits for an image and a
+ * generous ceiling for a document. It is NOT a byte proxy: no request handler
+ * may call it, and nothing it returns is written back to a response
+ * (CLAUDE.md, "the app tier never proxies file bytes").
+ */
+export async function getObjectBuffer(
+  key: string,
+  maxBytes: number = MAX_OBJECT_READ_BYTES,
+): Promise<Buffer> {
+  const cap = Math.min(Math.max(1, Math.floor(maxBytes)), MAX_OBJECT_READ_BYTES);
+  return Buffer.from(await rangedRead(key, cap));
 }

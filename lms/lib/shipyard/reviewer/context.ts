@@ -22,8 +22,13 @@ import type { FieldSpec, SubmissionFields } from "../fields";
 import type { ReasonView } from "../view-models";
 import type { TrackerSignals } from "@/lib/tracker/types";
 import { anonymiseSubmission, type StudentIdentity } from "./anonymise";
-import { buildVerdictPrompt, type PromptImage, type PromptRender } from "./prompts";
-import type { BuiltPrompt } from "./schemas";
+import {
+  buildEscalationPrompt,
+  buildVerdictPrompt,
+  type PromptImage,
+  type PromptRender,
+} from "./prompts";
+import type { BuiltPrompt, VerdictOutput } from "./schemas";
 
 /** SPEC §6.5's verdict budget assumes a handful of images, not an album. */
 export const MAX_IMAGES = 5;
@@ -66,6 +71,17 @@ export type AssembleInput = {
   signals?: TrackerSignals | null;
   attempt: number;
   previousReasons?: ReasonView[] | null;
+  /**
+   * Set to build the ESCALATION prompt (the second opinion a human reads)
+   * instead of the verdict prompt. Everything up to this point — extraction,
+   * anonymisation, images — is identical, and doing it twice in two modules
+   * is how the two prompts would drift apart.
+   */
+  escalation?: {
+    firstVerdict: VerdictOutput;
+    escalationReasons: string[];
+    studentDispute?: string | null;
+  } | null;
 };
 
 export type AssembledContext = {
@@ -267,7 +283,7 @@ export async function assembleReviewContext(
   const images = await buildImages(input, notes);
 
   // 4 · The prompt.
-  const prompt = buildVerdictPrompt({
+  const promptArgs = {
     checkpoint: {
       key: input.checkpoint.key,
       title: input.checkpoint.title,
@@ -286,7 +302,10 @@ export async function assembleReviewContext(
     attempt: input.attempt,
     previousReasons: input.previousReasons ?? null,
     images,
-  });
+  };
+  const prompt = input.escalation
+    ? buildEscalationPrompt({ ...promptArgs, ...input.escalation })
+    : buildVerdictPrompt(promptArgs);
 
   return {
     prompt,

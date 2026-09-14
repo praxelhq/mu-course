@@ -1,15 +1,16 @@
 // The `shipyard.review` consumer.
 //
-// M1 ships a STUB reviewer. It exists so the whole pipeline — submit, queue,
-// verdict, gate flip, notification, next checkpoint open — is wired and
-// demonstrable before a model is involved, and so the demo has a reviewer that
-// passes on command. M2 replaces `stubVerdict` with the real OpenRouter call
-// and nothing else in this file changes: the shape of a verdict, and everything
-// that happens to it, is already fixed by `completeReview`.
+// M2: `handleReviewSubmission` is now a thin wrapper over
+// `runReviewPipeline` (lib/shipyard/review-pipeline.ts). Everything about a
+// review — the render, the pre-flight, the model call, the trust rules,
+// persistence — lives there, injected, so it can be tested without a queue and
+// without a browser. This file is the queue's edge and nothing else.
 //
-// `[review:return]` in any field value forces a return. That is a demo
-// affordance and NOTHING ELSE — the real reviewer will never read it, and
-// nothing outside this file knows the token exists.
+// M1's STUB reviewer is KEPT, unwired, behind `SHIPYARD_STUB_REVIEWER=1`. It
+// is what makes the demo walkable with no key and no spend, and the seed and
+// the instructor's review-stub route still import `rubricClauses` from here.
+// `[review:return]` in any field value forces a return under the stub. That is
+// a demo affordance and NOTHING ELSE — the real reviewer never reads it.
 
 import type { PrismaClient } from "@prisma/client";
 import { prisma as defaultPrisma } from "../../lib/db";
@@ -19,17 +20,30 @@ import {
   type CompleteReviewResult,
   type VerdictInput,
 } from "../../lib/shipyard/review-complete";
+import {
+  runReviewPipeline,
+  type ReviewPipelineDeps,
+} from "../../lib/shipyard/review-pipeline";
 import type { ReasonView } from "../../lib/shipyard/view-models";
 
 export const STUB_RETURN_TOKEN = "[review:return]";
 export const STUB_MODEL = "stub";
 
-export type ReviewSubmissionDeps = {
+export type ReviewSubmissionDeps = ReviewPipelineDeps & {
   db?: PrismaClient;
   now?: Date;
   /** Test seam: the shared completion path. */
   complete?: typeof completeReview;
+  /** Force the M1 stub reviewer. Defaults to `SHIPYARD_STUB_REVIEWER=1`. */
+  stub?: boolean;
 };
+
+/** The demo's escape hatch: no key, no spend, a reviewer that passes on cue. */
+export function stubReviewerEnabled(
+  env: Readonly<Record<string, string | undefined>> = process.env,
+): boolean {
+  return env.SHIPYARD_STUB_REVIEWER === "1";
+}
 
 type RubricCriterionRow = { id?: string; clause?: string };
 
@@ -114,10 +128,24 @@ export function stubVerdict(args: {
 
 export type ReviewSubmissionOutcome =
   | { handled: false; reason: "missing" | "already-final" }
-  | ({ handled: true } & CompleteReviewResult);
+  | ({ handled: true; kind?: string } & CompleteReviewResult);
 
-/** Review one submission end to end. */
+/**
+ * Review one submission end to end. The real pipeline unless the stub is
+ * explicitly switched on, in which case M1's behaviour is unchanged.
+ */
 export async function handleReviewSubmission(
+  submissionId: string,
+  deps: ReviewSubmissionDeps = {},
+): Promise<ReviewSubmissionOutcome> {
+  if (!(deps.stub ?? stubReviewerEnabled())) {
+    return runReviewPipeline(submissionId, deps);
+  }
+  return handleWithStub(submissionId, deps);
+}
+
+/** M1's reviewer, kept whole for the no-key demo. */
+export async function handleWithStub(
   submissionId: string,
   deps: ReviewSubmissionDeps = {},
 ): Promise<ReviewSubmissionOutcome> {

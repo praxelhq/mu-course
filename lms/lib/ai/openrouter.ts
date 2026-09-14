@@ -29,6 +29,16 @@ const OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
 const REQUEST_TIMEOUT_MS = 90_000;
 /** SPEC §6: temperature is capped, never raised, whatever a caller asks for. */
 const MAX_TEMPERATURE = 0.2;
+/**
+ * Both models in the routing table think before they answer, and OpenRouter
+ * bills those reasoning tokens out of `max_tokens`. Left uncapped, GLM 5.3
+ * Flash will spend an ENTIRE 8K budget deliberating over a long bar and return
+ * an empty `content` with `finish_reason: "length"` — which reads downstream as
+ * a malformed reply and burns a retry for nothing. `reasoning.max_tokens`
+ * fences the thinking so the answer always has room. (Disabling reasoning
+ * outright is refused by GLM's endpoints: "Reasoning is mandatory".)
+ */
+const REASONING_TOKEN_CAP = 2_000;
 
 export type ImageContentPart = {
   type: "image_url";
@@ -106,8 +116,19 @@ function systemMessage(system: string) {
 type OpenRouterResponse = {
   model?: string;
   provider?: string;
-  choices?: { message?: { content?: string } }[];
-  usage?: { prompt_tokens?: number; completion_tokens?: number; cost?: number };
+  choices?: {
+    finish_reason?: string;
+    message?: { content?: string; reasoning?: string };
+  }[];
+  usage?: {
+    prompt_tokens?: number;
+    completion_tokens?: number;
+    cost?: number;
+    is_byok?: boolean;
+    /** The upstream spend. Under BYOK `cost` is 0 and this is the real number. */
+    cost_details?: { upstream_inference_cost?: number };
+    completion_tokens_details?: { reasoning_tokens?: number };
+  };
   error?: { message?: string; code?: number | string };
 };
 
@@ -134,7 +155,13 @@ export async function callStructured<T>(
   const profile: RoutingProfileName = effectiveProfile(deps.routerState ?? null, env);
   const models = args.models ?? resolveRoute(args.task, profile).models;
   const temperature = Math.min(args.temperature ?? 0, MAX_TEMPERATURE);
-  const maxTokens = args.maxTokens ?? 2048;
+  // Both models in the routing table THINK before they answer, and the
+  // reasoning tokens come out of the same budget as the JSON. A verdict object
+  // is ~1K tokens; GLM 5.3 Flash routinely spends two or three thousand more
+  // reasoning about a long bar first, and a budget that runs out mid-thought
+  // returns an EMPTY content string that looks exactly like a malformed reply.
+  // (docs/LEARNINGS.md, 2026-09-15.)
+  const maxTokens = args.maxTokens ?? 8192;
 
   if (isFakeMode(env)) {
     return fakeStructured(args, models);
@@ -159,6 +186,7 @@ export async function callStructured<T>(
       temperature,
       max_tokens: maxTokens,
       response_format: { type: "json_object" as const },
+      reasoning: { max_tokens: Math.min(REASONING_TOKEN_CAP, Math.floor(maxTokens / 2)) },
       provider: { data_collection: "deny" as const, allow_fallbacks: true },
     };
 
@@ -191,17 +219,33 @@ export async function callStructured<T>(
 
       await reportOutcome(deps, "ok");
 
-      const raw = payload?.choices?.[0]?.message?.content ?? "";
+      const choice = payload?.choices?.[0];
+      const raw = choice?.message?.content ?? "";
       const modelUsed = payload?.model ?? models[0];
       const providerUsed = payload?.provider ?? "openrouter";
       const tokensIn = payload?.usage?.prompt_tokens ?? 0;
       const tokensOut = payload?.usage?.completion_tokens ?? 0;
-      // Prefer the provider-reported cost: it already accounts for caching
-      // discounts and promotional rates the price table does not know about.
-      const costUsd =
-        typeof payload?.usage?.cost === "number"
-          ? payload.usage.cost
-          : computeCostUsd(modelUsed, tokensIn, tokensOut);
+      // Prefer the provider-reported cost — it already accounts for caching
+      // discounts and promotional rates the price table does not know about —
+      // but only when it is a real number. Under BYOK OpenRouter reports
+      // `cost: 0` because IT charged nothing; the spend is real and lands on
+      // the Anthropic credit, and `cost_details.upstream_inference_cost`
+      // carries it. A cost meter showing zero for every Haiku review would be
+      // worse than one computed from the published price table.
+      const costUsd = pickCost(payload, modelUsed, tokensIn, tokensOut);
+
+      if (raw.trim() === "") {
+        // An empty content with finish_reason "length" is the reasoning budget
+        // running out, not a malformed reply — say which, so the next person
+        // raises maxTokens instead of rewriting the prompt.
+        const reasoned = payload?.usage?.completion_tokens_details?.reasoning_tokens ?? 0;
+        lastError = new Error(
+          `openrouter: ${modelUsed} returned no content (finish_reason ${choice?.finish_reason ?? "unknown"}` +
+            `${reasoned > 0 ? `, ${reasoned} reasoning tokens of a ${maxTokens} budget` : ""})`,
+        );
+        correction = "";
+        continue;
+      }
 
       try {
         const validated = args.schema.safeParse(extractJsonObject(raw));
@@ -225,6 +269,20 @@ export async function callStructured<T>(
   throw new Error(
     `callStructured(${args.task}): ${lastError instanceof Error ? lastError.message : String(lastError)}`,
   );
+}
+
+/** OpenRouter's number, else the upstream BYOK number, else the price table. */
+function pickCost(
+  payload: OpenRouterResponse | null,
+  model: string,
+  tokensIn: number,
+  tokensOut: number,
+): number {
+  const reported = payload?.usage?.cost;
+  if (typeof reported === "number" && reported > 0) return reported;
+  const upstream = payload?.usage?.cost_details?.upstream_inference_cost;
+  if (typeof upstream === "number" && upstream > 0) return upstream;
+  return computeCostUsd(model, tokensIn, tokensOut);
 }
 
 async function reportOutcome(deps: OpenRouterDeps, outcome: ByokOutcome): Promise<void> {
