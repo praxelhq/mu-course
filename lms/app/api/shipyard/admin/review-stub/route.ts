@@ -7,7 +7,7 @@ import { completeReview } from "@/lib/shipyard/review-complete";
 import { rubricClauses } from "@/worker/shipyard-jobs/review-submission";
 
 // POST /api/shipyard/admin/review-stub  (instructor or admin)
-//   body { submissionId, verdict: "pass" | "return", reasons? } → 200 { review }
+//   body { submissionId, verdict: "pass" | "return", reason?, reasons? } → 200
 //   403 not staff
 //   404 no such submission
 //   409 that submission already has a verdict
@@ -17,6 +17,11 @@ import { rubricClauses } from "@/worker/shipyard-jobs/review-submission";
 // room. Both land in `completeReview`, so a verdict recorded here moves the
 // gate and notifies the student in exactly the same way — which is the point of
 // having one completion path.
+//
+// It is also the faculty "record a verdict" action on the student drill-down,
+// so it is audit-logged as `shipyard.review.override` with the staff member's
+// reason: a human verdict that moved a student's gate has to be reconstructable
+// from the log alone (SPEC §4, "one-click override and a required reason").
 
 export const dynamic = "force-dynamic";
 
@@ -24,6 +29,9 @@ const bodySchema = z
   .object({
     submissionId: z.string().min(1),
     verdict: z.enum(["pass", "return"]),
+    /** Why a human decided this. Required by the UI; optional on the wire so
+        the M1 demo script and the worker's own callers stay unchanged. */
+    reason: z.string().trim().min(1).max(500).optional(),
     reasons: z
       .array(z.object({ criterion: z.string().min(1), met: z.boolean(), note: z.string() }))
       .max(20)
@@ -55,7 +63,8 @@ export const POST = withAuth(
         note:
           verdict === "pass" || index !== 0
             ? "Met."
-            : `Returned by ${user.role} review. Read the bar again and resubmit.`,
+            : (parsed.data.reason ??
+              `Returned by ${user.role} review. Read the bar again and resubmit.`),
       }));
 
     try {
@@ -72,10 +81,17 @@ export const POST = withAuth(
       await prisma.auditLog.create({
         data: {
           actorId: user.userId,
-          action: "shipyard.review.stub",
+          action: "shipyard.review.override",
           targetType: "ShipyardSubmission",
           targetId: submissionId,
-          after: { verdict, reviewId: result.reviewId } as unknown as Prisma.InputJsonValue,
+          before: { status: submission.status } as unknown as Prisma.InputJsonValue,
+          after: {
+            verdict,
+            reviewId: result.reviewId,
+            status: result.status,
+            role: user.role,
+            reason: parsed.data.reason ?? null,
+          } as unknown as Prisma.InputJsonValue,
         },
       });
 
