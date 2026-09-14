@@ -62,6 +62,24 @@ a `courseId`-scoped mode of the Forge. Source of truth: `docs/shipyard/SPEC.md`
 - `lib/shipyard/cooldown.ts` — the resubmit cooldown, pure.
 - `lib/shipyard/scoring.ts` — the four weighted components, `computeGrade` and
   `deriveComponents`, pure.
+- `lib/shipyard/grades.ts` — where scoring's inputs come from and the only
+  writer of `ShipyardGrade`. `computeProductGrade`, `loadGradeLine`,
+  `finaliseGrades`, and the two hooks the pipeline calls
+  (`onReviewCompleted`, `onGatesRecomputed`).
+- `lib/shipyard/weights.ts` — the weights history. `activateWeights` writes a
+  new version, deactivates the old one, and re-scores provisional grades.
+- `lib/shipyard/checkpoint-admin.ts` — the checkpoint editor's validators
+  (rubric, field schema, signal names, gate consistency) and the cohort gate
+  sweep an edit to `gateType`/`metricSignals` triggers.
+- `lib/shipyard/tracker-refresh.ts` — `refreshTrackerForProduct`,
+  `refreshAllConnected`, and `verifyRefreshCallback` (the signed
+  Shipped.money callback's auth, pure).
+- `lib/n8n/` — the FALLBACK workflow-run source (SPEC §8.5 item 2).
+  `client.ts` counts successful executions; `merge.ts` folds the count in only
+  when the tracker reported none. Never throws; null means "we do not know".
+- `lib/dpdp-erasure-shipyard.ts` — the Shipyard's half of DPDP: its object
+  inventory, its FK-ordered cleanup, its export section, and the badges-only
+  Praxy payload.
 - `lib/shipyard/products.ts` — `ensureProduct` (get-or-create, plus the six
   checkpoint states), `renameProduct`, `connectTracker`/`parseTrackerSlug`.
 - `lib/shipyard/spine.ts` — `loadSpine(userId)` builds the whole `SpineView`;
@@ -124,7 +142,11 @@ a `courseId`-scoped mode of the Forge. Source of truth: `docs/shipyard/SPEC.md`
 - `app/api/shipyard/**` — spine (GET, `ifVersion` short poll), submissions,
   uploads/presign, product + product/connect-tracker, files/[...key],
   admin/fake-tracker, admin/review-stub, instructor/matrix (8s `ifVersion`
-  poll), instructor/open-gate, exports/matrix (CSV).
+  poll), instructor/open-gate, exports/matrix (CSV), grades,
+  tracker/refresh (service-to-service, no Clerk — the ONE Shipyard path in
+  `proxy.ts`'s public list) + tracker/refresh-mine, admin/weights,
+  admin/checkpoints (+ `[key]` PATCH, `reset-to-seed/[key]`),
+  admin/grades/{finalise,recompute}.
 - `app/shipyard/**` — the student spine and grade line, `instructor/` (the
   section matrix, the review queue, `students/[userId]` drill-down),
   `admin/` (the bench), and `demo/` (the persona picker, test-login only).
@@ -160,6 +182,15 @@ a `courseId`-scoped mode of the Forge. Source of truth: `docs/shipyard/SPEC.md`
 - A Shipyard upload key is minted only by `keyForShipyardUpload` from the
   session's product, and `createSubmission` verifies every submitted key
   against `keyPrefixForProduct`. No key from a request body is ever trusted.
+- `ShipyardGrade` is written ONLY by `computeProductGrade` in
+  `lib/shipyard/grades.ts`, and a FINALISED grade is never recomputed —
+  every trigger returns it untouched and reports `skipped`.
+- A tracker read that returns null changes nothing. `refreshTrackerForProduct`
+  returns the stored states rather than handing `recomputeGates` a null, which
+  would read as "every metric signal is false" and un-pass a cleared gate.
+- The Praxy export carries the Shipyard's artifacts and badges only: no grade,
+  no component, no rubric score, no tracker money or customer figure.
+  `tests/shipyard-admin-dpdp.test.ts` asserts it by shape.
 
 ### Commands
 

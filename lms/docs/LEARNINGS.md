@@ -86,3 +86,39 @@ Whenever a bug is fixed or a wrong assumption corrected, append what was learned
   background makes a convincing "photo of hand-drawn screens", and a CSS
   brightness filter makes the deliberately unreadable one). No image library
   and no checked-in binary generator were needed.
+
+## 2026-09-15 · Shipyard M3/M4 (grades, weights, checkpoint editor, tracker refresh)
+
+- **An unreachable tracker used to un-pass a gate.** `recomputeGates` resolves
+  from whatever signals it is handed, and `resolveGates` reads `null` signals
+  as "every metric signal is false". The stamped dates (`passedAt`,
+  `metricClearedAt`) are write-once, so they survived — but `state` is written
+  on every recompute, so a product whose money gate had cleared would flip back
+  to `open` on any tracker blip. `refreshTrackerForProduct` now returns the
+  stored states untouched when the read is null, and never calls
+  `recomputeGates` with nothing. The 15-minute gate sweep has the same shape
+  (it hands `recomputeGates` a tracker rather than signals, and the client
+  returns null on failure), so this is worth a second look there.
+- **`ShipyardGrade` rows do not exist until something computes them.** The seed
+  writes checkpoints, weights, products, submissions, reviews and tracker
+  overrides, but no grades — so every grade-reading surface has to cope with
+  "no row yet". `gradeLineView(null, weights)` returns the empty LINE (four
+  labelled components, their weights, no numbers) rather than null, which is
+  also the right thing to render in week one.
+- **The reviewer's `rubricScores` are not one shape.** The seed and the M1 stub
+  write `{ overall: 78 }`; the M2 reviewer writes one entry per rubric criterion
+  id. `overallRubricScore` therefore prefers an explicit `overall` and otherwise
+  takes the rubric-weighted mean of the criteria that WERE scored — skipping a
+  criterion the reviewer did not answer, rather than counting it as zero and
+  quietly halving a student's product-quality score.
+- **Prisma `groupBy` needs every `orderBy` field in `by`.** A "find a product
+  with six passed states" query written as a `groupBy` + `having` fails at
+  runtime with "Every field used for orderBy must be included in the
+  by-arguments". The relational filter
+  `checkpointStates: { some: {}, none: { state: { not: "passed" } } }` says the
+  same thing in one indexed read and needs no ordering at all.
+- **Adding a key to `DpdpErasureCounts` breaks two test fixtures.**
+  `tests/dpdp-erasure.test.ts` and `tests/dpdp-delete-route.test.ts` both build
+  a complete counts object by hand, so every new table counted in an erasure is
+  three edits, not one. That is the point of the type — it is the list that
+  makes a forgotten table a compile error.
