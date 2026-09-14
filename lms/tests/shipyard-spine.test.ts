@@ -17,6 +17,7 @@ import {
 import type { CheckpointView, SpineView } from "@/lib/shipyard/view-models";
 import { emptySignals, type TrackerSignals } from "@/lib/tracker/types";
 import { checkpointId } from "@/lib/shipyard/checkpoints";
+import { mockSpine } from "@/lib/shipyard/spine-mock";
 
 // ---------------------------------------------------------------------------
 // Pure mappers
@@ -186,6 +187,24 @@ function spine(patch: Partial<SpineView> = {}): SpineView {
     ...patch,
   };
 }
+
+describe("the held-pass shape the UI renders", () => {
+  it("says met-the-bar, with no queue position and no cooldown", () => {
+    const view = mockSpine("held_pass");
+    const cp = view.checkpoints.find((c) => c.state === "open")!;
+    const sub = cp.latestSubmission!;
+    expect(sub.status).toBe("in_review");
+    expect(sub.heldPass).toBe(true);
+    // The three things that must NOT be on screen for a held pass.
+    expect(sub.queuePosition).toBeNull();
+    expect(sub.nextAllowedResubmitAt).toBeNull();
+    expect(cp.state).not.toBe("passed");
+    // And the two that must: the verdict, and that it is with a person.
+    expect(sub.review!.verdict).toBe("pass");
+    expect(sub.review!.pendingHuman).toBe(true);
+    expect(sub.review!.id).not.toBe("");
+  });
+});
 
 describe("spineVersion", () => {
   it("does not move when only the clock moves", () => {

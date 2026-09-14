@@ -584,7 +584,7 @@ export function mockSpine(scenario: SpineScenario): SpineView {
                 confidence: 0.64,
                 createdAt: iso(-49),
                 pendingHuman: true,
-                modelUsed: "z-ai/glm-5.3-flash",
+                modelUsed: "glm-5.3-flash",
               },
               fields: {
                 liveUrl: "https://mandirate.app",
