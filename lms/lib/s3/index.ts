@@ -46,6 +46,8 @@ export const UPLOAD_TYPE_CAPS: Record<string, number> = {
   "image/jpeg": 25 * MB,
   "image/gif": 25 * MB,
   "image/webp": 25 * MB,
+  // Shipyard checkpoint 2 sketch photos come straight off an iPhone.
+  "image/heic": 25 * MB,
   // documents / data
   "application/pdf": 50 * MB,
   "application/json": 25 * MB,
@@ -56,6 +58,7 @@ export const UPLOAD_TYPE_CAPS: Record<string, number> = {
   "application/gzip": 100 * MB,
   "text/csv": 50 * MB,
   "text/plain": 25 * MB,
+  "text/markdown": 25 * MB,
   // media
   "video/mp4": MAX_MP4_BYTES,
   "audio/mpeg": 50 * MB,
@@ -222,6 +225,26 @@ export function keyForInterviewPrerequisite(
 ): string {
   const safeExt = ext.replace(/[^a-z0-9]/gi, "").toLowerCase() || "bin";
   return `interview-prerequisites/${sanitizeSegment(userId)}/${sanitizeSegment(kind)}-${sanitizeSegment(reservationId)}.${safeExt}`;
+}
+
+/**
+ * Shipyard (Course 2) checkpoint upload. Scoped by PRODUCT, not by user:
+ * `lib/shipyard/submissions` verifies a submitted key by this prefix, so the
+ * key itself carries the ownership fact. `uploadId` is server-minted per
+ * presign, which keeps two files of the same name from colliding.
+ */
+export function keyForShipyardUpload(args: {
+  productId: string;
+  checkpointKey: string;
+  uploadId: string;
+  filename: string;
+}): string {
+  return [
+    "shipyard",
+    sanitizeSegment(args.productId),
+    sanitizeSegment(args.checkpointKey),
+    `${sanitizeSegment(args.uploadId)}-${sanitizeFilename(args.filename)}`,
+  ].join("/");
 }
 
 /** Write-once LiveKit room recording key scoped to its durable reservation. */
