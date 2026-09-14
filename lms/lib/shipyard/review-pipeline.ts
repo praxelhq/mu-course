@@ -383,6 +383,9 @@ export async function runReviewPipeline(
     fields: context.fields,
     fieldSpecs,
     extractedText: context.preflight.extractedText,
+    // The render's own text is scanned too: a page the student controls is the
+    // easiest place to hide an instruction aimed at the reviewer (SEC-3).
+    domText: render?.domText,
     priorSubmissions,
     probe,
   });
@@ -497,6 +500,7 @@ export async function runReviewPipeline(
   const outcome: Outcome = decideOutcome(parsed, {
     attempt,
     priorScores: previous?.rubricScores ?? null,
+    suspectedInjection: preflight.suspectedInjection === true,
   });
 
   // --- 11 · Persist ---------------------------------------------------------

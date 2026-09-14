@@ -97,6 +97,11 @@ export const preflightOutputSchema = z.object({
   isSpam: z.boolean(),
   /** The id of the prior submission this one duplicates, when it does. */
   nearDuplicateOf: z.string().optional(),
+  /**
+   * Reviewer-contract language found in student-derived text (SEC-3). Never a
+   * refusal on its own — `decideOutcome` turns it into `needsHuman`.
+   */
+  suspectedInjection: z.boolean().optional(),
   extractedText: z.string(),
   notes: z.array(z.string()),
 });

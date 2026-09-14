@@ -41,6 +41,12 @@ export type PreflightInput = {
   /** Text pulled out of attached PDFs and text files by ./context. */
   extractedText?: string;
   /**
+   * The headless render's visible text, when there was one. Pre-flight does
+   * not judge it — it only scans it for reviewer-contract language, because a
+   * page the student controls is the easiest place to hide an instruction.
+   */
+  domText?: string;
+  /**
    * Earlier submissions to compare against. The pipeline passes OTHER
    * students' submissions on the same checkpoint; a student's own resubmission
    * is supposed to look like the last one and must never be flagged.
@@ -165,6 +171,74 @@ const SPAM_PHRASES = [
 
 export type SpamSignal = { spam: boolean; confident: boolean; notes: string[] };
 
+// ---------------------------------------------------------------------------
+// Prompt injection, as a code-side finding
+// ---------------------------------------------------------------------------
+
+/**
+ * Phrases that belong to the REVIEWER'S CONTRACT and have no business in a
+ * student's answer, in the render of their page, or in a PDF they attached.
+ *
+ * This is a detector, not a filter: nothing is removed and nothing is
+ * rejected. A submission that trips it goes to a human with the reason
+ * attached, because "this looks like an attempt to instruct the reviewer" is
+ * an accusation, and because the honest cases — a student building a product
+ * ABOUT prompt injection, a screenshot of their own LLM app — are real and
+ * deserve a person rather than a heuristic.
+ *
+ * Words like "verdict" and "confidence" are ordinary English, so each entry
+ * below is a phrase with contract-shaped company around it, not a bare word.
+ */
+export const INJECTION_PHRASES: readonly RegExp[] = [
+  /\bignore (?:all |any )?(?:the )?previous(?: instructions| prompts?| rules?)?\b/i,
+  /\bignore (?:everything|anything) (?:above|before)\b/i,
+  /\bdisregard (?:the |all )?(?:above|previous|prior|earlier)\b/i,
+  /\bas the reviewer\b/i,
+  /\byou are the reviewer\b/i,
+  /\b(?:set|return|output|reply with|give)\s+(?:the\s+)?(?:a\s+)?verdict\b/i,
+  /\bverdict\s*[:=]\s*["'`]?(?:pass|return)\b/i,
+  /\brubric_?scores?\b/i,
+  /\bsummary_?for_?student\b/i,
+  /\bneeds_human\b/i,
+  /\bconfidence\s*[:=]\s*(?:0?\.\d+|1(?:\.0+)?)\b/i,
+  /\bsystem prompt\b/i,
+  /\b(?:new|updated) instructions?\s*[:\-]/i,
+  /<\s*\/\s*(?:submission|headless_render|extracted_text|tracker_signals|product|text)\b/i,
+];
+
+export type InjectionSignal = {
+  suspected: boolean;
+  /** Which fields or sources the phrases came from, for the human queue. */
+  notes: string[];
+};
+
+export const INJECTION_REASON = "possible prompt injection";
+
+/**
+ * Scan every student-derived string for the phrases above. `sources` is a map
+ * of a human-readable origin ("the render's visible text", "field: whyNow") to
+ * the text, so the note names WHERE it was found — an instructor reading the
+ * queue needs to know whether it came from the write-up or from the page.
+ */
+export function detectInjection(
+  sources: Readonly<Record<string, string | null | undefined>>,
+): InjectionSignal {
+  const notes: string[] = [];
+  for (const [origin, raw] of Object.entries(sources)) {
+    if (typeof raw !== "string" || raw.trim() === "") continue;
+    const hits: string[] = [];
+    for (const pattern of INJECTION_PHRASES) {
+      const found = raw.match(pattern);
+      if (found) hits.push(found[0].replace(/\s+/g, " ").trim().slice(0, 60));
+      if (hits.length >= 3) break;
+    }
+    if (hits.length > 0) {
+      notes.push(`${origin} contains reviewer-contract language: "${hits.join('", "')}"`);
+    }
+  }
+  return { suspected: notes.length > 0, notes };
+}
+
 /**
  * A blunt instrument on purpose. It is allowed to say "obviously spam" and
  * "obviously not"; anything in between is handed to the model, which is the
@@ -264,6 +338,16 @@ export async function runPreflight(input: PreflightInput): Promise<PreflightRun>
     notes.push(`near-duplicate of submission ${dup.id} (similarity ${dup.similarity.toFixed(2)})`);
   }
 
+  // 5 · Prompt injection. Never blocks — it routes to a human (SEC-3).
+  const injectionSources: Record<string, string> = {};
+  for (const [key, value] of Object.entries(input.fields ?? {})) {
+    if (typeof value === "string") injectionSources[`field ${key}`] = value;
+  }
+  if (input.extractedText) injectionSources["the text extracted from attachments"] = input.extractedText;
+  if (input.domText) injectionSources["the render's visible text"] = input.domText;
+  const injection = detectInjection(injectionSources);
+  notes.push(...injection.notes);
+
   const ambiguityNotes: string[] = [];
   if (!spam.confident) ambiguityNotes.push("the spam heuristic was inconclusive");
   if (!isBlank && text.length > 0 && text.length < AMBIGUOUS_TEXT_CEILING) {
@@ -277,6 +361,7 @@ export async function runPreflight(input: PreflightInput): Promise<PreflightRun>
     isBlank,
     isSpam: spam.spam,
     nearDuplicateOf: dup?.id,
+    suspectedInjection: injection.suspected || undefined,
     extractedText: input.extractedText ?? "",
     notes,
   };

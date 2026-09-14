@@ -15,6 +15,7 @@ import { CONFIDENCE_FLOOR } from "@/lib/shipyard/reviewer/schemas";
 import {
   clearsGate,
   decideOutcome,
+  INJECTION_OUTCOME_REASON,
   MISSING_CRITERION_NOTE,
   normaliseSummary,
   parseEscalation,
@@ -359,5 +360,38 @@ describe("recorded model outputs", () => {
       if (!body.malformed) continue;
       expect(() => JSON.parse(body.raw)).toThrow();
     }
+  });
+});
+
+describe("decideOutcome and a suspected prompt injection (SEC-3)", () => {
+  const clean = {
+    verdict: "pass" as const,
+    confidence: 0.9,
+    reasons: [{ criterion: "a", met: true, note: "Met." }],
+    rubricScores: { a: 80 },
+    contradictions: [],
+    flags: [] as never[],
+    summaryForStudent: "Cleared.",
+  };
+
+  it("sends an otherwise clean pass to a human", () => {
+    const outcome = decideOutcome(clean, { attempt: 1, suspectedInjection: true });
+    expect(outcome.verdict).toBe("pass");
+    expect(outcome.needsHuman).toBe(true);
+    expect(outcome.needsHumanReasons).toContain(INJECTION_OUTCOME_REASON);
+    // A pass that needs a human clears nothing until a person resolves it.
+    expect(clearsGate(outcome)).toBe(false);
+  });
+
+  it("does not fire when pre-flight found nothing", () => {
+    const outcome = decideOutcome(clean, { attempt: 1 });
+    expect(outcome.needsHuman).toBe(false);
+    expect(outcome.needsHumanReasons).not.toContain(INJECTION_OUTCOME_REASON);
+  });
+
+  it("records the model's own verdict rather than overriding it", () => {
+    const returned = { ...clean, verdict: "return" as const };
+    const outcome = decideOutcome(returned, { attempt: 1, suspectedInjection: true });
+    expect(outcome.verdict).toBe("return");
   });
 });

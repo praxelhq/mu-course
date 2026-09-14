@@ -90,7 +90,8 @@ describe("assembleReviewContext", () => {
       attempt: 1,
     });
     expect(ctx.preflight.extractedText).toContain(body);
-    expect(userText(ctx)).toContain("<extracted_text_from_attachments>");
+    // The evidence tags carry a per-call random suffix (SEC-3).
+    expect(userText(ctx)).toMatch(/<extracted_text_from_attachments-[0-9a-f]{4}>/);
   });
 
   it("sends images as data URIs, in order, with labels", async () => {
@@ -213,7 +214,7 @@ describe("assembleReviewContext", () => {
     });
     expect(ctx.imageCount).toBe(2);
     expect(userText(ctx)).toContain("the rendered screenshot of the live product");
-    expect(userText(ctx)).toContain("<headless_render>");
+    expect(userText(ctx)).toMatch(/<headless_render-[0-9a-f]{4}>/);
   });
 
   it("passes the attempt, the previous reasons and the tracker signals through", async () => {

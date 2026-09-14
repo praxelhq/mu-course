@@ -267,6 +267,13 @@ export type OutcomeContext = {
   attempt: number;
   /** The previous attempt's rubricScores, when there was one. */
   priorScores?: Record<string, number> | null;
+  /**
+   * Pre-flight found reviewer-contract language in the student's text or in
+   * the render of their page (SEC-3). The verdict is recorded as the model
+   * gave it — we do not pretend to know what it would have said otherwise —
+   * and a human decides before it counts.
+   */
+  suspectedInjection?: boolean;
 };
 
 export type Outcome = {
@@ -282,6 +289,9 @@ export type Outcome = {
   needsHumanReasons: string[];
 };
 
+/** What the instructor queue shows when pre-flight found contract language. */
+export const INJECTION_OUTCOME_REASON = "possible prompt injection";
+
 /** A jump this large from a returned attempt into a pass is worth a look. */
 const SUSPICIOUS_SCORE_JUMP = 50;
 
@@ -293,6 +303,10 @@ function mean(values: number[]): number {
 export function decideOutcome(v: VerdictOutput, ctx: OutcomeContext): Outcome {
   const reasons: string[] = [];
   const scores = Object.values(v.rubricScores);
+
+  if (ctx.suspectedInjection) {
+    reasons.push(INJECTION_OUTCOME_REASON);
+  }
 
   if (v.confidence < CONFIDENCE_FLOOR) {
     reasons.push(`confidence ${v.confidence.toFixed(2)} is below ${CONFIDENCE_FLOOR}`);
