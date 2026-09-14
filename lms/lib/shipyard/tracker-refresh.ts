@@ -182,7 +182,8 @@ export async function refreshTrackerForProduct(
         key: s.checkpoint.key,
         order: s.checkpoint.order,
         state: s.state,
-        reason: "awaiting-metrics",
+        // A null read is "no new information", not "not met" — gates.ts says the same.
+        reason: "tracker-unreachable",
         openedAt: s.openedAt,
         passedAt: s.passedAt,
         reviewClearedAt: s.reviewClearedAt,

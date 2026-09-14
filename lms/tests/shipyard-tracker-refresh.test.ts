@@ -136,6 +136,7 @@ const live = await dbReachable();
 describe.skipIf(!live)("refreshTrackerForProduct (live DB)", () => {
   let prisma: import("@prisma/client").PrismaClient;
   let productId: string | null = null;
+  let snapshot: Awaited<ReturnType<typeof prisma.shipyardCheckpointState.findMany>> = [];
 
   beforeAll(async () => {
     const { PrismaClient } = await import("@prisma/client");
@@ -153,9 +154,31 @@ describe.skipIf(!live)("refreshTrackerForProduct (live DB)", () => {
       select: { productId: true },
     });
     productId = state?.productId ?? null;
+    // Snapshot the six rows so the suite leaves the seeded cohort exactly as it
+    // found it — passed gates are sticky now, so a test that clears the money
+    // gate would otherwise contradict every later suite that expects it open.
+    if (productId) {
+      snapshot = await prisma.shipyardCheckpointState.findMany({ where: { productId } });
+    }
   }, 60_000);
 
   afterAll(async () => {
+    if (productId && snapshot.length > 0) {
+      for (const row of snapshot) {
+        await prisma.shipyardCheckpointState.update({
+          where: { id: row.id },
+          data: {
+            state: row.state,
+            openedAt: row.openedAt,
+            passedAt: row.passedAt,
+            reviewClearedAt: row.reviewClearedAt,
+            metricClearedAt: row.metricClearedAt,
+            manuallyOpenedBy: row.manuallyOpenedBy,
+          },
+        });
+      }
+      await prisma.shipyardTrackerOverride.deleteMany({ where: { productId, updatedBy: "test" } }).catch(() => undefined);
+    }
     await prisma?.$disconnect();
   });
 
