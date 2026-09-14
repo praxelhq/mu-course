@@ -1350,6 +1350,9 @@ model ShipyardProduct {
   grade            ShipyardGrade?
   trackerOverride  ShipyardTrackerOverride?
 
+  /// One Shipped.money project belongs to ONE student. Without this a student
+  /// could connect a classmate's slug and inherit their verified numbers.
+  @@unique([courseId, trackerProductId])
   @@index([courseId])
   @@index([trackerProductId])
 }

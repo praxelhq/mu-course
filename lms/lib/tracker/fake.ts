@@ -11,28 +11,49 @@ import { prisma as defaultPrisma } from "@/lib/db";
 import { emptySignals, trackerSignalsSchema, type TrackerSignals } from "./types";
 import { resolveTrackerMode, type TrackerClient } from "./client";
 
-type Db = Pick<PrismaClient, "shipyardTrackerOverride">;
+type OverrideDb = Pick<PrismaClient, "shipyardTrackerOverride">;
+type Db = OverrideDb & Pick<PrismaClient, "shipyardProduct">;
+
+function normaliseEmail(value: string | null | undefined): string {
+  return (value ?? "").trim().toLowerCase();
+}
 
 /**
  * In fake mode the tracker id IS the product id: the seed sets
  * `trackerProductId` to the ShipyardProduct id so no extra mapping is needed.
+ *
+ * It honours the real tracker's ownership contract so the demo exercises the
+ * same code path: `ownerEmail` on the way out is the product owner's address,
+ * and an `ownerEmail` on the way IN that does not match answers null, exactly
+ * as Shipped.money's byte-identical not-found does.
  */
 export function createFakeTrackerClient(db: Db = defaultPrisma): TrackerClient {
   return {
-    async getCheckpointSignals(trackerProductId) {
+    async getCheckpointSignals(trackerProductId, options) {
       if (!trackerProductId) return null;
+
+      const product = await db.shipyardProduct.findUnique({
+        where: { id: trackerProductId },
+        select: { user: { select: { email: true } } },
+      });
+      const ownerEmail = normaliseEmail(product?.user.email) || null;
+
+      const asked = normaliseEmail(options?.ownerEmail);
+      // The filter only bites when the fake tracker knows whose project it is.
+      if (asked && ownerEmail && asked !== ownerEmail) return null;
+
       const row = await db.shipyardTrackerOverride.findUnique({
         where: { productId: trackerProductId },
         select: { signals: true, updatedAt: true },
       });
       // No override row means a product nobody has connected: all-false, zero.
-      if (!row) return emptySignals();
+      if (!row) return { ...emptySignals(), ownerEmail };
       const parsed = trackerSignalsSchema.safeParse(row.signals);
       if (!parsed.success) {
         console.error(`[tracker:fake] malformed override for ${trackerProductId}`);
-        return emptySignals(row.updatedAt);
+        return { ...emptySignals(row.updatedAt), ownerEmail };
       }
-      return parsed.data;
+      return { ...parsed.data, ownerEmail: parsed.data.ownerEmail ?? ownerEmail };
     },
   };
 }
@@ -53,7 +74,7 @@ export async function setFakeSignals(
   partial: Partial<TrackerSignals>,
   updatedBy: string,
   options: {
-    db?: Db;
+    db?: OverrideDb;
     env?: Readonly<Record<string, string | undefined>>;
   } = {},
 ): Promise<TrackerSignals> {

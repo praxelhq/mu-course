@@ -561,7 +561,12 @@ You clear this when:
 
 Test runs you fired by hand to reach ten are visible in the data and are not
 the point. The count on your spine updates on its own — if you land the tenth
-run at midnight, the gate opens without you resubmitting anything.`,
+run at midnight, the gate opens without you resubmitting anything.
+
+If you give us an n8n workflow id below, **add the tag "shipyard:<your product
+id>" to that workflow in n8n** — your product id is on your spine. We count
+runs only from a workflow carrying your own tag, because an id on its own does
+not say whose workflow it is.`,
   rubric: {
     passRule: "all-criteria-met",
     criteria: [
@@ -602,7 +607,7 @@ run at midnight, the gate opens without you resubmitting anything.`,
       label: "n8n workflow id",
       kind: "text",
       required: false,
-      help: "Optional. The id in your n8n URL (/workflow/<id>). It lets us read your run count directly while the tracker has no n8n source yet.",
+      help: "Optional. The id in your n8n URL (/workflow/<id>). It lets us read your run count directly while the tracker has no n8n source yet. Tag that workflow shipyard:<your product id> in n8n, or we will not count its runs.",
     },
   ],
   resubmitWindowHours: DEFAULT_RESUBMIT_WINDOW_HOURS,

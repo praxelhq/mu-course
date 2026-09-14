@@ -139,3 +139,87 @@ export async function countSuccessfulExecutions(
 
   return counted;
 }
+
+// ---------------------------------------------------------------------------
+// Whose workflow is it?
+// ---------------------------------------------------------------------------
+//
+// The workflow id on checkpoint 5 is a string a student types, and n8n's
+// executions API answers for ANY id the shared instance holds — so typing a
+// classmate's id, or a course-wide demo workflow's id, borrowed its run count
+// (SEC-2). n8n has no notion of "who owns this workflow" we can read, so the
+// student proves it the only way the API exposes: by TAGGING the workflow
+// `shipyard:<their product id>`. A tag is per-workflow, visible in the n8n UI,
+// and cannot be set on a workflow the student cannot edit.
+//
+// `workflowData.tags[].name` is on each execution row when the client asks for
+// it; it does not here, so the tags are read once per refresh from
+// `GET /api/v1/workflows/<id>`.
+
+export type WorkflowTagRead =
+  /** The workflow was read; `tags` is what n8n says, possibly empty. */
+  | { known: true; tags: string[] }
+  /** n8n could not be reached or would not answer. "We do not know." */
+  | { known: false; tags: never[] };
+
+const TAGS_UNKNOWN: WorkflowTagRead = { known: false, tags: [] };
+
+function tagNames(value: unknown): string[] {
+  if (!Array.isArray(value)) return [];
+  const out: string[] = [];
+  for (const entry of value) {
+    if (typeof entry === "string") {
+      if (entry.trim()) out.push(entry.trim());
+      continue;
+    }
+    if (entry && typeof entry === "object") {
+      const name = (entry as { name?: unknown }).name;
+      if (typeof name === "string" && name.trim()) out.push(name.trim());
+    }
+  }
+  return out;
+}
+
+/**
+ * One workflow's tag names. Never throws; `known: false` means we could not
+ * read them, which is not the same as "it has none" and must not be treated as
+ * a refusal — see `lib/shipyard/tracker-refresh`.
+ */
+export async function workflowTags(
+  workflowId: string,
+  options: { env?: N8nEnv; fetchImpl?: N8nFetch } = {},
+): Promise<WorkflowTagRead> {
+  const config = n8nConfig(options.env ?? process.env);
+  if (!config || !workflowId.trim()) return TAGS_UNKNOWN;
+  const doFetch = options.fetchImpl ?? (globalThis.fetch as unknown as N8nFetch);
+  if (typeof doFetch !== "function") return TAGS_UNKNOWN;
+
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+  try {
+    const res = await doFetch(
+      `${config.baseUrl}/api/v1/workflows/${encodeURIComponent(workflowId.trim())}`,
+      {
+        method: "GET",
+        headers: { "X-N8N-API-KEY": config.apiKey, Accept: "application/json" },
+        signal: controller.signal,
+      },
+    );
+    if (!res.ok) {
+      console.error(`[n8n] workflow ${workflowId}: HTTP ${res.status}`);
+      return TAGS_UNKNOWN;
+    }
+    const body = await res.json();
+    if (!body || typeof body !== "object") return TAGS_UNKNOWN;
+    const payload = body as { tags?: unknown; data?: { tags?: unknown } };
+    return { known: true, tags: tagNames(payload.tags ?? payload.data?.tags) };
+  } catch (err) {
+    console.error(
+      `[n8n] workflow ${workflowId}: unreachable —`,
+      err instanceof Error ? err.message : err,
+    );
+    return TAGS_UNKNOWN;
+  } finally {
+    clearTimeout(timer);
+  }
+}

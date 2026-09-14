@@ -12,7 +12,8 @@
 
 import { Prisma, type PrismaClient } from "@prisma/client";
 import { prisma as defaultPrisma } from "@/lib/db";
-import type { TrackerClient } from "@/lib/tracker/client";
+import { createTrackerClient, type TrackerClient } from "@/lib/tracker/client";
+import type { TrackerSignals } from "@/lib/tracker/types";
 import { CHECKPOINT_ORDER, SHIPYARD_COURSE_ID } from "./constants";
 import { ShipyardError } from "./errors";
 import { recomputeGates, type CheckpointStateRow } from "./gate-state";
@@ -164,12 +165,60 @@ export function parseTrackerSlug(raw: string): string {
 export type ConnectTrackerResult = {
   trackerProductId: string;
   states: CheckpointStateRow[];
+  /**
+   * False when the tracker could not tell us whose project this is. The
+   * connection is allowed — an older tracker must not lock the whole cohort
+   * out of checkpoint 4 — and the fact is recorded on the audit row instead.
+   */
+  ownerVerified: boolean;
 };
+
+const TAKEN =
+  "That Shipped.money project is already connected to another student";
+const NOT_YOURS = "That project belongs to a different Shipped.money account";
+
+/** Lower-cased, trimmed. The tracker normalises the same way. */
+function normaliseEmail(value: string | null | undefined): string {
+  return (value ?? "").trim().toLowerCase();
+}
+
+/** Every address that is this student: the canonical one and their aliases. */
+export async function studentEmails(
+  db: PrismaClient,
+  userId: string,
+): Promise<string[]> {
+  const user = await db.user.findUnique({
+    where: { id: userId },
+    select: { email: true, emailAliases: { select: { email: true }, take: 10 } },
+  });
+  if (!user) return [];
+  const all = [user.email, ...user.emailAliases.map((a) => a.email)]
+    .map(normaliseEmail)
+    .filter((e) => e !== "");
+  return [...new Set(all)];
+}
+
+/** How many owner-filtered probes one connect attempt is worth. */
+const OWNER_PROBE_CAP = 4;
 
 /**
  * Point a product at its Shipped.money project and recompute immediately, so a
  * student whose numbers already qualify sees the gate move on this request
  * rather than at the next sweep.
+ *
+ * Two refusals stand between a student and someone else's numbers:
+ *
+ *   409  the slug is already connected to another product in this course. The
+ *        `@@unique([courseId, trackerProductId])` index is the real arbiter —
+ *        the read below is only there to give a better sentence than a
+ *        constraint violation would.
+ *   403  the tracker says the project is not theirs. We ASK with the owner
+ *        filter first (one request per address they own, capped); if nothing
+ *        matches we read once more WITHOUT the filter to find out whether the
+ *        project exists at all. A project that exists but refused every one of
+ *        their addresses is somebody else's. A tracker that cannot answer
+ *        either way is not a reason to refuse — the connection goes through
+ *        with `ownerVerified: false` on the audit row.
  */
 export async function connectTracker(
   productId: string,
@@ -181,18 +230,72 @@ export async function connectTracker(
 
   const product = await db.shipyardProduct.findUnique({
     where: { id: productId },
-    select: { id: true },
+    select: { id: true, userId: true },
   });
   if (!product) throw new ShipyardError(404, { error: "No product to connect." });
 
-  await db.shipyardProduct.update({
-    where: { id: productId },
-    data: { trackerProductId },
+  const taken = await db.shipyardProduct.findFirst({
+    where: {
+      courseId: SHIPYARD_COURSE_ID,
+      trackerProductId,
+      id: { not: productId },
+    },
+    select: { id: true },
   });
-  const states = await recomputeGates(productId, {
-    db,
-    tracker: deps.tracker,
-    now: deps.now,
+  if (taken) throw new ShipyardError(409, { error: TAKEN });
+
+  const emails = await studentEmails(db, product.userId);
+  const tracker = deps.tracker ?? (await createTrackerClient());
+
+  let matched: TrackerSignals | null = null;
+  for (const email of emails.slice(0, OWNER_PROBE_CAP)) {
+    matched = await tracker.getCheckpointSignals(trackerProductId, { ownerEmail: email });
+    if (matched) break;
+  }
+
+  let ownerVerified = matched !== null;
+  if (!matched) {
+    // Nothing matched. Does the project exist at all?
+    const unfiltered = await tracker.getCheckpointSignals(trackerProductId);
+    if (unfiltered) {
+      // The secondary check, for a tracker that sends the field but ignores
+      // the filter: if it names an owner and that owner is them, allow it.
+      const named = normaliseEmail(unfiltered.ownerEmail);
+      if (named && emails.includes(named)) ownerVerified = true;
+      else throw new ShipyardError(403, { error: NOT_YOURS });
+    }
+    // else: the tracker cannot answer. Connect, and say so on the audit row.
+  }
+
+  try {
+    await db.shipyardProduct.update({
+      where: { id: productId },
+      data: { trackerProductId },
+    });
+  } catch (err) {
+    // The index is the arbiter; two students racing the same slug land here.
+    if (err instanceof Prisma.PrismaClientKnownRequestError && err.code === "P2002") {
+      throw new ShipyardError(409, { error: TAKEN });
+    }
+    throw err;
+  }
+
+  await db.auditLog.create({
+    data: {
+      actorId: product.userId,
+      action: "shipyard.tracker.connect",
+      targetType: "ShipyardProduct",
+      targetId: productId,
+      after: {
+        trackerProductId,
+        ownerVerified,
+        // An older tracker with no owner field: the connection is on record as
+        // unverified so a dispute months later does not have to be guessed at.
+        ownerEmailSeen: normaliseEmail(matched?.ownerEmail) || null,
+      } as unknown as Prisma.InputJsonValue,
+    },
   });
-  return { trackerProductId, states };
+
+  const states = await recomputeGates(productId, { db, tracker, now: deps.now });
+  return { trackerProductId, states, ownerVerified };
 }

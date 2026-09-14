@@ -3,6 +3,9 @@
 // CONTRACT (agreed with the shipped-money owner, 2026-09-14; the endpoint is
 // being added there in parallel):
 //   GET {SHIPPED_MONEY_BASE_URL}/api/v1/checkpoint-signals?projectId=<slug>
+//       [&ownerEmail=<email>]  — when given, the tracker answers a
+//       byte-identical 404 {"error":"not-found"} unless the project belongs to
+//       that account (case/whitespace-insensitive). NOT part of the HMAC.
 //   Authorization:        Bearer {SHIPPED_MONEY_SERVICE_TOKEN}
 //   X-Shipyard-Timestamp: unix SECONDS
 //   X-Shipyard-Signature: lowercase hex HMAC-SHA256, keyed with the service
@@ -54,6 +57,8 @@ export const checkpointSignalsResponseSchema = z
     currency: z.string().min(1).default("USD"),
     workflowTenRuns: z.boolean(),
     workflowRuns: z.number().int().nonnegative().nullable().optional(),
+    /** The Shipped.money account this project belongs to, lowercased. */
+    ownerEmail: z.string().nullable().optional(),
     blockingFlags: z.array(z.string()),
     flags: z
       .array(
@@ -80,6 +85,7 @@ export function toTrackerSignals(wire: CheckpointSignalsResponse): TrackerSignal
     netTotal: wire.netTotal,
     currency: wire.currency,
     workflowRuns: wire.workflowRuns ?? undefined,
+    ownerEmail: wire.ownerEmail ?? null,
     blockingFlags: wire.blockingFlags,
     fetchedAt: wire.asOf ?? new Date().toISOString(),
     source: "verified",
@@ -102,7 +108,7 @@ export function createRealTrackerClient(
   let authErrorLogged = false;
 
   return {
-    async getCheckpointSignals(trackerProductId) {
+    async getCheckpointSignals(trackerProductId, options) {
       if (!trackerProductId) return null;
       if (!baseUrl || !token) {
         console.error("[tracker] real mode needs SHIPPED_MONEY_BASE_URL and _SERVICE_TOKEN");
@@ -110,7 +116,13 @@ export function createRealTrackerClient(
       }
 
       const timestamp = String(Math.floor(Date.now() / 1000));
-      const url = `${baseUrl}/api/v1/checkpoint-signals?projectId=${encodeURIComponent(trackerProductId)}`;
+      // The owner filter rides as a query parameter and is deliberately NOT in
+      // the signed string: the tracker's HMAC covers `${timestamp}:${projectId}`
+      // and adding to it would break every deployed signer at once.
+      const ownerEmail = options?.ownerEmail?.trim().toLowerCase() ?? "";
+      const query = new URLSearchParams({ projectId: trackerProductId });
+      if (ownerEmail) query.set("ownerEmail", ownerEmail);
+      const url = `${baseUrl}/api/v1/checkpoint-signals?${query.toString()}`;
       const controller = new AbortController();
       const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
       try {

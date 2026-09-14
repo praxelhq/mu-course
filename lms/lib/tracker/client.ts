@@ -8,13 +8,33 @@
 
 import type { TrackerSignals } from "./types";
 
+export type CheckpointSignalsOptions = {
+  /**
+   * When given, the tracker is asked for this project ONLY IF it belongs to
+   * this Shipped.money account, and answers a byte-identical not-found when it
+   * does not (contract agreed 2026-09-15). It is a query parameter and is NOT
+   * part of the HMAC string, which stays `${timestamp}:${projectId}`.
+   *
+   * A null answer is therefore ambiguous on its own — "not yours", "no such
+   * project" and "the tracker is down" all look the same — so the only caller
+   * that uses it (`connectTracker`) re-reads without it before deciding, and
+   * the refresh path never uses it at all: disconnecting a student because a
+   * webhook was late would be worse than the bug it closes.
+   */
+  ownerEmail?: string | null;
+};
+
 export interface TrackerClient {
   /**
    * Signals for one product, or null when the tracker cannot answer (no
-   * tracker id, unreachable, malformed response). Never throws: an unreachable
+   * tracker id, unreachable, malformed response, or — with `ownerEmail` —
+   * a project that belongs to someone else). Never throws: an unreachable
    * tracker leaves gates where they are rather than failing a student's page.
    */
-  getCheckpointSignals(trackerProductId: string | null | undefined): Promise<TrackerSignals | null>;
+  getCheckpointSignals(
+    trackerProductId: string | null | undefined,
+    options?: CheckpointSignalsOptions,
+  ): Promise<TrackerSignals | null>;
 }
 
 export type TrackerMode = "fake" | "real";

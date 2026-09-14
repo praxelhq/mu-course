@@ -130,6 +130,10 @@ describe("the real tracker client", () => {
       currency: "USD",
       workflowRuns: 14,
       blockingFlags: [],
+      // A tracker that does not send the owner field yet reads as null, which
+      // `refreshTrackerForProduct` treats as "we do not know", never as a
+      // mismatch.
+      ownerEmail: null,
       fetchedAt: "2026-09-14T09:00:00.000Z",
       source: "verified",
     });
@@ -193,6 +197,11 @@ describe("the fake tracker", () => {
     const store = new Map(rows.map((r) => [r.productId, r]));
     return {
       store,
+      // The fake tracker names the product's owner, the way the real one does.
+      shipyardProduct: {
+        findUnique: async ({ where }: { where: { id: string } }) =>
+          store.has(where.id) ? { user: { email: `${where.id}@mastersunion.org` } } : null,
+      },
       shipyardTrackerOverride: {
         findUnique: async ({ where }: { where: { productId: string } }) =>
           store.get(where.productId) ?? null,
@@ -223,7 +232,10 @@ describe("the fake tracker", () => {
       { productId: "syp_001", signals, updatedBy: "seed", updatedAt: new Date() },
     ]);
     const client = createFakeTrackerClient(db);
-    await expect(client.getCheckpointSignals("syp_001")).resolves.toEqual(signals);
+    await expect(client.getCheckpointSignals("syp_001")).resolves.toEqual({
+      ...signals,
+      ownerEmail: "syp_001@mastersunion.org",
+    });
   });
 
   it("treats a missing row as an unconnected product, not an error", async () => {

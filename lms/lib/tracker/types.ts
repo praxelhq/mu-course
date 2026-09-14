@@ -25,6 +25,15 @@ export const trackerSignalsSchema = z.object({
   /** Present once the tracker has a workflow source for this product. */
   workflowRuns: z.number().int().nonnegative().optional(),
   /**
+   * The Shipped.money account this project belongs to, lowercased and trimmed
+   * by the tracker (contract agreed 2026-09-15). OPTIONAL because an older
+   * tracker does not send it and a null is a project the tracker cannot
+   * attribute — neither is a reason to refuse a read. `lib/shipyard/products`
+   * and `lib/shipyard/tracker-refresh` compare it with the student's own
+   * addresses, so a student cannot connect a classmate's project.
+   */
+  ownerEmail: z.string().nullable().optional(),
+  /**
    * Anti-gaming flag CODES the tracker raised. Opaque strings — this portal
    * never interprets them, only counts them.
    * A non-empty list makes EVERY metric signal false — see lib/shipyard/gates.
