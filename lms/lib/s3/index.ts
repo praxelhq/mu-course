@@ -247,24 +247,27 @@ export function keyForShipyardUpload(args: {
   ].join("/");
 }
 
+/** Staff-only prefix: the worker's renders of students' live products. */
+export const SHIPYARD_RENDER_PREFIX = "shipyard-renders/";
+
 /**
- * The worker's headless render of a student's live product (SPEC §6). It sits
- * beside that product's uploads under the same prefix, so retention and the
- * per-product delete sweep already cover it, and it is named by SUBMISSION so
- * a resubmission's render never overwrites the evidence a prior review was
- * decided on.
+ * The worker's headless render of a student's live product (SPEC §6), named by
+ * SUBMISSION so a resubmission's render never overwrites the evidence a prior
+ * review was decided on.
+ *
+ * It sits under its OWN top-level prefix rather than beside the student's
+ * uploads. The student-facing file route grants a student every key under
+ * `shipyard/<their product>/`, and a render is not their upload: it is a
+ * screenshot of whatever their URL served the worker at review time, taken
+ * with a browser we control, and it is evidence an instructor reads. Under
+ * this prefix the file route hands it to instructors and admins only, and the
+ * per-product delete sweep still claims it by key from `renderArtifacts`.
  */
 export function keyForShipyardRender(args: {
   productId: string;
-  checkpointKey: string;
   submissionId: string;
 }): string {
-  return [
-    "shipyard",
-    sanitizeSegment(args.productId),
-    sanitizeSegment(args.checkpointKey),
-    `render-${sanitizeSegment(args.submissionId)}.png`,
-  ].join("/");
+  return `${SHIPYARD_RENDER_PREFIX}${sanitizeSegment(args.productId)}/${sanitizeSegment(args.submissionId)}.png`;
 }
 
 /** Write-once LiveKit room recording key scoped to its durable reservation. */

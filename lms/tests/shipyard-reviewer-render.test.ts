@@ -18,8 +18,10 @@ import {
   isEmptyShell,
   MAX_SCREENSHOT_HEIGHT,
   MAX_SCREENSHOT_WIDTH,
+  redirectedAwayNote,
   renderLiveProduct,
   renderTimeoutFromEnv,
+  sameSubmittedHost,
   type BrowserLike,
   type PageLike,
   type RouteLike,
@@ -32,12 +34,17 @@ describe("decideRequest — default deny", () => {
     expect(decideRequest(TARGET, `${TARGET}/api/routes`).allowed).toBe(true);
   });
 
-  it("allows a subdomain of the target host", () => {
-    expect(decideRequest(TARGET, "https://cdn.dabbaroute.vercel.app/app.js").allowed).toBe(true);
+  it("refuses a SUBDOMAIN of the target host (the student owns that DNS)", () => {
+    expect(decideRequest(TARGET, "https://cdn.dabbaroute.vercel.app/app.js").allowed).toBe(false);
+    expect(decideRequest(TARGET, "https://internal.dabbaroute.vercel.app/x").allowed).toBe(false);
   });
 
-  it("does not treat a host that merely ends with the same letters as a subdomain", () => {
+  it("does not treat a host that merely ends with the same letters as the target", () => {
     expect(decideRequest(TARGET, "https://evildabbaroute.vercel.app/x").allowed).toBe(false);
+  });
+
+  it("matches the host case-insensitively and past a trailing dot", () => {
+    expect(decideRequest(TARGET, "https://DabbaRoute.vercel.app/app.js").allowed).toBe(true);
   });
 
   it("allows only the named asset CDNs", () => {
@@ -172,6 +179,8 @@ type FakePageOptions = {
   status?: number;
   size?: { width: number; height: number };
   title?: string;
+  /** Where the document ended up, when the fake page redirected. */
+  finalUrl?: string;
 };
 
 function fakeBrowser(opts: FakePageOptions) {
@@ -184,11 +193,14 @@ function fakeBrowser(opts: FakePageOptions) {
       routes.push(handler);
     },
     on: () => {},
-    goto: async () => ({ status: () => opts.status ?? 200, url: () => TARGET }),
+    goto: async () => ({
+      status: () => opts.status ?? 200,
+      url: () => opts.finalUrl ?? TARGET,
+    }),
     waitForLoadState: async () => {},
     waitForTimeout: async () => {},
     title: async () => opts.title ?? "DabbaRoute",
-    url: () => TARGET,
+    url: () => opts.finalUrl ?? TARGET,
     evaluate: (async (fn: () => unknown) => {
       const source = fn.toString();
       return source.includes("scrollWidth")
@@ -208,8 +220,13 @@ function fakeBrowser(opts: FakePageOptions) {
     },
   };
 
+  const launched: unknown[] = [];
   return {
-    launch: async () => browser,
+    launch: async (launchOpts?: unknown) => {
+      launched.push(launchOpts);
+      return browser;
+    },
+    launched,
     routes,
     screenshotCalls,
     wasClosed: () => closed,
@@ -355,6 +372,15 @@ describe("a real page on 127.0.0.1", () => {
     await new Promise<void>((resolve) => server.close(() => resolve()));
   });
 
+  it("is refused by NAME too — localhost resolves to loopback and fails closed", async () => {
+    const launch = vi.fn();
+    const result = await renderLiveProduct(`http://localhost:${port}/`, { launch });
+    expect(launch).not.toHaveBeenCalled();
+    expect(result.ok).toBe(false);
+    expect(result.domText).toBe("");
+    expect(result.notes.join(" ")).toMatch(/private or reserved address/);
+  });
+
   it("is refused, and no browser is ever launched at it", async () => {
     const launch = vi.fn();
     const result = await renderLiveProduct(`http://127.0.0.1:${port}/`, { launch });
@@ -366,13 +392,69 @@ describe("a real page on 127.0.0.1", () => {
 });
 
 // ---------------------------------------------------------------------------
+// The document must stay on the site the student submitted
+// ---------------------------------------------------------------------------
+
+describe("sameSubmittedHost", () => {
+  it("accepts the same host, with or without www", () => {
+    expect(sameSubmittedHost("dabbaroute.vercel.app", "dabbaroute.vercel.app")).toBe(true);
+    expect(sameSubmittedHost("dabbaroute.com", "www.dabbaroute.com")).toBe(true);
+    expect(sameSubmittedHost("www.dabbaroute.com", "dabbaroute.com")).toBe(true);
+    expect(sameSubmittedHost("DabbaRoute.com.", "dabbaroute.com")).toBe(true);
+  });
+
+  it("refuses a sibling on the same deploy platform", () => {
+    expect(sameSubmittedHost("dabbaroute.vercel.app", "evil.vercel.app")).toBe(false);
+    expect(sameSubmittedHost("dabbaroute.vercel.app", "api.dabbaroute.vercel.app")).toBe(false);
+    expect(sameSubmittedHost("dabbaroute.com", "169.254.169.254")).toBe(false);
+  });
+});
+
+describe("renderLiveProduct — a document that redirected away", () => {
+  it("refuses rather than judging someone else's page", async () => {
+    const fake = fakeBrowser({
+      domText: "Internal admin console. ".repeat(20),
+      finalUrl: "http://169.254.169.254/latest/meta-data/",
+    });
+    const result = await renderLiveProduct(TARGET, {
+      launch: fake.launch,
+      lookup: publicLookup,
+    });
+    expect(result.ok).toBe(false);
+    expect(result.domText).toBe("");
+    expect(result.screenshotPng).toBeNull();
+    expect(result.notes.join(" ")).toContain(redirectedAwayNote("169.254.169.254"));
+  });
+
+  it("follows a www redirect on the same site", async () => {
+    const fake = fakeBrowser({
+      domText: "Plan tomorrow's route. ".repeat(20),
+      finalUrl: "https://www.dabbaroute.vercel.app/",
+    });
+    const result = await renderLiveProduct(TARGET, {
+      launch: fake.launch,
+      lookup: publicLookup,
+    });
+    expect(result.ok).toBe(true);
+  });
+
+  it("launches chromium through the loopback egress proxy and pins the host", async () => {
+    const fake = fakeBrowser({ domText: "A real page. ".repeat(20) });
+    await renderLiveProduct(TARGET, { launch: fake.launch, lookup: publicLookup });
+    const opts = fake.launched[0] as { proxyServer: string; hostResolverRule: string };
+    expect(opts.proxyServer).toMatch(/^http:\/\/127\.0\.0\.1:\d+$/);
+    expect(opts.hostResolverRule).toBe("MAP dabbaroute.vercel.app 93.184.216.34");
+  });
+});
+
+// ---------------------------------------------------------------------------
 // The opt-in live render
 // ---------------------------------------------------------------------------
 
 const LIVE = process.env.SHIPYARD_RENDER_LIVE_TEST === "1";
 
 describe.skipIf(!LIVE)("a real render (SHIPYARD_RENDER_LIVE_TEST=1)", () => {
-  it("renders example.com with a real chromium", async () => {
+  it("renders example.com with a real chromium, through the egress proxy", async () => {
     const result = await renderLiveProduct("https://example.com", { timeoutMs: 30_000 });
     expect(result.ok).toBe(true);
     expect(result.domText).toMatch(/Example Domain/i);

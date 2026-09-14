@@ -29,7 +29,7 @@
 // the review, so the admin meter can aggregate by feature and by model without
 // unioning two different shapes.
 
-import type { PrismaClient, ShipyardCheckpointKey } from "@prisma/client";
+import type { PrismaClient } from "@prisma/client";
 import { callStructured as defaultCallStructured } from "@/lib/ai/openrouter";
 import {
   effectiveProfile,
@@ -324,7 +324,7 @@ export async function runReviewPipeline(
     render = await runRender(liveUrl.trim(), fields, deps);
     screenshotS3Key = await storeScreenshot(
       render,
-      { productId: submission.productId, checkpointKey: checkpoint.key, submissionId },
+      { productId: submission.productId, submissionId },
       deps,
     );
   }
@@ -633,7 +633,7 @@ async function runRender(
 
 async function storeScreenshot(
   render: RenderResult | null,
-  where: { productId: string; checkpointKey: ShipyardCheckpointKey; submissionId: string },
+  where: { productId: string; submissionId: string },
   deps: ReviewPipelineDeps,
 ): Promise<string | null> {
   if (!render?.screenshotPng || render.screenshotPng.length === 0) return null;

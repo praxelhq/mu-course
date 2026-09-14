@@ -11,12 +11,24 @@
 //      link-local or mixed answer set refuses outright — no browser launches.
 //   2. A fresh context with no credentials, no stored state, service workers
 //      blocked, and a viewport of 1280x800.
-//   3. `page.route("**/*")` is DEFAULT-DENY. Only the target host, its
-//      subdomains, and a short list of public asset CDNs are allowed through;
-//      every other request is aborted and counted. Non-http(s) schemes —
-//      file:, data:, blob:, ws: — are always aborted.
-//   4. Navigation and the whole render share a deadline, and the browser is
-//      closed in `finally` whatever happens.
+//   2b. An IN-WORKER EGRESS PROXY (./egress-proxy) is started on 127.0.0.1 for
+//      the lifetime of this render, and Chromium is launched with
+//      `--proxy-server` pointed at it. It re-resolves every hostname itself,
+//      refuses any answer set containing a private address, refuses a port
+//      that is not 80/443 (or the submitted URL's own explicit port), and
+//      pins the connection to the vetted IP. Redirect hops, subresources and
+//      WebSocket upgrades all pass through it, which `page.route` does not see.
+//      `--host-resolver-rules=MAP <host> <ip>` pins the top-level host too.
+//   3. `page.route("**/*")` is DEFAULT-DENY. Only the EXACT target host and a
+//      short, closed list of public asset CDNs are allowed through; every
+//      other request is aborted and counted. Non-http(s) schemes — file:,
+//      data:, blob:, ws: — are always aborted. It is a second layer, not the
+//      policy: the proxy above is the policy.
+//   4. After navigation the document's host is compared with the submitted
+//      host. A document that redirected to a different site is refused rather
+//      than judged, because everything after the hop belongs to another site.
+//   5. Navigation and the whole render share a deadline, and the browser and
+//      the proxy are closed in `finally` whatever happens.
 //
 // The pure halves (the allow-list decision, empty-shell detection, the capture
 // plan) are exported and unit-tested with no browser at all.
@@ -24,6 +36,7 @@
 import { lookup as dnsLookup } from "node:dns/promises";
 import { isIP } from "node:net";
 import { isPrivateAddress } from "@/lib/net/safe-fetch";
+import { startEgressProxy, type EgressProxy } from "./egress-proxy";
 
 export const DEFAULT_RENDER_TIMEOUT_MS = 20_000;
 /** Visible text shorter than this after hydration is a shell, not a product. */
@@ -61,6 +74,10 @@ export type RenderResult = {
  * malicious page points at never gets a request. Bytes from these hosts are
  * stylesheets, fonts and library scripts, and none of them can carry our
  * credentials because the context has none.
+ *
+ * It is a list of EXACT hosts. No wildcard, no subdomain rule: a host is on
+ * this list or it is not, and the only other host a render may reach is the
+ * exact host the student submitted.
  */
 export const ALLOWED_ASSET_HOSTS: readonly string[] = [
   "fonts.googleapis.com",
@@ -72,16 +89,21 @@ export const ALLOWED_ASSET_HOSTS: readonly string[] = [
 
 export type AllowDecision = { allowed: boolean; reason: string };
 
-/** Is `host` the target host or one of its subdomains? */
-function isSameSite(targetHost: string, host: string): boolean {
-  if (host === targetHost) return true;
-  return host.endsWith(`.${targetHost}`);
+/** Lower-cased, trailing dot stripped, IPv6 brackets removed. */
+export function normaliseHost(host: string): string {
+  return host.trim().replace(/^\[|\]$/g, "").replace(/\.$/, "").toLowerCase();
 }
 
 /**
  * The default-deny rule, as a pure function so it can be tested without a
- * browser. `targetOrigin` is the origin of the URL the student submitted,
- * after redirects have been followed by the browser.
+ * browser. `targetOrigin` is the origin of the URL the student submitted.
+ *
+ * EXACT host match only. A wildcard over subdomains was the original rule and
+ * it was wrong: the student controls their own DNS, so `internal.their-app.com`
+ * pointing at 10.0.0.7 was an allowed host under it. Subdomains a real product
+ * needs (an API host, a CDN bucket) are refused here and counted, and the note
+ * on the review says so — a missing third-party asset is not the student's
+ * fault and never fails a bar clause.
  */
 export function decideRequest(targetOrigin: string, requestUrl: string): AllowDecision {
   let target: URL;
@@ -101,13 +123,35 @@ export function decideRequest(targetOrigin: string, requestUrl: string): AllowDe
   if (url.protocol !== "http:" && url.protocol !== "https:") {
     return { allowed: false, reason: `scheme ${url.protocol} is never allowed` };
   }
-  if (isSameSite(target.hostname, url.hostname)) {
-    return { allowed: true, reason: "same site as the submitted URL" };
+  const host = normaliseHost(url.hostname);
+  if (host === normaliseHost(target.hostname)) {
+    return { allowed: true, reason: "the exact host the student submitted" };
   }
-  if (ALLOWED_ASSET_HOSTS.includes(url.hostname)) {
+  if (ALLOWED_ASSET_HOSTS.includes(host)) {
     return { allowed: true, reason: "public asset CDN" };
   }
   return { allowed: false, reason: `cross-origin host ${url.hostname} is not on the allow list` };
+}
+
+/**
+ * Did the document stay on the site the student submitted?
+ *
+ * Deliberately exact, with `www.` treated as the same site and nothing else:
+ * an eTLD+1 comparison would call `evil.vercel.app` the same registrable host
+ * as `their-app.vercel.app`, which is the platform every student deploys on
+ * and therefore the one case it must not wave through. A product that really
+ * does live one redirect away is asked for its final address instead.
+ */
+export function sameSubmittedHost(submitted: string, final: string): boolean {
+  const a = normaliseHost(submitted);
+  const b = normaliseHost(final);
+  if (a === b) return true;
+  return a === `www.${b}` || b === `www.${a}`;
+}
+
+/** The note a student reads when their address moved somewhere else. */
+export function redirectedAwayNote(finalHost: string): string {
+  return `The address redirected to a different site (${finalHost}) — submit the final address`;
 }
 
 export function isEmptyShell(domText: string): boolean {
@@ -261,7 +305,15 @@ export interface BrowserLike {
   close(): Promise<void>;
 }
 
-export type LaunchFn = () => Promise<BrowserLike>;
+/** What the worker's launcher is told about this render's sandbox. */
+export type LaunchOptions = {
+  /** `http://127.0.0.1:<port>` — the egress proxy every request must go through. */
+  proxyServer: string;
+  /** `MAP <host> <vetted ip>` — belt and braces on the top-level host. */
+  hostResolverRule: string;
+};
+
+export type LaunchFn = (opts: LaunchOptions) => Promise<BrowserLike>;
 
 /**
  * Mirrors worker/jobs/screenshot-capture.ts: headless, QUIC off, and NO
@@ -270,9 +322,16 @@ export type LaunchFn = () => Promise<BrowserLike>;
  * does not change the sandbox). Loaded lazily so the web tier never pulls
  * playwright into its bundle.
  */
-const defaultLaunch: LaunchFn = async () => {
+const defaultLaunch: LaunchFn = async (opts) => {
   const { chromium } = await import("playwright");
-  const browser = await chromium.launch({ headless: true, args: ["--disable-quic"] });
+  const browser = await chromium.launch({
+    headless: true,
+    // QUIC off so nothing can leave over UDP past an HTTP proxy that only
+    // speaks TCP; the resolver rule pins the top-level host to the address we
+    // already vetted, so Chromium never asks DNS about it at all.
+    args: ["--disable-quic", `--host-resolver-rules=${opts.hostResolverRule}`],
+    proxy: { server: opts.proxyServer },
+  });
   return browser as unknown as BrowserLike;
 };
 
@@ -341,9 +400,24 @@ export async function renderLiveProduct(
   const deadline = Date.now() + timeoutMs;
   const remaining = () => Math.max(1_000, deadline - Date.now());
 
+  // The proxy is the network policy. It lives exactly as long as this render.
+  let proxy: EgressProxy | null = null;
+  try {
+    proxy = await startEgressProxy({
+      extraPort: target.port ? Number(target.port) : null,
+      lookup: opts.lookup,
+    });
+  } catch (err) {
+    notes.push(`refused before launching a browser: the egress proxy would not start (${errText(err)})`);
+    return base;
+  }
+
   let browser: BrowserLike | null = null;
   try {
-    browser = await (opts.launch ?? defaultLaunch)();
+    browser = await (opts.launch ?? defaultLaunch)({
+      proxyServer: `http://127.0.0.1:${proxy.port}`,
+      hostResolverRule: `MAP ${target.hostname} ${address.addresses[0]}`,
+    });
     const context = await browser.newContext({
       viewport: VIEWPORT,
       javaScriptEnabled: true,
@@ -386,6 +460,24 @@ export async function renderLiveProduct(
     await page.waitForTimeout(Math.min(HYDRATION_MS, remaining()));
 
     base.finalUrl = page.url();
+
+    // The document itself moved. Everything past the hop belongs to another
+    // site — its subresources are blocked, its host was never vetted as the
+    // one the student named, and judging it would judge someone else's page.
+    const finalHost = (() => {
+      try {
+        return new URL(base.finalUrl).hostname;
+      } catch {
+        return "";
+      }
+    })();
+    if (finalHost && !sameSubmittedHost(target.hostname, finalHost)) {
+      notes.push(redirectedAwayNote(finalHost));
+      base.blockedRequests = blockedRequests + proxy.blocked;
+      base.ok = false;
+      return base;
+    }
+
     base.title = await page.title().catch(() => "");
     const text = await page.evaluate<string>(VISIBLE_TEXT_FN).catch(() => "");
     base.domText = text.slice(0, DOM_TEXT_CAP);
@@ -416,10 +508,15 @@ export async function renderLiveProduct(
     if (base.status !== null && base.status >= 400) {
       notes.push(`the server answered ${base.status}`);
     }
-    if (blockedRequests > 0) {
+    const totalBlocked = blockedRequests + proxy.blocked;
+    base.blockedRequests = totalBlocked;
+    if (totalBlocked > 0) {
       notes.push(
-        `${blockedRequests} cross-origin request${blockedRequests === 1 ? "" : "s"} were blocked by the render sandbox; a missing third-party widget is not the student's fault`,
+        `${totalBlocked} cross-origin request${totalBlocked === 1 ? "" : "s"} were blocked by the render sandbox; a missing third-party widget is not the student's fault`,
       );
+    }
+    if (proxy.refusals.length > 0) {
+      notes.push(`the egress proxy refused: ${proxy.refusals.slice(0, 5).join("; ")}`);
     }
     if (opts.corePath) {
       notes.push(`the student's named core path: ${opts.corePath.replace(/\s+/g, " ").slice(0, 400)}`);
@@ -432,5 +529,6 @@ export async function renderLiveProduct(
     return base;
   } finally {
     await browser?.close().catch(() => {});
+    await proxy?.close().catch(() => {});
   }
 }
