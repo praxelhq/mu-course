@@ -15,6 +15,18 @@ pick theirs up automatically because a `railway.json` sits at their root
 directory; `worker` shares the `lms` root with `web`, so its config file path
 must be set in the dashboard.
 
+
+> **2026-09-15 — no root `railway.json` any more.** Railway auto-applies a root
+> `railway.json` to EVERY service whose root directory is `lms`, and on this
+> workspace config-as-code is deprecated so it can no longer be pointed at a
+> per-service file. The web config it carried (Dockerfile.web, `/api/health`,
+> 300s) now lives on the `forge-prod` and `shipyard-demo` service instances
+> (Settings → Build/Deploy, or `serviceInstanceUpdate`). `forge-worker` still
+> reads `lms/railway.worker.json` through its pre-deprecation config-file
+> setting; new worker services set `dockerfilePath` + `startCommand` on the
+> instance instead. Without this, a new worker service builds the web image
+> and its start command fails silently.
+
 ## 1. Create the project and Postgres
 
 1. Railway dashboard -> **New Project** -> **Deploy PostgreSQL**.
