@@ -1,10 +1,21 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { PrismaClient } from "@prisma/client";
 
-import { createSubmission, SubmissionError, collectFileKeys } from "@/lib/shipyard/submissions";
+import {
+  createSubmission,
+  SubmissionError,
+  collectFileKeys,
+  allowedContentTypes,
+  type SubmissionFileInput,
+} from "@/lib/shipyard/submissions";
 import { parseTrackerSlug } from "@/lib/shipyard/products";
 import { ShipyardError } from "@/lib/shipyard/errors";
-import { normaliseContentType, shipyardUploadCap, keyPrefixForProduct } from "@/lib/shipyard/uploads";
+import {
+  displayNameFromKey,
+  normaliseContentType,
+  shipyardUploadCap,
+  keyPrefixForProduct,
+} from "@/lib/shipyard/uploads";
 import { resetRateLimits, takeToken } from "@/lib/shipyard/rate-limit";
 import { SafeFetchBlockedError } from "@/lib/net/safe-fetch";
 import type { FieldSpec } from "@/lib/shipyard/fields";
@@ -17,7 +28,14 @@ const IDEA_FIELDS: FieldSpec[] = [
   { key: "productName", label: "Product name", kind: "text", required: true },
   { key: "oneLiner", label: "One line", kind: "text", required: true },
   { key: "waitlistUrl", label: "Waitlist URL", kind: "url", required: true },
-  { key: "signupScreenshot", label: "Screenshot", kind: "images", required: false, maxFiles: 3 },
+  {
+    key: "signupScreenshot",
+    label: "Screenshot",
+    kind: "images",
+    required: false,
+    maxFiles: 3,
+    accept: ["image/png", "image/jpeg", "image/webp"],
+  },
 ];
 
 const GOOD_FIELDS = {
@@ -312,7 +330,7 @@ describe("createSubmission file handling", () => {
 
   it("accepts a file under its own product prefix", async () => {
     const rec = recorder();
-    const head = vi.fn(async () => ({}));
+    const head = vi.fn(async () => ({ contentType: "image/png", contentLength: 5 }));
     await createSubmission(
       {
         userId: "u1",
@@ -332,6 +350,105 @@ describe("createSubmission file handling", () => {
     );
     expect(head).toHaveBeenCalledTimes(1);
     expect(rec.created).toHaveLength(1);
+  });
+
+  // -------------------------------------------------------------------------
+  // What S3 holds beats what the body claimed (SEC-4)
+  // -------------------------------------------------------------------------
+
+  const pngKey = "shipyard/prod_1/idea/u-shot.png";
+  const lie = {
+    key: pngKey,
+    name: "../../../etc/passwd",
+    contentType: "image/png",
+    bytes: 5,
+  };
+
+  function submitWith(
+    rec: ReturnType<typeof recorder>,
+    headResult: { contentType: string; contentLength: number },
+  ) {
+    return createSubmission(
+      {
+        userId: "u1",
+        checkpointKey: "idea",
+        fields: { ...GOOD_FIELDS, signupScreenshot: [pngKey] },
+        files: [lie],
+        now: NOW,
+      },
+      deps({}, rec, {
+        storageConfigured: () => true,
+        headObject: async () => headResult,
+      }),
+    );
+  }
+
+  it("stores the OBSERVED type and size, not the ones the body claimed", async () => {
+    const rec = recorder();
+    await submitWith(rec, { contentType: "image/JPEG", contentLength: 4096 });
+    const stored = (rec.created[0].files as SubmissionFileInput[])[0];
+    expect(stored.contentType).toBe("image/jpeg");
+    expect(stored.bytes).toBe(4096);
+  });
+
+  it("derives the display name from the sanitised key, not from `name`", async () => {
+    const rec = recorder();
+    await submitWith(rec, { contentType: "image/png", contentLength: 5 });
+    const stored = (rec.created[0].files as SubmissionFileInput[])[0];
+    expect(stored.name).toBe("u-shot.png");
+    expect(stored.name).not.toContain("..");
+  });
+
+  it("refuses an object stored as a type this checkpoint does not accept", async () => {
+    const rec = recorder();
+    const err = await refusal(() =>
+      submitWith(rec, { contentType: "application/pdf", contentLength: 100 }),
+    );
+    expect(err.status).toBe(400);
+    expect(err.body.error).toContain("application/pdf");
+    expect(rec.created).toHaveLength(0);
+  });
+
+  it("refuses an object stored as a type the Shipyard does not take at all", async () => {
+    const rec = recorder();
+    const err = await refusal(() =>
+      submitWith(rec, { contentType: "text/html", contentLength: 100 }),
+    );
+    expect(err.status).toBe(400);
+    expect(err.body.error).toMatch(/does not take/);
+  });
+
+  it("refuses an object over its type's cap however small the body said it was", async () => {
+    const rec = recorder();
+    const err = await refusal(() =>
+      submitWith(rec, { contentType: "image/png", contentLength: 40 * 1024 * 1024 }),
+    );
+    expect(err.status).toBe(400);
+    expect(err.body.error).toMatch(/over the 25MB limit/);
+    expect(rec.created).toHaveLength(0);
+  });
+
+  it("names the file by its key when storage cannot find it", async () => {
+    const rec = recorder();
+    const err = await refusal(() =>
+      createSubmission(
+        {
+          userId: "u1",
+          checkpointKey: "idea",
+          fields: GOOD_FIELDS,
+          files: [lie],
+          now: NOW,
+        },
+        deps({}, rec, {
+          storageConfigured: () => true,
+          headObject: async () => {
+            throw new Error("404");
+          },
+        }),
+      ),
+    );
+    expect(err.body.error).toContain("u-shot.png");
+    expect(err.body.error).not.toContain("etc/passwd");
   });
 
   it("rejects a malformed files payload before touching the database", async () => {
@@ -513,5 +630,50 @@ describe("takeToken", () => {
   it("counts each user separately", () => {
     for (let i = 0; i < 10; i++) takeToken("u1", { now: 1_000_000 });
     expect(takeToken("u2", { now: 1_000_000 }).allowed).toBe(true);
+  });
+});
+
+describe("displayNameFromKey", () => {
+  it("strips the server-minted uploadId and keeps the sanitised filename", () => {
+    expect(
+      displayNameFromKey(
+        "shipyard/prod_1/design/3f2504e0-4f89-11d3-9a0c-0305e82c3301-sketch-4.jpg",
+      ),
+    ).toBe("sketch-4.jpg");
+  });
+
+  it("falls back to the last segment when there is no uploadId", () => {
+    expect(displayNameFromKey("shipyard/prod_1/idea/u-shot.png")).toBe("u-shot.png");
+  });
+
+  it("never returns a path", () => {
+    expect(displayNameFromKey("shipyard/prod_1/idea/")).toBe("idea");
+    expect(displayNameFromKey("")).toBe("file");
+  });
+});
+
+describe("allowedContentTypes", () => {
+  it("is the union of the checkpoint's own accept lists", () => {
+    const specs: FieldSpec[] = [
+      {
+        key: "shots",
+        label: "Shots",
+        kind: "images",
+        required: true,
+        accept: ["image/png", "image/JPG"],
+      },
+    ];
+    expect(allowedContentTypes(specs)).toEqual(new Set(["image/png", "image/jpeg"]));
+  });
+
+  it("is null — the Shipyard's own list stands — when a field names none", () => {
+    const specs: FieldSpec[] = [
+      { key: "files", label: "Files", kind: "files", required: false },
+    ];
+    expect(allowedContentTypes(specs)).toBeNull();
+  });
+
+  it("is null on a checkpoint with no upload fields at all", () => {
+    expect(allowedContentTypes([{ key: "a", label: "A", kind: "text", required: true }])).toBeNull();
   });
 });

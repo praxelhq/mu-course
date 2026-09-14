@@ -28,7 +28,12 @@ import {
   type SubmissionFields,
 } from "./fields";
 import { enqueueShipyardReview } from "./queue";
-import { keyPrefixForProduct } from "./uploads";
+import {
+  displayNameFromKey,
+  keyPrefixForProduct,
+  normaliseContentType,
+  shipyardUploadCap,
+} from "./uploads";
 
 /** Typed submit failure. `body` is the JSON the route returns verbatim. */
 export class SubmissionError extends ShipyardError {
@@ -76,6 +81,9 @@ const PROBE_TIMEOUT_MS = 8_000;
 
 // A file input is a client claim about an object it has already PUT. Every part
 // of it is re-derived or re-checked below; none of it is trusted as written.
+// `name`, `contentType` and `bytes` are validated here only so a malformed body
+// is a 400 rather than a crash — all three are REPLACED by what S3 observed
+// before anything is stored (SEC-4).
 const fileInputShape = {
   key: (v: unknown) => typeof v === "string" && v.length > 0 && v.length <= 1024,
   name: (v: unknown) => typeof v === "string" && v.length > 0 && v.length <= 300,
@@ -108,6 +116,61 @@ function parseFileInputs(raw: unknown): SubmissionFileInput[] {
       bytes: f.bytes as number,
     };
   });
+}
+
+/**
+ * The media types this checkpoint's upload fields accept, or null when the
+ * checkpoint names none and the Shipyard's own list stands.
+ */
+export function allowedContentTypes(specs: FieldSpec[]): Set<string> | null {
+  const out = new Set<string>();
+  let sawUploadField = false;
+  for (const spec of specs) {
+    if (spec.kind !== "files" && spec.kind !== "images") continue;
+    sawUploadField = true;
+    // A field with no `accept` takes anything the Shipyard takes.
+    if (!spec.accept || spec.accept.length === 0) return null;
+    for (const type of spec.accept) out.add(normaliseContentType(type));
+  }
+  return sawUploadField && out.size > 0 ? out : null;
+}
+
+/**
+ * One file's stored shape, built from what S3 observed. Throws the refusal a
+ * student reads when the object is not what this checkpoint takes.
+ */
+export function observedFile(
+  key: string,
+  shown: string,
+  head: unknown,
+  allowed: Set<string> | null,
+): SubmissionFileInput {
+  const meta = (head ?? {}) as { contentType?: unknown; contentLength?: unknown };
+  const contentType = normaliseContentType(
+    typeof meta.contentType === "string" ? meta.contentType : "",
+  );
+  const bytes =
+    typeof meta.contentLength === "number" && Number.isFinite(meta.contentLength)
+      ? meta.contentLength
+      : 0;
+
+  const cap = shipyardUploadCap(contentType);
+  if (cap === null) {
+    throw new SubmissionError(400, {
+      error: `"${shown}" is stored as ${contentType || "an unknown type"}, which this checkpoint does not take.`,
+    });
+  }
+  if (allowed && !allowed.has(contentType)) {
+    throw new SubmissionError(400, {
+      error: `"${shown}" is stored as ${contentType}, and this checkpoint takes ${[...allowed].join(", ")}.`,
+    });
+  }
+  if (bytes > cap) {
+    throw new SubmissionError(400, {
+      error: `"${shown}" is ${Math.ceil(bytes / (1024 * 1024))}MB in storage, over the ${Math.floor(cap / (1024 * 1024))}MB limit for ${contentType}.`,
+    });
+  }
+  return { key, name: shown, contentType, bytes };
 }
 
 /** Keys referenced anywhere in a submission: the file list and file-kind fields. */
@@ -228,14 +291,24 @@ export async function createSubmission(
   const storageOn = (deps.storageConfigured ?? s3Configured)();
   if (storageOn) {
     const head = deps.headObject ?? headObject;
-    for (const file of files) {
+    const allowed = allowedContentTypes(specs);
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const shown = displayNameFromKey(file.key);
+      let observed: unknown;
       try {
-        await head(file.key);
+        observed = await head(file.key);
       } catch {
         throw new SubmissionError(400, {
-          error: `We cannot find "${file.name}" in storage. Upload it again before submitting.`,
+          error: `We cannot find "${shown}" in storage. Upload it again before submitting.`,
         });
       }
+      // What S3 actually holds beats what the body claimed. The presign route
+      // signs a type and a size, but a client can PUT anything under a key it
+      // was given and then describe it however it likes — so the stored row is
+      // built from the HEAD, and the checkpoint's own rules are re-applied to
+      // the OBSERVED values rather than to the claimed ones.
+      files[i] = observedFile(file.key, shown, observed, allowed);
     }
   }
 

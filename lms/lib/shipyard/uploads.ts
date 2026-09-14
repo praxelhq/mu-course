@@ -39,3 +39,24 @@ export function shipyardUploadCap(contentType: string): number | null {
 export function keyPrefixForProduct(productId: string): string {
   return `shipyard/${productId}/`;
 }
+
+/**
+ * The display name for a stored object, derived from the KEY rather than from
+ * whatever the client called the file.
+ *
+ * `keyForShipyardUpload` mints `<uploadId>-<sanitised filename>`, so the
+ * filename is already through `sanitizeFilename` on the way in and the name
+ * shown to a student, an instructor and the reviewer is a fact about the
+ * object in the bucket instead of a claim in a request body. A client-supplied
+ * `name` reached the instructor drill-down and the reviewer's prompt verbatim.
+ */
+export function displayNameFromKey(key: string): string {
+  const last = key.split("/").filter(Boolean).pop() ?? "";
+  // Strip the server-minted uploadId prefix, when the key carries one.
+  const withoutId = last.replace(
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}-/i,
+    "",
+  );
+  const name = (withoutId || last).slice(0, 200);
+  return name || "file";
+}
