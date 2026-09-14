@@ -1,6 +1,6 @@
 {
-  "ranAt": "2026-09-14T19:42:40.872Z",
-  "promptVersion": "2026-09-15.1",
+  "ranAt": "2026-09-14T20:38:44.147Z",
+  "promptVersion": "2026-09-15.2",
   "fake": false,
   "models": [
     "z-ai/glm-5.3-flash",
@@ -18,11 +18,11 @@
     "agreementWithExpected": 0.85,
     "agreementBetweenModels": 0.8
   },
-  "crossAgreement": 94,
+  "crossAgreement": 95.9,
   "models_": {
     "z-ai/glm-5.3-flash": {
-      "agreement": 94,
-      "agreedCount": 47,
+      "agreement": 90,
+      "agreedCount": 45,
       "total": 50,
       "perCheckpoint": {
         "design": {
@@ -38,47 +38,54 @@
           "total": 10
         },
         "money": {
-          "agreed": 10,
+          "agreed": 9,
           "total": 10
         },
         "working": {
-          "agreed": 9,
+          "agreed": 8,
           "total": 10
         }
       },
-      "meanConfidence": 0.83,
-      "queuedForHuman": 17,
-      "tokensIn": 129174,
-      "tokensOut": 32979,
-      "costUsd": 0.023135,
-      "errors": 0,
+      "meanConfidence": 0.79,
+      "queuedForHuman": 16,
+      "tokensIn": 138648,
+      "tokensOut": 33493,
+      "costUsd": 0.025168,
+      "errors": 1,
       "disagreements": [
         {
           "id": "design-10-implied-payment-step-borderline-return",
           "expected": "return",
           "got": "pass",
-          "confidence": 0.82,
-          "summaryForStudent": "You cleared the design checkpoint: a complete numbered flow, drawn by hand, with a written step-by-step path, two honest failure states, and a named carrying screen with a reason. Next up is building, and screen 3 — the today screen — is the one to make work first."
+          "confidence": 0.86,
+          "summaryForStudent": "You cleared the design checkpoint: six numbered hand-drawn screens covering the full path from setup to a replanned day, with two failure states drawn and screen 3 named as the one that carries the product. Next, carry these drawings into building the real thing."
         },
         {
           "id": "idea-09-tiny-sample-high-conversion-borderline",
           "expected": "pass",
           "got": "return",
-          "confidence": 0.6,
-          "summaryForStudent": "The idea, the job story, the audience and your numbers are all in good shape, and the Tally screenshot matches what you reported. What is missing is proof the waitlist page itself is live and collecting emails. Send a screenshot of the loaded page showing the promise and the email field, and this clears."
+          "confidence": 0.55,
+          "summaryForStudent": "The idea, the audience, the traffic test, and the Tally evidence all hold up. The one gap is proof the waitlist page itself loads and collects email — nothing in the submission shows it. Add a screenshot of the live page and resubmit; this is close."
+        },
+        {
+          "id": "money-08-saree-tracker-pro-tier-unshipped",
+          "expected": "return",
+          "got": "pass",
+          "confidence": 0.72,
+          "summaryForStudent": "You cleared the write-up half: a reachable Razorpay checkout, two anchored monthly prices, Pro justified against the ₹6,000 alternative, and a clear picture of what staying on Starter costs. One habit to build: state plainly whether every Pro feature is fully shipped today."
         },
         {
           "id": "working-10-articleship-planner-borderline",
           "expected": "return",
           "got": "pass",
-          "confidence": 0.93,
-          "summaryForStudent": "You cleared the working bar: the live site loads for a stranger, the six-step path from Build my plan to Export my plan as PDF works end to end, and your gap list is honest without touching the core path. Next step is the Course 3 portal."
+          "confidence": 0.76,
+          "summaryForStudent": "You cleared the working checkpoint: the site is live, a stranger can go from Build my plan to a wall-ready PDF without you in the room. One thing to watch — the export is marked as sometimes failing, so make that button reliable first, then the mobile week-card layout."
         }
       ]
     },
     "anthropic/claude-haiku-4.5": {
-      "agreement": 96,
-      "agreedCount": 48,
+      "agreement": 92,
+      "agreedCount": 46,
       "total": 50,
       "perCheckpoint": {
         "design": {
@@ -86,7 +93,7 @@
           "total": 10
         },
         "idea": {
-          "agreed": 10,
+          "agreed": 9,
           "total": 10
         },
         "launch": {
@@ -98,30 +105,44 @@
           "total": 10
         },
         "working": {
-          "agreed": 10,
+          "agreed": 9,
           "total": 10
         }
       },
-      "meanConfidence": 0.88,
-      "queuedForHuman": 16,
-      "tokensIn": 138901,
-      "tokensOut": 136941,
-      "costUsd": 0.823606,
+      "meanConfidence": 0.9,
+      "queuedForHuman": 19,
+      "tokensIn": 151675,
+      "tokensOut": 126863,
+      "costUsd": 0.78599,
       "errors": 0,
       "disagreements": [
         {
           "id": "design-10-implied-payment-step-borderline-return",
           "expected": "return",
           "got": "pass",
-          "confidence": 0.88,
-          "summaryForStudent": "You have cleared design. Six screens, numbered and ordered, flow from arrival through the job with two edge cases drawn. The carrying screen is named and the full path from setup to adjustment is legible. You are ready to move to build."
+          "confidence": 0.92,
+          "summaryForStudent": "You have cleared the design checkpoint. Your six screens move from setup through the core job on screen 3, through recovery, and into edge cases, all numbered and explained. The product is clear and the unhappy paths are drawn. You are ready to build."
+        },
+        {
+          "id": "idea-04-wedding-enquiry-crm-pass",
+          "expected": "pass",
+          "got": "return",
+          "confidence": 0.62,
+          "summaryForStudent": "Your audience, job story, and traffic test are solid. Your conversion numbers match the screenshot, and you've tracked three real channels. But you have not shown that muhurat.studio is live or collects emails. Screenshot the landing page itself — the form, the promise, anything that proves it loads and works — and resubmit."
         },
         {
           "id": "money-08-saree-tracker-pro-tier-unshipped",
           "expected": "return",
           "got": "pass",
-          "confidence": 0.85,
-          "summaryForStudent": "You have cleared this checkpoint. Your payments are live, your product is connected to the tracker, and your write-up states a clear price, explains it in terms of buyer value, and names what buyers give up by not paying. You are ready to move forward."
+          "confidence": 0.92,
+          "summaryForStudent": "You've cleared this checkpoint. Payments are live with 4 real customers paying. Your pricing has a clear buyer rationale — labour cost replacement — and the tiers are unambiguous. The tracker has both the money and the connection."
+        },
+        {
+          "id": "working-10-articleship-planner-borderline",
+          "expected": "return",
+          "got": "pass",
+          "confidence": 0.95,
+          "summaryForStudent": "Your product is live and working. A stranger can open the site, fill in their constraints, generate a study plan, and export it to PDF without friction. The core path is clear and every step works. You have honestly listed the gaps that remain. Ship this."
         }
       ]
     }
