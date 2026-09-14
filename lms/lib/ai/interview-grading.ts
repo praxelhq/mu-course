@@ -103,6 +103,30 @@ export function interviewEscalationReason(grade: {
   return `${reasons.join("; ")}. Transcript needs instructor review.`;
 }
 
+/**
+ * Consecutive student turns become one turn, timed from its first piece.
+ *
+ * Speech-to-text ends a student turn at every pause, so one answer lands as
+ * several rows with nothing from the interviewer between them. Shown to the
+ * grader as separate STUDENT lines, they read as a string of half-answers and
+ * got marked as "fragmented". The stored transcript is untouched — an
+ * instructor still sees exactly what happened; only the grader's view is
+ * joined. An answer the interviewer talked over cannot be rejoined safely
+ * here (which question it belongs to is a judgement), so the prompt covers it.
+ */
+export function joinStudentRuns(transcript: TranscriptTurn[]): TranscriptTurn[] {
+  const joined: TranscriptTurn[] = [];
+  for (const turn of transcript) {
+    const previous = joined[joined.length - 1];
+    if (turn.speaker !== "agent" && previous && previous.speaker !== "agent") {
+      joined[joined.length - 1] = { ...previous, text: `${previous.text.trim()} ${turn.text.trim()}` };
+    } else {
+      joined.push(turn);
+    }
+  }
+  return joined;
+}
+
 export function assembleInterviewGradingContext(input: {
   transcript: TranscriptTurn[];
   submissions: SubmissionSummary[];
@@ -133,6 +157,8 @@ export function assembleInterviewGradingContext(input: {
     ``,
     `SCORE THE THINKING, NOT THE VOCABULARY. These are business students, not engineers. An answer that reasons correctly in plain language is worth exactly as much as one that reaches the same place using technical terms — never more, never less. Do not reward jargon, do not require it, and never write a rationale implying a student should have known a term. Where the interviewer asked a question in technical language and the student answered the underlying situation sensibly, that is a correct answer.`,
     ``,
+    `THE TRANSCRIPT IS CUT BY MACHINE TURN-TAKING, NOT BY THE STUDENT. The interviewer decides a student has finished when they pause, and it is often wrong: it can ask its next question while the student is still mid-answer. You will see a student reply that stops mid-sentence, an interviewer question, then a reply that plainly continues the earlier answer instead of addressing the new question. Read those pieces as ONE answer to the earlier question and credit it there. Do not mark the student down on the new question for words that belonged to the previous one, and where the new question then went unanswered, treat it as the interview not reaching it. An answer broken up by the interviewer is not a fragmented or incomplete answer: never lower a score for it, and never describe the student's answers as fragmented, cut off, disjointed or trailing off in a rationale.`,
+    ``,
     `SCORE CONCEPT FLUENCY, NOT POLISH. Most of these students are speaking a second or third language, and the transcript is machine-produced. Grammar, accent, vocabulary range, disfluency, hesitation, and code-mixed English/Hindi carry NO score effect whatsoever. A halting, ungrammatical answer that shows real understanding outscores a fluent one that does not. Never lower a score because an answer was awkwardly expressed; lower it only when the underlying understanding is absent. Do not reward confident delivery.`,
     ``,
     `THE RATIONALE IS SHOWN TO THE STUDENT, VERBATIM. Write each one to them, not about them: name what they actually said, what was strong in it, and what would have made it stronger. Two or three sentences, plain and specific.`,
@@ -159,7 +185,7 @@ export function assembleInterviewGradingContext(input: {
   userParts.push("");
   userParts.push("INTERVIEW TRANSCRIPT (with elapsed seconds from interview start):");
   const t0 = input.transcript[0]?.startedAt.getTime() ?? 0;
-  for (const turn of input.transcript) {
+  for (const turn of joinStudentRuns(input.transcript)) {
     const elapsed = Math.max(0, Math.round((turn.startedAt.getTime() - t0) / 1000));
     if (turn.speaker === "agent") {
       userParts.push(`[+${elapsed}s] INTERVIEWER: ${turn.text}`);

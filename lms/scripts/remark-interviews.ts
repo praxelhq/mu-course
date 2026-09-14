@@ -3,6 +3,7 @@
 //   pnpm interview:remark              # dry run — show every delta, write nothing
 //   pnpm interview:remark --write      # apply
 //   pnpm interview:remark --limit 5    # try a handful first
+//   pnpm interview:remark --interview <id>  # one interview
 //
 // Why this exists: when the rubric changes, the cohort splits into students
 // marked under the old bar and students marked under the new one. That is not
@@ -50,9 +51,14 @@ function readScores(raw: unknown): Scores | null {
 async function main(): Promise<void> {
   const write = process.argv.includes("--write");
   const limit = Number(flag("limit") ?? 0) || undefined;
+  const only = flag("interview");
 
   const interviews = await prisma.interview.findMany({
-    where: { completedAt: { not: null }, rubricScores: { not: Prisma.DbNull } },
+    where: {
+      completedAt: { not: null },
+      rubricScores: { not: Prisma.DbNull },
+      ...(only ? { id: only } : {}),
+    },
     include: {
       turns: { orderBy: { turnNo: "asc" } },
       user: { select: { id: true, name: true, team: { select: { sectorName: true } } } },
