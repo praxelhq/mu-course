@@ -23,7 +23,12 @@
 
 import { Prisma, type PrismaClient, type ShipyardVerdict } from "@prisma/client";
 import { callStructured as defaultCallStructured } from "@/lib/ai/openrouter";
-import { loadRouterState, saveRouterState, type RouterState } from "@/lib/ai/router";
+import {
+  loadRouterState,
+  recordByokOutcome,
+  type ByokOutcome,
+  type RouterState,
+} from "@/lib/ai/router";
 import { prisma as defaultPrisma } from "@/lib/db";
 import { getObjectBuffer } from "@/lib/s3";
 import type { TrackerClient } from "@/lib/tracker/client";
@@ -334,12 +339,12 @@ export async function escalateReview(
   };
 }
 
+/** As in the pipeline: the counter moves in SQL, not from this snapshot. */
 function routerDeps(db: PrismaClient, state: RouterState) {
   return {
     routerState: state,
-    onRouterState: async (next: RouterState) => {
-      await saveRouterState(db, next, REVIEWER_ACTOR);
-    },
+    onRouterState: (_next: RouterState, outcome: ByokOutcome) =>
+      recordByokOutcome(db, outcome, { actor: REVIEWER_ACTOR }),
   };
 }
 

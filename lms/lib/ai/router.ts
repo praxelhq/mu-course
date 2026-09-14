@@ -180,7 +180,7 @@ function safeStringify(value: unknown): string {
 export const ROUTER_STATE_ID = "default";
 export const ROUTER_FLIP_AUDIT_ACTION = "shipyard.router.flip";
 
-type RouterDb = Pick<PrismaClient, "shipyardRouterState" | "auditLog">;
+type RouterDb = Pick<PrismaClient, "shipyardRouterState" | "auditLog" | "$queryRaw">;
 
 export async function loadRouterState(db: RouterDb): Promise<RouterState> {
   const row = await db.shipyardRouterState.findUnique({ where: { id: ROUTER_STATE_ID } });
@@ -236,6 +236,125 @@ export async function saveRouterState(
       },
     });
   }
+}
+
+// ---------------------------------------------------------------------------
+// The atomic counter
+// ---------------------------------------------------------------------------
+
+/** The actor recorded when the kill-switch itself flips the profile. */
+export const KILL_SWITCH_ACTOR = "system:shipyard-router";
+
+type RawRouterRow = {
+  anthropicExhausted: boolean;
+  exhaustedAt: Date | null;
+  consecutiveByokFailures: number;
+  activeProfile: ShipyardRoutingProfile;
+};
+
+/** The single `default` row, created on first use. Safe to race. */
+async function ensureRouterStateRow(db: RouterDb): Promise<void> {
+  const existing = await db.shipyardRouterState.findUnique({
+    where: { id: ROUTER_STATE_ID },
+    select: { id: true },
+  });
+  if (existing) return;
+  try {
+    await db.shipyardRouterState.create({ data: { id: ROUTER_STATE_ID } });
+  } catch {
+    // Another worker created it between the read and the write. That is the
+    // outcome we wanted; the UPDATE below finds the row either way.
+  }
+}
+
+/**
+ * Count one BYOK outcome, atomically.
+ *
+ * `applyByokOutcome` is the rule and stays pure, but it cannot be the thing
+ * that PERSISTS: fifteen reviewer workers each hold a snapshot of the row from
+ * the top of their job, and writing `consecutiveByokFailures` back as an
+ * absolute number from that snapshot loses every increment but the last — so
+ * the fifth consecutive failure never arrives and the kill-switch never fires.
+ * The counter is therefore moved by the DATABASE (`= counter + 1`, or `0` on a
+ * success) and the flip decision is taken on the row the UPDATE returned.
+ *
+ * The flip itself is guarded by `anthropicExhausted: false` in the WHERE, so of
+ * however many workers cross the threshold together exactly one writes the
+ * AuditLog row.
+ */
+export async function recordByokOutcome(
+  db: RouterDb,
+  outcome: ByokOutcome,
+  opts: { actor?: string; now?: Date } = {},
+): Promise<RouterState> {
+  // A timeout or a provider 500 says nothing about the Anthropic credit, so it
+  // must neither advance the counter nor reset it (SPEC §6.5 step 3).
+  if (outcome === "other-error") return loadRouterState(db);
+
+  const now = opts.now ?? new Date();
+  await ensureRouterStateRow(db);
+
+  const rows = await db.$queryRaw<RawRouterRow[]>`
+    UPDATE "ShipyardRouterState"
+       SET "consecutiveByokFailures" =
+             CASE WHEN ${outcome}::text = 'ok' THEN 0
+                  ELSE "consecutiveByokFailures" + 1 END,
+           "updatedAt" = now()
+     WHERE "id" = ${ROUTER_STATE_ID}
+    RETURNING "anthropicExhausted", "exhaustedAt", "consecutiveByokFailures", "activeProfile"`;
+
+  const row = rows[0];
+  if (!row) return loadRouterState(db);
+
+  const state: RouterState = {
+    anthropicExhausted: row.anthropicExhausted,
+    exhaustedAt: row.exhaustedAt,
+    consecutiveByokFailures: Number(row.consecutiveByokFailures),
+    activeProfile: profileFromEnum(row.activeProfile),
+  };
+
+  const shouldFlip =
+    outcome !== "ok" &&
+    !state.anthropicExhausted &&
+    state.consecutiveByokFailures >= BYOK_FAILURE_THRESHOLD;
+  if (!shouldFlip) return state;
+
+  const flipped = await db.shipyardRouterState.updateMany({
+    where: { id: ROUTER_STATE_ID, anthropicExhausted: false },
+    data: {
+      anthropicExhausted: true,
+      exhaustedAt: now,
+      activeProfile: profileToEnum("flash-everywhere"),
+    },
+  });
+
+  const after: RouterState = {
+    ...state,
+    anthropicExhausted: true,
+    exhaustedAt: now,
+    activeProfile: "flash-everywhere",
+  };
+
+  // Exactly one caller's updateMany matched an un-flipped row. Only that one
+  // is the transition, and only a transition is worth an audit line.
+  if (flipped.count > 0) {
+    await db.auditLog.create({
+      data: {
+        actorId: opts.actor ?? KILL_SWITCH_ACTOR,
+        action: ROUTER_FLIP_AUDIT_ACTION,
+        targetType: "ShipyardRouterState",
+        targetId: ROUTER_STATE_ID,
+        before: { activeProfile: state.activeProfile, anthropicExhausted: false },
+        after: {
+          activeProfile: after.activeProfile,
+          anthropicExhausted: true,
+          consecutiveByokFailures: after.consecutiveByokFailures,
+        },
+      },
+    });
+  }
+
+  return after;
 }
 
 /**

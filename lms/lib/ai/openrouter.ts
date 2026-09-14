@@ -81,8 +81,15 @@ export type OpenRouterDeps = {
   env?: Readonly<Record<string, string | undefined>>;
   /** Current kill-switch state; null falls back to the env profile. */
   routerState?: RouterState | null;
-  /** Called with the new state after a BYOK outcome. Persist it here. */
-  onRouterState?: (state: RouterState, outcome: ByokOutcome) => void | Promise<void>;
+  /**
+   * Called with the EXPECTED next state after a BYOK outcome. Persist it here,
+   * and return the state that was actually stored — the gateway adopts it, so
+   * a later call in the same job sees a counter another worker moved.
+   */
+  onRouterState?: (
+    state: RouterState,
+    outcome: ByokOutcome,
+  ) => void | RouterState | Promise<void | RouterState>;
   fetchImpl?: typeof globalThis.fetch;
 };
 
@@ -135,6 +142,49 @@ type OpenRouterResponse = {
 /** Did this attempt draw on the Anthropic BYOK key? Only then does it count. */
 function usedByok(models: string[]): boolean {
   return models.includes(MODEL_HAIKU);
+}
+
+/** OpenRouter suffixes served slugs (`:nitro`, `:floor`), so compare the stem. */
+function isHaiku(slug: string | undefined | null): boolean {
+  if (!slug) return false;
+  return slug === MODEL_HAIKU || slug.startsWith(`${MODEL_HAIKU}:`);
+}
+
+/**
+ * What a 200 says about the BYOK credit.
+ *
+ * `models: [haiku, flash]` means OpenRouter may serve the FALLBACK inside the
+ * same request — and it does exactly that when the Anthropic key is out of
+ * credit or rejected. The reply is then a perfectly ordinary HTTP 200 whose
+ * `model` is Flash. Reading that as "ok" reset the counter on every one of
+ * those, which is why the kill-switch could never reach five in a row
+ * (docs/LEARNINGS.md, 2026-09-15).
+ *
+ * So the outcome comes from the model that ANSWERED, not from the status line:
+ *   • Haiku asked for first and Haiku answered  → ok
+ *   • Haiku asked for first and Flash answered  → a BYOK credit/auth failure
+ *   • Haiku was not the primary                 → null, say nothing at all;
+ *     a Flash-primary verdict succeeding is no evidence about the credit and
+ *     must not zero a counter another call is filling.
+ *
+ * OpenRouter sometimes also carries per-model error metadata beside a 200. It
+ * is read when present and never depended on.
+ */
+export function outcomeFromServedModel(
+  models: string[],
+  payload: OpenRouterResponse | null,
+): ByokOutcome | null {
+  if (!isHaiku(models[0])) return null;
+  const served = payload?.model;
+  // No served model at all: trust what we asked for rather than invent a
+  // failure out of a field OpenRouter simply did not send.
+  if (!served) return "ok";
+  if (!isHaiku(served)) return "byok-credit-or-auth-error";
+  // Haiku answered. A hint attached to the same body still counts against it.
+  if (payload?.error && isByokCreditOrAuthError(200, payload.error)) {
+    return "byok-credit-or-auth-error";
+  }
+  return "ok";
 }
 
 export function isFakeMode(env: Readonly<Record<string, string | undefined>> = process.env): boolean {
@@ -217,7 +267,8 @@ export async function callStructured<T>(
         );
       }
 
-      await reportOutcome(deps, "ok");
+      // A 200 is not proof the primary was served: see outcomeFromServedModel.
+      await reportOutcome(deps, outcomeFromServedModel(models, payload));
 
       const choice = payload?.choices?.[0];
       const raw = choice?.message?.content ?? "";
@@ -285,11 +336,25 @@ function pickCost(
   return computeCostUsd(model, tokensIn, tokensOut);
 }
 
-async function reportOutcome(deps: OpenRouterDeps, outcome: ByokOutcome): Promise<void> {
+/**
+ * Hand the outcome to whoever is persisting it, and take back the state they
+ * ended up with.
+ *
+ * `applyByokOutcome` still computes the expected next state — it is the rule,
+ * and a caller with no database (the eval harness) has nothing else. But the
+ * persister's return value WINS when it gives one: under fifteen workers the
+ * counter this call actually landed on is the database's, not the one derived
+ * from a snapshot taken at the top of the job. Writing it back onto `deps`
+ * means the second call in the same job reads the real number.
+ */
+async function reportOutcome(deps: OpenRouterDeps, outcome: ByokOutcome | null): Promise<void> {
+  if (outcome === null) return;
   if (!deps.onRouterState || !deps.routerState) return;
+  // A timeout or a provider 500 is not evidence about the credit either way.
+  if (outcome === "other-error") return;
   const next = applyByokOutcome(deps.routerState, outcome);
-  if (next === deps.routerState) return;
-  await deps.onRouterState(next, outcome);
+  const persisted = await deps.onRouterState(next, outcome);
+  deps.routerState = persisted ?? next;
 }
 
 function fakeStructured<T>(

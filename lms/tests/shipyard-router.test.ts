@@ -18,7 +18,13 @@ import {
   resolveRoute,
   type RouterState,
 } from "@/lib/ai/router";
-import { callStructured, imagePart, isFakeMode } from "@/lib/ai/openrouter";
+import {
+  callStructured,
+  imagePart,
+  isFakeMode,
+  outcomeFromServedModel,
+  type OpenRouterDeps,
+} from "@/lib/ai/openrouter";
 import {
   __setOpenRouterFake,
   defaultFakeHandler,
@@ -541,6 +547,79 @@ describe("callStructured against a stubbed OpenRouter", () => {
     expect(seen).toEqual([]);
     expect(routerState.consecutiveByokFailures).toBe(4);
     expect(routerState.activeProfile).toBe("flash-everywhere");
+  });
+
+  it("reads the SERVED model on a 200, not the status line", () => {
+    // `models: [haiku, flash]` lets OpenRouter answer with the FALLBACK inside
+    // the same request, which is exactly what it does when the BYOK key is out
+    // of credit. The reply is an ordinary 200 (C1).
+    expect(outcomeFromServedModel([MODEL_HAIKU, MODEL_FLASH], { model: MODEL_FLASH })).toBe(
+      "byok-credit-or-auth-error",
+    );
+    expect(outcomeFromServedModel([MODEL_HAIKU, MODEL_FLASH], { model: MODEL_HAIKU })).toBe("ok");
+    // A served slug may carry a routing suffix and is still Haiku.
+    expect(
+      outcomeFromServedModel([MODEL_HAIKU, MODEL_FLASH], { model: `${MODEL_HAIKU}:nitro` }),
+    ).toBe("ok");
+    // No served model reported at all: trust what was asked for.
+    expect(outcomeFromServedModel([MODEL_HAIKU, MODEL_FLASH], null)).toBe("ok");
+    expect(outcomeFromServedModel([MODEL_HAIKU, MODEL_FLASH], {})).toBe("ok");
+    // Error metadata beside a 200 is read when it is there.
+    expect(
+      outcomeFromServedModel([MODEL_HAIKU, MODEL_FLASH], {
+        model: MODEL_HAIKU,
+        error: { message: "Insufficient credits" },
+      }),
+    ).toBe("byok-credit-or-auth-error");
+    // Haiku was not the primary: this call is no evidence either way.
+    expect(outcomeFromServedModel([MODEL_FLASH, MODEL_HAIKU], { model: MODEL_FLASH })).toBeNull();
+    expect(outcomeFromServedModel([MODEL_FLASH, MODEL_HAIKU], { model: MODEL_HAIKU })).toBeNull();
+  });
+
+  it("counts a 200 served by Flash on a Haiku route, and flips on the fifth", async () => {
+    const seen: { state: RouterState; outcome: string }[] = [];
+    const deps: OpenRouterDeps = {
+      env,
+      fetchImpl: stub({ ...goodPayload, model: MODEL_FLASH }).fetchImpl,
+      routerState: { ...INITIAL_ROUTER_STATE },
+      onRouterState: (state, outcome) => {
+        seen.push({ state, outcome });
+      },
+    };
+    for (let i = 0; i < BYOK_FAILURE_THRESHOLD; i++) {
+      await callStructured(
+        { task: "escalation", system: "b", user: "x", schema: verdictSchema },
+        deps,
+      );
+    }
+    expect(seen.map((s) => s.outcome)).toEqual(
+      Array.from({ length: BYOK_FAILURE_THRESHOLD }, () => "byok-credit-or-auth-error"),
+    );
+    expect(seen.map((s) => s.state.consecutiveByokFailures)).toEqual([1, 2, 3, 4, 5]);
+    expect(seen[BYOK_FAILURE_THRESHOLD - 1].state.activeProfile).toBe("flash-everywhere");
+    expect(seen[BYOK_FAILURE_THRESHOLD - 1].state.anthropicExhausted).toBe(true);
+  });
+
+  it("leaves the counter alone when a Flash-primary call succeeds", async () => {
+    const seen: string[] = [];
+    const routerState: RouterState = { ...INITIAL_ROUTER_STATE, consecutiveByokFailures: 3 };
+    const { fetchImpl } = stub(goodPayload);
+    await callStructured(
+      { task: "verdict", system: "b", user: "x", schema: verdictSchema },
+      {
+        env,
+        fetchImpl,
+        routerState,
+        onRouterState: (_s, o) => {
+          seen.push(o);
+        },
+      },
+    );
+    // A verdict answered by Flash is the routing table working as designed. It
+    // is not a statement about the Anthropic credit and must not zero a run of
+    // failures another call is filling.
+    expect(seen).toEqual([]);
+    expect(routerState.consecutiveByokFailures).toBe(3);
   });
 
   it("resets the failure run after a successful call", async () => {
