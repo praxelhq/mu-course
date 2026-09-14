@@ -34,3 +34,25 @@ Whenever a bug is fixed or a wrong assumption corrected, append what was learned
   writes its token counts and costs into `ShipyardReview` rows and the seed's
   idempotency test compares two runs. A content-hashed pseudo-token count does
   this without a PRNG threaded through every call site.
+- **`boss.work` loses its literal option inference the moment you pass a type
+  argument.** pg-boss types the handler as
+  `WorkHandlerFor<O, ReqData>` with `const O extends WorkOptions`, and the
+  `includeMetadata: true` branch only fires when `O` is inferred from the
+  options literal. Writing `boss.work<ShipyardReviewJobData>(name, opts, fn)`
+  pins `O` to the default `WorkOptions`, so the handler is typed `Job[]` and
+  `job.retryCount` does not exist. Drop the explicit type argument and annotate
+  the handler parameter instead: `async (jobs: JobWithMetadata<T>[]) => …`.
+- **A content hash for a short poll has to exclude everything that is
+  regenerated per request.** `spineVersion` covers gate states, submission
+  status and verdicts, and skips `now` and the freshly-signed S3 URLs on every
+  file — either of which would change on every call and turn a 4s poll into a
+  4s full page refresh for every student with an attachment.
+- **The Shipyard's stored review `reasons` have two shapes in the same
+  column**: the seed writes `{criterionId, clause, what, fix}` and
+  `completeReview` writes the view-model's `{criterion, met, note}`.
+  `reasonViews` in `lib/shipyard/spine.ts` accepts both, so the seeded demo
+  cohort and freshly reviewed submissions render identically.
+- **`/api/shipyard/*` needs no entry in `proxy.ts`.** The matcher already runs
+  for every `/api` path and `isPublicRoute` is an allowlist, so a new API
+  subtree is authenticated and roster-gated by default — the same treatment
+  `/api/submissions` gets.

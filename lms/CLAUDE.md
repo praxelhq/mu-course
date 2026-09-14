@@ -62,6 +62,23 @@ a `courseId`-scoped mode of the Forge. Source of truth: `docs/shipyard/SPEC.md`
 - `lib/shipyard/cooldown.ts` — the resubmit cooldown, pure.
 - `lib/shipyard/scoring.ts` — the four weighted components, `computeGrade` and
   `deriveComponents`, pure.
+- `lib/shipyard/products.ts` — `ensureProduct` (get-or-create, plus the six
+  checkpoint states), `renameProduct`, `connectTracker`/`parseTrackerSlug`.
+- `lib/shipyard/spine.ts` — `loadSpine(userId)` builds the whole `SpineView`;
+  `spineVersion(view)` is the poll's content hash. The only DB→view mapper.
+- `lib/shipyard/submissions.ts` — `createSubmission`, every refusal a student
+  can meet (404/409/400/429) and the only writer of `ShipyardSubmission`.
+- `lib/shipyard/review-complete.ts` — `completeReview`, the one path a verdict
+  takes: review row + status in a transaction, then recomputeGates + notify.
+- `lib/shipyard/uploads.ts` — the Shipyard's own upload allowlist and caps, and
+  `keyPrefixForProduct` (the prefix a submitted file key must carry).
+- `lib/shipyard/errors.ts` — `ShipyardError` (`status` + JSON `body`) and
+  `shipyardErrorResponse`, the shape every `app/api/shipyard` route returns.
+- `lib/shipyard/queue.ts` — `ensureShipyardQueues` and the web tier's
+  best-effort `enqueueShipyardReview`.
+- `lib/shipyard/rate-limit.ts` — in-memory per-user bound on the submit route.
+- `lib/shipyard/view-models.ts` — the typed contract the UI renders; the UI
+  imports only from here. `spine-mock.ts` fills the same shape for design work.
 - `lib/tracker/` — Shipped.money. `types.ts` (signals + Zod), `client.ts`
   (`createTrackerClient`, `TRACKER_MODE`), `real.ts` (HTTP), `fake.ts`
   (ShipyardTrackerOverride, demos only).
@@ -69,7 +86,16 @@ a `courseId`-scoped mode of the Forge. Source of truth: `docs/shipyard/SPEC.md`
   kill-switch. The only place a model slug appears.
 - `lib/ai/openrouter.ts` — the only module speaking HTTP to OpenRouter.
 - `lib/ai/openrouter-fake.ts` — the deterministic responder used with no key.
-- `worker/shipyard.ts` — the Shipyard queues, its own Railway service.
+- `worker/shipyard.ts` — wiring only: the Shipyard queues and consumers, its
+  own Railway service.
+- `worker/shipyard-jobs/review-submission.ts` — `handleReviewSubmission` and
+  M1's stub reviewer (`stubVerdict`). M2 replaces the verdict, not the shape.
+- `worker/shipyard-jobs/review-dead-letter.ts` — returns a submission nobody
+  could review, so nothing is stuck in `in_review` forever.
+- `worker/shipyard-jobs/gate-sweep.ts` — the 15-minute metric-gate sweep.
+- `app/api/shipyard/**` — spine (GET, `ifVersion` short poll), submissions,
+  uploads/presign, product + product/connect-tracker, files/[...key],
+  admin/fake-tracker, admin/review-stub.
 - `prisma/seed-shipyard.ts` — `seedShipyard(tx, ctx)`, called from `seed.ts`.
 - Prisma models are all `Shipyard*` and carry `courseId` (default `course-2`).
 
@@ -90,6 +116,13 @@ a `courseId`-scoped mode of the Forge. Source of truth: `docs/shipyard/SPEC.md`
   by `tests/shipyard-ai-boundary.test.ts`.
 - Nothing reaches students before `pnpm eval:reviewer` numbers are logged in
   `docs/DECISIONS.md`.
+- A verdict is recorded ONLY through `completeReview` in
+  `lib/shipyard/review-complete.ts` — the stub reviewer, the instructor's
+  review-stub route, the dead-letter backstop and M2's model call all go
+  through it, so a pass always moves the gate and always notifies the student.
+- A Shipyard upload key is minted only by `keyForShipyardUpload` from the
+  session's product, and `createSubmission` verifies every submitted key
+  against `keyPrefixForProduct`. No key from a request body is ever trusted.
 
 ### Commands
 
