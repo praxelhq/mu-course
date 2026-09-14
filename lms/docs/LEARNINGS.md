@@ -56,3 +56,33 @@ Whenever a bug is fixed or a wrong assumption corrected, append what was learned
   for every `/api` path and `isPublicRoute` is an allowlist, so a new API
   subtree is authenticated and roster-gated by default — the same treatment
   `/api/submissions` gets.
+- **Zod v4's `z.enum` inside an array rejects the WHOLE reply when a model
+  invents one extra value.** The reviewer's `flags` is therefore `string[]` on
+  the wire and narrowed to `ReviewFlag[]` in `parseVerdict`: a model adding a
+  sixth flag is not a reason to discard the five real ones and pay for a retry.
+  The same applies to `verdict`, which is lower-cased and trimmed before the
+  enum sees it, because "PASS" is the same answer as "pass".
+- **A criterion the reviewer never addressed must have its score zeroed, not
+  kept.** Models skip a criterion in `reasons` while still scoring it in
+  `rubricScores`, and leaving the 80 beside "the reviewer did not address this
+  clause; a human will look" puts a contradiction in front of the instructor
+  reading the queue.
+- **`sharp` is not installed in this repo** (it appears in the lockfile only as
+  a transitive of some Next builds and does not resolve). Anything that wants
+  it must probe for it at runtime through a VARIABLE import specifier —
+  `const specifier = "sharp"; await import(specifier)` — or `tsc` fails with
+  TS2307 on a module that is not a declared dependency.
+- **`extractSubmissionFiles` (Course 1's extractor) takes a `rangedRead` seam,
+  which is the whole reason the Shipyard can reuse it.** The reviewer passes a
+  closure over its injected `fetchFile`, so there is one PDF parser in this repo
+  and `lib/shipyard/reviewer/` still constructs no S3 client.
+- **Course 1's `extractJsonObject` lives in `lib/ai/client.ts`, which imports
+  the Anthropic SDK**, so the Shipyard's verdict parser has its own tolerant
+  reader rather than importing it. Sharing it would pull the provider SDK into
+  the Shipyard's module graph, which is precisely what
+  `tests/shipyard-ai-boundary.test.ts` exists to prevent.
+- **The four fixture PNGs were rendered with the repo's own Playwright
+  chromium** from a small HTML page (a cursive font over a paper-coloured
+  background makes a convincing "photo of hand-drawn screens", and a CSS
+  brightness filter makes the deliberately unreadable one). No image library
+  and no checked-in binary generator were needed.

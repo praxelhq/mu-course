@@ -79,6 +79,28 @@ a `courseId`-scoped mode of the Forge. Source of truth: `docs/shipyard/SPEC.md`
 - `lib/shipyard/rate-limit.ts` — in-memory per-user bound on the submit route.
 - `lib/shipyard/view-models.ts` — the typed contract the UI renders; the UI
   imports only from here. `spine-mock.ts` fills the same shape for design work.
+- `lib/shipyard/reviewer/` — the AI reviewer core. Pure or dependency-injected;
+  no Prisma anywhere in it, so the pipeline calls it with plain data.
+  - `schemas.ts` — the model contract: `VerdictOutput`, `PreflightOutput`,
+    `EscalationOutput`, the confidence floor and the outlier bands.
+  - `anonymise.ts` — `anonymiseSubmission`; strips name, email, section, and
+    any email or phone in free text, and counts what it removed.
+  - `prompts.ts` — `buildVerdictPrompt` / `buildPreflightPrompt` /
+    `buildEscalationPrompt` and `PROMPT_VERSION`. The system half is the fixed,
+    cacheable prefix for a checkpoint and is identical across submissions.
+  - `verdict.ts` — `parseVerdict` (repair, validate, normalise against the
+    rubric's criterion ids) and `decideOutcome` (SPEC §6's trust rules →
+    `needsHuman`). `clearsGate` is the one line the pipeline gates on.
+  - `render.ts` — `renderLiveProduct`: headless Chromium, private addresses
+    refused before launch, a default-deny request policy, empty-shell detection.
+    Worker only.
+  - `context.ts` — `assembleReviewContext`: extract → anonymise → images →
+    prompt, with `fetchFile` as the only I/O seam.
+  - `preflight.ts` — `runPreflight` (link liveness, blank, spam, near-duplicate,
+    all in code) and `classifyWithModel` (a cheap call only when ambiguous).
+- `fixtures/shipyard-reviewer/` — 55 eval cases (10 per reviewed checkpoint,
+  5 informational for workflow), 4 generated PNGs, and recorded model outputs
+  per model for the parser tests. `scripts/eval-reviewer.ts` is the gate.
 - `lib/tracker/` — Shipped.money. `types.ts` (signals + Zod), `client.ts`
   (`createTrackerClient`, `TRACKER_MODE`), `real.ts` (HTTP), `fake.ts`
   (ShipyardTrackerOverride, demos only).
