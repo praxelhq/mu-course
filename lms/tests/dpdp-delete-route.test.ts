@@ -33,6 +33,12 @@ const result: DpdpErasureResult = {
     notifications: 0,
     gateExceptions: 0,
     userVotes: 0,
+    shipyardReviews: 0,
+    shipyardSubmissions: 0,
+    shipyardCheckpointStates: 0,
+    shipyardGrades: 0,
+    shipyardTrackerOverrides: 0,
+    shipyardProducts: 0,
     user: 1,
   },
 };

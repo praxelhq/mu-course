@@ -25,6 +25,15 @@ export type DpdpErasureCounts = {
   notifications: number;
   gateExceptions: number;
   userVotes: number;
+  // Course 2 (the Shipyard). These rows would cascade away with the User row,
+  // but an erasure receipt has to say what it deleted and a cascade deletes no
+  // S3 objects — so they are deleted explicitly and counted here.
+  shipyardReviews: number;
+  shipyardSubmissions: number;
+  shipyardCheckpointStates: number;
+  shipyardGrades: number;
+  shipyardTrackerOverrides: number;
+  shipyardProducts: number;
   user: number;
 };
 

@@ -1,5 +1,6 @@
 import { withAuth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
+import { loadShipyardExport } from "@/lib/dpdp-erasure-shipyard";
 import { parseExternalLinks } from "@/lib/portfolio";
 import { selectReferencedEvidence } from "@/lib/evidence/referenced-evidence";
 import {
@@ -305,6 +306,15 @@ export const GET = withAuth(
         left.role.localeCompare(right.role),
     );
 
+    // Course 2 (the Shipyard). Unlike Course 1's artifacts, there is no
+    // export-policy projection to apply here: a Shipyard submission's fields
+    // are the student's own words and their own uploads, the reviews are about
+    // them, and DPDP asks for what we hold, not for what we would publish. So
+    // this carries the whole record — submissions, every review with its
+    // promptLog, the gate states, the grade, and the S3 keys by name (the app
+    // tier never proxies bytes; a key is a locator the admin can fetch).
+    const shipyard = await loadShipyardExport(prisma, userId);
+
     const appReviewsGiven = await prisma.appReview.findMany({
       where: { reviewerId: userId },
       select: { slot: true, visual: true, functionality: true, overall: true, comment: true, accessIssue: true, assignedAt: true, completedAt: true, retiredAt: true },
@@ -323,6 +333,7 @@ export const GET = withAuth(
         team: user.team,
       },
       submissions: safeSubmissions,
+      shipyard,
       interviews,
       learningActivities: attempts.map((attempt) => ({
         title: sanitizeExportText(attempt.quiz.title, "dpdp:activity:title") ?? "Activity",

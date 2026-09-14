@@ -10,7 +10,15 @@ import {
   type DpdpErasureResult,
   type DpdpPreparation,
 } from "./dpdp-erasure";
-import { deleteObjectVersion as deleteS3ObjectVersion } from "./s3";
+import {
+  deleteObjectVersion as deleteS3ObjectVersion,
+  listObjectVersionIds,
+  s3Configured,
+} from "./s3";
+import {
+  deleteShipyardRows,
+  loadShipyardObjectRefs,
+} from "./dpdp-erasure-shipyard";
 
 export const DPDP_RECEIPT_GUC = "praxel.dpdp_deletion_receipt_id";
 export const DPDP_WRITE_BARRIER_KEY = "731462985083870128";
@@ -175,6 +183,12 @@ const COUNT_KEYS = [
   "notifications",
   "gateExceptions",
   "userVotes",
+  "shipyardReviews",
+  "shipyardSubmissions",
+  "shipyardCheckpointStates",
+  "shipyardGrades",
+  "shipyardTrackerOverrides",
+  "shipyardProducts",
   "user",
 ] as const satisfies readonly (keyof DpdpErasureCounts)[];
 
@@ -1109,6 +1123,50 @@ async function zeroVersionProofsFor(
   return proofs;
 }
 
+/**
+ * The Shipyard's object candidates: every live version of every S3 key one
+ * student's Course 2 rows point at.
+ *
+ * A key with no versions left is simply absent from the inventory — there is
+ * nothing to delete, which is the same answer `verifiedAbsentKeys` gives in
+ * `inventoryFor`. A listing that FAILS propagates and stops the erasure, which
+ * is the fail-closed rule the whole module is built on: we never delete a row
+ * whose objects we could not even enumerate.
+ */
+async function shipyardObjectCandidates(
+  tx: Prisma.TransactionClient,
+  userId: string,
+): Promise<ObjectCandidate[]> {
+  const refs = await loadShipyardObjectRefs(tx, userId);
+  if (refs.length === 0 || !s3Configured()) return [];
+
+  const byIdentity = new Map<string, ObjectCandidate>();
+  const versionsByKey = new Map<string, string[]>();
+  for (const ref of refs) {
+    let versionIds = versionsByKey.get(ref.key);
+    if (!versionIds) {
+      versionIds = await listObjectVersionIds(ref.key);
+      versionsByKey.set(ref.key, versionIds);
+    }
+    for (const versionId of versionIds) {
+      const identity = objectIdentity(ref.key, versionId);
+      let candidate = byIdentity.get(identity);
+      if (!candidate) {
+        candidate = { key: ref.key, versionId, associations: [] };
+        byIdentity.set(identity, candidate);
+      }
+      addAssociation(candidate, {
+        databaseTable: ref.databaseTable,
+        databaseRecordId: ref.databaseRecordId,
+        // Course 1's `Submission` id, which this is not. Leaving it null keeps
+        // a Shipyard object from taking a hold on an unrelated Forge row.
+        submissionId: null,
+      });
+    }
+  }
+  return [...byIdentity.values()];
+}
+
 async function prepareNewIntent(
   tx: Prisma.TransactionClient,
   user: LockedUser,
@@ -1152,6 +1210,12 @@ async function prepareNewIntent(
     prerequisites,
     zeroVersionProofs,
   );
+  // Course 2's uploads (submission files, checkpoint-3 render screenshots) are
+  // stored as bare keys, not key+versionId, so their exact coordinates are
+  // resolved here rather than read off a row. Every live version of every key
+  // joins the same intent phase as the Forge's objects: the row is not deleted
+  // until each one is verified absent.
+  inventory.objects.push(...(await shipyardObjectCandidates(tx, user.id)));
   if (inventory.missingVersionSources.length > 0) {
     throw new DpdpErasureError(
       "object-version-missing",
@@ -2119,6 +2183,9 @@ async function applyDatabaseCleanup(
   const portfolio = await tx.portfolioEntry.deleteMany({ where: { userId: targetUserId } });
   const notifications = await tx.notification.deleteMany({ where: { userId: targetUserId } });
   const gateExceptions = await tx.gateException.deleteMany({ where: { userId: targetUserId } });
+  // Course 2. Explicit and counted rather than left to the User cascade, so
+  // the receipt says what went (docs/DECISIONS.md, 2026-09-15).
+  const shipyard = await deleteShipyardRows(tx, targetUserId);
   const user = await tx.user.deleteMany({ where: { id: targetUserId } });
   if (user.count !== 1) {
     throw new DpdpErasureError(
@@ -2155,6 +2222,7 @@ async function applyDatabaseCleanup(
     notifications: notifications.count,
     gateExceptions: gateExceptions.count,
     userVotes: userVotes.count,
+    ...shipyard,
     user: user.count,
   };
 

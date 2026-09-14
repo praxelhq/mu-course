@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { withAuth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
+import { loadShipyardPraxy } from "@/lib/dpdp-erasure-shipyard";
 import { parseValidations } from "@/lib/portfolio";
 import {
   EXTERNAL_FINGERPRINT_PREFIX,
@@ -245,11 +246,20 @@ export const POST = withAuth(
       badges.push({ kind: "external-validation", count: externalValidations.length });
     }
 
+    // Course 2 (the Shipyard). The same rule as everything else on this
+    // endpoint, and the Forge's standing invariant: artifacts and validations
+    // leave, numbers never do. So this branch carries the product, which
+    // checkpoints were cleared and when, and badges — and no grade, no
+    // component, no rubric score, and no tracker money or customer figure.
+    // `tests/shipyard-admin-dpdp.test.ts` asserts that by shape.
+    const shipyard = await loadShipyardPraxy(prisma, userId);
+
     return Response.json({
       contractVersion: PRAXY_EXPORT_CONTRACT_VERSION,
       student: { name: user.name, praxyProfileHint: user.email },
       artifacts,
       badges,
+      ...(shipyard ? { shipyard } : {}),
       generatedAt: new Date().toISOString(),
     });
   },
