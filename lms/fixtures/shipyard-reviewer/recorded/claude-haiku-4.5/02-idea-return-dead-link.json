@@ -1,0 +1,15 @@
+{
+  "id": "claude-haiku-4.5-02-idea-return-dead-link",
+  "model": "anthropic/claude-haiku-4.5",
+  "checkpointKey": "idea",
+  "recordedAt": "2026-09-15",
+  "source": "hand-written to the exact contract in lib/shipyard/reviewer/prompts.ts (no OPENROUTER_API_KEY available at authoring time)",
+  "malformed": null,
+  "note": "A plain, high-confidence return. No flags, no contradictions.",
+  "expect": {
+    "verdict": "return",
+    "needsHuman": false,
+    "attempt": 1
+  },
+  "raw": "{\n  \"verdict\": \"return\",\n  \"confidence\": 0.92,\n  \"reasons\": [\n    {\n      \"criterion\": \"one-liner\",\n      \"met\": true,\n      \"note\": \"\\\"A GST filing helper for Swiggy and Zomato delivery partners\\\" is clear on one read.\"\n    },\n    {\n      \"criterion\": \"job-story\",\n      \"met\": true,\n      \"note\": \"The situation — a delivery partner in the week before a quarterly filing, holding a year of app screenshots — recurs four times a year on its own.\"\n    },\n    {\n      \"criterion\": \"audience\",\n      \"met\": true,\n      \"note\": \"Delivery partners in Indore earning above the threshold, found through two named Telegram groups. You say what they do now: a neighbourhood CA who charges ₹2,500.\"\n    },\n    {\n      \"criterion\": \"waitlist-live\",\n      \"met\": false,\n      \"note\": \"Your waitlist URL did not respond when we checked it — the domain resolves to a parked page. Open it in a private window; if you see a registrar placeholder, the deploy did not go through.\"\n    },\n    {\n      \"criterion\": \"traffic-test\",\n      \"met\": false,\n      \"note\": \"No source is named and no spend is reported. \\\"Posted in some groups\\\" is not a traffic test. Tell me which groups, how many people are in them, how many landed on the page, and what it cost you.\"\n    },\n    {\n      \"criterion\": \"evidence-consistency\",\n      \"met\": false,\n      \"note\": \"Without a live page and a named source I cannot tell what the 19 in your screenshot counts.\"\n    }\n  ],\n  \"rubricScores\": {\n    \"one-liner\": 80,\n    \"job-story\": 83,\n    \"audience\": 77,\n    \"waitlist-live\": 0,\n    \"traffic-test\": 14,\n    \"evidence-consistency\": 21\n  },\n  \"contradictions\": [],\n  \"flags\": [],\n  \"summaryForStudent\": \"Your waitlist page is not live — we got a parked domain. Redeploy it, run one real traffic test with a named source and a spend you can report, and resubmit. The idea itself is in good shape.\"\n}"
+}

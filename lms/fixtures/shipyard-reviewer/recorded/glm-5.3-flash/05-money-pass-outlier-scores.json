@@ -1,0 +1,15 @@
+{
+  "id": "glm-5.3-flash-05-money-pass-outlier-scores",
+  "model": "z-ai/glm-5.3-flash",
+  "checkpointKey": "money",
+  "recordedAt": "2026-09-15",
+  "source": "hand-written to the exact contract in lib/shipyard/reviewer/prompts.ts (no OPENROUTER_API_KEY available at authoring time)",
+  "malformed": null,
+  "note": "Every score at or above 95 on attempt 1 — the outlier rule holds the gate for a human.",
+  "expect": {
+    "verdict": "pass",
+    "needsHuman": true,
+    "attempt": 1
+  },
+  "raw": "{\n  \"verdict\": \"pass\",\n  \"confidence\": 0.95,\n  \"reasons\": [\n    {\n      \"criterion\": \"checkout-reachable\",\n      \"met\": true,\n      \"note\": \"The checkout URL is public and the liveness check reached it. No login stands in front of it.\"\n    },\n    {\n      \"criterion\": \"price-stated\",\n      \"met\": true,\n      \"note\": \"₹299 per kitchen per month, stated plainly with the unit.\"\n    },\n    {\n      \"criterion\": \"price-reasoned\",\n      \"met\": true,\n      \"note\": \"You anchor against what a kitchen currently pays a part-time coordinator and what Zoho's cheapest plan costs, both in the buyer's terms.\"\n    },\n    {\n      \"criterion\": \"cost-of-not-buying\",\n      \"met\": true,\n      \"note\": \"Without it the owner keeps losing the 9pm hour to re-sorting, and you put a number on that hour.\"\n    },\n    {\n      \"criterion\": \"price-product-agreement\",\n      \"met\": true,\n      \"note\": \"Nothing in the ₹299 tier depends on something the checkpoint 3 render did not show.\"\n    }\n  ],\n  \"rubricScores\": {\n    \"checkout-reachable\": 97,\n    \"price-stated\": 98,\n    \"price-reasoned\": 96,\n    \"cost-of-not-buying\": 95,\n    \"price-product-agreement\": 97\n  },\n  \"contradictions\": [],\n  \"flags\": [],\n  \"summaryForStudent\": \"The pricing write-up clears the bar: a number, a unit, and reasoning in the buyer's language. The metric half of this checkpoint is read from the tracker and is decided separately.\"\n}"
+}

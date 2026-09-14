@@ -1,0 +1,15 @@
+{
+  "id": "claude-haiku-4.5-01-design-pass-legible-sketches",
+  "model": "anthropic/claude-haiku-4.5",
+  "checkpointKey": "design",
+  "recordedAt": "2026-09-15",
+  "source": "hand-written to the exact contract in lib/shipyard/reviewer/prompts.ts (no OPENROUTER_API_KEY available at authoring time)",
+  "malformed": null,
+  "note": "A clean pass that names images individually, which is what the evidence note asks for.",
+  "expect": {
+    "verdict": "pass",
+    "needsHuman": false,
+    "attempt": 1
+  },
+  "raw": "{\n  \"verdict\": \"pass\",\n  \"confidence\": 0.87,\n  \"reasons\": [\n    {\n      \"criterion\": \"flow-complete\",\n      \"met\": true,\n      \"note\": \"Images 1 through 4 carry an unbroken path from landing on the page to a paid tiffin subscription, with nothing I have to infer between steps.\"\n    },\n    {\n      \"criterion\": \"legibility\",\n      \"met\": true,\n      \"note\": \"Every sheet is readable — I can make out the button words on all six, including \\\"Confirm slot\\\" on image 3 and \\\"Try again\\\" on image 6.\"\n    },\n    {\n      \"criterion\": \"ordering\",\n      \"met\": true,\n      \"note\": \"Each sheet carries a circled number in the drawing itself, and your written flow runs in the same order.\"\n    },\n    {\n      \"criterion\": \"flow-notes\",\n      \"met\": true,\n      \"note\": \"Screen by screen, you say what the user does and where it takes them. Screen 4 to screen 6 on a failed payment is spelled out.\"\n    },\n    {\n      \"criterion\": \"unhappy-paths\",\n      \"met\": true,\n      \"note\": \"Two of them: image 5 is the empty state and image 6 is a failed UPI payment. Both are drawn.\"\n    },\n    {\n      \"criterion\": \"serves-the-job\",\n      \"met\": true,\n      \"note\": \"This is the tiffin product from checkpoint 1, and you name screen 3 — the delivery slot — as the one that carries it, because that is the decision the kitchen owner is actually making.\"\n    }\n  ],\n  \"rubricScores\": {\n    \"flow-complete\": 88,\n    \"legibility\": 91,\n    \"ordering\": 93,\n    \"flow-notes\": 85,\n    \"unhappy-paths\": 89,\n    \"serves-the-job\": 84\n  },\n  \"contradictions\": [],\n  \"flags\": [],\n  \"summaryForStudent\": \"Clean set. The path runs end to end, both unhappy states are drawn rather than described, and the photos are readable. Checkpoint 3 is open — build the screen you named as the one that carries it first.\"\n}"
+}

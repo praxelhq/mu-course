@@ -1,0 +1,15 @@
+{
+  "id": "glm-5.3-flash-04-launch-return-contradiction",
+  "model": "z-ai/glm-5.3-flash",
+  "checkpointKey": "launch",
+  "recordedAt": "2026-09-15",
+  "source": "hand-written to the exact contract in lib/shipyard/reviewer/prompts.ts (no OPENROUTER_API_KEY available at authoring time)",
+  "malformed": null,
+  "note": "A contradiction between the write-up and the tracker. Never passed quietly.",
+  "expect": {
+    "verdict": "return",
+    "needsHuman": true,
+    "attempt": 1
+  },
+  "raw": "{\n  \"verdict\": \"return\",\n  \"confidence\": 0.81,\n  \"reasons\": [\n    {\n      \"criterion\": \"launch-account\",\n      \"met\": true,\n      \"note\": \"The launch is dated — 28 August through 6 September — and the actions are specific.\"\n    },\n    {\n      \"criterion\": \"channels\",\n      \"met\": true,\n      \"note\": \"Four channels with an outcome attached to each, including an honest \\\"nothing\\\" for LinkedIn.\"\n    },\n    {\n      \"criterion\": \"first-customer\",\n      \"met\": true,\n      \"note\": \"The arrival path is traceable: a coaching-centre owner found the r/bangalore comment, read the pinned reply, and paid the next morning.\"\n    },\n    {\n      \"criterion\": \"numbers-agree\",\n      \"met\": false,\n      \"note\": \"You report ₹8,400 from 12 paying customers. The tracker shows 2 paying customers and $14.00 in verified payments. One of those is wrong, and the gap is too large to be a rounding or a currency question. Say what the other ten payments were and where they were taken, or correct the number.\"\n    },\n    {\n      \"criterion\": \"learning\",\n      \"met\": true,\n      \"note\": \"What you would change for the next hundred is specific, and you name the Instagram reels as the thing that did not work.\"\n    },\n    {\n      \"criterion\": \"no-spam\",\n      \"met\": true,\n      \"note\": \"Nothing here reads as bought signups or mass unsolicited outreach.\"\n    }\n  ],\n  \"rubricScores\": {\n    \"launch-account\": 81,\n    \"channels\": 84,\n    \"first-customer\": 86,\n    \"numbers-agree\": 8,\n    \"learning\": 77,\n    \"no-spam\": 92\n  },\n  \"contradictions\": [\n    \"The write-up claims ₹8,400 from 12 paying customers, and the tracker's verified data read at review time shows 2 paying customers and $14.00 gross.\"\n  ],\n  \"flags\": [\n    \"needs_human\"\n  ],\n  \"summaryForStudent\": \"The write-up is strong, but the numbers in it do not match what the tracker sees: you say 12 paying customers, the tracker shows 2. An instructor will look at this with you before it counts either way.\"\n}"
+}

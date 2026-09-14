@@ -1,0 +1,15 @@
+{
+  "id": "glm-5.3-flash-01-idea-pass-tiffin",
+  "model": "z-ai/glm-5.3-flash",
+  "checkpointKey": "idea",
+  "recordedAt": "2026-09-15",
+  "source": "hand-written to the exact contract in lib/shipyard/reviewer/prompts.ts (no OPENROUTER_API_KEY available at authoring time)",
+  "malformed": null,
+  "note": "A clean pass. Six reasons, six scores, realistic spread, no flags.",
+  "expect": {
+    "verdict": "pass",
+    "needsHuman": false,
+    "attempt": 1
+  },
+  "raw": "{\n  \"verdict\": \"pass\",\n  \"confidence\": 0.84,\n  \"reasons\": [\n    {\n      \"criterion\": \"one-liner\",\n      \"met\": true,\n      \"note\": \"\\\"Dabbawala Route plans the day's tiffin deliveries for a single-kitchen dabba service in Pune\\\" tells a stranger what it does and who it is for in one read. Nothing in it needs a follow-up question.\"\n    },\n    {\n      \"criterion\": \"job-story\",\n      \"met\": true,\n      \"note\": \"The situation — a kitchen owner sitting with a notebook at 9pm re-sorting tomorrow's drops after three cancellations — recurs nightly on its own, and the motivation and outcome are both there.\"\n    },\n    {\n      \"criterion\": \"audience\",\n      \"met\": true,\n      \"note\": \"Single-kitchen dabba services in Pune running 40 to 200 tiffins, found through the Kothrud and Baner WhatsApp groups you named. You also say what they do now: a paper notebook and a WhatsApp voice note to the delivery boy.\"\n    },\n    {\n      \"criterion\": \"waitlist-live\",\n      \"met\": true,\n      \"note\": \"The waitlist URL loaded, states the promise in its first line, and collects an email. Nothing behind a login.\"\n    },\n    {\n      \"criterion\": \"traffic-test\",\n      \"met\": true,\n      \"note\": \"₹1,400 on two Instagram reels aimed at Pune food-business accounts, 268 page visits from 11,300 impressions, and the spend is reported. That is a real test, not \\\"I shared it around\\\".\"\n    },\n    {\n      \"criterion\": \"evidence-consistency\",\n      \"met\": true,\n      \"note\": \"The Tally dashboard in your screenshot shows 41 responses dated 3 September, which matches the 41 you reported. The tool's own interface is visible around the count.\"\n    }\n  ],\n  \"rubricScores\": {\n    \"one-liner\": 82,\n    \"job-story\": 88,\n    \"audience\": 79,\n    \"waitlist-live\": 90,\n    \"traffic-test\": 84,\n    \"evidence-consistency\": 86\n  },\n  \"contradictions\": [],\n  \"flags\": [],\n  \"summaryForStudent\": \"This clears the bar. The job story names a situation that actually recurs, and the 41 signups are backed by a screenshot that matches what you reported. Checkpoint 2 is open — start drawing your screens.\"\n}"
+}

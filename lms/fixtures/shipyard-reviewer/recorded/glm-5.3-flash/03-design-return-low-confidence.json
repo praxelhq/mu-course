@@ -1,0 +1,15 @@
+{
+  "id": "glm-5.3-flash-03-design-return-low-confidence",
+  "model": "z-ai/glm-5.3-flash",
+  "checkpointKey": "design",
+  "recordedAt": "2026-09-15",
+  "source": "hand-written to the exact contract in lib/shipyard/reviewer/prompts.ts (no OPENROUTER_API_KEY available at authoring time)",
+  "malformed": null,
+  "note": "Confidence 0.58 — below the floor, so this is queued for a human before it counts.",
+  "expect": {
+    "verdict": "return",
+    "needsHuman": true,
+    "attempt": 1
+  },
+  "raw": "{\n  \"verdict\": \"return\",\n  \"confidence\": 0.58,\n  \"reasons\": [\n    {\n      \"criterion\": \"flow-complete\",\n      \"met\": false,\n      \"note\": \"Between the plan-picking screen and the payment screen there is a step missing: nothing shows how a buyer chooses a delivery slot, which your flow notes say is required before paying.\"\n    },\n    {\n      \"criterion\": \"legibility\",\n      \"met\": false,\n      \"note\": \"Image 2 and image 5 are too dark for me to read the button labels. I can see the layout but not the words, and the words are most of what this checkpoint is about.\"\n    },\n    {\n      \"criterion\": \"ordering\",\n      \"met\": true,\n      \"note\": \"Every sheet is numbered in the drawing itself and the written flow follows the same order.\"\n    },\n    {\n      \"criterion\": \"flow-notes\",\n      \"met\": true,\n      \"note\": \"Each screen has a line saying what the user does and where it leads.\"\n    },\n    {\n      \"criterion\": \"unhappy-paths\",\n      \"met\": true,\n      \"note\": \"Screen 6 is a failed-payment state and it is drawn, not just mentioned.\"\n    },\n    {\n      \"criterion\": \"serves-the-job\",\n      \"met\": true,\n      \"note\": \"This is recognisably the tiffin product from checkpoint 1, and you name screen 3 as the one that carries it.\"\n    }\n  ],\n  \"rubricScores\": {\n    \"flow-complete\": 45,\n    \"legibility\": 30,\n    \"ordering\": 85,\n    \"flow-notes\": 76,\n    \"unhappy-paths\": 80,\n    \"serves-the-job\": 78\n  },\n  \"contradictions\": [],\n  \"flags\": [],\n  \"summaryForStudent\": \"Two photos are too dark to read and the slot-picking screen is missing from the path. Reshoot images 2 and 5 in daylight, add the missing screen, and send them again. The rest of the set is solid.\"\n}"
+}

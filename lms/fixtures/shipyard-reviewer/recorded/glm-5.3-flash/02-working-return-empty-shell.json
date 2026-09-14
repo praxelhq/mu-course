@@ -1,0 +1,15 @@
+{
+  "id": "glm-5.3-flash-02-working-return-empty-shell",
+  "model": "z-ai/glm-5.3-flash",
+  "checkpointKey": "working",
+  "recordedAt": "2026-09-15",
+  "source": "hand-written to the exact contract in lib/shipyard/reviewer/prompts.ts (no OPENROUTER_API_KEY available at authoring time)",
+  "malformed": null,
+  "note": "A clean return on the render alone. High confidence, no flags.",
+  "expect": {
+    "verdict": "return",
+    "needsHuman": false,
+    "attempt": 2
+  },
+  "raw": "{\n  \"verdict\": \"return\",\n  \"confidence\": 0.93,\n  \"reasons\": [\n    {\n      \"criterion\": \"loads\",\n      \"met\": false,\n      \"note\": \"We opened your URL in a real browser and after the page hydrated there were 31 characters of visible text on it. That is a build error or a permanent spinner, not a product. The screenshot attached to this return is what we saw.\"\n    },\n    {\n      \"criterion\": \"core-path-named\",\n      \"met\": true,\n      \"note\": \"The four steps you list — sign in, add your PG, add flatmates, split this month's bill — are a real sequence a stranger could follow.\"\n    },\n    {\n      \"criterion\": \"core-path-works\",\n      \"met\": false,\n      \"note\": \"We could not reach the first step because nothing rendered. Once the page loads we will try the path you named.\"\n    },\n    {\n      \"criterion\": \"no-placeholders\",\n      \"met\": false,\n      \"note\": \"There is nothing on the page to judge. This will be looked at again on your next submission.\"\n    },\n    {\n      \"criterion\": \"serves-the-job\",\n      \"met\": true,\n      \"note\": \"What you describe is still the rent-splitting product whose idea and screens passed.\"\n    },\n    {\n      \"criterion\": \"honest-gaps\",\n      \"met\": true,\n      \"note\": \"You list the known gaps specifically and none of them sits on the core path.\"\n    }\n  ],\n  \"rubricScores\": {\n    \"loads\": 4,\n    \"core-path-named\": 74,\n    \"core-path-works\": 0,\n    \"no-placeholders\": 0,\n    \"serves-the-job\": 70,\n    \"honest-gaps\": 72\n  },\n  \"contradictions\": [],\n  \"flags\": [],\n  \"summaryForStudent\": \"The page is not rendering. Open your live URL in a private window on your phone and you will see what we saw — a blank screen. Fix the build, redeploy, and resubmit. Everything else you wrote is fine.\"\n}"
+}

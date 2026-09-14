@@ -1,0 +1,15 @@
+{
+  "id": "claude-haiku-4.5-03-working-pass-borderline-confidence",
+  "model": "anthropic/claude-haiku-4.5",
+  "checkpointKey": "working",
+  "recordedAt": "2026-09-15",
+  "source": "hand-written to the exact contract in lib/shipyard/reviewer/prompts.ts (no OPENROUTER_API_KEY available at authoring time)",
+  "malformed": null,
+  "note": "Confidence 0.68 — just under the floor. The pass is recorded but the gate is held.",
+  "expect": {
+    "verdict": "pass",
+    "needsHuman": true,
+    "attempt": 2
+  },
+  "raw": "{\n  \"verdict\": \"pass\",\n  \"confidence\": 0.68,\n  \"reasons\": [\n    {\n      \"criterion\": \"loads\",\n      \"met\": true,\n      \"note\": \"The render returned a full page with visible content and a 200.\"\n    },\n    {\n      \"criterion\": \"core-path-named\",\n      \"met\": true,\n      \"note\": \"Six ordered steps, each one a thing a stranger does.\"\n    },\n    {\n      \"criterion\": \"core-path-works\",\n      \"met\": true,\n      \"note\": \"The render shows the demo batch on the landing page, so the first step of your path is reachable without an account. I could not verify steps 4 to 6 from a single render, which is why my confidence here is not higher.\"\n    },\n    {\n      \"criterion\": \"no-placeholders\",\n      \"met\": true,\n      \"note\": \"No lorem text and no \\\"coming soon\\\" anywhere on the path.\"\n    },\n    {\n      \"criterion\": \"serves-the-job\",\n      \"met\": true,\n      \"note\": \"This is the tuition fee-collection product whose screens passed.\"\n    },\n    {\n      \"criterion\": \"honest-gaps\",\n      \"met\": true,\n      \"note\": \"You list the PDF export as flaky and the SMS reminders as unbuilt, and neither sits on the core path.\"\n    }\n  ],\n  \"rubricScores\": {\n    \"loads\": 84,\n    \"core-path-named\": 80,\n    \"core-path-works\": 66,\n    \"no-placeholders\": 82,\n    \"serves-the-job\": 79,\n    \"honest-gaps\": 75\n  },\n  \"contradictions\": [],\n  \"flags\": [],\n  \"summaryForStudent\": \"This reads as a working product and the demo batch lets a stranger in without an account. I could not follow the whole path from one render, so an instructor will confirm it before the checkpoint clears.\"\n}"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "claude-haiku-4.5-06-working-malformed-unknown-criterion-and-newline",
+  "model": "anthropic/claude-haiku-4.5",
+  "checkpointKey": "working",
+  "recordedAt": "2026-09-15",
+  "source": "hand-written to the exact contract in lib/shipyard/reviewer/prompts.ts (no OPENROUTER_API_KEY available at authoring time)",
+  "malformed": "a prose preamble and a trailing sentence, an unknown criterion id (overall-quality), and a raw newline inside a string",
+  "note": "parseVerdict must drop the invented criterion and its score, and repair the raw newline inside a note.",
+  "expect": {
+    "verdict": "return",
+    "needsHuman": false,
+    "attempt": 1,
+    "droppedCriteria": [
+      "overall-quality"
+    ]
+  },
+  "raw": "I reviewed the render and the write-up together. My verdict follows.\n\n{\n  \"verdict\": \"return\",\n  \"confidence\": 0.88,\n  \"reasons\": [\n    {\n      \"criterion\": \"loads\",\n      \"met\": true,\n      \"note\": \"The page rendered with plenty of visible content and a 200.\"\n    },\n    {\n      \"criterion\": \"core-path-named\",\n      \"met\": false,\n      \"note\": \"'Vendors can manage their bookings' is a description of a feature, not a path.\nWrite it as the numbered steps a stranger follows: open the link, pick a date, choose a vendor, pay the token amount.\"\n    },\n    {\n      \"criterion\": \"core-path-works\",\n      \"met\": false,\n      \"note\": \"The render shows a landing page with a waitlist form and no way into a product. There is no entry point to the path you describe.\"\n    },\n    {\n      \"criterion\": \"no-placeholders\",\n      \"met\": true,\n      \"note\": \"No lorem text on what the render did show.\"\n    },\n    {\n      \"criterion\": \"serves-the-job\",\n      \"met\": true,\n      \"note\": \"What you describe is the wedding-vendor product from checkpoint 1.\"\n    },\n    {\n      \"criterion\": \"honest-gaps\",\n      \"met\": true,\n      \"note\": \"The gaps you list are specific.\"\n    },\n    {\n      \"criterion\": \"overall-quality\",\n      \"met\": false,\n      \"note\": \"Overall this is closer to a landing page than a product.\"\n    }\n  ],\n  \"rubricScores\": {\n    \"loads\": 82,\n    \"core-path-named\": 24,\n    \"core-path-works\": 6,\n    \"no-placeholders\": 74,\n    \"serves-the-job\": 70,\n    \"honest-gaps\": 71,\n    \"overall-quality\": 30\n  },\n  \"contradictions\": [],\n  \"flags\": [],\n  \"summaryForStudent\": \"The page loads, but what loads is a waitlist, not the product. Ship the booking flow you describe, name the path as numbered steps, and send it again.\"\n}\n\nHappy to look again once the booking flow is live."
+}

@@ -1,0 +1,15 @@
+{
+  "id": "claude-haiku-4.5-05-money-return-no-price",
+  "model": "anthropic/claude-haiku-4.5",
+  "checkpointKey": "money",
+  "recordedAt": "2026-09-15",
+  "source": "hand-written to the exact contract in lib/shipyard/reviewer/prompts.ts (no OPENROUTER_API_KEY available at authoring time)",
+  "malformed": null,
+  "note": "Third attempt, still no number. Plain return.",
+  "expect": {
+    "verdict": "return",
+    "needsHuman": false,
+    "attempt": 3
+  },
+  "raw": "{\n  \"verdict\": \"return\",\n  \"confidence\": 0.94,\n  \"reasons\": [\n    {\n      \"criterion\": \"checkout-reachable\",\n      \"met\": true,\n      \"note\": \"The checkout URL is public and the liveness check reached it.\"\n    },\n    {\n      \"criterion\": \"price-stated\",\n      \"met\": false,\n      \"note\": \"There is still no price in this write-up. \\\"Starting from a few hundred rupees, we will finalise after the pilot\\\" is not a number and not a unit. Pick a price and a unit today — per month, per seat, per use, one time — and you can change it next week.\"\n    },\n    {\n      \"criterion\": \"price-reasoned\",\n      \"met\": false,\n      \"note\": \"Without a price there is nothing to reason about. Once you have picked one, tell me why that number and not half of it, in terms of what the buyer gets.\"\n    },\n    {\n      \"criterion\": \"cost-of-not-buying\",\n      \"met\": true,\n      \"note\": \"You name the thing that stays unsolved — the two hours a week a UPSC aspirant loses re-making notes — and it is concrete.\"\n    },\n    {\n      \"criterion\": \"price-product-agreement\",\n      \"met\": true,\n      \"note\": \"Nothing you describe depends on features you have not shipped.\"\n    }\n  ],\n  \"rubricScores\": {\n    \"checkout-reachable\": 86,\n    \"price-stated\": 5,\n    \"price-reasoned\": 8,\n    \"cost-of-not-buying\": 77,\n    \"price-product-agreement\": 80\n  },\n  \"contradictions\": [],\n  \"flags\": [],\n  \"summaryForStudent\": \"Same thing as last time: there is no price in here. Write down one number and one unit before you write anything else, then say why that number in the buyer's terms. Everything else is ready.\"\n}"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "glm-5.3-flash-06-idea-malformed-prose-trailing-comma-missing-criterion",
+  "model": "z-ai/glm-5.3-flash",
+  "checkpointKey": "idea",
+  "recordedAt": "2026-09-15",
+  "source": "hand-written to the exact contract in lib/shipyard/reviewer/prompts.ts (no OPENROUTER_API_KEY available at authoring time)",
+  "malformed": "prose wrapper, a code fence, a trailing comma, and a missing criterion (audience)",
+  "note": "The malformed one. parseVerdict must strip the prose and the fence, repair the trailing comma, and fill `audience` in as unmet with a needs_human flag.",
+  "expect": {
+    "verdict": "return",
+    "needsHuman": true,
+    "attempt": 1,
+    "missingCriteria": [
+      "audience"
+    ]
+  },
+  "raw": "Here is my assessment of this submission against the published bar.\n\n```json\n{\n  \"verdict\": \"return\",\n  \"confidence\": 0.77,\n  \"reasons\": [\n    {\n      \"criterion\": \"one-liner\",\n      \"met\": true,\n      \"note\": \"\\\"Track every wedding vendor in one place\\\" is understandable on one read.\"\n    },\n    {\n      \"criterion\": \"job-story\",\n      \"met\": false,\n      \"note\": \"What you have written is a list of features the CRM has, not a job story. Rewrite it as: when [the situation that keeps happening], I want to [what you are trying to do], so I can [the outcome]. The situation has to be one that recurs on its own.\"\n    },\n    {\n      \"criterion\": \"waitlist-live\",\n      \"met\": true,\n      \"note\": \"The URL loaded, states the promise, and collects an email.\"\n    },\n    {\n      \"criterion\": \"traffic-test\",\n      \"met\": false,\n      \"note\": \"You say you \\\"shared it around\\\" and do not name a source, a reach number, or a spend. Name where the traffic came from and give me impressions, visits, signups and what it cost.\"\n    },\n    {\n      \"criterion\": \"evidence-consistency\",\n      \"met\": false,\n      \"note\": \"The screenshot is cropped to the number alone. I cannot see which tool it came from or what date it was taken, so I cannot tell whether 25 is real.\"\n    }\n  ],\n  \"rubricScores\": {\n    \"one-liner\": 78,\n    \"job-story\": 32,\n    \"waitlist-live\": 84,\n    \"traffic-test\": 18,\n    \"evidence-consistency\": 22\n  },\n  \"contradictions\": [],\n  \"flags\": [],\n  \"summaryForStudent\": \"Three things to fix. Rewrite the job story as a job story, name where your traffic actually came from with numbers, and reshoot the signup screenshot so the tool and the date are visible.\",\n}\n```\n\nLet me know if you would like me to expand on any of these points."
+}

@@ -1,0 +1,15 @@
+{
+  "id": "claude-haiku-4.5-04-launch-return-spam",
+  "model": "anthropic/claude-haiku-4.5",
+  "checkpointKey": "launch",
+  "recordedAt": "2026-09-15",
+  "source": "hand-written to the exact contract in lib/shipyard/reviewer/prompts.ts (no OPENROUTER_API_KEY available at authoring time)",
+  "malformed": null,
+  "note": "Bought signups and mass outreach: spam and needs_human, and no-spam scores zero.",
+  "expect": {
+    "verdict": "return",
+    "needsHuman": true,
+    "attempt": 1
+  },
+  "raw": "{\n  \"verdict\": \"return\",\n  \"confidence\": 0.9,\n  \"reasons\": [\n    {\n      \"criterion\": \"launch-account\",\n      \"met\": true,\n      \"note\": \"Dated and specific: 1 to 9 September, with what you did on which day.\"\n    },\n    {\n      \"criterion\": \"channels\",\n      \"met\": true,\n      \"note\": \"Each channel has a number attached to it, including the two that returned nothing.\"\n    },\n    {\n      \"criterion\": \"first-customer\",\n      \"met\": true,\n      \"note\": \"The arrival path is traceable and the account reads as a real person.\"\n    },\n    {\n      \"criterion\": \"numbers-agree\",\n      \"met\": true,\n      \"note\": \"Your figures match the tracker's verified data.\"\n    },\n    {\n      \"criterion\": \"learning\",\n      \"met\": true,\n      \"note\": \"Both parts are here and both are specific.\"\n    },\n    {\n      \"criterion\": \"no-spam\",\n      \"met\": false,\n      \"note\": \"You describe sending 4,000 scraped email addresses an unsolicited pitch and buying an Instagram follower pack. The bar says plainly that this scores zero on distribution. This is going to an instructor rather than being returned quietly, because the course's position on it is not mine to soften.\"\n    }\n  ],\n  \"rubricScores\": {\n    \"launch-account\": 78,\n    \"channels\": 74,\n    \"first-customer\": 80,\n    \"numbers-agree\": 85,\n    \"learning\": 72,\n    \"no-spam\": 0\n  },\n  \"contradictions\": [],\n  \"flags\": [\n    \"spam\",\n    \"needs_human\"\n  ],\n  \"summaryForStudent\": \"Most of this write-up is honest and specific. The scraped email blast and the bought followers are not distribution as this course defines it, and an instructor will talk to you about it before anything here counts.\"\n}"
+}
