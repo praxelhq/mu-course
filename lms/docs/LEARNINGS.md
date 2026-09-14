@@ -188,3 +188,34 @@ Whenever a bug is fixed or a wrong assumption corrected, append what was learned
   seeded products — `tests/shipyard-tracker-refresh.test.ts` pushes `syp_006`'s
   money gate to passed — and now that a pass is sticky, that residue no longer
   heals itself on the next recompute: re-seed after running it.)
+- **`page.route` is a browser hook, not a network policy.** It reads like one:
+  default-deny, one handler, every request. But Chromium never calls it for a
+  redirect hop, never calls it for a WebSocket handshake, and by the time it
+  does call it the hostname has already been resolved by Chromium's own
+  resolver — so the address our Node-side check approved and the address the
+  socket connects to are two different lookups with a rebinding window between
+  them. Three of the four verified bypasses in the render sandbox were requests
+  the handler was never shown; the fourth was a hostname it was shown and
+  agreed with. The useful test of a sandbox is not "what does the handler
+  refuse" but "what can leave the process without passing it", and the only
+  answer that survives is a proxy the browser is *launched* pointed at, where a
+  redirect is simply the next request and gets the same vetting as the first.
+  The handler stays, as a second layer and as a cheap place to count what a
+  page tried — but it is no longer the thing standing between a student's page
+  and the metadata service.
+- **An identifier a student types is a claim, not a fact.** A Shipped.money
+  slug and an n8n workflow id both looked like configuration and were treated
+  like it, and both were really "whose numbers should clear my gate" answered
+  by the person the gate is judging. The tell is that neither integration had
+  any notion of ownership we were reading — Shipped had no `ownerEmail` field
+  yet and n8n's executions API answers for any id on the shared instance — so
+  the check could not have existed, and its absence never looked like a gap.
+  Two shapes of fix, and they are not interchangeable: the tracker could add a
+  server-side filter (ask for the project only if it is this account's), while
+  n8n could not, so there the student has to *prove* it by doing something only
+  an owner can do — tagging the workflow. Worth asking of every integration:
+  what, in this API, can only the owner do? If the answer is nothing, the id is
+  a claim forever. And a second-order lesson from wiring it up: a filtered read
+  that answers "not found" for both "not yours" and "we are down" cannot be
+  acted on destructively, which is why connect re-reads unfiltered before
+  refusing and refresh never uses the filter at all.

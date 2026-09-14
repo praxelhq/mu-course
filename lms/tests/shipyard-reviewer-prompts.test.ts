@@ -362,6 +362,12 @@ describe("student text cannot become a tag", () => {
     expect(text).toContain("&lt;/first_review&gt;");
   });
 
+  it("escapes only the two characters that can open a tag", () => {
+    expect(escapeEvidence("a < b > c")).toBe("a &lt; b &gt; c");
+    expect(escapeEvidence("nothing to do here")).toBe("nothing to do here");
+    expect(escapeEvidence("")).toBe("");
+  });
+
   it("mints a different boundary on every call", () => {
     const boundaries = new Set(
       Array.from({ length: 50 }, () => evidenceBoundary()),
