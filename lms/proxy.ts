@@ -68,6 +68,17 @@ const isPublicRoute = createRouteMatcher([
   "/api/shipyard/tracker/refresh",
 ]);
 
+/**
+ * The endpoints the live interview room calls with fetch() rather than
+ * navigates to. These must fail as JSON, never as a cross-origin redirect.
+ */
+const isRoomFetchRoute = createRouteMatcher([
+  "/api/interview/token",
+  "/api/interview/state",
+  "/api/interview/video-lost",
+  "/api/interview/complete",
+]);
+
 function notOnRosterRedirect(req: NextRequest): NextResponse {
   return NextResponse.redirect(new URL("/not-on-roster", req.url));
 }
@@ -134,7 +145,21 @@ const clerkProxy = clerkMiddleware(async (auth, req) => {
   }
 
   const { userId, redirectToSignIn } = await auth();
-  if (!userId) return redirectToSignIn();
+  if (!userId) {
+    // A background fetch cannot follow a redirect to the Clerk domain: the
+    // browser refuses it cross-origin and the fetch REJECTS. The interview
+    // room reads that as "we could not reach your live interviewer" and shows
+    // a dead-end card mid-interview — which is what a student screenshotted,
+    // holding a session that had merely lapsed for a moment. Answer the
+    // room's own XHR endpoints with JSON it can retry against instead.
+    // Everything else still redirects, because /api/exports, /api/materials
+    // and the rest are opened as links and a signed-out student should land on
+    // the sign-in page, not on a JSON error.
+    if (isRoomFetchRoute(req)) {
+      return NextResponse.json({ error: "signed-out" }, { status: 401 });
+    }
+    return redirectToSignIn();
+  }
 
   // Roster gate. The webhook normally links clerkUserId at first sign-in, so
   // this is a single indexed unique lookup on the happy path.

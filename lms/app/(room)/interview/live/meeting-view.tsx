@@ -10,9 +10,10 @@ import {
   useRoomContext,
   useTracks,
 } from "@livekit/components-react";
-import { ConnectionState, RoomEvent, Track } from "livekit-client";
+import { ConnectionState, ParticipantEvent, RoomEvent, Track } from "livekit-client";
 import { AGENT_IDENTITY } from "@/lib/interview/identity";
 import { VIDEO_LOST_NOTICE } from "@/lib/interview/video";
+import { assessRoom } from "@/lib/interview/stall";
 import styles from "./room.module.css";
 
 // The live interview, rendered full-screen (see room.module.css).
@@ -52,34 +53,11 @@ function IdleBars({ active }: { active: boolean }) {
   );
 }
 
-// How long a connected room may sit with no interviewer in it before the
-// client remints a token and rejoins. Joining normally produces a greeting
-// within a few seconds; a much longer silence means no agent job was ever
-// dispatched — which happens if the worker was restarting when the student
-// joined. Raised from 30s. The cold path is dispatch -> connect -> agent-context
-// (with its S3 reservations) -> egress -> prompt cache (up to 20s) -> VAD ->
-// session -> first token, and under a burst of admissions 30s was routinely
-// short. A spurious reconnect is not free: the agent greets the empty room,
-// that greeting is persisted, and the student rejoins to silence with an
-// unheard question already on the record.
-const NO_AGENT_GRACE_MS = 75_000;
-/** An interviewer that has left the room is not coming back — see below. */
-const AGENT_GONE_GRACE_MS = 20_000;
-// An interviewer that is PRESENT can still be dead: a quota outage or a
-// wedged STT leaves it in the room publishing silence. The turn checks below
-// cannot see that — they wait for a student turn to follow the agent's
-// question, and if the STT is the thing that died no student turn will ever
-// be persisted. Deliberately generous: a student thinking hard about a hard
-// question must never trip it, and the cost of firing is only a reconnect,
-// which now resumes rather than restarts.
-const NO_PROGRESS_MS = 4 * 60_000;
-/**
- * When the manual "rejoin" offer appears. Well short of NO_PROGRESS_MS: the
- * automatic recovery stays patient so it never interrupts a thinking student,
- * while a student who KNOWS the interviewer has died can act in seconds
- * instead of losing a fifth of their budget waiting to be rescued.
- */
-const MANUAL_REJOIN_AFTER_MS = 25_000;
+// The thresholds and the rule that reads them live in lib/interview/stall,
+// which is pure and tested. They used to sit here and measure the
+// INTERVIEWER's silence alone — which is also what a student answering a
+// question looks like, so the rejoin offer appeared mid-answer and the
+// no-reply grace tore the call down under students who were still speaking.
 
 export function MeetingView({
   interviewId,
@@ -125,6 +103,10 @@ export function MeetingView({
   const agentPresentRef = useRef(false);
   // When the interviewer last actually SPOKE — a published track is not speech.
   const lastAgentAtRef = useRef(0);
+  // When the STUDENT was last doing something: a turn reaching the transcript,
+  // or their microphone open right now. Without this the watchdog reads a long
+  // answer as a dead interviewer.
+  const lastStudentAtRef = useRef(0);
   // When the interviewer was last actually IN the room. Seeded on the first
   // watchdog tick rather than at render, which must stay pure.
   const agentLastSeenRef = useRef(0);
@@ -258,44 +240,31 @@ export function MeetingView({
       if (agentPresent || agentLastSeenRef.current === 0) {
         agentLastSeenRef.current = Date.now();
       }
-      if (
-        !agentPresent &&
-        agentTurns.length > 0 &&
-        Date.now() - agentLastSeenRef.current > AGENT_GONE_GRACE_MS
-      ) {
+
+      // A microphone that is open RIGHT NOW counts, not just the last time it
+      // opened: IsSpeakingChanged fires on the edges, so an unbroken answer
+      // would otherwise age out between events.
+      if (localParticipant?.isSpeaking) lastStudentAtRef.current = Date.now();
+
+      const verdict = assessRoom({
+        now: Date.now(),
+        connectedAt,
+        agentPresent,
+        agentLastSeenAt: agentLastSeenRef.current,
+        agentTurns: agentTurns.length,
+        lastAgentTurnAt: agentTurns.length && lastAgentAtRef.current ? lastAgentAtRef.current : null,
+        lastStudentActivityAt: lastStudentAtRef.current || null,
+        studentSpokeLast: turns.length > 0 && turns[turns.length - 1].speaker === "student",
+      });
+
+      setStalled(verdict.offerRejoin);
+      if (verdict.reconnect) {
         endedRef.current = true;
-        onReconnect("interviewer-left");
-        return;
+        onReconnect(verdict.reconnect);
       }
-
-      const lastAgentAt = agentTurns.length && lastAgentAtRef.current ? lastAgentAtRef.current : connectedAt;
-
-      // The watchdog below is deliberately patient — NO_PROGRESS_MS is four
-      // minutes, because a student thinking hard must never be cut off. But a
-      // student staring at a dead interviewer has no way of knowing which of
-      // the two is happening, and four minutes of a twenty-minute budget is a
-      // fifth of their interview. So once the interviewer has been quiet for
-      // much less than that, offer them the same recovery by hand.
-      setStalled(Date.now() - lastAgentAt > MANUAL_REJOIN_AFTER_MS);
-
-      // Present, but nothing has come out of it for minutes.
-      if (agentPresent && agentTurns.length > 0 && Date.now() - lastAgentAt > NO_PROGRESS_MS) {
-        endedRef.current = true;
-        onReconnect("interviewer-silent");
-        return;
-      }
-
-      const waitedTooLong = Date.now() - lastAgentAt > NO_AGENT_GRACE_MS;
-      if (!waitedTooLong) return;
-      // Before the first question, silence alone is enough. After it, only
-      // treat it as dead if the student is actually waiting on a reply.
-      const studentSpokeLast = turns.length > 0 && turns[turns.length - 1].speaker === "student";
-      if (agentTurns.length > 0 && !studentSpokeLast) return;
-      endedRef.current = true;
-      onReconnect(agentTurns.length === 0 ? "no-interviewer" : "interviewer-stopped");
     }, 5_000);
     return () => clearInterval(interval);
-  }, [connectedAt, room, onReconnect]);
+  }, [connectedAt, room, onReconnect, localParticipant]);
 
   const cameraTrack = useTracks([Track.Source.Camera], { onlySubscribed: false }).find(
     (t) => t.participant.identity === localParticipant?.identity,
@@ -312,8 +281,27 @@ export function MeetingView({
     const hadAgentTurns = turnsRef.current.filter((t) => t.speaker === "agent").length;
     const hasAgentTurns = turns.filter((t) => t.speaker === "agent").length;
     if (hasAgentTurns > hadAgentTurns) lastAgentAtRef.current = Date.now();
+    const hadStudentTurns = turnsRef.current.filter((t) => t.speaker !== "agent").length;
+    const hasStudentTurns = turns.filter((t) => t.speaker !== "agent").length;
+    if (hasStudentTurns > hadStudentTurns) lastStudentAtRef.current = Date.now();
     turnsRef.current = turns;
   }, [turns]);
+
+  // Speech, not transcription. A persisted student turn arrives only when the
+  // STT decides they have paused, which on a long answer is up to half a
+  // minute after they started talking — and never at all if the STT is the
+  // thing that broke. The microphone opening is the earliest honest signal
+  // that this student is mid-answer rather than stranded.
+  useEffect(() => {
+    if (!localParticipant) return;
+    const onSpeaking = (speaking: boolean) => {
+      if (speaking) lastStudentAtRef.current = Date.now();
+    };
+    localParticipant.on(ParticipantEvent.IsSpeakingChanged, onSpeaking as never);
+    return () => {
+      localParticipant.off(ParticipantEvent.IsSpeakingChanged, onSpeaking as never);
+    };
+  }, [localParticipant]);
 
   async function toggleMic() {
     if (!localParticipant) return;

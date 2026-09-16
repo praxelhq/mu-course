@@ -194,6 +194,31 @@ MIN_INTERRUPTION_SECONDS = float(
     os.environ.get("INTERVIEW_MIN_INTERRUPTION_SECONDS", 0.6)
 )
 
+# How long a student may PAUSE inside an answer before the interviewer decides
+# they have finished and asks the next question.
+#
+# LiveKit's default is half a second, which is shorter than the pause a person
+# takes to think mid-sentence. A student wrote in describing exactly what that
+# costs: "before I completed the answer to one question and going on without
+# any pause, the other question used to arise up, and the ongoing answer that I
+# gave for the previous question, the AI assumed some part of it as the answer
+# of the current question". His transcript shows it — an answer cut at
+# "historical data of an organization through", a new question seven seconds
+# later, and the rest of his answer recorded against it. Not one student:
+# 313 of 347 graded interviews carry answers split this way, median 13 each.
+#
+# The cost of waiting longer is a beat of silence before each question; the
+# cost of waiting less is answers attributed to the wrong question and marked
+# as though the student never gave them.
+MIN_ENDPOINTING_SECONDS = float(
+    os.environ.get("INTERVIEW_MIN_ENDPOINTING_SECONDS", 1.8)
+)
+# The ceiling for an answer the model still thinks is unfinished, so a trailing
+# "so, yeah…" cannot hold the interview open indefinitely.
+MAX_ENDPOINTING_SECONDS = float(
+    os.environ.get("INTERVIEW_MAX_ENDPOINTING_SECONDS", 6.0)
+)
+
 # Counting questions was the wrong guard. An interview ended at exactly ten
 # questions having covered the resume, privacy, the regulated-shipping probe,
 # context isolation and skills — every segment EXCEPT the student's own work,
@@ -1326,6 +1351,8 @@ async def entrypoint(ctx) -> None:
     for name, value in (
         ("min_interruption_words", MIN_INTERRUPTION_WORDS),
         ("min_interruption_duration", MIN_INTERRUPTION_SECONDS),
+        ("min_endpointing_delay", MIN_ENDPOINTING_SECONDS),
+        ("max_endpointing_delay", MAX_ENDPOINTING_SECONDS),
     ):
         if name in session_params:
             interruption_kwargs[name] = value

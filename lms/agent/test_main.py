@@ -237,6 +237,37 @@ class TestBargeIn(unittest.TestCase):
         assert "**interruption_kwargs" in source
 
 
+class TestEndpointing(unittest.TestCase):
+    """A pause inside an answer is not the end of the answer.
+
+    LiveKit's 0.5s default is shorter than the pause a person takes to think
+    mid-sentence, so the interviewer asked its next question over the top of
+    an answer and the remainder was recorded against the wrong question — the
+    complaint one student wrote in with, and a pattern in 313 of 347 graded
+    interviews.
+    """
+
+    def test_a_thinking_pause_does_not_end_the_answer(self):
+        # Comfortably longer than the half second that caused the problem.
+        assert main.MIN_ENDPOINTING_SECONDS >= 1.5
+
+    def test_a_trailing_off_answer_cannot_hold_the_interview_open(self):
+        assert main.MAX_ENDPOINTING_SECONDS > main.MIN_ENDPOINTING_SECONDS
+        assert main.MAX_ENDPOINTING_SECONDS <= 10
+
+    def test_both_are_tunable_without_a_deploy(self):
+        source = open("main.py", encoding="utf-8").read()
+        assert "INTERVIEW_MIN_ENDPOINTING_SECONDS" in source
+        assert "INTERVIEW_MAX_ENDPOINTING_SECONDS" in source
+
+    def test_the_session_is_constructed_with_them(self):
+        source = open("main.py", encoding="utf-8").read()
+        # Signature-guarded like the interruption settings, so an older wheel
+        # degrades to the default instead of refusing to start.
+        assert "min_endpointing_delay" in source
+        assert "max_endpointing_delay" in source
+
+
 if __name__ == "__main__":
     unittest.main()
 
