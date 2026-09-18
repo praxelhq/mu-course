@@ -27,6 +27,8 @@ export function ShipyardNav({
   signedIn?: boolean;
 }) {
   const pathname = usePathname();
+  // Studio accounts are independent of the Forge roster.
+  if (["/shipyard", "/shipyard/join", "/shipyard/reviews"].includes(pathname)) return <nav className="sy-nav" aria-label="Shipyard"><Link className="sy-nav__link" href="/shipyard">Venture workspace</Link><span className="sy-nav__link sy-nav__link--away">An idea. Eight weeks. First customer.</span></nav>;
 
   return (
     <nav className="sy-nav" aria-label="Shipyard">

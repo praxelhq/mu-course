@@ -40,6 +40,7 @@ import { refreshAllConnected, refreshTrackerForProduct } from "../lib/shipyard/t
 import { handleReviewSubmission } from "./shipyard-jobs/review-submission";
 import { handleReviewDeadLetter } from "./shipyard-jobs/review-dead-letter";
 import { GATE_SWEEP_CRON, sweepMetricGates } from "./shipyard-jobs/gate-sweep";
+import { startStudioWorker } from "./shipyard-jobs/studio";
 
 /**
  * Every ten minutes. The gate sweep at fifteen only looks at products sitting
@@ -109,6 +110,7 @@ async function main(): Promise<void> {
   }
 
   await ensureShipyardQueues(boss);
+  await startStudioWorker(boss);
 
   // One job per handler invocation (batchSize 1) with `concurrency` of them in
   // flight: a review is a single long model call, so a batch would serialise

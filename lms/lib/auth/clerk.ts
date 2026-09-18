@@ -41,6 +41,16 @@ export async function getClerkUserEmail(clerkUserId: string): Promise<string | n
   return primary?.emailAddress ?? user.emailAddresses[0]?.emailAddress ?? null;
 }
 
+/** Studio eligibility is based on a verified primary address, never metadata. */
+export async function getVerifiedClerkIdentity(clerkUserId: string) {
+  if (!hasClerkKeys()) return null;
+  const { clerkClient } = await import("@clerk/nextjs/server");
+  const user = await (await clerkClient()).users.getUser(clerkUserId);
+  const email = user.emailAddresses.find(e => e.id === user.primaryEmailAddressId);
+  if (!email || email.verification?.status !== "verified") return null;
+  return { clerkId: user.id, email: email.emailAddress.toLowerCase(), name: [user.firstName, user.lastName].filter(Boolean).join(" ") || email.emailAddress.split("@")[0] };
+}
+
 /**
  * Merge metadata onto a Clerk user. Role/section truth flows roster-row →
  * Clerk publicMetadata (KTD21); privateMetadata.flaggedForDeletion marks

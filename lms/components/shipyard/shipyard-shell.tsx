@@ -15,11 +15,14 @@ import { ShipyardNav, type NavItem } from "./shipyard-nav";
 // its `border-radius: 0` rule.
 
 const STUDENT_NAV: NavItem[] = [
-  { label: "Spine", href: "/shipyard" },
+  { label: "Workspace", href: "/shipyard" },
+  { label: "Previous work", href: "/shipyard/history" },
   { label: "Grade", href: "/shipyard/grade" },
 ];
 
 const STAFF_NAV: NavItem[] = [
+  { label: "Workspace", href: "/shipyard" },
+  { label: "Appeals", href: "/shipyard/reviews" },
   { label: "Sections", href: "/shipyard/instructor" },
   { label: "Queue", href: "/shipyard/instructor/queue" },
   { label: "Admin", href: "/shipyard/admin" },

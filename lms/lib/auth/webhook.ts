@@ -1,4 +1,5 @@
 import type { Role } from "@prisma/client";
+import { allowedEmail } from "@/lib/shipyard/studio/contracts";
 
 // Core Clerk webhook event handling, dependency-injected for testability.
 // Signature verification lives in the route (app/api/webhooks/clerk/route.ts)
@@ -7,7 +8,7 @@ import type { Role } from "@prisma/client";
 export type ClerkUserEventData = {
   id: string;
   primary_email_address_id?: string | null;
-  email_addresses?: { id: string; email_address: string }[];
+  email_addresses?: { id: string; email_address: string; verification?: { status?: string } }[];
   public_metadata?: Record<string, unknown>;
 };
 
@@ -65,6 +66,11 @@ export async function handleClerkUserEvent(
   const email = primaryEmail(evt.data);
 
   let row = email ? await deps.findUserByEmail(email) : null;
+  const primary = evt.data.email_addresses?.find(a => a.id === evt.data.primary_email_address_id);
+  if (!row && email && allowedEmail(email) && primary?.verification?.status === "verified") {
+    await deps.updateClerkMetadata(clerkUserId, {privateMetadata:{flaggedForDeletion:false}});
+    return {outcome:"ignored"};
+  }
   if (!row && email && deps.enrollTemporaryUser) {
     row = await deps.enrollTemporaryUser(email, clerkUserId);
   }

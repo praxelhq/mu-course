@@ -41,6 +41,11 @@ import {
 const isPublicRoute = createRouteMatcher([
   "/",
   "/sign-in(.*)",
+  // Studio has its own verified MU identity check and no Forge roster dependency.
+  "/shipyard",
+  "/shipyard/join(.*)",
+  "/shipyard/reviews(.*)",
+  "/api/shipyard/studio(.*)",
   "/not-on-roster",
   "/api/health", // unauthenticated liveness probe (Railway healthcheck)
   "/api/readiness", // bearer-token guarded; proves DB/schema/service identity
@@ -108,6 +113,9 @@ async function lookupRosterByClerkId(clerkUserId: string): Promise<RosterLookup>
       await linkClerkIdentity(prisma, byEmail.id, clerkUserId);
       return byEmail;
     }
+
+    // A studio-only member is not emergency-enrolled into Course 1.
+    if (await prisma.shipyardStudioIdentity.findUnique({ where: { clerkId: clerkUserId }, select: { id: true } })) return null;
 
     const normalizedEmail = email.toLowerCase();
     const enrolled = await enrollTemporarySectionFUser(
@@ -179,6 +187,8 @@ const clerkProxy = clerkMiddleware(async (auth, req) => {
   // Off-roster: record + best-effort flag on the Clerk user, then bounce to
   // the branded page. Deletion of the Clerk account stays a manual action.
   if (decision.flag) {
+    // Preserve legitimate studio accounts while still denying Forge access.
+    if (await prisma.shipyardStudioIdentity.findUnique({ where: { clerkId: userId }, select: { id: true } })) return notOnRosterRedirect(req);
     try {
       await flagOffRosterUser({
         clerkUserId: userId,

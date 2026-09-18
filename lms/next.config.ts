@@ -4,6 +4,8 @@ const nextConfig: NextConfig = {
   // Self-contained production server for Docker (see Dockerfile.web):
   // `next build` emits .next/standalone/server.js with only the needed deps.
   output: "standalone",
+  // Runtime builds check shipped code. The full test typecheck remains a separate check.
+  typescript: { tsconfigPath: "tsconfig.build.json" },
   // PDF text extraction deliberately does NOT run in this tier. pdf-parse
   // pulls pdfjs-dist and the native @napi-rs/canvas, whose per-platform binary
   // package Next's tracer does not follow into the standalone output — and the
