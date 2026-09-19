@@ -425,6 +425,124 @@ describe.skipIf(!enabled)("Shipyard studio with isolated Postgres", () => {
     expect(fakes.model).not.toHaveBeenCalled();
     expect(fakes.render).not.toHaveBeenCalled();
   });
+  it("keeps saved research from other candidate ideas out of coaching", async () => {
+    for (const ideaId of ["first", "unrelated-idea"]) {
+      await prisma.shipyardStudioJob.create({
+        data: {
+          workspaceId,
+          actorId: student.id,
+          kind: "research",
+          status: "complete",
+          requestKey: `research-${ideaId}-${suffix}`,
+          payload: { source: "market", idea: { id: ideaId } },
+          result: {
+            evidence: [
+              {
+                id: ideaId,
+                source: "fixture",
+                title: ideaId,
+                text: ideaId,
+                url: "https://example.com",
+                capturedAt: new Date().toISOString(),
+                type: "fixture",
+              },
+            ],
+          },
+        },
+      });
+    }
+    await prisma.shipyardStudioJob.updateMany({
+      where: { workspaceId, status: "queued" },
+      data: { status: "cancelled" },
+    });
+    fakes.model.mockClear();
+    fakes.model.mockResolvedValue({
+      data: {
+        answer: "Consider one narrow workflow.",
+        suggestions: [],
+        sourceIds: ["first"],
+      },
+      modelUsed: "fixture",
+      providerUsed: "fixture",
+      tokensIn: 1,
+      tokensOut: 1,
+      costUsd: 0.001,
+    });
+    const job = (await performStudioAction(student, {
+      action: "coach",
+      message: "Help me narrow this idea",
+      requestId: randomUUID(),
+    })) as { jobId: string };
+    await runStudioJob(job.jobId);
+    const body = fakes.model.mock.calls[0][0].user[0].text;
+    expect(body).toContain('"id":"first"');
+    expect(body).not.toContain("unrelated-idea");
+  });
+  it("preserves review allocation when the cohort coaching allocation is exhausted", async () => {
+    const other = await prisma.shipyardStudioMember.findUniqueOrThrow({
+      where: { identityId: outsider.id },
+    });
+    const spent = await prisma.shipyardStudioJob.create({
+      data: {
+        workspaceId: other.workspaceId,
+        actorId: outsider.id,
+        kind: "coach",
+        status: "complete",
+        requestKey: `budget-${suffix}`,
+        payload: {},
+        costUsd: 110,
+        createdAt: new Date(Date.now() - 2 * 86400000),
+      },
+    });
+    try {
+      await expect(
+        performStudioAction(outsider, {
+          action: "coach",
+          message: "Help me simplify",
+          requestId: randomUUID(),
+        }),
+      ).rejects.toThrow("shared coaching budget");
+      const document = emptyDocument();
+      Object.assign(document.ideas[0], {
+        title: "Invoice helper",
+        description:
+          "Software for freelancers to create reusable invoices for five dollars a month, sold through our design club.",
+        landingUrl: "https://example.com",
+      });
+      await performStudioAction(outsider, {
+        action: "save",
+        version: 0,
+        document,
+      });
+      await expect(
+        performStudioAction(outsider, {
+          action: "submit",
+          checkpoint: 1,
+          version: 1,
+          requestId: randomUUID(),
+        }),
+      ).resolves.toHaveProperty("submissionId");
+      await prisma.shipyardStudioJob.update({
+        where: { id: spent.id },
+        data: { costUsd: 150 },
+      });
+      await performStudioAction(outsider, {
+        action: "save",
+        version: 1,
+        document,
+      });
+      await expect(
+        performStudioAction(outsider, {
+          action: "submit",
+          checkpoint: 1,
+          version: 2,
+          requestId: randomUUID(),
+        }),
+      ).rejects.toThrow("shared AI review budget");
+    } finally {
+      await prisma.shipyardStudioJob.delete({ where: { id: spent.id } });
+    }
+  });
   it("resubmission invalidates downstream progress without deleting history", async () => {
     const w = await saveIdea();
     await performStudioAction(student, {

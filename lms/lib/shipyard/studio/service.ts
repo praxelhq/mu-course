@@ -65,7 +65,7 @@ async function budget(tx: Tx, workspaceId: string, kind: string) {
   const since = new Date(Date.now() - 86400000);
   // Serialize admission across teams and reserve spend for pending/uncertain calls.
   await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtext('shipyard-studio-budget'))`;
-  const [count, active, global] = await Promise.all([
+  const [count, active, global, cohort] = await Promise.all([
     tx.shipyardStudioJob.count({
       where: { workspaceId, kind, createdAt: { gte: since } },
     }),
@@ -73,9 +73,13 @@ async function budget(tx: Tx, workspaceId: string, kind: string) {
       where: { workspaceId, status: { in: ["queued", "running"] } },
     }),
     tx.$queryRaw<Array<{ allocated: number }>>`SELECT COALESCE(SUM(CASE
-      WHEN status IN ('queued', 'running', 'failed') AND kind IN ('coach', 'review', 'research')
+      WHEN (status IN ('queued', 'running', 'failed') OR (status = 'cancelled' AND "startedAt" IS NOT NULL AND "costUsd" = 0)) AND kind IN ('coach', 'review', 'research')
         THEN GREATEST("costUsd", 1.0) ELSE "costUsd" END), 0)::float8 AS allocated
       FROM "ShipyardStudioJob" WHERE "createdAt" >= ${since}`,
+    tx.$queryRaw<Array<{ allocated: number }>>`SELECT COALESCE(SUM(CASE
+      WHEN status IN ('queued', 'running', 'failed') OR (status = 'cancelled' AND "startedAt" IS NOT NULL AND "costUsd" = 0) THEN GREATEST("costUsd", 1.0)
+      ELSE "costUsd" END), 0)::float8 AS allocated
+      FROM "ShipyardStudioJob" WHERE kind IN ('coach', 'review')`,
   ]);
   if (active >= 3)
     throw new StudioError(
@@ -87,6 +91,18 @@ async function budget(tx: Tx, workspaceId: string, kind: string) {
       429,
       "Your team's daily limit is reached. Try again tomorrow.",
     );
+  if (kind === "coach" || kind === "review") {
+    const total = Number(process.env.SHIPYARD_COHORT_AI_BUDGET_USD || 150);
+    const reserve = Number(process.env.SHIPYARD_REVIEW_RESERVE_USD || 40);
+    const limit = kind === "coach" ? Math.max(0, total - reserve) : total;
+    if (!Number.isFinite(limit) || (cohort[0]?.allocated || 0) + 1 > limit)
+      throw new StudioError(
+        429,
+        kind === "coach"
+          ? "The shared coaching budget is reached. Your work is saved and checkpoint reviews remain available. Contact build@praxel.in."
+          : "The shared AI review budget is reached. Your work is saved. Contact build@praxel.in for instructor review.",
+      );
+  }
   if (
     (global[0]?.allocated || 0) + 1 >
     Number(process.env.SHIPYARD_DAILY_BUDGET_USD || 50)

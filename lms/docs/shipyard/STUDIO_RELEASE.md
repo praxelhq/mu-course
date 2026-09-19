@@ -1,6 +1,6 @@
 # Venture workspace release
 
-Status: implemented and locally validated; not deployed. The instructor's dedicated Anthropic key and real Haiku feedback evaluation remain release gates.
+Status: release validated with the instructor-provided Anthropic key; production activation in progress.
 
 ## Product boundary
 
@@ -24,13 +24,15 @@ Keep credentials in the hosting provider's secret variables. Never put them in t
 | `SHIPYARD_EMAIL_DOMAINS` | forge-prod | Exact domains, defaults to `mastersunion.org` |
 | `SHIPYARD_INSTRUCTOR_EMAILS` | forge-prod | Explicit instructor emails; defaults to `build@praxel.in` |
 | `SHIPYARD_DAILY_BUDGET_USD` | forge-prod | Rolling 24-hour allocation, default 50 USD |
+| `SHIPYARD_COHORT_AI_BUDGET_USD` | forge-prod | Lifetime studio AI allocation, 150 USD |
+| `SHIPYARD_REVIEW_RESERVE_USD` | forge-prod | Stop coaching 40 USD before the total cap to preserve review allocation |
 
 Existing database, S3, Clerk and `APP_URL` configuration remains required. The new AI client never falls back to shared Course 1 credentials or mock feedback. Clerk verifies primary email ownership; the studio API checks the exact domain. The existing Clerk signup configuration is reused.
 
 ## Limits and failure behavior
 
 - Ten members per workspace, twelve candidate ideas, thirty coach requests and ten research/review requests per team per rolling day; at most three active jobs per team.
-- Each pending or uncertain failed paid job reserves one dollar from the global allocation. Admission is serialized across teams; actual successful job cost replaces the reservation. This is an application allocation, not a provider billing guarantee.
+- Each pending or uncertain failed paid job reserves one dollar from the global allocation. A cancelled request that already started retains its reservation until actual cost is known. Admission is serialized across teams; actual successful job cost replaces the reservation. This is an application allocation, not a provider billing guarantee.
 - Social runs request at most twelve results, use a 120-second actor timeout and a 0.50 USD charge ceiling. X and Instagram require a public post URL; Reddit supports keyword research. Returned posts are a sample, never proof of representative demand.
 - The instructor desk can pause each source, inspect failed jobs, see per-team spend and source capture/import dates. A pause affects new research and future retrieval, preserving historical evidence.
 - Uploads are at most 8 MB, use one-time S3 PUT signatures and immutable version IDs. The worker resizes images before Claude; missing evidence cannot create a pass.
@@ -47,13 +49,14 @@ Export with `python scripts/shipyard-studio-export.py <workbook.xlsx> <private.n
 ## Verified locally
 
 - Production Next build and shipped-code TypeScript check pass; changed-code ESLint passes.
-- 31 focused tests cover word/domain contracts, immutable submissions, team isolation, invitation replay, concurrent saves, source switches, stale appeal decisions, instructor authorization, no-AI final receipts, direct Haiku transport, image resizing and verified off-roster MU webhook handling.
+- 33 focused tests cover word/domain contracts, immutable submissions, team isolation, invitation replay, concurrent saves, source switches, stale appeal decisions, instructor authorization, no-AI final receipts, direct Haiku transport, image resizing and verified off-roster MU webhook handling.
 - The larger suite reports 1,753 passes and 24 failures (46 skips), excluding the pre-existing missing transformation module. All 24 failing cases reproduce unchanged on production commit `e8cd5f305b5111c034ef913844123c62338e56b8`; they concern existing interview, peer-review and submission behavior. An early full-suite run invoked the repository's demo reset against local `praxel_lms_dev`; subsequent broad and baseline runs used a disposable database. No production seed ran.
 - The additive migration applies successfully to a copy of the production schema. The test copy needs the `pgcrypto` extension used by existing audit triggers.
 - AppRill plus marketplace research returned 19 cited observations. A real Reddit job returned 12 items at approximately 0.000735 USD. X and Instagram actor configuration was checked but their live runs remain unexercised.
 - Browser checks covered student entry, workspace creation, edit/save, immutable S3 reference-image upload, mobile layout fit and rejection of student access to the instructor desk.
 - A sender test to `build@praxel.in` was accepted by Resend. No test email went to a student.
-- An earlier coach smoke used Gemini before the instructor selected Anthropic. It does not establish current Haiku quality. The dedicated Haiku key has not been provided; live Haiku evaluation remains outstanding.
+- Dedicated Claude Haiku 4.5 calls passed the narrow software, oversized scope, agency, prompt-injection and inaccessible-page fixtures. Vision correctly identified missing screens in the incomplete design fixture and passed a complete, explicitly single-line-item invoice flow ($0.011). The first run caught an unnecessary payment-provider requirement; the rubric was corrected and all five decision fixtures passed on rerun. Representative grounded review calls used about 18,100 input tokens and cost $0.022–$0.024; a grounded coach response cost $0.027. A real coach worker run with saved social evidence and conversation cost $0.049. These are measured examples, not an upper bound.
+- For 500 individual workspaces, two reviews plus eight coach calls each are approximately $131 at the measured rates. Twenty coach calls plus two reviews each would be approximately $295. At 125 teams, that latter workload is approximately $74. Long conversations, large designs and retries increase usage; Apify and hosting use separate balances. The configured $150 application cap leaves about $18 of the reported Anthropic credit outside this allocation. Provider-side spending elsewhere is not observable by this application.
 
 ## Release sequence
 

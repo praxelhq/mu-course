@@ -31,13 +31,18 @@ import { sourceEnabled } from "@/lib/shipyard/studio/settings";
 
 const json = (v: unknown) =>
   JSON.parse(JSON.stringify(v)) as Prisma.InputJsonValue;
-async function evidenceFor(job: ShipyardStudioJob, query: string) {
+async function evidenceFor(
+  job: ShipyardStudioJob,
+  query: string,
+  ideaId: string,
+) {
   const knowledge = await knowledgeSearch(query);
   const previous = await prisma.shipyardStudioJob.findMany({
     where: {
       workspaceId: job.workspaceId,
       kind: "research",
       status: "complete",
+      payload: { path: ["idea", "id"], equals: ideaId },
     },
     orderBy: { createdAt: "desc" },
     take: 3,
@@ -141,6 +146,7 @@ async function review(job: ShipyardStudioJob) {
     throw new Error("Checkpoint 3 must never enter the reviewer.");
   if (submission.status !== "queued") return finish(job, { skipped: true });
   const snapshot = submission.snapshot as {
+    ideaId: string;
     fields: {
       title?: string;
       description?: string;
@@ -153,6 +159,7 @@ async function review(job: ShipyardStudioJob) {
   const evidence = await evidenceFor(
     job,
     `${snapshot.fields.title || ""} ${snapshot.fields.description || snapshot.fields.job || ""}`,
+    snapshot.ideaId,
   );
   const content: Array<
     { type: "text"; text: string } | ReturnType<typeof imagePart>
@@ -375,7 +382,10 @@ export async function runStudioJob(id: string) {
     if (job.kind !== "coach") throw new Error("Unknown studio job type");
     const evidence = await evidenceFor(
       job,
-      `${payload.idea?.title || ""} ${payload.idea?.description || ""} ${payload.message}`,
+      `${payload.idea?.title || ""} ${payload.idea?.description || ""}`.trim() ||
+        payload.message ||
+        "",
+      payload.idea!.id,
     );
     const attachments: Array<
       { type: "text"; text: string } | ReturnType<typeof imagePart>
