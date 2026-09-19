@@ -6,12 +6,12 @@ topic: shipyard-venture-workspace
 artifact_contract: ce-unified-plan/v1
 product_contract_source: ce-brainstorm
 execution: code
-implementation_status: release-candidate-validated
+implementation_status: live-email-only-signup-pending
 ---
 
 # Shipyard Venture Workspace - Plan
 
-Implementation update: U1–U4 are implemented and locally exercised. The instructor-provided Anthropic key is configured and real Haiku fixtures pass; U5 production activation is in progress. See `lms/docs/shipyard/STUDIO_RELEASE.md` and `docs/reviews/2026-09-19-shipyard-studio.md`. The user's later provider decision is direct Claude Haiku, superseding any earlier Gemini/OpenRouter fallback assumption for this new workspace.
+Implementation update: U1–U4 are implemented and locally exercised. The instructor-provided Anthropic key is configured and real Haiku fixtures pass; U5 production activation is complete; email-only signup awaits access to the owning Clerk dashboard. See `lms/docs/shipyard/STUDIO_RELEASE.md` and `docs/reviews/2026-09-19-shipyard-studio.md`. The user's later provider decision is direct Claude Haiku, superseding any earlier Gemini/OpenRouter fallback assumption for this new workspace.
 
 ## Goal Capsule
 

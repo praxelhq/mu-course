@@ -25,6 +25,7 @@ async function main() {
   const results: unknown[] = [];
   for (const fixture of [
     { name: "narrow-paid-software", fields: good, expected: "pass" },
+    { name: "contradictory-free-offer", fields: good, expected: "revise" },
     {
       name: "operations-heavy-agency",
       fields: {
@@ -66,7 +67,10 @@ async function main() {
             : {
                 status: 200,
                 accessible: true,
-                text: fixture.fields.description,
+                text:
+                  fixture.name === "contradictory-free-offer"
+                    ? "Generate unlimited invoices for free. No paid tier or premium features."
+                    : fixture.fields.description,
                 provenance:
                   "controlled evaluation fixture supplies successful fetch evidence",
               },
@@ -75,10 +79,16 @@ async function main() {
       temperature: 0,
     });
     const decision = canPass(1, result.data) ? "pass" : result.data.decision;
+    const feedbackWithinScope =
+      fixture.name !== "contradictory-free-offer" ||
+      (result.data.nextSteps.length <= 3 &&
+        !/waitlist|club leader|conversion rate|interview/i.test(
+          result.data.nextSteps.join(" "),
+        ));
     results.push({
       name: fixture.name,
       expected: fixture.expected,
-      matched: decision === fixture.expected,
+      matched: decision === fixture.expected && feedbackWithinScope,
       ...result,
     });
     console.log(
