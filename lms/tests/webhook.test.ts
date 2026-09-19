@@ -155,6 +155,15 @@ describe("POST /api/webhooks/clerk — signature verification", () => {
 });
 
 describe("POST /api/webhooks/clerk — user.created", () => {
+  it("keeps verified off-roster MU accounts without creating Forge enrollment", async () => {
+    const { POST } = await import("../app/api/webhooks/clerk/route");
+    const res = await POST(signedRequest(clerkUserPayload({
+      email_addresses: [{ id: "em_1", email_address: "new-studio@mastersunion.org", verification: { status: "verified" } }],
+    })));
+    expect(res.status).toBe(200);
+    expect(dbCalls.some(c => ["user.updateMany", "userClerkIdentity.createMany", "auditLog.create"].includes(c.op))).toBe(false);
+    expect(metadataCalls).toEqual([{ clerkUserId: "clerk_abc", patch: { privateMetadata: { flaggedForDeletion: false } } }]);
+  });
   it("links clerkUserId to the roster row and pushes role/section to publicMetadata", async () => {
     rosterByEmail["rostered@example.com"] = {
       id: "u_roster",

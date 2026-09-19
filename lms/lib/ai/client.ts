@@ -93,10 +93,16 @@ export type StructuredCaller = <T>(args: StructuredCallArgs<T>) => Promise<Struc
 /** Models that reject sampling params entirely (omit temperature for them). */
 const NO_TEMPERATURE = /claude-(opus-4-[7-9]|opus-5|sonnet-5|fable|mythos)/;
 
-function realModelClient(): ModelClient {
+/** A separately scoped client for Shipyard; never changes Course 1 credentials. */
+export function anthropicModelClient(apiKey: string): ModelClient {
+  const studioClient = new Anthropic({ apiKey, timeout: 90_000, maxRetries: 0 });
+  return realModelClient(() => studioClient);
+}
+
+function realModelClient(resolveClient: () => Anthropic = getAnthropic): ModelClient {
   return {
     async complete({ system, user, maxTokens, temperature, model, images, pdfsBase64 }) {
-      const anthropic = getAnthropic();
+      const anthropic = resolveClient();
       const content: Anthropic.ContentBlockParam[] = [{ type: "text", text: user }];
       for (const img of images ?? []) {
         content.push({

@@ -44,6 +44,27 @@
 
 ## Shipyard (Course 2) — "the Forge in Course 2 mode"
 
+### Venture workspace successor (19 September 2026)
+
+Pushpak's new three-checkpoint/team-workspace contract is recorded in
+`../docs/plans/2026-09-19-0011-feat-shipyard-venture-workspace-plan.md`.
+The new `/shipyard` entry uses `lib/shipyard/studio/`, additive
+`ShipyardStudio*` tables, and `worker/shipyard-jobs/studio.ts`.
+`docs/shipyard/STUDIO_RELEASE.md` records release status and verification.
+The older six-checkpoint implementation below remains at `/shipyard/history`.
+
+For the studio, the user explicitly selected direct Claude Haiku through
+`lib/ai/studio.ts`, with a dedicated `SHIPYARD_ANTHROPIC_API_KEY`; it reuses
+the JSON/SDK wrapper in `lib/ai/client.ts` without changing Course 1 keys.
+The OpenRouter-only rule below governs historical Shipyard reviews.
+Studio gates use the pure `gateOpen`/`canPass` contracts plus serialized
+submission transactions, without writing historical checkpoint-state rows.
+Checkpoint 3 is always receipt-only: never browse, grade or track its URL.
+Model/URL/image failures cannot pass a gate or turn into an academic rejection.
+Real Haiku fixture evaluation is a release gate, currently pending the key.
+
+### Historical six-checkpoint implementation
+
 The Shipyard is the Course 2 product-shipping portal, built inside this repo as
 a `courseId`-scoped mode of the Forge. Source of truth: `docs/shipyard/SPEC.md`
 (the build prompt) and `docs/shipyard/ARCHITECTURE.md` (how it is fitted in).

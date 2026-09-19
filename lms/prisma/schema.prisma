@@ -19,6 +19,159 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Shipyard studio is independent of the Forge roster and legacy grade tables.
+model ShipyardStudioIdentity {
+  id         String                @id @default(cuid())
+  clerkId    String                @unique
+  email      String                @unique
+  name       String
+  createdAt  DateTime              @default(now())
+  updatedAt  DateTime              @updatedAt
+  membership ShipyardStudioMember?
+}
+
+model ShipyardStudioWorkspace {
+  id          String                     @id @default(cuid())
+  name        String
+  version     Int                        @default(0)
+  document    Json
+  createdAt   DateTime                   @default(now())
+  updatedAt   DateTime                   @updatedAt
+  members     ShipyardStudioMember[]
+  invitations ShipyardStudioInvitation[]
+  revisions   ShipyardStudioRevision[]
+  submissions ShipyardStudioSubmission[]
+  jobs        ShipyardStudioJob[]
+  files       ShipyardStudioFile[]
+}
+
+model ShipyardStudioMember {
+  id          String                  @id @default(cuid())
+  workspaceId String
+  identityId  String                  @unique
+  role        String                  @default("member")
+  joinedAt    DateTime                @default(now())
+  workspace   ShipyardStudioWorkspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  identity    ShipyardStudioIdentity  @relation(fields: [identityId], references: [id], onDelete: Cascade)
+
+  @@index([workspaceId])
+}
+
+model ShipyardStudioInvitation {
+  id          String                  @id @default(cuid())
+  workspaceId String
+  email       String
+  tokenHash   String                  @unique
+  expiresAt   DateTime
+  acceptedAt  DateTime?
+  revokedAt   DateTime?
+  createdAt   DateTime                @default(now())
+  workspace   ShipyardStudioWorkspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@index([email, expiresAt])
+}
+
+model ShipyardStudioRevision {
+  id          String                  @id @default(cuid())
+  workspaceId String
+  version     Int
+  actorId     String
+  reason      String
+  document    Json
+  createdAt   DateTime                @default(now())
+  workspace   ShipyardStudioWorkspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@unique([workspaceId, version])
+}
+
+model ShipyardStudioSubmission {
+  id          String                  @id @default(cuid())
+  workspaceId String
+  checkpoint  Int
+  version     Int
+  actorId     String
+  snapshot    Json
+  members     Json
+  rubric      String
+  status      String                  @default("queued")
+  review      Json?
+  reviewedAt  DateTime?
+  createdAt   DateTime                @default(now())
+  workspace   ShipyardStudioWorkspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  appeal      ShipyardStudioAppeal?
+
+  @@unique([workspaceId, checkpoint, version])
+  @@index([workspaceId, checkpoint, createdAt])
+}
+
+model ShipyardStudioAppeal {
+  id           String                   @id @default(cuid())
+  submissionId String                   @unique
+  actorId      String
+  studentEmail String
+  reason       String
+  emailPayload Json
+  emailStatus  String                   @default("pending")
+  emailId      String?
+  decision     String?
+  decisionNote String?
+  decidedBy    String?
+  decidedAt    DateTime?
+  createdAt    DateTime                 @default(now())
+  submission   ShipyardStudioSubmission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+}
+
+model ShipyardStudioJob {
+  id          String                  @id @default(cuid())
+  workspaceId String
+  actorId     String
+  kind        String
+  requestKey  String                  @unique
+  payload     Json
+  result      Json?
+  status      String                  @default("queued")
+  attempts    Int                     @default(0)
+  lease       String?
+  startedAt   DateTime?
+  finishedAt  DateTime?
+  error       String?
+  costUsd     Float                   @default(0)
+  createdAt   DateTime                @default(now())
+  workspace   ShipyardStudioWorkspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@index([status, createdAt])
+  @@index([workspaceId, createdAt])
+}
+
+model ShipyardStudioFile {
+  id          String                  @id @default(cuid())
+  workspaceId String
+  actorId     String
+  name        String
+  key         String                  @unique
+  kind        String
+  contentType String
+  bytes       Int
+  versionId   String?
+  createdAt   DateTime                @default(now())
+  workspace   ShipyardStudioWorkspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@index([workspaceId])
+}
+
+model ShipyardStudioKnowledge {
+  id         String   @id
+  source     String
+  title      String
+  url        String
+  capturedAt DateTime
+  text       String
+  data       Json
+  updatedAt  DateTime @updatedAt
+
+  @@index([source])
+}
+
 enum Role {
   student
   instructor

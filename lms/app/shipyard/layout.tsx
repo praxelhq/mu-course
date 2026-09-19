@@ -50,7 +50,7 @@ const FONT_VARS = `${instrumentSans.variable} ${instrumentSerif.variable} ${plex
 
 export const metadata = {
   title: "The Shipyard · Praxel",
-  description: "Course 2 — one product, six checkpoints.",
+  description: "Shape an idea. Build something useful. Get your first customer.",
 };
 
 export default async function ShipyardLayout({ children }: { children: ReactNode }) {

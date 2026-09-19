@@ -205,6 +205,16 @@ const ASSIGNMENT_TYPES = [
  * a future model addition fails closed until its reset behavior is reviewed.
  */
 export const DEMO_SEED_TABLES = [
+  "ShipyardStudioIdentity",
+  "ShipyardStudioWorkspace",
+  "ShipyardStudioMember",
+  "ShipyardStudioInvitation",
+  "ShipyardStudioRevision",
+  "ShipyardStudioSubmission",
+  "ShipyardStudioAppeal",
+  "ShipyardStudioJob",
+  "ShipyardStudioFile",
+  "ShipyardStudioKnowledge",
   "User",
   "UserEmailAlias",
   "UserClerkIdentity",
