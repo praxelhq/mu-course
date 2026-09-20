@@ -104,7 +104,7 @@
 }
 .st-layout {
   display: grid;
-  grid-template-columns: 190px minmax(0, 1fr) 345px;
+  grid-template-columns: 210px minmax(0, 1fr);
   align-items: start;
   gap: 0;
 }
@@ -962,7 +962,7 @@
 }
 @media (min-width: 1500px) {
   .st-layout {
-    grid-template-columns: 210px minmax(0, 1fr) 385px;
+    grid-template-columns: 230px minmax(0, 1fr);
   }
   .st-content {
     padding: 40px 48px;
@@ -976,7 +976,7 @@
     padding: 0 20px 30px;
   }
   .st-layout {
-    grid-template-columns: 155px minmax(0, 1fr) 285px;
+    grid-template-columns: 185px minmax(0, 1fr);
   }
   .st-content {
     padding: 28px 22px;
@@ -1179,5 +1179,314 @@
 @media (prefers-reduced-motion: reduce) {
   .sy-root .st-button {
     transition: none;
+  }
+}
+.st-project-picker {
+  margin: 0 0 25px;
+}
+.st-ledger-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.st-ledger-search {
+  display: grid;
+  gap: 8px;
+  margin: 20px 0;
+  font-size: 13px;
+}
+.st-ledger-search input {
+  padding: 12px;
+  border: 1px solid #d4ddce;
+  background: white;
+  font: inherit;
+  width: 100%;
+}
+.st-ledger-scroll {
+  overflow-x: auto;
+}
+.st-ledger {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  font-size: 12px;
+}
+.st-ledger th,
+.st-ledger td {
+  padding: 15px 12px;
+  border: 1px solid #dfe6d7;
+  text-align: left;
+  vertical-align: top;
+  min-width: 100px;
+}
+.st-ledger th {
+  background: #eef3e8;
+  color: #506541;
+}
+.st-ledger td:first-child {
+  min-width: 180px;
+}
+.st-ledger td:nth-child(2) {
+  min-width: 220px;
+}
+.st-ledger a {
+  color: #175b44;
+  font-weight: 600;
+}
+.st-ledger small {
+  display: block;
+  overflow-wrap: anywhere;
+  margin-top: 7px;
+  color: #7a896e;
+}
+.st-ledger details {
+  margin-top: 8px;
+}
+.st-operations {
+  margin: 30px 0;
+  padding: 18px;
+  border: 1px solid #dce5d4;
+}
+.st-project-picker label {
+  display: grid;
+  gap: 7px;
+  font-size: 11px;
+  color: #6a796f;
+}
+.st-project-chat {
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: max(650px, calc(100dvh - 285px));
+}
+.st-chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e5eae1;
+}
+.st-chat-header h2 {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 5px 0 0;
+  overflow-wrap: anywhere;
+}
+.st-conversation {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 20px 8px 25px;
+}
+.st-chat-welcome {
+  max-width: 640px;
+  margin: 35px auto 30px;
+  text-align: center;
+}
+.st-chat-welcome h3 {
+  font-family: var(--font-instrument-serif), serif;
+  font-weight: 400;
+  font-size: 42px;
+  line-height: 1.1;
+  margin: 18px 0;
+}
+.st-chat-welcome p {
+  font-size: 15px;
+  color: #758078;
+  line-height: 1.8;
+  max-width: 540px;
+  margin: auto;
+}
+.st-starters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 28px auto 0;
+}
+.st-starters button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  background: #fafcf8;
+  border: 1px solid #e0e7db;
+  padding: 18px;
+  color: #426336;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 7px;
+}
+.st-starters b {
+  font-size: 13px;
+  font-weight: 500;
+}
+.st-chat-turn {
+  margin: 10px 0 30px;
+  font-size: 15px;
+}
+.st-chat-turn .st-user-message {
+  max-width: 80%;
+  width: fit-content;
+  margin-left: auto;
+  padding: 15px 20px;
+  overflow-wrap: anywhere;
+}
+.st-assistant-message {
+  max-width: 100%;
+  line-height: 1.8;
+  padding: 8px 5px 0;
+  overflow-wrap: anywhere;
+}
+.st-assistant-message pre {
+  white-space: pre-wrap;
+}
+.st-chat-composer {
+  padding: 15px 18px 8px;
+  border: 1px solid #cbd9c7;
+  background: #fff;
+  border-radius: 10px;
+}
+.st-chat-composer textarea {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  font-size: 15px;
+  resize: vertical;
+  min-height: 60px;
+  max-height: 220px;
+}
+.st-chat-composer textarea:focus {
+  box-shadow: none;
+}
+.st-composer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 10px;
+}
+.st-composer-actions small,
+.st-chat-disclaimer {
+  font-size: 10px;
+  color: #83917d;
+}
+.st-chat-disclaimer {
+  text-align: center;
+  margin: 10px 0 0;
+}
+.st-chat-attach {
+  margin-top: 4px;
+}
+.st-chat-attach .st-upload {
+  max-height: 250px;
+  overflow-y: auto;
+  margin-top: 8px;
+  padding: 12px;
+}
+.st-chat-attach .st-upload p {
+  min-height: 0;
+}
+.st-image-list,
+.st-chat-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.st-image-item {
+  width: 130px;
+  overflow-wrap: anywhere;
+}
+.st-image-item a {
+  display: grid;
+  gap: 5px;
+  font-size: 11px;
+  color: #426336;
+}
+.st-image-item img,
+.st-chat-images img {
+  width: 128px;
+  height: 90px;
+  object-fit: contain;
+  background: #fff;
+  border: 1px solid #dce3d7;
+}
+.st-image-item button {
+  font-size: 11px;
+  background: transparent;
+  border: 0;
+  color: #63785a;
+  cursor: pointer;
+  padding: 5px 0;
+}
+.st-optional-notes {
+  margin: 25px 0 5px;
+  border-top: 1px solid #e0e6dc;
+  padding-top: 18px;
+}
+.st-optional-notes summary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+.st-optional-notes summary span {
+  font-size: 11px;
+  color: #83917d;
+}
+.st-optional-notes summary::before {
+  content: "+ ";
+}
+.st-optional-notes[open] summary::before {
+  content: "− ";
+}
+@media (max-width: 600px) {
+  .st-project-picker {
+    margin-bottom: 12px;
+  }
+  .st-project-chat {
+    height: max(580px, calc(100dvh - 260px));
+  }
+  .st-chat-header {
+    align-items: start;
+  }
+  .st-chat-header .st-tag {
+    display: none;
+  }
+  .st-chat-header h2 {
+    font-size: 17px;
+  }
+  .st-chat-welcome {
+    margin-top: 15px;
+  }
+  .st-chat-welcome h3 {
+    font-size: 33px;
+  }
+  .st-chat-welcome p {
+    font-size: 13px;
+  }
+  .st-starters {
+    gap: 8px;
+  }
+  .st-starters button {
+    padding: 12px;
+  }
+  .st-chat-turn .st-user-message {
+    max-width: 92%;
+    padding: 12px;
+  }
+  .st-chat-composer {
+    padding: 12px;
+  }
+  .st-conversation {
+    padding-left: 0;
+    padding-right: 0;
   }
 }

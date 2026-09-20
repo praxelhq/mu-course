@@ -6,32 +6,20 @@ import {
   documentSchema,
   emptyIdea,
   latestSubmission,
-  wordCount,
   type StudioDocument,
   type StudioIdea,
 } from "@/lib/shipyard/studio/contracts";
-import {
-  api,
-  Field,
-  Heading,
-  labels,
-  Sources,
-  time,
-  type State,
-  type AppealRow,
-} from "./shared";
+import { api, Heading, time, type State, type AppealRow } from "./shared";
 import { Checkpoints } from "./checkpoints";
-import { Markdown } from "@/components/markdown";
+import { ProjectChat } from "./chat";
 import { InstructorOverview } from "./instructor";
 import type { InstructorState } from "@/lib/shipyard/studio/instructor";
 import "./studio.css";
-type Tab = "idea" | "evidence" | "checkpoints" | "build" | "team";
+type Tab = "chat" | "checkpoints" | "team";
 const tabs: { id: Tab; label: string; number: string }[] = [
-  { id: "idea", label: "Idea notebook", number: "01" },
-  { id: "evidence", label: "Evidence library", number: "02" },
-  { id: "checkpoints", label: "Checkpoints", number: "03" },
-  { id: "build", label: "Build room", number: "04" },
-  { id: "team", label: "Your team", number: "05" },
+  { id: "chat", label: "Project chat", number: "✳" },
+  { id: "checkpoints", label: "Submissions", number: "01" },
+  { id: "team", label: "Your team", number: "02" },
 ];
 export function Studio({
   clerkAvailable,
@@ -48,7 +36,7 @@ export function Studio({
 }) {
   const [state, setState] = useState<State | null>(null),
     [doc, setDoc] = useState<StudioDocument | null>(null),
-    [tab, setTab] = useState<Tab>(instructor ? "checkpoints" : "idea");
+    [tab, setTab] = useState<Tab>(instructor ? "checkpoints" : "chat");
   const [loading, setLoading] = useState(true),
     [signedOut, setSignedOut] = useState(false),
     [error, setError] = useState(""),
@@ -63,11 +51,7 @@ export function Studio({
     saveReason = useRef("Saved workspace"),
     activeJobs = useRef(false);
   const [overview, setOverview] = useState<InstructorState | null>(null);
-  const [name, setName] = useState(""),
-    [message, setMessage] = useState(""),
-    [query, setQuery] = useState(""),
-    [source, setSource] = useState("market"),
-    [target, setTarget] = useState("");
+  const [name, setName] = useState("");
   const [inviteEmail, setInviteEmail] = useState(""),
     [inviteUrl, setInviteUrl] = useState(""),
     [appeals, setAppeals] = useState<AppealRow[]>([]);
@@ -87,6 +71,14 @@ export function Studio({
       setSignedOut(false);
       if (next.workspace && !dirtyRef.current && !busyRef.current) {
         const d = documentSchema.parse(next.workspace.document);
+        const inspectedIdea = docRef.current?.activeIdeaId;
+        if (
+          instructor &&
+          workspaceId &&
+          inspectedIdea &&
+          d.ideas.some((i) => i.id === inspectedIdea)
+        )
+          d.activeIdeaId = inspectedIdea;
         setDoc(d);
         docRef.current = d;
         versionRef.current = next.workspace.version;
@@ -183,8 +175,8 @@ export function Studio({
     saveReason.current = "Saved workspace";
     return result.version as number;
   }
-  async function savedAction(body: Record<string, unknown>) {
-    if (busyRef.current) return;
+  async function savedAction(body: Record<string, unknown>): Promise<boolean> {
+    if (busyRef.current) return false;
     working(true);
     setError("");
     setNotice("");
@@ -199,7 +191,7 @@ export function Studio({
         ...(body.action === "submit" ? { version } : {}),
         requestId: crypto.randomUUID(),
       });
-      if (body.action === "coach") setMessage("");
+
       setNotice(
         body.action === "submit" && body.checkpoint === 3
           ? "Product received. There is no automated review for this checkpoint."
@@ -207,13 +199,19 @@ export function Studio({
       );
       working(false);
       await load();
+      return true;
     } catch (e) {
       setError((e as Error).message);
+      return false;
     } finally {
       working(false);
     }
   }
-  async function upload(file: File, kind: "sketch" | "design" | "reference") {
+  async function upload(
+    file: File,
+    kind: "sketch" | "design" | "reference",
+    destination?: "visuals",
+  ) {
     if (busyRef.current) return;
     working(true);
     setError("");
@@ -236,20 +234,19 @@ export function Studio({
       if (!put.ok)
         throw new Error("The image upload failed. Please try again.");
       await api({ action: "confirm-upload", fileId: reserved.fileId });
-      const current = docRef.current!.ideas.find(
-        (i) => i.id === docRef.current!.activeIdeaId,
-      )!;
-      const field =
-        kind === "sketch"
-          ? "sketches"
-          : kind === "design"
-            ? "designs"
-            : "references";
-      change(field, [...current[field], reserved.fileId]);
-      await save();
+      if (kind !== "reference" || destination === "visuals") {
+        const current = docRef.current!.ideas.find(
+          (i) => i.id === docRef.current!.activeIdeaId,
+        )!;
+        const field =
+          destination || (kind === "sketch" ? "sketches" : "designs");
+        change(field, [...current[field], reserved.fileId]);
+        await save();
+      }
       working(false);
       await load();
-      setNotice("Image attached and saved.");
+      setNotice("Image uploaded.");
+      return reserved.fileId as string;
     } catch (e) {
       setError((e as Error).message);
     } finally {
@@ -383,7 +380,7 @@ export function Studio({
       <main className="st-desk">
         {account}
         <div className="st-kicker">INSTRUCTOR DESK</div>
-        <h1>Students asking for a second look.</h1>
+        <h1>Projects, submissions and second looks.</h1>
         {error && (
           <p className="st-error" role="alert">
             {error}
@@ -483,7 +480,6 @@ export function Studio({
         </p>
       </main>
     );
-  const active = w.jobs.some((j) => ["queued", "running"].includes(j.status));
   return (
     <main className="st-app">
       {account}
@@ -558,6 +554,46 @@ export function Studio({
       )}
       <div className="st-layout">
         <aside className="st-sidebar">
+          <div className="st-project-picker">
+            <label>
+              Project
+              <select
+                aria-label="Working idea"
+                value={doc.activeIdeaId}
+                disabled={busy}
+                onChange={(e) => {
+                  const next = { ...doc, activeIdeaId: e.target.value };
+                  if (readonly) {
+                    setDoc(next);
+                    docRef.current = next;
+                  } else edit(next);
+                }}
+              >
+                {doc.ideas.map((i, n) => (
+                  <option key={i.id} value={i.id}>
+                    {i.title || `Untitled idea ${n + 1}`}
+                  </option>
+                ))}
+              </select>
+            </label>
+            {!readonly && doc.ideas.length < 12 && (
+              <button
+                className="st-text-button"
+                disabled={busy}
+                onClick={() => {
+                  const id = crypto.randomUUID();
+                  edit({
+                    ...doc,
+                    activeIdeaId: id,
+                    ideas: [...doc.ideas, emptyIdea(id)],
+                  });
+                  setTab("chat");
+                }}
+              >
+                ＋ Explore another idea
+              </button>
+            )}
+          </div>
           <nav aria-label="Workspace sections">
             {tabs.map((t) => (
               <button
@@ -607,248 +643,28 @@ export function Studio({
           className="st-content"
           aria-label={tabs.find((t) => t.id === tab)?.label}
         >
-          {tab === "idea" && (
-            <>
-              <Heading
-                number="01"
-                kicker="IDEA NOTEBOOK"
-                title="Make the idea clearer."
-                description="Explore a few directions. Keep one active for your next checkpoint."
-              />
-              <div className="st-idea-picker">
-                <label>
-                  Working idea
-                  <select
-                    value={doc.activeIdeaId}
-                    disabled={readonly || busy}
-                    onChange={(e) =>
-                      edit({ ...doc, activeIdeaId: e.target.value })
-                    }
-                  >
-                    {doc.ideas.map((i, n) => (
-                      <option key={i.id} value={i.id}>
-                        {i.title || `Untitled idea ${n + 1}`}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                {!readonly && doc.ideas.length < 12 && (
-                  <button
-                    className="st-text-button"
-                    disabled={busy}
-                    onClick={() => {
-                      const id = crypto.randomUUID();
-                      edit({
-                        ...doc,
-                        activeIdeaId: id,
-                        ideas: [...doc.ideas, emptyIdea(id)],
-                      });
-                    }}
-                  >
-                    + Explore another idea
-                  </button>
-                )}
-              </div>
-              <fieldset disabled={readonly || busy}>
-                <Field
-                  label="Give it a working title"
-                  value={idea.title}
-                  onChange={(v) => change("title", v)}
-                  rows={1}
-                  placeholder="A short name for what you are making"
-                />
-                <Field
-                  label="The idea, in plain language"
-                  value={idea.description}
-                  onChange={(v) => change("description", v)}
-                  hint={`${wordCount(idea.description)} / 199 words for checkpoint 1`}
-                  rows={6}
-                  placeholder="For [specific customer], this helps them [job] by [how it works]. They would pay [price] because [value]. Our first customers will come from [channel]."
-                />
-                <Field
-                  label="Landing page URL"
-                  value={idea.landingUrl}
-                  onChange={(v) => change("landingUrl", v)}
-                  rows={1}
-                  placeholder="https://your-product.example"
-                />
-                <div className="st-divider">
-                  Work it through{" "}
-                  <span>
-                    Optional thinking space · not extra submission fields
-                  </span>
-                </div>
-                <div className="st-field-grid">
-                  {(
-                    [
-                      [
-                        "customer",
-                        "Who is this for?",
-                        "Be specific about the first customer.",
-                      ],
-                      [
-                        "problem",
-                        "What is painful today?",
-                        "Describe the situation, not a broad market.",
-                      ],
-                      [
-                        "alternative",
-                        "What do they do instead?",
-                        "Include spreadsheets, workarounds, and doing nothing.",
-                      ],
-                      [
-                        "value",
-                        "What changes for them?",
-                        "A concrete outcome worth paying for.",
-                      ],
-                      [
-                        "pricing",
-                        "How would you charge?",
-                        "Name the payer and an initial price hypothesis.",
-                      ],
-                      [
-                        "acquisition",
-                        "Where are the first customers?",
-                        "A channel you can actually reach this month.",
-                      ],
-                    ] as const
-                  ).map(([field, label, hint]) => (
-                    <Field
-                      key={field}
-                      label={label}
-                      hint={hint}
-                      value={idea[field]}
-                      onChange={(v) => change(field, v)}
-                    />
-                  ))}
-                </div>
-                <Field
-                  label="What still needs to be true?"
-                  value={idea.assumptions}
-                  onChange={(v) => change("assumptions", v)}
-                  placeholder="The riskiest assumptions and the smallest tests that could disprove them."
-                />
-              </fieldset>
-              <button
-                className="st-button secondary"
-                onClick={() => setTab("checkpoints")}
-              >
-                See checkpoint 1 →
-              </button>
-            </>
-          )}
-          {tab === "evidence" && (
-            <>
-              <Heading
-                number="02"
-                kicker="EVIDENCE LIBRARY"
-                title="Find something to build on."
-                description="Look for the pain, the alternatives, and the reasons your idea might not work."
-              />
-              <form
-                className="st-research-form"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  void savedAction({
-                    action: "research",
-                    query,
-                    source,
-                    target,
-                  });
-                }}
-              >
-                <label className="st-field">
-                  <span>Research question or search phrase</span>
-                  <input
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                    required
-                    minLength={3}
-                    maxLength={300}
-                    placeholder="e.g. invoicing for freelance designers"
-                  />
-                </label>
-                <label className="st-field">
-                  <span>Where to look</span>
-                  <select
-                    value={source}
-                    onChange={(e) => setSource(e.target.value)}
-                  >
-                    <option value="market">
-                      Marketplace knowledge + AppRill
-                    </option>
-                    <option value="reddit">Reddit discussions</option>
-                    <option value="x">A public X post</option>
-                    <option value="instagram">Instagram post comments</option>
-                  </select>
-                </label>
-                {["x", "instagram"].includes(source) && (
-                  <label className="st-field">
-                    <span>Public post URL</span>
-                    <input
-                      type="url"
-                      value={target}
-                      onChange={(e) => setTarget(e.target.value)}
-                      required
-                      placeholder={
-                        source === "x"
-                          ? "https://x.com/user/status/…"
-                          : "https://instagram.com/p/…"
-                      }
-                    />
-                  </label>
-                )}
-                <p className="st-muted">
-                  {source === "market"
-                    ? "Search the imported AppSumo, Acquire and TrustMRR knowledge, then fetch matching AppRill listings and review samples."
-                    : "One bounded public-data run, up to $0.50 of platform cost. Results may be partial or unavailable. Ten research requests per team per day."}
-                </p>
-                <button className="st-button" disabled={busy || readonly}>
-                  Find evidence ↗
-                </button>
-              </form>
-              {w.jobs
-                .filter((j) => j.kind === "research")
-                .map((j) => (
-                  <article className="st-research-result" key={j.id}>
-                    <div className="st-result-heading">
-                      <h3>{j.payload.query}</h3>
-                      <span className="st-tag">
-                        {labels[j.status] || j.status}
-                      </span>
-                    </div>
-                    <p className="st-muted">
-                      {time(j.createdAt)} · {j.payload.source}
-                    </p>
-                    {["queued", "running"].includes(j.status) && !readonly && (
-                      <button
-                        className="st-text-button"
-                        onClick={() => act({ action: "cancel", jobId: j.id })}
-                      >
-                        Cancel research
-                      </button>
-                    )}
-                    {j.error && <p className="st-error">{j.error}</p>}
-                    {j.result?.notes?.map((n) => (
-                      <p key={n}>{n}</p>
-                    ))}
-                    {j.result?.evidence && (
-                      <Sources items={j.result.evidence} />
-                    )}
-                  </article>
-                ))}
-              {!w.jobs.some((j) => j.kind === "research") && (
-                <div className="st-empty">
-                  <span>Start with a real question.</span>
-                  <p>
-                    “What do customers complain about?” is more useful than “Is
-                    my idea good?” Every result retains its source and capture
-                    date.
-                  </p>
-                </div>
-              )}
-            </>
-          )}
+          <div hidden={tab !== "chat"}>
+            <ProjectChat
+              key={idea.id}
+              w={w}
+              idea={idea}
+              busy={busy}
+              readonly={readonly}
+              visible={tab === "chat"}
+              send={(message, attachmentIds) =>
+                savedAction({ action: "coach", message, attachmentIds })
+              }
+              upload={(file) => upload(file, "reference")}
+              apply={(field, value) => {
+                change(field, value);
+                saveReason.current = `Accepted coach suggestion: ${field}`;
+                setNotice(
+                  "Added to your draft. Save changes to share with your team.",
+                );
+              }}
+              cancel={(jobId) => void act({ action: "cancel", jobId })}
+            />
+          </div>
           {tab === "checkpoints" && (
             <Checkpoints
               w={w}
@@ -861,79 +677,19 @@ export function Studio({
               submit={(cp) =>
                 void savedAction({ action: "submit", checkpoint: cp })
               }
-              upload={(f, k) => void upload(f, k)}
-              editIdea={() => setTab("idea")}
+              upload={(f, k) =>
+                void upload(
+                  f,
+                  k === "visuals" ? "reference" : "design",
+                  k === "visuals" ? "visuals" : undefined,
+                )
+              }
             />
-          )}
-          {tab === "build" && (
-            <>
-              <Heading
-                number="04"
-                kicker="BUILD ROOM"
-                title="Turn the job into working software."
-                description="A plan you can use with your coding tool, then test with a real customer."
-              />
-              <div className="st-build-prompts">
-                {[
-                  "Create a concrete eight-week build plan for our active idea: narrow MLP, milestones, first paid customer, and acceptance checks.",
-                  "Write a build-ready prompt for our core job, including the data model, screens, permissions, error states and how to test it.",
-                  "Challenge our MLP. What can we remove and still deliver the whole job?",
-                  "Help us test the first customer journey from landing page to payment and the useful result.",
-                ].map((p, n) => (
-                  <button
-                    key={p}
-                    disabled={busy || readonly}
-                    onClick={() =>
-                      void savedAction({ action: "coach", message: p })
-                    }
-                  >
-                    <span>0{n + 1}</span>
-                    {
-                      [
-                        "Plan the eight weeks",
-                        "Prepare a build prompt",
-                        "Cut the scope",
-                        "Test the full journey",
-                      ][n]
-                    }
-                    <span>↗</span>
-                  </button>
-                ))}
-              </div>
-              <fieldset disabled={busy || readonly}>
-                <Field
-                  label="Your build plan and implementation notes"
-                  value={idea.buildPlan}
-                  onChange={(v) => change("buildPlan", v)}
-                  rows={18}
-                  hint="Review the coach’s suggestions, then apply what is useful. Keep credentials out of this notebook."
-                  placeholder="Milestone 1 · The core job works end-to-end…"
-                />
-              </fieldset>
-              <button
-                className="st-button secondary"
-                onClick={() => {
-                  const blob = new Blob(
-                    [
-                      `# ${idea.title}\n\n${idea.description}\n\n## Job\n${idea.job}\n\n## Features\n${idea.features.map((f) => `- ${f.name}${f.mlp ? " [MLP]" : " [later]"}: ${f.description}`).join("\n")}\n\n## Build plan\n${idea.buildPlan}`,
-                    ],
-                    { type: "text/markdown" },
-                  );
-                  const a = document.createElement("a");
-                  a.href = URL.createObjectURL(blob);
-                  a.download = "shipyard-build-brief.md";
-                  a.click();
-                  URL.revokeObjectURL(a.href);
-                }}
-              >
-                Download build brief ↓
-              </button>
-            </>
           )}
           {tab === "team" && (
             <>
               <Heading
-                number="05"
+                number="02"
                 kicker="YOUR TEAM"
                 title="One workspace. Shared progress."
                 description="Each person uses their own MU email. Submissions preserve the team that submitted them."
@@ -1056,176 +812,6 @@ export function Studio({
             </>
           )}
         </section>
-        <aside className="st-coach" aria-label="Venture coach">
-          <div className="st-coach-heading">
-            <span className="st-coach-dot" />
-            <h2>Your thinking partner</h2>
-            <span className="st-tag">AI</span>
-          </div>
-          <p className="st-muted">
-            Grounded in your brief and saved evidence. Suggestions are yours to
-            accept.
-          </p>
-          <div className="st-coach-feed">
-            {w.jobs
-              .filter((j) => j.kind === "coach")
-              .slice()
-              .reverse()
-              .map((j) => (
-                <article className="st-chat" key={j.id}>
-                  <div className="st-user-message">{j.payload.message}</div>
-                  {j.result?.answer ? (
-                    <>
-                      <div className="st-coach-answer">
-                        <Markdown>{j.result.answer}</Markdown>
-                      </div>
-                      {j.result.suggestions?.map((s, n) => (
-                        <details className="st-suggestion" key={n}>
-                          <summary>Suggested change · {s.field}</summary>
-                          <p>{s.why}</p>
-                          <pre>{s.value}</pre>
-                          {j.result?.workspaceVersion !== w.version && (
-                            <small>
-                              This suggestion uses an earlier revision. Check it
-                              against your current brief.
-                            </small>
-                          )}
-                          <button
-                            disabled={readonly || busy}
-                            className="st-button secondary"
-                            onClick={() => {
-                              change(s.field, s.value);
-                              saveReason.current = `Accepted coach suggestion: ${s.field}`;
-                              setNotice(
-                                "Suggestion added to your draft. Review it, then save.",
-                              );
-                            }}
-                          >
-                            Apply to draft
-                          </button>
-                        </details>
-                      ))}
-                      {j.result.sourceIds && j.result.sourceIds.length > 0 && (
-                        <details className="st-chat-sources">
-                          <summary>{j.result.sourceIds.length} sources</summary>
-                          <Sources
-                            items={(j.result.evidence || []).filter((e) =>
-                              j.result!.sourceIds!.includes(e.id),
-                            )}
-                          />
-                        </details>
-                      )}
-                    </>
-                  ) : (
-                    <p className="st-muted">
-                      {j.error || labels[j.status] || j.status}
-                    </p>
-                  )}
-                  {["queued", "running"].includes(j.status) && (
-                    <button
-                      className="st-text-button"
-                      onClick={() => act({ action: "cancel", jobId: j.id })}
-                    >
-                      Cancel
-                    </button>
-                  )}
-                </article>
-              ))}
-            {!w.jobs.some((j) => j.kind === "coach") && (
-              <div className="st-coach-empty">
-                <span className="st-spark">✳</span>
-                <h3>What are you thinking about?</h3>
-                <p>
-                  Bring a rough idea, a frustration you have noticed, or a
-                  customer you want to help.
-                </p>
-                {[
-                  "Help me find a small software idea for a customer I can reach.",
-                  "Challenge this idea. What is the riskiest assumption?",
-                  "Help me find a credible first paid customer in eight weeks.",
-                ].map((p) => (
-                  <button
-                    key={p}
-                    disabled={readonly || busy}
-                    onClick={() =>
-                      void savedAction({ action: "coach", message: p })
-                    }
-                  >
-                    {p} ↗
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-          <form
-            className="st-composer"
-            onSubmit={(e) => {
-              e.preventDefault();
-              void savedAction({ action: "coach", message });
-            }}
-          >
-            <label className="st-text-button">
-              Attach a reference screenshot
-              <input
-                type="file"
-                accept="image/png,image/jpeg,image/webp"
-                disabled={busy || readonly || idea.references.length >= 3}
-                onChange={(e) => {
-                  const file = e.target.files?.[0];
-                  if (file) void upload(file, "reference");
-                  e.target.value = "";
-                }}
-              />
-            </label>
-            {idea.references.map((id) => (
-              <div className="st-member" key={id}>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href={`/api/shipyard/studio?file=${id}`}
-                >
-                  {w.files.find((f) => f.id === id)?.name || "Reference image"}
-                </a>
-                <button
-                  type="button"
-                  disabled={busy || readonly}
-                  onClick={() =>
-                    change(
-                      "references",
-                      idea.references.filter((f) => f !== id),
-                    )
-                  }
-                >
-                  Remove
-                </button>
-              </div>
-            ))}
-            <label className="sr-only" htmlFor="coach-message">
-              Message your venture coach
-            </label>
-            <textarea
-              id="coach-message"
-              rows={3}
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              placeholder="Think this through with me…"
-              maxLength={5000}
-            />
-            <div>
-              <small>
-                {active
-                  ? "Your team has work in progress"
-                  : "30 coach requests / team / day"}
-              </small>
-              <button
-                className="st-button"
-                disabled={busy || readonly || message.trim().length < 3}
-              >
-                Send ↑
-              </button>
-            </div>
-          </form>
-        </aside>
       </div>
       {focusAppeal && (
         <span className="sr-only">Opened appeal {focusAppeal}</span>

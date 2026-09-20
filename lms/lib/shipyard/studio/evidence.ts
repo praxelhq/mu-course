@@ -13,15 +13,31 @@ export type Evidence = {
   type: string;
 };
 const cut = (s: unknown, n = 5000) => String(s ?? "").slice(0, n);
-export async function knowledgeSearch(query: string): Promise<Evidence[]> {
-  if (!(await sourceEnabled("market"))) return [];
-  const terms = [
-    ...new Set(query.toLowerCase().match(/[a-z][a-z0-9]{3,}/g) || []),
-  ]
+export function searchTerms(query: string) {
+  return [...new Set(query.toLowerCase().match(/[a-z][a-z0-9]{3,}/g) || [])]
     .filter(
       (w) =>
         ![
           "please",
+          "brainstorm",
+          "thinking",
+          "something",
+          "software",
+          "project",
+          "chat",
+          "tell",
+          "know",
+          "make",
+          "good",
+          "small",
+          "really",
+          "start",
+          "does",
+          "they",
+          "students",
+          "student",
+          "eight",
+          "weeks",
           "first",
           "release",
           "narrow",
@@ -65,6 +81,10 @@ export async function knowledgeSearch(query: string): Promise<Evidence[]> {
         ].includes(w),
     )
     .slice(0, 16);
+}
+export async function knowledgeSearch(query: string): Promise<Evidence[]> {
+  if (!(await sourceEnabled("market"))) return [];
+  const terms = searchTerms(query);
   if (!terms.length) return [];
   const q = terms.join(" | ");
   const rows = await prisma.$queryRaw<
@@ -86,10 +106,10 @@ export async function knowledgeSearch(query: string): Promise<Evidence[]> {
     type: "marketplace observation; seller claims are unverified",
   }));
 }
-async function readJson(url: string, init?: RequestInit) {
+async function readJson(url: string, init?: RequestInit, timeoutMs = 25000) {
   const r = await fetch(url, {
     ...init,
-    signal: AbortSignal.timeout(25000),
+    signal: AbortSignal.timeout(timeoutMs),
     redirect: "error",
   });
   if (!r.ok) throw new Error(`Source returned HTTP ${r.status}`);
@@ -111,9 +131,14 @@ async function readJson(url: string, init?: RequestInit) {
   }
   return JSON.parse(Buffer.concat(chunks).toString("utf8"));
 }
-export async function appRillSearch(query: string): Promise<Evidence[]> {
+export async function appRillSearch(
+  query: string,
+  options?: { listingsOnly?: boolean; timeoutMs?: number },
+): Promise<Evidence[]> {
   const response = await readJson(
     `https://apprill.app/api/apps?q=${encodeURIComponent(query)}&page_size=6`,
+    undefined,
+    options?.timeoutMs,
   );
   const items = Array.isArray(response.items) ? response.items.slice(0, 6) : [];
   const results: Evidence[] = [];
@@ -140,7 +165,7 @@ export async function appRillSearch(query: string): Promise<Evidence[]> {
       text: JSON.stringify(fields),
       type: "observed store listing; ratings and installs do not prove willingness to pay",
     });
-    if (results.length <= 4) {
+    if (!options?.listingsOnly && results.length <= 4) {
       try {
         const reviews = await readJson(
           `https://apprill.app/api/apps/${encodeURIComponent(app.slug)}/reviews?page_size=8`,
