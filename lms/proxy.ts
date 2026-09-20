@@ -6,6 +6,7 @@ import {
   getClerkUserEmail,
   hasClerkKeys,
   updateClerkUserMetadata,
+  CLERK_FRONTEND_PROXY_PATH,
 } from "@/lib/auth/clerk";
 import {
   decideRosterGate,
@@ -213,9 +214,16 @@ const clerkProxy = clerkMiddleware(async (auth, req) => {
     }
   }
   return notOnRosterRedirect(req);
-});
+}, { proxyUrl: process.env.CLERK_FRONTEND_PROXY_URL || undefined });
 
 export default function proxy(req: NextRequest, event: unknown) {
+  // Authentication transport must be reachable before the visitor signs in.
+  // Only this exact prefix bypasses the roster/session gate; Clerk authenticates
+  // its own API requests in the route handler.
+  if (req.nextUrl.pathname === CLERK_FRONTEND_PROXY_PATH ||
+      req.nextUrl.pathname.startsWith(`${CLERK_FRONTEND_PROXY_PATH}/`)) {
+    return NextResponse.next();
+  }
   // Clerk-optional local dev (explicit env detection): with no Clerk keys the
   // proxy is a pass-through — public pages and the test-login cookie flow
   // still work, and getSessionUser falls back to test-login only.

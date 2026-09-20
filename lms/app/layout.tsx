@@ -42,5 +42,5 @@ export default function RootLayout({
   // throw at render time, so the tree mounts bare and auth runs through the
   // test-login flow only (see lib/auth).
   if (!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY) return page;
-  return <ClerkProvider>{page}</ClerkProvider>;
+  return <ClerkProvider proxyUrl={process.env.CLERK_FRONTEND_PROXY_URL || undefined}>{page}</ClerkProvider>;
 }

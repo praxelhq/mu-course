@@ -18,6 +18,27 @@ export function hasClerkKeys(): boolean {
   );
 }
 
+export const CLERK_FRONTEND_PROXY_PATH = "/api/clerk";
+
+/** Clerk's supported same-origin transport, independent of student DNS for clerk.*. */
+export async function proxyClerkFrontend(request: Request): Promise<Response> {
+  if (!hasClerkKeys()) return new Response("Not found", { status: 404 });
+  const { clerkFrontendApiProxy } = await import("@clerk/nextjs/server");
+  const { isIP } = await import("node:net");
+  const headers = new Headers(request.headers);
+  // Railway supplies X-Real-IP. Do not let a caller's Cloudflare/XFF headers
+  // override it in Clerk's IP detection and rate limiting.
+  headers.delete("cf-connecting-ip");
+  headers.delete("x-forwarded-for");
+  if (!isIP(headers.get("x-real-ip") ?? "")) headers.delete("x-real-ip");
+  const origin = new URL(process.env.APP_URL || request.url);
+  headers.set("x-forwarded-host", origin.host);
+  headers.set("x-forwarded-proto", origin.protocol.slice(0, -1));
+  return clerkFrontendApiProxy(new Request(request, { headers }), {
+    proxyPath: CLERK_FRONTEND_PROXY_PATH,
+  });
+}
+
 /** Current Clerk session, or null when signed out / Clerk not configured. */
 export async function getClerkSession(): Promise<{ clerkUserId: string } | null> {
   if (!hasClerkKeys()) return null;
