@@ -29,7 +29,13 @@ export type Job = {
   status: string;
   createdAt: string;
   error: string | null;
-  payload: { message?: string; query?: string; source?: string };
+  payload: {
+    message?: string;
+    query?: string;
+    source?: string;
+    idea?: { id: string };
+    attachmentIds?: string[];
+  };
   result: {
     answer?: string;
     suggestions?: { field: keyof StudioIdea; value: string; why: string }[];
@@ -133,6 +139,79 @@ export function Sources({ items }: { items: Evidence[] }) {
           </details>
         </article>
       ))}
+    </div>
+  );
+}
+export function ImageUploads({
+  title,
+  hint,
+  ids,
+  files,
+  disabled,
+  limit,
+  upload,
+  remove,
+}: {
+  title: string;
+  hint: string;
+  ids: string[];
+  files: Workspace["files"];
+  disabled: boolean;
+  limit: number;
+  upload: (file: File) => void;
+  remove: (id: string) => void;
+}) {
+  return (
+    <div className="st-upload">
+      <h4>{title}</h4>
+      <p>{hint}</p>
+      <label className="st-button secondary">
+        Upload image
+        <input
+          aria-label={title}
+          type="file"
+          accept="image/png,image/jpeg,image/webp"
+          disabled={disabled || ids.length >= limit}
+          onChange={(e) => {
+            const file = e.target.files?.[0];
+            if (file) upload(file);
+            e.target.value = "";
+          }}
+        />
+      </label>
+      <small>
+        PNG, JPG or WebP · up to 8 MB each · {ids.length}/{limit} images
+      </small>
+      <div className="st-image-list">
+        {ids.map((id) => (
+          <div className="st-image-item" key={id}>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href={`/api/shipyard/studio?file=${encodeURIComponent(id)}`}
+            >
+              {/* Authenticated endpoint redirects to a version-bound S3 URL. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={`/api/shipyard/studio?file=${encodeURIComponent(id)}`}
+                alt={files.find((f) => f.id === id)?.name || "Uploaded image"}
+                loading="lazy"
+              />
+              <span>
+                {files.find((f) => f.id === id)?.name || "Uploaded image"}
+              </span>
+            </a>
+            <button
+              type="button"
+              disabled={disabled}
+              aria-label={`Remove ${files.find((f) => f.id === id)?.name || "image"}`}
+              onClick={() => remove(id)}
+            >
+              Remove
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

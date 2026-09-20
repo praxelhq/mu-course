@@ -12,6 +12,7 @@ import {
   studioState,
 } from "@/lib/shipyard/studio/service";
 import { instructorState } from "@/lib/shipyard/studio/instructor";
+import { submissionExport } from "@/lib/shipyard/studio/export";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 function failure(error: unknown) {
@@ -53,6 +54,7 @@ export async function GET(req: Request) {
   try {
     const actor = await studioActor(req),
       url = new URL(req.url);
+    if (url.searchParams.has("export")) return await submissionExport(actor);
     if (url.searchParams.has("file"))
       return Response.redirect(
         await studioFileUrl(actor, url.searchParams.get("file")!),

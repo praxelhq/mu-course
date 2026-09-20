@@ -197,8 +197,9 @@ export async function studioState(actor: StudioActor, workspaceId?: string) {
 
 export async function performStudioAction(
   actor: StudioActor,
-  input: z.infer<typeof actionSchema>,
+  raw: z.input<typeof actionSchema>,
 ) {
+  const input = actionSchema.parse(raw);
   if (input.action === "source-setting") {
     if (!actor.staff) throw new StudioError(403, "Instructor access required.");
     await prisma.$transaction(async (tx) => {
@@ -436,6 +437,7 @@ export async function performStudioAction(
           ...new Set(
             input.document.ideas.flatMap((i) => [
               ...i.sketches,
+              ...i.visuals,
               ...i.designs,
               ...(i.references || []),
             ]),
@@ -670,11 +672,10 @@ export async function performStudioAction(
             "The previous checkpoint must pass before you submit this one.",
           );
         const fields = checkpointFields(input.checkpoint).parse(idea);
-        if (input.checkpoint === 2) {
-          for (const [kind, ids] of [
-            ["sketch", idea.sketches],
-            ["design", idea.designs],
-          ] as const) {
+        if (input.checkpoint < 3) {
+          for (const [kind, ids] of (input.checkpoint === 1
+            ? [["reference", idea.visuals]]
+            : [["design", idea.designs]]) as [string, string[]][]) {
             if (
               (await tx.shipyardStudioFile.count({
                 where: {
@@ -687,7 +688,7 @@ export async function performStudioAction(
             )
               throw new StudioError(
                 422,
-                "Attach verified images in both design sections.",
+                "Attach verified images from this workspace.",
               );
           }
         }
@@ -750,6 +751,21 @@ export async function performStudioAction(
           },
         });
         return { submissionId: s.id, jobId: job.id };
+      }
+      if (input.action === "coach" && input.attachmentIds.length) {
+        const ids = [...new Set(input.attachmentIds)];
+        const count = await tx.shipyardStudioFile.count({
+          where: {
+            workspaceId: workspace.id,
+            id: { in: ids },
+            versionId: { not: null },
+          },
+        });
+        if (count !== ids.length)
+          throw new StudioError(
+            422,
+            "Chat images must be verified uploads from your workspace.",
+          );
       }
       await budget(tx, workspace.id, input.action);
       if (

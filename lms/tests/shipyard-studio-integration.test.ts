@@ -25,6 +25,11 @@ vi.mock("@/lib/s3", () => ({
   presignGet: vi.fn(),
   readObjectVersion: fakes.read,
 }));
+vi.mock("@/lib/shipyard/studio/evidence", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@/lib/shipyard/studio/evidence")>()),
+  appRillSearch: vi.fn().mockResolvedValue([]),
+}));
+import { submissionExport } from "@/lib/shipyard/studio/export";
 import { prisma } from "@/lib/db";
 import {
   performStudioAction,
@@ -96,12 +101,30 @@ describe.skipIf(!enabled)("Shipyard studio with isolated Postgres", () => {
     const w = await prisma.shipyardStudioWorkspace.findUniqueOrThrow({
       where: { id: workspaceId },
     });
+    await prisma.shipyardStudioFile.upsert({
+      where: { id: `idea-visual-${suffix}` },
+      update: {},
+      create: {
+        id: `idea-visual-${suffix}`,
+        workspaceId,
+        actorId: student.id,
+        name: "Idea sketch.png",
+        key: `idea-visual-${suffix}`,
+        kind: "reference",
+        contentType: "image/png",
+        bytes: 8,
+        versionId: "1",
+      },
+    });
+    fakes.read.mockResolvedValue(
+      Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]),
+    );
     const d = emptyDocument();
     Object.assign(d.ideas[0], {
       title: "Freelance invoice tool",
       description:
         "A simple invoice tracker for freelance designers. Charge five dollars monthly and find first buyers through our design club.",
-      landingUrl: "https://example.com",
+      visuals: [`idea-visual-${suffix}`],
     });
     await performStudioAction(student, {
       action: "save",
@@ -502,12 +525,25 @@ describe.skipIf(!enabled)("Shipyard studio with isolated Postgres", () => {
           requestId: randomUUID(),
         }),
       ).rejects.toThrow("shared coaching budget");
+      await prisma.shipyardStudioFile.create({
+        data: {
+          id: `other-visual-${suffix}`,
+          workspaceId: other.workspaceId,
+          actorId: outsider.id,
+          name: "Other visual.png",
+          key: `other-visual-${suffix}`,
+          kind: "reference",
+          contentType: "image/png",
+          bytes: 8,
+          versionId: "1",
+        },
+      });
       const document = emptyDocument();
       Object.assign(document.ideas[0], {
         title: "Invoice helper",
         description:
           "Software for freelancers to create reusable invoices for five dollars a month, sold through our design club.",
-        landingUrl: "https://example.com",
+        visuals: [`other-visual-${suffix}`],
       });
       await performStudioAction(outsider, {
         action: "save",
@@ -542,6 +578,165 @@ describe.skipIf(!enabled)("Shipyard studio with isolated Postgres", () => {
     } finally {
       await prisma.shipyardStudioJob.delete({ where: { id: spent.id } });
     }
+  });
+  it("reviews the three-field idea and single-design spec without browsing a landing page", async () => {
+    const w = await saveIdea();
+    fakes.render.mockClear();
+    fakes.model.mockResolvedValue({
+      data: {
+        decision: "pass",
+        summary: "A narrow software product",
+        criteria: ["build", "monetise", "digital"].map((id) => ({
+          id,
+          met: true,
+          reason: "Supported by the submission",
+          change: "",
+        })),
+        nextSteps: [],
+        sourceIds: [],
+      },
+      modelUsed: "fixture",
+      providerUsed: "fixture",
+      tokensIn: 1,
+      tokensOut: 1,
+      costUsd: 0.001,
+    });
+    const first = (await performStudioAction(student, {
+      action: "submit",
+      checkpoint: 1,
+      version: w.version,
+      requestId: randomUUID(),
+    })) as { jobId: string; submissionId: string };
+    await runStudioJob(first.jobId);
+    expect(fakes.render).not.toHaveBeenCalled();
+    expect(
+      (
+        await prisma.shipyardStudioSubmission.findUniqueOrThrow({
+          where: { id: first.submissionId },
+        })
+      ).status,
+    ).toBe("passed");
+    Object.assign(w.document.ideas[0], {
+      job: "When a freelancer completes work, create and send a clear invoice to the customer.",
+      featureList:
+        "Enter invoice details; validate amounts; preview and download the PDF.",
+      designs: [`design-${suffix}`],
+    });
+    await performStudioAction(student, {
+      action: "save",
+      version: w.version,
+      document: w.document,
+    });
+    fakes.model.mockResolvedValue({
+      data: {
+        decision: "pass",
+        summary: "The screen supports the job",
+        criteria: ["job", "features", "scope", "designs"].map((id) => ({
+          id,
+          met: true,
+          reason: "Supported by the submission",
+          change: "",
+        })),
+        nextSteps: [],
+        sourceIds: [],
+      },
+      modelUsed: "fixture",
+      providerUsed: "fixture",
+      tokensIn: 1,
+      tokensOut: 1,
+      costUsd: 0.001,
+    });
+    const second = (await performStudioAction(student, {
+      action: "submit",
+      checkpoint: 2,
+      version: w.version + 1,
+      requestId: randomUUID(),
+    })) as { jobId: string; submissionId: string };
+    await runStudioJob(second.jobId);
+    expect(
+      (
+        await prisma.shipyardStudioSubmission.findUniqueOrThrow({
+          where: { id: second.submissionId },
+        })
+      ).status,
+    ).toBe("passed");
+    const content = fakes.model.mock.lastCall![0].user;
+    expect(
+      content.filter((p: { type: string }) => p.type === "image_url"),
+    ).toHaveLength(1);
+    expect(content[0].text).toContain("featureList");
+    expect(fakes.render).not.toHaveBeenCalled();
+    const unavailable = (await performStudioAction(student, {
+      action: "submit",
+      checkpoint: 2,
+      version: w.version + 1,
+      requestId: randomUUID(),
+    })) as { jobId: string; submissionId: string };
+    fakes.read.mockRejectedValueOnce(new Error("Storage unavailable"));
+    await runStudioJob(unavailable.jobId);
+    expect(
+      (
+        await prisma.shipyardStudioSubmission.findUniqueOrThrow({
+          where: { id: unavailable.submissionId },
+        })
+      ).status,
+    ).toBe("evidence_needed");
+  });
+  it("retains message images and review context on the next coaching turn", async () => {
+    fakes.model.mockClear();
+    fakes.model.mockResolvedValue({
+      data: {
+        answer: "Keep the invoice flow small.",
+        suggestions: [],
+        sourceIds: [],
+      },
+      modelUsed: "fixture",
+      providerUsed: "fixture",
+      tokensIn: 1,
+      tokensOut: 1,
+      costUsd: 0.001,
+    });
+    const first = (await performStudioAction(student, {
+      action: "coach",
+      message: "Review this uploaded screen",
+      attachmentIds: [`design-${suffix}`],
+      requestId: randomUUID(),
+    })) as { jobId: string };
+    await runStudioJob(first.jobId);
+    const second = (await performStudioAction(student, {
+      action: "coach",
+      message: "What should I change in that screen?",
+      requestId: randomUUID(),
+    })) as { jobId: string };
+    await runStudioJob(second.jobId);
+    const content = fakes.model.mock.lastCall![0].user;
+    expect(content[0].text).toContain("Review this uploaded screen");
+    expect(content[0].text).toContain("The screen supports the job");
+    expect(
+      content.filter((p: { type: string }) => p.type === "image_url"),
+    ).toHaveLength(2);
+  });
+  it("rejects foreign chat images before queueing a paid call", async () => {
+    await expect(
+      performStudioAction(student, {
+        action: "coach",
+        message: "Review this screen",
+        attachmentIds: ["foreign-image"],
+        requestId: randomUUID(),
+      }),
+    ).rejects.toThrow("verified uploads");
+  });
+  it("streams instructor submissions with private image links and blocks students", async () => {
+    await expect(submissionExport(student)).rejects.toThrow(
+      "Instructor access",
+    );
+    const response = await submissionExport(staff);
+    const csv = await response.text();
+    expect(csv).toContain("Submission ID");
+    expect(csv).toContain("Freelance invoice tool");
+    expect(csv).toContain(`?file=idea-visual-${suffix}`);
+    expect(csv).toContain(student.email);
+    expect(response.headers.get("cache-control")).toContain("no-store");
   });
   it("resubmission invalidates downstream progress without deleting history", async () => {
     const w = await saveIdea();

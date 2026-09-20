@@ -6,9 +6,21 @@ Status: live at https://lms.praxel.in/shipyard. Web and worker deployed from `17
 
 The new `/shipyard` workspace uses verified MU email identities, shared team documents and three checkpoints. `/shipyard/history` preserves the previous six-checkpoint portal. It does not reinterpret earlier grades or connect the final product receipt to a tracker.
 
-Checkpoint 1 accepts a title, fewer than 200 words and a landing URL. Checkpoint 2 accepts a job specification, described features with MLP choices, an early sketch and Stitch design exports. Both require an AI pass or an authenticated instructor appeal decision. Checkpoint 3 records a URL and optional notes without model calls or product browsing.
+As of the 21 September update, checkpoint 1 accepts a title, fewer than 200 words and one to three visuals; no landing URL is required. Checkpoint 2 accepts a job specification, a plain-text feature list and one to six screen images. Both require an AI pass or an authenticated instructor appeal decision. Checkpoint 3 records a URL and optional notes without model calls or product browsing. Already-queued v1 submissions keep their original rubric and evidence requirements.
 
-The coach reads the active brief, recent conversation, searchable marketplace records, saved research and up to six uploaded reference/design images. Students accept edits explicitly. Research runs only after a student requests it; ordinary coaching does not silently purchase a scrape.
+Project chat is the default view. It reads the active brief, the last eight conversation turns for that idea, submitted work and feedback, searchable marketplace records and up to six current/recent uploaded images. It can fetch bounded public AppRill listings automatically; ordinary coaching does not purchase social scrapes. Students accept suggested edits explicitly. Optional project notes live in a collapsed accordion; there is no student evidence-library task.
+
+The instructor desk lists submitted ideas and checkpoint status, with search by student, team or idea. Its authenticated CSV includes every submission version, feedback, appeal state and private image links for import into Google Sheets. Automatic Google Sheets sync is not configured. Appeals continue to email build@praxel.in with the verified student in CC.
+
+## 21 September verification
+
+- 27 focused tests pass, including three-field idea approval, single-image/plain-text spec approval, unavailable-image handling, chat image persistence, per-idea context, export authorization and existing progression/appeal constraints.
+- Shipped-code TypeScript, scoped ESLint and the production Next build pass. No database migration is needed.
+- Browser checks exercised actual S3 visual/design/chat uploads, Haiku approvals opening checkpoints 2 and 3, preserved chat drafts across tabs, a vision response, instructor search/readback and CSV download. The mobile layout fits without horizontal overflow.
+- Six real Haiku decision fixtures matched after rubric calibration: narrow software, operations-heavy agency, oversized scope, prompt injection, unavailable visual (with the worker's deterministic override), and single-design/plain-text spec. The final six reviews plus one coach call cost $0.168492. Initial runs exposed extra implementation requirements and incorrect criterion IDs; both were corrected. The image fixture describes the exact single-line-item flow it depicts.
+- Coaching has no live API-documentation crawler. It must treat current access, prices, approval times and capabilities as unverified, and ask students to check official documentation and run a small integration test. Marketplace snapshots are context, not proof of demand. Model feedback remains contestable.
+- Claude CLI read-only review identified legacy image labels, hidden-chat scrolling and unnecessary overview payloads; fixes were applied. Its other access/save findings were checked against full source and rejected: dirty drafts are guarded, file IDs are validated rather than pruned, and edits use a current ref. Manual review covered permissions, mutation ordering, CSV escaping and snapshot compatibility.
+- Code review: skipped (ce-code-review unavailable). Its required independent reviewer/finish contexts conflict with this task's main-context-only instructions; the Claude CLI review and manual diff scan are additional checks, not a completed CE review receipt.
 
 ## Configuration
 

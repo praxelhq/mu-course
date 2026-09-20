@@ -4,10 +4,12 @@ import {
   gateOpen,
   latestSubmission,
   wordCount,
+  featureText,
   type StudioIdea,
 } from "@/lib/shipyard/studio/contracts";
 import {
   Field,
+  ImageUploads,
   Heading,
   labels,
   Sources,
@@ -29,6 +31,7 @@ function SubmittedWork({
     description: "Idea",
     landingUrl: "Landing page",
     job: "Job specification",
+    featureList: "Feature list",
     liveUrl: "Working product",
     notes: "Access and demo notes",
   };
@@ -55,11 +58,17 @@ function SubmittedWork({
             <p>{f.description}</p>
           </div>
         ))}
-      {(["sketches", "designs"] as const).map(
+      {(["visuals", "sketches", "designs"] as const).map(
         (kind) =>
           Array.isArray(fields[kind]) && (
             <div key={kind}>
-              <b>{kind === "sketches" ? "Early sketch" : "Stitch design"}</b>
+              <b>
+                {kind === "visuals"
+                  ? "Idea visual"
+                  : kind === "sketches"
+                    ? "Early sketch"
+                    : "Screen designs"}
+              </b>
               {(fields[kind] as string[]).map((id) => (
                 <p key={id}>
                   <a
@@ -89,7 +98,6 @@ export function Checkpoints({
   act,
   submit,
   upload,
-  editIdea,
 }: {
   w: Workspace;
   idea: StudioIdea;
@@ -99,8 +107,7 @@ export function Checkpoints({
   change: (field: keyof StudioIdea, value: unknown) => void;
   act: (body: unknown, success?: string) => Promise<unknown>;
   submit: (cp: number) => void;
-  upload: (file: File, kind: "sketch" | "design") => void;
-  editIdea: () => void;
+  upload: (file: File, kind: "visuals" | "design") => void;
 }) {
   const [reasons, setReasons] = useState<Record<string, string>>({}),
     [notes, setNotes] = useState<Record<string, string>>({});
@@ -136,183 +143,132 @@ export function Checkpoints({
             {cp === 1 ? (
               <>
                 <p>
-                  A title, an idea under 200 words, and your landing page.
-                  That’s the submission.
+                  A title, your idea in fewer than 200 words, and a visual.
+                  That’s it.
                 </p>
                 <div className="st-rubric">
                   <span>Build in 2 months</span>
                   <span>Start charging in 2 months</span>
                   <span>Software, minimal operations</span>
                 </div>
-                <p className="st-muted">
-                  Active idea: <b>{idea.title || "Untitled"}</b> ·{" "}
-                  {wordCount(idea.description)} words
-                </p>
-                <button className="st-text-button" onClick={editIdea}>
-                  Edit the three fields →
-                </button>
+                <fieldset disabled={readonly || busy}>
+                  <Field
+                    label="Title"
+                    value={idea.title}
+                    onChange={(v) => change("title", v)}
+                    rows={1}
+                    placeholder="A short name for your idea"
+                  />
+                  <Field
+                    label="Idea"
+                    value={idea.description}
+                    onChange={(v) => change("description", v)}
+                    rows={5}
+                    hint={`${wordCount(idea.description)} / 199 words`}
+                    placeholder="What are you making, who is it for, and why would they pay?"
+                  />
+                  <ImageUploads
+                    title="Idea visual"
+                    hint="A sketch, mockup or screenshot. A landing page is not required."
+                    ids={idea.visuals}
+                    files={w.files}
+                    disabled={readonly || busy}
+                    limit={3}
+                    upload={(file) => upload(file, "visuals")}
+                    remove={(id) =>
+                      change(
+                        "visuals",
+                        idea.visuals.filter((x) => x !== id),
+                      )
+                    }
+                  />
+                  <details className="st-optional-notes">
+                    <summary>
+                      Work it through{" "}
+                      <span>Optional project notes · not submitted</span>
+                    </summary>
+                    <div className="st-field-grid">
+                      {(
+                        [
+                          ["customer", "Who is this for?"],
+                          ["problem", "What is painful today?"],
+                          ["alternative", "What do they do instead?"],
+                          ["value", "What changes for them?"],
+                          ["pricing", "How would you charge?"],
+                          ["acquisition", "Where are the first customers?"],
+                        ] as const
+                      ).map(([field, label]) => (
+                        <Field
+                          key={field}
+                          label={label}
+                          value={idea[field]}
+                          onChange={(v) => change(field, v)}
+                        />
+                      ))}
+                    </div>
+                    <Field
+                      label="Assumptions and API dependencies to check"
+                      value={idea.assumptions}
+                      onChange={(v) => change("assumptions", v)}
+                    />
+                    <Field
+                      label="Landing page (optional)"
+                      value={idea.landingUrl}
+                      onChange={(v) => change("landingUrl", v)}
+                      rows={1}
+                    />
+                    <Field
+                      label="Build plan and notes"
+                      value={idea.buildPlan}
+                      onChange={(v) => change("buildPlan", v)}
+                      rows={6}
+                    />
+                  </details>
+                </fieldset>
               </>
             ) : cp === 2 ? (
               <>
                 <p>
-                  A job spec, the features you will build first, and two stages
-                  of design.
+                  Your job spec, feature list and images of your product
+                  screens.
                 </p>
                 {open && (
                   <fieldset disabled={readonly || busy}>
                     <Field
-                      label="Jobs to be done · job spec"
+                      label="Job spec"
                       value={idea.job}
                       onChange={(v) => change("job", v)}
                       rows={5}
-                      placeholder="When [situation], [customer] wants to [progress], so they can [outcome]. Today they use [alternative]. Success looks like [observable outcome]."
+                      placeholder="Who needs this product, when do they need it, and what should they be able to accomplish?"
                     />
-                    <div className="st-divider">
-                      Feature list{" "}
-                      <span>
-                        2–3 lines per feature · mark your Minimum Lovable
-                        Product
-                      </span>
-                    </div>
-                    {idea.features.map((f, n) => (
-                      <div className="st-feature" key={f.id || n}>
-                        <input
-                          aria-label={`Feature ${n + 1} name`}
-                          value={f.name}
-                          placeholder="Feature name"
-                          onChange={(e) =>
-                            change(
-                              "features",
-                              idea.features.map((x, i) =>
-                                i === n ? { ...x, name: e.target.value } : x,
-                              ),
-                            )
-                          }
-                        />
-                        <textarea
-                          aria-label={`Feature ${n + 1} description`}
-                          value={f.description}
-                          rows={3}
-                          placeholder="What does this feature do, for whom, and what happens when they use it?"
-                          onChange={(e) =>
-                            change(
-                              "features",
-                              idea.features.map((x, i) =>
-                                i === n
-                                  ? { ...x, description: e.target.value }
-                                  : x,
-                              ),
-                            )
-                          }
-                        />
-                        <div>
-                          <label className="st-checkbox">
-                            <input
-                              type="checkbox"
-                              checked={f.mlp}
-                              onChange={(e) =>
-                                change(
-                                  "features",
-                                  idea.features.map((x, i) =>
-                                    i === n
-                                      ? { ...x, mlp: e.target.checked }
-                                      : x,
-                                  ),
-                                )
-                              }
-                            />
-                            In the MLP
-                          </label>
-                          <button
-                            className="st-text-button"
-                            onClick={() =>
-                              change(
-                                "features",
-                                idea.features.filter((_, i) => i !== n),
-                              )
-                            }
-                          >
-                            Remove
-                          </button>
-                        </div>
-                      </div>
-                    ))}
-                    <button
-                      className="st-button secondary"
-                      onClick={() =>
-                        change("features", [
-                          ...idea.features,
-                          {
-                            id: crypto.randomUUID(),
-                            name: "",
-                            description: "",
-                            mlp: true,
-                          },
-                        ])
+                    <Field
+                      label="Feature list"
+                      value={featureText(idea)}
+                      onChange={(v) => {
+                        change("features", []);
+                        change("featureList", v);
+                      }}
+                      rows={7}
+                      hint="Plain text or bullets are fine. Briefly explain what each feature does. Mark later features if useful."
+                      placeholder={
+                        "Create an invoice — enter the client, amount and due date.\nExport a PDF — download a clear invoice ready to send."
                       }
-                    >
-                      + Add a feature
-                    </button>
-                    <div className="st-upload-grid">
-                      {(["sketch", "design"] as const).map((kind) => (
-                        <div className="st-upload" key={kind}>
-                          <h4>
-                            {kind === "sketch"
-                              ? "1. Early sketch"
-                              : "2. Stitch designs"}
-                          </h4>
-                          <p>
-                            {kind === "sketch"
-                              ? "A photo of a hand-drawn flow or an Excalidraw export."
-                              : "Your subsequent Stitch screen designs, exported as images."}
-                          </p>
-                          <label className="st-button secondary">
-                            Choose image
-                            <input
-                              type="file"
-                              accept="image/png,image/jpeg,image/webp"
-                              disabled={busy || readonly}
-                              onChange={(e) => {
-                                const f = e.target.files?.[0];
-                                if (f) upload(f, kind);
-                                e.target.value = "";
-                              }}
-                            />
-                          </label>
-                          <small>PNG, JPG or WebP · up to 8 MB each</small>
-                          {(kind === "sketch"
-                            ? idea.sketches
-                            : idea.designs
-                          ).map((id) => (
-                            <div className="st-file" key={id}>
-                              <a
-                                target="_blank"
-                                rel="noreferrer"
-                                href={`/api/shipyard/studio?file=${id}`}
-                              >
-                                {w.files.find((f) => f.id === id)?.name ||
-                                  "Attached image"}{" "}
-                                ↗
-                              </a>
-                              <button
-                                aria-label="Remove image"
-                                onClick={() =>
-                                  change(
-                                    kind === "sketch" ? "sketches" : "designs",
-                                    (kind === "sketch"
-                                      ? idea.sketches
-                                      : idea.designs
-                                    ).filter((x) => x !== id),
-                                  )
-                                }
-                              >
-                                ×
-                              </button>
-                            </div>
-                          ))}
-                        </div>
-                      ))}
-                    </div>
+                    />
+                    <ImageUploads
+                      title="Screen designs"
+                      hint="Upload images of the screens showing the main user flow. Use any design tool."
+                      ids={idea.designs}
+                      files={w.files}
+                      disabled={readonly || busy}
+                      limit={6}
+                      upload={(file) => upload(file, "design")}
+                      remove={(id) =>
+                        change(
+                          "designs",
+                          idea.designs.filter((x) => x !== id),
+                        )
+                      }
+                    />
                   </fieldset>
                 )}
               </>
@@ -344,7 +300,7 @@ export function Checkpoints({
             {!open && (
               <p className="st-muted">
                 Checkpoint {cp - 1} must pass first. You can keep exploring your
-                idea and using the build room.
+                idea in project chat.
               </p>
             )}
             {open && !readonly && (

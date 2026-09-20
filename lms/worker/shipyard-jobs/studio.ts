@@ -23,6 +23,7 @@ import {
   cacheEvidence,
   knowledgeSearch,
   socialResearch,
+  searchTerms,
   type Evidence,
 } from "@/lib/shipyard/studio/evidence";
 import { COACH_PROMPT, reviewPrompt } from "@/lib/shipyard/studio/prompts";
@@ -154,6 +155,7 @@ async function review(job: ShipyardStudioJob) {
       job?: string;
       sketches?: string[];
       designs?: string[];
+      visuals?: string[];
     };
   };
   const evidence = await evidenceFor(
@@ -170,7 +172,10 @@ async function review(job: ShipyardStudioJob) {
     },
   ];
   let unavailable = false;
-  if (submission.checkpoint === 1) {
+  if (
+    submission.checkpoint === 1 &&
+    submission.rubric === "studio-2026-09-19-v1"
+  ) {
     const page = await renderLiveProduct(snapshot.fields.landingUrl!);
     unavailable = !page.ok || !page.domText.trim();
     content.push({
@@ -190,6 +195,7 @@ async function review(job: ShipyardStudioJob) {
       );
   } else {
     const ids = [
+      ...(snapshot.fields.visuals || []),
       ...(snapshot.fields.sketches || []),
       ...(snapshot.fields.designs || []),
     ];
@@ -222,7 +228,7 @@ async function review(job: ShipyardStudioJob) {
         content.push(
           {
             type: "text",
-            text: `${file.kind === "sketch" ? "EARLY HAND SKETCH / EXCALIDRAW" : "SUBSEQUENT STITCH DESIGN"}: ${file.name}`,
+            text: `${submission.rubric === "studio-2026-09-19-v1" ? (file.kind === "sketch" ? "EARLY HAND SKETCH / EXCALIDRAW" : "SUBSEQUENT STITCH DESIGN") : submission.checkpoint === 1 ? "IDEA VISUAL" : "PRODUCT SCREEN DESIGN"}: ${file.name}`,
           },
           imagePart(Buffer.from(bytes).toString("base64"), file.contentType),
         );
@@ -252,7 +258,7 @@ async function review(job: ShipyardStudioJob) {
   );
   const result = await callStudio({
     task: "verdict",
-    system: reviewPrompt(submission.checkpoint),
+    system: reviewPrompt(submission.checkpoint, submission.rubric),
     user: anonymisedContent,
     schema: reviewSchema,
     temperature: 0,
@@ -337,6 +343,7 @@ export async function runStudioJob(id: string) {
     if (job.kind === "appeal") return await sendAppeal(job);
     const payload = job.payload as {
       message?: string;
+      attachmentIds?: string[];
       query?: string;
       source?: string;
       target?: string;
@@ -347,6 +354,7 @@ export async function runStudioJob(id: string) {
         sketches?: string[];
         designs?: string[];
         references?: string[];
+        visuals?: string[];
       };
     };
     if (job.kind === "research") {
@@ -380,20 +388,84 @@ export async function runStudioJob(id: string) {
     }
     if (job.kind === "review") return await review(job);
     if (job.kind !== "coach") throw new Error("Unknown studio job type");
-    const evidence = await evidenceFor(
-      job,
-      `${payload.idea?.title || ""} ${payload.idea?.description || ""}`.trim() ||
-        payload.message ||
-        "",
-      payload.idea!.id,
-    );
+    const conversation = (
+      await prisma.shipyardStudioJob.findMany({
+        where: {
+          workspaceId: job.workspaceId,
+          kind: "coach",
+          status: "complete",
+          createdAt: { lt: job.createdAt },
+          payload: { path: ["idea", "id"], equals: payload.idea!.id },
+        },
+        orderBy: { createdAt: "desc" },
+        take: 8,
+        select: { payload: true, result: true },
+      })
+    )
+      .reverse()
+      .map((j) => ({
+        student: (j.payload as { message: string }).message,
+        coach: (j.result as { answer: string }).answer,
+        attachmentIds:
+          (j.payload as { attachmentIds?: string[] }).attachmentIds || [],
+      }));
+    const submissions = await prisma.shipyardStudioSubmission.findMany({
+      where: {
+        workspaceId: job.workspaceId,
+        snapshot: { path: ["ideaId"], equals: payload.idea!.id },
+        createdAt: { lte: job.createdAt },
+      },
+      orderBy: { version: "desc" },
+      distinct: ["checkpoint"],
+      select: {
+        checkpoint: true,
+        version: true,
+        status: true,
+        snapshot: true,
+        review: true,
+        appeal: { select: { decision: true, decisionNote: true } },
+      },
+    });
+    const query = `${payload.idea?.title || ""} ${payload.idea?.description || ""} ${payload.message || ""} ${conversation
+      .slice(-2)
+      .map((c) => c.student)
+      .join(" ")}`;
+    const evidence = await evidenceFor(job, query, payload.idea!.id);
+    const notes: string[] = [];
+    const appQuery = searchTerms(query)[0];
+    if (
+      appQuery &&
+      (await sourceEnabled("market")) &&
+      !evidence.some((e) => e.source === "AppRill")
+    ) {
+      try {
+        const apps = await appRillSearch(appQuery, {
+          listingsOnly: true,
+          timeoutMs: 8000,
+        });
+        await cacheEvidence(apps);
+        evidence.push(...apps);
+      } catch {
+        notes.push(
+          "Fresh AppRill lookup unavailable. Use only the supplied saved evidence; do not claim a fresh search succeeded.",
+        );
+      }
+    }
     const attachments: Array<
       { type: "text"; text: string } | ReturnType<typeof imagePart>
     > = [];
     const fileIds = [
-      ...(payload.idea?.references || []),
-      ...(payload.idea?.sketches || []),
-      ...(payload.idea?.designs || []),
+      ...new Set([
+        ...(payload.attachmentIds || []),
+        ...conversation
+          .slice(-2)
+          .reverse()
+          .flatMap((c) => c.attachmentIds),
+        ...(payload.idea?.visuals || []),
+        ...(payload.idea?.references || []),
+        ...(payload.idea?.sketches || []),
+        ...(payload.idea?.designs || []),
+      ]),
     ].slice(0, 6);
     const files = await prisma.shipyardStudioFile.findMany({
       where: {
@@ -410,7 +482,10 @@ export async function runStudioJob(id: string) {
           file.bytes,
         );
         attachments.push(
-          { type: "text", text: `Attached ${file.kind}: ${file.name}` },
+          {
+            type: "text",
+            text: `Attached ${file.kind}: ${file.name} (file ${file.id})`,
+          },
           imagePart(Buffer.from(bytes).toString("base64"), file.contentType),
         );
       } catch {
@@ -429,29 +504,10 @@ export async function runStudioJob(id: string) {
           text: JSON.stringify({
             message: payload.message,
             idea: payload.idea,
+            submissions,
             evidence,
-            conversation: (
-              await prisma.shipyardStudioJob.findMany({
-                where: {
-                  workspaceId: job.workspaceId,
-                  kind: "coach",
-                  status: "complete",
-                  createdAt: { lt: job.createdAt },
-                  payload: {
-                    path: ["idea", "id"],
-                    equals: (job.payload as { idea: { id: string } }).idea.id,
-                  },
-                },
-                orderBy: { createdAt: "desc" },
-                take: 8,
-                select: { payload: true, result: true },
-              })
-            )
-              .reverse()
-              .map((j) => ({
-                student: (j.payload as { message: string }).message,
-                coach: (j.result as { answer: string }).answer,
-              })),
+            conversation,
+            retrievalNotes: notes,
           }),
         },
         ...attachments,

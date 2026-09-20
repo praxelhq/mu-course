@@ -34,8 +34,16 @@ export async function instructorState() {
           updatedAt: true,
           members: { select: { identity: { select: { email: true } } } },
           submissions: {
-            orderBy: { createdAt: "desc" },
-            select: { checkpoint: true, version: true, status: true },
+            orderBy: { version: "desc" },
+            distinct: ["checkpoint"],
+            select: {
+              id: true,
+              checkpoint: true,
+              version: true,
+              status: true,
+              snapshot: true,
+              createdAt: true,
+            },
           },
         },
       }),
@@ -70,6 +78,34 @@ export async function instructorState() {
         })),
       ),
     ]);
-  return { appeals, workspaces, knowledge, failures, spend, switches };
+  // The overview only needs the short idea, not every full design/spec snapshot.
+  const overviewWorkspaces = workspaces.map((w) => ({
+    ...w,
+    submissions: w.submissions.map(({ snapshot, ...s }) => {
+      const fields = (
+        snapshot as { fields?: { title?: string; description?: string } }
+      ).fields;
+      return {
+        ...s,
+        snapshot:
+          s.checkpoint === 1
+            ? {
+                fields: {
+                  title: fields?.title,
+                  description: fields?.description,
+                },
+              }
+            : null,
+      };
+    }),
+  }));
+  return {
+    appeals,
+    workspaces: overviewWorkspaces,
+    knowledge,
+    failures,
+    spend,
+    switches,
+  };
 }
 export type InstructorState = Awaited<ReturnType<typeof instructorState>>;

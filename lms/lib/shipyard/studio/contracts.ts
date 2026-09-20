@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const RUBRIC = "studio-2026-09-19-v1";
+export const RUBRIC = "studio-2026-09-21-v2";
 export const wordCount = (text: string) =>
   text.trim().split(/\s+/u).filter(Boolean).length;
 export function allowedEmail(email: string): boolean {
@@ -40,6 +40,8 @@ export const ideaSchema = z.object({
   assumptions: z.string().max(5000),
   job: z.string().max(5000),
   features: z.array(featureSchema).max(40),
+  featureList: z.string().max(12000).default(""),
+  visuals: z.array(z.string().min(1)).max(3).default([]),
   sketches: z.array(z.string()).max(10),
   designs: z.array(z.string()).max(10),
   references: z.array(z.string()).max(3).default([]),
@@ -77,6 +79,8 @@ export function emptyIdea(id: string): StudioIdea {
     assumptions: "",
     job: "",
     features: [],
+    featureList: "",
+    visuals: [],
     sketches: [],
     designs: [],
     references: [],
@@ -88,6 +92,20 @@ export function emptyIdea(id: string): StudioIdea {
 export function emptyDocument(): StudioDocument {
   return { activeIdeaId: "first", ideas: [emptyIdea("first")] };
 }
+export function featureText(idea: {
+  featureList?: string;
+  features?: StudioIdea["features"];
+}) {
+  return (
+    idea.featureList ||
+    (idea.features || [])
+      .map(
+        (f) =>
+          `${f.name}${f.mlp ? " (build first)" : " (later)"}: ${f.description}`,
+      )
+      .join("\n\n")
+  );
+}
 const cp1 = z.object({
   title: z.string().trim().min(3).max(150),
   description: z
@@ -96,18 +114,30 @@ const cp1 = z.object({
     .min(20)
     .max(5000)
     .refine((s) => wordCount(s) < 200, "Keep the idea under 200 words"),
-  landingUrl: webUrl,
+  visuals: z
+    .array(z.string().min(1))
+    .min(1, "Upload a visual of your idea")
+    .max(3),
 });
-const cp2 = z.object({
-  job: z.string().trim().min(30).max(5000),
-  features: z
-    .array(featureSchema)
-    .min(1)
-    .max(40)
-    .refine((f) => f.some((x) => x.mlp), "Select at least one MLP feature"),
-  sketches: z.array(z.string().min(1)).min(1).max(3),
-  designs: z.array(z.string().min(1)).min(1).max(3),
-});
+const cp2 = z.preprocess(
+  (value) => {
+    if (!value || typeof value !== "object") return value;
+    const idea = value as StudioIdea;
+    return { ...idea, featureList: featureText(idea) };
+  },
+  z.object({
+    job: z.string().trim().min(30).max(5000),
+    featureList: z
+      .string()
+      .trim()
+      .min(15, "Describe the features you plan to build")
+      .max(12000),
+    designs: z
+      .array(z.string().min(1))
+      .min(1, "Upload images of your product screens")
+      .max(6),
+  }),
+);
 const cp3 = z.object({
   liveUrl: webUrl,
   notes: z.string().max(5000).default(""),
@@ -221,6 +251,7 @@ export const actionSchema = z.discriminatedUnion("action", [
   z.object({
     action: z.literal("coach"),
     message: z.string().trim().min(3).max(5000),
+    attachmentIds: z.array(z.string().min(1)).max(3).default([]),
     requestId: z.uuid(),
   }),
   z.object({
