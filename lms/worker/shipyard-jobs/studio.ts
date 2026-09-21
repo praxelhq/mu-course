@@ -27,6 +27,7 @@ import {
   type Evidence,
 } from "@/lib/shipyard/studio/evidence";
 import { COACH_PROMPT, reviewPrompt } from "@/lib/shipyard/studio/prompts";
+import { coachConversation } from "@/lib/shipyard/studio/coach-context";
 import { STUDIO_QUEUE } from "@/lib/shipyard/studio/service";
 import { sourceEnabled } from "@/lib/shipyard/studio/settings";
 
@@ -495,22 +496,21 @@ export async function runStudioJob(id: string) {
         });
       }
     }
+    const turns = coachConversation(
+      { idea: payload.idea, submissions, evidence, retrievalNotes: notes },
+      conversation.flatMap((turn) => [
+        { role: "user" as const, content: turn.student },
+        { role: "assistant" as const, content: turn.coach },
+      ]),
+      payload.message!,
+    );
     const result = await callStudio({
       task: "verdict",
       system: COACH_PROMPT,
+      history: turns.history,
       user: [
-        {
-          type: "text",
-          text: JSON.stringify({
-            message: payload.message,
-            idea: payload.idea,
-            submissions,
-            evidence,
-            conversation,
-            retrievalNotes: notes,
-          }),
-        },
         ...attachments,
+        turns.currentMessage,
       ],
       schema: coachSchema,
       temperature: 0.2,

@@ -497,7 +497,7 @@ describe.skipIf(!enabled)("Shipyard studio with isolated Postgres", () => {
       requestId: randomUUID(),
     })) as { jobId: string };
     await runStudioJob(job.jobId);
-    const body = fakes.model.mock.calls[0][0].user[0].text;
+    const body = fakes.model.mock.calls[0][0].history[0].content;
     expect(body).toContain('"id":"first"');
     expect(body).not.toContain("unrelated-idea");
   });
@@ -709,9 +709,12 @@ describe.skipIf(!enabled)("Shipyard studio with isolated Postgres", () => {
       requestId: randomUUID(),
     })) as { jobId: string };
     await runStudioJob(second.jobId);
-    const content = fakes.model.mock.lastCall![0].user;
-    expect(content[0].text).toContain("Review this uploaded screen");
-    expect(content[0].text).toContain("The screen supports the job");
+    const request = fakes.model.mock.lastCall![0];
+    const content = request.user;
+    expect(request.history).toContainEqual({ role: "user", content: "Review this uploaded screen" });
+    expect(content.at(-1).text).toContain("What should I change in that screen?");
+    expect(content[0].text).not.toContain("Review this uploaded screen");
+    expect(request.history[0].content).toContain("The screen supports the job");
     expect(
       content.filter((p: { type: string }) => p.type === "image_url"),
     ).toHaveLength(2);

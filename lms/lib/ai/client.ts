@@ -38,6 +38,7 @@ export function getAnthropic(): Anthropic {
 // ---------------------------------------------------------------------------
 
 export type ModelUsage = { inputTokens: number; outputTokens: number };
+export type ConversationTurn = { role: "user" | "assistant"; content: string };
 
 /** A base64 image attached to the user turn (multimodal grading, e.g. slides). */
 export type ImageInput = {
@@ -61,6 +62,7 @@ export interface ModelClient {
     model: string;
     images?: ImageInput[];
     pdfsBase64?: string[];
+    history?: ConversationTurn[];
   }): Promise<{ text: string; usage: ModelUsage }>;
 }
 
@@ -76,6 +78,8 @@ export interface StructuredCallArgs<T> {
   images?: ImageInput[];
   /** Optional base64 PDFs sent as document blocks (Claude reads them natively). */
   pdfsBase64?: string[];
+  /** Completed conversation turns; the current user message always comes last. */
+  history?: ConversationTurn[];
 }
 
 export interface StructuredCallResult<T> {
@@ -101,7 +105,7 @@ export function anthropicModelClient(apiKey: string): ModelClient {
 
 function realModelClient(resolveClient: () => Anthropic = getAnthropic): ModelClient {
   return {
-    async complete({ system, user, maxTokens, temperature, model, images, pdfsBase64 }) {
+    async complete({ system, user, maxTokens, temperature, model, images, pdfsBase64, history }) {
       const anthropic = resolveClient();
       const content: Anthropic.ContentBlockParam[] = [{ type: "text", text: user }];
       for (const img of images ?? []) {
@@ -120,7 +124,7 @@ function realModelClient(resolveClient: () => Anthropic = getAnthropic): ModelCl
         model,
         max_tokens: maxTokens,
         system,
-        messages: [{ role: "user", content }],
+        messages: [...(history ?? []), { role: "user", content }],
         ...(temperature !== undefined && !NO_TEMPERATURE.test(model)
           ? { temperature }
           : {}),
@@ -235,6 +239,7 @@ export async function structuredCall<T>(
       model,
       images: args.images,
       pdfsBase64: args.pdfsBase64,
+      history: args.history,
     });
     usage.inputTokens += res.usage.inputTokens;
     usage.outputTokens += res.usage.outputTokens;
