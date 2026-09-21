@@ -24,13 +24,15 @@ export const CLERK_FRONTEND_PROXY_PATH = "/api/clerk";
 export async function proxyClerkFrontend(request: Request): Promise<Response> {
   if (!hasClerkKeys()) return new Response("Not found", { status: 404 });
   const { clerkFrontendApiProxy } = await import("@clerk/nextjs/server");
-  const { isIP } = await import("node:net");
+  const { clerkClientIp } = await import("./cloudflare-ip");
   const headers = new Headers(request.headers);
-  // Railway supplies X-Real-IP. Do not let a caller's Cloudflare/XFF headers
-  // override it in Clerk's IP detection and rate limiting.
+  // Keep students on separate Clerk rate-limit buckets behind Cloudflare,
+  // while rejecting forwarded IP headers supplied by direct callers.
+  const clientIp = clerkClientIp(headers);
   headers.delete("cf-connecting-ip");
   headers.delete("x-forwarded-for");
-  if (!isIP(headers.get("x-real-ip") ?? "")) headers.delete("x-real-ip");
+  headers.delete("x-real-ip");
+  if (clientIp) headers.set("x-real-ip", clientIp);
   const origin = new URL(process.env.APP_URL || request.url);
   headers.set("x-forwarded-host", origin.host);
   headers.set("x-forwarded-proto", origin.protocol.slice(0, -1));
