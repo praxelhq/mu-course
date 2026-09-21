@@ -4,12 +4,13 @@ import {
   anthropicModelClient,
   structuredCall,
   type ImageInput,
+  type ConversationTurn,
 } from "./client";
 import type { StructuredCallArgs, StructuredCallResult } from "./openrouter";
 
 /** Direct Claude Haiku with a dedicated server-only Shipyard credential. */
 export async function callStudio<T>(
-  args: StructuredCallArgs<T>,
+  args: StructuredCallArgs<T> & { history?: ConversationTurn[] },
 ): Promise<StructuredCallResult<T>> {
   const key = process.env.SHIPYARD_ANTHROPIC_API_KEY;
   if (!key)
@@ -61,6 +62,7 @@ export async function callStudio<T>(
       system: `${args.system}\nReturn JSON matching this schema: ${JSON.stringify(z.toJSONSchema(args.schema))}`,
       user: text.join("\n\n"),
       images,
+      history: args.history,
       schema: args.schema,
       model,
       temperature: args.temperature,

@@ -7,11 +7,42 @@ vi.mock("@/lib/ai/client", async (importOriginal) => ({
   anthropicModelClient: () => ({ complete: fake.complete }),
 }));
 import { callStudio } from "@/lib/ai/studio";
+import { coachConversation } from "@/lib/shipyard/studio/coach-context";
 afterEach(() => {
   vi.unstubAllEnvs();
   fake.complete.mockReset();
 });
 describe("Shipyard direct Claude boundary", () => {
+  it("places the saved draft before the discussion and keeps the follow-up last", () => {
+    const history = [
+      { role: "user" as const, content: "I choose Chatnama instead." },
+      { role: "assistant" as const, content: "Start with local WhatsApp parsing." },
+    ];
+    const turns = coachConversation({ idea: { title: "Neartrust" } }, history, "Which APIs do I need?");
+    expect(turns.history[0].content).toContain("Neartrust");
+    expect(turns.history.slice(1)).toEqual(history);
+    expect(JSON.parse(turns.currentMessage.text)).toEqual({ currentStudentMessage: "Which APIs do I need?" });
+  });
+  it("keeps previous turns separate from the latest idea switch, including on JSON retry", async () => {
+    vi.stubEnv("SHIPYARD_ANTHROPIC_API_KEY", "test-only");
+    fake.complete
+      .mockResolvedValueOnce({ text: "invalid", usage: { inputTokens: 1, outputTokens: 1 } })
+      .mockResolvedValueOnce({ text: '{"ok":true}', usage: { inputTokens: 1, outputTokens: 1 } });
+    const history = [
+      { role: "user" as const, content: "Review my compliance calendar." },
+      { role: "assistant" as const, content: "Check deadline data access first." },
+    ];
+    await callStudio({
+      task: "verdict", system: "test", history,
+      user: "New idea: Chatnama. Review this WhatsApp story tool instead.",
+      schema: z.object({ ok: z.boolean() }),
+    });
+    for (const [args] of fake.complete.mock.calls) {
+      expect(args.history).toEqual(history);
+      expect(args.user).toContain("New idea: Chatnama");
+      expect(args.user).not.toContain("compliance calendar");
+    }
+  });
   it("fails closed without the dedicated key even if a shared key exists", async () => {
     vi.stubEnv("SHIPYARD_ANTHROPIC_API_KEY", "");
     vi.stubEnv("ANTHROPIC_API_KEY", "unrelated-course-key");
