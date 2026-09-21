@@ -12,6 +12,7 @@ const calendar: ConversationTurn[] = [
 ];
 const chatnama = "New idea: Chatnama turns an exported WhatsApp chat into a funny friendship story. Parse exported text in the browser; raw messages stay local. Show message counts, emojis and eight shareable cards. Send only aggregate statistics to AI for an optional roast. Free teaser, 49 rupees for the full story; a 149 rupee video gift edition can wait. First buyers are friends gifting on birthdays. Review this new idea.";
 const cases = [
+  { name: "paid-unlock-needs-verification", history: [] as ConversationTurn[], message: "I am switching from the saved idea to Chatnama, a browser tool that turns WhatsApp text exports into friendship cards. Raw messages stay local, the first version has no AI, and a one-time 49 rupee unlock buys the cards. I can reach friends buying birthday gifts. Which APIs are actually necessary? Keep it under 120 words." },
   { name: "switch-away-from-stale-brief", history: calendar, message: chatnama },
   { name: "respect-chosen-one-time-product", history: [...calendar, { role: "user" as const, content: chatnama }, { role: "assistant" as const, content: "One-time purchases are fragile. You should choose the compliance calendar instead." }], message: "I want to go with Chatnama. Give me a small build plan and a first-sale test. Keep it under 220 words." },
   { name: "follow-up-refers-to-new-idea", history: [...calendar, { role: "user" as const, content: chatnama }, { role: "assistant" as const, content: "For Chatnama, start with local parsing and static share cards." }], message: "Which APIs do I actually need for this? Keep it brief." },
@@ -19,7 +20,7 @@ const cases = [
 ];
 
 async function main() {
-  for (const test of cases) {
+  for (const test of cases.filter((test) => !process.argv[2] || test.name === process.argv[2])) {
     const turns = coachConversation(
       { idea: { title: "Neartrust", description: "Compliance calendar for food brands" }, submissions: [], evidence: [], retrievalNotes: [] },
       test.history, test.message,
@@ -30,6 +31,9 @@ async function main() {
       schema: coachSchema, temperature: 0.2, maxTokens: 2500,
     });
     console.log(JSON.stringify({ name: test.name, costUsd: result.costUsd, answer: result.data.answer }));
+    if (test.name === "paid-unlock-needs-verification" && (!/server|backend|hosted/i.test(result.data.answer) || !/verif|webhook/i.test(result.data.answer))) {
+      throw new Error("paid-unlock-needs-verification: missing trusted payment verification");
+    }
     if (test.name !== "do-not-amplify-unverified-fines" && !/chatnama|whatsapp/i.test(result.data.answer)) {
       throw new Error(`${test.name}: coach did not address the chosen idea`);
     }
