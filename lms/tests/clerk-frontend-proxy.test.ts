@@ -38,6 +38,28 @@ describe("Clerk frontend transport", () => {
     expect(result.headers.has("clerk-secret-key")).toBe(false);
   });
 
+  it.each([
+    ["172.64.0.1", "203.0.113.25", "203.0.113.25"],
+    ["2606:4700::1", "2001:db8::25", "2001:db8::25"],
+    ["::ffff:172.64.0.1", "203.0.113.25", "203.0.113.25"],
+    ["203.0.113.1", "198.51.100.2", "203.0.113.1"],
+    ["104.32.0.1", "198.51.100.2", "104.32.0.1"],
+    ["172.64.0.1", "1.2.3.4, 5.6.7.8", "172.64.0.1"],
+    ["172.64.0.1", "", "172.64.0.1"],
+    ["not-an-ip", "198.51.100.2", null],
+    ["", "198.51.100.2", null],
+  ])("forwards the visitor IP only through a trusted Cloudflare peer (%s, %s)", async (peer, visitor, expected) => {
+    configure();
+    const fetch = vi.fn<(url: string, init: RequestInit) => Promise<Response>>(async () => new Response("{}"));
+    vi.stubGlobal("fetch", fetch);
+    await proxyClerkFrontend(new Request("https://lms.praxel.in/api/clerk/v1/environment", {
+      headers: { "x-real-ip": peer, "cf-connecting-ip": visitor, "x-forwarded-for": "192.0.2.99" },
+    }));
+    const headers = new Headers(fetch.mock.calls[0][1].headers);
+    expect(headers.get("x-forwarded-for")).toBe(expected);
+    expect(headers.has("cf-connecting-ip")).toBe(false);
+  });
+
   it("rewrites Clerk asset redirects back through the LMS", async () => {
     configure();
     vi.stubGlobal("fetch", vi.fn(async () => new Response(null, {
