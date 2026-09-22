@@ -42,6 +42,7 @@ import {
 const isPublicRoute = createRouteMatcher([
   "/",
   "/sign-in(.*)",
+  "/sign-up(.*)",
   // Studio has its own verified MU identity check and no Forge roster dependency.
   "/shipyard",
   "/shipyard/join(.*)",
@@ -214,7 +215,11 @@ const clerkProxy = clerkMiddleware(async (auth, req) => {
     }
   }
   return notOnRosterRedirect(req);
-}, { proxyUrl: process.env.CLERK_FRONTEND_PROXY_URL || undefined });
+}, {
+  proxyUrl: process.env.CLERK_FRONTEND_PROXY_URL || undefined,
+  signInUrl: "/sign-in",
+  signUpUrl: "/sign-up",
+});
 
 export default function proxy(req: NextRequest, event: unknown) {
   // Authentication transport must be reachable before the visitor signs in.
