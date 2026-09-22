@@ -12,6 +12,7 @@ export function SignUpPanel() {
           path="/sign-up"
           signInUrl="/sign-in"
           fallbackRedirectUrl="/shipyard"
+          signInFallbackRedirectUrl="/shipyard"
         />
       </Show>
       <Show when="signed-in">
