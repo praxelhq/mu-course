@@ -34,6 +34,9 @@ export function Studio({
   workspaceId?: string;
   focusAppeal?: string;
 }) {
+  const authRedirectUrl = inviteToken
+    ? `/shipyard/join?token=${encodeURIComponent(inviteToken)}`
+    : "/shipyard";
   const [state, setState] = useState<State | null>(null),
     [doc, setDoc] = useState<StudioDocument | null>(null),
     [tab, setTab] = useState<Tab>(instructor ? "checkpoints" : "chat");
@@ -282,11 +285,8 @@ export function Studio({
             <>
               <SignUpButton
                 mode="modal"
-                forceRedirectUrl={
-                  inviteToken
-                    ? `/shipyard/join?token=${encodeURIComponent(inviteToken)}`
-                    : "/shipyard"
-                }
+                forceRedirectUrl={authRedirectUrl}
+                signInForceRedirectUrl={authRedirectUrl}
               >
                 <button className="st-button">
                   Start with your MU email ↗
@@ -294,11 +294,8 @@ export function Studio({
               </SignUpButton>
               <SignInButton
                 mode="modal"
-                forceRedirectUrl={
-                  inviteToken
-                    ? `/shipyard/join?token=${encodeURIComponent(inviteToken)}`
-                    : "/shipyard"
-                }
+                forceRedirectUrl={authRedirectUrl}
+                signUpForceRedirectUrl={authRedirectUrl}
               >
                 <button className="st-button secondary">
                   Already registered? Sign in
