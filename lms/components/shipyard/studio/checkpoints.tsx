@@ -143,7 +143,7 @@ export function Checkpoints({
             {cp === 1 ? (
               <>
                 <p>
-                  A title, your idea in fewer than 200 words, and a visual.
+                  A title, your idea in fewer than 200 words, and a landing page link.
                   That’s it.
                 </p>
                 <div className="st-rubric">
@@ -160,70 +160,21 @@ export function Checkpoints({
                     placeholder="A short name for your idea"
                   />
                   <Field
-                    label="Idea"
+                    label="Description"
                     value={idea.description}
                     onChange={(v) => change("description", v)}
                     rows={5}
                     hint={`${wordCount(idea.description)} / 199 words`}
                     placeholder="What are you making, who is it for, and why would they pay?"
                   />
-                  <ImageUploads
-                    title="Idea visual"
-                    hint="A sketch, mockup or screenshot. A landing page is not required."
-                    ids={idea.visuals}
-                    files={w.files}
-                    disabled={readonly || busy}
-                    limit={3}
-                    upload={(file) => upload(file, "visuals")}
-                    remove={(id) =>
-                      change(
-                        "visuals",
-                        idea.visuals.filter((x) => x !== id),
-                      )
-                    }
+                  <Field
+                    label="Landing page link (required)"
+                    value={idea.landingUrl}
+                    onChange={(v) => change("landingUrl", v)}
+                    rows={1}
+                    placeholder="https://your-product.com"
+                    hint="A public page explaining your idea and offer."
                   />
-                  <details className="st-optional-notes">
-                    <summary>
-                      Work it through{" "}
-                      <span>Optional project notes · not submitted</span>
-                    </summary>
-                    <div className="st-field-grid">
-                      {(
-                        [
-                          ["customer", "Who is this for?"],
-                          ["problem", "What is painful today?"],
-                          ["alternative", "What do they do instead?"],
-                          ["value", "What changes for them?"],
-                          ["pricing", "How would you charge?"],
-                          ["acquisition", "Where are the first customers?"],
-                        ] as const
-                      ).map(([field, label]) => (
-                        <Field
-                          key={field}
-                          label={label}
-                          value={idea[field]}
-                          onChange={(v) => change(field, v)}
-                        />
-                      ))}
-                    </div>
-                    <Field
-                      label="Assumptions and API dependencies to check"
-                      value={idea.assumptions}
-                      onChange={(v) => change("assumptions", v)}
-                    />
-                    <Field
-                      label="Landing page (optional)"
-                      value={idea.landingUrl}
-                      onChange={(v) => change("landingUrl", v)}
-                      rows={1}
-                    />
-                    <Field
-                      label="Build plan and notes"
-                      value={idea.buildPlan}
-                      onChange={(v) => change("buildPlan", v)}
-                      rows={6}
-                    />
-                  </details>
                 </fieldset>
               </>
             ) : cp === 2 ? (

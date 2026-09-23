@@ -175,7 +175,7 @@ async function review(job: ShipyardStudioJob) {
   let unavailable = false;
   if (
     submission.checkpoint === 1 &&
-    submission.rubric === "studio-2026-09-19-v1"
+    submission.rubric !== "studio-2026-09-21-v2"
   ) {
     const page = await renderLiveProduct(snapshot.fields.landingUrl!);
     unavailable = !page.ok || !page.domText.trim();

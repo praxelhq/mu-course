@@ -33,7 +33,7 @@ async function main() {
     title: "Invoice Little",
     description:
       "A self-serve single-line-item invoice PDF generator for freelance designers. Enter client, project, amount, due date and UPI details, preview the invoice, and download a PDF. Charge ₹199 once for access to branded PDF exports. Reach the first buyers through our college design club and direct demos to freelancers. The eight-week version has no accounting integration, tax filing, template library or managed collections.",
-    visuals: ["fixture-image"],
+    landingUrl: "https://invoice-little.example",
   };
   const results: Array<Record<string, unknown>> = [];
   for (const fixture of [
@@ -78,7 +78,7 @@ async function main() {
       image: true,
     },
     {
-      name: "unavailable-visual",
+      name: "unavailable-landing-page",
       cp: 1,
       fields: good,
       expected: "evidence_needed",
@@ -109,12 +109,18 @@ async function main() {
               idea: fixture.cp === 2 ? { fields: good } : undefined,
             },
             evidence,
-            imageAccess: fixture.image
-              ? "Attached below"
-              : "Image storage unavailable. No image could be inspected.",
+            landing: "title" in fixture.fields ? {
+              accessible: fixture.image,
+              title: fixture.fields.title,
+              text: fixture.image ? fixture.fields.description : "",
+              notes: fixture.image ? [] : ["Landing page unavailable"],
+            } : undefined,
+            imageAccess: fixture.cp === 2
+              ? (fixture.image ? "Attached below" : "Image storage unavailable. No image could be inspected.")
+              : undefined,
           }),
         },
-        ...(fixture.image ? [image] : []),
+        ...(fixture.cp === 2 && fixture.image ? [image] : []),
       ],
       schema: reviewSchema,
       temperature: 0,

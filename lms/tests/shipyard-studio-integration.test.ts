@@ -124,6 +124,7 @@ describe.skipIf(!enabled)("Shipyard studio with isolated Postgres", () => {
       title: "Freelance invoice tool",
       description:
         "A simple invoice tracker for freelance designers. Charge five dollars monthly and find first buyers through our design club.",
+      landingUrl: "https://example.com/invoices",
       visuals: [`idea-visual-${suffix}`],
     });
     await performStudioAction(student, {
@@ -543,6 +544,7 @@ describe.skipIf(!enabled)("Shipyard studio with isolated Postgres", () => {
         title: "Invoice helper",
         description:
           "Software for freelancers to create reusable invoices for five dollars a month, sold through our design club.",
+        landingUrl: "https://example.com/invoices",
         visuals: [`other-visual-${suffix}`],
       });
       await performStudioAction(outsider, {
@@ -579,7 +581,7 @@ describe.skipIf(!enabled)("Shipyard studio with isolated Postgres", () => {
       await prisma.shipyardStudioJob.delete({ where: { id: spent.id } });
     }
   });
-  it("reviews the three-field idea and single-design spec without browsing a landing page", async () => {
+  it("reviews the required landing page and only uses uploaded designs for checkpoint two", async () => {
     const w = await saveIdea();
     fakes.render.mockClear();
     fakes.model.mockResolvedValue({
@@ -608,7 +610,8 @@ describe.skipIf(!enabled)("Shipyard studio with isolated Postgres", () => {
       requestId: randomUUID(),
     })) as { jobId: string; submissionId: string };
     await runStudioJob(first.jobId);
-    expect(fakes.render).not.toHaveBeenCalled();
+    expect(fakes.render).toHaveBeenCalledTimes(1);
+    expect(fakes.render).toHaveBeenCalledWith("https://example.com/invoices");
     expect(
       (
         await prisma.shipyardStudioSubmission.findUniqueOrThrow({
@@ -616,6 +619,9 @@ describe.skipIf(!enabled)("Shipyard studio with isolated Postgres", () => {
         })
       ).status,
     ).toBe("passed");
+    const saved = await prisma.shipyardStudioSubmission.findUniqueOrThrow({ where: { id: first.submissionId } });
+    expect(Object.keys((saved.snapshot as { fields: object }).fields).sort()).toEqual(["description", "landingUrl", "title"]);
+    fakes.render.mockClear();
     Object.assign(w.document.ideas[0], {
       job: "When a freelancer completes work, create and send a clear invoice to the customer.",
       featureList:
@@ -682,6 +688,17 @@ describe.skipIf(!enabled)("Shipyard studio with isolated Postgres", () => {
       ).status,
     ).toBe("evidence_needed");
   });
+  it("keeps inaccessible landing pages pending evidence even if the model says pass", async () => {
+    const w = await saveIdea();
+    const submitted = await performStudioAction(student, { action: "submit", checkpoint: 1, version: w.version, requestId: randomUUID() }) as { jobId: string; submissionId: string };
+    fakes.render.mockResolvedValueOnce({ ok: false, title: "", domText: "", notes: ["Page unavailable"] });
+    fakes.model.mockResolvedValueOnce({ data: { decision: "pass", summary: "The idea is small", criteria: ["build", "monetise", "digital"].map(id => ({id,met:true,reason:"Plausible",change:""})), nextSteps: [], sourceIds: [] }, modelUsed:"fixture",providerUsed:"fixture",tokensIn:1,tokensOut:1,costUsd:0 });
+    await runStudioJob(submitted.jobId);
+    const row = await prisma.shipyardStudioSubmission.findUniqueOrThrow({ where: { id: submitted.submissionId } });
+    expect(row.status).toBe("evidence_needed");
+    // Restore the last valid state for the following conversational-context test.
+    await prisma.shipyardStudioSubmission.delete({ where: { id: submitted.submissionId } });
+  });
   it("retains message images and review context on the next coaching turn", async () => {
     fakes.model.mockClear();
     fakes.model.mockResolvedValue({
@@ -737,7 +754,8 @@ describe.skipIf(!enabled)("Shipyard studio with isolated Postgres", () => {
     const csv = await response.text();
     expect(csv).toContain("Submission ID");
     expect(csv).toContain("Freelance invoice tool");
-    expect(csv).toContain(`?file=idea-visual-${suffix}`);
+    expect(csv).toContain("https://example.com/invoices");
+    expect(csv).toContain(`?file=design-${suffix}`);
     expect(csv).toContain(student.email);
     expect(response.headers.get("cache-control")).toContain("no-store");
   });
@@ -756,4 +774,21 @@ describe.skipIf(!enabled)("Shipyard studio with isolated Postgres", () => {
     expect(gateOpen(3, rows)).toBe(false);
     expect(rows.filter((r) => r.checkpoint === 1).length).toBeGreaterThan(1);
   });
+  it("finishes queued v2 image submissions using their original rubric", async () => {
+    const w = await saveIdea();
+    const submitted = await performStudioAction(student, { action: "submit", checkpoint: 1, version: w.version, requestId: randomUUID() }) as { jobId: string; submissionId: string };
+    await prisma.shipyardStudioSubmission.update({ where: { id: submitted.submissionId }, data: {
+      rubric: "studio-2026-09-21-v2",
+      snapshot: { ideaId: "first", fields: { title: w.document.ideas[0].title, description: w.document.ideas[0].description, visuals: [`idea-visual-${suffix}`] } },
+    } });
+    fakes.render.mockClear();
+    fakes.model.mockResolvedValueOnce({ data: { decision: "pass", summary: "A coherent visual", criteria: ["build", "monetise", "digital"].map(id => ({id,met:true,reason:"Plausible",change:""})), nextSteps: [], sourceIds: [] }, modelUsed:"fixture",providerUsed:"fixture",tokensIn:1,tokensOut:1,costUsd:0 });
+    await runStudioJob(submitted.jobId);
+    expect(fakes.render).not.toHaveBeenCalled();
+    const request = fakes.model.mock.lastCall![0];
+    expect(request.system).toContain("No landing URL required");
+    expect(request.user.filter((p: { type: string }) => p.type === "image_url")).toHaveLength(1);
+    expect((await prisma.shipyardStudioSubmission.findUniqueOrThrow({where:{id:submitted.submissionId}})).status).toBe("passed");
+  });
+
 });

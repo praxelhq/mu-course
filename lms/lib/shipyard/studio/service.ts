@@ -672,25 +672,17 @@ export async function performStudioAction(
             "The previous checkpoint must pass before you submit this one.",
           );
         const fields = checkpointFields(input.checkpoint).parse(idea);
-        if (input.checkpoint < 3) {
-          for (const [kind, ids] of (input.checkpoint === 1
-            ? [["reference", idea.visuals]]
-            : [["design", idea.designs]]) as [string, string[]][]) {
-            if (
-              (await tx.shipyardStudioFile.count({
-                where: {
-                  workspaceId: workspace.id,
-                  id: { in: ids },
-                  kind,
-                  versionId: { not: null },
-                },
-              })) !== ids.length
-            )
-              throw new StudioError(
-                422,
-                "Attach verified images from this workspace.",
-              );
-          }
+        if (input.checkpoint === 2 &&
+          (await tx.shipyardStudioFile.count({
+            where: {
+              workspaceId: workspace.id,
+              id: { in: idea.designs },
+              kind: "design",
+              versionId: { not: null },
+            },
+          })) !== idea.designs.length
+        ) {
+          throw new StudioError(422, "Attach verified images from this workspace.");
         }
         const predecessor = latestSubmission(input.checkpoint - 1, rows);
         if (
