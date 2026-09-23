@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const RUBRIC = "studio-2026-09-21-v2";
+export const RUBRIC = "studio-2026-09-23-v3";
 export const wordCount = (text: string) =>
   text.trim().split(/\s+/u).filter(Boolean).length;
 export function allowedEmail(email: string): boolean {
@@ -17,7 +17,7 @@ export const webUrl = z
   .url()
   .max(2048)
   .refine(
-    (s) => ["https:", "http:"].includes(new URL(s).protocol),
+    (s) => URL.canParse(s) && ["https:", "http:"].includes(new URL(s).protocol),
     "Use an http or https URL",
   );
 const featureSchema = z.object({
@@ -114,10 +114,7 @@ const cp1 = z.object({
     .min(20)
     .max(5000)
     .refine((s) => wordCount(s) < 200, "Keep the idea under 200 words"),
-  visuals: z
-    .array(z.string().min(1))
-    .min(1, "Upload a visual of your idea")
-    .max(3),
+  landingUrl: z.string().trim().min(1, "Add your landing page link").pipe(webUrl),
 });
 const cp2 = z.preprocess(
   (value) => {

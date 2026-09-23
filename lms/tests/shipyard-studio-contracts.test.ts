@@ -21,7 +21,7 @@ describe("Shipyard studio contract", () => {
     const fields = {
       title: "A useful product",
       description: Array(199).fill("word").join(" "),
-      visuals: ["idea-image"],
+      landingUrl: "https://example.com",
     };
     expect(wordCount(fields.description)).toBe(199);
     expect(checkpointFields(1).safeParse(fields).success).toBe(true);
@@ -32,16 +32,16 @@ describe("Shipyard studio contract", () => {
       }).success,
     ).toBe(false);
   });
-  it("accepts a visual instead of a landing page for the idea", () => {
+  it("submits only title, description and required landing page, with no image or notes", () => {
     const fields = {
       title: "Invoice helper",
       description: "Simple invoicing software for freelance designers.",
-      visuals: ["image"],
+      landingUrl: "https://example.com/invoices",
     };
-    expect(checkpointFields(1).safeParse(fields).success).toBe(true);
-    expect(
-      checkpointFields(1).safeParse({ ...fields, visuals: [] }).success,
-    ).toBe(false);
+    expect(checkpointFields(1).parse({ ...fields, visuals: ["old-image"], customer: "notes" })).toEqual(fields);
+    for (const landingUrl of [undefined, "", "not-a-url", "javascript:alert(1)"]) {
+      expect(checkpointFields(1).safeParse({ ...fields, landingUrl }).success).toBe(false);
+    }
   });
   it("accepts a plain-text feature list and screen images without a separate sketch", () => {
     expect(
