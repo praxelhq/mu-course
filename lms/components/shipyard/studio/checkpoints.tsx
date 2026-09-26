@@ -5,6 +5,7 @@ import {
   latestSubmission,
   wordCount,
   featureText,
+  SPEC_TEXT_LIMIT,
   type StudioIdea,
 } from "@/lib/shipyard/studio/contracts";
 import {
@@ -93,6 +94,7 @@ export function Checkpoints({
   idea,
   actor,
   busy,
+  error,
   readonly,
   change,
   act,
@@ -103,6 +105,7 @@ export function Checkpoints({
   idea: StudioIdea;
   actor: State["actor"];
   busy: boolean;
+  error?: string;
   readonly: boolean;
   change: (field: keyof StudioIdea, value: unknown) => void;
   act: (body: unknown, success?: string) => Promise<unknown>;
@@ -187,6 +190,7 @@ export function Checkpoints({
                   <fieldset disabled={readonly || busy}>
                     <Field
                       label="Job spec"
+                      hint={`${idea.job.length.toLocaleString()} / ${SPEC_TEXT_LIMIT.toLocaleString()} characters`}
                       value={idea.job}
                       onChange={(v) => change("job", v)}
                       rows={5}
@@ -200,7 +204,7 @@ export function Checkpoints({
                         change("featureList", v);
                       }}
                       rows={7}
-                      hint="Plain text or bullets are fine. Briefly explain what each feature does. Mark later features if useful."
+                      hint={`Plain text or bullets are fine. Briefly explain each feature. ${featureText(idea).length.toLocaleString()} / ${SPEC_TEXT_LIMIT.toLocaleString()} characters.`}
                       placeholder={
                         "Create an invoice — enter the client, amount and due date.\nExport a PDF — download a clear invoice ready to send."
                       }
@@ -255,12 +259,14 @@ export function Checkpoints({
               </p>
             )}
             {open && !readonly && (
+              <>
+              {error && <p className="st-error" role="alert">{error}</p>}
               <button
                 className="st-button"
                 disabled={busy || s?.status === "queued"}
                 onClick={() => submit(cp)}
               >
-                {s?.status === "queued"
+                {busy ? "Saving / submitting…" : s?.status === "queued"
                   ? "Review in progress…"
                   : cp === 3
                     ? "Submit working product"
@@ -268,6 +274,7 @@ export function Checkpoints({
                       ? "Save & submit a new version"
                       : "Save & submit for review"}
               </button>
+              </>
             )}
             {s && (
               <div className="st-review">

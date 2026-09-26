@@ -8,9 +8,33 @@ import {
   emptyDocument,
   reviewSchema,
   canPass,
+  SPEC_TEXT_LIMIT,
 } from "@/lib/shipyard/studio/contracts";
 
 describe("Shipyard studio contract", () => {
+  it("saves and submits a detailed product spec with six uploaded designs", () => {
+    const document = emptyDocument();
+    Object.assign(document.ideas[0], {
+      job: "Detailed user job and intended outcome. ".repeat(400),
+      featureList: "Feature description and prioritisation. ".repeat(400),
+      designs: Array.from({ length: 6 }, (_, i) => `screen-${i}`),
+    });
+    expect(documentSchema.safeParse(document).success).toBe(true);
+    const fields = checkpointFields(2).parse(document.ideas[0]);
+    expect(fields).toMatchObject({ job: document.ideas[0].job.trim(), featureList: document.ideas[0].featureList.trim(), designs: document.ideas[0].designs });
+  });
+  it("rejects oversized specs with an actionable error without truncating work", () => {
+    const document = emptyDocument();
+    const idea = document.ideas[0];
+    idea.job = "x".repeat(SPEC_TEXT_LIMIT + 1);
+    idea.featureList = "A useful feature description";
+    idea.designs = ["screen"];
+    for (const result of [documentSchema.safeParse(document), checkpointFields(2).safeParse(idea)]) {
+      expect(result.success).toBe(false);
+      if (!result.success) expect(result.error.issues[0].message).toContain("30,000 characters");
+    }
+    expect(idea.job.length).toBe(SPEC_TEXT_LIMIT + 1);
+  });
   it("admits exact institutional domains, not lookalikes", () => {
     expect(allowedEmail("Student@mastersunion.org")).toBe(true);
     expect(allowedEmail("x@mastersunion.org.evil.com")).toBe(false);
