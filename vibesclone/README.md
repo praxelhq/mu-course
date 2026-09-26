@@ -1,6 +1,8 @@
 # VibesClone
 
-VibesClone turns a public product URL into an editable, evidence-linked Build Understanding and then into one base prompt plus ordered follow-up prompts for Lovable, Replit, Base44, or Claude Code. Its public blueprint library previews the buildable core of proven products and lets visitors remix a blueprint into a private project.
+VibesClone helps builders pick a product that already earns and ship their own version for a different niche. Its public opportunity list shows indie products with TrustMRR-verified revenue, founder audience size, and category competition. Any public product URL becomes an editable, evidence-linked Build Understanding and then one base prompt plus ordered follow-up prompts for Lovable, Replit, Base44, or Claude Code. Hand-written teardowns of well-known products live under `/blueprints`.
+
+Opportunity data lives in `lib/opportunities-data.ts`, generated from the Startup Marketplace Intelligence snapshot (TrustMRR, AppSumo, Acquire). Regenerate it with `scripts/generate-opportunities.py` from a new snapshot rather than hand-editing figures.
 
 ## Local development
 
