@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { docs, posts } from "@/lib/content";
+import { blueprints } from "@/lib/blueprints";
 
 test("docs are public, indexed, and cross-linked", async ({ page }) => {
   await page.goto("/docs");
@@ -34,10 +35,14 @@ test("sitemap lists every content route on the canonical host", async ({ request
   const xml = await response.text();
   expect(xml).toContain("https://vibesclone.com/docs</loc>");
   expect(xml).toContain("https://vibesclone.com/blog</loc>");
+  expect(xml).toContain("https://vibesclone.com/blueprints</loc>");
+  expect(xml).toContain("https://vibesclone.com/stats</loc>");
+  expect(xml).toContain("https://vibesclone.com/sponsor</loc>");
   for (const doc of docs) {
     expect(xml).toContain(`https://vibesclone.com/docs/${doc.slug}</loc>`);
   }
   for (const post of posts) {
     expect(xml).toContain(`https://vibesclone.com/blog/${post.slug}</loc>`);
   }
+  for (const blueprint of blueprints) expect(xml).toContain(`https://vibesclone.com/blueprints/${blueprint.slug}</loc>`);
 });

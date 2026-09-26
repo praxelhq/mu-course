@@ -28,7 +28,7 @@ export async function POST(request: Request): Promise<Response> {
     const project = await prisma.project.create({
       data: {
         userId: user.id, name, sourceUrl: sourceUrl.toString(), uiReferenceUrl: input.uiReferenceUrl || null,
-        niche: input.niche, usp: input.usp, buildTarget: input.buildTarget, status: "analyzing",
+        niche: input.niche, usp: input.usp, buildTarget: input.buildTarget, remixOrigin: input.remixOrigin || null, status: "analyzing",
         jobs: { create: { id: runId, kind: "analyze", status: "queued", idempotencyKey: `analysis:${runId}`, requestedModel: process.env.OPENROUTER_MODEL ?? "qwen/qwen3.7-plus" } },
       },
     });
