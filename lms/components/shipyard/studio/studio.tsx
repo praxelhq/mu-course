@@ -664,6 +664,7 @@ export function Studio({
           </div>
           {tab === "checkpoints" && (
             <Checkpoints
+              error={error}
               w={w}
               idea={idea}
               actor={state.actor}

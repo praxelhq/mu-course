@@ -1,6 +1,11 @@
 import { z } from "zod";
 
 export const RUBRIC = "studio-2026-09-23-v3";
+export const SPEC_TEXT_LIMIT = 30000;
+const specText = (label: string) => z.string().max(
+  SPEC_TEXT_LIMIT,
+  `${label} is too long. Keep it within 30,000 characters; your text has not been removed.`,
+);
 export const wordCount = (text: string) =>
   text.trim().split(/\s+/u).filter(Boolean).length;
 export function allowedEmail(email: string): boolean {
@@ -38,9 +43,9 @@ export const ideaSchema = z.object({
   pricing: z.string().max(3000),
   acquisition: z.string().max(3000),
   assumptions: z.string().max(5000),
-  job: z.string().max(5000),
+  job: specText("Job spec"),
   features: z.array(featureSchema).max(40),
-  featureList: z.string().max(12000).default(""),
+  featureList: specText("Feature list").default(""),
   visuals: z.array(z.string().min(1)).max(3).default([]),
   sketches: z.array(z.string()).max(10),
   designs: z.array(z.string()).max(10),
@@ -123,12 +128,12 @@ const cp2 = z.preprocess(
     return { ...idea, featureList: featureText(idea) };
   },
   z.object({
-    job: z.string().trim().min(30).max(5000),
+    job: specText("Job spec").trim().min(30, "Explain the job your product helps users accomplish (at least 30 characters)"),
     featureList: z
       .string()
       .trim()
       .min(15, "Describe the features you plan to build")
-      .max(12000),
+      .max(SPEC_TEXT_LIMIT, "Feature list is too long. Keep it within 30,000 characters; your text has not been removed."),
     designs: z
       .array(z.string().min(1))
       .min(1, "Upload images of your product screens")
