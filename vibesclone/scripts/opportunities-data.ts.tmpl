@@ -1,0 +1,33 @@
+// Generated from the Startup Marketplace Intelligence snapshot (TrustMRR, AppSumo, Acquire) taken __SNAPSHOT__.
+// Revenue figures are TrustMRR-verified MRR at snapshot time, rounded to the nearest $100. Regenerate rather than hand-edit.
+
+export type Competition = "Low" | "Medium" | "High";
+
+export type Opportunity = {
+  slug: string;
+  name: string;
+  website: string;
+  trustmrrUrl: string;
+  category: string;
+  mrr: number;
+  growth30d: number | null;
+  founded: string | null;
+  founderFollowers: number;
+  audience: string | null;
+  pricing: string | null;
+  persona: string | null;
+  summary: string;
+  problem: string | null;
+  onSale: boolean;
+  askingPrice: number | null;
+  competition: Competition;
+  categoryEarningCount: number;
+};
+
+export type BetterVersion = { name: string; tagline: string; purchases: number; rating: number; reviews: number; category: string; appsumoUrl: string; productUrl: string | null };
+
+export const marketStats = __STATS__ as const;
+
+export const opportunities: readonly Opportunity[] = __OPPORTUNITIES__;
+
+export const betterVersions: readonly BetterVersion[] = __BETTER__;

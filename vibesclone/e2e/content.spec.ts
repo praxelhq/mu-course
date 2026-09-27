@@ -6,7 +6,7 @@ test("docs are public, indexed, and cross-linked", async ({ page }) => {
   await page.goto("/docs");
   await expect(page.getByRole("heading", { name: "Documentation" })).toBeVisible();
   for (const doc of docs) {
-    await expect(page.getByRole("link", { name: new RegExp(doc.title) })).toBeVisible();
+    await expect(page.locator(".content-index").getByRole("link", { name: new RegExp(doc.title) })).toBeVisible();
   }
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://vibesclone.com/docs");
 
@@ -36,6 +36,7 @@ test("sitemap lists every content route on the canonical host", async ({ request
   expect(xml).toContain("https://vibesclone.com/docs</loc>");
   expect(xml).toContain("https://vibesclone.com/blog</loc>");
   expect(xml).toContain("https://vibesclone.com/blueprints</loc>");
+  expect(xml).toContain("https://vibesclone.com/opportunities</loc>");
   expect(xml).toContain("https://vibesclone.com/stats</loc>");
   expect(xml).toContain("https://vibesclone.com/sponsor</loc>");
   for (const doc of docs) {
