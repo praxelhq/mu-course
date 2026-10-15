@@ -8,6 +8,7 @@ import {
   emptyDocument,
   reviewSchema,
   canPass,
+  normaliseStudioReview,
   SPEC_TEXT_LIMIT,
 } from "@/lib/shipyard/studio/contracts";
 
@@ -124,6 +125,18 @@ describe("Shipyard studio contract", () => {
       sourceIds: [],
     });
     expect(canPass(1, review)).toBe(false);
+  });
+  it("does not return students for revision when every rubric criterion is met", () => {
+    const review = reviewSchema.parse({
+      decision: "revise", summary: "All three criteria are met, but add more detail.",
+      criteria: ["build", "monetise", "digital"].map(id => ({id,met:true,reason:"Supported by the idea",change:"Optional polish"})),
+      nextSteps: ["Add optional polish"], sourceIds: [],
+    });
+    expect(normaliseStudioReview(1, review)).toMatchObject({ decision: "pass", nextSteps: [] });
+    expect(normaliseStudioReview(1, review).criteria.every(c => c.change === "")).toBe(true);
+    expect(normaliseStudioReview(1, { ...review, decision: "evidence_needed" }).decision).toBe("evidence_needed");
+    expect(normaliseStudioReview(1, { ...review, criteria: review.criteria.slice(1) }).decision).toBe("revise");
+    expect(normaliseStudioReview(1, { ...review, criteria: [...review.criteria, review.criteria[0]] }).decision).toBe("revise");
   });
   it("round trips the empty workspace and requires an active idea to exist", () => {
     expect(documentSchema.safeParse(emptyDocument()).success).toBe(true);

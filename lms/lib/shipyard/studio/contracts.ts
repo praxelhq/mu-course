@@ -185,15 +185,26 @@ export const reviewSchema = z.object({
   sourceIds: z.array(z.string()).max(12),
 });
 export type StudioReview = z.infer<typeof reviewSchema>;
-export function canPass(cp: number, review: StudioReview) {
-  return (
-    review.decision === "pass" &&
-    criterionIds(cp).every(
-      (id) =>
-        review.criteria.filter((c) => c.id === id).length === 1 &&
-        review.criteria.find((c) => c.id === id)?.met,
-    )
+function allCriteriaMet(cp: number, review: StudioReview) {
+  const ids = criterionIds(cp);
+  return review.criteria.length === ids.length && ids.every(
+    (id) => review.criteria.filter((c) => c.id === id).length === 1 &&
+      review.criteria.find((c) => c.id === id)?.met,
   );
+}
+export function normaliseStudioReview(cp: number, review: StudioReview): StudioReview {
+  if (review.decision === "evidence_needed" || !allCriteriaMet(cp, review)) return review;
+  return {
+    ...review, decision: "pass",
+    summary: review.decision === "revise"
+      ? "Your submission meets every checkpoint criterion. You can continue to the next checkpoint."
+      : review.summary,
+    criteria: review.criteria.map((c) => ({ ...c, change: "" })),
+    nextSteps: [],
+  };
+}
+export function canPass(cp: number, review: StudioReview) {
+  return review.decision === "pass" && allCriteriaMet(cp, review);
 }
 export const coachSchema = z.object({
   answer: z.string().max(12000),

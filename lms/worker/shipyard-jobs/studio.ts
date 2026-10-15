@@ -12,10 +12,12 @@ import {
 } from "@/lib/shipyard/reviewer/anonymise";
 import {
   canPass,
+  criterionIds,
   coachSchema,
   ideaSchema,
   gateOpen,
   latestSubmission,
+  normaliseStudioReview,
   reviewSchema,
 } from "@/lib/shipyard/studio/contracts";
 import {
@@ -257,7 +259,20 @@ async function review(job: ShipyardStudioJob) {
         }
       : part,
   );
-  const result = await callStudio({
+  // An inaccessible page/image is an access problem, not material the model
+  // can grade. Avoid invented academic objections and hosting-change demands.
+  const result = unavailable ? {
+    data: {
+      decision: "evidence_needed" as const,
+      summary: "Our automated reviewer could not inspect some submitted evidence. This does not mean your page is broken or your idea is rejected. Browser restrictions or a temporary access problem may be responsible. Your submission is saved.",
+      criteria: criterionIds(submission.checkpoint).map((id) => ({
+        id, met: false, reason: "Not assessed: submitted evidence could not be inspected.", change: "",
+      })),
+      nextSteps: ["If the evidence opens for you, ask your instructor to review this saved submission. You do not need to rebuild the page or change hosting because of this access result."],
+      sourceIds: [] as string[],
+    },
+    modelUsed: "not-called", providerUsed: "none", tokensIn: 0, tokensOut: 0, costUsd: 0,
+  } : await callStudio({
     task: "verdict",
     system: reviewPrompt(submission.checkpoint, submission.rubric),
     user: anonymisedContent,
@@ -265,18 +280,12 @@ async function review(job: ShipyardStudioJob) {
     temperature: 0,
     maxTokens: 8192,
   });
-  await modelCost(job, result);
+  if (!unavailable) await modelCost(job, result);
   const validIds = new Set(evidence.map((e) => e.id));
   const data = {
-    ...result.data,
+    ...normaliseStudioReview(submission.checkpoint, result.data),
     sourceIds: result.data.sourceIds.filter((id) => validIds.has(id)),
   };
-  if (unavailable) {
-    data.decision = "evidence_needed";
-    data.summary =
-      "Some submitted evidence could not be inspected. Provide accessible evidence and resubmit, or ask your instructor to review. " +
-      data.summary;
-  }
   const status = canPass(submission.checkpoint, data)
     ? "passed"
     : data.decision === "evidence_needed"
@@ -302,6 +311,7 @@ async function review(job: ShipyardStudioJob) {
           status,
           review: json({
             ...data,
+            modelDecision: result.data.decision,
             evidence,
             model: result.modelUsed,
             provider: result.providerUsed,
