@@ -230,25 +230,15 @@ export function Checkpoints({
             ) : (
               <>
                 <p>
-                  Submit the working product. This checkpoint records your
-                  submission without an automated assessment.
+                  Submit your working product on Shipped.money. Connect the
+                  product’s GitHub repository there and keep its submission
+                  receipt. Your team only needs to submit once.
                 </p>
                 {open && (
-                  <fieldset disabled={readonly || busy}>
-                    <Field
-                      label="Working product URL"
-                      value={idea.liveUrl}
-                      onChange={(v) => change("liveUrl", v)}
-                      rows={1}
-                      placeholder="https://your-live-product.example"
-                    />
-                    <Field
-                      label="Anything your instructor needs to know? (optional)"
-                      value={idea.notes}
-                      onChange={(v) => change("notes", v)}
-                      hint="Explain where to start. Do not include passwords, API keys, or customer data."
-                    />
-                  </fieldset>
+                  <div>
+                    <a className="st-button" href="https://shipped.money/submit" target="_blank" rel="noopener noreferrer">Submit on Shipped.money ↗</a>
+                    <p className="st-muted">Use your custom-domain product URL. Analytics and payment connections come in the next submission. No duplicate submission is needed here.</p>
+                  </div>
                 )}
               </>
             )}
@@ -258,7 +248,7 @@ export function Checkpoints({
                 idea in project chat.
               </p>
             )}
-            {open && !readonly && (
+            {open && !readonly && cp < 3 && (
               <>
               {error && <p className="st-error" role="alert">{error}</p>}
               <button
@@ -268,9 +258,7 @@ export function Checkpoints({
               >
                 {busy ? "Saving / submitting…" : s?.status === "queued"
                   ? "Review in progress…"
-                  : cp === 3
-                    ? "Submit working product"
-                    : s
+                  : s
                       ? "Save & submit a new version"
                       : "Save & submit for review"}
               </button>
