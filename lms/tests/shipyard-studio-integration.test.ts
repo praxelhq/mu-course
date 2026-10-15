@@ -157,6 +157,40 @@ describe.skipIf(!enabled)("Shipyard studio with isolated Postgres", () => {
     expect(state.workspace?.id).not.toBe(workspaceId);
     expect((await studioState(student)).workspace?.members).toHaveLength(2);
   });
+  it("joins an invited team from an untouched solo workspace without deleting it", async () => {
+    const row = await prisma.shipyardStudioIdentity.create({
+      data: { clerkId: `solo-${suffix}`, email: `solo-${suffix}@mastersunion.org`, name: "Solo" },
+    });
+    const solo = { ...row, staff: false };
+    actors.push(solo);
+    const old = await performStudioAction(solo, { action: "create", name: "Accidental solo workspace" }) as { workspaceId: string };
+    const invite = await performStudioAction(student, { action: "invite", email: solo.email }) as { inviteUrl: string };
+    const token = new URL(invite.inviteUrl).searchParams.get("token")!;
+    try {
+      await expect(performStudioAction(solo, { action: "join", token })).resolves.toEqual({ workspaceId });
+      expect((await studioState(solo)).workspace?.id).toBe(workspaceId);
+      expect(await prisma.shipyardStudioWorkspace.findUnique({ where: { id: old.workspaceId } })).not.toBeNull();
+      await expect(performStudioAction(solo, { action: "join", token })).rejects.toThrow("already been used");
+    } finally {
+      await prisma.shipyardStudioWorkspace.delete({ where: { id: old.workspaceId } });
+    }
+  });
+  it("keeps saved solo work and leaves the invitation unconsumed when joining is blocked", async () => {
+    const row = await prisma.shipyardStudioIdentity.create({
+      data: { clerkId: `draft-${suffix}`, email: `draft-${suffix}@mastersunion.org`, name: "Draft" },
+    });
+    const draft = { ...row, staff: false };
+    actors.push(draft);
+    const old = await performStudioAction(draft, { action: "create", name: "My work" }) as { workspaceId: string };
+    const document = emptyDocument();
+    document.ideas[0].description = "Do not lose my saved idea";
+    await performStudioAction(draft, { action: "save", version: 0, document });
+    const invite = await performStudioAction(student, { action: "invite", email: draft.email }) as { inviteUrl: string };
+    const token = new URL(invite.inviteUrl).searchParams.get("token")!;
+    await expect(performStudioAction(draft, { action: "join", token })).rejects.toThrow("workspace contains work");
+    expect((await studioState(draft)).workspace?.id).toBe(old.workspaceId);
+    expect((await prisma.shipyardStudioInvitation.findFirstOrThrow({ where: { email: draft.email } })).acceptedAt).toBeNull();
+  });
   it("rejects a lost update rather than overwriting teammate work", async () => {
     const w = await saveIdea();
     const changed = structuredClone(w.document);
@@ -688,14 +722,20 @@ describe.skipIf(!enabled)("Shipyard studio with isolated Postgres", () => {
       ).status,
     ).toBe("evidence_needed");
   });
-  it("keeps inaccessible landing pages pending evidence even if the model says pass", async () => {
+  it("reports browser access limits without asking the model to grade an unseen page", async () => {
     const w = await saveIdea();
     const submitted = await performStudioAction(student, { action: "submit", checkpoint: 1, version: w.version, requestId: randomUUID() }) as { jobId: string; submissionId: string };
     fakes.render.mockResolvedValueOnce({ ok: false, title: "", domText: "", notes: ["Page unavailable"] });
     fakes.model.mockResolvedValueOnce({ data: { decision: "pass", summary: "The idea is small", criteria: ["build", "monetise", "digital"].map(id => ({id,met:true,reason:"Plausible",change:""})), nextSteps: [], sourceIds: [] }, modelUsed:"fixture",providerUsed:"fixture",tokensIn:1,tokensOut:1,costUsd:0 });
+    fakes.model.mockClear();
     await runStudioJob(submitted.jobId);
     const row = await prisma.shipyardStudioSubmission.findUniqueOrThrow({ where: { id: submitted.submissionId } });
     expect(row.status).toBe("evidence_needed");
+    expect(fakes.model).not.toHaveBeenCalled();
+    expect(row.review).toMatchObject({ decision: "evidence_needed", model: "not-called", costUsd: 0 });
+    expect((row.review as { summary: string }).summary).toContain("does not mean your page is broken");
+    expect((row.review as { nextSteps: string[] }).nextSteps.join(" ")).toContain("instructor");
+    fakes.model.mockReset();
     // Restore the last valid state for the following conversational-context test.
     await prisma.shipyardStudioSubmission.delete({ where: { id: submitted.submissionId } });
   });
@@ -731,7 +771,7 @@ describe.skipIf(!enabled)("Shipyard studio with isolated Postgres", () => {
     expect(request.history).toContainEqual({ role: "user", content: "Review this uploaded screen" });
     expect(content.at(-1).text).toContain("What should I change in that screen?");
     expect(content[0].text).not.toContain("Review this uploaded screen");
-    expect(request.history[0].content).toContain("The screen supports the job");
+    expect(request.history[0].content).toContain("Our automated reviewer could not inspect");
     expect(
       content.filter((p: { type: string }) => p.type === "image_url"),
     ).toHaveLength(2);

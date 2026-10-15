@@ -335,7 +335,12 @@ export async function performStudioAction(
             403,
             "This invitation is expired or belongs to a different MU email.",
           );
-        await tx.$queryRaw`SELECT id FROM "ShipyardStudioWorkspace" WHERE id=${invite.workspaceId} FOR UPDATE`;
+        const existing = await tx.shipyardStudioMember.findUnique({
+          where: { identityId: actor.id },
+        });
+        // Lock both teams in a stable order, including against saves and invites.
+        const workspaceIds = [...new Set([invite.workspaceId, ...(existing ? [existing.workspaceId] : [])])].sort();
+        await tx.$queryRaw`SELECT id FROM "ShipyardStudioWorkspace" WHERE id IN (${Prisma.join(workspaceIds)}) ORDER BY id FOR UPDATE`;
         const consumed = await tx.shipyardStudioInvitation.updateMany({
           where: {
             id: invite.id,
@@ -350,30 +355,51 @@ export async function performStudioAction(
             409,
             "This invitation has already been used or revoked.",
           );
-        if (
-          await tx.shipyardStudioMember.findUnique({
-            where: { identityId: actor.id },
-          })
-        )
-          throw new StudioError(
-            409,
-            "You already belong to a workspace. Ask its owner to remove you before joining another.",
-          );
+        const current = await tx.shipyardStudioMember.findUnique({
+          where: { identityId: actor.id },
+          include: { workspace: { include: { _count: { select: {
+            members: true, submissions: true, files: true, jobs: true, invitations: true,
+          } } } } },
+        });
+        if (current) {
+          const w = current.workspace;
+          const parsed = documentSchema.safeParse(w.document);
+          const untouched = current.workspaceId === existing?.workspaceId &&
+            current.workspaceId !== invite.workspaceId && current.role === "owner" &&
+            w.version === 0 && w._count.members === 1 &&
+            w._count.submissions === 0 && w._count.files === 0 &&
+            w._count.jobs === 0 && w._count.invitations === 0 &&
+            parsed.success && JSON.stringify(parsed.data) === JSON.stringify(emptyDocument());
+          if (!untouched)
+            throw new StudioError(
+              409,
+              "Your workspace contains work or other team activity. Contact build@praxel.in to join this team without losing it.",
+            );
+        }
         if (
           (await tx.shipyardStudioMember.count({
             where: { workspaceId: invite.workspaceId },
           })) >= 10
         )
           throw new StudioError(422, "This team already has ten members.");
-        await tx.shipyardStudioMember.create({
-          data: { workspaceId: invite.workspaceId, identityId: actor.id },
-        });
+        if (current) {
+          // Keep the empty workspace and its creation revision for recovery.
+          await tx.shipyardStudioMember.update({
+            where: { id: current.id },
+            data: { workspaceId: invite.workspaceId, role: "member", joinedAt: new Date() },
+          });
+        } else {
+          await tx.shipyardStudioMember.create({
+            data: { workspaceId: invite.workspaceId, identityId: actor.id },
+          });
+        }
         await tx.auditLog.create({
           data: {
             actorId: actor.id,
             action: "studio.joined",
             targetType: "ShipyardStudioWorkspace",
             targetId: invite.workspaceId,
+            ...(current ? { before: { workspaceId: current.workspaceId } } : {}),
           },
         });
         return { workspaceId: invite.workspaceId };
